@@ -1,0 +1,13 @@
+{
+ "id": "g2c163familyoriginals-18-cuttlefish",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: insect matches clearly better (0.0281 < 0.0462)",
+  "missing-anatomy: part arm2-tip (arm2Seg2) covers 0% paint (reference 43%)",
+  "missing-anatomy: part arm2-middle (arm2Seg1) covers 0% paint (reference 75%)",
+  "missing-anatomy: part contour-arm2seg1 (arm2Seg1) covers 0% paint (reference 68%)",
+  "missing-anatomy: part final-arm4seg1 (arm4Seg1) covers 34% paint (reference 97%)"
+ ],
+ "semanticPresence": null
+}

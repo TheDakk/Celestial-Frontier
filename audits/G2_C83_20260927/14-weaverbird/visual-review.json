@@ -1,0 +1,7 @@
+{
+  "name": "Weaverbird",
+  "masterSha256": "7fdc5dfb231fc5f58818f161d3951f28068077eec3bd228a9ba3a439a1883776",
+  "status": "REFUSE_LAYOUT",
+  "observation": "REFUSE_LAYOUT: bird hangs upside-down from a large woven nest, not a standing isolated specimen. Yellow plumage, black face and stout bill visible, but the external nest prop and reversed pose violate the requested layout. Original retained unchanged; no rig admission or inferred foot placement.",
+  "supersededForPilotBy": "14-weaverbird-standing-v2"
+}

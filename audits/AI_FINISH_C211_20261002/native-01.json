@@ -1,0 +1,7 @@
+{
+ "04-moorhen": "DIAGNOSTIC_PASS",
+ "07-bittern": "FAIL",
+ "08-condor": "DIAGNOSTIC_PASS",
+ "12-guineafowl": "DIAGNOSTIC_PASS",
+ "09-turkey": "DIAGNOSTIC_PASS"
+}

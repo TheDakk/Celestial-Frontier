@@ -1,0 +1,22 @@
+[
+  {
+    "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "sha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985",
+    "unchangedFromHead": true
+  },
+  {
+    "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+    "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a",
+    "unchangedFromHead": true
+  },
+  {
+    "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+    "sha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399",
+    "unchangedFromHead": true
+  },
+  {
+    "path": "port/v2/tools/creature-animation/orientation-projector.mjs",
+    "sha256": "ddb2b35c467bd4332460da853cdfbc6f33693d3417e2e04fe0d797defb45ba31",
+    "unchangedFromHead": true
+  }
+]

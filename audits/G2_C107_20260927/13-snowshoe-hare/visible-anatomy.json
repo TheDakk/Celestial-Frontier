@@ -1,0 +1,200 @@
+{
+  "id": "13-snowshoe-hare",
+  "name": "Snowshoe Hare",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "cf1b19430756aeb19968e95fc34ecb68d7535feac6641326830643a8bee93a76",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 16937,
+    "coreRadius": 19,
+    "bodyBox": {
+      "x0": 145,
+      "y0": 171,
+      "x1": 288,
+      "y1": 244
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1541,
+        "pixels": 2610,
+        "box": {
+          "x0": 259,
+          "y0": 116,
+          "x1": 318,
+          "y1": 211
+        },
+        "attach": {
+          "x": 282.2,
+          "y": 184.3,
+          "relX": 0.96,
+          "relY": 0.18
+        },
+        "dir": {
+          "x": 0.16,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 77.2
+      },
+      {
+        "k": 1,
+        "frac": 0.0347,
+        "pixels": 588,
+        "box": {
+          "x0": 120,
+          "y0": 188,
+          "x1": 144,
+          "y1": 225
+        },
+        "attach": {
+          "x": 144,
+          "y": 206,
+          "relX": -0.01,
+          "relY": 0.48
+        },
+        "dir": {
+          "x": -0.94,
+          "y": 0.33
+        },
+        "class": "rear",
+        "length": 30.6
+      },
+      {
+        "k": 2,
+        "frac": 0.0868,
+        "pixels": 1470,
+        "box": {
+          "x0": 106,
+          "y0": 226,
+          "x1": 163,
+          "y1": 286
+        },
+        "attach": {
+          "x": 149.4,
+          "y": 237.6,
+          "relX": 0.03,
+          "relY": 0.91
+        },
+        "dir": {
+          "x": -0.69,
+          "y": 0.72
+        },
+        "class": "limb-down",
+        "length": 65
+      },
+      {
+        "k": 3,
+        "frac": 0.055,
+        "pixels": 932,
+        "box": {
+          "x0": 253,
+          "y0": 239,
+          "x1": 308,
+          "y1": 287
+        },
+        "attach": {
+          "x": 264.7,
+          "y": 244.2,
+          "relX": 0.84,
+          "relY": 1
+        },
+        "dir": {
+          "x": 0.57,
+          "y": 0.82
+        },
+        "class": "limb-down",
+        "length": 60.9
+      },
+      {
+        "k": 4,
+        "frac": 0.0801,
+        "pixels": 1357,
+        "box": {
+          "x0": 156,
+          "y0": 241,
+          "x1": 210,
+          "y1": 288
+        },
+        "attach": {
+          "x": 177,
+          "y": 241,
+          "relX": 0.22,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": 0.1,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 57.4
+      },
+      {
+        "k": 5,
+        "frac": 0.0388,
+        "pixels": 658,
+        "box": {
+          "x0": 220,
+          "y0": 242,
+          "x1": 246,
+          "y1": 283
+        },
+        "attach": {
+          "x": 236.8,
+          "y": 244.7,
+          "relX": 0.64,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.22,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 41.8
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 109,
+        "x1": 145,
+        "cx": 127.9
+      },
+      {
+        "x0": 167,
+        "x1": 210,
+        "cx": 190.5
+      },
+      {
+        "x0": 221,
+        "x1": 244,
+        "cx": 232.7
+      },
+      {
+        "x0": 276,
+        "x1": 308,
+        "cx": 292.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

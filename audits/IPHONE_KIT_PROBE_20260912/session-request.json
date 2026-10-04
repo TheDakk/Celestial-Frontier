@@ -1,0 +1,12 @@
+{
+  "capabilities": {
+    "alwaysMatch": {
+      "browserName": "Safari",
+      "platformName": "iOS",
+      "safari:platformVersion": "26.6.2",
+      "safari:deviceType": "iPhone",
+      "safari:useSimulator": false,
+      "acceptInsecureCerts": true
+    }
+  }
+}

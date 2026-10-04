@@ -1,0 +1,15 @@
+{
+ "id": "17-squid",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches cephalopod better (0.0464 < 0.0580)",
+  "wrong-family: insect matches clearly better (0.0377 < 0.0580)",
+  "extra-anatomy (unassigned): a rear appendage of 12.8% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a front appendage of 6.9% paint that no reference appendage lands on",
+  "missing-anatomy: part near-eye (eyeNear) covers 32% paint (reference 100%)",
+  "missing-anatomy: part arm2-middle (arm2Seg1) covers 30% paint (reference 92%)",
+  "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 2.9%)"
+ ],
+ "semanticPresence": null
+}

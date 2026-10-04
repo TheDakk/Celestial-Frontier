@@ -1,0 +1,6 @@
+==> Downloading bottle manifests
+✔︎ Bottle Manifest node (26.10.0_1)
+==> Would upgrade 1 dependency:
+simdutf 9.2.0 -> 9.2.1_1
+==> Would upgrade 1 requested outdated package
+node 26.9.0 -> 26.10.0_1 (21.2MB)

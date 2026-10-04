@@ -1,0 +1,11 @@
+{
+  "status": "HELD_SUPERSEDED_FIRST_ATTEMPT",
+  "qualityAccepted": false,
+  "allOriginalsPreserved": true,
+  "upscaled": false,
+  "findings": [
+    "NEAR covers fighting path (intake refusal)",
+    "FAR paints unsupported celestial bodies and an above-water vista incompatible with submerged MID"
+  ],
+  "successor": "milksea-v2"
+}

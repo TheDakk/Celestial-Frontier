@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c136-compiler-presence-integration/v1",
+  "changes": [
+    {
+      "file": "port/v2/tools/painted-creature/compile-library-master.mjs",
+      "beforeSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+      "afterSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3"
+    },
+    {
+      "file": "port/v2/tools/painted-creature/reviewed-presence.mjs",
+      "beforeSha256": "11e52bfae8ed53bfdc41a125bd69a8b3a7a13fb2d50a11ec62e75765c6330a6d",
+      "afterSha256": "882b604ff1e8797afea878a5cb4289db1fe28a74c8018c74842d9abb664cec7f"
+    }
+  ],
+  "scope": "Canonical painting request dispatch and exact-master optional-pinna review only. No certificate, gallery, reference pool or runtime topology admission."
+}

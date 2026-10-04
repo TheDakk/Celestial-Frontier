@@ -1,0 +1,14 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 853,
+      "sha256": "365c3e0494e9f83d9b81e6c95ce8dc5611b42b98fae2c78e8be2af9424a1c772"
+    },
+    {
+      "path": "retained-authorities.json",
+      "bytes": 2264,
+      "sha256": "a544b497d66c5ff905ebd9f9571300482c9a2f0c256e3fe4ec4ffb5b1b80b4a3"
+    }
+  ]
+}

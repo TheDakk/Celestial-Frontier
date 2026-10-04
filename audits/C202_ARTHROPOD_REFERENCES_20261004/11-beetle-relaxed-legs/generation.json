@@ -1,0 +1,19 @@
+{
+  "id": "11-beetle-relaxed-legs",
+  "name": "Beetle",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2bed7d9e-746f-4aba-840d-688c3f8f6e14.png",
+  "masterSha256": "e1eca972d8481b7471239b47c54598657364c06334b21be37b60fe6ea8c5e275",
+  "bytes": 1453188,
+  "promptSha256": "9a0a72332b0c95a02ea096cb867fb667674cd65f193df0fe2e69a2bb90bea8db",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/master.png",
+      "sha256": "2673f287573558969262fabc5bd524083d1e773abe1b5c58ef09a9588284ffab"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "transparentBackground": false
+}

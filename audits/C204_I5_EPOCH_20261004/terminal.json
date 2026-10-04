@@ -1,0 +1,23 @@
+{
+  "reservation": "C282",
+  "status": "TERMINAL\u2014RELEASED",
+  "epoch": "PASS",
+  "develop": {
+    "head": "179b349025264438f71d19cf38ddd823c90ecfd7",
+    "startedAt": "2026-10-04T05:59:50.974932+00:00",
+    "finishedAt": "2026-10-04T06:02:08.177254+00:00",
+    "durationSeconds": 137.202,
+    "exitCode": 0,
+    "optionalRuntimeRenamedAside": true,
+    "optionalRuntimeRestored": true,
+    "asideAbsent": true,
+    "command": "node port/v2/tools/check-profile.mjs --profile=develop"
+  },
+  "product": "f8ff0413ec34914048e43e3f7ffa52efac99a451",
+  "testsPassed": 6026,
+  "expectedFail": 2,
+  "skipped": 3,
+  "red": 0,
+  "retry": false,
+  "allPairs": "HOLD"
+}

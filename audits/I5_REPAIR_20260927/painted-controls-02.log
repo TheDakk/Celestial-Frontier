@@ -1,0 +1,13 @@
+✔ mixed broker/painted rows admit only against their actual independent inventories (0.936792ms)
+✔ resource sums preserve broker evidence and include data URLs, masks and archetypes (1.302542ms)
+✔ actual browser expression retains a painted row without laundering its broker indices (0.777334ms)
+✔ the retained calibration miss is refused; only matched painted ownership repairs that miss (1.407709ms)
+✔ full classifier accepts a mixed-owner ready carrier and rejects wrong-owner forgery (21.244583ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 156.977625

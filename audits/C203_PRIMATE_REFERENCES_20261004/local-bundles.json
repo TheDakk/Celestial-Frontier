@@ -1,0 +1,105 @@
+{
+  "schema": "cf.c203-local-bundles/v1",
+  "status": "LOCAL_ONLY_NOT_DELIVERED",
+  "supersedesDeliveryFileInclusion": {
+    "path": "delivery.json",
+    "sha256": "fb8e96e4e0f71c3aa47a53c9701df12bd93dd11c93a7385fd7016c316bbdfd37"
+  },
+  "bundles": [
+    {
+      "path": "01-gorilla-arm-segments/rolling-gain-025-01.bundle.mjs",
+      "bytes": 623211,
+      "sha256": "134f7b6d03e37a9bcab8570128fe35d8b48ccc40614910c9f8be1f5fe84547bc"
+    },
+    {
+      "path": "01-gorilla-arm-segments/rolling-gain-05-01.bundle.mjs",
+      "bytes": 623211,
+      "sha256": "134f7b6d03e37a9bcab8570128fe35d8b48ccc40614910c9f8be1f5fe84547bc"
+    },
+    {
+      "path": "01-gorilla-arm-segments/source-only-01.bundle.mjs",
+      "bytes": 622816,
+      "sha256": "1daa41bbda793ca9ecf466120bcb007e3af66068f09a1e54a109ee58ea2d745b"
+    },
+    {
+      "path": "01-gorilla-arm-segments/support-01.bundle.mjs",
+      "bytes": 622094,
+      "sha256": "c9b328a63ea9f63aad687448922e2dc14fe9048b0dc0b4bc12b7d2afd6bbf3c1"
+    },
+    {
+      "path": "01-gorilla-arm-segments/support-02.bundle.mjs",
+      "bytes": 622079,
+      "sha256": "11c920f048e4e2e7c272e1f89d0e512b933d6c736d94ca24c4699d08b0022711"
+    },
+    {
+      "path": "01-gorilla-arm-segments/support-03.bundle.mjs",
+      "bytes": 622816,
+      "sha256": "1daa41bbda793ca9ecf466120bcb007e3af66068f09a1e54a109ee58ea2d745b"
+    },
+    {
+      "path": "01-gorilla-arm-segments/whole-gain-025-01.bundle.mjs",
+      "bytes": 623099,
+      "sha256": "69df276c8a6da2f8fa94cd76be7148d234f52a299f7da2ceecfddfc4729ad41c"
+    },
+    {
+      "path": "02-howler-arm-segments/rolling-gain-025-01.bundle.mjs",
+      "bytes": 623211,
+      "sha256": "134f7b6d03e37a9bcab8570128fe35d8b48ccc40614910c9f8be1f5fe84547bc"
+    },
+    {
+      "path": "02-howler-arm-segments/rolling-gain-05-01.bundle.mjs",
+      "bytes": 623211,
+      "sha256": "134f7b6d03e37a9bcab8570128fe35d8b48ccc40614910c9f8be1f5fe84547bc"
+    },
+    {
+      "path": "02-howler-arm-segments/support-01.bundle.mjs",
+      "bytes": 622816,
+      "sha256": "1daa41bbda793ca9ecf466120bcb007e3af66068f09a1e54a109ee58ea2d745b"
+    },
+    {
+      "path": "03-gorilla-observed-joins/dense-01.bundle.mjs",
+      "bytes": 1285450,
+      "sha256": "61a8fa144723fe39c72a07c4a38bd68d02d77238ead450bcc9cc818cbdcd4f3f"
+    },
+    {
+      "path": "03-gorilla-observed-joins/hinge-01.bundle.mjs",
+      "bytes": 628744,
+      "sha256": "581fe7ff07ebec2ca7546b322f1ea0d4ab38c61a62c0f5b2dd84e81f702957a1"
+    },
+    {
+      "path": "03-gorilla-observed-joins/hinge-joins-01.bundle.mjs",
+      "bytes": 640953,
+      "sha256": "c75d494daf56fd59bb872b9f77682d06ba99029f41f2d53c45628faaaf9f0158"
+    },
+    {
+      "path": "03-gorilla-observed-joins/support-01.bundle.mjs",
+      "bytes": 623211,
+      "sha256": "134f7b6d03e37a9bcab8570128fe35d8b48ccc40614910c9f8be1f5fe84547bc"
+    },
+    {
+      "path": "04-howler-observed-joins/dense-01.bundle.mjs",
+      "bytes": 1285450,
+      "sha256": "61a8fa144723fe39c72a07c4a38bd68d02d77238ead450bcc9cc818cbdcd4f3f"
+    },
+    {
+      "path": "04-howler-observed-joins/dense-02.bundle.mjs",
+      "bytes": 1285698,
+      "sha256": "98c446575d586312cff3b9bdb1587c46cce0a17ebdd00c5e94bc8aec04a5f508"
+    },
+    {
+      "path": "04-howler-observed-joins/hinge-01.bundle.mjs",
+      "bytes": 628744,
+      "sha256": "581fe7ff07ebec2ca7546b322f1ea0d4ab38c61a62c0f5b2dd84e81f702957a1"
+    },
+    {
+      "path": "04-howler-observed-joins/support-01.bundle.mjs",
+      "bytes": 623211,
+      "sha256": "134f7b6d03e37a9bcab8570128fe35d8b48ccc40614910c9f8be1f5fe84547bc"
+    }
+  ],
+  "fileCount": 18,
+  "bytes": 13230025,
+  "reproduction": "Retained audit runner source and adjacent execution receipts bind each executable and its exact execution inputs. Regeneration must use matching inputs/toolchain; historical executable byte equivalence is not assumed from current source.",
+  "personalHomePathsFound": 0,
+  "reason": "Compiled executables remain local, including bundled generic absolute-path documentation examples; all source and result evidence stays deliverable."
+}

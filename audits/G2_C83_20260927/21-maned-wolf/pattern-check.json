@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Maned Wolf",
+  "masterSha256": "ad48fb7d33b66127c7bd96a4374c609072bc1222f6e2d54e089283ac9c5e5688",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

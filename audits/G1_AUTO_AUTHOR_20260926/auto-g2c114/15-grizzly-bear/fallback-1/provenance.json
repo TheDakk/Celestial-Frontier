@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "15-grizzly-bear",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "de82656051c6600c1c233b81a6b8f91566d4fd6db79bdf4441e53a234ab2b63d",
+ "subjectSourceSha256": "fc0cd7aaa941ca804c148a349f36c24f267847bdf8cff4a179404a411dcb0d0c",
+ "identity": {
+  "name": "Grizzly Bear",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Grizzly Bear\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2612434658\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 2612434658,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "738d991892404fbab5da926013e6864a2a9ee687d91d59a50cd40c003bcd260b",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "bear",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "dc168bf7eefdb33399c3400982f888a515b8d65c58ffb8fc163223f39c6570ea",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group bear (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0179,
+     "class": "top",
+     "attach": {
+      "x": 248,
+      "y": 132,
+      "relX": 0.66,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0279,
+     "class": "limb-down",
+     "attach": {
+      "x": 321,
+      "y": 172.5,
+      "relX": 1,
+      "relY": 0.38
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.083,
+     "class": "limb-down",
+     "attach": {
+      "x": 113.7,
+      "y": 218.8,
+      "relX": 0.03,
+      "relY": 0.83
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0598,
+     "class": "limb-down",
+     "attach": {
+      "x": 274.6,
+      "y": 227.6,
+      "relX": 0.79,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0609,
+     "class": "limb-down",
+     "attach": {
+      "x": 228.1,
+      "y": 231.9,
+      "relX": 0.57,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0533,
+     "class": "limb-down",
+     "attach": {
+      "x": 163.5,
+      "y": 237,
+      "relX": 0.26,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

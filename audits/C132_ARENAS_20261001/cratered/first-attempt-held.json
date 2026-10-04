@@ -1,0 +1,11 @@
+{
+  "status": "HELD_SUPERSEDED_FIRST_ATTEMPT",
+  "qualityAccepted": false,
+  "allOriginalsPreserved": true,
+  "upscaled": false,
+  "findings": [
+    "FAR invents celestial bodies absent from unbound system card",
+    "NEAR includes visible faint pseudo-lettering"
+  ],
+  "successor": "cratered-v2"
+}

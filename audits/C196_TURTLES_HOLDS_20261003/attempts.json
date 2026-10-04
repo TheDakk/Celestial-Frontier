@@ -1,0 +1,182 @@
+{
+  "schema": "cf.c196-turtle-serval-attempts/v1",
+  "attempts": [
+    {
+      "fit": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/fit01",
+      "report": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/static-01.json",
+      "reportSha256": "8ac43204c3e17481dbab2a09257ff17bea27d8d39b3410709fd94946cffc59af",
+      "status": "RED",
+      "passingActions": 6,
+      "actionCount": 19,
+      "successfulActionSamples": 898,
+      "attemptedActionSamples": 911,
+      "presentation": {
+        "status": "RED",
+        "samples": 318,
+        "attemptedSamples": 319
+      },
+      "refusedActions": [
+        {
+          "id": "approach:walk",
+          "ms": 43.166666666666664,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "approach:trot",
+          "ms": 30.833333333333332,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "approach:gallop",
+          "ms": 111,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "approach:hop",
+          "ms": 67.83333333333333,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "melee:bite",
+          "ms": 165.33333333333334,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "melee:claw",
+          "ms": 165.33333333333334,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "melee:gore",
+          "ms": 165.33333333333334,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "melee:tail",
+          "ms": 75.77777777777777,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "melee:headbutt",
+          "ms": 165.33333333333334,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "cast",
+          "ms": 62,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "dodge",
+          "ms": 15,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "victory",
+          "ms": 15.333333333333334,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        },
+        {
+          "id": "melee:kick",
+          "ms": 75.77777777777777,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "fit": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/fit01",
+      "report": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/static-01.json",
+      "reportSha256": "0eb194ae8415ed96f8698b4928a2c446e7d192c2e1b9d71326789ef4c9411fc4",
+      "status": "RED",
+      "passingActions": 18,
+      "actionCount": 19,
+      "successfulActionSamples": 2210,
+      "attemptedActionSamples": 2211,
+      "presentation": {
+        "status": "RED",
+        "samples": 646,
+        "attemptedSamples": 647
+      },
+      "refusedActions": [
+        {
+          "id": "melee:claw",
+          "ms": 220.44444444444443,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 6"
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "fit": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01",
+      "report": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/static-01.json",
+      "reportSha256": "77fd67e49353cc16bc3f0c5d217288a55e9a0c7eb7768762850f80fdaa2b9595",
+      "status": "PASS_STATIC",
+      "passingActions": 19,
+      "actionCount": 19,
+      "successfulActionSamples": 2299,
+      "attemptedActionSamples": 2299,
+      "presentation": {
+        "status": "PASS",
+        "samples": 1492,
+        "attemptedSamples": 1492
+      },
+      "refusedActions": [],
+      "qualityAccepted": false
+    },
+    {
+      "fit": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/fit01",
+      "report": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/static-01.json",
+      "reportSha256": "b31d0e0219280e9d7470cd3b840504fda4c4b391323844e832970958ca550f9c",
+      "status": "PASS_STATIC",
+      "passingActions": 19,
+      "actionCount": 19,
+      "successfulActionSamples": 2299,
+      "attemptedActionSamples": 2299,
+      "presentation": {
+        "status": "PASS",
+        "samples": 1710,
+        "attemptedSamples": 1710
+      },
+      "refusedActions": [],
+      "qualityAccepted": false
+    },
+    {
+      "fit": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/fit",
+      "report": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/islands-01/static.json",
+      "reportSha256": "e8c1b545468b722c1a9564c5cbd886635da9861183a2a7c3411df5bc1494b393",
+      "status": "PASS_STATIC",
+      "passingActions": 19,
+      "actionCount": 19,
+      "successfulActionSamples": 2299,
+      "attemptedActionSamples": 2299,
+      "presentation": {
+        "status": "PASS",
+        "samples": 1710,
+        "attemptedSamples": 1710
+      },
+      "refusedActions": [],
+      "qualityAccepted": false
+    },
+    {
+      "fit": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit",
+      "report": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/static.json",
+      "reportSha256": "3191e1f1f7beaa18d6b4e2e7b54691339ee3f4d9d9d83f090b697f4b8c3613b8",
+      "status": "PASS_STATIC",
+      "passingActions": 19,
+      "actionCount": 19,
+      "successfulActionSamples": 2299,
+      "attemptedActionSamples": 2299,
+      "presentation": {
+        "status": "PASS",
+        "samples": 1710,
+        "attemptedSamples": 1710
+      },
+      "refusedActions": [],
+      "qualityAccepted": false
+    }
+  ],
+  "instrumentRefusal": "near-shin-verifier-first-refusal.json",
+  "allAttemptsRetained": true,
+  "native": false
+}

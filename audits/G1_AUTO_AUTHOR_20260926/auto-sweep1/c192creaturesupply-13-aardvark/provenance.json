@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c192creaturesupply-13-aardvark",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "c1ce128614ecea72959cbc9afd3b5397d8d2c93973354ccc945432aaa63a30a3",
+ "subjectSourceSha256": "d0bc07be35d69e7846ba2992173be920368c1de2748ebc6d44dd2c0000e4141a",
+ "identity": {
+  "name": "Aardvark",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Aardvark\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3583776530\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "seed": 3583776530,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "05-cat-v2",
+  "authoringSha256": "ec9cf490284487f4628222fe7c84c8a82f76645988ca20daf5f21701ed0888da",
+  "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4"
+ },
+ "habitat": {
+  "profileId": "aardvark",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "26f75876b17aef1b4fd0d29406fb69b7d60494e3b2f59ce67577422ace4062e7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group aardvark (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2009,
+     "class": "front",
+     "attach": {
+      "x": 293,
+      "y": 195,
+      "relX": 1.01,
+      "relY": 0.65
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0051,
+     "class": "top",
+     "attach": {
+      "x": 209,
+      "y": 127,
+      "relX": 0.47,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1109,
+     "class": "limb-down",
+     "attach": {
+      "x": 137,
+      "y": 196,
+      "relX": 0.01,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1296,
+     "class": "limb-down",
+     "attach": {
+      "x": 180,
+      "y": 218,
+      "relX": 0.28,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.043,
+     "class": "limb-down",
+     "attach": {
+      "x": 233.6,
+      "y": 230.9,
+      "relX": 0.63,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0629,
+     "class": "limb-down",
+     "attach": {
+      "x": 268.5,
+      "y": 232,
+      "relX": 0.85,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "05-cat-v2",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

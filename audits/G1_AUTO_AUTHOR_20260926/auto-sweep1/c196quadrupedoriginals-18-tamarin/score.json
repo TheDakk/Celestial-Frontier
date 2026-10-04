@@ -1,0 +1,10 @@
+{
+ "id": "c196quadrupedoriginals-18-tamarin",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: quadruped matches clearly better (0.0143 < 0.0205)",
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+ ],
+ "semanticPresence": null
+}

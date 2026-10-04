@@ -1,0 +1,8 @@
+{
+ "id": "fruit-bat",
+ "family": "flyer-membrane",
+ "verdict": "REFUSE",
+ "reasons": [
+  "no-reference: no other hand-authored subject of family flyer-membrane"
+ ]
+}

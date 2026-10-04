@@ -1,0 +1,13 @@
+{
+  "id": "09-bustard",
+  "name": "Bustard",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f611d274-6509-47b7-b595-33fb81d08400.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4d5eee331fab3ab49740ed692f51a36b0006df5f145b1b7c46cab2e62acca7d4",
+  "bytes": 1221240,
+  "promptSha256": "e373801756034ecb0a2f90928d01cb8911e8929df70115ffe37b41cc8e094b3d",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

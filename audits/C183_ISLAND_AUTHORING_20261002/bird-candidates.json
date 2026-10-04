@@ -1,0 +1,34 @@
+{
+  "schema": "cf.c183-bird-candidates/v1",
+  "rows": [
+    {
+      "id": "10-grouse",
+      "packet": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/candidate",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01",
+      "originalPacket": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/original",
+      "originalFit": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/baseline-fit"
+    },
+    {
+      "id": "20-hornbill",
+      "packet": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/candidate",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01",
+      "originalPacket": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/original",
+      "originalFit": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/baseline-fit"
+    },
+    {
+      "id": "21-parrot",
+      "packet": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01",
+      "originalPacket": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/original",
+      "originalFit": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/baseline-fit"
+    },
+    {
+      "id": "24-weaverbird",
+      "packet": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate",
+      "fit": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01",
+      "originalPacket": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/original",
+      "originalFit": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/baseline-fit"
+    }
+  ],
+  "nativeAcceptance": false
+}

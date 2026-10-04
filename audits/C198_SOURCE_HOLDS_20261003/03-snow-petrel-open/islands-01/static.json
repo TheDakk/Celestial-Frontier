@@ -1,0 +1,297 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "5e485e2067042fa7845a09d192909e9ccae6e3e8",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.001304638103593715,
+      "maxGapPx": 0.00008182178635892242,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.001304638103593715,
+      "maxGapPx": 0.00008648533306396582,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:walk",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.003977398209754241,
+      "maxGapPx": 0.00008182178628339301,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:flight",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00008648533306396582,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:peck",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0672150097288075,
+      "maxGapPx": 0.00008182178628339301,
+      "maxEndpointError": 3.1401849173675503e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:claw",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0672150097288075,
+      "maxGapPx": 0.00008648533314435456,
+      "maxEndpointError": 3.1401849173675503e-16,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.07533092665101199,
+      "maxGapPx": 0.00008182178635892242,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.2084595086037401,
+      "maxGapPx": 0.00008648533322474329,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.007994119011723491,
+      "maxGapPx": 0.00008648533306396582,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00911942901606713,
+      "maxGapPx": 0.00008648533314435456,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0672150097288075,
+      "maxGapPx": 0.0000818217864533342,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.03503938886114419,
+      "maxGapPx": 0.00008648533322474329,
+      "maxEndpointError": 3.7238012298709097e-16,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.006410231776136488,
+      "maxGapPx": 0.00007687585192503692,
+      "maxEndpointError": 3.376611507232129e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:kick",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00008182178636836362,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "531c638e513e5d4329ec65ac13a450360a0966d07e1cea533c4b4b917bbe414f",
+  "bindingHash": "22bdfba281f9bb88df24363ba78a83c59e19752143f0b63819803b19c8d77f50",
+  "family": "biped-bird",
+  "contacts": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "realm": "land",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:walk",
+    "approach:flight",
+    "melee:peck",
+    "melee:claw",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed",
+    "melee:kick"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 1086,
+    "attemptedSamples": 1086,
+    "status": "PASS",
+    "maxPaintDriftPx": 0.07132219046673821,
+    "maxGapPx": 0.00008648533330513203,
+    "maxEndpointError": 4.0029660424867215e-16,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4673.4361992403865
+      },
+      {
+        "id": "alert",
+        "startMs": 4673.4361992403865,
+        "endMs": 5365.4361992403865
+      },
+      {
+        "id": "approach:walk",
+        "startMs": 5365.4361992403865,
+        "endMs": 6257.4361992403865
+      },
+      {
+        "id": "approach:flight",
+        "startMs": 6257.4361992403865,
+        "endMs": 7149.4361992403865
+      },
+      {
+        "id": "melee:peck",
+        "startMs": 7149.4361992403865,
+        "endMs": 8128.1028659070535
+      },
+      {
+        "id": "melee:claw",
+        "startMs": 8128.1028659070535,
+        "endMs": 9106.76953257372
+      },
+      {
+        "id": "cast",
+        "startMs": 9106.76953257372,
+        "endMs": 10188.76953257372
+      },
+      {
+        "id": "hit",
+        "startMs": 10188.76953257372,
+        "endMs": 11110.76953257372
+      },
+      {
+        "id": "dodge",
+        "startMs": 11110.76953257372,
+        "endMs": 11862.76953257372
+      },
+      {
+        "id": "faint",
+        "startMs": 11862.76953257372,
+        "endMs": 12854.76953257372
+      },
+      {
+        "id": "victory",
+        "startMs": 12854.76953257372,
+        "endMs": 13926.76953257372
+      },
+      {
+        "id": "tame",
+        "startMs": 13926.76953257372,
+        "endMs": 15038.76953257372
+      },
+      {
+        "id": "feed",
+        "startMs": 15038.76953257372,
+        "endMs": 16090.76953257372
+      },
+      {
+        "id": "melee:kick",
+        "startMs": 16090.76953257372,
+        "endMs": 17069.436199240386
+      }
+    ],
+    "durationMs": 18069.436199240386
+  },
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/record.json",
+      "sha256": "403e38de0492bdbb373c7e6bd73bfcf4d74f0ef7e8c75dde27fe3e53dff926ef",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/binding.json",
+      "sha256": "4a5a409b64638eb1eefe85e51a97b0f9858ad07ad1782c7dde180bb7178c462c",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/manifest.json",
+      "sha256": "c2e9a7df8e261936d5d731dec7b9e41e1afb5e378054145594318ea954dc9d1f",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/atlas/c192-islands-03-snow-petrel-open.png",
+      "sha256": "9aa7eebf7b2cf2c249e4771318d087fba86e42f4ef7eb0952eb31122d559ca8d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/keyed.png",
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6",
+      "unchanged": true
+    }
+  ]
+}

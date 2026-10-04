@@ -1,0 +1,68 @@
+{
+  "name": "Softshell Turtle",
+  "family": "quadruped",
+  "species": {
+    "name": "Softshell Turtle",
+    "aspect": 1.8,
+    "headFrac": 0.3,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "flat leathery pancake shell with no scutes",
+      "tubular snorkel snout",
+      "broad fully webbed paddle feet"
+    ]
+  },
+  "genome": {
+    "seed": 2801702982,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 17,
+    "body": 4,
+    "loco": 7,
+    "trait": 8,
+    "size": 4,
+    "diet": 0,
+    "head": 2,
+    "limbs": 4,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 3,
+    "habitat": 4,
+    "detail": 7,
+    "accent": 13,
+    "temper": 5,
+    "sense": 0,
+    "repro": 7,
+    "life": 3,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Softshell Turtle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Softshell Turtle\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2801702982\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "index": 186,
+  "profile": {
+    "id": "freshwater-turtle",
+    "names": [
+      "Pond Turtle",
+      "Snapping Turtle",
+      "Softshell Turtle",
+      "Turtle"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": ""
+  }
+}

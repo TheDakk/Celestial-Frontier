@@ -1,0 +1,139 @@
+{
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/FISH_FOLD_C80_20260927/inputs/paddlefish",
+  "sourceRecordSha256": "eefcd1236915abe1d56c653ce18cbaf774c174ab27ced42ce9c43267376c518f",
+  "sourceLabelsSha256": "ce958c496e76a1da6f6c9e7f8b72164f811d9b607080c191502a0e99f9f1669f",
+  "newLabelsSha256": "0cf649468b3c9c71452f4dffb89bb9fb7dbec046bdf0759c27dccf9b0ab5cba0",
+  "newDecodedLabelsSha256": "ce958c496e76a1da6f6c9e7f8b72164f811d9b607080c191502a0e99f9f1669f",
+  "sourceMasterSha256": "d523000757f946be13ce5e2d38cb77f2046bc576ff4b304081c4f48e69773b33",
+  "helperSha256": "a73140ee3f90e5a26b4f23acb6dcd7b0b973020105b2b5fc83340113609315ad",
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "tail-peduncle",
+    "tailOwner": 6,
+    "stalkOwner": 8,
+    "sharedEdges": 97
+  },
+  "tailIdentityHelperSha256": "27b63227ed5f3fdb8079f74b54ccefc0335432f8b1c12bf483a07eec3ef0b529",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "mode": "tail",
+    "moved": 0,
+    "phases": [
+      {
+        "phase": "tail",
+        "changedPixels": 0,
+        "reason": "No connected remainder-to-tail gap",
+        "components": []
+      }
+    ],
+    "originalPartsDifferentChannels": 0,
+    "keyedRgbaSha256": "34fce5716c10c4f56c54917bd487a1dc23cb94fb59657dcac6d70935b11ec30f",
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false
+  },
+  "intake": {
+    "id": "paddlefish-tail-02",
+    "parts": 13,
+    "atlasSize": {
+      "width": 1981,
+      "height": 374
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "64f5ed96b11c44830fa06a5ec818f69b7c89d03f2aed54b3c2c470728fce11c1",
+    "sourceVertices": 868,
+    "vertices": 1124,
+    "sharedSupports": 202,
+    "pins": 527,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 6,
+    "excludedOverlaps": 12,
+    "observedExcludedBoundaries": 12,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 12,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "joins": [
+    {
+      "name": "body--front-body",
+      "sourceEdges": 346
+    },
+    {
+      "name": "front-body--mid-body",
+      "sourceEdges": 134
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 493
+    },
+    {
+      "name": "mid-body--pelvic-body",
+      "sourceEdges": 247
+    },
+    {
+      "name": "root--body",
+      "sourceEdges": 54
+    },
+    {
+      "name": "tail-peduncle--caudal",
+      "sourceEdges": 97
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body|dorsal",
+      "sourceEdges": 14
+    },
+    {
+      "name": "body|far-pectoral",
+      "sourceEdges": 107
+    },
+    {
+      "name": "body|head",
+      "sourceEdges": 129
+    },
+    {
+      "name": "body|mid-body",
+      "sourceEdges": 172
+    },
+    {
+      "name": "body|near-pectoral",
+      "sourceEdges": 76
+    },
+    {
+      "name": "body|pelvic-body",
+      "sourceEdges": 159
+    },
+    {
+      "name": "body|rear-body",
+      "sourceEdges": 352
+    },
+    {
+      "name": "body|tail-peduncle",
+      "sourceEdges": 196
+    },
+    {
+      "name": "dorsal|rear-body",
+      "sourceEdges": 73
+    },
+    {
+      "name": "dorsal|tail-peduncle",
+      "sourceEdges": 43
+    },
+    {
+      "name": "far-pectoral|near-pectoral",
+      "sourceEdges": 72
+    },
+    {
+      "name": "front-body|near-pectoral",
+      "sourceEdges": 112
+    }
+  ]
+}

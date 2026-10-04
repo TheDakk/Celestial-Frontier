@@ -1,0 +1,14 @@
+{
+  "id": "14-chamois",
+  "name": "Chamois",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-b2c28f8f-e1f7-4f12-8ef1-601ef10d9e45.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "33745921fcd0a61a8e6937bd97d67d296b0dc21d3d0689b1117aae85df178f9c",
+  "bytes": 1280813,
+  "promptSha256": "5daefa2bfb973b63421e8fcee09cef1aaaeb04a5669a130b5a7624516bca11d0",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

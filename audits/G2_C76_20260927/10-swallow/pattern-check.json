@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Swallow",
+  "masterSha256": "d1820c49417bd2e94fe01bc47f0a99d986253d2e2a8cd8b45df7cba447a72db5",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

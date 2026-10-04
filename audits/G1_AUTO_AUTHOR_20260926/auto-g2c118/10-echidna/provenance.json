@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "10-echidna",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "19149a2e4f819a335e90fde151afd21391e59f4734be6b2927f32132f35c4e8b",
+ "subjectSourceSha256": "ab5b4987aa9f91ad4b1d275bdfa057d11108e13c8eb03443bcc89f661026a009",
+ "identity": {
+  "name": "Echidna",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Echidna\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1426117023\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 1426117023,
+  "checks": [
+   "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "toothless-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "14a690a1601dd3f34c4c01ca40bcc1f9c2a6eab7e4a3971937f19f4d0ff5c1c9",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group toothless-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0143,
+     "class": "top",
+     "attach": {
+      "x": 205.5,
+      "y": 134,
+      "relX": 0.5,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0532,
+     "class": "limb-down",
+     "attach": {
+      "x": 303,
+      "y": 211,
+      "relX": 1.01,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0468,
+     "class": "limb-down",
+     "attach": {
+      "x": 107,
+      "y": 220.5,
+      "relX": -0.01,
+      "relY": 0.72
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0861,
+     "class": "limb-down",
+     "attach": {
+      "x": 255.3,
+      "y": 253.8,
+      "relX": 0.76,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0442,
+     "class": "limb-down",
+     "attach": {
+      "x": 135.5,
+      "y": 253,
+      "relX": 0.14,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.028,
+     "class": "limb-down",
+     "attach": {
+      "x": 177.5,
+      "y": 253,
+      "relX": 0.36,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 5
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

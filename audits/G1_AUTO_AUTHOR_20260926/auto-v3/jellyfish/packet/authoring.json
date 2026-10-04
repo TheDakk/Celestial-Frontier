@@ -1,0 +1,489 @@
+{
+  "id": "jellyfish",
+  "family": "radial",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile cnidarian media water"
+  },
+  "landmarksPx": {
+    "root": [
+      589,
+      201.4
+    ],
+    "centre": [
+      617.8,
+      241
+    ],
+    "bell": [
+      616.5,
+      348.5
+    ],
+    "arm0Seg0": [
+      624.5,
+      362.6
+    ],
+    "arm0Seg1": [
+      644.6,
+      114
+    ],
+    "arm0Seg2": [
+      616.2,
+      83.5
+    ],
+    "arm1Seg0": [
+      346.5,
+      390.5
+    ],
+    "arm1Seg1": [
+      303.5,
+      596.5
+    ],
+    "arm1Seg2": [
+      240.8,
+      582.7
+    ],
+    "arm2Seg0": [
+      740.9,
+      225.1
+    ],
+    "arm2Seg1": [
+      817.5,
+      766.5
+    ],
+    "arm2Seg2": [
+      821.5,
+      1066.5
+    ],
+    "arm3Seg0": [
+      496.5,
+      299.1
+    ],
+    "arm3Seg1": [
+      408.5,
+      896.5
+    ],
+    "arm3Seg2": [
+      407.5,
+      1053.5
+    ],
+    "arm4Seg0": [
+      888.4,
+      445.4
+    ],
+    "arm4Seg1": [
+      923.5,
+      525.5
+    ],
+    "arm4Seg2": [
+      965.1,
+      571.8
+    ]
+  },
+  "groundLineY": 0.999,
+  "materials": {
+    "surface": "soft skin"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "central-disc-upper",
+      "joint": "bell",
+      "layer": "near",
+      "polygonPx": [
+        [
+          439.4,
+          380.6
+        ],
+        [
+          760.1,
+          358.1
+        ],
+        [
+          807.6,
+          347
+        ],
+        [
+          715.6,
+          281.8
+        ],
+        [
+          614.7,
+          257
+        ],
+        [
+          479.8,
+          313.5
+        ]
+      ]
+    },
+    {
+      "id": "arm0-base",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          914.5,
+          320.2
+        ],
+        [
+          887.5,
+          402.6
+        ],
+        [
+          337.7,
+          424.5
+        ],
+        [
+          316.6,
+          342.3
+        ]
+      ]
+    },
+    {
+      "id": "arm0-middle",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          939.5,
+          353.2
+        ],
+        [
+          914.5,
+          320.2
+        ],
+        [
+          316.6,
+          342.3
+        ],
+        [
+          309.3,
+          319.1
+        ]
+      ]
+    },
+    {
+      "id": "arm0-tip",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          223.5,
+          373.3
+        ],
+        [
+          1016,
+          364.2
+        ],
+        [
+          939.5,
+          353.2
+        ],
+        [
+          309.3,
+          319.1
+        ]
+      ]
+    },
+    {
+      "id": "arm4-base",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          890.8,
+          1124.9
+        ],
+        [
+          864.8,
+          1243
+        ],
+        [
+          813.8,
+          385.4
+        ],
+        [
+          887.5,
+          402.6
+        ],
+        [
+          913.3,
+          370.8
+        ]
+      ]
+    },
+    {
+      "id": "arm4-middle",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          963.3,
+          853.8
+        ],
+        [
+          890.8,
+          1124.9
+        ],
+        [
+          913.3,
+          370.8
+        ],
+        [
+          914.9,
+          311.6
+        ]
+      ]
+    },
+    {
+      "id": "arm4-tip",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1016,
+          364.2
+        ],
+        [
+          963.3,
+          853.8
+        ],
+        [
+          914.9,
+          311.6
+        ]
+      ]
+    },
+    {
+      "id": "arm2-base",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          634,
+          1133.7
+        ],
+        [
+          632.1,
+          474.4
+        ],
+        [
+          813.8,
+          385.4
+        ],
+        [
+          814.9,
+          610.5
+        ]
+      ]
+    },
+    {
+      "id": "arm2-middle",
+      "joint": "arm2Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          626.3,
+          1350.3
+        ],
+        [
+          634,
+          1133.7
+        ],
+        [
+          814.9,
+          610.5
+        ],
+        [
+          864.7,
+          934.6
+        ]
+      ]
+    },
+    {
+      "id": "arm2-tip",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          864.8,
+          1243
+        ],
+        [
+          618.8,
+          1396
+        ],
+        [
+          626.3,
+          1350.3
+        ],
+        [
+          864.7,
+          934.6
+        ]
+      ]
+    },
+    {
+      "id": "arm3-base",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          382.3,
+          695.9
+        ],
+        [
+          387,
+          494.3
+        ],
+        [
+          632.1,
+          474.4
+        ],
+        [
+          635,
+          1187.4
+        ]
+      ]
+    },
+    {
+      "id": "arm3-middle",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          618.8,
+          1396
+        ],
+        [
+          594,
+          1392.9
+        ],
+        [
+          371.6,
+          998.4
+        ],
+        [
+          382.3,
+          695.9
+        ],
+        [
+          635,
+          1187.4
+        ]
+      ]
+    },
+    {
+      "id": "arm3-tip",
+      "joint": "arm3Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          594,
+          1392.9
+        ],
+        [
+          367,
+          1337.5
+        ],
+        [
+          371.6,
+          998.4
+        ]
+      ]
+    },
+    {
+      "id": "arm1-base",
+      "joint": "arm1Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          315,
+          349
+        ],
+        [
+          337.7,
+          424.5
+        ],
+        [
+          387,
+          494.3
+        ],
+        [
+          372.7,
+          1000.7
+        ]
+      ]
+    },
+    {
+      "id": "arm1-middle",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          367,
+          1337.5
+        ],
+        [
+          307.5,
+          1108.1
+        ],
+        [
+          327.4,
+          293.9
+        ],
+        [
+          315,
+          349
+        ],
+        [
+          372.7,
+          1000.7
+        ]
+      ]
+    },
+    {
+      "id": "arm1-tip",
+      "joint": "arm1Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          307.5,
+          1108.1
+        ],
+        [
+          223.5,
+          373.3
+        ],
+        [
+          327.4,
+          293.9
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          223.5,
+          373.3
+        ],
+        [
+          224,
+          372.6
+        ],
+        [
+          223.5,
+          373.9
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "G1 automatic authoring: landmarks = median of 1 registered references; parts from starfish. No hidden/folded inference; absent only by visible-paint evidence.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic"
+  }
+}

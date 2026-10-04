@@ -1,0 +1,73 @@
+{
+  "scope": "Native codec resource diagnostic, not certification",
+  "rows": [
+    {
+      "name": "old",
+      "count": 1,
+      "heap": {
+        "usedSize": 497760,
+        "totalSize": 1048576,
+        "embedderHeapUsedSize": 307096,
+        "backingStorageSize": 9084
+      }
+    },
+    {
+      "name": "old",
+      "count": 16,
+      "heap": {
+        "usedSize": 544400,
+        "totalSize": 1310720,
+        "embedderHeapUsedSize": 309264,
+        "backingStorageSize": 9084
+      }
+    },
+    {
+      "name": "old",
+      "count": 32,
+      "heap": {
+        "usedSize": 544400,
+        "totalSize": 1310720,
+        "embedderHeapUsedSize": 309040,
+        "backingStorageSize": 9084
+      }
+    },
+    {
+      "name": "new",
+      "count": 1,
+      "heap": {
+        "usedSize": 495732,
+        "totalSize": 1048576,
+        "embedderHeapUsedSize": 306824,
+        "backingStorageSize": 9322
+      }
+    },
+    {
+      "name": "new",
+      "count": 16,
+      "heap": {
+        "usedSize": 545416,
+        "totalSize": 1310720,
+        "embedderHeapUsedSize": 308992,
+        "backingStorageSize": 9322
+      }
+    },
+    {
+      "name": "new",
+      "count": 32,
+      "heap": {
+        "usedSize": 546588,
+        "totalSize": 1310720,
+        "embedderHeapUsedSize": 308784,
+        "backingStorageSize": 9322
+      }
+    }
+  ],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/154.0.4258.37",
+    "revision": "@f6ddc7bb8d2ad05a6979ebc09b83893c2d128a62",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "js_version": "15.4.11.5",
+    "protocol_version": "1.3"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c173-helper-derivation/v1",
+  "source": "audits/C168_MEMBRANE_REFERENCES_20261002/verify-and-preview-v2.mjs",
+  "sourceSha256": "af5b9234129833b132eefe741c7a32d038c2863671cbf647a55e3f877bcae307",
+  "derived": "audits/C173_REFERENCE_CLASSES_20261002/verify-and-preview.mjs",
+  "derivedSha256": "8cbad08688ee7310457495a2fd8b995342c4b503fc0a65ece6343bca15201a29",
+  "changes": [
+    "audit directory/default packet only",
+    "receipt schema only"
+  ],
+  "unchanged": [
+    "D28 five percent cap",
+    "exact keyed RGBA and ownership replay",
+    "seven conservation controls"
+  ],
+  "nativeRuns": 0
+}

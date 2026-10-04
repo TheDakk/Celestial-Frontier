@@ -1,0 +1,13 @@
+{
+  "id": "15-moorhen",
+  "name": "Moorhen",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d09639d4-6cd2-4ab6-b869-f5f22127c6b1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "570ec9195a70b82471d97649653624906bc6be56374584631f683beb65116aed",
+  "bytes": 1123141,
+  "promptSha256": "72722d495850ca2cbb69ae647c1ecf18e13b4764526da61d64a150c8d889a05f",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

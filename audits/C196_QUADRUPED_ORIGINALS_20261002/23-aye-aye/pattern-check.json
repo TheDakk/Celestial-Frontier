@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Aye-Aye",
+  "masterSha256": "4c28ca14c18609dc3250747ae7ff413ecf9fb57a25b0f998b8488616e6505709",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

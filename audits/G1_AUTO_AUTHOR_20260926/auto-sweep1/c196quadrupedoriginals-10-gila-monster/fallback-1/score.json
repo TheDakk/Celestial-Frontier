@@ -1,0 +1,9 @@
+{
+ "id": "c196quadrupedoriginals-10-gila-monster",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 16.3% of the paint lies away from the body and in no part (reference 9.7%)"
+ ],
+ "semanticPresence": null
+}

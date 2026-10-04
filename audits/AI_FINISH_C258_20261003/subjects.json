@@ -1,0 +1,42 @@
+[
+ {
+  "id": "03-plover",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/03-plover/fit"
+ },
+ {
+  "id": "04-partridge",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/04-partridge/fallback-2/fit"
+ },
+ {
+  "id": "05-rooster",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/05-rooster/fit"
+ },
+ {
+  "id": "08-swallow",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/08-swallow/fit"
+ },
+ {
+  "id": "09-jay",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/09-jay/fit"
+ },
+ {
+  "id": "10-rhea",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/10-rhea/fit"
+ },
+ {
+  "id": "18-snapper",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/18-snapper/fit"
+ },
+ {
+  "id": "19-triggerfish",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/19-triggerfish/fit"
+ },
+ {
+  "id": "22-pufferfish",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/22-pufferfish/fit"
+ },
+ {
+  "id": "24-remora",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/24-remora/fit"
+ }
+]

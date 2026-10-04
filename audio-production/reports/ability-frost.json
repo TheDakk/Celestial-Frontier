@@ -1,0 +1,450 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "ability.frost.cast.1",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.3096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 55,
+      "requirements": [
+        "ability.frost.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/ability-frost/ability.frost.cast.1.wav",
+      "masterSha256": "aa6c512196358d7b8b7adce5c662ed197e0914182a84e9b2f8a7416b037d40d0",
+      "opus": "masters/ability-frost/ability.frost.cast.1.opus",
+      "opusSha256": "b593a4863ce462a390f2f982a71ffadf41e75ce54cf7393a973dfaabc3fc6fd1",
+      "previewSha256": "209733eaf9900996f3350c3e28fcd3334506b698c6745e822720cd49d4f0ea74",
+      "previewBytes": 29836,
+      "previewUrl": "/__cf-audio-review/ability.frost.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.2,
+      "opusDbTP": -9.1
+    },
+    {
+      "id": "ability.frost.cast.2",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.3096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/710db7451bb7857b-impactGlass_light_002.ogg",
+          "sha256": "710db7451bb7857b9140dfe6afe4621ea2188ad65eda3919c569d1bb285b933d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 56,
+      "requirements": [
+        "ability.frost.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1.3096,
+      "master": "masters/ability-frost/ability.frost.cast.2.wav",
+      "masterSha256": "211158a4f4ad53c49f9f9ed2785d53a2e1e01ce8f0b108f47d4a56a1d233169c",
+      "opus": "masters/ability-frost/ability.frost.cast.2.opus",
+      "opusSha256": "cf161771e20a5cfaf1c8f227ce99b8d7419acd49e5d4369074b108149fa0e827",
+      "previewSha256": "0a756cb36c829290a9109d2069baa74e993ecd5b9f9b1b6d8aaaab0b51dce6a1",
+      "previewBytes": 29836,
+      "previewUrl": "/__cf-audio-review/ability.frost.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.7,
+      "opusDbTP": -7.7
+    },
+    {
+      "id": "ability.frost.cast.3",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.3096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/765290ce32fa108c-impactGlass_light_003.ogg",
+          "sha256": "765290ce32fa108c939a0dbd6fbacbcd05abde622b57b708eb8a64058ef4225a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 57,
+      "requirements": [
+        "ability.frost.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 2.6192,
+      "master": "masters/ability-frost/ability.frost.cast.3.wav",
+      "masterSha256": "764eb652142655114c68b90dda1a280b4aa026ec8c4d7ad660410165f41455f5",
+      "opus": "masters/ability-frost/ability.frost.cast.3.opus",
+      "opusSha256": "74250d1e888c121ca360bda802d605d8406ea704342cb6808db674f57cd35574",
+      "previewSha256": "2f146fe26553f52e8cb16a0d672851da75ada6cee9658aec2130fb8dc262d1ec",
+      "previewBytes": 29836,
+      "previewUrl": "/__cf-audio-review/ability.frost.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.6,
+      "opusDbTP": -8.6
+    },
+    {
+      "id": "ability.frost.impact.1",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.3096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 43,
+      "requirements": [
+        "ability.frost.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 3.9288000000000003,
+      "master": "masters/ability-frost/ability.frost.impact.1.wav",
+      "masterSha256": "219067c6d6166378774e19920ea01ff4a7ce0b609d3b162eb5e8afc4f46315f8",
+      "opus": "masters/ability-frost/ability.frost.impact.1.opus",
+      "opusSha256": "2f67c83de4b972bdb7c048dc72648602d86d5bff844eb0230b74bfd55df07171",
+      "previewSha256": "9617bc4a661f843882be0617a3bcd004e93369685b23b34b1a63137800774f49",
+      "previewBytes": 29836,
+      "previewUrl": "/__cf-audio-review/ability.frost.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.2,
+      "opusDbTP": -9.1
+    },
+    {
+      "id": "ability.frost.impact.2",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.3096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/710db7451bb7857b-impactGlass_light_002.ogg",
+          "sha256": "710db7451bb7857b9140dfe6afe4621ea2188ad65eda3919c569d1bb285b933d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 44,
+      "requirements": [
+        "ability.frost.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 5.2384,
+      "master": "masters/ability-frost/ability.frost.impact.2.wav",
+      "masterSha256": "7d71a62beda4854aac0f088b538977d5e0cbce5e2a6ce6aa3a9bd6f91e67f0a1",
+      "opus": "masters/ability-frost/ability.frost.impact.2.opus",
+      "opusSha256": "5a85ac6ad009e9ac28b2df2b8c7f9081324a8d7328740847e0ef638021205755",
+      "previewSha256": "ce076ed8aebd7ac185686248adb790ac0a64b6e43edf6d31d30e6396204ea097",
+      "previewBytes": 29836,
+      "previewUrl": "/__cf-audio-review/ability.frost.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.7,
+      "opusDbTP": -7.7
+    },
+    {
+      "id": "ability.frost.impact.3",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.3096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/765290ce32fa108c-impactGlass_light_003.ogg",
+          "sha256": "765290ce32fa108c939a0dbd6fbacbcd05abde622b57b708eb8a64058ef4225a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 45,
+      "requirements": [
+        "ability.frost.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 6.548,
+      "master": "masters/ability-frost/ability.frost.impact.3.wav",
+      "masterSha256": "515f51bd0a48423651f3ac15dbaa132e90dd600ec408bbfa1a2d6b93b47b99e7",
+      "opus": "masters/ability-frost/ability.frost.impact.3.opus",
+      "opusSha256": "382ed8b7881d8de39387d98681a7da8569855aa8f8ef2767dec325fd36f0cca3",
+      "previewSha256": "b1e04ca6ef9f42a82daa438435ba37a7899992eee90e65282bbc169f0a4c7fbb",
+      "previewBytes": 29836,
+      "previewUrl": "/__cf-audio-review/ability.frost.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.6,
+      "opusDbTP": -8.6
+    },
+    {
+      "id": "ability.frost.sustain.1",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.2096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 43,
+      "requirements": [
+        "ability.frost.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 7.8576,
+      "master": "masters/ability-frost/ability.frost.sustain.1.wav",
+      "masterSha256": "84a68440a583ea6789d38acf12691c5124121ccea78cde8eb7dc2271e7d96eec",
+      "opus": "masters/ability-frost/ability.frost.sustain.1.opus",
+      "opusSha256": "9d207c6790c040ed4a68d31db6b139ebaf7cf8a7a488682c5059578ac8691fd5",
+      "previewSha256": "5bfbdd0fae085378b69f86fa2b8455b3e495f9548d7531cb8a1993ac20e6352e",
+      "previewBytes": 20236,
+      "previewUrl": "/__cf-audio-review/ability.frost.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.2,
+      "opusDbTP": -9.1
+    },
+    {
+      "id": "ability.frost.sustain.2",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.2096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/710db7451bb7857b-impactGlass_light_002.ogg",
+          "sha256": "710db7451bb7857b9140dfe6afe4621ea2188ad65eda3919c569d1bb285b933d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 44,
+      "requirements": [
+        "ability.frost.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 9.0672,
+      "master": "masters/ability-frost/ability.frost.sustain.2.wav",
+      "masterSha256": "fc656f7cfc42340b4f4f9c14048ad51456c770fb97fcde40fd34c404cefa0be3",
+      "opus": "masters/ability-frost/ability.frost.sustain.2.opus",
+      "opusSha256": "844daf651d31c20df9bf2b7ad2026e98ff8f003191abf3d73da0999e28bd0990",
+      "previewSha256": "3dbaf6677fd3136279ffa3844f02f3c3edcd7ebd15158f2c49938ec6b3d5f162",
+      "previewBytes": 20236,
+      "previewUrl": "/__cf-audio-review/ability.frost.sustain.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.7,
+      "opusDbTP": -7.7
+    },
+    {
+      "id": "ability.frost.sustain.3",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.2096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/765290ce32fa108c-impactGlass_light_003.ogg",
+          "sha256": "765290ce32fa108c939a0dbd6fbacbcd05abde622b57b708eb8a64058ef4225a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 45,
+      "requirements": [
+        "ability.frost.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 10.2768,
+      "master": "masters/ability-frost/ability.frost.sustain.3.wav",
+      "masterSha256": "63f71aaaca0bf8cb6b0a9c39baa8349fabf7970d1d2bbda140f6786c32295eb3",
+      "opus": "masters/ability-frost/ability.frost.sustain.3.opus",
+      "opusSha256": "496b4c4c85b144ee7795666aba3f30cda16fd0332be5bebf878963ea675835a7",
+      "previewSha256": "4e47d5db1df41702a59df392dec180a4ec81ce450ae19a69a74ff198bba58066",
+      "previewBytes": 20236,
+      "previewUrl": "/__cf-audio-review/ability.frost.sustain.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.6,
+      "opusDbTP": -8.6
+    },
+    {
+      "id": "ability.frost.release.1",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.3096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 43,
+      "requirements": [
+        "ability.frost.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 11.4864,
+      "master": "masters/ability-frost/ability.frost.release.1.wav",
+      "masterSha256": "407f0f4d78368a5745ea416229d90a58716cdf5d6174f92716dd944bd5fd5fe9",
+      "opus": "masters/ability-frost/ability.frost.release.1.opus",
+      "opusSha256": "0e9c2297cc1b6dfd9e0917f39fe276569eba69f94f386ca41b66c5e1cef78ae4",
+      "previewSha256": "daf9968fdaeb6fe2dd866ce3c250e763becad08ea408fb3f3ad10f373e654ece",
+      "previewBytes": 29836,
+      "previewUrl": "/__cf-audio-review/ability.frost.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.2,
+      "opusDbTP": -9.1
+    },
+    {
+      "id": "ability.frost.release.2",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.3096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/710db7451bb7857b-impactGlass_light_002.ogg",
+          "sha256": "710db7451bb7857b9140dfe6afe4621ea2188ad65eda3919c569d1bb285b933d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 44,
+      "requirements": [
+        "ability.frost.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 12.796,
+      "master": "masters/ability-frost/ability.frost.release.2.wav",
+      "masterSha256": "cc3b5a91666bd571d9ac57b4d7f950b2ef74d84a825c769548773af8125d4af7",
+      "opus": "masters/ability-frost/ability.frost.release.2.opus",
+      "opusSha256": "8c6fbdf7ed08acab7d255268a6d2533f75cf47c51b2e8935c08c36d034e4053a",
+      "previewSha256": "8175b51aa07e75d9b33e773aab0cb880b5717934b6f5ecb64e5f0d8ebb388ac5",
+      "previewBytes": 29836,
+      "previewUrl": "/__cf-audio-review/ability.frost.release.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.7,
+      "opusDbTP": -7.7
+    },
+    {
+      "id": "ability.frost.release.3",
+      "group": "ability-frost",
+      "kind": "designed",
+      "duration": 0.3096,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/765290ce32fa108c-impactGlass_light_003.ogg",
+          "sha256": "765290ce32fa108c939a0dbd6fbacbcd05abde622b57b708eb8a64058ef4225a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": 45,
+      "requirements": [
+        "ability.frost.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 14.105599999999999,
+      "master": "masters/ability-frost/ability.frost.release.3.wav",
+      "masterSha256": "6a6abb484da89fa56a24070e9296c2084098ff7e36dde1484d53bbfd37992ba3",
+      "opus": "masters/ability-frost/ability.frost.release.3.opus",
+      "opusSha256": "15267fcbf19b64234f19328fe55302d8334e6b4420211db9e770be59b0f11917",
+      "previewSha256": "1a03d93727bea2dfd91ede04665bc9ee0884bafbaf133d9b2e65e2bb6588616a",
+      "previewBytes": 29836,
+      "previewUrl": "/__cf-audio-review/ability.frost.release.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.6,
+      "opusDbTP": -8.6
+    }
+  ],
+  "listeningAccepted": false
+}

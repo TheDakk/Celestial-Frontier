@@ -1,0 +1,170 @@
+[
+  {
+    "id": "01-anaconda",
+    "masterSha256": "595659a83fa7373ac9c9329221556dd5438da69bc31865b2637c4523bf727f9b",
+    "promptSha256": "284ab6d5d34748a7b024837a7ea4a652ffa101542695a0bf718195e62514ba77",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "02-cobra",
+    "masterSha256": "5d4d26f55746d606c0a584db44226c0a1fab05e4c0592ee1895418712c7cd99f",
+    "promptSha256": "eb9a562d3e5e2afac6e4e2f99d8d51aa89b6cdc2564149a220e04ac4528fb4d4",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "03-viper",
+    "masterSha256": "c14f0c29d61c077f933eaa60e64860f4441240c4896c41cab3222b042ab791cb",
+    "promptSha256": "cf717a2ef2a3dd39b6c73fec7ce98160b8ec288eba4e710256cdb08791555eed",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "04-rattlesnake",
+    "masterSha256": "6b78756fdef1dcde5c8faeaec47e0844a887bcbcd2de3ec5db0048da457fbc4b",
+    "promptSha256": "64d433184752e148c29f3c248f5da7c976bcc9090e2924c782ebf41aaf9f8b1c",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "05-sand-boa",
+    "masterSha256": "1437c55ae87d4df96e1fd6fc47f5a554ccba50d369a737ca778b71b94e5c20fa",
+    "promptSha256": "e25b7d63435786d97034df9b766b27cd96682463d87d5422b8d9958fabff9e7e",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "06-cave-snake",
+    "masterSha256": "2d45de388d3f51e5d02d041b0789f6267be66a4d018d7f7810944aaa23048d4c",
+    "promptSha256": "8a548bebd9a5576a0b39cae3e5e012743e508d75ecda25c302be61e12d4a3b03",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "07-catfish",
+    "masterSha256": "e71ba6a44655bc830909a6e9999787e8ac0d949bfc91a511101a5e49209e5f9f",
+    "promptSha256": "5a0eaeea0b240a7b302d20c0fcd030337bf24061493991ef154019e468e9d99c",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "08-gar",
+    "masterSha256": "ac6b8b40de8153a37c8929262f5f8a1236842e92c2c7e775dd1eb883c95e6fcb",
+    "promptSha256": "2722545e35564ad45bc6858616cf5fb387f051b4ff50e5b226bcfc99744de60f",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "09-bowfin",
+    "masterSha256": "6f388e17a14ab175d83e8cdf14e63ef47b10f8fde079d04862d5810a8bd3ac24",
+    "promptSha256": "2e8282df5077e88436810162d119459998d8f6b39a2dc352c1fccd4a649d3ff1",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "10-tilapia",
+    "masterSha256": "5c691b57b9377be299c10e3577e5df8b85a105a5ed8875e1e847a33ba192b555",
+    "promptSha256": "196a322ae788c9451ca6f85b1f4cade13272aea41b23def50873ef24184e7052",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "11-piranha",
+    "masterSha256": "7fe8d38727d1dd7adf742a4313c37cc14bfb1e70fc27ad0754d94cbf9e595dc7",
+    "promptSha256": "44d887c2a1bfda98ad3b78ccfcceeed141749dff0ff40893a27e3b177690d050",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "12-killifish",
+    "masterSha256": "008a5a10678f9c8b1e63dca44695e5b42dea804149c6dcb2878b9f3a205c8aab",
+    "promptSha256": "d418a65ac3d4ba2e004fcce953eacc5f0a7b537cf5020a452a3db31be50d59b0",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "13-arctic-cod",
+    "masterSha256": "6bc34a88ddb69b3f50c377ead0d88b851738fecb4272ba6af7e8ee9c61855fdd",
+    "promptSha256": "c258452d45a093caefac1909eb5dbeb9c8aee2b7a3482c7c4f14bb485f038962",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "14-viperfish",
+    "masterSha256": "6e120d370d837adc760b7ca2c812f3aca8a7841ed8de0b8f916a8c2037b80582",
+    "promptSha256": "fd6470abffff6edb47b6dba094235bc1461c55475385adbeccd2ec382aa01bbb",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "15-squirrel",
+    "masterSha256": "bf91adf03c0ce7a2c427e36790352b040a060741e92ca61a1932e1ecfe7174ea",
+    "promptSha256": "73aa35e9c65b836c6679c8fc39ba6f921be0550da314756528c963193bf8aa8b",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "16-chipmunk",
+    "masterSha256": "f19ed6d4620fd0de36d00cdabc6dd89661caaa978222c4e37b0534918034864d",
+    "promptSha256": "ed4ea569b44eff19b1706e8f541be3992d5667031c755a289ad079c36c6ca0b5",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "17-rabbit",
+    "masterSha256": "8bcee4a5c170ecf6624ca15b37922652469d8e2a0860f9edf2d40ceda9aea839",
+    "promptSha256": "6562607ccf47aa8a4eb6032b3f65b8e50739209c2e50e4756dcd225293c12f60",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "18-hare",
+    "masterSha256": "81f48a9ae40764a98124c162962aff5763ad27e0b05bbc6469a1071a760f9a4d",
+    "promptSha256": "af78ec59aa39d7594e00019d1bb16c6b9410f9abe5219f5ffe99e893fc0d091d",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "19-pika",
+    "masterSha256": "20c5336c1331e04c7f436090971e8146ac6f73cf757d87c8449916c7bc2c1227",
+    "promptSha256": "e4c6bd0982a78045219a874b44058e10720fd56f7c20def65ac13796e79b0505",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "20-hedgehog",
+    "masterSha256": "e7a272cc39429cec3fc9d134d14f4861aef567ecbf8d0563198bd5ded02b54dd",
+    "promptSha256": "ececf45f7eeb67eea262c33ae75aab7849d4cb023f9b84749fd21b632308fa2c",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "21-meerkat-v2",
+    "masterSha256": "f7962bada97953cc3b7921becfbce6937938744ce4b2f68b7bbd5169d91af856",
+    "promptSha256": "67bf7d8bf6f3537dd206b3fe6fd3e90fc1f6b4d56ea6ba70f5ea92aa3267d43b",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "22-kinkajou",
+    "masterSha256": "42d0e313c3708a50bb7065d3d81e79d28e62d88c6c731e3a49a34ce9363019ed",
+    "promptSha256": "0e953ce6b257e3ec5154bc401594f2f8ca4dbaec8397e475759663d2a8364390",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "23-sloth-bear",
+    "masterSha256": "5a6816131d62943a1bb0f6b6f89744c0beb3b9b402b10ca6635a0008df38d938",
+    "promptSha256": "119bf1ffb2485315a953ebb152e23babc3387499026a9f0bf97ab86385b54366",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "24-river-otter",
+    "masterSha256": "78bed438cf5d4c99c93ff311bb945bbd86ce8f5d90b310ee1a4898edeebf2540",
+    "promptSha256": "b7ad867f838b38bf00f3e3bad289b8367f9f40a0905d5d5f3f82df9708d8f820",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  }
+]

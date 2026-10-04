@@ -1,0 +1,94 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "b3335e613b92c655575aad1aabd9fcc6df53ac91",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/authoring.json",
+      "sha256": "c0c96e04de651327b755db970698a7b654fca09d57c3328a525784c9cac5e15e"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/subject-source.json",
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "ca4e41b658b71522f4a03c3108cd54df70a9495e2c5713459d08dea0919e2591",
+  "bindingHash": "11b734d386b57cb8cdaeb0a75844c6fb9114f0110cd038dd35a1e7ff00d6dfd4",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/authoring.json",
+      "sha256": "c0c96e04de651327b755db970698a7b654fca09d57c3328a525784c9cac5e15e",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/subject-source.json",
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Whitefish",
+  "masterSha256": "1fc80461d7256851d91c64fdfff4e57be4b02e8248b7524406beebee66487489",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

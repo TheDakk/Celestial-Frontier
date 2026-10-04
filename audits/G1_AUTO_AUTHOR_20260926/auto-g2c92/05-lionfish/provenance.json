@@ -1,0 +1,204 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "05-lionfish",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "8ff03e0ae6aed08200b3c799df52a89abde8fc8462947d24c1ca79ef2a4bb3e6",
+ "subjectSourceSha256": "b54102af2a98b617d41c85f16331374bc9f2006fbcf28e44cd9b0073f71ff659",
+ "identity": {
+  "name": "Lionfish",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Lionfish\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2262001065\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "seed": 2262001065,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "bass",
+  "authoringSha256": "dd60d0253965cb37a46ac5434693058f8bac78d815fba2505ea0ffe7c7f0721f",
+  "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0151,
+     "class": "top",
+     "attach": {
+      "x": 273.5,
+      "y": 176,
+      "relX": 0.79,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0135,
+     "class": "top",
+     "attach": {
+      "x": 286.5,
+      "y": 179,
+      "relX": 0.88,
+      "relY": 0.02
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0505,
+     "class": "top",
+     "attach": {
+      "x": 246,
+      "y": 176,
+      "relX": 0.62,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0066,
+     "class": "top",
+     "attach": {
+      "x": 293.6,
+      "y": 186.4,
+      "relX": 0.92,
+      "relY": 0.09
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0196,
+     "class": "top",
+     "attach": {
+      "x": 213,
+      "y": 176,
+      "relX": 0.4,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0097,
+     "class": "top",
+     "attach": {
+      "x": 197.9,
+      "y": 179.9,
+      "relX": 0.31,
+      "relY": 0.03
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.1892,
+     "class": "rear",
+     "attach": {
+      "x": 156.9,
+      "y": 199.4,
+      "relX": 0.04,
+      "relY": 0.21
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.057,
+     "class": "front",
+     "attach": {
+      "x": 307,
+      "y": 230.5,
+      "relX": 1.01,
+      "relY": 0.5
+     }
+    },
+    {
+     "k": 8,
+     "frac": 0.061,
+     "class": "rear",
+     "attach": {
+      "x": 167.5,
+      "y": 247,
+      "relX": 0.11,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 9,
+     "frac": 0.0134,
+     "class": "rear",
+     "attach": {
+      "x": 202.1,
+      "y": 264.9,
+      "relX": 0.33,
+      "relY": 0.83
+     }
+    },
+    {
+     "k": 10,
+     "frac": 0.0068,
+     "class": "limb-down",
+     "attach": {
+      "x": 211,
+      "y": 274,
+      "relX": 0.39,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 11,
+     "frac": 0.0138,
+     "class": "limb-down",
+     "attach": {
+      "x": 221.6,
+      "y": 283.9,
+      "relX": 0.46,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 12,
+     "frac": 0.0291,
+     "class": "limb-down",
+     "attach": {
+      "x": 255.3,
+      "y": 283.7,
+      "relX": 0.67,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 6,
+    "rear": 3,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "bass",
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

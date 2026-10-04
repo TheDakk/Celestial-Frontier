@@ -1,0 +1,36 @@
+{
+  "status": "REFUSED_WITH_UNCHANGED_GATES",
+  "current": {
+    "jointCount": 29,
+    "legCount": 8,
+    "legPairs": 4,
+    "coreJointCount": 13,
+    "coreJoints": [
+      "root",
+      "head",
+      "mandible",
+      "seg0",
+      "seg1",
+      "seg2",
+      "seg3",
+      "seg4",
+      "seg5",
+      "seg6",
+      "seg7",
+      "antennaFar",
+      "antennaNear"
+    ]
+  },
+  "jointBudget": 64,
+  "partBudget": 32,
+  "twoJoint": {
+    "joints": 73,
+    "refusal": "Error: Skeleton pose: joint budget"
+  },
+  "compact": {
+    "joints": 43,
+    "parts": 32,
+    "refusal": "Error: Contact contract: unsupported leg leg0Far"
+  },
+  "sourceFiles": 16
+}

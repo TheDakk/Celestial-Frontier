@@ -1,0 +1,70 @@
+{
+  "creatureId": "c173-reference-earthworm-material",
+  "parts": [
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "746033e35105a5a7ee9dd3eecd92774f26f0ef21dce1f28e1d1f4b59fd1939a5"
+    },
+    {
+      "name": "segment0.png",
+      "path": "parts/segment0.png",
+      "sha256": "183d2cf5ba592427ba0a5da547c72f08478f57db8d57deb94ccecb829447c6ef"
+    },
+    {
+      "name": "segment1.png",
+      "path": "parts/segment1.png",
+      "sha256": "b70c7d9fa71c5493ab5666e692be9194af0b40c594706d65f0402775abe23c3c"
+    },
+    {
+      "name": "segment2.png",
+      "path": "parts/segment2.png",
+      "sha256": "08653765759edd1a2c3660c57f3bb4274cbbfc28cd9f46544a8cacb6827988e4"
+    },
+    {
+      "name": "segment3.png",
+      "path": "parts/segment3.png",
+      "sha256": "65a0d9df2676e170f65ac195cf17267bf9aa7fbb29abcd79d42aea5e94581c4b"
+    },
+    {
+      "name": "segment4.png",
+      "path": "parts/segment4.png",
+      "sha256": "c25035b0e45f42a989d44bfa415c37c407d65166ae6a476aa70bbb9558a2817d"
+    },
+    {
+      "name": "segment5.png",
+      "path": "parts/segment5.png",
+      "sha256": "65da1ac190e2b55ddafca5b8a13a1e4d76060ec336010d7d1a59e5cc1245f531"
+    },
+    {
+      "name": "segment7.png",
+      "path": "parts/segment7.png",
+      "sha256": "cbee5dfba951a2862db1db77b1b4f5116284ff3ca85cb88a2a686d4541d49e09"
+    },
+    {
+      "name": "segment8.png",
+      "path": "parts/segment8.png",
+      "sha256": "5eb7f14c678e10605237c88ecca224ba98badcf46caa6e3aebd1da17475430a3"
+    },
+    {
+      "name": "segment9.png",
+      "path": "parts/segment9.png",
+      "sha256": "39660d67b6b1207394123a4d0996ca08e23c8367c490e9d63d9409f68b37948a"
+    },
+    {
+      "name": "segment10.png",
+      "path": "parts/segment10.png",
+      "sha256": "14ca325005db3b716f4e79db70d053615660ac1fcaf5d0e035381ed495dc60be"
+    },
+    {
+      "name": "segment11.png",
+      "path": "parts/segment11.png",
+      "sha256": "4defa8bc5b23d9ee55e4c112be9cd3502245fa9a22a704df0ce94da5482f362d"
+    },
+    {
+      "name": "segment6.png",
+      "path": "parts/segment6.png",
+      "sha256": "b1fd3e8c5b4d12517c17fca611d2a288356010722724a600ea35ad774695f5a1"
+    }
+  ]
+}

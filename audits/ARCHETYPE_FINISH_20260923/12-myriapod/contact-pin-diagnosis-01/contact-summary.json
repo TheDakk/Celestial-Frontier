@@ -1,0 +1,620 @@
+[
+  {
+    "joint": "leg0FarFoot",
+    "part": "leg0-far",
+    "contactSourcePx": [
+      1061,
+      551.9
+    ],
+    "distanceToAuthoredEndpointPx": 7.294518489934773,
+    "conflictingSplitVertices": [
+      286
+    ],
+    "conflictingOriginalVertices": [
+      279
+    ],
+    "weldSampleBoundsPx": [
+      1019,
+      551,
+      1049,
+      582
+    ]
+  },
+  {
+    "joint": "leg0NearFoot",
+    "part": "leg0-near",
+    "contactSourcePx": [
+      1018,
+      822
+    ],
+    "distanceToAuthoredEndpointPx": 8.246211251235321,
+    "conflictingSplitVertices": [
+      21
+    ],
+    "conflictingOriginalVertices": [
+      642
+    ],
+    "weldSampleBoundsPx": [
+      1017,
+      797,
+      1031,
+      833
+    ]
+  },
+  {
+    "joint": "leg1FarFoot",
+    "part": "leg1-far",
+    "contactSourcePx": [
+      998,
+      548
+    ],
+    "distanceToAuthoredEndpointPx": 6.4031242374328485,
+    "conflictingSplitVertices": [
+      279,
+      278
+    ],
+    "conflictingOriginalVertices": [
+      268,
+      269
+    ],
+    "weldSampleBoundsPx": [
+      946.825,
+      548,
+      984,
+      613
+    ]
+  },
+  {
+    "joint": "leg1NearFoot",
+    "part": "leg1-near",
+    "contactSourcePx": [
+      973,
+      828
+    ],
+    "distanceToAuthoredEndpointPx": 8.602325267042627,
+    "conflictingSplitVertices": [
+      20
+    ],
+    "conflictingOriginalVertices": [
+      640
+    ],
+    "weldSampleBoundsPx": [
+      966,
+      790,
+      995,
+      804
+    ]
+  },
+  {
+    "joint": "leg2FarFoot",
+    "part": "leg2-far",
+    "contactSourcePx": [
+      938,
+      546.05
+    ],
+    "distanceToAuthoredEndpointPx": 5.856833615529691,
+    "conflictingSplitVertices": [
+      310,
+      305
+    ],
+    "conflictingOriginalVertices": [
+      233,
+      235
+    ],
+    "weldSampleBoundsPx": [
+      893,
+      538,
+      924,
+      578.8333333333334
+    ]
+  },
+  {
+    "joint": "leg2NearFoot",
+    "part": "leg2-near",
+    "contactSourcePx": [
+      901.025641025641,
+      823
+    ],
+    "distanceToAuthoredEndpointPx": 9.88138062738318,
+    "conflictingSplitVertices": [
+      62
+    ],
+    "conflictingOriginalVertices": [
+      576
+    ],
+    "weldSampleBoundsPx": [
+      920,
+      809,
+      926,
+      818
+    ]
+  },
+  {
+    "joint": "leg3FarFoot",
+    "part": "leg3-far",
+    "contactSourcePx": [
+      861,
+      531
+    ],
+    "distanceToAuthoredEndpointPx": 7.0710678118654755,
+    "conflictingSplitVertices": [
+      325,
+      315
+    ],
+    "conflictingOriginalVertices": [
+      228,
+      229
+    ],
+    "weldSampleBoundsPx": [
+      823,
+      545,
+      866,
+      621
+    ]
+  },
+  {
+    "joint": "leg3NearFoot",
+    "part": "leg3-near",
+    "contactSourcePx": [
+      841.5,
+      802.5
+    ],
+    "distanceToAuthoredEndpointPx": 10.977249200050075,
+    "conflictingSplitVertices": [
+      78
+    ],
+    "conflictingOriginalVertices": [
+      573
+    ],
+    "weldSampleBoundsPx": [
+      840,
+      818,
+      841,
+      819
+    ]
+  },
+  {
+    "joint": "leg4FarFoot",
+    "part": "leg4-far",
+    "contactSourcePx": [
+      818,
+      527
+    ],
+    "distanceToAuthoredEndpointPx": 7.810249675906656,
+    "conflictingSplitVertices": [
+      349,
+      351,
+      326
+    ],
+    "conflictingOriginalVertices": [
+      224,
+      225,
+      226
+    ],
+    "weldSampleBoundsPx": [
+      784,
+      536,
+      796,
+      552
+    ]
+  },
+  {
+    "joint": "leg4NearFoot",
+    "part": "leg4-near",
+    "contactSourcePx": [
+      788,
+      817
+    ],
+    "distanceToAuthoredEndpointPx": 6.324555320336831,
+    "conflictingSplitVertices": [
+      96,
+      95
+    ],
+    "conflictingOriginalVertices": [
+      571,
+      559
+    ],
+    "weldSampleBoundsPx": [
+      801,
+      784,
+      818,
+      808
+    ]
+  },
+  {
+    "joint": "leg5FarFoot",
+    "part": "leg5-far",
+    "contactSourcePx": [
+      744,
+      527
+    ],
+    "distanceToAuthoredEndpointPx": 5,
+    "conflictingSplitVertices": [
+      357,
+      344
+    ],
+    "conflictingOriginalVertices": [
+      203,
+      204
+    ],
+    "weldSampleBoundsPx": [
+      706,
+      529,
+      748,
+      621
+    ]
+  },
+  {
+    "joint": "leg5NearFoot",
+    "part": "leg5-near",
+    "contactSourcePx": [
+      724.5,
+      802.5
+    ],
+    "distanceToAuthoredEndpointPx": 6.519202405202649,
+    "conflictingSplitVertices": [
+      113
+    ],
+    "conflictingOriginalVertices": [
+      556
+    ],
+    "weldSampleBoundsPx": [
+      730,
+      791,
+      749,
+      819
+    ]
+  },
+  {
+    "joint": "leg6FarFoot",
+    "part": "leg6-far",
+    "contactSourcePx": [
+      685.5,
+      528.5
+    ],
+    "distanceToAuthoredEndpointPx": 1.5811388300841898,
+    "conflictingSplitVertices": [
+      379
+    ],
+    "conflictingOriginalVertices": [
+      199
+    ],
+    "weldSampleBoundsPx": [
+      667,
+      531,
+      672,
+      540
+    ]
+  },
+  {
+    "joint": "leg6NearFoot",
+    "part": "leg6-near",
+    "contactSourcePx": [
+      665,
+      821
+    ],
+    "distanceToAuthoredEndpointPx": 8.062257748298563,
+    "conflictingSplitVertices": [
+      133,
+      135
+    ],
+    "conflictingOriginalVertices": [
+      552,
+      553
+    ],
+    "weldSampleBoundsPx": [
+      672,
+      802,
+      684,
+      820
+    ]
+  },
+  {
+    "joint": "leg7FarFoot",
+    "part": "leg7-far",
+    "contactSourcePx": [
+      627,
+      528
+    ],
+    "distanceToAuthoredEndpointPx": 7.0710678118654755,
+    "conflictingSplitVertices": [
+      376,
+      378
+    ],
+    "conflictingOriginalVertices": [
+      140,
+      141
+    ],
+    "weldSampleBoundsPx": [
+      588,
+      532,
+      626,
+      625
+    ]
+  },
+  {
+    "joint": "leg7NearFoot",
+    "part": "leg7-near",
+    "contactSourcePx": [
+      591,
+      818.1
+    ],
+    "distanceToAuthoredEndpointPx": 9.066973034039533,
+    "conflictingSplitVertices": [
+      147,
+      149
+    ],
+    "conflictingOriginalVertices": [
+      466,
+      465
+    ],
+    "weldSampleBoundsPx": [
+      616,
+      789,
+      632,
+      812
+    ]
+  },
+  {
+    "joint": "leg8FarFoot",
+    "part": "leg8-far",
+    "contactSourcePx": [
+      574,
+      535
+    ],
+    "distanceToAuthoredEndpointPx": 6.4031242374328485,
+    "conflictingSplitVertices": [
+      405,
+      391
+    ],
+    "conflictingOriginalVertices": [
+      136,
+      138
+    ],
+    "weldSampleBoundsPx": [
+      549,
+      539,
+      555,
+      549
+    ]
+  },
+  {
+    "joint": "leg8NearFoot",
+    "part": "leg8-near",
+    "contactSourcePx": [
+      523,
+      822
+    ],
+    "distanceToAuthoredEndpointPx": 7.280109889280519,
+    "conflictingSplitVertices": [
+      167
+    ],
+    "conflictingOriginalVertices": [
+      459
+    ],
+    "weldSampleBoundsPx": [
+      547,
+      798,
+      562,
+      819
+    ]
+  },
+  {
+    "joint": "leg9FarFoot",
+    "part": "leg9-far",
+    "contactSourcePx": [
+      509,
+      548
+    ],
+    "distanceToAuthoredEndpointPx": 6.708203932499369,
+    "conflictingSplitVertices": [
+      408
+    ],
+    "conflictingOriginalVertices": [
+      132
+    ],
+    "weldSampleBoundsPx": [
+      471,
+      543,
+      507,
+      578
+    ]
+  },
+  {
+    "joint": "leg9NearFoot",
+    "part": "leg9-near",
+    "contactSourcePx": [
+      470,
+      822
+    ],
+    "distanceToAuthoredEndpointPx": 6.708203932499369,
+    "conflictingSplitVertices": [
+      188
+    ],
+    "conflictingOriginalVertices": [
+      446
+    ],
+    "weldSampleBoundsPx": [
+      457,
+      804,
+      496,
+      836
+    ]
+  },
+  {
+    "joint": "leg10FarFoot",
+    "part": "leg10-far",
+    "contactSourcePx": [
+      449,
+      566.525
+    ],
+    "distanceToAuthoredEndpointPx": 10.424760189088266,
+    "conflictingSplitVertices": [
+      417,
+      418
+    ],
+    "conflictingOriginalVertices": [
+      124,
+      110
+    ],
+    "weldSampleBoundsPx": [
+      399.775,
+      548,
+      449,
+      596
+    ]
+  },
+  {
+    "joint": "leg10NearFoot",
+    "part": "leg10-near",
+    "contactSourcePx": [
+      391,
+      834
+    ],
+    "distanceToAuthoredEndpointPx": 6.708203932499369,
+    "conflictingSplitVertices": [
+      206
+    ],
+    "conflictingOriginalVertices": [
+      438
+    ],
+    "weldSampleBoundsPx": [
+      419,
+      819,
+      420,
+      819
+    ]
+  },
+  {
+    "joint": "leg11FarFoot",
+    "part": "leg11-far",
+    "contactSourcePx": [
+      391,
+      548
+    ],
+    "distanceToAuthoredEndpointPx": 5.656854249492381,
+    "conflictingSplitVertices": [
+      440
+    ],
+    "conflictingOriginalVertices": [
+      106
+    ],
+    "weldSampleBoundsPx": [
+      353,
+      543,
+      391,
+      577
+    ]
+  },
+  {
+    "joint": "leg11NearFoot",
+    "part": "leg11-near",
+    "contactSourcePx": [
+      327,
+      822
+    ],
+    "distanceToAuthoredEndpointPx": 6.324555320336759,
+    "conflictingSplitVertices": [
+      226
+    ],
+    "conflictingOriginalVertices": [
+      436
+    ],
+    "weldSampleBoundsPx": [
+      355,
+      799,
+      367,
+      814
+    ]
+  },
+  {
+    "joint": "leg12FarFoot",
+    "part": "leg12-far",
+    "contactSourcePx": [
+      324,
+      537
+    ],
+    "distanceToAuthoredEndpointPx": 7.810249675906656,
+    "conflictingSplitVertices": [
+      479,
+      457
+    ],
+    "conflictingOriginalVertices": [
+      101,
+      58
+    ],
+    "weldSampleBoundsPx": [
+      277,
+      540,
+      318,
+      621
+    ]
+  },
+  {
+    "joint": "leg12NearFoot",
+    "part": "leg12-near",
+    "contactSourcePx": [
+      273,
+      822
+    ],
+    "distanceToAuthoredEndpointPx": 4.47213595499958,
+    "conflictingSplitVertices": [
+      243
+    ],
+    "conflictingOriginalVertices": [
+      363
+    ],
+    "weldSampleBoundsPx": [
+      292,
+      813,
+      292,
+      814
+    ]
+  },
+  {
+    "joint": "leg13FarFoot",
+    "part": "leg13-far",
+    "contactSourcePx": [
+      273,
+      531
+    ],
+    "distanceToAuthoredEndpointPx": 8.602325267042627,
+    "conflictingSplitVertices": [
+      485,
+      473
+    ],
+    "conflictingOriginalVertices": [
+      53,
+      54
+    ],
+    "weldSampleBoundsPx": [
+      224,
+      535,
+      254,
+      576
+    ]
+  },
+  {
+    "joint": "leg13NearFoot",
+    "part": "leg13-near",
+    "contactSourcePx": [
+      204,
+      813
+    ],
+    "distanceToAuthoredEndpointPx": 10.19803902718557,
+    "conflictingSplitVertices": [
+      273,
+      275
+    ],
+    "conflictingOriginalVertices": [
+      359,
+      361
+    ],
+    "weldSampleBoundsPx": [
+      206,
+      794,
+      244,
+      810
+    ]
+  }
+]

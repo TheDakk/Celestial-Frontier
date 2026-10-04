@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Anole",
+  "family": "quadruped",
+  "masterSha256": "5e50f89d74593377dd2d9876a0e6a16ec9b1bfdb950b20f86dba280e22dcce43",
+  "subjectSha256": "43388f373b8f8a4edfa96aeca8e955d05ba43afea7e6abaa824d83b217c155b0",
+  "promptSha256": "d2f301ca07cd279f0137700f7f58767974bc85733d2ddb0af4b15e4db0e2b576",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: green slender anole with orange expanded throat dewlap, long continuous tail and four readable feet. Individual toe pads are small but visible; near/far upper limbs overlap at body roots, so separability is not fully established. The orange dewlap remains continuously attached beneath the throat; broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/06-anole/visual-review.json",
+    "sha256": "df4a7d82578d6e1ca6aacd9c2b9aaca3346a7b6b031503d0e37dcbb0c4ff0a06"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

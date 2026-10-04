@@ -1,0 +1,28 @@
+{
+  "name": "Grouse",
+  "masterSha256": "4ea953aba9a42e33e6b16bd9587bd7d363a784c6c24f02ee99446086fe9c55ec",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: plump body, short rounded dark bill, dense brown/cream barring, folded barred tail and two feathered leg/foot silhouettes are visible. The tail is quiet rather than a spread display. Feather fringes remain on both legs; some toe bases overlap under feathers, so exact digit and upper-leg ownership is unmeasured.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 278,
+      "y0": 326,
+      "x1": 967,
+      "y1": 880
+    },
+    "margins": {
+      "left": 278,
+      "right": 286,
+      "top": 326,
+      "bottom": 373
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

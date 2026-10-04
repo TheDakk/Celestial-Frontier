@@ -1,0 +1,9 @@
+{
+ "id": "12-flying-gurnard",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part jaw (jaw) covers 3% paint (reference 56%)"
+ ],
+ "semanticPresence": null
+}

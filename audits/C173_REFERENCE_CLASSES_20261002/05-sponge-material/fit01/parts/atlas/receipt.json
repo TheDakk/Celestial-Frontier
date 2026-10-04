@@ -1,0 +1,51 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c173-reference-sponge-material",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "33a0bbf5756cc568814999d2b94ef32c53f608ca1cb67e7acc65f389ef41b670",
+    "pngSha256": "04aa58bf352b1d700cb7ea295964f32af9cf596f83925a048ba59f906f8cef40"
+  },
+  "parts": [
+    {
+      "name": "aperture.png",
+      "sha256": "e629df2e5a1707f9cba261b146e73f1a0bb8dbe0475a3db9a951e35302b24711"
+    },
+    {
+      "name": "base.png",
+      "sha256": "0b62895ed9ee448a15425717aef8ff74357ca81f5b2a34c8c282a20c890f221c"
+    },
+    {
+      "name": "body.png",
+      "sha256": "100e09e782c8939b56b43b88733335f5cc80a62d365d27b3b1950a63e1e601ad"
+    },
+    {
+      "name": "crown.png",
+      "sha256": "7ea0a9dde971c6b001fcc6ed72d85ab3a8853da4a181d2ce7e03841f11da7c9a"
+    },
+    {
+      "name": "root.png",
+      "sha256": "5b4cc6fd26f97b5a6ea1feb8d5616f3fecd98e5cb483d768a9cb8e64b995bad5"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

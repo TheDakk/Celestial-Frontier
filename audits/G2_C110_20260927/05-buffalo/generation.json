@@ -1,0 +1,13 @@
+{
+  "id": "05-buffalo",
+  "name": "Buffalo",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-bad63d64-74e6-4fe0-be1c-8a5f2e030779.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2e3b4686460626be61c778ce9980f8c3abe47c99e976b114a686a9c7bc493917",
+  "bytes": 1411045,
+  "promptSha256": "8d439f84e05af61f4327052238f1e6172ab2db8abf447fbe354e4f5199a213ae",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

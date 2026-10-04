@@ -1,0 +1,14 @@
+✔ 1254 master pads to1264 without moving, scaling, relabeling or mutating original pixels (1519.875625ms)
+✔ aligned old dimensions remain byte-identical; invalid dimensions/crop/source shapes refuse (1.944875ms)
+✔ transferred buffers retain exact SHA/byte checks and old URL transport stays supported (9.163792ms)
+✔ corrupt, detached, ambiguous, shared, resized or wrong-size references fail closed (1.956958ms)
+✔ actual worker dispatch validates transferred bytes before constructing model engine (5.888ms)
+✔ D26 alpha250 eligibility preserves original alpha, 4px erosion and every sub250 pixel (12.664041ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1642.66875

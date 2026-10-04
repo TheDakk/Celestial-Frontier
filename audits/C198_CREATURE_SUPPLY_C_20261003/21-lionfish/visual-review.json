@@ -1,0 +1,28 @@
+{
+  "name": "Lionfish",
+  "masterSha256": "2defa8bbc7a26b30b0d6afec780d9412491c4d00995155a4cbb3a02bf11bc675",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Striped body, dorsal spines, tail and broad near pectoral fan complete, margins generous. Far pectoral and pelvic bases concealed by fan; branching facial appendages and possible eye-like cheek spot need anatomy review. Translucent-looking pink ray membranes require key conservation review; not an admitted fin count.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 153,
+      "y0": 266,
+      "x1": 1076,
+      "y1": 980
+    },
+    "margins": {
+      "left": 153,
+      "right": 177,
+      "top": 266,
+      "bottom": 273
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

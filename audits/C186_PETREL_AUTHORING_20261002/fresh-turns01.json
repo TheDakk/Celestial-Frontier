@@ -1,0 +1,126 @@
+{
+  "status": "PASS_OFFLINE",
+  "scope": "Five newly compiled source-bound turns in both directions with anatomical attacks, two dodges and final target faint; 4ms sampling plus exact beat boundaries, no native/performance claim",
+  "rows": [
+    {
+      "turn": 0,
+      "attacker": "left",
+      "verb": "peck",
+      "beats": {
+        "readyEnd": 600,
+        "commandEnd": 900,
+        "actionStart": 1320,
+        "impactAt": 1566.6666666666667,
+        "hitstopEnd": 1636.6666666666667,
+        "flashEnd": 1720,
+        "shakeEnd": 1746.6666666666667,
+        "numbersEnd": 2076.666666666667,
+        "reactionStart": 1636.6666666666667,
+        "reactionEnd": 2278.666666666667,
+        "actionEnd": 2088.6666666666665,
+        "returnEnd": 2468.6666666666665,
+        "idleStart": 2468.6666666666665,
+        "end": 3068.6666666666665
+      },
+      "cadence": null,
+      "samples": 1552,
+      "failures": []
+    },
+    {
+      "turn": 1,
+      "attacker": "right",
+      "verb": "peck",
+      "beats": {
+        "readyEnd": 600,
+        "commandEnd": 900,
+        "actionStart": 1320,
+        "impactAt": 1566.6666666666667,
+        "hitstopEnd": 1636.6666666666667,
+        "flashEnd": 1720,
+        "shakeEnd": 1746.6666666666667,
+        "numbersEnd": 2076.666666666667,
+        "reactionStart": 1636.6666666666667,
+        "reactionEnd": 2278.666666666667,
+        "actionEnd": 2088.6666666666665,
+        "returnEnd": 2468.6666666666665,
+        "idleStart": 2468.6666666666665,
+        "end": 3068.6666666666665
+      },
+      "cadence": null,
+      "samples": 1552,
+      "failures": []
+    },
+    {
+      "turn": 2,
+      "attacker": "left",
+      "verb": "peck",
+      "beats": {
+        "readyEnd": 600,
+        "commandEnd": 900,
+        "actionStart": 1320,
+        "impactAt": 1566.6666666666667,
+        "hitstopEnd": 1566.6666666666667,
+        "flashEnd": 1566.6666666666667,
+        "shakeEnd": 1566.6666666666667,
+        "numbersEnd": 2076.666666666667,
+        "reactionStart": 1446.6666666666667,
+        "reactionEnd": 1918.6666666666667,
+        "actionEnd": 2018.6666666666665,
+        "returnEnd": 2398.6666666666665,
+        "idleStart": 2398.6666666666665,
+        "end": 2998.6666666666665
+      },
+      "cadence": null,
+      "samples": 1514,
+      "failures": []
+    },
+    {
+      "turn": 3,
+      "attacker": "right",
+      "verb": "peck",
+      "beats": {
+        "readyEnd": 600,
+        "commandEnd": 900,
+        "actionStart": 1320,
+        "impactAt": 1566.6666666666667,
+        "hitstopEnd": 1566.6666666666667,
+        "flashEnd": 1566.6666666666667,
+        "shakeEnd": 1566.6666666666667,
+        "numbersEnd": 2076.666666666667,
+        "reactionStart": 1446.6666666666667,
+        "reactionEnd": 1918.6666666666667,
+        "actionEnd": 2018.6666666666665,
+        "returnEnd": 2398.6666666666665,
+        "idleStart": 2398.6666666666665,
+        "end": 2998.6666666666665
+      },
+      "cadence": null,
+      "samples": 1514,
+      "failures": []
+    },
+    {
+      "turn": 4,
+      "attacker": "left",
+      "verb": "peck",
+      "beats": {
+        "readyEnd": 600,
+        "commandEnd": 900,
+        "actionStart": 1320,
+        "impactAt": 1566.6666666666667,
+        "hitstopEnd": 1636.6666666666667,
+        "flashEnd": 1720,
+        "shakeEnd": 1746.6666666666667,
+        "numbersEnd": 2076.666666666667,
+        "reactionStart": 1636.6666666666667,
+        "reactionEnd": 2348.666666666667,
+        "actionEnd": 2088.6666666666665,
+        "returnEnd": 2468.6666666666665,
+        "idleStart": 2468.6666666666665,
+        "end": 3068.6666666666665
+      },
+      "cadence": null,
+      "samples": 1552,
+      "failures": []
+    }
+  ]
+}

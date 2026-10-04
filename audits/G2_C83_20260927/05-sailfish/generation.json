@@ -1,0 +1,13 @@
+{
+  "id": "05-sailfish",
+  "name": "Sailfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e12d8050-6624-457e-8a60-d1b4d523ea04.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a7fb5ac2b596a7c6ae9ce83da134e4bb02eb6e44a44eae93c00bb0f124fba7bd",
+  "bytes": 1234106,
+  "promptSha256": "fa6f01a142ef3a0c19d8a8b8c971b4de3c6749cf982b5c8e3c9a71bc063bd022",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

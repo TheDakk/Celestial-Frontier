@@ -1,0 +1,11 @@
+{
+  "claudeCommit": "f73394018950bcb24341008dd5efc6f9634a6a5e",
+  "signature": "G",
+  "motionPath": "port/v2/apps/game/src/motion/family-actions.ts",
+  "motionSha256": "ce7ebf4e06ee82e91a74128701e5e0bebb637817bb2012e96d6ba33b791bd201",
+  "localFileMatchesClaudeCommit": true,
+  "knownPinRemovedInSameCommit": true,
+  "claudeTestSha256": "916c19536b193005814c30dca89d92bdf93e79bd4a38b2a8a6a8856ce4d4cc29",
+  "reportedByNick": "Library-arena 8/8; old crawl line reproduces the 0.85x fold. Not rerun locally.",
+  "latestInstruction": "Commit identical local motion line as item5; sign item7 and five-red repair separately; Claude integrates next; I5 only once on final integrated anthropic/mac head."
+}

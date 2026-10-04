@@ -1,0 +1,11 @@
+{
+ "id": "c198creaturesupplyb-20-millipede",
+ "family": "myriapod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: quadruped matches clearly better (0.0247 < 0.0732)",
+  "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+  "unexplained-anatomy: 29.5% of the paint lies away from the body and in no part (reference 10.3%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Blenny",
+  "masterSha256": "41a78853ce7994cb4bfe271c6bb87c6dda0e48ce84b033c221dcf2b7c26417f6",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Continuous dorsal/anal fin roots, complete rounded tail, visible near pectoral and small ventral fins, mottled brown/white body and striped tail rays are visible. Branched head cirri are exaggerated and eye/lips read oversized and glossy; retain natural anatomy/style hold. Far paired-fin roots are not independently observed.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 137,
+      "y0": 395,
+      "x1": 1123,
+      "y1": 811
+    },
+    "margins": {
+      "left": 137,
+      "right": 130,
+      "top": 395,
+      "bottom": 442
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

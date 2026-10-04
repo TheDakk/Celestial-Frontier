@@ -1,0 +1,9 @@
+{
+  "schema": "cf.c198-inert-comment-redaction/v1",
+  "path": "audits/C198_TORTOISE_CAPTURE_20261003/replay.bundle.mjs",
+  "beforeSha256": "8204d97c955fabd254becbc44e9cc71f6d479a328f37c06eacd5fc45163b1160",
+  "afterSha256": "9263e3b141587a3a02764fc318d20fd64adc0c71225f1f29a31c8e0f51173488",
+  "changedExamples": 13,
+  "scope": "Generated third-party dependency documentation comments only: generic Windows home-folder examples normalized to ~/ form. No executable statement, source input, replay outcome or product file changed. The independent final review imports current source and does not execute this historical bundle.",
+  "runtimeBytesChanged": false
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Coati",
+  "masterSha256": "6c48d5b218fe22a2a451bdd8a1149126ca13e453a7d105b2f25adbb331f0c026",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Long narrow muzzle and upright banded bushy tail; four separated feet with claws. Tail/root continuity visible; far ear mostly hidden and far upper limb concealed. No invented joint claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 293,
+      "y0": 238,
+      "x1": 995,
+      "y1": 971
+    },
+    "margins": {
+      "left": 293,
+      "right": 258,
+      "top": 238,
+      "bottom": 282
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

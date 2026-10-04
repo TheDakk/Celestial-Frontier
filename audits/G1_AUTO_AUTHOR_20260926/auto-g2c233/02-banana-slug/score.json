@@ -1,0 +1,9 @@
+{
+ "id": "02-banana-slug",
+ "family": "gastropod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "no-reference: no other hand-authored subject of family gastropod"
+ ],
+ "semanticPresence": null
+}

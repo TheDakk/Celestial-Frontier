@@ -1,0 +1,16 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "tools/local-image-generation/pipeline-math.test.mjs",
+    "tools/local-image-generation/download-controls.test.mjs"
+  ],
+  "sourceSha256": {
+    "tools/local-image-generation/pipeline-math.mjs": "b45751bbdf205e7d375ef3df6345d984dcb52ce6792c8935db0a0f7a87a31f3d",
+    "tools/local-image-generation/pipeline-math.test.mjs": "f4b610e76479a52d25a55e3ec620c0d1865a23bdfe9b0060a7aed22fe659f7b0",
+    "tools/local-image-generation/fetch-model.mjs": "79ee68e8bcfc37d7dc406df008765e123ac030f7195232f19fac6488a64dac9c",
+    "tools/local-image-generation/download-controls.test.mjs": "82aca72a1f41972e017556329ef317bb94a2482de5881986c86a5ec1d1d3c989",
+    "tools/local-image-generation/model-manifest.json": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef"
+  },
+  "startedAt": "2026-09-09T05:09:10.318631+00:00"
+}

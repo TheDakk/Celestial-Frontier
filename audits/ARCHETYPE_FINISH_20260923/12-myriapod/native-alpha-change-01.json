@@ -1,0 +1,7 @@
+{
+  "scope": "Native harness rest-size inventory only; >8 replaced with pure >0 helper; no pixel mutation/registration/mass formula/scale wiring/gate changes.",
+  "owner": "port/v2/tools/battle2-proof/native-entry.mjs",
+  "beforeSha256": "1bc6dde2da51857d2d69db66ee3810d4bff91ef84b80cbb06a10fb2c81877af1",
+  "afterSha256": "4674ba473bc325cc2d2870a5fd0b6653f52e4152354f917d7ad6c1b49543af62",
+  "removedInlineOwner": "const alphaBox = (rgba,w,h) => { let x0=w,y0=h,x1=-1,y1=-1; for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(rgba[(y*w+x)*4+3]>8){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);} if(x1<0)throw Error('empty alpha');return{x:x0,y:y0,width:x1-x0+1,height:y1-y0+1}; };\n"
+}

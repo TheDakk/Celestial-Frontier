@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Ocelot",
+  "masterSha256": "7aaf3067055671ccf360874604a89a29d4a02f2f9d1acb789c054fe45fe859ad",
+  "required": [
+    "chain-like rosettes running in streaks along the flank",
+    "two black stripes on each cheek"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "chain-like rosettes running in streaks along the flank",
+      "status": "PRESENT",
+      "observed": "Elongated dark rosettes form chains along the flank and two dark cheek lines are visible."
+    },
+    {
+      "requirement": "two black stripes on each cheek",
+      "status": "PRESENT",
+      "observed": "Elongated dark rosettes form chains along the flank and two dark cheek lines are visible."
+    }
+  ]
+}

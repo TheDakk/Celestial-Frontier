@@ -1,0 +1,186 @@
+{
+  "id": "17-giant-octopus",
+  "name": "Giant Octopus",
+  "family": "cephalopod",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "e8895811a54507616b12324b16636cb483a937d9e915d6086f7789d3d35c28fb",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 35623,
+    "coreRadius": 26,
+    "bodyBox": {
+      "x0": 145,
+      "y0": 128,
+      "x1": 279,
+      "y1": 251
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2033,
+        "pixels": 7242,
+        "box": {
+          "x0": 111,
+          "y0": 73,
+          "x1": 232,
+          "y1": 172
+        },
+        "attach": {
+          "x": 194.1,
+          "y": 137.6,
+          "relX": 0.37,
+          "relY": 0.08
+        },
+        "dir": {
+          "x": -0.85,
+          "y": -0.53
+        },
+        "class": "top",
+        "length": 105.2
+      },
+      {
+        "k": 1,
+        "frac": 0.1315,
+        "pixels": 4683,
+        "box": {
+          "x0": 50,
+          "y0": 137,
+          "x1": 153,
+          "y1": 251
+        },
+        "attach": {
+          "x": 144.7,
+          "y": 213.5,
+          "relX": 0,
+          "relY": 0.69
+        },
+        "dir": {
+          "x": -0.98,
+          "y": -0.22
+        },
+        "class": "rear",
+        "length": 121.7
+      },
+      {
+        "k": 2,
+        "frac": 0.1019,
+        "pixels": 3630,
+        "box": {
+          "x0": 280,
+          "y0": 167,
+          "x1": 380,
+          "y1": 246
+        },
+        "attach": {
+          "x": 280,
+          "y": 208.5,
+          "relX": 1.01,
+          "relY": 0.65
+        },
+        "dir": {
+          "x": 0.98,
+          "y": 0.19
+        },
+        "class": "front",
+        "length": 108.3
+      },
+      {
+        "k": 3,
+        "frac": 0.0956,
+        "pixels": 3404,
+        "box": {
+          "x0": 233,
+          "y0": 236,
+          "x1": 344,
+          "y1": 319
+        },
+        "attach": {
+          "x": 257.9,
+          "y": 238.9,
+          "relX": 0.84,
+          "relY": 0.9
+        },
+        "dir": {
+          "x": 0.73,
+          "y": 0.68
+        },
+        "class": "limb-down",
+        "length": 117.6
+      },
+      {
+        "k": 4,
+        "frac": 0.0451,
+        "pixels": 1605,
+        "box": {
+          "x0": 99,
+          "y0": 249,
+          "x1": 180,
+          "y1": 312
+        },
+        "attach": {
+          "x": 166.2,
+          "y": 251.8,
+          "relX": 0.16,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.78,
+          "y": 0.62
+        },
+        "class": "limb-down",
+        "length": 90.2
+      },
+      {
+        "k": 5,
+        "frac": 0.0713,
+        "pixels": 2541,
+        "box": {
+          "x0": 168,
+          "y0": 252,
+          "x1": 224,
+          "y1": 339
+        },
+        "attach": {
+          "x": 205,
+          "y": 252,
+          "relX": 0.45,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.31,
+          "y": 0.95
+        },
+        "class": "limb-down",
+        "length": 94.5
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 177,
+        "x1": 222,
+        "cx": 200.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

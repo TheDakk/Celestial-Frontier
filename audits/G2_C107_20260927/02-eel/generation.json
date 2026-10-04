@@ -1,0 +1,13 @@
+{
+  "id": "02-eel",
+  "name": "Eel",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d4498efb-6e0e-406a-83f4-95f4ab0407c2.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e91d3ccbdf9c4d828715391a4a8cd061c9694c4cf881dfa48e489fa6ad49b44b",
+  "bytes": 1094039,
+  "promptSha256": "47aba20750aebb8f4576f5bc6b04b3374f71fd92cccb23dc21579b29887e7638",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

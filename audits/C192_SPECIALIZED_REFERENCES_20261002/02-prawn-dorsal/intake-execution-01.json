@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "intake",
+  "id": "02-prawn-dorsal",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/fit01"
+  ],
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "helperUnchanged": true,
+  "exitCode": 1,
+  "signal": null,
+  "log": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/intake-01.log",
+  "logSha256": "a096a3a9a8df8cd3befa8b8d01f7b0c05a31ab1d456406ae3d5acc727e2ad2f7",
+  "nativeRuns": 0
+}

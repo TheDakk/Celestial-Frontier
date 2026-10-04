@@ -1,0 +1,13 @@
+{
+  "id": "11-plover",
+  "name": "Plover",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-44d6c1f0-e0e2-4dbd-a853-b1433077c121.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1c06ec5e8e525dc18c5673e8b9431b77cd1e32e8b13afdcb3ade1c05ae2c0942",
+  "bytes": 1191038,
+  "promptSha256": "977696cb45f794ddaeb9bee3d3418198b543ea525be87e9f8fc14749f7a22734",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

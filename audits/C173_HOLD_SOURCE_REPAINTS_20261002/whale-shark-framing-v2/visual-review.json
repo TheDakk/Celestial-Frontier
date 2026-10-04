@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-source-review/v1",
+  "name": "Whale Shark",
+  "masterSha256": "d426cbcae3dd5e3749af7aa43e823eb892e97d1908c1db7f3fa7f07d01748c2c",
+  "review": "Full native1254-square original inspected by Codex",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 242,
+      "y0": 480,
+      "x1": 1007,
+      "y1": 775
+    },
+    "margins": {
+      "left": 242,
+      "right": 246,
+      "top": 480,
+      "bottom": 478
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "observation": "Spotted/striped flank pattern, broad flattened head, terminal mouth and full tail retained. New framing edit resolves the numerical margin hold. Far-side surface visibility remains limited.",
+  "status": "SOURCE_CANDIDATE_FOR_SCORING",
+  "rigAuthored": false,
+  "motionAccepted": false,
+  "runtimeAdmitted": false
+}

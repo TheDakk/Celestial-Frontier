@@ -1,0 +1,218 @@
+[
+  {
+    "id": "01-dingo",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-66bd8f79-93a3-4a75-bc51-deac218fc4b5.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "02-jackal",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-18757952-d594-4068-ba20-1a4f12a65935.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "03-hyena",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-57d51ce5-72f6-41b7-b28b-72998a4621c2.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "04-lion",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-af23a026-dcf3-4c12-973d-b77ea104cd89.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "05-tiger",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-5bc79e0e-c488-45e4-b274-3264e091eba0.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "06-leopard",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b91acf8e-f3ec-47f7-8577-8649e0e6798e.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "07-jaguar",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-9a9a59f3-25a7-41e6-923b-5e0256db0ed7.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "08-snow-leopard",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d374b43d-b4c5-4b45-9e39-dca787862675.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "09-ocelot",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-eb644102-b505-421a-96e9-ffc38cec9e71.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "10-serval",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f9282721-aca8-45d3-8554-3a346b5d0526.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "11-stoat",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-67e661c1-5009-434e-848f-f3143b056708.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "12-weasel",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ffede294-5694-4f7a-8505-50275dc9216c.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "13-duck",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1152a0ec-c2e8-468a-ba17-e3200f962884.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "14-goose",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-7c5c4b60-ca80-40b9-b032-fe3f52df3bfc.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "15-quail",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f3b94078-a1b7-4c73-94c0-f3560e93a4f7.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "16-partridge",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-4b1a64d2-0ded-44ee-add4-a4e37d7bf18f.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "17-python",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-55528bdc-2cc1-461f-9bf7-ab8e97b9dc20.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "18-boa",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ce93f51b-2064-48a3-b7e3-e298d2d94d83.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "19-racer",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-49b18157-3f06-4429-86c1-1b0862085288.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "20-garter-snake",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6327f9b1-769f-4b7c-9230-c6f589670069.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "21-cockroach",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-57213146-1905-4437-81f5-8fa1e8169997.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "22-locust",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-cf229b56-f17b-4be7-956f-be0d288b83e5.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "23-beetle",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-95b27ed1-0095-4c71-b712-32e4a71c8b4d.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "24-termite",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-4e38b1ad-5607-472a-bb22-a363ea408e27.png",
+    "tool": "image_gen.imagegen",
+    "referenced_image_paths": [
+      "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    ],
+    "transparent_background": false
+  }
+]

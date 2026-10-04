@@ -1,0 +1,70 @@
+{
+  "creatureId": "serpent",
+  "parts": [
+    {
+      "name": "part-00.png",
+      "path": "parts/part-00.png",
+      "sha256": "36cd615b5ff894fd4e46be4b8cb8d46961927bd79df26c04213ba6b714f9ea55"
+    },
+    {
+      "name": "part-01.png",
+      "path": "parts/part-01.png",
+      "sha256": "389a826e2e41f3f271380bb6a6ae904bb65ae209a913b3b2e77e0321b27ddf5c"
+    },
+    {
+      "name": "part-02.png",
+      "path": "parts/part-02.png",
+      "sha256": "4900b8c0007bba835c53a7d2091c4cde660293e40a72bcdd5d8bf5c5ea661552"
+    },
+    {
+      "name": "part-03.png",
+      "path": "parts/part-03.png",
+      "sha256": "fc7a9ea52050dc0a8eb3a8c20b6394851068bf0029029749062b3f982cde75f9"
+    },
+    {
+      "name": "part-04.png",
+      "path": "parts/part-04.png",
+      "sha256": "ad329ba8aa4fa51cd5954e656de72f8e203674df1935e75735be8978c5961efc"
+    },
+    {
+      "name": "part-05.png",
+      "path": "parts/part-05.png",
+      "sha256": "e38b7a76603e13e384418976614a28ae005327c2ac7db249d9d6eca0c0d26f97"
+    },
+    {
+      "name": "part-06.png",
+      "path": "parts/part-06.png",
+      "sha256": "2b360b5d0136b46ff0cee8c170bb29b5fb2096967736ecfcd95c1e6b4dd5c224"
+    },
+    {
+      "name": "part-07.png",
+      "path": "parts/part-07.png",
+      "sha256": "f2034e5ffec7a1a47a11e9fcd91b6f1325f4cd57112b3082d6f06c86a0b285f9"
+    },
+    {
+      "name": "part-08.png",
+      "path": "parts/part-08.png",
+      "sha256": "995bf05a6e08e0cd830821960282163d3658ef969c53e125213f0f7fb0dcba0c"
+    },
+    {
+      "name": "part-09.png",
+      "path": "parts/part-09.png",
+      "sha256": "9c4b9c748f9720a545f0bf7128d6999945dc952d6f7f8ae1eb8ace5f6dcd921f"
+    },
+    {
+      "name": "part-10.png",
+      "path": "parts/part-10.png",
+      "sha256": "bd66f06dba84f664cfc90265aa912c6305060d8b1b7b067c27c24cab8f70d112"
+    },
+    {
+      "name": "part-11.png",
+      "path": "parts/part-11.png",
+      "sha256": "5dc60901bb9813e51d3740eb22020da9c7b570b7be64a2e48974f02011dabc40"
+    },
+    {
+      "name": "part-12.png",
+      "path": "parts/part-12.png",
+      "sha256": "371bd58cc757f4090fe18c4496394fe881ac071bd76b33cc0c3b10c520bc8407"
+    }
+  ]
+}

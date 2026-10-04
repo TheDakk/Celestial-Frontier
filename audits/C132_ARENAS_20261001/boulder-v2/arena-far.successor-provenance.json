@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c132-arena-fresh-successor/v1",
+  "reason": "Original FAR is native 1983×793 and invents two unbound moons; generate a native 16:9 successor without celestial bodies.",
+  "mode": "fresh-generation-from-locked-style",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/boulder/arena-far.prompt.txt",
+    "sha256": "9eb716b25699def447704162bec67524ec2e9e79f1501106833ef0a2da95d70b"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-far.prompt.txt",
+    "sha256": "da04a64f52449ab424d6e6cc5b725d48cb12ea17565214b693ab7e80b7c9dc3c"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    }
+  ],
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ea71a82c-2d60-4201-85a9-3fe610758f71.png",
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/boulder/arena-far.png",
+    "sha256": "8b0056f03afa7b553c35591fc4d5bf0235e07552a26b6d75e3ab06af3bc609eb"
+  },
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "The new generator output is retained byte-for-byte. Refused predecessor is unchanged. No upscale or crop was used.",
+  "qualityAccepted": false
+}

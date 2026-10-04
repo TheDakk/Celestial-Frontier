@@ -1,0 +1,11 @@
+{
+  "schema": "cf.art-review-archive-receipt.v1",
+  "archive": "/private/tmp/celestial-frontier-art-review-20260912.zip",
+  "bytes": 76925933,
+  "sha256": "712637c5e12df35b02b906ae3587f799a1848663616a4b6ec6bb23a484605566",
+  "entries": 95,
+  "pngs": 45,
+  "crcAndExactBytesVerified": true,
+  "runtimePromptHashesVerified": 7,
+  "runtimeChatPromptHashesVerified": 7
+}

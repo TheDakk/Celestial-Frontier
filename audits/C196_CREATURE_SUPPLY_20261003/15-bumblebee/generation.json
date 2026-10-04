@@ -1,0 +1,14 @@
+{
+  "id": "15-bumblebee",
+  "name": "Bumblebee",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-5794e709-1ad8-4e10-a585-bc03c8ad5fc0.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3eb05d80e7934cf611378e2bd8a4c7587d54133f2dd84fe359a9b437328cf7bf",
+  "bytes": 1357623,
+  "promptSha256": "f79225f5e9e6c9d4cfbbab8a2b1578ae11b387e7fce983aac65d486b167fab0b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

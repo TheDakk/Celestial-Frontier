@@ -1,0 +1,13 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "bc67c6cfcdcac93e010a04f896fc94dfce60e74e8ae35591fa904f9bcfbccda0",
+  "bindingHash": "0abd67fedc482805206475f80b9f4fd1fa9283e361f88da4c0488f5ac30d36e1",
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "New12x12interior fixed root patch joins surrounding continuous torso paint; other anatomical boundaries use unchanged source topology."
+}

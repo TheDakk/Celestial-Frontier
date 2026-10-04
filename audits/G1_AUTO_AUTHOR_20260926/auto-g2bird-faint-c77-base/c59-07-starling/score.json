@@ -1,0 +1,13 @@
+{
+ "id": "c59-07-starling",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches biped-bird better (0.0180 < 0.0218)",
+  "wrong-family: quadruped matches clearly better (0.0125 < 0.0218)",
+  "extra-anatomy (unassigned): a rear appendage of 7.8% paint that no reference appendage lands on",
+  "missing-anatomy: part near-thigh (legNearKnee) covers 14% paint (reference 57%)",
+  "missing-anatomy: part tail (tailFan) covers 13% paint (reference 61%)"
+ ],
+ "semanticPresence": null
+}

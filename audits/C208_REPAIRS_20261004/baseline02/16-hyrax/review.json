@@ -1,0 +1,129 @@
+{
+  "schema": "cf.c202-actual-rig-software-review/v1",
+  "status": "PASS_OFFLINE",
+  "scope": "Actual loaded CreatureRig positions equal independent publication; source-size software rendering only, no native or GPU acceptance",
+  "rows": [
+    {
+      "action": "faint",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 206.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 928.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 1032,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 206.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:bite",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-bite-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:bite",
+      "ms": 203.73333333333335,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-bite-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:bite",
+      "ms": 916.8,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-bite-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:bite",
+      "ms": 1018.6666666666666,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-bite-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:bite",
+      "ms": 203.73333333333335,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-bite-0p2.png",
+      "publishedPartParity": "byte-exact"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C208_REPAIRS_20261004/inputs/16-hyrax/fit/record.json",
+      "sha256": "fc3664eac587fece1043abb384eae2bebf9612c323d355330cc8d3a938075f21"
+    },
+    {
+      "path": "audits/C208_REPAIRS_20261004/inputs/16-hyrax/fit/binding.json",
+      "sha256": "8d60c6a2b0077fe8683a8959cc865f097a965329e7218f675f5d6c24c297d071"
+    },
+    {
+      "path": "audits/C208_REPAIRS_20261004/inputs/16-hyrax/fit/parts/atlas/16-hyrax.png",
+      "sha256": "416ea39a5c1304ed0d6b333b60815a1d52280c31112cd0d2f0a47b10e0041a37"
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/16-hyrax/packet/master.png",
+      "sha256": "686068536b23cc9e7f492b68754c48f64cb5ddcb9c2a0f17bdfaec722458b5d2"
+    },
+    {
+      "path": "audits/C208_REPAIRS_20261004/review-rig.mjs",
+      "sha256": "49472545af39795bca22c8c6217160fb34e6d5f869e8cf54b1dee61e387ead3b"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

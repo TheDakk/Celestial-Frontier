@@ -1,0 +1,30 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Tortoise",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "7f8d4a0403e76561522d89a7fd1e35340e414a7f3f3b0d5be040f446ef02ca4c",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "tortoise",
+  "authoringCreated": false,
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "basePromptSha256": "2b563cb4d6d0eea763c8f871f587b6ff7566e4a0d7a7818228881c927412b907",
+  "batchCompilerSha256": "217d164bd9b882cfb517865862c3d29cd67457de72b6db41000d5890d140b586",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null,
+  "priorPilotPaths": [],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "BIOLOGICAL PRIORITY: shell is the actual body wall; four real columnar scaly legs emerge beneath its rim. No mammal ears, artificial tail elongation, webbing or hoof substitution.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

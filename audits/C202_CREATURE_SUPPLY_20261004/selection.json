@@ -1,0 +1,666 @@
+{
+  "schema": "cf.g2-selection/v1",
+  "coveredAtSelection": 270,
+  "total": 24,
+  "targetedSourceRepaints": 24,
+  "newSourceIdentities": 0,
+  "specialists": [],
+  "scope": "Unchanged canonical source compiler; exact source-observability additions disclosed, no runtime or admission claim.",
+  "coverageSha256": "58ee0902410725ea96ebd71f2743a411bae596e5e2ff2b29de1fdaa76023fe63",
+  "rows": [
+    {
+      "id": "01-tapir",
+      "name": "Tapir",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+            "id": "18-tapir",
+            "master": null,
+            "packet": "audits/G2_QUADRUPED_PILOT_20260926/18-tapir"
+          },
+          {
+            "pilot": "audits/G2_STRIDE_PILOT_20260926/pilot.json",
+            "id": "06-tapir",
+            "master": null,
+            "packet": "audits/G2_STRIDE_PILOT_20260926/06-tapir"
+          }
+        ]
+      }
+    },
+    {
+      "id": "02-wild-boar",
+      "name": "Wild Boar",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+            "id": "19-wild-boar",
+            "master": null,
+            "packet": "audits/G2_QUADRUPED_PILOT_20260926/19-wild-boar"
+          }
+        ]
+      }
+    },
+    {
+      "id": "03-peccary",
+      "name": "Peccary",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_C76_20260927/pilot.json",
+            "id": "23-peccary",
+            "master": "audits/G2_C76_20260927/23-peccary/master.png",
+            "packet": "audits/G2_C76_20260927/23-peccary"
+          }
+        ]
+      }
+    },
+    {
+      "id": "04-coati",
+      "name": "Coati",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/04-coati",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_C87_20260927/pilot-original.json",
+            "id": "17-coati",
+            "master": "audits/G2_C87_20260927/17-coati/master.png",
+            "packet": "audits/G2_C87_20260927/17-coati"
+          },
+          {
+            "pilot": "audits/G2_C87_20260927/pilot.json",
+            "id": "17-coati",
+            "master": "audits/G2_C87_20260927/17-coati/master.png",
+            "packet": "audits/G2_C87_20260927/17-coati"
+          }
+        ]
+      }
+    },
+    {
+      "id": "05-porcupine",
+      "name": "Porcupine",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_C106_20260927/pilot.json",
+            "id": "23-porcupine",
+            "master": "audits/G2_C106_20260927/23-porcupine/master.png",
+            "packet": "audits/G2_C106_20260927/23-porcupine"
+          },
+          {
+            "pilot": "audits/C196_CREATURE_SUPPLY_20261003/pilot.json",
+            "id": "12-porcupine",
+            "master": "audits/C196_CREATURE_SUPPLY_20261003/12-porcupine/master.png",
+            "packet": "audits/C196_CREATURE_SUPPLY_20261003/12-porcupine"
+          }
+        ]
+      }
+    },
+    {
+      "id": "06-impala",
+      "name": "Impala",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/06-impala",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "01-impala",
+            "master": "audits/C186_CREATURE_SUPPLY_20261002/01-impala/master.png",
+            "packet": "audits/C186_CREATURE_SUPPLY_20261002/01-impala"
+          },
+          {
+            "pilot": "audits/C213_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "03-impala",
+            "master": "audits/C213_CREATURE_SUPPLY_20261002/03-impala/master.png",
+            "packet": "audits/C213_CREATURE_SUPPLY_20261002/03-impala"
+          },
+          {
+            "pilot": "audits/G2_C110_20260927/pilot.json",
+            "id": "04-impala",
+            "master": "audits/G2_C110_20260927/04-impala/master.png",
+            "packet": "audits/G2_C110_20260927/04-impala"
+          },
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "05-impala",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/05-impala"
+          }
+        ]
+      }
+    },
+    {
+      "id": "07-warthog",
+      "name": "Warthog",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_C98_20260927/pilot.json",
+            "id": "22-warthog",
+            "master": "audits/G2_C98_20260927/22-warthog/master.png",
+            "packet": "audits/G2_C98_20260927/22-warthog"
+          },
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "20-warthog",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog"
+          }
+        ]
+      }
+    },
+    {
+      "id": "08-buffalo",
+      "name": "Buffalo",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C196_QUADRUPED_ORIGINALS_20261002/pilot.json",
+            "id": "15-buffalo",
+            "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo/master.png",
+            "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/15-buffalo"
+          },
+          {
+            "pilot": "audits/G2_C136_REPAIRS_20261002/pilot.json",
+            "id": "07-buffalo",
+            "master": "audits/G2_C136_REPAIRS_20261002/07-buffalo/master.png",
+            "packet": "audits/G2_C136_REPAIRS_20261002/07-buffalo"
+          },
+          {
+            "pilot": "audits/G2_C110_20260927/pilot.json",
+            "id": "05-buffalo",
+            "master": "audits/G2_C110_20260927/05-buffalo/master.png",
+            "packet": "audits/G2_C110_20260927/05-buffalo"
+          },
+          {
+            "pilot": "audits/G2_C136_TARGETED_EDITS_20261002/pilot.json",
+            "id": "07-buffalo",
+            "master": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo/master.png",
+            "packet": "audits/G2_C136_TARGETED_EDITS_20261002/07-buffalo"
+          },
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "24-buffalo",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "09-badger",
+      "name": "Badger",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/09-badger",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "19-badger",
+            "master": "audits/C186_CREATURE_SUPPLY_20261002/19-badger/master.png",
+            "packet": "audits/C186_CREATURE_SUPPLY_20261002/19-badger"
+          },
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "08-badger",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/08-badger"
+          },
+          {
+            "pilot": "audits/G2_C59_20260926/pilot.json",
+            "id": "05-badger",
+            "master": "audits/G2_C59_20260926/05-badger/master.png",
+            "packet": "audits/G2_C59_20260926/05-badger"
+          },
+          {
+            "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+            "id": "09-badger",
+            "master": null,
+            "packet": "audits/G2_QUADRUPED_PILOT_20260926/09-badger"
+          }
+        ]
+      }
+    },
+    {
+      "id": "10-river-otter",
+      "name": "River Otter",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_C90_20260927/pilot.json",
+            "id": "24-river-otter",
+            "master": "audits/G2_C90_20260927/24-river-otter/master.png",
+            "packet": "audits/G2_C90_20260927/24-river-otter"
+          }
+        ]
+      }
+    },
+    {
+      "id": "11-beaver",
+      "name": "Beaver",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "20-beaver",
+            "master": "audits/C186_CREATURE_SUPPLY_20261002/20-beaver/master.png",
+            "packet": "audits/C186_CREATURE_SUPPLY_20261002/20-beaver"
+          },
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "09-beaver",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver"
+          },
+          {
+            "pilot": "audits/G2_C101_20260927/pilot.json",
+            "id": "24-beaver",
+            "master": "audits/G2_C101_20260927/24-beaver/master.png",
+            "packet": "audits/G2_C101_20260927/24-beaver"
+          }
+        ]
+      }
+    },
+    {
+      "id": "12-wolverine",
+      "name": "Wolverine",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "18-wolverine",
+            "master": "audits/C186_CREATURE_SUPPLY_20261002/18-wolverine/master.png",
+            "packet": "audits/C186_CREATURE_SUPPLY_20261002/18-wolverine"
+          },
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "07-wolverine",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine"
+          },
+          {
+            "pilot": "audits/G2_C59_20260926/pilot.json",
+            "id": "06-wolverine",
+            "master": "audits/G2_C59_20260926/06-wolverine/master.png",
+            "packet": "audits/G2_C59_20260926/06-wolverine"
+          }
+        ]
+      }
+    },
+    {
+      "id": "13-ibex",
+      "name": "Ibex",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_C107_20260927/pilot.json",
+            "id": "15-ibex",
+            "master": "audits/G2_C107_20260927/15-ibex/master.png",
+            "packet": "audits/G2_C107_20260927/15-ibex"
+          },
+          {
+            "pilot": "audits/C196_CREATURE_SUPPLY_20261003/pilot.json",
+            "id": "08-ibex",
+            "master": "audits/C196_CREATURE_SUPPLY_20261003/08-ibex/master.png",
+            "packet": "audits/C196_CREATURE_SUPPLY_20261003/08-ibex"
+          }
+        ]
+      }
+    },
+    {
+      "id": "14-chamois",
+      "name": "Chamois",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_C107_20260927/pilot.json",
+            "id": "16-chamois",
+            "master": "audits/G2_C107_20260927/16-chamois/master.png",
+            "packet": "audits/G2_C107_20260927/16-chamois"
+          }
+        ]
+      }
+    },
+    {
+      "id": "15-fishing-cat",
+      "name": "Fishing Cat",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "10-fishing-cat",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat"
+          },
+          {
+            "pilot": "audits/G2_C83_20260927/pilot-original.json",
+            "id": "17-fishing-cat",
+            "master": "audits/G2_C83_20260927/17-fishing-cat/master.png",
+            "packet": "audits/G2_C83_20260927/17-fishing-cat"
+          },
+          {
+            "pilot": "audits/G2_C83_20260927/pilot.json",
+            "id": "17-fishing-cat",
+            "master": "audits/G2_C83_20260927/17-fishing-cat/master.png",
+            "packet": "audits/G2_C83_20260927/17-fishing-cat"
+          }
+        ]
+      }
+    },
+    {
+      "id": "16-spotted-hyena",
+      "name": "Spotted Hyena",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "12-spotted-hyena",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/12-spotted-hyena"
+          },
+          {
+            "pilot": "audits/G2_C83_20260927/pilot-original.json",
+            "id": "20-spotted-hyena",
+            "master": "audits/G2_C83_20260927/20-spotted-hyena/master.png",
+            "packet": "audits/G2_C83_20260927/20-spotted-hyena"
+          },
+          {
+            "pilot": "audits/G2_C83_20260927/pilot.json",
+            "id": "20-spotted-hyena",
+            "master": "audits/G2_C83_20260927/20-spotted-hyena/master.png",
+            "packet": "audits/G2_C83_20260927/20-spotted-hyena"
+          }
+        ]
+      }
+    },
+    {
+      "id": "17-aardvark",
+      "name": "Aardvark",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "13-aardvark",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark"
+          },
+          {
+            "pilot": "audits/G2_C83_20260927/pilot-original.json",
+            "id": "24-aardvark",
+            "master": "audits/G2_C83_20260927/24-aardvark/master.png",
+            "packet": "audits/G2_C83_20260927/24-aardvark"
+          },
+          {
+            "pilot": "audits/G2_C83_20260927/pilot.json",
+            "id": "24-aardvark",
+            "master": "audits/G2_C83_20260927/24-aardvark/master.png",
+            "packet": "audits/G2_C83_20260927/24-aardvark"
+          }
+        ]
+      }
+    },
+    {
+      "id": "18-bison",
+      "name": "Bison",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/18-bison",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "19-bison",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/19-bison"
+          },
+          {
+            "pilot": "audits/G2_C59_20260926/pilot.json",
+            "id": "03-bison",
+            "master": "audits/G2_C59_20260926/03-bison/master.png",
+            "packet": "audits/G2_C59_20260926/03-bison"
+          },
+          {
+            "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+            "id": "14-bison",
+            "master": null,
+            "packet": "audits/G2_QUADRUPED_PILOT_20260926/14-bison"
+          }
+        ]
+      }
+    },
+    {
+      "id": "19-prairie-dog",
+      "name": "Prairie Dog",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_C83_20260927/pilot-original.json",
+            "id": "23-prairie-dog",
+            "master": "audits/G2_C83_20260927/23-prairie-dog/master.png",
+            "packet": "audits/G2_C83_20260927/23-prairie-dog"
+          },
+          {
+            "pilot": "audits/G2_C83_20260927/pilot.json",
+            "id": "23-prairie-dog",
+            "master": "audits/G2_C83_20260927/23-prairie-dog/master.png",
+            "packet": "audits/G2_C83_20260927/23-prairie-dog"
+          }
+        ]
+      }
+    },
+    {
+      "id": "20-wild-horse",
+      "name": "Wild Horse",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+            "id": "16-wild-horse",
+            "master": null,
+            "packet": "audits/G2_QUADRUPED_PILOT_20260926/16-wild-horse"
+          }
+        ]
+      }
+    },
+    {
+      "id": "21-goat",
+      "name": "Goat",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/21-goat",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+            "id": "20-goat",
+            "master": null,
+            "packet": "audits/G2_QUADRUPED_PILOT_20260926/20-goat"
+          }
+        ]
+      }
+    },
+    {
+      "id": "22-cat",
+      "name": "Cat",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/22-cat",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/G2_REFERENCES_C62_20260927/pilot.json",
+            "id": "05-cat",
+            "master": "audits/G2_REFERENCES_C62_20260927/05-cat/master.png",
+            "packet": "audits/G2_REFERENCES_C62_20260927/05-cat"
+          },
+          {
+            "pilot": "audits/C132_REFERENCES_20261001/pilot.json",
+            "id": "04-cat",
+            "master": "audits/C132_REFERENCES_20261001/04-cat/candidate-02/master.png",
+            "packet": "audits/C132_REFERENCES_20261001/04-cat/candidate-02"
+          }
+        ]
+      }
+    },
+    {
+      "id": "23-dog",
+      "name": "Dog",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/23-dog",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "13-dog",
+            "master": "audits/C186_CREATURE_SUPPLY_20261002/13-dog/master.png",
+            "packet": "audits/C186_CREATURE_SUPPLY_20261002/13-dog"
+          },
+          {
+            "pilot": "audits/G2_REFERENCES_C62_20260927/pilot.json",
+            "id": "06-dog",
+            "master": "audits/G2_REFERENCES_C62_20260927/06-dog-margin/master.png",
+            "packet": "audits/G2_REFERENCES_C62_20260927/06-dog-margin"
+          },
+          {
+            "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+            "id": "06-dog",
+            "master": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/master.png",
+            "packet": "audits/C192_CREATURE_SUPPLY_20261002/06-dog"
+          },
+          {
+            "pilot": "audits/C132_REFERENCES_20261001/pilot.json",
+            "id": "03-dog",
+            "master": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/master.png",
+            "packet": "audits/C132_REFERENCES_20261001/03-dog/candidate-02"
+          }
+        ]
+      }
+    },
+    {
+      "id": "24-llama",
+      "name": "Llama",
+      "family": "quadruped",
+      "packet": "audits/C202_CREATURE_SUPPLY_20261004/24-llama",
+      "master": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/master.png",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "repairReason": {
+        "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+        "priorSources": [
+          {
+            "pilot": "audits/C196_CREATURE_SUPPLY_20261003/pilot.json",
+            "id": "06-llama",
+            "master": "audits/C196_CREATURE_SUPPLY_20261003/06-llama/master.png",
+            "packet": "audits/C196_CREATURE_SUPPLY_20261003/06-llama"
+          },
+          {
+            "pilot": "audits/G2_C76_20260927/pilot.json",
+            "id": "20-llama",
+            "master": "audits/G2_C76_20260927/20-llama/master.png",
+            "packet": "audits/G2_C76_20260927/20-llama"
+          }
+        ]
+      }
+    }
+  ]
+}

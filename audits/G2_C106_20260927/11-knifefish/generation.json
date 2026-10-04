@@ -1,0 +1,13 @@
+{
+  "id": "11-knifefish",
+  "name": "Knifefish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-34242c70-bcb1-447d-b522-a327a29e2fe7.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ac04c75913d0bc7caf6ee945b6b964f0273f4e02e4e9b4acac22f81f1bd3a4ec",
+  "bytes": 1130302,
+  "promptSha256": "46bd949bbb5904ff42c04c812dc269903a2d215cc2f5fbaef8baae8489547547",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

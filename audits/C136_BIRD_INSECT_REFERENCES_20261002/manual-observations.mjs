@@ -1,0 +1,105 @@
+/** Independent full-size pixel observations of these four exact paintings.
+ * No landmarks or masks were read from any other authoring, fit or reference.
+ * Priority polygons describe visible paint only; overlap and hidden attachments remain review holds.
+ */
+export const observations={
+ '02-egret':{
+  ground:920,material:'feather',remainder:'spine',
+  points:{root:[608,671],pelvis:[572,630],spine:[631,575],chest:[720,555],neck0:[787,480],neck1:[740,395],head:[776,336],beak:[882,365],legFarKnee:[532,751],legFarAnkle:[507,882],legFarFoot:[526,902],legNearKnee:[645,771],legNearAnkle:[696,883],legNearFoot:[723,904],wingFarRoot:[666,457],wingFarTip:[415,600],wingNearRoot:[697,529],wingNearTip:[435,688],tailFan:[362,682]},
+  parts:[
+   ['legFarFoot',[[430,874],[500,871],[545,886],[601,900],[601,938],[490,938],[430,907]]],
+   ['legFarAnkle',[[495,781],[523,775],[526,879],[504,891],[491,877]]],
+   ['legFarKnee',[[571,671],[591,686],[548,758],[522,800],[510,787],[524,737]]],
+   ['legNearFoot',[[631,881],[692,878],[718,887],[804,889],[807,936],[692,936],[632,913]]],
+   ['legNearAnkle',[[642,790],[659,788],[709,880],[707,899],[689,900],[660,835]]],
+   ['legNearKnee',[[631,678],[655,678],[658,763],[657,794],[637,795],[627,769]]],
+   ['beak',[[817,340],[949,379],[949,390],[817,365]]],
+   ['head',[[717,306],[799,299],[820,330],[821,363],[754,364],[728,355]]],
+   ['neck1',[[704,350],[738,357],[747,377],[750,402],[790,409],[790,444],[740,436],[700,401],[692,376]]],
+   ['neck0',[[788,410],[822,429],[841,467],[828,527],[797,565],[758,550],[784,503],[790,459],[771,439]]],
+   ['wingFarTip',[[515,478],[566,514],[468,588],[396,638],[386,610],[399,565]]],
+   ['wingFarRoot',[[516,477],[591,438],[657,423],[689,433],[705,469],[619,497],[567,518]]],
+   ['wingNearTip',[[419,602],[546,600],[572,645],[500,693],[449,726],[410,718],[398,685]]],
+   ['wingNearRoot',[[552,522],[642,484],[700,491],[731,509],[728,561],[700,607],[637,642],[573,647],[532,607],[448,603]]],
+   ['tailFan',[[414,626],[453,666],[425,712],[359,746],[306,706],[308,658]]],
+   ['chest',[[703,479],[758,489],[783,536],[760,592],[688,646],[662,620],[688,567]]],
+   ['pelvis',[[504,620],[593,613],[643,646],[630,689],[571,702],[502,682]]],
+   ['root',[[601,664],[615,664],[615,678],[601,678]]]
+  ],notes:['Far wing is exposed by a targeted pose edit; its partly occluded shoulder attachment and near/far depth are manual interpretations requiring independent intake and motion review.','The two hocks, lower legs and toe fans are visibly distinct; individual toe-tip heights differ, so common ground contact is not certified.','Long breeding-feather fringes, crown filaments and overlap between near wing and body remain island and skin-partition risks.']
+ },
+ '03-stork':{
+  ground:938,material:'feather',remainder:'spine',
+  points:{root:[608,645],pelvis:[565,627],spine:[639,551],chest:[717,538],neck0:[755,447],neck1:[735,375],head:[754,333],beak:[849,402],legFarKnee:[542,754],legFarAnkle:[516,904],legFarFoot:[539,926],legNearKnee:[639,763],legNearAnkle:[684,910],legNearFoot:[709,929],wingFarRoot:[622,451],wingFarTip:[434,530],wingNearRoot:[680,516],wingNearTip:[397,665],tailFan:[367,696]},
+  parts:[
+   ['legFarFoot',[[471,898],[513,894],[550,914],[600,917],[600,951],[506,952],[470,929]]],
+   ['legFarAnkle',[[526,788],[547,782],[530,900],[526,916],[506,917],[502,899]]],
+   ['legFarKnee',[[565,666],[588,673],[560,751],[552,789],[532,792],[528,751]]],
+   ['legNearFoot',[[640,905],[681,899],[727,916],[782,917],[782,952],[682,953],[640,933]]],
+   ['legNearAnkle',[[634,789],[655,785],[695,906],[695,919],[676,925],[660,874]]],
+   ['legNearKnee',[[618,673],[641,673],[647,745],[655,785],[635,799],[624,764]]],
+   ['beak',[[785,343],[814,346],[930,438],[921,451],[790,376],[777,359]]],
+   ['head',[[716,304],[762,299],[790,317],[801,345],[781,367],[731,359],[710,334]]],
+   ['neck1',[[710,346],[740,353],[765,371],[775,409],[744,414],[723,391],[711,371]]],
+   ['neck0',[[735,399],[774,399],[789,447],[786,492],[760,538],[732,523],[741,476],[735,435]]],
+   ['wingFarTip',[[481,459],[543,460],[568,489],[526,520],[450,556],[397,560],[401,530],[440,489]]],
+   ['wingFarRoot',[[479,460],[577,428],[636,418],[654,430],[660,474],[593,491],[553,491],[535,461]]],
+   ['wingNearTip',[[470,577],[559,581],[591,624],[520,660],[428,702],[368,707],[365,658],[405,608]]],
+   ['wingNearRoot',[[551,493],[640,477],[682,491],[710,503],[710,535],[690,571],[630,599],[581,624],[534,577],[467,581]]],
+   ['tailFan',[[403,646],[462,678],[405,723],[359,746],[324,735],[320,706]]],
+   ['chest',[[704,478],[746,484],[769,523],[742,582],[691,632],[648,622],[686,569]]],
+   ['pelvis',[[501,625],[598,620],[641,640],[642,683],[590,694],[538,680],[498,656]]],
+   ['root',[[601,638],[615,638],[615,652],[601,652]]]
+  ],notes:['Targeted edit lifts the far wing; its shoulder junction behind the near coverts is interpreted and not proven by a motion fit.','Standing side view has two independent shanks and toe fans. Toe tips are not perfectly coplanar; unchanged contact checks must decide admission.','Black flight feathers, white tail tips and flank feather fringes retain source-specific overlap and island risks.']
+ },
+ '18-wasp':{
+  ground:793,material:'chitin',remainder:'thorax',
+  points:{root:[695,568],thorax:[695,570],head:[821,582],mandible:[848,639],abdomen:[447,625],legFrontFarKnee:[799,706],legFrontFarFoot:[824,751],legFrontNearKnee:[813,712],legFrontNearFoot:[862,774],legMidFarKnee:[632,699],legMidFarFoot:[604,780],legMidNearKnee:[691,703],legMidNearFoot:[740,792],legHindFarKnee:[521,708],legHindFarFoot:[492,786],legHindNearKnee:[479,704],legHindNearFoot:[396,784],antennaFar:[956,525],antennaNear:[955,577],wingFar:[517,482],wingNear:[519,525]},
+  parts:[
+   ['legHindNearFoot',[[449,742],[461,751],[434,785],[409,797],[364,800],[361,779],[403,773]]],
+   ['legHindNearKnee',[[531,609],[550,620],[495,704],[452,751],[438,743],[467,692]]],
+   ['legHindFarFoot',[[499,743],[514,747],[502,789],[488,806],[468,804],[470,784],[489,779]]],
+   ['legHindFarKnee',[[540,633],[563,638],[535,706],[514,750],[499,746],[506,698]]],
+   ['legMidFarFoot',[[614,741],[629,744],[620,780],[610,793],[579,793],[578,776],[600,772]]],
+   ['legMidFarKnee',[[640,629],[657,633],[649,690],[630,746],[615,742],[622,691]]],
+   ['legMidNearFoot',[[696,744],[711,740],[730,778],[749,786],[774,794],[773,811],[739,805],[718,791]]],
+   ['legMidNearKnee',[[667,614],[687,613],[697,693],[711,742],[695,747],[677,699]]],
+   ['legFrontFarFoot',[[806,731],[817,727],[828,749],[843,753],[852,767],[830,770],[809,749]]],
+   ['legFrontFarKnee',[[751,639],[791,641],[809,657],[812,707],[817,731],[805,735],[793,705],[786,666],[747,660]]],
+   ['legFrontNearFoot',[[822,745],[836,739],[854,765],[883,764],[901,774],[897,789],[865,784],[841,777]]],
+   ['legFrontNearKnee',[[721,635],[740,636],[761,648],[801,647],[816,676],[828,712],[836,742],[823,748],[811,722],[800,688],[792,668],[748,670],[719,655]]],
+   ['antennaFar',[[849,550],[890,523],[939,511],[988,517],[1021,532],[1040,550],[1034,560],[999,542],[970,534],[937,532],[897,539],[855,565]]],
+   ['antennaNear',[[850,543],[894,540],[943,553],[987,584],[1028,627],[1025,639],[1014,638],[979,598],[940,570],[893,555],[850,562]]],
+   ['mandible',[[829,615],[852,614],[866,636],[859,662],[844,668],[832,646]]],
+   ['head',[[789,522],[823,517],[846,530],[872,572],[875,611],[852,625],[827,620],[806,612],[787,590],[777,561]]],
+   ['wingFar',[[307,442],[357,441],[474,466],[618,501],[721,535],[723,544],[656,535],[497,504],[361,485],[316,474]]],
+   ['wingNear',[[311,498],[359,492],[491,506],[623,519],[724,535],[730,550],[677,554],[536,548],[400,548],[329,530]]],
+   ['abdomen',[[255,716],[288,665],[336,613],[408,570],[474,540],[526,544],[550,580],[597,584],[606,609],[551,611],[520,645],[433,677],[347,705],[277,729]]],
+   ['root',[[689,562],[701,562],[701,574],[689,574]]]
+  ],notes:['Six leg tips are independently visible, but front-pair knee/foot paths overlap closely. Near/far pairing and hidden coxal attachments are manual depth interpretations.','The far front foot is elevated relative to the other tips; no common-ground or runtime contact claim is made.','Folded wing panels remain semitransparent on magenta; fringing, root overlap and skin binding need unchanged checks.']
+ },
+ '24-water-strider':{
+  ground:832,material:'chitin',remainder:'thorax',unresolved:['mandible'],
+  points:{root:[661,547],thorax:[674,540],head:[753,522],abdomen:[566,570],legFrontFarKnee:[786,582],legFrontFarFoot:[780,618],legFrontNearKnee:[811,573],legFrontNearFoot:[850,631],legMidFarKnee:[456,517],legMidFarFoot:[403,483],legMidNearKnee:[759,660],legMidNearFoot:[948,800],legHindFarKnee:[476,607],legHindFarFoot:[302,685],legHindNearKnee:[517,675],legHindNearFoot:[350,827],antennaFar:[851,454],antennaNear:[877,466],wingFar:[588,541],wingNear:[590,552]},
+  parts:[
+   ['legFrontFarFoot',[[776,595],[790,596],[788,615],[799,615],[791,625],[777,629],[764,617],[772,611]]],
+   ['legFrontFarKnee',[[722,549],[745,554],[781,571],[792,577],[791,598],[777,600],[778,585],[739,571],[721,563]]],
+   ['legFrontNearFoot',[[826,615],[841,615],[853,625],[882,634],[888,646],[873,647],[846,637],[831,629]]],
+   ['legFrontNearKnee',[[740,536],[771,545],[814,565],[821,578],[841,616],[826,621],[805,580],[766,560],[739,548]]],
+   ['legMidFarFoot',[[389,471],[405,470],[456,508],[465,515],[456,526],[403,492],[387,484]]],
+   ['legMidFarKnee',[[456,507],[591,520],[608,523],[609,536],[583,535],[458,526]]],
+   ['legMidNearFoot',[[824,715],[915,782],[947,792],[990,787],[1007,793],[997,805],[958,813],[919,804],[891,788],[816,727]]],
+   ['legMidNearKnee',[[647,568],[665,567],[660,605],[709,628],[764,651],[831,720],[817,729],[754,669],[697,643],[642,617],[639,600]]],
+   ['legHindFarFoot',[[386,650],[394,663],[348,686],[304,696],[268,693],[256,683],[269,674],[300,680],[335,676]]],
+   ['legHindFarKnee',[[568,574],[586,580],[548,591],[478,615],[391,665],[384,651],[469,601],[541,578]]],
+   ['legHindNearFoot',[[441,754],[453,766],[401,817],[371,835],[332,844],[299,839],[291,829],[305,819],[331,826],[366,820],[391,803]]],
+   ['legHindNearKnee',[[622,579],[642,587],[631,605],[527,681],[450,770],[437,760],[512,668],[614,591]]],
+   ['antennaFar',[[770,509],[804,478],[843,447],[891,412],[903,415],[898,427],[850,461],[809,493],[778,521]]],
+   ['antennaNear',[[773,510],[811,485],[849,466],[893,450],[938,441],[946,449],[940,458],[897,461],[854,478],[817,495],[779,524]]],
+   ['head',[[733,503],[758,501],[779,509],[786,520],[780,536],[755,542],[735,534],[727,521]]],
+   ['wingFar',[[478,565],[560,538],[627,511],[688,502],[725,502],[734,520],[677,535],[606,539],[537,557]]],
+   ['wingNear',[[464,567],[531,554],[604,539],[675,531],[689,539],[641,552],[554,575],[480,583],[460,577]]],
+   ['abdomen',[[474,580],[539,576],[603,558],[649,550],[672,561],[648,580],[597,593],[537,592],[480,589]]],
+   ['root',[[655,541],[667,541],[667,553],[655,553]]]
+  ],notes:['INCOMPLETE: the piercing mouthpart is not independently identifiable as the template mandible. That landmark is deliberately omitted; no absence, hidden-part claim or painted surrogate is fabricated. This packet must fail complete intake until the anatomy mapping is resolved.','Two short forelegs and four long middle/hind legs have six separate visible tips. Their near/far depth and closely overlapping thoracic roots are interpreted, not validated.','The legs are spread through a perspective water-surface pose with unequal tip heights; one detached keyed component remains in the unmodified source. This is not a grounded standing admission.']
+ }
+};

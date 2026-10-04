@@ -1,0 +1,507 @@
+{
+  "schema": "cf.c132-arena-intake/v1",
+  "id": "milksea-v2",
+  "qualityAccepted": false,
+  "status": "TECHNICAL_INTAKE_PASS_VISUAL_REVIEW_PENDING",
+  "requested": {
+    "width": 2560,
+    "height": 1440
+  },
+  "delivered": {
+    "width": 1672,
+    "height": 941
+  },
+  "resolutionDeviation": "Generator delivered its native size; no upscaling or false target-size claim",
+  "originalMastersModified": false,
+  "extractedMasks": false,
+  "despillPolicy": "existing keyer followed, where needed, by one simultaneous color-only nearest-opaque-neighbor pass radius32 on a copy; alpha unchanged by correction",
+  "layers": [
+    {
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": null,
+      "repairReceipt": null,
+      "transparentPixels": 0,
+      "visiblePixels": 1573352,
+      "firstPaintedY": 0,
+      "firstPaintedYNormalized": 0,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 9614,
+        "despilledPixels": 300,
+        "unresolvedEdgePixels": 73
+      },
+      "repairReceipt": {
+        "passes": 1,
+        "radius": 32,
+        "targets": 77,
+        "corrected": [
+          {
+            "index": 862836,
+            "sourceIndex": 862837
+          },
+          {
+            "index": 864530,
+            "sourceIndex": 864529
+          },
+          {
+            "index": 869542,
+            "sourceIndex": 867870
+          },
+          {
+            "index": 869623,
+            "sourceIndex": 869622
+          },
+          {
+            "index": 871214,
+            "sourceIndex": 871215
+          },
+          {
+            "index": 871296,
+            "sourceIndex": 871295
+          },
+          {
+            "index": 872886,
+            "sourceIndex": 872887
+          },
+          {
+            "index": 874557,
+            "sourceIndex": 872887
+          },
+          {
+            "index": 876228,
+            "sourceIndex": 876227
+          },
+          {
+            "index": 918027,
+            "sourceIndex": 916355
+          },
+          {
+            "index": 933145,
+            "sourceIndex": 926461
+          },
+          {
+            "index": 933146,
+            "sourceIndex": 926461
+          },
+          {
+            "index": 956647,
+            "sourceIndex": 965000
+          },
+          {
+            "index": 956648,
+            "sourceIndex": 965000
+          },
+          {
+            "index": 958319,
+            "sourceIndex": 965000
+          },
+          {
+            "index": 959490,
+            "sourceIndex": 959489
+          },
+          {
+            "index": 959991,
+            "sourceIndex": 965000
+          },
+          {
+            "index": 961162,
+            "sourceIndex": 961161
+          },
+          {
+            "index": 964507,
+            "sourceIndex": 962834
+          },
+          {
+            "index": 974722,
+            "sourceIndex": 973050
+          },
+          {
+            "index": 975015,
+            "sourceIndex": 973343
+          },
+          {
+            "index": 976234,
+            "sourceIndex": 976233
+          },
+          {
+            "index": 978043,
+            "sourceIndex": 976371
+          },
+          {
+            "index": 978377,
+            "sourceIndex": 976705
+          },
+          {
+            "index": 978378,
+            "sourceIndex": 976705
+          },
+          {
+            "index": 978379,
+            "sourceIndex": 976705
+          },
+          {
+            "index": 978380,
+            "sourceIndex": 976705
+          },
+          {
+            "index": 979715,
+            "sourceIndex": 979716
+          },
+          {
+            "index": 979717,
+            "sourceIndex": 978045
+          },
+          {
+            "index": 981388,
+            "sourceIndex": 979716
+          },
+          {
+            "index": 981389,
+            "sourceIndex": 979716
+          },
+          {
+            "index": 983058,
+            "sourceIndex": 983057
+          },
+          {
+            "index": 983059,
+            "sourceIndex": 981387
+          },
+          {
+            "index": 983060,
+            "sourceIndex": 981387
+          },
+          {
+            "index": 983061,
+            "sourceIndex": 986405
+          },
+          {
+            "index": 984730,
+            "sourceIndex": 984729
+          },
+          {
+            "index": 984731,
+            "sourceIndex": 986403
+          },
+          {
+            "index": 984732,
+            "sourceIndex": 986404
+          },
+          {
+            "index": 984733,
+            "sourceIndex": 986405
+          },
+          {
+            "index": 986416,
+            "sourceIndex": 986415
+          },
+          {
+            "index": 996417,
+            "sourceIndex": 994745
+          },
+          {
+            "index": 998089,
+            "sourceIndex": 998090
+          },
+          {
+            "index": 1037022,
+            "sourceIndex": 1035349
+          },
+          {
+            "index": 1037023,
+            "sourceIndex": 1035349
+          },
+          {
+            "index": 1037024,
+            "sourceIndex": 1037026
+          },
+          {
+            "index": 1037025,
+            "sourceIndex": 1037026
+          },
+          {
+            "index": 1038694,
+            "sourceIndex": 1035349
+          },
+          {
+            "index": 1041380,
+            "sourceIndex": 1039708
+          },
+          {
+            "index": 1051391,
+            "sourceIndex": 1049719
+          },
+          {
+            "index": 1053062,
+            "sourceIndex": 1051390
+          },
+          {
+            "index": 1054733,
+            "sourceIndex": 1053061
+          },
+          {
+            "index": 1054734,
+            "sourceIndex": 1053061
+          },
+          {
+            "index": 1054744,
+            "sourceIndex": 1059763
+          },
+          {
+            "index": 1056405,
+            "sourceIndex": 1054732
+          },
+          {
+            "index": 1056406,
+            "sourceIndex": 1053061
+          },
+          {
+            "index": 1056411,
+            "sourceIndex": 1059754
+          },
+          {
+            "index": 1058078,
+            "sourceIndex": 1054732
+          },
+          {
+            "index": 1058082,
+            "sourceIndex": 1059754
+          },
+          {
+            "index": 1058083,
+            "sourceIndex": 1059754
+          },
+          {
+            "index": 1058091,
+            "sourceIndex": 1059763
+          },
+          {
+            "index": 1058092,
+            "sourceIndex": 1058093
+          },
+          {
+            "index": 1059751,
+            "sourceIndex": 1063095
+          },
+          {
+            "index": 1059752,
+            "sourceIndex": 1061425
+          },
+          {
+            "index": 1059753,
+            "sourceIndex": 1059754
+          },
+          {
+            "index": 1059755,
+            "sourceIndex": 1059754
+          },
+          {
+            "index": 1061423,
+            "sourceIndex": 1063095
+          },
+          {
+            "index": 1061424,
+            "sourceIndex": 1061425
+          },
+          {
+            "index": 1061427,
+            "sourceIndex": 1061426
+          },
+          {
+            "index": 1064768,
+            "sourceIndex": 1063096
+          },
+          {
+            "index": 1069784,
+            "sourceIndex": 1068112
+          },
+          {
+            "index": 1069786,
+            "sourceIndex": 1068114
+          },
+          {
+            "index": 1069787,
+            "sourceIndex": 1068115
+          },
+          {
+            "index": 1071456,
+            "sourceIndex": 1071455
+          },
+          {
+            "index": 1073128,
+            "sourceIndex": 1073127
+          },
+          {
+            "index": 1074800,
+            "sourceIndex": 1074799
+          },
+          {
+            "index": 1083176,
+            "sourceIndex": 1081504
+          },
+          {
+            "index": 1084848,
+            "sourceIndex": 1084847
+          }
+        ],
+        "unresolved": [],
+        "alphaUnchanged": true
+      },
+      "transparentPixels": 1062497,
+      "visiblePixels": 510855,
+      "firstPaintedY": 468,
+      "firstPaintedYNormalized": 0.4973432518597237,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 3648,
+        "despilledPixels": 0,
+        "unresolvedEdgePixels": 0
+      },
+      "repairReceipt": null,
+      "transparentPixels": 1419970,
+      "visiblePixels": 153382,
+      "firstPaintedY": 841,
+      "firstPaintedYNormalized": 0.8937300743889479,
+      "standAlphas": [
+        0,
+        0
+      ],
+      "runwayMinimumAlpha": 0,
+      "runwayMaximumAlpha": 0
+    }
+  ],
+  "contract": {
+    "schema": "cf.arena-intake-report/v1",
+    "recipeSha256": "963982e4120a33902080ccc6f2ce274117a20f49c6376ea4a7ad3ea3141e0786",
+    "seed": 2290386420,
+    "systemCardSourceSha256": "9bb5dfd04789149e949070f7123219edb24ef21b20ae494905a962c75992dbc8",
+    "groundLineNormalized": 0.78,
+    "layers": [
+      {
+        "role": "far",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "f25d207982fcb55dd221df56c642911031efcd3f7c024cdfaaae9fdbb586b5af",
+          "bytes": 2261922,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "f25d207982fcb55dd221df56c642911031efcd3f7c024cdfaaae9fdbb586b5af",
+          "bytes": 2261922,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 0,
+        "visiblePixels": 1573352,
+        "translucentPixels": 0
+      },
+      {
+        "role": "mid",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "20a099db50a4f202944e2d5c671b25aa6c44878a5f755b10e3a49b9887644d52",
+          "bytes": 1762754,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "1ba94e16ccc0b0acdcea5c35d81d4c6ff4252a4bb503448039afc9a89540972b",
+          "bytes": 2385725,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1062497,
+        "visiblePixels": 510855,
+        "translucentPixels": 0
+      },
+      {
+        "role": "near",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "e1e0d5ffaa33516f25f348ed9d286a13e134e803d39c3c337ccff45b8d3b259f",
+          "bytes": 1105266,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "ef2b089d7f86be2cb03fe968382362d9b5c0fbda5578d11eb1486dc38e9e418e",
+          "bytes": 1322518,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1419970,
+        "visiblePixels": 153382,
+        "translucentPixels": 0
+      }
+    ],
+    "qualityAccepted": false,
+    "scope": "Hashes, compiler-card provenance, seeded context, registration and alpha only. Existing human acceptance is unchanged.",
+    "pending": [
+      "composition and style review",
+      "edge/despill review",
+      "runtime replay and choreography"
+    ]
+  },
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-manifest.json",
+    "sha256": "61a739c20420b8e571ce75ab62ea0ba4ee3432c41d04e42d293290fd69cf349b"
+  },
+  "pending": [
+    "full-size composition and style review",
+    "final Dakk visual pass",
+    "Claude runtime wiring and native motion/medium proof"
+  ]
+}

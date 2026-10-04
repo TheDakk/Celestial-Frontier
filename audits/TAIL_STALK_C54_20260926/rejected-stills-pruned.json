@@ -1,0 +1,365 @@
+{
+  "scope": "Rejected native stills only; reports/failed poses retained, passing Cod named capture retained; old rejected fish review remains in durable C53 packets",
+  "files": [
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn2-dodge-reaction-50.png",
+      "bytes": 1212433,
+      "sha256": "9f5e60ccebcba92138c127df9ad5ff1200dc8410d276b383a2016517d1231885"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn0-hit-return-end.png",
+      "bytes": 1192723,
+      "sha256": "7cdfce78187395624fd53a29e67f3d0233e140c4291555df1a32c7640c0a345a"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn3-hit-approach-50.png",
+      "bytes": 1193415,
+      "sha256": "9963ef5dde2ba0690f21826b83fbe5fbe34126d6624e83223266dd321b2715de"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn0-hit-approach-50.png",
+      "bytes": 1193415,
+      "sha256": "9963ef5dde2ba0690f21826b83fbe5fbe34126d6624e83223266dd321b2715de"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn1-hit-approach-50.png",
+      "bytes": 1194894,
+      "sha256": "e610dce1fec9a42302c25c241fb7994cc90752898962a035e20428ef6125b5e2"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn3-hit-return-end.png",
+      "bytes": 1196326,
+      "sha256": "13ba873943c25098eccc649a40f555c19732033423856f295d6b1b026d87572c"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn1-hit-reaction-50.png",
+      "bytes": 1198659,
+      "sha256": "91a8cc3c2a340b42a683b82859aa187a48aeef7d47df06f56b0ddbd452ac8a4b"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn0-hit-reaction-50.png",
+      "bytes": 1209592,
+      "sha256": "5192f1de96ef0ca2cce9996c91ed500ba155e8061bf4a78f6689f3d24df50faf"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn2-dodge-return-end.png",
+      "bytes": 1192723,
+      "sha256": "7cdfce78187395624fd53a29e67f3d0233e140c4291555df1a32c7640c0a345a"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn3-hit-reaction-50.png",
+      "bytes": 1207310,
+      "sha256": "1af8d65d74a6fee969034767b61231f5f1ecf8c4136cb119f94b422c5edff608"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn1-hit-impact.png",
+      "bytes": 1195460,
+      "sha256": "b73e0ae2e9dbe30c1f85f83739bdac9163f0dd51cabac4c08e52303ba7dd76bd"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn0-hit-impact.png",
+      "bytes": 682268,
+      "sha256": "21b3273c71fe7a8ece2326934893dbdc7847d9cdbf7d284b0ac87b64c3a0737c"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn1-hit-return-end.png",
+      "bytes": 1192858,
+      "sha256": "77805f5c24ad427613b04c904026b560c7aa7058cc074fde7919c839603ec292"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn2-dodge-impact.png",
+      "bytes": 1207095,
+      "sha256": "cff824cdfd9e62c443ba33a8480239c32063167b78361e8bbca24fc6f2393aaf"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn2-dodge-approach-50.png",
+      "bytes": 1193415,
+      "sha256": "9963ef5dde2ba0690f21826b83fbe5fbe34126d6624e83223266dd321b2715de"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn3-hit-impact.png",
+      "bytes": 1194614,
+      "sha256": "38d2415041d7ca45921a1297aef660693b1afe4793bdbe449de868e9cdaa4831"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn3-hit-idle-90.png",
+      "bytes": 1196423,
+      "sha256": "f998088acbda4aa51e0787dfb5d02f922d7c9e34e3f86e6ea5c419d08092ed2a"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/07-perch/native-05/turn3-hit-idle-50.png",
+      "bytes": 1197034,
+      "sha256": "18be60ba1b02f1060a992cad6838e4507bbf1792783b189a296e2cb4db74cfa9"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn2-dodge-reaction-50.png",
+      "bytes": 1198948,
+      "sha256": "907757907ddc3425c09ae4b03a1665f8eb7c7ad592c6f556e3e091699be7fae8"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn0-hit-return-end.png",
+      "bytes": 1183153,
+      "sha256": "f5299191d809b1fa090dc519a8f2c8a445e9d0a23aa9da3320f5028e051d3a0e"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn3-hit-approach-50.png",
+      "bytes": 1181433,
+      "sha256": "5e83eb565394b3583db65a4fbc4f9ccfe165f8689f2e01ca75f79307bdfb7f82"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn0-hit-approach-50.png",
+      "bytes": 1181433,
+      "sha256": "5e83eb565394b3583db65a4fbc4f9ccfe165f8689f2e01ca75f79307bdfb7f82"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn1-hit-approach-50.png",
+      "bytes": 1182967,
+      "sha256": "0293ed5ed3108a8f88cfea1a08f491894835e14f9a720b91c2d438362ebef890"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn3-hit-return-end.png",
+      "bytes": 1187566,
+      "sha256": "110659d2880ebf484cd674c8388dfcb49f284eaf723ef6ca4fc00e5baf573f55"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn1-hit-reaction-50.png",
+      "bytes": 1189908,
+      "sha256": "6876fa6b1b039074d17586a29c979fcb19aeb8af3a3ad629eb5bc0500d240627"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn0-hit-reaction-50.png",
+      "bytes": 1197696,
+      "sha256": "b1d97487173f61232ce37f4e188d97cf3a6da06cb3668cf4d6880d98c7b1e75b"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn2-dodge-return-end.png",
+      "bytes": 1183153,
+      "sha256": "f5299191d809b1fa090dc519a8f2c8a445e9d0a23aa9da3320f5028e051d3a0e"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn3-hit-reaction-50.png",
+      "bytes": 1197360,
+      "sha256": "32a1b2e622074cee8c366ee1de07b933fc40abcd3018aea799f81d1719f21c43"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn1-hit-impact.png",
+      "bytes": 1184058,
+      "sha256": "9bebcdb01a15df7e04e8648a3571e64552cc09432fc259d07028f0cf36b8f65f"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn0-hit-impact.png",
+      "bytes": 668276,
+      "sha256": "7eb0d32adfbeeb2d48c76e65391d2d6aa7bbf1d1e4431718ce1a3614133c1a4d"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn1-hit-return-end.png",
+      "bytes": 1182586,
+      "sha256": "5d593fd7e97092cb71e817612764c182c2e7d20dc6f2c4df3cbf4dfdec553fdb"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn2-dodge-impact.png",
+      "bytes": 1193893,
+      "sha256": "bd7083e2a8d90df47699b0f00824086c29826e6344f4335c2a70147de935488c"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn2-dodge-approach-50.png",
+      "bytes": 1181433,
+      "sha256": "5e83eb565394b3583db65a4fbc4f9ccfe165f8689f2e01ca75f79307bdfb7f82"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn3-hit-impact.png",
+      "bytes": 1182899,
+      "sha256": "b89f8b05179ff042f6cef47a7ff929d215264e831d4fa3f9d30d95065b647af6"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn3-hit-idle-90.png",
+      "bytes": 1187401,
+      "sha256": "30fde4a78181e7d7e5c14f61fc60db5824a427d60ad08e6ed1de18a453c5f59b"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-05/turn3-hit-idle-50.png",
+      "bytes": 1187567,
+      "sha256": "11d170cfa027b241640578eb3c18d10683ee55616dd4ec9d60e1ced08d3308ee"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn2-dodge-reaction-50.png",
+      "bytes": 1198817,
+      "sha256": "82445b6a8aff8fd5dc216bed2128fafe99d6817c3f11a7353f6cbc1bef3c2684"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn0-hit-return-end.png",
+      "bytes": 1183079,
+      "sha256": "ac2df333409b44add7242df6fe796f101fe325aef86b1f7c13ec6ed378cdbba0"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn3-hit-approach-50.png",
+      "bytes": 1181322,
+      "sha256": "e20e1aa55acd5ec7a0213f966b59adb5ce5b8a6370a42654936211df1d4b9702"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn0-hit-approach-50.png",
+      "bytes": 1181322,
+      "sha256": "e20e1aa55acd5ec7a0213f966b59adb5ce5b8a6370a42654936211df1d4b9702"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn1-hit-approach-50.png",
+      "bytes": 1182972,
+      "sha256": "00a4a0d0a5c32cf7eb5c5cafa1e4ee13583bdbfd4da87813aebfaa650b4840bb"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn3-hit-return-end.png",
+      "bytes": 1187538,
+      "sha256": "b3fef3109b37e79569582f5cc4c012909452f56ff5547f09422a90c9fbf41d59"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn1-hit-reaction-50.png",
+      "bytes": 1189728,
+      "sha256": "6bea9d7414ed023d732a58b7b3697f87ebf0666d263c0218105ebecc7e03d3c5"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn0-hit-reaction-50.png",
+      "bytes": 1197700,
+      "sha256": "b32218eefca221e865803a4f6e5e1cfafbbc856619fe4ccc61f439f14b7dfab3"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn2-dodge-return-end.png",
+      "bytes": 1183079,
+      "sha256": "ac2df333409b44add7242df6fe796f101fe325aef86b1f7c13ec6ed378cdbba0"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn3-hit-reaction-50.png",
+      "bytes": 1197286,
+      "sha256": "8de7a0b89e4e3dd9b38486addd3b185415235b365b85a7b800c9bdb783d478af"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn1-hit-impact.png",
+      "bytes": 1184018,
+      "sha256": "8e65b7436fcdfd6084527d0edc41dfa4dc7f1dc2c0d7e7987c5984e5a7a8c8b1"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn0-hit-impact.png",
+      "bytes": 668273,
+      "sha256": "c387f3a992d0734e3d8a5401a6395305489cc7ddf3c16f6cdfc56664045e7dd3"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn1-hit-return-end.png",
+      "bytes": 1182675,
+      "sha256": "377b3a64e035947383b717a02f1b075c2d378629a5bef891ccb921cdfeea7378"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn2-dodge-impact.png",
+      "bytes": 1193846,
+      "sha256": "36e9c2ddebc46945f8f1ccc176dfd0d4b077bc08eea512cc5b98e070dcb1cffe"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn2-dodge-approach-50.png",
+      "bytes": 1181322,
+      "sha256": "e20e1aa55acd5ec7a0213f966b59adb5ce5b8a6370a42654936211df1d4b9702"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn3-hit-impact.png",
+      "bytes": 1182877,
+      "sha256": "9418c44da745cceb2f033efba52c9de7d52a00f9282fd85aaca6455de5e103c3"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn3-hit-idle-90.png",
+      "bytes": 1187377,
+      "sha256": "59fafa5f3e038dc58e6a457784368615ed4aa6406b1eff059a76dd3052fcacb6"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-07-diagnostic/turn3-hit-idle-50.png",
+      "bytes": 1187594,
+      "sha256": "962739b6204201224e5f23d72a07177599fca64392123ef03a9ca4c786b69710"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn2-dodge-reaction-50.png",
+      "bytes": 1198751,
+      "sha256": "1c3d34ba6b39413e01b8395cff4fea8c0e8d92ffc8a0a5817c117343bbab31ce"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn0-hit-return-end.png",
+      "bytes": 1182855,
+      "sha256": "478841b0c31f01b372b310dc0bb0d8f9c92297d2c3668a53f433071276c0727e"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn3-hit-approach-50.png",
+      "bytes": 1181588,
+      "sha256": "1a31562b0973a88f06b84c3081d03455f326636af64f430a1e27dca46ef9390a"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn0-hit-approach-50.png",
+      "bytes": 1181588,
+      "sha256": "1a31562b0973a88f06b84c3081d03455f326636af64f430a1e27dca46ef9390a"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn1-hit-approach-50.png",
+      "bytes": 1183215,
+      "sha256": "432a7a4aba68bc5eaa351f2a0d2fd199e5c0b679b529d83fc2f5d17cc3d96769"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn3-hit-return-end.png",
+      "bytes": 1187387,
+      "sha256": "ffa17d01c0ac1f54dffbb7ee7aa15037b6bfd3fe2998cad0cf64c2802ffa1fc4"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn1-hit-reaction-50.png",
+      "bytes": 1189641,
+      "sha256": "85b2181fa396f95d0e03774dc784b614f8fe435702c72ca75dbfd2de887bf994"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn0-hit-reaction-50.png",
+      "bytes": 1197406,
+      "sha256": "e5a7fed567fb020b74b86b7304933cb6e40173f6cfe5b62f30e353476f7b6667"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn2-dodge-return-end.png",
+      "bytes": 1182855,
+      "sha256": "478841b0c31f01b372b310dc0bb0d8f9c92297d2c3668a53f433071276c0727e"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn3-hit-reaction-50.png",
+      "bytes": 1197436,
+      "sha256": "48d5a71d41adf8ca897891530966a98488ed25f57d1a8c71f7043b88fbd0fca2"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn1-hit-impact.png",
+      "bytes": 1184142,
+      "sha256": "aa00e3b78676fa4d1d66a581c8ee994dc3e2bd2298f2c4c888ee2222ba96bc46"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn0-hit-impact.png",
+      "bytes": 668395,
+      "sha256": "cf5ece4cf418bbd85ff2858a53c26eaf8471c139582a5d5b0b7d24874a74c4c2"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn1-hit-return-end.png",
+      "bytes": 1182763,
+      "sha256": "9c7f8252e8dd14e777b42330d70f0c756589cc83639605236d5b7535b3087739"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn2-dodge-impact.png",
+      "bytes": 1194156,
+      "sha256": "feb31ed3b9230ea4ea928918ef482dc8d8a0949700b3fe4ddcc658f49a959e93"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn2-dodge-approach-50.png",
+      "bytes": 1181588,
+      "sha256": "1a31562b0973a88f06b84c3081d03455f326636af64f430a1e27dca46ef9390a"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn3-hit-impact.png",
+      "bytes": 1183157,
+      "sha256": "06ffe24636e1b99e376328f6bd5741f70faf6c5ebceec78bf09f0a0fd757fdd6"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn3-hit-idle-90.png",
+      "bytes": 1187487,
+      "sha256": "30677bde6c6258b514b45d01a7a542bf741ce46af14e745ef1ae1646f63744e6"
+    },
+    {
+      "path": "audits/TAIL_STALK_C54_20260926/08-cod/native-04-aquatic/turn3-hit-idle-50.png",
+      "bytes": 1187596,
+      "sha256": "15c90c04d12d5f1beaa11956cb872216762d7e1e40657f3c3d84c0649b821fbc"
+    }
+  ]
+}

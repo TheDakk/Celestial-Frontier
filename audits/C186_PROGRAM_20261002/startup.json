@@ -1,0 +1,18 @@
+{
+  "lane": "openai/mac",
+  "host": "macOS",
+  "workspace": "~/Projects/celestial-frontier-openai-mac",
+  "mergedSignedHead": "5743b2670",
+  "siblingThrough": "2879eed4a",
+  "mailboxRead": [
+    "C184",
+    "C185",
+    "C186"
+  ],
+  "coverage": 218,
+  "toolchainReceipt": "audits/C163_SPRAWLER_MOTION_20261002/toolchain-check.log",
+  "session": "uninterrupted C132 continuation",
+  "node": "v26.10.0",
+  "freeGiB": 138.092041015625,
+  "allPairsAuthorized": false
+}

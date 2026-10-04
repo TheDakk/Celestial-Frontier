@@ -1,0 +1,14 @@
+{
+  "id": "04-crab",
+  "name": "Crab",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ce2e5995-0a09-452a-883f-d020c4eb9669.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "73e7cef15eb6d7de50c20054ee5a68b31621c0f3f3712b18e99e538f92ad80cc",
+  "bytes": 1515013,
+  "promptSha256": "25d9dae383c84f0bd05330f442f119a14c509c9bb77f74701578144b37b7db4c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

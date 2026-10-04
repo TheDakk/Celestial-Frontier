@@ -1,0 +1,32 @@
+[
+  {
+    "id": "01-tiger",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-05779955-4422-4a11-a2dd-e1cb7b02aa29.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "02-leopard",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f3677f25-9586-4130-b8d1-fce1535b6b4a.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "03-jaguar",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c2a05743-2802-494e-bf7b-4b276aa7b352.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "04-ocelot",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-70e4d9fc-180e-4ab0-8baf-dd8f896a4f2e.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "05-snow-leopard",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c9adfa47-a4be-4932-8aaa-f829268c1003.png",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "06-clouded-leopard",
+    "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c5e76602-26c0-4b52-9e30-9e0ad847265d.png",
+    "tool": "image_gen.imagegen"
+  }
+]

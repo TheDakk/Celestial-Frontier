@@ -1,0 +1,91 @@
+{
+  "name": "Firefly",
+  "family": "insect",
+  "species": {
+    "name": "Firefly",
+    "aspect": 2.6,
+    "headFrac": 0.12,
+    "eyes": "prominent",
+    "posture": "crawling",
+    "mustRead": [
+      "glowing pale yellow-green lantern at the abdomen tip",
+      "soft leathery elytra with the head hidden under a shield",
+      "thread-like antennae"
+    ],
+    "note": "A beetle, not a fly - it has hard wing-covers and only glows from the underside of the rear segments."
+  },
+  "genome": {
+    "seed": 2295515000,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 5,
+    "body": 2,
+    "loco": 12,
+    "trait": 9,
+    "size": 2,
+    "diet": 0,
+    "head": 6,
+    "limbs": 5,
+    "skin": 2,
+    "tail": 1,
+    "pattern": 2,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 6,
+    "detail": 9,
+    "accent": 0,
+    "temper": 4,
+    "sense": 6,
+    "repro": 5,
+    "life": 2,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Firefly"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Firefly\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2295515000\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "index": 592,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

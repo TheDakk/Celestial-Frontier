@@ -1,0 +1,66 @@
+{
+  "subjectCount": 7,
+  "maximumSubjectsPerSheet": 12,
+  "painterScale": 1,
+  "cropScale": 3,
+  "arenaCrabWidthPx": 220,
+  "arenaScaleScope": "review battle scale, not an integrated battle capture",
+  "sources": [
+    {
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/crab-master.png",
+      "sha256": "dd419ae94d47663e22cc7ca598247d5c2d539b78dff24bb2b881bf16ecae5655"
+    },
+    {
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/R9/finish-01/crab-finished.png",
+      "sha256": "37f46f61633789d093f9e7a604b5cbf2c27ba3ef3e93e0917907c05dd4302370"
+    },
+    {
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/freshwater-crab-master.png",
+      "sha256": "65cd0220488bbdda7cd220c67a33817c8155e7fec87087692d02279f6df11a57"
+    },
+    {
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/R9/finish-01/freshwater-crab-finished.png",
+      "sha256": "7918084d8d8b01708771348cb276f06dfc9a62f6539c0d29b48634eff45ab135"
+    },
+    {
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/mud-crab-master.png",
+      "sha256": "c08d616382e86c4dfa21fd895a25f4eda1dd3ee9efa8ed9751ea978bc9ae3379"
+    },
+    {
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/R9/finish-01/mud-crab-finished.png",
+      "sha256": "3b32fbe9f69e5176e4ec837ce2d68803789acddb9ff24722bd607a2fe396c558"
+    },
+    {
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/vent-crab-master.png",
+      "sha256": "148bb4b6e0c937a43c5f822f561f1e76c44acdf55235ffe427867a3f831a363c"
+    },
+    {
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/R9/finish-01/vent-crab-finished.png",
+      "sha256": "efe4c113757e3e47174ae0c3237fa1bd597c36c6b45c6ce6e6ac32bd8295037d"
+    },
+    {
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/coconut-crab-master.png",
+      "sha256": "a0f681a8e44f374407424e5e60b2e5deffb8a23162cfefe3ace96b8cfb4d4832"
+    },
+    {
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/R9/finish-01/coconut-crab-finished.png",
+      "sha256": "6a41e84fda6886a9c022ff133bd8f2e4386df57d296c1965cd350e72a6ee2208"
+    },
+    {
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/R9/q1-01/crab-master.png",
+      "sha256": "a4bfb33c3410e31bd80765b35226e6c74f0230b1ef73c924338b3ddd695e3ca4"
+    },
+    {
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/R9/q1-01/coconut-crab-master.png",
+      "sha256": "cdbb1d9f287e5bce1b71c60b5473ff88487236cf74a0e37bb7d0f91225ae6986"
+    },
+    {
+      "file": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-template-v1.png",
+      "sha256": "84e023f37216cbe2c6df54313dfb1a59a6c7db3bf94d441f53cbbda36c0abd5c"
+    },
+    {
+      "file": "audits/ANATOMY_SINGLE_RUN_20260919/R9/finish-01/crab-finished.png",
+      "sha256": "37f46f61633789d093f9e7a604b5cbf2c27ba3ef3e93e0917907c05dd4302370"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "359ea5009240cea77a5b7c8a464917914cfbf52d52beebf98becd8fa78f7e7d6",
+  "bindingHash": "e5a312ee4500c06724c1e3440a48977180854c1610dd36c8fafecfa1875af0a7",
+  "pairs": [
+    [
+      "body",
+      "near-wing-shoulder"
+    ],
+    [
+      "body",
+      "far-wing-shoulder"
+    ],
+    [
+      "far-wing-shoulder",
+      "neck-lower"
+    ],
+    [
+      "near-wing-shoulder",
+      "neck-lower"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "The four proximal shoulder/body/neck feather junctions are connected paint in this single master. Native impact shows small openings here. Distal wing overlap edges, near/far wings and legs remain independent. This declaration is authored from the retained master and film, not inferred from the excluded-adjacency list."
+}

@@ -1,0 +1,19 @@
+✔ authored mask ownership reconstructs visible pixels; drops, duplicates and changed colours fail (379.029625ms)
+✔ corruption, wrong master, wrong record and unknown joint refuse before output (166.948542ms)
+✔ painter labels reconstruct actual alpha and refuse dropped, unknown or rehashed foreign owners (464.664833ms)
+✔ projected independent surfaces retain exact source coordinates and cannot inherit opposing paint (7.930792ms)
+✔ observed attachments weld all source-supported faces, not independent overlaps (1.411833ms)
+✔ corrupted binding/probe, missing source face and conflicting fixed owners refuse (1.050334ms)
+✔ flat source ownership boundaries weld only when explicitly requested (0.89025ms)
+✔ mutated source recipe and unknown anatomy refuse before compilation (0.3515ms)
+✔ contact endpoint locks survive diffusion; unpinned shared paint retains mixed influence (1.81ms)
+✔ existing-field contact refresh preserves every non-contact weight, pin and triangle (0.837916ms)
+✔ contact conflict repair releases only neighbouring non-contact pins without changing weights (0.722209ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1216.932125

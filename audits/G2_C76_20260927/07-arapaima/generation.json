@@ -1,0 +1,13 @@
+{
+  "id": "07-arapaima",
+  "name": "Arapaima",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c7d1b5d1-15cb-414c-a946-e1a82d1aeb03.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "953c7efea470b7ed5aa29a2656376726642be56df0e82162cd22e66c20787974",
+  "bytes": 1235685,
+  "promptSha256": "7989fd8d392f2cbe258b0c772f089dbbec1ad8d7d1542a182e7b7c81dc83533e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

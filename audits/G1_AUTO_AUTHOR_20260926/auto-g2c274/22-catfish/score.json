@@ -1,0 +1,12 @@
+{
+ "id": "22-catfish",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-pectoral (pectoralNear) covers 9% paint (reference 86%)",
+  "missing-anatomy: part far-pectoral (pectoralFar) covers 26% paint (reference 77%)",
+  "missing-anatomy: part jaw (jaw) covers 3% paint (reference 16%)",
+  "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+ ],
+ "semanticPresence": null
+}

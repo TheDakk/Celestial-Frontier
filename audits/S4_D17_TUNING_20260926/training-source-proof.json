@@ -1,0 +1,7 @@
+{
+  "sourceHead": "2fae1e737f59ba96269ee207693226acc50f775d",
+  "sourceFile": "port/v2/packages/domain/combatcore/src/encounter.ts",
+  "sha256": "9c20ca57d0d47d9946fe7b42b041d1d764a0452550ea75f00711a7f0f926afa7",
+  "retainedBundleSourceHash": "9c20ca57d0d47d9946fe7b42b041d1d764a0452550ea75f00711a7f0f926afa7",
+  "scope": "Encounter engine before constant edits; training copies substitute constants and export guardianFor. Not an integrated-source certificate."
+}

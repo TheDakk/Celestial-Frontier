@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cow",
+  "masterSha256": "6dec68473a30935385b10fdf874d56004c33962ffbf1c8f7f680a8052f0618f4",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

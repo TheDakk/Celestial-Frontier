@@ -1,0 +1,28 @@
+{
+  "name": "Snowshoe Hare",
+  "masterSha256": "89f7b4946f99c6300bc7a1849a7485fae6500c7dafb04c9733d053b58c988d7f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: white winter coat, black-tipped long ears, large furry hind feet and four clearly separate paws. Tail is not independently distinguished from rump fur, far-ear base and upper far roots partly hidden. Elevated stance and relative fore/hind limb proportions remain morphology/grounding holds; no hopping-motion claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 315,
+      "y0": 309,
+      "x1": 955,
+      "y1": 937
+    },
+    "margins": {
+      "left": 315,
+      "right": 298,
+      "top": 309,
+      "bottom": 316
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

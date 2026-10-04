@@ -1,0 +1,91 @@
+{
+  "name": "Damselfly",
+  "family": "insect",
+  "species": {
+    "name": "Damselfly",
+    "aspect": 4,
+    "headFrac": 0.12,
+    "eyes": "prominent",
+    "posture": "flying",
+    "mustRead": [
+      "needle-thin stick abdomen",
+      "wings held closed together over the back at rest",
+      "hammerhead face with widely separated eyes"
+    ],
+    "note": "Not a dragonfly - the eyes are set apart on the sides and the wings fold rather than staying spread."
+  },
+  "genome": {
+    "seed": 2284214973,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 10,
+    "body": 7,
+    "loco": 17,
+    "trait": 15,
+    "size": 3,
+    "diet": 3,
+    "head": 3,
+    "limbs": 5,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 5,
+    "habitat": 13,
+    "detail": 2,
+    "accent": 2,
+    "temper": 6,
+    "sense": 7,
+    "repro": 5,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Damselfly"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Damselfly\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2284214973\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "index": 382,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

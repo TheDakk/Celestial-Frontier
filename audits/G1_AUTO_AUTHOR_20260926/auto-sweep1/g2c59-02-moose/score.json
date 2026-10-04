@@ -1,0 +1,10 @@
+{
+ "id": "g2c59-02-moose",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 25%)",
+  "missing-anatomy: part tail2 (tail2) covers 25% paint (reference 81%)"
+ ],
+ "semanticPresence": null
+}

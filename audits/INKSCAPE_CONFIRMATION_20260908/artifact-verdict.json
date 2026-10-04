@@ -1,0 +1,10 @@
+{
+  "schema": "cf-inkscape-confirmation-artifact-verdict/v1",
+  "status": "PASS",
+  "noNewExportOrRetry": true,
+  "exactPngBytesMatchPriorSuccessfulExport": true,
+  "pngSha256": "d92fb5e826d2faca239fe5dc946caa48de27a88adfd1a15b073c48f7ad81b3a3",
+  "visualInspection": "PASS: correct planet/ring graphic",
+  "warning": "GDK CVDisplayLink initialization warning; both version and export exited zero",
+  "retainedInstrumentFailure": "Initial controller expected AE output 0 exactly; ImageMagick emitted 0 (0). No pixels changed. Original manifest retained unchanged."
+}

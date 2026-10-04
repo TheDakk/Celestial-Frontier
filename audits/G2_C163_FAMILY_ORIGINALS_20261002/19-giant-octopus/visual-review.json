@@ -1,0 +1,28 @@
+{
+  "name": "Giant Octopus",
+  "masterSha256": "ed746451e5751a2189ccb630bb5d8d37fdc3ff6145d3df24b89d88ef36afccc2",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Large red-brown mottled mantle, muscular sucker-bearing arms and eight visibly separate curled terminal tips are present. Roots overlap beneath the head and still require traced ownership; visible count is not an anatomy declaration. The eye pupil is oblique and mantle opening/siphon detail needs review. No extra fins or long clubbed feeding tentacles; full silhouette uncropped.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 199,
+      "y0": 307,
+      "x1": 1070,
+      "y1": 941
+    },
+    "margins": {
+      "left": 199,
+      "right": 183,
+      "top": 307,
+      "bottom": 312
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

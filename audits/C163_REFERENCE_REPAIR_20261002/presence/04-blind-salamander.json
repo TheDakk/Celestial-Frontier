@@ -1,0 +1,29 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Blind Salamander",
+  "family": "quadruped",
+  "masterSha256": "e9b6b1c67854e873ac998afb711e829a61413e450cfcb0ba3afd632980d24c3a",
+  "subjectSha256": "1820b6a52b3d421df88af48e5ff8e0667b1b7a9a2a0dc78ca7773fde78a77e29",
+  "promptSha256": "8ffbc8f36245e17117e05adaa20ada4d8dc2d060bdc5a378e95a2649ed27499b",
+  "profileId": "salamander",
+  "profileSha256": "4e32272af8ac420f81285b7ddc69a584cd5a6c654fd16395a8edf09c07e37229",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: pale smooth skin, long tail fin and branching external gills behind the flattened head. The gills are natural head/neck paint, not ears, and are not removed. Four slender limbs are visible at different heights; ground contact and toe interpretation remain held.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. External gills, ear openings and all other actual head/neck paint remain present and are not excluded."
+      }
+    ]
+  },
+  "scope": "exact-master-only-no-visual-admission"
+}

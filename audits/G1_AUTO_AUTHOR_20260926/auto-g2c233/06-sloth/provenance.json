@@ -1,0 +1,128 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "06-sloth",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "60506dea26146c98ec3223eeba7b564006cf41b5e16da5f91c663576755b152b",
+ "subjectSourceSha256": "22c67eefcf50329d6e3e9143a76a03f550cc3f7c4e5597e42a8ea04e489f5aee",
+ "identity": {
+  "name": "Sloth",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sloth\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"657590311\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"3\"]]]]",
+  "seed": 657590311,
+  "checks": [
+   "materials-unknown: no species-group material for profile xenarthran; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "xenarthran",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "e7fcac27fd86cdfd6ac58a6c4fa95a7a19d767c5050637e9f54707a534f1ef12",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group xenarthran (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0042,
+     "class": "top",
+     "attach": {
+      "x": 193.5,
+      "y": 138,
+      "relX": 0.42,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0675,
+     "class": "front",
+     "attach": {
+      "x": 289.4,
+      "y": 162.1,
+      "relX": 0.96,
+      "relY": 0.27
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1279,
+     "class": "limb-down",
+     "attach": {
+      "x": 124.4,
+      "y": 212.1,
+      "relX": 0.03,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1227,
+     "class": "limb-down",
+     "attach": {
+      "x": 282.9,
+      "y": 210.9,
+      "relX": 0.92,
+      "relY": 0.83
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1088,
+     "class": "limb-down",
+     "attach": {
+      "x": 212,
+      "y": 226,
+      "relX": 0.52,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0696,
+     "class": "limb-down",
+     "attach": {
+      "x": 169,
+      "y": 227,
+      "relX": 0.28,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

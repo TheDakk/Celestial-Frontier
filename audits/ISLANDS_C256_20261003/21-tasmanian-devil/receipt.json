@@ -1,0 +1,259 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c256/21-tasmanian-devil/fit",
+  "sourceMasterSha256": "7c6b65d32df78613d46cf3be64b4da7c439fdcbff5723be97e00b064ebe9163a",
+  "keyedRgbaSha256": "37d73a930544d64cfea8f3169a3c2a8a922c5031028c999e1daf3ff9be875f81",
+  "remainder": "spine",
+  "remainderPixels": 53679,
+  "movedPixels": 15989,
+  "islands": [
+    {
+      "pixels": 1145,
+      "to": "ear-near-root",
+      "border": {
+        "ear-near-tip": 39,
+        "ear-near-root": 65,
+        "neck": 56
+      }
+    },
+    {
+      "pixels": 281,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-near-tip": 13,
+        "ear-far-tip": 32,
+        "ear-far-root": 20
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 5,
+      "to": "tail1",
+      "border": {
+        "tail1": 6,
+        "tail0": 2
+      }
+    },
+    {
+      "pixels": 755,
+      "to": "tail1",
+      "border": {
+        "tail2": 41,
+        "tail1": 53
+      }
+    },
+    {
+      "pixels": 478,
+      "to": "fore-far-root",
+      "border": {
+        "fore-far-root": 42,
+        "neck": 25
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-root": 2,
+        "tail1": 2
+      }
+    },
+    {
+      "pixels": 117,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-root": 48,
+        "tail1": 40
+      }
+    },
+    {
+      "pixels": 5251,
+      "to": "fore-far-knee",
+      "border": {
+        "fore-near-knee": 12,
+        "fore-near-root": 51,
+        "fore-far-paw": 41,
+        "fore-far-ankle": 113,
+        "fore-far-knee": 129,
+        "fore-far-root": 59,
+        "chest": 20
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "tail3",
+      "border": {
+        "tail3": 1
+      }
+    },
+    {
+      "pixels": 1765,
+      "to": "hind-far-root",
+      "border": {
+        "hind-far-knee": 53,
+        "hind-far-root": 98
+      }
+    },
+    {
+      "pixels": 1385,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-knee": 54,
+        "hind-near-root": 61,
+        "hind-far-knee": 5,
+        "hind-far-root": 33
+      }
+    },
+    {
+      "pixels": 138,
+      "to": "fore-near-knee",
+      "border": {
+        "fore-near-knee": 48,
+        "fore-near-root": 4
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "fore-near-knee",
+      "border": {
+        "fore-near-knee": 8
+      }
+    },
+    {
+      "pixels": 1569,
+      "to": "hind-far-knee",
+      "border": {
+        "hind-far-paw": 1,
+        "hind-far-ankle": 72,
+        "hind-far-knee": 109
+      }
+    },
+    {
+      "pixels": 2057,
+      "to": "hind-near-ankle",
+      "border": {
+        "hind-near-paw": 46,
+        "hind-near-ankle": 119
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 2
+      }
+    },
+    {
+      "pixels": 358,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-paw": 13,
+        "fore-near-ankle": 68
+      }
+    },
+    {
+      "pixels": 190,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 34,
+        "hind-far-ankle": 19
+      }
+    },
+    {
+      "pixels": 480,
+      "to": "fore-near-paw",
+      "border": {
+        "fore-near-paw": 59
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-paw",
+      "border": {
+        "fore-near-paw": 1
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "21-tasmanian-devil",
+    "parts": 31,
+    "atlasSize": {
+      "width": 644,
+      "height": 1226
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 15,
+        "distancePx": 7.653757247260961,
+        "supports": [
+          272
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 33,
+        "distancePx": 3.101612483854139,
+        "supports": [
+          671,
+          628
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 42,
+        "distancePx": 7.158910531638225,
+        "supports": [
+          56
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 56,
+        "distancePx": 4.04474968323131,
+        "supports": [
+          429
+        ]
+      }
+    ],
+    "sourceBindingHash": "270d1bf70cef314659612b3be20f5ac2719919f6d92f2a9732e7de63d2057da1",
+    "sourceVertices": 1431,
+    "vertices": 1605,
+    "sharedSupports": 600,
+    "pins": 36,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 36,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 13,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "cf.c186-source-holds/v1",
+  "qualityAccepted": false,
+  "holds": [
+    {
+      "id": "Takin",
+      "evidence": "14-takin-tail-hoof",
+      "status": "PASS_STATIC_BUT_ANATOMICAL_HOLD",
+      "observed": "Tail and distal hoof correction compile and pass unchanged static/D28. Full-size ownership still puts inherited ear material on horn/crest, and far pinna is not independently separable in the original.",
+      "next": "Obtain a source view with both actual ears visible or a truthful supported hidden declaration; do not admit this fit as a complete observed reference.",
+      "evidenceSha256": null
+    },
+    {
+      "id": "Dromedary Camel",
+      "evidence": "17-dromedary-tail",
+      "status": "STATIC_REFUSED",
+      "observed": "Tail pixels are now bounded to the actual shaft/tuft, but inherited contact geometry refuses melee:tail at 246.17777777777778 ms with scale compression bound.",
+      "next": "Correct the relevant source-bound chain after precise contact diagnosis; do not relax bound.",
+      "evidenceSha256": null
+    },
+    {
+      "id": "Impala",
+      "evidence": "audits/C186_CREATURE_SUPPLY_20261002/01-impala/master.png",
+      "status": "SOURCE_REPAINT_REVIEWED_NO_FIT",
+      "observed": "The new source has four hoof endpoints and two forelegs. Old five-leg source must remain refused. New far pinna is only a tiny sliver behind horn/head; full far-ear root/tip cannot be authored honestly from this view.",
+      "next": "Keep source hold or explicitly supported partial-visibility declaration; no inherited masks rebound to new pixels.",
+      "evidenceSha256": "c44ccc6e081abd0cc9cac9e9027ccde3b0a94f93c54086582797615c65033c51"
+    },
+    {
+      "id": "Caribou",
+      "evidence": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/12-caribou/evidence.json",
+      "status": "UNRESOLVED",
+      "observed": "Full-size source has four visible distal hooves; automatic inventory itself reports ground4 and four limb-down appendages, with one unmapped. This does not establish a fifth real limb. Far pinna is obscured among antlers/head.",
+      "next": "Independent anatomical ownership needed; do not turn the automatic unassigned-appendage result into a species anatomy claim.",
+      "evidenceSha256": "5206bad7c186739dc999abf9a875da3a3cdf7510e25ded8f022340611e76d078"
+    },
+    {
+      "id": "Yak",
+      "evidence": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/13-yak/evidence.json",
+      "status": "UNRESOLVED",
+      "observed": "Four distal hooves and a large down-left tail tassel are visible. The 7.3% unassigned detector appendage is at the left-down tail area; dense coat makes chain roots/second ear unclear.",
+      "next": "Trace observed tail/coat and explicitly limit hidden anatomy before a fit; no extra-limb inference.",
+      "evidenceSha256": "98a90428ea688312f77acc71745fa2f785df3795fca263722317b5ae2bfc6675"
+    },
+    {
+      "id": "Bactrian Camel",
+      "evidence": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/18-bactrian-camel/evidence.json",
+      "status": "UNRESOLVED",
+      "observed": "Two humps, long neck ruff, four feet and one distinct pinna are visible. The inherited neck envelope crosses the front hump, while substantial beard/ruff extends below it. Whole ownership needs manual re-authoring; 7.2% unexplained paint is not deleted.",
+      "next": "Author actual humps/ruff and a truthful visibility record; no forced full far ear.",
+      "evidenceSha256": "a4d6daa49a76d26ce6b2187e26af5b97cf975b180e3da875f51e3f088ebf36ae"
+    },
+    {
+      "id": "Other earlier holds",
+      "status": "UNCHANGED",
+      "evidence": "audits/C183_REMAINING_HOLDS_20261002/delivery.json",
+      "observed": "Hawk, Snowy Owl, Capuchin, Snow Petrel and additional equid/reptile/primate/bat holds were not changed by this bounded ungulate repair packet.",
+      "evidenceSha256": "90d7921b3a0ab76e4a586f9c9223f9c54a621c5018118f07df3250c652de1c4c"
+    }
+  ]
+}

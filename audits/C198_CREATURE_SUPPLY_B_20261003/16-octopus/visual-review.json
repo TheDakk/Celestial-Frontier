@@ -1,0 +1,28 @@
+{
+  "name": "Octopus",
+  "masterSha256": "23e3a0b205f734d69f0cb44cea7e2ad4eb24b2d9103f93d29f9ea3a56be1d5eb",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: mottled red-brown bulbous mantle, clear near eye, tiny far-eye sliver, tubular siphon, sucker-bearing curved arms and no invented fins. Seven distinct distal tips are clear; an eighth independent root-to-tip arm is unresolved among overlapping central arms. Far eye contour incomplete. Source held for mandatory eye/arm observability; no absent/hidden anatomy substitution.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 192,
+      "y0": 251,
+      "x1": 1076,
+      "y1": 970
+    },
+    "margins": {
+      "left": 192,
+      "right": 177,
+      "top": 251,
+      "bottom": 283
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

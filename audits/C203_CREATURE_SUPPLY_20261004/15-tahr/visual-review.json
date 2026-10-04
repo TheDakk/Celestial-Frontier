@@ -1,0 +1,28 @@
+{
+  "name": "Tahr",
+  "masterSha256": "9839c4ac570575823dd0c5b7bb835917cdec4a1e23523964b282ce4fc20067d5",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four distinct cloven hoof endpoints, short attached tail and recurved horns. Long chest/belly mane hides proximal forelimb roots; near ear visible but far ear not independently exposed. Fine long fur edges remain untested for ownership islands and head-down motion.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 274,
+      "y0": 254,
+      "x1": 1011,
+      "y1": 975
+    },
+    "margins": {
+      "left": 274,
+      "right": 242,
+      "top": 254,
+      "bottom": 278
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

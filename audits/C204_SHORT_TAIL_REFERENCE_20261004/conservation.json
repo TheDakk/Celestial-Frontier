@@ -1,0 +1,194 @@
+{
+  "schema": "cf.c202-independent-source-conservation/v1",
+  "packet": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer-contours",
+  "masterSha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8",
+  "authoringSha256": "63b3097ab0ea1776156afc64073e064d04a96cace379ae01a08634749243a399",
+  "bindingSha256": "fcb4881ba822cb9dc0c7e49e9a82c2be41b6f58b38b7f1b1c166be4123a414f8",
+  "keyedRgbaSha256": "1f0fc0288e38ab06f11cf9af32b8521eb6969deb7db819a9922691b50a587aed",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 609,
+    "remainderPixels": 22519,
+    "islands": [
+      {
+        "pixels": 78,
+        "to": "earNearTip",
+        "border": {
+          "18": 24,
+          "19": 15,
+          "27": 2,
+          "28": 9
+        }
+      },
+      {
+        "pixels": 42,
+        "to": "tail1",
+        "border": {
+          "24": 19,
+          "25": 17
+        }
+      },
+      {
+        "pixels": 149,
+        "to": "neck",
+        "border": {
+          "26": 16,
+          "27": 9,
+          "28": 30
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "neck",
+        "border": {
+          "28": 4
+        }
+      },
+      {
+        "pixels": 167,
+        "to": "hindNearKnee",
+        "border": {
+          "4": 27,
+          "12": 2,
+          "30": 14
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "neck",
+        "border": {
+          "28": 1
+        }
+      },
+      {
+        "pixels": 73,
+        "to": "hindNearPaw",
+        "border": {
+          "2": 7,
+          "3": 7
+        }
+      },
+      {
+        "pixels": 32,
+        "to": "hindFarAnkle",
+        "border": {
+          "10": 5,
+          "11": 8
+        }
+      },
+      {
+        "pixels": 59,
+        "to": "foreNearAnkle",
+        "border": {
+          "7": 14
+        }
+      },
+      {
+        "pixels": 5,
+        "to": "foreFarPaw",
+        "border": {
+          "14": 5
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateRemainderComponents": [
+    {
+      "pixels": 21910,
+      "minX": 480,
+      "minY": 558,
+      "maxX": 715,
+      "maxY": 732
+    },
+    {
+      "pixels": 167,
+      "minX": 447,
+      "minY": 716,
+      "maxX": 467,
+      "maxY": 733
+    },
+    {
+      "pixels": 149,
+      "minX": 819,
+      "minY": 613,
+      "maxX": 832,
+      "maxY": 629
+    },
+    {
+      "pixels": 78,
+      "minX": 770,
+      "minY": 524,
+      "maxX": 781,
+      "maxY": 552
+    },
+    {
+      "pixels": 73,
+      "minX": 334,
+      "minY": 856,
+      "maxX": 340,
+      "maxY": 873
+    },
+    {
+      "pixels": 59,
+      "minX": 743,
+      "minY": 876,
+      "maxX": 749,
+      "maxY": 889
+    },
+    {
+      "pixels": 42,
+      "minX": 388,
+      "minY": 593,
+      "maxX": 397,
+      "maxY": 605
+    },
+    {
+      "pixels": 32,
+      "minX": 500,
+      "minY": 872,
+      "maxX": 503,
+      "maxY": 882
+    },
+    {
+      "pixels": 5,
+      "minX": 612,
+      "minY": 878,
+      "maxX": 612,
+      "maxY": 882
+    },
+    {
+      "pixels": 3,
+      "minX": 770,
+      "minY": 741,
+      "maxX": 771,
+      "maxY": 742
+    },
+    {
+      "pixels": 1,
+      "minX": 801,
+      "minY": 706,
+      "maxX": 801,
+      "maxY": 706
+    }
+  ],
+  "unchangedD28Cap": 0.5,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent normalized-polygon ownership replay",
+    "no source alpha addition/deletion",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "ownership mutation rejected",
+    "legacy structural-island negative control refused with explicit 0.05; authorized default remains 0.5"
+  ],
+  "sourceControlFrameLimit": null,
+  "qualityAccepted": false,
+  "native": false
+}

@@ -1,0 +1,151 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c192-islands-01-octopus-author03",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "1c7ec8cb7ec1e12006ead8696f1a6d45bbe45a6769f97ae68c905028d161e07d",
+    "pngSha256": "e7a61e065b52ce21a16d2fbbca17be2c7428b7896ca6eea7d891c9f7297a87bb"
+  },
+  "parts": [
+    {
+      "name": "arm0-base.png",
+      "sha256": "b9ba7696d8dc4c1605b54a08e136449bf9cafa6055011ca09cfc435944d9119b"
+    },
+    {
+      "name": "arm0-middle.png",
+      "sha256": "eccc19708b0990a6f1d13fe41b9c2584042083f94e1cef89bae1f4b73507b332"
+    },
+    {
+      "name": "arm0-tip.png",
+      "sha256": "6a84bebd583039c58f81980e6e92ecb0665f8a09813216ed196e43faa8c82078"
+    },
+    {
+      "name": "arm1-base.png",
+      "sha256": "e5714f19255965951bb4528df0836bb855a6def235b90c3b09fce0d5d2114e1f"
+    },
+    {
+      "name": "arm1-middle.png",
+      "sha256": "67056b7f18771c014c096208a63a8b443656cee8aefea4313b05621421b3d4b0"
+    },
+    {
+      "name": "arm1-tip.png",
+      "sha256": "5e3e0b32d0d135fcd294909d6c5735b397007651e9ce2d91b75c866270934d6c"
+    },
+    {
+      "name": "arm2-base.png",
+      "sha256": "9a3f6b4588947cc4a827847a70b1f4e066f47b63ebaddea9812a1567ed754af4"
+    },
+    {
+      "name": "arm2-middle.png",
+      "sha256": "67d9c1567c19888856d42e67d21c5c6358e1a23676be7acbba62745142882221"
+    },
+    {
+      "name": "arm2-tip.png",
+      "sha256": "c5e04e7c82ae21d6f71c942e41a6cb7764d1bd8ed9826fe8b75210bdece32e88"
+    },
+    {
+      "name": "arm3-base.png",
+      "sha256": "af8d46e16d30f994bcdb7043d142883ac3a2b12b4a14091dc6e03dda83804ea5"
+    },
+    {
+      "name": "arm3-middle.png",
+      "sha256": "718c94f1df7bffcb24600c6729147ae13775a87db7c238f75724a06a78f3befd"
+    },
+    {
+      "name": "arm3-tip.png",
+      "sha256": "9f3628290465b0c1a3dd4b34417106c0ba6e520e239c9a7da1a386aae4518647"
+    },
+    {
+      "name": "arm4-base.png",
+      "sha256": "d88b6db31af31104c842f8576b6c8411b521acd320356c57e3cc31e4992d1e2f"
+    },
+    {
+      "name": "arm4-middle.png",
+      "sha256": "fd124510b3082164daa2c4b7ed5132e03c253e10c4de60c8d1d0dec3f4a5d3fc"
+    },
+    {
+      "name": "arm4-tip.png",
+      "sha256": "27ee90925336437a2d995ee7a7c7cbd08710e089d7b0cb4e815bc99d1f9fce57"
+    },
+    {
+      "name": "arm5-base.png",
+      "sha256": "90571e3a12ab3ea8c4fd95408c28d6f4b72281c19697b96fbf06a3e59f26a67e"
+    },
+    {
+      "name": "arm5-middle.png",
+      "sha256": "49e770e74fca8470d6909730e412eccd1e2a57ce42ae6b19e1e8d7ca885b1664"
+    },
+    {
+      "name": "arm5-tip.png",
+      "sha256": "069ae0ca235b1b98f7afb6f20db195512ddf2dbdd449e7ba859c820a02b54c05"
+    },
+    {
+      "name": "arm6-base.png",
+      "sha256": "98ca12a398c68b5fa810efed8beca1de52095fe0400f70018f8487dd062a7698"
+    },
+    {
+      "name": "arm6-middle.png",
+      "sha256": "bf8abd650b116e2bf7b31c93167029fb41b11dd0a03e1a100597d5512ac1682c"
+    },
+    {
+      "name": "arm6-tip.png",
+      "sha256": "a17b3da6ba0f4128524b6adb2b653a0ea3cdca2f6a48e37be73db7368d567e91"
+    },
+    {
+      "name": "arm7-base.png",
+      "sha256": "1ed722fb4ab500a97bdb278a72268b622b91a336ebd436c02079515d8e344eeb"
+    },
+    {
+      "name": "arm7-middle.png",
+      "sha256": "dff74d4542dc276772ed1dfefa0a16b2441daa22a99d453d0f113da4037857a4"
+    },
+    {
+      "name": "arm7-tip.png",
+      "sha256": "6a41c9c78e180e0ce6a974bb35fd0ba5261e297efeb127d83c0a93473555b527"
+    },
+    {
+      "name": "body.png",
+      "sha256": "18dbdfc5aca9b3b25afdf8fe4bd8e384281c88f4757d0c4e18d72790491f9d6c"
+    },
+    {
+      "name": "eye-far.png",
+      "sha256": "dc0ddaeba84775065f60c6370de9b07299a9525ed0e11f253687833dc1bcdb2a"
+    },
+    {
+      "name": "eye-near.png",
+      "sha256": "2496a8709226145de9ad1926d5a1b397de70914883909d87a78369708e0abf9c"
+    },
+    {
+      "name": "head.png",
+      "sha256": "c2b4f6ea98accc95f11866a7e2144c1f92312e08d1d6a1cc4ff7a50d22456083"
+    },
+    {
+      "name": "mantle.png",
+      "sha256": "e103a97efb084d4a85de944faeaf288fa07efe77cd336d4a3e242a5f9e057664"
+    },
+    {
+      "name": "siphon.png",
+      "sha256": "02c05e18f0edd26f5c7126da3af2f28cc706b1b3807ee2ad2d2c654ed20208b0"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

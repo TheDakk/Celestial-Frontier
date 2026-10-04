@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c136repairs-01-giant-salamander",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "86a3b41704ac12cbccd253bc658076b949147b84ba999325a0d399a96315df31",
+ "subjectSourceSha256": "4c018d60de9d91c4ad39c92a0731fbd057aff06d21af4647c2a767dcad153609",
+ "identity": {
+  "name": "Giant Salamander",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Giant Salamander\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"732457792\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 732457792,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "codex-ref-01-caiman-tail-contour",
+  "authoringSha256": "f206f2358d4e96a66550c87799f4889c168e2168899dab5b96f82ee622cadd50",
+  "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b"
+ },
+ "habitat": {
+  "profileId": "salamander",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "4e32272af8ac420f81285b7ddc69a584cd5a6c654fd16395a8edf09c07e37229",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group salamander (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0273,
+     "class": "front",
+     "attach": {
+      "x": 387.3,
+      "y": 198.5,
+      "relX": 0.95,
+      "relY": 0.45
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.05,
+     "class": "rear",
+     "attach": {
+      "x": 44.1,
+      "y": 225.5,
+      "relX": 0.08,
+      "relY": 0.8
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0308,
+     "class": "limb-down",
+     "attach": {
+      "x": 158.6,
+      "y": 226.9,
+      "relX": 0.37,
+      "relY": 0.82
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.018,
+     "class": "limb-down",
+     "attach": {
+      "x": 338.1,
+      "y": 230.6,
+      "relX": 0.82,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0108,
+     "class": "limb-down",
+     "attach": {
+      "x": 186,
+      "y": 230,
+      "relX": 0.44,
+      "relY": 0.86
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0279,
+     "class": "limb-down",
+     "attach": {
+      "x": 285.5,
+      "y": 234,
+      "relX": 0.69,
+      "relY": 0.91
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "codex-ref-01-caiman-tail-contour",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

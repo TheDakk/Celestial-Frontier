@@ -1,0 +1,10 @@
+{
+  "status": "DIAGNOSTIC_PASS",
+  "frames": 763,
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "cpuP95Ms": 5.100000023841858,
+  "visual": "Neck fragment floats above fainting right Hawk; not visual acceptance"
+}

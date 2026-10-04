@@ -1,0 +1,28 @@
+{
+  "name": "Partridge",
+  "masterSha256": "a1dc9499ecf8ccb2af058d7c8a6ca01f433e1834e1d46b666a193b9f44834573",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two complete legs/feet and natural short tail continuous. Flank bars and face contrast retained. Far wing root hidden; upper leg emergence is feathered, exact owner needs review. Generous margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 269,
+      "y0": 280,
+      "x1": 936,
+      "y1": 952
+    },
+    "margins": {
+      "left": 269,
+      "right": 317,
+      "top": 280,
+      "bottom": 301
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

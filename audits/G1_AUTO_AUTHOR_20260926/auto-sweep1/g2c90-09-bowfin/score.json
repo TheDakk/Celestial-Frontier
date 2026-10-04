@@ -1,0 +1,9 @@
+{
+ "id": "g2c90-09-bowfin",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

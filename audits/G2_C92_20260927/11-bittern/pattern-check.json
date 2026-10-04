@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bittern",
+  "masterSha256": "2cf9f5ec5a2c99a1c33af1a7c4695087193e1845e9df439d59a848475f86a8ee",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

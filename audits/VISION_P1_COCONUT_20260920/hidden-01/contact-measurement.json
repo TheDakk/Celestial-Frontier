@@ -1,0 +1,876 @@
+{
+  "scope": "All six brachyuran subjects, every row + presentation; measurement-only bundled post-IK check",
+  "subjects": [
+    {
+      "id": "crab",
+      "rows": [
+        {
+          "action": "idle",
+          "samples": 121
+        },
+        {
+          "action": "approach",
+          "samples": 121
+        },
+        {
+          "action": "melee:pinch",
+          "samples": 121
+        },
+        {
+          "action": "hit",
+          "samples": 121
+        },
+        {
+          "action": "alert",
+          "samples": 121
+        },
+        {
+          "action": "approach:scuttle",
+          "samples": 121
+        },
+        {
+          "action": "cast",
+          "samples": 121
+        },
+        {
+          "action": "dodge",
+          "samples": 121
+        },
+        {
+          "action": "faint",
+          "samples": 121
+        },
+        {
+          "action": "victory",
+          "samples": 121
+        },
+        {
+          "action": "tame",
+          "samples": 121
+        },
+        {
+          "action": "feed",
+          "samples": 121
+        },
+        {
+          "action": "presentation",
+          "samples": 601
+        }
+      ]
+    },
+    {
+      "id": "coconut-crab",
+      "rows": [
+        {
+          "action": "idle",
+          "samples": 121
+        },
+        {
+          "action": "approach",
+          "samples": 121
+        },
+        {
+          "action": "melee:pinch",
+          "samples": 121
+        },
+        {
+          "action": "hit",
+          "samples": 121
+        },
+        {
+          "action": "alert",
+          "samples": 121
+        },
+        {
+          "action": "approach:scuttle",
+          "samples": 121
+        },
+        {
+          "action": "cast",
+          "samples": 121
+        },
+        {
+          "action": "dodge",
+          "samples": 121
+        },
+        {
+          "action": "faint",
+          "samples": 121
+        },
+        {
+          "action": "victory",
+          "samples": 121
+        },
+        {
+          "action": "tame",
+          "samples": 121
+        },
+        {
+          "action": "feed",
+          "samples": 121
+        },
+        {
+          "action": "presentation",
+          "samples": 601
+        }
+      ]
+    },
+    {
+      "id": "freshwater-crab",
+      "rows": [
+        {
+          "action": "idle",
+          "samples": 121
+        },
+        {
+          "action": "approach",
+          "samples": 121
+        },
+        {
+          "action": "melee:pinch",
+          "samples": 121
+        },
+        {
+          "action": "hit",
+          "samples": 121
+        },
+        {
+          "action": "alert",
+          "samples": 121
+        },
+        {
+          "action": "approach:scuttle",
+          "samples": 121
+        },
+        {
+          "action": "cast",
+          "samples": 121
+        },
+        {
+          "action": "dodge",
+          "samples": 121
+        },
+        {
+          "action": "faint",
+          "samples": 121
+        },
+        {
+          "action": "victory",
+          "samples": 121
+        },
+        {
+          "action": "tame",
+          "samples": 121
+        },
+        {
+          "action": "feed",
+          "samples": 121
+        },
+        {
+          "action": "presentation",
+          "samples": 601
+        }
+      ]
+    },
+    {
+      "id": "mud-crab",
+      "rows": [
+        {
+          "action": "idle",
+          "samples": 121
+        },
+        {
+          "action": "approach",
+          "samples": 121
+        },
+        {
+          "action": "melee:pinch",
+          "samples": 121
+        },
+        {
+          "action": "hit",
+          "samples": 121
+        },
+        {
+          "action": "alert",
+          "samples": 121
+        },
+        {
+          "action": "approach:scuttle",
+          "samples": 121
+        },
+        {
+          "action": "cast",
+          "samples": 121
+        },
+        {
+          "action": "dodge",
+          "samples": 121
+        },
+        {
+          "action": "faint",
+          "samples": 121
+        },
+        {
+          "action": "victory",
+          "samples": 121
+        },
+        {
+          "action": "tame",
+          "samples": 121
+        },
+        {
+          "action": "feed",
+          "samples": 121
+        },
+        {
+          "action": "presentation",
+          "samples": 601
+        }
+      ]
+    },
+    {
+      "id": "vent-crab",
+      "rows": [
+        {
+          "action": "idle",
+          "samples": 121
+        },
+        {
+          "action": "approach",
+          "samples": 121
+        },
+        {
+          "action": "melee:pinch",
+          "samples": 121
+        },
+        {
+          "action": "hit",
+          "samples": 121
+        },
+        {
+          "action": "alert",
+          "samples": 121
+        },
+        {
+          "action": "approach:scuttle",
+          "samples": 121
+        },
+        {
+          "action": "cast",
+          "samples": 121
+        },
+        {
+          "action": "dodge",
+          "samples": 121
+        },
+        {
+          "action": "faint",
+          "samples": 121
+        },
+        {
+          "action": "victory",
+          "samples": 121
+        },
+        {
+          "action": "tame",
+          "samples": 121
+        },
+        {
+          "action": "feed",
+          "samples": 121
+        },
+        {
+          "action": "presentation",
+          "samples": 601
+        }
+      ]
+    },
+    {
+      "id": "p1-coconut-crab",
+      "rows": [
+        {
+          "action": "idle",
+          "samples": 121
+        },
+        {
+          "action": "approach",
+          "samples": 121
+        },
+        {
+          "action": "melee:pinch",
+          "samples": 121
+        },
+        {
+          "action": "hit",
+          "samples": 121
+        },
+        {
+          "action": "alert",
+          "samples": 121
+        },
+        {
+          "action": "approach:scuttle",
+          "samples": 121
+        },
+        {
+          "action": "cast",
+          "samples": 121
+        },
+        {
+          "action": "dodge",
+          "samples": 121
+        },
+        {
+          "action": "faint",
+          "samples": 121
+        },
+        {
+          "action": "victory",
+          "samples": 121
+        },
+        {
+          "action": "tame",
+          "samples": 121
+        },
+        {
+          "action": "feed",
+          "samples": 121
+        },
+        {
+          "action": "presentation",
+          "samples": 601
+        }
+      ]
+    }
+  ],
+  "maxima": {
+    "leg0FarKnee": {
+      "subject": "p1-coconut-crab",
+      "action": "hit",
+      "ms": 270,
+      "j": "leg0FarKnee",
+      "deg": 13.545925628622415,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg0FarFoot": {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 260,
+      "j": "leg0FarFoot",
+      "deg": -24.115303917996425,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg0NearKnee": {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 260,
+      "j": "leg0NearKnee",
+      "deg": -13.319847856862268,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg0NearFoot": {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 260,
+      "j": "leg0NearFoot",
+      "deg": 22.97252918336632,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg1FarKnee": {
+      "subject": "vent-crab",
+      "action": "approach:scuttle",
+      "ms": 108.5,
+      "j": "leg1FarKnee",
+      "deg": 12.93214617633425,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg1FarFoot": {
+      "subject": "vent-crab",
+      "action": "approach:scuttle",
+      "ms": 112,
+      "j": "leg1FarFoot",
+      "deg": -20.79183203853272,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg1NearKnee": {
+      "subject": "crab",
+      "action": "presentation",
+      "ms": 1733.3333333333333,
+      "j": "leg1NearKnee",
+      "deg": -13.051903021013084,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg1NearFoot": {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 260,
+      "j": "leg1NearFoot",
+      "deg": 25.803693470617652,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg2FarKnee": {
+      "subject": "freshwater-crab",
+      "action": "presentation",
+      "ms": 1316.6666666666667,
+      "j": "leg2FarKnee",
+      "deg": 11.340309930327367,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg2FarFoot": {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 260,
+      "j": "leg2FarFoot",
+      "deg": -20.19689599271324,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg2NearKnee": {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 260,
+      "j": "leg2NearKnee",
+      "deg": 17.117631886917547,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg2NearFoot": {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 260,
+      "j": "leg2NearFoot",
+      "deg": -50.05396663589831,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    "leg3FarKnee": {
+      "subject": "freshwater-crab",
+      "action": "presentation",
+      "ms": 2366.6666666666665,
+      "j": "leg3FarKnee",
+      "deg": 12.536096799142266,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg3FarFoot": {
+      "subject": "vent-crab",
+      "action": "approach:scuttle",
+      "ms": 108.5,
+      "j": "leg3FarFoot",
+      "deg": -19.352529924945564,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg3NearKnee": {
+      "subject": "freshwater-crab",
+      "action": "presentation",
+      "ms": 1733.3333333333333,
+      "j": "leg3NearKnee",
+      "deg": -12.503509014455073,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg3NearFoot": {
+      "subject": "vent-crab",
+      "action": "approach:scuttle",
+      "ms": 311.5,
+      "j": "leg3NearFoot",
+      "deg": 20.066259394389014,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    }
+  },
+  "grouped": {
+    "Knee": {
+      "peak": {
+        "subject": "p1-coconut-crab",
+        "action": "faint",
+        "ms": 260,
+        "j": "leg2NearKnee",
+        "deg": 17.117631886917547,
+        "limit": {
+          "min": -35,
+          "max": 35
+        },
+        "exceeded": false
+      },
+      "contactLimitDeg": 30
+    },
+    "Foot": {
+      "peak": {
+        "subject": "p1-coconut-crab",
+        "action": "faint",
+        "ms": 260,
+        "j": "leg2NearFoot",
+        "deg": -50.05396663589831,
+        "limit": {
+          "min": -35,
+          "max": 35
+        },
+        "exceeded": true
+      },
+      "contactLimitDeg": 65
+    }
+  },
+  "exceeded": [
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 208,
+      "j": "leg2NearFoot",
+      "deg": -35.65898258123605,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 212.33333333333334,
+      "j": "leg2NearFoot",
+      "deg": -37.80146502662251,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 216.66666666666666,
+      "j": "leg2NearFoot",
+      "deg": -39.808786521558545,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 221,
+      "j": "leg2NearFoot",
+      "deg": -41.667502953919595,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 225.33333333333334,
+      "j": "leg2NearFoot",
+      "deg": -43.364855868152304,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 229.66666666666666,
+      "j": "leg2NearFoot",
+      "deg": -44.890010016223016,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 234,
+      "j": "leg2NearFoot",
+      "deg": -46.23253008586992,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 238.33333333333334,
+      "j": "leg2NearFoot",
+      "deg": -47.3839616742092,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 242.66666666666666,
+      "j": "leg2NearFoot",
+      "deg": -48.336691890768904,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 247,
+      "j": "leg2NearFoot",
+      "deg": -49.08429243077785,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 251.33333333333334,
+      "j": "leg2NearFoot",
+      "deg": -49.62173235736859,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 255.66666666666666,
+      "j": "leg2NearFoot",
+      "deg": -49.94574611521184,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 260,
+      "j": "leg2NearFoot",
+      "deg": -50.05396663589831,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 264.3333333333333,
+      "j": "leg2NearFoot",
+      "deg": -49.94574611521184,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 268.6666666666667,
+      "j": "leg2NearFoot",
+      "deg": -49.62173235736859,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 273,
+      "j": "leg2NearFoot",
+      "deg": -49.08415247311733,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 277.3333333333333,
+      "j": "leg2NearFoot",
+      "deg": -48.336691890768904,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 281.6666666666667,
+      "j": "leg2NearFoot",
+      "deg": -47.3839616742092,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 286,
+      "j": "leg2NearFoot",
+      "deg": -46.23253008586992,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 290.3333333333333,
+      "j": "leg2NearFoot",
+      "deg": -44.890010016223016,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 294.6666666666667,
+      "j": "leg2NearFoot",
+      "deg": -43.364855868152304,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 299,
+      "j": "leg2NearFoot",
+      "deg": -41.667502953919595,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 303.3333333333333,
+      "j": "leg2NearFoot",
+      "deg": -39.808786521558545,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 307.6666666666667,
+      "j": "leg2NearFoot",
+      "deg": -37.80146502662251,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "subject": "p1-coconut-crab",
+      "action": "faint",
+      "ms": 312,
+      "j": "leg2NearFoot",
+      "deg": -35.65898258123605,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    }
+  ],
+  "failures": []
+}

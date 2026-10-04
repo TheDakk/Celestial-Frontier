@@ -1,0 +1,13 @@
+{
+  "id": "07-puffin",
+  "name": "Puffin",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-79a5e9f8-ec78-45cb-aa72-53b2717c3941.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "028e2a24a31c2774b3b60f217bc6903e2551940bbf1206b17f6d49cd728c4787",
+  "bytes": 1203517,
+  "promptSha256": "ee229a68019be8c2f16e0a870f78f30fe77b18b9ffeb375713052e06ede80b9c",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

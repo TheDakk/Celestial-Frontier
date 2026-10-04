@@ -1,0 +1,28 @@
+{
+  "name": "Langur",
+  "masterSha256": "95fce120eb86226a5cea32ef435146e9c9d40d5fb883e3853d64736f1e2df7bd",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: pale gray/cream coat, black face/hands/feet, pointed crown and long high open tail. Four distal extremities are visible, but the near forearm crosses the far forelimb in projection, defeating independent full-chain separation. Far roots/ear are obscured and foot heights differ. Preserve this crossing as a source hold; no chain reassignment or invented anatomy.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 245,
+      "y0": 251,
+      "x1": 971,
+      "y1": 954
+    },
+    "margins": {
+      "left": 245,
+      "right": 282,
+      "top": 251,
+      "bottom": 299
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

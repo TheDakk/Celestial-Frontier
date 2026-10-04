@@ -1,0 +1,9 @@
+{
+ "id": "18-arowana-framing02",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 8.8% of the paint lies away from the body and in no part (reference 4.0%)"
+ ],
+ "semanticPresence": null
+}

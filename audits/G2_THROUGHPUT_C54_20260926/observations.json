@@ -1,0 +1,371 @@
+[
+  {
+    "id": "01-dingo",
+    "name": "Dingo",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "8b130553f51d55c95faeebf22bdd308ff0d8c890fd813fefc8d37c92aed7c84d",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "02-jackal",
+    "name": "Jackal",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "e04d2486c98a641c334edd7ca3b1501011cf465310d3aaa18da5d32e929fe187",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "03-hyena",
+    "name": "Hyena",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "8d7b92bbf3276ba5e40c5719f61c52dba8615ae83fe7a0f66f58eeb7bd25802d",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "04-lion",
+    "name": "Lion",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "179395d308e4aa355612221ea58357a4149eae97f525f2723714bf96cf99ae04",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "05-tiger",
+    "name": "Tiger",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "3c4f50a63ebc648eeff37ea2c960eaadd06600da70527e25e74d87f5358bad34",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "06-leopard",
+    "name": "Leopard",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "07d0cec15b091e4d6743e4312c2babc6c6782f37bcd7d41c51444c74a7ea782b",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "07-jaguar",
+    "name": "Jaguar",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "c601ea255ba061f840d0b7ca075ffb1c0703440d90290794c40dffbf99fd4a0e",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "08-snow-leopard",
+    "name": "Snow Leopard",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "60f19523e5145f56cdb656502694e17b3348aed0ccc3b8a5dd9f257337179d84",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "09-ocelot",
+    "name": "Ocelot",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "321e8cbbec2ac1932437efcf96be004a443d81e2b8a048b3f7ae8db870316b2b",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "10-serval",
+    "name": "Serval",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "f5b2a598e72772ab696c94f5a41bb0b19d74f0e2ac1780649f24588cefc381ed",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "11-stoat",
+    "name": "Stoat",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "befd0dcfc9653a6d57c658a0f4f10e8e6fae3f72fe3981b16bf59e61af236a92",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "12-weasel",
+    "name": "Weasel",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "9bfda3da56f43941f0fe9fd9115fb788c3d07603b068789898c27127184b0ef2",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "13-duck",
+    "name": "Duck",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "9cfa6b7ca05b8c682046ce391f421b1a28c76ba01e492ed48429a9e5011667c6",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "14-goose",
+    "name": "Goose",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "ace5ecc67e73e5f75f38d0e0ecfeab8f533317d4060131ec66ff2d9bca690b63",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "15-quail",
+    "name": "Quail",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "bc9a9370f912802cc06e709719495b70b89ec8afe815dd8e84cf64ef27b16b96",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "16-partridge",
+    "name": "Partridge",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "e48ac3b67a14db0bc59c3dc122528a0be927b2c18b219b294135168bb7c91813",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "17-python",
+    "name": "Python",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "1ee03834909e67ffbd734e77ebe93c7ee66d7139a69821952dab639cade319a6",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "18-boa",
+    "name": "Boa",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "2f24a176cb547e5a9731d918a1eeed07b8f4c750fbaaef462ea67d26efe83cae",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "19-racer",
+    "name": "Racer",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "a932fea97b7c736d80fbb920cd2b52addbb577706ebb8f3f5fe4fa7fcd6087e9",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "20-garter-snake",
+    "name": "Garter Snake",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "10ae1f3d8f48b5bb2a9f426eeba06c471307e184a51e2f52037c4280076c6c09",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "21-cockroach",
+    "name": "Cockroach",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "497f45951d675c5b152394d44bb4c2f85d10239edeab3c4f6e08620e7619d67b",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 2,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "22-locust",
+    "name": "Locust",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "b7a0177d5b5610bdc96a5441330987ec6ff8ebfea65d0af32871ae3b1869a6cb",
+    "keyed": false,
+    "byClass": {
+      "top": 3,
+      "rear": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "23-beetle",
+    "name": "Beetle",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "5e5b080811a78c09fdcb0c76d02f96a26980d1f4d1a75000cca5b40bb73728dd",
+    "keyed": false,
+    "byClass": {
+      "limb-down": 3
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "24-termite",
+    "name": "Termite",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "e0394e76c977fb2fe01ac14950eaf203bf19d5e6c8f505e7c9f17f2330821301",
+    "keyed": false,
+    "byClass": {
+      "rear": 2,
+      "limb-down": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  }
+]

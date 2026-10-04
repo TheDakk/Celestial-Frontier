@@ -1,0 +1,99 @@
+{
+  "schema": "cf.effect-sequence-anchors/v1",
+  "sequenceId": "void-c163-polish-v43",
+  "theme": "void",
+  "abilityId": "eclip",
+  "abilityName": "Eclipse Strike",
+  "canvasSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "phaseOrder": [
+    "launch",
+    "travel",
+    "impact"
+  ],
+  "originAnchor": [
+    0.2,
+    0.55
+  ],
+  "contactAnchor": [
+    0.8,
+    0.55
+  ],
+  "phases": [
+    {
+      "phase": "launch",
+      "image": "registered/launch.png",
+      "keyedImage": "registered/launch.png",
+      "imageSha256": "69b21583556a8a7e782158746ed19b49a834191b1e8a8093c58bcf510efc452c",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 115,
+        "y": 389,
+        "width": 327,
+        "height": 360
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "registered/travel.png",
+      "keyedImage": "registered/travel.png",
+      "imageSha256": "2fd346d7688b50d0111d9cb94a4bde26667a248f2d995afadf201911afa62e17",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 110,
+        "y": 430,
+        "width": 705,
+        "height": 256
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "registered/impact.png",
+      "keyedImage": "registered/impact.png",
+      "imageSha256": "46e7b1a5fe12bc454e3e4e22f6d55fe28ae648ce8b3e407cc25f88e5040da288",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 580,
+        "y": 392,
+        "width": 287,
+        "height": 333
+      }
+    }
+  ],
+  "qualityAccepted": false
+}

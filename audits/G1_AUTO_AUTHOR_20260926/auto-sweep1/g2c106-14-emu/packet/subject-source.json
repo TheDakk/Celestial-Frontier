@@ -1,0 +1,70 @@
+{
+  "name": "Emu",
+  "family": "biped-bird",
+  "species": {
+    "name": "Emu",
+    "aspect": 0.9,
+    "headFrac": 0.12,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "shaggy drooping hair-like double plumage",
+      "long bare blue-grey neck",
+      "no visible wings, long three-toed legs"
+    ]
+  },
+  "genome": {
+    "seed": 698122596,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 4,
+    "body": 14,
+    "loco": 13,
+    "trait": 1,
+    "size": 0,
+    "diet": 5,
+    "head": 3,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 10,
+    "habitat": 18,
+    "detail": 3,
+    "accent": 12,
+    "temper": 7,
+    "sense": 5,
+    "repro": 6,
+    "life": 2,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Emu"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Emu\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"698122596\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "index": 585,
+  "profile": {
+    "id": "flightless-bird",
+    "names": [
+      "Ostrich",
+      "Rhea",
+      "Emu",
+      "Cassowary",
+      "Kiwi",
+      "Kakapo"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "peck"
+    ],
+    "notes": "No aerial attack. Wings do not imply flight."
+  }
+}

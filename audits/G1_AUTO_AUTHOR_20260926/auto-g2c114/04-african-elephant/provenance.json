@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "04-african-elephant",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "608f005600fb90d1fee484ee03ec83c74a980c59fa953baa98c546abe1438a5b",
+ "subjectSourceSha256": "ffe7f3b11b6c82a9fb6b08e1b8c68f51397860b1be479b11466cebeb8fc4dd19",
+ "identity": {
+  "name": "African Elephant",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"African Elephant\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2863673195\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "seed": 2863673195,
+  "checks": [
+   "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "738d991892404fbab5da926013e6864a2a9ee687d91d59a50cd40c003bcd260b",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "elephant",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "8f27a9ae3915b755fe1b148e496e394beb760825651a855083da4577a51b7327",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group elephant (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0165,
+     "class": "top",
+     "attach": {
+      "x": 244.5,
+      "y": 127,
+      "relX": 0.73,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1089,
+     "class": "limb-down",
+     "attach": {
+      "x": 291.3,
+      "y": 176.8,
+      "relX": 0.99,
+      "relY": 0.43
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0055,
+     "class": "top",
+     "attach": {
+      "x": 162,
+      "y": 150,
+      "relX": 0.26,
+      "relY": 0.19
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0208,
+     "class": "limb-down",
+     "attach": {
+      "x": 115,
+      "y": 196,
+      "relX": -0.01,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1223,
+     "class": "limb-down",
+     "attach": {
+      "x": 233.6,
+      "y": 229.1,
+      "relX": 0.66,
+      "relY": 0.89
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0977,
+     "class": "limb-down",
+     "attach": {
+      "x": 132.5,
+      "y": 239.5,
+      "relX": 0.09,
+      "relY": 0.98
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 4
+   },
+   "ground": 5
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,435 @@
+{
+  "label": "fixture rig (landmark-derived parts) versus whole-portrait fallback",
+  "beats": {
+    "readyEnd": 900,
+    "commandEnd": 1300,
+    "actionStart": 1657,
+    "impactAt": 1852.5,
+    "hitstopEnd": 1912,
+    "flashEnd": 2005.8333333333333,
+    "shakeEnd": 2032.5,
+    "numbersEnd": 2362.5,
+    "reactionStart": 1912,
+    "reactionEnd": 2294.5,
+    "actionEnd": 2659.1666666666665,
+    "returnEnd": 2982.1666666666665,
+    "idleStart": 2982.1666666666665,
+    "end": 3582.1666666666665
+  },
+  "hitstopMs": 59.5,
+  "effect": {
+    "impactAt": 195.5,
+    "hitstopMs": 59.5,
+    "startMs": 1657
+  },
+  "samples": [
+    {
+      "label": "ready",
+      "ms": 450,
+      "phase": "ready",
+      "timingBar": 0.5,
+      "runUpPx": 0,
+      "parallax": {
+        "far": 0,
+        "mid": 0,
+        "near": 0
+      },
+      "camera": {
+        "shake": {
+          "x": 0,
+          "y": 0
+        },
+        "flash": 0
+      },
+      "numbers": [],
+      "effectPhase": "before",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": 0.006729999107247112,
+        "dy": -0.003364999553623556
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": 0.005936387195739632,
+        "dy": -0.002968193597869816
+      }
+    },
+    {
+      "label": "command",
+      "ms": 1000,
+      "phase": "command",
+      "timingBar": 1,
+      "runUpPx": 0,
+      "parallax": {
+        "far": 0,
+        "mid": 0,
+        "near": 0
+      },
+      "camera": {
+        "shake": {
+          "x": 0,
+          "y": 0
+        },
+        "flash": 0
+      },
+      "numbers": [],
+      "effectPhase": "before",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": 0.002268957968376585,
+        "dy": -0.009014661777670487
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": 0.0043944516958865955,
+        "dy": -0.007154854766099229
+      }
+    },
+    {
+      "label": "approach",
+      "ms": 1480,
+      "phase": "approach",
+      "timingBar": 1,
+      "runUpPx": 38.61422215945201,
+      "parallax": {
+        "far": -3.8614222159452014,
+        "mid": -19.307111079726006,
+        "near": -46.33706659134241
+      },
+      "camera": {
+        "shake": {
+          "x": 0,
+          "y": 0
+        },
+        "flash": 0
+      },
+      "numbers": [],
+      "effectPhase": "before",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": -0.0031377491710772847,
+        "dy": -0.008254469475307375
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": -0.0005794196520774984,
+        "dy": -0.010493007804432188
+      }
+    },
+    {
+      "label": "anticipation",
+      "ms": 1717,
+      "phase": "action",
+      "timingBar": 1,
+      "runUpPx": 51.199999999999996,
+      "parallax": {
+        "far": -5.12,
+        "mid": -25.599999999999998,
+        "near": -61.43999999999999
+      },
+      "camera": {
+        "shake": {
+          "x": 0,
+          "y": 0
+        },
+        "flash": 0
+      },
+      "numbers": [],
+      "effectPhase": "launch",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": -0.01754678891223374,
+        "dy": 0.0030823436242408183
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": -0.0042701790336043665,
+        "dy": -0.007263593345596179
+      }
+    },
+    {
+      "label": "launch",
+      "ms": 1822.5,
+      "phase": "action",
+      "timingBar": 1,
+      "runUpPx": 51.199999999999996,
+      "parallax": {
+        "far": -5.12,
+        "mid": -25.599999999999998,
+        "near": -61.43999999999999
+      },
+      "camera": {
+        "shake": {
+          "x": 0,
+          "y": 0
+        },
+        "flash": 0
+      },
+      "numbers": [],
+      "effectPhase": "travel",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": 0.2904860619499801,
+        "dy": -0.04169779555571359
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": -0.006105504048062306,
+        "dy": -0.005657683957945482
+      }
+    },
+    {
+      "label": "strike",
+      "ms": 1852.5,
+      "phase": "hitstop",
+      "timingBar": 1,
+      "runUpPx": 51.199999999999996,
+      "parallax": {
+        "far": -5.12,
+        "mid": -25.599999999999998,
+        "near": -61.43999999999999
+      },
+      "camera": {
+        "shake": {
+          "x": 0,
+          "y": 2.55
+        },
+        "flash": 1
+      },
+      "numbers": [
+        {
+          "text": "12",
+          "x": 0.6666666666666666,
+          "y": 0.48000000000000004,
+          "scale": 2.220446049250313e-16,
+          "alpha": 1,
+          "visible": true
+        }
+      ],
+      "effectPhase": "impact",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": 0.3520358657112233,
+        "dy": -0.05398206714438836
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": -0.006554595488070881,
+        "dy": -0.005264728947937979
+      }
+    },
+    {
+      "label": "hitstop",
+      "ms": 1882.25,
+      "phase": "hitstop",
+      "timingBar": 1,
+      "runUpPx": 51.199999999999996,
+      "parallax": {
+        "far": -5.12,
+        "mid": -25.599999999999998,
+        "near": -61.43999999999999
+      },
+      "camera": {
+        "shake": {
+          "x": -3.550742454297541,
+          "y": 1.4251651877567562
+        },
+        "flash": 1
+      },
+      "numbers": [
+        {
+          "text": "12",
+          "x": 0.6666666666666666,
+          "y": 0.47043454861111117,
+          "scale": 0.9520573064476167,
+          "alpha": 1,
+          "visible": true
+        }
+      ],
+      "effectPhase": "impact",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": 0.3520358657112233,
+        "dy": -0.05398206714438836
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": -0.006554595488070881,
+        "dy": -0.005264728947937979
+      }
+    },
+    {
+      "label": "flash fade",
+      "ms": 1952,
+      "phase": "impact",
+      "timingBar": 1,
+      "runUpPx": 51.199999999999996,
+      "parallax": {
+        "far": -5.12,
+        "mid": -25.599999999999998,
+        "near": -61.43999999999999
+      },
+      "camera": {
+        "shake": {
+          "x": 0.0800313651531144,
+          "y": -0.20200847391610718
+        },
+        "flash": 0.4486111111111112
+      },
+      "numbers": [
+        {
+          "text": "12",
+          "x": 0.6666666666666666,
+          "y": 0.450762003968254,
+          "scale": 1,
+          "alpha": 1,
+          "visible": true
+        }
+      ],
+      "effectPhase": "impact",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": 0.171446625652767,
+        "dy": 0.0008336256469561694
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": -0.060883684826236906,
+        "dy": 0.008643437840733036
+      }
+    },
+    {
+      "label": "number rise",
+      "ms": 2102.5,
+      "phase": "impact",
+      "timingBar": 1,
+      "runUpPx": 51.199999999999996,
+      "parallax": {
+        "far": -5.12,
+        "mid": -25.599999999999998,
+        "near": -61.43999999999999
+      },
+      "camera": {
+        "shake": {
+          "x": 0,
+          "y": 0
+        },
+        "flash": 0
+      },
+      "numbers": [
+        {
+          "text": "12",
+          "x": 0.6666666666666666,
+          "y": 0.421468253968254,
+          "scale": 1,
+          "alpha": 1,
+          "visible": true
+        }
+      ],
+      "effectPhase": "after",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": 0.014418812127053409,
+        "dy": -0.000859552842881299
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": -0.14306595880125142,
+        "dy": 0.008657872675498859
+      }
+    },
+    {
+      "label": "recovery",
+      "ms": 2559.1666666666665,
+      "phase": "impact",
+      "timingBar": 1,
+      "runUpPx": 51.199999999999996,
+      "parallax": {
+        "far": -5.12,
+        "mid": -25.599999999999998,
+        "near": -61.43999999999999
+      },
+      "camera": {
+        "shake": {
+          "x": 0,
+          "y": 0
+        },
+        "flash": 0
+      },
+      "numbers": [],
+      "effectPhase": "after",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": 0.00021812222393429925,
+        "dy": -0.00010906111196714963
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": -0.001954009866933294,
+        "dy": -0.000977004933466647
+      }
+    },
+    {
+      "label": "return",
+      "ms": 2809.1666666666665,
+      "phase": "return",
+      "timingBar": 1,
+      "runUpPx": 28.457453719578943,
+      "parallax": {
+        "far": -2.8457453719578947,
+        "mid": -14.228726859789472,
+        "near": -34.14894446349473
+      },
+      "camera": {
+        "shake": {
+          "x": 0,
+          "y": 0
+        },
+        "flash": 0
+      },
+      "numbers": [],
+      "effectPhase": "after",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": 0.00420372186950972,
+        "dy": -0.00210186093475486
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": 0.000028542844393726343,
+        "dy": -0.000014271422196863171
+      }
+    },
+    {
+      "label": "idle",
+      "ms": 3482.1666666666665,
+      "phase": "idle",
+      "timingBar": 1,
+      "runUpPx": 0,
+      "parallax": {
+        "far": 0,
+        "mid": 0,
+        "near": 0
+      },
+      "camera": {
+        "shake": {
+          "x": 0,
+          "y": 0
+        },
+        "flash": 0
+      },
+      "numbers": [],
+      "effectPhase": "after",
+      "attackerRoot": {
+        "rotation": 0,
+        "dx": 0.002508889689379407,
+        "dy": -0.008804721521793018
+      },
+      "targetRoot": {
+        "rotation": 0,
+        "dx": 0.007986261458198732,
+        "dy": -0.00401202122407611
+      }
+    }
+  ]
+}

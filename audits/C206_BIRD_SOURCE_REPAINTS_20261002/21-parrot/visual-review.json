@@ -1,0 +1,28 @@
+{
+  "name": "Parrot",
+  "masterSha256": "27a1f78647d3a7a20e2b203129838b235c1d2b9eebac54875e4a26d11f7d004b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: compact green Amazon-like body, feathered yellow/blue face, dark short hooked bill with cere, short squared tail and two separate feet are visible. The earlier large bare striped macaw face is absent. Opposed toe directions read more clearly, but overlapping bases prevent an unquestionable four-digit count per foot; zygodactyl anatomy remains reviewable rather than certified.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 307,
+      "y0": 348,
+      "x1": 917,
+      "y1": 881
+    },
+    "margins": {
+      "left": 307,
+      "right": 336,
+      "top": 348,
+      "bottom": 372
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

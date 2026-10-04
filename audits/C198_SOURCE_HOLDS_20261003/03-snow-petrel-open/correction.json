@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c198-independent-source-authoring/v1",
+  "source": "audits/C198_CREATURE_SUPPLY_C_20261003/12-snow-petrel/master.png",
+  "sourceSha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924",
+  "sourcePixelsChanged": 0,
+  "priorNegative": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/05b-snow-petrel-leg/review-01/faint-0p9.png",
+  "scope": "New source exposes a separate far-wing emerging base. Every source point and priority polygon is authored on these new exact bytes. No prior masks or coordinates reused.",
+  "qualityAccepted": false,
+  "native": false
+}

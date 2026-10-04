@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Chimpanzee",
+    "family": "primate",
+    "packet": "audits/C132_REFERENCES_20261001/template-prompts/01-chimpanzee",
+    "status": "PROMPT_ONLY_NOT_GENERATED"
+  },
+  {
+    "name": "Centipede",
+    "family": "myriapod",
+    "packet": "audits/C132_REFERENCES_20261001/template-prompts/02-centipede",
+    "status": "PROMPT_ONLY_NOT_GENERATED"
+  },
+  {
+    "name": "Octopus",
+    "family": "cephalopod",
+    "packet": "audits/C132_REFERENCES_20261001/template-prompts/03-octopus",
+    "status": "PROMPT_ONLY_NOT_GENERATED"
+  },
+  {
+    "name": "Fruit Bat",
+    "family": "flyer-membrane",
+    "packet": "audits/C132_REFERENCES_20261001/template-prompts/04-fruit-bat",
+    "status": "PROMPT_ONLY_NOT_GENERATED"
+  }
+]

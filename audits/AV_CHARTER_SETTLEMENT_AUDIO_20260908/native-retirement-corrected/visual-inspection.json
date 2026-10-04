@@ -1,0 +1,15 @@
+{
+  "status": "INSPECTED_WITH_FOLLOWUP",
+  "viewport": [
+    390,
+    844,
+    2
+  ],
+  "captures": [
+    "charter-available-phone.png",
+    "charter-accepted-phone.png"
+  ],
+  "acceptanceState": "0/3 becomes1/3 active; Make planetfall shows active and its success notification",
+  "finding": "After scrolling, prior objective text is visible behind the sticky Charters title. This audio batch did not edit that geometry/CSS; cause and bounded correction are deferred. No broad U2 acceptance is claimed.",
+  "next": "Inspect the native sticky header paint owner, correct that one overlap if confirmed, then refresh the ordinary local preview with accumulated changes."
+}

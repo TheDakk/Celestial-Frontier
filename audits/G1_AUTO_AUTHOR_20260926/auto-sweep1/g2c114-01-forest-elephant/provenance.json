@@ -1,0 +1,126 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c114-01-forest-elephant",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "1d68aa6a1fb850531e227cd356a8cd14da33c0bf815c4cd5a6eedd3b8277d754",
+ "subjectSourceSha256": "d194bc8be28aa429c6877f91986d0e2e613dd81b92615f472b077707ce937366",
+ "identity": {
+  "name": "Forest Elephant",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Forest Elephant\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2235108789\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "seed": 2235108789,
+  "checks": [
+   "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "05-cat-v2",
+  "authoringSha256": "ec9cf490284487f4628222fe7c84c8a82f76645988ca20daf5f21701ed0888da",
+  "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4"
+ },
+ "habitat": {
+  "profileId": "elephant",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "8f27a9ae3915b755fe1b148e496e394beb760825651a855083da4577a51b7327",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group elephant (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0159,
+     "class": "top",
+     "attach": {
+      "x": 262.5,
+      "y": 120,
+      "relX": 0.79,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1198,
+     "class": "limb-down",
+     "attach": {
+      "x": 304,
+      "y": 165,
+      "relX": 0.99,
+      "relY": 0.39
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0165,
+     "class": "limb-down",
+     "attach": {
+      "x": 99,
+      "y": 185.5,
+      "relX": 0,
+      "relY": 0.57
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1311,
+     "class": "limb-down",
+     "attach": {
+      "x": 241.1,
+      "y": 223.1,
+      "relX": 0.68,
+      "relY": 0.9
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0571,
+     "class": "limb-down",
+     "attach": {
+      "x": 109.7,
+      "y": 231.3,
+      "relX": 0.05,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0513,
+     "class": "limb-down",
+     "attach": {
+      "x": 153,
+      "y": 236,
+      "relX": 0.26,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 5
+  },
+  "reference": {
+   "subject": "05-cat-v2",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

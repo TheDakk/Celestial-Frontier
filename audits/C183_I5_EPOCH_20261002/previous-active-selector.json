@@ -1,0 +1,15 @@
+{
+  "schema": "cf-v2-compendium-active-certificate/v1",
+  "epochDirectory": "audits/C173_I5_EPOCH_20261002/epoch",
+  "files": {
+    "calibration-budget.json": "0d5cea4a572df6acb93e74ea8cdbd04a007e0cc0d65702f57d5dc5a2201d8f43",
+    "compendium-memory-v2.json": "ee368d9c93e99c82dd461e11a49080282f39ead56b875ad8dee4973d47c0eccd",
+    "execution.json": "0ecb7fec303a3725b36fcc84288cd5585a3bf3507c68fd411f91ccadff2ecb3b",
+    "instrument/manifest.json": "ddb52c3eccb7ca6e632c32d435071a89a10c9aff7b51d2df1d446d952e77d172",
+    "instrument-authority.json": "8fa3cd185cdbb5be022542084e753becc94b0bf8038b9a53e3ece5254594eba6",
+    "calibration-1-report.json": "02740ede085c0c6396b17f21ad1968d20a2276f2b64fd8b649b38a44bdd0c4a7",
+    "calibration-2-report.json": "f2e89c51d04d239f6fe963db698fac1fafc021edc192aa75d377117c1411698b",
+    "calibration-3-report.json": "4a9e935041a268ac06b5bf0e3236633ffb28549fca14aa6e04ab46be6ad26d46",
+    "certification-report.json": "ef1901b662dc95734df046a74c316848c7d75b02042d388a92dc5749ad02e4cd"
+  }
+}

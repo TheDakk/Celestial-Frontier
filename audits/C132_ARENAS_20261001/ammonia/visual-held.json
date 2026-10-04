@@ -1,0 +1,9 @@
+{
+  "schema": "cf.c132-arena-visual-hold/v1",
+  "id": "ammonia",
+  "technicalIntake": "PASS",
+  "qualityAccepted": false,
+  "reason": "Original FAR paints unbound planets/moons and hard icy spires; MID repeats apparent solid ice towers. Source medium is air. Successor replaces the bodies and spires at painting side.",
+  "successor": "ammonia-v2",
+  "sourceOriginalsRetained": true
+}

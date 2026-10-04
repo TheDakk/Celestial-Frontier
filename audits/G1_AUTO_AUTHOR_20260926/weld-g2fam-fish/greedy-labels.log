@@ -1,0 +1,15 @@
+10-herring +["body","caudal"] RED
+10-herring +["body","spine2"] PASS_STATIC
+10-herring +["body","spine3"] PASS_STATIC
+10-herring +["body","spine4"] PASS_STATIC
+10-herring +["body","spine5"] RED
+FINAL 10-herring [["body","spine1"],["body","spine2"],["body","spine3"],["body","spine4"]]
+FINAL-STATIC 10-herring PASS_STATIC
+06-trout +["body","caudal"] RED
+06-trout +["body","spine2"] PASS_STATIC
+06-trout +["body","spine3"] PASS_STATIC
+06-trout +["body","spine4"] PASS_STATIC
+06-trout +["body","spine5"] RED
+06-trout +["head","spine0"] PASS_STATIC
+FINAL 06-trout [["body","spine1"],["body","spine2"],["body","spine3"],["body","spine4"],["head","spine0"]]
+FINAL-STATIC 06-trout PASS_STATIC

@@ -1,0 +1,11 @@
+{
+  "sourcePrompt": "candidate-03/prompt.txt",
+  "sourceSha256": "e2f2c15b1b218d96c179843e78d34670b038b34b4c5fa83ad7b04597347caf93",
+  "targetPrompt": "prompt.txt",
+  "targetSha256": "7f4cb73fdb17b2c2fd617d7e9b4c7821709b7db0a720cb7b19762c8a52a971d7",
+  "replacedPoseOccurrences": 2,
+  "replacedAdaptationOccurrences": 2,
+  "styleParagraphChanged": false,
+  "speciesGenomeChanged": false,
+  "familyPartListChanged": false
+}

@@ -1,0 +1,79 @@
+{
+  "files": [
+    {
+      "path": "declaration.txt",
+      "bytes": 779,
+      "sha256": "7ab08beb597d44523514511590d3858cff08daab1af7ffebb97721fca7b96c11"
+    },
+    {
+      "path": "execution.json",
+      "bytes": 600,
+      "sha256": "6185836e509fcad5768882db3163425791e6dddc8c36e357a2086e2b8e8f0325"
+    },
+    {
+      "path": "generation-receipt.json",
+      "bytes": 472,
+      "sha256": "ec61634c7cf8e57f24f7a3d27f488489025b0eaac1e72c706aa7b17d5a3ddb65"
+    },
+    {
+      "path": "HISTORY.md",
+      "bytes": 409,
+      "sha256": "4af1f50ff1937605bb97b5085b4a04610cfef2e58ebb6728062112e0b1172977"
+    },
+    {
+      "path": "master.png",
+      "bytes": 1529853,
+      "sha256": "9d3bf3f1ef7ef1992924beececd2c0b0f83fa4274293a0dad8aaaf63001c3297"
+    },
+    {
+      "path": "predecessor-signing-success.json",
+      "bytes": 361,
+      "sha256": "5632f064c4ec6805cefa282e847c65491b04fa7b61b0300733f6f3ba0c7e3bfb"
+    },
+    {
+      "path": "presence.json",
+      "bytes": 151,
+      "sha256": "6ccdb6b0f13aefa2a5b437c322795fe1999fc1312e509dbcee578a973a455e3a"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 10315,
+      "sha256": "c12444c6b89b4f2eb51ae4082d17b96b37810c8506304cbb74b59d976635d883"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2582,
+      "sha256": "84b0e24754ae288fd6e18ebe644f88187f72051eaad8ced1416b0a5409b4d437"
+    },
+    {
+      "path": "request.json",
+      "bytes": 785,
+      "sha256": "8d30520c674d2df85573df53df15a94803db18a78fdd0d080cd5ef28d9309215"
+    },
+    {
+      "path": "result.json",
+      "bytes": 855,
+      "sha256": "fc60ac1c0265579598f9a3336378366caa85742fff8ce1adda40d7de95a033e9"
+    },
+    {
+      "path": "review-sheet-02.png",
+      "bytes": 362508,
+      "sha256": "dfd5d1e99086dc9dd3d73e66e16926361fed5f06128194263f419c4b4eb8b3eb"
+    },
+    {
+      "path": "review-sheet.mjs",
+      "bytes": 3745,
+      "sha256": "bec35e0b44e401a84c84d572249d514da5f9fa287edd7e21fbc47a2b21617ee3"
+    },
+    {
+      "path": "subject-source.json",
+      "bytes": 8231,
+      "sha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231"
+    },
+    {
+      "path": "visual-review.md",
+      "bytes": 2148,
+      "sha256": "b374f71c26d40d73a55f64a86fce8e948e15eb01459262a793d94892d2647d2b"
+    }
+  ]
+}

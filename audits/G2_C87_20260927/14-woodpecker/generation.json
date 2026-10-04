@@ -1,0 +1,13 @@
+{
+  "id": "14-woodpecker",
+  "name": "Woodpecker",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-2719d1d0-a826-43cd-adcf-1f2202c9dda5.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "08cf942e09969e6aefdb0874f6d6fbe31ff5e448ee17e8f8967a744072c31eb4",
+  "bytes": 1150020,
+  "promptSha256": "56953b3b8538d27919acec52068355e99279716a88163b8866f9c3220aadac5a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

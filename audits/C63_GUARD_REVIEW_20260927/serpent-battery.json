@@ -1,0 +1,636 @@
+{
+ "schema": "cf.g1-serpent-battery/v1",
+ "positives": [
+  {
+   "id": "17-python",
+   "name": "Python",
+   "verdict": "ADMIT",
+   "reasons": [],
+   "ref": "racer"
+  },
+  {
+   "id": "18-boa",
+   "name": "Boa",
+   "verdict": "REFUSE",
+   "reasons": [
+    "facing: the right (head) end is not thicker than the left (tail) end (64.8 vs 66.2)",
+    "tail not tapered: tip 77px vs median 113px (truncated tail?)"
+   ],
+   "ref": null
+  },
+  {
+   "id": "19-racer",
+   "name": "Racer",
+   "verdict": "ADMIT",
+   "reasons": [],
+   "ref": "python"
+  },
+  {
+   "id": "20-garter-snake",
+   "name": "Garter Snake",
+   "verdict": "ADMIT",
+   "reasons": [],
+   "ref": "racer"
+  },
+  {
+   "id": "17-tree-snake",
+   "name": "Tree Snake",
+   "verdict": "ADMIT",
+   "reasons": [],
+   "ref": "racer"
+  },
+  {
+   "id": "18-rat-snake",
+   "name": "Rat Snake",
+   "verdict": "ADMIT",
+   "reasons": [],
+   "ref": "racer"
+  },
+  {
+   "id": "19-cottonmouth",
+   "name": "Cottonmouth",
+   "verdict": "ADMIT",
+   "reasons": [],
+   "ref": "python"
+  },
+  {
+   "id": "21-mamba",
+   "name": "Mamba",
+   "verdict": "ADMIT",
+   "reasons": [],
+   "ref": "racer"
+  },
+  {
+   "id": "23-whip-snake",
+   "name": "Whip Snake",
+   "verdict": "REFUSE",
+   "reasons": [
+    "missing-anatomy: part segment-9 owns 1.41 % of the paint (reference 5.96 %)"
+   ],
+   "ref": "racer"
+  },
+  {
+   "id": "24-grass-snake",
+   "name": "Grass Snake",
+   "verdict": "ADMIT",
+   "reasons": [],
+   "ref": "racer"
+  },
+  {
+   "id": "candidate-02",
+   "name": "Python",
+   "verdict": "ADMIT",
+   "reasons": [],
+   "ref": "racer"
+  },
+  {
+   "id": "21-racer",
+   "name": "Racer",
+   "verdict": "ADMIT",
+   "reasons": [],
+   "ref": "python"
+  }
+ ],
+ "mutants": {
+  "flip": [
+   {
+    "id": "17-python",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (18.1 vs 55.1)"
+    ]
+   },
+   {
+    "id": "18-boa",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (66.2 vs 64.8)"
+    ]
+   },
+   {
+    "id": "19-racer",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (11.7 vs 46.9)",
+     "head end blunt: snout ratio 0.872 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "20-garter-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (13.6 vs 51.8)"
+    ]
+   },
+   {
+    "id": "17-tree-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (8.7 vs 32.2)"
+    ]
+   },
+   {
+    "id": "18-rat-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (11.3 vs 44.7)"
+    ]
+   },
+   {
+    "id": "19-cottonmouth",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (26 vs 99.3)"
+    ]
+   },
+   {
+    "id": "21-mamba",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (13.8 vs 50.2)"
+    ]
+   },
+   {
+    "id": "23-whip-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "body not continuous: 1.3 % of the length has no paint",
+     "facing: the right (head) end is not thicker than the left (tail) end (3.6 vs 33)"
+    ]
+   },
+   {
+    "id": "24-grass-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (11.2 vs 54.5)"
+    ]
+   },
+   {
+    "id": "candidate-02",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (36.8 vs 54.2)"
+    ]
+   },
+   {
+    "id": "21-racer",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (7.6 vs 18.9)"
+    ]
+   }
+  ],
+  "erasedTail": [
+   {
+    "id": "17-python",
+    "verdict": "REFUSE",
+    "reasons": [
+     "wrong family: length/thickness 7.72 < 8",
+     "facing: the right (head) end is not thicker than the left (tail) end (49 vs 142.6)"
+    ]
+   },
+   {
+    "id": "18-boa",
+    "verdict": "REFUSE",
+    "reasons": [
+     "wrong family: length/thickness 7.03 < 8",
+     "facing: the right (head) end is not thicker than the left (tail) end (57.5 vs 157.6)"
+    ]
+   },
+   {
+    "id": "19-racer",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (42.2 vs 48.3)",
+     "tail not tapered: tip 46.4px vs median 62px (truncated tail?)"
+    ]
+   },
+   {
+    "id": "20-garter-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (47 vs 70.8)",
+     "tail not tapered: tip 64.4px vs median 74px (truncated tail?)"
+    ]
+   },
+   {
+    "id": "17-tree-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (25.8 vs 47.6)",
+     "tail not tapered: tip 46.4px vs median 56px (truncated tail?)"
+    ]
+   },
+   {
+    "id": "18-rat-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (40.8 vs 64.7)",
+     "tail not tapered: tip 65.4px vs median 71px (truncated tail?)"
+    ]
+   },
+   {
+    "id": "19-cottonmouth",
+    "verdict": "REFUSE",
+    "reasons": [
+     "wrong family: length/thickness 6.22 < 8",
+     "facing: the right (head) end is not thicker than the left (tail) end (81.8 vs 138.3)"
+    ]
+   },
+   {
+    "id": "21-mamba",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (45.6 vs 67.4)",
+     "tail not tapered: tip 67.8px vs median 71px (truncated tail?)"
+    ]
+   },
+   {
+    "id": "23-whip-snake",
+    "verdict": "ADMIT",
+    "reasons": []
+   },
+   {
+    "id": "24-grass-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (48.6 vs 78.3)",
+     "tail not tapered: tip 70.8px vs median 86px (truncated tail?)"
+    ]
+   },
+   {
+    "id": "candidate-02",
+    "verdict": "REFUSE",
+    "reasons": [
+     "wrong family: length/thickness 7.3 < 8",
+     "facing: the right (head) end is not thicker than the left (tail) end (48.4 vs 128.8)"
+    ]
+   },
+   {
+    "id": "21-racer",
+    "verdict": "REFUSE",
+    "reasons": [
+     "facing: the right (head) end is not thicker than the left (tail) end (12.3 vs 42.4)",
+     "tail not tapered: tip 38.7px vs median 41px (truncated tail?)"
+    ]
+   }
+  ],
+  "erasedHead": [
+   {
+    "id": "17-python",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 0.904 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "18-boa",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 0.989 > 0.72 (no tapering snout; a cut-off head?)",
+     "tail not tapered: tip 74.5px vs median 116px (truncated tail?)"
+    ]
+   },
+   {
+    "id": "19-racer",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 0.941 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "20-garter-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 0.981 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "17-tree-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 0.961 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "18-rat-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 0.857 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "19-cottonmouth",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 1.12 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "21-mamba",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 0.885 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "23-whip-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 1.04 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "24-grass-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 0.957 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "candidate-02",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 0.851 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   },
+   {
+    "id": "21-racer",
+    "verdict": "REFUSE",
+    "reasons": [
+     "head end blunt: snout ratio 0.994 > 0.72 (no tapering snout; a cut-off head?)"
+    ]
+   }
+  ],
+  "midCut": [
+   {
+    "id": "17-python",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 53.9 % (need 97 %)",
+     "wrong family: length/thickness 5.66 < 8"
+    ]
+   },
+   {
+    "id": "18-boa",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 53.3 % (need 97 %)",
+     "wrong family: length/thickness 4.87 < 8"
+    ]
+   },
+   {
+    "id": "19-racer",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 61.8 % (need 97 %)",
+     "facing: the right (head) end is not thicker than the left (tail) end (37.1 vs 63.3)"
+    ]
+   },
+   {
+    "id": "20-garter-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 57.1 % (need 97 %)",
+     "facing: the right (head) end is not thicker than the left (tail) end (41 vs 82.7)"
+    ]
+   },
+   {
+    "id": "17-tree-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 59.0 % (need 97 %)",
+     "facing: the right (head) end is not thicker than the left (tail) end (21.3 vs 59.8)"
+    ]
+   },
+   {
+    "id": "18-rat-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 61.0 % (need 97 %)",
+     "wrong family: length/thickness 7.99 < 8"
+    ]
+   },
+   {
+    "id": "19-cottonmouth",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 58.9 % (need 97 %)",
+     "wrong family: length/thickness 4.44 < 8"
+    ]
+   },
+   {
+    "id": "21-mamba",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 60.1 % (need 97 %)",
+     "facing: the right (head) end is not thicker than the left (tail) end (40.2 vs 94.4)"
+    ]
+   },
+   {
+    "id": "23-whip-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 68.0 % (need 97 %)",
+     "facing: the right (head) end is not thicker than the left (tail) end (27.1 vs 44.7)"
+    ]
+   },
+   {
+    "id": "24-grass-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 60.5 % (need 97 %)",
+     "wrong family: length/thickness 7.05 < 8"
+    ]
+   },
+   {
+    "id": "candidate-02",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 53.2 % (need 97 %)",
+     "wrong family: length/thickness 5.39 < 8"
+    ]
+   },
+   {
+    "id": "21-racer",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 53.1 % (need 97 %)",
+     "facing: the right (head) end is not thicker than the left (tail) end (6.4 vs 42.7)"
+    ]
+   }
+  ],
+  "duplicated": [
+   {
+    "id": "17-python",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   },
+   {
+    "id": "18-boa",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)",
+     "facing: the right (head) end is not thicker than the left (tail) end (64.8 vs 66.2)"
+    ]
+   },
+   {
+    "id": "19-racer",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   },
+   {
+    "id": "20-garter-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   },
+   {
+    "id": "17-tree-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   },
+   {
+    "id": "18-rat-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   },
+   {
+    "id": "19-cottonmouth",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   },
+   {
+    "id": "21-mamba",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   },
+   {
+    "id": "23-whip-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   },
+   {
+    "id": "24-grass-snake",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   },
+   {
+    "id": "candidate-02",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   },
+   {
+    "id": "21-racer",
+    "verdict": "REFUSE",
+    "reasons": [
+     "detached paint: the largest piece holds 50.0 % (need 97 %)"
+    ]
+   }
+  ]
+ },
+ "wrongFamily": [
+  {
+   "id": "01-dingo",
+   "verdict": "REFUSE",
+   "reasons": [
+    "not x-monotone: the dominant column run holds 88.2 % (coil or overlap; vertical strips cannot separate it)",
+    "wrong family: length/thickness 4.3 < 8"
+   ]
+  },
+  {
+   "id": "04-lion",
+   "verdict": "REFUSE",
+   "reasons": [
+    "not x-monotone: the dominant column run holds 92.2 % (coil or overlap; vertical strips cannot separate it)",
+    "wrong family: length/thickness 3.41 < 8"
+   ]
+  },
+  {
+   "id": "12-weasel",
+   "verdict": "REFUSE",
+   "reasons": [
+    "not x-monotone: the dominant column run holds 94.7 % (coil or overlap; vertical strips cannot separate it)",
+    "wrong family: length/thickness 6.32 < 8"
+   ]
+  },
+  {
+   "id": "13-duck",
+   "verdict": "REFUSE",
+   "reasons": [
+    "not x-monotone: the dominant column run holds 87.5 % (coil or overlap; vertical strips cannot separate it)",
+    "wrong family: length/thickness 3.7 < 8"
+   ]
+  },
+  {
+   "id": "14-goose",
+   "verdict": "REFUSE",
+   "reasons": [
+    "not x-monotone: the dominant column run holds 88.4 % (coil or overlap; vertical strips cannot separate it)",
+    "wrong family: length/thickness 3.41 < 8"
+   ]
+  },
+  {
+   "id": "21-cockroach",
+   "verdict": "REFUSE",
+   "reasons": [
+    "not x-monotone: the dominant column run holds 86.0 % (coil or overlap; vertical strips cannot separate it)",
+    "wrong family: length/thickness 4.92 < 8"
+   ]
+  },
+  {
+   "id": "22-locust",
+   "verdict": "REFUSE",
+   "reasons": [
+    "not x-monotone: the dominant column run holds 85.3 % (coil or overlap; vertical strips cannot separate it)",
+    "wrong family: length/thickness 4.86 < 8"
+   ]
+  },
+  {
+   "id": "32-stick-insect",
+   "verdict": "REFUSE",
+   "reasons": [
+    "not x-monotone: the dominant column run holds 70.3 % (coil or overlap; vertical strips cannot separate it)",
+    "facing: the right (head) end is not thicker than the left (tail) end (14.7 vs 27.5)"
+   ]
+  },
+  {
+   "id": "09-crow",
+   "verdict": "REFUSE",
+   "reasons": [
+    "not x-monotone: the dominant column run holds 91.7 % (coil or overlap; vertical strips cannot separate it)",
+    "wrong family: length/thickness 5.03 < 8"
+   ]
+  }
+ ],
+ "summary": {
+  "positivesAdmitted": "10/12",
+  "mutantsRefused": {
+   "flip": "12/12",
+   "erasedTail": "11/12",
+   "erasedHead": "12/12",
+   "midCut": "12/12",
+   "duplicated": "12/12"
+  },
+  "wrongFamilyRefused": "9/9"
+ }
+}

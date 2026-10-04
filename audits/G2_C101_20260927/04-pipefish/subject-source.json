@@ -1,0 +1,65 @@
+{
+  "name": "Pipefish",
+  "family": "fish",
+  "species": {
+    "name": "Pipefish",
+    "aspect": 14,
+    "headFrac": 0.15,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "needle-thin ringed body",
+      "tiny tube snout with a pinhole mouth",
+      "seahorse head held in line with the body"
+    ]
+  },
+  "genome": {
+    "seed": 2067023014,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 14,
+    "body": 7,
+    "loco": 3,
+    "trait": 11,
+    "size": 5,
+    "diet": 3,
+    "head": 2,
+    "limbs": 1,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 4,
+    "habitat": 8,
+    "detail": 9,
+    "accent": 15,
+    "temper": 5,
+    "sense": 4,
+    "repro": 2,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Pipefish"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pipefish\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2067023014\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "index": 465,
+  "profile": {
+    "id": "tube-snouted-fish",
+    "names": [
+      "Seahorse",
+      "Pipefish"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "No conventional jaw bite; feeding/suction contact needs a specific observation."
+  }
+}

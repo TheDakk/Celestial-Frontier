@@ -1,0 +1,21 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Wolverine",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "4f6e0b0296efd06b200b2c0fdb4b611a83d5814e696e38cec2cbd2a7fa68ac46",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "small-clawed-mammal",
+  "authoringCreated": false,
+  "sourceHead": "1ba92999306aa14f233c9c98e67e11bc152dda12"
+}

@@ -1,0 +1,115 @@
+{
+  "schema": "cf.c197-pattern-addendum/v1",
+  "reason": "C176 requested missing unchanged-pipeline pattern observations",
+  "priorDeliverySha256": "5d6d48320c2c7ae10b62e7095be94e0aae9201655946f44a6ccb4bdc11b6ef3a",
+  "selected": "pilot-v2.json",
+  "method": "Full native-size visual review; existing patternRequirements and assessPatternObservation owners unchanged",
+  "mastersModified": false,
+  "summary": [
+    {
+      "name": "Basking Shark",
+      "status": "NOT_REQUIRED",
+      "required": [],
+      "masterSha256": "89632bf56c93071aac6ef503266e51ace5bb0fb9be99440b01f74267ac9fa5f4"
+    },
+    {
+      "name": "Flounder",
+      "status": "NOT_REQUIRED",
+      "required": [],
+      "masterSha256": "2c2e53c4b47e375798c471615aab12cb72fe5424d2754ebcafcf13c9589d0a29"
+    },
+    {
+      "name": "Great White Shark",
+      "status": "NOT_REQUIRED",
+      "required": [],
+      "masterSha256": "6b1efdd9e85eda1dc65518737e6b17ab52f23be5a95593d63aa8fbaa8c64bf78"
+    },
+    {
+      "name": "Mako Shark",
+      "status": "NOT_REQUIRED",
+      "required": [],
+      "masterSha256": "c3bcbf2ddc10e18e2f25b1f3b1042f865916e23d991969e4ecb0032bedcdb0c8"
+    },
+    {
+      "name": "Rhea",
+      "status": "NOT_REQUIRED",
+      "required": [],
+      "masterSha256": "1e1a1a15c937a0646cba6ad93b89f62bddebdbc036f58840f428700add32a216"
+    },
+    {
+      "name": "Snailfish",
+      "status": "NOT_REQUIRED",
+      "required": [],
+      "masterSha256": "45f66b5e3cfe9530be6693c67ceb22f705f23ae67bb435c61fda4f72431f76d8"
+    },
+    {
+      "name": "Snow Petrel",
+      "status": "NOT_REQUIRED",
+      "required": [],
+      "masterSha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37"
+    },
+    {
+      "name": "Tiger Shark",
+      "status": "PASS",
+      "required": [
+        "dark vertical tiger stripes on the flank"
+      ],
+      "masterSha256": "16983f593fe1b3e24b939e988931e266234424f782c0227bce7be3cc6ee4b9a5"
+    },
+    {
+      "name": "Whale Shark",
+      "status": "PASS",
+      "required": [
+        "checkerboard of white spots and lines"
+      ],
+      "masterSha256": "d426cbcae3dd5e3749af7aa43e823eb892e97d1908c1db7f3fa7f07d01748c2c"
+    }
+  ],
+  "files": [
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/basking-shark/pattern-check.json",
+      "sha256": "0539e7cbdf00de4b35067abea4a5e52ebf7d04e3bee9a127343205f2b6739991",
+      "bytes": 289
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/flounder/pattern-check.json",
+      "sha256": "ff953ca4fa5c622a6025f44edf7623f0353bb1a1d6c767f04d660e0af7abcd31",
+      "bytes": 284
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/great-white-shark-framing-v2/pattern-check.json",
+      "sha256": "843cbd0b48daabc13c6013b5d68976b0d87409f563565b9b107a31dc47b189c0",
+      "bytes": 293
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/mako-shark-framing-v2/pattern-check.json",
+      "sha256": "892df083016e0473019cd59539f0926c6af3cdf2db3147f1f9cc142c90ea0ffd",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea/pattern-check.json",
+      "sha256": "31bb12cd62241108ca3a8bc06d78c7fbe19566b8fa4cefb17d7318fd72687448",
+      "bytes": 280
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snailfish/pattern-check.json",
+      "sha256": "b5889612f1a10bf74ecb97ec6144b6d53d71cb82447f61d193e2ea082bd84d0f",
+      "bytes": 285
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel/pattern-check.json",
+      "sha256": "39fe95bca39b709e5c3e0ece3220014a2abef72974602b7532904192a2f4c088",
+      "bytes": 287
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/tiger-shark-framing-v2/pattern-check.json",
+      "sha256": "2f0989c39e899af977838a9cb23a6b635f52840ac04a3b510c2611a9c604f501",
+      "bytes": 747
+    },
+    {
+      "path": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/whale-shark-framing-v2/pattern-check.json",
+      "sha256": "1e52525b6f07c69b901b8979fa2603edb33ce7de0c70657b474ce0738a2db671",
+      "bytes": 733
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "c74504951f042134b9e8cd7ea848f49c92b8fc70",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate-v2/master.png",
+      "sha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate-v2/authoring.json",
+      "sha256": "b5f762d890716c0993251d227993e6cedd75b599529a8babbdb312323db33a71"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate-v2/subject-source.json",
+      "sha256": "178ba64cf18918438212b2e4597c3d3117873399a68b579c7ef0f3c1e40cbdb8"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate-v2/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "1b712508e6ac685317c8b99be463459cf4798955a3742d5308397c71c3410ee0",
+  "bindingHash": "e4826a455f32d3db5e6b9e1e668c3b8ba5fdf889da6d4c8a6ed585cb2bc88be5",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingFarRoot",
+    "wingFarTip",
+    "wingNearRoot",
+    "wingNearTip",
+    "tailFan",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate-v2/master.png",
+      "sha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate-v2/authoring.json",
+      "sha256": "b5f762d890716c0993251d227993e6cedd75b599529a8babbdb312323db33a71",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate-v2/subject-source.json",
+      "sha256": "178ba64cf18918438212b2e4597c3d3117873399a68b579c7ef0f3c1e40cbdb8",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C169_NAPE_RECUT_20261002/snowy-owl/candidate-v2/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

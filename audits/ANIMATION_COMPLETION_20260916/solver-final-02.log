@@ -1,0 +1,41 @@
+✔ compiled solve rows and guarded numerics retain machine-scale agreement across valences and pin partitions (21.110208ms)
+✔ norm scaling fallback retains finite large-scale and near-collapsed targets without changing refusal semantics (1.631041ms)
+✔ historical compiled solve rows retain exact arithmetic for short, four, eight and wide neighbor rows (15.914583ms)
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (2.541ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (1.093167ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (0.651542ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.245083ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.2145ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.150708ms)
+✔ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.209042ms)
+✔ compiled field preserves weight order and bitwise Float32/Float64 output parity (0.8715ms)
+✔ each current matrix and each component is read once; in-place edits cannot hide behind a cache (0.368ms)
+✔ source geometry and sparse weights are captured immutably; recompilation observes source edits (0.108417ms)
+✔ missing/nonfinite/malformed matrices and Float32/Float64 overflow refuse atomically (0.161ms)
+✔ failure after a valid call and later recovery do not leak partially computed scratch (0.085583ms)
+✔ invalid source/foreign state and destination refuse, without accepting inherited matrices (0.199333ms)
+✔ candidate-03 actual Civet field is bitwise equal at every retained named native pose (116.758417ms)
+✔ active-set projection closes the real cast fold that 64 forward sweeps leave inverted, without changing targets or pins (32.504541ms)
+✔ both source parts share exact deformation; rest reconstructs authored positions without patches (1.559958ms)
+✔ foreign joints, missing source ownership, extrapolated UVs and corrupt indices refuse (0.19925ms)
+✔ a foldover fails on the actual posed triangle, while rest and rigid translation pass (0.153334ms)
+✔ thin nonzero painted triangles cannot bypass orientation checks (0.097833ms)
+✔ asset solver profile cannot override orientation defaults or add inherited tuning fields (1.565375ms)
+✔ branch reindex preserves every source interpolation but opposing paws have separate vertices/solver topology (6.929875ms)
+✔ proximal root socket stays shared and malformed source references fail closed (10.4325ms)
+✔ a bent distal paw behind the root plane retains its painted limb ownership (2.099417ms)
+✔ source/record corruption and unsupported anatomy refuse before producing a binding (3.716042ms)
+✔ uniform authoring scale preserves normalized interpolation, weights and surfaces and repeated builds are identical (3.764625ms)
+✔ actual part faces enter solver topology even when cached vertex interpolation references other faces (4.708084ms)
+✔ actual ancestral attachment welds below root plane while an opposing sibling remains separate (2.351167ms)
+✔ physical proximal skin joins axial/upper sibling owners while limb pairs and distal crossings remain split (1.614625ms)
+✔ shared shoulder skin retains proximal limb influence without importing distal foot transforms (1.563666ms)
+✔ shared muscle influences cross a socket continuously while an opposing distal foot remains independent (1.396916ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 207.635375

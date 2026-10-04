@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "producer": "0dd262983b319254c7b957c1f0d9fd6e2cc6932f",
+  "bindingPath": "audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/binding.json",
+  "bindingFileSha256": "9cacbaca6cab18e3fde0d1ecb42ea899e6c352df19a551324808ede34dbf11f1",
+  "originalPreparedReceipt": "../R2c-double-prime/civet-input/receipt.json",
+  "nativeReport": "native-rest-01/report.json",
+  "scope": "Exact native RGBA rest only; no action/CPU admission",
+  "restChanged": 0,
+  "finalRestChanged": 0,
+  "shiftedChanged": 1511112
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Badger",
+  "masterSha256": "8a20aa882cbc0362d3b6ca44ca22377be63d2c477b865dd1c1310d5fe81a2453",
+  "status": "PRESENT",
+  "method": "Codex visual inspection of exact generated originals and sheet; pattern only, not G1, anatomy or Dakk approval",
+  "features": [
+    {
+      "requirement": "white stripe running back over the face",
+      "status": "PRESENT",
+      "observed": "A broad pale central face stripe between the dark eye/cheek stripes is visible."
+    }
+  ]
+}

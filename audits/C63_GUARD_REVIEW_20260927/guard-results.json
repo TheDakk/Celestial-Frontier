@@ -1,0 +1,167 @@
+{
+  "schema": "cf.foreleg-guard-check/v1",
+  "subjects": [
+    {
+      "id": "g2c54-05-tiger-side",
+      "receipt": {
+        "schema": "cf.foreleg-side-partition/v1",
+        "method": "nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership",
+        "changedPixels": 15929,
+        "forelegPixels": 128117,
+        "movedShare": 0.12433166558692445,
+        "maxMovedShare": 0.25,
+        "transfers": {
+          "foreNearRoot→foreFarRoot": 6498,
+          "foreNearKnee→foreFarRoot": 6315,
+          "foreNearKnee→foreFarKnee": 1776,
+          "foreNearAnkle→foreFarKnee": 1340
+        },
+        "otherOwnersChanged": 0
+      },
+      "pixelsDifferent": 0,
+      "inputChanged": false,
+      "idempotent": true,
+      "swappedChainRefused": true,
+      "independentSwappedShare": 0.6373
+    },
+    {
+      "id": "g2c54-06-leopard-side",
+      "receipt": {
+        "schema": "cf.foreleg-side-partition/v1",
+        "method": "nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership",
+        "changedPixels": 11053,
+        "forelegPixels": 89524,
+        "movedShare": 0.1234640990125553,
+        "maxMovedShare": 0.25,
+        "transfers": {
+          "foreNearRoot→foreFarRoot": 4354,
+          "foreNearKnee→foreFarRoot": 5532,
+          "foreNearKnee→foreFarKnee": 486,
+          "foreNearAnkle→foreFarKnee": 681
+        },
+        "otherOwnersChanged": 0
+      },
+      "pixelsDifferent": 0,
+      "inputChanged": false,
+      "idempotent": true,
+      "swappedChainRefused": true,
+      "independentSwappedShare": 0.6164
+    },
+    {
+      "id": "g2c54-09-ocelot-side",
+      "receipt": {
+        "schema": "cf.foreleg-side-partition/v1",
+        "method": "nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership",
+        "changedPixels": 12614,
+        "forelegPixels": 123223,
+        "movedShare": 0.10236725286675377,
+        "maxMovedShare": 0.25,
+        "transfers": {
+          "foreNearRoot→foreFarRoot": 5571,
+          "foreNearKnee→foreFarRoot": 5743,
+          "foreNearAnkle→foreFarRoot": 348,
+          "foreNearAnkle→foreFarKnee": 952
+        },
+        "otherOwnersChanged": 0
+      },
+      "pixelsDifferent": 0,
+      "inputChanged": false,
+      "idempotent": true,
+      "swappedChainRefused": true,
+      "independentSwappedShare": 0.6501
+    },
+    {
+      "id": "g2c56-06-mink-side",
+      "receipt": {
+        "schema": "cf.foreleg-side-partition/v1",
+        "method": "nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership",
+        "changedPixels": 8718,
+        "forelegPixels": 72775,
+        "movedShare": 0.11979388526279629,
+        "maxMovedShare": 0.25,
+        "transfers": {
+          "foreNearRoot→foreFarRoot": 2684,
+          "foreNearKnee→foreFarRoot": 3977,
+          "foreNearKnee→foreFarKnee": 1180,
+          "foreNearAnkle→foreFarKnee": 877
+        },
+        "otherOwnersChanged": 0
+      },
+      "pixelsDifferent": 0,
+      "inputChanged": false,
+      "idempotent": true,
+      "swappedChainRefused": true,
+      "independentSwappedShare": 0.6802
+    },
+    {
+      "id": "g2c56-08-fisher-side",
+      "receipt": {
+        "schema": "cf.foreleg-side-partition/v1",
+        "method": "nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership",
+        "changedPixels": 9234,
+        "forelegPixels": 85634,
+        "movedShare": 0.10783100170493029,
+        "maxMovedShare": 0.25,
+        "transfers": {
+          "foreNearRoot→foreFarRoot": 3281,
+          "foreNearKnee→foreFarRoot": 4830,
+          "foreNearAnkle→foreFarKnee": 1067,
+          "foreNearAnkle→foreFarRoot": 56
+        },
+        "otherOwnersChanged": 0
+      },
+      "pixelsDifferent": 0,
+      "inputChanged": false,
+      "idempotent": true,
+      "swappedChainRefused": true,
+      "independentSwappedShare": 0.6506
+    },
+    {
+      "id": "g2c57-05-snow-leopard-side",
+      "receipt": {
+        "schema": "cf.foreleg-side-partition/v1",
+        "method": "nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership",
+        "changedPixels": 12304,
+        "forelegPixels": 108972,
+        "movedShare": 0.11290973828139339,
+        "maxMovedShare": 0.25,
+        "transfers": {
+          "foreNearRoot→foreFarRoot": 5873,
+          "foreNearKnee→foreFarRoot": 4491,
+          "foreNearKnee→foreFarKnee": 441,
+          "foreNearAnkle→foreFarKnee": 1499
+        },
+        "otherOwnersChanged": 0
+      },
+      "pixelsDifferent": 0,
+      "inputChanged": false,
+      "idempotent": true,
+      "swappedChainRefused": true,
+      "independentSwappedShare": 0.6355
+    },
+    {
+      "id": "g2c57-06-clouded-leopard-side",
+      "receipt": {
+        "schema": "cf.foreleg-side-partition/v1",
+        "method": "nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership",
+        "changedPixels": 10616,
+        "forelegPixels": 97399,
+        "movedShare": 0.10899495888048132,
+        "maxMovedShare": 0.25,
+        "transfers": {
+          "foreNearRoot→foreFarRoot": 3922,
+          "foreNearKnee→foreFarRoot": 4093,
+          "foreNearAnkle→foreFarRoot": 1122,
+          "foreNearAnkle→foreFarKnee": 1235,
+          "foreNearPaw→foreFarKnee": 244
+        },
+        "otherOwnersChanged": 0
+      },
+      "pixelsDifferent": 0,
+      "inputChanged": false,
+      "idempotent": true,
+      "swappedChainRefused": true,
+      "independentSwappedShare": 0.6145
+    }
+  ]
+}

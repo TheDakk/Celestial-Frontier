@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "mangrove-v2",
+  "biome": "mangrove",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/mangrove-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/mangrove-v2/d29/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/mangrove-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/mangrove-v2/arena-far.webp",
+      "runtimeSha256": "e9da7c5a020cbcae04942aeda0e134498739face005d039e37a2c2a1a14d3d2c",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-far.png",
+        "sha256": "6936d209515eebff386ddba34920905f9166573d76666e4f5011e546aed92f34"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/mangrove-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-mid.webp",
+      "runtimeSha256": "8cfd6d2a11168796e7d09978bb91b37de2f96a88446af26d9c1e7cbc30b678ed",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-mid.png",
+        "sha256": "1be61a1a0c21df8d6f50f0540b595c33b9610f1ce4272977fd8e69fd4c765096"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-near.webp",
+      "runtimeSha256": "c424f60edb441e2439be4dfc1cc10aae484262d2ae858c610bfc51c638b0d9b7",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/mangrove-v2/keyed/arena-near.png",
+        "sha256": "5fb2d7e6019f4622552477053c98a95445fa8b32d6afe724f395e76b336127a2"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

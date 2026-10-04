@@ -1,0 +1,190 @@
+{
+  "id": "08-water-vole",
+  "name": "Water Vole",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "a39e6f49d0f702b79c0cb9392be606260092ad910d37969a66411354a20cab3c",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 22863,
+    "coreRadius": 30,
+    "bodyBox": {
+      "x0": 141,
+      "y0": 143,
+      "x1": 323,
+      "y1": 245
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0125,
+        "pixels": 286,
+        "box": {
+          "x0": 186,
+          "y0": 135,
+          "x1": 243,
+          "y1": 142
+        },
+        "attach": {
+          "x": 214.5,
+          "y": 142,
+          "relX": 0.4,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.27,
+          "y": -0.96
+        },
+        "class": "top",
+        "length": 29.3
+      },
+      {
+        "k": 1,
+        "frac": 0.0066,
+        "pixels": 151,
+        "box": {
+          "x0": 261,
+          "y0": 142,
+          "x1": 313,
+          "y1": 147
+        },
+        "attach": {
+          "x": 287,
+          "y": 147,
+          "relX": 0.8,
+          "relY": 0.04
+        },
+        "dir": {
+          "x": 0.93,
+          "y": -0.37
+        },
+        "class": "front",
+        "length": 26.5
+      },
+      {
+        "k": 2,
+        "frac": 0.051,
+        "pixels": 1167,
+        "box": {
+          "x0": 324,
+          "y0": 153,
+          "x1": 352,
+          "y1": 212
+        },
+        "attach": {
+          "x": 324,
+          "y": 182.5,
+          "relX": 1.01,
+          "relY": 0.39
+        },
+        "dir": {
+          "x": 0.96,
+          "y": 0.28
+        },
+        "class": "front",
+        "length": 40.7
+      },
+      {
+        "k": 3,
+        "frac": 0.0858,
+        "pixels": 1962,
+        "box": {
+          "x0": 61,
+          "y0": 177,
+          "x1": 140,
+          "y1": 254
+        },
+        "attach": {
+          "x": 140,
+          "y": 206.5,
+          "relX": -0.01,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": -0.82,
+          "y": 0.57
+        },
+        "class": "limb-down",
+        "length": 92.2
+      },
+      {
+        "k": 4,
+        "frac": 0.0514,
+        "pixels": 1175,
+        "box": {
+          "x0": 138,
+          "y0": 241,
+          "x1": 213,
+          "y1": 278
+        },
+        "attach": {
+          "x": 170.2,
+          "y": 245.8,
+          "relX": 0.16,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.26,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 53.6
+      },
+      {
+        "k": 5,
+        "frac": 0.0501,
+        "pixels": 1145,
+        "box": {
+          "x0": 230,
+          "y0": 245,
+          "x1": 305,
+          "y1": 282
+        },
+        "attach": {
+          "x": 259,
+          "y": 245,
+          "relX": 0.65,
+          "relY": 1
+        },
+        "dir": {
+          "x": 0.58,
+          "y": 0.82
+        },
+        "class": "limb-down",
+        "length": 59
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 2,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 184,
+        "x1": 213,
+        "cx": 198.9
+      },
+      {
+        "x0": 251,
+        "x1": 278,
+        "cx": 264.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

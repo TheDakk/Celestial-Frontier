@@ -1,0 +1,20 @@
+{
+ "id": "23-whip-snake",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a front appendage of 21.6% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 20.3% paint that no reference appendage lands on",
+  "missing-anatomy: part head (head) covers 5% paint (reference 4%)",
+  "missing-anatomy: part body-segment-0 (seg0) covers 4% paint (reference 12%)",
+  "missing-anatomy: part body-segment-1 (seg1) covers 4% paint (reference 9%)",
+  "missing-anatomy: part body-segment-4 (seg4) covers 7% paint (reference 10%)",
+  "missing-anatomy: part body-segment-5 (seg5) covers 5% paint (reference 10%)",
+  "missing-anatomy: part body-segment-6 (seg6) covers 3% paint (reference 10%)",
+  "missing-anatomy: part body-segment-7 (seg7) covers 4% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 4% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 4% paint (reference 2%)",
+  "unexplained-anatomy: 28.3% of the paint lies away from the body and in no part (reference 5.1%)"
+ ],
+ "semanticPresence": null
+}

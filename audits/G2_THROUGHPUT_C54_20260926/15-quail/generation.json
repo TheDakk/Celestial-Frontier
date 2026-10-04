@@ -1,0 +1,15 @@
+{
+  "id": "15-quail",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f3b94078-a1b7-4c73-94c0-f3560e93a4f7.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "bc9a9370f912802cc06e709719495b70b89ec8afe815dd8e84cf64ef27b16b96",
+  "bytes": 1280206,
+  "promptSha256": "37d12d55fad9fc9a4d541241508071e0ec2aee4a5362fc2d06afe30e8806e772",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c132-arena-intake-held/v1",
+  "id": "banded",
+  "status": "REFUSED",
+  "stage": "existing intake.mjs",
+  "reason": "Master dimensions differ",
+  "exitCode": 1,
+  "masters": [
+    {
+      "role": "far",
+      "path": "audits/C132_ARENAS_20261001/banded/arena-far.png",
+      "sha256": "73585f636175feb9cc1f9b7fc37387c38c6d0def37ffcf71eb87ac6565858019",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "role": "mid",
+      "path": "audits/C132_ARENAS_20261001/banded/arena-mid.png",
+      "sha256": "ff64aca4895c2fb4ceb50c5ad045306edba5cf43b27f235c63ca8015f12584ad",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "role": "near",
+      "path": "audits/C132_ARENAS_20261001/banded/arena-near.png",
+      "sha256": "60a75157d73549de0a1d1b432f57d38f2c35e8c92e7b690b5688ee23933188e2",
+      "width": 1983,
+      "height": 793
+    }
+  ],
+  "partialKeyedCopiesRetained": true,
+  "finalizationRun": false,
+  "qualityAccepted": false,
+  "successor": "banded-v2"
+}

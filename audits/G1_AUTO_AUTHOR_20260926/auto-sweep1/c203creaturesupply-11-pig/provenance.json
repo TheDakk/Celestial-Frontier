@@ -1,0 +1,159 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c203creaturesupply-11-pig",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "f3d06aad2a2ca4dcec007cb194babdb5bff93ff68da9fe379e6b7da7b46d175d",
+ "subjectSourceSha256": "8da780843f0e44d4165754dfbe156134a1b7917b3d37003f34c68b8c17441432",
+ "identity": {
+  "name": "Pig",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pig\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"80438105\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "seed": 80438105,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "cattle",
+  "authoringSha256": "abac731e391157abd3f083369138b424cceb231456268bd1d6cf85997263adad",
+  "masterSha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+ },
+ "habitat": {
+  "profileId": "suid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "8d8550f943318af12d90e04264eb87247c2a8036fc8d377baf85b7a225002490",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group suid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0064,
+     "class": "top",
+     "attach": {
+      "x": 313.5,
+      "y": 141,
+      "relX": 0.91,
+      "relY": 0.08
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0088,
+     "class": "top",
+     "attach": {
+      "x": 334.5,
+      "y": 158.5,
+      "relX": 1,
+      "relY": 0.24
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0087,
+     "class": "top",
+     "attach": {
+      "x": 89.7,
+      "y": 162.2,
+      "relX": 0,
+      "relY": 0.27
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0097,
+     "class": "rear",
+     "attach": {
+      "x": 89,
+      "y": 197,
+      "relX": 0,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0219,
+     "class": "front",
+     "attach": {
+      "x": 336,
+      "y": 199.5,
+      "relX": 1,
+      "relY": 0.61
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.044,
+     "class": "limb-down",
+     "attach": {
+      "x": 110,
+      "y": 235,
+      "relX": 0.08,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0321,
+     "class": "limb-down",
+     "attach": {
+      "x": 144,
+      "y": 242,
+      "relX": 0.22,
+      "relY": 1
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.066,
+     "class": "limb-down",
+     "attach": {
+      "x": 245.5,
+      "y": 242,
+      "relX": 0.63,
+      "relY": 1
+     }
+    },
+    {
+     "k": 8,
+     "frac": 0.0058,
+     "class": "rear",
+     "attach": {
+      "x": 189.5,
+      "y": 243,
+      "relX": 0.41,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 3,
+    "rear": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "cattle",
+   "byClass": {
+    "top": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

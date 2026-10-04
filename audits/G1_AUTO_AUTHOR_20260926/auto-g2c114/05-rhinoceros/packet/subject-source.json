@@ -1,0 +1,66 @@
+{
+  "name": "Rhinoceros",
+  "family": "quadruped",
+  "species": {
+    "name": "Rhinoceros",
+    "aspect": 1.7,
+    "headFrac": 0.3,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "horn (or two) rising from the nose, not the forehead",
+      "thick plated hide with deep folds",
+      "barrel body carried low on stumpy three-toed legs"
+    ],
+    "note": "the horn grows from the nose; small eyes sit far back on the sides of the head"
+  },
+  "genome": {
+    "seed": 3207183063,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 2,
+    "body": 6,
+    "loco": 12,
+    "trait": 6,
+    "size": 0,
+    "diet": 0,
+    "head": 8,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 4,
+    "pattern": 3,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 4,
+    "detail": 5,
+    "accent": 12,
+    "temper": 4,
+    "sense": 1,
+    "repro": 6,
+    "life": 1,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Rhinoceros"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Rhinoceros\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3207183063\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "index": 43,
+  "profile": {
+    "id": "rhino",
+    "names": [
+      "Rhinoceros"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "gore",
+      "headbutt"
+    ],
+    "notes": ""
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Cuttlefish",
+  "masterSha256": "b396c3374e0315b3e4ba662dd8b8694637a44153755ec67228ffa8763844feaf",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: mottled flattened mantle with continuous wavy lateral fin fringe, two visible eye surfaces with characteristic wavy pupils, a real tubular siphon and two long club-tipped tentacles. Several short arms have separately visible curved tips, but overlapping roots and lower-arm crossings prevent an authoritative eight-arm chain count. Far fin/body edge is visible only partly behind the mantle. Both-eye/siphon visibility improves the prior side view; exact appendage/root inventory remains held for independent authoring, never invented.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 201,
+      "y0": 325,
+      "x1": 1052,
+      "y1": 956
+    },
+    "margins": {
+      "left": 201,
+      "right": 201,
+      "top": 325,
+      "bottom": 297
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

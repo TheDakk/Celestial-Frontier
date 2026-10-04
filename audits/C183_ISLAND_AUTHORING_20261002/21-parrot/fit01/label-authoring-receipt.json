@@ -1,0 +1,141 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "near-foot",
+      "joint": "legNearFoot",
+      "owner": "near-foot"
+    },
+    {
+      "region": "far-foot",
+      "joint": "legFarFoot",
+      "owner": "far-foot"
+    },
+    {
+      "region": "near-shin",
+      "joint": "legNearAnkle",
+      "owner": "near-shin"
+    },
+    {
+      "region": "far-shin",
+      "joint": "legFarAnkle",
+      "owner": "far-shin"
+    },
+    {
+      "region": "near-thigh",
+      "joint": "legNearKnee",
+      "owner": "near-thigh"
+    },
+    {
+      "region": "far-thigh",
+      "joint": "legFarKnee",
+      "owner": "far-thigh"
+    },
+    {
+      "region": "beak",
+      "joint": "beak",
+      "owner": "beak"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "neck-upper",
+      "joint": "neck1",
+      "owner": "neck-upper"
+    },
+    {
+      "region": "neck-lower",
+      "joint": "neck0",
+      "owner": "neck-lower"
+    },
+    {
+      "region": "far-wing-root",
+      "joint": "wingFarRoot",
+      "owner": "far-wing-root"
+    },
+    {
+      "region": "far-wing-flight",
+      "joint": "wingFarTip",
+      "owner": "far-wing-flight"
+    },
+    {
+      "region": "near-wing-root",
+      "joint": "wingNearRoot",
+      "owner": "near-wing-root"
+    },
+    {
+      "region": "near-wing-flight",
+      "joint": "wingNearTip",
+      "owner": "near-wing-flight"
+    },
+    {
+      "region": "tail",
+      "joint": "tailFan",
+      "owner": "tail"
+    },
+    {
+      "region": "chest",
+      "joint": "chest",
+      "owner": "chest"
+    },
+    {
+      "region": "reviewed-posterior-crown",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "reviewed-upper-nape",
+      "joint": "neck1",
+      "owner": "neck-upper"
+    },
+    {
+      "region": "reviewed-cere-edge",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "reviewed-bill-edge",
+      "joint": "beak",
+      "owner": "beak"
+    },
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    3356,
+    2739,
+    1704,
+    1003,
+    2237,
+    2171,
+    3276,
+    21805,
+    5959,
+    3064,
+    4346,
+    4072,
+    8578,
+    24069,
+    16680,
+    12501,
+    24233
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": true,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "6e800ac9d2ce85703bf89a66bc1bc4bd5ae97913c27cf7386239bc223ebdf85d",
+  "intake": {
+    "erodedPixels": 3883,
+    "despilledPixels": 67,
+    "unresolvedEdgePixels": 3
+  },
+  "remainderPart": "body"
+}

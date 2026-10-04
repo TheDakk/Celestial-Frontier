@@ -1,0 +1,116 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "12-flying-gurnard",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "33ec2f4f75d52b0c8a137433e79daaa19fdddf883cbbb1971b77349e16a1af54",
+ "subjectSourceSha256": "67cb5b02cf2ad0b865fe21059828a84e8b3ace121cac5e1c73c06ba46486a0cc",
+ "identity": {
+  "name": "Flying Gurnard",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Flying Gurnard\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"371674110\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 371674110,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "salmon",
+  "authoringSha256": "1876ba55fd1234d96e2059a653d8bf0ef16823667d98be9028c75c3b41c50065",
+  "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2916,
+     "class": "top",
+     "attach": {
+      "x": 291.6,
+      "y": 194.4,
+      "relX": 0.98,
+      "relY": 0.19
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0386,
+     "class": "top",
+     "attach": {
+      "x": 219,
+      "y": 171,
+      "relX": 0.36,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.2124,
+     "class": "rear",
+     "attach": {
+      "x": 177.1,
+      "y": 188.1,
+      "relX": 0,
+      "relY": 0.14
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0163,
+     "class": "rear",
+     "attach": {
+      "x": 176,
+      "y": 243.5,
+      "relX": -0.01,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0192,
+     "class": "limb-down",
+     "attach": {
+      "x": 232.5,
+      "y": 292,
+      "relX": 0.47,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 2,
+    "limb-down": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "salmon",
+   "byClass": {
+    "top": 1,
+    "rear": 2,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

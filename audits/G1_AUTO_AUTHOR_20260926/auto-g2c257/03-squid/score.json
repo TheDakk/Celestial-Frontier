@@ -1,0 +1,17 @@
+{
+ "id": "03-squid",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: insect matches clearly better (0.0306 < 0.0496)",
+  "extra-anatomy (unassigned): a rear appendage of 15.1% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a limb-down appendage of 9.4% paint that no reference appendage lands on",
+  "missing-anatomy: part far-eye-rim (eyeFar) covers 27% paint (reference 86%)",
+  "missing-anatomy: part arm4-middle (arm4Seg1) covers 21% paint (reference 95%)",
+  "missing-anatomy: part arm6-middle (arm6Seg1) covers 10% paint (reference 93%)",
+  "missing-anatomy: part arm3-tip (arm3Seg2) covers 21% paint (reference 63%)",
+  "missing-anatomy: part arm5-tip (arm5Seg2) covers 19% paint (reference 77%)",
+  "unexplained-anatomy: 11.6% of the paint lies away from the body and in no part (reference 2.9%)"
+ ],
+ "semanticPresence": null
+}

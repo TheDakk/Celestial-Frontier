@@ -1,0 +1,50 @@
+[
+  {
+    "name": "pigeon",
+    "directory": "native-pigeon",
+    "frames": 761,
+    "cpuP95Ms": 6,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "visual": "Detached neck/upper-back triangle and a curled or divided tail remain in faint.",
+    "admission": "NONE"
+  },
+  {
+    "name": "hawk",
+    "directory": "native-hawk",
+    "frames": 762,
+    "cpuP95Ms": 5.200000047683716,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "visual": "Detached upper-neck triangle remains in faint.",
+    "admission": "NONE"
+  },
+  {
+    "name": "vulture",
+    "directory": "native-vulture-complete-input",
+    "frames": 774,
+    "cpuP95Ms": 5.200000047683716,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "visual": "Detached small nape feather pieces remain in faint.",
+    "admission": "NONE"
+  },
+  {
+    "name": "dove",
+    "directory": "native-dove-complete-input",
+    "frames": 780,
+    "cpuP95Ms": 5,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "visual": "Detached neck/back wedge and divided curled tail remain in faint.",
+    "admission": "NONE"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mountain Goat",
+  "masterSha256": "f34c5a3729879fbc4b1598f02a2e655248424acc399ad9988d5e9552f190449d",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

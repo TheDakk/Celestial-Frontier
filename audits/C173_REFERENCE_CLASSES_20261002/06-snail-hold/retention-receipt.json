@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c173-anatomical-hold-retention/v1",
+  "writerSha256": "310f89206ba048ae221885b795dfb563225ad94a10aed0338e42c0b403d30249",
+  "masterSha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+  "observationSha256": "3b313018fca38fc993ddb9c999e7abefd6b9bf083df600408471d9451a34ae78",
+  "previewSha256": "41e07ffdc0c8534c5f739c881aaf7f7030986668eca80b92e934d7afc037b8d9",
+  "sourceBytesChanged": 0,
+  "anatomyInvented": false,
+  "negativeOutcomeRetained": true
+}

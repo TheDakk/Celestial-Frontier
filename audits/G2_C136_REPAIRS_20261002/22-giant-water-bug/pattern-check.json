@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Giant Water Bug",
+  "masterSha256": "9be93dedacfc64fe89a6c8af14cecd28601601c3d159214b2afe60f7e837bb3c",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

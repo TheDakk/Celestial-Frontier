@@ -1,0 +1,170 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "85f5a4a7fcd8c5065aae328978a6c0326e71254b519779c3f2c7f42a9a051ed5",
+  "cutoutSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+  "labelsFile": "labels.png",
+  "labelsSha256": "bb23438eca9e764bf7031e56bff60a3c4d607b708a769bc31c0ec2f732a14ff8",
+  "parts": [
+    {
+      "id": "leg0-near",
+      "joint": "leg0NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg1-near",
+      "joint": "leg1NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg2-near",
+      "joint": "leg2NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg3-near",
+      "joint": "leg3NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg4-near",
+      "joint": "leg4NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg5-near",
+      "joint": "leg5NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg6-near",
+      "joint": "leg6NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg7-near",
+      "joint": "leg7NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg8-near",
+      "joint": "leg8NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg9-near",
+      "joint": "leg9NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg10-near",
+      "joint": "leg10NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg11-near",
+      "joint": "leg11NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg12-near",
+      "joint": "leg12NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg13-near",
+      "joint": "leg13NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg0-far",
+      "joint": "leg0FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg1-far",
+      "joint": "leg1FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg2-far",
+      "joint": "leg2FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg3-far",
+      "joint": "leg3FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg4-far",
+      "joint": "leg4FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg5-far",
+      "joint": "leg5FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg6-far",
+      "joint": "leg6FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg7-far",
+      "joint": "leg7FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg8-far",
+      "joint": "leg8FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg9-far",
+      "joint": "leg9FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg10-far",
+      "joint": "leg10FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg11-far",
+      "joint": "leg11FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg12-far",
+      "joint": "leg12FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg13-far",
+      "joint": "leg13FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "ultimate-near",
+      "joint": "ultimateNear",
+      "layer": "near"
+    },
+    {
+      "id": "ultimate-far",
+      "joint": "ultimateFar",
+      "layer": "far"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "b81fdf406652cc67233b21009a2ef91c73623dd3d19fe58708916a94b6e64f05"
+}

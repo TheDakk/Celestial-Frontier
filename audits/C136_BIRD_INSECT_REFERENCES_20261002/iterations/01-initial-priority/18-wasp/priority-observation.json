@@ -1,0 +1,114 @@
+{
+  "id": "18-wasp",
+  "masterSha256": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2",
+  "authoringSha256": "5907f765981a834d283c7c930e25c37eea8276c96f703a123799ebb1b606353c",
+  "scope": "Observed keyed raster occupancy of manual priority polygons; not intake or anatomy/skin/contact/native validation.",
+  "parts": [
+    {
+      "id": "leg-hind-near-foot",
+      "joint": "legHindNearFoot",
+      "pixels": 567
+    },
+    {
+      "id": "leg-hind-near-knee",
+      "joint": "legHindNearKnee",
+      "pixels": 1796
+    },
+    {
+      "id": "leg-hind-far-foot",
+      "joint": "legHindFarFoot",
+      "pixels": 454
+    },
+    {
+      "id": "leg-hind-far-knee",
+      "joint": "legHindFarKnee",
+      "pixels": 1099
+    },
+    {
+      "id": "leg-mid-far-foot",
+      "joint": "legMidFarFoot",
+      "pixels": 324
+    },
+    {
+      "id": "leg-mid-far-knee",
+      "joint": "legMidFarKnee",
+      "pixels": 1161
+    },
+    {
+      "id": "leg-mid-near-foot",
+      "joint": "legMidNearFoot",
+      "pixels": 601
+    },
+    {
+      "id": "leg-mid-near-knee",
+      "joint": "legMidNearKnee",
+      "pixels": 1570
+    },
+    {
+      "id": "leg-front-far-foot",
+      "joint": "legFrontFarFoot",
+      "pixels": 345
+    },
+    {
+      "id": "leg-front-far-knee",
+      "joint": "legFrontFarKnee",
+      "pixels": 1490
+    },
+    {
+      "id": "leg-front-near-foot",
+      "joint": "legFrontNearFoot",
+      "pixels": 265
+    },
+    {
+      "id": "leg-front-near-knee",
+      "joint": "legFrontNearKnee",
+      "pixels": 960
+    },
+    {
+      "id": "antenna-far",
+      "joint": "antennaFar",
+      "pixels": 1389
+    },
+    {
+      "id": "antenna-near",
+      "joint": "antennaNear",
+      "pixels": 816
+    },
+    {
+      "id": "mandible",
+      "joint": "mandible",
+      "pixels": 978
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "pixels": 6348
+    },
+    {
+      "id": "wing-far",
+      "joint": "wingFar",
+      "pixels": 11427
+    },
+    {
+      "id": "wing-near",
+      "joint": "wingNear",
+      "pixels": 11900
+    },
+    {
+      "id": "abdomen",
+      "joint": "abdomen",
+      "pixels": 23519
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "pixels": 144
+    },
+    {
+      "id": "thorax",
+      "joint": "thorax",
+      "pixels": 20618
+    }
+  ],
+  "empty": []
+}

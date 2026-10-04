@@ -1,0 +1,8 @@
+{
+  "sourceFile": "port/v2/apps/game/src/release-content.ts",
+  "sourceSha256": "de29b177a2c42ed821c841ac8544199da9311c0796fd8d6ddd77857d0de8b80b",
+  "count": 81,
+  "orderedJsonSha256": "687ef4b59445d308b9e633876da3ed77456d9f903e2e4cf2d9a6e9538f13a60d",
+  "method": "Read the exact V2_DRAFT_RELEASE initializer using built-in Node TypeScript stripping; SHA256 of ordered bullet JSON; no measurement authority change.",
+  "preparationFailure": "Initial attempt to load a JavaScript TypeScript package returned MODULE_NOT_FOUND before any writes; the installed compiler is native. Used existing Node built-in stripping, with no installation."
+}

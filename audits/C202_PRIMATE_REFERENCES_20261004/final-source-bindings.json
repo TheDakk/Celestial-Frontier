@@ -1,0 +1,33 @@
+{
+  "scope": "Read-only product inputs at final audit freeze; no product edits by this lane. Individual static and review receipts bind actual compiled snapshots.",
+  "inputs": [
+    {
+      "path": "port/v2/apps/game/src/motion/axial-faint.ts",
+      "sha256": "dc1f130d8b2e2442c7a778cb05788b63b01173f3ab4560996d7211a5fd45ff58"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/stance-envelope.ts",
+      "sha256": "029320a695cf279b68c4a73a5b7b09150a53ae527b257c84d0cdcfa6f6890f1d"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "9f8ab0acfbde47490f50ea72db760b510bc0e9fc032190d8d6720659cfd6686d"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "26c1aef49333438bdfc429ba0a4b36c458704e3e942474fbafa1e8e48e12ca91"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "sha256": "c88f2c0f08e89fbca0267c8e94da296b0e556fa5eddadeec3fdc6d130911248d"
+    }
+  ]
+}

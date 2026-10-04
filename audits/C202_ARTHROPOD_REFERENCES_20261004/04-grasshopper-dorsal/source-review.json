@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c202-source-review/v1",
+  "masterSha256": "b54f921550ea722bb9f8a28adedf2d61381b18f256a830604d6ae0d3333ef42d",
+  "fullSizeInspected": true,
+  "status": "FRAMING_HOLD",
+  "finding": "Six separate complete leg paths and two antennae now visible in direct dorsal view, but tail and antenna tips violate unchanged8% margin. Natural hind-leg shape and mouth edge still require author review.",
+  "qualityAccepted": false
+}

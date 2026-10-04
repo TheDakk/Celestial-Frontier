@@ -1,0 +1,11 @@
+[
+  {
+    "tool": "image_gen.imagegen",
+    "prompt": "prompt.txt",
+    "source": "/Users/dakk/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-a6d4d870-d701-4225-9906-753081012395.png",
+    "output": "master.png",
+    "generation": 1,
+    "promptSha256": "46b3e3b4b6c4cb9317df6b67d5c6fcd186b238582ce5053658625e7b776ddae6",
+    "outputSha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+  }
+]

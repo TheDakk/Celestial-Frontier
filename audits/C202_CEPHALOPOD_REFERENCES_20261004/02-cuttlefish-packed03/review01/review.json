@@ -1,0 +1,207 @@
+{
+  "schema": "cf.c202-actual-rig-software-review/v1",
+  "status": "RETAINED_REFUSALS",
+  "scope": "Actual loaded CreatureRig positions equal independent publication; source-size software rendering only, no native or GPU acceptance",
+  "rows": [
+    {
+      "action": "idle",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 32,
+      "image": "idle-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 677.8650037571788,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 32,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 3050.3925169073045,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 32,
+      "image": "idle-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 3389.325018785894,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 32,
+      "image": "idle-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 677.8650037571788,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 32,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:jet",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 32,
+      "image": "approach-jet-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:jet",
+      "ms": 151.20000000000002,
+      "fraction": 0.2,
+      "status": "REFUSED",
+      "error": "ARAP skin: unresolved folded triangles: 30"
+    },
+    {
+      "action": "approach:jet",
+      "ms": 680.4,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 32,
+      "image": "approach-jet-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:jet",
+      "ms": 756,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 32,
+      "image": "approach-jet-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:jet",
+      "ms": 151.20000000000002,
+      "fraction": 0.2,
+      "status": "REFUSED",
+      "error": "ARAP skin: unresolved folded triangles: 30"
+    },
+    {
+      "action": "melee:lash",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 32,
+      "image": "melee-lash-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:lash",
+      "ms": 168.53333333333333,
+      "fraction": 0.2,
+      "status": "REFUSED",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "action": "melee:lash",
+      "ms": 758.4,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 32,
+      "image": "melee-lash-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:lash",
+      "ms": 842.6666666666666,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 32,
+      "image": "melee-lash-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee:lash",
+      "ms": 168.53333333333333,
+      "fraction": 0.2,
+      "status": "REFUSED",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "action": "faint",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 32,
+      "image": "faint-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 171.20000000000002,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 32,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 770.4,
+      "fraction": 0.9,
+      "status": "REFUSED",
+      "error": "ARAP skin: unresolved folded triangles: 5"
+    },
+    {
+      "action": "faint",
+      "ms": 856,
+      "fraction": 1,
+      "status": "REFUSED",
+      "error": "ARAP skin: unresolved folded triangles: 6"
+    },
+    {
+      "action": "faint",
+      "ms": 171.20000000000002,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 32,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/record.json",
+      "sha256": "3663acf8364fba18053f6d04c6ec48ca4fcf23f2d6c0395cf4ddaa3823677302"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/binding.json",
+      "sha256": "4ff0a32cb485d66852d9e99cf81dea9346311fc63e645555feea4a2a48fa8516"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/atlas/c202-cuttlefish-packed01.png",
+      "sha256": "d4769a18c16dac2a4f7246385891ad4918c3c2da940dddfa69920fe0ef761e78"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/master.png",
+      "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/review-rig.mjs",
+      "sha256": "1f54c7379997f57e3ab12cfb5433aec50c842aadcb64282b7483f5da27b0afd6"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

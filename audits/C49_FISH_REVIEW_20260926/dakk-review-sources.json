@@ -1,0 +1,23 @@
+{
+  "note": "Display-only resized complete frames; original evidence bytes untouched. Films sampled separately; these stills are not an animation acceptance certificate.",
+  "sources": [
+    {
+      "name": "Perch",
+      "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn1-hit-reaction-50.png",
+      "bytes": 1199023,
+      "sha256": "e434a8ed55bd7f96e1b19a97283f18557424f66677bbeabe6407fdfea51a85f9"
+    },
+    {
+      "name": "Cod",
+      "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn1-hit-reaction-50.png",
+      "bytes": 1190387,
+      "sha256": "83facbf1fd3777ffb4f31a575ed9f72b623339dc5c9df456bbf15dca4451c31c"
+    },
+    {
+      "name": "Carp",
+      "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn1-hit-reaction-50.png",
+      "bytes": 1209849,
+      "sha256": "ce81afdf46132e4ea7e15b27dae5151ae0a0cf0aa06f30ca2add9fdb6f16cab3"
+    }
+  ]
+}

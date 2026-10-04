@@ -1,0 +1,13 @@
+{
+  "scope": "Changed full Glass release-semantics contract owner only; preceding focus filter selected the adjacent immutable-Slice owner",
+  "exitCode": 0,
+  "durationSeconds": 3.264,
+  "command": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/evidence-chain-tools.test.ts",
+    "-t",
+    "requires an exact clean Slice predecessor"
+  ]
+}

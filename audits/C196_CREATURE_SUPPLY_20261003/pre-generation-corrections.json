@@ -1,0 +1,151 @@
+{
+  "reason": "Exact scored Water Vole paw/Marsh Rodent fringe failure replaced inaccurate shared ear summary; Capybara external-tail absence explicit. No image generated under old wording.",
+  "compileBefore": "d48156e5476cde6cde70883c40993c8674f922e1e522cdcb4b773dd82e385ffc",
+  "compileAfter": "dd1856d2dc0cd1b662a8c39c8ac84441abaf58f141ac25375bb967313dd7c85a",
+  "rows": [
+    {
+      "name": "Capybara",
+      "beforePromptSha256": "50628c9127386550f2637a60b48f9ba7095975dee11f63d36effa96992ab82e9",
+      "afterPromptSha256": "fda1a12fdc9eb2132a123a2f971a266b617bce25fd8166628f001de118d819de",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Giant Otter",
+      "beforePromptSha256": "73931d595d36f1e1c3c7471898ab07fb7571a3a65e7bbac58bbb7150e9d3eb65",
+      "afterPromptSha256": "73931d595d36f1e1c3c7471898ab07fb7571a3a65e7bbac58bbb7150e9d3eb65",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Water Vole",
+      "beforePromptSha256": "47f0633770dfd913e72e1b5879ef2a4b4f56b6f1350417b0f0368c65567ae779",
+      "afterPromptSha256": "2a62992054e7bba19a85416addf16994ee136393ba6d2df853415ba3af138905",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Marsh Rodent",
+      "beforePromptSha256": "645ed49ad268457936cfab3acaba1f4d598df33a0d6aeceeb99ea2ba129063d1",
+      "afterPromptSha256": "584278e7549db7e371a549c0813548fa288d12798ec1b5a8ca8920cc734b1f2d",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Elk",
+      "beforePromptSha256": "005ed054d150283d8797cb61ddf71c2b5fce8f1313ee12592aa691c7b8644c8b",
+      "afterPromptSha256": "005ed054d150283d8797cb61ddf71c2b5fce8f1313ee12592aa691c7b8644c8b",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Llama",
+      "beforePromptSha256": "cb4ffaae45a4f35b715b42099313372c4625c2f64d6f6819641eb7e0c26db8c6",
+      "afterPromptSha256": "cb4ffaae45a4f35b715b42099313372c4625c2f64d6f6819641eb7e0c26db8c6",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Musk Ox",
+      "beforePromptSha256": "93b0885ce097dcf07d8dbf6254b0e56b6f22b88b8b7ebd15f6795a48d12edce7",
+      "afterPromptSha256": "93b0885ce097dcf07d8dbf6254b0e56b6f22b88b8b7ebd15f6795a48d12edce7",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Ibex",
+      "beforePromptSha256": "0dc71cd51e5456ac3ac0bcedcf1692a765c56a6bce425fe347a275c5b9f2e3f8",
+      "afterPromptSha256": "0dc71cd51e5456ac3ac0bcedcf1692a765c56a6bce425fe347a275c5b9f2e3f8",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Bull",
+      "beforePromptSha256": "6c9aa39de0f1d9aed26263bb5d15eaceb61ea734b1a4e878dbe05fa6ce2662c3",
+      "afterPromptSha256": "6c9aa39de0f1d9aed26263bb5d15eaceb61ea734b1a4e878dbe05fa6ce2662c3",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Quoll",
+      "beforePromptSha256": "f9ab013eed2587b3808f636fc27f7ee8e19f9548c38f450fc887429396b9a1d2",
+      "afterPromptSha256": "f9ab013eed2587b3808f636fc27f7ee8e19f9548c38f450fc887429396b9a1d2",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Mountain Tapir",
+      "beforePromptSha256": "8da6369cf8c17321062fc3b0a6c3dc8c610501bf0eea9905ff0138cd054956c1",
+      "afterPromptSha256": "8da6369cf8c17321062fc3b0a6c3dc8c610501bf0eea9905ff0138cd054956c1",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Porcupine",
+      "beforePromptSha256": "4d18228715334b7679e9e9c1728a2b37224acbc325962e956892c94076f7df7a",
+      "afterPromptSha256": "4d18228715334b7679e9e9c1728a2b37224acbc325962e956892c94076f7df7a",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Bee",
+      "beforePromptSha256": "e0576c8e07c8ecc76bb02f5920a2e4cde4b684c9bb1354d60649a9f7dde4c38c",
+      "afterPromptSha256": "e0576c8e07c8ecc76bb02f5920a2e4cde4b684c9bb1354d60649a9f7dde4c38c",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Honeybee",
+      "beforePromptSha256": "15db4db922703073f6ee461fe2ffb45bb21293f74ac3d81cfc20688e599082b9",
+      "afterPromptSha256": "15db4db922703073f6ee461fe2ffb45bb21293f74ac3d81cfc20688e599082b9",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Bumblebee",
+      "beforePromptSha256": "f79225f5e9e6c9d4cfbbab8a2b1578ae11b387e7fce983aac65d486b167fab0b",
+      "afterPromptSha256": "f79225f5e9e6c9d4cfbbab8a2b1578ae11b387e7fce983aac65d486b167fab0b",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Dragonfly",
+      "beforePromptSha256": "86f43e5ab1a71adf82fbea035aaf96147b23962467745a8c517b0d12f4fcb169",
+      "afterPromptSha256": "86f43e5ab1a71adf82fbea035aaf96147b23962467745a8c517b0d12f4fcb169",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Damselfly",
+      "beforePromptSha256": "0e353fe80e98bc098e367c39960a24b06e7629d36b96a1a8463f87ad6b269464",
+      "afterPromptSha256": "0e353fe80e98bc098e367c39960a24b06e7629d36b96a1a8463f87ad6b269464",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Water Beetle",
+      "beforePromptSha256": "09463e898062ddcc1eca01837622e3217691ac151698a00ac948dfd58b35e17a",
+      "afterPromptSha256": "09463e898062ddcc1eca01837622e3217691ac151698a00ac948dfd58b35e17a",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Diving Beetle",
+      "beforePromptSha256": "3ced23f6ea91da300b277ad447251e1f7cbc6a72f5a4db8f8f4ae31c76b24778",
+      "afterPromptSha256": "3ced23f6ea91da300b277ad447251e1f7cbc6a72f5a4db8f8f4ae31c76b24778",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Stick Insect",
+      "beforePromptSha256": "d6c73016bfb51022a121e02b869171e3ef530d8499d1fd3f2cdf9fdccfc19e95",
+      "afterPromptSha256": "d6c73016bfb51022a121e02b869171e3ef530d8499d1fd3f2cdf9fdccfc19e95",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Scorpionfly",
+      "beforePromptSha256": "e21c2a596324d299685c6152c0c889b70e89adb155edbf985e86216df9eae7b0",
+      "afterPromptSha256": "e21c2a596324d299685c6152c0c889b70e89adb155edbf985e86216df9eae7b0",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Carrion Beetle",
+      "beforePromptSha256": "19d82b32d7465c10879f17b1aa2a944d89698375bc61f3eec35d254b00610553",
+      "afterPromptSha256": "19d82b32d7465c10879f17b1aa2a944d89698375bc61f3eec35d254b00610553",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Orchid Bee",
+      "beforePromptSha256": "54db98745d69577a25ca685fcb1db8648416c45d4295a4b05dd865bf4d42c8d0",
+      "afterPromptSha256": "54db98745d69577a25ca685fcb1db8648416c45d4295a4b05dd865bf4d42c8d0",
+      "generationHasNotStarted": true
+    },
+    {
+      "name": "Leech",
+      "beforePromptSha256": "a489bd1dd7d33ab8028368133533f99c72e91795dd888113d83460fad5c07097",
+      "afterPromptSha256": "a489bd1dd7d33ab8028368133533f99c72e91795dd888113d83460fad5c07097",
+      "generationHasNotStarted": true
+    }
+  ]
+}

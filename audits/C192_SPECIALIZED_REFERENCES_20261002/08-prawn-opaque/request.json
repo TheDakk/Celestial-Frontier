@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c192-source-edit/v1",
+  "tool": "image_gen.imagegen",
+  "actualInput": {
+    "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/master.png",
+    "sha256": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051",
+    "snapshot": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/input-master.png",
+    "role": "sole edit target; inherited locked style"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "canonicalPrompt": {
+    "path": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/prompt.txt",
+    "sha256": "e5cf939dd27b9516aa7ed2b00e8b58d0d15731afa2a2a0b47fc14e674270e546"
+  },
+  "exactSentPromptSha256": "b128be638f1e33e4e33e85ebd46f328db3b4946418a7dc0e123dc0c28270442a",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "sourceEditsOnly": true,
+  "nativeRuns": 0
+}

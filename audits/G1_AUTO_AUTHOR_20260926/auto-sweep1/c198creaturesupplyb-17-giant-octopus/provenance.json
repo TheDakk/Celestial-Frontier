@@ -1,0 +1,128 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c198creaturesupplyb-17-giant-octopus",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "e8895811a54507616b12324b16636cb483a937d9e915d6086f7789d3d35c28fb",
+ "subjectSourceSha256": "87a6e27dbe79e108385578f80adad892957124d10689035634d96ca2023aa8b0",
+ "identity": {
+  "name": "Giant Octopus",
+  "family": "cephalopod",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Giant Octopus\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1923676993\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 1923676993,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c202-qualified-octopus",
+  "authoringSha256": "0a36b6dc625f34009d3b5d1c6c1262959e0388fcb536fb831ec51488e2814431",
+  "masterSha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+ },
+ "habitat": {
+  "profileId": "cephalopod",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "22935aae923bebded3f3fae3f8608629f56923f64690646ed5c65f2b8ce08855",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group cephalopod (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2033,
+     "class": "top",
+     "attach": {
+      "x": 194.1,
+      "y": 137.6,
+      "relX": 0.37,
+      "relY": 0.08
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1315,
+     "class": "rear",
+     "attach": {
+      "x": 144.7,
+      "y": 213.5,
+      "relX": 0,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1019,
+     "class": "front",
+     "attach": {
+      "x": 280,
+      "y": 208.5,
+      "relX": 1.01,
+      "relY": 0.65
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0956,
+     "class": "limb-down",
+     "attach": {
+      "x": 257.9,
+      "y": 238.9,
+      "relX": 0.84,
+      "relY": 0.9
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0451,
+     "class": "limb-down",
+     "attach": {
+      "x": 166.2,
+      "y": 251.8,
+      "relX": 0.16,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0713,
+     "class": "limb-down",
+     "attach": {
+      "x": 205,
+      "y": 252,
+      "relX": 0.45,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "c202-qualified-octopus",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Lungfish",
+  "masterSha256": "47b577b53ae7973fd5f423c27230b5c3145ccb0775f7db350d6f1e07373f0fee",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

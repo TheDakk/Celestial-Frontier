@@ -1,0 +1,28 @@
+{
+  "name": "Giant Centipede",
+  "masterSha256": "546a1648d5968949326c2e4e7654ecd04b7e6d63f1877098ca0585f3f58d4a9d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Brown flattened segmented body, orange lateral plate edges, two long antennae, terminal leg pair and numerous distinct walking legs are visible. The paint is glossy and armor-like. Exact species segment count and one-pair-per-segment mapping are unresolved; the forcipules appear as large downward mouth fangs and their true behind-mouth attachment needs review. Shallow top/side curve, no coil or stinger.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 227,
+      "y0": 475,
+      "x1": 1042,
+      "y1": 777
+    },
+    "margins": {
+      "left": 227,
+      "right": 211,
+      "top": 475,
+      "bottom": 476
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

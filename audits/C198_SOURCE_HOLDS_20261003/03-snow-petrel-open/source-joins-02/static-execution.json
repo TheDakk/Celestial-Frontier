@@ -1,0 +1,10 @@
+{
+  "args": [
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit",
+    "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/static.json"
+  ],
+  "exitCode": 0,
+  "nodeVersion": "v26.10.0",
+  "native": false
+}

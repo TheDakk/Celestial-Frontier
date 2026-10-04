@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Raven",
+  "masterSha256": "76601c0f52416a974bccafec46351c94d3c8560cb2df6f72a5c321004c95cbbb",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

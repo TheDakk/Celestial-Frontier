@@ -1,0 +1,243 @@
+{
+  "schema": "cf.c198-prawn-delivery/v3",
+  "status": "READY_FOR_NATIVE_DIAGNOSTIC",
+  "qualityAccepted": false,
+  "nativeRuns": 0,
+  "selectedFit": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/fit01",
+  "recipeHash": "d72e88d53aca2b1dcd02dc94a74fc0af2f5c45d611975f8ce3f51125b22edc07",
+  "files": [
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/ADMISSION_CONTROL_ADDENDUM.md",
+      "bytes": 602,
+      "sha256": "e821ce95840d20da7cac2c00a637e0db8e4f9cefb5b8ed88f11397db73317b26"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/README.md",
+      "bytes": 6137,
+      "sha256": "5b4b91e9e7cd755dd61a477bab73d05525bc5980b6edc29d39dedb0cf3bb43d5"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/baseline.json",
+      "bytes": 7433628,
+      "sha256": "62fc1f28e318b80ddbac953a0d0c6176f9bce3911ac02abcd05959d0274626ac"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/baseline.mjs",
+      "bytes": 2695,
+      "sha256": "8b3a9613a0888f863d52a4c22c2822355b6255639f665bebf290e39486f51f0e"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/delivery-v2.json",
+      "bytes": 8812,
+      "sha256": "92768ed6be4a0d49a603b35698602e4553a8c600a213b2fa5530ae42ea7e2b69"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/delivery.json",
+      "bytes": 7981,
+      "sha256": "6c478540089b71e35ca15683dfaf3602a5bbbbb6920a6ef1d4efd050b0191deb"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/edit-product.py",
+      "bytes": 3513,
+      "sha256": "8701d9573964827e6d6c631e75968b05c612c47c21dae0ffa9432c57f68dc077"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/freeze.mjs",
+      "bytes": 2785,
+      "sha256": "12ab920bb03adcae41cea39909d33f807931abcc65180a79a21ce7513737e681"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/measure.mjs",
+      "bytes": 2489,
+      "sha256": "44b7669bbdf110841067c7d4f5b56c6e4bca0dbc68dd369ea0de920d22881fe1"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/measurements.json",
+      "bytes": 2872,
+      "sha256": "b1d0fe4040789be0433a383f0f7ff1731a0870716730ef12e73ac17287029a60"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/motion-melee-claw-0-left.png",
+      "bytes": 234038,
+      "sha256": "5ce0f91b2bb50ecc993382c84ca8488ba39444fba5ada6856217abaf3f897658"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/motion-melee-claw-0-right.png",
+      "bytes": 234142,
+      "sha256": "417ce12990288410f2406df8f7fcdca8196d359cd8baad3977d45868486c4539"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/motion-melee-claw-100-left.png",
+      "bytes": 234038,
+      "sha256": "5ce0f91b2bb50ecc993382c84ca8488ba39444fba5ada6856217abaf3f897658"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/motion-melee-claw-100-right.png",
+      "bytes": 234142,
+      "sha256": "417ce12990288410f2406df8f7fcdca8196d359cd8baad3977d45868486c4539"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/motion-melee-claw-28-left.png",
+      "bytes": 234420,
+      "sha256": "6200209e6b7d3c3b5727ee024806fc2e10289a2dd684f197cab761c1bf6c3ccb"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/motion-melee-claw-28-right.png",
+      "bytes": 234418,
+      "sha256": "c2824c107b2a5e014949217df9e683a2783b03642d7775c4a8e953d519443fc1"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/motion-melee-claw-45-left.png",
+      "bytes": 233980,
+      "sha256": "48129f1a20baeee497655239c9b2cca6d0df497ee9dfd8def5735fe7cd19a515"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/motion-melee-claw-45-right.png",
+      "bytes": 234060,
+      "sha256": "7fba82758dd86aa7116099ee92ac05c303b1c4bd2d2c6666f090f25a4417f67c"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/motion-melee-claw-80-left.png",
+      "bytes": 234120,
+      "sha256": "3ad25df520c05ec25d918a80918828a2d6bfb6a069d2752a988733dd506e84c1"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/motion-melee-claw-80-right.png",
+      "bytes": 234212,
+      "sha256": "2b07fe9fe25db4220c4db7890cb6061879578ae2fe3c8b4a9b7eadc76fcd57f6"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/publication-01.log",
+      "bytes": 342,
+      "sha256": "9bc6025f1246f37f8d314bdefd6a5e448bc04e3909ef1bdd7a8c19fc25aff2c0"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/publication-review.json",
+      "bytes": 35595,
+      "sha256": "f49fe157b99daed6f476e9a1da99b501fd5cb161ba24292ad443e76bcf38a243"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/publication-source-reconciliation.json",
+      "bytes": 441,
+      "sha256": "fdad74d42eef50bf1d887f928d420d543a60addaff1a786404bc2c71027ecd00"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/review-publication.mjs",
+      "bytes": 5713,
+      "sha256": "2816cba456525cb318e79ab1a51930891c376a119a2b8794c591c17fba29f8a1"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/static-01.json",
+      "bytes": 7233,
+      "sha256": "3be2f7d04f3a601ddd589a83131ced4dcc502d9579c548bd3cd6883f4e51675f"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "3e411b759509537ee5b684e821e749abac5c6159a5902e00902835b2b90fb9e3"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/static-01.log",
+      "bytes": 1708,
+      "sha256": "aec9f828746b116433c949ce635990415b43c056fdd5091064caa4d028d2c339"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/tests-01.log",
+      "bytes": 3305,
+      "sha256": "370f2eef821c3949caa0f76cb833a173d19d6e18b5516719b0e18c0acd35a526"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/tests-02.log",
+      "bytes": 235,
+      "sha256": "99b292dac5cf28f9ec90706230e578b00854335bb7486412c3e24ba83fa743b0"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/tests-03.log",
+      "bytes": 235,
+      "sha256": "00fdc0b6a3d15df3aae456af2d9aacaf0900d445b270c88d8a19d7699ad2fe03"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/tests-04.log",
+      "bytes": 233,
+      "sha256": "cb77359cd136d2fba8006ad2f065c7fcc13a360be5273f811d704b807a250261"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/typecheck-01.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/typecheck-02.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    }
+  ],
+  "fileCount": 33,
+  "totalBytes": 9884476,
+  "sourcePaths": [
+    {
+      "path": "port/v2/apps/game/src/anatomy-attacks.ts",
+      "sha256": "bcc86b45bebc535febba3bc3f3c3f68f6c7844ad6fcdcaf24406fa20e5dd2fc2"
+    },
+    {
+      "path": "port/v2/apps/game/src/anatomy-attacks.test.ts",
+      "sha256": "b7334e3a823a369d3c640cd3be21fffc65416bd04a0827db0002df3cf9dc0079"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "sha256": "6e520d8b580f0ded1c413ad13f40eaf8a693779d4727e5c17dd277a6b9a1499b"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-fauna-profiles.test.ts",
+      "sha256": "5a8824ebfda4421a691b73d57cb5d66f643eefcf0b467a98535d55b6043a6c37"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/specialized-actions.ts",
+      "sha256": "215e21a6cdab841b64bc9b7e0ef940f5d3b93e13c6cc6a1928df6a6eb351cf77"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "26c1aef49333438bdfc429ba0a4b36c458704e3e942474fbafa1e8e48e12ca91"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/small-crustacean-attack.ts",
+      "sha256": "11f9563b75e7fa81f24901d90a26bec22aa9cc433cdd41b2b961a2e9b410ae03"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/small-crustacean-attack.test.ts",
+      "sha256": "5988e5984ac65145f901ab4918581add577adf56504dc6135f8e47f485634409"
+    },
+    {
+      "path": "ATTACK_ANATOMY.md",
+      "sha256": "4aaff3ecb5937c218c763fa49ae501d122ff427379e3e6f35b5e71981319eeac"
+    },
+    {
+      "path": "MOTION_KIT.md",
+      "sha256": "f4e4e7748db2e49b4f88a40820e50030167818be9c8d2b6b6c4975831d19d147"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "sha256": "cbb309d21833ab375876f913f9cc16c1301e1d3d58cb3c4710b050701124391d"
+    }
+  ],
+  "checks": {
+    "focusedTests": 35,
+    "staticActions": 12,
+    "staticSamples": 1452,
+    "presentationSamples": 823,
+    "publicationPoses": 5,
+    "publicationFacings": 2,
+    "unchangedPriorTimelines": 200,
+    "unchangedPrawnNonMelee": 11,
+    "typecheckPrograms": 3,
+    "paintedInputsUnchanged": true,
+    "privacy": "PASS",
+    "symlinks": 0
+  },
+  "supersedes": {
+    "path": "audits/C198_PRAWN_ATTACK_20261003/delivery-v2.json",
+    "sha256": "92768ed6be4a0d49a603b35698602e4553a8c600a213b2fa5530ae42ea7e2b69"
+  },
+  "finalAdmissionControl": "tests-04.log: 5 PASS; explicit unrelated-name public generic melee refused",
+  "bindingRefresh": "Parent appended the complementary Tortoise capture-diagnostic paragraph to celestial-frontier-codebase-reference.md. Prawn runtime and tests remain frozen; only the shared reference hash is refreshed. Prior manifests remain immutable."
+}

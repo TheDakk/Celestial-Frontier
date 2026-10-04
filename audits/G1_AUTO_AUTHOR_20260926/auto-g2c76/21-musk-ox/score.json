@@ -1,0 +1,9 @@
+{
+ "id": "21-musk-ox",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 33%)"
+ ],
+ "semanticPresence": null
+}

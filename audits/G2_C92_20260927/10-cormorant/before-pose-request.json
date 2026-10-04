@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Cormorant",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "02d6816ddfdcd6a5b49c58194a8fe6ec87e273b37600d2ce85dbd7d98e43235d",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "swimming-bird",
+  "authoringCreated": false,
+  "sourceHead": "968770093a661993ab4ef04b9f234a26002cdc76",
+  "basePromptSha256": "f0b593cb5d8db22884407e95be4839ea0ac8b426982ebefd26111d3781bc1586",
+  "layoutCompilerSha256": "20078d5ecddab064447a5dd99ba457dc349fce7d692bc4125b585ac1bb17b4c9",
+  "layoutClarification": "Species identity features FIRST: hook-tipped bill on a long snaky neck; wings held open to dry in a heraldic pose; low-slung body with a stiff wedge tail. One Earth Cormorant. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n"
+}

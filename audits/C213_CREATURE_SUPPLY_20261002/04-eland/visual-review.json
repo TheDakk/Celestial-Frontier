@@ -1,0 +1,28 @@
+{
+  "name": "Eland",
+  "masterSha256": "fe9c8c355ae1c5b28da96643e77550bb676f97c4ee92f18916a252a6bc2cf187",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: massive ox-like shoulder hump, tightly spiral horns, large real dewlap, both ears and complete tail shaft/tuft are visible. Four hoof endpoints are distinct, though both upper foreleg roots remain close and partly overlapped beneath the chest. Horns and ear roots are connected; no hidden anatomy or motion admission is inferred.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 139,
+      "y0": 151,
+      "x1": 1132,
+      "y1": 1024
+    },
+    "margins": {
+      "left": 139,
+      "right": 121,
+      "top": 151,
+      "bottom": 229
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

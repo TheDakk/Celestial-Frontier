@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Kookaburra",
+  "masterSha256": "f4f59616914083d41907154c5bb1e2bec35400b82c646a27270022c8587dc7e9",
+  "required": [
+    "dark brown eye stripe on a whitish head"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "dark brown eye stripe on a whitish head",
+      "status": "PRESENT",
+      "observed": "Large head and stout straight bill, brown eye stripe, cream underside, blue wing spots and barred rusty tail. Two separated legs/feet; short tail visibly extends beyond folded wing but root partly covered by rump feathers. Whole specimen with generous margin; no semantic ownership or toe-count declaration."
+    }
+  ]
+}

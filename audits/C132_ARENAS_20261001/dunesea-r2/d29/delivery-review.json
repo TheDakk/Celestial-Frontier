@@ -1,0 +1,174 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "dunesea-r2",
+  "biome": "dunesea",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.generation.json",
+      "sha256": "49055973091b598460c5540895a03ce721827564fa5a339ce7ede62e49fe09bf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid.generation.json",
+      "sha256": "8d2286403c337bd68fda49a03fdc6722573511820631c804ecc93514503b1efa"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near.generation.json",
+      "sha256": "9cea726efd90410f8d9fa61bac6509c4fcbf063d2369cbb7332dad9ca64d4bcf"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-composed-review.png",
+      "sha256": "02ffe29f4dacd353d8663e15d99ecce3c9fd024ce64cb499a2049e6ba1d35aea"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-plates-review.png",
+      "sha256": "2557f4bf4462e336b269d13c4a30eb902a443aa78051cb2cd5ffadd7e89e33f4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.png",
+      "sha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid.png",
+      "sha256": "e5a5391e33f5535a5e500c033a604552d97f18b21239f9393bc30c0f88354e13"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near.png",
+      "sha256": "eb3a66bd6460b690a4caa845bd53e3aa81b53fdb0e051688a646259ec0f97545"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near-attempt-1.png",
+      "sha256": "a367f2093d6d119166be7d39f932ac8318faea1b0805b9b795aaba55e59b39bd"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/visual-notes.d29.json",
+      "sha256": "e41d76c32f0b37473238ca9bea55100799b94a9d4cf56a3688d35484347bbe2d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-manifest.json",
+      "sha256": "384d466193def194f6c51cb15aab3d9327ec8e343022f0fd03787fa2d37bab58"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-recipe.json",
+      "sha256": "e0bec0bcf8de10d8c79610b09c8006d58025493e2c693d7afb8bbf5348ec4a2d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-far.generation.json",
+      "sha256": "49055973091b598460c5540895a03ce721827564fa5a339ce7ede62e49fe09bf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-far-repair.prompt.txt",
+      "sha256": "2c84aaf68b9c1d7b439dcb8fff8e8a53f3059beb8a0db124f5459bde017340c0"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid.generation.json",
+      "sha256": "8d2286403c337bd68fda49a03fdc6722573511820631c804ecc93514503b1efa"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-mid-c163.prompt.txt",
+      "sha256": "1f076f48b68e6ebcc81679bbcbcf95737066600f8b6dbeffcad984339ec2c8e0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-mid.png",
+      "sha256": "e51ba9611228906467c1546c8e3d0e97b9d05129b72cc11d3ecad14437993097"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near.generation.json",
+      "sha256": "9cea726efd90410f8d9fa61bac6509c4fcbf063d2369cbb7332dad9ca64d4bcf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/arena-near-c163-second.prompt.txt",
+      "sha256": "be1a95472ec617ea718390b929f34e6db7ffbcca4dd8a59eaeadb5081365bd9d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/dunesea-r2/keyed/arena-near.png",
+      "sha256": "0cce96b0722a343d39c898de0dbe9b96d1e1986fd95545f12bb9821d66cf08a8"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/dunesea-r2/visual-notes.d29.json",
+    "findings": [
+      "The new MID removes the predecessor mauve mountain/dune strip and cactus silhouettes from the battle runway. The accepted FAR is reused byte-for-byte.",
+      "The new MID is a flat warm ochre sand runway; its top edge at approximately y=0.72 is brighter than the FAR ground and reads as a straight horizontal color/scale change.",
+      "The selected second NEAR takes the new MID as its edit target and matches sand hue better than the first retained attempt. A horizontal grain/focus seam remains near y=0.88.",
+      "New MID and NEAR omit thin plants, avoiding their old plant fringe problem, but the retained FAR still contains its original distant vegetation. No claim that every fringe is repaired.",
+      "The full-size plates and composition were inspected. This is a cleaner but still visibly banded candidate, held for independent scoring and Dakk acceptance; no native battle or phone qualification."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

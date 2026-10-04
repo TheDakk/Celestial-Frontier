@@ -1,0 +1,28 @@
+{
+  "name": "Lizard",
+  "masterSha256": "214ae70246e5460242831449a743ee38494cb3380d06a459f3ccf195f793afcd",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Brown and green mottled lacertid-like lizard with visible scales, full banded tail and four feet. Near fore/hind joint bends readable; far hind leg is largely occluded by the trunk with only its lower section exposed. Unequal contact levels remain. No ear pinnae.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 111,
+      "y0": 516,
+      "x1": 1138,
+      "y1": 773
+    },
+    "margins": {
+      "left": 111,
+      "right": 115,
+      "top": 516,
+      "bottom": 480
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

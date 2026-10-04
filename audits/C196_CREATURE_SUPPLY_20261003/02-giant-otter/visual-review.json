@@ -1,0 +1,28 @@
+{
+  "name": "Giant Otter",
+  "masterSha256": "c7d944b8e9ea42bf708abe2ee024f2cf75aefee3a2327bc4dd3ed6ec26d18753",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full1254 original: elongated brown Giant Otter, pale irregular throat/chest patch and broad continuous flattened tail. Four foot silhouettes are visible with near/far support heights slightly different; hind/far root visibility remains limited. Near rounded ear is clear; far ear is a tiny spike over the crown without a visible base, so the requested ear-root correction is HELD. Whiskers extend beyond the main paint boundary and require whole-original margin review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 122,
+      "y0": 353,
+      "x1": 1089,
+      "y1": 846
+    },
+    "margins": {
+      "left": 122,
+      "right": 164,
+      "top": 353,
+      "bottom": 407
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

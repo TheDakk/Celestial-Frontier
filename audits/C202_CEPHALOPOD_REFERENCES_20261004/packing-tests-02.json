@@ -1,0 +1,11 @@
+{
+  "args": [
+    "--test",
+    "port/v2/tools/creature-animation/semantic-part-packing.test.mjs",
+    "port/v2/tools/creature-animation/build-paint-skin.test.mjs"
+  ],
+  "exitCode": 0,
+  "nodeVersion": "v26.10.0",
+  "status": "PASS",
+  "native": false
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "cf.c202-primate-generated-source/v1",
+  "tool": "image_gen.imagegen",
+  "intent": "edit",
+  "generatedPath": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-5ef30e51-6e7f-4e7a-aed9-0ca89781798c.png",
+  "retainedMaster": "master.png",
+  "sha256": "af8469d28559871a85e1a4c203e43a612e0c8bdaab50010e04feb953b06cea0d",
+  "bytes": 1577290,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "pixelsModified": false,
+  "promptSha256": "5d1902606d889dd3bc5f4a58530ed02cd2487813d07c3c9354174d1cd9ff5440",
+  "actualToolInput": "audits/C198_CREATURE_SUPPLY_B_20261003/01-gorilla/master.png",
+  "actualToolInputSha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8",
+  "basePrompt": "audits/C198_CREATURE_SUPPLY_B_20261003/01-gorilla/prompt.txt",
+  "basePromptSha256": "a2e9d703717f93c8ecf105fdb96a2ee4eb4779e496560a6bfd094e5b217cff92",
+  "unchangedNonSubjectSections": true,
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "accepted": false
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Angelfish",
+  "masterSha256": "893f29f87affca73f79d7440699f9adddea27f6b513dea3549a44e5f4979d1ec",
+  "status": "REFUSED_WRONG_IDENTITY",
+  "reason": "Freshwater triangular angelfish silhouette and pelvic whips; canonical source explicitly requires marine Pomacanthidae. Original prompt compiler omitted species.note.",
+  "original": {
+    "id": "08-angelfish",
+    "name": "Angelfish",
+    "family": "fish",
+    "packet": "audits/G2_C87_20260927/08-angelfish",
+    "master": "audits/G2_C87_20260927/08-angelfish/master.png"
+  },
+  "replacementPacket": "audits/G2_C87_20260927/25-angelfish-marine",
+  "originalRetained": true
+}

@@ -1,0 +1,97 @@
+{
+  "id": "20-water-snake",
+  "name": "Water Snake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "fdb73d44012d4ac5f3964dc8587033e7f74d1097fa7964644a1f8f6c4718599c",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 9568,
+    "coreRadius": 8,
+    "bodyBox": {
+      "x0": 7,
+      "y0": 180,
+      "x1": 400,
+      "y1": 242
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0136,
+        "pixels": 130,
+        "box": {
+          "x0": 401,
+          "y0": 187,
+          "x1": 411,
+          "y1": 202
+        },
+        "attach": {
+          "x": 401,
+          "y": 194.5,
+          "relX": 1,
+          "relY": 0.23
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.05
+        },
+        "class": "front",
+        "length": 12.5
+      },
+      {
+        "k": 1,
+        "frac": 0.1287,
+        "pixels": 1231,
+        "box": {
+          "x0": 8,
+          "y0": 208,
+          "x1": 116,
+          "y1": 241
+        },
+        "attach": {
+          "x": 100.3,
+          "y": 222.9,
+          "relX": 0.24,
+          "relY": 0.69
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.09
+        },
+        "class": "rear",
+        "length": 94.1
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 7,
+        "x1": 21,
+        "cx": 13.3
+      },
+      {
+        "x0": 259,
+        "x1": 318,
+        "cx": 288
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,7 @@
+{
+  "mutation": "Restore actual old posture-only quadruped guard",
+  "exitCode": 1,
+  "sourceRestoredExactly": true,
+  "sourceSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "mutantSha256": "29043f8196e465cabc4873970886db90a8fe1704068210a9ada1f5bc8339160b"
+}

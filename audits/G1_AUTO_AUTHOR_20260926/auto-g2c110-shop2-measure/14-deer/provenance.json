@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "14-deer",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "ce663727817bb0c7c5f3820688ef3759b0b074d3436ac3b2cf005646177634df",
+ "subjectSourceSha256": "33195eaa660d7b6e875f577e3711d731a994dcd65e085ca689bacdebc1e0ce18",
+ "identity": {
+  "name": "Deer",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Deer\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"242702292\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "seed": 242702292,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "impala",
+  "authoringSha256": "0cda43f0ef31cfafbf4f4d63f73cb48c271c703172d7b715477e303b465c647a",
+  "masterSha256": "abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2145,
+     "class": "top",
+     "attach": {
+      "x": 284.4,
+      "y": 191.6,
+      "relX": 0.99,
+      "relY": 0.24
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0316,
+     "class": "limb-down",
+     "attach": {
+      "x": 122,
+      "y": 202,
+      "relX": -0.01,
+      "relY": 0.4
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0594,
+     "class": "limb-down",
+     "attach": {
+      "x": 132.9,
+      "y": 241.1,
+      "relX": 0.06,
+      "relY": 1
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0596,
+     "class": "limb-down",
+     "attach": {
+      "x": 160.5,
+      "y": 242,
+      "relX": 0.23,
+      "relY": 1.02
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0481,
+     "class": "limb-down",
+     "attach": {
+      "x": 237,
+      "y": 242,
+      "relX": 0.7,
+      "relY": 1.02
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0515,
+     "class": "limb-down",
+     "attach": {
+      "x": 258.5,
+      "y": 242,
+      "relX": 0.83,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "impala",
+   "byClass": {
+    "other": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

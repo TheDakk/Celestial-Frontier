@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c132-final-push-readiness/v1",
+  "repository": {
+    "nameWithOwner": "TheDakk/Celestial-Frontier",
+    "visibility": "PUBLIC"
+  },
+  "intendedWrite": "normal push origin openai/mac only",
+  "hostedAttemptAuthorized": false,
+  "workflowChangesSincePassedPolicy": ""
+}

@@ -1,0 +1,10 @@
+{
+  "source": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01",
+  "changedOwners": [
+    "near-wing-root"
+  ],
+  "scope": "Observed proximal wing feather coverts include the lower fringe that was connected to body remainder. Boundary stays proximal; no distal wing-to-body welding.",
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": false,
+  "native": false
+}

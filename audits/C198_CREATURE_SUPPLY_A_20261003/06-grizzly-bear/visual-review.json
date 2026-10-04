@@ -1,0 +1,28 @@
+{
+  "name": "Grizzly Bear",
+  "masterSha256": "5c10271f242c78e3d55f06a392b061e1ccd3a51ea8e5844f15726d49be1fca17",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: heavy brown and cream-tipped grizzled fur, pronounced shoulder hump, pale muzzle, two rounded ear outlines, short stub tail and four distinct clawed paws. Far upper roots and far-ear base remain partly fur/torso occluded; projected feet are at slightly different heights. Actual claw counts not all visible. No acceptance or grounded-motion claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 216,
+      "y0": 314,
+      "x1": 1082,
+      "y1": 919
+    },
+    "margins": {
+      "left": 216,
+      "right": 171,
+      "top": 314,
+      "bottom": 334
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

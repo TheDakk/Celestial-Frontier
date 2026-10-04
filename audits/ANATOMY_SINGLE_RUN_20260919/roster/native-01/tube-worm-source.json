@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 3325458627,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 5,
+    "body": 13,
+    "loco": 3,
+    "trait": 16,
+    "size": 5,
+    "diet": 5,
+    "head": 8,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 2,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 10,
+    "habitat": 7,
+    "detail": 5,
+    "accent": 12,
+    "temper": 1,
+    "sense": 1,
+    "repro": 1,
+    "life": 0,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tube Worm"
+  },
+  "observation": null
+}

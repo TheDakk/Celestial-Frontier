@@ -1,0 +1,28 @@
+{
+  "name": "Wild Boar",
+  "masterSha256": "e1781fd17de645c4d6ab0b3aa5c037ebd2807a3e8ee28d66f11dfdfa258c4458",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Whole brown bristled boar, raised mane, long snout and visible curved tusk, four separated hooved lower limbs and attached tufted tail. Far shoulder origin partially hidden by torso; fringe ownership must be reviewed.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 200,
+      "y0": 309,
+      "x1": 1065,
+      "y1": 919
+    },
+    "margins": {
+      "left": 200,
+      "right": 188,
+      "top": 309,
+      "bottom": 334
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

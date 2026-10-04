@@ -1,0 +1,29 @@
+{
+  "name": "Marlin",
+  "masterSha256": "f2519935ed58fc4d2abd74ceb861de3567ebf8b16f6d2177bf1257aead18cd54",
+  "method": "Full native original inspection by Codex",
+  "observation": "Full-size successor shows the entire bill and crescent tail with broader margins, retaining pale body bars and the visible fins. Small repeated rear projections still resemble finlets and remain an anatomy hold; no correct-fin-count or rig claim. The stronger central-60% prompt target is not fully met, while minimum8% framing is measured separately.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 231,
+      "y0": 445,
+      "x1": 1059,
+      "y1": 788
+    },
+    "margins": {
+      "left": 231,
+      "right": 194,
+      "top": 445,
+      "bottom": 465
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "predecessor": "audits/C203_CREATURE_SUPPLY_B_20261004/22-marlin/master.png",
+  "scope": "Framing-only source successor, all anatomical/style holds persist; no rig/native/gallery acceptance"
+}

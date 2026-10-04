@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Chipmunk",
+  "masterSha256": "38e11107b041cf1f84c727bceb73c4ae6045144d7deeca936e70bbcaa8b5778c",
+  "required": [
+    "bold dark and pale stripes along back and face"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "bold dark and pale stripes along back and face",
+      "status": "PRESENT",
+      "observed": "Full-size: alternating dark/light dorsal and facial stripes, inflated cheek shape, upright bushy tail, two ear outlines and four separated clawed feet. Far roots and far-ear base remain partly hidden; front contact heights differ. Tail attachment visible, but exact foot digits and ground plane unmeasured."
+    }
+  ]
+}

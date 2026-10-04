@@ -1,0 +1,9 @@
+{
+ "id": "11-baboon",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 6.8% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,189 @@
+[
+  {
+    "id": "01-elk",
+    "name": "Elk",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "cbb6894d8676d23ae674a7c73b7800c0d30d8baef7d280fcd47880d786c21f25",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "rear": 2,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "02-moose",
+    "name": "Moose",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "263417ff0ceda0114a02cfaa8d7a99f8e72333cffd2941dd685398c81db2f093",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "top": 2,
+      "limb-down": 5,
+      "rear": 1
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "03-bison",
+    "name": "Bison",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "afb8e5a6afad83c96d6c9226239e9ff3c9ef1692d76ddbeba0939475fa8c31d5",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "04-raccoon",
+    "name": "Raccoon",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "5f74c15f28ac1d4342eb149985cfc1dc5934a3971514c875743482b439306310",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "05-badger",
+    "name": "Badger",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "8a20aa882cbc0362d3b6ca44ca22377be63d2c477b865dd1c1310d5fe81a2453",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "06-wolverine",
+    "name": "Wolverine",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "0498e155c50e65b61174930019c0f8ec98b8ab5722b4267e875795dbe837510a",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "07-starling",
+    "name": "Starling",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "2c2b4f7aa32f3708c5ad80a3984bb025314926092917e6e24e245bfb6eb1bbcb",
+    "keyed": false,
+    "byClass": {
+      "front": 2,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "08-vulture",
+    "name": "Vulture",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "973ea9f3ea1254fd5f3107c34fb76cf738940fead74af9e9ff2c48d936267e30",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "09-kingfisher",
+    "name": "Kingfisher",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "5950108568f92d885dc1cac633d9e01c15120d76ebc955e91ae5ef9ed88b217c",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 2,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "10-water-snake",
+    "name": "Water Snake",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "36c3da89487cbd84451c47b743b706c1ab5d44314dcb5cfe72470a27eb7517b3",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "11-mountain-viper",
+    "name": "Mountain Viper",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "d7567e69864b69824eecb8478f52f19f50131ace16944cc1d624cf7fd18d1a7c",
+    "keyed": false,
+    "byClass": {
+      "other": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "12-ladybug",
+    "name": "Ladybug",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "70428d19ac82eb19657cd5fc1f35cab048b3d997bdddbe6ab7f06c0fedcd1ed9",
+    "keyed": false,
+    "byClass": {
+      "limb-down": 4,
+      "rear": 2
+    },
+    "groundContacts": 3,
+    "detached": []
+  }
+]

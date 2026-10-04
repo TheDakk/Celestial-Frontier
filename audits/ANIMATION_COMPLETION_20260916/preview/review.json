@@ -1,0 +1,979 @@
+{
+  "scope": "Painted animation studies, not final universal/phone acceptance",
+  "rows": [
+    {
+      "id": "fish",
+      "title": "Painted fish",
+      "source": "audits/ANIMATION_COMPLETION_20260916/fish-native-04",
+      "stills": [
+        {
+          "action": "idle",
+          "fraction": 0.25,
+          "path": "idle-25.png"
+        },
+        {
+          "action": "idle",
+          "fraction": 0.5,
+          "path": "idle-50.png"
+        },
+        {
+          "action": "idle",
+          "fraction": 0.75,
+          "path": "idle-75.png"
+        },
+        {
+          "action": "melee:bite",
+          "fraction": 0.25,
+          "path": "melee-bite-25.png"
+        },
+        {
+          "action": "melee:bite",
+          "fraction": 0.5,
+          "path": "melee-bite-50.png"
+        },
+        {
+          "action": "melee:bite",
+          "fraction": 0.75,
+          "path": "melee-bite-75.png"
+        },
+        {
+          "action": "melee:body",
+          "fraction": 0.25,
+          "path": "melee-body-25.png"
+        },
+        {
+          "action": "melee:body",
+          "fraction": 0.5,
+          "path": "melee-body-50.png"
+        },
+        {
+          "action": "melee:body",
+          "fraction": 0.75,
+          "path": "melee-body-75.png"
+        },
+        {
+          "action": "melee:tail",
+          "fraction": 0.25,
+          "path": "melee-tail-25.png"
+        },
+        {
+          "action": "melee:tail",
+          "fraction": 0.5,
+          "path": "melee-tail-50.png"
+        },
+        {
+          "action": "melee:tail",
+          "fraction": 0.75,
+          "path": "melee-tail-75.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.25,
+          "path": "hit-25.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.5,
+          "path": "hit-50.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.75,
+          "path": "hit-75.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.25,
+          "path": "alert-25.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.5,
+          "path": "alert-50.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.75,
+          "path": "alert-75.png"
+        },
+        {
+          "action": "approach:swim",
+          "fraction": 0.25,
+          "path": "approach-swim-25.png"
+        },
+        {
+          "action": "approach:swim",
+          "fraction": 0.5,
+          "path": "approach-swim-50.png"
+        },
+        {
+          "action": "approach:swim",
+          "fraction": 0.75,
+          "path": "approach-swim-75.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.25,
+          "path": "cast-25.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.5,
+          "path": "cast-50.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.75,
+          "path": "cast-75.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.25,
+          "path": "dodge-25.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.5,
+          "path": "dodge-50.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.75,
+          "path": "dodge-75.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.25,
+          "path": "faint-25.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.5,
+          "path": "faint-50.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.75,
+          "path": "faint-75.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.25,
+          "path": "victory-25.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.5,
+          "path": "victory-50.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.75,
+          "path": "victory-75.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.25,
+          "path": "tame-25.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.5,
+          "path": "tame-50.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.75,
+          "path": "tame-75.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.25,
+          "path": "feed-25.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.5,
+          "path": "feed-50.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.75,
+          "path": "feed-75.png"
+        }
+      ],
+      "fps": 60.00219641983567,
+      "updateP95": 1.4000000059604645,
+      "allClipP95": 1.5999999940395355,
+      "clips": 13,
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1400,
+            "height": 800,
+            "nb_read_frames": "605"
+          }
+        ],
+        "format": {
+          "duration": "10.100000"
+        }
+      }
+    },
+    {
+      "id": "bird",
+      "title": "Painted bird (earlier solver snapshot)",
+      "source": "audits/ANIMATION_COMPLETION_20260916/bird-native-02",
+      "stills": [
+        {
+          "action": "idle",
+          "fraction": 0.25,
+          "path": "idle-25.png"
+        },
+        {
+          "action": "idle",
+          "fraction": 0.5,
+          "path": "idle-50.png"
+        },
+        {
+          "action": "idle",
+          "fraction": 0.75,
+          "path": "idle-75.png"
+        },
+        {
+          "action": "melee:peck",
+          "fraction": 0.25,
+          "path": "melee-peck-25.png"
+        },
+        {
+          "action": "melee:peck",
+          "fraction": 0.5,
+          "path": "melee-peck-50.png"
+        },
+        {
+          "action": "melee:peck",
+          "fraction": 0.75,
+          "path": "melee-peck-75.png"
+        },
+        {
+          "action": "melee:claw",
+          "fraction": 0.25,
+          "path": "melee-claw-25.png"
+        },
+        {
+          "action": "melee:claw",
+          "fraction": 0.5,
+          "path": "melee-claw-50.png"
+        },
+        {
+          "action": "melee:claw",
+          "fraction": 0.75,
+          "path": "melee-claw-75.png"
+        },
+        {
+          "action": "melee:kick",
+          "fraction": 0.25,
+          "path": "melee-kick-25.png"
+        },
+        {
+          "action": "melee:kick",
+          "fraction": 0.5,
+          "path": "melee-kick-50.png"
+        },
+        {
+          "action": "melee:kick",
+          "fraction": 0.75,
+          "path": "melee-kick-75.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.25,
+          "path": "hit-25.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.5,
+          "path": "hit-50.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.75,
+          "path": "hit-75.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.25,
+          "path": "alert-25.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.5,
+          "path": "alert-50.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.75,
+          "path": "alert-75.png"
+        },
+        {
+          "action": "approach:walk",
+          "fraction": 0.25,
+          "path": "approach-walk-25.png"
+        },
+        {
+          "action": "approach:walk",
+          "fraction": 0.5,
+          "path": "approach-walk-50.png"
+        },
+        {
+          "action": "approach:walk",
+          "fraction": 0.75,
+          "path": "approach-walk-75.png"
+        },
+        {
+          "action": "approach:flight",
+          "fraction": 0.25,
+          "path": "approach-flight-25.png"
+        },
+        {
+          "action": "approach:flight",
+          "fraction": 0.5,
+          "path": "approach-flight-50.png"
+        },
+        {
+          "action": "approach:flight",
+          "fraction": 0.75,
+          "path": "approach-flight-75.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.25,
+          "path": "cast-25.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.5,
+          "path": "cast-50.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.75,
+          "path": "cast-75.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.25,
+          "path": "dodge-25.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.5,
+          "path": "dodge-50.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.75,
+          "path": "dodge-75.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.25,
+          "path": "faint-25.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.5,
+          "path": "faint-50.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.75,
+          "path": "faint-75.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.25,
+          "path": "victory-25.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.5,
+          "path": "victory-50.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.75,
+          "path": "victory-75.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.25,
+          "path": "tame-25.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.5,
+          "path": "tame-50.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.75,
+          "path": "tame-75.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.25,
+          "path": "feed-25.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.5,
+          "path": "feed-50.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.75,
+          "path": "feed-75.png"
+        }
+      ],
+      "fps": 60.00219641983567,
+      "updateP95": 0.5,
+      "allClipP95": null,
+      "clips": 14,
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1400,
+            "height": 800,
+            "nb_read_frames": "606"
+          }
+        ],
+        "format": {
+          "duration": "10.133008"
+        }
+      }
+    },
+    {
+      "id": "frog",
+      "title": "Earth frog",
+      "source": "audits/ANIMATION_COMPLETION_20260916/frog-native-04",
+      "stills": [
+        {
+          "action": "idle",
+          "fraction": 0.25,
+          "path": "idle-25.png"
+        },
+        {
+          "action": "idle",
+          "fraction": 0.5,
+          "path": "idle-50.png"
+        },
+        {
+          "action": "idle",
+          "fraction": 0.75,
+          "path": "idle-75.png"
+        },
+        {
+          "action": "melee:kick",
+          "fraction": 0.25,
+          "path": "melee-kick-25.png"
+        },
+        {
+          "action": "melee:kick",
+          "fraction": 0.5,
+          "path": "melee-kick-50.png"
+        },
+        {
+          "action": "melee:kick",
+          "fraction": 0.75,
+          "path": "melee-kick-75.png"
+        },
+        {
+          "action": "melee:bite",
+          "fraction": 0.25,
+          "path": "melee-bite-25.png"
+        },
+        {
+          "action": "melee:bite",
+          "fraction": 0.5,
+          "path": "melee-bite-50.png"
+        },
+        {
+          "action": "melee:bite",
+          "fraction": 0.75,
+          "path": "melee-bite-75.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.25,
+          "path": "hit-25.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.5,
+          "path": "hit-50.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.75,
+          "path": "hit-75.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.25,
+          "path": "alert-25.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.5,
+          "path": "alert-50.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.75,
+          "path": "alert-75.png"
+        },
+        {
+          "action": "approach:hop",
+          "fraction": 0.25,
+          "path": "approach-hop-25.png"
+        },
+        {
+          "action": "approach:hop",
+          "fraction": 0.5,
+          "path": "approach-hop-50.png"
+        },
+        {
+          "action": "approach:hop",
+          "fraction": 0.75,
+          "path": "approach-hop-75.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.25,
+          "path": "cast-25.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.5,
+          "path": "cast-50.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.75,
+          "path": "cast-75.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.25,
+          "path": "dodge-25.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.5,
+          "path": "dodge-50.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.75,
+          "path": "dodge-75.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.25,
+          "path": "faint-25.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.5,
+          "path": "faint-50.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.75,
+          "path": "faint-75.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.25,
+          "path": "victory-25.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.5,
+          "path": "victory-50.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.75,
+          "path": "victory-75.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.25,
+          "path": "tame-25.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.5,
+          "path": "tame-50.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.75,
+          "path": "tame-75.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.25,
+          "path": "feed-25.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.5,
+          "path": "feed-50.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.75,
+          "path": "feed-75.png"
+        }
+      ],
+      "fps": 60.00219641983567,
+      "updateP95": 2,
+      "allClipP95": 2.2000000178813934,
+      "clips": 12,
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1400,
+            "height": 800,
+            "nb_read_frames": "606"
+          }
+        ],
+        "format": {
+          "duration": "10.116667"
+        }
+      }
+    },
+    {
+      "id": "procedural",
+      "title": "Painted procedural quadruped",
+      "source": "audits/ANIMATION_COMPLETION_20260916/broad-native-01",
+      "stills": [
+        {
+          "action": "idle",
+          "fraction": 0.25,
+          "path": "idle-25.png"
+        },
+        {
+          "action": "idle",
+          "fraction": 0.5,
+          "path": "idle-50.png"
+        },
+        {
+          "action": "idle",
+          "fraction": 0.75,
+          "path": "idle-75.png"
+        },
+        {
+          "action": "melee:bite",
+          "fraction": 0.25,
+          "path": "melee-bite-25.png"
+        },
+        {
+          "action": "melee:bite",
+          "fraction": 0.5,
+          "path": "melee-bite-50.png"
+        },
+        {
+          "action": "melee:bite",
+          "fraction": 0.75,
+          "path": "melee-bite-75.png"
+        },
+        {
+          "action": "melee:claw",
+          "fraction": 0.25,
+          "path": "melee-claw-25.png"
+        },
+        {
+          "action": "melee:claw",
+          "fraction": 0.5,
+          "path": "melee-claw-50.png"
+        },
+        {
+          "action": "melee:claw",
+          "fraction": 0.75,
+          "path": "melee-claw-75.png"
+        },
+        {
+          "action": "melee:tail",
+          "fraction": 0.25,
+          "path": "melee-tail-25.png"
+        },
+        {
+          "action": "melee:tail",
+          "fraction": 0.5,
+          "path": "melee-tail-50.png"
+        },
+        {
+          "action": "melee:tail",
+          "fraction": 0.75,
+          "path": "melee-tail-75.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.25,
+          "path": "hit-25.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.5,
+          "path": "hit-50.png"
+        },
+        {
+          "action": "hit",
+          "fraction": 0.75,
+          "path": "hit-75.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.25,
+          "path": "alert-25.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.5,
+          "path": "alert-50.png"
+        },
+        {
+          "action": "alert",
+          "fraction": 0.75,
+          "path": "alert-75.png"
+        },
+        {
+          "action": "approach:walk",
+          "fraction": 0.25,
+          "path": "approach-walk-25.png"
+        },
+        {
+          "action": "approach:walk",
+          "fraction": 0.5,
+          "path": "approach-walk-50.png"
+        },
+        {
+          "action": "approach:walk",
+          "fraction": 0.75,
+          "path": "approach-walk-75.png"
+        },
+        {
+          "action": "approach:trot",
+          "fraction": 0.25,
+          "path": "approach-trot-25.png"
+        },
+        {
+          "action": "approach:trot",
+          "fraction": 0.5,
+          "path": "approach-trot-50.png"
+        },
+        {
+          "action": "approach:trot",
+          "fraction": 0.75,
+          "path": "approach-trot-75.png"
+        },
+        {
+          "action": "approach:gallop",
+          "fraction": 0.25,
+          "path": "approach-gallop-25.png"
+        },
+        {
+          "action": "approach:gallop",
+          "fraction": 0.5,
+          "path": "approach-gallop-50.png"
+        },
+        {
+          "action": "approach:gallop",
+          "fraction": 0.75,
+          "path": "approach-gallop-75.png"
+        },
+        {
+          "action": "approach:hop",
+          "fraction": 0.25,
+          "path": "approach-hop-25.png"
+        },
+        {
+          "action": "approach:hop",
+          "fraction": 0.5,
+          "path": "approach-hop-50.png"
+        },
+        {
+          "action": "approach:hop",
+          "fraction": 0.75,
+          "path": "approach-hop-75.png"
+        },
+        {
+          "action": "melee:gore",
+          "fraction": 0.25,
+          "path": "melee-gore-25.png"
+        },
+        {
+          "action": "melee:gore",
+          "fraction": 0.5,
+          "path": "melee-gore-50.png"
+        },
+        {
+          "action": "melee:gore",
+          "fraction": 0.75,
+          "path": "melee-gore-75.png"
+        },
+        {
+          "action": "melee:headbutt",
+          "fraction": 0.25,
+          "path": "melee-headbutt-25.png"
+        },
+        {
+          "action": "melee:headbutt",
+          "fraction": 0.5,
+          "path": "melee-headbutt-50.png"
+        },
+        {
+          "action": "melee:headbutt",
+          "fraction": 0.75,
+          "path": "melee-headbutt-75.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.25,
+          "path": "cast-25.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.5,
+          "path": "cast-50.png"
+        },
+        {
+          "action": "cast",
+          "fraction": 0.75,
+          "path": "cast-75.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.25,
+          "path": "dodge-25.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.5,
+          "path": "dodge-50.png"
+        },
+        {
+          "action": "dodge",
+          "fraction": 0.75,
+          "path": "dodge-75.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.25,
+          "path": "faint-25.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.5,
+          "path": "faint-50.png"
+        },
+        {
+          "action": "faint",
+          "fraction": 0.75,
+          "path": "faint-75.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.25,
+          "path": "victory-25.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.5,
+          "path": "victory-50.png"
+        },
+        {
+          "action": "victory",
+          "fraction": 0.75,
+          "path": "victory-75.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.25,
+          "path": "tame-25.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.5,
+          "path": "tame-50.png"
+        },
+        {
+          "action": "tame",
+          "fraction": 0.75,
+          "path": "tame-75.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.25,
+          "path": "feed-25.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.5,
+          "path": "feed-50.png"
+        },
+        {
+          "action": "feed",
+          "fraction": 0.75,
+          "path": "feed-75.png"
+        },
+        {
+          "action": "melee:kick",
+          "fraction": 0.25,
+          "path": "melee-kick-25.png"
+        },
+        {
+          "action": "melee:kick",
+          "fraction": 0.5,
+          "path": "melee-kick-50.png"
+        },
+        {
+          "action": "melee:kick",
+          "fraction": 0.75,
+          "path": "melee-kick-75.png"
+        }
+      ],
+      "fps": 60.00219641983566,
+      "updateP95": 2.2000000178813934,
+      "allClipP95": 1.5,
+      "clips": 19,
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1400,
+            "height": 800,
+            "nb_read_frames": "606"
+          }
+        ],
+        "format": {
+          "duration": "10.126783"
+        }
+      }
+    }
+  ]
+}

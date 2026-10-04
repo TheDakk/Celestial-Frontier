@@ -1,0 +1,219 @@
+{
+  "kind": "primate",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Capuchin\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"470008303\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"12\"]]]]",
+    "seed": 470008303,
+    "ownerId": "authored:archetype-sprint/c168-reference-capuchin",
+    "earthName": "Capuchin"
+  },
+  "template": {
+    "id": "primate",
+    "version": 1
+  },
+  "clipSetId": "primate-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 470008303,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 1,
+    "body": 4,
+    "loco": 15,
+    "trait": 12,
+    "size": 5,
+    "diet": 1,
+    "head": 8,
+    "limbs": 2,
+    "skin": 8,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 0,
+    "behavior": 11,
+    "habitat": 16,
+    "detail": 9,
+    "accent": 0,
+    "temper": 2,
+    "sense": 7,
+    "repro": 4,
+    "life": 0,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Capuchin"
+  },
+  "geometry": {
+    "cutoutAssetHash": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7456140350877193,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5143540669856459,
+      0.49521531100478466
+    ],
+    "pelvis": [
+      0.43779904306220097,
+      0.4824561403508772
+    ],
+    "spine": [
+      0.5191387559808612,
+      0.4513556618819777
+    ],
+    "chest": [
+      0.6164274322169059,
+      0.4864433811802233
+    ],
+    "neck": [
+      0.6443381180223285,
+      0.4513556618819777
+    ],
+    "head": [
+      0.6786283891547049,
+      0.4393939393939394
+    ],
+    "jaw": [
+      0.7081339712918661,
+      0.4960127591706539
+    ],
+    "armNearShoulder": [
+      0.6044657097288676,
+      0.5103668261562998
+    ],
+    "armNearElbow": [
+      0.5773524720893142,
+      0.60207336523126
+    ],
+    "armNearHand": [
+      0.6220095693779905,
+      0.7272727272727273
+    ],
+    "armFarShoulder": [
+      0.6602870813397129,
+      0.5271132376395534
+    ],
+    "armFarElbow": [
+      0.6929824561403509,
+      0.6060606060606061
+    ],
+    "armFarHand": [
+      0.7575757575757576,
+      0.7145135566188198
+    ],
+    "legNearHip": [
+      0.4409888357256778,
+      0.5135566188197768
+    ],
+    "legNearKnee": [
+      0.48963317384370014,
+      0.5765550239234449
+    ],
+    "legNearFoot": [
+      0.5015948963317385,
+      0.7025518341307815
+    ],
+    "legFarHip": [
+      0.4043062200956938,
+      0.518341307814992
+    ],
+    "legFarKnee": [
+      0.3835725677830941,
+      0.5813397129186603
+    ],
+    "legFarFoot": [
+      0.3652312599681021,
+      0.6746411483253588
+    ],
+    "tail0": [
+      0.40669856459330145,
+      0.4625199362041467
+    ],
+    "tail1": [
+      0.24800637958532695,
+      0.3787878787878788
+    ],
+    "tail2": [
+      0.31658692185007975,
+      0.2759170653907496
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin/master.png",
+  "coverage": {
+    "scope": "Exact original source anatomy manually observed; audit reference candidate only",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "nativeAcceptance": false,
+    "qualityAccepted": false,
+    "declarations": "Four limbs and their terminal hands/feet are visibly separate. The forward right hand is curled and raised; hind feet are higher than the nearer hand. This is an arboreal stepping pose, not four proven common-plane supports. The complete long curled tail is partitioned into the existing tail0/tail1/tail2 chain. The distal loop is one rigid skin owner because this contract has only three tail joints; no extra joint or straightened/repainted tail is invented. Far shoulder and far hip attachments are partially hidden by torso fur. Their points are transparent authoring hypotheses; terminal tips and exterior bends are independently visible. The unchanged observer labels the 22.23% tail appendage as top and returns five ground fragments, partly split fingers. This hand packet does not rewrite those measurements or claim improved automatic admission.",
+    "limitations": [
+      "Four limbs and their terminal hands/feet are visibly separate. The forward right hand is curled and raised; hind feet are higher than the nearer hand. This is an arboreal stepping pose, not four proven common-plane supports.",
+      "The complete long curled tail is partitioned into the existing tail0/tail1/tail2 chain. The distal loop is one rigid skin owner because this contract has only three tail joints; no extra joint or straightened/repainted tail is invented.",
+      "Far shoulder and far hip attachments are partially hidden by torso fur. Their points are transparent authoring hypotheses; terminal tips and exterior bends are independently visible.",
+      "The unchanged observer labels the 22.23% tail appendage as top and returns five ground fragments, partly split fingers. This hand packet does not rewrite those measurements or claim improved automatic admission."
+    ]
+  },
+  "provenance": {
+    "authoringSha256": "48654c55f7d4698b10739aee1484092c0139619a3c3a54c290ef7ff438c38c6a",
+    "subjectSourceSha256": "5c082e12641700a1445d06649fb5e651f79f39358596c7ce9d0256d4903ff570",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.07761100517126909,
+      "spine": 0.08708265417799661,
+      "chest": 0.10342260183013381,
+      "neck": 0.044834745763542586,
+      "head": 0.03631673855418084,
+      "jaw": 0.06384567432615025,
+      "armFarShoulder": 0.05981392852503726,
+      "armFarElbow": 0.0854498362430474,
+      "armFarHand": 0.1262312840586978,
+      "armNearShoulder": 0.026747224611241467,
+      "armNearElbow": 0.09563062775286009,
+      "armNearHand": 0.13292530456553675,
+      "legFarHip": 0.0490868050925435,
+      "legFarKnee": 0.06632257069675199,
+      "legFarFoot": 0.0950871254235537,
+      "legNearHip": 0.03126362963941418,
+      "legNearKnee": 0.07959315722187657,
+      "legNearFoot": 0.1265633398236015,
+      "tail0": 0.03694173786890102,
+      "tail1": 0.1794276094188584,
+      "tail2": 0.1236353308173457
+    },
+    "measures": {
+      "body": 0.1786728840687246,
+      "bone-min": 0.026747224611241467,
+      "bone-max": 0.1794276094188584,
+      "arm/torso:armFar": 1.5195089632199297,
+      "arm/torso:armNear": 1.4288858561853108,
+      "leg/torso:legFar": 1.1781110620673922,
+      "leg/torso:legNear": 1.328797751949709
+    }
+  },
+  "recipeHash": "9bf2a6ff810346633cb6dbabb4fdb9443469c37e2b57be0dd2420547f285e1ee"
+}

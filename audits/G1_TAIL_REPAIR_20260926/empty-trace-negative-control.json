@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scope": "In-memory guard-removal negative control, no source-file mutation",
+  "sourceSha256": "5b280cf820304ae8a0ee7ee55b15422b602b9ea21fcf2d2e7172a75a28255f8c",
+  "emptyRegionBeforeFix": [
+    [
+      0.5,
+      0.5
+    ],
+    [
+      15.5,
+      0.5
+    ],
+    [
+      15.5,
+      15.5
+    ],
+    [
+      0.5,
+      15.5
+    ],
+    [
+      0.5,
+      1.5
+    ]
+  ],
+  "emptyRegionAfterFix": null,
+  "sourceUnchanged": true
+}

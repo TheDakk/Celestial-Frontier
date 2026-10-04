@@ -1,0 +1,9 @@
+{
+ "id": "19-giant-water-bug",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 1% paint (reference 31%)"
+ ],
+ "semanticPresence": null
+}

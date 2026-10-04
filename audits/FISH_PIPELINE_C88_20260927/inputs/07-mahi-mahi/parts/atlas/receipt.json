@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "07-mahi-mahi",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "6c5e307135135a624f935afd71e774b5665f4bbcc9163ef27a3591364a7bc1da",
+    "pngSha256": "37188fea4c6fbbb9a7d17615f1f1b7885bfe79af455e73d3744ddc8520445bb6"
+  },
+  "parts": [
+    {
+      "name": "body-0.png",
+      "sha256": "9d5e734a431802d8f4653d91ee2dabedf94f2b2bcd5d5c2035b50dc769be7296"
+    },
+    {
+      "name": "body-1.png",
+      "sha256": "ceabe2dca9b80a9c3ba80f376cded2dbd196d2b409dd05fff586a53c3c5507d2"
+    },
+    {
+      "name": "body-2.png",
+      "sha256": "4c2407ab18fbfd8acf0ad6f09b5d57221f9c435a008f85d855fb46045263ccbf"
+    },
+    {
+      "name": "body-3.png",
+      "sha256": "8279f43304e21df0845db79f47d8229766fbf48d0be041276c4aff61b0f8c337"
+    },
+    {
+      "name": "body-4.png",
+      "sha256": "35a5ebab4638d42a7f3ae374ee274f055f331aba0e27928e6aff861d236a7a5a"
+    },
+    {
+      "name": "body-5.png",
+      "sha256": "3fd57982dfb9be6f256315b96ff1a7bf2eb386cbf2fae1f42f407d6c3a70623e"
+    },
+    {
+      "name": "body.png",
+      "sha256": "00d9b2b91a6028080d7d19bef2da6e9bfc51480348d65c645966557258d90fbe"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "bae616086799922fa21a9e421808670b80b3dcdc409d1b545f01935fc286f943"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "aa4f5993416d9cb3c8c81c5144462c6e23ee8ac56e080c31be40eec5445512bf"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "1f7298986153f536b0ea0c9f63ccde4347e293834f121ef1334797e7081af58e"
+    },
+    {
+      "name": "head.png",
+      "sha256": "36e0b891413eca6811648fe547586f0276e57c96a63d6774182c7773a641be23"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "067f1d6f44306d779d15f0cefe912fbd4aea88a42bd90d2a55106425f70fcd4c"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "d954b00bc27766ae70733aa81562f72c12a21e24f9b84557a524bb9ff5811ebf"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

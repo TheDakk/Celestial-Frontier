@@ -1,0 +1,14 @@
+{
+  "id": "21-bowfin",
+  "name": "Bowfin",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-de1e3768-88ee-4c8a-81a9-e98d857f9f4f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a41ea9c48adc03495bce4801b352c11eaebee92b397f48c134f06f5bda0b44e6",
+  "bytes": 1340965,
+  "promptSha256": "480252f61eab935087b6d7a100a5d7b437d05b64059a46742b50caff4badab60",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

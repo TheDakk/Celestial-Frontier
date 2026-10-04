@@ -1,0 +1,218 @@
+[
+ {
+  "id": "01-giant-salamander",
+  "name": "Giant Salamander",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/01-giant-salamander",
+  "master": "audits/G2_C136_REPAIRS_20261002/01-giant-salamander/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": "Untouched salamander candidate; smooth-skin sprawler reference remains unmeasured."
+ },
+ {
+  "id": "02-alpine-salamander",
+  "name": "Alpine Salamander",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/02-alpine-salamander",
+  "master": "audits/G2_C136_REPAIRS_20261002/02-alpine-salamander/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": "Untouched salamander candidate; smooth-skin sprawler reference remains unmeasured."
+ },
+ {
+  "id": "03-olm",
+  "name": "Olm",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/03-olm",
+  "master": "audits/G2_C136_REPAIRS_20261002/03-olm/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": "Untouched salamander candidate; smooth-skin sprawler reference remains unmeasured."
+ },
+ {
+  "id": "04-blind-salamander",
+  "name": "Blind Salamander",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/04-blind-salamander",
+  "master": "audits/G2_C136_REPAIRS_20261002/04-blind-salamander/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": "Untouched salamander candidate; smooth-skin sprawler reference remains unmeasured."
+ },
+ {
+  "id": "05-axolotl",
+  "name": "Axolotl",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/05-axolotl",
+  "master": "audits/G2_C136_REPAIRS_20261002/05-axolotl/master.png",
+  "purpose": "NEW_ORIGINAL",
+  "repairReason": "Untouched salamander candidate; smooth-skin sprawler reference remains unmeasured."
+ },
+ {
+  "id": "06-giraffe",
+  "name": "Giraffe",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/06-giraffe",
+  "master": "audits/G2_C136_REPAIRS_20261002/06-giraffe/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 far ear is hidden behind the crown."
+ },
+ {
+  "id": "07-buffalo",
+  "name": "Buffalo",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/07-buffalo",
+  "master": "audits/G2_C136_REPAIRS_20261002/07-buffalo/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 far ear obscured; proximal forelegs overlap."
+ },
+ {
+  "id": "08-wildebeest",
+  "name": "Wildebeest",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/08-wildebeest",
+  "master": "audits/G2_C136_REPAIRS_20261002/08-wildebeest/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 horns too upright and boss-like; far ear obscured."
+ },
+ {
+  "id": "09-banteng",
+  "name": "Banteng",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/09-banteng",
+  "master": "audits/G2_C136_REPAIRS_20261002/09-banteng/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 far ear hidden behind horns; upper forelegs overlap."
+ },
+ {
+  "id": "10-water-buffalo",
+  "name": "Water Buffalo",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/10-water-buffalo",
+  "master": "audits/G2_C136_REPAIRS_20261002/10-water-buffalo/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 far ear hidden; upper foreleg roots overlap."
+ },
+ {
+  "id": "11-reindeer",
+  "name": "Reindeer",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/11-reindeer",
+  "master": "audits/G2_C136_REPAIRS_20261002/11-reindeer/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 antlers oversized and broadly palmated like moose."
+ },
+ {
+  "id": "12-caribou",
+  "name": "Caribou",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/12-caribou",
+  "master": "audits/G2_C136_REPAIRS_20261002/12-caribou/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 oversized palmated antler fans resemble moose."
+ },
+ {
+  "id": "13-saiga",
+  "name": "Saiga",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/13-saiga",
+  "master": "audits/G2_C136_REPAIRS_20261002/13-saiga/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 muzzle became an overlong tapir-like trunk."
+ },
+ {
+  "id": "14-yak",
+  "name": "Yak",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/14-yak",
+  "master": "audits/G2_C136_REPAIRS_20261002/14-yak/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 far ear obscured and long coat hides upper legs."
+ },
+ {
+  "id": "15-wild-sheep",
+  "name": "Wild Sheep",
+  "family": "quadruped",
+  "packet": "audits/G2_C136_REPAIRS_20261002/15-wild-sheep",
+  "master": "audits/G2_C136_REPAIRS_20261002/15-wild-sheep/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C110 far ear obscured by curled horn."
+ },
+ {
+  "id": "16-lark",
+  "name": "Lark",
+  "family": "biped-bird",
+  "packet": "audits/G2_C136_REPAIRS_20261002/16-lark",
+  "master": "audits/G2_C136_REPAIRS_20261002/16-lark/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C132 held: head-down crown islands exceed the 5 percent repair cap."
+ },
+ {
+  "id": "17-chough",
+  "name": "Chough",
+  "family": "biped-bird",
+  "packet": "audits/G2_C136_REPAIRS_20261002/17-chough",
+  "master": "audits/G2_C136_REPAIRS_20261002/17-chough/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C132 held: crown/nape islands exceed the 5 percent repair cap."
+ },
+ {
+  "id": "18-hawk",
+  "name": "Hawk",
+  "family": "biped-bird",
+  "packet": "audits/G2_C136_REPAIRS_20261002/18-hawk",
+  "master": "audits/G2_C136_REPAIRS_20261002/18-hawk/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C121 unequal foot heights; C132 held crown islands above the repair cap."
+ },
+ {
+  "id": "19-crow",
+  "name": "Crow",
+  "family": "biped-bird",
+  "packet": "audits/G2_C136_REPAIRS_20261002/19-crow",
+  "master": "audits/G2_C136_REPAIRS_20261002/19-crow/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C132 held: crown islands exceed the 5 percent repair cap."
+ },
+ {
+  "id": "20-snowy-owl",
+  "name": "Snowy Owl",
+  "family": "biped-bird",
+  "packet": "audits/G2_C136_REPAIRS_20261002/20-snowy-owl",
+  "master": "audits/G2_C136_REPAIRS_20261002/20-snowy-owl/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C132 held: crown islands exceed the 5 percent repair cap."
+ },
+ {
+  "id": "21-bee",
+  "name": "Bee",
+  "family": "insect",
+  "packet": "audits/G2_C136_REPAIRS_20261002/21-bee",
+  "master": "audits/G2_C136_REPAIRS_20261002/21-bee/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C121 only five leg endpoints resolved."
+ },
+ {
+  "id": "22-giant-water-bug",
+  "name": "Giant Water Bug",
+  "family": "insect",
+  "packet": "audits/G2_C136_REPAIRS_20261002/22-giant-water-bug",
+  "master": "audits/G2_C136_REPAIRS_20261002/22-giant-water-bug/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C121 visible antennae too long and hind-leg paddles suspect."
+ },
+ {
+  "id": "23-carrion-beetle",
+  "name": "Carrion Beetle",
+  "family": "insect",
+  "packet": "audits/G2_C136_REPAIRS_20261002/23-carrion-beetle",
+  "master": "audits/G2_C136_REPAIRS_20261002/23-carrion-beetle/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C121 only five leg endpoints resolved."
+ },
+ {
+  "id": "24-water-strider",
+  "name": "Water Strider",
+  "family": "insect",
+  "packet": "audits/G2_C136_REPAIRS_20261002/24-water-strider",
+  "master": "audits/G2_C136_REPAIRS_20261002/24-water-strider/master.png",
+  "purpose": "PAINTING_REPAIR",
+  "repairReason": "C121 only five leg endpoints resolved; front pair not independently visible."
+ }
+]

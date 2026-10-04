@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Kestrel",
+  "masterSha256": "233611ded38134341a6a2901eaa85bbba65a27bb4bfde32eb86bfc7b804dd690",
+  "required": [
+    "hooked bill with dark moustache stripe",
+    "rufous back spotted with black"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "hooked bill with dark moustache stripe",
+      "status": "PRESENT",
+      "observed": "Hooked bill with dark moustache stripe and black-spotted rufous back visible. Banded tail below folded wings; two separated feet."
+    },
+    {
+      "requirement": "rufous back spotted with black",
+      "status": "PRESENT",
+      "observed": "Hooked bill with dark moustache stripe and black-spotted rufous back visible. Banded tail below folded wings; two separated feet."
+    }
+  ]
+}

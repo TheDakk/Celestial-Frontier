@@ -1,0 +1,17 @@
+[
+  {
+    "id": "c136-bird-insect-02-egret",
+    "family": "biped-bird",
+    "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02"
+  },
+  {
+    "id": "c136-bird-insect-03-stork",
+    "family": "biped-bird",
+    "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/03-stork/candidate-02"
+  },
+  {
+    "id": "c136-bird-insect-18-wasp",
+    "family": "insect",
+    "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/18-wasp"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "name": "Giant Salamander",
+  "masterSha256": "6afcc8b7e6306ca7a0da1d7300a6620906bb9538a81a26cd0ff22a542cdac25d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full 1254-square successor inspected: framing edit leaves the entire low sprawled body and broad tail inside wide magenta margins; all four feet remain visibly distinct. Broad flattened head, tiny eye, mottled folded skin and complete tail are retained. Toe separation/count, far limb roots and unequal near/far foot heights remain unmeasured. This resolves the observed framing refusal only; it is not anatomy or contact acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 236,
+      "y0": 537,
+      "x1": 1009,
+      "y1": 725
+    },
+    "margins": {
+      "left": 236,
+      "right": 244,
+      "top": 537,
+      "bottom": 528
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

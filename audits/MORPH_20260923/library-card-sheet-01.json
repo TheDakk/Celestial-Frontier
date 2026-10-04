@@ -1,0 +1,511 @@
+{
+ "schema": "cf.library-card-sheet/v1",
+ "columns": [
+  "as painted",
+  "morph seed 1",
+  "morph seed 2",
+  "morph seed 3",
+  "striped"
+ ],
+ "summary": {
+  "archetypes": 17,
+  "allMorphsDistinct": true,
+  "masksLandWhereShipped": true,
+  "renders": 85
+ },
+ "rows": [
+  {
+   "earthName": "Crab",
+   "template": "brachyuran",
+   "hasMasks": true,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "fe77bd14a7eb6335"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "f05b7ba85fab40f0"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "67095a5c2efced29"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "e7958601d7583486"
+    },
+    {
+     "column": "striped",
+     "sha256": "cd33e65ae4fc1027"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Coconut Crab",
+   "template": "brachyuran",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "1e5d4a9aa6c7dcef"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "f745da004481efe3"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "b9eaa243f3f561df"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "e1bba4c1d9bda983"
+    },
+    {
+     "column": "striped",
+     "sha256": "84e15609ded397a3"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Freshwater Crab",
+   "template": "brachyuran",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "235a1fdb635085ab"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "b2bd773ab7e73546"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "01ec5c572b8ac009"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "4b7636714b584919"
+    },
+    {
+     "column": "striped",
+     "sha256": "a55d568e8054a983"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Mud Crab",
+   "template": "brachyuran",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "8ee9cbd707aa1690"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "8e10d551dff81d7b"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "2ce15784f8499191"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "831ddb8b0286da2f"
+    },
+    {
+     "column": "striped",
+     "sha256": "923db9173f243318"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Vent Crab",
+   "template": "brachyuran",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "e4eb243e31a53832"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "033c31775c21dfcb"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "b5632ebec5babc71"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "ef5e262c9f946c70"
+    },
+    {
+     "column": "striped",
+     "sha256": "80873285021476dd"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Civet",
+   "template": "quadruped",
+   "hasMasks": true,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "2f5c4738e4572454"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "94cb8f737cf83dea"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "a4f076c72b36066d"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "6c717176a6fc5ba4"
+    },
+    {
+     "column": "striped",
+     "sha256": "c087ebb7653075af"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Salmon",
+   "template": "fish",
+   "hasMasks": true,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "7a94bb2c9ae183e6"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "16cee0c7d89c1210"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "dae142e85c462379"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "807fb0db8e750eb7"
+    },
+    {
+     "column": "striped",
+     "sha256": "2baa2e128029e956"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Eagle",
+   "template": "biped-bird",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "c044401ce1181cc4"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "0ab8e74cb0f688af"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "8002ecf44720cfae"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "d170678c5c88be9a"
+    },
+    {
+     "column": "striped",
+     "sha256": "a54c4109d56ec1cc"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Beetle",
+   "template": "insect",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "0b8f0af840a4ee41"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "ba78a78761c1abd3"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "caab9c2188fbc24d"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "21f8215fed0c75c9"
+    },
+    {
+     "column": "striped",
+     "sha256": "a32a77bbd6cb2e1b"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Python",
+   "template": "serpent",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "37b34603d4bbbb39"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "3e5c464aeb5a95c2"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "2af579f269ca170c"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "dec41c35a53959d1"
+    },
+    {
+     "column": "striped",
+     "sha256": "ca3f989ff3bb9624"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Tree Frog",
+   "template": "hopper",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "a808e594e1d40e96"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "782cb0ca2ce81de6"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "cfc573035cdb7ca0"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "a2f5abf88cdf2f1d"
+    },
+    {
+     "column": "striped",
+     "sha256": "615c3e0129b45223"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Chimpanzee",
+   "template": "primate",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "e96d183aa7e17d91"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "5dced4e6ce6956b0"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "a8e551782c88221e"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "e02a1a0ec754ab16"
+    },
+    {
+     "column": "striped",
+     "sha256": "e96d183aa7e17d91"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": false
+  },
+  {
+   "earthName": "Starfish",
+   "template": "radial",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "1002acb6091ee8fc"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "7418dc9fca7972dd"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "f1c4403add1bfe52"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "70a4324c31c58adc"
+    },
+    {
+     "column": "striped",
+     "sha256": "d7024b3bfa70af41"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Tarantula",
+   "template": "arachnid",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "ff0456fd64c0aa3e"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "af28b84576088b18"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "38e56300c61d7ff0"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "ecf3dc0efd05fb97"
+    },
+    {
+     "column": "striped",
+     "sha256": "b37a26dc914e57dc"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Octopus",
+   "template": "cephalopod",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "3158e43a3006f530"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "7ebea7dd52b5431a"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "3ae23c717cf98ae1"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "046c0829944e3a89"
+    },
+    {
+     "column": "striped",
+     "sha256": "8cac286b4b07ab6c"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Fruit Bat",
+   "template": "flyer-membrane",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "25a4a00404452633"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "8a9d9214fb233fab"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "72e0165e36bf3f04"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "d87b1895cef0fdce"
+    },
+    {
+     "column": "striped",
+     "sha256": "5ec63457dd25d45b"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  },
+  {
+   "earthName": "Centipede",
+   "template": "myriapod",
+   "hasMasks": false,
+   "tiles": [
+    {
+     "column": "as painted",
+     "sha256": "22e8510a3725a43d"
+    },
+    {
+     "column": "morph seed 1",
+     "sha256": "47e778489b133654"
+    },
+    {
+     "column": "morph seed 2",
+     "sha256": "07209c3094ed0a9a"
+    },
+    {
+     "column": "morph seed 3",
+     "sha256": "0b982f29e26416c9"
+    },
+    {
+     "column": "striped",
+     "sha256": "cd6a2501624c886f"
+    }
+   ],
+   "morphsDistinct": true,
+   "stripedDiffers": true
+  }
+ ]
+}

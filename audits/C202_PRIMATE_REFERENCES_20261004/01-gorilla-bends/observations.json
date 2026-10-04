@@ -1,0 +1,12 @@
+{
+  "baseline": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla",
+  "changes": "Correct near knee from lower shin to visible bend; place feet at painted ankle/control region; refine short far-chain controls within the visible emergence; split thighs/shins at those source bends.",
+  "priorFailingStatic": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/static-01.json",
+  "independentSource": false,
+  "source": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/master.png",
+  "sourceSha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8",
+  "pixelsChanged": 0,
+  "sourceGeneration": false,
+  "staticAccepted": false,
+  "nativeQualified": false
+}

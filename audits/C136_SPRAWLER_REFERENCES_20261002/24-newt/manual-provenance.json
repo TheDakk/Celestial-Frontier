@@ -1,0 +1,11 @@
+{
+  "schema": "cf.c132-manual-reference/v1",
+  "masterSha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc",
+  "authoringSha256": "6186efefde5a9bfbe92ed442a3e5d7c716a97f808acb23b83d7eebb48d0af2a3",
+  "observationSource": "audits/C136_SPRAWLER_REFERENCES_20261002/manual-observations.mjs",
+  "observationSha256": "730000f6486bdadebd2004e0052463b277121903661b7a31fd15c2078b291b8f",
+  "sourcePacket": "audits/G2_C132_QUADRUPEDS_20261001/24-newt",
+  "origin": "Independent manual observations on the existing original; no coordinates read from any other authoring or fit.",
+  "limitations": "Four short sprawled limbs and flattened swimming tail are visible. No scales, claws or external pinnae are painted. Fore and hind toe counts are unclear or merged and remain an anatomical hold. Far limb roots are occluded by torso; their centres are interpretations. This is a separate smooth-skin reference candidate, not evidence that a scaled lizard reference works on amphibians. No intake or native scoring performed.",
+  "admission": "UNMEASURED. Existing original acceptance or refusal does not transfer to this new partition."
+}

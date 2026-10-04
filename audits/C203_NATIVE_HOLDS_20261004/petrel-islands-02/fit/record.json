@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Snow Petrel\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3729744155\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+    "seed": 3729744155,
+    "ownerId": "authored:archetype-sprint/c203-snow-petrel-proximal-feathers",
+    "earthName": "Snow Petrel"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3729744155,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 6,
+    "body": 6,
+    "loco": 16,
+    "trait": 18,
+    "size": 1,
+    "diet": 3,
+    "head": 2,
+    "limbs": 5,
+    "skin": 6,
+    "tail": 4,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 12,
+    "detail": 7,
+    "accent": 6,
+    "temper": 5,
+    "sense": 1,
+    "repro": 7,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Snow Petrel"
+  },
+  "geometry": {
+    "cutoutAssetHash": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7440191387559809,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5247208931419458,
+      0.5366826156299841
+    ],
+    "pelvis": [
+      0.45374800637958534,
+      0.5797448165869219
+    ],
+    "spine": [
+      0.5566188197767146,
+      0.5103668261562998
+    ],
+    "chest": [
+      0.6483253588516746,
+      0.4960127591706539
+    ],
+    "neck0": [
+      0.6586921850079744,
+      0.43779904306220097
+    ],
+    "neck1": [
+      0.6850079744816587,
+      0.38915470494417864
+    ],
+    "head": [
+      0.7185007974481659,
+      0.3492822966507177
+    ],
+    "beak": [
+      0.7854864433811802,
+      0.38516746411483255
+    ],
+    "legNearKnee": [
+      0.48484848484848486,
+      0.6578947368421053
+    ],
+    "legNearAnkle": [
+      0.4704944178628389,
+      0.7161084529505582
+    ],
+    "legNearFoot": [
+      0.5063795853269537,
+      0.7320574162679426
+    ],
+    "legFarKnee": [
+      0.5861244019138756,
+      0.6467304625199362
+    ],
+    "legFarAnkle": [
+      0.6124401913875598,
+      0.7057416267942583
+    ],
+    "legFarFoot": [
+      0.6467304625199362,
+      0.7177033492822966
+    ],
+    "wingNearRoot": [
+      0.5342902711323764,
+      0.44976076555023925
+    ],
+    "wingNearTip": [
+      0.2902711323763955,
+      0.44178628389154706
+    ],
+    "wingFarRoot": [
+      0.5733652312599681,
+      0.41068580542264754
+    ],
+    "wingFarTip": [
+      0.5940988835725678,
+      0.3253588516746411
+    ],
+    "tailFan": [
+      0.2982456140350877,
+      0.6044657097288676
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Standing source with two distinct actual foot supports; flight capability is not declared from the painting."
+  },
+  "coverage": {
+    "scope": "Independent source-pixel authoring of new C198 painting. No old masks rebound.",
+    "visibleFarWing": "Only the emergent painted far-wing base and its visible edge-on distal fan are represented; no unseen wing surface is synthesized.",
+    "controlFrames": "Axial body controls lie within visible body tissue and do not claim internal skeletal visibility.",
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "78212f7a57f55883b47a0bd4ec9a75734cf4032516e843fb3649f69a888d09ab",
+    "subjectSourceSha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": true,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.08301508180227576,
+      "spine": 0.12407944956832485,
+      "chest": 0.09282310352566105,
+      "neck0": 0.05912958504598603,
+      "neck1": 0.055306350508452035,
+      "head": 0.05207281568521373,
+      "beak": 0.07599224963764879,
+      "legFarKnee": 0.14835965373279222,
+      "legFarAnkle": 0.06461298851341196,
+      "legFarFoot": 0.03631673855418084,
+      "legNearKnee": 0.0841109374391108,
+      "legNearAnkle": 0.059957284646521176,
+      "legNearFoot": 0.0392697679497452,
+      "wingFarRoot": 0.11357688921818271,
+      "wingFarTip": 0.08780987059627293,
+      "wingNearRoot": 0.12305790565831572,
+      "wingNearTip": 0.2441494059729318,
+      "tailFan": 0.1574551256155149
+    },
+    "measures": {
+      "body": 0.21182871272376858,
+      "bone-min": 0.03631673855418084,
+      "bone-max": 0.2441494059729318,
+      "leg/torso:legFar": 1.1768441473062548,
+      "leg/torso:legNear": 0.8655011290865737,
+      "wing/torso": 0.9507056773605117
+    }
+  },
+  "recipeHash": "48f700390f17fc371bfb188ced51504ad7ca919581fa9574aabc211f95f8f542"
+}

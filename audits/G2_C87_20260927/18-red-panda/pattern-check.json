@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Red Panda",
+  "masterSha256": "3a60fe3e897e6b7516a6dbc36b5b14d39f0ca23e107c002a355f71639247cef1",
+  "required": [
+    "white face mask with rust tear-stripes below the eyes"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "white face mask with rust tear-stripes below the eyes",
+      "status": "PRESENT",
+      "observed": "Rust-red fur, white facial markings and ear margins, black belly/legs, and a complete ringed bushy tail. Four feet and both ear tips are separately visible. Upper far-leg roots overlap the body naturally; no cropped tip or extra limb apparent."
+    }
+  ]
+}

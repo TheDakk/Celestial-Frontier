@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-recipe.json",
+    "sha256": "4a7be6c8e6ecacf57e312f61905e32b8b77671be02a8a47499e528f196f8208b"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.png",
+        "sha256": "e6d234ccb0e9e8c3d4caec3cd0cfc88618f719afffb0d7ba6bf72076a016d5ee"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.png",
+        "sha256": "e6d234ccb0e9e8c3d4caec3cd0cfc88618f719afffb0d7ba6bf72076a016d5ee"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-mid.png",
+        "sha256": "68890bbd9dcde741683e55e3b42e80038e3b0ac8584f3af20b77f8b1902b3b04"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-mid.png",
+        "sha256": "dcb6b948ef8c54c216b71292c85ab96d04e45c4d553334110e1abf9691e8b507"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-near.png",
+        "sha256": "5a3302c01a136b3df82f70c091487b01a759db9bb8cd63f4a0883d53d8d4d4e4"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-near.png",
+        "sha256": "7bbeb8deecfc2990f734411b554921053fc7e103040bac2bef7ebd01d92d9c15"
+      }
+    }
+  ]
+}

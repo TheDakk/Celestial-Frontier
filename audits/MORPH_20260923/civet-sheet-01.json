@@ -1,0 +1,804 @@
+{
+ "schema": "cf.archetype-sheet/v1",
+ "earthName": "Civet",
+ "dir": "port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/",
+ "recipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+ "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+ "cardReceipt": {
+  "master": {
+   "width": 512,
+   "height": 512,
+   "scale": 0.4082934609250399,
+   "masterSha256": "6e4e2cdb3fb6eb31c3905a844c13176b467220f0bb55c137f558c0dadd3815e7",
+   "labelsSha256": "a2ada4ccfa28e7773634c622cfcda6edcba80465eaa66bf80f02373851681a5b",
+   "filter": "alpha-weighted box; labels nearest"
+  },
+  "labels": 22,
+  "landmarks": 31
+ },
+ "archetypeGenome": {
+  "_cradle": 1,
+  "_earthName": "Civet",
+  "accent": 3,
+  "behavior": 9,
+  "body": 13,
+  "color": 14,
+  "detail": 4,
+  "diet": 5,
+  "eyes": 5,
+  "form": 12,
+  "gen": 0,
+  "habitat": 5,
+  "head": 5,
+  "heat": 1,
+  "kingdom": "fauna",
+  "life": 5,
+  "limbs": 3,
+  "loco": 6,
+  "lumin": true,
+  "metab": 4,
+  "pattern": 0,
+  "repro": 7,
+  "seed": 3212817920,
+  "sense": 7,
+  "size": 4,
+  "skin": 8,
+  "tail": 1,
+  "temper": 1,
+  "trait": 14
+ },
+ "renders": 37,
+ "controls": {
+  "identityByteIdentical": true,
+  "paletteDistinct": true,
+  "allMasksLand": true,
+  "emissiveVisible": true,
+  "proportionLive": true,
+  "maskedLanding": [
+   {
+    "rowIndex": 0,
+    "patterns": [
+     {
+      "pattern": "striped",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "spotted",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "banded",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "mottled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "marbled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "eye-spotted",
+      "differsFromPlain": true
+     }
+    ]
+   },
+   {
+    "rowIndex": 1,
+    "patterns": [
+     {
+      "pattern": "striped",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "spotted",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "banded",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "mottled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "marbled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "eye-spotted",
+      "differsFromPlain": true
+     }
+    ]
+   },
+   {
+    "rowIndex": 2,
+    "patterns": [
+     {
+      "pattern": "striped",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "spotted",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "banded",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "mottled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "marbled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "eye-spotted",
+      "differsFromPlain": true
+     }
+    ]
+   }
+  ]
+ },
+ "luminFinding": {
+  "archetypeOwnLumin": true,
+  "inertOnEveryPattern": true,
+  "liveAgainstNonLuminArchetype": true,
+  "perPattern": [
+   {
+    "pattern": "plain",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "striped",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "spotted",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "banded",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "mottled",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "iridescent",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "marbled",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "eye-spotted",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   }
+  ]
+ },
+ "paletteSheet": {
+  "file": "civet-palette-sheet-01.png",
+  "width": 1810,
+  "height": 1810,
+  "tile": 440,
+  "tiles": [
+   {
+    "tile": 0,
+    "label": "archetype as painted (its own genome)",
+    "genome": {
+     "_cradle": 1,
+     "_earthName": "Civet",
+     "accent": 3,
+     "behavior": 9,
+     "body": 13,
+     "color": 14,
+     "detail": 4,
+     "diet": 5,
+     "eyes": 5,
+     "form": 12,
+     "gen": 0,
+     "habitat": 5,
+     "head": 5,
+     "heat": 1,
+     "kingdom": "fauna",
+     "life": 5,
+     "limbs": 3,
+     "loco": 6,
+     "lumin": true,
+     "metab": 4,
+     "pattern": 0,
+     "repro": 7,
+     "seed": 3212817920,
+     "sense": 7,
+     "size": 4,
+     "skin": 8,
+     "tail": 1,
+     "temper": 1,
+     "trait": 14
+    },
+    "identity": true,
+    "base": {
+     "hue": null,
+     "chroma": 1
+    },
+    "accent": {
+     "hue": null,
+     "chroma": 1
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 179369,
+    "sha256": "6793dd965c3706e2f8acdb3cc85053fa2b3d8dd24bb4d51d07645532ab6932a5"
+   },
+   {
+    "tile": 1,
+    "label": "seed 8919",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 8919,
+     "color": 5,
+     "accent": 14
+    },
+    "identity": false,
+    "base": {
+     "hue": 236.46799999999996,
+     "chroma": 0.95
+    },
+    "accent": {
+     "hue": 145.224,
+     "chroma": 0.85
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 179046,
+    "sha256": "d0ab732ff1452319f2266c7715fa6f4fce0ba40c39827135845594029f334bdb"
+   },
+   {
+    "tile": 2,
+    "label": "seed 16838",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 16838,
+     "color": 10,
+     "accent": 8
+    },
+    "identity": false,
+    "base": {
+     "hue": null,
+     "chroma": 0.25
+    },
+    "accent": {
+     "hue": 216.144,
+     "chroma": 0.45
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 158309,
+    "sha256": "683017fb91ccf064067a944117854525d1b452b63ffdb277cae3e92ce539464a"
+   },
+   {
+    "tile": 3,
+    "label": "seed 24757",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 24757,
+     "color": 15,
+     "accent": 2
+    },
+    "identity": false,
+    "base": {
+     "hue": 294.164,
+     "chroma": 0.7
+    },
+    "accent": {
+     "hue": 279.79999999999995,
+     "chroma": 1
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 179493,
+    "sha256": "a2a98c2d00904ffb9576ee5174134ca451b0a2533bab755ba88ebad3515c9026"
+   },
+   {
+    "tile": 4,
+    "label": "seed 32676",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 32676,
+     "color": 3,
+     "accent": 13
+    },
+    "identity": false,
+    "base": {
+     "hue": 48.70799999999997,
+     "chroma": 1.1
+    },
+    "accent": {
+     "hue": 45.72800000000001,
+     "chroma": 0.8
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 179759,
+    "sha256": "80890db1d4d1ccf1f77d70edaffa546df20563559b1b2af1b250158d4eadbc50"
+   },
+   {
+    "tile": 5,
+    "label": "seed 40595",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 40595,
+     "color": 8,
+     "accent": 7
+    },
+    "identity": false,
+    "base": {
+     "hue": 199.04399999999998,
+     "chroma": 0.45
+    },
+    "accent": {
+     "hue": 22.668000000000006,
+     "chroma": 0.95
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 172070,
+    "sha256": "84a3a98bb4aaf31ab5ec844f743171aca35149ef60c12410e198b919b869559c"
+   },
+   {
+    "tile": 6,
+    "label": "seed 48514",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 48514,
+     "color": 13,
+     "accent": 1
+    },
+    "identity": false,
+    "base": {
+     "hue": 32.22800000000001,
+     "chroma": 0.8
+    },
+    "accent": {
+     "hue": 351.39200000000005,
+     "chroma": 1.1
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 178760,
+    "sha256": "9aeeca58fb6293fce8a06dfa6d7bb352b2ab401432518ddee6d89b325ef7df81"
+   },
+   {
+    "tile": 7,
+    "label": "seed 56433",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 56433,
+     "color": 1,
+     "accent": 12
+    },
+    "identity": false,
+    "base": {
+     "hue": 347.528,
+     "chroma": 1.1
+    },
+    "accent": {
+     "hue": 193.25599999999997,
+     "chroma": 0.9
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 180939,
+    "sha256": "00ee6f5870ebb762bd2ef296149e7519a336c2a27eaaf62de7aff36f3cb15be9"
+   },
+   {
+    "tile": 8,
+    "label": "seed 64352",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 64352,
+     "color": 6,
+     "accent": 6
+    },
+    "identity": false,
+    "base": {
+     "hue": 29.144000000000005,
+     "chroma": 1.05
+    },
+    "accent": {
+     "hue": 42.343999999999994,
+     "chroma": 1.05
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 181862,
+    "sha256": "d9d33063dc9348422c1f19dfc86d5066f7ab5e9971f0f65fe18ab92f3dfdbc24"
+   },
+   {
+    "tile": 9,
+    "label": "seed 72271",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 72271,
+     "color": 11,
+     "accent": 0
+    },
+    "identity": false,
+    "base": {
+     "hue": 308.5319999999999,
+     "chroma": 1.1
+    },
+    "accent": {
+     "hue": 139.77999999999997,
+     "chroma": 1.05
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 184611,
+    "sha256": "7cee21dd98ee26a496a3a78bff4c40a82f38d1397947a62795dde8c39a13fc2b"
+   },
+   {
+    "tile": 10,
+    "label": "seed 80190",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 80190,
+     "color": 16,
+     "accent": 11
+    },
+    "identity": false,
+    "base": {
+     "hue": null,
+     "chroma": 0.35
+    },
+    "accent": {
+     "hue": 316.41599999999994,
+     "chroma": 1.1
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 169444,
+    "sha256": "e593b2ad8fbd27034e7e43ab0f01cfd5644164cfdcfc22b7ea86ad8fcd660630"
+   },
+   {
+    "tile": 11,
+    "label": "seed 88109",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 88109,
+     "color": 4,
+     "accent": 5
+    },
+    "identity": false,
+    "base": {
+     "hue": 184.216,
+     "chroma": 1
+    },
+    "accent": {
+     "hue": 243.164,
+     "chroma": 0.95
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 179951,
+    "sha256": "f5290ab9dbf267ffadfc62dbb592f061c9c4c247d76928126ee709a0a2c08a2f"
+   },
+   {
+    "tile": 12,
+    "label": "seed 96028",
+    "genome": {
+     "_earthName": "Civet",
+     "seed": 96028,
+     "color": 9,
+     "accent": 16
+    },
+    "identity": false,
+    "base": {
+     "hue": null,
+     "chroma": 0.3
+    },
+    "accent": {
+     "hue": null,
+     "chroma": 0.35
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 151968,
+    "sha256": "eace874aa94e15c3d854538fd2fda193003f932ba95927a2d140370b60b18d61"
+   }
+  ]
+ },
+ "markingsSheet": {
+  "file": "civet-markings-sheet-01.png",
+  "width": 1128,
+  "height": 428,
+  "tile": 132,
+  "columns": [
+   "plain",
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "iridescent",
+   "marbled",
+   "eye-spotted"
+  ],
+  "tiles": [
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "plain",
+    "masked": false,
+    "encodedBytes": 18912,
+    "sha256": "08fc40a849f5a160c6a57934b7bd32bd3bd267498e1bb82c533560c0ecab2441"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "striped",
+    "masked": true,
+    "encodedBytes": 19009,
+    "sha256": "a73d12c89066ce345f60f336905a6980708de0baa7234cb184e0713b1b8401a4"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "spotted",
+    "masked": true,
+    "encodedBytes": 19047,
+    "sha256": "5d5e345189e195039145f6fb24e1c8e3a54b70b4ec2ec84cb2de8896ca28aaa1"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "banded",
+    "masked": true,
+    "encodedBytes": 19003,
+    "sha256": "d432e3b4c611a0968af8e742205ff9bb0ed35472d541803568cb6d970433caf1"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "mottled",
+    "masked": true,
+    "encodedBytes": 19021,
+    "sha256": "5e0eb28ceeb6dbb497e810df252765e2ba58a2a6d300d1fdb58851933bee6597"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "iridescent",
+    "masked": false,
+    "encodedBytes": 19249,
+    "sha256": "af94f30c5908592ffac5488803809b880a96526538d0fcfb64d7e8dc498a7a07"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "marbled",
+    "masked": true,
+    "encodedBytes": 19032,
+    "sha256": "2fc110b2347a3c002450853f3c891cf3cd9065fae4fbfb44b6454cba77422280"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "eye-spotted",
+    "masked": true,
+    "encodedBytes": 18906,
+    "sha256": "2a02b09f064b8e2fb3e9ecb061c52703857168d60c160044686a22b102c51f8c"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "plain",
+    "masked": false,
+    "encodedBytes": 18873,
+    "sha256": "f79cdc97767fefe24eeaf1185d77a44c9bedda0e338e81b5e0a9e6ee1688e6ce"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "striped",
+    "masked": true,
+    "encodedBytes": 18996,
+    "sha256": "197151ae4e656cff1c4682731a9aefa4e98277b386d3986b5dc6dcbc2be7da1b"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "spotted",
+    "masked": true,
+    "encodedBytes": 18999,
+    "sha256": "95bf3f3739c92849ddb20222e92edf47fe453b1198d16b6817c2e69032996dc3"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "banded",
+    "masked": true,
+    "encodedBytes": 18997,
+    "sha256": "7c2b634f96ec93b74896fb25ff725ab7c0de9fb72a788f3c7792b5b9e99fa578"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "mottled",
+    "masked": true,
+    "encodedBytes": 18959,
+    "sha256": "33fce4dffe0aa556f86e195a920ea1b91d61d8c1c6dae941275792dcb355d741"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "iridescent",
+    "masked": false,
+    "encodedBytes": 19075,
+    "sha256": "4958113b55a24558d964a61453130be5ba18d528efe86c4c0645c54af881d459"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "marbled",
+    "masked": true,
+    "encodedBytes": 18869,
+    "sha256": "38fd5ccbfc9058c9525ef9985c3c24a1342f1c7345c1e69e872b1e770462c6c5"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "eye-spotted",
+    "masked": true,
+    "encodedBytes": 18878,
+    "sha256": "3ff844fa08e0c494a406c728f8d4d87877dcb83c5f216ce7ed173400dee48ca3"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "plain",
+    "masked": false,
+    "encodedBytes": 19474,
+    "sha256": "fc6b85341994f6c3877f78a641a5a825fc4fb97ac78a6e82f9a2a64cf62268b9"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "striped",
+    "masked": true,
+    "encodedBytes": 19565,
+    "sha256": "ad783b27607e24649e83976483bd2cb2354f3b6f13950e385d496d987e57a9bd"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "spotted",
+    "masked": true,
+    "encodedBytes": 19578,
+    "sha256": "61529e9c891f9d83de3fb6feae986d76c18eb72da2b19e86e701d14832921c3e"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "banded",
+    "masked": true,
+    "encodedBytes": 19522,
+    "sha256": "3e4a91bd16912d7451c8699d679cb5ace28aecc3c669171e71de31966ebbe1a0"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "mottled",
+    "masked": true,
+    "encodedBytes": 19525,
+    "sha256": "33f4a738d34167d38468a7541ebf7570afdb52ca632f35ff37a2f1ac07905785"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "iridescent",
+    "masked": false,
+    "encodedBytes": 19863,
+    "sha256": "198ace5395cbbf11950c654d210c2d073cb5c04c867e9a0f9fffb2317fc265fe"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "marbled",
+    "masked": true,
+    "encodedBytes": 19568,
+    "sha256": "69c02b56324767efcddbd9357eb4bd9f045a0fe45005192e7449d652150a2493"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "eye-spotted",
+    "masked": true,
+    "encodedBytes": 19486,
+    "sha256": "a13d05184b3054ca2461e88558cf614588f552d97e36ad4a72ec62ad66734d0c"
+   }
+  ]
+ }
+}

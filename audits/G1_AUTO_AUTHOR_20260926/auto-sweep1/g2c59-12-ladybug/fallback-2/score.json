@@ -1,0 +1,10 @@
+{
+ "id": "g2c59-12-ladybug",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part leg-front-near (legFrontNearKnee) covers 26% paint (reference 88%)",
+  "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

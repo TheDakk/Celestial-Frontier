@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Wolverine",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "b5b42e7b1b55c5f304e48957b6f60520aa35692a33cfc0c1acf2c2d4cd1aeba3",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "small-clawed-mammal",
+  "authoringCreated": false,
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "basePromptSha256": "e90c89bb21b232c436f9f56f80bc3816a4e269c38635a5c033f064607e7d0cd6",
+  "batchCompilerSha256": "217d164bd9b882cfb517865862c3d29cd67457de72b6db41000d5890d140b586",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Separate the actual four thick short legs and huge clawed paws from the natural fur outline, preserving the heavy bear-like build, humped shoulders, real pale stripe along each flank and bushy tail. A slight natural stance separation reveals limb paths without clipping fur, inventing joints or adding legs. Prior authoring leaves limb-down/fringe paint unexplained.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_C59_20260926/pilot.json",
+        "id": "06-wolverine",
+        "master": "audits/G2_C59_20260926/06-wolverine/master.png",
+        "packet": "audits/G2_C59_20260926/06-wolverine"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_C59_20260926/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Separate the actual four thick short legs and huge clawed paws from the natural fur outline, preserving the heavy bear-like build, humped shoulders, real pale stripe along each flank and bushy tail. A slight natural stance separation reveals limb paths without clipping fur, inventing joints or adding legs. Prior authoring leaves limb-down/fringe paint unexplained.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

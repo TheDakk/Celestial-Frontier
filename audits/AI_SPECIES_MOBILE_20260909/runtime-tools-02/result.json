@@ -1,0 +1,50 @@
+{
+  "startedAt": "2026-09-09T16:39:01.701429+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "label": "preview-controls",
+      "command": [
+        "node",
+        "--test",
+        "tools/local-image-generation/game-preview-server.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "prompt-preflight",
+      "command": [
+        "node",
+        "/private/tmp/cf-species-prompt-preflight-02.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "runtime-build",
+      "command": [
+        "node",
+        "tools/local-image-generation/runtime-pack.mjs",
+        "build",
+        "--output=/private/tmp/cf-runtime-pack-20260909-species-01"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "runtime-verify",
+      "command": [
+        "node",
+        "tools/local-image-generation/runtime-pack.mjs",
+        "verify",
+        "--output=/private/tmp/cf-runtime-pack-20260909-species-01",
+        "--sha256=ddc09e2128a6fbfea11b3c6b0596359eb97fd7f18198fed38c74b3736502476b"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "runtime": {
+    "directory": "/private/tmp/cf-runtime-pack-20260909-species-01",
+    "manifestSha256": "ddc09e2128a6fbfea11b3c6b0596359eb97fd7f18198fed38c74b3736502476b",
+    "bytes": 37451014
+  },
+  "finishedAt": "2026-09-09T16:39:02.953923+00:00"
+}

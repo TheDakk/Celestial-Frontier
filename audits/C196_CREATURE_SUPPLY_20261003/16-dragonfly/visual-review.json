@@ -1,0 +1,28 @@
+{
+  "name": "Dragonfly",
+  "masterSha256": "0350fe20c53d3e4110c83d4b01599cb1da51352b10c6c015bd34775113e90b1d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Parent full-size original review: Long segmented blue/black abdomen, separate distal leg chains and veined wings. Six distal leg tips appear visible, but paired roots overlap. Only three full wing outlines are readily separable; fourth wing ownership and the relatively long antenna-like strokes need species/anatomy review. All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met. Observed named pigment/material features only; not pattern-instrument acceptance. HELD_WING_ROOT_REVIEW; no anatomy/native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 180,
+      "y0": 295,
+      "x1": 1044,
+      "y1": 944
+    },
+    "margins": {
+      "left": 180,
+      "right": 209,
+      "top": 295,
+      "bottom": 309
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "ruledOut": [
+    "Original renderer did compile paint skin and ARAP; it did not simply ignore the field.",
+    "Original Python binding has no rigidParentFrame declarations."
+  ],
+  "readOnlyCommandErrors": [
+    {
+      "receipt": "637237",
+      "exitCode": 2,
+      "reason": "One nonexistent guessed family-actions.mjs path; actual owner found in apps/game/src/motion/family-actions.ts"
+    },
+    {
+      "receipt": "6cb837",
+      "exitCode": 1,
+      "reason": "Guessed static-entry.ts path; corrected to runner-declared static.ts in bdcfff"
+    }
+  ],
+  "rootCause": "Not yet established"
+}

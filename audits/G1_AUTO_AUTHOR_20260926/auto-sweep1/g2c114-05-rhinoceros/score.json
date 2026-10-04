@@ -1,0 +1,11 @@
+{
+ "id": "g2c114-05-rhinoceros",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "materials-unknown: no species-group material for profile rhino; the motion kit refuses an unclassified surface",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 7% paint (reference 57%)",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 8% paint (reference 23%)"
+ ],
+ "semanticPresence": null
+}

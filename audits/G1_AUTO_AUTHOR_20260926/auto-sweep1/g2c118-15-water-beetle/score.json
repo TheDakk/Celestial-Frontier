@@ -1,0 +1,9 @@
+{
+ "id": "g2c118-15-water-beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 31%)"
+ ],
+ "semanticPresence": null
+}

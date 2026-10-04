@@ -1,0 +1,4 @@
+{
+  "stage": "authored-parts",
+  "error": "Error: Part masks: part budget\n    at requireValue (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cutAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:21:2)\n    at async buildAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-authored-parts.mjs:34:15)\n    at async file://~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/intake-retained.mjs:112:16"
+}

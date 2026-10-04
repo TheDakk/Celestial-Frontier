@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/d16-compendium-reveal-outcome.test.ts (8 tests | 1 failed | 7 skipped) 34ms
+   × idle reveal queue owns no input listeners; pending pulses cannot revive a disposed queue 34ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/d16-compendium-reveal-outcome.test.ts > idle reveal queue owns no input listeners; pending pulses cannot revive a disposed queue
+AssertionError: expected [ [ 'click', …(2) ], …(1) ] to have a length of +0 but got 2
+
+- Expected
++ Received
+
+- 0
++ 2
+
+ ❯ tests/d16-compendium-reveal-outcome.test.ts:154:96
+    152|   const {d,doc}=dom();const add=vi.spyOn(doc,'addEventListener'),remov…
+    153|   let blocked=true;const q=new CompendiumRevealQueueV1({document:doc,b…
+    154|   const pulses=()=>add.mock.calls.filter(c=>c[0]==='click'||c[0]==='ke…
+       |                                                                                                ^
+    155|   const e={logicalId:'queued',name:'Queued',kind:'Fauna',hybrid:false,…
+    156|   doc.body.click();blocked=false;await settle();expect(q.state().showi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 skipped (8)
+   Start at  13:17:31
+   Duration  340ms (transform 17ms, setup 0ms, import 199ms, tests 34ms, environment 0ms)
+

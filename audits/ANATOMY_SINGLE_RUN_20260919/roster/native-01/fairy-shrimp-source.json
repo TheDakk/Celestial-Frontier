@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2594014342,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 11,
+    "body": 2,
+    "loco": 5,
+    "trait": 22,
+    "size": 4,
+    "diet": 1,
+    "head": 6,
+    "limbs": 4,
+    "skin": 8,
+    "tail": 3,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 2,
+    "habitat": 12,
+    "detail": 9,
+    "accent": 2,
+    "temper": 9,
+    "sense": 0,
+    "repro": 3,
+    "life": 1,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fairy Shrimp"
+  },
+  "observation": null
+}

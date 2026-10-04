@@ -1,0 +1,307 @@
+{
+  "schema": "cf.c15-library-phone-diagnostic/v1",
+  "scope": "Seven retained library pairs, current source. Not unadmitted new paintings, all Cartesian pairs, picker smoke or real iPhone acceptance.",
+  "rows": [
+    {
+      "name": "python-vs-tarantula",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "DIAGNOSTIC_PASS",
+      "capture": {
+        "frames": 602,
+        "durationMs": 10016.3,
+        "cpuP95Ms": 3.5,
+        "frameDeltaP95Ms": 16.700000000000728,
+        "refusalsAtEnd": {
+          "left": 0,
+          "right": 0
+        },
+        "lastRefusal": {
+          "left": null,
+          "right": null
+        },
+        "refusalLog": [],
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.096615"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1024,
+          "height": 576
+        }
+      },
+      "scriptSha256": "55222bf7f4999c58cb99ab8acd1aaacdbfba884d143974175662867fa59c8cc8"
+    },
+    {
+      "name": "eagle-vs-beetle",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "DIAGNOSTIC_PASS",
+      "capture": {
+        "frames": 602,
+        "durationMs": 10016.2,
+        "cpuP95Ms": 3.8000000715255737,
+        "frameDeltaP95Ms": 16.700000000000728,
+        "refusalsAtEnd": {
+          "left": 0,
+          "right": 0
+        },
+        "lastRefusal": {
+          "left": null,
+          "right": null
+        },
+        "refusalLog": [],
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.097833"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1024,
+          "height": 576
+        }
+      },
+      "scriptSha256": "e1820143adfc86d63683df2a48af47f48e08d2eaf3bc4b46ee53d8012da9430a"
+    },
+    {
+      "name": "chimpanzee-vs-centipede",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "DIAGNOSTIC_PASS",
+      "capture": {
+        "frames": 596,
+        "durationMs": 10016.300000000001,
+        "cpuP95Ms": 10.600000023841858,
+        "frameDeltaP95Ms": 16.700000000000728,
+        "refusalsAtEnd": {
+          "left": 0,
+          "right": 0
+        },
+        "lastRefusal": {
+          "left": null,
+          "right": null
+        },
+        "refusalLog": [],
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "599"
+            }
+          ],
+          "format": {
+            "duration": "10.090916"
+          }
+        },
+        "encodedFrames": {
+          "frames": 599,
+          "width": 1024,
+          "height": 576
+        }
+      },
+      "scriptSha256": "6d16d0d6e71c5bc2a7718717af77fabd1d7034445af8049d82d3b8feecdde6aa"
+    },
+    {
+      "name": "treefrog-vs-fruitbat",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "DIAGNOSTIC_PASS",
+      "capture": {
+        "frames": 602,
+        "durationMs": 10016.2,
+        "cpuP95Ms": 3.700000047683716,
+        "frameDeltaP95Ms": 16.700000000000728,
+        "refusalsAtEnd": {
+          "left": 0,
+          "right": 0
+        },
+        "lastRefusal": {
+          "left": null,
+          "right": null
+        },
+        "refusalLog": [],
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.095023"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1024,
+          "height": 576
+        }
+      },
+      "scriptSha256": "ff6ae6dd87a5cebaa43b1a37fcf28027e530402d928f35f53d5385cdb1cd2d11"
+    },
+    {
+      "name": "salmon-vs-octopus",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "DIAGNOSTIC_PASS",
+      "capture": {
+        "frames": 602,
+        "durationMs": 10016.4,
+        "cpuP95Ms": 4.600000023841858,
+        "frameDeltaP95Ms": 16.700000000000728,
+        "refusalsAtEnd": {
+          "left": 0,
+          "right": 0
+        },
+        "lastRefusal": {
+          "left": null,
+          "right": null
+        },
+        "refusalLog": [],
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.094134"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1024,
+          "height": 576
+        }
+      },
+      "scriptSha256": "428362688281e1fe6cb6c8273a6d133d0386647965138a32e3112695dd87bc18"
+    },
+    {
+      "name": "eagle-vs-salmon",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "DIAGNOSTIC_PASS",
+      "capture": {
+        "frames": 602,
+        "durationMs": 10016.3,
+        "cpuP95Ms": 4.399999976158142,
+        "frameDeltaP95Ms": 16.700000000000728,
+        "refusalsAtEnd": {
+          "left": 0,
+          "right": 0
+        },
+        "lastRefusal": {
+          "left": null,
+          "right": null
+        },
+        "refusalLog": [],
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.087382"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1024,
+          "height": 576
+        }
+      },
+      "scriptSha256": "53285a19622d98827306530a18d199bc0fabb07af130d5f81c2279437e6ee31d"
+    },
+    {
+      "name": "crab-vs-starfish",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "DIAGNOSTIC_PASS",
+      "capture": {
+        "frames": 602,
+        "durationMs": 10016.4,
+        "cpuP95Ms": 6.5,
+        "frameDeltaP95Ms": 16.700000000000728,
+        "refusalsAtEnd": {
+          "left": 0,
+          "right": 0
+        },
+        "lastRefusal": {
+          "left": null,
+          "right": null
+        },
+        "refusalLog": [],
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.092189"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1024,
+          "height": 576
+        }
+      },
+      "scriptSha256": "63550d3fa6fdc114d327ebb15f2a93424a68794f3d882e1e4eaaa396c105ce7f"
+    }
+  ]
+}

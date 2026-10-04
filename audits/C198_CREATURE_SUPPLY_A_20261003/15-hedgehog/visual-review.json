@@ -1,0 +1,28 @@
+{
+  "name": "Hedgehog",
+  "masterSha256": "60677ffdb14c8afac6e225b99d758c414825ce3262fbd9e89de0945c4c90711b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: dense cream/dark dorsal spines, furry pale face and underside, dark tapered nose, two ear outlines and four separate feet. Tail is not independently visible; far-ear base and upper roots remain covered. Source spines and fringe need ownership review; no claimed complete hidden-tail anatomy.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 276,
+      "y0": 362,
+      "x1": 1023,
+      "y1": 875
+    },
+    "margins": {
+      "left": 276,
+      "right": 230,
+      "top": 362,
+      "bottom": 378
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

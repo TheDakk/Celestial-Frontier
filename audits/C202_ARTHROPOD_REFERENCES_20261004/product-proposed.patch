@@ -1,0 +1,153 @@
+diff --git a/port/v2/apps/game/src/motion/compact-myriapod.test.ts b/port/v2/apps/game/src/motion/compact-myriapod.test.ts
+index 4e935727e..ecd90448f 100644
+--- a/port/v2/apps/game/src/motion/compact-myriapod.test.ts
++++ b/port/v2/apps/game/src/motion/compact-myriapod.test.ts
+@@ -33,7 +33,7 @@ it('declares 63 joints, 31 fixed sockets, 28 walking contacts and a 32-part whol
+ it('rejects malformed, ambiguous, unsupported and over-budget counted anatomy',()=>{
+  const invalid=[null,[],{},14,{walkingLegPairs:14},{walkingLegPairs:14,ultimateLegPairs:1,arms:2},{legPairs:15},
+   ...[0,-1,1.5,NaN,Infinity,'14',true].map(walkingLegPairs=>({walkingLegPairs,ultimateLegPairs:1})),
+-  ...[0,2,1.5,'1',null].map(ultimateLegPairs=>({walkingLegPairs:14,ultimateLegPairs}))];
++  ...[-1,2,1.5,'1',null].map(ultimateLegPairs=>({walkingLegPairs:14,ultimateLegPairs}))];
+  for(const appendages of invalid){const a={...presence(),appendages}as AnatomyPresence;expect(()=>appendageCounts('myriapod',a)).toThrow('Anatomy inventory');expect(()=>resolveAnatomyInventory(familyContract('myriapod'),a)).toThrow('Anatomy inventory');}
+  expect(()=>resolveAnatomyInventory(familyContract('myriapod'),presence(15))).toThrow('64-joint budget exceeded: 67');
+  expect(()=>resolveAnatomyInventory(familyContract('myriapod'),{...presence(),schema:'cf.anatomy-presence/v1'})).toThrow('invalid presence');
+diff --git a/port/v2/apps/game/src/motion/family-actions.ts b/port/v2/apps/game/src/motion/family-actions.ts
+index 618c3ac59..734873697 100644
+--- a/port/v2/apps/game/src/motion/family-actions.ts
++++ b/port/v2/apps/game/src/motion/family-actions.ts
+@@ -216,10 +216,10 @@ const MYRIAPOD = fauna({
+ /** Compact rigid-trunk articulation: all walking limbs remain two-link;
+  * motion travels through source steps, while the long trunk stays level.
+  * The ultimate pair senses/fans behind the body and is not a stance foot. */
+-function compactMyriapodActions(pairs:number):Readonly<Record<string,MotionAction>>{
++function compactMyriapodActions(pairs:number,ultimatePairs:number):Readonly<Record<string,MotionAction>>{
+  const legs=Array.from({length:pairs},(_,i)=>['leg'+i+'Far','leg'+i+'Near']).flat();
+  const wave=(k:number,f:number):J=>Object.fromEntries(legs.flatMap((id,i)=>{const sign=(Math.floor(i/2)+i%2)%2?1:-1;return [[id+'Knee',k*sign],[id+'Foot',f*sign]];}));
+- const ultimate=(v:number):J=>({ultimateFar:-v,ultimateNear:v});
++ const ultimate=(v:number):J=>ultimatePairs===1?{ultimateFar:-v,ultimateNear:v}:{};
+  const take=(j:J,dx=0,dy=0)=>P(1,'sine-in-out',j,dx,dy);
+  return fauna({
+   idle:[{...ant(-3),...ultimate(2)},{head:-2},{...ant(3),...ultimate(-2)},0,-.001,-.002],
+@@ -337,7 +337,7 @@ export function actionsFor(templateId:string,anatomy?:AnatomyPresence):Readonly<
+  const branches=plantBranchCount(templateId,anatomy);
+  if(branches!==null)return plant(k=>wsway(k,branches),Object.fromEntries(Array.from({length:branches},(_,i)=>['leaf'+i,i%2?-30:30])));
+  const counts=appendageCounts(templateId,anatomy);
+- if(counts&&'walkingLegPairs' in counts)return compactMyriapodActions(counts.walkingLegPairs);
++ if(counts&&'walkingLegPairs' in counts)return compactMyriapodActions(counts.walkingLegPairs,counts.ultimateLegPairs);
+  if(counts)return Object.freeze({...templateId==='radial'?radialActions(counts.arms):cephalopodActions(counts.arms,counts.feedingTentacles),...ADDITIONAL_ACTIONS[templateId]});
+  return ACTIONS_BY_TEMPLATE[templateId as 'quadruped'|FamilyTemplateId]??specializedActions(templateId);
+ }
+diff --git a/port/v2/packages/art/src/painter-topology.ts b/port/v2/packages/art/src/painter-topology.ts
+index 4eac6f875..d1906fe0f 100644
+--- a/port/v2/packages/art/src/painter-topology.ts
++++ b/port/v2/packages/art/src/painter-topology.ts
+@@ -41,7 +41,7 @@ export function emitPainterTopology(context:ArtContext2D,value:PainterTopology):
+  }
+  const counts=appendageCounts(value.family,value.anatomy);
+  if(counts&&'walkingLegPairs' in counts){
+-  const expected=[...Array.from({length:counts.walkingLegPairs},(_,i)=>['leg'+i+'Far','leg'+i+'Near']).flat(),'ultimateFar','ultimateNear'];
++  const expected=[...Array.from({length:counts.walkingLegPairs},(_,i)=>['leg'+i+'Far','leg'+i+'Near']).flat(),...(counts.ultimateLegPairs===1?['ultimateFar','ultimateNear']:[])];
+   const actual=value.features.filter(f=>f.kind==='leg');
+   if(actual.length!==expected.length||!expected.every(id=>actual.some(f=>f.id===id)))throw Error('Painter topology: count/feature mismatch leg');
+  }else if(counts){
+diff --git a/port/v2/tools/creature-animation/family-contracts.d.mts b/port/v2/tools/creature-animation/family-contracts.d.mts
+index 0f7c7023f..e15f070ae 100644
+--- a/port/v2/tools/creature-animation/family-contracts.d.mts
++++ b/port/v2/tools/creature-animation/family-contracts.d.mts
+@@ -1,6 +1,6 @@
+ import type {SkeletonDefinition} from './skeleton-pose.mjs';
+ export interface FamilyContract extends SkeletonDefinition {
+- readonly id:string;readonly version:number;readonly clipSetId:string;readonly joints:readonly string[];readonly anatomyModel?:'myriapod-rigid-trunk-v1';
++ readonly id:string;readonly version:number;readonly clipSetId:string;readonly joints:readonly string[];readonly anatomyModel?:'myriapod-rigid-trunk-v1'|'insect-observed-sockets-v1';
+  readonly legs:readonly string[];readonly hiddenChains?:readonly string[];readonly hiddenJoints?:readonly string[];
+  readonly contactStance?:{readonly default:'all'|'hind'|'none';readonly swingLift?:'toward-socket';readonly travelSubsteps?:Readonly<Partial<Record<'hit'|'dodge'|'tame',2>>>;readonly hind?:readonly string[];readonly gaits?:Readonly<Record<string,'alternating'|'bounding'>>;readonly travel?:Readonly<Record<string,'source-steps'>>;readonly actions:Readonly<Record<string,'all'|'hind'|'none'>>};
+  readonly limitsDeg:Readonly<Record<string,{min:number;max:number}>>;
+diff --git a/port/v2/tools/creature-animation/fixed-attachments.mjs b/port/v2/tools/creature-animation/fixed-attachments.mjs
+index 0ee6add7c..2cf6a458e 100644
+--- a/port/v2/tools/creature-animation/fixed-attachments.mjs
++++ b/port/v2/tools/creature-animation/fixed-attachments.mjs
+@@ -1,16 +1,24 @@
+ /** Source-authored fixed sockets carry no pose channel or extra joint. */
+-const MODEL='myriapod-rigid-trunk-v1';
++const MODEL='myriapod-rigid-trunk-v1',INSECT_MODEL='insect-observed-sockets-v1';
++const INSECT_LEGS=['legFrontFar','legFrontNear','legMidFar','legMidNear','legHindFar','legHindNear'];
+ const need=(ok,reason)=>{if(!ok)throw Error('Fixed attachments: '+reason);};
+ const object=v=>v!==null&&typeof v==='object'&&!Array.isArray(v)&&[Object.getPrototypeOf({}),null].includes(Object.getPrototypeOf(v));
+ const exact=(v,keys)=>Reflect.ownKeys(v).length===keys.length&&keys.every(k=>Object.hasOwn(v,k));
+ function expected(definition){
++ if(definition?.anatomyModel===INSECT_MODEL){
++  need(definition.id==='insect','unsupported anatomy model');
++  const parents=new Map(definition.graph),legs=definition.legs;
++  need(Array.isArray(legs)&&legs.length===6&&new Set(legs).size===6&&INSECT_LEGS.every(id=>legs.includes(id)&&parents.get(id+'Knee')==='thorax'&&parents.get(id+'Foot')===id+'Knee'),'insect walking socket graph mismatch');
++  return legs.map(id=>id+'Knee');
++ }
+  need(definition?.id==='myriapod'&&definition.anatomyModel===MODEL,'unsupported anatomy model');
+  need(Array.isArray(definition.graph)&&Array.isArray(definition.legs)&&definition.legs.length>0,'compact graph and walking legs required');
+  const parents=new Map(definition.graph),legs=definition.legs;
+  need(new Set(legs).size===legs.length&&legs.every(id=>typeof id==='string'&&/^leg\d+(Far|Near)$/.test(id)&&parents.get(id+'Knee')==='root'&&parents.get(id+'Foot')===id+'Knee'),'walking socket graph mismatch');
+  need(parents.get('head')==='root','head socket graph mismatch');
+- need(parents.get('ultimateFar')==='root'&&parents.get('ultimateNear')==='root','ultimate socket graph mismatch');
+- return ['head',...legs.map(id=>id+'Knee'),'ultimateFar','ultimateNear'];
++ const ultimate=['ultimateFar','ultimateNear'].filter(id=>parents.has(id));
++ need(ultimate.length===0||(ultimate.length===2&&ultimate.every(id=>parents.get(id)==='root')),'ultimate socket graph mismatch');
++ return ['head',...legs.map(id=>id+'Knee'),...ultimate];
+ }
+ function checked(points,keys){
+  need(object(points)&&exact(points,keys),'exact socket inventory required');
+@@ -20,15 +28,18 @@ function checked(points,keys){
+  * A compact model cannot silently use a parent landmark when sockets are absent. */
+ export function validateFixedPivots(definition){
+  const has=!!definition&&Object.hasOwn(definition,'fixedPivots');
+- if(definition?.anatomyModel!==MODEL){need(!has,'fixed pivots require compact myriapod');return null;}
++ if(![MODEL,INSECT_MODEL].includes(definition?.anatomyModel)){need(!has,'fixed pivots require compact myriapod or observed insect sockets');return null;}
+  return checked(definition.fixedPivots,expected(definition));
+ }
+ /** Missing declaration/model returns the exact original definition. Compact
+  * declarations are copied/frozen and match any already resolved pivot map.
+  * Optional alpha checks the actual source pixel, not an inferred nearby point. */
+ export function resolveFixedAttachments(definition,record,alpha){
+- const has=!!record?.geometry&&Object.hasOwn(record.geometry,'fixedAttachments'),compact=definition?.anatomyModel===MODEL;
+- if(!compact){need(!has&&!Object.hasOwn(definition??{},'fixedPivots'),'fixed attachments require compact myriapod');return definition;}
++ const has=!!record?.geometry&&Object.hasOwn(record.geometry,'fixedAttachments');
++ // A present, exact six-socket source declaration opts an insect in. Undeclared
++ // legacy insects return their original definition and parent-pivot behavior.
++ if(definition?.id==='insect'&&definition.anatomyModel===undefined&&has)definition={...definition,anatomyModel:INSECT_MODEL};
++ if(![MODEL,INSECT_MODEL].includes(definition?.anatomyModel)){need(!has&&!Object.hasOwn(definition??{},'fixedPivots'),'fixed attachments require compact myriapod or observed insect sockets');return definition;}
+  const keys=expected(definition);need(has,'source socket declaration required');
+  const points=checked(record.geometry.fixedAttachments,keys);
+  if(Object.hasOwn(definition,'fixedPivots')){const old=checked(definition.fixedPivots,keys);need(keys.every(k=>old[k][0]===points[k][0]&&old[k][1]===points[k][1]),'resolved pivots differ from source sockets');}
+diff --git a/port/v2/tools/creature-animation/myriapod-anatomy.mjs b/port/v2/tools/creature-animation/myriapod-anatomy.mjs
+index 0917bd8b7..e318ef014 100644
+--- a/port/v2/tools/creature-animation/myriapod-anatomy.mjs
++++ b/port/v2/tools/creature-animation/myriapod-anatomy.mjs
+@@ -8,14 +8,15 @@ export function expandCompactMyriapod(template,counts){
+   const id='leg'+i+side;legs.push(id);graph.push([id+'Knee','root'],[id+'Foot',id+'Knee']);
+   limits[id+'Knee']={...template.limitsDeg.legAFarKnee};limits[id+'Foot']={...template.limitsDeg.legAFarFoot};
+  }
+- for(const side of ['Far','Near']){graph.push(['ultimate'+side,'root']);limits['ultimate'+side]={...template.limitsDeg.legAFarFoot};}
++ const ultimateSides=counts.ultimateLegPairs===1?['Far','Near']:[];
++ for(const side of ultimateSides){graph.push(['ultimate'+side,'root']);limits['ultimate'+side]={...template.limitsDeg.legAFarFoot};}
+  const bodyAxis=['root','head'],distance=lm=>Math.hypot(lm.head[0]-lm.root[0],lm.head[1]-lm.root[1]);
+  const bounds=[{id:'body',min:.1,max:.95,kind:'distance',axis:bodyAxis},
+   {id:'bone-min',min:.001,max:.75,kind:'bone-min'},{id:'bone-max',min:.001,max:.75,kind:'bone-max'},
+   ...legs.map(id=>({id:'leg/body:'+id,min:.05,max:1.5,kind:'ratio',bones:[id+'Knee',id+'Foot'],axis:bodyAxis}))];
+  const proportions=bounds.map(b=>({id:b.id,min:b.min,max:b.max,measure:(lm,bones)=>b.kind==='distance'?distance(lm):b.kind==='bone-min'?Math.min(...Object.values(bones)):b.kind==='bone-max'?Math.max(...Object.values(bones)):b.bones.reduce((n,j)=>n+bones[j],0)/distance(lm)}));
+  const secondaryChains=[...['Far','Near'].map(side=>({id:'antenna'+side,kind:'antenna',driver:'head',joints:['antenna'+side]})),
+-  ...['Far','Near'].map(side=>({id:'ultimate'+side,kind:'tail',driver:'root',joints:['ultimate'+side]}))];
++  ...ultimateSides.map(side=>({id:'ultimate'+side,kind:'tail',driver:'root',joints:['ultimate'+side]}))];
+  return {...template,anatomyModel:'myriapod-rigid-trunk-v1',graph,joints:['root',...graph.map(([j])=>j)],legs,limitsDeg:limits,bodyAxis,
+   ...(template.bounds?{bounds}:{}),...(template.proportions?{proportions}:{}),...(template.secondaryChains?{secondaryChains}:{}),
+   contactStance:{default:'all',actions:{},swingLift:'toward-socket',travelSubsteps:{hit:2,dodge:2,tame:2},gaits:{'approach:crawl':'alternating'},travel:{'melee:mandible':'source-steps','melee:body':'source-steps',hit:'source-steps',dodge:'source-steps',tame:'source-steps'}}};
+diff --git a/port/v2/tools/creature-animation/repeated-anatomy.mjs b/port/v2/tools/creature-animation/repeated-anatomy.mjs
+index b96137b4b..8c4be6f52 100644
+--- a/port/v2/tools/creature-animation/repeated-anatomy.mjs
++++ b/port/v2/tools/creature-animation/repeated-anatomy.mjs
+@@ -11,7 +11,7 @@ export function appendageCounts(id,anatomy){
+  if(c===undefined&&(Array.isArray(anatomy.hidden)||Array.isArray(anatomy.folded)))return null;
+  if(id==='myriapod'&&c&&typeof c==='object'&&!Array.isArray(c)){
+   if(Object.keys(c).length!==2||!Object.hasOwn(c,'walkingLegPairs')||!Object.hasOwn(c,'ultimateLegPairs'))fail('unknown or missing myriapod appendage count');
+-  if(!Number.isInteger(c.walkingLegPairs)||c.walkingLegPairs<1||c.ultimateLegPairs!==1)fail('invalid myriapod appendage count');
++  if(!Number.isInteger(c.walkingLegPairs)||c.walkingLegPairs<1||![0,1].includes(c.ultimateLegPairs))fail('invalid myriapod appendage count');
+   const joints=5+4*c.walkingLegPairs+2*c.ultimateLegPairs;
+   if(joints>MAX_SKELETON_JOINTS)fail(MAX_SKELETON_JOINTS+'-joint budget exceeded: '+joints);
+   return {walkingLegPairs:c.walkingLegPairs,ultimateLegPairs:c.ultimateLegPairs};

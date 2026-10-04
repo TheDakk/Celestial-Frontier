@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0,"gap":0.00007171258231124497,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0,"gap":0.00006960786220602534,"exactRest":true,"firstRefusal":null}
+{"id":"approach:swim","status":"PASS","samples":121,"drift":0,"gap":0.00006695635601790237,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0,"gap":0.00006352037669487007,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0,"gap":0.00006848407387752263,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"RED","samples":6,"drift":0,"gap":0.000058282510145729935,"exactRest":true,"firstRefusal":{"ms":26.5,"sampleNumber":7,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 17"}}
+{"id":"dodge","status":"RED","samples":68,"drift":0,"gap":0.00007428140749469756,"exactRest":true,"firstRefusal":{"ms":204,"sampleNumber":69,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 8"}}
+{"id":"faint","status":"PASS","samples":121,"drift":0,"gap":0.00006499623153243922,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0,"gap":0.00007577522806379467,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0,"gap":0.00006848407401538817,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0,"gap":0.00006848407402917473,"exactRest":true,"firstRefusal":null}
+{"id":"melee:body","status":"RED","samples":26,"drift":0,"gap":0.00007428140764722446,"exactRest":true,"firstRefusal":{"ms":127.1111111111111,"sampleNumber":27,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 22"}}
+{"id":"melee:tail","status":"PASS","samples":121,"drift":0,"gap":0.00006960786220602534,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

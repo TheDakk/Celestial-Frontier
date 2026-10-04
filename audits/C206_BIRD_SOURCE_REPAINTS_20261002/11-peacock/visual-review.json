@@ -1,0 +1,28 @@
+{
+  "name": "Peacock",
+  "masterSha256": "c4efd5e0bc47c31074918f1315d9b90bfceb7cb0511c693b79ef7aaa251dbdf8",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: iridescent blue neck/breast, wire-stalk fan crest and a complete very long folded green train covered in eyespots are visible. Two legs/feet have separate silhouettes. Train tips fit inside the canvas, but the train still dominates its width. The true supporting tail is not independently resolved beneath the train and wing; no tail-part presence is inferred from eyespotted coverts.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 123,
+      "y0": 369,
+      "x1": 1067,
+      "y1": 849
+    },
+    "margins": {
+      "left": 123,
+      "right": 186,
+      "top": 369,
+      "bottom": 404
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

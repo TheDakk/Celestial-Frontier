@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-recipe.json",
+    "sha256": "fcebee35392f63cbafd28c2da01113b6f4cf99de9d6ee5a3aae3e8fcd4ecc496"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-far.png",
+        "sha256": "090d2c8bbeb60fb3b2023ffcc4a4172a1ceec1aac17e09dd010d516306d422d1"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-far.png",
+        "sha256": "090d2c8bbeb60fb3b2023ffcc4a4172a1ceec1aac17e09dd010d516306d422d1"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-mid.png",
+        "sha256": "2198169740203896541169f6d36f1adc9880b71dd66f2ab371ec0bf61f3dd311"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/keyed/arena-mid.png",
+        "sha256": "1d9e84ce9d4eaa641892453000d45dfdea8be4bcfb8b2fd23b2700e936b932d1"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-near.png",
+        "sha256": "afdfdb4d08936af457794385ab033db03f4814233ac963df53cf669d697cea45"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/cryogeyser/keyed/arena-near.png",
+        "sha256": "1f70919895534e5cbfbc494ca4f8b14e971e3a4177bec9e200b3366f57a8d400"
+      }
+    }
+  ]
+}

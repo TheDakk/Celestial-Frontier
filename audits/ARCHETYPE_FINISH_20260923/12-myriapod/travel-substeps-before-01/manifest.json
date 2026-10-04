@@ -1,0 +1,22 @@
+[
+  {
+    "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "sha256": "b6b7e745c61c6e9634ab4b8fd5c7411913ca383cb7772f5b143b49bcb0149abc"
+  },
+  {
+    "file": "port/v2/tools/creature-animation/family-contracts.d.mts",
+    "sha256": "1a99731a9e4f23894a5f7a840a70ee435c179a50acfafb5040528c31426cd146"
+  },
+  {
+    "file": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+    "sha256": "e25d64d96fd4aec6eec67cffe98fa2967a4a1d59e39ce8330f7d0c83d15fe623"
+  },
+  {
+    "file": "port/v2/apps/game/src/creature-rig-contact-support-candidate.test.ts",
+    "sha256": "cb7c437b1dc410d37317a1e50ea2ea22db3309b684440597bb8d7562cb275daa"
+  },
+  {
+    "file": "port/v2/apps/game/src/creature-rig-contact-swing-lift.test.ts",
+    "sha256": "810dbc33fa15f925c37d27b6fd6e47a4a4e1462f5c287b58f3095f568665b9fe"
+  }
+]

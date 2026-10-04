@@ -1,0 +1,21 @@
+{
+ "id": "24-water-strider",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a limb-down appendage of 11.5% paint that no reference appendage lands on",
+  "extra-anatomy (detached): 1 separate paint island(s) of ≥ 1% (reference 0)",
+  "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 8% paint (reference 44%)",
+  "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 26%)",
+  "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 0% paint (reference 34%)",
+  "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 36%)",
+  "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 9% paint (reference 58%)",
+  "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 3% paint (reference 42%)",
+  "missing-anatomy: part hind-near-upper (legHindNearKnee) covers 7% paint (reference 88%)",
+  "missing-anatomy: part antenna-near (antennaNear) covers 11% paint (reference 35%)",
+  "missing-anatomy: part mandible (mandible) covers 8% paint (reference 63%)",
+  "missing-anatomy: part abdomen (abdomen) covers 3% paint (reference 54%)"
+ ],
+ "semanticPresence": null
+}

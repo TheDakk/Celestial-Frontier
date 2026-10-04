@@ -1,0 +1,11 @@
+{
+ "id": "g2c107-05-gulper-eel",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part segment-7 owns 1.79 % of the paint (reference 8.64 %)",
+  "missing-anatomy: part segment-8 owns 0.84 % of the paint (reference 6.60 %)",
+  "missing-anatomy: part segment-9 owns 0.67 % of the paint (reference 5.96 %)"
+ ],
+ "semanticPresence": null
+}

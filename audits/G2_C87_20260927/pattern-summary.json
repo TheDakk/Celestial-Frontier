@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Goby",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Blenny",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Wrasse",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Damselfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Clownfish",
+    "status": "PASS"
+  },
+  {
+    "name": "Butterflyfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Surgeonfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Angelfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Owl",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Snowy Owl",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Roadrunner",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sandgrouse",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Turkey",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Woodpecker",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Guillemot",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Eider Duck",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Coati",
+    "status": "PASS"
+  },
+  {
+    "name": "Red Panda",
+    "status": "PASS"
+  },
+  {
+    "name": "Pampas Fox",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Striped Hyena",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Wildcat",
+    "status": "PASS"
+  },
+  {
+    "name": "Black Bear",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Spectacled Bear",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Hyrax",
+    "status": "NOT_REQUIRED"
+  }
+]

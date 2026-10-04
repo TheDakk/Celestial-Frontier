@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c202-source-review/v1",
+  "source": {
+    "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/master.png",
+    "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033"
+  },
+  "nativeSize": [
+    1254,
+    1254
+  ],
+  "status": "OBSERVED_EIGHT_ARM_TWO_TENTACLE_SOURCE",
+  "findings": [
+    "Eight short exposed arms and two longer club-bearing feeding tentacles; two eyes with wavy pupils, siphon and visible lateral fin skirt.",
+    "Only observed crown emergence is authored; anatomy behind natural central webbing is not reconstructed.",
+    "Earlier tight top-left arm curl was opened in source02; source03 adds framing space. All generated predecessors and exact prompts remain.",
+    "Glossy surface and prominent round eyes remain style holds. Source visibility does not establish motion acceptance."
+  ],
+  "qualityAccepted": false
+}

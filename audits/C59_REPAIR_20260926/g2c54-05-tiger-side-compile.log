@@ -1,0 +1,1 @@
+g2c54-05-tiger-side {"schema":"cf.foreleg-side-partition/v1","method":"nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership","changedPixels":15929,"transfers":{"foreNearRoot→foreFarRoot":6498,"foreNearKnee→foreFarRoot":6315,"foreNearKnee→foreFarKnee":1776,"foreNearAnkle→foreFarKnee":1340},"otherOwnersChanged":0}

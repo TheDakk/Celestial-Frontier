@@ -1,0 +1,138 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c186creaturesupply-20-beaver",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "545ac4d2f6e645e0ce3667714cfef3fa3937b0cb3054911327cbe44ab46515d1",
+ "subjectSourceSha256": "adaff50bc8cbab40e430a4bc7ee0bee0323855615b6f405fe2f9530a36235e2c",
+ "identity": {
+  "name": "Beaver",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Beaver\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2594475211\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 2594475211,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "river-otter",
+  "authoringSha256": "880928005d6cb859a1d4e5b569dffc2a6405c5ec3734f88836e7939efa6f5ce7",
+  "masterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e"
+ },
+ "habitat": {
+  "profileId": "aquatic-pawed-mammal",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "9b8e1bd74f93b745a58339250e98399de256e5ed0328aba786c97644ec2490d7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group aquatic-pawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0742,
+     "class": "front",
+     "attach": {
+      "x": 305.2,
+      "y": 157.3,
+      "relX": 0.92,
+      "relY": 0.12
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0115,
+     "class": "top",
+     "attach": {
+      "x": 218.5,
+      "y": 143,
+      "relX": 0.44,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.144,
+     "class": "limb-down",
+     "attach": {
+      "x": 139.5,
+      "y": 219,
+      "relX": 0,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0283,
+     "class": "limb-down",
+     "attach": {
+      "x": 296,
+      "y": 247,
+      "relX": 0.87,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0396,
+     "class": "limb-down",
+     "attach": {
+      "x": 262,
+      "y": 248,
+      "relX": 0.68,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0354,
+     "class": "limb-down",
+     "attach": {
+      "x": 171.5,
+      "y": 254,
+      "relX": 0.17,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0245,
+     "class": "limb-down",
+     "attach": {
+      "x": 205.5,
+      "y": 254,
+      "relX": 0.36,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "river-otter",
+   "byClass": {
+    "front": 2,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

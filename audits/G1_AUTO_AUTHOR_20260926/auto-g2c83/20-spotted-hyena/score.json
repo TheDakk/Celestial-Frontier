@@ -1,0 +1,10 @@
+{
+ "id": "20-spotted-hyena",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.6% paint that no reference appendage lands on",
+  "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)"
+ ],
+ "semanticPresence": null
+}

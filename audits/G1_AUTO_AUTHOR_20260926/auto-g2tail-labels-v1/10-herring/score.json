@@ -1,0 +1,11 @@
+{
+ "id": "10-herring",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "tailLabels": 4450,
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

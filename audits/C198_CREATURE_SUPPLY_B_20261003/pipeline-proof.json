@@ -1,0 +1,469 @@
+{
+  "schema": "cf.g2-source-pipeline-proof/v1",
+  "scope": "24 unchanged canonical compiler routes with disclosed source-visibility/composition additions. Native generator bytes retained. No authoring, native, reference-pool, runtime or gallery admission.",
+  "sourceCompiler": {
+    "path": "port/v2/tools/painted-creature/compile-library-master.mjs",
+    "sha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3"
+  },
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "batchCompilerSha256": "263d500eaf1948488008b8355e7a604f411f34bf1f78a136b18b5c3facc27610",
+  "coveredAtSelection": 251,
+  "entries": [
+    {
+      "name": "Gorilla",
+      "id": "01-gorilla",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "6213ca9f844ea23fdb181c321c4dbc55e595ea93608870dc4e2a6d0688c456e8",
+      "finalPromptSha256": "a2e9d703717f93c8ecf105fdb96a2ee4eb4779e496560a6bfd094e5b217cff92",
+      "masterSha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size native original: silverback with dark limbs, pale saddle, tailless body and four distinct visible distal supports: two knuckle-bearing hands and two feet. Both arm and leg silhouettes emerge separately where visible; far shoulder/hip roots remain partly obscured by torso fur. Near ear and eye are clear, far ear is not independently visible. Supports project at unequal heights and the long-arm stance is higher than requested low stance. Improved detached support silhouettes, not a grounded motion or complete-root proof."
+    },
+    {
+      "name": "Capuchin",
+      "id": "02-capuchin",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "553438caa3f38dc067dcb348e2099d64d4ebe95c2e78bb42ff3b7fcc7c00cd19",
+      "finalPromptSha256": "b61daa12e21772b2bd57a8121c748fd00263be736c745e46153dcd97f07f3631",
+      "masterSha256": "26d7de64ca46329c96b1decaee299f51400b995c21583fe7787367d93a11e14a",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size native original: dark cap/back, cream face/chest, long continuous raised open-curved tail, both hands and both feet visible with separated distal fingers/toes. Far upper leg and shoulder roots remain behind body/near limbs, with unequal projected support heights; the nearest hand lies lower than the other contacts. Both eyes visible but only near ear complete. Useful four-endpoint source improvement; complete independent root chains and single-plane motion remain held."
+    },
+    {
+      "name": "Squid",
+      "id": "03-squid",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "cephalopod",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "aabaa865bf9bc5b9ba0774784db3013e0185cc60a4d6b1d0e4e8fec327a6de47",
+      "finalPromptSha256": "278a3f9e21ef2204fc83e89353829a1068aaf3e7d9bb63cf8588a659e6f1e4fd",
+      "masterSha256": "036499547cba58218195bb74d1d25def62c759286116834e22e8d5519a548860",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size native original: mottled reddish torpedo mantle, two posterior triangular fin lobes, near eye, a small far-side eye sliver, visible tubular siphon and two long club-tipped feeding tentacles. Several shorter sucker-bearing arms fan separately, but the exact eight short-arm root-to-tip paths are not all independently resolved at the overlapping crown. Far eye is only a small edge and its complete contour is not visible. Both eyes, fin/root anatomy and ten appendage paths require independent reference review; no invented far-eye or hidden-arm declaration."
+    },
+    {
+      "name": "Cuttlefish",
+      "id": "04-cuttlefish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "cephalopod",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "1815be6a188da5f5fbc0bd82d64730e68606468b428f866da3df5637f1c028e2",
+      "finalPromptSha256": "d66f074ea0163a72dcc27f66120b31eebed0801d1dbcf0560f03e124e28739f7",
+      "masterSha256": "b396c3374e0315b3e4ba662dd8b8694637a44153755ec67228ffa8763844feaf",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size native original: mottled flattened mantle with continuous wavy lateral fin fringe, two visible eye surfaces with characteristic wavy pupils, a real tubular siphon and two long club-tipped tentacles. Several short arms have separately visible curved tips, but overlapping roots and lower-arm crossings prevent an authoritative eight-arm chain count. Far fin/body edge is visible only partly behind the mantle. Both-eye/siphon visibility improves the prior side view; exact appendage/root inventory remains held for independent authoring, never invented."
+    },
+    {
+      "name": "Diving Beetle",
+      "id": "05-diving-beetle",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "insect",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "587d386d5a1d7203e246e07ef87fa7b7ce4073405561c63c23d257eef17813b1",
+      "finalPromptSha256": "7e8c7cf8631c166eb5c872688d3ff53606f6a16dbee8d33a7f058cd5e64f4c44",
+      "masterSha256": "6f3da86ce3c091314bc65ed2ef1131fe6012916024a78f9421da51e0dabe810c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size native original: dark oval closed elytra with yellow-tan border, two full segmented antennae, mouthpart tips and two fringed paddle-like hind legs. Five distal leg tips are clear; a sixth complete leg/root path is not independently resolved. Source remains side-oblique and fails the requested six-independent-chain visibility despite clearer antennae. Right antenna approaches the 8% edge; original framing must include its fine tip. No hidden root/leg or flight wing is invented."
+    },
+    {
+      "name": "Chimpanzee",
+      "id": "06-chimpanzee",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "2c0179fdfc4e6f9193863c6edc19f56fc8265153212c8fc514ff3b878088edbb",
+      "finalPromptSha256": "590716d9a745c7e3a5aab124130398ad06a0c5fc3fcae26822ab1491731df12f",
+      "masterSha256": "4dd09305212d67f308fbb4ef00446473364b715868d16be4318fbce93c39851e",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size native original: dark tailless ape, bare tan face and large near ear, long arms, two knuckle-bearing hands and two separate feet. Far shoulder/hip emerge behind torso; far ear hidden, and projected hands/feet differ in height. Complete distal supports improve observability, but exact knuckle contacts/finger count and root ownership need source-specific review. No inferred hidden ear or single-plane/native admission."
+    },
+    {
+      "name": "Howler Monkey",
+      "id": "07-howler-monkey",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "f5c8832f1c85c87105a5a015c968d813ed81d2cef41f8fed91e24306fe21ec6d",
+      "finalPromptSha256": "df4c2605ddc36df3c2e77de61db059aa2f19114aac78995d6e24f5d6d82af79a",
+      "masterSha256": "8c8d46f3e0e6884fd5874bd68b93cafd2fe72801624bd14bf86996aa0efe8e05",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size native original: golden-brown coat, dark face, conspicuous rounded throat pouch and long continuous curved tail with bare-looking terminal pad. Four separate hands/feet visible, with long fingers and unequal projected support heights; far roots behind torso. Large throat swelling/proportions require species review and must not be silently regularized. Near ear clear, far ear hidden. Tail is distinct and noncrossing; no complete anatomical or motion admission."
+    },
+    {
+      "name": "Spider Monkey",
+      "id": "08-spider-monkey",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "e0836f8e0b9e686d05ec99842544af4b60830cd91b0ae50c5c69b1063e60e7f6",
+      "finalPromptSha256": "f1542392ec2be52467949ca755841d7966d78f272008f078f98065a86bad130e",
+      "masterSha256": "1caa0ccefe5a80ac85b149c9da56278c016abb97dd7d49d27ef2d1cff92b1484",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: long black/brown limbs and continuous high open-curved tail; four distinct hands/feet with elongated curved digits. Distal limbs hang at different heights, so requested grounded four-contact stance is not achieved. Far roots and ear remain partly hidden; thumb/digit anatomy needs species review. No invented contacts or motion admission."
+    },
+    {
+      "name": "Tamarin",
+      "id": "09-tamarin",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "5bce0487c9815e410bf398c5b822141f05ad8c1886f5db2b323ca5ec70290675",
+      "finalPromptSha256": "d89f39e3f061fbd28a1066fadbf86d733f96a22ad8ddd99a732d88d64b386aa9",
+      "masterSha256": "53ba5f05bc48a04a7e173c160cb9b6c2373b1262275ed765953a09f4e02204b7",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: small brown/rust body, white crown/cheek plume and chest, long rust tail, four distinct clawed extremities. Hands/feet float at unequal heights and proximal roots remain fur-covered. Cotton-top-like identity is visible, but exact fingers/claws, far ear and crown-fringe conservation remain held. No grounded stance claim."
+    },
+    {
+      "name": "Macaque",
+      "id": "10-macaque",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "278e6fca2df65ad6863011798b5f4dc4f5f359e7f62aa5d0ef5a3ae18603e20d",
+      "finalPromptSha256": "e385d8bd629c26fa2378622af0760bb5a03f2f1bdcb77b1082d9360cc54a42b7",
+      "masterSha256": "7c881d97d530002b51d67de4f9028cacd7c7817452b7fa23989136d9f45f820b",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: tan-brown monkey with pink bare face, pale cheek fur, near ear and continuous medium-length lowered tail. Four separate hands/feet; proximal far roots obscured and support heights unequal. Fingers and the far hand curl need individual review. No inferred hidden ear or complete-contact admission."
+    },
+    {
+      "name": "Langur",
+      "id": "11-langur",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "d711930f8fd294ed8ca5d88af723f8e5735df59de15d6b84472c359446d0b4f9",
+      "finalPromptSha256": "7ac475da9b832da0ef04133086236558bea129bc40f505a8e1c021eff4416a22",
+      "masterSha256": "95fce120eb86226a5cea32ef435146e9c9d40d5fb883e3853d64736f1e2df7bd",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: pale gray/cream coat, black face/hands/feet, pointed crown and long high open tail. Four distal extremities are visible, but the near forearm crosses the far forelimb in projection, defeating independent full-chain separation. Far roots/ear are obscured and foot heights differ. Preserve this crossing as a source hold; no chain reassignment or invented anatomy."
+    },
+    {
+      "name": "Baboon",
+      "id": "12-baboon",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "939a0ac988119ed480260cf92994c08920bda3db8c69449ed9b89e073a93103c",
+      "finalPromptSha256": "daa659ea979b6fe8f008f66e541f2920ba12729bfeab5c950248e41e414c2edd",
+      "masterSha256": "51550b9472c88e69eb75f641b74302fbdb441d1ded007c97b6f12b75936f9aee",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: brown shaggy mane, elongated dark muzzle, visible rump callosity and natural raised-base dropping tail. Four distal limbs visible, but far hand lifted/curling and support heights unequal; far roots partly hidden. No complete four-ground-contact claim. Natural facial/callosity identity preserved, source-specific root/finger review held."
+    },
+    {
+      "name": "Lemur",
+      "id": "13-lemur",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "bb21e49b581101671be838205d0ce4fe4e194bce8edc124158f44b559f5a1b73",
+      "finalPromptSha256": "7a842ddcf2f67436a881beec6e8dcd5375baf43d90cfa6240d15575b5a1ebca3",
+      "masterSha256": "088b43fc6861019b83ebf84ae64d674f674c9769f29dcafd0f2e3fdd6c8d9824",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: gray/russet body, white/dark facial mask, yellow eyes and long black-white ringed tail in an open arc. Four separate hands/feet, with far roots behind torso and differing support heights. Ring pattern is clearly visible. Far ear base and distal digit counts require review; no complete anatomical or motion admission."
+    },
+    {
+      "name": "Mandrill",
+      "id": "14-mandrill",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "772842ac6394c27d94e79d5d4795a581fead3fac7f1a19e1a916479c0b16f843",
+      "finalPromptSha256": "53d386d39620e1ef5ff55613bda7e4d4af3a89096570d8c738b64c7a8ae81c80",
+      "masterSha256": "be36b1f317c7c4eb0fd0480d1d5fea6b54d54548ba8a15e31a56bd0bc8f9616a",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: olive-brown heavy primate with blue ridged cheek patches, red nose/muzzle, yellow beard, colored rump and true short tail. Four visible hands/feet are distinct; far roots/ear partly hidden, projected contacts unequal. Scarlet central nose stripe and ridged blue cheeks independently confirmed by parent full-size inspection. Short tail remains short; no complete-root/native admission."
+    },
+    {
+      "name": "Marmoset",
+      "id": "15-marmoset",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "primate",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "ca2eb0548611c5e63936752b93d27eb84e5789790053cd6ea8367beb4846f0ee",
+      "finalPromptSha256": "f9279914851e18010a96b0abe4136b282417d4a738cfc49441bbaed0e5f6044e",
+      "masterSha256": "9c2807738b5df0b5737c8e2a1584cd0d1fc04031d710b89dde8ede923e6b8e6f",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: mottled brown/gray small primate, broad white ear tufts, pale forehead mark and long banded furry tail. Four clawed distal limbs visible, but roots remain fur-covered and contacts are unequal. Ear tufts conceal actual ear rims; exact nail/claw anatomy and fringe ownership held. No inferred hidden anatomy."
+    },
+    {
+      "name": "Octopus",
+      "id": "16-octopus",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "cephalopod",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "e5c2a1090734d57de2eca9636ee7996f3e359c7e26f5b8ba2fc41d7cd86b3ee5",
+      "finalPromptSha256": "041f681f56fc9f34eff5419de79a83d22abcbccf32ea94ce47c86064eb612671",
+      "masterSha256": "23e3a0b205f734d69f0cb44cea7e2ad4eb24b2d9103f93d29f9ea3a56be1d5eb",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: mottled red-brown bulbous mantle, clear near eye, tiny far-eye sliver, tubular siphon, sucker-bearing curved arms and no invented fins. Seven distinct distal tips are clear; an eighth independent root-to-tip arm is unresolved among overlapping central arms. Far eye contour incomplete. Source held for mandatory eye/arm observability; no absent/hidden anatomy substitution."
+    },
+    {
+      "name": "Giant Octopus",
+      "id": "17-giant-octopus",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "cephalopod",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "4e0d1c7f30b7d05e635439153e6f395a2b2a4f791f7aec5595bd1ba25e6098eb",
+      "finalPromptSha256": "f2537f56763698478d8ca478f873744157e616a5bb1b6ce9c3b00c4f427cbf3c",
+      "masterSha256": "e8895811a54507616b12324b16636cb483a937d9e915d6086f7789d3d35c28fb",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: mottled russet mantle, near eye and partial far eye, siphon, broad webbed arm roots and eight visible terminal tips including a small rear tip partly behind another arm. Several root-to-tip paths overlap; eighth rear-root path and full far eye are not independently exposed. Suckers and no fins preserved. Counted tips do not establish eight complete chains; reference anatomy hold remains."
+    },
+    {
+      "name": "Centipede",
+      "id": "18-centipede",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "myriapod",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "8804c0b7637e2a6b46c4e7070ee10d8287af6bfa76603198f091aa607e61d45a",
+      "finalPromptSha256": "1779574b3376cad1aa4e709bd45b2d57272300d7783b04fe6f8fbbce8d553428",
+      "masterSha256": "ade637f8363cd5ce51ecebab5e0e58adc2a37fad595d969c0a4f5e8f6a2e20df",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: low curved flattened dark/rust segment plates, yellow/orange articulated legs, two long antennae and elongated terminal pair. Many near legs are distinct; far roots/tips partly occluded, and exact biological pair count is unverified and must not be reduced to a rig ceiling. Right antenna and left terminal tip enter required margin. Head forcipule/eye proportions need species review; no anatomical admission."
+    },
+    {
+      "name": "Giant Centipede",
+      "id": "19-giant-centipede",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "myriapod",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "875d9d4f20affa3c21a6560063a63e0eddea280b9b87c25e0a67978c33c648e4",
+      "finalPromptSha256": "d3bcadb2c761e9b9fe3ecedca3bdedd861ec7e4e4d50a77bb5debbe5a9dcf788",
+      "masterSha256": "660c90f614be72b9d6814013724b1357bfdc498c0a8647b7c8d31c590140d55a",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: flattened dark plated body, orange legs, long paired antennae, rear terminal pair and large curved head-region claws. Numerous near legs clear but full far chains and biological count unresolved; preserve all real source paint rather than deleting legs to fit. Both horizontal endpoints encroach strongly into 8% margins, especially right antenna. Large claws/eyes require identity review; framing/anatomy held."
+    },
+    {
+      "name": "Millipede",
+      "id": "20-millipede",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "myriapod",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "c669188ca36015c4f81b84463bcf8a8a0658f0d019c48fc56ec4806fb17670a2",
+      "finalPromptSha256": "876ca967b0d4941f4b700c5e5d61a41cf19ff78911e6488be2f97a7eebc67ce8",
+      "masterSha256": "377d6c9aa73ba4f1fa3994c784edff8c22769af3818775dfeee860fa536157bb",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: cylindrical brown ringed body with dense short leg rows, two short beaded antennae and small head. Far legs/root mapping and two-pairs-per-diplosegment count not independently established; numerous legs exceed coarse compact-template scope and must not be deleted. Large rendered eye and highly glossy plates need biological/style review. Right antenna enters margin. Held, no anatomical admission."
+    },
+    {
+      "name": "Leafcutter Ant",
+      "id": "21-leafcutter-ant",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "insect",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "51da56b3ef195f5f1b667a3c7e9716a479ab883113bb554203ed41eab4b3f2c0",
+      "finalPromptSha256": "ce82e0f5b4ad950a2c8e7dd8b9b6cf708bc696c9b386b4ab7a6e103f9d298dd3",
+      "masterSha256": "1390d5a995afedb1c1827a3aed22a7ce738e1215db683569a12beeeddb3c1741",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: reddish ant with constricted waist, spiny thorax, paired antennae/mandibles and six distinct distal leg tips. Near chains visible, some far proximal segments overlap under thorax and must be independently authored. A large carried leaf is present, contradicting the no-prop request even if suggested by canonical identity; preserve that explicit source-content hold, do not mask it away. Useful six-tip visibility, no anatomy or pack admission. Canonical identity explicitly requests carrying a leaf fragment overhead; this conflicts with the isolated no-prop correction. Retain the leaf and composition conflict honestly, rather than calling it an unprompted insertion."
+    },
+    {
+      "name": "Locust",
+      "id": "22-locust",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "insect",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "182a67030d56bdfffacfb4d6ab4bfa696eba3abaf316c0ab269e4d7d1ac2a452",
+      "finalPromptSha256": "e4835e132b04a5a4315893b8f8f0497176e45fd44295d54d83ada575faae921a",
+      "masterSha256": "946898b4e9e1d3b4a3e7e5fb0ca0a5c093f64a52585140b2601ef96398a0812d",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: green/tan banded segmented body, patterned folded wings, enlarged jumping hind femora, short paired antennae and mouthparts. Seven apparent distal leg endpoints can be distinguished, with crowded/overlapping chains under the thorax; exact six-leg biological inventory is therefore held, not declared correct. No deletion of the extra-looking projection or inferred root. Painted mechanical-looking joints/proportions require style/anatomy review. Independent parent review counts six distal tips; initial reviewer perceived a seventh apparent projection. The unresolved projection/root ownership is retained as a reviewer disagreement, not resolved by expected six-leg anatomy."
+    },
+    {
+      "name": "Grasshopper",
+      "id": "23-grasshopper",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "insect",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+      "finalPromptSha256": "50351356c73da0eeb7ff62047d4681403552fb9db633792bce0e14f1e200bfce",
+      "masterSha256": "e82932e2fb27354c2bede3a4475173f8cf56e0ad2b2323976a68b4a4a0c566aa",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: green/tan segmented abdomen, folded patterned wings, two large jumping hind femora, paired antennae and six visible distal foot tips. Near/far proximal chains crowd and overlap under wing/body; both hind-knee-to-foot paths need source-specific tracing. Six tips alone is not complete-chain proof. No anatomy/native admission; species material and support-plane holds remain."
+    },
+    {
+      "name": "Dobsonfly",
+      "id": "24-dobsonfly",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "insect",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "8d065e295fe4290b4d1c6dd894f3c7a635dd312b050b46250c5a79b119dcf93c",
+      "finalPromptSha256": "8d6250851c9337c49d7fab27c3c2056c4d69a557fd1d4875fc8042c34f2a7eb3",
+      "masterSha256": "9d30ddf1a2499a92ea81605c7b022086f985406fedfe7094d4c6e2b2197347d2",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size: long patterned translucent folded wings, segmented abdomen, two long antennae and long curved male mandibles. Six clear distal feet plus an additional tiny downward projection below central thorax require anatomical discrimination; far roots crowd and overlap. Folded wing ownership and extra-looking tip remain held. No invented chain or seventh-leg removal."
+    }
+  ]
+}

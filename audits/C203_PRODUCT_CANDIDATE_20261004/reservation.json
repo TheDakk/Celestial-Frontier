@@ -1,0 +1,9 @@
+{
+  "row": "C279",
+  "status": "ACTIVE",
+  "scope": "One Red Fox candidate native film only; no I5, develop or all-pairs",
+  "fit": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit",
+  "script": "audits/C203_NATIVE_HOLDS_20261004/fox-native-script.json",
+  "sourceQueues": "All terminal; CPU quiet",
+  "terminalNoticeRequired": true
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Serval",
+  "masterSha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four long leg shafts and separate paw ends, two very large upright ears, small head, golden coat with black spots, neck/back stripes and leg bars. Far proximal roots remain occluded. The tail reads as a very short curled stub, requiring a species-proportion review; very large ear proportions are also held. No apparent extra limb. Painting is retained without authoring or motion acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 268,
+      "y0": 250,
+      "x1": 994,
+      "y1": 984
+    },
+    "margins": {
+      "left": 268,
+      "right": 259,
+      "top": 250,
+      "bottom": 269
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

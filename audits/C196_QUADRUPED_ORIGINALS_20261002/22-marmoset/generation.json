@@ -1,0 +1,14 @@
+{
+  "id": "22-marmoset",
+  "name": "Marmoset",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-8a1e7a64-c875-43c1-82d1-d54d793bce77.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "949df79df52b00a64ff06408b2e294eedf91adebb7ff8f12e76bd7dd285b5b98",
+  "bytes": 1252623,
+  "promptSha256": "ea21ae0ca715fbf373d1b2a2c6ac2ad2628bbe32bec7a1e89a469be773e6e82d",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,13 @@
+{
+  "id": "24-cold-adapted-insect",
+  "name": "Cold-Adapted Insect",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e425ae0e-019e-4e9e-ac62-de10cef0b827.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "82ffc711884e3d509cacac22d3249640400d6e6d9260a4214ed3afafb85e0c07",
+  "bytes": 1279117,
+  "promptSha256": "b993a503676a9357b5e52f73cf63f36504932cdb3e6bf80c66acf40d54e1825a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Tropicbird",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "aad62f13a0fd0b74ebd93e35f92672eab7351434b2356a8858e4a0d8e8be94a9",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "bird",
+  "authoringCreated": false,
+  "sourceHead": "4f1742e25cd337f0347909ba8c28a092c587262a",
+  "basePromptSha256": "2ba87d00c59bf1eb9084153595a71e11ea3012ae90b690e9ab7a9dcb6fb9590e",
+  "layoutCompilerSha256": "d86f835ac7feecb6b202613d4ec540ae2ab2f9a386f4f181794a6a6c8025d186",
+  "layoutClarification": "Species identity features FIRST: two extremely long ribbon tail streamers doubling the body length; black wedge stripe through the eye; stout red or yellow bill on a white pigeon-like body. One Earth Tropicbird. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n",
+  "contextClarification": "ANATOMY/POSE CONTEXT: Standing resting tropicbird with wings naturally folded, TWO complete long ribbon tail streamers, black eye stripe and stout red bill. Scale down the whole bird so the full natural streamers fit within clear empty margins. No invented long walking legs. This prompt is not a measured absence declaration."
+}

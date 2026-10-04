@@ -1,0 +1,120 @@
+{
+  "id": "02-cobra",
+  "name": "Cobra",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "5d4d26f55746d606c0a584db44226c0a1fab05e4c0592ee1895418712c7cd99f",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 10227,
+    "coreRadius": 15,
+    "bodyBox": {
+      "x0": 315,
+      "y0": 156,
+      "x1": 361,
+      "y1": 211
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0315,
+        "pixels": 322,
+        "box": {
+          "x0": 331,
+          "y0": 150,
+          "x1": 377,
+          "y1": 165
+        },
+        "attach": {
+          "x": 349.7,
+          "y": 156.3,
+          "relX": 0.75,
+          "relY": 0.01
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.02
+        },
+        "class": "front",
+        "length": 28.7
+      },
+      {
+        "k": 1,
+        "frac": 0.0087,
+        "pixels": 89,
+        "box": {
+          "x0": 310,
+          "y0": 168,
+          "x1": 314,
+          "y1": 195
+        },
+        "attach": {
+          "x": 314,
+          "y": 181.5,
+          "relX": -0.02,
+          "relY": 0.46
+        },
+        "dir": {
+          "x": -0.99,
+          "y": -0.13
+        },
+        "class": "rear",
+        "length": 14.1
+      },
+      {
+        "k": 2,
+        "frac": 0.7185,
+        "pixels": 7348,
+        "box": {
+          "x0": 33,
+          "y0": 212,
+          "x1": 356,
+          "y1": 263
+        },
+        "attach": {
+          "x": 341.5,
+          "y": 212,
+          "relX": 0.58,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.97,
+          "y": 0.24
+        },
+        "class": "front",
+        "length": 312.7
+      }
+    ],
+    "byClass": {
+      "front": 2,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 123,
+        "x1": 179,
+        "cx": 150.9
+      },
+      {
+        "x0": 256,
+        "x1": 333,
+        "cx": 295.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

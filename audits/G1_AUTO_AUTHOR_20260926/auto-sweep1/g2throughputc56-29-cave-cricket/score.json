@@ -1,0 +1,9 @@
+{
+ "id": "g2throughputc56-29-cave-cricket",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mandible (mandible) covers 1% paint (reference 60%)"
+ ],
+ "semanticPresence": null
+}

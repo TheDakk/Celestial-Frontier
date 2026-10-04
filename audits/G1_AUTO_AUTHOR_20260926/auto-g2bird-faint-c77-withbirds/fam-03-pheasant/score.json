@@ -1,0 +1,10 @@
+{
+ "id": "fam-03-pheasant",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-shin (legFarAnkle) covers 11% paint (reference 84%)",
+  "unexplained-anatomy: 8.8% of the paint lies away from the body and in no part (reference 4.6%)"
+ ],
+ "semanticPresence": null
+}

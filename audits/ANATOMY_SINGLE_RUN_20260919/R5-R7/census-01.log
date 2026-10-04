@@ -1,0 +1,14 @@
+{"status":"BOOTING"}
+{"status":"RUNNING","completed":105,"total":1250}
+{"status":"RUNNING","completed":215,"total":1250}
+{"status":"RUNNING","completed":335,"total":1250}
+{"status":"RUNNING","completed":405,"total":1250}
+{"status":"RUNNING","completed":547,"total":1250}
+{"status":"RUNNING","completed":610,"total":1250}
+{"status":"RUNNING","completed":740,"total":1250}
+{"status":"RUNNING","completed":820,"total":1250}
+{"status":"RUNNING","completed":905,"total":1250}
+{"status":"RUNNING","completed":1070,"total":1250}
+{"status":"RUNNING","completed":1155,"total":1250}
+{"status":"RUNNING","completed":1245,"total":1250}
+{"status":"DIAGNOSTIC_PASS","counts":{"total":1250,"earth":1010,"procedural":240,"rasterPass":1237,"legacyFallthrough":13,"failures":0,"topologyEmissions":54}}

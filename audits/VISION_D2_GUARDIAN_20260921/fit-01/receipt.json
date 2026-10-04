@@ -1,0 +1,73 @@
+{
+  "built": {
+    "id": "d2-brown-bear",
+    "parts": 17,
+    "atlasSize": {
+      "width": 2038,
+      "height": 2030
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-lower",
+        "vertex": 133,
+        "distancePx": 12.36931687685298,
+        "supports": [
+          1304
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-lower",
+        "vertex": 186,
+        "distancePx": 29,
+        "supports": [
+          1849,
+          1847
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-lower",
+        "vertex": 177,
+        "distancePx": 17.720045146669353,
+        "supports": [
+          2384
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-lower",
+        "vertex": 197,
+        "distancePx": 27.58622844826744,
+        "supports": [
+          2932,
+          2936
+        ]
+      }
+    ],
+    "sourceBindingHash": "f2e25d16e2538c6fb0c34315b4790c762b9aa9022b509c04d766050208f88a56",
+    "sourceVertices": 3284,
+    "vertices": 3540,
+    "sharedSupports": 707,
+    "pins": 584,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 17,
+    "excludedOverlaps": 12,
+    "observedExcludedBoundaries": 12,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 12,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "boundaryStep": 24,
+  "interiorStep": 56,
+  "fieldVertices": 3540,
+  "rgbaChangedChannels": 0,
+  "nativeAcceptance": false
+}

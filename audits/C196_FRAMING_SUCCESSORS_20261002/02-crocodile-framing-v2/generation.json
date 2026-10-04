@@ -1,0 +1,17 @@
+{
+  "id": "02-crocodile-framing-v2",
+  "name": "Crocodile",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-fb055673-858b-4de5-ba8f-d7406c27b07f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0dae1e031d97a14fdc912797eb19846994cfa8edf4bd13208b001c9cfaef5131",
+  "bytes": 1067441,
+  "promptSha256": "d63d7dbeebae6464c9489afd4ca408ee2e10fae81722f790b8836a669ac4fe5c",
+  "intent": "edit",
+  "editTarget": "audits/C196_QUADRUPED_ORIGINALS_20261002/02-crocodile/master.png",
+  "editTargetSha256": "04fc849ab1b661c93162a602e1bad26fb07919ea36853e0ebdf326bbece9e8d0",
+  "originalStyleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

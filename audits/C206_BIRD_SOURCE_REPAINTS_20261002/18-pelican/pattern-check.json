@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pelican",
+  "masterSha256": "3a24d8d3448f5409f920e5c183e9833e0ffb1cc3dfde4f2bc87f705d56fd35b2",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

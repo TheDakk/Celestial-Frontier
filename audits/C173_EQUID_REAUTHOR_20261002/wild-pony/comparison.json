@@ -1,0 +1,276 @@
+{
+  "id": "wild-pony",
+  "variants": [
+    {
+      "mode": "original",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/wild-pony/baseline-fit",
+      "durationMs": 1032,
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0023879345062919966,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 5156,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 5156,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 2032,
+              "coordinates": 5156,
+              "byteParity": true
+            }
+          ],
+          "sourceAttributedPonyPixels": [
+            {
+              "part": "spine",
+              "joint": "spine",
+              "source": [
+                871,
+                353
+              ],
+              "alpha": 255,
+              "face": 162,
+              "vertices": [
+                119,
+                104,
+                103
+              ],
+              "published": [
+                0.7401473177106757,
+                0.40052332689887593
+              ]
+            },
+            {
+              "part": "spine",
+              "joint": "spine",
+              "source": [
+                882,
+                341
+              ],
+              "alpha": 255,
+              "face": 153,
+              "vertices": [
+                106,
+                103,
+                102
+              ],
+              "published": [
+                0.751165895299478,
+                0.3936596065759659
+              ]
+            }
+          ]
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.0009371143778363424,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 5156,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 5156,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 2032,
+              "coordinates": 5156,
+              "byteParity": true
+            }
+          ],
+          "sourceAttributedPonyPixels": [
+            {
+              "part": "spine",
+              "joint": "spine",
+              "source": [
+                871,
+                353
+              ],
+              "alpha": 255,
+              "face": 162,
+              "vertices": [
+                119,
+                104,
+                103
+              ],
+              "published": [
+                0.7401473177106757,
+                0.40052332689887593
+              ]
+            },
+            {
+              "part": "spine",
+              "joint": "spine",
+              "source": [
+                882,
+                341
+              ],
+              "alpha": 255,
+              "face": 153,
+              "vertices": [
+                106,
+                103,
+                102
+              ],
+              "published": [
+                0.751165895299478,
+                0.3936596065759659
+              ]
+            }
+          ]
+        }
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "mode": "candidate",
+      "fit": "audits/C173_EQUID_REAUTHOR_20261002/wild-pony/fit01",
+      "durationMs": 1032,
+      "facings": [
+        {
+          "side": "left",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.029859922833317527,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 4946,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 4946,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 2032,
+              "coordinates": 4946,
+              "byteParity": true
+            }
+          ],
+          "sourceAttributedPonyPixels": [
+            {
+              "part": "ear-near-tip",
+              "joint": "earNearTip",
+              "source": [
+                871,
+                353
+              ],
+              "alpha": 255,
+              "face": 24,
+              "vertices": [
+                23,
+                3,
+                16
+              ],
+              "published": [
+                0.8179248634137606,
+                0.5373221259368093
+              ]
+            },
+            {
+              "part": "ear-near-tip",
+              "joint": "earNearTip",
+              "source": [
+                882,
+                341
+              ],
+              "alpha": 255,
+              "face": 22,
+              "vertices": [
+                18,
+                16,
+                15
+              ],
+              "published": [
+                0.830091040242802,
+                0.5430542677640915
+              ]
+            }
+          ]
+        },
+        {
+          "side": "right",
+          "samples": 124,
+          "refusal": null,
+          "maximumPublishedContactDriftPx": 0.01947152577043297,
+          "actualRuntimeParity": [
+            {
+              "elapsedMs": 0,
+              "coordinates": 4946,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 516,
+              "coordinates": 4946,
+              "byteParity": true
+            },
+            {
+              "elapsedMs": 2032,
+              "coordinates": 4946,
+              "byteParity": true
+            }
+          ],
+          "sourceAttributedPonyPixels": [
+            {
+              "part": "ear-near-tip",
+              "joint": "earNearTip",
+              "source": [
+                871,
+                353
+              ],
+              "alpha": 255,
+              "face": 24,
+              "vertices": [
+                23,
+                3,
+                16
+              ],
+              "published": [
+                0.8179248634137606,
+                0.5373221259368093
+              ]
+            },
+            {
+              "part": "ear-near-tip",
+              "joint": "earNearTip",
+              "source": [
+                882,
+                341
+              ],
+              "alpha": 255,
+              "face": 22,
+              "vertices": [
+                18,
+                16,
+                15
+              ],
+              "published": [
+                0.830091040242802,
+                0.5430542677640915
+              ]
+            }
+          ]
+        }
+      ],
+      "qualityAccepted": false
+    }
+  ],
+  "sourceCoordinateUnit": "posed coordinates normalized by original 1254-square painting; multiply by 1254 for source-coordinate pixels, not native film pixels",
+  "nativeRun": false,
+  "qualityAccepted": false
+}

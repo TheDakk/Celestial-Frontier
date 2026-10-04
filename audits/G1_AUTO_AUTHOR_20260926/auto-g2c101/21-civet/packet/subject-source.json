@@ -1,0 +1,103 @@
+{
+  "name": "Civet",
+  "family": "quadruped",
+  "species": {
+    "name": "Civet",
+    "aspect": 1.9,
+    "headFrac": 0.24,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "masked face with dark bands through the eyes",
+      "long ringed or banded tail",
+      "low elongated body on short legs"
+    ],
+    "note": "generic representative: an Asian palm/common civet. Not a cat - the muzzle is long and pointed"
+  },
+  "genome": {
+    "seed": 4085878453,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 12,
+    "body": 12,
+    "loco": 9,
+    "trait": 14,
+    "size": 4,
+    "diet": 5,
+    "head": 6,
+    "limbs": 1,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 3,
+    "eyes": 3,
+    "behavior": 0,
+    "habitat": 7,
+    "detail": 4,
+    "accent": 16,
+    "temper": 0,
+    "sense": 4,
+    "repro": 5,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Civet"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"4085878453\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 21,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

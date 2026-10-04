@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c192-source-edit/v1",
+  "tool": "image_gen.imagegen",
+  "actualInput": {
+    "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/master.png",
+    "sha256": "ffad768165b2d127484e6136a0c3b647a1d63a96ec7fe0264c717ab6d3d0732a",
+    "snapshot": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/input-master.png",
+    "role": "sole edit target; inherited locked style"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "canonicalPrompt": {
+    "path": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/prompt.txt",
+    "sha256": "02e6b75a93ca17a9001d5c9f05e58c47e41faf991884aea5829f94ded8655cb8"
+  },
+  "exactSentPromptSha256": "95f1cffa23ff3cd20b94f55685a2392996e1da0c60428c69cf8d0bb9879066ef",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "sourceEditsOnly": true,
+  "nativeRuns": 0
+}

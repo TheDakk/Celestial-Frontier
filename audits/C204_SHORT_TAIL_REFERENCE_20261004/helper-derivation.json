@@ -1,0 +1,6 @@
+{
+  "source": "audits/C202_CEPHALOPOD_REFERENCES_20261004/conserve-independent.mjs",
+  "sourceSha256": "36f462323bd7956ef7981f72e626573f335479f6e4f35830e7b38618f682ed5f",
+  "derivedSha256": "3f6bb4a0618095f4048cac19199fc0c8c4e190ff14da43cacbd26eb7671a2bd9",
+  "changes": "Exact packet allowlist, output path and existing Reindeer provenance adapter only. Pixel/owner comparison and positive/mutation controls unchanged."
+}

@@ -3,10 +3,10 @@
 ## 📌 PINNED — STANDING PROCEDURE (Dakk, 2026-07-20): UPDATE THE MARKDOWN DOCS AS WE GO.
 
 The per-system docs at repo root (WORLD_GENERATION · ART_DIRECTION · BIOME_ATLAS ·
-SPECIES_AND_GENOME · RARITY_AND_GRADES · RARITY_UNIVERSAL · CAPTURE_AND_BIOSPHERE ·
+SPECIES_AND_GENOME · PROCEDURAL_CHARACTERISTICS · CREATURE_ANIMATION · RARITY_AND_GRADES · RARITY_UNIVERSAL · CAPTURE_AND_BIOSPHERE ·
 COMBAT_AND_CONQUEST · PROGRESSION · ECONOMY_LOOT_CRAFTING · QUESTS_AND_CHAPTERS ·
 BREEDING_AND_SHARING · DETERMINISM · SAVE_SYSTEM · UI_PRESENTATION · AUDIO · AUDIO_LICENSES ·
-EXPLORATION_SHIPS_LOOT_AND_COMPANIONS) are current system references. Update the affected reference
+EXPLORATION_SHIPS_LOOT_AND_COMPANIONS · LOCAL_AI_GENERATION) are current system references. Update the affected reference
 and `celestial-frontier-codebase-reference.md` in the same batch as its code; source wins when they
 disagree. `PROCESS_LAWS.md` is the standing reference for earned implementation/testing laws.
 
@@ -17,274 +17,171 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-05 · BATCH 4 FINAL REVIEW HANDOFF
+## CLAUDE SESSION HANDOFF — 2026-10-01 (session 7) · ART RESUMED · AI FINISHER IN THE LOOP · C132 PROGRAM ISSUED
+**Session 7 (2026-10-01), on top of the session-6 block below (still valid unless superseded here):**
+- **Dakk resumed development** (option b): "I want the AI runtime involved" (meaning: in the art work) and the priorities are the
+  documented battle vision — local AI generation, battle scenes, animations, the smooth Pokémon/FF-style painted battle.
+- Merged Codex's housekeeping `4cf16a128` (`f307d0a0`); develop gate PASS (5,726 / 2 expected / 2 skipped) with the local-AI
+  runtime set aside and restored.
+- **C121 scored** (`37123ed3`): 11/24 native PASS; accepted Finch, Sandpiper, Wasp, plus Ptarmigan and Vulture on the remainder-
+  island repair (`audits/BIRD_ISLANDS_C121_20261001`). Lark, Chough, Hawk, Crow, Snowy Owl held: island 5.9–41.6 % > 5 % cap (D28).
+  **Coverage 179/631 (28.4 %), 18 held.**
+- **AI finisher in the art loop** (`audits/AI_FINISH_C121_20261001`): `finish-batch.mjs` (D26 runner generalized; labels derived for
+  polygon fits) + `rebind-batch.mjs` (copies only finisher-changed pixels so the keyer's despilled edges stay) + `native.mjs`.
+  5/5 conservation PASS, ~44 s each, phone zero-model; `painter-vs-finished.jpg` shows the change on G2 originals is subtle.
+- **C132** (`audits/MAILBOX/C132_ART_PROGRAM_20261001.md`) is the whole remaining battle/art/local-AI program for Codex, written
+  from MOTION_KIT, ART_KIT Arena/Effects, ATTACK_ANATOMY, SOUND_KIT, §20 and C15. Claude's side: score every batch (incl. finisher),
+  wire arenas into `compileHabitatBattle` and effects into the stage the day they land, §20 Command/S4/boss proposal.
+- **Disk (2026-10-02, Dakk's word):** deleted the rewrite verify copies `~/Backups/cf-verify-checkout`, `cf-verify-from-github`, `cf-verify-develop`
+  (~43 GB; the ref lists kept in `~/Backups/cf-verify-from-github-lists/`). The pre-rewrite backup, `cf-push-ready` and `cf-identity-rewrite-v4`
+  (~35 GB) still wait on GitHub Support. Overnight agent worktrees are removed after each merge (~19 GB each). 154 GiB free.
+- **Overnight 2026-10-01/02 (C132 program, both lanes):** Claude-side builds merged: theme-effect registry + all 11 painted
+  themes wired; home-ground arena routing from delivery manifests, live encounter worlds, medium-aware (water sets only when both
+  fighters swim); effects launch at the attacker's posed contact joint; guardian boss choreography (`?guardianChoreo=1`, off; D2 bear
+  film PASS in `audits/GUARDIAN_CHOREOGRAPHY_20261001/film-d2-bear-01`); G1 reviewed absence now reaches the author before its checks.
+  **Dakk decided D29 (arena canvas 1672×941) and D30 (WebP runtime plates in the offline pack), and accepted all 45 arena sets —
+  every one of the 43 biome families has a painted arena** (pack 83.5 MB / 128 MiB). Scored C136 (reptiles: Iguana, Horned Lizard,
+  Land Iguana), C151 (Wildebeest, Saiga — first ungulates); all accepted creatures AI-finished + filmed. **Coverage 184/631.**
+  Open: reptile sprawler motion profile (C163), head-down islands over the cap (D28), Codex's I5 epoch on `72bbe1531` (my develop gate:
+  5,963 PASS, only the expected producer red).
+- **Later 2026-10-02:** combined I5 re-certified on the 45-WebP-arena + sprawler product (`i5-v2-20e80c9127b1`); develop gate
+  GREEN (5,975 PASS, 0 red); anthropic/mac pushed. Coverage **196/631**: the 10 sprawler reptiles (Codex's C173 motion profile),
+  Mara, Lark + Hummingbird (C181 head contours), Bat (C190 spread reference; first membrane flier) — all AI-finished + filmed.
+  Held: Hawk/Crow/Snowy Owl + Capuchin (a pointed nape/shoulder spike in the head-down late idle — a cross-family motion class,
+  Codex diagnosing, C172), Wild Pony (fleck), Gorilla. New families need more references (C168). **Review trap:** the crop sheet
+  `native-g2c54/crops.mjs` shows only the ground band — review aerial fighters on full frames. Dakk's queue: three arena repaints
+  (marsh-r3, dunesea-r2, freshwater-lake-v3 — registration is a product change for the next I5 batch), guardian choreography
+  default, D28, preview redeploy, PR #44.
+- **STATE 2026-10-04 (read this first in a new session):** coverage **283/631 (44.8 %)** after session 8b (see the SESSION 8b/8 lines below)
+  (`audits/GENERATED_GALLERY_20260927/coverage.json`). Both lanes pushed and develop-green (6,005); I5 re-certified on Codex's
+  456ac7c52. Decisions D28 (island cap 0.5), D29 (arena 1672x941), D30 (WebP arenas, all 45 accepted), D31 (cast attack for
+  limbless/sessile — merged) are in `audits/MAILBOX/DECISIONS.md`. **Pending:** Dakk authorized ONE combined I5 3+1 + ONE develop
+  gate on Codex's `f8ff0413e` (mailbox C204) — Codex runs it; hold native/heavy CPU until its TERMINAL row. **Next for Claude:**
+  score Codex's C274–C281 deliveries (48 identities) and re-score Supply B cephalopods with the qualified Octopus reference;
+  per batch: `score-batch.mjs <batch> <tag> --fish-seams --extra-refs=audits/G1_AUTO_AUTHOR_20260926/pilots/reference-pool-extras-c223.json`
+  → full-frame + zoomed late-idle review → island repair (`audits/BIRD_ISLANDS_C121_20261001/run.mjs` pattern) → registry/coverage
+  → AI finish (`audits/AI_FINISH_C121_20261001/{finish-batch,rebind-batch,native}.mjs`) → mailbox row → push. **Laws learned:**
+  post "Claude native window ACTIVE/TERMINAL" rows around native work; a Codex reservation ends only at its TERMINAL row; never
+  `pkill` by name; scrub `/Users/<name>` to `~` and check `mode 120000` symlinks before every commit; review fliers on FULL
+  frames (the crop sheet shows only the ground band); after a TaskStop of a native run remove this worktree's stale workspace lock;
+  zsh does not word-split `$x` (use explicit args). The all-pairs sweep stays on HOLD until Dakk says otherwise.
+- **SESSION 8b (2026-10-04, Dakk "do more"):** coverage **283/631 (44.8 %)**. Hyrax + Tuna accepted from Codex's C287 successors;
+  **sweep 1** (`audits/SWEEP1_20261004`) re-scored EVERY delivered original of an uncovered species in one run (505 packets, 250
+  species, 19-entry pool): 480 scored → 43 static → 41 native → 8 accepted (Cat, Bear, Fishing Cat, Albatross, Elk, Caribou, Lemming,
+  Prairie Dog), all AI-finished (`audits/AI_FINISH_SWEEP1_20261004`). New tools: `review-sheets.mjs` (frames + 2x zoom per film; batch
+  now emits them under `native-<tag>/review/`), resumable native loop and `--pilot=` in `score-batch.mjs`. Yield blockers ranked for
+  Codex in mailbox C210. **To re-run after any Codex fix:** rebuild the pilot (uncovered species only) and run `score-batch.mjs
+  audits/SWEEP1_20261004 sweep<N> --fish-seams --extra-refs=<pool> --pilot=<pilot>`; commit only accepted subjects' stills.
+- **SESSION 8 (2026-10-04, done):** coverage **273/631 (43.3 %)**. Codex's C204 I5 3+1 + develop GREEN on f8ff0413e (selection
+  179b34902) and its C285 short-tail Reindeer reference are merged. Static 17/47 (`adc3e4cd7`), native 16/17 (Falcon FAIL, folded
+  triangles), full-size review `audits/REVIEW_C274_C275_20261004/review.json`: **ACCEPT Cardinalfish, Grizzly Bear, Capybara** (island
+  repair `audits/ISLANDS_C274_20261004`), AI finish + finished-rig native PASS (`audits/AI_FINISH_C274_20261004`). HOLD-minor Hyrax and
+  Sparrow (hairline see-through seams). RED/HOLD for 11 others, in three systemic classes for Codex: (1) held faint folds deep-bodied
+  ungulates (Wild Pig, Cow); (2) bird victory neck ribbon (Cardinal, Pigeon, Toucan, Duck); (3) `fish-seams` refused for every fish
+  by the sealed `FISH_PIPELINE_C88/fish-split.mjs` source-owner hash (Arapaima, Angelfish, Tuna, Swordfish wait on it). Cephalopods 0/4
+  (Octopus leave-one-species-out is correct). Short-tail re-score 0/7: short tails paint no `tail3`, which needs an absent-segment
+  allowance in the author policy (Codex). **Trap learned:** the `~` scrub breaks later readers of `static.json`; scrub only at the
+  final commit (memory `scrub-after-pipeline`). **Next:** Codex answers the three classes and the absent-segment policy; then
+  re-film/re-score the held ones. Bowfin stays framing-REFUSE.
+- **Open for Dakk:** D28 (island cap; 6 more birds now wait on it); finisher scope (every accepted G2 original vs procedural creatures);
+  dev-preview redeploy; PR #44 hosted attempt.
 
-## PR #41 hosted-timeout correction — 2026-09-05
+## CLAUDE SESSION HANDOFF — 2026-10-01 (session 6, end) · DEVELOPMENT PAUSED · IDENTITY CLEANUP DONE
+Self-contained for a fresh Claude session. Codex's block follows below. Session 5's handoff is verbatim at the top of `ROADMAP_ARCHIVE.md`.
 
-Dakk/Claude's hosted handoff reports run `33976307813`, battery job `101333510983`,
-agent lane on `67f5fcffc89aea1edea5f510cfdc9452c7e775bd`, RED at
-“v2 base-profile static gates”: 1 failed / 3,099 passed / 1 skipped. The unchanged
-Glass targeted CLI test took 16,693 ms against its 15,000 ms cap (PR #40: 13,372 ms).
-The larger 301-file suite slowed heavy files across the runner; this is an instrument
-timeout correction. No retry was run; the approval label was removed; PR #41 remains open.
+**Dakk's goal (2026-09-26, verbatim):** "Can we get to the generated art? That's the main goal, so that we have the complete Earth creatures having full movement animations and all the procedurally generated animations in their various different battleground biomes." Dakk does ONE full visual pass at the end; don't stop for per-creature approvals.
+**Status:** development (art and gameplay) is **PAUSED by Dakk**. Nothing runs until he says go. C121 (24 originals, `audits/G2_C121_20260927`) is delivered but NOT scored; it is first when art resumes. Codex retains 168 generated originals (its block below).
 
-Signed, locally verified correction head: `8f8948feb857a279b347ec7ffa096582befd7a3c`.
-Only eleven timeout literals changed: Glass targeted CLI test 15,000 → 60,000 ms and
-its child 10,000 → 20,000 ms; four evidence-chain test caps and five acquisition-planner
-20,000 ms test caps → 60,000 ms. The optional acquisition 30,000 ms cap and evidence-chain
-15,000 ms child timeout remain unchanged. Assertions, fixtures, selection, worker settings,
-global config, product, tools, pins, policy and workflows are unchanged.
+**Where things stand (all ids are post-rewrite)**
+- **I5 is fixed.** Codex's local proof passed 3 calibrations + 1 certification with every limit unchanged; the v2 certificate is admitted (`tests/compendium-active-certificate.test.ts`). 5,725 tests and all 7 required owners pass, and Claude confirmed it independently. Codex's `openai/mac` head is `73238cb4`: the rewritten form of its old `13f07d07`, plus the identity re-seal.
+- **`anthropic/mac`** is pushed through the commit adding this block. Develop profile **PASS: 5,726 tests, 560 tool tests, 0 red**. Typecheck, `--noUnusedLocals`, artaudit, overridecheck, speccheck, overridecontrol, the Actions budget policy selftest and the legacy gates are all green.
+- **PR #44** (`anthropic/mac` → `develop`) is the clean continuation of PR #43, which was closed unmerged and goes to GitHub Support for deletion. #44 has **no labels**. A hosted attempt is Dakk's word: apply ONE label, `actions-budget-approved` (the bounded agent lane, rehearsed locally), one attempt and no retry. The full chain was not rehearsed.
+- **`develop`** is `3a5cc296` and shows 10 sealed-pin reds until #44 merges (no direct commits). **`main`** is `8ad32c7b` and turns green at the next release.
+- **Decisions open:** D25 (shopping stays off; C110 data point recorded), D27, D28 (remainder-island cap: keep 5% or raise to 10% for reviewed subjects; the default keeps 5%).
+- **Art progress:** 175 of 631 Earth species (27.7 %) are accepted and 13 are held (`audits/GENERATED_GALLERY_20260927/coverage.json` counts accepted only).
 
-All requested commands passed on that exact signed source in a fresh local checkout with
-no root `main.js`, no worker overrides and clean tracked source before/after:
-typecheck 2.955 s; artunused 1.476 s; Vitest 301 files / 3,100 passed / 1 skipped
-(43.631 s); exact `node tools/check-profile.mjs --profile=develop` once (46.837 s).
-The profile also passed artaudit, overridecheck and speccheck. No browser run was repeated.
+**IDENTITY REWRITE — 2026-09-30/10-01 (owner-approved force push; read before anything else)**
+- All history of this repo and both Pages repos was rewritten to remove the owner's personal identity. The public identity is **TheDakk**; the owner is referred to as **Dakk**. **Never write the owner's real name, e-mail or user-folder name** into any file, commit, message, tag or branch name. Write home paths as `~/…`.
+- **Every commit id before 2026-10-01 changed.** Ids quoted in older docs, mailbox rows and evidence refer to the OLD history. The receipt, byte-for-byte proof and tools are in `audits/IDENTITY_RESEAL_20260930/`. Rewritten commits are unsigned (unavoidable); new commits are signed as before.
+- The rewrite turned old user-folder paths into `/Users/dakk/…`. In sealed records the project resolves `record.source` through `repoRelativeSource`, so they still work, and live instructions now use `~`. **Two dev tools still hard-code `/Users/dakk/…` for Codex's worktree:** `port/v2/tools/anatomy-verify/score.mjs` and `calibrate.mjs`. Fix them to `os.homedir()` only together with the next I5 certificate re-measure: any `port/v2` source change alters the built service worker and breaks the producer authority (proven 2026-10-01). Historical text keeps the rewritten form.
+- **Pre-push identity guard** (`.git/hooks/pre-push` + `.git/identity-guard/old-commits.txt`) is in the shared Mac clone (every worktree) and the site clone, and in both Windows clones. It stores only sha256 digests and refuses old pre-rewrite commits, the name word, the surname, the address/account, home-folder paths and the "owner" field. Never use `--no-verify`. **A new clone gets the guard before its first push.**
+- `main`'s workflow file still triggers `test-battery` on every push to `main`, with no authorization job (one such run was cancelled 2026-10-01). Replace it in the next release.
+- **Waiting on GitHub Support:** the purge of `refs/pull/1–42/head`, PR #43's head/merge and the cached old commits (purge list in Dakk's local support folder, unchanged). **After Support confirms:** delete the Mac backups (`cf-identity-backup-20260929`, `cf-identity-rewrite-v4`, `cf-push-ready`, the verify folders, `support-request`, the saved package-lock copy) and show Dakk they are gone. Windows deletes its own.
+- The dev preview site holds rewritten build files whose pinned hashes no longer match. Redeploy it at Dakk's word.
 
-OpenAI/Codex on macOS owns `/Users/dakk/Projects/celestial-frontier-openai-mac`,
-`openai/review-batch4-gameplay-20260905` and its matching origin branch; unrelated
-untracked `.DS_Store` remains untouched. These four reporting files form a signed
-documentation-only successor; the final user handoff names its exact pushed SHA.
-Budget UNFROZEN, PUBLIC per Dakk, private fallback cap 3,000; zero hosted attempts authorized.
-The authorized branch push updates existing PR #41 → `develop` without a workflow trigger
-(the battery is label-only; other workflows are manual). Codex stops after this push.
-Dakk separately authorizes agent-lane attempt 2 for the exact reported head and base;
-Claude may fetch the correction from its own `anthropic/windows` checkout. No new PR,
-label, hosted attempt, merge or release is authorized. No need to open Claude now unless
-Dakk wants that review; the copy-ready PR fields remain in the proposed-PR audit.
+**Generated-art pipeline (state at the pause; details in mailbox rows C101–C121 and the audit READMEs)**
+- `score-batch.mjs <batch> <tag> --fish-seams` runs the whole pipeline in one command; water-only media get the aquatic arena.
+- `remainder-islands-fit.mjs` repairs head-down floats per subject after a full-size look (5% cap, D28).
+- C110 ungulates are 0/24 against the current references; the fix is hoofed reference packets from Codex (asked in C115).
+- Soundscape admission is done: no PCM is rendered or kept while playback is refused.
 
-## Review correction — tracked v1 test source, 2026-09-05
+**Next, in order (Claude) — only at Dakk's word**
+1. Read Codex's mailbox (`~/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) and merge any newer signed `openai/mac` (`--no-ff`; keep this block). Run the develop gate before pushing.
+2. When Support confirms the purge: delete the Mac backups listed above and show Dakk they are gone.
+3. At Dakk's word: dev preview redeploy; PR #44 hosted attempt (one label) and normal review.
+4. When art resumes: score C121, then each new batch with `score-batch.mjs … --fish-seams` (out of the sandbox, never during a Codex reservation). Look at the reaction AND `turn3-hit-idle-90` at full size, write every registry note, run `gallery.mjs` and `coverage.mjs > coverage.json`, add a mailbox row, commit and push. Re-score C110 when the ungulate references arrive (the mutant battery must stay identical). Admission only after Dakk's end-of-pass approval.
 
-Signed correction source: `2881cda1818b4d81b98f10da63c442b9f837d504`, successor to reviewed `bc42dbc`.
-Only the travel-presentation test's module-level legacy read changes to
-`readTrackedV1Source().script`. The sixth test still uses fs/fileURLToPath, so those
-imports remain. All six test bodies/assertions, product files, tools, pins and authorities are unchanged.
+**Traps (obey them)**
+- **Local-AI runtime trap (2026-10-01):** the I5 producer authority was re-bound on a clean clone WITHOUT the optional, git-ignored local-AI runtime (`tools/local-image-generation/node_modules`). A worktree that has it installed (this one and Codex's i5-back-proof) emits extra `dist/__local_ai/` assets and a different service worker, so the develop gate shows exactly one red: `current-producer-authorities` (`inputs.serviceWorker.sha256`, `sha256`). With the folder renamed aside the gate is PASS (verified 2026-10-01, then restored). The hosted runner has no runtime, so it matches. Run the gate with the folder set aside; never re-bind the certificate to a local-AI build. A lasting fix (exclude `__local_ai/` from the service-worker identity) is a source change and waits for the next I5 re-measure.
+- Disk ≥ 40 GiB free. Browser-owning commands run out of the sandbox. Codex's sealed inventories are never rebound by Claude.
+- Inline `//` comments swallow dense one-line JS; use `/* */`. `Buffer.slice()` is a view.
+- zsh: no word-splitting (use arrays); `$VAR:r…` is a modifier, so write `${VAR}:refs/…`; `path` is tied to `PATH`, so never `read … path`.
+- `git fetch --prune` does NOT overwrite existing local tags; use `git fetch origin '+refs/tags/*:refs/tags/*'`.
+- A green number is not visual acceptance. The static runner needs its fit and output under `audits/`.
+- Codex reservations: when Codex posts "native/performance reservation active", run no native, gate or heavy CPU until its terminal notice.
 
-With root `main.js` absent: typecheck PASS (2.470 s), artunused PASS (1.749 s),
-Vitest PASS (301 files / 3,100 passed / 1 skipped; 61.000 s), and
-`node tools/check-profile.mjs --profile=develop` PASS once (67.410 s).
-The profile also passes artaudit (34 sources), overridecheck (1,014 keys) and speccheck
-(454 fields). Both full suites used local `VITEST_MAX_WORKERS=4`; selection and timeouts
-are unchanged. The ignored bootstrap was restored byte-for-byte; unrelated .DS_Store is untouched.
+## Current Codex sprint handoff — 2026-10-04, C281 terminal
 
-The first unrestricted Vitest run stopped at 299 files passed / 2 failed: the existing
-arc4-acquisition-planner 5,000 ms and evidence-chain-tools 20,000 ms timeout limits.
-No ENOENT occurred. That red is retained; only the local worker cap changed before the passing run.
-Initial / passing-suite / profile log SHA256:
-`d5ffb8673de34e5a5f4c0d06923c02a29c81e310e1b7d50ad17a65e07cc555ce` /
-`18e5f66f378fefe1c6d4b4423927d46c093773810a208cf329477bdb6c3a9f5e` /
-`09c98d45f492b34549eecb5f6754d8448bca5a630d8e5ad5e04d59dc2132092f`.
+**No active reservation: C272 and C279 TERMINAL—RELEASED.** All source agents, CPU and browser work finished. All-pairs remains HOLD, zero runs.
 
-Codex publishes the signed correction and the three requested handoff documents; the final
-handoff names the reporting successor's exact pushed SHA. Claude may fetch that head from its
-own anthropic/windows checkout; this work is not in develop. Dakk separately authorizes the
-single agent-lane attempt. Budget UNFROZEN, PUBLIC, zero hosted attempts authorized.
-No PR, label, hosted attempt, merge or release was performed.
+**Completed authorized chain:** Dakk/C203 authorized exactly one I5(3+1)+develop on456ac7c52. Four phases/named verifiers, selection/replay allPASS. Selection08dd81237(G); develop6,005PASS/2expected fail/3skipped/0red. Terminale2e9bb10c(G) and source-onlyd8755d36d(G) are pushed normally onopenai/mac with guard intact. Optional local-AI node_modules was set aside and restored. No retry, limit change or re-bind; instrument link relative. Evidence `audits/C203_I5_EPOCH_20261004`. Archived temporary checkout recovered25.27GiB; final free122.45GiB.
 
-## Morning report — Batch 4 complete, 2026-09-05
+**New LOCAL product awaiting fresh gate authority:** dfb009650(G), signed mailbox-only --no-ff mergef50abbd59(G). Low-slack painted trot uses fixed0.25 torso/root excursion below existing3% anatomical slack, preserving full idle/limbs/timing/limits. Observed-socket insects retract toward their sockets with two hit/tame steps. An earlier runtime lattice search was rejected for4.7s setup; final profile measured0.2–1.3ms in Node.147 motion tests,49 insect tests,3TypeScript projects/root validatePASS. Exact source manifest and all907 native inputs verified. Evidence `audits/C203_PRODUCT_CANDIDATE_20261004`. **No I5/develop has run on this product.** Dakk must authorize ONE new combined3+1+develop on this frozen product before certification/push. Never re-bind or automatically retry.
 
-The signed core and all five primary gameplay items are accepted and pushed. Stretch 3a–3c
-is complete. Step 3d's first analytical pass is recorded; answerability and throttled galaxy
-timings remain parked because the existing profiler could not resolve them. No product step
-was reverted. All final required correctness checks passed.
+**Red Fox delivery:** `audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit` closes observed nape/root-patch openings; static13actions/presentation and35 actual-rig software samplesPASS. Native onf50abbd59:933live/937encoded frames,4turns,15.53s,zero refusals/skips/capture failures. Film/review `audits/C203_FOX_NATIVE_20261004`. Full-size/native reviewed poses retain continuity; Claude owns AI finish/re-film/gallery after certification. **Snow Petrel remains visualRED:** old-source proximal-wing tear; folded-source tail/wing distortion. Preserve every predecessor and its refusal.
 
-OpenAI/Codex worked on macOS in `/Users/dakk/Projects/celestial-frontier-openai-mac`,
-branch `openai/review-batch4-gameplay-20260905`, with its matching origin branch.
-Base develop is `9ea01041dcdc711190bbf909ea8bb743cd993734`; a final fetch confirmed that base unchanged.
-The original `openai/mac` history stays at `84b6f22`; parked backup
-`cf1b9a7843200ecc281c5113b4139909dc0e3a29` remains preserved.
+**C274+C275 supply:**48 new identities, two24-original batches (`audits/C203_CREATURE_SUPPLY_20261004` and `audits/C203_CREATURE_SUPPLY_B_20261004`). A23framingPASS/BowfinREFUSE; B24selectedPASS with4failed originals retained and corrected successors.48 provenance/negative controls total; all sources full-size reviewed with anatomy/style holds. Claude scores exact selected sources with qualified pools; no admission count claimed. Coverage remains270 until Claude updates it.
 
-**Final validated head: `b173353b9e273c4b223e8ee8d6ee181081f79b4a`, pushed at 13:11:29 UTC.**
-This morning report is carried in a signed documentation-only successor. Its own commit hash
-cannot be embedded in its contents; the final user handoff records that successor's exact
-pushed SHA and time. Browser evidence below names the validated head, not the later report.
+**C276–C277 references terminal HELD:** primate Gorilla/Howler static/hand-contact prototype passes, but observed underlap gaps remain; one Gorilla source edit still conceals arm root. Insect Beetle static13/13 but elytral/fringe tears; Grasshopper successors9/13 and visualRED. Myriapod source/count/joint-budget blockers remain. Qualified pools empty; use `delivery-v2.json` in `audits/C203_PRIMATE_REFERENCES_20261004` and `audits/C203_ARTHROPOD_REFERENCES_20261004`. Do not use diagnostic fits as qualified references. Octopus qualified pool remains `audits/C202_CEPHALOPOD_REFERENCES_20261004/qualified-reference-pool.json`; retain other pool entries when adding it. Prior Tortoise/Albatross repairs are in the now-certified456ac7c52 product.
 
-### Checkpoints
+**Next steps:** Claude reads C274–C281, scores eligible originals and retains all named holds. Codex requests one fresh combined I5+develop on the local candidate; only after authorization post a new reservation, run unchanged limits/first-red stop, select/replay, restore optionalAI, post terminal and normally push own branch ifgreen. No Dakk relay/app switch needed. No PR, label, hosted run, develop/main merge, release or deploy. Read sibling mailbox at batch end and before native; latest remainsC203. Never commit absolute symlinks or owner identity; use Dakk/TheDakk and ~/ paths.
 
-All times are UTC on 2026-09-05. Fast counts are test files / passed tests / skipped tests.
-Browser durations are command durations, not player-response timings. Every accepted phone
-pair had zero findings and zero instrument failures.
+## Codex C204 gate checkpoint — 2026-10-04
 
-| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
-| --- | --- | --- | --- | --- |
-| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
-| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
-| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
-| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
-| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
-| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
-| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
-| 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
-| 3c bounded extraction | Accepted source `b76b69aa7099f3d7db99380e6687be18be7ead51`; documentation successor follows | `4fa82d0c9fd648fcb05497552e244d594b1a959f` pushed 2026-09-05 13:05:48 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures |
-| 3d phone analysis | Accepted source `b173353b9e273c4b223e8ee8d6ee181081f79b4a`; documentation successor follows | `b173353b9e273c4b223e8ee8d6ee181081f79b4a` pushed 2026-09-05 13:11:29 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 386.147s; small/large phone 16.466s / 16.521s PASS; zero findings/instrument failures |
+Exact f8ff0413e already includes dfb009650/f50abbd59 product bytes. C282 is TERMINAL—RELEASED: one I5 3+1 plus all four named verifiers PASS; signed selection179b34902(G), activation replay PASS; one develop6,026PASS/2expected fail/3skipped/0red. OptionalAI restored; no retry or limit change. Evidence `audits/C204_I5_EPOCH_20261004`. Normal own-lane push authorized; all-pairs HOLD and no hosted/integration/release authority. Separate C284 reservation now checks the independently hand-authored C163 Reindeer short-tail reference; no product change or extra gate. Octopus anatomical reference does not yet count as gallery-admitted; Claude owns style review. Other static holds remain retained.
 
-### Final validation
+## Fresh Codex handoff — 2026-10-04, C285 terminal
 
-The new raw-evidence archive is retained locally, outside Git. Automatic approval review rejected its public upload because raw local logs and phone evidence were not specifically authorized for that destination. Its publication is parked; this report retains exact source, result and artifact identities. No archive content is included in this reporting push.
+**No active reservation. C282 and C284 TERMINAL—RELEASED.** Exact C204-authorized f8ff0413e already contains dfb009650/f50abbd59. ONE I5 3+1 and four named verifiers PASS; signed selection179b34902(G) activation replay PASS. ONE develop6,026PASS/2expected fail/3skipped/0red. OptionalAI restored, unchanged limits/no retry/re-bind; root validate/golden50 PASS. Green handoff5c869220f pushed normally with identity guard. Evidence `audits/C204_I5_EPOCH_20261004`. Temporary exact checkout archived; no extra epoch or gate.
 
-At the final validated source: typecheck and artunused PASS; **301 test files, 3,100 passed,
-1 skipped**, four workers with unchanged selection and timeouts. Glass selftest PASS in
-1.996 s. Slice PASS in 386.147 s; small/large phone PASS in
-16.466 / 16.521 s. Root validation PASS with all **50 legacy
-fingerprints unchanged**, and Actions budget-policy selftest PASS with **81 controls**.
-The fast suite checked the unchanged product/test tree before signing the evidence-document
-commit; the final selftest/browser/root/policy checks ran on the exact clean committed head.
+**One qualified independent short-tail reference delivered:** C163 Reindeer contour authoring, selected `audits/C204_SHORT_TAIL_REFERENCE_20261004/islands-joins-02/fit`.19 static actions/2,299 samples +1,692 presentation,25 loaded-rig comparisons and5 native turns/1,168 live frames allPASS; source conservation/mutation controls PASS. Source-only root/spine join and609-pixel D28 remainder placement repair observed hole/floats; failed visual predecessor retained. No product or source-pixel changes. Pool supplement and a combined pool preserving Claude's18 C223+Octopus entries are delivered. This is anatomical-reference qualification, no new gallery identity or held-out target-pass claim.
 
-- Slice terminal log SHA256: `751ca0d127d5323aaa9e5cab07af922b4fb97b89b9de270c4afbdab1dc35824b`.
-- Small phone: `20260905131837619-84499-5f1df329d7fc`;
-  report SHA256 `ec558fc2838e2881161b7c6ef3d2f5417c20ece6d2045e4762c22dfcd3dd7adf`.
-- Large phone: `20260905131854210-84645-6fbf165724b3`;
-  report SHA256 `7f5d8ecf513e163cc13cb8c992c1a10d7b7333a646fe7081c4ac6e67fbe56f21`.
-- Current draft: **79 outcomes**, rendered ordered-li SHA256
-  `351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`.
-- Compendium producer: `c1e784b7f32016066b0a41a81b5917b63c0712ef876a35d7ff3d7a90fe9acce4`.
-  Measurement authority, ruler, ceilings and samples are byte-identical to the base.
-- All workflow files, the Actions policy and all three protected portrait-lock references
-  match the base. No artlock run, hosted attempt, label, PR, merge into develop/main or release.
+**Claude next:** read C283–C285; consume signed green certificate/product, verify identity, then score seven short-tail holds with the supplemental reference and unchanged positive/mutation controls. Octopus does not yet count as gallery-admitted: qualified anatomy/native evidence exists, but style/gallery remains Claude's decision; no self-reference shortcut. Other holds persist: Black Bear/Okapi gallop compression, Kookaburra alert/cast/victory folds, Wahoo caudal/body proportion, Giant Octopus rear appendage13.2%, Cuttlefish arm2 coverage19%, Squid wrong-family. `holds.json` retains these. Codex has completed this bounded batch; future product fixes require a separate certified head. All-pairs HOLD/zero runs. No PR/label/hosted/develop/main merge/release/deploy, and Dakk need not open the other app or relay the mailbox.
 
-Exact command records, immutable phone metadata and every earlier red are retained below.
-These are local Edge/CDP phone diagnostics; they do not supply full twelve-row certification,
-canonical Chrome named verification, native heap evidence or physical iPhone/Safari proof.
+## Fresh Codex handoff — 2026-10-04, C287 terminal
 
-## Signed WIP disposition
+C286 TERMINAL—RELEASED; no native/heavy job remains. Read sibling C205–C208 at start
+and C208 again at batch end. Current gallery coverage273/631 belongs to Claude.
+C204 product remains unchanged and certified; no extra I5/develop run in this batch.
 
-The signed WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` remains preserved as provenance. Its primary items were recovered individually onto the current core; the whole WIP was not applied.
+C88 fish owner re-sealed after sole-delta review (new semantic ownership refusal),8
+byte-identical controls, selector mutation controls and semantic guard test. Four fish
+successors pass static/native. Arapaima/Tuna/Swordfish and source-joined Hyrax are ready
+for Claude's independent visual review/AI finish/re-film. No new admission claimed.
+Angelfish filament, Sparrow victory wing, Falcon composed approach folds and Stork
+crown remain HOLD. Wild Pig/Cow faint and Cardinal/Pigeon/Toucan/Duck victory motion
+experiments remain audit-only: no product edits. Concrete remaining defects and
+selected paths are in `audits/C208_REPAIRS_20261004/delivery.json`.
 
-| WIP item | Final primary disposition |
-| --- | --- |
-| Accepted Starter bioscan Charter | Recovered in 2a: acceptance followed by a later explicit Bioscan, the authored 15 Stardust and exact Earpiece reward; no earlier Survey/Capture backfill and no weekly lifecycle. |
-| Descent and wave-offs | Recovered in 2b: deterministic descent, the authored descent gear effects, canonical failure learning at +20 percentage points per failure capped at five, and canonical first binding for unresolved legacy seed-only history. No Hull descent reduction was introduced. |
-| Fifty-Paragon hunt | Recovered in 2c: the authored 50 exact-home catalogue discoveries, source-validated identities, found-entry Inspect versus missing-entry travel, and a separate `para10` Claim for +120 Stardust after ten finds. Protected static portraits are unchanged; pre-feature saves with an already-Bioscanned home retain the explicit refusal, with no backfill. |
-| Exact-instance progression | Recovered in 2d: individual XP, level, class, innates, wounds and recovery display; exact twins and retired snapshots; finite fractional XP preservation; the existing 486 cap and additional innate unlocks at levels 3 and 6. No care, bond, mission or new XP mechanic was added. |
-| Mature Atlas | Recovered in 2e: List/Chart, filters, Home, exact-row Remove and one-level eight-second Undo, strict route/receipt/CAS ownership, restoration of an originally absent route as absent, and bounded chart clusters that open existing List actions with focus return. |
+Missing-anatomy policy is proposed, not activated: explicit compact observed tail
+representation retaining root/tip/all pixels and terminal motion; explicitly occluded
+ear retaining visible paint and real occluder, no invented landmarks. Required
+positive/negative controls are in MISSING_ANATOMY_PROPOSAL.md. Seven targets stay held.
+Root validate passes. All native inputs hash-verified, failed evidence retained, home
+paths normalized with original hashes. Free122GiB; no temporary worktree created.
 
-| Remaining parked WIP | Reason |
-| --- | --- |
-| Weekly Charter lifecycle and joins | Weekly generation, acceptance, rollover and reward joins are separate from the accepted Starter bioscan recovery. The primary instructions did not authorize recovering them. |
-| Forge Training | The additional Forge lesson work is outside the existing fifteen-card curriculum and the ordered primary scope. Existing Training copy was reconciled only for the recovered mechanics. |
-| Living portrait preview | The preview remains outside the gameplay recovery and subject to the separate graphics pilot approval boundary. No protected-portrait or Phase 2 art work is included. |
-| Unrelated bulk copy and whole-file WIP replacements | Only copy belonging to the recovered primary owners was carried forward. Bulk Main/Guide/ROADMAP changes cannot replace the current core, independent measurement expectations, current lane policy or dated evidence. |
-
-The WIP's legacy Settings import door, “awaits Dakk's real save export” claim and blanket 78-bullet assumption are superseded, rather than future features awaiting recovery. Fresh-start policy, the retained evidence-only codec/import helpers and planned-ledger matching, and independently fixed per-checkpoint release inventories remain authoritative.
-
-Companion care/bond/missions, random loot/affix/socket/vendor tables, achievement reward quantities, conquest–imbue coexistence and an extra first-victory Guardian cache remain reserved product decisions; this is not a claim that each has an implemented WIP owner. Audio-source backup still needs Dakk's external destination and remains outside this gameplay batch. Stretch outcomes are recorded below.
-
-## Stretch outcomes
-
-- **3a:** existing focused tests reject shallow/malformed mint registration and public-registry
-  clones. The three WorldConfig assertions pin GCELL 42, Sol coordinates 560/170, and frozen
-  home/Sol anchors. Full suites exercise them; no duplicate suite or generator change.
-- **3b:** Engineering aliases the canonical frozen Research ID tuple. Independently written
-  test and browser lists still detect missing or reordered production rows.
-- **3c:** the existing landing-card owner now contains the unchanged renderer and presentation
-  state type. Main supplies the same escape function and keeps world/save checks and wiring.
-  Policy, RNG, receipt/CAS, visible disclosure and accessibility behavior remain unchanged.
-- **3d:** current phone, canvas, resource and limited boot evidence is recorded in
-  `audits/BATCH4_PHONE_EVIDENCE_20260905.md`. Unresolved profiler timings are parked;
-  no instrument change or optimization was made during the measurement-only step.
-
-## Decisions made unattended
-
-- Preserved the signed core as a real merge parent and recovered later WIP by completed owner.
-  This retained provenance and the fresh-start boundary instead of restoring stale import code.
-- Used authored descent tables and gear with seeded weather. Earth, Training and proven
-  canonical revisits roll nothing; ordinary attempts use two fixed SessionRNG draws in one
-  receipt/CAS. Wave-offs keep the ship in orbit, floor HP at one and grant no arrival reward.
-- Bound unresolved seed-only approach history on its first source-verified canonical encounter.
-  The old seed cannot prove its former full address; this retains history without inventing one.
-- Kept already-scanned pre-feature Paragon homes explicitly unavailable for new discovery credit.
-  Automatic backfill or repeated hazards would invent behavior outside explicit Discover Life.
-- Preserved finite fractional XP and used the existing level curve. Rounding would rewrite valid
-  creatures. Passive refresh preserves semantic focus with preventScroll and does not steal focus.
-- Used bounded chart clusters and existing List actions for overlapping phone targets. Eight-second
-  Undo restores the exact retained row and original route state; an absent route stays absent.
-- Restored the actual dark Paragon button background after the phone contrast red, and restored
-  the missing visible Route unavailable explanation after Atlas's browser red. Gate intent stayed
-  intact. Corrected all eight references to say a wave-off leaves the ship in orbit.
-- Kept independent expectations while correcting obsolete source spans and narrowly matching
-  existing hold/codec-timer owners. Only producer authority and exact source inventories moved;
-  no ruler, timeout, workflow, policy or measurement threshold was changed.
-- Retained the configured signer through the temporary 1Password failure; Dakk's unlock restored
-  signing and SSH. No unsigned bypass or rewritten history.
-- Parked unresolved profiler measurements because this step explicitly permits measurement only.
-  The retained result does not establish whether setup, profiler or product caused the refusal.
-
-## Blocked / reverted
-
-**No unresolved required correctness gate and no product reversion.** The optional raw-evidence archive export is blocked by automatic approval review and remains local; publishing it needs separate authorization. Fifteen browser reds were
-corrected on new sources and retained in the audit; no unchanged-source browser retry.
-The separate Step 3d measurement remains incomplete and was not rerun:
-
-```text
-Source: 4fa82d0c9fd648fcb05497552e244d594b1a959f
-Command: npm run perf -- 4
-Exit: 1; elapsed: 28.472 seconds
-SLICE PERF @ 4× CPU (phone 390×844@3x):
-  painted:    1292ms
-  answerable: NEVER
-  galaxy rebuild (throttled): -1ms
-  (v1.8.5 law: painted ≠ answerable — budgets land with plan §20)
-SLICE PERF: measurement incomplete — painted, answerable, and galaxy rebuild must all resolve
-```
-
-Log SHA256: `dd989f243a7d69411cb4cd4e452061c6e84becfed3221b4c14936641dd2f2c60`.
-Answerability and throttled rebuild remain unavailable measurements, not valid timings.
-The audit's REDS JSON contains all sixteen retained browser/profile records; full historical
-failure output remains below. Temporary signing and SSH failures are resolved.
-
-## Phone findings and remaining human gates
-
-The Step 3c phone samples record replacement readiness of **684.1 / 620.7 ms**, actual renderer
-DPR **2**, combined canvas backing pixels **1,454,080 / 3,015,840**, and released canvases **1×1**.
-Their disposed audio snapshots have zero use, so they do not prove populated-cache performance.
-Slice printed one **29 ms** rebuild; the separate 4× profiler observed paint at **1,292 ms**
-but did not resolve answerability or throttled rebuild. These sources remain separately named
-in the phone audit. The final unchanged-product phone pair additionally records replacement
-readiness of **627.6 / 611.2 ms**.
-
-Native heap/GPU allocations, populated art/audio cache behavior, installed offline pack size and
-eviction, physical iPhone/Safari persistence, thermal/battery effects and response-time percentiles
-remain unmeasured. SceneMemory stays quarantined. Combined Arc 4.5, separate Arc 5.5 HUMAN
-combat review and Gate C real-device v2 persistence remain open. The audiovisual pilot approval
-stop stands; audio-source backup still needs the separate external destination decision.
-
-## Proposed PR — review only, leave unopened
-
-**Base:** `develop` at `9ea01041dcdc711190bbf909ea8bb743cd993734`.
-**Source:** `openai/review-batch4-gameplay-20260905`; use its final signed reporting head,
-whose exact SHA is in the final user handoff. The validated product head is `b173353b9e273c4b223e8ee8d6ee181081f79b4a`.
-
-**Title:** Connect authored expedition systems, creature progression and mature Atlas
-
-**Description:**
-
-Complete the fresh-start v2 expedition loop with authored Research effects, explicit Discover
-Life and Flora meals, Scout XP, the accepted Starter Charter, deterministic descent, fifty
-Paragons, individual creature progression, and the mature Atlas. Co-deliver Guide, Training,
-release copy and current references. Preserve exact authority, one receipt/CAS, deterministic
-outcomes and the fresh-start save boundary.
-
-Verify the existing mint/clone and WorldConfig controls, share only the production Research ID
-owner, and move unchanged Landing presentation into its existing module. Record the first phone
-analysis; unresolved profiler timings and reserved gameplay/art scope remain explicitly parked.
-
-Local validation: 301 files / 3,100 passed / 1 skipped, typecheck, artunused, Glass selftest,
-exact-source Slice and both phone diagnostics, 50 unchanged legacy fingerprints and 81 budget
-policy controls. The audit records source SHAs, report identities and all prior reds. Claude's
-checkout receives this work only after reviewed integration into develop. No hosted result,
-release or deployment is included.
-
-## Paired next steps
-
-**Codex:** publish this signed report-only successor and report its exact pushed head. Handle
-bounded review corrections on the owned review branch if Dakk supplies them. The proposed PR
-remains unopened; no generic proceed or hosted authorization is inferred.
-
-**Claude on anthropic/windows:** from Claude's own checkout, fetch origin and read the exact
-pushed branch plus this audit through Git. Review the gameplay, persistence boundaries and
-parked decisions. Do not copy files or edit the Mac checkout; this work is not in develop yet.
-
-**Dakk:** open Claude now for the morning review. After that review, separately authorize the
-exact PR/agent-lane attempt. No GitHub action is required before review. Budget UNFROZEN,
-repository PUBLIC, private fallback 3,000, **zero hosted attempts authorized** for this campaign.
-Develop, main and the live release remain unchanged.
+Claude next: consume signed C287 source-only delivery, review the4 selected fits and
+retain holds. Codex next: resolve remaining source ownership plus composed motion,
+retaining good faint/tuck controls; obtain a fresh exact epoch authorization only once
+there is a reviewable product candidate. All-pairs HOLD. No PR, label, hosted run,
+develop/main merge, release/deploy, and no Dakk relay or app switch needed.

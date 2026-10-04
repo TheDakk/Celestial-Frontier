@@ -1,0 +1,88 @@
+{
+  "schema": "cf.c169-source-contour-recut/v1",
+  "id": "wild-pony",
+  "originalAuthoringSha256": "6600e471495ca21c0e76b6ae3c5730c8db96bf0854acbdfcefa27d70b866d0a3",
+  "candidateAuthoringSha256": "24505dd92868407f61f911b97bc067a4a7a078eb3e2e8de03dc8845e80dbf88a",
+  "sourceMasterSha256": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485",
+  "scope": {
+    "kind": "two-small-ear-tip-contours",
+    "sourceAttribution": {
+      "part": "spine",
+      "joint": "spine",
+      "source": [
+        871,
+        353
+      ],
+      "alpha": 255,
+      "face": 162,
+      "vertices": [
+        119,
+        104,
+        103
+      ],
+      "published": [
+        0.7401473177106757,
+        0.40052332689887593
+      ],
+      "stage": [
+        589.9899446231522,
+        287.84593690983024
+      ],
+      "distance": 0.15439088819035532
+    },
+    "reason": "Exact native fleck is existing near-ear-tip source paint at871,353 incorrectly owned by spine. Two small visible pinna-tip contours receive existing ear-tip joints; prior owners and all body/limb polygons stay unchanged.",
+    "regions": [
+      {
+        "id": "reviewed-near-ear-tip-fleck",
+        "joint": "earNearTip",
+        "layer": "near",
+        "polygonPx": [
+          [
+            861,
+            339
+          ],
+          [
+            886,
+            339
+          ],
+          [
+            886,
+            363
+          ],
+          [
+            861,
+            363
+          ]
+        ]
+      },
+      {
+        "id": "reviewed-far-ear-tip-fleck",
+        "joint": "earFarTip",
+        "layer": "far",
+        "polygonPx": [
+          [
+            920,
+            348
+          ],
+          [
+            938,
+            348
+          ],
+          [
+            938,
+            366
+          ],
+          [
+            920,
+            366
+          ]
+        ]
+      }
+    ]
+  },
+  "landmarksChanged": false,
+  "sourcePixelsChanged": false,
+  "runtimeChanged": false,
+  "unchangedCap": 0.05,
+  "qualityAccepted": false
+}

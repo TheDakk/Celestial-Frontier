@@ -1,0 +1,52 @@
+{
+  "schema": "cf.c163-source-thigh-repair/v1",
+  "sourceMaster": {
+    "path": "audits/G2_C136_REPAIRS_20261002/19-crow/master.png",
+    "sha256": "6ebdf48f0bc74bc9bd8f0b7087e2ad9ede074a04218d596a78e14c3bdcd6016f"
+  },
+  "baselineComparison": {
+    "path": "audits/C163_REFERENCE_REPAIR_20261002/reference-comparison/19-crow/expanded.json",
+    "sha256": "52ef155f15e06d0c9738cd2d9961aff0928be0a8a61016aea74c873438aaa4df"
+  },
+  "originalRefusal": [
+    "missing-anatomy: part far-thigh (legFarKnee) covers 19% paint (reference 88%)"
+  ],
+  "addition": {
+    "id": "reviewed-far-thigh",
+    "joint": "legFarKnee",
+    "layer": "far",
+    "polygonPx": [
+      [
+        690,
+        708
+      ],
+      [
+        732,
+        712
+      ],
+      [
+        735,
+        772
+      ],
+      [
+        750,
+        795
+      ],
+      [
+        731,
+        807
+      ],
+      [
+        704,
+        783
+      ],
+      [
+        690,
+        756
+      ]
+    ]
+  },
+  "review": "Full-size source shows a feathered far thigh at x690–735, y708–778, continuing into the visible diagonal tarsus. The transferred thin polygon sits mostly to its right. This new contour follows the painted limb and retains the original point at 722.1,778.1.",
+  "notIndependentReferenceLandmarks": true,
+  "qualityAccepted": false
+}

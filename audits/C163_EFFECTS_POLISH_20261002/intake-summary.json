@@ -1,0 +1,229 @@
+{
+  "schema": "cf.c163-effects-polish-summary/v1",
+  "qualityAccepted": false,
+  "nativeProof": false,
+  "timingChanged": false,
+  "originContactAnchorsChanged": false,
+  "rows": [
+    {
+      "theme": "storm",
+      "phase": "launch",
+      "anchors": "audits/C163_EFFECTS_POLISH_20261002/storm/anchors.json",
+      "anchorsSha256": "7e99d6930027a8c1e898b9fc6a7cb212c5938852c7cdcff7203da8d91d3caa55",
+      "ok": true,
+      "findings": [],
+      "phases": {
+        "launch": {
+          "painted": 53044,
+          "edge": 14507,
+          "fringe": 33,
+          "fringeRatio": 0.002274763907079341,
+          "accentShare": 0.03341959664465465,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 141,
+            "y": 418,
+            "width": 389,
+            "height": 323
+          }
+        },
+        "travel": {
+          "painted": 50000,
+          "edge": 16567,
+          "fringe": 59,
+          "fringeRatio": 0.003561296553389268,
+          "accentShare": 0.00533109558950564,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 107,
+            "y": 455,
+            "width": 688,
+            "height": 280
+          }
+        },
+        "impact": {
+          "painted": 33540,
+          "edge": 11750,
+          "fringe": 4,
+          "fringeRatio": 0.00034042553191489364,
+          "accentShare": 0.012455516014234875,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 459,
+            "y": 430,
+            "width": 446,
+            "height": 243
+          }
+        }
+      }
+    },
+    {
+      "theme": "void",
+      "phase": "launch",
+      "anchors": "audits/C163_EFFECTS_POLISH_20261002/void/anchors.json",
+      "anchorsSha256": "1686432301df33d6b2814c2f126469cc42ce2de5b4b6af2444407710083efd0d",
+      "ok": true,
+      "findings": [],
+      "phases": {
+        "launch": {
+          "painted": 47785,
+          "edge": 15708,
+          "fringe": 31,
+          "fringeRatio": 0.0019735166793990325,
+          "accentShare": 0.004766031195840554,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 115,
+            "y": 389,
+            "width": 327,
+            "height": 360
+          }
+        },
+        "travel": {
+          "painted": 65324,
+          "edge": 18045,
+          "fringe": 0,
+          "fringeRatio": 0,
+          "accentShare": 0.006307494894363015,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 110,
+            "y": 430,
+            "width": 705,
+            "height": 256
+          }
+        },
+        "impact": {
+          "painted": 37525,
+          "edge": 15859,
+          "fringe": 39,
+          "fringeRatio": 0.0024591714483889276,
+          "accentShare": 0.001470124960621653,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 580,
+            "y": 392,
+            "width": 287,
+            "height": 333
+          }
+        }
+      }
+    },
+    {
+      "theme": "stone",
+      "phase": "travel",
+      "anchors": "audits/C163_EFFECTS_POLISH_20261002/stone/anchors.json",
+      "anchorsSha256": "4fd6c534eaffa055723341ef86b295ec5189354b44221fe1a5874de3499e9484",
+      "ok": true,
+      "findings": [],
+      "phases": {
+        "launch": {
+          "painted": 23951,
+          "edge": 7943,
+          "fringe": 13,
+          "fringeRatio": 0.0016366612111292963,
+          "accentShare": 0.1354014598540146,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 119,
+            "y": 438,
+            "width": 268,
+            "height": 198
+          }
+        },
+        "travel": {
+          "painted": 100146,
+          "edge": 18097,
+          "fringe": 39,
+          "fringeRatio": 0.0021550533237553187,
+          "accentShare": 0.05016489232199376,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 153,
+            "y": 389,
+            "width": 681,
+            "height": 347
+          }
+        },
+        "impact": {
+          "painted": 52182,
+          "edge": 14974,
+          "fringe": 45,
+          "fringeRatio": 0.0030052090289835716,
+          "accentShare": 0.18443645687859153,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 515,
+            "y": 374,
+            "width": 348,
+            "height": 305
+          }
+        }
+      }
+    },
+    {
+      "theme": "sand",
+      "phase": "travel",
+      "anchors": "audits/C163_EFFECTS_POLISH_20261002/sand/anchors.json",
+      "anchorsSha256": "b3262db06422dc2789d988d666744cb6c593e1df54ffe2d743c4c6a1d376ccb4",
+      "ok": true,
+      "findings": [],
+      "phases": {
+        "launch": {
+          "painted": 26461,
+          "edge": 8310,
+          "fringe": 0,
+          "fringeRatio": 0,
+          "accentShare": 0.24275008145975888,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 111,
+            "y": 344,
+            "width": 220,
+            "height": 234
+          }
+        },
+        "travel": {
+          "painted": 110719,
+          "edge": 26584,
+          "fringe": 87,
+          "fringeRatio": 0.003272645200120373,
+          "accentShare": 0.12164959341007499,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 100,
+            "y": 380,
+            "width": 714,
+            "height": 357
+          }
+        },
+        "impact": {
+          "painted": 38587,
+          "edge": 11585,
+          "fringe": 0,
+          "fringeRatio": 0,
+          "accentShare": 0.12305015029267521,
+          "keyInShape": 0,
+          "borderOpaque": 0,
+          "alphaBounds": {
+            "x": 543,
+            "y": 410,
+            "width": 340,
+            "height": 281
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Heron (long-neck wader)",
+  "exemplar": "Heron",
+  "covers": [
+    "Heron",
+    "Egret",
+    "Bittern",
+    "Stork",
+    "Crane",
+    "Ibis",
+    "Spoonbill",
+    "Flamingo"
+  ],
+  "bodyPlan": "biped-bird",
+  "mustPaint": [
+    "long S-kinked neck; heavy dagger bill",
+    "stilt legs with long toes",
+    "slim upright wader body, plain grey"
+  ],
+  "why": "8 misleading. Neck and leg length cannot be morphed, so waders need their own painting. Ibis, Spoonbill and Flamingo (bill shape) and Crane (bustle) stay caveat."
+}

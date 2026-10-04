@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "d0bb8a9c987b4da5090179930505b82030a46858ec984a928acf51f5b9d39627"
+    },
+    {
+      "path": "claude-proposal.md",
+      "sha256": "d51bd93c6d3c2e789aab4ffa78c6379a434af3bc16873f866e15a92409b434e7"
+    },
+    {
+      "path": "source-receipt.json",
+      "sha256": "9532131bfa3ec26d8029b0bde5714a9bfad4a96c93d595e01c5f21ea826453da"
+    }
+  ]
+}

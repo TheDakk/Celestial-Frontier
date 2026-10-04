@@ -1,0 +1,170 @@
+{
+  "kind": "annelid",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Leech\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3343886916\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"21\"]]]]",
+    "seed": 3343886916,
+    "ownerId": "authored:archetype-sprint/c196-observed-leech",
+    "earthName": "Leech"
+  },
+  "template": {
+    "id": "annelid",
+    "version": 1
+  },
+  "clipSetId": "annelid-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3343886916,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 15,
+    "body": 2,
+    "loco": 6,
+    "trait": 21,
+    "size": 0,
+    "diet": 0,
+    "head": 1,
+    "limbs": 1,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 4,
+    "habitat": 6,
+    "detail": 7,
+    "accent": 1,
+    "temper": 8,
+    "sense": 4,
+    "repro": 4,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Leech"
+  },
+  "geometry": {
+    "cutoutAssetHash": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6267942583732058,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.49521531100478466,
+      0.44178628389154706
+    ],
+    "segment0": [
+      0.8261562998405104,
+      0.5789473684210527
+    ],
+    "segment1": [
+      0.7703349282296651,
+      0.5494417862838915
+    ],
+    "segment2": [
+      0.7105263157894737,
+      0.5303030303030303
+    ],
+    "segment3": [
+      0.6570972886762361,
+      0.507177033492823
+    ],
+    "segment4": [
+      0.5980861244019139,
+      0.4728867623604466
+    ],
+    "segment5": [
+      0.539872408293461,
+      0.4433811802232855
+    ],
+    "segment6": [
+      0.4800637958532695,
+      0.430622009569378
+    ],
+    "segment7": [
+      0.4218500797448166,
+      0.44019138755980863
+    ],
+    "segment8": [
+      0.3628389154704944,
+      0.46331738437001596
+    ],
+    "segment9": [
+      0.310207336523126,
+      0.4960127591706539
+    ],
+    "segment10": [
+      0.25996810207336524,
+      0.5374800637958532
+    ],
+    "segment11": [
+      0.20494417862838915,
+      0.5781499202551834
+    ]
+  },
+  "materials": {
+    "surface": "slick"
+  },
+  "source": "audits/C196_SPECIALIZED_REFERENCES_20261003/05-leech-reference/master.png",
+  "coverage": {
+    "scope": "Independently observed Leech annelid reference",
+    "limitations": [
+      "Independent second-species annelid source (Leech), not Earthworm reused against itself. C195 accepted Earthworm direct fit remains immutable.",
+      "Twelve observed centreline controls cover the continuous annulated body, small anterior right sucker and broad posterior left sucker. These are coarse motion controls, not twelve claimed biological segments. No eyes, feet, suckers or source pixels are invented.",
+      "The larger posterior disc remains broad and the body glossy; identity/paint style and moving-ground contact require full-size/native review. GroundLineY is the lowest painted posterior rim, not proof of a native stance.",
+      "No tiny artificial root paint patch is cut out of the body. The root landmark remains in the structural record; existing segment paint covers the body continuously.",
+      "New source anatomy and labels were independently observed; no global reference-pool promotion or auto-author result is implied."
+    ],
+    "sourceLandmarksReused": false,
+    "sourceLabelsReused": false,
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "f38f240b5fb5e678037ff27a6643f1544bc2b84dc5c09d5c83c0c5f951c6c696",
+    "subjectSourceSha256": "d6e392ada72b200323d1ccb926f562240215cef9bd642bb12765f1bdb411017d",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "segment0": 0.3582388884541684,
+      "segment1": 0.06313956687980089,
+      "segment2": 0.06279619496845308,
+      "segment3": 0.058219177825977575,
+      "segment4": 0.06825056925288552,
+      "segment5": 0.06526420244213754,
+      "segment6": 0.06115444838927544,
+      "segment7": 0.058994997569957505,
+      "segment8": 0.06338082704948522,
+      "segment9": 0.06196023431078408,
+      "segment10": 0.06514229064883352,
+      "segment11": 0.06842272557930669
+    },
+    "measures": {
+      "body": 0.6212126330528385,
+      "bone-min": 0.058219177825977575,
+      "bone-max": 0.3582388884541684
+    }
+  },
+  "recipeHash": "d93dca979532c2bfb8a0bc87a04a01abd24adf2ee3d4cf8885dd4ff4f1df1ec9"
+}

@@ -1,0 +1,60 @@
+[
+ {
+  "id": "01-caiman-framing-v2",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 13.9% of the paint lies away from the body and in no part (reference 9.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "02-crocodile-framing-v2",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+   "unexplained-anatomy: 14.9% of the paint lies away from the body and in no part (reference 9.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "03-monitor-lizard-framing-v2",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail-tip-lower-rim (tail3) covers 0% paint (reference 55%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "04-anole-framing-v2",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-root (hindFarRoot) covers 25% paint (reference 100%)",
+   "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "05-skink-framing-v2",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "08-whiptail-framing-v2",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+   "missing-anatomy: part hind-far-knee (hindFarKnee) covers 27% paint (reference 83%)",
+   "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 20%)"
+  ],
+  "semanticPresence": null
+ }
+]

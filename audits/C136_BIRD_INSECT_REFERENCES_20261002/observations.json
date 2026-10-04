@@ -1,0 +1,157 @@
+[
+  {
+    "id": "02-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "fbcde72daf7c15afec6898e839b893bd6e757eeddb7edc938fa28ce5a756f0b1",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 344,
+        "y0": 314,
+        "x1": 939,
+        "y1": 921
+      },
+      "margins": {
+        "left": 344,
+        "right": 314,
+        "top": 314,
+        "bottom": 332
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "limb-down": 3,
+      "rear": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "03-stork",
+    "name": "Stork",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "d3d9d6ceaa29855600d1d140d972d73c04006481b89bb03def2f0a67ac04ac3b",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 331,
+        "y0": 310,
+        "x1": 921,
+        "y1": 940
+      },
+      "margins": {
+        "left": 331,
+        "right": 332,
+        "top": 310,
+        "bottom": 313
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "18-wasp",
+    "name": "Wasp",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 260,
+        "y0": 449,
+        "x1": 1029,
+        "y1": 802
+      },
+      "margins": {
+        "left": 260,
+        "right": 224,
+        "top": 449,
+        "bottom": 451
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 3,
+      "front": 1
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "24-water-strider",
+    "name": "Water Strider",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "bd43e510cc75b3a05c0758ec924f61676e7eee47f95624fdcead24cacaf95fa6",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 270,
+        "y0": 452,
+        "x1": 989,
+        "y1": 837
+      },
+      "margins": {
+        "left": 270,
+        "right": 264,
+        "top": 452,
+        "bottom": 416
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 2,
+      "rear": 2,
+      "limb-down": 3
+    },
+    "groundContacts": 1,
+    "detached": [
+      {
+        "frac": 0.0164,
+        "box": {
+          "x0": 90,
+          "y0": 224,
+          "x1": 118,
+          "y1": 231
+        },
+        "cx": 103,
+        "cy": 229.1
+      }
+    ]
+  }
+]

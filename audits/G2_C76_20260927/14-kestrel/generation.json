@@ -1,0 +1,13 @@
+{
+  "id": "14-kestrel",
+  "name": "Kestrel",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-938713a4-dfbc-4799-8b51-639b1db51482.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "233611ded38134341a6a2901eaa85bbba65a27bb4bfde32eb86bfc7b804dd690",
+  "bytes": 1180207,
+  "promptSha256": "1b9a4b1466734020f909218f2afa6e0b25689b400ff387e458b6dec3dc8a581e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

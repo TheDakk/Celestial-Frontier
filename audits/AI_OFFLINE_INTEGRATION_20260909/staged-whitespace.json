@@ -1,0 +1,13 @@
+{
+  "schema": "cf.staged-whitespace-check.v1",
+  "fullStagedExitCode": 2,
+  "fullStagedOutput": "audits/AI_OFFLINE_INTEGRATION_20260909/species-review/controls-01/fidelity.log:36: new blank line at EOF.\naudits/AI_OFFLINE_INTEGRATION_20260909/species-review/controls-02/fidelity.log:9: new blank line at EOF.\n",
+  "preservedRawEvidenceExceptions": [
+    "audits/AI_OFFLINE_INTEGRATION_20260909/species-review/controls-01/fidelity.log",
+    "audits/AI_OFFLINE_INTEGRATION_20260909/species-review/controls-02/fidelity.log"
+  ],
+  "reason": "Original first-failure and corrected-run tool logs retain exact blank EOF bytes. No source/test/doc whitespace is exempted.",
+  "allOtherStagedFilesChecked": 79,
+  "allOtherStagedExitCode": 0,
+  "rawLogsRewritten": false
+}

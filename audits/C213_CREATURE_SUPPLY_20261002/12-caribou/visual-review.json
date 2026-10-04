@@ -1,0 +1,28 @@
+{
+  "name": "Caribou",
+  "masterSha256": "505a4b14ad2d4e59bc8b25b95cb77ffb2e05b35411fb539f68dccb00f402ecd5",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original inspected: four hoof endpoints, lean brown/white body, pale neck ruff, short white tail, sweeping antler beams with forward shovel. Broad palmated tops remain stylized and require identity/proportion review. Near ear is clear but far ear is obscured. Forelegs are close together and overlap proximally; four independent complete support chains are not established by visible endpoints alone. Framing observer is pending. No hidden roots, joints or ear invented.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 156,
+      "y0": 149,
+      "x1": 1142,
+      "y1": 1087
+    },
+    "margins": {
+      "left": 156,
+      "right": 111,
+      "top": 149,
+      "bottom": 166
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

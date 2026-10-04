@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c202-source-review/v1",
+  "masterSha256": "3adb0589334f5210c96e30df63d670edc4351ffa266a10332b511e4d523dc6af",
+  "fullSizeInspected": true,
+  "status": "SOURCE_ANATOMY_HOLD",
+  "finding": "Far hind tibia and far middle distal chain disappear behind the wing/body; large hind leg hides its own endpoint. Six complete paths remain unavailable.",
+  "qualityAccepted": false
+}

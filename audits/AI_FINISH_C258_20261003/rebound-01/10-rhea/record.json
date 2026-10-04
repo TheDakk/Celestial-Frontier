@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Rhea\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3045737901\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"14\"]]]]",
+    "seed": 3045737901,
+    "ownerId": "authored:archetype-sprint/10-rhea",
+    "earthName": "Rhea"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3045737901,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 13,
+    "body": 2,
+    "loco": 9,
+    "trait": 14,
+    "size": 0,
+    "diet": 1,
+    "head": 7,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 10,
+    "habitat": 11,
+    "detail": 0,
+    "accent": 2,
+    "temper": 4,
+    "sense": 1,
+    "repro": 1,
+    "life": 0,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Rhea"
+  },
+  "geometry": {
+    "cutoutAssetHash": "aa82e8b95912f35b1b4307a860aa903fd23355deddcbb7a6b007731ef7e4ae4a",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8401078430703683,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5129186602870813,
+      0.4984051036682616
+    ],
+    "pelvis": [
+      0.5188995215311005,
+      0.5892344497607656
+    ],
+    "spine": [
+      0.5517543859649122,
+      0.50414673046252
+    ],
+    "chest": [
+      0.6410685805422648,
+      0.47854864433811806
+    ],
+    "neck0": [
+      0.6606060606060606,
+      0.39489633173843697
+    ],
+    "neck1": [
+      0.6567783094098884,
+      0.28357256778309414
+    ],
+    "head": [
+      0.6460127591706539,
+      0.2186602870813397
+    ],
+    "beak": [
+      0.7056618819776714,
+      0.21012759170653908
+    ],
+    "legNearKnee": [
+      0.43381180223285487,
+      0.6354864433811802
+    ],
+    "legNearAnkle": [
+      0.42424242424242425,
+      0.7595693779904307
+    ],
+    "legNearFoot": [
+      0.442822966507177,
+      0.8118819776714514
+    ],
+    "legFarKnee": [
+      0.5358851674641149,
+      0.7123604465709729
+    ],
+    "legFarAnkle": [
+      0.5598086124401914,
+      0.7921850079744817
+    ],
+    "legFarFoot": [
+      0.6011164274322168,
+      0.8100478468899521
+    ],
+    "wingNearRoot": [
+      0.5511961722488039,
+      0.4283891547049442
+    ],
+    "wingNearTip": [
+      0.3406698564593301,
+      0.41698564593301435
+    ],
+    "wingFarRoot": [
+      0.5125996810207336,
+      0.35566188197767146
+    ],
+    "wingFarTip": [
+      0.4359649122807018,
+      0.3477671451355662
+    ],
+    "tailFan": [
+      0.30637958532695375,
+      0.5215311004784688
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/10-rhea/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile flightless-bird media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 03-duck-v2. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "804b066d3f82ccda62d4479c73226f3980e9707802bd2e6fd2d0b0e554b2d85d",
+    "subjectSourceSha256": "77d635ee271f4c4ac4e36a1304a8359a763c87b53b49de43c56568ecf6c5a68d",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.09102604469497771,
+      "spine": 0.09121053717822943,
+      "chest": 0.0929101036821803,
+      "neck0": 0.08590356529573138,
+      "neck1": 0.11138955112758415,
+      "head": 0.06579894571994936,
+      "beak": 0.06025632532776786,
+      "legFarKnee": 0.12429208847818474,
+      "legFarAnkle": 0.0833324175983507,
+      "legFarFoot": 0.0450046285790189,
+      "legNearKnee": 0.0968460989882397,
+      "legNearAnkle": 0.12445138671934222,
+      "legNearFoot": 0.05551436423340356,
+      "wingFarRoot": 0.17777911718676676,
+      "wingFarTip": 0.0770403442985833,
+      "wingNearRoot": 0.10292241822230476,
+      "wingNearTip": 0.21083493461046898,
+      "tailFan": 0.2230436432365991
+    },
+    "measures": {
+      "body": 0.16485334846988553,
+      "bone-min": 0.0450046285790189,
+      "bone-max": 0.2230436432365991,
+      "leg/torso:legFar": 1.5324476997305467,
+      "leg/torso:legNear": 1.6791399902413988,
+      "wing/torso": 1.5457342168084565
+    }
+  },
+  "recipeHash": "d9905aff30ca3446798498919b146a3f5071f1b678dfee5b66d3e8e86b66a03b"
+}

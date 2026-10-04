@@ -1,0 +1,6 @@
+import fs from'node:fs';import{spawnSync}from'node:child_process';import{createHash}from'node:crypto';
+const base=import.meta.dirname,original=fs.readFileSync(base+'/fish-split.mjs','utf8'),test=fs.readFileSync(base+'/selection-controls.mjs','utf8'),rows=[];
+for(const [name,a,b,reason]of [['empty-selection','return pairs;','return [];','AssertionError'],['erase-observed-boundary-guard',"need(Number.isInteger(j.sourceEdges)&&j.sourceEdges>0&&j.samples?.length>0,'observed painted boundary');",'', 'Missing expected exception']]){
+ if(original.split(a).length!==2)throw Error('Unique mutation site');const code=original.replace(a,b),module=base+'/.mutant-split.mjs',check=base+'/.mutant-check.mjs';try{fs.writeFileSync(module,code,{flag:'wx'});fs.writeFileSync(check,test.replace("'./fish-split.mjs'","'./.mutant-split.mjs'"),{flag:'wx'});const r=spawnSync(process.execPath,[check],{encoding:'utf8'});if(r.status===0||!r.stderr.includes(reason))throw Error('Mutation failed for wrong reason: '+name+' '+r.stderr);rows.push({name,status:'FAILED_AS_EXPECTED',exitCode:r.status,sourceSha256:createHash('sha256').update(code).digest('hex'),reason});}finally{for(const f of [module,check])if(fs.existsSync(f))fs.unlinkSync(f);}
+}
+fs.writeFileSync(base+'/selector-mutations.json',JSON.stringify(rows,null,2)+'\n',{flag:'wx'});console.log(rows);

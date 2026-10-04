@@ -1,0 +1,11 @@
+{
+  "candidate": "f8ff0413ec34914048e43e3f7ffa52efac99a451",
+  "authority": "Dakk direct request and Claude C204",
+  "calibrations": 3,
+  "certifications": 1,
+  "developAttempts": 1,
+  "firstRedStop": true,
+  "retry": false,
+  "rebind": false,
+  "reservation": "C282"
+}

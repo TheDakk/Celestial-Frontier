@@ -1,0 +1,86 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "4207748479e1ddeccb2f2f9f24c45e219f73956f",
+  "helperSha256": "140f5e1a6ae74943f8fce1961137cac6d47de5088765333edbcd9815553ed8d6",
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/06-hopper/master.png",
+      "sha256": "f2dc168f7208fc41101c658b3fa007e7fe4a8f07c898790a15e0c5a0398462d0"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/06-hopper/authoring.json",
+      "sha256": "5f5e2c10dc5f4a4273e737df8416e50fbb3d4284627a4f5e1058e051544bd0a5"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/06-hopper/subject-source.json",
+      "sha256": "b60c3c4508b9572e0508c29315c0cfb45c661f47133b7da17a65d1e91a4954d0"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/06-hopper/presence.json",
+      "sha256": "f68210c1e3a6fef07ed143da7b57ce9b7d731747ded900ccf4f9b215068846c7"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "dcb662ddcf36ca22dd556afbc8ccdb8f90aff72dfe552a592c3089fb7b4d6e65",
+  "bindingHash": "32088666bcb22b493afb7f74edd5aaec727a7bf77f160d9649f99f373dd7e184",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "foreNearPaw",
+    "foreFarPaw",
+    "hindNearPaw",
+    "hindFarPaw",
+    "foreNearAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "foreNearKnee",
+    "foreFarKnee",
+    "jaw",
+    "head",
+    "neck",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/06-hopper/master.png",
+      "sha256": "f2dc168f7208fc41101c658b3fa007e7fe4a8f07c898790a15e0c5a0398462d0",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/06-hopper/authoring.json",
+      "sha256": "5f5e2c10dc5f4a4273e737df8416e50fbb3d4284627a4f5e1058e051544bd0a5",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/06-hopper/subject-source.json",
+      "sha256": "b60c3c4508b9572e0508c29315c0cfb45c661f47133b7da17a65d1e91a4954d0",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/06-hopper/presence.json",
+      "sha256": "f68210c1e3a6fef07ed143da7b57ce9b7d731747ded900ccf4f9b215068846c7",
+      "unchanged": true
+    }
+  ]
+}

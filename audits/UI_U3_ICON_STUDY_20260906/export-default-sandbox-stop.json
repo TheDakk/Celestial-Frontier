@@ -1,0 +1,15 @@
+{
+  "schema": "cf-u3-icon-export-stop/v1",
+  "stage": "Inkscape --version before export",
+  "command": [
+    "/opt/homebrew/bin/inkscape",
+    "--version"
+  ],
+  "wrapperExit": 1,
+  "inkscapeExit": "nonzero; exact value was not retained by the first helper",
+  "stderr": "",
+  "stdout": "not retained by first helper",
+  "pngProduced": false,
+  "scope": "default sandbox",
+  "observation": "Homebrew wrapper directly execs /Applications/Inkscape.app/Contents/MacOS/inkscape; installed plist remains 1.4.4. No tool update or product defect established."
+}

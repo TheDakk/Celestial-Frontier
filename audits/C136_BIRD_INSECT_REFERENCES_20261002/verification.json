@@ -1,0 +1,62 @@
+{
+  "schema": "cf.c136-reference-integrity/v1",
+  "scope": "Exact bytes, prompt/provenance hashes, declared inventory and painted owner occupancy only. No anatomy, intake, skin, contact, native or reference-pool admission.",
+  "completeCandidates": 3,
+  "incompleteHolds": 1,
+  "verified": [
+    {
+      "id": "02-egret",
+      "masterSha256": "fbcde72daf7c15afec6898e839b893bd6e757eeddb7edc938fa28ce5a756f0b1",
+      "bytes": 1116927,
+      "authoringSha256": "129c3a206d2fc995b57a6ea771b2ce4fd273c4da6af921a20fda22fe2ef635b6",
+      "completeInventory": true,
+      "unresolved": [],
+      "owners": 19,
+      "minimumOwnerPixels": 188,
+      "sourceOriginalUnchanged": true,
+      "generatedEdit": true,
+      "admission": "UNMEASURED"
+    },
+    {
+      "id": "03-stork",
+      "masterSha256": "d3d9d6ceaa29855600d1d140d972d73c04006481b89bb03def2f0a67ac04ac3b",
+      "bytes": 1123874,
+      "authoringSha256": "992e7e80669a6231871b666faedd1e3484cdbb559db8d721a9add7cc211acbcd",
+      "completeInventory": true,
+      "unresolved": [],
+      "owners": 19,
+      "minimumOwnerPixels": 196,
+      "sourceOriginalUnchanged": true,
+      "generatedEdit": true,
+      "admission": "UNMEASURED"
+    },
+    {
+      "id": "18-wasp",
+      "masterSha256": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2",
+      "bytes": 1141845,
+      "authoringSha256": "5631f64918ead6cbd773858cb75f3f316e08ae465e4e8ece772731b1b1b90fd5",
+      "completeInventory": true,
+      "unresolved": [],
+      "owners": 21,
+      "minimumOwnerPixels": 144,
+      "sourceOriginalUnchanged": true,
+      "generatedEdit": false,
+      "admission": "UNMEASURED"
+    },
+    {
+      "id": "24-water-strider",
+      "masterSha256": "bd43e510cc75b3a05c0758ec924f61676e7eee47f95624fdcead24cacaf95fa6",
+      "bytes": 1002087,
+      "authoringSha256": "bd3685f6f99beacccc493f5b1f6c7c81f2d3916f52fbf9e70815cbc986eab597",
+      "completeInventory": false,
+      "unresolved": [
+        "mandible"
+      ],
+      "owners": 20,
+      "minimumOwnerPixels": 61,
+      "sourceOriginalUnchanged": true,
+      "generatedEdit": false,
+      "admission": "INCOMPLETE_HOLD"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+/* Exact Earth epoch-0 admission for one optional layered composition.
+ * This is presentation only. It creates no world, residents, route or save. */
+import {
+  EARTH_RESIDENT_LAYER_PLAN_V1,
+  snapshotEarthLayerDataV1,
+  type EarthResidentLayerPlanV1,
+} from '@cf/art/earth-resident-plan';
+
+export type { EarthResidentLayerPlanV1 } from '@cf/art/earth-resident-plan';
+export const EARTH_LAYERED_SCENE_ID = 'painted-earth-riverbank-v1' as const;
+/** Exact canonical builder insertion order is part of the asset binding. */
+export const EARTH_LAYERED_REQUEST_JSON_V1 = "{\"worldKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:133#2\",\"environmentFingerprint\":\"cwe1:148:50c1b7d6\",\"profileSchema\":\"cf.domain.biome-profile.v1\",\"profileDigest\":\"bpd1-6fce883d4d70e3b6bde0fb184b416e8e\",\"biomeKey\":\"temperate\",\"scene\":\"generic\",\"options\":{\"seed\":133,\"era\":\"none\",\"pal\":\"rain\",\"biome\":\"land\",\"wx\":\"rain\",\"moons\":1,\"aurora\":false,\"nightize\":false,\"duskize\":false,\"flora\":true,\"water\":\"liquid\",\"genes\":[{\"bulk\":0.83975,\"len\":1,\"neck\":0.3,\"horn\":0,\"tail\":0.71,\"leg\":0.9,\"stripes\":0,\"mottle\":0.95,\"aqua\":false,\"airb\":false,\"base\":[201,146,77],\"base2\":[201,80,77],\"pat\":[161,88,70],\"irid\":[125,77,201],\"irid2\":[77,201,125],\"dark\":[84,61,32],\"finish\":0,\"rim\":\"rgba(255,220,170,1)\",\"eye\":\"#caa06a\",\"plan\":12,\"glow\":false,\"apex\":false,\"par\":false,\"tier\":0,\"heat\":9,\"headK\":0,\"eyeN\":2,\"tailK\":4,\"limbN\":2,\"skinK\":6,\"dietK\":4,\"_earthName\":\"Platypus\"},{\"bulk\":0.9747499999999999,\"len\":1.23,\"neck\":0.3,\"horn\":0,\"tail\":0.43999999999999995,\"leg\":0.5700000000000001,\"stripes\":0,\"mottle\":0.62,\"aqua\":false,\"airb\":false,\"base\":[136,179,126],\"base2\":[126,179,155],\"pat\":[123,137,109],\"irid\":[126,127,179],\"irid2\":[179,126,127],\"dark\":[57,75,52],\"finish\":0,\"rim\":\"#caa06a\",\"eye\":\"#caa06a\",\"plan\":13,\"glow\":true,\"apex\":false,\"par\":false,\"tier\":2,\"heat\":5,\"headK\":5,\"eyeN\":0,\"tailK\":1,\"limbN\":8,\"skinK\":8,\"dietK\":5,\"_earthName\":\"Civet\"},{\"bulk\":0.8540000000000001,\"len\":1.05,\"neck\":0.8200000000000001,\"horn\":0,\"tail\":0.53,\"leg\":0.39,\"stripes\":0,\"mottle\":0.95,\"aqua\":false,\"airb\":false,\"base\":[153,113,177],\"base2\":[113,126,177],\"pat\":[133,99,110],\"irid\":[113,177,142],\"irid2\":[177,142,113],\"dark\":[64,47,74],\"finish\":0,\"rim\":\"rgba(255,220,170,1)\",\"eye\":\"#ff7a4a\",\"plan\":9,\"glow\":false,\"apex\":false,\"par\":false,\"tier\":1,\"heat\":9,\"headK\":9,\"eyeN\":0,\"tailK\":2,\"limbN\":4,\"skinK\":1,\"dietK\":2,\"_earthName\":\"Sea Urchin\"}],\"floraGenes\":[{\"seed\":2058951517,\"kingdom\":\"flora\",\"color\":2,\"form\":17,\"body\":4,\"loco\":0,\"trait\":9,\"size\":3,\"diet\":2,\"head\":7,\"limbs\":1,\"skin\":7,\"tail\":1,\"pattern\":6,\"eyes\":1,\"behavior\":10,\"habitat\":5,\"detail\":9,\"accent\":2,\"temper\":4,\"sense\":3,\"repro\":5,\"life\":4,\"metab\":5,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Persimmon\",\"_cradle\":1},{\"seed\":1714376717,\"kingdom\":\"flora\",\"color\":14,\"form\":12,\"body\":2,\"loco\":0,\"trait\":11,\"size\":1,\"diet\":4,\"head\":8,\"limbs\":5,\"skin\":6,\"tail\":1,\"pattern\":7,\"eyes\":2,\"behavior\":3,\"habitat\":6,\"detail\":9,\"accent\":15,\"temper\":5,\"sense\":5,\"repro\":6,\"life\":5,\"metab\":1,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Devil's Club\",\"_cradle\":1}],\"ring\":false,\"stc\":\"#fff4d8\",\"herd\":3,\"aqua\":3,\"air\":2,\"wb\":\"temperate\",\"evt\":null,\"titan\":false,\"salt\":0}}";
+/** Complete authority + all original ordered genomes. The cosmetic preview
+ * window and hidden count are intentionally absent; changing its UI budget
+ * cannot remove residents or change this scene's authority. */
+export const EARTH_LAYERED_ROSTER_JSON_V1 = "{\"address\":{\"format\":\"CF1\",\"galaxy\":{\"seed\":999,\"x\":90,\"y\":-60,\"size\":78,\"sp\":0,\"tilt\":0.62,\"rot\":0.5,\"home\":true,\"quasar\":false,\"dwarf\":false,\"parentCell\":{\"x\":0,\"y\":-1}},\"star\":{\"seed\":424242,\"x\":560,\"y\":170,\"layer\":\"coarse\",\"parentCell\":{\"x\":13,\"y\":4}},\"planet\":{\"seed\":133,\"ordinal\":2},\"key\":\"CF1|g:999@90,-60|s:424242@560,170|p:133#2\"},\"worldKey\":\"CF1|g:999@90,-60|s:424242@560,170|p:133#2\",\"starSeed\":424242,\"planetSeed\":133,\"planetOrdinal\":2,\"biosphereKey\":\"earth\",\"ecologyEpoch\":0,\"climateBand\":\"temperate\",\"biomeProfileSchema\":\"cf.domain.biome-profile.v1\",\"biomeProfileDigest\":\"bpd1-6fce883d4d70e3b6bde0fb184b416e8e\",\"biomeProfileKey\":\"temperate\",\"biomeProfile\":{\"sig\":\"#6f9a52\",\"fauna\":[\"mammal\",\"bird\",\"insect\",\"amphibian\"],\"flora\":[\"tree\",\"shrub\",\"flower\",\"grass\",\"fern\"],\"hazard\":null,\"weather\":\"mild\"},\"environmentFingerprint\":\"cwe1:148:50c1b7d6\",\"fullRosterFingerprint\":\"cwr1:19:6305:58e079f2\",\"view\":{\"all\":[{\"seed\":2058951517,\"kingdom\":\"flora\",\"color\":2,\"form\":17,\"body\":4,\"loco\":0,\"trait\":9,\"size\":3,\"diet\":2,\"head\":7,\"limbs\":1,\"skin\":7,\"tail\":1,\"pattern\":6,\"eyes\":1,\"behavior\":10,\"habitat\":5,\"detail\":9,\"accent\":2,\"temper\":4,\"sense\":3,\"repro\":5,\"life\":4,\"metab\":5,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Persimmon\",\"_cradle\":1},{\"seed\":1714376717,\"kingdom\":\"flora\",\"color\":14,\"form\":12,\"body\":2,\"loco\":0,\"trait\":11,\"size\":1,\"diet\":4,\"head\":8,\"limbs\":5,\"skin\":6,\"tail\":1,\"pattern\":7,\"eyes\":2,\"behavior\":3,\"habitat\":6,\"detail\":9,\"accent\":15,\"temper\":5,\"sense\":5,\"repro\":6,\"life\":5,\"metab\":1,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Devil's Club\",\"_cradle\":1},{\"seed\":1741924755,\"kingdom\":\"flora\",\"color\":4,\"form\":4,\"body\":9,\"loco\":0,\"trait\":9,\"size\":3,\"diet\":1,\"head\":9,\"limbs\":3,\"skin\":0,\"tail\":5,\"pattern\":0,\"eyes\":5,\"behavior\":7,\"habitat\":0,\"detail\":4,\"accent\":10,\"temper\":7,\"sense\":9,\"repro\":2,\"life\":0,\"metab\":2,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Cranberry\",\"_cradle\":1},{\"seed\":3293061876,\"kingdom\":\"flora\",\"color\":2,\"form\":0,\"body\":1,\"loco\":2,\"trait\":12,\"size\":2,\"diet\":2,\"head\":1,\"limbs\":2,\"skin\":1,\"tail\":3,\"pattern\":0,\"eyes\":2,\"behavior\":7,\"habitat\":5,\"detail\":4,\"accent\":6,\"temper\":0,\"sense\":6,\"repro\":2,\"life\":4,\"metab\":2,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Rambutan\",\"_cradle\":1},{\"seed\":358709633,\"kingdom\":\"flora\",\"color\":6,\"form\":15,\"body\":12,\"loco\":17,\"trait\":2,\"size\":4,\"diet\":2,\"head\":5,\"limbs\":0,\"skin\":5,\"tail\":5,\"pattern\":6,\"eyes\":2,\"behavior\":10,\"habitat\":3,\"detail\":4,\"accent\":15,\"temper\":7,\"sense\":9,\"repro\":2,\"life\":3,\"metab\":4,\"lumin\":true,\"gen\":0,\"heat\":1,\"_earthName\":\"Wild Guava\",\"_cradle\":1},{\"seed\":2837464762,\"kingdom\":\"flora\",\"color\":13,\"form\":17,\"body\":3,\"loco\":5,\"trait\":22,\"size\":0,\"diet\":2,\"head\":8,\"limbs\":1,\"skin\":6,\"tail\":4,\"pattern\":6,\"eyes\":3,\"behavior\":8,\"habitat\":3,\"detail\":3,\"accent\":0,\"temper\":7,\"sense\":2,\"repro\":5,\"life\":5,\"metab\":3,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Barrel Cactus Fruit\",\"_cradle\":1},{\"seed\":2328743221,\"kingdom\":\"fungi\",\"color\":0,\"form\":5,\"body\":2,\"loco\":0,\"trait\":11,\"size\":4,\"diet\":3,\"head\":0,\"limbs\":4,\"skin\":7,\"tail\":2,\"pattern\":7,\"eyes\":0,\"behavior\":0,\"habitat\":12,\"detail\":4,\"accent\":14,\"temper\":0,\"sense\":2,\"repro\":2,\"life\":3,\"metab\":3,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Mildew\",\"_cradle\":1},{\"seed\":1635973906,\"kingdom\":\"fungi\",\"color\":14,\"form\":4,\"body\":13,\"loco\":5,\"trait\":23,\"size\":1,\"diet\":0,\"head\":9,\"limbs\":2,\"skin\":4,\"tail\":0,\"pattern\":7,\"eyes\":2,\"behavior\":10,\"habitat\":18,\"detail\":2,\"accent\":12,\"temper\":0,\"sense\":4,\"repro\":6,\"life\":2,\"metab\":3,\"lumin\":true,\"gen\":0,\"heat\":1,\"_earthName\":\"Giant Puffball\",\"_cradle\":1},{\"seed\":653352398,\"kingdom\":\"microbe\",\"color\":0,\"form\":1,\"body\":12,\"loco\":7,\"trait\":9,\"size\":0,\"diet\":0,\"head\":2,\"limbs\":2,\"skin\":6,\"tail\":6,\"pattern\":1,\"eyes\":5,\"behavior\":6,\"habitat\":13,\"detail\":9,\"accent\":1,\"temper\":9,\"sense\":6,\"repro\":2,\"life\":3,\"metab\":3,\"lumin\":true,\"gen\":0,\"heat\":1,\"_earthName\":\"Red-Tide Algae\",\"_cradle\":1},{\"seed\":1093271452,\"kingdom\":\"microbe\",\"color\":16,\"form\":13,\"body\":7,\"loco\":13,\"trait\":9,\"size\":2,\"diet\":0,\"head\":2,\"limbs\":3,\"skin\":2,\"tail\":0,\"pattern\":0,\"eyes\":2,\"behavior\":8,\"habitat\":15,\"detail\":8,\"accent\":0,\"temper\":9,\"sense\":0,\"repro\":4,\"life\":0,\"metab\":3,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Halophile\",\"_cradle\":1},{\"seed\":1367420842,\"kingdom\":\"microbe\",\"color\":2,\"form\":7,\"body\":3,\"loco\":9,\"trait\":9,\"size\":5,\"diet\":3,\"head\":7,\"limbs\":4,\"skin\":2,\"tail\":2,\"pattern\":7,\"eyes\":5,\"behavior\":1,\"habitat\":0,\"detail\":1,\"accent\":3,\"temper\":0,\"sense\":4,\"repro\":3,\"life\":5,\"metab\":1,\"lumin\":true,\"gen\":0,\"heat\":1,\"_earthName\":\"Euglena\",\"_cradle\":1},{\"seed\":4049771185,\"kingdom\":\"fauna\",\"color\":13,\"form\":14,\"body\":12,\"loco\":1,\"trait\":15,\"size\":2,\"diet\":4,\"head\":0,\"limbs\":0,\"skin\":6,\"tail\":4,\"pattern\":7,\"eyes\":0,\"behavior\":3,\"habitat\":9,\"detail\":8,\"accent\":16,\"temper\":7,\"sense\":4,\"repro\":6,\"life\":3,\"metab\":0,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Platypus\",\"_cradle\":1},{\"seed\":3212817920,\"kingdom\":\"fauna\",\"color\":14,\"form\":12,\"body\":13,\"loco\":6,\"trait\":14,\"size\":4,\"diet\":5,\"head\":5,\"limbs\":3,\"skin\":8,\"tail\":1,\"pattern\":0,\"eyes\":5,\"behavior\":9,\"habitat\":5,\"detail\":4,\"accent\":3,\"temper\":1,\"sense\":7,\"repro\":7,\"life\":5,\"metab\":4,\"lumin\":true,\"gen\":0,\"heat\":1,\"_earthName\":\"Civet\",\"_cradle\":1},{\"seed\":3983378525,\"kingdom\":\"fauna\",\"color\":8,\"form\":12,\"body\":8,\"loco\":7,\"trait\":14,\"size\":4,\"diet\":0,\"head\":6,\"limbs\":1,\"skin\":5,\"tail\":0,\"pattern\":2,\"eyes\":1,\"behavior\":7,\"habitat\":13,\"detail\":9,\"accent\":13,\"temper\":8,\"sense\":5,\"repro\":3,\"life\":4,\"metab\":1,\"lumin\":true,\"gen\":0,\"heat\":1,\"_earthName\":\"Brittle Star\",\"_cradle\":1},{\"seed\":1193089256,\"kingdom\":\"fauna\",\"color\":0,\"form\":12,\"body\":10,\"loco\":11,\"trait\":19,\"size\":0,\"diet\":5,\"head\":9,\"limbs\":4,\"skin\":3,\"tail\":1,\"pattern\":4,\"eyes\":1,\"behavior\":0,\"habitat\":17,\"detail\":7,\"accent\":4,\"temper\":8,\"sense\":5,\"repro\":5,\"life\":0,\"metab\":2,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Frog\",\"_cradle\":1},{\"seed\":2492583870,\"kingdom\":\"fauna\",\"color\":3,\"form\":6,\"body\":14,\"loco\":5,\"trait\":16,\"size\":5,\"diet\":2,\"head\":9,\"limbs\":4,\"skin\":2,\"tail\":6,\"pattern\":3,\"eyes\":0,\"behavior\":7,\"habitat\":3,\"detail\":6,\"accent\":16,\"temper\":5,\"sense\":4,\"repro\":5,\"life\":5,\"metab\":1,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Pheasant\",\"_cradle\":1},{\"seed\":4076641958,\"kingdom\":\"fauna\",\"color\":10,\"form\":7,\"body\":1,\"loco\":13,\"trait\":13,\"size\":3,\"diet\":4,\"head\":3,\"limbs\":4,\"skin\":7,\"tail\":4,\"pattern\":3,\"eyes\":0,\"behavior\":11,\"habitat\":9,\"detail\":7,\"accent\":6,\"temper\":8,\"sense\":5,\"repro\":6,\"life\":3,\"metab\":2,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Oryx\",\"_cradle\":1},{\"seed\":2598368726,\"kingdom\":\"fauna\",\"color\":5,\"form\":9,\"body\":9,\"loco\":15,\"trait\":12,\"size\":2,\"diet\":2,\"head\":9,\"limbs\":1,\"skin\":1,\"tail\":2,\"pattern\":4,\"eyes\":5,\"behavior\":6,\"habitat\":9,\"detail\":6,\"accent\":14,\"temper\":7,\"sense\":1,\"repro\":3,\"life\":4,\"metab\":3,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Sea Urchin\",\"_cradle\":1},{\"seed\":3879755030,\"kingdom\":\"fauna\",\"color\":6,\"form\":2,\"body\":8,\"loco\":1,\"trait\":13,\"size\":4,\"diet\":1,\"head\":1,\"limbs\":1,\"skin\":7,\"tail\":6,\"pattern\":7,\"eyes\":3,\"behavior\":11,\"habitat\":15,\"detail\":9,\"accent\":6,\"temper\":1,\"sense\":8,\"repro\":4,\"life\":0,\"metab\":2,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Prawn\",\"_cradle\":1}],\"total\":19}}";
+const ROSTER_KEYS = Object.freeze(["address","worldKey","starSeed","planetSeed","planetOrdinal","biosphereKey","ecologyEpoch","climateBand","biomeProfileSchema","biomeProfileDigest","biomeProfileKey","biomeProfile","environmentFingerprint","fullRosterFingerprint","view"]);
+const VIEW_KEYS = Object.freeze(['all', 'preview', 'total', 'hiddenFromPreview']);
+
+function exactKeys(value: Record<string, unknown>, keys: readonly string[]): boolean {
+  const actual = Object.keys(value);
+  return actual.length === keys.length && keys.every(key => Object.hasOwn(value, key));
+}
+
+/** Static six-resident presentation compatibility, independent of the exact
+ * world JSON gate. Named-family annotations come from audited art owners;
+ * raw Earth body/habitat/loco genes are not a species-to-biome classifier.
+ * This neither filters nor rerolls the canonical gameplay roster. */
+export function earthResidentFamiliesFitBiomeProfileV1(
+  residents: unknown,
+  biomeProfile: unknown,
+): boolean {
+  try {
+    const rows = snapshotEarthLayerDataV1(residents) as Record<string, unknown>[];
+    const profile = snapshotEarthLayerDataV1(biomeProfile) as Record<string, unknown>;
+    if (!Array.isArray(rows) || rows.length !== EARTH_RESIDENT_LAYER_PLAN_V1.residents.length
+      || profile === null || typeof profile !== 'object' || Array.isArray(profile)
+      || !Array.isArray(profile.fauna) || !Array.isArray(profile.flora)) return false;
+    const seen = new Set<string>();
+    for (let index = 0; index < rows.length; index++) {
+      const row = rows[index];
+      if (row === null || typeof row !== 'object' || Array.isArray(row)) return false;
+      const expected = EARTH_RESIDENT_LAYER_PLAN_V1.residents.find(entry => entry.name === row.name);
+      if (!expected || seen.has(expected.name) || row.kingdom !== expected.kingdom
+        || row.family !== expected.family || !Array.prototype.includes.call(
+          profile[expected.kingdom], expected.family,
+        )) return false;
+      seen.add(expected.name);
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function buildEarthLayeredRecipeV1(
+  request: unknown,
+  roster: unknown,
+): EarthResidentLayerPlanV1 | null {
+  try {
+    // Guard the entire input, including non-authoritative preview metadata,
+    // before any property reads or JSON serialization occur.
+    const requestData = snapshotEarthLayerDataV1(request);
+    const rosterData = snapshotEarthLayerDataV1(roster) as Record<string, unknown>;
+    if (JSON.stringify(requestData) !== EARTH_LAYERED_REQUEST_JSON_V1
+      || rosterData === null || typeof rosterData !== 'object' || Array.isArray(rosterData)
+      || !exactKeys(rosterData, ROSTER_KEYS)) return null;
+    const view = rosterData.view as Record<string, unknown>;
+    if (view === null || typeof view !== 'object' || Array.isArray(view) || !exactKeys(view, VIEW_KEYS)) return null;
+    const authority = Object.create(null) as Record<string, unknown>;
+    for (const key of ROSTER_KEYS) {
+      authority[key] = key === 'view' ? { all: view.all, total: view.total } : rosterData[key];
+    }
+    if (JSON.stringify(authority) !== EARTH_LAYERED_ROSTER_JSON_V1) return null;
+    if (!earthResidentFamiliesFitBiomeProfileV1(
+      EARTH_RESIDENT_LAYER_PLAN_V1.residents, rosterData.biomeProfile,
+    )) return null;
+    // The returned plan owns detached, deeply frozen full source genomes;
+    // no caller object or preview index survives into rendering.
+    return EARTH_RESIDENT_LAYER_PLAN_V1;
+  } catch {
+    return null;
+  }
+}

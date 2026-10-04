@@ -1,0 +1,56 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Macaw",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "782ffb9daaa3f20ac6813508def2296116966a7d62082667402dc131d409b76e",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "bird",
+  "authoringCreated": false,
+  "sourceHead": "22a1c36ede73fd7635373912a258533da0250e05",
+  "basePromptSha256": "0c53208648a2e664fe1afae07bd766242cfe3b8ea1f38de6964046812286dc17",
+  "batchCompilerSha256": "a51df0731fa7c90413b71639508b9d1b27e31a1d53bbc66f55761ea4a3fc3ccc",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Two real legs separately readable from feather-body emergence through ankles and complete natural toes, both feet planted on one level. Near and far leg shafts have clear contour gaps. Preserve true bill, folded wing attachment and continuous complete feather tail. No perch, floating feather islands, extra wing or invented far-side anatomy. A real folded far-wing edge may show only where naturally exposed. Complete bird including tail and bill stays within central half of canvas.",
+    "priorSources": [
+      {
+        "pilot": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/pilot.json",
+        "id": "22-macaw",
+        "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/master.png",
+        "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw"
+      },
+      {
+        "pilot": "audits/G2_C83_20260927/pilot-original.json",
+        "id": "09-macaw",
+        "master": "audits/G2_C83_20260927/09-macaw/master.png",
+        "packet": "audits/G2_C83_20260927/09-macaw"
+      },
+      {
+        "pilot": "audits/G2_C83_20260927/pilot.json",
+        "id": "09-macaw",
+        "master": "audits/G2_C83_20260927/09-macaw/master.png",
+        "packet": "audits/G2_C83_20260927/09-macaw"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C206_BIRD_SOURCE_REPAINTS_20261002/pilot.json",
+    "audits/G2_C83_20260927/pilot-original.json",
+    "audits/G2_C83_20260927/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Two real legs separately readable from feather-body emergence through ankles and complete natural toes, both feet planted on one level. Near and far leg shafts have clear contour gaps. Preserve true bill, folded wing attachment and continuous complete feather tail. No perch, floating feather islands, extra wing or invented far-side anatomy. A real folded far-wing edge may show only where naturally exposed. Complete bird including tail and bill stays within central half of canvas.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

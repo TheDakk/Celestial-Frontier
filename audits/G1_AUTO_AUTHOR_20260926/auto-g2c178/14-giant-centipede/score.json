@@ -1,0 +1,9 @@
+{
+ "id": "14-giant-centipede",
+ "family": "myriapod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1"
+ ],
+ "semanticPresence": null
+}

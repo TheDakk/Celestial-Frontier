@@ -1,0 +1,62 @@
+{
+  "schema": "cf.g2-source-controls/v1",
+  "scope": "In-memory mutations only; masters/prompts and product unchanged",
+  "controls": [
+    {
+      "name": "all24 exact original/prompt/style/canonical/review positives",
+      "status": "PASS"
+    },
+    {
+      "name": "altered submitted prompt refused",
+      "status": "PASS"
+    },
+    {
+      "name": "altered master byte refused",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong style reference refused",
+      "status": "PASS"
+    },
+    {
+      "name": "stale canonical prompt refused",
+      "status": "PASS"
+    },
+    {
+      "name": "missing review refused",
+      "status": "PASS"
+    },
+    {
+      "name": "missing generation receipt refused",
+      "status": "PASS"
+    },
+    {
+      "name": "stale pattern observation refused",
+      "status": "PASS"
+    },
+    {
+      "name": "invented measured limb count refused",
+      "status": "PASS"
+    },
+    {
+      "name": "missing original row refused",
+      "status": "PASS"
+    },
+    {
+      "name": "same-count duplicate identity refused",
+      "status": "PASS"
+    },
+    {
+      "name": "accepted identity refused",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged pattern instrument stale/absent controls",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged framing empty/edge/central controls",
+      "status": "PASS"
+    }
+  ]
+}

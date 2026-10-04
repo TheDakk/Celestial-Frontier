@@ -1,0 +1,93 @@
+{
+  "schema": "cf.anatomical-surface-intake/v1",
+  "sourceBindingHash": "682b59b99743e86e70a88d65870f34823bd6f956cf649a16d9cbd28db543bc22",
+  "recordRecipeHash": "d5d7b4f56456fac2a262269242fec8a746e1d658faa32b691a0e22f034a06e76",
+  "atlasSha256": "86ed5856888f54ccc5eb36dacf4cee04e8466eb4513ee6dbc5c1888dab46cbc9",
+  "sourceVertices": 1888,
+  "vertices": 1940,
+  "triangles": 3522,
+  "surfaces": {
+    "axial": 1324,
+    "hindFar": 0,
+    "foreFar": 187,
+    "hindNear": 156,
+    "foreNear": 273
+  },
+  "pins": 328,
+  "contacts": {
+    "schema": "cf.source-paw-contact-pins/v1",
+    "samples": 696,
+    "fieldVertices": 191,
+    "parts": [
+      {
+        "partId": "hind-near-paw",
+        "joint": "hindNearPaw",
+        "sourceSha256": "2207a1d382d88947bdb9a3bb1cb396af954e53c9f1125ed4694de8ed01dde2bd",
+        "samples": 226,
+        "fieldVertices": 62
+      },
+      {
+        "partId": "fore-far-paw",
+        "joint": "foreFarPaw",
+        "sourceSha256": "7ee007dc3479fa1852fcef84a5e1a58dd402abcf3f7a8a97e18ecee96bd76e18",
+        "samples": 229,
+        "fieldVertices": 63
+      },
+      {
+        "partId": "fore-near-paw",
+        "joint": "foreNearPaw",
+        "sourceSha256": "90dc20a37ab057bd4793cd76d6d23c95c6c8b7c1651cb958ba10f92e9458387d",
+        "samples": 241,
+        "fieldVertices": 66
+      }
+    ],
+    "method": "lowest nonzero-alpha texel centre in every original paw column; all covering triangle field supports hard-pinned to that paw matrix"
+  },
+  "physicalSkinAdjacency": {
+    "axialInfluences": "all surfaces share axial plus proximal Root/Knee influence space; distal Ankle/Paw remain branch-exclusive",
+    "rule": "all axial/upper-leg source cuts share field support; independent limbs and distal crossings remain split",
+    "classes": {
+      "axial-continuous": 2325,
+      "same-limb-continuous": 816,
+      "axial-upper-socket": 1185,
+      "independent-limbs": 0,
+      "axial-distal-crossing": 112
+    },
+    "socketPairs": {
+      "torso|hind-near-upper": 157,
+      "tail-root|hind-near-upper": 239,
+      "bill|fore-far-upper": 56,
+      "head|fore-far-upper": 129,
+      "neck|fore-far-upper": 64,
+      "neck|fore-near-upper": 122,
+      "chest|fore-near-upper": 146,
+      "torso|fore-near-upper": 126,
+      "tail-middle|hind-near-upper": 28,
+      "chest|fore-far-upper": 118
+    }
+  },
+  "explicitPartFaces": 4759,
+  "attachmentSockets": {
+    "hindFar": {
+      "edges": 0,
+      "fieldSupports": 0
+    },
+    "foreFar": {
+      "edges": 367,
+      "fieldSupports": 47
+    },
+    "hindNear": {
+      "edges": 424,
+      "fieldSupports": 58
+    },
+    "foreNear": {
+      "edges": 394,
+      "fieldSupports": 60
+    }
+  },
+  "diffusionIterations": 32,
+  "maxDiscardedWeight": 0.0007793648550251664,
+  "sourceInterpolationDifferentCoordinates": 0,
+  "unchangedPartCount": 17,
+  "nativeAcceptance": false
+}

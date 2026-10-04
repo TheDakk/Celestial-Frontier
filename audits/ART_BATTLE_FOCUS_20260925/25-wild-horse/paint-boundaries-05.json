@@ -1,0 +1,13 @@
+{
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ]
+  ],
+  "reason": "Native01 shows a rectangular neck/torso edge during faint. This observed continuous coat boundary shares supports; ears, limbs and tail keep their independent boundaries."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "21-musk-ox",
+  "name": "Musk Ox",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-dfc9432a-82fd-427d-bd27-aff50ece4412.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3bae7d834b5afbdbb1153a503c2a16f47deec7965ed95507913d4a289527fca0",
+  "bytes": 1467115,
+  "promptSha256": "de5f3a204abe56907a7728f6796cf9f23843dcddea84768d3ad89adc6c4d9fc5",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

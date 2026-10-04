@@ -1,0 +1,9 @@
+{
+ "id": "g2c110-24-bactrian-camel",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 38%)"
+ ],
+ "semanticPresence": null
+}

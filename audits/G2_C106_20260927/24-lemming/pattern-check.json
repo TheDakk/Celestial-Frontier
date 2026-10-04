@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Lemming",
+  "masterSha256": "0010645e88524412d9e308adde258d81727571a0ebd6ce4095a1d0283f7e77b2",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

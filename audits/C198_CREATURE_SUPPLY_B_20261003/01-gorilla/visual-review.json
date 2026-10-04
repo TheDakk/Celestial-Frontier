@@ -1,0 +1,28 @@
+{
+  "name": "Gorilla",
+  "masterSha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: silverback with dark limbs, pale saddle, tailless body and four distinct visible distal supports: two knuckle-bearing hands and two feet. Both arm and leg silhouettes emerge separately where visible; far shoulder/hip roots remain partly obscured by torso fur. Near ear and eye are clear, far ear is not independently visible. Supports project at unequal heights and the long-arm stance is higher than requested low stance. Improved detached support silhouettes, not a grounded motion or complete-root proof.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 252,
+      "y0": 226,
+      "x1": 999,
+      "y1": 999
+    },
+    "margins": {
+      "left": 252,
+      "right": 254,
+      "top": 226,
+      "bottom": 254
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

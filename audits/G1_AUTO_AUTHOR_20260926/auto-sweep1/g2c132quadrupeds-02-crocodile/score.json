@@ -1,0 +1,24 @@
+{
+ "id": "g2c132quadrupeds-02-crocodile",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonP",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "unexplained-anatomy: 16.1% of the paint lies away from the body and in no part (reference 9.7%)"
+   ]
+  }
+ ]
+}

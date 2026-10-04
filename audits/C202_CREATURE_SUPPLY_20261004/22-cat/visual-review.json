@@ -1,0 +1,28 @@
+{
+  "name": "Cat",
+  "masterSha256": "56300ec542a72604e5ef96dfcaa1d8b7f59687efd1349afbaf732470c108feee",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Brown tabby with visible dark striping, pale muzzle/chest, long ringed tail and four complete paws. Both ears visible; patterned face and body remain distinct.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 173,
+      "y0": 328,
+      "x1": 997,
+      "y1": 876
+    },
+    "margins": {
+      "left": 173,
+      "right": 256,
+      "top": 328,
+      "bottom": 377
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

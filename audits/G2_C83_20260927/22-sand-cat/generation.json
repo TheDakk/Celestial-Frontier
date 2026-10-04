@@ -1,0 +1,13 @@
+{
+  "id": "22-sand-cat",
+  "name": "Sand Cat",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-70916557-da84-4d36-bbf0-cd478769f69d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "55919c68b82bad8812f7dea59c8d2a8e0e2ba2c9e1a0507aa16e2c47a08ae254",
+  "bytes": 1396956,
+  "promptSha256": "7b1976baa839621c249e7e4b13bf58d8f812a3989409d564db7d0141cfe3635a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,938 @@
+{
+  "scope": "Diagnostic full phone flow with timer provenance; not calibration/certification",
+  "events": [
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "0A84A7BB9C3BBCE477CDFA71DC9AFBF5",
+        "name": "commit",
+        "timestamp": 1066283.158983
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "0A84A7BB9C3BBCE477CDFA71DC9AFBF5",
+        "name": "DOMContentLoaded",
+        "timestamp": 1066283.159015
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "0A84A7BB9C3BBCE477CDFA71DC9AFBF5",
+        "name": "load",
+        "timestamp": 1066283.159442
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "0A84A7BB9C3BBCE477CDFA71DC9AFBF5",
+        "name": "networkAlmostIdle",
+        "timestamp": 1066283.159354
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "0A84A7BB9C3BBCE477CDFA71DC9AFBF5",
+        "name": "networkIdle",
+        "timestamp": 1066283.159354
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "B493EAB81049B76B42F83DC96DB0BFDC",
+        "name": "init",
+        "timestamp": 1066283.168292
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "B493EAB81049B76B42F83DC96DB0BFDC",
+        "name": "DOMContentLoaded",
+        "timestamp": 1066283.269684
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "B493EAB81049B76B42F83DC96DB0BFDC",
+        "name": "firstMeaningfulPaintCandidate",
+        "timestamp": 1066283.225976
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "B493EAB81049B76B42F83DC96DB0BFDC",
+        "name": "firstContentfulPaint",
+        "timestamp": 1066283.225976
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "B493EAB81049B76B42F83DC96DB0BFDC",
+        "name": "firstPaint",
+        "timestamp": 1066283.225976
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "B493EAB81049B76B42F83DC96DB0BFDC",
+        "name": "load",
+        "timestamp": 1066283.277263
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "E66116A0F020085A13054D643D877882",
+        "name": "commit",
+        "timestamp": 1066283.948817
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "E66116A0F020085A13054D643D877882",
+        "name": "DOMContentLoaded",
+        "timestamp": 1066283.948851
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "E66116A0F020085A13054D643D877882",
+        "name": "load",
+        "timestamp": 1066283.949271
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "E66116A0F020085A13054D643D877882",
+        "name": "networkAlmostIdle",
+        "timestamp": 1066283.949185
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "E66116A0F020085A13054D643D877882",
+        "name": "networkIdle",
+        "timestamp": 1066283.949185
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "47D74AE269B670346B08CD45686C8D5D",
+        "name": "init",
+        "timestamp": 1066283.958565
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "47D74AE269B670346B08CD45686C8D5D",
+        "name": "DOMContentLoaded",
+        "timestamp": 1066283.960253
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "47D74AE269B670346B08CD45686C8D5D",
+        "name": "load",
+        "timestamp": 1066283.96036
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "84992812340FE5BFD2B6B3A8D8175A96",
+        "name": "init",
+        "timestamp": 1066283.969416
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "84992812340FE5BFD2B6B3A8D8175A96",
+        "name": "DOMContentLoaded",
+        "timestamp": 1066284.063133
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "84992812340FE5BFD2B6B3A8D8175A96",
+        "name": "firstMeaningfulPaintCandidate",
+        "timestamp": 1066284.000082
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "84992812340FE5BFD2B6B3A8D8175A96",
+        "name": "firstContentfulPaint",
+        "timestamp": 1066284.000082
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "84992812340FE5BFD2B6B3A8D8175A96",
+        "name": "firstPaint",
+        "timestamp": 1066284.000082
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "84992812340FE5BFD2B6B3A8D8175A96",
+        "name": "load",
+        "timestamp": 1066284.070766
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "B493EAB81049B76B42F83DC96DB0BFDC",
+        "name": "networkAlmostIdle",
+        "timestamp": 1066283.810663
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "B493EAB81049B76B42F83DC96DB0BFDC",
+        "name": "firstMeaningfulPaint",
+        "timestamp": 1066283.225976
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "868ACA30E369C2580992189E325C4766",
+        "loaderId": "B493EAB81049B76B42F83DC96DB0BFDC",
+        "name": "networkIdle",
+        "timestamp": 1066283.818641
+      },
+      "sessionId": "8785076ECED4EBF9CAD7A16F70467E21"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "84992812340FE5BFD2B6B3A8D8175A96",
+        "name": "firstImagePaint",
+        "timestamp": 1066284.359409
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    },
+    {
+      "method": "Page.lifecycleEvent",
+      "params": {
+        "frameId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "loaderId": "84992812340FE5BFD2B6B3A8D8175A96",
+        "name": "firstMeaningfulPaintCandidate",
+        "timestamp": 1066284.55554
+      },
+      "sessionId": "04F39F925ED5443EFE159B9CA379FEED"
+    }
+  ],
+  "foreground": [
+    {
+      "at": 1779.495625,
+      "value": {
+        "schema": "cf-v2-compendium-foreground-service-observation/v1",
+        "targetId": "868ACA30E369C2580992189E325C4766",
+        "sessionId": "8785076ECED4EBF9CAD7A16F70467E21",
+        "documentToken": "3c334148-8794-4dc6-8e9a-2c971d596865",
+        "visibilityState": "visible",
+        "hidden": false,
+        "focused": true,
+        "service": {
+          "token": "phone-compendium-foreground-1",
+          "visibilityChanges": 0,
+          "focusLosses": 0,
+          "arm": {
+            "observed": true,
+            "sequence": 0,
+            "visibilityState": "visible",
+            "hidden": false,
+            "focused": true
+          },
+          "raf": {
+            "observed": false,
+            "sequence": null,
+            "visibilityState": null,
+            "hidden": null,
+            "focused": null
+          },
+          "laterTask": {
+            "observed": false,
+            "sequence": null,
+            "visibilityState": null,
+            "hidden": null,
+            "focused": null
+          }
+        }
+      },
+      "probe": {
+        "timers": [
+          {
+            "kind": "timer",
+            "ms": 8000,
+            "scheduled": 118.29999995231628,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at Object.schedule (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:1760)\n    at I (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:17657)\n    at L (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:17801)\n    at Object.setMusicState (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:18301)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:1955",
+            "source": "()=>{A=null,j=null,D===`calm`&&P(r()<.5?`calm-a`:`calm-b`,!1,()=>I(F()))}",
+            "fired": null,
+            "canceled": null,
+            "id": 1
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 220.79999995231628,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at UA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:529668)\n    at DA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:526502)\n    at TA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:525057)\n    at dce (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:268430)\n    at async http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272243",
+            "source": "()=>{!M()||oA[sA]!==e||VA()||BA(HA(e))}",
+            "fired": 275.89999997615814,
+            "canceled": null,
+            "id": 3
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 221.69999992847443,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at WA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:529837)\n    at DA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:526508)\n    at TA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:525057)\n    at dce (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:268430)\n    at async http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272243",
+            "source": "()=>{!dA||!M()||oA[sA]!==e||(dA.textContent=`Field Training, step ${sA+1} of ${oA.length}. ${t}`)}",
+            "fired": 276,
+            "canceled": null,
+            "id": 4
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 229.59999990463257,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 276.2999999523163,
+            "canceled": null,
+            "id": 6
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 234.19999992847443,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 301.7999999523163,
+            "canceled": null,
+            "id": 7
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 241.69999992847443,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 353.2999999523163,
+            "canceled": null,
+            "id": 8
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 248.59999990463257,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 474,
+            "canceled": null,
+            "id": 9
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 253.5,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 531.3999999761581,
+            "canceled": null,
+            "id": 10
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 258.1999999284744,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 557.1999999284744,
+            "canceled": null,
+            "id": 11
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 260.7999999523163,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 583.8999999761581,
+            "canceled": null,
+            "id": 12
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 264.39999997615814,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 614.0999999046326,
+            "canceled": null,
+            "id": 13
+          },
+          {
+            "kind": "timer",
+            "ms": 31,
+            "scheduled": 265,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at $8 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:41489)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:40751)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{I8=null,G.mode===`system`&&G.star.seed===t&&tZ===e&&e5(!1)}",
+            "fired": 641,
+            "canceled": null,
+            "id": 14
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 472.89999997615814,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:293248",
+            "source": "()=>{let e=P;HQ(e)&&e.setAnswerable(!0),pZ.activate(),H1(),fce();try{let e=window.__cfSliceReadyWitness;if(typeof e!=`function`)return;let t=r?.width??0,n=r?.height??0,i=JSON.stringify({schema:`cf-v2-",
+            "fired": 642.6999999284744,
+            "canceled": null,
+            "id": 15
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 644.7999999523163,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at <anonymous>:16:9",
+            "source": "()=>{service.laterTask=phase(sample(),2)}",
+            "fired": 645.5,
+            "canceled": null,
+            "id": 16
+          }
+        ],
+        "visibility": "visible",
+        "focused": true,
+        "hidden": false
+      }
+    },
+    {
+      "at": 1832.611042,
+      "value": {
+        "schema": "cf-v2-compendium-foreground-service-observation/v1",
+        "targetId": "868ACA30E369C2580992189E325C4766",
+        "sessionId": "8785076ECED4EBF9CAD7A16F70467E21",
+        "documentToken": "3c334148-8794-4dc6-8e9a-2c971d596865",
+        "visibilityState": "visible",
+        "hidden": false,
+        "focused": true,
+        "service": {
+          "token": "phone-compendium-foreground-1",
+          "visibilityChanges": 0,
+          "focusLosses": 0,
+          "arm": {
+            "observed": true,
+            "sequence": 0,
+            "visibilityState": "visible",
+            "hidden": false,
+            "focused": true
+          },
+          "raf": {
+            "observed": true,
+            "sequence": 1,
+            "visibilityState": "visible",
+            "hidden": false,
+            "focused": true
+          },
+          "laterTask": {
+            "observed": true,
+            "sequence": 2,
+            "visibilityState": "visible",
+            "hidden": false,
+            "focused": true
+          }
+        }
+      },
+      "probe": {
+        "timers": [
+          {
+            "kind": "timer",
+            "ms": 8000,
+            "scheduled": 118.29999995231628,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at Object.schedule (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:1760)\n    at I (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:17657)\n    at L (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:17801)\n    at Object.setMusicState (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:18301)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:1955",
+            "source": "()=>{A=null,j=null,D===`calm`&&P(r()<.5?`calm-a`:`calm-b`,!1,()=>I(F()))}",
+            "fired": null,
+            "canceled": null,
+            "id": 1
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 220.79999995231628,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at UA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:529668)\n    at DA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:526502)\n    at TA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:525057)\n    at dce (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:268430)\n    at async http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272243",
+            "source": "()=>{!M()||oA[sA]!==e||VA()||BA(HA(e))}",
+            "fired": 275.89999997615814,
+            "canceled": null,
+            "id": 3
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 221.69999992847443,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at WA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:529837)\n    at DA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:526508)\n    at TA (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:525057)\n    at dce (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:268430)\n    at async http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272243",
+            "source": "()=>{!dA||!M()||oA[sA]!==e||(dA.textContent=`Field Training, step ${sA+1} of ${oA.length}. ${t}`)}",
+            "fired": 276,
+            "canceled": null,
+            "id": 4
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 229.59999990463257,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 276.2999999523163,
+            "canceled": null,
+            "id": 6
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 234.19999992847443,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 301.7999999523163,
+            "canceled": null,
+            "id": 7
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 241.69999992847443,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 353.2999999523163,
+            "canceled": null,
+            "id": 8
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 248.59999990463257,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 474,
+            "canceled": null,
+            "id": 9
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 253.5,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 531.3999999761581,
+            "canceled": null,
+            "id": 10
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 258.1999999284744,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 557.1999999284744,
+            "canceled": null,
+            "id": 11
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 260.7999999523163,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 583.8999999761581,
+            "canceled": null,
+            "id": 12
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 264.39999997615814,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:38287)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 614.0999999046326,
+            "canceled": null,
+            "id": 13
+          },
+          {
+            "kind": "timer",
+            "ms": 31,
+            "scheduled": 265,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at $8 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:41489)\n    at ioe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:40751)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42139)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{I8=null,G.mode===`system`&&G.star.seed===t&&tZ===e&&e5(!1)}",
+            "fired": 641,
+            "canceled": null,
+            "id": 14
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 472.89999997615814,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:293248",
+            "source": "()=>{let e=P;HQ(e)&&e.setAnswerable(!0),pZ.activate(),H1(),fce();try{let e=window.__cfSliceReadyWitness;if(typeof e!=`function`)return;let t=r?.width??0,n=r?.height??0,i=JSON.stringify({schema:`cf-v2-",
+            "fired": 642.6999999284744,
+            "canceled": null,
+            "id": 15
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 644.7999999523163,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at <anonymous>:16:9",
+            "source": "()=>{service.laterTask=phase(sample(),2)}",
+            "fired": 645.5,
+            "canceled": null,
+            "id": 16
+          }
+        ],
+        "visibility": "visible",
+        "focused": true,
+        "hidden": false
+      }
+    },
+    {
+      "at": 2260.407458,
+      "value": {
+        "schema": "cf-v2-compendium-foreground-service-observation/v1",
+        "targetId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "sessionId": "04F39F925ED5443EFE159B9CA379FEED",
+        "documentToken": "bab78169-1d7a-4ac4-a788-ae294e2148ed",
+        "visibilityState": "visible",
+        "hidden": false,
+        "focused": true,
+        "service": {
+          "token": "phone-compendium-foreground-2",
+          "visibilityChanges": 0,
+          "focusLosses": 0,
+          "arm": {
+            "observed": true,
+            "sequence": 0,
+            "visibilityState": "visible",
+            "hidden": false,
+            "focused": true
+          },
+          "raf": {
+            "observed": false,
+            "sequence": null,
+            "visibilityState": null,
+            "hidden": null,
+            "focused": null
+          },
+          "laterTask": {
+            "observed": false,
+            "sequence": null,
+            "visibilityState": null,
+            "hidden": null,
+            "focused": null
+          }
+        }
+      },
+      "probe": {
+        "timers": [
+          {
+            "kind": "timer",
+            "ms": 8000,
+            "scheduled": 110.69999992847443,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at Object.schedule (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:1760)\n    at I (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:17657)\n    at L (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:17801)\n    at Object.setMusicState (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:18301)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:1955",
+            "source": "()=>{A=null,j=null,D===`calm`&&P(r()<.5?`calm-a`:`calm-b`,!1,()=>I(F()))}",
+            "fired": null,
+            "canceled": null,
+            "id": 1
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 187.5,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at Goe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:102373)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42220)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 220,
+            "canceled": null,
+            "id": 3
+          },
+          {
+            "kind": "timer",
+            "ms": 31,
+            "scheduled": 188.5,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at Object.schedule (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:608398)\n    at yP.queueRefresh (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:611160)\n    at yP.scheduleRefresh (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:610427)\n    at Goe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:102826)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42220)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>this.completeRefresh(n)",
+            "fired": 320.39999997615814,
+            "canceled": null,
+            "id": 4
+          },
+          {
+            "kind": "timer",
+            "ms": 4000,
+            "scheduled": 193.69999992847443,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at Object.schedule (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:1760)\n    at E (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:16709)\n    at T (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:16152)\n    at Object.setAmbience (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:18228)\n    at U8 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:20936)\n    at Goe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:103264)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42220)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{S=null,x.length===0&&T()}",
+            "fired": null,
+            "canceled": null,
+            "id": 5
+          },
+          {
+            "kind": "timer",
+            "ms": 12000,
+            "scheduled": 193.89999997615814,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at U8 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:25043)\n    at Goe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:103264)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42220)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{g()||O8(null,`biome vista worker deadline exceeded`),_()}",
+            "fired": null,
+            "canceled": null,
+            "id": 6
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 218.09999990463257,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:293248",
+            "source": "()=>{let e=P;HQ(e)&&e.setAnswerable(!0),pZ.activate(),H1(),fce();try{let e=window.__cfSliceReadyWitness;if(typeof e!=`function`)return;let t=r?.width??0,n=r?.height??0,i=JSON.stringify({schema:`cf-v2-",
+            "fired": 219.39999997615814,
+            "canceled": null,
+            "id": 7
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 320.2999999523163,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at http://127.0.0.1:49721/assets/tame-greeting-audio-Btcm6fqh.js:3:36646",
+            "source": "()=>{e===this.pumpScheduleGeneration&&(this.pumpScheduled=!1,this.pump())}",
+            "fired": 323.39999997615814,
+            "canceled": null,
+            "id": 8
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 324.09999990463257,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at <anonymous>:16:9",
+            "source": "()=>{service.laterTask=phase(sample(),2)}",
+            "fired": null,
+            "canceled": null,
+            "id": 9
+          }
+        ],
+        "visibility": "visible",
+        "focused": true,
+        "hidden": false
+      }
+    },
+    {
+      "at": 2318.88825,
+      "value": {
+        "schema": "cf-v2-compendium-foreground-service-observation/v1",
+        "targetId": "93C2F191E39DD7D9C5168422FF798FDE",
+        "sessionId": "04F39F925ED5443EFE159B9CA379FEED",
+        "documentToken": "bab78169-1d7a-4ac4-a788-ae294e2148ed",
+        "visibilityState": "visible",
+        "hidden": false,
+        "focused": true,
+        "service": {
+          "token": "phone-compendium-foreground-2",
+          "visibilityChanges": 0,
+          "focusLosses": 0,
+          "arm": {
+            "observed": true,
+            "sequence": 0,
+            "visibilityState": "visible",
+            "hidden": false,
+            "focused": true
+          },
+          "raf": {
+            "observed": true,
+            "sequence": 1,
+            "visibilityState": "visible",
+            "hidden": false,
+            "focused": true
+          },
+          "laterTask": {
+            "observed": true,
+            "sequence": 2,
+            "visibilityState": "visible",
+            "hidden": false,
+            "focused": true
+          }
+        }
+      },
+      "probe": {
+        "timers": [
+          {
+            "kind": "timer",
+            "ms": 8000,
+            "scheduled": 110.69999992847443,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at Object.schedule (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:1760)\n    at I (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:17657)\n    at L (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:17801)\n    at Object.setMusicState (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:18301)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:1955",
+            "source": "()=>{A=null,j=null,D===`calm`&&P(r()<.5?`calm-a`:`calm-b`,!1,()=>I(F()))}",
+            "fired": null,
+            "canceled": null,
+            "id": 1
+          },
+          {
+            "kind": "timer",
+            "ms": 30,
+            "scheduled": 187.5,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at vc._hdLater (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42471)\n    at Gee (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:41359)\n    at gc (http://127.0.0.1:49721/assets/main-rO59MFY-.js:210:42320)\n    at Goe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:102373)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42220)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{sc.get(r)===a&&sc.set(r,ic(cc(e,n||Uee)))}",
+            "fired": 220,
+            "canceled": null,
+            "id": 3
+          },
+          {
+            "kind": "timer",
+            "ms": 31,
+            "scheduled": 188.5,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at Object.schedule (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:608398)\n    at yP.queueRefresh (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:611160)\n    at yP.scheduleRefresh (http://127.0.0.1:49721/assets/main-rO59MFY-.js:227:610427)\n    at Goe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:102826)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42220)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>this.completeRefresh(n)",
+            "fired": 320.39999997615814,
+            "canceled": null,
+            "id": 4
+          },
+          {
+            "kind": "timer",
+            "ms": 4000,
+            "scheduled": 193.69999992847443,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at Object.schedule (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:1760)\n    at E (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:16709)\n    at T (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:16152)\n    at Object.setAmbience (http://127.0.0.1:49721/assets/soundscape-DC-XtRvY.js:1:18228)\n    at U8 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:20936)\n    at Goe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:103264)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42220)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{S=null,x.length===0&&T()}",
+            "fired": null,
+            "canceled": null,
+            "id": 5
+          },
+          {
+            "kind": "timer",
+            "ms": 12000,
+            "scheduled": 193.89999997615814,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at U8 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:25043)\n    at Goe (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:103264)\n    at t5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42220)\n    at n5 (http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:42812)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:272280",
+            "source": "()=>{g()||O8(null,`biome vista worker deadline exceeded`),_()}",
+            "fired": null,
+            "canceled": 373.59999990463257,
+            "id": 6
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 218.09999990463257,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at http://127.0.0.1:49721/assets/main-rO59MFY-.js:458:293248",
+            "source": "()=>{let e=P;HQ(e)&&e.setAnswerable(!0),pZ.activate(),H1(),fce();try{let e=window.__cfSliceReadyWitness;if(typeof e!=`function`)return;let t=r?.width??0,n=r?.height??0,i=JSON.stringify({schema:`cf-v2-",
+            "fired": 219.39999997615814,
+            "canceled": null,
+            "id": 7
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 320.2999999523163,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at http://127.0.0.1:49721/assets/tame-greeting-audio-Btcm6fqh.js:3:36646",
+            "source": "()=>{e===this.pumpScheduleGeneration&&(this.pumpScheduled=!1,this.pump())}",
+            "fired": 323.39999997615814,
+            "canceled": null,
+            "id": 8
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 324.09999990463257,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at <anonymous>:16:9",
+            "source": "()=>{service.laterTask=phase(sample(),2)}",
+            "fired": 324.5,
+            "canceled": null,
+            "id": 9
+          },
+          {
+            "kind": "timer",
+            "ms": 0,
+            "scheduled": 375.39999997615814,
+            "stack": "Error\n    at window.setTimeout (<anonymous>:2:96)\n    at http://127.0.0.1:49721/assets/tame-greeting-audio-Btcm6fqh.js:3:36646",
+            "source": "()=>{e===this.pumpScheduleGeneration&&(this.pumpScheduled=!1,this.pump())}",
+            "fired": 383,
+            "canceled": null,
+            "id": 10
+          }
+        ],
+        "visibility": "visible",
+        "focused": true,
+        "hidden": false
+      }
+    }
+  ],
+  "error": "EEXIST: file already exists, open '/Users/dakk/.codex/worktrees/i5-back-proof/celestial-frontier-openai-mac/port/v2/apps/game/smoke/compendiummem-foreground-focused-diagnostic-phone-list.png'"
+}

@@ -1,0 +1,14 @@
+{
+ "id": "05-impala",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 12% paint (reference 71%)",
+  "missing-anatomy: part ear-near-root (earNearRoot) covers 32% paint (reference 96%)",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 77%)",
+  "missing-anatomy: part ear-far-root (earFarRoot) covers 0% paint (reference 94%)",
+  "missing-anatomy: part jaw (jaw) covers 24% paint (reference 83%)",
+  "missing-anatomy: part head (head) covers 12% paint (reference 84%)"
+ ],
+ "semanticPresence": null
+}

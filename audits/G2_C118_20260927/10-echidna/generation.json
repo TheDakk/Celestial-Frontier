@@ -1,0 +1,13 @@
+{
+  "id": "10-echidna",
+  "name": "Echidna",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-06dbd6e5-1885-4011-9663-a776bcb0aefb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "19149a2e4f819a335e90fde151afd21391e59f4734be6b2927f32132f35c4e8b",
+  "bytes": 1478743,
+  "promptSha256": "f4bffaa579af88897b889c0cc7e9135e65276a01c26fe9dbc1b0e26f399534f6",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Marmoset",
+  "masterSha256": "949df79df52b00a64ff06408b2e294eedf91adebb7ff8f12e76bd7dd285b5b98",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Small mottled brown/grey primate with white fan ear tufts and a long visibly banded tail. Four clawed hand/foot endpoints present, but far limb roots remain hidden by torso fur and feet do not share a single level. Ear tufts obscure ear anatomy; do not treat tufts as proven separate ears.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 224,
+      "y0": 409,
+      "x1": 995,
+      "y1": 848
+    },
+    "margins": {
+      "left": 224,
+      "right": 258,
+      "top": 409,
+      "bottom": 405
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

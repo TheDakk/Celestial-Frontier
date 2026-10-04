@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tree Shrew",
+  "masterSha256": "0189309d203331afebc59f9abc45c419b3d63b9ff95e0a5cdd63df5cba8d2fd6",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,3588 @@
+{
+  "scope": "Exact native target composition at recorded turn beats; observed contact and actual unchanged Float32 field/ARAP. Standalone comparison and nearby times are diagnostics, not full motion admission.",
+  "fit": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/SNOWY_OWL_C91_20260927/foot-collar-02",
+  "at": 425.533333333334,
+  "cardNotes": [
+    "earth species \"Snowy Owl\" mass uncalibrated (medium); gait from physical habitat/anatomy",
+    "physical realm: G1 automatic: Earth fauna profile raptor media air+ground (capability, not painted pose; adult flight is a separate declaration)",
+    "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): legFar 1.0%, legNear 2.4%",
+    "grounded-bird:painted-faint-gain=0.7400390625000001"
+  ],
+  "seed": 593405465,
+  "rows": [
+    {
+      "label": "rest",
+      "context": {
+        "actionId": "idle",
+        "elapsedMs": 0,
+        "durationMs": 1,
+        "weight": 1,
+        "travel": "stage"
+      },
+      "error": null,
+      "pose": {},
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0
+        },
+        "legFarKnee": {
+          "rotation": 2.6645352591003757e-15
+        },
+        "legFarAnkle": {
+          "rotation": -4.884981308350689e-15
+        },
+        "legFarFoot": {
+          "rotation": 2.220446049250313e-15
+        },
+        "legNearKnee": {
+          "rotation": 0
+        },
+        "legNearAnkle": {
+          "rotation": 0
+        },
+        "legNearFoot": {
+          "rotation": 0
+        }
+      },
+      "stats": {
+        "rigid": true,
+        "maximumTargetErrorPx": 0,
+        "rmsTargetErrorPx": 0,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 1,
+        "orientationPasses": 0
+      },
+      "folded": []
+    },
+    {
+      "label": "stage -0.05",
+      "context": {
+        "actionId": "faint",
+        "elapsedMs": 425.4833333333338,
+        "durationMs": 712,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "error": null,
+      "pose": {
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.1263398987999593,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck0": {
+          "rotation": 0.40011504422419075,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck1": {
+          "rotation": 0.40011504422419075,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.3118178949880498,
+          "dx": 0,
+          "dy": 0
+        },
+        "beak": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.5426604960058734,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarAnkle": {
+          "rotation": -0.9958506132181466,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": 0.21706419840234936,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.5426604960058734,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearAnkle": {
+          "rotation": -0.9958506132181466,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": 0.21706419840234936,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": -0.46345718458840895,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.3239801725704136,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": -0.46345718458840895,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.3239801725704136,
+          "dx": 0,
+          "dy": 0
+        },
+        "tailFan": {
+          "rotation": 0.29114894662620333,
+          "dx": 0,
+          "dy": 0
+        },
+        "root": {
+          "rotation": 0.16107667049587737,
+          "dx": -0.014394568971623726,
+          "dy": 0.13740125603224523
+        }
+      },
+      "resolved": {
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.1263398987999593,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck0": {
+          "rotation": 0.40011504422419075,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck1": {
+          "rotation": 0.40011504422419075,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.3118178949880498,
+          "dx": 0,
+          "dy": 0
+        },
+        "beak": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.4564351225901921
+        },
+        "legFarAnkle": {
+          "rotation": 0.32765624646737035
+        },
+        "legFarFoot": {
+          "rotation": -0.032297794373055674
+        },
+        "legNearKnee": {
+          "rotation": 0.06329181653054108
+        },
+        "legNearAnkle": {
+          "rotation": -0.8614866442430164
+        },
+        "legNearFoot": {
+          "rotation": 0.6371181572165979
+        },
+        "wingFarRoot": {
+          "rotation": -0.46345718458840895,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.3239801725704136,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": -0.46345718458840895,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.3239801725704136,
+          "dx": 0,
+          "dy": 0
+        },
+        "tailFan": {
+          "rotation": 0.29114894662620333,
+          "dx": 0,
+          "dy": 0
+        },
+        "root": {
+          "rotation": 0.16107667049587737,
+          "dx": 0,
+          "dy": 0.13740125603224523
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 46.10952455642423,
+        "rmsTargetErrorPx": 4.754445900408515,
+        "maximumProjectionPx": 43.305697976450645,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.061051779313532194,
+        "orientationPasses": 121
+      },
+      "folded": []
+    },
+    {
+      "label": "stage 0",
+      "context": {
+        "actionId": "faint",
+        "elapsedMs": 425.533333333334,
+        "durationMs": 712,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7",
+      "pose": {
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.12634288296920668,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck0": {
+          "rotation": 0.4001533524828852,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck1": {
+          "rotation": 0.4001533524828852,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.3118502679774702,
+          "dx": 0,
+          "dy": 0
+        },
+        "beak": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.5426403337644552,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarAnkle": {
+          "rotation": -0.9957941589421759,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": 0.21705613350578212,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.5426403337644552,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearAnkle": {
+          "rotation": -0.9957941589421759,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": 0.21705613350578212,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": -0.46358080256408485,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.32417439774334184,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": -0.46358080256408485,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.32417439774334184,
+          "dx": 0,
+          "dy": 0
+        },
+        "tailFan": {
+          "rotation": 0.2912374289076492,
+          "dx": 0,
+          "dy": 0
+        },
+        "root": {
+          "rotation": 0.16109755968060913,
+          "dx": -0.014395803695076592,
+          "dy": 0.13741187116012352
+        }
+      },
+      "resolved": {
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.12634288296920668,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck0": {
+          "rotation": 0.4001533524828852,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck1": {
+          "rotation": 0.4001533524828852,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.3118502679774702,
+          "dx": 0,
+          "dy": 0
+        },
+        "beak": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.4564565891135509
+        },
+        "legFarAnkle": {
+          "rotation": 0.3276272626214016
+        },
+        "legFarFoot": {
+          "rotation": -0.03226823318845984
+        },
+        "legNearKnee": {
+          "rotation": 0.06326858172794714
+        },
+        "legNearAnkle": {
+          "rotation": -0.8615249556621434
+        },
+        "legNearFoot": {
+          "rotation": 0.6371588142535871
+        },
+        "wingFarRoot": {
+          "rotation": -0.46358080256408485,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.32417439774334184,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": -0.46358080256408485,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.32417439774334184,
+          "dx": 0,
+          "dy": 0
+        },
+        "tailFan": {
+          "rotation": 0.2912374289076492,
+          "dx": 0,
+          "dy": 0
+        },
+        "root": {
+          "rotation": 0.16109755968060913,
+          "dx": 0,
+          "dy": 0.13741187116012352
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 44.67738170773772,
+        "rmsTargetErrorPx": 4.708228706188076,
+        "maximumProjectionPx": 40.70094733699935,
+        "flippedTriangles": 7,
+        "minimumAreaRatio": -0.029525761256567976,
+        "orientationPasses": 128
+      },
+      "folded": [
+        {
+          "triangle": 10,
+          "ratio": -0.00830200517267806,
+          "parts": [
+            "near-foot",
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 15,
+              "x": 617,
+              "y": 831.5,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.40879393944176534
+                ],
+                [
+                  "root",
+                  0.24393429151955046
+                ],
+                [
+                  "legNearAnkle",
+                  0.2302162275877521
+                ],
+                [
+                  "legNearKnee",
+                  0.11523422943821823
+                ],
+                [
+                  "legFarKnee",
+                  0.0008272975110285683
+                ],
+                [
+                  "tailFan",
+                  0.0007624581843530315
+                ],
+                [
+                  "legFarAnkle",
+                  0.0002230681366897849
+                ],
+                [
+                  "legFarFoot",
+                  0.000008488180642470189
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                600.3097343444824,
+                839.3338415622711
+              ],
+              "solved": [
+                596.5777253169039,
+                846.2332623290752
+              ]
+            },
+            {
+              "index": 16,
+              "x": 627,
+              "y": 822,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "pinned": true,
+              "target": [
+                596.5637780427933,
+                848.7714958190918
+              ],
+              "solved": [
+                596.5637780427933,
+                848.7714958190918
+              ]
+            },
+            {
+              "index": 17,
+              "x": 627,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5959287999462417
+                ],
+                [
+                  "legNearAnkle",
+                  0.18865778044651552
+                ],
+                [
+                  "root",
+                  0.15119995995681543
+                ],
+                [
+                  "legNearKnee",
+                  0.06331582704026907
+                ],
+                [
+                  "legFarKnee",
+                  0.00045158963044168666
+                ],
+                [
+                  "tailFan",
+                  0.000321123685846596
+                ],
+                [
+                  "legFarAnkle",
+                  0.00012051382929907358
+                ],
+                [
+                  "legFarFoot",
+                  0.000004405464570954963
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                615.8517120480537,
+                844.8994460105896
+              ],
+              "solved": [
+                597.1849230831277,
+                848.8266922157554
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 11,
+          "ratio": -0.010112213270068858,
+          "parts": [
+            "near-foot",
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 15,
+              "x": 617,
+              "y": 831.5,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.40879393944176534
+                ],
+                [
+                  "root",
+                  0.24393429151955046
+                ],
+                [
+                  "legNearAnkle",
+                  0.2302162275877521
+                ],
+                [
+                  "legNearKnee",
+                  0.11523422943821823
+                ],
+                [
+                  "legFarKnee",
+                  0.0008272975110285683
+                ],
+                [
+                  "tailFan",
+                  0.0007624581843530315
+                ],
+                [
+                  "legFarAnkle",
+                  0.0002230681366897849
+                ],
+                [
+                  "legFarFoot",
+                  0.000008488180642470189
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                600.3097343444824,
+                839.3338415622711
+              ],
+              "solved": [
+                596.5777253169039,
+                846.2332623290752
+              ]
+            },
+            {
+              "index": 17,
+              "x": 627,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5959287999462417
+                ],
+                [
+                  "legNearAnkle",
+                  0.18865778044651552
+                ],
+                [
+                  "root",
+                  0.15119995995681543
+                ],
+                [
+                  "legNearKnee",
+                  0.06331582704026907
+                ],
+                [
+                  "legFarKnee",
+                  0.00045158963044168666
+                ],
+                [
+                  "tailFan",
+                  0.000321123685846596
+                ],
+                [
+                  "legFarAnkle",
+                  0.00012051382929907358
+                ],
+                [
+                  "legFarFoot",
+                  0.000004405464570954963
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                615.8517120480537,
+                844.8994460105896
+              ],
+              "solved": [
+                597.1849230831277,
+                848.8266922157554
+              ]
+            },
+            {
+              "index": 13,
+              "x": 607,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5147263438403392
+                ],
+                [
+                  "legNearAnkle",
+                  0.2696664438036379
+                ],
+                [
+                  "root",
+                  0.11092424703635276
+                ],
+                [
+                  "legNearKnee",
+                  0.103709045322904
+                ],
+                [
+                  "tailFan",
+                  0.0005731708013191262
+                ],
+                [
+                  "legFarKnee",
+                  0.00031804746621426794
+                ],
+                [
+                  "legFarAnkle",
+                  0.00008030592468559521
+                ],
+                [
+                  "legFarFoot",
+                  0.0000023958045473993787
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                595.865704357624,
+                845.7804561853409
+              ],
+              "solved": [
+                598.1612234246047,
+                849.8323710845152
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 12,
+          "ratio": -0.0002532037574661411,
+          "parts": [
+            "near-foot",
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 18,
+              "x": 597,
+              "y": 851,
+              "weights": [
+                [
+                  "legNearAnkle",
+                  1
+                ]
+              ],
+              "pinned": true,
+              "target": [
+                596.9989389181137,
+                851.002237200737
+              ],
+              "solved": [
+                596.9989389181137,
+                851.002237200737
+              ]
+            },
+            {
+              "index": 9,
+              "x": 587,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.4442936195425806
+                ],
+                [
+                  "legNearAnkle",
+                  0.3102507147063085
+                ],
+                [
+                  "legNearKnee",
+                  0.17621660990672408
+                ],
+                [
+                  "root",
+                  0.06796465639058716
+                ],
+                [
+                  "tailFan",
+                  0.001081326648563352
+                ],
+                [
+                  "legFarKnee",
+                  0.00015629663186944397
+                ],
+                [
+                  "legFarAnkle",
+                  0.0000359918731394745
+                ],
+                [
+                  "legFarFoot",
+                  7.84300227221921e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                575.4555605649948,
+                848.65511906147
+              ],
+              "solved": [
+                596.8309917452624,
+                851.2148499104024
+              ]
+            },
+            {
+              "index": 13,
+              "x": 607,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5147263438403392
+                ],
+                [
+                  "legNearAnkle",
+                  0.2696664438036379
+                ],
+                [
+                  "root",
+                  0.11092424703635276
+                ],
+                [
+                  "legNearKnee",
+                  0.103709045322904
+                ],
+                [
+                  "tailFan",
+                  0.0005731708013191262
+                ],
+                [
+                  "legFarKnee",
+                  0.00031804746621426794
+                ],
+                [
+                  "legFarAnkle",
+                  0.00008030592468559521
+                ],
+                [
+                  "legFarFoot",
+                  0.0000023958045473993787
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                595.865704357624,
+                845.7804561853409
+              ],
+              "solved": [
+                598.1612234246047,
+                849.8323710845152
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 73,
+          "ratio": -0.007270985396308804,
+          "parts": [
+            "near-foot"
+          ],
+          "vertices": [
+            {
+              "index": 20,
+              "x": 617,
+              "y": 851,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.7014606338614933
+                ],
+                [
+                  "legNearAnkle",
+                  0.16173989489571267
+                ],
+                [
+                  "root",
+                  0.08078286714803522
+                ],
+                [
+                  "legNearKnee",
+                  0.05555091181114097
+                ],
+                [
+                  "tailFan",
+                  0.00022172872745287935
+                ],
+                [
+                  "legFarKnee",
+                  0.0001943687316415119
+                ],
+                [
+                  "legFarAnkle",
+                  0.00004828699329344211
+                ],
+                [
+                  "legFarFoot",
+                  0.0000013078312302918261
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                609.681538939476,
+                853.8481982946396
+              ],
+              "solved": [
+                598.8591354746841,
+                850.1780709333738
+              ]
+            },
+            {
+              "index": 21,
+              "x": 627,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.8202763306202935
+                ],
+                [
+                  "legNearAnkle",
+                  0.09773982059058309
+                ],
+                [
+                  "root",
+                  0.051362135098753856
+                ],
+                [
+                  "legNearKnee",
+                  0.03039860497278964
+                ],
+                [
+                  "legFarKnee",
+                  0.00010603317080458764
+                ],
+                [
+                  "tailFan",
+                  0.0000904715069125077
+                ],
+                [
+                  "legFarAnkle",
+                  0.000025946330597149637
+                ],
+                [
+                  "legFarFoot",
+                  6.577092654017224e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                622.0335826277733,
+                862.9201290607452
+              ],
+              "solved": [
+                599.7186745289171,
+                847.6252176299985
+              ]
+            },
+            {
+              "index": 19,
+              "x": 607,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.7464423549239874
+                ],
+                [
+                  "legNearAnkle",
+                  0.1573207047190693
+                ],
+                [
+                  "legNearKnee",
+                  0.050637991065707384
+                ],
+                [
+                  "root",
+                  0.04532086571378254
+                ],
+                [
+                  "tailFan",
+                  0.00017037769965497248
+                ],
+                [
+                  "legFarKnee",
+                  0.00008690034990644843
+                ],
+                [
+                  "legFarAnkle",
+                  0.000020370463963443555
+                ],
+                [
+                  "legFarFoot",
+                  4.350639284802794e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                602.1360720992088,
+                863.425400018692
+              ],
+              "solved": [
+                597.338008482088,
+                853.004023956309
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 206,
+          "ratio": -0.0029269873062885404,
+          "parts": [
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 142,
+              "x": 577,
+              "y": 831.5,
+              "weights": [
+                [
+                  "legNearKnee",
+                  0.3467471437606568
+                ],
+                [
+                  "legNearAnkle",
+                  0.3159536262632571
+                ],
+                [
+                  "legNearFoot",
+                  0.2658559314117665
+                ],
+                [
+                  "root",
+                  0.06886360288284984
+                ],
+                [
+                  "tailFan",
+                  0.002390533302756089
+                ],
+                [
+                  "legFarKnee",
+                  0.00015425536658278602
+                ],
+                [
+                  "legFarAnkle",
+                  0.00003420775112425424
+                ],
+                [
+                  "legFarFoot",
+                  6.992610066034388e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                558.6144908666611,
+                843.2939400672913
+              ],
+              "solved": [
+                593.0219999948644,
+                853.360047029651
+              ]
+            },
+            {
+              "index": 135,
+              "x": 587,
+              "y": 822,
+              "weights": [
+                [
+                  "legNearKnee",
+                  0.3501031773812998
+                ],
+                [
+                  "legNearAnkle",
+                  0.2955749620451439
+                ],
+                [
+                  "legNearFoot",
+                  0.21955540451882913
+                ],
+                [
+                  "root",
+                  0.13065862789943006
+                ],
+                [
+                  "tailFan",
+                  0.003569042396237793
+                ],
+                [
+                  "legFarKnee",
+                  0.00043128807629482906
+                ],
+                [
+                  "legFarAnkle",
+                  0.00010446526761230476
+                ],
+                [
+                  "legFarFoot",
+                  0.0000030324151522593724
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                565.335379421711,
+                834.47696185112
+              ],
+              "solved": [
+                596.2178234465234,
+                851.7061858278585
+              ]
+            },
+            {
+              "index": 9,
+              "x": 587,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.4442936195425806
+                ],
+                [
+                  "legNearAnkle",
+                  0.3102507147063085
+                ],
+                [
+                  "legNearKnee",
+                  0.17621660990672408
+                ],
+                [
+                  "root",
+                  0.06796465639058716
+                ],
+                [
+                  "tailFan",
+                  0.001081326648563352
+                ],
+                [
+                  "legFarKnee",
+                  0.00015629663186944397
+                ],
+                [
+                  "legFarAnkle",
+                  0.0000359918731394745
+                ],
+                [
+                  "legFarFoot",
+                  7.84300227221921e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                575.4555605649948,
+                848.65511906147
+              ],
+              "solved": [
+                596.8309917452624,
+                851.2148499104024
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 208,
+          "ratio": -0.029525761256567976,
+          "parts": [
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 15,
+              "x": 617,
+              "y": 831.5,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.40879393944176534
+                ],
+                [
+                  "root",
+                  0.24393429151955046
+                ],
+                [
+                  "legNearAnkle",
+                  0.2302162275877521
+                ],
+                [
+                  "legNearKnee",
+                  0.11523422943821823
+                ],
+                [
+                  "legFarKnee",
+                  0.0008272975110285683
+                ],
+                [
+                  "tailFan",
+                  0.0007624581843530315
+                ],
+                [
+                  "legFarAnkle",
+                  0.0002230681366897849
+                ],
+                [
+                  "legFarFoot",
+                  0.000008488180642470189
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                600.3097343444824,
+                839.3338415622711
+              ],
+              "solved": [
+                596.5777253169039,
+                846.2332623290752
+              ]
+            },
+            {
+              "index": 12,
+              "x": 607,
+              "y": 822,
+              "weights": [
+                [
+                  "root",
+                  0.2797368049291682
+                ],
+                [
+                  "legNearFoot",
+                  0.27404697919272114
+                ],
+                [
+                  "legNearAnkle",
+                  0.22333238819039763
+                ],
+                [
+                  "legNearKnee",
+                  0.21949498195649234
+                ],
+                [
+                  "tailFan",
+                  0.0019002142494358946
+                ],
+                [
+                  "legFarKnee",
+                  0.0011616306652348694
+                ],
+                [
+                  "legFarAnkle",
+                  0.00031435358608232917
+                ],
+                [
+                  "legFarFoot",
+                  0.000012647230467638791
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                585.6070969104767,
+                833.8380482196808
+              ],
+              "solved": [
+                594.3503353882182,
+                849.3694359799887
+              ]
+            },
+            {
+              "index": 16,
+              "x": 627,
+              "y": 822,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "pinned": true,
+              "target": [
+                596.5637780427933,
+                848.7714958190918
+              ],
+              "solved": [
+                596.5637780427933,
+                848.7714958190918
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 210,
+          "ratio": -0.011613171331924339,
+          "parts": [
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 18,
+              "x": 597,
+              "y": 851,
+              "weights": [
+                [
+                  "legNearAnkle",
+                  1
+                ]
+              ],
+              "pinned": true,
+              "target": [
+                596.9989389181137,
+                851.002237200737
+              ],
+              "solved": [
+                596.9989389181137,
+                851.002237200737
+              ]
+            },
+            {
+              "index": 143,
+              "x": 607,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5151250840949112
+                ],
+                [
+                  "legNearAnkle",
+                  0.34251346173217156
+                ],
+                [
+                  "legNearKnee",
+                  0.08185745427131977
+                ],
+                [
+                  "root",
+                  0.0600204475645789
+                ],
+                [
+                  "tailFan",
+                  0.0003244183591306348
+                ],
+                [
+                  "legFarKnee",
+                  0.0001282463858589912
+                ],
+                [
+                  "legFarAnkle",
+                  0.00003021634013939361
+                ],
+                [
+                  "legFarFoot",
+                  6.712518894066898e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                601.3974123001099,
+                862.4413175582886
+              ],
+              "solved": [
+                596.6379592228823,
+                853.6839839972342
+              ]
+            },
+            {
+              "index": 10,
+              "x": 587,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.628518711912171
+                ],
+                [
+                  "legNearAnkle",
+                  0.25734308789350885
+                ],
+                [
+                  "legNearKnee",
+                  0.0804172138918335
+                ],
+                [
+                  "root",
+                  0.033350807308717804
+                ],
+                [
+                  "tailFan",
+                  0.00030532870972913267
+                ],
+                [
+                  "legFarKnee",
+                  0.00005302186841109984
+                ],
+                [
+                  "legFarAnkle",
+                  0.000011635788504838999
+                ],
+                [
+                  "legFarFoot",
+                  1.9262712386853873e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                582.9188461303711,
+                865.3055909872055
+              ],
+              "solved": [
+                596.8157673213173,
+                858.7972853612686
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "stage 0.05",
+      "context": {
+        "actionId": "faint",
+        "elapsedMs": 425.58333333333417,
+        "durationMs": 712,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 8",
+      "pose": {
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.12634586555938931,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck0": {
+          "rotation": 0.4001916404708722,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck1": {
+          "rotation": 0.4001916404708722,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.3118826254692258,
+          "dx": 0,
+          "dy": 0
+        },
+        "beak": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.5426201821918305,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarAnkle": {
+          "rotation": -0.9957377345388267,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": 0.21704807287673225,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.5426201821918305,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearAnkle": {
+          "rotation": -0.9957377345388267,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": 0.21704807287673225,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": -0.46370438053178553,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.3243685776405783,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": -0.46370438053178553,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.3243685776405783,
+          "dx": 0,
+          "dy": 0
+        },
+        "tailFan": {
+          "rotation": 0.291325884244234,
+          "dx": 0,
+          "dy": 0
+        },
+        "root": {
+          "rotation": 0.16111843781188745,
+          "dx": -0.014397037578118398,
+          "dy": 0.13742248081133213
+        }
+      },
+      "resolved": {
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.12634586555938931,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck0": {
+          "rotation": 0.4001916404708722,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck1": {
+          "rotation": 0.4001916404708722,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.3118826254692258,
+          "dx": 0,
+          "dy": 0
+        },
+        "beak": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.4564780434053924
+        },
+        "legFarAnkle": {
+          "rotation": 0.3275982923471759
+        },
+        "legFarFoot": {
+          "rotation": -0.032238686753670934
+        },
+        "legNearKnee": {
+          "rotation": 0.0632453583975979
+        },
+        "legNearAnkle": {
+          "rotation": -0.8615632456060901
+        },
+        "legNearFoot": {
+          "rotation": 0.6371994493966048
+        },
+        "wingFarRoot": {
+          "rotation": -0.46370438053178553,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.3243685776405783,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": -0.46370438053178553,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.3243685776405783,
+          "dx": 0,
+          "dy": 0
+        },
+        "tailFan": {
+          "rotation": 0.291325884244234,
+          "dx": 0,
+          "dy": 0
+        },
+        "root": {
+          "rotation": 0.16111843781188745,
+          "dx": 0,
+          "dy": 0.13742248081133213
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 44.760336873050804,
+        "rmsTargetErrorPx": 4.64714967352526,
+        "maximumProjectionPx": 40.12430654622448,
+        "flippedTriangles": 8,
+        "minimumAreaRatio": -0.03328035480976696,
+        "orientationPasses": 128
+      },
+      "folded": [
+        {
+          "triangle": 7,
+          "ratio": -0.012627613937789743,
+          "parts": [
+            "near-foot",
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 11,
+              "x": 597,
+              "y": 831.5,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.39594477706437264
+                ],
+                [
+                  "legNearAnkle",
+                  0.2974005600976151
+                ],
+                [
+                  "legNearKnee",
+                  0.1833952200639712
+                ],
+                [
+                  "root",
+                  0.1214716880998908
+                ],
+                [
+                  "tailFan",
+                  0.0013202020683969584
+                ],
+                [
+                  "legFarKnee",
+                  0.0003725244925004987
+                ],
+                [
+                  "legFarAnkle",
+                  0.0000923484324760571
+                ],
+                [
+                  "legFarFoot",
+                  0.0000026796807765055415
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                581.7929738759995,
+                839.603443980217
+              ],
+              "solved": [
+                593.8907582878917,
+                849.1994971271052
+              ]
+            },
+            {
+              "index": 12,
+              "x": 607,
+              "y": 822,
+              "weights": [
+                [
+                  "root",
+                  0.2797368049291682
+                ],
+                [
+                  "legNearFoot",
+                  0.27404697919272114
+                ],
+                [
+                  "legNearAnkle",
+                  0.22333238819039763
+                ],
+                [
+                  "legNearKnee",
+                  0.21949498195649234
+                ],
+                [
+                  "tailFan",
+                  0.0019002142494358946
+                ],
+                [
+                  "legFarKnee",
+                  0.0011616306652348694
+                ],
+                [
+                  "legFarAnkle",
+                  0.00031435358608232917
+                ],
+                [
+                  "legFarFoot",
+                  0.000012647230467638791
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                585.6054151654243,
+                833.8387956619263
+              ],
+              "solved": [
+                592.694254194246,
+                849.2430477500494
+              ]
+            },
+            {
+              "index": 13,
+              "x": 607,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5147263438403392
+                ],
+                [
+                  "legNearAnkle",
+                  0.2696664438036379
+                ],
+                [
+                  "root",
+                  0.11092424703635276
+                ],
+                [
+                  "legNearKnee",
+                  0.103709045322904
+                ],
+                [
+                  "tailFan",
+                  0.0005731708013191262
+                ],
+                [
+                  "legFarKnee",
+                  0.00031804746621426794
+                ],
+                [
+                  "legFarAnkle",
+                  0.00008030592468559521
+                ],
+                [
+                  "legFarFoot",
+                  0.0000023958045473993787
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                595.864882171154,
+                845.7807551622391
+              ],
+              "solved": [
+                596.1010322862736,
+                851.1242609878424
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 9,
+          "ratio": -0.004908575822940764,
+          "parts": [
+            "near-foot"
+          ],
+          "vertices": [
+            {
+              "index": 11,
+              "x": 597,
+              "y": 831.5,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.39594477706437264
+                ],
+                [
+                  "legNearAnkle",
+                  0.2974005600976151
+                ],
+                [
+                  "legNearKnee",
+                  0.1833952200639712
+                ],
+                [
+                  "root",
+                  0.1214716880998908
+                ],
+                [
+                  "tailFan",
+                  0.0013202020683969584
+                ],
+                [
+                  "legFarKnee",
+                  0.0003725244925004987
+                ],
+                [
+                  "legFarAnkle",
+                  0.0000923484324760571
+                ],
+                [
+                  "legFarFoot",
+                  0.0000026796807765055415
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                581.7929738759995,
+                839.603443980217
+              ],
+              "solved": [
+                593.8907582878917,
+                849.1994971271052
+              ]
+            },
+            {
+              "index": 9,
+              "x": 587,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.4442936195425806
+                ],
+                [
+                  "legNearAnkle",
+                  0.3102507147063085
+                ],
+                [
+                  "legNearKnee",
+                  0.17621660990672408
+                ],
+                [
+                  "root",
+                  0.06796465639058716
+                ],
+                [
+                  "tailFan",
+                  0.001081326648563352
+                ],
+                [
+                  "legFarKnee",
+                  0.00015629663186944397
+                ],
+                [
+                  "legFarAnkle",
+                  0.0000359918731394745
+                ],
+                [
+                  "legFarFoot",
+                  7.84300227221921e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                575.4549626111984,
+                848.6557170152664
+              ],
+              "solved": [
+                594.3500820607317,
+                850.3625663311102
+              ]
+            },
+            {
+              "index": 14,
+              "x": 587,
+              "y": 822,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.47495162645721506
+                ],
+                [
+                  "legNearAnkle",
+                  0.2760274604375378
+                ],
+                [
+                  "legNearKnee",
+                  0.16282400886246448
+                ],
+                [
+                  "root",
+                  0.08497367540096308
+                ],
+                [
+                  "tailFan",
+                  0.0009627526036679712
+                ],
+                [
+                  "legFarKnee",
+                  0.00021020785224790307
+                ],
+                [
+                  "legFarAnkle",
+                  0.00004916073889373218
+                ],
+                [
+                  "legFarFoot",
+                  0.0000011076470100016003
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                573.348371386528,
+                830.7048450708389
+              ],
+              "solved": [
+                595.1306849869368,
+                850.3087172081256
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 11,
+          "ratio": -0.03328035480976696,
+          "parts": [
+            "near-foot",
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 15,
+              "x": 617,
+              "y": 831.5,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.40879393944176534
+                ],
+                [
+                  "root",
+                  0.24393429151955046
+                ],
+                [
+                  "legNearAnkle",
+                  0.2302162275877521
+                ],
+                [
+                  "legNearKnee",
+                  0.11523422943821823
+                ],
+                [
+                  "legFarKnee",
+                  0.0008272975110285683
+                ],
+                [
+                  "tailFan",
+                  0.0007624581843530315
+                ],
+                [
+                  "legFarAnkle",
+                  0.0002230681366897849
+                ],
+                [
+                  "legFarFoot",
+                  0.000008488180642470189
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                600.308314204216,
+                839.3342900276184
+              ],
+              "solved": [
+                598.6656900120428,
+                848.0623429536695
+              ]
+            },
+            {
+              "index": 17,
+              "x": 627,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5959287999462417
+                ],
+                [
+                  "legNearAnkle",
+                  0.18865778044651552
+                ],
+                [
+                  "root",
+                  0.15119995995681543
+                ],
+                [
+                  "legNearKnee",
+                  0.06331582704026907
+                ],
+                [
+                  "legFarKnee",
+                  0.00045158963044168666
+                ],
+                [
+                  "tailFan",
+                  0.000321123685846596
+                ],
+                [
+                  "legFarAnkle",
+                  0.00012051382929907358
+                ],
+                [
+                  "legFarFoot",
+                  0.000004405464570954963
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                615.8507403731346,
+                844.8996702432632
+              ],
+              "solved": [
+                597.9013055472581,
+                846.5093931015034
+              ]
+            },
+            {
+              "index": 13,
+              "x": 607,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5147263438403392
+                ],
+                [
+                  "legNearAnkle",
+                  0.2696664438036379
+                ],
+                [
+                  "root",
+                  0.11092424703635276
+                ],
+                [
+                  "legNearKnee",
+                  0.103709045322904
+                ],
+                [
+                  "tailFan",
+                  0.0005731708013191262
+                ],
+                [
+                  "legFarKnee",
+                  0.00031804746621426794
+                ],
+                [
+                  "legFarAnkle",
+                  0.00008030592468559521
+                ],
+                [
+                  "legFarFoot",
+                  0.0000023958045473993787
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                595.864882171154,
+                845.7807551622391
+              ],
+              "solved": [
+                596.1010322862736,
+                851.1242609878424
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 12,
+          "ratio": -0.0044879413063531525,
+          "parts": [
+            "near-foot",
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 18,
+              "x": 597,
+              "y": 851,
+              "weights": [
+                [
+                  "legNearAnkle",
+                  1
+                ]
+              ],
+              "pinned": true,
+              "target": [
+                596.9989389181137,
+                851.002237200737
+              ],
+              "solved": [
+                596.9989389181137,
+                851.002237200737
+              ]
+            },
+            {
+              "index": 9,
+              "x": 587,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.4442936195425806
+                ],
+                [
+                  "legNearAnkle",
+                  0.3102507147063085
+                ],
+                [
+                  "legNearKnee",
+                  0.17621660990672408
+                ],
+                [
+                  "root",
+                  0.06796465639058716
+                ],
+                [
+                  "tailFan",
+                  0.001081326648563352
+                ],
+                [
+                  "legFarKnee",
+                  0.00015629663186944397
+                ],
+                [
+                  "legFarAnkle",
+                  0.0000359918731394745
+                ],
+                [
+                  "legFarFoot",
+                  7.84300227221921e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                575.4549626111984,
+                848.6557170152664
+              ],
+              "solved": [
+                594.3500820607317,
+                850.3625663311102
+              ]
+            },
+            {
+              "index": 13,
+              "x": 607,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5147263438403392
+                ],
+                [
+                  "legNearAnkle",
+                  0.2696664438036379
+                ],
+                [
+                  "root",
+                  0.11092424703635276
+                ],
+                [
+                  "legNearKnee",
+                  0.103709045322904
+                ],
+                [
+                  "tailFan",
+                  0.0005731708013191262
+                ],
+                [
+                  "legFarKnee",
+                  0.00031804746621426794
+                ],
+                [
+                  "legFarAnkle",
+                  0.00008030592468559521
+                ],
+                [
+                  "legFarFoot",
+                  0.0000023958045473993787
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                595.864882171154,
+                845.7807551622391
+              ],
+              "solved": [
+                596.1010322862736,
+                851.1242609878424
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 15,
+          "ratio": -0.025075914464777856,
+          "parts": [
+            "near-foot"
+          ],
+          "vertices": [
+            {
+              "index": 20,
+              "x": 617,
+              "y": 851,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.7014606338614933
+                ],
+                [
+                  "legNearAnkle",
+                  0.16173989489571267
+                ],
+                [
+                  "root",
+                  0.08078286714803522
+                ],
+                [
+                  "legNearKnee",
+                  0.05555091181114097
+                ],
+                [
+                  "tailFan",
+                  0.00022172872745287935
+                ],
+                [
+                  "legFarKnee",
+                  0.0001943687316415119
+                ],
+                [
+                  "legFarAnkle",
+                  0.00004828699329344211
+                ],
+                [
+                  "legFarFoot",
+                  0.0000013078312302918261
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                609.6809409856796,
+                853.8484225273132
+              ],
+              "solved": [
+                600.3090368543626,
+                850.2630129208056
+              ]
+            },
+            {
+              "index": 17,
+              "x": 627,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5959287999462417
+                ],
+                [
+                  "legNearAnkle",
+                  0.18865778044651552
+                ],
+                [
+                  "root",
+                  0.15119995995681543
+                ],
+                [
+                  "legNearKnee",
+                  0.06331582704026907
+                ],
+                [
+                  "legFarKnee",
+                  0.00045158963044168666
+                ],
+                [
+                  "tailFan",
+                  0.000321123685846596
+                ],
+                [
+                  "legFarAnkle",
+                  0.00012051382929907358
+                ],
+                [
+                  "legFarFoot",
+                  0.000004405464570954963
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                615.8507403731346,
+                844.8996702432632
+              ],
+              "solved": [
+                597.9013055472581,
+                846.5093931015034
+              ]
+            },
+            {
+              "index": 21,
+              "x": 627,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.8202763306202935
+                ],
+                [
+                  "legNearAnkle",
+                  0.09773982059058309
+                ],
+                [
+                  "root",
+                  0.051362135098753856
+                ],
+                [
+                  "legNearKnee",
+                  0.03039860497278964
+                ],
+                [
+                  "legFarKnee",
+                  0.00010603317080458764
+                ],
+                [
+                  "tailFan",
+                  0.0000904715069125077
+                ],
+                [
+                  "legFarAnkle",
+                  0.000025946330597149637
+                ],
+                [
+                  "legFarFoot",
+                  6.577092654017224e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                622.0332089066505,
+                862.9202785491943
+              ],
+              "solved": [
+                598.518220502481,
+                849.5541045583312
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 73,
+          "ratio": -0.00691316244212582,
+          "parts": [
+            "near-foot"
+          ],
+          "vertices": [
+            {
+              "index": 20,
+              "x": 617,
+              "y": 851,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.7014606338614933
+                ],
+                [
+                  "legNearAnkle",
+                  0.16173989489571267
+                ],
+                [
+                  "root",
+                  0.08078286714803522
+                ],
+                [
+                  "legNearKnee",
+                  0.05555091181114097
+                ],
+                [
+                  "tailFan",
+                  0.00022172872745287935
+                ],
+                [
+                  "legFarKnee",
+                  0.0001943687316415119
+                ],
+                [
+                  "legFarAnkle",
+                  0.00004828699329344211
+                ],
+                [
+                  "legFarFoot",
+                  0.0000013078312302918261
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                609.6809409856796,
+                853.8484225273132
+              ],
+              "solved": [
+                600.3090368543626,
+                850.2630129208056
+              ]
+            },
+            {
+              "index": 21,
+              "x": 627,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.8202763306202935
+                ],
+                [
+                  "legNearAnkle",
+                  0.09773982059058309
+                ],
+                [
+                  "root",
+                  0.051362135098753856
+                ],
+                [
+                  "legNearKnee",
+                  0.03039860497278964
+                ],
+                [
+                  "legFarKnee",
+                  0.00010603317080458764
+                ],
+                [
+                  "tailFan",
+                  0.0000904715069125077
+                ],
+                [
+                  "legFarAnkle",
+                  0.000025946330597149637
+                ],
+                [
+                  "legFarFoot",
+                  6.577092654017224e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                622.0332089066505,
+                862.9202785491943
+              ],
+              "solved": [
+                598.518220502481,
+                849.5541045583312
+              ]
+            },
+            {
+              "index": 19,
+              "x": 607,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.7464423549239874
+                ],
+                [
+                  "legNearAnkle",
+                  0.1573207047190693
+                ],
+                [
+                  "legNearKnee",
+                  0.050637991065707384
+                ],
+                [
+                  "root",
+                  0.04532086571378254
+                ],
+                [
+                  "tailFan",
+                  0.00017037769965497248
+                ],
+                [
+                  "legFarKnee",
+                  0.00008690034990644843
+                ],
+                [
+                  "legFarAnkle",
+                  0.000020370463963443555
+                ],
+                [
+                  "legFarFoot",
+                  4.350639284802794e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                602.1357357501984,
+                863.4255495071411
+              ],
+              "solved": [
+                597.3819131296948,
+                849.876356859026
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 74,
+          "ratio": -0.02074015062047704,
+          "parts": [
+            "near-foot"
+          ],
+          "vertices": [
+            {
+              "index": 20,
+              "x": 617,
+              "y": 851,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.7014606338614933
+                ],
+                [
+                  "legNearAnkle",
+                  0.16173989489571267
+                ],
+                [
+                  "root",
+                  0.08078286714803522
+                ],
+                [
+                  "legNearKnee",
+                  0.05555091181114097
+                ],
+                [
+                  "tailFan",
+                  0.00022172872745287935
+                ],
+                [
+                  "legFarKnee",
+                  0.0001943687316415119
+                ],
+                [
+                  "legFarAnkle",
+                  0.00004828699329344211
+                ],
+                [
+                  "legFarFoot",
+                  0.0000013078312302918261
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                609.6809409856796,
+                853.8484225273132
+              ],
+              "solved": [
+                600.3090368543626,
+                850.2630129208056
+              ]
+            },
+            {
+              "index": 19,
+              "x": 607,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.7464423549239874
+                ],
+                [
+                  "legNearAnkle",
+                  0.1573207047190693
+                ],
+                [
+                  "legNearKnee",
+                  0.050637991065707384
+                ],
+                [
+                  "root",
+                  0.04532086571378254
+                ],
+                [
+                  "tailFan",
+                  0.00017037769965497248
+                ],
+                [
+                  "legFarKnee",
+                  0.00008690034990644843
+                ],
+                [
+                  "legFarAnkle",
+                  0.000020370463963443555
+                ],
+                [
+                  "legFarFoot",
+                  4.350639284802794e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                602.1357357501984,
+                863.4255495071411
+              ],
+              "solved": [
+                597.3819131296948,
+                849.876356859026
+              ]
+            },
+            {
+              "index": 13,
+              "x": 607,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5147263438403392
+                ],
+                [
+                  "legNearAnkle",
+                  0.2696664438036379
+                ],
+                [
+                  "root",
+                  0.11092424703635276
+                ],
+                [
+                  "legNearKnee",
+                  0.103709045322904
+                ],
+                [
+                  "tailFan",
+                  0.0005731708013191262
+                ],
+                [
+                  "legFarKnee",
+                  0.00031804746621426794
+                ],
+                [
+                  "legFarAnkle",
+                  0.00008030592468559521
+                ],
+                [
+                  "legFarFoot",
+                  0.0000023958045473993787
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                595.864882171154,
+                845.7807551622391
+              ],
+              "solved": [
+                596.1010322862736,
+                851.1242609878424
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 208,
+          "ratio": -0.009242158415278484,
+          "parts": [
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 15,
+              "x": 617,
+              "y": 831.5,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.40879393944176534
+                ],
+                [
+                  "root",
+                  0.24393429151955046
+                ],
+                [
+                  "legNearAnkle",
+                  0.2302162275877521
+                ],
+                [
+                  "legNearKnee",
+                  0.11523422943821823
+                ],
+                [
+                  "legFarKnee",
+                  0.0008272975110285683
+                ],
+                [
+                  "tailFan",
+                  0.0007624581843530315
+                ],
+                [
+                  "legFarAnkle",
+                  0.0002230681366897849
+                ],
+                [
+                  "legFarFoot",
+                  0.000008488180642470189
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                600.308314204216,
+                839.3342900276184
+              ],
+              "solved": [
+                598.6656900120428,
+                848.0623429536695
+              ]
+            },
+            {
+              "index": 12,
+              "x": 607,
+              "y": 822,
+              "weights": [
+                [
+                  "root",
+                  0.2797368049291682
+                ],
+                [
+                  "legNearFoot",
+                  0.27404697919272114
+                ],
+                [
+                  "legNearAnkle",
+                  0.22333238819039763
+                ],
+                [
+                  "legNearKnee",
+                  0.21949498195649234
+                ],
+                [
+                  "tailFan",
+                  0.0019002142494358946
+                ],
+                [
+                  "legFarKnee",
+                  0.0011616306652348694
+                ],
+                [
+                  "legFarAnkle",
+                  0.00031435358608232917
+                ],
+                [
+                  "legFarFoot",
+                  0.000012647230467638791
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                585.6054151654243,
+                833.8387956619263
+              ],
+              "solved": [
+                592.694254194246,
+                849.2430477500494
+              ]
+            },
+            {
+              "index": 16,
+              "x": 627,
+              "y": 822,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "pinned": true,
+              "target": [
+                596.5599660873413,
+                848.7727664709091
+              ],
+              "solved": [
+                596.5599660873413,
+                848.7727664709091
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "standalone same-time faint",
+      "context": {
+        "actionId": "faint",
+        "elapsedMs": 425.533333333334,
+        "durationMs": 712,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 4",
+      "pose": {
+        "pelvis": {
+          "rotation": 0
+        },
+        "spine": {
+          "rotation": 0.12634288296920668
+        },
+        "chest": {
+          "rotation": 0
+        },
+        "neck0": {
+          "rotation": 0.4001533524828852
+        },
+        "neck1": {
+          "rotation": 0.4001533524828852
+        },
+        "head": {
+          "rotation": 0.32240766896624695
+        },
+        "beak": {
+          "rotation": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.5426403337644552
+        },
+        "legFarAnkle": {
+          "rotation": -0.9957941589421759
+        },
+        "legFarFoot": {
+          "rotation": 0.21705613350578212
+        },
+        "legNearKnee": {
+          "rotation": 0.5426403337644552
+        },
+        "legNearAnkle": {
+          "rotation": -0.9957941589421759
+        },
+        "legNearFoot": {
+          "rotation": 0.21705613350578212
+        },
+        "wingFarRoot": {
+          "rotation": -0.46358080256408485
+        },
+        "wingFarTip": {
+          "rotation": -0.32417439774334184
+        },
+        "wingNearRoot": {
+          "rotation": -0.46358080256408485
+        },
+        "wingNearTip": {
+          "rotation": -0.32417439774334184
+        },
+        "tailFan": {
+          "rotation": 0.3090538683760566
+        },
+        "root": {
+          "rotation": 0.16109755968060913,
+          "dx": -0.01318601465650829,
+          "dy": 0.13831921293904975
+        }
+      },
+      "resolved": {
+        "pelvis": {
+          "rotation": 0
+        },
+        "spine": {
+          "rotation": 0.12634288296920668
+        },
+        "chest": {
+          "rotation": 0
+        },
+        "neck0": {
+          "rotation": 0.4001533524828852
+        },
+        "neck1": {
+          "rotation": 0.4001533524828852
+        },
+        "head": {
+          "rotation": 0.32240766896624695
+        },
+        "beak": {
+          "rotation": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.4597197302651438
+        },
+        "legFarAnkle": {
+          "rotation": 0.33304726601015644
+        },
+        "legFarFoot": {
+          "rotation": -0.03442509542562178
+        },
+        "legNearKnee": {
+          "rotation": 0.06508704155809764
+        },
+        "legNearAnkle": {
+          "rotation": -0.8666989211957542
+        },
+        "legNearFoot": {
+          "rotation": 0.6405143199570474
+        },
+        "wingFarRoot": {
+          "rotation": -0.46358080256408485
+        },
+        "wingFarTip": {
+          "rotation": -0.32417439774334184
+        },
+        "wingNearRoot": {
+          "rotation": -0.46358080256408485
+        },
+        "wingNearTip": {
+          "rotation": -0.32417439774334184
+        },
+        "tailFan": {
+          "rotation": 0.3090538683760566
+        },
+        "root": {
+          "rotation": 0.16109755968060913,
+          "dx": 0,
+          "dy": 0.13831921293904975
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 44.56571219382531,
+        "rmsTargetErrorPx": 4.721054315195528,
+        "maximumProjectionPx": 40.492405893607206,
+        "flippedTriangles": 4,
+        "minimumAreaRatio": -0.08626158732026024,
+        "orientationPasses": 128
+      },
+      "folded": [
+        {
+          "triangle": 15,
+          "ratio": -0.005001792334090601,
+          "parts": [
+            "near-foot"
+          ],
+          "vertices": [
+            {
+              "index": 20,
+              "x": 617,
+              "y": 851,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.7014606338614933
+                ],
+                [
+                  "legNearAnkle",
+                  0.16173989489571267
+                ],
+                [
+                  "root",
+                  0.08078286714803522
+                ],
+                [
+                  "legNearKnee",
+                  0.05555091181114097
+                ],
+                [
+                  "tailFan",
+                  0.00022172872745287935
+                ],
+                [
+                  "legFarKnee",
+                  0.0001943687316415119
+                ],
+                [
+                  "legFarAnkle",
+                  0.00004828699329344211
+                ],
+                [
+                  "legFarFoot",
+                  0.0000013078312302918261
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                609.6568359732628,
+                853.8780959844589
+              ],
+              "solved": [
+                598.0631720731217,
+                848.9377208479843
+              ]
+            },
+            {
+              "index": 17,
+              "x": 627,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5959287999462417
+                ],
+                [
+                  "legNearAnkle",
+                  0.18865778044651552
+                ],
+                [
+                  "root",
+                  0.15119995995681543
+                ],
+                [
+                  "legNearKnee",
+                  0.06331582704026907
+                ],
+                [
+                  "legFarKnee",
+                  0.00045158963044168666
+                ],
+                [
+                  "tailFan",
+                  0.000321123685846596
+                ],
+                [
+                  "legFarAnkle",
+                  0.00012051382929907358
+                ],
+                [
+                  "legFarFoot",
+                  0.000004405464570954963
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                615.8168064951897,
+                844.9444420337677
+              ],
+              "solved": [
+                597.6444932978534,
+                849.4754533290387
+              ]
+            },
+            {
+              "index": 21,
+              "x": 627,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.8202763306202935
+                ],
+                [
+                  "legNearAnkle",
+                  0.09773982059058309
+                ],
+                [
+                  "root",
+                  0.051362135098753856
+                ],
+                [
+                  "legNearKnee",
+                  0.03039860497278964
+                ],
+                [
+                  "legFarKnee",
+                  0.00010603317080458764
+                ],
+                [
+                  "tailFan",
+                  0.0000904715069125077
+                ],
+                [
+                  "legFarAnkle",
+                  0.000025946330597149637
+                ],
+                [
+                  "legFarFoot",
+                  6.577092654017224e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                622.0167651772499,
+                862.9397867918015
+              ],
+              "solved": [
+                598.8038700105812,
+                850.3757233519573
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 69,
+          "ratio": -0.0014673079825300679,
+          "parts": [
+            "near-foot",
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 8,
+              "x": 577,
+              "y": 851,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5126084342001562
+                ],
+                [
+                  "legNearAnkle",
+                  0.3021048802376301
+                ],
+                [
+                  "legNearKnee",
+                  0.14884684324733286
+                ],
+                [
+                  "root",
+                  0.03564457677173665
+                ],
+                [
+                  "tailFan",
+                  0.0007265961553571616
+                ],
+                [
+                  "legFarKnee",
+                  0.000056455391410257586
+                ],
+                [
+                  "legFarAnkle",
+                  0.000012026114723224354
+                ],
+                [
+                  "legFarFoot",
+                  1.8788165369239853e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                569.5487861037254,
+                858.4527415037155
+              ],
+              "solved": [
+                594.4554949052931,
+                857.0591788411618
+              ]
+            },
+            {
+              "index": 7,
+              "x": 567,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.6099611170870742
+                ],
+                [
+                  "legNearAnkle",
+                  0.25569699557953385
+                ],
+                [
+                  "legNearKnee",
+                  0.11495699489189545
+                ],
+                [
+                  "root",
+                  0.018873689955833824
+                ],
+                [
+                  "tailFan",
+                  0.000485588330624938
+                ],
+                [
+                  "legFarKnee",
+                  0.000021289472563578718
+                ],
+                [
+                  "legFarAnkle",
+                  0.000004273108438519504
+                ],
+                [
+                  "legFarFoot",
+                  5.15740357250626e-8
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                562.9694257378578,
+                868.0209739208221
+              ],
+              "solved": [
+                594.68562983746,
+                857.1911932144537
+              ]
+            },
+            {
+              "index": 6,
+              "x": 567,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.372372532218086
+                ],
+                [
+                  "legNearAnkle",
+                  0.2978129509488635
+                ],
+                [
+                  "legNearKnee",
+                  0.286701955701795
+                ],
+                [
+                  "root",
+                  0.041248909391609995
+                ],
+                [
+                  "tailFan",
+                  0.0017808055132196834
+                ],
+                [
+                  "legFarKnee",
+                  0.00006829660449786219
+                ],
+                [
+                  "legFarAnkle",
+                  0.000014317712430953067
+                ],
+                [
+                  "legFarFoot",
+                  2.3190949690938787e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                553.322375535965,
+                851.8560404777527
+              ],
+              "solved": [
+                591.3719148942098,
+                854.0151451841749
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 70,
+          "ratio": -0.08626158732026024,
+          "parts": [
+            "near-foot",
+            "near-shin"
+          ],
+          "vertices": [
+            {
+              "index": 15,
+              "x": 617,
+              "y": 831.5,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.40879393944176534
+                ],
+                [
+                  "root",
+                  0.24393429151955046
+                ],
+                [
+                  "legNearAnkle",
+                  0.2302162275877521
+                ],
+                [
+                  "legNearKnee",
+                  0.11523422943821823
+                ],
+                [
+                  "legFarKnee",
+                  0.0008272975110285683
+                ],
+                [
+                  "tailFan",
+                  0.0007624581843530315
+                ],
+                [
+                  "legFarAnkle",
+                  0.0002230681366897849
+                ],
+                [
+                  "legFarFoot",
+                  0.000008488180642470189
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                600.2615990638733,
+                839.4142663478851
+              ],
+              "solved": [
+                597.5900063166849,
+                850.104144426657
+              ]
+            },
+            {
+              "index": 13,
+              "x": 607,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5147263438403392
+                ],
+                [
+                  "legNearAnkle",
+                  0.2696664438036379
+                ],
+                [
+                  "root",
+                  0.11092424703635276
+                ],
+                [
+                  "legNearKnee",
+                  0.103709045322904
+                ],
+                [
+                  "tailFan",
+                  0.0005731708013191262
+                ],
+                [
+                  "legFarKnee",
+                  0.00031804746621426794
+                ],
+                [
+                  "legFarAnkle",
+                  0.00008030592468559521
+                ],
+                [
+                  "legFarFoot",
+                  0.0000023958045473993787
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                595.826575756073,
+                845.8280682563782
+              ],
+              "solved": [
+                600.2664066843308,
+                847.7104402515278
+              ]
+            },
+            {
+              "index": 12,
+              "x": 607,
+              "y": 822,
+              "weights": [
+                [
+                  "root",
+                  0.2797368049291682
+                ],
+                [
+                  "legNearFoot",
+                  0.27404697919272114
+                ],
+                [
+                  "legNearAnkle",
+                  0.22333238819039763
+                ],
+                [
+                  "legNearKnee",
+                  0.21949498195649234
+                ],
+                [
+                  "tailFan",
+                  0.0019002142494358946
+                ],
+                [
+                  "legFarKnee",
+                  0.0011616306652348694
+                ],
+                [
+                  "legFarAnkle",
+                  0.00031435358608232917
+                ],
+                [
+                  "legFarFoot",
+                  0.000012647230467638791
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                585.5415835976601,
+                833.9500898122787
+              ],
+              "solved": [
+                592.8734662081865,
+                848.1987120770649
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 74,
+          "ratio": -0.05518552291921877,
+          "parts": [
+            "near-foot"
+          ],
+          "vertices": [
+            {
+              "index": 20,
+              "x": 617,
+              "y": 851,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.7014606338614933
+                ],
+                [
+                  "legNearAnkle",
+                  0.16173989489571267
+                ],
+                [
+                  "root",
+                  0.08078286714803522
+                ],
+                [
+                  "legNearKnee",
+                  0.05555091181114097
+                ],
+                [
+                  "tailFan",
+                  0.00022172872745287935
+                ],
+                [
+                  "legFarKnee",
+                  0.0001943687316415119
+                ],
+                [
+                  "legFarAnkle",
+                  0.00004828699329344211
+                ],
+                [
+                  "legFarFoot",
+                  0.0000013078312302918261
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                609.6568359732628,
+                853.8780959844589
+              ],
+              "solved": [
+                598.0631720731217,
+                848.9377208479843
+              ]
+            },
+            {
+              "index": 19,
+              "x": 607,
+              "y": 861,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.7464423549239874
+                ],
+                [
+                  "legNearAnkle",
+                  0.1573207047190693
+                ],
+                [
+                  "legNearKnee",
+                  0.050637991065707384
+                ],
+                [
+                  "root",
+                  0.04532086571378254
+                ],
+                [
+                  "tailFan",
+                  0.00017037769965497248
+                ],
+                [
+                  "legFarKnee",
+                  0.00008690034990644843
+                ],
+                [
+                  "legFarAnkle",
+                  0.000020370463963443555
+                ],
+                [
+                  "legFarFoot",
+                  4.350639284802794e-7
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                602.1191425323486,
+                863.4468516111374
+              ],
+              "solved": [
+                599.1634829352593,
+                853.3343086482076
+              ]
+            },
+            {
+              "index": 13,
+              "x": 607,
+              "y": 841,
+              "weights": [
+                [
+                  "legNearFoot",
+                  0.5147263438403392
+                ],
+                [
+                  "legNearAnkle",
+                  0.2696664438036379
+                ],
+                [
+                  "root",
+                  0.11092424703635276
+                ],
+                [
+                  "legNearKnee",
+                  0.103709045322904
+                ],
+                [
+                  "tailFan",
+                  0.0005731708013191262
+                ],
+                [
+                  "legFarKnee",
+                  0.00031804746621426794
+                ],
+                [
+                  "legFarAnkle",
+                  0.00008030592468559521
+                ],
+                [
+                  "legFarFoot",
+                  0.0000023958045473993787
+                ]
+              ],
+              "pinned": false,
+              "target": [
+                595.826575756073,
+                845.8280682563782
+              ],
+              "solved": [
+                600.2664066843308,
+                847.7104402515278
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/SNOWY_OWL_C91_20260927/foot-collar-02/record.json",
+      "sha256": "1297c09fa4e25e4a89988d3df299551fe2c8d84d8d33d3d3f661c7e3fbeb9682",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/SNOWY_OWL_C91_20260927/foot-collar-02/binding.json",
+      "sha256": "cb1855fd13b6e91a592664fcc51e99091961f4eea7b24535a4d7c9c9c286a780",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/SNOWY_OWL_C91_20260927/original-native-report.json",
+      "sha256": "1a213336cedf8c884e1a6476bdcdb4d75668d87cf3256f6a8f6ab564891d3fec",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+      "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596",
+      "unchanged": true
+    }
+  ]
+}

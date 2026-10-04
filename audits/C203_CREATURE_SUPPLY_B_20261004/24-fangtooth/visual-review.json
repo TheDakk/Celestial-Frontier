@@ -1,0 +1,28 @@
+{
+  "name": "Fangtooth",
+  "masterSha256": "9b56a2ae611ddeae2b702c4d76d40083e91bf4854b799a59936b8da8d6064ef1",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Complete tail and visible dorsal/anal/near pectoral fins surround a continuous brown body; large jaw and prominent fangs are visible. Extremely armored-looking skull, very large glossy eye and exaggerated curving fangs read stylized/fantasy-like; retain explicit identity/natural-style hold. Far paired roots remain hidden.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 178,
+      "y0": 362,
+      "x1": 1069,
+      "y1": 843
+    },
+    "margins": {
+      "left": 178,
+      "right": 184,
+      "top": 362,
+      "bottom": 410
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

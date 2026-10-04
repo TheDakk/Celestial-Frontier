@@ -1,0 +1,28 @@
+{
+  "name": "Takin",
+  "masterSha256": "dca8074553c08211b7b13d133286c1798d15bfc0b7b8834256bdacbd7f7c249e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original inspected: four separately visible hoof endpoints, golden shaggy coat, robust body, blunt dark muzzle, swept curved horns and short natural tail. Near ear is legible; far ear remains hidden behind horns/head. Proximal far legs overlap body/near legs and coat conceals upper boundaries. Source is held for actual root/contact authoring and proportions; endpoints do not establish four complete chains. No anatomy removed to force the template.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 119,
+      "y0": 253,
+      "x1": 1167,
+      "y1": 1000
+    },
+    "margins": {
+      "left": 119,
+      "right": 86,
+      "top": 253,
+      "bottom": 253
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

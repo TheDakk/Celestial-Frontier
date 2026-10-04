@@ -140,12 +140,15 @@ export { createCombatGameplayVoiceRequest } from './combat-gameplay-voice.js';
 export type { CombatGameplayVoiceRequestInput } from './combat-gameplay-voice.js';
 export {
   AUDIO_CATEGORIES,
+  AUDIO_LIMITER_SETTINGS,
   AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
+  AUDIO_REDUCED_INTENSITY_GAIN,
   AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
   createAudioRuntime,
   createAudioVoiceMixIntentV1,
 } from './runtime.js';
 export type {
+  AudioAccessibilityModes,
   AudioActivationResult,
   AudioActivationState,
   AudioAnalyserNodeLike,

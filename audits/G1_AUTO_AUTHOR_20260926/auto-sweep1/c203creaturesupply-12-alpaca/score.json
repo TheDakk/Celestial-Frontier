@@ -1,0 +1,10 @@
+{
+ "id": "c203creaturesupply-12-alpaca",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)",
+  "missing-anatomy: part tail2 (tail2) covers 16% paint (reference 69%)"
+ ],
+ "semanticPresence": null
+}

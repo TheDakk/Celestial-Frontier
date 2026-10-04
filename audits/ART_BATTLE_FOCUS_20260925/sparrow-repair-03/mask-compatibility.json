@@ -1,0 +1,59 @@
+{
+  "schema": "cf.own-mask-compatibility/v1",
+  "rows": [
+    {
+      "name": "sparrow",
+      "oldManifest": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/markings.json",
+      "oldManifestSha256": "94a89d8e8de7fea8d64f0ebcc8ea96581098ed6af8b0eacd6500156a94a2ad7a",
+      "oldRecordRecipeHash": "a18a48201c1848332f0c0e9f3e82dba9e0f1b84e48fc9fb556dde2dfab66678d",
+      "newRecordRecipeHash": "2c00c523bede76b8641bbfdf0001538c6b73ed466a90598da5b2d10d2b1d5604",
+      "newManifestSha256": "ea1327c19e1771fc1aa40f9faf38355572acf3554346882efe6eb4f5907199a0",
+      "keyedSha256": "98872f0a246f2c7e28720f25ec3ce2d24f51fca4cb98a103bb391545b70ddd3a",
+      "patterns": [
+        {
+          "kind": "striped",
+          "sha256": "49f399516f3351b200b66d6a3b0034798bf5d3f169015558a1e2e5153a0992b2",
+          "nonzero": 9207,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "spotted",
+          "sha256": "d6bd2555edfeab5d3e22f8242f27ec649ee3bc176d5de19965baf2933b600f45",
+          "nonzero": 2556,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "banded",
+          "sha256": "fe054b7b6bf6475342da332d3a0280daadcbbbd5e6d697001f04850255037692",
+          "nonzero": 19165,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "mottled",
+          "sha256": "8d80e003ee962f6ab0ad0cefa9026509adf9277add9847ab46f59fd0648d76fd",
+          "nonzero": 13185,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "marbled",
+          "sha256": "b5b1635eb3875143f160d33a39fba902c208b22e33ebf087ba70d812d0b54488",
+          "nonzero": 17990,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "eye-spotted",
+          "sha256": "a84da33131b883dcaa51bcdf4254a77815174d3d83918ea2927610be653431ef",
+          "nonzero": 9509,
+          "outside": 0,
+          "over": 0
+        }
+      ],
+      "scope": "Same own painting and six mask bytes; fresh conservation check against this fit. Historical generation prompts and old measurements unchanged. Manifest paths relocated and each new recipe explicitly recorded, not claimed as an old certificate."
+    }
+  ]
+}

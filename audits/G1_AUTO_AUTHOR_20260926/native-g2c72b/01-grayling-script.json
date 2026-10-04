@@ -1,0 +1,42 @@
+{
+ "readyMs": 600,
+ "commandMs": 300,
+ "themes": {
+  "A": "lake",
+  "B": "lake"
+ },
+ "rows": [
+  {
+   "side": "A",
+   "an": "Grayling",
+   "dn": "Grayling",
+   "dmg": 9,
+   "crit": false,
+   "hpA": 30,
+   "hpB": 21
+  },
+  {
+   "side": "B",
+   "an": "Grayling",
+   "dn": "Grayling",
+   "dmg": 6,
+   "crit": false,
+   "hpA": 24,
+   "hpB": 21
+  },
+  {
+   "an": "Grayling",
+   "dn": "Grayling",
+   "dodge": true
+  },
+  {
+   "side": "A",
+   "an": "Grayling",
+   "dn": "Grayling",
+   "dmg": 21,
+   "crit": true,
+   "hpA": 24,
+   "hpB": 0
+  }
+ ]
+}

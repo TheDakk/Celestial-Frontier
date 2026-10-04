@@ -1,0 +1,13 @@
+✔ fills observed gap exactly and preserves all original RGBA and other owners (1.2605ms)
+✔ retains disconnected owners and transparent holes (0.264ms)
+✔ refuses incomplete source ownership and missing owners (0.497208ms)
+✔ does not invent a bridge through transparent space (0.117583ms)
+✔ refuses out-of-scope long gaps rather than relaxing locality (0.172042ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 89.839375

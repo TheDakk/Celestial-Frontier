@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Fruit Bat",
+  "masterSha256": "3b8118dbdacac31b663e30f4b7a50503b4fcd9ee2cdb7c43901c52d747bbbe83",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,825 @@
+{
+  "parentHead": "e1cc95140f91cae154f9d58b37bf913e6d88e44f",
+  "files": [
+    {
+      "path": "CREATURE_ANIMATION.md",
+      "bytes": 90449,
+      "sha256": "6bac0f6a5eef64c0bfa06671cf9dcdaae10ac33ef6a8066334a90e4b2db0e9f6"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 14583,
+      "sha256": "76a740bca8965f35f94764de4b9da0dffff9932b745ee5d14755852ad0bfdc92"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/README.md",
+      "bytes": 5586,
+      "sha256": "74cb5aed9375085f5e4cb9c312becb189d4c811e6402564e4ebe36c06e45c43e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/attempt-01.md",
+      "bytes": 328,
+      "sha256": "0c4f48c682f9f0fbbca69d8ed2c28328868cec1637d4c0439cffdb975e89bc1a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/authoring.json",
+      "bytes": 10572,
+      "sha256": "9810630bb911cdbeb584619116303e6208784b731e1913994c62ff6e64ee2ba0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/master.png",
+      "bytes": 1186297,
+      "sha256": "29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/subject-source.json",
+      "bytes": 6011,
+      "sha256": "3588bbdfde56faf6a8f9db297c67f600adbe78f6f4542fa5513600e73e078b6a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-tests-01.log",
+      "bytes": 243,
+      "sha256": "7ef47cb4ad318d8dc4603d6e04052a529f281a37c69c96c4850d919a7f4ee982"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/boundaries-01.json",
+      "bytes": 2076,
+      "sha256": "45a044096b3b29334f79121c366218eb85aac974f7ae104dfb0679a29b32dca2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-01-sources.json",
+      "bytes": 10259,
+      "sha256": "6408367f02da4c16082bf4e66de03275c56f521299e4b52615f910c70af37d69"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-01.json",
+      "bytes": 8790,
+      "sha256": "32cd97716df62bebc7195807faa450982fc3a4eb4cc99ccb3e26cbeb3d76488a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-01.log",
+      "bytes": 5335,
+      "sha256": "f05c5953003c28f7889c3627ac17fb7a7f7d31b56a0ec667bd2894524ea23d48"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-01.ts",
+      "bytes": 3178,
+      "sha256": "8014170c657f26b0e59a4fc8dad149bbc1bdbc10b627af37377de0847de403d1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-02-sources.json",
+      "bytes": 10259,
+      "sha256": "b3f76680675d58df823d46f8fa8bdf6320dac8046bea1c91b67a436c5c3594dc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-02.json",
+      "bytes": 9908,
+      "sha256": "988e16bf15ed6651ac42c157180e8a7f796f435a61f1ee5464507cc930d3a25c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-02.log",
+      "bytes": 4959,
+      "sha256": "3d7c2df58ed7387891d71799dacd890ba2045f8649ba4061d26059ff0358472e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-02.ts",
+      "bytes": 3353,
+      "sha256": "9662f0b9d4a8376cd7c7959cf884952b722c88f7b1d6988669c4e0d0849d2b2d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/continuity-rejected-missing-schema.json",
+      "bytes": 345,
+      "sha256": "912d7362e5a5bb7040976fc97372afc7e1524df0fd31db59983d5c22f333c55c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/develop-profile.log",
+      "bytes": 67608,
+      "sha256": "ae71fd438335193a791b5c95876c26a66e5c6c268b6b34e25651fb62ba9a4604"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/binding.json",
+      "bytes": 2689740,
+      "sha256": "423b8ffcbc23e0eb705d9188871e1a91f1fcb151fedcc06fc9beb0a6ac73b236"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/declaration.json",
+      "bytes": 2010,
+      "sha256": "91e7d22e75168e30e848ec4fbb82b9865033a13ddea55bb1327a40aa31671703"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/intake-provenance.json",
+      "bytes": 3254,
+      "sha256": "c8f47400bd096e55353fd55f962725d8e608fe5303841656227903d1c9201829"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/label-authoring-receipt.json",
+      "bytes": 604,
+      "sha256": "833daaca627b6972ee61a5a9dc03ea101e9d33764162079d9237181305e02e8b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/labels.png",
+      "bytes": 51416,
+      "sha256": "4726d4ad1957212d507d7ed156095f4b65054854802ea250e934b0822a1b1ff2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/atlas/receipt.json",
+      "bytes": 3043,
+      "sha256": "ab27a4d344a4a1203f0af196483b23a4fc50453508747b89c73297bcbcd5e390"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/atlas/sparrow.json",
+      "bytes": 7439,
+      "sha256": "7fc5faf1d600c7eaceaa7253784a75444a4f6ce171079927a53c3bd8ac3f17f5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/atlas/sparrow.png",
+      "bytes": 1235762,
+      "sha256": "9476f5fbc49e5ad30c771dcc40cc17fb306eb12d200f90cfa6fc95a404cbad13"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/binding.json",
+      "bytes": 6162,
+      "sha256": "be2f1f4e0be76624b5aa74e90df3b1894a98abf1553f03cae62c9d679ef150cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/keyed.png",
+      "bytes": 1464155,
+      "sha256": "98872f0a246f2c7e28720f25ec3ce2d24f51fca4cb98a103bb391545b70ddd3a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/ownership.png",
+      "bytes": 152848,
+      "sha256": "4aa4cbdb99ef67b4b967d70ff4baca1fe389cc7cb2643a5cac6bd954958be9da"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/beak.png",
+      "bytes": 27569,
+      "sha256": "64787af079e1bbe7fcc8ecb6cbab08135bdf132e6d5a6bca908363b8dab2094b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/body.png",
+      "bytes": 582,
+      "sha256": "f83c89615fd90c6106cb2161629145610310428072fa4c1356c7122e500c7a46"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/chest.png",
+      "bytes": 92324,
+      "sha256": "d50c05bead8645ccda3eab2a645b5cf1d6fca24b1466d8ce755991e0eb36fd27"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/far-foot.png",
+      "bytes": 26520,
+      "sha256": "3992c7b0e7e2270a6262ee27eb3d586e3e5bb65b0d29a3d81d39f408d9f98494"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/far-shin.png",
+      "bytes": 10048,
+      "sha256": "8316ece05b8867177486b59bda05cfb282affc1fafdeac438628c735a4763ed1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/far-thigh.png",
+      "bytes": 19480,
+      "sha256": "08a2d1fd86dc48613ea19d57e0ca51c87e655006a00426e87d2a630062ea3d8b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/far-wing-flight.png",
+      "bytes": 203402,
+      "sha256": "7c64df6f3e89ff843e7d16e1711a2ee9e387379493086358d35815ea8778350a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/far-wing-shoulder.png",
+      "bytes": 82993,
+      "sha256": "15e6c4de537d4a72743ac87d04483eb86c1e6b00f3f8bf75eadebb374089cd9f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/head.png",
+      "bytes": 88492,
+      "sha256": "04afd82f5d40c89d6e28f072353005f3b5ea4105f6986494b4bd2189d70a0fb7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/near-foot.png",
+      "bytes": 24396,
+      "sha256": "abb4262258fedb3cd3b0dcfa7b4cc2dcab0837446c0e4bcc13aa5a1d7b106803"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/near-shin.png",
+      "bytes": 8582,
+      "sha256": "a95af4531c38484e26ac67c52e077a3f7ea4574015cbe34c0386ae5ffcd6ea8c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/near-thigh.png",
+      "bytes": 18591,
+      "sha256": "04a65a10b7b963c6a6ca60fdca0e35b2473d049586e5fb0c42e11e88d251f983"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/near-wing-flight.png",
+      "bytes": 256104,
+      "sha256": "1e76a68666a50f1f4c7ed760aea8864a34db93f2264077e83b6ee6614dabaf3d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/near-wing-shoulder.png",
+      "bytes": 68660,
+      "sha256": "9ff335bce45f965f3accba6d00f6885ddcc65c3ed4d45df82eda6fa8ea99a35b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/neck-lower.png",
+      "bytes": 52338,
+      "sha256": "e799948d9639f2f18aff7439ac7dbe70395b5910422163816f1acf69bd9d96cd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/neck-upper.png",
+      "bytes": 29796,
+      "sha256": "3bf1b0cbb2cbca2a080d69df95c099c54edaa1114cf7dc1654c3db749cd4953c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/tail.png",
+      "bytes": 80473,
+      "sha256": "1cf966468ac268ff6eac233c68001788cc0cb7c80df19e2ecddc38fc637a25ce"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/parts/torso.png",
+      "bytes": 345154,
+      "sha256": "12916def2d902be2c9284c05ee678ccce474f395ff88183d7ad9fbcf90c06d1d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/receipt.json",
+      "bytes": 4916,
+      "sha256": "8bef6eed1ff4718f8dd381645821b7f94baf15ca77404d15449fd57c3740d36b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/pre-split-binding.json",
+      "bytes": 1882882,
+      "sha256": "df42d9ca58c190127c13a349dd1b80f8b23d40ca1b00589f10669db5b1bdc998"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/receipt.json",
+      "bytes": 2423,
+      "sha256": "1fe7d40acf04f89aa80bc816920cc50342531bb8137b3ad9d7cd2137813757de"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/record.json",
+      "bytes": 6395,
+      "sha256": "2329e9bd4b4dc7dd11cf9f9312788e65454baf7b9d1c596fc45550de44cc6d38"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/binding.json",
+      "bytes": 2967796,
+      "sha256": "db2179898c4106e4e3e1386d86df561de01fda7463cc815c1993edb5a7d8bc00"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/declaration.json",
+      "bytes": 2010,
+      "sha256": "91e7d22e75168e30e848ec4fbb82b9865033a13ddea55bb1327a40aa31671703"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/flat-master-weld-receipt.json",
+      "bytes": 2642,
+      "sha256": "881793aaa8ac3d1309fa13fe9eba5917ed1a784ec29dac3d697392d2d583b791"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/intake-provenance.json",
+      "bytes": 3254,
+      "sha256": "c8f47400bd096e55353fd55f962725d8e608fe5303841656227903d1c9201829"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/label-authoring-receipt.json",
+      "bytes": 604,
+      "sha256": "833daaca627b6972ee61a5a9dc03ea101e9d33764162079d9237181305e02e8b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/labels.png",
+      "bytes": 51416,
+      "sha256": "4726d4ad1957212d507d7ed156095f4b65054854802ea250e934b0822a1b1ff2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/markings.json",
+      "bytes": 24787,
+      "sha256": "ea1327c19e1771fc1aa40f9faf38355572acf3554346882efe6eb4f5907199a0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/paint-boundary-continuity.json",
+      "bytes": 540,
+      "sha256": "a6c28b7a659563a0f63f6f5e7fce2ca88e88b7d90a0660d164a6dc1155f58a64"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/atlas/receipt.json",
+      "bytes": 3043,
+      "sha256": "ab27a4d344a4a1203f0af196483b23a4fc50453508747b89c73297bcbcd5e390"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/atlas/sparrow.json",
+      "bytes": 7439,
+      "sha256": "7fc5faf1d600c7eaceaa7253784a75444a4f6ce171079927a53c3bd8ac3f17f5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/atlas/sparrow.png",
+      "bytes": 1235762,
+      "sha256": "9476f5fbc49e5ad30c771dcc40cc17fb306eb12d200f90cfa6fc95a404cbad13"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/binding.json",
+      "bytes": 6162,
+      "sha256": "be2f1f4e0be76624b5aa74e90df3b1894a98abf1553f03cae62c9d679ef150cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/keyed.png",
+      "bytes": 1464155,
+      "sha256": "98872f0a246f2c7e28720f25ec3ce2d24f51fca4cb98a103bb391545b70ddd3a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/ownership.png",
+      "bytes": 152848,
+      "sha256": "4aa4cbdb99ef67b4b967d70ff4baca1fe389cc7cb2643a5cac6bd954958be9da"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/beak.png",
+      "bytes": 27569,
+      "sha256": "64787af079e1bbe7fcc8ecb6cbab08135bdf132e6d5a6bca908363b8dab2094b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/body.png",
+      "bytes": 582,
+      "sha256": "f83c89615fd90c6106cb2161629145610310428072fa4c1356c7122e500c7a46"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/chest.png",
+      "bytes": 92324,
+      "sha256": "d50c05bead8645ccda3eab2a645b5cf1d6fca24b1466d8ce755991e0eb36fd27"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/far-foot.png",
+      "bytes": 26520,
+      "sha256": "3992c7b0e7e2270a6262ee27eb3d586e3e5bb65b0d29a3d81d39f408d9f98494"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/far-shin.png",
+      "bytes": 10048,
+      "sha256": "8316ece05b8867177486b59bda05cfb282affc1fafdeac438628c735a4763ed1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/far-thigh.png",
+      "bytes": 19480,
+      "sha256": "08a2d1fd86dc48613ea19d57e0ca51c87e655006a00426e87d2a630062ea3d8b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/far-wing-flight.png",
+      "bytes": 203402,
+      "sha256": "7c64df6f3e89ff843e7d16e1711a2ee9e387379493086358d35815ea8778350a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/far-wing-shoulder.png",
+      "bytes": 82993,
+      "sha256": "15e6c4de537d4a72743ac87d04483eb86c1e6b00f3f8bf75eadebb374089cd9f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/head.png",
+      "bytes": 88492,
+      "sha256": "04afd82f5d40c89d6e28f072353005f3b5ea4105f6986494b4bd2189d70a0fb7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/near-foot.png",
+      "bytes": 24396,
+      "sha256": "abb4262258fedb3cd3b0dcfa7b4cc2dcab0837446c0e4bcc13aa5a1d7b106803"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/near-shin.png",
+      "bytes": 8582,
+      "sha256": "a95af4531c38484e26ac67c52e077a3f7ea4574015cbe34c0386ae5ffcd6ea8c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/near-thigh.png",
+      "bytes": 18591,
+      "sha256": "04a65a10b7b963c6a6ca60fdca0e35b2473d049586e5fb0c42e11e88d251f983"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/near-wing-flight.png",
+      "bytes": 256104,
+      "sha256": "1e76a68666a50f1f4c7ed760aea8864a34db93f2264077e83b6ee6614dabaf3d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/near-wing-shoulder.png",
+      "bytes": 68660,
+      "sha256": "9ff335bce45f965f3accba6d00f6885ddcc65c3ed4d45df82eda6fa8ea99a35b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/neck-lower.png",
+      "bytes": 52338,
+      "sha256": "e799948d9639f2f18aff7439ac7dbe70395b5910422163816f1acf69bd9d96cd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/neck-upper.png",
+      "bytes": 29796,
+      "sha256": "3bf1b0cbb2cbca2a080d69df95c099c54edaa1114cf7dc1654c3db749cd4953c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/tail.png",
+      "bytes": 80473,
+      "sha256": "1cf966468ac268ff6eac233c68001788cc0cb7c80df19e2ecddc38fc637a25ce"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/parts/torso.png",
+      "bytes": 345154,
+      "sha256": "12916def2d902be2c9284c05ee678ccce474f395ff88183d7ad9fbcf90c06d1d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/receipt.json",
+      "bytes": 4916,
+      "sha256": "8bef6eed1ff4718f8dd381645821b7f94baf15ca77404d15449fd57c3740d36b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/pre-split-binding.json",
+      "bytes": 1882882,
+      "sha256": "df42d9ca58c190127c13a349dd1b80f8b23d40ca1b00589f10669db5b1bdc998"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/receipt.json",
+      "bytes": 2423,
+      "sha256": "1fe7d40acf04f89aa80bc816920cc50342531bb8137b3ad9d7cd2137813757de"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/record.json",
+      "bytes": 6395,
+      "sha256": "2329e9bd4b4dc7dd11cf9f9312788e65454baf7b9d1c596fc45550de44cc6d38"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/host-during-native-01.json",
+      "bytes": 1955,
+      "sha256": "35543ae3f8f410412979c244f18f96bf688cfba8756e6630112e964b673f995c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/inspect-boundaries.mjs",
+      "bytes": 1609,
+      "sha256": "98fefd1076b75507603abfc610844aa8809949d11530c9d4ea5d271426a6fbbf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/intake-01.log",
+      "bytes": 321,
+      "sha256": "39b97e0ff1abacbea07ad6a566d0303d19c2140235d16d791925fe87a1e9e470"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/mailbox-end.json",
+      "bytes": 13789,
+      "sha256": "5ae0333a89bac1452aaeb68cefe9d977ced184b97016b0001ada9dc63614c95a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/make-review.py",
+      "bytes": 1791,
+      "sha256": "09e464c7c696bb7b8e35ac94b5c4814d5eeec17c9ceb34edd757162a1f697fb1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/mask-compatibility.json",
+      "bytes": 2256,
+      "sha256": "f73a8fd187c23da270fb78f3f39e66fd670e84a85aa6c117403cd9a8b2758732"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/mask-conservation.log",
+      "bytes": 43,
+      "sha256": "913fbb09d7875bcb29b8e7f21f2d2d98242dcd9b4690978b5bd20fdf06af8baf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/mask-conservation.mjs",
+      "bytes": 2945,
+      "sha256": "6565fc83c984348f7fa5eb327fd4a204afe150360f375d3cea041d6f2e9af207"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/battle-full.webm",
+      "bytes": 8572209,
+      "sha256": "9f66196231c4a385ed1195c33b41f65df051e255afa50af71958e184abb86e38"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/report.json",
+      "bytes": 360296,
+      "sha256": "7e4fe1fedee36a34f18e4c160e0a68c0599213b551c4ee6bef9cbeb2364130fd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn0-hit-approach-50.png",
+      "bytes": 1549645,
+      "sha256": "c77a334a26f3e75e418fb31e73ec54d19c8a2ba9ab9641353848f40e315bba33"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn0-hit-impact.png",
+      "bytes": 987867,
+      "sha256": "862aacef50ebe498b56ba1d9735c1b0e5297dcae2fc0a5200783a112dc904949"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn0-hit-reaction-50.png",
+      "bytes": 1549575,
+      "sha256": "7af4f2ac24c8d72b5c8b062b686e3a706742719718223f336c37c447ad9dccfe"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn0-hit-return-end.png",
+      "bytes": 1549480,
+      "sha256": "56880b662ae9d2a8fff3d0c49587ee599f3ac413c9a1f310f69336e5acb108c6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn1-hit-approach-50.png",
+      "bytes": 1549951,
+      "sha256": "f22c2df44af593dbe2f1fbe4e021160b15df056c4e6ee9808bd1126eabc4284c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn1-hit-impact.png",
+      "bytes": 1552745,
+      "sha256": "05d345014ade580a3ed7a0b1d0d33f8e9fef822d08285e77099cb1e880905da5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn1-hit-reaction-50.png",
+      "bytes": 1551292,
+      "sha256": "be28a2a5cc23d6598df6110c5d299cfeb627a312effdbb71c5e5e8e6f991e46d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn1-hit-return-end.png",
+      "bytes": 1549573,
+      "sha256": "a58b5c1b54ed7d7cc836e4746fa249f16df36b837a50441e376d0e81824ce6f2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn2-dodge-approach-50.png",
+      "bytes": 1549645,
+      "sha256": "c77a334a26f3e75e418fb31e73ec54d19c8a2ba9ab9641353848f40e315bba33"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn2-dodge-impact.png",
+      "bytes": 1552747,
+      "sha256": "b3a0cab2726f3f0132fbc4fb3833941c02648e3e3e982a2e0fb165997992e95a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn2-dodge-reaction-50.png",
+      "bytes": 1552425,
+      "sha256": "d02687e3bef90211e0810a669ba435967b7c375f6d4e19b7589c34093da0b0b8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn2-dodge-return-end.png",
+      "bytes": 1549480,
+      "sha256": "56880b662ae9d2a8fff3d0c49587ee599f3ac413c9a1f310f69336e5acb108c6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn3-hit-approach-50.png",
+      "bytes": 1549645,
+      "sha256": "c77a334a26f3e75e418fb31e73ec54d19c8a2ba9ab9641353848f40e315bba33"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn3-hit-idle-50.png",
+      "bytes": 1550607,
+      "sha256": "c45df845dc78a5c1a86e4f4d62994976921312b1aeb49f6b3f24ec73fe1a4c6e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn3-hit-idle-90.png",
+      "bytes": 1548982,
+      "sha256": "15f00d289d9d5814d9b8229fbf29eff28edee6fdabf0e59ebe318c8f405dc6d5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn3-hit-impact.png",
+      "bytes": 1551548,
+      "sha256": "221b9cbfbaee20f74f95b41295062e9f4cdba6959240df016e75a437b498b6a4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn3-hit-reaction-50.png",
+      "bytes": 1546070,
+      "sha256": "cc0b8f331715e9568f4e8d6d72b4460f087f222a23030091c58d08071157e5ab"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn3-hit-return-end.png",
+      "bytes": 1548188,
+      "sha256": "6ad97b281ad255895d680b95165b330f2dd5835820ceaf7adb1d706b3efb0914"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01.log",
+      "bytes": 207,
+      "sha256": "583d56ec3dcfb04aa57c5b3c24a028f4d48787668f284c9cb38f1d52e3ee9dda"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-summary.json",
+      "bytes": 3608,
+      "sha256": "050f6b6f3b0070907cfb73de2ca658dc43512b69ec2219b4b034ab9d18624667"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-with-host-receipt.mjs",
+      "bytes": 1365,
+      "sha256": "095ccc98e48aa78bc84799b16b03b62ac6a9d5a02e84c286d0e266ae0324112b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/observed-script.json",
+      "bytes": 658,
+      "sha256": "9f5085fb62ec8baf3f2fab97725b00f715d6d0bf37dbc67dd15abfeadac2ade3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/retained-preparation-errors.md",
+      "bytes": 646,
+      "sha256": "c6c373bbfaad2200cb267d1b60aa7003ff3671898702ad3491a6fd49d55da3c9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/review-sheet.png",
+      "bytes": 1683945,
+      "sha256": "e1fde2d42b82563fbfbac1924b6bc0284294c693055bacb2ce8ba1439c817e81"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/root-validate.log",
+      "bytes": 1093,
+      "sha256": "341cc9b2f71d7693aedb63e8b680d7ac4143039634c37ff0de0ac5bf359d9f9e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/run-study-01.mjs",
+      "bytes": 1029,
+      "sha256": "a1e65950bf1ca98c2e59a7d1c86ddb09555d8dc90befca7fb2dc72ded8fd3d51"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/run-study-02.mjs",
+      "bytes": 1029,
+      "sha256": "843e4ec8f90fe99ef5d7e5b441c76767288d564b8bf838768a9071c2f3a20183"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/run.mjs",
+      "bytes": 8684,
+      "sha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/civet-static.json",
+      "bytes": 7400,
+      "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/civet-support-samples.jsonl.gz",
+      "bytes": 540573,
+      "sha256": "c8deace40f822ac707b337c16ee63cf73ca6838ee094ef80324093ab08ab2d2f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/coconut-crab-static.json",
+      "bytes": 8541,
+      "sha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/coconut-crab-support-samples.jsonl.gz",
+      "bytes": 450159,
+      "sha256": "031446c269052b8a91d89e4244f190fa65c7f60c64cb2056e8b5f2351e01d32b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/crab-static.json",
+      "bytes": 8478,
+      "sha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/crab-support-samples.jsonl.gz",
+      "bytes": 472712,
+      "sha256": "258aa03be580be6fcb1e07658ecd5a903db050f2cd63e0c297f3ff8d1fb4b1b8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/freshwater-crab-static.json",
+      "bytes": 8449,
+      "sha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/freshwater-crab-support-samples.jsonl.gz",
+      "bytes": 455397,
+      "sha256": "84e207fd9353806843dee605d7937f4fd99d7a9e4dd3c4c865b92abcc660b127"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/identity.json",
+      "bytes": 2960,
+      "sha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/mud-crab-static.json",
+      "bytes": 8269,
+      "sha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/mud-crab-support-samples.jsonl.gz",
+      "bytes": 463241,
+      "sha256": "fe6b52249ff1391607394571ca0b3693c88439f61f6c9f9bdf7c6763daec6e41"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/sources.json",
+      "bytes": 27425,
+      "sha256": "ea7170a7e7e892306efdc53dedbc50e5154207e0e25ca0d640575560f31a11d0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/static.json",
+      "bytes": 61950,
+      "sha256": "30df8d64b6b62912f3e5f9bf954df5920f3aedbd237c38027384af6daceacea5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/vent-crab-static.json",
+      "bytes": 8384,
+      "sha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/vent-crab-support-samples.jsonl.gz",
+      "bytes": 475748,
+      "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2-execution.json",
+      "bytes": 42956,
+      "sha256": "48975a91033fd68dfff85f4c8ffd7a4a09019199833b7314c85cfff5922414ad"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2-run.log",
+      "bytes": 5147,
+      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-execution.log",
+      "bytes": 5401,
+      "sha256": "acf2891bbba2529bef825baadecd016fde0a66875175f6469adc2101449edb8f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-01.json",
+      "bytes": 11873,
+      "sha256": "a61f70780ad09ed0793e742996422e6533753e6811ce8da789d31c4315632133"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-01.json.sources.json",
+      "bytes": 15387,
+      "sha256": "3296923a1cbc61ffb57e5d34520d88aa8c0d447527c9793f9a7b1229c9e9c144"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-01.log",
+      "bytes": 2299,
+      "sha256": "11c1df6aa4ffda41bd2eaee6c23478acba74ab86f5c730408dbdf688918a7913"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-02.json",
+      "bytes": 8282,
+      "sha256": "236fb9c999336340ce1f17aaa936e189d985adaa0d5cc8dcfbf3347e6a00ea28"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-02.json.sources.json",
+      "bytes": 15387,
+      "sha256": "197c464a3e416e20857f8613742943ac151195d9cc456f9c466f4013aeeeb3f0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-02.log",
+      "bytes": 2186,
+      "sha256": "307ddbab311619350e209b50e921025210b6fbf26077776434c540c3b5c0308c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-03.json",
+      "bytes": 3414,
+      "sha256": "968d3b0460bcee2688d78201825811463e67a011d28416728e425032a40caced"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-03.json.sources.json",
+      "bytes": 15387,
+      "sha256": "86c3aee48aa348b4a1c7188ee7728656f3ba54abb1a9b5f0e2deb3476c68d08d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-03.log",
+      "bytes": 998,
+      "sha256": "1201bb46e6fdac23a195e81441be44b3e16193ef6cabe16b3b1d4560d059b478"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-04.json",
+      "bytes": 9171,
+      "sha256": "a38d4587deb91075b140dcf708be2bf6f02f593d3c6034a1668af71b0e5c7be7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-04.json.sources.json",
+      "bytes": 15387,
+      "sha256": "0978deb8fd56058b2ac0e1e9489b3661320f7e6eb9459790d74a1ea86bf72885"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-04.log",
+      "bytes": 2186,
+      "sha256": "c8ff135bcd9e150fd404469df9410109fd5a4d402a1d9ef3990509745c00431f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/weld-02.log",
+      "bytes": 842,
+      "sha256": "364f265b0b575ace9b4948b9684b8430d0b17207570e1ffbf93af25c4e49f1b8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/weld-02.mjs",
+      "bytes": 2725,
+      "sha256": "8744ca454d57cb0f965813a7bd12832b53300d2470eeca5e6d0993f296d3bfb2"
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "bytes": 39086,
+      "sha256": "7121013c330593ebd3c35ca2ef5e49d86e97f50a148d9e151cfe3e66996885d5"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 603839,
+      "sha256": "cfc84ecdfa0b312ad542c7dca1fd78f355d0bd34becb65d5c3198dc970652303"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-bird.test.ts",
+      "bytes": 4333,
+      "sha256": "8ea150d22e2db937c2357222081589fb2496a5bc2a608f58a2f8d26c0b33a27a"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-bird.ts",
+      "bytes": 4425,
+      "sha256": "c4a5bd024a3b4e66c28a0c18c35452da3b6d86d6b67e0f32786ade059e3e6f36"
+    }
+  ]
+}

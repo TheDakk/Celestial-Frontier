@@ -1,0 +1,23 @@
+{
+  "reservation": "C279",
+  "status": "TERMINAL_RELEASED",
+  "native": "DIAGNOSTIC_PASS",
+  "nativeFrames": 933,
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "productCandidate": "dfb009650",
+  "mergedSourceHead": "f50abbd59",
+  "productState": "UNPUSHED_UNCERTIFIED; fresh Dakk I5+develop authority required",
+  "queues": {
+    "primate": "HELD_SOURCE_VISUAL; qualified pool empty",
+    "insect": "HELD_STATIC_VISUAL; qualified pool empty",
+    "myriapod": "HELD_SOURCE_JOINT_BUDGET; qualified pool empty",
+    "redFox": "DELIVERED_NATIVE_PASS; Claude admission pending",
+    "snowPetrel": "HELD_VISUAL",
+    "supply": "COMPLETE48new identities in2batches; Claude scoring pending"
+  },
+  "allPairs": "HOLD",
+  "noBrowserOrActiveJobs": true
+}

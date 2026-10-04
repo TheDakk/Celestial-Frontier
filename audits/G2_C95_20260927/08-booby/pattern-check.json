@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Booby",
+  "masterSha256": "2024f4bbd9c63c924d07edcbd2436570bdc706f97c7c3fe0889a92b1491564e2",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

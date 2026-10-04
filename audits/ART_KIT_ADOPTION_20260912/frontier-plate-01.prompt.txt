@@ -1,0 +1,88 @@
+REFERENCE LOCK
+Initial creation of frontier-plate-01.png under Art Kit v3 section 9c. There is
+no approved frontier-plate-01.png yet and no reference is attached. The frozen
+style is the authority. This is the special scene reference: section 9c
+requires one wide plate in three panels, a universe vista, a star, a biome,
+all from one system card. Three panels are a reference-plate exception to
+production single-scene layout. No printed labels, frames or grid lines.
+
+FROZEN STYLE
+  Classic painted science-fantasy oil illustration in the hand of the TSR
+  masters Gerald Brom, Keith Parkinson and Jeff Easley, carried off-world:
+  painterly heroic realism with visible confident oil brushwork, rich colour
+  deepened by dramatic warm-versus-cool lighting and strong chiaroscuro,
+  grounded weighty anatomy and hard-used equipment, crisp ornate detail at the
+  focal point softening toward the edges, with Brom's macabre elegance
+  surfacing in the strange and predatory subjects. The world is a frontier of
+  unmapped planets: sun-scoured hull plate, scored ceramic, woven fibre and
+  patinated alloy in place of mail and plate, salvage and field repair on every
+  surface; alien life built of chitin, membrane, mineral growth and
+  bioluminescent pigment rather than fur and feather; each world lit by one
+  distinct colour of sun that falls across the whole subject. Serious and
+  wondrous in tone, never cartoonish, never photorealistic, never anime, never
+  cel-shaded, never a 3D render. Museum-quality oil illustration, extremely
+  high detail, sharp focus.
+
+SYSTEM CARD
+SYSTEM CARD - Amber Glass (reference study; no new game system)
+  Star: AMBER, an orange sun. Pigment: burnt orange, gold, ochre.
+  Light: warm, honeyed, medium contrast; from upper left, long shadows toward
+    lower right, dark olive-brown shadows.
+  Mineral palette: glossy black glass, matte ochre sand, rust-red stone.
+  Atmosphere: thin dust-orange haze, washing distant forms toward pale ochre.
+  Flora pigment: ochre, rust, olive-black.
+  Fauna adaptation: banded rust and tan camouflage against ochre and olive-black
+    growth, medium-sized shaded eyes, ridged chitin shedding daytime heat.
+  One signature: black glass dunes.
+
+SUBJECT
+One wide plate in three panels: a universe vista, a star, a biome, all from
+the system card above. In the universe panel use only the card's Light and
+One signature lines; the adjoining star and biome panels use the whole card.
+Left, universe: a vast ochre dust lane and dark black-glass debris silhouettes,
+near black shards, middle ochre dust veils, far painted star field. A tiny
+silhouetted shard provides scale; brightest gold point above and left of centre.
+Middle, star: AMBER, burnt orange, gold, ochre; structured granulation, dark
+spots and edged plumes; corona as solid painted arcs, a tiny black-glass shard
+for scale, honeyed light touching the frame edges. One sun, one sun only.
+Right, biome: black glass dunes, glossy black ridges and matte ochre sand,
+rust stone; sparse olive-black and rust membrane growth in the middle ground;
+thin dust-orange haze washing out distance, wind combing dust low across the
+dunes; one distant silhouetted stand of growth for scale. Upper-left sun,
+shadows toward lower right. Lower third quiet for later organism composition.
+
+LAYOUT
+One wide plate in three equally readable side-by-side panels: universe, star,
+biome. All are full-bleed painted scenes in the same hand and palette. No
+panel borders or labels. The following class layouts apply inside their panels:
+  A full-bleed painted deep-space vista, no subject isolated and no cut-out.
+  Wide cinematic composition with a clear focal point off-centre, three
+  readable depth layers from near silhouette to far field, and one light
+  source that governs the whole image. Horizon-free. Painted values, with the
+  darkest darks still holding detail.
+
+  A full-bleed painted star, centred or thirds-placed, occupying no more than
+  half the frame so its scale reads. Structure visible in the surface and the
+  corona, both painted as shapes with edges rather than as blur. One
+  silhouetted foreground element for scale. No planet surface, no horizon.
+
+  A full-bleed painted landscape of the planet surface, wide composition,
+  three depth layers, a low horizon giving the sky two thirds unless the brief
+  says otherwise, and one light source consistent with the system card. Every
+  shadow falls the same way. Painted atmospheric perspective, cooling and
+  washing out with distance. Leave the lower third quiet enough that cut-out
+  flora, landmarks and creatures can be composited onto it.
+
+TECHNICAL OUTPUT
+  Create a 2560 x 1440 painted image, full-bleed to all four edges, opaque,
+  with no transparency, no border, no frame and no margin. Do not repaint or
+  crop during export.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.

@@ -1,0 +1,16 @@
+{
+ "id": "24-nautilus",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-eye-rim (eyeFar) covers 8% paint (reference 86%)",
+  "missing-anatomy: part arm4-middle (arm4Seg1) covers 30% paint (reference 95%)",
+  "missing-anatomy: part arm6-tip (arm6Seg2) covers 24% paint (reference 72%)",
+  "missing-anatomy: part arm6-middle (arm6Seg1) covers 4% paint (reference 93%)",
+  "missing-anatomy: part arm0-tip (arm0Seg2) covers 17% paint (reference 57%)",
+  "missing-anatomy: part arm7-middle (arm7Seg1) covers 18% paint (reference 83%)",
+  "missing-anatomy: part arm5-tip (arm5Seg2) covers 14% paint (reference 77%)",
+  "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 2.9%)"
+ ],
+ "semanticPresence": null
+}

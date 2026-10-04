@@ -1,0 +1,30 @@
+{
+  "status": "DIAGNOSTIC_PASS",
+  "source": "f50abbd596ada241c53ba901228aceac106209a2",
+  "frames": 933,
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "turns": 4,
+  "encodedFrames": {
+    "frames": 937,
+    "width": 1024,
+    "height": 576,
+    "durationSeconds": 15.617758,
+    "minimumFrames": 886
+  },
+  "scriptDurationMs": 15532.666666666666,
+  "cpuThrottle": 1,
+  "fullSizeSourceReview": "audits/C203_NATIVE_HOLDS_20261004/visual-review.json",
+  "nativeStillsReviewed": [
+    "turn0-hit-impact.png",
+    "turn0-hit-approach-50.png",
+    "turn1-hit-reaction-50.png",
+    "turn2-dodge-return-end.png",
+    "turn3-hit-idle-90.png"
+  ],
+  "visualFinding": "Grounded strokes and whole head/nape silhouette remain attached in reviewed native attack, return and held-faint poses. Full-size source action review also passed. Claude retains final gallery/AI-finish admission.",
+  "fullFilmRetainedAs": "Named Red Fox candidate acceptance evidence, not I5 or all-pair performance evidence",
+  "allPairs": "HOLD"
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "cf.c132-i5-preparation/v1",
+  "productHead": "06e0b0f6072c9859be4a8f0b9fddb0e3a1be8c93",
+  "productSignature": "G",
+  "instrumentHead": "7693dd7a2c02cbf9560160eab6a48ddc73f88b8a",
+  "source": "~/.codex/worktrees/c132-i5/celestial-frontier-openai-mac",
+  "sourceClean": true,
+  "optionalLocalAiRuntimeAbsent": true,
+  "dependencyCopies": [
+    {
+      "path": "node_modules",
+      "method": "APFS clone cp -cR of existing locked dependencies",
+      "seconds": 0.241
+    },
+    {
+      "path": "port/v2/node_modules",
+      "method": "APFS clone cp -cR of existing locked dependencies",
+      "seconds": 1.469
+    }
+  ],
+  "lockInputs": [
+    {
+      "path": "package-lock.json",
+      "sha256": "2eabee93f433ca99569d6c75fb112812f23f48d7101e166323f60e93fc68702d"
+    },
+    {
+      "path": "port/v2/package-lock.json",
+      "sha256": "744f7c5079d0892fee85d6d2af20c343955ff0d47bda9cce8368d9babd6d1402"
+    }
+  ],
+  "automaticRetries": 0
+}

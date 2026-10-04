@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "count": 121,
+  "previousCount": 121,
+  "previousSha256": "336a504ecbc8ae68b6c4c55d8a89f9d7a3f1e2d4c347543915ae96a07e831ee3",
+  "reviewedSha256": "56481b6d76d8720fa9dcba999d3e934036768662463e0eb19296d196e5498e14",
+  "oldRowsExact": true,
+  "changedRows": [
+    "✨ BODY CASTS — worms, sponges, snails, slugs and bivalves can launch their themed attack with a body pulse. Fixed creatures cast from their stand. Prawns and shrimp with observed foreleg chains deliver a physical leg-tip strike."
+  ],
+  "reorderedRowsRejected": true,
+  "scope": "Rendered release-copy inventory only. No I5 certificate, measurement, allowance or producer authority re-bound."
+}

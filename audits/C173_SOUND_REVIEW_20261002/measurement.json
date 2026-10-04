@@ -1,0 +1,2558 @@
+{
+  "schema": "cf.c173-recorded-sound-measurement/v1",
+  "source": {
+    "path": "audits/C132_SOUND_20261001/delivery.json",
+    "sha256": "4490b0c265600d54b7da96e57e712c5cfb860fd5f3b797a40dfb743d7c27d9f9"
+  },
+  "instrument": {
+    "path": "port/v2/apps/game/src/soundkit/loudness.ts",
+    "sha256": "bb443588886a905ec50d654610abe6a01ec24e1a8256636af77477a2e47ae898"
+  },
+  "targets": {
+    "measure": "short-term-max",
+    "targetLufs": -14,
+    "maxOverLu": 1,
+    "maxUnderLu": 16,
+    "maxTruePeakDb": -1
+  },
+  "cues": 49,
+  "acceptedMasters": 32,
+  "acceptedOpus": 32,
+  "listeningStatus": "UNREVIEWED: no headphone or phone-speaker listening evidence",
+  "runtimeAdmitted": false,
+  "results": [
+    {
+      "id": "ability:fire:launch",
+      "sourceId": "ability.fire.cast.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-fire-launch.wav",
+          "sha256": "352c846f748758a480005fb3bb63415540a2d324eeb20a470ae07ddb961a7abe",
+          "bytes": 43302,
+          "pcmSha256": "5f72b8e0041fc5894722dd4e65eaa79ee0b6c36dbfb5ecee51b0d2e87d24f091",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-36.12<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -36.118844935827234,
+              "shortTermMaxLufs": -44.869457569744235,
+              "integratedLufs": -36.118844935827234,
+              "samplePeakDb": -22.984130230976277,
+              "truePeakDb": -22.541663503435565
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-fire-launch.opus",
+          "sha256": "5d58162fe5786332629981daad00cae05dfbb2393e9f1377a6d81ec7baeaf88c",
+          "bytes": 4005,
+          "pcmSha256": "5b6ff044e448af401031095093ef010960f09df24d607c86d65b986758fe4619",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-36.14<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -36.14281003265433,
+              "shortTermMaxLufs": -44.89342266657133,
+              "integratedLufs": -36.14281003265433,
+              "samplePeakDb": -23.023590290284236,
+              "truePeakDb": -22.604056033970686
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:fire:travel",
+      "sourceId": "ability.fire.sustain.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-fire-travel.wav",
+          "sha256": "d423a252188570a940a5ac3ea35f04e2bea2515180872309e1677a973a247f17",
+          "bytes": 60582,
+          "pcmSha256": "a345a66f47538d0cdc9637e9933bb93c2786bbc731c9ac5e9c98a434345fc2cf",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-34.58<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -34.57645055182964,
+              "shortTermMaxLufs": -43.31761161771369,
+              "integratedLufs": -34.57645055182964,
+              "samplePeakDb": -17.71036342398999,
+              "truePeakDb": -17.703871379558905
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-fire-travel.opus",
+          "sha256": "9bb40bd54cf80de905cfd97f27c082a975c47e93e28e0ac3fab389ae3f2195dc",
+          "bytes": 5446,
+          "pcmSha256": "3f33fb81c2b5892ca742e5ff9d1ed2ca7da1c7768a937b0faa3b055afaf51776",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-34.60<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -34.59711786045612,
+              "shortTermMaxLufs": -43.338241817030585,
+              "integratedLufs": -34.59711786045612,
+              "samplePeakDb": -17.909413774270753,
+              "truePeakDb": -17.86326138018363
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:fire:impact",
+      "sourceId": "ability.fire.impact.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-fire-impact.wav",
+          "sha256": "f82eb8302e4a3937a8d936e9cb3a85b52cd9b6293e3153743814f4f33f325ecd",
+          "bytes": 77862,
+          "pcmSha256": "6bb414532cfa6d0ede4fec80a6da6c3713b96eb1429e1f4c945e918f63875325",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -24.30476811322264,
+              "shortTermMaxLufs": -33.02958257414838,
+              "integratedLufs": -26.580345258667858,
+              "samplePeakDb": -7.484435988440547,
+              "truePeakDb": -7.484435988440547
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-fire-impact.opus",
+          "sha256": "dea80780f4815c27e35102169feeabf1d98e3265de3512e715f14a34d1bd06fe",
+          "bytes": 6814,
+          "pcmSha256": "279d97f7821752f2f34108e142390584f97721c934b45b5167bdc7490dc21fc4",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -24.301914961826704,
+              "shortTermMaxLufs": -33.026740184698866,
+              "integratedLufs": -26.583890778895253,
+              "samplePeakDb": -7.64966609584254,
+              "truePeakDb": -7.6481905846111
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:frost:launch",
+      "sourceId": "ability.frost.cast.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-frost-launch.wav",
+          "sha256": "a7651244d31cd7baf00bb3b303c7781a98791178998aeafb826eab3bca949957",
+          "bytes": 43302,
+          "pcmSha256": "492fd752e616ddfc795fc47c0d34579af25e87abdd6a1dd873990d5d60eb104f",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -25.336899080556083,
+              "shortTermMaxLufs": -34.08751171447309,
+              "integratedLufs": -25.336899080556083,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.8397735232991685
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-frost-launch.opus",
+          "sha256": "c11bb99f661fbb83c61f41503cc89e51cdc08a6775eae8de6dd0f612bbd3e18f",
+          "bytes": 6174,
+          "pcmSha256": "80123888bd71daeb52dcfb5003fa04e99a22fef8757244610c53c0ac2feb7767",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -25.34681767351461,
+              "shortTermMaxLufs": -34.097430307431615,
+              "integratedLufs": -25.34681767351461,
+              "samplePeakDb": -6.872066350710262,
+              "truePeakDb": -6.872066350710262
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:frost:travel",
+      "sourceId": "ability.frost.sustain.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-frost-travel.wav",
+          "sha256": "fd6beccffe55fc36bf9c8de641a41de678a4b1b2947a931efdc494bd928abdae",
+          "bytes": 60582,
+          "pcmSha256": "241aa15fa0ed4deeea88b5a2fc5d54140d6c263285a376f533f03e09c78c374d",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -25.336899080556083,
+              "shortTermMaxLufs": -34.08751171447309,
+              "integratedLufs": -25.336899080556083,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.8397735232991685
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-frost-travel.opus",
+          "sha256": "0b7c088ceb13668440ba88a0e28bd8c4fa103bd884283dd7200be14bb0d9e3e0",
+          "bytes": 8854,
+          "pcmSha256": "8eafa37e55adc858b760d09ea3220337bf70f968718aaff48fd660919f63a372",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -25.34681767239162,
+              "shortTermMaxLufs": -34.09743030628165,
+              "integratedLufs": -25.34681767239162,
+              "samplePeakDb": -6.872066350710262,
+              "truePeakDb": -6.872066350710262
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:frost:impact",
+      "sourceId": "ability.frost.impact.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-frost-impact.wav",
+          "sha256": "0d68a6bf41cc7b4f591733acdec969f319a02ab6353cad626600b48956dfaa42",
+          "bytes": 77862,
+          "pcmSha256": "feea48538c1e650966d30b2c283cf2d4d2b7f3bffb3a10b1ecb4c141cb5decca",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -22.009250390787482,
+              "shortTermMaxLufs": -30.75954579361425,
+              "integratedLufs": -24.69586726261894,
+              "samplePeakDb": -3.27769982431601,
+              "truePeakDb": -3.27769982431601
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-frost-impact.opus",
+          "sha256": "c507a684c0ed1a074b6b5e0d54ea21bed1a8482f77c96b5115a78915b341474b",
+          "bytes": 7398,
+          "pcmSha256": "338092edd2bc851218853eb86980eb7df2fab074817bd2d9225eee9469654480",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -21.966650170797433,
+              "shortTermMaxLufs": -30.716949924153663,
+              "integratedLufs": -24.650973721844398,
+              "samplePeakDb": -3.3096990919863902,
+              "truePeakDb": -3.3096990919863902
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:storm:launch",
+      "sourceId": "ability.storm.cast.1",
+      "sourceKind": "wildlife_or_environment_recording",
+      "license": "Public-domain-NPS-statement",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-storm-launch.wav",
+          "sha256": "b74d53860507c821636f654e6c413bf63243de0a638f18cf4f50358471d0f624",
+          "bytes": 43316,
+          "pcmSha256": "6b42caf9c91dfcbd3de89b83c4c8203b3dcc1afb73bf95b8e0834acd7439fe64",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-51.74<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -51.742630272965954,
+              "shortTermMaxLufs": -60.493242906882955,
+              "integratedLufs": -51.742630272965954,
+              "samplePeakDb": -25.997837687285397,
+              "truePeakDb": -25.967277091048018
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-storm-launch.opus",
+          "sha256": "1bde0fbe9c94d144253c4daaea185dbef8087b0fca90dfbe9d3917d0e59c5a18",
+          "bytes": 4669,
+          "pcmSha256": "11bfc580b6a1eed0642e7b2fa84c618641e09ec2fa359ccf5d0c14ed201e49dd",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-51.75<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -51.74956769972561,
+              "shortTermMaxLufs": -60.500180333642604,
+              "integratedLufs": -51.74956769972561,
+              "samplePeakDb": -26.050670439036303,
+              "truePeakDb": -26.019140130100148
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:storm:travel",
+      "sourceId": "ability.storm.sustain.1",
+      "sourceKind": "wildlife_or_environment_recording",
+      "license": "Public-domain-NPS-statement",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-storm-travel.wav",
+          "sha256": "f24f43a7856ebf31692e648c876729733ae2a8e7067041be98159e0e7e5f9f3d",
+          "bytes": 60596,
+          "pcmSha256": "7f6ab252429fb907033af8e3e17cceea4a64b1000d3e2701801f3d8145818b7c",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-50.61<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -50.611045810925866,
+              "shortTermMaxLufs": -59.352258044816914,
+              "integratedLufs": -50.611045810925866,
+              "samplePeakDb": -25.997837687285397,
+              "truePeakDb": -25.967277091048018
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-storm-travel.opus",
+          "sha256": "69d3f596ad0aae8b49c832ff1efa808c11db3c613f96db7bb5006ee10412fa7b",
+          "bytes": 5902,
+          "pcmSha256": "29b3877c7caa910e018c5df6348fe50fc4c05bcb65074a57abc9907fa9a8d3ac",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-50.62<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -50.61744745770151,
+              "shortTermMaxLufs": -59.35845962431523,
+              "integratedLufs": -50.61744745770151,
+              "samplePeakDb": -26.050670439036303,
+              "truePeakDb": -26.019140130100148
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:storm:impact",
+      "sourceId": "ability.storm.impact.1",
+      "sourceKind": "wildlife_or_environment_recording",
+      "license": "Public-domain-NPS-statement",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-storm-impact.wav",
+          "sha256": "8c6cea55431288e37dfa0eadac271a9053fd7cb4fd95a004354e0ed440a489d1",
+          "bytes": 77862,
+          "pcmSha256": "68b9dd5499e2f78253a8dc50513ec1eaea530c293333c67f06601936ceeac286",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -24.51110827726676,
+              "shortTermMaxLufs": -33.26008048065361,
+              "integratedLufs": -26.95930822907834,
+              "samplePeakDb": -7.4784600158269505,
+              "truePeakDb": -7.4784600158269505
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-storm-impact.opus",
+          "sha256": "d11992c9f20c6a64bdc19d77b86e69a2ccf19ef7a99f790c2e28ede92a618dce",
+          "bytes": 7177,
+          "pcmSha256": "03c1ef0546f625122dcedd05054194a0fe69ad0a870c8643e3df55b8448dbf41",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -24.534521586196757,
+              "shortTermMaxLufs": -33.28348490214579,
+              "integratedLufs": -26.980156678042945,
+              "samplePeakDb": -7.634353831578099,
+              "truePeakDb": -7.6334132337956975
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:tide:launch",
+      "sourceId": "ability.tide.cast.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-tide-launch.wav",
+          "sha256": "f316595ae755d3a848c288848f3e700da13dfba99b51566b945896d2b9ca90ac",
+          "bytes": 43302,
+          "pcmSha256": "ae8898c40685391e75c4fd95399aba0886bbb9db8bc6b1ee044ae47238215325",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -27.097871689750956,
+              "shortTermMaxLufs": -35.84848432366796,
+              "integratedLufs": -27.097871689750956,
+              "samplePeakDb": -6.839771247609563,
+              "truePeakDb": -6.029767597175406
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-tide-launch.opus",
+          "sha256": "f42b741ed7bcd2565680e4dddb8cefad90e854ce0e9891430ffe7583d7aee58f",
+          "bytes": 5380,
+          "pcmSha256": "34faccd8ddb9119ebbb1cae856f0d2f5ae44e02f3440e0ac823f85cce420ef6d",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -27.08047124408633,
+              "shortTermMaxLufs": -35.831083878003334,
+              "integratedLufs": -27.08047124408633,
+              "samplePeakDb": -6.781612031867973,
+              "truePeakDb": -5.939106660115146
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:tide:travel",
+      "sourceId": "ability.tide.sustain.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-tide-travel.wav",
+          "sha256": "e63df189e3cd2dc2ad51f7ee650e7d566fe80bb9967721896ff728bae9c55342",
+          "bytes": 60582,
+          "pcmSha256": "52b13aecbee042b0a917219c8c5fe5bd02588478091cb772c4d27016205a00ed",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -26.98068757413068,
+              "shortTermMaxLufs": -35.73111022017509,
+              "integratedLufs": -26.98068757413068,
+              "samplePeakDb": -6.839771247609563,
+              "truePeakDb": -6.029767597175406
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-tide-travel.opus",
+          "sha256": "3789427b1fc150016a891c9f2179893d02b056977b4242da8fabce86ad6ca5ad",
+          "bytes": 7426,
+          "pcmSha256": "cb7ea2db17994801a2ac74f71b8293c30d2d3a2f09f0524bade370dcbf748c66",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -26.96197101201036,
+              "shortTermMaxLufs": -35.71239513105207,
+              "integratedLufs": -26.96197101201036,
+              "samplePeakDb": -6.781612031867973,
+              "truePeakDb": -5.939106660115146
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:tide:impact",
+      "sourceId": "ability.tide.impact.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-tide-impact.wav",
+          "sha256": "ab61725e1499b2a69fdce28b4bf03927d41a87ffdb8bd897785e5091f18835cd",
+          "bytes": 77862,
+          "pcmSha256": "bfdc90045cd7b456cdb264a05b539ca9a780947e52cfce54f9dc497b0c1e1e1d",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -23.2162823403215,
+              "shortTermMaxLufs": -31.964062112795087,
+              "integratedLufs": -25.455622843078917,
+              "samplePeakDb": -2.8533511643378064,
+              "truePeakDb": -2.8533511643378064
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-tide-impact.opus",
+          "sha256": "1a899b07a117f4636254091fc48bcd0827979fe6cad43271255a38e61133f203",
+          "bytes": 8774,
+          "pcmSha256": "a1db831efbb982055f3653ec208cfcdcad10912ea1cc435dc82c605dd93a58d3",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -23.247583072192853,
+              "shortTermMaxLufs": -31.995326157837056,
+              "integratedLufs": -25.477010555561968,
+              "samplePeakDb": -2.9943264985212585,
+              "truePeakDb": -2.9943264985212585
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:stone:launch",
+      "sourceId": "ability.stone.cast.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-stone-launch.wav",
+          "sha256": "4d601bb26519887103fccb2f55e560edf77b9cecb6684b80736b66c63db68215",
+          "bytes": 43302,
+          "pcmSha256": "94cf192b1849e328c89570c40a447dbebbe4965169ccd4d3beb5acfdc7d57f26",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-35.44<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -35.44303270324154,
+              "shortTermMaxLufs": -44.19364533715854,
+              "integratedLufs": -35.44303270324154,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.810397787542753
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-stone-launch.opus",
+          "sha256": "8b4ae1acde840b34eef73326920ec6c6ae09f2a49bc769c0423ed0196b4acc84",
+          "bytes": 6116,
+          "pcmSha256": "2644cce2eca84bdc83260ea43d3ba928a1e3a587aabfb95490d969d16dcde291",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-35.45<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -35.445754340379814,
+              "shortTermMaxLufs": -44.196366974296815,
+              "integratedLufs": -35.445754340379814,
+              "samplePeakDb": -6.83975417995652,
+              "truePeakDb": -6.814599146091716
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:stone:travel",
+      "sourceId": "ability.stone.sustain.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-stone-travel.wav",
+          "sha256": "6d88d6e082e6ffb26e268a4b95bc6b2366f488469d00a553df676e5711748b17",
+          "bytes": 60582,
+          "pcmSha256": "f99d7c1a4c64ee13cc9145de214d1943e550d4b0ac44b1bbfd5cb90337787659",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -28.03024602956926,
+              "shortTermMaxLufs": -36.77751588630654,
+              "integratedLufs": -28.03024602956926,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.789910652697851
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-stone-travel.opus",
+          "sha256": "04d3a212c2337ec2fba2e64538f792e3b3cb8ad0f99eeb5925063377f7a426de",
+          "bytes": 8517,
+          "pcmSha256": "b4d3471d835a4f57adfe8b637bde53285aaca3f023d2687b5005c5e1d7f87794",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -28.041109006047794,
+              "shortTermMaxLufs": -36.7883357250964,
+              "integratedLufs": -28.041109006047794,
+              "samplePeakDb": -6.833536390409107,
+              "truePeakDb": -6.785429889903652
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:stone:impact",
+      "sourceId": "ability.stone.impact.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-stone-impact.wav",
+          "sha256": "44ae15297a89c6ce94324cb9505a8fc2014bced1a0af9b4aeaa31b88eb9b12f1",
+          "bytes": 77862,
+          "pcmSha256": "591a50e6cbc6cffc0cfbbdf00bb8f9e9240130bc05e2416df717c2f854623207",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -22.51131789228037,
+              "shortTermMaxLufs": -31.188009993157422,
+              "integratedLufs": -23.836509570630245,
+              "samplePeakDb": -3.0683516002685876,
+              "truePeakDb": -3.0683516002685876
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-stone-impact.opus",
+          "sha256": "97d2a3c61dbe6b53486f97d904fcf19c32678a7e9656fcd03f8e0641903f7e81",
+          "bytes": 10572,
+          "pcmSha256": "bdc148f081526fbbe2422ae9221f017a2c335ad088583dea05d87348513bcb4e",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -22.489689998133795,
+              "shortTermMaxLufs": -31.16659516933713,
+              "integratedLufs": -23.82774382581851,
+              "samplePeakDb": -3.115308391961955,
+              "truePeakDb": -3.115308391961955
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:venom:launch",
+      "sourceId": "ability.venom.cast.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-venom-launch.wav",
+          "sha256": "42881997b2cc66473338ed6936be508169c0844ff857b75068721f3ce41252fb",
+          "bytes": 43302,
+          "pcmSha256": "b5de8e8f2ee8c89435ddeb9b7c78a7f6c7f6738b3a1b26767640cca1cff82871",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -28.51079301210113,
+              "shortTermMaxLufs": -37.26140564601813,
+              "integratedLufs": -28.51079301210113,
+              "samplePeakDb": -8.411328382783555,
+              "truePeakDb": -8.28887053728131
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-venom-launch.opus",
+          "sha256": "d002809ced46eea76751ab0d59c05afad72bcdde1383ea734b054d47bf9a91f2",
+          "bytes": 7403,
+          "pcmSha256": "118467d7490cb856541b532d5aea2c0b73e05dc73ad7793d2970caba66010b66",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -28.501346931203045,
+              "shortTermMaxLufs": -37.25195956512005,
+              "integratedLufs": -28.501346931203045,
+              "samplePeakDb": -8.38679791684697,
+              "truePeakDb": -8.255362144610153
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:venom:travel",
+      "sourceId": "ability.venom.sustain.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-venom-travel.wav",
+          "sha256": "477e8378510fa6786e6a92d90abd18705a39bf4c200883c0b8015c86658f7b08",
+          "bytes": 60582,
+          "pcmSha256": "c70dedf58f0b383dd6b2d942d903455f11555dce48c30a983e3e20aaa9cf8085",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -27.077932814702923,
+              "shortTermMaxLufs": -35.797904753606446,
+              "integratedLufs": -27.077932814702923,
+              "samplePeakDb": -8.411328382783555,
+              "truePeakDb": -8.28887053728131
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-venom-travel.opus",
+          "sha256": "802bb44693dc6aba5b51d84f771d1f8afe76897bd4e12974da40314946f568b3",
+          "bytes": 10021,
+          "pcmSha256": "fe5a8d28910e95d5b9ac20682a0bf40c88d1e80e2b5b97a40286234882a08cc0",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -27.072535319498925,
+              "shortTermMaxLufs": -35.79261084682896,
+              "integratedLufs": -27.072535319498925,
+              "samplePeakDb": -8.38679791684697,
+              "truePeakDb": -8.255362144610153
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:venom:impact",
+      "sourceId": "ability.venom.impact.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-venom-impact.wav",
+          "sha256": "256fca28470392466c8cf0038413952d4f74a985a59664c6c71a4efb0fca12ae",
+          "bytes": 77862,
+          "pcmSha256": "a76d597399abb0919a3f4a99b5e4f808b635a07c9712243f651bc9d965522b81",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -23.429373035473724,
+              "shortTermMaxLufs": -31.79529458087463,
+              "integratedLufs": -25.14582021272816,
+              "samplePeakDb": -4.6629039029909265,
+              "truePeakDb": -4.6629039029909265
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-venom-impact.opus",
+          "sha256": "a837a449b1628bb0e6839c3ec9c03354cf75d19f1999cae4cedd4cac1a55bd32",
+          "bytes": 12494,
+          "pcmSha256": "8567f7b99e7f11775514292da8b93c58edc38ca95a2b26abd6ae332cb4acbb2e",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -23.42809270144254,
+              "shortTermMaxLufs": -31.794822006145704,
+              "integratedLufs": -25.15210986728218,
+              "samplePeakDb": -4.4686511837302145,
+              "truePeakDb": -4.4686511837302145
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:void:launch",
+      "sourceId": "ability.void.cast.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-void-launch.wav",
+          "sha256": "c30771f2e0fc6a7eaddcd9c2adbf95f4609114e5e38fa4bf7d8f93badaa150e3",
+          "bytes": 43302,
+          "pcmSha256": "372f75167347eb771b02cb1fde8b14f4e7bbc633d8d06f02cc97f3bc01cdb41b",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -13.87731097356432,
+              "shortTermMaxLufs": -22.627923607481318,
+              "integratedLufs": -13.87731097356432,
+              "samplePeakDb": -6.839771247609563,
+              "truePeakDb": -6.83434112553499
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-void-launch.opus",
+          "sha256": "ee650d26e0592fa0d97213af544e662c844545022bd2c280de50bd7002c77d9f",
+          "bytes": 6258,
+          "pcmSha256": "e497b30a40f09e52e16045bd3d986edd46eb8b1d575e3b1c30608eb88ac434fe",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -13.877792759874485,
+              "shortTermMaxLufs": -22.628405393791486,
+              "integratedLufs": -13.877792759874485,
+              "samplePeakDb": -6.74990876876279,
+              "truePeakDb": -6.74990876876279
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:void:travel",
+      "sourceId": "ability.void.sustain.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-void-travel.wav",
+          "sha256": "99ef7a6b144d1a692f1f634cf58a40bcd2e5d4582d2fc7851213879210ea20f5",
+          "bytes": 60582,
+          "pcmSha256": "18be682ac1f8dc16e1b6f112a67b2273850178670918491392eb26e08fd93038",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -13.128489159096324,
+              "shortTermMaxLufs": -21.877587697142555,
+              "integratedLufs": -13.128489159096324,
+              "samplePeakDb": -6.839771247609563,
+              "truePeakDb": -6.83434112553499
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-void-travel.opus",
+          "sha256": "44940727249175d3eb3098dc351a6c90cb98bf7c9f0e7dfe274d542b9e65da5c",
+          "bytes": 8282,
+          "pcmSha256": "5dde37c8de838bfb87512376328d393c71e177943f30ae5f24cad56f501e68be",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -13.128682693976414,
+              "shortTermMaxLufs": -21.877779205647474,
+              "integratedLufs": -13.128682693976414,
+              "samplePeakDb": -6.74990876876279,
+              "truePeakDb": -6.74990876876279
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:void:impact",
+      "sourceId": "ability.void.impact.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-void-impact.wav",
+          "sha256": "baf2625aa8f1afed9a4454430c7530af4e7e12b8071b054d9c4ea623ffcbee73",
+          "bytes": 77862,
+          "pcmSha256": "c65bc56231b321741b6c9961d29266a60cb7bade51f4cfbd76901a2f09144dac",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -14.253676180383618,
+              "shortTermMaxLufs": -22.968668664224,
+              "integratedLufs": -14.667651753096894,
+              "samplePeakDb": -4.866512927973276,
+              "truePeakDb": -4.864656517427084
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-void-impact.opus",
+          "sha256": "0c49f285be5570d1118b52e8f6433b948fa3ddb12ac15342917cf7ac798d3fea",
+          "bytes": 9949,
+          "pcmSha256": "d013d7be78294742a2421d7423fe785d8f190393558ed0f0ae1b6b519d64070e",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -14.252292669561738,
+              "shortTermMaxLufs": -22.967272469350625,
+              "integratedLufs": -14.66833828011123,
+              "samplePeakDb": -4.630733762177391,
+              "truePeakDb": -4.630733762177391
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:sand:launch",
+      "sourceId": "ability.sand.cast.1",
+      "sourceKind": "wildlife_or_environment_recording",
+      "license": "Public-domain-NPS-statement",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-sand-launch.wav",
+          "sha256": "c668575646b830b1ebbdb8918a0e010655eab8990146d4d2a53f27cac69a0bf3",
+          "bytes": 43316,
+          "pcmSha256": "59551c91797b58ac4ff482b403510ccc60a08fa84bf542a51840898a0bb44a68",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-43.04<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -43.03732629697867,
+              "shortTermMaxLufs": -51.78793893089567,
+              "integratedLufs": -43.03732629697867,
+              "samplePeakDb": -24.439537736072197,
+              "truePeakDb": -24.378179238896927
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-sand-launch.opus",
+          "sha256": "29e1fa0a62c6808562e8ecd200eef7105d64bd753671f0aacefddc576e717280",
+          "bytes": 5987,
+          "pcmSha256": "89419c2710682a3dc10c7f8f239a67ec5658302c0d0c7c844a74cdffce627683",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-43.05<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -43.045165793335556,
+              "shortTermMaxLufs": -51.79577842725256,
+              "integratedLufs": -43.045165793335556,
+              "samplePeakDb": -24.637301221571942,
+              "truePeakDb": -24.582682622315396
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:sand:travel",
+      "sourceId": "ability.sand.sustain.1",
+      "sourceKind": "wildlife_or_environment_recording",
+      "license": "Public-domain-NPS-statement",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-sand-travel.wav",
+          "sha256": "cc9c33eaa966c554f9af2ff95f85790859666d7bf9b8fe75446687b181c977d4",
+          "bytes": 60596,
+          "pcmSha256": "156dfd901fab40fa113d21a9691887662f5ff9894d6013cafd16d5440db26fa1",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-36.84<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -36.83720846791801,
+              "shortTermMaxLufs": -45.554377182105526,
+              "integratedLufs": -36.83720846791801,
+              "samplePeakDb": -19.79304495099673,
+              "truePeakDb": -19.79304495099673
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-sand-travel.opus",
+          "sha256": "b74e8b6c4b7dc73ca6b88e90d48dcb85378a66d92ebc8f6389152c11ef1b211d",
+          "bytes": 7690,
+          "pcmSha256": "a6e47d4cc6b2bbdb78ae4c743d2371c0e61752d8eb1ba2672a40d428d63031b5",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-36.81<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -36.81176594040542,
+              "shortTermMaxLufs": -45.52938225350234,
+              "integratedLufs": -36.81176594040542,
+              "samplePeakDb": -19.759840223713457,
+              "truePeakDb": -19.759840223713457
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:sand:impact",
+      "sourceId": "ability.sand.impact.1",
+      "sourceKind": "wildlife_or_environment_recording",
+      "license": "Public-domain-NPS-statement",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-sand-impact.wav",
+          "sha256": "4c19ceec4c33dff888268deb198221c84b13a58ce81669458cbc5bd9ca483c52",
+          "bytes": 77862,
+          "pcmSha256": "e5dffaa5c41b1c69674df7819ff508a06cd3b4841a89ff30c1d3de38aedf3787",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -24.36834065380913,
+              "shortTermMaxLufs": -33.02295780659111,
+              "integratedLufs": -26.628552669842353,
+              "samplePeakDb": -7.478278767253947,
+              "truePeakDb": -7.478278767253947
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-sand-impact.opus",
+          "sha256": "51c3325f56324ac49f92ed7bc660c136f1b3ab3484d24225f1e48c1af3f20912",
+          "bytes": 8871,
+          "pcmSha256": "750ed747e6b29fb7378306b2524ad15e614d79e9514c1117a026d7d2a890b0fa",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -24.347524960155994,
+              "shortTermMaxLufs": -33.001993365250826,
+              "integratedLufs": -26.595879410170454,
+              "samplePeakDb": -7.645092052470275,
+              "truePeakDb": -7.644015652773821
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:chem:launch",
+      "sourceId": "ability.chem.cast.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-chem-launch.wav",
+          "sha256": "42881997b2cc66473338ed6936be508169c0844ff857b75068721f3ce41252fb",
+          "bytes": 43302,
+          "pcmSha256": "b5de8e8f2ee8c89435ddeb9b7c78a7f6c7f6738b3a1b26767640cca1cff82871",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -28.51079301210113,
+              "shortTermMaxLufs": -37.26140564601813,
+              "integratedLufs": -28.51079301210113,
+              "samplePeakDb": -8.411328382783555,
+              "truePeakDb": -8.28887053728131
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-chem-launch.opus",
+          "sha256": "17f2a68e0b128b3dde637c7bdb9dae785b8a8d8052facca0f7f49fc50e699066",
+          "bytes": 7403,
+          "pcmSha256": "118467d7490cb856541b532d5aea2c0b73e05dc73ad7793d2970caba66010b66",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -28.501346931203045,
+              "shortTermMaxLufs": -37.25195956512005,
+              "integratedLufs": -28.501346931203045,
+              "samplePeakDb": -8.38679791684697,
+              "truePeakDb": -8.255362144610153
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:chem:travel",
+      "sourceId": "ability.chem.sustain.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-chem-travel.wav",
+          "sha256": "477e8378510fa6786e6a92d90abd18705a39bf4c200883c0b8015c86658f7b08",
+          "bytes": 60582,
+          "pcmSha256": "c70dedf58f0b383dd6b2d942d903455f11555dce48c30a983e3e20aaa9cf8085",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -27.077932814702923,
+              "shortTermMaxLufs": -35.797904753606446,
+              "integratedLufs": -27.077932814702923,
+              "samplePeakDb": -8.411328382783555,
+              "truePeakDb": -8.28887053728131
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-chem-travel.opus",
+          "sha256": "21e423441ea3ab7e5f2c417b035a78af7eb0c503bd920eb0305cdad0b5245ed1",
+          "bytes": 10021,
+          "pcmSha256": "fe5a8d28910e95d5b9ac20682a0bf40c88d1e80e2b5b97a40286234882a08cc0",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -27.072535319498925,
+              "shortTermMaxLufs": -35.79261084682896,
+              "integratedLufs": -27.072535319498925,
+              "samplePeakDb": -8.38679791684697,
+              "truePeakDb": -8.255362144610153
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:chem:impact",
+      "sourceId": "ability.chem.impact.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-chem-impact.wav",
+          "sha256": "256fca28470392466c8cf0038413952d4f74a985a59664c6c71a4efb0fca12ae",
+          "bytes": 77862,
+          "pcmSha256": "a76d597399abb0919a3f4a99b5e4f808b635a07c9712243f651bc9d965522b81",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -23.429373035473724,
+              "shortTermMaxLufs": -31.79529458087463,
+              "integratedLufs": -25.14582021272816,
+              "samplePeakDb": -4.6629039029909265,
+              "truePeakDb": -4.6629039029909265
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-chem-impact.opus",
+          "sha256": "7dc4c2c67b2508964cb6bc5e3e1243dd3867cbd2e2b180af91181c89b8c1f3d1",
+          "bytes": 12494,
+          "pcmSha256": "8567f7b99e7f11775514292da8b93c58edc38ca95a2b26abd6ae332cb4acbb2e",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -23.42809270144254,
+              "shortTermMaxLufs": -31.794822006145704,
+              "integratedLufs": -25.15210986728218,
+              "samplePeakDb": -4.4686511837302145,
+              "truePeakDb": -4.4686511837302145
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:psionic:launch",
+      "sourceId": "ability.psionic.cast.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-psionic-launch.wav",
+          "sha256": "a7651244d31cd7baf00bb3b303c7781a98791178998aeafb826eab3bca949957",
+          "bytes": 43302,
+          "pcmSha256": "492fd752e616ddfc795fc47c0d34579af25e87abdd6a1dd873990d5d60eb104f",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -25.336899080556083,
+              "shortTermMaxLufs": -34.08751171447309,
+              "integratedLufs": -25.336899080556083,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.8397735232991685
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-psionic-launch.opus",
+          "sha256": "cf66ebf709c1766998dbfb6f15256d219e3b25067c85970f3e8fbf9b4abcd537",
+          "bytes": 6174,
+          "pcmSha256": "80123888bd71daeb52dcfb5003fa04e99a22fef8757244610c53c0ac2feb7767",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -25.34681767351461,
+              "shortTermMaxLufs": -34.097430307431615,
+              "integratedLufs": -25.34681767351461,
+              "samplePeakDb": -6.872066350710262,
+              "truePeakDb": -6.872066350710262
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:psionic:travel",
+      "sourceId": "ability.psionic.sustain.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-psionic-travel.wav",
+          "sha256": "fd6beccffe55fc36bf9c8de641a41de678a4b1b2947a931efdc494bd928abdae",
+          "bytes": 60582,
+          "pcmSha256": "241aa15fa0ed4deeea88b5a2fc5d54140d6c263285a376f533f03e09c78c374d",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -25.336899080556083,
+              "shortTermMaxLufs": -34.08751171447309,
+              "integratedLufs": -25.336899080556083,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.8397735232991685
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-psionic-travel.opus",
+          "sha256": "8eb91dd7cc0a5b5c7c560f2fbad2384bd8c6605991b46e44a6c29b6e4dc0678d",
+          "bytes": 8854,
+          "pcmSha256": "8eafa37e55adc858b760d09ea3220337bf70f968718aaff48fd660919f63a372",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -25.34681767239162,
+              "shortTermMaxLufs": -34.09743030628165,
+              "integratedLufs": -25.34681767239162,
+              "samplePeakDb": -6.872066350710262,
+              "truePeakDb": -6.872066350710262
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:psionic:impact",
+      "sourceId": "ability.psionic.impact.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-psionic-impact.wav",
+          "sha256": "0d68a6bf41cc7b4f591733acdec969f319a02ab6353cad626600b48956dfaa42",
+          "bytes": 77862,
+          "pcmSha256": "feea48538c1e650966d30b2c283cf2d4d2b7f3bffb3a10b1ecb4c141cb5decca",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -22.009250390787482,
+              "shortTermMaxLufs": -30.75954579361425,
+              "integratedLufs": -24.69586726261894,
+              "samplePeakDb": -3.27769982431601,
+              "truePeakDb": -3.27769982431601
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-psionic-impact.opus",
+          "sha256": "c52106b726ab2dfa362e22f5910bf09bd3b0bc74664a72c957852594f7105074",
+          "bytes": 7398,
+          "pcmSha256": "338092edd2bc851218853eb86980eb7df2fab074817bd2d9225eee9469654480",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -21.966650170797433,
+              "shortTermMaxLufs": -30.716949924153663,
+              "integratedLufs": -24.650973721844398,
+              "samplePeakDb": -3.3096990919863902,
+              "truePeakDb": -3.3096990919863902
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:wild:launch",
+      "sourceId": "ability.wild.cast.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "launch",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-wild-launch.wav",
+          "sha256": "b3dfe39b6dca717b80f833e1eb0366dbf1964e95c69c1334071886383ae0f372",
+          "bytes": 43302,
+          "pcmSha256": "06333c947b5737cf9a7408bbe21ad7b105d9b80b2fb66816b42638df9b2cbc13",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -21.05024966034876,
+              "shortTermMaxLufs": -29.800862294265762,
+              "integratedLufs": -21.05024966034876,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.585977309069342
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-wild-launch.opus",
+          "sha256": "d3051c0269a1a5664e53dda6ce5f6f2c7c4baba956aef7d2bba3523815488ac0",
+          "bytes": 4357,
+          "pcmSha256": "155cc23fd38bf9b7ce925a7936f8b9fbcc06bb9f0bdaf889429a542b46b58233",
+          "sampleCount": 14400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.3,
+              "momentaryMaxLufs": -21.042762057531487,
+              "shortTermMaxLufs": -29.793374691448488,
+              "integratedLufs": -21.042762057531487,
+              "samplePeakDb": -6.488551741876677,
+              "truePeakDb": -6.273929786484022
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:wild:travel",
+      "sourceId": "ability.wild.sustain.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "travel",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/ability-wild-travel.wav",
+          "sha256": "e7b845b51a93764d9fd235626a5ba491fd6944e256dc894fe03fb7a37de744f2",
+          "bytes": 60582,
+          "pcmSha256": "f9831e843fbbc33be524cc4dce055f10d262eaa974024e9f8a5de1cb1b073260",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -18.95529554606566,
+              "shortTermMaxLufs": -27.70586490221744,
+              "integratedLufs": -18.95529554606566,
+              "samplePeakDb": -6.839771247609563,
+              "truePeakDb": -6.54907644684056
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/ability-wild-travel.opus",
+          "sha256": "03cb3dfde818b4a6c02f2e4f1f50b94c946e4d8cfffc7c0349eda75d4359422a",
+          "bytes": 5724,
+          "pcmSha256": "974a8e64b74e9c305645bf57dcb85ffcdd21a600cb2ecb56cf3a803ccdf6daa4",
+          "sampleCount": 20160,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.42,
+              "momentaryMaxLufs": -18.948228502239427,
+              "shortTermMaxLufs": -27.698797454680506,
+              "integratedLufs": -18.948228502239427,
+              "samplePeakDb": -6.395032712089743,
+              "truePeakDb": -6.395032712089743
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "ability:wild:impact",
+      "sourceId": "ability.wild.impact.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "impact",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-wild-impact.wav",
+          "sha256": "045cbdad864e9c1e769b3e02544412b7d848b04e9d1e19063126ab7fbe1c48d7",
+          "bytes": 77862,
+          "pcmSha256": "99013b44c78bb69cfeb472707c4efe7815bbcde3b5eab4638e273c002efbdc3c",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -18.798251119820357,
+              "shortTermMaxLufs": -27.548365502244813,
+              "integratedLufs": -19.376571868900538,
+              "samplePeakDb": -5.61353153777921,
+              "truePeakDb": -5.37286313245894
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/layered-impacts-02/ability-wild-impact.opus",
+          "sha256": "5570d9064305eb1c2717583cc370a83023194e813bcc3cd6ae433d4685b0cb04",
+          "bytes": 7230,
+          "pcmSha256": "d33ac6fa480341c116b334d6f6eab637a4badf5e9b3818f6ad239185fe6b06cc",
+          "sampleCount": 25920,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.54,
+              "momentaryMaxLufs": -18.75976194032719,
+              "shortTermMaxLufs": -27.50988352442651,
+              "integratedLufs": -19.333393527990822,
+              "samplePeakDb": -5.223043022943065,
+              "truePeakDb": -4.979427907460506
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:turn-ready",
+      "sourceId": "battle.initiative.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-turn-ready.wav",
+          "sha256": "d09fe1cbc8bb195b14f026ddc4e6bd240133538a3db2b6dc7d0b7969579633e5",
+          "bytes": 26022,
+          "pcmSha256": "d224de3190fafaf675eb76aa86fa2c87dd9b34f2db5bbf822043c10a480ab7dd",
+          "sampleCount": 8640,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.49<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.18,
+              "momentaryMaxLufs": -32.48576636677877,
+              "shortTermMaxLufs": -41.23637900069577,
+              "integratedLufs": -32.48576636677877,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.837558112858088
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-turn-ready.opus",
+          "sha256": "9977ac646386ac9c3a2e0cc1d97dce7c3def2213a5afc7eb8a1b6767f83bc4b3",
+          "bytes": 3915,
+          "pcmSha256": "9177d36e08ecbc0e1da58c489b53033c7f5b248ae956d0f9e1a8d9d32933c1c2",
+          "sampleCount": 8640,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.49<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.18,
+              "momentaryMaxLufs": -32.49423452307397,
+              "shortTermMaxLufs": -41.24484715699098,
+              "integratedLufs": -32.49423452307397,
+              "samplePeakDb": -7.087467081866194,
+              "truePeakDb": -7.084508315237054
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:cursor",
+      "sourceId": "ui.select.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-cursor.wav",
+          "sha256": "b93a99eb7002bc1fe3ff5c2cf93a925f05e243f3c36c223a74ed37b0f189c811",
+          "bytes": 26022,
+          "pcmSha256": "4da2214329f8958da422ae95a3463e3cf049e5337807a814d088fd00cc75c1b2",
+          "sampleCount": 8640,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-30.76<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.18,
+              "momentaryMaxLufs": -30.759011117029768,
+              "shortTermMaxLufs": -39.50962375094677,
+              "integratedLufs": -30.759011117029768,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.8397735232991685
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-cursor.opus",
+          "sha256": "899e849400672e0f6051cce1bfcdb08b8045966180ae1036117f9a149deab316",
+          "bytes": 4830,
+          "pcmSha256": "e9ebe257cdd34e1407edf88eb3ff3f7a56a5b975ff004b0750ac082b8d255365",
+          "sampleCount": 8640,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-30.76<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.18,
+              "momentaryMaxLufs": -30.760045727780632,
+              "shortTermMaxLufs": -39.51065836169764,
+              "integratedLufs": -30.760045727780632,
+              "samplePeakDb": -6.866666547207215,
+              "truePeakDb": -6.866666547207215
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:confirm",
+      "sourceId": "ui.confirm.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-confirm.wav",
+          "sha256": "4bdccf655106de30871a1ccaeba3c92460bae185de2f8d242e4d3e228145e394",
+          "bytes": 26022,
+          "pcmSha256": "f0730c632776374111bd7cef39ddca733b7d87ed0393a6eb008d68d2db8781e1",
+          "sampleCount": 8640,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.18,
+              "momentaryMaxLufs": -18.14339418154369,
+              "shortTermMaxLufs": -26.894006815460692,
+              "integratedLufs": -18.14339418154369,
+              "samplePeakDb": -6.839771247609563,
+              "truePeakDb": -6.838253565460195
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-confirm.opus",
+          "sha256": "187ea2d76c167a4c500dd918998a8fdedc2043a4c66154a6c77eff4ea8ec9849",
+          "bytes": 3070,
+          "pcmSha256": "be7f6b44b48f1576bd2e05fcaf8a931fff885a5c68043122825c4d441748d4a7",
+          "sampleCount": 8640,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.18,
+              "momentaryMaxLufs": -18.142135536625453,
+              "shortTermMaxLufs": -26.892748170542454,
+              "integratedLufs": -18.142135536625453,
+              "samplePeakDb": -6.8419556150674214,
+              "truePeakDb": -6.8419556150674214
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:cancel",
+      "sourceId": "ui.back.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-cancel.wav",
+          "sha256": "24fcb40715ec98cedcf64608b521efe9cb2e4a17fdc11d7f4c8786fcc779fd57",
+          "bytes": 26022,
+          "pcmSha256": "0d1c24b621d15cd59979baca8fcb9b12ed6a6d18f4832e03470f76064636ecf7",
+          "sampleCount": 8640,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-33.24<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.18,
+              "momentaryMaxLufs": -33.237950618185316,
+              "shortTermMaxLufs": -41.98856325210231,
+              "integratedLufs": -33.237950618185316,
+              "samplePeakDb": -6.839771247609563,
+              "truePeakDb": -6.786500217652546
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-cancel.opus",
+          "sha256": "00ebcd0de5b7d16bf1ffd5111fd5ec59f86e150eeea5bff8dba623a304dcf40c",
+          "bytes": 4938,
+          "pcmSha256": "dd2b1a3170159077029cf0e6eca478ffb48ee1b4dad36c3f55cd420914d1401a",
+          "sampleCount": 8640,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-33.24<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.18,
+              "momentaryMaxLufs": -33.23545889753538,
+              "shortTermMaxLufs": -41.98607153145238,
+              "integratedLufs": -33.23545889753538,
+              "samplePeakDb": -6.822399519946587,
+              "truePeakDb": -6.774281503702037
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:approach-start",
+      "sourceId": "battle.first-strike.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-approach-start.wav",
+          "sha256": "d420547fc4fbd321ed570a3d10b2793a997fb59523eb9475fc909d108a5e94cf",
+          "bytes": 79302,
+          "pcmSha256": "4e643da85dcaaa95d9a5f7e728d88239cb181e6b747c7f573455f0fa0dc408bd",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.48<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.48386271668676,
+              "shortTermMaxLufs": -41.23447535060376,
+              "integratedLufs": -32.48386271668676,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.837558112858088
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-approach-start.opus",
+          "sha256": "0d201d79095604ae7f009a6edff7f25993ade9f5a4f0a56e3c93d1c267628b8c",
+          "bytes": 12653,
+          "pcmSha256": "9892f7b48091c4cdad4d1c632cfdf54aaabc3ab0b92af3de8cc81d909cb157cc",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.49<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.4922357001064,
+              "shortTermMaxLufs": -41.242848333630796,
+              "integratedLufs": -32.4922357001064,
+              "samplePeakDb": -7.087467081866194,
+              "truePeakDb": -7.084508315237054
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:hitstop-thump",
+      "sourceId": "battle.damage.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-hitstop-thump.wav",
+          "sha256": "d420547fc4fbd321ed570a3d10b2793a997fb59523eb9475fc909d108a5e94cf",
+          "bytes": 79302,
+          "pcmSha256": "4e643da85dcaaa95d9a5f7e728d88239cb181e6b747c7f573455f0fa0dc408bd",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.48<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.48386271668676,
+              "shortTermMaxLufs": -41.23447535060376,
+              "integratedLufs": -32.48386271668676,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.837558112858088
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-hitstop-thump.opus",
+          "sha256": "550c11a2a2cc92256f190718a1507549408c135b8c5fa024b496bf0ee7592e4d",
+          "bytes": 12653,
+          "pcmSha256": "9892f7b48091c4cdad4d1c632cfdf54aaabc3ab0b92af3de8cc81d909cb157cc",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.49<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.4922357001064,
+              "shortTermMaxLufs": -41.242848333630796,
+              "integratedLufs": -32.4922357001064,
+              "samplePeakDb": -7.087467081866194,
+              "truePeakDb": -7.084508315237054
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:flash-sting",
+      "sourceId": "battle.critical.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-flash-sting.wav",
+          "sha256": "d420547fc4fbd321ed570a3d10b2793a997fb59523eb9475fc909d108a5e94cf",
+          "bytes": 79302,
+          "pcmSha256": "4e643da85dcaaa95d9a5f7e728d88239cb181e6b747c7f573455f0fa0dc408bd",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.48<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.48386271668676,
+              "shortTermMaxLufs": -41.23447535060376,
+              "integratedLufs": -32.48386271668676,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.837558112858088
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-flash-sting.opus",
+          "sha256": "1d5905bb9b341e774b5367e79439bb4106edbb2b40f4438ed27f91258c8a09db",
+          "bytes": 12653,
+          "pcmSha256": "9892f7b48091c4cdad4d1c632cfdf54aaabc3ab0b92af3de8cc81d909cb157cc",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.49<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.4922357001064,
+              "shortTermMaxLufs": -41.242848333630796,
+              "integratedLufs": -32.4922357001064,
+              "samplePeakDb": -7.087467081866194,
+              "truePeakDb": -7.084508315237054
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:shake-rumble",
+      "sourceId": "battle.guardian-entrance.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-shake-rumble.wav",
+          "sha256": "d420547fc4fbd321ed570a3d10b2793a997fb59523eb9475fc909d108a5e94cf",
+          "bytes": 79302,
+          "pcmSha256": "4e643da85dcaaa95d9a5f7e728d88239cb181e6b747c7f573455f0fa0dc408bd",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.48<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.48386271668676,
+              "shortTermMaxLufs": -41.23447535060376,
+              "integratedLufs": -32.48386271668676,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.837558112858088
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-shake-rumble.opus",
+          "sha256": "bd30d1a5165a0c50ebbb94c73878e98099841df21fb6226de2eaa76fa23d7e3f",
+          "bytes": 12653,
+          "pcmSha256": "9892f7b48091c4cdad4d1c632cfdf54aaabc3ab0b92af3de8cc81d909cb157cc",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.49<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.4922357001064,
+              "shortTermMaxLufs": -41.242848333630796,
+              "integratedLufs": -32.4922357001064,
+              "samplePeakDb": -7.087467081866194,
+              "truePeakDb": -7.084508315237054
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:damage-tick",
+      "sourceId": "ui.tick.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-damage-tick.wav",
+          "sha256": "78e87ddd40364b8aeafb5bd26613f8e3e5717f92d4d2144874ca9646416821e5",
+          "bytes": 26022,
+          "pcmSha256": "0f620ff45a263fbc73b03a761b2317780ce798e26402b10bb94219271143cdf3",
+          "sampleCount": 8640,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.18,
+              "momentaryMaxLufs": -26.342621804062983,
+              "shortTermMaxLufs": -35.09323443797999,
+              "integratedLufs": -26.342621804062983,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.652266627841747
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-damage-tick.opus",
+          "sha256": "42e83fe6927c66e4bf6f547360790cac1a2c1bfbf545e683c95a43d3d42351f3",
+          "bytes": 4774,
+          "pcmSha256": "fe06a8cafea8627bbbd24c9bf65583b57d583aaf137e7f9709cb3b7179afac28",
+          "sampleCount": 8640,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.18,
+              "momentaryMaxLufs": -26.203028412711788,
+              "shortTermMaxLufs": -34.95364104662879,
+              "integratedLufs": -26.203028412711788,
+              "samplePeakDb": -6.445213819174188,
+              "truePeakDb": -6.256562650085607
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:miss-whiff",
+      "sourceId": "battle.dodge.2",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-miss-whiff.wav",
+          "sha256": "aa6b54e5819ecc77ad771be737027ace06d1f9cfce58e8d680bc3a34e0c7006d",
+          "bytes": 79302,
+          "pcmSha256": "325ed831b9e70319279420253f5b7fb4802b8012734f2329e37a2e33a9f1a366",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.82<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.82228034188582,
+              "shortTermMaxLufs": -41.57289297580282,
+              "integratedLufs": -32.82228034188582,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.830709221602735
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-miss-whiff.opus",
+          "sha256": "ddbf912e7ae7eda87d06bb974652c806a4c26360c1c4825bedecc78d41748146",
+          "bytes": 12916,
+          "pcmSha256": "3888aeb625cf05f821e86fc86bd4cda4250128196bd8402c312e501756fc250b",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.77<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.767397070187855,
+              "shortTermMaxLufs": -41.51800970379747,
+              "integratedLufs": -32.767397070187855,
+              "samplePeakDb": -6.939860468458702,
+              "truePeakDb": -6.930528478572924
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:dodge-swish",
+      "sourceId": "battle.dodge.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-dodge-swish.wav",
+          "sha256": "d420547fc4fbd321ed570a3d10b2793a997fb59523eb9475fc909d108a5e94cf",
+          "bytes": 79302,
+          "pcmSha256": "4e643da85dcaaa95d9a5f7e728d88239cb181e6b747c7f573455f0fa0dc408bd",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.48<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.48386271668676,
+              "shortTermMaxLufs": -41.23447535060376,
+              "integratedLufs": -32.48386271668676,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.837558112858088
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-dodge-swish.opus",
+          "sha256": "a62eb9dd1578ffb54c30d60e40470cd09a95c779c01fbc65822ab8a42a272f75",
+          "bytes": 12653,
+          "pcmSha256": "9892f7b48091c4cdad4d1c632cfdf54aaabc3ab0b92af3de8cc81d909cb157cc",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.49<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -32.4922357001064,
+              "shortTermMaxLufs": -41.242848333630796,
+              "integratedLufs": -32.4922357001064,
+              "samplePeakDb": -7.087467081866194,
+              "truePeakDb": -7.084508315237054
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:faint-fall",
+      "sourceId": "battle.guardian-defeat.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-faint-fall.wav",
+          "sha256": "a59129a979d693c97124d664e5e7a4bbf8c5395c75dfcf1238f8d7dcbbce4929",
+          "bytes": 79302,
+          "pcmSha256": "1a28148c7bb6ac92a54369848fb39f98302feb98eb850c53e2be033eb221b5c0",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -25.778316189497193,
+              "shortTermMaxLufs": -34.5289288234142,
+              "integratedLufs": -25.778316189497193,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.8397735232991685
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-faint-fall.opus",
+          "sha256": "62998640e48a02673980cd23c0e3f36bfbbab61eefc32e01dd436e3d918c731e",
+          "bytes": 13297,
+          "pcmSha256": "8030cef15bbc98cd4ae5f182ce7a6e22360f1715107cee958c5e111db6610cd0",
+          "sampleCount": 26400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.55,
+              "momentaryMaxLufs": -25.756573569887628,
+              "shortTermMaxLufs": -34.507186203803556,
+              "integratedLufs": -25.756573569887628,
+              "samplePeakDb": -6.883232819943829,
+              "truePeakDb": -6.883232819943829
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:victory-sting",
+      "sourceId": "battle.guardian-victory.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-victory-sting.wav",
+          "sha256": "623f81e915b1f8d0c62959aff5f17cd39b1dfa7a05bda99913da2a2acb419eed",
+          "bytes": 115302,
+          "pcmSha256": "9d54162f6250ef8e7f04590aaa31c00160f4b8b9494d3a432fda288828c298d7",
+          "sampleCount": 38400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.8,
+              "momentaryMaxLufs": -17.335720300601263,
+              "shortTermMaxLufs": -26.086332934518264,
+              "integratedLufs": -19.115618033069115,
+              "samplePeakDb": -6.839771247609563,
+              "truePeakDb": -6.838253565460195
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-victory-sting.opus",
+          "sha256": "77c1e78ec83258e35a746600448ca37ca583bae60a94219883e01278891902db",
+          "bytes": 15570,
+          "pcmSha256": "9142a777b3967321ba382307b2605928170cc1ea6eb7d0b72fb85c475e5cd73b",
+          "sampleCount": 38400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.8,
+              "momentaryMaxLufs": -17.331198082206505,
+              "shortTermMaxLufs": -26.081810716097817,
+              "integratedLufs": -19.11002269786769,
+              "samplePeakDb": -6.8419556150674214,
+              "truePeakDb": -6.8419556150674214
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:defeat-sting",
+      "sourceId": "battle.guardian-defeat.2",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-defeat-sting.wav",
+          "sha256": "6267b72334f881b83b650438379048396994edfeeef63cdeca3e85efb46609f5",
+          "bytes": 115302,
+          "pcmSha256": "fbf92ad00198c2c84cf08ffa83389802a9316fb0d29f212225434d9f62a6da53",
+          "sampleCount": 38400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.8,
+              "momentaryMaxLufs": -25.177204347695795,
+              "shortTermMaxLufs": -33.92781694520127,
+              "integratedLufs": -27.13980065194083,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.8397735232991685
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-defeat-sting.opus",
+          "sha256": "05611d3d3dfc74253a784c4579b8b9077ca7d569d0b1d22a5a58031a3f635228",
+          "bytes": 14202,
+          "pcmSha256": "3ff110003e9662371ae7366e592c2140d88837f17484fcf7d97a7d5a64e8d3c6",
+          "sampleCount": 38400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.8,
+              "momentaryMaxLufs": -25.159394075746842,
+              "shortTermMaxLufs": -33.910006674233735,
+              "integratedLufs": -27.11463984331739,
+              "samplePeakDb": -7.31310497471136,
+              "truePeakDb": -7.31310497471136
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:battle-start",
+      "sourceId": "battle.guardian-entrance.2",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-battle-start.wav",
+          "sha256": "e785b40fdb8d68c1281c2feb34cfb0e570738366d87865f0bd1fae9bcc41fa4d",
+          "bytes": 115302,
+          "pcmSha256": "b569786eab2332cb0a0f562568230cf369296e005df9d233af89682e7304824d",
+          "sampleCount": 38400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.82<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.8,
+              "momentaryMaxLufs": -32.82228034188582,
+              "shortTermMaxLufs": -41.57289297580282,
+              "integratedLufs": -32.82228034188582,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.830709221602735
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-battle-start.opus",
+          "sha256": "d65b259c91d56e07727102abbe719bc7dc07a2260a29075b8c6893dfe9b60cbf",
+          "bytes": 17439,
+          "pcmSha256": "0f37a1bd225f7cfe90ac232f41aa0ee1dd06d342bebe21bda97a5621bccc748a",
+          "sampleCount": 38400,
+          "admission": {
+            "ok": false,
+            "reason": "too-quiet:-32.77<-30",
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.8,
+              "momentaryMaxLufs": -32.767397070187855,
+              "shortTermMaxLufs": -41.518009703797055,
+              "integratedLufs": -32.767397070187855,
+              "samplePeakDb": -6.939860468458702,
+              "truePeakDb": -6.930528478572924
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "battle:battle-end",
+      "sourceId": "ui.close.1",
+      "sourceKind": "designed_sound_or_music",
+      "license": "CC0-1.0",
+      "phase": "battle",
+      "masters": {
+        "wav": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/wav/battle-battle-end.wav",
+          "sha256": "46282b27c176ceb97f0ff94dd001707e0963515736ed32651b4bd32471648b39",
+          "bytes": 115302,
+          "pcmSha256": "719bbdbdcfe8148b2f82c2a597330147d81eadc4ae7db65d6075e316295f62dd",
+          "sampleCount": 38400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.8,
+              "momentaryMaxLufs": -16.577849658542302,
+              "shortTermMaxLufs": -25.328462292459307,
+              "integratedLufs": -19.453816409485093,
+              "samplePeakDb": -6.8397735232991685,
+              "truePeakDb": -6.315135749361823
+            }
+          }
+        },
+        "opus": {
+          "path": "audits/C132_SOUND_20261001/candidate-02/opus/battle-battle-end.opus",
+          "sha256": "d21aa822d34c63f5c9e927b4018cf09c2aa0cec51a96070cf39aaada0cbfbc43",
+          "bytes": 14091,
+          "pcmSha256": "4b9d07794421e58cba71cf7de0005bb7fd0d7869061378338b070555f82316e1",
+          "sampleCount": 38400,
+          "admission": {
+            "ok": true,
+            "measurement": {
+              "schema": "cf.loudness/v1",
+              "sampleRate": 48000,
+              "durationSeconds": 0.8,
+              "momentaryMaxLufs": -16.741663723589056,
+              "shortTermMaxLufs": -25.492276357481668,
+              "integratedLufs": -19.593292894750153,
+              "samplePeakDb": -6.894955849544652,
+              "truePeakDb": -6.243539708686226
+            }
+          }
+        }
+      },
+      "listeningAccepted": false,
+      "runtimeAdmitted": false
+    }
+  ]
+}

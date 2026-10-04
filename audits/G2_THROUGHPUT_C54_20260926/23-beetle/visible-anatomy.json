@@ -1,0 +1,124 @@
+{
+  "id": "23-beetle",
+  "name": "Beetle",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "5e5b080811a78c09fdcb0c76d02f96a26980d1f4d1a75000cca5b40bb73728dd",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 36170,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 18,
+      "y0": 97,
+      "x1": 411,
+      "y1": 314
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1995,
+        "pixels": 7217,
+        "box": {
+          "x0": 248,
+          "y0": 106,
+          "x1": 387,
+          "y1": 317
+        },
+        "attach": {
+          "x": 301.9,
+          "y": 196,
+          "relX": 0.72,
+          "relY": 0.46
+        },
+        "dir": {
+          "x": 0.46,
+          "y": 0.89
+        },
+        "class": "limb-down",
+        "length": 147.9
+      },
+      {
+        "k": 1,
+        "frac": 0.0713,
+        "pixels": 2579,
+        "box": {
+          "x0": 32,
+          "y0": 179,
+          "x1": 158,
+          "y1": 301
+        },
+        "attach": {
+          "x": 83.5,
+          "y": 233.3,
+          "relX": 0.17,
+          "relY": 0.63
+        },
+        "dir": {
+          "x": 0.05,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 100.7
+      },
+      {
+        "k": 2,
+        "frac": 0.0347,
+        "pixels": 1256,
+        "box": {
+          "x0": 164,
+          "y0": 237,
+          "x1": 229,
+          "y1": 322
+        },
+        "attach": {
+          "x": 216.9,
+          "y": 237,
+          "relX": 0.51,
+          "relY": 0.65
+        },
+        "dir": {
+          "x": -0.38,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 100.1
+      }
+    ],
+    "byClass": {
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 24,
+        "x1": 29,
+        "cx": 26.1
+      },
+      {
+        "x0": 164,
+        "x1": 178,
+        "cx": 169.9
+      },
+      {
+        "x0": 380,
+        "x1": 388,
+        "cx": 384.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

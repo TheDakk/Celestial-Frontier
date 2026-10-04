@@ -1,0 +1,10 @@
+{
+ "id": "14-screamer",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part beak (beak) covers 6% paint (reference 52%)",
+  "unexplained-anatomy: 6.7% of the paint lies away from the body and in no part (reference 2.3%)"
+ ],
+ "semanticPresence": null
+}

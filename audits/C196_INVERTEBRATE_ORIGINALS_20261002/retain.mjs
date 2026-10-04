@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import {createHash} from 'node:crypto';
+const [id,source] = process.argv.slice(2);
+const rows = JSON.parse(fs.readFileSync(new URL('pilot.json',import.meta.url)));
+const row = rows.find(r=>r.id===id);
+if (!row) throw Error('Unknown queued original');
+const bytes=fs.readFileSync(source), request=JSON.parse(fs.readFileSync(row.packet+'/request.json'));
+const sha=b=>createHash('sha256').update(b).digest('hex');
+if(sha(fs.readFileSync(row.packet+'/prompt.txt'))!==request.promptSha256)throw Error('Prompt changed');
+const actual = path.resolve(source), home = os.homedir();
+const sourcePath = actual.startsWith(home+'/') ? '~/'+actual.slice(home.length+1) : path.relative(process.cwd(),actual);
+fs.writeFileSync(row.master,bytes,{flag:'wx'});
+fs.writeFileSync(row.packet+'/generation.json',JSON.stringify({id,name:row.name,sourcePath,tool:'image_gen.imagegen',transparentBackground:false,masterSha256:sha(bytes),bytes:bytes.length,promptSha256:request.promptSha256,styleReferenceSha256:request.referenceSha256,outputModified:false,handAuthoring:false,sourceOriginalRetained:true},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({id,master:row.master,sha256:sha(bytes),bytes:bytes.length}));

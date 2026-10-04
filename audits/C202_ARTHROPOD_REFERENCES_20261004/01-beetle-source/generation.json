@@ -1,0 +1,19 @@
+{
+  "id": "01-beetle-source",
+  "name": "Beetle",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-d8757c6c-3b57-4067-b1db-e1b2dd89604c.png",
+  "masterSha256": "2fc73953a7a8601bb57490131f341a8f9c7153e2fe7c9f54dcf99de3388deefc",
+  "bytes": 1462196,
+  "promptSha256": "ec7b34abf1455f34fd10ec937a4242a6081081a4c641b1c240e19fd0028753f9",
+  "actualImageInputs": [
+    {
+      "role": "style reference",
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "transparentBackground": false
+}

@@ -1,0 +1,38 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "05-gulper-eel",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "f8a46be6a7e7a7b5cc4b776d5f361c5c4e896fe165e68e3f9ad424a104d3241e",
+ "subjectSourceSha256": "0f4e17722398c77494a06346f30d417f9202d9a8023b80c6e6000f8945a732fd",
+ "identity": {
+  "name": "Gulper Eel",
+  "family": "serpent",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Gulper Eel\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3534998795\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "seed": 3534998795,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "racer",
+  "authoringSha256": "deb82b0a38d91def5297a4d2091c1ffb4a4c44bda9c81c0aad7b7935b1b690ba",
+  "masterSha256": "650d3a5d2fe3fe0b5fc986448a3a7818f89975642af68b51d27dac1366bc958e"
+ },
+ "habitat": {
+  "profileId": "eel",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d108e81464489f0db6b6053fe0baa8f671cff71d21fe2f84c97f03ee71d0ed0c",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group eel (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

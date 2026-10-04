@@ -1,0 +1,153 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
+ "tag": "g2c275",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "02-capybara",
+  "08-grizzly-bear",
+  "11-toucan",
+  "13-falcon",
+  "14-duck",
+  "16-stork",
+  "17-arapaima-framing02",
+  "20-angelfish",
+  "21-tuna",
+  "23-swordfish-framing02"
+ ],
+ "refused": [
+  {
+   "id": "03-pronghorn",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+  },
+  {
+   "id": "04-springbok",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "05-duiker",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+  },
+  {
+   "id": "06-serow",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 38%)"
+  },
+  {
+   "id": "07-brown-bear",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  },
+  {
+   "id": "09-kingfisher",
+   "reason": "unexplained-anatomy: 10.9% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "10-macaw",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 28% paint (reference 84%)"
+  },
+  {
+   "id": "12-pheasant",
+   "reason": "missing-anatomy: part near-thigh (legNearKnee) covers 27% paint (reference 84%)"
+  },
+  {
+   "id": "15-egret",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 25% paint (reference 72%)"
+  },
+  {
+   "id": "18-arowana-framing02",
+   "reason": "unexplained-anatomy: 8.8% of the paint lies away from the body and in no part (reference 4.0%)"
+  },
+  {
+   "id": "19-blenny",
+   "reason": "extra-anatomy (unassigned): a front appendage of 9.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "22-marlin-framing02",
+   "reason": "missing-anatomy: part head (head) covers 14% paint (reference 48%)"
+  },
+  {
+   "id": "24-fangtooth",
+   "reason": "extra-anatomy (unassigned): a front appendage of 7.6% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "01-okapi",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "02-capybara",
+   "name": "Capybara",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-grizzly-bear",
+   "name": "Grizzly Bear",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "11-toucan",
+   "name": "Toucan",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-falcon",
+   "name": "Falcon",
+   "family": "biped-bird",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "14-duck",
+   "name": "Duck",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "16-stork",
+   "name": "Stork",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "17-arapaima-framing02",
+   "name": "Arapaima",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "20-angelfish",
+   "name": "Angelfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "21-tuna",
+   "name": "Tuna",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "23-swordfish-framing02",
+   "name": "Swordfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

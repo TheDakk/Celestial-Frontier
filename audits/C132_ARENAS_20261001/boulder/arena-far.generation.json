@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-generation-original/v1",
+  "generator": "built-in image_gen",
+  "inputReference": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-34ba1387-0883-477e-9bde-5185cf03170c.png",
+  "sourceSha256": "8b0056f03afa7b553c35591fc4d5bf0235e07552a26b6d75e3ab06af3bc609eb",
+  "retainedMaster": "audits/C132_ARENAS_20261001/boulder/arena-far.png",
+  "retainedSha256": "8b0056f03afa7b553c35591fc4d5bf0235e07552a26b6d75e3ab06af3bc609eb",
+  "bytes": 2934236,
+  "prompt": {
+    "path": "audits/C132_ARENAS_20261001/boulder/arena-far.prompt.txt",
+    "sha256": "9eb716b25699def447704162bec67524ec2e9e79f1501106833ef0a2da95d70b"
+  },
+  "status": "VISUAL_HOLD_CANVAS_AND_UNBOUND_MOONS",
+  "qualityAccepted": false,
+  "originalPixelsModified": false
+}

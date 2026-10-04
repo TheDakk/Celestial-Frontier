@@ -1,0 +1,90 @@
+{
+  "name": "Water Beetle",
+  "family": "insect",
+  "species": {
+    "name": "Water Beetle",
+    "aspect": 1.6,
+    "headFrac": 0.15,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "smooth oval domed wing cases",
+      "flattened hair-fringed hind legs used as oars",
+      "short clubbed antennae on a tucked head"
+    ]
+  },
+  "genome": {
+    "seed": 4206572592,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 1,
+    "body": 2,
+    "loco": 11,
+    "trait": 5,
+    "size": 1,
+    "diet": 1,
+    "head": 3,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 2,
+    "behavior": 5,
+    "habitat": 15,
+    "detail": 5,
+    "accent": 12,
+    "temper": 2,
+    "sense": 1,
+    "repro": 3,
+    "life": 3,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Water Beetle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Water Beetle\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"4206572592\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"5\"]]]]",
+  "index": 343,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

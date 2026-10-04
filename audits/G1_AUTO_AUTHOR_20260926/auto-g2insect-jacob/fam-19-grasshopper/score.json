@@ -1,0 +1,10 @@
+{
+ "id": "fam-19-grasshopper",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 30% paint (reference 88%)",
+  "missing-anatomy: part mandible (mandible) covers 5% paint (reference 32%)"
+ ],
+ "semanticPresence": null
+}

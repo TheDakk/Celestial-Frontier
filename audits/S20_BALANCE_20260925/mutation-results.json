@@ -1,0 +1,25 @@
+[
+  {
+    "name": "mutant-flat-stances",
+    "original": "bcf17efefebb44715f4504666ee2130f5b413a056cc6f013525ee1a57b7491c2",
+    "mutant": "522033eb8ab7c60ae99a7b1f5409fd9413e120fd34333a649b7138d21954677b",
+    "killed": true,
+    "validChanged": 96,
+    "mutantChanged": 0
+  },
+  {
+    "name": "mutant-no-phase",
+    "original": "bcf17efefebb44715f4504666ee2130f5b413a056cc6f013525ee1a57b7491c2",
+    "mutant": "e17d68191485953558107cc21b312898c34fc482ed3eab19127679222960014c",
+    "killed": true,
+    "validPhaseNodes": 2,
+    "mutantPhaseNodes": 0
+  },
+  {
+    "name": "mutant-withdraw-scored-as-win",
+    "killed": true,
+    "actualOutcome": "withdrawn",
+    "correctCredit": 0,
+    "mutantCredit": 1
+  }
+]

@@ -1,0 +1,68 @@
+{
+  "name": "Snapping Turtle",
+  "family": "quadruped",
+  "species": {
+    "name": "Snapping Turtle",
+    "aspect": 2,
+    "headFrac": 0.28,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "massive hooked beak on an oversized head",
+      "long saw-toothed crested tail",
+      "rough ridged shell too small to withdraw into"
+    ]
+  },
+  "genome": {
+    "seed": 3795667977,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 4,
+    "body": 10,
+    "loco": 7,
+    "trait": 1,
+    "size": 3,
+    "diet": 3,
+    "head": 6,
+    "limbs": 3,
+    "skin": 6,
+    "tail": 1,
+    "pattern": 3,
+    "eyes": 3,
+    "behavior": 4,
+    "habitat": 0,
+    "detail": 6,
+    "accent": 9,
+    "temper": 9,
+    "sense": 0,
+    "repro": 2,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Snapping Turtle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Snapping Turtle\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"3795667977\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "index": 185,
+  "profile": {
+    "id": "freshwater-turtle",
+    "names": [
+      "Pond Turtle",
+      "Snapping Turtle",
+      "Softshell Turtle",
+      "Turtle"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": ""
+  }
+}

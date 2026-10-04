@@ -1,0 +1,14 @@
+{
+  "id": "21-fruit-bat",
+  "name": "Fruit Bat",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-f708cfd8-c810-4bf5-bc87-a5e7cefbc85f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3b8118dbdacac31b663e30f4b7a50503b4fcd9ee2cdb7c43901c52d747bbbe83",
+  "bytes": 1312503,
+  "promptSha256": "499794379acb97f64b90fc08c1d83e4f188ddd5ad4a8e03965e0644127e755ea",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

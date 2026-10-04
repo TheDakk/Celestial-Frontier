@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Crab",
+  "masterSha256": "73e7cef15eb6d7de50c20054ee5a68b31621c0f3f3712b18e99e538f92ad80cc",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

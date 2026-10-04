@@ -1,0 +1,28 @@
+{
+  "name": "Hippopotamus",
+  "masterSha256": "d55a35d455b0cb350e28089b8a2441196db769d627cc711470f1d3bdee391d3b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four complete short feet with separate visible toe groups, small ears and short attached tail. Far foreleg emerges behind the near foreleg/shoulder, so its full upper root is not exposed. Wet skin is unusually glossy and needs style scoring; feet are almost level.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 155,
+      "y0": 396,
+      "x1": 1129,
+      "y1": 865
+    },
+    "margins": {
+      "left": 155,
+      "right": 124,
+      "top": 396,
+      "bottom": 388
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "22-wild-sheep",
+  "name": "Wild Sheep",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-548bf962-1e7c-4393-b1d8-aec6ce41e6cb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "90d82157cb6fe67966858e6f40fae553ba404d826301251196cb407f74fb7de8",
+  "bytes": 1292487,
+  "promptSha256": "373598220994a2006c19f50e90dcc1d3dc343ac87dca97fdc98a7bf76c2716f0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

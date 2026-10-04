@@ -1,0 +1,14 @@
+{
+  "id": "06-mountain-lizard",
+  "name": "Mountain Lizard",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-aae5e31c-0a66-467c-96dc-eb94da789e16.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a39bd2ebd76bb4bf243e1c82e14ade06fc93745df8bc827403b8ffc2093c56c1",
+  "bytes": 1050763,
+  "promptSha256": "787f7582558af5bf164afa9a2043881237e5f2b3cb448869fef6e7b4e25e99f6",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS_REPRODUCTION_NOT_REPAIR",
+  "receipts": [
+    {
+      "file": "original-native-report.json",
+      "sha256": "1a213336cedf8c884e1a6476bdcdb4d75668d87cf3256f6a8f6ab564891d3fec"
+    },
+    {
+      "file": "exact-pose-owner-corrected.json",
+      "sha256": "bf7491b7ae9e35bd74fac79abb4b1e1b8b9822a6bca6e435056281c382807fbe"
+    },
+    {
+      "file": "original-fit/binding.json",
+      "sha256": "862b02df4e39e6a6f97a3b6ca31f9a17364ae54bf28d82c34eb8917ab1be73a3"
+    }
+  ]
+}

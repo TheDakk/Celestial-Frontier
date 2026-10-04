@@ -1,0 +1,62 @@
+{
+  "schema": "cf.c202-semantic-packing-delivery/v1",
+  "status": "FOCUSED_CONTROLS_PASS_REAL_CUTTLEFISH_HELD",
+  "productFiles": [
+    {
+      "path": "port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "sha256": "9e68eacfae52fe116d4c52a649e00e77e77caa52c2d452363c894e4bc3c2242d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/semantic-part-packing.test.mjs",
+      "sha256": "3e163b090da5e8172d8023fbac26a10a884174791a64f8ad2dc66c0aca0e452a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-paint-skin.mjs",
+      "sha256": "4759217539b4d3d8a4ab2acfbd1084b7b1d3dff8fe8a77194e1a7dcfc1d38750"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "sha256": "c88f2c0f08e89fbca0267c8e94da296b0e556fa5eddadeec3fdc6d130911248d"
+    },
+    {
+      "path": "CREATURE_ANIMATION.md",
+      "sha256": "51fa57a598a7dec71bcf9198b9397bb22f4b0bdb22ef4164e2dce3e9cf98db7f"
+    }
+  ],
+  "controls": {
+    "receipt": {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/packing-tests-02.json",
+      "sha256": "e5f87e768e3adb6cae40490830bae5790b7a06d36dce6d56daa02da882a4b6f5"
+    },
+    "log": {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/packing-tests-02.log",
+      "sha256": "d4e7ae045d3345c101fa1dff86a3e95bdc35067f57b0e49486f4e83348e1f017"
+    },
+    "passed": 13,
+    "failed": 0,
+    "nodeVersion": "v26.10.0",
+    "command": "node --test port/v2/tools/creature-animation/semantic-part-packing.test.mjs port/v2/tools/creature-animation/build-paint-skin.test.mjs"
+  },
+  "scope": [
+    "Explicit opt-in source-semantic ownership separate from at-most32 render groups",
+    "Source-connected same-depth adjacent ancestor-chain groups only; all source owners exactly once and ordered",
+    "Exact full keyed RGBA, alpha, semantic labels and inventory bound before compilation",
+    "Original38-region field vertices/triangles/weights match independent fixture before finishing; each original joint moves painted geometry",
+    "Existing default compile output bytes unchanged; legacy destructive splitter refuses semantic field metadata",
+    "Field finishing preserves all semantic joint influences at unchanged4passes/4sweeps/0.35target"
+  ],
+  "unchangedLimits": {
+    "renderParts": 32,
+    "joints": 64,
+    "contactPx": 0.25,
+    "fold": "unchanged",
+    "strain": "unchanged"
+  },
+  "limitations": [
+    "Synthetic per-joint control proves retained geometric influence, not whole-stage action quality.",
+    "Actual Cuttlefish pixels reconstruct exactly but static folds and visual angular joins remain.",
+    "No packed Cuttlefish native qualification, runtime registration, gallery acceptance or blanket cephalopod reference qualification.",
+    "No full I5/develop was run by this agent; parent owns combined authorization and gate."
+  ],
+  "cpuTerminal": true
+}

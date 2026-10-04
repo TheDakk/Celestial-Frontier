@@ -1,0 +1,17 @@
+{
+ "01-earthworm-direct": "FAIL",
+ "02-sponge-direct": "FAIL",
+ "03-spider-palp": "DIAGNOSTIC_PASS",
+ "04-banana-slug-visible-mouth": "FAIL",
+ "06-crab-source-joins": "DIAGNOSTIC_PASS",
+ "07-brittle-star-part-ids": "DIAGNOSTIC_PASS",
+ "01-zebra-fallback-ears": "DIAGNOSTIC_PASS",
+ "02-kudu": "DIAGNOSTIC_PASS",
+ "05-gazelle": "DIAGNOSTIC_PASS",
+ "07-oryx-tail-ears": "DIAGNOSTIC_PASS",
+ "08-gaur-observed-ears": "DIAGNOSTIC_PASS",
+ "09-deer-observed-ears": "DIAGNOSTIC_PASS",
+ "10-antelope-tail": "DIAGNOSTIC_PASS",
+ "15-sheep-observed-ears": "DIAGNOSTIC_PASS",
+ "bittern-fit02": "DIAGNOSTIC_PASS"
+}

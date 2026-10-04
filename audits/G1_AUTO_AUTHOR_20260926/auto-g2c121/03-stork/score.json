@@ -1,0 +1,30 @@
+{
+ "id": "03-stork",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Part masks: empty authored part: far-thigh\n    at requireValue (file://~/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at file://",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "ADMIT",
+   "static": "RED",
+   "reasons": []
+  },
+  {
+   "rank": 2,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part far-thigh (legFarKnee) covers 11% paint (reference 80%)"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,167 @@
+{
+  "id": "23-springtail",
+  "name": "Springtail",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "f031a378f111103e3753b2993b69217c8ac9457d059b90dc6014d27699833ffd",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 19255,
+    "coreRadius": 25,
+    "bodyBox": {
+      "x0": 78,
+      "y0": 148,
+      "x1": 220,
+      "y1": 232
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.3211,
+        "pixels": 6183,
+        "box": {
+          "x0": 216,
+          "y0": 134,
+          "x1": 394,
+          "y1": 291
+        },
+        "attach": {
+          "x": 220.8,
+          "y": 197.8,
+          "relX": 1.01,
+          "relY": 0.59
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.1
+        },
+        "class": "front",
+        "length": 196.7
+      },
+      {
+        "k": 1,
+        "frac": 0.0082,
+        "pixels": 157,
+        "box": {
+          "x0": 126,
+          "y0": 142,
+          "x1": 175,
+          "y1": 147
+        },
+        "attach": {
+          "x": 150.5,
+          "y": 147,
+          "relX": 0.51,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.49,
+          "y": -0.87
+        },
+        "class": "top",
+        "length": 25
+      },
+      {
+        "k": 2,
+        "frac": 0.0445,
+        "pixels": 857,
+        "box": {
+          "x0": 66,
+          "y0": 182,
+          "x1": 117,
+          "y1": 264
+        },
+        "attach": {
+          "x": 86.1,
+          "y": 217.4,
+          "relX": 0.06,
+          "relY": 0.83
+        },
+        "dir": {
+          "x": -0.51,
+          "y": 0.86
+        },
+        "class": "limb-down",
+        "length": 55.9
+      },
+      {
+        "k": 3,
+        "frac": 0.0367,
+        "pixels": 706,
+        "box": {
+          "x0": 161,
+          "y0": 231,
+          "x1": 207,
+          "y1": 289
+        },
+        "attach": {
+          "x": 192.5,
+          "y": 231,
+          "relX": 0.81,
+          "relY": 0.99
+        },
+        "dir": {
+          "x": -0.39,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 66
+      },
+      {
+        "k": 4,
+        "frac": 0.0223,
+        "pixels": 430,
+        "box": {
+          "x0": 112,
+          "y0": 233,
+          "x1": 158,
+          "y1": 282
+        },
+        "attach": {
+          "x": 145,
+          "y": 233,
+          "relX": 0.47,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.59,
+          "y": 0.81
+        },
+        "class": "limb-down",
+        "length": 59.1
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 161,
+        "x1": 169,
+        "cx": 165
+      },
+      {
+        "x0": 238,
+        "x1": 247,
+        "cx": 243
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

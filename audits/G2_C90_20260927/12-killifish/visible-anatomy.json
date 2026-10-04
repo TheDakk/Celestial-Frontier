@@ -1,0 +1,191 @@
+{
+  "id": "12-killifish",
+  "name": "Killifish",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "008a5a10678f9c8b1e63dca44695e5b42dea804149c6dcb2878b9f3a205c8aab",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 13553,
+    "coreRadius": 16,
+    "bodyBox": {
+      "x0": 169,
+      "y0": 174,
+      "x1": 319,
+      "y1": 225
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0488,
+        "pixels": 662,
+        "box": {
+          "x0": 153,
+          "y0": 159,
+          "x1": 196,
+          "y1": 184
+        },
+        "attach": {
+          "x": 179,
+          "y": 177,
+          "relX": 0.07,
+          "relY": 0.06
+        },
+        "dir": {
+          "x": -0.83,
+          "y": -0.55
+        },
+        "class": "top",
+        "length": 31.6
+      },
+      {
+        "k": 1,
+        "frac": 0.2772,
+        "pixels": 3757,
+        "box": {
+          "x0": 79,
+          "y0": 175,
+          "x1": 168,
+          "y1": 236
+        },
+        "attach": {
+          "x": 168,
+          "y": 201,
+          "relX": -0.01,
+          "relY": 0.53
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.07
+        },
+        "class": "rear",
+        "length": 95.6
+      },
+      {
+        "k": 2,
+        "frac": 0.0342,
+        "pixels": 464,
+        "box": {
+          "x0": 320,
+          "y0": 177,
+          "x1": 341,
+          "y1": 208
+        },
+        "attach": {
+          "x": 320,
+          "y": 192.5,
+          "relX": 1.01,
+          "relY": 0.36
+        },
+        "dir": {
+          "x": 0.97,
+          "y": -0.25
+        },
+        "class": "front",
+        "length": 26.1
+      },
+      {
+        "k": 3,
+        "frac": 0.0625,
+        "pixels": 847,
+        "box": {
+          "x0": 166,
+          "y0": 219,
+          "x1": 209,
+          "y1": 250
+        },
+        "attach": {
+          "x": 190.2,
+          "y": 225.3,
+          "relX": 0.14,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.57,
+          "y": 0.82
+        },
+        "class": "limb-down",
+        "length": 34.6
+      },
+      {
+        "k": 4,
+        "frac": 0.0418,
+        "pixels": 567,
+        "box": {
+          "x0": 248,
+          "y0": 223,
+          "x1": 282,
+          "y1": 246
+        },
+        "attach": {
+          "x": 267.5,
+          "y": 223,
+          "relX": 0.66,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": -0.42,
+          "y": 0.91
+        },
+        "class": "limb-down",
+        "length": 30.2
+      },
+      {
+        "k": 5,
+        "frac": 0.017,
+        "pixels": 230,
+        "box": {
+          "x0": 224,
+          "y0": 224,
+          "x1": 244,
+          "y1": 240
+        },
+        "attach": {
+          "x": 237,
+          "y": 224,
+          "relX": 0.45,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": -0.53,
+          "y": 0.85
+        },
+        "class": "limb-down",
+        "length": 20.6
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 169,
+        "x1": 193,
+        "cx": 179.7
+      },
+      {
+        "x0": 248,
+        "x1": 262,
+        "cx": 254.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Shrimp",
+  "masterSha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

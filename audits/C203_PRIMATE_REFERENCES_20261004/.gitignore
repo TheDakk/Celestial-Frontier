@@ -1,0 +1,2 @@
+# Compiled audit executables are local-only; source and execution hashes remain delivered.
+*.bundle.mjs

@@ -1,0 +1,49 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Fangtooth",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "1cacd12618123af85335b3be78d2af768ebf4e2facb5a888771111de7eab3d9d",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "fish",
+  "authoringCreated": false,
+  "sourceHead": "22a1c36ede73fd7635373912a258533da0250e05",
+  "basePromptSha256": "5b726aa92d6ca171041d5361b67d829091f2c693d8006053ea29ca2e663e8b4f",
+  "batchCompilerSha256": "a51df0731fa7c90413b71639508b9d1b27e31a1d53bbc66f55761ea4a3fc3ccc",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+    "priorSources": [
+      {
+        "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+        "id": "23-fangtooth",
+        "master": "audits/C198_CREATURE_SUPPLY_C_20261003/23-fangtooth/master.png",
+        "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/23-fangtooth"
+      },
+      {
+        "pilot": "audits/G2_C101_20260927/pilot.json",
+        "id": "08-fangtooth",
+        "master": "audits/G2_C101_20260927/08-fangtooth/master.png",
+        "packet": "audits/G2_C101_20260927/08-fangtooth"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+    "audits/G2_C101_20260927/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

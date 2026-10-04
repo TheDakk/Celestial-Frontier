@@ -1,0 +1,320 @@
+{
+  "schema": "cf.g2-source-delivery/v1",
+  "scope": "Six one-shot framing successors; source candidates with explicit holds, all original24 unchanged, no rig/native/gallery admission",
+  "originals": 6,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "framingPass": 6,
+  "framingRefused": [],
+  "masterBytes": 6063394,
+  "files": [
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/01-caiman-framing-v2/generation.json",
+      "sha256": "6e8b03f19427d96434f39f1a4a7c2d4326a886a14a63063c73af50748b071f61",
+      "bytes": 821
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/01-caiman-framing-v2/master.png",
+      "sha256": "f608f2a1c58310cc8c35038ccdd5c4430694c805ecc084298d02a8c25191c461",
+      "bytes": 1039359
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/01-caiman-framing-v2/pattern-check.json",
+      "sha256": "16438226406bc27f8af4a2c4473c3ae81d049b64e9fe854ef3587b141078aa5a",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/01-caiman-framing-v2/prompt.txt",
+      "sha256": "2a206989f961d0b63c06377dbbe6652a1b63b822bfc59e6f31be41f08a907ae2",
+      "bytes": 1509
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/01-caiman-framing-v2/request.json",
+      "sha256": "be55636de3dbd77efb59e400d3d68164590e97fcb978305fbaaa0b8bb532c54b",
+      "bytes": 1426
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/01-caiman-framing-v2/subject-source.json",
+      "sha256": "d52aab22e476a592f304a7ec6fa7bfdd25d491e2b8e02ae2dac46be3e8068494",
+      "bytes": 2282
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/01-caiman-framing-v2/visible-anatomy.json",
+      "sha256": "76ed2146a690a369717c7e6bc590dbcc27a3982f125dec0eee58fbcaa174ea38",
+      "bytes": 3699
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/01-caiman-framing-v2/visual-review.json",
+      "sha256": "bbc699dd8a22119b95ab66c0a827d1f01176c0b1738a2a734154a7ae44c6b156",
+      "bytes": 1069
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/02-crocodile-framing-v2/generation.json",
+      "sha256": "7b5e4a483de12376005cd512684d17f0c5fd4f361a77645a0ff11c65527e97ba",
+      "bytes": 830
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/02-crocodile-framing-v2/master.png",
+      "sha256": "0dae1e031d97a14fdc912797eb19846994cfa8edf4bd13208b001c9cfaef5131",
+      "bytes": 1067441
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/02-crocodile-framing-v2/pattern-check.json",
+      "sha256": "b0cdab9da30a13cacc1d1f24ff45ac2eebea4af2c19da3c8d03fb30053ba81c5",
+      "bytes": 285
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/02-crocodile-framing-v2/prompt.txt",
+      "sha256": "d63d7dbeebae6464c9489afd4ca408ee2e10fae81722f790b8836a669ac4fe5c",
+      "bytes": 1512
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/02-crocodile-framing-v2/request.json",
+      "sha256": "d5ad8340d7cdc1e7eb862c0e7217083e5adfb24d805ac04b01e959ee8b7dd2ea",
+      "bytes": 1438
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/02-crocodile-framing-v2/subject-source.json",
+      "sha256": "63843429a938b2d8e5c207c09a0347d7ee615036be26b0d48e952697b7e693c3",
+      "bytes": 2279
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/02-crocodile-framing-v2/visible-anatomy.json",
+      "sha256": "8395b2629b7d8ead8673b87ae8a0b4a083b463556fbf3f5ffe64a40761e23d2a",
+      "bytes": 3626
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/02-crocodile-framing-v2/visual-review.json",
+      "sha256": "09ca0001694eb65a135d4205a043944978597ed95047097e1fde43a5cd229f4b",
+      "bytes": 1000
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2/generation.json",
+      "sha256": "5b3564762dfe36ed22a810348eef68f9bd42ba17bb66fc1e0fe396de527b7b3b",
+      "bytes": 845
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2/master.png",
+      "sha256": "960470726168b75e3ea0041ffa98eb43b3117adb56585a852b7b669488022963",
+      "bytes": 1032342
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2/pattern-check.json",
+      "sha256": "3c3b56d948cd8e95345113ec47f9ebc30d0f9bf104e5663f77143981c9a859da",
+      "bytes": 290
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2/prompt.txt",
+      "sha256": "f9dceb26d4423e8b099009b3736c4a21bcb7af7158dabece289d23ff4c715d4a",
+      "bytes": 1517
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2/request.json",
+      "sha256": "45c5b8df109d3b2148c2ad0c18e3485eb5d9aa94d1ca8686f9caa5cb4164ef70",
+      "bytes": 1458
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2/subject-source.json",
+      "sha256": "de157e51d27bfef8ddda30f48c9ebf3f4315dc0262ebf633b81868cd72d07303",
+      "bytes": 2534
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2/visible-anatomy.json",
+      "sha256": "7876c4f3ae18cb4e62126590ed34800ba09250202225aaefa3f8207b2f7c51fe",
+      "bytes": 3707
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/03-monitor-lizard-framing-v2/visual-review.json",
+      "sha256": "ead6e396bf347a46f4307563d60ef4cd5bd62fc582664e5df231081b8d707a54",
+      "bytes": 1037
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2/generation.json",
+      "sha256": "e8bf8c9375c731efac52c73d5dd72c34fd4c471e2ea5f469fa41e93466cda8bb",
+      "bytes": 818
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2/master.png",
+      "sha256": "9824c6e1b1da6dc6253d6d6c4419c247ef09137834ff9a0c2379a1bca72d41e9",
+      "bytes": 1012064
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2/pattern-check.json",
+      "sha256": "68f359e84d70eb9177a0fc0684ddaa1d558f6839d4c039e8fd57c67502545389",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2/prompt.txt",
+      "sha256": "8abe47000c781dde711b0448cd2478742ea2dd4932ddb87532edb438ab6dbacb",
+      "bytes": 1508
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2/request.json",
+      "sha256": "15260d2688cc8ae83f01e533ec444a7a2488b1532ee4f2145c3e2cbc218e5a89",
+      "bytes": 1423
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2/subject-source.json",
+      "sha256": "43388f373b8f8a4edfa96aeca8e955d05ba43afea7e6abaa824d83b217c155b0",
+      "bytes": 2527
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2/visible-anatomy.json",
+      "sha256": "fd8595ef9ed57c7d830383ea0c32a296f83f072f2b70c6c8e48a61328b3e1080",
+      "bytes": 3676
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2/visual-review.json",
+      "sha256": "43719fd400294a27e63719b092cf6d33cc525ebb69b487c49cd1f6caa83ee094",
+      "bytes": 1006
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2/generation.json",
+      "sha256": "54778da98941d926df56eab56c4f6e5b2a2d9e4905b0980dba083e8f5359daf2",
+      "bytes": 817
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2/master.png",
+      "sha256": "fca7b544d2ac1edd855d7766a9269a5cf13aebc775d19a177485e4afd770b339",
+      "bytes": 973581
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2/pattern-check.json",
+      "sha256": "495f0bcb1b83408122828d59d890d0c33a34aa70eeb264c57554b4406945b213",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2/prompt.txt",
+      "sha256": "74d41b45f62546cc956ad7491cc73fada352fa7996d8ea92d0877effaebf6297",
+      "bytes": 1508
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2/request.json",
+      "sha256": "2c35e98d40094a87c55a2968e4820f05776a8c0964cff50a3b42e779a70f42b1",
+      "bytes": 1423
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2/subject-source.json",
+      "sha256": "6b279794d0d006263364bc24a7445ea7c6010261142b9870d86169bd0fcb7a0f",
+      "bytes": 2520
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2/visible-anatomy.json",
+      "sha256": "df363b7d54061de97203664acdd7a9b8f58576656dbaf61e3cb72c641ab63f36",
+      "bytes": 3688
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2/visual-review.json",
+      "sha256": "fef841c76bd7321f9e55ee2efc46409b4f4401e24dbe142f0a8ea8d3cdd654fa",
+      "bytes": 1020
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2/generation.json",
+      "sha256": "d94db39ef83530af2b028e4fc2e67b4a5e51a4b474770e00a997b7d78c745c6f",
+      "bytes": 826
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2/master.png",
+      "sha256": "8bcbedfd2b38bb3e8654a71eb19065a710f8540fd154eaad0a164ad71314c089",
+      "bytes": 938607
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2/pattern-check.json",
+      "sha256": "ab5abc347d36e2348d50fb7fb7042bc86258e2bd6a3f97f8dbffc8e0df19e0e8",
+      "bytes": 767
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2/prompt.txt",
+      "sha256": "9dd42f04cc56adb863acb7d96e944f551b2d0491ea009b8474f1f2ad7d5ecd65",
+      "bytes": 1511
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2/request.json",
+      "sha256": "cac9c216abb6304d5ef474b575714e1d928cfb869e86ebfada52012c92c792c0",
+      "bytes": 1435
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2/subject-source.json",
+      "sha256": "8a1fbf2efe1303ee958a3dbae661d26969a7c320b2543456d207be81f360a24b",
+      "bytes": 2408
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2/visible-anatomy.json",
+      "sha256": "fc73debebb585bacad29cb10f5251f7d96f0188d1dfeeb8a40a6b2d7636877f1",
+      "bytes": 3263
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2/visual-review.json",
+      "sha256": "29379d838b8e3b2ae42dc351def63c5795233f5ad220f26f8cc412ab4d0f9a5f",
+      "bytes": 992
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/framing.mjs",
+      "sha256": "0f83c4f3a64202d5d4b838c4493e7e33232bc4350fc71c65645f48365888320b",
+      "bytes": 963
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/freeze.mjs",
+      "sha256": "aa8bd07ed6b05dc7c43e79f01c56928dd1ef36a09bb3e6be9c167f0c723b8586",
+      "bytes": 2442
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/observations.json",
+      "sha256": "4a6ffa8104431828b35d898efca846bc1515ce42074779044a1f5ac6251e6113",
+      "bytes": 4778
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/observe.mjs",
+      "sha256": "6e909740c903b566d9571d9e0f60cd80063cadaba7387c3190c42b2c59b2b20a",
+      "bytes": 2547
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/pattern-now.mjs",
+      "sha256": "a880c56356a11e38cd7db606dea5d4941cfde2ff85bfb6d14cdfb60e84068a99",
+      "bytes": 927
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/pattern-summary.json",
+      "sha256": "8b42bc3e0303b65d567b9456e6dd8f4e45504b34a7339751b7ca6c7c247772ae",
+      "bytes": 582
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/pilot.json",
+      "sha256": "5a89ff38064b55579a08d829d5efbce725ce41124a6583ee7a17120099cfcf97",
+      "bytes": 2374
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/prepare.mjs",
+      "sha256": "a51b50976867efe75af7f31f49b66a3996200b7b1a0434626f4e2868c08463dc",
+      "bytes": 3100
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/README.md",
+      "sha256": "782f8d5025e1b2e298bd8afe95f6a29feae83c2c46876878492ebef681842d94",
+      "bytes": 1821
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/retain.mjs",
+      "sha256": "e5e7e8a5212f7d3442eda08a114df4340907fb19b910f37ca391a361aaaf7dc2",
+      "bytes": 1384
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/review-sheet.png",
+      "sha256": "7ec14ae8b2e792b7a989a529cafed68ca7badcafd767c423882cc37194f88db2",
+      "bytes": 488328
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/review.mjs",
+      "sha256": "97496460a4a306dbd839d443feb3aa955872d43f2df72bdadb2f659c138cfa04",
+      "bytes": 2037
+    },
+    {
+      "path": "audits/C196_FRAMING_SUCCESSORS_20261002/visual-notes.json",
+      "sha256": "1077d7c1e1bd03e20c11b0091d3378d1f9c65d1eddfce1ca4faa1b6792d072ef",
+      "bytes": 2016
+    }
+  ],
+  "bytes": 6643837
+}

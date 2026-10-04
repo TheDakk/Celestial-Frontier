@@ -1,0 +1,14 @@
+{
+  "id": "17-damselfly",
+  "name": "Damselfly",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-87832223-6617-4f2e-9acc-d368289a5b67.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1e51ec300a93eee25a1cf007bec7bfd29595a8ecf725c292893d7aca754a88de",
+  "bytes": 1179027,
+  "promptSha256": "0e353fe80e98bc098e367c39960a24b06e7629d36b96a1a8463f87ad6b269464",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

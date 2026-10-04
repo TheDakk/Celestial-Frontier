@@ -1,0 +1,326 @@
+{
+  "name": "Chimpanzee",
+  "family": "primate",
+  "species": {
+    "name": "Chimpanzee",
+    "aspect": 1.2,
+    "headFrac": 0.22,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "large protruding round ears",
+      "flat face with a heavy brow and pale muzzle",
+      "long arms reaching past the knees"
+    ]
+  },
+  "genome": {
+    "seed": 3074712006,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 16,
+    "body": 8,
+    "loco": 14,
+    "trait": 11,
+    "size": 3,
+    "diet": 0,
+    "head": 9,
+    "limbs": 0,
+    "skin": 0,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 10,
+    "habitat": 0,
+    "detail": 8,
+    "accent": 4,
+    "temper": 2,
+    "sense": 3,
+    "repro": 1,
+    "life": 3,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Chimpanzee"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Chimpanzee\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3074712006\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "index": 8,
+  "contract": {
+    "id": "primate",
+    "version": 1,
+    "clipSetId": "primate-v1",
+    "graph": [
+      [
+        "pelvis",
+        "root"
+      ],
+      [
+        "spine",
+        "pelvis"
+      ],
+      [
+        "chest",
+        "spine"
+      ],
+      [
+        "neck",
+        "chest"
+      ],
+      [
+        "head",
+        "neck"
+      ],
+      [
+        "jaw",
+        "head"
+      ],
+      [
+        "armFarShoulder",
+        "chest"
+      ],
+      [
+        "armFarElbow",
+        "armFarShoulder"
+      ],
+      [
+        "armFarHand",
+        "armFarElbow"
+      ],
+      [
+        "armNearShoulder",
+        "chest"
+      ],
+      [
+        "armNearElbow",
+        "armNearShoulder"
+      ],
+      [
+        "armNearHand",
+        "armNearElbow"
+      ],
+      [
+        "legFarHip",
+        "pelvis"
+      ],
+      [
+        "legFarKnee",
+        "legFarHip"
+      ],
+      [
+        "legFarFoot",
+        "legFarKnee"
+      ],
+      [
+        "legNearHip",
+        "pelvis"
+      ],
+      [
+        "legNearKnee",
+        "legNearHip"
+      ],
+      [
+        "legNearFoot",
+        "legNearKnee"
+      ]
+    ],
+    "bodyAxis": [
+      "pelvis",
+      "chest"
+    ],
+    "joints": [
+      "root",
+      "pelvis",
+      "spine",
+      "chest",
+      "neck",
+      "head",
+      "jaw",
+      "armFarShoulder",
+      "armFarElbow",
+      "armFarHand",
+      "armNearShoulder",
+      "armNearElbow",
+      "armNearHand",
+      "legFarHip",
+      "legFarKnee",
+      "legFarFoot",
+      "legNearHip",
+      "legNearKnee",
+      "legNearFoot"
+    ],
+    "legs": [
+      "legFar",
+      "legNear"
+    ],
+    "limitsDeg": {
+      "root": {
+        "min": -30,
+        "max": 30
+      },
+      "pelvis": {
+        "min": -25,
+        "max": 25
+      },
+      "spine": {
+        "min": -30,
+        "max": 30
+      },
+      "chest": {
+        "min": -25,
+        "max": 25
+      },
+      "neck": {
+        "min": -35,
+        "max": 35
+      },
+      "head": {
+        "min": -40,
+        "max": 40
+      },
+      "jaw": {
+        "min": -35,
+        "max": 5
+      },
+      "armFarShoulder": {
+        "min": -100,
+        "max": 100
+      },
+      "armFarElbow": {
+        "min": -110,
+        "max": 110
+      },
+      "armFarHand": {
+        "min": -60,
+        "max": 60
+      },
+      "armNearShoulder": {
+        "min": -100,
+        "max": 100
+      },
+      "armNearElbow": {
+        "min": -110,
+        "max": 110
+      },
+      "armNearHand": {
+        "min": -60,
+        "max": 60
+      },
+      "legFarHip": {
+        "min": -80,
+        "max": 80
+      },
+      "legFarKnee": {
+        "min": -110,
+        "max": 110
+      },
+      "legFarFoot": {
+        "min": -50,
+        "max": 50
+      },
+      "legNearHip": {
+        "min": -80,
+        "max": 80
+      },
+      "legNearKnee": {
+        "min": -110,
+        "max": 110
+      },
+      "legNearFoot": {
+        "min": -50,
+        "max": 50
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.06,
+        "max": 0.6,
+        "kind": "distance",
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "arm/torso:armFar",
+        "min": 0.5,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "armFarShoulder",
+          "armFarElbow",
+          "armFarHand"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "arm/torso:armNear",
+        "min": 0.5,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "armNearShoulder",
+          "armNearElbow",
+          "armNearHand"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:legFar",
+        "min": 0.5,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "legFarHip",
+          "legFarKnee",
+          "legFarFoot"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:legNear",
+        "min": 0.5,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "legNearHip",
+          "legNearKnee",
+          "legNearFoot"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      }
+    ]
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "tail"
+    ],
+    "hidden": [],
+    "folded": []
+  }
+}

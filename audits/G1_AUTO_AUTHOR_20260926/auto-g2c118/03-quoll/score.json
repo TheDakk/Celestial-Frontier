@@ -1,0 +1,9 @@
+{
+ "id": "03-quoll",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 13.5% of the paint lies away from the body and in no part (reference 5.6%)"
+ ],
+ "semanticPresence": null
+}

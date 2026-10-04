@@ -1,0 +1,830 @@
+{
+  "schema": "cf.c183-source-island-diagnosis/v1",
+  "id": "04-spider",
+  "packet": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original",
+  "fit": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit",
+  "sourceManualFit": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01",
+  "inputs": [
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/master.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original/master.png",
+      "sha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+      "bytes": 1339094
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/authoring.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original/authoring.json",
+      "sha256": "2c084d51f3e9ab3a599ea234e270d40a784a639531d6355149a466152c4348f3",
+      "bytes": 16173
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/subject-source.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original/subject-source.json",
+      "sha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa",
+      "bytes": 2221
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/presence.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original/presence.json",
+      "sha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+      "bytes": 104
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/record.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/record.json",
+      "sha256": "5ca1e333e777719e214ffd2ce6699925898779fa22b9b94bef0775cf0a9058e1",
+      "bytes": 7366
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/binding.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/binding.json",
+      "sha256": "8f82492016c1c51f83e86132554c7cd9301d78b96ed860d4d959cc53dd541c94",
+      "bytes": 1449782
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/pre-split-binding.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/pre-split-binding.json",
+      "sha256": "99629d969080569db2ee73ebc510e7ccad44e748dc387c7b0870642fedf0c6fd",
+      "bytes": 963186
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/declaration.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/declaration.json",
+      "sha256": "27627efd0f6b30a5a7527787d58babcd65ac1bb50f0201998951dc064196dfa5",
+      "bytes": 20195
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/atlas/c173-specialized-spider-part-ids.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/atlas/c173-specialized-spider-part-ids.json",
+      "sha256": "b9ed8952e0e66c62482243cf7243b47b71cbb1b40a42a1f2af13aa108b6a67a2",
+      "bytes": 8664
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/atlas/c173-specialized-spider-part-ids.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/atlas/c173-specialized-spider-part-ids.png",
+      "sha256": "e35d365ef668f767501cd8cca10aff718ac86c287471a15fc78cc7e89734788a",
+      "bytes": 453136
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/atlas/receipt.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/atlas/receipt.json",
+      "sha256": "7f27f92ee5d5075844cccff9ed8c40bb7602d12ac20758667d21835f4fc4722c",
+      "bytes": 3490
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/binding.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/binding.json",
+      "sha256": "233840de5e481b427355a33ee2292abb8ef07d9322a46020036ef8a10bb8b942",
+      "bytes": 7185
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/keyed.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/keyed.png",
+      "sha256": "816d782bdcbfab54d6949e0b1700a2d4a993863daf444e8d0d427c738f61de89",
+      "bytes": 1630468
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/manifest.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/manifest.json",
+      "sha256": "5b58f2166ac9e86a966a9a4dcd4a577dfac3ef4d3221ae11bdebd22b74fd5229",
+      "bytes": 3604
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/ownership.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/ownership.png",
+      "sha256": "44dcf1a6341c14290c84f1333866192063a6f62a1a0c4c2c91e9a7361e0645f8",
+      "bytes": 19705
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/abdomen.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/abdomen.png",
+      "sha256": "25b27be663dfc21989d9ab8e96f088e62dcffd45fa291d5b0ecc5bcfc631c6e4",
+      "bytes": 181874
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/cephalothorax.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/cephalothorax.png",
+      "sha256": "3d8580b16a8ebc298380f456ce55380add2c16854ba94d962daf14d98a047560",
+      "bytes": 75728
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/chelicerafar.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/chelicerafar.png",
+      "sha256": "e857bcd738ecd78f2c17447b7792cfe5dd78e8cf83d1c9c76071fec128a3e8ef",
+      "bytes": 6705
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/cheliceranear.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/cheliceranear.png",
+      "sha256": "5e0d7b02aa7477892631f303647dcb55b5b2671347ed7d211e4a532a701cf535",
+      "bytes": 7616
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg1farfoot.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg1farfoot.png",
+      "sha256": "6fd64c8570fbbb7b1a986851081f48e2499b886d6c75fca6af26add02e090791",
+      "bytes": 5411
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg1farknee.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg1farknee.png",
+      "sha256": "888cda7dfa7a0c9d4bbdcef296891e53980f1fe320c5d41f47ac867a8044187e",
+      "bytes": 6601
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg1nearfoot.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg1nearfoot.png",
+      "sha256": "c572eaff55441fee4913ebcf318451f4e7fecbbb77d376c5dfea0177c624a164",
+      "bytes": 6070
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg1nearknee.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg1nearknee.png",
+      "sha256": "e603c1c592ff79644bfcf58f2f7a4b261be54d75434497a2a3aece87eeba0a6f",
+      "bytes": 6667
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg2farfoot.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg2farfoot.png",
+      "sha256": "e40ea03bbf6e9f600272d30c5544881bfd8b89c306d4d073e364858aa8f2083e",
+      "bytes": 30998
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg2farknee.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg2farknee.png",
+      "sha256": "cc0e0a080046f83f25da1b64a0af08a5723ad9a5e6a2560606f3c511b7680404",
+      "bytes": 10641
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg2nearfoot.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg2nearfoot.png",
+      "sha256": "f3d04daa00cb3fb4bd092b35f7ba3fc2b88805d46d266cb1ed5b2fd8b42e9c79",
+      "bytes": 27213
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg2nearknee.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg2nearknee.png",
+      "sha256": "960854750ee58e8965ef991584f5965591f8fff05e7a30002e0236bab51dd860",
+      "bytes": 9653
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg3farfoot.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg3farfoot.png",
+      "sha256": "d60f7aca59c5d7d61fa7f54db6f92d41eaab5c78feca5418c7ea135d3c934d72",
+      "bytes": 24443
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg3farknee.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg3farknee.png",
+      "sha256": "caab9afd897c2803720a00ede2d7018e59fc3f5050e8b1b6fad9453fa9829a0b",
+      "bytes": 13889
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg3nearfoot.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg3nearfoot.png",
+      "sha256": "3dff1aa4ed15843dfd233f7b1a9ed5328289aec7de1ba609f2b828e05bb23d07",
+      "bytes": 23752
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg3nearknee.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg3nearknee.png",
+      "sha256": "3f213d077889e2fa865446c368cab462f4212171ec3b097320138860cb1a6641",
+      "bytes": 16735
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg4farfoot.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg4farfoot.png",
+      "sha256": "96ee371960a0b476a32f3cbbff99cb469ab8f1491c453beaa4b8073d4d4782a4",
+      "bytes": 12071
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg4farknee.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg4farknee.png",
+      "sha256": "fe1b8ab64dab5e88a5416c1a18c06f2ec340bde0e39f9a3abdeb487dabb43b99",
+      "bytes": 15913
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg4nearfoot.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg4nearfoot.png",
+      "sha256": "bbe23311eb7302e1464e5ddf28a2cda8bef06a2dfb87459ea8628846cf0df2fe",
+      "bytes": 14595
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/leg4nearknee.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/leg4nearknee.png",
+      "sha256": "d5a66281180604f7beb20cbf2c85099ac86cd30e29b1e4e0da334245963c5c46",
+      "bytes": 9301
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/parts/root.png",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/parts/root.png",
+      "sha256": "e5ef3dc3fb51c20eec1b8bf3314dae648b6a4ae199b8f459647ee6c9e7db4af3",
+      "bytes": 328
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/fit01/parts/receipt.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/baseline-fit/parts/receipt.json",
+      "sha256": "68d498fd5dfb0dc9de58c8d3f457b42b5e20a549622388dff9f4a50841dd30e2",
+      "bytes": 5687
+    },
+    {
+      "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/conservation-01.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original-conservation.json",
+      "sha256": "163b8b0f0a36baf259cb1a26a1e3a07305889fdc3fe713546518b166e5cdf8c9",
+      "bytes": 1187
+    },
+    {
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c207m/04-spider/score.json",
+      "snapshot": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/auto-transfer-refusal.json",
+      "sha256": "3c5eaf726c53849721d1de034a749cea744211852e5b61cf7b4a9438ce2287b7",
+      "bytes": 581
+    }
+  ],
+  "unchangedCap": 0.05,
+  "cap": {
+    "status": "REFUSED",
+    "reason": "remainder island of 1938 px is 9.1% of the remainder (> 5%): structural, not a sliver"
+  },
+  "remainderPixels": 21329,
+  "components": [
+    {
+      "pixels": 17789,
+      "bounds": [
+        527,
+        522,
+        742,
+        754
+      ],
+      "border": {
+        "abdomen": 233,
+        "leg1nearknee": 129,
+        "cheliceranear": 127,
+        "chelicerafar": 91,
+        "leg2nearknee": 79,
+        "leg3nearknee": 72,
+        "leg1farknee": 62,
+        "leg4farknee": 59,
+        "leg3farknee": 56,
+        "leg4nearknee": 43,
+        "root": 32,
+        "leg2farknee": 25
+      },
+      "largest": true,
+      "share": 0.8340287870973792
+    },
+    {
+      "pixels": 1938,
+      "bounds": [
+        535,
+        664,
+        574,
+        741
+      ],
+      "border": {
+        "leg1farknee": 18
+      },
+      "largest": false,
+      "share": 0.09086220638567209
+    },
+    {
+      "pixels": 479,
+      "bounds": [
+        833,
+        532,
+        873,
+        561
+      ],
+      "border": {
+        "leg4nearknee": 61,
+        "leg3nearknee": 19
+      },
+      "largest": false,
+      "share": 0.022457686717614514
+    },
+    {
+      "pixels": 230,
+      "bounds": [
+        770,
+        603,
+        810,
+        628
+      ],
+      "border": {
+        "leg3nearknee": 65,
+        "leg2nearknee": 13
+      },
+      "largest": false,
+      "share": 0.010783440386328473
+    },
+    {
+      "pixels": 212,
+      "bounds": [
+        473,
+        574,
+        521,
+        606
+      ],
+      "border": {
+        "leg2farknee": 73,
+        "leg3farknee": 68
+      },
+      "largest": false,
+      "share": 0.009939518964789723
+    },
+    {
+      "pixels": 134,
+      "bounds": [
+        383,
+        582,
+        421,
+        623
+      ],
+      "border": {
+        "leg2farfoot": 80,
+        "leg2farknee": 2
+      },
+      "largest": false,
+      "share": 0.006282526138121806
+    },
+    {
+      "pixels": 105,
+      "bounds": [
+        825,
+        766,
+        839,
+        814
+      ],
+      "border": {
+        "leg2nearfoot": 60
+      },
+      "largest": false,
+      "share": 0.004922874958976042
+    },
+    {
+      "pixels": 96,
+      "bounds": [
+        406,
+        497,
+        430,
+        511
+      ],
+      "border": {
+        "leg3farfoot": 40,
+        "leg4farfoot": 6
+      },
+      "largest": false,
+      "share": 0.004500914248206667
+    },
+    {
+      "pixels": 96,
+      "bounds": [
+        465,
+        620,
+        502,
+        638
+      ],
+      "border": {
+        "leg2farknee": 54,
+        "leg1farknee": 9
+      },
+      "largest": false,
+      "share": 0.004500914248206667
+    },
+    {
+      "pixels": 79,
+      "bounds": [
+        793,
+        651,
+        808,
+        688
+      ],
+      "border": {
+        "leg2nearfoot": 53,
+        "leg2nearknee": 3
+      },
+      "largest": false,
+      "share": 0.0037038773500867365
+    },
+    {
+      "pixels": 55,
+      "bounds": [
+        590,
+        678,
+        605,
+        696
+      ],
+      "border": {
+        "chelicerafar": 33,
+        "cheliceranear": 7
+      },
+      "largest": false,
+      "share": 0.0025786487880350697
+    },
+    {
+      "pixels": 19,
+      "bounds": [
+        360,
+        529,
+        374,
+        538
+      ],
+      "border": {
+        "leg3farfoot": 24,
+        "leg4farfoot": 1
+      },
+      "largest": false,
+      "share": 0.0008908059449575695
+    },
+    {
+      "pixels": 17,
+      "bounds": [
+        822,
+        751,
+        825,
+        763
+      ],
+      "border": {
+        "leg2nearfoot": 16
+      },
+      "largest": false,
+      "share": 0.0007970368981199306
+    },
+    {
+      "pixels": 10,
+      "bounds": [
+        353,
+        539,
+        358,
+        542
+      ],
+      "border": {
+        "leg3farfoot": 10
+      },
+      "largest": false,
+      "share": 0.00046884523418819446
+    },
+    {
+      "pixels": 9,
+      "bounds": [
+        457,
+        616,
+        463,
+        619
+      ],
+      "border": {
+        "leg2farknee": 11
+      },
+      "largest": false,
+      "share": 0.00042196071076937503
+    },
+    {
+      "pixels": 8,
+      "bounds": [
+        425,
+        574,
+        428,
+        576
+      ],
+      "border": {
+        "leg2farknee": 7
+      },
+      "largest": false,
+      "share": 0.0003750761873505556
+    },
+    {
+      "pixels": 6,
+      "bounds": [
+        708,
+        698,
+        710,
+        700
+      ],
+      "border": {
+        "leg1nearknee": 5,
+        "leg1nearfoot": 4
+      },
+      "largest": false,
+      "share": 0.0002813071405129167
+    },
+    {
+      "pixels": 6,
+      "bounds": [
+        712,
+        705,
+        713,
+        709
+      ],
+      "border": {
+        "leg1nearfoot": 5
+      },
+      "largest": false,
+      "share": 0.0002813071405129167
+    },
+    {
+      "pixels": 5,
+      "bounds": [
+        465,
+        579,
+        469,
+        581
+      ],
+      "border": {
+        "leg2farknee": 8
+      },
+      "largest": false,
+      "share": 0.00023442261709409723
+    },
+    {
+      "pixels": 5,
+      "bounds": [
+        832,
+        588,
+        834,
+        591
+      ],
+      "border": {
+        "leg3nearfoot": 5,
+        "leg3nearknee": 4
+      },
+      "largest": false,
+      "share": 0.00023442261709409723
+    },
+    {
+      "pixels": 4,
+      "bounds": [
+        328,
+        555,
+        331,
+        555
+      ],
+      "border": {
+        "leg3farfoot": 3
+      },
+      "largest": false,
+      "share": 0.0001875380936752778
+    },
+    {
+      "pixels": 3,
+      "bounds": [
+        893,
+        612,
+        895,
+        612
+      ],
+      "border": {},
+      "largest": false,
+      "share": 0.00014065357025645834
+    },
+    {
+      "pixels": 3,
+      "bounds": [
+        709,
+        722,
+        709,
+        724
+      ],
+      "border": {
+        "leg1nearfoot": 3
+      },
+      "largest": false,
+      "share": 0.00014065357025645834
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        381,
+        625,
+        382,
+        626
+      ],
+      "border": {
+        "leg2farfoot": 4
+      },
+      "largest": false,
+      "share": 0.0000937690468376389
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        930,
+        659,
+        931,
+        659
+      ],
+      "border": {},
+      "largest": false,
+      "share": 0.0000937690468376389
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        507,
+        697,
+        507,
+        698
+      ],
+      "border": {
+        "leg1farfoot": 3
+      },
+      "largest": false,
+      "share": 0.0000937690468376389
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        820,
+        739,
+        820,
+        740
+      ],
+      "border": {
+        "leg2nearfoot": 2
+      },
+      "largest": false,
+      "share": 0.0000937690468376389
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        452,
+        573,
+        452,
+        573
+      ],
+      "border": {
+        "leg2farknee": 1
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        471,
+        582,
+        471,
+        582
+      ],
+      "border": {
+        "leg2farknee": 2
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        443,
+        609,
+        443,
+        609
+      ],
+      "border": {
+        "leg2farknee": 2
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        451,
+        613,
+        451,
+        613
+      ],
+      "border": {
+        "leg2farknee": 2
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        924,
+        658,
+        924,
+        658
+      ],
+      "border": {
+        "leg3nearfoot": 1
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        513,
+        673,
+        513,
+        673
+      ],
+      "border": {
+        "leg1farfoot": 1
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        512,
+        676,
+        512,
+        676
+      ],
+      "border": {
+        "leg1farfoot": 2
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        809,
+        691,
+        809,
+        691
+      ],
+      "border": {
+        "leg2nearfoot": 2
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        811,
+        695,
+        811,
+        695
+      ],
+      "border": {
+        "leg2nearfoot": 1
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        631,
+        701,
+        631,
+        701
+      ],
+      "border": {
+        "cheliceranear": 2
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        510,
+        706,
+        510,
+        706
+      ],
+      "border": {
+        "leg1farfoot": 1
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        633,
+        708,
+        633,
+        708
+      ],
+      "border": {},
+      "largest": false,
+      "share": 0.00004688452341881945
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        367,
+        721,
+        367,
+        721
+      ],
+      "border": {
+        "leg2farfoot": 1
+      },
+      "largest": false,
+      "share": 0.00004688452341881945
+    }
+  ],
+  "distinction": "Automatic C207m front21.9% refusal and independent manual C173 remainder9.1% refusal are different authorings; neither result replaces the other.",
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

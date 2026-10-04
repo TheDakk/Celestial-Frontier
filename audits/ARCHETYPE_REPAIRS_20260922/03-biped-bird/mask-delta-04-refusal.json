@@ -1,0 +1,6 @@
+{
+  "command": "node audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/verify-mask-delta-04.mjs",
+  "exitCode": 1,
+  "error": "Unexpected owner delta 16 to 6",
+  "meaning": "Proposed far-thigh contour captures prior chest ownership, outside root-only correction expectation. Static/native not run on candidate04. Preserve candidate and inspect exact delta before accepting any next contour."
+}

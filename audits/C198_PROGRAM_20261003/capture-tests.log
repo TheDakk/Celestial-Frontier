@@ -1,0 +1,16 @@
+✔ observes every phase of every turn through final recovery; preserves ten-second minimum (1.850417ms)
+✔ old ten-second truncation, omitted/reordered turns, erased phases and invented endpoints refuse (5.262834ms)
+✔ independent encoded duration and proportional frame floor reject old ten-second media and stalled capture (0.192959ms)
+✔ capture loss and rig refusals remain independently visible; neither failure masks the other (1.630875ms)
+✔ films draw the game's runtime plates: the registered temperate set, despilled MID, never the proof dir keyed MID (1.544083ms)
+✔ guardian script option: absent = today, true = the program for the right-side guardian; every malformed field refuses (1.7175ms)
+✔ film timeline: the wiring's order (entrance, phase where it changed, turns, finale), contiguous, and turns only without a program (0.261375ms)
+✔ guardian capture check: every set piece and every turn phase observed in order; skipped, reordered or mislabelled samples refuse (4.033125ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.929708

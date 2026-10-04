@@ -1,0 +1,167 @@
+[
+  {
+    "id": "02-minnow",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn1-hit-reaction-50.png",
+        "sha256": "032f4fdd158bb77dbdee88fe2692d1aed6eb0db5b5b8e34e34ac7cf21614c469"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn3-hit-idle-50.png",
+        "sha256": "3c365ffba97494442f5dc127776f7ab3f30e53d44d5029375004e6205377f5da"
+      }
+    ],
+    "note": "Whole body and attached fins in both reviewed poses; thin pointed fin edge under the head remains. No large opening observed.",
+    "visualAcceptance": false
+  },
+  {
+    "id": "05-whitefish",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn1-hit-reaction-50.png",
+        "sha256": "46b211dbc2121fb653febbcbeab03dd7e340bb3a96c45c4cad167cb115e38c26"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn3-hit-idle-50.png",
+        "sha256": "3c9f63b98b5564339ecd2d5db99a3786fc5655347b46fa12399e6cbcde2b01ba"
+      }
+    ],
+    "note": "Whole body and attached fins in both reviewed poses; no large opening observed.",
+    "visualAcceptance": false
+  },
+  {
+    "id": "07-cichlid",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn1-hit-reaction-50.png",
+        "sha256": "a273c07595fecc4969097b3d3069cc626358b56579af8ddcf83888f364da4f4e"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn3-hit-idle-50.png",
+        "sha256": "b77a8bdd51a438c7dcc7c427acb8b250b381e1eae3eba5facd291ce35f936aff"
+      }
+    ],
+    "note": "Whole striped body and fins in both poses; tiny detached speck below the rear belly remains.",
+    "visualAcceptance": false
+  },
+  {
+    "id": "08-tetra",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn1-hit-reaction-50.png",
+        "sha256": "8609366a0e80add14e0321d9c4301b6d79591fbc646612639bb627362f6758e3"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn3-hit-idle-50.png",
+        "sha256": "0e6fd8c55b13f9518a047919230d270cf37e2baf6a76f7f2a8489652f4d4e0c5"
+      }
+    ],
+    "note": "VISUAL FAILURE: late left fighter opens a large belly loop and sharp head/chest seam; detached tail specks. Reaction pose alone hides this fault.",
+    "visualAcceptance": false
+  },
+  {
+    "id": "01-pike",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn1-hit-reaction-50.png",
+        "sha256": "efc91259e3886de27a3008fbd5636ad47309335758036037229b2103e7cb90a3"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn3-hit-idle-50.png",
+        "sha256": "251054090e1767c18186d4029bbd029f7fca23b6fe26924cab216bec54a9b8ad"
+      }
+    ],
+    "note": "VISUAL FAILURE: late left snout bends sharply upward while torso stays nearly horizontal. Body and tail remain whole.",
+    "visualAcceptance": false
+  },
+  {
+    "id": "03-char",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn1-hit-reaction-50.png",
+        "sha256": "4dda7b2f45b1d28d364d3b9b2edd4a9365bff0a356cdbf09f2ba9e9dbc009ea4"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn3-hit-idle-50.png",
+        "sha256": "c15079a42c38c92635475067d1ddc5b534eb3131f3b965941e5d687f05945635"
+      }
+    ],
+    "note": "VISUAL FAILURE: late left mouth/upper snout forms a small detached-looking upright shard. Body and tail remain whole.",
+    "visualAcceptance": false
+  },
+  {
+    "id": "04-sturgeon",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn1-hit-reaction-50.png",
+        "sha256": "8be68d86ebb601fab8c4f6e3e65dec340a819629757c489fb70a97f796212a22"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn3-hit-idle-50.png",
+        "sha256": "bb20696b8f86af00559133fc2c33778a092f09c13130c14d29b682dd28d9d53f"
+      }
+    ],
+    "note": "VISUAL FAILURE: late left head/chest separates with a large pectoral loop and detached flecks. Body and tail remain whole.",
+    "visualAcceptance": false
+  },
+  {
+    "id": "08-goldfish",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn1-hit-reaction-50.png",
+        "sha256": "edf0ed432736fdb8588488dd0b6385d952a492a93919d64f9945c16e15d1f5c9"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn3-hit-idle-50.png",
+        "sha256": "6be46bec77b508cfa4eeea6f92a8024b3e10c9ccf243229d8bd2723b93aff2f9"
+      }
+    ],
+    "note": "Body and broad fins remain whole in both reviewed poses; no large opening observed.",
+    "visualAcceptance": false
+  },
+  {
+    "id": "02-haddock",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn1-hit-reaction-50.png",
+        "sha256": "52c0cd6ba892ae01f235514f0a1949c8e83a8e0ed44197798abf080bade7c409"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn3-hit-idle-50.png",
+        "sha256": "881ff4c58e8faac65983812c0da1ed811871780834cb01b1498aaae7bb71a0e4"
+      }
+    ],
+    "note": "Body and attached dorsals remain whole; late left face looks compressed/pointed and needs head-owner review.",
+    "visualAcceptance": false
+  },
+  {
+    "id": "03-pollock",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn1-hit-reaction-50.png",
+        "sha256": "5d9b4ea585c2d425eabdd7394350ddc28a23c9e9f7bbbdb9a6a54af1398bad14"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn3-hit-idle-50.png",
+        "sha256": "93db70b6f39e83733a9f2a2069103fa17b18cbd10b5e6569e317bdfe05050849"
+      }
+    ],
+    "note": "VISUAL FAILURE: late left snout bends sharply upward; original cod-like chin barbel is also an identity concern. Body and tail remain whole.",
+    "visualAcceptance": false
+  },
+  {
+    "id": "05-anchovy",
+    "viewedAtNativeSize": [
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn1-hit-reaction-50.png",
+        "sha256": "6d42c910cb440bcc1d6845d05aad50145b73b756e981633104df658ddc0462cb"
+      },
+      {
+        "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn3-hit-idle-50.png",
+        "sha256": "742db9c9d9f124cf990514eb261db58d7512c8627f0e708f7432582b4832a257"
+      }
+    ],
+    "note": "VISUAL FAILURE: late left snout bends sharply upward. Body and tail remain whole; original extra rear fin nubs remain.",
+    "visualAcceptance": false
+  }
+]

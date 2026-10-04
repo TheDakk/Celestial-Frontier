@@ -1,0 +1,21 @@
+
+it('explicit zero-ultimate millipede inventory retains every walking leg without invented tail tracks',()=>{
+ const r=fixture();r.anatomy={...presence(13),appendages:{walkingLegPairs:13,ultimateLegPairs:0}};
+ for(const id of ['ultimateFar','ultimateNear']){delete r.landmarks[id];delete r.geometry.fixedAttachments[id];}
+ for(const side of ['Far','Near']){delete r.landmarks['leg13'+side+'Knee'];delete r.landmarks['leg13'+side+'Foot'];delete r.geometry.fixedAttachments['leg13'+side+'Knee'];}
+ const t=familyContractForRecord(r),card=compileBodyCard(r),actions=actionsFor('myriapod',r.anatomy)!;
+ expect(t.joints).toHaveLength(57);expect(t.legs).toHaveLength(26);expect(Object.keys(t.fixedPivots!)).toHaveLength(27);expect(familyContactChains(t)).toHaveLength(26);
+ expect(t.joints.some(j=>j.startsWith('ultimate'))).toBe(false);expect(card.secondaryParts.some(c=>c.id.startsWith('ultimate'))).toBe(false);
+ const moved=new Set<string>();
+ for(const [id,action]of Object.entries(actions)){
+  for(const pose of action.poses)for(const [joint,angle]of Object.entries(pose.joints)){expect(t.joints,id+'/'+joint).toContain(joint);if(angle!==0)moved.add(joint);}
+  const timeline=buildTimeline(card,id,31);expect(Object.keys(timeline.tracks).sort()).toEqual([...t.joints].sort());expect(timeline.clamped).toEqual([]);
+ }
+ for(const leg of t.legs)for(const suffix of ['Knee','Foot'])expect(moved.has(leg+suffix)).toBe(true);
+ const surplus=structuredClone(r);surplus.geometry.fixedAttachments.ultimateFar=[.02,.42];expect(()=>familyContractForRecord(surplus)).toThrow(/socket inventory/);
+ expect(()=>appendageCounts('myriapod',{...r.anatomy,appendages:{walkingLegPairs:15,ultimateLegPairs:0}})).toThrow('64-joint budget exceeded: 65');
+ const context={}as ArtContext2D,value:PainterTopology={schema:'cf.painter-topology/v1',ownerId:'synthetic-zero-ultimate-control',family:'myriapod',coordinateSize:100,materials:{surface:'chitin',paletteSource:'test'},anatomy:r.anatomy,unresolved:[],features:[{id:'body',kind:'body',points:[[10,50],[90,50]],layer:'near'},...t.legs.map(id=>({id,kind:'leg'as const,points:[[20,50],[30,65],[40,70]]as const,layer:id.endsWith('Far')?'far'as const:'near'as const}))]};
+ const capture=(v:PainterTopology)=>observePainterTopology(context,()=>emitPainterTopology(context,v));expect(capture(value)).toEqual(value);
+ expect(()=>capture({...value,features:value.features.slice(0,-1)})).toThrow(/count/feature mismatch/);
+ expect(()=>capture({...value,features:[...value.features,{id:'ultimateFar',kind:'leg',points:[[5,50]],layer:'far'}]})).toThrow(/count/feature mismatch/);
+});

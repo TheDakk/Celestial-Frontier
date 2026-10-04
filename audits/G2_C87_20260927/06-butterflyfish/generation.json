@@ -1,0 +1,13 @@
+{
+  "id": "06-butterflyfish",
+  "name": "Butterflyfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8890909e-fa14-422b-ba71-a1c1a6115c41.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a1dc3415acbec70e77b2c6653673e5305afa4cec8385c27bd0d8afed42828d96",
+  "bytes": 1497852,
+  "promptSha256": "ecee6553f104543933206e2a16c90c20f63f67aaa2f5fb78aa05fd0c4e785691",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

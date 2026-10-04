@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Coelacanth",
+  "masterSha256": "9055b359c9864f9c1db79e72e80278435e0a9acf069443ad895a58691fb3815f",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

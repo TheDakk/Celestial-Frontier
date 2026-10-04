@@ -1,0 +1,93 @@
+{
+  "schema": "cf.c132-exact-asset-harness/v1",
+  "sourcePath": "port/v2/tools/battle2-proof/native-runner.mjs",
+  "originalSha256": "f1ec342c1e0a2bcf5d528312500bd2e39f379a9fb6f1c44a59765b98acf1af66",
+  "changes": [
+    {
+      "before": "import { rolldown } from 'rolldown';",
+      "after": "import {createRequire} from 'node:module';import {pathToFileURL} from 'node:url';\nconst requireAtV2=createRequire(new URL('../../port/v2/package.json',import.meta.url));const {rolldown}=await import(pathToFileURL(requireAtV2.resolve('rolldown')).href);"
+    },
+    {
+      "before": "from '../creature-animation/record-source.mjs'",
+      "after": "from '../../port/v2/tools/creature-animation/record-source.mjs'"
+    },
+    {
+      "before": "from '../morph/build-card-masters.mjs'",
+      "after": "from '../../port/v2/tools/morph/build-card-masters.mjs'"
+    },
+    {
+      "before": "from '../browsercdp.mjs'",
+      "after": "from '../../port/v2/tools/browsercdp.mjs'"
+    },
+    {
+      "before": "from '../workspacelock.mjs'",
+      "after": "from '../../port/v2/tools/workspacelock.mjs'"
+    },
+    {
+      "before": "from './capture-timeline.mjs'",
+      "after": "from '../../port/v2/tools/battle2-proof/capture-timeline.mjs'"
+    },
+    {
+      "before": "from './cpu-profile.mjs'",
+      "after": "from '../../port/v2/tools/battle2-proof/cpu-profile.mjs'"
+    },
+    {
+      "before": "path.resolve(import.meta.dirname, '../../../..')",
+      "after": "path.resolve(import.meta.dirname, '../..')"
+    },
+    {
+      "before": "const save = () => fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify(report, null, 2) + '\\n');",
+      "after": "const safe=v=>typeof v==='string'?v.replaceAll(os.homedir(),'~'):v;const save = () => fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify(report,(_k,v)=>safe(v),2)+'\\n');"
+    },
+    {
+      "before": "let release, server, browser;",
+      "after": "const assetPath=p=>path.isAbsolute(p)?p:path.resolve(repo,p.replace(/^~\\//,os.homedir()+'/'));\nconst arenaManifest=process.env.CF_ARENA_MANIFEST?JSON.parse(fs.readFileSync(assetPath(process.env.CF_ARENA_MANIFEST),'utf8')):null;\nconst arenaAssets=arenaManifest?Object.fromEntries(['recipe','far','mid','near'].map(k=>{if(typeof arenaManifest[k]!=='string')throw Error('arena manifest requires '+k);return[k,assetPath(arenaManifest[k])];})):null;\nconst effectPath=process.env.CF_EFFECT_ANCHORS?assetPath(process.env.CF_EFFECT_ANCHORS):path.join(arena,'wild-anchors.json'),effectRoot=path.dirname(effectPath);\nconst overrides=process.env.CF_PROOF_SOURCE_OVERRIDES?JSON.parse(fs.readFileSync(assetPath(process.env.CF_PROOF_SOURCE_OVERRIDES),'utf8')):{};\nconst proofDir=path.join(repo,'port/v2/tools/battle2-proof');\nreport.exactAssetInputs={effectAnchors:path.relative(repo,effectPath),arenaManifest:process.env.CF_ARENA_MANIFEST??null,sourceOverrides:Object.keys(overrides)};\nlet release, server, browser;"
+    },
+    {
+      "before": "path.join(import.meta.dirname, 'native-entry.mjs')",
+      "after": "path.join(proofDir, 'native-entry.mjs')"
+    },
+    {
+      "before": "resolveId(id) { if (id.startsWith('cf-proof/')) return path.resolve(producer, id.slice(9)); }",
+      "after": "resolveId(id,importer) { const normal=id.startsWith('cf-proof/')?path.resolve(producer,id.slice(9)):id.startsWith('.')&&importer?path.resolve(path.dirname(importer),id):null;const relative=normal?path.relative(repo,normal):id;const swap=overrides[id]??overrides[relative];if(swap)return assetPath(swap);if(id.startsWith('cf-proof/'))return normal; }"
+    },
+    {
+      "before": "const anchors = JSON.parse(fs.readFileSync(path.join(arena, 'wild-anchors.json')));",
+      "after": "const anchors = JSON.parse(fs.readFileSync(effectPath));remember(effectPath);if(process.env.CF_ARENA_MANIFEST)remember(assetPath(process.env.CF_ARENA_MANIFEST));if(process.env.CF_PROOF_SOURCE_OVERRIDES)remember(assetPath(process.env.CF_PROOF_SOURCE_OVERRIDES));"
+    },
+    {
+      "before": "'arena-recipe.json': path.join(arena, 'arena-recipe.json'), 'wild-anchors.json': path.join(arena, 'wild-anchors.json'), 'arena-far.png': path.join(arena, 'arena-far.png'), 'arena-mid.png': path.join(arena, 'keyed/arena-mid.png'), 'arena-near.png': path.join(arena, 'keyed/arena-near.png')",
+      "after": "'arena-recipe.json': arenaAssets?.recipe??path.join(arena,'arena-recipe.json'), 'wild-anchors.json': effectPath, 'arena-far.png': arenaAssets?.far??path.join(arena,'arena-far.png'), 'arena-mid.png': arenaAssets?.mid??path.join(arena,'keyed/arena-mid.png'), 'arena-near.png': arenaAssets?.near??path.join(arena,'keyed/arena-near.png')"
+    },
+    {
+      "before": "assets[path.basename(p.keyedImage)] = path.join(arena, p.keyedImage)",
+      "after": "assets[path.basename(p.keyedImage)] = path.resolve(effectRoot,p.keyedImage)"
+    },
+    {
+      "before": "path.join(import.meta.dirname,'capture-timeline.mjs')",
+      "after": "path.join(proofDir,'capture-timeline.mjs')"
+    },
+    {
+      "before": "path.join(import.meta.dirname, 'cpu-profile.mjs')",
+      "after": "path.join(proofDir, 'cpu-profile.mjs')"
+    },
+    {
+      "before": "path.resolve(import.meta.dirname,'../animation-completion/review-schedule.mjs')",
+      "after": "path.join(repo,'port/v2/tools/animation-completion/review-schedule.mjs')"
+    },
+    {
+      "before": "path.resolve(import.meta.dirname,'../quadruped-proof/motion-proof-contract.mjs')",
+      "after": "path.join(repo,'port/v2/tools/quadruped-proof/motion-proof-contract.mjs')"
+    },
+    {
+      "before": "await import('source-map-js')",
+      "after": "requireAtV2('source-map-js')"
+    },
+    {
+      "before": "report.sources = [...sources.values()]; for (const r of report.sources)",
+      "after": "report.sources = [...sources.values()].map(r=>({...r,path:path.relative(repo,r.path)})); for (const r of sources.values())"
+    }
+  ],
+  "generatedSha256": "ebea324f81f73d6e8530ee02c59a61f4dd686dd4ec8490a491848b3e3a7e0628",
+  "nativeRun": false
+}

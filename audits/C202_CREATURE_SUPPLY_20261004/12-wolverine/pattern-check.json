@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wolverine",
+  "masterSha256": "2ef59bfe84259bf70cdd979a75cac10eea9c405011ee83386738ea6ecc89ac3c",
+  "required": [
+    "pale stripe sweeping along each flank to the tail"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "pale stripe sweeping along each flank to the tail",
+      "status": "PRESENT",
+      "observed": "Stocky dark body with broad pale flank bands and bushy tail, rounded ears, four strong separated clawed feet. Tail fully framed; far ear only partially visible."
+    }
+  ]
+}

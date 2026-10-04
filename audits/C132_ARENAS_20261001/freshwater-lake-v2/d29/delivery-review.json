@@ -1,0 +1,172 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "freshwater-lake-v2",
+  "biome": "temperate",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "temperate"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "temperate"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "temperate"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.generation.json",
+      "sha256": "fc0fc35a4c1ce572080af857a1f5a191a15f150bcb517319651e9d14109d3c21"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-mid.generation.json",
+      "sha256": "5e9c44075567227a6cc1bd3754f70a82d51d6242cde2c2ae31ff250f7ea16335"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-near.generation.json",
+      "sha256": "7d89b89d9e16d8c81efafcda639174f176b857da614ef212b174b7b732cdd55a"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-composed-review.png",
+      "sha256": "ce906d9bb043c9393f8d9b52f909b3603be433ebda34ddef1938657550d52cfd"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/visual-notes.d29.json",
+      "sha256": "b63af0bc8681043a3a5904f83f63b7f0e275cc2700a43086e0b6cd28e459c67d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-manifest.json",
+      "sha256": "84a43e08a228ad131d358357c66fb8eab2ab7152de25b7f6ad5819912d7dc4db"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-recipe.json",
+      "sha256": "1f06e61e1f0f31ecfd7610dd5c91374426bd9aa1fd51e17e98da93154851490f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.generation.json",
+      "sha256": "fc0fc35a4c1ce572080af857a1f5a191a15f150bcb517319651e9d14109d3c21"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-far-attempt-02.prompt.txt",
+      "sha256": "dbeb325df213d5f0257f6008026bbc23be70a7c3e437d803250c2e62263f07fc"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-far.png",
+      "sha256": "376701d5f393810c72a8862f071ba9bb522a9b37e381afdfef2bec1c18a59e38"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.png",
+      "sha256": "376701d5f393810c72a8862f071ba9bb522a9b37e381afdfef2bec1c18a59e38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-mid.generation.json",
+      "sha256": "5e9c44075567227a6cc1bd3754f70a82d51d6242cde2c2ae31ff250f7ea16335"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-mid.prompt.txt",
+      "sha256": "e35e98a4c9b8239f9b18ac41e8954e30fc80ce1ec3c56b14c7e271beeab9ac56"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-mid.png",
+      "sha256": "ba5ac07fc6b02781d2525b78ef1350a882fa2b94eb6fb960ed2709d45d62c9bf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-mid.png",
+      "sha256": "ba5ac07fc6b02781d2525b78ef1350a882fa2b94eb6fb960ed2709d45d62c9bf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-mid.png",
+      "sha256": "7172142d0763d33a55731aaeea0827461e342ea7b955e5ad5cbaaf66445b2b3a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-near.generation.json",
+      "sha256": "7d89b89d9e16d8c81efafcda639174f176b857da614ef212b174b7b732cdd55a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake/arena-near-repair.prompt.txt",
+      "sha256": "4f001b409579fa95787809a235200658a8f5e12e07435de610e2cdeecf546d95"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-near.png",
+      "sha256": "f378db79c9ec3d8cf9164e192531ba6846ca4cecf030050a416e120c7c53ad73"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-near.png",
+      "sha256": "45b531f6d60b3b6dffc5c7fc4dbe9a938c481ae4f28b25dd32d2f3e6f86afd78"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/freshwater-lake-v2/visual-notes.d29.json",
+    "findings": [
+      "Full native-size composition inspected: lake surface, mountain backdrop and lakebed identify freshwater habitat; both fighting stands are unobstructed in this static view.",
+      "NEAR introduces a conspicuous greener horizontal texture boundary near the lower eighth. Bright green/magenta remnants remain around thin side plants and small terrain edges.",
+      "Independent scoring, moving combatant occlusion and native battle appearance remain untested; this is a candidate with visual holds."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

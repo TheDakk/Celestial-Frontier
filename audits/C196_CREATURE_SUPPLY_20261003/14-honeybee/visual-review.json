@@ -1,0 +1,28 @@
+{
+  "name": "Honeybee",
+  "masterSha256": "116fcac6e33cf5384113705dfdfbc4172c9acd1efd6cb90340d5baac7f5a089d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Parent full-size original review: Striped amber/black abdomen and pollen-bearing hind tibia are visible. Five distal leg silhouettes are obvious; a complete sixth chain/root cannot be verified from this source. Far wing pair overlaps the near pair. All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met. Observed named pigment/material features only; not pattern-instrument acceptance. HELD_ANATOMY_VISIBILITY; no anatomy/native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 236,
+      "y0": 353,
+      "x1": 1054,
+      "y1": 883
+    },
+    "margins": {
+      "left": 236,
+      "right": 199,
+      "top": 353,
+      "bottom": 370
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

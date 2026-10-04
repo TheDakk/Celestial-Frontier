@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 298198460,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 15,
+    "body": 2,
+    "loco": 6,
+    "trait": 21,
+    "size": 3,
+    "diet": 3,
+    "head": 1,
+    "limbs": 0,
+    "skin": 4,
+    "tail": 3,
+    "pattern": 7,
+    "eyes": 0,
+    "behavior": 4,
+    "habitat": 14,
+    "detail": 1,
+    "accent": 16,
+    "temper": 4,
+    "sense": 7,
+    "repro": 1,
+    "life": 5,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Banana Slug"
+  },
+  "observation": null
+}

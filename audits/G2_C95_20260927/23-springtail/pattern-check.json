@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Springtail",
+  "masterSha256": "f031a378f111103e3753b2993b69217c8ac9457d059b90dc6014d27699833ffd",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

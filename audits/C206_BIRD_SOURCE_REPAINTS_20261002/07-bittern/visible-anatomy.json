@@ -1,0 +1,172 @@
+{
+  "id": "07-bittern",
+  "name": "Bittern",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 15198,
+    "coreRadius": 25,
+    "bodyBox": {
+      "x0": 147,
+      "y0": 137,
+      "x1": 281,
+      "y1": 232
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0849,
+        "pixels": 1291,
+        "box": {
+          "x0": 242,
+          "y0": 120,
+          "x1": 340,
+          "y1": 185
+        },
+        "attach": {
+          "x": 272.9,
+          "y": 149.6,
+          "relX": 0.94,
+          "relY": 0.13
+        },
+        "dir": {
+          "x": 0.67,
+          "y": -0.74
+        },
+        "class": "top",
+        "length": 75.9
+      },
+      {
+        "k": 1,
+        "frac": 0.1161,
+        "pixels": 1765,
+        "box": {
+          "x0": 98,
+          "y0": 178,
+          "x1": 152,
+          "y1": 240
+        },
+        "attach": {
+          "x": 146.4,
+          "y": 205.6,
+          "relX": 0,
+          "relY": 0.72
+        },
+        "dir": {
+          "x": -0.92,
+          "y": 0.4
+        },
+        "class": "rear",
+        "length": 59.3
+      },
+      {
+        "k": 2,
+        "frac": 0.044,
+        "pixels": 669,
+        "box": {
+          "x0": 133,
+          "y0": 232,
+          "x1": 194,
+          "y1": 294
+        },
+        "attach": {
+          "x": 171.1,
+          "y": 232.9,
+          "relX": 0.18,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.23,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 72
+      },
+      {
+        "k": 3,
+        "frac": 0.0048,
+        "pixels": 73,
+        "box": {
+          "x0": 181,
+          "y0": 233,
+          "x1": 206,
+          "y1": 236
+        },
+        "attach": {
+          "x": 193.5,
+          "y": 233,
+          "relX": 0.35,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.59,
+          "y": 0.81
+        },
+        "class": "limb-down",
+        "length": 12.9
+      },
+      {
+        "k": 4,
+        "frac": 0.0476,
+        "pixels": 724,
+        "box": {
+          "x0": 208,
+          "y0": 233,
+          "x1": 276,
+          "y1": 295
+        },
+        "attach": {
+          "x": 214,
+          "y": 233,
+          "relX": 0.5,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.46,
+          "y": 0.89
+        },
+        "class": "limb-down",
+        "length": 87.7
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 133,
+        "x1": 145,
+        "cx": 138.6
+      },
+      {
+        "x0": 159,
+        "x1": 194,
+        "cx": 174.7
+      },
+      {
+        "x0": 218,
+        "x1": 276,
+        "cx": 247.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

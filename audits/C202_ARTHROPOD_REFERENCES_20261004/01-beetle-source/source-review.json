@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c202-source-review/v1",
+  "masterSha256": "2fc73953a7a8601bb57490131f341a8f9c7153e2fe7c9f54dcf99de3388deefc",
+  "fullSizeInspected": true,
+  "status": "SOURCE_ANATOMY_HOLD",
+  "finding": "The far-front leg path disappears behind the head/body, so six complete independent chains are not established. Right antenna also fails the requested margin.",
+  "qualityAccepted": false
+}

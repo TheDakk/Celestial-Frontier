@@ -1,0 +1,199 @@
+{
+  "schema": "cf.ecology-batch/v1",
+  "head": "b95c4dc03259dc85f1e345a60e241c01154da069",
+  "status": "REVIEW_CANDIDATES_VALIDATED",
+  "sourceEntries": 1579,
+  "sourceUnique": 1575,
+  "quarantined": 3,
+  "eligibleDecoded": 1572,
+  "newRenders": 359,
+  "totalRenders": 1534,
+  "uniquePcm": 1313,
+  "sourceReferences": 154,
+  "missingFauna": 477,
+  "biomes": 43,
+  "functional": {
+    "earth": 1010,
+    "faunaAuthenticMissing": 477,
+    "routes": 486,
+    "renderedRecipes": 484,
+    "explicitSilences": 2,
+    "gaps": 0,
+    "locomotion": 27,
+    "materials": 13,
+    "listeningAccepted": 0,
+    "gameplayPromotions": 0
+  },
+  "savedProductionProjects": [
+    {
+      "path": "audio-production/reaper/ability-sand/production.rpp",
+      "sha256": "c44f844d17e92ea16172d3ea721646d965dee5eadc3aa716b87d531deae7320c"
+    },
+    {
+      "path": "audio-production/reaper/ecology-fauna-05-headroom-pcm/production.rpp",
+      "sha256": "288913a22d8abc188ea0a4422211c21e09065a72cbc909c32caf16951935df24"
+    },
+    {
+      "path": "audio-production/reaper/ability-psionic/production.rpp",
+      "sha256": "2cf5ebb7acf957be7d7ba03326f442795ce27540ade29b73ab59fb6fccb61bb4"
+    },
+    {
+      "path": "audio-production/reaper/coverage-fire/production.rpp",
+      "sha256": "8f56b3d6fbf67e32a17da8153f900b2912ddd30fb97da2e664bd783523b03fb2"
+    },
+    {
+      "path": "audio-production/reaper/coverage-events/production.rpp",
+      "sha256": "8a14b6d41b8ff31f52c5ea805ea44f5744fc6437dbd8f9b1815b89f2b1587aca"
+    },
+    {
+      "path": "audio-production/reaper/ability-tide/production.rpp",
+      "sha256": "4f881fed5ff7a83593ede2eebf86c293b32ed6e2d96d589aedeb051d704e9652"
+    },
+    {
+      "path": "audio-production/reaper/ability-storm/production.rpp",
+      "sha256": "e06479cd79e480aac1ecc7153f8432cc13c4e33fce950b9faa16c25358711709"
+    },
+    {
+      "path": "audio-production/reaper/coverage-chem/production.rpp",
+      "sha256": "fb6f9c9b84985fe31828c3d19fe1eb5a8f9b2127d6d2e85f75de85c78037b6a7"
+    },
+    {
+      "path": "audio-production/reaper/music-original/production.rpp",
+      "sha256": "81b29e9c0c708ec1a0f4c17d0e856dbc77a530b28325319213816ef3eb713751"
+    },
+    {
+      "path": "audio-production/reaper/ability-fire/production.rpp",
+      "sha256": "16910f9c89e7331dd6c35a3c7e6e7bb05b423b92e5899120cb4fe589ba693af8"
+    },
+    {
+      "path": "audio-production/reaper/coverage-psionic/production.rpp",
+      "sha256": "360d23ff333aac77f1eedf263acc489c6f6aaada9e9b167ca37eaadd7a7fd183"
+    },
+    {
+      "path": "audio-production/reaper/ecology-environments/production.rpp",
+      "sha256": "39b08c1a5362edf35aaf99f65b6e9856e9007ddb27a0c9cd997cd9b87eb5d76a"
+    },
+    {
+      "path": "audio-production/reaper/ecology-fauna-04-headroom-pcm/production.rpp",
+      "sha256": "f5ebea77c720834f3a7a6add247a91539e951907f507eea26989a44e7d418b46"
+    },
+    {
+      "path": "audio-production/reaper/fictional-voices/production.rpp",
+      "sha256": "3b2a4f9ac8f7c9b6eff9732ad24a5209f563942d2d6195e41707b59b9069e3e6"
+    },
+    {
+      "path": "audio-production/reaper/coverage-sand/production.rpp",
+      "sha256": "f30676f475cc830df14b6cedb4467c0dcc8669b77a47b2fb7d5d2c5091342410"
+    },
+    {
+      "path": "audio-production/reaper/coverage-venom/production.rpp",
+      "sha256": "470af54dbe7a263aeb21a82461b3bf0570009c75fa7add45aa7e4e8b13a48f83"
+    },
+    {
+      "path": "audio-production/reaper/ability-chem/production.rpp",
+      "sha256": "0fba6c03ca8ed9dd6c363024bdad8fb30832f4f72688b7a12a790dd450dc1102"
+    },
+    {
+      "path": "audio-production/reaper/ecology-fauna-01-headroom-pcm/production.rpp",
+      "sha256": "cd36b14fdb8a2699d25c820c4218e01b59baabbdcf74bb6f01284a8c038216b6"
+    },
+    {
+      "path": "audio-production/reaper/coverage-tide/production.rpp",
+      "sha256": "b2b86655ecb86c18e5075aa3fc1e791b27ed9b3530a2a484d61f8c8c089b0f7f"
+    },
+    {
+      "path": "audio-production/reaper/music-candidates/production.rpp",
+      "sha256": "4985fa11a71d06fa78bf9f778985a262ffa539ab15e6206911dd2e9924989bdc"
+    },
+    {
+      "path": "audio-production/reaper/ecology-fauna-02-headroom-pcm/production.rpp",
+      "sha256": "f02450cd3d621ed8eee680f8ed0b49c405a36fafe648d40c576b621ccda7e322"
+    },
+    {
+      "path": "audio-production/reaper/coverage-environment/production.rpp",
+      "sha256": "bc01569984de0e56d939fab33b0b3c5c09fb5ad4278127277f2ca7d604da2365"
+    },
+    {
+      "path": "audio-production/reaper/coverage-frost/production.rpp",
+      "sha256": "d4b9fe45a1e755856494a121e686a6f50e0fba21670775d54d896bbf383b9ac5"
+    },
+    {
+      "path": "audio-production/reaper/ecology-fauna-06-headroom-pcm/production.rpp",
+      "sha256": "ac901f495cd318a35c524920ff439a3a1df885843aab47d49ce32ac975fbda2d"
+    },
+    {
+      "path": "audio-production/reaper/coverage-stone/production.rpp",
+      "sha256": "1c822b163cd0949b0310a46669a6fa6585062ad26ff71175f6ed3c2b47a1cb87"
+    },
+    {
+      "path": "audio-production/reaper/movement/production.rpp",
+      "sha256": "2322b40725425d72af54848c970faf289c2a5347a90f5965770056551e645fe4"
+    },
+    {
+      "path": "audio-production/reaper/ecology-fauna-03-headroom-pcm/production.rpp",
+      "sha256": "f1a1b1b8f82559de5aac50936fded48dc74bbbe6d4a33c07e8682fd5d5b713a9"
+    },
+    {
+      "path": "audio-production/reaper/coverage-score/production.rpp",
+      "sha256": "cfadfff1639beb9446b297ea80474002346be52464d0f0d43ed69b209ea3d96c"
+    },
+    {
+      "path": "audio-production/reaper/authentic-recordings/production.rpp",
+      "sha256": "b7025c3d2a38975e98d02aeda6caa83fcb757f1f616da2dd7450d96e0ace010f"
+    },
+    {
+      "path": "audio-production/reaper/coverage-wild/production.rpp",
+      "sha256": "86d11d4122585d15cd140389f1f2827faec026f28bfe97f84ebe6aae074f1f44"
+    },
+    {
+      "path": "audio-production/reaper/coverage-storm/production.rpp",
+      "sha256": "e74cfb41655e02edd274f82bf1ed1dcc784a7ca88df9755e4d705fbfb6d4e5b6"
+    },
+    {
+      "path": "audio-production/reaper/coverage-void/production.rpp",
+      "sha256": "e48028ff4b2f0e40a879032e6c181c8d7db7baa97ff80b77ad3ffe4af0cb340d"
+    },
+    {
+      "path": "audio-production/reaper/identity-comparison/production.rpp",
+      "sha256": "e134fafd9f16516c447bffa81ae3a6eccac49fbba9f203f0c605d655ca3ff484"
+    },
+    {
+      "path": "audio-production/reaper/ability-venom/production.rpp",
+      "sha256": "5e15b915977e1f58b79febbc8ea3849cadb6d229a4616ab06dbb657c458f6558"
+    },
+    {
+      "path": "audio-production/reaper/ability-void/production.rpp",
+      "sha256": "3edd3d1a983d870163dcc6b4b7716ba8c7a5e35d250b070165a40d98349476d0"
+    },
+    {
+      "path": "audio-production/reaper/ability-wild/production.rpp",
+      "sha256": "395450173a255345178bbddb6d10c72811b97330658a89d37e2e7b50bf793c57"
+    },
+    {
+      "path": "audio-production/reaper/ability-frost/production.rpp",
+      "sha256": "255fdba80690e3d1dcf324e6d88f6002447b6b1ac7802b15c925ec1741db3b92"
+    },
+    {
+      "path": "audio-production/reaper/coverage-contact/production.rpp",
+      "sha256": "699b6e7b12bb36058b9638012bde7077fa446e2f7bf41b81ba8c93506cd1ed2b"
+    },
+    {
+      "path": "audio-production/reaper/ability-stone/production.rpp",
+      "sha256": "1e2af7e58fd4019360a069e3f691a20b1966c3423aa5a3afa0bc0dcec68e2ec5"
+    },
+    {
+      "path": "audio-production/reaper/battle-ui/production.rpp",
+      "sha256": "c819227d0625e447f60d1afe0797202542fc9d1a938f216b945230097c87ff46"
+    },
+    {
+      "path": "audio-production/reaper/ambience-weather/production.rpp",
+      "sha256": "6141ab18a4ba9a7d096493676c0bbe7e25430589c3ee44b2cf8df7dd26537fda"
+    },
+    {
+      "path": "audio-production/reaper/coverage-life/production.rpp",
+      "sha256": "becce8638c3dea35008b1f48f4bfcbf58d1a35f973c9856d5501da2c83bc0304"
+    }
+  ],
+  "accepted": false,
+  "spendUsd": 0
+}

@@ -1,0 +1,31 @@
+01-forest-elephant quadruped
+02-elephant quadruped
+03-asian-elephant quadruped
+04-african-elephant quadruped
+05-rhinoceros quadruped
+06-hippopotamus quadruped
+07-polar-bear quadruped
+08-bear quadruped
+09-wild-pig quadruped
+10-rat quadruped
+11-cow quadruped
+12-bull quadruped
+13-horse quadruped
+14-sun-bear quadruped
+15-grizzly-bear quadruped
+16-gerenuk quadruped
+17-tahr quadruped
+18-arctic-hare quadruped
+19-blobfish fish
+20-tripod-fish fish
+21-monkfish fish
+file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:20
+ throw Error('Unsupported controlled library family');
+       ^
+
+Error: Unsupported controlled library family
+    at libraryFamily (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:20:8)
+    at compileLibraryMaster (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:48:16)
+    at async file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_C114_20260927/compile.mjs:13:10
+
+Node.js v26.10.0

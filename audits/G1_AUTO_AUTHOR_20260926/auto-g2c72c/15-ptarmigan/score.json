@@ -1,0 +1,10 @@
+{
+ "id": "15-ptarmigan",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: quadruped matches clearly better (0.0084 < 0.0175)",
+  "extra-anatomy (unassigned): a limb-down appendage of 6.8% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

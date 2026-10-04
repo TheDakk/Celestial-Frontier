@@ -1,0 +1,28 @@
+{
+  "name": "Centipede",
+  "masterSha256": "ade637f8363cd5ce51ecebab5e0e58adc2a37fad595d969c0a4f5e8f6a2e20df",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: low curved flattened dark/rust segment plates, yellow/orange articulated legs, two long antennae and elongated terminal pair. Many near legs are distinct; far roots/tips partly occluded, and exact biological pair count is unverified and must not be reduced to a rig ceiling. Right antenna and left terminal tip enter required margin. Head forcipule/eye proportions need species review; no anatomical admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 95,
+      "y0": 473,
+      "x1": 1165,
+      "y1": 767
+    },
+    "margins": {
+      "left": 95,
+      "right": 88,
+      "top": 473,
+      "bottom": 486
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "name": "c54-14-goose",
+    "before": [
+      "hit",
+      "tame"
+    ],
+    "after": [],
+    "fixed": [
+      "hit",
+      "tame"
+    ]
+  },
+  {
+    "name": "c54-15-quail",
+    "before": [
+      "tame"
+    ],
+    "after": [],
+    "fixed": [
+      "tame"
+    ]
+  },
+  {
+    "name": "c56-10-raven",
+    "before": [
+      "hit"
+    ],
+    "after": [],
+    "fixed": [
+      "hit"
+    ]
+  },
+  {
+    "name": "c59-08-vulture",
+    "before": [
+      "hit",
+      "faint"
+    ],
+    "after": [
+      "faint"
+    ],
+    "fixed": [
+      "hit"
+    ]
+  },
+  {
+    "name": "c56-09-crow",
+    "before": [],
+    "after": [],
+    "fixed": []
+  },
+  {
+    "name": "c56-13-magpie",
+    "before": [],
+    "after": [],
+    "fixed": []
+  },
+  {
+    "name": "c56-15-dove",
+    "before": [
+      "melee:claw",
+      "faint"
+    ],
+    "after": [
+      "faint"
+    ],
+    "fixed": [
+      "melee:claw"
+    ]
+  },
+  {
+    "name": "01-robin",
+    "before": [],
+    "after": [],
+    "fixed": []
+  },
+  {
+    "name": "02-pigeon",
+    "before": [
+      "faint",
+      "tame"
+    ],
+    "after": [
+      "faint"
+    ],
+    "fixed": [
+      "tame"
+    ]
+  },
+  {
+    "name": "03-duck-v2",
+    "before": [],
+    "after": [],
+    "fixed": []
+  },
+  {
+    "name": "04-hawk-v2",
+    "before": [
+      "faint"
+    ],
+    "after": [
+      "faint"
+    ],
+    "fixed": []
+  }
+]

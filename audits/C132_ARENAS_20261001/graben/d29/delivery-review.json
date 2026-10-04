@@ -1,0 +1,165 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "graben",
+  "biome": "graben",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "graben"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "graben"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "graben"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-far.generation.json",
+      "sha256": "803afe866f3218c7cbba609059a520ed67fc2191be4ed41d242aa820e86735ab"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-mid.generation.json",
+      "sha256": "f1cc4dc4cbdfa85e9aac04628ecc400f9d51d3699f7b7fbcf2f66bfd05dbd209"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-near.generation.json",
+      "sha256": "58a6c92726b19344cf583ebd40906b8eb4522fbbd9011be237fb114a480eff9b"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-composed-review.png",
+      "sha256": "34169489ce279f422bec194bad7ccfbe3a6dafc20fd381ebdb9ffe8e476a984a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/visual-notes.d29.json",
+      "sha256": "b3db8fb142eac10ce8445c9e9e899648da5b07e38c65505c2c7d44ba5d319800"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-manifest.json",
+      "sha256": "4e36e35f93242604918ad3e2856840da1d75ce2449acdb3bed3b12004f9acea0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-recipe.json",
+      "sha256": "680caf3e53e7cdd53979894f59c1133c7b34c9918a669a0b2f0fc14095a3ced6"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-far.generation.json",
+      "sha256": "803afe866f3218c7cbba609059a520ed67fc2191be4ed41d242aa820e86735ab"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-far.prompt.txt",
+      "sha256": "dfe6fd8dbb777c661547ddeaa2522ad39ed348c2a8cbfc64cadf7789b072a25b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-far.png",
+      "sha256": "ef48ccb59112d83c093941c875229acb9d2ff4ac94493a3950d5c5e404ae5274"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-mid.generation.json",
+      "sha256": "f1cc4dc4cbdfa85e9aac04628ecc400f9d51d3699f7b7fbcf2f66bfd05dbd209"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-mid.prompt.txt",
+      "sha256": "99698dbe5c70e865b944b23a4c44c76dd04949ca68414b623c90227ff7522cff"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-mid.png",
+      "sha256": "ca2cddf4bc351b32818572f36a4cd10b4d14820d3141cbdef877241470dbeecb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/keyed/arena-mid.png",
+      "sha256": "795f6281f40966c6ceb661b02c283779d2f4512756a6875ea0db2410cb4aba88"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-near.generation.json",
+      "sha256": "58a6c92726b19344cf583ebd40906b8eb4522fbbd9011be237fb114a480eff9b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-near.prompt.txt",
+      "sha256": "533eec1f6911e27b4a3c57d0d28a9bc80df882f7413a9719a355a6e9bffc42e6"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/arena-near.png",
+      "sha256": "544dc7745a511e7002ba8828769147ae1eeab5182294096c948f5d7c2e0ebc0f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/graben/keyed/arena-near.png",
+      "sha256": "dc2558067785b99d71c957c116aba14c341fd7b03cfb62331b8f47806d47874b"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/graben/visual-notes.d29.json",
+    "findings": [
+      "Native full-size composite inspected at 1672×941. The broad gray fault plain is continuous at the stand line, with side cliffs and an open central run-up.",
+      "The MID has a conspicuous second pale-gray fault-wall band across the center; its sharp clipped contour and cooler color differ from the atmospheric FAR. Some green/cyan or pink edge remnants remain on cliff tips and moss.",
+      "The lower NEAR grit/moss layer changes texture and color along its upper edge. The FAR bright region is stronger at upper right, so shared-light agreement needs visual review.",
+      "Mechanical candidate checks do not prove smooth parallax, creature-ground contact, silhouette clearance or visual acceptance; qualityAccepted stays false."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

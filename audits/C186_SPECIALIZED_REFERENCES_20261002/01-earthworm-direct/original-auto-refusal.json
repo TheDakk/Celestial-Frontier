@@ -1,0 +1,12 @@
+{
+ "id": "01-earthworm",
+ "family": "annelid",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: serpent matches clearly better (0.0134 < 0.0415)",
+  "extra-anatomy (unassigned): a rear appendage of 28.6% paint that no reference appendage lands on",
+  "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+  "unexplained-anatomy: 33.9% of the paint lies away from the body and in no part (reference 3.9%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,554 @@
+{
+  "source": "audits/ANATOMY_COMPLETION_20260917/coverage-final.json",
+  "familyOrder": [
+    "clawed-crustacean",
+    "terrestrial-crab",
+    "small-crustacean",
+    "horseshoe-crab",
+    "barnacle",
+    "tardigrade",
+    "larva",
+    "bivalve",
+    "land-gastropod",
+    "water-gastropod",
+    "annelid-land",
+    "annelid-water",
+    "sponge",
+    "tunicate"
+  ],
+  "rows": [
+    {
+      "name": "Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."
+    },
+    {
+      "name": "Crayfish",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."
+    },
+    {
+      "name": "Fiddler Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."
+    },
+    {
+      "name": "Freshwater Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."
+    },
+    {
+      "name": "Hermit Crab",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."
+    },
+    {
+      "name": "Lobster",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."
+    },
+    {
+      "name": "Mud Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."
+    },
+    {
+      "name": "Vent Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."
+    },
+    {
+      "name": "Coconut Crab",
+      "profile": "terrestrial-crab",
+      "target": "brachyuran",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Dedicated pincer/leg topology required; adult is not a submerged aquatic fighter."
+    },
+    {
+      "name": "Amphipod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Brine Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Cave Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Copepod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Fairy Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Freshwater Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Giant Isopod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Isopod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Krill",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Prawn",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Tadpole Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Vent Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Water Flea",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger."
+    },
+    {
+      "name": "Horseshoe Crab",
+      "profile": "horseshoe-crab",
+      "target": "xiphosuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Telson is not a venomous stinger; dedicated topology needed."
+    },
+    {
+      "name": "Barnacle",
+      "profile": "barnacle",
+      "target": "barnacle",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Anchored feeding cirri, no locomotor leap."
+    },
+    {
+      "name": "Tardigrade",
+      "profile": "tardigrade",
+      "target": "lobopod",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Eight lobopod legs and stylets require exact topology; no arachnid fangs."
+    },
+    {
+      "name": "Fly Larvae",
+      "profile": "larva",
+      "target": "larva",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Life stage cannot inherit adult wings or adult six-leg graph."
+    },
+    {
+      "name": "Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite."
+    },
+    {
+      "name": "Giant Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite."
+    },
+    {
+      "name": "Mussel",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite."
+    },
+    {
+      "name": "Oyster",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite."
+    },
+    {
+      "name": "Razor Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite."
+    },
+    {
+      "name": "Scallop",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite."
+    },
+    {
+      "name": "Banana Slug",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution."
+    },
+    {
+      "name": "Land Snail",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution."
+    },
+    {
+      "name": "Snail",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution."
+    },
+    {
+      "name": "Abalone",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms."
+    },
+    {
+      "name": "Chiton",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms."
+    },
+    {
+      "name": "Conch",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms."
+    },
+    {
+      "name": "Cowrie",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms."
+    },
+    {
+      "name": "Freshwater Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms."
+    },
+    {
+      "name": "Limpet",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms."
+    },
+    {
+      "name": "Nudibranch",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms."
+    },
+    {
+      "name": "Sea Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms."
+    },
+    {
+      "name": "Water Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms."
+    },
+    {
+      "name": "Earthworm",
+      "profile": "annelid-land",
+      "target": "annelid",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Segmented body compression needs observed source geometry."
+    },
+    {
+      "name": "Ice Worm",
+      "profile": "annelid-land",
+      "target": "annelid",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Segmented body compression needs observed source geometry."
+    },
+    {
+      "name": "Flatworm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom."
+    },
+    {
+      "name": "Giant Tube Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom."
+    },
+    {
+      "name": "Leech",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom."
+    },
+    {
+      "name": "Marine Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom."
+    },
+    {
+      "name": "Polychaete Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom."
+    },
+    {
+      "name": "Scale Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom."
+    },
+    {
+      "name": "Tube Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom."
+    },
+    {
+      "name": "Sponge",
+      "profile": "sponge",
+      "target": "sessile-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile filtration; effect-only combat needs a verified root/colony anchor."
+    },
+    {
+      "name": "Pyrosome",
+      "profile": "tunicate",
+      "target": "colonial-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms."
+    },
+    {
+      "name": "Salp",
+      "profile": "tunicate",
+      "target": "colonial-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms."
+    },
+    {
+      "name": "Sea Squirt",
+      "profile": "tunicate",
+      "target": "sessile-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms."
+    }
+  ]
+}

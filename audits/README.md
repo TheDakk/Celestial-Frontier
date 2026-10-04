@@ -1,5 +1,51 @@
 # audits/ — external review bundles, preserved
 
+September 9 full-painting continuation: [viewer/runtime/fidelity evidence](AI_LANDFALL_CONTINUATION_20260909/README.md)
+and [paired handoff](AI_LANDFALL_CONTINUATION_20260909/HANDOFF.md). Full-resolution inspection,
+actual-size panning and Survey reload access passed the native desktop/small-viewport check on
+unchanged retained image bytes; first observer/focus failures remain intact. The static runtime
+pack builds/verifies at27.08MiB without weights. A detached full-identity review contract retains
+both actual negative species outputs. Favorable finish feedback is recorded; species fidelity,
+physical phone/full6.23GiB model and combined shipping/PWA/distribution gates stay open. No hosted
+actions or new generation; Claude-app review pending. This is the current continuation below.
+
+September 9 local AI continuation: [normal-game integration and species evidence](AI_GAME_INTEGRATION_20260909/README.md)
+and [resumable browser model delivery](LOCAL_MODEL_DELIVERY_20260909/README.md) retain the actual
+Land/progress/View/original-reload run and native small-file OPFS checks. Both generated paintings
+fail species/botany quality; physical phone/full-model delivery, shipping runtime packaging and
+small-screen art legibility remain open. [Paired handoff](AI_GAME_INTEGRATION_20260909/HANDOFF.md)
+records the accumulated direction and intended Claude-app review, still pending. PR #42 remains
+parked; no GitHub write or hosted action occurred. ROADMAP.md owns current resumption.
+
+Latest local graphics checkpoint, September8: [Earth layered riverbank](AV_EARTH_LAYERED_SCENE_20260908/README.md)
+records explicit biome-family checks, current named resident bodies, measured unobstructed placement,
+351 focused tests and four final native modes PASS, plus a verified local human preview. Every first
+red is preserved. Creature artwork remains flat/simple below the approved painted target; global
+D-9e generation filtering and articulated motion remain open. No hosted
+publication. [1Password signing was subsequently restored](SIGNING_RESTORED_20260908/README.md),
+and the exact local checkpoint is now signed as5117b4fa. ROADMAP.md owns current resumption.
+
+Previous local graphics checkpoint, September 8: [painted Mars composition](AV_PAINTED_MARS_COMPOSITION_20260908/README.md)
+records the unobstructed full panorama, 216 focused tests and four passing native modes. Both
+initial observer failures are retained. The approved painted direction, Earth species rules and
+UI placement remain binding. Current work is staged locally; required signing remains blocked,
+so it is not yet committed or published. ROADMAP.md owns the live handoff and next graphics work.
+
+Latest received biome/UI material references and deterministic creature-sharing requirements:
+[PAINTED_SPACE_DIRECTION_ADDENDUM_20260908](PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/README.md).
+UI layout copying is explicitly prohibited; current placement remains authoritative.
+
+September8 painted-space intake and proposed vista/biome/universe reference sheets:
+[PAINTED_SPACE_PIPELINE_20260908](PAINTED_SPACE_PIPELINE_20260908/README.md).
+Preceding offline Wolf coat/articulation study, technically checked and below art target:
+[CREATURE_CHARM_STUDY_20260908](CREATURE_CHARM_STUDY_20260908/README.md).
+Dakk subsequently approved the supplied space/creature visual references and supplied the
+biome/UI material references indexed above. ROADMAP.md owns live resumption and preserved verification blockers.
+
+
+Current U2–U4 authority and U2 sheet preparation: [UI_U2_SHEETS_20260906.md](UI_U2_SHEETS_20260906.md).
+[U3 icon study](UI_U3_ICON_STUDY_20260906/README.md) is review-only; product icons await Dakk’s choice.
+
 External review rounds arrive as uploaded zips. Those uploads and any working directory used to
 unpack them are **session-scoped** — they disappear when a session ends. The fix lists were being
 copied to the repo root piecemeal while the evidence, harness code and raw measurements were not,
@@ -9,6 +55,55 @@ Everything here is committed so a future session can re-read the measurement rat
 summary of it.
 
 ## Contents
+
+### Playable graphics/audio priority and Thursday review — 2026-09-07
+
+[Next playable slice and Claude review brief](AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md)
+record Dakk's expanded direction. The [manifest](AV_PLAYABLE_PRIORITY_20260907/manifest.json)
+preserves the complete staged U2 checkpoint before this priority update. No audiovisual code,
+new native run, signed commit or deployment resulted from this planning/record batch.
+
+### U2 post-close correction resumed — 2026-09-07
+
+[Current audit](UI_U2_POST_CLOSE_CORRECTION_20260907.md) records the bounded Claude-review
+correction and [preparation evidence](UI_U2_POST_CLOSE_PREPARATION_20260907/manifest.json).
+[Startup](TOOLCHAIN_STARTUP_20260907/manifest.json) records the approved Node update and verification.
+Native U2 results remain pending; earlier RED evidence and the full returned review are immutable.
+
+### U2 pause checkpoint and returned Claude review — 2026-09-06
+
+[Next-session handoff](UI_U2_NEXT_SESSION_20260906.md) contains the complete bounded correction
+plan. [Claude's response](UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md) is retained verbatim with a
+[hash/provenance receipt](UI_U2_CLAUDE_REVIEW_20260906/RESPONSE_RECEIPT.json). The diagnosis is
+confirmed by read-only review; the unfinished patch is NOT ready and remains unapplied. No new
+verification or development ran, and all retained RED evidence/older unknown causes remain open.
+
+### U1 rail proof and final guidance contrast correction — 2026-09-06
+
+[Current audit](UI_U1_HINT_CONTRAST_20260906.md) retains clean1609cf3 static/Slice/named-verifier
+PASS, small-phone hint contrast RED and large-phone NOT RUN. Its [23-carrier manifest](UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json)
+includes ten PNGs and all eight stage logs. [Preparation](UI_U1_HINT_PREPARATION_20260906/manifest.json)
+retains the bounded glyph-outline correction's 25 stroke tests, 72 release/budget tests,
+TypeScript, build and root validate results. Sourcea528791 passed static/native outline controls
+then retained a stale dock-fault wording RED with zero product findings. [Its manifest](UI_U1_LOCAL_CHECKPOINT_a528791_20260906/manifest.json)
+and [six-test correction preparation](UI_U1_DOCK_VERDICT_PREPARATION_20260906/manifest.json)
+retain that stop and the instrument-only successor. The [bb9ebe4 checkpoint](UI_U1_LOCAL_CHECKPOINT_bb9ebe4_20260906/manifest.json)
+passed static/dock/outline checks then found the intentionally hidden phone Charts shortcut;
+the instrument correction uses compact Settings→Star charts. [Route preparation](UI_U1_CHARTS_ROUTE_PREPARATION_20260906/manifest.json)
+passed 12 tests, TypeScript and root validate. [Final b457a7a checkpoint](UI_U1_LOCAL_CHECKPOINT_b457a7a_20260906/manifest.json)
+passed static315/3376/1skip then retained a real22.5px Planetside/hint overlap on small-phone.
+The U1 gate is OPEN; [the proposed U2 scope](UI_U2_PROPOSED_SCOPE_20260906.md) needs Dakk's phase
+boundary decision. No U2 implementation or further U1 rework has started.
+[Rail correction](UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) retains its prior controls and the
+[7c20246 static declaration RED](UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json).
+
+### U1 local checkpoint stopped at Slice — 2026-09-06
+
+[Audit](UI_U1_LOCAL_CHECKPOINT_20260906.md) and [resume](UI_U1_LOCAL_CHECKPOINT_RESUME_20260906.md)
+retain ce89128's clean static PASS, normal three-view PASS and noncertifying two-finding Slice RED.
+[Manifest](UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/manifest.json) preserves 28 carriers, including
+19 PNGs and full source/error receipts. Both phone canaries were not run; historical causes stay open.
+
 
 ### Overnight Batch 4 completion and review handoff — 2026-09-05
 
@@ -2209,8 +2304,8 @@ did not run.
 
 - `ARC1C_SCENEMEM_PR35_FEED_SUMMARY_HEAP_PLATEAU_RED_20260830_8792E8A.json.gz`: **49,864 gzip /
   788,479 raw bytes**; gzip/raw SHA-256
-  `ddffe7c9c6a3f70be691bbf2aace67dcaf589c9d51bed49815faaeca80e9b2ab` /
-  `26123f30de359a2a89802f8b52a085eca44383b9326135e4f426f0846b34ba13`.
+  `d2c32fe9a552d96233ae57e774e7f45a64699c2b8b2dd98436a171c42cf51210` /
+  `c80107681b764a69508972a6fab104269d6dcd34316199e9f95dd0f13c0aeadd`.
 
 Desktop warm aggregates were 17,946,666 / 18,091,706 / 18,199,046 / 18,472,382 bytes: range
 **525,716** versus 524,288 and maximum positive slope **168,448.8** versus 131,072. The final
@@ -2252,8 +2347,8 @@ named verifiers passed; the compressed carriers below preserve report status, no
 
 - `ARC1C_SCENEMEM_PR35_FEED_EXPRESSION_PASS_20260830_FC18F04.json.gz`: **49,848 gzip / 788,453 raw
   bytes**; gzip/raw SHA-256
-  `d902a0c51ff3d527a0c608dd2398446e0fa44de3bf80c6e82c1351298f684721` /
-  `a1b91935156e15775e31a6c4820385d8b5c4c5e21c4b86a9e58faf6a0e7bad2e`.
+  `7d73f402c6c5ce9de93211044865bf518b5a8c94e12e0d5c28454ec9e1f8f430` /
+  `3a0d250e4005f967f6804d270d8064509eb82d452e6a80e77de261ff84faed68`.
 - `ARC1C_COMPENDIUM_PR35_FEED_EXPRESSION_PASS_20260830_FC18F04.json.gz`: **520,555 gzip /
   10,785,813 raw bytes**; gzip/raw SHA-256
   `23871cdffe0c0fb989a4be20217d522bf92e833ee138acc7856fee9e4c61104b` /
@@ -2302,8 +2397,8 @@ verifiers passed with zero findings and complete lifecycle cleanup.
 
 - `ARC1C_SCENEMEM_PR35_FEED_NATIVE_PASS_20260830_F219D46.json.gz`: **49,848 gzip / 787,866 raw
   bytes**; gzip/raw SHA-256
-  `be26526d359179236a72586dcf7460348b9882d72b46908f6cc12d044873f3c9` /
-  `0b6d2619c90421f9bdc2fc20e8059a3f03c2bc3b0900044d14638945517a4d00`.
+  `34e9141b9b279b720dd9bf55abad1bd1dc8611dba77d68f5990299ff2f1bd9c2` /
+  `fbe512903fae7eb3e83a55374634edd59c0633e5948a39e68bf7c18e8241713c`.
 - `ARC1C_COMPENDIUM_PR35_FEED_NATIVE_PASS_20260830_F219D46.json.gz`: **523,112 gzip / 10,886,765
   raw bytes**; gzip/raw SHA-256
   `19b5551ca34c8e37a27f0b7a101cb945da4a13536fd23b036efcea6fbd99865d` /
@@ -2351,8 +2446,8 @@ unchanged begin/end source and complete lifecycle cleanup.
 
 - `ARC1C_SCENEMEM_PR35_INPUT_V5_PASS_20260830_51A8AC4.json.gz`: **49,747 gzip / 788,226 raw
   bytes**; gzip/raw SHA-256
-  `4410fdfc1270b0a232720670dc0702bb9cf0ee1f6808aad069aff414f2c5f30d` /
-  `1f0d4eca11dd9746dad1627aebb66d8c785580b764904adb4ebe198395b53aa3`.
+  `12d776d364d72a942fa5119958b92891cd1154f0bf093af0dcc3e6b21d35a820` /
+  `26ced1843e8fbf3c0b73dd6bba7b7690b1035dde17e54fb74f5987851a97766b`.
 - `ARC1C_COMPENDIUM_PR35_INPUT_V5_PASS_20260830_51A8AC4.json.gz`: **520,904 gzip / 10,796,770
   raw bytes**; gzip/raw SHA-256
   `2c9a4ac889d3f8050cd2d37f785dbc99b49c2828c5e1037cf79621e558dd1925` /
@@ -2431,8 +2526,8 @@ serial chain. Compendium, Slice, Glass and Recovery did not run.
 
 `ARC1C_SCENEMEM_PR35_CURRENT_HEAD_V8_BUDGET_RED_20260830_EBF172C.json.gz` preserves the exact
 terminal report at **45,097 gzip / 787,600 raw bytes**. Gzip/raw SHA-256 is
-`8060c10871ac0a31ff0eef8183da8f91ec79c8dd09c69a277d1f9855a86a14ac` /
-`a19654d003e04a947a0719150eb332a9bde038c02d41b16f00b2bbffa005ad46`.
+`3cb1d0c5260edfdfdc2b49ed6ea768924dabca36b8137419ce3ceb8a4e458e4b` /
+`21e988070a4a881415a2bfb853fbf3b64d030a23371b268bcd7d3450eb34ebb6`.
 The sole failure is
 `desktop/heap-dom-budget: bfcache: V8 heap used bytes 12594592 exceeded ceiling 12582912`:
 **11,680 bytes (0.093%)** above the 12 MiB absolute V8 ceiling.
@@ -2467,8 +2562,8 @@ are:
 
 - `ARC1C_SCENEMEM_PR35_POST_SAMPLE_TARGET_PREDECESSOR_PASS_20260830_656C85E.json.gz`:
   **44,966 gzip / 787,316 raw bytes**; gzip/raw SHA-256
-  `5e65452247d0e61a86f7ef15ad7623cf2ce00a37123b34188cbb5fde6a997a10` /
-  `7feb9b218af4339d35674cd7dcffb0288acb6be4e6d53b6036c60f97c6881cfb`.
+  `92e23a975deacc01a90427b596562073a4f2ea4729c39c7494aae44fbd37c27f` /
+  `4ff663b0cb4958f878284d6e7554a1f61cf759fce87cb6fa47d94d24f8a5011d`.
 - `ARC1C_COMPENDIUM_PR35_POST_SAMPLE_TARGET_PREDECESSOR_PASS_20260830_656C85E.json.gz`:
   **452,179 gzip / 10,865,558 raw bytes**; gzip/raw SHA-256
   `b435bb9aa0bb5df0021fbdec216184b4080c6635d94a55d5439aab938c3beea6` /
@@ -2518,8 +2613,8 @@ are:
 
 - `ARC1C_SCENEMEM_PR35_STORAGE_REFUSAL_PREDECESSOR_PASS_20260830_961D107.json.gz`:
   **44,946 gzip / 786,692 raw bytes**; gzip/raw SHA-256
-  `6c1e2180e6d3523bf5b07021c24ad8aa9f6e67c1e0fc72b2433691afad3144aa` /
-  `77607fd1b824e12f973a85d82d45f7b09997523125f839a664ba7a42f224c648`.
+  `d76622a715e716268b9136b68b629ee1bbe19edb2aa07d9c7b8e7aad0bf2913a` /
+  `29997acb78013e3be6ce304f3103dc7ed65e64a9557dcef5d8bc74be5aac1a8c`.
 - `ARC1C_COMPENDIUM_PR35_STORAGE_REFUSAL_PREDECESSOR_PASS_20260830_961D107.json.gz`:
   **450,967 gzip / 10,834,118 raw bytes**; gzip/raw SHA-256
   `3f39cfca848e5aaa790e0f6e27448881d8985501313c2027f78f0064b53d2b36` /
@@ -2561,8 +2656,8 @@ source then ran the browser chain once per stage with zero retry on Microsoft Ed
 
 - `ARC1C_SCENEMEM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz`: **45,066 gzip /
   787,362 raw bytes**; gzip/raw SHA-256
-  `d0598401c43cf0d8d0b60f145de501c21ae86d3825d161b88b28f6d95ab2a778` /
-  `2b825b7ba33152ef882f5601ef7dea2b032ef042903bb7e3824740741e495709`.
+  `4893ba69fd2133fdad56f9763b5cd13462abd3e174c77b9faa13edb10f3f1cf9` /
+  `0737ac5c2d92b271a325825fd92ff2213d9b886782d10909500e62e59cd7afbe`.
 - `ARC1C_COMPENDIUM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz`: **451,063 gzip /
   10,821,649 raw bytes**; gzip/raw SHA-256
   `5ea6181267661e15b19005316e7871050113ed25e6bfe32873a93b0a8a708a50` /
@@ -2608,12 +2703,12 @@ passed **78/78** in **71,079 ms**. Their deterministic carriers are:
 
 - `ROOT_LAYOUT_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz`: **5,029 gzip /
   106,976 raw bytes**; gzip/raw SHA-256
-  `bcf4c524187fda97c7b4cbef8c807b8ffc944965533ef6d6bd75baccf2959e31` /
-  `37daf338ebf0cb9048e6caae245f8fe6e4cbff1fcfcab226a954485b487a5f98`.
+  `3f91ce6dda856038fe4bf64bed0191f31597fbef7bd062321e422bbeb39d3835` /
+  `441829f416947ee0d0986a6b7789a2c2106d5edc897520215a49092f3b5a58b6`.
 - `ARC1C_SCENEMEM_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz`: **44,965 gzip /
   786,975 raw bytes**; gzip/raw SHA-256
-  `29d99750ce372e617f3276451209561f0593d5631f49518bbce8d430099880fb` /
-  `3c7cea08d02dc533ac1ea8c5fbad953f6aef9ed436599763ff7d1da915e461c4`.
+  `a05707e7a58a1cf2707599f1afd230ce5b4ea20b391a19f98c7fefea5d625695` /
+  `2775811efa92a718c474575f1fcde985bd4fa3519cf081262397e3955ca554bf`.
 - `ARC1C_COMPENDIUM_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz`: **452,029 gzip /
   10,849,032 raw bytes**; gzip/raw SHA-256
   `251ca89cfa08b2663969ffc8acd9f9f2ac32154831b8b46aa0891b1e42cbf9db` /
@@ -3318,9 +3413,9 @@ with the serial stop rule, the standalone Compendium stage and every later brows
 skipped, and the run was not retried.
 
 - `ARC1C_SCENEMEM_PR35_RESOURCE_FINAL_FAILURE_20260829_A9F75797.json.gz`: 31,185 compressed
-  bytes, SHA-256 `5cfe7acf15fe6af68e578028374f25be9dd74dd14fa6d5b385eb3e81b7c1d9a0`;
+  bytes, SHA-256 `292078e969de73c611dcc2c7c9a34293ead842328dbea29a58f06479e9f2af37`;
   430,413 raw bytes, SHA-256
-  `ceeaa327220c51021da26aae98558d695ce657343ced9ddc510fa8ebd61ce74a`.
+  `32276ba04d6799262b91c21434ddc2cecbeedee8a0f538834bd872f435b97544`.
 
 The carrier passes gzip integrity and decompresses to the exact raw report hash above. This red is
 immutable evidence for its own clean source only; it is not a SceneMemory certificate, a named
@@ -3339,8 +3434,8 @@ retries and completed browser/server/workspace-lock cleanup with no fatal event.
 
 - `ARC1C_SCENEMEM_PR35_HEAP_PHASE_DIAGNOSTIC1_INSTRUMENT_STOP_20260829.json.gz`: 5,669
   compressed bytes, SHA-256
-  `6529648717ef9a0cc9d5ae67fa2c2d49b31102ff9dad8ed03f2af13099bd9ae3`; 15,022 raw
-  bytes, SHA-256 `47d3c9d371c622576410256ebf6fce94c4268ed90afa563ad06e85e9fdb82d4e`.
+  `d9564ab7cd507a90ddbd0129b4ce67e3b7f625049a22856e92da802e2b8b645b`; 15,022 raw
+  bytes, SHA-256 `9e0521d55b5f7ed20dd1b89f4af20312436be1b2c5005577a03c59bf80359e66`.
 
 Dirty no-budget calibration `20260829-pr35-a9f75797-heap-phase-diagnostic2` then exercised two
 fixed complete post-GC measurement passes on that exact unchanged product build and Microsoft Edge
@@ -3440,9 +3535,9 @@ invocation omitted required `--budget` and correctly failed closed before verifi
 that invocation reused the immutable report and did not rerun the browser product stage.
 
 - `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CERTIFICATION_20260830_2046000.json.gz`: 49,762 compressed
-  bytes, SHA-256 `42ee43f8cf7250a88a0498da62dedb492843be775535a4caa0c4cd6a4229f4d0`;
+  bytes, SHA-256 `50130def25299b0141856703196b8ef5977d133b3764647b9c45e68188ea85d5`;
   786,854 raw bytes, SHA-256
-  `c43bda32846fe4539d9136bac6d0f002af68b259c01ec43beb447a12dbad5c4d`.
+  `4008632b21e818165cd0ff244a8f72f125dc8cd9ad29e8920208adeb85c898b1`.
 
 The carrier passes gzip integrity and is the immutable SceneMemory certificate for this exact clean
 source. It authorized the one following Compendium attempt only; that later stage stopped red as
@@ -3656,11 +3751,11 @@ Slice-bound verifier passed against the immutable report and hash above. This wa
 rerun nor an evidence retry; the report's own retry count remains zero.
 
 - `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_032631339.json.gz`: 5,205 compressed bytes,
-  SHA-256 `8f6c97b60db09bde8480a1d8b44eac439a886d3385b2103eadf6ef74b3c7e0e1`; 106,976 raw bytes,
-  SHA-256 `2b0cc3ed3de88753d424bd6284f1dd95c4f6b27a6116171727da67ebe7923856`.
+  SHA-256 `d17a65c8a1e68cd1699532161de7d7316c307c8550d9435dc000f04c97c63a8c`; 106,976 raw bytes,
+  SHA-256 `8ddfcd60406d3f3a1260cc2cd476ef716a3c95441235a42ba62e0965f2b2b8a5`.
 - `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_032713794.json.gz`: 32,712 compressed bytes,
-  SHA-256 `1dd12b2504440f2e4547d85249483abfebcabb55b6fc2c7df9a14fd58b85821b`; 426,923 raw bytes,
-  SHA-256 `3077dba727edcd4bac470e7278f401dca82768138837123eba4e5e5dd6173db9`.
+  SHA-256 `c166f9382fdca836eea283bf2c12b69269e55c1904581fc4d65a1a40f990272d`; 426,923 raw bytes,
+  SHA-256 `c9b5c70919fb0d41b769012b9aa191527c17fd19ab9d5b429444f5916b4238a2`.
 - `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_032813280.json.gz`: 557,209 compressed bytes,
   SHA-256 `89244a33ac7f29637c27ca57b1d5df30dcbf764e23569962025f7ab9ad4a772a`; 8,692,212 raw bytes,
   SHA-256 `58824d5559c2a24eb74710b2f292e5d8b9413521085f95ab73900e00ddd1fab4`.
@@ -3708,11 +3803,11 @@ Glass selftest, full v2 **1,712 passed + 1 skipped**, all three typechecks and t
 reviews are green. Product, release, build and memory-producer bytes are unchanged.
 
 - `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_025609573.json.gz`: 5,207 compressed bytes,
-  SHA-256 `1e3c270d1a876b90fc02a26dc0702717baf4e4ea797f86789d860437353c19c5`; 106,976 raw bytes,
-  SHA-256 `19dbdda5a51cbb9928bc9fff32ed6941c325b92162d7f9f7e4cd91a1cc5ae70f`.
+  SHA-256 `c5b6522fafe731cbe9cbd056770768f802aa971b9bf2dec71f83eea9c17b11ea`; 106,976 raw bytes,
+  SHA-256 `f0571a26f3ca6d54581547c6a5b5afb1c6aee9068d7a77b5463d6caf5c596cdf`.
 - `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_025634382.json.gz`: 32,725 compressed bytes,
-  SHA-256 `7fe274107a1cba5d30b22cab94ded34b730ac1629277716790b8410448a0a76a`; 426,858 raw bytes,
-  SHA-256 `cf377270a4c3af6b37bf9646873c892f3a6b9209aabdda152257ead79c8ade23`.
+  SHA-256 `1ed459b034aa322f0e2c2e1c943682912b9fb65d1fde5b398cb3b26fee59add1`; 426,858 raw bytes,
+  SHA-256 `b5604e2f6efe9fe603c80127f51b6bd60ca325a85921c3c3e0333bd12264d7f1`.
 - `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_025733044.json.gz`: 554,571 compressed bytes,
   SHA-256 `ef340966184369d8042adb6ac355e8e8da358a823abc79de45c9c42cae8b66e2`; 8,635,346 raw bytes,
   SHA-256 `fdbd12d6081c4a8328410e4a3a2e6959158a11c4885b57d127dbc745a4b9916c`.
@@ -3759,11 +3854,11 @@ unrelated branch. Focused 65/65, both report selftests, full 1,712-pass + one-sk
 typechecks, `artunused`, producer derivation and diff hygiene are green.
 
 - `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_020621336.json.gz`: 5,148 compressed bytes,
-  SHA-256 `7116c9ea83faf8567019e6124c525782f1e5f29662c23a4d935c06fa263a74d5`; 106,976 raw bytes,
-  SHA-256 `01b0e841f175b013d1efbc4e78a9f9266333da23ef60ab9231ad3eccd50a6a17`.
+  SHA-256 `3225f13188946b5f8558e21c88218949a98eaee39a3d62a27e517e74dd734d53`; 106,976 raw bytes,
+  SHA-256 `e2016032e634ff71736c15277295969c42a6ff348e8f36d4b40bcc48f5abc977`.
 - `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_020645679.json.gz`: 32,705 compressed bytes,
-  SHA-256 `10842e23a7d8702fd8448b6d1ed2a18733064a0ffe9a44e77b4fdc81abdf2e78`; 426,771 raw bytes,
-  SHA-256 `006b0db985bc5a7522d37a545e76a9d2bc99206df060f53ec7233a042687c5b1`.
+  SHA-256 `6748117a2a1458647a22ac5d1a88bc0c4d6066b376f7906836392eb863becfd4`; 426,771 raw bytes,
+  SHA-256 `60d537fff76a886ffa85cb9951885a6cc5332faa9777f972a2f071f22f8b0b28`.
 - `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_020743938.json.gz`: 554,745 compressed bytes,
   SHA-256 `0459bb92d22c962e8f766774af0a0b4a26c9834c4595db2a347d0a8b273b729f`; 8,621,227 raw bytes,
   SHA-256 `b3147fdeb91f74f56ffb58484fc37927ce140980f11d42a6bc5a0a39dc19101d`.
@@ -3796,11 +3891,11 @@ outcome. Focused 64/64, both report selftests, full 1,711-pass + one-skip v2, al
 `artunused`, producer derivation and diff hygiene are green.
 
 - `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_014157430.json.gz`: 5,026 compressed bytes,
-  SHA-256 `8c6743839683b1917ba52dbf831967d9902de5be535954069caa140296ed6893`; 106,976 raw bytes,
-  SHA-256 `9ad615522348a5b7c3da7e46230a4c03c3cf96501ebd4f119cb94635ced80a85`.
+  SHA-256 `07da7fe2bcdd5b384abbd6fde8c7d94822c91c0966c50a82a0b5bd084c3e3793`; 106,976 raw bytes,
+  SHA-256 `f3f68458e6a5ca60209b1ff0414230a0740830c6eb445e1c8744e37f6f655025`.
 - `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_014226362.json.gz`: 30,488 compressed bytes,
-  SHA-256 `025328bd245b90b0a9a54a75f77057309318f241ca5b122a8a3d0df012f4f98d`; 426,760 raw bytes,
-  SHA-256 `dede46d7dfb3d8bc6f57e054ebf2af7e21aa2292aa21c0e42c2663c59ec2b910`.
+  SHA-256 `3ce4684b13e446d88c2194c0ec61e3a85c1d6ae4b26e33e147f81006424e3506`; 426,760 raw bytes,
+  SHA-256 `06c2bf5fd4a2d0a0e6f2fa39d704f37e4eb2a84c343c790f30b8e30099990921`.
 - `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_014326379.json.gz`: 450,582 compressed bytes,
   SHA-256 `0b3e90a0ce26e437823c506a7c1baddcc2f589f05fab94234819030439aa32c4`; 8,595,166 raw bytes,
   SHA-256 `fa866a078532457531e0525217dde12f6e5a2230124634f7b0cd413f45b8b3db`.
@@ -3940,11 +4035,11 @@ select strict replacement ceilings; certification must then restart the complete
 Layout on another unchanged signed source.
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260829_001955334.json.gz`: 5,029 compressed bytes,
-  SHA-256 `8a922d61d7195db624984f4ca735b82b5076955d7c641295061cc252573cb000`; 106,976
-  decompressed bytes, SHA-256 `bd2dacb071e4f667a0565b2cd43de06461adcc228bc60b1b37700bbf24f3a813`.
+  SHA-256 `db8982af855a365e64419baab09cbd8d603e785e5c22d116434ddc82a8407ed1`; 106,976
+  decompressed bytes, SHA-256 `bdd142b55b780467a1669ef1d33d59ac32509f3e41b51fe4edf5f6214a6c7c1c`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260829_002021315.json.gz`: 30,441 compressed bytes,
-  SHA-256 `f9bb59a819c91babe2cc429a41b00ce43cf49582d7d8b0e7db4a13dbcce448c5`; 426,948
-  decompressed bytes, SHA-256 `1355c8a67e64a4cf058e6dd85aeda006396e37e7b885f97b724f173da440ec2d`.
+  SHA-256 `3b1edc73b44c7104cb6282809d208bd096f0f8378f204f7d10f95a3db5175e27`; 426,948
+  decompressed bytes, SHA-256 `22fb6f4af0e42c63591086fbd1c1723f3742f6801ae9f79c6f9bc194b6c28390`.
 - `COMPENDIUMMEM_CURRENT_INPUT_FAILURE_20260829_002129399.json.gz`: 452,821 compressed bytes,
   SHA-256 `25292bcd0ff55a32842c0958d25ae9d299c1ef8470ca6dc7269ccdfd1c092716`; 8,591,680
   decompressed bytes, SHA-256 `c5adaca207770251b48b3cadf634d80bd03cb55f589814fd3e93c8c635aba5d8`.
@@ -3970,12 +4065,12 @@ cleanup all passed. This is an instrument timeout-wiring failure, not a product 
 campaign stopped there, so Compendium, Slice, Glass and Recovery correctly did not run.
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260829_000555600.json.gz`: 5,028 compressed bytes,
-  SHA-256 `f872b3c4914d893671d40055c0ed8dd4c7ff4d2b1e1bff4874991250d68b355b`; 106,976
-  decompressed bytes, SHA-256 `012bf5ed8fabf6e9c6bc6058a6933861c777bbac6e45dd8c6bfcd92fb3f0b37d`.
+  SHA-256 `1fd711337bdda94ee3530dd7c420ef674b8d9a6257900f36941e69adb465fda7`; 106,976
+  decompressed bytes, SHA-256 `131a4d1a262a5aab32a186095e62eecfe07777ee52360adeb53b71097ce0964f`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_INSTRUMENT_FAILURE_20260829_000629495.json.gz`: 15,721
-  compressed bytes, SHA-256 `e88138914aa9c5f838aa9fcb3db3f7fb27621597ea21bd7439daaa78465d2f31`;
+  compressed bytes, SHA-256 `575ed15738104a9c2193b58c78e153c71ac3639ab45d95e40e00c9d29552881b`;
   169,741 decompressed bytes, SHA-256
-  `3cdfe2f6bbece91010e641451c043783227676ad9f2b59f8f706ee505b8b1b73`.
+  `91e8235497273cc8d81b0be0f85c5fb4e0feebb4ef24ac5d86670b2d2741f306`.
 
 Both carriers were produced with deterministic `gzip -n -9`, pass gzip integrity and decompress
 byte-for-byte to their exact raw artifacts. The repair keeps each CDP command at or below the
@@ -4011,11 +4106,11 @@ source only. It grants no HUMAN, hosted, integration, whole-Gate, version, relea
 preview or publication authority.
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_150805271.json.gz`: 4,669 compressed bytes,
-  SHA-256 `bcef7c40e36c900802e6e57fddba60de5b95e653cca8f3231f7731c3c3fc024c`; 106,062
-  decompressed bytes, SHA-256 `7c6a605435c785caa758edbe32841c883d171b89a1c8a5a6ba21afeaac70110e`.
+  SHA-256 `322f9120dc2e24ba4b4dd3c1c3fbb409128c8e02ab44c75e7aa3c943928ee883`; 106,062
+  decompressed bytes, SHA-256 `c2483c71ec5450779f439d4522b40e010ec8e3d0a7c053669904019eceacea47`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_150839984.json.gz`: 22,331 compressed bytes,
-  SHA-256 `ac608d605fd789a84a58ca125b0fe42157ea7218f3dbc9f41d072ef42dff38cd`; 305,665
-  decompressed bytes, SHA-256 `0fc075d677dbb37ff1a7c70d1e3c981ecc7abb746b79e3fd09a3a7b8ce574f75`.
+  SHA-256 `c6fff514edcf1eda905667a0cd9e62603b4c19bfc19b8744f5ee06e9ac58dcdc`; 305,665
+  decompressed bytes, SHA-256 `c91dc7a774d07481c72df403cad7bcc6700e148fb88e659ad1eb98f8123a34b3`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_150944210.json.gz`: 442,022 compressed bytes,
   SHA-256 `717064782d4a0d18844d1762b684ac692c865fd012f7f183d7c7caa4853b33bb`; 8,524,870
   decompressed bytes, SHA-256 `09425b6b1a35e673c042442970c7ee67c25ba46be53e8ab46247ec3ba6c587b8`.
@@ -4065,11 +4160,11 @@ Final12 grants no Glass, Recovery, HUMAN, hosted, integration, version, release 
 authority.
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_140426642.json.gz`: 4,668 compressed bytes,
-  SHA-256 `daebe2ef62e3e318b3b13e74e4324b67e14255dc07b07f3a5f5ae23080c55e78`; 106,062 decompressed
-  bytes, SHA-256 `309c591414980ca4d839478c4963ad9fe68478ce9d98d8d3fb7d9bd2d6a9fdc4`.
+  SHA-256 `198f160eacc3ea55fa2c4877713d46f30011643c5833ff9d07269c33dabac2fe`; 106,062 decompressed
+  bytes, SHA-256 `96aa7b79b4037a2894579ab2a20711f2c4c721f126d8fe6f91cc8669d9565aa6`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_140504682.json.gz`: 22,288 compressed bytes,
-  SHA-256 `3834ab2603a8c3b781d58542009f89e9fc5b2c9617c25bb7bebaa82e075b74fa`; 305,506 decompressed
-  bytes, SHA-256 `b22e90bc2e443e42b6790591c58292f16249cbeb8b8da464e7c7d1534e4cf7ac`.
+  SHA-256 `862df2a8733b156e5e3a899c849a1d94daa9679d944613f794723dbb6f5a5605`; 305,506 decompressed
+  bytes, SHA-256 `2d764f38a6fa173df21b76346448c896462e2209cb031a7db59fbeae5352afeb`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_140612082.json.gz`: 443,335 compressed bytes,
   SHA-256 `a2c235cc33b1de1f3b07f461cd986febcf4e6c95f113338588049021fd0a3a7a`; 8,562,987
   decompressed bytes, SHA-256 `1d4e5e59af3d7b07d14bc63a25a8f5ff58a6fae99b5481e9e28d7334a8ea9c7c`.
@@ -4131,11 +4226,11 @@ point-version policy, or release identity. A fresh complete chain on the signed 
 is required.
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_112951723.json.gz`: 4,783 compressed bytes,
-  SHA-256 `aaa5b9a071d4ca905c4dfd924f56edda8a7ed589fdc65dc82902ad1ca3d85d6d`; 106,062 decompressed
-  bytes, SHA-256 `700f483c78b5fde4baeace9f4a6ad17fea50c0f92d151d488b1788de484afeae`.
+  SHA-256 `143e28769b5fdd00f68822b03dbc30282d00d7f041e028d5b7fa639de0a7d91f`; 106,062 decompressed
+  bytes, SHA-256 `81d0d71873e4769384ea5e636d405c4c33e75477d41336242a880c1be0074827`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_113018245.json.gz`: 24,084 compressed bytes,
-  SHA-256 `0555f55055d2958626823bcae92b6f7c32c04185760d2dc8d2b1c2193e55185a`; 305,731 decompressed
-  bytes, SHA-256 `e7523ad4c6d0d8405997a848f18700c730c590330d797d152f79e52d36cde709`.
+  SHA-256 `2da160e419667bbbdae36bd2533ca78e983c85c2c1b59897acee86beb090bb91`; 305,731 decompressed
+  bytes, SHA-256 `b2109238b27fabb997b80337c3599f726ee75f31f61928a8f9353f3f65321ec0`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_113116959.json.gz`: 541,274 compressed bytes,
   SHA-256 `d78a6fee001583293645de26817be1e0a2241233f377ac558046a379396c9274`; 8,542,263 decompressed
   bytes, SHA-256 `bc47a2d768080cd9d04257d300dcb4d009035d6611792d10f020d0beb179d5c8`.
@@ -4190,14 +4285,14 @@ Compendium → Slice → Glass → Recovery on a newly signed clean source with 
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_085940581.json.gz` preserves Final10 Layout. The
   gzip is 4,841 bytes with SHA-256
-  `4329476439bc6bbde11adeeb487e22f1d9a06c5f4b6b0f75642802c720ca9925`; decompressed JSON is
+  `7da2ff49d68427464758149d293624326e16df399d5f19e5790a9a1a992befdc`; decompressed JSON is
   106,062 bytes with SHA-256
-  `2fa05df1d8964a99943f1e235936446d02c6e285e41a73f5cc1432e4b786c638`.
+  `4ed486bc7efd0220d8cb32e5e3866e12a2945f88a2cc68965e9a306f576daa3d`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_090028728.json.gz` preserves Final10 SceneMemory.
   The gzip is 24,164 bytes with SHA-256
-  `99abfc6d0a084ce0ed874cf5516c833d1d73735e4ebb8c44c0d3ce870075a0e3`; decompressed JSON is
+  `c19a4d5c9412165dd150e2d1e83125d90c902a5e82d31f79391d10719066e1a0`; decompressed JSON is
   305,657 bytes with SHA-256
-  `00161fd6c4d8b5457776dc1768ea2022a142a73c892c8a4cdff207073e88116a`.
+  `56f8fd3e1d498f9741723962b1c80b79757111357e17159245744f5a4df990d7`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_090149421.json.gz` preserves Final10 Compendium.
   The gzip is 541,176 bytes with SHA-256
   `c93be41ed90be67236b10a2b57a79e252824b00091be9da55f84604de2ade8cd`; decompressed JSON is
@@ -4265,14 +4360,14 @@ SceneMemory → Compendium → Slice → Glass → Recovery with fresh run IDs.
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_064146278.json.gz` preserves Final9 Layout. The gzip
   is 4,839 bytes with SHA-256
-  `e9019f1cfd4339c4713f188d9c4431a360cf98cee953b286793dcc9746333286`; decompressed JSON is
+  `d8ad7e23e761ff614d27dde0e2d1b91d6f3ddf319387c30174787d8d54076434`; decompressed JSON is
   106,061 bytes with SHA-256
-  `7628b2be0db6ce8aca905582bb92d63eae4e688f8d7aaaa597b1417dd904ecf4`.
+  `7831044e786befbf08f01fa4e32cc1aa06cec3cf1076ba778c582a09d0272bb1`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_064212063.json.gz` preserves Final9 SceneMemory.
   The gzip is 24,120 bytes with SHA-256
-  `a195d31731899136d699343b736fe6940d2729a50d101caa268d08b3cf063e23`; decompressed JSON is
+  `f136975696fb2732936251bd88254f16ddf30af95305dd959814b3f21ef05f92`; decompressed JSON is
   305,647 bytes with SHA-256
-  `b9734acd5c6614e1c7b6f908aaf1e6a4547efef5f0d9d0451359bd96dbf8a3a4`.
+  `7daf6b3dd14d44c2129a898b251484af04a7ef87bdd9d8a91ac4859237b3cb30`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_064317311.json.gz` preserves Final9 Compendium. The
   gzip is 542,224 bytes with SHA-256
   `7612cd6e850057c6a7b5eb33154cbe71ede25e54cdb1a3c6a8ebc5714b125f07`; decompressed JSON is
@@ -4338,14 +4433,14 @@ Layout → SceneMemory → Compendium → Slice → Glass → Recovery.
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_045804245.json.gz` preserves Final8 Layout. The gzip
   is 4,784 bytes with SHA-256
-  `cf3611f023f92657e53b632e6760ac866bce449849ec5f5f7b104a128f268001`; decompressed JSON is
+  `f77d935406e2a34b9fe8a9d1d87d6446c707ca4eb89f8e2b4656b18dc1e64f2b`; decompressed JSON is
   106,061 bytes with SHA-256
-  `ae0c486c2b0bebf2047e55ffec131691dc457bc8f67af60b9b48efa57e70f5b8`.
+  `51daf9c70d64bbe3d33c9ec52209ebc3cd1166c1467478f548eabfc0ebf57374`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_045839643.json.gz` preserves Final8 SceneMemory.
   The gzip is 24,057 bytes with SHA-256
-  `a4ac0eeb323cd6558c690d5b1d57d1e5a0a36ec69997db22010e0d520bbef649`; decompressed JSON is
+  `bf5be1d8a8cb84f95a6566651b11c226e24e1594b36bb013d1f7efcaa4a33da5`; decompressed JSON is
   305,712 bytes with SHA-256
-  `5bbac8b3c71a396e0ace5ce04e2124c15695f0af92580cca47d85b3057cb2e2a`.
+  `1a26f41a1f5b67a7a8e5c203eec097dd643febd24ce6b3520528d25cc42daaf7`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_045959479.json.gz` preserves Final8 Compendium. The
   gzip is 543,085 bytes with SHA-256
   `f7dcc09f8a7ce419488a63e4c446ea384aea167caeb007ea321cc6f128de71ec`; decompressed JSON is
@@ -4406,14 +4501,14 @@ review, a newly signed clean successor must restart the complete Layout → Scen
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_031651483.json.gz` preserves Final7 Layout. The gzip
   is 4,782 bytes with SHA-256
-  `69db5b56a55b74ba4b3468cb59a2f85576757913cc9114b50da36abe062c6b77`; decompressed JSON is
+  `4fe5f98cff560014523e9a8b02b56a67a72292711e2040ca37d69c2ee1d3d22b`; decompressed JSON is
   106,061 bytes with SHA-256
-  `85d5220ebc3e592b21c42a49c03a95d78151b02b3971a4ffc61dc0ae9331b215`.
+  `b28d7603c2e01e5892990bb3baa46d2556f73adaaeff2d360ef29a86b9f0a409`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_031719888.json.gz` preserves Final7 SceneMemory. The
   gzip is 24,049 bytes with SHA-256
-  `73997c61e60ba655a7314eed8af8bbaa18a527c8d36da7bc96bdef7db8ed8d35`; decompressed JSON is
+  `d911988b99c4a0235932945e2cfe43492f317817b5258621b0b6f5a14a805b33`; decompressed JSON is
   305,669 bytes with SHA-256
-  `dda4da30da3a9cee3550c4c52f88f1b7ecff61a23507af548fbc863f488558cd`.
+  `73d9ae9a827ecf88f5fae6d73e719f76851ff226a8c5eb7487acbfa857ff583a`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_031936204.json.gz` preserves Final7 Compendium. The
   gzip is 543,901 bytes with SHA-256
   `adf44f5f06ba386065596d1e2578296bb3db6b633c79c2c1b50d91f88e3716f5`; decompressed JSON is
@@ -4470,14 +4565,14 @@ Final6 cannot resume, and a newly signed clean successor must restart the chain 
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_014710842.json.gz` preserves the Final6 Layout
   report. The gzip is 4,781 bytes with SHA-256
-  `52e3d3535a71738fa60e9ae5910aab18d3faf7420f71f09752d8290b6315f1a6`; decompressed JSON is
+  `84e64bea4d6918a846294bc95cc80ba86a5e4876acb73ace8519ca0245b82187`; decompressed JSON is
   106,061 bytes with SHA-256
-  `7b1543b848acda57c0fc077996dd837a2b8a54dfe32a552ad8fb4a8a9e413305`.
+  `56f1c6cd250c2a8bba8b2a7659a84a505ae5d0aa9f48637dc6f0aa8bbd3d60d7`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_014750410.json.gz` preserves the Final6
   SceneMemory report. The gzip is 24,029 bytes with SHA-256
-  `541184b8affb1a637909644fc7fb88184f00fbfedf8aa60dff25af411696c720`; decompressed JSON is
+  `70722efb89eb7195175dbf3860cc109ed5a02462280a67f291e643452906bf17`; decompressed JSON is
   305,655 bytes with SHA-256
-  `d23ec732491730bfcd718f0ca1ed6d758f83d5142d454ec29601c291965d4ade`.
+  `143c8f61405850077378c7d016319f0fb261bc756ba70b99e6168f4e47321847`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_014927668.json.gz` preserves the Final6
   Compendium report. The gzip is 542,065 bytes with SHA-256
   `8567a36ca0c4d9d28a5dbe4373ae60c29364843b4657a85ee54c71c8593c85fc`; decompressed JSON is
@@ -4520,14 +4615,14 @@ correctly did not start. This carrier makes no Compendium product-behavior judgm
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_010734681.json.gz` preserves the Final5 Layout
   report. The gzip is 4,666 bytes with SHA-256
-  `25ae18625393a546b655fb63b61acf2ddf05ad0fdc204b9b412aea5fae67bd84`; decompressed JSON is
+  `3b0de615ac5da57e7dc5cb98266fc64eb574d3b149e188b76a3dcb08668b6eab`; decompressed JSON is
   106,061 bytes with SHA-256
-  `59caff9589373d1ae739013feff9a92859d8ee2d579aca3418550e3d485be78e`.
+  `567523f40ad3d656d68cae70907608dca60edfb90f3f0741e0dcd6261717c225`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_010821484.json.gz` preserves the Final5
   SceneMemory report. The gzip is 22,290 bytes with SHA-256
-  `d7725f545251ffd985c6ab84cb1990289c01041e6ecfe907fef74c42d94d8c97`; decompressed JSON is
+  `1b526bcff26f454480ab541ed49d0d8960cea1e4ab750486719c182c8132d3d4`; decompressed JSON is
   305,566 bytes with SHA-256
-  `2fb765c87ca6c85fec9d4a949abb5971e6cb4ee3bea2c44d44e7969fd23c6b33`.
+  `852a0d5788abff04cab50c76307dc631ec945ee1f51ce16fe1f90a648dd6292a`.
 - `COMPENDIUMMEM_CURRENT_INPUT_INSTRUMENT_FAILURE_20260828_010936591.json.gz` preserves the
   Final5 Compendium report. The gzip is 9,117 bytes with SHA-256
   `555fcb6682b6995df23b511f2f675886226306efe9552ddfd4965d76688c34b2`; decompressed JSON is
@@ -4564,14 +4659,14 @@ correctly did not start.
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_234347046.json.gz` preserves run
   `20260827-phase4-final4-041d1cfdff28-layout`. The gzip is 4,781 bytes with SHA-256
-  `66bf4a70ef6424db5bae892efd8215e15efc2af72fc77be11e422164ce332c09`; decompressed JSON is
+  `b74bd64785e5f3be0c89ce05ec71e9d77c9977b5143f8277b84771d850508fe8`; decompressed JSON is
   106,061 bytes with SHA-256
-  `da6cfcb8415516527e777bd5b056abe772af7e90765b7d7b261aaadba28e7930`.
+  `e53ed28c7124ebb2cda1aefc137cdc5e32c263fb2be21b5a63b6ffd70a5de680`.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260827_234435396.json.gz` preserves run
   `20260827-phase4-final4-041d1cfdff28-scenemem`. The gzip is 23,993 bytes with SHA-256
-  `544ebab6c01b59c59c45b44c5e3ead7fbc473262a0573d7f8a485486ce758a85`; decompressed JSON is
+  `b5df01e571978b475d2526e421888cbca97b0b40ba9d5d995c1f391dc5ebc27f`; decompressed JSON is
   305,575 bytes with SHA-256
-  `1350dc76914dbd6b9cb26411896a7e92d2b04e482439b7af2aa3d35650d0f987`.
+  `8d93faa2c6f4c2cde34de4cff8aea10a2482997b2fa4439adf59e3de829af894`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260827_235229369.json.gz` preserves run
   `20260827-phase4-final4-041d1cfdff28-compendium`. The gzip is 538,322 bytes with SHA-256
   `b8ce7e6bcbecaff7ab6f150afc32856d68422b1d90ae250c65782e917552d1ca`; decompressed JSON is
@@ -4629,16 +4724,16 @@ was not retried. Compendium, Slice, Glass and recovery correctly did not start.
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_223504110.json.gz` preserves the Layout result.
   The gzip is 4,655 bytes with SHA-256
-  `bff57442cfdb7f85b9f2fc48951e163ecbb46f4ab4c9e86df2e19e706a527a12`; decompressed JSON is
+  `1315897c9b7325ec9b59d8bc42e6d53e4b722c0fd66a349e46fc5b2850d40a26`; decompressed JSON is
   106,048 bytes with SHA-256
-  `49f9ce820481859f529ce7237fd6abaf7987285934a78673467f2cf11cbb0272`. Layout schema v2 still
+  `b9ded6462fb2d43a0c0670f0f073a138cba86f5932a6336f949b1f04f5a327e3`. Layout schema v2 still
   lacks Git/source identity, so this is chronology-associated result provenance, not a reusable
   exact-source predecessor.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_INSTRUMENT_FAILURE_20260827_223521179.json.gz` preserves the
   SceneMemory JSON report; the instrument emitted no separate stdout log. The gzip is 4,832 bytes
-  with SHA-256 `ff83663c498ddf09d661b9523ffe2ede7f23d2258b6829df3edcb72e327ef417`;
+  with SHA-256 `b50ca21894d12a5df54106ac46c7d88a421337d567aa55c88d221bc8c7783605`;
   decompressed JSON is 12,463 bytes with SHA-256
-  `a2d9da733a0fa6fffc5ddcb62f7d04c75e768f4a7c18d9b89fc30e677d3e7d38`.
+  `2654ab0e5e5f35fd08ea8fc403ff40ec6d94abb4271d4ad95e3505d941179e53`.
 
 The failure happened before either phone or desktop measurement. Twenty-one of the 23 SceneMemory
 producer fields matched; only `buildDist` (`46e47365…` tracked versus `6575498b…` observed) and
@@ -4673,17 +4768,17 @@ point update never triggers rebaselining.
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_202017303.json.gz` preserves run
   `20260827-phase4-final2-layout`: 787/787 sealed outcomes across all ten viewports in 76,135 ms.
   The gzip is 4,653 bytes with SHA-256
-  `9c870d4393e89d589bf06cf241932faae1dd20b1c06e8b64fb7cf910fc06fe31`; decompressed JSON is
+  `a6f34fdd1fda8f0bb2357651d481a556e7618739b1930e8d64ef1ab1356fc648`; decompressed JSON is
   106,048 bytes with SHA-256
-  `66a1a38188b0ccdcb48f9aeea03834e46795a679c8b510372e6686b65c3d1c4b`. Layout report schema v2
+  `5f95c260500f0472e70f311a7ddd7921b38f09d190944f43c4d5db50d2240eb5`. Layout report schema v2
   embeds browser/CDP provenance but no Git/source identity, so this is a truthful named result and
   chronology-associated predecessor, not standalone exact-source proof.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260827_202045397.json.gz` preserves run
   `20260827-phase4-final2-scenemem`: 42/42 outcomes in 10,177 ms with exact clean begin/end source
   binding and complete browser/server/workspace-lock cleanup. The gzip is 22,275 bytes with
-  SHA-256 `f05b6859acd77bd6780b0b58c637f85b1a6f53fbea17602ec25300bd711d2070`;
+  SHA-256 `0763106e983fb0149ce061d5917942df91deb2604e89dddc5c11146e0f8e4a3e`;
   decompressed JSON is 305,569 bytes with SHA-256
-  `b9e6e737fbc0a89ca0ecc6d8764a3dd2aca1dde7ded022fde6d800409ac749b9`.
+  `e731d532a575abe7574e9b91db02025e6fe51506ff139e1544facace2c3d08f3`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260827_202147686.json.gz` preserves run
   `20260827-phase4-final2-compendium`: 78/78 outcomes in 45,728 ms, exact clean begin/end source
   binding, complete report lifecycle, active budget SHA-256 `91b91b53…a012`, matching browser
@@ -4740,23 +4835,23 @@ recalibration or threshold movement.
 - `ARC1C_SCENEMEM_ACTIVATION_PASS_20260827_180121090.json.gz` preserves standalone run
   `20260827-phase4-activation-scenemem`: 42/42 outcomes, zero findings, complete browser/server/
   workspace-lock cleanup and 10,159 ms duration. The compressed carrier is 24,078 bytes with
-  SHA-256 `3758559b54b2a04d5afdaeb59be0de7642ecf0cd73acb4a0d6402e61ad0ac953`;
+  SHA-256 `6c13c0520e4684116edfd4825fecbe5488904936c9fb2f0ec7be06507a12d5db`;
   decompressed JSON is 305,652 bytes with SHA-256
-  `e0449818a7f5163a1a4428dc58ee1f31eebdf1a2de37a937dae06be67944dcbe`.
+  `9624b824e15089f0ac0fc0c350d258996366fcc9c67a029badb9d55c3dfac1bf`.
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_180204174.json.gz` preserves serial run
   `20260827-phase4-final-layout`: 787/787 sealed outcomes across all ten viewports and 76,155 ms
   duration. The compressed carrier is 4,767 bytes with SHA-256
-  `fe93e9e36cb6f2d4f8d345d315b293c433d3ae74f4fff0110d803c5eab4b31d0`; decompressed JSON is
+  `0f4ae9b9574d882029010da60f5963ca8ba83c63d8078fc03a07b2cf24a9d09a`; decompressed JSON is
   106,046 bytes with SHA-256
-  `89440ca9461c5466e72db09a255c5cc50ffad37b4b176a4737049e47050262fe`. The report and verifier
+  `264526d7d0c077b3e5d6e3ceeca18b4ead76e186fa4ad8b136df9fb051467605`. The report and verifier
   do not independently bind this result to `7362a0e…`; it is retained as chronology-associated
   run provenance only.
 - `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260827_180352756.json.gz` preserves serial run
   `20260827-phase4-final-scenemem`: 42/42 outcomes, zero findings, complete cleanup and 10,216 ms
   duration. The compressed carrier is 24,076 bytes with SHA-256
-  `5bef9ef38a619882877187f7d240efebd7d0c4fc19df4ca1d76321c2abdabaf8`; decompressed JSON is
+  `2070fa90f387828b1a696be38b321f4d1f084d2031b5d43a20d56b28195369e4`; decompressed JSON is
   305,700 bytes with SHA-256
-  `97fb18592bf4bbd9b79cad17ca3e74392a503f3fbabd2a96935e95aa2c525006`.
+  `11e2533ab45c8f774cdb4dbacf7b8069a55f4827fd3937798fe033481462b548`.
 - `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260827_180444018.json.gz` preserves serial run
   `20260827-phase4-final-compendium`: 78/78 outcomes, zero findings, complete lifecycle and
   44,852 ms duration under Compendium budget SHA-256 `91b91b53…a012` and producer SHA-256
@@ -4879,9 +4974,9 @@ baseline: after any heap-only activation it must still fail on its unchanged nod
 Carrier integrity:
 
 - Deterministic `gzip -9 -n`: 22,315 bytes, SHA-256
-  `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`.
+  `bbb8b941b05fe17ff00462172c284ba6c843a6976c8ecac44cede957c652ff74`.
 - Decompressed JSON: 305,891 bytes, SHA-256
-  `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7`.
+  `538fb107cde1617b386a6bcf0c0f381e48728291e5e62bb78ddfa5566b68644f`.
 
 The carrier passes gzip integrity. It grants no SceneMemory, Compendium, Slice, Glass, recovery,
 HUMAN, hosted, integration, release, version or deployment authority. The dirty diagnostic is
@@ -4917,9 +5012,9 @@ loosen the deadline, change the numeric ruler, or repin Edge.
 Carrier integrity:
 
 - Deterministic `gzip -9 -n`: 6,855 bytes, SHA-256
-  `9204f183785947bce7518c925e23c0a846c29213884ff60a3c7d08e3a503dbb3`.
+  `55ad754932f72104afd61c9eaa7bd3879b43072923891be12ce208b8b7d15be1`.
 - Decompressed JSON: 22,302 bytes, SHA-256
-  `452d076d8562d80986ac914cae580f3e0357c786a41391544b6c4cc523323b46`.
+  `60c247fb852a273dde024f34a5089dac37b790ff59207a05d529eb08032a655d`.
 
 The carrier passes gzip integrity. SceneMemory produced no log or screenshot files to preserve.
 This red grants no SceneMemory, Compendium, Slice, Glass, recovery, HUMAN, hosted, integration,
@@ -5127,8 +5222,8 @@ fixed product SLA and negative-controls every changed boundary and retained live
 
 Deterministic gzip of the clean one-attempt 42/42 certificate at repair commit `7d8dc380…`, active
 budget SHA-256 `5c8a6e75…`, and exact Edge `.101` authority. Compressed SHA-256 is
-`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`; decompressed SHA-256 is
-`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960`. Its named verifier passed
+`a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`; decompressed SHA-256 is
+`db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03`. Its named verifier passed
 immediately after collection. It is local exact-budget authority, not hosted terminal-green status.
 
 ### `ARC1_CLAUDE_REVIEW_2026-08-22.md` — Anthropic/Claude Arc 1 read-only review

@@ -1,0 +1,75 @@
+{
+  "creatureId": "bird",
+  "parts": [
+    {
+      "name": "near-foot.png",
+      "path": "parts/near-foot.png",
+      "sha256": "fc9054217f0f261b64e2f03cbaf39c0c421d74414259811587405106bdee921c"
+    },
+    {
+      "name": "far-foot.png",
+      "path": "parts/far-foot.png",
+      "sha256": "c8e80d8570e4813e297661a2171ae375210ad1c6b7bbdae63416b7eea039edeb"
+    },
+    {
+      "name": "beak.png",
+      "path": "parts/beak.png",
+      "sha256": "e2aa3e76e6950bc56d2f23b770c2d36c03326aa159d3103233149e3beb300ebf"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "1c7c6dcd7c27bc75495248d202a9c80b3d582abd6c2643d85f701a28e034bdd1"
+    },
+    {
+      "name": "neck-upper.png",
+      "path": "parts/neck-upper.png",
+      "sha256": "775e287ef8d1f16035699e27dc20f36ebd70f7b3577b52a14062d260553494f2"
+    },
+    {
+      "name": "neck-lower.png",
+      "path": "parts/neck-lower.png",
+      "sha256": "d46ce38e7ee5146feb050322b6f6e85bc7cba3c67731e5a83cbe602f6f1e9527"
+    },
+    {
+      "name": "near-wing.png",
+      "path": "parts/near-wing.png",
+      "sha256": "f09df0a9f1e68bf4b5c6b622da5cb83bee44684a8bd6b15910063546e44c95e8"
+    },
+    {
+      "name": "tail.png",
+      "path": "parts/tail.png",
+      "sha256": "29dd6394dbc70608dcd1a136357f3879ed5490ed98df8724128192ed1eabb10e"
+    },
+    {
+      "name": "near-shin.png",
+      "path": "parts/near-shin.png",
+      "sha256": "726cefe46c30491b304fcfa83e529598e07c62deb0652b81a46272abd741125b"
+    },
+    {
+      "name": "near-thigh.png",
+      "path": "parts/near-thigh.png",
+      "sha256": "319adb1b2b92e23c620b996e3a8c152f1741440d1c7ae4dbcecfb83f6f84eae3"
+    },
+    {
+      "name": "far-shin.png",
+      "path": "parts/far-shin.png",
+      "sha256": "87247de265f888d64bc408c3602054d08261f7440e31666210ce445e85a657b4"
+    },
+    {
+      "name": "far-thigh.png",
+      "path": "parts/far-thigh.png",
+      "sha256": "0b1e859beb9f44a289b58f0875857ada33ca4eb28f8ed2739433cfe32a82497d"
+    },
+    {
+      "name": "chest.png",
+      "path": "parts/chest.png",
+      "sha256": "03e0ba4b7868782ea91b89c426d6711367043e8072ff49441d63d11f8da23f09"
+    },
+    {
+      "name": "torso.png",
+      "path": "parts/torso.png",
+      "sha256": "2ed31c7a551b4c4b5f771b59b13924e93b25d002948cfc937d00c897a1f8d864"
+    }
+  ]
+}

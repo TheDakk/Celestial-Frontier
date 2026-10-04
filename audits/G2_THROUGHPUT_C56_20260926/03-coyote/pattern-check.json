@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Coyote",
+  "masterSha256": "b2f891a521f987ac5c3f093a8994f0df87c4a6b663cd5c3826cdfa05cafe3be0",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

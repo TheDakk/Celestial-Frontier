@@ -1,0 +1,2 @@
+{"id":"22-catfish","status":"SOURCE_OR_INSTRUMENT_REFUSED","name":"Catfish","error":"ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/22-catfish/static.json'"}
+{"id":"24-wahoo","status":"SOURCE_OR_INSTRUMENT_REFUSED","name":"Wahoo","error":"ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/24-wahoo/static.json'"}

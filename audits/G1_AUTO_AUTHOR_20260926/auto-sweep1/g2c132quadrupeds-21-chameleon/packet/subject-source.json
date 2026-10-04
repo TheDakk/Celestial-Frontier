@@ -1,0 +1,66 @@
+{
+  "name": "Chameleon",
+  "family": "quadruped",
+  "species": {
+    "name": "Chameleon",
+    "aspect": 1.9,
+    "headFrac": 0.25,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "cone eye turrets that swivel independently",
+      "tail coiled into a tight spiral",
+      "laterally flattened leaf-shaped body with a helmet casque"
+    ],
+    "note": "Generic - interpreted as a veiled/panther chameleon type. Body is compressed side to side, so a side profile is the tall view."
+  },
+  "genome": {
+    "seed": 2302544796,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 2,
+    "body": 7,
+    "loco": 4,
+    "trait": 22,
+    "size": 4,
+    "diet": 1,
+    "head": 2,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 5,
+    "habitat": 8,
+    "detail": 9,
+    "accent": 3,
+    "temper": 1,
+    "sense": 9,
+    "repro": 3,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Chameleon"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Chameleon\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"2302544796\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "index": 573,
+  "profile": {
+    "id": "special-lizard",
+    "names": [
+      "Chameleon",
+      "Horned Lizard"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Do not invent a rigid striking horn or tail weapon from the name."
+  }
+}

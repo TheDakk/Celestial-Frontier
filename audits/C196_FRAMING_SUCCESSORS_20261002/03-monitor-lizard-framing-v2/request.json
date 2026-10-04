@@ -1,0 +1,41 @@
+{
+  "schema": "cf.g2-framing-edit/v1",
+  "id": "03-monitor-lizard-framing-v2",
+  "name": "Monitor Lizard",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "intent": "edit",
+  "promptSha256": "f9dceb26d4423e8b099009b3736c4a21bcb7af7158dabece289d23ff4c715d4a",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "reference": "audits/C196_QUADRUPED_ORIGINALS_20261002/03-monitor-lizard/master.png",
+  "referenceSha256": "362bd96ae11513863de2744848c8f1de583a100579f30143798f2c4e242f0e61",
+  "actualInputRole": "sole edit target; original master",
+  "originalRequest": "audits/C196_QUADRUPED_ORIGINALS_20261002/03-monitor-lizard/request.json",
+  "originalRequestSha256": "deabcba9dde037ed93f519ca0d25be4403912a25c810febca47c84196c29714c",
+  "originalStyleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "priorFraming": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 62,
+      "y0": 494,
+      "x1": 1171,
+      "y1": 771
+    },
+    "margins": {
+      "left": 62,
+      "right": 82,
+      "top": 494,
+      "bottom": 482
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "scope": "One authorized framing-only edit; unchanged prior originals. All existing anatomy and contact holds remain pending independent review."
+}

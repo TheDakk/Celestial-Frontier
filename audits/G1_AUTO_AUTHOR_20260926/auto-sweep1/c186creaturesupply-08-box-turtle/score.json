@@ -1,0 +1,11 @@
+{
+ "id": "c186creaturesupply-08-box-turtle",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "materials-unknown: no species-group material for profile tortoise; the motion kit refuses an unclassified surface",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 5% paint (reference 24%)",
+  "unexplained-anatomy: 12.3% of the paint lies away from the body and in no part (reference 5.1%)"
+ ],
+ "semanticPresence": null
+}

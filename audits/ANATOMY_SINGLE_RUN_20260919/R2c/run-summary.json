@@ -1,0 +1,33 @@
+{
+  "status": "S2_STOP",
+  "runtime": "v26.9.0",
+  "lastSignedHead": "184962789eb2ed82343668a1601cc71e26ed83b6",
+  "candidateSigned": false,
+  "reason": "Civet shared painted-support regression at idle261.948177ms,0.260840176px >0.25px",
+  "candidateSigning": "1Password helper error followed by refusal via standard signer and existing agent; no further attempt",
+  "crabsStaticPass": 5,
+  "civetRowsCompleted": 0,
+  "civetIdleSamplesIncludingFailure": 14,
+  "newNativeFilms": 0,
+  "newReviewSheets": 0,
+  "rosterAttempted": 0,
+  "rosterRefusals": 0,
+  "rosterRemaining": 58,
+  "cpuTrials": 69,
+  "cpuTrialPass": 10,
+  "cpuTrialFail": 59,
+  "normalPassesPerSuccessfulSample": 4,
+  "unrun": [
+    "R2d",
+    "R3",
+    "R4",
+    "native recapture",
+    "R9/Q1",
+    "R5/R6/R7",
+    "R8 phone proof",
+    "58-target roster",
+    "PR42 local split"
+  ],
+  "noRetryAfterSharedRed": true,
+  "githubWrites": 0
+}

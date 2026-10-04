@@ -1,0 +1,35 @@
+{
+  "schema": "cf-charter-finite-retirement-observer/v1",
+  "status": "PASS",
+  "observerSha256": "f156301084712381e29d4c08aec0238df5d4ff127188970f3c5c6172c4b3d72c",
+  "results": [
+    {
+      "name": "native-first",
+      "sourceSha256": "135ca03d89969022cbc1b05a4ff57e2efdd2bb617e0b1371058439b07919d358",
+      "baseline": "PASS",
+      "negativeControlsRejected": [
+        "missing-retirement",
+        "live-voice",
+        "tracked-voice",
+        "mix-owner",
+        "node-leak",
+        "cleanup-fault"
+      ]
+    },
+    {
+      "name": "native-ordinal-corrected",
+      "sourceSha256": "90e97d0649a2600e099c46781af2c21a04fbdfef305724c9186f875573aee79d",
+      "baseline": "PASS",
+      "negativeControlsRejected": [
+        "missing-retirement",
+        "live-voice",
+        "tracked-voice",
+        "mix-owner",
+        "node-leak",
+        "cleanup-fault"
+      ]
+    }
+  ],
+  "productChanged": false,
+  "nativeRetried": false
+}

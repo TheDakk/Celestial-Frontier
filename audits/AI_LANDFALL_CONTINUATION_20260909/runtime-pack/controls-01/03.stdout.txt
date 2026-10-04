@@ -1,0 +1,20 @@
+Runtime pack control artifacts: /private/tmp/cf-runtime-pack-controls-zA5YEO
+✔ builds the exact installed Asyncify closure, verifies all bytes, and repeats deterministically (269.120916ms)
+✔ missing installed lazy WASM refuses output before publication (32.022625ms)
+✔ same-length modified installed tokenizer refuses pinned hash and restored source builds (108.714625ms)
+✔ changed installed package version or lock integrity refuses without creating output (32.649875ms)
+✔ missing required license source refuses readiness (6.964666ms)
+✔ source symlinks and output symlink ancestors are refused (27.153708ms)
+✔ existing output is unchanged instead of being overwritten (1.221208ms)
+✔ unsafe paths, model targets, duplicate targets and cap inflation are rejected in source pins (0.528917ms)
+✔ new static import is refused even if an explicit fixture pin is updated to its changed bytes (29.978209ms)
+✔ verifier rejects changed payload and restored payload passes against the same external manifest (26.352917ms)
+✔ verifier rejects substituted manifest, unsafe manifest paths and unmanifested files (42.667584ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 635.744792

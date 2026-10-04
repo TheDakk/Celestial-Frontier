@@ -1,0 +1,152 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+ "tag": "g2c136s",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "03-alligator",
+  "04-gharial",
+  "07-gecko",
+  "09-alligator-lizard",
+  "11-tegu",
+  "16-land-iguana",
+  "17-coastal-lizard",
+  "18-komodo-dragon",
+  "22-horned-lizard",
+  "24-newt"
+ ],
+ "refused": [
+  {
+   "id": "01-caiman",
+   "reason": "unexplained-anatomy: 15.5% of the paint lies away from the body and in no part (reference 9.7%)"
+  },
+  {
+   "id": "02-crocodile",
+   "reason": "unexplained-anatomy: 16.1% of the paint lies away from the body and in no part (reference 9.7%)"
+  },
+  {
+   "id": "05-monitor-lizard",
+   "reason": "missing-anatomy: part jaw (jaw) covers 9% paint (reference 31%)"
+  },
+  {
+   "id": "06-anole",
+   "reason": "missing-anatomy: part hind-far-root (hindFarRoot) covers 0% paint (reference 100%)"
+  },
+  {
+   "id": "08-skink",
+   "reason": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 13% paint (reference 40%)"
+  },
+  {
+   "id": "10-mountain-lizard",
+   "reason": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 11% paint (reference 40%)"
+  },
+  {
+   "id": "12-lizard",
+   "reason": "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 19% paint (reference 83%)"
+  },
+  {
+   "id": "13-whiptail",
+   "reason": "missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 75%)"
+  },
+  {
+   "id": "14-agama",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "15-iguana",
+   "reason": "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 2.6%)"
+  },
+  {
+   "id": "19-gila-monster",
+   "reason": "unexplained-anatomy: 15.0% of the paint lies away from the body and in no part (reference 9.7%)"
+  },
+  {
+   "id": "20-frilled-lizard",
+   "reason": "unexplained-anatomy: 16.1% of the paint lies away from the body and in no part (reference 8.3%)"
+  },
+  {
+   "id": "21-chameleon",
+   "reason": "unexplained-anatomy: 14.5% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "23-marine-iguana",
+   "reason": "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 46%)"
+  }
+ ],
+ "staticRed": [],
+ "native": [
+  {
+   "id": "03-alligator",
+   "name": "Alligator",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-gharial",
+   "name": "Gharial",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-gecko",
+   "name": "Gecko",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "09-alligator-lizard",
+   "name": "Alligator Lizard",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "11-tegu",
+   "name": "Tegu",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "16-land-iguana",
+   "name": "Land Iguana",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "17-coastal-lizard",
+   "name": "Coastal Lizard",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "18-komodo-dragon",
+   "name": "Komodo Dragon",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "22-horned-lizard",
+   "name": "Horned Lizard",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "24-newt",
+   "name": "Newt",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

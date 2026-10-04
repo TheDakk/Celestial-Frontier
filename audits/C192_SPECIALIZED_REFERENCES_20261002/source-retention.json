@@ -1,0 +1,76 @@
+{
+  "schema": "cf.c192-source-retention/v1",
+  "writerSha256": "2c2983c9fc64bd1bef74962413178d3326d6f95d0d847ff86edd388c6d1e9ba6",
+  "rows": [
+    {
+      "id": "01-mussel-source",
+      "masterSha256": "e04685371b825a0738cd4fe5a3c60f330dd7ee80fbec474aae87257c87333c30",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exactOriginalBytesRetained": true,
+      "frozenMutationRejected": true
+    },
+    {
+      "id": "02-prawn-dorsal",
+      "masterSha256": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exactOriginalBytesRetained": true,
+      "frozenMutationRejected": true
+    },
+    {
+      "id": "03-shrimp-dorsal",
+      "masterSha256": "ffad768165b2d127484e6136a0c3b647a1d63a96ec7fe0264c717ab6d3d0732a",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exactOriginalBytesRetained": true,
+      "frozenMutationRejected": true
+    },
+    {
+      "id": "04-snail-mouth",
+      "masterSha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exactOriginalBytesRetained": true,
+      "frozenMutationRejected": true
+    },
+    {
+      "id": "05-clam-hinge",
+      "masterSha256": "cfcd71fbf61e3a7bcf20e0f33a1919e8c1295cbd226b3728917b6f74ea7a0823",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exactOriginalBytesRetained": true,
+      "frozenMutationRejected": true
+    },
+    {
+      "id": "06-marmoset-source",
+      "masterSha256": "9d9841209d90ec22671805e2d471955e6d52e7afb0bf73b876b0ec5d8f69b40e",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exactOriginalBytesRetained": true,
+      "frozenMutationRejected": true
+    },
+    {
+      "id": "07-standing-bat-source",
+      "masterSha256": "8a640473b4b4090d813e2aa7efc3457bdcf50f3a216748f6d06fcc44aed8be70",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "exactOriginalBytesRetained": true,
+      "frozenMutationRejected": true
+    }
+  ]
+}

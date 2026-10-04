@@ -1,0 +1,6 @@
+{
+  "mutation": "omit second native keyboard entry patch",
+  "exitCode": 1,
+  "sourceRestoredSha256": "0c3c87b090488f89f98fa82ce24cb9e1e578b70cb93280d64300883e7f8616e1",
+  "beforeSha256": "0c3c87b090488f89f98fa82ce24cb9e1e578b70cb93280d64300883e7f8616e1"
+}

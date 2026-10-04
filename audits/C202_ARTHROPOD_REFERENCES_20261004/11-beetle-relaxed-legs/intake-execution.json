@@ -1,0 +1,10 @@
+{
+  "args": [
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/intake-observed-sockets.mjs",
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs",
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01"
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "native": false
+}

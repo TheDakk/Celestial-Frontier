@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Chameleon",
+  "family": "quadruped",
+  "masterSha256": "0fd53c8caa597c8edc05cee3423e30482e065e0dae62cc3e50a94c9b8720ba2f",
+  "subjectSha256": "81fd7ae07b2caa496b73f72055f867c602ea1125a1fabfba83a4dd98f3113b3d",
+  "promptSha256": "4680dfed0684df7e44f9db050714090d31231b523cf5ef4094e7d0e5a615a1b0",
+  "profileId": "special-lizard",
+  "profileSha256": "029802099bca9d725755be2995dc309c4322fff995bb2c9cb0a125868f319b4e",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: laterally flattened deep body, high casque, turret eye, compact attached spiral tail and four separate zygodactyl-looking limbs. Feet are grasping paired digit bundles rather than ordinary lizard paws; exact digit grouping remains unconfirmed. Body/feet are drawn in an unsupported walking pose with no branch, so ground contact needs explicit authoring. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/21-chameleon/visual-review.json",
+    "sha256": "75e756cc02ee837c2a24e1cdc939dbb60968159a1848a23910f9f262a5763b9b"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

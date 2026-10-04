@@ -1,0 +1,656 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part eye-near (eyeNear) covers 0% paint (reference 100%)",
+  "missing-anatomy: part eye-far (eyeFar) covers 0% paint (reference 84%)",
+  "missing-anatomy: part siphon (siphon) covers 4% paint (reference 100%)",
+  "missing-anatomy: part arm1-middle (arm1Seg1) covers 12% paint (reference 97%)",
+  "missing-anatomy: part arm3-tip (arm3Seg2) covers 10% paint (reference 66%)",
+  "missing-anatomy: part arm5-tip (arm5Seg2) covers 19% paint (reference 63%)",
+  "missing-anatomy: part arm5-middle (arm5Seg1) covers 18% paint (reference 89%)",
+  "missing-anatomy: part arm6-tip (arm6Seg2) covers 13% paint (reference 68%)",
+  "missing-anatomy: part arm6-middle (arm6Seg1) covers 9% paint (reference 92%)",
+  "missing-anatomy: part arm7-middle (arm7Seg1) covers 15% paint (reference 81%)",
+  "missing-anatomy: part mantle (mantle) covers 0% paint (reference 82%)",
+  "missing-anatomy: part contour-arm1seg1 (arm1Seg1) covers 20% paint (reference 81%)",
+  "missing-anatomy: part contour-arm3seg1 (arm3Seg1) covers 19% paint (reference 94%)",
+  "missing-anatomy: part contour-arm3seg2 (arm3Seg2) covers 7% paint (reference 50%)",
+  "missing-anatomy: part contour-arm5seg2 (arm5Seg2) covers 11% paint (reference 48%)",
+  "missing-anatomy: part contour-arm6seg1 (arm6Seg1) covers 11% paint (reference 71%)",
+  "missing-anatomy: part contour-arm7seg1 (arm7Seg1) covers 16% paint (reference 76%)",
+  "missing-anatomy: part contour-mantle (mantle) covers 0% paint (reference 73%)",
+  "missing-anatomy: part final-arm4seg1 (arm4Seg1) covers 26% paint (reference 97%)",
+  "missing-anatomy: part final-arm3seg1 (arm3Seg1) covers 23% paint (reference 73%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": false,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [
+  {
+   "id": "arm0-tip",
+   "repairs": 1
+  },
+  {
+   "id": "arm0-base",
+   "repairs": 1
+  },
+  {
+   "id": "arm1-tip",
+   "repairs": 2
+  },
+  {
+   "id": "arm1-base",
+   "repairs": 1
+  },
+  {
+   "id": "arm2-tip",
+   "repairs": 2
+  },
+  {
+   "id": "arm2-middle",
+   "repairs": 1
+  },
+  {
+   "id": "arm3-tip",
+   "repairs": 1
+  },
+  {
+   "id": "arm4-tip",
+   "repairs": 1
+  },
+  {
+   "id": "arm4-middle",
+   "repairs": 1
+  },
+  {
+   "id": "arm5-tip",
+   "repairs": 2
+  },
+  {
+   "id": "arm5-middle",
+   "repairs": 1
+  },
+  {
+   "id": "arm6-tip",
+   "repairs": 1
+  },
+  {
+   "id": "arm6-middle",
+   "repairs": 1
+  },
+  {
+   "id": "arm7-middle",
+   "repairs": 2
+  },
+  {
+   "id": "mantle",
+   "repairs": 1
+  },
+  {
+   "id": "head",
+   "repairs": 1
+  },
+  {
+   "id": "contour-arm0seg2",
+   "repairs": 1
+  },
+  {
+   "id": "contour-arm1seg2",
+   "repairs": 1
+  },
+  {
+   "id": "contour-arm2seg2",
+   "repairs": 1
+  },
+  {
+   "id": "contour-arm2seg1",
+   "repairs": 1
+  },
+  {
+   "id": "contour-arm2seg0",
+   "repairs": 1
+  },
+  {
+   "id": "contour-arm3seg2",
+   "repairs": 1
+  },
+  {
+   "id": "contour-arm4seg1",
+   "repairs": 1
+  },
+  {
+   "id": "contour-arm4seg2",
+   "repairs": 2
+  },
+  {
+   "id": "contour-arm5seg1",
+   "repairs": 1
+  },
+  {
+   "id": "contour-arm5seg2",
+   "repairs": 3
+  },
+  {
+   "id": "contour-arm6seg1",
+   "repairs": 1
+  },
+  {
+   "id": "contour-arm6seg2",
+   "repairs": 1
+  },
+  {
+   "id": "contour-head",
+   "repairs": 1
+  },
+  {
+   "id": "contour-mantle",
+   "repairs": 2
+  },
+  {
+   "id": "final-arm4seg1",
+   "repairs": 2
+  }
+ ],
+ "separation": null,
+ "inventory": {
+  "reasons": [],
+  "assign": [
+   {
+    "owners": [
+     "mantle"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.1518,
+    "target": -1,
+    "overlap": 0
+   },
+   {
+    "owners": [
+     "arm7-tip",
+     "arm7-middle",
+     "arm7-base"
+    ],
+    "names": [
+     "tentacle"
+    ],
+    "refFrac": 0.0593,
+    "target": 2,
+    "overlap": 0.62
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0097,
+     "class": "top",
+     "attach": {
+      "x": 160,
+      "y": 112,
+      "relX": 0.41,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0078,
+     "class": "rear",
+     "attach": {
+      "x": 79,
+      "y": 194.5,
+      "relX": -0.01,
+      "relY": 0.47
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1593,
+     "class": "front",
+     "attach": {
+      "x": 265.7,
+      "y": 239.3,
+      "relX": 0.96,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0074,
+     "class": "limb-down",
+     "attach": {
+      "x": 173,
+      "y": 286,
+      "relX": 0.48,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "c202-qualified-octopus",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0292,
+  "ref": 0.05
+ },
+ "bestReference": "c202-qualified-octopus",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "c202-qualified-octopus",
+   "cost": 0.07312
+  },
+  {
+   "ref": "octopus",
+   "cost": 0.08673
+  }
+ ],
+ "mirrorBest": 0.07462,
+ "otherFamilyBest": {
+  "family": "insect",
+  "cost": 0.06155
+ },
+ "coverage": [
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0.7364341085271318,
+   "area": 8282.36499999999
+  },
+  {
+   "id": "eye-near",
+   "joint": "eyeNear",
+   "paint": 0,
+   "area": 1222.955000000009
+  },
+  {
+   "id": "eye-far",
+   "joint": "eyeFar",
+   "paint": 0,
+   "area": 1878.4700000000103
+  },
+  {
+   "id": "siphon",
+   "joint": "siphon",
+   "paint": 0.03571428571428571,
+   "area": 2285.9900000000016
+  },
+  {
+   "id": "arm0-tip",
+   "joint": "arm0Seg2",
+   "paint": 0.651685393258427,
+   "area": 2884.905000000006
+  },
+  {
+   "id": "arm0-middle",
+   "joint": "arm0Seg1",
+   "paint": 0.942090395480226,
+   "area": 11331.245000000008
+  },
+  {
+   "id": "arm0-base",
+   "joint": "arm0Seg0",
+   "paint": 1,
+   "area": 20347.569999999996
+  },
+  {
+   "id": "arm1-tip",
+   "joint": "arm1Seg2",
+   "paint": 0.2,
+   "area": 283.119999999999
+  },
+  {
+   "id": "arm1-middle",
+   "joint": "arm1Seg1",
+   "paint": 0.11678832116788321,
+   "area": 2180.855000000001
+  },
+  {
+   "id": "arm1-base",
+   "joint": "arm1Seg0",
+   "paint": 0.9838778107764107,
+   "area": 37713.84500000001
+  },
+  {
+   "id": "arm2-tip",
+   "joint": "arm2Seg2",
+   "paint": 0.46875,
+   "area": 551.6999999999971
+  },
+  {
+   "id": "arm2-middle",
+   "joint": "arm2Seg1",
+   "paint": 0.9952830188679245,
+   "area": 3366.8149999999914
+  },
+  {
+   "id": "arm2-base",
+   "joint": "arm2Seg0",
+   "paint": 0.9876252209781968,
+   "area": 27176.510000000013
+  },
+  {
+   "id": "arm3-tip",
+   "joint": "arm3Seg2",
+   "paint": 0.10152284263959391,
+   "area": 3168.2949999999983
+  },
+  {
+   "id": "arm3-middle",
+   "joint": "arm3Seg1",
+   "paint": 0.4057971014492754,
+   "area": 1120.2249999999976
+  },
+  {
+   "id": "arm3-base",
+   "joint": "arm3Seg0",
+   "paint": 0.9637305699481865,
+   "area": 30935.47999999999
+  },
+  {
+   "id": "arm4-tip",
+   "joint": "arm4Seg2",
+   "paint": 0.41116751269035534,
+   "area": 3175.9600000000064
+  },
+  {
+   "id": "arm4-middle",
+   "joint": "arm4Seg1",
+   "paint": 0.4319526627218935,
+   "area": 2747.2800000000025
+  },
+  {
+   "id": "arm4-base",
+   "joint": "arm4Seg0",
+   "paint": 0.7747440273037542,
+   "area": 18781.265000000014
+  },
+  {
+   "id": "arm5-tip",
+   "joint": "arm5Seg2",
+   "paint": 0.189873417721519,
+   "area": 1199.4249999999993
+  },
+  {
+   "id": "arm5-middle",
+   "joint": "arm5Seg1",
+   "paint": 0.17964071856287425,
+   "area": 2675.140000000005
+  },
+  {
+   "id": "arm5-base",
+   "joint": "arm5Seg0",
+   "paint": 0.5480984340044742,
+   "area": 14226.050000000014
+  },
+  {
+   "id": "arm6-tip",
+   "joint": "arm6Seg2",
+   "paint": 0.125,
+   "area": 135.0900000000023
+  },
+  {
+   "id": "arm6-middle",
+   "joint": "arm6Seg1",
+   "paint": 0.09090909090909091,
+   "area": 392.0500000000011
+  },
+  {
+   "id": "arm6-base",
+   "joint": "arm6Seg0",
+   "paint": 0.6974358974358974,
+   "area": 9362.729999999996
+  },
+  {
+   "id": "arm7-tip",
+   "joint": "arm7Seg2",
+   "paint": 0.35185185185185186,
+   "area": 932.5950000000062
+  },
+  {
+   "id": "arm7-middle",
+   "joint": "arm7Seg1",
+   "paint": 0.14814814814814814,
+   "area": 467.1250000000018
+  },
+  {
+   "id": "arm7-base",
+   "joint": "arm7Seg0",
+   "paint": 0.5650793650793651,
+   "area": 5118.324999999999
+  },
+  {
+   "id": "mantle",
+   "joint": "mantle",
+   "paint": 0,
+   "area": 2700.304999999992
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.9268389662027833,
+   "area": 40319.335000000014
+  },
+  {
+   "id": "contour-arm0seg2",
+   "joint": "arm0Seg2",
+   "paint": 0.7335907335907336,
+   "area": 4175.905000000002
+  },
+  {
+   "id": "contour-arm0seg1",
+   "joint": "arm0Seg1",
+   "paint": 0.9979166666666667,
+   "area": 15391.325000000003
+  },
+  {
+   "id": "contour-arm0seg0",
+   "joint": "arm0Seg0",
+   "paint": 0.9212947189097104,
+   "area": 47102.42000000001
+  },
+  {
+   "id": "contour-arm1seg2",
+   "joint": "arm1Seg2",
+   "paint": 0.5882352941176471,
+   "area": 259.8800000000001
+  },
+  {
+   "id": "contour-arm1seg1",
+   "joint": "arm1Seg1",
+   "paint": 0.19658119658119658,
+   "area": 1860.8600000000015
+  },
+  {
+   "id": "contour-arm1seg0",
+   "joint": "arm1Seg0",
+   "paint": 0.9842904520858788,
+   "area": 91914.96500000001
+  },
+  {
+   "id": "contour-arm2seg2",
+   "joint": "arm2Seg2",
+   "paint": 1,
+   "area": 180.54000000000178
+  },
+  {
+   "id": "contour-arm2seg1",
+   "joint": "arm2Seg1",
+   "paint": 0.8842105263157894,
+   "area": 4602.7249999999985
+  },
+  {
+   "id": "contour-arm2seg0",
+   "joint": "arm2Seg0",
+   "paint": 0.9728962312854931,
+   "area": 61999.62499999998
+  },
+  {
+   "id": "contour-arm3seg0",
+   "joint": "arm3Seg0",
+   "paint": 0.9596683000376932,
+   "area": 42456.05500000001
+  },
+  {
+   "id": "contour-arm3seg1",
+   "joint": "arm3Seg1",
+   "paint": 0.189873417721519,
+   "area": 1244.9350000000059
+  },
+  {
+   "id": "contour-arm3seg2",
+   "joint": "arm3Seg2",
+   "paint": 0.0749185667752443,
+   "area": 4868.294999999995
+  },
+  {
+   "id": "contour-arm4seg0",
+   "joint": "arm4Seg0",
+   "paint": 0.8045375218150087,
+   "area": 27469.060000000012
+  },
+  {
+   "id": "contour-arm4seg1",
+   "joint": "arm4Seg1",
+   "paint": 0.33881578947368424,
+   "area": 4924.370000000003
+  },
+  {
+   "id": "contour-arm4seg2",
+   "joint": "arm4Seg2",
+   "paint": 0.36704119850187267,
+   "area": 4266.934999999998
+  },
+  {
+   "id": "contour-arm5seg0",
+   "joint": "arm5Seg0",
+   "paint": 0.5741056218057922,
+   "area": 18826.52500000001
+  },
+  {
+   "id": "contour-arm5seg1",
+   "joint": "arm5Seg1",
+   "paint": 0.2850678733031674,
+   "area": 3489.189999999994
+  },
+  {
+   "id": "contour-arm5seg2",
+   "joint": "arm5Seg2",
+   "paint": 0.11475409836065574,
+   "area": 1923.5899999999983
+  },
+  {
+   "id": "contour-arm6seg0",
+   "joint": "arm6Seg0",
+   "paint": 0.6728167281672817,
+   "area": 13065.655000000006
+  },
+  {
+   "id": "contour-arm6seg1",
+   "joint": "arm6Seg1",
+   "paint": 0.10638297872340426,
+   "area": 768.5499999999956
+  },
+  {
+   "id": "contour-arm6seg2",
+   "joint": "arm6Seg2",
+   "paint": 0.18181818181818182,
+   "area": 173.73000000000138
+  },
+  {
+   "id": "contour-arm7seg0",
+   "joint": "arm7Seg0",
+   "paint": 0.5420353982300885,
+   "area": 7202.644999999999
+  },
+  {
+   "id": "contour-arm7seg1",
+   "joint": "arm7Seg1",
+   "paint": 0.16483516483516483,
+   "area": 1460.2350000000024
+  },
+  {
+   "id": "contour-arm7seg2",
+   "joint": "arm7Seg2",
+   "paint": 0.20212765957446807,
+   "area": 1466.0700000000033
+  },
+  {
+   "id": "contour-head",
+   "joint": "head",
+   "paint": 0.9658647594278283,
+   "area": 49439.57
+  },
+  {
+   "id": "contour-mantle",
+   "joint": "mantle",
+   "paint": 0,
+   "area": 2480.6849999999977
+  },
+  {
+   "id": "final-arm4seg0",
+   "joint": "arm4Seg0",
+   "paint": 0.6058394160583942,
+   "area": 11013.669999999991
+  },
+  {
+   "id": "final-arm4seg1",
+   "joint": "arm4Seg1",
+   "paint": 0.2638888888888889,
+   "area": 1180.6949999999997
+  },
+  {
+   "id": "final-arm3seg0",
+   "joint": "arm3Seg0",
+   "paint": 0.8158995815899581,
+   "area": 3848.640000000003
+  },
+  {
+   "id": "final-arm3seg1",
+   "joint": "arm3Seg1",
+   "paint": 0.22826086956521738,
+   "area": 1444.7999999999993
+  },
+  {
+   "id": "final-arm0seg1",
+   "joint": "arm0Seg1",
+   "paint": 1,
+   "area": 6318.869999999999
+  },
+  {
+   "id": "final-arm0seg0",
+   "joint": "arm0Seg0",
+   "paint": 1,
+   "area": 2517.0599999999977
+  },
+  {
+   "id": "final-arm1seg0",
+   "joint": "arm1Seg0",
+   "paint": 0.980309423347398,
+   "area": 11383.845000000007
+  }
+ ],
+ "unclaimedFrac": 0.0341
+}

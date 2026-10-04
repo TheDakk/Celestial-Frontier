@@ -1,0 +1,144 @@
+{
+  "id": "23-marine-iguana",
+  "name": "Marine Iguana",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "1cbd3fcbfdf9c9270811eee4d6dbcfed6f6d3e031d714865c4a4fec6b7be9c6c",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 5705,
+    "coreRadius": 11,
+    "bodyBox": {
+      "x0": 217,
+      "y0": 183,
+      "x1": 294,
+      "y1": 220
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0994,
+        "pixels": 567,
+        "box": {
+          "x0": 275,
+          "y0": 173,
+          "x1": 315,
+          "y1": 205
+        },
+        "attach": {
+          "x": 290,
+          "y": 189.5,
+          "relX": 0.95,
+          "relY": 0.18
+        },
+        "dir": {
+          "x": 0.86,
+          "y": -0.51
+        },
+        "class": "top",
+        "length": 30
+      },
+      {
+        "k": 1,
+        "frac": 0.3383,
+        "pixels": 1930,
+        "box": {
+          "x0": 105,
+          "y0": 198,
+          "x1": 224,
+          "y1": 237
+        },
+        "attach": {
+          "x": 217.2,
+          "y": 211.8,
+          "relX": 0,
+          "relY": 0.78
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.09
+        },
+        "class": "rear",
+        "length": 114.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0603,
+        "pixels": 344,
+        "box": {
+          "x0": 266,
+          "y0": 219,
+          "x1": 298,
+          "y1": 241
+        },
+        "attach": {
+          "x": 273,
+          "y": 219,
+          "relX": 0.73,
+          "relY": 0.97
+        },
+        "dir": {
+          "x": 0.5,
+          "y": 0.87
+        },
+        "class": "limb-down",
+        "length": 33.3
+      },
+      {
+        "k": 3,
+        "frac": 0.0452,
+        "pixels": 258,
+        "box": {
+          "x0": 229,
+          "y0": 221,
+          "x1": 253,
+          "y1": 241
+        },
+        "attach": {
+          "x": 240.5,
+          "y": 221,
+          "relX": 0.31,
+          "relY": 1.03
+        },
+        "dir": {
+          "x": -0.29,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 23.6
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 230,
+        "x1": 250,
+        "cx": 240.8
+      },
+      {
+        "x0": 275,
+        "x1": 295,
+        "cx": 285.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

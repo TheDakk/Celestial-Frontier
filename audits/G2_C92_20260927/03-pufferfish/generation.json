@@ -1,0 +1,13 @@
+{
+  "id": "03-pufferfish",
+  "name": "Pufferfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d704ec75-0f56-411a-9cf6-a6107bd2d1ba.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "71ae9d9cddceeceb262668ecf05088931d26e89bf1d73adba0ddb9c98e452549",
+  "bytes": 1236109,
+  "promptSha256": "d1f7ccab24e41414ed0313c806a9646e0dc3860431c83c6b1abf0066759a4e68",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

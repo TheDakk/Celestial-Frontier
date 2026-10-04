@@ -1,0 +1,14 @@
+{
+  "id": "24-llama",
+  "name": "Llama",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-b79cfe27-a114-4be4-8756-b191da42f88d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "fbf67a687e3d35e0a2a94fa387e158604c39daf02d8b249fd79f00b38a7acf91",
+  "bytes": 1363549,
+  "promptSha256": "f97b65977fb9f4c77f1802b95a970f0b311d6381ff3360d04ff92aa8de137233",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

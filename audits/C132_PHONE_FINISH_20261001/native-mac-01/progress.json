@@ -1,0 +1,248 @@
+{
+  "status": "complete",
+  "stage": "terminal",
+  "rows": [
+    {
+      "id": "01-finch",
+      "status": "GENERATED",
+      "sha256": "784bc8259a07f5ecc138a2887ec23f71c5b90afe0e5a7f49bec5696f47fdb26e",
+      "reconstructionSha256": "2c1afb2b42fa49f3644930b507d1c391846df5e943664729d7f309e39dd985ed",
+      "seed": 3464792980,
+      "elapsedMs": 805.3149999994785,
+      "settings": {
+        "strength": 0.35,
+        "steps": 1,
+        "boundaryPixels": 4,
+        "gradientRatio": 0.95,
+        "interiorAlphaMin": 250
+      },
+      "modelSize": 512,
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "id": "12-sandpiper",
+      "status": "GENERATED",
+      "sha256": "03c9408ace4f37de5064a5cffb7b6be6ebf655d17796b62984e57ed6b1347f5a",
+      "reconstructionSha256": "0636711bc7229d72e9295750687c016365e27fbc0642225df67ffe5202d83bc5",
+      "seed": 3575879409,
+      "elapsedMs": 453.3849999997765,
+      "settings": {
+        "strength": 0.35,
+        "steps": 1,
+        "boundaryPixels": 4,
+        "gradientRatio": 0.95,
+        "interiorAlphaMin": 250
+      },
+      "modelSize": 512,
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "id": "18-wasp",
+      "status": "GENERATED",
+      "sha256": "b5ea3fce5cc5236b86e773b72fe326c35026bd9d40d1b6a3a4d34bdadd90c25e",
+      "reconstructionSha256": "b40130df808065de09498887a2202a5888691b601ad5b26acd6ca9b39aed093d",
+      "seed": 2599101445,
+      "elapsedMs": 515.105000000447,
+      "settings": {
+        "strength": 0.35,
+        "steps": 1,
+        "boundaryPixels": 4,
+        "gradientRatio": 0.95,
+        "interiorAlphaMin": 250
+      },
+      "modelSize": 512,
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "id": "06-ptarmigan",
+      "status": "GENERATED",
+      "sha256": "0fe7e67694ddf6e21e6c0d51601ca6abde26535a307758de15f9329a4f35fe72",
+      "reconstructionSha256": "9f3837e44cd260cf17d368425b3328609f0a8bc90c79eea33d212912aca87163",
+      "seed": 3925568829,
+      "elapsedMs": 429.679999999702,
+      "settings": {
+        "strength": 0.35,
+        "steps": 1,
+        "boundaryPixels": 4,
+        "gradientRatio": 0.95,
+        "interiorAlphaMin": 250
+      },
+      "modelSize": 512,
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "id": "08-vulture",
+      "status": "GENERATED",
+      "sha256": "86a661596e74f36bfc93e3c865f54f458eeae14c918c502379c7c7dc5c0da72d",
+      "reconstructionSha256": "bda01c0696683170b6733c890e3aad827ff12f76b3bf8a51b4e03025653b1938",
+      "seed": 2073517214,
+      "elapsedMs": 460.7900000009686,
+      "settings": {
+        "strength": 0.35,
+        "steps": 1,
+        "boundaryPixels": 4,
+        "gradientRatio": 0.95,
+        "interiorAlphaMin": 250
+      },
+      "modelSize": 512,
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "qualityAccepted": false
+    }
+  ],
+  "qualityAccepted": false,
+  "cleanupErrors": [],
+  "reconstructionStatus": "DIAGNOSTIC_PENDING_VISUAL_REVIEW",
+  "mode": "mac",
+  "adapter": {
+    "features": [
+      "depth32float-stencil8",
+      "rg11b10ufloat-renderable",
+      "texture-formats-tier1",
+      "bgra8unorm-storage",
+      "texture-compression-bc",
+      "dual-source-blending",
+      "core-features-and-limits",
+      "float32-filterable",
+      "indirect-first-instance",
+      "texture-compression-astc-sliced-3d",
+      "float32-blendable",
+      "subgroup-size-control",
+      "texture-compression-astc",
+      "texture-compression-etc2",
+      "depth-clip-control",
+      "texture-compression-bc-sliced-3d",
+      "timestamp-query",
+      "texture-formats-tier2",
+      "clip-distances",
+      "shader-f16",
+      "primitive-index",
+      "texture-component-swizzle",
+      "subgroups"
+    ],
+    "limits": {
+      "maxBufferSize": 4294967292,
+      "maxStorageBufferBindingSize": 4294967292
+    },
+    "info": {
+      "vendor": "apple",
+      "architecture": "metal-3",
+      "device": ""
+    }
+  },
+  "promptSha256": "2292956f5140c54aee4e9eb18e9517fc5e2b74d82fa0f18a76269a5a26d96f08",
+  "tokenizer": {
+    "tokensBeforeTruncation": 74,
+    "truncated": false,
+    "tokenIds": [
+      49406,
+      4021,
+      3288,
+      268,
+      1695,
+      5267,
+      3086,
+      269,
+      3958,
+      518,
+      12886,
+      6433,
+      14317,
+      593,
+      3797,
+      3288,
+      7118,
+      16505,
+      537,
+      34958,
+      39527,
+      1395,
+      269,
+      15570,
+      902,
+      12651,
+      15376,
+      267,
+      5887,
+      539,
+      7072,
+      537,
+      2629,
+      13638,
+      267,
+      4230,
+      267,
+      26149,
+      267,
+      40284,
+      5389,
+      267,
+      41046,
+      537,
+      1551,
+      18690,
+      269,
+      951,
+      1033,
+      2912,
+      518,
+      12886,
+      6433,
+      20746,
+      269,
+      1726,
+      518,
+      3634,
+      5994,
+      34272,
+      269,
+      871,
+      4149,
+      34886,
+      267,
+      13770,
+      267,
+      16025,
+      267,
+      26382,
+      541,
+      19158,
+      269,
+      49407,
+      49407,
+      49407,
+      49407
+    ]
+  },
+  "embedding": {
+    "sha256": "ea59bdd82829989d6c2063aca7833fc54c319f320867b328d55ef822c6c3d7a1",
+    "promptSha256": "2292956f5140c54aee4e9eb18e9517fc5e2b74d82fa0f18a76269a5a26d96f08",
+    "bytes": 236544,
+    "dims": [
+      1,
+      77,
+      768
+    ]
+  },
+  "textEncoderLoaded": true,
+  "textEncoderReleased": true,
+  "elapsedMs": 4683.0800000000745
+}

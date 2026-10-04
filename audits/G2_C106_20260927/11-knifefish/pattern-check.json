@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Knifefish",
+  "masterSha256": "ac04c75913d0bc7caf6ee945b6b964f0273f4e02e4e9b4acac22f81f1bd3a4ec",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

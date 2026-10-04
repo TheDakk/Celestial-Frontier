@@ -1,0 +1,130 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "08-sugar-glider",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "40217da629c208d251d99e877e499cf2bf994b2792c4c4bce81e61c5fbdf7787",
+ "subjectSourceSha256": "deda6b9fad7ce5af3e83722969d264eada7fff49a5e96fe8b1e9ffdc1f3c8f25",
+ "identity": {
+  "name": "Sugar Glider",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sugar Glider\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1645104022\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"5\"]]]]",
+  "seed": 1645104022,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "river-otter",
+  "authoringSha256": "880928005d6cb859a1d4e5b569dffc2a6405c5ec3734f88836e7939efa6f5ce7",
+  "masterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e"
+ },
+ "habitat": {
+  "profileId": "gliding-mammal",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "87b0723a441c755849945dab1ede745a0aad795466830b199daa6d080ca45bc3",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group gliding-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1173,
+     "class": "front",
+     "attach": {
+      "x": 322.8,
+      "y": 185.2,
+      "relX": 0.96,
+      "relY": 0.26
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2769,
+     "class": "rear",
+     "attach": {
+      "x": 185,
+      "y": 195.5,
+      "relX": -0.01,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0481,
+     "class": "limb-down",
+     "attach": {
+      "x": 196.7,
+      "y": 224.3,
+      "relX": 0.07,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0299,
+     "class": "limb-down",
+     "attach": {
+      "x": 235.5,
+      "y": 227,
+      "relX": 0.35,
+      "relY": 0.88
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.05,
+     "class": "limb-down",
+     "attach": {
+      "x": 295.4,
+      "y": 235.9,
+      "relX": 0.77,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "river-otter",
+   "byClass": {
+    "front": 2,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

@@ -1,0 +1,157 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "authored:accepted-bird-family-master",
+    "seed": 424242,
+    "ownerId": "authored:bird-family/accepted-master",
+    "earthName": null
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "geometry": {
+    "cutoutAssetHash": "1e538078a1d64ee605122a8bb0c1fe7f0e26bfac9a34508d85ab4daf1112aef6",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.94,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.66,
+      0.49
+    ],
+    "pelvis": [
+      0.55,
+      0.53
+    ],
+    "spine": [
+      0.66,
+      0.46
+    ],
+    "chest": [
+      0.77,
+      0.4
+    ],
+    "neck0": [
+      0.79,
+      0.3
+    ],
+    "neck1": [
+      0.8,
+      0.21
+    ],
+    "head": [
+      0.8,
+      0.13
+    ],
+    "beak": [
+      0.885,
+      0.14
+    ],
+    "legNearKnee": [
+      0.565,
+      0.66
+    ],
+    "legNearAnkle": [
+      0.53,
+      0.81
+    ],
+    "legNearFoot": [
+      0.565,
+      0.89
+    ],
+    "legFarKnee": [
+      0.69,
+      0.66
+    ],
+    "legFarAnkle": [
+      0.725,
+      0.785
+    ],
+    "legFarFoot": [
+      0.755,
+      0.858
+    ],
+    "wingNearRoot": [
+      0.65,
+      0.36
+    ],
+    "wingNearTip": [
+      0.465,
+      0.56
+    ],
+    "wingFarRoot": [
+      0.7,
+      0.38
+    ],
+    "wingFarTip": [
+      0.58,
+      0.51
+    ],
+    "tailFan": [
+      0.12,
+      0.49
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "clipSetId": "biped-bird-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-bird.png",
+  "coverage": {
+    "scope": "painted bird family reference, folded wings",
+    "occluded": [
+      "far wing; anatomy exists but has no independent painted pixels"
+    ],
+    "unproven": [
+      "open wing or flight",
+      "ground contact solver",
+      "named species identity",
+      "battle staging"
+    ]
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.11704699910719624,
+      "spine": 0.13038404810405296,
+      "chest": 0.12529964086141668,
+      "neck0": 0.10198039027185574,
+      "neck1": 0.09055385138137416,
+      "head": 0.07999999999999999,
+      "beak": 0.08558621384311842,
+      "legFarKnee": 0.19104973174542794,
+      "legFarAnkle": 0.1298075498574717,
+      "legFarFoot": 0.07892401408950253,
+      "legNearKnee": 0.130862523283024,
+      "legNearAnkle": 0.15402921800749364,
+      "legNearFoot": 0.08732124598286484,
+      "wingFarRoot": 0.07280109889280525,
+      "wingFarTip": 0.17691806012954134,
+      "wingNearRoot": 0.12649110640673517,
+      "wingNearTip": 0.2724426545165056,
+      "tailFan": 0.4318564576337837
+    },
+    "measures": {
+      "body": 0.2555386467836127,
+      "bone-min": 0.07280109889280525,
+      "bone-max": 0.4318564576337837,
+      "leg/torso:legFar": 1.564465104297639,
+      "leg/torso:legNear": 1.456581976770693,
+      "wing/torso": 0.9772265845713975
+    }
+  },
+  "recipeHash": "0b6613038ac0ee367a42371ef6472d86fe4902568ff48e68cdff0c4c58321208"
+}

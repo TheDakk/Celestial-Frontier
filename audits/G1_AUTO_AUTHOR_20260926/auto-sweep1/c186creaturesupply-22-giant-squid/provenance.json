@@ -1,0 +1,117 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c186creaturesupply-22-giant-squid",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "cb07009c82606a8d92a95f57b227a7bb6485ad13baaab75419701c2ad76046f8",
+ "subjectSourceSha256": "278a119301d73e3fe73b34e990a8475088bdc195a73d9717a713cf33e7aa4caf",
+ "identity": {
+  "name": "Giant Squid",
+  "family": "cephalopod",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Giant Squid\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3698170554\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 3698170554,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c202-qualified-octopus",
+  "authoringSha256": "0a36b6dc625f34009d3b5d1c6c1262959e0388fcb536fb831ec51488e2814431",
+  "masterSha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+ },
+ "habitat": {
+  "profileId": "cephalopod",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "22935aae923bebded3f3fae3f8608629f56923f64690646ed5c65f2b8ce08855",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group cephalopod (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2662,
+     "class": "front",
+     "attach": {
+      "x": 245.7,
+      "y": 216.6,
+      "relX": 1,
+      "relY": 0.75
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0768,
+     "class": "top",
+     "attach": {
+      "x": 231.7,
+      "y": 183.3,
+      "relX": 0.91,
+      "relY": 0.27
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1108,
+     "class": "rear",
+     "attach": {
+      "x": 91.9,
+      "y": 177.9,
+      "relX": 0,
+      "relY": 0.19
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0229,
+     "class": "limb-down",
+     "attach": {
+      "x": 212,
+      "y": 235,
+      "relX": 0.78,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0439,
+     "class": "limb-down",
+     "attach": {
+      "x": 228.5,
+      "y": 235,
+      "relX": 0.89,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "c202-qualified-octopus",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

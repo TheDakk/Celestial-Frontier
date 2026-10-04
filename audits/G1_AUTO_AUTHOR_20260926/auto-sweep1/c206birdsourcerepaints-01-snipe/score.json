@@ -1,0 +1,9 @@
+{
+ "id": "c206birdsourcerepaints-01-snipe",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-thigh (legFarKnee) covers 25% paint (reference 72%)"
+ ],
+ "semanticPresence": null
+}

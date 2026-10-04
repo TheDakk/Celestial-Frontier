@@ -1,0 +1,94 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "synthetic:fish",
+    "seed": 659714,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "family": "fish",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.92,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.52,
+      0.5
+    ],
+    "head": [
+      0.66,
+      0.5
+    ],
+    "jaw": [
+      0.74,
+      0.54
+    ],
+    "spine0": [
+      0.46,
+      0.5
+    ],
+    "spine1": [
+      0.4,
+      0.5
+    ],
+    "spine2": [
+      0.34,
+      0.5
+    ],
+    "spine3": [
+      0.28,
+      0.5
+    ],
+    "spine4": [
+      0.22,
+      0.5
+    ],
+    "spine5": [
+      0.16,
+      0.5
+    ],
+    "caudal": [
+      0.06,
+      0.5
+    ],
+    "dorsal": [
+      0.4,
+      0.36
+    ],
+    "pectoralFar": [
+      0.56,
+      0.6
+    ],
+    "pectoralNear": [
+      0.58,
+      0.62
+    ]
+  },
+  "materials": {
+    "surface": "scaled",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "fish-v1",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
+}

@@ -1,0 +1,149 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "15-iguana",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "63ced252d4f1bd2df41dfaf714197096140ae3907dd44707e102b07845f7cac3",
+ "subjectSourceSha256": "b596d5228be477403f246a7a7d2402a680812ad2e4928cb31e758b1f374a2d88",
+ "identity": {
+  "name": "Iguana",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Iguana\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3052957732\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 3052957732,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c136-sprawler-05-monitor-lizard",
+  "authoringSha256": "da484396b617d4bea8823731e9d52a2498c027f0683f0df206a04485f0638b2e",
+  "masterSha256": "a3b0609ee1433e396e13f0e3d2ec6a559a827478f720d14c708d4620defae18d"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0081,
+     "class": "top",
+     "attach": {
+      "x": 303.5,
+      "y": 183,
+      "relX": 0.87,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0308,
+     "class": "front",
+     "attach": {
+      "x": 316,
+      "y": 193.5,
+      "relX": 1.01,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.004,
+     "class": "front",
+     "attach": {
+      "x": 282.3,
+      "y": 190.9,
+      "relX": 0.63,
+      "relY": 0.16
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0146,
+     "class": "top",
+     "attach": {
+      "x": 260.7,
+      "y": 195,
+      "relX": 0.38,
+      "relY": 0.26
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.228,
+     "class": "rear",
+     "attach": {
+      "x": 226.1,
+      "y": 213.1,
+      "relX": -0.01,
+      "relY": 0.68
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0399,
+     "class": "limb-down",
+     "attach": {
+      "x": 296.5,
+      "y": 222,
+      "relX": 0.79,
+      "relY": 0.88
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0791,
+     "class": "limb-down",
+     "attach": {
+      "x": 237,
+      "y": 227,
+      "relX": 0.11,
+      "relY": 1
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0402,
+     "class": "limb-down",
+     "attach": {
+      "x": 273.5,
+      "y": 227,
+      "relX": 0.53,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 2,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "c136-sprawler-05-monitor-lizard",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

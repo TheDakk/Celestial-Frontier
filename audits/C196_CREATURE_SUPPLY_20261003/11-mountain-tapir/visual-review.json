@@ -1,0 +1,28 @@
+{
+  "name": "Mountain Tapir",
+  "masterSha256": "c9e5333ec8eeae2bf47171cc5222f2911cc9075db708f65412117175f4fe42fa",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: dark woolly heavy-bodied tapir with short flexible-looking proboscis, pale mouth edges, pale-rimmed rounded near ear and short furry tail. Four distinct feet and leg silhouettes are present; only three forward-facing hoof/toe tips are readily visible on each front foot, so actual four-toed forefoot anatomy cannot be inferred from this view. The far ear has a visible tip/shaft behind the head but its base is occluded; requested ear coverage remains held. Far leg roots meet behind shaggy torso and projected foot heights differ. Dense ragged coat requires ownership-fringe review; no anatomical/native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 221,
+      "y0": 360,
+      "x1": 1088,
+      "y1": 895
+    },
+    "margins": {
+      "left": 221,
+      "right": 165,
+      "top": 360,
+      "bottom": 358
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

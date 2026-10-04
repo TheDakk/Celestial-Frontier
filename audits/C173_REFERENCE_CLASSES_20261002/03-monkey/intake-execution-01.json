@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c173-stage-execution/v1",
+  "stage": "intake",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C173_REFERENCE_CLASSES_20261002/03-monkey",
+    "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01"
+  ],
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/intake-01.log",
+  "logSha256": "3979c0e53e8424dbf780fc54211ca0509d456dca2e9917c1dd3067ab5bbdc400",
+  "nativeRuns": 0
+}

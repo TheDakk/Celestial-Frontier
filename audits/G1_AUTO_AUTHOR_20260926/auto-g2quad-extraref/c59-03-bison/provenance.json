@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c59-03-bison",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "afb8e5a6afad83c96d6c9226239e9ff3c9ef1692d76ddbeba0939475fa8c31d5",
+ "subjectSourceSha256": "8758f07b7036ef4e581a2a527e2f3b9f5d3e5ddd0bb3dc21b0605d4c22872f25",
+ "identity": {
+  "name": "Bison",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Bison\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1022909654\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 1022909654,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.009,
+     "class": "top",
+     "attach": {
+      "x": 35.7,
+      "y": 195.2,
+      "relX": 0.06,
+      "relY": 0.47
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0375,
+     "class": "limb-down",
+     "attach": {
+      "x": 56.1,
+      "y": 270.1,
+      "relX": 0.11,
+      "relY": 0.76
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0147,
+     "class": "limb-down",
+     "attach": {
+      "x": 368,
+      "y": 245.5,
+      "relX": 0.89,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0381,
+     "class": "limb-down",
+     "attach": {
+      "x": 113,
+      "y": 249,
+      "relX": 0.25,
+      "relY": 0.68
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0406,
+     "class": "limb-down",
+     "attach": {
+      "x": 287.2,
+      "y": 274.2,
+      "relX": 0.69,
+      "relY": 0.78
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0343,
+     "class": "limb-down",
+     "attach": {
+      "x": 223.5,
+      "y": 275,
+      "relX": 0.53,
+      "relY": 0.78
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

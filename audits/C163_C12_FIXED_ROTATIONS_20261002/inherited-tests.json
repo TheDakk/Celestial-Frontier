@@ -1,0 +1,20 @@
+[
+  {
+    "source": "port/v2/tools/creature-animation/wasm-arap-sweep.test.mjs",
+    "sha256": "0c83ccfec27a90d85ff14aefff89d1e0838b9de83f5093e7eb37bd6550575631",
+    "copy": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/wasm-arap-sweep.test.mjs",
+    "onlyModification": "Historical audit reference import prefix adjusted for candidate directory."
+  },
+  {
+    "source": "port/v2/tools/creature-animation/arap-skin.test.mjs",
+    "sha256": "d3ef24bd2b64f09602b467141e941ed4e224a94b06b4e4b61a24225749d95d75",
+    "copy": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-skin.test.mjs",
+    "onlyModification": "Historical audit reference import prefix adjusted for candidate directory."
+  },
+  {
+    "source": "port/v2/tools/creature-animation/arap-kernel-numerics.test.mjs",
+    "sha256": "556421cfc53e50c5bccfb410cf12e1d52f946dbd8b8c408fc2f12c0e5e79139b",
+    "copy": "audits/C163_C12_FIXED_ROTATIONS_20261002/candidate/arap-kernel-numerics.test.mjs",
+    "onlyModification": "Historical audit reference import prefix adjusted for candidate directory."
+  }
+]

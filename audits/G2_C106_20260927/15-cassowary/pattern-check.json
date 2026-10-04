@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cassowary",
+  "masterSha256": "b6e9c3584ed65c8024cde9854e06eb7658c9dad2eec119d58d50eee3a8aad296",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

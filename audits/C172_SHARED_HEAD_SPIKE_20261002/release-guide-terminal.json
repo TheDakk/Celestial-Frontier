@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c172-release-guide-terminal/v1",
+  "command": "vitest run tests/slicesmoke-sixth-red-contract.test.ts",
+  "status": "PASS",
+  "tests": 29,
+  "native": false,
+  "runAuthority": "Started after C177 terminal notice. C178 correction arrived after launch; polling the already-started command returned exit0. No restart or subsequent CPU work.",
+  "logSha256": "47a3cd13ca2d5ea5846b6f15d00f66a6a30f1c278733c4239ff3a16fc770833e",
+  "supersedes": "Deferred-check status in RELEASE_SYNC.md and delivery-v2.json only; prior receipts retained."
+}

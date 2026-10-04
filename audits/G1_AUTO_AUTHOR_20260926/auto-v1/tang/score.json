@@ -1,0 +1,18 @@
+{
+ "id": "tang",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 948.7,
+ "landmarkMedian": 0.0547,
+ "landmarkMax": 0.1982,
+ "worst": [
+  "spine3 0.198",
+  "spine2 0.175",
+  "dorsal 0.174"
+ ],
+ "labelAgreement": 0.5227,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

@@ -1,0 +1,3 @@
+# Retention (one PR, no LFS — keep the repo lean). Every take is reproducible: native-runner.mjs + its script-stand-*.json.
+# Committed: report.json, the run log and the 10 s film of each stand line, plus the sheet (it carries the stills at half size).
+*/turn*.png

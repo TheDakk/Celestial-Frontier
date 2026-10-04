@@ -1,0 +1,185 @@
+{
+  "id": "01-giant-salamander",
+  "name": "Giant Salamander",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "6afcc8b7e6306ca7a0da1d7300a6620906bb9538a81a26cd0ff22a542cdac25d",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 10330,
+    "coreRadius": 13,
+    "bodyBox": {
+      "x0": 99,
+      "y0": 180,
+      "x1": 319,
+      "y1": 226
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0324,
+        "pixels": 335,
+        "box": {
+          "x0": 320,
+          "y0": 189,
+          "x1": 338,
+          "y1": 214
+        },
+        "attach": {
+          "x": 320,
+          "y": 201.5,
+          "relX": 1,
+          "relY": 0.47
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.17
+        },
+        "class": "front",
+        "length": 21.9
+      },
+      {
+        "k": 1,
+        "frac": 0.052,
+        "pixels": 537,
+        "box": {
+          "x0": 79,
+          "y0": 201,
+          "x1": 122,
+          "y1": 232
+        },
+        "attach": {
+          "x": 103.9,
+          "y": 220.1,
+          "relX": 0.02,
+          "relY": 0.87
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.05
+        },
+        "class": "rear",
+        "length": 31.4
+      },
+      {
+        "k": 2,
+        "frac": 0.0309,
+        "pixels": 319,
+        "box": {
+          "x0": 157,
+          "y0": 221,
+          "x1": 185,
+          "y1": 239
+        },
+        "attach": {
+          "x": 174.5,
+          "y": 221,
+          "relX": 0.34,
+          "relY": 0.89
+        },
+        "dir": {
+          "x": -0.59,
+          "y": 0.81
+        },
+        "class": "limb-down",
+        "length": 25.1
+      },
+      {
+        "k": 3,
+        "frac": 0.0179,
+        "pixels": 185,
+        "box": {
+          "x0": 285,
+          "y0": 222,
+          "x1": 312,
+          "y1": 236
+        },
+        "attach": {
+          "x": 292.3,
+          "y": 223.8,
+          "relX": 0.88,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": 0.77,
+          "y": 0.64
+        },
+        "class": "limb-down",
+        "length": 23.2
+      },
+      {
+        "k": 4,
+        "frac": 0.0109,
+        "pixels": 113,
+        "box": {
+          "x0": 188,
+          "y0": 223,
+          "x1": 206,
+          "y1": 232
+        },
+        "attach": {
+          "x": 192.5,
+          "y": 223,
+          "relX": 0.42,
+          "relY": 0.93
+        },
+        "dir": {
+          "x": 0.64,
+          "y": 0.77
+        },
+        "class": "limb-down",
+        "length": 16.2
+      },
+      {
+        "k": 5,
+        "frac": 0.0271,
+        "pixels": 280,
+        "box": {
+          "x0": 250,
+          "y0": 226,
+          "x1": 279,
+          "y1": 243
+        },
+        "attach": {
+          "x": 257.5,
+          "y": 226,
+          "relX": 0.72,
+          "relY": 1
+        },
+        "dir": {
+          "x": 0.53,
+          "y": 0.85
+        },
+        "class": "limb-down",
+        "length": 27.4
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 258,
+        "x1": 279,
+        "cx": 269
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

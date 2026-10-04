@@ -1,0 +1,215 @@
+{
+  "schema": "cf.c198-actual-rig-software-review/v1",
+  "status": "RETAINED_REFUSALS",
+  "scope": "Actual loaded CreatureRig positions equal independent publication; source-size software rendering only, no native or GPU acceptance",
+  "rows": [
+    {
+      "action": "idle",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 16,
+      "image": "idle-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 593.3076725900173,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 16,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 2669.884526655078,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 16,
+      "image": "idle-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 2966.5383629500866,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 16,
+      "image": "idle-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 593.3076725900173,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 16,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 16,
+      "image": "faint-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 104,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 16,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 468,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 16,
+      "image": "faint-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 520,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 16,
+      "image": "faint-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 104,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 16,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:walk",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 16,
+      "image": "approach-walk-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:walk",
+      "ms": 84,
+      "fraction": 0.2,
+      "status": "REFUSED",
+      "error": "Contact: approach:walk@84 exceeds scale compression bound"
+    },
+    {
+      "action": "approach:walk",
+      "ms": 378,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 16,
+      "image": "approach-walk-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:walk",
+      "ms": 420,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 16,
+      "image": "approach-walk-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:walk",
+      "ms": 84,
+      "fraction": 0.2,
+      "status": "REFUSED",
+      "error": "Contact: approach:walk@84 exceeds scale compression bound"
+    },
+    {
+      "action": "hit",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 16,
+      "image": "hit-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 90,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 16,
+      "image": "hit-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 405,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 16,
+      "image": "hit-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 450,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 16,
+      "image": "hit-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 90,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 16,
+      "image": "hit-0p2.png",
+      "publishedPartParity": "byte-exact"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/record.json",
+      "sha256": "81cdf95391f31b6c996ad4cbc418164d21601633ade148650bb5035c870c7bb7"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/binding.json",
+      "sha256": "70d70655e848f6f219902259dac9218aafd1b79bc410a76a51a23703dc00b0c4"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/fit01/parts/atlas/c198-reference-01-gorilla.png",
+      "sha256": "6ddd40a45f9bd774549b78e5dc3ef6950ee1ac887f79916811a44dbaa551dd7e"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/01-gorilla/master.png",
+      "sha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8"
+    },
+    {
+      "path": "audits/C198_REFERENCE_PACKETS_20261003/review-rig.mjs",
+      "sha256": "4cd99ff68833ae4a6ef4c55a3c85183b25d8e1da363a725b6e3c95af90a07419"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

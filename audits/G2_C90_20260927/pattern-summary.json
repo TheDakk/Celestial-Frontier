@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Anaconda",
+    "status": "PASS"
+  },
+  {
+    "name": "Cobra",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Viper",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Rattlesnake",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sand Boa",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Cave Snake",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Catfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Gar",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Bowfin",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tilapia",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Piranha",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Killifish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Arctic Cod",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Viperfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Squirrel",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Chipmunk",
+    "status": "PASS"
+  },
+  {
+    "name": "Rabbit",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Hare",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Pika",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Hedgehog",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Meerkat",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Kinkajou",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sloth Bear",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "River Otter",
+    "status": "NOT_REQUIRED"
+  }
+]

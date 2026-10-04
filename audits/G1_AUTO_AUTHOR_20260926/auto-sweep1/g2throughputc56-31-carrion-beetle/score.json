@@ -1,0 +1,9 @@
+{
+ "id": "g2throughputc56-31-carrion-beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 31%)"
+ ],
+ "semanticPresence": null
+}

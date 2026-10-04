@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c132-arena-intake-hold/v1",
+  "id": "saltpan",
+  "qualityAccepted": false,
+  "registered": false,
+  "command": "node audits/C132_ARENAS_20261001/intake.mjs saltpan",
+  "exitCode": 1,
+  "error": "Master dimensions differ",
+  "dimensions": {
+    "far": [
+      1672,
+      941
+    ],
+    "mid": [
+      1672,
+      941
+    ],
+    "near": [
+      1672,
+      940
+    ]
+  },
+  "originalPixelsModified": false,
+  "partialOutputsRetained": true,
+  "successor": "saltpan-r2",
+  "reason": "Native generator delivered NEAR one pixel shorter than FAR/MID. Preserve original and partial intake; new native generation required."
+}

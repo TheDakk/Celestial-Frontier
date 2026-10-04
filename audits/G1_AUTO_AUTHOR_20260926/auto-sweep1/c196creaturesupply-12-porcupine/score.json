@@ -1,0 +1,12 @@
+{
+ "id": "c196creaturesupply-12-porcupine",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches quadruped better (0.0292 < 0.0379)",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 33%)",
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 69%)",
+  "unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 5.7%)"
+ ],
+ "semanticPresence": null
+}

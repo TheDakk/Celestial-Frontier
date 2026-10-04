@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Seabird",
+  "masterSha256": "5753b0e68473c1f86bdc6987fce788a89bb62c2cbe79384d4e9d3e2c94f8d9a3",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

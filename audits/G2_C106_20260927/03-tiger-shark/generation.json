@@ -1,0 +1,13 @@
+{
+  "id": "03-tiger-shark",
+  "name": "Tiger Shark",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-5f2c0a5e-c80f-4182-bfd3-a3c4a880cf89.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7cec373702fb865ff31213d50adfa79be5ffbcb8bf6079bb6f8610a7c79f2056",
+  "bytes": 1188993,
+  "promptSha256": "becf26d75d72fab1be5c0719023c231b6c2ce220fcb7ab494798f0ed266623f4",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

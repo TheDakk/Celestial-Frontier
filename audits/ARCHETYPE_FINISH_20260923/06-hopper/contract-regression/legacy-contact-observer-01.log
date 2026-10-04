@@ -1,0 +1,19 @@
+$ node --test port/v2/tools/animation-completion/legacy-contact-observer.test.mjs
+SOURCE port/v2/tools/animation-completion/native-entry.mjs 2a3d928272db62892174a1cfc37f80f8095df4909940ff2fe304cd90e4d5cfe7
+SOURCE port/v2/tools/habitat-battle/crab-plant-entry.mjs 7e44b0095f258ad0871ea02afa32634b966adcebb3ec511c93faede9e8a5ffea
+SOURCE port/v2/tools/animation-completion/legacy-contact-observer.mjs 6b0bdaec4e40c6991832217ed414297501d8c56541781b315c5c5fdf43cc0e77
+SOURCE port/v2/tools/animation-completion/legacy-contact-observer.test.mjs c4c84bbf143ff8f6b9ef05d51896398011dc7ee1afdc1c1df849fd969c49662c
+✔ all retained ordinary family fixtures preserve record identity and bytes (0.383542ms)
+✔ explicit adhesive pads are refused before an ankle-only consumer can produce evidence (0.158208ms)
+✔ malformed, falsey and future declarations cannot silently fall back to ankle marks (0.085291ms)
+✔ absence introduces no replacement validation of the old record path (0.046625ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 84.5265
+
+EXIT_CODE=0

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Kinkajou",
+  "masterSha256": "42d0e313c3708a50bb7065d3d81e79d28e62d88c6c731e3a49a34ce9363019ed",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "6b7cc26c34b277d83ba8f8dcbf306cc8915fdfb6",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/master.png",
+      "sha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/authoring.json",
+      "sha256": "c9e294ae8524f38526db35f392c9362a71661d2c0f5bdcb00b2de93435eddce1"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/subject-source.json",
+      "sha256": "a4f6f6555c6908342188185fd7aa62f6d921af1bf6fd48d340e851881c4cae0e"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "ed991d7a7e592216cca5f52cbb4598139344dd9930b16bd180f4640fd5947a79",
+  "bindingHash": "28ffb9a59e9e8b28d8800bf2a04d321339416cae4078f51afc2fc29a83283e08",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "hinge",
+    "foot",
+    "siphon",
+    "mantle",
+    "valveFar",
+    "valveNear"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/master.png",
+      "sha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/authoring.json",
+      "sha256": "c9e294ae8524f38526db35f392c9362a71661d2c0f5bdcb00b2de93435eddce1",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/subject-source.json",
+      "sha256": "a4f6f6555c6908342188185fd7aa62f6d921af1bf6fd48d340e851881c4cae0e",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

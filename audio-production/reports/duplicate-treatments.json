@@ -1,0 +1,622 @@
+{
+  "schema": "cf.audio-duplicate-treatments/v1",
+  "meaning": "Identical decoded PCM counts once as a distinct performance, regardless of filename or event mapping.",
+  "groups": {
+    "044abf178ed9d6a3de78adbfddade261453998f061940f87ee05db56b3f3725e": [
+      "ability.storm.impact.2",
+      "ability.storm.release.2"
+    ],
+    "d33ec8d8478233181d219dfa4d2b6f076c90374f7eeaee91bce8b186ab747b50": [
+      "weather.mild",
+      "weather.humid",
+      "weather.mist",
+      "weather.wind-cold",
+      "weather.still",
+      "weather.wind",
+      "weather.trade-wind",
+      "weather.lightless",
+      "weather.still-cold",
+      "weather.dry",
+      "weather.greenhouse",
+      "weather.band-wind",
+      "weather.pastel-cloud",
+      "biome.temperate",
+      "biome.savanna",
+      "biome.jungle",
+      "biome.marsh",
+      "biome.swamp",
+      "biome.mangrove",
+      "biome.tundra",
+      "biome.karst",
+      "biome.saltflat",
+      "biome.fungal",
+      "biome.crystalsteppe",
+      "biome.abyssal",
+      "biome.glacier",
+      "biome.cryogeyser",
+      "biome.canyon",
+      "biome.saltpan",
+      "biome.oxide",
+      "biome.glass",
+      "biome.boulder",
+      "biome.graben",
+      "biome.geode",
+      "biome.carbon",
+      "biome.obsidian",
+      "biome.banded",
+      "biome.ammonia",
+      "biome.stormeye"
+    ],
+    "8dafa07d08885cf6fccc5c66fa13f0df91aa7cba9d2f37d45a31cdaef44d5a42": [
+      "weather.dry-heat",
+      "weather.steam-cold",
+      "weather.mirage-heat",
+      "weather.acid-haze",
+      "weather.ash",
+      "weather.ember-wind",
+      "weather.still-heat",
+      "weather.heat-shimmer",
+      "weather.ember-cloud",
+      "biome.volcisle",
+      "biome.sulfurdeck",
+      "biome.acidhaze",
+      "biome.abyssgreen",
+      "biome.ashwaste",
+      "biome.emberfield",
+      "biome.hotglow"
+    ],
+    "b47b1da3d4206049bd9135e8ed07b69aa49928751d8b1e0698e1415ebd4167a1": [
+      "weather.swell",
+      "weather.calm",
+      "weather.glow-calm",
+      "biome.opensea",
+      "biome.archipelago",
+      "biome.coral",
+      "biome.stormsea",
+      "biome.milksea",
+      "biome.packice",
+      "biome.blueice",
+      "biome.dunesea",
+      "biome.magmasea"
+    ],
+    "08fc7c2ebec2ddf47c093d4bca7d223be76c655f326d8bf6202dd4074874c37d": [
+      "weather.squall",
+      "weather.sulfur-storm",
+      "weather.cyclone"
+    ],
+    "1ec3261dcd8f4c2ba912b745afac79297749147b76fbd3d5c5be1027a04d5a82": [
+      "battle.guardian-entrance.1",
+      "battle.critical.1",
+      "battle.stun-applied.1"
+    ],
+    "648e043016885bd14670013aa0afcd394e85bbb6f5d1cc6e68bbad28476b7456": [
+      "battle.guardian-entrance.2",
+      "battle.critical.2",
+      "battle.stun-applied.2"
+    ],
+    "234802eb7f9d69366a89384120847eb2c960ea70e51d14bda5b3765e6d207c03": [
+      "battle.guardian-entrance.3",
+      "battle.critical.3",
+      "battle.stun-applied.3"
+    ],
+    "4b8abc072234ff7ece8e9a0d9e77098ee378d31b233094631565c7fc4b30b489": [
+      "battle.initiative.1",
+      "battle.first-strike.1",
+      "battle.burn.1"
+    ],
+    "71cd515ca8a7d4a627990340bbcd522fd52ffe516f1a69b8df6e2bf1d91137cd": [
+      "battle.initiative.3",
+      "battle.first-strike.3",
+      "battle.burn.3"
+    ],
+    "73c52b980c2a581690def65cf46a015202cce85538d8819baa6e1a941afa618c": [
+      "battle.dodge.1",
+      "battle.execute.1"
+    ],
+    "decfb92b8c0a80c4eaa7dc58523f101756cbf25ccce3faa66e629b440b2a2c64": [
+      "battle.dodge.3",
+      "battle.execute.3"
+    ],
+    "0801ad3f9cd620a834dacec2d67cad2aa34f33ee054a0678fbe97a1be839af26": [
+      "battle.stun-skipped.1",
+      "battle.thorns.1"
+    ],
+    "f79ce2f108d52a07caa2b1a29e9d8bac368b6b4c57d5a623d0ea4c03aa4b9859": [
+      "battle.stun-skipped.2",
+      "battle.thorns.2",
+      "battle.guardian-phase.2"
+    ],
+    "346bf9bc7ddeb360fdb000b29bd9ac9a63f7a78e2c14f47c055b724f726bf0d1": [
+      "battle.stun-skipped.3",
+      "battle.thorns.3",
+      "battle.guardian-phase.3"
+    ],
+    "23c741d117ffaac973aa6a42a12bae8822f8c1cdf3c2f188935b85b9158b1ed0": [
+      "battle.damage.1",
+      "battle.lifesteal.1"
+    ],
+    "985368f7f3c3a840e6ee87fb8c467bd069c1f3631b892c3c002ec310c6bd146c": [
+      "battle.damage.3",
+      "battle.lifesteal.3"
+    ],
+    "be538e519cb58e97ab9a121ee621f920cb57cacfaf3c4c5f458f791894040a5c": [
+      "battle.first-strike.2",
+      "battle.burn.2"
+    ],
+    "af9983911f2ebd6f5c22dcdd26a9359c9553e722a491af961db4ab5c5bffea8a": [
+      "battle.regen.1",
+      "battle.guardian-victory.1",
+      "ui.confirm.1"
+    ],
+    "1cdae7ce6d02aef67a1dccf0fe2acaa092ba4dc0ea4c1248802d7b428466548c": [
+      "battle.regen.2",
+      "battle.guardian-victory.2",
+      "ui.confirm.2"
+    ],
+    "fb5d3c6cd178e428a9316bfa60a3399f271bbcd281ad4276262aad800383fd6f": [
+      "battle.regen.3",
+      "battle.guardian-victory.3",
+      "ui.confirm.3"
+    ],
+    "a1bd10a0013ab2e5aa13c2215fd77701a4c5b0804540bc171bd0f062742d0ddf": [
+      "battle.defeat.1",
+      "battle.guardian-defeat.1"
+    ],
+    "e19dee0311bf0aeaf8d9b84374f0525bb72840e458779c2901ddbd33c7446bb5": [
+      "battle.defeat.2",
+      "battle.guardian-defeat.2"
+    ],
+    "f0aa6f433530db0a18c26a36ebab0294e25cc4efc7279badc1baef33ca734472": [
+      "battle.defeat.3",
+      "battle.guardian-defeat.3"
+    ],
+    "387556fff8bc9b29f4c8dd7ca477393bfc9258b7acf4830b190c63163a1cd2c3": [
+      "v2.surface.leaves.1",
+      "v2.material.foliage.1"
+    ],
+    "e6c4c463e8bcc4554efcdead16bb2a36562dbe67a6da609bff154658a228d8c8": [
+      "v2.surface.leaves.2",
+      "v2.material.foliage.2"
+    ],
+    "9d0350f6bc7a1861e58d8092c5ed6b2ab8ad62d09130bd6222ca0c5c620a877a": [
+      "v2.surface.leaves.3",
+      "v2.material.foliage.3"
+    ],
+    "bd7d5a883523d61c29c71082cd35a4b6e7ddedd296877c6618ba97c3d3dc116c": [
+      "v2.surface.wood.1",
+      "v2.contact.hoof.1",
+      "v2.material.chitinous.1"
+    ],
+    "cf6650b0bc77ea48151878d40e9bdf8c2464a1f671f19d8540920e25832eb2c8": [
+      "v2.surface.wood.2",
+      "v2.contact.hoof.2",
+      "v2.material.chitinous.2"
+    ],
+    "7757c1d28efadc2faa14b7965e874566561197ab15b701abdeade295b105c224": [
+      "v2.surface.wood.3",
+      "v2.material.chitinous.3"
+    ],
+    "50000b53933bf5ab13122dcc2636a0e45680969e499e4e6249357d1b092dc517": [
+      "v2.surface.water.1",
+      "v2.material.slick-and-wet.1"
+    ],
+    "53cae564e8ee08b0ec3171f926ed62b000e147886fb084f2e522e85822da4d07": [
+      "v2.surface.water.2",
+      "v2.material.slick-and-wet.2"
+    ],
+    "3a3c1e4cf123f8540093fa58b4eaa960cf3f92e184bbeecb1898374735addc87": [
+      "v2.surface.water.3",
+      "v2.material.slick-and-wet.3"
+    ],
+    "d0c3a0c4b8a1fa33dcb347aef38c6685208e8199453cb152ca4bb0bffe359684": [
+      "v2.material.wood.1",
+      "v2.ui.harvest.1"
+    ],
+    "e8dd2c30fe1e59640c6829510b87ba9a0bf2f80497a40ca4bde07543649c5dcf": [
+      "v2.material.wood.2",
+      "v2.ui.harvest.2"
+    ],
+    "c4a324b2917c99f2bb19930759092c2c6ee323bfe5217095c23f3e08ab7ff800": [
+      "v2.material.wood.3",
+      "v2.ui.harvest.3"
+    ],
+    "d612121a69409d75549f382e811c934af1b29dddcbaa46cefae9093a23ac7659": [
+      "v2.material.warty.1",
+      "v2.material.translucent.1"
+    ],
+    "3cefe73930898e95acc058a8f1fef8d23d0bf32aacc3f21761a832e668f04b0c": [
+      "v2.material.warty.2",
+      "v2.material.translucent.2"
+    ],
+    "509f8b0f4d3736431e65ebe938055dd00a9dfaf719ea038b5207868a0b95f673": [
+      "v2.material.warty.3",
+      "v2.material.translucent.3"
+    ],
+    "612b17f54e0fec89ac981e350fb5714510311ef4805817a1fb040581dda9d4b8": [
+      "v2.battle.alert.1",
+      "v2.battle.deny.1",
+      "v2.battle.defeat.1"
+    ],
+    "3f750f9843ea348b6211b215a33a5c4d2c35fb6a3ac5870c559f78a9de01eef2": [
+      "v2.battle.alert.2",
+      "v2.battle.deny.2",
+      "v2.battle.defeat.2"
+    ],
+    "2fbede766c171af95f962dc96baab20706a37dbaca3122fae81233c25020046e": [
+      "v2.battle.alert.3",
+      "v2.battle.deny.3",
+      "v2.battle.defeat.3"
+    ],
+    "4c8256fa3f6c68a86d6a66c7a65b5656b24435fad3b7bbae9ed441f78e685d9a": [
+      "v2.battle.victory.3",
+      "v2.ui.rarity.3"
+    ],
+    "b822e41ed3e41799ccaf3778c6edd392fb75a20aade607534c892d16bd2f223b": [
+      "v2.ui.discovery.1",
+      "v2.ui.save.1"
+    ],
+    "be0eb3c9d22c5725307ae90bbee2d099268fb0b6fc7ea5b074c2c703de7fad5d": [
+      "v2.ui.discovery.2",
+      "v2.ui.save.2"
+    ],
+    "b45049ba37f1b1b4c2e09dbc509f9fdaf1dcbce2eb93d1478db2b915ef3a2890": [
+      "v2.ui.discovery.3",
+      "v2.ui.save.3"
+    ],
+    "5a627c36d82927a2abfbbe4176cae35b61d9a5e9e0d9f65664f41122343a8f15": [
+      "v2.plant-woody.call.2",
+      "v2.plant-woody.victory.2"
+    ],
+    "be194ff2d6912579c87c85d5d16d85f4f55be9b817c66908cb6e9f4f52b948c1": [
+      "v2.plant-woody.call.3",
+      "v2.plant-woody.victory.3"
+    ],
+    "9a34fab72cf2e18c33f01ff9f65b25e90eb423a6d62eb95a970e43bd15c65272": [
+      "v2.plant-woody.alert.1",
+      "v2.plant-woody.breath-idle.1"
+    ],
+    "cdecd55736342eb311af1d294540de6f47ea7857638e13fee35e2425e1db5632": [
+      "v2.plant-woody.alert.2",
+      "v2.plant-woody.breath-idle.2"
+    ],
+    "c7a635f85ab231d873d8bbb4555d82d4111516aa0c14b00032134c0425e68033": [
+      "v2.plant-woody.alert.3",
+      "v2.plant-woody.breath-idle.3"
+    ],
+    "fd93a74433d1196705b17f8fe72612b7a1efc54029db1b517ff99a19878e7c53": [
+      "v2.plant-woody.attack-vocal.1",
+      "v2.plant-woody.land-thud.1"
+    ],
+    "5074082d00103db74a6b0c8068a3a08bcea518b2ee01016a1aaab8a4131560e9": [
+      "v2.plant-woody.attack-vocal.2",
+      "v2.plant-woody.land-thud.2"
+    ],
+    "bfa76a8dfb45983ee1d688e8156d17e4ef8de1abad45776d180860daf1de010c": [
+      "v2.plant-woody.attack-vocal.3",
+      "v2.plant-woody.land-thud.3"
+    ],
+    "f999c1da80c596625dca20fe9993ae85f265c7ab2684451b24a94ba726e6e226": [
+      "v2.plant-herb.call.2",
+      "v2.plant-herb.victory.2"
+    ],
+    "4cdc95258408553b2e6f19aa6972e01742fdefd8adf6f7b2778e207f259172bd": [
+      "v2.plant-herb.call.3",
+      "v2.plant-herb.victory.3"
+    ],
+    "8c6c3f2b901100a15c1a501cdbffd621260eb51ce1b257317e7ff2ba7594f8c9": [
+      "v2.plant-herb.alert.1",
+      "v2.plant-herb.breath-idle.1"
+    ],
+    "892917d31bb2e7a4ac6f7c44be56ee97819133f9286e45ced2c35ebf93c200c6": [
+      "v2.plant-herb.alert.2",
+      "v2.plant-herb.breath-idle.2"
+    ],
+    "3848569f81020e834af3eead51d08bdce268788bd607fb26511d30192c2e330f": [
+      "v2.plant-herb.alert.3",
+      "v2.plant-herb.breath-idle.3"
+    ],
+    "4e360a29ba2c41350c0a332e153be82b6c42ff0b8ca5ab5fffbc4f3828111f22": [
+      "v2.plant-herb.attack-vocal.1",
+      "v2.plant-herb.land-thud.1"
+    ],
+    "6c6d70174cc66e6cd33b1d4a7123a56e9f0d9622d7a209e1f5fda25c57997761": [
+      "v2.plant-herb.attack-vocal.2",
+      "v2.plant-herb.land-thud.2"
+    ],
+    "9edf767afb113b37cb64318f6b9e5da7e11f640cd0d22d7c96878cebe4bd0b31": [
+      "v2.plant-herb.attack-vocal.3",
+      "v2.plant-herb.land-thud.3"
+    ],
+    "3e2c0d733ab675309ebbeaf0d2a5a04eeece2925614f6248cd779802b3b6e8e3": [
+      "v2.fungal.call.2",
+      "v2.fungal.victory.2"
+    ],
+    "3d91881ab63fe472fe341fdb5f0af7fa0865efc097d09caffc425ba5a0757ef5": [
+      "v2.fungal.call.3",
+      "v2.fungal.victory.3"
+    ],
+    "6a6157f51c4d741bbf0514dfa0d9ac1e1284b388fd4b159f994bbae92af4f197": [
+      "v2.fungal.alert.1",
+      "v2.fungal.breath-idle.1"
+    ],
+    "a3e3edd6632e53c5ee6cbb0a435da4961d02b5c36206597d3d13da514fa61283": [
+      "v2.fungal.alert.2",
+      "v2.fungal.breath-idle.2"
+    ],
+    "9a2d51b0510e7567bd32926294feb94a4ffda12dc3d0b964cc87de58b2c71f97": [
+      "v2.fungal.alert.3",
+      "v2.fungal.breath-idle.3"
+    ],
+    "5eab1c824b4f8ca231af15f6bf3faff796db3b5c00ff1694baea22f0f6d0cf85": [
+      "v2.fungal.attack-vocal.1",
+      "v2.fungal.land-thud.1"
+    ],
+    "1e3655bc09c9a74bf2a52fa2a5e5234b92d48abf2d735475268f8463d634cf0b": [
+      "v2.fungal.attack-vocal.2",
+      "v2.fungal.land-thud.2"
+    ],
+    "69c360733f7574d06312d9569500465d34b1af30d6b524ea1a86fb15b66bba82": [
+      "v2.fungal.attack-vocal.3",
+      "v2.fungal.land-thud.3"
+    ],
+    "6215ef33d2a3a9325d91248c3bf099ccf5d73b1b8ceb55d8612d5d05efdb7986": [
+      "v2.microbe.call.2",
+      "v2.microbe.victory.2"
+    ],
+    "c19a9b22a50c41191ea36b7a39dbcec2c9ca240372c27db0175d702e084136ad": [
+      "v2.microbe.call.3",
+      "v2.microbe.victory.3"
+    ],
+    "ad11d46d4ca802e2c462264d5fdd33dbe898a9ae2df6d202bf41ab1b97cc716e": [
+      "v2.microbe.alert.1",
+      "v2.microbe.breath-idle.1"
+    ],
+    "5c69c9e88e2fc3a96db4b3da7fdf2f603e6dab814dce5f0b3baa6c93581f3c73": [
+      "v2.microbe.alert.2",
+      "v2.microbe.breath-idle.2"
+    ],
+    "fc90e6ef3fbf045cba5df93d2d610a9ac08f6231f46d6980288332729ccc92e9": [
+      "v2.microbe.alert.3",
+      "v2.microbe.breath-idle.3"
+    ],
+    "2cc9fd3bae9dc06208ebc59e001199d88f383db559abb83970fafa19f69376d4": [
+      "v2.microbe.attack-vocal.1",
+      "v2.microbe.land-thud.1"
+    ],
+    "8e807fb8b8ab340f29f123b1eb23d96ed136f69751a70936d9678f79bc78b5a7": [
+      "v2.microbe.attack-vocal.2",
+      "v2.microbe.land-thud.2"
+    ],
+    "13015a1a066243265ecac7bd2c478a2110405d4e5e9a768de26d1e109571a8c2": [
+      "v2.microbe.attack-vocal.3",
+      "v2.microbe.land-thud.3"
+    ],
+    "26213d4952fa2f312b0d59a45df6a781846dc3b7db47a89ae45fcfa173b6cff0": [
+      "v4.environment.salt",
+      "v4.environment.dunes",
+      "v4.environment.ash",
+      "v4.environment.dry",
+      "v4.environment.dust"
+    ],
+    "500c4e051009921075e285d93d604d21480876322793c4c33463a369117f5a72": [
+      "v4.environment.glacier",
+      "v4.environment.ice-cloud",
+      "v4.environment.cold"
+    ],
+    "d70f7295a247e885b2498885d4bea55edcc281f0d8ef5071c053e2e0d3b97f55": [
+      "v4.environment.fault",
+      "v4.environment.rock"
+    ],
+    "4c918d383ae55cfebf962f52644d3522de858c4fcee80e8d1d43e03685eeeccf": [
+      "quadruped.alert.1",
+      "quadruped.victory.1"
+    ],
+    "7214ca478002ccb0d5ff97ab99b6ad49bff1b03723aff9c9b807d2244c068f30": [
+      "quadruped.alert.2",
+      "quadruped.victory.2"
+    ],
+    "5ed64500285312fbdd733b9ccf2ae7b250c656962edfe03d33e904710d66785d": [
+      "quadruped.alert.3",
+      "quadruped.victory.3"
+    ],
+    "239cca05495c05042b75e018373d7e4a3aea5a9902e4dc918ee3c0e40e847090": [
+      "quadruped.breath-idle.1",
+      "primate.breath-idle.1"
+    ],
+    "80784568638a0e2a86e6b1c9adb9689693a5ac93a31ca575b8f4f142fb007e41": [
+      "quadruped.breath-idle.2",
+      "primate.breath-idle.2"
+    ],
+    "98158860ca320e0b6579678f6304ca350986bda37dcd5ebe8eeb8e6c1a5acdc4": [
+      "hopper.call.2",
+      "biped-bird.victory.3"
+    ],
+    "a8e4b05b247abe015b4a0813ab52fbfc4932a318ce208dcb5329a10457fe3cc8": [
+      "hopper.attack-vocal.1",
+      "biped-bird.attack-vocal.1"
+    ],
+    "526f7def4e66846ba24fa3f2213c5d39fbd5e8577717abd4bccfa4f14b03f63a": [
+      "hopper.attack-vocal.2",
+      "biped-bird.attack-vocal.2"
+    ],
+    "2f562c895a40294381ddad1d75b7064fa1545ce218c9e32eee07d43bba61cda1": [
+      "hopper.attack-vocal.3",
+      "biped-bird.attack-vocal.3"
+    ],
+    "5ad521f394c32c6d1698669cae07f215cab9838c11b8fa4d875097244af1c5c5": [
+      "hopper.hurt.1",
+      "biped-bird.hurt.1"
+    ],
+    "1d10e932042efacb63f6b80aab7f1523e106ef61836908480d8e442ed346a604": [
+      "hopper.hurt.2",
+      "biped-bird.hurt.2"
+    ],
+    "d54949282e3f4c4328f3c1034668fa3caf4371d867b202d0e78a1a7324a94e6c": [
+      "hopper.hurt.3",
+      "biped-bird.hurt.3"
+    ],
+    "d7e7cfb0ac1da9383c076abf697cad7f114c921c81e94ed8624a83f860a159a2": [
+      "hopper.faint.1",
+      "biped-bird.faint.1"
+    ],
+    "4439f453501c1cd81184a9e6b3f6fd9f5635be6e5d1b3ce893919d6855204517": [
+      "hopper.faint.2",
+      "biped-bird.faint.2"
+    ],
+    "e0ebd672487d8dd1b3910d50a73d01979133a9c1e5da51fd02c4396b8e05e1e4": [
+      "hopper.faint.3",
+      "biped-bird.faint.3"
+    ],
+    "3d9fcb6b4d39a7d2c10871ae0b22b544c08da4545928868ec87ecb8942977387": [
+      "hopper.victory.2",
+      "biped-bird.alert.3"
+    ],
+    "a9046ac86667696778e66b5930c130892add1442a337925abb0863429facf530": [
+      "hopper.breath-idle.1",
+      "biped-bird.breath-idle.1"
+    ],
+    "4ea6f25795fe139091a722eef4fe77698a4d0ade17e5e7acaaa14122647ceef7": [
+      "hopper.breath-idle.2",
+      "biped-bird.breath-idle.2"
+    ],
+    "272562235d50dd24b323a746d544d4d0b91205c077e7a1d0b098b32139bfcf18": [
+      "hopper.land-thud.1",
+      "biped-bird.land-thud.1"
+    ],
+    "fab4253e6f3ab279a9e8ac3c9ee7493181a9a0af78cde11bf5db11603799c264": [
+      "hopper.land-thud.2",
+      "biped-bird.land-thud.2"
+    ],
+    "664080fe975f121e935a535a8d697a81d8df0cf3baca7ca2eb35e232ef2ab88b": [
+      "hopper.land-thud.3",
+      "biped-bird.land-thud.3"
+    ],
+    "be17f102dcde86563ec9e52e676770e2d8b0085c9a07a23160732726d1a5e75b": [
+      "fish.call.1",
+      "fish.victory.1",
+      "cephalopod.alert.1"
+    ],
+    "998cdef35cd41c204e5598985efd46b0e9a61d1569d6249d9514448d34918da1": [
+      "fish.call.2",
+      "fish.victory.2",
+      "cephalopod.alert.2"
+    ],
+    "e9637c1849d9d30075709d369025bdf49d9825d38f7c8af910685fe80e32aa3c": [
+      "fish.call.3",
+      "fish.victory.3",
+      "cephalopod.alert.3"
+    ],
+    "ad375e3c9896945e7bbdc75c05d6b009b872eb9e00edc417d3d01715500a1818": [
+      "insect.call.1",
+      "myriapod.alert.1",
+      "myriapod.victory.1"
+    ],
+    "dc38532e13f13c1cc7255f727c908f09b9940378470f3d568f9ccdfbe0625ed6": [
+      "insect.call.2",
+      "myriapod.alert.2",
+      "myriapod.victory.2"
+    ],
+    "696ea1ec4c70868e89713c8ebbf9a32387c8e3fae7d5ad31ebf3db62a0bca4dd": [
+      "insect.call.3",
+      "myriapod.alert.3",
+      "myriapod.victory.3"
+    ],
+    "a5e51dda38b2b5808bca7a9b2f4b9a42b0aa15c72584aa6db1a1a51de117492f": [
+      "insect.alert.1",
+      "insect.victory.1"
+    ],
+    "5a88310345c14c970edcec0567fdb2cc3b88a367f23eccdb789efa30a50a1be8": [
+      "insect.alert.2",
+      "insect.victory.2"
+    ],
+    "a4f7232d075e97b2a5e4c4e313e0bace6d4e94c563b86c45ba972171d72ae29c": [
+      "insect.alert.3",
+      "insect.victory.3"
+    ],
+    "eee41199593b006bee3f158cd6fc9e14ab8e8a637b0fdc1271eeef4c26840f1d": [
+      "arachnid.call.1",
+      "arachnid.alert.1",
+      "serpent.victory.1"
+    ],
+    "2ac379a679950e1eee615f8b8dd6889344eaf00d9ce4fd70bb0ffeb5b67169a2": [
+      "arachnid.call.2",
+      "arachnid.alert.2",
+      "serpent.victory.2"
+    ],
+    "600ebcdfa7b59009037ade414af5fcd50c9849016c6e1b89001cf9cb200e3e57": [
+      "arachnid.call.3",
+      "arachnid.alert.3"
+    ],
+    "3e1b470bc0d40fb24edfb1975e369120cebcba8df7055c1e2fb8e48922b9ade2": [
+      "arachnid.breath-idle.1",
+      "serpent.breath-idle.1"
+    ],
+    "574c2a0bede2c01fd4b78c009006288bbda157ee4172773ac041d11953bea132": [
+      "arachnid.breath-idle.2",
+      "serpent.breath-idle.2"
+    ],
+    "324606890b25fb5a0046dea3eb62f0e1e661bede8bd8e191741c1769e17dab2e": [
+      "cephalopod.call.1",
+      "cephalopod.victory.1"
+    ],
+    "ef51fd3f856b91a7c7142c3a7eb282be09cd252bdbace363fb2e212226eaa00b": [
+      "cephalopod.call.2",
+      "cephalopod.victory.2"
+    ],
+    "927d2d821769831af14ee6bf97c8aecc4ee54bb36866aa3d1f8fd544664fcf76": [
+      "cephalopod.call.3",
+      "cephalopod.victory.3"
+    ],
+    "019b86041df340e7c495385a269aede2f85e67e590efce2947877bae3c082200": [
+      "flyer-membrane.call.1",
+      "flyer-membrane.alert.1"
+    ],
+    "25098bbd2493c289539a393ab27d0e5124ff5524d6de7cc9ef29fe43be54c0fd": [
+      "flyer-membrane.call.2",
+      "flyer-membrane.alert.2"
+    ],
+    "a5db3cbd7d8c19395ed1bfdfc8f54bea23fc63d7db6431ae1ac75a7cd51d7c60": [
+      "flyer-membrane.call.3",
+      "flyer-membrane.alert.3"
+    ],
+    "4d21f219f18750c63bcc3e1aef1fd368c239ec7c87508cf5d434a33764b93d1d": [
+      "primate.call.1",
+      "primate.alert.1"
+    ],
+    "c01effe10339274adb8c44a2ffaebedea80a0bf9a086a0aed975fa4c5a7a4de6": [
+      "primate.call.2",
+      "primate.alert.2"
+    ],
+    "987212ef41dd28a775b480322ebc3e5baf958f5f66d71a17e861b3d984c7f4ee": [
+      "primate.call.3",
+      "primate.alert.3"
+    ],
+    "0b78ebe7aa3d829103f433a0647ddcdf92b995a95ea5c9ac6fc8c42eb19c48b6": [
+      "material.furred.1",
+      "material.feathered.1"
+    ],
+    "78a37ace6001c93bcbded831e116a8e01ece21ad611ad51e7fbf914cbd14669c": [
+      "material.furred.2",
+      "material.feathered.2"
+    ],
+    "fee3d61508df53db6ea8330c24bbf45030cce754ef913463e95f297c571820b6": [
+      "material.furred.3",
+      "material.feathered.3"
+    ],
+    "e2eef78191c9f5d506c229803a2aa91d922b50fc9e8a933f14c38b9816212a59": [
+      "material.slick-and-wet.1",
+      "material.warty.1"
+    ],
+    "86635ad544e229fb514d570b9f7290f751748092732aef7654c2b2f065499a4d": [
+      "material.slick-and-wet.2",
+      "material.warty.2",
+      "material.translucent.2"
+    ],
+    "0c134b322297c37b3e389b646f4553efb4747dc3f300e1253794ad7689cb10d0": [
+      "material.slick-and-wet.3",
+      "material.warty.3"
+    ]
+  },
+  "uniquePerformances": 1396,
+  "renderedFiles": 1617
+}

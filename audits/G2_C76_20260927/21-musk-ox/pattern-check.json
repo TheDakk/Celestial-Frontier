@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Musk Ox",
+  "masterSha256": "3bae7d834b5afbdbb1153a503c2a16f47deec7965ed95507913d4a289527fca0",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

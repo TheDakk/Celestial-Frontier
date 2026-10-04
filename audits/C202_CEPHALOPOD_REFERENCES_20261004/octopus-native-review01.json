@@ -1,0 +1,34 @@
+{
+  "schema": "cf.c202-octopus-native-review/v1",
+  "status": "PARTIAL_NATIVE_PASS_UNQUALIFIED_SEQUENCE",
+  "expectedTurns": 5,
+  "observedTurns": 4,
+  "skipped": [
+    "dodge attacker \"Octopus A\" is neither combatant"
+  ],
+  "nativeFrames": 773,
+  "cpuThrottle": 1,
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "conclusion": "Four measured hit turns passed with zero refusals in both stage directions. Native dodge was skipped because requested transcript aliases did not equal either canonical loaded combatant name. Static dodge passed, but the full requested native sequence has not been exercised. No completed reference qualification claim.",
+  "correctedScript": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-script02.json",
+  "qualityAccepted": false,
+  "nativeSequenceQualified": false,
+  "sanitization": "Only nonsealed diagnostic home paths normalized to ~ before these hashes; source values/frame samples/stills/media unchanged.",
+  "inputs": [
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/report.json",
+      "sha256": "9adba645b52803bdb73559cd71b2fa861a8f6637f9b9854f300bbbd8d68dd85e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/battle-full.webm",
+      "sha256": "d94fb9c41b672f8dc9d3ebac2ba4cdb19c6d20f0f30e60ab20b46acdc626266b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-script02.json",
+      "sha256": "7da10854a5631665156c942e94c50433f6e340289300c8617ae32d8ea4592093"
+    }
+  ]
+}

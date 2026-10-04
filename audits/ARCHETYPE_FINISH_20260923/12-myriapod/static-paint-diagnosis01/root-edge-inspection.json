@@ -1,0 +1,175 @@
+{
+  "scope": "Two measured folded-face root pins traced through retained final source-join samples; no graph or pose execution",
+  "bodyLabel": 32,
+  "rows": [
+    {
+      "index": 229,
+      "sourcePx": [
+        822,
+        724
+      ],
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "sourcePointPixel": {
+        "label": 5,
+        "rgba": [
+          249,
+          228,
+          172,
+          251
+        ]
+      },
+      "joins": [
+        {
+          "name": "body--leg4-near",
+          "sourceSamples": [
+            [
+              833,
+              716.1764705882352
+            ],
+            [
+              833,
+              717
+            ],
+            [
+              833.7368421052631,
+              717
+            ]
+          ],
+          "rootEdgePixels": [
+            {
+              "x": 833,
+              "y": 716,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 234,
+      "sourcePx": [
+        841,
+        724
+      ],
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "sourcePointPixel": {
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "joins": [
+        {
+          "name": "body--leg4-near",
+          "sourceSamples": [
+            [
+              832,
+              715
+            ],
+            [
+              833,
+              715
+            ],
+            [
+              833,
+              716
+            ],
+            [
+              833,
+              716.1764705882352
+            ],
+            [
+              833,
+              717
+            ],
+            [
+              833.7368421052631,
+              717
+            ],
+            [
+              834,
+              717
+            ]
+          ],
+          "rootEdgePixels": [
+            {
+              "x": 832,
+              "y": 714,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "x": 833,
+              "y": 715,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "x": 833,
+              "y": 716,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-04/binding.json",
+      "sha256": "14d2f4cffd84dd1b2ff6e2d0355533a44a8caecb9857798ac31f24fbed137710",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-04/source-join-probe.json",
+      "sha256": "8d496fa56003dd22c4815fd142bb6ee57c33248da452088024853d0355eadbd7",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-06/authoring.json",
+      "sha256": "45418670b670334729710d1fb0340530e38f9ab319646159b4b6e7fe02efa34a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-06/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-04/labels.png",
+      "sha256": "abfe02747439423c25898e0763baba2d96994f9407525502c72162342d6879af",
+      "unchanged": true
+    }
+  ]
+}

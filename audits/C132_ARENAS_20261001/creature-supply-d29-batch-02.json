@@ -1,0 +1,486 @@
+{
+  "schema": "cf.c132-arena-lane-batch/v1",
+  "agent": "creature-supply",
+  "batch": 2,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "newOriginalTriplets": 4,
+  "freshReplacementPlates": 3,
+  "generatedOutputs": 15,
+  "totalGeneratedBytes": 30551626,
+  "selectedNewTriplets": 4,
+  "masterAndRuntimeCandidatePasses": 8,
+  "qualityAccepted": false,
+  "registered": false,
+  "upscaled": false,
+  "generation": [
+    {
+      "id": "boulder",
+      "role": "far",
+      "bytes": 2934236,
+      "canvas": {
+        "width": 1983,
+        "height": 793
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/boulder/arena-far.png",
+        "sha256": "8b0056f03afa7b553c35591fc4d5bf0235e07552a26b6d75e3ab06af3bc609eb"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/boulder/arena-far.generation.json",
+        "sha256": "133ecc2d6c683be971c316c142442dae6e9cbb901aa913bb6ff25f02987d8ca4"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/boulder/arena-far.prompt.txt",
+        "sha256": "9eb716b25699def447704162bec67524ec2e9e79f1501106833ef0a2da95d70b"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "boulder",
+      "role": "mid",
+      "bytes": 2051782,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/boulder/arena-mid.png",
+        "sha256": "699897d745f8d0e12acf4473a8ec46cb1856ffd33d79a8f5d7663071b51551f9"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/boulder/arena-mid.generation.json",
+        "sha256": "14b0d64c027aa18265291553d933b1342426fd5049505fc8cdf579c56dbc8753"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/boulder/arena-mid.prompt.txt",
+        "sha256": "710cc060835f3700b179eb8adbb85c5bf6a0757d9e1664eda5b6a69e00435e8a"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "boulder",
+      "role": "near",
+      "bytes": 1461727,
+      "canvas": {
+        "width": 1983,
+        "height": 793
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/boulder/arena-near.png",
+        "sha256": "77c48b1e243a54786529f0e88df47a21dbf0768f7b7b58c0fd0eac33e4946f54"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/boulder/arena-near.generation.json",
+        "sha256": "28fbddc784888b7baa07c3097a1a9e42413a429099d9f43694a33783b3f71f11"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/boulder/arena-near.prompt.txt",
+        "sha256": "e43cff514d155c131f75b553f41ad7f8e7b4e3dcbc1233c2f4e22704b4614ecd"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "saltflat",
+      "role": "far",
+      "bytes": 2674187,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.png",
+        "sha256": "7f12a38a6797431314b71283eb1814d7cec44057944e8b139af7a3bd03702405"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.generation.json",
+        "sha256": "990bceb97369b4f2a4456c4d3c05643950cb244ab975345597d9107995f23c4b"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.prompt.txt",
+        "sha256": "d9e74f6b6cfd2dfafe4acf6f0314d5aa17f0741fd2926187f11879d8bb108b81"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "saltflat",
+      "role": "mid",
+      "bytes": 1740497,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-mid.png",
+        "sha256": "1285fa0f1631f507728bf1e5c03d9f9a24cdefb554e162de4836e8a669397299"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-mid.generation.json",
+        "sha256": "c321049f77d5af91b92b002e3e89b891e142e7dbcaab145c1c2e6ffdd26a0e7e"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-mid.prompt.txt",
+        "sha256": "afdf9d835b1da0d47e7b43acc2e19c4934424f28bd21421cca257039160ed253"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "saltflat",
+      "role": "near",
+      "bytes": 1291910,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-near.png",
+        "sha256": "aadaa8e8d46e18dacf5e0b2c2866213d0551b298eace2d2a8a5c5a65664dc201"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-near.generation.json",
+        "sha256": "41ea9ba9c646acf03313c21d400bd40d9bbe7e1e5ebfc27fe8fb4897d904f898"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-near.prompt.txt",
+        "sha256": "5ce07eb235466a39c8970952320eda87c4586a39ccf6e1e0209256a81e6b5179"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "graben",
+      "role": "far",
+      "bytes": 2574340,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/graben/arena-far.png",
+        "sha256": "ef48ccb59112d83c093941c875229acb9d2ff4ac94493a3950d5c5e404ae5274"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/graben/arena-far.generation.json",
+        "sha256": "803afe866f3218c7cbba609059a520ed67fc2191be4ed41d242aa820e86735ab"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/graben/arena-far.prompt.txt",
+        "sha256": "dfe6fd8dbb777c661547ddeaa2522ad39ed348c2a8cbfc64cadf7789b072a25b"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "graben",
+      "role": "mid",
+      "bytes": 2175385,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/graben/arena-mid.png",
+        "sha256": "ca2cddf4bc351b32818572f36a4cd10b4d14820d3141cbdef877241470dbeecb"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/graben/arena-mid.generation.json",
+        "sha256": "f1cc4dc4cbdfa85e9aac04628ecc400f9d51d3699f7b7fbcf2f66bfd05dbd209"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/graben/arena-mid.prompt.txt",
+        "sha256": "99698dbe5c70e865b944b23a4c44c76dd04949ca68414b623c90227ff7522cff"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "graben",
+      "role": "near",
+      "bytes": 1350965,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/graben/arena-near.png",
+        "sha256": "544dc7745a511e7002ba8828769147ae1eeab5182294096c948f5d7c2e0ebc0f"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/graben/arena-near.generation.json",
+        "sha256": "58a6c92726b19344cf583ebd40906b8eb4522fbbd9011be237fb114a480eff9b"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/graben/arena-near.prompt.txt",
+        "sha256": "533eec1f6911e27b4a3c57d0d28a9bc80df882f7413a9719a355a6e9bffc42e6"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "ashwaste",
+      "role": "far",
+      "bytes": 2432433,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-far.png",
+        "sha256": "22e9637990af45157cc2acd65fcf9ab514819b92d0692fa93c4787af6e4828de"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-far.generation.json",
+        "sha256": "d815fd64e5d9fdac19e95b44617df955f9d624cc42303369a7bbf5e09df0a91c"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-far.prompt.txt",
+        "sha256": "735708e583854dfe4d1500be1c38fa6af6be398d46dfe5a9c754b4895bcf0e58"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "ashwaste",
+      "role": "mid",
+      "bytes": 1838388,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-mid.png",
+        "sha256": "e52b0a79c768c102a43071d9c157cf4e7279b7517a7ce3ac7813b0899398f3be"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-mid.generation.json",
+        "sha256": "d53b235aef1929849e7f3e7c4abc13d36ecc0c4b48604ee7e21ddc0118d79bc7"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-mid.prompt.txt",
+        "sha256": "a3b9a764f182abef88f9aa56860c025748481a54ddab3927a5e441b4312be0fc"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "ashwaste",
+      "role": "near",
+      "bytes": 1226142,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-near.png",
+        "sha256": "5bd6aac0a5c6931b275833d7f7f705668be2abd0835abe195cfaf04198bbece4"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-near.generation.json",
+        "sha256": "7560e85f07484b14ca73e58ba20ff1c834b137c630c7aeb8431d85dda08703f8"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-near.prompt.txt",
+        "sha256": "67ca2803aec47ee4df3bf3821befc8c6d99c0d6e84081cdb86a0e2864a54ec31"
+      },
+      "byteIdenticalToToolOutput": true
+    },
+    {
+      "id": "boulder-v2",
+      "role": "far",
+      "bytes": 2747143,
+      "canvas": {
+        "width": 1672,
+        "height": 940
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-far.png",
+        "sha256": "7722d79abae72d93fdbee194e5c495da5acb50dff7a464d54eef3529d044403b"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-far.generation.json",
+        "sha256": "572d3d602a728feb0ba7451e03229915c8a43298c8c7b91458c8e13d2f905d83"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-far.prompt.txt",
+        "sha256": "da04a64f52449ab424d6e6cc5b725d48cb12ea17565214b693ab7e80b7c9dc3c"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-far.successor-provenance.json",
+        "sha256": "98964a58a6fb0f766dc404281462d1ff881b832b2824e96e5de75dd8daea21ba"
+      }
+    },
+    {
+      "id": "boulder-v2",
+      "role": "near",
+      "bytes": 1283384,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-near.png",
+        "sha256": "5245ed9fde45091b79ed90f98686ae1f4f8672caf0c4acdfe12bdc6771a5a0ad"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-near.generation.json",
+        "sha256": "881887fa46407f6ed9ebeb34625101abd4c8fb7932f119c3fc7c9522a1116a17"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-near.prompt.txt",
+        "sha256": "e2c571b182d40029ecad51dd4b852a54eafd0d196fcb500d0cd1a5c622fbac21"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-near.successor-provenance.json",
+        "sha256": "d4f0fa8199144a0646b9f581a47577b512ce1cac5bf95cd491993bbb2d1db138"
+      }
+    },
+    {
+      "id": "boulder-v3",
+      "role": "far",
+      "bytes": 2769107,
+      "canvas": {
+        "width": 1672,
+        "height": 941
+      },
+      "master": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/arena-far.png",
+        "sha256": "87767bc1a569b3acc75e42767e9a92788a178b9fa153607fcec7c5b4e0b46750"
+      },
+      "receipt": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/arena-far.generation.json",
+        "sha256": "a640e3b8c2c36a2f02177ba6db8857efae479ef0065c8694f3d1fc0e368cff82"
+      },
+      "prompt": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/arena-far.prompt.txt",
+        "sha256": "4014ac287444c43e8a2eb7b4dfc7c2b284092f2430f250bf9aab4a9320298f0d"
+      },
+      "byteIdenticalToToolOutput": true,
+      "successorProvenance": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/arena-far.successor-provenance.json",
+        "sha256": "9582ed4ca90116eb47da5110f07c2dc2d9bf090ae953974697eacbc16da8c3cd"
+      }
+    }
+  ],
+  "deliveries": [
+    {
+      "id": "boulder-v3",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/d29/delivery.pending.json",
+        "sha256": "0d3f4ce8450d132fb15ad89841c21ac50183a661c2e81676c1480ca40dca0a07"
+      },
+      "review": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/d29/delivery-review.json",
+        "sha256": "c80be8125e117af93ae098b217f9f5654869e76109ceef1692f70e598d73cbac"
+      },
+      "notes": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/visual-notes.d29.json",
+        "sha256": "df810f43c0878a79322fd68c314897df4bd7b021bcb59d8e06026c950f530c4a"
+      },
+      "composite": {
+        "path": "audits/C132_ARENAS_20261001/boulder-v3/arena-composed-review.png",
+        "sha256": "5cbd2c1e2052b9e362098ec4201c685243a4a0aba83e592175d7181c9ffe1fcb"
+      },
+      "findings": [
+        "Native full-size composite inspected at 1672×941. The new FAR has clouds without visible planets or moons; all original and refused successor canvases remain intact.",
+        "The level ochre fighting band stays clear through the stand line. Tall side boulders remain outside the center run-up, but their silhouette pressure needs finished-rig review.",
+        "The MID creates a second low rock contour in front of the FAR; the NEAR creates a conspicuous warm strip and horizontal texture transition along the lower edge. Small green/key-color edge remnants remain around side stones and plants.",
+        "Candidate mechanics do not establish visual acceptance, physical ground contact, parallax seams or performance. qualityAccepted remains false."
+      ]
+    },
+    {
+      "id": "saltflat",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/d29/delivery.pending.json",
+        "sha256": "62dcc722d600912734e09b115cd57253f1e41d0691c34e1801959eb36e36b106"
+      },
+      "review": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/d29/delivery-review.json",
+        "sha256": "89ddc88bf5b70561dc3de4a53832a602a6f79122c9dc02bea00fd7c4b919249b"
+      },
+      "notes": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/visual-notes.d29.json",
+        "sha256": "67e51e827fca2502fa532452792268f02f2b5f60703dc0d6f9ef76842e8bf51d"
+      },
+      "composite": {
+        "path": "audits/C132_ARENAS_20261001/saltflat/arena-composed-review.png",
+        "sha256": "a278dc869130471b2b456472bf91d8c7cba5d0c265d7c7c7e8be796e737e40bd"
+      },
+      "findings": [
+        "Native full-size composite inspected at 1672×941. White salt crust and distant dry cliffs read clearly, with a level open fighting path and a quiet low NEAR edge.",
+        "The MID adds a distinct miniature mountain horizon below the FAR horizon. Its scale and sharp edge create a visible doubled landscape band.",
+        "The NEAR produces a separate lower pale strip and dark contour; pink/key-color remnants remain on the lower-right shrub and small cyan/green edge remnants appear near rocks. Detailed crust texture must be checked against moving creature readability.",
+        "No acceptance or game registration is claimed. The composition requires independent full-size, finished-rig, parallax and physical-contact review."
+      ]
+    },
+    {
+      "id": "graben",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/graben/d29/delivery.pending.json",
+        "sha256": "5985f807b7300bed5719b998b2a1f2a2af993b9067f0a6d7d4ffe2e3e1854e90"
+      },
+      "review": {
+        "path": "audits/C132_ARENAS_20261001/graben/d29/delivery-review.json",
+        "sha256": "6b029a24aca3f485934e60e7f345b9307acb7058a30d7a61f003ab7559d0bbb7"
+      },
+      "notes": {
+        "path": "audits/C132_ARENAS_20261001/graben/visual-notes.d29.json",
+        "sha256": "b3db8fb142eac10ce8445c9e9e899648da5b07e38c65505c2c7d44ba5d319800"
+      },
+      "composite": {
+        "path": "audits/C132_ARENAS_20261001/graben/arena-composed-review.png",
+        "sha256": "34169489ce279f422bec194bad7ccfbe3a6dafc20fd381ebdb9ffe8e476a984a"
+      },
+      "findings": [
+        "Native full-size composite inspected at 1672×941. The broad gray fault plain is continuous at the stand line, with side cliffs and an open central run-up.",
+        "The MID has a conspicuous second pale-gray fault-wall band across the center; its sharp clipped contour and cooler color differ from the atmospheric FAR. Some green/cyan or pink edge remnants remain on cliff tips and moss.",
+        "The lower NEAR grit/moss layer changes texture and color along its upper edge. The FAR bright region is stronger at upper right, so shared-light agreement needs visual review.",
+        "Mechanical candidate checks do not prove smooth parallax, creature-ground contact, silhouette clearance or visual acceptance; qualityAccepted stays false."
+      ]
+    },
+    {
+      "id": "ashwaste",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "manifest": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/d29/delivery.pending.json",
+        "sha256": "beaf28f6d2c9be4d7bce9ea011cd15c1b2885d0820f45c2d164067820966f767"
+      },
+      "review": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/d29/delivery-review.json",
+        "sha256": "04c8198718fd435c32749f789b1a8e043dab60ec25f8d5b4aaa56551260a8830"
+      },
+      "notes": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/visual-notes.d29.json",
+        "sha256": "746b63e91ebfe6b1d0cd453a4cf14f64175cfb1db4901d465d4f955eb81fa3a2"
+      },
+      "composite": {
+        "path": "audits/C132_ARENAS_20261001/ashwaste/arena-composed-review.png",
+        "sha256": "0820fe3ef502f6597ff1f88026e860a3ecaec5dc3d819f1f01d0a48cb5f7c1c8"
+      },
+      "findings": [
+        "Native full-size composite inspected at 1672×941. The gray ash floor stays broad and flat, with a distant volcanic plume and no visible resident creatures.",
+        "The MID repeats the distant low rock line and haze, producing a discernible hard contour across the scene; cool green/cyan or pink edge remnants are visible on some side rock tips.",
+        "The NEAR layer makes a distinct cooler foreground band. Its stony corners need moving rig clearance and parallax review; no mask or threshold was changed to hide these seams.",
+        "No visual acceptance, runtime registration, physical-medium admission or performance claim follows from technical intake. qualityAccepted remains false."
+      ]
+    }
+  ],
+  "refusedPredecessors": [
+    {
+      "path": "audits/C132_ARENAS_20261001/boulder/intake-held.json",
+      "sha256": "0e163c08d47be910d7a9e8f86d1864a263640cd3685a95eee24785e51f6291c9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/boulder-v2/intake-held.json",
+      "sha256": "7d1953244463614796baaf192b1af62b0d45e5fd0971e99cd5f984f23d18bf39"
+    }
+  ],
+  "copiedRoles": "Boulder v3 MID is byte-identical to the original Boulder MID; NEAR is byte-identical to Boulder v2. Their source receipts intentionally retain the original immutable paths.",
+  "remaining": [
+    "Independent full-size visual scoring and repair of recorded seam/fringe holds",
+    "Physical contact and moving-rig/parallax proof",
+    "Dakk acceptance and Claude routing/wiring",
+    "Packing plan must obey the unchanged size budget; no native painting master was altered for size"
+  ],
+  "scope": "Audit-only painting deliveries. No game registry, native run, certificate, threshold or product code changed."
+}

@@ -1,0 +1,10 @@
+{
+ "id": "q20-05-caracal",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Archerfish",
+  "masterSha256": "6f214ad690eda4025d134fd5a3399461d3c5ed95f24ec756e6cfd7d0d4c33ba2",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

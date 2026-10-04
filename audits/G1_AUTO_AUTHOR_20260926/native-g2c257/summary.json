@@ -1,0 +1,111 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C198_CREATURE_SUPPLY_B_20261003",
+ "tag": "g2c257",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [],
+ "refused": [
+  {
+   "id": "02-capuchin",
+   "reason": "wrong-family: quadruped matches clearly better (0.0170 < 0.0252)"
+  },
+  {
+   "id": "03-squid",
+   "reason": "wrong-family: insect matches clearly better (0.0306 < 0.0496)"
+  },
+  {
+   "id": "04-cuttlefish",
+   "reason": "missing-anatomy: part arm2-middle (arm2Seg1) covers 19% paint (reference 92%)"
+  },
+  {
+   "id": "05-diving-beetle",
+   "reason": "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 9% paint (reference 37%)"
+  },
+  {
+   "id": "06-chimpanzee",
+   "reason": "no-reference: no other hand-authored subject of family primate"
+  },
+  {
+   "id": "07-howler-monkey",
+   "reason": "wrong-family: quadruped matches clearly better (0.0122 < 0.0205)"
+  },
+  {
+   "id": "08-spider-monkey",
+   "reason": "extra-anatomy (unassigned): a top appendage of 18.7% paint that no reference appendage lands on"
+  },
+  {
+   "id": "10-macaque",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "11-langur",
+   "reason": "extra-anatomy (unassigned): a top appendage of 14.5% paint that no reference appendage lands on"
+  },
+  {
+   "id": "13-lemur",
+   "reason": "extra-anatomy (unassigned): a top appendage of 25.9% paint that no reference appendage lands on"
+  },
+  {
+   "id": "14-mandrill",
+   "reason": "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "15-marmoset",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "16-octopus",
+   "reason": "no-reference: no other hand-authored subject of family cephalopod"
+  },
+  {
+   "id": "17-giant-octopus",
+   "reason": "extra-anatomy (unassigned): a top appendage of 20.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "18-centipede",
+   "reason": "no-reference: no other hand-authored subject of family myriapod"
+  },
+  {
+   "id": "19-giant-centipede",
+   "reason": "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1"
+  },
+  {
+   "id": "20-millipede",
+   "reason": "wrong-family: quadruped matches clearly better (0.0247 < 0.0732)"
+  },
+  {
+   "id": "21-leafcutter-ant",
+   "reason": "missing-anatomy: part leg-front-near (legFrontNearKnee) covers 24% paint (reference 88%)"
+  },
+  {
+   "id": "23-grasshopper",
+   "reason": "missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%)"
+  },
+  {
+   "id": "24-dobsonfly",
+   "reason": "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "01-gorilla",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "09-tamarin",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "12-baboon",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "22-locust",
+   "static": "RED"
+  }
+ ],
+ "native": [],
+ "runnerExit": 0
+}

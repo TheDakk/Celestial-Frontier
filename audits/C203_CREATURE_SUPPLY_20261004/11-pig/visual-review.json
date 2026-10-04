@@ -1,0 +1,28 @@
+{
+  "name": "Pig",
+  "masterSha256": "f3d06aad2a2ca4dcec007cb194babdb5bff93ff68da9fe379e6b7da7b46d175d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four separated cloven feet, two ears, complete curled tail and visible ventral teats. Pink-tan skin and irregular dark patches are present; key conservation still requires measurement. Far foreleg root is partly behind shoulder and head is turned slightly toward viewer; no hidden joint claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 229,
+      "y0": 376,
+      "x1": 1074,
+      "y1": 896
+    },
+    "margins": {
+      "left": 229,
+      "right": 179,
+      "top": 376,
+      "bottom": 357
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

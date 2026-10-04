@@ -1,0 +1,136 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "21-musk-ox",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "3bae7d834b5afbdbb1153a503c2a16f47deec7965ed95507913d4a289527fca0",
+ "subjectSourceSha256": "8ad0cc11afbac1559934896d59e3a285414474662d3753fe76cbe93d15034931",
+ "identity": {
+  "name": "Musk Ox",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Musk Ox\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"749519802\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "seed": 749519802,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0158,
+     "class": "top",
+     "attach": {
+      "x": 249.5,
+      "y": 124,
+      "relX": 0.62,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0087,
+     "class": "limb-down",
+     "attach": {
+      "x": 344,
+      "y": 201.5,
+      "relX": 1,
+      "relY": 0.55
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0685,
+     "class": "limb-down",
+     "attach": {
+      "x": 104.5,
+      "y": 232.5,
+      "relX": 0.02,
+      "relY": 0.77
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0229,
+     "class": "limb-down",
+     "attach": {
+      "x": 149,
+      "y": 258,
+      "relX": 0.2,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.005,
+     "class": "limb-down",
+     "attach": {
+      "x": 297.1,
+      "y": 262.4,
+      "relX": 0.81,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0051,
+     "class": "limb-down",
+     "attach": {
+      "x": 196.5,
+      "y": 263,
+      "relX": 0.4,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0441,
+     "class": "limb-down",
+     "attach": {
+      "x": 249,
+      "y": 265,
+      "relX": 0.61,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 6
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

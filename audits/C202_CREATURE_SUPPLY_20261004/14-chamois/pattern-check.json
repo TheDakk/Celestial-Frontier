@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Chamois",
+  "masterSha256": "33745921fcd0a61a8e6937bd97d67d296b0dc21d3d0689b1117aae85df178f9c",
+  "required": [
+    "black-and-white facial mask stripes"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "black-and-white facial mask stripes",
+      "status": "PRESENT",
+      "observed": "Short hooked horns, pale face with dark eye stripe, tan coat, dark lower legs and four separate hooves. Short tail visible; both ear silhouettes mostly readable."
+    }
+  ]
+}

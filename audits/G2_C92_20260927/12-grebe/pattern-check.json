@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Grebe",
+  "masterSha256": "797e24e24e593ee0c068b6d5263bcf1c1a9a1ef47b81bb7430ec6989cc304e24",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

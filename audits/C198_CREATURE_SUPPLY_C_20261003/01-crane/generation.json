@@ -1,0 +1,14 @@
+{
+  "id": "01-crane",
+  "name": "Crane",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-7b52e0df-6a9f-456a-b91f-0eff59b6ae5a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9a7c6e1486f5f51cd402079e44faad59405d06965cb3157fedee526445b9ba58",
+  "bytes": 1217241,
+  "promptSha256": "70a7fba16023ccafe8f85bbca04af70a960320b0112b3f3ca4b720b608953712",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

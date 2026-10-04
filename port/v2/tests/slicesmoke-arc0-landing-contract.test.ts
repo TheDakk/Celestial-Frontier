@@ -275,6 +275,160 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
     ]);
   });
 
+  it('settles exactly one Share notice before Land without exempting notification history or any product field', () => {
+    const owner = section(sliceSource,
+      '      const assessCharterShareNoticeCheckpoint = (evidence) => {',
+      '      const shareNoticeToast = await waitNavPhValue(');
+    const canonical = (value: any): string => Array.isArray(value)
+      ? `[${value.map(canonical).join(',')}]`
+      : value && typeof value === 'object'
+        ? `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonical(value[key])}`).join(',')}}`
+        : JSON.stringify(value);
+    const assess = Function('canonicalJson', `${owner}\nreturn assessCharterShareNoticeCheckpoint;`)(canonical);
+    const title = '⧉ Share code copied';
+    const message = 'Paste it into any explorer’s search bar to guide them here.';
+    const encode = (raw: any) => {
+      raw.revisionRaw = String(raw.revision);
+      raw.authorityJson = JSON.stringify(raw.authority);
+      raw.playerRow.extensions['f4.authority'].json = raw.authorityJson;
+      raw.legacyRaw = JSON.stringify(raw.legacy);
+      for (const key of ['player', 'creatures', 'catalog', 'inventory', 'settings']) {
+        raw[`${key}Raw`] = JSON.stringify(raw[`${key}Row`]);
+      }
+      raw.receiptRawRows = raw.receiptRows.map((row: any) => JSON.stringify(row));
+    };
+    const authority = (raw: any) => ({ token: 'exact-charter-document', raw: {
+      revisionRaw: raw.revisionRaw, revision: raw.revision, legacyRaw: raw.legacyRaw,
+      activePlayMs: raw.authority.activePlayMs,
+      seed: raw.authority.sessionRng.seed, ordinal: raw.authority.sessionRng.ordinal,
+      draws: structuredClone(raw.authority.sessionRng.draws),
+      receiptKeys: structuredClone(raw.receiptKeys), receiptRows: structuredClone(raw.receiptRows),
+    } });
+    const fixture = (count = 2): any => {
+      const history = Array.from({ length: count }, (_, index) => ({
+        id: index === 0 ? 1 : index + 3, tt: `Prior ${index}`, ms: 'Keep exactly',
+        t: 10_000_000 + index, read: index % 2 === 0,
+      }));
+      const beforeRaw: any = { revision: 35,
+        legacy: { at: 20_000_000, notifs: history, hp: 55, essence: 5000, land: [131],
+          view: { type: 'star' }, conq: [[7, { t: 16_400_000, value: 1 }]], minedw: [[9, 2_000_000]] },
+        playerRow: { schema: 5, segment: 'player', data: { at: 20_000_000,
+          notifs: structuredClone(history), hp: 55, essence: 5000,
+          conq: [[7, { t: 16_400_000, value: 1 }]] }, extensions: { 'f4.authority': { version: 1, json: '' } } },
+        creaturesRow: { schema: 5, segment: 'creatures', data: { ids: [77] } },
+        catalogRow: { schema: 5, segment: 'catalog', data: { land: [131] } },
+        inventoryRow: { schema: 5, segment: 'inventory', data: { items: [['headlamp', 1]], minedw: [[9, 2_000_000]] } },
+        settingsRow: { schema: 5, segment: 'settings', data: { snd: 0 } },
+        authorityVersion: 1, authority: { activePlayMs: 200, sessionRng: { seed: 17, ordinal: 3, draws: {} } },
+        captureRevision: 0, captureState: { owned: [77] },
+        receiptKeys: ['receipt:2'], receiptRows: [{ ordinal: 2, kind: 'arc9-share-send-v1', witness: 'exact-share' }],
+      };
+      encode(beforeRaw);
+      const afterRaw = structuredClone(beforeRaw);
+      afterRaw.revision = 36;
+      afterRaw.legacy.at = afterRaw.playerRow.data.at = 20_000_100;
+      const ids = new Set(history.map((row) => row.id));
+      let nextId = ((history[0]?.id ?? 0) + 1) | 0;
+      while (ids.has(nextId)) nextId = (nextId + 1) | 0;
+      afterRaw.legacy.notifs = [{ id: nextId, tt: title, ms: message, t: 20_000_020, read: false }, ...history].slice(0, 50);
+      afterRaw.playerRow.data.notifs = structuredClone(afterRaw.legacy.notifs);
+      afterRaw.legacy.conq[0][1].t = afterRaw.playerRow.data.conq[0][1].t = 16_400_100;
+      afterRaw.legacy.minedw[0][1] = afterRaw.inventoryRow.data.minedw[0][1] = 2_000_100;
+      afterRaw.authority.activePlayMs = 260;
+      encode(afterRaw);
+      const beforeState = { persistence: { documentToken: 'exact-charter-document', lastOutcome: 'arc9-share-send-committed:35' },
+        save: { essence: 5000, stats: { shares: 4 }, landed: [131] },
+        mode: 'system', navGalaxyKey: 'Milky Way', navStarKey: 'Sol', navWorldKey: null,
+        epoch: 12, stage: 3, cardOpen: true, cardTitle: 'Mercury',
+        toastText: title + message, toastSerial: 1,
+        progressionCeremony: { queueKeys: ['achievement:share'], deliveries: 0, lastDeliveredKey: null, timerPending: true } };
+      const afterState = structuredClone(beforeState);
+      afterState.persistence.lastOutcome = 'committed:36';
+      return { beforeRaw, afterRaw, beforeAuthority: authority(beforeRaw), afterAuthority: authority(afterRaw),
+        beforeState, afterState, toast: { title, message, serial: 1, visible: true, observedAt: 20_000_040 }, committed: true };
+    };
+    expect(assess(fixture())).toEqual({ ok: true, checks: {
+      'exact painted Share notice': true,
+      'exact unread notice and unchanged prior history': true,
+      'one admitted same-document receipt-free checkpoint': true,
+      'exact codec time and monotone active play': true,
+      'exact full raw successor without product delta': true,
+      'adjacent Share toast and ceremony race preserved': true,
+    } });
+    expect(assess(fixture(0)).ok, 'empty prior history').toBe(true);
+    expect(assess(fixture(50)).ok, 'bounded full history keeps exactly its first 49 prior entries').toBe(true);
+    const mutations: Array<[string, (value: any) => void]> = [
+      ['missing notice', (v) => { v.afterRaw.legacy.notifs.shift(); }],
+      ['extra notice', (v) => { v.afterRaw.legacy.notifs.push({ ...v.afterRaw.legacy.notifs[0], id: 99 }); }],
+      ['wrong title', (v) => { v.afterRaw.legacy.notifs[0].tt = 'Other success'; }],
+      ['wrong message', (v) => { v.afterRaw.legacy.notifs[0].ms = 'Other outcome'; }],
+      ['wrong generated id', (v) => { v.afterRaw.legacy.notifs[0].id = 4; }],
+      ['new notice already read', (v) => { v.afterRaw.legacy.notifs[0].read = true; }],
+      ['changed old read flag', (v) => { v.afterRaw.legacy.notifs[1].read = false; }],
+      ['reordered old history', (v) => { v.afterRaw.legacy.notifs.reverse(); }],
+      ['notice predates Share', (v) => { v.afterRaw.legacy.notifs[0].t = 19_999_999; }],
+      ['notice follows its observation', (v) => { v.afterRaw.legacy.notifs[0].t = 20_000_041; }],
+      ['mismatched codec owner', (v) => { v.afterRaw.playerRow.data.notifs[0].ms = 'Other owner'; }],
+      ['unpainted toast', (v) => { v.toast.visible = false; }],
+      ['stale toast serial', (v) => { v.toast.serial = 0; }],
+      ['refused checkpoint', (v) => { v.committed = false; }],
+      ['two checkpoints', (v) => { v.afterRaw.revision += 1; }],
+      ['new receipt', (v) => { v.afterRaw.receiptRows.push({ ordinal: 3, kind: 'unexpected' }); v.afterRaw.receiptKeys.push('receipt:3'); }],
+      ['new ordinal', (v) => { v.afterRaw.authority.sessionRng.ordinal += 1; }],
+      ['new seed', (v) => { v.afterRaw.authority.sessionRng.seed += 1; }],
+      ['new RNG draw', (v) => { v.afterRaw.authority.sessionRng.draws['descent.success'] = 1; }],
+      ['active-play rewind', (v) => { v.afterRaw.authority.activePlayMs = 199; }],
+      ['wrong timer normalization', (v) => { v.afterRaw.legacy.minedw[0][1] += 1; v.afterRaw.inventoryRow.data.minedw[0][1] += 1; }],
+      ['durable HP change', (v) => { v.afterRaw.legacy.hp += 1; v.afterRaw.playerRow.data.hp += 1; }],
+      ['durable reward change', (v) => { v.afterRaw.legacy.essence += 1; v.afterRaw.playerRow.data.essence += 1; }],
+      ['inventory change', (v) => { v.afterRaw.inventoryRow.data.items[0][1] += 1; }],
+      ['catalog change', (v) => { v.afterRaw.catalogRow.data.land.push(133); }],
+      ['settings change', (v) => { v.afterRaw.settingsRow.data.snd = 1; }],
+      ['ownership change', (v) => { v.afterRaw.captureRevision += 1; }],
+      ['live reward change', (v) => { v.afterState.save.essence += 1; }],
+      ['changed adjacent toast', (v) => { v.afterState.toastSerial += 1; }],
+      ['removed queued ceremony', (v) => { v.afterState.progressionCeremony.queueKeys = []; }],
+      ['delivered queued ceremony', (v) => { v.afterState.progressionCeremony.deliveries += 1; }],
+      ['stopped ceremony timer', (v) => { v.afterState.progressionCeremony.timerPending = false; }],
+    ];
+    for (const [name, mutate] of mutations) {
+      const value = fixture(); mutate(value);
+      encode(value.afterRaw); value.afterAuthority = authority(value.afterRaw);
+      expect(assess(value).ok, name).toBe(false);
+    }
+    const wrongDocument = fixture(); wrongDocument.afterAuthority.token = 'other-document';
+    expect(assess(wrongDocument).ok).toBe(false);
+    const staleRaw = fixture(); staleRaw.afterAuthority.raw.legacyRaw = staleRaw.beforeRaw.legacyRaw;
+    expect(assess(staleRaw).ok).toBe(false);
+    const incoherentRaw = fixture(); incoherentRaw.afterRaw.legacyRaw = incoherentRaw.beforeRaw.legacyRaw;
+    incoherentRaw.afterAuthority.raw.legacyRaw = incoherentRaw.afterRaw.legacyRaw;
+    expect(assess(incoherentRaw).ok).toBe(false);
+  });
+
+  it('requires the proved Share checkpoint before replacing Land authority or arming its existing hold', () => {
+    const owner = section(sliceSource,
+      '      const shareNoticeToast = await waitNavPhValue(',
+      '    let outcome;\n    let landAuthority;\n    let learnedCharterApproach = false;');
+    proveEachMarkerRequired(owner, [
+      ['exact existing checkpoint', 'const shareNoticeCommitted = await evalNavPh(`window.__CF_SLICE__.api.__smokePersistNow()`);'],
+      ['reacquired raw bytes', 'const shareNoticeRaw = await evalNavPh(ARC4_DURABLE_READ_EXPRESSION);'],
+      ['checked result', 'const shareNoticeAssessment = assessCharterShareNoticeCheckpoint(shareNoticeEvidence);'],
+      ['stop before accepting red', 'if (!shareNoticeAssessment.ok) {'],
+      ['new state predecessor', 'beforeLand = shareNoticeState;'],
+      ['new authority predecessor', 'preLandAuthority = shareNoticeAuthority;'],
+      ['negative controls', 'if (assessCharterShareNoticeCheckpoint(control).ok) {'],
+      ['unchanged Land raw read', 'const beforeLandRaw = await evalNavPh(ARC4_DURABLE_READ_EXPRESSION);'],
+      ['existing deliberate Land hold', 'const ceremonyRaceArmed = expectedChapter === 3'],
+    ]);
+    proveEachOrderRequired(owner, [
+      { label: 'checkpoint before reassessment', first: 'const shareNoticeCommitted =', second: 'const shareNoticeAssessment =' },
+      { label: 'proof before new authority', first: 'if (!shareNoticeAssessment.ok)', second: 'preLandAuthority = shareNoticeAuthority;' },
+      { label: 'controls before new baseline', first: 'const shareNoticeControls =', second: 'beforeLand = shareNoticeState;' },
+      { label: 'new predecessor before Land snapshot', first: 'preLandAuthority = shareNoticeAuthority;', second: 'const beforeLandRaw =' },
+      { label: 'new baseline before race hold', first: 'const beforeLandRaw =', second: 'const ceremonyRaceArmed =' },
+    ]);
+  });
+
   it('permits one learned approach only after an exact durable authored wave-off', () => {
     const owner = section(sliceSource,
       'const MERCURY_DESCENT_WORLD_KEY =', 'const earlyCoreFlowSurveyExpectation = (');

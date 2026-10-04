@@ -1,0 +1,14 @@
+{
+  "id": "19-gibbon",
+  "name": "Gibbon",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-8b1159f7-a220-4d10-a281-c74be0a511cc.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9acfc1f229b16105161d00a71fd88d3e762ad7f799e3d33b701ea68acfbb94b7",
+  "bytes": 1573577,
+  "promptSha256": "cb647a42dc5edab23ed3975e6cde60d9c1c83acf59e54bc4278067190311fd8a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

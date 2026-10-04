@@ -1,0 +1,349 @@
+{
+ "summary": {
+  "positivesAdmitted": "6/8",
+  "flippedRefused": "7/8",
+  "wrongFamilyRefused": "7/8",
+  "erasedRefused": "2/8",
+  "duplicatedRefused": "5/8"
+ },
+ "rows": [
+  {
+   "id": "impala",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0159,
+    "dT": 0.0208,
+    "dR": 0.0292,
+    "unclaimed": 0.045,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0208,
+    "dT": 0.0292,
+    "dR": 0.0292,
+    "unclaimed": 0.0509,
+    "why": ""
+   },
+   "dupShift": [
+    0,
+    -684
+   ],
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0202,
+    "dT": 0.0292,
+    "dR": 0.025,
+    "unclaimed": 0.0434,
+    "why": ""
+   }
+  },
+  {
+   "id": "marmot",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0085,
+    "dT": 0.0208,
+    "dR": 0.0208,
+    "unclaimed": 0.0482,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0107,
+    "dT": 0.0333,
+    "dR": 0.0458,
+    "unclaimed": 0.0566,
+    "why": ""
+   },
+   "dupShift": [
+    0,
+    320
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0205,
+    "dT": 0.0333,
+    "dR": 0.05,
+    "unclaimed": 0.1893,
+    "why": "unexplained-anatomy: 18.9% of the paint lies away from the b"
+   }
+  },
+  {
+   "id": "wolf",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.005,
+    "dT": 0.025,
+    "dR": 0.0292,
+    "unclaimed": 0.0109,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0109,
+    "dT": 0.0333,
+    "dR": 0.0292,
+    "unclaimed": 0.0131,
+    "why": ""
+   },
+   "dupShift": [
+    0,
+    -420
+   ],
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0132,
+    "dT": 0.0375,
+    "dR": 0.0375,
+    "unclaimed": 0.021,
+    "why": ""
+   }
+  },
+  {
+   "id": "gull",
+   "family": "biped-bird",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0162,
+    "dT": 0.0167,
+    "dR": 0.0333,
+    "unclaimed": 0.0312,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "ADMIT",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0205,
+    "dT": 0.025,
+    "dR": 0.0458,
+    "unclaimed": 0.0326,
+    "why": ""
+   },
+   "dupShift": [
+    -228,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0178,
+    "dT": 0.0417,
+    "dR": 0.0417,
+    "unclaimed": 0.048,
+    "why": "missing-anatomy: part near-shin (legNearAnkle) covers 22% pa"
+   }
+  },
+  {
+   "id": "goose",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0126,
+    "dT": 0.0333,
+    "dR": 0.0292,
+    "unclaimed": 0.0754,
+    "why": "unexplained-anatomy: 7.5% of the paint lies away from the bo"
+   },
+   "flipped": "ADMIT",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0143,
+    "dT": 0.0333,
+    "dR": 0.05,
+    "unclaimed": 0.0689,
+    "why": ""
+   },
+   "dupShift": [
+    -245,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.014,
+    "dT": 0.0333,
+    "dR": 0.0375,
+    "unclaimed": 0.0751,
+    "why": "unexplained-anatomy: 7.5% of the paint lies away from the bo"
+   }
+  },
+  {
+   "id": "heron",
+   "family": "biped-bird",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0187,
+    "dT": 0.05,
+    "dR": 0.0375,
+    "unclaimed": 0.0456,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0226,
+    "dT": 0.0667,
+    "dR": 0.0375,
+    "unclaimed": 0.0366,
+    "why": ""
+   },
+   "dupShift": [
+    -286,
+    0
+   ],
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0209,
+    "dT": 0.0625,
+    "dR": 0.0375,
+    "unclaimed": 0.0474,
+    "why": ""
+   }
+  },
+  {
+   "id": "pike",
+   "family": "fish",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0086,
+    "dT": 0.0292,
+    "dR": 0.0292,
+    "unclaimed": 0.0427,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0131,
+    "dT": 0.0333,
+    "dR": 0.0333,
+    "unclaimed": 0.0989,
+    "why": "unexplained-anatomy: 9.9% of the paint lies away from the bo"
+   },
+   "dupShift": [
+    0,
+    264
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0472,
+    "dT": 0.0708,
+    "dR": 0.1292,
+    "unclaimed": 0.1808,
+    "why": "unexplained-anatomy: 18.1% of the paint lies away from the b"
+   }
+  },
+  {
+   "id": "rat",
+   "family": "quadruped",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0101,
+    "dT": 0.05,
+    "dR": 0.0208,
+    "unclaimed": 0.248,
+    "why": "missing-anatomy: part tail3 (tail3) covers 8% paint (referen"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0148,
+    "dT": 0.0542,
+    "dR": 0.0542,
+    "unclaimed": 0.2466,
+    "why": "missing-anatomy: part tail3 (tail3) covers 9% paint (referen"
+   },
+   "dupShift": [
+    0,
+    232
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0264,
+    "dT": 0.025,
+    "dR": 0.0208,
+    "unclaimed": 0.2736,
+    "why": "unexplained-anatomy: 27.4% of the paint lies away from the b"
+   }
+  }
+ ]
+}

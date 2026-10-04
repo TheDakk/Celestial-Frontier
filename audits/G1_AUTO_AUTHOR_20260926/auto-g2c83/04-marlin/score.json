@@ -1,0 +1,9 @@
+{
+ "id": "04-marlin",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part head (head) covers 12% paint (reference 48%)"
+ ],
+ "semanticPresence": null
+}

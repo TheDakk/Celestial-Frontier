@@ -774,6 +774,7 @@ export function deriveArc3MineAction(input: Readonly<{
       predecessorWitness: plan.witness,
       event: { kind: 'mined', address: current.address },
       receiptOrdinal: input.receiptOrdinal,
+      activePlayMs: input.activePlayMs,
     });
     if (starterCharter.kind === 'refused') {
       return refused(`starter-charter-${starterCharter.reason}`);
@@ -1066,6 +1067,7 @@ export function deriveArc3FixedFabricationAction(input: Readonly<{
       predecessorWitness: plan.witness,
       event: { kind: 'crafted', baseId: definition.id, category: definition.category },
       receiptOrdinal: input.receiptOrdinal,
+      activePlayMs: input.activePlayMs,
     });
     if (starterCharter.kind === 'refused') {
       return refused(`starter-charter-${starterCharter.reason}`);

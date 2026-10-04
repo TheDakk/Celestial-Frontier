@@ -1,0 +1,202 @@
+{
+  "kind": "myriapod",
+  "identity": {
+    "speciesVisualKey": "synthetic:myriapod",
+    "seed": 659721,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "myriapod",
+    "version": 1
+  },
+  "family": "myriapod",
+  "geometry": {
+    "cutoutAssetHash": "a04d3dd71cc8de193d5f7e8ebd887e5b0c0db3afff9ee7d38108238450ca7265",
+    "width": 128,
+    "height": 128,
+    "groundLineY": 0.82,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.55,
+      0.62
+    ],
+    "head": [
+      0.7,
+      0.58
+    ],
+    "mandible": [
+      0.76,
+      0.61
+    ],
+    "seg0": [
+      0.48,
+      0.62
+    ],
+    "seg1": [
+      0.41,
+      0.63
+    ],
+    "seg2": [
+      0.34,
+      0.64
+    ],
+    "seg3": [
+      0.27,
+      0.64
+    ],
+    "seg4": [
+      0.2,
+      0.63
+    ],
+    "seg5": [
+      0.13,
+      0.62
+    ],
+    "seg6": [
+      0.07,
+      0.61
+    ],
+    "seg7": [
+      0.02,
+      0.6
+    ],
+    "legAFarKnee": [
+      0.5,
+      0.7
+    ],
+    "legAFarFoot": [
+      0.52,
+      0.8
+    ],
+    "legBFarKnee": [
+      0.36,
+      0.71
+    ],
+    "legBFarFoot": [
+      0.37,
+      0.81
+    ],
+    "legCFarKnee": [
+      0.22,
+      0.7
+    ],
+    "legCFarFoot": [
+      0.22,
+      0.8
+    ],
+    "legDFarKnee": [
+      0.09,
+      0.68
+    ],
+    "legDFarFoot": [
+      0.08,
+      0.78
+    ],
+    "antennaFar": [
+      0.78,
+      0.5
+    ],
+    "legANearKnee": [
+      0.52,
+      0.72
+    ],
+    "legANearFoot": [
+      0.54,
+      0.82
+    ],
+    "legBNearKnee": [
+      0.38,
+      0.73
+    ],
+    "legBNearFoot": [
+      0.39,
+      0.83
+    ],
+    "legCNearKnee": [
+      0.24,
+      0.72
+    ],
+    "legCNearFoot": [
+      0.24,
+      0.82
+    ],
+    "legDNearKnee": [
+      0.11,
+      0.7
+    ],
+    "legDNearFoot": [
+      0.1,
+      0.8
+    ],
+    "antennaNear": [
+      0.8,
+      0.52
+    ]
+  },
+  "materials": {
+    "surface": "chitinous",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "myriapod-v1",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.15524174696260018,
+      "mandible": 0.06708203932499375,
+      "seg0": 0.07000000000000006,
+      "seg1": 0.07071067811865477,
+      "seg2": 0.07071067811865471,
+      "seg3": 0.07,
+      "seg4": 0.07071067811865477,
+      "seg5": 0.07071067811865477,
+      "seg6": 0.0608276253029822,
+      "seg7": 0.050990195135927854,
+      "legAFarKnee": 0.08246211251235316,
+      "legAFarFoot": 0.10198039027185579,
+      "legANearKnee": 0.10770329614269007,
+      "legANearFoot": 0.10198039027185568,
+      "legBFarKnee": 0.07280109889280513,
+      "legBFarFoot": 0.10049875621120899,
+      "legBNearKnee": 0.09848857801796101,
+      "legBNearFoot": 0.10049875621120888,
+      "legCFarKnee": 0.07280109889280513,
+      "legCFarFoot": 0.10000000000000009,
+      "legCNearKnee": 0.09848857801796101,
+      "legCNearFoot": 0.09999999999999998,
+      "legDFarKnee": 0.07280109889280525,
+      "legDFarFoot": 0.10049875621120888,
+      "legDNearKnee": 0.09848857801796101,
+      "legDNearFoot": 0.10049875621120899,
+      "antennaFar": 0.11313708498984762,
+      "antennaNear": 0.11661903789690606
+    },
+    "measures": {
+      "body": 0.680294054067798,
+      "bone-min": 0.050990195135927854,
+      "bone-max": 0.15524174696260018,
+      "leg/body:legAFar": 0.27112173284676017,
+      "leg/body:legANear": 0.3082250758488163,
+      "leg/body:legBFar": 0.2547425691401723,
+      "leg/body:legBNear": 0.2925019453563221,
+      "leg/body:legCFar": 0.2540094211606675,
+      "leg/body:legCNear": 0.2917687973768174,
+      "leg/body:legDFar": 0.2547425691401723,
+      "leg/body:legDNear": 0.2925019453563223
+    }
+  },
+  "recipeHash": "908885c184459f6dcc49f30504b7ee46cd81edf5a80cdd70ed34382200cdee1b"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "volcisle",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/volcisle/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/volcisle/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/volcisle/arena-far.png",
+    "audits/C132_ARENAS_20261001/volcisle/arena-mid.png",
+    "audits/C132_ARENAS_20261001/volcisle/arena-near.png"
+  ],
+  "findings": [
+    "All three original paintings, full native-size composition and four-row plate sheet inspected. Dark volcanic-sand runway and teal ocean read as a distinct habitat; native size is 1672 by 941 with no upscaling.",
+    "MID repeats distant islands and cloud shapes over FAR, producing pasted mountain silhouettes near the horizon. Visible pink/green fringe survives at outer fern tips and mountain edges despite zero unresolved-edge pixels in the intake metric.",
+    "NEAR adds another wet rocky shelf with a prominent horizontal change in texture around the lower fifth; large edge rocks rise above the requested 0.92 band, although sampled combatant stands remain clear. The result needs authoring-side layer/seam and fringe repair, not acceptance."
+  ]
+}

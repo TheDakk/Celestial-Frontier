@@ -1,0 +1,49 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Quoll",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "f9ab013eed2587b3808f636fc27f7ee8e19f9548c38f450fc887429396b9a1d2",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "small-clawed-mammal",
+  "authoringCreated": false,
+  "sourceHead": "7eb42d989913f892eb6e972b76bad232d747bd55",
+  "basePromptSha256": "bc0c6f493ef601eaa32ab2bdec1185ef4019a9ad658b444dc52817357aed601a",
+  "batchCompilerSha256": "dd1856d2dc0cd1b662a8c39c8ac84441abaf58f141ac25375bb967313dd7c85a",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Earlier source left unexplained body/limb paint. Preserve the natural spotted coat, real attached long tail and four short true limbs. Separate the four limb silhouettes through their actual emergence and feet, with continuous fur ownership and no detached fur blobs or fifth-leg shapes; real ears remain visible.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_C118_20260927/pilot.json",
+        "id": "03-quoll",
+        "master": "audits/G2_C118_20260927/03-quoll/master.png",
+        "packet": "audits/G2_C118_20260927/03-quoll"
+      },
+      {
+        "pilot": "audits/G2_C92_20260927/pilot.json",
+        "id": "14-quoll",
+        "master": "audits/G2_C92_20260927/14-quoll/master.png",
+        "packet": "audits/G2_C92_20260927/14-quoll"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_C118_20260927/pilot.json",
+    "audits/G2_C92_20260927/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Earlier source left unexplained body/limb paint. Preserve the natural spotted coat, real attached long tail and four short true limbs. Separate the four limb silhouettes through their actual emergence and feet, with continuous fur ownership and no detached fur blobs or fifth-leg shapes; real ears remain visible.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

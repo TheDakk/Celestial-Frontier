@@ -1,0 +1,92 @@
+{
+  "id": "20-garter-snake",
+  "name": "Garter Snake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "10ae1f3d8f48b5bb2a9f426eeba06c471307e184a51e2f52037c4280076c6c09",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 8708,
+    "coreRadius": 8,
+    "bodyBox": {
+      "x0": 112,
+      "y0": 193,
+      "x1": 346,
+      "y1": 242
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1604,
+        "pixels": 1397,
+        "box": {
+          "x0": 332,
+          "y0": 179,
+          "x1": 409,
+          "y1": 218
+        },
+        "attach": {
+          "x": 343.3,
+          "y": 206.3,
+          "relX": 0.99,
+          "relY": 0.27
+        },
+        "dir": {
+          "x": 0.92,
+          "y": -0.39
+        },
+        "class": "front",
+        "length": 71.2
+      },
+      {
+        "k": 1,
+        "frac": 0.1329,
+        "pixels": 1157,
+        "box": {
+          "x0": 10,
+          "y0": 204,
+          "x1": 122,
+          "y1": 237
+        },
+        "attach": {
+          "x": 113.4,
+          "y": 215.1,
+          "relX": 0.01,
+          "relY": 0.45
+        },
+        "dir": {
+          "x": -0.97,
+          "y": 0.26
+        },
+        "class": "rear",
+        "length": 105.6
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 174,
+        "x1": 223,
+        "cx": 198.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

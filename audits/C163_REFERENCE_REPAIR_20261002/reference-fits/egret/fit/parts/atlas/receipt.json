@@ -1,0 +1,107 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c136-reference-02-egret",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "47163bbd7eb8df7f15dbdc0b8c3cbbe1f165f84b14ddd199f88ec83a28fb21d0",
+    "pngSha256": "365045c8be2c2fd6f07722c290eb2ac8c3cffe5430b3f97836de3129b35b5c8e"
+  },
+  "parts": [
+    {
+      "name": "beak.png",
+      "sha256": "0b1af09a93bd268cbaef8adc1adaefca8f30a6aa3c931d2d91bf1498ea6ce111"
+    },
+    {
+      "name": "chest.png",
+      "sha256": "05c27e3d23a976244baea29c26809fa6276044be33883040de84a39f056406cc"
+    },
+    {
+      "name": "head.png",
+      "sha256": "a8a6d689031300fa1811335a9f4693d8b3843f5596f972e3c2044c32534a15df"
+    },
+    {
+      "name": "leg-far-ankle.png",
+      "sha256": "eb1dad3347f368c1874ec741d4b930ffa2575c3c5321fc377d03c2baf1bcf96b"
+    },
+    {
+      "name": "leg-far-foot.png",
+      "sha256": "e7eb24183106a08c4935b23121348dbb118a5466293bb86ded0f1a1fd652d615"
+    },
+    {
+      "name": "leg-far-knee.png",
+      "sha256": "79ac9682a76d06f93b8fc233fff8a4ba137426c99e8ebeff9d967ebafe3fdc14"
+    },
+    {
+      "name": "leg-near-ankle.png",
+      "sha256": "fd9341140b018e6c49a0d20d11d4a71fd40cc1dc0ed7822f81ffe8b58b2d2038"
+    },
+    {
+      "name": "leg-near-foot.png",
+      "sha256": "6ec6dd7c0036379187ce09b8b6e9c7e12e6911ef5f607266e325fc43e2ca8da8"
+    },
+    {
+      "name": "leg-near-knee.png",
+      "sha256": "881afd30c63a3eb87938fae019e6555b08904101becef61712b48cd3132bae10"
+    },
+    {
+      "name": "neck0.png",
+      "sha256": "4013428411593017eedb2d53704ee75a8863baf00e7f5f4c5fc48d475863a953"
+    },
+    {
+      "name": "neck1.png",
+      "sha256": "ddc99a194ccf4f58b5f28aeb2ba418f80fc9acf2bc6a6d0287bcf0762f0a134f"
+    },
+    {
+      "name": "pelvis.png",
+      "sha256": "5cc637cba04dc37f3fe2a241fa3698f7d2b1608d02457a713ba0b40063a69ef3"
+    },
+    {
+      "name": "root.png",
+      "sha256": "7eaf31ff4a15366dd95a3e5babb5527671e50169c397a59f8957f08d57e583dc"
+    },
+    {
+      "name": "spine.png",
+      "sha256": "d5a379eb58b74a6940f8074a779ad6c1caa367285e544f11a3cf6081de7f7904"
+    },
+    {
+      "name": "tail-fan.png",
+      "sha256": "24f7012575eca6d6bed3886131f1723fbaa3aeaf927458ad8ee890aa21c852ae"
+    },
+    {
+      "name": "wing-far-root.png",
+      "sha256": "e60c4e29099a4c7a4cf14c7059a1cdca93e45e7049e9e8fc132b1ed4aa29887f"
+    },
+    {
+      "name": "wing-far-tip.png",
+      "sha256": "bcb74be0cd6a7c251af3c7440dd20222ab95a490abab03ef69198f3259648713"
+    },
+    {
+      "name": "wing-near-root.png",
+      "sha256": "3e3f8a0f745694aec16023944cda1925146dbd8f24504b3e7c5e651aaced2ecf"
+    },
+    {
+      "name": "wing-near-tip.png",
+      "sha256": "f5c61503567531a3361ac37a9803fde2d511aca2ab548719c41d9b363bc42693"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

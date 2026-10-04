@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Shark",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "533701cfaec64358588bf7b174f8e3774783a72e94097ae1632eb9a832da5e40",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "predatory-shark",
+  "authoringCreated": false,
+  "sourceHead": "87557292e471579fc6c8b9e1099d36def4d2402d",
+  "basePromptSha256": "692ea35b68fddb7a35cb3c87c5b758c48b9d2057863ad2cdd230a5cdd6de1697",
+  "layoutCompilerSha256": "2d8c64b03d9532e31f9b033f73f5ee7cfb77d6deef016c75e6b61c92631d214e",
+  "layoutClarification": "Species identity features FIRST: tall triangular first dorsal fin; asymmetric tail with a longer upper lobe; crescent mouth set under the snout with gill slits behind. One Earth Shark. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: horizontal fish, head RIGHT and complete caudal tail LEFT; species-correct fin count, finlets, barbels and tail shape. Natural fin rays and fin roots must stay distinct; no detached pieces. Keep the tail stalk continuous.\n\n"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Clouded Leopard",
+  "masterSha256": "770f57e8c5ce6d76998ff5bc46e80b918ba2ad722b2e496575aa4d5d636d29d1",
+  "required": [
+    "large cloud-shaped dark-edged blotches"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "large cloud-shaped dark-edged blotches",
+      "status": "PRESENT",
+      "observed": "Large cloud-shaped blotches with thick dark edges cover the sides."
+    }
+  ]
+}

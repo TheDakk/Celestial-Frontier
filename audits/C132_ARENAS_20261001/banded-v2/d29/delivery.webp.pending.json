@@ -1,0 +1,39 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "banded-v2",
+  "biome": "banded",
+  "medium": "ground",
+  "mediumNote": "Recipe medium \"air\" (a gas-giant cloud deck): to be registered as a GROUND set, the fighters standing on the cloud layer. There is no air routing medium. Pending Dakk's acceptance.",
+  "recipe": "audits/C132_ARENAS_20261001/banded-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/banded-v2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/banded-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/banded-v2/arena-far.webp",
+      "runtimeSha256": "fb387dceb275af430eb27d7e9ed361703f2b944b891e730599931bc81b68115c",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/arena-far.png",
+        "sha256": "b8387a84c7b831ca508606adbb9cea2e031a1dec8a46974ab4b8ff5d3748f0ba"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/banded-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/banded-v2/keyed/arena-mid.webp",
+      "runtimeSha256": "096a6eac8e18a2edf244f7c699feb2a202df26c7299515a56960d3ac86004b75",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/keyed/arena-mid.png",
+        "sha256": "13b1142ddfd87730967e0084c6920d7e4b9b6f5388f4984dee01776621c21ead"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/banded-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/banded-v2/keyed/arena-near.webp",
+      "runtimeSha256": "1aad50360a369b63ec33c36cd0f0b189d2a62b6f740922068ea05dd9ad15bb13",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/banded-v2/keyed/arena-near.png",
+        "sha256": "cdc5548138d14aee9cfb8c2a8571fe4d7f81b5b47c1284672ce9db8691cf145b"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

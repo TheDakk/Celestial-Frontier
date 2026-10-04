@@ -1,0 +1,74 @@
+[
+  {
+    "id": "01-robin",
+    "name": "Robin",
+    "family": "biped-bird",
+    "packet": "audits/G2_REFERENCES_C62_20260927/01-robin",
+    "master": "audits/G2_REFERENCES_C62_20260927/01-robin/master.png",
+    "origin": "manual observations on a new generated original",
+    "role": "candidate hand reference; independent regression and visual review pending"
+  },
+  {
+    "id": "02-pigeon",
+    "name": "Pigeon",
+    "family": "biped-bird",
+    "packet": "audits/G2_REFERENCES_C62_20260927/02-pigeon",
+    "master": "audits/G2_REFERENCES_C62_20260927/02-pigeon/master.png",
+    "origin": "manual observations on a new generated original",
+    "role": "candidate hand reference; independent regression and visual review pending"
+  },
+  {
+    "id": "03-duck-v2",
+    "name": "Duck",
+    "family": "biped-bird",
+    "packet": "audits/G2_REFERENCES_C62_20260927/03-duck-v2",
+    "master": "audits/G2_REFERENCES_C62_20260927/03-duck-v2/master.png",
+    "origin": "manual observations on a new generated original",
+    "role": "candidate hand reference; independent regression and visual review pending"
+  },
+  {
+    "id": "04-hawk-v2",
+    "name": "Hawk",
+    "family": "biped-bird",
+    "packet": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2",
+    "master": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2/master.png",
+    "origin": "manual observations on a new generated original",
+    "role": "candidate hand reference; independent regression and visual review pending"
+  },
+  {
+    "id": "05-cat-v2",
+    "name": "Cat",
+    "family": "quadruped",
+    "packet": "audits/G2_REFERENCES_C62_20260927/05-cat-v2",
+    "master": "audits/G2_REFERENCES_C62_20260927/05-cat-v2/master.png",
+    "origin": "manual observations on a new generated original",
+    "role": "candidate hand reference; independent regression and visual review pending"
+  },
+  {
+    "id": "07-weasel",
+    "name": "Weasel",
+    "family": "quadruped",
+    "packet": "audits/G2_REFERENCES_C62_20260927/07-weasel",
+    "master": "audits/G2_REFERENCES_C62_20260927/07-weasel/master.png",
+    "origin": "manual observations on a new generated original",
+    "role": "candidate hand reference; independent regression and visual review pending"
+  },
+  {
+    "id": "08-ant",
+    "name": "Ant",
+    "family": "insect",
+    "packet": "audits/G2_REFERENCES_C62_20260927/08-ant",
+    "master": "audits/G2_REFERENCES_C62_20260927/08-ant/master.png",
+    "origin": "manual observations on a new generated original",
+    "role": "candidate hand reference; independent regression and visual review pending"
+  },
+  {
+    "id": "09-cricket",
+    "name": "Cricket",
+    "family": "insect",
+    "packet": "audits/G2_REFERENCES_C62_20260927/09-cricket",
+    "master": "audits/G2_REFERENCES_C62_20260927/09-cricket/master.png",
+    "origin": "manual observations on a new generated original",
+    "role": "candidate hand reference; independent regression and visual review pending"
+  }
+]

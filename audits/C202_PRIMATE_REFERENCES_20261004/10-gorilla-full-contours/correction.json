@@ -1,0 +1,21 @@
+{
+  "predecessor": "audits/C202_PRIMATE_REFERENCES_20261004/09-gorilla-pelvic-flank",
+  "scope": "Complete source-visible anatomical contours into empty key background so fringe pixels cannot remain root-owned. No source pixel edit, landmark, solver, or limit change.",
+  "parts": [
+    "near-hand",
+    "far-hand",
+    "near-foot",
+    "far-foot",
+    "near-shin",
+    "far-shin",
+    "far-thigh",
+    "near-forearm",
+    "far-forearm",
+    "near-upper-arm",
+    "far-upper-arm",
+    "jaw",
+    "head",
+    "neck"
+  ],
+  "native": false
+}

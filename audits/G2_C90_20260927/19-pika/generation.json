@@ -1,0 +1,13 @@
+{
+  "id": "19-pika",
+  "name": "Pika",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-604b98df-01c2-4da8-a7d1-d4a5255c3b5a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "20c5336c1331e04c7f436090971e8146ac6f73cf757d87c8449916c7bc2c1227",
+  "bytes": 1379690,
+  "promptSha256": "e4c6bd0982a78045219a874b44058e10720fd56f7c20def65ac13796e79b0505",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

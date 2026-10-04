@@ -1,0 +1,6 @@
+{
+  "atRunIntakeSha256": "851efe46637057a7de5b7fc2129a1db1ffdf064ceee66f3c0e721ded06df44be",
+  "atRunIntakeCopy": "intake-at-reference-run.mjs",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "finalDifference": "Final intake additionally records regionOwnerHelperSha256 in provenance; raster/fit behavior unchanged."
+}

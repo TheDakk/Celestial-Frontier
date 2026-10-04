@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Porcupine",
+  "masterSha256": "62dd4eb53306d4b75f5abaa0f280cda03b80f78843a678ef62f75e465b24a006",
+  "required": [
+    "long banded quills laid back over the rump"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "long banded quills laid back over the rump",
+      "status": "PRESENT",
+      "observed": "Full-size original: rounded dark porcupine with dense long black-and-cream banded quills, a small rounded near ear and blunt muzzle with long whiskers. Four distinct clawed feet and lower leg silhouettes are visible, but upper roots merge under belly/quill fringe and the far ear is not independently visible. The back/hip quill field is continuous and visually improved relative to the requested hip-spike gap; this does not establish deformed-paint conservation. Tail is not independently distinguishable from rear quills, and no biologically present tail or far ear may be declared absent merely because hidden. Fine quill/whisker tips require original-margin and fringe review. No anatomy/native admission."
+    }
+  ]
+}

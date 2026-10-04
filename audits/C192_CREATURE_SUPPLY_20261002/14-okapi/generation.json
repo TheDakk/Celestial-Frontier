@@ -1,0 +1,14 @@
+{
+  "id": "14-okapi",
+  "name": "Okapi",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2454dd06-cede-4b50-acda-9ff2b9f2919e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1da73429a2fdc7c2a626a02d4e35fc9aa8ae661b41a2b52707548529fa9cbd33",
+  "bytes": 1366317,
+  "promptSha256": "9e1a26b6dc99070534385807f2520c2a05a45d194900692c2fe2367c99dd3eae",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

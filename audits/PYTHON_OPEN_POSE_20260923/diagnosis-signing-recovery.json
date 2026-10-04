@@ -1,0 +1,12 @@
+{
+  "commit": "4ff2fad720e1d5734ce95a77c8a401cd8884e24e",
+  "signature": "G",
+  "commitReceipt": "e6288e",
+  "verificationReceipt": "47fedf",
+  "previousRefusals": [
+    "2170a4",
+    "5f7efd"
+  ],
+  "configurationChanged": false,
+  "pushed": false
+}

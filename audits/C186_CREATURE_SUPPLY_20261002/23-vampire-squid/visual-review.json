@@ -1,0 +1,28 @@
+{
+  "name": "Vampire Squid",
+  "masterSha256": "bcedf8e7b62bf35115e505e7240a964f541bf04e3d433787625b6b8820845530",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: dark red body, large near eye, paired fin-like projections, broad webbed arm cloak and two thin appendages with visibly widened club-like ends. Only about six cloak tips are distinctly exposed; eight complete arms are not proven. The club-like filament ends and the arm-cloak/body orientation require anatomical review and are held rather than forced into a template. Far eye is not visible and is not declared absent. No authoring admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 208,
+      "y0": 307,
+      "x1": 1039,
+      "y1": 922
+    },
+    "margins": {
+      "left": 208,
+      "right": 214,
+      "top": 307,
+      "bottom": 331
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

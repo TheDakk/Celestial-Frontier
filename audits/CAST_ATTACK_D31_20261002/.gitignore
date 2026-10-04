@@ -1,0 +1,5 @@
+*.webm
+*/*.png
+!*/turn1-hit-reaction-50.png
+!*/turn3-hit-idle-90.png
+!*/turn0-hit-impact.png

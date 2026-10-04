@@ -1,0 +1,10 @@
+{
+ "id": "fam-05-kingfisher",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a front appendage of 6.2% paint that no reference appendage lands on",
+  "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 2.4%)"
+ ],
+ "semanticPresence": null
+}

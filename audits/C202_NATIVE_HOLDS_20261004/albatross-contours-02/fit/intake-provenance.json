@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "021cba472f43d89fd1fd0dc6667dbe651d8c1838",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/master.png",
+      "sha256": "96b1750faf0a6e1f8844ae75bdaa8f7b3cee3c1b0392643e84b1978c65d58657"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/authoring.json",
+      "sha256": "d0a5038e27a93c06593d278f2f2f4f3605c688672d97da761202a4acf164beb2"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/subject-source.json",
+      "sha256": "30b89f5fbbe9b08b271495d91e342bc839f40bd08371afd502c139f234263075"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "71387b20172049bef3500172e567c4942085e9e57dfcad47bf6f43a3ddfd9267",
+  "bindingHash": "902c8f7cc508c633fa6bf3522445381f49dcb6a782374a53c54d106d0caf6de9",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingFarRoot",
+    "wingFarTip",
+    "wingNearRoot",
+    "wingNearTip",
+    "tailFan",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/master.png",
+      "sha256": "96b1750faf0a6e1f8844ae75bdaa8f7b3cee3c1b0392643e84b1978c65d58657",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/authoring.json",
+      "sha256": "d0a5038e27a93c06593d278f2f2f4f3605c688672d97da761202a4acf164beb2",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/subject-source.json",
+      "sha256": "30b89f5fbbe9b08b271495d91e342bc839f40bd08371afd502c139f234263075",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

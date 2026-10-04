@@ -1,0 +1,494 @@
+[
+  {
+    "id": "01-crane",
+    "name": "Crane",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/01-crane",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/01-crane/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted bird: keep TWO actual leg shafts independently readable from their visible feather emergence to complete real feet and toes, in a biologically natural resting/standing stance, not a forced march. Preserve the actual short/long leg proportions and species-correct toe arrangement. Keep the natural folded wing-to-body and complete feather-tail attachment continuous, with near/far contours visible only where real; no extra wing, detached feather island, invented tail length or raised hidden foot. Shallow head turn may expose actual facial contours without inventing hidden anatomy.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "12-crane",
+          "master": "audits/G2_C76_20260927/12-crane/master.png",
+          "packet": "audits/G2_C76_20260927/12-crane"
+        }
+      ]
+    }
+  },
+  {
+    "id": "02-flamingo",
+    "name": "Flamingo",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/02-flamingo",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/02-flamingo/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted bird: keep TWO actual leg shafts independently readable from their visible feather emergence to complete real feet and toes, in a biologically natural resting/standing stance, not a forced march. Preserve the actual short/long leg proportions and species-correct toe arrangement. Keep the natural folded wing-to-body and complete feather-tail attachment continuous, with near/far contours visible only where real; no extra wing, detached feather island, invented tail length or raised hidden foot. Shallow head turn may expose actual facial contours without inventing hidden anatomy. Both natural legs planted; no one-legged resting pose in this specific source, preserve the real downcurved bill.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C101_20260927/pilot.json",
+          "id": "16-flamingo",
+          "master": "audits/G2_C101_20260927/16-flamingo/master.png",
+          "packet": "audits/G2_C101_20260927/16-flamingo"
+        }
+      ]
+    }
+  },
+  {
+    "id": "03-plover",
+    "name": "Plover",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/03-plover",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/03-plover/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted bird: keep TWO actual leg shafts independently readable from their visible feather emergence to complete real feet and toes, in a biologically natural resting/standing stance, not a forced march. Preserve the actual short/long leg proportions and species-correct toe arrangement. Keep the natural folded wing-to-body and complete feather-tail attachment continuous, with near/far contours visible only where real; no extra wing, detached feather island, invented tail length or raised hidden foot. Shallow head turn may expose actual facial contours without inventing hidden anatomy.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C81_20260927/pilot.json",
+          "id": "11-plover",
+          "master": "audits/G2_C81_20260927/11-plover/master.png",
+          "packet": "audits/G2_C81_20260927/11-plover"
+        }
+      ]
+    }
+  },
+  {
+    "id": "04-partridge",
+    "name": "Partridge",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/04-partridge",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/04-partridge/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted bird: keep TWO actual leg shafts independently readable from their visible feather emergence to complete real feet and toes, in a biologically natural resting/standing stance, not a forced march. Preserve the actual short/long leg proportions and species-correct toe arrangement. Keep the natural folded wing-to-body and complete feather-tail attachment continuous, with near/far contours visible only where real; no extra wing, detached feather island, invented tail length or raised hidden foot. Shallow head turn may expose actual facial contours without inventing hidden anatomy.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_THROUGHPUT_C54_20260926/pilot.json",
+          "id": "16-partridge",
+          "master": "audits/G2_THROUGHPUT_C54_20260926/16-partridge/master.png",
+          "packet": "audits/G2_THROUGHPUT_C54_20260926/16-partridge"
+        }
+      ]
+    }
+  },
+  {
+    "id": "05-rooster",
+    "name": "Rooster",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/05-rooster",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/05-rooster/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted bird: keep TWO actual leg shafts independently readable from their visible feather emergence to complete real feet and toes, in a biologically natural resting/standing stance, not a forced march. Preserve the actual short/long leg proportions and species-correct toe arrangement. Keep the natural folded wing-to-body and complete feather-tail attachment continuous, with near/far contours visible only where real; no extra wing, detached feather island, invented tail length or raised hidden foot. Shallow head turn may expose actual facial contours without inventing hidden anatomy.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "12-rooster",
+          "master": "audits/G2_C95_20260927/12-rooster/master.png",
+          "packet": "audits/G2_C95_20260927/12-rooster"
+        }
+      ]
+    }
+  },
+  {
+    "id": "06-secretary-bird",
+    "name": "Secretary Bird",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/06-secretary-bird",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/06-secretary-bird/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted bird: keep TWO actual leg shafts independently readable from their visible feather emergence to complete real feet and toes, in a biologically natural resting/standing stance, not a forced march. Preserve the actual short/long leg proportions and species-correct toe arrangement. Keep the natural folded wing-to-body and complete feather-tail attachment continuous, with near/far contours visible only where real; no extra wing, detached feather island, invented tail length or raised hidden foot. Shallow head turn may expose actual facial contours without inventing hidden anatomy.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C98_20260927/pilot.json",
+          "id": "15-secretary-bird",
+          "master": "audits/G2_C98_20260927/15-secretary-bird/master.png",
+          "packet": "audits/G2_C98_20260927/15-secretary-bird"
+        }
+      ]
+    }
+  },
+  {
+    "id": "07-cardinal",
+    "name": "Cardinal",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/07-cardinal",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/07-cardinal/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted bird: keep TWO actual leg shafts independently readable from their visible feather emergence to complete real feet and toes, in a biologically natural resting/standing stance, not a forced march. Preserve the actual short/long leg proportions and species-correct toe arrangement. Keep the natural folded wing-to-body and complete feather-tail attachment continuous, with near/far contours visible only where real; no extra wing, detached feather island, invented tail length or raised hidden foot. Shallow head turn may expose actual facial contours without inventing hidden anatomy.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_THROUGHPUT_C56_20260926/pilot.json",
+          "id": "12-cardinal",
+          "master": "audits/G2_THROUGHPUT_C56_20260926/12-cardinal/master.png",
+          "packet": "audits/G2_THROUGHPUT_C56_20260926/12-cardinal"
+        }
+      ]
+    }
+  },
+  {
+    "id": "08-swallow",
+    "name": "Swallow",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/08-swallow",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/08-swallow/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted bird: keep TWO actual leg shafts independently readable from their visible feather emergence to complete real feet and toes, in a biologically natural resting/standing stance, not a forced march. Preserve the actual short/long leg proportions and species-correct toe arrangement. Keep the natural folded wing-to-body and complete feather-tail attachment continuous, with near/far contours visible only where real; no extra wing, detached feather island, invented tail length or raised hidden foot. Shallow head turn may expose actual facial contours without inventing hidden anatomy.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "10-swallow",
+          "master": "audits/G2_C76_20260927/10-swallow/master.png",
+          "packet": "audits/G2_C76_20260927/10-swallow"
+        }
+      ]
+    }
+  },
+  {
+    "id": "09-jay",
+    "name": "Jay",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/09-jay",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/09-jay/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted bird: keep TWO actual leg shafts independently readable from their visible feather emergence to complete real feet and toes, in a biologically natural resting/standing stance, not a forced march. Preserve the actual short/long leg proportions and species-correct toe arrangement. Keep the natural folded wing-to-body and complete feather-tail attachment continuous, with near/far contours visible only where real; no extra wing, detached feather island, invented tail length or raised hidden foot. Shallow head turn may expose actual facial contours without inventing hidden anatomy.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_THROUGHPUT_C56_20260926/pilot.json",
+          "id": "14-jay",
+          "master": "audits/G2_THROUGHPUT_C56_20260926/14-jay/master.png",
+          "packet": "audits/G2_THROUGHPUT_C56_20260926/14-jay"
+        }
+      ]
+    }
+  },
+  {
+    "id": "10-rhea",
+    "name": "Rhea",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/10-rhea",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/10-rhea/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Direct reference-author request after full-size source review: earlier side-on source obscures the far-wing root and transfer assigned body paint to moving far wing. Use a modest elevated rightward three-quarter STANDING view with BOTH real wings partly lifted only enough to expose separate attached shoulder-to-feather chains; preserve actual species wing size and body continuity, all two real leg/foot supports and complete tail. This is an explicit view/fold override to the canonical strict side pose, not permission to invent a hidden wing, enlarge a flightless wing, detach feathers or erase body paint. Rhea remains flightless with its real small wings and long legs.",
+      "priorSources": [
+        {
+          "pilot": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/pilot-v2.json",
+          "id": "rhea",
+          "master": null,
+          "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea"
+        },
+        {
+          "pilot": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/pilot.json",
+          "id": "rhea",
+          "master": null,
+          "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea"
+        },
+        {
+          "pilot": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2/pilot.json",
+          "id": "rhea",
+          "master": null,
+          "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/rhea"
+        },
+        {
+          "pilot": "audits/G2_C106_20260927/pilot.json",
+          "id": "13-rhea",
+          "master": "audits/G2_C106_20260927/13-rhea/master.png",
+          "packet": "audits/G2_C106_20260927/13-rhea"
+        }
+      ]
+    }
+  },
+  {
+    "id": "11-albatross",
+    "name": "Albatross",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/11-albatross",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/11-albatross/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted bird: keep TWO actual leg shafts independently readable from their visible feather emergence to complete real feet and toes, in a biologically natural resting/standing stance, not a forced march. Preserve the actual short/long leg proportions and species-correct toe arrangement. Keep the natural folded wing-to-body and complete feather-tail attachment continuous, with near/far contours visible only where real; no extra wing, detached feather island, invented tail length or raised hidden foot. Shallow head turn may expose actual facial contours without inventing hidden anatomy.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C101_20260927/pilot.json",
+          "id": "18-albatross",
+          "master": "audits/G2_C101_20260927/18-albatross/master.png",
+          "packet": "audits/G2_C101_20260927/18-albatross"
+        }
+      ]
+    }
+  },
+  {
+    "id": "12-snow-petrel",
+    "name": "Snow Petrel",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/12-snow-petrel",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/12-snow-petrel/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Direct reference-author request after full-size source review: earlier side-on source obscures the far-wing root and transfer assigned body paint to moving far wing. Use a modest elevated rightward three-quarter STANDING view with BOTH real wings partly lifted only enough to expose separate attached shoulder-to-feather chains; preserve actual species wing size and body continuity, all two real leg/foot supports and complete tail. This is an explicit view/fold override to the canonical strict side pose, not permission to invent a hidden wing, enlarge a flightless wing, detach feathers or erase body paint. Snow Petrel preserves white plumage and dark bill, natural standing proportions and actual wings.",
+      "priorSources": [
+        {
+          "pilot": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/pilot-v2.json",
+          "id": "snow-petrel",
+          "master": null,
+          "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel"
+        },
+        {
+          "pilot": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/pilot.json",
+          "id": "snow-petrel",
+          "master": null,
+          "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel"
+        },
+        {
+          "pilot": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2/pilot.json",
+          "id": "snow-petrel",
+          "master": null,
+          "packet": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/snow-petrel"
+        },
+        {
+          "pilot": "audits/G2_C101_20260927/pilot.json",
+          "id": "20-snow-petrel",
+          "master": "audits/G2_C101_20260927/20-snow-petrel/master.png",
+          "packet": "audits/G2_C101_20260927/20-snow-petrel"
+        }
+      ]
+    }
+  },
+  {
+    "id": "13-catfish",
+    "name": "Catfish",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/13-catfish",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/13-catfish/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C90_20260927/pilot.json",
+          "id": "07-catfish",
+          "master": "audits/G2_C90_20260927/07-catfish/master.png",
+          "packet": "audits/G2_C90_20260927/07-catfish"
+        }
+      ]
+    }
+  },
+  {
+    "id": "14-bowfin",
+    "name": "Bowfin",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/14-bowfin",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/14-bowfin/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C90_20260927/pilot.json",
+          "id": "09-bowfin",
+          "master": "audits/G2_C90_20260927/09-bowfin/master.png",
+          "packet": "audits/G2_C90_20260927/09-bowfin"
+        }
+      ]
+    }
+  },
+  {
+    "id": "15-arapaima",
+    "name": "Arapaima",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/15-arapaima",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/15-arapaima/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "07-arapaima",
+          "master": "audits/G2_C76_20260927/07-arapaima/master.png",
+          "packet": "audits/G2_C76_20260927/07-arapaima"
+        }
+      ]
+    }
+  },
+  {
+    "id": "16-arowana",
+    "name": "Arowana",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/16-arowana",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/16-arowana/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "06-arowana",
+          "master": "audits/G2_C76_20260927/06-arowana/master.png",
+          "packet": "audits/G2_C76_20260927/06-arowana"
+        }
+      ]
+    }
+  },
+  {
+    "id": "17-lungfish",
+    "name": "Lungfish",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/17-lungfish",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/17-lungfish/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission. Preserve its genuinely narrow paired fin anatomy and continuous median fin structure, not ordinary broad teleost fins.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C101_20260927/pilot.json",
+          "id": "02-lungfish",
+          "master": "audits/G2_C101_20260927/02-lungfish/master.png",
+          "packet": "audits/G2_C101_20260927/02-lungfish"
+        }
+      ]
+    }
+  },
+  {
+    "id": "18-snapper",
+    "name": "Snapper",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/18-snapper",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/18-snapper/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C81_20260927/pilot.json",
+          "id": "08-snapper",
+          "master": "audits/G2_C81_20260927/08-snapper/master.png",
+          "packet": "audits/G2_C81_20260927/08-snapper"
+        }
+      ]
+    }
+  },
+  {
+    "id": "19-triggerfish",
+    "name": "Triggerfish",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/19-triggerfish",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/19-triggerfish/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C92_20260927/pilot.json",
+          "id": "01-triggerfish",
+          "master": "audits/G2_C92_20260927/01-triggerfish/master.png",
+          "packet": "audits/G2_C92_20260927/01-triggerfish"
+        }
+      ]
+    }
+  },
+  {
+    "id": "20-cardinalfish",
+    "name": "Cardinalfish",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/20-cardinalfish",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/20-cardinalfish/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "01-cardinalfish",
+          "master": "audits/G2_C95_20260927/01-cardinalfish/master.png",
+          "packet": "audits/G2_C95_20260927/01-cardinalfish"
+        }
+      ]
+    }
+  },
+  {
+    "id": "21-lionfish",
+    "name": "Lionfish",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/21-lionfish",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/21-lionfish/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C92_20260927/pilot.json",
+          "id": "05-lionfish",
+          "master": "audits/G2_C92_20260927/05-lionfish/master.png",
+          "packet": "audits/G2_C92_20260927/05-lionfish"
+        }
+      ]
+    }
+  },
+  {
+    "id": "22-pufferfish",
+    "name": "Pufferfish",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/22-pufferfish",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/22-pufferfish/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission. Preserve true absent pelvic fins; no invented pelvic appendage.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C92_20260927/pilot.json",
+          "id": "03-pufferfish",
+          "master": "audits/G2_C92_20260927/03-pufferfish/master.png",
+          "packet": "audits/G2_C92_20260927/03-pufferfish"
+        }
+      ]
+    }
+  },
+  {
+    "id": "23-fangtooth",
+    "name": "Fangtooth",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/23-fangtooth",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/23-fangtooth/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C101_20260927/pilot.json",
+          "id": "08-fangtooth",
+          "master": "audits/G2_C101_20260927/08-fangtooth/master.png",
+          "packet": "audits/G2_C101_20260927/08-fangtooth"
+        }
+      ]
+    }
+  },
+  {
+    "id": "24-remora",
+    "name": "Remora",
+    "family": "fish",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/24-remora",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/24-remora/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction for this unaccepted fish: preserve every species-specific fin, ray, barbel and pigment feature, with fin roots readable at the actual attachment and the full caudal tail uncut. Near/far paired fins may separate slightly only where natural; do not duplicate odd fins, add absent pelvic fins, or replace a specialized body with a generic fish. Use calm rightward swimming with no crossing, body bend or foreshortening; leave all fine rays/barbels fully inside generous margins. A source request is not a fin-count or motion admission.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C98_20260927/pilot.json",
+          "id": "07-remora",
+          "master": "audits/G2_C98_20260927/07-remora/master.png",
+          "packet": "audits/G2_C98_20260927/07-remora"
+        }
+      ]
+    }
+  }
+]

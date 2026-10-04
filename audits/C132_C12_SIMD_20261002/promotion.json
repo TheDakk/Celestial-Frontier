@@ -1,0 +1,47 @@
+{
+  "schema": "cf.c132-simd-promotion/v1",
+  "status": "PROMOTED_EXACT_MEASURED_ARTIFACTS",
+  "nativeHead": "bf3c3f0453f7eab8a2424e92fcda3408de87b00d",
+  "artifacts": [
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep.c",
+      "sha256": "87002ac565a72f94e4239faa618f689f7cd197db7973cbf9b511139193def285",
+      "measuredCandidate": "audits/C132_C12_SIMD_20261002/arap-sweep.c",
+      "priorSha256": "c46297aa3edddca9d08878dc53b225008d9b498eb539d3fa32db8b269422f3aa"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep.wasm",
+      "sha256": "a48d554ba386ae1fc9f186a02f25984b307e6ec4bfe8bfc782dc6d79b67efd78",
+      "measuredCandidate": "audits/C132_C12_SIMD_20261002/arap-sweep.wasm",
+      "priorSha256": "8e59150df463ec99b4c05f614651e21807e5901854bdf24bf0ad8a7ee747d967"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "sha256": "44d181aedd47321a459ba6ee23fb269064d9d6f9e0cc5f311bcfc3329b6b79a0",
+      "measuredCandidate": "audits/C132_C12_SIMD_20261002/arap-sweep-bytes.mjs",
+      "priorSha256": "a1ecb42df0fe1f2a70a7f7894aae1309e533635ab2f05b1232c16fd9ae9c4707"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep-build.json",
+      "sha256": "0cbd0509f4d19ed3bfbb92cd9bc016c0782c85117cb15400a75b0b992e14bc85",
+      "measuredCandidate": "audits/C132_C12_SIMD_20261002/arap-sweep-build.json",
+      "priorSha256": "037dd6772a92363904a28659beb28daad170029d38b629041c48ca0976e11340"
+    }
+  ],
+  "capturedParity": "captured-parity-v3.json",
+  "focusedLeafTestsPassed": 17,
+  "libraryOwnerTestsPassed": 9,
+  "libraryArchetypes": 38,
+  "libraryScaleCases": 114,
+  "rootValidation": "PASS",
+  "native": {
+    "liveFrames": 789,
+    "rigRefusals": 0,
+    "cpuP95Ms": 8.7,
+    "frameIntervalP95Ms": 16.7,
+    "overBudgetFrames": 3,
+    "maximumCpuMs": 23.3,
+    "retainedStillsByteIdentical": 18
+  },
+  "limitations": "One native run per candidate is not an isolated speed benchmark. Every-library-pair strict60fps, physical-phone performance and existing Chimpanzee visual deformation remain open."
+}

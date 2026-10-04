@@ -1,0 +1,14 @@
+{
+  "id": "11-pig",
+  "name": "Pig",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-b67d6563-f262-4bb2-9f47-f3b89ba3f3bc.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f3d06aad2a2ca4dcec007cb194babdb5bff93ff68da9fe379e6b7da7b46d175d",
+  "bytes": 1441867,
+  "promptSha256": "88e06354f0c3205fb85b8413a32b2b023a46968ea1e25b5a22649fb1c8e6da50",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

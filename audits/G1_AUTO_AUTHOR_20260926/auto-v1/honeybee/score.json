@@ -1,0 +1,18 @@
+{
+ "id": "honeybee",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.0%)"
+ ],
+ "bodyLengthPx": 893.2,
+ "landmarkMedian": 0.1256,
+ "landmarkMax": 0.2665,
+ "worst": [
+  "legFrontNearFoot 0.267",
+  "legMidNearFoot 0.238",
+  "legFrontFarFoot 0.200"
+ ],
+ "labelAgreement": 0.1468,
+ "missingJoints": []
+}

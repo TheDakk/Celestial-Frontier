@@ -1,0 +1,9 @@
+{
+ "id": "07-gecko",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 25% paint (reference 81%)"
+ ],
+ "semanticPresence": null
+}

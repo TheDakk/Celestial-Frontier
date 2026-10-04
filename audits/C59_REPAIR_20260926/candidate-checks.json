@@ -1,0 +1,93 @@
+[
+  {
+    "id": "g2c54-05-tiger-side",
+    "changedPixels": 15929,
+    "recipeUnchanged": true,
+    "sourceSha256": "3c4f50a63ebc648eeff37ea2c960eaadd06600da70527e25e74d87f5358bad34",
+    "labelsSha256": "79f97b91ac3e9a32ef179ce60d45ac64628512d0933c8f57e8dce8bd16ee400a",
+    "exactReproduction": true,
+    "onlyOppositeForelegOwnersChanged": true,
+    "static": "PASS_STATIC",
+    "native": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "cpuP95Ms": 7
+  },
+  {
+    "id": "g2c54-06-leopard-side",
+    "changedPixels": 11053,
+    "recipeUnchanged": true,
+    "sourceSha256": "07d0cec15b091e4d6743e4312c2babc6c6782f37bcd7d41c51444c74a7ea782b",
+    "labelsSha256": "5284384d4b5f7f32c07a26663f61bc899767b03757251943dac71f7cf6271df0",
+    "exactReproduction": true,
+    "onlyOppositeForelegOwnersChanged": true,
+    "static": "PASS_STATIC",
+    "native": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "cpuP95Ms": 6.200000047683716
+  },
+  {
+    "id": "g2c54-09-ocelot-side",
+    "changedPixels": 12614,
+    "recipeUnchanged": true,
+    "sourceSha256": "321e8cbbec2ac1932437efcf96be004a443d81e2b8a048b3f7ae8db870316b2b",
+    "labelsSha256": "5b234f245d3581ee5f9ae3ab7b889127607208889c1d98f5c504d92e5f84ab41",
+    "exactReproduction": true,
+    "onlyOppositeForelegOwnersChanged": true,
+    "static": "PASS_STATIC",
+    "native": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "cpuP95Ms": 7.100000023841858
+  },
+  {
+    "id": "g2c56-06-mink-side",
+    "changedPixels": 8718,
+    "recipeUnchanged": true,
+    "sourceSha256": "ca16447ae172ad9100642840cb51378a8f75a76b737f8dc3cff844773b181e10",
+    "labelsSha256": "405595e9fb5b2e21602a7712bcdf8ba6149f88bded89e554adf72385efaaf743",
+    "exactReproduction": true,
+    "onlyOppositeForelegOwnersChanged": true,
+    "static": "PASS_STATIC",
+    "native": "DIAGNOSTIC_PASS",
+    "frames": 934,
+    "cpuP95Ms": 5.899999976158142
+  },
+  {
+    "id": "g2c56-08-fisher-side",
+    "changedPixels": 9234,
+    "recipeUnchanged": true,
+    "sourceSha256": "f0bec6779fc690b255571421823bfdfaa40e12514c3a925c1c1da4e18493139d",
+    "labelsSha256": "3fd5644bf0f03c93d02d821123b72ae03a793edbede4e624206b3910fd36b2e4",
+    "exactReproduction": true,
+    "onlyOppositeForelegOwnersChanged": true,
+    "static": "PASS_STATIC",
+    "native": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "cpuP95Ms": 6.899999976158142
+  },
+  {
+    "id": "g2c57-05-snow-leopard-side",
+    "changedPixels": 12304,
+    "recipeUnchanged": true,
+    "sourceSha256": "d9c2b2c7be4f664dc204e3810c60f285243a816491baabeedca4b8d203e02fe6",
+    "labelsSha256": "0895fbb85e0c7de17f9ace2b36525df29082b8ddc6d8fbc4369c8a0daf191626",
+    "exactReproduction": true,
+    "onlyOppositeForelegOwnersChanged": true,
+    "static": "PASS_STATIC",
+    "native": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "cpuP95Ms": 6.399999976158142
+  },
+  {
+    "id": "g2c57-06-clouded-leopard-side",
+    "changedPixels": 10616,
+    "recipeUnchanged": true,
+    "sourceSha256": "770f57e8c5ce6d76998ff5bc46e80b918ba2ad722b2e496575aa4d5d636d29d1",
+    "labelsSha256": "b3f4ed6756a6d6547ea68b2053dc26bd945fbc9b72a664eaedd1b1ea29002510",
+    "exactReproduction": true,
+    "onlyOppositeForelegOwnersChanged": true,
+    "static": "PASS_STATIC",
+    "native": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "cpuP95Ms": 6.200000047683716
+  }
+]

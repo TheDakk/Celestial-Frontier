@@ -1,0 +1,65 @@
+{
+  "name": "Millipede",
+  "family": "myriapod",
+  "species": {
+    "name": "Millipede",
+    "aspect": 6,
+    "headFrac": 0.05,
+    "eyes": "small",
+    "posture": "crawling",
+    "mustRead": [
+      "cylindrical tube body of many identical rings",
+      "two pairs of short legs per segment in a rippling fringe",
+      "short clubbed antennae on a rounded head"
+    ],
+    "note": "Legs are short and hidden under the body, unlike a centipede's long splayed legs."
+  },
+  "genome": {
+    "seed": 3117077383,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 3,
+    "body": 8,
+    "loco": 12,
+    "trait": 18,
+    "size": 1,
+    "diet": 4,
+    "head": 6,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 3,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 6,
+    "detail": 1,
+    "accent": 9,
+    "temper": 3,
+    "sense": 3,
+    "repro": 3,
+    "life": 1,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Millipede"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Millipede\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"3117077383\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 339,
+  "profile": {
+    "id": "millipede",
+    "names": [
+      "Millipede"
+    ],
+    "candidateTemplates": [
+      "myriapod"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "No centipede forcipules or tail sting."
+  }
+}

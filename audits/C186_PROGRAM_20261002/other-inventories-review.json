@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "delivery": "audits/C186_CREATURE_SUPPLY_20261002/delivery.json",
+      "sha256": "f9901ba6a478c3deb39a8b54b2d74b62f26ad77a6c0f86e67f875230f50a677c",
+      "verifiedFiles": 264,
+      "mismatches": [],
+      "literalHomeRecords": []
+    },
+    {
+      "delivery": "audits/C186_BITTERN_REPAIR_20261002/delivery-v2.json",
+      "sha256": "5c1b707f6dde17fe71f50ad2d242dda53915597bab2dcd072e1743b785e01e7f",
+      "verifiedFiles": 120,
+      "mismatches": [],
+      "literalHomeRecords": []
+    },
+    {
+      "delivery": "audits/C186_PETREL_AUTHORING_20261002/delivery-v2.json",
+      "sha256": "2918fb31d4d733014458b6b41e782f45f5827c4b4cbde479fca0573e331a90a3",
+      "verifiedFiles": 91,
+      "mismatches": [],
+      "literalHomeRecords": []
+    }
+  ],
+  "priorRefusals": "Bittern review-only inventory race and Petrel local-log path normalization retained in additive correction receipts; no fit/measurement changes"
+}

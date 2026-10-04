@@ -1,0 +1,40 @@
+{
+  "schema": "cf.c198-full-size-review/v1",
+  "status": "CANDIDATE_FOR_SCORING",
+  "inspectedImages": [
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/master.png",
+      "sha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/faint-0p9.png",
+      "sha256": "cc571eb15f0190a8cecc0c901ccec7706fa1e7b01ef711760fe0b8ded0e84308"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/faint-0p9.png",
+      "sha256": "ff62fd6652465c1fba16068d22224319e99dd3e57680cc28864cd4e9e2d5a1cc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/faint-0p9.png",
+      "sha256": "5b2a183db9730eb822e71c46712dfcd48e689d075cdcb0f4457e803b879d1fb0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/approach-swim-0p2.png",
+      "sha256": "9b9faa6a3bf4236cba9bdf53dabf4fe5dcb7e96199c6928824b226c8089f5a1e"
+    }
+  ],
+  "findings": [
+    "D28 reassigns ownership of 1857 disconnected remainder pixels; it deletes no paint and changes no keyed RGBA channel. Most detached tail/dorsal/belly fringe strips disappear.",
+    "The exact existing C88 fish boundary recipe closes the pectoral/body opening in the reviewed faint and swim poses. The upper caudal notch remains visible.",
+    "Hard fin/body texture boundaries and dorsal deformation are still apparent; glossy/scaled source treatment and biological proportions require scoring. Static and software parity passes do not admit quality."
+  ],
+  "scope": "Native 1254-square source images and full-size software raster of actual loaded-rig-verified publications. No native/GPU/full-stage acceptance. Red horizontal line is the source authoring guide, not a measured battle floor.",
+  "qualityAccepted": false,
+  "native": false,
+  "parentIndependentSubsetConcurrence": {
+    "images": [
+      "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/faint-0p9.png"
+    ],
+    "finding": "Parent independently concurred that the pectoral attachment is continuous in this pose and the upper notch remains intact, while hard fin/body texture seams remain; no admission."
+  }
+}

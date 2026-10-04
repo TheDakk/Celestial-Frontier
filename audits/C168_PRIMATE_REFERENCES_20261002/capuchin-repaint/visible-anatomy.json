@@ -1,0 +1,218 @@
+{
+  "id": "capuchin",
+  "name": "Capuchin",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+  "keyed": true,
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 233,
+      "y0": 314,
+      "x1": 1045,
+      "y1": 939
+    },
+    "margins": {
+      "left": 233,
+      "right": 208,
+      "top": 314,
+      "bottom": 314
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 20825,
+    "coreRadius": 16,
+    "bodyBox": {
+      "x0": 163,
+      "y0": 177,
+      "x1": 324,
+      "y1": 241
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2137,
+        "pixels": 4450,
+        "box": {
+          "x0": 78,
+          "y0": 105,
+          "x1": 163,
+          "y1": 213
+        },
+        "attach": {
+          "x": 162.9,
+          "y": 198.5,
+          "relX": 0,
+          "relY": 0.34
+        },
+        "dir": {
+          "x": -0.73,
+          "y": -0.68
+        },
+        "class": "top",
+        "length": 126.3
+      },
+      {
+        "k": 1,
+        "frac": 0.0057,
+        "pixels": 119,
+        "box": {
+          "x0": 287,
+          "y0": 172,
+          "x1": 318,
+          "y1": 176
+        },
+        "attach": {
+          "x": 302.5,
+          "y": 176,
+          "relX": 0.87,
+          "relY": -0.02
+        },
+        "dir": {
+          "x": 0.19,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 16
+      },
+      {
+        "k": 2,
+        "frac": 0.0904,
+        "pixels": 1882,
+        "box": {
+          "x0": 113,
+          "y0": 211,
+          "x1": 185,
+          "y1": 305
+        },
+        "attach": {
+          "x": 167,
+          "y": 233,
+          "relX": 0.02,
+          "relY": 0.87
+        },
+        "dir": {
+          "x": -0.58,
+          "y": 0.81
+        },
+        "class": "limb-down",
+        "length": 90
+      },
+      {
+        "k": 3,
+        "frac": 0.0853,
+        "pixels": 1776,
+        "box": {
+          "x0": 279,
+          "y0": 223,
+          "x1": 350,
+          "y1": 314
+        },
+        "attach": {
+          "x": 298.1,
+          "y": 234.6,
+          "relX": 0.84,
+          "relY": 0.9
+        },
+        "dir": {
+          "x": 0.33,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 94.8
+      },
+      {
+        "k": 4,
+        "frac": 0.0866,
+        "pixels": 1804,
+        "box": {
+          "x0": 184,
+          "y0": 228,
+          "x1": 235,
+          "y1": 309
+        },
+        "attach": {
+          "x": 205,
+          "y": 239.5,
+          "relX": 0.26,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": -0.02,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 75.7
+      },
+      {
+        "k": 5,
+        "frac": 0.0862,
+        "pixels": 1796,
+        "box": {
+          "x0": 238,
+          "y0": 237,
+          "x1": 285,
+          "y1": 314
+        },
+        "attach": {
+          "x": 261.5,
+          "y": 237,
+          "relX": 0.61,
+          "relY": 0.94
+        },
+        "dir": {
+          "x": -0.11,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 80.5
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 120,
+        "x1": 148,
+        "cx": 132.9
+      },
+      {
+        "x0": 186,
+        "x1": 235,
+        "cx": 215.7
+      },
+      {
+        "x0": 255,
+        "x1": 285,
+        "cx": 269.7
+      },
+      {
+        "x0": 325,
+        "x1": 350,
+        "cx": 337.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric counts only; no semantic presence or contact substitution."
+}

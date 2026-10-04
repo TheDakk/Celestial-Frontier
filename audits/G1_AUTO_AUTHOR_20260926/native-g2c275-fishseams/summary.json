@@ -1,0 +1,152 @@
+{
+  "schema": "cf.fish-seams-batch/v1",
+  "pilot": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/pilots/g2c275-eligible.json",
+  "author": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275",
+  "rows": [
+    {
+      "id": "01-okapi",
+      "status": "SKIPPED_NONFISH",
+      "name": "Okapi"
+    },
+    {
+      "id": "02-capybara",
+      "status": "SKIPPED_NONFISH",
+      "name": "Capybara"
+    },
+    {
+      "id": "03-pronghorn",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pronghorn"
+    },
+    {
+      "id": "04-springbok",
+      "status": "SKIPPED_NONFISH",
+      "name": "Springbok"
+    },
+    {
+      "id": "05-duiker",
+      "status": "SKIPPED_NONFISH",
+      "name": "Duiker"
+    },
+    {
+      "id": "06-serow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Serow"
+    },
+    {
+      "id": "07-brown-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Brown Bear"
+    },
+    {
+      "id": "08-grizzly-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Grizzly Bear"
+    },
+    {
+      "id": "09-kingfisher",
+      "status": "SKIPPED_NONFISH",
+      "name": "Kingfisher"
+    },
+    {
+      "id": "10-macaw",
+      "status": "SKIPPED_NONFISH",
+      "name": "Macaw"
+    },
+    {
+      "id": "11-toucan",
+      "status": "SKIPPED_NONFISH",
+      "name": "Toucan"
+    },
+    {
+      "id": "12-pheasant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pheasant"
+    },
+    {
+      "id": "13-falcon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Falcon"
+    },
+    {
+      "id": "14-duck",
+      "status": "SKIPPED_NONFISH",
+      "name": "Duck"
+    },
+    {
+      "id": "15-egret",
+      "status": "SKIPPED_NONFISH",
+      "name": "Egret"
+    },
+    {
+      "id": "16-stork",
+      "status": "SKIPPED_NONFISH",
+      "name": "Stork"
+    },
+    {
+      "id": "17-arapaima-framing02",
+      "status": "REPAIR_REFUSED",
+      "name": "Arapaima",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/17-arapaima-framing02/fit",
+      "sourceMasterSha256": "df335aeff1080374441505501bacf45284c15a709f5ffa0144061a465ed66226",
+      "sourceStaticSha256": "3ae4af3991bfe2b1235bc99783de2c8b9eb305d7830c29f38edd5650e5c0d134",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275-fishseams/17-arapaima-framing02/fit",
+      "exitCode": 1
+    },
+    {
+      "id": "18-arowana-framing02",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Arowana",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/18-arowana-framing02/static.json'"
+    },
+    {
+      "id": "19-blenny",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Blenny",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/19-blenny/static.json'"
+    },
+    {
+      "id": "20-angelfish",
+      "status": "REPAIR_REFUSED",
+      "name": "Angelfish",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/20-angelfish/fit",
+      "sourceMasterSha256": "2457139219d232d2e1c12e9781adde739de9f7a4086071e02df1d62c95ce7a22",
+      "sourceStaticSha256": "f4812688f061a1202a7d084c2340146e959e9d4633c1d8df1183129e10c66a15",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275-fishseams/20-angelfish/fit",
+      "exitCode": 1
+    },
+    {
+      "id": "21-tuna",
+      "status": "REPAIR_REFUSED",
+      "name": "Tuna",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/21-tuna/fit",
+      "sourceMasterSha256": "5f66d386506f0b464f166334904f80857ab304a6f0a9a33cb9fda91bfa9dc5fa",
+      "sourceStaticSha256": "1981b0be2a897db49a656f4fe22fd8d5a3ec9f10b34b97ed109b1bbe4f52f1e1",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275-fishseams/21-tuna/fit",
+      "exitCode": 1
+    },
+    {
+      "id": "22-marlin-framing02",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Marlin",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/22-marlin-framing02/static.json'"
+    },
+    {
+      "id": "23-swordfish-framing02",
+      "status": "REPAIR_REFUSED",
+      "name": "Swordfish",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/23-swordfish-framing02/fit",
+      "sourceMasterSha256": "4f199d6aaae2ccc38c67b2154d82705727a8f3f35c807f7511b971daf5d18417",
+      "sourceStaticSha256": "e65428a354a2ded839895005df66e4bb93c0fb244cdfa2d07ba046f81ec06ce7",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275-fishseams/23-swordfish-framing02/fit",
+      "exitCode": 1
+    },
+    {
+      "id": "24-fangtooth",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Fangtooth",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/24-fangtooth/static.json'"
+    }
+  ],
+  "scope": "Opt-in diagnostic candidates, no visual or library admission"
+}

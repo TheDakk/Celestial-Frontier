@@ -1,0 +1,36 @@
+[
+  {
+    "id": "02-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02",
+    "master": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/master.png",
+    "sourcePacket": "audits/G2_C121_20260927/02-egret",
+    "originalPacket": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret"
+  },
+  {
+    "id": "03-stork",
+    "name": "Stork",
+    "family": "biped-bird",
+    "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/03-stork/candidate-02",
+    "master": "audits/C136_BIRD_INSECT_REFERENCES_20261002/03-stork/candidate-02/master.png",
+    "sourcePacket": "audits/G2_C121_20260927/03-stork",
+    "originalPacket": "audits/C136_BIRD_INSECT_REFERENCES_20261002/03-stork"
+  },
+  {
+    "id": "18-wasp",
+    "name": "Wasp",
+    "family": "insect",
+    "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/18-wasp",
+    "master": "audits/C136_BIRD_INSECT_REFERENCES_20261002/18-wasp/master.png",
+    "sourcePacket": "audits/G2_C121_20260927/18-wasp"
+  },
+  {
+    "id": "24-water-strider",
+    "name": "Water Strider",
+    "family": "insect",
+    "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/24-water-strider",
+    "master": "audits/C136_BIRD_INSECT_REFERENCES_20261002/24-water-strider/master.png",
+    "sourcePacket": "audits/G2_C136_REPAIRS_20261002/24-water-strider"
+  }
+]

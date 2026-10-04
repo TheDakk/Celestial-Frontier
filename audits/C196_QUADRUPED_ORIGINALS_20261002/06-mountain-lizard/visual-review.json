@@ -1,0 +1,28 @@
+{
+  "name": "Mountain Lizard",
+  "masterSha256": "a39bd2ebd76bb4bf243e1c82e14ade06fc93745df8bc827403b8ffc2093c56c1",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Mottled brown rocky-colour lizard with complete tapering tail and four clawed feet. Far hind upper leg is hidden under the belly, and contacts differ in height. Natural bent near limbs are readable; no external ear pinnae. Source needs truthful far-chain authoring assessment.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 119,
+      "y0": 524,
+      "x1": 1086,
+      "y1": 753
+    },
+    "margins": {
+      "left": 119,
+      "right": 167,
+      "top": 524,
+      "bottom": 500
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

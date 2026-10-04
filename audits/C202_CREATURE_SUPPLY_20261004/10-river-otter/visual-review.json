@@ -1,0 +1,28 @@
+{
+  "name": "River Otter",
+  "masterSha256": "cee94186d04bb44308cfb1f96fe3533e3596c440ef9cbe384db4eb3c626c7cbe",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Long brown body, pale muzzle/throat, small rounded ears and long tapering thick tail, four visible clawed feet. Limb emergence still partly hidden by body fur; webbing not independently clear.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 121,
+      "y0": 346,
+      "x1": 1097,
+      "y1": 833
+    },
+    "margins": {
+      "left": 121,
+      "right": 156,
+      "top": 346,
+      "bottom": 420
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

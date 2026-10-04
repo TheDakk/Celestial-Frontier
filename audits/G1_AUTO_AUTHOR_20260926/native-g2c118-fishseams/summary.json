@@ -1,0 +1,146 @@
+{
+  "schema": "cf.fish-seams-batch/v1",
+  "pilot": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/pilots/g2c118-eligible.json",
+  "author": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c118",
+  "rows": [
+    {
+      "id": "01-wombat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wombat"
+    },
+    {
+      "id": "02-tasmanian-devil",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tasmanian Devil"
+    },
+    {
+      "id": "03-quoll",
+      "status": "SKIPPED_NONFISH",
+      "name": "Quoll"
+    },
+    {
+      "id": "04-sea-otter",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sea Otter"
+    },
+    {
+      "id": "05-water-vole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Vole"
+    },
+    {
+      "id": "06-marsh-rodent",
+      "status": "SKIPPED_NONFISH",
+      "name": "Marsh Rodent"
+    },
+    {
+      "id": "07-flying-squirrel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Flying Squirrel"
+    },
+    {
+      "id": "08-sugar-glider",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sugar Glider"
+    },
+    {
+      "id": "09-colugo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Colugo"
+    },
+    {
+      "id": "10-echidna",
+      "status": "SKIPPED_NONFISH",
+      "name": "Echidna"
+    },
+    {
+      "id": "11-koala",
+      "status": "SKIPPED_NONFISH",
+      "name": "Koala"
+    },
+    {
+      "id": "12-platypus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Platypus"
+    },
+    {
+      "id": "13-snake",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snake"
+    },
+    {
+      "id": "14-penguin",
+      "status": "SKIPPED_NONFISH",
+      "name": "Penguin"
+    },
+    {
+      "id": "15-water-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Beetle"
+    },
+    {
+      "id": "16-diving-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Diving Beetle"
+    },
+    {
+      "id": "17-dragonfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dragonfly"
+    },
+    {
+      "id": "18-damselfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Damselfly"
+    },
+    {
+      "id": "19-mayfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mayfly"
+    },
+    {
+      "id": "20-flounder",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Flounder",
+      "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c118/20-flounder/fit",
+      "sourceMasterSha256": "1ae71754933f9827768e86b7295604581fadf34eaee6b0dc8979e2a8b754c439",
+      "sourceStaticSha256": "2e7f0e34663f70ff476bc9505b45bb2f4116210397d2343ba78f3246a06a7939",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118-fishseams/20-flounder/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118-fishseams/20-flounder/native"
+    },
+    {
+      "id": "21-halibut",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Halibut",
+      "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c118/21-halibut/fallback-1/fit",
+      "sourceMasterSha256": "a21de570cd8791c9d24833b257d79f32993bdb1066f1b6c90f2a488a7374daae",
+      "sourceStaticSha256": "251942a864d0628e585fad4f81e40e0e462a3a8b3b81cc4816bffc7dd1a53060",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118-fishseams/21-halibut/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118-fishseams/21-halibut/native"
+    },
+    {
+      "id": "22-loon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Loon"
+    },
+    {
+      "id": "23-rhinoceros",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rhinoceros"
+    },
+    {
+      "id": "24-hummingbird",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hummingbird"
+    }
+  ],
+  "scope": "Opt-in diagnostic candidates, no visual or library admission"
+}

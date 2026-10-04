@@ -1,0 +1,28 @@
+{
+  "name": "Caiman",
+  "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Broad blunt caiman muzzle and heavy scutes, full tapering tail, four visible feet and bent reptile legs. Far limb roots remain partly hidden behind the trunk and feet sit at different vertical levels. Tail and snout approach the 8% border; retain any mechanical framing refusal. No external ear pinnae are present.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 85,
+      "y0": 507,
+      "x1": 1168,
+      "y1": 763
+    },
+    "margins": {
+      "left": 85,
+      "right": 85,
+      "top": 507,
+      "bottom": 490
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

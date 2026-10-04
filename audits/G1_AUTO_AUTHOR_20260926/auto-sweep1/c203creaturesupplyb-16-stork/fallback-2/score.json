@@ -1,0 +1,10 @@
+{
+ "id": "c203creaturesupplyb-16-stork",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

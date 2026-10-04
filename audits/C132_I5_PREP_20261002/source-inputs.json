@@ -1,0 +1,37 @@
+{
+  "schema": "cf.source-inputs/v1",
+  "files": [
+    {
+      "path": "port/v2/apps/game/pwa-build.ts",
+      "sha256": "2a8e5bd96a525c804e1458a66a961ef4e90d61ac0b80067a1341af9cf7410c48"
+    },
+    {
+      "path": "port/v2/apps/game/kit-runtime-assets.ts",
+      "sha256": "c1eb030557fa47e77805b14b2536459b7c24eb0d29aff5fe5f06e0bda00ae929"
+    },
+    {
+      "path": "port/v2/tests/build-mode.test.ts",
+      "sha256": "b18996ce13b5799ec939b081f6a67ea854b79ba86aa26a37d880002e6f196b6f"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/score.mjs",
+      "sha256": "4bbfff604ac939a4dce476d2aa6292d4db35de9e3d72f58e19d5290c69391f3c"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/calibrate.mjs",
+      "sha256": "a636c9b19e93937dcf762ee8c69334488e539894deec1688eaa1d64e0426b63e"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/subject-paths.test.mjs",
+      "sha256": "b588fe1a75c137d95b0ee77c2dd8ae03063a8c0b2ef66e40b7261cf8aedea605"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/README.md",
+      "sha256": "7725c8350122af6dd2648021576aabcd1a6fc6dbfcc1a7c9a2f53c26417b9141"
+    },
+    {
+      "path": "port/v2/README.md",
+      "sha256": "b1e93734195d8d7a525d5f0b1f2a3823a5f1937f050eaef9f9ed6257fcd1e1e0"
+    }
+  ]
+}

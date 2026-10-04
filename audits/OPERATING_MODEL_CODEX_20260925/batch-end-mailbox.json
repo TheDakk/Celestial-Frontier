@@ -1,0 +1,10 @@
+{
+  "head": "aad71ea4a983c3ff2fa3a27620e1873495d79f24",
+  "d1D5D6DecisionCommit": "2a0eacee",
+  "changesSinceStart": "C2 now records D1 yes; C6 and C7 added; D7 is Claude-owned; all acknowledged in local reply",
+  "hashes": {
+    "audits/MAILBOX/TO_CODEX.md": "33beb3641f16ecff59f4ee82b2366f7a59ce38d668e5775224717e2cfdb65a82",
+    "audits/MAILBOX/DECISIONS.md": "9492454db5dfad6597918f5fce5080a48a2aa87333bc2980f40f5b377c62acc0",
+    "audits/OPERATING_MODEL_20260925/COMPLETION_LEDGER.md": "6c50c828190ea16d8733d3d7ab71a46cb11746d7ceed786160b5e60bce38edb8"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "source": "port/v2/apps/game/src/creature-rig-contact.ts",
+  "beforeSha256": "f9f80f04bc2bb34f5541e944ecaf1d5f0fcbbff938c29f818bf006ce139e2e02",
+  "afterSha256": "320a106834b3bba32e727b95ad13abdf13ff7f74723d40841a464d2b62a040be",
+  "importAdded": "import {selectPaintedContactVertex} from '../../../tools/creature-animation/painted-contact-selector.mjs';\n",
+  "replaced": "  let best:WeightedContactSupport|undefined,distance=Infinity;\n  for(const [vertexIndex,v] of part.vertices.entries()){let x=0,y=0;for(let k=0;k<3;k++){const p=skin.vertices[v.triangle[k]!]!,weight=v.barycentric[k]!;x+=p.x*weight/record.geometry.width;y+=p.y*weight/record.geometry.height;}\n   const d=Math.hypot((x-end[0])*record.geometry.width,(y-end[1])*record.geometry.height);if(d<distance){distance=d;best={rest:[x,y],surface:{partId:part.id,vertexIndex},vertices:v.triangle.map((index,k)=>{const vertex=skin.vertices[index]!;return{rest:[vertex.x/record.geometry.width,vertex.y/record.geometry.height] as const,barycentric:v.barycentric[k]!,weights:vertex.weights.map(([j,w])=>[j,w] as const)};})};}}\n  if(!best)throw Error('Contact: empty painted surface '+chain.end);supports[chain.end]=best;",
+  "replacement": "  const best=selectPaintedContactVertex(skin.vertices,part,end,record.geometry.width,record.geometry.height);\n  if(!best)throw Error('Contact: empty painted surface '+chain.end);\n  const v=best.vertex;supports[chain.end]={rest:best.rest,surface:{partId:part.id,vertexIndex:best.vertexIndex},vertices:v.triangle.map((index,k)=>{const vertex=skin.vertices[index]!;return{rest:[vertex.x/record.geometry.width,vertex.y/record.geometry.height] as const,barycentric:v.barycentric[k]!,weights:vertex.weights.map(([j,w])=>[j,w] as const)};})};",
+  "scope": "Exact normal-input runtime selection arithmetic extracted into shared source helper. Support interpolation mapping unchanged."
+}

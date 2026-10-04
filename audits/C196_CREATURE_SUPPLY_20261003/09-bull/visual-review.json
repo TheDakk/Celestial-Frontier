@@ -1,0 +1,28 @@
+{
+  "name": "Bull",
+  "masterSha256": "0c3ceb3c0c0d45c8993dd4867302314aa94bad680261cfc3bc4fa92990652b56",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: a brown male bovid with large shoulder hump, dark neck, pendant dewlap, two upward curved horns, two visible ears, and a continuous long tufted tail. Four distinct distal cloven-hoof legs are visible, with far upper roots emerging from behind the torso and unequal projected support heights; no hidden roots may be invented. The near ear outline/base is exposed; the far ear outline is present but its base lies behind the head. Body type is strongly humped zebu-like rather than a neutral compact bull, so canonical identity/proportion review remains required. The requested complete near-ear contour is improved; this is a source candidate, not anatomical or motion acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 194,
+      "y0": 309,
+      "x1": 1075,
+      "y1": 920
+    },
+    "margins": {
+      "left": 194,
+      "right": 178,
+      "top": 309,
+      "bottom": 333
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

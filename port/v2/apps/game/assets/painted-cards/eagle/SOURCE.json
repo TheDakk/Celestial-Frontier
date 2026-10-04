@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Eagle",
+ "fitDir": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6139b6cd20df799eeda287ad20365cc464803648b451e8dcb7c524f6787e9167"
+}

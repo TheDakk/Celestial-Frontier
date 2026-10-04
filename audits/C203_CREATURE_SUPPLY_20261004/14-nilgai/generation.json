@@ -1,0 +1,14 @@
+{
+  "id": "14-nilgai",
+  "name": "Nilgai",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-eb336008-d5f5-4322-aebc-f3a752e263a9.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9d96931f0af1f87d865181fd0f1a861d5470f66df3f7f6a4429a43c86931e28e",
+  "bytes": 1423879,
+  "promptSha256": "f6a79ce998c98093ca42b2bcc0d71d63c70b74e78359dbe79422fe08d322905e",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

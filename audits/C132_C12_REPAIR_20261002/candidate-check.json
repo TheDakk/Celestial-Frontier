@@ -1,0 +1,2427 @@
+{
+  "schema": "cf.c132-centipede-candidate/v1",
+  "status": "DETERMINISTIC_PASS_NATIVE_PENDING",
+  "scope": "Current captured approach and nearby unsampled poses; Node timing is diagnostic only. Final native and complete library battery remain required.",
+  "change": "Half-step active projection after one topology-sized sweep; original floors, guards, visit budget and source choreography unchanged.",
+  "rows": 56,
+  "captured": 46,
+  "neighbors": 10,
+  "exactBaselineOutputParity": 48,
+  "paintChecks": 1792,
+  "pinChecks": 326151,
+  "controls": [
+    "contradictory all-pinned fold refuses in both owners without output publication",
+    "nonfinite input refuses in both owners",
+    "reflected actual published part fails unchanged paint fold guard",
+    "WASM/JS output + full solver/queue byte parity on every target",
+    "all original hard pins remain exact",
+    "no input target mutation"
+  ],
+  "measurements": [
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4199.7,
+      "localMs": 903.0333333333333,
+      "targetSha256": "51dd0e79bf97b321c9ee4a572cfaa481d88a9336ee1bd134df2c62dbbcf94540",
+      "baseline": {
+        "error": null,
+        "ms": 3.3501249999999914,
+        "visits": 536,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.443453988363059,
+          "rmsTargetErrorPx": 0.3619095023982494,
+          "maximumProjectionPx": 8.255598396818254,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06212075296729898,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 3.4710000000000036,
+        "visits": 536,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.443453988363059,
+          "rmsTargetErrorPx": 0.3619095023982494,
+          "maximumProjectionPx": 8.255598396818254,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06212075296729898,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.0621173765820572,
+        "maxRatio": 2.3517223687195643
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4216.500000000001,
+      "localMs": 919.8333333333344,
+      "targetSha256": "d909d33ae2f73ac129f5b3f9586a3342033d6d79252b88898c6767eeb5b28308",
+      "baseline": {
+        "error": null,
+        "ms": 2.3497500000000002,
+        "visits": 609,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.47674131114693,
+          "rmsTargetErrorPx": 0.3577893971485409,
+          "maximumProjectionPx": 8.309781404278556,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06514945839021913,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 2.3716249999999945,
+        "visits": 609,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.47674131114693,
+          "rmsTargetErrorPx": 0.3577893971485409,
+          "maximumProjectionPx": 8.309781404278556,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06514945839021913,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06514547744230186,
+        "maxRatio": 2.3382753916633816
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4233.099999999999,
+      "localMs": 936.4333333333329,
+      "targetSha256": "1a7ec0638a3e6d83d7077dae043e07b07b07f7eed31235657db131f6e91b98ca",
+      "baseline": {
+        "error": null,
+        "ms": 2.743333000000007,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 3.3770835119351563,
+          "rmsTargetErrorPx": 0.27144353399377513,
+          "maximumProjectionPx": 2.2062044967558703,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999994425,
+          "orientationPasses": 63
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 2.0866670000000056,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 3.3770835119351563,
+          "rmsTargetErrorPx": 0.27144353399377513,
+          "maximumProjectionPx": 2.2062044967558703,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999994425,
+          "orientationPasses": 63
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11998687651894357,
+        "maxRatio": 2.06862732357132
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4249.7,
+      "localMs": 953.0333333333333,
+      "targetSha256": "fbdbec2c2c0c47465f6fbab1a5baedb1953e001bee53ba5cd16b6f21a2b835d0",
+      "baseline": {
+        "error": null,
+        "ms": 0.974250000000012,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 3.010784504974912,
+          "rmsTargetErrorPx": 0.2771873911590634,
+          "maximumProjectionPx": 0.9985476385426776,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999994111,
+          "orientationPasses": 41
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.8410840000000235,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 3.010784504974912,
+          "rmsTargetErrorPx": 0.2771873911590634,
+          "maximumProjectionPx": 0.9985476385426776,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999994111,
+          "orientationPasses": 41
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11997821620421689,
+        "maxRatio": 2.170279771904063
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 8.664186877116094,
+        "rmsPx": 0.13695847799911604
+      },
+      "kind": "captured",
+      "ms": 4266.400000000001,
+      "localMs": 969.733333333334,
+      "targetSha256": "1601b9d39dea80dde34c4fc9c2a93934997a8cfcbdd6285571bf05a7c4d16aa5",
+      "baseline": {
+        "error": null,
+        "ms": 3.6496660000000247,
+        "visits": 9751,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 11.346700936099415,
+          "rmsTargetErrorPx": 0.44340664345643915,
+          "maximumProjectionPx": 11.078686580339685,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06114842927272804,
+          "orientationPasses": 66
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 12.277332999999999,
+        "visits": 45997,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 16.503290726508688,
+          "rmsTargetErrorPx": 0.4825842830775518,
+          "maximumProjectionPx": 15.66112826359186,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.061298624470410665,
+          "orientationPasses": 69
+        }
+      },
+      "unchanged": false,
+      "shape": {
+        "minRatio": 0.061298387499497266,
+        "maxRatio": 3.618200944414607
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4283.099999999999,
+      "localMs": 986.4333333333329,
+      "targetSha256": "48e33d619591c90215d6a1b0daf0db67e0c316814258e38c5a37518d8d1cdc37",
+      "baseline": {
+        "error": null,
+        "ms": 1.587916000000007,
+        "visits": 1774,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 10.166571597132485,
+          "rmsTargetErrorPx": 0.5048425927192605,
+          "maximumProjectionPx": 8.990101298861473,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06155788208429801,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.5940840000000094,
+        "visits": 1774,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 10.166571597132485,
+          "rmsTargetErrorPx": 0.5048425927192605,
+          "maximumProjectionPx": 8.990101298861473,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06155788208429801,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06155785838733209,
+        "maxRatio": 2.575020954052448
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4299.7,
+      "localMs": 1003.0333333333333,
+      "targetSha256": "46addc00b9bfe85223529bfe23b77eaf22db657b6f662147c6c384ad6b4b608a",
+      "baseline": {
+        "error": null,
+        "ms": 1.8035409999999956,
+        "visits": 2352,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 10.051267003293567,
+          "rmsTargetErrorPx": 0.5803525189857123,
+          "maximumProjectionPx": 8.879690477302507,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060628563614397626,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.7130840000000376,
+        "visits": 2352,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 10.051267003293567,
+          "rmsTargetErrorPx": 0.5803525189857123,
+          "maximumProjectionPx": 8.879690477302507,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060628563614397626,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06062603362564232,
+        "maxRatio": 2.724061381975602
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4316.400000000001,
+      "localMs": 1019.733333333334,
+      "targetSha256": "8476dea1b1465cf9e8563eb374001ab94df3280c30d92b2e1eacd234e430f957",
+      "baseline": {
+        "error": null,
+        "ms": 3.2690830000000233,
+        "visits": 7863,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 15.205776140876198,
+          "rmsTargetErrorPx": 0.6277823472500378,
+          "maximumProjectionPx": 13.617954932183105,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06041447227730454,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 3.488666999999964,
+        "visits": 7863,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 15.205776140876198,
+          "rmsTargetErrorPx": 0.6277823472500378,
+          "maximumProjectionPx": 13.617954932183105,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06041447227730454,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06041620681644361,
+        "maxRatio": 3.5279709408427733
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4333.000000000001,
+      "localMs": 1036.3333333333344,
+      "targetSha256": "84a78d032b08a10988b2d9f7112e22870b2a9ce8695233bb60b01fde9f059339",
+      "baseline": {
+        "error": null,
+        "ms": 1.3686670000000163,
+        "visits": 1038,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 17.791334249575637,
+          "rmsTargetErrorPx": 0.656053401792228,
+          "maximumProjectionPx": 15.864731189324141,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.061104780972527965,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.4343749999999886,
+        "visits": 1038,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 17.791334249575637,
+          "rmsTargetErrorPx": 0.656053401792228,
+          "maximumProjectionPx": 15.864731189324141,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.061104780972527965,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06110388008964378,
+        "maxRatio": 3.1351699626385012
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 1.5629530442647248,
+        "rmsPx": 0.029479211735934326
+      },
+      "kind": "captured",
+      "ms": 4349.7,
+      "localMs": 1053.0333333333333,
+      "targetSha256": "c3a82d871f4392d2aec20bad1ed51d2a0325d2120fcfb8af16322ae0b2c27bcb",
+      "baseline": {
+        "error": null,
+        "ms": 5.240415999999982,
+        "visits": 24572,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 19.11532947205279,
+          "rmsTargetErrorPx": 0.7158242444435596,
+          "maximumProjectionPx": 16.83387430011851,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060237230144928156,
+          "orientationPasses": 67
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 2.7660830000000374,
+        "visits": 9375,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 18.900198144873013,
+          "rmsTargetErrorPx": 0.7089398003296964,
+          "maximumProjectionPx": 16.620894510097123,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06054962321070803,
+          "orientationPasses": 66
+        }
+      },
+      "unchanged": false,
+      "shape": {
+        "minRatio": 0.060537407348406874,
+        "maxRatio": 3.736699154043251
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4366.400000000001,
+      "localMs": 1069.733333333334,
+      "targetSha256": "c68241749132885a336cfcda9fc7ef2a08e21c1a8e82c0f594b2ff35b133a786",
+      "baseline": {
+        "error": null,
+        "ms": 1.7462500000000318,
+        "visits": 1579,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 20.841917663650896,
+          "rmsTargetErrorPx": 0.9297407853153322,
+          "maximumProjectionPx": 18.151156648256215,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06120326781698819,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.8830829999999992,
+        "visits": 1579,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 20.841917663650896,
+          "rmsTargetErrorPx": 0.9297407853153322,
+          "maximumProjectionPx": 18.151156648256215,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06120326781698819,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06119945242160838,
+        "maxRatio": 4.393553356946299
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4383.099999999999,
+      "localMs": 1086.433333333333,
+      "targetSha256": "7a1a3ea52f5da3d9ff6bb15b5309ec656e1034a6e1001fd4194d6203b11e749f",
+      "baseline": {
+        "error": null,
+        "ms": 3.2065000000000055,
+        "visits": 1226,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 21.665091637458872,
+          "rmsTargetErrorPx": 0.979834293964175,
+          "maximumProjectionPx": 18.659524411355186,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060394126598457706,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.9902079999999955,
+        "visits": 1226,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 21.665091637458872,
+          "rmsTargetErrorPx": 0.979834293964175,
+          "maximumProjectionPx": 18.659524411355186,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060394126598457706,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.060389732343264765,
+        "maxRatio": 5.373683812997444
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4399.8,
+      "localMs": 1103.1333333333337,
+      "targetSha256": "87e5c1380ec968d14a1bf1fb95bcdbbe24c6c558bd145173cb92af78a035ebd8",
+      "baseline": {
+        "error": null,
+        "ms": 2.6508329999999773,
+        "visits": 4956,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 19.476468464416552,
+          "rmsTargetErrorPx": 0.8635357502728775,
+          "maximumProjectionPx": 17.28927298035594,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060458655418019036,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 3.843208000000004,
+        "visits": 4956,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 19.476468464416552,
+          "rmsTargetErrorPx": 0.8635357502728775,
+          "maximumProjectionPx": 17.28927298035594,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060458655418019036,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06045768180018286,
+        "maxRatio": 4.082901534469104
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4416.400000000001,
+      "localMs": 1119.733333333334,
+      "targetSha256": "a37961d6cd55da55f098d07ce4ad2755cd2d714d1912a1a41195591097854b9e",
+      "baseline": {
+        "error": null,
+        "ms": 0.9495410000000106,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 3.0653582500475145,
+          "rmsTargetErrorPx": 0.24144371119243857,
+          "maximumProjectionPx": 0.5298133790110992,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999992965,
+          "orientationPasses": 31
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.8606670000000349,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 3.0653582500475145,
+          "rmsTargetErrorPx": 0.24144371119243857,
+          "maximumProjectionPx": 0.5298133790110992,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999992965,
+          "orientationPasses": 31
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11998581411499742,
+        "maxRatio": 2.7331802045466276
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4433.000000000001,
+      "localMs": 1136.3333333333344,
+      "targetSha256": "171f7ab47d023508b56b6fef3135ff324a36353c00d55c066903d87551b2abe9",
+      "baseline": {
+        "error": null,
+        "ms": 0.9217500000000314,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 2.8848964612850208,
+          "rmsTargetErrorPx": 0.2498296687475662,
+          "maximumProjectionPx": 1.4947276277627124,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999996155,
+          "orientationPasses": 39
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.8021669999999972,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 2.8848964612850208,
+          "rmsTargetErrorPx": 0.2498296687475662,
+          "maximumProjectionPx": 1.4947276277627124,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999996155,
+          "orientationPasses": 39
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.1199963303684109,
+        "maxRatio": 1.9096010374884202
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4449.7,
+      "localMs": 1153.0333333333333,
+      "targetSha256": "adfee78aabae7f574c8ea2c3558dc2544df1d7faa2c7bdfd20a22d25afc1f2a3",
+      "baseline": {
+        "error": null,
+        "ms": 1.105165999999997,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.785257710255417,
+          "rmsTargetErrorPx": 0.32466056581459196,
+          "maximumProjectionPx": 3.4467853734303504,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999879405295,
+          "orientationPasses": 64
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.9541670000000408,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.785257710255417,
+          "rmsTargetErrorPx": 0.32466056581459196,
+          "maximumProjectionPx": 3.4467853734303504,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999879405295,
+          "orientationPasses": 64
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11998189970115902,
+        "maxRatio": 2.1352535129285792
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4466.400000000001,
+      "localMs": 1169.733333333334,
+      "targetSha256": "67206124c64781bcb9915e060202bb002d94f39649532dbed16434be1b50c6eb",
+      "baseline": {
+        "error": null,
+        "ms": 1.0126670000000217,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.881434718624703,
+          "rmsTargetErrorPx": 0.3595835767222119,
+          "maximumProjectionPx": 3.492498824823249,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999871734851,
+          "orientationPasses": 64
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.9860419999999976,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.881434718624703,
+          "rmsTargetErrorPx": 0.3595835767222119,
+          "maximumProjectionPx": 3.492498824823249,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999871734851,
+          "orientationPasses": 64
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11997926464141528,
+        "maxRatio": 2.3214877887990184
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4483.099999999999,
+      "localMs": 1186.433333333333,
+      "targetSha256": "9444b5bc4a9b0509627ed0bf8eb0e6d5d5fb91dc847ddaa8d78461cdebdc2a1e",
+      "baseline": {
+        "error": null,
+        "ms": 1.0854160000000093,
+        "visits": 1,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 3.272964818282519,
+          "rmsTargetErrorPx": 0.34008252826610313,
+          "maximumProjectionPx": 2.694334539827177,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06806365686958048,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.1037079999999833,
+        "visits": 1,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 3.272964818282519,
+          "rmsTargetErrorPx": 0.34008252826610313,
+          "maximumProjectionPx": 2.694334539827177,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06806365686958048,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06806532528095716,
+        "maxRatio": 2.522668414826434
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 1.651437192823886,
+        "rmsPx": 0.04327766606758995
+      },
+      "kind": "captured",
+      "ms": 4499.7,
+      "localMs": 1203.0333333333333,
+      "targetSha256": "ab9fb883444f0b3146c2007d511a5ebee5f8ed57bd6f0ad4a67502a8d9b74229",
+      "baseline": {
+        "error": null,
+        "ms": 5.8053749999999695,
+        "visits": 14120,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.071568966650194,
+          "rmsTargetErrorPx": 0.47256905388875,
+          "maximumProjectionPx": 8.997128792532694,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06565048567008225,
+          "orientationPasses": 66
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 5.046957999999961,
+        "visits": 14659,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 8.551894999803276,
+          "rmsTargetErrorPx": 0.4674949114767441,
+          "maximumProjectionPx": 8.49897081630844,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060498875492543694,
+          "orientationPasses": 66
+        }
+      },
+      "unchanged": false,
+      "shape": {
+        "minRatio": 0.06051233491323501,
+        "maxRatio": 3.7327952837958436
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4516.400000000001,
+      "localMs": 1219.733333333334,
+      "targetSha256": "9c774007959bc701bed1fac132b6836c2dd50ea4bece10b73f2e6477ff7727f6",
+      "baseline": {
+        "error": null,
+        "ms": 1.1550829999999905,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.771642698098092,
+          "rmsTargetErrorPx": 0.4713360213781156,
+          "maximumProjectionPx": 6.790595550064063,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.053628671312695574,
+          "orientationPasses": 64
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.058499999999981,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.771642698098092,
+          "rmsTargetErrorPx": 0.4713360213781156,
+          "maximumProjectionPx": 6.790595550064063,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.053628671312695574,
+          "orientationPasses": 64
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.05363821921456122,
+        "maxRatio": 2.8217523746012603
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4533.099999999999,
+      "localMs": 1236.433333333333,
+      "targetSha256": "f3b3ae15a6ccedd126a778720f17f143c54a966e3aca84c7c3124f87ac6b3ad4",
+      "baseline": {
+        "error": null,
+        "ms": 1.75404199999997,
+        "visits": 2153,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 14.981648587476153,
+          "rmsTargetErrorPx": 0.645487554791726,
+          "maximumProjectionPx": 13.826416340423627,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.0602652182390726,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.7718750000000227,
+        "visits": 2153,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 14.981648587476153,
+          "rmsTargetErrorPx": 0.645487554791726,
+          "maximumProjectionPx": 13.826416340423627,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.0602652182390726,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06026388747660292,
+        "maxRatio": 2.926245111931536
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4549.7,
+      "localMs": 1253.0333333333333,
+      "targetSha256": "6bcb39dd053586ca60bf67ae46353b3c7017466f1baa7e041445b689c6a5ff14",
+      "baseline": {
+        "error": null,
+        "ms": 1.4814590000000294,
+        "visits": 1011,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 16.272191111587112,
+          "rmsTargetErrorPx": 0.70095939095592,
+          "maximumProjectionPx": 14.857941577178238,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06083926212562291,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.4519169999999804,
+        "visits": 1011,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 16.272191111587112,
+          "rmsTargetErrorPx": 0.70095939095592,
+          "maximumProjectionPx": 14.857941577178238,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06083926212562291,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.060857675154031766,
+        "maxRatio": 3.04871171002565
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4566.400000000001,
+      "localMs": 1269.733333333334,
+      "targetSha256": "395e7cc289abc9169103af132cf0278cb69f7927bbedf789d483fc7e893ca8aa",
+      "baseline": {
+        "error": null,
+        "ms": 1.706542000000013,
+        "visits": 1896,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 19.56186218011373,
+          "rmsTargetErrorPx": 0.6963512763873121,
+          "maximumProjectionPx": 17.859616189613938,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060529456948007626,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.696834000000024,
+        "visits": 1896,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 19.56186218011373,
+          "rmsTargetErrorPx": 0.6963512763873121,
+          "maximumProjectionPx": 17.859616189613938,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060529456948007626,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06052418251428946,
+        "maxRatio": 3.7873888850944697
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4583.000000000001,
+      "localMs": 1286.3333333333344,
+      "targetSha256": "81f301852bc80e2e6c0f02f99887e214e176032680e21eceb72d3fc6c9673400",
+      "baseline": {
+        "error": null,
+        "ms": 1.3340000000000032,
+        "visits": 761,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 17.927503666614573,
+          "rmsTargetErrorPx": 0.7460577287215491,
+          "maximumProjectionPx": 15.853517545909549,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060737717337046256,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.3432500000000118,
+        "visits": 761,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 17.927503666614573,
+          "rmsTargetErrorPx": 0.7460577287215491,
+          "maximumProjectionPx": 15.853517545909549,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060737717337046256,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06071702911023351,
+        "maxRatio": 3.3713971652742103
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4599.7,
+      "localMs": 1303.0333333333333,
+      "targetSha256": "ea37c8b19314acb301a615c60786853266c10080c40517468e70fc59c858d5d7",
+      "baseline": {
+        "error": null,
+        "ms": 1.4725839999999835,
+        "visits": 1400,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 18.904195225127836,
+          "rmsTargetErrorPx": 0.7668656687897913,
+          "maximumProjectionPx": 16.90898820890481,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06377568711466396,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.487874999999974,
+        "visits": 1400,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 18.904195225127836,
+          "rmsTargetErrorPx": 0.7668656687897913,
+          "maximumProjectionPx": 16.90898820890481,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06377568711466396,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.0637738822526154,
+        "maxRatio": 4.013512112784641
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4616.400000000001,
+      "localMs": 1319.733333333334,
+      "targetSha256": "5bda81c63a01655fbb0a302c23162c273b6321fe6ff818068ccd3554906d6014",
+      "baseline": {
+        "error": null,
+        "ms": 1.431083000000001,
+        "visits": 1368,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.827841094647212,
+          "rmsTargetErrorPx": 0.7130799780445178,
+          "maximumProjectionPx": 12.558710016912084,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06024208284929218,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.4704160000000002,
+        "visits": 1368,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.827841094647212,
+          "rmsTargetErrorPx": 0.7130799780445178,
+          "maximumProjectionPx": 12.558710016912084,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06024208284929218,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06024729855575345,
+        "maxRatio": 3.6527585279396035
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4633.000000000001,
+      "localMs": 1336.3333333333344,
+      "targetSha256": "524c9f00b43cdb6d182510ee51e6fa97e92dbd938e6258ad5ca1c8cfd02a3c8b",
+      "baseline": {
+        "error": null,
+        "ms": 1.0188330000000292,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.55701895254251,
+          "rmsTargetErrorPx": 0.3603097647507276,
+          "maximumProjectionPx": 8.339375028983593,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11780190095478639,
+          "orientationPasses": 64
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.9805830000000242,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.55701895254251,
+          "rmsTargetErrorPx": 0.3603097647507276,
+          "maximumProjectionPx": 8.339375028983593,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11780190095478639,
+          "orientationPasses": 64
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11780133282734084,
+        "maxRatio": 2.3914411969201494
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4649.7,
+      "localMs": 1353.0333333333333,
+      "targetSha256": "b2ab450cc0e194891b65e741e70588d8192aec9242e8385bc3d6eb5bef551859",
+      "baseline": {
+        "error": null,
+        "ms": 1.0160000000000196,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.271752122506717,
+          "rmsTargetErrorPx": 0.29200769325069054,
+          "maximumProjectionPx": 3.1514033832358783,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.08074022405735665,
+          "orientationPasses": 64
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.9864170000000172,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.271752122506717,
+          "rmsTargetErrorPx": 0.29200769325069054,
+          "maximumProjectionPx": 3.1514033832358783,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.08074022405735665,
+          "orientationPasses": 64
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.08073869498906845,
+        "maxRatio": 2.169248298531275
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4666.400000000001,
+      "localMs": 1369.733333333334,
+      "targetSha256": "b2e388f5d65e3843fd3cd7a9171b95fba16bffe0aefcceac2d9282d71cba0879",
+      "baseline": {
+        "error": null,
+        "ms": 0.9194999999999709,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 2.954304396507829,
+          "rmsTargetErrorPx": 0.28049737168609545,
+          "maximumProjectionPx": 0.9292400805050482,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999996201,
+          "orientationPasses": 42
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.778665999999987,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 2.954304396507829,
+          "rmsTargetErrorPx": 0.28049737168609545,
+          "maximumProjectionPx": 0.9292400805050482,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999996201,
+          "orientationPasses": 42
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11997797411392241,
+        "maxRatio": 2.1983836840901745
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4683.000000000001,
+      "localMs": 1386.3333333333344,
+      "targetSha256": "2484915549094ac7db76c331c53c61d8b78124ea616876221dee6bc731e081fd",
+      "baseline": {
+        "error": null,
+        "ms": 1.387207999999987,
+        "visits": 1438,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.993843512412663,
+          "rmsTargetErrorPx": 0.3622562794193787,
+          "maximumProjectionPx": 4.2179640785135675,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06093401540142202,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.3825420000000008,
+        "visits": 1438,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.993843512412663,
+          "rmsTargetErrorPx": 0.3622562794193787,
+          "maximumProjectionPx": 4.2179640785135675,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06093401540142202,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06093927738621858,
+        "maxRatio": 2.4168617035582685
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4699.7,
+      "localMs": 1403.0333333333333,
+      "targetSha256": "60ea1e4f1a343fa27fad23e088168ae8e6d5cc74e54ededf1c6f335481575f7e",
+      "baseline": {
+        "error": null,
+        "ms": 1.2747919999999908,
+        "visits": 470,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.9429574594514,
+          "rmsTargetErrorPx": 0.48357128564606744,
+          "maximumProjectionPx": 8.793823294146298,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06247863888996008,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.231457999999975,
+        "visits": 470,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.9429574594514,
+          "rmsTargetErrorPx": 0.48357128564606744,
+          "maximumProjectionPx": 8.793823294146298,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06247863888996008,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06247698681663962,
+        "maxRatio": 2.599387643873385
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4716.400000000001,
+      "localMs": 1419.733333333334,
+      "targetSha256": "2d6c454cb502a98e4b59a39f3e18a57b5773f079783b2cc75a3a662dd16e65d3",
+      "baseline": {
+        "error": null,
+        "ms": 2.1064999999999827,
+        "visits": 3429,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 15.727609942389778,
+          "rmsTargetErrorPx": 0.6491076778169023,
+          "maximumProjectionPx": 14.489610225362998,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06068556759809474,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 2.119874999999979,
+        "visits": 3429,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 15.727609942389778,
+          "rmsTargetErrorPx": 0.6491076778169023,
+          "maximumProjectionPx": 14.489610225362998,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06068556759809474,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06067838591253576,
+        "maxRatio": 2.7474563939815937
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4733.099999999999,
+      "localMs": 1436.433333333333,
+      "targetSha256": "e2a3c15c6b94376f003e54bf3949621ef1e57dba75cd8412591471f187c762af",
+      "baseline": {
+        "error": null,
+        "ms": 1.795000000000016,
+        "visits": 2484,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 14.962775280170533,
+          "rmsTargetErrorPx": 0.6139795335282412,
+          "maximumProjectionPx": 13.411025060600094,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.0630404961865976,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.791582999999946,
+        "visits": 2484,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 14.962775280170533,
+          "rmsTargetErrorPx": 0.6139795335282412,
+          "maximumProjectionPx": 13.411025060600094,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.0630404961865976,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06304146432415876,
+        "maxRatio": 2.5750209149455543
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4749.7,
+      "localMs": 1453.0333333333333,
+      "targetSha256": "dfe16c8e40132922182c55a0e9d21e9891aa9b8f81c1dae90121d0c70f9478a2",
+      "baseline": {
+        "error": null,
+        "ms": 1.364582999999925,
+        "visits": 1073,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 16.989010552176705,
+          "rmsTargetErrorPx": 0.6462583550810029,
+          "maximumProjectionPx": 15.107826956900626,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06219727927608803,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.3647090000000617,
+        "visits": 1073,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 16.989010552176705,
+          "rmsTargetErrorPx": 0.6462583550810029,
+          "maximumProjectionPx": 15.107826956900626,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06219727927608803,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06219748090848043,
+        "maxRatio": 3.606437397706309
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4766.400000000001,
+      "localMs": 1469.733333333334,
+      "targetSha256": "7ca0f0fc569e08156ce9e43305b55fac713ded1d2680dc4826811f7feaf6d287",
+      "baseline": {
+        "error": null,
+        "ms": 1.3690000000000282,
+        "visits": 1043,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 19.02956303296317,
+          "rmsTargetErrorPx": 0.6945429531621277,
+          "maximumProjectionPx": 16.805269285458895,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060040222149780505,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.3804580000000897,
+        "visits": 1043,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 19.02956303296317,
+          "rmsTargetErrorPx": 0.6945429531621277,
+          "maximumProjectionPx": 16.805269285458895,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060040222149780505,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.060039148203221655,
+        "maxRatio": 3.570542247687598
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4783.099999999999,
+      "localMs": 1486.433333333333,
+      "targetSha256": "8c6ac30e752c15a5e321b1947b61aaf12a87ca2314d5f2bc77bbdee9709db315",
+      "baseline": {
+        "error": null,
+        "ms": 1.32325000000003,
+        "visits": 718,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 20.92289851421254,
+          "rmsTargetErrorPx": 0.817353331174805,
+          "maximumProjectionPx": 18.28756088497092,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06208826710421458,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.3566670000000158,
+        "visits": 718,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 20.92289851421254,
+          "rmsTargetErrorPx": 0.817353331174805,
+          "maximumProjectionPx": 18.28756088497092,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06208826710421458,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06208530613585452,
+        "maxRatio": 4.325834887689339
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4799.7,
+      "localMs": 1503.0333333333333,
+      "targetSha256": "bcabd3c855a5f1decf7ae5746b13740816b46ea32c07e47dd6fb156faf337c58",
+      "baseline": {
+        "error": null,
+        "ms": 1.728166999999985,
+        "visits": 1780,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 21.542279915723878,
+          "rmsTargetErrorPx": 0.9819024821792287,
+          "maximumProjectionPx": 18.577477802229232,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06231896565677044,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.7234169999999267,
+        "visits": 1780,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 21.542279915723878,
+          "rmsTargetErrorPx": 0.9819024821792287,
+          "maximumProjectionPx": 18.577477802229232,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06231896565677044,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.062323977631193656,
+        "maxRatio": 5.0822007308010875
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4816.400000000001,
+      "localMs": 1519.733333333334,
+      "targetSha256": "79095d64b714cec81f54ae4b3b3ba49eb45755b8097f2935a091cefe045016c0",
+      "baseline": {
+        "error": null,
+        "ms": 1.6039160000000265,
+        "visits": 1489,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 20.269491478647364,
+          "rmsTargetErrorPx": 0.8824656419874247,
+          "maximumProjectionPx": 17.42749981817352,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06034089709058264,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.5559169999999085,
+        "visits": 1489,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 20.269491478647364,
+          "rmsTargetErrorPx": 0.8824656419874247,
+          "maximumProjectionPx": 17.42749981817352,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06034089709058264,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06034372922816829,
+        "maxRatio": 4.338965556205618
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4833.099999999999,
+      "localMs": 1536.433333333333,
+      "targetSha256": "71c4b31b87be694095122367084e575836d0a16ebddecc10ff31f3477f3b7db0",
+      "baseline": {
+        "error": null,
+        "ms": 0.8250830000000633,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 3.055450790412911,
+          "rmsTargetErrorPx": 0.2512586189546749,
+          "maximumProjectionPx": 0.8162818931847666,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999993931,
+          "orientationPasses": 33
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.8000409999999647,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 3.055450790412911,
+          "rmsTargetErrorPx": 0.2512586189546749,
+          "maximumProjectionPx": 0.8162818931847666,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999993931,
+          "orientationPasses": 33
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11997887450359457,
+        "maxRatio": 2.9567408464313587
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4849.7,
+      "localMs": 1553.0333333333333,
+      "targetSha256": "094a1c467717669f8f48a133f1c8bc9af79300f91f461ef326ec472999178870",
+      "baseline": {
+        "error": null,
+        "ms": 0.791417000000024,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 2.8478456744486573,
+          "rmsTargetErrorPx": 0.2393771362877091,
+          "maximumProjectionPx": 1.155548824603647,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999998133,
+          "orientationPasses": 25
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.761792000000014,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 2.8478456744486573,
+          "rmsTargetErrorPx": 0.2393771362877091,
+          "maximumProjectionPx": 1.155548824603647,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999998133,
+          "orientationPasses": 25
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11998815367560325,
+        "maxRatio": 1.8499250707613157
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4866.400000000001,
+      "localMs": 1569.733333333334,
+      "targetSha256": "eed3f3b89a4f89ce9365a149ea4959130bc6ff6a3d9a2af38d13eb5d279a98f2",
+      "baseline": {
+        "error": null,
+        "ms": 0.9512079999999514,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.621535271487057,
+          "rmsTargetErrorPx": 0.29987873949706967,
+          "maximumProjectionPx": 3.409535254169991,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999968101939,
+          "orientationPasses": 64
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.9272500000000719,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.621535271487057,
+          "rmsTargetErrorPx": 0.29987873949706967,
+          "maximumProjectionPx": 3.409535254169991,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999968101939,
+          "orientationPasses": 64
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11998928442350178,
+        "maxRatio": 2.0991970610517416
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4883.099999999999,
+      "localMs": 1586.433333333333,
+      "targetSha256": "4a45dcc9f255b188016c78f2b8eb56eafebe55e4e1636e04b1011e2af89df6ca",
+      "baseline": {
+        "error": null,
+        "ms": 0.9715419999999995,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.9398007988068455,
+          "rmsTargetErrorPx": 0.351811134109202,
+          "maximumProjectionPx": 3.5282562016627366,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999818814974,
+          "orientationPasses": 64
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.9511669999999413,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.9398007988068455,
+          "rmsTargetErrorPx": 0.351811134109202,
+          "maximumProjectionPx": 3.5282562016627366,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999818814974,
+          "orientationPasses": 64
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.1199850561861524,
+        "maxRatio": 2.245995897022496
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4899.7,
+      "localMs": 1603.0333333333333,
+      "targetSha256": "1dbbd2f6148de669cd66a192d7d671b3caff71eb06092e4de3142b1cb5f32a9c",
+      "baseline": {
+        "error": null,
+        "ms": 0.9824170000000549,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.002815983874376,
+          "rmsTargetErrorPx": 0.33345385738791206,
+          "maximumProjectionPx": 2.9415953344922605,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11978654550708484,
+          "orientationPasses": 64
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 0.9548340000000053,
+        "visits": 0,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 4.002815983874376,
+          "rmsTargetErrorPx": 0.33345385738791206,
+          "maximumProjectionPx": 2.9415953344922605,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11978654550708484,
+          "orientationPasses": 64
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.11977485328037005,
+        "maxRatio": 2.446236271348539
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4916.400000000001,
+      "localMs": 1619.733333333334,
+      "targetSha256": "753b4f1f5e0f7111f35170ddf6c0ae1aca978f3427866a759f802ee459372a34",
+      "baseline": {
+        "error": null,
+        "ms": 1.6307910000000447,
+        "visits": 2110,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.288901179097408,
+          "rmsTargetErrorPx": 0.4246263555734831,
+          "maximumProjectionPx": 9.177713852355286,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06172724884563223,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.63312499999995,
+        "visits": 2110,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.288901179097408,
+          "rmsTargetErrorPx": 0.4246263555734831,
+          "maximumProjectionPx": 9.177713852355286,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06172724884563223,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06172386782159151,
+        "maxRatio": 2.6124679221514953
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "captured",
+      "ms": 4933.099999999999,
+      "localMs": 1636.433333333333,
+      "targetSha256": "cac53f8663ae3bf76f1757f71d482a49406b1c4d865d1e60b902bd8af796beb3",
+      "baseline": {
+        "error": null,
+        "ms": 1.1852499999999964,
+        "visits": 326,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.866832510484143,
+          "rmsTargetErrorPx": 0.45276220008654733,
+          "maximumProjectionPx": 6.952849874381704,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06078833322371954,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.1847920000000158,
+        "visits": 326,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.866832510484143,
+          "rmsTargetErrorPx": 0.45276220008654733,
+          "maximumProjectionPx": 6.952849874381704,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06078833322371954,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06078359418311379,
+        "maxRatio": 2.7463352272720414
+      }
+    },
+    {
+      "deformationDelta": null,
+      "kind": "captured",
+      "ms": 4949.7,
+      "localMs": 1653.0333333333333,
+      "targetSha256": "325d57820f8ac96aa8a8b70f4dee3a1e1ccbce5ae81a82a3d869fd1d3407098f",
+      "baseline": {
+        "error": "ARAP skin: unresolved folded triangles: 1",
+        "ms": 113.75441599999999,
+        "visits": 598592,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.568229850815678,
+          "rmsTargetErrorPx": 0.5761304382634271,
+          "maximumProjectionPx": 12.439204532092381,
+          "flippedTriangles": 1,
+          "minimumAreaRatio": -0.0004970841538493014,
+          "orientationPasses": 128
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 3.292167000000063,
+        "visits": 9897,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 8.089236158231193,
+          "rmsTargetErrorPx": 0.5510307473450773,
+          "maximumProjectionPx": 6.993710939649119,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060454167134894356,
+          "orientationPasses": 66
+        }
+      },
+      "unchanged": false,
+      "shape": {
+        "minRatio": 0.060453809547300355,
+        "maxRatio": 2.8501552645765855
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "neighbor",
+      "ms": 4941.7,
+      "localMs": 1645.0333333333333,
+      "targetSha256": "f461af55047eb35b5c2ed289abcc46f219a2f37834da1c3ce981d7a68fe4eb7d",
+      "baseline": {
+        "error": null,
+        "ms": 2.184415999999942,
+        "visits": 2,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.815058715067648,
+          "rmsTargetErrorPx": 0.49679018642391864,
+          "maximumProjectionPx": 6.805568117425921,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.0621655821098491,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.1143749999999955,
+        "visits": 2,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.815058715067648,
+          "rmsTargetErrorPx": 0.49679018642391864,
+          "maximumProjectionPx": 6.805568117425921,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.0621655821098491,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.062172558420312496,
+        "maxRatio": 2.803589473906513
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "neighbor",
+      "ms": 4945.7,
+      "localMs": 1649.0333333333333,
+      "targetSha256": "24fc9b64f9abe20b10a274279243a5fc79a021fda3291b87bbb5597cf25c8c03",
+      "baseline": {
+        "error": null,
+        "ms": 1.3331249999999955,
+        "visits": 98,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.885288421534287,
+          "rmsTargetErrorPx": 0.5212325029729687,
+          "maximumProjectionPx": 6.832577453640454,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06135640794753124,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.1686670000000277,
+        "visits": 98,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.885288421534287,
+          "rmsTargetErrorPx": 0.5212325029729687,
+          "maximumProjectionPx": 6.832577453640454,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06135640794753124,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06135024234670254,
+        "maxRatio": 2.827657185938236
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "neighbor",
+      "ms": 4947.7,
+      "localMs": 1651.0333333333333,
+      "targetSha256": "6babc2c3801bcd5d18cabb695a1e09e4670c12e92044225721948ba32248538d",
+      "baseline": {
+        "error": null,
+        "ms": 1.6599999999999682,
+        "visits": 1614,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 8.06481569647713,
+          "rmsTargetErrorPx": 0.5397699022607525,
+          "maximumProjectionPx": 6.989322862069257,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06002690898615991,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.4830840000000762,
+        "visits": 1614,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 8.06481569647713,
+          "rmsTargetErrorPx": 0.5397699022607525,
+          "maximumProjectionPx": 6.989322862069257,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06002690898615991,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06003429135048918,
+        "maxRatio": 2.8390930863756694
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 1.6816790024760921,
+        "rmsPx": 0.03723015661549509
+      },
+      "kind": "neighbor",
+      "ms": 4948.7,
+      "localMs": 1652.0333333333333,
+      "targetSha256": "7870f41ae9a94a0ed22ae4a30d711aeda55a98714df85b3bbb9a27af6fe9ba14",
+      "baseline": {
+        "error": null,
+        "ms": 8.810457999999926,
+        "visits": 40362,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.566622295720823,
+          "rmsTargetErrorPx": 0.5537134904902667,
+          "maximumProjectionPx": 8.483913357917432,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060206944961900745,
+          "orientationPasses": 69
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 3.048541,
+        "visits": 10753,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.888090339093503,
+          "rmsTargetErrorPx": 0.5463633754729599,
+          "maximumProjectionPx": 6.802291664636923,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.0600175141669898,
+          "orientationPasses": 66
+        }
+      },
+      "unchanged": false,
+      "shape": {
+        "minRatio": 0.06001753974496182,
+        "maxRatio": 2.844698919923431
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 5.793337563736478,
+        "rmsPx": 0.10467357403830019
+      },
+      "kind": "neighbor",
+      "ms": 4949.45,
+      "localMs": 1652.7833333333333,
+      "targetSha256": "f448f8993ff17d24e5aaaaf519e00d8f93e01d2da1592cb3bfd9e4564322f321",
+      "baseline": {
+        "error": null,
+        "ms": 114.90320800000006,
+        "visits": 598592,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 14.001791516825024,
+          "rmsTargetErrorPx": 0.5785307106038536,
+          "maximumProjectionPx": 12.869565945557905,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.03237586374103934,
+          "orientationPasses": 128
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 3.1107090000000426,
+        "visits": 9402,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 8.283525370520564,
+          "rmsTargetErrorPx": 0.5513818630810018,
+          "maximumProjectionPx": 7.189597546832971,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06135686381010309,
+          "orientationPasses": 66
+        }
+      },
+      "unchanged": false,
+      "shape": {
+        "minRatio": 0.06135621296376826,
+        "maxRatio": 2.8488098645251227
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 6.588056534333516,
+        "rmsPx": 0.17185977865551533
+      },
+      "kind": "neighbor",
+      "ms": 4949.95,
+      "localMs": 1653.2833333333333,
+      "targetSha256": "c6b354f949ad9e9054d92bc77b39d2953c53f7b2ebcf19eba5abf6a29202476f",
+      "baseline": {
+        "error": null,
+        "ms": 101.86229200000002,
+        "visits": 567112,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.24927600026186,
+          "rmsTargetErrorPx": 0.596118482069054,
+          "maximumProjectionPx": 12.15237825203694,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06028982590207857,
+          "orientationPasses": 125
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 3.225958999999989,
+        "visits": 10776,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.911706729316668,
+          "rmsTargetErrorPx": 0.5510035824381907,
+          "maximumProjectionPx": 6.81048309027302,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06003189394946421,
+          "orientationPasses": 66
+        }
+      },
+      "unchanged": false,
+      "shape": {
+        "minRatio": 0.06003429135048918,
+        "maxRatio": 2.8515006646280483
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 6.524154900424382,
+        "rmsPx": 0.15837969690604697
+      },
+      "kind": "neighbor",
+      "ms": 4950.7,
+      "localMs": 1654.0333333333333,
+      "targetSha256": "5febeb752ac6208ff90d21bbc6e39178625fad1b50ea1381df15ee2860c2e2e7",
+      "baseline": {
+        "error": null,
+        "ms": 8.050500000000056,
+        "visits": 35685,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.111031226971184,
+          "rmsTargetErrorPx": 0.5953432030198588,
+          "maximumProjectionPx": 12.021711880254559,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.062343945494540816,
+          "orientationPasses": 68
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 8.63854200000003,
+        "visits": 38398,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 9.126346171587876,
+          "rmsTargetErrorPx": 0.5623785696791196,
+          "maximumProjectionPx": 8.013378238899023,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06009464930612979,
+          "orientationPasses": 69
+        }
+      },
+      "unchanged": false,
+      "shape": {
+        "minRatio": 0.06009750149882393,
+        "maxRatio": 2.8555368647824366
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "neighbor",
+      "ms": 4951.7,
+      "localMs": 1655.0333333333333,
+      "targetSha256": "7b528c014cfe19b50c3b847fbcca625c592d03e2460270c209aefed74b672252",
+      "baseline": {
+        "error": null,
+        "ms": 2.3067499999999654,
+        "visits": 4575,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.021640488278365,
+          "rmsTargetErrorPx": 0.5973939629358392,
+          "maximumProjectionPx": 11.92176101949256,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06580003985116357,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 2.292541999999912,
+        "visits": 4575,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.021640488278365,
+          "rmsTargetErrorPx": 0.5973939629358392,
+          "maximumProjectionPx": 11.92176101949256,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06580003985116357,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.0657964313535075,
+        "maxRatio": 2.8607689760936807
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "neighbor",
+      "ms": 4953.7,
+      "localMs": 1657.0333333333333,
+      "targetSha256": "fd7c7ee85705f3069bb8465bf5c533bd9330645329d7364e345b6fb187e74512",
+      "baseline": {
+        "error": null,
+        "ms": 1.8345829999998386,
+        "visits": 2234,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.353960182880963,
+          "rmsTargetErrorPx": 0.626164064150426,
+          "maximumProjectionPx": 12.217840440720995,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060129783968231376,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.7031660000000102,
+        "visits": 2234,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.353960182880963,
+          "rmsTargetErrorPx": 0.626164064150426,
+          "maximumProjectionPx": 12.217840440720995,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060129783968231376,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06013091576962893,
+        "maxRatio": 2.8710479437739025
+      }
+    },
+    {
+      "deformationDelta": {
+        "maximumPx": 0,
+        "rmsPx": 0
+      },
+      "kind": "neighbor",
+      "ms": 4957.7,
+      "localMs": 1661.0333333333333,
+      "targetSha256": "3645a159ae6f996fa3f688ad132b22cf6c4542d344671517f01093ca449fb68d",
+      "baseline": {
+        "error": null,
+        "ms": 1.6891660000001139,
+        "visits": 1743,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.435007132990249,
+          "rmsTargetErrorPx": 0.6392101913089437,
+          "maximumProjectionPx": 12.251934562516825,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06020031015116558,
+          "orientationPasses": 65
+        }
+      },
+      "candidate": {
+        "error": null,
+        "ms": 1.5579579999998714,
+        "visits": 1743,
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 13.435007132990249,
+          "rmsTargetErrorPx": 0.6392101913089437,
+          "maximumProjectionPx": 12.251934562516825,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06020031015116558,
+          "orientationPasses": 65
+        }
+      },
+      "unchanged": true,
+      "shape": {
+        "minRatio": 0.06020212227212426,
+        "maxRatio": 2.9048557751839326
+      }
+    }
+  ]
+}

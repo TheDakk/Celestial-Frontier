@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 2,
+  "promptFile": "prompt.txt",
+  "promptSha256": "c12444c6b89b4f2eb51ae4082d17b96b37810c8506304cbb74b59d976635d883",
+  "references": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "referenceRole": "Approved atlas style only; fresh corrected repaint",
+  "originalPacket": "../../ARCHETYPE_SPRINT_20260922/09-arachnid",
+  "originalPromptSha256": "271536bfffc84cc8e5d20fb7702f39c21b85198558d16f308befbae626406175",
+  "originalMasterSha256": "4b4655ddeec05f395fa5a282180cdbdec5829a06cb44c98beb5eacccac260a8e",
+  "reason": "Original seven traceable walking legs and explicit hiddenleg3Far refuse existing intake. One permitted correction; no third paint."
+}

@@ -1,0 +1,61 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "world": {
+    "key": "temperate",
+    "liquid": "none",
+    "surfaceWater": false,
+    "cardHash": "c204-short-tail-reference"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Reindeer",
+      "dn": "Reindeer",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 40,
+      "hpB": 31
+    },
+    {
+      "side": "B",
+      "an": "Reindeer",
+      "dn": "Reindeer",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 34,
+      "hpB": 31
+    },
+    {
+      "side": "A",
+      "an": "Reindeer",
+      "dn": "Reindeer",
+      "dodge": true,
+      "hpA": 34,
+      "hpB": 31
+    },
+    {
+      "side": "B",
+      "an": "Reindeer",
+      "dn": "Reindeer",
+      "dmg": 8,
+      "crit": false,
+      "hpA": 26,
+      "hpB": 31
+    },
+    {
+      "side": "A",
+      "an": "Reindeer",
+      "dn": "Reindeer",
+      "dmg": 31,
+      "crit": true,
+      "hpA": 26,
+      "hpB": 0
+    }
+  ],
+  "supports": "observed"
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Wildebeest",
+  "masterSha256": "dac2c58325e8872ee177848a872e6183ddba7ee27cd72ab844b9d1244acffbdc",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: downward-sloping shoulders, beard, mane, stripes, four hooves and complete tail. Horn beams sweep outward then upward, improving the earlier upright-horn defect, but far ear remains unresolved and horn bases still look thick. Head is turned slightly toward the viewer; not strict side-only geometry. Long mane/beard fringe needs component ownership review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 326,
+      "y0": 379,
+      "x1": 938,
+      "y1": 864
+    },
+    "margins": {
+      "left": 326,
+      "right": 315,
+      "top": 379,
+      "bottom": 389
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "authored:accepted-fish-family-master",
+    "seed": 424242,
+    "ownerId": "authored:fish-family/accepted-master",
+    "earthName": null
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "geometry": {
+    "cutoutAssetHash": "1997f036417384af559f5127b9eb98d4871a9cae5cec57cffa645b857a3adc22",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.695,
+      0.55
+    ],
+    "head": [
+      0.83,
+      0.48
+    ],
+    "jaw": [
+      0.92,
+      0.545
+    ],
+    "spine0": [
+      0.72,
+      0.48
+    ],
+    "spine1": [
+      0.61,
+      0.46
+    ],
+    "spine2": [
+      0.51,
+      0.46
+    ],
+    "spine3": [
+      0.41,
+      0.46
+    ],
+    "spine4": [
+      0.31,
+      0.46
+    ],
+    "spine5": [
+      0.21,
+      0.46
+    ],
+    "caudal": [
+      0.065,
+      0.46
+    ],
+    "dorsal": [
+      0.5,
+      0.245
+    ],
+    "pectoralNear": [
+      0.555,
+      0.62
+    ],
+    "pectoralFar": [
+      0.8,
+      0.68
+    ]
+  },
+  "materials": {
+    "surface": "scales",
+    "sheenTier": "painted",
+    "paletteSource": "accepted authored master"
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-fish.png",
+  "coverage": {
+    "scope": "painted fish family reference, not a named Earth species",
+    "retainedBodyAttached": [
+      "pelvic fins",
+      "anal fin",
+      "adipose fin"
+    ],
+    "unproven": [
+      "independent accessory fin articulation",
+      "out-of-plane swimming",
+      "battle staging"
+    ]
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.15206906325745553,
+      "jaw": 0.11101801655587268,
+      "spine0": 0.0743303437365926,
+      "spine1": 0.11180339887498947,
+      "spine2": 0.09999999999999998,
+      "spine3": 0.10000000000000003,
+      "spine4": 0.09999999999999998,
+      "spine5": 0.1,
+      "caudal": 0.145,
+      "dorsal": 0.24150569351466647,
+      "pectoralFar": 0.1671077496706841,
+      "pectoralNear": 0.15652475842498517
+    },
+    "measures": {
+      "body": 0.5103920062069938,
+      "bone-min": 0.0743303437365926,
+      "bone-max": 0.24150569351466647,
+      "caudal/body": 0.28409535854132095,
+      "head/body": 0.29794562102875616
+    }
+  },
+  "recipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02"
+}

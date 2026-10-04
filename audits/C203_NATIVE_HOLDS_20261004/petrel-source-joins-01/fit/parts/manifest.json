@@ -1,0 +1,95 @@
+{
+  "creatureId": "c203-petrel-whole-contour-islands",
+  "parts": [
+    {
+      "name": "near-foot.png",
+      "path": "parts/near-foot.png",
+      "sha256": "e171467398c0303631f56cf467cdb55aff018b9f354a8ece9523311cc22d17f4"
+    },
+    {
+      "name": "far-foot.png",
+      "path": "parts/far-foot.png",
+      "sha256": "88bef31da51c3bfac4489ddb7e5175eed756523c395c9afb501fd3d8fd821f89"
+    },
+    {
+      "name": "near-shin.png",
+      "path": "parts/near-shin.png",
+      "sha256": "8b207815ef06ea3b0c1b285f4076512583e3c3d2668628ddb2b8bcd767c3ebd0"
+    },
+    {
+      "name": "far-shin.png",
+      "path": "parts/far-shin.png",
+      "sha256": "f3f15b6f9c646b29e48bddc8591c5aa802cb42a933d9e2d91aadcca8dc8215f0"
+    },
+    {
+      "name": "near-thigh.png",
+      "path": "parts/near-thigh.png",
+      "sha256": "34fd3722cff5eb5da3362863545460ce046405639cdbeafb80e840b553f97d14"
+    },
+    {
+      "name": "far-thigh.png",
+      "path": "parts/far-thigh.png",
+      "sha256": "eb1241438ea32ed47a49c93b1091ee67b3a1d4ad7158d5ef35a57b4138f6d1d3"
+    },
+    {
+      "name": "near-wing-root.png",
+      "path": "parts/near-wing-root.png",
+      "sha256": "8a9fc1e193c90af2a655b05c620a18b02538e4d75814614c86c35d18d554c60b"
+    },
+    {
+      "name": "near-wing-flight.png",
+      "path": "parts/near-wing-flight.png",
+      "sha256": "0c3c78b3948046da02fe4e30f7242d7fad73a7768dd7c259a8682b9b7d4b290b"
+    },
+    {
+      "name": "far-wing-tip.png",
+      "path": "parts/far-wing-tip.png",
+      "sha256": "ef13d7ecc54e95d9875eb30f3ff67040f335b82eadc31ca7f63423ac5740740c"
+    },
+    {
+      "name": "far-wing-root.png",
+      "path": "parts/far-wing-root.png",
+      "sha256": "e170ae27186811c3b5b37a047142e9212db4089f37f2f9713ad3012f09f6efcb"
+    },
+    {
+      "name": "tail.png",
+      "path": "parts/tail.png",
+      "sha256": "871610767fd73935b8fd70d355814130157df38e9e9100d49f7ae4ee427569cb"
+    },
+    {
+      "name": "beak.png",
+      "path": "parts/beak.png",
+      "sha256": "eac41067ba4e02d256350d75842a76cf84a3a3123f56b529fcae5ce37e89a621"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "2700e3b2a700fe151eeef8a4ba382393054860d87559b6b12c6054d9d8a2358f"
+    },
+    {
+      "name": "upper-neck.png",
+      "path": "parts/upper-neck.png",
+      "sha256": "c08f8727c2a6c7bec1312e21d312d67888882f5dc07997bccdc8f536fe09ac8b"
+    },
+    {
+      "name": "lower-neck.png",
+      "path": "parts/lower-neck.png",
+      "sha256": "59267a1620e90b200b66ce1e364b476c815ce0815c57dd90c93e4c645eeb8899"
+    },
+    {
+      "name": "chest.png",
+      "path": "parts/chest.png",
+      "sha256": "88a116baf9faf863d53bec1eaa8566894a1ed33b38382c03f9d85f5b0543b909"
+    },
+    {
+      "name": "pelvis.png",
+      "path": "parts/pelvis.png",
+      "sha256": "7b0ca010f17adfd36d10232ba5894e1a6436b1aa026805733d80176a1ef4abf3"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "cd52bc5a3a2a1334e72fb6d779f1bf6532dc27a41c3e0006ae7336ce741ad11f"
+    }
+  ]
+}

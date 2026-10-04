@@ -1,0 +1,66 @@
+{
+  "name": "Horned Lizard",
+  "family": "quadruped",
+  "species": {
+    "name": "Horned Lizard",
+    "aspect": 1.6,
+    "headFrac": 0.3,
+    "eyes": "normal",
+    "posture": "sprawling",
+    "mustRead": [
+      "crown of backward-pointing horns on the rear of the skull",
+      "flat wide pancake-round body",
+      "fringe of pointed scales along the flanks"
+    ],
+    "note": "Body is a squat disc with a very short tail, not a normal long-tailed lizard shape."
+  },
+  "genome": {
+    "seed": 3589418879,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 15,
+    "body": 7,
+    "loco": 11,
+    "trait": 12,
+    "size": 1,
+    "diet": 3,
+    "head": 1,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 4,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 7,
+    "habitat": 4,
+    "detail": 3,
+    "accent": 16,
+    "temper": 5,
+    "sense": 1,
+    "repro": 1,
+    "life": 0,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Horned Lizard"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Horned Lizard\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3589418879\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "index": 223,
+  "profile": {
+    "id": "special-lizard",
+    "names": [
+      "Chameleon",
+      "Horned Lizard"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Do not invent a rigid striking horn or tail weapon from the name."
+  }
+}

@@ -1,0 +1,12 @@
+import fs from'node:fs';import os from'node:os';import assert from'node:assert/strict';import{createHash}from'node:crypto';
+/** Retains explicit source-specific authoring. Does not infer coordinates, labels,
+ * hidden anatomy, biological absence, acceptance, or a successful fit. */
+export function writeObservedPacket({id,source,masterSha256,writer,author,presence,observations}){
+ const base='audits/C183_REFERENCE_SUCCESSORS_20261002',packet=base+'/'+id,read=p=>fs.readFileSync(p),sha=p=>createHash('sha256').update(read(p)).digest('hex'),write=(p,v)=>fs.writeFileSync(p,JSON.stringify(v,null,2)+'\n',{flag:'wx'});
+ assert(/^[a-z0-9-]+$/.test(id));assert(source.startsWith('audits/'));assert(!fs.existsSync(packet));assert.equal(sha(source+'/master.png'),masterSha256,'exact observed source');assert(observations.fullSizeInspected===true);assert.equal(author.coverage.qualityAccepted,false);assert.equal(presence.schema,'cf.anatomy-presence/v2');
+ const files=['generation.json','request.json','prompt.txt','correction.json'].filter(f=>fs.existsSync(source+'/'+f));for(const f of files)assert(!read(source+'/'+f).includes(Buffer.from(os.homedir())),'private home path in source evidence');
+ fs.mkdirSync(packet);for(const f of['master.png','subject-source.json'])fs.copyFileSync(source+'/'+f,packet+'/'+f,fs.constants.COPYFILE_EXCL);fs.mkdirSync(packet+'/source-evidence');for(const f of files)fs.copyFileSync(source+'/'+f,packet+'/source-evidence/'+f,fs.constants.COPYFILE_EXCL);
+ write(packet+'/authoring.json',author);write(packet+'/presence.json',presence);write(packet+'/observation.json',{schema:'cf.c173-reference-observation/v1',source,masterSha256,imageSize:[1254,1254],sourceBytesUnchanged:true,sourceCoordinatesTransferred:false,sourceLabelsTransferred:false,...observations,qualityAccepted:false});
+ write(packet+'/authoring-receipt.json',{schema:'cf.c173-source-authoring/v1',writer,writerSha256:sha(writer),retentionHelperSha256:sha(import.meta.filename),source,masterSha256,authoringSha256:sha(packet+'/authoring.json'),presenceSha256:sha(packet+'/presence.json'),subjectSourceSha256:sha(packet+'/subject-source.json'),sourceEvidence:files.map(f=>({path:packet+'/source-evidence/'+f,sha256:sha(packet+'/source-evidence/'+f)})),sourceBytesUnchanged:sha(packet+'/master.png')===sha(source+'/master.png'),sourceLabelsReused:false,sourceLandmarksReused:false,nativeRuns:0,qualityAccepted:false});
+ return packet;
+}

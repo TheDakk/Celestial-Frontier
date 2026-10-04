@@ -1,0 +1,110 @@
+[
+  {
+    "id": "17-arapaima-framing02",
+    "name": "Arapaima",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/17-arapaima-framing02",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/17-arapaima-framing02/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+          "id": "15-arapaima",
+          "master": "audits/C198_CREATURE_SUPPLY_C_20261003/15-arapaima/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/15-arapaima"
+        },
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "07-arapaima",
+          "master": "audits/G2_C76_20260927/07-arapaima/master.png",
+          "packet": "audits/G2_C76_20260927/07-arapaima"
+        }
+      ]
+    },
+    "supersedes": "17-arapaima",
+    "selectedFor": "framing-only successor pending unchanged check"
+  },
+  {
+    "id": "18-arowana-framing02",
+    "name": "Arowana",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/18-arowana-framing02",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/18-arowana-framing02/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+          "id": "16-arowana",
+          "master": "audits/C198_CREATURE_SUPPLY_C_20261003/16-arowana/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/16-arowana"
+        },
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "06-arowana",
+          "master": "audits/G2_C76_20260927/06-arowana/master.png",
+          "packet": "audits/G2_C76_20260927/06-arowana"
+        }
+      ]
+    },
+    "supersedes": "18-arowana",
+    "selectedFor": "framing-only successor pending unchanged check"
+  },
+  {
+    "id": "22-marlin-framing02",
+    "name": "Marlin",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/22-marlin-framing02",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/22-marlin-framing02/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "04-marlin",
+          "master": "audits/G2_C83_20260927/04-marlin/master.png",
+          "packet": "audits/G2_C83_20260927/04-marlin"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "04-marlin",
+          "master": "audits/G2_C83_20260927/04-marlin/master.png",
+          "packet": "audits/G2_C83_20260927/04-marlin"
+        }
+      ]
+    },
+    "supersedes": "22-marlin",
+    "selectedFor": "framing-only successor pending unchanged check"
+  },
+  {
+    "id": "23-swordfish-framing02",
+    "name": "Swordfish",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/23-swordfish-framing02",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/23-swordfish-framing02/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "06-swordfish",
+          "master": "audits/G2_C83_20260927/06-swordfish/master.png",
+          "packet": "audits/G2_C83_20260927/06-swordfish"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "06-swordfish",
+          "master": "audits/G2_C83_20260927/06-swordfish/master.png",
+          "packet": "audits/G2_C83_20260927/06-swordfish"
+        }
+      ]
+    },
+    "supersedes": "23-swordfish",
+    "selectedFor": "framing-only successor pending unchanged check"
+  }
+]

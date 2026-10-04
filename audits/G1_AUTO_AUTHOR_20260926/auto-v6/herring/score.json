@@ -1,0 +1,18 @@
+{
+ "id": "herring",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 801.5,
+ "landmarkMedian": 0.0792,
+ "landmarkMax": 0.1522,
+ "worst": [
+  "spine0 0.152",
+  "root 0.127",
+  "pectoralNear 0.120"
+ ],
+ "labelAgreement": 0.2459,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

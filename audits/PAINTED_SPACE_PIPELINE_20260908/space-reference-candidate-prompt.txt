@@ -1,0 +1,20 @@
+REFERENCE LOCK
+Use the attached Dakk fantasy reference ONLY for confident oil brushwork, believable weight, rich surface painting, warm/cool lighting, deep shadow and selective focal detail. Create an ORIGINAL science-fiction painting. Do not copy any depicted character, creature, weapon, costume, pose arrangement, contact-sheet layout or checkerboard. This is one proposed SPACE STYLE REFERENCE for human approval, not final game assets.
+
+FROZEN STYLE (PROPOSED frontier-oil-01)
+Classic painted science-fiction adventure illustration: confident visible oil brushwork, grounded heroic realism and convincing industrial mass. Rich charcoal, worn ivory, oxidised copper and muted mineral colours, shaped by dramatic warm-versus-cool lighting and deep chiaroscuro. Weathered ceramic hulls, scorched metal, scratched observation glass, patched pressure suits and layered mechanical detail. The focal silhouette and identifying structures are crisp; secondary surfaces soften into broad painterly strokes. Alien places feel ancient, immense and mysterious. Serious, adventurous and quietly ominous, never cute or cartoonish, never glossy product-render CGI. High-detail oil illustration with a clear hierarchy of light, shape and texture.
+
+SUBJECT
+One coherent painted scene on an ancient rocky alien frontier at dusk. In the foreground stands a memorable silver-grey wolf-like terrestrial canid with amber eyes, a clear anatomically canine muzzle, two upright ears, exactly four rooted legs and a bushy dark-tipped tail. It has proud, alert, intelligent character and believable dense fur, not a toy or mascot. One adult human explorer in a worn ivory-and-charcoal pressure suit stands a respectful short distance behind it, visor open enough for an expressive face. A small weathered survey spacecraft rests in the middle distance: broad ceramic cargo spine, exactly two blunt engine pods, one offset dark observation cockpit, no weapons. Vast eroded charcoal and ochre stone formations and sparse strange rooted vegetation frame the distance; one immense ochre planet hangs above a thin clouded horizon. The juxtaposition gives intimate creature character and an immense mysterious universe.
+
+COUNTS AND DESIGN CONSTRAINTS
+Exactly one canid, one adult explorer, one small ship and one distant planet. Natural coherent anatomy. Canid coat silver grey with warm ivory muzzle and a dark tail tip; no horns, armor, jewellery, wings, glowing parts or magic. Suit and ship show layered industrial construction, scuffed ceramic, oxidised copper and repaired surfaces. The new ship is a style-test design, not an existing game chassis. Paint the creature as a distinctive living organism; do not add fantasy weapons or D&D clothing.
+
+LAYOUT
+A single landscape oil illustration, not a grid or collage. The complete foreground canid is large enough to inspect, shown in a grounded three-quarter side view, looking toward the viewer. Keep its muzzle, all four paws, ears and tail fully within the frame. Explorer and ship support it at different depth scales. Warm low grazing light from upper left, cool shadow masses on the right; vivid but restrained mineral colors. Clear focal hierarchy and readable silhouettes. Visible directional brush marks; secondary detail softens with distance.
+
+TECHNICAL OUTPUT
+One opaque landscape PNG, approximately 1536x1024 if supported. This is an opaque environment/style-reference profile: paint the scene edge to edge. No transparency or magenta key background. No text or UI.
+
+PROFILE-SPECIFIC NEGATIVE
+No checkerboard, contact-sheet panels, labels, titles, logos, watermarks, frames, collage, miniature copies of the reference, medieval weapons, fantasy costume, cute cartoon mascot, glossy CGI, plastic figurine, photoreal product render, neon cyberpunk interface, vector look, malformed anatomy, extra limbs, cropped creature parts, excessive bloom or flat airbrushed surfaces.

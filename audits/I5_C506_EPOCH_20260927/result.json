@@ -1,0 +1,28 @@
+{
+  "status": "instrument-fail",
+  "runId": "i5-v2-c506e1a4f59b-calibration-1",
+  "findings": [
+    "instrument: phone Back focus: phase timed out after on-time falsy observations (null)"
+  ],
+  "phoneLastCompletedStage": "Back mouse release",
+  "phoneFailingStage": "Back focus",
+  "source": {
+    "begin": {
+      "commit": "c506e1a4f59ba379b427cfc2758e580c0ca2110e",
+      "branch": "detached",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    },
+    "end": {
+      "commit": "c506e1a4f59ba379b427cfc2758e580c0ca2110e",
+      "branch": "detached",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    }
+  },
+  "laterPhasesRun": false,
+  "retry": false,
+  "I5Closed": false
+}

@@ -1,0 +1,90 @@
+{
+  "sourceFit": "audits/FISH_SEAMS_C78_20260927/sculpin-tail-axial-01/fit",
+  "sourcePreSplitSha256": "464e8e83994ac15dabe6a1919aba187873e489471ec7e332d5f349493c31e6d1",
+  "sourceAtlasSha256": "be133f2de736108abd1604bae434883088dcc4e306a57dcb92dd2f370af0cc9d",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "pectoralNear",
+      "pectoralFar",
+      "jaw",
+      "head",
+      "dorsal",
+      "caudal",
+      "spine0",
+      "spine1",
+      "spine2",
+      "spine3",
+      "spine4",
+      "spine5"
+    ],
+    "contactEndpoints": [],
+    "paintBoundaryPairs": [
+      [
+        "near-pectoral",
+        "body-0"
+      ],
+      [
+        "near-pectoral",
+        "body-1"
+      ],
+      [
+        "near-pectoral",
+        "body-2"
+      ],
+      [
+        "far-pectoral",
+        "body-0"
+      ],
+      [
+        "far-pectoral",
+        "body-1"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "3749fd481478f51fccd36e9ad0967498fd8638f62dcfe1ecd886c653cd2b88ee",
+    "sourceVertices": 1602,
+    "vertices": 1765,
+    "sharedSupports": 538,
+    "pins": 453,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 11,
+    "excludedOverlaps": 14,
+    "observedExcludedBoundaries": 14,
+    "weldedExcludedBoundaries": 5,
+    "independentExcludedBoundaries": 9,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "near-pectoral",
+        "body-0"
+      ],
+      [
+        "near-pectoral",
+        "body-1"
+      ],
+      [
+        "near-pectoral",
+        "body-2"
+      ],
+      [
+        "far-pectoral",
+        "body-0"
+      ],
+      [
+        "far-pectoral",
+        "body-1"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "recordUnchanged": true,
+  "labelsUnchanged": true,
+  "atlasUnchanged": true,
+  "limitsUnchanged": true
+}

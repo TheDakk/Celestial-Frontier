@@ -1,0 +1,13 @@
+{
+  "kind": "band",
+  "parts": 38,
+  "bands": 16,
+  "cuts": 29,
+  "duplicatedPixels": 335420,
+  "atlasSize": {
+    "width": 2039,
+    "height": 2047
+  },
+  "discPolicy": "disc-only original retained as control; bands replace discs in this candidate",
+  "nativeRestGate": "pending"
+}

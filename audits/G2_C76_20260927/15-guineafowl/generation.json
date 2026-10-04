@@ -1,0 +1,13 @@
+{
+  "id": "15-guineafowl",
+  "name": "Guineafowl",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ad625d0e-0dfc-4a0c-8efb-e8f2651ba3a4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "53e50a6ed3a4b33871c44a6aa71fa51d3ee47961eecdd793abab5eb938641c9a",
+  "bytes": 1382283,
+  "promptSha256": "03d4f5a4d46ff65ce18426ca8d1015b68950936905bf86d6e8924edb46de7a3e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

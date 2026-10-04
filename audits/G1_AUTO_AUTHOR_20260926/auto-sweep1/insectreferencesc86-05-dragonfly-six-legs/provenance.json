@@ -1,0 +1,116 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "insectreferencesc86-05-dragonfly-six-legs",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "8fbfb8117ae9b6b28125bb9ec212a067276c44a0d38fb10968964fc75bc0b87a",
+ "subjectSourceSha256": "d04725abdd5fb51607481d4dc277ad98b3422ff2e463aad81e3cea4f4df74d82",
+ "identity": {
+  "name": "Dragonfly",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Dragonfly\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"862555894\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "seed": 862555894,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "honeybee",
+  "authoringSha256": "ac8d6dd9897fd5bb366e9eac67fb5a4e76c63ce2a321f99c2be66f9f6060c3bb",
+  "masterSha256": "0caa257567bef63fe3d66308e565bddb84175b47696315a3781e5a6994c876e6"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.6987,
+     "class": "rear",
+     "attach": {
+      "x": 274.7,
+      "y": 209.8,
+      "relX": 0.21,
+      "relY": 0.25
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0573,
+     "class": "front",
+     "attach": {
+      "x": 323,
+      "y": 221.5,
+      "relX": 1.02,
+      "relY": 0.55
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0151,
+     "class": "limb-down",
+     "attach": {
+      "x": 317.5,
+      "y": 237,
+      "relX": 0.93,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0185,
+     "class": "limb-down",
+     "attach": {
+      "x": 281,
+      "y": 239,
+      "relX": 0.32,
+      "relY": 1
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0438,
+     "class": "limb-down",
+     "attach": {
+      "x": 300,
+      "y": 240,
+      "relX": 0.63,
+      "relY": 1.03
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 6
+  },
+  "reference": {
+   "subject": "honeybee",
+   "byClass": {
+    "top": 1,
+    "front": 2,
+    "rear": 2,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

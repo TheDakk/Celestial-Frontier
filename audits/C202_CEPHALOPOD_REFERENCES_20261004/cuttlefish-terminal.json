@@ -1,0 +1,370 @@
+{
+  "schema": "cf.c202-cuttlefish-terminal/v1",
+  "status": "STATIC_AND_VISUAL_HOLD",
+  "selectedForDiagnosis": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01",
+  "nativeReady": false,
+  "qualityAccepted": false,
+  "sourceAndPacking": {
+    "originalSemanticRegions": 38,
+    "renderParts": 32,
+    "retainedSemanticJoints": 38,
+    "sourcePixelsChanged": 0,
+    "sourceSemanticOwnersChangedByPacking": 0,
+    "sourceAuthoringCorrection": "One supplemental observed-contour successor assigns visible fin, sucker-edge and arm paint that prior masks left to root. All source pixels and landmarks are unchanged; semantic authoring labels intentionally differ from author01."
+  },
+  "predecessor": {
+    "status": "RED",
+    "actions": [
+      {
+        "id": "idle",
+        "status": "PASS",
+        "publishedSamples": 121,
+        "attemptedSamples": 121
+      },
+      {
+        "id": "alert",
+        "status": "RED",
+        "publishedSamples": 16,
+        "attemptedSamples": 17,
+        "firstRefusal": {
+          "sampleIndex": 16,
+          "ms": 74.13333333333334,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 37"
+        }
+      },
+      {
+        "id": "approach:jet",
+        "status": "RED",
+        "publishedSamples": 12,
+        "attemptedSamples": 13,
+        "firstRefusal": {
+          "sampleIndex": 12,
+          "ms": 75.6,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 19"
+        }
+      },
+      {
+        "id": "approach:crawl",
+        "status": "PASS",
+        "publishedSamples": 121,
+        "attemptedSamples": 121
+      },
+      {
+        "id": "melee:lash",
+        "status": "RED",
+        "publishedSamples": 29,
+        "attemptedSamples": 30,
+        "firstRefusal": {
+          "sampleIndex": 29,
+          "ms": 203.64444444444445,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+        }
+      },
+      {
+        "id": "melee:bite",
+        "status": "RED",
+        "publishedSamples": 29,
+        "attemptedSamples": 30,
+        "firstRefusal": {
+          "sampleIndex": 29,
+          "ms": 203.64444444444445,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 24"
+        }
+      },
+      {
+        "id": "cast",
+        "status": "RED",
+        "publishedSamples": 10,
+        "attemptedSamples": 11,
+        "firstRefusal": {
+          "sampleIndex": 10,
+          "ms": 78.83333333333333,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 17"
+        }
+      },
+      {
+        "id": "hit",
+        "status": "RED",
+        "publishedSamples": 9,
+        "attemptedSamples": 10,
+        "firstRefusal": {
+          "sampleIndex": 9,
+          "ms": 58.95,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 6"
+        }
+      },
+      {
+        "id": "dodge",
+        "status": "RED",
+        "publishedSamples": 14,
+        "attemptedSamples": 15,
+        "firstRefusal": {
+          "sampleIndex": 14,
+          "ms": 71.86666666666666,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 23"
+        }
+      },
+      {
+        "id": "faint",
+        "status": "RED",
+        "publishedSamples": 36,
+        "attemptedSamples": 37,
+        "firstRefusal": {
+          "sampleIndex": 36,
+          "ms": 256.8,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 13"
+        }
+      },
+      {
+        "id": "victory",
+        "status": "RED",
+        "publishedSamples": 9,
+        "attemptedSamples": 10,
+        "firstRefusal": {
+          "sampleIndex": 9,
+          "ms": 70.2,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 56"
+        }
+      },
+      {
+        "id": "tame",
+        "status": "RED",
+        "publishedSamples": 55,
+        "attemptedSamples": 56,
+        "firstRefusal": {
+          "sampleIndex": 55,
+          "ms": 447.3333333333333,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 12"
+        }
+      },
+      {
+        "id": "feed",
+        "status": "RED",
+        "publishedSamples": 9,
+        "attemptedSamples": 10,
+        "firstRefusal": {
+          "sampleIndex": 9,
+          "ms": 68.7,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 23"
+        }
+      }
+    ],
+    "presentation": {
+      "status": "RED",
+      "publishedSamples": 292,
+      "attemptedSamples": 293,
+      "firstRefusal": {
+        "ms": 4866.666666666667,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 53"
+      }
+    },
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  "successor": {
+    "status": "RED",
+    "actions": [
+      {
+        "id": "idle",
+        "status": "PASS",
+        "publishedSamples": 121,
+        "attemptedSamples": 121
+      },
+      {
+        "id": "alert",
+        "status": "RED",
+        "publishedSamples": 6,
+        "attemptedSamples": 7,
+        "firstRefusal": {
+          "sampleIndex": 6,
+          "ms": 27.8,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+        }
+      },
+      {
+        "id": "approach:jet",
+        "status": "RED",
+        "publishedSamples": 17,
+        "attemptedSamples": 18,
+        "firstRefusal": {
+          "sampleIndex": 17,
+          "ms": 107.1,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 6"
+        }
+      },
+      {
+        "id": "approach:crawl",
+        "status": "RED",
+        "publishedSamples": 12,
+        "attemptedSamples": 13,
+        "firstRefusal": {
+          "sampleIndex": 12,
+          "ms": 75.6,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+        }
+      },
+      {
+        "id": "melee:lash",
+        "status": "RED",
+        "publishedSamples": 14,
+        "attemptedSamples": 15,
+        "firstRefusal": {
+          "sampleIndex": 14,
+          "ms": 98.3111111111111,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+        }
+      },
+      {
+        "id": "melee:bite",
+        "status": "RED",
+        "publishedSamples": 17,
+        "attemptedSamples": 18,
+        "firstRefusal": {
+          "sampleIndex": 17,
+          "ms": 119.37777777777777,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5"
+        }
+      },
+      {
+        "id": "cast",
+        "status": "RED",
+        "publishedSamples": 14,
+        "attemptedSamples": 15,
+        "firstRefusal": {
+          "sampleIndex": 14,
+          "ms": 110.36666666666666,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+        }
+      },
+      {
+        "id": "hit",
+        "status": "RED",
+        "publishedSamples": 5,
+        "attemptedSamples": 6,
+        "firstRefusal": {
+          "sampleIndex": 5,
+          "ms": 32.75,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 4"
+        }
+      },
+      {
+        "id": "dodge",
+        "status": "RED",
+        "publishedSamples": 6,
+        "attemptedSamples": 7,
+        "firstRefusal": {
+          "sampleIndex": 6,
+          "ms": 30.8,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 6"
+        }
+      },
+      {
+        "id": "faint",
+        "status": "RED",
+        "publishedSamples": 52,
+        "attemptedSamples": 53,
+        "firstRefusal": {
+          "sampleIndex": 52,
+          "ms": 370.93333333333334,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 26"
+        }
+      },
+      {
+        "id": "victory",
+        "status": "RED",
+        "publishedSamples": 4,
+        "attemptedSamples": 5,
+        "firstRefusal": {
+          "sampleIndex": 4,
+          "ms": 31.2,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+        }
+      },
+      {
+        "id": "tame",
+        "status": "PASS",
+        "publishedSamples": 121,
+        "attemptedSamples": 121
+      },
+      {
+        "id": "feed",
+        "status": "RED",
+        "publishedSamples": 10,
+        "attemptedSamples": 11,
+        "firstRefusal": {
+          "sampleIndex": 10,
+          "ms": 76.33333333333333,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 12"
+        }
+      }
+    ],
+    "presentation": {
+      "status": "RED",
+      "publishedSamples": 289,
+      "attemptedSamples": 290,
+      "firstRefusal": {
+        "ms": 4816.666666666667,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      }
+    },
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  "actualLoadedRigReview": {
+    "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/review.json",
+    "samples": 20,
+    "publications": 14,
+    "refusals": 6
+  },
+  "fullSizeFindings": [
+    "idle-0 reconstructs the original eight short arms and two feeding tentacles coherently at source size.",
+    "faint-0p2 still publishes but has angular feeding-stalk/club transitions, a pointed spur on the right stalk near y900, and an abrupt bent left inner arm. This is visually held.",
+    "approach-jet-0p9 is near rest; its coherent silhouette does not erase refused approach-jet-0p2 (30 unresolved folded triangles).",
+    "Repeated melee-lash-0p2 refuses3 folds; faint-0p9 refuses5 and faint-1 refuses6. These samples are retained, not replaced by convenient frames.",
+    "The compiler removes only the representation budget blocker. This source/continuous-field authoring still needs a bounded topology diagnosis before qualification. No claim that folds are solely a source-paint defect."
+  ],
+  "inputs": [
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/receipt.json",
+      "sha256": "1f2b6b7bdf6bdcc0e77e5817b3ea18d180a6b2511d665d1dd241b08050fed9f7"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/static.json",
+      "sha256": "ae080d30bb9fd463ab7b75ef08ad76fd45d7e263ede065e08fb53150d103a2cf"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/record.json",
+      "sha256": "3663acf8364fba18053f6d04c6ec48ca4fcf23f2d6c0395cf4ddaa3823677302"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/binding.json",
+      "sha256": "4ff0a32cb485d66852d9e99cf81dea9346311fc63e645555feea4a2a48fa8516"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/review.json",
+      "sha256": "a66e019965cdc50be9748e02368f3e30df8b38be5447a2064253ed8bade5a0f2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/idle-0.png",
+      "sha256": "1e5ec6f0c7461079119a34c6e37a9cad277df54aacdf86213ca2eb5ff21c5bb9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/faint-0p2.png",
+      "sha256": "79fddb2f280eccae9113705be7a01b017247299fbbe5ff407ea8031f50e7518f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/approach-jet-0p9.png",
+      "sha256": "bb53c7b6252d575b302304f2d119fcb8884deafbfd40529ac965ea867072d758"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/master.png",
+      "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033"
+    }
+  ]
+}

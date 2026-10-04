@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c183-audit-stage/v1",
+  "stage": "intake",
+  "id": "24-weaverbird",
+  "command": [
+    "node",
+    "audits/C183_ISLAND_AUTHORING_20261002/intake.mjs",
+    "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate",
+    "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01"
+  ],
+  "helperSha256": "2035749f7a4e10573549ae4823a4d5e87b66054de5bc2cdb8b72059dc2510b4f",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/intake.log",
+  "logSha256": "c81d175b5cd6fe8552b1b7d950b44948fdfb7776e80452cc80b7fa20cc796040",
+  "nativeRuns": 0
+}

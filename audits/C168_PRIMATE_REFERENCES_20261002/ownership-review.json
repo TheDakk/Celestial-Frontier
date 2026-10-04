@@ -1,0 +1,12 @@
+{
+  "schema": "cf.c168-full-size-ownership-review/v1",
+  "inspectedSize": [1254, 1254],
+  "qualityAccepted": false,
+  "nativeRuns": 0,
+  "rows": [
+    {"id":"gorilla","source":"gorilla/master.png","ownership":"gorilla/fit01/parts/ownership.png","findings":["Four terminal limbs are painted, but the far-foot/near-hand region shares a connected lower silhouette; the automatic counter reports three clusters.","A broad body-owned strip remains along the inner left lower leg and smaller fringes remain around the far arm and neck/beard; these can move with the wrong owner.","Far hip/knee depth is partly occluded; knuckle and foot tip heights differ. The first static and island refusals are retained."]},
+    {"id":"capuchin","source":"capuchin/master.png","ownership":"capuchin/fit01/parts/ownership.png","findings":["The far hand is curled and raised, and terminal heights differ. The tight real tail loop is retained in only the existing three-joint chain.","Body-owned blue contour strips remain inside the tail loop, beside the far shin and the far forearm. Static/rest conservation does not establish moving-paint quality.","The island cap refuses 1006 pixels at 5.2%; no placement or threshold change is applied."]},
+    {"id":"gorilla-repaint","source":"gorilla-repaint/master.png","ownership":"gorilla-repaint/fit01/parts/ownership.png","findings":["The far foot is now visibly separated from the near hand, with four measured lower clusters; the right hand still has partly curled/open fingers.","The complete silhouette is retained, including body-owned upper-back/nape paint and small brown far-arm fringes. The body is split into structural remainder components; the 42.2% island refusal remains.","Walk compression and far-foot faint limit remain red after the one source-specific authoring. No second pose generation or coordinate tuning follows."]},
+    {"id":"capuchin-repaint","source":"capuchin-repaint/master.png","ownership":"capuchin-repaint/fit01/parts/ownership.png","findings":["All four terminal hands/feet are now distinct, with four measured ground clusters. The long actual tail is an open curve separated from the limbs.","Both hand tips are more support-like, while the hind feet remain higher in the painting. Source support geometry is a hypothesis until moving-paint review.","Blue body-owned fringes remain along the inner far shin, the inner far forearm and a small crown edge. All 13 static actions and presentation pass, but the 1430-pixel 5.8% remainder island refuses placement; the candidate stays held."]}
+  ]
+}

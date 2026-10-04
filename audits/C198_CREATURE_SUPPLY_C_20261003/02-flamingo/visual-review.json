@@ -1,0 +1,28 @@
+{
+  "name": "Flamingo",
+  "masterSha256": "1a8827a4e64120ad280b8ffb1123b68b858669fbe777db08318258d8f07692e4",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two complete leg shafts and webbed feet, downward hooked bill and continuous neck visible. Far wing hidden; shoulder and leg roots feather-covered, not invented. Fine tail tips complete with generous margins. Pink natural plumage must be preserved through keying.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 330,
+      "y0": 188,
+      "x1": 922,
+      "y1": 1058
+    },
+    "margins": {
+      "left": 330,
+      "right": 331,
+      "top": 188,
+      "bottom": 195
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

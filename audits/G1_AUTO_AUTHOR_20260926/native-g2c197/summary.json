@@ -1,0 +1,84 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+ "tag": "g2c197",
+ "pilot": 9,
+ "patternSkipped": [],
+ "scored": 9,
+ "admitPassStatic": [
+  "basking-shark",
+  "flounder",
+  "great-white-shark-framing-v2",
+  "mako-shark-framing-v2",
+  "snailfish",
+  "snow-petrel",
+  "tiger-shark-framing-v2",
+  "whale-shark-framing-v2"
+ ],
+ "refused": [
+  {
+   "id": "rhea",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [],
+ "native": [
+  {
+   "id": "basking-shark",
+   "name": "Basking Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "flounder",
+   "name": "Flounder",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "great-white-shark-framing-v2",
+   "name": "Great White Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "mako-shark-framing-v2",
+   "name": "Mako Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "snailfish",
+   "name": "Snailfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "snow-petrel",
+   "name": "Snow Petrel",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "tiger-shark-framing-v2",
+   "name": "Tiger Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "whale-shark-framing-v2",
+   "name": "Whale Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

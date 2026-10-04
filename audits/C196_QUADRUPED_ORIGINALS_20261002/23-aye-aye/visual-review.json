@@ -1,0 +1,28 @@
+{
+  "name": "Aye-Aye",
+  "masterSha256": "4c28ca14c18609dc3250747ae7ff413ecf9fb57a25b0f998b8488616e6505709",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Huge naked ears, golden eyes, coarse dark coat and very large shaggy tail. The forward hand is lifted and several digits appear greatly elongated rather than one unmistakable specialized middle finger; anatomy/contact hold. Four extremities visible but only three can read as supports. Far root partly obscured; tail strands need honest contour ownership.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 235,
+      "y0": 373,
+      "x1": 1021,
+      "y1": 884
+    },
+    "margins": {
+      "left": 235,
+      "right": 232,
+      "top": 373,
+      "bottom": 369
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

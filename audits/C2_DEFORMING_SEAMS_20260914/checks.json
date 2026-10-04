@@ -1,0 +1,11 @@
+{
+  "status": "STATIC_PASS_NATIVE_PENDING",
+  "vitest": {
+    "files": 370,
+    "passed": 4348,
+    "skipped": 1
+  },
+  "typecheck": "PASS",
+  "rootValidate": "PASS",
+  "browserBundle": "PASS"
+}

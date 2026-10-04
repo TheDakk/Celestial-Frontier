@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "archipelago-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/archipelago-v2/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/archipelago-v2/arena-far.png",
+    "audits/C132_ARENAS_20261001/archipelago-v2/arena-mid.png",
+    "audits/C132_ARENAS_20261001/archipelago-v2/arena-near.png"
+  ],
+  "findings": [
+    "All three originals and full-size composition inspected at native1672\u00d7941. Island shore and beach runway are identifiable; shared stand region remains open.",
+    "MID bakes in a second distant island band in front of FAR, producing doubled horizons and mismatched depth. Pink/green chroma remnants persist around palm fronds and island silhouettes.",
+    "NEAR forms a conspicuous straight horizontal texture/color boundary across the lower frame. Mechanical clearance does not resolve these visual holds."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "24-wahoo",
+  "name": "Wahoo",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-fbadcc4f-cb16-4ffd-9bf7-b1b64743c9ff.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "fb1450d0a3e07370ce2723ad20534a5f236d7a4116f8786fbbd3a809893121ca",
+  "bytes": 1173926,
+  "promptSha256": "3693d85fbf0e4af1a0086be300f34cc99ed62fdcfda02bffd3e61263ee04ad7f",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

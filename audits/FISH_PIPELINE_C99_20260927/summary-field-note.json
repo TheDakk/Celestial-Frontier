@@ -1,0 +1,3 @@
+{
+  "note": "C88 convenience aggregator reads obsolete top-level refusals/capture.summary; those are null in native-results.json. native-summary.json reads and asserts actual gates.refusals and capture.refusalsAtEnd. First archival script failed KeyError before moving any files. No proof rerun or report edit."
+}

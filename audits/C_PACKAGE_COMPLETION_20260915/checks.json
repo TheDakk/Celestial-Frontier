@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "baseCommit": "b95c4dc0",
+  "game": {
+    "files": 373,
+    "passed": 4357,
+    "skipped": 1
+  },
+  "tools": {
+    "passed": 52,
+    "skipped": 0
+  },
+  "typecheck": "PASS",
+  "rootValidation": "PASS; 50-probe fingerprint match",
+  "nativeCapture": "NOT RUN; no new shape or frame-pacing acceptance",
+  "files": [
+    {
+      "path": "checks/aim-initial.log",
+      "sha256": "7d03545823bb55479bb22526fad2f66cc5e8ca7f6ab89ef62a65063af0bfa5ab"
+    },
+    {
+      "path": "checks/aim-limit-negative.log",
+      "sha256": "86ab8eaf36448bfd6b84745ae19a7c01b3c8cfe7f7321846a5c4e9f68163e2f5"
+    },
+    {
+      "path": "checks/bed-byte-budget-failure.log",
+      "sha256": "c49c43f2d0bf7e7b26b21f369cddcbc027f4347fe52c7e3ee1e87e95dac32785"
+    },
+    {
+      "path": "checks/bed-probe-epipe-failure.log",
+      "sha256": "860c496a79944be341501753ddfafa9c84acc91ef900926cbcb094335a98d96b"
+    },
+    {
+      "path": "checks/codec-final-focused.log",
+      "sha256": "9ff909b87ebe3976e6343fa4f56ee44ca765469607dec3e4a48db84cfa1222fc"
+    },
+    {
+      "path": "checks/tests.log",
+      "sha256": "9b5d30449995fca36f92fec0b96e80b2028683dee3f89a69e26886fcca19bfce"
+    },
+    {
+      "path": "checks/typecheck.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "checks/validate.log",
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
+    },
+    {
+      "path": "checks/validate-final.log",
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
+    }
+  ],
+  "actualProducer": "actual-producer-04/report.json; PASS, changed-head and missing-root controls reject",
+  "sourceFiles": [
+    {
+      "path": "port/v2/apps/game/src/creature-rig-aim.test.ts",
+      "sha256": "653e638637f7adfa0022e738847f2166948aa507fa76de2b7902fc2e180125be"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-aim.ts",
+      "sha256": "bf6f3f09230ae620adf851dae0038f5b20a66f563d843dfade330c5778ea5c7c"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-performance.test.ts",
+      "sha256": "8a06c95c7307e1a7697024021b30d7cb5daef4fa9c9012b283ada21d5bcce7f2"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-performance.ts",
+      "sha256": "f4982057457346c1f5c3be6eb127f38eb89a64ce524aa11481eeae64b9350d19"
+    },
+    {
+      "path": "port/v2/tools/asset-intake/audio-export.mjs",
+      "sha256": "0d61f2ba4e17b27d395459f7240184399bb31dacf7125303328376062781bfb1"
+    },
+    {
+      "path": "port/v2/tools/asset-intake/audio-export.test.mjs",
+      "sha256": "2934e2179b3e8050369b8a7bd9521e2f67e8e5f215a50380e58bde7060215a16"
+    },
+    {
+      "path": "port/v2/tools/asset-intake/audio-loop.mjs",
+      "sha256": "bfc14667b3ca0ae43ac1eceeb1e3e57b86795b8f495f76e0430a85a2df1f172a"
+    },
+    {
+      "path": "port/v2/tools/asset-intake/audio-loop.test.mjs",
+      "sha256": "34197ff341bbf8a0267ca09f024f8867c3c4e8647c74492c484b6e18559d6a4e"
+    },
+    {
+      "path": "port/v2/tools/asset-intake/export-audio.mjs",
+      "sha256": "8a95b50bcdaa44395d9261eac44d4586b3d89c419e4c6fbe8d7fc372b102a3a7"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/performance-probe.mjs",
+      "sha256": "5ab0aa7527a7a8aee4761649ba52c526cad9e12a371dfdff53d0718892d9d50c"
+    }
+  ]
+}

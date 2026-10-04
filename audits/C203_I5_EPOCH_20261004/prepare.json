@@ -1,0 +1,20 @@
+{
+  "schema": "cf.c203-i5-prepare/v1",
+  "productHead": "456ac7c52ddfdc5aab11233a7c98c8cede7dbf82",
+  "source": "~/.codex/worktrees/c203-i5/celestial-frontier-openai-mac",
+  "signature": "G",
+  "clean": true,
+  "dependencies": "APFS clones of existing locked root/v2 installations; no install or update",
+  "optionalRuntimeAbsent": true,
+  "lockFiles": [
+    {
+      "path": "package-lock.json",
+      "sha256": "2eabee93f433ca99569d6c75fb112812f23f48d7101e166323f60e93fc68702d"
+    },
+    {
+      "path": "port/v2/package-lock.json",
+      "sha256": "744f7c5079d0892fee85d6d2af20c343955ff0d47bda9cce8368d9babd6d1402"
+    }
+  ],
+  "freeGiB": 98.56
+}

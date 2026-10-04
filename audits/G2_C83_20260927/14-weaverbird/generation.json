@@ -1,0 +1,13 @@
+{
+  "id": "14-weaverbird",
+  "name": "Weaverbird",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1433ecad-b736-42bf-8b1d-ba701659b341.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7fdc5dfb231fc5f58818f161d3951f28068077eec3bd228a9ba3a439a1883776",
+  "bytes": 1468964,
+  "promptSha256": "23eb8e870b09727bea8600b66dadd5761076833e573193e814d38727c12d59c0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

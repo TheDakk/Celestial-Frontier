@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c163-audit-harness-derivation/v1",
+  "source": "audits/C163_REFERENCE_REPAIR_20261002/intake.mjs",
+  "sourceSha256": "a289d650c78626f4de0944332fa3f08d11cedf8a2555b9f80bb1bdac6e7cb5ed",
+  "target": "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+  "targetSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "from": "new URL('./authored-region-owners.mjs',import.meta.url)",
+  "to": "new URL('../../port/v2/tools/creature-animation/authored-region-owners.mjs',import.meta.url)",
+  "reason": "The first relocation missed a source-receipt URL. It refused before producing any fit files; this corrects only that receipt path.",
+  "failedOutput": "audits/C163_REFERENCE_REPAIR_20261002/16-lark/fit",
+  "failedOutputFiles": [],
+  "checksChanged": false
+}

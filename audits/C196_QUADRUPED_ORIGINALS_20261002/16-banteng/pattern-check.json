@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Banteng",
+  "masterSha256": "9d514e5beed5d4b51f58a9db9a94191324b866763ad0baf8a13635d40f426720",
+  "required": [
+    "white band above the muzzle"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "white band above the muzzle",
+      "status": "PRESENT",
+      "observed": "Brown bovine with white stockings and rump patch, upward-curved horns, both ears and full tufted tail. Four hoof endpoints and separated lower legs readable; far proximal foreleg remains partly behind trunk. Slight three-quarter head with one visible eye. Retain exact source, no semantic presence inferred."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Water Strider",
+  "masterSha256": "b475b86f0f327455c6c66e7e5f7a416d0b16f4fffdbe572808f6738d56f0cfb9",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "scope": "synthetic explicit bent source graph; no real subject acceptance",
+  "zeroOffset": "exact previous pose and endpoint error",
+  "rows": [
+    {
+      "control": "offset",
+      "joint": "hindFarAnkle",
+      "driftPx": 0.0000021036199668971056
+    },
+    {
+      "control": "offset",
+      "joint": "foreFarAnkle",
+      "driftPx": 9.0820754354528e-11
+    },
+    {
+      "control": "offset",
+      "joint": "hindNearAnkle",
+      "driftPx": 0.000004926167141799041
+    },
+    {
+      "control": "offset",
+      "joint": "foreNearAnkle",
+      "driftPx": 7.515096109211192e-8
+    },
+    {
+      "control": "double-offset",
+      "joint": "hindFarAnkle",
+      "driftPx": 0.00003262726174841717
+    },
+    {
+      "control": "double-offset",
+      "joint": "foreFarAnkle",
+      "driftPx": 1.5951767044118016e-9
+    },
+    {
+      "control": "double-offset",
+      "joint": "hindNearAnkle",
+      "driftPx": 0.00007588635458267217
+    },
+    {
+      "control": "double-offset",
+      "joint": "foreNearAnkle",
+      "driftPx": 0.0000011754706513771473
+    }
+  ],
+  "compiledArapNegativeControl": [
+    {
+      "mutant": false,
+      "driftPx": 0.000025206430117890014
+    },
+    {
+      "mutant": true,
+      "driftPx": 2.6479415184820128
+    }
+  ]
+}

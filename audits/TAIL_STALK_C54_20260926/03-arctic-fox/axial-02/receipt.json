@@ -1,0 +1,102 @@
+{
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/03-arctic-fox/fit",
+  "sourceBindingHash": "9017cd3ef33914ed799e596f1a50900a31b793ed030f4cae27d264b759b911a0",
+  "bindingHash": "2e5bcbf8d81b8e63e47d751d142e7d9373dad958c0d6e61864445c93a84d3b56",
+  "pairs": [
+    [
+      "spine",
+      "tail1"
+    ],
+    [
+      "spine",
+      "tail2"
+    ],
+    [
+      "spine",
+      "tail3"
+    ]
+  ],
+  "chain": [
+    "pelvis",
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "knots": [
+    0,
+    63.4107451791701,
+    233.2209160968458,
+    367.2674431920369
+  ],
+  "changedVertices": 732,
+  "sourceCoordinateChanges": 0,
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 37,
+        "distancePx": 2.5961509971494254,
+        "supports": [
+          846
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 46,
+        "distancePx": 7.280109889280457,
+        "supports": [
+          1396
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 56,
+        "distancePx": 4.924428900898129,
+        "supports": [
+          335
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 66,
+        "distancePx": 5.780138406647358,
+        "supports": [
+          1124
+        ]
+      }
+    ],
+    "sourceBindingHash": "9017cd3ef33914ed799e596f1a50900a31b793ed030f4cae27d264b759b911a0",
+    "sourceVertices": 2629,
+    "vertices": 3083,
+    "sharedSupports": 909,
+    "pins": 431,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 43,
+    "excludedOverlaps": 26,
+    "observedExcludedBoundaries": 26,
+    "weldedExcludedBoundaries": 3,
+    "independentExcludedBoundaries": 23,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "spine",
+        "tail1"
+      ],
+      [
+        "spine",
+        "tail2"
+      ],
+      [
+        "spine",
+        "tail3"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "scope": "Every packet file including item inventories; excludes only this root inventory",
+  "files": [
+    {
+      "path": "CLAUDE_REQUEST.md",
+      "bytes": 15270,
+      "sha256": "cf84b2b59f4f3e23d0322118a4661937694f90b37b9902951a93a250acec8b11"
+    },
+    {
+      "path": "PRE_SIGNING_HANDOFF.md",
+      "bytes": 6697,
+      "sha256": "2d72a980ba4740bc9a6c3b00f5120c1ceea5560c522a59eaf18071e6b694ec3f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6565,
+      "sha256": "e200a6cda98b713c735833f5c2547468c9364bcf2a53d0bf2e4b7e1b677efb3f"
+    },
+    {
+      "path": "SIGNING_HANDOFF.json",
+      "bytes": 1092,
+      "sha256": "1b8c39ef67d85b37809e8b2e22b4a8f2b7959376dd53bef799efa7dfc328dbb7"
+    },
+    {
+      "path": "after-01.log",
+      "bytes": 1951137,
+      "sha256": "7ab932dba3c9ba7bf760167a55f9096bdf7e714621cbd0417731ad0f97101495"
+    },
+    {
+      "path": "after-02.log",
+      "bytes": 1190363,
+      "sha256": "de3a8362e91c964850ac29402daea0e8842b3beda53e26e2716cdf55bbfe058f"
+    },
+    {
+      "path": "before.log",
+      "bytes": 9235,
+      "sha256": "d1d91ba0a189ef29d83fe0ec54927056e7b6e365de393c2f8d0a229b07b350f9"
+    },
+    {
+      "path": "bullet-inventory.json",
+      "bytes": 57196,
+      "sha256": "5a53a0459e2f71f751a2de5db349a3c7edc211a9f3a36e0539d8ee7eb095a84b"
+    },
+    {
+      "path": "centipede-claude-current-01.json",
+      "bytes": 459,
+      "sha256": "2e0fe9564ae95ac8c05eb48e42b8a74d2bd3f9282f1f00149b8185a2abe65e80"
+    },
+    {
+      "path": "centipede-claude-current-01.json.sources.json",
+      "bytes": 226531,
+      "sha256": "fc2d7cecdab5c898192258565963be5db3b88faabbd78404af7abd088e4c14bb"
+    },
+    {
+      "path": "centipede-claude-current-01.log",
+      "bytes": 86,
+      "sha256": "f59663486917f23a2681d907183c8aaab4a0164e26d3456c6e680d000f3d14b2"
+    },
+    {
+      "path": "claude-handoff.json",
+      "bytes": 1305,
+      "sha256": "f7194f577ac818e371e1d35213e2aa91e87c65afbde904600b2351eafa01188e"
+    },
+    {
+      "path": "evidence-chain-after-03.log",
+      "bytes": 245,
+      "sha256": "a413b59da0e892f8d5c4f60bd13d71bd2fd00b35230122926d1f3aa3fb39beae"
+    },
+    {
+      "path": "item5-fix-and-pin-removal.patch",
+      "bytes": 2791,
+      "sha256": "d1051fd9b1e88119c25107092fa031406929227823a0d48e64e21727e18fa18d"
+    },
+    {
+      "path": "measure-bullet-inventory.mjs",
+      "bytes": 1862,
+      "sha256": "2a694330915d1fe7fbad848eea722e071d2fcce2af934980312bc2e708455af0"
+    },
+    {
+      "path": "protected-inputs.json",
+      "bytes": 17791,
+      "sha256": "da18fc91f37ef37437cfae0a96126760d9aaeaa01803977225f937c9249f65c0"
+    },
+    {
+      "path": "source-hashes.json",
+      "bytes": 1085,
+      "sha256": "e6b9b208f18254e41c14c867f72811c785e4031233c02405bcd73170c14c4dff"
+    },
+    {
+      "path": "typecheck.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "validate.log",
+      "bytes": 1093,
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
+    }
+  ]
+}

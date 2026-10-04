@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "e2e9bb10cd8484ab99440e7bbb059af5220f1158",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_PRIMATE_REFERENCES_20261004/02-howler-arm-segments/master.png",
+      "sha256": "5ebd7622ff46f0a5b88e60b114b4644634e3c0d00cccc5094f4ddc8e3d0848ee"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_PRIMATE_REFERENCES_20261004/02-howler-arm-segments/authoring.json",
+      "sha256": "bcc5f1994e11b4f16c53e27b241d88127e02a785f859a8aa664981e15dc09a27"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_PRIMATE_REFERENCES_20261004/02-howler-arm-segments/subject-source.json",
+      "sha256": "170f1e431f9ba944b3fbb331af7cb57c9449c1e62e7bc0d0bbd6593fa834289a"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_PRIMATE_REFERENCES_20261004/02-howler-arm-segments/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "5bb1c3b52fcb463feb3ff154e486f01d34c9a3dca4d484ee8d0485765e221ba1",
+  "bindingHash": "cd2881b2777ab25f279163a27d062d56a63fa672c7b3e98ce6653ad180907a96",
+  "contactEndpoints": [
+    "legFarFoot",
+    "legNearFoot"
+  ],
+  "shapeJoints": [
+    "armNearHand",
+    "armFarHand",
+    "legNearFoot",
+    "legFarFoot",
+    "legNearKnee",
+    "legFarKnee",
+    "legNearHip",
+    "legFarHip",
+    "armNearElbow",
+    "armFarElbow",
+    "jaw",
+    "head",
+    "neck",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_PRIMATE_REFERENCES_20261004/02-howler-arm-segments/master.png",
+      "sha256": "5ebd7622ff46f0a5b88e60b114b4644634e3c0d00cccc5094f4ddc8e3d0848ee",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_PRIMATE_REFERENCES_20261004/02-howler-arm-segments/authoring.json",
+      "sha256": "bcc5f1994e11b4f16c53e27b241d88127e02a785f859a8aa664981e15dc09a27",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_PRIMATE_REFERENCES_20261004/02-howler-arm-segments/subject-source.json",
+      "sha256": "170f1e431f9ba944b3fbb331af7cb57c9449c1e62e7bc0d0bbd6593fa834289a",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_PRIMATE_REFERENCES_20261004/02-howler-arm-segments/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

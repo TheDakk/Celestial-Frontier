@@ -1,0 +1,196 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Chough\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2759847108\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"14\"]]]]",
+    "seed": 2759847108,
+    "ownerId": "authored:archetype-sprint/17-chough",
+    "earthName": "Chough"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2759847108,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 15,
+    "body": 6,
+    "loco": 8,
+    "trait": 14,
+    "size": 5,
+    "diet": 4,
+    "head": 8,
+    "limbs": 1,
+    "skin": 8,
+    "tail": 2,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 2,
+    "habitat": 18,
+    "detail": 5,
+    "accent": 15,
+    "temper": 9,
+    "sense": 0,
+    "repro": 2,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Chough"
+  },
+  "geometry": {
+    "cutoutAssetHash": "f0169a110876a1f3abeac0a968c33a7da10a09cbca0ea61ea862f16023a0dfb3",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6774156562388616,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5107655502392344,
+      0.5527910685805423
+    ],
+    "pelvis": [
+      0.4688995215311005,
+      0.5282296650717703
+    ],
+    "spine": [
+      0.5031897926634769,
+      0.5065390749601276
+    ],
+    "chest": [
+      0.566267942583732,
+      0.45837320574162677
+    ],
+    "neck0": [
+      0.583652312599681,
+      0.3850079744816587
+    ],
+    "neck1": [
+      0.6436204146730463,
+      0.3616427432216906
+    ],
+    "head": [
+      0.6573365231259968,
+      0.3429824561403509
+    ],
+    "beak": [
+      0.7229665071770335,
+      0.3626794258373206
+    ],
+    "legFarKnee": [
+      0.4449760765550239,
+      0.5894736842105264
+    ],
+    "legFarAnkle": [
+      0.44274322169059016,
+      0.6604465709728868
+    ],
+    "legFarFoot": [
+      0.4541467304625199,
+      0.6698564593301436
+    ],
+    "legNearKnee": [
+      0.5382775119617225,
+      0.5701754385964912
+    ],
+    "legNearAnkle": [
+      0.5707336523125998,
+      0.6512759170653908
+    ],
+    "legNearFoot": [
+      0.5878787878787879,
+      0.6688197767145136
+    ],
+    "wingFarRoot": [
+      0.5117224880382776,
+      0.41802232854864435
+    ],
+    "wingFarTip": [
+      0.2807017543859649,
+      0.5349282296650717
+    ],
+    "wingNearRoot": [
+      0.5396331738437002,
+      0.4443381180223286
+    ],
+    "wingNearTip": [
+      0.3262360446570973,
+      0.5626794258373206
+    ],
+    "tailFan": [
+      0.2640350877192983,
+      0.5801435406698564
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/C163_REFERENCE_REPAIR_20261002/held-out-candidates/17-chough/packet/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from c136-bird-insect-02-egret. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "8cbe66a0d648f5fdadddf53a9c6beba529357ecf1835d5f6bae880e136301ba5",
+    "subjectSourceSha256": "40bfee796060ee4e3592abd7bccf2ebac68786d7475ebe3dae88959ba0aeb999",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.04853892151779861,
+      "spine": 0.040574676754389236,
+      "chest": 0.07936500459860074,
+      "neck0": 0.07539677366227299,
+      "neck1": 0.06435920523214494,
+      "head": 0.02315897115700766,
+      "beak": 0.06852200684293094,
+      "legFarKnee": 0.06575074980402647,
+      "legFarAnkle": 0.07100800163522747,
+      "legFarFoot": 0.014784654585329852,
+      "legNearKnee": 0.08107251983735707,
+      "legNearAnkle": 0.08735381304991949,
+      "legNearFoot": 0.024530444043496046,
+      "wingFarRoot": 0.06784835961033536,
+      "wingFarTip": 0.2589161429750889,
+      "wingNearRoot": 0.03010638791225824,
+      "wingNearTip": 0.2440143435957124,
+      "tailFan": 0.21133974240696862
+    },
+    "measures": {
+      "body": 0.11983544687790226,
+      "bone-min": 0.014784654585329852,
+      "bone-max": 0.2589161429750889,
+      "leg/torso:legFar": 1.2645958268006299,
+      "leg/torso:legNear": 1.6101811438761693,
+      "wing/torso": 2.7267766850183945
+    }
+  },
+  "recipeHash": "e0594a4e6b89cfc4618072d7c67082a77f59e4bd0f44fef7d43519cc38a7f5d3"
+}

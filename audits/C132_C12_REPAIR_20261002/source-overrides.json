@@ -1,0 +1,7 @@
+{
+  "port/v2/tools/creature-animation/arap-skin.mjs": "audits/C132_C12_REPAIR_20261002/arap-candidate.mjs",
+  "port/v2/tools/creature-animation/orientation-projector.mjs": "audits/C132_C12_REPAIR_20261002/orientation-projector.mjs",
+  "port/v2/tools/creature-animation/wasm-orientation-active.mjs": "audits/C132_C12_REPAIR_20261002/wasm-orientation-active.mjs",
+  "port/v2/tools/creature-animation/orientation-active-reference.mjs": "audits/C132_C12_REPAIR_20261002/orientation-active-reference.mjs",
+  "port/v2/tools/creature-animation/orientation-active-bytes.mjs": "audits/C132_C12_REPAIR_20261002/orientation-active-bytes.mjs"
+}

@@ -1,0 +1,11 @@
+{
+ "id": "c192creaturesupply-23-bactrian-camel",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 57%)",
+  "unexplained-anatomy: 11.6% of the paint lies away from the body and in no part (reference 4.7%)"
+ ],
+ "semanticPresence": null
+}

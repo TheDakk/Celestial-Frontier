@@ -1,0 +1,85 @@
+{
+  "schema": "cf.planar-prototype-retirement/v1",
+  "reason": "Corrected paint07/fit03 passes 122/122 contact samples with zero planar accommodation calls; avoid shipping the unnecessary experimental degree of freedom. Original cap and every other limit unchanged. Full historical probes/receipts retained.",
+  "snapshots": [
+    {
+      "source": "port/v2/apps/game/src/creature-planar-contact.ts",
+      "snapshot": "port/v2/apps/game/src/creature-planar-contact.ts",
+      "bytes": 4300,
+      "sha256": "1c637a308ae1f487d3b7ee4e42b589e342bf36a2170210582400eec21c273436",
+      "disposition": "removed from production; exact archived bytes"
+    },
+    {
+      "source": "port/v2/apps/game/src/creature-planar-contact.test.ts",
+      "snapshot": "port/v2/apps/game/src/creature-planar-contact.test.ts",
+      "bytes": 2627,
+      "sha256": "80b293aca935bf25d7f67323254f81509e6936cd4c99eab707bb2ccbce8847cf",
+      "disposition": "removed from production; exact archived bytes"
+    },
+    {
+      "source": "port/v2/apps/game/src/creature-rig-contact-planar.test.ts",
+      "snapshot": "port/v2/apps/game/src/creature-rig-contact-planar.test.ts",
+      "bytes": 8459,
+      "sha256": "269ced71317217a56e351d273e8a59f342f11440a31f2749204e04c81c862057",
+      "disposition": "removed from production; exact archived bytes"
+    },
+    {
+      "source": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "snapshot": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "bytes": 33921,
+      "sha256": "acda802b193eb2973a34f3ba6c99e9bf00ac8195d1916486ad3b728132a77e62",
+      "disposition": "restored to preplanar policy-only source"
+    },
+    {
+      "source": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "snapshot": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "bytes": 74450,
+      "sha256": "080e38525409eb9bfd6fca0ec0dbc4168fa14b96a01aa0eac53141ec35281773",
+      "disposition": "restored to preplanar policy-only source"
+    },
+    {
+      "source": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "snapshot": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "bytes": 1612,
+      "sha256": "4a2f4cd25ec80b1ec5dec9f5930784d2d63dcdc8635d2294c9b982f0368e8d93",
+      "disposition": "restored to preplanar policy-only source"
+    },
+    {
+      "source": "port/v2/apps/game/src/creature-rig-contact-arachnid.test.ts",
+      "snapshot": "port/v2/apps/game/src/creature-rig-contact-arachnid.test.ts",
+      "bytes": 9912,
+      "sha256": "96d6ae9e9fcef61b7f357af4a1e6ef2ff7eb306a0071d96831866fb1e1fae1b8",
+      "disposition": "unchanged focused regression test"
+    },
+    {
+      "source": "port/v2/apps/game/src/creature-rig-contact-rigid-refusal.test.ts",
+      "snapshot": "port/v2/apps/game/src/creature-rig-contact-rigid-refusal.test.ts",
+      "bytes": 5009,
+      "sha256": "2193aaf22b460dc7d11c19811db124140ec51ea95b9cf7be7d90f540254692a4",
+      "disposition": "unchanged focused regression test"
+    }
+  ],
+  "restored": [
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "69f27faea2f2c1e50cbb49ed8b870c52c5c9f1ce07bba3395f823e615ed83303",
+      "expectedSha256": "69f27faea2f2c1e50cbb49ed8b870c52c5c9f1ce07bba3395f823e615ed83303",
+      "reference": "../arachnid-contact-policy-test-03.sources.json",
+      "exact": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "7d7f32565ceb746e90d06eb213fd622fc12360e1c425d48849a4fa6bb65b96b5",
+      "expectedSha256": "7d7f32565ceb746e90d06eb213fd622fc12360e1c425d48849a4fa6bb65b96b5",
+      "reference": "../arachnid-contact-policy-test-03.sources.json",
+      "exact": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "963b450e281494d014d975c2114904194991f683775dec6e76bc5b4ae0f1343e",
+      "expectedSha256": "963b450e281494d014d975c2114904194991f683775dec6e76bc5b4ae0f1343e",
+      "reference": "../arachnid-contact-policy-test-03.sources.json",
+      "exact": true
+    }
+  ]
+}

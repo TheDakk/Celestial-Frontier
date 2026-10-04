@@ -1,0 +1,724 @@
+{
+  "schema": "cf.approach-envelope-diagnosis/v1",
+  "scope": "Exact current adapter algorithm and existing solver, dense phase controls. No native measurement, no change to limits or exported stance-reach gate.",
+  "rows": [
+    {
+      "name": "Cougar",
+      "fit": "cougar-repair-03/fit-03",
+      "recordRecipeHash": "6a7cbcbab6ebe589ee6be792d628777157a0094dc66c33f3ff08a1a2843270e4",
+      "bindingHash": "cec4c45d5235309fae457aaac4891c19d83d637d90a7b4a50c85996e1953fcfa",
+      "durationMs": 932,
+      "idleDurationMs": 3151.8199287354946,
+      "modes": [
+        {
+          "mode": "rest",
+          "sixPhaseReach": 0.13886718750000002,
+          "brackets": [
+            {
+              "frac": 0.05,
+              "zero": true,
+              "admitted": 0.154296875
+            },
+            {
+              "frac": 0.25,
+              "zero": true,
+              "admitted": 0.154296875
+            },
+            {
+              "frac": 0.45,
+              "zero": true,
+              "admitted": 0.154296875
+            },
+            {
+              "frac": 0.55,
+              "zero": true,
+              "admitted": 0.154296875
+            },
+            {
+              "frac": 0.75,
+              "zero": true,
+              "admitted": 0.154296875
+            },
+            {
+              "frac": 0.95,
+              "zero": true,
+              "admitted": 0.154296875
+            }
+          ],
+          "scenarios": [
+            {
+              "kind": "pure-zero",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "pure-cadence",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-zero",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-cadence",
+              "total": 3872,
+              "refusals": 49,
+              "first": {
+                "fraction": 0.30833333333333335,
+                "ms": 287.3666666666667,
+                "idleMs": 1575.9099643677473,
+                "d": 0.08563476562500001,
+                "error": "Error: Contact: approach:walk@287.3666666666667 exceeds scale compression bound"
+              }
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "sixPhaseReach": 0.13886718750000002,
+          "brackets": [
+            {
+              "frac": 0.05,
+              "zero": true,
+              "admitted": 0.154296875
+            },
+            {
+              "frac": 0.25,
+              "zero": true,
+              "admitted": 0.154296875
+            },
+            {
+              "frac": 0.45,
+              "zero": true,
+              "admitted": 0.154296875
+            },
+            {
+              "frac": 0.55,
+              "zero": true,
+              "admitted": 0.154296875
+            },
+            {
+              "frac": 0.75,
+              "zero": true,
+              "admitted": 0.154296875
+            },
+            {
+              "frac": 0.95,
+              "zero": true,
+              "admitted": 0.154296875
+            }
+          ],
+          "scenarios": [
+            {
+              "kind": "pure-zero",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "pure-cadence",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-zero",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-cadence",
+              "total": 3872,
+              "refusals": 49,
+              "first": {
+                "fraction": 0.30833333333333335,
+                "ms": 287.3666666666667,
+                "idleMs": 1575.9099643677473,
+                "d": 0.08563476562500001,
+                "error": "Error: Contact: approach:walk@287.3666666666667 exceeds scale compression bound"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Brown Bear",
+      "fit": "14-brown-bear/fit-02",
+      "recordRecipeHash": "d43c5000ac4b244221129547aecb379dc4993df3af0173d33128fd2f12e59bec",
+      "bindingHash": "cc132c36231bc98610bd7e285bf27c9d133bee14322f34a5514fddd333c6ac0a",
+      "durationMs": 932,
+      "idleDurationMs": 3151.8199287354946,
+      "modes": [
+        {
+          "mode": "rest",
+          "sixPhaseReach": 0.1134613037109375,
+          "brackets": [
+            {
+              "frac": 0.05,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.25,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.45,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.55,
+              "zero": true,
+              "admitted": 0.126068115234375
+            },
+            {
+              "frac": 0.75,
+              "zero": true,
+              "admitted": 0.126068115234375
+            },
+            {
+              "frac": 0.95,
+              "zero": true,
+              "admitted": 0.126068115234375
+            }
+          ],
+          "scenarios": [
+            {
+              "kind": "pure-zero",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "pure-cadence",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-zero",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-cadence",
+              "total": 3872,
+              "refusals": 44,
+              "first": {
+                "fraction": 0.325,
+                "ms": 302.90000000000003,
+                "idleMs": 1575.9099643677473,
+                "d": 0.07374984741210938,
+                "error": "Error: Contact: approach:walk@302.90000000000003 exceeds scale compression bound"
+              }
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "sixPhaseReach": 0.11388015747070312,
+          "brackets": [
+            {
+              "frac": 0.05,
+              "zero": true,
+              "admitted": 0.208984375
+            },
+            {
+              "frac": 0.25,
+              "zero": true,
+              "admitted": 0.208984375
+            },
+            {
+              "frac": 0.45,
+              "zero": true,
+              "admitted": 0.208984375
+            },
+            {
+              "frac": 0.55,
+              "zero": true,
+              "admitted": 0.12653350830078125
+            },
+            {
+              "frac": 0.75,
+              "zero": true,
+              "admitted": 0.12653350830078125
+            },
+            {
+              "frac": 0.95,
+              "zero": true,
+              "admitted": 0.12653350830078125
+            }
+          ],
+          "scenarios": [
+            {
+              "kind": "pure-zero",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "pure-cadence",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-zero",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-cadence",
+              "total": 3872,
+              "refusals": 47,
+              "first": {
+                "fraction": 0.325,
+                "ms": 302.90000000000003,
+                "idleMs": 1575.9099643677473,
+                "d": 0.07402210235595703,
+                "error": "Error: Contact: approach:walk@302.90000000000003 exceeds scale compression bound"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ibex",
+      "fit": "18-ibex/fit-02",
+      "recordRecipeHash": "4f9131360086d036e678f8caf8e9efc3ed808055e7b18cfa599afd230583d823",
+      "bindingHash": "2b4e5daf37869949b9702a5faaf92fdd2dd9114eea8e8e6b9b22e90c4445015e",
+      "durationMs": 932,
+      "idleDurationMs": 3151.8199287354946,
+      "modes": [
+        {
+          "mode": "rest",
+          "sixPhaseReach": 0.18984375,
+          "brackets": [
+            {
+              "frac": 0.05,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.25,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.45,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.55,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.75,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.95,
+              "zero": true,
+              "admitted": 0.2109375
+            }
+          ],
+          "scenarios": [
+            {
+              "kind": "pure-zero",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "pure-cadence",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-zero",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-cadence",
+              "total": 3872,
+              "refusals": 219,
+              "first": {
+                "fraction": 0.11666666666666667,
+                "ms": 108.73333333333333,
+                "idleMs": 1575.9099643677473,
+                "d": 0.044296875,
+                "error": "Error: Contact: approach:walk@108.73333333333333 exceeds scale compression bound"
+              }
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "sixPhaseReach": 0.18984375,
+          "brackets": [
+            {
+              "frac": 0.05,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.25,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.45,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.55,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.75,
+              "zero": true,
+              "admitted": 0.2109375
+            },
+            {
+              "frac": 0.95,
+              "zero": true,
+              "admitted": 0.2109375
+            }
+          ],
+          "scenarios": [
+            {
+              "kind": "pure-zero",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "pure-cadence",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-zero",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-cadence",
+              "total": 3872,
+              "refusals": 219,
+              "first": {
+                "fraction": 0.11666666666666667,
+                "ms": 108.73333333333333,
+                "idleMs": 1575.9099643677473,
+                "d": 0.044296875,
+                "error": "Error: Contact: approach:walk@108.73333333333333 exceeds scale compression bound"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wolf",
+      "fit": "11-wolf/fit-03",
+      "recordRecipeHash": "13c67872a056f6d47de77cd4cdd78a12eab9004dacb7ecf686aa4ddbcb76eef8",
+      "bindingHash": "e32bcfd9768cd8d38ae0c73ce2572e2361b495ac1578c44d719ee3f5924717a2",
+      "durationMs": 932,
+      "idleDurationMs": 3151.8199287354946,
+      "modes": [
+        {
+          "mode": "rest",
+          "sixPhaseReach": 0.2373046875,
+          "brackets": [
+            {
+              "frac": 0.05,
+              "zero": true,
+              "admitted": 0.263671875
+            },
+            {
+              "frac": 0.25,
+              "zero": true,
+              "admitted": 0.263671875
+            },
+            {
+              "frac": 0.45,
+              "zero": true,
+              "admitted": 0.263671875
+            },
+            {
+              "frac": 0.55,
+              "zero": true,
+              "admitted": 0.263671875
+            },
+            {
+              "frac": 0.75,
+              "zero": true,
+              "admitted": 0.263671875
+            },
+            {
+              "frac": 0.95,
+              "zero": true,
+              "admitted": 0.263671875
+            }
+          ],
+          "scenarios": [
+            {
+              "kind": "pure-zero",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "pure-cadence",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-zero",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-cadence",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "sixPhaseReach": 0.2373046875,
+          "brackets": [
+            {
+              "frac": 0.05,
+              "zero": true,
+              "admitted": 0.263671875
+            },
+            {
+              "frac": 0.25,
+              "zero": true,
+              "admitted": 0.263671875
+            },
+            {
+              "frac": 0.45,
+              "zero": true,
+              "admitted": 0.263671875
+            },
+            {
+              "frac": 0.55,
+              "zero": true,
+              "admitted": 0.263671875
+            },
+            {
+              "frac": 0.75,
+              "zero": true,
+              "admitted": 0.263671875
+            },
+            {
+              "frac": 0.95,
+              "zero": true,
+              "admitted": 0.263671875
+            }
+          ],
+          "scenarios": [
+            {
+              "kind": "pure-zero",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "pure-cadence",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-zero",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-cadence",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "River Otter",
+      "fit": "13-river-otter/fit-02",
+      "recordRecipeHash": "e8e59458dcdce12b6048a2576dc19e9eed5bfb5211351a19ed60083e8c9c9255",
+      "bindingHash": "dc34516707f135ffe7039a748095c26cfb2af97f63d7c5e4a110f57dee7c7a61",
+      "durationMs": 932,
+      "idleDurationMs": 3151.8199287354946,
+      "modes": [
+        {
+          "mode": "rest",
+          "sixPhaseReach": 0.199237060546875,
+          "brackets": [
+            {
+              "frac": 0.05,
+              "zero": true,
+              "admitted": 0.2421875
+            },
+            {
+              "frac": 0.25,
+              "zero": true,
+              "admitted": 0.2421875
+            },
+            {
+              "frac": 0.45,
+              "zero": true,
+              "admitted": 0.2421875
+            },
+            {
+              "frac": 0.55,
+              "zero": true,
+              "admitted": 0.22137451171875
+            },
+            {
+              "frac": 0.75,
+              "zero": true,
+              "admitted": 0.22137451171875
+            },
+            {
+              "frac": 0.95,
+              "zero": true,
+              "admitted": 0.22137451171875
+            }
+          ],
+          "scenarios": [
+            {
+              "kind": "pure-zero",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "pure-cadence",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-zero",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-cadence",
+              "total": 3872,
+              "refusals": 45,
+              "first": {
+                "fraction": 0.39166666666666666,
+                "ms": 365.0333333333333,
+                "idleMs": 1575.9099643677473,
+                "d": 0.15606903076171877,
+                "error": "Error: Contact: approach:walk@365.0333333333333 exceeds scale compression bound"
+              }
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "sixPhaseReach": 0.199237060546875,
+          "brackets": [
+            {
+              "frac": 0.05,
+              "zero": true,
+              "admitted": 0.2421875
+            },
+            {
+              "frac": 0.25,
+              "zero": true,
+              "admitted": 0.2421875
+            },
+            {
+              "frac": 0.45,
+              "zero": true,
+              "admitted": 0.2421875
+            },
+            {
+              "frac": 0.55,
+              "zero": true,
+              "admitted": 0.22137451171875
+            },
+            {
+              "frac": 0.75,
+              "zero": true,
+              "admitted": 0.22137451171875
+            },
+            {
+              "frac": 0.95,
+              "zero": true,
+              "admitted": 0.22137451171875
+            }
+          ],
+          "scenarios": [
+            {
+              "kind": "pure-zero",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "pure-cadence",
+              "total": 121,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-zero",
+              "total": 3872,
+              "refusals": 0,
+              "first": null
+            },
+            {
+              "kind": "composite-cadence",
+              "total": 3872,
+              "refusals": 45,
+              "first": {
+                "fraction": 0.39166666666666666,
+                "ms": 365.0333333333333,
+                "idleMs": 1575.9099643677473,
+                "d": 0.15606903076171877,
+                "error": "Error: Contact: approach:walk@365.0333333333333 exceeds scale compression bound"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Gerenuk",
+  "masterSha256": "698cdd4bb32f9b98cfd0aa9c598b5905f23e848921862364bc9bd988276e1987",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four separate long leg chains and cloven foot tips, long slender neck, two visible ears, curved horns and attached tufted tail. Far upper foreleg remains hidden at chest and has only its exposed shaft authored by appearance; contacts are nearly level. No whole hidden-root claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 357,
+      "y0": 164,
+      "x1": 948,
+      "y1": 1040
+    },
+    "margins": {
+      "left": 357,
+      "right": 305,
+      "top": 164,
+      "bottom": 213
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

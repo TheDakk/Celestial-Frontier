@@ -1,0 +1,32 @@
+{
+  "schema": "cf.g2-verification/v1",
+  "status": "PASS_RETENTION_AND_FRAMING_ONLY",
+  "masters": 24,
+  "totalOriginalBytes": 30168687,
+  "invariants": {
+    "allNative1254": true,
+    "allFramingPass": true,
+    "allGeneratorBytesIdentical": true,
+    "allUniqueMasterHashes": true,
+    "onlyOneRequiredPattern": true
+  },
+  "commands": [
+    [
+      "node",
+      "audits/G2_C163_FAMILY_ORIGINALS_20261002/observe.mjs"
+    ],
+    [
+      "node",
+      "audits/G2_C163_FAMILY_ORIGINALS_20261002/verify-originals.mjs"
+    ],
+    [
+      "node",
+      "audits/G2_C163_FAMILY_ORIGINALS_20261002/review.mjs"
+    ]
+  ],
+  "acceptance": false,
+  "authoringCreated": false,
+  "nativeRuns": 0,
+  "limitsChanged": false,
+  "scope": "Existing deterministic framing/pattern observers and original byte retention. No semantic anatomy, rig, motion, performance or Dakk acceptance."
+}

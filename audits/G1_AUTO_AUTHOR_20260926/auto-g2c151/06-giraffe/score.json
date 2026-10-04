@@ -1,0 +1,9 @@
+{
+ "id": "06-giraffe",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+ ],
+ "semanticPresence": null
+}

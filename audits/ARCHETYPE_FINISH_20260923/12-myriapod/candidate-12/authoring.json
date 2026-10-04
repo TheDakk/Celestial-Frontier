@@ -1,0 +1,2816 @@
+{
+  "id": "centipede",
+  "family": "myriapod",
+  "landmarksPx": {
+    "root": [
+      640,
+      665
+    ],
+    "head": [
+      1070,
+      669
+    ],
+    "mandible": [
+      1112,
+      724
+    ],
+    "antennaFar": [
+      1208,
+      415
+    ],
+    "antennaNear": [
+      1220,
+      863
+    ],
+    "leg0NearKnee": [
+      1066,
+      768
+    ],
+    "leg0NearFoot": [
+      1026,
+      824
+    ],
+    "leg1NearKnee": [
+      1007,
+      758
+    ],
+    "leg1NearFoot": [
+      968,
+      821
+    ],
+    "leg2NearKnee": [
+      947,
+      754
+    ],
+    "leg2NearFoot": [
+      908,
+      816
+    ],
+    "leg3NearKnee": [
+      885,
+      751
+    ],
+    "leg3NearFoot": [
+      847,
+      812
+    ],
+    "leg4NearKnee": [
+      826,
+      745
+    ],
+    "leg4NearFoot": [
+      786,
+      811
+    ],
+    "leg5NearKnee": [
+      768,
+      742
+    ],
+    "leg5NearFoot": [
+      724,
+      809
+    ],
+    "leg6NearKnee": [
+      707,
+      743
+    ],
+    "leg6NearFoot": [
+      664,
+      813
+    ],
+    "leg7NearKnee": [
+      642,
+      751
+    ],
+    "leg7NearFoot": [
+      600,
+      817
+    ],
+    "leg8NearKnee": [
+      575,
+      757
+    ],
+    "leg8NearFoot": [
+      530,
+      824
+    ],
+    "leg9NearKnee": [
+      514,
+      765
+    ],
+    "leg9NearFoot": [
+      467,
+      828
+    ],
+    "leg10NearKnee": [
+      444,
+      763
+    ],
+    "leg10NearFoot": [
+      397,
+      831
+    ],
+    "leg11NearKnee": [
+      381,
+      758
+    ],
+    "leg11NearFoot": [
+      333,
+      824
+    ],
+    "leg12NearKnee": [
+      324,
+      751
+    ],
+    "leg12NearFoot": [
+      275,
+      818
+    ],
+    "leg13NearKnee": [
+      263,
+      746
+    ],
+    "leg13NearFoot": [
+      214,
+      815
+    ],
+    "leg0FarKnee": [
+      1014,
+      609
+    ],
+    "leg0FarFoot": [
+      1057,
+      558
+    ],
+    "leg1FarKnee": [
+      955,
+      607
+    ],
+    "leg1FarFoot": [
+      994,
+      553
+    ],
+    "leg2FarKnee": [
+      895,
+      600
+    ],
+    "leg2FarFoot": [
+      933,
+      543
+    ],
+    "leg3FarKnee": [
+      835,
+      592
+    ],
+    "leg3FarFoot": [
+      866,
+      536
+    ],
+    "leg4FarKnee": [
+      775,
+      588
+    ],
+    "leg4FarFoot": [
+      812,
+      532
+    ],
+    "leg5FarKnee": [
+      713,
+      585
+    ],
+    "leg5FarFoot": [
+      748,
+      530
+    ],
+    "leg6FarKnee": [
+      653,
+      587
+    ],
+    "leg6FarFoot": [
+      687,
+      529
+    ],
+    "leg7FarKnee": [
+      591,
+      592
+    ],
+    "leg7FarFoot": [
+      626,
+      535
+    ],
+    "leg8FarKnee": [
+      530,
+      600
+    ],
+    "leg8FarFoot": [
+      569,
+      539
+    ],
+    "leg9FarKnee": [
+      468,
+      607
+    ],
+    "leg9FarFoot": [
+      503,
+      551
+    ],
+    "leg10FarKnee": [
+      409,
+      608
+    ],
+    "leg10FarFoot": [
+      443,
+      558
+    ],
+    "leg11FarKnee": [
+      350,
+      604
+    ],
+    "leg11FarFoot": [
+      387,
+      552
+    ],
+    "leg12FarKnee": [
+      289,
+      598
+    ],
+    "leg12FarFoot": [
+      330,
+      542
+    ],
+    "leg13FarKnee": [
+      231,
+      593
+    ],
+    "leg13FarFoot": [
+      266,
+      536
+    ],
+    "ultimateNear": [
+      63,
+      800
+    ],
+    "ultimateFar": [
+      46,
+      548
+    ]
+  },
+  "fixedAttachmentsPx": {
+    "head": [
+      1027,
+      660
+    ],
+    "leg0NearKnee": [
+      1024,
+      710
+    ],
+    "leg1NearKnee": [
+      961,
+      707
+    ],
+    "leg2NearKnee": [
+      900,
+      702
+    ],
+    "leg3NearKnee": [
+      856,
+      702
+    ],
+    "leg4NearKnee": [
+      797,
+      696
+    ],
+    "leg5NearKnee": [
+      737,
+      690
+    ],
+    "leg6NearKnee": [
+      658,
+      694
+    ],
+    "leg7NearKnee": [
+      599,
+      704
+    ],
+    "leg8NearKnee": [
+      539,
+      710
+    ],
+    "leg9NearKnee": [
+      480,
+      714
+    ],
+    "leg10NearKnee": [
+      421,
+      716
+    ],
+    "leg11NearKnee": [
+      362,
+      713
+    ],
+    "leg12NearKnee": [
+      302,
+      705
+    ],
+    "leg13NearKnee": [
+      244,
+      700
+    ],
+    "leg0FarKnee": [
+      1022,
+      639
+    ],
+    "leg1FarKnee": [
+      972,
+      637
+    ],
+    "leg2FarKnee": [
+      911,
+      632
+    ],
+    "leg3FarKnee": [
+      851,
+      629
+    ],
+    "leg4FarKnee": [
+      791,
+      623
+    ],
+    "leg5FarKnee": [
+      731,
+      621
+    ],
+    "leg6FarKnee": [
+      671,
+      623
+    ],
+    "leg7FarKnee": [
+      610,
+      629
+    ],
+    "leg8FarKnee": [
+      549,
+      638
+    ],
+    "leg9FarKnee": [
+      488,
+      643
+    ],
+    "leg10FarKnee": [
+      427,
+      645
+    ],
+    "leg11FarKnee": [
+      366,
+      642
+    ],
+    "leg12FarKnee": [
+      305,
+      633
+    ],
+    "leg13FarKnee": [
+      246,
+      627
+    ],
+    "ultimateNear": [
+      183,
+      686
+    ],
+    "ultimateFar": [
+      193,
+      640
+    ]
+  },
+  "groundLineY": 0.72,
+  "materials": {
+    "surface": "chitin"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "leg0-near",
+      "joint": "leg0NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1005,
+          706
+        ],
+        [
+          1043,
+          706
+        ],
+        [
+          1097,
+          768
+        ],
+        [
+          1059,
+          824
+        ],
+        [
+          1059,
+          851
+        ],
+        [
+          997,
+          851
+        ],
+        [
+          997,
+          823
+        ],
+        [
+          1037,
+          763
+        ]
+      ]
+    },
+    {
+      "id": "leg1-near",
+      "joint": "leg1NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          942,
+          703
+        ],
+        [
+          980,
+          703
+        ],
+        [
+          995,
+          706
+        ],
+        [
+          1007,
+          708
+        ],
+        [
+          1017,
+          715
+        ],
+        [
+          1026,
+          741
+        ],
+        [
+          1037,
+          763
+        ],
+        [
+          997,
+          823
+        ],
+        [
+          997,
+          850
+        ],
+        [
+          938,
+          850
+        ],
+        [
+          938,
+          819
+        ],
+        [
+          977,
+          756
+        ],
+        [
+          953,
+          726
+        ]
+      ]
+    },
+    {
+      "id": "leg2-near",
+      "joint": "leg2NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          881,
+          698
+        ],
+        [
+          919,
+          698
+        ],
+        [
+          949,
+          719
+        ],
+        [
+          967,
+          741
+        ],
+        [
+          977,
+          756
+        ],
+        [
+          938,
+          819
+        ],
+        [
+          938,
+          846
+        ],
+        [
+          878,
+          846
+        ],
+        [
+          878,
+          814
+        ],
+        [
+          916,
+          753
+        ]
+      ]
+    },
+    {
+      "id": "leg3-near",
+      "joint": "leg3NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          837,
+          698
+        ],
+        [
+          875,
+          698
+        ],
+        [
+          886,
+          705
+        ],
+        [
+          901,
+          727
+        ],
+        [
+          916,
+          753
+        ],
+        [
+          878,
+          814
+        ],
+        [
+          878,
+          841
+        ],
+        [
+          817,
+          841
+        ],
+        [
+          817,
+          812
+        ],
+        [
+          856,
+          748
+        ]
+      ]
+    },
+    {
+      "id": "leg4-near",
+      "joint": "leg4NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          778,
+          692
+        ],
+        [
+          816,
+          692
+        ],
+        [
+          836,
+          715
+        ],
+        [
+          856,
+          748
+        ],
+        [
+          817,
+          812
+        ],
+        [
+          817,
+          839
+        ],
+        [
+          755,
+          839
+        ],
+        [
+          755,
+          810
+        ],
+        [
+          797,
+          744
+        ]
+      ]
+    },
+    {
+      "id": "leg5-near",
+      "joint": "leg5NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          718,
+          686
+        ],
+        [
+          756,
+          686
+        ],
+        [
+          792,
+          730
+        ],
+        [
+          797,
+          744
+        ],
+        [
+          755,
+          810
+        ],
+        [
+          755,
+          838
+        ],
+        [
+          694,
+          838
+        ],
+        [
+          694,
+          811
+        ],
+        [
+          738,
+          743
+        ]
+      ]
+    },
+    {
+      "id": "leg6-near",
+      "joint": "leg6NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          639,
+          690
+        ],
+        [
+          677,
+          690
+        ],
+        [
+          694,
+          694
+        ],
+        [
+          709,
+          698
+        ],
+        [
+          716,
+          712
+        ],
+        [
+          721,
+          724
+        ],
+        [
+          738,
+          743
+        ],
+        [
+          694,
+          811
+        ],
+        [
+          694,
+          842
+        ],
+        [
+          632,
+          842
+        ],
+        [
+          632,
+          815
+        ],
+        [
+          675,
+          747
+        ]
+      ]
+    },
+    {
+      "id": "leg7-near",
+      "joint": "leg7NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          580,
+          700
+        ],
+        [
+          618,
+          700
+        ],
+        [
+          675,
+          747
+        ],
+        [
+          632,
+          815
+        ],
+        [
+          632,
+          848
+        ],
+        [
+          565,
+          848
+        ],
+        [
+          565,
+          821
+        ],
+        [
+          609,
+          754
+        ]
+      ]
+    },
+    {
+      "id": "leg8-near",
+      "joint": "leg8NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          520,
+          706
+        ],
+        [
+          558,
+          706
+        ],
+        [
+          609,
+          754
+        ],
+        [
+          565,
+          821
+        ],
+        [
+          565,
+          853
+        ],
+        [
+          499,
+          853
+        ],
+        [
+          499,
+          826
+        ],
+        [
+          545,
+          761
+        ]
+      ]
+    },
+    {
+      "id": "leg9-near",
+      "joint": "leg9NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          461,
+          710
+        ],
+        [
+          499,
+          710
+        ],
+        [
+          545,
+          761
+        ],
+        [
+          499,
+          826
+        ],
+        [
+          499,
+          857
+        ],
+        [
+          432,
+          857
+        ],
+        [
+          432,
+          830
+        ],
+        [
+          479,
+          764
+        ]
+      ]
+    },
+    {
+      "id": "leg10-near",
+      "joint": "leg10NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          402,
+          712
+        ],
+        [
+          440,
+          712
+        ],
+        [
+          453,
+          724
+        ],
+        [
+          479,
+          764
+        ],
+        [
+          432,
+          830
+        ],
+        [
+          432,
+          858
+        ],
+        [
+          365,
+          858
+        ],
+        [
+          365,
+          828
+        ],
+        [
+          413,
+          761
+        ]
+      ]
+    },
+    {
+      "id": "leg11-near",
+      "joint": "leg11NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          343,
+          709
+        ],
+        [
+          381,
+          709
+        ],
+        [
+          413,
+          761
+        ],
+        [
+          365,
+          828
+        ],
+        [
+          365,
+          855
+        ],
+        [
+          304,
+          855
+        ],
+        [
+          304,
+          821
+        ],
+        [
+          353,
+          755
+        ]
+      ]
+    },
+    {
+      "id": "leg12-near",
+      "joint": "leg12NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          283,
+          701
+        ],
+        [
+          321,
+          701
+        ],
+        [
+          353,
+          755
+        ],
+        [
+          304,
+          821
+        ],
+        [
+          304,
+          848
+        ],
+        [
+          245,
+          848
+        ],
+        [
+          245,
+          817
+        ],
+        [
+          294,
+          749
+        ]
+      ]
+    },
+    {
+      "id": "leg13-near",
+      "joint": "leg13NearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          225,
+          696
+        ],
+        [
+          263,
+          696
+        ],
+        [
+          265,
+          700
+        ],
+        [
+          284,
+          702
+        ],
+        [
+          288,
+          710
+        ],
+        [
+          294,
+          749
+        ],
+        [
+          245,
+          817
+        ],
+        [
+          245,
+          844
+        ],
+        [
+          181,
+          844
+        ],
+        [
+          181,
+          815
+        ],
+        [
+          232,
+          746
+        ]
+      ]
+    },
+    {
+      "id": "leg0-far",
+      "joint": "leg0FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          1008,
+          642
+        ],
+        [
+          1036,
+          642
+        ],
+        [
+          1045,
+          609
+        ],
+        [
+          1090,
+          558
+        ],
+        [
+          1090,
+          529
+        ],
+        [
+          1026,
+          529
+        ],
+        [
+          1026,
+          556
+        ],
+        [
+          985,
+          608
+        ]
+      ]
+    },
+    {
+      "id": "leg1-far",
+      "joint": "leg1FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          953,
+          640
+        ],
+        [
+          991,
+          640
+        ],
+        [
+          985,
+          608
+        ],
+        [
+          1026,
+          556
+        ],
+        [
+          1026,
+          521
+        ],
+        [
+          964,
+          521
+        ],
+        [
+          964,
+          548
+        ],
+        [
+          925,
+          604
+        ]
+      ]
+    },
+    {
+      "id": "leg2-far",
+      "joint": "leg2FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          892,
+          635
+        ],
+        [
+          930,
+          635
+        ],
+        [
+          925,
+          604
+        ],
+        [
+          964,
+          548
+        ],
+        [
+          964,
+          513
+        ],
+        [
+          900,
+          513
+        ],
+        [
+          900,
+          540
+        ],
+        [
+          865,
+          596
+        ]
+      ]
+    },
+    {
+      "id": "leg3-far",
+      "joint": "leg3FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          851,
+          630
+        ],
+        [
+          858,
+          624
+        ],
+        [
+          866,
+          620
+        ],
+        [
+          865,
+          596
+        ],
+        [
+          900,
+          540
+        ],
+        [
+          900,
+          507
+        ],
+        [
+          839,
+          507
+        ],
+        [
+          839,
+          534
+        ],
+        [
+          805,
+          590
+        ],
+        [
+          819,
+          612
+        ],
+        [
+          824,
+          614
+        ],
+        [
+          832,
+          616
+        ],
+        [
+          837,
+          619
+        ],
+        [
+          843,
+          624
+        ],
+        [
+          849,
+          629
+        ]
+      ]
+    },
+    {
+      "id": "leg4-far",
+      "joint": "leg4FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          772,
+          626
+        ],
+        [
+          810,
+          626
+        ],
+        [
+          805,
+          590
+        ],
+        [
+          839,
+          534
+        ],
+        [
+          839,
+          504
+        ],
+        [
+          780,
+          504
+        ],
+        [
+          780,
+          531
+        ],
+        [
+          744,
+          587
+        ]
+      ]
+    },
+    {
+      "id": "leg5-far",
+      "joint": "leg5FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          712,
+          624
+        ],
+        [
+          750,
+          624
+        ],
+        [
+          744,
+          587
+        ],
+        [
+          780,
+          531
+        ],
+        [
+          780,
+          503
+        ],
+        [
+          718,
+          503
+        ],
+        [
+          718,
+          530
+        ],
+        [
+          683,
+          586
+        ]
+      ]
+    },
+    {
+      "id": "leg6-far",
+      "joint": "leg6FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          652,
+          626
+        ],
+        [
+          690,
+          626
+        ],
+        [
+          683,
+          586
+        ],
+        [
+          718,
+          530
+        ],
+        [
+          718,
+          502
+        ],
+        [
+          657,
+          502
+        ],
+        [
+          657,
+          532
+        ],
+        [
+          622,
+          590
+        ]
+      ]
+    },
+    {
+      "id": "leg7-far",
+      "joint": "leg7FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          591,
+          632
+        ],
+        [
+          629,
+          632
+        ],
+        [
+          622,
+          590
+        ],
+        [
+          657,
+          532
+        ],
+        [
+          657,
+          505
+        ],
+        [
+          598,
+          505
+        ],
+        [
+          598,
+          537
+        ],
+        [
+          561,
+          596
+        ]
+      ]
+    },
+    {
+      "id": "leg8-far",
+      "joint": "leg8FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          530,
+          641
+        ],
+        [
+          568,
+          641
+        ],
+        [
+          561,
+          596
+        ],
+        [
+          598,
+          537
+        ],
+        [
+          598,
+          510
+        ],
+        [
+          536,
+          510
+        ],
+        [
+          536,
+          545
+        ],
+        [
+          499,
+          604
+        ]
+      ]
+    },
+    {
+      "id": "leg9-far",
+      "joint": "leg9FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          469,
+          646
+        ],
+        [
+          507,
+          646
+        ],
+        [
+          499,
+          604
+        ],
+        [
+          536,
+          545
+        ],
+        [
+          536,
+          518
+        ],
+        [
+          473,
+          518
+        ],
+        [
+          473,
+          555
+        ],
+        [
+          439,
+          608
+        ]
+      ]
+    },
+    {
+      "id": "leg10-far",
+      "joint": "leg10FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          408,
+          648
+        ],
+        [
+          446,
+          648
+        ],
+        [
+          439,
+          608
+        ],
+        [
+          473,
+          555
+        ],
+        [
+          473,
+          528
+        ],
+        [
+          415,
+          528
+        ],
+        [
+          415,
+          555
+        ],
+        [
+          380,
+          606
+        ]
+      ]
+    },
+    {
+      "id": "leg11-far",
+      "joint": "leg11FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          347,
+          645
+        ],
+        [
+          385,
+          645
+        ],
+        [
+          380,
+          606
+        ],
+        [
+          415,
+          555
+        ],
+        [
+          415,
+          520
+        ],
+        [
+          359,
+          520
+        ],
+        [
+          359,
+          547
+        ],
+        [
+          320,
+          601
+        ]
+      ]
+    },
+    {
+      "id": "leg12-far",
+      "joint": "leg12FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          286,
+          636
+        ],
+        [
+          324,
+          636
+        ],
+        [
+          320,
+          601
+        ],
+        [
+          359,
+          547
+        ],
+        [
+          359,
+          512
+        ],
+        [
+          298,
+          512
+        ],
+        [
+          298,
+          539
+        ],
+        [
+          260,
+          596
+        ]
+      ]
+    },
+    {
+      "id": "leg13-far",
+      "joint": "leg13FarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          227,
+          630
+        ],
+        [
+          265,
+          630
+        ],
+        [
+          260,
+          596
+        ],
+        [
+          298,
+          539
+        ],
+        [
+          298,
+          509
+        ],
+        [
+          233,
+          509
+        ],
+        [
+          233,
+          536
+        ],
+        [
+          200,
+          593
+        ]
+      ]
+    },
+    {
+      "id": "ultimate-near",
+      "joint": "ultimateNear",
+      "layer": "near",
+      "polygonPx": [
+        [
+          191,
+          680
+        ],
+        [
+          192,
+          695
+        ],
+        [
+          174,
+          715
+        ],
+        [
+          151,
+          738
+        ],
+        [
+          126,
+          761
+        ],
+        [
+          104,
+          782
+        ],
+        [
+          84,
+          802
+        ],
+        [
+          67,
+          823
+        ],
+        [
+          45,
+          821
+        ],
+        [
+          45,
+          802
+        ],
+        [
+          56,
+          775
+        ],
+        [
+          76,
+          748
+        ],
+        [
+          101,
+          725
+        ],
+        [
+          126,
+          702
+        ],
+        [
+          152,
+          684
+        ],
+        [
+          175,
+          679
+        ]
+      ]
+    },
+    {
+      "id": "ultimate-far",
+      "joint": "ultimateFar",
+      "layer": "far",
+      "polygonPx": [
+        [
+          194,
+          631
+        ],
+        [
+          184,
+          612
+        ],
+        [
+          167,
+          591
+        ],
+        [
+          144,
+          566
+        ],
+        [
+          116,
+          543
+        ],
+        [
+          87,
+          528
+        ],
+        [
+          64,
+          526
+        ],
+        [
+          43,
+          538
+        ],
+        [
+          35,
+          561
+        ],
+        [
+          60,
+          549
+        ],
+        [
+          85,
+          559
+        ],
+        [
+          108,
+          581
+        ],
+        [
+          130,
+          607
+        ],
+        [
+          155,
+          634
+        ],
+        [
+          161,
+          631
+        ],
+        [
+          177,
+          647
+        ],
+        [
+          189,
+          641
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1021,
+          608
+        ],
+        [
+          1092,
+          601
+        ],
+        [
+          1154,
+          537
+        ],
+        [
+          1190,
+          405
+        ],
+        [
+          1230,
+          395
+        ],
+        [
+          1253,
+          405
+        ],
+        [
+          1253,
+          891
+        ],
+        [
+          1202,
+          891
+        ],
+        [
+          1162,
+          780
+        ],
+        [
+          1123,
+          752
+        ],
+        [
+          1071,
+          740
+        ],
+        [
+          1021,
+          710
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "regionalInfluences": [
+    {
+      "id": "leg0-near-knee-bend-observed-paint",
+      "partId": "leg0-near",
+      "joint": "leg0NearKnee",
+      "polygonPx": [
+        [
+          1054,
+          756
+        ],
+        [
+          1078,
+          756
+        ],
+        [
+          1078,
+          780
+        ],
+        [
+          1054,
+          780
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg1-near-knee-bend-observed-paint",
+      "partId": "leg1-near",
+      "joint": "leg1NearKnee",
+      "polygonPx": [
+        [
+          995,
+          746
+        ],
+        [
+          1019,
+          746
+        ],
+        [
+          1019,
+          770
+        ],
+        [
+          995,
+          770
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg2-near-knee-bend-observed-paint",
+      "partId": "leg2-near",
+      "joint": "leg2NearKnee",
+      "polygonPx": [
+        [
+          935,
+          742
+        ],
+        [
+          959,
+          742
+        ],
+        [
+          959,
+          766
+        ],
+        [
+          935,
+          766
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg3-near-knee-bend-observed-paint",
+      "partId": "leg3-near",
+      "joint": "leg3NearKnee",
+      "polygonPx": [
+        [
+          873,
+          739
+        ],
+        [
+          897,
+          739
+        ],
+        [
+          897,
+          763
+        ],
+        [
+          873,
+          763
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg4-near-knee-bend-observed-paint",
+      "partId": "leg4-near",
+      "joint": "leg4NearKnee",
+      "polygonPx": [
+        [
+          814,
+          733
+        ],
+        [
+          838,
+          733
+        ],
+        [
+          838,
+          757
+        ],
+        [
+          814,
+          757
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg5-near-knee-bend-observed-paint",
+      "partId": "leg5-near",
+      "joint": "leg5NearKnee",
+      "polygonPx": [
+        [
+          756,
+          730
+        ],
+        [
+          780,
+          730
+        ],
+        [
+          780,
+          754
+        ],
+        [
+          756,
+          754
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg6-near-knee-bend-observed-paint",
+      "partId": "leg6-near",
+      "joint": "leg6NearKnee",
+      "polygonPx": [
+        [
+          695,
+          731
+        ],
+        [
+          719,
+          731
+        ],
+        [
+          719,
+          755
+        ],
+        [
+          695,
+          755
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg7-near-knee-bend-observed-paint",
+      "partId": "leg7-near",
+      "joint": "leg7NearKnee",
+      "polygonPx": [
+        [
+          630,
+          739
+        ],
+        [
+          654,
+          739
+        ],
+        [
+          654,
+          763
+        ],
+        [
+          630,
+          763
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg8-near-knee-bend-observed-paint",
+      "partId": "leg8-near",
+      "joint": "leg8NearKnee",
+      "polygonPx": [
+        [
+          563,
+          745
+        ],
+        [
+          587,
+          745
+        ],
+        [
+          587,
+          769
+        ],
+        [
+          563,
+          769
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg9-near-knee-bend-observed-paint",
+      "partId": "leg9-near",
+      "joint": "leg9NearKnee",
+      "polygonPx": [
+        [
+          502,
+          753
+        ],
+        [
+          526,
+          753
+        ],
+        [
+          526,
+          777
+        ],
+        [
+          502,
+          777
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg10-near-knee-bend-observed-paint",
+      "partId": "leg10-near",
+      "joint": "leg10NearKnee",
+      "polygonPx": [
+        [
+          432,
+          751
+        ],
+        [
+          456,
+          751
+        ],
+        [
+          456,
+          775
+        ],
+        [
+          432,
+          775
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg11-near-knee-bend-observed-paint",
+      "partId": "leg11-near",
+      "joint": "leg11NearKnee",
+      "polygonPx": [
+        [
+          369,
+          746
+        ],
+        [
+          393,
+          746
+        ],
+        [
+          393,
+          770
+        ],
+        [
+          369,
+          770
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg12-near-knee-bend-observed-paint",
+      "partId": "leg12-near",
+      "joint": "leg12NearKnee",
+      "polygonPx": [
+        [
+          312,
+          739
+        ],
+        [
+          336,
+          739
+        ],
+        [
+          336,
+          763
+        ],
+        [
+          312,
+          763
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg13-near-knee-bend-observed-paint",
+      "partId": "leg13-near",
+      "joint": "leg13NearKnee",
+      "polygonPx": [
+        [
+          251,
+          734
+        ],
+        [
+          275,
+          734
+        ],
+        [
+          275,
+          758
+        ],
+        [
+          251,
+          758
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg0-far-knee-bend-observed-paint",
+      "partId": "leg0-far",
+      "joint": "leg0FarKnee",
+      "polygonPx": [
+        [
+          1006,
+          601
+        ],
+        [
+          1022,
+          601
+        ],
+        [
+          1022,
+          617
+        ],
+        [
+          1006,
+          617
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg1-far-knee-bend-observed-paint",
+      "partId": "leg1-far",
+      "joint": "leg1FarKnee",
+      "polygonPx": [
+        [
+          947,
+          599
+        ],
+        [
+          963,
+          599
+        ],
+        [
+          963,
+          615
+        ],
+        [
+          947,
+          615
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg2-far-knee-bend-observed-paint",
+      "partId": "leg2-far",
+      "joint": "leg2FarKnee",
+      "polygonPx": [
+        [
+          887,
+          592
+        ],
+        [
+          903,
+          592
+        ],
+        [
+          903,
+          608
+        ],
+        [
+          887,
+          608
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg3-far-knee-bend-observed-paint",
+      "partId": "leg3-far",
+      "joint": "leg3FarKnee",
+      "polygonPx": [
+        [
+          827,
+          584
+        ],
+        [
+          843,
+          584
+        ],
+        [
+          843,
+          600
+        ],
+        [
+          827,
+          600
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg4-far-knee-bend-observed-paint",
+      "partId": "leg4-far",
+      "joint": "leg4FarKnee",
+      "polygonPx": [
+        [
+          767,
+          580
+        ],
+        [
+          783,
+          580
+        ],
+        [
+          783,
+          596
+        ],
+        [
+          767,
+          596
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg5-far-knee-bend-observed-paint",
+      "partId": "leg5-far",
+      "joint": "leg5FarKnee",
+      "polygonPx": [
+        [
+          705,
+          577
+        ],
+        [
+          721,
+          577
+        ],
+        [
+          721,
+          593
+        ],
+        [
+          705,
+          593
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg6-far-knee-bend-observed-paint",
+      "partId": "leg6-far",
+      "joint": "leg6FarKnee",
+      "polygonPx": [
+        [
+          645,
+          579
+        ],
+        [
+          661,
+          579
+        ],
+        [
+          661,
+          595
+        ],
+        [
+          645,
+          595
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg7-far-knee-bend-observed-paint",
+      "partId": "leg7-far",
+      "joint": "leg7FarKnee",
+      "polygonPx": [
+        [
+          583,
+          584
+        ],
+        [
+          599,
+          584
+        ],
+        [
+          599,
+          600
+        ],
+        [
+          583,
+          600
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg8-far-knee-bend-observed-paint",
+      "partId": "leg8-far",
+      "joint": "leg8FarKnee",
+      "polygonPx": [
+        [
+          522,
+          592
+        ],
+        [
+          538,
+          592
+        ],
+        [
+          538,
+          608
+        ],
+        [
+          522,
+          608
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg9-far-knee-bend-observed-paint",
+      "partId": "leg9-far",
+      "joint": "leg9FarKnee",
+      "polygonPx": [
+        [
+          460,
+          599
+        ],
+        [
+          476,
+          599
+        ],
+        [
+          476,
+          615
+        ],
+        [
+          460,
+          615
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg10-far-knee-bend-observed-paint",
+      "partId": "leg10-far",
+      "joint": "leg10FarKnee",
+      "polygonPx": [
+        [
+          401,
+          600
+        ],
+        [
+          417,
+          600
+        ],
+        [
+          417,
+          616
+        ],
+        [
+          401,
+          616
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg11-far-knee-bend-observed-paint",
+      "partId": "leg11-far",
+      "joint": "leg11FarKnee",
+      "polygonPx": [
+        [
+          342,
+          596
+        ],
+        [
+          358,
+          596
+        ],
+        [
+          358,
+          612
+        ],
+        [
+          342,
+          612
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg12-far-knee-bend-observed-paint",
+      "partId": "leg12-far",
+      "joint": "leg12FarKnee",
+      "polygonPx": [
+        [
+          281,
+          590
+        ],
+        [
+          297,
+          590
+        ],
+        [
+          297,
+          606
+        ],
+        [
+          281,
+          606
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg13-far-knee-bend-observed-paint",
+      "partId": "leg13-far",
+      "joint": "leg13FarKnee",
+      "polygonPx": [
+        [
+          223,
+          585
+        ],
+        [
+          239,
+          585
+        ],
+        [
+          239,
+          601
+        ],
+        [
+          223,
+          601
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "head-far-antenna-observed-paint",
+      "partId": "head",
+      "joint": "antennaFar",
+      "polygonPx": [
+        [
+          1123,
+          627
+        ],
+        [
+          1109,
+          602
+        ],
+        [
+          1140,
+          574
+        ],
+        [
+          1159,
+          528
+        ],
+        [
+          1177,
+          466
+        ],
+        [
+          1197,
+          415
+        ],
+        [
+          1225,
+          401
+        ],
+        [
+          1234,
+          436
+        ],
+        [
+          1210,
+          500
+        ],
+        [
+          1193,
+          559
+        ],
+        [
+          1167,
+          605
+        ]
+      ],
+      "pin": false
+    },
+    {
+      "id": "head-near-antenna-observed-paint",
+      "partId": "head",
+      "joint": "antennaNear",
+      "polygonPx": [
+        [
+          1141,
+          688
+        ],
+        [
+          1154,
+          702
+        ],
+        [
+          1179,
+          746
+        ],
+        [
+          1196,
+          803
+        ],
+        [
+          1238,
+          881
+        ],
+        [
+          1207,
+          889
+        ],
+        [
+          1176,
+          819
+        ],
+        [
+          1154,
+          762
+        ],
+        [
+          1129,
+          724
+        ]
+      ],
+      "pin": false
+    },
+    {
+      "id": "head-mouth-forcipules-observed-paint",
+      "partId": "head",
+      "joint": "mandible",
+      "polygonPx": [
+        [
+          1100,
+          710
+        ],
+        [
+          1113,
+          693
+        ],
+        [
+          1130,
+          704
+        ],
+        [
+          1137,
+          724
+        ],
+        [
+          1124,
+          746
+        ],
+        [
+          1105,
+          746
+        ],
+        [
+          1096,
+          731
+        ]
+      ],
+      "pin": false
+    },
+    {
+      "id": "leg3-far-upper-shaft-observed-gold-proposal",
+      "partId": "leg3-far",
+      "joint": "leg3FarKnee",
+      "polygonPx": [
+        [
+          830,
+          590
+        ],
+        [
+          841,
+          588
+        ],
+        [
+          845,
+          594
+        ],
+        [
+          846,
+          603
+        ],
+        [
+          853,
+          612
+        ],
+        [
+          859,
+          618
+        ],
+        [
+          854,
+          622
+        ],
+        [
+          847,
+          622
+        ],
+        [
+          840,
+          617
+        ],
+        [
+          835,
+          610
+        ],
+        [
+          831,
+          603
+        ],
+        [
+          828,
+          596
+        ]
+      ],
+      "pin": false
+    }
+  ],
+  "coverage": {
+    "declarations": "Parent-owned candidate03/presence.json supplies14 walking pairs and1ultimate pair with explicit absent/hidden/folded values. Independent actual-source review confirms14 near walking chains,14 far walking chains,2ultimate appendages and2antennae. This authoring does not infer or rewrite presence.",
+    "visualAcceptance": "Bounded first source authoring for qualification. All main tips appear within the canvas. Requested8% margin remains missed; all delivered alpha/fringe is retained. No IC3, static, film, support or performance acceptance claimed.",
+    "landmarkMethod": "All63 joint points and31fixed socket locations are manually authored from actual candidate03/master.png. No guide coordinates or rejected-master landmarks were copied. Source alpha was inspected at the drafted points; transparency misses were corrected by viewing local source crops, not by a nearest-pixel scan, a numerical grid, solver trials or motion-gate tuning. Some very thin distal tip points lie on retained low-alpha paint; no opacity cutoff is substituted for source alpha. Socket centers are visible lateral attachment estimates, not claims to see hidden internal joint centers.",
+    "ownershipMethod": "Thirty-two owners:28 whole walking limbs,2ultimate appendages,one head andone rigid trunk/body remainder. Whole-limb polygons are explicit bounded envelopes constructed around the manually observed socket/knee/foot paths and visually chosen shaft widths; they are initial contour approximations, not measured segmentation. Near limbs precede far limbs, then ultimate appendages, head andbody remainder. Head includes its separate visible antennae and mouth paint. No extra texture owners or merged walking legs.",
+    "regionalMethod": "Twenty-eight explicit proximal source extents seed their Knee while the uncovered lower spans retain the existing Foot split defaults. Three head extents seed mandible andeach antenna. All31regions have pin:false; this prototype does not request rigid locking of an entire multijoint texture. Source-pixel presence and eligible field-support membership are distinct; compiler refusals for shared/inherited pins or empty support selection must be retained rather than snapping regions.",
+    "representationTradeoff": "Rigid trunk approximation with source-fixed head,28walking hip and2ultimate sockets. There are no seg0–seg7 channels and no independent trunk-wave claim. Each walking leg retains its own two movable spans; each ultimate appendage is a single controller retaining its bent silhouette without an independent knee. Body/leg/terminal part assignments do not imply hidden pixels were painted.",
+    "framing": "groundLineY0.72 is a framing reference, not an inferred common terrain plane between near/far projected rows. The source is an elevated lateral view with far legs exposed above the trunk in projection.",
+    "maskRepair": "Candidate04 same-paint ownership repair after intake01 refused contact/fixed-owner conflict. All28 walking envelopes now extend through the visible empty inter-limb gaps around the actual curved shafts anddistal extremities; local body-side collar cuts remain narrow at unchanged observed sockets. This uses explicit source-space polygon authoring, not nearest-joint pixel classification or a blanket body bounding-box transfer. Both ultimate outlines also follow their visible curved edges and adjoining fringe. No master alpha is discarded andall63landmarks,31sockets,31regional declarations,materials andpart ordering remain unchanged. First changed raster/field intake must judge the hypothesis; no fit or gate pass is claimed.",
+    "candidate06Repair": "Same-paint source repair: explicit near1/near2 proximal contour additions and near6 retained fringe coverage; complete curved ultimate outer envelopes while preserving existing attachment cuts. The three far1/far2/far12 brown trunk collars remain body. Existing local sampling refines those observed hip/Knee areas at8/32 with a10px margin around manually observed source envelopes; only their pinned Knee cores become16px squares (±8), with unchanged centers. All other regional declarations, all source landmarks/sockets, materials, owner ordering and all inherited pins remain unchanged. No intake, support or gate pass is claimed.",
+    "candidate07Repair": "Same paint03: one explicit outer-contour point[836,715] adds the retained near4 upper-shaft fringe identified by static-paint-diagnosis01/root-edge-inspection.json. Source hip edge, other31masks, all63landmarks,31sockets,31regional declarations andfive mesh refinements remain unchanged. Earlier coverage fields describe their historical prototypes; the current regional array has28pin:true Knee regions andthreepin:false head regions. No inherited pin is released, no source alpha is discarded andno intake or acceptance is claimed.",
+    "candidate08Repair": "Same paint03. A single near10 outer-contour point[453,724] includes retained limb fringe[449,724]. Far9/far13 source masks and genuine brown trunk collars stay unchanged; local8/32 mesh detail surrounds manually observed hip/Knee envelopes+10px, and their unchanged observed Knee centers retain16px cores(±8) withpin:true. All other masks, regions,63landmarks,31sockets, priorfive refinements and inherited locks are preserved. This is source-authored geometry detail, not a pin release or acceptance claim.",
+    "candidate09Repair": "Consolidated source repair informed by the retained19-face target-only inversion union and exact22root-pin edge traces. Five near contours include actualshaft/fringe additions (near1/3/5/6/13); allfar masks andbrown trunk collars remain unchanged. The nine still-coarse far hip/Knee spans receive existing local8/32 sampling around manual source envelopes+10px andsource-centered16pxKnee cores(pin:true), completing a consistent policy acrossall14far bends. Far8/11 are included forcomparable observed short geometry, notclaimed diagnostic failures. Allsourcepixels,63landmarks,31sockets,contactdefinitions,numericlimits andinheritedlocks remain unchanged. No intake oracceptance claim.",
+    "candidate10Repair": "Same paint03. Three near upper-edge contours (1/6/13) follow a fuller manually viewed shaft/fringe envelope, including the persistent alpha1–5 edge points diagnosed after candidate09, while retaining original hip-cut endpoints and the adjacent brown trunk rim. This is contour-only: all far masks, all regions/refinements, landmarks, sockets, materials, contact definitions and inherited pins remain unchanged. The actual far3 refined rectangle already covers its measured roots; no new mesh/weight change follows the rejected coverage hypothesis. No intake or acceptance claim.",
+    "candidate11Repair": "Same paint03 and candidate10 geometry. One explicitly observed opaque far3 upper-shaft region seeds leg3FarKnee with pin:false alongside the existing31regions. Its source-traced extent runs from the unchanged bend core toward the source hip while stopping above the real brown collar; it does not reclassify low-alpha fringe as opaque shaft. Existing Knee-core/root/contact pins, all32masks,63landmarks,31sockets,16refinements andcontact definitions remain unchanged. The pre-authoring membership receipt selected11existingfit08supports(three sameKnee core pins,eight free), withzeroinheritedconflicts; this isnotcompilerormotionacceptance.",
+    "candidate12Repair": "Same paint03. The far3 whole-limb attachment edge now follows the visually observed gold shaft into its dark socket between brown dorsal plates, instead of the broad horizontal y632 base. Brown plate samples formerly assigned to leg3-far return to body remainder. The upper/distal envelope remains unchanged. The few-pixel dark socket blend and joining red alpha fringe remain an explicit authoring uncertainty; no alpha is discarded and no claim is made that this contour cures the fold. All other31 masks,63 landmarks,31 fixed sockets,32 regional influences including candidate11 soft Knee,16 refinements,materials andcontact definitions remain unchanged. No pins are edited and no intake or solver run is claimed."
+  },
+  "meshRefinements": [
+    {
+      "x": 205,
+      "y": 570,
+      "width": 885,
+      "height": 90,
+      "boundaryStep": 24,
+      "interiorStep": 56
+    },
+    {
+      "x": 200,
+      "y": 680,
+      "width": 895,
+      "height": 120,
+      "boundaryStep": 24,
+      "interiorStep": 56
+    },
+    {
+      "x": 933,
+      "y": 582,
+      "width": 61,
+      "height": 71,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 872,
+      "y": 574,
+      "width": 65,
+      "height": 74,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 266,
+      "y": 572,
+      "width": 64,
+      "height": 77,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 445,
+      "y": 584,
+      "width": 66,
+      "height": 75,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 208,
+      "y": 570,
+      "width": 60,
+      "height": 74,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 991,
+      "y": 586,
+      "width": 56,
+      "height": 69,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 812,
+      "y": 570,
+      "width": 62,
+      "height": 74,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 752,
+      "y": 566,
+      "width": 62,
+      "height": 72,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 690,
+      "y": 563,
+      "width": 64,
+      "height": 73,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 630,
+      "y": 565,
+      "width": 64,
+      "height": 73,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 568,
+      "y": 570,
+      "width": 65,
+      "height": 74,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 507,
+      "y": 578,
+      "width": 65,
+      "height": 75,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 386,
+      "y": 585,
+      "width": 63,
+      "height": 75,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 327,
+      "y": 581,
+      "width": 63,
+      "height": 76,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    }
+  ]
+}

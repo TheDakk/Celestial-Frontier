@@ -1,0 +1,20 @@
+{
+  "schema": "cf.c202-albatross-successor/v1",
+  "status": "STATIC_NATIVE_PASS_PENDING_CLAUDE_ADMISSION",
+  "fit": "audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/fit",
+  "productHead": "35d5d6935908a886ed00bd67cef02fb58f0772a2",
+  "nativeFrames": 780,
+  "nativeTurns": 4,
+  "nativeSkipped": [],
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "reviewed": [
+    "albatross-review-03/faint-0p9.png",
+    "albatross-native-02/turn3-hit-idle-90.png",
+    "albatross-native-02/turn1-hit-approach-50.png"
+  ],
+  "finding": "Main shin/foot/nape tears closed; standing and final faint read coherently onstage. Small fringe pixels remain subject to D28 review. No gallery acceptance claimed.",
+  "reportSha256": "d9a77234b3b9d0c91e9b1bb11868fedc39b71169a47d7ea43ef3fb5bf50a169d"
+}

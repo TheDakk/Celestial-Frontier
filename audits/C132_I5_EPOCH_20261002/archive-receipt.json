@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c132-temporary-checkout-retirement/v1",
+  "path": "~/.codex/worktrees/c132-i5/celestial-frontier-openai-mac",
+  "archiveConfirmed": true,
+  "checkoutAbsent": true,
+  "beforeArchiveFreeBytes": 144788979712,
+  "afterArchiveFreeBytes": 166297600000,
+  "observedFreeIncreaseBytes": 21508620288,
+  "scope": "New temporary I5 checkout was created and retired during this batch. Its removal is not added to the earlier approximately 101 GB cleanup total; concurrent art output and APFS sharing affect observed free-space differences."
+}

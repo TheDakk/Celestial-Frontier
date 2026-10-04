@@ -1,0 +1,9 @@
+{
+ "id": "c192creaturesupply-20-warthog",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail0 (tail0) covers 0% paint (reference 87%)"
+ ],
+ "semanticPresence": null
+}

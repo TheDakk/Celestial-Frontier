@@ -1,0 +1,78 @@
+{
+  "name": "Grebe",
+  "family": "biped-bird",
+  "species": {
+    "name": "Grebe",
+    "aspect": 2.6,
+    "headFrac": 0.2,
+    "eyes": "prominent",
+    "posture": "swimming",
+    "mustRead": [
+      "thin sharply pointed bill",
+      "puffy rounded rear with no visible tail",
+      "lobed rather than webbed toes"
+    ]
+  },
+  "genome": {
+    "seed": 1265665827,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 13,
+    "body": 2,
+    "loco": 1,
+    "trait": 5,
+    "size": 3,
+    "diet": 5,
+    "head": 8,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 3,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 7,
+    "habitat": 0,
+    "detail": 4,
+    "accent": 9,
+    "temper": 6,
+    "sense": 9,
+    "repro": 6,
+    "life": 3,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Grebe"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Grebe\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1265665827\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"5\"]]]]",
+  "index": 369,
+  "profile": {
+    "id": "swimming-bird",
+    "names": [
+      "Goose",
+      "Duck",
+      "Swan",
+      "Eider Duck",
+      "Auk",
+      "Puffin",
+      "Guillemot",
+      "Loon",
+      "Grebe",
+      "Cormorant",
+      "Coot",
+      "Moorhen"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": ""
+  }
+}

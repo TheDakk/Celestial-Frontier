@@ -1,0 +1,11 @@
+{
+ "id": "22-locust",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 8.8% paint that no reference appendage lands on",
+  "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 4% paint (reference 26%)",
+  "missing-anatomy: part mandible (mandible) covers 6% paint (reference 63%)"
+ ],
+ "semanticPresence": null
+}

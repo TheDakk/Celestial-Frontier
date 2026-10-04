@@ -1,0 +1,13 @@
+{
+  "id": "07-gull",
+  "name": "Gull",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a0278ac8-10dc-451b-b3b3-32b4a0989345.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "bafe37c0ed04bbef1f85cf8b888bf54db0125983978fd0cb59d8cb9f072952c5",
+  "bytes": 1096906,
+  "promptSha256": "2d60714994611db53249a4b647e569e8427abfd68eee4cb1f098177efbc91746",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

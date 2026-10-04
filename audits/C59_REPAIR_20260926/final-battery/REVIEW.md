@@ -1,0 +1,7 @@
+# C59 final verification — 2026-09-27
+
+Exact signed source: `5547106665b4866a0583884ef3e1cebe22ae08d5` (signature G). The full develop profile ran once on a quiet committed tree: 562 test files passed, one failed, one skipped; 5,647 tests passed, one failed, two expected failures and two skipped. The sole failure is the existing I5 producer-authority mismatch in `current-producer-authorities.test.ts` (Compendium input bindings). It remains red, with no baseline rebinding or threshold changes.
+
+After that known stop, the seven unexecuted owners all passed: root/app/worker TypeScript, artaudit, overridecheck, speccheck and overridecontrol. Root validation separately passed in `../root-validate-final.log`. The final runner measured empty tracked changes before and after and unchanged HEAD; the overridecontrol's intentional transient source mutations were restored. `results.json` binds every log by SHA-256, independently verified before this addendum.
+
+The evidence/docs-only descendant does not alter tested implementation. Fresh read-only GitHub preflight records PUBLIC visibility, UNFROZEN budget and five remote workflow files byte-identical to local, with no push trigger. Only the normal own-branch push is authorized; no PR/label/hosted/develop/main/release/deploy action. Claude's mailbox was re-read through C59 at batch end; its handoff remains byte-identical to 4b56836d. Disk: 215 GiB free. Bobcat's native performance red and remaining visual faults stay separate from the main battery's sole I5 failure.

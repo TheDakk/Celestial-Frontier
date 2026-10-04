@@ -1,0 +1,8 @@
+import fs from 'node:fs';import {compileBodyCard} from '../../../port/v2/apps/game/src/motion/body-card.js';import {buildActionTimeline,sampleTimeline} from '../../../port/v2/apps/game/src/motion/timeline.js';import {actionsFor} from '../../../port/v2/apps/game/src/motion/family-actions.js';import {createFamilyContactSolver,observedContactSupports} from '../../../port/v2/apps/game/src/creature-rig-contact.js';
+const p='audits/ART_BATTLE_FOCUS_20260925/26-salamander/fit-05/',r=JSON.parse(fs.readFileSync(p+'record.json','utf8')),b=JSON.parse(fs.readFileSync(p+'binding.json','utf8')),card=compileBodyCard(r,r.genome),rows=[];
+for(const id of ['approach:gallop','cast'])for(const gain of [1,.75,.5,.25,.1,0])for(const [supportName,support]of Object.entries({rest:{},observed:observedContactSupports(r,b)})){
+ const original=actionsFor('quadruped',card.anatomy)![id]!,action={...original,poses:original.poses.map(p=>({...p,joints:Object.fromEntries(Object.entries(p.joints).map(([j,v])=>[j,v*(['root','pelvis','spine','chest'].includes(j)?gain:1)])),root:{dx:p.root.dx*gain,dy:p.root.dy*gain}}))},tl=buildActionTimeline(card,action,card.identity.seed),solver=createFamilyContactSolver(r,support);let failures=0,first=null;
+ for(let i=0;i<=128;i++){const ms=tl.durationMs*i/128,p=sampleTimeline(tl,ms),pose={...Object.fromEntries(Object.entries(p.joints).map(([j,rotation])=>[j,{rotation}])),root:{rotation:p.root.rotation,dx:p.root.dx,dy:p.root.dy}};try{solver.resolve(pose,{actionId:id,elapsedMs:ms,durationMs:tl.durationMs,weight:1,realm:card.realm});}catch(e){failures++;first??={ms,error:String(e)};}}
+ rows.push({id,gain,supportName,failures,first});
+}
+console.log(JSON.stringify(rows,null,2));

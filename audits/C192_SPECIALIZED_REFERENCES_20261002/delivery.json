@@ -1,0 +1,2969 @@
+{
+  "schema": "cf.c192-specialized-delivery/v1",
+  "workspace": "~/Projects/celestial-frontier-openai-mac",
+  "state": "FROZEN_DIAGNOSTIC_DELIVERY_WITH_VISUAL_HOLDS",
+  "selected": [
+    {
+      "id": "10-snail-contours",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit",
+      "status": "DIAGNOSTIC_CANDIDATE",
+      "recordRecipeHash": "df7194ebb22419ed9b5bcc28481f69392f2d6ca94354b865985b1dbfd6f37ef3",
+      "sourceSha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3"
+    },
+    {
+      "id": "08-prawn-opaque",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit",
+      "status": "HELD_VISUAL",
+      "recordRecipeHash": "97e0bba24df61a04af37c759e74b474a5125eeb26aa148f977f2121f49decf23",
+      "sourceSha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35"
+    },
+    {
+      "id": "09-shrimp-opaque",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit",
+      "status": "HELD_VISUAL",
+      "recordRecipeHash": "922bfdd4a8c3af5ff90ed53aa3f25121967ce058afb205208b6151b0de10c32a",
+      "sourceSha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7"
+    },
+    {
+      "id": "11-mussel-dorsal",
+      "fit": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01",
+      "status": "HELD_VISUAL",
+      "recordRecipeHash": "ed991d7a7e592216cca5f52cbb4598139344dd9930b16bd180f4640fd5947a79",
+      "sourceSha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9"
+    }
+  ],
+  "generatedOriginals": 10,
+  "reusedSourceSuccessors": 1,
+  "totalSelected": {
+    "actions": 43,
+    "samples": 5203,
+    "softwarePoses": 24,
+    "softwareStills": 48
+  },
+  "privacy": {
+    "expandedHomePaths": 0,
+    "emailRecords": 0,
+    "checkedTextFiles": 268
+  },
+  "files": [
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/generation.json",
+      "sha256": "bafaadbfcdb456f41e477f383b13f146ebabf9d8887f9e976f3c44b94ed87fff",
+      "bytes": 1210
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/input-master.png",
+      "sha256": "aa7219e68a04fe659d7ec8cd1a66213bdbd7e36c826158f7d5477a0f272428cb",
+      "bytes": 1393275
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/master.png",
+      "sha256": "e04685371b825a0738cd4fe5a3c60f330dd7ee80fbec474aae87257c87333c30",
+      "bytes": 1452870
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/prompt.canonical.txt",
+      "sha256": "9cb9bd80d6b5f0c364c19f7fa35e781f421c6860436a2aa16299e174f072d7fa",
+      "bytes": 8915
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/prompt.txt",
+      "sha256": "544ee687e46e0210fd6d7b43775d692afbf43b57a88e094a5f3e525f3affdaf1",
+      "bytes": 11127
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/request.json",
+      "sha256": "19197c1c9d0ad61ac5e2fc7b85226b6bcd58aa58615df9cf724b67d5b657a101",
+      "bytes": 958
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/01-mussel-source/subject-source.json",
+      "sha256": "a4f6f6555c6908342188185fd7aa62f6d921af1bf6fd48d340e851881c4cae0e",
+      "bytes": 2190
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/authoring-receipt.json",
+      "sha256": "6ec3293c6bd311256a615b76de2d0438a8c43fdf7e57d2768b944bf69b5baad5",
+      "bytes": 2109
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/authoring.json",
+      "sha256": "8b83997309e80c0ab6a0d6b98023c14305e8e88b922eddf40759fb9991442afa",
+      "bytes": 18091
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/endpoint-diagnostic.json",
+      "sha256": "179933a035001189d2cad705a7c7d836ef854a54cb226c98e494f2e5e63527de",
+      "bytes": 4817
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/fit01/declaration.json",
+      "sha256": "8825aea5e34767fe145e5c153044d3336f43ac40e2a6a708c74299bd63fcd21d",
+      "bytes": 15082
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/fit01/intake-provenance.json",
+      "sha256": "a6b49f243fe3328e72bd929255d8a94749009402c4ec8a2ee12c57128c432d41",
+      "bytes": 3580
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/fit01/record.json",
+      "sha256": "795af007c162517a045e875ef0cb638b8ff90cc1e92f38112570a7698030f2db",
+      "bytes": 9978
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/fit01/refusal.json",
+      "sha256": "8bc5ec8ac05cda0ae8f1fa443ab53465600e728dffe383f06fc69c4e2ff4b778",
+      "bytes": 914
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/generation.json",
+      "sha256": "15f97b1aa71d986e65d9d1f328115106b5790d0f08ad33fa25122ae7327b59ae",
+      "bytes": 1209
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/input-master.png",
+      "sha256": "2b3f9b74992ef4befb6c66fd9e902839faaac1d161b17d869751e92e8b091672",
+      "bytes": 1268607
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/intake-01.log",
+      "sha256": "a096a3a9a8df8cd3befa8b8d01f7b0c05a31ab1d456406ae3d5acc727e2ad2f7",
+      "bytes": 1039
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/intake-execution-01.json",
+      "sha256": "8cb6d3d177a194ecc04b8b6a810903c5b86650b0e332d11e6d4bdeeb84f14587",
+      "bytes": 655
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/keyed-inspection.png",
+      "sha256": "91f4218d635960061e038c42add6e8f13ad727193ae61ee728c718c52ea89b88",
+      "bytes": 1379677
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/landmark-alpha-diagnostic.json",
+      "sha256": "a4de3e69dde6bbd546da94ca52c2db93f2f812fd30fbb3669302c33b88968cb6",
+      "bytes": 8861
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/master.png",
+      "sha256": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051",
+      "bytes": 1160556
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/prompt.canonical.txt",
+      "sha256": "e5cf939dd27b9516aa7ed2b00e8b58d0d15731afa2a2a0b47fc14e674270e546",
+      "bytes": 9784
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/prompt.txt",
+      "sha256": "2956d184e7a35634af8794a8db61427efe93a2d93e2396db45c0e106091ab15b",
+      "bytes": 10564
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/request.json",
+      "sha256": "0b610e7d022214ba6c847fe1379c9b230815105735c363d3d9b124d3bf38396f",
+      "bytes": 953
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/subject-source.json",
+      "sha256": "adc6d9af35d82d61dbbfb6592f3a0b4ea8e1bccdb946f2e483be4c36ebc6ed72",
+      "bytes": 2392
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/authoring-receipt.json",
+      "sha256": "15d5be99ab00ce7fdf4944fd479ba36fd6f730c92738879918a3f6beb0998224",
+      "bytes": 2110
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/authoring.json",
+      "sha256": "4e0c97932da1b6e2f6a90d92e655fee58715b0436833f6374708ff84a9b9e7c8",
+      "bytes": 18143
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/endpoint-diagnostic.json",
+      "sha256": "d8c8401ba60b0aaa320d71b101fba19dd93742f6724a9fc6e6ec7a97495d0ca2",
+      "bytes": 3822
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/fit01/declaration.json",
+      "sha256": "54dabde02fe1c72fa3ec5f30b6c49e9e2cadf2a3367ab5d243eda8ac55c0e2c1",
+      "bytes": 15063
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/fit01/intake-provenance.json",
+      "sha256": "c3c55e5e0fde2f78fbd32991b44182b3f949675e8113efb17edef1dec8aeddde",
+      "bytes": 3588
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/fit01/record.json",
+      "sha256": "be69c4e12cfbe15993e6e093352c7320350a9798331ad9aa568c9c2d6af1f89c",
+      "bytes": 9970
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/fit01/refusal.json",
+      "sha256": "8bc5ec8ac05cda0ae8f1fa443ab53465600e728dffe383f06fc69c4e2ff4b778",
+      "bytes": 914
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/generation.json",
+      "sha256": "5886affb4e07c2dad77c6099e55a1405afa21d30efd43bad380bc43cc24bfbed",
+      "bytes": 1210
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/input-master.png",
+      "sha256": "c2c1275202841abd425cc9114a7665c62997a5c8bae5dce9d91b1eca560a031f",
+      "bytes": 1294050
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/intake-01.log",
+      "sha256": "cde5848d8c314a861aeae796066d2089aff1ca9e062b168dd0f1e5a1214fae40",
+      "bytes": 1040
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/intake-execution-01.json",
+      "sha256": "51956a1efeb33c4dd485491b09d6de0662d5dcc1c5b14d40da65f44e890dc2fc",
+      "bytes": 659
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/keyed-inspection.png",
+      "sha256": "2cfea63cca900dc2a6b855413fceb72a7ff230ba9d290c533a210b58ec556991",
+      "bytes": 1418661
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/landmark-alpha-diagnostic.json",
+      "sha256": "2a1308d023c7a4972ee0ce323ecb61a117b62546226e69fd0abf5123550ce43b",
+      "bytes": 11731
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/master.png",
+      "sha256": "ffad768165b2d127484e6136a0c3b647a1d63a96ec7fe0264c717ab6d3d0732a",
+      "bytes": 1177921
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/prompt.canonical.txt",
+      "sha256": "02e6b75a93ca17a9001d5c9f05e58c47e41faf991884aea5829f94ded8655cb8",
+      "bytes": 9599
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/prompt.txt",
+      "sha256": "4ba5dd904e062b2862149af089e2d7a3534e7f63bb4c440d171aa33992b445e1",
+      "bytes": 10382
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/request.json",
+      "sha256": "67bea61385f96943ddb35dbaeb463cce114c9fa881c641ccc6caa77e2b7dae4f",
+      "bytes": 956
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/subject-source.json",
+      "sha256": "70eed98c8728dcbfd990ec7d96df46ea4903e109aac8e9dfc9527557cd3bce5b",
+      "bytes": 2382
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/authoring-receipt.json",
+      "sha256": "5d5e36be5ae3ba43a67e266f138ad079500ed3708a8e30c0720a258e05c05c6a",
+      "bytes": 1585
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/authoring.json",
+      "sha256": "261c816490f69bded9af45dab7042091d0c615cacd91758d9a6ff6e0cfdae7e4",
+      "bytes": 7658
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/conservation-01.json",
+      "sha256": "1e0f9d90ae4615e9575d2579d02d4f356f44690cee4f87e12ea04d700101aa37",
+      "bytes": 2563
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/conservation-01.log",
+      "sha256": "621f5eab8b436ce8c785ef55eb4f46aeaf05060c457f6a321dd62850a558f7d4",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/conservation-execution-01.json",
+      "sha256": "48525bdf7cef53e5e7de3e88a8d57a340ebaa50fc4f832db46211f1528fccc2f",
+      "bytes": 688
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/binding.json",
+      "sha256": "a144ea16ebb8be8ea6a7d7f23486fc96e30042a35607553d7526c58714aafb95",
+      "bytes": 1014384
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/declaration.json",
+      "sha256": "3d8ecf596e08be292660ab616f540da007dfa472811fec0f4cd6ded4011af623",
+      "bytes": 8749
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/intake-provenance.json",
+      "sha256": "30f2a4a8a41980473b6079ea1a97385397163db196478849912360f764b9c1f2",
+      "bytes": 2986
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/atlas/c192-independent-snail.json",
+      "sha256": "7c0066cc08e10ad3ba08b213e737aeddc2b4bc020a9e8e098d0735bdb569f8e6",
+      "bytes": 4154
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/atlas/c192-independent-snail.png",
+      "sha256": "7456a71a14bd3067e9ad8d4c6ab3e737f41d511d42abc20bff4381126b0bdaea",
+      "bytes": 553051
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/atlas/receipt.json",
+      "sha256": "2cf62401edd467a42271f600966aaff2c11722b6b7ba1386a1d3785ae782a785",
+      "bytes": 2000
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/binding.json",
+      "sha256": "4cdd6d84fb803f3863ce2349eabd07b074dd0c7f1befa4fb233ce16bba446125",
+      "bytes": 3500
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/keyed.png",
+      "sha256": "cd9026e52b618746e83c2d08d6be122811ef98b08e89fa44f5d817dc1d839ee2",
+      "bytes": 1647274
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/manifest.json",
+      "sha256": "20ed10221fe0a7f390095c9d827ca3d84bd5e2c75ad97db68643866b5bd74380",
+      "bytes": 1624
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/ownership.png",
+      "sha256": "b79e116a83b4170cd44dd5c2be9f35a51a0e196498defb0cfd8449aa95ebdbc5",
+      "bytes": 15084
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/parts/eyefar.png",
+      "sha256": "099fe6b0c683d6bfb18384d3eea26091b215ab81dc7277eb9f0974b79add6023",
+      "bytes": 12935
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/parts/eyenear.png",
+      "sha256": "cba358f83ec45f44287f1098ac386d79fccedf869089492872f17f2986526f4e",
+      "bytes": 15413
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/parts/foot0.png",
+      "sha256": "7873eeca6d51bab0740709bed2870bd57b5978161ac24ad81ec7e8f7aa7b4045",
+      "bytes": 20563
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/parts/foot1.png",
+      "sha256": "4a84657070c463f92146a48f128816cff09a8f400a4710c4ad7efa643896982f",
+      "bytes": 68907
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/parts/foot2.png",
+      "sha256": "ff2b57ef0be9658207ebec4b21b216b292af75c078782a8391e1c843e26b3164",
+      "bytes": 94010
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/parts/foot3.png",
+      "sha256": "32dd6cec213fcfb83f3dff2ebffd8a6a13782ab7cc5ddd9ebbc0d452b9fe7a69",
+      "bytes": 38244
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/parts/head.png",
+      "sha256": "0815ef5b77b1cdf26b7aea0f666f332cfaee9e781af266ea67ec083e28efa2c3",
+      "bytes": 37027
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/parts/mouth.png",
+      "sha256": "e98ff1b86729b3e3a01a9918b71ca2e5dc7a270b95a1cca9562666744e0d0c9f",
+      "bytes": 4088
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/parts/root.png",
+      "sha256": "c6e0a1d7bc0b6da401e09daa2769805520d04ad52a2ae89ac2e10ad7e7dbdc96",
+      "bytes": 336
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/parts/shell.png",
+      "sha256": "626e64dfe847dbba18bba441af406e0c6b3dcb312069bf9c981ab42bf8ea709e",
+      "bytes": 371914
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/parts/receipt.json",
+      "sha256": "9f6b5559f49ae8c8bb1fbd5a64404c81a90338e19920591adcf7f9e32cb21598",
+      "bytes": 2948
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/pre-split-binding.json",
+      "sha256": "3d59c19683abec7fc99d3c34a7422ebe12402dc2699b6d2adbfeea9ffcbf3881",
+      "bytes": 657108
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/receipt.json",
+      "sha256": "9c12e62460332186df6fe21fcab8a82b8491392df7ab33f302d73fcfadca971e",
+      "bytes": 2052
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/fit01/record.json",
+      "sha256": "549ae1424252769873202b6293aa841f9be1dc33be04caa9e4dcd2466f964431",
+      "bytes": 5169
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/generation.json",
+      "sha256": "6058a2a11bca17dc1436fee2f478f42be0afd0be388488be5f0fc4b6e59af90a",
+      "bytes": 1208
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/input-master.png",
+      "sha256": "9675e29fd6daaa32eb8592e22f0ce999c51951124f32c77084d0b2735a226d18",
+      "bytes": 1319389
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/intake-01.log",
+      "sha256": "27e39c66395d9748efef8e135d288c28edabe786e062c675b06405c1429f1019",
+      "bytes": 318
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/intake-execution-01.json",
+      "sha256": "b88472410634b0868de33d2169f317df804517dac73afbfc908811cacc2a7a73",
+      "bytes": 651
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/joint-preview-01.png",
+      "sha256": "39b41023820c7d72d2216296eff52de642f24851f7ce898ba2b6c9d71a3d44dd",
+      "bytes": 680075
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/master.png",
+      "sha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+      "bytes": 1337811
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-approach-crawl-50-left.png",
+      "sha256": "e9ece6867605cb7f8df7b70784235b6549f6b1ca672c2ef0054cc3af3d4ada90",
+      "bytes": 570362
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-approach-crawl-50-right.png",
+      "sha256": "7a4c6f59c4cf0bc3f28bd704348e2eca7477f718339016cf3884c1fe12025a7c",
+      "bytes": 566525
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-cast-50-left.png",
+      "sha256": "0467e1726d40c0a4d44135b80aba5f4e5b7652907da891c8c9dd96dd4b87045e",
+      "bytes": 548567
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-cast-50-right.png",
+      "sha256": "9bcb6af68a949abd352b8c435a2574a2a0c34ac393a2312e384a264f9682421b",
+      "bytes": 552105
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-faint-100-left.png",
+      "sha256": "c3168106d30d8181930abfb9c94a890cda4eed8ecbcb64b52a7adc67f05487a9",
+      "bytes": 549593
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-faint-100-right.png",
+      "sha256": "ae560255eedf3b502202ce76a74d1614d1003ca8f2259c4413ae0e1c86f0b84e",
+      "bytes": 549390
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-faint-50-left.png",
+      "sha256": "7d20aaef3afd6082f3ec911212eefefab60b080dd01e96e2082e94aeff942122",
+      "bytes": 560554
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-faint-50-right.png",
+      "sha256": "c395f9f444a9bd49b150edda3ce128905d5b21eef262722c49e26fb47ec8115c",
+      "bytes": 559978
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-hit-50-left.png",
+      "sha256": "a75c08a25b13a0d9df07c35d33a68266d266bedd21a6e915f88bc542d4da2089",
+      "bytes": 566682
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-hit-50-right.png",
+      "sha256": "99e9397c077238e454625748b010e50e9d845b579f7b57dd50d95f991cdcd8dd",
+      "bytes": 564664
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-idle-50-left.png",
+      "sha256": "f2029966744ac10190c06efe5aff4518bba2234f13bf83b276e9ee71757a3ecb",
+      "bytes": 557204
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/motion-idle-50-right.png",
+      "sha256": "9b7018697a77d002635005b921a0ef97d905d99dc961c278a72fa3dd02da26bd",
+      "bytes": 557039
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/ownership-preview-01.png",
+      "sha256": "587496850c55606a7ebc4cce0d812b1b8e72d3732035a3992d83031f2e926f1e",
+      "bytes": 627000
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/prompt.canonical.txt",
+      "sha256": "392dc8c2ed6bea9856d5f16c1c1ae47b46f7f0d4bcfdea52114275978bbea539",
+      "bytes": 9627
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/prompt.txt",
+      "sha256": "0b7e2d20a7656c3b76fa1bb81a99b65a1e4b17405e0466117d4301744b1cf9a0",
+      "bytes": 10621
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/publication-review.json",
+      "sha256": "abe52bde8db5e3d6f24089783c233ce6184af6eab08ffc02639227de38c46371",
+      "bytes": 36069
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/request.json",
+      "sha256": "c741eac57d8fcf052d540d9a7800edc82f8884551cd81b8b71c9904d3a72f5f9",
+      "bytes": 952
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/static-01.json",
+      "sha256": "c2770cb1dfadfa668148560089592ff2fed2d914ddbb5e4315371e3888f4927a",
+      "bytes": 6250
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/static-01.json.sources.json",
+      "sha256": "2e4fc8201b32b8f6fcb7ab2fb657b9a4d76410195f4e989e406be2a425983d14",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/static-01.log",
+      "sha256": "0d3a1b2cbe195ffb5a9c0f3bd6f9f3c2cba6e15892878b890880f168cfd362bc",
+      "bytes": 1452
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/static-execution-01.json",
+      "sha256": "4661744e627722ec16db73fa2e5b6b74668b7406b3cbd66480d2feb039fdc166",
+      "bytes": 670
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/04-snail-mouth/subject-source.json",
+      "sha256": "fc9b2d9a2f79e6fde9c64db862a72175ba4031955bdf7531929fd3f16c5bfc26",
+      "bytes": 2140
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/generation.json",
+      "sha256": "75bd5d4ac941165c5b1080568b32a3ca1f2a94294d71d43764df705af6e6f50d",
+      "bytes": 1207
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/input-master.png",
+      "sha256": "be35c16758d75f1ccc3410d816678d80b986f4c485c6f2af5ac53a1a2bb0aeaa",
+      "bytes": 1455758
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/master.png",
+      "sha256": "cfcd71fbf61e3a7bcf20e0f33a1919e8c1295cbd226b3728917b6f74ea7a0823",
+      "bytes": 1589480
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/prompt.canonical.txt",
+      "sha256": "708abc37410bc24df7f14f7e9a10d1561ffa2ce2c085c7639e6219f0816b46f9",
+      "bytes": 9410
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/prompt.txt",
+      "sha256": "01d5585b6124687adf100920f9d5b0f2d1cd4baea870eb71a8fc605683dfb7f1",
+      "bytes": 10503
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/request.json",
+      "sha256": "d6a573f3d7264c5b0499f39570138904de67050a6ce05b58dc6a76ad636d5ef5",
+      "bytes": 949
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/05-clam-hinge/subject-source.json",
+      "sha256": "83fd5decd6b3f62f5f253dbf17524439ea0c68a1b27de3fddd05c05636af46ba",
+      "bytes": 2156
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/generation.json",
+      "sha256": "263c2a6137264953b86dae3beb746b5e2ee3a8793a0a730f4cf78adb8052eb34",
+      "bytes": 1212
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/input-master.png",
+      "sha256": "949df79df52b00a64ff06408b2e294eedf91adebb7ff8f12e76bd7dd285b5b98",
+      "bytes": 1252623
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/master.png",
+      "sha256": "9d9841209d90ec22671805e2d471955e6d52e7afb0bf73b876b0ec5d8f69b40e",
+      "bytes": 1221074
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/prompt.canonical.txt",
+      "sha256": "ea21ae0ca715fbf373d1b2a2c6ac2ad2628bbe32bec7a1e89a469be773e6e82d",
+      "bytes": 10853
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/prompt.txt",
+      "sha256": "76a8f4ec4090b460948f6f2ed3b2d39ebe27d992db2d43f19c22dee7cdc9bb08",
+      "bytes": 12043
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/request.json",
+      "sha256": "409d9fde4d6e4e6842940496a0d51ac9c2bcaca055f7d85c558c13197d31c6f5",
+      "bytes": 970
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/06-marmoset-source/subject-source.json",
+      "sha256": "687aaaa1d680b64673930da05f84ec6819790999204a21be45bc08db8a1ed85a",
+      "bytes": 2323
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/generation.json",
+      "sha256": "159f6490854ee2ebe8d4924bba7dd22cdb53c1f8ceea5c90322900dafd39da24",
+      "bytes": 1216
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/input-master.png",
+      "sha256": "5130bf9d13facd180b8acf2624b9c070c735e5b1cae3fabfbc20686c9b3b2ea1",
+      "bytes": 1392777
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/master.png",
+      "sha256": "8a640473b4b4090d813e2aa7efc3457bdcf50f3a216748f6d06fcc44aed8be70",
+      "bytes": 1274497
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/prompt.canonical.txt",
+      "sha256": "aebffe16f54e58b8fce00d8270b7833916549881f12624a9141ec50da11c5ad9",
+      "bytes": 10212
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/prompt.txt",
+      "sha256": "c40f8371c8e8708bdc1cfa585fbf8facd4d5f2215700a8a907e32f3e6edbd93d",
+      "bytes": 10726
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/request.json",
+      "sha256": "5fc50cc684b05128bfdc36bbbfffab60552a4efff24cb464168f6a576c4c0c60",
+      "bytes": 966
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/07-standing-bat-source/subject-source.json",
+      "sha256": "43f0bb8561212252001302d97050d2777b1647d68b8dc0400dcf2d1c8d970426",
+      "bytes": 2257
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/authoring-receipt.json",
+      "sha256": "2110dfaf79f6b775f27d319d018c710318d1f4d916ab26ceed386ed4eb9afe71",
+      "bytes": 2149
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/authoring.json",
+      "sha256": "3081942c8732d6945face495986adc9fb188d704150a127b185ad697743f106e",
+      "bytes": 18037
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/conservation-01.json",
+      "sha256": "64edfcbe5574f04aa94f5fe5db3744ff1cf2f8308eefd6f7de9823b551c575f0",
+      "bytes": 2365
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/conservation-01.log",
+      "sha256": "d493e4268358261f6271201739ba3e99c3dad3649d6b690063bc97b78f6b9f99",
+      "bytes": 539
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/conservation-execution-01.json",
+      "sha256": "bd699df199b68369837f60dc619941354704d614a6f61dc972742e470d8f861c",
+      "bytes": 692
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/binding.json",
+      "sha256": "451aefcdf99ad2a55891bc95ce3d973dc56a9b1033fd6d91fbeda8ca288d6bcd",
+      "bytes": 1417343
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/declaration.json",
+      "sha256": "3132c7b5cf49688ccbe3210a85f4aabee62ff85740f23fcd240b94afd3ce2acf",
+      "bytes": 3369
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/labels.png",
+      "sha256": "29cf4fd4beee7f98cbc07483bcc7ff8c2674d689ffce46c6ba6f3d657e047aca",
+      "bytes": 42938
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/atlas/c192-independent-prawn.json",
+      "sha256": "efd44dfb02e3e6abe8726ea55fac8c07fdc51ba0a21392ae0bc64b251c8acc9b",
+      "bytes": 12629
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/atlas/c192-independent-prawn.png",
+      "sha256": "eb2a0804e7e90ef730b045f29375964ef3275a77b2d0a66252ed971644fa7f3a",
+      "bytes": 248751
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/atlas/receipt.json",
+      "sha256": "86968e2f1442042e76aab5fe6b67cfccc0a0eae12d8bdf855029e43631ed7b64",
+      "bytes": 4775
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/binding.json",
+      "sha256": "ef64e5433d404399ac533399992180fb8e6f3d87fbbe47ca037c4c549bfb92c6",
+      "bytes": 10375
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/keyed.png",
+      "sha256": "02710f0bc26c8a9250bbd29b2b00e2379de382e278f834393d93cfb64eae2315",
+      "bytes": 1361920
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/manifest.json",
+      "sha256": "9ba3382734db301a74c4f17aa0258737577c27dfa9a1af78ed26e7f76312c6e0",
+      "bytes": 5284
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/ownership.png",
+      "sha256": "3b84659b93cfee2c8df3927c7fbd78d049fe7184377add3ff56c908f1d242a08",
+      "bytes": 16206
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/abdomen0.png",
+      "sha256": "d93b7fb54ab19052b568ec0e61891701f3a66da00015c2dc28b314856de6ed89",
+      "bytes": 17440
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/abdomen1.png",
+      "sha256": "2c4ec656b7f2d6b8b00b518b0004c14481478fddbf76a4b45d86a0232641cb20",
+      "bytes": 18706
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/abdomen2.png",
+      "sha256": "cfbe31dbcf2b27ba17312b4dcbffecccbf95a6c2646caae6fc6f5cdf603d4604",
+      "bytes": 17841
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/abdomen3.png",
+      "sha256": "b7bd7812b2290a76799185fb64425271115b4f4443ae04b50ad69d4f4006364f",
+      "bytes": 13918
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/abdomen4.png",
+      "sha256": "92e48d4f3fc9e4cbca3edb358e087ff73fc9d758512a06eee81dc2620ed8e644",
+      "bytes": 11000
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/abdomen5.png",
+      "sha256": "9b29681f9e1db6eed12069b6afba8615c59bcd74d31867bd16d2758a2782dff8",
+      "bytes": 9532
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/antenna-far.png",
+      "sha256": "83ed99e6c2af378e9cde4876e0e88676adde94a449ccd46e97f30926d7d25290",
+      "bytes": 3834
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/antenna-near.png",
+      "sha256": "88e3984cbb2af0a5e6ba9c5b40a077d5e5e9c7486be5921fee03e3f6c6fbb1b6",
+      "bytes": 2132
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/head.png",
+      "sha256": "d045c430296c136ebd1a47e2f8e4c56faa652806bb26a406fe3f2531ac6104e7",
+      "bytes": 36869
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg0far-foot.png",
+      "sha256": "ca16a36eb14629785d5d0a2701fb4148ea73f3567e01ac578893abbbb266997a",
+      "bytes": 1731
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg0far-upper.png",
+      "sha256": "fb2bed0060c725d2027b4ec98ddee36b6ed4c8d9fc0c51b206b4e570208b254f",
+      "bytes": 2025
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg0near-foot.png",
+      "sha256": "b53453955fde9494f97035f70dbc39894966b552f802870abb60c63a74c873cb",
+      "bytes": 1481
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg0near-upper.png",
+      "sha256": "503df1354fbead6a559f34f3748917b0ba035e4aae6578f86626fa4dd1face13",
+      "bytes": 1614
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg1far-foot.png",
+      "sha256": "c16edfae011ed94e21c57a9e1fe5b546437242ecef72afaafdf7e6eff2e27761",
+      "bytes": 2056
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg1far-upper.png",
+      "sha256": "ef226cf3043d63dd6188a062b8f2fbca01eefed8432017eb29279b033cae05ad",
+      "bytes": 3315
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg1near-foot.png",
+      "sha256": "b231f33c589f3b0d033112b2b3e947e36822556767278f8e2a65b376450e3d32",
+      "bytes": 2297
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg1near-upper.png",
+      "sha256": "70d4fd274f08c67ed22df94c10aa46e56b16001ff60765119576109fe9706217",
+      "bytes": 2834
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg2far-foot.png",
+      "sha256": "0e33072e759be3aced0c1b97a9ddccfa2678c86054a3b72565651b7cbac5d4f5",
+      "bytes": 2127
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg2far-upper.png",
+      "sha256": "894cafb31b394a883f085096f06c730ba7cd9ac339a2f82e2ef856ffa65a955b",
+      "bytes": 3788
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg2near-foot.png",
+      "sha256": "1e8f3d1bf3d334d39bc4ce0b389b61fe1c97d9b71df4b4d2e26baa0791c1c176",
+      "bytes": 2070
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg2near-upper.png",
+      "sha256": "68014ded63bd3acf52d0acd07d44b1e553525294b714d07dfd4471236594cd0f",
+      "bytes": 3375
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg3far-foot.png",
+      "sha256": "55368aa0c89e49f2f7e96d715764814a1c9c181deb5e4c02157d51b6d3250d65",
+      "bytes": 1971
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg3far-upper.png",
+      "sha256": "cbabbddb81456adddc0cdb94b654f0af5d81e63becc9cc953b413b9a50a766ce",
+      "bytes": 3776
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg3near-foot.png",
+      "sha256": "8d396b0af354a7bb79b42fe1546e810a069ccd14fcd286bfab6a0c107d252bac",
+      "bytes": 2168
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg3near-upper.png",
+      "sha256": "fb0fc04cc2d8345ed5315cdd5723a63909b67410fdfb0072d1e689b84f8ba13a",
+      "bytes": 3532
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg4far-foot.png",
+      "sha256": "e2ec10871374c5e0dca59686b3e188db5524672b6d6d0cd0ef15240453bb7ad4",
+      "bytes": 1814
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg4far-upper.png",
+      "sha256": "86203b2ad9387a5b155ebf15a70cc7d3e8ad4a598d06b261a0824f120dcbf7a9",
+      "bytes": 2940
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg4near-foot.png",
+      "sha256": "71dffc495d7aac90c75f4b5a42a018f50e7a1f9802bc6fadcedf90dd4354e0dd",
+      "bytes": 1876
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/leg4near-upper.png",
+      "sha256": "b8397357e76635bca42861a20695057a5b595e4436fb2126d0c64cf37c152152",
+      "bytes": 2924
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/tailfan.png",
+      "sha256": "8ac9040362ac59754f31f5cb59c354c07c83eec56cc20d0855088834abfcafd4",
+      "bytes": 50080
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/parts/thorax.png",
+      "sha256": "057179df2fd80ee57c91fb4977171400309492aa8d372ea43bf65cfed29f5c2c",
+      "bytes": 42911
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/parts/receipt.json",
+      "sha256": "7e302f3944cac9eb868dcdd359a3e1bab3fbb0f4a5e8d1e82bb248bdc7e61815",
+      "bytes": 8215
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/pre-split-binding.json",
+      "sha256": "66e869de07cfdde2f6ae449e7abc82d9d36cd54211dd6a6a83fe63a3062e4c1d",
+      "bytes": 854439
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/fit/record.json",
+      "sha256": "772f77ba24bb05d3353972ee0c7802df8225eb5d7a0b4d2650dfa4977bd5fa24",
+      "bytes": 10003
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/d28/receipt.json",
+      "sha256": "610e67f24ef803ef619945b8bf279d999047267b8dd28dbfa99f40fbe022ec04",
+      "bytes": 4691
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/binding.json",
+      "sha256": "90afa3b58a7b4ba6ce342c94b13f1cf20ad325b25223fe8b9b2c303dcaa6b0fb",
+      "bytes": 1437936
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/declaration.json",
+      "sha256": "c32c99159745c207bda5b84df7e7e093b9d96451cff0124a91cc955d3886821a",
+      "bytes": 14837
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/intake-provenance.json",
+      "sha256": "8a3b3ecab4de82141cecd661d695909924273bd8362647074d1bfb9ab721249d",
+      "bytes": 3642
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/atlas/c192-independent-prawn.json",
+      "sha256": "6395dc5690f46e6d221fd3e2f8864cacf56f29677a86d25236ce51057c273f83",
+      "bytes": 12639
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/atlas/c192-independent-prawn.png",
+      "sha256": "b3d27d80875864ed4798ca0da1fc5f3ba3739d4808e40933448d05939edbcd18",
+      "bytes": 245891
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/atlas/receipt.json",
+      "sha256": "128f7bcdb8b52b59228aaa6e2794134a734b6f613d965fe7a6df16a576969c6d",
+      "bytes": 4775
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/binding.json",
+      "sha256": "ec8d7e2bd07e9404c8a110c7728b0ec8fc148c6f86278f2754bafd6f2ab9a914",
+      "bytes": 10385
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/keyed.png",
+      "sha256": "02710f0bc26c8a9250bbd29b2b00e2379de382e278f834393d93cfb64eae2315",
+      "bytes": 1361920
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/manifest.json",
+      "sha256": "2398293802a36255bf7805e29498821b4214d7062dcdbbc11e055f15af330231",
+      "bytes": 5284
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/ownership.png",
+      "sha256": "67769ef81dfc643fd2c2297cf47d42e68290d09a1d6cc008866d0de42a90f100",
+      "bytes": 16285
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/abdomen0.png",
+      "sha256": "d93b7fb54ab19052b568ec0e61891701f3a66da00015c2dc28b314856de6ed89",
+      "bytes": 17440
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/abdomen1.png",
+      "sha256": "2c4ec656b7f2d6b8b00b518b0004c14481478fddbf76a4b45d86a0232641cb20",
+      "bytes": 18706
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/abdomen2.png",
+      "sha256": "cfbe31dbcf2b27ba17312b4dcbffecccbf95a6c2646caae6fc6f5cdf603d4604",
+      "bytes": 17841
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/abdomen3.png",
+      "sha256": "b7bd7812b2290a76799185fb64425271115b4f4443ae04b50ad69d4f4006364f",
+      "bytes": 13918
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/abdomen4.png",
+      "sha256": "92e48d4f3fc9e4cbca3edb358e087ff73fc9d758512a06eee81dc2620ed8e644",
+      "bytes": 11000
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/abdomen5.png",
+      "sha256": "9b29681f9e1db6eed12069b6afba8615c59bcd74d31867bd16d2758a2782dff8",
+      "bytes": 9532
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/antenna-far.png",
+      "sha256": "83ed99e6c2af378e9cde4876e0e88676adde94a449ccd46e97f30926d7d25290",
+      "bytes": 3834
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/antenna-near.png",
+      "sha256": "88e3984cbb2af0a5e6ba9c5b40a077d5e5e9c7486be5921fee03e3f6c6fbb1b6",
+      "bytes": 2132
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/head.png",
+      "sha256": "d045c430296c136ebd1a47e2f8e4c56faa652806bb26a406fe3f2531ac6104e7",
+      "bytes": 36869
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg0far-foot.png",
+      "sha256": "ca16a36eb14629785d5d0a2701fb4148ea73f3567e01ac578893abbbb266997a",
+      "bytes": 1731
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg0far-upper.png",
+      "sha256": "fb2bed0060c725d2027b4ec98ddee36b6ed4c8d9fc0c51b206b4e570208b254f",
+      "bytes": 2025
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg0near-foot.png",
+      "sha256": "b53453955fde9494f97035f70dbc39894966b552f802870abb60c63a74c873cb",
+      "bytes": 1481
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg0near-upper.png",
+      "sha256": "503df1354fbead6a559f34f3748917b0ba035e4aae6578f86626fa4dd1face13",
+      "bytes": 1614
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg1far-foot.png",
+      "sha256": "c16edfae011ed94e21c57a9e1fe5b546437242ecef72afaafdf7e6eff2e27761",
+      "bytes": 2056
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg1far-upper.png",
+      "sha256": "ef226cf3043d63dd6188a062b8f2fbca01eefed8432017eb29279b033cae05ad",
+      "bytes": 3315
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg1near-foot.png",
+      "sha256": "b231f33c589f3b0d033112b2b3e947e36822556767278f8e2a65b376450e3d32",
+      "bytes": 2297
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg1near-upper.png",
+      "sha256": "70d4fd274f08c67ed22df94c10aa46e56b16001ff60765119576109fe9706217",
+      "bytes": 2834
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg2far-foot.png",
+      "sha256": "449df97a04ef20fb77e4687d224222aa3431f025910966647cd83068be756989",
+      "bytes": 2071
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg2far-upper.png",
+      "sha256": "187411968314fac05964f15b41d40c5bbb22d80998fe0bfc8c5ddd9b9a48de2d",
+      "bytes": 3764
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg2near-foot.png",
+      "sha256": "6377a7ede46df2564becc3e5c6d6a7d02f9b023eb0d5c2a6bc914ca05c689a08",
+      "bytes": 2024
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg2near-upper.png",
+      "sha256": "40e5ad7bd8769e2c3dbac94420cd6be14dceef3ba0b2ee95c151502f20e81650",
+      "bytes": 3352
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg3far-foot.png",
+      "sha256": "99a07f93b7c5e9b3e06a19bdfb8217bd1a540c380a57da07b2ee0baa7fff1f56",
+      "bytes": 1915
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg3far-upper.png",
+      "sha256": "cbabbddb81456adddc0cdb94b654f0af5d81e63becc9cc953b413b9a50a766ce",
+      "bytes": 3776
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg3near-foot.png",
+      "sha256": "babc5fe63aff4a5fbeeb4d46aa91ed914dd69b8fe68c7d1b918cd97cb18fe844",
+      "bytes": 2081
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg3near-upper.png",
+      "sha256": "daaa762fe5fe091ba56392dadfec8c23b5609c54cad33f80a1155ee49c9ebbc2",
+      "bytes": 3489
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg4far-foot.png",
+      "sha256": "e2ec10871374c5e0dca59686b3e188db5524672b6d6d0cd0ef15240453bb7ad4",
+      "bytes": 1814
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg4far-upper.png",
+      "sha256": "86203b2ad9387a5b155ebf15a70cc7d3e8ad4a598d06b261a0824f120dcbf7a9",
+      "bytes": 2940
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg4near-foot.png",
+      "sha256": "71dffc495d7aac90c75f4b5a42a018f50e7a1f9802bc6fadcedf90dd4354e0dd",
+      "bytes": 1876
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/leg4near-upper.png",
+      "sha256": "b8397357e76635bca42861a20695057a5b595e4436fb2126d0c64cf37c152152",
+      "bytes": 2924
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/tailfan.png",
+      "sha256": "8ac9040362ac59754f31f5cb59c354c07c83eec56cc20d0855088834abfcafd4",
+      "bytes": 50080
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/parts/thorax.png",
+      "sha256": "9b96cf6634b894dcb025c636f192eacb9b9e162ea6cbc57eaf250cd96baf0746",
+      "bytes": 43802
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/parts/receipt.json",
+      "sha256": "68a30922711adc5960ec3ad6ed127297895e07831715d87a4feed502a1cc5767",
+      "bytes": 8036
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/pre-split-binding.json",
+      "sha256": "fcc66a9d9998ac35239f72b9b737c60360bc1253a5880f91ff0b210279c09162",
+      "bytes": 867317
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/receipt.json",
+      "sha256": "4be48a459ff03cc92f6c8f88a9ceee3c931c9288bb3d5fd83a49ea6f7255b66f",
+      "bytes": 4130
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01/record.json",
+      "sha256": "772f77ba24bb05d3353972ee0c7802df8225eb5d7a0b4d2650dfa4977bd5fa24",
+      "bytes": 10003
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/generation.json",
+      "sha256": "491e23e596fa6ba1543f2c3cf5ff1dd5f01f2c18f927dec716ee0bef3b855a1f",
+      "bytes": 1209
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/input-master.png",
+      "sha256": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051",
+      "bytes": 1160556
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/intake-01.log",
+      "sha256": "c3dbf7e43d6ed31ae2307bd71af0823e68e126f4624413bc763d484aabb6fdce",
+      "bytes": 319
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/intake-execution-01.json",
+      "sha256": "14a27174376e076630ba96b53dd84d74008637e2591deca92cf71a8dcb8f136d",
+      "bytes": 655
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/joint-preview-01.png",
+      "sha256": "cc1eb90033ef8520e38711fc316f12d1a6770943f3b0513b84ced79463f93931",
+      "bytes": 305998
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/master.png",
+      "sha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35",
+      "bytes": 1143772
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-approach-swim-50-left.png",
+      "sha256": "a71debc4d7f990b9aef85a93cb972f32ed165a819e8b0c66b00b5c6670e7e6bb",
+      "bytes": 237745
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-approach-swim-50-right.png",
+      "sha256": "b607e2c99d819348b5c261c730ba0ccec85888932be64420b5ab1221d64c8738",
+      "bytes": 237384
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-cast-50-left.png",
+      "sha256": "e5daa29e28ccd9e0096e185357ecbfe05e11942ca7ce7d7eb6af5add72d25707",
+      "bytes": 237586
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-cast-50-right.png",
+      "sha256": "4635c44ca45053554a6a92c171229d459206ad9c9555f018c6e85e586127c3f9",
+      "bytes": 237517
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-approach-swim-50-left.png",
+      "sha256": "8d684754f459504bcc830e9e6e628fa4392407f30c2bdf9c4efd81673dae15cb",
+      "bytes": 237689
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-approach-swim-50-right.png",
+      "sha256": "64373475977cd65ae8d0ef6932ee49008a7883fe7c792a7ffa2172e8e915f50e",
+      "bytes": 237402
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-cast-50-left.png",
+      "sha256": "2253e5cf0440228c6e2a336a4716deec3a229a228601c3a6e9d1508dc83a4c77",
+      "bytes": 237713
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-cast-50-right.png",
+      "sha256": "ccc78f3de8bb1e336286f0736a2e70fb5d9400eeba7011a826d240e3624d2cb3",
+      "bytes": 237591
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-faint-100-left.png",
+      "sha256": "5ce0f91b2bb50ecc993382c84ca8488ba39444fba5ada6856217abaf3f897658",
+      "bytes": 234038
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-faint-100-right.png",
+      "sha256": "417ce12990288410f2406df8f7fcdca8196d359cd8baad3977d45868486c4539",
+      "bytes": 234142
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-faint-50-left.png",
+      "sha256": "da65b858757bbcd407c1082678fe0579e6d60ef875c408b366ce5897e12bb450",
+      "bytes": 235617
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-faint-50-right.png",
+      "sha256": "a77ee376f850d6309201ccd0db77f7a29dba2d3b53bde20fdb39a61b67c89d03",
+      "bytes": 235757
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-hit-50-left.png",
+      "sha256": "35d256ea0626f3a3feef695dc8f603471950815befdecb944bbccbecd8a3269d",
+      "bytes": 237284
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-hit-50-right.png",
+      "sha256": "83da28548dcbc6c9844d27f7d3ffa2dd8ffbc039436fd4f09440b517be653a17",
+      "bytes": 237421
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-idle-50-left.png",
+      "sha256": "fc4abe5cb5658c844da84ecd1d4b62f9b5c07452993029c34e8624e0d39b6092",
+      "bytes": 234802
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-d28-idle-50-right.png",
+      "sha256": "fcabb4b063f37fb87ae02b410d446c2c011d9bd0d2e660772db20788a08146c1",
+      "bytes": 235137
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-faint-100-left.png",
+      "sha256": "5ce0f91b2bb50ecc993382c84ca8488ba39444fba5ada6856217abaf3f897658",
+      "bytes": 234038
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-faint-100-right.png",
+      "sha256": "417ce12990288410f2406df8f7fcdca8196d359cd8baad3977d45868486c4539",
+      "bytes": 234142
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-faint-50-left.png",
+      "sha256": "e0709f1c43b573dbd917fecaf21e04650dcd8aca6ee2b69f655df7fc0e5e8fbf",
+      "bytes": 235642
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-faint-50-right.png",
+      "sha256": "32321d31bab924e36625e8df060564d877fa0b8245a533f350bfaadbf1c87f4e",
+      "bytes": 235742
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-hit-50-left.png",
+      "sha256": "a12eec2209e10fa7ade3cfcf5ab0f6f754fc314af67f924d1fa94b359d0c07e4",
+      "bytes": 237396
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-hit-50-right.png",
+      "sha256": "0b06477e84e28f1dace4f605213260823f4767d379fb9cd5eda90afa85b339d5",
+      "bytes": 237391
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-idle-50-left.png",
+      "sha256": "b09a3b44406e1ee2a83b594fd30836bcfe252e1198bdf108fda61ebd6e1e873f",
+      "bytes": 234751
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/motion-idle-50-right.png",
+      "sha256": "adeb7804e5248a08b2f386ddcfd779d3c52a68daf4f26b4cb9a6d8296eac4e5d",
+      "bytes": 235215
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/ownership-preview-01.png",
+      "sha256": "aed2220e686d47ca289f513d08ecfa7f37486815e144e643f13b24b59ac75862",
+      "bytes": 268065
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/prompt.canonical.txt",
+      "sha256": "e5cf939dd27b9516aa7ed2b00e8b58d0d15731afa2a2a0b47fc14e674270e546",
+      "bytes": 9784
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/prompt.txt",
+      "sha256": "b128be638f1e33e4e33e85ebd46f328db3b4946418a7dc0e123dc0c28270442a",
+      "bytes": 11390
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/publication-d28.json",
+      "sha256": "2c4ff60b5d0f6043a32540b472de5bc45673814806bf4ffc59bedb60dfc3a897",
+      "bytes": 36133
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/publication-review.json",
+      "sha256": "fad8ea8b3e3dcbd5a018259cab5261b57777664c3adc6bed3e3167594ce0a209",
+      "bytes": 36085
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/request.json",
+      "sha256": "7fe0191fc10789d93ac6684eeaad0571be2f6654f6465b13b92a5edf50f68535",
+      "bytes": 967
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/static-01.json",
+      "sha256": "ddb40545b96f9235092dcf3f977061e5374f2e20fa9664a50e738b8a04e1450e",
+      "bytes": 6849
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/static-01.json.sources.json",
+      "sha256": "69f2cbcf84b4ba523cfdab582084bddd4316753031b05419c34b42d8136593c7",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/static-01.log",
+      "sha256": "58776b313d9b804faa256e7620493daf71699e7fecde5abcd2b55732c6118df7",
+      "bytes": 1582
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/static-d28.json",
+      "sha256": "498b8b9b11d666c3fb56043439883095489d393b995ce44e6f68875ebd2c3195",
+      "bytes": 6859
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/static-d28.json.sources.json",
+      "sha256": "87e0e2bf6984b1c7adad02f65d7b7c1a4ff5ad78651bf10c20d4025b6f860de3",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/static-execution-01.json",
+      "sha256": "5b69c8894664d24df8263f101fff215780b37c9a012f473856ee8e4f6478a92f",
+      "bytes": 674
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/subject-source.json",
+      "sha256": "adc6d9af35d82d61dbbfb6592f3a0b4ea8e1bccdb946f2e483be4c36ebc6ed72",
+      "bytes": 2392
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/authoring-receipt.json",
+      "sha256": "f5c0d129664ff2f8b2d0f09fd39a539a253d5b12dfe0fe1a4bc65c7874f65112",
+      "bytes": 2150
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/authoring.json",
+      "sha256": "0d3fd10a4da2c26f3061e5b97a236ac7026f828f42c5d870ba5d9dab569b4fac",
+      "bytes": 18010
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/conservation-01.json",
+      "sha256": "fe326edfc893803a78c7a1fcd79c1c5a48e34c3323b5a31368498048b7e3c202",
+      "bytes": 2672
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/conservation-01.log",
+      "sha256": "4c9327fd88ff4068be1d1fa7be31201a0186966f2a926c4914a2d7b80072d0d9",
+      "bytes": 651
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/conservation-execution-01.json",
+      "sha256": "c481192141e9a7e29005e0a61492b95ebfa502587d284d79d6e131f5aef7ada7",
+      "bytes": 696
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/binding.json",
+      "sha256": "221e8aaa31c2f6dee1f262b217bc9392626bf152832456ed16966f7660c1aa3c",
+      "bytes": 1325979
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/declaration.json",
+      "sha256": "0a510aa846065ee50ddff33b2556f11814cf631cb2c4ec6e975ec613e6e35989",
+      "bytes": 3369
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/labels.png",
+      "sha256": "3515bf155cc9c6eb8c2f3d3e19bdeae5ec74c71f387da7e93c062f56ec039a86",
+      "bytes": 42983
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/atlas/c192-independent-shrimp.json",
+      "sha256": "916e1f2fc751f57b48ce503f8f3b9b8a41e004cac27f3d5dc068b5620caaeba7",
+      "bytes": 12671
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/atlas/c192-independent-shrimp.png",
+      "sha256": "6debce5eefce7f9878a7c3f7cca4e9f495da67ed2a21f6b3c9328edb4c93ac78",
+      "bytes": 243096
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/atlas/receipt.json",
+      "sha256": "932ca5c3130c31ea26de58e94a365765ee36dcd918bfec443043f8223734dbe9",
+      "bytes": 4776
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/binding.json",
+      "sha256": "bd85d899edbeef52b890b6a2ff0d7606842f41432e36381f99c4c098ca80d3a9",
+      "bytes": 10415
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/keyed.png",
+      "sha256": "0d3936bd92b426a5fe82555c90d13ecf5bc610f72fc534753ea2f10919dd4b0e",
+      "bytes": 1359945
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/manifest.json",
+      "sha256": "b87291b159af178343f2cad5edea7a1812c86a4db24bc64a085aee3c4bd4eab4",
+      "bytes": 5285
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/ownership.png",
+      "sha256": "721a5f8bbf7000ecbe3dfdb26af7fb405893d09a2f205097e36b6e06ed5a156c",
+      "bytes": 16209
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/abdomen0.png",
+      "sha256": "3bd9d2e91ac3c1ee26545f113988b1581b9c3334d756c8d6a8e0d0a80ff36a21",
+      "bytes": 17324
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/abdomen1.png",
+      "sha256": "a53850fb18506d2ad44577dd0f5c03a7edd26dc3eb5abd92d1013b281b686fe7",
+      "bytes": 14347
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/abdomen2.png",
+      "sha256": "4f10a6ff304415a4e8398074a1add43831b40a6071afd963774fb8fc2fb060d4",
+      "bytes": 19280
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/abdomen3.png",
+      "sha256": "ca7ffa1d446b8934512742172707e1e2654b8b74d3d58ba14f9def1e4d3fcf4a",
+      "bytes": 15386
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/abdomen4.png",
+      "sha256": "f3e12700f571a7868bd827cb892bc41721f3f7a55ef425c0f03bd97c9f321b01",
+      "bytes": 10513
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/abdomen5.png",
+      "sha256": "86ff08888dbea4a1713a2e78ede03a767a47ed6a56f04cd80bb1a15df016cc7e",
+      "bytes": 8818
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/antenna-far.png",
+      "sha256": "fde4394e4c2bfdfcf12bbbd6237a4f7400dc9f52243af60e2e5cc9713e8b2b33",
+      "bytes": 3718
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/antenna-near.png",
+      "sha256": "6ce5a52bcc3274ba00fe4d4ce418755efe80eb2c2c37e7b7296d9ff91a55b977",
+      "bytes": 4511
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/head.png",
+      "sha256": "100af5bd54c53fa37711630594f48670eb309c16f0279bcdfd4b56635ddca15d",
+      "bytes": 26730
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg0far-foot.png",
+      "sha256": "f2015e5e22d5f37eaf6ce7613b966a3cf821a9de6f2a827dd01e37634964c235",
+      "bytes": 1512
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg0far-upper.png",
+      "sha256": "6f2598ee21694d115f0c693f1b3b6424265a4c17ef14955beddd1cd9e5d3a43c",
+      "bytes": 3656
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg0near-foot.png",
+      "sha256": "2c6ab8a3d4d066a23509ace220e961bd1d0fc3dba1ef79932084f981f52729e5",
+      "bytes": 1614
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg0near-upper.png",
+      "sha256": "7fb4b41a7eea16d5d21ff347c834329cc7d025cae9d57f8f87fe69355d2d1e7c",
+      "bytes": 3528
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg1far-foot.png",
+      "sha256": "973672f5548ebfbb335052b6b2037f26e09a15b966f0f9db0e759611dbe0e7b1",
+      "bytes": 2040
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg1far-upper.png",
+      "sha256": "15bcf39719de784562b934cf69c3b7957c40c95d3e921e28a1010857178a9c91",
+      "bytes": 2336
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg1near-foot.png",
+      "sha256": "d090f0a0802455a28a4a97d1e9e43ce0b7fab54291e6a2c63bc93a828cf0dc77",
+      "bytes": 1672
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg1near-upper.png",
+      "sha256": "5d2a710aa80a95dbc2ced68e4374ad33a42c02c01e83d00bf8759b5a34fb061b",
+      "bytes": 2282
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg2far-foot.png",
+      "sha256": "dd5ea02d2c6dc029b8d9eb8b43c2fd33637db74e489127f0cabb42060923c468",
+      "bytes": 2723
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg2far-upper.png",
+      "sha256": "ae017f5090d006dcb3e69f0074538d35a8af81b1848feaddefae871c43b672a0",
+      "bytes": 2721
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg2near-foot.png",
+      "sha256": "54a064e80685e029a71ac9661af0b04efbf18228f004bb78fd06f99c4c356b34",
+      "bytes": 2790
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg2near-upper.png",
+      "sha256": "f4f4da56cd6182b699a43d0cc344432f924d3e6beaf42633cc21b748f58f9c1f",
+      "bytes": 2239
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg3far-foot.png",
+      "sha256": "739a312ab8d89e70368a381917eb40ccf61aaa7311b493b50d8b6d7d496e3765",
+      "bytes": 2326
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg3far-upper.png",
+      "sha256": "14ee9fad6f40844cb1bbdbbc2e6755fc9e44a8c7be80ad89548bc4c2ee31f287",
+      "bytes": 2867
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg3near-foot.png",
+      "sha256": "a8f31f72d00c6e1c50a9538f5d5deb71ae18687ebf8323756b61e65361c124e9",
+      "bytes": 2513
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg3near-upper.png",
+      "sha256": "20f1078f00bd38839742f3f66f1c0e1a01178434892aa70159255dd3cc0dadbc",
+      "bytes": 2403
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg4far-foot.png",
+      "sha256": "39a610f126dd196fdd12580a03d226f79b59855a3e2b2633e0d7bcb9717cfe6d",
+      "bytes": 2470
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg4far-upper.png",
+      "sha256": "54351867866e20f335d00f38e670a1eba31ccec61a4f4d4cb040330ab2c3946a",
+      "bytes": 3174
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg4near-foot.png",
+      "sha256": "40a0f2913fc9e0a5d36dd1dece1e4acc343bf3b28de6e78cf5854e1f84172c17",
+      "bytes": 2482
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/leg4near-upper.png",
+      "sha256": "3904426c25dd75119c48571060f6f75ea378825ab97c615b9eb9dcc8701c93f4",
+      "bytes": 2504
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/tailfan.png",
+      "sha256": "0a81a329c3e45429007fdb353b2a3240c715406fc98cf6d2e5d9581ffea0d2e7",
+      "bytes": 49758
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/parts/thorax.png",
+      "sha256": "e0d94a5bd9a52ab40fa36ceb700667265367567fffb8ccfe5d74bcc71bd582d3",
+      "bytes": 38849
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/parts/receipt.json",
+      "sha256": "575b1be3edac42662b4af71a7b022e344cbc96d00b1bc5e8d71bd8766af533c0",
+      "bytes": 8214
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/pre-split-binding.json",
+      "sha256": "14281b0dd26034b7ac93e2fe2dce6253bc05ffd5546de674c4ce26d2d35f0918",
+      "bytes": 858733
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/fit/record.json",
+      "sha256": "db3bccf13b0115e0afa4da8e59ee660405a6594e03501e0a48d6a51ea33b44c5",
+      "bytes": 10010
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/d28/receipt.json",
+      "sha256": "913605836ea007fb45852ebdc41ff63312dd6e34328e0e11dabd7cdc13ca79e5",
+      "bytes": 5141
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/binding.json",
+      "sha256": "60d49a9e3d53dca0bf555d35126f0bb18877b25bb50b63466960e0fc409acfe5",
+      "bytes": 1366836
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/declaration.json",
+      "sha256": "0c098c8eb5ef194464063be93ea1c44f9f7eb89ec41b447fffb573dd0be25d20",
+      "bytes": 14827
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/intake-provenance.json",
+      "sha256": "cee7b46b66a6bd812ed8485944b92876292dc41d66f6230d4937840647f9f28a",
+      "bytes": 3650
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/atlas/c192-independent-shrimp.json",
+      "sha256": "24613d04a2baa7a24b936ab95a60b033efc2c9faa89bdb51946551b55e0c6a01",
+      "bytes": 12642
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/atlas/c192-independent-shrimp.png",
+      "sha256": "c713519ac4134343bb28c75c5f65f150ac0703cba17c722c4131d691289eeb5f",
+      "bytes": 240388
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/atlas/receipt.json",
+      "sha256": "0fc73817dc9e1e3e3e2482cef37446df0dc1c571c37573f258d6a29dda1a5c5f",
+      "bytes": 4776
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/binding.json",
+      "sha256": "48e92732db6f46bbec17293cd961990621c91054a76c080a47497a0fe61e4e6f",
+      "bytes": 10386
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/keyed.png",
+      "sha256": "0d3936bd92b426a5fe82555c90d13ecf5bc610f72fc534753ea2f10919dd4b0e",
+      "bytes": 1359945
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/manifest.json",
+      "sha256": "cfbcb5507b6771185bde6a0a01a86a917630e525ac1c4f1165da4030b20c9c9e",
+      "bytes": 5285
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/ownership.png",
+      "sha256": "6bf72f75f7149db158cdb9da187c7fe7d9fb4694009cadc60253b9611a49e488",
+      "bytes": 16313
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/abdomen0.png",
+      "sha256": "3bd9d2e91ac3c1ee26545f113988b1581b9c3334d756c8d6a8e0d0a80ff36a21",
+      "bytes": 17324
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/abdomen1.png",
+      "sha256": "a53850fb18506d2ad44577dd0f5c03a7edd26dc3eb5abd92d1013b281b686fe7",
+      "bytes": 14347
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/abdomen2.png",
+      "sha256": "4f10a6ff304415a4e8398074a1add43831b40a6071afd963774fb8fc2fb060d4",
+      "bytes": 19280
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/abdomen3.png",
+      "sha256": "ca7ffa1d446b8934512742172707e1e2654b8b74d3d58ba14f9def1e4d3fcf4a",
+      "bytes": 15386
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/abdomen4.png",
+      "sha256": "f3e12700f571a7868bd827cb892bc41721f3f7a55ef425c0f03bd97c9f321b01",
+      "bytes": 10513
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/abdomen5.png",
+      "sha256": "86ff08888dbea4a1713a2e78ede03a767a47ed6a56f04cd80bb1a15df016cc7e",
+      "bytes": 8818
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/antenna-far.png",
+      "sha256": "fde4394e4c2bfdfcf12bbbd6237a4f7400dc9f52243af60e2e5cc9713e8b2b33",
+      "bytes": 3718
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/antenna-near.png",
+      "sha256": "6ce5a52bcc3274ba00fe4d4ce418755efe80eb2c2c37e7b7296d9ff91a55b977",
+      "bytes": 4511
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/head.png",
+      "sha256": "100af5bd54c53fa37711630594f48670eb309c16f0279bcdfd4b56635ddca15d",
+      "bytes": 26730
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg0far-foot.png",
+      "sha256": "5639d3d3766a883bc7ed7af4ff5fa26157b4e76d57814405144969ed870f633d",
+      "bytes": 1482
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg0far-upper.png",
+      "sha256": "6f2598ee21694d115f0c693f1b3b6424265a4c17ef14955beddd1cd9e5d3a43c",
+      "bytes": 3656
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg0near-foot.png",
+      "sha256": "01ab45c3fb539d84f322041561eba0681882d5dca9a7b3fe66b258dce62c2532",
+      "bytes": 1568
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg0near-upper.png",
+      "sha256": "7fb4b41a7eea16d5d21ff347c834329cc7d025cae9d57f8f87fe69355d2d1e7c",
+      "bytes": 3528
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg1far-foot.png",
+      "sha256": "332ec066450de7ecc88d269467639c74d34130333ec18bdc29a3e45ea403ea3d",
+      "bytes": 1931
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg1far-upper.png",
+      "sha256": "15bcf39719de784562b934cf69c3b7957c40c95d3e921e28a1010857178a9c91",
+      "bytes": 2336
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg1near-foot.png",
+      "sha256": "bb0a3b5399ba01f4c23d59edada5c97399c934311a8afc808270146b96f4df8d",
+      "bytes": 1652
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg1near-upper.png",
+      "sha256": "1245de9b2362385eacfcc86f996d997a181801f8184cfd6b6ed1d2a67761f4ee",
+      "bytes": 2219
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg2far-foot.png",
+      "sha256": "20c4a15bc6ba814d628496c47a36ed425a985a65b870ee58609220602914ca59",
+      "bytes": 2335
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg2far-upper.png",
+      "sha256": "ae017f5090d006dcb3e69f0074538d35a8af81b1848feaddefae871c43b672a0",
+      "bytes": 2721
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg2near-foot.png",
+      "sha256": "c1d02fd0d937eda996d711bcf7c07af461bd9b951a64099ff1bcf5c52a60a1ab",
+      "bytes": 2706
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg2near-upper.png",
+      "sha256": "f4f4da56cd6182b699a43d0cc344432f924d3e6beaf42633cc21b748f58f9c1f",
+      "bytes": 2239
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg3far-foot.png",
+      "sha256": "739a312ab8d89e70368a381917eb40ccf61aaa7311b493b50d8b6d7d496e3765",
+      "bytes": 2326
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg3far-upper.png",
+      "sha256": "14ee9fad6f40844cb1bbdbbc2e6755fc9e44a8c7be80ad89548bc4c2ee31f287",
+      "bytes": 2867
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg3near-foot.png",
+      "sha256": "a8f31f72d00c6e1c50a9538f5d5deb71ae18687ebf8323756b61e65361c124e9",
+      "bytes": 2513
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg3near-upper.png",
+      "sha256": "20f1078f00bd38839742f3f66f1c0e1a01178434892aa70159255dd3cc0dadbc",
+      "bytes": 2403
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg4far-foot.png",
+      "sha256": "39a610f126dd196fdd12580a03d226f79b59855a3e2b2633e0d7bcb9717cfe6d",
+      "bytes": 2470
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg4far-upper.png",
+      "sha256": "54351867866e20f335d00f38e670a1eba31ccec61a4f4d4cb040330ab2c3946a",
+      "bytes": 3174
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg4near-foot.png",
+      "sha256": "40a0f2913fc9e0a5d36dd1dece1e4acc343bf3b28de6e78cf5854e1f84172c17",
+      "bytes": 2482
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/leg4near-upper.png",
+      "sha256": "3904426c25dd75119c48571060f6f75ea378825ab97c615b9eb9dcc8701c93f4",
+      "bytes": 2504
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/tailfan.png",
+      "sha256": "0a81a329c3e45429007fdb353b2a3240c715406fc98cf6d2e5d9581ffea0d2e7",
+      "bytes": 49758
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/parts/thorax.png",
+      "sha256": "b0f2b88d6546836fcda1c5c7b1768b79dd1482ced965f11bc53400a13d4eae99",
+      "bytes": 40249
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/parts/receipt.json",
+      "sha256": "8ea57e25e8137386fabd2278059b67f89d07eca3d7d29cb967ada5598999529b",
+      "bytes": 8035
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/pre-split-binding.json",
+      "sha256": "154da1fb652c5b7a3a3591f3978d221737afa6d7abc37d5c628f44c8e909f84e",
+      "bytes": 883479
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/receipt.json",
+      "sha256": "d09e96ea54a9358371533deba805dcf418bf8c68b70a99779f9cde27593dd61f",
+      "bytes": 4233
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/fit01/record.json",
+      "sha256": "db3bccf13b0115e0afa4da8e59ee660405a6594e03501e0a48d6a51ea33b44c5",
+      "bytes": 10010
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/generation.json",
+      "sha256": "b425d4f0c8765e849926f70f0edb69e7a6feb61c9ba2fa22a490334ddfeafba9",
+      "bytes": 1210
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/input-master.png",
+      "sha256": "ffad768165b2d127484e6136a0c3b647a1d63a96ec7fe0264c717ab6d3d0732a",
+      "bytes": 1177921
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/intake-01.log",
+      "sha256": "67a133f1eda38df41d6d36f13adf58bf3ed976190e69690828edba60575e1f21",
+      "bytes": 320
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/intake-execution-01.json",
+      "sha256": "b9855416b9df98a60f1f720d30d0cd34682c35607f2b7e878b90d8e5db8dffdc",
+      "bytes": 659
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/joint-preview-01.png",
+      "sha256": "61084ec83959df8746ebfeab5e979fe504215f066f9faecdde947b015f3c34aa",
+      "bytes": 289875
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/master.png",
+      "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7",
+      "bytes": 1146184
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-approach-swim-50-left.png",
+      "sha256": "a357ccb4f38c7e547d3844cd498124aac7417b637bdb3eeddfb5e652f8153384",
+      "bytes": 228145
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-approach-swim-50-right.png",
+      "sha256": "c7c73d9fa22670bb303b0e1bc4886f04cd14921b173bfa79776e862ac940bad3",
+      "bytes": 228302
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-cast-50-left.png",
+      "sha256": "1e573d7a6519f02ca217eef9eeaba65e8e7e04cf391e38aa6a76663e088453ed",
+      "bytes": 227911
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-cast-50-right.png",
+      "sha256": "be3d5d9c91f8327f18c768090208f03095d398ec4ff41a53f9add0d4d71da83c",
+      "bytes": 228087
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-approach-swim-50-left.png",
+      "sha256": "0061d60d536888a3eda16603ba83e523933d3327bc8fab3d2581f92ae6d15624",
+      "bytes": 228357
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-approach-swim-50-right.png",
+      "sha256": "650ecbf0c0c5f5b4d63e76c5a8eb4cedc080dab2a9dd9c2a618cfc8fdff7431b",
+      "bytes": 228615
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-cast-50-left.png",
+      "sha256": "1b5b769d3d9ddecfc6949fc73fd55a7df9712fe2969aa8ea23f3b0ac52a93e91",
+      "bytes": 227959
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-cast-50-right.png",
+      "sha256": "b0adb8eb30dbb3f306acfdafbd6a39dde96eae95707941f5c8145897e02fb044",
+      "bytes": 228095
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-faint-100-left.png",
+      "sha256": "cdfc243ced71b24bf309c92d147f9be47e32699cf6bf118268a6ae83b85fdb44",
+      "bytes": 228637
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-faint-100-right.png",
+      "sha256": "5ed024d3c03748aafb53ff79cc1db50c422ded3532136b9f903d0d5d130522fb",
+      "bytes": 228354
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-faint-50-left.png",
+      "sha256": "0b2ae4e055ff02c740e7092c8a5d61c79a22bf8b45b998afcbc60e4054919a02",
+      "bytes": 230365
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-faint-50-right.png",
+      "sha256": "b3002c8e49d0793278ca99b1913aab1bb3d069c7a5387d89e664c25eb81be291",
+      "bytes": 229856
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-hit-50-left.png",
+      "sha256": "1d0f7a1e35a025d0aba9228cd83c592d9aec29d19128da665c0ae370873d23f2",
+      "bytes": 230854
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-hit-50-right.png",
+      "sha256": "1a0c198acbfdf9e59222637c3c4f888a93114481bd80ae1773c1ec737e64a3e0",
+      "bytes": 230527
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-idle-50-left.png",
+      "sha256": "f7ab76c1d837967d1fbff734095100ed2b165869afe7fe2f0657af4a395c9b8e",
+      "bytes": 230000
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-d28-idle-50-right.png",
+      "sha256": "78a773064354b0afbc880144a290bd6aea82a4c5b1e2c5ba86e58a374ac66da9",
+      "bytes": 229563
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-faint-100-left.png",
+      "sha256": "cdfc243ced71b24bf309c92d147f9be47e32699cf6bf118268a6ae83b85fdb44",
+      "bytes": 228637
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-faint-100-right.png",
+      "sha256": "5ed024d3c03748aafb53ff79cc1db50c422ded3532136b9f903d0d5d130522fb",
+      "bytes": 228354
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-faint-50-left.png",
+      "sha256": "09ca76df716c609335bdd5d581ffdd5ef4786a2095158c249809d0ac28ea89b3",
+      "bytes": 230360
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-faint-50-right.png",
+      "sha256": "5358a06d25a4c3890537d6ab16898f14704f498ce1836d1851ef78289d460804",
+      "bytes": 229855
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-hit-50-left.png",
+      "sha256": "4ba9b265430715681b0521ec7d4e369d00e614f54c3985cea8f7ca588f4ea13a",
+      "bytes": 230885
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-hit-50-right.png",
+      "sha256": "70273f55be6d35c4a2ae04007f5d4a683bacc0b6ec054d5b540dc64b7c89a24f",
+      "bytes": 230603
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-idle-50-left.png",
+      "sha256": "6a6c0d68e866774ae1fb29ac7cfade69c7804432f6f040cd1196d239f13f84ef",
+      "bytes": 230004
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/motion-idle-50-right.png",
+      "sha256": "c28cac5b110258777e288bdbc2c5ffb56faf70e471e7f67d241c1f0f44c3ae44",
+      "bytes": 229511
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/ownership-preview-01.png",
+      "sha256": "20659207719365c35b9e66b84004eeaf34b53177a5ca72b9dfc71d3f99526621",
+      "bytes": 254593
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/prompt.canonical.txt",
+      "sha256": "02e6b75a93ca17a9001d5c9f05e58c47e41faf991884aea5829f94ded8655cb8",
+      "bytes": 9599
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/prompt.txt",
+      "sha256": "95f1cffa23ff3cd20b94f55685a2392996e1da0c60428c69cf8d0bb9879066ef",
+      "bytes": 11208
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/publication-d28.json",
+      "sha256": "67b00e5b4c3361aefe69c443611c83147fcd514ceb79c02f98c4b5777a229269",
+      "bytes": 36153
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/publication-review.json",
+      "sha256": "6cca410b13d1f1a70e9c25252617535f88d7dd7c2444721d2311951205d0c6a3",
+      "bytes": 36105
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/request.json",
+      "sha256": "33da5f9b90ce3077fee51531ac647de88acafe4e0a45bc4a39f0257324a87b67",
+      "bytes": 970
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/static-01.json",
+      "sha256": "46a578a9fa556a1ed88a9654bcb2a7668d3f1cb3b1d1d90c0fad28a82c017e77",
+      "bytes": 6849
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/static-01.json.sources.json",
+      "sha256": "b6bab5492f4a8c5a35c5c1089f3f70668c8bef8323d89bed05ad9593ea8eaa27",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/static-01.log",
+      "sha256": "fcb7848b39c1e85ad09dcc7fb582b9042da540876367c76655d0aaa026d4f04a",
+      "bytes": 1576
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/static-d28.json",
+      "sha256": "a8385a2e27f7a10d3b8d06555b29298f223bdd9ce1f3d64be4df77e1e2d47817",
+      "bytes": 6865
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/static-d28.json.sources.json",
+      "sha256": "6f39e523bb8b81a1a9963b351fa643fb061e7b63de70ecae4f0bc00139ecad2e",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/static-execution-01.json",
+      "sha256": "84281ec520deda5f39ec07a1a25b65bc22bddb8edd8bd988e09e9f95d153d74d",
+      "bytes": 678
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/subject-source.json",
+      "sha256": "70eed98c8728dcbfd990ec7d96df46ea4903e109aac8e9dfc9527557cd3bce5b",
+      "bytes": 2382
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/authoring-receipt.json",
+      "sha256": "0b4c1642e6abee61d7384a209e7720f744bae06fa5f9e93051b1795433e3803e",
+      "bytes": 714
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/authoring.json",
+      "sha256": "919762a2631bc06eab8c3d4336ab7a86084484207e16c7d8ce659f26709ce883",
+      "bytes": 7837
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/conservation-01.json",
+      "sha256": "3279027b1c3c8d953808e5ae8379cad7f40b28dede4d79ec07518966f68bee2d",
+      "bytes": 1913
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/conservation-01.log",
+      "sha256": "5556e672c7af98331d9177b535c2eb14cb08efea03113be5664b8855b8ceb6b6",
+      "bytes": 370
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/conservation-execution-01.json",
+      "sha256": "fb4ec4dfe1ed16831d68deebeba32bf2ca296e558e212524f84e2d5eb4465c09",
+      "bytes": 700
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/binding.json",
+      "sha256": "5ea867327b9420aa93cb8f61668f929fad9dc87e669ddcf4ac2d5860ea4be4b2",
+      "bytes": 974974
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/declaration.json",
+      "sha256": "542f70fa430bfd9ad00c6e93b981e24cdf147c287ca8857097b41888b5546e28",
+      "bytes": 1253
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/labels.png",
+      "sha256": "6055158705b68c7038d095aeb5ca62647786340b60508b983f34e15f1b6a0dc3",
+      "bytes": 39461
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/atlas/c192-snail-contours.json",
+      "sha256": "fdf9ffcb1ca60d73fc3d1bc6b4bf453b4b13a92a6543332611269f3d3d98321a",
+      "bytes": 3762
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/atlas/c192-snail-contours.png",
+      "sha256": "a6065a2f02208266f98143191168eb3caa78de362e2be7771fe81d92ef325159",
+      "bytes": 551040
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/atlas/receipt.json",
+      "sha256": "f2d0c32ce6d015bea1f97aa46c9de122fee1636948cfe96fd486a0ccc327f75e",
+      "bytes": 1875
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/binding.json",
+      "sha256": "cbc6824b2a89ab3728f0c2013960086aeb0da4397b24b8c294fb8c20cb48a769",
+      "bytes": 3195
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/keyed.png",
+      "sha256": "cd9026e52b618746e83c2d08d6be122811ef98b08e89fa44f5d817dc1d839ee2",
+      "bytes": 1647274
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/manifest.json",
+      "sha256": "cdcb6ffa5b1d1efebd417bb8b800ef4b0fad3402d9114c424a0bd84b08ba093f",
+      "bytes": 1467
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/ownership.png",
+      "sha256": "33351171faa9f7f649b8daa7bdf91d566524b122c94e211e2d8b6439436d5027",
+      "bytes": 14970
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/parts/eyefar.png",
+      "sha256": "c4a27cb4f137aaa9925574d72162baba10c3f90cfcd8449654ed24d8a017bfa9",
+      "bytes": 15167
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/parts/eyenear.png",
+      "sha256": "8d50b88f2cf7c4ff20bf12b2f08400a34f4e0d794a68432ca43317f96a8368eb",
+      "bytes": 18619
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/parts/foot0.png",
+      "sha256": "7873eeca6d51bab0740709bed2870bd57b5978161ac24ad81ec7e8f7aa7b4045",
+      "bytes": 20563
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/parts/foot1.png",
+      "sha256": "4a84657070c463f92146a48f128816cff09a8f400a4710c4ad7efa643896982f",
+      "bytes": 68907
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/parts/foot2.png",
+      "sha256": "312509a57f4551482bc008e7e843a2b70a1d392bc82053b6b306fb533026e5b0",
+      "bytes": 94204
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/parts/foot3.png",
+      "sha256": "35d6277f6c94666d8440e5e1844518b3cc2e46e8591d62dfd4056bfd223413a5",
+      "bytes": 34602
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/parts/head.png",
+      "sha256": "281f1f7af2e6de28911a2068fc1c51932acf265208d71f963a069db0f9265e3c",
+      "bytes": 34403
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/parts/mouth.png",
+      "sha256": "e98ff1b86729b3e3a01a9918b71ca2e5dc7a270b95a1cca9562666744e0d0c9f",
+      "bytes": 4088
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/parts/shell.png",
+      "sha256": "626e64dfe847dbba18bba441af406e0c6b3dcb312069bf9c981ab42bf8ea709e",
+      "bytes": 371914
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/parts/receipt.json",
+      "sha256": "fbf5a500292183fc114cfa711d94abbc17d3b24a369f2a3b930d460baf0bb0ab",
+      "bytes": 2906
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/pre-split-binding.json",
+      "sha256": "f89890efe047949e2839a9abcf1f5e7ccfaf34f94a4098a0f59ffec1227f8815",
+      "bytes": 640404
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/fit/record.json",
+      "sha256": "0fe9b3fa334a8be836cda3cdea5d74f2b0c52443562c8d2d026d14efaef732e8",
+      "bytes": 5607
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/d28/receipt.json",
+      "sha256": "7374be5eb20215a9e82058e6fd1b28224f2b6e8ad41b8f7cd02fa13fb71c87cf",
+      "bytes": 2052
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/binding.json",
+      "sha256": "0d31ad5f49cdec14aba51dd70e61f25c275fd36c3cdaae23a19fa88b5fc3c468",
+      "bytes": 1001300
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/declaration.json",
+      "sha256": "7170be175f8c6902d59480e243808b5da8334ac175632643562e376aa3e4356a",
+      "bytes": 8415
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/intake-provenance.json",
+      "sha256": "70eab70273fbff982ca6e8ec1ec743cfabe37d4e05bc70caea42a84042902513",
+      "bytes": 3009
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/atlas/c192-snail-contours.json",
+      "sha256": "4d9c83a2ae1268e9639675ad08cf5c04ffc198358c41c9d69774807a849ec656",
+      "bytes": 3765
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/atlas/c192-snail-contours.png",
+      "sha256": "bfb5a55cd33d9a5131d92b5815c6ee35f8f4be0f974e8f946a80f4b43011bf49",
+      "bytes": 552078
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/atlas/receipt.json",
+      "sha256": "9bdd275db1c915a25bea174dbe9b7e5dc5049087df1b5a16e5bced9441125e3e",
+      "bytes": 1875
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/binding.json",
+      "sha256": "d0dc3835d4d75412b5786d0c32347e25d519e907aefc639763e669f4660902fb",
+      "bytes": 3197
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/keyed.png",
+      "sha256": "cd9026e52b618746e83c2d08d6be122811ef98b08e89fa44f5d817dc1d839ee2",
+      "bytes": 1647274
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/manifest.json",
+      "sha256": "6579e31430e61755caa474d799ef787929ecf00bb13f15d1af1cefa414df95a6",
+      "bytes": 1467
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/ownership.png",
+      "sha256": "dabb4a89ab7c0a0aeacdf1e0eec643964b44e60681161df096a968d4476f8336",
+      "bytes": 14997
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/parts/eyefar.png",
+      "sha256": "214e201ef53e9a83a61b0eb67fdcfcbf763460de7185c8f78c5785d8cf7230bf",
+      "bytes": 13941
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/parts/eyenear.png",
+      "sha256": "8d50b88f2cf7c4ff20bf12b2f08400a34f4e0d794a68432ca43317f96a8368eb",
+      "bytes": 18619
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/parts/foot0.png",
+      "sha256": "7873eeca6d51bab0740709bed2870bd57b5978161ac24ad81ec7e8f7aa7b4045",
+      "bytes": 20563
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/parts/foot1.png",
+      "sha256": "4a84657070c463f92146a48f128816cff09a8f400a4710c4ad7efa643896982f",
+      "bytes": 68907
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/parts/foot2.png",
+      "sha256": "312509a57f4551482bc008e7e843a2b70a1d392bc82053b6b306fb533026e5b0",
+      "bytes": 94204
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/parts/foot3.png",
+      "sha256": "b77406e88f779e6cfd3fe659a987c56522338111b85d8f2f3554cbf86abb78f8",
+      "bytes": 36719
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/parts/head.png",
+      "sha256": "4aece255a6cb001736e8cf68d0980cbccba1b9b980aaeef8f46f24d41c917372",
+      "bytes": 34370
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/parts/mouth.png",
+      "sha256": "e98ff1b86729b3e3a01a9918b71ca2e5dc7a270b95a1cca9562666744e0d0c9f",
+      "bytes": 4088
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/parts/shell.png",
+      "sha256": "626e64dfe847dbba18bba441af406e0c6b3dcb312069bf9c981ab42bf8ea709e",
+      "bytes": 371914
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/parts/receipt.json",
+      "sha256": "4f50d52ff31bc759dab76b5c001b5ac80280cfb2252fe0eb7d4486d808547f73",
+      "bytes": 2728
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/pre-split-binding.json",
+      "sha256": "379fffda0baa76e328eb9f7701259ad721d56f6e9f3433aa42bfefd96a38079d",
+      "bytes": 650384
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/receipt.json",
+      "sha256": "6c4dcd96539be31d9db25359c0ba45e2d2508a50f0e721c00e51fca9b80947fe",
+      "bytes": 2045
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/fit01/record.json",
+      "sha256": "0fe9b3fa334a8be836cda3cdea5d74f2b0c52443562c8d2d026d14efaef732e8",
+      "bytes": 5607
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/generation.json",
+      "sha256": "6058a2a11bca17dc1436fee2f478f42be0afd0be388488be5f0fc4b6e59af90a",
+      "bytes": 1208
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/intake-01.log",
+      "sha256": "2bed057fabfe3982f490e74b5216a6fc74dc6289dfb57dfd73134dd0614430f7",
+      "bytes": 320
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/intake-execution-01.json",
+      "sha256": "de2241acfe1ef1dd0d60d8bc0aa0d8368b8fe76a950e5955a505d9e459e83db4",
+      "bytes": 675
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/joint-preview-01.png",
+      "sha256": "39b41023820c7d72d2216296eff52de642f24851f7ce898ba2b6c9d71a3d44dd",
+      "bytes": 680075
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/master.png",
+      "sha256": "c534224db53e9cec8840f43126cab049610b09fd42a98410c2e9780ffb48b5e3",
+      "bytes": 1337811
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-approach-crawl-50-left.png",
+      "sha256": "12c2a86d204e93fe388e05aa03420ca2d52444430f1713a451b4285d5a3744ca",
+      "bytes": 570831
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-approach-crawl-50-right.png",
+      "sha256": "d6885a38edf69887d9a025679911473927093037e784c1089d59c839835725f7",
+      "bytes": 566810
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-cast-50-left.png",
+      "sha256": "1663385c37bd0fc7b7c44602b0b862e21a746c1927ea775d6254aa928adad3c8",
+      "bytes": 548481
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-cast-50-right.png",
+      "sha256": "d3bac124571cf5269f8484dfe75e271998e2bb098d4dbc99040cbea0a419a76b",
+      "bytes": 552464
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-approach-crawl-50-left.png",
+      "sha256": "830d58398fff0994af4078a266dcb754bc7a6820afb33b24b7a56d903cbe89fb",
+      "bytes": 570934
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-approach-crawl-50-right.png",
+      "sha256": "4ddc912f97a75032bb1c26db0b1dd9dea82ac8b958c11e58f774512a38683ba3",
+      "bytes": 566425
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-cast-50-left.png",
+      "sha256": "edcb8280ea212e8d43fa9718299aa2cc43278957a4de6be46354e1f5e4815484",
+      "bytes": 548088
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-cast-50-right.png",
+      "sha256": "bf0df671a479e536ab50f7513dc60409983cdb5038155ba11bd0cb555843992b",
+      "bytes": 551540
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-faint-100-left.png",
+      "sha256": "c3168106d30d8181930abfb9c94a890cda4eed8ecbcb64b52a7adc67f05487a9",
+      "bytes": 549593
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-faint-100-right.png",
+      "sha256": "ae560255eedf3b502202ce76a74d1614d1003ca8f2259c4413ae0e1c86f0b84e",
+      "bytes": 549390
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-faint-50-left.png",
+      "sha256": "27ca1c6849ca10e3e76f1063109bead6a5a91412d73c72ff4d390af0b0324f65",
+      "bytes": 561030
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-faint-50-right.png",
+      "sha256": "d4c3a7d38ef5e24dc1ac691804943ede648361e13ec7224f7cb7b788f0ce5afe",
+      "bytes": 560430
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-hit-50-left.png",
+      "sha256": "7dba26c7a48355a7fc8f03edc918eb7983f924d05506862d1da506d45c55f606",
+      "bytes": 567094
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-hit-50-right.png",
+      "sha256": "c1f652eff066d2763374dfaf676c49fbacba0294cbe41b3668a122e794501210",
+      "bytes": 565094
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-idle-50-left.png",
+      "sha256": "e4b9322749f4822aa6c69ec585818e8ac03913e5d0bd1275cb5cba9da7bb19b1",
+      "bytes": 557480
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-d28-idle-50-right.png",
+      "sha256": "417b49fbd4aac792a23f997ce4dbf1008a6b8578f24586fb9c7681523d731e7c",
+      "bytes": 557125
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-faint-100-left.png",
+      "sha256": "c3168106d30d8181930abfb9c94a890cda4eed8ecbcb64b52a7adc67f05487a9",
+      "bytes": 549593
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-faint-100-right.png",
+      "sha256": "ae560255eedf3b502202ce76a74d1614d1003ca8f2259c4413ae0e1c86f0b84e",
+      "bytes": 549390
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-faint-50-left.png",
+      "sha256": "5ca0bdb1419b532a23007f675c8ad7117a9c72c00d57f253dc99cdb39d286aa5",
+      "bytes": 561227
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-faint-50-right.png",
+      "sha256": "df5ea8e9fb19d640133265d8d2775968caaa2e8286c9ddb6fa2b51cc0dc55c36",
+      "bytes": 560785
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-hit-50-left.png",
+      "sha256": "6d36caece9a523324ae35746a5a568a3d094da2259676976703185b3fb90f8d4",
+      "bytes": 567158
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-hit-50-right.png",
+      "sha256": "720192e8a2a16953a2a02f5a34b513c08e173b093d2e96f5d004e8a3463d0b5c",
+      "bytes": 565575
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-idle-50-left.png",
+      "sha256": "167b28eac835c21bb22717ca72fcc0673b05d94ded444a09d6bf5d0fe2b5818a",
+      "bytes": 557867
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/motion-idle-50-right.png",
+      "sha256": "7d602695439f5adf6657764e3401f712a534e50f55d892a01ae92f826a1817ef",
+      "bytes": 558039
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/ownership-preview-01.png",
+      "sha256": "79b8f034dff1d4f68eabc5cf4dd75ec0d9daf7e5afa433c0077f3518f54c16cd",
+      "bytes": 622744
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/prompt.canonical.txt",
+      "sha256": "392dc8c2ed6bea9856d5f16c1c1ae47b46f7f0d4bcfdea52114275978bbea539",
+      "bytes": 9627
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/prompt.txt",
+      "sha256": "0b7e2d20a7656c3b76fa1bb81a99b65a1e4b17405e0466117d4301744b1cf9a0",
+      "bytes": 10621
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/publication-d28.json",
+      "sha256": "eb4af84a7136de30528f5d30884b81bd11c0447d823a33aeafea609c7405ad21",
+      "bytes": 36171
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/publication-review.json",
+      "sha256": "37297202705d0a750a3a088bc088f5c01a7671106f719971b7f44bf7f5bd5d87",
+      "bytes": 36123
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/request.json",
+      "sha256": "c741eac57d8fcf052d540d9a7800edc82f8884551cd81b8b71c9904d3a72f5f9",
+      "bytes": 952
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/static-01.json",
+      "sha256": "6bdd4207e1387af45fe07e49f546237e361ce05ddb109fe9ed6ab63d08e703ee",
+      "bytes": 6260
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/static-01.json.sources.json",
+      "sha256": "e0b4384eea2375c931165e2554e96ef7b6756ef1d087eb526964c5d5f992223b",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/static-01.log",
+      "sha256": "65dac02856eb995d98ab99f1829744be7e75223ed45bc73b83cdb5225e5fc1f6",
+      "bytes": 1450
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/static-d28.json",
+      "sha256": "f1c8c9b2c1223408fefc1da85101a7a67ee3ec66324936f3fe00bc4438038dc8",
+      "bytes": 6268
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/static-d28.json.sources.json",
+      "sha256": "92ca352fa5699e93ac025432d864cf3adeb039bbec39c4c15249887f587cc9b1",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/static-execution-01.json",
+      "sha256": "13c714ea4358cbab328309a80c7e2e0ff30c32a59bafd41adb7ce74e1ed0e2fe",
+      "bytes": 682
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/10-snail-contours/subject-source.json",
+      "sha256": "fc9b2d9a2f79e6fde9c64db862a72175ba4031955bdf7531929fd3f16c5bfc26",
+      "bytes": 2140
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/authoring-receipt.json",
+      "sha256": "f21b3cf981a47ba31e1cd971afa86b9fe1a70bba7b45808da00478cda65641ec",
+      "bytes": 2501
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/authoring.json",
+      "sha256": "c9e294ae8524f38526db35f392c9362a71661d2c0f5bdcb00b2de93435eddce1",
+      "bytes": 5824
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/conservation-01.json",
+      "sha256": "7d807a9d5fb396c0c7abb06a81b93ee8b24ba0a96ddc03e5612aff6d45be9346",
+      "bytes": 2242
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/conservation-01.log",
+      "sha256": "e1eec6cf301213e5069eee7fc455d52d77d09430d5ed4bdf7ce97dd864175cb1",
+      "bytes": 485
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/conservation-execution-01.json",
+      "sha256": "65f8b6f69935f532ac124331106fefc7e9353f10e11c3e221f38eb2f17a9053a",
+      "bytes": 696
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/binding.json",
+      "sha256": "b8a92feee25fded051fdedadbe3a4ddd1fd5c1b9a1b2eed67040496d44c89eb9",
+      "bytes": 980188
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/declaration.json",
+      "sha256": "100cba1e3b15f200df6b56541fcba20835169e07334ab4ebdff5ff3b73a66b94",
+      "bytes": 5288
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/intake-provenance.json",
+      "sha256": "cb79dda7a13a85854e84096d824dddee73c33cf74ddaddac6931dc3bb804d259",
+      "bytes": 2969
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/atlas/c192-mussel-external-junction.json",
+      "sha256": "3bf05b37deb3810b4cd2ae5fb6bcfe6a9326551ee85426862315e985331fbec9",
+      "bytes": 2589
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/atlas/c192-mussel-external-junction.png",
+      "sha256": "849b41c254e6e25a846748b5348bf4322207ad95552c7c91e7e77b5658895d1c",
+      "bytes": 644317
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/atlas/receipt.json",
+      "sha256": "944942387db69923f47f692639809228e5223d2e481e254e90164f8bef7899b5",
+      "bytes": 1522
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/binding.json",
+      "sha256": "a3c704c1be28c8ef029daf88c7c1075553ce59452c287d73b2663100a0ce8b77",
+      "bytes": 2273
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/keyed.png",
+      "sha256": "514e44a717053c256faf11ac69fd7e73ad049bfee9d4663ad1c97704fb3cc474",
+      "bytes": 1695040
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/manifest.json",
+      "sha256": "a2e5c0332ef02d11ec281079ab41e225a058eca5fc9d7d84e7ae90717397f20a",
+      "bytes": 1021
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/ownership.png",
+      "sha256": "ae127955e416018fb05ff3170dbed186dc16e567765ada9217f0bb16e3bae5d9",
+      "bytes": 17852
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/parts/foot.png",
+      "sha256": "c20fdca9f828ffb5dad5cf8e080aa502de9c64f6490784e644792fc7ca5abd60",
+      "bytes": 30003
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/parts/hinge.png",
+      "sha256": "9e8eb13c58ab05ab2f80dc70a00652057910de8012be7e41cc460bc1a9a8486e",
+      "bytes": 12797
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/parts/mantle.png",
+      "sha256": "f9d400d32e41d9b9ceac7b73e7344a975f8970ccae09859da432506ecfd1c970",
+      "bytes": 91072
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/parts/siphon.png",
+      "sha256": "52420605786a6d7d74b796c2b86e418aa38abb9ba2af55f210e45a74d677eece",
+      "bytes": 25518
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/parts/valvefar.png",
+      "sha256": "afb19c1818f7eabef0312d50d24298ac5094f4ec09da868db00f4f20a69ffbdc",
+      "bytes": 149405
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/parts/valvenear.png",
+      "sha256": "94a5da42fcfae612f85758bb26d4611415c26f6f952978f429d2a0e601551151",
+      "bytes": 402018
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/parts/receipt.json",
+      "sha256": "a028995c2d2abcc636afad48d30f77825305a9d78f29f66bf7f18d26e5f528b4",
+      "bytes": 2058
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/pre-split-binding.json",
+      "sha256": "801f3b00ced05844469c4bcbf766dcabcd80a46dc5a300cb963c869d52c82e07",
+      "bytes": 836722
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/receipt.json",
+      "sha256": "32369b9d9db797777a8ea68e630e43a40208b72213f9832680cf3ed5f1ed9ac9",
+      "bytes": 2057
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/fit01/record.json",
+      "sha256": "68e6564e1ac55326b6b1bcbf453f766ff6317ee85a9add880ea884be524ac383",
+      "bytes": 5617
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/generation.json",
+      "sha256": "98ff4383c5b35e9486ade5503dc74c3c5005363eedec86c2b514280457228ea5",
+      "bytes": 1210
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/input-master.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+      "bytes": 2954509
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/intake-01.log",
+      "sha256": "9f814f89f2c073d7c3fec5d31e9575ba31d6f453017d41ca1f540c04cddf09a9",
+      "bytes": 319
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/intake-execution-01.json",
+      "sha256": "05dd0e549dd1c3d1905a582761f33886b9aaafdb3c5ae90e921f96e6ce325dd8",
+      "bytes": 659
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/joint-preview-01.png",
+      "sha256": "01553bff35a5356ceba996bdd2cec666aef513faf3ceb35babf62b561f38c240",
+      "bytes": 720550
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/master.png",
+      "sha256": "9f0faa57c10c855846f698df319321a09e4904eabdc78b6c5d6359392c0eddb9",
+      "bytes": 1408242
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-approach-settle-50-left.png",
+      "sha256": "1f39f51903789deb43c6331b34bc1ec1a6270a2576405862ca56e5cc6c33ab98",
+      "bytes": 421921
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-approach-settle-50-right.png",
+      "sha256": "130f1f804435c5b2d8c94217dc3a25cc8cf508badf004611390df92a80c93d6a",
+      "bytes": 418771
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-cast-50-left.png",
+      "sha256": "7d7cb8d2aae8d6e3e8c636061cfa1e328be0a7a89485da19c6342ab50fd276d9",
+      "bytes": 599978
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-cast-50-right.png",
+      "sha256": "b3f6ebdfde0eac45cb99294f14d8ad9d9bf852efc03b3f4a23b2ee0f97251bbf",
+      "bytes": 599264
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-faint-100-left.png",
+      "sha256": "db56504bcfe1a533160cef2db95a2d8f34db7d222a77cd9b0da8bc53fbf24820",
+      "bytes": 593062
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-faint-100-right.png",
+      "sha256": "b8aa67300a2ce5fd4fd5a21bb0636050bdb356cd5f63c96ce91613ee6d2bb69c",
+      "bytes": 602887
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-faint-50-left.png",
+      "sha256": "7c83cf1a9a5b0f25b46f8cd2446acb00ee414756c402bb5f4d5aef0f542ac746",
+      "bytes": 498162
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-faint-50-right.png",
+      "sha256": "f1d626612e716bceb7ddc1271278bde130033d76935ea122abe18d0582a198ec",
+      "bytes": 501164
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-hit-50-left.png",
+      "sha256": "01b9dbcb72ad8eef5dd84210bc2524e7a96bfff8dc5d1fb0dd29ba6636bd88bc",
+      "bytes": 434137
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-hit-50-right.png",
+      "sha256": "98433767cc0264cf69f22b252dd7da62c6442863de0308fd5bd4fc89eb55f634",
+      "bytes": 431640
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-idle-50-left.png",
+      "sha256": "bd0a1cd92a92915e9c61e7a349b3ab9179c9a2d2eea18d2e4b6a0e7b15397b6b",
+      "bytes": 536387
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/motion-idle-50-right.png",
+      "sha256": "cf24722fbf89b9c195d4a796fdd4a6ba0704adddc68b62082c48d6c94d464930",
+      "bytes": 540604
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/ownership-preview-01.png",
+      "sha256": "921015a6ef49703144902bdc4ac76a26e205b0145f12545fbb2371e2f52030d9",
+      "bytes": 663607
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/prompt.canonical.txt",
+      "sha256": "9cb9bd80d6b5f0c364c19f7fa35e781f421c6860436a2aa16299e174f072d7fa",
+      "bytes": 8915
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/prompt.txt",
+      "sha256": "1a02c54eb24ed95ab7864da70900bbc7d309d34ab510aecd95c5e188b2ee8800",
+      "bytes": 10400
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/publication-review.json",
+      "sha256": "eef13c715d5dfbf631f42b4e7aedb1184e2c43d855eb1672bdf458746a932c3c",
+      "bytes": 36117
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/request.json",
+      "sha256": "2df4354e164eff18e4caeed22f8fd362c7caefdccf9e3a2636f682aec9dd5a89",
+      "bytes": 992
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/static-01.json",
+      "sha256": "a81cfc3c88e1f5f6c017a973c33104e3b16b927cfb0078a4cefeb11674f420ff",
+      "bytes": 6655
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/static-01.json.sources.json",
+      "sha256": "e638b8bb21b1db746af5d4d58e5e89d45097dcaa50488e7cca85644ec494d5e2",
+      "bytes": 15993
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/static-01.log",
+      "sha256": "22e99f4de7e8965ec8a6a24b913ed778620077e83fc65d4452ca0074a1b1fa0d",
+      "bytes": 1582
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/static-execution-01.json",
+      "sha256": "267c82276529e85e709893d1c31f3eee4b9c7576a754b6217e5afd5f38fb4629",
+      "bytes": 678
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/11-mussel-dorsal/subject-source.json",
+      "sha256": "a4f6f6555c6908342188185fd7aa62f6d921af1bf6fd48d340e851881c4cae0e",
+      "bytes": 2190
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/EARTHWORM_AND_C233_DIAGNOSIS.md",
+      "sha256": "0d2ffa45224a2aa68ecee0667413a9b8209b82b78229cca3051687fcb0edf4e9",
+      "bytes": 3901
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/MUSSEL_SOURCE_BASIS.md",
+      "sha256": "6b09d5b53d1b197672c02f5344fc2fda9fa1cb1dd63865a83c9c4ba89eb2d2e4",
+      "bytes": 1435
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/PRIMATE_BAT_HOLDS.md",
+      "sha256": "308cb938f8ce900517330b4b5874493c48ac67580814758dd0950c7ba5e8de21",
+      "bytes": 1730
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/README.md",
+      "sha256": "603d0737e53755562edc550a67a413c5905881d5b116564856b0403bb5fd1f05",
+      "bytes": 7736
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/author-crustaceans.mjs",
+      "sha256": "26f6258c187842f438ed9d39e7a582c1cd021cea52dacd8584bddff1a241eaf3",
+      "bytes": 6179
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/author-mussel.mjs",
+      "sha256": "bcdf90d6728612a817d2149d16af2f4b0e573ef53fed27c92a84d51a21d30912",
+      "bytes": 4179
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/author-opaque-crustaceans.mjs",
+      "sha256": "0d6ba1f127becef8d06909d6f1e0b7a543e27a294132a6487b0c3e59cfe41add",
+      "bytes": 6112
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/author-snail-successor.mjs",
+      "sha256": "bd89399714ff3a77e7451819955abf3639b311e41d3cc025aed5f647e02141f0",
+      "bytes": 2435
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/author-snail.mjs",
+      "sha256": "f5ec6b74bf9c3776962ff148663417ceab10af7dd29c131d0d21de809ca09d93",
+      "bytes": 3658
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/endpoint-diagnostic.mjs",
+      "sha256": "16e767b87c11ef7c0b479a55d99521e8143395cb6f5302923ab13b1371caaa69",
+      "bytes": 1627
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/final-controls.json",
+      "sha256": "4cf85caf418a0bb3656499b9c7c16cf6aece1da378379a0dd13f90592a2faf83",
+      "bytes": 19429
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/final-controls.mjs",
+      "sha256": "42081fe011b17345cd3dfaa2d620002ba4d8c824cc88fa21e01f0ac938579d67",
+      "bytes": 7511
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/freeze-delivery.mjs",
+      "sha256": "2014a63c88d1068ff4d8ef8dfc6bc8c05462d4439faa8aed6d4233a8c4515c07",
+      "bytes": 7506
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/helper-derivation.json",
+      "sha256": "936bcceb85c7ce302ae4a7e098368db185e508d091f317f0ed3eb8944a46716a",
+      "bytes": 2121
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/intake-retained.mjs",
+      "sha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+      "bytes": 12528
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/landmark-alpha-diagnostic.mjs",
+      "sha256": "bcc1aaf5aa3178d16acb91e5aa701805fad9da43067343e804c085362961d0d0",
+      "bytes": 1543
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/prepare-helpers.mjs",
+      "sha256": "ccde0439842361baf351898f07846fb006dbe313d1f349f4d33597c842b45ba1",
+      "bytes": 2381
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/retain-contour-successors.mjs",
+      "sha256": "d3a9c2776a5d66bb18d9cb6e4a72a460527d3ed29382c8b0d4efcb60ffd2a643",
+      "bytes": 3530
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/retain-new-source.mjs",
+      "sha256": "c89e7a69abb06304e5e88c8dd726579c229cdc9cab9659823e1ab9f6ee0dcdc1",
+      "bytes": 3543
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/retain-sources.mjs",
+      "sha256": "2c2983c9fc64bd1bef74962413178d3326d6f95d0d847ff86edd388c6d1e9ba6",
+      "bytes": 3516
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/review-d28.mjs",
+      "sha256": "d3ac777513227e72fc307dc0a0d4201bb0027f981729f43117cc1a9d9b9d16ce",
+      "bytes": 5737
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/review-publication.mjs",
+      "sha256": "0e3675efe8ed7f1b4565b8f66a6a4ccc01b3b861574daf3da7f9801c179f5e71",
+      "bytes": 5741
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/run-stage.mjs",
+      "sha256": "3f2107d2b8ce3a8c0cee5ff2d759ebebe217b9d3f6a6d88e020a3b1619321465",
+      "bytes": 1663
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/source-input-recheck.json",
+      "sha256": "484d0332edf450c77280c32c11c7d382d147ba7c8253fc8c96e2158c0e1de0e7",
+      "bytes": 1445
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/source-jobs-fresh.json",
+      "sha256": "39de360fdd0655ac12084bce922c06feb7ed18a480aec7be9602dd5466d80237",
+      "bytes": 317
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/source-jobs-opaque.json",
+      "sha256": "d27d1c777260662f703bd1399fdb1531b1c422374029bf41f587453b75839cbf",
+      "bytes": 693
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/source-jobs.json",
+      "sha256": "9711dc4d2a987898db3951bb4bc17fc634477bcec80d1479e00eaf968a1cf9b2",
+      "bytes": 2144
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/source-retention-fresh.json",
+      "sha256": "6feede100c5e1dfd390d818173d5d04590c6c33f0d1fc248fdaf1919dd2dccce",
+      "bytes": 420
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/source-retention-opaque.json",
+      "sha256": "08a4449d903b62594fa9a02d764f717057a6c840d03fbb4a6742f76b16d7e8be",
+      "bytes": 691
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/source-retention.json",
+      "sha256": "27bde950e68b765834ead86bfa375c58d724d43e799b13a35e5fee8bb6ee707f",
+      "bytes": 2054
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/verify-and-preview.mjs",
+      "sha256": "0d47ca8256a1d176a7ccf0ca6379a074a71912ce1c4280d46a801c896634a128",
+      "bytes": 5745
+    },
+    {
+      "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/visual-review.json",
+      "sha256": "099601e736583503a2641cb0e5ad9670a4baf1c2130a45a70bf7cd022c162bd2",
+      "bytes": 16224
+    }
+  ],
+  "fileCount": 582,
+  "totalBytes": 110944703,
+  "inventoryExcludes": [
+    "delivery.json"
+  ],
+  "productionChanges": 0,
+  "poolChanges": 0,
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

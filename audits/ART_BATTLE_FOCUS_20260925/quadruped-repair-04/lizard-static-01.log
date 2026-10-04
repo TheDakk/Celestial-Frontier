@@ -1,0 +1,20 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.20157557798222853,"gap":0.00008134577263219608,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.14231004409655662,"gap":0.00007129240957707073,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.24873094849306995,"gap":0.00007636708341460733,"exactRest":true,"firstRefusal":null}
+{"id":"approach:trot","status":"PASS","samples":121,"drift":0.24873094849306995,"gap":0.00008047152498016601,"exactRest":true,"firstRefusal":null}
+{"id":"approach:gallop","status":"PASS","samples":121,"drift":0.24873094849306995,"gap":0.00008697425859910944,"exactRest":true,"firstRefusal":null}
+{"id":"approach:hop","status":"PASS","samples":121,"drift":0,"gap":0.00007059176766688324,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.050131399208867125,"gap":0.0000722527505245282,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.050131399208867125,"gap":0.00007862099094312561,"exactRest":true,"firstRefusal":null}
+{"id":"melee:gore","status":"PASS","samples":121,"drift":0.050131399208867125,"gap":0.00007823387520771485,"exactRest":true,"firstRefusal":null}
+{"id":"melee:tail","status":"PASS","samples":121,"drift":0.1326595990196436,"gap":0.00007157340132182106,"exactRest":true,"firstRefusal":null}
+{"id":"melee:headbutt","status":"PASS","samples":121,"drift":0.050131399208867125,"gap":0.00007985011365168901,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.2381153479382431,"gap":0.00007852642943373224,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"RED","samples":9,"drift":0.2454371168849318,"gap":0.00007046953071021482,"exactRest":true,"firstRefusal":{"ms":57.75,"sampleNumber":10,"error":"Error: Contact: hit@57.75 exceeds scale compression bound"}}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.0000797660926533546,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"RED","samples":53,"drift":0.04632557870146335,"gap":0.00007946892895549494,"exactRest":true,"firstRefusal":{"ms":371,"sampleNumber":54,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"}}
+{"id":"victory","status":"PASS","samples":121,"drift":0.1312719636774926,"gap":0.00007474422448012774,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"RED","samples":16,"drift":0.1290189491476724,"gap":0.00007485948178297066,"exactRest":true,"firstRefusal":{"ms":128,"sampleNumber":17,"error":"Error: Contact: tame@128 exceeds scale compression bound"}}
+{"id":"feed","status":"PASS","samples":121,"drift":0.2492849271384166,"gap":0.00007907210392854144,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.00007474422457107722,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":19,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

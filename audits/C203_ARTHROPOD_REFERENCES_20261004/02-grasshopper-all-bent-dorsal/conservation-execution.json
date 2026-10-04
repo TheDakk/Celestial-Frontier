@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/verify-and-preview.mjs",
+    "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal",
+    "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal/fit01",
+    "01"
+  ],
+  "exitCode": 0,
+  "signal": null
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "certifiedSelectorHead": "f4a751eea",
+  "productChanges": [],
+  "preparedSweepManifestSha256": "c925ac15bd9a2ca25a635f6221f0ca9d611466d63d39fe61944a29235efd6d6f",
+  "unchangedPreparedSources": 1329,
+  "sweepAuthorization": "C186 NOT YET; no invocation",
+  "nativeRuns": 0
+}

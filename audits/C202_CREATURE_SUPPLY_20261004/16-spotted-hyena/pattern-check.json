@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Spotted Hyena",
+  "masterSha256": "bce5a8e2772d2d90f9d427097b9d9f5c2bb0e9df13b9cb8edd030c63a2cbf6a5",
+  "required": [
+    "rounded ears and blotchy spots"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "rounded ears and blotchy spots",
+      "status": "PRESENT",
+      "observed": "Heavy front shoulders, sloping back, rounded ears, spotted sandy coat, dark muzzle and short bushy tail. Four complete separated feet; dark spots preserved across body."
+    }
+  ]
+}

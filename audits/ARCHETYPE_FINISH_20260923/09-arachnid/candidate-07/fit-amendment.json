@@ -1,0 +1,38 @@
+{
+  "schema": "cf.manual-fit-amendment/v1",
+  "sourcePaintingRun": "20260923-tarantula-paint-06",
+  "sourcePainting": "../candidate-06",
+  "newPainting": false,
+  "masterSha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5",
+  "knees": {
+    "leg3NearKnee": {
+      "before": [
+        623,
+        792
+      ],
+      "after": [
+        665,
+        724
+      ],
+      "basis": "Closer to the independently observed fur/segment break region x650\u2013685,y710\u2013740. Internal hinge remains an estimate."
+    },
+    "leg4NearKnee": {
+      "before": [
+        350,
+        788
+      ],
+      "after": [
+        350,
+        745
+      ],
+      "basis": "Observed direction change higher on the leg; prior point lay low on outer shaft."
+    }
+  },
+  "maskChanges": [
+    "leg3-near-distal proximal boundary",
+    "leg4-near-distal proximal boundary"
+  ],
+  "allOtherAuthoringUnchanged": true,
+  "coordinateGridSearch": false,
+  "anatomicalTruthClaim": false
+}

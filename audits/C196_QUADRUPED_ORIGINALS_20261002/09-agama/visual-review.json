@@ -1,0 +1,28 @@
+{
+  "name": "Agama",
+  "masterSha256": "4bf1e5d2fc7d1931395c7aa2171fcd4d7bb11baaca71dc53ac61b32a9c203e26",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Orange-red head and throat, blue body and banded full tail; four distinct distal legs with natural bends. The pronounced spiny neck/dorsal fringe and hanging throat flap need species-identity review rather than automatic anatomy acceptance. Far roots remain partly behind the trunk and feet differ in height.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 164,
+      "y0": 458,
+      "x1": 1004,
+      "y1": 769
+    },
+    "margins": {
+      "left": 164,
+      "right": 249,
+      "top": 458,
+      "bottom": 484
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

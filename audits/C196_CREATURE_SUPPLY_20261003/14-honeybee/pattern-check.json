@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Honeybee",
+  "masterSha256": "116fcac6e33cf5384113705dfdfbc4172c9acd1efd6cb90340d5baac7f5a089d",
+  "required": [
+    "furry thorax with a banded amber-and-black abdomen"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "furry thorax with a banded amber-and-black abdomen",
+      "status": "PRESENT",
+      "observed": "Parent full-size original review: Striped amber/black abdomen and pollen-bearing hind tibia are visible. Five distal leg silhouettes are obvious; a complete sixth chain/root cannot be verified from this source. Far wing pair overlaps the near pair. All visible original tips appear within 8 percent edge margin; run unchanged framing instrument independently. No claim that central-half request was met. Observed named pigment/material features only; not pattern-instrument acceptance. HELD_ANATOMY_VISIBILITY; no anatomy/native admission."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "Clam": {
+    "family": "bivalve",
+    "legs": 0,
+    "accuracy": "Real headless bivalve mollusc with two hinged valves, mantle, true muscular foot and actual siphons; no eyes, teeth, tongue or invented limbs.",
+    "layout": "A single natural clam in a slightly open relaxed shell, shallow oblique view exposing both symmetrical valves, their hinge and continuous mantle margins. Real small pale muscular foot protrudes from the ventral opening, while true paired siphon openings at the posterior margin are separately visible. Their roots belong to the mantle; no decorative pearls or props. Keep concentric shell growth rings. Anatomy must be plausible and observed, never painted solely to satisfy a template."
+  },
+  "Prawn": {
+    "family": "crustacean-small",
+    "legs": 10,
+    "accuracy": "Real decapod prawn with five genuine thoracic walking-leg pairs, antennules, antennae, swimmerets, segmented abdomen and tail fan.",
+    "layout": "Prior side-oblique sources hide thoracic roots. Paint directly DORSAL from above, longitudinal body axis horizontal and head right, two sides of thorax equally exposed, all five genuine walking-leg pairs separated from actual roots through distal tips. Retain real swimmerets, antennules, six abdominal sections and intact tail fan. Do not fabricate extra legs or suppress true anatomy; all antennae complete inside the generous margins."
+  },
+  "Shrimp": {
+    "family": "crustacean-small",
+    "legs": 10,
+    "accuracy": "Real decapod shrimp with five genuine thoracic walking-leg pairs; retain short antennules and abdominal swimmerets distinct from walking limbs.",
+    "layout": "Prior reference source has ambiguous far thoracic chains. Paint directly DORSAL from above, body axis horizontal head right, with five real walking pairs visible on both sides from roots to tips, not a side view. Retain swimmerets, antennules, real rostrum, two eyes, six abdomen sections and tail fan; no lobster claws or invented anatomy. Keep every long antenna inside generous margins."
+  },
+  "Snail": {
+    "family": "gastropod",
+    "legs": 0,
+    "accuracy": "Real gastropod, broad continuous foot, coiled shell, two long ocular tentacles plus two short sensory tentacles and genuine mouth. No extra lower projections.",
+    "layout": "Old source mouth is obscured. Paint a real right-facing crawling snail with a small ordinary ventral oral slit visible underneath the front between the two real short sensory tentacles, distinct from both. Exactly two upper eye-bearing stalks and two lower sensory tentacles; no circular open cartoon mouth, third lower projection, lips or face. Keep coiled shell and complete natural broad foot."
+  }
+}

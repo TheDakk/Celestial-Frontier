@@ -1,0 +1,7 @@
+{
+  "operation": "git commit -S",
+  "status": "FAILED_BEFORE_COMMIT",
+  "producerBefore": "18496278",
+  "error": "1Password: agent returned an error; fatal: failed to write commit object",
+  "next": "One alternate transport attempt: standard ssh-keygen through the same configured 1Password IdentityAgent socket and public signing key. No persistent config or key export."
+}

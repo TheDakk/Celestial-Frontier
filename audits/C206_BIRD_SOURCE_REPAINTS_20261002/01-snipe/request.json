@@ -1,0 +1,40 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Snipe",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "2a991df14c8c38636622a2067acb60daf097eca41cfa3f06581d9c8aa11029bb",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "wading-bird",
+  "authoringCreated": false,
+  "sourceHead": "0486f0f9779604496000c8e913b6fe38e7612471",
+  "basePromptSha256": "02c1099431dbfdbbd5dee5cd25f578f39bea37c4f2892b92f4ae9e2f18be66ad",
+  "batchCompilerSha256": "2b5f31c02d1299de513811e149a6435e5263e15a98a18d89a72585718ec7f383",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "previousId": "10-snipe",
+    "previousMaster": "audits/G2_C81_20260927/10-snipe/master.png",
+    "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/summary.json",
+    "verdict": "REFUSE",
+    "reasons": [
+      "missing-anatomy: part far-thigh (legFarKnee) covers 0% paint (reference 72%)"
+    ],
+    "static": null,
+    "previousVisual": "Long straight dagger bill, high rear-set eye, bold cream stripes along crown/back and dark patterned plumage are visible. Two separate legs and feet; short patterned tail projects below folded wing. Entire bill/toes remain inside clear border; wing/tail ownership not inferred from this view.",
+    "correction": "Expose two actual leg chains from their visible feather margins through both ankles and natural long toes. Keep the extremely long straight bill, high rear-set eye and bold cream back stripes. Do not invent bare proximal anatomy behind feathers."
+  },
+  "layoutOverride": null,
+  "sourceCorrection": "TARGETED SOURCE REPAINT — BIOLOGICAL PRIORITY: Expose two actual leg chains from their visible feather margins through both ankles and natural long toes. Keep the extremely long straight bill, high rear-set eye and bold cream back stripes. Do not invent bare proximal anatomy behind feathers. Preserve the real species anatomy if a generic pose instruction conflicts. No invented far wing, false leg, disconnected tail, artificial gap through tissue or removal of actual appendages. This request does not establish measured anatomical presence.",
+  "compositionCheck": "COMPOSITION: square native 1254 by 1254 painting. Keep the entire specimen small, inside the central half of the canvas, with generous pure magenta around every bill, toe, plume and tail tip. Preserve real proportions by zooming out, never shortening appendages. No ground, cast shadow, scenery, perch, branch, prop, text, diagram or framing marks.",
+  "admission": "GENERATED_CANDIDATE_ONLY; no semantic presence, rig admission or motion claim"
+}

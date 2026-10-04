@@ -1,0 +1,36 @@
+{
+  "masters": 4,
+  "totalBytes": 4612639,
+  "outputModified": false,
+  "scope": "Original byte and prompt retention only; no anatomy or native admission.",
+  "verified": [
+    {
+      "id": "01-giant-salamander",
+      "masterSha256": "6afcc8b7e6306ca7a0da1d7300a6620906bb9538a81a26cd0ff22a542cdac25d",
+      "promptSha256": "5cddf31fd78fb05a85dbd0dd743cbf00de25d0bf35586c4ccfef5bd8b5987edd",
+      "bytes": 1095281,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "06-giraffe",
+      "masterSha256": "5b83ccff54a485e67a315ba6589cf7e9f737591612a89347edf33aab1f15b179",
+      "promptSha256": "78eeef6ae9587ac0cfb1b1baa6ca162a36f902055c705a1c38968425101f9c5d",
+      "bytes": 1117738,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "07-buffalo",
+      "masterSha256": "fab8454d46248d7f4a297e312dab16497bd9726d4b0c2606f10f98b53916217e",
+      "promptSha256": "a5ee63b4a7245efc1efb7c394f7bccbaa2a6b7305e3a3ff8c03c89375a29cbc3",
+      "bytes": 1207546,
+      "byteIdenticalToGenerator": true
+    },
+    {
+      "id": "21-bee",
+      "masterSha256": "6c4384cd7f8b485fd29d44d9c1cd64d08e1641bfebdc729c9a1eb17fec9dabfa",
+      "promptSha256": "9d8949a10a168a188ddda2c2d3ba2e24fb808864b7bbba5bb03570a6d736330a",
+      "bytes": 1192074,
+      "byteIdenticalToGenerator": true
+    }
+  ]
+}

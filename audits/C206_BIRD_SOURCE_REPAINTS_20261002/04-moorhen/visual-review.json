@@ -1,0 +1,28 @@
+{
+  "name": "Moorhen",
+  "masterSha256": "1f30ab8b7d4da51abc51907e6b00626270d79042292793c75318becd6d693daa",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: red shield and yellow-tipped red bill, white flank streak, cocked short tail with white undertail flashes and two separate greenish feet are visible. Each leg has an independent silhouette from the feather margin through its toes. Tail feather layers and wing overlap remain an ownership issue, not a proven fit.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 298,
+      "y0": 341,
+      "x1": 999,
+      "y1": 931
+    },
+    "margins": {
+      "left": 298,
+      "right": 254,
+      "top": 341,
+      "bottom": 322
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

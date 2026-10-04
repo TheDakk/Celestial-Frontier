@@ -1,0 +1,99 @@
+{
+  "parts": {
+    "id": "p1-mud-crab",
+    "parts": 23,
+    "atlasSize": {
+      "width": 2044,
+      "height": 1244
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-lower",
+        "vertex": 7,
+        "distancePx": 7.0710678118654755,
+        "supports": [
+          2180
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-lower",
+        "vertex": 68,
+        "distancePx": 11.463420083029266,
+        "supports": [
+          2586,
+          2587
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-lower",
+        "vertex": 133,
+        "distancePx": 1.8027756377319948,
+        "supports": [
+          2403
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-lower",
+        "vertex": 149,
+        "distancePx": 5.099019513592785,
+        "supports": [
+          2764
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-lower",
+        "vertex": 115,
+        "distancePx": 5.8309518948453585,
+        "supports": [
+          2521
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-lower",
+        "vertex": 158,
+        "distancePx": 6.4031242374328485,
+        "supports": [
+          2969
+        ]
+      },
+      {
+        "joint": "leg3NearFoot",
+        "part": "leg3near-lower",
+        "vertex": 118,
+        "distancePx": 3.6055512754639896,
+        "supports": [
+          3120
+        ]
+      }
+    ],
+    "sourceBindingHash": "2c5036544ccc66c0769708b3805ee583de83610853900b7192ec55dbc9573dff",
+    "sourceVertices": 3000,
+    "vertices": 3998,
+    "sharedSupports": 721,
+    "pins": 2932,
+    "independentSurfaceParts": 23,
+    "sourceJoins": 22,
+    "excludedOverlaps": 21,
+    "observedExcludedBoundaries": 21,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 21,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "boundaryStep": 24,
+  "interiorStep": 56,
+  "masterIntakeAccepted": true,
+  "artAccepted": true,
+  "nativeAcceptance": false
+}

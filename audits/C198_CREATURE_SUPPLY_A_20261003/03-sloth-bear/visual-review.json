@@ -1,0 +1,28 @@
+{
+  "name": "Sloth Bear",
+  "masterSha256": "04c3982b75838e92dd708b9ca4a9a2b0aeb24bdc7a7d64c26fc2634a789799da",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: long shaggy black coat, pale muzzle, cream V-shaped chest patch and long curved pale claws on four visible paws. Two ear tips visible but far base and limb roots are fur-covered; tail not independently distinguished. Dense dangling fur and claw counts need source/ownership review. No hidden tail/ear inference or native admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 200,
+      "y0": 329,
+      "x1": 1109,
+      "y1": 937
+    },
+    "margins": {
+      "left": 200,
+      "right": 144,
+      "top": 329,
+      "bottom": 316
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "sourcePacket": "audits/G1_AUTO_AUTHOR_20260926/auto-v10/sparrow/packet",
+  "sourceMasterSha256": "29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91",
+  "sourceAuthorSha256": "c3c8e734f57e78b5f021144a8cd33a8ec956e091393b613fbc074258b76fedfb",
+  "moves": [
+    {
+      "joint": "legFarAnkle",
+      "from": [
+        751.3,
+        998.3
+      ],
+      "to": [
+        750.5,
+        985.5
+      ],
+      "fromOwner": "far-foot",
+      "toOwner": "far-shin",
+      "distancePx": 12.82497563350507
+    },
+    {
+      "joint": "legNearAnkle",
+      "from": [
+        555.9,
+        1039.9
+      ],
+      "to": [
+        545.5,
+        1020.5
+      ],
+      "fromOwner": "near-foot",
+      "toOwner": "near-shin",
+      "distancePx": 22.01181500921728
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c173-audit-intake-derivation/v1",
+  "source": "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+  "sourceSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "target": "audits/C173_EQUID_REAUTHOR_20261002/intake.mjs",
+  "targetSha256": "e344130b19b3f1077f6b14faf457d53a74b0211b54cf89a6d2714fdf20f0f1c0",
+  "changes": [
+    {
+      "from": "sourceLandmarksReused:false",
+      "to": "sourceLandmarksReused:true",
+      "count": 3
+    },
+    {
+      "from": "One manually observed sprint painting; no family-wide visual acceptance",
+      "to": "One source-specific equid contour successor; four corrected ear landmarks and original non-ear landmarks; no family-wide visual acceptance",
+      "count": 1
+    }
+  ],
+  "reason": "Truthful successor provenance; unchanged pixel intake, source joins, skin compilation, anatomical checks and thresholds.",
+  "checksChanged": false
+}

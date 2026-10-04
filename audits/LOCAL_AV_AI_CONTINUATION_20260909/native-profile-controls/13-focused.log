@@ -1,0 +1,36 @@
+✔ actual four-stage flow publishes exact decoded pixels only after every worker retires (5.096125ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: false) (0.9825ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: true) (0.850166ms)
+✔ gpu-error progress is terminal; a late completion cannot produce another stage or painting (0.822334ms)
+✔ text timeout terminates the exact worker and blocks publication (0.653375ms)
+✔ encode timeout terminates the exact worker and blocks publication (0.640625ms)
+✔ denoise timeout terminates the exact worker and blocks publication (0.66725ms)
+✔ decode timeout terminates the exact worker and blocks publication (0.706709ms)
+✔ a repeated generation rejects while the first owns its worker and controls (1.143ms)
+✔ reference-disabled generation never fetches or decodes reference data (0.650666ms)
+✔ nonfinite decoder pixels fail before canvas publication despite successful worker completion (0.645667ms)
+✔ an explicit reference matte precedes drawing and its prepared tensor is separately hashed (0.635333ms)
+✔ invalid reference matte fails before starting the encoder (0.505666ms)
+✔ profiled flow retains one raw trace per retired stage outside the progress log (0.627125ms)
+✔ profile publication refuses an incomplete state boundary (0.424583ms)
+✔ profile publication refuses an incomplete endedBeforeRelease boundary (0.406291ms)
+✔ profile publication refuses an incomplete sessionReleased boundary (0.445875ms)
+✔ a failed native profile preserves raw evidence before stopping its generation (0.782792ms)
+✔ Native microseconds and host/GPU overlap remain separate, with actual CPU provider (1.141125ms)
+✔ Same program with different tensor dimensions is a distinct bounded group (0.120959ms)
+✔ Native stdout requires exact complete framing; partial end cannot pass (0.592916ms)
+✔ Single multiline stdout message also retains complete actual bytes (0.083333ms)
+✔ Missing GPU, missing Nodes, empty/zero GPU cannot become zero-cost success (0.11625ms)
+✔ Malformed timestamps, JSEP fields, metadata and stale versions fail closed (0.2965ms)
+✔ Byte/event/group capacities reject a complete trace instead of truncating its admission (0.140208ms)
+✔ Interleaved, malformed, trailing or interrupted stdout stays a retained failure (0.390875ms)
+✔ CLI profile is explicit; accepted reference variants retain their own meaning (0.158583ms)
+✔ CLI rejects profile-only preflight, contradictory conditioning, duplicates and unknown flags (0.152417ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57.984

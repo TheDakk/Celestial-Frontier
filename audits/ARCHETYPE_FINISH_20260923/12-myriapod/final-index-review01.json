@@ -1,0 +1,20 @@
+{
+  "schema": "cf.sprint-final-index-review/v1",
+  "reviewer": "inspect_intake_chain",
+  "status": "PASS_READ_ONLY_REVIEW",
+  "selections": 13,
+  "repositoryArtifactPaths": 157,
+  "markdownLinks": 184,
+  "priorSelectionsPreserved": 12,
+  "checks": [
+    "All paths and links exist",
+    "Eleven retained static and eleven native summaries match reports",
+    "Centipede static08/native02 values and native01 refusal chronology preserved",
+    "I5 clean89b5da95 source scope preserved",
+    "Python per-rig null and measured whole-stage scope preserved",
+    "No signing or push success asserted"
+  ],
+  "testsRerun": false,
+  "browserRun": false,
+  "filesModifiedByReviewer": false
+}

@@ -1,0 +1,111 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C110_20260927",
+ "tag": "g2c110",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [],
+ "refused": [
+  {
+   "id": "01-giraffe",
+   "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+  },
+  {
+   "id": "02-zebra",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+  },
+  {
+   "id": "03-kudu",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 18% paint (reference 62%)"
+  },
+  {
+   "id": "04-impala",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on"
+  },
+  {
+   "id": "05-buffalo",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+  },
+  {
+   "id": "06-wildebeest",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 14% paint (reference 70%)"
+  },
+  {
+   "id": "07-eland",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 19% paint (reference 62%)"
+  },
+  {
+   "id": "08-gazelle",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 35%)"
+  },
+  {
+   "id": "09-hartebeest",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+  },
+  {
+   "id": "10-oryx",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 6% paint (reference 62%)"
+  },
+  {
+   "id": "11-gaur",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 19% paint (reference 70%)"
+  },
+  {
+   "id": "12-banteng",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 19% paint (reference 70%)"
+  },
+  {
+   "id": "13-water-buffalo",
+   "reason": "unexplained-anatomy: 16.0% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "14-deer",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+  },
+  {
+   "id": "15-antelope",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "16-reindeer",
+   "reason": "missing-anatomy: part ear-far-root (earFarRoot) covers 21% paint (reference 68%)"
+  },
+  {
+   "id": "17-caribou",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 20% paint (reference 62%)"
+  },
+  {
+   "id": "19-yak",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)"
+  },
+  {
+   "id": "20-takin",
+   "reason": "missing-anatomy: part fore-far-paw (foreFarPaw) covers 19% paint (reference 57%)"
+  },
+  {
+   "id": "21-sheep",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 38%)"
+  },
+  {
+   "id": "22-wild-sheep",
+   "reason": "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 28% paint (reference 90%)"
+  },
+  {
+   "id": "23-dromedary-camel",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+  },
+  {
+   "id": "24-bactrian-camel",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 38%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "18-saiga",
+   "static": "INTAKE_REFUSED"
+  }
+ ],
+ "native": [],
+ "runnerExit": 0
+}

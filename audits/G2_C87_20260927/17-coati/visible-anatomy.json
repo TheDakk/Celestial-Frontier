@@ -1,0 +1,200 @@
+{
+  "id": "17-coati",
+  "name": "Coati",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "7dc0efc0af808bba6a89c9470e50b70a59c182eb37980bb43fc4e355a12c8ee9",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 16173,
+    "coreRadius": 16,
+    "bodyBox": {
+      "x0": 137,
+      "y0": 208,
+      "x1": 282,
+      "y1": 265
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2311,
+        "pixels": 3737,
+        "box": {
+          "x0": 108,
+          "y0": 84,
+          "x1": 149,
+          "y1": 237
+        },
+        "attach": {
+          "x": 138.5,
+          "y": 222,
+          "relX": 0.01,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": -0.19,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 141.4
+      },
+      {
+        "k": 1,
+        "frac": 0.0856,
+        "pixels": 1384,
+        "box": {
+          "x0": 255,
+          "y0": 193,
+          "x1": 334,
+          "y1": 241
+        },
+        "attach": {
+          "x": 276.3,
+          "y": 216.7,
+          "relX": 0.96,
+          "relY": 0.15
+        },
+        "dir": {
+          "x": 0.98,
+          "y": 0.21
+        },
+        "class": "front",
+        "length": 62.6
+      },
+      {
+        "k": 2,
+        "frac": 0.0645,
+        "pixels": 1043,
+        "box": {
+          "x0": 107,
+          "y0": 240,
+          "x1": 163,
+          "y1": 304
+        },
+        "attach": {
+          "x": 143.4,
+          "y": 257.6,
+          "relX": 0.04,
+          "relY": 0.87
+        },
+        "dir": {
+          "x": -0.64,
+          "y": 0.77
+        },
+        "class": "limb-down",
+        "length": 59
+      },
+      {
+        "k": 3,
+        "frac": 0.0455,
+        "pixels": 736,
+        "box": {
+          "x0": 165,
+          "y0": 263,
+          "x1": 197,
+          "y1": 303
+        },
+        "attach": {
+          "x": 180,
+          "y": 263,
+          "relX": 0.3,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": 0,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 43.5
+      },
+      {
+        "k": 4,
+        "frac": 0.0502,
+        "pixels": 812,
+        "box": {
+          "x0": 251,
+          "y0": 265,
+          "x1": 306,
+          "y1": 305
+        },
+        "attach": {
+          "x": 263.5,
+          "y": 266,
+          "relX": 0.87,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.54,
+          "y": 0.84
+        },
+        "class": "limb-down",
+        "length": 57.7
+      },
+      {
+        "k": 5,
+        "frac": 0.043,
+        "pixels": 695,
+        "box": {
+          "x0": 214,
+          "y0": 266,
+          "x1": 244,
+          "y1": 307
+        },
+        "attach": {
+          "x": 230.5,
+          "y": 266,
+          "relX": 0.64,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.32,
+          "y": 0.95
+        },
+        "class": "limb-down",
+        "length": 44.2
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 107,
+        "x1": 128,
+        "cx": 116.2
+      },
+      {
+        "x0": 171,
+        "x1": 197,
+        "cx": 184
+      },
+      {
+        "x0": 214,
+        "x1": 238,
+        "cx": 224.5
+      },
+      {
+        "x0": 274,
+        "x1": 306,
+        "cx": 290.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

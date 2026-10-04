@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Dragonfish",
+  "masterSha256": "382fe380a56d8df32cd503eaa6f484104b086ab59311da726b93e4ddc0d2a068",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

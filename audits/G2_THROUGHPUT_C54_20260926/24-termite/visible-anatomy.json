@@ -1,0 +1,115 @@
+{
+  "id": "24-termite",
+  "name": "Termite",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "e0394e76c977fb2fe01ac14950eaf203bf19d5e6c8f505e7c9f17f2330821301",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 24129,
+    "coreRadius": 25,
+    "bodyBox": {
+      "x0": 5,
+      "y0": 133,
+      "x1": 414,
+      "y1": 237
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.4526,
+        "pixels": 10921,
+        "box": {
+          "x0": 155,
+          "y0": 136,
+          "x1": 394,
+          "y1": 287
+        },
+        "attach": {
+          "x": 206.7,
+          "y": 191,
+          "relX": 0.49,
+          "relY": 0.56
+        },
+        "dir": {
+          "x": 0.98,
+          "y": 0.2
+        },
+        "class": "rear",
+        "length": 210.5
+      },
+      {
+        "k": 1,
+        "frac": 0.0245,
+        "pixels": 590,
+        "box": {
+          "x0": 25,
+          "y0": 183,
+          "x1": 39,
+          "y1": 233
+        },
+        "attach": {
+          "x": 34.2,
+          "y": 210.2,
+          "relX": 0.07,
+          "relY": 0.74
+        },
+        "dir": {
+          "x": -0.93,
+          "y": 0.37
+        },
+        "class": "rear",
+        "length": 28.7
+      },
+      {
+        "k": 2,
+        "frac": 0.0216,
+        "pixels": 522,
+        "box": {
+          "x0": 88,
+          "y0": 236,
+          "x1": 139,
+          "y1": 282
+        },
+        "attach": {
+          "x": 134,
+          "y": 236,
+          "relX": 0.32,
+          "relY": 0.99
+        },
+        "dir": {
+          "x": -0.56,
+          "y": 0.83
+        },
+        "class": "limb-down",
+        "length": 65.1
+      }
+    ],
+    "byClass": {
+      "rear": 2,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 248,
+        "x1": 267,
+        "cx": 258.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

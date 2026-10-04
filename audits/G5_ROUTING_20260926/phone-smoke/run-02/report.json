@@ -1,0 +1,240 @@
+{
+ "tool": "phone-smoke",
+ "package": "dev-preview-14b712e6e14f-20260926181115",
+ "crabs": [
+  "crab",
+  "freshwater-crab",
+  "mud-crab"
+ ],
+ "phases": [
+  {
+   "phase": "plain",
+   "query": "",
+   "pageErrors": [],
+   "checks": {},
+   "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/154.0.4258.37",
+    "revision": "@f6ddc7bb8d2ad05a6979ebc09b83893c2d128a62",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "js_version": "15.4.11.5",
+    "protocol_version": "1.3"
+   },
+   "seeded": true,
+   "seededCodexEntries": 6,
+   "openedVia": "dockcodex",
+   "scrollStops": 3,
+   "screenshot": "plain-compendium.jpg",
+   "screenshotPaintedRows": 3,
+   "screenshotRows": [
+    "s1234:procedural",
+    "s777:procedural",
+    "s4242:procedural",
+    "s1431434066:painted",
+    "s2150023242:painted",
+    "s725465033:painted"
+   ],
+   "rows": [
+    {
+     "cid": "s1234",
+     "text": "Toruneeus · Fauna · ExoticAquatic Fauna — Earth",
+     "kind": "procedural",
+     "complete": true,
+     "srcSha": null
+    },
+    {
+     "cid": "s777",
+     "text": "Morovoent · Flora · NotableFlora — Mars",
+     "kind": "procedural",
+     "complete": true,
+     "srcSha": null
+    },
+    {
+     "cid": "s4242",
+     "text": "Umbraemnora · Fauna · Notable · hybridExtreme-World Life — Kepler",
+     "kind": "procedural",
+     "complete": true,
+     "srcSha": null
+    },
+    {
+     "cid": "s1431434066",
+     "text": "Silandraora · Fauna · RareExtreme-World Life — Phone Smoke crab",
+     "kind": "painted",
+     "complete": true,
+     "srcSha": "06d43a64f0eec9e0"
+    },
+    {
+     "cid": "s2150023242",
+     "text": "Toraithar · Fauna · RareMegafauna — Phone Smoke freshwater-crab",
+     "kind": "painted",
+     "complete": true,
+     "srcSha": "5db41e426c776434"
+    },
+    {
+     "cid": "s725465033",
+     "text": "Ossiaarid · Fauna · UncommonAquatic Fauna — Phone Smoke mud-crab",
+     "kind": "painted",
+     "complete": true,
+     "srcSha": "62d7b2558486530e"
+    }
+   ],
+   "counts": {
+    "rows": 6,
+    "painted": 3,
+    "procedural": 3,
+    "other": 0
+   },
+   "controlled": true,
+   "creatureFinishFetches": [],
+   "finishSourceFetches": 0,
+   "localAiRequests": [
+    "/__local_ai/MISSING.json",
+    "/__local_ai/browser-variant-plan.json",
+    "/__local_ai/denoiser-shapes.mjs",
+    "/__local_ai/gpu-profile.mjs",
+    "/__local_ai/kit-contact-math.mjs",
+    "/__local_ai/kit-engine-math.mjs",
+    "/__local_ai/kit-stage-worker.mjs",
+    "/__local_ai/kit-weather-math.mjs",
+    "/__local_ai/kit-worker-engine.mjs",
+    "/__local_ai/kit-worker-expansion.mjs",
+    "/__local_ai/pipeline-math.mjs",
+    "/__local_ai/runtime.json",
+    "/__local_ai/inputs/earth-composite.png"
+   ]
+  },
+  {
+   "phase": "finish",
+   "query": "?finish=1",
+   "pageErrors": [],
+   "checks": {},
+   "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/154.0.4258.37",
+    "revision": "@f6ddc7bb8d2ad05a6979ebc09b83893c2d128a62",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "js_version": "15.4.11.5",
+    "protocol_version": "1.3"
+   },
+   "seeded": true,
+   "seededCodexEntries": 6,
+   "openedVia": "dockcodex",
+   "scrollStops": 3,
+   "screenshot": "finish-compendium.jpg",
+   "screenshotPaintedRows": 3,
+   "screenshotRows": [
+    "s1234:procedural",
+    "s777:procedural",
+    "s4242:procedural",
+    "s1431434066:painted",
+    "s2150023242:painted",
+    "s725465033:painted"
+   ],
+   "rows": [
+    {
+     "cid": "s1234",
+     "text": "Toruneeus · Fauna · ExoticAquatic Fauna — Earth",
+     "kind": "procedural",
+     "complete": true,
+     "srcSha": null
+    },
+    {
+     "cid": "s777",
+     "text": "Morovoent · Flora · NotableFlora — Mars",
+     "kind": "procedural",
+     "complete": true,
+     "srcSha": null
+    },
+    {
+     "cid": "s4242",
+     "text": "Umbraemnora · Fauna · Notable · hybridExtreme-World Life — Kepler",
+     "kind": "procedural",
+     "complete": true,
+     "srcSha": null
+    },
+    {
+     "cid": "s1431434066",
+     "text": "Silandraora · Fauna · RareExtreme-World Life — Phone Smoke crab",
+     "kind": "painted",
+     "complete": true,
+     "srcSha": "6bee11b86f1b1e9b"
+    },
+    {
+     "cid": "s2150023242",
+     "text": "Toraithar · Fauna · RareMegafauna — Phone Smoke freshwater-crab",
+     "kind": "painted",
+     "complete": true,
+     "srcSha": "5401bedc1fbeabc9"
+    },
+    {
+     "cid": "s725465033",
+     "text": "Ossiaarid · Fauna · UncommonAquatic Fauna — Phone Smoke mud-crab",
+     "kind": "painted",
+     "complete": true,
+     "srcSha": "01ad9e631cb4c71d"
+    }
+   ],
+   "counts": {
+    "rows": 6,
+    "painted": 3,
+    "procedural": 3,
+    "other": 0
+   },
+   "controlled": true,
+   "creatureFinishFetches": [
+    "/library/creature-finish/ec2e35e0299d0e4d47261267b83b15375e43297831303c5b67ae9eb3fd5a01e2/original.png",
+    "/library/creature-finish/ec2e35e0299d0e4d47261267b83b15375e43297831303c5b67ae9eb3fd5a01e2/receipt.json",
+    "/library/creature-finish/9d29bc0fe48eb61901948bf72f2a871f507f579352ff15f2f85ae734abfd41ec/original.png",
+    "/library/creature-finish/9d29bc0fe48eb61901948bf72f2a871f507f579352ff15f2f85ae734abfd41ec/receipt.json",
+    "/library/creature-finish/fe91e4d748f14c2c3969583e8c4f3c7c1a977db24af7968c853208700bb0a138/original.png",
+    "/library/creature-finish/fe91e4d748f14c2c3969583e8c4f3c7c1a977db24af7968c853208700bb0a138/receipt.json"
+   ],
+   "finishSourceFetches": 6,
+   "localAiRequests": [
+    "/__local_ai/MISSING.json",
+    "/__local_ai/browser-variant-plan.json",
+    "/__local_ai/denoiser-shapes.mjs",
+    "/__local_ai/gpu-profile.mjs",
+    "/__local_ai/kit-contact-math.mjs",
+    "/__local_ai/kit-engine-math.mjs",
+    "/__local_ai/kit-stage-worker.mjs",
+    "/__local_ai/kit-weather-math.mjs",
+    "/__local_ai/kit-worker-engine.mjs",
+    "/__local_ai/kit-worker-expansion.mjs",
+    "/__local_ai/pipeline-math.mjs",
+    "/__local_ai/runtime.json",
+    "/__local_ai/inputs/earth-composite.png"
+   ]
+  }
+ ],
+ "checks": {
+  "threeCrabRowsPainted": true,
+  "finishedDiffersForAll": true,
+  "deliveryFetchedOnlyWithFlag": true,
+  "finishAddsNoLocalAiRequest": true,
+  "noModelFileRequested": true,
+  "zeroPageErrors": true
+ },
+ "measured": {
+  "finishSourceFetchesOnPhone": 6,
+  "note": "the phone route downloads each archetype master+labels once to compute the identity key (no model, no inference)"
+ },
+ "perCrab": [
+  {
+   "id": "crab",
+   "plain": "06d43a64f0eec9e0",
+   "finish": "6bee11b86f1b1e9b"
+  },
+  {
+   "id": "freshwater-crab",
+   "plain": "5db41e426c776434",
+   "finish": "5401bedc1fbeabc9"
+  },
+  {
+   "id": "mud-crab",
+   "plain": "62d7b2558486530e",
+   "finish": "01ad9e631cb4c71d"
+  }
+ ],
+ "status": "PASS"
+}

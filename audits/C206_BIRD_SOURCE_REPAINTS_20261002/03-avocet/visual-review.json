@@ -1,0 +1,28 @@
+{
+  "name": "Avocet",
+  "masterSha256": "20d810533b805611a521692c68c1bf17cd781c43d0bf1df4deb23a3608b267c7",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: strongly upcurved thin bill, black-and-white pied surfaces and two long blue-grey leg chains are visible. Both visible leg shafts emerge separately from feather margins; short white tail is connected below the black folded wing tips. Feet show slender toes but webbing is not clearly resolved; hidden thigh and far-wing ownership remain unproven.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 312,
+      "y0": 320,
+      "x1": 1081,
+      "y1": 950
+    },
+    "margins": {
+      "left": 312,
+      "right": 172,
+      "top": 320,
+      "bottom": 303
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

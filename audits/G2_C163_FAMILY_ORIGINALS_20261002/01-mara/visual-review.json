@@ -1,0 +1,28 @@
+{
+  "name": "Mara",
+  "masterSha256": "74cb1fcf52069a8acdbf085e9a4b7500d0a44118ecee1db3b99fab791449f40d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Four connected separated legs and four feet are visible; two long ears, brown-grey coat, pale underside and a very short tail read clearly. Foot baselines differ slightly and the far foreleg root merges into the chest; full-size limb ownership and canonical Mara identity remain review holds. No scenery, prop or visible crop.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 279,
+      "y0": 255,
+      "x1": 1003,
+      "y1": 943
+    },
+    "margins": {
+      "left": 279,
+      "right": 250,
+      "top": 255,
+      "bottom": 310
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

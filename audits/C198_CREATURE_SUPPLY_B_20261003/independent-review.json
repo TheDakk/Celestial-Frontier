@@ -1,0 +1,77 @@
+{
+  "schema": "cf.g2-independent-source-review/v1",
+  "rows": [
+    {
+      "name": "Diving Beetle",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/05-diving-beetle/master.png",
+      "masterSha256": "6f3da86ce3c091314bc65ed2ef1131fe6012916024a78f9421da51e0dabe810c",
+      "reviewer": "Parent Codex agent",
+      "method": "Independent full original visual inspection communicated in agent messages",
+      "finding": "Independent parent full1254 inspection confirms pale yellow rim, oar hindlegs and silver bubble. Sixth leg remains unresolved. No required pigment feature by current pattern-observation regex.",
+      "scope": "Identity/source review only; no authoring or motion admission"
+    },
+    {
+      "name": "Lemur",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/13-lemur/master.png",
+      "masterSha256": "088b43fc6861019b83ebf84ae64d674f674c9769f29dcafd0f2e3fdd6c8d9824",
+      "reviewer": "Parent Codex agent",
+      "method": "Independent full original visual inspection communicated in agent messages",
+      "finding": "Independent parent full1254 inspection confirms black-white tail rings, facial mask and orange-gold eye. Root/support/fringe holds remain.",
+      "scope": "Identity/source review only; no authoring or motion admission"
+    },
+    {
+      "name": "Mandrill",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/14-mandrill/master.png",
+      "masterSha256": "be36b1f317c7c4eb0fd0480d1d5fea6b54d54548ba8a15e31a56bd0bc8f9616a",
+      "reviewer": "Parent Codex agent",
+      "method": "Independent full original visual inspection communicated in agent messages",
+      "finding": "Independent parent full1254 inspection confirms scarlet central nose stripe, ridged blue cheeks, olive mane and tiny upright tail. Root/support/fringe holds remain.",
+      "scope": "Identity/source review only; no authoring or motion admission"
+    },
+    {
+      "name": "Marmoset",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/15-marmoset/master.png",
+      "masterSha256": "9c2807738b5df0b5737c8e2a1584cd0d1fc04031d710b89dde8ede923e6b8e6f",
+      "reviewer": "Parent Codex agent",
+      "method": "Independent full original visual inspection communicated in agent messages",
+      "finding": "Independent parent full1254 inspection confirms visible banded tail and white fan ear tufts. Root/support/fringe holds remain.",
+      "scope": "Identity/source review only; no authoring or motion admission"
+    },
+    {
+      "name": "Leafcutter Ant",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/21-leafcutter-ant/master.png",
+      "masterSha256": "1390d5a995afedb1c1827a3aed22a7ce738e1215db683569a12beeeddb3c1741",
+      "reviewer": "Parent Codex agent",
+      "method": "Independent full original visual inspection communicated in agent messages",
+      "finding": "Independent parent full1254 inspection confirms the leaf is an explicit canonical mustRead request. It conflicts with the isolated no-prop correction; retain source/rig hold. No required pigment feature by pattern regex.",
+      "scope": "Identity/source review only; no authoring or motion admission"
+    },
+    {
+      "name": "Locust",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/22-locust/master.png",
+      "masterSha256": "946898b4e9e1d3b4a3e7e5fb0ca0a5c093f64a52585140b2601ef96398a0812d",
+      "reviewer": "Parent Codex agent",
+      "method": "Independent full original visual inspection communicated in agent messages",
+      "finding": "Independent parent full1254 inspection counts six distal tips, large angled hind legs, long narrow folded wings, short antennae and tall flat-sided head. Original reviewer perceived a seventh projection; disagreement/root ambiguity retained. Six complete chains not established.",
+      "scope": "Identity/source review only; no authoring or motion admission"
+    },
+    {
+      "name": "Grasshopper",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/23-grasshopper/master.png",
+      "masterSha256": "e82932e2fb27354c2bede3a4475173f8cf56e0ad2b2323976a68b4a4a0c566aa",
+      "reviewer": "Parent Codex agent",
+      "method": "Independent full original visual inspection communicated in agent messages",
+      "finding": "Independent parent full1254 inspection counts six distal tips including two small far tips, large angled hind legs, narrow folded wings, short-ish antennae and slanted head. Roots overlap; six complete chains not established.",
+      "scope": "Identity/source review only; no authoring or motion admission"
+    },
+    {
+      "name": "Dobsonfly",
+      "master": "audits/C198_CREATURE_SUPPLY_B_20261003/24-dobsonfly/master.png",
+      "masterSha256": "9d30ddf1a2499a92ea81605c7b022086f985406fedfe7094d4c6e2b2197347d2",
+      "reviewer": "Parent Codex agent",
+      "method": "Independent full original visual inspection communicated in agent messages",
+      "finding": "Independent parent full1254 inspection confirms smoky net-veined long wings and sickle mandibles. Overlap/non-crossing mandible ownership needs review. No required pigment feature by pattern regex.",
+      "scope": "Identity/source review only; no authoring or motion admission"
+    }
+  ]
+}

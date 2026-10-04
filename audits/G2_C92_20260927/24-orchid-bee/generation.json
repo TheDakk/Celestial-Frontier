@@ -1,0 +1,13 @@
+{
+  "id": "24-orchid-bee",
+  "name": "Orchid Bee",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-88271e12-9a95-481f-91f1-a313f2ca65b9.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "8e344c38a060f07fce9fe5954dadf205bef82efc9d6fb05df4a420b5f135e843",
+  "bytes": 1208440,
+  "promptSha256": "c68c4eec00c32c60efbbdaf9f4b9d07ee3cd571fb258aadb862eb6e2575856fc",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

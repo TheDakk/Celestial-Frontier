@@ -1,0 +1,14 @@
+{
+  "id": "22-giant-water-bug",
+  "name": "Giant Water Bug",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-959c727a-62ee-4ad3-8941-b8194628e59b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9be93dedacfc64fe89a6c8af14cecd28601601c3d159214b2afe60f7e837bb3c",
+  "bytes": 1126176,
+  "promptSha256": "09a6425b14842fbddbb42af4bc67e99fc78c5731228b769555b3dd9ae2ac43fc",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

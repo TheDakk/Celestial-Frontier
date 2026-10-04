@@ -1,0 +1,106 @@
+{
+  "schema": "cf.c163-arena-webp-candidate/v1",
+  "id": "marsh-r3",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeProof": false,
+  "pngSourceManifest": {
+    "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/delivery.pending.json",
+    "sha256": "4b785076490181bad2c900bbd9bca6f35b6d9862af2671a6fe93631cf8d43161"
+  },
+  "encoder": {
+    "path": "port/v2/tools/morph/arena-webp.mjs",
+    "sha256": "8622e74d9e215b81eadece8e434bb3edef39efe788e4f7cf429c71b7bf0d3173",
+    "options": {
+      "quality": 88,
+      "alphaQuality": 100,
+      "effort": 6,
+      "smartSubsample": true,
+      "bleedRadius": 24
+    },
+    "sharp": "0.35.4",
+    "webp": "1.6.0"
+  },
+  "pngBytes": 6553754,
+  "webpBytes": 647138,
+  "plates": {
+    "far": {
+      "source": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.png",
+      "sourceSha256": "3b71863cc02be8fd7a671e74a178c53e5d4e077787708002b2b64e8010c2a989",
+      "sourceBytes": 2464395,
+      "webp": "audits/C132_ARENAS_20261001/marsh-r3/arena-far.webp",
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "bytes": 308618,
+      "sha256": "40ac702c61cb4482dbd1a95aad4dd0b0de96788f2a684ab404d2cdbc3a9196ce",
+      "alphaIdentical": true,
+      "visiblePixels": 1573352,
+      "psnr": 39.223,
+      "maxAbs": 30,
+      "ssim": 0.98634,
+      "ssimMinBlock": 0.90953,
+      "secondEncodeSha256": "40ac702c61cb4482dbd1a95aad4dd0b0de96788f2a684ab404d2cdbc3a9196ce"
+    },
+    "mid": {
+      "source": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-mid.png",
+      "sourceSha256": "77c92492184e4ed2acf8b6cf03818cb0d9e6ce379a71e981d4340d13939ac453",
+      "sourceBytes": 2553334,
+      "webp": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-mid.webp",
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "bytes": 248228,
+      "sha256": "cece0e7ac7304141baced44630b9c4fad7cc80b26141c75816ad9d7dd25912d7",
+      "alphaIdentical": true,
+      "visiblePixels": 575618,
+      "psnr": 35.365,
+      "maxAbs": 48,
+      "ssim": 0.99332,
+      "ssimMinBlock": 0.90634,
+      "secondEncodeSha256": "cece0e7ac7304141baced44630b9c4fad7cc80b26141c75816ad9d7dd25912d7"
+    },
+    "near": {
+      "source": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-near.png",
+      "sourceSha256": "15d551091c076234b4fd19e45e50fa9a47fbd2977dcc3529f304b134ec76bedf",
+      "sourceBytes": 1536025,
+      "webp": "audits/C132_ARENAS_20261001/marsh-r3/keyed/arena-near.webp",
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "bytes": 90292,
+      "sha256": "756b3ea5899e2e0340ff4ecb63993e386263f1683f95a5c7781e7e1061022e20",
+      "alphaIdentical": true,
+      "visiblePixels": 216169,
+      "psnr": 36.041,
+      "maxAbs": 36,
+      "ssim": 0.99361,
+      "ssimMinBlock": 0.90941,
+      "secondEncodeSha256": "756b3ea5899e2e0340ff4ecb63993e386263f1683f95a5c7781e7e1061022e20"
+    }
+  },
+  "mechanical": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "marsh"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "marsh"
+  },
+  "originalMastersModified": false
+}

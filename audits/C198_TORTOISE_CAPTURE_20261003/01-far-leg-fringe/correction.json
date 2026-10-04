@@ -1,0 +1,12 @@
+{
+  "priorAuthoring": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/authoring.json",
+  "priorAuthoringSha256": "2dd7eceb19646b145ae3403a7461058cef10a2bfb62575d481d63db8976dbe32",
+  "sourcePixelsChanged": 0,
+  "changedLandmarks": 0,
+  "addedParts": [
+    "far-front-shin-fringe"
+  ],
+  "reason": "Visible far foreleg left-edge fringe at source x870\u2013883/y804\u2013838 is owned by plate-remainder. Retained native contexts reproduce five fold failures with root pins beside this moving shin. New polygon claims only prior remainder pixels, after all old limb contours. No motion/material/limit changes.",
+  "native": false,
+  "qualityAccepted": false
+}

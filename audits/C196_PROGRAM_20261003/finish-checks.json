@@ -1,0 +1,43 @@
+{
+  "sourceDeliveryHead": "4ffeeb4bcd9bf0e1bfa2b425b99594bdf5851dc8",
+  "signature": "G",
+  "productTree": "03f1b2bc687b99c29d949aa2dfd7b23e8c920f58",
+  "productTreeUnchangedFromPreRepair": true,
+  "selectorSha256": "5d51f52b8ca7ab906dbda469c4fcb030ef154c7998d39d8c82b9d0d943f00281",
+  "certificateFilesUnchanged": {
+    "calibration-budget.json": "d96d9444ea46694de36f981dbb7afef74f01c4f22fa7b86686ab821442227a23",
+    "compendium-memory-v2.json": "7894bcd01170aad355f82be118e0d1bcfef6499c19202f134a2103b53d4b7d72",
+    "execution.json": "dd60cf26a2da3dcb5732959ccd2bf4a5d87a5fcd873a96f4e85262bd116c3697",
+    "instrument/manifest.json": "ddb52c3eccb7ca6e632c32d435071a89a10c9aff7b51d2df1d446d952e77d172",
+    "instrument-authority.json": "89a601a6be44d0151611b9a4ec341b0588fa519e189660fc12ae065efa59c528",
+    "calibration-1-report.json": "46f56c02bff33f24614daba5f1c10ecbfd44c3fd125324a3e9ecb81e0f161819",
+    "calibration-2-report.json": "520c5bbe227b463f55fce591e7bfeb06d21bb830e69b13ffbd9ce221833d5a2f",
+    "calibration-3-report.json": "9bcc74c67ce623804e9bab8ec2702bac256b8e27c6800f8aa38e0b9bc6cd57f1",
+    "certification-report.json": "38a87c0bd548cd6cb17c77d22a55b70e6b769bfdd8203446b5f50ddf52b73213"
+  },
+  "guardSha256": "2cd8490b72e028e2bec0339a83575f3f0591691e3f853fed20b3df24f849e918",
+  "absoluteTrackedSymlinks": 0,
+  "relativeTrackedSymlinks": 24,
+  "newPacketHomePathLiterals": 0,
+  "privacyScannedDirectories": [
+    "audits/C196_HISTORY_REPAIR_20261003",
+    "audits/C196_PROGRAM_20261003",
+    "audits/C196_CREATURE_SUPPLY_20261003",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003",
+    "audits/C196_TURTLES_HOLDS_20261003"
+  ],
+  "optionalAiRuntimePresent": true,
+  "nativeRuns": 0,
+  "newI5Epochs": 0,
+  "developRetries": 0,
+  "allPairsRuns": 0,
+  "sweepStatus": "HOLD C186",
+  "siblingMailboxLastRow": "C196",
+  "siblingMailboxSha256": "ecb97bcbf16ed42313bcb894212b9eea5166d49dbeb6436b754ab42719ad1e47",
+  "freeGiB": 131.99,
+  "previewDirectoriesRetained": [
+    "port/v2/apps/game/smoke/dev-preview-earth-layered-local-20260908",
+    "port/v2/apps/game/smoke/dev-preview-static-earth-local-20260908"
+  ],
+  "cleanupPerformed": false
+}

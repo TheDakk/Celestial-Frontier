@@ -1,0 +1,40 @@
+{
+  "head": "fb82c32cac67f8d980fe1752ae92d9a1f0eb729c",
+  "runId": "20260924-i5-integrated-fb82c32cac67",
+  "browser": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+  "checkout": "/private/tmp/cf-i5-fb82c32c",
+  "automaticRetries": 0,
+  "steps": [
+    {
+      "name": "edge-preflight",
+      "command": [
+        "node",
+        "tools/compendiummem-browser-preflight.mjs"
+      ],
+      "startedAt": "2026-09-25T00:55:52Z",
+      "durationMs": 1589.301,
+      "exitCode": 0
+    },
+    {
+      "name": "certificate",
+      "command": [
+        "node",
+        "tools/compendiummem.mjs"
+      ],
+      "startedAt": "2026-09-25T00:55:54Z",
+      "durationMs": 4158.18,
+      "exitCode": 2
+    },
+    {
+      "name": "named-verify",
+      "command": [
+        "node",
+        "tools/compendiummem.mjs",
+        "--verify-run=20260924-i5-integrated-fb82c32cac67"
+      ],
+      "startedAt": "2026-09-25T00:55:58Z",
+      "durationMs": 707.986,
+      "exitCode": 2
+    }
+  ]
+}

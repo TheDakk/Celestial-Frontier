@@ -1,0 +1,536 @@
+{
+  "schema": "cf.c196-fixed-reference-result/v1",
+  "plan": {
+    "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/earthworm-transfer-plan.json",
+    "sha256": "74723d8d11d3b61dd216d462aebf3eb2f4ce7be2e8523ad466e1b9955a8d3b8e"
+  },
+  "result": {
+    "verdict": "REFUSE",
+    "reasons": [
+      "facing: the mirrored painting matches annelid better (0.0418 < 0.0502)",
+      "wrong-family: serpent matches clearly better (0.0134 < 0.0502)",
+      "extra-anatomy (unassigned): a rear appendage of 28.6% paint that no reference appendage lands on",
+      "missing-anatomy: part segment7 (segment7) covers 6% paint (reference 14%)",
+      "unexplained-anatomy: 21.9% of the paint lies away from the body and in no part (reference 5.5%)"
+    ],
+    "authoring": {
+      "id": "c196-earthworm-transfer-diagnostic",
+      "family": "annelid",
+      "landmarksPx": {
+        "root": [
+          821.6,
+          615.9
+        ],
+        "segment0": [
+          815.5,
+          664.5
+        ],
+        "segment1": [
+          818.7,
+          660.8
+        ],
+        "segment2": [
+          902.5,
+          624.5
+        ],
+        "segment3": [
+          977.5,
+          620.5
+        ],
+        "segment4": [
+          921.1,
+          604.7
+        ],
+        "segment5": [
+          861.6,
+          599.3
+        ],
+        "segment6": [
+          814.2,
+          610.1
+        ],
+        "segment7": [
+          773,
+          642.1
+        ],
+        "segment8": [
+          691.1,
+          684.6
+        ],
+        "segment9": [
+          493.9,
+          687.8
+        ],
+        "segment10": [
+          428.5,
+          681.5
+        ],
+        "segment11": [
+          447.9,
+          694.2
+        ]
+      },
+      "groundLineY": 0.6052764637417729,
+      "materials": {
+        "surface": "slick"
+      },
+      "remainderPart": "segment6",
+      "parts": [
+        {
+          "id": "segment0",
+          "joint": "segment0",
+          "layer": "near",
+          "polygonPx": [
+            [
+              1234.6,
+              396
+            ],
+            [
+              698.5,
+              873.5
+            ],
+            [
+              536.4,
+              908.8
+            ]
+          ]
+        },
+        {
+          "id": "segment1",
+          "joint": "segment1",
+          "layer": "near",
+          "polygonPx": [
+            [
+              1254,
+              265
+            ],
+            [
+              1254,
+              268.8
+            ],
+            [
+              1234.6,
+              396
+            ],
+            [
+              581.5,
+              842.9
+            ]
+          ]
+        },
+        {
+          "id": "segment2",
+          "joint": "segment2",
+          "layer": "near",
+          "polygonPx": [
+            [
+              1254,
+              264.8
+            ],
+            [
+              1254,
+              265
+            ],
+            [
+              542.6,
+              906.4
+            ],
+            [
+              516.1,
+              915.1
+            ]
+          ]
+        },
+        {
+          "id": "segment3",
+          "joint": "segment3",
+          "layer": "near",
+          "polygonPx": [
+            [
+              1254,
+              282.3
+            ],
+            [
+              516.1,
+              915.1
+            ],
+            [
+              482,
+              916
+            ]
+          ]
+        },
+        {
+          "id": "segment4",
+          "joint": "segment4",
+          "layer": "near",
+          "polygonPx": [
+            [
+              1203.5,
+              260.6
+            ],
+            [
+              1254,
+              265
+            ],
+            [
+              482,
+              916
+            ],
+            [
+              471.2,
+              914.7
+            ]
+          ]
+        },
+        {
+          "id": "segment5",
+          "joint": "segment5",
+          "layer": "near",
+          "polygonPx": [
+            [
+              1021.7,
+              263.5
+            ],
+            [
+              1203.5,
+              260.6
+            ],
+            [
+              642.9,
+              786.2
+            ]
+          ]
+        },
+        {
+          "id": "segment6",
+          "joint": "segment6",
+          "layer": "near",
+          "polygonPx": [
+            [
+              722.1,
+              282.6
+            ],
+            [
+              1021.7,
+              263.5
+            ],
+            [
+              704.1,
+              745.7
+            ]
+          ]
+        },
+        {
+          "id": "segment7",
+          "joint": "segment7",
+          "layer": "near",
+          "polygonPx": [
+            [
+              477.1,
+              285.3
+            ],
+            [
+              722.1,
+              282.6
+            ],
+            [
+              615.4,
+              798.9
+            ]
+          ]
+        },
+        {
+          "id": "segment8",
+          "joint": "segment8",
+          "layer": "near",
+          "polygonPx": [
+            [
+              243.7,
+              272.5
+            ],
+            [
+              477.1,
+              285.3
+            ],
+            [
+              593.7,
+              815
+            ]
+          ]
+        },
+        {
+          "id": "segment9",
+          "joint": "segment9",
+          "layer": "near",
+          "polygonPx": [
+            [
+              201.1,
+              269
+            ],
+            [
+              243.7,
+              272.5
+            ],
+            [
+              569.5,
+              851.4
+            ],
+            [
+              128.5,
+              383.1
+            ]
+          ]
+        },
+        {
+          "id": "segment10",
+          "joint": "segment10",
+          "layer": "near",
+          "polygonPx": [
+            [
+              568.6,
+              896.8
+            ],
+            [
+              534.4,
+              909.6
+            ],
+            [
+              103.1,
+              428.8
+            ],
+            [
+              128.5,
+              383.1
+            ]
+          ]
+        },
+        {
+          "id": "segment11",
+          "joint": "segment11",
+          "layer": "near",
+          "polygonPx": [
+            [
+              534.4,
+              909.6
+            ],
+            [
+              332.6,
+              896
+            ],
+            [
+              103.1,
+              428.8
+            ]
+          ]
+        }
+      ],
+      "coverage": {
+        "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from c196-observed-leech. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+        "sourceFacing": "right",
+        "visualAcceptance": "none — automatic"
+      }
+    },
+    "presence": {
+      "schema": "cf.anatomy-presence/v2",
+      "absent": [],
+      "hidden": [],
+      "folded": []
+    },
+    "evidence": {
+      "schema": "cf.g1-auto-author/v1",
+      "legMatch": null,
+      "remainderMarker": false,
+      "grown": null,
+      "chains": [],
+      "nudged": [],
+      "clamped": [
+        {
+          "id": "segment1",
+          "vertices": 2
+        },
+        {
+          "id": "segment2",
+          "vertices": 2
+        },
+        {
+          "id": "segment3",
+          "vertices": 1
+        },
+        {
+          "id": "segment4",
+          "vertices": 1
+        }
+      ],
+      "untangled": [],
+      "separation": null,
+      "inventory": {
+        "reasons": [
+          "extra-anatomy (unassigned): a rear appendage of 28.6% paint that no reference appendage lands on"
+        ],
+        "assign": [
+          {
+            "owners": [
+              "segment3",
+              "segment2",
+              "segment1"
+            ],
+            "names": [
+              "other"
+            ],
+            "refFrac": 0.2052,
+            "target": -1,
+            "overlap": 0
+          },
+          {
+            "owners": [
+              "segment11"
+            ],
+            "names": [
+              "other"
+            ],
+            "refFrac": 0.0789,
+            "target": 0,
+            "overlap": 0.094
+          }
+        ],
+        "target": {
+          "appendages": [
+            {
+              "k": 0,
+              "frac": 0.2864,
+              "class": "rear",
+              "attach": {
+                "x": 164.8,
+                "y": 224.3,
+                "relX": 0.02,
+                "relY": 0.66
+              }
+            },
+            {
+              "k": 1,
+              "frac": 0.0404,
+              "class": "front",
+              "attach": {
+                "x": 352.3,
+                "y": 203.8,
+                "relX": 0.98,
+                "relY": 0.37
+              }
+            }
+          ],
+          "detached": [],
+          "byClass": {
+            "rear": 1,
+            "front": 1
+          },
+          "ground": 1
+        },
+        "reference": {
+          "subject": "c196-observed-leech",
+          "byClass": {
+            "front": 1,
+            "rear": 1
+          },
+          "detached": 0
+        }
+      },
+      "detour": {
+        "target": 0.225,
+        "ref": 0.1417
+      },
+      "bestReference": "c196-observed-leech",
+      "refRank": 0,
+      "costs": [
+        {
+          "ref": "c196-observed-leech",
+          "cost": 0.05023
+        }
+      ],
+      "mirrorBest": 0.04176,
+      "otherFamilyBest": {
+        "family": "serpent",
+        "cost": 0.01339
+      },
+      "coverage": [
+        {
+          "id": "segment0",
+          "joint": "segment0",
+          "paint": 0.10175054704595186,
+          "area": 29239.21000000001
+        },
+        {
+          "id": "segment1",
+          "joint": "segment1",
+          "paint": 0.22670549084858568,
+          "area": 38479.98000000004
+        },
+        {
+          "id": "segment2",
+          "joint": "segment2",
+          "paint": 0.22157434402332363,
+          "area": 5477.750000000052
+        },
+        {
+          "id": "segment3",
+          "joint": "segment3",
+          "paint": 0.22727272727272727,
+          "area": 10457.184999999794
+        },
+        {
+          "id": "segment4",
+          "joint": "segment4",
+          "paint": 0.26498194945848375,
+          "area": 22144.28500000001
+        },
+        {
+          "id": "segment5",
+          "joint": "segment5",
+          "paint": 0.208731241473397,
+          "area": 46964.17000000004
+        },
+        {
+          "id": "segment6",
+          "joint": "segment6",
+          "paint": 0.12283136710617627,
+          "area": 69200.47999999998
+        },
+        {
+          "id": "segment7",
+          "joint": "segment7",
+          "paint": 0.05972045743329098,
+          "area": 63102.705000000016
+        },
+        {
+          "id": "segment8",
+          "joint": "segment8",
+          "paint": 0.08385744234800839,
+          "area": 61069.75000000003
+        },
+        {
+          "id": "segment9",
+          "joint": "segment9",
+          "paint": 0.1632047477744807,
+          "area": 53918.76000000001
+        },
+        {
+          "id": "segment10",
+          "joint": "segment10",
+          "paint": 0.09901563404748118,
+          "area": 27562.275000000023
+        },
+        {
+          "id": "segment11",
+          "joint": "segment11",
+          "paint": 0.08845208845208845,
+          "area": 45579.87999999999
+        }
+      ],
+      "unclaimedFrac": 0.2185
+    }
+  },
+  "sourceUnchanged": true,
+  "scope": "One automatic transfer diagnostic. Direct Earthworm C195 acceptance is unchanged regardless of this result; no pool/admission/native claim.",
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Wall Lizard",
+  "masterSha256": "1a42430fe33356cdf808f7748ba2730eb812f82139dac5563af25bb2bb7adfb4",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Slender scaled lizard, mottled olive-brown flank pattern and complete very long tapering tail read clearly. Four feet are visible, but far limbs are partly hidden at their roots and far foot baselines are higher. Tiny toe/claw counts require full-size authoring review. Body is horizontal with a slightly raised head; no external pinnae or scenery.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 119,
+      "y0": 520,
+      "x1": 1110,
+      "y1": 751
+    },
+    "margins": {
+      "left": 119,
+      "right": 143,
+      "top": 520,
+      "bottom": 502
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

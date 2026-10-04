@@ -1,0 +1,15 @@
+{
+  "id": "02-jackal",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-18757952-d594-4068-ba20-1a4f12a65935.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "e04d2486c98a641c334edd7ca3b1501011cf465310d3aaa18da5d32e929fe187",
+  "bytes": 1244414,
+  "promptSha256": "a0b88794627ac1e0e5e29bd4914d88e05aacb262912afe55b264ecbdcb4a275a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

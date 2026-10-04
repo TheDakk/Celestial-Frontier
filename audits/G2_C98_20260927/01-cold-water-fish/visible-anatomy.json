@@ -1,0 +1,186 @@
+{
+  "id": "01-cold-water-fish",
+  "name": "Cold-Water Fish",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "f390eeec34399bd928515352b1aad708a693518643bbccc20178ffeded074997",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 21763,
+    "coreRadius": 23,
+    "bodyBox": {
+      "x0": 155,
+      "y0": 162,
+      "x1": 341,
+      "y1": 239
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.037,
+        "pixels": 805,
+        "box": {
+          "x0": 217,
+          "y0": 134,
+          "x1": 267,
+          "y1": 169
+        },
+        "attach": {
+          "x": 240.7,
+          "y": 161.7,
+          "relX": 0.46,
+          "relY": 0
+        },
+        "dir": {
+          "x": 0.1,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 38.2
+      },
+      {
+        "k": 1,
+        "frac": 0.0205,
+        "pixels": 446,
+        "box": {
+          "x0": 159,
+          "y0": 152,
+          "x1": 204,
+          "y1": 168
+        },
+        "attach": {
+          "x": 181.5,
+          "y": 168,
+          "relX": 0.14,
+          "relY": 0.08
+        },
+        "dir": {
+          "x": -0.15,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 27.6
+      },
+      {
+        "k": 2,
+        "frac": 0.2446,
+        "pixels": 5324,
+        "box": {
+          "x0": 40,
+          "y0": 165,
+          "x1": 154,
+          "y1": 242
+        },
+        "attach": {
+          "x": 154,
+          "y": 204,
+          "relX": -0.01,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": -1,
+          "y": 0
+        },
+        "class": "rear",
+        "length": 120.5
+      },
+      {
+        "k": 3,
+        "frac": 0.0568,
+        "pixels": 1237,
+        "box": {
+          "x0": 342,
+          "y0": 182,
+          "x1": 380,
+          "y1": 232
+        },
+        "attach": {
+          "x": 342,
+          "y": 204.5,
+          "relX": 1.01,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.09
+        },
+        "class": "front",
+        "length": 46.9
+      },
+      {
+        "k": 4,
+        "frac": 0.0227,
+        "pixels": 495,
+        "box": {
+          "x0": 156,
+          "y0": 239,
+          "x1": 200,
+          "y1": 256
+        },
+        "attach": {
+          "x": 178,
+          "y": 239,
+          "relX": 0.12,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.16,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 27.8
+      },
+      {
+        "k": 5,
+        "frac": 0.0178,
+        "pixels": 388,
+        "box": {
+          "x0": 274,
+          "y0": 239,
+          "x1": 297,
+          "y1": 264
+        },
+        "attach": {
+          "x": 289,
+          "y": 239,
+          "relX": 0.72,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.44,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 29.2
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 276,
+        "x1": 287,
+        "cx": 281.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

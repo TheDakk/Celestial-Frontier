@@ -1,0 +1,28 @@
+{
+  "name": "Crocodile",
+  "masterSha256": "04fc849ab1b661c93162a602e1bad26fb07919ea36853e0ebdf326bbece9e8d0",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Long narrower crocodile snout with visible lower tooth, scuted trunk and complete curved tail. Four feet readable but far proximal limbs partly hidden by the belly; foot levels differ. Tail and snout approach the 8% border. No external ear pinnae are present.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 70,
+      "y0": 520,
+      "x1": 1185,
+      "y1": 762
+    },
+    "margins": {
+      "left": 70,
+      "right": 68,
+      "top": 520,
+      "bottom": 491
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,1 @@
+{"args": ["node", "node_modules/vitest/vitest.mjs", "run", "tests/guide-release.test.ts", "tests/slicesmoke-sixth-red-contract.test.ts", "tests/exceptional-crafting-evidence-contract.test.ts"], "exitCode": 0, "seconds": 3.04273325}

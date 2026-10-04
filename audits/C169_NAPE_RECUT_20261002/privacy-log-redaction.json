@@ -1,0 +1,26 @@
+{
+  "schema": "cf.audit-log-privacy/v1",
+  "scope": "Home prefixes in audit-only warning/refusal stacks normalized before delivery; warning/error/values retained. No frozen/source/input bytes changed.",
+  "rows": [
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/conservation-v2.log",
+      "redactedHomeOccurrences": 1
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/wild-pony/intake-v2.log",
+      "redactedHomeOccurrences": 1
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/crow/intake-v2.log",
+      "redactedHomeOccurrences": 1
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/snowy-owl/intake-v2.log",
+      "redactedHomeOccurrences": 1
+    },
+    {
+      "path": "audits/C169_NAPE_RECUT_20261002/hawk/intake-v2.log",
+      "redactedHomeOccurrences": 1
+    }
+  ]
+}

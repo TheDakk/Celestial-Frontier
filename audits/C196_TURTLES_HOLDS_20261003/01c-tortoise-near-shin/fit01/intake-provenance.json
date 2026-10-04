@@ -1,0 +1,94 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "74400845553fcb89a859ed938696f4e659c1b038",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/authoring.json",
+      "sha256": "2dd7eceb19646b145ae3403a7461058cef10a2bfb62575d481d63db8976dbe32"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/subject-source.json",
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "0cf246479959c20840b58229378f8cc6d0bf1a0b4f69558248888f8f5bff6718",
+  "bindingHash": "931f0584e8b1b8946ee064b3bebc1ec921b3bfc07e85880c2a325c746f88daf9",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/authoring.json",
+      "sha256": "2dd7eceb19646b145ae3403a7461058cef10a2bfb62575d481d63db8976dbe32",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/subject-source.json",
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "unchanged": true
+    }
+  ]
+}

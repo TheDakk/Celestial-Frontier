@@ -1,0 +1,121 @@
+{
+  "id": "16-tern",
+  "name": "Tern",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "e12796345360741aadf25c0092424a2f2a657b05a92bb3250081f650f71b4f1d",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 12330,
+    "coreRadius": 19,
+    "bodyBox": {
+      "x0": 207,
+      "y0": 146,
+      "x1": 331,
+      "y1": 241
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0715,
+        "pixels": 882,
+        "box": {
+          "x0": 294,
+          "y0": 133,
+          "x1": 379,
+          "y1": 166
+        },
+        "attach": {
+          "x": 319.6,
+          "y": 148.8,
+          "relX": 0.91,
+          "relY": 0.03
+        },
+        "dir": {
+          "x": 0.98,
+          "y": -0.19
+        },
+        "class": "front",
+        "length": 61.8
+      },
+      {
+        "k": 1,
+        "frac": 0.2156,
+        "pixels": 2658,
+        "box": {
+          "x0": 51,
+          "y0": 192,
+          "x1": 206,
+          "y1": 237
+        },
+        "attach": {
+          "x": 206,
+          "y": 210.5,
+          "relX": -0.01,
+          "relY": 0.68
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.01
+        },
+        "class": "rear",
+        "length": 157.2
+      },
+      {
+        "k": 2,
+        "frac": 0.0384,
+        "pixels": 474,
+        "box": {
+          "x0": 243,
+          "y0": 242,
+          "x1": 310,
+          "y1": 275
+        },
+        "attach": {
+          "x": 265,
+          "y": 242,
+          "relX": 0.47,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.29,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 55.8
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 243,
+        "x1": 269,
+        "cx": 254.3
+      },
+      {
+        "x0": 281,
+        "x1": 310,
+        "cx": 293.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

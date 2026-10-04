@@ -1,0 +1,13 @@
+{
+  "id": "04-sardine",
+  "name": "Sardine",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-74ce7443-306f-4b4b-8cde-b3293c245c23.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "03458b7f3fa484345c94357b289127ea26349a1bce99c907dfa67a3d9d5333fc",
+  "bytes": 1226875,
+  "promptSha256": "ae3b575f6cdb46b549fb974c1ee0aa3d22d1c63b0c312b6d54df98a36f13daba",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

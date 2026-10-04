@@ -1,0 +1,26 @@
+{
+  "id": "17-arapaima-framing02",
+  "name": "Arapaima",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-f1c7d117-dab2-4d93-9a79-b2d1734d63c1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "df335aeff1080374441505501bacf45284c15a709f5ffa0144061a465ed66226",
+  "bytes": 1192616,
+  "promptSha256": "a51a0e0668e85dde8404b160cc091b2285c0946654a3955b1a2116176cce6e59",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "referencedImages": [
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_B_20261004/17-arapaima/master.png",
+      "sha256": "54c32eeab5df4c74034ee9f9d832d29797aa139f52a80f07e3612729b2f3d438"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "handAuthoring": false,
+  "editSuccessor": true,
+  "localRescale": false
+}

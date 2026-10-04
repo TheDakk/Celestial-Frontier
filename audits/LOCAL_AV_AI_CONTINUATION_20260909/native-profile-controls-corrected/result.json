@@ -1,0 +1,31 @@
+{
+  "sourceSha256": {
+    "tools/local-image-generation/gpu-profile.mjs": "b92e59a01fe72c09276c5e618056b83e130cd1580753260bb39020432a2ae190",
+    "tools/local-image-generation/gpu-profile.test.mjs": "d98f962f164b26c959384240a1ee541c46680790b21dba08015929e23719bf16"
+  },
+  "steps": [
+    {
+      "name": "syntax",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/gpu-profile.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused",
+      "command": [
+        "node",
+        "--test",
+        "tools/local-image-generation/gpu-profile.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "ea32d8f7ffc850d2568ea0192d0d49860b867c59bb35dd6a62077a405a40be57"
+    }
+  ],
+  "sourceUnchanged": true,
+  "status": "PASS",
+  "finishedAt": "2026-09-09T06:07:00.123535+00:00"
+}

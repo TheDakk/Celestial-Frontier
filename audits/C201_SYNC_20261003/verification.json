@@ -1,0 +1,64 @@
+{
+  "checkedAtUtc": "2026-10-03T23:58:20.161091+00:00",
+  "currentHead": "327c5b4077fd96d4e14870f42f143cce3ac16baf",
+  "priorOwnTree": "f5bdbd8736d1c0bd016fa0f7e4773d654012d661",
+  "claudeGreenMergeTree": "f5bdbd8736d1c0bd016fa0f7e4773d654012d661",
+  "wholeTreesIdentical": true,
+  "allNineMatch": true,
+  "certificateFiles": [
+    {
+      "file": "audits/C198_I5_EPOCH_20261003/epoch/calibration-budget.json",
+      "sha256": "d3ab899a0962254c1eb63904e73a192f26e9a2a01f3db01a9bcc178cc5e21db8",
+      "match": true
+    },
+    {
+      "file": "audits/C198_I5_EPOCH_20261003/epoch/compendium-memory-v2.json",
+      "sha256": "3e6d22d37a397a731ebc360f086c4a3b6fcbd7909221839c6308ab142da0e578",
+      "match": true
+    },
+    {
+      "file": "audits/C198_I5_EPOCH_20261003/epoch/execution.json",
+      "sha256": "cfb0dfbaa703b34909418a2efb6487e502f82bb958df3bab179c3f0ef0822938",
+      "match": true
+    },
+    {
+      "file": "audits/C198_I5_EPOCH_20261003/epoch/instrument/manifest.json",
+      "sha256": "ddb52c3eccb7ca6e632c32d435071a89a10c9aff7b51d2df1d446d952e77d172",
+      "match": true
+    },
+    {
+      "file": "audits/C198_I5_EPOCH_20261003/epoch/instrument-authority.json",
+      "sha256": "5ea94336d2254e277b859dea7c2ebb2e156469cead0afc5d7384ba2fc1e5a83c",
+      "match": true
+    },
+    {
+      "file": "audits/C198_I5_EPOCH_20261003/epoch/calibration-1-report.json",
+      "sha256": "b67eb910109161b134fe8d5858494b5520b0e7f67d9c30c97f172d8104511752",
+      "match": true
+    },
+    {
+      "file": "audits/C198_I5_EPOCH_20261003/epoch/calibration-2-report.json",
+      "sha256": "6320edf30ece5461f26e3e36e932185510cf05f580c173aa791bd934e1bbab9a",
+      "match": true
+    },
+    {
+      "file": "audits/C198_I5_EPOCH_20261003/epoch/calibration-3-report.json",
+      "sha256": "a74130460f55d6b0853e6bdb947307f726fed2e70112e8b04f2f2db1feb72f63",
+      "match": true
+    },
+    {
+      "file": "audits/C198_I5_EPOCH_20261003/epoch/certification-report.json",
+      "sha256": "4634b2aa6f2692c3c0c9815ac238ce855aa940b71fa24c88fe17e67ccf04d91a",
+      "match": true
+    }
+  ],
+  "selectorSha256": "cd99da95fcc4e168955dc0936be86b324e2626d47336425d2212a384b0af8ae7",
+  "parallelReviews": {
+    "supply": "72 source originals completed, unchanged; Claude C201 admission pending",
+    "holds": "Selected candidate file/internal hashes match both lanes; rejected/RED references remain held",
+    "certificate": "No product-equivalence blocker; no second gate or epoch needed"
+  },
+  "newEpochs": 0,
+  "newDevelopRuns": 0,
+  "newNativeRuns": 0
+}

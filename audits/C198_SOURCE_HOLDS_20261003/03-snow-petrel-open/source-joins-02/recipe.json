@@ -1,0 +1,128 @@
+{
+  "schema": "cf.c198-observed-source-joins/v1",
+  "sourceFit": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit",
+  "sourceRecordSha256": "403e38de0492bdbb373c7e6bd73bfcf4d74f0ef7e8c75dde27fe3e53dff926ef",
+  "sourcePreSplitSha256": "d1758f04a6ed2fd4d6ac502d9fe8ae32109a07503b87b173a88514caa154849a",
+  "sourceBindingSha256": "4a5a409b64638eb1eefe85e51a97b0f9858ad07ad1782c7dde180bb7178c462c",
+  "candidateBindingSha256": "00bd9ec2762cc0e3b0fe251e4c05ce0da4da01903f463963b5b73cf03d2b4509",
+  "sourceAtlasSha256": "9aa7eebf7b2cf2c249e4771318d087fba86e42f4ef7eb0952eb31122d559ca8d",
+  "sourceMasterSha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924",
+  "reason": "Continuous torso/neck source paint and actual proximal feather-root boundaries. Distal wing/wing and wing/body silhouette crossings remain separate. Root-owned neck fringes are continuous paint, not independent organs.",
+  "paintBoundaryPairs": [
+    [
+      "body",
+      "chest"
+    ],
+    [
+      "body",
+      "lower-neck"
+    ],
+    [
+      "body",
+      "upper-neck"
+    ],
+    [
+      "body",
+      "head"
+    ],
+    [
+      "head",
+      "lower-neck"
+    ],
+    [
+      "body",
+      "near-wing-root"
+    ],
+    [
+      "body",
+      "far-wing-root"
+    ],
+    [
+      "body",
+      "tail"
+    ]
+  ],
+  "existingFishRecipe": null,
+  "existingFishRecipeSha256": null,
+  "sourcePixelsChanged": 0,
+  "ownershipChanged": false,
+  "recordChanged": false,
+  "motionChanged": false,
+  "solverLimitsChanged": false,
+  "compilerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 34,
+        "distancePx": 15.811388300841845,
+        "supports": [
+          54,
+          55,
+          56
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 26,
+        "distancePx": 9.486832980505254,
+        "supports": [
+          2,
+          3
+        ]
+      }
+    ],
+    "sourceBindingHash": "693a8bcb763f160045cd05d484cc657469ee54ebdb25956f09a742b75fcc3a7d",
+    "sourceVertices": 1198,
+    "vertices": 1371,
+    "sharedSupports": 411,
+    "pins": 674,
+    "independentSurfaceParts": 18,
+    "sourceJoins": 13,
+    "excludedOverlaps": 16,
+    "observedExcludedBoundaries": 16,
+    "weldedExcludedBoundaries": 8,
+    "independentExcludedBoundaries": 8,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "chest"
+      ],
+      [
+        "body",
+        "lower-neck"
+      ],
+      [
+        "body",
+        "upper-neck"
+      ],
+      [
+        "body",
+        "head"
+      ],
+      [
+        "head",
+        "lower-neck"
+      ],
+      [
+        "body",
+        "near-wing-root"
+      ],
+      [
+        "body",
+        "far-wing-root"
+      ],
+      [
+        "body",
+        "tail"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

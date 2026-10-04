@@ -1,0 +1,13 @@
+{
+  "id": "06-reef-fish",
+  "name": "Reef Fish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-0eddd175-f41f-428a-ae8c-b50030e3e3a9.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9754a6edfb062e8946a9321023641c144d4cd8138956390071f3787298d9c336",
+  "bytes": 1499028,
+  "promptSha256": "6976dc957131d996cb5471bb5b1f8ddf3d74244d90ce80616cee6c9abefe57d9",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

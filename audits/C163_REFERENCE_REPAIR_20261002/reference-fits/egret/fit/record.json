@@ -1,0 +1,202 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Egret\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"690863727\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"16\"]]]]",
+    "seed": 690863727,
+    "ownerId": "authored:archetype-sprint/c136-reference-02-egret",
+    "earthName": "Egret"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 690863727,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 12,
+    "body": 4,
+    "loco": 16,
+    "trait": 16,
+    "size": 2,
+    "diet": 2,
+    "head": 3,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 7,
+    "habitat": 13,
+    "detail": 7,
+    "accent": 1,
+    "temper": 1,
+    "sense": 3,
+    "repro": 4,
+    "life": 3,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Egret"
+  },
+  "geometry": {
+    "cutoutAssetHash": "fbcde72daf7c15afec6898e839b893bd6e757eeddb7edc938fa28ce5a756f0b1",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.733652312599681,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.48484848484848486,
+      0.5350877192982456
+    ],
+    "pelvis": [
+      0.45614035087719296,
+      0.5023923444976076
+    ],
+    "spine": [
+      0.5031897926634769,
+      0.4585326953748006
+    ],
+    "chest": [
+      0.5741626794258373,
+      0.44258373205741625
+    ],
+    "neck0": [
+      0.6275917065390749,
+      0.3827751196172249
+    ],
+    "neck1": [
+      0.5901116427432217,
+      0.3149920255183413
+    ],
+    "head": [
+      0.6188197767145136,
+      0.2679425837320574
+    ],
+    "beak": [
+      0.7033492822966507,
+      0.29106858054226475
+    ],
+    "legFarKnee": [
+      0.42424242424242425,
+      0.5988835725677831
+    ],
+    "legFarAnkle": [
+      0.4043062200956938,
+      0.7033492822966507
+    ],
+    "legFarFoot": [
+      0.4194577352472089,
+      0.7192982456140351
+    ],
+    "legNearKnee": [
+      0.5143540669856459,
+      0.6148325358851675
+    ],
+    "legNearAnkle": [
+      0.5550239234449761,
+      0.70414673046252
+    ],
+    "legNearFoot": [
+      0.5765550239234449,
+      0.7208931419457735
+    ],
+    "wingFarRoot": [
+      0.5311004784688995,
+      0.36443381180223283
+    ],
+    "wingFarTip": [
+      0.3309409888357257,
+      0.4784688995215311
+    ],
+    "wingNearRoot": [
+      0.5558213716108453,
+      0.4218500797448166
+    ],
+    "wingNearTip": [
+      0.34688995215311,
+      0.5486443381180224
+    ],
+    "tailFan": [
+      0.2886762360446571,
+      0.543859649122807
+    ]
+  },
+  "materials": {
+    "surface": "feather"
+  },
+  "source": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Independent source-specific full-size pixel observations. No prior authoring, rig or reference coordinates were read or transferred.",
+    "sourceFacing": "right",
+    "limitations": [
+      "Far wing is exposed by a targeted pose edit; its partly occluded shoulder attachment and near/far depth are manual interpretations requiring independent intake and motion review.",
+      "The two hocks, lower legs and toe fans are visibly distinct; individual toe-tip heights differ, so common ground contact is not certified.",
+      "Long breeding-feather fringes, crown filaments and overlap between near wing and body remain island and skin-partition risks."
+    ],
+    "unresolvedJoints": [],
+    "visualAcceptance": "CANDIDATE_UNMEASURED: unchanged intake, static, native and reference-pool controls required.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "129c3a206d2fc995b57a6ea771b2ce4fd273c4da6af921a20fda22fe2ef635b6",
+    "subjectSourceSha256": "3d46d822247a2e1f6578bbbbd3152436f582afcdcb98817c075c82e00c1be4d3",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.04351028027337722,
+      "spine": 0.06432199307839163,
+      "chest": 0.07274283529174617,
+      "neck0": 0.08019807391881735,
+      "neck1": 0.07745516785702121,
+      "head": 0.05511630365431413,
+      "beak": 0.08763588900916262,
+      "legFarKnee": 0.10162693943087982,
+      "legFarAnkle": 0.10635100725868156,
+      "legFarFoot": 0.021998587279320126,
+      "legNearKnee": 0.12661608658628906,
+      "legNearAnkle": 0.09813797724338778,
+      "legNearFoot": 0.02727692404543383,
+      "wingFarRoot": 0.08922871279553024,
+      "wingFarTip": 0.23036454267391207,
+      "wingNearRoot": 0.027681905833667874,
+      "wingNearTip": 0.24439542138312537,
+      "tailFan": 0.17252178734734883
+    },
+    "measures": {
+      "body": 0.13231152692817497,
+      "bone-min": 0.021998587279320126,
+      "bone-max": 0.24439542138312537,
+      "leg/torso:legFar": 1.738144357548861,
+      "leg/torso:legNear": 1.9048301665502294,
+      "wing/torso": 2.4154604129308614
+    }
+  },
+  "recipeHash": "b05cda70cbea121e5a8b66c5b9b2b7eed732aad2effa350556f3bb0b60816474"
+}

@@ -1,0 +1,17 @@
+{
+  "createdAt": "2026-09-08T09:52:00.162Z",
+  "url": "http://127.0.0.1:53304/?avpilot=1",
+  "gets": [
+    {
+      "path": "index.html",
+      "bytes": 69897,
+      "sha256": "ad2b80ce73ac016b55aded4b5f0b2139e1b23fac6d844bb34c86a20978eabc1a"
+    },
+    {
+      "path": "preview.json",
+      "bytes": 58413,
+      "sha256": "415dc35b4fa5d340e96b1f39ee7c0ca751c65c58cf8bfd5367b83df5078ef365"
+    }
+  ],
+  "processes": "7566 node\n30765 node\n93550 /usr/bin/caffeinate"
+}

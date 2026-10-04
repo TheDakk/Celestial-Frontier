@@ -1,0 +1,20 @@
+{
+ "id": "g2c163familyoriginals-17-squid",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 12.8% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a front appendage of 11.1% paint that no reference appendage lands on",
+  "missing-anatomy: part eye-near (eyeNear) covers 7% paint (reference 100%)",
+  "missing-anatomy: part arm2-tip (arm2Seg2) covers 0% paint (reference 43%)",
+  "missing-anatomy: part arm6-tip (arm6Seg2) covers 24% paint (reference 68%)",
+  "missing-anatomy: part arm6-middle (arm6Seg1) covers 13% paint (reference 92%)",
+  "missing-anatomy: part mantle (mantle) covers 19% paint (reference 82%)",
+  "missing-anatomy: part contour-arm2seg2 (arm2Seg2) covers 0% paint (reference 34%)",
+  "missing-anatomy: part contour-arm6seg2 (arm6Seg2) covers 12% paint (reference 51%)",
+  "missing-anatomy: part contour-mantle (mantle) covers 10% paint (reference 73%)",
+  "missing-anatomy: part final-arm3seg1 (arm3Seg1) covers 0% paint (reference 73%)",
+  "unexplained-anatomy: 9.6% of the paint lies away from the body and in no part (reference 0.4%)"
+ ],
+ "semanticPresence": null
+}

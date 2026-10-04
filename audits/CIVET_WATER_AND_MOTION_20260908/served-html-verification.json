@@ -1,0 +1,13 @@
+{
+  "schema": "cf-local-study-served-html/v1",
+  "status": "PASS",
+  "url": "http://127.0.0.1:58523/",
+  "serverPid": 13898,
+  "execSession": 88960,
+  "httpStatus": 200,
+  "bytes": 3796,
+  "sha256": "12633e15ccb159fc2a4baeda9f820169082a1b4c4c8694259645b5fdfaf91365",
+  "source": "native-filter-state/dist/study.html",
+  "verifiedAt": "2026-09-09T00:17:49.918310+00:00",
+  "hosted": false
+}

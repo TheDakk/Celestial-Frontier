@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-recipe.json",
+    "sha256": "4dc59857407dc6c2c24e8d0d44e6d384c9f8be33b8e468eed843b20fe73e133f"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-far.png",
+        "sha256": "faa204e44e764c73acadc7184f23db60f8e93cdabf1126349f16e3801288bce2"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-far.png",
+        "sha256": "faa204e44e764c73acadc7184f23db60f8e93cdabf1126349f16e3801288bce2"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-mid.png",
+        "sha256": "9ff0f002c1f4e1fe838b9ef064a3aac5132cb97323083dc6751c97a5a717227d"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/keyed/arena-mid.png",
+        "sha256": "53a6a423ea593f3ab8e2b4d730bcec9084eb61cf7f425c4bebcf8faf5d454d6a"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/arena-near.png",
+        "sha256": "b02026d96708a3d78e80a9453578b6d86d2cfe3ff0299c4aed07c25ec9318e1d"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/stormsea-v2/keyed/arena-near.png",
+        "sha256": "b6189208911cdb449ff7c86070764b4a0de88d924c9ae05e55f13a53c583b6bd"
+      }
+    }
+  ]
+}

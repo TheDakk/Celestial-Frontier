@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Sloth",
+  "masterSha256": "60506dea26146c98ec3223eeba7b564006cf41b5e16da5f91c663576755b152b",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,9 @@
+{
+ "id": "g2c136repairs-22-giant-water-bug",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 29% paint (reference 88%)"
+ ],
+ "semanticPresence": null
+}

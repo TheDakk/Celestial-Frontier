@@ -1,0 +1,35 @@
+{
+  "creatureId": "c192-mussel-external-junction",
+  "parts": [
+    {
+      "name": "hinge.png",
+      "path": "parts/hinge.png",
+      "sha256": "9e8eb13c58ab05ab2f80dc70a00652057910de8012be7e41cc460bc1a9a8486e"
+    },
+    {
+      "name": "foot.png",
+      "path": "parts/foot.png",
+      "sha256": "c20fdca9f828ffb5dad5cf8e080aa502de9c64f6490784e644792fc7ca5abd60"
+    },
+    {
+      "name": "siphon.png",
+      "path": "parts/siphon.png",
+      "sha256": "52420605786a6d7d74b796c2b86e418aa38abb9ba2af55f210e45a74d677eece"
+    },
+    {
+      "name": "mantle.png",
+      "path": "parts/mantle.png",
+      "sha256": "f9d400d32e41d9b9ceac7b73e7344a975f8970ccae09859da432506ecfd1c970"
+    },
+    {
+      "name": "valvefar.png",
+      "path": "parts/valvefar.png",
+      "sha256": "afb19c1818f7eabef0312d50d24298ac5094f4ec09da868db00f4f20a69ffbdc"
+    },
+    {
+      "name": "valvenear.png",
+      "path": "parts/valvenear.png",
+      "sha256": "94a5da42fcfae612f85758bb26d4611415c26f6f952978f429d2a0e601551151"
+    }
+  ]
+}

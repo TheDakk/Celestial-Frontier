@@ -1,0 +1,186 @@
+{
+  "id": "23-vampire-squid",
+  "name": "Vampire Squid",
+  "family": "cephalopod",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "bcedf8e7b62bf35115e505e7240a964f541bf04e3d433787625b6b8820845530",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 24797,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 115,
+      "y0": 142,
+      "x1": 250,
+      "y1": 263
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0398,
+        "pixels": 986,
+        "box": {
+          "x0": 111,
+          "y0": 103,
+          "x1": 190,
+          "y1": 141
+        },
+        "attach": {
+          "x": 159.5,
+          "y": 141,
+          "relX": 0.33,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.62,
+          "y": -0.79
+        },
+        "class": "top",
+        "length": 61.6
+      },
+      {
+        "k": 1,
+        "frac": 0.2575,
+        "pixels": 6385,
+        "box": {
+          "x0": 224,
+          "y0": 113,
+          "x1": 348,
+          "y1": 291
+        },
+        "attach": {
+          "x": 246.8,
+          "y": 182.2,
+          "relX": 0.98,
+          "relY": 0.33
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.09
+        },
+        "class": "front",
+        "length": 148.6
+      },
+      {
+        "k": 2,
+        "frac": 0.0417,
+        "pixels": 1033,
+        "box": {
+          "x0": 69,
+          "y0": 134,
+          "x1": 118,
+          "y1": 204
+        },
+        "attach": {
+          "x": 114.1,
+          "y": 170.6,
+          "relX": -0.01,
+          "relY": 0.24
+        },
+        "dir": {
+          "x": -0.98,
+          "y": 0.18
+        },
+        "class": "rear",
+        "length": 58.1
+      },
+      {
+        "k": 3,
+        "frac": 0.0128,
+        "pixels": 317,
+        "box": {
+          "x0": 94,
+          "y0": 227,
+          "x1": 131,
+          "y1": 262
+        },
+        "attach": {
+          "x": 124,
+          "y": 244,
+          "relX": 0.07,
+          "relY": 0.84
+        },
+        "dir": {
+          "x": -0.76,
+          "y": 0.65
+        },
+        "class": "limb-down",
+        "length": 34.9
+      },
+      {
+        "k": 4,
+        "frac": 0.0343,
+        "pixels": 851,
+        "box": {
+          "x0": 150,
+          "y0": 263,
+          "x1": 210,
+          "y1": 309
+        },
+        "attach": {
+          "x": 184,
+          "y": 264,
+          "relX": 0.51,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.47,
+          "y": 0.88
+        },
+        "class": "limb-down",
+        "length": 56.4
+      },
+      {
+        "k": 5,
+        "frac": 0.015,
+        "pixels": 371,
+        "box": {
+          "x0": 217,
+          "y0": 264,
+          "x1": 247,
+          "y1": 297
+        },
+        "attach": {
+          "x": 231,
+          "y": 264,
+          "relX": 0.86,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.43,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 36.7
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 150,
+        "x1": 173,
+        "cx": 161.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

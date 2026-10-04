@@ -1,0 +1,37 @@
+✔ shared joint angles move only their authored head support, leave the attachment still and preserve rest (1.315875ms)
+✔ real Civet source supports pass all ear/jaw envelope combinations and retain the neck-removal failure control (114.25125ms)
+✔ head follows actual pose but source neck remains attached to chest; rigid old transform fails (0.84975ms)
+✔ actual triangle fold is refused, including the reflected profile view (0.094459ms)
+✔ head replacement cannot cut away the neck or chest; original bad declaration is refused (0.113875ms)
+✔ Platypus intake preserves every atlas channel and binds named Earth anatomy; old straight chains fail 3% slack (111.302959ms)
+✔ head views bind the unchanged accepted turnaround and record, and have real source pixels (36.213042ms)
+✔ one-pixel exposed join fails between opaque endpoints; restored pixels pass (0.854666ms)
+✔ published surface displacement is measured, including reflected meshes and non-square scales (0.445458ms)
+✔ socket evaluator accepts quadruped vocabulary without quadruped assumptions (synthetic) (0.171417ms)
+✔ socket evaluator accepts hopper vocabulary without quadruped assumptions (synthetic) (0.127ms)
+✔ socket evaluator accepts biped-bird vocabulary without quadruped assumptions (synthetic) (0.148833ms)
+✔ socket evaluator accepts fish vocabulary without quadruped assumptions (synthetic) (0.291041ms)
+✔ socket evaluator accepts insect vocabulary without quadruped assumptions (synthetic) (0.346125ms)
+✔ socket evaluator accepts serpent vocabulary without quadruped assumptions (synthetic) (0.096875ms)
+✔ socket evaluator accepts arachnid vocabulary without quadruped assumptions (synthetic) (0.101458ms)
+✔ socket evaluator accepts radial vocabulary without quadruped assumptions (synthetic) (0.097292ms)
+✔ socket evaluator accepts plant-woody vocabulary without quadruped assumptions (synthetic) (0.062375ms)
+✔ socket evaluator accepts plant-herb vocabulary without quadruped assumptions (synthetic) (0.052ms)
+✔ socket evaluator accepts myriapod vocabulary without quadruped assumptions (synthetic) (0.04625ms)
+✔ socket evaluator accepts cephalopod vocabulary without quadruped assumptions (synthetic) (0.04175ms)
+✔ socket evaluator accepts flyer-membrane vocabulary without quadruped assumptions (synthetic) (0.052209ms)
+✔ socket evaluator accepts primate vocabulary without quadruped assumptions (synthetic) (0.064208ms)
+✔ resolves pelvis-rooted upper limb to torso and detects broken rendered attachment with unchanged rest (1.755333ms)
+✔ independent legs and non-nearest ancestral silhouette contacts remain explicitly excluded (0.397666ms)
+✔ samples both piecewise-affine breakpoint inventories so a narrow gap cannot hide between pixel endpoints (0.227125ms)
+✔ refuses missing source coverage, overlapping ownership and nonfinite publication (0.54125ms)
+✔ proximal body skin joins across bone siblings while distinct limbs stay independent (5.974583ms)
+✔ retained actual Civet strike: continuous C03 passes; branch-split C06 and incomplete-socket C07 fail (400.541583ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 492.349833

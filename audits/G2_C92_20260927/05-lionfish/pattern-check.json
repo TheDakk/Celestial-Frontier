@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Lionfish",
+  "masterSha256": "8ff03e0ae6aed08200b3c799df52a89abde8fc8462947d24c1ca79ef2a4bb3e6",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

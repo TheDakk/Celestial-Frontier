@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Sandgrouse",
+  "masterSha256": "8ef26e194950c91f692a1afab80239dc878a983fb95c9cd0f1896e5dbcb1ac99",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

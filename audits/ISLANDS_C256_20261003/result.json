@@ -1,0 +1,14 @@
+{
+ "21-tasmanian-devil": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c256/21-tasmanian-devil/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "11-chipmunk": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c256/11-chipmunk/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ }
+}

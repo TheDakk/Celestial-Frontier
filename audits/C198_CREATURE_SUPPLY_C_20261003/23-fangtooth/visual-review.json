@@ -1,0 +1,28 @@
+{
+  "name": "Fangtooth",
+  "masterSha256": "d4830af6282015d8a27c53f0c9aeaad637042cd769e01563b3c43a7183e13a57",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Complete forked tail and dorsal/anal/near paired fins, generous margins. Far roots hidden. Exaggerated fang/head silhouette requires species-specific anatomy review; no accepted fin count.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 167,
+      "y0": 338,
+      "x1": 1088,
+      "y1": 897
+    },
+    "margins": {
+      "left": 167,
+      "right": 165,
+      "top": 338,
+      "bottom": 356
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

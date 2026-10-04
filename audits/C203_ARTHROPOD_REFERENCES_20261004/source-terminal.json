@@ -1,0 +1,40 @@
+{
+  "schema": "cf.c203-arthropod-source-terminal/v1",
+  "newOriginals": 2,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "rows": [
+    {
+      "id": "01-grasshopper-bent-dorsal",
+      "master": {
+        "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/master.png",
+        "sha256": "73db555f6f0465d134f9f5864e0e30a67774ee7845b4970e34ab634477974b68"
+      },
+      "staticPassed": 9,
+      "staticTotal": 13,
+      "sourcePixelChanges": 0,
+      "islandCap": 0.5,
+      "qualified": false
+    },
+    {
+      "id": "02-grasshopper-all-bent-dorsal",
+      "master": {
+        "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal/master.png",
+        "sha256": "fb72c3a69e626fd80c47ef77256c5d95fb7c49a704a245a06ebc319a48dd937e"
+      },
+      "staticPassed": 9,
+      "staticTotal": 13,
+      "sourcePixelChanges": 0,
+      "islandCap": 0.5,
+      "qualified": false
+    }
+  ],
+  "inheritedMyriapodHolds": {
+    "source": "audits/C202_ARTHROPOD_REFERENCES_20261004/terminal-outcomes.json",
+    "polyxenus": "Three retained source attempts do not independently expose exactly13 complete bilateral walking chains; no new source or count declaration made.",
+    "centipede": "Canonical scolopendrid minimum20 walking pairs plus1 ultimate pair would require87 current graph controls, above unchanged64. No species substitution or omitted leg chains."
+  },
+  "qualifiedReferencePool": []
+}

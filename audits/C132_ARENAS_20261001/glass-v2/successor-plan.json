@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c132-arena-successor/v1",
+  "id": "glass-v2",
+  "sourceId": "glass",
+  "sourceOriginalsRetained": true,
+  "roles": [
+    {
+      "role": "far",
+      "reason": "Remove the unbound planet and moon visible in the original FAR.",
+      "mode": "targeted-edit"
+    },
+    {
+      "role": "near",
+      "reason": "Original NEAR is native 1983×793 instead of 1672×941.",
+      "mode": "fresh-generation-from-locked-style"
+    }
+  ],
+  "qualityAccepted": false
+}

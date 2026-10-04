@@ -1,0 +1,49 @@
+{
+  "schema": "cf.c202-exact-audit-adapters/v1",
+  "receipts": [
+    {
+      "source": "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+      "sourceSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+      "output": "audits/C202_ARTHROPOD_REFERENCES_20261004/intake-observed-sockets.mjs",
+      "outputSha256": "c2687fcebe9c238066c5461a0fd26b8ca003e694b7e03068594a25ed1c0591cc",
+      "edits": [
+        {
+          "from": "geometry:{cutoutAssetHash:sha(bytes['master.png']),width:info.width,height:info.height,groundLineY:author.groundLineY,depthLayers:[{id:'far',order:0},{id:'near',order:1}]}",
+          "to": "geometry:{cutoutAssetHash:sha(bytes['master.png']),width:info.width,height:info.height,groundLineY:author.groundLineY,depthLayers:[{id:'far',order:0},{id:'near',order:1}],...(Object.hasOwn(author,'fixedAttachmentsPx')?{fixedAttachments:Object.fromEntries(Object.entries(author.fixedAttachmentsPx).map(([id,p])=>[id,normalized(p)]))}:{})}"
+        }
+      ]
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/verify-and-preview.mjs",
+      "sourceSha256": "8cbad08688ee7310457495a2fd8b995342c4b503fc0a65ece6343bca15201a29",
+      "output": "audits/C202_ARTHROPOD_REFERENCES_20261004/verify-and-preview.mjs",
+      "outputSha256": "650947c4a0ff684398d07482810f6d733ece7585881d4bb3b0dcffa377f8c33c",
+      "edits": [
+        {
+          "from": "const base='audits/C173_REFERENCE_CLASSES_20261002'",
+          "to": "const base='audits/C202_ARTHROPOD_REFERENCES_20261004'"
+        },
+        {
+          "from": "assert.equal(MAX_SHARE,.05)",
+          "to": "assert.equal(MAX_SHARE,.5)"
+        },
+        {
+          "from": "assert.throws(()=>placeRemainderIslands(control,10,1,1),/structural/);",
+          "to": "assert.throws(()=>placeRemainderIslands(control,10,1,1,.05),/structural/);assert.equal(placeRemainderIslands(control,10,1,1).islands[0].pixels,1);"
+        },
+        {
+          "from": "structural remainder control rejected at unchanged 5% cap",
+          "to": "structural remainder rejected at explicit5% control; admitted by currentD28default50%"
+        },
+        {
+          "from": "controls:7",
+          "to": "controls:8"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Source socket forwarding only; fixed-socket production validation remains owner.",
+    "D28 current0.5 is an existing authorized default; explicit0.05 negative retained. No automatic island movement applied."
+  ]
+}

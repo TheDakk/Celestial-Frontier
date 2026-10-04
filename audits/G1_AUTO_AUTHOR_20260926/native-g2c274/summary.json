@@ -1,0 +1,137 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C203_CREATURE_SUPPLY_20261004",
+ "tag": "g2c274",
+ "pilot": 23,
+ "patternSkipped": [],
+ "scored": 23,
+ "admitPassStatic": [
+  "07-wild-pig",
+  "10-cow",
+  "16-hyrax",
+  "17-cardinal",
+  "18-sparrow",
+  "19-pigeon",
+  "23-cardinalfish"
+ ],
+ "refused": [
+  {
+   "id": "01-water-buffalo",
+   "reason": "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.7%)"
+  },
+  {
+   "id": "02-mountain-tapir",
+   "reason": "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "04-elk",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+  },
+  {
+   "id": "05-moose",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+  },
+  {
+   "id": "06-hippopotamus",
+   "reason": "materials-unknown: no species-group material for profile hippo; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "08-water-vole",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 24%)"
+  },
+  {
+   "id": "09-marsh-rodent",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "11-pig",
+   "reason": "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 4.7%)"
+  },
+  {
+   "id": "12-alpaca",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  },
+  {
+   "id": "13-gerenuk",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "14-nilgai",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 35%)"
+  },
+  {
+   "id": "15-tahr",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  },
+  {
+   "id": "22-catfish",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 9% paint (reference 86%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "03-black-bear",
+   "static": "RED"
+  },
+  {
+   "id": "20-kookaburra",
+   "static": "RED"
+  },
+  {
+   "id": "24-wahoo",
+   "static": "INTAKE_REFUSED"
+  }
+ ],
+ "native": [
+  {
+   "id": "07-wild-pig",
+   "name": "Wild Pig",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-cow",
+   "name": "Cow",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "16-hyrax",
+   "name": "Hyrax",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "17-cardinal",
+   "name": "Cardinal",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "18-sparrow",
+   "name": "Sparrow",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "19-pigeon",
+   "name": "Pigeon",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "23-cardinalfish",
+   "name": "Cardinalfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Chameleon",
+  "masterSha256": "4b789e99a7d2276b236066e200990d1e7d1868664dcdb5f7a1be6fc75847359a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Tall casque, turret eye, compressed green/orange patterned body and coiled tail identify a veiled-type chameleon. Four feet are visible but their spread clawed digits do not clearly form the required opposed grasping groups; anatomical foot hold. Far limb roots partly behind body, uneven contacts and closely nested tail coils need authoring review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 174,
+      "y0": 353,
+      "x1": 1077,
+      "y1": 861
+    },
+    "margins": {
+      "left": 174,
+      "right": 176,
+      "top": 353,
+      "bottom": 392
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

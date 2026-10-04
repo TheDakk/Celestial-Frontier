@@ -1,0 +1,689 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.ability.stone.cast.1",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.777354
+        },
+        {
+          "path": "source-audio/kenney_impacts/059558ec751115ca-impactMining_002.ogg",
+          "sha256": "059558ec751115ca6b1441e00f0adc837c1a3eeb0a066b109e0fd879fc5d0b0c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.804671
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-stone/v2.ability.stone.cast.1.wav",
+      "masterSha256": "69f6cdc4b8813942a925d6592361f07f5e7f3572384d7de3a42cc09fffd2d41e",
+      "opus": "masters/coverage-stone/v2.ability.stone.cast.1.opus",
+      "opusSha256": "4438e3bc83404fcbb14f0046347356f1a7c6b1599b5a4ee615e39aa65eda6f78",
+      "previewSha256": "628e22a0691ce82ad997f32edfc27d33c010e20fc23bfe97da8822b1f782fa22",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.1,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v2.ability.stone.cast.2",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/66f1cef820f66d86-stones_04.ogg",
+          "sha256": "66f1cef820f66d86414d481b37a48a7b7ea11f4a5d7358372ebcfb506af0e652",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.383396
+        },
+        {
+          "path": "source-audio/kenney_impacts/36b4ea107222d073-impactMining_000.ogg",
+          "sha256": "36b4ea107222d073c67ca64dde26944975609202d5090b2f2021213c1a7e35cd",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.937438
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.65,
+      "master": "masters/coverage-stone/v2.ability.stone.cast.2.wav",
+      "masterSha256": "d7f057bc4eb1dc796bd55fd5e31600a06bbb66483692941a8af13fa1bc3bbeab",
+      "opus": "masters/coverage-stone/v2.ability.stone.cast.2.opus",
+      "opusSha256": "b898d6421781f0030365defbb3a337135a8c74a908dba77500d6f1d172689929",
+      "previewSha256": "6f38a9f7c6e50a366e7461916cd3cb5f25b572d6efcab69120a0dfe525fd1ded",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.3,
+      "opusDbTP": -11.4
+    },
+    {
+      "id": "v2.ability.stone.cast.3",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/b86d143d7ef4974c-stones_03.ogg",
+          "sha256": "b86d143d7ef4974c2b97fda9e5d1861482646eec754e15935eeb3680ea0d71da",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.199521
+        },
+        {
+          "path": "source-audio/kenney_impacts/4237fa2cd80364ad-impactMining_003.ogg",
+          "sha256": "4237fa2cd80364ad81cd0af44f67d7497f1c5edcc7bdb02cd22be2ba4580c83d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.991723
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 3.3,
+      "master": "masters/coverage-stone/v2.ability.stone.cast.3.wav",
+      "masterSha256": "c3de45ca9682998c2accdd67d24bc4b5d813c100c26c7d61a6557d13e2ac834e",
+      "opus": "masters/coverage-stone/v2.ability.stone.cast.3.opus",
+      "opusSha256": "74506a50937af4c7f86f05204cd3f82214ccda485c0f0ce66835676e7f9bc5a3",
+      "previewSha256": "3fa645d6cf6492108beb017708a8a4becfae38f3e83834b57ff1a6b7b2dbb8c1",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.3,
+      "opusDbTP": -11.3
+    },
+    {
+      "id": "v2.ability.stone.impact.1",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.777354
+        },
+        {
+          "path": "source-audio/kenney_impacts/36b4ea107222d073-impactMining_000.ogg",
+          "sha256": "36b4ea107222d073c67ca64dde26944975609202d5090b2f2021213c1a7e35cd",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.937438
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0,
+          "duration": 0.55,
+          "note": 41,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 4.949999999999999,
+      "master": "masters/coverage-stone/v2.ability.stone.impact.1.wav",
+      "masterSha256": "b2e2b8510656ef2900f2f65f14cb3864fd58a347588a9aa61a7c50a6dcacfc78",
+      "opus": "masters/coverage-stone/v2.ability.stone.impact.1.opus",
+      "opusSha256": "282ff27496b9d5167f860d7c606a1a19aada229d0256f2a4bf4c934c0a79e475",
+      "previewSha256": "0ae960fac55abc46e015d2a29de2d4ff641b9e9b5dfad51d7323da582f865b2c",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v2.ability.stone.impact.2",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/66f1cef820f66d86-stones_04.ogg",
+          "sha256": "66f1cef820f66d86414d481b37a48a7b7ea11f4a5d7358372ebcfb506af0e652",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.383396
+        },
+        {
+          "path": "source-audio/kenney_impacts/4237fa2cd80364ad-impactMining_003.ogg",
+          "sha256": "4237fa2cd80364ad81cd0af44f67d7497f1c5edcc7bdb02cd22be2ba4580c83d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.991723
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0,
+          "duration": 0.55,
+          "note": 41,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 7.1499999999999995,
+      "master": "masters/coverage-stone/v2.ability.stone.impact.2.wav",
+      "masterSha256": "c8ab08fe14fc0121fac493fd8947ca7a570b049df3a151a46c8dd7d3adc2e8e5",
+      "opus": "masters/coverage-stone/v2.ability.stone.impact.2.opus",
+      "opusSha256": "0dd25d9b92c25bdbffe43e9cc5680ea7881ab0df4da799faf8d279685caa4340",
+      "previewSha256": "a393785306c94f015cdb670f4a2c9be5c9405af2ab4297a1a8162527063e11ed",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.5,
+      "opusDbTP": -10.6
+    },
+    {
+      "id": "v2.ability.stone.impact.3",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/b86d143d7ef4974c-stones_03.ogg",
+          "sha256": "b86d143d7ef4974c2b97fda9e5d1861482646eec754e15935eeb3680ea0d71da",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.199521
+        },
+        {
+          "path": "source-audio/kenney_impacts/61235a18de3f3d92-impactMining_001.ogg",
+          "sha256": "61235a18de3f3d92118235398222dbf51d448f1be70b1c8bc962b10b86f2d9c6",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.86941
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0,
+          "duration": 0.55,
+          "note": 41,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 9.35,
+      "master": "masters/coverage-stone/v2.ability.stone.impact.3.wav",
+      "masterSha256": "ae8a59189d9c60eb7f58d2c938732f01a4048059419e8fed9c44a507ff3a1193",
+      "opus": "masters/coverage-stone/v2.ability.stone.impact.3.opus",
+      "opusSha256": "9c44c5c636a9bdfabd1f9837353ff9b3a555fc48afb5b5df8783d22a2798c00a",
+      "previewSha256": "f0627eeb7eb0c5a6fa11f66f052671d156861f268e050f495e7adf7e2c5c3336",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.4,
+      "opusDbTP": -11.5
+    },
+    {
+      "id": "v2.ability.stone.sustain.1",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.777354
+        },
+        {
+          "path": "source-audio/kenney_impacts/4237fa2cd80364ad-impactMining_003.ogg",
+          "sha256": "4237fa2cd80364ad81cd0af44f67d7497f1c5edcc7bdb02cd22be2ba4580c83d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.991723
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0.0,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-stone",
+          "start": 0.6,
+          "duration": 0.55,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-stone",
+          "start": 1.2,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-stone",
+          "start": 1.7999999999999998,
+          "duration": 0.55,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-stone",
+          "start": 2.4,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-stone",
+          "start": 3.0,
+          "duration": 0.55,
+          "note": 55,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.sustain"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 11.55,
+      "master": "masters/coverage-stone/v2.ability.stone.sustain.1.wav",
+      "masterSha256": "a11daba49efea513ade592c73d60c9b44e19ff833284a30dc1e5830c89f169c5",
+      "opus": "masters/coverage-stone/v2.ability.stone.sustain.1.opus",
+      "opusSha256": "427fd3456c69328c51b3809c5730cc8f28cfd45a69dd1357fb6680526a2f4059",
+      "previewSha256": "8b36c226a0a889969dbf88107b046a4f9c1ed3a4e7f1ad245189dfaea5d1b574",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v2.ability.stone.release.1",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 0.9,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.777354
+        },
+        {
+          "path": "source-audio/kenney_impacts/61235a18de3f3d92-impactMining_001.ogg",
+          "sha256": "61235a18de3f3d92118235398222dbf51d448f1be70b1c8bc962b10b86f2d9c6",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.86941
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0,
+          "duration": 0.55,
+          "note": 48,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.release"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 16.55,
+      "master": "masters/coverage-stone/v2.ability.stone.release.1.wav",
+      "masterSha256": "00ec8021131c6cbb674a3a594cf8c59ddec6318f6b7ebd3a5d90b2b9fa862e43",
+      "opus": "masters/coverage-stone/v2.ability.stone.release.1.opus",
+      "opusSha256": "371a137f280efe5c6d28ff6d5d5b1963214950d0a8d1076a1d33a31dced55f59",
+      "previewSha256": "bd5e74c45214470b1533f41dd88b31fbc41b747e9136f0b0a8eba071cde79504",
+      "previewBytes": 86514,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.1,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v2.ability.stone.shield.1",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 1.4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.777354
+        },
+        {
+          "path": "source-audio/kenney_impacts/8ca3a99d85d84575-impactMining_004.ogg",
+          "sha256": "8ca3a99d85d845751ad8ce7b40509da58263a62e48cde70e5a30b5ccef4c9a3b",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.830295
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-stone",
+          "start": 0.3,
+          "duration": 0.55,
+          "note": 60,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.shield"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.45,
+      "master": "masters/coverage-stone/v2.ability.stone.shield.1.wav",
+      "masterSha256": "540c75ab463fa04a9fb4524de8beb4f69308ee0ba93ff38ca5692c35ae841e4f",
+      "opus": "masters/coverage-stone/v2.ability.stone.shield.1.opus",
+      "opusSha256": "8d775c8bd84b77cda5c5e21efa4d5133a13014c140efec797c2401881f324d46",
+      "previewSha256": "a07b0a1a261486ce5f9bb1373c2310fbddd275e1666e26dbb6018e91984e9243",
+      "previewBytes": 134514,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.shield.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.2,
+      "opusDbTP": -11.3
+    },
+    {
+      "id": "v2.ability.stone.heal.1",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 1.8,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.777354
+        },
+        {
+          "path": "source-audio/kenney_impacts/059558ec751115ca-impactMining_002.ogg",
+          "sha256": "059558ec751115ca6b1441e00f0adc837c1a3eeb0a066b109e0fd879fc5d0b0c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.804671
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-stone",
+          "start": 0.35,
+          "duration": 0.55,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-stone",
+          "start": 0.7,
+          "duration": 0.55,
+          "note": 60,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.heal"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 20.849999999999998,
+      "master": "masters/coverage-stone/v2.ability.stone.heal.1.wav",
+      "masterSha256": "32664cf09f60e1ed3fb919b83ee417a208e5afa71d383961b360e161d911335c",
+      "opus": "masters/coverage-stone/v2.ability.stone.heal.1.opus",
+      "opusSha256": "b7a0d225a8f54351a067807f7218944c2882a3be8e18eccdfd189011922f0ab5",
+      "previewSha256": "18ec8a06028004732cb1f7d32f157ef4550cc3805964fabb5e81879e5a878694",
+      "previewBytes": 172914,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.heal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.1,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v2.ability.stone.tick.1",
+      "group": "coverage-stone",
+      "kind": "synthetic_fictional",
+      "duration": 0.45,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.777354
+        },
+        {
+          "path": "source-audio/kenney_impacts/36b4ea107222d073-impactMining_000.ogg",
+          "sha256": "36b4ea107222d073c67ca64dde26944975609202d5090b2f2021213c1a7e35cd",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.937438
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-stone",
+          "start": 0,
+          "duration": 0.45,
+          "note": 65,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.stone.tick"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "stone",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 23.65,
+      "master": "masters/coverage-stone/v2.ability.stone.tick.1.wav",
+      "masterSha256": "78a2fc5667bdf9e4f8f2b714c2e80d4e979bcabfc2f3c234aaa3a96b2fd6d3d7",
+      "opus": "masters/coverage-stone/v2.ability.stone.tick.1.opus",
+      "opusSha256": "7a07918caed95e78db8e50838bbae7b055046eb813e1f27ccee41286896716cd",
+      "previewSha256": "13daea2671a67de64d54a8c45654dab174184e253afd2006ac346f716e0f639d",
+      "previewBytes": 43314,
+      "previewUrl": "/__cf-audio-review/v2.ability.stone.tick.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.1
+    }
+  ],
+  "listeningAccepted": false
+}

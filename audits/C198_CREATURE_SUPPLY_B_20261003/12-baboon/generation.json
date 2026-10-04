@@ -1,0 +1,14 @@
+{
+  "id": "12-baboon",
+  "name": "Baboon",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-c1c72be8-edec-4bfc-bd88-d2832a27d878.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "51550b9472c88e69eb75f641b74302fbdb441d1ded007c97b6f12b75936f9aee",
+  "bytes": 1475177,
+  "promptSha256": "daa659ea979b6fe8f008f66e541f2920ba12729bfeab5c950248e41e414c2edd",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

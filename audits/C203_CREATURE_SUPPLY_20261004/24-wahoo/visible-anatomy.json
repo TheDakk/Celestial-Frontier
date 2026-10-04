@@ -1,0 +1,168 @@
+{
+  "id": "24-wahoo",
+  "name": "Wahoo",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "fb1450d0a3e07370ce2723ad20534a5f236d7a4116f8786fbbd3a809893121ca",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 15986,
+    "coreRadius": 20,
+    "bodyBox": {
+      "x0": 154,
+      "y0": 163,
+      "x1": 329,
+      "y1": 232
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2289,
+        "pixels": 3659,
+        "box": {
+          "x0": 34,
+          "y0": 156,
+          "x1": 153,
+          "y1": 252
+        },
+        "attach": {
+          "x": 153,
+          "y": 202.5,
+          "relX": -0.01,
+          "relY": 0.57
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.02
+        },
+        "class": "rear",
+        "length": 128.9
+      },
+      {
+        "k": 1,
+        "frac": 0.0121,
+        "pixels": 194,
+        "box": {
+          "x0": 169,
+          "y0": 161,
+          "x1": 192,
+          "y1": 176
+        },
+        "attach": {
+          "x": 180.5,
+          "y": 176,
+          "relX": 0.15,
+          "relY": 0.19
+        },
+        "dir": {
+          "x": -0.27,
+          "y": -0.96
+        },
+        "class": "top",
+        "length": 18.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0819,
+        "pixels": 1310,
+        "box": {
+          "x0": 330,
+          "y0": 187,
+          "x1": 386,
+          "y1": 226
+        },
+        "attach": {
+          "x": 330,
+          "y": 206.5,
+          "relX": 1.01,
+          "relY": 0.63
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.02
+        },
+        "class": "front",
+        "length": 59.3
+      },
+      {
+        "k": 3,
+        "frac": 0.013,
+        "pixels": 208,
+        "box": {
+          "x0": 156,
+          "y0": 227,
+          "x1": 179,
+          "y1": 243
+        },
+        "attach": {
+          "x": 167.5,
+          "y": 227,
+          "relX": 0.08,
+          "relY": 0.93
+        },
+        "dir": {
+          "x": -0.27,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 19.7
+      },
+      {
+        "k": 4,
+        "frac": 0.0154,
+        "pixels": 246,
+        "box": {
+          "x0": 269,
+          "y0": 233,
+          "x1": 287,
+          "y1": 257
+        },
+        "attach": {
+          "x": 282,
+          "y": 233,
+          "relX": 0.73,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.47,
+          "y": 0.88
+        },
+        "class": "limb-down",
+        "length": 27.3
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "top": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 34,
+        "x1": 39,
+        "cx": 36.3
+      },
+      {
+        "x0": 269,
+        "x1": 276,
+        "cx": 272
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

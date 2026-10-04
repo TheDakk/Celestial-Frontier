@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Shrimp",
+  "family": "crustacean-small",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "02e6b75a93ca17a9001d5c9f05e58c47e41faf991884aea5829f94ded8655cb8",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "f2e948709d21fc05c0b88ca79d2186a7cc2eac8ffc7f2d3ba6574126de82bffb",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 10,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "Real decapod shrimp with five genuine thoracic walking-leg pairs; retain short antennules and abdominal swimmerets distinct from walking limbs.",
+  "profileId": "small-crustacean",
+  "authoringCreated": false,
+  "sourceHead": "e10a4b750cec6ea9c3669eabe0339683ecdace55",
+  "basePromptSha256": "3f7cf67a087bc8925709d7ef7633b2b6c2666ccbde4fe7c2c906191104caaaa6",
+  "batchCompilerSha256": "d90d7117e3e43dc08d394a288b343aadbc001774c15d855df5e44fc9b5b5c715",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Prior reference source has ambiguous far thoracic chains. Paint directly DORSAL from above, body axis horizontal head right, with five real walking pairs visible on both sides from roots to tips, not a side view. Retain swimmerets, antennules, real rostrum, two eyes, six abdomen sections and tail fan; no lobster claws or invented anatomy. Keep every long antenna inside generous margins.",
+    "priorSources": [
+      {
+        "pilot": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pilot.json",
+        "id": "01-shrimp",
+        "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/master.png",
+        "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pilot.json"
+  ],
+  "auditCompilerExtension": true,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Prior reference source has ambiguous far thoracic chains. Paint directly DORSAL from above, body axis horizontal head right, with five real walking pairs visible on both sides from roots to tips, not a side view. Retain swimmerets, antennules, real rostrum, two eyes, six abdomen sections and tail fan; no lobster claws or invented anatomy. Keep every long antenna inside generous margins.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

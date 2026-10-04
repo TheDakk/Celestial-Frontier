@@ -1,0 +1,34 @@
+{
+  "sourceLabelsReused": false,
+  "parts": [
+    "body-and-unresolved",
+    "walk-L1",
+    "walk-L2",
+    "walk-L3",
+    "walk-R1",
+    "walk-R2",
+    "walk-R3",
+    "claw-left",
+    "claw-right",
+    "eye-left",
+    "eye-right"
+  ],
+  "pixelCounts": [
+    178886,
+    30240,
+    37872,
+    52819,
+    24329,
+    37464,
+    8377,
+    118109,
+    69164,
+    2633,
+    2783
+  ],
+  "sourceVisiblePixels": 562676,
+  "coveredVisiblePixels": 562676,
+  "visibleRgbaReassemblyDifferentChannels": 0,
+  "qualification": "DIAGNOSTIC ONLY; polygons not a complete admitted anatomical mask set",
+  "hiddenRgb": "Alpha-zero RGB is retained in master/intake; not counted as visible part paint."
+}

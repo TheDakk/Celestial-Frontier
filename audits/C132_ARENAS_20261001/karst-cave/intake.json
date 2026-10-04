@@ -1,0 +1,391 @@
+{
+  "schema": "cf.c132-arena-intake/v1",
+  "id": "karst-cave",
+  "qualityAccepted": false,
+  "status": "TECHNICAL_INTAKE_PASS_VISUAL_REVIEW_PENDING",
+  "requested": {
+    "width": 2560,
+    "height": 1440
+  },
+  "delivered": {
+    "width": 1672,
+    "height": 941
+  },
+  "resolutionDeviation": "Generator delivered its native size; no upscaling or false target-size claim",
+  "originalMastersModified": false,
+  "extractedMasks": false,
+  "despillPolicy": "existing keyer followed, where needed, by one simultaneous color-only nearest-opaque-neighbor pass radius32 on a copy; alpha unchanged by correction",
+  "layers": [
+    {
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": null,
+      "repairReceipt": null,
+      "transparentPixels": 0,
+      "visiblePixels": 1573352,
+      "firstPaintedY": 0,
+      "firstPaintedYNormalized": 0,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 6039,
+        "despilledPixels": 45,
+        "unresolvedEdgePixels": 47
+      },
+      "repairReceipt": {
+        "passes": 1,
+        "radius": 32,
+        "targets": 48,
+        "corrected": [
+          {
+            "index": 961215,
+            "sourceIndex": 961214
+          },
+          {
+            "index": 1024636,
+            "sourceIndex": 1024635
+          },
+          {
+            "index": 1024637,
+            "sourceIndex": 1024635
+          },
+          {
+            "index": 1024638,
+            "sourceIndex": 1024635
+          },
+          {
+            "index": 1026305,
+            "sourceIndex": 1024633
+          },
+          {
+            "index": 1026308,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1026309,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1026310,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1027976,
+            "sourceIndex": 1026304
+          },
+          {
+            "index": 1027977,
+            "sourceIndex": 1026304
+          },
+          {
+            "index": 1027978,
+            "sourceIndex": 1026306
+          },
+          {
+            "index": 1027979,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1027980,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1027981,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1027982,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1027983,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1029648,
+            "sourceIndex": 1026304
+          },
+          {
+            "index": 1029649,
+            "sourceIndex": 1026304
+          },
+          {
+            "index": 1029650,
+            "sourceIndex": 1026306
+          },
+          {
+            "index": 1029651,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1029652,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1029653,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1029654,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1029655,
+            "sourceIndex": 1036344
+          },
+          {
+            "index": 1031320,
+            "sourceIndex": 1026304
+          },
+          {
+            "index": 1031321,
+            "sourceIndex": 1026304
+          },
+          {
+            "index": 1031322,
+            "sourceIndex": 1026306
+          },
+          {
+            "index": 1031323,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1031324,
+            "sourceIndex": 1026307
+          },
+          {
+            "index": 1031325,
+            "sourceIndex": 1036341
+          },
+          {
+            "index": 1031326,
+            "sourceIndex": 1036341
+          },
+          {
+            "index": 1031327,
+            "sourceIndex": 1036344
+          },
+          {
+            "index": 1032997,
+            "sourceIndex": 1036341
+          },
+          {
+            "index": 1032998,
+            "sourceIndex": 1036341
+          },
+          {
+            "index": 1032999,
+            "sourceIndex": 1036344
+          },
+          {
+            "index": 1033000,
+            "sourceIndex": 1036344
+          },
+          {
+            "index": 1033001,
+            "sourceIndex": 1036344
+          },
+          {
+            "index": 1033002,
+            "sourceIndex": 1036344
+          },
+          {
+            "index": 1034669,
+            "sourceIndex": 1036341
+          },
+          {
+            "index": 1034670,
+            "sourceIndex": 1036341
+          },
+          {
+            "index": 1034671,
+            "sourceIndex": 1036344
+          },
+          {
+            "index": 1034672,
+            "sourceIndex": 1036344
+          },
+          {
+            "index": 1036342,
+            "sourceIndex": 1036341
+          },
+          {
+            "index": 1036343,
+            "sourceIndex": 1036344
+          },
+          {
+            "index": 1038012,
+            "sourceIndex": 1036341
+          },
+          {
+            "index": 1046373,
+            "sourceIndex": 1046374
+          },
+          {
+            "index": 1048039,
+            "sourceIndex": 1048040
+          },
+          {
+            "index": 1567009,
+            "sourceIndex": 1567008
+          }
+        ],
+        "unresolved": [],
+        "alphaUnchanged": true
+      },
+      "transparentPixels": 1031211,
+      "visiblePixels": 542141,
+      "firstPaintedY": 338,
+      "firstPaintedYNormalized": 0.359192348565356,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 4239,
+        "despilledPixels": 14,
+        "unresolvedEdgePixels": 0
+      },
+      "repairReceipt": null,
+      "transparentPixels": 1350321,
+      "visiblePixels": 223031,
+      "firstPaintedY": 739,
+      "firstPaintedYNormalized": 0.7853347502656748,
+      "standAlphas": [
+        0,
+        0
+      ],
+      "runwayMinimumAlpha": 0,
+      "runwayMaximumAlpha": 0
+    }
+  ],
+  "contract": {
+    "schema": "cf.arena-intake-report/v1",
+    "recipeSha256": "bb94c64c4217347e02e2afc75d7624453f6b0cc3e721218301835884c5fba958",
+    "seed": 3687414379,
+    "systemCardSourceSha256": "8e145352977018cfad2b59fc6b5cb7a53879eb6782da8229ccc37b49f2f7f9ab",
+    "groundLineNormalized": 0.78,
+    "layers": [
+      {
+        "role": "far",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "bf535a0cb58e4f7bf912735c5824cd36b890dee14dadbd0b000de3197e0b2ab7",
+          "bytes": 2754357,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "bf535a0cb58e4f7bf912735c5824cd36b890dee14dadbd0b000de3197e0b2ab7",
+          "bytes": 2754357,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 0,
+        "visiblePixels": 1573352,
+        "translucentPixels": 0
+      },
+      {
+        "role": "mid",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "41157f64847f3a465b52a88a14a711288e0f9a471fa0225f908ff70f204877cc",
+          "bytes": 1875184,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "fdb40ac68bd486ee74ad2402471a5f4a23969e8131888a8ac5e8b0aedd233ca4",
+          "bytes": 2391245,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1031211,
+        "visiblePixels": 542141,
+        "translucentPixels": 0
+      },
+      {
+        "role": "near",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "e53201657f217d38825695281ddcf1e7bff6f7e5c6c5125b646bb9b700b85ff3",
+          "bytes": 1308735,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "965fdd1a6a884a801464d788fc1580d9378d01c1d3501618f7a06b160400d373",
+          "bytes": 1532135,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1350321,
+        "visiblePixels": 223031,
+        "translucentPixels": 0
+      }
+    ],
+    "qualityAccepted": false,
+    "scope": "Hashes, compiler-card provenance, seeded context, registration and alpha only. Existing human acceptance is unchanged.",
+    "pending": [
+      "composition and style review",
+      "edge/despill review",
+      "runtime replay and choreography"
+    ]
+  },
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/karst-cave/arena-manifest.json",
+    "sha256": "041d9b78dc70b9cc0000a75d4e9ad2a83352483754e33050c9fd6b64549d1337"
+  },
+  "pending": [
+    "full-size composition and style review",
+    "final Dakk visual pass",
+    "Claude runtime wiring and native motion/medium proof"
+  ]
+}

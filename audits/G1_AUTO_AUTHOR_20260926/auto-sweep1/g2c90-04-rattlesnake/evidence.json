@@ -1,0 +1,22 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "tail not tapered: tip 56px vs median 89px (truncated tail?)"
+ ],
+ "author": "serpent-strips/v1",
+ "target": {
+  "snoutRatio": 0.547,
+  "mainShare": 1,
+  "dominantShare": 0.9999,
+  "gapFrac": 0,
+  "elongation": 12.37,
+  "headEnd": 56.9,
+  "tailEnd": 47.5,
+  "tailTip": 56,
+  "median": 89,
+  "xmin": 77,
+  "xmax": 1177,
+  "ext": 1101,
+  "paint": 99803
+ }
+}

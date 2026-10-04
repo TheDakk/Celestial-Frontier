@@ -1,0 +1,10 @@
+{
+ "id": "17-lungfish",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%",
+  "missing-anatomy: part jaw (jaw) covers 17% paint (reference 64%)"
+ ],
+ "semanticPresence": null
+}

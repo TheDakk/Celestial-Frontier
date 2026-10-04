@@ -1,0 +1,81 @@
+{
+  "startedAt": "2026-09-09T18:41:28.839121+00:00",
+  "sourceBefore": [
+    {
+      "path": "port/v2/apps/game/pwa-build.ts",
+      "sha256": "f44f82cb0b5f029217e8f6d2bc4fb8f1850fb56a1bb71be7b5fdbdcb6232177c"
+    },
+    {
+      "path": "tools/local-image-generation/mobile-pack.test.mjs",
+      "sha256": "29eb5a5aaafc6ddd9cbb8c9725c673322b99c299556cd1616ebeb70c385d9b4b"
+    },
+    {
+      "path": "tools/local-image-generation/run-offline-runtime.mjs",
+      "sha256": "88829e6b824d6184bf2647ea285276babfc769e12ba464aa9bd97a26124e9a1d"
+    },
+    {
+      "path": "tools/local-image-generation/run-offline-runtime.test.mjs",
+      "sha256": "57685c18148609883c222ff1fe5714d8c01ba309d1b2d73cbe092ed955972e44"
+    }
+  ],
+  "priorPureTestReceipt": {
+    "command": "node tools/with-toolchain-lock.mjs --label worker-import-controls -- node --test tools/local-image-generation/mobile-pack.test.mjs tools/local-image-generation/run-offline-runtime.test.mjs",
+    "exitCode": 0,
+    "tests": 12,
+    "passed": 12,
+    "failed": 0,
+    "capture": "Observed tool output; not rerun. Ten package/worker controls and two reply acceptor controls."
+  },
+  "checks": [
+    {
+      "name": "pwa",
+      "command": [
+        "port/v2/node_modules/.bin/vitest",
+        "run",
+        "--root",
+        "port/v2",
+        "tests/pwa-offline.test.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "validate",
+      "command": [
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "port/v2/apps/game/pwa-build.ts",
+      "sha256": "f44f82cb0b5f029217e8f6d2bc4fb8f1850fb56a1bb71be7b5fdbdcb6232177c"
+    },
+    {
+      "path": "tools/local-image-generation/mobile-pack.test.mjs",
+      "sha256": "29eb5a5aaafc6ddd9cbb8c9725c673322b99c299556cd1616ebeb70c385d9b4b"
+    },
+    {
+      "path": "tools/local-image-generation/run-offline-runtime.mjs",
+      "sha256": "88829e6b824d6184bf2647ea285276babfc769e12ba464aa9bd97a26124e9a1d"
+    },
+    {
+      "path": "tools/local-image-generation/run-offline-runtime.test.mjs",
+      "sha256": "57685c18148609883c222ff1fe5714d8c01ba309d1b2d73cbe092ed955972e44"
+    }
+  ],
+  "sourcesUnchanged": true,
+  "status": "PASS"
+}

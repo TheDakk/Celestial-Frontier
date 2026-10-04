@@ -1,0 +1,20 @@
+{
+  "schema": "cf.c202-source-ownership-visual-review/v1",
+  "masterSha256": "e1eca972d8481b7471239b47c54598657364c06334b21be37b60fe6ea8c5e275",
+  "ownershipPreviewSha256": "2cc0b32be94a36fb58daf975b8bf81a575b57e8cae798ec2a0faaf69d6318ae5",
+  "inspected": [
+    "master.png",
+    "ownership-preview-01.png"
+  ],
+  "fullSize": true,
+  "findings": [
+    "All six declared leg paths and both antennae remain visibly connected in source; observed socket attachment positions are on exact admitted painted alpha.",
+    "Distinct upper/lower leg owners meet near the manually observed knees; no source-pixel deletion or hidden limb synthesis.",
+    "Torso/elytral margins and fine limb spines retain body-owned fringe islands. D28default0.5 permits the numerical check but no automatic transfer was applied and moving fringe remains held.",
+    "Bent knees improve real geometric slack and12static rows; metallic highlights/style and solver hit remain held."
+  ],
+  "potentialRemainderMovement": 9381,
+  "automaticIslandTransferApplied": false,
+  "movingPaintReviewed": false,
+  "qualityAccepted": false
+}

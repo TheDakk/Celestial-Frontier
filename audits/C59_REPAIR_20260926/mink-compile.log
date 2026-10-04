@@ -1,0 +1,1 @@
+06-mink {"schema":"cf.upper-foreleg-partition/v1","method":"nearest observed upper-foreleg segment below both shoulders; only existing two upper owners","owners":[9,17],"joints":["foreNearRoot","foreFarRoot"],"changedPixels":2684,"nearToFar":2684,"farToNear":0,"otherOwnersChanged":0}

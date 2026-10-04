@@ -1,0 +1,12 @@
+{
+  "epochHead": "ca46f497b0e09b5f0ef56e6f3e3ab88c2ccb0a24",
+  "status": "instrument-fail",
+  "findings": [
+    "instrument: phone cap-fill-scroll-11-list: pending thumbnail settlement tail is invalid"
+  ],
+  "stage": "cap-fill-scroll-11-list",
+  "carrierBytes": 133249,
+  "carrierBound": 131072,
+  "originalEpochResumed": false,
+  "numericLimitsChanged": false
+}

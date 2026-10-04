@@ -1,0 +1,13 @@
+{
+  "scope": "One changed evidence-chain contract owner only",
+  "exitCode": 0,
+  "durationSeconds": 3.263,
+  "command": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/evidence-chain-tools.test.ts",
+    "-t",
+    "keeps immutable Slice evidence"
+  ]
+}

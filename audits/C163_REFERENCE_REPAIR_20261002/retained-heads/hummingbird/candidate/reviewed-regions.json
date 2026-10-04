@@ -1,0 +1,90 @@
+{
+  "schema": "cf.c163-reviewed-authoring-regions/v1",
+  "id": "hummingbird",
+  "sourceAuthoring": {
+    "path": "audits/C163_REFERENCE_REPAIR_20261002/retained-heads/hummingbird/original/authoring.json",
+    "sha256": "02ffb6b613b6c5de480859d0963c52fc22ea57c877fd38699fccd23b7801d72e"
+  },
+  "candidateAuthoringSha256": "353b56e749be8ad6653c5581a288e19f8f745f4f34e5bcba6b206f19d07edd44",
+  "sourceMasterSha256": "6753771f152fc12283425a4c350c5f2d3419da7f3266102d8e403cbffe4f8f3d",
+  "additions": [
+    {
+      "id": "reviewed-crown",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          660,
+          362
+        ],
+        [
+          777,
+          362
+        ],
+        [
+          777,
+          422
+        ],
+        [
+          660,
+          422
+        ]
+      ],
+      "reason": "Dorsal crown above the eye: original head polygon missed source plumage."
+    },
+    {
+      "id": "reviewed-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          660,
+          422
+        ],
+        [
+          777,
+          422
+        ],
+        [
+          777,
+          475
+        ],
+        [
+          660,
+          475
+        ]
+      ],
+      "reason": "Lower nape below reviewed crown, continuous with upper neck. Existing head/wing paint retains priority."
+    },
+    {
+      "id": "reviewed-bill",
+      "joint": "beak",
+      "layer": "near",
+      "polygonPx": [
+        [
+          986,
+          387
+        ],
+        [
+          1038,
+          387
+        ],
+        [
+          1038,
+          397
+        ],
+        [
+          986,
+          397
+        ]
+      ],
+      "reason": "Thin upper bill rim beyond old beak polygon."
+    }
+  ],
+  "landmarksChanged": false,
+  "existingPolygonsChanged": false,
+  "sourcePixelsChanged": false,
+  "repairCapUnchanged": 0.05,
+  "qualityAccepted": false,
+  "remaining": "Exact ownership conservation, deterministic replay, unchanged intake/static and actual moving-paint/native review still required."
+}

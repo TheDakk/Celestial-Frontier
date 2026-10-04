@@ -1,0 +1,208 @@
+[
+ {
+  "rules": "base",
+  "positivesKept": "18/34",
+  "erasedRefused": "23/34",
+  "duplicatedRefused": "23/27",
+  "positivesLostVsBase": []
+ },
+ {
+  "rules": "detached",
+  "positivesKept": "18/34",
+  "erasedRefused": "23/34",
+  "duplicatedRefused": "23/27",
+  "positivesLostVsBase": []
+ },
+ {
+  "rules": "detached+extra≥1.2%",
+  "positivesKept": "17/34",
+  "erasedRefused": "25/34",
+  "duplicatedRefused": "23/27",
+  "positivesLostVsBase": [
+   "reef-shark"
+  ]
+ },
+ {
+  "rules": "detached+extra≥3%",
+  "positivesKept": "17/34",
+  "erasedRefused": "24/34",
+  "duplicatedRefused": "23/27",
+  "positivesLostVsBase": [
+   "reef-shark"
+  ]
+ },
+ {
+  "rules": "detached+merged",
+  "positivesKept": "18/34",
+  "erasedRefused": "23/34",
+  "duplicatedRefused": "23/27",
+  "positivesLostVsBase": []
+ },
+ {
+  "rules": "detached+leg/tail<0.12",
+  "positivesKept": "16/34",
+  "erasedRefused": "24/34",
+  "duplicatedRefused": "25/27",
+  "positivesLostVsBase": [
+   "cattle",
+   "grouse"
+  ]
+ },
+ {
+  "rules": "detached+leg/tail/fin8%<0.15",
+  "positivesKept": "15/34",
+  "erasedRefused": "26/34",
+  "duplicatedRefused": "25/27",
+  "positivesLostVsBase": [
+   "eagle",
+   "cattle",
+   "grouse"
+  ]
+ },
+ {
+  "rules": "counted (all v3a rules)",
+  "positivesKept": "3/34",
+  "erasedRefused": "34/34",
+  "duplicatedRefused": "25/27",
+  "positivesLostVsBase": [
+   "salmon",
+   "eagle",
+   "sturgeon",
+   "impala",
+   "bass",
+   "cattle",
+   "tang",
+   "gull",
+   "brown-bear",
+   "sparrow",
+   "reef-shark",
+   "pike",
+   "grouse",
+   "sandpiper",
+   "salamander"
+  ]
+ },
+ {
+  "rules": "unassigned≥6%",
+  "positivesKept": "18/34",
+  "erasedRefused": "24/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": []
+ },
+ {
+  "rules": "unassigned≥5%",
+  "positivesKept": "18/34",
+  "erasedRefused": "25/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": []
+ },
+ {
+  "rules": "unassigned≥6% + biggest-rear<0.15",
+  "positivesKept": "15/34",
+  "erasedRefused": "27/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": [
+   "eagle",
+   "sparrow",
+   "salamander"
+  ]
+ },
+ {
+  "rules": "unassigned≥6% + biggest-rear<0.2",
+  "positivesKept": "14/34",
+  "erasedRefused": "28/34",
+  "duplicatedRefused": "27/27",
+  "positivesLostVsBase": [
+   "eagle",
+   "brown-bear",
+   "sparrow",
+   "salamander"
+  ]
+ },
+ {
+  "rules": "unassigned≥6% + leg/tail<0.12",
+  "positivesKept": "16/34",
+  "erasedRefused": "25/34",
+  "duplicatedRefused": "27/27",
+  "positivesLostVsBase": [
+   "cattle",
+   "grouse"
+  ]
+ },
+ {
+  "rules": "unassigned≥6% + floor(rear)×0.8",
+  "positivesKept": "16/34",
+  "erasedRefused": "28/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": [
+   "tang",
+   "grouse"
+  ]
+ },
+ {
+  "rules": "unassigned≥6% + floor(rear)×0.9",
+  "positivesKept": "16/34",
+  "erasedRefused": "28/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": [
+   "tang",
+   "grouse"
+  ]
+ },
+ {
+  "rules": "unassigned≥6% + floor(rear,limb-down)×0.8",
+  "positivesKept": "15/34",
+  "erasedRefused": "28/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": [
+   "tang",
+   "sparrow",
+   "grouse"
+  ]
+ },
+ {
+  "rules": "unassigned≥6% + floor(all)×0.7",
+  "positivesKept": "15/34",
+  "erasedRefused": "29/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": [
+   "tang",
+   "sparrow",
+   "grouse"
+  ]
+ },
+ {
+  "rules": "unassigned≥6% + floor(rear, present)×0.7",
+  "positivesKept": "18/34",
+  "erasedRefused": "27/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": []
+ },
+ {
+  "rules": "unassigned≥6% + floor(rear, present)×0.6",
+  "positivesKept": "18/34",
+  "erasedRefused": "26/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": []
+ },
+ {
+  "rules": "unassigned≥6% + floor(all, present)×0.6",
+  "positivesKept": "16/34",
+  "erasedRefused": "26/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": [
+   "tang",
+   "sparrow"
+  ]
+ },
+ {
+  "rules": "unassigned≥5% + floor(all, present)×0.6",
+  "positivesKept": "16/34",
+  "erasedRefused": "27/34",
+  "duplicatedRefused": "26/27",
+  "positivesLostVsBase": [
+   "tang",
+   "sparrow"
+  ]
+ }
+]

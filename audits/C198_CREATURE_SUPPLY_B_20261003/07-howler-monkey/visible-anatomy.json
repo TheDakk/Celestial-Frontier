@@ -1,0 +1,176 @@
+{
+  "id": "07-howler-monkey",
+  "name": "Howler Monkey",
+  "family": "primate",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "8c8d46f3e0e6884fd5874bd68b93cafd2fe72801624bd14bf86996aa0efe8e05",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 29204,
+    "coreRadius": 25,
+    "bodyBox": {
+      "x0": 162,
+      "y0": 126,
+      "x1": 336,
+      "y1": 224
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1537,
+        "pixels": 4488,
+        "box": {
+          "x0": 61,
+          "y0": 105,
+          "x1": 161,
+          "y1": 217
+        },
+        "attach": {
+          "x": 161,
+          "y": 189,
+          "relX": -0.01,
+          "relY": 0.64
+        },
+        "dir": {
+          "x": -0.94,
+          "y": -0.33
+        },
+        "class": "rear",
+        "length": 130.6
+      },
+      {
+        "k": 1,
+        "frac": 0.0051,
+        "pixels": 148,
+        "box": {
+          "x0": 337,
+          "y0": 164,
+          "x1": 341,
+          "y1": 212
+        },
+        "attach": {
+          "x": 337,
+          "y": 188,
+          "relX": 1.01,
+          "relY": 0.63
+        },
+        "dir": {
+          "x": 0.48,
+          "y": 0.88
+        },
+        "class": "limb-down",
+        "length": 24.3
+      },
+      {
+        "k": 2,
+        "frac": 0.1544,
+        "pixels": 4510,
+        "box": {
+          "x0": 187,
+          "y0": 216,
+          "x1": 286,
+          "y1": 312
+        },
+        "attach": {
+          "x": 231.6,
+          "y": 220.3,
+          "relX": 0.4,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": 0.08,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 106.6
+      },
+      {
+        "k": 3,
+        "frac": 0.0798,
+        "pixels": 2331,
+        "box": {
+          "x0": 277,
+          "y0": 221,
+          "x1": 353,
+          "y1": 306
+        },
+        "attach": {
+          "x": 303.5,
+          "y": 221,
+          "relX": 0.81,
+          "relY": 0.97
+        },
+        "dir": {
+          "x": 0.19,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 98.4
+      },
+      {
+        "k": 4,
+        "frac": 0.0845,
+        "pixels": 2469,
+        "box": {
+          "x0": 123,
+          "y0": 222,
+          "x1": 195,
+          "y1": 301
+        },
+        "attach": {
+          "x": 178.1,
+          "y": 224.8,
+          "relX": 0.09,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.59,
+          "y": 0.81
+        },
+        "class": "limb-down",
+        "length": 94
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 131,
+        "x1": 137,
+        "cx": 133.7
+      },
+      {
+        "x0": 141,
+        "x1": 158,
+        "cx": 149.7
+      },
+      {
+        "x0": 253,
+        "x1": 286,
+        "cx": 268.4
+      },
+      {
+        "x0": 337,
+        "x1": 353,
+        "cx": 345.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

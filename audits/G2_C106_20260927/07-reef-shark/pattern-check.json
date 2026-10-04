@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Reef Shark",
+  "masterSha256": "badb70cfb18a3b14197d905d3259febcfb835d2c5adc20a6ab146490a2fc5e97",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

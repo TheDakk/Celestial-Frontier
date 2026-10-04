@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mandrill",
+  "masterSha256": "be36b1f317c7c4eb0fd0480d1d5fea6b54d54548ba8a15e31a56bd0bc8f9616a",
+  "required": [
+    "scarlet nose stripe flanked by ridged blue cheeks"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "scarlet nose stripe flanked by ridged blue cheeks",
+      "status": "PRESENT",
+      "observed": "Full-size: olive-brown heavy primate with blue ridged cheek patches, red nose/muzzle, yellow beard, colored rump and true short tail. Four visible hands/feet are distinct; far roots/ear partly hidden, projected contacts unequal. Scarlet central nose stripe and ridged blue cheeks independently confirmed by parent full-size inspection. Short tail remains short; no complete-root/native admission."
+    }
+  ]
+}

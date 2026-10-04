@@ -1,0 +1,46 @@
+{
+  "schema": "cf.c203-source-observed-authoring/v1",
+  "masterSha256": "fb72c3a69e626fd80c47ef77256c5d95fb7c49a704a245a06ebc319a48dd937e",
+  "fullSizeInspected": true,
+  "observedWalkingChains": 6,
+  "observedAntennae": 2,
+  "sourcePixelsChanged": 0,
+  "method": "Manual source-contour successor on exact focused edit: all eight front/middle leg owners and actual knees/feet reobserved; source-visible sockets, bent hind-leg owners and body contours retained only after full-size review against the new painting.",
+  "sameSpeciesPredecessor": "audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal",
+  "retainedReviewedPartIds": [
+    "hind-far-lower",
+    "hind-near-lower",
+    "hind-far-upper",
+    "hind-near-upper",
+    "antenna-far",
+    "antenna-near",
+    "mouth",
+    "head",
+    "abdomen-rim",
+    "abdomen-dorsal-rim",
+    "abdomen-ventral-rim",
+    "far-tegmen",
+    "near-tegmen",
+    "thorax",
+    "body"
+  ],
+  "modifiedPartIds": [
+    "front-far-lower",
+    "middle-far-lower",
+    "front-near-lower",
+    "middle-near-lower",
+    "front-far-upper",
+    "middle-far-upper",
+    "front-near-upper",
+    "middle-near-upper"
+  ],
+  "oldAuthoringSha256": "ee279c66d174203fb7c668f985a876d0dc808bc9ce109afd34ce482946e81c9d",
+  "positiveChange": "All six actual leg chains now have visibly angled knees, with all six distinct feet, both antennae and complete source contacts retained.",
+  "holds": [
+    "Dorsal stage projection and true ground contact require full moving-paint/native review.",
+    "Glossy gold-green highlights require ART_KIT style review.",
+    "Small mouth edge is limited; no unseen hindwing declaration made.",
+    "Remainder/fringe ownership is not automatically relocated."
+  ],
+  "qualityAccepted": false
+}

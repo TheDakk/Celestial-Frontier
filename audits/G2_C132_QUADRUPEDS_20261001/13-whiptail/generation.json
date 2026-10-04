@@ -1,0 +1,14 @@
+{
+  "id": "13-whiptail",
+  "name": "Whiptail",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-0907e805-eae6-43ff-9bac-2fc894d48857.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3a4fe01bce3688e8c71e412adad6f38e85fc5da126c079e519b04b0143a1c383",
+  "bytes": 945452,
+  "promptSha256": "d5de9bbb21c53519be990105cbc672ac88e6d800b0347f524103aee9b5c30b49",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

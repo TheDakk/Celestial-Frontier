@@ -1,0 +1,15 @@
+{
+  "id": "19-racer",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-49b18157-3f06-4429-86c1-1b0862085288.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "a932fea97b7c736d80fbb920cd2b52addbb577706ebb8f3f5fe4fa7fcd6087e9",
+  "bytes": 226875,
+  "promptSha256": "b039ff85267516e93e3c3d62c6fe4697a116cd7b4f6237ff5f9ba43d141822c4",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

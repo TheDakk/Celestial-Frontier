@@ -1,0 +1,9 @@
+{
+ "id": "g2c92-20-aphid",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mandible (mandible) covers 15% paint (reference 60%)"
+ ],
+ "semanticPresence": null
+}

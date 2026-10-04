@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Jay",
+  "masterSha256": "05f71e270d668f422ad370510de16d43965f3ca23be7f2cacaa2fa6274789bd5",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

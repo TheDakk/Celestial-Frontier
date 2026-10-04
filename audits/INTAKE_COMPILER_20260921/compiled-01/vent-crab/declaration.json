@@ -1,0 +1,130 @@
+{
+ "schema": "cf.painter-part-intake/v1",
+ "source": "intake-compiler (anatomy-verify emit.mjs)",
+ "recordRecipeHash": null,
+ "cutoutSha256": "fec1a86715ddf9f79781452a050e17f5522a476184251d53e2b4e99c765ec810",
+ "labelsFile": "labels.png",
+ "labelsSha256": "62a33289658971c7f08129e63ad02890f266f235b1f026078e4088d6a6820e54",
+ "parts": [
+  {
+   "id": "body",
+   "joint": "root",
+   "layer": "near"
+  },
+  {
+   "id": "leg0far-upper",
+   "joint": "leg0FarKnee",
+   "layer": "far"
+  },
+  {
+   "id": "leg0far-lower",
+   "joint": "leg0FarFoot",
+   "layer": "far"
+  },
+  {
+   "id": "leg1far-upper",
+   "joint": "leg1FarKnee",
+   "layer": "far"
+  },
+  {
+   "id": "leg1far-lower",
+   "joint": "leg1FarFoot",
+   "layer": "far"
+  },
+  {
+   "id": "leg2far-upper",
+   "joint": "leg2FarKnee",
+   "layer": "far"
+  },
+  {
+   "id": "leg2far-lower",
+   "joint": "leg2FarFoot",
+   "layer": "far"
+  },
+  {
+   "id": "leg3far-upper",
+   "joint": "leg3FarKnee",
+   "layer": "far"
+  },
+  {
+   "id": "leg3far-lower",
+   "joint": "leg3FarFoot",
+   "layer": "far"
+  },
+  {
+   "id": "leg0near-upper",
+   "joint": "leg0NearKnee",
+   "layer": "near"
+  },
+  {
+   "id": "leg0near-lower",
+   "joint": "leg0NearFoot",
+   "layer": "near"
+  },
+  {
+   "id": "leg1near-upper",
+   "joint": "leg1NearKnee",
+   "layer": "near"
+  },
+  {
+   "id": "leg1near-lower",
+   "joint": "leg1NearFoot",
+   "layer": "near"
+  },
+  {
+   "id": "leg2near-upper",
+   "joint": "leg2NearKnee",
+   "layer": "near"
+  },
+  {
+   "id": "leg2near-lower",
+   "joint": "leg2NearFoot",
+   "layer": "near"
+  },
+  {
+   "id": "leg3near-upper",
+   "joint": "leg3NearKnee",
+   "layer": "near"
+  },
+  {
+   "id": "leg3near-lower",
+   "joint": "leg3NearFoot",
+   "layer": "near"
+  },
+  {
+   "id": "claw-far-arm",
+   "joint": "clawFarElbow",
+   "layer": "near"
+  },
+  {
+   "id": "claw-far-palm",
+   "joint": "clawFarPalm",
+   "layer": "near"
+  },
+  {
+   "id": "claw-far-finger",
+   "joint": "clawFarDactylRoot",
+   "layer": "near"
+  },
+  {
+   "id": "claw-near-arm",
+   "joint": "clawNearElbow",
+   "layer": "near"
+  },
+  {
+   "id": "claw-near-palm",
+   "joint": "clawNearPalm",
+   "layer": "near"
+  },
+  {
+   "id": "claw-near-finger",
+   "joint": "clawNearDactylRoot",
+   "layer": "near"
+  }
+ ],
+ "gaps": [
+  "eyes not named by the compiler (eye-far/eye-near absent)",
+  "folded: leg0Near"
+ ],
+ "declarationHash": "2ea8d3926684705e737b216a4d5d43ce733caa6a6509d84c14c0d11fa0f403cb"
+}

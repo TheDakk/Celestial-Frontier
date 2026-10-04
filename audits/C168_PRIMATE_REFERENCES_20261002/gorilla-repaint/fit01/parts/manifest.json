@@ -1,0 +1,75 @@
+{
+  "creatureId": "c168-reference-gorilla-repaint",
+  "parts": [
+    {
+      "name": "arm-near-hand.png",
+      "path": "parts/arm-near-hand.png",
+      "sha256": "c4edac0b464a70ea0d8ea75508d0ba3e2ee9b753ecea2f8f2223f8aa1c8b8489"
+    },
+    {
+      "name": "arm-far-hand.png",
+      "path": "parts/arm-far-hand.png",
+      "sha256": "6be6e58757d1d9ea75037a4dbfa14e5eabd654e1e559d83dbfe41c284908005c"
+    },
+    {
+      "name": "leg-near-foot.png",
+      "path": "parts/leg-near-foot.png",
+      "sha256": "22f137580ebba8cbd4c16fd18ef8bdda6c9c9dbfff198e596f5ed72b2834f201"
+    },
+    {
+      "name": "leg-far-foot.png",
+      "path": "parts/leg-far-foot.png",
+      "sha256": "b3911da3964aaa6727f900c7719900aefd90ac9994b39d2c69d31eaeb42dd16d"
+    },
+    {
+      "name": "arm-near-elbow.png",
+      "path": "parts/arm-near-elbow.png",
+      "sha256": "b45d1e927919e3550b942087a3b1c56f1378495f27b65118b6a1e1c3cd5c8496"
+    },
+    {
+      "name": "arm-far-elbow.png",
+      "path": "parts/arm-far-elbow.png",
+      "sha256": "9d4b020d34d98f5413ae2d9f664ce5d50f43a1319dcd91cfec44fb43e9025a55"
+    },
+    {
+      "name": "leg-near-knee.png",
+      "path": "parts/leg-near-knee.png",
+      "sha256": "2cba0cd319e06727242fefaf6cb5a646626e4bd24ff89d549e0c59a53c9567c8"
+    },
+    {
+      "name": "leg-far-knee.png",
+      "path": "parts/leg-far-knee.png",
+      "sha256": "f910bee5026e8de008ffe78a195c51c0cb1fb676c7d15b45b3655be641c619c9"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "5e0358453727664e9a2c78cfc3cbb0b1e25f48f2f34b2fcc3321cf74390923b5"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "4d96469c57a6d414fea02c56bc91b67745b7eec5ca7ec6bb556e14148d395a98"
+    },
+    {
+      "name": "neck.png",
+      "path": "parts/neck.png",
+      "sha256": "303e981e80be1db9df48c10edb43a18f2d3ac0fc4cc678f339a839786f8a9782"
+    },
+    {
+      "name": "chest.png",
+      "path": "parts/chest.png",
+      "sha256": "14118b34b7eb792adce09a3fd3ed81c4f229f0ce3fa36b64bdb610b44c59124b"
+    },
+    {
+      "name": "pelvis.png",
+      "path": "parts/pelvis.png",
+      "sha256": "06a7a1848e51925ae68f8d6caeee2fac44d610acfaf831b93db5c1437064f376"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "9fe156ffca7a74253e4c9dfb0fdf40883e6d9463d1ec6407f37637d7b5b5d5db"
+    }
+  ]
+}

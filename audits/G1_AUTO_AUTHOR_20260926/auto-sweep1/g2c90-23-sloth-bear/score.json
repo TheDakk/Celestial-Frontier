@@ -1,0 +1,10 @@
+{
+ "id": "g2c90-23-sloth-bear",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)",
+  "missing-anatomy: part tail2 (tail2) covers 20% paint (reference 63%)"
+ ],
+ "semanticPresence": null
+}

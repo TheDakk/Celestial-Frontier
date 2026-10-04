@@ -1,0 +1,409 @@
+{
+  "genome": {
+    "seed": 1356465185,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 1,
+    "body": 3,
+    "loco": 8,
+    "trait": 15,
+    "size": 3,
+    "diet": 0,
+    "head": 1,
+    "limbs": 0,
+    "skin": 0,
+    "tail": 4,
+    "pattern": 0,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 3,
+    "detail": 1,
+    "accent": 15,
+    "temper": 5,
+    "sense": 9,
+    "repro": 0,
+    "life": 1,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Freshwater Crab"
+  },
+  "observation": {
+    "schema": "cf.painter-topology/v1",
+    "ownerId": "resetCrabII:freshwaterCrab",
+    "family": "brachyuran",
+    "coordinateSize": 440,
+    "materials": {
+      "surface": "chitinous",
+      "paletteSource": "named"
+    },
+    "features": [
+      {
+        "id": "carapace",
+        "kind": "body",
+        "points": [
+          [
+            220,
+            275.65999999999997
+          ],
+          [
+            220,
+            222.2
+          ]
+        ],
+        "widths": [
+          154,
+          118.80000000000001
+        ],
+        "layer": "near"
+      },
+      {
+        "id": "leg0Far",
+        "kind": "leg",
+        "points": [
+          [
+            166.1,
+            198.44
+          ],
+          [
+            121,
+            179.432
+          ],
+          [
+            74.80000000000001,
+            198.44
+          ]
+        ],
+        "curve": "polyline",
+        "widths": [
+          8.6
+        ],
+        "layer": "far"
+      },
+      {
+        "id": "leg1Far",
+        "kind": "leg",
+        "points": [
+          [
+            168.025,
+            215.666
+          ],
+          [
+            112.64,
+            202.31199999999998
+          ],
+          [
+            67.75999999999999,
+            238.92
+          ]
+        ],
+        "curve": "polyline",
+        "widths": [
+          8.049999999999999
+        ],
+        "layer": "far"
+      },
+      {
+        "id": "leg2Far",
+        "kind": "leg",
+        "points": [
+          [
+            169.95000000000002,
+            232.892
+          ],
+          [
+            104.28,
+            225.19199999999998
+          ],
+          [
+            60.72,
+            279.4
+          ]
+        ],
+        "curve": "polyline",
+        "widths": [
+          7.5
+        ],
+        "layer": "far"
+      },
+      {
+        "id": "leg3Far",
+        "kind": "leg",
+        "points": [
+          [
+            171.875,
+            250.118
+          ],
+          [
+            95.92,
+            248.072
+          ],
+          [
+            53.68000000000001,
+            319.88
+          ]
+        ],
+        "curve": "polyline",
+        "widths": [
+          6.949999999999999
+        ],
+        "layer": "far"
+      },
+      {
+        "id": "leg0Near",
+        "kind": "leg",
+        "points": [
+          [
+            273.9,
+            198.44
+          ],
+          [
+            319,
+            179.432
+          ],
+          [
+            365.2,
+            198.44
+          ]
+        ],
+        "curve": "polyline",
+        "widths": [
+          8.6
+        ],
+        "layer": "far"
+      },
+      {
+        "id": "leg1Near",
+        "kind": "leg",
+        "points": [
+          [
+            271.975,
+            215.666
+          ],
+          [
+            327.36,
+            202.31199999999998
+          ],
+          [
+            372.24,
+            238.92
+          ]
+        ],
+        "curve": "polyline",
+        "widths": [
+          8.049999999999999
+        ],
+        "layer": "far"
+      },
+      {
+        "id": "leg2Near",
+        "kind": "leg",
+        "points": [
+          [
+            270.05,
+            232.892
+          ],
+          [
+            335.72,
+            225.19199999999998
+          ],
+          [
+            379.28,
+            279.4
+          ]
+        ],
+        "curve": "polyline",
+        "widths": [
+          7.5
+        ],
+        "layer": "far"
+      },
+      {
+        "id": "leg3Near",
+        "kind": "leg",
+        "points": [
+          [
+            268.125,
+            250.118
+          ],
+          [
+            344.08,
+            248.072
+          ],
+          [
+            386.32,
+            319.88
+          ]
+        ],
+        "curve": "polyline",
+        "widths": [
+          6.949999999999999
+        ],
+        "layer": "far"
+      },
+      {
+        "id": "chelaFar",
+        "kind": "arm",
+        "points": [
+          [
+            179.96,
+            200.81599999999997
+          ],
+          [
+            149.16,
+            166.95799999999997
+          ],
+          [
+            127.60000000000001,
+            156.85999999999996
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "near"
+      },
+      {
+        "id": "fixedFingerFar",
+        "kind": "arm",
+        "points": [
+          [
+            120.79992704304355,
+            168.3235386273205
+          ],
+          [
+            100.96499322604001,
+            181.39885985760347
+          ],
+          [
+            89.49571561199629,
+            173.4558764299489
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "dactylFar",
+        "kind": "arm",
+        "points": [
+          [
+            116.34220250519556,
+            150.86567461293808
+          ],
+          [
+            93.82115599203678,
+            151.18045649319538
+          ],
+          [
+            88.70689753909804,
+            163.6440058494801
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "chelaNear",
+        "kind": "arm",
+        "points": [
+          [
+            260.04,
+            200.81599999999997
+          ],
+          [
+            290.84000000000003,
+            166.95799999999997
+          ],
+          [
+            312.4,
+            156.85999999999996
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "near"
+      },
+      {
+        "id": "fixedFingerNear",
+        "kind": "arm",
+        "points": [
+          [
+            323.8635386273205,
+            150.0599270430435
+          ],
+          [
+            347.5389735846239,
+            148.0946269686278
+          ],
+          [
+            353.7961425082607,
+            160.56391531163575
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "dactylNear",
+        "kind": "arm",
+        "points": [
+          [
+            319.4058140894725,
+            167.5177910574259
+          ],
+          [
+            339.3208062574279,
+            178.03870882301447
+          ],
+          [
+            349.78433415578417,
+            169.55282136204028
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "eyeFar",
+        "kind": "head",
+        "points": [
+          [
+            196.9,
+            176.462
+          ],
+          [
+            194.205,
+            153.89
+          ]
+        ],
+        "layer": "near"
+      },
+      {
+        "id": "eyeNear",
+        "kind": "head",
+        "points": [
+          [
+            243.1,
+            176.462
+          ],
+          [
+            245.795,
+            153.89
+          ]
+        ],
+        "layer": "near"
+      }
+    ],
+    "unresolved": [
+      "Hidden joints, complete source-bound motion and visual qualification remain open"
+    ],
+    "rasterFrame": {
+      "width": 880,
+      "height": 880,
+      "origin": [
+        220,
+        220
+      ],
+      "scale": 1
+    }
+  }
+}

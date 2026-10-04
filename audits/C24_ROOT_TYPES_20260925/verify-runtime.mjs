@@ -1,0 +1,5 @@
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';import {rolldown} from '../../port/v2/node_modules/rolldown/dist/index.mjs';
+const files=execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim().split('\n').filter(x=>x.endsWith('.ts')),tmp=fs.mkdtempSync(path.join(os.tmpdir(),'cf-c24-runtime-'));
+const transpile=async(text)=>{const entry=tmp+'/entry.ts';fs.writeFileSync(entry,text);const b=await rolldown({input:entry,external:id=>id!==entry,treeshake:false});const r=await b.generate({format:'es',minify:true});await b.close();return r.output.find(x=>x.type==='chunk').code;};
+const hash=s=>createHash('sha256').update(s).digest('hex');const rows=[];for(const file of files){const before=await transpile(execFileSync('git',['show','HEAD:'+file],{encoding:'utf8'})),after=await transpile(fs.readFileSync(file,'utf8'));rows.push({file,before:hash(before),after:hash(after),identical:before===after});}
+fs.writeFileSync(import.meta.dirname+'/runtime-parity.json',JSON.stringify(rows,null,2)+'\n');if(rows.some(x=>!x.identical))process.exitCode=1;

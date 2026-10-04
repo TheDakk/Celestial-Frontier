@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Deer",
+  "masterSha256": "ce663727817bb0c7c5f3820688ef3759b0b074d3436ac3b2cf005646177634df",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

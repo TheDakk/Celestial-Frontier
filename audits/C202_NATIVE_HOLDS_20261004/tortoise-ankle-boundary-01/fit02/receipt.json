@@ -1,0 +1,97 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "c202-tortoise-observed-ankle-boundary",
+    "parts": 24,
+    "atlasSize": {
+      "width": 2027,
+      "height": 553
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "76cd7b730733f3b3be5ceee373208c7a8e5979f12fa0e01febdca9d9da8162e9",
+    "recordRecipeHash": "8a035f7105a03cce22e46a2a4d0b4e0aee1fdd2095abe91db6f23738b2f28c5e",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "76cd7b730733f3b3be5ceee373208c7a8e5979f12fa0e01febdca9d9da8162e9",
+      "atlasSha256": "9e657dc0dc0a1a6eb50a18745c8f4de87ffd7690c5619efd87812a4d55144bd6",
+      "parts": 24,
+      "comparedChannels": 2725120,
+      "changedChannels": 0
+    },
+    "vertices": 1363,
+    "partVertices": 2393,
+    "parts": 24,
+    "leaves": 601,
+    "triangles": 2494,
+    "ownershipEdges": 3883,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "far-hind-ankle",
+        "vertex": 17,
+        "distancePx": 5.830951894845431,
+        "supports": [
+          479,
+          525
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "far-front-ankle",
+        "vertex": 32,
+        "distancePx": 5.875202595669839,
+        "supports": [
+          596,
+          598
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "near-hind-ankle",
+        "vertex": 16,
+        "distancePx": 5.385164807134475,
+        "supports": [
+          6
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "near-front-ankle",
+        "vertex": 37,
+        "distancePx": 6.324555320336806,
+        "supports": [
+          239
+        ]
+      }
+    ],
+    "sourceBindingHash": "4d5ee25b5d235b84d0338c808b4dcbe9c5ac8b9a96f0816b51574f004717ca34",
+    "sourceVertices": 1363,
+    "vertices": 1502,
+    "sharedSupports": 452,
+    "pins": 785,
+    "independentSurfaceParts": 24,
+    "sourceJoins": 28,
+    "excludedOverlaps": 14,
+    "observedExcludedBoundaries": 14,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 14,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "8a035f7105a03cce22e46a2a4d0b4e0aee1fdd2095abe91db6f23738b2f28c5e",
+  "bindingHash": "4efb1786f147a08ae60f48c812ac05789b08242810c99d837203e09f02047936",
+  "masterSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-generation-original/v1",
+  "generator": "built-in image_gen",
+  "inputReference": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-b5eedd28-bfab-4d2e-bdd8-4f130a26a99c.png",
+  "sourceSha256": "dde4375d68a275f53e57e301f577535e1d82a783435583a7b90856c0cc5e16d3",
+  "retainedMaster": "audits/C132_ARENAS_20261001/opensea/arena-far-attempt-1.png",
+  "retainedSha256": "dde4375d68a275f53e57e301f577535e1d82a783435583a7b90856c0cc5e16d3",
+  "bytes": 2461791,
+  "prompt": {
+    "path": "audits/C132_ARENAS_20261001/opensea/arena-far.prompt.txt",
+    "sha256": "5d098d53fff3d9ec84016c9f769f71e2772281c3f181ec0ece992add120f543d"
+  },
+  "status": "REJECTED_BAKED_FAUNA",
+  "qualityAccepted": false,
+  "originalPixelsModified": false
+}

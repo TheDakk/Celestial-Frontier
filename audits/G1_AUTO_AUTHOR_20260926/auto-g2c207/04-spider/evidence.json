@@ -1,0 +1,373 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a front appendage of 21.9% paint that no reference appendage lands on",
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part chelicera-far (cheliceraFar) covers 0% paint (reference 94%)",
+  "missing-anatomy: part leg4-near-upper (leg4NearKnee) covers 28% paint (reference 86%)",
+  "missing-anatomy: part leg3-far-distal (leg3FarFoot) covers 24% paint (reference 80%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [
+  {
+   "chain": "leg1Far",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "leg1Near",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0001
+   }
+  },
+  {
+   "chain": "leg2Far",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0083
+   }
+  },
+  {
+   "chain": "leg2Near",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "leg3Far",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0068
+   }
+  },
+  {
+   "chain": "leg3Near",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "leg4Far",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "leg4Near",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  }
+ ],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [
+  {
+   "id": "leg3-near-distal",
+   "repairs": 2
+  },
+  {
+   "id": "leg4-near-upper",
+   "repairs": 1
+  },
+  {
+   "id": "abdomen",
+   "repairs": 2
+  },
+  {
+   "id": "leg3-far-distal",
+   "repairs": 2
+  },
+  {
+   "id": "leg3-far-upper",
+   "repairs": 2
+  },
+  {
+   "id": "leg4-far-distal",
+   "repairs": 1
+  },
+  {
+   "id": "leg4-far-upper",
+   "repairs": 2
+  }
+ ],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a front appendage of 21.9% paint that no reference appendage lands on",
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "leg3-far-distal",
+     "leg3-far-upper"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0631,
+    "target": 3,
+    "overlap": 0.471
+   },
+   {
+    "owners": [
+     "leg4-far-distal",
+     "abdomen"
+    ],
+    "names": [
+     "leg",
+     "other"
+    ],
+    "refFrac": 0.0591,
+    "target": 3,
+    "overlap": 0.494
+   },
+   {
+    "owners": [
+     "leg4-near-upper",
+     "leg4-near-distal"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0789,
+    "target": 3,
+    "overlap": 0.354
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0154,
+     "class": "top",
+     "attach": {
+      "x": 235.5,
+      "y": 113,
+      "relX": 0.53,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0126,
+     "class": "front",
+     "attach": {
+      "x": 273,
+      "y": 150.5,
+      "relX": 1.01,
+      "relY": 0.33
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0151,
+     "class": "rear",
+     "attach": {
+      "x": 193,
+      "y": 154,
+      "relX": -0.01,
+      "relY": 0.36
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.3129,
+     "class": "rear",
+     "attach": {
+      "x": 200.2,
+      "y": 211.8,
+      "relX": 0.08,
+      "relY": 0.89
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.2192,
+     "class": "front",
+     "attach": {
+      "x": 240.6,
+      "y": 215.1,
+      "relX": 0.6,
+      "relY": 0.92
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 2,
+    "rear": 2
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "tarantula",
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0417,
+  "ref": 0.0333
+ },
+ "bestReference": "tarantula",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "tarantula",
+   "cost": 0.02616
+  }
+ ],
+ "mirrorBest": 0.02812,
+ "otherFamilyBest": {
+  "family": "insect",
+  "cost": 0.03282
+ },
+ "coverage": [
+  {
+   "id": "chelicera-near",
+   "joint": "cheliceraNear",
+   "paint": 0.45454545454545453,
+   "area": 385.1749999999993
+  },
+  {
+   "id": "chelicera-far",
+   "joint": "cheliceraFar",
+   "paint": 0,
+   "area": 291.3599999999997
+  },
+  {
+   "id": "leg1-near-distal",
+   "joint": "leg1NearFoot",
+   "paint": 0.46731234866828086,
+   "area": 6612.840000000004
+  },
+  {
+   "id": "leg1-near-upper",
+   "joint": "leg1NearKnee",
+   "paint": 0.6798029556650246,
+   "area": 3255.9600000000064
+  },
+  {
+   "id": "leg2-near-distal",
+   "joint": "leg2NearFoot",
+   "paint": 0.6219512195121951,
+   "area": 7863.160000000011
+  },
+  {
+   "id": "leg2-near-upper",
+   "joint": "leg2NearKnee",
+   "paint": 0.8419182948490231,
+   "area": 9166.475000000002
+  },
+  {
+   "id": "leg3-near-distal",
+   "joint": "leg3NearFoot",
+   "paint": 0.29107981220657275,
+   "area": 3403.2649999999994
+  },
+  {
+   "id": "leg3-near-upper",
+   "joint": "leg3NearKnee",
+   "paint": 0.8405951115834219,
+   "area": 15152.255000000001
+  },
+  {
+   "id": "leg4-near-distal",
+   "joint": "leg4NearFoot",
+   "paint": 0.3127792672028597,
+   "area": 17946.519999999997
+  },
+  {
+   "id": "leg4-near-upper",
+   "joint": "leg4NearKnee",
+   "paint": 0.2777777777777778,
+   "area": 3872.3249999999953
+  },
+  {
+   "id": "abdomen",
+   "joint": "abdomen",
+   "paint": 0.46227164416203337,
+   "area": 20173.675
+  },
+  {
+   "id": "leg1-far-distal",
+   "joint": "leg1FarFoot",
+   "paint": 0.5315682281059063,
+   "area": 7854.164999999997
+  },
+  {
+   "id": "leg1-far-upper",
+   "joint": "leg1FarKnee",
+   "paint": 0.6699029126213593,
+   "area": 4933.35
+  },
+  {
+   "id": "leg2-far-distal",
+   "joint": "leg2FarFoot",
+   "paint": 0.8549618320610687,
+   "area": 16768.60999999998
+  },
+  {
+   "id": "leg2-far-upper",
+   "joint": "leg2FarKnee",
+   "paint": 0.9760997575337721,
+   "area": 46173.549999999974
+  },
+  {
+   "id": "leg3-far-distal",
+   "joint": "leg3FarFoot",
+   "paint": 0.24028268551236748,
+   "area": 4470.079999999997
+  },
+  {
+   "id": "leg3-far-upper",
+   "joint": "leg3FarKnee",
+   "paint": 0.49198717948717946,
+   "area": 10021.560000000009
+  },
+  {
+   "id": "leg4-far-distal",
+   "joint": "leg4FarFoot",
+   "paint": 0.42369477911646586,
+   "area": 7977.914999999996
+  },
+  {
+   "id": "leg4-far-upper",
+   "joint": "leg4FarKnee",
+   "paint": 0.5845070422535211,
+   "area": 2300.169999999997
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.5
+  }
+ ],
+ "unclaimedFrac": 0.0606
+}

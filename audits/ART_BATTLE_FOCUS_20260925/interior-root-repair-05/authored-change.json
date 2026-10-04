@@ -1,0 +1,88 @@
+[
+  {
+    "candidate": "impala",
+    "sourceAuthoring": "audits/ART_BATTLE_FOCUS_20260925/06-impala/authoring.json",
+    "sourceAuthoringSha256": "99eaf9a452af90f5e66808ed0ab85036731587c02d704197fd9d85442791ac47",
+    "before": [
+      [
+        541,
+        548
+      ],
+      [
+        610,
+        548
+      ],
+      [
+        610,
+        612
+      ],
+      [
+        541,
+        612
+      ]
+    ],
+    "after": [
+      [
+        570,
+        574
+      ],
+      [
+        582,
+        574
+      ],
+      [
+        582,
+        586
+      ],
+      [
+        570,
+        586
+      ]
+    ],
+    "author": "Codex",
+    "reason": "Reduce the fixed interior ownership patch within the existing torso paint; retain all anatomical landmarks, visible source pixels, other polygons and explicit presence. Surrounding torso remains spine-owned. Candidate only; contact/skin limits untouched."
+  },
+  {
+    "candidate": "cattle",
+    "sourceAuthoring": "audits/ART_BATTLE_FOCUS_20260925/09-cattle/authoring.json",
+    "sourceAuthoringSha256": "abac731e391157abd3f083369138b424cceb231456268bd1d6cf85997263adad",
+    "before": [
+      [
+        550,
+        483
+      ],
+      [
+        594,
+        483
+      ],
+      [
+        594,
+        526
+      ],
+      [
+        550,
+        526
+      ]
+    ],
+    "after": [
+      [
+        566,
+        498
+      ],
+      [
+        578,
+        498
+      ],
+      [
+        578,
+        510
+      ],
+      [
+        566,
+        510
+      ]
+    ],
+    "author": "Codex",
+    "reason": "Reduce the fixed interior ownership patch within the existing torso paint; retain all anatomical landmarks, visible source pixels, other polygons and explicit presence. Surrounding torso remains spine-owned. Candidate only; contact/skin limits untouched."
+  }
+]

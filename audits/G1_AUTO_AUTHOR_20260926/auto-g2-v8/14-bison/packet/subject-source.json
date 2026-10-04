@@ -1,0 +1,49 @@
+{
+  "name": "Bison",
+  "family": "quadruped",
+  "species": {
+    "name": "Bison",
+    "aspect": 1.5,
+    "headFrac": 0.27,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "huge muscular shoulder hump",
+      "massive low-slung shaggy head with beard",
+      "narrow tapering hindquarters"
+    ],
+    "note": "The silhouette is front-heavy: the topline peaks at the shoulder hump and slopes steeply down to small hips. Often drawn as a uniform barrel like a cow."
+  },
+  "genome": {
+    "seed": 1022909654,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 1,
+    "body": 6,
+    "loco": 6,
+    "trait": 10,
+    "size": 5,
+    "diet": 4,
+    "head": 4,
+    "limbs": 5,
+    "skin": 6,
+    "tail": 2,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 4,
+    "detail": 5,
+    "accent": 9,
+    "temper": 6,
+    "sense": 8,
+    "repro": 1,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Bison"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Bison\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1022909654\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "index": 216
+}

@@ -1,0 +1,10 @@
+{
+ "id": "insectreferencesc86-03-giant-water-bug",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)",
+  "missing-anatomy: part antenna-near (antennaNear) covers 7% paint (reference 31%)"
+ ],
+ "semanticPresence": null
+}

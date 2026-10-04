@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Petrel",
+  "masterSha256": "d17d866d740ce789aa8f4cfe40f9abda554561e6a9f779368d73f3ba679e8d50",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

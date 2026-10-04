@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c203-loaded-rig-fullsize-review/v1",
+  "status": "VISUAL_AND_STATIC_RED",
+  "master": {
+    "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal/master.png",
+    "sha256": "fb72c3a69e626fd80c47ef77256c5d95fb7c49a704a245a06ebc319a48dd937e"
+  },
+  "inspected": [
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal/master.png",
+      "sha256": "fb72c3a69e626fd80c47ef77256c5d95fb7c49a704a245a06ebc319a48dd937e"
+    },
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal/review01/faint-0p9-right.png",
+      "sha256": "a41074f702b89b8cadcaf397baaba93af2e0b8bdac13d3a56838427c968c3079"
+    },
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal/review01/cast-0p5-right.png",
+      "sha256": "ca5c047021c572c29766e715b8293f1398c4e80f96d96885569737f68a53e009"
+    }
+  ],
+  "fullSize": true,
+  "findings": [
+    "Six genuine leg paths and both antennae remain visible; all knees are now visibly bent. No chains added or deleted.",
+    "Faint displaces the independently abdomen-owned tail/rim above the fixed closed tegmina; body/fringe strips detach from the hind femora.",
+    "Cast opens the tegmina across empty hidden body area and creates long disconnected rim slivers.",
+    "Static still refuses both melee rows, hit and tame;30 actual loaded-rig review samples contain2 retained refusals."
+  ],
+  "sourcePixelsChanged": 0,
+  "automaticIslandTransferApplied": false,
+  "nativeReady": false,
+  "qualityAccepted": false
+}

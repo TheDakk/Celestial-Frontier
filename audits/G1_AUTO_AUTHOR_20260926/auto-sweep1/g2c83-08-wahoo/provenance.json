@@ -1,0 +1,128 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c83-08-wahoo",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "0c8295ddfa46c33598557f91f67494b8808314126e0ece37e4c8bbefb9c98baf",
+ "subjectSourceSha256": "54fea5d2dc615fdda1a93c9642c5b9564c341cd82e8137f03422676fc7c660c8",
+ "identity": {
+  "name": "Wahoo",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wahoo\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2485462509\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "seed": 2485462509,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "salmon",
+  "authoringSha256": "1876ba55fd1234d96e2059a653d8bf0ef16823667d98be9028c75c3b41c50065",
+  "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0078,
+     "class": "front",
+     "attach": {
+      "x": 264,
+      "y": 170,
+      "relX": 0.63,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0139,
+     "class": "top",
+     "attach": {
+      "x": 183.5,
+      "y": 181,
+      "relX": 0.15,
+      "relY": 0.17
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.2081,
+     "class": "rear",
+     "attach": {
+      "x": 156.1,
+      "y": 206.9,
+      "relX": -0.01,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0779,
+     "class": "front",
+     "attach": {
+      "x": 329,
+      "y": 206.5,
+      "relX": 1.01,
+      "relY": 0.61
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0109,
+     "class": "limb-down",
+     "attach": {
+      "x": 175.5,
+      "y": 228,
+      "relX": 0.11,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0112,
+     "class": "limb-down",
+     "attach": {
+      "x": 283.5,
+      "y": 229,
+      "relX": 0.74,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 2,
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "salmon",
+   "byClass": {
+    "top": 1,
+    "rear": 2,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

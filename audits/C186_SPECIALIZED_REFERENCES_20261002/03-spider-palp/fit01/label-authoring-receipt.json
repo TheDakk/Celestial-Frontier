@@ -1,0 +1,155 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "root",
+      "joint": "root",
+      "owner": "root"
+    },
+    {
+      "region": "observed-left-palp-continuity",
+      "joint": "cephalothorax",
+      "owner": "cephalothorax"
+    },
+    {
+      "region": "observed-right-palp-continuity",
+      "joint": "cephalothorax",
+      "owner": "cephalothorax"
+    },
+    {
+      "region": "chelicerafar",
+      "joint": "cheliceraFar",
+      "owner": "chelicerafar"
+    },
+    {
+      "region": "cheliceranear",
+      "joint": "cheliceraNear",
+      "owner": "cheliceranear"
+    },
+    {
+      "region": "leg1farfoot",
+      "joint": "leg1FarFoot",
+      "owner": "leg1farfoot"
+    },
+    {
+      "region": "leg1farknee",
+      "joint": "leg1FarKnee",
+      "owner": "leg1farknee"
+    },
+    {
+      "region": "leg1nearfoot",
+      "joint": "leg1NearFoot",
+      "owner": "leg1nearfoot"
+    },
+    {
+      "region": "leg1nearknee",
+      "joint": "leg1NearKnee",
+      "owner": "leg1nearknee"
+    },
+    {
+      "region": "leg2farfoot",
+      "joint": "leg2FarFoot",
+      "owner": "leg2farfoot"
+    },
+    {
+      "region": "leg2farknee",
+      "joint": "leg2FarKnee",
+      "owner": "leg2farknee"
+    },
+    {
+      "region": "leg2nearfoot",
+      "joint": "leg2NearFoot",
+      "owner": "leg2nearfoot"
+    },
+    {
+      "region": "leg2nearknee",
+      "joint": "leg2NearKnee",
+      "owner": "leg2nearknee"
+    },
+    {
+      "region": "leg3farfoot",
+      "joint": "leg3FarFoot",
+      "owner": "leg3farfoot"
+    },
+    {
+      "region": "leg3farknee",
+      "joint": "leg3FarKnee",
+      "owner": "leg3farknee"
+    },
+    {
+      "region": "leg3nearfoot",
+      "joint": "leg3NearFoot",
+      "owner": "leg3nearfoot"
+    },
+    {
+      "region": "leg3nearknee",
+      "joint": "leg3NearKnee",
+      "owner": "leg3nearknee"
+    },
+    {
+      "region": "leg4farfoot",
+      "joint": "leg4FarFoot",
+      "owner": "leg4farfoot"
+    },
+    {
+      "region": "leg4farknee",
+      "joint": "leg4FarKnee",
+      "owner": "leg4farknee"
+    },
+    {
+      "region": "leg4nearfoot",
+      "joint": "leg4NearFoot",
+      "owner": "leg4nearfoot"
+    },
+    {
+      "region": "leg4nearknee",
+      "joint": "leg4NearKnee",
+      "owner": "leg4nearknee"
+    },
+    {
+      "region": "abdomen",
+      "joint": "abdomen",
+      "owner": "abdomen"
+    },
+    {
+      "region": "cephalothorax",
+      "joint": "cephalothorax",
+      "owner": "cephalothorax"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    64,
+    21882,
+    1732,
+    2129,
+    2284,
+    1812,
+    1965,
+    1922,
+    8406,
+    2892,
+    7683,
+    2790,
+    6847,
+    4005,
+    6527,
+    4938,
+    3403,
+    4550,
+    3972,
+    2553,
+    55062
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": true,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "3ef080bf00aff8be99227c090c19c90d6fd590ceb8fca86f9fe8d16d94e8d22d",
+  "intake": {
+    "erodedPixels": 10660,
+    "despilledPixels": 247,
+    "unresolvedEdgePixels": 4
+  },
+  "remainderPart": "cephalothorax"
+}

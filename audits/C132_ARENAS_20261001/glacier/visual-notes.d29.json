@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "glacier",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/glacier/arena-composed-review.png"
+  ],
+  "findings": [
+    "Full-size 1672×941 composite inspected. Blue ice cliffs and a broad snow/ice fighting band carry the glacier identity under consistent upper-left illumination.",
+    "The original triplet passes existing intake at native resolution without a replacement painting. No fauna, labels or celestial objects are visible.",
+    "The MID adds another small ridge across the lower center, visibly repeating the FAR mountain/ice horizon. A horizontal NEAR snow-texture transition remains near the bottom; hard keyed edges are visible at the side ice faces. Seam continuity under parallax remains a visual hold.",
+    "Mechanical pixel coverage does not demonstrate grounded movement, foot-contact shadows, player silhouette contrast or native performance. No quality acceptance is claimed."
+  ]
+}

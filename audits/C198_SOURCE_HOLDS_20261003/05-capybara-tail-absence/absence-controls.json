@@ -1,0 +1,22 @@
+{
+  "schema": "cf.c198-observed-absence-controls/v1",
+  "status": "PASS",
+  "controls": [
+    "canonical no-visible-tail requirement",
+    "full-size closed rump observed",
+    "exact four tail controls removed",
+    "exact four tail regions removed",
+    "all other landmarks byte-equivalent",
+    "all other regions byte-equivalent",
+    "ground unchanged",
+    "materials unchanged",
+    "compiled presence exactly absent tail",
+    "compiled landmarks contain no tail",
+    "reintroduced unsupported tail rejected",
+    "unrelated landmark mutation rejected"
+  ],
+  "sourcePaintConservation": "conservation.json",
+  "staticOutcome": "RED: melee:tail compression persists; absence correction is not a performance or motion fix",
+  "qualityAccepted": false,
+  "native": false
+}

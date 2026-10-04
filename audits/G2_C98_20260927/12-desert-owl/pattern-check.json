@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Desert Owl",
+  "masterSha256": "d78a10a729388a63a73e621907c6ede3c3dcdef477f0c26dfe7cce0f85b2cc1c",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Crocodile",
+  "masterSha256": "62969b41d45b809baadc954106b24c84d0bd9f8f2acb6fd5528249d72c9c17ef",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

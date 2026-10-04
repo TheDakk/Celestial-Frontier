@@ -1,0 +1,56 @@
+{
+  "schema": "cf.c183-exact-local-instrument-transform/v1",
+  "files": [
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/native-entry.mjs",
+      "predecessor": "audits/C173_ALL_PAIRS_20261002/native-entry.mjs",
+      "predecessorSha256": "63484adb5f1e398fd4cc95d2ae8171098db9de023e9cae34e9522e656866625e",
+      "candidateSha256": "82adccd89f1e7fcf1ae0988ef512b1f61d74f4400ebcf47a0e2126fda0be77f6"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/native-runner.mjs",
+      "predecessor": "audits/C173_ALL_PAIRS_20261002/native-runner.mjs",
+      "predecessorSha256": "b16ceb7643174ffe10f2721a489a96aaa0da1cffc686bbe1ac1083969f213028",
+      "candidateSha256": "bbc8e10cc67b180cda2cce99636b8518e07f6c6020b85dae417cd85e9eef60ab"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/validate.mjs",
+      "predecessor": "audits/C173_ALL_PAIRS_20261002/validate.mjs",
+      "predecessorSha256": "77164c00473f378d3e770e3cdad21852d0ab60e1889378dfe31b969e962088f6",
+      "candidateSha256": "803c4a3a734fd7c1f5858aa14265fcae17cc77fe23eeedf2aea9beb52b6baf0b"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/validate-v2.mjs",
+      "predecessor": "audits/C173_ALL_PAIRS_20261002/validate-v2.mjs",
+      "predecessorSha256": "aa7124a57393c406fdb64757dbdf3fb8a70985aaaba64e172fbfb042183d6fee",
+      "candidateSha256": "3c0fa2fbcba576cc084625e66167932d73103385066383a31cdecf217392e31f"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/input-contract.mjs",
+      "predecessor": "audits/C173_ALL_PAIRS_20261002/input-contract.mjs",
+      "predecessorSha256": "cf511d1fb67f082ad0949f059a7a9d72bdb7fe0c64ce8e65aba20091935b451e",
+      "candidateSha256": "71f82026bde6d9da47eebe9ccfa0e52e63a8d92a452b91882fceb0ad7834c415"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/run-sweep-v2.mjs",
+      "predecessor": "audits/C173_ALL_PAIRS_20261002/run-sweep-v2.mjs",
+      "predecessorSha256": "f9cb3b9bae9d2aa44b95ed40ba4c40d9f6d421ff2db61c070ecf35042cc67077",
+      "candidateSha256": "f9cb3b9bae9d2aa44b95ed40ba4c40d9f6d421ff2db61c070ecf35042cc67077"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/prepare-v2.mjs",
+      "predecessor": "audits/C173_ALL_PAIRS_20261002/prepare-v2.mjs",
+      "predecessorSha256": "cc10114295268d986c488b33c7be5d5c861fdb542564deb47c0e13e0416e857d",
+      "candidateSha256": "5e8d326454b3258092f821c037af85a1ce4190097e3354243d11c00cc7a4d487"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/prepare-entry.ts",
+      "predecessor": "audits/C173_ALL_PAIRS_20261002/prepare-entry.ts",
+      "predecessorSha256": "8c761ef18f94fb2200fcc6b9f84fdb035fd8d79da97bab27902aa46a4dfe7878",
+      "candidateSha256": "4fd0bb26f0b7697d7e208802659ba7194072aa72da3301fc5ef19707eb634927"
+    }
+  ],
+  "nativeRuns": 0,
+  "productChanges": false,
+  "intent": "Only additive instrument paths, exact local-time semantic probes/stills and stronger observation fields. Frozen live capture and stageAt logic retained."
+}

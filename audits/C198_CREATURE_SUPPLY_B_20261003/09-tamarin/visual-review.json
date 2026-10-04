@@ -1,0 +1,28 @@
+{
+  "name": "Tamarin",
+  "masterSha256": "53ba5f05bc48a04a7e173c160cb9b6c2373b1262275ed765953a09f4e02204b7",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: small brown/rust body, white crown/cheek plume and chest, long rust tail, four distinct clawed extremities. Hands/feet float at unequal heights and proximal roots remain fur-covered. Cotton-top-like identity is visible, but exact fingers/claws, far ear and crown-fringe conservation remain held. No grounded stance claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 191,
+      "y0": 295,
+      "x1": 1047,
+      "y1": 965
+    },
+    "margins": {
+      "left": 191,
+      "right": 206,
+      "top": 295,
+      "bottom": 288
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

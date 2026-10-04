@@ -1,0 +1,14 @@
+{
+  "id": "10-squirrel",
+  "name": "Squirrel",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-bafd6b0e-d029-4434-9a66-807d35de2895.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b482f5cd3cbeb4dd5602049210113027ca21a3973cac6a1bf305328776c6fbd7",
+  "bytes": 1511097,
+  "promptSha256": "d7f7477e7559ae9da528394c53027f632fc8ce074fe8d338439bd558aad177ed",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

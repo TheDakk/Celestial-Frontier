@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Fishing Cat",
+  "masterSha256": "5292968cfe7a53d7d2daf4e0db70ab9e347a82caba8b7688449f8b1e1479b9c9",
+  "required": [
+    "olive coat with rows of solid dark spots and neck stripes"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "olive coat with rows of solid dark spots and neck stripes",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: stocky short-legged spotted cat, four separate paw endpoints/lower legs, neck stripes and short banded tail. Near ear is clear but far ear is a partial tip. Tail reads very short and merits species-proportion review. Far proximal roots remain hidden beneath body fur; no fifth limb apparent, and no fit or motion claim."
+    }
+  ]
+}

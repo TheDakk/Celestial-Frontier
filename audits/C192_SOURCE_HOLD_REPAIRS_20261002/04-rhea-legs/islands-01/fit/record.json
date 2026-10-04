@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Rhea\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3045737901\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"14\"]]]]",
+    "seed": 3045737901,
+    "ownerId": "authored:archetype-sprint/rhea",
+    "earthName": "Rhea"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3045737901,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 13,
+    "body": 2,
+    "loco": 9,
+    "trait": 14,
+    "size": 0,
+    "diet": 1,
+    "head": 7,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 10,
+    "habitat": 11,
+    "detail": 0,
+    "accent": 2,
+    "temper": 4,
+    "sense": 1,
+    "repro": 1,
+    "life": 0,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Rhea"
+  },
+  "geometry": {
+    "cutoutAssetHash": "1e1a1a15c937a0646cba6ad93b89f62bddebdbc036f58840f428700add32a216",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7935034278933798,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.490829346092504,
+      0.4779904306220096
+    ],
+    "pelvis": [
+      0.48492822966507176,
+      0.5558213716108453
+    ],
+    "spine": [
+      0.5304625199362042,
+      0.48795853269537476
+    ],
+    "chest": [
+      0.6170653907496012,
+      0.4773524720893142
+    ],
+    "neck0": [
+      0.6496012759170654,
+      0.4185007974481658
+    ],
+    "neck1": [
+      0.6763157894736842,
+      0.33253588516746413
+    ],
+    "head": [
+      0.669377990430622,
+      0.2511961722488038
+    ],
+    "beak": [
+      0.7188197767145136,
+      0.23732057416267943
+    ],
+    "legNearKnee": [
+      0.4194577352472089,
+      0.6156299840510366
+    ],
+    "legNearAnkle": [
+      0.3915470494417863,
+      0.748006379585327
+    ],
+    "legNearFoot": [
+      0.4154704944178628,
+      0.7679425837320574
+    ],
+    "legFarKnee": [
+      0.4864433811802233,
+      0.6180223285486444
+    ],
+    "legFarAnkle": [
+      0.511164274322169,
+      0.7535885167464115
+    ],
+    "legFarFoot": [
+      0.5406698564593302,
+      0.7727272727272727
+    ],
+    "wingNearRoot": [
+      0.5505582137161085,
+      0.4410685805422648
+    ],
+    "wingNearTip": [
+      0.34258373205741627,
+      0.4224880382775119
+    ],
+    "wingFarRoot": [
+      0.527511961722488,
+      0.35980861244019136
+    ],
+    "wingFarTip": [
+      0.4351674641148326,
+      0.36403508771929827
+    ],
+    "tailFan": [
+      0.3304625199362041,
+      0.5516746411483253
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/04-rhea-legs/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile flightless-bird media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "C192 bounded source-observed correction; all unedited geometry remains inherited automatic transfer. See correction.json.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — audit candidate",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "de9a9cba170ca3c0c63df857ce580d129b257c09f6574274d4900364bb2ef377",
+    "subjectSourceSha256": "77d635ee271f4c4ac4e36a1304a8359a763c87b53b49de43c56568ecf6c5a68d",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.07805433075939953,
+      "spine": 0.08172353697780617,
+      "chest": 0.08724990403835045,
+      "neck0": 0.06724658676615493,
+      "neck1": 0.09002017206157466,
+      "head": 0.081635053458989,
+      "beak": 0.05135194692696346,
+      "legFarKnee": 0.062219407969634336,
+      "legFarAnkle": 0.13780171965620716,
+      "legFarFoot": 0.035169181931738396,
+      "legNearKnee": 0.08867612847514497,
+      "legNearAnkle": 0.1352867934307703,
+      "legNearFoot": 0.031141346395162,
+      "wingFarRoot": 0.14777136255623713,
+      "wingFarTip": 0.09244116686679796,
+      "wingNearRoot": 0.07576097532874287,
+      "wingNearTip": 0.20880282941582462,
+      "tailFan": 0.15452136051553383
+    },
+    "measures": {
+      "body": 0.15368017937131329,
+      "bone-min": 0.031141346395162,
+      "bone-max": 0.20880282941582462,
+      "leg/torso:legFar": 1.5303880469147977,
+      "leg/torso:legNear": 1.6599685746377797,
+      "wing/torso": 1.5630677319984594
+    }
+  },
+  "recipeHash": "06d1bf98b4d003a254365643efe89e1244c5587a16f9959b43a5a37c8ef0537a"
+}

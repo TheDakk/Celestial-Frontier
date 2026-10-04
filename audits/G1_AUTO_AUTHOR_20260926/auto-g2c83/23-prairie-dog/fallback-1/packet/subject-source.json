@@ -1,0 +1,102 @@
+{
+  "name": "Prairie Dog",
+  "family": "quadruped",
+  "species": {
+    "name": "Prairie Dog",
+    "aspect": 2.1,
+    "headFrac": 0.3,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "plump cylindrical body",
+      "very short stubby tail",
+      "small rounded ears flat to the head"
+    ]
+  },
+  "genome": {
+    "seed": 575078991,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 10,
+    "body": 9,
+    "loco": 9,
+    "trait": 22,
+    "size": 5,
+    "diet": 0,
+    "head": 8,
+    "limbs": 4,
+    "skin": 5,
+    "tail": 0,
+    "pattern": 0,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 17,
+    "detail": 8,
+    "accent": 4,
+    "temper": 0,
+    "sense": 1,
+    "repro": 4,
+    "life": 1,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Prairie Dog"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Prairie Dog\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"575078991\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "index": 217,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

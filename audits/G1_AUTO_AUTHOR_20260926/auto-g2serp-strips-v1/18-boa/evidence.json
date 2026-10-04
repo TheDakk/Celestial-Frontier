@@ -1,0 +1,23 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the right (head) end is not thicker than the left (tail) end (64.8 vs 66.2)",
+  "tail not tapered: tip 77px vs median 113px (truncated tail?)"
+ ],
+ "author": "serpent-strips/v1",
+ "target": {
+  "snoutRatio": 0.515,
+  "mainShare": 1,
+  "dominantShare": 0.9862,
+  "gapFrac": 0,
+  "elongation": 10.58,
+  "headEnd": 64.8,
+  "tailEnd": 66.2,
+  "tailTip": 77,
+  "median": 113,
+  "xmin": 30,
+  "xmax": 1225,
+  "ext": 1196,
+  "paint": 139985
+ }
+}

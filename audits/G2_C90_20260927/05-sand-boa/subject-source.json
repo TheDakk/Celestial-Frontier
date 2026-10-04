@@ -1,0 +1,70 @@
+{
+  "name": "Sand Boa",
+  "family": "serpent",
+  "species": {
+    "name": "Sand Boa",
+    "aspect": 3.5,
+    "headFrac": 0.07,
+    "eyes": "small",
+    "posture": "crawling",
+    "mustRead": [
+      "thick stubby cylindrical body",
+      "blunt wedge snout with tiny upward-facing eyes",
+      "very short abruptly blunt tail"
+    ],
+    "note": "Far shorter and fatter than typical snakes; the tail is a stub, so head and tail ends look almost interchangeable."
+  },
+  "genome": {
+    "seed": 2349566778,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 9,
+    "body": 8,
+    "loco": 11,
+    "trait": 10,
+    "size": 0,
+    "diet": 1,
+    "head": 9,
+    "limbs": 2,
+    "skin": 6,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 4,
+    "habitat": 0,
+    "detail": 1,
+    "accent": 6,
+    "temper": 8,
+    "sense": 4,
+    "repro": 2,
+    "life": 3,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sand Boa"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sand Boa\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2349566778\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "index": 279,
+  "profile": {
+    "id": "constricting-snake",
+    "names": [
+      "Anaconda",
+      "Boa",
+      "Python",
+      "Sand Boa"
+    ],
+    "candidateTemplates": [
+      "serpent"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "strike",
+      "constrict"
+    ],
+    "notes": ""
+  }
+}

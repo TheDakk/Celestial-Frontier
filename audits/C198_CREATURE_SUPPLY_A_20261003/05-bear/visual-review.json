@@ -1,0 +1,28 @@
+{
+  "name": "Bear",
+  "masterSha256": "9f6c3c41dd8df4b7bd0ad636306b88126279aac851a42c61c302f909eb9d00d9",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: heavy brown bear, shoulder hump, pale muzzle, two rounded ear outlines, short furry tail and four visible clawed paws. Far roots are fur-obscured and support plane is not measured. Similar brown-bear appearance follows generic canonical identity; no claim of distinct subspecies. Fur/fringe, far-ear base and claw-count review held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 213,
+      "y0": 329,
+      "x1": 1083,
+      "y1": 905
+    },
+    "margins": {
+      "left": 213,
+      "right": 170,
+      "top": 329,
+      "bottom": 348
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

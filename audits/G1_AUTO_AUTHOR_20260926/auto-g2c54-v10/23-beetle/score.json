@@ -1,0 +1,13 @@
+{
+ "id": "23-beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches insect better (0.0362 < 0.0462)",
+  "wrong-family: quadruped matches clearly better (0.0221 < 0.0462)",
+  "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on",
+  "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 14% paint (reference 56%)",
+  "unexplained-anatomy: 10.9% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

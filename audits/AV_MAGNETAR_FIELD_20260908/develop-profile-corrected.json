@@ -1,0 +1,17 @@
+{
+  "status": "FAIL",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "magnetar-static-profile-20260908",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "exitCode": 1,
+  "seconds": 45.211,
+  "predecessor": "preparation.json",
+  "correction": "Controller path only: actual profile is port/v2/tools/check-profile.mjs. Prior command failed before tests; already passed build/pin steps not repeated."
+}

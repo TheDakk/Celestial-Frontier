@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c168-instrument-correction/v1",
+  "prior": {
+    "path": "audits/C168_MEMBRANE_REFERENCES_20261002/verify-and-preview.mjs",
+    "sha256": "d26795c45b9b6f7f897cf79ae0ba1f78addfca4c38722c52f97dd8aa25d260b4",
+    "status": "REFUSED",
+    "reason": "Independent raster replay used source-pixel coordinates; established intake evaluates normalized points and polygons. Floating-point edge ties differ, so exact ownership assertion correctly refused."
+  },
+  "successor": {
+    "path": "audits/C168_MEMBRANE_REFERENCES_20261002/verify-and-preview-v2.mjs",
+    "sha256": "af5b9234129833b132eefe741c7a32d038c2863671cbf647a55e3f877bcae307"
+  },
+  "change": {
+    "from": "inside(i%w+.5,Math.floor(i/w)+.5,p.polygonPx)",
+    "to": "inside((i%w+.5)/w,(Math.floor(i/w)+.5)/h,p.polygonPx.map(([x,y])=>[x/w,y/h]))"
+  },
+  "checksChanged": false,
+  "thresholdsChanged": false,
+  "sourceArtworkChanged": false,
+  "scope": "Match the existing coordinate arithmetic for boundary points. All strict ownership, conservation and negative assertions remain; no fit or declaration was changed."
+}

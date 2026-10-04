@@ -1,0 +1,28 @@
+{
+  "name": "Jay",
+  "masterSha256": "ee8809c04821ac104306b56dd641a712c6a13b345f3d7d52e8387e7763715f58",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two feet, barred blue-white wing/tail, crest and black facial collar clearly painted. Complete tail tip with generous margins. Far wing hidden; near wing root feathered, not directly separable from body without careful source tracing.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 172,
+      "y0": 290,
+      "x1": 1041,
+      "y1": 936
+    },
+    "margins": {
+      "left": 172,
+      "right": 212,
+      "top": 290,
+      "bottom": 317
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

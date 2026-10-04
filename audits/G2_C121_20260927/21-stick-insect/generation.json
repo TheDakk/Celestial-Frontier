@@ -1,0 +1,13 @@
+{
+  "id": "21-stick-insect",
+  "name": "Stick Insect",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-43cb5d24-bb71-41ef-9baf-8491b7566dd9.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "363eb9d07059bde46aa973e9ab82f02a29af575a8a495e17173420932bc9a888",
+  "bytes": 1061086,
+  "promptSha256": "72c090176fa0ee5863c8fc06b093e3bdef407095f5afed2faf84eb38cadd6cc8",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

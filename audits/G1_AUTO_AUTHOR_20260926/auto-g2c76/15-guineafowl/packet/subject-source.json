@@ -1,0 +1,80 @@
+{
+  "name": "Guineafowl",
+  "family": "biped-bird",
+  "species": {
+    "name": "Guineafowl",
+    "aspect": 1.2,
+    "headFrac": 0.18,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "tiny bare blue-and-red head with a bony helmet casque",
+      "round hunched body densely speckled with white dots",
+      "thin naked neck on a heavy body"
+    ],
+    "note": "the head is comically small for the body and the tail droops downward"
+  },
+  "genome": {
+    "seed": 2232810324,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 16,
+    "body": 2,
+    "loco": 14,
+    "trait": 7,
+    "size": 4,
+    "diet": 4,
+    "head": 2,
+    "limbs": 5,
+    "skin": 8,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 2,
+    "detail": 5,
+    "accent": 12,
+    "temper": 4,
+    "sense": 1,
+    "repro": 6,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Guineafowl"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Guineafowl\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2232810324\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "index": 76,
+  "profile": {
+    "id": "ground-foraging-bird",
+    "names": [
+      "Peacock",
+      "Guineafowl",
+      "Turkey",
+      "Grouse",
+      "Ptarmigan",
+      "Bustard",
+      "Sandgrouse",
+      "Quail",
+      "Partridge",
+      "Roadrunner",
+      "Chicken",
+      "Rooster",
+      "Secretary Bird",
+      "Seriema"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": "Flight-capable does not require every move to be airborne."
+  }
+}

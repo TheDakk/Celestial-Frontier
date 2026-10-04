@@ -1,0 +1,29 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Springbok",
+  "masterSha256": "38dcb86243a0deeab8a91c5dee80087034faaea35b9ecff63ed8c9c34328bbb3",
+  "required": [
+    "lyre-shaped ringed horns curving in at the tips",
+    "dark chocolate side stripe dividing tan from white",
+    "white face with a dark eye stripe"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "lyre-shaped ringed horns curving in at the tips",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: two full ear silhouettes, two ringed curved horns, four hoof endpoints, dark flank band above white belly, face stripes and small continuous black-tipped tail. Far proximal foreleg remains behind the chest/near leg. Tail stays naturally short; no invisible segments are invented. Pattern visibility is observed, but reference transfer and motion remain unmeasured."
+    },
+    {
+      "requirement": "dark chocolate side stripe dividing tan from white",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: two full ear silhouettes, two ringed curved horns, four hoof endpoints, dark flank band above white belly, face stripes and small continuous black-tipped tail. Far proximal foreleg remains behind the chest/near leg. Tail stays naturally short; no invisible segments are invented. Pattern visibility is observed, but reference transfer and motion remain unmeasured."
+    },
+    {
+      "requirement": "white face with a dark eye stripe",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: two full ear silhouettes, two ringed curved horns, four hoof endpoints, dark flank band above white belly, face stripes and small continuous black-tipped tail. Far proximal foreleg remains behind the chest/near leg. Tail stays naturally short; no invisible segments are invented. Pattern visibility is observed, but reference transfer and motion remain unmeasured."
+    }
+  ]
+}

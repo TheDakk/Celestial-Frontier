@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "dunesea",
+  "biome": "dunesea",
+  "recipe": "audits/C132_ARENAS_20261001/dunesea/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/dunesea/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/dunesea/arena-far.png",
+      "runtimeSha256": "75181ba5dda1893328adcd41c51ad5f253e323e8c577f38b55978fc79961c418"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/dunesea/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-mid.png",
+      "runtimeSha256": "d7d5f56bc6000b030291ea114fd03a805ac72e55a5be4c0d17d3e20216d8d426"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/dunesea/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.png",
+      "runtimeSha256": "b1b4e3d34688e9606076232f9ca2df3058367e9dd17299fb8239e1539d9a539d"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Snow Leopard",
+  "masterSha256": "d9c2b2c7be4f664dc204e3810c60f285243a816491baabeedca4b8d203e02fe6",
+  "required": [
+    "pale smoky coat with large open rosettes"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "pale smoky coat with large open rosettes",
+      "status": "PRESENT",
+      "observed": "Large open dark rosettes are visible across a pale smoky coat."
+    }
+  ]
+}

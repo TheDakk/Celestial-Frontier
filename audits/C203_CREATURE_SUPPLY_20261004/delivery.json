@@ -1,0 +1,1352 @@
+{
+  "schema": "cf.g2-source-delivery/v1",
+  "scope": "24 originals only; source candidates with explicit holds, no rig/native/gallery admission",
+  "originals": 24,
+  "families": {
+    "quadruped": 16,
+    "biped-bird": 4,
+    "fish": 4
+  },
+  "coveredAtSelection": 270,
+  "qualityAccepted": false,
+  "rigAdmission": false,
+  "native": false,
+  "controls": {
+    "passed": 15,
+    "failed": 0
+  },
+  "explicitVisualHolds": [
+    "Water Vole bushy tail",
+    "Alpaca hoof-like toes",
+    "Nilgai horn proportions",
+    "Hippopotamus/Cardinalfish gloss",
+    "Far-side roots/ears/wings/fins partly occluded; see exact per-source observations"
+  ],
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "framingPass": 23,
+  "framingRefused": [
+    "Bowfin"
+  ],
+  "masterBytes": 32359864,
+  "files": [
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/generation.json",
+      "sha256": "ff15017a324deab8721196e70d739243db560c48f3dcd66b339219a96b9c3ede",
+      "bytes": 625
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/master.png",
+      "sha256": "7700e76ce80161e6e12b1ab9b00c5b9ac6a6fe04d932d8440df5860c503ab3a9",
+      "bytes": 1420730
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/pattern-check.json",
+      "sha256": "3562e6e7726a80f876bd2c12c50a96647ff9010d7248cc4d012f768714fd683e",
+      "bytes": 289
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/prompt.canonical.txt",
+      "sha256": "e39660e6051b2c4f6e80ba1cc775d7bc9c2f894a5436db699182864a53407987",
+      "bytes": 8898
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/prompt.txt",
+      "sha256": "d338fed90f70f2c5c6526cc7153d82984ec626933f89f2cb05759e9a33c3a4e1",
+      "bytes": 10751
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/request.json",
+      "sha256": "82c88f1810b769a1de2050353e376e592b2966b20e818e8a7263b5ff790ea7ca",
+      "bytes": 3855
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/subject-source.json",
+      "sha256": "d170dec63e28797f6d120e712cb7c47fb9f8c7103bcffd4adf1cf55b3e321298",
+      "bytes": 2812
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/visible-anatomy.json",
+      "sha256": "7e89ecbb68d680aa124c9df6873761cabab610c6cbaf0f5b54e7efdeb2a3d4c9",
+      "bytes": 4271
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/visual-review.json",
+      "sha256": "ad3c9e91d675e399575e4c059fa5aae0aec702fbd06c039709a9b086ed0480a5",
+      "bytes": 983
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/generation.json",
+      "sha256": "a210d62917a9a187c9bcd62f37a88cce386031805032afbb245f2ff7489ab70c",
+      "bytes": 627
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/master.png",
+      "sha256": "603d5b4f75dcbcb46bc537dc40bf54feeec723af0c34190e986414edf5467d2c",
+      "bytes": 1367999
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/pattern-check.json",
+      "sha256": "7072552ef725409315aece5d826042a4820b37af17e22471452c9a32e686f0a2",
+      "bytes": 290
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/prompt.canonical.txt",
+      "sha256": "140a24c84c33abc001d8af9b4a56a6a094bfb49054d1cb3b45a369d07be9b09e",
+      "bytes": 8993
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/prompt.txt",
+      "sha256": "24c983ad7e0687ef479abe7cd699b798688450415fafd8b3b3e3ce3937908673",
+      "bytes": 10846
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/request.json",
+      "sha256": "da636345805493428fbb9378925fafb67fb735f115b9577673909b2d428d50b6",
+      "bytes": 3524
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/subject-source.json",
+      "sha256": "6a15263e40980f75500ba02e685c0c3806b3b75c129dbdd61984b342eb41a207",
+      "bytes": 2172
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/visible-anatomy.json",
+      "sha256": "8418d2709623e0cd973f5cabe8d374f3612084c33a10837e7f2f73a6171e060b",
+      "bytes": 3852
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/visual-review.json",
+      "sha256": "4e95666c42ad7209f23684871b4272a03af0119ed208da8236a492041c73e8a7",
+      "bytes": 1001
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/generation.json",
+      "sha256": "4f5652f1cd90b27d07f619dc52ba0d38dafb17bb31e4ab09669d7cae5bd41ca8",
+      "bytes": 619
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/master.png",
+      "sha256": "e9681ad382082d2c9402e97a51ae4549b40ffea3ad25616d9c0bcca1ccd3bfb7",
+      "bytes": 1359664
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/pattern-check.json",
+      "sha256": "e5250c2f1303b058c9ba58c19e8fa82c710d3599ea74516f3048d29f3b84d44a",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/prompt.canonical.txt",
+      "sha256": "9f08400fa8eb20d8e861600630d9b9bc6f41c515ace1d59060ace58a93cbb082",
+      "bytes": 9005
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/prompt.txt",
+      "sha256": "222b4a60d7b4fd1aac1f2aae3d0e8c9b707027d3c9abf0eef2ab85661788ab09",
+      "bytes": 10904
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/request.json",
+      "sha256": "f79510544e53fa183ce374dc1bab6b3941e492c2b3fe99403b2276bbd4dc284b",
+      "bytes": 3499
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/subject-source.json",
+      "sha256": "870c97f07b0931c4022d1761f4f124e01da1a2c58c70e727a726459d7721158c",
+      "bytes": 2300
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/visible-anatomy.json",
+      "sha256": "259783ce83e3fe24543104ce8bed3439f47939a9b8e416a3ed32e1243504ee0f",
+      "bytes": 3842
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/visual-review.json",
+      "sha256": "4b29aadf30e0d8dd1a8a517b6e4d24b84e1bc96915bb6b432ccca6c3ca00313a",
+      "bytes": 1028
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/generation.json",
+      "sha256": "9388e4889323d39b7280d860791c2a0c9d2bb28872d40b428d8a9aa07e65c9af",
+      "bytes": 605
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/master.png",
+      "sha256": "81c93eb6f92bd29bb7df5dd5bfc2f494a33dd420841bb55889c312ff5667b45e",
+      "bytes": 1324295
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/pattern-check.json",
+      "sha256": "71031e5b576b134ff0cadb15d699e46f6291e172402209180cd99715ac50fa6c",
+      "bytes": 279
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/prompt.canonical.txt",
+      "sha256": "d70210a885b19d41bb7d96f7035d2170012e1965b6a63d1801205dc163c01668",
+      "bytes": 8826
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/prompt.txt",
+      "sha256": "0d34a9ec14f87d7d5a9536571a0ecb21d0e4a9d4efe30fc9b7de49376ccff9f3",
+      "bytes": 10677
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/request.json",
+      "sha256": "8c658748a296a9915ac4d582b459804169e449bab1a8323f6198432612c5ce35",
+      "bytes": 3449
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/subject-source.json",
+      "sha256": "d6b8b91e5a15bfaeaa0401a6980d22db8f17da53c1d57b19204f8d7e5669bfac",
+      "bytes": 2742
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/visible-anatomy.json",
+      "sha256": "bb960b5503f47eca514c0f74fb1a0937b6da55051cdd34e3dce6efe4b16a3cf5",
+      "bytes": 3398
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/visual-review.json",
+      "sha256": "ddcb5fcc5873fb0362747d560d1f166ceb200b1a0ecb5050dd4d713818211b56",
+      "bytes": 990
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/generation.json",
+      "sha256": "1083840e704b151d2de9a28760eb3d31795b454f961b6d5c42e3a2e258ec07e3",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/master.png",
+      "sha256": "91c68ad20ed635cf49b24a4724dd4ca6c4446d348b4a95b80b253054f7eb589c",
+      "bytes": 1374813
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/pattern-check.json",
+      "sha256": "a41022edf2bb44d51de4f6da6b135cba980ba276dbdbe75d4028e3e8c993c058",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/prompt.canonical.txt",
+      "sha256": "c0c64eba536bb3193f325e23906682d9556decb4c93f5be628bf3f0dcd022121",
+      "bytes": 8988
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/prompt.txt",
+      "sha256": "2dfd713aa15dcfc5e01589af103b7fbc824d6ecb0875e936ea0f595ea46acb05",
+      "bytes": 10829
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/request.json",
+      "sha256": "7877825ea706d2d41c96efe12f316e4c7e15944d2f779406aed7868c37af2cfb",
+      "bytes": 3143
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/subject-source.json",
+      "sha256": "ec5c33742830c8c74e417576b00af876174eef351bdc6b315190e6ed3f520cc0",
+      "bytes": 2895
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/visible-anatomy.json",
+      "sha256": "18f50989eea77446d73e97cf8aefc56143d8f4152aab885c9a3ab375ca9c31f7",
+      "bytes": 4252
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/visual-review.json",
+      "sha256": "96f274a2b888b741e75a387ad13d4a7446b5a5ab5507f11fd8ff2bed7ff94381",
+      "bytes": 959
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/generation.json",
+      "sha256": "94a0ac92f3c59cb0a8385ee1982351a363ecca6c58362f38184e35370c612e58",
+      "bytes": 623
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/master.png",
+      "sha256": "d55a35d455b0cb350e28089b8a2441196db769d627cc711470f1d3bdee391d3b",
+      "bytes": 1476784
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/pattern-check.json",
+      "sha256": "419f824572c571d47e2ae9c1216b8e76343754a0b585b09cec089a88ce08eadb",
+      "bytes": 288
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/prompt.canonical.txt",
+      "sha256": "43f942faaa5972d8c3ddeae1b0b8b176ddbb2ef8eb0e8d2405c1ae4f564032e5",
+      "bytes": 8928
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/prompt.txt",
+      "sha256": "a3331dbdf36eb5c625415fa4d1e42e628270883c1840bc4a845a6e43be192225",
+      "bytes": 10859
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/request.json",
+      "sha256": "63a6bb74d9e4ac24af966a5f2888c1f0decad19d1656559808669b9e442074c7",
+      "bytes": 3257
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/subject-source.json",
+      "sha256": "f368aac51b05730062862b7a0f3fef288012f63fa8c9522bb33114ed8cb7f28d",
+      "bytes": 2099
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/visible-anatomy.json",
+      "sha256": "dab4f47fe24d0d7e4b4d5bc744e5ee6f792238eddb77689f66cae96c40bb3078",
+      "bytes": 4275
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/visual-review.json",
+      "sha256": "d30aa979465687ab96e74cfc64631202a180876343ab7e3fb09e3a80642ce1ce",
+      "bytes": 1001
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/generation.json",
+      "sha256": "aeb5c46dc40e2f95e6c51ffa4d637669501755ca6f7a27f28b842e380ed1fa88",
+      "bytes": 615
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/master.png",
+      "sha256": "219352a189359ce881a03e2d7909911b69db17928de6a73ecf21273a4ef67342",
+      "bytes": 1452529
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/pattern-check.json",
+      "sha256": "7d77636a040b5f57560a09353c260d9b213497390a253399e3942d776d3c7c32",
+      "bytes": 284
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/prompt.canonical.txt",
+      "sha256": "2043eaeb1ff757027bb86e1bcdf39f5dde2a66ed2ec89b43b3caad143621b9df",
+      "bytes": 8885
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/prompt.txt",
+      "sha256": "053f9ffebcd96514a34f427572bb1d523cde4d865f28cf881f230a9b66de11d3",
+      "bytes": 10764
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/request.json",
+      "sha256": "cd8159111d3110ea945d65e2e8047e60674b937674e1bcddbe6f5f91c7f6aee7",
+      "bytes": 3188
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/subject-source.json",
+      "sha256": "4b6c77b9cf160f0891c10f0ed2e780c9c8858a7e1954ed2a7a2d972c6e1ef8a2",
+      "bytes": 2171
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/visible-anatomy.json",
+      "sha256": "f38996748bd1961c0673e6bf2cde1b6eb942c070e9a89baaf450927c0c452dcf",
+      "bytes": 2966
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/visual-review.json",
+      "sha256": "c71cd32b0323a0588f05015012b33091cf9244320d7966b285ea52d41ac703d0",
+      "bytes": 961
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/generation.json",
+      "sha256": "e2b0a4344534470e5da60d7a95ff2365de5bdc83a9e366d39fdca0e20762d564",
+      "bytes": 619
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/master.png",
+      "sha256": "a39e6f49d0f702b79c0cb9392be606260092ad910d37969a66411354a20cab3c",
+      "bytes": 1346208
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/pattern-check.json",
+      "sha256": "6672337b6cec8d092f744bca95ea3aee2167b5f4ab35ea69a8652f1fec8c0405",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/prompt.canonical.txt",
+      "sha256": "76ad69979690ebabfc33b7a39cc3192cc23de1844fe57d6b40ea54a42c22fcf7",
+      "bytes": 8997
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/prompt.txt",
+      "sha256": "ff9d2e3a68e170993ace627507d5bb49c5c547e681048be9681a9b0176c864d9",
+      "bytes": 10834
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/request.json",
+      "sha256": "735b8c1a1cfa54aa643185afc9791de937a81a859af5bf05b4159fdc28bc0cca",
+      "bytes": 3495
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/subject-source.json",
+      "sha256": "4b56fb879b47012b3a9ce3d84ad1c169041d09b412b1c7ce0fbe0a0cf34c7b07",
+      "bytes": 2299
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/visible-anatomy.json",
+      "sha256": "19d4d58284cfda139226bf624349294a12e029dd7ecd2ae0ecbf180aa7ec748d",
+      "bytes": 3690
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/visual-review.json",
+      "sha256": "58ff7247f5cad0d9455d69e6b7c428ccde01ec8ca39f2ba9a58d3603beae34c7",
+      "bytes": 1081
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/generation.json",
+      "sha256": "ee19c325b2ab1a6718e50726c1377a1b796850653ab83f5faa8b0a769de1e6f7",
+      "bytes": 623
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/master.png",
+      "sha256": "4a15820c33893693cf23d2816249646ee03b4d93a577eeafb27ee4f3662ad83c",
+      "bytes": 1332806
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/pattern-check.json",
+      "sha256": "905f994ecd502fbe617e8a1d069f77a1a3d05df72adff71bc2525699de560fbc",
+      "bytes": 288
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/prompt.canonical.txt",
+      "sha256": "6210debdc622db15672be88d10bcc617c14d4903bae27cc7bdeb8896bf29a4f9",
+      "bytes": 8977
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/prompt.txt",
+      "sha256": "39951828f105029bd2cec351ff6c3f764804cc7ce528a8eeeb568d76dbceb954",
+      "bytes": 10890
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/request.json",
+      "sha256": "02db3378c494521ea2ca831b04d3b41880e6a10c64365a8880e5f39144d7342e",
+      "bytes": 3585
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/subject-source.json",
+      "sha256": "1be6ab11e387c60e2ecfc04f461699c9e521c6cb0d134defa8c7963a36e16131",
+      "bytes": 2278
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/visible-anatomy.json",
+      "sha256": "73f1c846f3a795d1098dfac72be999f9cd1477ccde777f0569988d613075dd7a",
+      "bytes": 4212
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/visual-review.json",
+      "sha256": "7535731e1ac7b5d2041e588daea944882b348b3433ecbadb76d6f37f2b425378",
+      "bytes": 1045
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/generation.json",
+      "sha256": "358fe380e4cc404cb08af49d33a0d4d41455496c0726f14a9b3f77b55804f9f0",
+      "bytes": 605
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/master.png",
+      "sha256": "94e4f1fcd8c3da4d22a6d825526760d3ed6dfa73d31d3a50bbe13065c9349011",
+      "bytes": 1314204
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/pattern-check.json",
+      "sha256": "4bf37b757718727c7da8fe4d6d1bb61e0174e55b6136cc8ac43fa541a0eebe3d",
+      "bytes": 279
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/prompt.canonical.txt",
+      "sha256": "58743c55c2265f23b0764c773049d2bd90c0b19a431327ca9379dc070c08eaef",
+      "bytes": 8853
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/prompt.txt",
+      "sha256": "7893932ee92a3ecaf218b55c75c04b0a13625ad0305f62652d6c94f6aa5efaa3",
+      "bytes": 10762
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/request.json",
+      "sha256": "572028355647255d35d7d396ced3ffde262f21433c5cb2317131c3d206cd2278",
+      "bytes": 3207
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/subject-source.json",
+      "sha256": "1ea2e6903a41ac785c2fb119a0c8e00c55bac1a207bc4287908c0e2cbc507117",
+      "bytes": 2769
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/visible-anatomy.json",
+      "sha256": "a6345b9c9a2bc35cd3f523d6996bf16f4eee812b5ed7801b47fd8e06a928014c",
+      "bytes": 3821
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/visual-review.json",
+      "sha256": "1f0afb7c7863d43c6a6a32bd990a0452726a8b5ed5e1704f52e6ddd79c2ae29b",
+      "bytes": 1031
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/generation.json",
+      "sha256": "ece55e0ab382fff82e3296b57883326f758df1ca78e21d8ea120cc28329e0bf9",
+      "bytes": 605
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/master.png",
+      "sha256": "f3d06aad2a2ca4dcec007cb194babdb5bff93ff68da9fe379e6b7da7b46d175d",
+      "bytes": 1441867
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/pattern-check.json",
+      "sha256": "106cae47bae207d152a19b247cebd711cffb1b4af6e7457033c7d1d6df117a4b",
+      "bytes": 279
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/prompt.canonical.txt",
+      "sha256": "18b6ea0173554c389f68779c1a4739ac456d63b4ac0d2a04f643c81287d09024",
+      "bytes": 8827
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/prompt.txt",
+      "sha256": "88e06354f0c3205fb85b8413a32b2b023a46968ea1e25b5a22649fb1c8e6da50",
+      "bytes": 10662
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/request.json",
+      "sha256": "4570e2e213db881358b783072fceb0b461f42a8fe483a4e01ccefc7dab70a4d9",
+      "bytes": 3120
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/subject-source.json",
+      "sha256": "8da780843f0e44d4165754dfbe156134a1b7917b3d37003f34c68b8c17441432",
+      "bytes": 2112
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/visible-anatomy.json",
+      "sha256": "612dec0281dd216d12204c47d1f38af4d1da671993a0331cac64e50d765909b0",
+      "bytes": 5098
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/visual-review.json",
+      "sha256": "44ceb42e5f2e87f915a039572821dd03c7526e46bfa094153e214fd7fa54a537",
+      "bytes": 1021
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/generation.json",
+      "sha256": "28760cc13e46d34f50c1e070d2d6fa6eb70713b4085c61ec0b10de3893c02482",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/master.png",
+      "sha256": "d4a635b00f5211a899a951ac27910abe6909b91541c9831439aaa30c113eed82",
+      "bytes": 1409225
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/pattern-check.json",
+      "sha256": "ba419215760b2320ecb69bed460392f85f40ef67c3420832ea0c9b97caaabcb7",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/prompt.canonical.txt",
+      "sha256": "caa8d593e10af6e9e2fc511a463123619dc87e0a7f40b35a1e470f21aabd4c51",
+      "bytes": 8879
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/prompt.txt",
+      "sha256": "52393944cf670870e608b505e96ce3b122911514054769cea33cd3cade7bb3ec",
+      "bytes": 10784
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/request.json",
+      "sha256": "da377616b3712ee53b8d443557dd6aa2b9b06c3fbfe43ce49f04f76e70beb0cd",
+      "bytes": 3213
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/subject-source.json",
+      "sha256": "e494cdf396027cb34d6ecaa72af9bf14d973a922dc351123f94590aceaeba6cd",
+      "bytes": 2276
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/visible-anatomy.json",
+      "sha256": "3da11c8f76da59fe459062ea260ee6061a756ba09f57c2ba733686af67b5ef32",
+      "bytes": 3835
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/visual-review.json",
+      "sha256": "0a3ed42f5a261560366568c3dc83c1f07510383078cae23d8c5c0bba944c0fd5",
+      "bytes": 1039
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/generation.json",
+      "sha256": "17be134a3c463eeb64dec8282e9536424bbb8bcdb99b362eb754f3c3a3979ff4",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/master.png",
+      "sha256": "698cdd4bb32f9b98cfd0aa9c598b5905f23e848921862364bc9bd988276e1987",
+      "bytes": 1190799
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/pattern-check.json",
+      "sha256": "03c08229d1204a43848e6c634bfe59362aca69cfb37b4fce833d2237cb865ea4",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/prompt.canonical.txt",
+      "sha256": "90cb0ecd18fb03ceca02a83d1c53bc89b40b0fc079501b11e9519c2ce7a52022",
+      "bytes": 8890
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/prompt.txt",
+      "sha256": "42afc19155131605cddb2a053027b8b455df53bc7611524097deb5a16c364a55",
+      "bytes": 10767
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/request.json",
+      "sha256": "53eb6b36bd15659bfced0abddedd1d8d51c324390a1e20f91e2345d58788a3a1",
+      "bytes": 3191
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/subject-source.json",
+      "sha256": "c44d4b7814a11ea0a686d4a8196606a49ebc3ff55ff7ce8e5272377b54e7b270",
+      "bytes": 2808
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/visible-anatomy.json",
+      "sha256": "898cb66141d976dbe9eaec3f6a481d2aa6f564f245f16ef62fcf4891ac5db9ff",
+      "bytes": 3392
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/visual-review.json",
+      "sha256": "b5f52c3c7a0793f14739ac3bb0706163b602cc46519af427bf823d7c6a586486",
+      "bytes": 1011
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/generation.json",
+      "sha256": "f08a180d24b52978ab0abd9058572c592ca1c89216c6b667c9849087e87a348f",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/master.png",
+      "sha256": "9d96931f0af1f87d865181fd0f1a861d5470f66df3f7f6a4429a43c86931e28e",
+      "bytes": 1423879
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/pattern-check.json",
+      "sha256": "87d22a181a659ae5882dee551fd4c87efc9e796d308c4004e36b4208f2af0759",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/prompt.canonical.txt",
+      "sha256": "075e868241cfd32022712e53df06c12e58eebdd286479fc57ecf1d18e688b3e2",
+      "bytes": 8884
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/prompt.txt",
+      "sha256": "f6a79ce998c98093ca42b2bcc0d71d63c70b74e78359dbe79422fe08d322905e",
+      "bytes": 10805
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/request.json",
+      "sha256": "7962ecbdfb920592f3ca6c44562843c4e47ca402622c19b4518a3822311d7398",
+      "bytes": 3227
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/subject-source.json",
+      "sha256": "ad4a293c850a4f5ce08d77fa968be10626afa6a4a39b87edfdb34cd6ca719c62",
+      "bytes": 2800
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/visible-anatomy.json",
+      "sha256": "44de7456906b607b930fcfe809897be86bc0fa97e1515826200b211dbd63f218",
+      "bytes": 2953
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/visual-review.json",
+      "sha256": "a92a4df6aae2bf781cab3b04b334a3821e155f041e4132ec51cf8c50a3e9ad4d",
+      "bytes": 998
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/generation.json",
+      "sha256": "ed658ccd3fdd4c014b4b9c4fed4b3cd179abd52d74bf1d78eaa05ade0a036e8c",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/master.png",
+      "sha256": "9839c4ac570575823dd0c5b7bb835917cdec4a1e23523964b282ce4fc20067d5",
+      "bytes": 1441794
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/pattern-check.json",
+      "sha256": "e0740cc45d8c6ce79b14767d5faffe308a218f58aa7e0ede336b40e9fccd6448",
+      "bytes": 280
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/prompt.canonical.txt",
+      "sha256": "cd439737107e6a990212bfbd1a5fe992691a31c9e609e924f8d03145f66d0976",
+      "bytes": 8876
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/prompt.txt",
+      "sha256": "b6786f295f05c1c68d1d679cafeaf344f49ef55833841f7e76bb6e1c5aa84de3",
+      "bytes": 10733
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/request.json",
+      "sha256": "45c981cc73fcf8a10dc437a21209994c668d85e157e1182d21e9ae5ea672a18e",
+      "bytes": 3159
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/subject-source.json",
+      "sha256": "dae824b912bc1d16e36dbb6d645c021af96e0a79df690383ced398a7aca4e537",
+      "bytes": 2791
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/visible-anatomy.json",
+      "sha256": "f97e72f25115563b2d49a39d6bc6df99727af0cffdd74d9c62c926cdf0a9c22e",
+      "bytes": 2975
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/visual-review.json",
+      "sha256": "8dad1356e04df9f953f93cfab908add1d64b82ceac4799583380c21dc07f3b1f",
+      "bytes": 994
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/generation.json",
+      "sha256": "3e0aaccd02d001a5b1f41a54175fefb6caa7a2a56a65a78af43276effbe7815b",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/master.png",
+      "sha256": "686068536b23cc9e7f492b68754c48f64cb5ddcb9c2a0f17bdfaec722458b5d2",
+      "bytes": 1416730
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/pattern-check.json",
+      "sha256": "1cbd2d6ecb64313ee3adca84dc52ecbeb205f4a5827577bafa3ea8df819a932c",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/prompt.canonical.txt",
+      "sha256": "7e27ed7b5f855b174cc9eb0912b2202dbf520c70066acbeaedf1285530f284ee",
+      "bytes": 8871
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/prompt.txt",
+      "sha256": "d9f82f0fac634d6c219ab71759769d1091886d294e8baef47ded8564dfcf9bff",
+      "bytes": 10726
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/request.json",
+      "sha256": "af5badf8b085fd6a95ca804c9b4c17a6ece911167c89f4c5d14753f043c7ea61",
+      "bytes": 3435
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/subject-source.json",
+      "sha256": "7dc630e24e10a2ff091ccd26d277de6e405bee8bee90b34a65f07dbcffc81709",
+      "bytes": 2662
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/visible-anatomy.json",
+      "sha256": "c077d0724ac4ddda14d336b5bb12a465c3fbf0f87b3294750afe526f0c8e9636",
+      "bytes": 4272
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/visual-review.json",
+      "sha256": "5c880192323bae00a12bd7def50bd95aad74b353e7b0eee524877e7589326ef7",
+      "bytes": 1007
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/generation.json",
+      "sha256": "ee565d6a96511fb02a357cabeb5e3e92f4ebca14da713fc2736ee502acadc2db",
+      "bytes": 615
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/master.png",
+      "sha256": "ce827ea3a6e7cf2811078c0a38ac1c2a7e87e2d4cb8646f41ef02be62d984521",
+      "bytes": 1165360
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/pattern-check.json",
+      "sha256": "3f88f9f0e5356d0a53fd7febc92f561d8a850d3aaa980b90978ddfd440ffae44",
+      "bytes": 284
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/prompt.canonical.txt",
+      "sha256": "5488b647c7fc67c91ffc2ca3c8073e23962482cb59cd0b6e99e3bd11f55825e9",
+      "bytes": 9849
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/prompt.txt",
+      "sha256": "7ef733248d955ee1f14106f65ff87a679c70a98bfd790721458f6ca842ceb042",
+      "bytes": 11406
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/request.json",
+      "sha256": "22856fb645539d691c990f60bb7f9d672bc2efa7de0a5e097a5ec8316fbf4c38",
+      "bytes": 3285
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/subject-source.json",
+      "sha256": "49c948fd3c478ff98bd2cdb93cd8e2a307191ee995394c9a20d4088e7f4e59e4",
+      "bytes": 2695
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/visible-anatomy.json",
+      "sha256": "cb786383bcfc2750bbdf2aa0c6d3fd3195d8ee9a85f09b5d736833a57e33d41a",
+      "bytes": 2394
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/visual-review.json",
+      "sha256": "72696327fd02241ab31b1110da1d50f676e4c7ac27a3f4f8a9179bcc6997bb6f",
+      "bytes": 1048
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/generation.json",
+      "sha256": "30d5b43cbeec13fb7f42fbe83b4c3f59e7f3176d98a53bd0bd99c71af00a1a14",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/master.png",
+      "sha256": "97fa381cee47b59f2e3646274b31a75e55eda9502276ff91bad442d6afa35599",
+      "bytes": 1224056
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/pattern-check.json",
+      "sha256": "8a1d99547fa2769b7b4c9fa68292f075665d46b022dc59b57cebc63f89fc5fd7",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/prompt.canonical.txt",
+      "sha256": "d0527b9335068dda08e1646144e80340174c9a128cd1d20374263c8eb6b7e244",
+      "bytes": 9833
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/prompt.txt",
+      "sha256": "680927694f65ad62c24480bef0dd376742ea8aa0fc0a2bf0f3e393d8f9287975",
+      "bytes": 11390
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/request.json",
+      "sha256": "dd068bbee534ff0ce4442004ec71be6e525d88db1d42c98497c78748d7e57c75",
+      "bytes": 3159
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/subject-source.json",
+      "sha256": "0a2ed650bcf1e2cfc219300be2b5b53a2479a9c0d919ee1eb2f2db22c0068c51",
+      "bytes": 2681
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/visible-anatomy.json",
+      "sha256": "efcba2dd30d34729aa21f365f1081c935597d00b5c82cbaa0f4cb7077e367511",
+      "bytes": 2964
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/visual-review.json",
+      "sha256": "142aae02fcfad75b417a9bfb3cb4c6de8646ea255512755cf67b3761d26f88e9",
+      "bytes": 1006
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/generation.json",
+      "sha256": "613220dfd74106deed592119c86723c91b506878e1db85eac8f150eacf83ffa0",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/master.png",
+      "sha256": "7c93c25025d4f8c4e1edd4953f1a35610f1c5b3c24f9cc3af96af7dfa7ce556a",
+      "bytes": 1295440
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/pattern-check.json",
+      "sha256": "2bbd36a7f0d9882f035975b039e7742f448bee9a1de6f58a80c87c2baf7016ea",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/prompt.canonical.txt",
+      "sha256": "92efa42ba5b619f0ae0ad7f9e124bc1ae49fe10ea005d0f5b2925589915178a6",
+      "bytes": 9853
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/prompt.txt",
+      "sha256": "c4c5613fc34d351e0090d25664a349be0a3f167ce3dceda8a7a892d1fabb4f6e",
+      "bytes": 11410
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/request.json",
+      "sha256": "9aef9426982c85cd47dd45816fd9acc891d70905df1494184c292256ed5b6faa",
+      "bytes": 3251
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/subject-source.json",
+      "sha256": "2f333aaf62ac5171e2f632100e2c2fd5b83f61a0899e3401c28719d21061968a",
+      "bytes": 2702
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/visible-anatomy.json",
+      "sha256": "56c933792e1310ac16ed3038d225feebd28027a37eabbcdf0aa6f50de4928cc5",
+      "bytes": 3261
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/visual-review.json",
+      "sha256": "0bc2efc68b6ec8f90fb8b5933b7ef10f9576110e7b6c33ec308bb0df075e0b39",
+      "bytes": 1016
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/generation.json",
+      "sha256": "48ac967ad823c349eb44a3faf1ee81f7417184ae31d8b7a2fe519ef2e82e8cd6",
+      "bytes": 619
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/master.png",
+      "sha256": "93e2814091921d393c99f7355f517880745ac9f7df2e0dba4c222de1fc6d3401",
+      "bytes": 1325404
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/pattern-check.json",
+      "sha256": "ba8533f14f4729b2db185068d6b822e46dae59ad5eb9686fec287d3fa7c43940",
+      "bytes": 805
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/prompt.canonical.txt",
+      "sha256": "7ab0bb25dac528cdf28b9a9cb3829855acdd0a748174c13e50e8994e5da1546d",
+      "bytes": 9871
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/prompt.txt",
+      "sha256": "851a9d5d0d4ded600cf3720c413af25c098765abc46e72c1cee5c343da2a9e9c",
+      "bytes": 11428
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/request.json",
+      "sha256": "975bf4b683548c79f1b56925903e7af1d746edea1185bec5f5dfa46079dca1ac",
+      "bytes": 3209
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/subject-source.json",
+      "sha256": "9405fabb7cf8445a0946a5138dfb9e8b963113173479059af326116474e6a137",
+      "bytes": 2716
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/visible-anatomy.json",
+      "sha256": "7b44c95fc063ebb9fa8daabf539faa86daf3bf4dd784bed0cedd30619d5ef111",
+      "bytes": 2818
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/visual-review.json",
+      "sha256": "db90cfb1000a9a069a5819f2479cdf58035eb45b7f7534aba304de3dcb1711fe",
+      "bytes": 1039
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/generation.json",
+      "sha256": "247951da7e1231af065e0bf8083461fdbc01000bdb4fa28b7c8ca72b3ac01c88",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/master.png",
+      "sha256": "a41ea9c48adc03495bce4801b352c11eaebee92b397f48c134f06f5bda0b44e6",
+      "bytes": 1340965
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/pattern-check.json",
+      "sha256": "1c3ca42854eb798d8af4cba41a9b2b1764102c4784d0f0be68b330093131b9a2",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/prompt.canonical.txt",
+      "sha256": "7f1e8e37f034589e83089323416abe8cda679241dfd69a5eaefb647686125220",
+      "bytes": 8908
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/prompt.txt",
+      "sha256": "480252f61eab935087b6d7a100a5d7b437d05b64059a46742b50caff4badab60",
+      "bytes": 10469
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/request.json",
+      "sha256": "d066ac08f24be111807c49d412977d0949cb76ef00707cfc32bfb34733fb8609",
+      "bytes": 3229
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/subject-source.json",
+      "sha256": "507118d0809dd1e9b957f334810747a89409292d61cbac0a4ef55a18df165374",
+      "bytes": 3795
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/visible-anatomy.json",
+      "sha256": "e62d49dfffed06636815cc2e7fb44d311746a10a724396e01c48872d5df6eeb0",
+      "bytes": 3653
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/visual-review.json",
+      "sha256": "6459fce34e8956401f6d5f0a9bb65e83f231b6866438f4049c75d758cf9787d3",
+      "bytes": 1069
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/generation.json",
+      "sha256": "117b87aa522ef287f1f4658eb96dc547271ac6f56b1bfd93df7b5676b4859df4",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/master.png",
+      "sha256": "fae1988c5e7109e8675b57957b67dff556402cf91fb1624254dd93fc3532aa3d",
+      "bytes": 1294482
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/pattern-check.json",
+      "sha256": "2e8e5261398de8bb0a732fc688507794b9624056e384aafb3edaaa87e28d038a",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/prompt.canonical.txt",
+      "sha256": "8731ad31286958e2bdd316a821b87ad7b589beb683d78b11f5f69bd83482ad85",
+      "bytes": 8911
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/prompt.txt",
+      "sha256": "a4b5f6f6ac27b588de2efdfa92bcea735e23d1f9e37adb721f10f501cef97963",
+      "bytes": 10472
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/request.json",
+      "sha256": "ef3dea42b87ec96fef77f0405f21e54cf460885ebc5c35805990a0b78af12156",
+      "bytes": 3236
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/subject-source.json",
+      "sha256": "a8c31bfaca0c6a439378f8ffc5aff13d7b327181ac346fee116028ce5637a5d0",
+      "bytes": 3798
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/visible-anatomy.json",
+      "sha256": "bcd217a287447b69c8f70a8661b509448a37ca2f84d2936590bddc575decd08b",
+      "bytes": 4898
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/visual-review.json",
+      "sha256": "5ef06bdb6f4a5fd1de98594bf6d40ead1a039533b25a6c3c6c920874c30624aa",
+      "bytes": 1068
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/generation.json",
+      "sha256": "f03e0c853ff269fdea7e9d66987531c51cefcdfebdee00c9c2dd593e2466f44b",
+      "bytes": 623
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/master.png",
+      "sha256": "86777bf06ea84e45e7162d54bbab8406c2c5531838a5a0b26dc0bda7c0a2f41f",
+      "bytes": 1445905
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/pattern-check.json",
+      "sha256": "cc34d1f5c64b1c285db6abac671847b3391124daaeb799eeeb111b7008b21647",
+      "bytes": 288
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/prompt.canonical.txt",
+      "sha256": "269fdee3b521a707191d3ae6cfbbaf11163466f8b7cd7d5eac132a621f04309b",
+      "bytes": 8889
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/prompt.txt",
+      "sha256": "05929d2c23180f97a9142be9199a3590bb4850e50ae40ec9f492b66c71b2ddd6",
+      "bytes": 10450
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/request.json",
+      "sha256": "56aff5f879ede654440144399f8023cb7bd69c6b50b3411c6d9e99c79b0d2274",
+      "bytes": 3271
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/subject-source.json",
+      "sha256": "05d5d1be1265d071024f9b12fb10e88849bb275bad3ca9f2769f06d9697dae01",
+      "bytes": 3779
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/visible-anatomy.json",
+      "sha256": "89974934ac50b463aafcbe5717a809a74b52d906243187d295b761788d7eda11",
+      "bytes": 3201
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/visual-review.json",
+      "sha256": "777e68e364faf2fb51bce2873f9cb8de3eda1b170cae5a3465ba56e57abbe9cd",
+      "bytes": 1038
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/generation.json",
+      "sha256": "994ca425d24b3fb9c15c5f2ddab3c569230a49bbdea575610dd840916d737547",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/master.png",
+      "sha256": "fb1450d0a3e07370ce2723ad20534a5f236d7a4116f8786fbbd3a809893121ca",
+      "bytes": 1173926
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/pattern-check.json",
+      "sha256": "afe54091fcc284d91ea80f8e46e3bd31c3af08ad84d8b3455b77911d37cbbff7",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/prompt.canonical.txt",
+      "sha256": "a48a9cd2b5280675d03159491e1bbc8bb10f16cb274f0a1d284152798fb7ec18",
+      "bytes": 8880
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/prompt.txt",
+      "sha256": "3693d85fbf0e4af1a0086be300f34cc99ed62fdcfda02bffd3e61263ee04ad7f",
+      "bytes": 10441
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/request.json",
+      "sha256": "1c20acc7ba014bf32ca8ea7a062c0dd4c9a849b5f0974fad3670181a5d1f78ee",
+      "bytes": 3176
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/subject-source.json",
+      "sha256": "54fea5d2dc615fdda1a93c9642c5b9564c341cd82e8137f03422676fc7c660c8",
+      "bytes": 3771
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/visible-anatomy.json",
+      "sha256": "1fa6412aee154d95a1ae9736f4771868d8b723ab2244ed1062de160f53a0ea87",
+      "bytes": 3253
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/visual-review.json",
+      "sha256": "971329d4e6ca1d5a4306592e2e16e6c5453cb36ce8dfdb6c0462381d330ad046",
+      "bytes": 1032
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/batch-end-mailbox.json",
+      "sha256": "f895cb0e27a3f0b4b5681bcdcdc4c2315ded08ac4ec95c4593787a085b007759",
+      "bytes": 330
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/compile.log",
+      "sha256": "905a4c0f56ea104e97581e7fc90482dc0bca630e04cb630b43e86a4629abc083",
+      "bytes": 502
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/compile.mjs",
+      "sha256": "80d7bc1346ebb2d87fc3794b1a915dff81261a6b7ddd649f286b90b5142eb9f4",
+      "bytes": 3599
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/controls.json",
+      "sha256": "e4dcdf8af4a03865576392b92eb01b05f30cf06bea8291d5925e0bec2beb9a74",
+      "bytes": 1478
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/coverage-at-selection.json",
+      "sha256": "58ee0902410725ea96ebd71f2743a411bae596e5e2ff2b29de1fdaa76023fe63",
+      "bytes": 6832
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/excluded-c202.json",
+      "sha256": "2e38d7fb8fc45f5234fce321e2f2b7664eff4e707460a5108cf082fc77cace45",
+      "bytes": 318
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/framing.mjs",
+      "sha256": "0f83c4f3a64202d5d4b838c4493e7e33232bc4350fc71c65645f48365888320b",
+      "bytes": 963
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/freeze.mjs",
+      "sha256": "e49ff52a70d3d7d34642b57e695d346076169edb70c682f33d20d545036814a3",
+      "bytes": 2773
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/initial-compile-refusal.json",
+      "sha256": "d7fd6c7a5b2e1da426495dd3637a88d05c15a9260a8646339c296e850fbd26fd",
+      "bytes": 294
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/manual-framing.json",
+      "sha256": "379e4e33135efab554767fd48a458754d733e80099d359c92ec070155a9b1abd",
+      "bytes": 284
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/observations.json",
+      "sha256": "8f83ef6e08ed28d83f7822b74cf2f5fbbc7184ad2cea94e10168dff373d303d8",
+      "bytes": 18836
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/observe.mjs",
+      "sha256": "6e909740c903b566d9571d9e0f60cd80063cadaba7387c3190c42b2c59b2b20a",
+      "bytes": 2547
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/pattern-summary.json",
+      "sha256": "b2acb447d0356c81f7bcf6cfb6fc2ef81b6b31ae0afd3a3b5fb1c7ebd1eb67a6",
+      "bytes": 2326
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/pilot.json",
+      "sha256": "7bb0e7a8f9130a64f8136153c7a186651dee995d1f730ff813cafbfc570e9a3e",
+      "bytes": 31874
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/pipeline-proof.json",
+      "sha256": "e3a461ed8f4c6b1fbd13d7f92e652e295a2aa01d01e9cddb362eaf2996860592",
+      "bytes": 26987
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/provenance.mjs",
+      "sha256": "0f89db6f5c2bf4eb5c16b80673bad3946b9934607a2f65e20f706cfa7dfdfb9a",
+      "bytes": 7912
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/README.md",
+      "sha256": "35ad61e809af816007d742522a7f11c77fb27fa8b5f840b7ee7af3674350b29a",
+      "bytes": 2750
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/retain.mjs",
+      "sha256": "6582aa1c34d2a0f096efaba8fe9bc1d22d427c146839141a11693467a3371650",
+      "bytes": 1279
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/review-sheet.png",
+      "sha256": "c8c04d249824a2400656685a436a9dd4d99323c9fde8e941fa6742de27fb0626",
+      "bytes": 2693760
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/review.mjs",
+      "sha256": "8f84e1feae646897995d16e4c25427ef5287ba7231aa431344366a8ccc27f637",
+      "bytes": 1985
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/roster.json",
+      "sha256": "c2cefeb221919ffec73feac8ef70828071b1d9f3872cb72e8f7b52685ea42dff",
+      "bytes": 14793
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/selection.json",
+      "sha256": "2e5b9f75a7afc393a88bb60176b1203871aefd0412087dfd096e0df1ecc8c754",
+      "bytes": 33371
+    },
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_20261004/visual-notes.json",
+      "sha256": "b2f50d14e6b7b198a85a23d7d846959a027b3ab8d413a51aa4a2f7a04ea25fc2",
+      "bytes": 8022
+    }
+  ],
+  "bytes": 36360136
+}

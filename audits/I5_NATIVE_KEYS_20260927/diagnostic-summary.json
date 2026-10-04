@@ -1,0 +1,325 @@
+[
+  {
+    "name": "keys",
+    "rawSha256": "348e4f2156178f11c83eb066238924d99be537c92ae2d94c04d8507219619db6",
+    "error": "desktop final lazy-control foreground service: phase timed out after on-time falsy observations ({\"schema\":\"cf-v2-compendium-foreground-service-observation/v1\",\"targetId\":\"66BBCFD7000E3B61611636B7B217EC79\",\"sessionId\":\"E1C903E40B9EAA66DD5B77A2BA6B343F\",\"documentToken\":\"02d7a5ad-0c34-4ca1-b120-9482032a733f\",\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true,\"service\":{\"token\":\"desktop-compendium-foreground-3\",\"visibilityChanges\":0,\"focusLosses\":0,\"arm\":{\"observed\":true,\"sequence\":0,\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true},\"raf\":{\"observed\":true,\"sequence\":1,\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true},\"laterTask\":{\"observed\":false,\"sequence\":null,\"visibilityState\":null,\"hidden\":null,\"focused\":null}}}); last foreground observation: {\"schema\":\"cf-v2-compendium-foreground-service-observation/v1\",\"targetId\":\"66BBCFD7000E3B61611636B7B217EC79\",\"sessionId\":\"E1C903E40B9EAA66DD5B77A2BA6B343F\",\"documentToken\":\"02d7a5ad-0c34-4ca1-b120-9482032a733f\",\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true,\"service\":{\"token\":\"desktop-compendium-foreground-3\",\"visibilityChanges\":0,\"focusLosses\":0,\"arm\":{\"observed\":true,\"sequence\":0,\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true},\"raf\":{\"observed\":true,\"sequence\":1,\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true},\"laterTask\":{\"observed\":false,\"sequence\":null,\"visibilityState\":null,\"hidden\":null,\"focused\":null}}}",
+    "keys": {
+      "count": 92438,
+      "byKey": {
+        ".": 92438
+      },
+      "last": [
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        },
+        {
+          "key": ".",
+          "code": "NumpadDecimal",
+          "repeat": false,
+          "trusted": true,
+          "keyCode": 110,
+          "target": "",
+          "time": 0
+        }
+      ]
+    },
+    "lastForeground": {
+      "schema": "cf-v2-compendium-foreground-service-observation/v1",
+      "targetId": "66BBCFD7000E3B61611636B7B217EC79",
+      "sessionId": "E1C903E40B9EAA66DD5B77A2BA6B343F",
+      "documentToken": "02d7a5ad-0c34-4ca1-b120-9482032a733f",
+      "visibilityState": "visible",
+      "hidden": false,
+      "focused": true,
+      "service": {
+        "token": "desktop-compendium-foreground-3",
+        "visibilityChanges": 0,
+        "focusLosses": 0,
+        "arm": {
+          "observed": true,
+          "sequence": 0,
+          "visibilityState": "visible",
+          "hidden": false,
+          "focused": true
+        },
+        "raf": {
+          "observed": true,
+          "sequence": 1,
+          "visibilityState": "visible",
+          "hidden": false,
+          "focused": true
+        },
+        "laterTask": {
+          "observed": false,
+          "sequence": null,
+          "visibilityState": null,
+          "hidden": null,
+          "focused": null
+        }
+      }
+    }
+  },
+  {
+    "name": "nativekeys-desktop",
+    "rawSha256": "2d294a0958d5b181831bda96a6a552a66d54d5400fedde21a88586eb0908f705",
+    "error": "DIAGNOSTIC_COMPLETE: final foreground serviced; no calibration/certification",
+    "keys": {
+      "count": 0,
+      "byKey": {},
+      "last": []
+    },
+    "lastForeground": {
+      "schema": "cf-v2-compendium-foreground-service-observation/v1",
+      "targetId": "B730A4AA900F011C9830104F53FB396D",
+      "sessionId": "B61D727B22E91B4B484DC9FCC597394C",
+      "documentToken": "8ef4c6b3-7e09-4ba8-93a4-ead4696fa4d2",
+      "visibilityState": "visible",
+      "hidden": false,
+      "focused": true,
+      "service": {
+        "token": "desktop-compendium-foreground-3",
+        "visibilityChanges": 0,
+        "focusLosses": 0,
+        "arm": {
+          "observed": true,
+          "sequence": 0,
+          "visibilityState": "visible",
+          "hidden": false,
+          "focused": true
+        },
+        "raf": {
+          "observed": true,
+          "sequence": 1,
+          "visibilityState": "visible",
+          "hidden": false,
+          "focused": true
+        },
+        "laterTask": {
+          "observed": true,
+          "sequence": 2,
+          "visibilityState": "visible",
+          "hidden": false,
+          "focused": true
+        }
+      }
+    }
+  },
+  {
+    "name": "nativekeys-phone",
+    "rawSha256": "5a1f0490f48c95c683058313489abd0a409af855b52a71831735e80dc49315cc",
+    "error": "DIAGNOSTIC_COMPLETE: final foreground serviced; no calibration/certification",
+    "keys": {
+      "count": 0,
+      "byKey": {},
+      "last": []
+    },
+    "lastForeground": {
+      "schema": "cf-v2-compendium-foreground-service-observation/v1",
+      "targetId": "85AA0E817A45998874B9A09879BCADCA",
+      "sessionId": "A368C42FC3332CC51910759BE7F94627",
+      "documentToken": "db168a75-f438-4e2c-b41a-e43a2b8df02c",
+      "visibilityState": "visible",
+      "hidden": false,
+      "focused": true,
+      "service": {
+        "token": "phone-compendium-foreground-3",
+        "visibilityChanges": 0,
+        "focusLosses": 0,
+        "arm": {
+          "observed": true,
+          "sequence": 0,
+          "visibilityState": "visible",
+          "hidden": false,
+          "focused": true
+        },
+        "raf": {
+          "observed": true,
+          "sequence": 1,
+          "visibilityState": "visible",
+          "hidden": false,
+          "focused": true
+        },
+        "laterTask": {
+          "observed": true,
+          "sequence": 2,
+          "visibilityState": "visible",
+          "hidden": false,
+          "focused": true
+        }
+      }
+    }
+  },
+  {
+    "name": "scheduler",
+    "rawSha256": "35c0eb32a23de8478be6889ece4e82d7b771fd92faaab57b03863467648e4a5b",
+    "error": "desktop final lazy-control foreground service: phase timed out after on-time falsy observations ({\"schema\":\"cf-v2-compendium-foreground-service-observation/v1\",\"targetId\":\"562485D2CD5C0047A3FBDB24487F49B4\",\"sessionId\":\"0AE5706A21885A32496EB5C02D7ED781\",\"documentToken\":\"8a0b81df-e393-44fa-84f4-408bd3327d5a\",\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true,\"service\":{\"token\":\"desktop-compendium-foreground-3\",\"visibilityChanges\":0,\"focusLosses\":0,\"arm\":{\"observed\":true,\"sequence\":0,\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true},\"raf\":{\"observed\":true,\"sequence\":1,\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true},\"laterTask\":{\"observed\":false,\"sequence\":null,\"visibilityState\":null,\"hidden\":null,\"focused\":null}}}); last foreground observation: {\"schema\":\"cf-v2-compendium-foreground-service-observation/v1\",\"targetId\":\"562485D2CD5C0047A3FBDB24487F49B4\",\"sessionId\":\"0AE5706A21885A32496EB5C02D7ED781\",\"documentToken\":\"8a0b81df-e393-44fa-84f4-408bd3327d5a\",\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true,\"service\":{\"token\":\"desktop-compendium-foreground-3\",\"visibilityChanges\":0,\"focusLosses\":0,\"arm\":{\"observed\":true,\"sequence\":0,\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true},\"raf\":{\"observed\":true,\"sequence\":1,\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true},\"laterTask\":{\"observed\":false,\"sequence\":null,\"visibilityState\":null,\"hidden\":null,\"focused\":null}}}",
+    "keys": null,
+    "lastForeground": {
+      "schema": "cf-v2-compendium-foreground-service-observation/v1",
+      "targetId": "562485D2CD5C0047A3FBDB24487F49B4",
+      "sessionId": "0AE5706A21885A32496EB5C02D7ED781",
+      "documentToken": "8a0b81df-e393-44fa-84f4-408bd3327d5a",
+      "visibilityState": "visible",
+      "hidden": false,
+      "focused": true,
+      "service": {
+        "token": "desktop-compendium-foreground-3",
+        "visibilityChanges": 0,
+        "focusLosses": 0,
+        "arm": {
+          "observed": true,
+          "sequence": 0,
+          "visibilityState": "visible",
+          "hidden": false,
+          "focused": true
+        },
+        "raf": {
+          "observed": true,
+          "sequence": 1,
+          "visibilityState": "visible",
+          "hidden": false,
+          "focused": true
+        },
+        "laterTask": {
+          "observed": false,
+          "sequence": null,
+          "visibilityState": null,
+          "hidden": null,
+          "focused": null
+        }
+      }
+    }
+  }
+]

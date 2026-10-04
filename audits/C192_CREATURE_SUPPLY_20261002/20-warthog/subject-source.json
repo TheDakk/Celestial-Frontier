@@ -1,0 +1,71 @@
+{
+  "name": "Warthog",
+  "family": "quadruped",
+  "species": {
+    "name": "Warthog",
+    "aspect": 1.7,
+    "headFrac": 0.3,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "upward-curving tusks and fleshy facial warts",
+      "erect bristly mane along the neck and spine",
+      "thin tufted tail carried straight up"
+    ],
+    "note": "the head is large, flat-fronted and wedge-like; the body is leggier than a domestic pig's"
+  },
+  "genome": {
+    "seed": 3082268684,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 16,
+    "body": 14,
+    "loco": 1,
+    "trait": 13,
+    "size": 1,
+    "diet": 0,
+    "head": 7,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 5,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 18,
+    "detail": 9,
+    "accent": 10,
+    "temper": 4,
+    "sense": 5,
+    "repro": 1,
+    "life": 0,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Warthog"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Warthog\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3082268684\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "index": 69,
+  "profile": {
+    "id": "suid",
+    "names": [
+      "Wild Boar",
+      "Peccary",
+      "Warthog",
+      "Wild Pig",
+      "Pig"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "gore",
+      "headbutt"
+    ],
+    "notes": "Tusks must be observed before a gore motion is admitted."
+  }
+}

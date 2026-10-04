@@ -1,0 +1,136 @@
+{
+  "schema": "cf-painted-mars-final-results/v1",
+  "status": "SCOPED_PASS",
+  "certification": false,
+  "finalFocused": {
+    "tests": 97,
+    "files": 6
+  },
+  "historicalCorrected": {
+    "tests": 210,
+    "files": 12,
+    "sameFinalSource": false
+  },
+  "firstFocused": {
+    "passed": 209,
+    "failed": 1,
+    "retained": true
+  },
+  "static": [
+    "all3TypeScript",
+    "artunused",
+    "artaudit",
+    "overridecheck",
+    "speccheck",
+    "rootValidate1010renders50fingerprints"
+  ],
+  "native": {
+    "phone": {
+      "status": "PASS",
+      "report": "audits/AV_PAINTED_MARS_20260908/native-phone/review.json",
+      "sha256": "fdf69ff54b99b36cae5ea0ae25a5a95e4c3fb49bda7395d9bc94fa843f54293d",
+      "viewport": [
+        390,
+        844,
+        2
+      ],
+      "runtimeExceptions": 0,
+      "cleanupFailures": [],
+      "intercepted": 0,
+      "paint": [
+        {
+          "name": "mars-phone actual paint controls",
+          "changedPixels": 241486,
+          "noOpPixels": 0,
+          "restoredPixels": 0
+        },
+        {
+          "name": "mars-phone-reduced actual paint controls",
+          "changedPixels": 241486,
+          "noOpPixels": 0,
+          "restoredPixels": 0
+        },
+        {
+          "name": "mars-phone-effects-off actual paint controls",
+          "changedPixels": 241486,
+          "noOpPixels": 0,
+          "restoredPixels": 0
+        }
+      ]
+    },
+    "desktop": {
+      "status": "PASS",
+      "report": "audits/AV_PAINTED_MARS_20260908/native-desktop/review.json",
+      "sha256": "886519f1819d1ac8d7d269a584b10d672c6fe02b28b2b216dc2e62f82ff88820",
+      "viewport": [
+        1440,
+        1000,
+        1
+      ],
+      "runtimeExceptions": 0,
+      "cleanupFailures": [],
+      "intercepted": 0,
+      "paint": [
+        {
+          "name": "mars-desktop actual paint controls",
+          "changedPixels": 760991,
+          "noOpPixels": 0,
+          "restoredPixels": 0
+        }
+      ]
+    },
+    "blocked": {
+      "status": "PASS",
+      "report": "audits/AV_PAINTED_MARS_20260908/native-blocked/review.json",
+      "sha256": "638faa139e760390620bc701c1c4d4166f4523f252b20c9f29140c0f0ee3e097",
+      "viewport": [
+        390,
+        844,
+        2
+      ],
+      "runtimeExceptions": 0,
+      "cleanupFailures": [],
+      "intercepted": 1,
+      "paint": [
+        {
+          "name": "mars-blocked actual paint controls",
+          "changedPixels": 241486,
+          "noOpPixels": 0,
+          "restoredPixels": 0
+        }
+      ]
+    }
+  },
+  "preview": {
+    "preview-package": {
+      "status": "PASS",
+      "seconds": 3.149,
+      "sha256": "bf787eef30bf4c3ba75fb222dfc6f4550718eb56e406871f458e8994b98f9635"
+    },
+    "preview-browser-check": {
+      "status": "PASS",
+      "seconds": 2.523,
+      "sha256": "2307d2dafd033ce1ceca1c0937486e1b02cbc91682c0cb94b8ba606a8f2f5786"
+    },
+    "server": {
+      "createdAt": "2026-09-08T14:40:50.134Z",
+      "pid": 58886,
+      "root": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-painted-mars-local-20260908",
+      "url": "http://127.0.0.1:56099/?paintedvista=1",
+      "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+      "sourceState": "dirty-local-only",
+      "publishable": false,
+      "contentSha256": "8721f86dce95a43e7c773f96d3b82b9a59150bedcf70053a224b3f0a79423651",
+      "manifestSha256": "5c058b509b105440e4e7142e4885dd0997d424533e15a72fa088df47529d46d6"
+    },
+    "execSession": 66980
+  },
+  "limits": [
+    "Static exact-Mars candidate; no human asset acceptance",
+    "Inherited Worker availability guard",
+    "Old globe/scene composition visibly unfinished",
+    "No physical iPhone/Safari/PWA or full current certificate",
+    "Older navigation and verification blockers retained",
+    "No signed successor; no hosted actions"
+  ]
+}

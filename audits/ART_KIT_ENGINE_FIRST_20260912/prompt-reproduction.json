@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "promptsByteIdenticalToCaptures": [
+    "civet-prompt.txt",
+    "cranberry-prompt.txt",
+    "devils-club-prompt.txt",
+    "earth-temperate-prompt.txt",
+    "family-bird-prompt.txt",
+    "family-fish-prompt.txt",
+    "family-insect-prompt.txt",
+    "family-mammal-quadruped-prompt.txt",
+    "family-reptile-prompt.txt",
+    "frog-prompt.txt",
+    "persimmon-prompt.txt",
+    "platypus-prompt.txt"
+  ],
+  "count": 12
+}

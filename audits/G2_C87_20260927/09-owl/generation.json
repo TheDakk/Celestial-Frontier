@@ -1,0 +1,13 @@
+{
+  "id": "09-owl",
+  "name": "Owl",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a1ec9467-8cc8-4612-b8db-563b8dcdb7aa.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d38aa0247a8378632fc79acf345717b9dc56e9736fff6dd5cf5c34fad2ce8ca2",
+  "bytes": 1226950,
+  "promptSha256": "984e70fdb97787d9bc4f196722c97afca9cc3beb4d7b5c0ef7cefeabd0dc7d26",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

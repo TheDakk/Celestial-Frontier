@@ -1,0 +1,33 @@
+{
+  "schema": "cf.paint-skin-intake/v1",
+  "sourceBindingHash": "4df5ea089ec1c54bc604bea9af247fc3d8c5dd4ceeac5081ad975d0c93008721",
+  "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+  "packedPixels": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "4df5ea089ec1c54bc604bea9af247fc3d8c5dd4ceeac5081ad975d0c93008721",
+    "atlasSha256": "4e31bd471bd1e242e4eb492a5beb6d666426711c5c27473ed1458fb368c06227",
+    "parts": 12,
+    "comparedChannels": 2985188,
+    "changedChannels": 0
+  },
+  "vertices": 1866,
+  "partVertices": 2783,
+  "parts": 12,
+  "leaves": 818,
+  "triangles": 3462,
+  "ownershipEdges": 3424,
+  "ownershipAlphaRule": "every nonzero original alpha",
+  "originalInkOnly": true,
+  "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+  "nativeAcceptance": false,
+  "intake": {
+    "id": "fish",
+    "parts": 12,
+    "atlasSize": {
+      "width": 920,
+      "height": 2018
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  }
+}

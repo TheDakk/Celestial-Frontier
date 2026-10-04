@@ -1,0 +1,41 @@
+{
+  "schema": "cf.g2-framing-edit/v1",
+  "id": "02-crocodile-framing-v2",
+  "name": "Crocodile",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "intent": "edit",
+  "promptSha256": "d63d7dbeebae6464c9489afd4ca408ee2e10fae81722f790b8836a669ac4fe5c",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "reference": "audits/C196_QUADRUPED_ORIGINALS_20261002/02-crocodile/master.png",
+  "referenceSha256": "04fc849ab1b661c93162a602e1bad26fb07919ea36853e0ebdf326bbece9e8d0",
+  "actualInputRole": "sole edit target; original master",
+  "originalRequest": "audits/C196_QUADRUPED_ORIGINALS_20261002/02-crocodile/request.json",
+  "originalRequestSha256": "b6e8b096adf9421d70cd701c615ff00c6b00d9b544493a22171be0c3df370d9a",
+  "originalStyleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "priorFraming": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 70,
+      "y0": 520,
+      "x1": 1185,
+      "y1": 762
+    },
+    "margins": {
+      "left": 70,
+      "right": 68,
+      "top": 520,
+      "bottom": 491
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "scope": "One authorized framing-only edit; unchanged prior originals. All existing anatomy and contact holds remain pending independent review."
+}

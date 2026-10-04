@@ -1,0 +1,24 @@
+{
+  "schema": "cf.c163-runner-freeze/v1",
+  "status": "BROWSER_BUNDLE_PASS_NO_NATIVE_RUN",
+  "bundleSha256": "efef3bde2c81703ba977db267e8985f2f32229428dd97f36b277553970f018d3",
+  "files": [
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/native-runner.mjs",
+      "sha256": "b16ceb7643174ffe10f2721a489a96aaa0da1cffc686bbe1ac1083969f213028"
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/native-entry.mjs",
+      "sha256": "63484adb5f1e398fd4cc95d2ae8171098db9de023e9cae34e9522e656866625e"
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/transform-receipt.json",
+      "sha256": "dd6f13498419b04660ae81c2e6219f5d2ce6ad29fc143944013ff3f6d0d5625c"
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/materialize.mjs",
+      "sha256": "2509bd74950b88870ae85c2b61579e2a8aebad1dd7e39e02bb6bf1575782c7f0"
+    }
+  ],
+  "nativeRuns": 0
+}

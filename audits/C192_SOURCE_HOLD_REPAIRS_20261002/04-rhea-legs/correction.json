@@ -1,0 +1,37 @@
+{
+  "schema": "cf.c192-source-observed-correction/v1",
+  "id": "04-rhea-legs",
+  "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/rhea/packet/master.png",
+  "sourceSha256": "1e1a1a15c937a0646cba6ad93b89f62bddebdbc036f58840f428700add32a216",
+  "priorAuthoring": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c197/rhea/packet/authoring.json",
+  "priorAuthoringSha256": "29878e65ac84bfb4ac75435dab0ed5958714fefb03b59be80436e96ef11953d3",
+  "changedJoints": [
+    "legNearKnee",
+    "legNearAnkle",
+    "legNearFoot",
+    "legFarKnee",
+    "legFarAnkle",
+    "legFarFoot"
+  ],
+  "changedParts": [
+    "near-foot",
+    "near-shin",
+    "near-thigh",
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+  ],
+  "addedParts": [],
+  "priorityChanges": [],
+  "findings": [
+    "Both painted legs and three-toed feet are visible and separate. The right limb bends near x609/y775; the transferred knee x618.3/y845.3 lies on its long lower segment. The transferred far-thigh polygon is a narrow loop that omits the actual upper painted limb.",
+    "Both visible leg chains are traced from their feather emergence to their own toes. No additional limb or concealed hip joint is invented. The recorded extra limb-down paint is the omitted actual leg, not evidence of a third leg.",
+    "The inherited far-wing interpretation remains unresolved: the painting does not separately expose a complete far wing. Unedited wing and tail masks remain automatic transfer and this packet is not an independent whole-family reference."
+  ],
+  "sourcePixelsChanged": 0,
+  "presenceChanged": false,
+  "limitsChanged": false,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false
+}

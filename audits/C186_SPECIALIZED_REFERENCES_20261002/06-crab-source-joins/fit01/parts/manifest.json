@@ -1,0 +1,155 @@
+{
+  "creatureId": "c186-independent-crab",
+  "parts": [
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "1748915c948fac817ee6e18a79068cc3c42a54fb8329aa87c0421b21ded40342"
+    },
+    {
+      "name": "leg0farroot.png",
+      "path": "parts/leg0farroot.png",
+      "sha256": "e68d7cd59de989917ce6b4d8e85ccc490794cffd5037f6a375ce143fe77a3d66"
+    },
+    {
+      "name": "leg0farfoot.png",
+      "path": "parts/leg0farfoot.png",
+      "sha256": "0b50e36b86b1e8c5ceaa8b678d2b28d04cb0b13d3ca1f5d9a354ab41c63a1ba4"
+    },
+    {
+      "name": "leg1farroot.png",
+      "path": "parts/leg1farroot.png",
+      "sha256": "73f66e5c87eef4b7c1a017a187354b2b0e84f7bf2306a8976de6d7c77beb8dd9"
+    },
+    {
+      "name": "leg1farfoot.png",
+      "path": "parts/leg1farfoot.png",
+      "sha256": "661a6bbece6c512e9df794b26af6cbf14a6ffb878416607511ed780696274fc6"
+    },
+    {
+      "name": "leg2farroot.png",
+      "path": "parts/leg2farroot.png",
+      "sha256": "191344451a6b99d287112304c9653f4e52c2650a3ba1ff674ff87da5b2646d29"
+    },
+    {
+      "name": "leg2farfoot.png",
+      "path": "parts/leg2farfoot.png",
+      "sha256": "2e91b0162a789055f84f8f9cab051f565bdf4bea16e2f2540f7148a24b336d5a"
+    },
+    {
+      "name": "leg3farroot.png",
+      "path": "parts/leg3farroot.png",
+      "sha256": "57a0614ff91c2fdc61044ea3503e98d8f7052b4be246af0e3451c260d872b944"
+    },
+    {
+      "name": "leg3farfoot.png",
+      "path": "parts/leg3farfoot.png",
+      "sha256": "302c1b25f7e49f4ca1ef57a8ef94ea3b6914ffde59a8193a40e76f9b2680c9cc"
+    },
+    {
+      "name": "leg0nearroot.png",
+      "path": "parts/leg0nearroot.png",
+      "sha256": "0e175c33efe71481579eb24395fd467f3ddd7c1ade758afca2dfe26f906fff8a"
+    },
+    {
+      "name": "leg0nearfoot.png",
+      "path": "parts/leg0nearfoot.png",
+      "sha256": "a11b1a4e4d380260cd421da3dc83b9e582c3f8a9accf0890fc6e5450545bae93"
+    },
+    {
+      "name": "leg1nearroot.png",
+      "path": "parts/leg1nearroot.png",
+      "sha256": "3d5026d3053abb07deaaf5f70ce3c995283db4f616eec72d875e2bef8dd1c781"
+    },
+    {
+      "name": "leg1nearfoot.png",
+      "path": "parts/leg1nearfoot.png",
+      "sha256": "5bfc8b6c4b47cb6e25459c164860d953e365fca827bbef0fc951832b7c780494"
+    },
+    {
+      "name": "leg2nearroot.png",
+      "path": "parts/leg2nearroot.png",
+      "sha256": "8051f8bb518c0cf36be74644b2c4a5f6204c98781d359f10933a0f451b2087e3"
+    },
+    {
+      "name": "leg2nearfoot.png",
+      "path": "parts/leg2nearfoot.png",
+      "sha256": "abb7310245977ea9b8df961f3bc0b05543f425ed5efffd2b57a4c171a65163c2"
+    },
+    {
+      "name": "leg3nearroot.png",
+      "path": "parts/leg3nearroot.png",
+      "sha256": "0163a7e9608c950a78690c2ea830640cb624730bc6a5cda17298233c94dcde36"
+    },
+    {
+      "name": "leg3nearfoot.png",
+      "path": "parts/leg3nearfoot.png",
+      "sha256": "7d11bf642672ae1723db564ffc37d7e70a4a70af0d15f16e91caf7d41364777b"
+    },
+    {
+      "name": "clawfarbase.png",
+      "path": "parts/clawfarbase.png",
+      "sha256": "ed1cf8652d6ae3dde7b35230a775a2d6da141b527621a375a8e2e40fe85a19ed"
+    },
+    {
+      "name": "clawnearbase.png",
+      "path": "parts/clawnearbase.png",
+      "sha256": "dcb7d6584c5975346a76951eeac981974e9cb68e4903520dfa0cd465b3a078ff"
+    },
+    {
+      "name": "eyefartip.png",
+      "path": "parts/eyefartip.png",
+      "sha256": "01939d485c275ba15cd3d11944bbda3eb0626887a32f07cbe4e8e6d2971e2d06"
+    },
+    {
+      "name": "eyefarroot.png",
+      "path": "parts/eyefarroot.png",
+      "sha256": "89053e71a83e88ab0df52e529f369ff9169b320eb34b9e587e6952232b5bc4e6"
+    },
+    {
+      "name": "eyeneartip.png",
+      "path": "parts/eyeneartip.png",
+      "sha256": "59f8e6cd301fe7d550db75482a413c11d5b18728cdd9c4fc11046efa37e5a400"
+    },
+    {
+      "name": "eyenearroot.png",
+      "path": "parts/eyenearroot.png",
+      "sha256": "bf9f31338730b22ff685d3bfb4d2077135b57f24f1d2905cc7a87c9ac88bce8e"
+    },
+    {
+      "name": "clawfarfixedtip.png",
+      "path": "parts/clawfarfixedtip.png",
+      "sha256": "737378039734ba4fffa9f21a7a7546e1fbac79aec30b2e8808400f5bcb77b94d"
+    },
+    {
+      "name": "clawfardactyltip.png",
+      "path": "parts/clawfardactyltip.png",
+      "sha256": "1a2e8baa9e57e707da862042999b984986d2206fc973fc1b50ebe6766e7e1531"
+    },
+    {
+      "name": "clawfarelbow.png",
+      "path": "parts/clawfarelbow.png",
+      "sha256": "04c88336bdfb36cd427efd697c9c07ae0be50d44aad65a722e7a83394c4700c8"
+    },
+    {
+      "name": "clawnearfixedtip.png",
+      "path": "parts/clawnearfixedtip.png",
+      "sha256": "21ed903a7ed43ad1af3c7e2ad5c457b1b724d9fa486cd303d76911a3a24b0558"
+    },
+    {
+      "name": "clawneardactyltip.png",
+      "path": "parts/clawneardactyltip.png",
+      "sha256": "a45581ca05eea037deb0db87a89851071db7c5f4f6c0d4379198bfcb992cfcac"
+    },
+    {
+      "name": "clawnearelbow.png",
+      "path": "parts/clawnearelbow.png",
+      "sha256": "5cdbe4d419a10aa853d6f1cbd61a35eb038a6b458d727a0d0c6877b122da12bf"
+    },
+    {
+      "name": "carapace.png",
+      "path": "parts/carapace.png",
+      "sha256": "5b54254439c3c0dbbeca26d4448a59aea9645152a1fa6f1511f87b239899d904"
+    }
+  ]
+}

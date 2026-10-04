@@ -1,0 +1,7 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+tests/painted-earth-landing-binding.test.ts(20,13): error TS2352: Conversion of type 'CanonicalWorldRoster' to type 'Mutable<CanonicalWorldRoster>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  The types of 'biomeProfile.fauna' are incompatible between these types.
+    The type 'readonly BiomeProfileFaunaFamilyV1[]' is 'readonly' and cannot be assigned to the mutable type 'Mutable<BiomeProfileFaunaFamilyV1>[]'.

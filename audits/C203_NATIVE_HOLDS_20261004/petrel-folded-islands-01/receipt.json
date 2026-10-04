@@ -1,0 +1,176 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit",
+  "sourceMasterSha256": "48d607ad2fe4402bfd38fbfbe4d2e39bf6b340ca76a4a288beddc0ab05b42c4a",
+  "keyedRgbaSha256": "5a107aa5d19089ed5fcda0e3a57bc1754821bdc46744c81e88f61768e3e8c349",
+  "remainder": "body",
+  "remainderPixels": 24405,
+  "movedPixels": 2747,
+  "islands": [
+    {
+      "pixels": 302,
+      "to": "head",
+      "border": {
+        "beak": 20,
+        "head": 46,
+        "upper-neck": 17
+      }
+    },
+    {
+      "pixels": 15,
+      "to": "upper-neck",
+      "border": {
+        "head": 7,
+        "upper-neck": 12
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-tip",
+      "border": {
+        "far-wing-tip": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-tip",
+      "border": {
+        "far-wing-tip": 2
+      }
+    },
+    {
+      "pixels": 2067,
+      "to": "pelvis",
+      "border": {
+        "near-wing-flight": 12,
+        "tail": 88,
+        "pelvis": 120
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "pelvis",
+      "border": {
+        "pelvis": 4
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "pelvis",
+      "border": {
+        "pelvis": 3
+      }
+    },
+    {
+      "pixels": 72,
+      "to": "pelvis",
+      "border": {
+        "near-thigh": 14,
+        "pelvis": 18
+      }
+    },
+    {
+      "pixels": 27,
+      "to": "far-thigh",
+      "border": {
+        "far-thigh": 9,
+        "chest": 7
+      }
+    },
+    {
+      "pixels": 4,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": "near-shin",
+      "border": {
+        "near-shin": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2,
+        "near-shin": 1
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 2
+      }
+    },
+    {
+      "pixels": 224,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 80
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 20
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "c203-petrel-folded-islands",
+    "parts": 18,
+    "atlasSize": {
+      "width": 2035,
+      "height": 483
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 58,
+        "distancePx": 8.544003745317594,
+        "supports": [
+          231,
+          87
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 30,
+        "distancePx": 11.045361017187298,
+        "supports": [
+          9,
+          10
+        ]
+      }
+    ],
+    "sourceBindingHash": "2454ed4bb50281d462f154ec6a065c8ba886dcf31c14d6e04db5cb9e3462f1d2",
+    "sourceVertices": 1531,
+    "vertices": 1984,
+    "sharedSupports": 258,
+    "pins": 1028,
+    "independentSurfaceParts": 18,
+    "sourceJoins": 13,
+    "excludedOverlaps": 15,
+    "observedExcludedBoundaries": 15,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 15,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

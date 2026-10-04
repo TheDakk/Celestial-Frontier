@@ -1,0 +1,3 @@
+# C183 Gorilla source correction
+
+One built-in image-generation edit targets the open forehand and uneven support plane of the retained C168 Gorilla repaint. Exact generator PNG bytes and inherited canonical prompt/style are retained alongside the appended request. At full size the formerly open forehand now reads as knuckle-bearing; all four limbs remain visible. Support tips still differ in height and the view remains oblique, so this candidate stays HELD. No authored fit, walk/faint pass, native film or reference admission is claimed. No existing contact limit or painting was changed. The prior failures remain immutable.

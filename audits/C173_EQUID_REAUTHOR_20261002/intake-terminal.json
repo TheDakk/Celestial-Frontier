@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c173-equid-intake-terminal/v1",
+  "rows": [
+    {
+      "id": "wild-pony",
+      "exitCode": 0,
+      "error": null,
+      "log": "audits/C173_EQUID_REAUTHOR_20261002/wild-pony/intake.log"
+    },
+    {
+      "id": "horse",
+      "exitCode": 0,
+      "error": null,
+      "log": "audits/C173_EQUID_REAUTHOR_20261002/horse/intake.log"
+    },
+    {
+      "id": "wild-ass",
+      "exitCode": 0,
+      "error": null,
+      "log": "audits/C173_EQUID_REAUTHOR_20261002/wild-ass/intake.log"
+    }
+  ],
+  "retries": 0,
+  "nativeRun": false
+}

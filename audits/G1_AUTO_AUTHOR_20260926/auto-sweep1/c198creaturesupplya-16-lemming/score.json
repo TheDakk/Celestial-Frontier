@@ -1,0 +1,10 @@
+{
+ "id": "c198creaturesupplya-16-lemming",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail2 (tail2) covers 21% paint (reference 63%)",
+  "unexplained-anatomy: 11.5% of the paint lies away from the body and in no part (reference 5.7%)"
+ ],
+ "semanticPresence": null
+}

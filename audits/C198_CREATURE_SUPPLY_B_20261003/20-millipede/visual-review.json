@@ -1,0 +1,28 @@
+{
+  "name": "Millipede",
+  "masterSha256": "377d6c9aa73ba4f1fa3994c784edff8c22769af3818775dfeee860fa536157bb",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: cylindrical brown ringed body with dense short leg rows, two short beaded antennae and small head. Far legs/root mapping and two-pairs-per-diplosegment count not independently established; numerous legs exceed coarse compact-template scope and must not be deleted. Large rendered eye and highly glossy plates need biological/style review. Right antenna enters margin. Held, no anatomical admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 134,
+      "y0": 523,
+      "x1": 1163,
+      "y1": 725
+    },
+    "margins": {
+      "left": 134,
+      "right": 90,
+      "top": 523,
+      "bottom": 528
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

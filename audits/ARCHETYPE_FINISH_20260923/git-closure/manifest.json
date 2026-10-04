@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "path": "before/final-sprint-index.json",
+      "bytes": 52726,
+      "sha256": "eb7085650bfe6f581b3e337b6e5e5766a0da75171e5808c3046b69bba7f1008f"
+    },
+    {
+      "path": "before/final-sprint-review-index.md",
+      "bytes": 4301,
+      "sha256": "c9c483689db3ba37185ad4273cccb343e2a092f2f4a349aeb63b65b42e18ff1b"
+    },
+    {
+      "path": "before/LEDGER.md",
+      "bytes": 2287,
+      "sha256": "b3f3d93a983e1313baf4d1bf9a37098cc3688b8223a54723c03f5d089a42174c"
+    },
+    {
+      "path": "before/README.md",
+      "bytes": 1838,
+      "sha256": "41a9492fe02f57f4e08a55229782b500e3d509b994dce5b6febf2fb1da3ad88b"
+    },
+    {
+      "path": "before/ROADMAP.md",
+      "bytes": 5130,
+      "sha256": "e80b34e9b652995feb8bc56555a3e3e18a290d6c13b41ef137a5d384da489e01"
+    },
+    {
+      "path": "documentation-changes.json",
+      "bytes": 1482,
+      "sha256": "877771d40d4b8a0700ae3e33ce5d7c757aae216475da101164416389b26f5107"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2015,
+      "sha256": "596797944b87e676cc53d85052d33d5f9057b592cc5f92892e087843718bca5e"
+    },
+    {
+      "path": "signing-success.json",
+      "bytes": 859,
+      "sha256": "a6aa7c2498192964a987a32f3972f5e772b914abddef2022edc49df0e05f7824"
+    }
+  ]
+}

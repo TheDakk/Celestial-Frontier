@@ -1,0 +1,130 @@
+{
+  "schema": "cf.fish-seams-batch/v1",
+  "pilot": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/pilots/g2c274-eligible.json",
+  "author": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274",
+  "rows": [
+    {
+      "id": "01-water-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Buffalo"
+    },
+    {
+      "id": "02-mountain-tapir",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mountain Tapir"
+    },
+    {
+      "id": "03-black-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Black Bear"
+    },
+    {
+      "id": "04-elk",
+      "status": "SKIPPED_NONFISH",
+      "name": "Elk"
+    },
+    {
+      "id": "05-moose",
+      "status": "SKIPPED_NONFISH",
+      "name": "Moose"
+    },
+    {
+      "id": "06-hippopotamus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hippopotamus"
+    },
+    {
+      "id": "07-wild-pig",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wild Pig"
+    },
+    {
+      "id": "08-water-vole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Vole"
+    },
+    {
+      "id": "09-marsh-rodent",
+      "status": "SKIPPED_NONFISH",
+      "name": "Marsh Rodent"
+    },
+    {
+      "id": "10-cow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cow"
+    },
+    {
+      "id": "11-pig",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pig"
+    },
+    {
+      "id": "12-alpaca",
+      "status": "SKIPPED_NONFISH",
+      "name": "Alpaca"
+    },
+    {
+      "id": "13-gerenuk",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gerenuk"
+    },
+    {
+      "id": "14-nilgai",
+      "status": "SKIPPED_NONFISH",
+      "name": "Nilgai"
+    },
+    {
+      "id": "15-tahr",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tahr"
+    },
+    {
+      "id": "16-hyrax",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hyrax"
+    },
+    {
+      "id": "17-cardinal",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cardinal"
+    },
+    {
+      "id": "18-sparrow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sparrow"
+    },
+    {
+      "id": "19-pigeon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pigeon"
+    },
+    {
+      "id": "20-kookaburra",
+      "status": "SKIPPED_NONFISH",
+      "name": "Kookaburra"
+    },
+    {
+      "id": "22-catfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Catfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/22-catfish/static.json'"
+    },
+    {
+      "id": "23-cardinalfish",
+      "status": "REPAIR_REFUSED",
+      "name": "Cardinalfish",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/23-cardinalfish/fit",
+      "sourceMasterSha256": "86777bf06ea84e45e7162d54bbab8406c2c5531838a5a0b26dc0bda7c0a2f41f",
+      "sourceStaticSha256": "4ccf0ffe2661cf7d2739624febf5c471af98ced797d21d8fb92b4e8d43f46ee0",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274-fishseams/23-cardinalfish/fit",
+      "exitCode": 1
+    },
+    {
+      "id": "24-wahoo",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Wahoo",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/24-wahoo/static.json'"
+    }
+  ],
+  "scope": "Opt-in diagnostic candidates, no visual or library admission"
+}

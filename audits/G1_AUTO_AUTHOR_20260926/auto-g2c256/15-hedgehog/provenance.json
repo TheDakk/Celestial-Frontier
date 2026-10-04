@@ -1,0 +1,137 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "15-hedgehog",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "60677ffdb14c8afac6e225b99d758c414825ce3262fbd9e89de0945c4c90711b",
+ "subjectSourceSha256": "ecb37ca6e614e8f8174fc437e9440079a73b5bf7996bcfbd125ebfdeafebd55d",
+ "identity": {
+  "name": "Hedgehog",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hedgehog\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1045174609\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "seed": 1045174609,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0078,
+     "class": "top",
+     "attach": {
+      "x": 194,
+      "y": 128,
+      "relX": 0.44,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.034,
+     "class": "limb-down",
+     "attach": {
+      "x": 312.4,
+      "y": 212.9,
+      "relX": 1,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0148,
+     "class": "rear",
+     "attach": {
+      "x": 102,
+      "y": 211.5,
+      "relX": 0,
+      "relY": 0.65
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0226,
+     "class": "limb-down",
+     "attach": {
+      "x": 127.7,
+      "y": 256.9,
+      "relX": 0.12,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0205,
+     "class": "limb-down",
+     "attach": {
+      "x": 251,
+      "y": 255,
+      "relX": 0.71,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0206,
+     "class": "limb-down",
+     "attach": {
+      "x": 176,
+      "y": 257,
+      "relX": 0.35,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0246,
+     "class": "limb-down",
+     "attach": {
+      "x": 216.5,
+      "y": 257,
+      "relX": 0.54,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5,
+    "rear": 1
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

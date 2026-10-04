@@ -1,0 +1,82 @@
+{
+  "name": "Viper",
+  "family": "serpent",
+  "species": {
+    "name": "Viper",
+    "aspect": 2,
+    "headFrac": 0.08,
+    "eyes": "normal",
+    "posture": "coiled",
+    "mustRead": [
+      "broad triangular head sharply set off from a thin neck",
+      "short thick heavy body",
+      "zigzag or diamond dorsal chain pattern"
+    ],
+    "note": "generic representative: a European adder / pit-viper type; the pupils are vertical slits and the coil sits low and flat"
+  },
+  "genome": {
+    "seed": 2004074412,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 2,
+    "body": 1,
+    "loco": 7,
+    "trait": 2,
+    "size": 1,
+    "diet": 0,
+    "head": 7,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 1,
+    "habitat": 3,
+    "detail": 7,
+    "accent": 15,
+    "temper": 3,
+    "sense": 7,
+    "repro": 2,
+    "life": 1,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Viper"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Viper\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2004074412\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "index": 77,
+  "profile": {
+    "id": "snake",
+    "names": [
+      "Cobra",
+      "Viper",
+      "Tree Snake",
+      "Rat Snake",
+      "Garter Snake",
+      "Cottonmouth",
+      "Water Snake",
+      "Mamba",
+      "Rattlesnake",
+      "Racer",
+      "Mountain Viper",
+      "Whip Snake",
+      "Grass Snake",
+      "King Snake",
+      "Cave Snake",
+      "Snake",
+      "Vine Snake"
+    ],
+    "candidateTemplates": [
+      "serpent"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "strike"
+    ],
+    "notes": ""
+  }
+}

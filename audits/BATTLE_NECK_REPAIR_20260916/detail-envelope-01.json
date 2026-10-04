@@ -1,0 +1,198 @@
+{
+  "status": "FAIL",
+  "samples": 36,
+  "failed": [
+    {
+      "jaw": 0,
+      "earFarTip": -0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 208"
+    },
+    {
+      "jaw": 0,
+      "earFarTip": -0.3,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 1217"
+    },
+    {
+      "jaw": 0,
+      "earFarTip": 0,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 208"
+    },
+    {
+      "jaw": 0,
+      "earFarTip": 0,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 1217"
+    },
+    {
+      "jaw": 0,
+      "earFarTip": 0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": 0,
+      "earFarTip": 0.3,
+      "earNearTip": 0,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": 0,
+      "earFarTip": 0.3,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": -0.14,
+      "earFarTip": -0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 208"
+    },
+    {
+      "jaw": -0.14,
+      "earFarTip": -0.3,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 1217"
+    },
+    {
+      "jaw": -0.14,
+      "earFarTip": 0,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 208"
+    },
+    {
+      "jaw": -0.14,
+      "earFarTip": 0,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 1217"
+    },
+    {
+      "jaw": -0.14,
+      "earFarTip": 0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": -0.14,
+      "earFarTip": 0.3,
+      "earNearTip": 0,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": -0.14,
+      "earFarTip": 0.3,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": -0.26,
+      "earFarTip": -0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 208"
+    },
+    {
+      "jaw": -0.26,
+      "earFarTip": -0.3,
+      "earNearTip": 0,
+      "error": "Error: Head surface fold at triangle 1071"
+    },
+    {
+      "jaw": -0.26,
+      "earFarTip": -0.3,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 1071"
+    },
+    {
+      "jaw": -0.26,
+      "earFarTip": 0,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 208"
+    },
+    {
+      "jaw": -0.26,
+      "earFarTip": 0,
+      "earNearTip": 0,
+      "error": "Error: Head surface fold at triangle 1071"
+    },
+    {
+      "jaw": -0.26,
+      "earFarTip": 0,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 1071"
+    },
+    {
+      "jaw": -0.26,
+      "earFarTip": 0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": -0.26,
+      "earFarTip": 0.3,
+      "earNearTip": 0,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": -0.26,
+      "earFarTip": 0.3,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": -0.4363323129985824,
+      "earFarTip": -0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 208"
+    },
+    {
+      "jaw": -0.4363323129985824,
+      "earFarTip": -0.3,
+      "earNearTip": 0,
+      "error": "Error: Head surface fold at triangle 1054"
+    },
+    {
+      "jaw": -0.4363323129985824,
+      "earFarTip": -0.3,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 1054"
+    },
+    {
+      "jaw": -0.4363323129985824,
+      "earFarTip": 0,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 208"
+    },
+    {
+      "jaw": -0.4363323129985824,
+      "earFarTip": 0,
+      "earNearTip": 0,
+      "error": "Error: Head surface fold at triangle 1054"
+    },
+    {
+      "jaw": -0.4363323129985824,
+      "earFarTip": 0,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 1054"
+    },
+    {
+      "jaw": -0.4363323129985824,
+      "earFarTip": 0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": -0.4363323129985824,
+      "earFarTip": 0.3,
+      "earNearTip": 0,
+      "error": "Error: Head surface fold at triangle 204"
+    },
+    {
+      "jaw": -0.4363323129985824,
+      "earFarTip": 0.3,
+      "earNearTip": 0.3,
+      "error": "Error: Head surface fold at triangle 204"
+    }
+  ]
+}

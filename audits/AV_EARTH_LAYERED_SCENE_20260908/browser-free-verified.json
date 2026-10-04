@@ -1,0 +1,82 @@
+{
+  "status": "FAIL",
+  "scope": "Earth layered scene focused verification; historical full-profile and navigation failures remain open",
+  "steps": [
+    {
+      "name": "final-focused",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "tests/earth-layered-recipe.test.ts",
+        "packages/art/test/earth-resident-layer.test.ts",
+        "apps/game/src/earth-layered-load.test.ts",
+        "apps/game/src/earth-layered-resources.test.ts",
+        "tests/scene-texture-owner.test.ts",
+        "apps/game/src/earth-layered-protocol.test.ts",
+        "packages/art/test/biome-vista.test.ts",
+        "apps/game/src/painted-vista-load.test.ts",
+        "tests/painted-mars-binding.test.ts",
+        "tests/biome-vista-surface.test.ts",
+        "tests/biome-vista-cache.test.ts",
+        "tests/biome-vista-protocol.test.ts",
+        "tests/biome-vista-worker-error.test.ts",
+        "apps/game/src/planet-surface-turn-view.test.ts",
+        "tests/pwa-offline.test.ts",
+        "tests/current-producer-authorities.test.ts",
+        "tests/compendium-budget.test.ts",
+        "tests/guide-release.test.ts",
+        "tests/slicesmoke-guide-release-scroll-contract.test.ts",
+        "tests/slicesmoke-dtrain-release-convergence.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 4.818
+    },
+    {
+      "name": "typescript-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 2.531
+    },
+    {
+      "name": "art-unused-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 1.462
+    },
+    {
+      "name": "art-audit-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.619
+    },
+    {
+      "name": "override-check-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 2,
+      "error": null,
+      "seconds": 0.194
+    }
+  ],
+  "sourceFreeze": 786
+}

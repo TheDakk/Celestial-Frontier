@@ -1,0 +1,151 @@
+{
+  "throughHead": "a6afec2e065430755d2f1516c2f064f3bd4e09ab",
+  "cachedUpstream": "origin/openai/mac",
+  "commits": [
+    {
+      "commit": "dd7909b440a409f2b977079b592d698332c4c0de",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "766e0917f2f280c5fbc88b8c317a5a916e217be7",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "224086c9cb1bbfdd3d91ecbeea3ee4be97b66850",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "8ecb9209c72084797d109d7510bc695744809cb0",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "0dd262983b319254c7b957c1f0d9fd6e2cc6932f",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "c7b4fdfd9176d09daaa072d0c085c229ff47a262",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "1523b0b5e180478e06a4d031b45eaa824fcb0873",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "ddb51313772eb74a0fe38f5b31c7aab6fc813a93",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "6c511261ba6800368b48250df83cec15a78df837",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "7d39716aebef43a3bb24a1f6e34f7abdc7e6d3b3",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "5093684bcf90d1d81617dd6e88278911d779bdb6",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "4c2f282f1582e2cfa8b39e7c6d872e86695463cd",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "4b9698945b66846157bf7f62201eea818e821a0a",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "a03b18f5c67341acc66a087b1f9ca8db1802ff2b",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "7c62a15e7865509c27946049816ca68521f6dc88",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "2865b017bdf8471ede3c01ac17a0ded6872ae2f9",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "7da95a7af679924cd0b1a62021c8908c4fdd7a0d",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "f4c5489ac5dfaee45f9d4dbc3f1267e75b6ff96c",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "6c6ead8c56c735bbf0662846e9fe76b1c567d7a4",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "0cae378eab5eab1f6367cf677e0aca78faa31f33",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "406b3bcf0d12903d73648177a454381443add62e",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "36489e9a81ac741cbbce3f7afc89f313032827fb",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "c1a985b7fdf9bbdb2b326879d9ac9ab57f5f3166",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "e750bf00921f6e344b7b32e77e52ac9776208888",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "7572a5cb6e7eae85004ab324c53ba148d5f24787",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "29c1b5488088e0eac5a0e763007dafee1db4dbe5",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "be0e551f8e4d4e1443d203c72da3f43f7f50830e",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "d5d04fcf42c76b90e22099c7afad2cdbdd2ca04d",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "a6afec2e065430755d2f1516c2f064f3bd4e09ab",
+      "verified": true,
+      "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    }
+  ]
+}

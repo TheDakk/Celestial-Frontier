@@ -1,0 +1,134 @@
+[
+  {
+    "id": "01-clouded-leopard",
+    "status": "REFUSE",
+    "reason": "Flat coat on patterned species"
+  },
+  {
+    "id": "02-caracal",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "03-coyote",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "04-bobcat",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "05-lynx",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "06-mink",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "07-marten",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "08-fisher",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "09-crow",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "10-raven",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "11-robin",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "12-cardinal",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "13-magpie",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "14-jay",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "15-dove",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "16-pigeon",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "17-tree-snake",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "18-rat-snake",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "19-cottonmouth",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "20-water-snake",
+    "status": "REFUSE",
+    "reason": "Flat coat on patterned species"
+  },
+  {
+    "id": "21-mamba",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "22-mountain-viper",
+    "status": "REFUSE",
+    "reason": "Flat coat on patterned species"
+  },
+  {
+    "id": "23-whip-snake",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "24-grass-snake",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "25-dung-beetle",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "26-cicada",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "27-ladybug",
+    "status": "REFUSE",
+    "reason": "Flat coat on patterned species"
+  },
+  {
+    "id": "28-leafcutter-ant",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "29-cave-cricket",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "30-firefly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "31-carrion-beetle",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "32-stick-insect",
+    "status": "NOT_REQUIRED"
+  }
+]

@@ -1,0 +1,266 @@
+[
+  {
+    "id": "06-trout",
+    "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2tail-labels-v1/06-trout/tail-labels/fit",
+    "recordSha256": "b735d7163a155b058ecec4c3d9e8fbd8b7dd68b526d7c08e09f755bfb114c4d9",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2tail-labels-v1/06-trout/packet/master.png",
+    "masterSha256": "ec01a13926f9b5acc98c91dc041c178cafb0e71cc933c880a6c113e1b4a192b6",
+    "parts": [
+      {
+        "id": "near-pectoral",
+        "joint": "pectoralNear",
+        "layer": "near"
+      },
+      {
+        "id": "far-pectoral",
+        "joint": "pectoralFar",
+        "layer": "far"
+      },
+      {
+        "id": "dorsal",
+        "joint": "dorsal",
+        "layer": "far"
+      },
+      {
+        "id": "jaw",
+        "joint": "jaw",
+        "layer": "near"
+      },
+      {
+        "id": "head",
+        "joint": "head",
+        "layer": "near"
+      },
+      {
+        "id": "caudal",
+        "joint": "caudal",
+        "layer": "far"
+      },
+      {
+        "id": "spine5",
+        "joint": "spine5",
+        "layer": "near"
+      },
+      {
+        "id": "spine4",
+        "joint": "spine4",
+        "layer": "near"
+      },
+      {
+        "id": "spine3",
+        "joint": "spine3",
+        "layer": "near"
+      },
+      {
+        "id": "spine2",
+        "joint": "spine2",
+        "layer": "near"
+      },
+      {
+        "id": "spine1",
+        "joint": "spine1",
+        "layer": "near"
+      },
+      {
+        "id": "spine0",
+        "joint": "spine0",
+        "layer": "near"
+      },
+      {
+        "id": "body",
+        "joint": "root",
+        "layer": "near"
+      }
+    ],
+    "landmarks": {
+      "root": [
+        0.7690590111642743,
+        0.5054226475279107
+      ],
+      "head": [
+        0.8803827751196173,
+        0.4929824561403509
+      ],
+      "jaw": [
+        0.9409888357256778,
+        0.5211323763955343
+      ],
+      "spine0": [
+        0.7377192982456141,
+        0.4889952153110048
+      ],
+      "spine1": [
+        0.6253588516746412,
+        0.4782296650717704
+      ],
+      "spine2": [
+        0.5340510366826157,
+        0.46786283891547054
+      ],
+      "spine3": [
+        0.43835725677830945,
+        0.4674641148325359
+      ],
+      "spine4": [
+        0.3197767145135566,
+        0.48094098883572567
+      ],
+      "spine5": [
+        0.22336523125996813,
+        0.4916267942583732
+      ],
+      "caudal": [
+        0.07456140350877193,
+        0.48939393939393944
+      ],
+      "dorsal": [
+        0.49800637958532695,
+        0.34258373205741627
+      ],
+      "pectoralNear": [
+        0.7113237639553429,
+        0.5896331738437002
+      ],
+      "pectoralFar": [
+        0.7850877192982456,
+        0.567384370015949
+      ]
+    },
+    "remainder": {
+      "remainderPartId": "body"
+    },
+    "trackedCanonicalOriginal": "audits/G2_FAMILY_PILOT_20260926/06-trout/master.png"
+  },
+  {
+    "id": "10-herring",
+    "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2tail-labels-v1/10-herring/tail-labels/fit",
+    "recordSha256": "9d0dfe5f01fb23b8b2ececc203e246d7303cbcdfe5cb6b16d59cfc5c877d9f79",
+    "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2tail-labels-v1/10-herring/packet/master.png",
+    "masterSha256": "a0ce035f462ab4bad53bcf68dee03720850fad4dca3e1682ccb57379e343e9b0",
+    "parts": [
+      {
+        "id": "near-pectoral",
+        "joint": "pectoralNear",
+        "layer": "near"
+      },
+      {
+        "id": "far-pectoral",
+        "joint": "pectoralFar",
+        "layer": "far"
+      },
+      {
+        "id": "dorsal",
+        "joint": "dorsal",
+        "layer": "far"
+      },
+      {
+        "id": "jaw",
+        "joint": "jaw",
+        "layer": "near"
+      },
+      {
+        "id": "head",
+        "joint": "head",
+        "layer": "near"
+      },
+      {
+        "id": "caudal",
+        "joint": "caudal",
+        "layer": "far"
+      },
+      {
+        "id": "spine5",
+        "joint": "spine5",
+        "layer": "near"
+      },
+      {
+        "id": "spine4",
+        "joint": "spine4",
+        "layer": "near"
+      },
+      {
+        "id": "spine3",
+        "joint": "spine3",
+        "layer": "near"
+      },
+      {
+        "id": "spine2",
+        "joint": "spine2",
+        "layer": "near"
+      },
+      {
+        "id": "spine1",
+        "joint": "spine1",
+        "layer": "near"
+      },
+      {
+        "id": "spine0",
+        "joint": "spine0",
+        "layer": "near"
+      },
+      {
+        "id": "body",
+        "joint": "root",
+        "layer": "near"
+      }
+    ],
+    "landmarks": {
+      "root": [
+        0.7799840510366827,
+        0.5323763955342903
+      ],
+      "head": [
+        0.9144338118022329,
+        0.5056618819776715
+      ],
+      "jaw": [
+        0.9543859649122807,
+        0.5250398724082934
+      ],
+      "spine0": [
+        0.7422647527910685,
+        0.5181818181818182
+      ],
+      "spine1": [
+        0.6307017543859649,
+        0.5098086124401914
+      ],
+      "spine2": [
+        0.5559011164274322,
+        0.49800637958532695
+      ],
+      "spine3": [
+        0.44513556618819783,
+        0.49338118022328553
+      ],
+      "spine4": [
+        0.29856459330143537,
+        0.4972089314194577
+      ],
+      "spine5": [
+        0.20311004784688994,
+        0.48939393939393944
+      ],
+      "caudal": [
+        0.10342902711323763,
+        0.4925837320574163
+      ],
+      "dorsal": [
+        0.5302232854864434,
+        0.3772727272727273
+      ],
+      "pectoralNear": [
+        0.6817384370015949,
+        0.6042264752791069
+      ],
+      "pectoralFar": [
+        0.7460127591706539,
+        0.6000797448165869
+      ]
+    },
+    "remainder": {
+      "remainderPartId": "body"
+    },
+    "trackedCanonicalOriginal": "audits/G2_FAMILY_PILOT_20260926/10-herring/master.png"
+  }
+]

@@ -1,0 +1,4 @@
+{
+  "status": "REFUSED",
+  "error": "Layered stance reach: zero-displacement composite refuses {\"ms\":46.6,\"idleFraction\":0.46875,\"displacement\":0,\"error\":\"Error: Contact: approach:trot@46.6 exceeds scale compression bound\"}"
+}

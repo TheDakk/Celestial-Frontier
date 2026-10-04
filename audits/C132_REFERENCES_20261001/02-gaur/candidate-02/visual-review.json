@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c132-reference-visual-review/v1",
+  "name": "Gaur",
+  "masterSha256": "0731c9c4dd33b652ccf2e03bf6135993ce9ed0caae42831e74a266d5eb651edd",
+  "method": "Full original visual inspection of the exact candidate-02 painting",
+  "observation": "Dark muscular bovine with white stockings on all four legs, pale grey forehead, two horns, two ears, complete tufted tail and four hoof endpoints. Shoulder ridge is exaggerated and bison-like; retain species-art hold. No horn attack has been authored. Four stockinged legs, cloven-hoof silhouettes, tail tuft and both ears are visible after the edit. The far limb roots remain partially occluded. The high shoulder ridge is exaggerated and bison-like; this painting is a diagnostic geometry reference candidate, not species/art acceptance. Horns remain head-owned; no independent attack attachment is declared.",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 282,
+      "y0": 377,
+      "x1": 990,
+      "y1": 876
+    },
+    "margins": {
+      "left": 282,
+      "right": 263,
+      "top": 377,
+      "bottom": 377
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "status": "CANDIDATE_UNMEASURED",
+  "scope": "Manual authoring reference only; no intake/static/native/default-pool/Dakk acceptance."
+}

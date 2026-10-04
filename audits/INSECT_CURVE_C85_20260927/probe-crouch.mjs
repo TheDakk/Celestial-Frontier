@@ -1,0 +1,3 @@
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import{spawnSync}from'node:child_process';import{rolldown}from'../../port/v2/node_modules/rolldown/dist/index.mjs';
+const scratch=fs.mkdtempSync(path.join(os.tmpdir(),'cf-insect-curve-')),bundle=await rolldown({input:import.meta.dirname+'/probe-crouch.ts',platform:'node'});
+try{await bundle.write({file:scratch+'/run.mjs',format:'es'});const r=spawnSync(process.execPath,[scratch+'/run.mjs'],{stdio:'inherit',timeout:120000});process.exitCode=r.status??1;}finally{await bundle.close();fs.rmSync(scratch,{recursive:true});}

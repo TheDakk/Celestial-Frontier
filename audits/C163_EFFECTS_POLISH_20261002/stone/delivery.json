@@ -1,0 +1,18 @@
+{
+  "theme": "stone",
+  "phase": "travel",
+  "anchors": "audits/C163_EFFECTS_POLISH_20261002/stone/anchors.json",
+  "anchorsSha256": "4fd6c534eaffa055723341ef86b295ec5189354b44221fe1a5874de3499e9484",
+  "generation": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/stone/generation.json",
+    "sha256": "d3e19e92884b4f7296fee42123b9ffbc0d471b22fc06db5bbe9c89a05c44f497",
+    "bytes": 1199
+  },
+  "review": {
+    "path": "audits/C163_EFFECTS_POLISH_20261002/stone/visual-review.json",
+    "sha256": "5118a60dcc887fd89c192d37dd750bce1deb393fdd6eff23fee50c3d5d8653ae",
+    "bytes": 4462
+  },
+  "qualityAccepted": false,
+  "registered": false
+}

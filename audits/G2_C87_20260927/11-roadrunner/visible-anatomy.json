@@ -1,0 +1,144 @@
+{
+  "id": "11-roadrunner",
+  "name": "Roadrunner",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "2bca779a9e41b3602c8f97ed7ced955bd4d6c4765ad526e154a184101d3f53f9",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 13105,
+    "coreRadius": 17,
+    "bodyBox": {
+      "x0": 193,
+      "y0": 175,
+      "x1": 288,
+      "y1": 240
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.3435,
+        "pixels": 4502,
+        "box": {
+          "x0": 63,
+          "y0": 115,
+          "x1": 192,
+          "y1": 232
+        },
+        "attach": {
+          "x": 192,
+          "y": 210.5,
+          "relX": -0.01,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": -0.85,
+          "y": -0.53
+        },
+        "class": "rear",
+        "length": 160.5
+      },
+      {
+        "k": 1,
+        "frac": 0.1728,
+        "pixels": 2265,
+        "box": {
+          "x0": 269,
+          "y0": 122,
+          "x1": 356,
+          "y1": 208
+        },
+        "attach": {
+          "x": 285.2,
+          "y": 184.8,
+          "relX": 0.97,
+          "relY": 0.15
+        },
+        "dir": {
+          "x": 0.53,
+          "y": -0.85
+        },
+        "class": "top",
+        "length": 94.7
+      },
+      {
+        "k": 2,
+        "frac": 0.0416,
+        "pixels": 545,
+        "box": {
+          "x0": 178,
+          "y0": 240,
+          "x1": 235,
+          "y1": 295
+        },
+        "attach": {
+          "x": 222,
+          "y": 241,
+          "relX": 0.31,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.51,
+          "y": 0.86
+        },
+        "class": "limb-down",
+        "length": 69.7
+      },
+      {
+        "k": 3,
+        "frac": 0.0476,
+        "pixels": 624,
+        "box": {
+          "x0": 236,
+          "y0": 241,
+          "x1": 296,
+          "y1": 296
+        },
+        "attach": {
+          "x": 245,
+          "y": 241,
+          "relX": 0.55,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.34,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 75
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "top": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 178,
+        "x1": 224,
+        "cx": 202.3
+      },
+      {
+        "x0": 244,
+        "x1": 296,
+        "cx": 270.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

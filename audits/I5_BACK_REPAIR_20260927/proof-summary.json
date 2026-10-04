@@ -1,0 +1,57 @@
+{
+  "scope": "Focused native product regression, not certification",
+  "sourceHeadBeforeRepair": "1ea0b7312b3c760a7ef2ebac443d5aad352d1c3e",
+  "indexBeforeSha256": "531de0579ff16b89c192ae8fac7d5e810810243a61ad7c66c55cb38932c96279",
+  "indexAfterSha256": "57472c1faa851ff323a82daf74c640a86dbc99ef3930d8dc8ca6b76d9811df9b",
+  "v1BudgetSha256": "340a67c1e6d6f4f7e120c7f13e1e06a674757ddcd2a023c100e4f7f65493fbd9",
+  "rows": [
+    {
+      "name": "before-01",
+      "status": "ERROR",
+      "reportSha256": "88699df7f92bdbdf6cb4a10dbb3e233159b2b32487b3ad99e4185d21ca2281fe",
+      "backHit": null,
+      "pinReopensShipyard": null,
+      "nativeEntrySteps": 0
+    },
+    {
+      "name": "before-02",
+      "status": "ERROR",
+      "reportSha256": "324da34dac106962377bc296661fb47f07bccdcd31f4b8f9514e76bee647fdec",
+      "backHit": null,
+      "pinReopensShipyard": null,
+      "nativeEntrySteps": 0
+    },
+    {
+      "name": "before-03",
+      "status": "FAIL",
+      "reportSha256": "13da9ed911487b0c60b8c42fd375579ce3599207d4bb0d83704ba855b77440a0",
+      "backHit": "<button type=\"button\" id=\"pinchip\" class=\"ready\" data-recipe-pin-chip=\"plate\" aria-label=\"\ud83d\udccc Iron Plate \u2014 READY to forge \u2726. Open the Shipyard.\">\ud83d\udccc Iron Plate \u2014 READY to forge \u2726</button>",
+      "pinReopensShipyard": null,
+      "nativeEntrySteps": 0
+    },
+    {
+      "name": "after-01",
+      "status": "PASS",
+      "reportSha256": "270462c57868a64ebb6587a7ba3120c1aa315c47944531cb1135ce582faa8a75",
+      "backHit": "<button id=\"codexback\" style=\"background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px\">\u2039 Compendium</button>",
+      "pinReopensShipyard": true,
+      "nativeEntrySteps": 0
+    },
+    {
+      "name": "mutant-01",
+      "status": "FAIL",
+      "reportSha256": "61fa81a95eab33f03e0d68193837ee6dc4f123fee255a75c859f1da972609379",
+      "backHit": "<button type=\"button\" id=\"pinchip\" class=\"ready\" data-recipe-pin-chip=\"plate\" aria-label=\"\ud83d\udccc Iron Plate \u2014 READY to forge \u2726. Open the Shipyard.\" style=\"z-index: 40;\">\ud83d\udccc Iron Plate \u2014 READY to forge \u2726</button>",
+      "pinReopensShipyard": null,
+      "nativeEntrySteps": 0
+    },
+    {
+      "name": "after-keyboard-01",
+      "status": "PASS",
+      "reportSha256": "269ee6932cf7aedfec7c985b2faa8a4fac182404f3e25f0832082851e6420938",
+      "backHit": "<button id=\"codexback\" style=\"background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px\">\u2039 Compendium</button>",
+      "pinReopensShipyard": true,
+      "nativeEntrySteps": 11
+    }
+  ]
+}

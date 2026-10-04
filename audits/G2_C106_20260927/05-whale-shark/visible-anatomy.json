@@ -1,0 +1,186 @@
+{
+  "id": "05-whale-shark",
+  "name": "Whale Shark",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "98dd87e3792819b89eede904750255caf338f38b3cfeb997482bd69c3b608338",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 20588,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 167,
+      "y0": 171,
+      "x1": 362,
+      "y1": 242
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0341,
+        "pixels": 703,
+        "box": {
+          "x0": 183,
+          "y0": 143,
+          "x1": 225,
+          "y1": 170
+        },
+        "attach": {
+          "x": 204,
+          "y": 170,
+          "relX": 0.19,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.47,
+          "y": -0.88
+        },
+        "class": "top",
+        "length": 34.2
+      },
+      {
+        "k": 1,
+        "frac": 0.2301,
+        "pixels": 4738,
+        "box": {
+          "x0": 25,
+          "y0": 154,
+          "x1": 166,
+          "y1": 255
+        },
+        "attach": {
+          "x": 166,
+          "y": 205.5,
+          "relX": -0.01,
+          "relY": 0.49
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.03
+        },
+        "class": "rear",
+        "length": 150.1
+      },
+      {
+        "k": 2,
+        "frac": 0.0492,
+        "pixels": 1013,
+        "box": {
+          "x0": 363,
+          "y0": 185,
+          "x1": 394,
+          "y1": 228
+        },
+        "attach": {
+          "x": 363,
+          "y": 206.5,
+          "relX": 1.01,
+          "relY": 0.5
+        },
+        "dir": {
+          "x": 0.99,
+          "y": -0.15
+        },
+        "class": "front",
+        "length": 37.7
+      },
+      {
+        "k": 3,
+        "frac": 0.0069,
+        "pixels": 143,
+        "box": {
+          "x0": 163,
+          "y0": 228,
+          "x1": 185,
+          "y1": 242
+        },
+        "attach": {
+          "x": 173.3,
+          "y": 233.2,
+          "relX": 0.03,
+          "relY": 0.88
+        },
+        "dir": {
+          "x": -0.68,
+          "y": 0.73
+        },
+        "class": "limb-down",
+        "length": 14.6
+      },
+      {
+        "k": 4,
+        "frac": 0.0483,
+        "pixels": 995,
+        "box": {
+          "x0": 228,
+          "y0": 243,
+          "x1": 287,
+          "y1": 276
+        },
+        "attach": {
+          "x": 266,
+          "y": 243,
+          "relX": 0.51,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.62,
+          "y": 0.78
+        },
+        "class": "limb-down",
+        "length": 50.3
+      },
+      {
+        "k": 5,
+        "frac": 0.0112,
+        "pixels": 230,
+        "box": {
+          "x0": 290,
+          "y0": 243,
+          "x1": 311,
+          "y1": 258
+        },
+        "attach": {
+          "x": 300.5,
+          "y": 243,
+          "relX": 0.68,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.25,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 18.3
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 228,
+        "x1": 256,
+        "cx": 240
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

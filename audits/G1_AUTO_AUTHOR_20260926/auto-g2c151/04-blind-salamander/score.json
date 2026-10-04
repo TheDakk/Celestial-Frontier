@@ -1,0 +1,13 @@
+{
+ "id": "04-blind-salamander",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 16% paint (reference 53%)",
+  "missing-anatomy: part hind-far-paw (hindFarPaw) covers 5% paint (reference 53%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 44%)",
+  "missing-anatomy: part fore-far-knee (foreFarKnee) covers 18% paint (reference 59%)",
+  "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+ ],
+ "semanticPresence": null
+}

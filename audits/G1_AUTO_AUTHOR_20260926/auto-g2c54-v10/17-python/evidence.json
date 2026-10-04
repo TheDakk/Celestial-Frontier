@@ -1,0 +1,202 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches serpent better (0.0138 < 0.0171)",
+  "extra-anatomy (unassigned): a rear appendage of 8.7% paint that no reference appendage lands on"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "remainderMarker": false,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [
+  {
+   "id": "head",
+   "vertices": 2
+  },
+  {
+   "id": "segment-8",
+   "vertices": 1
+  },
+  {
+   "id": "segment-9",
+   "vertices": 2
+  }
+ ],
+ "untangled": [],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 8.7% paint that no reference appendage lands on"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "segment-9",
+     "segment-8"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0836,
+    "target": 1,
+    "overlap": 0.097
+   },
+   {
+    "owners": [
+     "head",
+     "jaw"
+    ],
+    "names": [
+     "head"
+    ],
+    "refFrac": 0.0359,
+    "target": 0,
+    "overlap": 0.497
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1575,
+     "class": "front",
+     "attach": {
+      "x": 345.6,
+      "y": 206.1,
+      "relX": 0.84,
+      "relY": 0.39
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0867,
+     "class": "rear",
+     "attach": {
+      "x": 81.9,
+      "y": 209.3,
+      "relX": 0.19,
+      "relY": 0.44
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "eel",
+   "byClass": {
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.1125,
+  "ref": 0.0417
+ },
+ "bestReference": "eel",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "eel",
+   "cost": 0.01708
+  },
+  {
+   "ref": "racer",
+   "cost": 0.02373
+  }
+ ],
+ "mirrorBest": 0.01382,
+ "otherFamilyBest": {
+  "family": "radial",
+  "cost": 0.01819
+ },
+ "coverage": [
+  {
+   "id": "root",
+   "joint": "root",
+   "paint": 1,
+   "area": 350.594999999998
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.18861607142857142,
+   "area": 14329.990000000027
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.7520435967302452,
+   "area": 17611.840000000015
+  },
+  {
+   "id": "segment-0",
+   "joint": "seg0",
+   "paint": 0.2227088948787062,
+   "area": 47620.14000000004
+  },
+  {
+   "id": "segment-1",
+   "joint": "seg1",
+   "paint": 0.18173474070674622,
+   "area": 34904.09000000004
+  },
+  {
+   "id": "segment-2",
+   "joint": "seg2",
+   "paint": 0.1806020066889632,
+   "area": 33484.279999999955
+  },
+  {
+   "id": "segment-3",
+   "joint": "seg3",
+   "paint": 0.2480349344978166,
+   "area": 36663.785000000025
+  },
+  {
+   "id": "segment-4",
+   "joint": "seg4",
+   "paint": 0.28782608695652173,
+   "area": 36789.00500000003
+  },
+  {
+   "id": "segment-5",
+   "joint": "seg5",
+   "paint": 0.22969675845242243,
+   "area": 45930.54999999999
+  },
+  {
+   "id": "segment-6",
+   "joint": "seg6",
+   "paint": 0.18654131618010886,
+   "area": 64657.56
+  },
+  {
+   "id": "segment-7",
+   "joint": "seg7",
+   "paint": 0.3658099222952779,
+   "area": 53531.774999999994
+  },
+  {
+   "id": "segment-8",
+   "joint": "seg8",
+   "paint": 0.396078431372549,
+   "area": 12258.75000000004
+  },
+  {
+   "id": "segment-9",
+   "joint": "seg9",
+   "paint": 0.16429404900816802,
+   "area": 68563.04
+  }
+ ],
+ "unclaimedFrac": 0.0648
+}

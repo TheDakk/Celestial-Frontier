@@ -1,0 +1,11 @@
+{
+ "id": "c196creaturesupply-23-orchid-bee",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a limb-down appendage of 7.5% paint that no reference appendage lands on",
+  "unexplained-anatomy: 6.9% of the paint lies away from the body and in no part (reference 0.1%)"
+ ],
+ "semanticPresence": null
+}

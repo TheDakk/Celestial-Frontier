@@ -1,0 +1,9 @@
+{
+ "id": "c192creaturesupply-05-impala",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 91%)"
+ ],
+ "semanticPresence": null
+}

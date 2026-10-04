@@ -1,0 +1,9 @@
+{
+ "id": "g2c83-08-wahoo",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part dorsal (dorsal) covers 30% paint (reference 92%)"
+ ],
+ "semanticPresence": null
+}

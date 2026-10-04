@@ -1,0 +1,13 @@
+{
+  "id": "03-wrasse",
+  "name": "Wrasse",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f1af25ec-02e6-44ce-88f0-45e74f6724ea.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "da948c355f98c7cfe840dc91bf8afc6ec01cb73a3599d1ca1d8289dabfc26c1d",
+  "bytes": 1432170,
+  "promptSha256": "1e5b3fb7b80b1f13c89a8b07ce75c875020ca74796c6b1bce7c43d0465160cef",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

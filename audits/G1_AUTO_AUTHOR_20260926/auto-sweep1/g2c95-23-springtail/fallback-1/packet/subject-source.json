@@ -1,0 +1,65 @@
+{
+  "name": "Springtail",
+  "family": "insect",
+  "species": {
+    "name": "Springtail",
+    "aspect": 2,
+    "headFrac": 0.25,
+    "eyes": "small",
+    "posture": "crawling",
+    "mustRead": [
+      "stubby soft six-legged body",
+      "forked jumping furcula folded under the abdomen",
+      "short beaded antennae"
+    ],
+    "note": "Not an insect proper - wingless with only six abdominal segments and a spring-loaded tail latch."
+  },
+  "genome": {
+    "seed": 2583035257,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 15,
+    "body": 15,
+    "loco": 8,
+    "trait": 23,
+    "size": 4,
+    "diet": 3,
+    "head": 9,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 3,
+    "pattern": 5,
+    "eyes": 1,
+    "behavior": 4,
+    "habitat": 14,
+    "detail": 1,
+    "accent": 5,
+    "temper": 4,
+    "sense": 2,
+    "repro": 6,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Springtail"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Springtail\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2583035257\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"23\"]]]]",
+  "index": 627,
+  "profile": {
+    "id": "springtail",
+    "names": [
+      "Springtail"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "Furcula jump needs observed spring organ, not a stinger."
+  }
+}

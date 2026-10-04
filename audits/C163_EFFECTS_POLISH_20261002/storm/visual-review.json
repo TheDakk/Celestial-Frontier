@@ -1,0 +1,147 @@
+{
+  "schema": "cf.c163-effect-visual-review/v1",
+  "theme": "storm",
+  "selectedPhase": "launch",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeProof": false,
+  "inspectedImages": [
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/launch-master.png",
+      "sha256": "1dcf8034ad4f7b28fa1e21677c9b9fc7dfbcdd6a7b0d2615cdbe02fe324b173f",
+      "bytes": 1825773
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/comparison-static.png",
+      "sha256": "6fdff47e7ef8527c57352f1e928ec53807d2df6737161f73b7edde6f8d3cdbb4",
+      "bytes": 160406
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/registered/launch.png",
+      "sha256": "174577a4fb40e286eae28c197526870db486d10758efca7eb5bc735eda7a0bcc",
+      "bytes": 190230
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/registered/travel.png",
+      "sha256": "1a149c95a4b81b39013527fd52aa71e89080dc073f684298081e28684ab50ca0",
+      "bytes": 174769
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/storm/registered/impact.png",
+      "sha256": "3cdfa440d457cbb7b4fe4cf740c0e7cf76b8931fe1ff40d16daa8eda3afe0634",
+      "bytes": 122331
+    }
+  ],
+  "comparisonLayout": "Static 768 x 1152 comparison; old LEFT, candidate RIGHT; rows gray (#464c46), dark (#151820), pale (#d6cebb). This is not a native film or arena proof.",
+  "findings": [
+    "Broader white-gold arcs and larger charcoal cloud facets read more clearly on the retained dark, gray and pale static backgrounds.",
+    "Actual occupied paint grew despite unchanged canvas registration and anchors. Fine branch tips and charged debris still need native transition and phone-size review."
+  ],
+  "mechanical": {
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "storm",
+    "sequenceId": "storm-c163-polish-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 53044,
+        "edge": 14507,
+        "fringe": 33,
+        "fringeRatio": 0.002274763907079341,
+        "accentShare": 0.03341959664465465,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 141,
+          "y": 418,
+          "width": 389,
+          "height": 323
+        }
+      },
+      "travel": {
+        "painted": 50000,
+        "edge": 16567,
+        "fringe": 59,
+        "fringeRatio": 0.003561296553389268,
+        "accentShare": 0.00533109558950564,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 107,
+          "y": 455,
+          "width": 688,
+          "height": 280
+        }
+      },
+      "impact": {
+        "painted": 33540,
+        "edge": 11750,
+        "fringe": 4,
+        "fringeRatio": 0.00034042553191489364,
+        "accentShare": 0.012455516014234875,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 459,
+          "y": 430,
+          "width": 446,
+          "height": 243
+        }
+      }
+    }
+  },
+  "unchanged": {
+    "timingAndMotionSourcesEdited": false,
+    "sourceRegistration": {
+      "sourceAnchor": [
+        0.17,
+        0.475
+      ],
+      "canvasScale": 0.4,
+      "scaled": 410,
+      "left": 135,
+      "top": 368,
+      "sourceAndTargetAnchorsUnchanged": true,
+      "origin": [
+        0.2,
+        0.55
+      ],
+      "contact": [
+        0.8,
+        0.55
+      ]
+    },
+    "phaseOrder": [
+      "launch",
+      "travel",
+      "impact"
+    ],
+    "unselectedPhases": [
+      {
+        "phase": "travel",
+        "source": "audits/C132_EFFECTS_20261001/storm/final/registered/travel.png",
+        "sha256": "1a149c95a4b81b39013527fd52aa71e89080dc073f684298081e28684ab50ca0"
+      },
+      {
+        "phase": "impact",
+        "source": "audits/C132_EFFECTS_20261001/storm/final/registered/impact.png",
+        "sha256": "3cdfa440d457cbb7b4fe4cf740c0e7cf76b8931fe1ff40d16daa8eda3afe0634"
+      }
+    ]
+  },
+  "sourcePreservation": {
+    "target": {
+      "path": "audits/C132_EFFECTS_20261001/storm/launch-master.png",
+      "sha256": "24b4fbf37a3af504c76e75ea250a1e4674862ad59e6e01a6fcce14d5f26ca56e"
+    },
+    "predecessorAnchors": {
+      "anchors": "audits/C132_EFFECTS_20261001/storm/final/anchors.json",
+      "sha256": "4a40b1579f0b341e178deea305b87395fb01839490f82dbf5eb1d22d260c3409"
+    },
+    "originalPixelsModified": false
+  },
+  "status": "MECHANICAL_PASS_NEW_ART_AWAITING_SCORING_AND_NATIVE_FILM"
+}

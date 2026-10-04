@@ -1,0 +1,12 @@
+{
+ "id": "g2c81-21-caddisfly",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part antenna-far (antennaFar) covers 1% paint (reference 32%)",
+  "missing-anatomy: part antenna-near (antennaNear) covers 8% paint (reference 35%)",
+  "missing-anatomy: part mandible (mandible) covers 13% paint (reference 63%)",
+  "missing-anatomy: part head (head) covers 21% paint (reference 72%)"
+ ],
+ "semanticPresence": null
+}

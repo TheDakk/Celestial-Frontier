@@ -1,0 +1,5 @@
+Review the impact-polish candidate against the preceding connected-throat version. Compare audits/BATTLE_IMPACT_POLISH_20260916/motion-01 to audits/BATTLE_THROAT_JOIN_20260916/motion-02, preferably with the local /impact/ Before/After player at normal and half speed.
+
+Does the brief receiving-creature highlight make each hit clearer and more forceful without bleaching the painting or distracting from recoil? Inspect both Civet→Platypus and Platypus→Civet, plus the fox/procedural reuse clips. Confirm anatomy, motion timing and silhouette remain unchanged.
+
+Audit impact-focus.mjs and its consumer: the existing compiled envelope drives both effects, the correct target receives exposure, neutral frames disable filters, and no time/seed/gameplay/kit/Claude-owned module changed. Check impactWitness's actual target-only pixel extent, wrong-actor controls, old/new sky contrast and retained full-motion attachment checks. Treat this as presentation review, not completed universal animation or physical-phone qualification. Return a visual verdict and any exact frame/role issue.

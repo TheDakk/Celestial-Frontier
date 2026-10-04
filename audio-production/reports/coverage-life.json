@@ -1,0 +1,4614 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.plant-woody.call.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 48,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-life/v2.plant-woody.call.1.wav",
+      "masterSha256": "98fc72461dae09a6376e9a6d8033211544ee2dd8a2ef38f9aa1a6b31056d19f9",
+      "opus": "masters/coverage-life/v2.plant-woody.call.1.opus",
+      "opusSha256": "a76c4c29fb294f2eb12abebe3328e9147f852e4c44ed78056192bfee72ffdaa4",
+      "previewSha256": "71d0f182dbb04d9e2719e22470fcd8af7a16bc3e3c4feb5fcee4361c6c1d641e",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.call.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.9,
+      "opusDbTP": -17.0
+    },
+    {
+      "id": "v2.plant-woody.call.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 49,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.65,
+      "master": "masters/coverage-life/v2.plant-woody.call.2.wav",
+      "masterSha256": "6701e473acb56eed934662cfb85888d9b0a048f44c1de1de2f0be5623644868d",
+      "opus": "masters/coverage-life/v2.plant-woody.call.2.opus",
+      "opusSha256": "7b8a37c7c7615b1a06583d548d41edbe55730e0222687d1b92f76bb5387cb901",
+      "previewSha256": "1a4e9f3318cecc4f1b5584b3342aa8e202954cddce88d23b88e9f9faebbf88e9",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.call.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.plant-woody.call.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 50,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 3.3,
+      "master": "masters/coverage-life/v2.plant-woody.call.3.wav",
+      "masterSha256": "72054955438838b613f6fae7d208a63845a4c9e8de2bfabc358be4a4f74d459b",
+      "opus": "masters/coverage-life/v2.plant-woody.call.3.opus",
+      "opusSha256": "e1618f9806f3a6c8b466b55213ad7c79b6090a86a0cf6b84fa9f8c6f1321aa13",
+      "previewSha256": "a0c951cb24c277117a71ce75a98cdf144bb3f9fb7b3de4734ef4f69e4903a087",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.call.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.2
+    },
+    {
+      "id": "v2.plant-woody.alert.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 51,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 4.949999999999999,
+      "master": "masters/coverage-life/v2.plant-woody.alert.1.wav",
+      "masterSha256": "57e4a888d04d4b76762d71fdf2ddc2a152d1dc469eaa3b4fbbe0be6ccc9c0dd8",
+      "opus": "masters/coverage-life/v2.plant-woody.alert.1.opus",
+      "opusSha256": "e7f74183d6324287215212fb196f1cf52317f18c9b4c4b424a3b7543feb02e3d",
+      "previewSha256": "8026320093122c4088c0dafb2c8f4ff002b21920b9ec6eab2590e0f1c99c528c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.alert.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.9,
+      "opusDbTP": -17.0
+    },
+    {
+      "id": "v2.plant-woody.alert.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 52,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 6.6,
+      "master": "masters/coverage-life/v2.plant-woody.alert.2.wav",
+      "masterSha256": "9f6a799265f4e17ca4eedbe580741c41b38ed47c4f667e26b2fc1bbfce77f4c3",
+      "opus": "masters/coverage-life/v2.plant-woody.alert.2.opus",
+      "opusSha256": "dac4b22b295c8f979057c06f91d7a9393e9f15e835d9fe012346acb08affce55",
+      "previewSha256": "b48d13c71b1df899815af5790337f5a053015f483cbf4d5fa60f0ef0f3fb6bd7",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.alert.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.plant-woody.alert.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 53,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 8.25,
+      "master": "masters/coverage-life/v2.plant-woody.alert.3.wav",
+      "masterSha256": "97a662ef4024fc3e1a42d92853e969528097fd00c2cbe6d6a824bb4f55e463a5",
+      "opus": "masters/coverage-life/v2.plant-woody.alert.3.opus",
+      "opusSha256": "5ad92b4354375e606853ec6bffdf7d8798fc522de6b6af12ea64fba5f7763ff5",
+      "previewSha256": "ce9baa40664d1526a4e004d84ebaad01265429a3a3ef60f4792b2ff7641180c5",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.alert.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.2
+    },
+    {
+      "id": "v2.plant-woody.attack-vocal.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 54,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 9.9,
+      "master": "masters/coverage-life/v2.plant-woody.attack-vocal.1.wav",
+      "masterSha256": "59f29b7c947454f2360aef08fb68ba390b3a098836e2c985e7141b01b14bbf93",
+      "opus": "masters/coverage-life/v2.plant-woody.attack-vocal.1.opus",
+      "opusSha256": "54e6da450381b36e5f973542a7ae8fb35bc927c4d9f3bd6d5eef77cdb9ce3a0c",
+      "previewSha256": "3cf2004d11f317aba7bbbcb55baebbedf2408cc39812e815f1aa647fed1f3e2e",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.attack-vocal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.9,
+      "opusDbTP": -16.9
+    },
+    {
+      "id": "v2.plant-woody.attack-vocal.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 55,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 11.55,
+      "master": "masters/coverage-life/v2.plant-woody.attack-vocal.2.wav",
+      "masterSha256": "b1e786f284c6ed91853b806589e10d6a495fa6b99f7e8f628b9afd0189bf4260",
+      "opus": "masters/coverage-life/v2.plant-woody.attack-vocal.2.opus",
+      "opusSha256": "ce76624a794e2095bc88e916831656b2052fbd072da45d45bef6d5df37676deb",
+      "previewSha256": "3a43275bea328ba061c8b45d6da29b9945f6a0be1fdb730ae9cf645dec6778fa",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.attack-vocal.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.plant-woody.attack-vocal.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 56,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 13.200000000000001,
+      "master": "masters/coverage-life/v2.plant-woody.attack-vocal.3.wav",
+      "masterSha256": "3a41f63e754b3a2482f88c53c9c54b1c08970ebfc35cddb934db210d589494f3",
+      "opus": "masters/coverage-life/v2.plant-woody.attack-vocal.3.opus",
+      "opusSha256": "1fd983fb583447466a5d7495e69c01a1a54d7b313bb8b668900faaa076f16d64",
+      "previewSha256": "07b5cef37bd25efc1ab15f18856dcaa25e37e6b9e92984336cd1e657c0700799",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.attack-vocal.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.2
+    },
+    {
+      "id": "v2.plant-woody.hurt.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 57,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 14.850000000000001,
+      "master": "masters/coverage-life/v2.plant-woody.hurt.1.wav",
+      "masterSha256": "3d3a0ee15c62040897fa548d31b7efa1506789206975ca8a7660ab8d2709ca21",
+      "opus": "masters/coverage-life/v2.plant-woody.hurt.1.opus",
+      "opusSha256": "4bea7ed71c6253047183ca160943f675156d43c7df7965115d48b31f54bd521d",
+      "previewSha256": "298476ebc663d1730e544da0028dbf5cd6d6d4bb07c57cb05e5e3984be3f0005",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.hurt.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.9,
+      "opusDbTP": -17.0
+    },
+    {
+      "id": "v2.plant-woody.hurt.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 58,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 16.5,
+      "master": "masters/coverage-life/v2.plant-woody.hurt.2.wav",
+      "masterSha256": "c2275ec46a7f92ece8463342f9d1d62cdb6b90954743dc3722f766dd572ffe21",
+      "opus": "masters/coverage-life/v2.plant-woody.hurt.2.opus",
+      "opusSha256": "30c14530df5268cd743e50f0855871868f91d9fe6d52fb736d1897f47849eb5a",
+      "previewSha256": "5af0064d1f3315ab741457c959000156cc054ff5feece66a2ebef490c32efdac",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.hurt.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.plant-woody.hurt.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 59,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.15,
+      "master": "masters/coverage-life/v2.plant-woody.hurt.3.wav",
+      "masterSha256": "c9d426e34453af169f3c4dcaf55fbf5c875bb05500bb6047c5da54fa84f3a439",
+      "opus": "masters/coverage-life/v2.plant-woody.hurt.3.opus",
+      "opusSha256": "ef59e174a61056c00c588f181899186ef202429f30bb7002532aa8e1c03fda34",
+      "previewSha256": "04ad670684546f0f5a40d9eb4a928cb0108d16015b350b5ee0b775695d86d168",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.hurt.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.2
+    },
+    {
+      "id": "v2.plant-woody.faint.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 60,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 19.799999999999997,
+      "master": "masters/coverage-life/v2.plant-woody.faint.1.wav",
+      "masterSha256": "56e92644baa13ca1e90f7713ed465c783b4323bf4d2444af11590912d8b80f66",
+      "opus": "masters/coverage-life/v2.plant-woody.faint.1.opus",
+      "opusSha256": "acc65c8f80795c5462f98d3226b5c1c8d21ec305a08d75d7058b5b7ae20d4d60",
+      "previewSha256": "44529af75ee4c4b65c7d52d3e45a3123ccb0776587a762a42204b9f842b62670",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.faint.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.9,
+      "opusDbTP": -16.9
+    },
+    {
+      "id": "v2.plant-woody.faint.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 61,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 21.449999999999996,
+      "master": "masters/coverage-life/v2.plant-woody.faint.2.wav",
+      "masterSha256": "7b615b7bd9d9634f135366f9e8fed9c02259548323c782bfacf07efa48ef8e80",
+      "opus": "masters/coverage-life/v2.plant-woody.faint.2.opus",
+      "opusSha256": "ea234603452b631a96cbb83e9f09bfbf3dcf854dac61a0de502d9ee2fc165e4e",
+      "previewSha256": "c692fe2425da44d3d10fe7a31e2b475c6cc6c32156f14245e6e012004acebf24",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.faint.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.plant-woody.faint.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 62,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 23.099999999999994,
+      "master": "masters/coverage-life/v2.plant-woody.faint.3.wav",
+      "masterSha256": "9582c2080ea099d48b6f01e7d98e650c5a7ffee88ccf19996aad5891cd2d3ec3",
+      "opus": "masters/coverage-life/v2.plant-woody.faint.3.opus",
+      "opusSha256": "8e6710273b7059748ad51cd49d74b1373080f433bd6173bce3f12569d63f60e4",
+      "previewSha256": "7b89260250ac0912187fc4d296a5b8a24c0097d7e3a207f754af9b1d67e26034",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.faint.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.3
+    },
+    {
+      "id": "v2.plant-woody.victory.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 48,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 24.749999999999993,
+      "master": "masters/coverage-life/v2.plant-woody.victory.1.wav",
+      "masterSha256": "404c657f37f9121e2dd2bbf15bf75b45567786523dbf69f73b0427da325dac37",
+      "opus": "masters/coverage-life/v2.plant-woody.victory.1.opus",
+      "opusSha256": "80aed061822f57ad820c557d7f96de415bb22ce3f03095924264101a580d19a1",
+      "previewSha256": "7201b2c4f779a3695b4d4f2aacfcdbd049ea019855fe786577e00085cc437acd",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.victory.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.9,
+      "opusDbTP": -17.0
+    },
+    {
+      "id": "v2.plant-woody.victory.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 49,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 26.39999999999999,
+      "master": "masters/coverage-life/v2.plant-woody.victory.2.wav",
+      "masterSha256": "6701e473acb56eed934662cfb85888d9b0a048f44c1de1de2f0be5623644868d",
+      "opus": "masters/coverage-life/v2.plant-woody.victory.2.opus",
+      "opusSha256": "76457308e67bea596fc97b52caa39325a7cafc99d14210e23f50aaedbbbd963f",
+      "previewSha256": "1a4e9f3318cecc4f1b5584b3342aa8e202954cddce88d23b88e9f9faebbf88e9",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.victory.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.plant-woody.victory.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 50,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 28.04999999999999,
+      "master": "masters/coverage-life/v2.plant-woody.victory.3.wav",
+      "masterSha256": "72054955438838b613f6fae7d208a63845a4c9e8de2bfabc358be4a4f74d459b",
+      "opus": "masters/coverage-life/v2.plant-woody.victory.3.opus",
+      "opusSha256": "8351dd3a36081c69b9779c17b7ed26c0746585926558f8cca4e0ab8529cd0f9c",
+      "previewSha256": "a0c951cb24c277117a71ce75a98cdf144bb3f9fb7b3de4734ef4f69e4903a087",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.victory.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.2
+    },
+    {
+      "id": "v2.plant-woody.breath-idle.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 51,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 29.69999999999999,
+      "master": "masters/coverage-life/v2.plant-woody.breath-idle.1.wav",
+      "masterSha256": "57e4a888d04d4b76762d71fdf2ddc2a152d1dc469eaa3b4fbbe0be6ccc9c0dd8",
+      "opus": "masters/coverage-life/v2.plant-woody.breath-idle.1.opus",
+      "opusSha256": "ed3d9fcb1e78ae1ee5b0112d4f33e523d9883512309572de2a29beb766beec1d",
+      "previewSha256": "8026320093122c4088c0dafb2c8f4ff002b21920b9ec6eab2590e0f1c99c528c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.breath-idle.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.9,
+      "opusDbTP": -17.0
+    },
+    {
+      "id": "v2.plant-woody.breath-idle.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 52,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 31.349999999999987,
+      "master": "masters/coverage-life/v2.plant-woody.breath-idle.2.wav",
+      "masterSha256": "9f6a799265f4e17ca4eedbe580741c41b38ed47c4f667e26b2fc1bbfce77f4c3",
+      "opus": "masters/coverage-life/v2.plant-woody.breath-idle.2.opus",
+      "opusSha256": "8ae8bc660a031fe4d268af8855e99fef346e1eda01ba3eb8f5d59b0b1e156dbc",
+      "previewSha256": "b48d13c71b1df899815af5790337f5a053015f483cbf4d5fa60f0ef0f3fb6bd7",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.breath-idle.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.plant-woody.breath-idle.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 53,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 32.999999999999986,
+      "master": "masters/coverage-life/v2.plant-woody.breath-idle.3.wav",
+      "masterSha256": "97a662ef4024fc3e1a42d92853e969528097fd00c2cbe6d6a824bb4f55e463a5",
+      "opus": "masters/coverage-life/v2.plant-woody.breath-idle.3.opus",
+      "opusSha256": "7fbedaa9f360df603a405471a7c7a5dc0d03a03665766f9eef3686de9fa55fa2",
+      "previewSha256": "ce9baa40664d1526a4e004d84ebaad01265429a3a3ef60f4792b2ff7641180c5",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.breath-idle.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.2
+    },
+    {
+      "id": "v2.plant-woody.land-thud.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 54,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 34.649999999999984,
+      "master": "masters/coverage-life/v2.plant-woody.land-thud.1.wav",
+      "masterSha256": "59f29b7c947454f2360aef08fb68ba390b3a098836e2c985e7141b01b14bbf93",
+      "opus": "masters/coverage-life/v2.plant-woody.land-thud.1.opus",
+      "opusSha256": "f60de4b7e67c7b4461a67f16ea433237e9acdc52d0f6b9df706801cfec1ce1bf",
+      "previewSha256": "3cf2004d11f317aba7bbbcb55baebbedf2408cc39812e815f1aa647fed1f3e2e",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.land-thud.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.9,
+      "opusDbTP": -16.9
+    },
+    {
+      "id": "v2.plant-woody.land-thud.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 55,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 36.29999999999998,
+      "master": "masters/coverage-life/v2.plant-woody.land-thud.2.wav",
+      "masterSha256": "b1e786f284c6ed91853b806589e10d6a495fa6b99f7e8f628b9afd0189bf4260",
+      "opus": "masters/coverage-life/v2.plant-woody.land-thud.2.opus",
+      "opusSha256": "e76170b039cb451e6040ec8687f9df67eca9560c1aaa6beab08258fc730d01b2",
+      "previewSha256": "3a43275bea328ba061c8b45d6da29b9945f6a0be1fdb730ae9cf645dec6778fa",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.land-thud.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.plant-woody.land-thud.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-woody",
+          "start": 0,
+          "duration": 0.35,
+          "note": 56,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-woody.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 37.94999999999998,
+      "master": "masters/coverage-life/v2.plant-woody.land-thud.3.wav",
+      "masterSha256": "3a41f63e754b3a2482f88c53c9c54b1c08970ebfc35cddb934db210d589494f3",
+      "opus": "masters/coverage-life/v2.plant-woody.land-thud.3.opus",
+      "opusSha256": "8bd64e7093423716b1239212de29f79c89157a27ac5d84d9fe71bb096b08eb5d",
+      "previewSha256": "07b5cef37bd25efc1ab15f18856dcaa25e37e6b9e92984336cd1e657c0700799",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-woody.land-thud.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.2
+    },
+    {
+      "id": "v2.plant-herb.call.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 48,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 39.59999999999998,
+      "master": "masters/coverage-life/v2.plant-herb.call.1.wav",
+      "masterSha256": "dd5078aa5120035371c90c8969e3bb365db8e6d48d794270897820060fad4ce0",
+      "opus": "masters/coverage-life/v2.plant-herb.call.1.opus",
+      "opusSha256": "a92516ab555799b331e21ef46f0198b4647c8b09eed31e65454e3c3eda7df52b",
+      "previewSha256": "2b85ee7d9aab12edef970f69c03a63e928c63d9bc7c9546bd6867fe15ff75c14",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.call.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.0,
+      "opusDbTP": -32.0
+    },
+    {
+      "id": "v2.plant-herb.call.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 49,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 41.24999999999998,
+      "master": "masters/coverage-life/v2.plant-herb.call.2.wav",
+      "masterSha256": "c3bfb9a55a27dd815a410671973877caec494bd31ed9f97e8b15dbd5944f86cb",
+      "opus": "masters/coverage-life/v2.plant-herb.call.2.opus",
+      "opusSha256": "888d37bd4959f47df202418c55f60008fc0a71083e73052d25d4819a694b1845",
+      "previewSha256": "5e1ea958443433859667ceab9beac1e64a4a0aa7a01c8cf60749fb8d9b918e04",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.call.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.5,
+      "opusDbTP": -33.9
+    },
+    {
+      "id": "v2.plant-herb.call.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 50,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 42.89999999999998,
+      "master": "masters/coverage-life/v2.plant-herb.call.3.wav",
+      "masterSha256": "89b1b2afe06e89a1f9ac923cadec2a08b9d54e8b4e1426873568e052b8a7e59f",
+      "opus": "masters/coverage-life/v2.plant-herb.call.3.opus",
+      "opusSha256": "4feddc7b1897c7de2e952f9461152723f29b53bbda43c39412e41e57046b23d2",
+      "previewSha256": "1216077651a2759f5af21f7c5a0886b6290d215e57e18d426641db578974cd47",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.call.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.0,
+      "opusDbTP": -27.0
+    },
+    {
+      "id": "v2.plant-herb.alert.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 51,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 44.549999999999976,
+      "master": "masters/coverage-life/v2.plant-herb.alert.1.wav",
+      "masterSha256": "468a68060702eefa28d855d06712c61d76e973c5b65373f9f054d4d8693665a4",
+      "opus": "masters/coverage-life/v2.plant-herb.alert.1.opus",
+      "opusSha256": "0cc17661486a7ce2219fb55d7e9128e64415d7a2ee36de87030fb95ad97bc867",
+      "previewSha256": "9f846bad34e5a1d0971414acf098c5d6afb14835e33eb9abd2dbad176fc13ff3",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.alert.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.8,
+      "opusDbTP": -32.8
+    },
+    {
+      "id": "v2.plant-herb.alert.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 52,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 46.199999999999974,
+      "master": "masters/coverage-life/v2.plant-herb.alert.2.wav",
+      "masterSha256": "a847dd729d8343f9a769f5c550a416cb995fcbe556bb345d3a6c6cbd3e5b8b09",
+      "opus": "masters/coverage-life/v2.plant-herb.alert.2.opus",
+      "opusSha256": "212e3f60345ac98b8247e435648d6e6fc4871b8d0e642780ce9f74beb720beb6",
+      "previewSha256": "1c4897d747751c348df457936062b1b15b280f6926566934461745763268275c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.alert.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.1,
+      "opusDbTP": -33.2
+    },
+    {
+      "id": "v2.plant-herb.alert.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 53,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 47.84999999999997,
+      "master": "masters/coverage-life/v2.plant-herb.alert.3.wav",
+      "masterSha256": "94d4df67842aeb089b5b070d8bf6449382859a1054ec855fcd433d162e08a679",
+      "opus": "masters/coverage-life/v2.plant-herb.alert.3.opus",
+      "opusSha256": "e84276499b10a5a3531fe91ec3c4a80cfcb4b9016ac7ffe35bce644c97ec980d",
+      "previewSha256": "ddf3010ac99fd2901a9a6c228c617633c73cdf8a139b7cdf7df0fe34f31fe97c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.alert.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.0,
+      "opusDbTP": -27.0
+    },
+    {
+      "id": "v2.plant-herb.attack-vocal.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 54,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 49.49999999999997,
+      "master": "masters/coverage-life/v2.plant-herb.attack-vocal.1.wav",
+      "masterSha256": "7b4b9929725270a1a5f5b8eccd78e4995f2132c62b77de33c303f5b1247782f5",
+      "opus": "masters/coverage-life/v2.plant-herb.attack-vocal.1.opus",
+      "opusSha256": "42ea765a842d415673272627c5b2c7d06905e715c0d3ecd085dbe38e0cd8f2ca",
+      "previewSha256": "92c3b8f85c551ac8a7f2ebffa98eb599b6a89ca7e0440dff0090da77050e38a1",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.attack-vocal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.3,
+      "opusDbTP": -33.7
+    },
+    {
+      "id": "v2.plant-herb.attack-vocal.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 55,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 51.14999999999997,
+      "master": "masters/coverage-life/v2.plant-herb.attack-vocal.2.wav",
+      "masterSha256": "83ef52d173d830885c5f0014716d6d37f2fd66db95f4617960ca05e12ace30ec",
+      "opus": "masters/coverage-life/v2.plant-herb.attack-vocal.2.opus",
+      "opusSha256": "f512596e6efcd8de6ff8215d89cd91029962cb6c478fd0a68c41f047b6f30328",
+      "previewSha256": "5124972644c0256070f7036ea5b825ac7e4126d9096c0b18b7030893940b4646",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.attack-vocal.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.4,
+      "opusDbTP": -33.6
+    },
+    {
+      "id": "v2.plant-herb.attack-vocal.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 56,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 52.79999999999997,
+      "master": "masters/coverage-life/v2.plant-herb.attack-vocal.3.wav",
+      "masterSha256": "ddb9f44fbf99cc9f0757488ac068bdfd008c1e340978d7fbd0220a6e477bb114",
+      "opus": "masters/coverage-life/v2.plant-herb.attack-vocal.3.opus",
+      "opusSha256": "d1c05bea20e06f6030bd762e8c2146827e08aad21584e93af26ea4f5a059fbb0",
+      "previewSha256": "5b5e2316d341d1c894af85f0b702c841c3cc3d4b8906de23499de9d46a8d535c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.attack-vocal.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.0,
+      "opusDbTP": -27.0
+    },
+    {
+      "id": "v2.plant-herb.hurt.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 57,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 54.44999999999997,
+      "master": "masters/coverage-life/v2.plant-herb.hurt.1.wav",
+      "masterSha256": "ed2f0fabfc4f9a8d2ea7a32e0abfc7a84276ecbed6385ab1708fd6b00aa1f7a8",
+      "opus": "masters/coverage-life/v2.plant-herb.hurt.1.opus",
+      "opusSha256": "6337d65df22377c57b778f3172bfeff2eb1d3bbcfadcc859156a67bc311f947b",
+      "previewSha256": "dc3e1117cb49199b7bbae755c63a6ca82b26e0e62f0b2d2749e9eb6aff553e5b",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.hurt.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.5,
+      "opusDbTP": -33.5
+    },
+    {
+      "id": "v2.plant-herb.hurt.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 58,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 56.099999999999966,
+      "master": "masters/coverage-life/v2.plant-herb.hurt.2.wav",
+      "masterSha256": "91b1edec86ae45376716b4ff8635b42f3af5df4cab38d8b8382dcc6f87e512a3",
+      "opus": "masters/coverage-life/v2.plant-herb.hurt.2.opus",
+      "opusSha256": "9c82db3c9de40466c026cca81a21b54d10dc20fd61a7f6ecbd6ea5c16a5547dc",
+      "previewSha256": "a0b6491784869ed6de64f8c88377c0be87753f4a636470c251a1493f0f1999ca",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.hurt.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.5,
+      "opusDbTP": -33.6
+    },
+    {
+      "id": "v2.plant-herb.hurt.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 59,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 57.749999999999964,
+      "master": "masters/coverage-life/v2.plant-herb.hurt.3.wav",
+      "masterSha256": "8a9eaa743c358732fa316254b15207e89d2c24b93361f366ba6bcbc81be7ba11",
+      "opus": "masters/coverage-life/v2.plant-herb.hurt.3.opus",
+      "opusSha256": "459723b1968d9270ca04e31928b36ac31940fe048e6a23de9f07246dcd708854",
+      "previewSha256": "409b3245db711fe674d4ac153543eadf9ef18dbd5cf4d7147eea6bb65cb2a497",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.hurt.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.0,
+      "opusDbTP": -27.0
+    },
+    {
+      "id": "v2.plant-herb.faint.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 60,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 59.39999999999996,
+      "master": "masters/coverage-life/v2.plant-herb.faint.1.wav",
+      "masterSha256": "60ad774c350946d161c76689d386b8e03b3dcf583ab04152c361e77bcb238210",
+      "opus": "masters/coverage-life/v2.plant-herb.faint.1.opus",
+      "opusSha256": "f909cc9610df82a64c547acd2f03ee99e3bade305a40d775f13851116e195747",
+      "previewSha256": "aae1a3ddfb277c741fc5c43e6b90355857f24fa95fe424042e6d48351047a704",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.faint.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.6,
+      "opusDbTP": -32.8
+    },
+    {
+      "id": "v2.plant-herb.faint.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 61,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 61.04999999999996,
+      "master": "masters/coverage-life/v2.plant-herb.faint.2.wav",
+      "masterSha256": "5d2163d40bad820dc91654a739545bcc1741bc45576c34e009869af2405028ab",
+      "opus": "masters/coverage-life/v2.plant-herb.faint.2.opus",
+      "opusSha256": "509031389f06e93619e086c5d73fe3fe157a959513278c124724d01fbc0be0ee",
+      "previewSha256": "c1b19e98c251bbdd37f5752c60ebf4c33f065b248857a1d4e46efef06e9d8390",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.faint.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.6,
+      "opusDbTP": -33.7
+    },
+    {
+      "id": "v2.plant-herb.faint.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 62,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 62.69999999999996,
+      "master": "masters/coverage-life/v2.plant-herb.faint.3.wav",
+      "masterSha256": "0883ea084c0c6c464717a06ea1fa2df991daceed7345c752f65864b92c4fdaf9",
+      "opus": "masters/coverage-life/v2.plant-herb.faint.3.opus",
+      "opusSha256": "0fef2e4376a8b0e9b354a3a5b64f2b6ef39c18aedd28c0975729d89df230b195",
+      "previewSha256": "ec0cbb6ce95d64ca0efea81cff5f4cae85c31f90ec915bb29b40ff09e740fb0c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.faint.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.0,
+      "opusDbTP": -27.0
+    },
+    {
+      "id": "v2.plant-herb.victory.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 48,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 64.34999999999997,
+      "master": "masters/coverage-life/v2.plant-herb.victory.1.wav",
+      "masterSha256": "cc6e1444b7c3fc4135097526453282e59c15dd39cfc9c1ae5838e35d0d24f0af",
+      "opus": "masters/coverage-life/v2.plant-herb.victory.1.opus",
+      "opusSha256": "888b9177dd1e592b98ad1ea3e8c73ef4d45d0d48975995aefc6f6be83a91761d",
+      "previewSha256": "65bd4162dd00445ffd908919b8157388f46a701cda7131ed06e5223ff95db4f3",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.victory.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.0,
+      "opusDbTP": -32.0
+    },
+    {
+      "id": "v2.plant-herb.victory.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 49,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 65.99999999999997,
+      "master": "masters/coverage-life/v2.plant-herb.victory.2.wav",
+      "masterSha256": "c3bfb9a55a27dd815a410671973877caec494bd31ed9f97e8b15dbd5944f86cb",
+      "opus": "masters/coverage-life/v2.plant-herb.victory.2.opus",
+      "opusSha256": "c0927e97585c2b785848dd7fb8fdb9eb3767a3763d1829863ab64862f24a3a3e",
+      "previewSha256": "5e1ea958443433859667ceab9beac1e64a4a0aa7a01c8cf60749fb8d9b918e04",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.victory.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.5,
+      "opusDbTP": -33.9
+    },
+    {
+      "id": "v2.plant-herb.victory.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 50,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 67.64999999999998,
+      "master": "masters/coverage-life/v2.plant-herb.victory.3.wav",
+      "masterSha256": "89b1b2afe06e89a1f9ac923cadec2a08b9d54e8b4e1426873568e052b8a7e59f",
+      "opus": "masters/coverage-life/v2.plant-herb.victory.3.opus",
+      "opusSha256": "32529b7fc490d8e809ad30d04abb68cdda676dd0ab31a12f25cdc8decf41b73e",
+      "previewSha256": "1216077651a2759f5af21f7c5a0886b6290d215e57e18d426641db578974cd47",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.victory.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.0,
+      "opusDbTP": -27.0
+    },
+    {
+      "id": "v2.plant-herb.breath-idle.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 51,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 69.29999999999998,
+      "master": "masters/coverage-life/v2.plant-herb.breath-idle.1.wav",
+      "masterSha256": "468a68060702eefa28d855d06712c61d76e973c5b65373f9f054d4d8693665a4",
+      "opus": "masters/coverage-life/v2.plant-herb.breath-idle.1.opus",
+      "opusSha256": "0bfa194fe4939af7017a8c61f95c85c290a30df591ec0aef847947e28a5f0231",
+      "previewSha256": "9f846bad34e5a1d0971414acf098c5d6afb14835e33eb9abd2dbad176fc13ff3",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.breath-idle.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.8,
+      "opusDbTP": -32.8
+    },
+    {
+      "id": "v2.plant-herb.breath-idle.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 52,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 70.94999999999999,
+      "master": "masters/coverage-life/v2.plant-herb.breath-idle.2.wav",
+      "masterSha256": "a847dd729d8343f9a769f5c550a416cb995fcbe556bb345d3a6c6cbd3e5b8b09",
+      "opus": "masters/coverage-life/v2.plant-herb.breath-idle.2.opus",
+      "opusSha256": "bdf57cd1935d4934cb419b246f4a580d0ff0bb954e8f1ea4a81116b7c140803a",
+      "previewSha256": "1c4897d747751c348df457936062b1b15b280f6926566934461745763268275c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.breath-idle.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.1,
+      "opusDbTP": -33.2
+    },
+    {
+      "id": "v2.plant-herb.breath-idle.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 53,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 72.6,
+      "master": "masters/coverage-life/v2.plant-herb.breath-idle.3.wav",
+      "masterSha256": "94d4df67842aeb089b5b070d8bf6449382859a1054ec855fcd433d162e08a679",
+      "opus": "masters/coverage-life/v2.plant-herb.breath-idle.3.opus",
+      "opusSha256": "877ec596d1a5f3116a84abe7fea25a4cbab1e02c5c0100f0009a239c6eff4ace",
+      "previewSha256": "ddf3010ac99fd2901a9a6c228c617633c73cdf8a139b7cdf7df0fe34f31fe97c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.breath-idle.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.0,
+      "opusDbTP": -27.0
+    },
+    {
+      "id": "v2.plant-herb.land-thud.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 54,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 74.25,
+      "master": "masters/coverage-life/v2.plant-herb.land-thud.1.wav",
+      "masterSha256": "7b4b9929725270a1a5f5b8eccd78e4995f2132c62b77de33c303f5b1247782f5",
+      "opus": "masters/coverage-life/v2.plant-herb.land-thud.1.opus",
+      "opusSha256": "43b76c80db260f98e02434e1ba12b328e65f0ecbec3392b3592e32485ab51d49",
+      "previewSha256": "92c3b8f85c551ac8a7f2ebffa98eb599b6a89ca7e0440dff0090da77050e38a1",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.land-thud.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.3,
+      "opusDbTP": -33.7
+    },
+    {
+      "id": "v2.plant-herb.land-thud.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 55,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 75.9,
+      "master": "masters/coverage-life/v2.plant-herb.land-thud.2.wav",
+      "masterSha256": "83ef52d173d830885c5f0014716d6d37f2fd66db95f4617960ca05e12ace30ec",
+      "opus": "masters/coverage-life/v2.plant-herb.land-thud.2.opus",
+      "opusSha256": "1779c160388218713ae3fd438def3210ef03439ec0ccc92e97ec1cb8052a5c67",
+      "previewSha256": "5124972644c0256070f7036ea5b825ac7e4126d9096c0b18b7030893940b4646",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.land-thud.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.4,
+      "opusDbTP": -33.6
+    },
+    {
+      "id": "v2.plant-herb.land-thud.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-plant-herb",
+          "start": 0,
+          "duration": 0.35,
+          "note": 56,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.plant-herb.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 77.55000000000001,
+      "master": "masters/coverage-life/v2.plant-herb.land-thud.3.wav",
+      "masterSha256": "ddb9f44fbf99cc9f0757488ac068bdfd008c1e340978d7fbd0220a6e477bb114",
+      "opus": "masters/coverage-life/v2.plant-herb.land-thud.3.opus",
+      "opusSha256": "c4f7a2763d59db857fda985df8d297b03f160b611ad1e68fff1561cbb8fdace6",
+      "previewSha256": "5b5e2316d341d1c894af85f0b702c841c3cc3d4b8906de23499de9d46a8d535c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.plant-herb.land-thud.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.0,
+      "opusDbTP": -27.0
+    },
+    {
+      "id": "v2.fungal.call.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 48,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 79.20000000000002,
+      "master": "masters/coverage-life/v2.fungal.call.1.wav",
+      "masterSha256": "a2b73880fe0b88f9fa0c8b7dff988b0c90dc82f2878d6836f2b0ed212794311b",
+      "opus": "masters/coverage-life/v2.fungal.call.1.opus",
+      "opusSha256": "f899d7267abeacb4ec8e7f53d5bc8448f62349967c8164d33fcc2ebdf4b333bb",
+      "previewSha256": "29cf324dd70ea975d24cffb33bfa531ef45c39114295c536110b52c99d66d469",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.call.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.fungal.call.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 49,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 80.85000000000002,
+      "master": "masters/coverage-life/v2.fungal.call.2.wav",
+      "masterSha256": "99d7e7944f89ec963ac08f9bb77351c81423f7daf705decb2f61478e67f2acb8",
+      "opus": "masters/coverage-life/v2.fungal.call.2.opus",
+      "opusSha256": "ff0f7861f7d2f2f705358f66f14f49185c940a5c8862fa560528b9648bb3c173",
+      "previewSha256": "69b988e0271c9cf42e5d7f0f0c5e70c4994fb3a7c5dc44994867625a25f89bc2",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.call.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.fungal.call.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 50,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 82.50000000000003,
+      "master": "masters/coverage-life/v2.fungal.call.3.wav",
+      "masterSha256": "eba65dc83ae038c6f70fed58e8a09d73cd56726594c4e9c2908a4dd7fe91b784",
+      "opus": "masters/coverage-life/v2.fungal.call.3.opus",
+      "opusSha256": "a1c81c835e527fa9d333f90d89be7a07b2a55a5e178bbbee90faada897665246",
+      "previewSha256": "e9d43ba9e578d0abe9dcee1b7d4539be3af50bdf36e6072001bc94b3db4180f2",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.call.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.5,
+      "opusDbTP": -11.5
+    },
+    {
+      "id": "v2.fungal.alert.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 51,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 84.15000000000003,
+      "master": "masters/coverage-life/v2.fungal.alert.1.wav",
+      "masterSha256": "f67bd3e9a468ad5befc008a40b073b5927fb3bea8982dd5c08c9f5c7d24ba2b1",
+      "opus": "masters/coverage-life/v2.fungal.alert.1.opus",
+      "opusSha256": "e84047c368abd0200daf9248ab34524cff1b057c4b9896dbe28c6a22900c02fe",
+      "previewSha256": "b62afc278f53ced383a7de0afb7940c821a2ab043160e7013024097d87f35d19",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.alert.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.fungal.alert.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 52,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 85.80000000000004,
+      "master": "masters/coverage-life/v2.fungal.alert.2.wav",
+      "masterSha256": "5ecb206679e9f24e27954311eb72a11cb8b8c9dd89a7af5ec7d4637820f7999d",
+      "opus": "masters/coverage-life/v2.fungal.alert.2.opus",
+      "opusSha256": "291a24ccacb39d016aab606f8969d4bd705fabfebcdf2b4f25a9b7164ef50daf",
+      "previewSha256": "2ca94caac8e32f68e138ea98efd4de8bbf017f437848791b7ba2f23fd14a823d",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.alert.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.fungal.alert.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 53,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 87.45000000000005,
+      "master": "masters/coverage-life/v2.fungal.alert.3.wav",
+      "masterSha256": "6d275dd50c6f035b60d151cc5a99e1a48d94675632a2d339f2882ed268d5470c",
+      "opus": "masters/coverage-life/v2.fungal.alert.3.opus",
+      "opusSha256": "d4a53c3dacdfb3ded8f09b5a467a7091d11aa27a7643202870fe17015fb711b9",
+      "previewSha256": "96ae778e5cc3f62fbceb80635fa745b677eb12b418e38c00be0c9ea7bdb611e8",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.alert.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.1
+    },
+    {
+      "id": "v2.fungal.attack-vocal.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 54,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 89.10000000000005,
+      "master": "masters/coverage-life/v2.fungal.attack-vocal.1.wav",
+      "masterSha256": "494450eaa18cc818879c43eab4bf46104bbc6b2998b187043aaa76df1b3c1e46",
+      "opus": "masters/coverage-life/v2.fungal.attack-vocal.1.opus",
+      "opusSha256": "605be7ada2fba3ece9ab59466d3694f685c4bfe4a6bd18b302a9c224ce656024",
+      "previewSha256": "33ed43a7ddd4b714442e8fbee0e8e74861afdd5bf91f03a101556de57de7e31e",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.attack-vocal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.fungal.attack-vocal.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 55,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 90.75000000000006,
+      "master": "masters/coverage-life/v2.fungal.attack-vocal.2.wav",
+      "masterSha256": "bcfef3a2172a3b7aa5b4a4db76f94310f6ce7a9e761acabc428e5923c7e59034",
+      "opus": "masters/coverage-life/v2.fungal.attack-vocal.2.opus",
+      "opusSha256": "6bf3890be28df9f3b69471905e79238634a4afc29ea22fac3e8d4acc97801b72",
+      "previewSha256": "50bc868f7d1c34bb0556a62dfd0d08fd75b893aaa39d0899bdfbe79318e22e23",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.attack-vocal.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.fungal.attack-vocal.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 56,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 92.40000000000006,
+      "master": "masters/coverage-life/v2.fungal.attack-vocal.3.wav",
+      "masterSha256": "e79ef71d8a066caa9f6f629f2d59084c0bfac478563fcc332cd4967c6de3b7fe",
+      "opus": "masters/coverage-life/v2.fungal.attack-vocal.3.opus",
+      "opusSha256": "f99c54c59845fc82fe9bd6cd10aa2adb524f2b2181c4ba5068db54a7dc57c6f7",
+      "previewSha256": "2ca328e718f0c76656837384c5618588f7bda5584066c0806f49c35cf9e3b8f0",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.attack-vocal.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.8,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.fungal.hurt.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 57,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 94.05000000000007,
+      "master": "masters/coverage-life/v2.fungal.hurt.1.wav",
+      "masterSha256": "fec9a974a1830dfe0c4086990e5b256fee395e334b97f9aaae2dc8e630126e0b",
+      "opus": "masters/coverage-life/v2.fungal.hurt.1.opus",
+      "opusSha256": "34d79a7f5f220463e49832a6ed1c0d06025aa58c11949642d1fe25f2ee849fa9",
+      "previewSha256": "e5bdc9bee1f2f67b59cfd63aad7d40c387f1f3902f48da77d88c4146e099a480",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.hurt.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.fungal.hurt.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 58,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 95.70000000000007,
+      "master": "masters/coverage-life/v2.fungal.hurt.2.wav",
+      "masterSha256": "02b4e871a1c4cfd1650130fa291b42a436070cd37d30e14f2283d5ff6da3d5bd",
+      "opus": "masters/coverage-life/v2.fungal.hurt.2.opus",
+      "opusSha256": "2cf2a313990b5f4269d6ac1e9cd45a6dce7bc0f64a520ee3b923c48026197992",
+      "previewSha256": "32b2c1d72af035cf61170c985183dfb060cf2594b1e34040ab741edde6d4bf47",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.hurt.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.fungal.hurt.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 59,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 97.35000000000008,
+      "master": "masters/coverage-life/v2.fungal.hurt.3.wav",
+      "masterSha256": "0c801bc5a01631ea341b18545dfaba8aea740e0c44ee5c9e11e801b398b60036",
+      "opus": "masters/coverage-life/v2.fungal.hurt.3.opus",
+      "opusSha256": "ec33c196a573f39e9983e2e2701546dbe8f6e0c05ca2b65eb4d403ee77b6089c",
+      "previewSha256": "1acf5986a85b08b2f76a17d6271f20aa68f840621ca82a51107811551713c158",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.hurt.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.fungal.faint.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 60,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 99.00000000000009,
+      "master": "masters/coverage-life/v2.fungal.faint.1.wav",
+      "masterSha256": "d55b74740c4289cfd261462cce6e9b1a172242b7f1416a2ca0551dbe2be7f491",
+      "opus": "masters/coverage-life/v2.fungal.faint.1.opus",
+      "opusSha256": "717fe786c22858583746315705b0e02da512c9bdbd5ae9a1b4ef6d3ecf206bc0",
+      "previewSha256": "13cb7a11aa1fd7191709c6edb8a9444c965a46725b3d8c5b526fdb961a060dc4",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.faint.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.fungal.faint.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 61,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 100.65000000000009,
+      "master": "masters/coverage-life/v2.fungal.faint.2.wav",
+      "masterSha256": "02f661f2f751682dedb9f6d81c0d2f194f1039c012f746cb0734972d2a925f9e",
+      "opus": "masters/coverage-life/v2.fungal.faint.2.opus",
+      "opusSha256": "8901f625c6c3cad3245485326756ac82874ead48ba9a62d98fc69266563d3b9a",
+      "previewSha256": "f80f46448662d3d7bd8622cab31d3a036fbd8da40f362f3924a5285b50cd74b1",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.faint.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.fungal.faint.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 62,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 102.3000000000001,
+      "master": "masters/coverage-life/v2.fungal.faint.3.wav",
+      "masterSha256": "59135df5186096977bb0fb416db2e1d7727b1e73853b656d61bdd19404b71417",
+      "opus": "masters/coverage-life/v2.fungal.faint.3.opus",
+      "opusSha256": "96541922aa1a6eb8bd8a3ec17f66aaa936427c23ca44d862574f3b2513e31459",
+      "previewSha256": "d55688bdc1d23a7fbcb75aa587b8dbdef501f3fa2804b22fd629dd088812b9e8",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.faint.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.6,
+      "opusDbTP": -11.6
+    },
+    {
+      "id": "v2.fungal.victory.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 48,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 103.9500000000001,
+      "master": "masters/coverage-life/v2.fungal.victory.1.wav",
+      "masterSha256": "249cd24384dd1aa8d0bdd110a4a25d3bbca7dd392ed70466dde3ee31da0f10d9",
+      "opus": "masters/coverage-life/v2.fungal.victory.1.opus",
+      "opusSha256": "7efd536d983a7e8eeff57900bc14855a5e00725b75ec77fb21db0c15d15dd3c0",
+      "previewSha256": "29cf324dd70ea975d24cffb33bfa531ef45c39114295c536110b52c99d66d469",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.victory.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.fungal.victory.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 49,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 105.60000000000011,
+      "master": "masters/coverage-life/v2.fungal.victory.2.wav",
+      "masterSha256": "99d7e7944f89ec963ac08f9bb77351c81423f7daf705decb2f61478e67f2acb8",
+      "opus": "masters/coverage-life/v2.fungal.victory.2.opus",
+      "opusSha256": "2634c55f36e66a5f5174d7651997919bb8f64c702b7329a57768d20b75cd94e3",
+      "previewSha256": "69b988e0271c9cf42e5d7f0f0c5e70c4994fb3a7c5dc44994867625a25f89bc2",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.victory.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.fungal.victory.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 50,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 107.25000000000011,
+      "master": "masters/coverage-life/v2.fungal.victory.3.wav",
+      "masterSha256": "eba65dc83ae038c6f70fed58e8a09d73cd56726594c4e9c2908a4dd7fe91b784",
+      "opus": "masters/coverage-life/v2.fungal.victory.3.opus",
+      "opusSha256": "6863dac2d33d91dfa198b8ba6ed0bc6125f126539332caa0fb1f479b1839caaa",
+      "previewSha256": "e9d43ba9e578d0abe9dcee1b7d4539be3af50bdf36e6072001bc94b3db4180f2",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.victory.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.5,
+      "opusDbTP": -11.5
+    },
+    {
+      "id": "v2.fungal.breath-idle.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 51,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 108.90000000000012,
+      "master": "masters/coverage-life/v2.fungal.breath-idle.1.wav",
+      "masterSha256": "f67bd3e9a468ad5befc008a40b073b5927fb3bea8982dd5c08c9f5c7d24ba2b1",
+      "opus": "masters/coverage-life/v2.fungal.breath-idle.1.opus",
+      "opusSha256": "f0d9f0b48160977819bacc3512a795c6cf2b720620067af994ebb74fd8ee3786",
+      "previewSha256": "b62afc278f53ced383a7de0afb7940c821a2ab043160e7013024097d87f35d19",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.breath-idle.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.fungal.breath-idle.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 52,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 110.55000000000013,
+      "master": "masters/coverage-life/v2.fungal.breath-idle.2.wav",
+      "masterSha256": "5ecb206679e9f24e27954311eb72a11cb8b8c9dd89a7af5ec7d4637820f7999d",
+      "opus": "masters/coverage-life/v2.fungal.breath-idle.2.opus",
+      "opusSha256": "52adc9bd6b1eb4730d87d3abf21f46375b98eabc183bd5b0ae048bbdabde21ce",
+      "previewSha256": "2ca94caac8e32f68e138ea98efd4de8bbf017f437848791b7ba2f23fd14a823d",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.breath-idle.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.fungal.breath-idle.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 53,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 112.20000000000013,
+      "master": "masters/coverage-life/v2.fungal.breath-idle.3.wav",
+      "masterSha256": "6d275dd50c6f035b60d151cc5a99e1a48d94675632a2d339f2882ed268d5470c",
+      "opus": "masters/coverage-life/v2.fungal.breath-idle.3.opus",
+      "opusSha256": "7f462c27fc5b2d77fe5c1c8b1691a4f66b1357328472d6e87e6f7e13484a36c1",
+      "previewSha256": "96ae778e5cc3f62fbceb80635fa745b677eb12b418e38c00be0c9ea7bdb611e8",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.breath-idle.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.1
+    },
+    {
+      "id": "v2.fungal.land-thud.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 54,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 113.85000000000014,
+      "master": "masters/coverage-life/v2.fungal.land-thud.1.wav",
+      "masterSha256": "494450eaa18cc818879c43eab4bf46104bbc6b2998b187043aaa76df1b3c1e46",
+      "opus": "masters/coverage-life/v2.fungal.land-thud.1.opus",
+      "opusSha256": "d6870d2d7bd3ba5035157c1090d3c0a981a01d8a5c2da7cbefa1e075a2ecaf0c",
+      "previewSha256": "33ed43a7ddd4b714442e8fbee0e8e74861afdd5bf91f03a101556de57de7e31e",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.land-thud.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.fungal.land-thud.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 55,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 115.50000000000014,
+      "master": "masters/coverage-life/v2.fungal.land-thud.2.wav",
+      "masterSha256": "bcfef3a2172a3b7aa5b4a4db76f94310f6ce7a9e761acabc428e5923c7e59034",
+      "opus": "masters/coverage-life/v2.fungal.land-thud.2.opus",
+      "opusSha256": "019689473037733b58950e9b69bc898192cd9e313a76ea3e79e3d49f0ddfee3f",
+      "previewSha256": "50bc868f7d1c34bb0556a62dfd0d08fd75b893aaa39d0899bdfbe79318e22e23",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.land-thud.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.fungal.land-thud.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-fungal",
+          "start": 0,
+          "duration": 0.35,
+          "note": 56,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.fungal.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 117.15000000000015,
+      "master": "masters/coverage-life/v2.fungal.land-thud.3.wav",
+      "masterSha256": "e79ef71d8a066caa9f6f629f2d59084c0bfac478563fcc332cd4967c6de3b7fe",
+      "opus": "masters/coverage-life/v2.fungal.land-thud.3.opus",
+      "opusSha256": "cb5befba210939d7bbf2ef5e40caeda6f8d5db4cc02e8d8bd3cdbf431125cc94",
+      "previewSha256": "2ca328e718f0c76656837384c5618588f7bda5584066c0806f49c35cf9e3b8f0",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.fungal.land-thud.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.8,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.microbe.call.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 48,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 118.80000000000015,
+      "master": "masters/coverage-life/v2.microbe.call.1.wav",
+      "masterSha256": "a2aac61ad6c199f0eb17df951dcb6339979ef9d571168fe0f200d478cad33b56",
+      "opus": "masters/coverage-life/v2.microbe.call.1.opus",
+      "opusSha256": "84e53c05a828966d9270db628173a2c14e0747f2a8d7feec12a1d47890df8e0f",
+      "previewSha256": "500c17a0cbf4cf15972afa39472941a5a733478a8f212fb4cb57ab9205f4c539",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.call.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.9,
+      "opusDbTP": -14.9
+    },
+    {
+      "id": "v2.microbe.call.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 49,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 120.45000000000016,
+      "master": "masters/coverage-life/v2.microbe.call.2.wav",
+      "masterSha256": "1e86ab6759f75a99be42a5765884f372f035b14b5768c8fe6c6346f947042734",
+      "opus": "masters/coverage-life/v2.microbe.call.2.opus",
+      "opusSha256": "30deb81a796fcf2074f9435bdaf2d6297712de44c34de790d9a0a5b0c3024520",
+      "previewSha256": "869dd8dde2f3550a0c1cd8a0ee09ae9d4eee9a46eb16706e4645799df4261ca4",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.call.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.6,
+      "opusDbTP": -10.7
+    },
+    {
+      "id": "v2.microbe.call.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 50,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.call"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 122.10000000000016,
+      "master": "masters/coverage-life/v2.microbe.call.3.wav",
+      "masterSha256": "5d1a6af55f6bd36b576861d89169795d7b2854a2bee04302b50301ed1c067755",
+      "opus": "masters/coverage-life/v2.microbe.call.3.opus",
+      "opusSha256": "6e7fc3971f191bea98d1056f548fb13fbe55e373f8908e7a036a51d226a67c67",
+      "previewSha256": "d8762e6a271b622452e4744f0fbc5bf32cdae9cb842c2ee5c8db221a9306f78a",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.call.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.9,
+      "opusDbTP": -17.8
+    },
+    {
+      "id": "v2.microbe.alert.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 51,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 123.75000000000017,
+      "master": "masters/coverage-life/v2.microbe.alert.1.wav",
+      "masterSha256": "047e1595725b399b0e12189420d78dd2f7e309a9215869a4eeb4dae290ddb6f7",
+      "opus": "masters/coverage-life/v2.microbe.alert.1.opus",
+      "opusSha256": "4a527673e38713ed8ea1a4949abc6b289e70400279a2a376edf66c838df1793e",
+      "previewSha256": "021f2a20bed1e85e24e7baf4b963e1f218495f989277b74cdcd913fdd9cd12bb",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.alert.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.9,
+      "opusDbTP": -14.9
+    },
+    {
+      "id": "v2.microbe.alert.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 52,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 125.40000000000018,
+      "master": "masters/coverage-life/v2.microbe.alert.2.wav",
+      "masterSha256": "f26d1f05f9c3943de5f76395488ebd6a2b38a306ed2427e3804ebac852e2935d",
+      "opus": "masters/coverage-life/v2.microbe.alert.2.opus",
+      "opusSha256": "c3c9743f8974315d6941d54cc211fed73b1d94cdaa55c48c3d19370432ac9d7b",
+      "previewSha256": "50f857cda1af045ce90a10fd623c84a97dce69893a20d1f159599ae838bf99ee",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.alert.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.2,
+      "opusDbTP": -10.1
+    },
+    {
+      "id": "v2.microbe.alert.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 53,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.alert"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 127.05000000000018,
+      "master": "masters/coverage-life/v2.microbe.alert.3.wav",
+      "masterSha256": "f8f1389c97d991b694804fe1112b9bba7136079f5249c068eb81f32c873a6ee1",
+      "opus": "masters/coverage-life/v2.microbe.alert.3.opus",
+      "opusSha256": "d97e0aa94e34692bb11c56094a307ee5cbc8a16f6b221741c2d73d1331e9a3c2",
+      "previewSha256": "3c6b171c41cfe1778d1e9c9327924657af11d3a32fabdbe29d023988a07e8de1",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.alert.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.8,
+      "opusDbTP": -17.7
+    },
+    {
+      "id": "v2.microbe.attack-vocal.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 54,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 128.7000000000002,
+      "master": "masters/coverage-life/v2.microbe.attack-vocal.1.wav",
+      "masterSha256": "4fc83351385e7521be33946e73ef251551aa28ab74e971462716f32e8af94b81",
+      "opus": "masters/coverage-life/v2.microbe.attack-vocal.1.opus",
+      "opusSha256": "0d03548c2a9abf2c15752194c6c76d5c760deaf54ed1d2e25d9011895d14c03c",
+      "previewSha256": "0aaa2c26a1b0fe1c2b5867d3c5dba7e35c49432db3cd44327012f66137c9d556",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.attack-vocal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.9,
+      "opusDbTP": -14.8
+    },
+    {
+      "id": "v2.microbe.attack-vocal.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 55,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 130.3500000000002,
+      "master": "masters/coverage-life/v2.microbe.attack-vocal.2.wav",
+      "masterSha256": "7a4316d809b1e0e834f2878c039ab773b7b339daf19442c8ae63d1121e7776a4",
+      "opus": "masters/coverage-life/v2.microbe.attack-vocal.2.opus",
+      "opusSha256": "c219d96aba0118faa609d88154c442e87dc630b45b0b9b8fdbeb2f7e6137a2a9",
+      "previewSha256": "220aca88139320b288f27e1385b3bd5815916660eb4eee6305604c70ecf10830",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.attack-vocal.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.1,
+      "opusDbTP": -10.1
+    },
+    {
+      "id": "v2.microbe.attack-vocal.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 56,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.attack-vocal"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 132.0000000000002,
+      "master": "masters/coverage-life/v2.microbe.attack-vocal.3.wav",
+      "masterSha256": "e1318d86c417337bd359baf38d616eb89926c4fd6dad9cb30da3f0a06074d135",
+      "opus": "masters/coverage-life/v2.microbe.attack-vocal.3.opus",
+      "opusSha256": "2ab3a837391cb1aadcd85fd7a8e78709e73381c54a98735ceedc74034b388b76",
+      "previewSha256": "bca3063fd8d68d9cd8930e10d32b512fb273baee643d649990e378ef016e1171",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.attack-vocal.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.8,
+      "opusDbTP": -17.8
+    },
+    {
+      "id": "v2.microbe.hurt.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 57,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 133.6500000000002,
+      "master": "masters/coverage-life/v2.microbe.hurt.1.wav",
+      "masterSha256": "9885d61b42ac322005215d2f4c6e456f5349d9bf7f5d48a275ece2c29a60ca08",
+      "opus": "masters/coverage-life/v2.microbe.hurt.1.opus",
+      "opusSha256": "b541d2ded93f57a79556e77a47edf76d54e47cb93b8b18bd12360a93e76935f0",
+      "previewSha256": "992b539cef5638c7e4414570be1a8a5cddc370c284461ae7b9b3baca4049fdec",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.hurt.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.7,
+      "opusDbTP": -14.7
+    },
+    {
+      "id": "v2.microbe.hurt.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 58,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 135.3000000000002,
+      "master": "masters/coverage-life/v2.microbe.hurt.2.wav",
+      "masterSha256": "46821985e305ed6adf02af50e95a5133afd86cb6d87f10191f891a649c75eac8",
+      "opus": "masters/coverage-life/v2.microbe.hurt.2.opus",
+      "opusSha256": "52a40fbc9cbc8b10db5e90aeb959f1e49b9b101f7d552b7b92d1bd1fef1794c0",
+      "previewSha256": "f217b739751231b6a0bba3ee20c40f973fc7717ccf1041f0f680e98fc5b6322a",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.hurt.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.3,
+      "opusDbTP": -10.3
+    },
+    {
+      "id": "v2.microbe.hurt.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 59,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.hurt"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 136.95000000000022,
+      "master": "masters/coverage-life/v2.microbe.hurt.3.wav",
+      "masterSha256": "73a3d995743ad5d8431528f69f726221e58b219c5ae002fe988bd8181499a1aa",
+      "opus": "masters/coverage-life/v2.microbe.hurt.3.opus",
+      "opusSha256": "c43af42478a376a5e392f1707a0a5318b2a1aee007ecbfa858c36c2cb986e4f5",
+      "previewSha256": "e10927faec486ed078b50d12ec11a9c1174d058da537a4f6cd59b72b62f89494",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.hurt.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -18.0,
+      "opusDbTP": -18.1
+    },
+    {
+      "id": "v2.microbe.faint.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 60,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 138.60000000000022,
+      "master": "masters/coverage-life/v2.microbe.faint.1.wav",
+      "masterSha256": "aad55235954c58b06f94d81b42889a6f89b21de2ebe034f1ae5c2a7b7c82dbba",
+      "opus": "masters/coverage-life/v2.microbe.faint.1.opus",
+      "opusSha256": "1aa50e3d4e505faf6fa7820780c2156e7744aae392187f74367d4531a013948b",
+      "previewSha256": "4837b5bc98817c372f5021c3883f2ec16b6203f4e4c953d2d52c81140adc6ae5",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.faint.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.2
+    },
+    {
+      "id": "v2.microbe.faint.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 61,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 140.25000000000023,
+      "master": "masters/coverage-life/v2.microbe.faint.2.wav",
+      "masterSha256": "02d225c95bc4fc81919666481f0a452c8f50d780aedb580ac400ab66248606c4",
+      "opus": "masters/coverage-life/v2.microbe.faint.2.opus",
+      "opusSha256": "36c83c2bb11969eaf4a9c93f1f25075381a17b0f4eaf10af9a5d1ae0dea4116e",
+      "previewSha256": "4ca54834a0d885693f8b0fe9070eaee67dfd7f40bacdd161de07fc2fe507413e",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.faint.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.6,
+      "opusDbTP": -10.6
+    },
+    {
+      "id": "v2.microbe.faint.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 62,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.faint"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 141.90000000000023,
+      "master": "masters/coverage-life/v2.microbe.faint.3.wav",
+      "masterSha256": "768663aeba7648c91e22962aec0ced3ee981df838fdcdd89ecf2b5558f0c2a0f",
+      "opus": "masters/coverage-life/v2.microbe.faint.3.opus",
+      "opusSha256": "4f0af9b436b07401e718e7cb9ea67deb31b900b288eaa79b895c7eea2406d3d5",
+      "previewSha256": "f0c5285d23b76b1f1ea525f372e5a4f30cd80aced52b95063478b81201a1741e",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.faint.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.8,
+      "opusDbTP": -17.8
+    },
+    {
+      "id": "v2.microbe.victory.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 48,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 143.55000000000024,
+      "master": "masters/coverage-life/v2.microbe.victory.1.wav",
+      "masterSha256": "67c348a64125d163264cf9e6804b6fb50aef296ce4118e3cda8e06c2dbd9acb0",
+      "opus": "masters/coverage-life/v2.microbe.victory.1.opus",
+      "opusSha256": "e533049fce0593757e183d38f26206115d6a73518d0dfbe4ea556564292a1d7c",
+      "previewSha256": "500c17a0cbf4cf15972afa39472941a5a733478a8f212fb4cb57ab9205f4c539",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.victory.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.9,
+      "opusDbTP": -14.9
+    },
+    {
+      "id": "v2.microbe.victory.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 49,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 145.20000000000024,
+      "master": "masters/coverage-life/v2.microbe.victory.2.wav",
+      "masterSha256": "1e86ab6759f75a99be42a5765884f372f035b14b5768c8fe6c6346f947042734",
+      "opus": "masters/coverage-life/v2.microbe.victory.2.opus",
+      "opusSha256": "921629c7402f88a937e41bec088720a20023173af2f91cac8d58d589a9fd32c0",
+      "previewSha256": "869dd8dde2f3550a0c1cd8a0ee09ae9d4eee9a46eb16706e4645799df4261ca4",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.victory.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.6,
+      "opusDbTP": -10.7
+    },
+    {
+      "id": "v2.microbe.victory.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 50,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.victory"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 146.85000000000025,
+      "master": "masters/coverage-life/v2.microbe.victory.3.wav",
+      "masterSha256": "5d1a6af55f6bd36b576861d89169795d7b2854a2bee04302b50301ed1c067755",
+      "opus": "masters/coverage-life/v2.microbe.victory.3.opus",
+      "opusSha256": "70f1d6d544a295c2ff67af36179dae01038ef47df896458f9b495d4dbde05b00",
+      "previewSha256": "d8762e6a271b622452e4744f0fbc5bf32cdae9cb842c2ee5c8db221a9306f78a",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.victory.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.9,
+      "opusDbTP": -17.8
+    },
+    {
+      "id": "v2.microbe.breath-idle.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 51,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 148.50000000000026,
+      "master": "masters/coverage-life/v2.microbe.breath-idle.1.wav",
+      "masterSha256": "047e1595725b399b0e12189420d78dd2f7e309a9215869a4eeb4dae290ddb6f7",
+      "opus": "masters/coverage-life/v2.microbe.breath-idle.1.opus",
+      "opusSha256": "2b9af515954112b57a3112cdcc160ea84e9c16421d53d91fb603573906c36987",
+      "previewSha256": "021f2a20bed1e85e24e7baf4b963e1f218495f989277b74cdcd913fdd9cd12bb",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.breath-idle.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.9,
+      "opusDbTP": -14.9
+    },
+    {
+      "id": "v2.microbe.breath-idle.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 52,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 150.15000000000026,
+      "master": "masters/coverage-life/v2.microbe.breath-idle.2.wav",
+      "masterSha256": "f26d1f05f9c3943de5f76395488ebd6a2b38a306ed2427e3804ebac852e2935d",
+      "opus": "masters/coverage-life/v2.microbe.breath-idle.2.opus",
+      "opusSha256": "022954185b2830f378aed2586212059586502238f3bc5aa2a922cad4d7b76102",
+      "previewSha256": "50f857cda1af045ce90a10fd623c84a97dce69893a20d1f159599ae838bf99ee",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.breath-idle.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.2,
+      "opusDbTP": -10.1
+    },
+    {
+      "id": "v2.microbe.breath-idle.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 53,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.breath-idle"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 151.80000000000027,
+      "master": "masters/coverage-life/v2.microbe.breath-idle.3.wav",
+      "masterSha256": "f8f1389c97d991b694804fe1112b9bba7136079f5249c068eb81f32c873a6ee1",
+      "opus": "masters/coverage-life/v2.microbe.breath-idle.3.opus",
+      "opusSha256": "ce6e3b1ee9e03a19d07aa71f74cbb7c81aee406b516176aeeaf11cdb5ba1e6df",
+      "previewSha256": "3c6b171c41cfe1778d1e9c9327924657af11d3a32fabdbe29d023988a07e8de1",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.breath-idle.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.8,
+      "opusDbTP": -17.7
+    },
+    {
+      "id": "v2.microbe.land-thud.1",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 54,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 153.45000000000027,
+      "master": "masters/coverage-life/v2.microbe.land-thud.1.wav",
+      "masterSha256": "4fc83351385e7521be33946e73ef251551aa28ab74e971462716f32e8af94b81",
+      "opus": "masters/coverage-life/v2.microbe.land-thud.1.opus",
+      "opusSha256": "8838c02598b610e32b1aa1f414e01c76401fd2346654c7cd12bb6977f4d80765",
+      "previewSha256": "0aaa2c26a1b0fe1c2b5867d3c5dba7e35c49432db3cd44327012f66137c9d556",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.land-thud.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.9,
+      "opusDbTP": -14.8
+    },
+    {
+      "id": "v2.microbe.land-thud.2",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 55,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 155.10000000000028,
+      "master": "masters/coverage-life/v2.microbe.land-thud.2.wav",
+      "masterSha256": "7a4316d809b1e0e834f2878c039ab773b7b339daf19442c8ae63d1121e7776a4",
+      "opus": "masters/coverage-life/v2.microbe.land-thud.2.opus",
+      "opusSha256": "1c33d746e81ce66cc037d5bb99b3844ff0a5014b085760ae17326fcc5e278f20",
+      "previewSha256": "220aca88139320b288f27e1385b3bd5815916660eb4eee6305604c70ecf10830",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.land-thud.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.1,
+      "opusDbTP": -10.1
+    },
+    {
+      "id": "v2.microbe.land-thud.3",
+      "group": "coverage-life",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "life-microbe",
+          "start": 0,
+          "duration": 0.35,
+          "note": 56,
+          "gain": 0.3
+        }
+      ],
+      "requirements": [
+        "family.microbe.land-thud"
+      ],
+      "notes": "Fictional botanical/colony sonification. Not a naturally audible vocalization or authentic species coverage.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 156.75000000000028,
+      "master": "masters/coverage-life/v2.microbe.land-thud.3.wav",
+      "masterSha256": "e1318d86c417337bd359baf38d616eb89926c4fd6dad9cb30da3f0a06074d135",
+      "opus": "masters/coverage-life/v2.microbe.land-thud.3.opus",
+      "opusSha256": "10c7cdc066f22ccd3ba80147d6758a83d63e32cc0114d83e7fd2e3775fa8f203",
+      "previewSha256": "bca3063fd8d68d9cd8930e10d32b512fb273baee643d649990e378ef016e1171",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.microbe.land-thud.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.8,
+      "opusDbTP": -17.8
+    }
+  ],
+  "listeningAccepted": false
+}

@@ -1,0 +1,18 @@
+# C198 source holds — bounded terminal delivery
+
+Two source-bound fits are ready for Claude’s scoring, with quality still held:
+
+- `01-capuchin-fringes/islands-01/fit`: the old Capuchin painting and all old landmarks/contours are unchanged. D28 reassigns **1,469** remainder pixels; the detached hindleg strip disappears in the reviewed faint pose. Static **13/13 actions, 1,573 publications + 1,134 presentation publications**; actual loaded-rig parity **20/20**. Native neck-seam resolution remains unmeasured.
+- `02b-tiger-shark-habitat/source-joins-02/fit`: independent authoring on the exact earlier v4 notch painting. D28 reassigns **1,857** pixels; the unchanged hash-guarded C88 fish source recipe closes the reviewed pectoral opening. Static **13/13, 1,573 + 912**; actual-rig parity **20/20**. Tail notch remains visible; hard fin/body texture seams and source proportions remain scoring holds. The first invalid `water` habitat fixture is retained; the sole declaration correction is canonical `aquatic`.
+
+D28 changes ownership, **never source/keyed RGBA**. Independent normalized-polygon replay, exact established keyer output, source-alpha conservation, deletion/addition/RGBA/owner mutations and the retained structural-island negative control are in each `conservation.json`. The authorized default remains **0.5**. Contact **0.25 px**, endpoint **1e-8**, folds/strain, iteration limits and product/runtime sources are unchanged.
+
+Snow Petrel is **not a delivery for admission**. Its independent new-source fit and D28 successor pass all **14 actions, 1,694 + 1,086** publications; D28 reassigns **5,713** fringe pixels. The single join successor also passes mechanics and 20 actual-rig samples, but **crushes the head/eye and hangs the bill at faint0.9**. It is explicitly VISUAL_REJECT. The D28-only wide axial opening and all predecessors remain. Parent independently concurred with the rejected Petrel and held Shark subset.
+
+The Capybara correction removes an invented external tail from a canonically tailless painting, preserving every non-tail transferred landmark/region and every source pixel. Intake and 12 absence controls pass, but the unchanged tail-action compression guard remains RED at **247.86666666666667 ms** (original **246.17777777777778 ms** retained). Eighteen other actions and presentation pass; full-size head/neck ownership remains visibly broken. Twenty coarse actual-rig samples do not override the precise static RED. No further repair loop ran.
+
+`queue-status.final.json` gives exact selected fit paths and file/internal hashes, and supersedes the historical pending snapshot. Rhea’s far-wing root, Prawn’s source fringe, Shrimp’s rear underside join, Fishing Cat’s transferred contact geometry, and incomplete Water/Carrion Beetle limb visibility remain explicit holds. `scoring-refusals.json` preserves every C239/C248 reference/transfer/pattern/static refusal; a failed transfer is not proof that source anatomy is absent. No re-score was run. Hawk/Snowy Owl and the eleven latest accepted subjects were preserved.
+
+`execution-summary.json` enumerates every executed static report, red, actual-rig sample and exact count. Software images are 1254-square source diagnostics; no native, GPU, full-stage, performance, AI-finish or quality acceptance is claimed. The red horizontal line is the source authoring guide. The two `*-birds.mjs` copies are unused preparation artifacts, not executed evidence.
+
+No native epoch, runtime edit, gate, Git write, mailbox edit or reference-pool mutation occurred in this lane. Startup reuses the current C198 receipt and Node 26.10.0. All local processing is terminal. Source originals, failed controls and prior frozen packets are preserved.

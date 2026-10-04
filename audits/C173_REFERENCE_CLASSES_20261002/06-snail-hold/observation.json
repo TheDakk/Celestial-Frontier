@@ -1,0 +1,308 @@
+{
+  "schema": "cf.c173-anatomical-observation/v1",
+  "status": "ANATOMICAL_HOLD",
+  "family": "gastropod",
+  "source": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail",
+  "masterSha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+  "fullSizeInspected": true,
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "observedSourcePoints": {
+    "foot0": [
+      218,
+      808
+    ],
+    "foot1": [
+      430,
+      812
+    ],
+    "foot2": [
+      663,
+      827
+    ],
+    "foot3": [
+      860,
+      779
+    ],
+    "head": [
+      946,
+      714
+    ],
+    "eyeFar": [
+      1101,
+      546
+    ],
+    "eyeNear": [
+      1007,
+      489
+    ],
+    "shell": [
+      514,
+      596
+    ]
+  },
+  "visibleRegions": [
+    {
+      "id": "shell",
+      "points": [
+        [
+          259,
+          592
+        ],
+        [
+          263,
+          544
+        ],
+        [
+          291,
+          486
+        ],
+        [
+          329,
+          439
+        ],
+        [
+          390,
+          406
+        ],
+        [
+          450,
+          388
+        ],
+        [
+          514,
+          382
+        ],
+        [
+          580,
+          391
+        ],
+        [
+          642,
+          417
+        ],
+        [
+          693,
+          457
+        ],
+        [
+          734,
+          514
+        ],
+        [
+          759,
+          567
+        ],
+        [
+          766,
+          626
+        ],
+        [
+          787,
+          661
+        ],
+        [
+          784,
+          682
+        ],
+        [
+          729,
+          702
+        ],
+        [
+          662,
+          713
+        ],
+        [
+          588,
+          728
+        ],
+        [
+          530,
+          756
+        ],
+        [
+          461,
+          771
+        ],
+        [
+          392,
+          773
+        ],
+        [
+          327,
+          748
+        ],
+        [
+          283,
+          708
+        ],
+        [
+          262,
+          654
+        ]
+      ]
+    },
+    {
+      "id": "foot",
+      "points": [
+        [
+          171,
+          788
+        ],
+        [
+          241,
+          768
+        ],
+        [
+          289,
+          752
+        ],
+        [
+          328,
+          776
+        ],
+        [
+          432,
+          784
+        ],
+        [
+          536,
+          764
+        ],
+        [
+          629,
+          748
+        ],
+        [
+          718,
+          732
+        ],
+        [
+          821,
+          706
+        ],
+        [
+          869,
+          705
+        ],
+        [
+          918,
+          749
+        ],
+        [
+          911,
+          785
+        ],
+        [
+          866,
+          824
+        ],
+        [
+          801,
+          847
+        ],
+        [
+          730,
+          862
+        ],
+        [
+          653,
+          862
+        ],
+        [
+          571,
+          845
+        ],
+        [
+          511,
+          837
+        ],
+        [
+          442,
+          839
+        ],
+        [
+          356,
+          842
+        ],
+        [
+          278,
+          835
+        ],
+        [
+          213,
+          824
+        ],
+        [
+          177,
+          810
+        ]
+      ]
+    },
+    {
+      "id": "visible-head",
+      "points": [
+        [
+          834,
+          692
+        ],
+        [
+          877,
+          669
+        ],
+        [
+          907,
+          641
+        ],
+        [
+          948,
+          640
+        ],
+        [
+          973,
+          680
+        ],
+        [
+          981,
+          715
+        ],
+        [
+          971,
+          742
+        ],
+        [
+          943,
+          763
+        ],
+        [
+          913,
+          771
+        ],
+        [
+          883,
+          742
+        ]
+      ]
+    }
+  ],
+  "unresolved": [
+    "mouth"
+  ],
+  "declaredBiologicallyAbsent": [],
+  "reasons": [
+    "The mouth is not independently separable from the lower anterior fold at native size. A mandatory mouth landmark would assign an unproven structure.",
+    "Two eye-bearing long tentacles and two short feelers are visible; the short feelers have no independent joint slots in this coarse template and would need explicit head ownership if a future mouth-visible source proceeds.",
+    "Neither missing paint nor an ambiguous fold establishes biological absence; no mouth landmark, complete authoring or fit is fabricated."
+  ],
+  "completeAuthoring": false,
+  "fitAttempted": false,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "sourceBytesPreserved": true,
+  "previewIsDiagnosticOverlay": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

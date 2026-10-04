@@ -1,0 +1,245 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Marine Iguana\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"3330632582\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"1\"]]]]",
+    "seed": 3330632582,
+    "ownerId": "authored:archetype-sprint/13-marine-iguana",
+    "earthName": "Marine Iguana"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "external-ears"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3330632582,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 5,
+    "body": 15,
+    "loco": 7,
+    "trait": 1,
+    "size": 3,
+    "diet": 5,
+    "head": 5,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 4,
+    "pattern": 2,
+    "eyes": 5,
+    "behavior": 7,
+    "habitat": 14,
+    "detail": 9,
+    "accent": 12,
+    "temper": 1,
+    "sense": 1,
+    "repro": 3,
+    "life": 3,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Marine Iguana"
+  },
+  "geometry": {
+    "cutoutAssetHash": "9200fbcb9b42baa95175a0d23e2358332aef0fe19a4e5d5ba7d5fbebcb36116f",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6344057761610861,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5911483253588516,
+      0.4843700159489633
+    ],
+    "pelvis": [
+      0.5067783094098883,
+      0.49856459330143543
+    ],
+    "spine": [
+      0.5875598086124402,
+      0.4772727272727273
+    ],
+    "chest": [
+      0.6846092503987241,
+      0.4850079744816587
+    ],
+    "neck": [
+      0.7807814992025518,
+      0.4422647527910686
+    ],
+    "head": [
+      0.8333333333333334,
+      0.41834130781499207
+    ],
+    "jaw": [
+      0.876555023923445,
+      0.4409888357256778
+    ],
+    "hindNearRoot": [
+      0.5084529505582137,
+      0.49968102073365234
+    ],
+    "hindNearKnee": [
+      0.474481658692185,
+      0.5239234449760766
+    ],
+    "hindNearAnkle": [
+      0.4481658692185008,
+      0.5765550239234449
+    ],
+    "hindNearPaw": [
+      0.47647527910685805,
+      0.5960925039872408
+    ],
+    "hindFarRoot": [
+      0.539712918660287,
+      0.5138755980861244
+    ],
+    "hindFarKnee": [
+      0.5529505582137161,
+      0.5586921850079745
+    ],
+    "hindFarAnkle": [
+      0.55311004784689,
+      0.5874003189792664
+    ],
+    "hindFarPaw": [
+      0.6125199362041468,
+      0.6072567783094099
+    ],
+    "foreNearRoot": [
+      0.6875598086124403,
+      0.49425837320574156
+    ],
+    "foreNearKnee": [
+      0.7025518341307815,
+      0.5422647527910686
+    ],
+    "foreNearAnkle": [
+      0.6905901116427432,
+      0.5804625199362041
+    ],
+    "foreNearPaw": [
+      0.7199362041467304,
+      0.5993620414673047
+    ],
+    "foreFarRoot": [
+      0.7590111642743221,
+      0.5038277511961722
+    ],
+    "foreFarKnee": [
+      0.7689792663476873,
+      0.5496810207336523
+    ],
+    "foreFarAnkle": [
+      0.8207336523125998,
+      0.5966507177033493
+    ],
+    "foreFarPaw": [
+      0.8683413078149921,
+      0.60207336523126
+    ],
+    "tail0": [
+      0.4466507177033493,
+      0.5160287081339713
+    ],
+    "tail1": [
+      0.30717703349282294,
+      0.5444976076555024
+    ],
+    "tail2": [
+      0.20861244019138758,
+      0.5606060606060606
+    ],
+    "tail3": [
+      0.1083732057416268,
+      0.5589314194577353
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c196p/13-marine-iguana/packet/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "G1 automatic: Earth fauna profile marine-iguana media ground+water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from river-otter. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "52e8f050f10048dd433a269d7b5139a3425eca1d19a921c291005ab67779c859",
+    "subjectSourceSha256": "9aac492c87c68fbcfa4bf4766b39c8296e5d041c5fc5400d4eb6b0313c1ec240",
+    "presenceSha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.08555574567171768,
+      "spine": 0.0835403745047647,
+      "chest": 0.09735721955978713,
+      "neck": 0.10524297810531717,
+      "head": 0.057741029520026216,
+      "jaw": 0.0487957483591822,
+      "hindFarRoot": 0.03631962766870299,
+      "hindFarKnee": 0.046730734685753166,
+      "hindFarAnkle": 0.028708576994632355,
+      "hindFarPaw": 0.06264035290251295,
+      "foreFarRoot": 0.07674521994193546,
+      "foreFarKnee": 0.046924251578707485,
+      "foreFarAnkle": 0.06989040635187557,
+      "foreFarPaw": 0.047915487774272125,
+      "hindNearRoot": 0.002012668176096346,
+      "hindNearKnee": 0.041734204247794,
+      "hindNearAnkle": 0.05884389414473125,
+      "hindNearPaw": 0.03439674134958482,
+      "foreNearRoot": 0.009709565918569238,
+      "foreNearKnee": 0.050292875340679166,
+      "foreNearAnkle": 0.04002689370604268,
+      "foreNearPaw": 0.034905372929638044,
+      "tail0": 0.06261247951736347,
+      "tail1": 0.14234952345274876,
+      "tail2": 0.09987222491332465,
+      "tail3": 0.1002532221230309
+    },
+    "measures": {
+      "torso": 0.17834692452296314,
+      "head": 0.057741029520026216,
+      "head/torso": 0.3237567997007526,
+      "bone-min": 0.002012668176096346,
+      "bone-max": 0.14234952345274876,
+      "leg/torso:hindFar": 0.7742194879571358,
+      "leg/torso:foreFar": 0.9236500497301554,
+      "leg/torso:hindNear": 0.7568105819774387,
+      "leg/torso:foreNear": 0.7021435458520423
+    }
+  },
+  "recipeHash": "51b1d7adc42d4d5367467932d73c208d0d95beaa902cca2ca11b24cc931a5d82"
+}

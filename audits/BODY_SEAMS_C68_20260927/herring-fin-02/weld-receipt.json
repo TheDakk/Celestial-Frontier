@@ -1,0 +1,66 @@
+{
+  "sourceFit": "audits/BODY_SEAMS_C68_20260927/herring-axial-01/fit",
+  "sourcePreSplitSha256": "5e8c23fe9077e52cebd272075da7c524aa525f667a5470334f4558cc04e76f99",
+  "sourceAtlasSha256": "58614211c99c19aac0b16dae7875022404eab8f57ea06f4692840a6c0637ca8f",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "pectoralNear",
+      "pectoralFar",
+      "dorsal",
+      "jaw",
+      "head",
+      "caudal",
+      "spine5",
+      "spine4",
+      "spine3",
+      "spine2",
+      "spine1",
+      "spine0"
+    ],
+    "contactEndpoints": [],
+    "paintBoundaryPairs": [
+      [
+        "dorsal",
+        "spine2"
+      ],
+      [
+        "dorsal",
+        "spine3"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "48ce01433246c873744afac77fbbbe0ec83155695b3b1607266cda1344e055dd",
+    "sourceVertices": 1397,
+    "vertices": 1600,
+    "sharedSupports": 479,
+    "pins": 445,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 10,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 2,
+    "independentExcludedBoundaries": 8,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "dorsal",
+        "spine2"
+      ],
+      [
+        "dorsal",
+        "spine3"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "recordUnchanged": true,
+  "labelsUnchanged": true,
+  "atlasUnchanged": true,
+  "limitsUnchanged": true
+}

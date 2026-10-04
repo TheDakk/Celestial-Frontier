@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c168-full-size-source-review/v1",
+  "masterSha256": "9b32d6750423bf8b570d539a808acacd305f1b5366d5c27b82b06996a63f52bc",
+  "inspectedSize": [
+    1254,
+    1254
+  ],
+  "qualityAccepted": false,
+  "findings": [
+    "The single new painting separates the previously merged far foot and near hand. The unchanged geometric counter now measures four limb-down appendages and four ground clusters. It is still an observation, not proof of four coplanar supports.",
+    "Near knuckles finish around y940, right fingers around y940, left foot around y924 and far foot around y901. The right hand remains partly curled/open despite the requested folded knuckles; no contact plane or finger shape is invented.",
+    "Far thigh and shoulder roots remain partly occluded; selected attachment points are explicit rig hypotheses. Gorilla stays tailless under the existing primate presence contract. Head/nape, hand and foot skin need full moving-paint review."
+  ]
+}

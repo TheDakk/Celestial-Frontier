@@ -1,0 +1,28 @@
+{
+  "name": "African Wild Dog",
+  "masterSha256": "35fa47ca0ca969e1b446b54493747fe7364ea34142dd021f6b6073217eac0d8e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four distinct paw ends and long leg shafts, two very large rounded ears, irregular black/tan/white coat patches and full continuous white-tipped tail. Near/far upper forelegs and rear roots partly overlap naturally; the large ear proportions merit biological review. No apparent fifth leg, but exact ownership and native motion are unmeasured.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 216,
+      "y0": 250,
+      "x1": 1037,
+      "y1": 951
+    },
+    "margins": {
+      "left": 216,
+      "right": 216,
+      "top": 250,
+      "bottom": 302
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

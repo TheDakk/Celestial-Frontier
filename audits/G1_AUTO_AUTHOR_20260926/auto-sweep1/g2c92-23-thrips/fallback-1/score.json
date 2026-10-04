@@ -1,0 +1,12 @@
+{
+ "id": "g2c92-23-thrips",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 29%)",
+  "missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 26%)",
+  "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 8% paint (reference 29%)",
+  "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 2% paint (reference 75%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,15 @@
+{
+  "reason": "Rejected ownership candidates; reports, stills, scripts and exact hashes retained; no acceptance-film claim",
+  "files": [
+    {
+      "path": "audits/QUAD_CONTACT_C56_20260926/native-marmot-cattle/battle-full.webm",
+      "sha256": "c46ffd58760ce7cca75389050511d211338f9544d6f3bf41b1eecf805ee55e03",
+      "bytes": 11282440
+    },
+    {
+      "path": "audits/QUAD_CONTACT_C56_20260926/native-marmot-both-sides/battle-full.webm",
+      "sha256": "3e156237c80e48b7389fc7dc498dcbf2fcc0125418a9787499eafb53ce90e62f",
+      "bytes": 10923567
+    }
+  ]
+}

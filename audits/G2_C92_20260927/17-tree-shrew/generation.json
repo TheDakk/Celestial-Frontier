@@ -1,0 +1,13 @@
+{
+  "id": "17-tree-shrew",
+  "name": "Tree Shrew",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-9352172a-8410-42ea-9ee0-3d1692be8257.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0189309d203331afebc59f9abc45c419b3d63b9ff95e0a5cdd63df5cba8d2fd6",
+  "bytes": 1196599,
+  "promptSha256": "8f355d1e472cf7d76a3a0070137a00da9433c5d8f91d3490028de85d619578d1",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

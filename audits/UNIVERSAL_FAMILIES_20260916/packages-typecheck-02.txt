@@ -1,0 +1,1 @@
+packages/art/test/painter-topology.test.ts(25,40): error TS4104: The type 'readonly (readonly [number, number])[]' is 'readonly' and cannot be assigned to the mutable type 'number[][]'.

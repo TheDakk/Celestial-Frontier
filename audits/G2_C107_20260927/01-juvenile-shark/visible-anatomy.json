@@ -1,0 +1,163 @@
+{
+  "id": "01-juvenile-shark",
+  "name": "Juvenile Shark",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "9da7e928726dd316874af5f6975c0b98d4d9e58c9f2b1a46ef5920a5c726915b",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 13954,
+    "coreRadius": 17,
+    "bodyBox": {
+      "x0": 192,
+      "y0": 179,
+      "x1": 346,
+      "y1": 242
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.3013,
+        "pixels": 4204,
+        "box": {
+          "x0": 41,
+          "y0": 138,
+          "x1": 194,
+          "y1": 238
+        },
+        "attach": {
+          "x": 191.2,
+          "y": 213.3,
+          "relX": -0.01,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": -0.98,
+          "y": -0.22
+        },
+        "class": "rear",
+        "length": 168
+      },
+      {
+        "k": 1,
+        "frac": 0.0443,
+        "pixels": 618,
+        "box": {
+          "x0": 228,
+          "y0": 149,
+          "x1": 261,
+          "y1": 178
+        },
+        "attach": {
+          "x": 244.5,
+          "y": 178,
+          "relX": 0.34,
+          "relY": -0.02
+        },
+        "dir": {
+          "x": -0.26,
+          "y": -0.97
+        },
+        "class": "top",
+        "length": 33.4
+      },
+      {
+        "k": 2,
+        "frac": 0.0439,
+        "pixels": 613,
+        "box": {
+          "x0": 347,
+          "y0": 198,
+          "x1": 377,
+          "y1": 231
+        },
+        "attach": {
+          "x": 347,
+          "y": 214.5,
+          "relX": 1.01,
+          "relY": 0.56
+        },
+        "dir": {
+          "x": 0.98,
+          "y": -0.18
+        },
+        "class": "front",
+        "length": 34.2
+      },
+      {
+        "k": 3,
+        "frac": 0.0407,
+        "pixels": 568,
+        "box": {
+          "x0": 227,
+          "y0": 241,
+          "x1": 276,
+          "y1": 270
+        },
+        "attach": {
+          "x": 261.6,
+          "y": 242.9,
+          "relX": 0.45,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.71,
+          "y": 0.7
+        },
+        "class": "limb-down",
+        "length": 43.9
+      },
+      {
+        "k": 4,
+        "frac": 0.0081,
+        "pixels": 113,
+        "box": {
+          "x0": 279,
+          "y0": 243,
+          "x1": 294,
+          "y1": 254
+        },
+        "attach": {
+          "x": 286.5,
+          "y": 243,
+          "relX": 0.61,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.02,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 13.3
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "top": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 227,
+        "x1": 249,
+        "cx": 236.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

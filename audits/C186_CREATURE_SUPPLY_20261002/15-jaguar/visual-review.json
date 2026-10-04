@@ -1,0 +1,28 @@
+{
+  "name": "Jaguar",
+  "masterSha256": "01288ac83387fc9f13a8e209ca10585dd69b59b884d4806737a1518e1459e388",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: stocky golden and cream body, broad jaw and large black rosettes with dark internal spots visibly present on multiple torso rosettes. Four paw ends are separately visible; the far proximal leg roots remain partly hidden by the torso and near legs. The near rounded ear is distinct; the far ear is a small tip. Tail is continuous and fully inside the canvas. No apparent fifth limb. Pattern visibility is observed; root ownership, proportions and moving anatomy remain unadmitted.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 174,
+      "y0": 370,
+      "x1": 1081,
+      "y1": 838
+    },
+    "margins": {
+      "left": 174,
+      "right": 172,
+      "top": 370,
+      "bottom": 415
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

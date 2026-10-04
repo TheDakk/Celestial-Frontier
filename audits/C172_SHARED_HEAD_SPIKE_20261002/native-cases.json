@@ -1,0 +1,94 @@
+{
+  "schema": "cf.c172-native-refilm-inputs/v1",
+  "status": "prepared only; no native run by this audit",
+  "rows": [
+    {
+      "id": "hawk",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/fit02",
+      "packet": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/candidate",
+      "script": "audits/C172_SHARED_HEAD_SPIKE_20261002/native-cases/hawk.script.json",
+      "supports": "observed",
+      "arena": {
+        "setId": "earth-temperate-v1",
+        "biome": "temperate",
+        "files": {
+          "arena-recipe.json": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+          "arena-far.png": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.webp",
+          "arena-mid.png": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.webp",
+          "arena-near.png": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.webp"
+        }
+      },
+      "priorNativeSource": "454b7d5c3f1e49c3cc5c25a7c278d9b39fab3933",
+      "priorReport": "~/Projects/celestial-frontier-anthropic-mac/audits/HEADS_C181_20261002/hawk/report.json",
+      "priorReportSha256": "af641f1c5c00289c2934ee83d34e5ef2f8898287a91122c82f127373b7381a98",
+      "recordRecipeHash": "6c4c9316cfd540ac6e391b2a124a079a135aa6a0aec95b9ba412fbf5d34f4575",
+      "bindingHash": "5d2306cbaa428a474579659c06b931b4d0c60e498b91b7a0ac91cb4d6ce2d945"
+    },
+    {
+      "id": "crow",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/fit01",
+      "packet": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/candidate",
+      "script": "audits/C172_SHARED_HEAD_SPIKE_20261002/native-cases/crow.script.json",
+      "supports": "observed",
+      "arena": {
+        "setId": "earth-temperate-v1",
+        "biome": "temperate",
+        "files": {
+          "arena-recipe.json": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+          "arena-far.png": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.webp",
+          "arena-mid.png": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.webp",
+          "arena-near.png": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.webp"
+        }
+      },
+      "priorNativeSource": "454b7d5c3f1e49c3cc5c25a7c278d9b39fab3933",
+      "priorReport": "~/Projects/celestial-frontier-anthropic-mac/audits/HEADS_C181_20261002/crow/report.json",
+      "priorReportSha256": "78d1b67d24f3aeb2e44869f41104f5ba8d090a244b2d30e4314020355f94d31a",
+      "recordRecipeHash": "11077ceddced70eb92601939e1bb0977d19e030cdd17aca2be8ee3be3e830f1a",
+      "bindingHash": "e5801553245bd7e37d9b5445050a2adaac59ff943b5ea9a1ae4b4c750ba002ac"
+    },
+    {
+      "id": "snowy-owl",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/fit01",
+      "packet": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/candidate",
+      "script": "audits/C172_SHARED_HEAD_SPIKE_20261002/native-cases/snowy-owl.script.json",
+      "supports": "observed",
+      "arena": {
+        "setId": "earth-temperate-v1",
+        "biome": "temperate",
+        "files": {
+          "arena-recipe.json": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+          "arena-far.png": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.webp",
+          "arena-mid.png": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.webp",
+          "arena-near.png": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.webp"
+        }
+      },
+      "priorNativeSource": "454b7d5c3f1e49c3cc5c25a7c278d9b39fab3933",
+      "priorReport": "~/Projects/celestial-frontier-anthropic-mac/audits/HEADS_C181_20261002/snowy-owl/report.json",
+      "priorReportSha256": "3a181548cb6169acea40bf141e433aec6aae4491cbe38c093b600234ab441e9b",
+      "recordRecipeHash": "5a2ea51d3b0f4bcd71299666e3a669f0cb215c1f54016d3453840aa3bc413fd7",
+      "bindingHash": "b8ace821c21120722844c71067e9a9a409c9604f3121a4a448d68b7c80624dfc"
+    },
+    {
+      "id": "capuchin",
+      "fit": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/fit01",
+      "packet": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours",
+      "script": "audits/C172_SHARED_HEAD_SPIKE_20261002/native-cases/capuchin.script.json",
+      "supports": "observed",
+      "arena": {
+        "setId": "earth-temperate-v1",
+        "biome": "temperate",
+        "files": {
+          "arena-recipe.json": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+          "arena-far.png": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.webp",
+          "arena-mid.png": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.webp",
+          "arena-near.png": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.webp"
+        }
+      },
+      "priorNativeSource": "818ba677fe69b41d88fcf8b814dcab0f4bf59063",
+      "priorReport": "~/Projects/celestial-frontier-anthropic-mac/audits/CAPUCHIN_C192_20261002/capuchin/report.json",
+      "priorReportSha256": "94531b7bd88b5986adbfc3fa0966e55d426e61080f7325ea0da78eb6cfec742d",
+      "recordRecipeHash": "4275e4cd5949666e1b7482000888319b14a3914b472530598e8c5f4792b96881",
+      "bindingHash": "0203464c564ad73fbcb2d3e84c80ab9e812ac50c2cb3f7a2df89abcc9eb7e70e"
+    }
+  ]
+}

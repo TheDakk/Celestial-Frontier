@@ -1,0 +1,13 @@
+{
+  "name": "Jaguar",
+  "masterSha256": "811681c61a34735bd49008b1e3bd64eceda4842808135814766695dbb40d7753",
+  "status": "UNRESOLVED",
+  "method": "Codex visual inspection of exact generated original; pattern only, not anatomy/G1/Dakk approval",
+  "features": [
+    {
+      "requirement": "rosettes with spots inside them",
+      "status": "UNRESOLVED",
+      "observed": "Rosettes visible but distinct black central spots remain unresolved on the second painting."
+    }
+  ]
+}

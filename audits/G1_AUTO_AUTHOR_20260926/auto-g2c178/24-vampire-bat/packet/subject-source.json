@@ -1,0 +1,70 @@
+{
+  "name": "Vampire Bat",
+  "family": "flyer-membrane",
+  "species": {
+    "name": "Vampire Bat",
+    "aspect": 1.3,
+    "headFrac": 0.3,
+    "eyes": "small",
+    "posture": "flying",
+    "mustRead": [
+      "flat pig-like nose pad with no leaf",
+      "large pointed ears and a short conical muzzle",
+      "long thumbs used to walk on folded wrists"
+    ],
+    "note": "Has almost no tail and a very short snout; the fangs are small front incisors, not long protruding canines."
+  },
+  "genome": {
+    "seed": 4156634318,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 7,
+    "body": 4,
+    "loco": 13,
+    "trait": 7,
+    "size": 3,
+    "diet": 5,
+    "head": 4,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 7,
+    "habitat": 15,
+    "detail": 2,
+    "accent": 10,
+    "temper": 8,
+    "sense": 9,
+    "repro": 6,
+    "life": 3,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Vampire Bat"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Vampire Bat\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4156634318\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "index": 593,
+  "profile": {
+    "id": "bat",
+    "names": [
+      "Fruit Bat",
+      "Bat",
+      "Insect-Eating Bat",
+      "Vampire Bat"
+    ],
+    "candidateTemplates": [
+      "flyer-membrane"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

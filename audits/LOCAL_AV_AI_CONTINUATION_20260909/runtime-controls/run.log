@@ -1,0 +1,35 @@
+✔ actual four-stage flow publishes exact decoded pixels only after every worker retires (5.162958ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: false) (1.201375ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: true) (0.784417ms)
+✔ gpu-error progress is terminal; a late completion cannot produce another stage or painting (0.837708ms)
+✔ text timeout terminates the exact worker and blocks publication (0.81225ms)
+✔ encode timeout terminates the exact worker and blocks publication (0.609458ms)
+✔ denoise timeout terminates the exact worker and blocks publication (0.618167ms)
+✔ decode timeout terminates the exact worker and blocks publication (0.677917ms)
+✔ a repeated generation rejects while the first owns its worker and controls (0.6475ms)
+✔ reference-disabled generation never fetches or decodes reference data (1.022083ms)
+✔ nonfinite decoder pixels fail before canvas publication despite successful worker completion (0.668208ms)
+✔ ORT half-precision storage preserves native values through an offset view (1.017833ms)
+✔ Uint16 fallback storage has the same value contract; other views refused (0.228834ms)
+✔ official scheduler anchors, branch and output-only token contract (1.833708ms)
+✔ same scheduler outcome ruler rejects unshifted and stale README schedules (0.27925ms)
+✔ scheduler rejects coercion, fractional/empty/excessive shapes and nonfinite input (0.10375ms)
+✔ binary16 known values, signed zero, subnormals, ties-to-even and overflow (0.129208ms)
+✔ all finite binary16 values survive exact binary32 representation and back (5.786125ms)
+✔ tensor conversion rejects nonfinite/overflow carriers instead of silent GPU NaNs (0.294333ms)
+✔ explicit seeds repeat independently, preserve odd prefixes and differ by seed (0.34775ms)
+✔ noise has normal-distribution outcomes; same ruler rejects zero and uniform substitutes (7.476916ms)
+✔ noise rejects implicit/invalid seeds and oversized allocation requests (0.168791ms)
+✔ non-square packed transposition preserves channel/pixel identity and borrowed inputs (0.362875ms)
+✔ packed transpose rejects wrong channel count, dimensions and nonfinite values (0.091084ms)
+✔ image IDs use row-major geometry and separate reference time without token-counter L (0.148583ms)
+✔ Euler integrates only generated tokens with descending sigma, retaining all inputs (1.965667ms)
+✔ Euler rejects malformed predictions, ascending times and numerical overflow (0.152792ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 70.082083

@@ -1,0 +1,10 @@
+{
+  "scope": "One bounded read-only authentication diagnostic after repeated final-item signing refusals",
+  "command": "ssh -T -o BatchMode=yes -o StrictHostKeyChecking=yes git@github.com",
+  "exitCode": 255,
+  "stderr": "sign_and_send_pubkey: signing failed for ED25519 \"GitHub\" from agent: communication with agent failed\\ngit@github.com: Permission denied (publickey).",
+  "result": "1Password agent communication also failed for SSH authentication; not isolated to the Git-signing helper",
+  "priorPreflight": "push/preflight.json remains its earlier successful observation; this later refusal requires successful authentication before final push",
+  "configurationChanged": false,
+  "keyExported": false
+}

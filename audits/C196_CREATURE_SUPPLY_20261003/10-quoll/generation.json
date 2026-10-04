@@ -1,0 +1,14 @@
+{
+  "id": "10-quoll",
+  "name": "Quoll",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-4b8163e6-8b8f-4c15-80c5-e66646f0adc7.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2970f2f1c454541741c542a69441c3a6e03f118fb3d13bf9e668f4b939e37b1e",
+  "bytes": 1277180,
+  "promptSha256": "f9ab013eed2587b3808f636fc27f7ee8e19f9548c38f450fc887429396b9a1d2",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

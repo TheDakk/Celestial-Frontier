@@ -1,0 +1,13 @@
+# C132 I5 producer preparation — 2026-10-02
+
+The two queued producer repairs are implemented on `openai/mac`. No certificate bytes were edited, no native epoch ran here, and no old certificate was rebound. Evidence lives in `~/Projects/celestial-frontier-openai-mac/audits/C132_I5_PREP_20261002`.
+
+`score.mjs` and `calibrate.mjs` now resolve the Codex lane from `os.homedir()` plus `Projects/celestial-frontier-openai-mac`. Every existing subject suffix remains unchanged. Calibration exposes its subject table and uses a direct-execution guard, so importing it does not execute the detector. Both actual runner tables pass alternate-home controls, including a home containing spaces. All 21 default referenced files exist on this Mac.
+
+`pwa-build.ts` excludes exactly the emitted `__local_ai/` subtree from its shared game runtime inventory. The exclusion applies to both initial and final-byte worker generation and eager installed-pack accounting. Optional dependency absence, installation, upgrade or renaming therefore cannot perturb the game service-worker identity. Ordinary game assets and similar names outside that precise root remain bound. The worker's existing undeclared-resource refusal remains: this change does not grant local-AI network access to a controlled PWA.
+
+Focused verification: 2 alternate-home Node tests, 78 tests across build-mode/PWA offline/local-runtime/battle2 pin suites, and all three TypeScript programs pass. The new hook test drives real `generateBundle` and `writeBundle` hooks with optional files absent at the final boundary, proves unchanged worker bytes for absent/MISSING/installed/upgraded local assets, and proves changed/restored ordinary game bytes alter/restore both worker outputs. Source bindings are in `source-inputs.json`; the complete scoped receipt is `validation.json`.
+
+The first unit run retained one instrument failure: its broad substring assertion also matched the deliberately retained nested game asset. Tightening the assertion to the exact JSON path boundary fixed that test error; no product rule was relaxed. Parent owns the signed checkpoint, gate order, reservation notices and any subsequent I5 measurement. Producer changes require new measurement evidence; this packet does not assert a green I5 certificate.
+
+Root follow-up: new v2 epoch ledgers, logs and generated collector JSON alias the current home directory to `~` at serialization. This preserves sample numbers, hashes, statuses, diagnostic wording and the complete sealed v1 writer/evaluator. Sixty focused v2 tests pass, including the actual generated atomic writer and an omitted-wrapper mutant. The first added test used the wrong materializer return shape; that test error was corrected. No old evidence was rewritten.

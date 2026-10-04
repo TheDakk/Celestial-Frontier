@@ -1,0 +1,11 @@
+{
+ "id": "15-antelope",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 35%)",
+  "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+ ],
+ "semanticPresence": null
+}

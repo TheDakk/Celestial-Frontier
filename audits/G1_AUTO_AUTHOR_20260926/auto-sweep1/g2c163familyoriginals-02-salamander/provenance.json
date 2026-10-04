@@ -1,0 +1,141 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c163familyoriginals-02-salamander",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "02031f9202dd2f2164f169f6a42e9e45d1ebbec57cee586740b93f8660d603c8",
+ "subjectSourceSha256": "c3c0320a3d4b3f096a6e6cf14ec9b0840768a133f9caf2239c28a1070d619123",
+ "identity": {
+  "name": "Salamander",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Salamander\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2107353377\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 2107353377,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "codex-ref-01-caiman-tail-contour",
+  "authoringSha256": "f206f2358d4e96a66550c87799f4889c168e2168899dab5b96f82ee622cadd50",
+  "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b"
+ },
+ "habitat": {
+  "profileId": "salamander",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "4e32272af8ac420f81285b7ddc69a584cd5a6c654fd16395a8edf09c07e37229",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group salamander (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1212,
+     "class": "front",
+     "attach": {
+      "x": 311.9,
+      "y": 183.1,
+      "relX": 0.96,
+      "relY": 0.13
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1895,
+     "class": "rear",
+     "attach": {
+      "x": 157.5,
+      "y": 216,
+      "relX": 0,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0387,
+     "class": "limb-down",
+     "attach": {
+      "x": 308.4,
+      "y": 220.9,
+      "relX": 0.94,
+      "relY": 0.82
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.047,
+     "class": "limb-down",
+     "attach": {
+      "x": 265,
+      "y": 229,
+      "relX": 0.67,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0508,
+     "class": "limb-down",
+     "attach": {
+      "x": 180,
+      "y": 230,
+      "relX": 0.14,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0147,
+     "class": "rear",
+     "attach": {
+      "x": 204,
+      "y": 232,
+      "relX": 0.29,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 2,
+    "limb-down": 3
+   },
+   "ground": 5
+  },
+  "reference": {
+   "subject": "codex-ref-01-caiman-tail-contour",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "front": 1,
+    "rear": 2,
+    "limb-down": 3
+   },
+   "groundContacts": 5,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

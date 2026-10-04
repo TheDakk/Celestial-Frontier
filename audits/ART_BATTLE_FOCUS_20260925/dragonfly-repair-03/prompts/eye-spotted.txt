@@ -1,0 +1,3 @@
+Create a transparent 1254 x 1254 PNG marking-mask texture for one retained Dragonfly master. No creature, silhouette, background, checkerboard, text or labels. Draw only white pigment shapes on an otherwise empty alpha-zero canvas. Maintain exact canvas coordinates; no cropping, resizing or centering.
+Six white pigment annuli with transparent circular centres: centres(400,450),(540,610),(1030,420),(1060,530),(500,790),(875,735); outer radii28,30,28,25,16,22 pixels respectively, ring thickness7pixels. Only the white rings and no dark or coloured centres.
+All other pixels must have alpha zero. White is the mark; transparency is a real alpha hole.

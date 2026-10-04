@@ -1,0 +1,90 @@
+{
+  "name": "Dobsonfly",
+  "family": "insect",
+  "species": {
+    "name": "Dobsonfly",
+    "aspect": 2.8,
+    "headFrac": 0.15,
+    "eyes": "normal",
+    "posture": "flying",
+    "mustRead": [
+      "huge crossed sickle mandibles in the male",
+      "long smoky net-veined wings folded well past the abdomen",
+      "soft elongated flabby body"
+    ]
+  },
+  "genome": {
+    "seed": 2219457281,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 16,
+    "body": 7,
+    "loco": 6,
+    "trait": 18,
+    "size": 1,
+    "diet": 5,
+    "head": 3,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 4,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 7,
+    "habitat": 1,
+    "detail": 3,
+    "accent": 6,
+    "temper": 5,
+    "sense": 0,
+    "repro": 5,
+    "life": 0,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Dobsonfly"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Dobsonfly\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2219457281\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 628,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

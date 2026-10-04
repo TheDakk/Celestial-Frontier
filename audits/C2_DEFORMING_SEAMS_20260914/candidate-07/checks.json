@@ -1,0 +1,20 @@
+{
+  "status": "STATIC_PASS_NATIVE_PENDING_SIGNING",
+  "toolTests": 46,
+  "runtimeTests": 7,
+  "typecheck": "PASS",
+  "rootValidate": "PASS",
+  "junctions": {
+    "civet": 18,
+    "fox": 25,
+    "procedural": 21
+  },
+  "drawables": [
+    38,
+    38,
+    35
+  ],
+  "source": "unchanged original atlas texels",
+  "controls": "zero rest area, three-owner native hole, opaque closure, exterior/sibling-only point refusal, invalid source/owner refusal",
+  "opaqueSourceVerification": "junction-source-verification.json"
+}

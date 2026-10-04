@@ -1,0 +1,155 @@
+{
+  "status": "I5_CLOSED_LOCAL_BATTERY_GREEN",
+  "date": "2026-09-27T20:35:11.677359+00:00",
+  "productHead": "d20c2716604209a67359d4f16cfaac504347963f",
+  "activationHead": "991997ae5262cbd82ddfd7f4c71704505f9f1be6",
+  "certificateCommit": "afec51f84",
+  "epoch": "i5-v2-d20c27166042",
+  "calibrations": 3,
+  "certifications": 1,
+  "rawVerifications": 4,
+  "outcomesPerPhase": 78,
+  "automaticRetries": 0,
+  "historicalLimitsChanged": false,
+  "v1Changed": false,
+  "unitTestsPassed": 5725,
+  "expectedFailures": 2,
+  "skipped": 2,
+  "unexpectedFailures": 0,
+  "requiredOwners": [
+    {
+      "name": "develop-profile",
+      "command": [
+        "node",
+        "tools/check-profile.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 0,
+      "I5_only": false,
+      "logSha256": "a5e2e732a777bafd2cf49556a53776ea4d08a97142d1c3fe5b19a0b7ee15ca86"
+    },
+    {
+      "name": "typecheck-root",
+      "command": [
+        "npx",
+        "tsc",
+        "--noEmit",
+        "--noUnusedLocals"
+      ],
+      "exitCode": 0,
+      "I5_only": false,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "typecheck-app",
+      "command": [
+        "npx",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "I5_only": false,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "typecheck-worker",
+      "command": [
+        "npx",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.worker.json"
+      ],
+      "exitCode": 0,
+      "I5_only": false,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "artaudit",
+      "command": [
+        "npm",
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0,
+      "I5_only": false,
+      "logSha256": "046c09792789f5099beac41496570a7dc58420ee4a9fec0d1d97d45bb8f47f21"
+    },
+    {
+      "name": "overridecheck",
+      "command": [
+        "npm",
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 0,
+      "I5_only": false,
+      "logSha256": "b5bc5aed7f14e3c849a2db17eb64e4ccc69556e7f6733dece64b436504ce41ff"
+    },
+    {
+      "name": "speccheck",
+      "command": [
+        "node",
+        "tools/speccheck.mjs"
+      ],
+      "exitCode": 0,
+      "I5_only": false,
+      "logSha256": "b990b069a1d3ed60a587623f110cf6ad1ee1f3b6fffc919befb4f5bbcad01310"
+    },
+    {
+      "name": "overridecontrol",
+      "command": [
+        "npm",
+        "run",
+        "overridecontrol"
+      ],
+      "exitCode": 0,
+      "I5_only": false,
+      "logSha256": "a690e68fd52b2f98c261ce9b0decdf5f408217f4ed49b00b5bb7f01fa6f7101f"
+    }
+  ],
+  "authoritySourceSha256": "471071b03f74b900460db520e3d4767939c8c1c9c055226647f7ea4b26c74064",
+  "art": {
+    "paused": true,
+    "recentOriginals": 168,
+    "claudeAccepted": 175,
+    "earthRoster": 631,
+    "held": 13,
+    "nextBatch": "G2_C121_20260927"
+  },
+  "publicationPreflight": {
+    "repository": "TheDakk/Celestial-Frontier",
+    "visibility": "PUBLIC",
+    "budgetMode": "UNFROZEN",
+    "allowedBranch": "openai/mac",
+    "pushTriggersActions": false,
+    "hostedAttempt": false
+  },
+  "workflowHashes": {
+    ".github/workflows/test.yml": "3f204ff54f3ab735525838ce49ea9fb771f7fb7adfa5cdb64d3320174a258dde",
+    ".github/workflows/branch-flow-guard.yml": "72770b57a4d4439c239813b7dcd279e63aba813c5cac97989b4fbdd5d65e73b6",
+    ".github/workflows/dev-preview-package.yml": "2b392ea1acf65a8b08e7a5eb368fa9f9cd456cc4869bdf7de958b77d416550f1",
+    ".github/workflows/publish-branch-sites.yml": "beea847251257299b63325b733d302b9e158cb954503d8dc09b89b42583be34c",
+    ".github/workflows/sync-agent-branches.yml": "98139432d61c4644983976b201cb15b06975487cb378ff8ad46fa05f91541278"
+  },
+  "publication": {
+    "confirmedCheckpoint": "7227a39af2835397c941724bbee7686a74f63fa7",
+    "remote": "origin/openai/mac",
+    "normalPush": true,
+    "hostedAttempt": false
+  },
+  "claudeIndependentConfirmation": {
+    "signedCommit": "e573f934dc1b508f2f0db05efb9cd2b7deb244f1",
+    "testedMerge": "8cbc0f5d3",
+    "unitPassed": 5725,
+    "develop": "PASS",
+    "sevenOwners": "PASS",
+    "handoffPreservedByteIdentical": true,
+    "mergeChanges": [
+      "ROADMAP.md",
+      "audits/MAILBOX/TO_CODEX.md"
+    ]
+  }
+}

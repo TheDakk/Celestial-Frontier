@@ -1,0 +1,14 @@
+{
+  "id": "23-cardinalfish",
+  "name": "Cardinalfish",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-82228c6a-1d35-4b4c-8300-9b7b0d994c8a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "86777bf06ea84e45e7162d54bbab8406c2c5531838a5a0b26dc0bda7c0a2f41f",
+  "bytes": 1445905,
+  "promptSha256": "05929d2c23180f97a9142be9199a3590bb4850e50ae40ec9f492b66c71b2ddd6",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

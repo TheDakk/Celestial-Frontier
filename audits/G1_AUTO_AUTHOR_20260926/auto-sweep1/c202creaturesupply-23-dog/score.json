@@ -1,0 +1,9 @@
+{
+ "id": "c202creaturesupply-23-dog",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 50%)"
+ ],
+ "semanticPresence": null
+}

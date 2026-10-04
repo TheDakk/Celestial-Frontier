@@ -1,0 +1,167 @@
+{
+  "schema": "cf-s20-balance-policy/v1",
+  "train": 128,
+  "evaluate": 512,
+  "seedBases": {
+    "train": 100000,
+    "evaluate": 10000000
+  },
+  "commandMarginPp": 5,
+  "gaps": {
+    "easy": [
+      0,
+      5
+    ],
+    "normal": [
+      10,
+      20
+    ],
+    "guardian": [
+      25,
+      40
+    ],
+    "titan": [
+      25,
+      40
+    ]
+  },
+  "threats": [
+    [
+      "smite",
+      {
+        "dmg": 1.255
+      },
+      "guard",
+      "press"
+    ],
+    [
+      "aegis",
+      {
+        "taken": 0.842
+      },
+      "press",
+      "guard"
+    ],
+    [
+      "dot",
+      {
+        "burn": 0.037
+      },
+      "press",
+      "evade"
+    ],
+    [
+      "fury",
+      {
+        "ramp": 0.0506
+      },
+      "press",
+      "guard"
+    ],
+    [
+      "ambush",
+      {
+        "first": 2.05
+      },
+      "guard",
+      "press"
+    ],
+    [
+      "eye",
+      {
+        "critB": 0.304
+      },
+      "guard",
+      "press"
+    ],
+    [
+      "veil",
+      {
+        "dodge": 0.166
+      },
+      "press",
+      "guard"
+    ],
+    [
+      "mend",
+      {
+        "regen": 0.048
+      },
+      "press",
+      "guard"
+    ],
+    [
+      "echo",
+      {
+        "dbl": 0.188
+      },
+      "evade",
+      "press"
+    ],
+    [
+      "thirst",
+      {
+        "drink": true,
+        "critB": 0.124
+      },
+      "press",
+      "guard"
+    ],
+    [
+      "thorns",
+      {
+        "thorns": 0.155
+      },
+      "guard",
+      "press"
+    ],
+    [
+      "rend",
+      {
+        "shred": 0.102
+      },
+      "press",
+      "guard"
+    ],
+    [
+      "reck",
+      {
+        "execB": 0.55
+      },
+      "guard",
+      "press"
+    ],
+    [
+      "bulwark",
+      {
+        "cap": 0.235
+      },
+      "evade",
+      "press"
+    ],
+    [
+      "shock",
+      {
+        "stun": 0.167
+      },
+      "evade",
+      "press"
+    ],
+    [
+      "roulette",
+      {
+        "gambit": 0.55
+      },
+      "evade",
+      "press"
+    ],
+    [
+      "enrage",
+      {
+        "enrage": 0.31
+      },
+      "press",
+      "guard"
+    ]
+  ]
+}

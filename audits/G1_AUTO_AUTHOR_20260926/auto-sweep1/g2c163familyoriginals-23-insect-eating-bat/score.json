@@ -1,0 +1,11 @@
+{
+ "id": "g2c163familyoriginals-23-insect-eating-bat",
+ "family": "flyer-membrane",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part leg-near-upper (legNearKnee) covers 18% paint (reference 64%)",
+  "unexplained-anatomy: 21.0% of the paint lies away from the body and in no part (reference 8.0%)"
+ ],
+ "semanticPresence": null
+}

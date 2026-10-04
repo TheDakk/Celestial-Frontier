@@ -1,0 +1,38 @@
+✔ streams exact files, publishes verified bytes, and reuses only rehashed complete files (45.659458ms)
+✔ same-size corrupt download fails SHA verification and never publishes response content (4.80275ms)
+▶ oversized and truncated streamed bodies fail independently of Content-Length
+  ✔ actual 4 versus declared inventory 3 (3.378208ms)
+  ✔ actual 2 versus declared inventory 3 (3.323417ms)
+✔ oversized and truncated streamed bodies fail independently of Content-Length (6.990625ms)
+✔ rejected headers cancel a response that keeps streaming (3.7855ms)
+▶ cached corruption is preserved as failed evidence and never silently redownloaded
+  ✔ cached 10 bytes (1.906416ms)
+  ✔ cached 3 bytes (1.730125ms)
+✔ cached corruption is preserved as failed evidence and never silently redownloaded (3.883625ms)
+✔ explicit cancellation stops one active stream and does not request the next file (3.845666ms)
+✔ per-file timeout refuses an unfinished response and retains its failure once (105.177667ms)
+✔ verify-only refuses missing files without network access (2.04925ms)
+✔ inventory tampering and path escapes fail before download or cache writes (0.836375ms)
+✔ CLI has an explicit-download boundary and rejects a non-ignored cache (54.681958ms)
+✔ official scheduler anchors, branch and output-only token contract (1.798583ms)
+✔ same scheduler outcome ruler rejects unshifted and stale README schedules (0.292833ms)
+✔ scheduler rejects coercion, fractional/empty/excessive shapes and nonfinite input (0.108292ms)
+✔ binary16 known values, signed zero, subnormals, ties-to-even and overflow (0.528625ms)
+✔ all finite binary16 values survive exact binary32 representation and back (4.97525ms)
+✔ tensor conversion rejects nonfinite/overflow carriers instead of silent GPU NaNs (0.236167ms)
+✔ explicit seeds repeat independently, preserve odd prefixes and differ by seed (0.367709ms)
+✔ noise has normal-distribution outcomes; same ruler rejects zero and uniform substitutes (7.451542ms)
+✔ noise rejects implicit/invalid seeds and oversized allocation requests (0.141333ms)
+✔ non-square packed transposition preserves channel/pixel identity and borrowed inputs (0.350625ms)
+✔ packed transpose rejects wrong channel count, dimensions and nonfinite values (0.104166ms)
+✔ image IDs use row-major geometry and separate reference time without token-counter L (0.142417ms)
+✔ Euler integrates only generated tokens with descending sigma, retaining all inputs (3.025958ms)
+✔ Euler rejects malformed predictions, ascending times and numerical overflow (0.195167ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 287.203

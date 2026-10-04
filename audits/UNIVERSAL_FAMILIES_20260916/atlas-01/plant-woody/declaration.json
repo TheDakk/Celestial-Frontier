@@ -1,0 +1,65 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "0fbccc3242aec7d31753e58c8c856c7ae419b8035908aab3737863432a0ee8e4",
+  "cutoutSha256": "e272fa9ef9198f530e4d007166a20d1f7c94e94116103ab10fd2960bc921111e",
+  "labelsFile": "labels.png",
+  "labelsSha256": "1ed09a5b79339dcc95bd9b038609df7b9724969164cefd9bd571242e8d04db37",
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far"
+    },
+    {
+      "id": "part-01",
+      "joint": "trunk",
+      "layer": "near"
+    },
+    {
+      "id": "part-02",
+      "joint": "branch0Base",
+      "layer": "far"
+    },
+    {
+      "id": "part-03",
+      "joint": "branch0Tip",
+      "layer": "near"
+    },
+    {
+      "id": "part-04",
+      "joint": "leaf0",
+      "layer": "far"
+    },
+    {
+      "id": "part-05",
+      "joint": "branch1Base",
+      "layer": "near"
+    },
+    {
+      "id": "part-06",
+      "joint": "branch1Tip",
+      "layer": "far"
+    },
+    {
+      "id": "part-07",
+      "joint": "leaf1",
+      "layer": "near"
+    },
+    {
+      "id": "part-08",
+      "joint": "branch2Base",
+      "layer": "far"
+    },
+    {
+      "id": "part-09",
+      "joint": "branch2Tip",
+      "layer": "near"
+    },
+    {
+      "id": "part-10",
+      "joint": "leaf2",
+      "layer": "far"
+    }
+  ],
+  "declarationHash": "604494b9f305ea22d88f6a7794bc4f50c08d0a664309e32ef28976642ba65df9"
+}

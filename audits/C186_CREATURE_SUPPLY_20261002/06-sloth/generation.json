@@ -1,0 +1,14 @@
+{
+  "id": "06-sloth",
+  "name": "Sloth",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-0fbfc3e8-123a-49c1-b6a6-403ad095cea4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "60506dea26146c98ec3223eeba7b564006cf41b5e16da5f91c663576755b152b",
+  "bytes": 1445225,
+  "promptSha256": "130b4cc220572f07a5bfdb95e8c8f8287cc07800a3051803e6bcbf6b7befce01",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

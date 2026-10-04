@@ -1,0 +1,187 @@
+{
+  "name": "Crow",
+  "id": "crow",
+  "originalHold": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 8.3% > 5%, D28)",
+  "nativeReport": {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/10-crow/report.json",
+    "sha256": "31dfd556838081a7d0a72e8393b490df4eeddca3593a972b1f9cc9706249ed6b"
+  },
+  "actualNativeFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/10-crow/fit",
+  "actualDeclarationSchema": "cf.authored-part-masks/v1",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/10-crow/fit/record.json",
+      "sha256": "096f4a650e1cf4f080bb52ddac684c1346c55afb26838b897522d8fdbba0d614"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/10-crow/fit/binding.json",
+      "sha256": "21665bc03bea2f17fe8adfb17735e6692573347e165a6f3014f16487c7af3d12"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/10-crow/fit/parts/keyed.png",
+      "sha256": "75f8218b3e388fb39132b095d1d45409179bdb1596c4874a61824c7241416afa"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/10-crow/fit/parts/atlas/10-crow.png",
+      "sha256": "27fe978c595e7bf73ab7499c3ea427b93eb563521e6af430ac9c6e6b2e2e7320"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/10-crow/packet/master.png",
+      "sha256": "4c92bd3b678988c0c0678dd7d6b60df544f99fd7f060b8c1d181dac0afdb5387"
+    }
+  ],
+  "remainderId": "body",
+  "remainderPixels": 17057,
+  "cap": {
+    "status": "REFUSED",
+    "reason": "remainder island of 1423 px is 8.3% of the remainder (> 5%): structural, not a sliver"
+  },
+  "unchangedCap": 0.05,
+  "components": [
+    {
+      "pixels": 15490,
+      "bounds": [
+        494,
+        566,
+        747,
+        746
+      ],
+      "border": {
+        "near-wing-flight": 248,
+        "chest": 204,
+        "tail": 145,
+        "far-thigh": 143,
+        "near-thigh": 107,
+        "near-wing-root": 79,
+        "far-shin": 14
+      },
+      "largest": true,
+      "share": 0.908131558890778
+    },
+    {
+      "pixels": 1423,
+      "bounds": [
+        662,
+        422,
+        751,
+        474
+      ],
+      "border": {
+        "far-wing-root": 98,
+        "head": 58,
+        "neck-upper": 21,
+        "far-wing-flight": 1
+      },
+      "largest": false,
+      "share": 0.08342615934806824
+    },
+    {
+      "pixels": 82,
+      "bounds": [
+        887,
+        405,
+        918,
+        414
+      ],
+      "border": {
+        "beak": 38,
+        "head": 5
+      },
+      "largest": false,
+      "share": 0.00480741044732368
+    },
+    {
+      "pixels": 26,
+      "bounds": [
+        669,
+        813,
+        677,
+        822
+      ],
+      "border": {
+        "far-foot": 4
+      },
+      "largest": false,
+      "share": 0.0015243008735416545
+    },
+    {
+      "pixels": 12,
+      "bounds": [
+        635,
+        829,
+        643,
+        833
+      ],
+      "border": {
+        "near-foot": 14
+      },
+      "largest": false,
+      "share": 0.0007035234800961482
+    },
+    {
+      "pixels": 11,
+      "bounds": [
+        515,
+        826,
+        518,
+        831
+      ],
+      "border": {
+        "near-foot": 2
+      },
+      "largest": false,
+      "share": 0.0006448965234214692
+    },
+    {
+      "pixels": 9,
+      "bounds": [
+        669,
+        749,
+        674,
+        756
+      ],
+      "border": {
+        "far-shin": 14
+      },
+      "largest": false,
+      "share": 0.0005276426100721111
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        745,
+        676,
+        746,
+        677
+      ],
+      "border": {},
+      "largest": false,
+      "share": 0.00011725391334935803
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        668,
+        824,
+        668,
+        824
+      ],
+      "border": {},
+      "largest": false,
+      "share": 0.000058626956674679014
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        514,
+        833,
+        514,
+        833
+      ],
+      "border": {},
+      "largest": false,
+      "share": 0.000058626956674679014
+    }
+  ],
+  "qualityAccepted": false
+}

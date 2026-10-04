@@ -1,0 +1,14 @@
+{
+  "id": "18-agouti",
+  "name": "Agouti",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-e3e9d622-b357-494c-a600-e335de52a0cc.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3999f1e00d99a3a670a72e1fa57129049cb5d154e8d5c41809490ec15c7117ac",
+  "bytes": 1331965,
+  "promptSha256": "0fe50ca2a51e55bd6ee627e579586d49b8179d1ad96c6e55bb53f7ed1e6fde3a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

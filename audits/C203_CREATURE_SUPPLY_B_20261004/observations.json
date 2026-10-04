@@ -1,0 +1,868 @@
+[
+  {
+    "id": "01-okapi",
+    "name": "Okapi",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "c643d4ff0239e0bbf2150defa24894fd13f9d82570207c44bf7b3a9333da134d",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 244,
+        "y0": 206,
+        "x1": 1056,
+        "y1": 986
+      },
+      "margins": {
+        "left": 244,
+        "right": 197,
+        "top": 206,
+        "bottom": 267
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "02-capybara",
+    "name": "Capybara",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "ca45af3e18f80811e623afb7c5b5540b9934069453ff63a63e18f3f9adb295ed",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 225,
+        "y0": 301,
+        "x1": 1045,
+        "y1": 948
+      },
+      "margins": {
+        "left": 225,
+        "right": 208,
+        "top": 301,
+        "bottom": 305
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "03-pronghorn",
+    "name": "Pronghorn",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "d54130a66add54a0f70b8b9d3be78bf2c5d60398dff93fcb4aa2dcb1ffbed70d",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 254,
+        "y0": 220,
+        "x1": 1027,
+        "y1": 972
+      },
+      "margins": {
+        "left": 254,
+        "right": 226,
+        "top": 220,
+        "bottom": 281
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "04-springbok",
+    "name": "Springbok",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "56cbdddd56053fae72e77f6b6891e43d44aac23a9fbf7639d97c3fb687fbd4d4",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 253,
+        "y0": 205,
+        "x1": 1052,
+        "y1": 1007
+      },
+      "margins": {
+        "left": 253,
+        "right": 201,
+        "top": 205,
+        "bottom": 246
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "05-duiker",
+    "name": "Duiker",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "e5fe8739c99722d043e3bb1feb04dc3ce6b26d808e0c1e179bf3dbe2fbd70d95",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 281,
+        "y0": 293,
+        "x1": 1046,
+        "y1": 932
+      },
+      "margins": {
+        "left": 281,
+        "right": 207,
+        "top": 293,
+        "bottom": 321
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "06-serow",
+    "name": "Serow",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "548b1528953812c070126f0e6fc230e7445b4c7d98efe3300f7d1491c4c1c660",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 246,
+        "y0": 259,
+        "x1": 1051,
+        "y1": 964
+      },
+      "margins": {
+        "left": 246,
+        "right": 202,
+        "top": 259,
+        "bottom": 289
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "07-brown-bear",
+    "name": "Brown Bear",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "b4b4a70dba8d7fff52b00de9edc38acb5787416b6c16197aa754d324d082de95",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 225,
+        "y0": 328,
+        "x1": 1068,
+        "y1": 882
+      },
+      "margins": {
+        "left": 225,
+        "right": 185,
+        "top": 328,
+        "bottom": 371
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "08-grizzly-bear",
+    "name": "Grizzly Bear",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "822d0d126c63d2202e6ff7c590a74d887f2bb7b8040507a64d80c39b6f9079cf",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 216,
+        "y0": 319,
+        "x1": 1073,
+        "y1": 905
+      },
+      "margins": {
+        "left": 216,
+        "right": 180,
+        "top": 319,
+        "bottom": 348
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "limb-down": 5,
+      "other": 1
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "09-kingfisher",
+    "name": "Kingfisher",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "6a54c3e8a473f6cd7bf9830e1e5f4484d3b0bf70f8c188681228dffca443a0fb",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 266,
+        "y0": 344,
+        "x1": 1047,
+        "y1": 896
+      },
+      "margins": {
+        "left": 266,
+        "right": 206,
+        "top": 344,
+        "bottom": 357
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "10-macaw",
+    "name": "Macaw",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "56597421092300176d768ca2cff14c0320203ab9534c408d51d65999162a937d",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 138,
+        "y0": 308,
+        "x1": 1023,
+        "y1": 888
+      },
+      "margins": {
+        "left": 138,
+        "right": 230,
+        "top": 308,
+        "bottom": 365
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "11-toucan",
+    "name": "Toucan",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "b965671e8e031c0a9c9e1a5d160b971a096f3599f0973ab750ca5618e434beda",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 161,
+        "y0": 312,
+        "x1": 1099,
+        "y1": 918
+      },
+      "margins": {
+        "left": 161,
+        "right": 154,
+        "top": 312,
+        "bottom": 335
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 2,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "12-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "14737b54f95ecf346fe58588d27668977d76faecc1e3d1fa0ff6ad2df3770eb8",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 168,
+        "y0": 351,
+        "x1": 1046,
+        "y1": 883
+      },
+      "margins": {
+        "left": 168,
+        "right": 207,
+        "top": 351,
+        "bottom": 370
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "13-falcon",
+    "name": "Falcon",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "2ae658cdd7edce1a4e0640757f2637680ab7e77feef37305236a066dec89cdf3",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 226,
+        "y0": 330,
+        "x1": 1020,
+        "y1": 893
+      },
+      "margins": {
+        "left": 226,
+        "right": 233,
+        "top": 330,
+        "bottom": 360
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "14-duck",
+    "name": "Duck",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "32d7773a62afe13bcb43f0349ce9ed932241a32f7e27f6133d2fa56fc9245d37",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 217,
+        "y0": 317,
+        "x1": 1039,
+        "y1": 931
+      },
+      "margins": {
+        "left": 217,
+        "right": 214,
+        "top": 317,
+        "bottom": 322
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "15-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "b169408d42640b6e4277f22220f0f96da93d606955f363c77f00ecc14fbd4d1a",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 301,
+        "y0": 275,
+        "x1": 1000,
+        "y1": 982
+      },
+      "margins": {
+        "left": 301,
+        "right": 253,
+        "top": 275,
+        "bottom": 271
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "limb-down": 3
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "16-stork",
+    "name": "Stork",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "9c97f28fbf2ee0f9c0ee7f9c57e344de6171d6c2c47f16f3800d0395c03fe461",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 317,
+        "y0": 254,
+        "x1": 965,
+        "y1": 997
+      },
+      "margins": {
+        "left": 317,
+        "right": 288,
+        "top": 254,
+        "bottom": 256
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "17-arapaima",
+    "name": "Arapaima",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "54c32eeab5df4c74034ee9f9d832d29797aa139f52a80f07e3612729b2f3d438",
+    "keyed": true,
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 64,
+        "y0": 464,
+        "x1": 1190,
+        "y1": 784
+      },
+      "margins": {
+        "left": 64,
+        "right": 63,
+        "top": 464,
+        "bottom": 469
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 3,
+      "front": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "18-arowana",
+    "name": "Arowana",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "faa938837ccad0b1b4421350ebd22c9fc4e28e2cb17bd9788dc37eb4960a30e3",
+    "keyed": true,
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 100,
+        "y0": 432,
+        "x1": 1165,
+        "y1": 786
+      },
+      "margins": {
+        "left": 100,
+        "right": 88,
+        "top": 432,
+        "bottom": 467
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "19-blenny",
+    "name": "Blenny",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "41a78853ce7994cb4bfe271c6bb87c6dda0e48ce84b033c221dcf2b7c26417f6",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 137,
+        "y0": 395,
+        "x1": 1123,
+        "y1": 811
+      },
+      "margins": {
+        "left": 137,
+        "right": 130,
+        "top": 395,
+        "bottom": 442
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 2,
+      "top": 1,
+      "rear": 2,
+      "limb-down": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "20-angelfish",
+    "name": "Angelfish",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "2457139219d232d2e1c12e9781adde739de9f7a4086071e02df1d62c95ce7a22",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 224,
+        "y0": 265,
+        "x1": 1029,
+        "y1": 955
+      },
+      "margins": {
+        "left": 224,
+        "right": 224,
+        "top": 265,
+        "bottom": 298
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 4,
+      "front": 1,
+      "limb-down": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "21-tuna",
+    "name": "Tuna",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "5f66d386506f0b464f166334904f80857ab304a6f0a9a33cb9fda91bfa9dc5fa",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 132,
+        "y0": 395,
+        "x1": 1125,
+        "y1": 841
+      },
+      "margins": {
+        "left": 132,
+        "right": 128,
+        "top": 395,
+        "bottom": 412
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "22-marlin",
+    "name": "Marlin",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "f171e0c9061860bc36bc39259a8384d58801a9b14df151e898928e584924e52e",
+    "keyed": true,
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 111,
+        "y0": 369,
+        "x1": 1186,
+        "y1": 826
+      },
+      "margins": {
+        "left": 111,
+        "right": 67,
+        "top": 369,
+        "bottom": 427
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "23-swordfish",
+    "name": "Swordfish",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db",
+    "keyed": true,
+    "framing": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 70,
+        "y0": 354,
+        "x1": 1199,
+        "y1": 817
+      },
+      "margins": {
+        "left": 70,
+        "right": 54,
+        "top": 354,
+        "bottom": 436
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "24-fangtooth",
+    "name": "Fangtooth",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "9b56a2ae611ddeae2b702c4d76d40083e91bf4854b799a59936b8da8d6064ef1",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 178,
+        "y0": 362,
+        "x1": 1069,
+        "y1": 843
+      },
+      "margins": {
+        "left": 178,
+        "right": 184,
+        "top": 362,
+        "bottom": 410
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  }
+]

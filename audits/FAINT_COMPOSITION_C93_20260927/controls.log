@@ -1,0 +1,13 @@
+✔ all bounded candidates remain RED across the complete stage interval (5.533667ms)
+✔ a passing recorded instant cannot substitute for the failed interval (1.666958ms)
+✔ omitting any failing time refuses even with every other row retained (1.359833ms)
+✔ unchanged time coverage distinguishes clear samples from an injected fold (1.880208ms)
+✔ native-seed standalone faint also fails nearby while exact recorded time passes (2.107167ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 106.244708

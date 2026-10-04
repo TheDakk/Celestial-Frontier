@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c198-bounded-execution/v1",
+  "args": [
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence",
+    "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01"
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedMs": 1555.449958,
+  "error": null,
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "nodeVersion": "v26.10.0",
+  "native": false
+}

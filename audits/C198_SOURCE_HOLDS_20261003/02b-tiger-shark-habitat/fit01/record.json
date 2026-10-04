@@ -1,0 +1,168 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tiger Shark\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"622818979\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"2\"]]]]",
+    "seed": 622818979,
+    "ownerId": "authored:archetype-sprint/c198-tiger-shark-v4-aquatic",
+    "earthName": "Tiger Shark"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 622818979,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 10,
+    "body": 5,
+    "loco": 16,
+    "trait": 2,
+    "size": 4,
+    "diet": 4,
+    "head": 6,
+    "limbs": 0,
+    "skin": 1,
+    "tail": 6,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 1,
+    "habitat": 6,
+    "detail": 2,
+    "accent": 15,
+    "temper": 8,
+    "sense": 9,
+    "repro": 6,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tiger Shark"
+  },
+  "geometry": {
+    "cutoutAssetHash": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6475279106858054,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.7097288676236044,
+      0.5191387559808612
+    ],
+    "head": [
+      0.8245614035087719,
+      0.5135566188197768
+    ],
+    "jaw": [
+      0.8070175438596491,
+      0.5470494417862839
+    ],
+    "spine0": [
+      0.6738437001594896,
+      0.5135566188197768
+    ],
+    "spine1": [
+      0.5933014354066986,
+      0.5127591706539075
+    ],
+    "spine2": [
+      0.5079744816586922,
+      0.5143540669856459
+    ],
+    "spine3": [
+      0.42503987240829344,
+      0.511164274322169
+    ],
+    "spine4": [
+      0.3405103668261563,
+      0.5031897926634769
+    ],
+    "spine5": [
+      0.2543859649122807,
+      0.49920255183413076
+    ],
+    "caudal": [
+      0.20813397129186603,
+      0.49521531100478466
+    ],
+    "dorsal": [
+      0.5502392344497608,
+      0.405103668261563
+    ],
+    "pectoralFar": [
+      0.6786283891547049,
+      0.5988835725677831
+    ],
+    "pectoralNear": [
+      0.6578947368421053,
+      0.5701754385964912
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "Canonical Tiger Shark aquatic source; no walking/contact claim."
+  },
+  "coverage": {
+    "scope": "Independent source-observed reference candidate; no transfer from old Tiger Shark masks.",
+    "axisControls": "Spine points are control frames along the observed body centerline, not claims about visible internal bones.",
+    "remainingHold": "The source tail notch, glossy treatment and both visible fin interpretations require full-size scoring. Extra ventral and second dorsal silhouettes follow observed paint and share existing body-segment controls; no new fin joint is invented.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "8dbde9742b442366beb66539fce643d373f102a18e968ba1c1b7b04a76bebddd",
+    "subjectSourceSha256": "e3db084f45d3e7175088d1849e94370e003fa3cfd2587ae8e1bb9b50ebd35dbd",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.114968132772101,
+      "jaw": 0.037809472379999015,
+      "spine0": 0.036316738554180876,
+      "spine1": 0.08054621241924373,
+      "spine2": 0.08534185801951708,
+      "spine3": 0.08299592874805545,
+      "spine4": 0.08490482714007118,
+      "spine5": 0.08621664975197067,
+      "caudal": 0.04642353932321495,
+      "dorsal": 0.11594852455552762,
+      "pectoralFar": 0.08559483356766515,
+      "pectoralNear": 0.0727428352917461
+    },
+    "measures": {
+      "body": 0.41970326529316637,
+      "bone-min": 0.036316738554180876,
+      "bone-max": 0.11594852455552762,
+      "caudal/body": 0.11061038395969519,
+      "head/body": 0.27392718208135636
+    }
+  },
+  "recipeHash": "17ec462c8c42ac5c2c001c1453dc14c071c74b1e5e98aefd6532be7065629a1e"
+}

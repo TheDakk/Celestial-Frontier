@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Toucan\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"29047156\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"17\"]]]]",
+    "seed": 29047156,
+    "ownerId": "authored:archetype-sprint/11-toucan",
+    "earthName": "Toucan"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 29047156,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 6,
+    "body": 15,
+    "loco": 16,
+    "trait": 17,
+    "size": 2,
+    "diet": 2,
+    "head": 3,
+    "limbs": 3,
+    "skin": 5,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 5,
+    "detail": 0,
+    "accent": 13,
+    "temper": 6,
+    "sense": 1,
+    "repro": 2,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Toucan"
+  },
+  "geometry": {
+    "cutoutAssetHash": "b965671e8e031c0a9c9e1a5d160b971a096f3599f0973ab750ca5618e434beda",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7279428274988702,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5058213716108453,
+      0.45374800637958534
+    ],
+    "pelvis": [
+      0.44752791068580544,
+      0.5477671451355661
+    ],
+    "spine": [
+      0.5546251993620415,
+      0.4358054226475279
+    ],
+    "chest": [
+      0.6678628389154705,
+      0.3576555023923445
+    ],
+    "neck0": [
+      0.7445773524720893,
+      0.33883572567783093
+    ],
+    "neck1": [
+      0.7960925039872407,
+      0.33875598086124403
+    ],
+    "head": [
+      0.8108452950558214,
+      0.3166666666666667
+    ],
+    "beak": [
+      0.8585326953748006,
+      0.36555023923444974
+    ],
+    "legNearKnee": [
+      0.39473684210526316,
+      0.6355661881977671
+    ],
+    "legNearAnkle": [
+      0.39952153110047844,
+      0.6960127591706539
+    ],
+    "legNearFoot": [
+      0.4229665071770335,
+      0.7070175438596491
+    ],
+    "legFarKnee": [
+      0.5079744816586922,
+      0.6272727272727273
+    ],
+    "legFarAnkle": [
+      0.55311004784689,
+      0.6934609250398724
+    ],
+    "legFarFoot": [
+      0.5774322169059012,
+      0.6950558213716108
+    ],
+    "wingNearRoot": [
+      0.6080542264752791,
+      0.34545454545454546
+    ],
+    "wingNearTip": [
+      0.35685805422647526,
+      0.5046251993620414
+    ],
+    "wingFarRoot": [
+      0.5736842105263158,
+      0.283652312599681
+    ],
+    "wingFarTip": [
+      0.47065390749601277,
+      0.4001594896331738
+    ],
+    "tailFan": [
+      0.25741626794258377,
+      0.5957735247208932
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/11-toucan/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 04-hawk-v2. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "b10f8d95136fa465a8405b76ecfc636e68ed9a45401864671f02ce0ef3a882c0",
+    "subjectSourceSha256": "0380f8b56f0f154a578e7bc3c9d90e4b7d966a4b553a43597f15d4e7c16a8a49",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.11062425610613395,
+      "spine": 0.1549362983431885,
+      "chest": 0.1375869653983394,
+      "neck0": 0.07898924348170962,
+      "neck1": 0.051515213237108684,
+      "head": 0.026562805685769485,
+      "beak": 0.06829122795917708,
+      "legFarKnee": 0.09987454897694967,
+      "legFarAnkle": 0.08011302552514103,
+      "legFarFoot": 0.024374404650044562,
+      "legNearKnee": 0.10244788374834173,
+      "legNearAnkle": 0.0606356429104299,
+      "legNearFoot": 0.025899270053061006,
+      "wingFarRoot": 0.11977514827689202,
+      "wingFarTip": 0.1555286650197632,
+      "wingNearRoot": 0.061040424902019205,
+      "wingNearTip": 0.2973799152898369,
+      "tailFan": 0.19607919111271563
+    },
+    "measures": {
+      "body": 0.29101532142569053,
+      "bone-min": 0.024374404650044562,
+      "bone-max": 0.2973799152898369,
+      "leg/torso:legFar": 0.7022378689581062,
+      "leg/torso:legNear": 0.649391227190382,
+      "wing/torso": 0.946011405681102
+    }
+  },
+  "recipeHash": "1e57b9ea4673a58f3bdd57b30278be9a8c1969246d04012228ee5e67b809d0e2"
+}

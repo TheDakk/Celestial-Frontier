@@ -1,0 +1,66 @@
+{
+  "name": "Platypus",
+  "family": "quadruped",
+  "species": {
+    "name": "Platypus",
+    "aspect": 2.6,
+    "headFrac": 0.25,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "flat rubbery duck-like bill",
+      "broad flat paddle tail",
+      "webbed clawed feet on a low sleek body"
+    ],
+    "note": "The bill is soft and fleshy and fused into the face - not a hard bird beak stuck on."
+  },
+  "genome": {
+    "seed": 3589797716,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 16,
+    "body": 14,
+    "loco": 5,
+    "trait": 24,
+    "size": 0,
+    "diet": 3,
+    "head": 8,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 6,
+    "pattern": 5,
+    "eyes": 0,
+    "behavior": 2,
+    "habitat": 4,
+    "detail": 1,
+    "accent": 16,
+    "temper": 6,
+    "sense": 8,
+    "repro": 6,
+    "life": 3,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Platypus"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3589797716\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "index": 565,
+  "profile": {
+    "id": "platypus",
+    "names": [
+      "Platypus"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Bill contact; a male hind spur is conditional and is not assumed."
+  }
+}

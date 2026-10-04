@@ -1,0 +1,24 @@
+{
+  "schema": "cf.c196-source-observed-correction/v1",
+  "id": "02-serval-ear-base",
+  "priorAuthoring": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/authoring.json",
+  "priorAuthoringSha256": "57e8772ff2197c080418eb252c37241435cbd45a1fc08a046243633b5ab273fe",
+  "changedJoints": [],
+  "changedParts": [
+    "ear-near-root"
+  ],
+  "addedParts": [],
+  "limitsChanged": false,
+  "findings": [
+    "The near-ear outer base is visibly curved through x825–843/y325–402. The inherited polygon starts farther right and leaves part of the actual pinna base owned by the neck/nape.",
+    "Only the observed near-ear root contour expands to the visible outer edge. Its landmark and the other ear, neck and body polygons remain unchanged. The retained C242 full-size faint is the negative visual comparison."
+  ],
+  "source": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/master.png",
+  "sourceSha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735",
+  "sourceIdentity": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/02-serval-tail-neck/subject-source.json",
+  "sourceIdentitySha256": "95c18144eec22f1c7639223716c5fbcf62bf85abe116f37d4646e97fc689db78",
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false
+}

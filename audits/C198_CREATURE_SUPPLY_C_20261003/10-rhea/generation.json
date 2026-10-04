@@ -1,0 +1,14 @@
+{
+  "id": "10-rhea",
+  "name": "Rhea",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-6b36e543-8f42-4cdf-9ee1-4a92ce05de44.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "aa82e8b95912f35b1b4307a860aa903fd23355deddcbb7a6b007731ef7e4ae4a",
+  "bytes": 1324587,
+  "promptSha256": "165e67cf1bcf7001be285ae9006481bffcbc00d5f9fbddbf0e6a644c14a6217a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/07-bittern/fit/record.json",
+    "sha256": "1d8266aff4cac0d555a8974b651d69d0f0b3a4cdfdb9a643e0b8cbe44ac057d3",
+    "retained": "audits/C183_BITTERN_FOLD_20261002/painter-input/record.json"
+  },
+  {
+    "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/07-bittern/fit/binding.json",
+    "sha256": "a474aed551b4a23551f27d8c0533d2dbade00ce317d94dfd2d6470351ae13d0f",
+    "retained": "audits/C183_BITTERN_FOLD_20261002/painter-input/binding.json"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Rooster",
+  "masterSha256": "3ccf361adb459c2fa09f2dc8fd7ba9a1732621dd805ab3afe634bfbf0e5aeb2a",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

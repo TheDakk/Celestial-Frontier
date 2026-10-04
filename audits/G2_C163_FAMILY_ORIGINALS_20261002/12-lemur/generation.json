@@ -1,0 +1,14 @@
+{
+  "id": "12-lemur",
+  "name": "Lemur",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-051d26c2-f9e0-48aa-a13f-682974bc1dbe.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "78242efe8627c31a162c0f1333648411a290ac386e533bc1582b0f08ae402b22",
+  "bytes": 1232536,
+  "promptSha256": "84d8ae384e3b72dac7703526876f22f2e82b73ccabe56f4fafd02820ef36756c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

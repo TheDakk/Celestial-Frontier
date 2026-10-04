@@ -1,0 +1,147 @@
+[
+  {
+    "id": "grouse",
+    "status": "INTAKE_REFUSED",
+    "moves": [
+      {
+        "joint": "legFarAnkle",
+        "from": [
+          744,
+          874.6
+        ],
+        "to": [
+          743.5,
+          881.5
+        ],
+        "fromOwner": "far-thigh",
+        "toOwner": "far-shin",
+        "distancePx": 6.918092222571167
+      }
+    ]
+  },
+  {
+    "id": "sparrow",
+    "status": "RED",
+    "moves": [
+      {
+        "joint": "legFarAnkle",
+        "from": [
+          751.3,
+          998.3
+        ],
+        "to": [
+          750.5,
+          985.5
+        ],
+        "fromOwner": "far-foot",
+        "toOwner": "far-shin",
+        "distancePx": 12.82497563350507
+      },
+      {
+        "joint": "legNearAnkle",
+        "from": [
+          555.9,
+          1039.9
+        ],
+        "to": [
+          545.5,
+          1020.5
+        ],
+        "fromOwner": "near-foot",
+        "toOwner": "near-shin",
+        "distancePx": 22.01181500921728
+      }
+    ],
+    "refusals": [
+      {
+        "id": "cast",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 8"
+      },
+      {
+        "id": "faint",
+        "error": "Error: Contact: joint limit legNearFoot faint@391.6: 45.38584911801367"
+      },
+      {
+        "id": "presentation",
+        "error": "Error: Contact: joint limit legNearFoot faint@389.5301919331141: 45.20697298871234"
+      }
+    ],
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "id": "08-mongoose",
+    "status": "UNCHANGED_NO_RUN",
+    "reason": "No endpoint ownership mismatch; known blended red unchanged"
+  },
+  {
+    "id": "18-tapir",
+    "status": "RED",
+    "moves": [
+      {
+        "joint": "hindFarAnkle",
+        "from": [
+          271,
+          835.9
+        ],
+        "to": [
+          271.5,
+          841.5
+        ],
+        "fromOwner": "hind-far-knee",
+        "toOwner": "hind-far-ankle",
+        "distancePx": 5.622277118748262
+      },
+      {
+        "joint": "foreFarAnkle",
+        "from": [
+          836,
+          841.9
+        ],
+        "to": [
+          835.5,
+          843.5
+        ],
+        "fromOwner": "fore-far-knee",
+        "toOwner": "fore-far-ankle",
+        "distancePx": 1.6763054614240427
+      },
+      {
+        "joint": "hindNearAnkle",
+        "from": [
+          130,
+          846.7
+        ],
+        "to": [
+          133.5,
+          850.5
+        ],
+        "fromOwner": "hind-near-knee",
+        "toOwner": "hind-near-ankle",
+        "distancePx": 5.1662365412357625
+      }
+    ],
+    "refusals": [
+      {
+        "id": "melee:tail",
+        "error": "Error: Contact: melee:tail@246.17777777777778 exceeds scale compression bound"
+      },
+      {
+        "id": "faint",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 20"
+      },
+      {
+        "id": "presentation",
+        "error": "Error: Contact: melee:tail@246.60849383970344 exceeds scale compression bound"
+      }
+    ],
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  }
+]

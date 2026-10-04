@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "intake",
+  "id": "03-shrimp-dorsal",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/fit01"
+  ],
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "helperUnchanged": true,
+  "exitCode": 1,
+  "signal": null,
+  "log": "audits/C192_SPECIALIZED_REFERENCES_20261002/03-shrimp-dorsal/intake-01.log",
+  "logSha256": "cde5848d8c314a861aeae796066d2089aff1ca9e062b168dd0f1e5a1214fae40",
+  "nativeRuns": 0
+}

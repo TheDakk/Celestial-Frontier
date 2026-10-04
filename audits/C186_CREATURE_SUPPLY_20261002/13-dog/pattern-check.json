@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Dog",
+  "masterSha256": "f096d62b8bbbdba63270d18bf6f9b1e96ad16e8a8c4bda78776fbcf97fe98e38",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

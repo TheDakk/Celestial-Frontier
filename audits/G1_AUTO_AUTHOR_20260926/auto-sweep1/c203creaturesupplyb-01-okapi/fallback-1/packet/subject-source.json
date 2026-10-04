@@ -1,0 +1,77 @@
+{
+  "name": "Okapi",
+  "family": "quadruped",
+  "species": {
+    "name": "Okapi",
+    "aspect": 1.5,
+    "headFrac": 0.24,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "horizontal white stripes on the hindquarters and upper legs",
+      "deep chocolate body with a sloping back",
+      "giraffe-like head with short skin-covered ossicones"
+    ],
+    "note": "a short-necked giraffe relative, not a zebra; only the rear half is striped"
+  },
+  "genome": {
+    "seed": 3945790549,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 8,
+    "body": 15,
+    "loco": 11,
+    "trait": 9,
+    "size": 2,
+    "diet": 1,
+    "head": 1,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 5,
+    "behavior": 2,
+    "habitat": 7,
+    "detail": 6,
+    "accent": 10,
+    "temper": 6,
+    "sense": 3,
+    "repro": 7,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Okapi"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Okapi\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3945790549\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "index": 12,
+  "profile": {
+    "id": "hoofed-unhorned",
+    "names": [
+      "Zebra",
+      "Wild Horse",
+      "Wild Ass",
+      "Camel",
+      "Wild Pony",
+      "Dromedary Camel",
+      "Bactrian Camel",
+      "Horse",
+      "Donkey",
+      "Llama",
+      "Alpaca",
+      "Okapi"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "bite"
+    ],
+    "notes": "No generic claw; horn use not inferred."
+  }
+}

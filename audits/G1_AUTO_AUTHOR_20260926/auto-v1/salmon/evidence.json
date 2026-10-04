@@ -1,0 +1,118 @@
+{
+ "verdict": "ADMIT",
+ "reasons": [],
+ "schema": "cf.g1-auto-author/v1",
+ "bestReference": "bass",
+ "costs": [
+  {
+   "ref": "bass",
+   "cost": 0.01079
+  },
+  {
+   "ref": "herring",
+   "cost": 0.0108
+  },
+  {
+   "ref": "reef-shark",
+   "cost": 0.01101
+  },
+  {
+   "ref": "sturgeon",
+   "cost": 0.01437
+  },
+  {
+   "ref": "pike",
+   "cost": 0.01439
+  },
+  {
+   "ref": "tang",
+   "cost": 0.01467
+  }
+ ],
+ "mirrorBest": 0.0189,
+ "otherFamilyBest": {
+  "family": "quadruped",
+  "cost": 0.01997
+ },
+ "coverage": [
+  {
+   "id": "near-pectoral",
+   "joint": "pectoralNear",
+   "paint": 1,
+   "area": 23637.43499999999
+  },
+  {
+   "id": "far-pectoral",
+   "joint": "pectoralFar",
+   "paint": 0.7987012987012987,
+   "area": 5041.970000000001
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.649365628604383,
+   "area": 13981.999999999985
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.8654235914065667,
+   "area": 39523.10499999999
+  },
+  {
+   "id": "dorsal",
+   "joint": "dorsal",
+   "paint": 0.410010649627263,
+   "area": 45080.89499999999
+  },
+  {
+   "id": "caudal",
+   "joint": "caudal",
+   "paint": 0.6182308257779956,
+   "area": 69523.10500000001
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0.9492416582406471,
+   "area": 79336.50499999995
+  },
+  {
+   "id": "body-0",
+   "joint": "spine0",
+   "paint": 0.8044096728307255,
+   "area": 67504.06000000001
+  },
+  {
+   "id": "body-1",
+   "joint": "spine1",
+   "paint": 0.9717726759503199,
+   "area": 42621.25
+  },
+  {
+   "id": "body-2",
+   "joint": "spine2",
+   "paint": 0.8608108108108108,
+   "area": 59838.10499999999
+  },
+  {
+   "id": "body-3",
+   "joint": "spine3",
+   "paint": 0.765607476635514,
+   "area": 42624.564999999995
+  },
+  {
+   "id": "body-4",
+   "joint": "spine4",
+   "paint": 0.9707357859531772,
+   "area": 19015.820000000018
+  },
+  {
+   "id": "body-5",
+   "joint": "spine5",
+   "paint": 0.539612188365651,
+   "area": 29126.78
+  }
+ ],
+ "unclaimedFrac": 0.036
+}

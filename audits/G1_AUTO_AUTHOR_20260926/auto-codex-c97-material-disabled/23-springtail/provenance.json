@@ -1,0 +1,117 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "23-springtail",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "f031a378f111103e3753b2993b69217c8ac9457d059b90dc6014d27699833ffd",
+ "subjectSourceSha256": "b544b10a0c50dac112b0b2a857bf56fc067acdad02f31838cbe717887cef1fba",
+ "identity": {
+  "name": "Springtail",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Springtail\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2583035257\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"23\"]]]]",
+  "seed": 2583035257,
+  "checks": [
+   "materials-unknown: no species-group material for profile springtail; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "08-ant",
+  "authoringSha256": "0ef6659dc3425e1ae001566a0cdf15903f83327f7e8aee8a4df08f75017e9d34",
+  "masterSha256": "c08ceac5e56a3ee468c08e38487f28f3a9d25a5d08d0eb266491c02fb319b754"
+ },
+ "habitat": {
+  "profileId": "springtail",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ba666944943282918e4dd32763f5b84567b5a557a44cf8466dd3c06ae8a822c0",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group springtail (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.3211,
+     "class": "front",
+     "attach": {
+      "x": 220.8,
+      "y": 197.8,
+      "relX": 1.01,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0082,
+     "class": "top",
+     "attach": {
+      "x": 150.5,
+      "y": 147,
+      "relX": 0.51,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0445,
+     "class": "limb-down",
+     "attach": {
+      "x": 86.1,
+      "y": 217.4,
+      "relX": 0.06,
+      "relY": 0.83
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0367,
+     "class": "limb-down",
+     "attach": {
+      "x": 192.5,
+      "y": 231,
+      "relX": 0.81,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0223,
+     "class": "limb-down",
+     "attach": {
+      "x": 145,
+      "y": 233,
+      "relX": 0.47,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "08-ant",
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "cf.paint-skin-writer-before/v1",
+  "scope": "Exact writer and focused tests before optional local authoring refinements.",
+  "files": [
+    {
+      "path": "port/v2/tools/creature-animation/build-paint-skin.mjs",
+      "retainedFile": "build-paint-skin.mjs",
+      "sha256": "190133cbe97d99ea1bf61a644d19f6e64a3dad7fe07485a86ce4b53ad04c56b6",
+      "bytes": 8014
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-paint-skin.test.mjs",
+      "retainedFile": "build-paint-skin.test.mjs",
+      "sha256": "e760c3b369929fa8d6ebf4cb81f3f94915325f99b42c60949d462abaf8880cbd",
+      "bytes": 439
+    }
+  ]
+}

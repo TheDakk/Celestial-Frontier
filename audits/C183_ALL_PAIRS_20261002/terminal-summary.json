@@ -1,0 +1,14 @@
+{
+  "status": "STOPPED_INSTRUMENT_OR_RESOURCE",
+  "qualification": null,
+  "manifestSha256": "a5049258dc7bb133e794eaedee78069fce17e546932f1697080f89304fe68476",
+  "completed": 0,
+  "total": 1444,
+  "failure": {
+    "id": "0001-crab--crab",
+    "error": "Native runner exit 1",
+    "runnerStatus": 1
+  },
+  "results": [],
+  "scope": "1444 ordered registered-fit pairs at default presentation; five coherent turns and one representative habitat each. Reverse ordered pairs cover the opposite losing fit. No every-verb, every-habitat or all-scale claim."
+}

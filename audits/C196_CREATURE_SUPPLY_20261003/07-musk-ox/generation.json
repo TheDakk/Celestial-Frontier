@@ -1,0 +1,14 @@
+{
+  "id": "07-musk-ox",
+  "name": "Musk Ox",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-1e016ab4-e8e2-4957-8aa2-a6c71e06e87d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "223e419fbee39efaef9f37544ce221b024849fe9ad1deafbb6d9200905d99318",
+  "bytes": 1465288,
+  "promptSha256": "93b0885ce097dcf07d8dbf6254b0e56b6f22b88b8b7ebd15f6795a48d12edce7",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

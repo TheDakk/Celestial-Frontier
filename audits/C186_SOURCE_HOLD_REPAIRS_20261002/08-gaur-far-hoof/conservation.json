@@ -1,0 +1,467 @@
+{
+  "schema": "cf.c186-source-conservation/v1",
+  "id": "08-gaur-far-hoof",
+  "masterSha256": "4471d346e87cee007fa359cab86f0bfb811d952fdd5cd63f51dc6b87ae5bc6e6",
+  "authoringSha256": "d9d595326890fc7d0fbd409d9a36417bca361d5573801d6116d02c2620060f16",
+  "bindingSha256": "ac715df47b61ed5bf58d42772b1aed20760269337ae8a940d76be5cddec73c44",
+  "keyedRgbaSha256": "e156f5944226d70f941e86e67759d56144444c6ffb5958394f322bc3aed57048",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "unchangedOtherPolygons": true,
+  "unchangedOtherLandmarks": true,
+  "changedOwnership": {
+    "foreFarAnkle -> foreFarKnee": 768,
+    "foreFarKnee -> foreFarAnkle": 50,
+    "foreFarPaw -> foreFarAnkle": 39,
+    "foreFarAnkle -> foreFarPaw": 1923,
+    "foreFarKnee -> foreFarPaw": 1,
+    "spine -> foreFarPaw": 389,
+    "spine -> foreFarAnkle": 3,
+    "foreFarAnkle -> spine": 17
+  },
+  "originalCap": {
+    "status": "PASS",
+    "wouldMovePixels": 2852,
+    "remainderPixels": 78672,
+    "islands": [
+      {
+        "pixels": 2,
+        "to": "head",
+        "border": {
+          "26": 3
+        }
+      },
+      {
+        "pixels": 37,
+        "to": "head",
+        "border": {
+          "26": 31
+        }
+      },
+      {
+        "pixels": 27,
+        "to": "tail2",
+        "border": {
+          "2": 19,
+          "3": 18
+        }
+      },
+      {
+        "pixels": 796,
+        "to": "neck",
+        "border": {
+          "27": 61,
+          "29": 37
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "hindNearKnee",
+        "border": {
+          "13": 5,
+          "14": 2,
+          "30": 3
+        }
+      },
+      {
+        "pixels": 1178,
+        "to": "hindFarKnee",
+        "border": {
+          "13": 58,
+          "17": 88,
+          "18": 6
+        }
+      },
+      {
+        "pixels": 94,
+        "to": "hindNearPaw",
+        "border": {
+          "5": 29,
+          "6": 33,
+          "13": 7
+        }
+      },
+      {
+        "pixels": 393,
+        "to": "foreFarAnkle",
+        "border": {
+          "11": 77,
+          "12": 52,
+          "19": 5
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "hindNearAnkle",
+        "border": {
+          "5": 7,
+          "6": 7
+        }
+      },
+      {
+        "pixels": 185,
+        "to": "hindFarAnkle",
+        "border": {
+          "7": 18,
+          "8": 14
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "hindNearAnkle",
+        "border": {
+          "5": 5,
+          "6": 5
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "hindNearAnkle",
+        "border": {
+          "5": 3,
+          "6": 3
+        }
+      },
+      {
+        "pixels": 23,
+        "to": "foreNearAnkle",
+        "border": {
+          "9": 10,
+          "10": 6
+        }
+      },
+      {
+        "pixels": 102,
+        "to": "hindNearAnkle",
+        "border": {
+          "5": 28,
+          "6": 4
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 2477,
+    "remainderPixels": 78297,
+    "islands": [
+      {
+        "pixels": 2,
+        "to": "head",
+        "border": {
+          "26": 3
+        }
+      },
+      {
+        "pixels": 37,
+        "to": "head",
+        "border": {
+          "26": 31
+        }
+      },
+      {
+        "pixels": 27,
+        "to": "tail2",
+        "border": {
+          "3": 19,
+          "4": 18
+        }
+      },
+      {
+        "pixels": 796,
+        "to": "neck",
+        "border": {
+          "27": 61,
+          "29": 37
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "hindNearKnee",
+        "border": {
+          "13": 5,
+          "14": 2,
+          "30": 3
+        }
+      },
+      {
+        "pixels": 1178,
+        "to": "hindFarKnee",
+        "border": {
+          "13": 58,
+          "17": 88,
+          "18": 6
+        }
+      },
+      {
+        "pixels": 94,
+        "to": "hindNearPaw",
+        "border": {
+          "6": 29,
+          "7": 33,
+          "13": 7
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "hindNearAnkle",
+        "border": {
+          "6": 7,
+          "7": 7
+        }
+      },
+      {
+        "pixels": 185,
+        "to": "hindFarAnkle",
+        "border": {
+          "8": 18,
+          "9": 14
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "hindNearAnkle",
+        "border": {
+          "6": 5,
+          "7": 5
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "hindNearAnkle",
+        "border": {
+          "6": 3,
+          "7": 3
+        }
+      },
+      {
+        "pixels": 23,
+        "to": "foreNearAnkle",
+        "border": {
+          "10": 10,
+          "11": 6
+        }
+      },
+      {
+        "pixels": 102,
+        "to": "hindNearAnkle",
+        "border": {
+          "6": 28,
+          "7": 4
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "foreFarPaw",
+        "border": {
+          "1": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "foreFarPaw",
+        "border": {
+          "1": 2
+        }
+      },
+      {
+        "pixels": 16,
+        "to": "foreFarPaw",
+        "border": {
+          "1": 20
+        }
+      }
+    ],
+    "applied": false
+  },
+  "originalRemainderComponents": [
+    {
+      "pixels": 75820,
+      "minX": 434,
+      "minY": 270,
+      "maxX": 670,
+      "maxY": 736
+    },
+    {
+      "pixels": 1178,
+      "minX": 316,
+      "minY": 764,
+      "maxX": 340,
+      "maxY": 852
+    },
+    {
+      "pixels": 796,
+      "minX": 952,
+      "minY": 615,
+      "maxX": 985,
+      "maxY": 669
+    },
+    {
+      "pixels": 393,
+      "minX": 670,
+      "minY": 951,
+      "maxX": 704,
+      "maxY": 999
+    },
+    {
+      "pixels": 185,
+      "minX": 384,
+      "minY": 967,
+      "maxX": 400,
+      "maxY": 980
+    },
+    {
+      "pixels": 102,
+      "minX": 168,
+      "minY": 986,
+      "maxX": 192,
+      "maxY": 992
+    },
+    {
+      "pixels": 94,
+      "minX": 197,
+      "minY": 935,
+      "maxX": 210,
+      "maxY": 960
+    },
+    {
+      "pixels": 37,
+      "minX": 1164,
+      "minY": 278,
+      "maxX": 1168,
+      "maxY": 303
+    },
+    {
+      "pixels": 27,
+      "minX": 169,
+      "minY": 565,
+      "maxX": 185,
+      "maxY": 567
+    },
+    {
+      "pixels": 23,
+      "minX": 883,
+      "minY": 982,
+      "maxX": 890,
+      "maxY": 986
+    },
+    {
+      "pixels": 6,
+      "minX": 196,
+      "minY": 962,
+      "maxX": 196,
+      "maxY": 967
+    },
+    {
+      "pixels": 4,
+      "minX": 195,
+      "minY": 970,
+      "maxX": 195,
+      "maxY": 973
+    }
+  ],
+  "candidateRemainderComponents": [
+    {
+      "pixels": 75820,
+      "minX": 434,
+      "minY": 270,
+      "maxX": 670,
+      "maxY": 736
+    },
+    {
+      "pixels": 1178,
+      "minX": 316,
+      "minY": 764,
+      "maxX": 340,
+      "maxY": 852
+    },
+    {
+      "pixels": 796,
+      "minX": 952,
+      "minY": 615,
+      "maxX": 985,
+      "maxY": 669
+    },
+    {
+      "pixels": 185,
+      "minX": 384,
+      "minY": 967,
+      "maxX": 400,
+      "maxY": 980
+    },
+    {
+      "pixels": 102,
+      "minX": 168,
+      "minY": 986,
+      "maxX": 192,
+      "maxY": 992
+    },
+    {
+      "pixels": 94,
+      "minX": 197,
+      "minY": 935,
+      "maxX": 210,
+      "maxY": 960
+    },
+    {
+      "pixels": 37,
+      "minX": 1164,
+      "minY": 278,
+      "maxX": 1168,
+      "maxY": 303
+    },
+    {
+      "pixels": 27,
+      "minX": 169,
+      "minY": 565,
+      "maxX": 185,
+      "maxY": 567
+    },
+    {
+      "pixels": 23,
+      "minX": 883,
+      "minY": 982,
+      "maxX": 890,
+      "maxY": 986
+    },
+    {
+      "pixels": 16,
+      "minX": 658,
+      "minY": 991,
+      "maxX": 670,
+      "maxY": 997
+    },
+    {
+      "pixels": 6,
+      "minX": 196,
+      "minY": 962,
+      "maxX": 196,
+      "maxY": 967
+    },
+    {
+      "pixels": 4,
+      "minX": 195,
+      "minY": 970,
+      "maxX": 195,
+      "maxY": 973
+    }
+  ],
+  "unchangedD28Cap": 0.05,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent ownership replay",
+    "no source alpha addition/deletion",
+    "unchanged unedited landmarks",
+    "unchanged unedited polygons",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "structural-island control refused at unchanged 5%"
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

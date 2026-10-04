@@ -1,0 +1,10 @@
+{
+ "id": "c202creaturesupply-01-tapir",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.8% paint that no reference appendage lands on",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 10% paint (reference 57%)"
+ ],
+ "semanticPresence": null
+}

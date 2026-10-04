@@ -1,0 +1,24 @@
+{
+ "id": "23-springtail",
+ "family": "insect",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": [],
+ "fallbackFrom": "INTAKE_REFUSED",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "ADMIT",
+   "static": "PASS_STATIC",
+   "reasons": []
+  }
+ ]
+}

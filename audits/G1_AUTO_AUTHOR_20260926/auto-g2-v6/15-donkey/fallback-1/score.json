@@ -1,0 +1,8 @@
+{
+ "id": "15-donkey",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

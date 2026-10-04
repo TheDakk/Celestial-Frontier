@@ -1,0 +1,327 @@
+{
+  "schema": "cf.c198-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01",
+  "sourceConservationSha256": "058e5758e1a5c7d2b77fafb5077dacb1edf29883dfd915a0e88449632d2ca44f",
+  "sourceMasterSha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039",
+  "sourceBindingSha256": "25780b770d68a8854cf5cf47f6b57fd5ec408f099a026927f10f67ed437cfdfd",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.5,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "75aaca39a476c98582850693caebb6bf9388cd1c1f4cbd2f667047999f2b0c3d",
+  "movedPixels": 1857,
+  "remainderPixels": 13074,
+  "islands": [
+    {
+      "pixels": 1269,
+      "to": "caudal",
+      "border": {
+        "5": 325,
+        "7": 9
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "caudal",
+      "border": {
+        "5": 7
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "caudal",
+      "border": {
+        "5": 10
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "dorsal",
+      "border": {
+        "4": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "dorsal",
+      "border": {
+        "4": 4
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "caudal",
+      "border": {
+        "5": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "caudal",
+      "border": {
+        "5": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "caudal",
+      "border": {
+        "5": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "caudal",
+      "border": {
+        "5": 2
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "dorsal",
+      "border": {
+        "4": 9
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "spine4",
+      "border": {
+        "8": 26
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "spine4",
+      "border": {
+        "8": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "spine4",
+      "border": {
+        "8": 2
+      }
+    },
+    {
+      "pixels": 47,
+      "to": "spine4",
+      "border": {
+        "7": 7,
+        "8": 24
+      }
+    },
+    {
+      "pixels": 98,
+      "to": "head",
+      "border": {
+        "3": 36,
+        "6": 42
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "spine4",
+      "border": {
+        "8": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "spine4",
+      "border": {
+        "8": 2
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "spine4",
+      "border": {
+        "8": 6,
+        "9": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "spine4",
+      "border": {
+        "8": 2
+      }
+    },
+    {
+      "pixels": 13,
+      "to": "spine4",
+      "border": {
+        "8": 20
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "spine4",
+      "border": {
+        "8": 1
+      }
+    },
+    {
+      "pixels": 35,
+      "to": "spine3",
+      "border": {
+        "9": 8
+      }
+    },
+    {
+      "pixels": 114,
+      "to": "spine3",
+      "border": {
+        "9": 31,
+        "10": 7
+      }
+    },
+    {
+      "pixels": 29,
+      "to": "spine3",
+      "border": {
+        "9": 23
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "spine3",
+      "border": {
+        "9": 6
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "spine2",
+      "border": {
+        "10": 4,
+        "11": 1
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "spine1",
+      "border": {
+        "11": 4
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "spine1",
+      "border": {
+        "11": 7
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "spine1",
+      "border": {
+        "11": 7
+      }
+    },
+    {
+      "pixels": 132,
+      "to": "near-pectoral",
+      "border": {
+        "1": 46,
+        "11": 32
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "spine1",
+      "border": {
+        "11": 6
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-pectoral",
+      "border": {
+        "1": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-pectoral",
+      "border": {
+        "1": 2
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-pectoral",
+      "border": {
+        "1": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-pectoral",
+      "border": {
+        "1": 2
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "far-pectoral",
+      "border": {
+        "2": 7
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "near-pectoral",
+      "border": {
+        "1": 7
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "near-pectoral",
+      "border": {
+        "1": 4
+      }
+    },
+    {
+      "pixels": 10,
+      "to": "near-pectoral",
+      "border": {
+        "1": 11
+      }
+    }
+  ],
+  "intake": {
+    "id": "c192-islands-02b-tiger-shark-habitat",
+    "parts": 13,
+    "atlasSize": {
+      "width": 1197,
+      "height": 552
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "b70df14632409df3645a9271c1e7bb242cb0bd46572c541296bd4fd63168081b",
+    "sourceVertices": 850,
+    "vertices": 943,
+    "sharedSupports": 276,
+    "pins": 356,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 7,
+    "observedExcludedBoundaries": 7,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 7,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

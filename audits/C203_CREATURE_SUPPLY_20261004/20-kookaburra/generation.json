@@ -1,0 +1,14 @@
+{
+  "id": "20-kookaburra",
+  "name": "Kookaburra",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-f613f555-b7ae-4fdf-9e4a-8fac402c31ec.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "93e2814091921d393c99f7355f517880745ac9f7df2e0dba4c222de1fc6d3401",
+  "bytes": 1325404,
+  "promptSha256": "851a9d5d0d4ded600cf3720c413af25c098765abc46e72c1cee5c343da2a9e9c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

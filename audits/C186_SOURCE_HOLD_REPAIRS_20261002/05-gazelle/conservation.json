@@ -1,0 +1,383 @@
+{
+  "schema": "cf.c186-source-conservation/v1",
+  "id": "05-gazelle",
+  "masterSha256": "56349e0398ad3d60adbdf584cd2b394f7fc925d79c09fe6246ee4686f0ab21ed",
+  "authoringSha256": "8e52a87c51d9350888f9c2a53b6fabbebc77cadab02723c1956afa76d1f5654f",
+  "bindingSha256": "9c2d9745fb9ee6befd275a73920851607bbf43298af29119a122ce77d886b030",
+  "keyedRgbaSha256": "09e345fbca22e75ad17cb39e9a14befc0191a6c08be531d0e391e1ebaff5d6ba",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "unchangedOtherPolygons": true,
+  "unchangedOtherLandmarks": true,
+  "changedOwnership": {
+    "tail0 -> tail1": 80,
+    "spine -> tail1": 26,
+    "tail1 -> spine": 254,
+    "tail1 -> tail2": 673,
+    "spine -> tail2": 45,
+    "tail2 -> spine": 275,
+    "tail2 -> tail3": 921,
+    "tail3 -> spine": 34,
+    "spine -> tail3": 11
+  },
+  "originalCap": {
+    "status": "PASS",
+    "wouldMovePixels": 348,
+    "remainderPixels": 40364,
+    "islands": [
+      {
+        "pixels": 253,
+        "to": "earNearTip",
+        "border": {
+          "18": 55
+        }
+      },
+      {
+        "pixels": 27,
+        "to": "tail1",
+        "border": {
+          "5": 4,
+          "30": 20,
+          "31": 16
+        }
+      },
+      {
+        "pixels": 57,
+        "to": "tail1",
+        "border": {
+          "29": 52,
+          "30": 53
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "tail3",
+        "border": {
+          "28": 5,
+          "29": 5
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "tail3",
+        "border": {
+          "28": 7,
+          "29": 7
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail3",
+        "border": {
+          "28": 2,
+          "29": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail3",
+        "border": {
+          "28": 2,
+          "29": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail3",
+        "border": {
+          "28": 2,
+          "29": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail3",
+        "border": {
+          "28": 2,
+          "29": 2
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 829,
+    "remainderPixels": 40845,
+    "islands": [
+      {
+        "pixels": 253,
+        "to": "earNearTip",
+        "border": {
+          "18": 55
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail1",
+        "border": {
+          "30": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "tail1",
+        "border": {
+          "30": 3
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "tail1",
+        "border": {
+          "30": 4
+        }
+      },
+      {
+        "pixels": 22,
+        "to": "tail1",
+        "border": {
+          "29": 2,
+          "30": 18
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail2",
+        "border": {
+          "29": 2
+        }
+      },
+      {
+        "pixels": 64,
+        "to": "tail2",
+        "border": {
+          "28": 8,
+          "29": 29
+        }
+      },
+      {
+        "pixels": 454,
+        "to": "tail3",
+        "border": {
+          "5": 4,
+          "27": 4,
+          "28": 46,
+          "29": 39,
+          "30": 28
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "tail3",
+        "border": {
+          "28": 3
+        }
+      },
+      {
+        "pixels": 20,
+        "to": "tail3",
+        "border": {
+          "28": 11
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail3",
+        "border": {
+          "28": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "tail3",
+        "border": {
+          "28": 2
+        }
+      },
+      {
+        "pixels": 5,
+        "to": "tail3",
+        "border": {
+          "28": 6
+        }
+      }
+    ],
+    "applied": false
+  },
+  "originalRemainderComponents": [
+    {
+      "pixels": 40016,
+      "minX": 500,
+      "minY": 480,
+      "maxX": 708,
+      "maxY": 725
+    },
+    {
+      "pixels": 253,
+      "minX": 877,
+      "minY": 234,
+      "maxX": 887,
+      "maxY": 279
+    },
+    {
+      "pixels": 57,
+      "minX": 262,
+      "minY": 632,
+      "maxX": 293,
+      "maxY": 653
+    },
+    {
+      "pixels": 27,
+      "minX": 280,
+      "minY": 588,
+      "maxX": 292,
+      "maxY": 596
+    },
+    {
+      "pixels": 4,
+      "minX": 249,
+      "minY": 670,
+      "maxX": 252,
+      "maxY": 672
+    },
+    {
+      "pixels": 3,
+      "minX": 245,
+      "minY": 668,
+      "maxX": 247,
+      "maxY": 669
+    },
+    {
+      "pixels": 1,
+      "minX": 254,
+      "minY": 673,
+      "maxX": 254,
+      "maxY": 673
+    },
+    {
+      "pixels": 1,
+      "minX": 256,
+      "minY": 674,
+      "maxX": 256,
+      "maxY": 674
+    },
+    {
+      "pixels": 1,
+      "minX": 259,
+      "minY": 676,
+      "maxX": 259,
+      "maxY": 676
+    },
+    {
+      "pixels": 1,
+      "minX": 261,
+      "minY": 677,
+      "maxX": 261,
+      "maxY": 677
+    }
+  ],
+  "candidateRemainderComponents": [
+    {
+      "pixels": 40016,
+      "minX": 500,
+      "minY": 480,
+      "maxX": 708,
+      "maxY": 725
+    },
+    {
+      "pixels": 454,
+      "minX": 259,
+      "minY": 620,
+      "maxX": 300,
+      "maxY": 691
+    },
+    {
+      "pixels": 253,
+      "minX": 877,
+      "minY": 234,
+      "maxX": 887,
+      "maxY": 279
+    },
+    {
+      "pixels": 64,
+      "minX": 256,
+      "minY": 620,
+      "maxX": 268,
+      "maxY": 641
+    },
+    {
+      "pixels": 22,
+      "minX": 273,
+      "minY": 599,
+      "maxX": 277,
+      "maxY": 612
+    },
+    {
+      "pixels": 20,
+      "minX": 243,
+      "minY": 657,
+      "maxX": 248,
+      "maxY": 664
+    },
+    {
+      "pixels": 5,
+      "minX": 240,
+      "minY": 672,
+      "maxX": 242,
+      "maxY": 675
+    },
+    {
+      "pixels": 3,
+      "minX": 278,
+      "minY": 595,
+      "maxX": 278,
+      "maxY": 597
+    },
+    {
+      "pixels": 2,
+      "minX": 279,
+      "minY": 592,
+      "maxX": 279,
+      "maxY": 593
+    },
+    {
+      "pixels": 2,
+      "minX": 250,
+      "minY": 650,
+      "maxX": 250,
+      "maxY": 651
+    },
+    {
+      "pixels": 1,
+      "minX": 280,
+      "minY": 589,
+      "maxX": 280,
+      "maxY": 589
+    },
+    {
+      "pixels": 1,
+      "minX": 269,
+      "minY": 618,
+      "maxX": 269,
+      "maxY": 618
+    }
+  ],
+  "unchangedD28Cap": 0.05,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent ownership replay",
+    "no source alpha addition/deletion",
+    "unchanged unedited landmarks",
+    "unchanged unedited polygons",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "structural-island control refused at unchanged 5%"
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

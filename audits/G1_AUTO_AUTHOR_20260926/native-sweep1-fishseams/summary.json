@@ -1,0 +1,2482 @@
+{
+  "schema": "cf.fish-seams-batch/v1",
+  "pilot": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/pilots/sweep1-eligible.json",
+  "author": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1",
+  "rows": [
+    {
+      "id": "c132references-03-dog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dog"
+    },
+    {
+      "id": "c132references-04-cat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cat"
+    },
+    {
+      "id": "c173holdsourcerepaints-snow-petrel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snow Petrel"
+    },
+    {
+      "id": "c186creaturesupply-01-impala",
+      "status": "SKIPPED_NONFISH",
+      "name": "Impala"
+    },
+    {
+      "id": "c186creaturesupply-06-sloth",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sloth"
+    },
+    {
+      "id": "c186creaturesupply-07-tortoise",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tortoise"
+    },
+    {
+      "id": "c186creaturesupply-08-box-turtle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Box Turtle"
+    },
+    {
+      "id": "c186creaturesupply-09-pond-turtle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pond Turtle"
+    },
+    {
+      "id": "c186creaturesupply-10-snapping-turtle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snapping Turtle"
+    },
+    {
+      "id": "c186creaturesupply-11-softshell-turtle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Softshell Turtle"
+    },
+    {
+      "id": "c186creaturesupply-12-turtle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Turtle"
+    },
+    {
+      "id": "c186creaturesupply-13-dog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dog"
+    },
+    {
+      "id": "c186creaturesupply-18-wolverine",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wolverine"
+    },
+    {
+      "id": "c186creaturesupply-19-badger",
+      "status": "SKIPPED_NONFISH",
+      "name": "Badger"
+    },
+    {
+      "id": "c186creaturesupply-20-beaver",
+      "status": "SKIPPED_NONFISH",
+      "name": "Beaver"
+    },
+    {
+      "id": "c186creaturesupply-21-seahorse",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Seahorse",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c186creaturesupply-21-seahorse/static.json'"
+    },
+    {
+      "id": "c186creaturesupply-22-giant-squid",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Squid"
+    },
+    {
+      "id": "c186creaturesupply-23-vampire-squid",
+      "status": "SKIPPED_NONFISH",
+      "name": "Vampire Squid"
+    },
+    {
+      "id": "c186creaturesupply-24-nautilus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Nautilus"
+    },
+    {
+      "id": "c192creaturesupply-01-clam",
+      "status": "SKIPPED_NONFISH",
+      "name": "Clam"
+    },
+    {
+      "id": "c192creaturesupply-03-shrimp",
+      "status": "SKIPPED_NONFISH",
+      "name": "Shrimp"
+    },
+    {
+      "id": "c192creaturesupply-05-impala",
+      "status": "SKIPPED_NONFISH",
+      "name": "Impala"
+    },
+    {
+      "id": "c192creaturesupply-06-dog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dog"
+    },
+    {
+      "id": "c192creaturesupply-07-wolverine",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wolverine"
+    },
+    {
+      "id": "c192creaturesupply-08-badger",
+      "status": "SKIPPED_NONFISH",
+      "name": "Badger"
+    },
+    {
+      "id": "c192creaturesupply-09-beaver",
+      "status": "SKIPPED_NONFISH",
+      "name": "Beaver"
+    },
+    {
+      "id": "c192creaturesupply-10-fishing-cat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Fishing Cat"
+    },
+    {
+      "id": "c192creaturesupply-13-aardvark",
+      "status": "SKIPPED_NONFISH",
+      "name": "Aardvark"
+    },
+    {
+      "id": "c192creaturesupply-14-okapi",
+      "status": "SKIPPED_NONFISH",
+      "name": "Okapi"
+    },
+    {
+      "id": "c192creaturesupply-15-pronghorn",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pronghorn"
+    },
+    {
+      "id": "c192creaturesupply-16-springbok",
+      "status": "SKIPPED_NONFISH",
+      "name": "Springbok"
+    },
+    {
+      "id": "c192creaturesupply-17-duiker",
+      "status": "SKIPPED_NONFISH",
+      "name": "Duiker"
+    },
+    {
+      "id": "c192creaturesupply-18-serow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Serow"
+    },
+    {
+      "id": "c192creaturesupply-19-bison",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bison"
+    },
+    {
+      "id": "c192creaturesupply-20-warthog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Warthog"
+    },
+    {
+      "id": "c192creaturesupply-21-caribou",
+      "status": "SKIPPED_NONFISH",
+      "name": "Caribou"
+    },
+    {
+      "id": "c192creaturesupply-22-yak",
+      "status": "SKIPPED_NONFISH",
+      "name": "Yak"
+    },
+    {
+      "id": "c192creaturesupply-23-bactrian-camel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bactrian Camel"
+    },
+    {
+      "id": "c192creaturesupply-24-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Buffalo"
+    },
+    {
+      "id": "c196creaturesupply-03-water-vole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Vole"
+    },
+    {
+      "id": "c196creaturesupply-04-marsh-rodent",
+      "status": "SKIPPED_NONFISH",
+      "name": "Marsh Rodent"
+    },
+    {
+      "id": "c196creaturesupply-05-elk",
+      "status": "SKIPPED_NONFISH",
+      "name": "Elk"
+    },
+    {
+      "id": "c196creaturesupply-06-llama",
+      "status": "SKIPPED_NONFISH",
+      "name": "Llama"
+    },
+    {
+      "id": "c196creaturesupply-08-ibex",
+      "status": "SKIPPED_NONFISH",
+      "name": "Ibex"
+    },
+    {
+      "id": "c196creaturesupply-11-mountain-tapir",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mountain Tapir"
+    },
+    {
+      "id": "c196creaturesupply-12-porcupine",
+      "status": "SKIPPED_NONFISH",
+      "name": "Porcupine"
+    },
+    {
+      "id": "c196creaturesupply-13-bee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bee"
+    },
+    {
+      "id": "c196creaturesupply-14-honeybee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Honeybee"
+    },
+    {
+      "id": "c196creaturesupply-15-bumblebee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bumblebee"
+    },
+    {
+      "id": "c196creaturesupply-16-dragonfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dragonfly"
+    },
+    {
+      "id": "c196creaturesupply-17-damselfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Damselfly"
+    },
+    {
+      "id": "c196creaturesupply-18-water-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Beetle"
+    },
+    {
+      "id": "c196creaturesupply-19-diving-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Diving Beetle"
+    },
+    {
+      "id": "c196creaturesupply-20-stick-insect",
+      "status": "SKIPPED_NONFISH",
+      "name": "Stick Insect"
+    },
+    {
+      "id": "c196creaturesupply-21-scorpionfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Scorpionfly"
+    },
+    {
+      "id": "c196creaturesupply-22-carrion-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Carrion Beetle"
+    },
+    {
+      "id": "c196creaturesupply-23-orchid-bee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Orchid Bee"
+    },
+    {
+      "id": "c196framingsuccessors-01-caiman-framing-v2",
+      "status": "SKIPPED_NONFISH",
+      "name": "Caiman"
+    },
+    {
+      "id": "c196framingsuccessors-02-crocodile-framing-v2",
+      "status": "SKIPPED_NONFISH",
+      "name": "Crocodile"
+    },
+    {
+      "id": "c196framingsuccessors-03-monitor-lizard-framing-v2",
+      "status": "SKIPPED_NONFISH",
+      "name": "Monitor Lizard"
+    },
+    {
+      "id": "c196framingsuccessors-04-anole-framing-v2",
+      "status": "SKIPPED_NONFISH",
+      "name": "Anole"
+    },
+    {
+      "id": "c196framingsuccessors-05-skink-framing-v2",
+      "status": "SKIPPED_NONFISH",
+      "name": "Skink"
+    },
+    {
+      "id": "c196framingsuccessors-08-whiptail-framing-v2",
+      "status": "SKIPPED_NONFISH",
+      "name": "Whiptail"
+    },
+    {
+      "id": "c196invertebrateoriginals-01-shrimp",
+      "status": "SKIPPED_NONFISH",
+      "name": "Shrimp"
+    },
+    {
+      "id": "c196invertebrateoriginals-03-fiddler-crab",
+      "status": "SKIPPED_NONFISH",
+      "name": "Fiddler Crab"
+    },
+    {
+      "id": "c196quadrupedoriginals-01-caiman",
+      "status": "SKIPPED_NONFISH",
+      "name": "Caiman"
+    },
+    {
+      "id": "c196quadrupedoriginals-02-crocodile",
+      "status": "SKIPPED_NONFISH",
+      "name": "Crocodile"
+    },
+    {
+      "id": "c196quadrupedoriginals-03-monitor-lizard",
+      "status": "SKIPPED_NONFISH",
+      "name": "Monitor Lizard"
+    },
+    {
+      "id": "c196quadrupedoriginals-04-anole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Anole"
+    },
+    {
+      "id": "c196quadrupedoriginals-05-skink",
+      "status": "SKIPPED_NONFISH",
+      "name": "Skink"
+    },
+    {
+      "id": "c196quadrupedoriginals-06-mountain-lizard",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mountain Lizard"
+    },
+    {
+      "id": "c196quadrupedoriginals-07-lizard",
+      "status": "SKIPPED_NONFISH",
+      "name": "Lizard"
+    },
+    {
+      "id": "c196quadrupedoriginals-08-whiptail",
+      "status": "SKIPPED_NONFISH",
+      "name": "Whiptail"
+    },
+    {
+      "id": "c196quadrupedoriginals-09-agama",
+      "status": "SKIPPED_NONFISH",
+      "name": "Agama"
+    },
+    {
+      "id": "c196quadrupedoriginals-10-gila-monster",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gila Monster"
+    },
+    {
+      "id": "c196quadrupedoriginals-11-frilled-lizard",
+      "status": "SKIPPED_NONFISH",
+      "name": "Frilled Lizard"
+    },
+    {
+      "id": "c196quadrupedoriginals-12-chameleon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Chameleon"
+    },
+    {
+      "id": "c196quadrupedoriginals-15-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Buffalo"
+    },
+    {
+      "id": "c196quadrupedoriginals-17-water-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Buffalo"
+    },
+    {
+      "id": "c196quadrupedoriginals-18-tamarin",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tamarin"
+    },
+    {
+      "id": "c196quadrupedoriginals-19-langur",
+      "status": "SKIPPED_NONFISH",
+      "name": "Langur"
+    },
+    {
+      "id": "c196quadrupedoriginals-20-monkey",
+      "status": "SKIPPED_NONFISH",
+      "name": "Monkey"
+    },
+    {
+      "id": "c196quadrupedoriginals-21-mandrill",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mandrill"
+    },
+    {
+      "id": "c196quadrupedoriginals-22-marmoset",
+      "status": "SKIPPED_NONFISH",
+      "name": "Marmoset"
+    },
+    {
+      "id": "c196quadrupedoriginals-23-aye-aye",
+      "status": "SKIPPED_NONFISH",
+      "name": "Aye-Aye"
+    },
+    {
+      "id": "c196quadrupedoriginals-24-proboscis-monkey",
+      "status": "SKIPPED_NONFISH",
+      "name": "Proboscis Monkey"
+    },
+    {
+      "id": "c198creaturesupplya-01-red-fox",
+      "status": "SKIPPED_NONFISH",
+      "name": "Red Fox"
+    },
+    {
+      "id": "c198creaturesupplya-02-hyena",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hyena"
+    },
+    {
+      "id": "c198creaturesupplya-03-sloth-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sloth Bear"
+    },
+    {
+      "id": "c198creaturesupplya-04-brown-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Brown Bear"
+    },
+    {
+      "id": "c198creaturesupplya-05-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bear"
+    },
+    {
+      "id": "c198creaturesupplya-07-kinkajou",
+      "status": "SKIPPED_NONFISH",
+      "name": "Kinkajou"
+    },
+    {
+      "id": "c198creaturesupplya-10-squirrel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Squirrel"
+    },
+    {
+      "id": "c198creaturesupplya-12-vole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Vole"
+    },
+    {
+      "id": "c198creaturesupplya-13-mole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mole"
+    },
+    {
+      "id": "c198creaturesupplya-14-shrew",
+      "status": "SKIPPED_NONFISH",
+      "name": "Shrew"
+    },
+    {
+      "id": "c198creaturesupplya-15-hedgehog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hedgehog"
+    },
+    {
+      "id": "c198creaturesupplya-16-lemming",
+      "status": "SKIPPED_NONFISH",
+      "name": "Lemming"
+    },
+    {
+      "id": "c198creaturesupplya-18-agouti",
+      "status": "SKIPPED_NONFISH",
+      "name": "Agouti"
+    },
+    {
+      "id": "c198creaturesupplya-19-guinea-pig",
+      "status": "SKIPPED_NONFISH",
+      "name": "Guinea Pig"
+    },
+    {
+      "id": "c198creaturesupplya-20-rat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rat"
+    },
+    {
+      "id": "c198creaturesupplya-22-rabbit",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rabbit"
+    },
+    {
+      "id": "c198creaturesupplya-24-snowshoe-hare",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snowshoe Hare"
+    },
+    {
+      "id": "c198creaturesupplyb-01-gorilla",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gorilla"
+    },
+    {
+      "id": "c198creaturesupplyb-03-squid",
+      "status": "SKIPPED_NONFISH",
+      "name": "Squid"
+    },
+    {
+      "id": "c198creaturesupplyb-04-cuttlefish",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cuttlefish"
+    },
+    {
+      "id": "c198creaturesupplyb-05-diving-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Diving Beetle"
+    },
+    {
+      "id": "c198creaturesupplyb-06-chimpanzee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Chimpanzee"
+    },
+    {
+      "id": "c198creaturesupplyb-07-howler-monkey",
+      "status": "SKIPPED_NONFISH",
+      "name": "Howler Monkey"
+    },
+    {
+      "id": "c198creaturesupplyb-08-spider-monkey",
+      "status": "SKIPPED_NONFISH",
+      "name": "Spider Monkey"
+    },
+    {
+      "id": "c198creaturesupplyb-09-tamarin",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tamarin"
+    },
+    {
+      "id": "c198creaturesupplyb-10-macaque",
+      "status": "SKIPPED_NONFISH",
+      "name": "Macaque"
+    },
+    {
+      "id": "c198creaturesupplyb-11-langur",
+      "status": "SKIPPED_NONFISH",
+      "name": "Langur"
+    },
+    {
+      "id": "c198creaturesupplyb-12-baboon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Baboon"
+    },
+    {
+      "id": "c198creaturesupplyb-13-lemur",
+      "status": "SKIPPED_NONFISH",
+      "name": "Lemur"
+    },
+    {
+      "id": "c198creaturesupplyb-14-mandrill",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mandrill"
+    },
+    {
+      "id": "c198creaturesupplyb-15-marmoset",
+      "status": "SKIPPED_NONFISH",
+      "name": "Marmoset"
+    },
+    {
+      "id": "c198creaturesupplyb-16-octopus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Octopus"
+    },
+    {
+      "id": "c198creaturesupplyb-17-giant-octopus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Octopus"
+    },
+    {
+      "id": "c198creaturesupplyb-18-centipede",
+      "status": "SKIPPED_NONFISH",
+      "name": "Centipede"
+    },
+    {
+      "id": "c198creaturesupplyb-19-giant-centipede",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Centipede"
+    },
+    {
+      "id": "c198creaturesupplyb-20-millipede",
+      "status": "SKIPPED_NONFISH",
+      "name": "Millipede"
+    },
+    {
+      "id": "c198creaturesupplyb-21-leafcutter-ant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Leafcutter Ant"
+    },
+    {
+      "id": "c198creaturesupplyb-22-locust",
+      "status": "SKIPPED_NONFISH",
+      "name": "Locust"
+    },
+    {
+      "id": "c198creaturesupplyb-23-grasshopper",
+      "status": "SKIPPED_NONFISH",
+      "name": "Grasshopper"
+    },
+    {
+      "id": "c198creaturesupplyb-24-dobsonfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dobsonfly"
+    },
+    {
+      "id": "c198creaturesupplyc-01-crane",
+      "status": "SKIPPED_NONFISH",
+      "name": "Crane"
+    },
+    {
+      "id": "c198creaturesupplyc-02-flamingo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Flamingo"
+    },
+    {
+      "id": "c198creaturesupplyc-06-secretary-bird",
+      "status": "SKIPPED_NONFISH",
+      "name": "Secretary Bird"
+    },
+    {
+      "id": "c198creaturesupplyc-07-cardinal",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cardinal"
+    },
+    {
+      "id": "c198creaturesupplyc-11-albatross",
+      "status": "SKIPPED_NONFISH",
+      "name": "Albatross"
+    },
+    {
+      "id": "c198creaturesupplyc-12-snow-petrel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snow Petrel"
+    },
+    {
+      "id": "c198creaturesupplyc-13-catfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Catfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplyc-13-catfish/static.json'"
+    },
+    {
+      "id": "c198creaturesupplyc-14-bowfin",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Bowfin",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplyc-14-bowfin/static.json'"
+    },
+    {
+      "id": "c198creaturesupplyc-15-arapaima",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Arapaima",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplyc-15-arapaima/static.json'"
+    },
+    {
+      "id": "c198creaturesupplyc-16-arowana",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Arowana",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplyc-16-arowana/static.json'"
+    },
+    {
+      "id": "c198creaturesupplyc-17-lungfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Lungfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplyc-17-lungfish/static.json'"
+    },
+    {
+      "id": "c198creaturesupplyc-21-lionfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Lionfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplyc-21-lionfish/static.json'"
+    },
+    {
+      "id": "c198creaturesupplyc-23-fangtooth",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Fangtooth",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplyc-23-fangtooth/static.json'"
+    },
+    {
+      "id": "c202creaturesupply-01-tapir",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tapir"
+    },
+    {
+      "id": "c202creaturesupply-02-wild-boar",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wild Boar"
+    },
+    {
+      "id": "c202creaturesupply-03-peccary",
+      "status": "SKIPPED_NONFISH",
+      "name": "Peccary"
+    },
+    {
+      "id": "c202creaturesupply-04-coati",
+      "status": "SKIPPED_NONFISH",
+      "name": "Coati"
+    },
+    {
+      "id": "c202creaturesupply-05-porcupine",
+      "status": "SKIPPED_NONFISH",
+      "name": "Porcupine"
+    },
+    {
+      "id": "c202creaturesupply-06-impala",
+      "status": "SKIPPED_NONFISH",
+      "name": "Impala"
+    },
+    {
+      "id": "c202creaturesupply-07-warthog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Warthog"
+    },
+    {
+      "id": "c202creaturesupply-08-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Buffalo"
+    },
+    {
+      "id": "c202creaturesupply-09-badger",
+      "status": "SKIPPED_NONFISH",
+      "name": "Badger"
+    },
+    {
+      "id": "c202creaturesupply-10-river-otter",
+      "status": "SKIPPED_NONFISH",
+      "name": "River Otter"
+    },
+    {
+      "id": "c202creaturesupply-11-beaver",
+      "status": "SKIPPED_NONFISH",
+      "name": "Beaver"
+    },
+    {
+      "id": "c202creaturesupply-12-wolverine",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wolverine"
+    },
+    {
+      "id": "c202creaturesupply-13-ibex",
+      "status": "SKIPPED_NONFISH",
+      "name": "Ibex"
+    },
+    {
+      "id": "c202creaturesupply-14-chamois",
+      "status": "SKIPPED_NONFISH",
+      "name": "Chamois"
+    },
+    {
+      "id": "c202creaturesupply-15-fishing-cat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Fishing Cat"
+    },
+    {
+      "id": "c202creaturesupply-16-spotted-hyena",
+      "status": "SKIPPED_NONFISH",
+      "name": "Spotted Hyena"
+    },
+    {
+      "id": "c202creaturesupply-17-aardvark",
+      "status": "SKIPPED_NONFISH",
+      "name": "Aardvark"
+    },
+    {
+      "id": "c202creaturesupply-18-bison",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bison"
+    },
+    {
+      "id": "c202creaturesupply-19-prairie-dog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Prairie Dog"
+    },
+    {
+      "id": "c202creaturesupply-20-wild-horse",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wild Horse"
+    },
+    {
+      "id": "c202creaturesupply-21-goat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Goat"
+    },
+    {
+      "id": "c202creaturesupply-22-cat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cat"
+    },
+    {
+      "id": "c202creaturesupply-23-dog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dog"
+    },
+    {
+      "id": "c202creaturesupply-24-llama",
+      "status": "SKIPPED_NONFISH",
+      "name": "Llama"
+    },
+    {
+      "id": "c203creaturesupply-01-water-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Buffalo"
+    },
+    {
+      "id": "c203creaturesupply-02-mountain-tapir",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mountain Tapir"
+    },
+    {
+      "id": "c203creaturesupply-03-black-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Black Bear"
+    },
+    {
+      "id": "c203creaturesupply-04-elk",
+      "status": "SKIPPED_NONFISH",
+      "name": "Elk"
+    },
+    {
+      "id": "c203creaturesupply-05-moose",
+      "status": "SKIPPED_NONFISH",
+      "name": "Moose"
+    },
+    {
+      "id": "c203creaturesupply-06-hippopotamus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hippopotamus"
+    },
+    {
+      "id": "c203creaturesupply-07-wild-pig",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wild Pig"
+    },
+    {
+      "id": "c203creaturesupply-08-water-vole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Vole"
+    },
+    {
+      "id": "c203creaturesupply-09-marsh-rodent",
+      "status": "SKIPPED_NONFISH",
+      "name": "Marsh Rodent"
+    },
+    {
+      "id": "c203creaturesupply-10-cow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cow"
+    },
+    {
+      "id": "c203creaturesupply-11-pig",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pig"
+    },
+    {
+      "id": "c203creaturesupply-12-alpaca",
+      "status": "SKIPPED_NONFISH",
+      "name": "Alpaca"
+    },
+    {
+      "id": "c203creaturesupply-13-gerenuk",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gerenuk"
+    },
+    {
+      "id": "c203creaturesupply-14-nilgai",
+      "status": "SKIPPED_NONFISH",
+      "name": "Nilgai"
+    },
+    {
+      "id": "c203creaturesupply-15-tahr",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tahr"
+    },
+    {
+      "id": "c203creaturesupply-17-cardinal",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cardinal"
+    },
+    {
+      "id": "c203creaturesupply-18-sparrow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sparrow"
+    },
+    {
+      "id": "c203creaturesupply-19-pigeon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pigeon"
+    },
+    {
+      "id": "c203creaturesupply-20-kookaburra",
+      "status": "SKIPPED_NONFISH",
+      "name": "Kookaburra"
+    },
+    {
+      "id": "c203creaturesupply-22-catfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Catfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupply-22-catfish/static.json'"
+    },
+    {
+      "id": "c203creaturesupply-24-wahoo",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Wahoo",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupply-24-wahoo/static.json'"
+    },
+    {
+      "id": "c203creaturesupplyb-01-okapi",
+      "status": "SKIPPED_NONFISH",
+      "name": "Okapi"
+    },
+    {
+      "id": "c203creaturesupplyb-03-pronghorn",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pronghorn"
+    },
+    {
+      "id": "c203creaturesupplyb-04-springbok",
+      "status": "SKIPPED_NONFISH",
+      "name": "Springbok"
+    },
+    {
+      "id": "c203creaturesupplyb-05-duiker",
+      "status": "SKIPPED_NONFISH",
+      "name": "Duiker"
+    },
+    {
+      "id": "c203creaturesupplyb-06-serow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Serow"
+    },
+    {
+      "id": "c203creaturesupplyb-07-brown-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Brown Bear"
+    },
+    {
+      "id": "c203creaturesupplyb-09-kingfisher",
+      "status": "SKIPPED_NONFISH",
+      "name": "Kingfisher"
+    },
+    {
+      "id": "c203creaturesupplyb-10-macaw",
+      "status": "SKIPPED_NONFISH",
+      "name": "Macaw"
+    },
+    {
+      "id": "c203creaturesupplyb-11-toucan",
+      "status": "SKIPPED_NONFISH",
+      "name": "Toucan"
+    },
+    {
+      "id": "c203creaturesupplyb-12-pheasant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pheasant"
+    },
+    {
+      "id": "c203creaturesupplyb-13-falcon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Falcon"
+    },
+    {
+      "id": "c203creaturesupplyb-14-duck",
+      "status": "SKIPPED_NONFISH",
+      "name": "Duck"
+    },
+    {
+      "id": "c203creaturesupplyb-15-egret",
+      "status": "SKIPPED_NONFISH",
+      "name": "Egret"
+    },
+    {
+      "id": "c203creaturesupplyb-16-stork",
+      "status": "SKIPPED_NONFISH",
+      "name": "Stork"
+    },
+    {
+      "id": "c203creaturesupplyb-17-arapaima-framing02",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Arapaima",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-17-arapaima-framing02/fit",
+      "sourceMasterSha256": "df335aeff1080374441505501bacf45284c15a709f5ffa0144061a465ed66226",
+      "sourceStaticSha256": "c7100b438d475acde478761be322bbdc8af8d96316fca366fd8eae8f1d39ac25",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1-fishseams/c203creaturesupplyb-17-arapaima-framing02/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1-fishseams/c203creaturesupplyb-17-arapaima-framing02/native"
+    },
+    {
+      "id": "c203creaturesupplyb-18-arowana-framing02",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Arowana",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-18-arowana-framing02/static.json'"
+    },
+    {
+      "id": "c203creaturesupplyb-19-blenny",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Blenny",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-19-blenny/static.json'"
+    },
+    {
+      "id": "c203creaturesupplyb-20-angelfish",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Angelfish",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-20-angelfish/fit",
+      "sourceMasterSha256": "2457139219d232d2e1c12e9781adde739de9f7a4086071e02df1d62c95ce7a22",
+      "sourceStaticSha256": "ed04858e641f73466372498e47c391ed461ee58329d3666efdbed46ff45975b3",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1-fishseams/c203creaturesupplyb-20-angelfish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1-fishseams/c203creaturesupplyb-20-angelfish/native"
+    },
+    {
+      "id": "c203creaturesupplyb-22-marlin-framing02",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Marlin",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-22-marlin-framing02/static.json'"
+    },
+    {
+      "id": "c203creaturesupplyb-23-swordfish-framing02",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Swordfish",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-23-swordfish-framing02/fit",
+      "sourceMasterSha256": "4f199d6aaae2ccc38c67b2154d82705727a8f3f35c807f7511b971daf5d18417",
+      "sourceStaticSha256": "8765c48d7544b756d4178a45f8bdb886285e6ee2ec770388e2ce5e549b8c3037",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1-fishseams/c203creaturesupplyb-23-swordfish-framing02/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1-fishseams/c203creaturesupplyb-23-swordfish-framing02/native"
+    },
+    {
+      "id": "c203creaturesupplyb-24-fangtooth",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Fangtooth",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-24-fangtooth/static.json'"
+    },
+    {
+      "id": "c203creaturesupplyb-17-arapaima",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Arapaima",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-17-arapaima/static.json'"
+    },
+    {
+      "id": "c203creaturesupplyb-18-arowana",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Arowana",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-18-arowana/static.json'"
+    },
+    {
+      "id": "c203creaturesupplyb-22-marlin",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Marlin",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-22-marlin/static.json'"
+    },
+    {
+      "id": "c203creaturesupplyb-23-swordfish",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Swordfish",
+      "sourceFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c203creaturesupplyb-23-swordfish/fit",
+      "sourceMasterSha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db",
+      "sourceStaticSha256": "264f166530ad061c03617b86074f32a6c48dfe8b1cde64d6329334dcd53e00ca",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1-fishseams/c203creaturesupplyb-23-swordfish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1-fishseams/c203creaturesupplyb-23-swordfish/native"
+    },
+    {
+      "id": "c206birdsourcerepaints-01-snipe",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snipe"
+    },
+    {
+      "id": "c206birdsourcerepaints-02-godwit",
+      "status": "SKIPPED_NONFISH",
+      "name": "Godwit"
+    },
+    {
+      "id": "c206birdsourcerepaints-03-avocet",
+      "status": "SKIPPED_NONFISH",
+      "name": "Avocet"
+    },
+    {
+      "id": "c206birdsourcerepaints-05-egret",
+      "status": "SKIPPED_NONFISH",
+      "name": "Egret"
+    },
+    {
+      "id": "c206birdsourcerepaints-06-stork",
+      "status": "SKIPPED_NONFISH",
+      "name": "Stork"
+    },
+    {
+      "id": "c206birdsourcerepaints-11-peacock",
+      "status": "SKIPPED_NONFISH",
+      "name": "Peacock"
+    },
+    {
+      "id": "c206birdsourcerepaints-13-pheasant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pheasant"
+    },
+    {
+      "id": "c206birdsourcerepaints-14-guillemot",
+      "status": "SKIPPED_NONFISH",
+      "name": "Guillemot"
+    },
+    {
+      "id": "c206birdsourcerepaints-15-auk",
+      "status": "SKIPPED_NONFISH",
+      "name": "Auk"
+    },
+    {
+      "id": "c206birdsourcerepaints-16-grebe",
+      "status": "SKIPPED_NONFISH",
+      "name": "Grebe"
+    },
+    {
+      "id": "c206birdsourcerepaints-17-penguin",
+      "status": "SKIPPED_NONFISH",
+      "name": "Penguin"
+    },
+    {
+      "id": "c206birdsourcerepaints-18-pelican",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pelican"
+    },
+    {
+      "id": "c206birdsourcerepaints-19-screamer",
+      "status": "SKIPPED_NONFISH",
+      "name": "Screamer"
+    },
+    {
+      "id": "c206birdsourcerepaints-22-macaw",
+      "status": "SKIPPED_NONFISH",
+      "name": "Macaw"
+    },
+    {
+      "id": "c206birdsourcerepaints-23-tern",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tern"
+    },
+    {
+      "id": "c213creaturesupply-03-impala",
+      "status": "SKIPPED_NONFISH",
+      "name": "Impala"
+    },
+    {
+      "id": "c213creaturesupply-12-caribou",
+      "status": "SKIPPED_NONFISH",
+      "name": "Caribou"
+    },
+    {
+      "id": "c213creaturesupply-13-yak",
+      "status": "SKIPPED_NONFISH",
+      "name": "Yak"
+    },
+    {
+      "id": "c213creaturesupply-14-takin",
+      "status": "SKIPPED_NONFISH",
+      "name": "Takin"
+    },
+    {
+      "id": "c213creaturesupply-17-dromedary-camel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dromedary Camel"
+    },
+    {
+      "id": "c213creaturesupply-18-bactrian-camel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bactrian Camel"
+    },
+    {
+      "id": "c213creaturesupply-19-gibbon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gibbon"
+    },
+    {
+      "id": "c213creaturesupply-21-sea-squirt",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sea Squirt"
+    },
+    {
+      "id": "g2c101-02-lungfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Lungfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c101-02-lungfish/static.json'"
+    },
+    {
+      "id": "g2c101-04-pipefish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Pipefish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c101-04-pipefish/static.json'"
+    },
+    {
+      "id": "g2c101-05-flying-fish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Flying Fish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c101-05-flying-fish/static.json'"
+    },
+    {
+      "id": "g2c101-06-anglerfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Anglerfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c101-06-anglerfish/static.json'"
+    },
+    {
+      "id": "g2c101-08-fangtooth",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Fangtooth",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c101-08-fangtooth/static.json'"
+    },
+    {
+      "id": "g2c101-09-dragonfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Dragonfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c101-09-dragonfish/static.json'"
+    },
+    {
+      "id": "g2c101-11-deep-sea-fish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Deep-Sea Fish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c101-11-deep-sea-fish/static.json'"
+    },
+    {
+      "id": "g2c101-14-peacock",
+      "status": "SKIPPED_NONFISH",
+      "name": "Peacock"
+    },
+    {
+      "id": "g2c101-15-ostrich",
+      "status": "SKIPPED_NONFISH",
+      "name": "Ostrich"
+    },
+    {
+      "id": "g2c101-16-flamingo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Flamingo"
+    },
+    {
+      "id": "g2c101-17-pelican",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pelican"
+    },
+    {
+      "id": "g2c101-18-albatross",
+      "status": "SKIPPED_NONFISH",
+      "name": "Albatross"
+    },
+    {
+      "id": "g2c101-20-snow-petrel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snow Petrel"
+    },
+    {
+      "id": "g2c101-23-mole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mole"
+    },
+    {
+      "id": "g2c101-24-beaver",
+      "status": "SKIPPED_NONFISH",
+      "name": "Beaver"
+    },
+    {
+      "id": "g2c106-11-knifefish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Knifefish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c106-11-knifefish/static.json'"
+    },
+    {
+      "id": "g2c106-12-flying-gurnard",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Flying Gurnard",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c106-12-flying-gurnard/static.json'"
+    },
+    {
+      "id": "g2c106-14-emu",
+      "status": "SKIPPED_NONFISH",
+      "name": "Emu"
+    },
+    {
+      "id": "g2c106-15-cassowary",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cassowary"
+    },
+    {
+      "id": "g2c106-16-kiwi",
+      "status": "SKIPPED_NONFISH",
+      "name": "Kiwi"
+    },
+    {
+      "id": "g2c106-17-kakapo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Kakapo"
+    },
+    {
+      "id": "g2c106-18-hoatzin",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hoatzin"
+    },
+    {
+      "id": "g2c106-19-quetzal",
+      "status": "SKIPPED_NONFISH",
+      "name": "Quetzal"
+    },
+    {
+      "id": "g2c106-23-porcupine",
+      "status": "SKIPPED_NONFISH",
+      "name": "Porcupine"
+    },
+    {
+      "id": "g2c106-24-lemming",
+      "status": "SKIPPED_NONFISH",
+      "name": "Lemming"
+    },
+    {
+      "id": "g2c107-04-moray-eel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Moray Eel"
+    },
+    {
+      "id": "g2c107-05-gulper-eel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gulper Eel"
+    },
+    {
+      "id": "g2c107-06-oarfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Oarfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c107-06-oarfish/static.json'"
+    },
+    {
+      "id": "g2c107-07-gull",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gull"
+    },
+    {
+      "id": "g2c107-08-frigatebird",
+      "status": "SKIPPED_NONFISH",
+      "name": "Frigatebird"
+    },
+    {
+      "id": "g2c107-09-tropicbird",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tropicbird"
+    },
+    {
+      "id": "g2c107-10-giant-anteater",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Anteater"
+    },
+    {
+      "id": "g2c107-11-mountain-tapir",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mountain Tapir"
+    },
+    {
+      "id": "g2c107-13-snowshoe-hare",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snowshoe Hare"
+    },
+    {
+      "id": "g2c107-15-ibex",
+      "status": "SKIPPED_NONFISH",
+      "name": "Ibex"
+    },
+    {
+      "id": "g2c107-16-chamois",
+      "status": "SKIPPED_NONFISH",
+      "name": "Chamois"
+    },
+    {
+      "id": "g2c107-18-jackrabbit",
+      "status": "SKIPPED_NONFISH",
+      "name": "Jackrabbit"
+    },
+    {
+      "id": "g2c107-21-guinea-pig",
+      "status": "SKIPPED_NONFISH",
+      "name": "Guinea Pig"
+    },
+    {
+      "id": "g2c107-22-armadillo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Armadillo"
+    },
+    {
+      "id": "g2c110-04-impala",
+      "status": "SKIPPED_NONFISH",
+      "name": "Impala"
+    },
+    {
+      "id": "g2c110-05-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Buffalo"
+    },
+    {
+      "id": "g2c110-13-water-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Buffalo"
+    },
+    {
+      "id": "g2c110-17-caribou",
+      "status": "SKIPPED_NONFISH",
+      "name": "Caribou"
+    },
+    {
+      "id": "g2c110-19-yak",
+      "status": "SKIPPED_NONFISH",
+      "name": "Yak"
+    },
+    {
+      "id": "g2c110-20-takin",
+      "status": "SKIPPED_NONFISH",
+      "name": "Takin"
+    },
+    {
+      "id": "g2c110-23-dromedary-camel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dromedary Camel"
+    },
+    {
+      "id": "g2c110-24-bactrian-camel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bactrian Camel"
+    },
+    {
+      "id": "g2c114-01-forest-elephant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Forest Elephant"
+    },
+    {
+      "id": "g2c114-02-elephant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Elephant"
+    },
+    {
+      "id": "g2c114-03-asian-elephant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Asian Elephant"
+    },
+    {
+      "id": "g2c114-04-african-elephant",
+      "status": "SKIPPED_NONFISH",
+      "name": "African Elephant"
+    },
+    {
+      "id": "g2c114-05-rhinoceros",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rhinoceros"
+    },
+    {
+      "id": "g2c114-06-hippopotamus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hippopotamus"
+    },
+    {
+      "id": "g2c114-08-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bear"
+    },
+    {
+      "id": "g2c114-09-wild-pig",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wild Pig"
+    },
+    {
+      "id": "g2c114-10-rat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rat"
+    },
+    {
+      "id": "g2c114-11-cow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cow"
+    },
+    {
+      "id": "g2c114-16-gerenuk",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gerenuk"
+    },
+    {
+      "id": "g2c114-17-tahr",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tahr"
+    },
+    {
+      "id": "g2c114-20-tripod-fish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Tripod Fish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c114-20-tripod-fish/static.json'"
+    },
+    {
+      "id": "g2c114-22-loon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Loon"
+    },
+    {
+      "id": "g2c114-23-water-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Beetle"
+    },
+    {
+      "id": "g2c114-24-diving-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Diving Beetle"
+    },
+    {
+      "id": "g2c118-04-sea-otter",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sea Otter"
+    },
+    {
+      "id": "g2c118-05-water-vole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Vole"
+    },
+    {
+      "id": "g2c118-06-marsh-rodent",
+      "status": "SKIPPED_NONFISH",
+      "name": "Marsh Rodent"
+    },
+    {
+      "id": "g2c118-07-flying-squirrel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Flying Squirrel"
+    },
+    {
+      "id": "g2c118-09-colugo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Colugo"
+    },
+    {
+      "id": "g2c118-10-echidna",
+      "status": "SKIPPED_NONFISH",
+      "name": "Echidna"
+    },
+    {
+      "id": "g2c118-12-platypus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Platypus"
+    },
+    {
+      "id": "g2c118-13-snake",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snake"
+    },
+    {
+      "id": "g2c118-14-penguin",
+      "status": "SKIPPED_NONFISH",
+      "name": "Penguin"
+    },
+    {
+      "id": "g2c118-15-water-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Beetle"
+    },
+    {
+      "id": "g2c118-16-diving-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Diving Beetle"
+    },
+    {
+      "id": "g2c118-17-dragonfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dragonfly"
+    },
+    {
+      "id": "g2c118-18-damselfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Damselfly"
+    },
+    {
+      "id": "g2c118-19-mayfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mayfly"
+    },
+    {
+      "id": "g2c118-22-loon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Loon"
+    },
+    {
+      "id": "g2c118-23-rhinoceros",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rhinoceros"
+    },
+    {
+      "id": "g2c121-02-egret",
+      "status": "SKIPPED_NONFISH",
+      "name": "Egret"
+    },
+    {
+      "id": "g2c121-03-stork",
+      "status": "SKIPPED_NONFISH",
+      "name": "Stork"
+    },
+    {
+      "id": "g2c121-11-sparrow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sparrow"
+    },
+    {
+      "id": "g2c121-15-peacock",
+      "status": "SKIPPED_NONFISH",
+      "name": "Peacock"
+    },
+    {
+      "id": "g2c121-17-bee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bee"
+    },
+    {
+      "id": "g2c121-19-giant-water-bug",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Water Bug"
+    },
+    {
+      "id": "g2c121-21-stick-insect",
+      "status": "SKIPPED_NONFISH",
+      "name": "Stick Insect"
+    },
+    {
+      "id": "g2c121-22-carrion-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Carrion Beetle"
+    },
+    {
+      "id": "g2c121-23-water-strider",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Strider"
+    },
+    {
+      "id": "g2c132quadrupeds-01-caiman",
+      "status": "SKIPPED_NONFISH",
+      "name": "Caiman"
+    },
+    {
+      "id": "g2c132quadrupeds-02-crocodile",
+      "status": "SKIPPED_NONFISH",
+      "name": "Crocodile"
+    },
+    {
+      "id": "g2c132quadrupeds-05-monitor-lizard",
+      "status": "SKIPPED_NONFISH",
+      "name": "Monitor Lizard"
+    },
+    {
+      "id": "g2c132quadrupeds-06-anole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Anole"
+    },
+    {
+      "id": "g2c132quadrupeds-08-skink",
+      "status": "SKIPPED_NONFISH",
+      "name": "Skink"
+    },
+    {
+      "id": "g2c132quadrupeds-10-mountain-lizard",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mountain Lizard"
+    },
+    {
+      "id": "g2c132quadrupeds-12-lizard",
+      "status": "SKIPPED_NONFISH",
+      "name": "Lizard"
+    },
+    {
+      "id": "g2c132quadrupeds-13-whiptail",
+      "status": "SKIPPED_NONFISH",
+      "name": "Whiptail"
+    },
+    {
+      "id": "g2c132quadrupeds-14-agama",
+      "status": "SKIPPED_NONFISH",
+      "name": "Agama"
+    },
+    {
+      "id": "g2c132quadrupeds-19-gila-monster",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gila Monster"
+    },
+    {
+      "id": "g2c132quadrupeds-20-frilled-lizard",
+      "status": "SKIPPED_NONFISH",
+      "name": "Frilled Lizard"
+    },
+    {
+      "id": "g2c132quadrupeds-21-chameleon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Chameleon"
+    },
+    {
+      "id": "g2c136repairs-01-giant-salamander",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Salamander"
+    },
+    {
+      "id": "g2c136repairs-02-alpine-salamander",
+      "status": "SKIPPED_NONFISH",
+      "name": "Alpine Salamander"
+    },
+    {
+      "id": "g2c136repairs-03-olm",
+      "status": "SKIPPED_NONFISH",
+      "name": "Olm"
+    },
+    {
+      "id": "g2c136repairs-04-blind-salamander",
+      "status": "SKIPPED_NONFISH",
+      "name": "Blind Salamander"
+    },
+    {
+      "id": "g2c136repairs-05-axolotl",
+      "status": "SKIPPED_NONFISH",
+      "name": "Axolotl"
+    },
+    {
+      "id": "g2c136repairs-07-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Buffalo"
+    },
+    {
+      "id": "g2c136repairs-10-water-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Buffalo"
+    },
+    {
+      "id": "g2c136repairs-12-caribou",
+      "status": "SKIPPED_NONFISH",
+      "name": "Caribou"
+    },
+    {
+      "id": "g2c136repairs-14-yak",
+      "status": "SKIPPED_NONFISH",
+      "name": "Yak"
+    },
+    {
+      "id": "g2c136repairs-21-bee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bee"
+    },
+    {
+      "id": "g2c136repairs-22-giant-water-bug",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Water Bug"
+    },
+    {
+      "id": "g2c136repairs-23-carrion-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Carrion Beetle"
+    },
+    {
+      "id": "g2c136repairs-24-water-strider",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Strider"
+    },
+    {
+      "id": "g2c136targetededits-01-giant-salamander",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Salamander"
+    },
+    {
+      "id": "g2c136targetededits-07-buffalo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Buffalo"
+    },
+    {
+      "id": "g2c136targetededits-21-bee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bee"
+    },
+    {
+      "id": "g2c163familyoriginals-02-salamander",
+      "status": "SKIPPED_NONFISH",
+      "name": "Salamander"
+    },
+    {
+      "id": "g2c163familyoriginals-03-wall-lizard",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wall Lizard"
+    },
+    {
+      "id": "g2c163familyoriginals-04-gorilla",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gorilla"
+    },
+    {
+      "id": "g2c163familyoriginals-05-chimpanzee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Chimpanzee"
+    },
+    {
+      "id": "g2c163familyoriginals-06-orangutan",
+      "status": "SKIPPED_NONFISH",
+      "name": "Orangutan"
+    },
+    {
+      "id": "g2c163familyoriginals-08-howler-monkey",
+      "status": "SKIPPED_NONFISH",
+      "name": "Howler Monkey"
+    },
+    {
+      "id": "g2c163familyoriginals-09-spider-monkey",
+      "status": "SKIPPED_NONFISH",
+      "name": "Spider Monkey"
+    },
+    {
+      "id": "g2c163familyoriginals-10-macaque",
+      "status": "SKIPPED_NONFISH",
+      "name": "Macaque"
+    },
+    {
+      "id": "g2c163familyoriginals-11-baboon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Baboon"
+    },
+    {
+      "id": "g2c163familyoriginals-12-lemur",
+      "status": "SKIPPED_NONFISH",
+      "name": "Lemur"
+    },
+    {
+      "id": "g2c163familyoriginals-13-centipede",
+      "status": "SKIPPED_NONFISH",
+      "name": "Centipede"
+    },
+    {
+      "id": "g2c163familyoriginals-14-giant-centipede",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Centipede"
+    },
+    {
+      "id": "g2c163familyoriginals-15-millipede",
+      "status": "SKIPPED_NONFISH",
+      "name": "Millipede"
+    },
+    {
+      "id": "g2c163familyoriginals-16-octopus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Octopus"
+    },
+    {
+      "id": "g2c163familyoriginals-17-squid",
+      "status": "SKIPPED_NONFISH",
+      "name": "Squid"
+    },
+    {
+      "id": "g2c163familyoriginals-18-cuttlefish",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cuttlefish"
+    },
+    {
+      "id": "g2c163familyoriginals-19-giant-octopus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Octopus"
+    },
+    {
+      "id": "g2c163familyoriginals-20-deep-sea-octopus",
+      "status": "SKIPPED_NONFISH",
+      "name": "Deep-Sea Octopus"
+    },
+    {
+      "id": "g2c163familyoriginals-21-fruit-bat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Fruit Bat"
+    },
+    {
+      "id": "g2c163familyoriginals-23-insect-eating-bat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Insect-Eating Bat"
+    },
+    {
+      "id": "g2c163familyoriginals-24-vampire-bat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Vampire Bat"
+    },
+    {
+      "id": "g2c59-01-elk",
+      "status": "SKIPPED_NONFISH",
+      "name": "Elk"
+    },
+    {
+      "id": "g2c59-02-moose",
+      "status": "SKIPPED_NONFISH",
+      "name": "Moose"
+    },
+    {
+      "id": "g2c59-03-bison",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bison"
+    },
+    {
+      "id": "g2c59-05-badger",
+      "status": "SKIPPED_NONFISH",
+      "name": "Badger"
+    },
+    {
+      "id": "g2c59-06-wolverine",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wolverine"
+    },
+    {
+      "id": "g2c59-09-kingfisher",
+      "status": "SKIPPED_NONFISH",
+      "name": "Kingfisher"
+    },
+    {
+      "id": "g2c59-12-ladybug",
+      "status": "SKIPPED_NONFISH",
+      "name": "Ladybug"
+    },
+    {
+      "id": "g2c72-12-egret",
+      "status": "SKIPPED_NONFISH",
+      "name": "Egret"
+    },
+    {
+      "id": "g2c72-14-stork",
+      "status": "SKIPPED_NONFISH",
+      "name": "Stork"
+    },
+    {
+      "id": "g2c72-17-water-strider",
+      "status": "SKIPPED_NONFISH",
+      "name": "Water Strider"
+    },
+    {
+      "id": "g2c72-19-carrion-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Carrion Beetle"
+    },
+    {
+      "id": "g2c72-20-stick-insect",
+      "status": "SKIPPED_NONFISH",
+      "name": "Stick Insect"
+    },
+    {
+      "id": "g2c76-06-arowana",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Arowana",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c76-06-arowana/static.json'"
+    },
+    {
+      "id": "g2c76-07-arapaima",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Arapaima",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c76-07-arapaima/static.json'"
+    },
+    {
+      "id": "g2c76-09-swift",
+      "status": "SKIPPED_NONFISH",
+      "name": "Swift"
+    },
+    {
+      "id": "g2c76-11-falcon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Falcon"
+    },
+    {
+      "id": "g2c76-12-crane",
+      "status": "SKIPPED_NONFISH",
+      "name": "Crane"
+    },
+    {
+      "id": "g2c76-16-pheasant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pheasant"
+    },
+    {
+      "id": "g2c76-18-agouti",
+      "status": "SKIPPED_NONFISH",
+      "name": "Agouti"
+    },
+    {
+      "id": "g2c76-19-alpaca",
+      "status": "SKIPPED_NONFISH",
+      "name": "Alpaca"
+    },
+    {
+      "id": "g2c76-20-llama",
+      "status": "SKIPPED_NONFISH",
+      "name": "Llama"
+    },
+    {
+      "id": "g2c76-22-pangolin",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pangolin"
+    },
+    {
+      "id": "g2c76-23-peccary",
+      "status": "SKIPPED_NONFISH",
+      "name": "Peccary"
+    },
+    {
+      "id": "g2c76-24-okapi",
+      "status": "SKIPPED_NONFISH",
+      "name": "Okapi"
+    },
+    {
+      "id": "g2c81-10-snipe",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snipe"
+    },
+    {
+      "id": "g2c81-12-godwit",
+      "status": "SKIPPED_NONFISH",
+      "name": "Godwit"
+    },
+    {
+      "id": "g2c81-13-avocet",
+      "status": "SKIPPED_NONFISH",
+      "name": "Avocet"
+    },
+    {
+      "id": "g2c81-17-bee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bee"
+    },
+    {
+      "id": "g2c81-19-dragonfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dragonfly"
+    },
+    {
+      "id": "g2c81-20-damselfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Damselfly"
+    },
+    {
+      "id": "g2c81-21-caddisfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Caddisfly"
+    },
+    {
+      "id": "g2c81-22-mayfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mayfly"
+    },
+    {
+      "id": "g2c81-23-stonefly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Stonefly"
+    },
+    {
+      "id": "g2c81-24-giant-water-bug",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Water Bug"
+    },
+    {
+      "id": "g2c83-04-marlin",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Marlin",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c83-04-marlin/static.json'"
+    },
+    {
+      "id": "g2c83-06-swordfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Swordfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c83-06-swordfish/static.json'"
+    },
+    {
+      "id": "g2c83-08-wahoo",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Wahoo",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c83-08-wahoo/static.json'"
+    },
+    {
+      "id": "g2c83-09-macaw",
+      "status": "SKIPPED_NONFISH",
+      "name": "Macaw"
+    },
+    {
+      "id": "g2c83-11-toucan",
+      "status": "SKIPPED_NONFISH",
+      "name": "Toucan"
+    },
+    {
+      "id": "g2c83-15-kookaburra",
+      "status": "SKIPPED_NONFISH",
+      "name": "Kookaburra"
+    },
+    {
+      "id": "g2c83-16-cockatoo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cockatoo"
+    },
+    {
+      "id": "g2c83-17-fishing-cat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Fishing Cat"
+    },
+    {
+      "id": "g2c83-20-spotted-hyena",
+      "status": "SKIPPED_NONFISH",
+      "name": "Spotted Hyena"
+    },
+    {
+      "id": "g2c83-23-prairie-dog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Prairie Dog"
+    },
+    {
+      "id": "g2c83-24-aardvark",
+      "status": "SKIPPED_NONFISH",
+      "name": "Aardvark"
+    },
+    {
+      "id": "g2c87-02-blenny",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Blenny",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c87-02-blenny/static.json'"
+    },
+    {
+      "id": "g2c87-25-angelfish-marine",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Angelfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c87-25-angelfish-marine/static.json'"
+    },
+    {
+      "id": "g2c87-09-owl",
+      "status": "SKIPPED_NONFISH",
+      "name": "Owl"
+    },
+    {
+      "id": "g2c87-15-guillemot",
+      "status": "SKIPPED_NONFISH",
+      "name": "Guillemot"
+    },
+    {
+      "id": "g2c87-17-coati",
+      "status": "SKIPPED_NONFISH",
+      "name": "Coati"
+    },
+    {
+      "id": "g2c87-20-striped-hyena",
+      "status": "SKIPPED_NONFISH",
+      "name": "Striped Hyena"
+    },
+    {
+      "id": "g2c87-22-black-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Black Bear"
+    },
+    {
+      "id": "g2c90-02-cobra",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cobra"
+    },
+    {
+      "id": "g2c90-04-rattlesnake",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rattlesnake"
+    },
+    {
+      "id": "g2c90-07-catfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Catfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c90-07-catfish/static.json'"
+    },
+    {
+      "id": "g2c90-09-bowfin",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Bowfin",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c90-09-bowfin/static.json'"
+    },
+    {
+      "id": "g2c90-15-squirrel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Squirrel"
+    },
+    {
+      "id": "g2c90-17-rabbit",
+      "status": "SKIPPED_NONFISH",
+      "name": "Rabbit"
+    },
+    {
+      "id": "g2c90-20-hedgehog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hedgehog"
+    },
+    {
+      "id": "g2c90-22-kinkajou",
+      "status": "SKIPPED_NONFISH",
+      "name": "Kinkajou"
+    },
+    {
+      "id": "g2c90-23-sloth-bear",
+      "status": "SKIPPED_NONFISH",
+      "name": "Sloth Bear"
+    },
+    {
+      "id": "g2c90-24-river-otter",
+      "status": "SKIPPED_NONFISH",
+      "name": "River Otter"
+    },
+    {
+      "id": "g2c92-05-lionfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Lionfish",
+      "error": "ENOENT: no such file or directory, open '~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c92-05-lionfish/static.json'"
+    },
+    {
+      "id": "g2c92-08-auk",
+      "status": "SKIPPED_NONFISH",
+      "name": "Auk"
+    },
+    {
+      "id": "g2c92-12-grebe",
+      "status": "SKIPPED_NONFISH",
+      "name": "Grebe"
+    },
+    {
+      "id": "g2c92-16-vole",
+      "status": "SKIPPED_NONFISH",
+      "name": "Vole"
+    },
+    {
+      "id": "g2c92-19-moth",
+      "status": "SKIPPED_NONFISH",
+      "name": "Moth"
+    },
+    {
+      "id": "g2c92-20-aphid",
+      "status": "SKIPPED_NONFISH",
+      "name": "Aphid"
+    },
+    {
+      "id": "g2c92-21-dobsonfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dobsonfly"
+    },
+    {
+      "id": "g2c92-22-scorpionfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Scorpionfly"
+    },
+    {
+      "id": "g2c92-23-thrips",
+      "status": "SKIPPED_NONFISH",
+      "name": "Thrips"
+    },
+    {
+      "id": "g2c92-24-orchid-bee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Orchid Bee"
+    },
+    {
+      "id": "g2c95-13-pronghorn",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pronghorn"
+    },
+    {
+      "id": "g2c95-14-springbok",
+      "status": "SKIPPED_NONFISH",
+      "name": "Springbok"
+    },
+    {
+      "id": "g2c95-16-duiker",
+      "status": "SKIPPED_NONFISH",
+      "name": "Duiker"
+    },
+    {
+      "id": "g2c95-17-nilgai",
+      "status": "SKIPPED_NONFISH",
+      "name": "Nilgai"
+    },
+    {
+      "id": "g2c95-18-serow",
+      "status": "SKIPPED_NONFISH",
+      "name": "Serow"
+    },
+    {
+      "id": "g2c95-19-butterfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Butterfly"
+    },
+    {
+      "id": "g2c95-20-mosquito",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mosquito"
+    },
+    {
+      "id": "g2c95-21-black-fly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Black Fly"
+    },
+    {
+      "id": "g2c95-22-fly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Fly"
+    },
+    {
+      "id": "g2c95-23-springtail",
+      "status": "SKIPPED_NONFISH",
+      "name": "Springtail"
+    },
+    {
+      "id": "g2c95-24-cold-adapted-insect",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cold-Adapted Insect"
+    },
+    {
+      "id": "g2c98-11-osprey",
+      "status": "SKIPPED_NONFISH",
+      "name": "Osprey"
+    },
+    {
+      "id": "g2c98-14-screamer",
+      "status": "SKIPPED_NONFISH",
+      "name": "Screamer"
+    },
+    {
+      "id": "g2c98-15-secretary-bird",
+      "status": "SKIPPED_NONFISH",
+      "name": "Secretary Bird"
+    },
+    {
+      "id": "g2c98-16-tern",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tern"
+    },
+    {
+      "id": "g2c98-17-petrel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Petrel"
+    },
+    {
+      "id": "g2c98-19-shrew",
+      "status": "SKIPPED_NONFISH",
+      "name": "Shrew"
+    },
+    {
+      "id": "g2c98-21-pig",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pig"
+    },
+    {
+      "id": "g2c98-22-warthog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Warthog"
+    },
+    {
+      "id": "g2c98-23-honeybee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Honeybee"
+    },
+    {
+      "id": "g2c98-24-bumblebee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bumblebee"
+    },
+    {
+      "id": "g2referencesc62-02-pigeon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pigeon"
+    },
+    {
+      "id": "g2referencesc62-03-duck",
+      "status": "SKIPPED_NONFISH",
+      "name": "Duck"
+    },
+    {
+      "id": "g2referencesc62-05-cat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cat"
+    },
+    {
+      "id": "g2referencesc62-06-dog",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dog"
+    },
+    {
+      "id": "g2referencesc62-08-ant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Ant"
+    },
+    {
+      "id": "g2referencesc62-09-cricket",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cricket"
+    },
+    {
+      "id": "g2throughputc56-12-cardinal",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cardinal"
+    },
+    {
+      "id": "g2throughputc56-16-pigeon",
+      "status": "SKIPPED_NONFISH",
+      "name": "Pigeon"
+    },
+    {
+      "id": "g2throughputc56-26-cicada",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cicada"
+    },
+    {
+      "id": "g2throughputc56-28-leafcutter-ant",
+      "status": "SKIPPED_NONFISH",
+      "name": "Leafcutter Ant"
+    },
+    {
+      "id": "g2throughputc56-29-cave-cricket",
+      "status": "SKIPPED_NONFISH",
+      "name": "Cave Cricket"
+    },
+    {
+      "id": "g2throughputc56-31-carrion-beetle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Carrion Beetle"
+    },
+    {
+      "id": "g2throughputc56-32-stick-insect",
+      "status": "SKIPPED_NONFISH",
+      "name": "Stick Insect"
+    },
+    {
+      "id": "insectreferencesc86-01-bee",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bee"
+    },
+    {
+      "id": "insectreferencesc86-02-dragonfly",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dragonfly"
+    },
+    {
+      "id": "insectreferencesc86-03-giant-water-bug",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Water Bug"
+    },
+    {
+      "id": "insectreferencesc86-04-bee-six-legs",
+      "status": "SKIPPED_NONFISH",
+      "name": "Bee"
+    },
+    {
+      "id": "insectreferencesc86-05-dragonfly-six-legs",
+      "status": "SKIPPED_NONFISH",
+      "name": "Dragonfly"
+    }
+  ],
+  "scope": "Opt-in diagnostic candidates, no visual or library admission"
+}

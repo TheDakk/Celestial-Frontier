@@ -1,0 +1,7 @@
+{
+  "change": "Type-only fixture option explicitly permits undefined, matching its existing call site under exactOptionalPropertyTypes. No emitted behavior change.",
+  "beforeSha256": "46a1b9c5b7a033511f4ef8251e53e580d73f7f18facb503216caad9ec2bae81b",
+  "afterSha256": "d0efc58e788fdb456ac15e537afc6aacb875a0b6b09ab1c78596556b3216796e",
+  "testRerun": false,
+  "validationOwner": "Root pending all-three TypeScript checks; prior19 PASS and corrected1 PASS remain source-bound."
+}

@@ -1,0 +1,154 @@
+[
+ {
+  "id": "01-earthworm-direct",
+  "fit": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/fit01",
+  "packet": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct",
+  "name": "Earthworm",
+  "family": "annelid",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "02-sponge-direct",
+  "fit": "audits/C186_SPECIALIZED_REFERENCES_20261002/02-sponge-direct/fit01",
+  "packet": "audits/C186_SPECIALIZED_REFERENCES_20261002/02-sponge-direct",
+  "name": "Sponge",
+  "family": "sessile-filter",
+  "media": [
+   "water"
+  ]
+ },
+ {
+  "id": "03-spider-palp",
+  "fit": "audits/C186_SPECIALIZED_REFERENCES_20261002/03-spider-palp/fit01",
+  "packet": "audits/C186_SPECIALIZED_REFERENCES_20261002/03-spider-palp",
+  "name": "Spider",
+  "family": "arachnid",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "04-banana-slug-visible-mouth",
+  "fit": "audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/fit01",
+  "packet": "audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth",
+  "name": "Banana Slug",
+  "family": "gastropod",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "06-crab-source-joins",
+  "fit": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab-source-joins/fit01",
+  "packet": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab-source-joins",
+  "name": "Crab",
+  "family": "brachyuran",
+  "media": [
+   "water",
+   "ground"
+  ]
+ },
+ {
+  "id": "07-brittle-star-part-ids",
+  "fit": "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/fit01",
+  "packet": "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids",
+  "name": "Brittle Star",
+  "family": "radial",
+  "media": [
+   "water"
+  ]
+ },
+ {
+  "id": "01-zebra-fallback-ears",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/01-zebra-fallback-ears/islands-01/fit",
+  "packet": null,
+  "name": "Zebra",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "02-kudu",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/02-kudu/islands-01/fit",
+  "packet": null,
+  "name": "Kudu",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "05-gazelle",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/05-gazelle/islands-01/fit",
+  "packet": null,
+  "name": "Gazelle",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "07-oryx-tail-ears",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/07-oryx-tail-ears/islands-01/fit",
+  "packet": null,
+  "name": "Oryx",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "08-gaur-observed-ears",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/08-gaur-observed-ears/islands-01/fit",
+  "packet": null,
+  "name": "Gaur",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "09-deer-observed-ears",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-observed-ears/islands-01/fit",
+  "packet": null,
+  "name": "Deer",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "10-antelope-tail",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/10-antelope-tail/islands-01/fit",
+  "packet": null,
+  "name": "Antelope",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "15-sheep-observed-ears",
+  "fit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/15-sheep-observed-ears/islands-01/fit",
+  "packet": null,
+  "name": "Sheep",
+  "family": "quadruped",
+  "media": [
+   "ground"
+  ]
+ },
+ {
+  "id": "bittern-fit02",
+  "fit": "audits/C186_BITTERN_REPAIR_20261002/fit02",
+  "packet": null,
+  "name": "Bittern",
+  "family": "biped-bird",
+  "media": [
+   "air",
+   "ground"
+  ]
+ }
+]

@@ -1,0 +1,22 @@
+== finish 02:25:25
+{"status":"running","rows":[]}
+{"status":"running","subject":"g2c274-23-cardinalfish","rows":[{"id":"g2c274-23-cardinalfish","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"g2c274-23-cardinalfish","rows":[{"id":"g2c274-23-cardinalfish","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"g2c274-23-cardinalfish","rows":[{"id":"g2c274-23-cardinalfish","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"g2c274-23-cardinalfish","rows":[{"id":"g2c274-23-cardinalfish","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"g2c275-08-grizzly-bear","rows":[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"g2c275-08-grizzly-bear","rows":[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"FAIL"}],"last":{"phase":"inference-start","stage":"text"}}
+{"status":"running","subject":"g2c275-08-grizzly-bear","rows":[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"g2c275-08-grizzly-bear","rows":[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"g2c275-02-capybara","rows":[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"PASS"},{"id":"g2c275-02-capybara","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"g2c275-02-capybara","rows":[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"PASS"},{"id":"g2c275-02-capybara","status":"FAIL"}],"last":{"phase":"inference-start","stage":"text"}}
+{"status":"running","subject":"g2c275-02-capybara","rows":[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"PASS"},{"id":"g2c275-02-capybara","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"g2c275-02-capybara","rows":[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"PASS"},{"id":"g2c275-02-capybara","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"g2c275-02-capybara","rows":[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"PASS"},{"id":"g2c275-02-capybara","status":"FAIL"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"g2c275-02-capybara","rows":[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"PASS"},{"id":"g2c275-02-capybara","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-anthropic-mac/audits/AI_FINISH_C274_20261004/finish-01"}
+== finish exit 0 02:27:42
+[{"id":"g2c274-23-cardinalfish","status":"PASS"},{"id":"g2c275-08-grizzly-bear","status":"PASS"},{"id":"g2c275-02-capybara","status":"PASS"}]
+== rebind exit 0 02:27:45
+{"g2c274-23-cardinalfish":"DIAGNOSTIC_PASS","g2c275-08-grizzly-bear":"DIAGNOSTIC_PASS","g2c275-02-capybara":"DIAGNOSTIC_PASS"}
+== native exit 0 02:28:47

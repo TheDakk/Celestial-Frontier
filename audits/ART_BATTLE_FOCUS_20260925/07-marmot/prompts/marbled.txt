@@ -1,0 +1,3 @@
+Create a transparent 1254 x 1254 PNG marking-mask texture. No creature, silhouette, background, checkerboard, text or labels. Draw only the following white pigment shapes on an otherwise empty alpha-zero canvas. Maintain exact canvas coordinates; no cropping or centering.
+Four winding thin branching white veins, line width 7 pixels, across x=300 to 950,y=450 to 760. Sparse natural marble-like branching; mostly transparent space.
+All other pixels must have alpha zero. White is the mark; transparency is a real alpha hole.

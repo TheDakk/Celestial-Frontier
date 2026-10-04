@@ -1,0 +1,51 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/morph/painted-card-source.test.ts (9 tests | 1 failed | 8 skipped) 165ms
+     × releases both message ports and its callback after every default render yield, without changing the painted bytes 165ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/morph/painted-card-source.test.ts > painted card source — the individual on the card > releases both message ports and its callback after every default render yield, without changing the painted bytes
+AssertionError: expected [ [ true, false, null ], …(2) ] to deeply equal [ [ true, true, null ], …(2) ]
+
+- Expected
++ Received
+
+  [
+    [
+      true,
+-     true,
++     false,
+      null,
+    ],
+    [
+-     true,
+      true,
++     false,
+      null,
+    ],
+    [
+      true,
+-     true,
++     false,
+      null,
+    ],
+  ]
+
+ ❯ apps/game/src/morph/painted-card-source.test.ts:28:86
+     26|       }
+     27|       expect(channels).toHaveLength(3);
+     28|       expect(channels.map(c => [c.port1.closed, c.port2.closed, c.port…
+       |                                                                                      ^
+     29|         Array.from({ length: 3 }, () => [true, true, null]));
+     30|       expect(normal.renders).toBe(3);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 skipped (9)
+   Start at  13:55:41
+   Duration  786ms (transform 324ms, setup 0ms, import 506ms, tests 165ms, environment 0ms)
+

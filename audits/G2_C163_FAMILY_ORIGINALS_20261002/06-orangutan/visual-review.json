@@ -1,0 +1,28 @@
+{
+  "name": "Orangutan",
+  "masterSha256": "e93e3cd5cda0420dd95d51d7c4dd8a05ec9671284cd6dfaf2a404426d451f5cd",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Long orange shaggy hair, broad cheek flanges, throat pouch, long arms and tailless body distinguish the adult male. Both hands and feet are visible but at different heights, with a lifted far hand and proximal limb overlap under the coat. Ear visibility is occluded by the flange; curled digits require semantic review. Three-quarter torso rather than a pure lateral fit.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 232,
+      "y0": 279,
+      "x1": 1051,
+      "y1": 986
+    },
+    "margins": {
+      "left": 232,
+      "right": 202,
+      "top": 279,
+      "bottom": 267
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Clam",
+  "family": "bivalve",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "708abc37410bc24df7f14f7e9a10d1561ffa2ce2c085c7639e6219f0816b46f9",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "f2e948709d21fc05c0b88ca79d2186a7cc2eac8ffc7f2d3ba6574126de82bffb",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "Real headless bivalve mollusc with two hinged valves, mantle, true muscular foot and actual siphons; no eyes, teeth, tongue or invented limbs.",
+  "profileId": "bivalve",
+  "authoringCreated": false,
+  "sourceHead": "e10a4b750cec6ea9c3669eabe0339683ecdace55",
+  "basePromptSha256": "f2f9cf5f32a6a3b9a1d57a26a348c333dbeb639195276f1680e7c9cb95871342",
+  "batchCompilerSha256": "d90d7117e3e43dc08d394a288b343aadbc001774c15d855df5e44fc9b5b5c715",
+  "purpose": "NEW_SOURCE_IDENTITY",
+  "repairReason": null,
+  "priorPilotPaths": [],
+  "auditCompilerExtension": true,
+  "sourceCorrection": "BIOLOGICAL PRIORITY: headless bivalve, two genuine hinged shell valves with real mantle, naturally protruding muscular foot and distinguishable true paired siphon openings. Do not invent eyes, tongue, lips, decorative pearls or scenery.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

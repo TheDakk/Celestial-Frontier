@@ -1,0 +1,76 @@
+{
+  "id": "cougar",
+  "masterPath": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/master.png",
+  "masterSha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
+  "recordPath": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03/record.json",
+  "recordSha256": "a011ebc38f3fd54430ccfc90cd94178b213bf507beebff8e415ffc693397cb6a",
+  "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03/labels.png",
+  "labelsPngSha256": "56cb5cb87b39d1146db824e39add6426bb0083c5775775dc25d072b8521dc5c2",
+  "width": 1254,
+  "height": 1254,
+  "painted": 375802,
+  "opaque": 193,
+  "labeled": 375802,
+  "originalEligiblePixels": 0,
+  "topAlphaCounts": [
+    [
+      "0",
+      1196714
+    ],
+    [
+      "253",
+      295389
+    ],
+    [
+      "252",
+      23882
+    ],
+    [
+      "1",
+      12710
+    ],
+    [
+      "251",
+      7559
+    ],
+    [
+      "254",
+      4233
+    ],
+    [
+      "2",
+      3788
+    ],
+    [
+      "250",
+      3663
+    ],
+    [
+      "249",
+      2179
+    ],
+    [
+      "3",
+      1833
+    ],
+    [
+      "248",
+      1442
+    ],
+    [
+      "4",
+      1169
+    ]
+  ],
+  "originalMask": {
+    "status": "REFUSE",
+    "reason": "Error: Creature mask shape"
+  },
+  "workWidth": 1264,
+  "workHeight": 1264,
+  "paddedMask": {
+    "status": "REFUSE",
+    "reason": "Error: No editable creature interior"
+  },
+  "status": "REFUSE"
+}

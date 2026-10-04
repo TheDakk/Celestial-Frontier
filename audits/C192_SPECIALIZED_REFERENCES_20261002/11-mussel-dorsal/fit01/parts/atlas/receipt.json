@@ -1,0 +1,55 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c192-mussel-external-junction",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "3bf05b37deb3810b4cd2ae5fb6bcfe6a9326551ee85426862315e985331fbec9",
+    "pngSha256": "849b41c254e6e25a846748b5348bf4322207ad95552c7c91e7e77b5658895d1c"
+  },
+  "parts": [
+    {
+      "name": "foot.png",
+      "sha256": "c20fdca9f828ffb5dad5cf8e080aa502de9c64f6490784e644792fc7ca5abd60"
+    },
+    {
+      "name": "hinge.png",
+      "sha256": "9e8eb13c58ab05ab2f80dc70a00652057910de8012be7e41cc460bc1a9a8486e"
+    },
+    {
+      "name": "mantle.png",
+      "sha256": "f9d400d32e41d9b9ceac7b73e7344a975f8970ccae09859da432506ecfd1c970"
+    },
+    {
+      "name": "siphon.png",
+      "sha256": "52420605786a6d7d74b796c2b86e418aa38abb9ba2af55f210e45a74d677eece"
+    },
+    {
+      "name": "valvefar.png",
+      "sha256": "afb19c1818f7eabef0312d50d24298ac5094f4ec09da868db00f4f20a69ffbdc"
+    },
+    {
+      "name": "valvenear.png",
+      "sha256": "94a5da42fcfae612f85758bb26d4611415c26f6f952978f429d2a0e601551151"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

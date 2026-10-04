@@ -1,0 +1,39 @@
+{
+  "rows": [
+    {
+      "file": "audits/PROCEDURAL_PAINTED_DIRECTION_20260916/procedural-10271-candidate-01.png",
+      "sha256": "f31524eeea9e0c853b1974b5b7a62aeac7cdd1c49ab78c69359552c35c1e42e1",
+      "width": 1254,
+      "height": 1254,
+      "nonOpaquePixels": 1572263,
+      "nearMagentaPixels": 0,
+      "margins": [
+        0.027910685805422646,
+        0.10207336523125997,
+        0.037480063795853266,
+        0.10127591706539076
+      ],
+      "marginTargetPass": false,
+      "qualityAccepted": false,
+      "animationReady": false
+    },
+    {
+      "file": "audits/PROCEDURAL_PAINTED_DIRECTION_20260916/procedural-10271-candidate-02.png",
+      "sha256": "aba05f55102c5e0a23c9a02c3d120675905f09fdb517223505d80326eb84e158",
+      "width": 1254,
+      "height": 1254,
+      "nonOpaquePixels": 0,
+      "nearMagentaPixels": 1092149,
+      "margins": [
+        0,
+        0.16427432216905902,
+        0,
+        0
+      ],
+      "marginTargetPass": false,
+      "qualityAccepted": false,
+      "animationReady": false
+    }
+  ],
+  "scope": "read-only background and framing diagnostic; anatomy/style acceptance remains human"
+}

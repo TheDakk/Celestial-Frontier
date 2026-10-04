@@ -1,0 +1,110 @@
+{
+  "creatureId": "c186-spider-palp",
+  "parts": [
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "accded5f303431189270f6146daaaef7481e11cd4f207168f741b3eab467d90c"
+    },
+    {
+      "name": "cephalothorax.png",
+      "path": "parts/cephalothorax.png",
+      "sha256": "257ebaffb16f810a89122db9b4b974418d0eff1f2e1033bf704ab69700cc8b89"
+    },
+    {
+      "name": "chelicerafar.png",
+      "path": "parts/chelicerafar.png",
+      "sha256": "bac2e964c1106f9f4fbed4220d6074f25e7daa9f24e4ad6815772c82cff604d1"
+    },
+    {
+      "name": "cheliceranear.png",
+      "path": "parts/cheliceranear.png",
+      "sha256": "0e70945eba0db3e7697aa622e8e4528d80e00024426fedef96eafe3b0d95622f"
+    },
+    {
+      "name": "leg1farfoot.png",
+      "path": "parts/leg1farfoot.png",
+      "sha256": "0d55c6f1bc12a9817d664e6e57ecee830e32e83255c7d3b3272c0f308fcf86c3"
+    },
+    {
+      "name": "leg1farknee.png",
+      "path": "parts/leg1farknee.png",
+      "sha256": "8943aa4c3eb9c7c5f616010fe72e764ceadf3ac8cb745d2c497bd9b1987d063a"
+    },
+    {
+      "name": "leg1nearfoot.png",
+      "path": "parts/leg1nearfoot.png",
+      "sha256": "d9072c1bcd8c22d5bc7d290ab32dbdf0835ce68513f92a786aec5a7135fb006f"
+    },
+    {
+      "name": "leg1nearknee.png",
+      "path": "parts/leg1nearknee.png",
+      "sha256": "d95dffe49ebed3733c134ee174f0f93764e8f567f4769efa6f78005c4b2bfc39"
+    },
+    {
+      "name": "leg2farfoot.png",
+      "path": "parts/leg2farfoot.png",
+      "sha256": "df017498f01772cb87af744ee00f8dea77ecb8faeba2a79d5b16eda968b08d70"
+    },
+    {
+      "name": "leg2farknee.png",
+      "path": "parts/leg2farknee.png",
+      "sha256": "160b0813829729e7309ec8c10fe904a2987e096ca5af9d924e8a8f5898a92c94"
+    },
+    {
+      "name": "leg2nearfoot.png",
+      "path": "parts/leg2nearfoot.png",
+      "sha256": "343c91d90180dc21a69d545ccc431d51f62a9fa52664f85045630b8b29dab352"
+    },
+    {
+      "name": "leg2nearknee.png",
+      "path": "parts/leg2nearknee.png",
+      "sha256": "d81fe8c938d3ed6e48732b25bfcef18cfd07b6d3598035f8dd984d22210ff5d4"
+    },
+    {
+      "name": "leg3farfoot.png",
+      "path": "parts/leg3farfoot.png",
+      "sha256": "429e7427b2393a019b1c9d173e78917dc0d819543237ee9fef6dbef5107c604c"
+    },
+    {
+      "name": "leg3farknee.png",
+      "path": "parts/leg3farknee.png",
+      "sha256": "5888504c00e140429d3121902cb43b6227c95b10ab003f382f1ff51b554e5db1"
+    },
+    {
+      "name": "leg3nearfoot.png",
+      "path": "parts/leg3nearfoot.png",
+      "sha256": "bc55627d586b5bccf0b48cd391581b4b04607abc9854a1c63d10d1f9c50c6392"
+    },
+    {
+      "name": "leg3nearknee.png",
+      "path": "parts/leg3nearknee.png",
+      "sha256": "e24a3f253909b896d76ee6db968cc727062b953ea0480a14a5c984aac2ed7252"
+    },
+    {
+      "name": "leg4farfoot.png",
+      "path": "parts/leg4farfoot.png",
+      "sha256": "6242298cda35947d434e1bd373d8b76494ed953d30d1b5b272bfd71748071e98"
+    },
+    {
+      "name": "leg4farknee.png",
+      "path": "parts/leg4farknee.png",
+      "sha256": "41d3de88ac877489abce7b7ae7fb4d0d39e19d44a0b9bb2ffd6bc51611bcc757"
+    },
+    {
+      "name": "leg4nearfoot.png",
+      "path": "parts/leg4nearfoot.png",
+      "sha256": "2f7bd40794e935e69edf8e0958516b3812abb797111ae7aeef1f9cce08ea35f4"
+    },
+    {
+      "name": "leg4nearknee.png",
+      "path": "parts/leg4nearknee.png",
+      "sha256": "04acbf1b6382ce23fde6116c64e465e31ef378e3dc6422f90b7242b38b6b5c5a"
+    },
+    {
+      "name": "abdomen.png",
+      "path": "parts/abdomen.png",
+      "sha256": "1b820da004768f2e4b8e2414cf10fd6b24fc516bbb89c5884c6b75f31aa900c7"
+    }
+  ]
+}

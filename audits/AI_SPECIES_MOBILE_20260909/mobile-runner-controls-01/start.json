@@ -1,0 +1,34 @@
+{
+  "commands": [
+    [
+      "node",
+      "tools/with-toolchain-lock.mjs",
+      "--label",
+      "mobile-runner-controls-01",
+      "--",
+      "node",
+      "--test",
+      "tools/local-image-generation/run-mobile-model-delivery.test.mjs"
+    ],
+    [
+      "node",
+      "--check",
+      "tools/local-image-generation/run-mobile-model-delivery.mjs"
+    ]
+  ],
+  "sources": [
+    {
+      "path": "tools/local-image-generation/run-mobile-model-delivery.mjs",
+      "sha256": "4d6b0c9bae005263807c2a5cf64a02e37fdb06a58caf41aa47475ebfd16e354f"
+    },
+    {
+      "path": "tools/local-image-generation/run-mobile-model-delivery.test.mjs",
+      "sha256": "bfb5b704cc490cd87f87a8154f97ac62a5d7ff81392605b8c97b7a400644dfee"
+    },
+    {
+      "path": "tools/local-image-generation/native-model-mirror.mjs",
+      "sha256": "3e34cf10f726c97852f2b08c3d594ba95bdda95f3c9eda40ea12cfadbd56874e"
+    }
+  ],
+  "startedAt": "2026-09-09T16:52:10.289036+00:00"
+}

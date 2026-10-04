@@ -1,0 +1,10 @@
+[
+  {
+    "id": "01-robin",
+    "exitCode": 0
+  },
+  {
+    "id": "02-pigeon",
+    "exitCode": 1
+  }
+]

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+	<key>PayloadIdentifier</key>
+	<string>game.celestialfrontier.local-probe.20260912</string>
+	<key>PayloadUUID</key>
+	<string>3F15A41A-21F9-4C18-9C02-ACFB5E619BB6</string>
+	<key>PayloadDisplayName</key>
+	<string>CF Local Probe 20260912</string>
+	<key>PayloadDescription</key>
+	<string>Temporary local HTTPS test certificate for Celestial Frontier at 192.168.1.62. Remove this profile after the phone probe. Contains one public certificate only.</string>
+	<key>PayloadOrganization</key>
+	<string>Celestial Frontier Local Test</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadType</key>
+			<string>com.apple.security.root</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>PayloadIdentifier</key>
+			<string>game.celestialfrontier.local-probe.20260912.root</string>
+			<key>PayloadUUID</key>
+			<string>919A8969-485E-4B07-9607-972D86473DF3</string>
+			<key>PayloadDisplayName</key>
+			<string>CF Local Probe 20260912</string>
+			<key>PayloadCertificateFileName</key>
+			<string>cf-local-probe-20260912.cer</string>
+			<key>PayloadContent</key>
+			<data>
+			MIIDujCCAqKgAwIBAgIUKCfgZ5KP5KI4AdBeN9+ktr0nNCIwDQYJ
+			KoZIhvcNAQELBQAwSjEgMB4GA1UEAwwXQ0YgTG9jYWwgUHJvYmUg
+			MjAyNjA5MTIxJjAkBgNVBAoMHUNlbGVzdGlhbCBGcm9udGllciBM
+			b2NhbCBUZXN0MB4XDTI2MDkxMjIyNTk1NFoXDTI2MDkxNDIyNTk1
+			NFowSjEgMB4GA1UEAwwXQ0YgTG9jYWwgUHJvYmUgMjAyNjA5MTIx
+			JjAkBgNVBAoMHUNlbGVzdGlhbCBGcm9udGllciBMb2NhbCBUZXN0
+			MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvZINWW07
+			APkjjYthOVjmJYbxIQIDm2qzAN828q+9p6tBdbrekXc1VkvAOkl+
+			ySBb3hmKb2Tsje4YnHbgAS5aiJf/wX26LUxXIlFqgwJ2b/mCxoM4
+			sUVAm9VSQSPDG0OWvHhS/mNMoRPrwhyk1qx0ta252YASOW4OmVUg
+			JMIU0k4Cj9ocpc5rWMDMK7+K87vhREIdc3PkrDknUE7ZJ/ujsv5F
+			4KfbrkFWmnv59+3SHaZ3+p5KKob0TqW41rEA/R8BMsStOIMsBDe2
+			igVUEdcu6pp0+w6heoSOje+KLT0RQkpLZxKbDqd8x9fOA1XL6rAD
+			sbrVW5xanLRKWUMf2x+NdQIDAQABo4GXMIGUMBIGA1UdEwEB/wQI
+			MAYBAf8CAQAwDgYDVR0PAQH/BAQDAgEGMB0GA1UdDgQWBBTdBJ1p
+			d5/+ouLaFVESms9E66/6UDAfBgNVHSMEGDAWgBTdBJ1pd5/+ouLa
+			FVESms9E66/6UDAuBgNVHR4BAf8EJDAioCAwCocIwKgBPv////8w
+			EoIQY2YtcHJvYmUuaW52YWxpZDANBgkqhkiG9w0BAQsFAAOCAQEA
+			VeO8XqIkEiYGIzlW9krz/Kv13Ga6M7F0PcWZKSpY7i3F5Mrx9h0X
+			mlR+USQvTzNQUoFhgujch8H8bgdUU5FW0/yiJZPwxGhesxV2S9WY
+			+BFiIK9PI4sOzr6fugIAR1kQ52rirkb7izQTD5MKlWHKdUMqljVH
+			pnz0byUs5uLZmxS488uFM0oXYNxyMCpOzlmaN9xbOA98hNnUB3TW
+			CknbYOOpb267MyHNS88flsXmqSr6iaXATeEhhsUwp58S/siGGiA5
+			6GolkkNO0Yp4wFh0shRXT7gBQ4J46Ky9ZiTGwmCmD/DBOeTH7VOt
+			myrjfRwBLUx5RUlkOJmWyGYSXq0KQg==
+			</data>
+		</dict>
+	</array>
+</dict>
+</plist>

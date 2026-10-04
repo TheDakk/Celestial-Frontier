@@ -1,0 +1,9 @@
+{
+ "id": "c196framingsuccessors-05-skink-framing-v2",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)"
+ ],
+ "semanticPresence": null
+}

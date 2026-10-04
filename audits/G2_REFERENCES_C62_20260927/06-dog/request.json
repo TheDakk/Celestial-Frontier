@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Dog",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "8c151d672df94179ca9682e907d4c3f03492428e6333ee899daaecbacae48396",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "canid",
+  "authoringCreated": false,
+  "sourceHead": "093f566d833ecf044db9b8a1c15f87d3541f801f",
+  "canonicalPromptSha256": "fdc596f758bfb7852b583c38800b3a12f2a00099b9f368b0608ccdcf5986cef0",
+  "purpose": "Dakk-authorized new hand-authored reference, C62 overnight queue item2",
+  "layoutSupplement": "REFERENCE POSE PRIORITY: spread the four naturally attached legs front-to-back in a quiet long planted stride. Four individually traceable limb shafts, all four paws at one ground level, clear background gaps between near and far legs through their full exposed length. Do not place one foreleg or hindleg directly over its partner."
+}

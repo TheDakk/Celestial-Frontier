@@ -1,0 +1,28 @@
+{
+  "name": "Caiman",
+  "masterSha256": "c354ffbeb27e5b7bfa9c120e5685be5b780cda8f9baec704230e228a04ffe8ec",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: complete connected side-on caiman, four visible foot endpoints, broad closed snout and rows of dorsal scutes. The far proximal limbs are partially occluded; no all-visible anatomy claim. Tail and snout are inside canvas but side margins appear below the requested 8 percent; retain framing hold if measured. Subject is larger than the requested half-canvas composition.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 56,
+      "y0": 498,
+      "x1": 1198,
+      "y1": 761
+    },
+    "margins": {
+      "left": 56,
+      "right": 55,
+      "top": 498,
+      "bottom": 492
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

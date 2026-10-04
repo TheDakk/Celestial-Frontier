@@ -1,0 +1,142 @@
+{
+  "schema": "cf.c132-theme-delivery/v1",
+  "theme": "psionic",
+  "status": "MECHANICAL_PASS_REVIEW_REQUIRED",
+  "integrationCandidate": true,
+  "qualityAccepted": false,
+  "nativeProof": "DEFERRED_AFTER_C12_CAPTURE_FAILURE",
+  "abilityId": "mspike",
+  "abilityName": "Mind Spike",
+  "material": "concentric ripples, warped air, snap ring",
+  "accent": "#ff9fe0",
+  "anchors": "psionic/final/anchors.json",
+  "anchorsSha256": "377a235f92becbe6ba2e887dbb2f2fdd9a6a165a1d0bdafca2a9847aba18a5bb",
+  "reviewSheet": "psionic/final/review-sheet.png",
+  "images": [
+    {
+      "phase": "launch",
+      "image": "psionic/final/registered/launch.png",
+      "imageSha256": "993e9adaa07f0ed351018c88ea8dcee203392413c618f72072643ecc1e42f6e5",
+      "master": "psionic/launch-neutral-master.png",
+      "masterSha256": "2611f1240304eddf0bdcc91fd4ae377b045cf7050fcb208a63987b4b67feb047",
+      "prompt": "psionic/launch-neutral.prompt.txt",
+      "promptSha256": "a761b61486d54649e4b555c64ceda214229c214f68c449913c37f116a06b2302",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 146,
+        "y": 440,
+        "width": 257,
+        "height": 245
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "psionic/final/registered/travel.png",
+      "imageSha256": "27233e950914e65f7c62937d7ea649f512b7474b3806ba44de2809ef68f7bee5",
+      "master": "psionic/travel-neutral-master.png",
+      "masterSha256": "e2dc7e02a1d6135b4a76868c2d3e353e293a3dc95109bc12c556b6af2896d618",
+      "prompt": "psionic/travel-neutral.prompt.txt",
+      "promptSha256": "d614e8daffa86c0c0e2d10a2a59be53a08ad728519eb3b53e5ef64a8ee66617c",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 119,
+        "y": 400,
+        "width": 679,
+        "height": 318
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "psionic/final/registered/impact.png",
+      "imageSha256": "9d3b74bb6bcfb48264416d36c7b7dfa6b7384a471cbb13a141958ad24219335a",
+      "master": "psionic/impact-neutral-master.png",
+      "masterSha256": "b23b5a23f7d7f201cb9a55e77b0c2827720fc1bed5f8b571ee7e9091506b250a",
+      "prompt": "psionic/impact-neutral.prompt.txt",
+      "promptSha256": "71907d0d7252e4190cd525b69ab0d1588070d0b51fe31b6a7fcdd9c3ee6a755b",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 574,
+        "y": 406,
+        "width": 325,
+        "height": 311
+      }
+    }
+  ],
+  "mechanicalValidation": {
+    "anchors": "audits/C132_EFFECTS_20261001/psionic/final/anchors.json",
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "psionic",
+    "sequenceId": "psionic-c132-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 160,
+    "phases": {
+      "launch": {
+        "painted": 21739,
+        "edge": 10052,
+        "fringe": 0,
+        "fringeRatio": 0,
+        "accentShare": 0.0009496074955684983,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 146,
+          "y": 440,
+          "width": 257,
+          "height": 245
+        }
+      },
+      "travel": {
+        "painted": 67562,
+        "edge": 20652,
+        "fringe": 63,
+        "fringeRatio": 0.00305055200464846,
+        "accentShare": 0.00017663163472577938,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 119,
+          "y": 400,
+          "width": 679,
+          "height": 318
+        }
+      },
+      "impact": {
+        "painted": 32767,
+        "edge": 13784,
+        "fringe": 46,
+        "fringeRatio": 0.003337202553685432,
+        "accentShare": 0,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 574,
+          "y": 406,
+          "width": 325,
+          "height": 311
+        }
+      }
+    }
+  },
+  "officialCandidateTest": {
+    "theme": "psionic",
+    "anchors": "audits/C132_EFFECTS_20261001/psionic/final/anchors.json",
+    "exitCode": 0,
+    "log": "tests/psionic.txt"
+  },
+  "manifestRow": {
+    "theme": "psionic",
+    "anchors": "../C132_EFFECTS_20261001/psionic/final/anchors.json",
+    "contract": "v4.3"
+  }
+}

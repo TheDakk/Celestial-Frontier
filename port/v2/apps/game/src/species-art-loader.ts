@@ -2,6 +2,8 @@
    producer. The broker is cheap and safe at boot; the sealed Worker graph is
    constructed only after a real owner exists AND the app explicitly activates
    background work after its first serviced turn. */
+import { PaintedCardSource, paintedPortraitRequest, paintedThumbLease, type PaintedCardOwnershipV1 } from './morph/painted-card-source.js';
+import { speciesVisualKey } from '@cf/art/species-identity';
 import {
   SpeciesArtBroker,
   type Portrait440,
@@ -156,11 +158,17 @@ export interface SpeciesArtWorkerLike {
   terminate(): void;
   addEventListener(type: 'message', listener: (event: MessageEvent<unknown>) => void): void;
   addEventListener(type: 'error' | 'messageerror', listener: (event: Event) => void): void;
+  removeEventListener(type: 'message', listener: (event: MessageEvent<unknown>) => void): void;
+  removeEventListener(type: 'error' | 'messageerror', listener: (event: Event) => void): void;
 }
 
 export type SpeciesArtWorkerFactory = () => SpeciesArtWorkerLike;
 
 export interface SpeciesArtLoaderOptions {
+  /** The painted individual on the card (morph system, Dakk 2026-09-22 option 3): asked first for every thumb and
+   * portrait; answers for every genome a painting draws — its own archetype or its painted stand-in (Dakk 2026-09-24,
+   * painted-stand-in.ts) — and the painter tier answers the rest. */
+  readonly paintedCards?: PaintedCardSource;
   readonly createProducer?: SpeciesArtProducerFactory;
   readonly workerFactory?: SpeciesArtWorkerFactory;
   readonly createThumbObjectUrl?: (dataUrl: string) => string;
@@ -310,6 +318,8 @@ function createWorkerProducer(
     if (disposed) return;
     const error = workerError(value);
     disposed = true;
+    pending = null;
+    detachListeners();
     try { worker.terminate(); } catch { /* ownership is already revoked */ }
     onFatal(error, trustedWorkerError);
     sink.fatal(error);
@@ -335,7 +345,7 @@ function createWorkerProducer(
     }));
   };
 
-  worker.addEventListener('message', (event) => {
+  const onMessage = (event: MessageEvent<unknown>): void => {
     if (disposed || !validSpeciesArtWorkerResponse(event.data)
       || !speciesArtWorkerIdentityMatches(event.data, identity)) {
       onProtocolError();
@@ -447,9 +457,16 @@ function createWorkerProducer(
     });
     onResult(response);
     sink.result(result);
-  });
-  worker.addEventListener('error', (event) => terminateFatal(event));
-  worker.addEventListener('messageerror', (event) => terminateFatal(event));
+  };
+  const onError = (event: Event): void => terminateFatal(event);
+  const detachListeners = (): void => {
+    worker.removeEventListener('message', onMessage);
+    worker.removeEventListener('error', onError);
+    worker.removeEventListener('messageerror', onError);
+  };
+  worker.addEventListener('message', onMessage);
+  worker.addEventListener('error', onError);
+  worker.addEventListener('messageerror', onError);
   worker.postMessage(Object.freeze({
     schema: SPECIES_ART_WORKER_REQUEST_SCHEMA,
     type: 'init' as const,
@@ -471,6 +488,7 @@ function createWorkerProducer(
       if (disposed) return;
       disposed = true;
       pending = null;
+      detachListeners();
       worker.terminate();
     },
   });
@@ -480,8 +498,13 @@ function createWorkerProducer(
  * but no Worker is created until both an owner and explicit activation exist. */
 export class SpeciesArtLoader {
   private readonly broker: SpeciesArtBroker;
+  private readonly paintedCards: PaintedCardSource | null;
+  private paintedThumbs0 = 0; private paintedPortraits0 = 0;
+  /** Painted-card answers so far (thumbs, portraits) — the painter tier served the rest. */
+  paintedCardCounts(): Readonly<{ thumbs: number; portraits: number }> { return Object.freeze({ thumbs: this.paintedThumbs0, portraits: this.paintedPortraits0 }); }
   private readonly workerFactory: SpeciesArtWorkerFactory;
   private readonly releaseDeviceClassChange: () => void;
+  private readonly releasePaintedResources: () => void;
   private disposed = false;
   private state0: SpeciesArtLazyState = 'idle';
   private importStarts0 = 0;
@@ -526,6 +549,7 @@ export class SpeciesArtLoader {
     options: SpeciesArtLoaderOptions = {},
   ) {
     if (!documentToken) throw new TypeError('species art document token must be non-empty');
+    this.paintedCards = options.paintedCards ?? null;
     const createThumbObjectUrl = options.createThumbObjectUrl ?? defaultCreateThumbObjectUrl;
     const revokeThumbObjectUrl = options.revokeThumbObjectUrl ?? defaultRevokeThumbObjectUrl;
     if (typeof createThumbObjectUrl !== 'function' || typeof revokeThumbObjectUrl !== 'function') {
@@ -641,12 +665,18 @@ export class SpeciesArtLoader {
       };
     this.broker = new SpeciesArtBroker({
       createProducer,
+      externalThumbResources: () => {
+        const p = this.paintedCards?.ownership(), t = p?.byKind.thumb;
+        return { entries: t?.entries ?? 0, decodedPixels: t?.decodedPixels ?? 0,
+          decodedBytes: (t?.decodedPixels ?? 0) * 4 + (p?.residentArchetypes.bytes ?? 0), encodedBytes: t?.dataUrlBytes ?? 0 };
+      },
       disposeAsset: (asset) => {
         if (asset.url.startsWith('blob:')) revokeThumbObjectUrl(asset.url);
       },
       getDeviceClass: options.getDeviceClass ?? defaultDeviceClass,
       scheduleTask: options.scheduleTask ?? defaultScheduleTask,
     });
+    this.releasePaintedResources = this.paintedCards?.subscribeResources(() => this.broker.refreshDeviceClass()) ?? (() => {});
     const subscribeDeviceClassChange = options.subscribeDeviceClassChange
       ?? (options.getDeviceClass ? null : defaultSubscribeDeviceClassChange);
     try {
@@ -691,10 +721,17 @@ export class SpeciesArtLoader {
     }) : null;
   }
 
+  /** The painted card path's ownership (a SIBLING of artDiagnostics: never merged into the broker's inventory); null when unused. */
+  paintedDiagnostics(): PaintedCardOwnershipV1 | null { return this.paintedCards && this.paintedThumbs0 + this.paintedPortraits0 > 0 ? this.paintedCards.ownership() : null; }
+
   activate(): void { this.broker.activate(); }
 
   leaseThumb(genome: Record<string, unknown>): ThumbLease {
     this.requested = true;
+    const painted = this.paintedCards?.card(genome, 'thumb');
+    if (painted) { this.paintedThumbs0++; const key = speciesVisualKey(genome), close = this.paintedCards!.openLease('thumb', key);
+      const lease = paintedThumbLease(key, painted, (a): Thumb132 => ({ key: a.key as SpeciesVisualKey, url: a.url, width: 132, height: 132, encodedBytes: a.encodedBytes, decodedPixels: a.decodedPixels }));
+      return { key: lease.key, get current() { return lease.current; }, subscribe: (l) => lease.subscribe(l), release: () => { lease.release(); close(); } } as ThumbLease; }
     return this.broker.leaseThumb(genome);
   }
 
@@ -704,12 +741,17 @@ export class SpeciesArtLoader {
     listener: PortraitListener,
   ): PortraitRequest {
     this.requested = true;
+    const painted = this.paintedCards?.card(genome, 'portrait');
+    if (painted) { this.paintedPortraits0++; const key = speciesVisualKey(genome), close = this.paintedCards!.openLease('portrait', key);
+      const req = paintedPortraitRequest(key, painted, (a): Portrait440 => ({ key: a.key as SpeciesVisualKey, url: a.url, width: 440, height: 440, encodedBytes: a.encodedBytes, decodedPixels: a.decodedPixels }), (asset, error) => { close(); listener(asset as Portrait440, error); });
+      return { key: req.key, get current() { return req.current; }, cancel: () => { req.cancel(); close(); } } as PortraitRequest; }
     return this.broker.requestPortrait(owner, genome, listener);
   }
 
   releaseUnownedCachedArt(
     options: SpeciesArtUnownedCacheReleaseOptions = {},
   ): SpeciesArtUnownedCacheReleaseV1 {
+    this.paintedCards?.releaseUnowned(); // the painted path's unleased cards go too (reported in paintedDiagnostics().totals)
     return this.broker.releaseUnownedCachedArt(options);
   }
 
@@ -732,6 +774,7 @@ export class SpeciesArtLoader {
     if (this.disposed) return;
     this.disposed = true;
     this.releaseDeviceClassChange();
+    this.releasePaintedResources();
     this.broker.dispose(reason);
   }
 }

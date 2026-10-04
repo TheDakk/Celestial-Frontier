@@ -1,0 +1,129 @@
+{
+  "schema": "cf.c202-actual-rig-software-review/v1",
+  "status": "PASS_OFFLINE",
+  "scope": "Actual loaded CreatureRig positions equal independent publication; source-size software rendering only, no native or GPU acceptance",
+  "rows": [
+    {
+      "action": "faint",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 17,
+      "image": "faint-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 142.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 640.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 17,
+      "image": "faint-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 712,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 17,
+      "image": "faint-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 142.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "victory",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 17,
+      "image": "victory-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "victory",
+      "ms": 158.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "victory-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "victory",
+      "ms": 712.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 17,
+      "image": "victory-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "victory",
+      "ms": 792,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 17,
+      "image": "victory-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "victory",
+      "ms": 158.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "victory-0p2.png",
+      "publishedPartParity": "byte-exact"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C208_REPAIRS_20261004/inputs/18-sparrow/fit/record.json",
+      "sha256": "f7fb60088f536c7048f93848d953b7b47e2677cd8a67c78ce245d5e5ca14833d"
+    },
+    {
+      "path": "audits/C208_REPAIRS_20261004/inputs/18-sparrow/fit/binding.json",
+      "sha256": "8bf4a2128a4fd77e1bc86bbff7983ba95c7222245197a8d6c2e716ed5334b3a0"
+    },
+    {
+      "path": "audits/C208_REPAIRS_20261004/inputs/18-sparrow/fit/parts/atlas/18-sparrow.png",
+      "sha256": "3412b2677468696a3aa3d211208fe7b0b6445e4811f203d6ee8e0dab4effb0db"
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/18-sparrow/packet/master.png",
+      "sha256": "97fa381cee47b59f2e3646274b31a75e55eda9502276ff91bad442d6afa35599"
+    },
+    {
+      "path": "audits/C208_REPAIRS_20261004/review-rig.mjs",
+      "sha256": "49472545af39795bca22c8c6217160fb34e6d5f869e8cf54b1dee61e387ead3b"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

@@ -1,0 +1,11 @@
+{
+ "id": "06-anole",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-far-root (hindFarRoot) covers 0% paint (reference 100%)",
+  "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 10%)",
+  "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 2.2%)"
+ ],
+ "semanticPresence": null
+}

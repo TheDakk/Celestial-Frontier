@@ -1,0 +1,5 @@
+{
+  "command": "node audits/C173_ALL_PAIRS_20261002/prepare-v2.mjs audits/C173_ALL_PAIRS_20261002/prepared-0727fe9c",
+  "exitCode": 0,
+  "durationSeconds": 3.686
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "static",
+  "id": "08-prawn-opaque",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/fit01",
+    "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/static-01.json"
+  ],
+  "helperSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/static-01.log",
+  "logSha256": "58776b313d9b804faa256e7620493daf71699e7fecde5abcd2b55732c6118df7",
+  "nativeRuns": 0
+}

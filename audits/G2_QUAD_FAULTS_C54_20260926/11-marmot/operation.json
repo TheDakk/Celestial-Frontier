@@ -1,0 +1,49 @@
+{
+  "sourcePacket": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/11-marmot/packet",
+  "sourceMasterSha256": "9921ec0d37bc5a3b6faef946500c38563ec513454e2281436c097a25235b13dc",
+  "sourceAuthorSha256": "2182a886a1f253714dcfd5db779931b91f83224fe39696650df4b7428a1112c5",
+  "moves": [
+    {
+      "joint": "hindFarRoot",
+      "from": [
+        529.5,
+        674.1
+      ],
+      "to": [
+        606.5,
+        674.5
+      ],
+      "fromOwner": "hind-near-root",
+      "toOwner": "hind-far-root",
+      "distancePx": 77.0010389540297
+    },
+    {
+      "joint": "hindFarKnee",
+      "from": [
+        467,
+        779.9
+      ],
+      "to": [
+        495.5,
+        844.5
+      ],
+      "fromOwner": "hind-near-knee",
+      "toOwner": "hind-far-knee",
+      "distancePx": 70.6074358690358
+    },
+    {
+      "joint": "hindNearAnkle",
+      "from": [
+        309,
+        885.5
+      ],
+      "to": [
+        310.5,
+        885.5
+      ],
+      "fromOwner": "spine",
+      "toOwner": "hind-near-ankle",
+      "distancePx": 1.5
+    }
+  ]
+}

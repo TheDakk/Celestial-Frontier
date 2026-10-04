@@ -1,0 +1,27 @@
+{
+  "schema": "cf.reviewed-optional-absence/v1",
+  "name": "Hyrax",
+  "family": "quadruped",
+  "masterSha256": "214a7761aa7d238e2b17e2f80093b2bc0eb3910661a98944ec714c6cc827274d",
+  "subjectSha256": "7dc630e24e10a2ff091ccd26d277de6e405bee8bee90b34a65f07dbcffc81709",
+  "promptSha256": "122433e79aa869af54777625dbf3047474609de963fcd489380186dbe5e479b2",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "standing-stride-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "The rounded rump has no exposed elongated tail or tail tip; a small rump contour/nub remains body paint. Four complete feet and both ears are visible. Intended adult side-on stride is bound to the exact generated request. No hidden tail pixels are invented.",
+    "decisions": [
+      {
+        "group": "tail",
+        "decision": "ABSENT",
+        "canonicalFeature": "tailless rounded guinea-pig-like body",
+        "paintingObservation": "No articulated external tail is depicted; the rump silhouette is continuous."
+      }
+    ]
+  },
+  "scope": "Only this exact master, canonical subject, prompt and reviewed adult pose. Not a species blanket, reference inheritance or visual admission."
+}

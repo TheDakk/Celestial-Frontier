@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c198-reference-source-hold/v1",
+  "id": "05-diving-beetle-source-hold",
+  "status": "SOURCE_ANATOMY_HOLD",
+  "source": "audits/C198_CREATURE_SUPPLY_B_20261003/05-diving-beetle/master.png",
+  "sourceSha256": "6f3da86ce3c091314bc65ed2ef1131fe6012916024a78f9421da51e0dabe810c",
+  "boundSourcePacket": {
+    "request.json": "fd6b11f235c544b5365866bf32bb41b3ef87d424647e5300da01621fe3839d7c",
+    "master.png": "6f3da86ce3c091314bc65ed2ef1131fe6012916024a78f9421da51e0dabe810c",
+    "prompt.txt": "7e8c7cf8631c166eb5c872688d3ff53606f6a16dbee8d33a7f058cd5e64f4c44",
+    "subject-source.json": "dd9bfb7716d5f07c7b40165977bd5b65b2e90430a4f4463b9af14d2caeeb153f",
+    "generation.json": "9a3521410d73f7a5d46ec356bd335b5760b3fb44d4febb8323f2159be26e0a9e"
+  },
+  "fullSizeInspected": true,
+  "findings": [
+    "Two broad rear paddling legs and three other distal walking-leg paths are clearly visible, totaling five independently traceable endpoints.",
+    "The sixth thoracic chain remains hidden or unresolved. No missing leg, knee or contact endpoint has been invented.",
+    "Closed elytra are visible. No exposed flight-wing surface is claimed. A dorsal source with three separately visible legs per side has been requested as a separate successor."
+  ],
+  "authoringAttempted": false,
+  "reason": "Mandatory source-visible anatomy is unresolved; no hidden or absent declaration is substituted.",
+  "pixelsChanged": 0,
+  "presenceInvented": false,
+  "qualityAccepted": false,
+  "native": false
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "cf.art-review-plan/v1",
+  "note": "Existing accepted first-batch inventory in the earlier audit order; not a new library generation plan or system card.",
+  "slots": [
+    {
+      "sourceKey": "civet",
+      "kind": "cutout"
+    },
+    {
+      "sourceKey": "cranberry",
+      "kind": "cutout"
+    },
+    {
+      "sourceKey": "devils-club",
+      "kind": "cutout"
+    },
+    {
+      "sourceKey": "earth-temperate",
+      "kind": "plate"
+    },
+    {
+      "sourceKey": "family-bird",
+      "kind": "cutout"
+    },
+    {
+      "sourceKey": "family-fish",
+      "kind": "cutout"
+    },
+    {
+      "sourceKey": "family-insect",
+      "kind": "cutout"
+    },
+    {
+      "sourceKey": "family-mammal-quadruped",
+      "kind": "cutout"
+    },
+    {
+      "sourceKey": "family-reptile",
+      "kind": "cutout"
+    },
+    {
+      "sourceKey": "frog",
+      "kind": "cutout"
+    },
+    {
+      "sourceKey": "persimmon",
+      "kind": "cutout"
+    },
+    {
+      "sourceKey": "platypus",
+      "kind": "cutout"
+    }
+  ]
+}

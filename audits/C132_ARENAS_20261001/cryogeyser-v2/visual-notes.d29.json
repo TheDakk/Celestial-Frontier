@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "cryogeyser-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-composed-review.png"
+  ],
+  "findings": [
+    "Full-size 1672×941 composite inspected. Cold blue mineral ice, distant vapor columns and irregular rocky ice shelves distinguish the cryogeyser environment; the central lower lane remains clear.",
+    "The targeted FAR removes both unbound celestial bodies; the targeted MID removes all visible vapor from the magenta field while the opaque FAR retains atmospheric plumes. The original master triplet remains unchanged under cryogeyser/.",
+    "The MID ice shelf is brighter and more cyan than the FAR ground, and repeated terrain bands remain visible. NEAR edges and pale vegetation tips still show scattered color remnants and create a foreground texture seam. These are visual holds.",
+    "Geyser atmosphere is static painted FAR content; no dynamic geyser effect, contact proof, habitat routing or native parallax is demonstrated. No quality acceptance is claimed."
+  ]
+}

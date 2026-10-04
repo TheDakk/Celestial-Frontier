@@ -1,0 +1,176 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "glass-v3",
+  "biome": "glass",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "glass"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "glass"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "glass"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-far.generation.json",
+      "sha256": "558479b311fe516a4f3876a33547f7e90466060928d6eee718ffad4f8de1386d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-mid.generation.json",
+      "sha256": "c2ef203779457a5e75fc84062910ef8d1a8406bcd78ab719df4b85441fa96757"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-near.generation.json",
+      "sha256": "805519888decd5de616bbe1af953a34a551c9f094ea7088f68a35ee03c774091"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-composed-review.png",
+      "sha256": "2f958c3aacf1aaf82e3f2d0c13e7f083ec2dba289c565b4124c2ed473b14a0e0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-far.png",
+      "sha256": "b6bd686b1b198470fca53f27804640f1b928a868c3dab114805b8f71af388d07"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-mid.png",
+      "sha256": "15de877b6c21a1da04678350c954c2fe268f4d318396a93f95b85d7ccb66d046"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-near.png",
+      "sha256": "1aa29aee05fb5374e9166d781537f0b8acb636a47212a47bde48024356014b00"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/visual-notes.d29.json",
+      "sha256": "57f310649ceff61a6cbda5d8eddcf63486ffffc2a4363d7dba0e1b8e472c99af"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-manifest.json",
+      "sha256": "2426158f5f2e5f355edd2708bfee5d76d8be3753fedfbcfe07bf795ba5126858"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-recipe.json",
+      "sha256": "5a5f7fbc409bb29356f085e21d869b361a5a97f276d498b394c1405dc2e30411"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-far.generation.json",
+      "sha256": "558479b311fe516a4f3876a33547f7e90466060928d6eee718ffad4f8de1386d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v2/arena-far.prompt.txt",
+      "sha256": "380db829fde0e53696ab17c6a8a5ff8364cffc9c0513aae4a646f547a6efdefc"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v2/arena-far.png",
+      "sha256": "b6bd686b1b198470fca53f27804640f1b928a868c3dab114805b8f71af388d07"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-mid.generation.json",
+      "sha256": "c2ef203779457a5e75fc84062910ef8d1a8406bcd78ab719df4b85441fa96757"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass/arena-mid.prompt.txt",
+      "sha256": "75c9622cad525013fea12a4d0ac740cbfdd99596692f28c67ad1adeb1a2741ee"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass/arena-mid.png",
+      "sha256": "15de877b6c21a1da04678350c954c2fe268f4d318396a93f95b85d7ccb66d046"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/keyed/arena-mid.png",
+      "sha256": "8e081554b22fdfa2944a86532e66835aea7377c9cbd1147d582a8dc5584dc813"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-near.generation.json",
+      "sha256": "805519888decd5de616bbe1af953a34a551c9f094ea7088f68a35ee03c774091"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-near.prompt.txt",
+      "sha256": "03649efdb13a141c00a3bf6f66b827da1b73249f26258c2a6be4da6476c70b46"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/glass-v3/keyed/arena-near.png",
+      "sha256": "e1ae66d0e3748461810e950a6da4fce24f9d8ce73195ebd21b9dab5d456262c8"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/glass-v3/visual-notes.d29.json",
+    "findings": [
+      "Full-size source and composition inspection: selected FAR, MID and the single new NEAR are each native 1672 by 941. The predecessor canvas refusal is resolved without crop, resize, padding or upscale.",
+      "The selected FAR has an empty clouded blue sky without the predecessor celestial bodies. Large glass formations stay to the sides or behind the quiet fighting floor; no animals, lettering or labels are visible.",
+      "The actual Boulder reference preserves a low NEAR contour and clear fighting line. The Glass successor adds restrained amber mineral chips, but its foreground still reads primarily as granular rocky sand. Independent scoring must judge whether its Glass material identity is sufficiently distinct.",
+      "A conspicuous nearly horizontal NEAR boundary remains around y=0.87, with different grain scale and warm brightness across the MID-to-NEAR join. This is a visual hold despite mechanically clear stands.",
+      "Some thin MID ridge contours retain green-tinted edge traces near the left-of-center horizon and side glass edges. Key/despill metrics do not establish that these are visually acceptable.",
+      "MID includes its own distant low ridge band in front of the FAR landscape. The combined geometry and detailed floor still require independent full-size review, fighter readability and live parallax proof.",
+      "Only static full-size paintings were inspected. No native film, performance, device qualification, runtime registration, acceptance or product delivery is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

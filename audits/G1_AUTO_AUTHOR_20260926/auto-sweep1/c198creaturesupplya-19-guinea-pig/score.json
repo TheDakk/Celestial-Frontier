@@ -1,0 +1,9 @@
+{
+ "id": "c198creaturesupplya-19-guinea-pig",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 30% paint (reference 88%)"
+ ],
+ "semanticPresence": null
+}

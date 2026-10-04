@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Vine Snake",
+  "masterSha256": "4df561a87ecfe77a4d394ec4a4a63b6754196b804979d6559df1a16b82a5b6c3",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

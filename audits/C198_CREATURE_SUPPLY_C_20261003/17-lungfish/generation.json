@@ -1,0 +1,14 @@
+{
+  "id": "17-lungfish",
+  "name": "Lungfish",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-072c3ffb-efd6-451d-93a4-3a10c500e245.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "47b577b53ae7973fd5f423c27230b5c3145ccb0775f7db350d6f1e07373f0fee",
+  "bytes": 1166054,
+  "promptSha256": "027d1e72a644ead80995e427d420c61b1ceff69dfbf16be430990ec24fc7d1aa",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

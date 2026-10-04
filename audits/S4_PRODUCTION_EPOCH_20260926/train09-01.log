@@ -1,0 +1,5 @@
+{"id":"easy","baselineWins":256,"plannedWins":256,"commandWins":256,"oracleWins":256,"phaseNodes":0,"withdrawnTerminals":0,"swapEdges":0,"planningGapPp":0,"commandEdgePp":0}
+{"id":"normal","baselineWins":132,"plannedWins":160,"commandWins":160,"oracleWins":160,"phaseNodes":0,"withdrawnTerminals":0,"swapEdges":0,"planningGapPp":10.9375,"commandEdgePp":0}
+{"id":"guardian","baselineWins":62,"plannedWins":94,"commandWins":144,"oracleWins":150,"phaseNodes":517,"withdrawnTerminals":1983,"swapEdges":618,"solo":{"v1Wins":42,"phaseWins":35},"planningGapPp":12.5,"commandEdgePp":19.53125}
+{"id":"titan","baselineWins":103,"plannedWins":150,"commandWins":205,"oracleWins":207,"phaseNodes":576,"withdrawnTerminals":2184,"swapEdges":789,"solo":{"v1Wins":17,"phaseWins":11},"planningGapPp":18.359375,"commandEdgePp":21.484375}
+{"status":"RED","findings":["smite: authored trade-off","echo: authored trade-off","thirst: authored trade-off","thorns: authored trade-off","reck: authored trade-off"]}

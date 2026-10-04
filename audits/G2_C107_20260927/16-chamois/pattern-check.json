@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Chamois",
+  "masterSha256": "b89c8bb84eadea00443c3d20351731a494e6f0bf712453cc74bce037972da147",
+  "required": [
+    "black-and-white facial mask stripes"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "black-and-white facial mask stripes",
+      "status": "PRESENT",
+      "observed": "Full original: dark muzzle-to-eye stripes on pale face, hooked black horns, dark dorsal line, pale rump and short dark extended tail, four separate cloven hoof contacts. HOLD far ear partially occluded by horns; no inferred absence."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Impala",
+  "masterSha256": "c44ccc6e081abd0cc9cac9e9027ccde3b0a94f93c54086582797615c65033c51",
+  "required": [
+    "lyre-shaped ringed horns curving out then up",
+    "vertical black stripes down each side of the white rump"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "lyre-shaped ringed horns curving out then up",
+      "status": "PRESENT",
+      "observed": "Full-size native original: four actual hoof endpoints/two forelegs and two hindlegs; former fifth leg is not apparent. Two ringed lyre-shaped horns, black rump-side stripes and hind-hoof tufts present. Near ear is complete; far ear is only a small sliver behind horn/head, not a fully readable ear chain. Upper foreleg roots still partially overlap chest. Real tufted tail is continuous. Four ends are not a claim of completed authoring or static motion."
+    },
+    {
+      "requirement": "vertical black stripes down each side of the white rump",
+      "status": "PRESENT",
+      "observed": "Full-size native original: four actual hoof endpoints/two forelegs and two hindlegs; former fifth leg is not apparent. Two ringed lyre-shaped horns, black rump-side stripes and hind-hoof tufts present. Near ear is complete; far ear is only a small sliver behind horn/head, not a fully readable ear chain. Upper foreleg roots still partially overlap chest. Real tufted tail is continuous. Four ends are not a claim of completed authoring or static motion."
+    }
+  ]
+}

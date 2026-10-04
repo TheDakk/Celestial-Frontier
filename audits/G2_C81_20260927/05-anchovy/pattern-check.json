@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Anchovy",
+  "masterSha256": "6d0edf55957889606fa01673e0f1ab61e7ff9461762ad90870520403e5be14ef",
+  "required": [
+    "bright silver lateral stripe"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "bright silver lateral stripe",
+      "status": "PRESENT",
+      "observed": "Bright silver flank stripe, large forward eye and a long open mouth reaching behind the eye are visible. Complete forked tail and horizontal body. An extra small dorsal nub near the tail and weak snout overhang need identity review; framing is wider than the requested half-canvas specimen."
+    }
+  ]
+}

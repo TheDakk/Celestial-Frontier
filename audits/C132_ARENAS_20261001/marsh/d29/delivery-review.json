@@ -1,0 +1,164 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "marsh",
+  "biome": "marsh",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "marsh"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "marsh"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "marsh"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-far.generation.json",
+      "sha256": "cdbea6b9367df508964b1e08d8deda6f19a818b187fd49f9cc5e43ef8f9f4432"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-mid.generation.json",
+      "sha256": "dc6fe448ca0c4d253094163551eaeae917469b204040c05c696ec1b3623885a5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-near.generation.json",
+      "sha256": "772a2b97bd91d01cb4249c97229e39363b66ee9f789debea860ca7887272e7a4"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-composed-review.png",
+      "sha256": "c8ac4cfde93af016bba4233c6ed33739e318e259b91074139801037c5a40f11e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/visual-notes.d29.json",
+      "sha256": "fd486ff3c0bccffbe672ae5c080a328ba8d78d50a97530c34366b29a5466ffb4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-manifest.json",
+      "sha256": "205beba3d39d6cfbedf4e846713ea7b4ace255e8d083f746a2654bf2e4001c0b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-recipe.json",
+      "sha256": "798f3318bf27eb8b0285c7b9fea5ae45b94c7405a1707c8250597b82f677929e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-far.generation.json",
+      "sha256": "cdbea6b9367df508964b1e08d8deda6f19a818b187fd49f9cc5e43ef8f9f4432"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-far.prompt.txt",
+      "sha256": "13199b8c2d78ac16763c2a15d4528f906a458b89add244fece45802778b28375"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-far.png",
+      "sha256": "3b71863cc02be8fd7a671e74a178c53e5d4e077787708002b2b64e8010c2a989"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-mid.generation.json",
+      "sha256": "dc6fe448ca0c4d253094163551eaeae917469b204040c05c696ec1b3623885a5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-mid.prompt.txt",
+      "sha256": "4dc939a19f3bda62553ec6c4abbcf19b269d5e6c24a41abbfaa1f5d8924c06cd"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-mid.png",
+      "sha256": "d3177d982c9ececcca16851ea897b5adb058a11342a767ed9c626ac53d3ca50d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/keyed/arena-mid.png",
+      "sha256": "7d3867f851cf51e0d1bdd1120d70547c05a995f5dd14b208f3c549687c938a1c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-near.generation.json",
+      "sha256": "772a2b97bd91d01cb4249c97229e39363b66ee9f789debea860ca7887272e7a4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-near.prompt.txt",
+      "sha256": "a67c3725fb32c5a32f4598c1d5d3bcb45e7f19fcd80dbabe70ed0f2b4b871142"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/arena-near.png",
+      "sha256": "c5e74c2de6314d04cabddf8d50df1e730c2361d136e62f8b9f7cc8ca919544ba"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/marsh/keyed/arena-near.png",
+      "sha256": "227d65592e25bbd4e275e68429387489b806911ce6c641590daf3bbbd07fe648"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/marsh/visual-notes.d29.json",
+    "findings": [
+      "Full-size existing 1672×941 composite re-inspected under D29 without altering historical evidence. A wet silt runway is clear between reed beds; distant mountains and haze provide depth.",
+      "The duplicated gray reed/water shelf behind the runway is visibly pasted over a similar FAR shelf. Side reeds retain magenta edge flecks; NEAR foliage and mud textures transition abruptly into the MID.",
+      "D29 removes only the native-size rejection. These seam/fringe/staging findings remain visual holds; no native film, registration or quality acceptance is implied."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

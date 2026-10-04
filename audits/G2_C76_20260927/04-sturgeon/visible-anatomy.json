@@ -1,0 +1,139 @@
+{
+  "id": "04-sturgeon",
+  "name": "Sturgeon",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "27659622bdfc4ac4bab8fd5d577a911a46878f91bb14f42df9ba0213310934fb",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 16863,
+    "coreRadius": 17,
+    "bodyBox": {
+      "x0": 150,
+      "y0": 177,
+      "x1": 403,
+      "y1": 234
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2742,
+        "pixels": 4623,
+        "box": {
+          "x0": 17,
+          "y0": 150,
+          "x1": 149,
+          "y1": 234
+        },
+        "attach": {
+          "x": 149,
+          "y": 207.5,
+          "relX": 0,
+          "relY": 0.54
+        },
+        "dir": {
+          "x": -0.99,
+          "y": -0.12
+        },
+        "class": "rear",
+        "length": 144
+      },
+      {
+        "k": 1,
+        "frac": 0.0581,
+        "pixels": 980,
+        "box": {
+          "x0": 350,
+          "y0": 194,
+          "x1": 402,
+          "y1": 237
+        },
+        "attach": {
+          "x": 355.5,
+          "y": 211,
+          "relX": 0.81,
+          "relY": 0.6
+        },
+        "dir": {
+          "x": 0.96,
+          "y": 0.27
+        },
+        "class": "front",
+        "length": 53.3
+      },
+      {
+        "k": 2,
+        "frac": 0.028,
+        "pixels": 472,
+        "box": {
+          "x0": 143,
+          "y0": 226,
+          "x1": 175,
+          "y1": 249
+        },
+        "attach": {
+          "x": 164.1,
+          "y": 227.9,
+          "relX": 0.06,
+          "relY": 0.89
+        },
+        "dir": {
+          "x": -0.76,
+          "y": 0.65
+        },
+        "class": "limb-down",
+        "length": 29.9
+      },
+      {
+        "k": 3,
+        "frac": 0.0389,
+        "pixels": 656,
+        "box": {
+          "x0": 275,
+          "y0": 235,
+          "x1": 311,
+          "y1": 261
+        },
+        "attach": {
+          "x": 294,
+          "y": 235,
+          "relX": 0.57,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.38,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 32.2
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 277,
+        "x1": 295,
+        "cx": 284.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

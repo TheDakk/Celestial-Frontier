@@ -1,0 +1,77 @@
+{
+  "schema": "cf.c202-octopus-native-ready/v1",
+  "status": "READY_FOR_NATIVE_REVIEW",
+  "fit": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit",
+  "master": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/master.png",
+  "script": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-script.json",
+  "staticActions": 13,
+  "staticActionSamples": 1573,
+  "presentation": {
+    "id": "presentation",
+    "samples": 1110,
+    "attemptedSamples": 1110,
+    "status": "PASS",
+    "maxPaintDriftPx": 0,
+    "maxGapPx": 7.865211930135014e-05,
+    "maxEndpointError": 0,
+    "exactRest": true
+  },
+  "actualLoadedRigParitySamples": 20,
+  "actualLoadedRigRefusals": 0,
+  "changes": [
+    "Eight arms independently hand-authored on exact source04 painting; genuine absence of fins and feeding tentacles.",
+    "Manual contour successors repaired source-painted strips assigned to body.",
+    "Unchanged D28 assigned 2232 remainder fringe pixels, without adding, removing or recoloring any source pixel.",
+    "Named observed mantle/head attachment joined; source, record, atlas and source coordinates unchanged; first notched faint control retained."
+  ],
+  "fullSizeObservations": [
+    "All eight arms remain connected and independently readable in retained jet/lash samples.",
+    "The small mantle/head bright notch in predecessor faint0.9 is closed by the actual observed source join.",
+    "Source and rig remain glossy relative to ideal painted grouping; this is an art scoring hold, not anatomical fabrication.",
+    "Software raster edges are aliased; native film and both stage directions remain unmeasured."
+  ],
+  "qualityAccepted": false,
+  "nativeMeasured": false,
+  "inputs": [
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/record.json",
+      "sha256": "1daf1af73b05d4824268b497559b5134d1d819ab9378111b3afbbd988017ed1b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/binding.json",
+      "sha256": "257802cabeabed20a400f621ee6bf9da9954045b1cee5693ccfa17c60a0ea4b8"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/manifest.json",
+      "sha256": "6dd89779998b2719cf2694263c466e9459e9d449990db3fe1e52cf2809fe639d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/static.json",
+      "sha256": "e0a95b404f526c0f51cb100dcc267be9e4d0acb140e3e86b626e96d155401485"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/review.json",
+      "sha256": "868a0161aea9250eb39cadbb7cd161a02682211dc7404a607f929bdf2318c5bb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/faint-0p9.png",
+      "sha256": "e3d3688921925dd0a1bfb678d6ed19327eff76b8650e14e5515f97d87808c680"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/approach-jet-0p9.png",
+      "sha256": "229d1b02152a2357a0462d2d2dd97d7c833733c92f9197a22c8f1b2e000402f4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/melee-lash-0p9.png",
+      "sha256": "221890b84ef5d5cbe50366e4d9bcecc123671fe8627ce1af7835f826ec843c5e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/master.png",
+      "sha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-script.json",
+      "sha256": "35cc874a73117e520d31a97c508f2bf546e241a859fae87d4ab92ed82f194ac4"
+    }
+  ]
+}

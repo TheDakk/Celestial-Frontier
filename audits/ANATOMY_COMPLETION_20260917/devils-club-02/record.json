@@ -1,0 +1,214 @@
+{
+  "kind": "plant-woody",
+  "identity": {
+    "speciesVisualKey": "authored:accepted-devils-club-master",
+    "seed": 133,
+    "ownerId": "authored:flora/devils-club",
+    "earthName": "Devil's Club"
+  },
+  "template": {
+    "id": "plant-woody",
+    "version": 1
+  },
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v1",
+    "absent": [],
+    "growth": {
+      "branches": 8
+    }
+  },
+  "geometry": {
+    "cutoutAssetHash": "bfcb0b735475403d4c49bcdcc7893d0f3c98a704f5f9e5394df70cdee99b37db",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.99,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.476,
+      0.958
+    ],
+    "trunk": [
+      0.474,
+      0.6
+    ],
+    "branch0Base": [
+      0.388,
+      0.597
+    ],
+    "branch0Tip": [
+      0.263,
+      0.365
+    ],
+    "leaf0": [
+      0.215,
+      0.402
+    ],
+    "branch1Base": [
+      0.477,
+      0.637
+    ],
+    "branch1Tip": [
+      0.377,
+      0.358
+    ],
+    "leaf1": [
+      0.355,
+      0.288
+    ],
+    "branch2Base": [
+      0.478,
+      0.751
+    ],
+    "branch2Tip": [
+      0.308,
+      0.611
+    ],
+    "leaf2": [
+      0.29,
+      0.658
+    ],
+    "branch3Base": [
+      0.49,
+      0.391
+    ],
+    "branch3Tip": [
+      0.395,
+      0.247
+    ],
+    "leaf3": [
+      0.354,
+      0.149
+    ],
+    "branch4Base": [
+      0.492,
+      0.38
+    ],
+    "branch4Tip": [
+      0.514,
+      0.251
+    ],
+    "leaf4": [
+      0.528,
+      0.135
+    ],
+    "branch5Base": [
+      0.53,
+      0.4
+    ],
+    "branch5Tip": [
+      0.649,
+      0.276
+    ],
+    "leaf5": [
+      0.708,
+      0.194
+    ],
+    "branch6Base": [
+      0.551,
+      0.687
+    ],
+    "branch6Tip": [
+      0.649,
+      0.482
+    ],
+    "leaf6": [
+      0.702,
+      0.526
+    ],
+    "branch7Base": [
+      0.502,
+      0.823
+    ],
+    "branch7Tip": [
+      0.641,
+      0.751
+    ],
+    "leaf7": [
+      0.709,
+      0.785
+    ]
+  },
+  "materials": {
+    "surface": "bark",
+    "paletteSource": "accepted authored master",
+    "joints": {
+      "leaf0": "foliage",
+      "leaf1": "foliage",
+      "leaf2": "foliage",
+      "leaf3": "foliage",
+      "leaf4": "foliage",
+      "leaf5": "foliage",
+      "leaf6": "foliage",
+      "leaf7": "foliage"
+    }
+  },
+  "clipSetId": "plant-woody-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/devils-club.png",
+  "coverage": {
+    "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+    "unproven": [
+      "hidden/reverse surfaces",
+      "individual leaf and fruit articulation",
+      "harvest item detachment",
+      "Compendium grow scale reveal",
+      "native full action visual acceptance",
+      "physical phone budget"
+    ]
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "trunk": 0.35800558654859005,
+      "branch0Base": 0.08605230967266361,
+      "branch0Tip": 0.26353178176455305,
+      "leaf0": 0.06060528029800707,
+      "branch1Base": 0.0371214223865412,
+      "branch1Tip": 0.296379823874703,
+      "leaf1": 0.07337574531137658,
+      "branch2Base": 0.15105297084135752,
+      "branch2Tip": 0.2202271554554524,
+      "leaf2": 0.050328918128646524,
+      "branch3Base": 0.20961154548354438,
+      "branch3Tip": 0.17251376756653367,
+      "leaf3": 0.10623088063270494,
+      "branch4Base": 0.2207351353998724,
+      "branch4Tip": 0.13086252328302403,
+      "leaf4": 0.11684177335182824,
+      "branch5Base": 0.20769207977195467,
+      "branch5Tip": 0.17186331778480246,
+      "leaf5": 0.10101980003939819,
+      "branch6Base": 0.1161808934377767,
+      "branch6Tip": 0.22722015755649858,
+      "leaf6": 0.06888396039717808,
+      "branch7Base": 0.22475097330156327,
+      "branch7Tip": 0.15654072952429982,
+      "leaf7": 0.07602631123499283
+    },
+    "measures": {
+      "body": 0.35800558654859005,
+      "bone-min": 0.0371214223865412,
+      "bone-max": 0.35800558654859005,
+      "branch/trunk:branch0": 0.9764766377179693,
+      "branch/trunk:branch1": 0.9315531902069355,
+      "branch/trunk:branch2": 1.037079141351383,
+      "branch/trunk:branch3": 1.0673724863737968,
+      "branch/trunk:branch4": 0.9821010394629026,
+      "branch/trunk:branch5": 1.0601940634947111,
+      "branch/trunk:branch6": 0.9592058445369187,
+      "branch/trunk:branch7": 1.0650440025301464
+    }
+  },
+  "recipeHash": "461916d2887a4abc2f477adf7b3a85fe53ae382143c7f302c186270c1f84cf26"
+}

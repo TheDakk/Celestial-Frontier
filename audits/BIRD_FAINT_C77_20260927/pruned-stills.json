@@ -1,0 +1,302 @@
+[
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn2-dodge-reaction-50.png",
+    "sha256": "52b18b9dff2cd621e618dd2a5f0bf1008f3251e9fad0745a38596dff43f25aca",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn0-hit-return-end.png",
+    "sha256": "968697ebdedab39959af99e2dfd3872cb758fe4ef8dc82c7059f1c056eaf4cb1",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn3-hit-approach-50.png",
+    "sha256": "bd20cd37c5e1dce717709546ba565e51e24ea369831b5880707412e7278f9839",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn0-hit-approach-50.png",
+    "sha256": "bd20cd37c5e1dce717709546ba565e51e24ea369831b5880707412e7278f9839",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn1-hit-approach-50.png",
+    "sha256": "8244f3666180d014cbbf4453ec413748e7e4d6916986822ee0f7051580e98443",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn1-hit-reaction-50.png",
+    "sha256": "21b576566667dadc0c240597fab256ecc70bb96f902f934ee05eea7352dfb07c",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn2-dodge-return-end.png",
+    "sha256": "968697ebdedab39959af99e2dfd3872cb758fe4ef8dc82c7059f1c056eaf4cb1",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn1-hit-impact.png",
+    "sha256": "840e46631294440c0e8ccd30d99a7dd2905440f01ed7d6961d6f39b2afa1281e",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn0-hit-impact.png",
+    "sha256": "80c3fcc232884acf139ea751f6e28d6cea32a9478621eee6631edc03566ed567",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn1-hit-return-end.png",
+    "sha256": "140d4411a31600a6d92089b3131700b4dc2a806ffa6046cf3e4ab15e81ba2ae7",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn2-dodge-impact.png",
+    "sha256": "2c36a65baa1f38db6d5b259e2167d53a3dab63143f40f76d3c4ff9938bfa787d",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn2-dodge-approach-50.png",
+    "sha256": "bd20cd37c5e1dce717709546ba565e51e24ea369831b5880707412e7278f9839",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn3-hit-impact.png",
+    "sha256": "f4395ecf70047eda3b086a26d654fe700ea2555228b0db9e0b3ccb108f8f67d7",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn3-hit-idle-90.png",
+    "sha256": "aa0fb9aea3a854dbf60dd370d286256f62950793923d22c84683d7e313d64bdf",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-pigeon/turn3-hit-idle-50.png",
+    "sha256": "d6584aa323fc6e19b5e863f7c5dbf0c515f57fbf0ca46b5383ce635115af2efa",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn2-dodge-reaction-50.png",
+    "sha256": "44aa9908e7fb545c1f11a4a91c74dc5492dd78e75d4dc5d80956ab0155dbd24c",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn0-hit-return-end.png",
+    "sha256": "95eb9d435335749409b4dfeb6ed6ac621ca8245e265e3f4d41b8d4b93954349a",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn3-hit-approach-50.png",
+    "sha256": "75f50503dc3b7f08475e5bd1e095ec854d6ad9a65fffe3da991e3ffb66806339",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn0-hit-approach-50.png",
+    "sha256": "75f50503dc3b7f08475e5bd1e095ec854d6ad9a65fffe3da991e3ffb66806339",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn1-hit-approach-50.png",
+    "sha256": "c04d4599fb9781b405bc2d096bf43087b9446e0d646f8645a6b936e9fec6a402",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn1-hit-reaction-50.png",
+    "sha256": "fcdc00d0469c36910722d004ec20ff4a3b66b24d1b0dc00bd24bf85b6ecf087d",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn2-dodge-return-end.png",
+    "sha256": "95eb9d435335749409b4dfeb6ed6ac621ca8245e265e3f4d41b8d4b93954349a",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn1-hit-impact.png",
+    "sha256": "a34ceac84c1e48ecdad9660a38fc21d7764a7173d9dc5366dd1f4f8f3ccdd970",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn0-hit-impact.png",
+    "sha256": "1a815e3f0dac17013f8c944818b9d9aea7572748116af6186aff4320707c9424",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn1-hit-return-end.png",
+    "sha256": "204bde9dfcf5d4e34aeb0036176a382911878d54d33492dbaef91054adb1f571",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn2-dodge-impact.png",
+    "sha256": "fda83634754228332893749fe4737fa21c05c4488dba3814d413ea40af03c283",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn2-dodge-approach-50.png",
+    "sha256": "75f50503dc3b7f08475e5bd1e095ec854d6ad9a65fffe3da991e3ffb66806339",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn3-hit-impact.png",
+    "sha256": "3cefacca3f1ea997dbbfcb73a05562ebf56c1ab3faf510d5abd8327ce4422a56",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn3-hit-idle-90.png",
+    "sha256": "0dd52b084354388666de0e2843cf8561de077384a0ecd5d2c8867a0aca348225",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-hawk/turn3-hit-idle-50.png",
+    "sha256": "0c3f6b4c02377d1efe5aed8c1d566a3f82d1239c3d357c88fd73ea8ca0449060",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn2-dodge-reaction-50.png",
+    "sha256": "503e7068026b6822eaa4b391bed6fbc4ddefef03018721713f830552c45558c4",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn0-hit-return-end.png",
+    "sha256": "55c2179832964d32216389308ec296aa4ac9503ce4815e1a23694f643f048eb7",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn3-hit-approach-50.png",
+    "sha256": "4c0bd37f0ee4328770cfe6240bc776ca71ec5fea3afc2b06da6fd84a2904169a",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn0-hit-approach-50.png",
+    "sha256": "4c0bd37f0ee4328770cfe6240bc776ca71ec5fea3afc2b06da6fd84a2904169a",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn1-hit-approach-50.png",
+    "sha256": "e68de946be9cfe8f956a4c1b7b3e5a28c828faa5a1716e7cd6a41b9b33084d96",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn1-hit-reaction-50.png",
+    "sha256": "1147558297c7cfb0be74372fdae1963a9aad090bf6e3b461cdc6c7b872b8a514",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn2-dodge-return-end.png",
+    "sha256": "55c2179832964d32216389308ec296aa4ac9503ce4815e1a23694f643f048eb7",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn1-hit-impact.png",
+    "sha256": "3241d87b97d36b0c669653f5493fb39d1f456491b2de62d2f24f8b2c41f79743",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn0-hit-impact.png",
+    "sha256": "2b42b6a603515aefe3c63b9519c1dd43a3d9570643336037b4acefa755a7bed1",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn1-hit-return-end.png",
+    "sha256": "1745c6af2decb042577e7efba1830770a91b9b64ffdfaf971dc0a7a17dacc038",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn2-dodge-impact.png",
+    "sha256": "ef08677a7c0b3a5ebadaf3ecd3f262b3aea8bf2a6103e67d73dd8602ea2cea74",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn2-dodge-approach-50.png",
+    "sha256": "4c0bd37f0ee4328770cfe6240bc776ca71ec5fea3afc2b06da6fd84a2904169a",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn3-hit-impact.png",
+    "sha256": "b30903140bbfb42774432a5b8d419151cda2e5870f901e665e932e5078843815",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn3-hit-idle-90.png",
+    "sha256": "4dcdabb8b45a50778132263943b7cfa816bd0197bdc4aa7931964b26ca1abf08",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-vulture-complete-input/turn3-hit-idle-50.png",
+    "sha256": "9bc67fff0f5d62a9cf9bbdb8d4224820a59190768b7a35121b469908b87168b7",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn2-dodge-reaction-50.png",
+    "sha256": "f99ad4765be80372e017fa1fb59439773d432f81acae25e11dc63e5d55c35e87",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn0-hit-return-end.png",
+    "sha256": "e605d9a948c56a5a0f9009cf8fab7e5ab5b50c3efbf4c0f1c5efe64d3409dda1",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn3-hit-approach-50.png",
+    "sha256": "c2fbbf424cfe2a94cd1d030df6c83439ccaaad5a43b18a7005750e5317c785aa",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn0-hit-approach-50.png",
+    "sha256": "c2fbbf424cfe2a94cd1d030df6c83439ccaaad5a43b18a7005750e5317c785aa",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn1-hit-approach-50.png",
+    "sha256": "2876d00cca0090cf050bba0f9941d623e3a050e28164873955f80b9bec209553",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn1-hit-reaction-50.png",
+    "sha256": "2c959b4d3052d3b1b1029d21d1ece29760082f01527d15338fdb003da8ced47f",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn2-dodge-return-end.png",
+    "sha256": "e605d9a948c56a5a0f9009cf8fab7e5ab5b50c3efbf4c0f1c5efe64d3409dda1",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn1-hit-impact.png",
+    "sha256": "21fc1eacfd6384216f6b7980f1195d40f8498d232adbdd99216170aea09475a3",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn0-hit-impact.png",
+    "sha256": "08ffac37ca8a88ba7d0c55354890dd4290ba358518a7f0edd68c0306d3cc3809",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn1-hit-return-end.png",
+    "sha256": "83a31d70ed16b2657b351b847aa127ab7c82cc40f1b5553d094e4289de434673",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn2-dodge-impact.png",
+    "sha256": "957ef743ddd259182eeeef79853a4a2f3661ee4c53c5ad2cb6d388d27f0db28e",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn2-dodge-approach-50.png",
+    "sha256": "c2fbbf424cfe2a94cd1d030df6c83439ccaaad5a43b18a7005750e5317c785aa",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn3-hit-impact.png",
+    "sha256": "2879131aab11364508fb9504affabff4b1e780f17d08a046cecb7792a3ef8e60",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn3-hit-idle-90.png",
+    "sha256": "dc8ff7366aa1843b0861a8f01ea73e966058acb311b77be0b8a9c5416496e1b5",
+    "reason": "Redundant still; full named film and three review poses retained"
+  },
+  {
+    "path": "audits/BIRD_FAINT_C77_20260927/native-dove-complete-input/turn3-hit-idle-50.png",
+    "sha256": "9df6dbca3f1e7f492651083f181c455ec17ae7035fe553fbb332467492421905",
+    "reason": "Redundant still; full named film and three review poses retained"
+  }
+]

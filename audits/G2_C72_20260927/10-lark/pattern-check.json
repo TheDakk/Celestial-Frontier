@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Lark",
+  "masterSha256": "7d9ca830624b5d54cb9f1bf523164ef79727c9d58999ab8ed1d25542f8302ae0",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

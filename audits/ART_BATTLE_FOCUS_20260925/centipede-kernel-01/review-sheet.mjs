@@ -1,0 +1,9 @@
+import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';import {createHash} from 'node:crypto';
+const require=createRequire(new URL('../../../port/v2/package.json',import.meta.url)),sharp=require('sharp'),base=import.meta.dirname,inputs=[];
+const read=file=>{const b=fs.readFileSync(file);inputs.push({path:path.relative(base,file),sha256:createHash('sha256').update(b).digest('hex')});return b;};
+const rows=['library-phone4x-03','remaining-phone4x-04'].flatMap(dir=>JSON.parse(read(path.join(base,dir,'summary.json'))).rows.map(r=>({...r,dir})));
+const overlays=[];const text=(x,y,w,h,s,size=23)=>({input:Buffer.from(`<svg width="${w}" height="${h}"><rect width="100%" height="100%" fill="#101d24"/><text x="12" y="31" font-family="Arial" font-size="${size}" fill="#efe5bd">${s.replaceAll('&','&amp;').replaceAll('<','&lt;')}</text></svg>`),left:x,top:y});
+overlays.push(text(0,0,2048,64,'C15 — final kernel diagnostics · 17 shipped archetypes · stage acceptance remains scoped',30));
+for(const[r,item]of rows.entries()){const x=(r%2)*1024,y=64+Math.floor(r/2)*336;overlays.push(text(x,y,1024,48,`${item.name} · p95 ${item.capture.cpuP95Ms.toFixed(2)} ms / 4× · refusals 0/0`));for(const[k,name]of ['turn0-hit-approach-50.png','turn1-hit-return-end.png'].entries()){const input=await sharp(read(path.join(base,item.dir,item.name,name))).resize(512,288).png().toBuffer();overlays.push({input,left:x+k*512,top:y+48});}}
+await sharp({create:{width:2048,height:64+Math.ceil(rows.length/2)*336,channels:4,background:'#101d24'}}).composite(overlays).png().toFile(path.join(base,'kernel-review-sheet.png'));
+fs.writeFileSync(path.join(base,'sheet-inputs.json'),JSON.stringify({note:'Diagnostic layout only; source assets untouched. Approach/return images from each distinct final-source capture.',inputs},null,2)+'\n',{flag:'wx'});

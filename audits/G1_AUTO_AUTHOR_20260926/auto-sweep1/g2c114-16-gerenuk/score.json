@@ -1,0 +1,11 @@
+{
+ "id": "g2c114-16-gerenuk",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 7.8% paint that no reference appendage lands on",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 77%)",
+  "missing-anatomy: part ear-far-root (earFarRoot) covers 17% paint (reference 94%)"
+ ],
+ "semanticPresence": null
+}

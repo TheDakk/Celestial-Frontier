@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wolverine",
+  "masterSha256": "0498e155c50e65b61174930019c0f8ec98b8ab5722b4267e875795dbe837510a",
+  "required": [
+    "pale stripe sweeping along each flank to the tail"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "pale stripe sweeping along each flank to the tail",
+      "status": "PRESENT",
+      "observed": "Pale flank stripe sweeps from shoulder along the brown sides toward the tail."
+    }
+  ]
+}

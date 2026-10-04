@@ -1,0 +1,14 @@
+{
+  "id": "03-monitor-lizard",
+  "name": "Monitor Lizard",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a41aceba-a5fa-40bf-856c-9e2195534171.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "362bd96ae11513863de2744848c8f1de583a100579f30143798f2c4e242f0e61",
+  "bytes": 1138873,
+  "promptSha256": "54f0b9c9fe61a3f19fcd31bb0ad7c2750448db36b0a98846381974fe75476d4d",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,13 @@
+{
+  "operation": "git commit -S --only celestial-frontier-audio-handoff",
+  "result": "1Password: agent returned an error; failed to write commit object",
+  "agentListedKey": true,
+  "configuredKeyMatchesAgent": true,
+  "configuredSigner": "/Applications/1Password.app/Contents/MacOS/op-ssh-sign",
+  "cause": "unknown; key availability does not establish signing permission",
+  "unsignedFallback": false,
+  "githubWrites": 0,
+  "head": "b95c4dc0",
+  "aheadUpstream": 115,
+  "aheadCachedDevelop": 226
+}

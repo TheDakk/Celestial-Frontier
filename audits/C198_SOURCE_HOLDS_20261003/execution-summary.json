@@ -1,0 +1,276 @@
+{
+  "schema": "cf.c198-bounded-execution-summary/v1",
+  "static": [
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/static-01.json",
+      "reportSha256": "b90321280484a1b9a836962a8c14077e6d382ae9e0cafe5c123a83ba6968ab08",
+      "status": "PASS_STATIC",
+      "actions": 13,
+      "actionPublications": 1573,
+      "actionAttempts": 1573,
+      "presentationPublications": 1134,
+      "presentationAttempts": 1134,
+      "presentationStatus": "PASS",
+      "firstRefusals": [],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/static-01.json",
+      "reportSha256": "7e679226e4ab5e493e698a5e6d5824a35de6b9998b0f12c72ffbedcf64298d53",
+      "status": "REFUSED",
+      "actions": 0,
+      "actionPublications": 0,
+      "actionAttempts": 0,
+      "presentationPublications": 0,
+      "presentationAttempts": 0,
+      "presentationStatus": null,
+      "firstRefusals": [],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/static-01.json",
+      "reportSha256": "0f24261a175d5a6ef77e76c8ac04f4d4fdd4e265586ec46f95e93c6a6cec200b",
+      "status": "PASS_STATIC",
+      "actions": 13,
+      "actionPublications": 1573,
+      "actionAttempts": 1573,
+      "presentationPublications": 912,
+      "presentationAttempts": 912,
+      "presentationStatus": "PASS",
+      "firstRefusals": [],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/static-01.json",
+      "reportSha256": "f06db6ea9f7c9cda2e72210d3e0815d4830e1e75b4d77cd1ad66ea79d5223fd4",
+      "status": "PASS_STATIC",
+      "actions": 14,
+      "actionPublications": 1694,
+      "actionAttempts": 1694,
+      "presentationPublications": 1086,
+      "presentationAttempts": 1086,
+      "presentationStatus": "PASS",
+      "firstRefusals": [],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/static-01.json",
+      "reportSha256": "ab92fdf18443e20420e139ccb77a6a0ec63b41e509f546360afc09b572aa406e",
+      "status": "RED",
+      "actions": 19,
+      "actionPublications": 2217,
+      "actionAttempts": 2218,
+      "presentationPublications": 1428,
+      "presentationAttempts": 1428,
+      "presentationStatus": "PASS",
+      "firstRefusals": [
+        {
+          "action": "melee:tail",
+          "ms": 247.86666666666667,
+          "error": "Error: Contact: melee:tail@247.86666666666667 exceeds scale compression bound"
+        }
+      ],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/static.json",
+      "reportSha256": "3a0d1393484e5b0c395c9d676ceb593eedd8e4082fd206e9b1d39fb8c91e973e",
+      "status": "PASS_STATIC",
+      "actions": 13,
+      "actionPublications": 1573,
+      "actionAttempts": 1573,
+      "presentationPublications": 1134,
+      "presentationAttempts": 1134,
+      "presentationStatus": "PASS",
+      "firstRefusals": [],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/static.json",
+      "reportSha256": "d19b37d44be9acd085ba905883b3dc0ee959371b725646e4c9e196c0e7f4aefe",
+      "status": "PASS_STATIC",
+      "actions": 13,
+      "actionPublications": 1573,
+      "actionAttempts": 1573,
+      "presentationPublications": 912,
+      "presentationAttempts": 912,
+      "presentationStatus": "PASS",
+      "firstRefusals": [],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/static.json",
+      "reportSha256": "187f17237f425dfc88e9a31655aaae61b64d8927c593b958192f103c1732b745",
+      "status": "PASS_STATIC",
+      "actions": 14,
+      "actionPublications": 1694,
+      "actionAttempts": 1694,
+      "presentationPublications": 1086,
+      "presentationAttempts": 1086,
+      "presentationStatus": "PASS",
+      "firstRefusals": [],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/static.json",
+      "reportSha256": "c0f5fb890b0ea7867bfd657eed5d6d1e633d9c04a122a415087de85ff45f2392",
+      "status": "PASS_STATIC",
+      "actions": 13,
+      "actionPublications": 1573,
+      "actionAttempts": 1573,
+      "presentationPublications": 912,
+      "presentationAttempts": 912,
+      "presentationStatus": "PASS",
+      "firstRefusals": [],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/static.json",
+      "reportSha256": "43406e3b769752b483f231ed4b21b23cf69cc7245c74b44b41779059ce038fa3",
+      "status": "PASS_STATIC",
+      "actions": 14,
+      "actionPublications": 1694,
+      "actionAttempts": 1694,
+      "presentationPublications": 1086,
+      "presentationAttempts": 1086,
+      "presentationStatus": "PASS",
+      "firstRefusals": [],
+      "settings": {
+        "samplesPerAction": 121,
+        "presentationHz": 60,
+        "paintContactTolerancePx": 0.25,
+        "endpointTolerance": 1e-08
+      }
+    }
+  ],
+  "actualLoadedRigSoftware": [
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/review.json",
+      "reportSha256": "bc72f4bbd273219403f0308a74594222e92af75009f690eb3395998c4c808eef",
+      "evaluations": 20,
+      "published": 20,
+      "refusals": 0,
+      "uniqueImages": 16,
+      "status": "PASS_OFFLINE"
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/review.json",
+      "reportSha256": "9d42371d502937bb1ae92d30818534efd5aa67c8868c68a331174d5959f26dd9",
+      "evaluations": 20,
+      "published": 20,
+      "refusals": 0,
+      "uniqueImages": 16,
+      "status": "PASS_OFFLINE"
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/review.json",
+      "reportSha256": "b39892d103bde81ee9ed490ddae0edffa1a0da0c4eb4e4bfcebdef271aa68eef",
+      "evaluations": 20,
+      "published": 20,
+      "refusals": 0,
+      "uniqueImages": 16,
+      "status": "PASS_OFFLINE"
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/review.json",
+      "reportSha256": "04d57f5634e87a6877dea98182f528f7421ee4282ab075b6aab2039dac6b288c",
+      "evaluations": 20,
+      "published": 20,
+      "refusals": 0,
+      "uniqueImages": 16,
+      "status": "PASS_OFFLINE"
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/review.json",
+      "reportSha256": "5d37b4f884eea4ea11468c173bc67ca132036341aeeb082478a503fd8c48fdab",
+      "evaluations": 20,
+      "published": 20,
+      "refusals": 0,
+      "uniqueImages": 16,
+      "status": "PASS_OFFLINE"
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/review.json",
+      "reportSha256": "8e5208628379bd12adcfc843afe0c7e0c2dfc549b3c82f3741e2f69838dae885",
+      "evaluations": 20,
+      "published": 20,
+      "refusals": 0,
+      "uniqueImages": 16,
+      "status": "PASS_OFFLINE"
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/review.json",
+      "reportSha256": "06663fa8cc45030f7dc9f187319a41bae91454b15f0c9f3f23cf64832e5a176e",
+      "evaluations": 20,
+      "published": 20,
+      "refusals": 0,
+      "uniqueImages": 16,
+      "status": "PASS_OFFLINE"
+    },
+    {
+      "report": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/review.json",
+      "reportSha256": "47adfb2fab439af2c8ddf9484c6ec2a18856955a6d351a2bd3fc6708ab80d37f",
+      "evaluations": 20,
+      "published": 20,
+      "refusals": 0,
+      "uniqueImages": 16,
+      "status": "PASS_OFFLINE"
+    }
+  ],
+  "noNativeEpoch": true,
+  "noRuntimeOrLimitsEdited": true,
+  "d28Default": 0.5,
+  "paintContactTolerancePx": 0.25,
+  "endpointTolerance": 1e-08,
+  "startupReused": {
+    "path": "audits/C198_PROGRAM_20261003/toolchain-check.json",
+    "sha256": "bdb38ad67dda1238432971045048991c35d3387407269eb112ae3fe89eaa7f78"
+  },
+  "nodeVersion": "v26.10.0",
+  "qualityAccepted": false
+}

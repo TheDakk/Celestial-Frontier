@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Snail",
+  "family": "gastropod",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "392dc8c2ed6bea9856d5f16c1c1ae47b46f7f0d4bcfdea52114275978bbea539",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "f2e948709d21fc05c0b88ca79d2186a7cc2eac8ffc7f2d3ba6574126de82bffb",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "Real gastropod, broad continuous foot, coiled shell, two long ocular tentacles plus two short sensory tentacles and genuine mouth. No extra lower projections.",
+  "profileId": "land-gastropod",
+  "authoringCreated": false,
+  "sourceHead": "e10a4b750cec6ea9c3669eabe0339683ecdace55",
+  "basePromptSha256": "1a4195a927a5150b32e589f1a56702e5c77e5e60ccceb2d22d26ecb3612749e1",
+  "batchCompilerSha256": "d90d7117e3e43dc08d394a288b343aadbc001774c15d855df5e44fc9b5b5c715",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Old source mouth is obscured. Paint a real right-facing crawling snail with a small ordinary ventral oral slit visible underneath the front between the two real short sensory tentacles, distinct from both. Exactly two upper eye-bearing stalks and two lower sensory tentacles; no circular open cartoon mouth, third lower projection, lips or face. Keep coiled shell and complete natural broad foot.",
+    "priorSources": [
+      {
+        "pilot": "audits/C196_SIMPLE_ORIGINALS_20261002/pilot.json",
+        "id": "03-snail",
+        "master": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail/master.png",
+        "packet": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C196_SIMPLE_ORIGINALS_20261002/pilot.json"
+  ],
+  "auditCompilerExtension": true,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Old source mouth is obscured. Paint a real right-facing crawling snail with a small ordinary ventral oral slit visible underneath the front between the two real short sensory tentacles, distinct from both. Exactly two upper eye-bearing stalks and two lower sensory tentacles; no circular open cartoon mouth, third lower projection, lips or face. Keep coiled shell and complete natural broad foot.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

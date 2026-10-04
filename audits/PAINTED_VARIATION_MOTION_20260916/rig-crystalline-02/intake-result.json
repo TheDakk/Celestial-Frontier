@@ -1,0 +1,10 @@
+{
+  "id": "crystalline",
+  "parts": 22,
+  "atlasSize": {
+    "width": 1301,
+    "height": 2045
+  },
+  "restDifferentChannels": 0,
+  "atlasDifferentChannels": 0
+}

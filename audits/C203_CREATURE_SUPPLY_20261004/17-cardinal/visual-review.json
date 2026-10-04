@@ -1,0 +1,28 @@
+{
+  "name": "Cardinal",
+  "masterSha256": "ce827ea3a6e7cf2811078c0a38ac1c2a7e87e2d4cb8646f41ef02be62d984521",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: red plumage, black facial/throat mask, orange bill and attached pointed crest. Two separated leg shafts and complete feet, continuous folded near wing and long tail. Far wing/root is not independently visible in this side view; no second-wing completeness claim. Crest feathers require later ownership/motion review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 236,
+      "y0": 335,
+      "x1": 929,
+      "y1": 875
+    },
+    "margins": {
+      "left": 236,
+      "right": 324,
+      "top": 335,
+      "bottom": 378
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

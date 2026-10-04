@@ -1,0 +1,202 @@
+{
+  "schema": "cf.g2-selection/v1",
+  "newOriginals": 24,
+  "coverageSource": "audits/GENERATED_GALLERY_20260927/coverage.json",
+  "coveredAtSelection": 184,
+  "priorPilotNames": 469,
+  "excluded": "Untouched turtles, sloth and pinnipeds require appropriate shell/flipper/material support; no substitute mammal anatomy. Accepted and prior pilot subjects excluded.",
+  "rows": [
+    {
+      "id": "01-mara",
+      "name": "Mara",
+      "family": "quadruped",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/01-mara",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/01-mara/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "02-salamander",
+      "name": "Salamander",
+      "family": "quadruped",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/02-salamander",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/02-salamander/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "03-wall-lizard",
+      "name": "Wall Lizard",
+      "family": "quadruped",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/03-wall-lizard",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/03-wall-lizard/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "04-gorilla",
+      "name": "Gorilla",
+      "family": "primate",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/04-gorilla",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/04-gorilla/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "05-chimpanzee",
+      "name": "Chimpanzee",
+      "family": "primate",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/05-chimpanzee",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/05-chimpanzee/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "06-orangutan",
+      "name": "Orangutan",
+      "family": "primate",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/06-orangutan",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/06-orangutan/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "07-capuchin",
+      "name": "Capuchin",
+      "family": "primate",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/07-capuchin",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/07-capuchin/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "08-howler-monkey",
+      "name": "Howler Monkey",
+      "family": "primate",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/08-howler-monkey",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/08-howler-monkey/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "09-spider-monkey",
+      "name": "Spider Monkey",
+      "family": "primate",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/09-spider-monkey",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/09-spider-monkey/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "10-macaque",
+      "name": "Macaque",
+      "family": "primate",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/10-macaque",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/10-macaque/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "11-baboon",
+      "name": "Baboon",
+      "family": "primate",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/11-baboon",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/11-baboon/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "12-lemur",
+      "name": "Lemur",
+      "family": "primate",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/12-lemur",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/12-lemur/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "13-centipede",
+      "name": "Centipede",
+      "family": "myriapod",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/13-centipede",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/13-centipede/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "14-giant-centipede",
+      "name": "Giant Centipede",
+      "family": "myriapod",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/14-giant-centipede",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/14-giant-centipede/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "15-millipede",
+      "name": "Millipede",
+      "family": "myriapod",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/15-millipede",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/15-millipede/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "16-octopus",
+      "name": "Octopus",
+      "family": "cephalopod",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/16-octopus",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/16-octopus/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "17-squid",
+      "name": "Squid",
+      "family": "cephalopod",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/17-squid",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/17-squid/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "18-cuttlefish",
+      "name": "Cuttlefish",
+      "family": "cephalopod",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "19-giant-octopus",
+      "name": "Giant Octopus",
+      "family": "cephalopod",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "20-deep-sea-octopus",
+      "name": "Deep-Sea Octopus",
+      "family": "cephalopod",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/20-deep-sea-octopus",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/20-deep-sea-octopus/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "21-fruit-bat",
+      "name": "Fruit Bat",
+      "family": "flyer-membrane",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/21-fruit-bat",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/21-fruit-bat/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "22-bat",
+      "name": "Bat",
+      "family": "flyer-membrane",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/22-bat",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/22-bat/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "23-insect-eating-bat",
+      "name": "Insect-Eating Bat",
+      "family": "flyer-membrane",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/23-insect-eating-bat",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/23-insect-eating-bat/master.png",
+      "purpose": "NEW_ORIGINAL"
+    },
+    {
+      "id": "24-vampire-bat",
+      "name": "Vampire Bat",
+      "family": "flyer-membrane",
+      "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/24-vampire-bat",
+      "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/24-vampire-bat/master.png",
+      "purpose": "NEW_ORIGINAL"
+    }
+  ]
+}

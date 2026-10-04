@@ -1,0 +1,21 @@
+{
+  "schema": "cf.type-only-repair/v1",
+  "refusal": "typescript-02.log",
+  "correction": "Narrow helper return type to v2 Extract; exact source equality verified outside that annotation.",
+  "before": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/compact-count-before-types.ts",
+  "after": "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+  "onlyTypeAnnotationChanged": true,
+  "typeStrippedTextIdenticalIgnoringHorizontalWhitespace": true,
+  "strippedSha256": "64bf826ed0685f33e9b88dfa9aecc0640759837dd1a7a7db6aea02bacb573991",
+  "verification": "typescript-03.log PASS tool cbf45b; eight behavioral tests retained without unchanged rerun.",
+  "setupRefusals": [
+    {
+      "tool": "239563",
+      "error": "Legacy TypeScript JS compiler API path absent in installed TypeScript7; comparison did not execute."
+    },
+    {
+      "tool": "9a9809",
+      "error": "Node26 supports strip only, no transform mode; comparison did not execute."
+    }
+  ]
+}

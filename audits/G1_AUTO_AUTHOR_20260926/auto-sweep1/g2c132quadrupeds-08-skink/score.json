@@ -1,0 +1,12 @@
+{
+ "id": "g2c132quadrupeds-08-skink",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 13% paint (reference 40%)",
+  "missing-anatomy: part fore-near-paw (foreNearPaw) covers 0% paint (reference 48%)",
+  "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 20% paint (reference 87%)",
+  "unexplained-anatomy: 14.2% of the paint lies away from the body and in no part (reference 8.3%)"
+ ],
+ "semanticPresence": null
+}

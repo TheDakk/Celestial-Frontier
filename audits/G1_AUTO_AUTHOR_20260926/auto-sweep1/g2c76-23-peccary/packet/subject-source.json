@@ -1,0 +1,71 @@
+{
+  "name": "Peccary",
+  "family": "quadruped",
+  "species": {
+    "name": "Peccary",
+    "aspect": 1.7,
+    "headFrac": 0.3,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "straight downward-pointing tusks",
+      "pig-like body on slim delicate legs",
+      "no visible tail"
+    ],
+    "note": "tusks point straight down, not curled upward like a boar's"
+  },
+  "genome": {
+    "seed": 3209952142,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 5,
+    "body": 13,
+    "loco": 16,
+    "trait": 7,
+    "size": 0,
+    "diet": 2,
+    "head": 5,
+    "limbs": 1,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 8,
+    "habitat": 1,
+    "detail": 1,
+    "accent": 5,
+    "temper": 6,
+    "sense": 3,
+    "repro": 5,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Peccary"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Peccary\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3209952142\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "index": 11,
+  "profile": {
+    "id": "suid",
+    "names": [
+      "Wild Boar",
+      "Peccary",
+      "Warthog",
+      "Wild Pig",
+      "Pig"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "gore",
+      "headbutt"
+    ],
+    "notes": "Tusks must be observed before a gore motion is admitted."
+  }
+}

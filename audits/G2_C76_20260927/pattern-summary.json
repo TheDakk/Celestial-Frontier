@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Pike",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Bass",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Char",
+    "status": "PASS"
+  },
+  {
+    "name": "Sturgeon",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Paddlefish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Arowana",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Arapaima",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Goldfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Swift",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Swallow",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Falcon",
+    "status": "PASS"
+  },
+  {
+    "name": "Crane",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Spoonbill",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Kestrel",
+    "status": "PASS"
+  },
+  {
+    "name": "Guineafowl",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Pheasant",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Capybara",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Agouti",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Alpaca",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Llama",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Musk Ox",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Pangolin",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Peccary",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Okapi",
+    "status": "PASS"
+  }
+]

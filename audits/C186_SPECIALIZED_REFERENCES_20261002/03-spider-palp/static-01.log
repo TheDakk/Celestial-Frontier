@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.00007268866351248101,"gap":0.00006425941828165639,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.0000765306139328017,"gap":0.0000659634323562185,"exactRest":true,"firstRefusal":null}
+{"id":"approach:scuttle","status":"PASS","samples":121,"drift":0.00007268866351248101,"gap":0.0000642252374608269,"exactRest":true,"firstRefusal":null}
+{"id":"melee:sting","status":"PASS","samples":121,"drift":0.00007268866351248101,"gap":0.0000639778357610468,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.00007268866351248101,"gap":0.00006422143877956327,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.00007268866351248101,"gap":0.00006157537742322012,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0.00007041015745808104,"gap":0.00006264835138417263,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00006265516618156214,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.0000765306139328017,"gap":0.00006660024170214909,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.00007268866351248101,"gap":0.00006436090310835974,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.00007268715389317543,"gap":0.00006639334163312641,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.00007228301649036928,"gap":0.00006344457800310492,"exactRest":true,"firstRefusal":null}
+{"id":"melee:body","status":"PASS","samples":121,"drift":0.0000765306139328017,"gap":0.00006518300370033147,"exactRest":true,"firstRefusal":null}
+{"status":"PASS_STATIC","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

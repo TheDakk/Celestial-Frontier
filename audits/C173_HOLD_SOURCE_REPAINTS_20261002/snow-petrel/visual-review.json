@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-source-review/v1",
+  "name": "Snow Petrel",
+  "masterSha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37",
+  "review": "Full native1254-square original inspected by Codex",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 291,
+      "y0": 367,
+      "x1": 969,
+      "y1": 886
+    },
+    "margins": {
+      "left": 291,
+      "right": 284,
+      "top": 367,
+      "bottom": 367
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "observation": "Near folded wing attaches broadly to torso without an isolated upper sliver in the original. Snowy plumage, black beak, dark eye and two separate webbed feet readable. Far wing partly occluded; full-size film and source ownership review still required.",
+  "status": "SOURCE_CANDIDATE_FOR_SCORING",
+  "rigAuthored": false,
+  "motionAccepted": false,
+  "runtimeAdmitted": false
+}

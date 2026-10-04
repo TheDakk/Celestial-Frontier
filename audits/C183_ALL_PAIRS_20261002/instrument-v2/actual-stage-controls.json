@@ -1,0 +1,236 @@
+{
+  "status": "PASS",
+  "scope": "Actual BattleStage with two real Crab fits and independent drawn joints; no browser/GPU/native",
+  "rows": [
+    {
+      "turn": 0,
+      "probe": {
+        "schema": "cf.c183-exact-local-probe/v1",
+        "turn": 0,
+        "clockOriginMs": 0,
+        "requestedLocalMs": 1740,
+        "sampledLocalMs": 1740,
+        "phase": "action",
+        "attackerAction": "melee:pinch",
+        "targetAction": "idle",
+        "value": {
+          "x": 0.5014350314778946,
+          "y": 0.6058594250125984
+        },
+        "restoration": {
+          "turn": 0,
+          "segment": 0,
+          "clockMs": 0,
+          "sampledLocalMs": 0
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "probe": {
+        "schema": "cf.c183-exact-local-probe/v1",
+        "turn": 1,
+        "clockOriginMs": 0,
+        "requestedLocalMs": 1740,
+        "sampledLocalMs": 1740,
+        "phase": "action",
+        "attackerAction": "melee:pinch",
+        "targetAction": "idle",
+        "value": {
+          "x": 0.4985649685221054,
+          "y": 0.6058594250125984
+        },
+        "restoration": {
+          "turn": 0,
+          "segment": 0,
+          "clockMs": 0,
+          "sampledLocalMs": 0
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "probe": {
+        "schema": "cf.c183-exact-local-probe/v1",
+        "turn": 2,
+        "clockOriginMs": 0,
+        "requestedLocalMs": 1740,
+        "sampledLocalMs": 1740,
+        "phase": "action",
+        "attackerAction": "melee:pinch",
+        "targetAction": "idle",
+        "value": {
+          "x": 0.5014350314778946,
+          "y": 0.6058594250125984
+        },
+        "restoration": {
+          "turn": 0,
+          "segment": 0,
+          "clockMs": 0,
+          "sampledLocalMs": 0
+        }
+      }
+    },
+    {
+      "turn": 3,
+      "probe": {
+        "schema": "cf.c183-exact-local-probe/v1",
+        "turn": 3,
+        "clockOriginMs": 0,
+        "requestedLocalMs": 1740,
+        "sampledLocalMs": 1740,
+        "phase": "action",
+        "attackerAction": "melee:pinch",
+        "targetAction": "idle",
+        "value": {
+          "x": 0.4985649685221054,
+          "y": 0.6058594250125984
+        },
+        "restoration": {
+          "turn": 0,
+          "segment": 0,
+          "clockMs": 0,
+          "sampledLocalMs": 0
+        }
+      }
+    },
+    {
+      "turn": 4,
+      "probe": {
+        "schema": "cf.c183-exact-local-probe/v1",
+        "turn": 4,
+        "clockOriginMs": 0,
+        "requestedLocalMs": 1740,
+        "sampledLocalMs": 1740,
+        "phase": "action",
+        "attackerAction": "melee:pinch",
+        "targetAction": "idle",
+        "value": {
+          "x": 0.5014350314778946,
+          "y": 0.6058594250125984
+        },
+        "restoration": {
+          "turn": 0,
+          "segment": 0,
+          "clockMs": 0,
+          "sampledLocalMs": 0
+        }
+      }
+    },
+    {
+      "turn": 4,
+      "probe": {
+        "schema": "cf.c183-exact-local-probe/v1",
+        "turn": 4,
+        "clockOriginMs": 0,
+        "requestedLocalMs": 1740,
+        "sampledLocalMs": 1740,
+        "phase": "action",
+        "attackerAction": "melee:pinch",
+        "targetAction": "idle",
+        "value": {
+          "x": 0.5014350314778946,
+          "y": 0.6058594250125984
+        },
+        "restoration": {
+          "turn": 0,
+          "segment": 0,
+          "clockMs": 0,
+          "sampledLocalMs": 0
+        }
+      }
+    },
+    {
+      "turn": 3,
+      "probe": {
+        "schema": "cf.c183-exact-local-probe/v1",
+        "turn": 3,
+        "clockOriginMs": 0,
+        "requestedLocalMs": 1740,
+        "sampledLocalMs": 1740,
+        "phase": "action",
+        "attackerAction": "melee:pinch",
+        "targetAction": "idle",
+        "value": {
+          "x": 0.4985649685221054,
+          "y": 0.6058594250125984
+        },
+        "restoration": {
+          "turn": 0,
+          "segment": 0,
+          "clockMs": 0,
+          "sampledLocalMs": 0
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "probe": {
+        "schema": "cf.c183-exact-local-probe/v1",
+        "turn": 2,
+        "clockOriginMs": 0,
+        "requestedLocalMs": 1740,
+        "sampledLocalMs": 1740,
+        "phase": "action",
+        "attackerAction": "melee:pinch",
+        "targetAction": "idle",
+        "value": {
+          "x": 0.5014350314778946,
+          "y": 0.6058594250125984
+        },
+        "restoration": {
+          "turn": 0,
+          "segment": 0,
+          "clockMs": 0,
+          "sampledLocalMs": 0
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "probe": {
+        "schema": "cf.c183-exact-local-probe/v1",
+        "turn": 1,
+        "clockOriginMs": 0,
+        "requestedLocalMs": 1740,
+        "sampledLocalMs": 1740,
+        "phase": "action",
+        "attackerAction": "melee:pinch",
+        "targetAction": "idle",
+        "value": {
+          "x": 0.4985649685221054,
+          "y": 0.6058594250125984
+        },
+        "restoration": {
+          "turn": 0,
+          "segment": 0,
+          "clockMs": 0,
+          "sampledLocalMs": 0
+        }
+      }
+    },
+    {
+      "turn": 0,
+      "probe": {
+        "schema": "cf.c183-exact-local-probe/v1",
+        "turn": 0,
+        "clockOriginMs": 0,
+        "requestedLocalMs": 1740,
+        "sampledLocalMs": 1740,
+        "phase": "action",
+        "attackerAction": "melee:pinch",
+        "targetAction": "idle",
+        "value": {
+          "x": 0.5014350314778946,
+          "y": 0.6058594250125984
+        },
+        "restoration": {
+          "turn": 0,
+          "segment": 0,
+          "clockMs": 0,
+          "sampledLocalMs": 0
+        }
+      }
+    }
+  ]
+}

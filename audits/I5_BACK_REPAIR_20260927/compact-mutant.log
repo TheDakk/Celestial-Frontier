@@ -1,0 +1,40 @@
+✔ mixed broker/painted rows admit only against their actual independent inventories (2.096292ms)
+✔ resource sums preserve broker evidence and include data URLs, masks and archetypes (0.222208ms)
+✖ actual browser expression retains a painted row without laundering its broker indices (2.625416ms)
+✔ the retained calibration miss is refused; only matched painted ownership repairs that miss (1.355083ms)
+✔ full classifier accepts a mixed-owner ready carrier and rejects wrong-owner forgery (18.544833ms)
+✔ native entry follows observed controls without a four-Tab assumption or focus injection (0.164542ms)
+✔ mixed-owner error control follows the first actual broker row and rejects missing recovery (3.675459ms)
+✔ retained overflow stays pending inside the unchanged carrier bound; identity forgeries refuse (18.497583ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 162.435667
+
+✖ failing tests:
+
+test at port/v2/tools/compendiummem-v2-painted.test.mjs:35:1
+✖ actual browser expression retains a painted row without laundering its broker indices (2.625416ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'broker digest inventories missing/invalid',
+  +   'painted digest inventories invalid'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/compendiummem-v2-painted.test.mjs:42:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'broker digest inventories missing/invalid', 'painted digest inventories invalid' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

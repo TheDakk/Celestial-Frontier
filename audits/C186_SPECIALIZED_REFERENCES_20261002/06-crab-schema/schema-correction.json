@@ -1,0 +1,23 @@
+{
+  "schema": "cf.c186-authoring-schema/v1",
+  "source": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab",
+  "sourceMasterSha256": "874590859d6795c66f6f00a50ab5aabe615302d15afe8fe80319c18e57e3b399",
+  "priorAuthoringSha256": "cae98a4d766f5aeaecd5d866351a9f637997b1005af0370215018599a7aeb972",
+  "priorPresence": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "appendages": {
+      "legs": 8
+    }
+  },
+  "fix": "fixed-inventory presence",
+  "geometryChanges": 0,
+  "priorLabelsTransferred": true,
+  "firstIndependentObservation": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab/authoring.json",
+  "sourceLabelsFromAnotherSubject": false,
+  "sourceRgbaChanges": 0,
+  "limitChanges": 0,
+  "qualityAccepted": false
+}

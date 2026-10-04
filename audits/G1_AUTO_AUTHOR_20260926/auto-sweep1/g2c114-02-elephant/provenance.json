@@ -1,0 +1,138 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c114-02-elephant",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "b3ecb68e096c5ad004935ebb316f46bfe5bab5fbb83f2cdb94a072452cdccc1a",
+ "subjectSourceSha256": "e355dddc25901e8f62ec20aafc8f6919a6a12c3132f0c37c1ae484dd4dcf5f60",
+ "identity": {
+  "name": "Elephant",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Elephant\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"619104521\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 619104521,
+  "checks": [
+   "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "738d991892404fbab5da926013e6864a2a9ee687d91d59a50cd40c003bcd260b",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "elephant",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "8f27a9ae3915b755fe1b148e496e394beb760825651a855083da4577a51b7327",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group elephant (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0106,
+     "class": "top",
+     "attach": {
+      "x": 243,
+      "y": 113,
+      "relX": 0.7,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0089,
+     "class": "top",
+     "attach": {
+      "x": 166.5,
+      "y": 144,
+      "relX": 0.31,
+      "relY": 0.24
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0986,
+     "class": "limb-down",
+     "attach": {
+      "x": 299.2,
+      "y": 176.7,
+      "relX": 0.99,
+      "relY": 0.5
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0163,
+     "class": "limb-down",
+     "attach": {
+      "x": 105,
+      "y": 192,
+      "relX": -0.01,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1141,
+     "class": "limb-down",
+     "attach": {
+      "x": 233.9,
+      "y": 228.9,
+      "relX": 0.65,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0483,
+     "class": "limb-down",
+     "attach": {
+      "x": 113.6,
+      "y": 235.9,
+      "relX": 0.04,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0441,
+     "class": "limb-down",
+     "attach": {
+      "x": 151,
+      "y": 241,
+      "relX": 0.23,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 5
+   },
+   "ground": 5
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

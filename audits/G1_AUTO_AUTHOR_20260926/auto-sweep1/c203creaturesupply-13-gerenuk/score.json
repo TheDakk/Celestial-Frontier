@@ -1,0 +1,9 @@
+{
+ "id": "c203creaturesupply-13-gerenuk",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 7.2% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

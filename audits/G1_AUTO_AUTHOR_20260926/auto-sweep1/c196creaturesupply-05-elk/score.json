@@ -1,0 +1,10 @@
+{
+ "id": "c196creaturesupply-05-elk",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 29% paint (reference 91%)",
+  "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 25%)"
+ ],
+ "semanticPresence": null
+}

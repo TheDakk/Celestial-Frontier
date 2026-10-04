@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Coot",
+  "masterSha256": "eb91f1edf108c7d682d8fec496163b10492fd43bc27313c8b9d9f3e17677f939",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

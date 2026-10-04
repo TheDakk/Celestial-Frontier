@@ -1,0 +1,14 @@
+{
+  "id": "21-sea-squirt",
+  "name": "Sea Squirt",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-d259dc5f-4741-4a51-98dc-bc50e034a312.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875",
+  "bytes": 1493937,
+  "promptSha256": "933ffe68172e5a819954ca94dfd9f3ea5a4b56e059a9cb195b9313047d2cbe02",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

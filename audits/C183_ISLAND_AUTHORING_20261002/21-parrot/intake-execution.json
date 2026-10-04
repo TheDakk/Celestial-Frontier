@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c183-audit-stage/v1",
+  "stage": "intake",
+  "id": "21-parrot",
+  "command": [
+    "node",
+    "audits/C183_ISLAND_AUTHORING_20261002/intake.mjs",
+    "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/candidate",
+    "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01"
+  ],
+  "helperSha256": "2035749f7a4e10573549ae4823a4d5e87b66054de5bc2cdb8b72059dc2510b4f",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/intake.log",
+  "logSha256": "d8520ba19b43fbb35ecb6c3c4ca7bfc0ff649118b574b092421859f2ff5e4a36",
+  "nativeRuns": 0
+}

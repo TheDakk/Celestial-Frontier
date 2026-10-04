@@ -1,0 +1,21 @@
+{
+  "masterSha256": "3adb0589334f5210c96e30df63d670edc4351ffa266a10332b511e4d523dc6af",
+  "status": "REFUSE",
+  "bounds": {
+    "x0": 98,
+    "y0": 201,
+    "x1": 1169,
+    "y1": 1051
+  },
+  "margins": {
+    "left": 98,
+    "right": 84,
+    "top": 201,
+    "bottom": 202
+  },
+  "required": {
+    "x": 101,
+    "y": 101
+  },
+  "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+}

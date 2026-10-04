@@ -1,0 +1,19 @@
+✔ head follows actual pose but source neck remains attached to chest; rigid old transform fails (1.038459ms)
+✔ actual triangle fold is refused, including the reflected profile view (0.115375ms)
+✔ Platypus intake preserves every atlas channel and binds named Earth anatomy; old straight chains fail 3% slack (96.824084ms)
+✔ head views bind the unchanged accepted turnaround and record, and have real source pixels (36.478875ms)
+✔ planning is taken from the native owner; duplicate or missing declarations refuse (0.942375ms)
+✔ changed producer is refused before exporting any evidence; existing output is protected (1.168375ms)
+✔ actual current producer exports 1201 resolved poses each, deterministically and source-bound (1453.750083ms)
+✔ one idle clip continues across roles and pauses in both existing hitstops (1.031416ms)
+✔ support releases and reacquires continuously without changing grounded solves or admitting a refused endpoint (0.575167ms)
+✔ actual current producer has continuous support/role boundaries, exact grounded contacts and frame-rate-independent seeks (986.158833ms)
+✔ right combatant keeps its own idle and releases support only during its own attack (0.519959ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1650.403667

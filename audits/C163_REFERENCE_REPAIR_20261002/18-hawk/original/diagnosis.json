@@ -1,0 +1,274 @@
+{
+  "id": "18-hawk",
+  "nativeReport": {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/native-g2c151/18-hawk/report.json",
+    "sha256": "81370bcdfe0007ccdbd671a588d9eb1d8812ac358fec4c1f71f8ab5677724c0c"
+  },
+  "actualNativeFit": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/fit",
+  "exactNativeInputsVerified": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/fit/record.json",
+      "sha256": "6d730759417941ea3c41d36f0db74ed96fdcd81c8f94070b46917002abb77b43"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/fit/binding.json",
+      "sha256": "4ef04a64736bcecaf6bcbf90be83b8cbf5c29f4bff8744ec07ba0127fb8763cd"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/fit/parts/keyed.png",
+      "sha256": "d619da92f18a8d71ed8bc406a4fd17109601422b221f7b26d105b2cd0dfb1a85"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/fit/parts/atlas/18-hawk.png",
+      "sha256": "9b0338df2b4da71a4d35a4a3d7c7b85ac941d6a03920e1f7fe742948ee5ab8a5"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/packet/master.png",
+      "sha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa"
+    }
+  ],
+  "recomputedOwnershipEqual": true,
+  "inputs": [
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/packet/master.png",
+      "snapshot": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/original/master.png",
+      "sha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa"
+    },
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/packet/authoring.json",
+      "snapshot": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/original/authoring.json",
+      "sha256": "7960e8a73bd670b7e0005dd663980ad8b75a7c3d82354cf93e768a216275c63d"
+    },
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/packet/subject-source.json",
+      "snapshot": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/original/subject-source.json",
+      "sha256": "87c4c9113ec33cb9421c04800eb08dc511fd67c3f1cea70599270491e99b4568"
+    },
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/packet/presence.json",
+      "snapshot": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/original/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/fit/record.json",
+      "snapshot": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/original/record.json",
+      "sha256": "6d730759417941ea3c41d36f0db74ed96fdcd81c8f94070b46917002abb77b43"
+    },
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/fit/declaration.json",
+      "snapshot": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/original/declaration.json",
+      "sha256": "19d30264a776cdadf20b213abf96651cba7211033c92a9f20f962b2355714d6f"
+    }
+  ],
+  "unchangedCap": 0.05,
+  "capOutcome": {
+    "status": "REFUSED",
+    "reason": "remainder island of 1595 px is 8.6% of the remainder (> 5%): structural, not a sliver"
+  },
+  "remainderPixels": 18462,
+  "components": [
+    {
+      "pixels": 15145,
+      "bounds": [
+        494,
+        597,
+        726,
+        796
+      ],
+      "border": {
+        "near-wing-flight": 228,
+        "chest": 221,
+        "tail": 164,
+        "near-thigh": 94,
+        "far-thigh": 91,
+        "near-wing-root": 88,
+        "far-shin": 57
+      },
+      "largest": true,
+      "share": 0.8203336583252085
+    },
+    {
+      "pixels": 1595,
+      "bounds": [
+        641,
+        454,
+        732,
+        501
+      ],
+      "border": {
+        "far-wing-root": 93,
+        "head": 53,
+        "neck-upper": 25
+      },
+      "largest": false,
+      "share": 0.08639367349149604
+    },
+    {
+      "pixels": 1461,
+      "bounds": [
+        352,
+        769,
+        416,
+        819
+      ],
+      "border": {
+        "tail": 81
+      },
+      "largest": false,
+      "share": 0.0791355216119597
+    },
+    {
+      "pixels": 198,
+      "bounds": [
+        840,
+        424,
+        865,
+        449
+      ],
+      "border": {
+        "beak": 39,
+        "head": 13
+      },
+      "largest": false,
+      "share": 0.010724731881702957
+    },
+    {
+      "pixels": 21,
+      "bounds": [
+        649,
+        828,
+        658,
+        836
+      ],
+      "border": {
+        "near-foot": 14
+      },
+      "largest": false,
+      "share": 0.0011374715632109197
+    },
+    {
+      "pixels": 20,
+      "bounds": [
+        673,
+        821,
+        680,
+        832
+      ],
+      "border": {
+        "far-foot": 5
+      },
+      "largest": false,
+      "share": 0.0010833062506770664
+    },
+    {
+      "pixels": 12,
+      "bounds": [
+        625,
+        754,
+        629,
+        759
+      ],
+      "border": {
+        "near-shin": 7,
+        "near-thigh": 4
+      },
+      "largest": false,
+      "share": 0.0006499837504062399
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        722,
+        798,
+        723,
+        799
+      ],
+      "border": {
+        "far-shin": 4
+      },
+      "largest": false,
+      "share": 0.00010833062506770663
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        792,
+        835,
+        792,
+        836
+      ],
+      "border": {},
+      "largest": false,
+      "share": 0.00010833062506770663
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        659,
+        839,
+        659,
+        840
+      ],
+      "border": {},
+      "largest": false,
+      "share": 0.00010833062506770663
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        518,
+        754,
+        518,
+        754
+      ],
+      "border": {
+        "tail": 2
+      },
+      "largest": false,
+      "share": 0.00005416531253385332
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        549,
+        821,
+        549,
+        821
+      ],
+      "border": {
+        "near-foot": 2
+      },
+      "largest": false,
+      "share": 0.00005416531253385332
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        547,
+        822,
+        547,
+        822
+      ],
+      "border": {
+        "near-foot": 2
+      },
+      "largest": false,
+      "share": 0.00005416531253385332
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        545,
+        823,
+        545,
+        823
+      ],
+      "border": {
+        "near-foot": 2
+      },
+      "largest": false,
+      "share": 0.00005416531253385332
+    }
+  ],
+  "sourceRgbaChanged": false
+}

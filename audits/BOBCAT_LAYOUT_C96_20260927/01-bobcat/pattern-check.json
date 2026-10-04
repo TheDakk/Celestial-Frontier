@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bobcat",
+  "masterSha256": "b40c42f9a8316356273a11c952e668c0f82dd5b136bb9cbcc8a82f4dcbc3fa2f",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

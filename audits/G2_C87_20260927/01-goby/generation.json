@@ -1,0 +1,13 @@
+{
+  "id": "01-goby",
+  "name": "Goby",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1fdf7e9e-4cc9-4a7a-8858-f1a52213aceb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7b576b4726075d251f6dea73633ccde8223471c394c5910c841355db0dbf6c8a",
+  "bytes": 1257186,
+  "promptSha256": "21ef1f81f3066edaaacdb5705c2ec933973f9dbd1f3e4c65efb93a3a30043caa",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

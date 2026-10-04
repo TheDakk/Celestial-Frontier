@@ -1,0 +1,22 @@
+{
+  "name": "Bovid goat",
+  "exemplar": "Ibex",
+  "covers": [
+    "Ibex",
+    "Goat",
+    "Mountain Goat",
+    "Chamois",
+    "Tahr",
+    "Serow",
+    "Wild Sheep",
+    "Sheep"
+  ],
+  "bodyPlan": "quadruped",
+  "mustPaint": [
+    "backward-arcing ridged horns",
+    "chin beard; short upright tail",
+    "stocky muscular body on sturdy legs",
+    "plain unmarked coat"
+  ],
+  "why": "8 misleading. Sheep (fleece), Wild Sheep (curled horns) and Mountain Goat (shaggy white) stay caveat."
+}

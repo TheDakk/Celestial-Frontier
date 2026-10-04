@@ -1,0 +1,81 @@
+{
+  "name": "Komodo Dragon",
+  "family": "quadruped",
+  "species": {
+    "name": "Komodo Dragon",
+    "aspect": 3.2,
+    "headFrac": 0.2,
+    "eyes": "small",
+    "posture": "sprawling",
+    "mustRead": [
+      "heavy limbs splayed out sideways",
+      "long muscular tail about half the total length",
+      "long forked yellow tongue and loose scaly neck skin"
+    ]
+  },
+  "genome": {
+    "seed": 1521458378,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 11,
+    "body": 12,
+    "loco": 14,
+    "trait": 14,
+    "size": 4,
+    "diet": 2,
+    "head": 3,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 6,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 1,
+    "habitat": 5,
+    "detail": 3,
+    "accent": 1,
+    "temper": 4,
+    "sense": 6,
+    "repro": 7,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Komodo Dragon"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Komodo Dragon\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1521458378\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 572,
+  "profile": {
+    "id": "lizard",
+    "names": [
+      "Monitor Lizard",
+      "Anole",
+      "Gecko",
+      "Skink",
+      "Alligator Lizard",
+      "Mountain Lizard",
+      "Tegu",
+      "Wall Lizard",
+      "Lizard",
+      "Whiptail",
+      "Agama",
+      "Iguana",
+      "Land Iguana",
+      "Coastal Lizard",
+      "Komodo Dragon",
+      "Gila Monster",
+      "Frilled Lizard"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "tail"
+    ],
+    "notes": "Reptile-specific absence and skin declarations required."
+  }
+}

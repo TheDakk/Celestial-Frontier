@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Auk",
+  "masterSha256": "5d572253fbb6512eabdbbeaaa7bd149cd7b2d140356e6929517a559d4b165af4",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

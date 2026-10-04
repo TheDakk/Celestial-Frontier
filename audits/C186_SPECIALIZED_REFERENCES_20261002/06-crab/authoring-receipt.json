@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c186-manual-reference/v1",
+  "writer": "audits/C186_SPECIALIZED_REFERENCES_20261002/author-crab.mjs",
+  "writerSha256": "e6e669bbc3f6a14ecbbbc635333c9e5b96d9c50d6874ec772ce86f1391e9cc14",
+  "masterSha256": "874590859d6795c66f6f00a50ab5aabe615302d15afe8fe80319c18e57e3b399",
+  "authoringSha256": "cae98a4d766f5aeaecd5d866351a9f637997b1005af0370215018599a7aeb972",
+  "fullSizeInspected": true,
+  "sourceLandmarksReused": false,
+  "sourceLabelsReused": false,
+  "limitations": [
+    "Independent full-size observation on the dorsal source edit; no Fiddler Crab landmarks or labels reused.",
+    "Eight walking legs are visible, four each side, including roots previously obscured by palms. More biological segment bends exist than the shared three-control walking chain; contours retain all painted segments.",
+    "Both complete chelipeds and two eyes are observed. Fixed and moving fingers remain distinct owners; no duplicate claw or walking leg is invented.",
+    "The dorsal view exposes anatomy but does not establish coplanar ground contacts. Ground line marks bottom painted envelope, not eight planted feet; support behavior is a separate mechanical/native question.",
+    "Source framing exceeds middle-half request and some lateral tips have under eight-percent margin; no framing admission is claimed."
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

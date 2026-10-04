@@ -1,0 +1,17 @@
+{
+  "id": "eel",
+  "labelsPath": "audits/G5_DERIVED_LABELS_20260926/eel/labels.png",
+  "labelsPngSha256": "1b07c0600205a24f8d42a025f2d909b4374b156718a39fa2da268a0b32eac0c3",
+  "labelsRgbaSha256": "a2dcc5a575a1e593e187e910fb9309c87aba42bacb1318282569267b4bf9ea76",
+  "receiptPath": "audits/G5_DERIVED_LABELS_20260926/eel/receipt.json",
+  "receiptSha256": "46bb5f83d2c17e2ee84cee22337fc368b1e99c38e6395e7d5d3cb4e6107e3ca1",
+  "width": 1254,
+  "height": 1254,
+  "labels": 13,
+  "painted": 69953,
+  "unowned": 0,
+  "outside": 0,
+  "overwrites": {},
+  "masterAlphaMismatchPixels": 1502563,
+  "identityConservation": "PASS"
+}

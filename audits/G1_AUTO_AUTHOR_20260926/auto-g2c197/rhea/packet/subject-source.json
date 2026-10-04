@@ -1,0 +1,71 @@
+{
+  "name": "Rhea",
+  "family": "biped-bird",
+  "species": {
+    "name": "Rhea",
+    "aspect": 0.9,
+    "headFrac": 0.11,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "long bare neck and long bare legs",
+      "shaggy drooping wings with no visible tail",
+      "small flat head with a broad blunt bill"
+    ],
+    "note": "Taller than long: total height is dominated by neck and legs. Three toes, not two like an ostrich."
+  },
+  "genome": {
+    "seed": 3045737901,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 13,
+    "body": 2,
+    "loco": 9,
+    "trait": 14,
+    "size": 0,
+    "diet": 1,
+    "head": 7,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 10,
+    "habitat": 11,
+    "detail": 0,
+    "accent": 2,
+    "temper": 4,
+    "sense": 1,
+    "repro": 1,
+    "life": 0,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Rhea"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Rhea\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3045737901\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 245,
+  "profile": {
+    "id": "flightless-bird",
+    "names": [
+      "Ostrich",
+      "Rhea",
+      "Emu",
+      "Cassowary",
+      "Kiwi",
+      "Kakapo"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "peck"
+    ],
+    "notes": "No aerial attack. Wings do not imply flight."
+  }
+}

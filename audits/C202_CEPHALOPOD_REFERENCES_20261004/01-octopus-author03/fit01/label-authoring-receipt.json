@@ -1,0 +1,364 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    },
+    {
+      "region": "eye-near",
+      "joint": "eyeNear",
+      "owner": "eye-near"
+    },
+    {
+      "region": "eye-far",
+      "joint": "eyeFar",
+      "owner": "eye-far"
+    },
+    {
+      "region": "siphon",
+      "joint": "siphon",
+      "owner": "siphon"
+    },
+    {
+      "region": "arm0-tip",
+      "joint": "arm0Seg2",
+      "owner": "arm0-tip"
+    },
+    {
+      "region": "arm0-middle",
+      "joint": "arm0Seg1",
+      "owner": "arm0-middle"
+    },
+    {
+      "region": "arm0-base",
+      "joint": "arm0Seg0",
+      "owner": "arm0-base"
+    },
+    {
+      "region": "arm1-tip",
+      "joint": "arm1Seg2",
+      "owner": "arm1-tip"
+    },
+    {
+      "region": "arm1-middle",
+      "joint": "arm1Seg1",
+      "owner": "arm1-middle"
+    },
+    {
+      "region": "arm1-base",
+      "joint": "arm1Seg0",
+      "owner": "arm1-base"
+    },
+    {
+      "region": "arm2-tip",
+      "joint": "arm2Seg2",
+      "owner": "arm2-tip"
+    },
+    {
+      "region": "arm2-middle",
+      "joint": "arm2Seg1",
+      "owner": "arm2-middle"
+    },
+    {
+      "region": "arm2-base",
+      "joint": "arm2Seg0",
+      "owner": "arm2-base"
+    },
+    {
+      "region": "arm3-tip",
+      "joint": "arm3Seg2",
+      "owner": "arm3-tip"
+    },
+    {
+      "region": "arm3-middle",
+      "joint": "arm3Seg1",
+      "owner": "arm3-middle"
+    },
+    {
+      "region": "arm3-base",
+      "joint": "arm3Seg0",
+      "owner": "arm3-base"
+    },
+    {
+      "region": "arm4-tip",
+      "joint": "arm4Seg2",
+      "owner": "arm4-tip"
+    },
+    {
+      "region": "arm4-middle",
+      "joint": "arm4Seg1",
+      "owner": "arm4-middle"
+    },
+    {
+      "region": "arm4-base",
+      "joint": "arm4Seg0",
+      "owner": "arm4-base"
+    },
+    {
+      "region": "arm5-tip",
+      "joint": "arm5Seg2",
+      "owner": "arm5-tip"
+    },
+    {
+      "region": "arm5-middle",
+      "joint": "arm5Seg1",
+      "owner": "arm5-middle"
+    },
+    {
+      "region": "arm5-base",
+      "joint": "arm5Seg0",
+      "owner": "arm5-base"
+    },
+    {
+      "region": "arm6-tip",
+      "joint": "arm6Seg2",
+      "owner": "arm6-tip"
+    },
+    {
+      "region": "arm6-middle",
+      "joint": "arm6Seg1",
+      "owner": "arm6-middle"
+    },
+    {
+      "region": "arm6-base",
+      "joint": "arm6Seg0",
+      "owner": "arm6-base"
+    },
+    {
+      "region": "arm7-tip",
+      "joint": "arm7Seg2",
+      "owner": "arm7-tip"
+    },
+    {
+      "region": "arm7-middle",
+      "joint": "arm7Seg1",
+      "owner": "arm7-middle"
+    },
+    {
+      "region": "arm7-base",
+      "joint": "arm7Seg0",
+      "owner": "arm7-base"
+    },
+    {
+      "region": "mantle",
+      "joint": "mantle",
+      "owner": "mantle"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "contour-arm0seg2",
+      "joint": "arm0Seg2",
+      "owner": "arm0-tip"
+    },
+    {
+      "region": "contour-arm0seg1",
+      "joint": "arm0Seg1",
+      "owner": "arm0-middle"
+    },
+    {
+      "region": "contour-arm0seg0",
+      "joint": "arm0Seg0",
+      "owner": "arm0-base"
+    },
+    {
+      "region": "contour-arm1seg2",
+      "joint": "arm1Seg2",
+      "owner": "arm1-tip"
+    },
+    {
+      "region": "contour-arm1seg1",
+      "joint": "arm1Seg1",
+      "owner": "arm1-middle"
+    },
+    {
+      "region": "contour-arm1seg0",
+      "joint": "arm1Seg0",
+      "owner": "arm1-base"
+    },
+    {
+      "region": "contour-arm2seg2",
+      "joint": "arm2Seg2",
+      "owner": "arm2-tip"
+    },
+    {
+      "region": "contour-arm2seg1",
+      "joint": "arm2Seg1",
+      "owner": "arm2-middle"
+    },
+    {
+      "region": "contour-arm2seg0",
+      "joint": "arm2Seg0",
+      "owner": "arm2-base"
+    },
+    {
+      "region": "contour-arm3seg0",
+      "joint": "arm3Seg0",
+      "owner": "arm3-base"
+    },
+    {
+      "region": "contour-arm3seg1",
+      "joint": "arm3Seg1",
+      "owner": "arm3-middle"
+    },
+    {
+      "region": "contour-arm3seg2",
+      "joint": "arm3Seg2",
+      "owner": "arm3-tip"
+    },
+    {
+      "region": "contour-arm4seg0",
+      "joint": "arm4Seg0",
+      "owner": "arm4-base"
+    },
+    {
+      "region": "contour-arm4seg1",
+      "joint": "arm4Seg1",
+      "owner": "arm4-middle"
+    },
+    {
+      "region": "contour-arm4seg2",
+      "joint": "arm4Seg2",
+      "owner": "arm4-tip"
+    },
+    {
+      "region": "contour-arm5seg0",
+      "joint": "arm5Seg0",
+      "owner": "arm5-base"
+    },
+    {
+      "region": "contour-arm5seg1",
+      "joint": "arm5Seg1",
+      "owner": "arm5-middle"
+    },
+    {
+      "region": "contour-arm5seg2",
+      "joint": "arm5Seg2",
+      "owner": "arm5-tip"
+    },
+    {
+      "region": "contour-arm6seg0",
+      "joint": "arm6Seg0",
+      "owner": "arm6-base"
+    },
+    {
+      "region": "contour-arm6seg1",
+      "joint": "arm6Seg1",
+      "owner": "arm6-middle"
+    },
+    {
+      "region": "contour-arm6seg2",
+      "joint": "arm6Seg2",
+      "owner": "arm6-tip"
+    },
+    {
+      "region": "contour-arm7seg0",
+      "joint": "arm7Seg0",
+      "owner": "arm7-base"
+    },
+    {
+      "region": "contour-arm7seg1",
+      "joint": "arm7Seg1",
+      "owner": "arm7-middle"
+    },
+    {
+      "region": "contour-arm7seg2",
+      "joint": "arm7Seg2",
+      "owner": "arm7-tip"
+    },
+    {
+      "region": "contour-head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "contour-mantle",
+      "joint": "mantle",
+      "owner": "mantle"
+    },
+    {
+      "region": "final-arm4seg0",
+      "joint": "arm4Seg0",
+      "owner": "arm4-base"
+    },
+    {
+      "region": "final-arm4seg1",
+      "joint": "arm4Seg1",
+      "owner": "arm4-middle"
+    },
+    {
+      "region": "final-arm3seg0",
+      "joint": "arm3Seg0",
+      "owner": "arm3-base"
+    },
+    {
+      "region": "final-arm3seg1",
+      "joint": "arm3Seg1",
+      "owner": "arm3-middle"
+    },
+    {
+      "region": "final-arm0seg1",
+      "joint": "arm0Seg1",
+      "owner": "arm0-middle"
+    },
+    {
+      "region": "final-arm0seg0",
+      "joint": "arm0Seg0",
+      "owner": "arm0-base"
+    },
+    {
+      "region": "final-arm1seg0",
+      "joint": "arm1Seg0",
+      "owner": "arm1-base"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    5422,
+    3553,
+    1229,
+    2868,
+    3665,
+    8392,
+    13805,
+    4974,
+    10455,
+    16683,
+    4445,
+    9892,
+    10896,
+    5575,
+    11720,
+    13768,
+    4582,
+    5917,
+    12455,
+    3740,
+    6492,
+    8375,
+    4373,
+    6832,
+    10570,
+    3647,
+    6257,
+    8507,
+    44962,
+    15617
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "ba63ee74a77cb88f8ff6182c285801ec637f7d57aedb32189749f7b82c3c65eb",
+  "intake": {
+    "erodedPixels": 10964,
+    "despilledPixels": 77,
+    "unresolvedEdgePixels": 1
+  },
+  "remainderPart": "body"
+}

@@ -1,0 +1,9 @@
+{
+ "id": "23-whip-snake",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part segment-9 owns 1.41 % of the paint (reference 5.96 %)"
+ ],
+ "semanticPresence": null
+}

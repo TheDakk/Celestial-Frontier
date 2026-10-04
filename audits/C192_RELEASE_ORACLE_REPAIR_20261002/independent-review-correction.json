@@ -1,0 +1,6 @@
+{
+  "finding": "Three evidence-chain-tools pins still expected120; corrected to121 with exact comparisons retained",
+  "file": "port/v2/tests/evidence-chain-tools.test.ts",
+  "fullProfileRetried": false,
+  "nativeRuns": 0
+}

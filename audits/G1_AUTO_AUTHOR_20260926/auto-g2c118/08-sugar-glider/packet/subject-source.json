@@ -1,0 +1,68 @@
+{
+  "name": "Sugar Glider",
+  "family": "quadruped",
+  "species": {
+    "name": "Sugar Glider",
+    "aspect": 1.8,
+    "headFrac": 0.26,
+    "eyes": "prominent",
+    "posture": "flying",
+    "mustRead": [
+      "skin membrane stretched from wrist to ankle",
+      "huge black eyes with dark facial stripe to the nose",
+      "long bushy tail as long as the body"
+    ]
+  },
+  "genome": {
+    "seed": 1645104022,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 17,
+    "body": 13,
+    "loco": 2,
+    "trait": 5,
+    "size": 1,
+    "diet": 0,
+    "head": 0,
+    "limbs": 1,
+    "skin": 5,
+    "tail": 0,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 7,
+    "habitat": 8,
+    "detail": 4,
+    "accent": 4,
+    "temper": 0,
+    "sense": 2,
+    "repro": 5,
+    "life": 1,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sugar Glider"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sugar Glider\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1645104022\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"5\"]]]]",
+  "index": 570,
+  "profile": {
+    "id": "gliding-mammal",
+    "names": [
+      "Flying Squirrel",
+      "Sugar Glider",
+      "Colugo"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": "Gliding membrane needs its own observed geometry; ordinary quadruped legs do not certify gliding."
+  }
+}

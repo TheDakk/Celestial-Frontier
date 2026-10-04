@@ -1,0 +1,25 @@
+{
+ "id": "24-termite",
+ "family": "insect",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Source join continuity: unique known source owners\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:7:40)\n    a",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 29%)",
+    "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 1.6%)"
+   ]
+  }
+ ]
+}

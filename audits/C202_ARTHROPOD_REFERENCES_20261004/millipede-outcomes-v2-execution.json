@@ -1,0 +1,10 @@
+{
+  "args": [
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "apps/game/src/motion/compact-myriapod.test.ts"
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "reason": "Fix unrun malformed regex literal in new negative-control expectation; first parse failure retained"
+}

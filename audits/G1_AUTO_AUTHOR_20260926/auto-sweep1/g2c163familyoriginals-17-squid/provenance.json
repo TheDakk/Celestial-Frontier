@@ -1,0 +1,139 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c163familyoriginals-17-squid",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "2b3fc8cd8f5fc8ffadd635162f15101f444ac4a1d93927e6dbd8c9ba5e7f9ef0",
+ "subjectSourceSha256": "8c7ee09cdb8a3928daa47b934b6ba6cf6e67744911cb54a8de97a86a90d60922",
+ "identity": {
+  "name": "Squid",
+  "family": "cephalopod",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Squid\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1055924693\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "seed": 1055924693,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c202-qualified-octopus",
+  "authoringSha256": "0a36b6dc625f34009d3b5d1c6c1262959e0388fcb536fb831ec51488e2814431",
+  "masterSha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+ },
+ "habitat": {
+  "profileId": "cephalopod",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "22935aae923bebded3f3fae3f8608629f56923f64690646ed5c65f2b8ce08855",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group cephalopod (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1283,
+     "class": "rear",
+     "attach": {
+      "x": 122.8,
+      "y": 177.3,
+      "relX": 0.01,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0323,
+     "class": "top",
+     "attach": {
+      "x": 235,
+      "y": 190,
+      "relX": 0.8,
+      "relY": 0.3
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0692,
+     "class": "front",
+     "attach": {
+      "x": 261,
+      "y": 203,
+      "relX": 0.99,
+      "relY": 0.5
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0212,
+     "class": "top",
+     "attach": {
+      "x": 253.6,
+      "y": 192.9,
+      "relX": 0.93,
+      "relY": 0.35
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0479,
+     "class": "front",
+     "attach": {
+      "x": 264,
+      "y": 217.5,
+      "relX": 1.01,
+      "relY": 0.72
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.1105,
+     "class": "front",
+     "attach": {
+      "x": 255.1,
+      "y": 236.1,
+      "relX": 0.94,
+      "relY": 1
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0456,
+     "class": "limb-down",
+     "attach": {
+      "x": 226.5,
+      "y": 233,
+      "relX": 0.74,
+      "relY": 0.95
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "top": 2,
+    "front": 3,
+    "limb-down": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "c202-qualified-octopus",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

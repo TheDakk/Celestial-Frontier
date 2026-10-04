@@ -1,5 +1,381 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+> **Active I5 certificate — combined C163 product measured 2026-10-02.** Signed product `20e80c9127b18eb4149d500ca3f688ca88bff188` contains the 45 accepted WebP arenas, contact-joint effects and low-slung sprawler profile. ONE fresh epoch passed three calibrations, one certification and all four raw verifiers with unchanged limits and zero retries. The selector binds the new nine-file evidence inventory; independent replay passes. The final develop profile on signed `cfb683092` passes (5,976 tests plus all static owners), including the C173 real-Bat frame regression; the earlier activation profile is retained. Evidence: `audits/C163_I5_EPOCH_20261002`. For the develop gate, move `tools/local-image-generation/node_modules` aside and restore it in a guaranteed finalizer. The prior C132 proof remains historical and unchanged in `audits/C132_I5_EPOCH_20261002`; portable scoring paths and exact `__local_ai/` service-worker exclusion remain in the measured product.
+
+> **Retained local I5 certificate — historical code 2026-09-27.** Product `d20c2716604209a67359d4f16cfaac504347963f` (pre-rewrite ID) passed three independent calibrations and one certification, all raw-verifiers passing, with zero retries and all historical numeric limits unchanged. The active selector selected this September proof until the separate October 2 epoch superseded it. The browser-free producer owner verifies all four raw reports, screenshots, generated instrument, source/phase/browser identity, raw-derived samples, unchanged v1 ruler and current build/measurement hashes. Missing, changed or stale evidence is RED. The historical v1 budget and collector are preserved; this activation does not run or approve a hosted/full release chain. Evidence: `audits/I5_IDB_OWNERS_20260927`.
+
+> **I5 memory repair (matches code 2026-09-27).** The ca46 carrier-overflow epoch and875 compact-carrier epoch both remain stopped. The latter completed phone collection and exposed retained paint/audio memory, shared-cache overages and early error publication; desktop stopped on a foreground-service deadline. Default painted sources now release decoded render inputs when idle, flatten PNG base64, and reserve sibling thumbnails inside the original broker caps. Reveal listeners exist only for a blocked pending queue. V2 error publication requires both actual owners settled. Focused controls and native heap diagnosis are not a certificate; audio, foreground, padded-raster lifetime and transient IndexedDB callback ownership are now repaired, and the d20c271 epoch above completed the required fresh3+1 proof. See `audits/I5_BACK_REPAIR_20260927/memory-repair.md`.
+
+> **I5 Back repair (2026-09-27).** The stopped c506 phone Back failure was a real product occlusion: z40 pinned crafting chip received the Back center click and opened Shipyard. Chip z21 now stays below panels; actual Back restores row777 focus and the uncovered chip still opens Shipyard. Restoring z40 fails the native check. V2 now derives both keyboard-entry paths from observed controls (the post-Back path still had four Tabs). All63 instrument controls pass; omitting the second patch fails. Historical v1, all78 outcomes and40 ceilings remain unchanged. Evidence: `audits/I5_BACK_REPAIR_20260927`. Dakk renewed the request to fix I5 completely and keep art flowing; one changed-source local epoch follows the signed repair, with first-red stop and no retry/resume of any stopped epoch. That September proof is retained as history; the selector now admits the separate October 2 epoch described above.
+
+Local unmorphed archetype review (matches2026-09-22): `node tools/battle2-proof/archetype-native-runner.mjs LEFT_FIT RIGHT_FIT NEW_OUTPUT SCRIPT_JSON`. On macOS request out-of-sandbox browser execution on the first attempt. The harness records exact source/world/script bytes, fits published animated meshes to unchanged medium bands, and reports per-rig sampling/update p95 plus whole-stage p95; morph and guardian requests are outside its scope. Acceptance still requires exact rest/static rows, no film refusals, complete ten-second capture,570encoded frames and desktop3.5ms per-rig. Salmon evidence: `audits/ARCHETYPE_REPAIRS_20260922/02-fish`; human art review remains separate.
+
+> **Explicit I5 v2 epoch (2026-09-25).** `node tools/compendiummem-v2.mjs --source=<isolated-clean-root> --head=<full-product-sha> --out=<new-absolute-directory>` is a separately authorized three-calibration/one-certification path. It preserves all v1 budget/sample/tool bytes and uses `budgets/compendium-memory-v2-policy.json` with zero per-counter growth allowance. Its materialized v2 evaluator retains native collection/outcomes; an over-limit calibration is a regression and stops without certification or retry. The live v2 budget is ignored evidence under the target's `apps/game/smoke/compendium-memory-v2.json`, emitted as an active artifact only after three independent, raw-verified samples. Product head and signed instrument head are recorded separately so both phases measure identical committed product bytes. The active-v2 selector explicitly replaces historical v1 authority comparison in browser-free profiles after a complete successful epoch; historical v1 collection/CI commands are preserved and no hosted attempt is authorized. The September27 v2 foreground repair activates the target, brings the actual page forward, then enables focus emulation; exact arm/rAF/later-timer ownership and the original5000ms service deadline are unchanged (`audits/I5_FOREGROUND_20260927`). See `audits/I5_V2_EPOCH_20260925/README.md` at repo root for exact authorized source, command, limits and outcomes. The September25 epoch stopped at calibration1 on painted thumbnail ownership observability; no active v2 budget or certificate was produced, and its invocation must not be retried.
+
+
+Local unmorphed archetype review (matches2026-09-22): `node tools/battle2-proof/native-runner.mjs LEFT_FIT RIGHT_FIT NEW_OUTPUT SCRIPT_JSON`. On macOS request out-of-sandbox browser execution on the first attempt. The harness records exact source/world/script bytes, fits published animated meshes to unchanged medium bands, and reports per-rig sampling/update p95 plus whole-stage p95; morph and guardian requests are outside its scope. Acceptance still requires exact rest/static rows, no film refusals, complete ten-second capture,570encoded frames and desktop3.5ms per-rig. Salmon evidence: `audits/ARCHETYPE_REPAIRS_20260922/02-fish`; human art review remains separate.
+
+## Local AI species references and optional offline package — matches code as of 2026-09-09
+
+The default-off `?localai=1` preview connects ordinary Land, Survey and Notifications to local
+browser inference and durable exact originals. Full-painting inspection supports Fit painting,
+native-pixel panning and Survey access after reload. Existing gameplay, full species identities,
+Earth anatomy, biome mapping and accepted base controls remain authoritative.
+
+The canonical Earth request now binds six separately hashed anatomical references, in exact
+resident order: Civet, Persimmon, Platypus, Frog, Devil’s Club and Cranberry. Original image dimensions
+and full genome identities are verified before bounded 480×320 preparation; each reference has its
+own VAE encoding and distinct token group. The text recipe labels each slot. These are soft model
+inputs, not a box/mask/count constraint or proof that the output contains the correct species.
+The prior failed species reviews remain intact; native comparison and quality acceptance are
+separate evidence. [Current source and gates](../../LOCAL_AI_GENERATION.md) and the
+[species/mobile packet](../../audits/AI_SPECIES_MOBILE_20260909/README.md) own that boundary.
+
+The static runtime now includes the six reference assets and exact locked ORT Asyncify/Tokenizers
+closure:37,451,014bytes (35.72MiB), excluding model weights. `mobile-pack.mjs` assembles it through
+the established Vite configuration and exact PWA inventory. Current package03 builds and
+independently verifies at56,529,354bytes (53.91MiB),97files; its same-size successor envelope is
+113,058,708bytes (107.82MiB). Its external manifest SHA is
+`bfd3fba993741a787ddb472336488427e43f64b2a6020eb804917683759c6da0`. The normal generated worker remains byte-identical to the prior signed
+checkpoint. Only this optional lane forwards explicit pinned model GET/Range requests, uncached,
+and refuses any candidate CacheStorage write that would take retained build response payloads
+above256MiB. Ordinary128MiB pack admission and client-build ownership remain unchanged.
+
+OPFS model installation/resume remains explicit, separate from the pack, and requires exact
+complete-file verification before inference. Local model storage stays open during progress so
+Pause remains reachable. The full model still totals6,691,020,416bytes (6.23GiB); browser metadata,
+retained paintings and live GPU/RAM are separate. Full-model native01/02 both remain aggregate FAIL.
+Attempt02 nevertheless proved all20 files /6,392 chunks, real Range resume with exact activated
+service-worker control, true offline normal reload after both servers closed, full native rehash
+and all20 Blob reads with independent head/tail digests. Its final module observer failed. The
+optional worker now admits an explicit empty-ID import only from a persisted `worker:true` owner
+of a retained build, still enforcing exact inventory and rejecting missing/window/stale owners.
+Package03 and separate native04 passed: the exact worker module graph reached its pre-GPU guard
+online and after true offline reload, and95 cached assets plus exact lazy WASM bytes verified.
+No model storage/copy, WASM instantiation, GPU/model work or inference occurred in that small proof;
+existing normal worker bytes remain unchanged. Physical-phone/CDN/thermals and generated species
+acceptance remain open. This is a
+working-tree, nonpublishable diagnostic package, not release or phone qualification. [Exact builds, preserved first failure and controls](../../audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/README.md)
+record all three package versions. The current worker-import fix and required release text passed
+12 targeted package/reply controls,34 existing PWA controls, all3 TypeScript programs and root
+validation before build03, with426 build source hashes unchanged. Earlier8 package/HTTP and8 pure
+controls remain bound to package01; [native results](../../audits/AI_SPECIES_MOBILE_20260909/MOBILE_NATIVE_RUNNER.md)
+keep both full-model FAIL aggregates and the separate native04 PASS distinct.
+See [tool commands](../../tools/local-image-generation/README.md) to rebuild from source with a new
+output and external manifest SHA. No hosted actions or additional player software installation
+are part of this assembly tooling.
+
+## Earth layout geometry ownership — matches code as of 2026-09-09
+
+AppChrome's `surfaceLayoutRects()` supplies frozen detached visible rectangles for its existing
+ordered topbar/search/objective/scene-actions elements and dock. Main owns the canvas and
+Planetside rectangle, retaining visible Planetside → dock → canvas fallback, scale conversion,
+clamping and the same12px scene clearance. Disposed chrome returns null. The direct element
+visibility predicate is unchanged; this does not newly qualify hidden ancestors or native devices.
+Literal and dynamic chrome lookups in the Earth adapter are rejected by the wiring guard.
+139 focused tests, all3 TypeScript programs and root validation passed; no layout redesign or
+new native run. [Integration repairs and retained failures](../../audits/DEVELOP_INTEGRATION_20260909/README.md).
+
+## Layered Earth riverbank — matches local code as of 2026-09-08
+
+`?livingvista=1` admits only the complete canonical Earth request, environment/profile and
+ordered 19-genome roster. It pairs a painted rainy riverbank with a separate transparent layer
+of six existing named residents: Civet, Platypus, Frog, Persimmon, Cranberry and Devil’s Club.
+An explicit temperate-profile check requires their fauna families and plant forms. Current
+named Earth art owners preserve anatomy and colors; original genomes and encounters do not change.
+The documented global D-9e generation-filter gap remains a separate unresolved issue.
+
+Both 960×430 layers publish together; pending, failed and option-off routes retain the original
+opaque vista. The pair fits uncropped between measured upper chrome and the Biosphere strip with12px
+clearance. Existing ResizeObserver boundaries republish both sprites together, and completion of
+the final landing camera impulse restores the resting layout after canvas translation. Only successful
+Earth painting hides its own decorative globe and cloud deck; native controls/camera retain ownership. This option defers to `planetturn=1` and
+`avpilot=1`. The background is hash/dimension checked; bounded workers, generation/epoch fences
+and retryable scene leases govern publication and cleanup. No layered CPU cache is added.
+Two full RGBA canvases use 3,302,400 bytes before temporary painter, decode and GPU allocations.
+This is static, relative scene placement, not articulated animation or a claim that the existing
+creature painters meet the approved rich-detail target. No runtime AI or player authoring installs.
+[Implementation, mapping and verification limits](../../audits/AV_EARTH_LAYERED_SCENE_20260908/README.md) own acceptance results.
+
+## Painted Mars composition — matches local code as of 2026-09-08
+
+After exact painted-Mars success or a cache hit, the native scene hides only its own decorative
+globe Sprite and centers the complete uncropped panorama. The world container, camera and native
+Survey/Leave controls retain ownership. Pending/default/failed-image paths keep the old globe;
+Earth's finite-turn fallback is untouched. The existing image and bounded resources are unchanged.
+
+216 focused tests, all3TS/art/static/root and fresh phone/desktop/default/blocked-image native
+checks passed. Actual forced-globe paint was rejected with exact restoration; control rectangles
+and hit results stayed unchanged. Survey/policy/cache/exit checks passed. Both native observer
+setup failures remain retained. The phone keeps a full-width band with large starfield gaps;
+no immersive/animated scene or physical-device/human acceptance is implied. The new local preview
+is http://127.0.0.1:56749/?paintedvista=1, dirty-local-only/publishable:false; package/boot/Guide PASS.
+[Composition audit](../../audits/AV_PAINTED_MARS_COMPOSITION_20260908/README.md) owns the exact evidence and prior failure limits. End this bounded
+Mars layout pass; next advance canonical creature/inhabited scene work within the painted direction.
+
+
+## Painted Mars vista — matches local code as of 2026-09-08
+
+`?paintedvista=1` selects one static painted panorama for the complete barren canonical Mars
+request (134#3 in Sol), with exact environment/profile/options and variant cache identity.
+The original dune artwork follows Dakk's approved biome direction; 960×430 WebP, 127,088 bytes.
+Hash/dimension checks, stale-work cancellation, existing scene texture ownership and one-entry
+CPU canvas caching provide canonical-worker fallback on current failure. No Earth composite,
+generation, creature identity or control placement is changed. This is not animated scenery.
+
+Final97 focused tests, all3TS/art/static/root checks, fixed phone/desktop native paint/restoration
+and native exits passed. Blocking only the exact image request produced visible canonical fallback
+without a retry. Reduced/EffectsOff keep the static art. Full admission, physical-device and human
+art acceptance remain open; the older globe and panorama composition are visibly unfinished.
+[Current preview](http://127.0.0.1:56099/?paintedvista=1) is local-only/publishable:false, with package
+and native boot/Guide checks passed. [Evidence and limits](../../audits/AV_PAINTED_MARS_20260908/README.md).
+
+
+Execution priority2026-09-07: Dakk requested playable graphics/audio progress before exhaustive
+U3/U4 polish; see ROADMAP.md and audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md.
+The U2 correction was signed as837db4a; its static run stopped on one unused test binding
+after3494 tests passed (1 skip), before any browser stage. That binding is corrected.
+The current audiovisual batch implements finite native Earth/Scout landing and audio, canonical
+Chronicle battle motion, and a repair for actual Explorer Frontier Resolve projection. Read
+`../../audits/AV_PLAYABLE_IMPLEMENTATION_20260907/README.md` for exact checks/captures/limitations.
+U2 admission, anatomical animation and human visual/listening/device acceptance remain open.
+
+## Canonical Earth turn/material study — matches local code as of 2026-09-08
+
+`?planetturn=1` admits the exact canonical Earth surface on WebGL: one unlit768×384 canonical
+atlas and a finite18-second/0.22-radian surface yaw under fixed lighting and separate clouds.
+Add `&planetmaterial=1` for bounded analytic grain/relief, ocean sheen and an inner atmosphere
+rim. One shared application program/group resets material per accepted view; per-scene owners
+retire at exit. Reduced Motion/Effects Off use the standard globe. Use either flag without
+`avpilot`, whose separate Earth comparison can hide the globe.
+
+123 focused tests, static/art/root checks and fresh fixed phone/desktop material/retirement
+diagnostics passed. This remains a subtle technical proof below the approved painted finish,
+not full rotation, physical-phone qualification or admission. Prior combined resize/navigation
+failure and full certificate blockers remain open. Exact results and next visual priority:
+[material audit](../../audits/AV_EARTH_SURFACE_MATERIAL_20260908/README.md).
+
+## Starter Charter audio — matches code as of 2026-09-08
+
+The optional audiovisual pilot maps its existing700ms confirmation to successful native Starter
+Charter acceptance, including immediate completion. It captures the shared-context activation
+before persistence and consumes it once after exact publication/barrier release on the same route.
+Pilot Play, Sound/Effects and lifecycle guards apply. Duplicate/refused/failed paths stay silent.
+Corrected develop331files/3727tests/1skip and scoped native audio checks PASS; original observer
+failures remain in `../../audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/README.md`.
+The separate 2026-09-08 sticky-title paint correction gives `.panel .sheet-header` an opaque
+`#0a101e` background and a `::after` underlay inset `-14px -58px 0 -14px`, with `z-index:-1`
+and `pointer-events:none`; forced colors uses `Canvas`. Existing title/Close siblings, geometry,
+scroll/padding, focus and Survey remain unchanged. Scoped native phone/desktop verification and title inspection PASS in the
+[Charters header/preview audit](../../audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md).
+No new media or hosted update.
+
+## Protostar birth disk — matches code as of 2026-09-08
+
+An explicit PROTO system branch now displays the original tilted dusty disk and warm core.
+`apps/game/src/system-protostar.ts` bakes one420×240 canvas, mounted at140×80 world units through
+existing sceneTexture ownership; no ordinary stellar close-up surface is added for protostars.
+Static identity remains under Reduced Motion/Effects Off. Current source/check evidence:
+`../../audits/AV_PROTOSTAR_DISK_20260908/`. Broader stellar art and human acceptance remain open.
+
+## Magnetar system fields — matches code as of 2026-09-08
+
+The live system renderer restores the canonical MAG-only pair of static blue magnetic-field
+ellipses between the existing beams and white-hot core. NS and other stars remain unchanged.
+`apps/game/src/system-star-field.ts` owns the geometry; normal scene teardown destroys both
+contexts. Reduced Motion and Effects Off retain this static stellar identity. No texture,
+seeded content, save or gameplay changes. Current verification and retained first failures:
+`../../audits/AV_MAGNETAR_FIELD_20260908/`.
+
+## U1 shell / U2 sheet checkpoint — matches code as of 2026-09-06
+
+Dakk authorized U2–U4 and compact notifications when space is tight. The implemented allocation
+reserves each visible sheet header/insets plus44px body and Survey’s72px biosphere, applies native
+scroll clearance and uses final strip height instead of stale position. Standalone Planetside
+measures actual painted upper controls. Cramped portrait layouts clip passive hint/context paint
+while preserving accessibility text and restoring natural dependent measurements before every
+allocation. Paint returns with room, including after Close; full notice/history/timer owners remain.
+Signed3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d passed complete develop static (322files,
+3479tests,1skip). Small-phone passed all3 Capture outcomes, caption preferences/restoration and
+the exact Charters Close/frame receipt with an empty atomic Objective audit. It later stopped
+INSTRUMENT RED/zero product findings: the top-clearance setup toggled an already-closed Survey
+open and then waited5000ms for it to close. Large-phone and Slice were NOT RUN. The nine-carrier
+checkpoint and named terminal/browser read[]/[] retain this failure; no full U2 PASS is claimed.
+
+Dakk resumed on2026-09-07. The re-derived tool correction observes strict Survey state, closes
+only when open with one trusted activation and the existing5000ms strict-false wait, then binds
+one named fonts/two-frame receipt. Painted controls define clearance while AppChrome retains its
+distinct full-wrapper measurement. Only band-fixture fixed rows omit the separately measured
+injected trail. Seven named fixture/restoration/cleanup boundaries preserve the first error;
+failed cleanup cannot authorize dependent geometry. Thresholds and product bytes are unchanged.
+Claude's full response and original unapplied draft remain immutable. Independent source review
+CLEAR;99 focused tests, all3 TypeScript programs and root validate/50 fingerprints PASS after two
+retained test-preparation corrections. The signed837db4a attempt stopped in static verification on the test binding above; no native
+U2 stage ran. Read ROADMAP.md and audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md for current status;
+audits/UI_U2_NEXT_SESSION_20260906.md preserves the unapplied U3/U4 preparation map.
+
+The current bounded correction measures every visible portrait sheet's header/insets plus44px
+body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted
+upper chrome. Compact notices use4px vertical and8px horizontal padding. When capacity remains
+tight, passive hint and context paint may yield while preserving their text. Every decision starts
+with natural guidance; the dependent caption is measured with a temporary native hint-height
+projection, restored exactly afterward. Glass independently measures both captions and available
+space, tests their actual text preferences, and requires exact restoration. After native Close,
+remaining clipping is valid only when independent geometry still proves pressure. Earlier generic
+preference and native target-size/clipping checks remain strict. Focused84 checks, all3 TypeScript
+programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
+for that sheet-only preparation was aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe.
+Current audiovisual producer identity is recorded in the implementation manifest; measurement
+4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 and ceilings are unchanged.
+The development draft has85 ordered bullets; the current digest is recorded in
+`../../audits/AV_PROTOSTAR_DISK_20260908/`. The previous landing/battle
+checkpoint retains its earlier354381f4 digest in its own immutable audit.
+These scoped results are not a fresh Compendium certificate.
+
+All prior failures remain retained and both older unknown causes remain OPEN. No U2–U4
+completion, physical UAT, formal audiovisual acceptance or hosted closure is claimed.
+Follow the [U2 audit](../../audits/UI_U2_SHEETS_20260906.md),
+[program](../UI_PARITY_PROGRAM_U1_U4.md) and [live handoff](../../ROADMAP.md).
+
+The normal `/` game (without `avpilot`) uses the shared token/shell owners, local Inter,
+the production layout adapted to icon-only phone rows and wide side controls/top-center Prime/
+bottom-right utilities, right Objective under Search, and saved notification read state described in
+`../../UI_PRESENTATION.md`. Phone Search now aligns upper-right with the visible placeholder Search;
+wide name and text pills fit their labels with bounded `width:max-content`, preserving Health's
+meter geometry. Dakk replaces Charters with Survey on every platform. Compact upper boards are
+Survey (🔭), Compendium, Prime, Shipyard and Atlas; only Records (including Achievements),
+Notifications, Guide and Settings remain as small centered lower utilities. The dock uses ten
+half-columns across at most 320px, bounded by viewport width minus safe sides and 20px. Board
+width is one fifth of dock width minus 4px with a 44px minimum; lower targets/faces stay 44px/36px.
+Panel-open short landscape retains the header safe-column cap:
+`min(320px, (viewport width − safe left − safe right − 36px) / 2)`. Default height remains 92px.
+Wide Survey replaces Charters above Compendium at upper-left, with Charts below; compact Charts
+stays in Settings. The dock now contains the left rail, which becomes boxless on compact layouts
+to place Survey first and hide its duplicate rail Compendium. The scene-actions group holds only Charts.
+Objective becomes the sole native Charters opener after duplicate dock/rail shortcuts are removed.
+It uses existing keyboard/panel/focus ownership, stays available while landed and shows Charters
+when no objective is active. Objective progress, Charter gameplay and the Survey handler are unchanged.
+Scoped verification PASS in six fresh contexts: 390×844, 320×740, 430×932, 667×375 Settings-open,
+834×1112 and 1440×900. Native Objective touch/mouse/Enter/Space opening and Close/Escape focus
+return passed. Dakk accepted the U1 layout for UAT on 2026-09-06 at product
+`053ef439774520577071f0ca50887337dd938755` / records `b08c9521c90f806e42496361127c542d206628f5`.
+This does not claim completed device UAT or technical-gate closure. The layout audit owns the
+terminal result and preserved first keyboard-instrument red. Its successor changes only portable key dispatch
+in the probe; product source is unchanged. The prior six-board PASS remains predecessor evidence.
+Both the unattributed navigation
+and full normal-review portrait-restoration blockers stay OPEN; no full normal-review retry,
+Slice, phone Glass or full chain accompanies this bounded correction.
+The accepted brief and amendments are in
+`../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved. Dakk subsequently authorized the24-hour local
+audiovisual implementation campaign above; this grants no hosted action or unseen-art acceptance.
+
+The phone-only restoration diagnostic PASS at signed source
+`381ddf59858bd863640703e83d2d98beeedf59fa` leaves accepted product source unchanged. It preserves
+the original native predecessors, 15000ms transport, fonts → two animation frames and debugger
+auto-resume timing. Named evaluations 283/284 and ordered receipt 33 establish current 390×844
+restoration completion. `../../audits/UI_U1_UAT_RESTORATION_20260906.md` owns the result and two PNGs.
+Both old blockers remain historical OPEN: the old pending expression/cause is unknown and
+nonrecurrence is not repair. The historical ce89128 checkpoint passed static/three-view review,
+then retained a noncertifying Slice RED; [its audit](../../audits/UI_U1_LOCAL_CHECKPOINT_20260906.md)
+preserves both findings and the ambient `.DS_Store` dirty-diagnostic qualification.
+The rail correction passed on clean signed source `1609cf3991e20da45d5e4628fd2163278ece5ec8`:
+isolated develop profile 312 files, 3333 passed/one skipped; Slice PASS in 370012ms with zero
+findings, ten PNGs and exact named verification. Both rail controls prove their own boundary,
+native dismissal without protection and exact restoration; the four hidden right copies retain
+their strict oracle. Small-phone Glass then stopped PRODUCT RED on one `#hintpill` contrast
+finding (1 below 4.5); large phone was NOT RUN. The [manifest](../../audits/UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json)
+retains all eight stage logs and exact carriers. The original ambient file remains untouched.
+The ce89128 normal three-view PASS describes prior geometry and does not test the newly outlined text.
+
+The [bounded hint correction](../../audits/UI_U1_HINT_CONTRAST_20260906.md) paints a 2px opaque
+black glyph stroke behind the fill, leaving at least 1px outside the glyph. It changes no pill,
+layout or geometry. Glass conservatively recognizes proven stroke while preserving its 4.5
+threshold and effective-opacity checks. Preparation passed 25 stroke tests, 72 release/budget/evidence tests, root TypeScript, evidence
+build and root validate. The first committed candidate a528791 passed static (313 files, 3358 passed, one skipped) and
+the native outline controls. Small-phone then stopped on a stale dock-fault description with zero
+product findings; large-phone and Slice did not run. The responsive-slot assertion is corrected
+without changing the product. Its successor bb9ebe4 passed static (314 files, 3364 passed, one
+skipped) and the dock/outline controls, then stopped because Charts is intentionally hidden on
+phones. The current instrument correction audits Settings → Star charts on compact layouts
+and retains the visible wide-screen Charts route. Twelve source-executing route tests, root
+TypeScript and validate passed.
+
+Retained U1 validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
+PASS (315 files, 3376 passed, one skipped). Small-phone stopped PRODUCT RED with a real 22.5px
+Planetside/hint overlap at 320×568, zero instrument failures. Its later native Charts Settings
+phase, large-phone and Slice were NOT RUN. [The final U1 audit](../../audits/UI_U1_HINT_CONTRAST_20260906.md)
+retains the nine-carrier checkpoint. U1 visual acceptance stands; the technical gate remains OPEN.
+U2 uses `sheet-layout.ts` and `ui-sheet-style.ts` to reserve visible lower chrome and fading
+toasts, bound sheets and style their existing direct title/Close. Refills keep the same Close
+node; Compendium retains its virtual scroll owner. Explicit Settings stays above Training,
+uses native Close for Escape, and is excluded during completion-pending. Current lesson marks
+and deferred-focus protection preserve the lesson sequence. Emoji remain unchanged.
+Next verification must exercise the real small-phone overlap and Charts Settings route before
+claiming closure, then complete the required checkpoint chain on its exact clean candidate.
+[ROADMAP](../../ROADMAP.md) owns that candidate and its release/producer authority. Physical
+UAT and both older unknown 08cd97d/c57aaaeb causes stay OPEN; no historical RED is relabelled.
+
+U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options before use).
+It owns an isolated headless browser and creates three golden comparison sheets plus numeric
+CSS geometry deltas, plus numeric larger-text and narrow-landscape panel probes. On macOS
+request approved out-of-sandbox execution before browser spawn.
+As of2026-09-06 its navigation trace includes layout/visual viewport resize facts and an
+auto-resuming, session-owned trail breakpoint between intentional controls. The isolated
+calibration command is `node tools/ui-review-navigation-selftest.mjs NEW_REPORT_JSON`;
+focused controls use `node --test tools/ui-review-trail-debugger.selftest.mjs tools/ui-shell-review-trace.selftest.mjs`.
+Debugger stacks perturb timing and cannot close the retained navigation blocker on nonrecurrence.
+See `../../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md` for the retained navigation evidence
+and its limits. This diagnostic is not the authorized U4 layout gate or a hosted battery;
+no CI/profile lane was changed. `ROADMAP.md` and
+`../../audits/UI_U1_UAT_RESTORATION_20260906.md` own the completed scoped phone diagnostic;
+`../../audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns accepted-layout source/results.
+`../../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` retains the prior six-board scoped evidence.
+`../../audits/UI_U1_COMPACT_CONTROLS_20260906.md` retains the prior portrait-restoration stop.
+`../../audits/UI_U1_PRODUCTION_LAYOUT_20260906.md`,
+`../../audits/UI_U1_LAUNCHER_REVISION_20260906.md` and
+`../../audits/UI_U1_CHECKPOINT_20260906.md` preserve the earlier U1 checkpoints.
+
+## UI tool setup — 2026-09-05 local
+
+GSAP 3.15.0 is isolated in `tools/ui-motion` for future approved UI animation. It is not a
+game dependency or imported into the current pilot; the game manifests retain their sealed bytes. Inkscape 1.4.4 is available on the Codex Mac through its CLI. Setup commands,
+headless limitations, verification, costs and browser/Steam direction live in [UI_TOOLCHAIN.md](../../UI_TOOLCHAIN.md).
+
+
+## Opt-in audiovisual pilot — 2026-09-05 local
+
+Matches the scoped Phase 1 implementation as of **2026-09-05 local**. From `port/v2`:
+`npm run build --workspace=@cf/game`, then
+`npm run preview --workspace=@cf/game -- --host 127.0.0.1`.
+On that local origin, open `/audiovisual-pilot.html` for the compact Earth/Scout direction and
+listening study, `/?avpilot=1` for the playable comparison, or `/` for current v2 without the
+pilot. The study labels production v1.8.9 separately. Use an isolated review origin/save.
+The distributable preview has no evidence-only API. Scene assets are still being authored;
+visual direction and human listening acceptance remain pending.
+
+Shared navy/gold tokens, locally bundled Inter and its linked SIL Open Font License 1.1 support
+compact native Inventory/Shipyard/Atlas layouts. Existing semantic rarity/resource/status colors,
+Settings font/text-size/tone choices, input/focus owners and 44px controls remain authoritative.
+The exact eligible starter Scout material render lives inside the native Shipyard preview, with
+a native loadout fallback. The rainy Earth candidate requires the exact canonical world/roster/
+environment/weather request, a ready native vista and fully loaded candidate images; otherwise
+the native globe/vista remains. Decorative layers are pointer transparent. Bounded review
+controls yield to native windows, Training and modals. Galaxy art stays unchanged.
+
+All eight protected portrait families remain anatomically incomplete at 132/300/440; frame
+motion is not anatomical animation. The eight audio cues and canonical creature synthesis are
+unchanged, with manual matched-level listening still open. No Phase 2 top bar/dock/rails
+migration, release, new backup completion or new certification is implied by this reference.
+
+The CLI-only diagnostic is `node tools/audiovisual-pilot-review.mjs BUILD_DIR OUTPUT_DIR [BASELINE_DIR]`.
+It uses its own headless browser/profile and generated game pages, never an existing browser or
+the desktop; on macOS use approved out-of-sandbox execution. Its build identities, portrait/motion
+checks and layout captures describe only the exact source and run recorded. A diagnostic pass
+cannot establish artistic improvement or replace physical iPhone, human art/listening review,
+or the established admission battery. Current new browser-review outcomes belong to the named
+root audits and `../../ROADMAP.md`. See `../../ART_DIRECTION.md`, `../../UI_PRESENTATION.md`,
+`../../AAA_COVERAGE_LEDGER.md` and `../../AAA_GAP_AUDIT.md` for current scope and remaining gaps.
+
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
@@ -38,6 +414,25 @@ Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 to
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
 reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
+
+## Historical Mac synchronization — 2026-09-05, develop 9ea0104
+
+This record describes the earlier docs-only synchronization to `9ea0104`. Its 77-outcome
+count and producer statement belong to that checkpoint; the current Batch 4 implementation
+above has 79 outcomes.
+
+Develop `9ea01041dcdc711190bbf909ea8bb743cd993734` includes PRs #36/#38/#39/#40. V2 starts fresh:
+no Settings “Bring expedition”, paste/file import door or hidden player import path. Gate C now
+covers v2 persistence on a real device. The existing v1.8.9 codec and evidence-build `importBlob`
+replacement seam remain; Training recovery is reload/update-only. The draft bulletin is 77
+outcomes. `GLASS_NEGATIVE_CONTROL_LEDGERS` binds retained carriers to the ledger they planned.
+
+The signed Batches 1–3, two-lane battery and bounded review-branch admission are landed. PR #37
+is closed as superseded. Agent PRs use browser-free develop plus both phone Glass canaries;
+full-chain work remains separately selected/authorized. No campaign workflow/policy changes.
+The current producer is already pinned by develop; measurement authority and budgets are unchanged
+by the docs-only OpenAI merge. Current source/check status is in `../../ROADMAP.md`; the earlier
+records below are preserved with their checkpoint scope.
 
 ## Current review implementation — matches code as of 2026-09-04
 
@@ -1516,9 +1911,13 @@ named verifiers. Copy-ready commands are under **Strict current browser evidence
 
 The production build is now same-origin installable without adding a runtime dependency or an
 external resource. `pwa-build.ts` emits the manifest, SVG icons and a generated classic service
-worker from the final written Vite output. Every non-map runtime file has one path-sorted SHA-256
-entry, and an automatically derived SHA-256 worker-template revision joins that table in the build
-identity so worker-logic-only changes cannot reuse an older cache id. Post-`generateBundle`
+worker from the final written Vite output. Every non-map game runtime file has one path-sorted SHA-256
+entry. As of 2026-10-02, the optional `__local_ai/` authoring-runtime subtree is excluded from both
+identity and eager installed-pack accounting: installing or upgrading local authoring dependencies
+cannot change the game service worker. Other assets, including similarly named directories, remain
+exactly bound. The worker's undeclared-resource refusal stays in place; this exclusion does not
+admit local-AI files through a controlled PWA. An automatically derived SHA-256 worker-template
+revision joins the asset table so worker-logic-only changes cannot reuse an older cache id. Post-`generateBundle`
 finalization is accounted for by re-reading the actual output bytes in post-ordered `writeBundle`.
 Install deletes any same-id candidate first, fetches and verifies every exact response, writes the
 complete marker last and deletes the partial cache on any failure.
@@ -2036,8 +2435,8 @@ The calibration path is complete:
 > aggregate heap bytes, 898 nodes and 90 JavaScript listeners; desktop maxima were 11,635,116,
 > 17,687,678, 895 and 89. Compendium, Slice, Glass and recovery did not run. The immutable carrier
 > is `audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz`; its raw/gzip
-> SHA-256 values are `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7` /
-> `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`.
+> SHA-256 values are `538fb107cde1617b386a6bcf0c0f381e48728291e5e62bb78ddfa5566b68644f` /
+> `bbb8b941b05fe17ff00462172c284ba6c843a6976c8ecac44cede957c652ff74`.
 >
 > Static ownership traced the fixed DOM/listener increase to an eagerly rendered closed Inventory
 > and per-opener focus-capture closures. The bounded repair keeps Inventory state while closed but
@@ -2346,8 +2745,8 @@ The calibration path is complete:
 > `20260823-pr33-cross-host-sla-certification` passed 42/42 under exact Edge `151.0.4129.101`, with
 > complete browser/server/workspace-lock cleanup, zero findings/fatal events, and a passing named
 > verifier. Its raw/gzip report SHA-256 are
-> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
-> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. These are exact historical
+> `db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03` /
+> `a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`. These are exact historical
 > local authorities, not current-producer, hosted-green, HUMAN, integration, Gate-closure, or release authority.
 >
 > The paired-red authority is signed source `862a75b316142348636abea442dab15e87393642`:
@@ -3050,8 +3449,13 @@ Replay, refusal, stale/converging state, lost detail/route/counterpart and disab
 silent.
 
 The 1,014-route/1,010-identity coarse taxonomy witness, distant-ecology and other settled-expression
-plans, lab audit and empty rights validator remain package foundations. The app now exposes six
-explicit surfaces through that authority: exact durable Tame greeting, committed Feed
+plans and lab audit remain package foundations. The rights authority now contains eight original
+opt-in pilot cues: exploration music, temperate wind/rustle, navigation/refusal/settlement, Scout
+approach/landing and combat contact. Its explicit technical policy and filesystem intake bind the
+optimized WAV bytes and PCM shape, native loudness evidence and both public proof hashes. Canonical
+creature synthesis remains unchanged; integrated-pilot HUMAN listening, physical-device proof and
+broader authored coverage remain pending, so this intake does not complete Arc 7/8 or Gate G.
+The app retains six explicit surfaces through the existing authority: exact durable Tame greeting, committed Feed
 acknowledgement, exact-owned-fauna Compendium Listen, pre-landing orbital Survey **Listen to
 biosphere**, visible inhabited-world Planetside **Listen to biosphere**, and the post-settlement
 Combat Chronicle. The ecology join derives distinct approach/roster
@@ -3083,13 +3487,13 @@ controls, `cf_v2_import_original` keepsake) is removed — v2 starts every explo
 `#importsheet` survives only as the nonclosable Field Training recovery sheet (reload/update only), and
 the evidence-build `importBlob` seam remains the Slice/Glass replacement driver. Glass retired
 `modal-background-containment-restore` and `modal-live-error`; retained carriers are judged against the
-ledger they planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`). The draft bulletin is 77 outcomes.
+ledger they planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`). The current draft bulletin is 106 outcomes (measured 2026-09-26).
 
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
 43 authored stable IDs and 41 player topics with search, categories, native-keyboard
-cross-links and capability-aware v2 copy. At the current Step 2e boundary, 35 topics are
-partial and 6 are unavailable; the Capture/Discover guidance separates write-free living-world
+cross-links and capability-aware v2 copy. At the current September26 boundary, 37 topics are
+partial and 4 are unavailable; the Capture/Discover guidance separates write-free living-world
 inspection, explicit durable Discover Life, and landed random-pool Capture without inventing targeted selection. It states the current
 capture-backed Charter rule exactly: the first durable successful Tame, Scavenge, or Sample on
 each source-proven world beyond Sol banks that world's one Chapter 2 life-discovery tick in the
@@ -3132,8 +3536,8 @@ settles, and request/body/open-panel fences prevent a closed or replaced Guide f
 publication. A cached archive publishes on the following microtask because panel `onOpen` runs
 before the manager exposes the open panel. Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
-categorized v2.0 development bulletin, now 79 bullets. Its rendered ordered SHA-256 is
-`351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`. The draft summarizes the
+categorized v2.0 development bulletin, now 106 bullets. Its rendered ordered SHA-256 is
+`9ca05cf7d271f1a93567861037e8f8ce0841af97bb7afa2f814e16b34719ebe5`. The draft summarizes the
 implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
 nonempty bullets, the key player-facing outcomes, and a final item reached through bounded adaptive
@@ -3144,8 +3548,11 @@ create `releasePending`, or create a production release. There is no player save
 The v1.8.9 codec remains the v2 load/compatibility owner, and evidence-build `importBlob` remains
 the Slice/Glass replacement seam. `#importsheet` is only the nonclosable Field Training recovery
 surface; it does not restore Bring expedition or its former modal controls. This is deliberately
-an honest manual for the current slice, not a claim that tooltip deep-links,
-Advanced Briefings, or every late-game system has already been ported.
+an honest manual for the current slice. Matches code as of 2026-09-26: five read-only
+Advanced Briefings cover reach, resources, companions, combat and progress. Native Previous,
+Next, Finish and topic cross-links use the existing lazy Guide publication and focus owners;
+they grant no reward and write no expedition state. Broader tooltip deep-links and open
+late-game systems remain separate work.
 **Current curriculum correction (pre-existing reference drift, 2026-09-05):** Field Training
 uses the existing 15 cards. The six welcome/find-Earth/survey/chart/Atlas/land cards lead into
 read-only Planetside, Engineering, Compendium, Records and combat/horizon orientation, then
@@ -4013,7 +4420,13 @@ its source/build mutation controls still run in every profile. The standalone au
 remains an all-authorities fail-closed diagnostic. The stricter root no-unused TypeScript pass owns the root compilation;
 the old `artunused` alias remains available but is not a second gate. `overridecheck` already fails
 closed on incomplete kingdom-qualified catalogue coverage, so `coveragegap` remains an on-demand
-planning report rather than a duplicate merge gate. The `production` profile adds `overridecontrol`, the
+planning report rather than a duplicate merge gate. Source discovery (matches code as of 2026-09-22)
+follows actual static relative imports and re-exports through the v2 source boundary, rejecting
+missing/ambiguous targets and symlinks. Transitive JavaScript and TypeScript receive the same AST
+audit. The live topology wrapper, private painter binding, synchronous same-ink callbacks, routing
+precedence, fitting and canvas returns remain independently guarded; fresh null-prototype
+dictionaries are allowed only through the exact direct `Object.create(null)` form.
+The `production` profile adds `overridecontrol`, the
 107-mutation selftest that temporarily rewrites audited art sources under the workspace lock. The
 ordinary specification scan runs its five parser/oracle controls inside that same `speccheck`
 command, so no second stage is required. HEAD,
@@ -4181,7 +4594,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 | **Historical Final11 campaign evidence** | Signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc` passed Layout 787/787, SceneMemory 42/42, Compendium 78/78 with six PNGs, Slice with zero findings/ten PNGs and all 12 Glass viewports with zero findings or instrument failures; every stage ran once and passed named verification. Recovery ran once for 1,291,034 ms and passed all 15 observation outcomes/309 samples, the uninterrupted 20-minute window, exact next-cycle boundary and recovered UI. Its final assessor failed only `activePlayProjection` and `closeCheckpoint`; cleanup passed and no retry occurred. Final11 is immutable, instrument-red rather than product-red, and not a Recovery certificate. Exact carriers are in `audits/README.md`. |
 | **Historical Final11 Compendium evidence** | Run `20260828-phase4-final11-1ca67156e27d-compendium` passed 78/78 with six PNG bindings. Raw/gzip SHA-256 are `bc47a2d768080cd9d04257d300dcb4d009035d6611792d10f020d0beb179d5c8` / `d78a6fee001583293645de26817be1e0a2241233f377ac558046a379396c9274`. No numeric ruler, sample, producer policy or 55-bullet draft count changed. HUMAN visual judgment remains open. |
 | **Historical Final11 Arc 4 Recovery boundary** | The complete burn-down, offline no-credit proof, reactivation, full observation, exact boundary crossing and recovered UI passed. Recovered raw/rendered/runtime was 1,285,118/1,285,098/1,285,404 ms; exhausted UI runtime to closed raw was 322 ms. The stored report remains assessor-red and immutable. The repaired assessor replays its unchanged bundle green by binding raw/rendered/live runtime and latest-live close plus exact committed/lost hide evidence; isolated reported-geometry, boundary/+1 and witness controls pass. A fresh signed clean full chain is still required. HUMAN journey/listening, Charter bioscan, targeted preview, hosted and release authority remain open. |
-| **Historical Final11 SceneMemory evidence** | Run `20260828-phase4-final11-1ca67156e27d-scenemem` passed 42/42 with complete cleanup. Raw/gzip SHA-256 are `e7523ad4c6d0d8405997a848f18700c730c590330d797d152f79e52d36cde709` / `0555f55055d2958626823bcae92b6f7c32c04185760d2dc8d2b1c2193e55185a`. Existing numeric budgets, paired red and browser-family policy are unchanged. |
+| **Historical Final11 SceneMemory evidence** | Run `20260828-phase4-final11-1ca67156e27d-scenemem` passed 42/42 with complete cleanup. Raw/gzip SHA-256 are `b2109238b27fabb997b80337c3599f726ee75f31f61928a8f9353f3f65321ec0` / `2da160e419667bbbdae36bd2533ca78e983c85c2c1b59897acee86beb090bb91`. Existing numeric budgets, paired red and browser-family policy are unchanged. |
 | **Historical Final10 candidate verification (superseded by Final11 above)** | Signed clean `4405fb2…` supplied Final10 Layout `20260828-phase4-final10-4405fb2b4ba7-layout` at 787/787, SceneMemory `…-scenemem` at 42/42, Compendium `…-compendium` at 78/78 with six PNGs, Slice `…-slice` with zero findings/ten screenshots and Glass `…-glass` across 12 viewports with zero findings or instrument failures. Recovery stopped instrument-only at `offline-reopened`; its later signed docs descendant supplied Final11, whose immutable temporal-oracle stop is preserved in the historical Final11 rows above. Exact Final10 carriers remain in `audits/README.md`. No Recovery, hosted/HUMAN whole-Gate or release authority followed. |
 | **Historical Final10 Compendium evidence boundary (superseded by Final11)** | Signed `4405fb2…` passed Final10 Compendium run `20260828-phase4-final10-4405fb2b4ba7-compendium` 78/78 with six review PNG bindings after green Layout and SceneMemory predecessors, followed by green Slice and full Glass. Its raw/gzip SHA-256 are `6ee3aa6f2e4dd50b7e148302486a4381385df92a10828f1b8b63408c66353035` / `c93be41ed90be67236b10a2b57a79e252824b00091be9da55f84604de2ade8cd`. This certifies the narrow Inventory/Compendium/Settings repair for that exact signed source. Signed implementation/evidence repair `3fbfcd5…` changes source identity and the synchronized signed clean docs-only descendant supplied immutable Final11; the historical assessor-only repair changed no numeric Compendium ruler, sample or draft count and supplied Final12; its distinct immutable Slice control stop is recorded in the current boundary above. Browser authority remains Edge family + CDP `1.3`; `.107` is provenance only, and compatible point updates never trigger rebaseline. HUMAN Compendium judgment, Recovery and whole-Gate closure remain open. |
 | `npm run arc4recovery:selftest` / Recovery run and named verifier | The instrument retains the phase-specific Pertar receipts, exact deadline, runtime/RNG/revision binding and mutation controls described above. Current `state().ownershipV2` schema `cf-v2-arc5-app-state/v3` is exact-key validated over its base migration fields plus Feed, Breed, Rename, Scout and explorerMeal diagnostics, including each subtree's controller schema/fields; non-vacuous wrong, missing and extra-field controls for every subtree must reject. Known historical pre-Meal v3 and historical v2 base-only diagnostics are accepted only through explicit legacy replay; current evidence requires explorerMeal, and unknown extra fields never become an allowance. Exact historical `3f69e88…` Recovery consumed Slice `33aa30b3…3411` and Glass `2a67a258…d591`, passed all ten stages plus 15/15 observation and 22/22 domain outcomes in 1,290,953 ms, retained 1,200,297.5 ms of uninterrupted active-browser observation, crossed the exact next-cycle boundary, recovered the UI, completed cleanup and passed its exact three-ID named verifier with zero findings/fatals/retries. Historical Final11 and Final12 stops remain immutable evidence rather than being relabelled. |
@@ -4200,7 +4613,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 | **Historical Compendium recovered-worker oracle repair (2026-08-30; superseded)** | Exact signed `d33abdfd…` run `20260830-pr35-first-install-d33abdfd5132-compendium-certification` ran once/no-retry on Edge `152.0.4191.53` / CDP `1.3` and stored 74/78: phone/desktop `cap-shrink` and `settled-jobs` were false-red despite exact 256 → 96 shrink, 6,690,816 decoded bytes, 160 disposals, four sealed warm cycles, restored class and balanced released workers. The immutable 451,743-byte gzip / 10,813,681-byte raw carrier is independently replayed 8/8. That repair required released/recovered snapshots to have `lastError === null` while cumulative paint/phase/result arithmetic still proved the induced paint fault; terminal current errors still required an exact non-null trusted receipt, and historical v1 remained replayable. Measurement / outcome contract / collector / producer-v2 was `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` / `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` / `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` / `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; service-worker SHA-256 was `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. Its closure was 591 selftest controls, 239 files / 2,431 passed / 1 skipped, all three TypeScript programs and a green authority printer. Fixed rulers, ceilings and 78 outcomes were unchanged; no successor gate or fresh certificate existed. |
 | **Historical PR #35 sealed-worker and derived-authority boundary (2026-08-30)** | Historical signed `38d8848c…` and `dc6004cf…` Compendium attempts each stopped once/no-retry at the phone-only `product-fail`; their immutable carriers and replay receipts remain historical evidence. Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` later passed Compendium 78/78 (39 desktop + 39 phone), then its exact-source Slice successor stopped red once/no-retry with 63 findings across 42 scopes (62 Guide-family geometry findings plus one exact CF1 timeout); Glass and Recovery did not run. All exact-`941ba45…` producer, service-worker, and Scene-derived values are therefore historical only. That head had no complete browser chain; the live handoff and `audits/README.md` record 656's later green SceneMemory/Compendium predecessors and terminal one-scope Slice red. Its then-current measurement / contract / collector authority was `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` / `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` / `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; its Compendium producer / index / owner / generated service worker was `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3` / `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c` / `assets/main-BYnoCcc9.js` (`13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`) / `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`; worker/painter was `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Its Scene build / `gameMain` was `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` / `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; Compendium / Scene budget-file SHA-256 was `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` / `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. The printer was green at 964 modules / 52 files. Live authorities are derived by `node tools/print-producer-authorities.mjs` and recorded in the current handoff; no historical value is rebound. No browser/HUMAN/hosted/merge/release/deploy claim is made. |
 | `npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts tests/scenemem-workflow.test.ts` / production-only `node tools/scenemem.mjs --heap-phase-selftest` / production-only `node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json` | Negative-controls the Arc 1 SceneMemory instrument. Browser-free authority is report v6 / profile v5 / input v6 / verdict v5 / budget v7; 158 focused controls and the 2,543-pass full suite are green. Exact signed `cc15e1f…` run `20260830-pr35-fixedeight-cc15e1f-candidate1` ran once/no-retry on Edge 152 / CDP 1.3, completed lifecycle/cleanup, then stopped instrument-red at phone `warm-1` P8−P7 embedder/aggregate **287,192 / 299,720** versus **65,536** bytes. Contract/verdict were null, outcomes empty, and desktop/candidates 2–3 not run. Its 32,448-byte gzip / 745,707-byte raw carrier is preserved under exact hashes in `audits/README.md`. Exact hosted run `33584052508` later reproduced the same allocator-phase class at **532,800** bytes on one physical runner. The identical tool blob's prior three passes explicitly recorded Edge `152.0.4191.53` / CDP `1.3`, Node `26.8.1` and Ubuntu image `20260823.283.1`; the failed path proved canonical Edge/CDP `1.3`, the same Node/image and a `centralus` runner but did not preserve the exact Edge point version, so `.53` there is inference. The hard stop forbids retry, widening, extra passes and another redesign. SceneMemory live native-heap work is production-only/quarantined and never blocks `develop`; deterministic controls remain universal. Production requires a later explicit activation decision. No browser PASS, product verdict, ruler change or merge authority is claimed. |
-| **Historical Final10 SceneMemory evidence and calibration boundary (superseded by Final11)** | Signed `4405fb2…` was the historical Final10 42/42 report, Final10 run `20260828-phase4-final10-4405fb2b4ba7-scenemem`; its raw/gzip SHA-256 are `00161fd6c4d8b5457776dc1768ea2022a142a73c892c8a4cdff207073e88116a` / `99abfc6d0a084ce0ed874cf5516c833d1d73735e4ebb8c44c0d3ce870075a0e3`. Signed `862a75b…` remains the paired 40/42 heap/DOM red; signed `6c9ad855…` supplied three clean calibration candidates; signed activation `4a54c0d…` set 12 MiB V8 /18 MiB aggregate with every other ceiling and paired discrimination intact. Final10 changes no ceiling or sample and passed the full responsive chain through Glass. Signed implementation/evidence repair `3fbfcd5…` and the synchronized signed clean docs-only descendant supplied immutable Final11; the historical assessor/tests/docs-only repair replayed immutable Final11 green and supplied Final12, whose distinct immutable Slice control stop is recorded above; compatible Edge updates remain provenance only and never trigger rebaseline, recalibration or threshold movement. |
+| **Historical Final10 SceneMemory evidence and calibration boundary (superseded by Final11)** | Signed `4405fb2…` was the historical Final10 42/42 report, Final10 run `20260828-phase4-final10-4405fb2b4ba7-scenemem`; its raw/gzip SHA-256 are `56f8fd3e1d498f9741723962b1c80b79757111357e17159245744f5a4df990d7` / `c19a4d5c9412165dd150e2d1e83125d90c902a5e82d31f79391d10719066e1a0`. Signed `862a75b…` remains the paired 40/42 heap/DOM red; signed `6c9ad855…` supplied three clean calibration candidates; signed activation `4a54c0d…` set 12 MiB V8 /18 MiB aggregate with every other ceiling and paired discrimination intact. Final10 changes no ceiling or sample and passed the full responsive chain through Glass. Signed implementation/evidence repair `3fbfcd5…` and the synchronized signed clean docs-only descendant supplied immutable Final11; the historical assessor/tests/docs-only repair replayed immutable Final11 green and supplied Final12, whose distinct immutable Slice control stop is recorded above; compatible Edge updates remain provenance only and never trigger rebaseline, recalibration or threshold movement. |
 | `node tools/compendiummem-browser-preflight.mjs --selftest` / `node tools/compendiummem-browser-preflight.mjs` | Owns the Compendium workflow's one cold compatibility proof without changing numeric ceilings. One 45-second startup / 15-second socket / sealed 5-second candidate-command / 2-second shutdown launch must use the selected executable, report canonical Microsoft Edge with nonempty exact version/revision/JavaScript/path/UA provenance and CDP `1.3`, then create/attach/close a fresh target and enable Runtime/Page/HeapProfiler. The full collector exercises the separately hashed required-CDP inventory; adding/removing an inventoried method changes measurement authority instead of masquerading as version drift. `.101`, `.107` and synthetically later canonical Edge controls are accepted; Chrome, malformed/incomplete Edge, protocol mismatch, executable mismatch, command/sentinel failure and cleanup leak are terminal. Phone/desktop evidence from one run must retain the same exact provenance tuple. There is no warmup, retry, fallback, alternate browser, version-triggered rebaseline or automatic ceiling change. Its evaluate return and exact-marker, same-session console event share one immutable 5-second monotonic phase; just-before receipts pass while exact/late/missing/wrong-session/backward-clock controls fail. The owner-authorized test-battery workflow SHA-verifies the sealed `.101` deb, validates its embedded package/version metadata and extracts it into a fresh Compendium-owned `RUNNER_TEMP` root without apt. Preflight, certification and named verification each pin that extracted executable directly while the job remains Chrome-owned; the non-certifying preview workflow does not repeat Compendium. The structural selftest rejects apt installation, missing extraction, wrong URL/hash/package/version/root, missing or system-Edge owner pins, softened owners, broken extract → preflight → certificate → verifier order, renamed certification IDs and false/otherwise-disabled verifier conditions. The exact package/path is workflow provenance; compatible Edge point versions do not alter the browser capability authority or numeric ruler. Historical run `32394244417` stopped before product when the runner's resident `.86` made the old plain apt install a no-op; run `32462323775` later confirmed the historical reinstall path before isolation superseded system-package mutation. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only current-v2, passing Slice and Glass evidence with matching commit/branch, dirty-tree digest and explicit `develop|production` assurance profile into `automated-persona-report.{json,md}`. It rejects legacy Slice evidence and any Glass report whose nested Slice profile disagrees, then persists the bound profile in both output formats. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |
 | `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact executable for raw-CDP evidence tools, including root `tools/uilayout.js` and the v2 `speciesaudit` / `artlock` / `proofsheet` / `speciesexport` / `proportioncheck` / `conformance` / `gp71compare` art tools. An explicit invalid `CF_BROWSER` fails closed instead of silently selecting another executable. Before evidence work, each of the seven migrated art tools requires connected `Browser.getVersion` to report Chrome, Chromium, Edge (`Edg`) or HeadlessChrome with a syntactically complete four-part point version, exact normalized executable/product/revision/UA/JS provenance and CDP `1.3`; each emits that tuple, while `speciesaudit`, `proofsheet`, `speciesexport` and the JSON-producing `conformance` / `gp71compare` also persist it in their output. Environment scope is process-local: a green browser in one workflow step does not pin the resolver in the next. CI therefore supplies the exact effective path in the owning step or job and resolves it before long gates. On macOS the launch boundary rejects the Codex Seatbelt environment before spawn: that sandbox denies Chromium's LaunchServices registration and otherwise produces an Edge SIGABRT before CDP. Approved out-of-sandbox browser execution remains the evidence path. Any compatible point version is accepted; no point-version pin, rebaseline or threshold change follows. |
@@ -4379,3 +4792,40 @@ full 25-generator sweep from TS.
 Memoized generators make **call order observable state** — the fingerprint's `systemSol`
 proves it. The TS port should either not share cached objects across callers or never
 mutate them after creation.
+
+## C-lane review checks — matches code as of September 14
+
+Vitest excludes Node-owned `tools/**/*.test.mjs`; `npm run test:tools` discovers and executes
+those files using Node, without taking the checkout lock. From the repository root, use
+`npm --prefix port/v2 test -- <Vitest arguments>` for full or focused runs. Node tools run
+first, followed by the standalone locked evidence build, then Vitest after the build lease
+is released. Unit observers independently verify the prepared source/dist receipt; they
+never build or acquire the checkout lock. Bare Vitest refuses the current-authority test
+without that receipt. Reporter/filter arguments still reach Vitest.
+
+The consolidated audit is `audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md`; its three authority
+failures are repaired in `audits/C_LANE_REPAIRS_20260914`. Current source bindings were
+updated after input review, with collector/evaluator, fixed ruler, ceilings and historical
+samples unchanged. This is static admission, not a new native memory certificate.
+
+## §20 balance diagnostics — matches tooling 2026-09-25
+
+`node tools/s20-balance.mjs --source-root=/absolute/repository --out=/new/output`
+measures the committed source's encounter resolver using disjoint training/evaluation
+corpora, four single-fighter stances and384 full-party plans. `node --test tools/s20-balance.test.mjs`
+checks the instrument (also discovered by the Node tools owner). Output includes source
+hashes, declared policy, exact corpora, selected plans, Command decision-tree bounds and
+fail-closed findings. Source HEAD must verify G; port/v2 must be clean; no output reuse.
+The current local lane needs Claude's engine source via the read-only source-root option.
+This is an explicit diagnostic, not a develop-profile owner or campaign certificate.
+See [measured red results and limitations](../../audits/S20_BALANCE_20260925/README.md).
+
+### D17 balance epoch — tooling2026-09-26
+
+The earlier S20 report remains historical. `node --test tools/s4-d17.test.mjs` checks the new D17 assessor, which requires a ≥5pp playable Command edge,10–20pp normal/Guardian/Titan planning gaps, and solo phase-enabled Auto within±5pp of v1. It retains phase-off engine parity.
+
+`node tools/s4-d17.mjs --candidate=/absolute/committed/candidate.json --out=/new/output` bundles clean signed source and refuses constants that differ from the frozen candidate. It uses512held-out cases per cohort, independent forecast seeds, all17hook controls, and a fixed learned Command policy with a separate oracle upper bound. Its scoped result cannot certify production settlement dispatch, dossier inventory coverage or the entire campaign. No automatic retry or output reuse. Current candidate and every training rejection live in `audits/S4_D17_TUNING_20260926/`.
+
+I5 lifetime update (matches code2026-09-27): painted-card host yields clear their callback and close both MessagePorts when serviced; species workers remove message/error/messageerror listeners before termination on disposal, suspension and fatal failure. Existing scheduling, paint bytes, limits and historical certificates remain unchanged.
+
+I5 repair (2026-09-27): V2 materialization uses platform-correct macOS native keyboard codes while preserving semantic key events, filters, all outcomes and original ceilings. Evidence: `../../audits/I5_NATIVE_KEYS_20260927/README.md`. Foreground-order-only proof stopped; no active v2 certification yet.

@@ -1,0 +1,149 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+ "tag": "g2c211",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "04-moorhen",
+  "07-bittern",
+  "08-condor",
+  "09-turkey",
+  "10-grouse",
+  "12-guineafowl",
+  "20-hornbill",
+  "21-parrot",
+  "24-weaverbird"
+ ],
+ "refused": [
+  {
+   "id": "01-snipe",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 25% paint (reference 72%)"
+  },
+  {
+   "id": "02-godwit",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 16% paint (reference 72%)"
+  },
+  {
+   "id": "03-avocet",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 21% paint (reference 72%)"
+  },
+  {
+   "id": "05-egret",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 9% paint (reference 72%)"
+  },
+  {
+   "id": "06-stork",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 17% paint (reference 72%)"
+  },
+  {
+   "id": "11-peacock",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 2% paint (reference 35%)"
+  },
+  {
+   "id": "13-pheasant",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 17% paint (reference 50%)"
+  },
+  {
+   "id": "14-guillemot",
+   "reason": "unexplained-anatomy: 8.3% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "15-auk",
+   "reason": "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "16-grebe",
+   "reason": "missing-anatomy: part far-foot (legFarFoot) covers 0% paint (reference 40%)"
+  },
+  {
+   "id": "17-penguin",
+   "reason": "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 3.0%)"
+  },
+  {
+   "id": "18-pelican",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "23-tern",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 12% paint (reference 50%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "19-screamer",
+   "static": "RED"
+  },
+  {
+   "id": "22-macaw",
+   "static": "INTAKE_REFUSED"
+  }
+ ],
+ "native": [
+  {
+   "id": "04-moorhen",
+   "name": "Moorhen",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-bittern",
+   "name": "Bittern",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-condor",
+   "name": "Condor",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "09-turkey",
+   "name": "Turkey",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-grouse",
+   "name": "Grouse",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "12-guineafowl",
+   "name": "Guineafowl",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "20-hornbill",
+   "name": "Hornbill",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "21-parrot",
+   "name": "Parrot",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "24-weaverbird",
+   "name": "Weaverbird",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

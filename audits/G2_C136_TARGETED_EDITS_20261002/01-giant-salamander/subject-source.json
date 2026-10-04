@@ -1,0 +1,71 @@
+{
+  "name": "Giant Salamander",
+  "family": "quadruped",
+  "species": {
+    "name": "Giant Salamander",
+    "aspect": 5.5,
+    "headFrac": 0.24,
+    "eyes": "small",
+    "posture": "sprawling",
+    "mustRead": [
+      "broad flattened shovel head",
+      "wrinkled fleshy skin folds along the flanks",
+      "tiny lidless dot eyes"
+    ]
+  },
+  "genome": {
+    "seed": 732457792,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 2,
+    "body": 7,
+    "loco": 10,
+    "trait": 12,
+    "size": 2,
+    "diet": 2,
+    "head": 3,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 1,
+    "pattern": 0,
+    "eyes": 4,
+    "behavior": 8,
+    "habitat": 17,
+    "detail": 5,
+    "accent": 1,
+    "temper": 8,
+    "sense": 9,
+    "repro": 5,
+    "life": 4,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Giant Salamander"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Giant Salamander\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"732457792\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "index": 144,
+  "profile": {
+    "id": "salamander",
+    "names": [
+      "Salamander",
+      "Newt",
+      "Giant Salamander",
+      "Alpine Salamander",
+      "Olm",
+      "Blind Salamander",
+      "Axolotl"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Preserve tail and optional external gills; no mammalian ears."
+  }
+}

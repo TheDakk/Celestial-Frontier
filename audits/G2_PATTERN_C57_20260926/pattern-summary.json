@@ -1,0 +1,32 @@
+[
+  {
+    "id": "01-tiger",
+    "status": "PASS"
+  },
+  {
+    "id": "02-leopard",
+    "status": "PASS"
+  },
+  {
+    "id": "03-jaguar",
+    "status": "REFUSE",
+    "reason": "Pattern unresolved"
+  },
+  {
+    "id": "04-ocelot",
+    "status": "PASS"
+  },
+  {
+    "id": "05-snow-leopard",
+    "status": "PASS"
+  },
+  {
+    "id": "06-clouded-leopard",
+    "status": "PASS"
+  },
+  {
+    "id": "07-jaguar-pattern-first",
+    "status": "REFUSE",
+    "reason": "Pattern unresolved"
+  }
+]

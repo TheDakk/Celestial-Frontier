@@ -1,0 +1,29 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Axolotl",
+  "family": "quadruped",
+  "masterSha256": "d29c7652d97db8efaa9e555b35be7b04f89543d4724ecd2d5abdea1875137d5e",
+  "subjectSha256": "d73a8f1a1be46cea67ee58bf627ddfd8431c74044680bca9255bc41cc99b21f7",
+  "promptSha256": "9082f73ab1232fe84abe6485bb37347217ec5742ece39486309fffaa6c01bae3",
+  "profileId": "salamander",
+  "profileSha256": "4e32272af8ac420f81285b7ddc69a584cd5a6c654fd16395a8edf09c07e37229",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: pale spotted smooth skin, broad continuous tail fin, frilled external gills and short limbs. The branched gills stay painted; no external mammalian-style pinnae are present. Eye and gill proportions, toes and ground contacts remain separate anatomy/authoring holds.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. External gills, ear openings and all other actual head/neck paint remain present and are not excluded."
+      }
+    ]
+  },
+  "scope": "exact-master-only-no-visual-admission"
+}

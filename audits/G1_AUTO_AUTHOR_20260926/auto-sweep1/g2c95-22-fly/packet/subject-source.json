@@ -1,0 +1,75 @@
+{
+  "name": "Fly",
+  "family": "insect",
+  "species": {
+    "name": "Fly",
+    "aspect": 2.2,
+    "headFrac": 0.27,
+    "eyes": "prominent",
+    "posture": "flying",
+    "mustRead": [
+      "huge red compound eyes filling the head",
+      "only two clear wings plus knob halteres",
+      "bristly grey-striped thorax"
+    ]
+  },
+  "genome": {
+    "seed": 3023079290,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 14,
+    "body": 12,
+    "loco": 5,
+    "trait": 12,
+    "size": 0,
+    "diet": 2,
+    "head": 7,
+    "limbs": 5,
+    "skin": 8,
+    "tail": 5,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 8,
+    "habitat": 12,
+    "detail": 9,
+    "accent": 6,
+    "temper": 6,
+    "sense": 0,
+    "repro": 6,
+    "life": 2,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fly"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Fly\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3023079290\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "index": 557,
+  "profile": {
+    "id": "soft-mouth-insect",
+    "names": [
+      "Butterfly",
+      "Cicada",
+      "Mosquito",
+      "Black Fly",
+      "Moth",
+      "Aphid",
+      "Fly",
+      "Cold-Adapted Insect",
+      "Mayfly",
+      "Scorpionfly",
+      "Thrips"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "Proboscis/stylet/body/effect motion; no chewing mandible or scorpion sting inferred."
+  }
+}

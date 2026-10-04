@@ -1,0 +1,6 @@
+ability:fire:impact
+ability:frost:impact
+Traceback (most recent call last):
+  File "~/Projects/celestial-frontier-openai-mac/audits/C132_SOUND_20261001/layer-impacts.py", line 24, in <module>
+    stems.append({'role':role,'source':source,'sourceSha256':m['sha256'],'sourceKind':m['sourceKind'],'creator':m['creator'],'license':m['licenseId'],'sourcePage':m['sourcePage'],'licenseEvidence':m['licenseEvidence'],'treatment':filters,'wav':str(target.relative_to(ROOT)),'wavSha256':sha(target)})
+KeyError: 'sourcePage'

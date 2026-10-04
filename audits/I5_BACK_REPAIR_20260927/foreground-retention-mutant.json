@@ -1,0 +1,15 @@
+{
+  "scope": "Diagnostic failure preservation; no deadline/classifier change",
+  "results": [
+    {
+      "variant": "collector.mjs",
+      "retainsRawFailure": true,
+      "error": "deadline; last foreground observation: {\"schema\":\"cf-v2-compendium-foreground-service-observation/v1\",\"targetId\":\"target\",\"sessionId\":\"session\",\"documentToken\":\"document\",\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true,\"service\":{\"token\":\"token\",\"visibilityChanges\":0,\"focusLosses\":0,\"arm\":{\"observed\":true,\"sequence\":0,\"visibilityState\":\"visible\",\"hidden\":false,\"focused\":true},\"raf\":{\"observed\":false,\"sequence\":null,\"visibilityState\":null,\"hidden\":null,\"focused\":null},\"laterTask\":{\"observed\":false,\"sequence\":null,\"visibilityState\":null,\"hidden\":null,\"focused\":null}}}"
+    },
+    {
+      "variant": "mutant.mjs",
+      "retainsRawFailure": false,
+      "error": "deadline"
+    }
+  ]
+}

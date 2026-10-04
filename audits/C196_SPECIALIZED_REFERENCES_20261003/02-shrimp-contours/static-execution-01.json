@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "static",
+  "id": "02-shrimp-contours",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/fit01",
+    "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/static-01.json"
+  ],
+  "helperSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/static-01.log",
+  "logSha256": "8802b0cd891e8e399f72cd2cc8954c6a2d459ce3f62b4e693e30668c6b3390e7",
+  "nativeRuns": 0
+}

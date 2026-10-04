@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Impala",
+  "masterSha256": "8474e759f7bcb5b9e96dee47c84190fc9b78bc81e6fa0c7c40bc9f2e31efdc7b",
+  "required": [
+    "lyre-shaped ringed horns curving out then up",
+    "vertical black stripes down each side of the white rump"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "lyre-shaped ringed horns curving out then up",
+      "status": "PRESENT",
+      "observed": "Slender tan body, white belly, black tail/rump marks, long ridged lyre horns and four separated hooves. Second ear obscured by horns/head; horns must not be misclassified as ears."
+    },
+    {
+      "requirement": "vertical black stripes down each side of the white rump",
+      "status": "PRESENT",
+      "observed": "Slender tan body, white belly, black tail/rump marks, long ridged lyre horns and four separated hooves. Second ear obscured by horns/head; horns must not be misclassified as ears."
+    }
+  ]
+}

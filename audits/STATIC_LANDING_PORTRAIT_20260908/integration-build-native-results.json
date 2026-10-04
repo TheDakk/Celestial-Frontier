@@ -1,0 +1,54 @@
+{
+  "schema": "cf-static-earth-landing-build-native/v1",
+  "certification": false,
+  "status": "FAIL",
+  "startedAt": "2026-09-09T02:29:05.541Z",
+  "steps": [
+    {
+      "id": "evidence-build-v2",
+      "args": [
+        "../../node_modules/vite/bin/vite.js",
+        "build",
+        "--mode",
+        "evidence",
+        "--outDir",
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/earth-civet-landing-evidence-dist-20260908"
+      ],
+      "cwd": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game",
+      "startedAt": "2026-09-09T02:29:05.561Z",
+      "endedAt": "2026-09-09T02:29:08.244Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": {
+        "path": "audits/STATIC_LANDING_PORTRAIT_20260908/evidence-build-v2.log",
+        "bytes": 8718,
+        "sha256": "f7af6470e9735f6f304e17ffeb0e4d3a1ff631bebda0df87c5bf1f5a04e8d3ee"
+      }
+    },
+    {
+      "id": "native-v2-chain",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v2-chain.mjs",
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/earth-civet-landing-evidence-dist-20260908",
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/native-v2"
+      ],
+      "cwd": "/Users/dakk/Projects/celestial-frontier-openai-mac",
+      "startedAt": "2026-09-09T02:29:08.246Z",
+      "endedAt": "2026-09-09T02:29:25.534Z",
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "log": {
+        "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2-chain.log",
+        "bytes": 566,
+        "sha256": "04c8be01683db5afdad4c207078c38e41e322279018a7ba6d469c95e87007b53"
+      }
+    }
+  ],
+  "cleanupErrors": [],
+  "locksReleased": true,
+  "staticReceiptSha256": "d7dbb1c2f8a7f3b7de80e6a3473a69a2610f9f854c382b811f540618962b2e8f",
+  "failure": "AssertionError [ERR_ASSERTION]: native-v2-chain stopped; retained log\n    at step (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/integration-build-native-runner.mjs:20:2)\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/integration-build-native-runner.mjs:29:2",
+  "endedAt": "2026-09-09T02:29:25.535Z"
+}

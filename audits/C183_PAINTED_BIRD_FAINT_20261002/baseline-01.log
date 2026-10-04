@@ -1,0 +1,140 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c54-14-goose hit against the actual painted supports 55ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c54-14-goose tame against the actual painted supports 43ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c54-15-quail tame against the actual painted supports 51ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c56-10-raven hit against the actual painted supports 45ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c59-08-vulture hit against the actual painted supports 39ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors c56-15-dove melee:claw against the actual painted supports 37ms
+ ✓ apps/game/src/motion/painted-bird-author.test.ts > authors 02-pigeon tame against the actual painted supports 49ms
+ × apps/game/src/motion/painted-bird-author.test.ts > preserves every already-passing probe outcome 153ms
+   → expected { kind: 'motion-timeline', …(19) } to deeply equal { kind: 'motion-timeline', …(19) }
+ × apps/game/src/motion/painted-bird-author.test.ts > authors c59-08-vulture faint against painted supports without changing limbs or timing 124ms
+   → expected [ …(3) ] to deeply equal [ …(3) ]
+ × apps/game/src/motion/painted-bird-author.test.ts > authors c56-15-dove faint against painted supports without changing limbs or timing 129ms
+   → expected [ …(3) ] to deeply equal [ …(3) ]
+ × apps/game/src/motion/painted-bird-author.test.ts > authors 02-pigeon faint against painted supports without changing limbs or timing 178ms
+   → expected [ …(3) ] to deeply equal [ …(3) ]
+ × apps/game/src/motion/painted-bird-author.test.ts > authors 04-hawk-v2 faint against painted supports without changing limbs or timing 152ms
+   → expected [ …(3) ] to deeply equal [ …(3) ]
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 7 passed (12)
+   Start at  18:37:21
+   Duration  1.38s (transform 161ms, setup 0ms, import 207ms, tests 1.06s, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > preserves every already-passing probe outcome
+AssertionError: expected { kind: 'motion-timeline', …(19) } to deeply equal { kind: 'motion-timeline', …(19) }
+
+- Expected
++ Received
+
+@@ -6,11 +6,11 @@
+      "squash": 0,
+      "stretch": 0,
+    },
+    "durationMs": 712,
+    "family": "faint",
+-   "hash": "5e342414",
++   "hash": "e3ea3f66",
+    "hitstopMs": 0,
+    "kind": "motion-timeline",
+    "limitsRad": {
+      "beak": {
+        "max": 0.08726646259971647,
+@@ -95,10 +95,11 @@
+    "notes": [
+      "earth species \"Goose\" mass uncalibrated (medium); gait from physical habitat/anatomy",
+      "physical realm: G1 automatic: Earth fauna profile swimming-bird media air+water+ground (capability, not painted pose; adult flight is a separate declaration)",
+      "materials: record surface \"feathers\" wins over genome skin \"scaled\" (observer disagreement)",
+      "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): legNear 2.2%",
++     "axial-faint:coherent-upper-body-v1",
+    ],
+    "phases": [
+      [
+        "fall",
+        520,
+@@ -451,11 +452,11 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": 0.3490658503988659,
++         "value": 0,
+        },
+      ],
+      "legFarAnkle": [
+        {
+          "ease": "ease-out",
+@@ -591,11 +592,11 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": 0.4363323129985824,
++         "value": 0,
+        },
+      ],
+      "neck1": [
+        {
+          "ease": "ease-out",
+@@ -611,11 +612,11 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": 0.4363323129985824,
++         "value": 0,
+        },
+      ],
+      "pelvis": [
+        {
+          "ease": "ease-out",
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:27:43
+     25|  for(const [name] of inputs){const f=fixtures(name);for(const id of Ob…
+     26|   const before=buildTimeline(f.base,id,f.base.identity.seed),after=bui…
+     27|   if(failures(f,before)===0)expect(after).toEqual(before);
+       |                                           ^
+     28|  }}
+     29| },20_000); // Exhaustive fixture/action/contact sampling; retain every…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors c59-08-vulture faint against painted supports without changing limbs or timing
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors c56-15-dove faint against painted supports without changing limbs or timing
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors 02-pigeon faint against painted supports without changing limbs or timing
+ FAIL  apps/game/src/motion/painted-bird-author.test.ts > authors 04-hawk-v2 faint against painted supports without changing limbs or timing
+AssertionError: expected [ …(3) ] to deeply equal [ …(3) ]
+
+- Expected
++ Received
+
+@@ -13,8 +13,8 @@
+    },
+    {
+      "ease": "ease-out",
+      "ms": 520,
+      "t": 1,
+-     "value": 0.4363323129985824,
++     "value": 0,
+    },
+  ]
+
+ ❯ apps/game/src/motion/painted-bird-author.test.ts:37:139
+     35|  expect(after.phases).toEqual(before.phases);expect(after.durationMs).…
+     36|  expect(after.limitsRad).toEqual(before.limitsRad);expect(after.second…
+     37|  for(const [joint,keys]of Object.entries(before.tracks))if(!['root','p…
+       |                                                                                                                                           ^
+     38|  // Unobserved cards and the override constructor keep the original ca…
+     39|  const raw=actionsFor(f.base.template.id,f.base.anatomy)!.faint!;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+

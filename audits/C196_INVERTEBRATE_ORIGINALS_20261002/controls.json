@@ -1,0 +1,99 @@
+{
+  "scope": "Audit extension only; no native execution or biological admission",
+  "sourceSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "auditCompilerSha256": "08a9e24c6206f51f43c0bfca71f8b8749faaf1935af2f1ccb4b8268c63637902",
+  "controls": [
+    {
+      "name": "Production bytes unchanged and exact transform replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Shrimp exact canonical route, biological requested legs and bound source",
+      "status": "PASS"
+    },
+    {
+      "name": "Shrimp mixed route refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Shrimp wrong named template refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Brittle Star exact canonical route, biological requested legs and bound source",
+      "status": "PASS"
+    },
+    {
+      "name": "Brittle Star mixed route refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Brittle Star wrong named template refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Fiddler Crab exact canonical route, biological requested legs and bound source",
+      "status": "PASS"
+    },
+    {
+      "name": "Fiddler Crab mixed route refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Fiddler Crab wrong named template refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Spider exact canonical route, biological requested legs and bound source",
+      "status": "PASS"
+    },
+    {
+      "name": "Spider mixed route refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Spider wrong named template refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged quadruped",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged biped-bird",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged serpent",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged insect",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged fish",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged primate",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged myriapod",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged cephalopod",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing layout unchanged flyer-membrane",
+      "status": "PASS"
+    },
+    {
+      "name": "Production compiler continues refusing specialized source route",
+      "status": "PASS"
+    }
+  ]
+}

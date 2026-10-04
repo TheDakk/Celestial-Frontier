@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Snowy Owl\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"639895957\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"1\"]]]]",
+    "seed": 639895957,
+    "ownerId": "authored:archetype-sprint/10-snowy-owl",
+    "earthName": "Snowy Owl"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 639895957,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 2,
+    "body": 15,
+    "loco": 3,
+    "trait": 1,
+    "size": 0,
+    "diet": 3,
+    "head": 5,
+    "limbs": 1,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 5,
+    "habitat": 17,
+    "detail": 0,
+    "accent": 5,
+    "temper": 3,
+    "sense": 1,
+    "repro": 2,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Snowy Owl"
+  },
+  "geometry": {
+    "cutoutAssetHash": "c406be06b90a517547653ae28bdec013b51aa5c4d0e2169cb4f6445236608b1a",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7180136197238711,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5330940988835726,
+      0.5015151515151515
+    ],
+    "pelvis": [
+      0.4972089314194577,
+      0.5721690590111643
+    ],
+    "spine": [
+      0.5708931419457735,
+      0.49776714513556625
+    ],
+    "chest": [
+      0.641786283891547,
+      0.42192982456140354
+    ],
+    "neck0": [
+      0.6476076555023924,
+      0.37543859649122807
+    ],
+    "neck1": [
+      0.666347687400319,
+      0.3548644338118022
+    ],
+    "head": [
+      0.6854864433811803,
+      0.31778309409888356
+    ],
+    "beak": [
+      0.7105263157894737,
+      0.33708133971291865
+    ],
+    "legNearKnee": [
+      0.46730462519936206,
+      0.6351674641148325
+    ],
+    "legNearAnkle": [
+      0.47432216905901115,
+      0.6752791068580541
+    ],
+    "legNearFoot": [
+      0.49338118022328553,
+      0.6830143540669856
+    ],
+    "legFarKnee": [
+      0.569377990430622,
+      0.6251196172248804
+    ],
+    "legFarAnkle": [
+      0.6122009569377991,
+      0.6802232854864434
+    ],
+    "legFarFoot": [
+      0.633652312599681,
+      0.6784688995215311
+    ],
+    "wingNearRoot": [
+      0.5825358851674641,
+      0.4211323763955343
+    ],
+    "wingNearTip": [
+      0.40502392344497606,
+      0.5141148325358852
+    ],
+    "wingFarRoot": [
+      0.5451355661881978,
+      0.3682615629984051
+    ],
+    "wingFarTip": [
+      0.48700159489633177,
+      0.4192185007974482
+    ],
+    "tailFan": [
+      0.3484848484848485,
+      0.5986443381180223
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile raptor media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 04-hawk-v2. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "16f5f376ec1e7f75302fa84d49b949f4056aeb9846b0bc35a0cf9cea7540f006",
+    "subjectSourceSha256": "178ba64cf18918438212b2e4597c3d3117873399a68b579c7ef0f3c1e40cbdb8",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.07924468366005831,
+      "spine": 0.10471393254595271,
+      "chest": 0.10381298939348543,
+      "neck0": 0.046854270402009554,
+      "neck1": 0.027829569984007776,
+      "head": 0.04172909938400097,
+      "beak": 0.03161356503153731,
+      "legFarKnee": 0.089510528395832,
+      "legFarAnkle": 0.06978696666538241,
+      "legFarFoot": 0.021522976788688773,
+      "legNearKnee": 0.06973569083411402,
+      "legNearAnkle": 0.04072087677570247,
+      "legNearFoot": 0.020568907504853483,
+      "wingFarRoot": 0.11055154242147378,
+      "wingFarTip": 0.0773056797914555,
+      "wingNearRoot": 0.059255764888659156,
+      "wingNearTip": 0.20039020361399493,
+      "tailFan": 0.15106221648223805
+    },
+    "measures": {
+      "body": 0.20850524793368855,
+      "bone-min": 0.020568907504853483,
+      "bone-max": 0.20039020361399493,
+      "leg/torso:legFar": 0.8672226413572572,
+      "leg/torso:legNear": 0.6284037280267417,
+      "wing/torso": 0.9009711941287636
+    }
+  },
+  "recipeHash": "f1fe424684541c49f9f2eb384331d76a5b6621b0857b2331f0f8832d8b90ac4b"
+}

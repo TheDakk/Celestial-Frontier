@@ -1,0 +1,23 @@
+{
+  "schema": "cf-integration-signing-failure/v1",
+  "observedAt": "2026-09-09T04:22:31.711330+00:00",
+  "headUnchanged": "e4e8c331e77a53c3b71476d918811e1af7c458ee",
+  "command": [
+    "git",
+    "commit",
+    "-S",
+    "-m",
+    "Record successful signing and develop admission handoff"
+  ],
+  "execSession": 35321,
+  "exitCode": 128,
+  "stderr": "error: 1Password: failed to fill whole buffer\n\nfatal: failed to write commit object",
+  "evidenceSource": "Transcribed from exec session35321 terminal output; no separate raw stderr file was captured.",
+  "result": "E4 code checkpoint remains signed; documentation/evidence successor remains staged.",
+  "signingConfigurationChanged": false,
+  "unsignedFallback": false,
+  "hostedActions": 0,
+  "pushes": 0,
+  "pullRequestsCreated": 0,
+  "cause": "Not established. No inference that vault is locked. Awaiting whether per-operation signing approval appeared."
+}

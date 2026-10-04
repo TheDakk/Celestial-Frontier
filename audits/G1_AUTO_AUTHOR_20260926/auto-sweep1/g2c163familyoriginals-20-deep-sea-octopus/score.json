@@ -1,0 +1,12 @@
+{
+ "id": "g2c163familyoriginals-20-deep-sea-octopus",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 15.6% paint that no reference appendage lands on",
+  "missing-anatomy: part eye-far (eyeFar) covers 0% paint (reference 84%)",
+  "missing-anatomy: part contour-arm6seg2 (arm6Seg2) covers 14% paint (reference 51%)",
+  "missing-anatomy: part final-arm0seg0 (arm0Seg0) covers 3% paint (reference 95%)"
+ ],
+ "semanticPresence": null
+}

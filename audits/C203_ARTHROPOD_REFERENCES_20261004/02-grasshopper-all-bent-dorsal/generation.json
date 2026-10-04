@@ -1,0 +1,19 @@
+{
+  "id": "02-grasshopper-all-bent-dorsal",
+  "name": "Grasshopper",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-387db2b8-b9be-49b4-b065-fcb7696f65d7.png",
+  "masterSha256": "fb72c3a69e626fd80c47ef77256c5d95fb7c49a704a245a06ebc319a48dd937e",
+  "bytes": 1231024,
+  "promptSha256": "365d42b8c331512dda79106623df0d01167b57cc671a44d23f5d7cced905559d",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/master.png",
+      "sha256": "73db555f6f0465d134f9f5864e0e30a67774ee7845b4970e34ab634477974b68"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "transparentBackground": false
+}

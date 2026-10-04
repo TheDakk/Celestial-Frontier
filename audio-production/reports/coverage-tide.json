@@ -1,0 +1,689 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.ability.tide.cast.1",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/018984c8e03488b6-splash_14.ogg",
+          "sha256": "018984c8e03488b65d4c2dd6e08a9c2115b395ded80cf7209f893e7e664c5d0e",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.559354
+        },
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-tide/v2.ability.tide.cast.1.wav",
+      "masterSha256": "87546c8d976506fd6472ded20700b47122c2f060846289cdd8919b15c41e148f",
+      "opus": "masters/coverage-tide/v2.ability.tide.cast.1.opus",
+      "opusSha256": "17db08fa73fddffdb72a52a73b7a3279588b9636ed73f8dd687bf963e6b10787",
+      "previewSha256": "ad5948e50ad3cf2c71c2a17dc32f17ff9cd3c204f90eee87902782029edf0459",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.6,
+      "opusDbTP": -12.6
+    },
+    {
+      "id": "v2.ability.tide.cast.2",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/10bf42f906ea0366-splash_13.ogg",
+          "sha256": "10bf42f906ea0366c2091405b7d355e74a496b1fe1c4bd40d8965d703c0db2d7",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.763542
+        },
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.65,
+      "master": "masters/coverage-tide/v2.ability.tide.cast.2.wav",
+      "masterSha256": "4ddbc4b9ac39eac1563999788204383b51595e280c7f412889415b1342a6cdcb",
+      "opus": "masters/coverage-tide/v2.ability.tide.cast.2.opus",
+      "opusSha256": "dfd5d88c2114b2099a8621de818ab2bbbf1ea5b9c70adefc9d7e06df0746ca6d",
+      "previewSha256": "1b7c3c2b130392a1af95675ceb8ad90615021f253c073a0ff0ba00572fb8da6c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.1,
+      "opusDbTP": -14.0
+    },
+    {
+      "id": "v2.ability.tide.cast.3",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/123f78e6bef82b5d-splash_09.ogg",
+          "sha256": "123f78e6bef82b5dfb24f0a93f759b309bd12b21d05905ab401756fc588a31dc",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.359563
+        },
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 3.3,
+      "master": "masters/coverage-tide/v2.ability.tide.cast.3.wav",
+      "masterSha256": "5aa49110cd7b2c63d30cf85c12a77d282fa954a885fd8bff8cb02b1d31752419",
+      "opus": "masters/coverage-tide/v2.ability.tide.cast.3.opus",
+      "opusSha256": "c9bd8a634efed3d846e39917cb6055ce13000879c3f302636535080b3f4bfde5",
+      "previewSha256": "fba3c12cd860dd3c6866092fef9f39db792aba07984e8acaa70f07b0b578bd00",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.3,
+      "opusDbTP": -16.3
+    },
+    {
+      "id": "v2.ability.tide.impact.1",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/156f4df0fa1a552d-splash_01.ogg",
+          "sha256": "156f4df0fa1a552d1c4e451284a55000417ea871954dc4b5e0d4302a49e228a8",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.381083
+        },
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0,
+          "duration": 0.55,
+          "note": 39,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 4.949999999999999,
+      "master": "masters/coverage-tide/v2.ability.tide.impact.1.wav",
+      "masterSha256": "04b26f5fb5c6a2625e9a204eb96eb1bb324bf843dfff8e562716deb18c6aaae3",
+      "opus": "masters/coverage-tide/v2.ability.tide.impact.1.opus",
+      "opusSha256": "ec9eedc5fefeca0ac54b58bd9ca96f0d9ecf0922cd7c13f4b1bae30b99e576cd",
+      "previewSha256": "675384c3248bdd254886f430979816a2dd257d6a93868abfc5784c630eb6612b",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.1,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v2.ability.tide.impact.2",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/307e6ea8d4ed122d-splash_07.ogg",
+          "sha256": "307e6ea8d4ed122d1f54377437194daf4c2d6103d3a04dd9128c3d7a342d46b8",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.25975
+        },
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0,
+          "duration": 0.55,
+          "note": 39,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 7.1499999999999995,
+      "master": "masters/coverage-tide/v2.ability.tide.impact.2.wav",
+      "masterSha256": "4611ecb646fc465a5ba575bbca96d721542ea6df9dd43e6568cd702cc1921466",
+      "opus": "masters/coverage-tide/v2.ability.tide.impact.2.opus",
+      "opusSha256": "91f3703a4c0b49c516f1c0c244874af1d0c3ec6218aae8989f850d2ba4b68ab8",
+      "previewSha256": "837fff2d7cdbe2beeb9749ef47332458e16e510a66187508e494f6811ba42a38",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.9,
+      "opusDbTP": -11.9
+    },
+    {
+      "id": "v2.ability.tide.impact.3",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/3581e5bee7307cbe-splash_06.ogg",
+          "sha256": "3581e5bee7307cbe6be17715714029259685ba283cb3423938378506b386afb4",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.456521
+        },
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0,
+          "duration": 0.55,
+          "note": 39,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 9.35,
+      "master": "masters/coverage-tide/v2.ability.tide.impact.3.wav",
+      "masterSha256": "039b8c6dd890fa932f2692ffe3cac8d5987b0e16c5b70a5ee08829727faaf6cb",
+      "opus": "masters/coverage-tide/v2.ability.tide.impact.3.opus",
+      "opusSha256": "2eb3b3f7a99e73c398d6f2ea8cf2ba0a9cc05c401b76d61aeca26b50c6e949a7",
+      "previewSha256": "80c470bef614a92eb6152bf75d80226e15fc3749556a857c3df94394f3861ef9",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.3,
+      "opusDbTP": -12.3
+    },
+    {
+      "id": "v2.ability.tide.sustain.1",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/018984c8e03488b6-splash_14.ogg",
+          "sha256": "018984c8e03488b65d4c2dd6e08a9c2115b395ded80cf7209f893e7e664c5d0e",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.559354
+        },
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0.0,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-tide",
+          "start": 0.6,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-tide",
+          "start": 1.2,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-tide",
+          "start": 1.7999999999999998,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-tide",
+          "start": 2.4,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-tide",
+          "start": 3.0,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.sustain"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 11.55,
+      "master": "masters/coverage-tide/v2.ability.tide.sustain.1.wav",
+      "masterSha256": "8dbb4c30a4d1c06624fe3b6d0c1a5436b46cef20580b64772a1edd929b140e67",
+      "opus": "masters/coverage-tide/v2.ability.tide.sustain.1.opus",
+      "opusSha256": "4fe285d9d6cf6e0ad01f99e4c046236ab3f5c6b3113a96d89686878e1746f196",
+      "previewSha256": "3961e6d65917a38766d28832273350c8927772357deac3d8c15842e30461b38e",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.6,
+      "opusDbTP": -12.6
+    },
+    {
+      "id": "v2.ability.tide.release.1",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 0.9,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/018984c8e03488b6-splash_14.ogg",
+          "sha256": "018984c8e03488b65d4c2dd6e08a9c2115b395ded80cf7209f893e7e664c5d0e",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.559354
+        },
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0,
+          "duration": 0.55,
+          "note": 46,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.release"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 16.55,
+      "master": "masters/coverage-tide/v2.ability.tide.release.1.wav",
+      "masterSha256": "4ee16427ed8aeaa5b6f579fdde3a7752d74adbba10cfef9965bce85e5ec868be",
+      "opus": "masters/coverage-tide/v2.ability.tide.release.1.opus",
+      "opusSha256": "43da27b1508e5d86456b8ec77ad6026945bbaf44e712019b8b74bff02f50bf5f",
+      "previewSha256": "755b0b21eb481e44ff28de0536d68010c51202d237ee32316cb24a7dbefb4e97",
+      "previewBytes": 86514,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.9,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.ability.tide.shield.1",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 1.4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/018984c8e03488b6-splash_14.ogg",
+          "sha256": "018984c8e03488b65d4c2dd6e08a9c2115b395ded80cf7209f893e7e664c5d0e",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.559354
+        },
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-tide",
+          "start": 0.3,
+          "duration": 0.55,
+          "note": 58,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.shield"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.45,
+      "master": "masters/coverage-tide/v2.ability.tide.shield.1.wav",
+      "masterSha256": "7ac3dc6c1e790d8a2ec2008c59dd2d49004857663eda1308c44aa708ce98eb60",
+      "opus": "masters/coverage-tide/v2.ability.tide.shield.1.opus",
+      "opusSha256": "d8f10a3b1031efad376949f619dcb548a243068d02b9e2c76dca331ef64a42ed",
+      "previewSha256": "f6d65318c78c496bf91d44d7aaaf28b89d28bb38e62194aada3316cb58bc410a",
+      "previewBytes": 134514,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.shield.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.6,
+      "opusDbTP": -12.6
+    },
+    {
+      "id": "v2.ability.tide.heal.1",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 1.8,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/018984c8e03488b6-splash_14.ogg",
+          "sha256": "018984c8e03488b65d4c2dd6e08a9c2115b395ded80cf7209f893e7e664c5d0e",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.559354
+        },
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-tide",
+          "start": 0.35,
+          "duration": 0.55,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-tide",
+          "start": 0.7,
+          "duration": 0.55,
+          "note": 58,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.heal"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 20.849999999999998,
+      "master": "masters/coverage-tide/v2.ability.tide.heal.1.wav",
+      "masterSha256": "2e5530308967fddc073ac5c684fd7f3acb41e5b0e3d9fdff31036900bf4fd858",
+      "opus": "masters/coverage-tide/v2.ability.tide.heal.1.opus",
+      "opusSha256": "112edc9979f6227581b14b41d6e21c31ad9f570e0838728ae943fe68462efa42",
+      "previewSha256": "317d0d6adbc7159ab221e44cc9bfe1576719ac236f205cda5bb8c6e42ca1ebc0",
+      "previewBytes": 172914,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.heal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.6,
+      "opusDbTP": -12.6
+    },
+    {
+      "id": "v2.ability.tide.tick.1",
+      "group": "coverage-tide",
+      "kind": "synthetic_fictional",
+      "duration": 0.45,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/018984c8e03488b6-splash_14.ogg",
+          "sha256": "018984c8e03488b65d4c2dd6e08a9c2115b395ded80cf7209f893e7e664c5d0e",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.559354
+        },
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-tide",
+          "start": 0,
+          "duration": 0.45,
+          "note": 63,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.tide.tick"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "tide",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 23.65,
+      "master": "masters/coverage-tide/v2.ability.tide.tick.1.wav",
+      "masterSha256": "414c49175f70dba9f46355301f82f959f2d2754cfb976e835fb9bc782618a4dd",
+      "opus": "masters/coverage-tide/v2.ability.tide.tick.1.opus",
+      "opusSha256": "63bd2bde5b9817602e6a067435e8833787acc10e0e342c8c35010f47f52dce4a",
+      "previewSha256": "90013386c5ee7f86fc92eb219630f9dde2319d7ee762c7d5cabf984cba6e30ee",
+      "previewBytes": 43314,
+      "previewUrl": "/__cf-audio-review/v2.ability.tide.tick.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.8,
+      "opusDbTP": -12.6
+    }
+  ],
+  "listeningAccepted": false
+}

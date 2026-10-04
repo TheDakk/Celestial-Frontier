@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Guinea Pig",
+  "masterSha256": "ea8eacb4085bb8f89111b5117c761c0f619b290a464ed2bf145d0276b338bf46",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

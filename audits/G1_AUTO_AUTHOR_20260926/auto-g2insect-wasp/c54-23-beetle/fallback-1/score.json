@@ -1,0 +1,12 @@
+{
+ "id": "c54-23-beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on",
+  "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 25%)",
+  "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 16% paint (reference 77%)",
+  "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 0% paint (reference 70%)"
+ ],
+ "semanticPresence": null
+}

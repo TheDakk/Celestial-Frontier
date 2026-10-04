@@ -1,0 +1,81 @@
+{
+  "boundaryStep": 24,
+  "interiorStep": 128,
+  "fieldVertices": 3791,
+  "source": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04",
+  "masterSha256": "7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890",
+  "atlasSha256": "0dd9a34e031346c04829ca9b897ec1264695506e98734cf415a7e952d26836b5",
+  "recordIdentical": true,
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-lower",
+        "vertex": 112,
+        "distancePx": 5.8309518948453,
+        "supports": [
+          1320
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-lower",
+        "vertex": 84,
+        "distancePx": 6,
+        "supports": [
+          2318
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-lower",
+        "vertex": 155,
+        "distancePx": 5,
+        "supports": [
+          1675
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-lower",
+        "vertex": 128,
+        "distancePx": 1.1180339887499964,
+        "supports": [
+          2693
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-lower",
+        "vertex": 190,
+        "distancePx": 9.055385138137417,
+        "supports": [
+          2104
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-lower",
+        "vertex": 31,
+        "distancePx": 8.000000000000114,
+        "supports": [
+          2796
+        ]
+      }
+    ],
+    "sourceBindingHash": "700db4a0b007852fb4cb35bc524b9bb0bd9c62e6a612bd7a2ad69194416c8322",
+    "sourceVertices": 3265,
+    "vertices": 3791,
+    "sharedSupports": 548,
+    "pins": 2346,
+    "independentSurfaceParts": 21,
+    "sourceJoins": 20,
+    "excludedOverlaps": 15,
+    "observedExcludedBoundaries": 15,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 15,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

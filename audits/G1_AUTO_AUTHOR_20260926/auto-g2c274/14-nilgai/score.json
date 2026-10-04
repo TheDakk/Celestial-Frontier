@@ -1,0 +1,9 @@
+{
+ "id": "14-nilgai",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 35%)"
+ ],
+ "semanticPresence": null
+}

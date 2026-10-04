@@ -1,0 +1,22 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "not x-monotone: the dominant column run holds 94.4 % (coil or overlap; vertical strips cannot separate it)"
+ ],
+ "author": "serpent-strips/v1",
+ "target": {
+  "snoutRatio": 0.193,
+  "mainShare": 1,
+  "dominantShare": 0.944,
+  "gapFrac": 0,
+  "elongation": 13.3,
+  "headEnd": 102.3,
+  "tailEnd": 9.1,
+  "tailTip": 5.4,
+  "median": 77,
+  "xmin": 102,
+  "xmax": 1125,
+  "ext": 1024,
+  "paint": 88310
+ }
+}

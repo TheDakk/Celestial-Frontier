@@ -1,0 +1,85 @@
+{
+  "creatureId": "beetle",
+  "parts": [
+    {
+      "name": "antenna-far.png",
+      "path": "parts/antenna-far.png",
+      "sha256": "5e455b0ee6899a88fced797fcaea10e52e2869a094a858d16fbd3ffd8684174a"
+    },
+    {
+      "name": "antenna-near.png",
+      "path": "parts/antenna-near.png",
+      "sha256": "8335598a2b8c28187317fb5f0e3997f678f3c8f153faa388c5984f0b4213c134"
+    },
+    {
+      "name": "front-far-foot.png",
+      "path": "parts/front-far-foot.png",
+      "sha256": "2d22b57ac8979c92f5160481e379f32494bfe7bd37616b6d6a10354c050ac1ec"
+    },
+    {
+      "name": "front-far-leg.png",
+      "path": "parts/front-far-leg.png",
+      "sha256": "84b913a02c63b130c88b0d5879576f440b213df0e1aadd23cbfac81dc930fa30"
+    },
+    {
+      "name": "front-near-foot.png",
+      "path": "parts/front-near-foot.png",
+      "sha256": "5b950a64553fab59764b333dfb34bbeba999d6afefc02b34a98d7e0f400a27d7"
+    },
+    {
+      "name": "front-near-leg.png",
+      "path": "parts/front-near-leg.png",
+      "sha256": "c62733ee736a4f02a50d4561d36dbf813015db33e6960c96bfd3b8619499e4d8"
+    },
+    {
+      "name": "mid-far-foot.png",
+      "path": "parts/mid-far-foot.png",
+      "sha256": "21891d20481c213aea24b8e7754c89f221ec3d806311183ed8d598d53eca11e4"
+    },
+    {
+      "name": "mid-far-leg.png",
+      "path": "parts/mid-far-leg.png",
+      "sha256": "8df2aab4b2981d9b35dfa40f19637e3a662f2ea19ab6773da046f6b3adfc84ca"
+    },
+    {
+      "name": "mid-near-foot.png",
+      "path": "parts/mid-near-foot.png",
+      "sha256": "6a75ea462ac4eb14bd36e93ec547bd90a992bdf1fe77d78f360f22c53b9cf4ae"
+    },
+    {
+      "name": "mid-near-leg.png",
+      "path": "parts/mid-near-leg.png",
+      "sha256": "21e5d1488782b96b847a4ba185cd47bacda82733c3dab0edde0b2f7eb47776cc"
+    },
+    {
+      "name": "hind-near-foot.png",
+      "path": "parts/hind-near-foot.png",
+      "sha256": "d9651ee99566823a9f9cebdb61bf535025e2bb2abccd3d1ab1c2b1f8c23353a3"
+    },
+    {
+      "name": "hind-near-leg.png",
+      "path": "parts/hind-near-leg.png",
+      "sha256": "5f64e1cfe4d8d4ce3876cd03425d15d09824929a95f39f7dad38c4185e8978fd"
+    },
+    {
+      "name": "mandible.png",
+      "path": "parts/mandible.png",
+      "sha256": "fb8232add5d816eba890af7bb2f9ef540c9b48aa827e413617fa6aa7eea0f816"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "61a2c1c6ab9a870dc787db787696ab15abb450effc5f77f9832e8f482951572f"
+    },
+    {
+      "name": "abdomen.png",
+      "path": "parts/abdomen.png",
+      "sha256": "5bafd394002eed3ce52fa7dbcf87bf6cadec4092e6269f865e48001f1301e98d"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "62584dd6dbfef6daa6b0f08dd94787aa9e32b9c9154fa45f77ed61fa9328601e"
+    }
+  ]
+}

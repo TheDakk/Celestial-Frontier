@@ -1,0 +1,7 @@
+{
+  "schema": "cf.c202-packing-attempt/v1",
+  "status": "REFUSED",
+  "stage": "semantic source RGBA hash",
+  "reason": "Initial validator reconstructed zero-alpha RGB as zero from atlas; keyed source retains hidden RGB. Guard correctly refused the mismatch. Successor reads hash-bound keyed.png and independently verifies all visible RGBA against actual atlas reconstruction. No source pixel or gate limit changed.",
+  "native": false
+}

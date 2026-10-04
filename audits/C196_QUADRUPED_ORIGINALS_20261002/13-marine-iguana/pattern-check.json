@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Marine Iguana",
+  "masterSha256": "9200fbcb9b42baa95175a0d23e2358332aef0fe19a4e5d5ba7d5fbebcb36116f",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

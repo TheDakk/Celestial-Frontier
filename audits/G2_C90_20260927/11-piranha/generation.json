@@ -1,0 +1,13 @@
+{
+  "id": "11-piranha",
+  "name": "Piranha",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f7284ef1-ef31-49db-bf9e-395842919e5c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7fe8d38727d1dd7adf742a4313c37cc14bfb1e70fc27ad0754d94cbf9e595dc7",
+  "bytes": 1341659,
+  "promptSha256": "44d887c2a1bfda98ad3b78ccfcceeed141749dff0ff40893a27e3b177690d050",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

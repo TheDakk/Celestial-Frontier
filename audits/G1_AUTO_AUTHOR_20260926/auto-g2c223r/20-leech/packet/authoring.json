@@ -1,0 +1,361 @@
+{
+  "id": "20-leech",
+  "family": "annelid",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile annelid-water media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "landmarksPx": {
+    "root": [
+      411.1,
+      643.9
+    ],
+    "segment0": [
+      898.5,
+      576.5
+    ],
+    "segment1": [
+      869.6,
+      539.9
+    ],
+    "segment2": [
+      842.7,
+      518.2
+    ],
+    "segment3": [
+      845.7,
+      540
+    ],
+    "segment4": [
+      650.4,
+      564
+    ],
+    "segment5": [
+      464.7,
+      599.7
+    ],
+    "segment6": [
+      423.2,
+      668.5
+    ],
+    "segment7": [
+      365.7,
+      671.4
+    ],
+    "segment8": [
+      255.8,
+      674.6
+    ],
+    "segment9": [
+      281.5,
+      630.5
+    ],
+    "segment10": [
+      332.5,
+      614.5
+    ],
+    "segment11": [
+      379.5,
+      581.5
+    ]
+  },
+  "groundLineY": 0.6177433865958779,
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "remainderPart": "segment6",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          407.2,
+          634.1
+        ],
+        [
+          409.8,
+          632.4
+        ],
+        [
+          416.7,
+          656.2
+        ],
+        [
+          413.2,
+          658.4
+        ]
+      ]
+    },
+    {
+      "id": "segment0",
+      "joint": "segment0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          738.2,
+          0
+        ],
+        [
+          806.3,
+          0
+        ],
+        [
+          1169,
+          1254
+        ],
+        [
+          1081.3,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment1",
+      "joint": "segment1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          714.3,
+          0
+        ],
+        [
+          738.2,
+          0
+        ],
+        [
+          1081.3,
+          1254
+        ],
+        [
+          1023.7,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment2",
+      "joint": "segment2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          693.3,
+          0
+        ],
+        [
+          714.3,
+          0
+        ],
+        [
+          1023.7,
+          1254
+        ],
+        [
+          939.5,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment3",
+      "joint": "segment3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          680.1,
+          0
+        ],
+        [
+          693.3,
+          0
+        ],
+        [
+          939.5,
+          1254
+        ],
+        [
+          834.2,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment4",
+      "joint": "segment4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          676,
+          0
+        ],
+        [
+          680.1,
+          0
+        ],
+        [
+          834.2,
+          1254
+        ],
+        [
+          725.3,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment5",
+      "joint": "segment5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          677.1,
+          28.8
+        ],
+        [
+          725.3,
+          1254
+        ],
+        [
+          606.2,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment7",
+      "joint": "segment7",
+      "layer": "near",
+      "polygonPx": [
+        [
+          673.2,
+          82.7
+        ],
+        [
+          451.6,
+          1254
+        ],
+        [
+          315.6,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment8",
+      "joint": "segment8",
+      "layer": "near",
+      "polygonPx": [
+        [
+          684.6,
+          45.3
+        ],
+        [
+          315.6,
+          1254
+        ],
+        [
+          203.6,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment9",
+      "joint": "segment9",
+      "layer": "near",
+      "polygonPx": [
+        [
+          698.4,
+          0
+        ],
+        [
+          702.6,
+          0
+        ],
+        [
+          203.6,
+          1254
+        ],
+        [
+          92.7,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment10",
+      "joint": "segment10",
+      "layer": "near",
+      "polygonPx": [
+        [
+          682.6,
+          0
+        ],
+        [
+          698.4,
+          0
+        ],
+        [
+          92.7,
+          1254
+        ],
+        [
+          0.4,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment11",
+      "joint": "segment11",
+      "layer": "near",
+      "polygonPx": [
+        [
+          609.8,
+          0
+        ],
+        [
+          682.6,
+          0
+        ],
+        [
+          0.4,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment6",
+      "joint": "segment6",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from codex-ref-04-earthworm-material. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "01-grouper",
+  "name": "Grouper",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c24f1626-6c7e-4b31-9826-479177896b14.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f451a42377174338d5bb6a8246e9338c4e882a243fd98f705ddc8b824a00568c",
+  "bytes": 1606332,
+  "promptSha256": "25c35a7b492547941949c9cab9e16f526d95a1953e98f9a72d82483eb3ff3a21",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

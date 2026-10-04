@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c173-held-source-repaint/v1",
+  "slug": "snailfish",
+  "tool": "image_gen.imagegen",
+  "purpose": "Source repaint candidate for recorded hold; not runtime admission",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "predecessor": "audits/G2_C98_20260927/10-snailfish",
+  "predecessorMasterSha256": "d389cd2c1af54df2c649ec1cd867398062829ff0a8e3a8869f9e803a9c65967b",
+  "promptSha256": "20e4090475fdaf9384adc35fc95ebe905e2897dfc0cb6e4f14fb0e5e6fcad3e2",
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "correction": "SOURCE REPAINT CORRECTION (preserve exact canonical species identity and approved painted style): Native square 1254 x 1254 canvas. Entire animal, snout, all natural fins/legs/wings and full unshortened tail inside the central rectangle x=280..974, y=280..974; this is an invisible guide and must never be drawn. Zoom OUT as a whole, do not truncate or fold appendages to satisfy framing. Pure #FF00FF empty canvas outside the creature, no floor or shadows. Preserve continuous soft scaleless body and attached dorsal/anal fin ribbons with visible contiguous roots. No cut-out gap through body or floating translucent fin sliver. No shell.",
+  "pipeline": "Existing compiled subject prompt retained verbatim with explicit source correction; original compiler receipt copied as historical inputs, not a new current compile"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "04-moray-eel",
+  "name": "Moray Eel",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-9ffb840e-b67f-4397-a147-cc50d80023ec.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "51dfd619e94766dcf2c450cff4d4e4b8620dfc3365c2e0c6fecc3f38bcada411",
+  "bytes": 1184124,
+  "promptSha256": "8aac574f2fdc98d076b0746b522278fa3ae386a370cf5e669dd6b309c6d2f350",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

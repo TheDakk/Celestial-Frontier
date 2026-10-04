@@ -1,0 +1,50 @@
+{
+  "operation": "Select independently measured new epoch, not alter or rebind a prior certificate",
+  "previousEpoch": "audits/C192_I5_EPOCH_20261002/epoch",
+  "newEpoch": "audits/C198_I5_EPOCH_20261003/epoch",
+  "oldBoundFilesStillMatch": true,
+  "newBoundFilesMatch": true,
+  "oldEvidenceDiff": "",
+  "newSteps": [
+    {
+      "phase": "calibration-1",
+      "exitCode": 0,
+      "runId": "i5-v2-869ce0e44a9a-calibration-1",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "calibration-2",
+      "exitCode": 0,
+      "runId": "i5-v2-869ce0e44a9a-calibration-2",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "calibration-3",
+      "exitCode": 0,
+      "runId": "i5-v2-869ce0e44a9a-calibration-3",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "certification",
+      "exitCode": 0,
+      "runId": "i5-v2-869ce0e44a9a-certification",
+      "verificationExitCode": 0
+    }
+  ],
+  "activation": {
+    "ok": true,
+    "errors": [],
+    "epoch": "i5-v2-869ce0e44a9a",
+    "source": "869ce0e44a9aac23d614571a90c33fa23a3880b6"
+  },
+  "unchangedPolicyFields": {
+    "schema": true,
+    "status": true,
+    "fixture": true,
+    "requirements": true,
+    "growthGuard": true,
+    "ceilings": true
+  },
+  "projectPolicy": "port/v2/README.md:13: active-v2 selector explicitly replaces historical authority after a complete successful epoch",
+  "userAuthorization": "Current C198 step5 explicitly authorizes ONE combined changed-product I5 epoch followed by develop. Earlier standing C192 instruction explicitly says select the proof. Existing certificate bytes and limits are unchanged."
+}

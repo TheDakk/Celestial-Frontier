@@ -1,0 +1,36 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c196invertebrateoriginals-01-shrimp",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e",
+ "subjectSourceSha256": "70eed98c8728dcbfd990ec7d96df46ea4903e109aac8e9dfc9527557cd3bce5b",
+ "identity": {
+  "name": "Shrimp",
+  "family": "crustacean-small",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Shrimp\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"4239261292\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "seed": 4239261292,
+  "checks": [
+   "materials-unknown: no species-group material for profile shrimp-prawn; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": null,
+ "habitat": {
+  "profileId": "shrimp-prawn",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "e79852f753fa21319d45b2284ad21729a0c89fef7cd5abfed1cf2a8cfe80201c",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group shrimp-prawn (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

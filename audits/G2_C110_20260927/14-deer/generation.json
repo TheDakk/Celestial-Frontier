@@ -1,0 +1,13 @@
+{
+  "id": "14-deer",
+  "name": "Deer",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-db7eb9a2-4ba8-44a5-8a25-5ab1273cacc7.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ce663727817bb0c7c5f3820688ef3759b0b074d3436ac3b2cf005646177634df",
+  "bytes": 1282609,
+  "promptSha256": "b3575d26476f6bf2e0ad812e7d9c079a80107a68c4abd5fd9e138898b1a69cf0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

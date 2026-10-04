@@ -1,0 +1,8 @@
+{
+  "predecessor": "native-01 and fullsize-review",
+  "finding": "Full-size torso root square separates; loose remainder fringe pixels below feet. Native numeric PASS does not override visual hold.",
+  "successor": "islands-joins-02",
+  "change": "Existing D28 remainder-island placement and explicit actual interior root/spine source join; no source pixel, landmark, solver or product changes.",
+  "helperSource": "audits/C202_CEPHALOPOD_REFERENCES_20261004/place-eligible.mjs",
+  "helperSha256": "030fd577da60c2e1d1f3c8670e81151dfd848e31013eb671d231f336f9630dea"
+}

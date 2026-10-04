@@ -1,0 +1,123 @@
+{
+ "verdict": "ADMIT",
+ "reasons": [],
+ "author": "serpent-strips/v1",
+ "target": {
+  "snoutRatio": 0.54,
+  "mainShare": 1,
+  "dominantShare": 1,
+  "gapFrac": 0,
+  "elongation": 20.74,
+  "headEnd": 46.9,
+  "tailEnd": 11.7,
+  "tailTip": 10.3,
+  "median": 57,
+  "xmin": 36,
+  "xmax": 1217,
+  "ext": 1182,
+  "paint": 59601
+ },
+ "bestReference": "python",
+ "reference": {
+  "snoutRatio": 0.589,
+  "mainShare": 1,
+  "dominantShare": 1,
+  "gapFrac": 0,
+  "elongation": 11.22,
+  "headEnd": 54.2,
+  "tailEnd": 36.8,
+  "tailTip": 21.1,
+  "median": 108,
+  "xmin": 19,
+  "xmax": 1230,
+  "ext": 1212,
+  "paint": 119113
+ },
+ "candidates": [
+  {
+   "ref": "python",
+   "ratio": 0.0891
+  }
+ ],
+ "coverage": [
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paintFrac": 0.0155,
+   "refFrac": 0.0092
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paintFrac": 0.0721,
+   "refFrac": 0.0435
+  },
+  {
+   "id": "body-segment-0",
+   "joint": "seg0",
+   "paintFrac": 0.0639,
+   "refFrac": 0.0728
+  },
+  {
+   "id": "body-segment-1",
+   "joint": "seg1",
+   "paintFrac": 0.1059,
+   "refFrac": 0.0998
+  },
+  {
+   "id": "body-segment-2",
+   "joint": "seg2",
+   "paintFrac": 0.122,
+   "refFrac": 0.1048
+  },
+  {
+   "id": "body-segment-3",
+   "joint": "seg3",
+   "paintFrac": 0.1284,
+   "refFrac": 0.1015
+  },
+  {
+   "id": "body-segment-4",
+   "joint": "seg4",
+   "paintFrac": 0.117,
+   "refFrac": 0.1208
+  },
+  {
+   "id": "body-segment-5",
+   "joint": "seg5",
+   "paintFrac": 0.1096,
+   "refFrac": 0.1109
+  },
+  {
+   "id": "body-segment-6",
+   "joint": "seg6",
+   "paintFrac": 0.0849,
+   "refFrac": 0.1132
+  },
+  {
+   "id": "body-segment-7",
+   "joint": "seg7",
+   "paintFrac": 0.072,
+   "refFrac": 0.0877
+  },
+  {
+   "id": "body-segment-8",
+   "joint": "seg8",
+   "paintFrac": 0.0323,
+   "refFrac": 0.0574
+  },
+  {
+   "id": "body-segment-9",
+   "joint": "seg9",
+   "paintFrac": 0.0172,
+   "refFrac": 0.0276
+  },
+  {
+   "id": "neck-root",
+   "joint": "root",
+   "paintFrac": 0.0592,
+   "refFrac": 0.0509
+  }
+ ],
+ "unownedFrac": 0
+}

@@ -1,0 +1,10 @@
+{
+ "id": "c202creaturesupply-04-coati",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches quadruped better (0.0140 < 0.0287)",
+  "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

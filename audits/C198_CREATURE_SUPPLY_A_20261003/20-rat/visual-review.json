@@ -1,0 +1,28 @@
+{
+  "name": "Rat",
+  "masterSha256": "cbf545ceb723dbcc6832844ede4c06ffcb5bda3b5fec4c08dc53ab5321f99724",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size: brown-gray fur, pale underside, two ear outlines, long bare ring-textured tail and four distinct pale feet. Far upper roots and far-ear base remain body/head occluded. Contact heights differ; exact toe counts and motion not qualified.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 136,
+      "y0": 425,
+      "x1": 1049,
+      "y1": 818
+    },
+    "margins": {
+      "left": 136,
+      "right": 204,
+      "top": 425,
+      "bottom": 435
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "earth-surface-turn-browser-free",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "startedAt": "2026-09-08T12:25:55.391636+00:00",
+  "status": "FAIL",
+  "exitCode": 1,
+  "seconds": 49.897
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Marmoset",
+  "family": "primate",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "f9279914851e18010a96b0abe4136b282417d4a738cfc49441bbaed0e5f6044e",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two natural arms with hands and two natural legs with feet, one head, species-correct tail or natural taillessness",
+  "profileId": "primate",
+  "authoringCreated": false,
+  "sourceHead": "b3335e613b92c655575aad1aabd9fcc6df53ac91",
+  "basePromptSha256": "ca2eb0548611c5e63936752b93d27eb84e5789790053cd6ea8367beb4846f0ee",
+  "batchCompilerSha256": "263d500eaf1948488008b8355e7a604f411f34bf1f78a136b18b5c3facc27610",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+    "priorSources": [
+      {
+        "pilot": "audits/C196_QUADRUPED_ORIGINALS_20261002/pilot.json",
+        "id": "22-marmoset",
+        "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset/master.png",
+        "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C196_QUADRUPED_ORIGINALS_20261002/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Reference-source correction: a natural quiet quadrupedal/crouched stance with both actual arms and both actual legs separately visible from biological emergence through elbows/wrists/hands and knees/ankles/feet; four real support endpoints on one ground plane, no curled hidden hand, branch or prop. Preserve named-species hand/foot proportions and real fingers/toes. Apes remain tailless. Tailed monkeys retain their actual tail, in a gentle noncrossing open arc away from limbs, never an invented prehensile ability. No extra limb, human heroic pose or fabricated hidden anatomy.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

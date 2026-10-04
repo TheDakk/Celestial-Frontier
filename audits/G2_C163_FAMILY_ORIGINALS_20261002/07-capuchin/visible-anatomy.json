@@ -1,0 +1,204 @@
+{
+  "id": "07-capuchin",
+  "name": "Capuchin",
+  "family": "primate",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "7cd471cbcea5ae24cc761887efcd474d92c851f1f768a86ff814f7d49e873d60",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 17608,
+    "coreRadius": 15,
+    "bodyBox": {
+      "x0": 165,
+      "y0": 171,
+      "x1": 303,
+      "y1": 238
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2223,
+        "pixels": 3914,
+        "box": {
+          "x0": 93,
+          "y0": 105,
+          "x1": 164,
+          "y1": 206
+        },
+        "attach": {
+          "x": 164,
+          "y": 193,
+          "relX": -0.01,
+          "relY": 0.33
+        },
+        "dir": {
+          "x": -0.67,
+          "y": -0.75
+        },
+        "class": "top",
+        "length": 113.1
+      },
+      {
+        "k": 1,
+        "frac": 0.0057,
+        "pixels": 100,
+        "box": {
+          "x0": 270,
+          "y0": 166,
+          "x1": 298,
+          "y1": 170
+        },
+        "attach": {
+          "x": 284,
+          "y": 170,
+          "relX": 0.86,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.21,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 14.6
+      },
+      {
+        "k": 2,
+        "frac": 0.0897,
+        "pixels": 1580,
+        "box": {
+          "x0": 266,
+          "y0": 214,
+          "x1": 325,
+          "y1": 307
+        },
+        "attach": {
+          "x": 282.3,
+          "y": 227.3,
+          "relX": 0.85,
+          "relY": 0.84
+        },
+        "dir": {
+          "x": 0.35,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 90.5
+      },
+      {
+        "k": 3,
+        "frac": 0.084,
+        "pixels": 1479,
+        "box": {
+          "x0": 186,
+          "y0": 223,
+          "x1": 232,
+          "y1": 302
+        },
+        "attach": {
+          "x": 204.3,
+          "y": 235.3,
+          "relX": 0.28,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": -0.02,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 72.2
+      },
+      {
+        "k": 4,
+        "frac": 0.0926,
+        "pixels": 1630,
+        "box": {
+          "x0": 231,
+          "y0": 231,
+          "x1": 273,
+          "y1": 310
+        },
+        "attach": {
+          "x": 250,
+          "y": 231,
+          "relX": 0.62,
+          "relY": 0.9
+        },
+        "dir": {
+          "x": -0.04,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 82.3
+      },
+      {
+        "k": 5,
+        "frac": 0.0638,
+        "pixels": 1124,
+        "box": {
+          "x0": 135,
+          "y0": 233,
+          "x1": 187,
+          "y1": 288
+        },
+        "attach": {
+          "x": 173.7,
+          "y": 238.3,
+          "relX": 0.06,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.64,
+          "y": 0.77
+        },
+        "class": "limb-down",
+        "length": 63
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 214,
+        "x1": 220,
+        "cx": 217.7
+      },
+      {
+        "x0": 221,
+        "x1": 232,
+        "cx": 226.4
+      },
+      {
+        "x0": 247,
+        "x1": 273,
+        "cx": 260.1
+      },
+      {
+        "x0": 308,
+        "x1": 311,
+        "cx": 309.4
+      },
+      {
+        "x0": 311,
+        "x1": 325,
+        "cx": 318.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,138 @@
+{
+  "schema": "cf.fish-seams-batch/v1",
+  "pilot": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/pilots/g2c107-eligible.json",
+  "author": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c107",
+  "rows": [
+    {
+      "id": "01-juvenile-shark",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Juvenile Shark",
+      "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c107/01-juvenile-shark/fit",
+      "sourceMasterSha256": "9da7e928726dd316874af5f6975c0b98d4d9e58c9f2b1a46ef5920a5c726915b",
+      "sourceStaticSha256": "6e1619e981a31515b8e7bfe3ac43269e913992ee78ff782be5c76778afa11c77",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107-fishseams/01-juvenile-shark/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107-fishseams/01-juvenile-shark/native"
+    },
+    {
+      "id": "02-eel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Eel"
+    },
+    {
+      "id": "03-electric-eel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Electric Eel"
+    },
+    {
+      "id": "04-moray-eel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Moray Eel"
+    },
+    {
+      "id": "05-gulper-eel",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gulper Eel"
+    },
+    {
+      "id": "06-oarfish",
+      "status": "SOURCE_OR_INSTRUMENT_REFUSED",
+      "name": "Oarfish",
+      "error": "ENOENT: no such file or directory, open '/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c107/06-oarfish/static.json'"
+    },
+    {
+      "id": "07-gull",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gull"
+    },
+    {
+      "id": "08-frigatebird",
+      "status": "SKIPPED_NONFISH",
+      "name": "Frigatebird"
+    },
+    {
+      "id": "09-tropicbird",
+      "status": "SKIPPED_NONFISH",
+      "name": "Tropicbird"
+    },
+    {
+      "id": "10-giant-anteater",
+      "status": "SKIPPED_NONFISH",
+      "name": "Giant Anteater"
+    },
+    {
+      "id": "11-mountain-tapir",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mountain Tapir"
+    },
+    {
+      "id": "12-panda",
+      "status": "SKIPPED_NONFISH",
+      "name": "Panda"
+    },
+    {
+      "id": "13-snowshoe-hare",
+      "status": "SKIPPED_NONFISH",
+      "name": "Snowshoe Hare"
+    },
+    {
+      "id": "14-mountain-goat",
+      "status": "SKIPPED_NONFISH",
+      "name": "Mountain Goat"
+    },
+    {
+      "id": "15-ibex",
+      "status": "SKIPPED_NONFISH",
+      "name": "Ibex"
+    },
+    {
+      "id": "16-chamois",
+      "status": "SKIPPED_NONFISH",
+      "name": "Chamois"
+    },
+    {
+      "id": "17-otter",
+      "status": "SKIPPED_NONFISH",
+      "name": "Otter"
+    },
+    {
+      "id": "18-jackrabbit",
+      "status": "SKIPPED_NONFISH",
+      "name": "Jackrabbit"
+    },
+    {
+      "id": "19-gopher",
+      "status": "SKIPPED_NONFISH",
+      "name": "Gopher"
+    },
+    {
+      "id": "20-hamster",
+      "status": "SKIPPED_NONFISH",
+      "name": "Hamster"
+    },
+    {
+      "id": "21-guinea-pig",
+      "status": "SKIPPED_NONFISH",
+      "name": "Guinea Pig"
+    },
+    {
+      "id": "22-armadillo",
+      "status": "SKIPPED_NONFISH",
+      "name": "Armadillo"
+    },
+    {
+      "id": "23-wild-pony",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wild Pony"
+    },
+    {
+      "id": "24-wild-ass",
+      "status": "SKIPPED_NONFISH",
+      "name": "Wild Ass"
+    }
+  ],
+  "scope": "Opt-in diagnostic candidates, no visual or library admission"
+}

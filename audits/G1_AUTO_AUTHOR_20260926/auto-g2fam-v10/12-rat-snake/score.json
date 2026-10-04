@@ -1,0 +1,18 @@
+{
+ "id": "12-rat-snake",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 11.8% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a other appendage of 14.1% paint that no reference appendage lands on",
+  "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+  "missing-anatomy: part head (head) covers 3% paint (reference 4%)",
+  "missing-anatomy: part body-segment-0 (seg0) covers 7% paint (reference 12%)",
+  "missing-anatomy: part body-segment-2 (seg2) covers 7% paint (reference 9%)",
+  "missing-anatomy: part body-segment-5 (seg5) covers 8% paint (reference 10%)",
+  "missing-anatomy: part body-segment-6 (seg6) covers 8% paint (reference 10%)",
+  "missing-anatomy: part body-segment-7 (seg7) covers 7% paint (reference 7%)",
+  "unexplained-anatomy: 18.6% of the paint lies away from the body and in no part (reference 5.1%)"
+ ],
+ "semanticPresence": null
+}

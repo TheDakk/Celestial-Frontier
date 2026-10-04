@@ -1,0 +1,143 @@
+{
+  "samples": 265,
+  "errors": [
+    {
+      "label": "stage 425.483333333334",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 9",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "stage 425.533333333334",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "stage 425.583333333334",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 8",
+      "parts": [
+        "near-foot",
+        "near-shin",
+        "near-thigh"
+      ]
+    },
+    {
+      "label": "stage 428.3125",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 6",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "stage 433.875",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 4",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "stage 445",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "stage 450.5625",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 6",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "stage 456.125",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "stage 461.6875",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "stage 467.25",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "standalone 422.75",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 6",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "standalone 425.483333333334",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5",
+      "parts": [
+        "near-foot",
+        "near-shin",
+        "near-thigh"
+      ]
+    },
+    {
+      "label": "standalone 425.583333333334",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "standalone 433.875",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "standalone 439.4375",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "standalone 445",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    },
+    {
+      "label": "standalone 461.6875",
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2",
+      "parts": [
+        "near-foot",
+        "near-shin"
+      ]
+    }
+  ]
+}

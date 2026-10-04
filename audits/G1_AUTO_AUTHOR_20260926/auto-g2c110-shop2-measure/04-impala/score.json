@@ -1,0 +1,11 @@
+{
+ "id": "04-impala",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on",
+  "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 7% paint (reference 70%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 5% paint (reference 57%)"
+ ],
+ "semanticPresence": null
+}

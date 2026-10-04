@@ -1,0 +1,13 @@
+# C203 creature supply — 24 originals
+
+Twenty-four distinct uncovered identities:16 quadrupeds,4 birds and4 fish. Every master is one exact built-in `image_gen.imagegen` output at native1254×1254, independently viewed full-size. No master was resized, repainted after retention or silently rebound. `pilot.json` is the scoring input; `review-sheet.png` is a contact sheet, not the visual admission instrument.
+
+Selection uses Claude's coverage270/631 snapshot and explicitly excludes all24 C202 source deliveries. Each selected identity has prior source provenance; canonical prompts from the unchanged production compiler are retained verbatim, with disclosed composition/anatomy-visibility additions. All prompts use the locked Discovery Atlas SHA. The first compiler invocation refused because an unnecessary outer workspace lock conflicted with the canonical exporter's own lock; no prompt or asset was produced by that attempt. Its refusal is retained. Successful canonical compilation used the existing exporter lock, and the observer/provenance jobs used the shared audit lock.
+
+All15 provenance and negative controls pass, including exact generator-byte copies, prompt/canonical/style hashes, native size, stale/mutated receipts, missing/duplicate/accepted identity refusals and exclusion of the previous C202 delivery. Pattern review passes the one canonical pattern requirement (Kookaburra eye stripe);23 identities have no regex-selected mandatory pattern row. NOT_REQUIRED is not blanket identity acceptance.
+
+Framing is23 PASS and1 REFUSE at the unchanged8% margin. Bowfin has89px left and91px right against101px required; it is retained as a refused source, with no resize or automatic replacement. Wahoo passes at103px left/101px right, exactly the right-side limit.
+
+`visual-notes.json` and per-source `visual-review.json` retain concrete holds. Water Vole has a conspicuously bushy tail; Alpaca feet look hoof-like instead of clearly padded camelid toes; Nilgai horn proportions need review. Hippopotamus/Cardinalfish have glossy rendering that needs style scoring. Far ears, wing roots, fin roots and upper legs remain partly hidden in several sources: no unseen anatomy or complete bilateral inventory is claimed. True tails, toes, horns, udder and finlets remain original paint. Full-size pose/island/conservation, AI finish, native films and gallery acceptance belong to Claude's later scoring; none was run or claimed here.
+
+Product/runtime, reference-pool, Git, mailboxes and ROADMAP were not edited. No browser, native epoch, all-pair sweep, gate or hosted action ran for this source queue. The packet is frozen by `delivery.json`; originals, prompts, exact provenance, controls and explicit source holds are all retained.

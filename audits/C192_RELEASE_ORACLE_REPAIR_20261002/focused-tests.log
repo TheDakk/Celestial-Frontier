@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts (29 tests | 1 failed) 650ms
+     × keeps every rendered Guide and release oracle green on current exact copy before browser spend 408ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps every rendered Guide and release oracle green on current exact copy before browser spend
+AssertionError: expected 120 to be 121 // Object.is equality
+
+- Expected
++ Received
+
+- 121
++ 120
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:498:65
+    496|       '  const assessGuideOrderedAuthority = (rows, authority) => {',
+    497|     );
+    498|     expect(numberConstant(draftBulletAuthoritySource, 'count')).toBe(r…
+       |                                                                 ^
+    499|     expect(stringConstant(draftBulletAuthoritySource, 'sha256'))
+    500|       .toBe(sha256Json(renderedDraftBullets));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 71 passed (72)
+   Start at  22:51:34
+   Duration  2.65s (transform 470ms, setup 0ms, import 2.53s, tests 2.86s, environment 0ms)
+

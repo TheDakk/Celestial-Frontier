@@ -1,0 +1,186 @@
+{
+  "id": "03-squid",
+  "name": "Squid",
+  "family": "cephalopod",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "036499547cba58218195bb74d1d25def62c759286116834e22e8d5519a548860",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 18494,
+    "coreRadius": 18,
+    "bodyBox": {
+      "x0": 112,
+      "y0": 127,
+      "x1": 277,
+      "y1": 236
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1509,
+        "pixels": 2790,
+        "box": {
+          "x0": 52,
+          "y0": 99,
+          "x1": 144,
+          "y1": 173
+        },
+        "attach": {
+          "x": 119,
+          "y": 135.5,
+          "relX": 0.04,
+          "relY": 0.08
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.09
+        },
+        "class": "rear",
+        "length": 76.8
+      },
+      {
+        "k": 1,
+        "frac": 0.0092,
+        "pixels": 170,
+        "box": {
+          "x0": 268,
+          "y0": 173,
+          "x1": 286,
+          "y1": 198
+        },
+        "attach": {
+          "x": 274.9,
+          "y": 192.6,
+          "relX": 0.99,
+          "relY": 0.6
+        },
+        "dir": {
+          "x": 0.67,
+          "y": -0.74
+        },
+        "class": "other",
+        "length": 22.5
+      },
+      {
+        "k": 2,
+        "frac": 0.1296,
+        "pixels": 2397,
+        "box": {
+          "x0": 267,
+          "y0": 190,
+          "x1": 370,
+          "y1": 292
+        },
+        "attach": {
+          "x": 276.6,
+          "y": 221.6,
+          "relX": 1,
+          "relY": 0.87
+        },
+        "dir": {
+          "x": 0.91,
+          "y": 0.4
+        },
+        "class": "front",
+        "length": 117
+      },
+      {
+        "k": 3,
+        "frac": 0.0452,
+        "pixels": 836,
+        "box": {
+          "x0": 187,
+          "y0": 229,
+          "x1": 233,
+          "y1": 271
+        },
+        "attach": {
+          "x": 219.2,
+          "y": 235.8,
+          "relX": 0.65,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.53,
+          "y": 0.85
+        },
+        "class": "limb-down",
+        "length": 47.7
+      },
+      {
+        "k": 4,
+        "frac": 0.019,
+        "pixels": 351,
+        "box": {
+          "x0": 253,
+          "y0": 236,
+          "x1": 274,
+          "y1": 277
+        },
+        "attach": {
+          "x": 259.4,
+          "y": 236.9,
+          "relX": 0.89,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.4,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 42.6
+      },
+      {
+        "k": 5,
+        "frac": 0.0944,
+        "pixels": 1746,
+        "box": {
+          "x0": 212,
+          "y0": 237,
+          "x1": 320,
+          "y1": 327
+        },
+        "attach": {
+          "x": 241.5,
+          "y": 237,
+          "relX": 0.78,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.47,
+          "y": 0.88
+        },
+        "class": "limb-down",
+        "length": 119.4
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "other": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 285,
+        "x1": 320,
+        "cx": 306
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

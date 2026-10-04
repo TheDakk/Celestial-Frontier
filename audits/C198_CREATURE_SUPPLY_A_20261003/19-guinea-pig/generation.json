@@ -1,0 +1,14 @@
+{
+  "id": "19-guinea-pig",
+  "name": "Guinea Pig",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-224740de-55bf-450a-93ec-ccfd85fb48c8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "04c68ba4d125d0de0b8279bcf5d0c34fed2a76597b67bce2b9b4d01c47a0b0fa",
+  "bytes": 1426537,
+  "promptSha256": "0742f3f4deca603159350b487f779b5f86e913575bb2d6f0178d6e85729d4b37",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

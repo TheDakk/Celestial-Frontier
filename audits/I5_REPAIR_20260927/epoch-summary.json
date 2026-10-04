@@ -1,0 +1,42 @@
+{
+  "runId": "i5-v2-b3a34e15d401-calibration-1",
+  "status": "instrument-fail",
+  "findings": [
+    "instrument: phone: native Tab did not enter the first logical row"
+  ],
+  "durationMs": 12608,
+  "source": {
+    "begin": {
+      "commit": "b3a34e15d4019023410d2cab97308e0f289b8ba4",
+      "branch": "detached",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    },
+    "end": {
+      "commit": "b3a34e15d4019023410d2cab97308e0f289b8ba4",
+      "branch": "detached",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    }
+  },
+  "mixedOwnerSettlements": [
+    {
+      "label": "viewport-contracted-list",
+      "paintedImages": 1,
+      "ready": true
+    },
+    {
+      "label": "viewport-expanded-list",
+      "paintedImages": 2,
+      "ready": true
+    },
+    {
+      "label": "viewport-restored-list",
+      "paintedImages": 2,
+      "ready": true
+    }
+  ],
+  "followup": "Changed instrument fixes topology-derived native entry and worker-only error/dedupe ownership; no epoch retry or certificate."
+}

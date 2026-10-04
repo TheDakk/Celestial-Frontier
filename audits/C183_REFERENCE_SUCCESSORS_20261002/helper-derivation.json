@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c183-reference-helper-derivation/v1",
+  "rows": [
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/write-observed-packet.mjs",
+      "sourceSha256": "dde445e4aecc33840681f06f79a3c976594f88fee3fe0f92fedd27ef1e116e6d",
+      "target": "audits/C183_REFERENCE_SUCCESSORS_20261002/write-observed-packet.mjs",
+      "targetSha256": "a4783e5c5d2ff99f9ccde8aba8428a73f8519c6bfb8ae21ff2b408c25acd738a",
+      "change": "Owned audit base path only; computation and caps unchanged."
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/run-stage.mjs",
+      "sourceSha256": "6d113a717cd77901557cd8b2c3ead640463fe67ff0562ae881baa1d4e0407269",
+      "target": "audits/C183_REFERENCE_SUCCESSORS_20261002/run-stage.mjs",
+      "targetSha256": "5c2b7a49c00f0855e1af329ffaa9d426bb7910910bd1d087521fdd34dc58e4a7",
+      "change": "Owned audit base path only; computation and caps unchanged."
+    },
+    {
+      "source": "audits/C173_REFERENCE_CLASSES_20261002/verify-and-preview.mjs",
+      "sourceSha256": "8cbad08688ee7310457495a2fd8b995342c4b503fc0a65ece6343bca15201a29",
+      "target": "audits/C183_REFERENCE_SUCCESSORS_20261002/verify-and-preview.mjs",
+      "targetSha256": "a0b74974c174c1935cfb6fa095d30b9188d0bf75d2175f3a50dd106e99928cf9",
+      "change": "Owned audit base path only; computation and caps unchanged."
+    }
+  ],
+  "checksChanged": false
+}

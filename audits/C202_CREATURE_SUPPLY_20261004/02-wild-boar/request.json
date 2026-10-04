@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Wild Boar",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "9331b9cda24a1bb5a4ce97f1baaea7086fb1519dc6ea4b6321012fe792986dba",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "suid",
+  "authoringCreated": false,
+  "sourceHead": "cfe6e089f99dfdf85e69305b0515725efad3119c",
+  "basePromptSha256": "d27b5098e26c99c2bf77a8828fdff2bc79c6d2723c978b83be75459fea9aac92",
+  "batchCompilerSha256": "cfa055d59ef62b4318542f7d81e2cbe6b9c6e433c9a8021f248e9abce64f9dc3",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+        "id": "19-wild-boar",
+        "master": null,
+        "packet": "audits/G2_QUADRUPED_PILOT_20260926/19-wild-boar"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_QUADRUPED_PILOT_20260926/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Source visibility correction: four biologically real limbs in a quiet natural planted stance, individually readable from the visible emergence to each complete separate foot. Near and far limbs have clear contour gaps. Do not invent or expose hidden joints. Preserve true tail length, real hoof/paw structure, whole ears and attached fur with no floating flecks. Show two actual ear contours only with a natural shallow head turn. Keep all extremities comfortably within the central half of the canvas; species anatomy takes precedence over a generic template.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "cf.c163-effects-focused-validation/v1",
+  "status": "PASS",
+  "nativeProof": false,
+  "qualityAccepted": false,
+  "testOwner": {
+    "path": "port/v2/tests/effects-theme-delivery.test.ts",
+    "sha256": "b61f6f52cf401aefc6e2a71f2cc1738eb02c7c103f0e37d731242d757bf817da"
+  },
+  "rows": [
+    {
+      "theme": "storm",
+      "candidate": "audits/C163_EFFECTS_POLISH_20261002/storm/anchors.json",
+      "candidateSha256": "7e99d6930027a8c1e898b9fc6a7cb212c5938852c7cdcff7203da8d91d3caa55",
+      "command": "$env:THEME_DELIVERY=\"audits/C163_EFFECTS_POLISH_20261002/storm/anchors.json\"; $env:THEME=\"storm\"; Push-Location port/v2; npx vitest run tests/effects-theme-delivery.test.ts; Pop-Location",
+      "exitCode": 0,
+      "log": "audits/C163_EFFECTS_POLISH_20261002/storm/validation.log",
+      "logSha256": "dd969cb02bd5d93d127228fc175de83fcac3d54aa6da7a58a488ee384cc829a2"
+    },
+    {
+      "theme": "void",
+      "candidate": "audits/C163_EFFECTS_POLISH_20261002/void/anchors.json",
+      "candidateSha256": "1686432301df33d6b2814c2f126469cc42ce2de5b4b6af2444407710083efd0d",
+      "command": "$env:THEME_DELIVERY=\"audits/C163_EFFECTS_POLISH_20261002/void/anchors.json\"; $env:THEME=\"void\"; Push-Location port/v2; npx vitest run tests/effects-theme-delivery.test.ts; Pop-Location",
+      "exitCode": 0,
+      "log": "audits/C163_EFFECTS_POLISH_20261002/void/validation.log",
+      "logSha256": "f666daf024db19ac539716bbb4a96647a8aec16925ecb5b56d2ffa2130039888"
+    },
+    {
+      "theme": "stone",
+      "candidate": "audits/C163_EFFECTS_POLISH_20261002/stone/anchors.json",
+      "candidateSha256": "4fd6c534eaffa055723341ef86b295ec5189354b44221fe1a5874de3499e9484",
+      "command": "$env:THEME_DELIVERY=\"audits/C163_EFFECTS_POLISH_20261002/stone/anchors.json\"; $env:THEME=\"stone\"; Push-Location port/v2; npx vitest run tests/effects-theme-delivery.test.ts; Pop-Location",
+      "exitCode": 0,
+      "log": "audits/C163_EFFECTS_POLISH_20261002/stone/validation.log",
+      "logSha256": "e7df0306419e94c9c7ef4103c2b5f530a2104d196d05591bb2712938896d9ae8"
+    },
+    {
+      "theme": "sand",
+      "candidate": "audits/C163_EFFECTS_POLISH_20261002/sand/anchors.json",
+      "candidateSha256": "b3262db06422dc2789d988d666744cb6c593e1df54ffe2d743c4c6a1d376ccb4",
+      "command": "$env:THEME_DELIVERY=\"audits/C163_EFFECTS_POLISH_20261002/sand/anchors.json\"; $env:THEME=\"sand\"; Push-Location port/v2; npx vitest run tests/effects-theme-delivery.test.ts; Pop-Location",
+      "exitCode": 0,
+      "log": "audits/C163_EFFECTS_POLISH_20261002/sand/validation.log",
+      "logSha256": "1a076eb2dc1384ab8ef6a45ccf774f1dceb592961bc506db3f33f5b0968239a8"
+    }
+  ]
+}

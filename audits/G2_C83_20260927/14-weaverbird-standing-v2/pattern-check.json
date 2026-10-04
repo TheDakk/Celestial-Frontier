@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Weaverbird",
+  "masterSha256": "14aa54a2c23d8f1187744858a95ba451085a7931b24413c7b2c2db5e1adf86d8",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

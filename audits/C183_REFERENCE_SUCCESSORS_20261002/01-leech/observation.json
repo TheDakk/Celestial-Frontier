@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c173-reference-observation/v1",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/20-leech",
+  "masterSha256": "8487ffea98bedf3ea82b5f295993f232f2dbab117dc4c1241d30e6e66ced15c1",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "fullSizeInspected": true,
+  "visibleAnatomy": [
+    "one complete curved annulated body",
+    "two distinct terminal sucker rims"
+  ],
+  "jointsAreCurveControls": true,
+  "biologicalSegmentCountClaim": null,
+  "sourceSubjectDistinctFrom": "Earthworm",
+  "physicalGroundClaim": false,
+  "limitations": [
+    "Twelve controls sample the visible centreline; they do not claim twelve biological annuli.",
+    "Both terminal sucker rims are visible. The large deep funnel cavities and cylindrical shiny body remain biological/style review holds; no hidden mouth apparatus, eyes or legs are authored.",
+    "The arched body is not claimed to make continuous planar ground contact.",
+    "This is a genuinely different canonical subject from Earthworm, but not a global reference or quality acceptance."
+  ],
+  "qualityAccepted": false
+}

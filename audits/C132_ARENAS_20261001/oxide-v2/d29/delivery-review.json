@@ -1,0 +1,172 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "oxide-v2",
+  "biome": "oxide",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "oxide"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "oxide"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "oxide"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-far.generation.json",
+      "sha256": "644f30aa64e9c54822667c60970663dffc4897a3c09c2c329754fdf14032f908"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-mid.generation.json",
+      "sha256": "5fe2f8476711a5fd81adb8d47f719c48a4a2afc62073658645fa4679fd047b95"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-near.generation.json",
+      "sha256": "f36810cd8c83d57094c8af32d0d8c2639ee6474194ab2a6a4a5abc098b7b682f"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-composed-review.png",
+      "sha256": "bd99f320409bd5bff36264935c9560e063a1fe90306be96a31f3bb4650a0fe56"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-far.png",
+      "sha256": "0423ae162eae67a9d8364b2ccbd81b068b03440d95f5a7b9a4a92f2618aa505f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-mid.png",
+      "sha256": "52f768021dfc4620104b84adf52f80f021bf845feecf93d0bd656faf3fb60c64"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-near.png",
+      "sha256": "e1b90ccfc7606bdecc0f0bb8f994eaf0f3a4d118e928e7622c09d09ecf2f5b1e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/visual-notes.d29.json",
+      "sha256": "d2bd216dc620c6dc14794332b80226c86a02a6f65046fbf8ce66de457c3c5602"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-manifest.json",
+      "sha256": "77a1f9b2232838870cfa9375159f017d834784f14fb4e415daa213359b7397ff"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-recipe.json",
+      "sha256": "9a8c69cc721444ca92e08305ef5c7b5a769db47ab2ddc828577a24b52272de8e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-far.generation.json",
+      "sha256": "644f30aa64e9c54822667c60970663dffc4897a3c09c2c329754fdf14032f908"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-far.prompt.txt",
+      "sha256": "05518d773628e47801044f1f24dd56108763a98c2c07195e96295e86e69ad62d"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-mid.generation.json",
+      "sha256": "5fe2f8476711a5fd81adb8d47f719c48a4a2afc62073658645fa4679fd047b95"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide/arena-mid.prompt.txt",
+      "sha256": "292939539248597e4939c95ac03093c81cb660fc35590436c0d43d8176b1eb3e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide/arena-mid.png",
+      "sha256": "52f768021dfc4620104b84adf52f80f021bf845feecf93d0bd656faf3fb60c64"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/keyed/arena-mid.png",
+      "sha256": "a9ed84f5a905db3d7b04cf6d22e6b152a5c23566248b44517e1ee57c2da7bc5c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-near.generation.json",
+      "sha256": "f36810cd8c83d57094c8af32d0d8c2639ee6474194ab2a6a4a5abc098b7b682f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide/arena-near.prompt.txt",
+      "sha256": "9d325452e0a7d1d1517b0fa61c771667b90a149bf67305f9916b722eb6dd26af"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide/arena-near.png",
+      "sha256": "e1b90ccfc7606bdecc0f0bb8f994eaf0f3a4d118e928e7622c09d09ecf2f5b1e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/keyed/arena-near.png",
+      "sha256": "4b0148bd5a6f68f5a3c823a92d3774c2e8c9933b1241e19f9c2237f882e785c6"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/oxide-v2/visual-notes.d29.json",
+    "findings": [
+      "All originals and native1672×941 composition inspected. The repaired FAR removes invented ringed planet/moons and retains rust-red mineral mesas. The fighting band is open in this static view.",
+      "MID bakes in another distant mesa band, creating doubled depth. NEAR introduces a strong straight horizontal seam and truncates larger MID edge rocks.",
+      "Warm light and contrast differ between layers; small green edge traces remain around cactus/rock silhouettes. Visual repair, independent scoring and native battle proof remain pending."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

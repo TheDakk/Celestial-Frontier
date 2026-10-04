@@ -1,0 +1,15 @@
+{
+  "cwd": "/Users/dakk/Projects/celestial-frontier-openai-mac",
+  "argv": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "changed-release-mobile-verify-02",
+    "--",
+    "node",
+    "tools/local-image-generation/mobile-pack.mjs",
+    "verify",
+    "--output=/private/tmp/cf-mobile-pack-20260909-species-02",
+    "--sha256=402e994d45f1db6362d4c5486df28148d2e241af3fd5f8f3ee2bd171f77f45af"
+  ]
+}

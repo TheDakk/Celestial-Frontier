@@ -1,0 +1,56 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Dog",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "c52b74229e7050d70d97f570156d30d4d00796f191637642f8446f929b5e3bea",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "canid",
+  "authoringCreated": false,
+  "sourceHead": "e10a4b750cec6ea9c3669eabe0339683ecdace55",
+  "basePromptSha256": "5c45e56f574d17c6c6c5152c535efaff7919df2e95474eb8bc28d96ca70c06fc",
+  "batchCompilerSha256": "d90d7117e3e43dc08d394a288b343aadbc001774c15d855df5e44fc9b5b5c715",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Prior tightly curled plumed tail was classified as an unassigned top appendage. Retain the real high plumed tail with a visibly continuous open arch from rump to tip, not a closed loop over the back; natural quadruped stance, four complete separate leg silhouettes and two actual ears. This does not claim to repair a classifier.",
+    "priorSources": [
+      {
+        "pilot": "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+        "id": "13-dog",
+        "master": "audits/C186_CREATURE_SUPPLY_20261002/13-dog/master.png",
+        "packet": "audits/C186_CREATURE_SUPPLY_20261002/13-dog"
+      },
+      {
+        "pilot": "audits/G2_REFERENCES_C62_20260927/pilot.json",
+        "id": "06-dog",
+        "master": "audits/G2_REFERENCES_C62_20260927/06-dog-margin/master.png",
+        "packet": "audits/G2_REFERENCES_C62_20260927/06-dog-margin"
+      },
+      {
+        "pilot": "audits/C132_REFERENCES_20261001/pilot.json",
+        "id": "03-dog",
+        "master": "audits/C132_REFERENCES_20261001/03-dog/candidate-02/master.png",
+        "packet": "audits/C132_REFERENCES_20261001/03-dog/candidate-02"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C186_CREATURE_SUPPLY_20261002/pilot.json",
+    "audits/G2_REFERENCES_C62_20260927/pilot.json",
+    "audits/C132_REFERENCES_20261001/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Prior tightly curled plumed tail was classified as an unassigned top appendage. Retain the real high plumed tail with a visibly continuous open arch from rump to tip, not a closed loop over the back; natural quadruped stance, four complete separate leg silhouettes and two actual ears. This does not claim to repair a classifier.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

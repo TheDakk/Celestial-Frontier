@@ -1,0 +1,191 @@
+{
+  "id": "07-mahi-mahi",
+  "name": "Mahi-Mahi",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "d4582b15b20e2a84c19c6c5bbb23e7923e77119b7a468843523ddef69dcad25a",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 21845,
+    "coreRadius": 28,
+    "bodyBox": {
+      "x0": 170,
+      "y0": 145,
+      "x1": 368,
+      "y1": 239
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0129,
+        "pixels": 282,
+        "box": {
+          "x0": 268,
+          "y0": 137,
+          "x1": 322,
+          "y1": 144
+        },
+        "attach": {
+          "x": 295,
+          "y": 144,
+          "relX": 0.63,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.66,
+          "y": -0.75
+        },
+        "class": "top",
+        "length": 27.9
+      },
+      {
+        "k": 1,
+        "frac": 0.1911,
+        "pixels": 4175,
+        "box": {
+          "x0": 37,
+          "y0": 156,
+          "x1": 169,
+          "y1": 263
+        },
+        "attach": {
+          "x": 169,
+          "y": 203.5,
+          "relX": -0.01,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.03
+        },
+        "class": "rear",
+        "length": 144.8
+      },
+      {
+        "k": 2,
+        "frac": 0.0154,
+        "pixels": 336,
+        "box": {
+          "x0": 369,
+          "y0": 172,
+          "x1": 379,
+          "y1": 214
+        },
+        "attach": {
+          "x": 369,
+          "y": 193,
+          "relX": 1.01,
+          "relY": 0.51
+        },
+        "dir": {
+          "x": 0.96,
+          "y": 0.28
+        },
+        "class": "front",
+        "length": 23.3
+      },
+      {
+        "k": 3,
+        "frac": 0.0061,
+        "pixels": 133,
+        "box": {
+          "x0": 369,
+          "y0": 216,
+          "x1": 383,
+          "y1": 229
+        },
+        "attach": {
+          "x": 369,
+          "y": 222.5,
+          "relX": 1.01,
+          "relY": 0.82
+        },
+        "dir": {
+          "x": 0.96,
+          "y": -0.28
+        },
+        "class": "front",
+        "length": 15.4
+      },
+      {
+        "k": 4,
+        "frac": 0.0152,
+        "pixels": 332,
+        "box": {
+          "x0": 181,
+          "y0": 235,
+          "x1": 223,
+          "y1": 252
+        },
+        "attach": {
+          "x": 202,
+          "y": 235,
+          "relX": 0.16,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": 0.21,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 27
+      },
+      {
+        "k": 5,
+        "frac": 0.0251,
+        "pixels": 548,
+        "box": {
+          "x0": 275,
+          "y0": 240,
+          "x1": 315,
+          "y1": 270
+        },
+        "attach": {
+          "x": 300,
+          "y": 240,
+          "relX": 0.66,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.4,
+          "y": 0.91
+        },
+        "class": "limb-down",
+        "length": 39.1
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 2,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 45,
+        "x1": 51,
+        "cx": 47.9
+      },
+      {
+        "x0": 282,
+        "x1": 296,
+        "cx": 288.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

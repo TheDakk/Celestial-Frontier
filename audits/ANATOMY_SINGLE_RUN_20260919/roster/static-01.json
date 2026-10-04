@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "syntax": [
+    {
+      "file": "port/v2/tools/fauna-coverage/roster-entry.mjs",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "port/v2/tools/fauna-coverage/roster-runner.mjs",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "port/v2/tools/fauna-coverage/roster-sheets.mjs",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "historicalIdentitiesExactlyOnce": 58,
+  "familyOrder": [
+    "clawed-crustacean",
+    "terrestrial-crab",
+    "small-crustacean",
+    "horseshoe-crab",
+    "barnacle",
+    "tardigrade",
+    "larva",
+    "bivalve",
+    "land-gastropod",
+    "water-gastropod",
+    "annelid-land",
+    "annelid-water",
+    "sponge",
+    "tunicate"
+  ]
+}

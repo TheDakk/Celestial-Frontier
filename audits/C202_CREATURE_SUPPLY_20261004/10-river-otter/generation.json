@@ -1,0 +1,14 @@
+{
+  "id": "10-river-otter",
+  "name": "River Otter",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-43fb9375-5e65-4661-8c99-43b45d7e530c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "cee94186d04bb44308cfb1f96fe3533e3596c440ef9cbe384db4eb3c626c7cbe",
+  "bytes": 1338026,
+  "promptSha256": "cebe88a89392d136b44e33cc3079a8f1174233942f3d9f3e6ae4c8c929f49ee5",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

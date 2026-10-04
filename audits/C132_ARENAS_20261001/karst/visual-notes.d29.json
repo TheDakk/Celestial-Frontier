@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "karst",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/karst/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/karst/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/karst/arena-far.png",
+    "audits/C132_ARENAS_20261001/karst/arena-mid.png",
+    "audits/C132_ARENAS_20261001/karst/arena-near.png"
+  ],
+  "findings": [
+    "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Limestone towers, foliage and the flat central stone runway have coherent material and upper-left light; the stands remain open.",
+    "FAR is a high vista over a deep valley rather than the requested low eye level. MID foliage at both outer edges contains small missing islands and pink remnants. NEAR introduces a clearly visible horizontal texture and focus transition near the lower sixth, especially on the left.",
+    "The terrain is mechanically continuous, but perspective, fringe/island repair and combatant contrast remain visual holds. No native motion, parallax or acceptance is claimed."
+  ]
+}

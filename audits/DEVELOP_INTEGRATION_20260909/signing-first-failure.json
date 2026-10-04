@@ -1,0 +1,23 @@
+{
+  "schema": "cf-integration-signing-failure/v1",
+  "observedAt": "2026-09-09T04:05:38.847993+00:00",
+  "headUnchanged": "a84f4ea959ae51c6423ed6c88e5274bfa88d8786",
+  "command": [
+    "git",
+    "commit",
+    "-S",
+    "-m",
+    "Repair accumulated develop admission and preserve integration evidence"
+  ],
+  "execSession": 18778,
+  "exitCode": 128,
+  "stderr": "error: 1Password: failed to fill whole buffer\nfatal: failed to write commit object",
+  "evidenceSource": "Transcribed from exec session18778 terminal tool output; no independent raw stderr file was captured.",
+  "result": "No commit; reviewed files remain staged.",
+  "signingConfigurationChanged": false,
+  "unsignedFallback": false,
+  "retry": "None. User readiness question pending for one fresh configured-signer attempt.",
+  "hostedActions": 0,
+  "pushes": 0,
+  "pullRequestsCreated": 0
+}

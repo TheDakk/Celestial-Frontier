@@ -1,0 +1,12 @@
+{
+  "schema": "cf.c202-independent-source-authoring/v1",
+  "masterSha256": "37790d9e90adcef9eee96bccad51426bdf74b2b8032236c83b37daa9bf60392c",
+  "fullSizeInspected": true,
+  "observedWalkingChains": 6,
+  "observedAntennae": 2,
+  "method": "Manual source-specific landmarks and priority polygons; no donor coordinates or masks read",
+  "note": "Six continuously visible leg paths are separately observed in the dorsal original, including actual powerful hind femora and both distal chains; two antennae and two tegmina are visible. The tiny front mouth edge is observed at the head margin, not an invented ventral jaw. Axial joints are internal control frames. Large dorsal contact-height differences remain unchanged; static/native gates must judge them. Hidden hindwings are not separately painted or claimed absent.",
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "native": false
+}

@@ -1,0 +1,14 @@
+{
+  "id": "04-spider",
+  "name": "Spider",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-dbb5c867-1eaa-41ab-b17a-825c9ba07613.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+  "bytes": 1339094,
+  "promptSha256": "ca4d378d76ce146972b6abe96192891e472cd9c1a3390eef5cdb6f244c7902a8",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

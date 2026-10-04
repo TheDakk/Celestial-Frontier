@@ -1,0 +1,50 @@
+{
+  "creatureId": "c186-independent-banana-slug",
+  "parts": [
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "cfd2a0d44205a58b1f81749061a23ec4bb3e483a5adcb2c8a9a67fa6da1bc014"
+    },
+    {
+      "name": "eyefar.png",
+      "path": "parts/eyefar.png",
+      "sha256": "a8b85baedd0df9b23daf2729af0dc5a2b36378f65afd284d3e0ab79ebff57715"
+    },
+    {
+      "name": "eyenear.png",
+      "path": "parts/eyenear.png",
+      "sha256": "ecb4c2a7687b781c5bc17de9d626ec260da886ffda5dca7ab3f02ddedd3e114a"
+    },
+    {
+      "name": "mouth.png",
+      "path": "parts/mouth.png",
+      "sha256": "fb1709b8684580dbc03f5348d4605c4cef12e3d56bd55a1c098ac3b3fae8de53"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "870293eedfb835c7fbff4c9e4447c9c36647d9b741bf0de30527aa9286c55683"
+    },
+    {
+      "name": "foot0.png",
+      "path": "parts/foot0.png",
+      "sha256": "36f6cdddbf6a1a9d0fe654e7e28f7fb0d05f82259fe18321012bc14e12e745af"
+    },
+    {
+      "name": "foot1.png",
+      "path": "parts/foot1.png",
+      "sha256": "b58e5cce05e14059b50239ac237d129ddbfef7551760f7f1442edad3bdc5e6e8"
+    },
+    {
+      "name": "foot2.png",
+      "path": "parts/foot2.png",
+      "sha256": "8277505d7f5f63f36f5bc15b9f9163496f869355f0bbcfffcf1fb999d1c7bfdf"
+    },
+    {
+      "name": "foot3.png",
+      "path": "parts/foot3.png",
+      "sha256": "babdb3c1cb6fcbb8a6aa5ad06328b280a32ceb00db9bf3b59547a7b89a587856"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+ "id": "12-egret",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-foot (legNearFoot) covers 9% paint (reference 48%)",
+  "missing-anatomy: part far-foot (legFarFoot) covers 20% paint (reference 58%)",
+  "missing-anatomy: part far-shin (legFarAnkle) covers 16% paint (reference 50%)"
+ ],
+ "semanticPresence": null
+}

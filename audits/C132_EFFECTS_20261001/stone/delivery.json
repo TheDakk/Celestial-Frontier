@@ -1,0 +1,142 @@
+{
+  "schema": "cf.c132-theme-delivery/v1",
+  "theme": "stone",
+  "status": "MECHANICAL_PASS_REVIEW_REQUIRED",
+  "integrationCandidate": true,
+  "qualityAccepted": false,
+  "nativeProof": "DEFERRED_AFTER_C12_CAPTURE_FAILURE",
+  "abilityId": "bould",
+  "abilityName": "Boulder Charge",
+  "material": "rock shards, grit, cracked ground",
+  "accent": "#caa06a",
+  "anchors": "stone/shards/anchors.json",
+  "anchorsSha256": "35dee9b691316117ad134d2de90c331b0abd780cf71ffdff676b1fff353505e2",
+  "reviewSheet": "stone/shards/review-sheet.png",
+  "images": [
+    {
+      "phase": "launch",
+      "image": "stone/shards/registered/launch.png",
+      "imageSha256": "c2fe80c792ee44c4f89bb3945a91175ef03e31d40b660d1ef1ec927159ecf141",
+      "master": "stone/launch-master.png",
+      "masterSha256": "c57cc0839a004a4af59a66bd71de268e53d15b2734b91583ed6a2514d15bfea1",
+      "prompt": "stone/launch.prompt.txt",
+      "promptSha256": "c143526d87f513d59d8aa177158a101fe87380063cc8a9df6ebdf4ca19b507ab",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 119,
+        "y": 438,
+        "width": 268,
+        "height": 198
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "stone/shards/registered/travel.png",
+      "imageSha256": "47e15ed079e9dbd322272e7ef36c64720d5ccc285a0f952f249281aa26b6b606",
+      "master": "stone/travel-shards-master.png",
+      "masterSha256": "aa9e8fb1fb4398d250580e028ec185afb720f73f4546530ef13574e5871a6f39",
+      "prompt": "stone/travel-shards.prompt.txt",
+      "promptSha256": "8a367110de94f5691ffe97749a7a793f65f167061e7502e6b1be868e1125682f",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 153,
+        "y": 408,
+        "width": 681,
+        "height": 314
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "stone/shards/registered/impact.png",
+      "imageSha256": "7d752451427474c4a952cecbfe906b1767ca4f3333de0bcbd28b2a88c560dd39",
+      "master": "stone/impact-master.png",
+      "masterSha256": "210573f15bec2548a94c6865770b7ebe7b7dc5f524d2548e2633127f38717676",
+      "prompt": "stone/impact.prompt.txt",
+      "promptSha256": "458f6a00df0c4c0c4d436b0040d6533225c6665bd7157a545b8abdfc43503b2c",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 515,
+        "y": 374,
+        "width": 348,
+        "height": 305
+      }
+    }
+  ],
+  "mechanicalValidation": {
+    "anchors": "audits/C132_EFFECTS_20261001/stone/shards/anchors.json",
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "stone",
+    "sequenceId": "stone-c132-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 23951,
+        "edge": 7943,
+        "fringe": 13,
+        "fringeRatio": 0.0016366612111292963,
+        "accentShare": 0.1354014598540146,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 119,
+          "y": 438,
+          "width": 268,
+          "height": 198
+        }
+      },
+      "travel": {
+        "painted": 89590,
+        "edge": 20553,
+        "fringe": 45,
+        "fringeRatio": 0.0021894613924974458,
+        "accentShare": 0.05110645474523432,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 153,
+          "y": 408,
+          "width": 681,
+          "height": 314
+        }
+      },
+      "impact": {
+        "painted": 52182,
+        "edge": 14974,
+        "fringe": 45,
+        "fringeRatio": 0.0030052090289835716,
+        "accentShare": 0.18443645687859153,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 515,
+          "y": 374,
+          "width": 348,
+          "height": 305
+        }
+      }
+    }
+  },
+  "officialCandidateTest": {
+    "theme": "stone",
+    "anchors": "audits/C132_EFFECTS_20261001/stone/shards/anchors.json",
+    "exitCode": 0,
+    "log": "tests/stone.txt"
+  },
+  "manifestRow": {
+    "theme": "stone",
+    "anchors": "../C132_EFFECTS_20261001/stone/shards/anchors.json",
+    "contract": "v4.3"
+  }
+}

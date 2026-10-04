@@ -1,0 +1,13 @@
+{
+  "id": "24-okapi",
+  "name": "Okapi",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d67c4041-5cc3-49a6-9062-1d547eae4915.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "20060058c0e89809749b376fc6405e972a724c0d3835b9be9a2ee73812b55679",
+  "bytes": 1195245,
+  "promptSha256": "67e97ad820611e5c45c246a15e5e189ef3b99feae2e1d497d37ec17b67cb12a5",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

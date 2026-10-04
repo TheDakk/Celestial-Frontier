@@ -1,0 +1,13 @@
+{
+  "id": "02-parrotfish",
+  "name": "Parrotfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-694e5798-2db8-493d-aec0-fbca52a4884e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "232545118c6e65c40dbe77057c9dfb5527de4484edceff7bb8efbac073038264",
+  "bytes": 1404286,
+  "promptSha256": "a3df12b351b3bcd66c7986ead5c0bb267b644041e77d60c9d06be0f1a2923ae1",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

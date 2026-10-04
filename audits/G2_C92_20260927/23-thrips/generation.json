@@ -1,0 +1,13 @@
+{
+  "id": "23-thrips",
+  "name": "Thrips",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c88a8e1f-6df9-45e0-a4d2-354b4a5180e2.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3fdce81885bfe97b9be5468bbe05e08a7f04cc9dbe07c9083176e1dc62162e28",
+  "bytes": 1249490,
+  "promptSha256": "da9ddd1760dce3757cf0429acf30e7a6123d68dbfd1da4efee1991c896c48335",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

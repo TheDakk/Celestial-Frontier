@@ -1,0 +1,28 @@
+{
+  "name": "Fruit Bat",
+  "masterSha256": "3b8118dbdacac31b663e30f4b7a50503b4fcd9ee2cdb7c43901c52d747bbbe83",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Fox-like muzzle, orange neck ruff, small ears, two membrane wings with visible thumb claws and two hind feet are painted. Membranes connect to body and elongated struts; no separate extra arms or feathers. Wing surfaces have heavy polygonal vein/crackle texture that reads somewhat like stained glass or leather armor. Exact finger count, far-wing root, hindfoot digits and species tail-membrane reduction remain review holds.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 206,
+      "y0": 245,
+      "x1": 1065,
+      "y1": 1001
+    },
+    "margins": {
+      "left": 206,
+      "right": 188,
+      "top": 245,
+      "bottom": 252
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

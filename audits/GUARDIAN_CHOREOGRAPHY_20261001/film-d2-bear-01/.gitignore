@@ -1,0 +1,4 @@
+*.webm
+turn*.png
+!turn1-hit-reaction-50.png
+!turn5-hit-idle-90.png

@@ -1,0 +1,34 @@
+{
+  "schema": "cf.c192-source-observation/v1",
+  "name": "Tiger Shark",
+  "masterSha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039",
+  "width": 1254,
+  "height": 1254,
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 135,
+      "y0": 449,
+      "x1": 1092,
+      "y1": 810
+    },
+    "margins": {
+      "left": 135,
+      "right": 161,
+      "top": 449,
+      "bottom": 443
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "nativeGeneratedBytesUnchanged": true,
+  "qualityAccepted": false,
+  "observations": [
+    "Upper caudal lobe is visibly longer than the shorter lower lobe; flank stripes and blunt head remain readable.",
+    "One pronounced concave subterminal notch is now visible on the upper lobe trailing edge near its distal tip. Its sharp rounded shape needs scoring; no fit or native proof is claimed.",
+    "The generator repainted source bytes beyond the tail, despite similar overall placement. Treat it as a fresh source; do not rebind old masks."
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "acidhaze",
+  "biome": "acidhaze",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "acidhaze"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "acidhaze"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "acidhaze"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-far.generation.json",
+      "sha256": "d3657b44e06c9699e00b4ffe6d6e959ec91de116e402e4ddd986e3cce605b0b2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-mid.generation.json",
+      "sha256": "4d4a7f608dbead448240219c99eae35cb89bccd7ce48bfeeade5214ce96a8291"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-near.generation.json",
+      "sha256": "364675edea0c6bbaec49751f397b81681846000e8cd3b0b1c9fcc931b7918690"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-composed-review.png",
+      "sha256": "b5dd4261382a6b2c0c51790b08445ef15b5ccb2ae009bca5d9f1d6b1f3ded1bf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-plates-review.png",
+      "sha256": "b708b73bb706877aaf6c7615b30ced4d10b68fb25bfd2124ba473a52fe8ada26"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-far.png",
+      "sha256": "516a7fa8367a615660478b442d1d3ee3b7d5c56fa8e3e4ce19c481fd732cc1ea"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-mid.png",
+      "sha256": "7386934271c2a9d690d411a759329cad065a84d801a88242a1ad45d9a9e5b72b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-near.png",
+      "sha256": "3bab37471cf95e79143ad9a0c0ce9e2b03a49e04ffc1c332335b4ada6a0e95fa"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/visual-notes.d29.json",
+      "sha256": "46f9578a0a01f43e6da6ba8699d1fff84ab792dbaebaa1c6684d0803e98a6e10"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-manifest.json",
+      "sha256": "bc0291544a01ef398f6b4e88ccf2f05a76b01b7c9184bbc8fd5d6842e59fc5a3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-recipe.json",
+      "sha256": "fb86ca4a500b98ca2bca833a7004eb1d0fedb5d36cb216f4decab8348bae5fd2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-far.generation.json",
+      "sha256": "d3657b44e06c9699e00b4ffe6d6e959ec91de116e402e4ddd986e3cce605b0b2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-far-correction.prompt.txt",
+      "sha256": "16f85037d06599a2ec3bcb944a25acfd3bd07a56161b299c1a11519d9820a9b6"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-mid.generation.json",
+      "sha256": "4d4a7f608dbead448240219c99eae35cb89bccd7ce48bfeeade5214ce96a8291"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-mid.prompt.txt",
+      "sha256": "8099dafc19116c77bbf472cfa7ef711b31cbc59393687452772a4c2a4b815ffb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/keyed/arena-mid.png",
+      "sha256": "9876dd590cd4592484bb2c07de9900f30cd59f5f0ae4c255a4abd6a07c4ef6eb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-near.generation.json",
+      "sha256": "364675edea0c6bbaec49751f397b81681846000e8cd3b0b1c9fcc931b7918690"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/arena-near-correction.prompt.txt",
+      "sha256": "127611fc2d9050bc5fb36a5a94909e8e9a98a4667a615fbf40cb013cb09d44b3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/acidhaze/keyed/arena-near.png",
+      "sha256": "8130593dce060dd92855dd4a10ef79f67b9e61d33e9f02fc814438fcb884db66"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/acidhaze/visual-notes.d29.json",
+    "findings": [
+      "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Yellow-gray crust, eroded rock and sulfur haze form a coherent stage with an open central runway.",
+      "MID duplicates side geological contours over FAR and produces a hard keyed horizon. NEAR changes the ground to a darker, more granular texture across the lower edge. The whole image is more saturated yellow than the muted material card; scene contrast and light require independent scoring.",
+      "Selected FAR contains no visible star/disk, and selected NEAR has full-frame native proportions. The visible-star FAR and ultra-wide NEAR predecessors remain retained. No native motion, hazard/medium admission or visual acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

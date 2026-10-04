@@ -1,0 +1,19 @@
+{
+  "schema": "cf.manual-oral-skin/v1",
+  "sourceBindingSha256": "66d0f62147ba9355007ae53f057da804c34df5943d3c2b6130bbe8795426c16a",
+  "sourceRecordSha256": "7cfb0d0a6db56d4a653eff786002c537c58969123948bfd3c16a9e6e9c21746a",
+  "authoringSha256": "357adcc08bf853e4e02a49ac53d71ea13ff954589826799c591a6267e77d9cdc",
+  "helperSha256": "284fbaa85ca8c525802d4a1a305b077ef12303d340f605910cb695aeae843bfb",
+  "textureParts": 31,
+  "skeletonJoints": 39,
+  "paintedJoints": 39,
+  "changedWeightVertices": 1574,
+  "verticesLimitedToExistingEightInfluenceCap": 1198,
+  "releasedAuthoredShapePins": [],
+  "sourceCoordinateChanges": 0,
+  "sourceUvChanges": 0,
+  "topologyChanges": 0,
+  "solverParametersChanged": false,
+  "bindingHash": "6a037d57a642d92aed2f3b955908fac377ac8a9a888ebbfaa3b47240b73be8ee",
+  "scope": "Only this new unadmitted candidate. Four single-texture oral arms have manually declared three-bone skin weights; exact source pixels and every joint retained. Prior copied intake/weld receipts describe inputs; this receipt owns the new binding."
+}

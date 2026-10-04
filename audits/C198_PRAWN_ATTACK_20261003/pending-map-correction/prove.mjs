@@ -1,0 +1,65 @@
+// Read-only product/certificate comparison; writes only this additive audit receipt.
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import {stripTypeScriptTypes} from 'node:module';
+const here=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(here,'../../..');
+const rel=p=>path.relative(root,p).split(path.sep).join('/');
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const read=p=>fs.readFileSync(path.join(root,p));
+const digest=p=>sha(read(p));
+const json=p=>JSON.parse(read(p));
+const check=(value,message)=>{if(!value)throw Error(message);};
+const source='port/v2/apps/game/src/missing-body-structures.ts';
+const test='port/v2/apps/game/src/motion/specialized-anatomy.test.ts';
+const profile='port/v2/apps/game/src/earth-fauna-profiles.ts';
+const selectorPath='port/v2/budgets/compendium-memory-active.json';
+const selectorStart=digest(selectorPath),selector=json(selectorPath);
+check(selector.epochDirectory==='audits/C198_I5_EPOCH_20261003/epoch','unexpected epoch');
+const budget=json(selector.epochDirectory+'/compendium-memory-v2.json'),commit=budget.source.commit;
+const certificate=Object.entries(selector.files).map(([name,expected])=>{
+ const file=selector.epochDirectory+'/'+name,actual=digest(file);check(expected===actual,'certificate bytes changed: '+name);return{file,expected,actual,match:true};
+});check(certificate.length===9,'certificate inventory changed');
+const url=code=>'data:text/javascript;base64,'+Buffer.from(code).toString('base64');
+const strip=code=>stripTypeScriptTypes(code,{mode:'strip'});
+const profileUrl=url(strip(read(profile).toString()));
+const loadLedger=async code=>{
+ const token="'./earth-fauna-profiles.js'";check(code.split(token).length===2,'ledger import changed');
+ return import(url(strip(code.replace(token,JSON.stringify(profileUrl)))));
+};
+const before=fs.readFileSync(path.join(here,'missing-body-structures.before.ts'),'utf8');
+check(Buffer.from(before).equals(execFileSync('git',['show',commit+':'+source],{cwd:root})),'negative source differs from measured commit');
+let negativeError=null;try{(await loadLedger(before)).missingBodyStructures();}catch(error){negativeError=error.message;}
+check(negativeError==='Unplanned body structure shrimp-prawn','original omission did not reproduce');
+const rows=(await loadLedger(read(source).toString())).missingBodyStructures();
+const admitted=['Crab','Coconut Crab','Freshwater Crab','Mud Crab','Vent Crab'];
+check(rows.length===53&&new Set([...rows.map(x=>x.name),...admitted]).size===58,'pending count changed');
+const names=['Cave Shrimp','Freshwater Shrimp','Shrimp','Prawn','Vent Shrimp'];
+const five=rows.filter(x=>x.profile==='shrimp-prawn');
+check(five.length===5&&five.every(x=>names.includes(x.name)&&x.target==='crustacean-small'&&x.status==='needs-observed-fit'&&JSON.stringify(x.media)==='["water"]'),'split profile admission/routing drift');
+const dist=path.join(root,'port/v2/apps/game/dist');
+const list=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?list(path.join(d,e.name)):[path.join(d,e.name)]);
+const maps=list(dist).filter(p=>p.endsWith('.map'));check(maps.length>0,'no retained input graph');
+const sources=new Set(),mapReceipts=[];
+for(const p of maps){const bytes=fs.readFileSync(p),m=JSON.parse(bytes);check(Array.isArray(m.sources),'bad sourcemap');for(const s of m.sources)sources.add(path.resolve(path.dirname(p),m.sourceRoot||'',s));mapReceipts.push({file:rel(p),sha256:sha(bytes),sourceCount:m.sources.length});}
+for(const p of [source,test])check(!sources.has(path.join(root,p)),'changed module is a retained browser input: '+p);
+const changes=execFileSync('git',['diff','--name-only',commit,'--','port/v2'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(Boolean);
+check(JSON.stringify([...changes].sort())===JSON.stringify([source,test,selectorPath].sort()),'additional product source drift');
+const configPaths=['port/v2/apps/game/vite.config.ts','port/v2/apps/game/pwa-build.ts'];
+const config=configPaths.map(file=>{const current=read(file),measured=execFileSync('git',['show',commit+':'+file],{cwd:root});check(current.equals(measured),'build identity source drift');return{file,sha256:sha(current),equalsMeasuredCommit:true};});
+const producer=Object.entries(budget.producerAuthority.inputs).map(([role,item])=>{const actual=sha(fs.readFileSync(path.join(dist,item.relativePath)));check(actual===item.sha256,'retained producer differs: '+role);return{role,...item,actual,match:true};});
+const worker=fs.readFileSync(path.join(dist,'service-worker.js'),'utf8');
+const scalar=name=>{const matches=[...worker.matchAll(new RegExp('^const '+name+'=(.*);$','gm'))];check(matches.length===1,'ambiguous worker '+name);return JSON.parse(matches[0][1]);};
+const matches=[...worker.matchAll(/^const ASSETS=Object\.freeze\((.*)\);$/gm)];check(matches.length===1,'worker asset inventory ambiguous');
+const assets=JSON.parse(matches[0][1]),schema=scalar('SCHEMA'),revision=scalar('WORKER_REVISION');
+const canonical=schema+'\nworker\t'+revision+'\n'+[...assets].sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0).map(x=>x.path+'\t'+x.sha256+(x.cache==='first-use'?'\tfirst-use\t'+x.bytes:'')+'\n').join('');
+check(sha(canonical)===scalar('BUILD_ID'),'worker identity mismatch');
+const assetReceipts=assets.map(x=>{check(x.path.startsWith('/')&&!x.path.includes('..'),'invalid asset path');const bytes=fs.readFileSync(path.join(dist,x.path.slice(1))),actual=sha(bytes);check(actual===x.sha256,'worker asset changed: '+x.path);if(x.bytes!==undefined)check(bytes.length===x.bytes,'asset byte count changed');return{...x,actual,match:true};});
+check(assets.every(x=>!x.path.endsWith('.map')&&!x.path.startsWith('/__local_ai/')),'excluded inputs in worker identity');
+check(digest(selectorPath)===selectorStart,'selector changed during read');
+const result={schema:'cf-c198-pending-map-correction/v1',status:'PASS',scope:'Read-only comparison of retained measured browser output and exact source delta; not a new build, native run, gate or certificate activation.',measuredCommit:commit,negative:{source:rel(path.join(here,'missing-body-structures.before.ts')),sha256:sha(before),error:negativeError},pending:{count:rows.length,includingPreviouslyAdmittedCrabs:new Set([...rows.map(x=>x.name),...admitted]).size,shrimpPrawn:five},currentSource:{[source]:digest(source),[test]:digest(test),[profile]:digest(profile)},productDelta:changes,retainedBrowserGraph:{kind:'Vite/Rolldown emitted source maps',mapCount:maps.length,uniqueInputCount:sources.size,changedModulesAbsent:[source,test],maps:mapReceipts},buildIdentitySource:config,serviceWorker:{sha256:sha(worker),buildId:scalar('BUILD_ID'),workerRevision:revision,canonicalIdentitySha256:sha(canonical),assetCount:assets.length,assets:assetReceipts,sourceIdentityRule:'pwa-build.ts hashes exact emitted runtime assets plus pinned first-use assets and worker template revision; it does not hash arbitrary unbundled source. Maps and __local_ai are excluded.'},producer:{expectedAuthoritySha256:budget.producerAuthority.sha256,inputs:producer},certificate:{selector:selectorPath,selectorSha256:selectorStart,allNineUnchanged:true,files:certificate},limits:'The historical captured roster inventory remains unchanged. Browser-product non-impact is established from the limited source delta, retained input graph and exact output/identity hashes; this receipt does not authorize a gate retry.'};
+const output=process.argv[2]||'proof.json';check(['proof.json','proof-after.json'].includes(output),'invalid proof output');
+fs.writeFileSync(path.join(here,output),JSON.stringify(result,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({status:result.status,pending:53,includingPreviouslyAdmittedCrabs:58,negativeError,maps:maps.length,inputs:sources.size,serviceWorkerAssets:assets.length,nineCertificateFilesUnchanged:true,producerInputsUnchanged:producer.length}));

@@ -1,0 +1,28 @@
+{
+  "name": "Baboon",
+  "masterSha256": "a621f543375ec39d1e0db545026406afcfbb2a8f1583004105a06bb08b6dc5e9",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Long dog-like muzzle, shaggy shoulder mantle, visible bare rump patch and connected arched tail are present. Two hands and two feet have distinct distal silhouettes, with closer but unequal ground heights. Forelimb and hindlimb roots overlap beneath the coat; hand/thumb detail and rump ownership need authoring review. No props, scenery or crop.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 315,
+      "y0": 358,
+      "x1": 973,
+      "y1": 908
+    },
+    "margins": {
+      "left": 315,
+      "right": 280,
+      "top": 358,
+      "bottom": 345
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,145 @@
+[
+  {
+    "id": "01-earthworm",
+    "name": "Earthworm",
+    "family": "annelid",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 138,
+        "y0": 530,
+        "x1": 1115,
+        "y1": 744
+      },
+      "margins": {
+        "left": 138,
+        "right": 138,
+        "top": 530,
+        "bottom": 509
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 1,
+      "front": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "02-sponge",
+    "name": "Sponge",
+    "family": "sessile-filter",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 390,
+        "y0": 235,
+        "x1": 864,
+        "y1": 1018
+      },
+      "margins": {
+        "left": 390,
+        "right": 389,
+        "top": 235,
+        "bottom": 235
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 2,
+      "limb-down": 1,
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "03-snail",
+    "name": "Snail",
+    "family": "gastropod",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 174,
+        "y0": 384,
+        "x1": 1109,
+        "y1": 861
+      },
+      "margins": {
+        "left": 174,
+        "right": 144,
+        "top": 384,
+        "bottom": 392
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 2
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "04-mussel",
+    "name": "Mussel",
+    "family": "bivalve",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "aa7219e68a04fe659d7ec8cd1a66213bdbd7e36c826158f7d5477a0f272428cb",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 244,
+        "y0": 358,
+        "x1": 1005,
+        "y1": 892
+      },
+      "margins": {
+        "left": 244,
+        "right": 248,
+        "top": 358,
+        "bottom": 361
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "front": 2,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  }
+]

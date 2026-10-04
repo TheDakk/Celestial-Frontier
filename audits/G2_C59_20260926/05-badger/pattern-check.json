@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Badger",
+  "masterSha256": "8a20aa882cbc0362d3b6ca44ca22377be63d2c477b865dd1c1310d5fe81a2453",
+  "required": [
+    "white stripe running back over the face"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "white stripe running back over the face",
+      "status": "PRESENT",
+      "observed": "A broad pale central face stripe between the dark eye/cheek stripes is visible."
+    }
+  ]
+}

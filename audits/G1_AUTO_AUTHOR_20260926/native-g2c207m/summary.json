@@ -1,0 +1,30 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C196_INVERTEBRATE_ORIGINALS_20261002",
+ "tag": "g2c207m",
+ "pilot": 4,
+ "patternSkipped": [],
+ "scored": 4,
+ "admitPassStatic": [],
+ "refused": [
+  {
+   "id": "01-shrimp",
+   "reason": "no-reference: no other hand-authored subject of family crustacean-small"
+  },
+  {
+   "id": "02-brittle-star",
+   "reason": "extra-anatomy (unassigned): a top appendage of 14.9% paint that no reference appendage lands on"
+  },
+  {
+   "id": "03-fiddler-crab",
+   "reason": "no-reference: no other hand-authored subject of family brachyuran"
+  },
+  {
+   "id": "04-spider",
+   "reason": "extra-anatomy (unassigned): a front appendage of 21.9% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [],
+ "native": [],
+ "runnerExit": 0
+}

@@ -1,0 +1,11 @@
+{
+ "id": "c196creaturesupply-08-ibex",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 35%)",
+  "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)",
+  "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 0.0%)"
+ ],
+ "semanticPresence": null
+}

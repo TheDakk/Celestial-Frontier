@@ -1,0 +1,13 @@
+{
+  "id": "16-duiker",
+  "name": "Duiker",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-fff21533-77f3-4758-add1-3b77d2ba181f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f94c7b56f7eea193747a03dbdde92167af9bb76e62a7fdf6bc14ea7065e7a73d",
+  "bytes": 1275799,
+  "promptSha256": "a9f4189edda94208dd8bb98078787b37f5a9f5d33e02976d4f4db11cd0cdbaf7",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

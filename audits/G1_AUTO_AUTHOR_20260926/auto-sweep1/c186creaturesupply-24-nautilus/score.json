@@ -1,0 +1,28 @@
+{
+ "id": "c186creaturesupply-24-nautilus",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part eye-near (eyeNear) covers 0% paint (reference 100%)",
+  "missing-anatomy: part eye-far (eyeFar) covers 0% paint (reference 84%)",
+  "missing-anatomy: part siphon (siphon) covers 4% paint (reference 100%)",
+  "missing-anatomy: part arm1-middle (arm1Seg1) covers 12% paint (reference 97%)",
+  "missing-anatomy: part arm3-tip (arm3Seg2) covers 10% paint (reference 66%)",
+  "missing-anatomy: part arm5-tip (arm5Seg2) covers 19% paint (reference 63%)",
+  "missing-anatomy: part arm5-middle (arm5Seg1) covers 18% paint (reference 89%)",
+  "missing-anatomy: part arm6-tip (arm6Seg2) covers 13% paint (reference 68%)",
+  "missing-anatomy: part arm6-middle (arm6Seg1) covers 9% paint (reference 92%)",
+  "missing-anatomy: part arm7-middle (arm7Seg1) covers 15% paint (reference 81%)",
+  "missing-anatomy: part mantle (mantle) covers 0% paint (reference 82%)",
+  "missing-anatomy: part contour-arm1seg1 (arm1Seg1) covers 20% paint (reference 81%)",
+  "missing-anatomy: part contour-arm3seg1 (arm3Seg1) covers 19% paint (reference 94%)",
+  "missing-anatomy: part contour-arm3seg2 (arm3Seg2) covers 7% paint (reference 50%)",
+  "missing-anatomy: part contour-arm5seg2 (arm5Seg2) covers 11% paint (reference 48%)",
+  "missing-anatomy: part contour-arm6seg1 (arm6Seg1) covers 11% paint (reference 71%)",
+  "missing-anatomy: part contour-arm7seg1 (arm7Seg1) covers 16% paint (reference 76%)",
+  "missing-anatomy: part contour-mantle (mantle) covers 0% paint (reference 73%)",
+  "missing-anatomy: part final-arm4seg1 (arm4Seg1) covers 26% paint (reference 97%)",
+  "missing-anatomy: part final-arm3seg1 (arm3Seg1) covers 23% paint (reference 73%)"
+ ],
+ "semanticPresence": null
+}

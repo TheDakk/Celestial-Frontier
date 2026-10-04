@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tang",
+  "masterSha256": "aff4f03976bebcf11604845f82b82c7f83d69f626f34857207567dae16f83e72",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

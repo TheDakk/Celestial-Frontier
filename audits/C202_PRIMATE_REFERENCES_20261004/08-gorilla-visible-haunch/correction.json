@@ -1,0 +1,5 @@
+{
+  "predecessor": "audits/C202_PRIMATE_REFERENCES_20261004/07-gorilla-haunch-boundary",
+  "change": "Omit empty pelvis painted part; the control joint remains. Visible haunch is near thigh, with no separately exposed pelvis paint. No landmark or other owner change.",
+  "retainedPredecessorFailure": "authored-parts empty pelvis; its subsequent static invocation only failed missing complete fit and is not a valid static attempt."
+}

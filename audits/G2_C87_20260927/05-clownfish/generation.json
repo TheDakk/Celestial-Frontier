@@ -1,0 +1,13 @@
+{
+  "id": "05-clownfish",
+  "name": "Clownfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-646150fb-2fe1-4cba-9777-484a40ad4255.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f0c243583fa619afab456422e121283c46dede7275d315519e6e771d3095f5ce",
+  "bytes": 1306311,
+  "promptSha256": "14e0bf1d2dd43985508a58668a0e02ec606dd1e415096f110f7fae389a511de2",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

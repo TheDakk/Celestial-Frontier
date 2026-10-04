@@ -1,0 +1,13 @@
+{
+  "id": "24-wild-ass",
+  "name": "Wild Ass",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6dd7979d-6b5b-4211-834a-07d631cdb61b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d03e96b63e1a5ad90a4032be5f0b09fd00c4c924b8a844493397348c0efd7916",
+  "bytes": 1198957,
+  "promptSha256": "160612687761a2101dddd98b2c53abef347d9b04bd1aca12d4eb8e0838809c2a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

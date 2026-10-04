@@ -1,0 +1,31 @@
+{
+  "names": [
+    "Salmon",
+    "Lungfish",
+    "Cave Fish",
+    "Pipefish",
+    "Flying Fish",
+    "Anglerfish",
+    "Lanternfish",
+    "Fangtooth",
+    "Dragonfish",
+    "Barreleye",
+    "Deep-Sea Fish",
+    "Ocean Sunfish",
+    "Hummingbird",
+    "Peacock",
+    "Ostrich",
+    "Flamingo",
+    "Pelican",
+    "Albatross",
+    "Condor",
+    "Snow Petrel",
+    "Civet",
+    "Possum",
+    "Mole",
+    "Beaver"
+  ],
+  "priorPilotNames": 307,
+  "duplicates": [],
+  "status": "PROMPTS_NOT_YET_COMPILED"
+}

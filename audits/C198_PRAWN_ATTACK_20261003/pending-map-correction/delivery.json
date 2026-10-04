@@ -1,0 +1,114 @@
+{
+  "schema": "cf-c198-pending-map-delivery/v1",
+  "status": "FROZEN_FOCUSED_PASS_BROWSER_PRODUCT_UNCHANGED",
+  "supersedes": "Additive correction after delivery-v3; historical Prawn evidence remains immutable.",
+  "sourcePaths": [
+    {
+      "path": "port/v2/apps/game/src/missing-body-structures.ts",
+      "bytes": 1535,
+      "sha256": "ab80462f096affceab01c680b6956ddb1b3be55bce24509615e7d0173aeff035"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/specialized-anatomy.test.ts",
+      "bytes": 6821,
+      "sha256": "701f858b24b6ef82acbef21444df8a365d81a86de59c94f60b8b07f6d88ac815"
+    },
+    {
+      "path": "ATTACK_ANATOMY.md",
+      "bytes": 13479,
+      "sha256": "1fb16ca5b779a1cbdeed403f123b69228b63145b40fea7291cafbb4d748adb3e"
+    }
+  ],
+  "files": [
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/README.md",
+      "bytes": 3456,
+      "sha256": "c546c5f86e3732e3dd3e5a08ee78f8581423ecf5ef3fe708ebed40423fc6f82d"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/build-01.log",
+      "bytes": 17519,
+      "sha256": "2732a505815b96f2a461c11cdf885fe7775ce12b171ce036adb73a1204f428e9"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/build-compare.mjs",
+      "bytes": 2889,
+      "sha256": "c736cc514f8ccd424a7503a2dfdcdc535a703d759faa9b428858e21d3ba2fc8e"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/build-comparison.json",
+      "bytes": 322,
+      "sha256": "41ab7adc30ffbcd60b147bb9b606c9e93095ad83bca66df517117bc706ba4889"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/consumer-scan.txt",
+      "bytes": 881,
+      "sha256": "36b465cf7b1316664622fa5d8451cbea4124e361f29bf3be9b22bac975b0f29a"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/dist-after.json",
+      "bytes": 199234,
+      "sha256": "4fd031cf37a1ed571c6d66c28a25cc01e7d7a0668d20ef7d4d9b3bd76e90b5b3"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/dist-before.json",
+      "bytes": 199234,
+      "sha256": "4fd031cf37a1ed571c6d66c28a25cc01e7d7a0668d20ef7d4d9b3bd76e90b5b3"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/missing-body-structures.before.ts",
+      "bytes": 1501,
+      "sha256": "bf0990c4587aacbc561e29e137b27ff641685ef0188b299494541272251c6c7a"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/proof-01.log",
+      "bytes": 421,
+      "sha256": "e2acb3a4204dc0ea9a440a5933e2b81001a3bf4a05889dd18077525978cb6f3f"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/proof-after-01.log",
+      "bytes": 421,
+      "sha256": "91671acb5ddf0545b9e23fb1aee870e1bba127e43aa5b5d9b2d523f996033528"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/proof-after.json",
+      "bytes": 189538,
+      "sha256": "042fb9855c4fbcebd4ccb40b336c1d748e1826e185be0bc4cca0e9174f7a05fb"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/proof.json",
+      "bytes": 189538,
+      "sha256": "042fb9855c4fbcebd4ccb40b336c1d748e1826e185be0bc4cca0e9174f7a05fb"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/prove.mjs",
+      "bytes": 8034,
+      "sha256": "78245a6c3f78a207148e3b091f046c728318a3e19bdb2b1627315617f97ce107"
+    },
+    {
+      "path": "audits/C198_PRAWN_ATTACK_20261003/pending-map-correction/tests-01.log",
+      "bytes": 235,
+      "sha256": "7c6c105fc3f38882f25e7d488c33200eb4ad6ded324d61d295a84913b2aa60dd"
+    }
+  ],
+  "fileCount": 14,
+  "bytes": 813223,
+  "tests": {
+    "files": 3,
+    "passed": 18,
+    "pendingCount": 53,
+    "includingPriorFiveCrabs": 58
+  },
+  "buildOnly": {
+    "count": 1,
+    "native": false,
+    "gateRetry": false,
+    "unchangedNonMapFiles": 1156,
+    "optionalRuntimeRestored": true
+  },
+  "certificate": {
+    "allNineBoundFilesUnchanged": true,
+    "selectedOrRebound": false
+  },
+  "privacy": "No expanded user home paths, owner identity or symlinks in this additive packet."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "3a95437d7329a4c47645cea1ba162b795d15bfcdee94fbaf971c0814d0edd33b",
+  "bindingHash": "d7aa8af4da8e02f83d5efbb8c5eb7509b1033cb45302be6bb0dc3123cc5fba67",
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "Explicit manually authored tiny interior root patch belongs to contiguous torso paint. Other independent surfaces retain existing split behavior."
+}

@@ -1,0 +1,13 @@
+{
+ "id": "c196quadrupedoriginals-08-whiptail",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on",
+  "missing-anatomy: part hind-far-knee (hindFarKnee) covers 25% paint (reference 83%)",
+  "missing-anatomy: part fore-near-paw (foreNearPaw) covers 14% paint (reference 48%)",
+  "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 20%)",
+  "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 8.3%)"
+ ],
+ "semanticPresence": null
+}

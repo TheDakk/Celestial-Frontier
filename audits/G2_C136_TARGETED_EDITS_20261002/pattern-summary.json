@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Giant Salamander",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Giraffe",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Buffalo",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Bee",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  }
+]

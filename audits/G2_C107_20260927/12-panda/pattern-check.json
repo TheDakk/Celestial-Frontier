@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Panda",
+  "masterSha256": "17f620611d282ca00eb7c8077d579297680c75f5af05a41515f2c8112d4a964a",
+  "required": [
+    "black shoulder band joining black forelegs"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "black shoulder band joining black forelegs",
+      "status": "PRESENT",
+      "observed": "Full original: black eye patches and shoulder/foreleg band, rounded head/body, both ear tips, four distinct feet, short white tail visible. Upper leg overlap remains for exact authoring review; no motion acceptance."
+    }
+  ]
+}

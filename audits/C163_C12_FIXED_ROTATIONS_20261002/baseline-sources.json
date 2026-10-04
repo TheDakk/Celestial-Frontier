@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c163-fixed-rotations-baseline/v1",
+  "sources": [
+    {
+      "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "sha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep.c",
+      "sha256": "87002ac565a72f94e4239faa618f689f7cd197db7973cbf9b511139193def285"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep.wasm",
+      "sha256": "a48d554ba386ae1fc9f186a02f25984b307e6ec4bfe8bfc782dc6d79b67efd78"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "sha256": "44d181aedd47321a459ba6ee23fb269064d9d6f9e0cc5f311bcfc3329b6b79a0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep-build.json",
+      "sha256": "0cbd0509f4d19ed3bfbb92cd9bc016c0782c85117cb15400a75b0b992e14bc85"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-arap-sweep.mjs",
+      "sha256": "af04958347fcd50f743c0c7c6cff30c357311febc9f3483e48744a882d27f356"
+    }
+  ]
+}

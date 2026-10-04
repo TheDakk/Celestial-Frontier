@@ -1,0 +1,41 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Screamer",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "e026499fce06cc8a0dd9df16140b8f152ccdc2253686ad0456ebb41e2b8ed998",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "wading-bird",
+  "authoringCreated": false,
+  "sourceHead": "0486f0f9779604496000c8e913b6fe38e7612471",
+  "basePromptSha256": "9722d1f1520f73c447cb381593de6112ba11233de5c158b68d7caa83de57797b",
+  "batchCompilerSha256": "2b5f31c02d1299de513811e149a6435e5263e15a98a18d89a72585718ec7f383",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "previousId": "14-screamer",
+    "previousMaster": "audits/G2_C98_20260927/14-screamer/master.png",
+    "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/summary.json",
+    "verdict": "REFUSE",
+    "reasons": [
+      "missing-anatomy: part beak (beak) covers 6% paint (reference 52%)",
+      "unexplained-anatomy: 6.7% of the paint lies away from the body and in no part (reference 2.3%)"
+    ],
+    "static": null,
+    "previousVisual": "Full1254 original reviewed: two separated feet, folded wings and complete tail, with forehead horn and one visible near-wing spur. Anatomy/identity HOLD: the forehead horn is thick goat-like and the wing spur is an oversized gold horn; head/body read raptor-like rather than the canonical bulky goose/chicken-like horned screamer. Partly webbed feet and the far wing spur are not independently established. Retain exact original as a failed anatomy candidate.",
+    "correction": "A real horned screamer: bulky goose-like body, small chicken-like head and short hooked bill, a thin flexible curved forehead spine, and real small bony wing-bend spurs. No goat horn, no huge golden wing horn, no raptor body. Keep partly webbed natural feet. The far spur appears only if truly visible; do not invent an extra wing to expose it."
+  },
+  "layoutOverride": null,
+  "sourceCorrection": "TARGETED SOURCE REPAINT — BIOLOGICAL PRIORITY: A real horned screamer: bulky goose-like body, small chicken-like head and short hooked bill, a thin flexible curved forehead spine, and real small bony wing-bend spurs. No goat horn, no huge golden wing horn, no raptor body. Keep partly webbed natural feet. The far spur appears only if truly visible; do not invent an extra wing to expose it. Preserve the real species anatomy if a generic pose instruction conflicts. No invented far wing, false leg, disconnected tail, artificial gap through tissue or removal of actual appendages. This request does not establish measured anatomical presence.",
+  "compositionCheck": "COMPOSITION: square native 1254 by 1254 painting. Keep the entire specimen small, inside the central half of the canvas, with generous pure magenta around every bill, toe, plume and tail tip. Preserve real proportions by zooming out, never shortening appendages. No ground, cast shadow, scenery, perch, branch, prop, text, diagram or framing marks.",
+  "admission": "GENERATED_CANDIDATE_ONLY; no semantic presence, rig admission or motion claim"
+}

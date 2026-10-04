@@ -1,0 +1,296 @@
+[
+  {
+    "name": "Cod",
+    "recipeHash": "a9077119c851fcd2434a36484302099d96bd6809aabf77c1fc1ff8705009dfc2",
+    "context": {
+      "actionId": "victory",
+      "elapsedMs": 192.83333333333348,
+      "durationMs": 680,
+      "weight": 1,
+      "planted": false,
+      "travel": "stage"
+    },
+    "pose": {
+      "head": {
+        "rotation": -0.17336662398789304,
+        "dx": 0,
+        "dy": 0
+      },
+      "jaw": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine0": {
+        "rotation": 0.11182910290641643,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine1": {
+        "rotation": 0.18638183817736073,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine2": {
+        "rotation": 0.07455273527094429,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine3": {
+        "rotation": -0.11182910290641643,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine4": {
+        "rotation": -0.22365820581283286,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine5": {
+        "rotation": -0.29821094108377716,
+        "dx": 0,
+        "dy": 0
+      },
+      "caudal": {
+        "rotation": -0.38883114273575653,
+        "dx": 0,
+        "dy": 0
+      },
+      "dorsal": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "pectoralFar": {
+        "rotation": -0.7166952166474163,
+        "dx": 0,
+        "dy": 0
+      },
+      "pectoralNear": {
+        "rotation": 0.7166952166474163,
+        "dx": 0,
+        "dy": 0
+      },
+      "root": {
+        "rotation": -0.4334165599697326,
+        "dx": 0,
+        "dy": -0.08319107650489876
+      }
+    },
+    "pending": {
+      "head": {
+        "rotation": -0.17336662398789304,
+        "dx": 0,
+        "dy": 0
+      },
+      "jaw": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine0": {
+        "rotation": 0.11182910290641643,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine1": {
+        "rotation": 0.18638183817736073,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine2": {
+        "rotation": 0.07455273527094429,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine3": {
+        "rotation": -0.11182910290641643,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine4": {
+        "rotation": -0.22365820581283286,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine5": {
+        "rotation": -0.29821094108377716,
+        "dx": 0,
+        "dy": 0
+      },
+      "caudal": {
+        "rotation": -0.38883114273575653,
+        "dx": 0,
+        "dy": 0
+      },
+      "dorsal": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "pectoralFar": {
+        "rotation": -0.7166952166474163,
+        "dx": 0,
+        "dy": 0
+      },
+      "pectoralNear": {
+        "rotation": 0.7166952166474163,
+        "dx": 0,
+        "dy": 0
+      },
+      "root": {
+        "rotation": -0.4334165599697326,
+        "dx": -0.003725669601396611,
+        "dy": -0.08319107650489876
+      }
+    },
+    "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+  },
+  {
+    "name": "Cod",
+    "recipeHash": "a9077119c851fcd2434a36484302099d96bd6809aabf77c1fc1ff8705009dfc2",
+    "context": {
+      "actionId": "victory",
+      "elapsedMs": 209.5333333333342,
+      "durationMs": 680,
+      "weight": 1,
+      "planted": false,
+      "travel": "stage"
+    },
+    "pose": {
+      "head": {
+        "rotation": -0.1745320633084443,
+        "dx": 0,
+        "dy": 0
+      },
+      "jaw": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine0": {
+        "rotation": 0.11156869451275099,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine1": {
+        "rotation": 0.18594782418791833,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine2": {
+        "rotation": 0.07437912967516733,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine3": {
+        "rotation": -0.11156869451275099,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine4": {
+        "rotation": -0.22313738902550198,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine5": {
+        "rotation": -0.2975165187006693,
+        "dx": 0,
+        "dy": 0
+      },
+      "caudal": {
+        "rotation": -0.3954288631839375,
+        "dx": 0,
+        "dy": 0
+      },
+      "dorsal": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "pectoralFar": {
+        "rotation": -0.7390119293711627,
+        "dx": 0,
+        "dy": 0
+      },
+      "pectoralNear": {
+        "rotation": 0.7390119293711627,
+        "dx": 0,
+        "dy": 0
+      },
+      "root": {
+        "rotation": -0.43633015827111077,
+        "dx": 0,
+        "dy": -0.0836536650417812
+      }
+    },
+    "pending": {
+      "head": {
+        "rotation": -0.1745320633084443,
+        "dx": 0,
+        "dy": 0
+      },
+      "jaw": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine0": {
+        "rotation": 0.11156869451275099,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine1": {
+        "rotation": 0.18594782418791833,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine2": {
+        "rotation": 0.07437912967516733,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine3": {
+        "rotation": -0.11156869451275099,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine4": {
+        "rotation": -0.22313738902550198,
+        "dx": 0,
+        "dy": 0
+      },
+      "spine5": {
+        "rotation": -0.2975165187006693,
+        "dx": 0,
+        "dy": 0
+      },
+      "caudal": {
+        "rotation": -0.3954288631839375,
+        "dx": 0,
+        "dy": 0
+      },
+      "dorsal": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "pectoralFar": {
+        "rotation": -0.7390119293711627,
+        "dx": 0,
+        "dy": 0
+      },
+      "pectoralNear": {
+        "rotation": 0.7390119293711627,
+        "dx": 0,
+        "dy": 0
+      },
+      "root": {
+        "rotation": -0.43633015827111077,
+        "dx": -0.0036540601035095987,
+        "dy": -0.0836536650417812
+      }
+    },
+    "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+  }
+]

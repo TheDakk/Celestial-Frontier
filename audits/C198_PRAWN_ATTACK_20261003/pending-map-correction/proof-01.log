@@ -1,0 +1,3 @@
+{"status":"PASS","pending":53,"includingPreviouslyAdmittedCrabs":58,"negativeError":"Unplanned body structure shrimp-prawn","maps":78,"inputs":941,"serviceWorkerAssets":509,"nineCertificateFilesUnchanged":true,"producerInputsUnchanged":5}
+(node:7040) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -1,0 +1,114 @@
+{
+  "schema": "cf-civet-water-motion-final-results/v1",
+  "status": "PASS",
+  "scope": "Isolated authoring study; native game integration and human art acceptance remain open",
+  "sourceCommitAtRun": "86ea06b79e11382b62173fbb2ccfc8c90fb37baa",
+  "sourceBindings": {
+    "audits/CIVET_WATER_AND_MOTION_20260908/study.html": "33e4a16af57109d0ee6269fe8fe5c90f1409bd240a0458a827bf48e4f335d317",
+    "audits/CIVET_WATER_AND_MOTION_20260908/study-harness.ts": "7ebf49d7f7d293dfb79673e8d938dfa751ec1d1daf6ee4279bdb60da0aa7c425",
+    "audits/CIVET_WATER_AND_MOTION_20260908/study-runner.mjs": "ded82eab92c571363f57a81651c790df6bb600fd849229e78d067db5b3c61b82",
+    "audits/CIVET_WATER_AND_MOTION_20260908/serve-study.mjs": "15e74dcccd47e74380cd9722b7458413ac9fb0957524ba16fb651e41d0872e08",
+    "audits/CIVET_WATER_AND_MOTION_20260908/study.tsconfig.json": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4",
+    "audits/CIVET_WATER_AND_MOTION_20260908/asset.json": "ac02739c5399496bf2731eb03d9ffc082c3dd73abb9ac44af6c8204045ec7580",
+    "audits/CIVET_WATER_AND_MOTION_20260908/water-owner.ts": "85a31c5a03feef9cac853e14083889440b956a0651b3a24b003151e7587fd2b3",
+    "port/v2/packages/art/src/earth-resident-plan.ts": "72d27b39e9c15382638f4db09074198e0eb296a18affafc740bbdc89e7f311f6",
+    "port/v2/tools/painted-creature/civet-articulated-rig.ts": "800b93d4144d2f651792e30a7a6f9b2d8acfc0a769d2ce3835ed51a4f5da2978",
+    "port/v2/tools/painted-creature/civet-rig.ts": "161a3ddd690b21c11575a539587a629910ac89b98ab849e846e1b15a0bffe0bc"
+  },
+  "rigTests": {
+    "passed": 44,
+    "log": "articulated-rig-first.log",
+    "unchangedRigReused": true
+  },
+  "static": {
+    "path": "static-filter-state.json",
+    "sha256": "c7f3c524008683a776386dec76fc7f06b418f89513df73f7fc80778f59310d4a",
+    "status": "PASS"
+  },
+  "native": {
+    "path": "native-filter-state/report.json",
+    "sha256": "ce01bd86bbf50665fce5d56af4cf74e5d9b1cdb8b3735a21f2dc58788585dacc",
+    "status": "PASS",
+    "modes": [
+      {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1,
+        "frames": 34,
+        "controlGroups": 18,
+        "videos": 3,
+        "status": "PASS"
+      },
+      {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "dpr": 2,
+        "frames": 34,
+        "controlGroups": 18,
+        "videos": 3,
+        "status": "PASS"
+      }
+    ],
+    "runtimeErrors": 0,
+    "cleanupErrors": 0,
+    "browserClosed": true
+  },
+  "dist": {
+    "files": 15,
+    "bytes": 1724943,
+    "inventorySha256": "a485c8f4fe04876205d229db6d02e41ccf0bd24706418d43dc5a92be22e02e50"
+  },
+  "firstFailuresRetained": [
+    "static-first.json",
+    "FIRST_STATIC_FAILURE.md",
+    "native-first/report.json",
+    "FIRST_NATIVE_FAILURE.md"
+  ],
+  "review": [
+    "SOURCE_REVIEW.md",
+    "VISUAL_REVIEW.md"
+  ],
+  "evidenceVerification": {
+    "path": "evidence-verification.json",
+    "sha256": "c09389e724e635526ff678e581fbbf545ab383fff8f1545756505b24fd46f32d",
+    "status": "PASS",
+    "summary": {
+      "sourceFiles": 10,
+      "retainedSourceCopies": 7,
+      "distFiles": 15,
+      "distBytes": 1724943,
+      "mediaCarriers": 224,
+      "uniqueRecordedMedia": 62,
+      "supplementaryObservedMedia": 2,
+      "probedVideos": 6,
+      "immutableReadbackFiles": 96
+    }
+  },
+  "preview": "served-html-verification.json",
+  "restoredSigning": "SIGNING_RESTORED.json",
+  "hostedActions": 0,
+  "productionAcceptance": false,
+  "limitations": [
+    "Standalone local authoring bench. No native Compendium, battle, world navigation, protected save or product certificate claim.",
+    "One-view texture deformation supports finite breathing and neck brace/thrust/recoil, not jaw articulation, walking, a 3D rig or unseen anatomy.",
+    "Single shared decoded Civet texture within each document; measurements are resource-owner facts, not native driver heap, device heat or a total app memory cap.",
+    "Recovered matte retains attenuated whiskers and a small light fringe at magnification; production clean-edge and human art acceptance remain open.",
+    "DOM-hidden cancellation and synthetic document-hidden event coverage are distinct. Physical background-tab/PWA/Safari behavior remains unqualified."
+  ],
+  "formatReview": {
+    "path": "format-review.json",
+    "fullExit": 2,
+    "authoredExit": 0
+  },
+  "gitHandoff": {
+    "status": "STAGED_SIGNING_BLOCKED",
+    "head": "86ea06b79e11382b62173fbb2ccfc8c90fb37baa",
+    "ahead": 41,
+    "behind": 0,
+    "failure": "SIGNING_NEW_BATCH_FAILURE.md",
+    "retry": "Only after Dakk confirms changed signer readiness; no automatic retry",
+    "recovery": "RECOVERY_POINTER.md"
+  }
+}

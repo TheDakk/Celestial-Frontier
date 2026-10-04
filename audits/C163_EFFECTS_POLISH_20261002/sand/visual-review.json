@@ -1,0 +1,147 @@
+{
+  "schema": "cf.c163-effect-visual-review/v1",
+  "theme": "sand",
+  "selectedPhase": "travel",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeProof": false,
+  "inspectedImages": [
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/travel-master.png",
+      "sha256": "ef10a0bd399e39fdc2ed70b370b57b87034822b66cfbafc0aa2eb936e36df9af",
+      "bytes": 1596883
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/comparison-static.png",
+      "sha256": "d23e0c2f3c5c144c0f20975155e0287bcff20517980cfe6c29dfa459daeaaaa2",
+      "bytes": 365188
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/registered/launch.png",
+      "sha256": "258a217973f61a36065885c8bca3543fe66211a8c98101aeb6b634833a2baf2d",
+      "bytes": 102596
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/registered/travel.png",
+      "sha256": "88b85babb7eeb880ec5d1114f61efedf3d06e3f24668d664fa83a5051b49f2f5",
+      "bytes": 390714
+    },
+    {
+      "path": "audits/C163_EFFECTS_POLISH_20261002/sand/registered/impact.png",
+      "sha256": "75d5ad014f93b494d8b377fe12fc99af10d7e482906e10565c81a4b4f9771ff6",
+      "bytes": 145804
+    }
+  ],
+  "comparisonLayout": "Static 768 x 1152 comparison; old LEFT, candidate RIGHT; rows gray (#464c46), dark (#151820), pale (#d6cebb). This is not a native film or arena proof.",
+  "findings": [
+    "A stronger burnt-umber core and pale grain faces make the stream easier to see on the pale/gray static backgrounds.",
+    "The denser warmer stream looks more orange than its predecessor. Theme identity versus Fire and grain readability need independent scoring and native film."
+  ],
+  "mechanical": {
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "sand",
+    "sequenceId": "sand-c163-polish-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 26461,
+        "edge": 8310,
+        "fringe": 0,
+        "fringeRatio": 0,
+        "accentShare": 0.24275008145975888,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 111,
+          "y": 344,
+          "width": 220,
+          "height": 234
+        }
+      },
+      "travel": {
+        "painted": 110719,
+        "edge": 26584,
+        "fringe": 87,
+        "fringeRatio": 0.003272645200120373,
+        "accentShare": 0.12164959341007499,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 100,
+          "y": 380,
+          "width": 714,
+          "height": 357
+        }
+      },
+      "impact": {
+        "painted": 38587,
+        "edge": 11585,
+        "fringe": 0,
+        "fringeRatio": 0,
+        "accentShare": 0.12305015029267521,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 543,
+          "y": 410,
+          "width": 340,
+          "height": 281
+        }
+      }
+    }
+  },
+  "unchanged": {
+    "timingAndMotionSourcesEdited": false,
+    "sourceRegistration": {
+      "sourceAnchor": [
+        0.16,
+        0.5
+      ],
+      "canvasScale": 0.73,
+      "scaled": 748,
+      "left": 85,
+      "top": 189,
+      "sourceAndTargetAnchorsUnchanged": true,
+      "origin": [
+        0.2,
+        0.55
+      ],
+      "contact": [
+        0.8,
+        0.55
+      ]
+    },
+    "phaseOrder": [
+      "launch",
+      "travel",
+      "impact"
+    ],
+    "unselectedPhases": [
+      {
+        "phase": "launch",
+        "source": "audits/C132_EFFECTS_20261001/sand/final/registered/launch.png",
+        "sha256": "258a217973f61a36065885c8bca3543fe66211a8c98101aeb6b634833a2baf2d"
+      },
+      {
+        "phase": "impact",
+        "source": "audits/C132_EFFECTS_20261001/sand/final/registered/impact.png",
+        "sha256": "75d5ad014f93b494d8b377fe12fc99af10d7e482906e10565c81a4b4f9771ff6"
+      }
+    ]
+  },
+  "sourcePreservation": {
+    "target": {
+      "path": "audits/C132_EFFECTS_20261001/sand/travel-master.png",
+      "sha256": "f9c0ffeade814bf1fb5ee1a428b124005776cb7b0dc2cd5c7da7a174fee05750"
+    },
+    "predecessorAnchors": {
+      "anchors": "audits/C132_EFFECTS_20261001/sand/final/anchors.json",
+      "sha256": "2930258125c1e99bd2882ee1d0e886eba8b8c0e5a35c54e1b523a68a7348395f"
+    },
+    "originalPixelsModified": false
+  },
+  "status": "MECHANICAL_PASS_NEW_ART_AWAITING_SCORING_AND_NATIVE_FILM"
+}

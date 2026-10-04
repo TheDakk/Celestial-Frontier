@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "verifiedFileEntries": 2087,
+  "deliveries": [
+    {
+      "manifest": "audits/C192_CREATURE_SUPPLY_20261002/delivery.json",
+      "manifestSha256": "9e892b78eb966ffb42f8698038cdadc69660de08f0ea88db84b53728f35de3dd",
+      "verifiedFileEntries": 271,
+      "bytes": 37390166
+    },
+    {
+      "manifest": "audits/C192_C233_AUTHORING_HANDOFF_20261002/delivery.json",
+      "manifestSha256": "fea5cf51b8681bf708c2776eb7882261f82c56941aca3092bd7284959eef8322",
+      "verifiedFileEntries": 2,
+      "bytes": 9153
+    },
+    {
+      "manifest": "audits/C192_C233_MATERIAL_REVIEW_20261002/delivery.json",
+      "manifestSha256": "87810df7f80eca3c5d7c17fbf57bcb0cc46c66b7d62838b254711db0a80a65e2",
+      "verifiedFileEntries": 2,
+      "bytes": 14640
+    },
+    {
+      "manifest": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/delivery.json",
+      "manifestSha256": "4001988f6f3232b873533bfe3a0d28df5b7f6778de213d4562097c175309264f",
+      "verifiedFileEntries": 1230,
+      "bytes": 206631660
+    },
+    {
+      "manifest": "audits/C192_SPECIALIZED_REFERENCES_20261002/delivery.json",
+      "manifestSha256": "e908acedc1d1f72e69f9ed6eb58ff5b5f6f2a10f17dd8e5c510b95efd84a887a",
+      "verifiedFileEntries": 582,
+      "bytes": 110944703
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "id": "02-tasmanian-devil",
+  "name": "Tasmanian Devil",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "562041acaf1c4df471239b7921bbd007de68ef868ddbc09106bb236c9736f967",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 21826,
+    "coreRadius": 24,
+    "bodyBox": {
+      "x0": 136,
+      "y0": 141,
+      "x1": 324,
+      "y1": 232
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0246,
+        "pixels": 538,
+        "box": {
+          "x0": 270,
+          "y0": 124,
+          "x1": 317,
+          "y1": 140
+        },
+        "attach": {
+          "x": 293.5,
+          "y": 140,
+          "relX": 0.84,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.46,
+          "y": -0.89
+        },
+        "class": "top",
+        "length": 28.4
+      },
+      {
+        "k": 1,
+        "frac": 0.0041,
+        "pixels": 90,
+        "box": {
+          "x0": 185,
+          "y0": 145,
+          "x1": 225,
+          "y1": 147
+        },
+        "attach": {
+          "x": 205,
+          "y": 147,
+          "relX": 0.37,
+          "relY": 0.07
+        },
+        "dir": {
+          "x": -0.72,
+          "y": -0.7
+        },
+        "class": "top",
+        "length": 20.1
+      },
+      {
+        "k": 2,
+        "frac": 0.0294,
+        "pixels": 642,
+        "box": {
+          "x0": 325,
+          "y0": 146,
+          "x1": 353,
+          "y1": 183
+        },
+        "attach": {
+          "x": 325,
+          "y": 164,
+          "relX": 1.01,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.14
+        },
+        "class": "front",
+        "length": 33.8
+      },
+      {
+        "k": 3,
+        "frac": 0.0678,
+        "pixels": 1479,
+        "box": {
+          "x0": 75,
+          "y0": 180,
+          "x1": 135,
+          "y1": 231
+        },
+        "attach": {
+          "x": 135,
+          "y": 197,
+          "relX": -0.01,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": -0.86,
+          "y": 0.51
+        },
+        "class": "limb-down",
+        "length": 69
+      },
+      {
+        "k": 4,
+        "frac": 0.009,
+        "pixels": 197,
+        "box": {
+          "x0": 302,
+          "y0": 185,
+          "x1": 336,
+          "y1": 206
+        },
+        "attach": {
+          "x": 317.9,
+          "y": 196.9,
+          "relX": 0.97,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": 0.96,
+          "y": 0.29
+        },
+        "class": "front",
+        "length": 21.7
+      },
+      {
+        "k": 5,
+        "frac": 0.0634,
+        "pixels": 1384,
+        "box": {
+          "x0": 115,
+          "y0": 226,
+          "x1": 177,
+          "y1": 280
+        },
+        "attach": {
+          "x": 154.2,
+          "y": 229.8,
+          "relX": 0.1,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": -0.61,
+          "y": 0.79
+        },
+        "class": "limb-down",
+        "length": 63.7
+      },
+      {
+        "k": 6,
+        "frac": 0.0433,
+        "pixels": 946,
+        "box": {
+          "x0": 261,
+          "y0": 229,
+          "x1": 322,
+          "y1": 277
+        },
+        "attach": {
+          "x": 276.7,
+          "y": 232.7,
+          "relX": 0.75,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.62,
+          "y": 0.78
+        },
+        "class": "limb-down",
+        "length": 63.4
+      },
+      {
+        "k": 7,
+        "frac": 0.0463,
+        "pixels": 1011,
+        "box": {
+          "x0": 181,
+          "y0": 230,
+          "x1": 221,
+          "y1": 278
+        },
+        "attach": {
+          "x": 196,
+          "y": 230,
+          "relX": 0.32,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": 0.04,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 54.1
+      },
+      {
+        "k": 8,
+        "frac": 0.0484,
+        "pixels": 1056,
+        "box": {
+          "x0": 225,
+          "y0": 233,
+          "x1": 268,
+          "y1": 284
+        },
+        "attach": {
+          "x": 240,
+          "y": 233,
+          "relX": 0.55,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.16,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 58.2
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "front": 2,
+      "limb-down": 5
+    },
+    "ground": [
+      {
+        "x0": 116,
+        "x1": 140,
+        "cx": 127.7
+      },
+      {
+        "x0": 195,
+        "x1": 221,
+        "cx": 207.9
+      },
+      {
+        "x0": 240,
+        "x1": 268,
+        "cx": 253.2
+      },
+      {
+        "x0": 309,
+        "x1": 322,
+        "cx": 315.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

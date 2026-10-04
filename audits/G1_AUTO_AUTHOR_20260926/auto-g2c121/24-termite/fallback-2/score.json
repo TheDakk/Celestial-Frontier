@@ -1,0 +1,14 @@
+{
+ "id": "24-termite",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part antenna-far (antennaFar) covers 8% paint (reference 29%)",
+  "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+  "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 1% paint (reference 25%)",
+  "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 10% paint (reference 52%)",
+  "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 10% paint (reference 75%)",
+  "missing-anatomy: part wing-far (wingFar) covers 17% paint (reference 74%)"
+ ],
+ "semanticPresence": null
+}

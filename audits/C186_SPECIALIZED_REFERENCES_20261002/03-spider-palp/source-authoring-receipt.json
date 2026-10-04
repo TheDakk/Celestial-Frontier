@@ -1,0 +1,159 @@
+{
+  "schema": "cf.c186-spider-source-authoring/v1",
+  "writer": "audits/C186_SPECIALIZED_REFERENCES_20261002/author-spider.mjs",
+  "writerSha256": "c8ae104e2ed7a6466b0c5e5ba1ed2f828e8a1ff0a77d1e354377cf9c71a8ff01",
+  "source": "audits/C183_ISLAND_AUTHORING_20261002/spider-source-successor",
+  "masterSha256": "e14cd994b5b6b9cf9a72702b433343d009d0be8c1bfd291696e6917dac8a74ad",
+  "priorAuthoring": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/authoring.json",
+  "priorAuthoringSha256": "2c084d51f3e9ab3a599ea234e270d40a784a639531d6355149a466152c4348f3",
+  "authoringSha256": "1cee559220f6e57ea97d5838add4ff9207218232d199ed23fc47364fbfda86d6",
+  "changedLandmarks": {
+    "leg1FarKnee": [
+      494,
+      659
+    ],
+    "leg1FarFoot": [
+      504,
+      800
+    ],
+    "leg1NearKnee": [
+      702,
+      690
+    ],
+    "leg1NearFoot": [
+      664,
+      815
+    ]
+  },
+  "changedRegions": [
+    "leg1farknee",
+    "leg1farfoot",
+    "leg1nearknee",
+    "leg1nearfoot"
+  ],
+  "newRegions": [
+    {
+      "id": "observed-left-palp-continuity",
+      "joint": "cephalothorax",
+      "layer": "near",
+      "polygonPx": [
+        [
+          574,
+          622
+        ],
+        [
+          586,
+          637
+        ],
+        [
+          569,
+          653
+        ],
+        [
+          565,
+          678
+        ],
+        [
+          570,
+          703
+        ],
+        [
+          575,
+          722
+        ],
+        [
+          569,
+          739
+        ],
+        [
+          551,
+          743
+        ],
+        [
+          538,
+          727
+        ],
+        [
+          531,
+          701
+        ],
+        [
+          533,
+          675
+        ],
+        [
+          541,
+          653
+        ],
+        [
+          553,
+          635
+        ]
+      ]
+    },
+    {
+      "id": "observed-right-palp-continuity",
+      "joint": "cephalothorax",
+      "layer": "near",
+      "polygonPx": [
+        [
+          650,
+          632
+        ],
+        [
+          669,
+          637
+        ],
+        [
+          679,
+          653
+        ],
+        [
+          674,
+          674
+        ],
+        [
+          672,
+          697
+        ],
+        [
+          665,
+          722
+        ],
+        [
+          661,
+          742
+        ],
+        [
+          650,
+          755
+        ],
+        [
+          635,
+          757
+        ],
+        [
+          628,
+          744
+        ],
+        [
+          631,
+          725
+        ],
+        [
+          638,
+          700
+        ],
+        [
+          640,
+          674
+        ]
+      ]
+    }
+  ],
+  "anatomicalJointInventoryChanged": false,
+  "sourceRgbaEdited": false,
+  "capChanged": false,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

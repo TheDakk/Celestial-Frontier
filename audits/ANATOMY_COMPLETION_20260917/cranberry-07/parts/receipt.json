@@ -1,0 +1,253 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "recordRecipeHash": "5ea4e622886089ac81f8140f2509c80f607743d0a8c29b7ddf599091368c350a",
+  "declarationHash": "40858e7dcfcff03b5ae87ecedf6d16bc1beb9424245db446ef2834129aa98d7e",
+  "paintedPixels": 409796,
+  "parts": [
+    {
+      "id": "branch-0-foliage",
+      "joint": "leaf0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 138,
+        "y": 722,
+        "width": 241,
+        "height": 146
+      },
+      "pixels": 19667
+    },
+    {
+      "id": "branch-1-foliage",
+      "joint": "leaf1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 1045,
+        "y": 703,
+        "width": 172,
+        "height": 135
+      },
+      "pixels": 11439
+    },
+    {
+      "id": "branch-2-foliage",
+      "joint": "leaf2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 795,
+        "y": 153,
+        "width": 105,
+        "height": 129
+      },
+      "pixels": 6155
+    },
+    {
+      "id": "branch-3-foliage",
+      "joint": "leaf3",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 133,
+        "y": 351,
+        "width": 293,
+        "height": 309
+      },
+      "pixels": 50533
+    },
+    {
+      "id": "branch-3-wood",
+      "joint": "branch3Base",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 414,
+        "y": 542,
+        "width": 137,
+        "height": 160
+      },
+      "pixels": 8233
+    },
+    {
+      "id": "branch-4-foliage",
+      "joint": "leaf4",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 426,
+        "y": 399,
+        "width": 270,
+        "height": 266
+      },
+      "pixels": 42410
+    },
+    {
+      "id": "branch-4-wood",
+      "joint": "branch4Base",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 538,
+        "y": 657,
+        "width": 76,
+        "height": 58
+      },
+      "pixels": 2262
+    },
+    {
+      "id": "branch-5-foliage",
+      "joint": "leaf5",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 744,
+        "y": 177,
+        "width": 313,
+        "height": 337
+      },
+      "pixels": 44887
+    },
+    {
+      "id": "branch-5-wood",
+      "joint": "branch5Base",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 665,
+        "y": 478,
+        "width": 204,
+        "height": 236
+      },
+      "pixels": 13156
+    },
+    {
+      "id": "branch-6-foliage",
+      "joint": "leaf6",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 954,
+        "y": 344,
+        "width": 224,
+        "height": 262
+      },
+      "pixels": 25521
+    },
+    {
+      "id": "branch-7-foliage",
+      "joint": "leaf7",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 38,
+        "y": 667,
+        "width": 399,
+        "height": 315
+      },
+      "pixels": 31484
+    },
+    {
+      "id": "branch-7-wood",
+      "joint": "branch7Base",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 398,
+        "y": 688,
+        "width": 141,
+        "height": 87
+      },
+      "pixels": 3632
+    },
+    {
+      "id": "branch-8-foliage",
+      "joint": "leaf8",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 771,
+        "y": 658,
+        "width": 452,
+        "height": 310
+      },
+      "pixels": 51299
+    },
+    {
+      "id": "branch-8-wood",
+      "joint": "branch8Base",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 645,
+        "y": 727,
+        "width": 176,
+        "height": 178
+      },
+      "pixels": 7425
+    },
+    {
+      "id": "branch-9-foliage",
+      "joint": "leaf9",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 977,
+        "y": 932,
+        "width": 236,
+        "height": 164
+      },
+      "pixels": 18569
+    },
+    {
+      "id": "branch-9-wood",
+      "joint": "branch9Base",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 794,
+        "y": 895,
+        "width": 185,
+        "height": 76
+      },
+      "pixels": 1091
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 475,
+        "y": 736,
+        "width": 295,
+        "height": 256
+      },
+      "pixels": 8476
+    },
+    {
+      "id": "trunk",
+      "joint": "trunk",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 336,
+        "y": 415,
+        "width": 802,
+        "height": 623
+      },
+      "pixels": 63557
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "erodedPixels": 30431,
+    "despilledPixels": 5053,
+    "unresolvedEdgePixels": 684
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "88f6f2a92524207a494e21564e54fa3916e15ca3aa1ff7885327a008bbf34732",
+  "masterUnchanged": true,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

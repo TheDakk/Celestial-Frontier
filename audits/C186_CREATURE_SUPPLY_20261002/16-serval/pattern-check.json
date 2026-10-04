@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Serval",
+  "masterSha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735",
+  "required": [
+    "short tail and boldly spotted and barred coat"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "short tail and boldly spotted and barred coat",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: four long leg shafts and separate paw ends, two very large upright ears, small head, golden coat with black spots, neck/back stripes and leg bars. Far proximal roots remain occluded. The tail reads as a very short curled stub, requiring a species-proportion review; very large ear proportions are also held. No apparent extra limb. Painting is retained without authoring or motion acceptance."
+    }
+  ]
+}

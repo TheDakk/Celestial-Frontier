@@ -1,0 +1,42 @@
+{
+  "schema": "cf.arena-intake/v1",
+  "recipe": {
+    "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-recipe.json",
+    "sha256": "15103e097c989e2c97557b82fac9f5681d4fc2ef7c8497812f73935c59856622"
+  },
+  "layers": [
+    {
+      "role": "far",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+        "sha256": "b1c92a315a4377f54c6adc989cf74e456a33e2ad9d7e56314bcbdfa3cf4a1f56"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+        "sha256": "b1c92a315a4377f54c6adc989cf74e456a33e2ad9d7e56314bcbdfa3cf4a1f56"
+      }
+    },
+    {
+      "role": "mid",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-mid.png",
+        "sha256": "08fe51e0c52717928b7f667dcbb42e39906a5336e56546035f48682240acf189"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-mid.png",
+        "sha256": "8fdfe56558971dbdbab565c6ff5b3546653e70e989dff2101ea2619f96fb814a"
+      }
+    },
+    {
+      "role": "near",
+      "source": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-near.png",
+        "sha256": "1e5961612a6b04388bd584521ea7cc49012bffc9a0f40b0dcdaa7c405f0e4956"
+      },
+      "runtime": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-near.png",
+        "sha256": "57d3737dcbce4b246d3377d8b92bf5052ca731346b882b99b983c8dda26214f6"
+      }
+    }
+  ]
+}

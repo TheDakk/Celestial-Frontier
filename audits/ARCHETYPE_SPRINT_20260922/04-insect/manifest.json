@@ -1,0 +1,94 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1739,
+      "sha256": "95b94d1e977a9fa7e2eb1a40916b090729a0df9485a913fe18f77edad5d23ddf"
+    },
+    {
+      "path": "authoring.json",
+      "bytes": 654,
+      "sha256": "8016d42772bdc91cd3f404a20e39d32c3de7009b0c245321635ea7ec62fe7f77"
+    },
+    {
+      "path": "declaration.txt",
+      "bytes": 527,
+      "sha256": "1370544588cae0f83fdd261c8155d0783067298c6424af0bb03c885acb134206"
+    },
+    {
+      "path": "execution.json",
+      "bytes": 1704,
+      "sha256": "09f965a0824d420aadff8bf9333d076a5dd742346298cbf9c373fd5e860bb3a2"
+    },
+    {
+      "path": "finish.log",
+      "bytes": 1269,
+      "sha256": "cd15e9f47a7505dba1b548af8a92db7746b236d086494619aa4e08eaa2094ca5"
+    },
+    {
+      "path": "fit-01/intake-provenance.json",
+      "bytes": 3522,
+      "sha256": "b68d31a48fa6eeb2c6d82fe81d1705b0ac8bc5b7604f74d8d882e6d853bf81e5"
+    },
+    {
+      "path": "fit-01/refusal.json",
+      "bytes": 1079,
+      "sha256": "f02901d35eb9f084c53eb7ec712d082b530c93213c6d4c5c404a091db28ba803"
+    },
+    {
+      "path": "generation-receipt.json",
+      "bytes": 832,
+      "sha256": "aa0dbecb419f69ce73894af716ef2695f9a524b49073badbbc1372c59616e0b1"
+    },
+    {
+      "path": "intake.log",
+      "bytes": 1198,
+      "sha256": "c5f5bd255f0917871c4f5e2d19af612e7f13197f5a08ad689961859306bc3d55"
+    },
+    {
+      "path": "master.png",
+      "bytes": 1085617,
+      "sha256": "c3c2c4c68322a840df76f3cadd2796f69b8c1ac3e694001970933569eedfcf0d"
+    },
+    {
+      "path": "metadata-note.md",
+      "bytes": 393,
+      "sha256": "2209aed2548ed36fb5b8bda11e2db9248bad7f093e4335b0ce8897a11778e9d6"
+    },
+    {
+      "path": "presence.json",
+      "bytes": 141,
+      "sha256": "c016bbf598c74c03f36d0ea8da4171415a43f51cdeb5f1e19429b02ba8d41f66"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 7983,
+      "sha256": "070cfd3966ca36551820786f4b9e6bce6b43393ce2784e91b4e11a5b5b2f0996"
+    },
+    {
+      "path": "request.json",
+      "bytes": 641,
+      "sha256": "6db5ee70e1fd01faaa62b7aa4bc6a554455d4a1f0bb3afebe48b992555e05972"
+    },
+    {
+      "path": "result.json",
+      "bytes": 1325,
+      "sha256": "47d9a5b6789e846dbd3f5bb7ff9d208c6ad26b434c37c953207725bd8e47d40d"
+    },
+    {
+      "path": "review-sheet.png",
+      "bytes": 817160,
+      "sha256": "4f82cd4c81faa502566d8c3b8366c380b8c20ffd3947c7151f909cf0dc10cfad"
+    },
+    {
+      "path": "sheet.log",
+      "bytes": 111,
+      "sha256": "e196171d75de8e8ead5c7191bef797b58834718fe7a585c6c2f67996c55d7108"
+    },
+    {
+      "path": "subject-source.json",
+      "bytes": 7400,
+      "sha256": "3fe4fafdce0c1fd38584b099be810651b457136eeabaee1aee6117538e765694"
+    }
+  ]
+}

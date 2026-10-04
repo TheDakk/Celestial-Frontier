@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"rig refusals in play: {\"left\":0,\"right\":70} {\"left\":null,\"right\":\"Contact: joint limit foreFarPaw faint@1559.999998999999: 96.00208445608911\"}","refusals":{"left":0,"right":70},"attacks":{"left":"tail (tail3)","right":"bite (jaw)"},"capture":{"frames":841,"cpuP95Ms":4.399999976158142,"frameDeltaP95Ms":16.700000000000728}}

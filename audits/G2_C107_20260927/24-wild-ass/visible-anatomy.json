@@ -1,0 +1,176 @@
+{
+  "id": "24-wild-ass",
+  "name": "Wild Ass",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "d03e96b63e1a5ad90a4032be5f0b09fd00c4c924b8a844493397348c0efd7916",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 14486,
+    "coreRadius": 17,
+    "bodyBox": {
+      "x0": 139,
+      "y0": 162,
+      "x1": 270,
+      "y1": 224
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2085,
+        "pixels": 3021,
+        "box": {
+          "x0": 246,
+          "y0": 109,
+          "x1": 321,
+          "y1": 198
+        },
+        "attach": {
+          "x": 265.6,
+          "y": 170.9,
+          "relX": 0.97,
+          "relY": 0.14
+        },
+        "dir": {
+          "x": 0.88,
+          "y": -0.47
+        },
+        "class": "front",
+        "length": 83.1
+      },
+      {
+        "k": 1,
+        "frac": 0.0398,
+        "pixels": 577,
+        "box": {
+          "x0": 103,
+          "y0": 173,
+          "x1": 138,
+          "y1": 242
+        },
+        "attach": {
+          "x": 138,
+          "y": 188.5,
+          "relX": -0.01,
+          "relY": 0.43
+        },
+        "dir": {
+          "x": -0.58,
+          "y": 0.81
+        },
+        "class": "limb-down",
+        "length": 63.9
+      },
+      {
+        "k": 2,
+        "frac": 0.058,
+        "pixels": 840,
+        "box": {
+          "x0": 114,
+          "y0": 220,
+          "x1": 155,
+          "y1": 294
+        },
+        "attach": {
+          "x": 144.7,
+          "y": 224.3,
+          "relX": 0.04,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.48,
+          "y": 0.88
+        },
+        "class": "limb-down",
+        "length": 76.1
+      },
+      {
+        "k": 3,
+        "frac": 0.112,
+        "pixels": 1623,
+        "box": {
+          "x0": 212,
+          "y0": 222,
+          "x1": 292,
+          "y1": 294
+        },
+        "attach": {
+          "x": 242,
+          "y": 222,
+          "relX": 0.79,
+          "relY": 0.97
+        },
+        "dir": {
+          "x": 0.12,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 87.7
+      },
+      {
+        "k": 4,
+        "frac": 0.0559,
+        "pixels": 810,
+        "box": {
+          "x0": 154,
+          "y0": 225,
+          "x1": 188,
+          "y1": 293
+        },
+        "attach": {
+          "x": 166.5,
+          "y": 225,
+          "relX": 0.21,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.05,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 71.3
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 115,
+        "x1": 128,
+        "cx": 121
+      },
+      {
+        "x0": 170,
+        "x1": 188,
+        "cx": 180.3
+      },
+      {
+        "x0": 214,
+        "x1": 227,
+        "cx": 219.9
+      },
+      {
+        "x0": 272,
+        "x1": 292,
+        "cx": 282.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

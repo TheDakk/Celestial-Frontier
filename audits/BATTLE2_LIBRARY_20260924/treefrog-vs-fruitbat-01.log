@@ -1,0 +1,1 @@
+{"status":"DIAGNOSTIC_PASS","refusals":{"left":0,"right":0},"attacks":{"left":"kick (hindNearPaw)","right":"claw (legNearFoot)"},"capture":{"frames":602,"cpuP95Ms":1.7999999523162842,"frameDeltaP95Ms":16.700000000000728}}

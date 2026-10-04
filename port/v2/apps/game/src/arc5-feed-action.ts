@@ -23,6 +23,7 @@ import {
 } from '@cf/domain-acquisition/feed-internal';
 import {
   committedArc5OwnershipState,
+  companionLegacyCodexIdV1,
   prepareArc5OwnershipV2Successor,
   type Arc5OwnershipMigrationEvidenceV2,
   type Arc5OwnershipV2SuccessorProtectionReason,
@@ -43,6 +44,8 @@ export interface Arc5FeedActionInputV1 {
   readonly creatureId: CreatureInstanceId;
   readonly foodLotId: SpecimenLotId;
   readonly codecNow: number;
+  /** D13: the current active-play clock, so a finished Rest no longer blocks the meal (absent = the stored assignment). */
+  readonly activePlayMs?: number;
 }
 
 export type Arc5FeedActionRefusalDetailV1 =
@@ -84,6 +87,7 @@ interface CapturedArc5FeedActionInputV1 {
   readonly creatureId: CreatureInstanceId;
   readonly foodLotId: SpecimenLotId;
   readonly codecNow: number;
+  readonly activePlayMs: number | undefined;
 }
 
 const INPUT_FIELDS = Object.freeze([
@@ -93,7 +97,8 @@ const FEED_STATE_CLONE_LIMIT = 1_500_000;
 
 interface FeedCloneBudget { count: number; }
 
-function cloneFeedPlainData(
+/** Detach caller state into exact plain data (shared with the D13 Rest action). */
+export function cloneFeedPlainData(
   value: unknown,
   ancestors: Set<object>,
   budget: FeedCloneBudget,
@@ -158,7 +163,9 @@ function capturedInput(input: Arc5FeedActionInputV1): CapturedArc5FeedActionInpu
     if (prototype !== Object.prototype && prototype !== null) return null;
     const keys = Reflect.ownKeys(input);
     const names = keys.filter((key): key is string => typeof key === 'string').sort();
-    const expected = [...INPUT_FIELDS].sort();
+    /* D13: `activePlayMs` is the one optional field (a finished Rest no longer blocks a meal) */
+    const withClock = names.includes('activePlayMs');
+    const expected = [...INPUT_FIELDS, ...(withClock ? ['activePlayMs'] : [])].sort();
     if (keys.length !== expected.length
       || names.some((name, index) => name !== expected[index])) return null;
     const values: Record<string, unknown> = Object.create(null) as Record<string, unknown>;
@@ -174,6 +181,12 @@ function capturedInput(input: Arc5FeedActionInputV1): CapturedArc5FeedActionInpu
     if (!isOwnershipStateV2(values.ownershipV2)) return null;
     if (!values.state || typeof values.state !== 'object' || Array.isArray(values.state)) return null;
     if (typeof values.codecNow !== 'number' || !Number.isFinite(values.codecNow)) return null;
+    let activePlayMs: number | undefined;
+    if (withClock) {
+      const clock = Object.getOwnPropertyDescriptor(input, 'activePlayMs');
+      if (!clock || !('value' in clock) || clock.enumerable !== true || !Number.isSafeInteger(clock.value) || clock.value < 0) return null;
+      activePlayMs = clock.value as number;
+    }
     return Object.freeze({
       commit: commit.value.bind(runtime) as F4RuntimeAuthority['commitAction'],
       ownershipV2: values.ownershipV2,
@@ -186,6 +199,7 @@ function capturedInput(input: Arc5FeedActionInputV1): CapturedArc5FeedActionInpu
       creatureId: values.creatureId as CreatureInstanceId,
       foodLotId: values.foodLotId as SpecimenLotId,
       codecNow: values.codecNow,
+      activePlayMs,
     });
   } catch {
     return null;
@@ -241,7 +255,7 @@ export async function commitArc5FeedActionV1(
   const preflight = preflightArc5FeedV1(captured.ownershipV2, {
     creatureId: captured.creatureId,
     foodLotId: captured.foodLotId,
-  });
+  }, captured.activePlayMs);
   if (preflight.kind !== 'ready') {
     return Object.freeze({
       kind: 'refused',
@@ -265,8 +279,8 @@ export async function commitArc5FeedActionV1(
       operation: ARC5_FEED_ACTION_KIND_V1,
       receiptKind: ARC5_FEED_RECEIPT_KIND_V1,
       codecNow: captured.codecNow,
-      derive: ({ receiptOrdinal, draft, extensions }) => {
-        const settlement = settleArc5FeedV1(preflight.preflight, receiptOrdinal);
+      derive: ({ receiptOrdinal, draft, extensions, activePlayMs }) => {
+        const settlement = settleArc5FeedV1(preflight.preflight, receiptOrdinal, activePlayMs);
         const prepared = prepareArc5OwnershipV2Successor({
           baseExtensions: extensions,
           parent: captured.ownershipV2,
@@ -278,6 +292,12 @@ export async function commitArc5FeedActionV1(
           throw new Error(`Arc 5 feed ownership carrier refused ${prepared.reason}`);
         }
         selected = Object.freeze({ settlement, prepared });
+        // D13 care XP (first meal, a newly tasted flavour) also lands on the companion's v4 Compendium mirror row's `g.xp`, exactly as the
+        // friendly duel's does — the row the Compendium shows and the ownership row never disagree
+        if ((settlement.creatureAfter.xp ?? 0) !== (settlement.creatureBefore.xp ?? 0)) {
+          const id = companionLegacyCodexIdV1(captured.ownershipV2, settlement.creatureBefore), xp = settlement.creatureAfter.xp ?? 0;
+          draft.codex = draft.codex.map(([rowId, entry]) => (rowId === id ? [rowId, { ...entry, g: { ...entry.g, xp } }] : [rowId, entry]));
+        }
         return Object.freeze({
           state: draft,
           extensionWrites: prepared.writes,

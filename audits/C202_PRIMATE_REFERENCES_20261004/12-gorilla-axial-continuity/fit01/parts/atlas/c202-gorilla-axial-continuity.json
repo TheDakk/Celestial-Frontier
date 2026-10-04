@@ -1,0 +1,397 @@
+{
+  "frames": {
+    "body.png": {
+      "frame": {
+        "h": 653,
+        "w": 489,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 653,
+        "w": 489
+      },
+      "spriteSourceSize": {
+        "h": 653,
+        "w": 489,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-foot.png": {
+      "frame": {
+        "h": 86,
+        "w": 185,
+        "x": 323,
+        "y": 1633
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 86,
+        "w": 185
+      },
+      "spriteSourceSize": {
+        "h": 86,
+        "w": 185,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-forearm.png": {
+      "frame": {
+        "h": 219,
+        "w": 184,
+        "x": 230,
+        "y": 979
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 219,
+        "w": 184
+      },
+      "spriteSourceSize": {
+        "h": 219,
+        "w": 184,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-hand.png": {
+      "frame": {
+        "h": 119,
+        "w": 94,
+        "x": 323,
+        "y": 1504
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 119,
+        "w": 94
+      },
+      "spriteSourceSize": {
+        "h": 119,
+        "w": 94,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-shin.png": {
+      "frame": {
+        "h": 206,
+        "w": 193,
+        "x": 209,
+        "y": 1744
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 206,
+        "w": 193
+      },
+      "spriteSourceSize": {
+        "h": 206,
+        "w": 193,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-thigh.png": {
+      "frame": {
+        "h": 78,
+        "w": 111,
+        "x": 209,
+        "y": 1960
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 78,
+        "w": 111
+      },
+      "spriteSourceSize": {
+        "h": 78,
+        "w": 111,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-upper-arm.png": {
+      "frame": {
+        "h": 191,
+        "w": 89,
+        "x": 224,
+        "y": 1504
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 191,
+        "w": 89
+      },
+      "spriteSourceSize": {
+        "h": 191,
+        "w": 89,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 223,
+        "w": 209,
+        "x": 5,
+        "y": 1511
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 223,
+        "w": 209
+      },
+      "spriteSourceSize": {
+        "h": 223,
+        "w": 209,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "jaw.png": {
+      "frame": {
+        "h": 84,
+        "w": 107,
+        "x": 412,
+        "y": 1729
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 84,
+        "w": 107
+      },
+      "spriteSourceSize": {
+        "h": 84,
+        "w": 107,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-foot.png": {
+      "frame": {
+        "h": 75,
+        "w": 193,
+        "x": 450,
+        "y": 1960
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 75,
+        "w": 193
+      },
+      "spriteSourceSize": {
+        "h": 75,
+        "w": 193,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-forearm.png": {
+      "frame": {
+        "h": 283,
+        "w": 215,
+        "x": 5,
+        "y": 979
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 283,
+        "w": 215
+      },
+      "spriteSourceSize": {
+        "h": 283,
+        "w": 215,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-hand.png": {
+      "frame": {
+        "h": 76,
+        "w": 110,
+        "x": 330,
+        "y": 1960
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 76,
+        "w": 110
+      },
+      "spriteSourceSize": {
+        "h": 76,
+        "w": 110,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-shin.png": {
+      "frame": {
+        "h": 222,
+        "w": 149,
+        "x": 201,
+        "y": 1272
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 222,
+        "w": 149
+      },
+      "spriteSourceSize": {
+        "h": 222,
+        "w": 149,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-thigh.png": {
+      "frame": {
+        "h": 216,
+        "w": 194,
+        "x": 5,
+        "y": 1744
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 216,
+        "w": 194
+      },
+      "spriteSourceSize": {
+        "h": 216,
+        "w": 194,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-upper-arm.png": {
+      "frame": {
+        "h": 301,
+        "w": 235,
+        "x": 5,
+        "y": 668
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 301,
+        "w": 235
+      },
+      "spriteSourceSize": {
+        "h": 301,
+        "w": 235,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "neck.png": {
+      "frame": {
+        "h": 229,
+        "w": 186,
+        "x": 5,
+        "y": 1272
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 229,
+        "w": 186
+      },
+      "spriteSourceSize": {
+        "h": 229,
+        "w": 186,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c202-gorilla-axial-continuity.png",
+    "scale": "1",
+    "size": {
+      "h": 2043,
+      "w": 648
+    }
+  }
+}

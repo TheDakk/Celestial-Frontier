@@ -1,0 +1,25 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong family: length/thickness 1 < 8",
+  "facing: the right (head) end is not thicker than the left (tail) end (1254 vs 1254)",
+  "head end blunt: snout ratio 1 > 0.72 (no tapering snout; a cut-off head?)",
+  "tail not tapered: tip 1254px vs median 1254px (truncated tail?)"
+ ],
+ "author": "serpent-strips/v1",
+ "target": {
+  "snoutRatio": 1,
+  "mainShare": 1,
+  "dominantShare": 1,
+  "gapFrac": 0,
+  "elongation": 1,
+  "headEnd": 1254,
+  "tailEnd": 1254,
+  "tailTip": 1254,
+  "median": 1254,
+  "xmin": 0,
+  "xmax": 1253,
+  "ext": 1254,
+  "paint": 1572516
+ }
+}

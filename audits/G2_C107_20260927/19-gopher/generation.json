@@ -1,0 +1,13 @@
+{
+  "id": "19-gopher",
+  "name": "Gopher",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f374bed2-62b0-4e65-b1a1-6ba565b54986.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "54ead4d0484c2e8ccc390e85b325c55c63c857732842c50da5a050f24aa8d295",
+  "bytes": 1208167,
+  "promptSha256": "441452d4020997bb462227e727746c0278720fc391d71f43b33e5f7d87a0f2b6",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Water Snake",
+  "masterSha256": "36c3da89487cbd84451c47b743b706c1ab5d44314dcb5cfe72470a27eb7517b3",
+  "required": [
+    "keeled banded body"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "keeled banded body",
+      "status": "PRESENT",
+      "observed": "Repeated dark cross-bands wrap the tan keeled body along the shallow S-curve."
+    }
+  ]
+}

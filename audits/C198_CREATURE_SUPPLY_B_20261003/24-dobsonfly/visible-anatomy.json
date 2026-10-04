@@ -1,0 +1,143 @@
+{
+  "id": "24-dobsonfly",
+  "name": "Dobsonfly",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "9d30ddf1a2499a92ea81605c7b022086f985406fedfe7094d4c6e2b2197347d2",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 14555,
+    "coreRadius": 20,
+    "bodyBox": {
+      "x0": 71,
+      "y0": 153,
+      "x1": 220,
+      "y1": 226
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.3239,
+        "pixels": 4714,
+        "box": {
+          "x0": 123,
+          "y0": 133,
+          "x1": 380,
+          "y1": 287
+        },
+        "attach": {
+          "x": 203.1,
+          "y": 209.8,
+          "relX": 0.89,
+          "relY": 0.78
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.1
+        },
+        "class": "front",
+        "length": 193
+      },
+      {
+        "k": 1,
+        "frac": 0.0076,
+        "pixels": 111,
+        "box": {
+          "x0": 100,
+          "y0": 150,
+          "x1": 141,
+          "y1": 155
+        },
+        "attach": {
+          "x": 121.7,
+          "y": 152.2,
+          "relX": 0.34,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.99,
+          "y": -0.13
+        },
+        "class": "rear",
+        "length": 21.8
+      },
+      {
+        "k": 2,
+        "frac": 0.0409,
+        "pixels": 595,
+        "box": {
+          "x0": 50,
+          "y0": 165,
+          "x1": 70,
+          "y1": 204
+        },
+        "attach": {
+          "x": 70,
+          "y": 184.5,
+          "relX": -0.01,
+          "relY": 0.43
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.12
+        },
+        "class": "rear",
+        "length": 27.9
+      },
+      {
+        "k": 3,
+        "frac": 0.0273,
+        "pixels": 397,
+        "box": {
+          "x0": 103,
+          "y0": 209,
+          "x1": 158,
+          "y1": 232
+        },
+        "attach": {
+          "x": 133.6,
+          "y": 223.9,
+          "relX": 0.42,
+          "relY": 0.97
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.01
+        },
+        "class": "rear",
+        "length": 34
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 3
+    },
+    "ground": [
+      {
+        "x0": 180,
+        "x1": 185,
+        "cx": 182.8
+      },
+      {
+        "x0": 243,
+        "x1": 250,
+        "cx": 246.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

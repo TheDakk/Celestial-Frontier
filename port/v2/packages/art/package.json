@@ -17,7 +17,9 @@
     "./canvas-treatment": "./src/canvas-treatment.ts",
     "./surface-polish": "./src/surface-polish.ts",
     "./biome-vista-ecology": "./src/biome-vista-ecology.ts",
-    "./biome-vista": "./src/biome-vista.ts"
+    "./biome-vista": "./src/biome-vista.ts",
+    "./earth-resident-layer": "./src/earth-resident-layer.ts",
+    "./earth-resident-plan": "./src/earth-resident-plan.ts"
   },
   "dependencies": {
     "@cf/domain-biome-profile": "*",

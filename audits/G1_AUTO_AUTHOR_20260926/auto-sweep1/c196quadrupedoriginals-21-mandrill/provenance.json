@@ -1,0 +1,153 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c196quadrupedoriginals-21-mandrill",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "e2087e3743058a783937edab9dcfaba4c21e1b3e47b8439cbe9e510c38b162ea",
+ "subjectSourceSha256": "ed87b835287887d171d03a53396b9e1ed61f74bac725ca8552ba0a896d1c731e",
+ "identity": {
+  "name": "Mandrill",
+  "family": "primate",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mandrill\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"576557470\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "seed": 576557470,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "chimpanzee",
+  "authoringSha256": "3618a00115f3decd733fcd9e3380b184914098c12b90447e893c944e6cc7dbd9",
+  "masterSha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
+ },
+ "habitat": {
+  "profileId": "primate",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "d77f7bd5e1f75556cf1b6bc0349a2762d94011e87ddf7513239b65619b9fe881",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group primate (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0184,
+     "class": "top",
+     "attach": {
+      "x": 266.5,
+      "y": 110,
+      "relX": 0.78,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0064,
+     "class": "top",
+     "attach": {
+      "x": 134,
+      "y": 164.5,
+      "relX": 0.07,
+      "relY": 0.37
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.014,
+     "class": "front",
+     "attach": {
+      "x": 308.5,
+      "y": 181,
+      "relX": 1,
+      "relY": 0.48
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0083,
+     "class": "other",
+     "attach": {
+      "x": 120,
+      "y": 208,
+      "relX": -0.01,
+      "relY": 0.67
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1497,
+     "class": "limb-down",
+     "attach": {
+      "x": 256.2,
+      "y": 238.7,
+      "relX": 0.72,
+      "relY": 0.88
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0721,
+     "class": "limb-down",
+     "attach": {
+      "x": 178.8,
+      "y": 254.3,
+      "relX": 0.31,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0569,
+     "class": "limb-down",
+     "attach": {
+      "x": 129.2,
+      "y": 254.3,
+      "relX": 0.04,
+      "relY": 0.99
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "other": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "chimpanzee",
+   "byClass": {
+    "top": 1,
+    "other": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "front": 1,
+    "other": 1,
+    "limb-down": 3
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

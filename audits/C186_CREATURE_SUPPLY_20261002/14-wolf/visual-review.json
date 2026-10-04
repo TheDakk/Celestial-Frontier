@@ -1,0 +1,28 @@
+{
+  "name": "Wolf",
+  "masterSha256": "633d0a24f7b514dbd2413bf649513201cc81cd03892b2abb89b9150642d06e3a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: two erect triangular ears, blocky muzzle, grey-brown coat, narrow deep chest, low bushy tail, four exposed paws. Proximal far roots partly overlap torso and near limbs; fur still obscures exact centres. Feet are in a quiet stance but no contact-compression or gallop improvement is claimed. Prior solver red remains evidence, unaltered by a source painting.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 212,
+      "y0": 270,
+      "x1": 1058,
+      "y1": 922
+    },
+    "margins": {
+      "left": 212,
+      "right": 195,
+      "top": 270,
+      "bottom": 331
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

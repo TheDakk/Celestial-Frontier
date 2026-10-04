@@ -1,0 +1,65 @@
+{
+  "name": "Basking Shark",
+  "family": "fish",
+  "species": {
+    "name": "Basking Shark",
+    "aspect": 5,
+    "headFrac": 0.22,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "cavernous round gaping mouth held open while feeding",
+      "gill slits so long they nearly encircle the head",
+      "pointed conical snout and a large drooping dorsal fin"
+    ]
+  },
+  "genome": {
+    "seed": 3357149816,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 7,
+    "body": 4,
+    "loco": 13,
+    "trait": 5,
+    "size": 1,
+    "diet": 5,
+    "head": 9,
+    "limbs": 1,
+    "skin": 0,
+    "tail": 6,
+    "pattern": 2,
+    "eyes": 0,
+    "behavior": 5,
+    "habitat": 2,
+    "detail": 9,
+    "accent": 14,
+    "temper": 3,
+    "sense": 2,
+    "repro": 0,
+    "life": 5,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Basking Shark"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Basking Shark\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3357149816\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"5\"]]]]",
+  "index": 483,
+  "profile": {
+    "id": "filter-shark",
+    "names": [
+      "Whale Shark",
+      "Basking Shark"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "No predatory bite inferred from shark family."
+  }
+}

@@ -1,0 +1,9 @@
+file://~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs:38
+    if (sizes[c] > maxShare * total) throw Error(`remainder island of ${sizes[c]} px is ${(100 * sizes[c] / total).toFixed(1)}% of the remainder (> ${100 * maxShare}%): structural, not a sliver`);
+                                           ^
+
+Error: remainder island of 1552 px is 15.9% of the remainder (> 5%): structural, not a sliver
+    at placeRemainderIslands (file://~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs:38:44)
+    at file://~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs:60:18
+
+Node.js v26.10.0

@@ -1,0 +1,9 @@
+{
+  "positive": "Exact eight-pixel margin in a 100-square mask",
+  "negative": [
+    "one pixel inside each of four protected margins",
+    "empty paint",
+    "wrong dimensions"
+  ],
+  "status": "PASS"
+}

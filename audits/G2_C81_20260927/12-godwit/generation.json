@@ -1,0 +1,13 @@
+{
+  "id": "12-godwit",
+  "name": "Godwit",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-234f9e2f-5adb-4956-a53c-5831b2b356ea.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0e8cdf09205b50921a596af3b8fbba9a68e39474dc948c98efa8b5f2a2846400",
+  "bytes": 1090960,
+  "promptSha256": "dde64c3360169595bbf7bddfad76bd33fb8feebb8aed03217da7d874d84886c1",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

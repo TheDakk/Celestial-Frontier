@@ -1,0 +1,13 @@
+{
+  "id": "14-springbok",
+  "name": "Springbok",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-39de06ee-088d-41f9-99ba-3ae61d63277e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e6870bf363c0fe0885a5e43acb0ee6e69480ceb42f0766da902e815562278a52",
+  "bytes": 1280706,
+  "promptSha256": "e43150ce785a84f3115c9380cbfa97024c1ffc2a350ff0d59ec39a9d20ada34b",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

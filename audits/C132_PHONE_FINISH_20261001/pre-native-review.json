@@ -1,0 +1,17 @@
+{
+  "schema": "cf.phone-pre-native-review/v1",
+  "status": "FOCUSED_CONTROLS_PASS_NATIVE_PENDING",
+  "nodeTests": 4,
+  "inputOutputMetadata": "All four graphs match named tensor dtype/dimensions; graph ValueInfo inspected without inference",
+  "preparedChanges": [
+    "prepared/client.mjs"
+  ],
+  "rawInputsUnchanged": true,
+  "sourcesPinned": 86,
+  "modelsPinned": 4,
+  "runtimeFilesPinned": 29,
+  "nativeRun": false,
+  "phonePackageBuilt": false,
+  "qualityAccepted": false,
+  "preparedManifestSha256": "0e4dc1049d851ee30436edec60435ca55b1b186e353308c1d3cd89d70e010032"
+}

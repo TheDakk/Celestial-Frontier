@@ -1,0 +1,13 @@
+{
+  "name": "Ladybug",
+  "masterSha256": "27cc44dbc8dd56425fee788b6bbd21d230a339914d2c245c28f6e88aa7c32961",
+  "status": "ABSENT",
+  "method": "Codex inspection of exact original; requested pattern not visible",
+  "features": [
+    {
+      "requirement": "spotted red wing cases split down the middle",
+      "status": "ABSENT",
+      "observed": "Cloud blotches, body bands/zigzag, or red-shell spots absent from the corresponding original; surface texture alone is not pattern proof."
+    }
+  ]
+}

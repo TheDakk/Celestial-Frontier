@@ -1,0 +1,317 @@
+{
+  "schema": "cf.c173-specialized-anatomical-observation/v1",
+  "status": "ANATOMICAL_HOLD",
+  "family": "flyer-membrane",
+  "source": "audits/C173_STANDING_BAT_REPAINT_20261002",
+  "masterSha256": "5130bf9d13facd180b8acf2624b9c070c735e5b1cae3fabfbc20686c9b3b2ea1",
+  "fullSizeInspected": true,
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "observedSourcePoints": {
+    "earNearTip": [
+      835,
+      328
+    ],
+    "earFarTip": [
+      1006,
+      338
+    ],
+    "visibleEye": [
+      954,
+      529
+    ],
+    "muzzle": [
+      1034,
+      556
+    ],
+    "jaw": [
+      1003,
+      589
+    ],
+    "observedNearFrontWrist": [
+      718,
+      792
+    ],
+    "observedNearThumbClawTip": [
+      789,
+      916
+    ],
+    "observedFarFrontWrist": [
+      888,
+      797
+    ],
+    "observedFarThumbClawTip": [
+      965,
+      880
+    ],
+    "observedNearHindSupport": [
+      301,
+      863
+    ],
+    "observedFarHindSupport": [
+      546,
+      841
+    ],
+    "observedNearFoldJunction": [
+      483,
+      580
+    ],
+    "observedNearMembraneCorner": [
+      644,
+      845
+    ]
+  },
+  "visibleRegions": [
+    {
+      "id": "visible-near-folded-membrane",
+      "points": [
+        [
+          482,
+          569
+        ],
+        [
+          555,
+          580
+        ],
+        [
+          628,
+          586
+        ],
+        [
+          689,
+          567
+        ],
+        [
+          717,
+          593
+        ],
+        [
+          699,
+          648
+        ],
+        [
+          696,
+          697
+        ],
+        [
+          715,
+          752
+        ],
+        [
+          734,
+          791
+        ],
+        [
+          698,
+          815
+        ],
+        [
+          648,
+          856
+        ],
+        [
+          610,
+          825
+        ],
+        [
+          560,
+          787
+        ],
+        [
+          507,
+          765
+        ],
+        [
+          471,
+          738
+        ],
+        [
+          466,
+          683
+        ]
+      ]
+    },
+    {
+      "id": "visible-far-front-membrane-patch",
+      "points": [
+        [
+          798,
+          670
+        ],
+        [
+          857,
+          658
+        ],
+        [
+          876,
+          705
+        ],
+        [
+          889,
+          758
+        ],
+        [
+          901,
+          794
+        ],
+        [
+          884,
+          812
+        ],
+        [
+          850,
+          777
+        ],
+        [
+          823,
+          745
+        ],
+        [
+          791,
+          722
+        ],
+        [
+          768,
+          708
+        ]
+      ]
+    },
+    {
+      "id": "near-one-claw-support",
+      "points": [
+        [
+          701,
+          779
+        ],
+        [
+          730,
+          779
+        ],
+        [
+          743,
+          817
+        ],
+        [
+          744,
+          852
+        ],
+        [
+          754,
+          870
+        ],
+        [
+          781,
+          878
+        ],
+        [
+          792,
+          895
+        ],
+        [
+          796,
+          920
+        ],
+        [
+          783,
+          921
+        ],
+        [
+          775,
+          902
+        ],
+        [
+          750,
+          894
+        ],
+        [
+          730,
+          883
+        ],
+        [
+          719,
+          865
+        ],
+        [
+          715,
+          831
+        ]
+      ]
+    },
+    {
+      "id": "far-one-claw-support",
+      "points": [
+        [
+          875,
+          783
+        ],
+        [
+          898,
+          789
+        ],
+        [
+          902,
+          822
+        ],
+        [
+          917,
+          842
+        ],
+        [
+          947,
+          847
+        ],
+        [
+          963,
+          857
+        ],
+        [
+          973,
+          879
+        ],
+        [
+          961,
+          885
+        ],
+        [
+          952,
+          869
+        ],
+        [
+          930,
+          866
+        ],
+        [
+          902,
+          856
+        ],
+        [
+          888,
+          837
+        ]
+      ]
+    }
+  ],
+  "unresolved": [
+    "independent far shoulder/root",
+    "complete folded wing digit topology",
+    "unambiguous distal membrane wingtip identities"
+  ],
+  "declaredBiologicallyAbsent": [],
+  "reasons": [
+    "Both front supports now end in one visible claw. This resolves the specific extra-front-claw defect in the prior standing source; hind feet remain multi-toed.",
+    "The far shoulder/root is covered by body and wing projection. Several folded struts and membrane edges are visible, but they do not identify all mandatory elbow/wrist/digit/wingtip landmarks independently.",
+    "The large near folded membrane has a visible lower corner, but that corner cannot be asserted to be the anatomical distal wingtip. No wingtip coordinate is invented to satisfy inventory.",
+    "The available folded declaration applies to template leg groups, not a substitute for missing membrane landmarks. No folded-wing label is misused to bypass the unchanged inventory.",
+    "Projected supports are at unequal heights and the muzzle/ear proportions still need species review. No complete reference, conservation fit or movement acceptance is claimed."
+  ],
+  "completeAuthoring": false,
+  "fitAttempted": false,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "sourceBytesPreserved": true,
+  "regionsAreDiagnosticNotCompiledOwnership": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

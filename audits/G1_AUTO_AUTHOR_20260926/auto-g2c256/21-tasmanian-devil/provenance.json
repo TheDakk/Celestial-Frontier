@@ -1,0 +1,161 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "21-tasmanian-devil",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "7c6b65d32df78613d46cf3be64b4da7c439fdcbff5723be97e00b064ebe9163a",
+ "subjectSourceSha256": "9066430ce97a8fa91d13dca423f3584e9821aab2121da23c60c0f9cd0b5c7671",
+ "identity": {
+  "name": "Tasmanian Devil",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tasmanian Devil\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"4041999108\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "seed": 4041999108,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "05-cat-v2",
+  "authoringSha256": "ec9cf490284487f4628222fe7c84c8a82f76645988ca20daf5f21701ed0888da",
+  "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0058,
+     "class": "top",
+     "attach": {
+      "x": 280.5,
+      "y": 121,
+      "relX": 0.79,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0362,
+     "class": "front",
+     "attach": {
+      "x": 324,
+      "y": 160.5,
+      "relX": 1,
+      "relY": 0.32
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0046,
+     "class": "top",
+     "attach": {
+      "x": 195.5,
+      "y": 138,
+      "relX": 0.37,
+      "relY": 0.13
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0616,
+     "class": "limb-down",
+     "attach": {
+      "x": 121,
+      "y": 201.5,
+      "relX": 0,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0521,
+     "class": "limb-down",
+     "attach": {
+      "x": 136.3,
+      "y": 241.7,
+      "relX": 0.07,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0593,
+     "class": "limb-down",
+     "attach": {
+      "x": 233.5,
+      "y": 234,
+      "relX": 0.55,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0456,
+     "class": "limb-down",
+     "attach": {
+      "x": 269.5,
+      "y": 234,
+      "relX": 0.73,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.037,
+     "class": "limb-down",
+     "attach": {
+      "x": 176,
+      "y": 243,
+      "relX": 0.27,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 5
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "05-cat-v2",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 5
+   },
+   "groundContacts": 3,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

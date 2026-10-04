@@ -1,0 +1,139 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c101-09-dragonfish",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "382fe380a56d8df32cd503eaa6f484104b086ab59311da726b93e4ddc0d2a068",
+ "subjectSourceSha256": "a416faf1f1d6606c65376e8ad537ec65bb79e4d3ce6c01e0040102cf8d1a78d4",
+ "identity": {
+  "name": "Dragonfish",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Dragonfish\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1651135067\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 1651135067,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "reef-shark",
+  "authoringSha256": "695c3b98022fcb2ae7f7292bfb2ac15aad6b4d6f7b35c6b95bb3b474acb81798",
+  "masterSha256": "c3d4a67f11764fb5fe7a9f98d2fa44b85fc63cd40b17b8d9ae934557fa6ebb46"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0213,
+     "class": "top",
+     "attach": {
+      "x": 225,
+      "y": 171,
+      "relX": 0.34,
+      "relY": 0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2358,
+     "class": "rear",
+     "attach": {
+      "x": 161,
+      "y": 202,
+      "relX": -0.01,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0203,
+     "class": "front",
+     "attach": {
+      "x": 351,
+      "y": 185,
+      "relX": 1.01,
+      "relY": 0.29
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0043,
+     "class": "rear",
+     "attach": {
+      "x": 208,
+      "y": 179,
+      "relX": 0.24,
+      "relY": 0.18
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0337,
+     "class": "front",
+     "attach": {
+      "x": 341.5,
+      "y": 215.5,
+      "relX": 0.96,
+      "relY": 0.89
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0179,
+     "class": "limb-down",
+     "attach": {
+      "x": 300.5,
+      "y": 218,
+      "relX": 0.74,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0144,
+     "class": "limb-down",
+     "attach": {
+      "x": 180.5,
+      "y": 222,
+      "relX": 0.1,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 2,
+    "front": 2,
+    "limb-down": 2
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "reef-shark",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

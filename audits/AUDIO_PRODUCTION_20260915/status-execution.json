@@ -1,0 +1,84 @@
+{
+  "schema": "cf.audio-production-status/v1",
+  "sourcePages": 15,
+  "sourceAudioEntries": 1092,
+  "uniqueSourceAudio": 1089,
+  "renderedCandidates": 790,
+  "uniquePcmPerformances": 635,
+  "requirements": 1205,
+  "requirementsWithoutAssignedCandidate": 1031,
+  "classifications": {
+    "missing": 997,
+    "species_recording": 13,
+    "recipe_or_gap": 193,
+    "intentional_silence": 2
+  },
+  "listeningAccepted": 0,
+  "gameplayPromotions": 0,
+  "spendUsd": 0,
+  "sourceGaps": [
+    {
+      "sourceId": "kenney_scifi",
+      "url": "https://kenney.nl/media/pages/assets/sci-fi-sounds/6b296f9ecf-1677589334/kenney_sci-fi-sounds.zip",
+      "reason": "Archive member not extracted (unsupported/non-audio): Audio/desktop.ini",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "nps_yellowstone",
+      "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-nutcracker.htm",
+      "reason": "No official audio source element on detail page",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "nps_yellowstone",
+      "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-mountainlion.htm",
+      "reason": "No official audio source element on detail page",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "nps_natural_sounds",
+      "url": "https://www.nps.gov/subjects/sound/singing-sands.htm",
+      "reason": "No official audio source element on detail page",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "oga_foley",
+      "url": "https://opengameart.org/sites/default/files/Owlish%20Media%20Sound%20Effects.zip",
+      "reason": "Archive member not extracted (unsupported/non-audio): Cloth, Rustle/320137__owlstorm__blanket-movement-1.pkf",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    }
+  ],
+  "limits": [
+    "Candidate passes measure decoding, hashes, format and true peak, not sound design quality.",
+    "Three-take storm and distinct phase design remain open; duplicate treatments are disclosed.",
+    "Original music is a MIDI sketch with editable parts and separately rendered instrument stems, not a listening-approved score.",
+    "Most named Earth animals have no authentic recording in these collections; no fictional family substitute fills those entries.",
+    "Morphology-driven vocal recipes, material/contact mixing, procedural biome composition and loop listening are still incomplete.",
+    "Audition is integrated into local development only; no candidate replaces approved runtime assets.",
+    "Physical speakers/headphones, iPhone/Safari/PWA, offline and listening approval are unverified."
+  ],
+  "loops": 102,
+  "realMusicStems": 21,
+  "nativeReview": "native-review-04/report.json",
+  "sourceDecode": "../../audio-production/reports/source-decode.json",
+  "signing": "signing-latest.json",
+  "checks": {
+    "fullSuite": {
+      "files": 374,
+      "passed": 4361,
+      "skipped": 1
+    },
+    "finalFocused": {
+      "files": 2,
+      "passed": 39
+    },
+    "typecheck": "PASS",
+    "rootValidate": "PASS",
+    "pythonNegativeControls": 4
+  }
+}

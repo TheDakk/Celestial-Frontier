@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Marine Iguana",
+  "family": "quadruped",
+  "masterSha256": "1cbd3fcbfdf9c9270811eee4d6dbcfed6f6d3e031d714865c4a4fec6b7be9c6c",
+  "subjectSha256": "9aac492c87c68fbcfa4bf4766b39c8296e5d041c5fc5400d4eb6b0313c1ec240",
+  "promptSha256": "c428fb5aa5b72b3efd7711e57ecbab7584fb966f60a4ed17fa08cb747438d957",
+  "profileId": "marine-iguana",
+  "profileSha256": "39e86c2321c877e6b3b8a2528f852baaefa177493b44e1a5266b908b247fdd3f",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: blunt salt-crusted grey snout, dark scaly trunk, dorsal crest and long curved claws. Tail ends in an artificial oval paddle-like blade, unlike a naturally flattened continuously tapering iguana tail; HOLD for anatomical tail repair. Only three feet are independently evident; far forelimb remains unresolved. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/23-marine-iguana/visual-review.json",
+    "sha256": "0e45e3b76f6b68f2ca21e53b5f9a98d66c2328ee3c925be6f0b9853c349a9262"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

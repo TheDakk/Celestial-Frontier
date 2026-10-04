@@ -1,0 +1,177 @@
+{
+  "id": "29-cave-cricket",
+  "name": "Cave Cricket",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "ea2369cf78cb188ab0b5db152d20a553cbe4d1c9cb07cf6d1d2daacb3912b636",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 26748,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 9,
+      "y0": 142,
+      "x1": 414,
+      "y1": 333
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1844,
+        "pixels": 4933,
+        "box": {
+          "x0": 145,
+          "y0": 35,
+          "x1": 397,
+          "y1": 338
+        },
+        "attach": {
+          "x": 265.1,
+          "y": 234.9,
+          "relX": 0.63,
+          "relY": 0.49
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.08
+        },
+        "class": "front",
+        "length": 239.5
+      },
+      {
+        "k": 1,
+        "frac": 0.2553,
+        "pixels": 6830,
+        "box": {
+          "x0": 22,
+          "y0": 101,
+          "x1": 180,
+          "y1": 329
+        },
+        "attach": {
+          "x": 110.6,
+          "y": 233.1,
+          "relX": 0.25,
+          "relY": 0.48
+        },
+        "dir": {
+          "x": -0.47,
+          "y": -0.89
+        },
+        "class": "top",
+        "length": 159.1
+      },
+      {
+        "k": 2,
+        "frac": 0.0185,
+        "pixels": 494,
+        "box": {
+          "x0": 204,
+          "y0": 157,
+          "x1": 246,
+          "y1": 173
+        },
+        "attach": {
+          "x": 225,
+          "y": 173,
+          "relX": 0.53,
+          "relY": 0.16
+        },
+        "dir": {
+          "x": -0.11,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 26.4
+      },
+      {
+        "k": 3,
+        "frac": 0.0117,
+        "pixels": 313,
+        "box": {
+          "x0": 182,
+          "y0": 272,
+          "x1": 211,
+          "y1": 310
+        },
+        "attach": {
+          "x": 192.5,
+          "y": 272,
+          "relX": 0.45,
+          "relY": 0.68
+        },
+        "dir": {
+          "x": -0.05,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 42.3
+      },
+      {
+        "k": 4,
+        "frac": 0.0234,
+        "pixels": 625,
+        "box": {
+          "x0": 120,
+          "y0": 276,
+          "x1": 172,
+          "y1": 338
+        },
+        "attach": {
+          "x": 168,
+          "y": 276,
+          "relX": 0.39,
+          "relY": 0.7
+        },
+        "dir": {
+          "x": -0.47,
+          "y": 0.88
+        },
+        "class": "limb-down",
+        "length": 78.4
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "top": 2,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 10,
+        "x1": 46,
+        "cx": 28.1
+      },
+      {
+        "x0": 120,
+        "x1": 152,
+        "cx": 136.7
+      },
+      {
+        "x0": 286,
+        "x1": 318,
+        "cx": 299.9
+      },
+      {
+        "x0": 338,
+        "x1": 350,
+        "cx": 343.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

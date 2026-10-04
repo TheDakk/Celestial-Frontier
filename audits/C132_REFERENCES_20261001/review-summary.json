@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Gazelle",
+    "pattern": "PASS",
+    "framing": "PASS_FRAMING_ONLY",
+    "admission": "CANDIDATE_UNMEASURED"
+  },
+  {
+    "name": "Gaur",
+    "pattern": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY",
+    "admission": "CANDIDATE_UNMEASURED"
+  },
+  {
+    "name": "Dog",
+    "pattern": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY",
+    "admission": "CANDIDATE_UNMEASURED"
+  },
+  {
+    "name": "Cat",
+    "pattern": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY",
+    "admission": "CANDIDATE_UNMEASURED"
+  }
+]

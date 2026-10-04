@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.17766756834321837,"gap":0.0000855243851108504,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.09589098917585792,"gap":0.00006838953933999465,"exactRest":true,"firstRefusal":null}
+{"id":"approach:crawl","status":"PASS","samples":121,"drift":0.1131295493310511,"gap":0.00008552438503046166,"exactRest":true,"firstRefusal":null}
+{"id":"approach:flight","status":"RED","samples":20,"drift":0,"gap":0.00006687053050424751,"exactRest":true,"firstRefusal":{"ms":70,"sampleNumber":21,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 8"}}
+{"id":"melee:mandible","status":"PASS","samples":121,"drift":0.09501483934662665,"gap":0.00007610624388511248,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"RED","samples":70,"drift":0.13567143010140434,"gap":0.00007610624395413388,"exactRest":true,"firstRefusal":{"ms":355.8333333333333,"sampleNumber":71,"error":"Error: Contact: cast@355.8333333333333 exceeds scale compression bound"}}
+{"id":"hit","status":"RED","samples":93,"drift":0.11959420419675129,"gap":0.00007610624388511248,"exactRest":true,"firstRefusal":{"ms":348.75,"sampleNumber":94,"error":"Error: Contact: hit@348.75 exceeds scale compression bound"}}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00008552438503046166,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.011028911962095114,"gap":0.0000761062439754493,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.07327295679175166,"gap":0.00007610624388511248,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"RED","samples":24,"drift":0.22874997730148772,"gap":0.00007409277888627299,"exactRest":true,"firstRefusal":{"ms":128,"sampleNumber":25,"error":"Error: Contact: tame@128 exceeds scale compression bound"}}
+{"id":"feed","status":"PASS","samples":121,"drift":0.09501483934662665,"gap":0.00007610624388511248,"exactRest":true,"firstRefusal":null}
+{"id":"melee:body","status":"PASS","samples":121,"drift":0.0968425714157131,"gap":0.00008552438495007293,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

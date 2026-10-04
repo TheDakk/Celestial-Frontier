@@ -1,0 +1,28 @@
+{
+  "name": "Axolotl",
+  "masterSha256": "d29c7652d97db8efaa9e555b35be7b04f89543d4724ecd2d5abdea1875137d5e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: four separate limbs, broad gilled head, spotted pale skin and fin-edged tail. Tail is short and broadly paddle-like relative to the body; species proportion hold. Near hind digits do not clearly establish the requested five, and the far gill stalk count is occluded. Pink skin/gill edges require conservative key treatment.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 257,
+      "y0": 464,
+      "x1": 996,
+      "y1": 791
+    },
+    "margins": {
+      "left": 257,
+      "right": 257,
+      "top": 464,
+      "bottom": 462
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

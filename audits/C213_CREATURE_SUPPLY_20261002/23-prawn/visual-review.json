@@ -1,0 +1,28 @@
+{
+  "name": "Prawn",
+  "masterSha256": "69bb94310653a7500e21d784cbe6f0dcd4ac6a5fda4424c9e0f76d2a2043dd6b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: transparent segmented carapace/abdomen, toothed rostrum, two stalked eyes, very long antennae, shorter antennules, attached feathery swimmerets and complete tail fan are visible. Multiple walking-leg chains are separated, but far proximal roots overlap near the thorax; all ten cannot yet be independently traced. One antenna approaches the right margin. Real swimmerets/head appendages remain intact, not deleted to fit the template.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 112,
+      "y0": 251,
+      "x1": 1174,
+      "y1": 935
+    },
+    "margins": {
+      "left": 112,
+      "right": 79,
+      "top": 251,
+      "bottom": 318
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

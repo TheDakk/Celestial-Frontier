@@ -1,0 +1,14 @@
+{
+  "id": "12-caribou",
+  "name": "Caribou",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2cf25958-eec5-4213-a18c-92fcfec5eb90.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "505a4b14ad2d4e59bc8b25b95cb77ffb2e05b35411fb539f68dccb00f402ecd5",
+  "bytes": 1544701,
+  "promptSha256": "398f2cb9717769cffbefa4b03733f22984cb4b649e5b31d355ee51b9321d4d64",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

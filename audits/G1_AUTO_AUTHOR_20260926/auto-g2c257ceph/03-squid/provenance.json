@@ -1,0 +1,128 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "03-squid",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "036499547cba58218195bb74d1d25def62c759286116834e22e8d5519a548860",
+ "subjectSourceSha256": "8c7ee09cdb8a3928daa47b934b6ba6cf6e67744911cb54a8de97a86a90d60922",
+ "identity": {
+  "name": "Squid",
+  "family": "cephalopod",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Squid\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1055924693\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "seed": 1055924693,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c202-qualified-octopus",
+  "authoringSha256": "0a36b6dc625f34009d3b5d1c6c1262959e0388fcb536fb831ec51488e2814431",
+  "masterSha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+ },
+ "habitat": {
+  "profileId": "cephalopod",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "22935aae923bebded3f3fae3f8608629f56923f64690646ed5c65f2b8ce08855",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group cephalopod (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1509,
+     "class": "rear",
+     "attach": {
+      "x": 119,
+      "y": 135.5,
+      "relX": 0.04,
+      "relY": 0.08
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0092,
+     "class": "other",
+     "attach": {
+      "x": 274.9,
+      "y": 192.6,
+      "relX": 0.99,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1296,
+     "class": "front",
+     "attach": {
+      "x": 276.6,
+      "y": 221.6,
+      "relX": 1,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0452,
+     "class": "limb-down",
+     "attach": {
+      "x": 219.2,
+      "y": 235.8,
+      "relX": 0.65,
+      "relY": 1
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.019,
+     "class": "limb-down",
+     "attach": {
+      "x": 259.4,
+      "y": 236.9,
+      "relX": 0.89,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0944,
+     "class": "limb-down",
+     "attach": {
+      "x": 241.5,
+      "y": 237,
+      "relX": 0.78,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "other": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "c202-qualified-octopus",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

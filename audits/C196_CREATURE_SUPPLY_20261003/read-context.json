@@ -1,0 +1,55 @@
+{
+  "scope": "C196 program, C246 offline reservation; current240 accepted; startup receipt reused uninterrupted; no native or product edits",
+  "records": [
+    {
+      "path": "CLAUDE.md",
+      "sha256": "12e4323d7aabc81c62dde8753419325871970cb717502a13f9e2dc501a1756ff",
+      "bytes": 24262
+    },
+    {
+      "path": "ROADMAP.md",
+      "sha256": "f9f06b41a5e14cea49128341067305f31b9f68eebeb8eed84dc051bd8b4bce8a",
+      "bytes": 21967
+    },
+    {
+      "path": "ART_KIT.md",
+      "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+      "bytes": 50155
+    },
+    {
+      "path": "CREATURE_ANIMATION.md",
+      "sha256": "198d9205611ed1715728f2b5f99d274aaf4591370c6d36d64964ee3d15bf394c",
+      "bytes": 115714
+    },
+    {
+      "path": "UI_TOOLCHAIN.md",
+      "sha256": "352cdf8e0ca80e60526997f0ae273234e32792fe9e7d8e6d9c237e6f931d0c15",
+      "bytes": 40532
+    },
+    {
+      "path": "PARALLEL_GIT_PROTOCOL.md",
+      "sha256": "de37da4d40496fa75a947c2272ed534f0ae2d7fc8c30104ffd8d2fa2af5343ae",
+      "bytes": 29215
+    },
+    {
+      "path": "audits/C196_PROGRAM_20261003/toolchain-check.json",
+      "sha256": "2e4b7386e90bc8a98c63664e99f9dbf00862697bf720ea5af5b94e9f20536538",
+      "bytes": 6883
+    },
+    {
+      "path": "audits/C196_PROGRAM_20261003/toolchain-verify.json",
+      "sha256": "8c9bf8f9293beb1da42decd2ad020de82f11f423dbdec63b88f2fb0b0430557f",
+      "bytes": 10018
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md",
+      "sha256": "ecb97bcbf16ed42313bcb894212b9eea5166d49dbeb6436b754ab42719ad1e47",
+      "bytes": 140987
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/GENERATED_GALLERY_20260927/coverage.json",
+      "sha256": "9852f824b20b540f0dafb441e305669cceb5127cd23ec4cea01cac3b62a42ba4",
+      "bytes": 6433
+    }
+  ]
+}

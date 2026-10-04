@@ -1,0 +1,571 @@
+{
+  "id": "snowy-owl",
+  "elapsedMs": 1371.9999999999993,
+  "phase": {
+    "actionId": "faint",
+    "elapsedMs": 1371.9999999999993,
+    "durationMs": 712,
+    "weight": 1,
+    "planted": true,
+    "travel": "stage"
+  },
+  "observedTip": [
+    568,
+    283
+  ],
+  "closestPositiveAlpha": [
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        670,
+        461
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.734927674578993,
+        0.38773221993132645
+      ],
+      "stage": [
+        567.9321225237805,
+        282.9393668124901
+      ],
+      "distance": 0.09101502736104601
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        670,
+        462
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7341611201041625,
+        0.3879520269600969
+      ],
+      "stage": [
+        568.2989403870888,
+        283.04455065431887
+      ],
+      "distance": 0.3022418168173361
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        671,
+        461
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7351474808234917,
+        0.3884987764452633
+      ],
+      "stage": [
+        567.8269390572478,
+        283.3061856515681
+      ],
+      "distance": 0.3517097427317824
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        669,
+        461
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7347078683344942,
+        0.38696566341738947
+      ],
+      "stage": [
+        568.0373059903133,
+        282.572547973412
+      ],
+      "distance": 0.4290768834922865
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        671,
+        462
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.734380926348661,
+        0.38871858347403376
+      ],
+      "stage": [
+        568.1937569205562,
+        283.41136949339693
+      ],
+      "distance": 0.4547159600905548
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        670,
+        460
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7356942290538236,
+        0.387512412902556
+      ],
+      "stage": [
+        567.5653046604721,
+        282.83418297066123
+      ],
+      "distance": 0.46524759583047826
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        669,
+        462
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7339413138596634,
+        0.3871854704461599
+      ],
+      "stage": [
+        568.4041238536217,
+        282.6777318152408
+      ],
+      "distance": 0.516887678295849
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        671,
+        460
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7359140352983223,
+        0.38827896941649287
+      ],
+      "stage": [
+        567.4601211939394,
+        283.2010018097393
+      ],
+      "distance": 0.5760823315741739
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        669,
+        460
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7354744228093246,
+        0.386745856388619
+      ],
+      "stage": [
+        567.670488127005,
+        282.46736413158317
+      ],
+      "distance": 0.6263218364138567
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        672,
+        461
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7353672870679905,
+        0.3892653329592002
+      ],
+      "stage": [
+        567.721755590715,
+        283.6730044906461
+      ],
+      "distance": 0.7282547601823095
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        672,
+        462
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7346007325931598,
+        0.38948513998797063
+      ],
+      "stage": [
+        568.0885734540234,
+        283.77818833247494
+      ],
+      "distance": 0.7832128303071659
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        669,
+        463
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7331747593848329,
+        0.38740527747493037
+      ],
+      "stage": [
+        568.7709417169301,
+        282.78291565706957
+      ],
+      "distance": 0.8009224324793788
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        668,
+        461
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7344880620899954,
+        0.3861991069034526
+      ],
+      "stage": [
+        568.1424894568461,
+        282.2057291343339
+      ],
+      "distance": 0.8069507130910982
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        670,
+        459
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7364607835286543,
+        0.38729260587378556
+      ],
+      "stage": [
+        567.1984867971637,
+        282.72899912883247
+      ],
+      "distance": 0.8460879898063031
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        668,
+        462
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7337215076151647,
+        0.38641891393222305
+      ],
+      "stage": [
+        568.5093073201544,
+        282.31091297616274
+      ],
+      "distance": 0.856875062528837
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        672,
+        460
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7361338415428211,
+        0.38904552593042974
+      ],
+      "stage": [
+        567.3549377274067,
+        283.56782064881736
+      ],
+      "distance": 0.8593751362162307
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        671,
+        459
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.736680589773153,
+        0.3880591623877224
+      ],
+      "stage": [
+        567.093303330631,
+        283.09581796791053
+      ],
+      "distance": 0.9117455419245895
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        668,
+        460
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7352546165648259,
+        0.38597929987468227
+      ],
+      "stage": [
+        567.7756715935377,
+        282.1005452925052
+      ],
+      "distance": 0.9270070144181418
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        669,
+        459
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7362409772841554,
+        0.3865260493598486
+      ],
+      "stage": [
+        567.3036702636965,
+        282.3621802897544
+      ],
+      "distance": 0.9442929018256208
+    },
+    {
+      "part": "neck-upper",
+      "joint": "neck1",
+      "source": [
+        668,
+        463
+      ],
+      "alpha": 255,
+      "face": 27,
+      "vertices": [
+        25,
+        19,
+        18
+      ],
+      "published": [
+        0.7329549531403341,
+        0.38663872096099355
+      ],
+      "stage": [
+        568.8761251834628,
+        282.41609681799156
+      ],
+      "distance": 1.0528714370982528
+    }
+  ],
+  "nearestFaceField": [
+    {
+      "source": [
+        675.5,
+        460
+      ],
+      "weights": [
+        [
+          "neck1",
+          1
+        ]
+      ],
+      "locked": true
+    },
+    {
+      "source": [
+        666,
+        450
+      ],
+      "weights": [
+        [
+          "neck1",
+          1
+        ]
+      ],
+      "locked": true
+    },
+    {
+      "source": [
+        685,
+        450
+      ],
+      "weights": [
+        [
+          "neck1",
+          1
+        ]
+      ],
+      "locked": true
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/candidate/master.png",
+      "snapshot": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/master.png",
+      "sha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/candidate/authoring.json",
+      "snapshot": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/authoring.json",
+      "sha256": "7915d259b21efcaf64821a2ba5a3e12dedc2670cadf71519c476d04c9fd475f0"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/candidate/subject-source.json",
+      "snapshot": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/subject-source.json",
+      "sha256": "178ba64cf18918438212b2e4597c3d3117873399a68b579c7ef0f3c1e40cbdb8"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/candidate/presence.json",
+      "snapshot": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/fit01/record.json",
+      "sha256": "c4f2567d9927dc5d5a3d0fea84e71bfc8afdbdb685953df2fcf5084cd24b439f"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/fit01/binding.json",
+      "sha256": "d73e88c3b08a22a64ea85fbbfebce037f385ed71aed87743e701f804dbc1b24d"
+    }
+  ],
+  "conclusion": "Source attribution only; any successor still requires exact conservation, unchanged-cap/static and full-size publication review.",
+  "qualityAccepted": false
+}

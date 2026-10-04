@@ -1,0 +1,9 @@
+{
+ "id": "c198creaturesupplya-24-snowshoe-hare",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 45%)"
+ ],
+ "semanticPresence": null
+}

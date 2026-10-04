@@ -1,0 +1,116 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c198creaturesupplyb-21-leafcutter-ant",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "1390d5a995afedb1c1827a3aed22a7ce738e1215db683569a12beeeddb3c1741",
+ "subjectSourceSha256": "5977a634302972bbe715f9ad052166c037de91c56d4dfff8faf1de52b3e94a9b",
+ "identity": {
+  "name": "Leafcutter Ant",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Leafcutter Ant\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"634825937\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "seed": 634825937,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "honeybee",
+  "authoringSha256": "ac8d6dd9897fd5bb366e9eac67fb5a4e76c63ce2a321f99c2be66f9f6060c3bb",
+  "masterSha256": "0caa257567bef63fe3d66308e565bddb84175b47696315a3781e5a6994c876e6"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0932,
+     "class": "top",
+     "attach": {
+      "x": 239.3,
+      "y": 120.8,
+      "relX": 0.09,
+      "relY": 0.08
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0289,
+     "class": "limb-down",
+     "attach": {
+      "x": 323,
+      "y": 163.5,
+      "relX": 1.01,
+      "relY": 0.5
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.4918,
+     "class": "rear",
+     "attach": {
+      "x": 256,
+      "y": 196,
+      "relX": 0.27,
+      "relY": 0.81
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0163,
+     "class": "limb-down",
+     "attach": {
+      "x": 312,
+      "y": 197.5,
+      "relX": 0.89,
+      "relY": 0.83
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0225,
+     "class": "limb-down",
+     "attach": {
+      "x": 283.2,
+      "y": 214.8,
+      "relX": 0.57,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 3,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "honeybee",
+   "byClass": {
+    "top": 1,
+    "front": 2,
+    "rear": 2,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

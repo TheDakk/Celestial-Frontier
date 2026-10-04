@@ -1,0 +1,9 @@
+{
+  "schema": "cf.c202-source-edit/v1",
+  "predecessor": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source02/master.png",
+  "predecessorSha256": "35b2125db84fb43ce43e2c57391fcd8b892a8c05e0fe3dd40af5bf6c027b6505",
+  "promptSha256": "dba5fd2361c2ea0962775600765b7065cfe851094671e535a28d46db33048bcf",
+  "canonicalIdentityRetainedAt": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/prompt.canonical.txt",
+  "editScope": "Edit this exact seven-armed octopus into the biologically correct EIGHT-armed octopus. Preserve all SEVEN existing arms. ADD ONLY the missing EIGHTH arm, organically connected to the lower front crown immediately to the RIGHT of the current central downward arm. The new arm emerges near pixel (708,690), sweeps downward through (760,850), and has its own tapered tip near (830,1060). This entire eighth arm must be visible in the large empty magenta gap between the central low-left arm and the low-right arm. It must not be hidden or merged with its neighbors; leave clear magenta space between distal arms. Natural suckers on its underside. Preserve mantle, both eyes, siphon, all seven existing arms, paint style, 1254 square, flat magenta. No additional ninth limb. Do not remove or move an existing limb. The ONLY substantive edit is ONE extra missing biologically required arm.",
+  "qualityAccepted": false
+}

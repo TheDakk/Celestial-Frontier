@@ -1,0 +1,28 @@
+{
+  "name": "Beaver",
+  "masterSha256": "479f048c931f46ef1fbde983b53aae7554650035814007ad92a79228b1c9a9f3",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original inspected: four foot endpoints with visible hind-foot webbing, attached flat scaled paddle tail, orange incisors and bulky brown fur. Near small ear is clear; far ear is not distinctly exposed, so the requested two-ear visibility correction is not established. Fur still obscures proximal leg emergence. Tail is separated from feet; semantic ownership and biological proportions remain held.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 129,
+      "y0": 377,
+      "x1": 1100,
+      "y1": 848
+    },
+    "margins": {
+      "left": 129,
+      "right": 153,
+      "top": 377,
+      "bottom": 405
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

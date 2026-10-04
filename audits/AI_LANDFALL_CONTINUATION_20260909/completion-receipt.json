@@ -1,0 +1,701 @@
+{
+  "schema": "cf.local-continuation-completion.v1",
+  "completedAt": "2026-09-09T16:10:42.081773+00:00",
+  "parentCommit": "309809f4df12c711d75822eff1e21bc9ad8a1463",
+  "checkpoint": "Signed commit containing this receipt; full SHA/signature in Git",
+  "ownership": "OpenAI/Codex \u00b7 macOS \u00b7 /Users/dakk/Projects/celestial-frontier-openai-mac \u00b7 openai/mac \u00b7 origin/openai/mac",
+  "status": "SCOPED_PASS",
+  "currentSourceHashChecks": 42,
+  "sourceHashes": {
+    "port/v2/apps/game/src/main.ts": "fbd9bd7816c8adb944510f9388805480e45188cd686440253e7d98ee97377393",
+    "port/v2/apps/game/src/local-ai-game.ts": "5c7c59d0b1931d2c9a5e70821a5a3b7d607532ce3052beb1b0cb2746e76f5145",
+    "port/v2/apps/game/src/landfall-viewer.ts": "1ccd6e3a334addad39f25b87e5727f596f9a4b69659d38b56fe9a896143b88af",
+    "port/v2/apps/game/src/landfall-fidelity.ts": "067f552dce335f9e305ab1aa5f622be15a23ef032e3d56893dbe44c0195c63f3",
+    "port/v2/apps/game/src/release-content.ts": "eb079f791924f9dc4e23938107929a361c48b67973ec2cf2b0745e98b8abb839",
+    "port/v2/apps/game/index.html": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f",
+    "port/v2/apps/game/vite.config.ts": "417c3878a7256ffea85d4321e459f944fcdfdc979f724f063df6b0e52d0efda0",
+    "port/v2/apps/game/src/local-ai-runtime.ts": "827cb9fa48d0e1a4e7367c484a7ef9cbe9f62f4b1585dd4c0df528c003dcbdef",
+    "port/v2/apps/game/src/ai-landfall-jobs.ts": "2de3efd298b331ece5b0ec7c8c1095745f65c20899e95c260027587e37a4b5d7",
+    "port/v2/apps/game/src/ai-landfall-originals.ts": "3e5b972b023c895c5f9c5ce44ce727b0150d5fb5fcaa37fb05729ed010061011",
+    "port/v2/apps/game/src/local-model-delivery.ts": "1754f0f127cdf550ffc5956e5daac4cc3c4bde829175b3e73ca04abbb7d16ea8",
+    "port/v2/apps/game/src/local-model-sha256.ts": "783905b7f23d1d6355d61e196eb2ebc332e7cebfe37236aa271cfed1318db677",
+    "port/v2/apps/game/src/local-model-manifest.ts": "398dd13f6dc6a764a9903782a1000305ee99a1a9dc3d1ad57292a2c27dfee0c6",
+    "port/v2/apps/game/src/landfall-conditioning.ts": "6cce11db47d7d096fc21c61a733f990f6a66eb51fdcd3b1540a73ccd4aa43402",
+    "port/v2/apps/game/src/world-roster.ts": "0e071ec4c355cb354db6031eb94c98bfaa008c4f9ef2485670b41d376fa4830f",
+    "port/v2/apps/game/src/product-action-coordinator.ts": "127473d368065aaba8d69ba5e75bd25a30e3b50661426ec43f68a26943257a36",
+    "port/v2/apps/game/src/training.ts": "8e524f48487a205219d119eae2fc51355b99e6b01d73f0639fb43fddc1b7fa84",
+    "port/v2/apps/game/pwa-build.ts": "60c470218a76c6d694348b4bc4090e65795fb7408c0296a381086f4130d097fc",
+    "port/v2/apps/game/src/landfall-appearance-snapshot.ts": "94d97e8716cfb28d6108583a781116122c1693859c6ac0b32ce5148571d68a69",
+    "port/v2/apps/game/src/earth-layered-recipe.ts": "ab1fd02bd9a125a07f4a2abc671658cae3d94b5368bf3c226f5b1fc46e1fb824",
+    "tools/local-image-generation/run-landfall-viewer.mjs": "aa93bd19248096ec1ca0dcb69688739faf0d8f8ab8b9f0b4c21f68e223230cee",
+    "tools/local-image-generation/game-preview-server.mjs": "7cb8ce9b5511eca92fa5fbeeeeaabdcc6bbde883cb74f6769200b61ac5fdd031",
+    "tools/local-image-generation/stage-worker.mjs": "337aaea3f7f9804a4409887367b922ed68e02a8ee3dc7f0c859c913dfa52d8ac",
+    "tools/local-image-generation/pipeline-math.mjs": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5",
+    "tools/local-image-generation/denoiser-shapes.mjs": "c66850a4d3564e6336a2d5891152c2120d2847dcef87782d5197aae102e8f6d6",
+    "tools/local-image-generation/gpu-profile.mjs": "4a02596d6a885a88b894c4a285bd93be07437e856107c34489231c7191d2dbf1",
+    "tools/local-image-generation/q8-block32.mjs": "ca9817919519c86b39e4323b13288df73405feb9c7c0d7dcf7bd7113afb53402",
+    "tools/local-image-generation/fetch-model.mjs": "79ee68e8bcfc37d7dc406df008765e123ac030f7195232f19fac6488a64dac9c",
+    "tools/local-image-generation/source-integrity.mjs": "5d6e389fc7dac0bd1ae7dc388ce0380ba4b6ebb0e8c934af8e841b5eea36bae9",
+    "tools/local-image-generation/model-manifest.json": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
+    "tools/local-image-generation/package-lock.json": "a248f29f9522b42eadf191b1f5351f4df76c50e93c310959c0c817f2c68b2792",
+    "port/v2/package-lock.json": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d",
+    "port/v2/tools/browsercdp.mjs": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+    "port/v2/tools/browserpath.mjs": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+    "port/v2/tools/workspacelock.mjs": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606",
+    "audits/AI_GAME_INTEGRATION_20260909/platypus-reference-binding.json": "ab87c450d2d2a1334cf05407a416766a28005ea65068b642f9a5e6e491f1814d",
+    "audits/AI_GAME_INTEGRATION_20260909/platypus-reference.png": "0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57",
+    "tools/local-image-generation/runtime-pack.mjs": "fb849696bcce77f19b5d0f6e2f4c31fe70355c471197908689e3b811579c27d3",
+    "tools/local-image-generation/runtime-pack.test.mjs": "da5fcf15ae3254909e7d2f4bfb161085d6036bf0e7f8d04bb6b78281217fbb79",
+    "tools/local-image-generation/runtime-pack-source-pins.json": "d5fbd41c24d43a0f72732e45e15a260b8ed57e73ca74fc9cbffea4c533b60d76",
+    "port/v2/tests/landfall-fidelity.test.ts": "3b6be79d80325f2210e6268cdb5c0a4127c51fa9f7f7c13151e0d7658a34c396",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/known-negative-observations.json": "1653eac1b3dfc90638d3411945100aa1dc2f20c80ed65d7d5fd8fc418298c1bd"
+  },
+  "verificationReceipts": [
+    "validation-03/result.json",
+    "native-viewer-03/result.json",
+    "runtime-pack/controls-01/result.json",
+    "runtime-pack/build-01/result.json",
+    "fidelity/focused-type-correction-result.json"
+  ],
+  "visualReview": "native-viewer-03/visual-review.md",
+  "priorHandoffPreservedVerbatim": true,
+  "newPacketLinksChecked": 19,
+  "fullAdmission": false,
+  "qualityAccepted": false,
+  "phoneQualified": false,
+  "newModelExecuted": false,
+  "hostedActions": false,
+  "intendedClaudeAppReview": "pending",
+  "ambientExcluded": [
+    ".DS_Store"
+  ],
+  "inventoryExcludes": [
+    "completion-receipt.json (self)"
+  ],
+  "files": [
+    {
+      "path": "ART_DIRECTION.md",
+      "bytes": 166998,
+      "sha256": "bb57b4de9760af484c3f562e3f5ede5da207a5fc39cc184d4da01294384d81a6"
+    },
+    {
+      "path": "LOCAL_AI_GENERATION.md",
+      "bytes": 9248,
+      "sha256": "7b36c4de3c3b535d3069333a09bea99e3a688a1b4601bc16743bccc3b94d8156"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 14905,
+      "sha256": "6c7f572dac9af6eba1a4bca2de03bec3af85cfd9deaec4058bf7add28c0bc9da"
+    },
+    {
+      "path": "ROADMAP_ARCHIVE.md",
+      "bytes": 2804126,
+      "sha256": "e3fbdfc8c3fdfa2c2d78636e9b2351b9a051dc02f9ec4c05c1c408bb13813a19"
+    },
+    {
+      "path": "SAVE_SYSTEM.md",
+      "bytes": 146726,
+      "sha256": "8c517fe55f01170be566f7b2851393fe12ea13149d5ba378e12b2da57b0f2b43"
+    },
+    {
+      "path": "UI_PRESENTATION.md",
+      "bytes": 254261,
+      "sha256": "6eb86086e0310731e25180df330d9a3a96176bc2f7c261f86d8bb623790ac581"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/HANDOFF.md",
+      "bytes": 12602,
+      "sha256": "f7a9f2fcca8996ae5aae90c35f62567f9d96a13f99ff60f2ee59537ef956ca5f"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/README.md",
+      "bytes": 7090,
+      "sha256": "dcd068e732a5ceea58aeca5da98d681cac847279b03d312644c5bc4118c21c0c"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/README.md",
+      "bytes": 8840,
+      "sha256": "cf5effb727ef8a554c79d641f5a9b29b9d7e4fdc71d8ab7265b4c1ab5ca495c5"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/focused-first-result.json",
+      "bytes": 2374,
+      "sha256": "81523243be4db15d722dd66826bba734dcfe69f43cd1e72708a55c9ec91fa486"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/focused-first.log",
+      "bytes": 4127,
+      "sha256": "14165c34d593bc48f46e4662d1a3d6347154c7eb6969ab1484ed0cbab8c36a3c"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/focused-type-correction-result.json",
+      "bytes": 2425,
+      "sha256": "dffe4423a8404996c8556be4c16ef2cba2b47f92a2eee51597c5a3e80c72a43f"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/focused-type-correction.log",
+      "bytes": 4125,
+      "sha256": "a7e3543bde41558880a1bb1f9beb6f2b5072b23819e3cb59feaf5ad5c9a7a0b7"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/known-negative-observations.json",
+      "bytes": 13304,
+      "sha256": "1653eac1b3dfc90638d3411945100aa1dc2f20c80ed65d7d5fd8fc418298c1bd"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/official-source-receipt.json",
+      "bytes": 349,
+      "sha256": "0ab548f82bf80d7181db30963ca87f466ef1c06492c99035ba882685dbc29f73"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/raw-model-signatures.json",
+      "bytes": 1124,
+      "sha256": "afa146cea7ce57688fe2bc2bdfbedf3be2a89a8547e0800c69058c564a1fb4fa"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/source-bindings.json",
+      "bytes": 3364,
+      "sha256": "969fd67f9621e6af17b2bebc14d4f60b5d1d07d72a9ef61a69d2210cc415015d"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/typescript-correction.json",
+      "bytes": 591,
+      "sha256": "7d58720ac254fb8938b155ee28cfeed2fc084bea9c981f316219f98a0fb7b1a9"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/typescript-first-failed-landfall-fidelity.test.ts.txt",
+      "bytes": 18024,
+      "sha256": "3b6be79d80325f2210e6268cdb5c0a4127c51fa9f7f7c13151e0d7658a34c396"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/typescript-first-failed-landfall-fidelity.ts.txt",
+      "bytes": 15781,
+      "sha256": "549c06851aeeba42c595a9e7b91b61a3320e4cc6a6cdc110c928ad5aaf7cc9d4"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-01/OBSERVER_CORRECTION.json",
+      "bytes": 896,
+      "sha256": "0f70b131123c1dbe8bb649e6dd56e58567ba7d7c1849633e024d56a05436e7d1"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-01/failed-runner.mjs",
+      "bytes": 25646,
+      "sha256": "7a91fb6c3bb2c9224e995d531b48f48769bb4ae21cb776660623fe9f50ce9e37"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-01/result.json",
+      "bytes": 177259,
+      "sha256": "d0375c0507d3d9eac8d92d9f2b6933b7ade21056f31d3b24d29bf5659191c548"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-01/source-before.json",
+      "bytes": 9701,
+      "sha256": "6b3f9affde993ed4f865539a0e04ce5f83d1a5ec8e7cf1c017d94ca1c4830210"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-01/start.json",
+      "bytes": 575,
+      "sha256": "4ddba2e4361d8ad4dcd34b7190118b24708c127a8b317a5fa7f75adb5024a7e6"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-01/verified-preview.json",
+      "bytes": 14798,
+      "sha256": "71fa1d3c77d02cc1950627934ba3665e40a3f7a9920f3869b31bef96a62a0f8a"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/01-desktop-full-painting.png",
+      "bytes": 1185116,
+      "sha256": "0ad4865995dbff39d8337f1fb8762cad690c6f4982ac2a9e5bd0e9e31f42fced"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/02-small-full-painting.png",
+      "bytes": 116532,
+      "sha256": "7f5450c15a32782ab57f8ff0d72db50389623e8aa4e4c54cdc2379390af6592f"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/03-small-actual-size-detail.png",
+      "bytes": 215501,
+      "sha256": "16cfb789895f148e19509acb44edbf80e5e97126a0cb9f565c9aa7c0b9b2aa4c"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/FOCUS_CORRECTION.json",
+      "bytes": 914,
+      "sha256": "e539619c58fafc1c98df6c21eef4173a036189a4d58ed214d165cb26c887bbae"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/failure.png",
+      "bytes": 85256,
+      "sha256": "23e44373d2efe0e7eda1e48d3c96a2fcd57e684976fd884cfab61cefe826523d"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/measured-landfall-viewer.ts",
+      "bytes": 9328,
+      "sha256": "8fc1eb56d7f344a4d9c8aace6e6788bcdaeda3d3d2d478409ffd8e31d6108be8"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/measured-local-ai-game.ts",
+      "bytes": 13997,
+      "sha256": "2d8b80f9208852360b24d38c66ea13a0ffb3db9c16b1f7e7eb70138f4eaa32cb"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/measured-runner.mjs",
+      "bytes": 26914,
+      "sha256": "d4060ee066654ba027d3a164c5fbe27acb2bd220248dfe9af906cd6c9fe418ec"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/result.json",
+      "bytes": 278647,
+      "sha256": "83c399577e3c9ffd601aef6246e87f1ad69f2ee6ff0e21614573bdc2a76643f3"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/source-before.json",
+      "bytes": 9975,
+      "sha256": "39095a6d10f06df4e8bd9c27c6173b77b3c1f68e49d19584ae61a1a67aa33cee"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/start.json",
+      "bytes": 575,
+      "sha256": "375eded099ecb0994a0e8bbb8c6cd9f3a8de29cb683df7ebd3cb044531e59a31"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-02/verified-preview.json",
+      "bytes": 14798,
+      "sha256": "3e1dd210428d8323ba7c83e1a82651d92df6152056f450e59e31bc2790230dbc"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-03/01-desktop-full-painting.png",
+      "bytes": 1185116,
+      "sha256": "0ad4865995dbff39d8337f1fb8762cad690c6f4982ac2a9e5bd0e9e31f42fced"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-03/02-small-full-painting.png",
+      "bytes": 116532,
+      "sha256": "7f5450c15a32782ab57f8ff0d72db50389623e8aa4e4c54cdc2379390af6592f"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-03/03-small-actual-size-detail.png",
+      "bytes": 215501,
+      "sha256": "16cfb789895f148e19509acb44edbf80e5e97126a0cb9f565c9aa7c0b9b2aa4c"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-03/04-reloaded-original-inspection.png",
+      "bytes": 1185045,
+      "sha256": "af6635508e578a5179eeecd569d45fcad5acdbea9120a27bb495df6bc3539d95"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-03/result.json",
+      "bytes": 323148,
+      "sha256": "25c8392212dc62a899c472d04eda823bf6c085936482ec3a21ac37bfbcb0e485"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-03/source-before.json",
+      "bytes": 9976,
+      "sha256": "93f823e78825f0a55cc6ca156ff6a734411ec8ee995ac30276da2c2069b87dfe"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-03/start.json",
+      "bytes": 575,
+      "sha256": "bd1db221c66eb07921c7eb4d59cf03af76663f1b510300f1d2bf6bf28bf613ff"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-03/verified-preview.json",
+      "bytes": 14798,
+      "sha256": "f3c8aae8a48826f50bcefda4a05bdbc14418aa06f37125e580946a38ad830b0b"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/native-viewer-03/visual-review.md",
+      "bytes": 4017,
+      "sha256": "e2ad2cd01e2c07090e268c2df2903af4918cffcf068993c5e65efa07d6f13311"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/README.md",
+      "bytes": 4021,
+      "sha256": "4aef297cab90e7449b1207e939074d75e6a6b3fb9acc294023c0e500beac675a"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/REVIEW.md",
+      "bytes": 3727,
+      "sha256": "370624670968d34ea22a1da6fee7708ffaa5362c270bc8ec164e0d165f8b0eac"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/RUNTIME_NOTICES.md",
+      "bytes": 1391,
+      "sha256": "16143f95cb4cbdff11a691ee9e4a59622ef3ce098b2712d9519051343116dff5"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/build.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/build.stdout.json",
+      "bytes": 2146,
+      "sha256": "510fcfa29f565c314da9fc3144676143c6005c56d37b0730bcd087c1b23e6214"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/deployment.json",
+      "bytes": 1593,
+      "sha256": "cf6d60fb1e4a902367a2214bf2ab663272fe3b6bb4b579948e3f786c701067d3"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/result.json",
+      "bytes": 3246,
+      "sha256": "9d8b5fb69bdf5dee4016230f2ece08ee4bb3a71b5377ef74d71b8bc8f7eb485d"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/runtime-pack-manifest.json",
+      "bytes": 7814,
+      "sha256": "6f6e8afcecc7b6955260961fe5988ec708086f79d73194ad5d339f675273ed39"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/runtime.json",
+      "bytes": 1583,
+      "sha256": "54839aad15911440a5d245a1264be925d8788ff5569136e5334b57fcba227c4d"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/verify.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/verify.stdout.json",
+      "bytes": 271,
+      "sha256": "0461f3777153c5a1a7d7a41a50f49ea2fe618d22e922af60e05939fc8ad8f804"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/controls-01/01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/controls-01/01.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/controls-01/02.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/controls-01/02.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/controls-01/03.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/controls-01/03.stdout.txt",
+      "bytes": 1251,
+      "sha256": "f62e37163476b7880d04f4a393f876723e1119c21dc1a942f2cf73300f20f2e8"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/controls-01/result.json",
+      "bytes": 1378,
+      "sha256": "fac09f2bf28687236142a7a49fe0f3cabffeebfb4a2ef9d50e97f0b0efdfbfff"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/controls-01/runtime-pack-source-pins.json",
+      "bytes": 8251,
+      "sha256": "d5fbd41c24d43a0f72732e45e15a260b8ed57e73ca74fc9cbffea4c533b60d76"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/controls-01/runtime-pack.mjs",
+      "bytes": 20325,
+      "sha256": "fb849696bcce77f19b5d0f6e2f4c31fe70355c471197908689e3b811579c27d3"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/controls-01/runtime-pack.test.mjs",
+      "bytes": 10996,
+      "sha256": "da5fcf15ae3254909e7d2f4bfb161085d6036bf0e7f8d04bb6b78281217fbb79"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/diffusers-040c7cd-LICENSE",
+      "bytes": 11357,
+      "sha256": "f9e2070c247517b1ddf65f7b11b393484a18da91a958fd18a97bd0f241c3125c"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/onnxruntime-2e2543f-ThirdPartyNotices.txt",
+      "bytes": 336906,
+      "sha256": "7510947ed371c3f33e99ad509b0a312c3a6283ab76380dd1744c5504585b8b85"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/provenance.json",
+      "bytes": 2977,
+      "sha256": "836c95e7791b964d060a2b9f3243ef9b520b188b05dad39393ce0ff94756948f"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-01/result.json",
+      "bytes": 872,
+      "sha256": "923fe36c39f71664fb8c681fdb918f654456604a601d96e795b19f4406edc1e4"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-01/typescript.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-01/typescript.stdout.log",
+      "bytes": 5270,
+      "sha256": "79e8c4dae23ee94246cd917cffe314bba79b70cefe7eda6bf8d9018022d00bfd"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-01/viewer-lifecycle.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-01/viewer-lifecycle.stdout.log",
+      "bytes": 244,
+      "sha256": "1386a6617159ecfb243d1a90c563e9174ea1b795b4cfd451d5badecfc97132d0"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-02/inspection-sequence.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-02/inspection-sequence.stdout.log",
+      "bytes": 245,
+      "sha256": "2bc7d600681015806496829c1c9aa9ab4267cd27bb143e074a994dec11fa0fc4"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-02/result.json",
+      "bytes": 1713,
+      "sha256": "7bafd77a6a8be7e270bc5aee381b6e117b0181b1ff0a8cb17bb414ac46ac9f9e"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-02/root-validate.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-02/root-validate.stdout.log",
+      "bytes": 1093,
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-02/typescript.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-02/typescript.stdout.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-03/result.json",
+      "bytes": 1898,
+      "sha256": "17535e34efa4de203e874d494e59d8d86c83a83cbfa57514899e34c8142534b0"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-03/root-validate.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-03/root-validate.stdout.log",
+      "bytes": 1093,
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-03/semantic-focus.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-03/semantic-focus.stdout.log",
+      "bytes": 245,
+      "sha256": "8a6e847f7e1e27e891a76d64bde95555f32ea28e408db0a4679a30443bc96a6c"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-03/typescript.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-03/typescript.stdout.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/landfall-viewer.test.ts",
+      "bytes": 7864,
+      "sha256": "bf453f85bee79652405a7db4763c6b1be438b82bbeb2114461231bd6d131eadd"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/landfall-viewer.ts",
+      "bytes": 9173,
+      "sha256": "0e50be0d1c0a7c70e5db39b1e636cf1744bac58ddfd22cb40fdb0d3a9eafea68"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/local-ai-game.test.ts",
+      "bytes": 21689,
+      "sha256": "7eaf6f3dac8b59c84d9392d92376d3bbb96ac5f327b081a53d08162bd062997d"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/local-ai-game.ts",
+      "bytes": 13805,
+      "sha256": "fa89dc36e2b5636536ef7ba7797c77d2b84234fdd3bbae3d670dd95fddc3622d"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/main.ts",
+      "bytes": 866571,
+      "sha256": "10817137b6a4d800815f5c35cafe772092a7f3c8d4e2ce0b5ff8130a088cafac"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/painted-earth-mount-ownership.test.ts",
+      "bytes": 17173,
+      "sha256": "f38e8fc4d1409dc61b37798efc9dee80d09937d2141db7c0260f90beb703c8cb"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/result.json",
+      "bytes": 1510,
+      "sha256": "850146da87cea8a09e5f8a55bd62ce6f30628a93343c49ab8e75cb6e46a8c7fc"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/start.json",
+      "bytes": 1421,
+      "sha256": "895f5fdc3996528b0a7ec7a562bd680d867a1b9c055d4506f4dc0feb941631ad"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/stderr.log",
+      "bytes": 1068,
+      "sha256": "e168a70e3971514f839af9a3e9450639bb7f9c39cfddc2d0a54a95192e291300"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/stdout.log",
+      "bytes": 437,
+      "sha256": "1146ced76319a83d06aeb6d5f6501e36755f5a15dfac3af3c9ee48116976fad7"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-02/landfall-viewer.test.ts",
+      "bytes": 7992,
+      "sha256": "e4122dcd8833eecc35ea12e24ba6244561e7d0df0bca56b115fb303facb86927"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-02/result.json",
+      "bytes": 699,
+      "sha256": "1a7e72645c43fa310fbb9e23bd1afe6f9258b9c0cff3b728ce86f194b26f8030"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-02/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-02/stdout.log",
+      "bytes": 242,
+      "sha256": "90b5335e37621a0cbbe74ac0192cdd4fbed23584987a07e1fea71f2185f971c5"
+    },
+    {
+      "path": "audits/README.md",
+      "bytes": 387240,
+      "sha256": "1f8e3704f30aadff1c4f2cb396269413ef9345c5b314470f7b72d3acb4cdcd23"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 499100,
+      "sha256": "65936dbb9d95e969375acc8b7b63f1d005368d50d9a0200a32b40ef780ab23d9"
+    },
+    {
+      "path": "port/v2/README.md",
+      "bytes": 440349,
+      "sha256": "4fab28d98da5cd739a77452818683b4c7dd5524d169358c85188d27119026252"
+    },
+    {
+      "path": "port/v2/apps/game/src/landfall-fidelity.ts",
+      "bytes": 15777,
+      "sha256": "067f552dce335f9e305ab1aa5f622be15a23ef032e3d56893dbe44c0195c63f3"
+    },
+    {
+      "path": "port/v2/apps/game/src/landfall-viewer.ts",
+      "bytes": 11002,
+      "sha256": "1ccd6e3a334addad39f25b87e5727f596f9a4b69659d38b56fe9a896143b88af"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-game.ts",
+      "bytes": 14098,
+      "sha256": "5c7c59d0b1931d2c9a5e70821a5a3b7d607532ce3052beb1b0cb2746e76f5145"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 866665,
+      "sha256": "fbd9bd7816c8adb944510f9388805480e45188cd686440253e7d98ee97377393"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 158982,
+      "sha256": "eb079f791924f9dc4e23938107929a361c48b67973ec2cf2b0745e98b8abb839"
+    },
+    {
+      "path": "port/v2/tests/landfall-fidelity.test.ts",
+      "bytes": 18024,
+      "sha256": "3b6be79d80325f2210e6268cdb5c0a4127c51fa9f7f7c13151e0d7658a34c396"
+    },
+    {
+      "path": "port/v2/tests/landfall-viewer.test.ts",
+      "bytes": 9967,
+      "sha256": "a7beb6ee2eb1f046263f2721feb570c3b3355ffd9dfe16cad24fc874ca25fa3d"
+    },
+    {
+      "path": "port/v2/tests/local-ai-game.test.ts",
+      "bytes": 22813,
+      "sha256": "dae3dff1af7cd32d38e7a9b782bfcc777ca7857d6209b73f334b34724ff6bcd2"
+    },
+    {
+      "path": "port/v2/tests/painted-earth-mount-ownership.test.ts",
+      "bytes": 17173,
+      "sha256": "f38e8fc4d1409dc61b37798efc9dee80d09937d2141db7c0260f90beb703c8cb"
+    },
+    {
+      "path": "tools/local-image-generation/README.md",
+      "bytes": 15862,
+      "sha256": "7f3ab830fd833f361868c50771ceb4202911de23132a69a589453ad71c07b2e5"
+    },
+    {
+      "path": "tools/local-image-generation/run-landfall-viewer.mjs",
+      "bytes": 27556,
+      "sha256": "aa93bd19248096ec1ca0dcb69688739faf0d8f8ab8b9f0b4c21f68e223230cee"
+    },
+    {
+      "path": "tools/local-image-generation/runtime-pack-source-pins.json",
+      "bytes": 8251,
+      "sha256": "d5fbd41c24d43a0f72732e45e15a260b8ed57e73ca74fc9cbffea4c533b60d76"
+    },
+    {
+      "path": "tools/local-image-generation/runtime-pack.mjs",
+      "bytes": 20325,
+      "sha256": "fb849696bcce77f19b5d0f6e2f4c31fe70355c471197908689e3b811579c27d3"
+    },
+    {
+      "path": "tools/local-image-generation/runtime-pack.test.mjs",
+      "bytes": 10996,
+      "sha256": "da5fcf15ae3254909e7d2f4bfb161085d6036bf0e7f8d04bb6b78281217fbb79"
+    },
+    {
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/WHITESPACE_EVIDENCE.md",
+      "bytes": 1647,
+      "sha256": "6694a0ee13856bb7cfbf3486092031cf2b0dd783209405641638c38b97dfba63"
+    }
+  ],
+  "preservedRawOutputWhitespaceExceptions": [
+    "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/focused-first.log",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/focused-type-correction.log",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/build.stdout.json",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/build-01/verify.stdout.json",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/validation-01/viewer-lifecycle.stdout.log",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/validation-02/inspection-sequence.stdout.log",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/validation-02/typescript.stdout.log",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/validation-03/semantic-focus.stdout.log",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/validation-03/typescript.stdout.log",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/stderr.log",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-01/stdout.log",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/viewer-controls-02/stdout.log"
+  ]
+}

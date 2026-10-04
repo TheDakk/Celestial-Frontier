@@ -1,0 +1,23 @@
+{
+  "schema": "cf.c203-source-framing/v1",
+  "masterSha256": "73db555f6f0465d134f9f5864e0e30a67774ee7845b4970e34ab634477974b68",
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "status": "PASS_FRAMING_ONLY",
+  "bounds": {
+    "x0": 265,
+    "y0": 312,
+    "x1": 989,
+    "y1": 923
+  },
+  "margins": {
+    "left": 265,
+    "right": 264,
+    "top": 312,
+    "bottom": 330
+  },
+  "required": 101,
+  "scope": "Existing8% clear margin on exact established keyed source; no local resize/crop or anatomy acceptance"
+}

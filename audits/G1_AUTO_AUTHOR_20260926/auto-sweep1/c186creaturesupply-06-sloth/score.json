@@ -1,0 +1,10 @@
+{
+ "id": "c186creaturesupply-06-sloth",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "materials-unknown: no species-group material for profile xenarthran; the motion kit refuses an unclassified surface",
+  "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%)"
+ ],
+ "semanticPresence": null
+}

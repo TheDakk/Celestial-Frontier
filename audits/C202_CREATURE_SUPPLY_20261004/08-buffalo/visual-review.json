@@ -1,0 +1,28 @@
+{
+  "name": "Buffalo",
+  "masterSha256": "03ead7a1418baaca1fa93f8be8f7788bb006eba37f92e92c568af57586658601",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Heavy brown-black body, broad fused-looking horn boss and curved horns, drooping near ear, four separated hooves and tufted tail. Far ear concealed; do not invent it.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 178,
+      "y0": 350,
+      "x1": 1101,
+      "y1": 920
+    },
+    "margins": {
+      "left": 178,
+      "right": 152,
+      "top": 350,
+      "bottom": 333
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

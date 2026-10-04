@@ -1,0 +1,157 @@
+[
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/binding.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/binding.json",
+    "sha256": "862b02df4e39e6a6f97a3b6ca31f9a17364ae54bf28d82c34eb8917ab1be73a3"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/declaration.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/declaration.json",
+    "sha256": "16e065728a81027288efcdd187b8d64a6f37aaa09e50445996c19c9bb5598669"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/intake-provenance.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/intake-provenance.json",
+    "sha256": "9c0716b433f216f5943d6c44f04f5524cc569207808a442d18b6513813d2a243"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/atlas/10-snowy-owl.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/atlas/10-snowy-owl.json",
+    "sha256": "14b9ca9d1ff234940c2fa1d063e0a4775680d3626fb013286f33a7956d534844"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/atlas/10-snowy-owl.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/atlas/10-snowy-owl.png",
+    "sha256": "de1a2aae8c011428786431d83ace0106ece692e5ae8e87b85e7799df82243186"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/atlas/receipt.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/atlas/receipt.json",
+    "sha256": "34b8523db064b8e65d5436d4531cc2925d4fb92b6d50d05721ea2b39c35f90f1"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/binding.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/binding.json",
+    "sha256": "0833f71d3f96e333018c04405e4ff93de7c895a028177ce2be1ee2bc57b172af"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/keyed.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/keyed.png",
+    "sha256": "fe8c21a1ff2dac45bc9c3ca0dd885cbd2816e92cd40e43addd0b65ffb3efbdde"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/manifest.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/manifest.json",
+    "sha256": "eea88a4f86af3a8cbff51dd8b5ada51007a796262cfb7daf453665b7efd9dead"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/ownership.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/ownership.png",
+    "sha256": "2c0f57f3ce69871b78613b5adfaebe3ecef8872fa565a5ee6a5a6b2de4c3e8a2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/beak.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/beak.png",
+    "sha256": "1dcbb3fa570873ae0c9909aa0a059f0e8012da510daad96ed8cb8e988d287842"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/body.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/body.png",
+    "sha256": "23efaa3d72479fd8d54f797db06d3749bb960179f154f57e04a2c674e5f03f88"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/chest.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/chest.png",
+    "sha256": "659e5febe59e03c14a92ebea3991fd1fbd815c688c25837f0c8c07aa69a3ecaa"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/far-foot.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/far-foot.png",
+    "sha256": "59e95fb2f6a41033e6470a0596af8d03c273633add7735ada5589064074c8f34"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/far-shin.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/far-shin.png",
+    "sha256": "cff51c7d94d7020c605e4cbb97c00b85dd7f59f1e3d11d6801e408ec1d6429c7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/far-thigh.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/far-thigh.png",
+    "sha256": "30287ff67c62047dd8cc7b93c04998ab176085e022e1b78546edc59c63562f62"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/far-wing-flight.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/far-wing-flight.png",
+    "sha256": "114731dcccd0713348d8b4e1b72e4133358b99da357f0dc45ad0bbb894b3e398"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/far-wing-root.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/far-wing-root.png",
+    "sha256": "7823decfe222513d5a1dd4ff326a222d8c27318b643b897c32967ce98e3d0a6c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/head.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/head.png",
+    "sha256": "0eac95990d5d7db8d50c45a1b635cb8dad9417d83d859bbe8169fc976a6dc9be"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/near-foot.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/near-foot.png",
+    "sha256": "349f629453bf26c9e94ee72b2bade40667f38554929dedbe097cbd7000d1bf87"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/near-shin.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/near-shin.png",
+    "sha256": "e2f2439134b2ef51978f90e91fcbaa46dd14f84a33966786717597e9725c7a03"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/near-thigh.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/near-thigh.png",
+    "sha256": "c5a602864a12f60c0a1166c916fa4bc220287f05cbdd01d5f0d6bc0865b5456d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/near-wing-flight.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/near-wing-flight.png",
+    "sha256": "9ca97d382ad00e489e416f665c44112501951c24db20cd15f86ca8f22e6d90c1"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/near-wing-root.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/near-wing-root.png",
+    "sha256": "401198390116ec2cf82c8e95352db35294922e5a5247d99da419a396a5d0985d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/neck-lower.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/neck-lower.png",
+    "sha256": "b8de50de512b7b88df9cbe0a3c3dd07c65deea98a07f9c75f0162455adf42dbf"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/neck-upper.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/neck-upper.png",
+    "sha256": "4f3724c720aa779dd32f4f0af57882c1bf05d84570f9f16f66f422b21e3968b7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/parts/tail.png",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/parts/tail.png",
+    "sha256": "3bfe86d865fa41118fb6a0f74f66fb36e1c60f2c2065985c622a721d6e06500a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/parts/receipt.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/parts/receipt.json",
+    "sha256": "483e7ca21b0c92ae8e4a83585dcc9b082c8fb9b89aada589c9a7b48bddc6859c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/pre-split-binding.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/pre-split-binding.json",
+    "sha256": "65e35dbe9aee9e740dc0b0bf8ff13e137a161a2c5e67a9b2dcdcc8fd880eedef"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/receipt.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/receipt.json",
+    "sha256": "aa2aeb1c28cb6f385931cd371898fc70685929a5c5ed96191973425d1854168f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/record.json",
+    "copy": "audits/SNOWY_OWL_C91_20260927/original-fit/record.json",
+    "sha256": "1297c09fa4e25e4a89988d3df299551fe2c8d84d8d33d3d3f661c7e3fbeb9682"
+  }
+]

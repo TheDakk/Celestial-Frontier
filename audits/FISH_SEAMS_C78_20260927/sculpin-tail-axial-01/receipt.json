@@ -1,0 +1,227 @@
+{
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/FISH_SEAMS_C78_20260927/inputs/03-sculpin",
+  "sourceRecordSha256": "74ecb0894f00b2c916be59f1eee10efee6da2e46bc913ab58ec406989cd7a0aa",
+  "sourceLabelsSha256": "bfdfd776c193937f73421f72816e3d72358ea4b37022f3bdcc894ddf360b9fbb",
+  "newLabelsSha256": "75be4bcd641ae43a459ebd0ccc85ba8dacecae350335a55afd2d4facfd39058d",
+  "newDecodedLabelsSha256": "3e568398faef3ff5e2212e86597a52bea9f98fb8adb4a7b9bca27cf44d73c424",
+  "sourceMasterSha256": "2cc3bf01dcfb7de2242ed45e70a04a1c52f51247749d6f88407f4132c39ab600",
+  "helperSha256": "a73140ee3f90e5a26b4f23acb6dcd7b0b973020105b2b5fc83340113609315ad",
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "body-5",
+    "tailOwner": 6,
+    "stalkOwner": 13,
+    "sharedEdges": 0
+  },
+  "tailIdentityHelperSha256": "27b63227ed5f3fdb8079f74b54ccefc0335432f8b1c12bf483a07eec3ef0b529",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "mode": "tail-axial",
+    "moved": 28868,
+    "phases": [
+      {
+        "phase": "tail",
+        "schema": "cf.remainder-gap-labels/v1",
+        "tail": 6,
+        "stalk": 13,
+        "remainder": 7,
+        "maxDistance": 279,
+        "components": [
+          166,
+          84
+        ],
+        "changedPixels": 4724,
+        "requestedRetained": 4724,
+        "otherOwnersChanged": 0,
+        "unowned": 0,
+        "sourceRgbaChanges": 0,
+        "contourProjection": false
+      },
+      {
+        "phase": "axial",
+        "moved": 24144,
+        "protectedOwners": 1538444,
+        "counts": {
+          "8": 10755,
+          "9": 6086,
+          "10": 7303
+        },
+        "anchor": [
+          995,
+          587
+        ],
+        "rootAnchorRadiusPx": 8,
+        "originalRgbaChanged": false,
+        "nonRemainderChanges": 0,
+        "axis": [
+          [
+            0.7942583732057417,
+            0.46850079744816586
+          ],
+          [
+            0.731658692185008,
+            0.4646730462519937
+          ],
+          [
+            0.6440191387559808,
+            0.4787081339712918
+          ],
+          [
+            0.5525518341307815,
+            0.48724082934609253
+          ],
+          [
+            0.4452153110047847,
+            0.47695374800637963
+          ],
+          [
+            0.3076555023923445,
+            0.4758373205741627
+          ],
+          [
+            0.18732057416267944,
+            0.49377990430622015
+          ]
+        ],
+        "scope": "Diagnostic placement, not anatomy or visual admission"
+      }
+    ],
+    "originalPartsDifferentChannels": 0,
+    "keyedRgbaSha256": "f3a81aa4ee69166c39292c7693f5e9ec59f8b506c7f6ec9d3f23d7bed5ab27f0",
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false
+  },
+  "intake": {
+    "id": "sculpin-tail-axial-01",
+    "parts": 13,
+    "atlasSize": {
+      "width": 1276,
+      "height": 1211
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "3749fd481478f51fccd36e9ad0967498fd8638f62dcfe1ecd886c653cd2b88ee",
+    "sourceVertices": 1602,
+    "vertices": 1900,
+    "sharedSupports": 448,
+    "pins": 646,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 11,
+    "excludedOverlaps": 14,
+    "observedExcludedBoundaries": 14,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 14,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "joins": [
+    {
+      "name": "body--body-0",
+      "sourceEdges": 199
+    },
+    {
+      "name": "body--far-pectoral",
+      "sourceEdges": 123
+    },
+    {
+      "name": "body--head",
+      "sourceEdges": 329
+    },
+    {
+      "name": "body-0--body-1",
+      "sourceEdges": 572
+    },
+    {
+      "name": "body-1--body-2",
+      "sourceEdges": 439
+    },
+    {
+      "name": "body-1--dorsal",
+      "sourceEdges": 106
+    },
+    {
+      "name": "body-2--body-3",
+      "sourceEdges": 284
+    },
+    {
+      "name": "body-3--body-4",
+      "sourceEdges": 273
+    },
+    {
+      "name": "body-4--body-5",
+      "sourceEdges": 162
+    },
+    {
+      "name": "body-5--caudal",
+      "sourceEdges": 281
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 237
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body-0|body-2",
+      "sourceEdges": 29
+    },
+    {
+      "name": "body-0|dorsal",
+      "sourceEdges": 51
+    },
+    {
+      "name": "body-0|far-pectoral",
+      "sourceEdges": 166
+    },
+    {
+      "name": "body-0|near-pectoral",
+      "sourceEdges": 73
+    },
+    {
+      "name": "body-1|far-pectoral",
+      "sourceEdges": 27
+    },
+    {
+      "name": "body-1|near-pectoral",
+      "sourceEdges": 258
+    },
+    {
+      "name": "body-2|dorsal",
+      "sourceEdges": 87
+    },
+    {
+      "name": "body-2|near-pectoral",
+      "sourceEdges": 329
+    },
+    {
+      "name": "body-3|body-5",
+      "sourceEdges": 101
+    },
+    {
+      "name": "body-3|dorsal",
+      "sourceEdges": 165
+    },
+    {
+      "name": "body-4|dorsal",
+      "sourceEdges": 80
+    },
+    {
+      "name": "body-5|dorsal",
+      "sourceEdges": 102
+    },
+    {
+      "name": "body|jaw",
+      "sourceEdges": 47
+    },
+    {
+      "name": "far-pectoral|near-pectoral",
+      "sourceEdges": 64
+    }
+  ]
+}

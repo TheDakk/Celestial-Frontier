@@ -1,0 +1,92 @@
+[
+  {
+    "name": "profile",
+    "command": [
+      "node",
+      "tools/check-profile.mjs",
+      "--profile=develop"
+    ],
+    "exit": 1,
+    "seconds": 212.473
+  },
+  {
+    "name": "root-tsc",
+    "command": [
+      "npm",
+      "exec",
+      "--",
+      "tsc",
+      "--noEmit",
+      "--noUnusedLocals"
+    ],
+    "exit": 0,
+    "seconds": 2.667
+  },
+  {
+    "name": "app-tsc",
+    "command": [
+      "npm",
+      "exec",
+      "--",
+      "tsc",
+      "--noEmit",
+      "-p",
+      "apps/game/tsconfig.json"
+    ],
+    "exit": 0,
+    "seconds": 1.812
+  },
+  {
+    "name": "worker-tsc",
+    "command": [
+      "npm",
+      "exec",
+      "--",
+      "tsc",
+      "--noEmit",
+      "-p",
+      "apps/game/tsconfig.worker.json"
+    ],
+    "exit": 0,
+    "seconds": 0.843
+  },
+  {
+    "name": "artaudit",
+    "command": [
+      "npm",
+      "run",
+      "artaudit"
+    ],
+    "exit": 0,
+    "seconds": 1.109
+  },
+  {
+    "name": "overridecheck",
+    "command": [
+      "npm",
+      "run",
+      "overridecheck"
+    ],
+    "exit": 0,
+    "seconds": 1.35
+  },
+  {
+    "name": "speccheck",
+    "command": [
+      "node",
+      "tools/speccheck.mjs"
+    ],
+    "exit": 0,
+    "seconds": 0.452
+  },
+  {
+    "name": "overridecontrol",
+    "command": [
+      "npm",
+      "run",
+      "overridecontrol"
+    ],
+    "exit": 0,
+    "seconds": 90.306
+  }
+]

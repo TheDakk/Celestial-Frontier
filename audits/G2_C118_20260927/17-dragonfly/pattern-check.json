@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Dragonfly",
+  "masterSha256": "0bda5f6083b82d066a68acf817a92a1b0e248130822115402de52d9937df22c4",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

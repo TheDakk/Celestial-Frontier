@@ -1,0 +1,215 @@
+{
+  "kind": "primate",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Capuchin\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"470008303\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"12\"]]]]",
+    "seed": 470008303,
+    "ownerId": "authored:archetype-sprint/c198-reference-02-capuchin",
+    "earthName": "Capuchin"
+  },
+  "template": {
+    "id": "primate",
+    "version": 1
+  },
+  "clipSetId": "primate-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 470008303,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 1,
+    "body": 4,
+    "loco": 15,
+    "trait": 12,
+    "size": 5,
+    "diet": 1,
+    "head": 8,
+    "limbs": 2,
+    "skin": 8,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 0,
+    "behavior": 11,
+    "habitat": 16,
+    "detail": 9,
+    "accent": 0,
+    "temper": 2,
+    "sense": 7,
+    "repro": 4,
+    "life": 0,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Capuchin"
+  },
+  "geometry": {
+    "cutoutAssetHash": "26d7de64ca46329c96b1decaee299f51400b995c21583fe7787367d93a11e14a",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7607655502392344,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5119617224880383,
+      0.4354066985645933
+    ],
+    "pelvis": [
+      0.44417862838915473,
+      0.46172248803827753
+    ],
+    "spine": [
+      0.5287081339712919,
+      0.3763955342902711
+    ],
+    "chest": [
+      0.620414673046252,
+      0.44657097288676234
+    ],
+    "neck": [
+      0.6451355661881978,
+      0.3843700159489633
+    ],
+    "head": [
+      0.7089314194577353,
+      0.35645933014354064
+    ],
+    "jaw": [
+      0.7376395534290271,
+      0.4138755980861244
+    ],
+    "armNearShoulder": [
+      0.6060606060606061,
+      0.4696969696969697
+    ],
+    "armNearElbow": [
+      0.5422647527910686,
+      0.5877192982456141
+    ],
+    "armNearHand": [
+      0.613237639553429,
+      0.733652312599681
+    ],
+    "armFarShoulder": [
+      0.6874003189792663,
+      0.48086124401913877
+    ],
+    "armFarElbow": [
+      0.6881977671451356,
+      0.5869218500797448
+    ],
+    "armFarHand": [
+      0.7503987240829346,
+      0.7161084529505582
+    ],
+    "legNearHip": [
+      0.41626794258373206,
+      0.49521531100478466
+    ],
+    "legNearKnee": [
+      0.37161084529505584,
+      0.5821371610845295
+    ],
+    "legNearFoot": [
+      0.36762360446570974,
+      0.7033492822966507
+    ],
+    "legFarHip": [
+      0.48325358851674644,
+      0.5199362041467305
+    ],
+    "legFarKnee": [
+      0.5039872408293461,
+      0.6108452950558214
+    ],
+    "legFarFoot": [
+      0.5247208931419458,
+      0.6977671451355661
+    ],
+    "tail0": [
+      0.39553429027113235,
+      0.4449760765550239
+    ],
+    "tail1": [
+      0.21690590111642744,
+      0.40271132376395535
+    ],
+    "tail2": [
+      0.2607655502392344,
+      0.2703349282296651
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/C198_REFERENCE_PACKETS_20261003/02-capuchin/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Canonical primate source; four actual visible hand/foot endpoints."
+  },
+  "coverage": {
+    "scope": "One independently observed source painting, no donor coordinates or masks.",
+    "controlFrameLimit": "Root, pelvis, spine and chest are source-local control frames inside visible tissue, not observed skeletal bones.",
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "54a81038162259e617a71a10d843160fed9aa7a7f79816d656d7dc6d090e52a9",
+    "subjectSourceSha256": "5c082e12641700a1445d06649fb5e651f79f39358596c7ce9d0256d4903ff570",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.07271223157929739,
+      "spine": 0.12010797787772046,
+      "chest": 0.11547589138567879,
+      "neck": 0.06693341169934065,
+      "head": 0.06963416745045052,
+      "jaw": 0.0641933390669796,
+      "armFarShoulder": 0.07525223887297341,
+      "armFarElbow": 0.10606360394367297,
+      "armFarHand": 0.1433810915193464,
+      "armNearShoulder": 0.027218577617027152,
+      "armNearElbow": 0.13416102612320954,
+      "armNearHand": 0.16227629319727246,
+      "legFarHip": 0.07011197652418905,
+      "legFarKnee": 0.09324348314030922,
+      "legFarFoot": 0.08936046306675784,
+      "legNearHip": 0.04359788495322691,
+      "legNearKnee": 0.09772238412736324,
+      "legNearFoot": 0.12127768310028508,
+      "tail0": 0.051446223656425295,
+      "tail1": 0.18356037355729812,
+      "tail2": 0.13945314236626796
+    },
+    "measures": {
+      "body": 0.1768861550482823,
+      "bone-min": 0.027218577617027152,
+      "bone-max": 0.18356037355729812,
+      "arm/torso:armFar": 1.8356266167205935,
+      "arm/torso:armNear": 1.8297412640868644,
+      "leg/torso:legFar": 1.4286924980775093,
+      "leg/torso:legNear": 1.4845591058791305
+    }
+  },
+  "recipeHash": "e7979b35ddbb431eb46fcc874d5ecb442d0d2308e6b6490f0141967643485956"
+}

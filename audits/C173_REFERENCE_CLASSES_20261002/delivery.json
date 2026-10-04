@@ -1,0 +1,2743 @@
+{
+  "schema": "cf.c173-reference-class-delivery/v1",
+  "status": "FOUR_TECHNICAL_REFERENCES_WITH_THREE_EXPLICIT_HOLDS",
+  "uniqueSources": 7,
+  "sourceMasters": [
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman",
+      "source": "audits/C196_QUADRUPED_ORIGINALS_20261002/01-caiman",
+      "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe",
+      "source": "audits/C196_QUADRUPED_ORIGINALS_20261002/14-giraffe",
+      "masterSha256": "16ec8a19459d429c5b445c85adca9d6d17a920842989540b0c33b95362b6a3e3",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey",
+      "source": "audits/C196_QUADRUPED_ORIGINALS_20261002/20-monkey",
+      "masterSha256": "56c3437b8203380096564c67a8ec109b3a84cb07d4521caa3e870a2165fd6d4d",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm",
+      "source": "audits/C196_SIMPLE_ORIGINALS_20261002/01-earthworm",
+      "masterSha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge",
+      "source": "audits/C196_SIMPLE_ORIGINALS_20261002/02-sponge",
+      "masterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold",
+      "source": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail",
+      "masterSha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold",
+      "source": "audits/C196_SIMPLE_ORIGINALS_20261002/04-mussel",
+      "masterSha256": "aa7219e68a04fe659d7ec8cd1a66213bdbd7e36c826158f7d5477a0f272428cb",
+      "sourceBytesUnchanged": true
+    }
+  ],
+  "technicalReferences": [
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour",
+      "fit": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01",
+      "family": "quadruped",
+      "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+      "authoringSha256": "f206f2358d4e96a66550c87799f4889c168e2168899dab5b96f82ee622cadd50",
+      "recordRecipeHash": "c6bd211c432a33a155ee7de476e31f2ba2eb2f93332a397db8ce9b1b92cb76c0",
+      "bindingHash": "f56abd8996c38184949ff9c9cf7ec9b0ff5424743333ef00379d69a9e8ec6fc1",
+      "staticSha256": "5c45ad6fb2debc9d227e540301fa5862ba2b9579c251a5b1bee2c82c6782799f",
+      "sourceInventorySha256": "309d0d48c53c1c99f39edc246d9f6f0c8d4c90a51fa5e495fd134b3a1ed825f2",
+      "parts": 27,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1490,
+      "sourceVisibleRgbaChanges": 0,
+      "islandCap": 0.05,
+      "remainderIslands": 46,
+      "remainderPixels": 27834,
+      "smallIslandPixelsUnplaced": 2338,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour",
+      "fit": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01",
+      "family": "quadruped",
+      "masterSha256": "16ec8a19459d429c5b445c85adca9d6d17a920842989540b0c33b95362b6a3e3",
+      "authoringSha256": "52ca94a9d826f9fd0a02481a9faac57314764c2c1b1e0e55009daa23fec0f2ee",
+      "recordRecipeHash": "32f0f74efde77f2c069a5bc10c8bf3ae9e9bbff8b14eb96785451a593a2fbe6f",
+      "bindingHash": "6949a8f604d82ed920f8f23ecf96cb30ab13960e9b8619a2ea0a6b57eed574a5",
+      "staticSha256": "14a4ed95d192e0db4cfb3c7912469ddf26144e52d14879d5fddb6f4e34febcc4",
+      "sourceInventorySha256": "a60894517e458dffa494e903f2f8ffe628dd0df7dc1329558ace0632020d05ee",
+      "parts": 31,
+      "status": "PASS_STATIC",
+      "actions": 19,
+      "actionSamples": 2299,
+      "presentationSamples": 1707,
+      "sourceVisibleRgbaChanges": 0,
+      "islandCap": 0.05,
+      "remainderIslands": 40,
+      "remainderPixels": 7286,
+      "smallIslandPixelsUnplaced": 1264,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material",
+      "fit": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01",
+      "family": "annelid",
+      "masterSha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+      "authoringSha256": "f9b3ae58f4b5d32dbd858cbc7a86c9ea35313b9481ea62d79b966fb86bdac7ad",
+      "recordRecipeHash": "f441d86b605246cdfcac3aa1715883ccfc6654dcb10d852472d8b696a52f426f",
+      "bindingHash": "fbc59b25aa8405fd86e785de2b59582f3bcf3a1c669ef70a6a763a069fd1a768",
+      "staticSha256": "49a5294df0023d17aaedee76b97153a8a4cc362facfd080412b45ad185c7a26b",
+      "sourceInventorySha256": "1b6101c8d13f956428c7528f583e272dae50ee5cb8354c8d9484aea4f66a15fb",
+      "parts": 13,
+      "status": "PASS_STATIC",
+      "actions": 10,
+      "actionSamples": 1210,
+      "presentationSamples": 745,
+      "sourceVisibleRgbaChanges": 0,
+      "islandCap": 0.05,
+      "remainderIslands": 0,
+      "remainderPixels": 8057,
+      "smallIslandPixelsUnplaced": 0,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    },
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material",
+      "fit": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01",
+      "family": "sessile-filter",
+      "masterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+      "authoringSha256": "6d8987088117793b19a3de692cf45b6acc74dcee45abc5b2f34b879c8a3b88f3",
+      "recordRecipeHash": "11f3d9d703e76e09114515c9e102973abc8be19e1dd74520daad633866719b8f",
+      "bindingHash": "ea584131446544f1ad5078f9dc9bdb390979e5b432dd3fb45b466c22e262043e",
+      "staticSha256": "3b13b5e878f042b2edd6ac3f291f19ea58270e4b1173ed73117da2467d217661",
+      "sourceInventorySha256": "4622e029e43ba48fe529f0955160c60dcecff079fa9ab7c7d3307c9db0ab1488",
+      "parts": 5,
+      "status": "PASS_STATIC",
+      "actions": 10,
+      "actionSamples": 1210,
+      "presentationSamples": 732,
+      "sourceVisibleRgbaChanges": 0,
+      "islandCap": 0.05,
+      "remainderIslands": 0,
+      "remainderPixels": 172257,
+      "smallIslandPixelsUnplaced": 0,
+      "qualityAccepted": false,
+      "nativeRuns": 0
+    }
+  ],
+  "staticHold": {
+    "packet": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey",
+    "staticSha256": "99a3f4301b34b4bfb657a7a8e72b24d4a11e39e34c3d4480094d54906176cb32",
+    "redActions": [
+      {
+        "id": "approach:walk",
+        "sample": 10,
+        "ms": 60.3,
+        "error": "Error: Contact: approach:walk@60.3 exceeds scale compression bound"
+      },
+      {
+        "id": "faint",
+        "sample": 26,
+        "ms": 188.33333333333334,
+        "error": "Error: Contact: joint limit legFarFoot faint@188.33333333333334: 51.66310600942276"
+      }
+    ],
+    "presentationStatus": "RED",
+    "d28": {
+      "status": "REFUSED",
+      "reason": "remainder island of 1671 px is 10.9% of the remainder (> 5%): structural, not a sliver"
+    }
+  },
+  "anatomicalHolds": [
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold",
+      "observationSha256": "3b313018fca38fc993ddb9c999e7abefd6b9bf083df600408471d9451a34ae78"
+    },
+    {
+      "packet": "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold",
+      "observationSha256": "5bfd5e20d6c95c009a223e39b6008f41621c300462cdaf426ddbe7fda4300901"
+    }
+  ],
+  "priorRefusalsRetained": true,
+  "sourcePixelsChanged": 0,
+  "sourceLandmarksOrLabelsTransferred": false,
+  "automaticIslandPlacementApplied": false,
+  "globalReferencePoolChanged": false,
+  "productChanged": false,
+  "thresholdsChanged": false,
+  "qualityAccepted": false,
+  "nativeRuns": 0,
+  "performanceClaim": null,
+  "files": [
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/authoring.json",
+      "sha256": "f206f2358d4e96a66550c87799f4889c168e2168899dab5b96f82ee622cadd50",
+      "bytes": 18277
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/conservation-01.json",
+      "sha256": "2172d4beb24f05a474d7e16c76626a0762b3e9647582e7317cd858d37b2edda4",
+      "bytes": 6353
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/conservation-01.log",
+      "sha256": "02fa892a1e244d8f0349c83594759fff708fce2f3d0274ed83bdffc6c8edbaf3",
+      "bytes": 2092
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/conservation-execution-01.json",
+      "sha256": "b4c7e1c54c22601748972470973b21faf89b09662ed70747811ad4ec5858f237",
+      "bytes": 670
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/contour-receipt.json",
+      "sha256": "9a9170b0e5aa00406d000e93b92aeb07442c3de7839177a764922f1a71345ca2",
+      "bytes": 1652
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/binding.json",
+      "sha256": "1cf881c33ea9ce246f36227a926e5e370ae82670a8857aaae084c6151815fc4a",
+      "bytes": 1579041
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/declaration.json",
+      "sha256": "1a9dbcf56decfea00a8a60e93f22dd289e2300c52254500cf0867f730c769963",
+      "bytes": 2932
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/intake-provenance.json",
+      "sha256": "01284b37b47ffb9bceda373e13cff617d6b19c5ee2101ddf0577ac294ece91c3",
+      "bytes": 3458
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/label-authoring-receipt.json",
+      "sha256": "e15742b2ad86f65341f4c1f7df3153c4cda578c6a164f260a710d208a0afb94d",
+      "bytes": 3822
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/labels.png",
+      "sha256": "a3bc5125f17463c618862339da5be416bbdccf4988d41bb76ab3e52104857525",
+      "bytes": 40654
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/atlas/c173-reference-caiman-tail-contour.json",
+      "sha256": "7c94d2eccfea2c4c89fb8f0dcac3c064f9ca5641668d3e1f2339637b261c27c7",
+      "bytes": 11056
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/atlas/c173-reference-caiman-tail-contour.png",
+      "sha256": "23b612636859cf3f527e05a78157b42c97cfbb2a2d3b306a9bae86e3f9d8c34f",
+      "bytes": 402787
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/atlas/receipt.json",
+      "sha256": "56b730f6803de77689036b81fb50ba6fd0cd6beb7786fd78ea8429a87ed23cc5",
+      "bytes": 4253
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/binding.json",
+      "sha256": "257c1cd46163acea123bc132fa2a6473e6e1383935bfa2e4f3ea63edf811050d",
+      "bytes": 9049
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/keyed.png",
+      "sha256": "af6c37fdea664b83a2a64b7928dce31808a55d824cb27a5fb133e4c4f66c6f02",
+      "bytes": 1413577
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/manifest.json",
+      "sha256": "c1c7376438b95bbdd7b5a11aff8baefabc49aeec6dc2445aafcd4e6548493a05",
+      "bytes": 4588
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/ownership.png",
+      "sha256": "6dc00f731cd6eb93e01aed0b05cbf2cc7afbc1950b530cdb4a031b13456eebe8",
+      "bytes": 15010
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/chest.png",
+      "sha256": "238cbd81c31f52847c251cf6c6fa55fed86bd20ab68ad902fcb6b91fe1a76307",
+      "bytes": 22693
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/fore-far-ankle.png",
+      "sha256": "4af2bdf072ecb46b05cc01a6a651bb0fac297437c448aa9a0509ef596ec8e54d",
+      "bytes": 1487
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/fore-far-knee.png",
+      "sha256": "f134ca7a99c5b64b120c40fac5fbadaffdd1f2c469699e7392e2739296cc758a",
+      "bytes": 3407
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/fore-far-paw.png",
+      "sha256": "646c43a0964d33aef989a9c074a48c7bda71e102262c82be33080e008b855722",
+      "bytes": 3813
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/fore-far-root.png",
+      "sha256": "8ad58c0d997e97f1e7b042730ef8c7eb27c63fd33e9e9f7d7d52dfafa6a9dd00",
+      "bytes": 3328
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/fore-near-ankle.png",
+      "sha256": "825fa49b8624a3eab5829ecd103f8ed200dda6224f2f7e77891617d6c605ffa2",
+      "bytes": 3307
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/fore-near-knee.png",
+      "sha256": "e72377f6dfea44f0f73ba656e1d0905d3803fdd5d64df1f5ea4ad94abfffabfb",
+      "bytes": 7886
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/fore-near-paw.png",
+      "sha256": "9e0ed0647728ea92b81aec3f3fabd70dfa4a8fc3f0eac89499d5f0a12816cc82",
+      "bytes": 5647
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/fore-near-root.png",
+      "sha256": "b77955a859640ba3c602df0a1dbb415612d644d816acfe71e59184d44bb7f272",
+      "bytes": 13137
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/head.png",
+      "sha256": "2fafa56ae7d33e528c2ab9e83af6c2b8d2b50b9e46093cd96bfa7d368aa86a61",
+      "bytes": 30792
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/hind-far-ankle.png",
+      "sha256": "af03d52b83e922f8c44a4997a6bc284b27764d22db9f411edc38f89bba6f3df5",
+      "bytes": 2764
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/hind-far-knee.png",
+      "sha256": "3b851dd102038195e74282905ce82b3951c1dfa3e4cdfada31d93d65f44b4a37",
+      "bytes": 1837
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/hind-far-paw.png",
+      "sha256": "e60ec3036e79cfc62c4e716e8bd5a280f8a0ba0695ddc5a5c625215da3ecddc6",
+      "bytes": 3371
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/hind-far-root.png",
+      "sha256": "662d0cc4e5c6057fe319e1ab94a11d64fe3fff841b66751f9c3a1e09b58cbc28",
+      "bytes": 3325
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/hind-near-ankle.png",
+      "sha256": "88f3c8c44fbb5d7aa1c8459f5debe99dd35480f9b9dfea469338edb99c95f284",
+      "bytes": 4446
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/hind-near-knee.png",
+      "sha256": "8989315517062732c3b9e1ccd433b9ed1f32d2a5ce22a01925dd9e51e688d24b",
+      "bytes": 14415
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/hind-near-paw.png",
+      "sha256": "65fb27532478728f0ffadd4d021c604204ec359a3c2fb45ad6f69086b24877b9",
+      "bytes": 5839
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/hind-near-root.png",
+      "sha256": "b8b5ed1c8ed8c272bf14a37a8337512a3fbc88d20e2fda2018bc20a07578d815",
+      "bytes": 20171
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/jaw.png",
+      "sha256": "fcd2cf60a1323f4e0a084daff1189247d952103af40e792e16f963ac740c0699",
+      "bytes": 11263
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/neck.png",
+      "sha256": "49834605246d21e237b488b61856aa3ed466cf306d6aac898426f960e2e78664",
+      "bytes": 36686
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/pelvis.png",
+      "sha256": "bdad9d0102eb8598c3a00210c9c75c819199846fd97ac3b2fd5e7059e7707641",
+      "bytes": 19533
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/root.png",
+      "sha256": "6fa54c88e86821210620a6a2dfccc7d121305a24bd62ed7213e6d2e99f8ed878",
+      "bytes": 389
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/spine.png",
+      "sha256": "6c4738f7bb2a51f6adc46b7e3f8bbd994abb926f3d4f475b4e0c2f809c2590ad",
+      "bytes": 94117
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/tail-distal.png",
+      "sha256": "3fe2b4ddf48dcc2ee46ab589976e4af3a54eff59481804e9880125569d7ee0f1",
+      "bytes": 30964
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/tail-middle.png",
+      "sha256": "cd98f4e9aa52d6d306516aa0fcad8c4930cc97ff67e004aab69443817cf9f68b",
+      "bytes": 45372
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/tail-root.png",
+      "sha256": "1d4fc4c99cab81c552fc7a70326b07a361d693f2aed778f1a9bf7eb4da9744d5",
+      "bytes": 26093
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/parts/tail-tip.png",
+      "sha256": "e66db2b4c56fc61e28be544db69a04054f8da841f890d3b88bf351ae583987e6",
+      "bytes": 20714
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/parts/receipt.json",
+      "sha256": "ff309b0d7778720ae248cb32867556a8ee0773e8054c36ddb15b476c6a130e95",
+      "bytes": 7206
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/pre-split-binding.json",
+      "sha256": "122a60405cfe803db26caebc200cba45b341fa38400b9c6cabce37a67c9fa7ba",
+      "bytes": 916154
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/receipt.json",
+      "sha256": "f089e1077ee09feda6e36c91141febe310d9573ca2fbcecf01d18430cbaffe0b",
+      "bytes": 2863
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/fit01/record.json",
+      "sha256": "b7e041633f10f73c71187eb9d6d3a99b3cc4207aef312eb3f7144e63e60a3cd5",
+      "bytes": 7841
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/intake-01.log",
+      "sha256": "5b7b32ee3a39a6b54050bd1a3d913a78986a10429c77c18f84a5f0f6596388b1",
+      "bytes": 321
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/intake-execution-01.json",
+      "sha256": "e40cf1fe57dea9adb744376ffa355b72dd48bbd8903ffb8669f229f21be79d7c",
+      "bytes": 638
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/joint-preview-01.png",
+      "sha256": "22f0f418b9fe858c52d472c81d7e962272ac34bf007404772dae7f1ac4572cc3",
+      "bytes": 444840
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/master.png",
+      "sha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+      "bytes": 1207102
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/ownership-preview-01.png",
+      "sha256": "d88635f1565acfd31f7d7044f12c5fd41aed32040a91d90470f5a6bf8092835c",
+      "bytes": 417168
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "bytes": 112
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/static-01.json",
+      "sha256": "5c45ad6fb2debc9d227e540301fa5862ba2b9579c251a5b1bee2c82c6782799f",
+      "bytes": 10475
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/static-01.json.sources.json",
+      "sha256": "309d0d48c53c1c99f39edc246d9f6f0c8d4c90a51fa5e495fd134b3a1ed825f2",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/static-01.log",
+      "sha256": "e34434f076a97eafb842875dc477df1bd1e17011fd48578ad41e19e0050cfb7b",
+      "bytes": 2928
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/static-execution-01.json",
+      "sha256": "64d8469c5a47b9de87628ae6acf3569cdf774d83d8a3753789debb7f2d056066",
+      "bytes": 657
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour/subject-source.json",
+      "sha256": "d52aab22e476a592f304a7ec6fa7bfdd25d491e2b8e02ae2dac46be3e8068494",
+      "bytes": 2282
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/authoring-receipt.json",
+      "sha256": "ca944f7eeb5768b40b439b44d159ff7e5cd7fb36b2f087615250809d9c84c13f",
+      "bytes": 567
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/authoring.json",
+      "sha256": "8afb912be3aa61bf2ad3efe7aeb50a5345c6ab0bd693cf0c9e59bafeaf8fc18b",
+      "bytes": 17018
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/conservation-01.json",
+      "sha256": "e5ba8fcf03e01f06fe4f16ce4aa341c0992a6cf9f0262d05fd9bc3d09be75984",
+      "bytes": 1187
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/conservation-01.log",
+      "sha256": "c68917e26f9317dd9482609b059472cfcdf1d392467b453357d31a1944ff426a",
+      "bytes": 173
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/conservation-execution-01.json",
+      "sha256": "60652b7185871bf6282131076a777a15fd5a4194fa750c05229d9af0887c0c21",
+      "bytes": 631
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/binding.json",
+      "sha256": "9cae931c5b56b3231af91b26a6edd340c0d33456dd26e7c57d48b6651da5f6df",
+      "bytes": 1610361
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/declaration.json",
+      "sha256": "25367f21dcf204ecb0c946e44d4ac8891c6a94315d54de69e9fad45c8bb62360",
+      "bytes": 21292
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/intake-provenance.json",
+      "sha256": "3e3681285f4acd2533044922ad0f8299ef98ccc67b03105d98296729436dabd7",
+      "bytes": 3310
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/atlas/c173-reference-caiman.json",
+      "sha256": "6a388fddd6940e3d7e8466db61f5caf819b9d8be81cd02e1cb709cb9bf418694",
+      "bytes": 11040
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/atlas/c173-reference-caiman.png",
+      "sha256": "49ac3256ac63463c627dbec7cf384d999025a82664cbd4f75dafe2002b39ebd4",
+      "bytes": 403078
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/atlas/receipt.json",
+      "sha256": "78bbc636eca3cb4e20df7f2b6f48d2d73651c00828fbbc71108e087364fae29a",
+      "bytes": 4240
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/binding.json",
+      "sha256": "4b63673fb1455000b8602708ce71a3bffab29dd8c0312109fb80b99367a1a33e",
+      "bytes": 9046
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/keyed.png",
+      "sha256": "af6c37fdea664b83a2a64b7928dce31808a55d824cb27a5fb133e4c4f66c6f02",
+      "bytes": 1413577
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/manifest.json",
+      "sha256": "df2b5221b3495fec8aebe886200c773eae7b9ba58a74917f169b808d1cf08e6f",
+      "bytes": 4575
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/ownership.png",
+      "sha256": "3991a7ab949961846a81a161eaf6dd933580921f96670512f701ce2f1a5d0e68",
+      "bytes": 15066
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/chest.png",
+      "sha256": "238cbd81c31f52847c251cf6c6fa55fed86bd20ab68ad902fcb6b91fe1a76307",
+      "bytes": 22693
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/fore-far-ankle.png",
+      "sha256": "4af2bdf072ecb46b05cc01a6a651bb0fac297437c448aa9a0509ef596ec8e54d",
+      "bytes": 1487
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/fore-far-knee.png",
+      "sha256": "f134ca7a99c5b64b120c40fac5fbadaffdd1f2c469699e7392e2739296cc758a",
+      "bytes": 3407
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/fore-far-paw.png",
+      "sha256": "646c43a0964d33aef989a9c074a48c7bda71e102262c82be33080e008b855722",
+      "bytes": 3813
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/fore-far-root.png",
+      "sha256": "8ad58c0d997e97f1e7b042730ef8c7eb27c63fd33e9e9f7d7d52dfafa6a9dd00",
+      "bytes": 3328
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/fore-near-ankle.png",
+      "sha256": "825fa49b8624a3eab5829ecd103f8ed200dda6224f2f7e77891617d6c605ffa2",
+      "bytes": 3307
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/fore-near-knee.png",
+      "sha256": "e72377f6dfea44f0f73ba656e1d0905d3803fdd5d64df1f5ea4ad94abfffabfb",
+      "bytes": 7886
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/fore-near-paw.png",
+      "sha256": "9e0ed0647728ea92b81aec3f3fabd70dfa4a8fc3f0eac89499d5f0a12816cc82",
+      "bytes": 5647
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/fore-near-root.png",
+      "sha256": "b77955a859640ba3c602df0a1dbb415612d644d816acfe71e59184d44bb7f272",
+      "bytes": 13137
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/head.png",
+      "sha256": "2fafa56ae7d33e528c2ab9e83af6c2b8d2b50b9e46093cd96bfa7d368aa86a61",
+      "bytes": 30792
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/hind-far-ankle.png",
+      "sha256": "af03d52b83e922f8c44a4997a6bc284b27764d22db9f411edc38f89bba6f3df5",
+      "bytes": 2764
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/hind-far-knee.png",
+      "sha256": "3b851dd102038195e74282905ce82b3951c1dfa3e4cdfada31d93d65f44b4a37",
+      "bytes": 1837
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/hind-far-paw.png",
+      "sha256": "e60ec3036e79cfc62c4e716e8bd5a280f8a0ba0695ddc5a5c625215da3ecddc6",
+      "bytes": 3371
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/hind-far-root.png",
+      "sha256": "662d0cc4e5c6057fe319e1ab94a11d64fe3fff841b66751f9c3a1e09b58cbc28",
+      "bytes": 3325
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/hind-near-ankle.png",
+      "sha256": "88f3c8c44fbb5d7aa1c8459f5debe99dd35480f9b9dfea469338edb99c95f284",
+      "bytes": 4446
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/hind-near-knee.png",
+      "sha256": "8989315517062732c3b9e1ccd433b9ed1f32d2a5ce22a01925dd9e51e688d24b",
+      "bytes": 14415
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/hind-near-paw.png",
+      "sha256": "65fb27532478728f0ffadd4d021c604204ec359a3c2fb45ad6f69086b24877b9",
+      "bytes": 5839
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/hind-near-root.png",
+      "sha256": "b8b5ed1c8ed8c272bf14a37a8337512a3fbc88d20e2fda2018bc20a07578d815",
+      "bytes": 20171
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/jaw.png",
+      "sha256": "fcd2cf60a1323f4e0a084daff1189247d952103af40e792e16f963ac740c0699",
+      "bytes": 11263
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/neck.png",
+      "sha256": "49834605246d21e237b488b61856aa3ed466cf306d6aac898426f960e2e78664",
+      "bytes": 36686
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/pelvis.png",
+      "sha256": "bdad9d0102eb8598c3a00210c9c75c819199846fd97ac3b2fd5e7059e7707641",
+      "bytes": 19533
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/root.png",
+      "sha256": "6fa54c88e86821210620a6a2dfccc7d121305a24bd62ed7213e6d2e99f8ed878",
+      "bytes": 389
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/spine.png",
+      "sha256": "90722a11dfd86c532471269781066d442621a1662e9061aee0d82c4a60178cf7",
+      "bytes": 98777
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/tail-distal.png",
+      "sha256": "2e0794a10e69273aa5e890c412dbfa7b206a4bea6f9bed4a521a1408e572dbe5",
+      "bytes": 29197
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/tail-middle.png",
+      "sha256": "eacbc85f7b098ece559bafea0c871058fd74434e9ca6715259abd8040600e2dd",
+      "bytes": 43156
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/tail-root.png",
+      "sha256": "1d4fc4c99cab81c552fc7a70326b07a361d693f2aed778f1a9bf7eb4da9744d5",
+      "bytes": 26093
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/parts/tail-tip.png",
+      "sha256": "8499ea39b3af362c7798236425b0cb0d03460c689eb404d815f132eea25501da",
+      "bytes": 20286
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/parts/receipt.json",
+      "sha256": "f38cbec64894a3fcaa950c980e5ae3d44bc7b134cc3f50992f5f59704c4bfb36",
+      "bytes": 7027
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/pre-split-binding.json",
+      "sha256": "dfa2d7b3f768bf580ff262cfa36237ff0f75c7372a35455ab57a5276dd51ea48",
+      "bytes": 936047
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/receipt.json",
+      "sha256": "a16a716f9a73f1efff5ef5510f214b68e47453f083185955f3ea9ea7ba888285",
+      "bytes": 2850
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/fit01/record.json",
+      "sha256": "3f2b19ff68b0c228fdbc694dde03e120dece35549fb1be15c675e0c81b213653",
+      "bytes": 7541
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/intake-01.log",
+      "sha256": "569867ef5b49676271e31a12d8513a73a53deda100f7da860f31d7ce85023682",
+      "bytes": 308
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/intake-execution-01.json",
+      "sha256": "e0145144a57b392e9fcf48fbf54f88903bc6c5c5259d0566f1ca58dd720ceae5",
+      "bytes": 599
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/joint-preview-01.png",
+      "sha256": "22f0f418b9fe858c52d472c81d7e962272ac34bf007404772dae7f1ac4572cc3",
+      "bytes": 444840
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/master.png",
+      "sha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+      "bytes": 1207102
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/observation.json",
+      "sha256": "5345adfd169b14248d2b826334ff144df22e8f6353c0f32ebc3a8a446c3864aa",
+      "bytes": 2666
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/ownership-preview-01.png",
+      "sha256": "872bb66b4fd67472907b0d0332827a60cb6af6f10ebd289865b50b11cd43b40e",
+      "bytes": 417142
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "bytes": 112
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/remainder-diagnosis.json",
+      "sha256": "87be41d4d86472894bfa605852fcf9434cffbdcd995202fecfc610b29b6bdc65",
+      "bytes": 5800
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/source-evidence/generation.json",
+      "sha256": "3656b017a3df67193282c5e5405b98fd55a28f2570281edd261207ed86b950a9",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/source-evidence/prompt.txt",
+      "sha256": "2a329bbcfdbf6fb9621e1c99d0a494d2d37f5a832f1fcbd13a8a3c2945d44259",
+      "bytes": 10067
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/source-evidence/request.json",
+      "sha256": "95f0b85e666b49442b7085766a321430efd57991f09be8c59e8853b1ffd07fec",
+      "bytes": 3022
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/static-01.json",
+      "sha256": "5f95da46f66a202b02e8a87c83046bcbb47452c737d2fd652fcd971138d12689",
+      "bytes": 10396
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/static-01.json.sources.json",
+      "sha256": "7068c80207b9906fae46920b6c4e8f0830667fea7a69158b1607d2aa1e0e591e",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/static-01.log",
+      "sha256": "14e694ed31c1b0a8ba6277b51feb786c8375b5d0558ac3ab3c6e345fe7a7e1ce",
+      "bytes": 2927
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/static-execution-01.json",
+      "sha256": "b1ef8df8044b9014d95c241c6d2f2d7fb2a1b8fefa3dcbad6615b0434c61f1d4",
+      "bytes": 618
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman/subject-source.json",
+      "sha256": "d52aab22e476a592f304a7ec6fa7bfdd25d491e2b8e02ae2dac46be3e8068494",
+      "bytes": 2282
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/authoring.json",
+      "sha256": "52ca94a9d826f9fd0a02481a9faac57314764c2c1b1e0e55009daa23fec0f2ee",
+      "bytes": 20673
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/conservation-01.json",
+      "sha256": "db914ac15c6e0bd348bb4e4960da4554abab78ce3460ac155ca811dbea86c8ab",
+      "bytes": 5715
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/conservation-01.log",
+      "sha256": "c4a0981160c0cb47cb4722fe96f3f1694da4666b72b736c549cf596bc6d22058",
+      "bytes": 1832
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/conservation-execution-01.json",
+      "sha256": "cf3f1ee88c50af5b6d4eaca76c9a37d44747af1238ef8ae3dd960bdeebc021e8",
+      "bytes": 673
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/contour-receipt.json",
+      "sha256": "e47c746ee92bc34f9174750d599872371d0a00370219b5c5260105e9f3d7b0c6",
+      "bytes": 1780
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/binding.json",
+      "sha256": "fc35ae22faa34de2eb7bf5827919bdebc8d6ca34168787c0cdaeb037842b9fb5",
+      "bytes": 1324812
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/declaration.json",
+      "sha256": "13507c3b8f4bde200042f7188465a0f4dc72749943a0f5e2269df1a9ad253f71",
+      "bytes": 3302
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/intake-provenance.json",
+      "sha256": "3ce8ab0dc91c88066b94ae9d094bbe4924074377a096156ac2ee0b2927d3dde7",
+      "bytes": 3538
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/label-authoring-receipt.json",
+      "sha256": "a140b60965231cac8944378455d5cd1ace62de1a885ca31ca5549f8ce455e011",
+      "bytes": 4060
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/labels.png",
+      "sha256": "fb4a2a86e9e173b236f7be35765abb5370d67c77ba74d051eb99df400cfd94a6",
+      "bytes": 42686
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/atlas/c173-reference-giraffe-neck-contour.json",
+      "sha256": "6bc94204eaf09971a240b9d9a0e9065ddd6e6b8482902846e2e0b9c02074e025",
+      "bytes": 12664
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/atlas/c173-reference-giraffe-neck-contour.png",
+      "sha256": "a9cec1912ea8224e9cefbcb915e52d820a2f145e55ffe75e0226054e7461d83a",
+      "bytes": 290524
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/atlas/receipt.json",
+      "sha256": "9f76efeaae15f0512e8cefe5892d812b4a64f6b00769e3f3f5250bb4dbffea8e",
+      "bytes": 4778
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/binding.json",
+      "sha256": "de02af5ca3944691533532c92320dc61a82d0d1e287ebfc34913fe36641326d4",
+      "bytes": 10343
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/keyed.png",
+      "sha256": "5d8c55ed7fef05e5c42d49e7560177d68d7af0b04aad88b56d7cff7b915d7778",
+      "bytes": 1376596
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/manifest.json",
+      "sha256": "4e6492913479a58636acbaeaaa6ef98afb568a175f5d18a7d2909063deceef17",
+      "bytes": 5277
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/ownership.png",
+      "sha256": "b4fa168cd8b83cdc50a0e1eff5851e657ca3605c0dac5a008151c39d6b8cede9",
+      "bytes": 16293
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/chest.png",
+      "sha256": "c10c8ed7242ad2e22b7b41f282036b280e0a184e2aeecab1881f6cfa792a0542",
+      "bytes": 17249
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/ear-far-root.png",
+      "sha256": "0d3284d0f792790a93939c8cd5c76493c0bf627b71162e3e3abd2d1e6d9b1085",
+      "bytes": 971
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/ear-far-tip.png",
+      "sha256": "60a91b98fbc2a1df32423db4ee5516a1a61a44b75e7206410994bf250d18060b",
+      "bytes": 1443
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/ear-near-root.png",
+      "sha256": "e80b4be8bb003c883b8314e163ba68f0362baa21270c135bab31bf501a9b4fc4",
+      "bytes": 1108
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/ear-near-tip.png",
+      "sha256": "08e60db37b2dd9adbd9636965f433ef8a7b41a333aeee7b462da06dd2ba2ca3f",
+      "bytes": 1847
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/fore-far-ankle.png",
+      "sha256": "e6ba2eeef975a04e98de19753d22f73b406fca5fd5fae03c1fa67d2515d5042f",
+      "bytes": 2815
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/fore-far-hoof.png",
+      "sha256": "7ce1d98e66af7d068504f21dac782322bc1e9d5c2fed48b7dadad60e61e6b426",
+      "bytes": 2504
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/fore-far-knee.png",
+      "sha256": "706ac6ba395be08bfae08f494badcf10a77798472019a65a228f205cfc1529c1",
+      "bytes": 7582
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/fore-far-root.png",
+      "sha256": "bac5d03d00a7a466fcba8295d751ad89785cfd92d4137ac6724dcfd48f0bc8a3",
+      "bytes": 7237
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/fore-near-ankle.png",
+      "sha256": "8894647e0ea527bd8eed1ba129e82c1c5f0e734dcbe6073d5d7da4d2b36af00a",
+      "bytes": 3105
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/fore-near-hoof.png",
+      "sha256": "fa7ebc0821766c30524678c81c469517f2b1d6bb1f6227d1f89977c53efe1b05",
+      "bytes": 2417
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/fore-near-knee.png",
+      "sha256": "f8e4ae060586760fe6eeedae53d8381d4fe131d267dc0c7463219a71783c7ce1",
+      "bytes": 8114
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/fore-near-root.png",
+      "sha256": "cb92803c0bb0b944c0fa1de1d65c232c2fb2dd9a30204e707504b1bc449509e8",
+      "bytes": 41272
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/head.png",
+      "sha256": "608811da4c42f4be1a65d156f32d5b3944a90da6f6151818df9a86954b26dec6",
+      "bytes": 12314
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/hind-far-ankle.png",
+      "sha256": "61ffa60ac47263311f495170358b33d73bf40c02f53b0cd343f642b5d10b639a",
+      "bytes": 3070
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/hind-far-hoof.png",
+      "sha256": "e4be3a87fb175d4323f8c27e363b6221d1cd1f4607aa27396cce24061a5b4bb3",
+      "bytes": 2492
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/hind-far-knee.png",
+      "sha256": "cf52f4cb9284ca31c356e8d992ed8d8494ccd080d2f1d01dd4f8027144dc658c",
+      "bytes": 8481
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/hind-far-root.png",
+      "sha256": "1145af474825c9e53396a8456c1abf1b6d7247311cd6022b2f5291928b1b6d9a",
+      "bytes": 7361
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/hind-near-ankle.png",
+      "sha256": "55bfb5fd682a431bc266e61a6cee3d8024ffdbf2a6830d466bfc0342303eaf42",
+      "bytes": 3009
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/hind-near-hoof.png",
+      "sha256": "2ff09bf5648ef6f99b3ea62686b7ad3df3996004f515b7034450cdf125f358ab",
+      "bytes": 2829
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/hind-near-knee.png",
+      "sha256": "495a6c7e6b2aa2569bf186b490439a2ca62a8aeb617fd3e6abcdf4757e9b8005",
+      "bytes": 10197
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/hind-near-root.png",
+      "sha256": "af3cf00f71131724cd26db4c287d1dbdbbf5d3297846fd0163b43948805d2c27",
+      "bytes": 39985
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/jaw.png",
+      "sha256": "871389ab25c3c884bf5c2cf52585c217b2ce431ab2ac7a1341df44fa25fcaa87",
+      "bytes": 4368
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/neck.png",
+      "sha256": "6f976b276bec0ee48409ce3bb8b40771275daefef770b3d8067305028f1c6fa1",
+      "bytes": 95845
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/pelvis.png",
+      "sha256": "806844a204e2673ce007c4772efceb3737905f57d4f464a8dc0ba82f2a7cf5d2",
+      "bytes": 7061
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/root.png",
+      "sha256": "c7517aa05b7388729d13d4f26ab019fa7bb5fe85b5ad527daae0c3fd3df08217",
+      "bytes": 392
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/spine.png",
+      "sha256": "99cfd32dfe2246c817087bacd9910ca98159eade0cff7c893547837aa2dd5238",
+      "bytes": 29690
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/tail-lower.png",
+      "sha256": "15df850a7084462604863674fff7c8da36e181fb26d2afb32c1c11a369061913",
+      "bytes": 773
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/tail-middle.png",
+      "sha256": "7df92787e336cee6d70aeb662703d1f084fed5e7931030784de05f40cc135ad9",
+      "bytes": 1064
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/tail-root.png",
+      "sha256": "728241e90dd80402bd4232404cf94069a10626a7207af9a6e0b55874eeacd8ec",
+      "bytes": 1907
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/parts/tail-tuft.png",
+      "sha256": "c1b338ac19a652d58303fff200ce52b991120be21550a78da16be1de19888f45",
+      "bytes": 8012
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/parts/receipt.json",
+      "sha256": "3df365341338115aeff3b0bf71a5d21fd3cf2502166df56078fbf51706932f66",
+      "bytes": 8147
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/pre-split-binding.json",
+      "sha256": "c3232ae156f31cad427a3508c744ecb54ddc7e08b5ba1c09b93d6d6d8483a138",
+      "bytes": 797035
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/receipt.json",
+      "sha256": "c863eaef6c7513c56d6a310442712047e7933d57d85fd3c9172323400b884fc1",
+      "bytes": 2845
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/fit01/record.json",
+      "sha256": "efccbed5e8e906110d4d8f14512af431631bd830d15c835469905f33e63fbd11",
+      "bytes": 8010
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/intake-01.log",
+      "sha256": "aae34888c49e7643a9d2eac3f0e423cf9b24b8ce573f7063011b5704cf0b736e",
+      "bytes": 322
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/intake-execution-01.json",
+      "sha256": "18f23ed26d4ae132dcadee791f5168ab88da6f2537f7c27fdabfec68b5e19d55",
+      "bytes": 641
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/joint-preview-01.png",
+      "sha256": "1e4b84d8c04ffaa51ce7a6a3290607a26f430c4a4033e135c17c1dc1e55b9740",
+      "bytes": 360293
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/master.png",
+      "sha256": "16ec8a19459d429c5b445c85adca9d6d17a920842989540b0c33b95362b6a3e3",
+      "bytes": 1165232
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/ownership-preview-01.png",
+      "sha256": "ad001c494fb37b6a78aea78da6019850cb6d2a368b97a57e1c81f8009ad0550e",
+      "bytes": 324120
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/static-01.json",
+      "sha256": "14a4ed95d192e0db4cfb3c7912469ddf26144e52d14879d5fddb6f4e34febcc4",
+      "bytes": 10435
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/static-01.json.sources.json",
+      "sha256": "a60894517e458dffa494e903f2f8ffe628dd0df7dc1329558ace0632020d05ee",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/static-01.log",
+      "sha256": "36c0a4c763896d9258fb89ea0cd06686238080468ac1da2bd0158727422cea3b",
+      "bytes": 2898
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/static-execution-01.json",
+      "sha256": "0f680444565072cdb94852685718bf155ab23adae047c613cc9d5786cc242385",
+      "bytes": 660
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe-neck-contour/subject-source.json",
+      "sha256": "c90dc0a3046f279f29027c9ad346fa14afbf1e26045f5bf6e70e50b2b9836487",
+      "bytes": 2910
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/authoring-receipt.json",
+      "sha256": "0d392cb7b70ef137a9fa10cdc33ea7f9e4a799c4ac123e2fbded468e530a046c",
+      "bytes": 446
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/authoring.json",
+      "sha256": "2a6688972dccbf5dcf8623e2021d2c7547041761da55b8d99ac904094eec6cab",
+      "bytes": 19268
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/conservation-01.json",
+      "sha256": "ca8a95078b111f290c97eccdd9c31b84024d68b72f3f302da7797b018017fc55",
+      "bytes": 1188
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/conservation-01.log",
+      "sha256": "6678ec9aba6380f57cb1e8f7e432a92cf578a5d145cea43f16cf8fc0a2014c84",
+      "bytes": 174
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/conservation-execution-01.json",
+      "sha256": "7263682a3ece588bb44c0a972ed40ad118ffe78ede46f46ca68b3c66f7a25e85",
+      "bytes": 634
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/binding.json",
+      "sha256": "89fbf90ad2ed437187826620befe5537b195efca99386f9a5ece3b244bb86ae8",
+      "bytes": 1397845
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/declaration.json",
+      "sha256": "2c58b0727e3468a85d5db14e3750ad49c24afa471bc7904e9ae4bd98997d9307",
+      "bytes": 24725
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/intake-provenance.json",
+      "sha256": "9ae5163fbabe1015f0b86e36179e99f0cde2bf67b5553baa30259aa815a0dcf8",
+      "bytes": 3390
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/atlas/c173-reference-giraffe.json",
+      "sha256": "b45b9ba23bfa5408a822f5ad918091aeeb0f6708c860322331d4462db35e53c1",
+      "bytes": 12651
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/atlas/c173-reference-giraffe.png",
+      "sha256": "b30cd608bcf5cf5b10177442b815a845bc9087265ae622edaaa3e0d1bfc4e41e",
+      "bytes": 293219
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/atlas/receipt.json",
+      "sha256": "e41b3faba7f12930d12abbd729cda4781255873a3784bc30704e14ac197aafd9",
+      "bytes": 4765
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/binding.json",
+      "sha256": "e40a2fbc14de2929e02354f83b54d060117e723c90bb515c936f859c08af63fa",
+      "bytes": 10343
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/keyed.png",
+      "sha256": "5d8c55ed7fef05e5c42d49e7560177d68d7af0b04aad88b56d7cff7b915d7778",
+      "bytes": 1376596
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/manifest.json",
+      "sha256": "55856d25de135054600141a140e9f3cbc404e36144816ab5298294c17d1df333",
+      "bytes": 5264
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/ownership.png",
+      "sha256": "a2afbb5f4b48aeccb40401cac38c13433eccf2e163fba322fed9cdc71e03ef3c",
+      "bytes": 16172
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/chest.png",
+      "sha256": "c10c8ed7242ad2e22b7b41f282036b280e0a184e2aeecab1881f6cfa792a0542",
+      "bytes": 17249
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/ear-far-root.png",
+      "sha256": "0d3284d0f792790a93939c8cd5c76493c0bf627b71162e3e3abd2d1e6d9b1085",
+      "bytes": 971
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/ear-far-tip.png",
+      "sha256": "60a91b98fbc2a1df32423db4ee5516a1a61a44b75e7206410994bf250d18060b",
+      "bytes": 1443
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/ear-near-root.png",
+      "sha256": "e80b4be8bb003c883b8314e163ba68f0362baa21270c135bab31bf501a9b4fc4",
+      "bytes": 1108
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/ear-near-tip.png",
+      "sha256": "08e60db37b2dd9adbd9636965f433ef8a7b41a333aeee7b462da06dd2ba2ca3f",
+      "bytes": 1847
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/fore-far-ankle.png",
+      "sha256": "e6ba2eeef975a04e98de19753d22f73b406fca5fd5fae03c1fa67d2515d5042f",
+      "bytes": 2815
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/fore-far-hoof.png",
+      "sha256": "7ce1d98e66af7d068504f21dac782322bc1e9d5c2fed48b7dadad60e61e6b426",
+      "bytes": 2504
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/fore-far-knee.png",
+      "sha256": "706ac6ba395be08bfae08f494badcf10a77798472019a65a228f205cfc1529c1",
+      "bytes": 7582
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/fore-far-root.png",
+      "sha256": "bac5d03d00a7a466fcba8295d751ad89785cfd92d4137ac6724dcfd48f0bc8a3",
+      "bytes": 7237
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/fore-near-ankle.png",
+      "sha256": "8894647e0ea527bd8eed1ba129e82c1c5f0e734dcbe6073d5d7da4d2b36af00a",
+      "bytes": 3105
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/fore-near-hoof.png",
+      "sha256": "fa7ebc0821766c30524678c81c469517f2b1d6bb1f6227d1f89977c53efe1b05",
+      "bytes": 2417
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/fore-near-knee.png",
+      "sha256": "f8e4ae060586760fe6eeedae53d8381d4fe131d267dc0c7463219a71783c7ce1",
+      "bytes": 8114
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/fore-near-root.png",
+      "sha256": "cb92803c0bb0b944c0fa1de1d65c232c2fb2dd9a30204e707504b1bc449509e8",
+      "bytes": 41272
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/head.png",
+      "sha256": "608811da4c42f4be1a65d156f32d5b3944a90da6f6151818df9a86954b26dec6",
+      "bytes": 12314
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/hind-far-ankle.png",
+      "sha256": "61ffa60ac47263311f495170358b33d73bf40c02f53b0cd343f642b5d10b639a",
+      "bytes": 3070
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/hind-far-hoof.png",
+      "sha256": "e4be3a87fb175d4323f8c27e363b6221d1cd1f4607aa27396cce24061a5b4bb3",
+      "bytes": 2492
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/hind-far-knee.png",
+      "sha256": "cf52f4cb9284ca31c356e8d992ed8d8494ccd080d2f1d01dd4f8027144dc658c",
+      "bytes": 8481
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/hind-far-root.png",
+      "sha256": "1145af474825c9e53396a8456c1abf1b6d7247311cd6022b2f5291928b1b6d9a",
+      "bytes": 7361
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/hind-near-ankle.png",
+      "sha256": "55bfb5fd682a431bc266e61a6cee3d8024ffdbf2a6830d466bfc0342303eaf42",
+      "bytes": 3009
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/hind-near-hoof.png",
+      "sha256": "2ff09bf5648ef6f99b3ea62686b7ad3df3996004f515b7034450cdf125f358ab",
+      "bytes": 2829
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/hind-near-knee.png",
+      "sha256": "495a6c7e6b2aa2569bf186b490439a2ca62a8aeb617fd3e6abcdf4757e9b8005",
+      "bytes": 10197
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/hind-near-root.png",
+      "sha256": "af3cf00f71131724cd26db4c287d1dbdbbf5d3297846fd0163b43948805d2c27",
+      "bytes": 39985
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/jaw.png",
+      "sha256": "871389ab25c3c884bf5c2cf52585c217b2ce431ab2ac7a1341df44fa25fcaa87",
+      "bytes": 4368
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/neck.png",
+      "sha256": "2b6599c7b30ce7a2f2773d7924e2e9b342c41a842552a3c28c5bee1f7c0f54eb",
+      "bytes": 89576
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/pelvis.png",
+      "sha256": "806844a204e2673ce007c4772efceb3737905f57d4f464a8dc0ba82f2a7cf5d2",
+      "bytes": 7061
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/root.png",
+      "sha256": "c7517aa05b7388729d13d4f26ab019fa7bb5fe85b5ad527daae0c3fd3df08217",
+      "bytes": 392
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/spine.png",
+      "sha256": "88ee6377659f05731804dae0da713dc2d75226948711021145d3a53c78bedb2a",
+      "bytes": 37182
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/tail-lower.png",
+      "sha256": "15df850a7084462604863674fff7c8da36e181fb26d2afb32c1c11a369061913",
+      "bytes": 773
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/tail-middle.png",
+      "sha256": "7df92787e336cee6d70aeb662703d1f084fed5e7931030784de05f40cc135ad9",
+      "bytes": 1064
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/tail-root.png",
+      "sha256": "728241e90dd80402bd4232404cf94069a10626a7207af9a6e0b55874eeacd8ec",
+      "bytes": 1907
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/parts/tail-tuft.png",
+      "sha256": "c1b338ac19a652d58303fff200ce52b991120be21550a78da16be1de19888f45",
+      "bytes": 8012
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/parts/receipt.json",
+      "sha256": "386d0dd9a6028e2b619c5f0667e0f424d91c2b073e1cf8f1fe8a30b437f0ee2f",
+      "bytes": 7968
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/pre-split-binding.json",
+      "sha256": "51d2a9a88f40a64bc488b08dd3420c08bfbd0cb05f6a7db7dd55b5888073dfb4",
+      "bytes": 840776
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/receipt.json",
+      "sha256": "a26a83f4a1d9c0a2de3ab6732e7241fb26c07774bdbf767ceb2cb9f5c0b9f5c9",
+      "bytes": 2832
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/fit01/record.json",
+      "sha256": "e5bf1d396200c24532992af29267e57d36d517c018fc5935fc7a84a5820968d1",
+      "bytes": 7765
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/intake-01.log",
+      "sha256": "7048b823098a0f5e8c96a73f8d8746ab261c7a69e470c90bc393fb0fa9dde970",
+      "bytes": 309
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/intake-execution-01.json",
+      "sha256": "b4297827de2a20addfe03dcedab6cc5eed90f853107ab95ad6893b8317791923",
+      "bytes": 602
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/joint-preview-01.png",
+      "sha256": "1e4b84d8c04ffaa51ce7a6a3290607a26f430c4a4033e135c17c1dc1e55b9740",
+      "bytes": 360293
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/master.png",
+      "sha256": "16ec8a19459d429c5b445c85adca9d6d17a920842989540b0c33b95362b6a3e3",
+      "bytes": 1165232
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/observation.json",
+      "sha256": "2771928c81bcfc83d09d6aec8efa78f1d0125dca44f85286c66bf648b3192294",
+      "bytes": 2600
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/ownership-preview-01.png",
+      "sha256": "371bb5a972e6b91ffd19eb07b194ea4f4239f2cd82bb72a0b17c4c05a8f26a22",
+      "bytes": 324595
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/remainder-diagnosis.json",
+      "sha256": "1ffa06cef5b44f00859c552da2e3d87824345b0d544a845363ffb537b97b36ed",
+      "bytes": 6127
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/source-evidence/generation.json",
+      "sha256": "820c49a47b6d969020a1ec68124d8c878e05310b416755762aa25c3b620f2de2",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/source-evidence/prompt.txt",
+      "sha256": "e8026559cdc241b0fa989849b9ccdfb00bc684fc56f155b94da260a4edc2831e",
+      "bytes": 9775
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/source-evidence/request.json",
+      "sha256": "9d3ae8ae50e891e86c5a7eeddfcc896ce35adfdeed22c26c6fa147be72e771dc",
+      "bytes": 2983
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/static-01.json",
+      "sha256": "39f59ffe18254ce88dbb597675885055917da47900f0ef77a58794f6e0a16107",
+      "bytes": 10357
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/static-01.json.sources.json",
+      "sha256": "dc183539fdd38d96b97944ca6da11ee4ec9a2ae7d3b1e7e4ec97a54ca621939e",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/static-01.log",
+      "sha256": "36c0a4c763896d9258fb89ea0cd06686238080468ac1da2bd0158727422cea3b",
+      "bytes": 2898
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/static-execution-01.json",
+      "sha256": "d6b28c93060f6ddfc4c6ee203fa51b5b3f6299d17b931e1b9430b1641b1acb3e",
+      "bytes": 621
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe/subject-source.json",
+      "sha256": "c90dc0a3046f279f29027c9ad346fa14afbf1e26045f5bf6e70e50b2b9836487",
+      "bytes": 2910
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/authoring-receipt.json",
+      "sha256": "410011141b2ccc72cc6d661b7406ed5456a28900e29017cd4959c1967451cb61",
+      "bytes": 446
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/authoring.json",
+      "sha256": "b3454d08b50f5d4c16ceea4bc33ca3a7ec3d6e2eadd85f9a2dc98831fd59a033",
+      "bytes": 17471
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/conservation-01.json",
+      "sha256": "4710a0c1f3f50e5c5f5061371f53499b5dba10a83e14b60c33b7581acf879870",
+      "bytes": 1188
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/conservation-01.log",
+      "sha256": "dd25da35a42132e34ea520dda8559296b5c13fa08202908ede204e95db272b7f",
+      "bytes": 174
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/conservation-execution-01.json",
+      "sha256": "53e94d37e5413520739b6313f9e3dec8f790fd0944f692e5b0e9d911b3ed11f6",
+      "bytes": 631
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/binding.json",
+      "sha256": "1d670a28ca1f2075a92a47fe5d0286080e411eb99ce7a9b6c83eba84a42aad83",
+      "bytes": 1711891
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/declaration.json",
+      "sha256": "02b9c08fd85ffab5c8ed8bed8a5ea49b5880a693606589d03a54c961b95305d5",
+      "bytes": 23136
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/intake-provenance.json",
+      "sha256": "78fc807ec311e676d8a30d4e617f1ab7a45179e7ff610294791c6dd4c43cfb2a",
+      "bytes": 3170
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/atlas/c173-reference-monkey.json",
+      "sha256": "d0b1173bf26329d87f0d3d1999ea55dbbf998840572bd8c0e4d9ddbe4ec7d816",
+      "bytes": 9037
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/atlas/c173-reference-monkey.png",
+      "sha256": "bcf20047b04d67ce27e5e9d36b8cba1b6b1d962c4b2e56abe66c4e4907708cb4",
+      "bytes": 479559
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/atlas/receipt.json",
+      "sha256": "4719bb25bcd8acd2148e18ed077dfd1a3be13934dc39d63cca7e1339c0c2e99e",
+      "bytes": 3580
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/binding.json",
+      "sha256": "1e8d3961c1e302e142137c05fa2defc886af86091d7c512441f8b5ed67c7da50",
+      "bytes": 7428
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/keyed.png",
+      "sha256": "e7aa0fac5fc0daa4d86f3a36a8577f7a7490f58502b8be74c070e9c161734969",
+      "bytes": 1591077
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/manifest.json",
+      "sha256": "722a4085bab047fb891ff217b16634613ae99a87caddd891d1e7cdd555a8dc9b",
+      "bytes": 3705
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/ownership.png",
+      "sha256": "c986c290a7595c5a5cdec085051fc1b2dc5e9587c8473d4285f39585c3a6ecd5",
+      "bytes": 19585
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/arm-far-elbow.png",
+      "sha256": "2c953da7e60aed014fe1d45d2915c3ad6687e996e11a37e93da56fdbd94a8d03",
+      "bytes": 19540
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/arm-far-hand.png",
+      "sha256": "12f40ef2b4fa8078ca03af6569657ab3eedd29e14e7a204f9b40e126712903b7",
+      "bytes": 10431
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/arm-far-shoulder.png",
+      "sha256": "bb33292065004b64f5f14b1a46f6b999dfdd888ca98c6ad11109abb4fde2fe74",
+      "bytes": 29111
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/arm-near-elbow.png",
+      "sha256": "2a75a85b2981b5b04a82378ff9e84594b3b6e45aceb369dd208004d3a0202a00",
+      "bytes": 26763
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/arm-near-hand.png",
+      "sha256": "22e391f1d313d8036530e47f168b60eeb4ee2baf1e4b5ac555b91f50798e9ca3",
+      "bytes": 12883
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/arm-near-shoulder.png",
+      "sha256": "5942384bfbd9eff1aeef884dfb75a8cad108784ea84321c93b36e76804a57896",
+      "bytes": 41894
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/body.png",
+      "sha256": "3c8440f05fd87f3ef9eff1e08e68bd05cb7c29ba66e4afbf705c53aeb275d2f0",
+      "bytes": 56599
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/chest.png",
+      "sha256": "c2155c93eb51f51498538e25d4a69a49cd03528eb06ac6d1c9252e050c34c511",
+      "bytes": 33656
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/head.png",
+      "sha256": "1662f3a8555b2f69ed0d371893659d65a9378a7bbd361202779d685cb9279e08",
+      "bytes": 55878
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/jaw.png",
+      "sha256": "5a18e8622f196257388dd030720279eac15a33c53b22f95962ca6c59f65e8f3b",
+      "bytes": 7488
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/leg-far-foot.png",
+      "sha256": "5e3a76971f6b96bb1a23b967a22700155b5c3cb3b1e5dd7bc994bf6c0ba3ca40",
+      "bytes": 13534
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/leg-far-hip.png",
+      "sha256": "aa4f33ca520046a9688d4f15dbf741508d95f28eb20d33effe03a0eeb36e2cf4",
+      "bytes": 15009
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/leg-far-knee.png",
+      "sha256": "c475da76cf029a79ddfa148342f4549ea35105a40d02384a77dbe9e6a5a6c361",
+      "bytes": 26655
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/leg-near-foot.png",
+      "sha256": "87679cc2f7befa0184cc952deb869c4941af1725a5e3ce762630d160a8b2b973",
+      "bytes": 11683
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/leg-near-hip.png",
+      "sha256": "df6f6442e6b62bc5fb8db4c70255f79b63762952235700dc70d5012d92f770fd",
+      "bytes": 48282
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/leg-near-knee.png",
+      "sha256": "46c901e49279b0be82feb87a28feebafb32c61b57807be9cf96a47cc9a743458",
+      "bytes": 35486
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/neck.png",
+      "sha256": "0f698850fcebe9df797dbe1233ba7751fbf0b54b1a981cde7972e887a8e95461",
+      "bytes": 11112
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/pelvis.png",
+      "sha256": "7837f788bfaa0476b0c74e4929de67ffb4554478ed3eb26b24d7d8052175365f",
+      "bytes": 12607
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/root.png",
+      "sha256": "88f6efd16a4e962dbad912d6cd4cf55c1c19c8c3e511c0e64ec17c92c076eb9f",
+      "bytes": 374
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/tail-middle.png",
+      "sha256": "593a1e898a38a38bb54f2282221914fe552da5a57d55b956050d03c78d1957e7",
+      "bytes": 40801
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/tail-root.png",
+      "sha256": "3689763830df57984e2ad2317add4be8b18b9e46d2d917bb0b6cceafae5cef9e",
+      "bytes": 6899
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/parts/tail-tip.png",
+      "sha256": "b75245c5562f271f5d8ada3429b9bba7639aafe9e85216d10d183439f2ed66b7",
+      "bytes": 41794
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/parts/receipt.json",
+      "sha256": "2764a4992c7fce4baca86f232660c971c521612b546fa44b6f9733131e71d4d1",
+      "bytes": 5843
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/pre-split-binding.json",
+      "sha256": "119d11a5f5320d99fdb494228134402b8ad9891de71314e70f80b2770e75b4a0",
+      "bytes": 1125337
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/receipt.json",
+      "sha256": "0be44306337e54bd311c1d865fc3841d2afab1171246611c31dbce1cc52424ea",
+      "bytes": 2442
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/fit01/record.json",
+      "sha256": "61b1dbffa7ad5326f083a57f65aee931aa1ffda1bbc260aaf3561177c9b4fde1",
+      "bytes": 6648
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/intake-01.log",
+      "sha256": "3979c0e53e8424dbf780fc54211ca0509d456dca2e9917c1dd3067ab5bbdc400",
+      "bytes": 308
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/intake-execution-01.json",
+      "sha256": "55868e19909b937a64a3c397c5c6a5860f67a06be4efea72a946681da8ff4963",
+      "bytes": 599
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/joint-preview-01.png",
+      "sha256": "8dc5615c04ac50791f525409d0a797fa94a0c42138f089f1eb6d6ccaacd0947a",
+      "bytes": 580215
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/master.png",
+      "sha256": "56c3437b8203380096564c67a8ec109b3a84cb07d4521caa3e870a2165fd6d4d",
+      "bytes": 1286916
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/observation.json",
+      "sha256": "aa872fe11d182761f6982d6556e11c4b3ce9a3cf67e042e074d1122ba275cbc0",
+      "bytes": 2204
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/ownership-preview-01.png",
+      "sha256": "3d5345ca3c4f00781765e00e733323ece57a3a761b21a9885da06abb56e22b81",
+      "bytes": 536017
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/remainder-diagnosis.json",
+      "sha256": "517fe628ff5facf4b94675d353337bf8bf43852e633d34d6bab9193f407af9d7",
+      "bytes": 4918
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/source-evidence/generation.json",
+      "sha256": "d072552b655f1d8fa1491e8ce7d7f3735f257ebf3abfa90aa661cb4cc0007cc0",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/source-evidence/prompt.txt",
+      "sha256": "304714b826e28f1cfad04e76dc889676ac6299832b8d2082444ffdf6fefe30a0",
+      "bytes": 11005
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/source-evidence/request.json",
+      "sha256": "c677fe0fec31f3d0e9ce2f0c5a652f85877499a3cd13682157e8b1d72c532f0f",
+      "bytes": 2281
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/static-01.json",
+      "sha256": "99a3f4301b34b4bfb657a7a8e72b24d4a11e39e34c3d4480094d54906176cb32",
+      "bytes": 19510
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/static-01.json.sources.json",
+      "sha256": "c4d8d0a8e9d78cfb64a9e9c2d77a73a7d8300ad0f97433c6bfb266fec4ace332",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/static-01.log",
+      "sha256": "3260c0e51c3b87de40b9f019ff7d71b9ee4d44ebc696f836f9cdc185bee27614",
+      "bytes": 2291
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/static-execution-01.json",
+      "sha256": "9849b08e23522a9e44625d0f3295822f8402ddf4e98b3f0fc23d84d54bf3d0fa",
+      "bytes": 618
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/03-monkey/subject-source.json",
+      "sha256": "bd2f7b059dfbe298a5e975640500458048229d1b789f8f7d337f8705fdb2b6f5",
+      "bytes": 2431
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/authoring.json",
+      "sha256": "f9b3ae58f4b5d32dbd858cbc7a86c9ea35313b9481ea62d79b966fb86bdac7ad",
+      "bytes": 5861
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/conservation-01.json",
+      "sha256": "02b47b1ac5b3b3e672c6a5aa0ce3d69eb783c797e58c4038a16e63c513a51599",
+      "bytes": 1153
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/conservation-01.log",
+      "sha256": "36a7854b2e15e2bc9567b6f4b35ef93a0e380467ad2bdea1d7ee01ae3a8475dc",
+      "bytes": 127
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/conservation-execution-01.json",
+      "sha256": "1e03ef4723128acb007cd78132a56434c59c4da2c7ba395ed9493d5e113f4b60",
+      "bytes": 667
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/binding.json",
+      "sha256": "b295edc987cf48f6f9148d5a818719e4505e740f870537aa07d4131c6bdddb42",
+      "bytes": 802697
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/declaration.json",
+      "sha256": "e4c318433ff6300dd89976fa57d78820e86d6b7b10bd04a419651d317fd81f58",
+      "bytes": 5034
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/intake-provenance.json",
+      "sha256": "4e3259e033c56fe5f04b348da320ded10750b07b512fd24bc13504bcfa5db2bd",
+      "bytes": 3077
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/atlas/c173-reference-earthworm-material.json",
+      "sha256": "f5e97db797745dc5238b4a377b5760a83a551f93b5a4ec3a114ff3fda451653d",
+      "bytes": 5351
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/atlas/c173-reference-earthworm-material.png",
+      "sha256": "eaeae59e01ce18b9247abf3140741b1b2419a9899cf82300228642a10e912f15",
+      "bytes": 193518
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/atlas/receipt.json",
+      "sha256": "79dc392d728cfbbd319a303450050d5d13236bcd6431a3bd24442583b3fbb75b",
+      "bytes": 2416
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/binding.json",
+      "sha256": "589646362704ccbcabd843f1f22e961acaca364d872e436c5dc0e2fe727f14fe",
+      "bytes": 4480
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/keyed.png",
+      "sha256": "5143cc057c5e32eb93fd8273e377bea5adae2820037999295f874da875f3c65a",
+      "bytes": 1189311
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/manifest.json",
+      "sha256": "8a924818740320ec07402c9ec4374122a9f7feb4b98ddce265c66b0a3cce77d7",
+      "bytes": 2175
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/ownership.png",
+      "sha256": "d4e761fbf5f73f5d1480d2a4bd8a9bf3d7b4271097f91ab3861c13039b05f56a",
+      "bytes": 10924
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/root.png",
+      "sha256": "746033e35105a5a7ee9dd3eecd92774f26f0ef21dce1f28e1d1f4b59fd1939a5",
+      "bytes": 386
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment0.png",
+      "sha256": "183d2cf5ba592427ba0a5da547c72f08478f57db8d57deb94ccecb829447c6ef",
+      "bytes": 7525
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment1.png",
+      "sha256": "b70c7d9fa71c5493ab5666e692be9194af0b40c594706d65f0402775abe23c3c",
+      "bytes": 20048
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment10.png",
+      "sha256": "14ca325005db3b716f4e79db70d053615660ac1fcaf5d0e035381ed495dc60be",
+      "bytes": 13292
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment11.png",
+      "sha256": "4defa8bc5b23d9ee55e4c112be9cd3502245fa9a22a704df0ce94da5482f362d",
+      "bytes": 8461
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment2.png",
+      "sha256": "08653765759edd1a2c3660c57f3bb4274cbbfc28cd9f46544a8cacb6827988e4",
+      "bytes": 24723
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment3.png",
+      "sha256": "65a0d9df2676e170f65ac195cf17267bf9aa7fbb29abcd79d42aea5e94581c4b",
+      "bytes": 30503
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment4.png",
+      "sha256": "c25035b0e45f42a989d44bfa415c37c407d65166ae6a476aa70bbb9558a2817d",
+      "bytes": 28051
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment5.png",
+      "sha256": "65da1ac190e2b55ddafca5b8a13a1e4d76060ec336010d7d1a59e5cc1245f531",
+      "bytes": 23618
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment6.png",
+      "sha256": "b1fd3e8c5b4d12517c17fca611d2a288356010722724a600ea35ad774695f5a1",
+      "bytes": 24885
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment7.png",
+      "sha256": "cbee5dfba951a2862db1db77b1b4f5116284ff3ca85cb88a2a686d4541d49e09",
+      "bytes": 24983
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment8.png",
+      "sha256": "5eb7f14c678e10605237c88ecca224ba98badcf46caa6e3aebd1da17475430a3",
+      "bytes": 21227
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/parts/segment9.png",
+      "sha256": "39660d67b6b1207394123a4d0996ca08e23c8367c490e9d63d9409f68b37948a",
+      "bytes": 16887
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/parts/receipt.json",
+      "sha256": "95e5c18b46950a2d77e86ce5c145833176aee49536c95b50065517e3980ece5c",
+      "bytes": 3683
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/pre-split-binding.json",
+      "sha256": "2680a015f1c68e12ec7311a292a6343b0176f6dad9bce8618f0efe17f1f7e8c6",
+      "bytes": 463200
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/receipt.json",
+      "sha256": "63f4042eba41e1a592f703e5c21e75a80662641fd539fb3c0a3a102824ed45e3",
+      "bytes": 2057
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/fit01/record.json",
+      "sha256": "e8af60856942e208436ea7949a2f4865f50371ba794aa1ce4d940eb6c7140b4d",
+      "bytes": 5437
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/intake-01.log",
+      "sha256": "afd136ab57c9b1c0f309d9a08ae1ccf0d7575d1a72da0139c2c0a3fae641c3da",
+      "bytes": 320
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/intake-execution-01.json",
+      "sha256": "10e167e416c744d777112ad44161ff2a1dfb9c54d6058e1abd3d2965696e508a",
+      "bytes": 635
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/joint-preview-01.png",
+      "sha256": "211bdf6f3a02d3ffe822524126214ca19a0492c5e0759ff3db1cd92b054d2d01",
+      "bytes": 254590
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/master.png",
+      "sha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+      "bytes": 1041462
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/material-receipt.json",
+      "sha256": "c9c4d5ea61e6bd489d192631d165854c50d372c98af59f59bb807146310e6488",
+      "bytes": 1107
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/ownership-preview-01.png",
+      "sha256": "889e404bf29668c40820396e180b2fa7ca7568f1b0c44a99494bf5c25a8aa997",
+      "bytes": 236024
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/static-01.json",
+      "sha256": "49a5294df0023d17aaedee76b97153a8a4cc362facfd080412b45ad185c7a26b",
+      "bytes": 6277
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/static-01.json.sources.json",
+      "sha256": "1b6101c8d13f956428c7528f583e272dae50ee5cb8354c8d9484aea4f66a15fb",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/static-01.log",
+      "sha256": "5dd4eec6ed4ca93bf3cbb30b4e515feb02c573e4d91a214e8edff37a8933c344",
+      "bytes": 1454
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/static-execution-01.json",
+      "sha256": "866ae3374a9ecd5ad54cdbddbc6e66e27287be6bf7fc4c25fac48a4f6903b5a2",
+      "bytes": 654
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm-material/subject-source.json",
+      "sha256": "5f716b02343653a3a95d12543aa1b0c602cf25fc7b7cd2d9905ddbf71918d4a6",
+      "bytes": 2106
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/authoring-receipt.json",
+      "sha256": "a1aef56f541d908e25ab7ae0bf4e5dddc539d63971f404f0e25c50fbf735c784",
+      "bytes": 1484
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/authoring.json",
+      "sha256": "c4eb7edc199fec264aa6e7c0e25502a3a30a816f27750034ac0b72400da92ef1",
+      "bytes": 5652
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/conservation-01.json",
+      "sha256": "e8a0dc6b4cb4c3c3d5143b9dda42368f83c18df27c7e4b07bb4a575ca8952015",
+      "bytes": 1153
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/conservation-01.log",
+      "sha256": "36a7854b2e15e2bc9567b6f4b35ef93a0e380467ad2bdea1d7ee01ae3a8475dc",
+      "bytes": 127
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/conservation-execution-01.json",
+      "sha256": "0bcfe2d08ae1abb484258d9b597bd9045dbb9b9e79cfbb56863a11de27c5db69",
+      "bytes": 640
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/binding.json",
+      "sha256": "709f258c7899f89b39a39cebd8fbdaf21998fc3a8d3ee99c09b7eb4ebb2bfee3",
+      "bytes": 802697
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/declaration.json",
+      "sha256": "605ece472ee6fbf5bf4ae9da48bc2c5fc3a499d202f155c6f76645663432beb5",
+      "bytes": 5034
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/intake-provenance.json",
+      "sha256": "2f1b72a947b54e118676328c221881f978f67a4d1609e39cf45330c10c2fe885",
+      "bytes": 3005
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/atlas/c173-reference-earthworm.json",
+      "sha256": "f7af56cf4c15c74dae16ffc47c1f4ee414f4e2ce286dce95f377b7839e9ceef6",
+      "bytes": 5342
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/atlas/c173-reference-earthworm.png",
+      "sha256": "eaeae59e01ce18b9247abf3140741b1b2419a9899cf82300228642a10e912f15",
+      "bytes": 193518
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/atlas/receipt.json",
+      "sha256": "713bad3e5ae2cd39ab756378c4bc737cd0164843122d0e2e0c89a1651f9101d6",
+      "bytes": 2407
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/binding.json",
+      "sha256": "dc7c3abc04006719d84d484db39208d6bc2608dadc956f83133b7871e5ae07c2",
+      "bytes": 4480
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/keyed.png",
+      "sha256": "5143cc057c5e32eb93fd8273e377bea5adae2820037999295f874da875f3c65a",
+      "bytes": 1189311
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/manifest.json",
+      "sha256": "e742bc88891c4d8b4bc5d97a0aad7e52a8cfaef8f5cee4d7292ebaefd9ae9929",
+      "bytes": 2166
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/ownership.png",
+      "sha256": "d4e761fbf5f73f5d1480d2a4bd8a9bf3d7b4271097f91ab3861c13039b05f56a",
+      "bytes": 10924
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/root.png",
+      "sha256": "746033e35105a5a7ee9dd3eecd92774f26f0ef21dce1f28e1d1f4b59fd1939a5",
+      "bytes": 386
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment0.png",
+      "sha256": "183d2cf5ba592427ba0a5da547c72f08478f57db8d57deb94ccecb829447c6ef",
+      "bytes": 7525
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment1.png",
+      "sha256": "b70c7d9fa71c5493ab5666e692be9194af0b40c594706d65f0402775abe23c3c",
+      "bytes": 20048
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment10.png",
+      "sha256": "14ca325005db3b716f4e79db70d053615660ac1fcaf5d0e035381ed495dc60be",
+      "bytes": 13292
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment11.png",
+      "sha256": "4defa8bc5b23d9ee55e4c112be9cd3502245fa9a22a704df0ce94da5482f362d",
+      "bytes": 8461
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment2.png",
+      "sha256": "08653765759edd1a2c3660c57f3bb4274cbbfc28cd9f46544a8cacb6827988e4",
+      "bytes": 24723
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment3.png",
+      "sha256": "65a0d9df2676e170f65ac195cf17267bf9aa7fbb29abcd79d42aea5e94581c4b",
+      "bytes": 30503
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment4.png",
+      "sha256": "c25035b0e45f42a989d44bfa415c37c407d65166ae6a476aa70bbb9558a2817d",
+      "bytes": 28051
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment5.png",
+      "sha256": "65da1ac190e2b55ddafca5b8a13a1e4d76060ec336010d7d1a59e5cc1245f531",
+      "bytes": 23618
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment6.png",
+      "sha256": "b1fd3e8c5b4d12517c17fca611d2a288356010722724a600ea35ad774695f5a1",
+      "bytes": 24885
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment7.png",
+      "sha256": "cbee5dfba951a2862db1db77b1b4f5116284ff3ca85cb88a2a686d4541d49e09",
+      "bytes": 24983
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment8.png",
+      "sha256": "5eb7f14c678e10605237c88ecca224ba98badcf46caa6e3aebd1da17475430a3",
+      "bytes": 21227
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/parts/segment9.png",
+      "sha256": "39660d67b6b1207394123a4d0996ca08e23c8367c490e9d63d9409f68b37948a",
+      "bytes": 16887
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/parts/receipt.json",
+      "sha256": "b76de7e7471ccf8b4729eb3af548fd087304d128cc5dcf7d40498f722b17d117",
+      "bytes": 3683
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/pre-split-binding.json",
+      "sha256": "725d9d77a3d61197d4d0d7e6d64f78c7c191b5e21194f33d2cecd717aaa9a02a",
+      "bytes": 463200
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/receipt.json",
+      "sha256": "1733038cf266e54e1fcd20213efec00cef7e1a7053f8f286eb2aac90c310608e",
+      "bytes": 2048
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/fit01/record.json",
+      "sha256": "a9e1a39b5e6968e9459fb738183ab7f5aadc257c733f6ab77223ba184bc88864",
+      "bytes": 5219
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/intake-01.log",
+      "sha256": "89bf838f4c8797425f4e38a4769256e3af968b071e7b1d00d15fd751f4b6960d",
+      "bytes": 311
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/intake-execution-01.json",
+      "sha256": "ae4f37f6a3a5370f46182622ec94c71fc85948b24fe20c6e4cb8546c664279a2",
+      "bytes": 608
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/joint-preview-01.png",
+      "sha256": "211bdf6f3a02d3ffe822524126214ca19a0492c5e0759ff3db1cd92b054d2d01",
+      "bytes": 254590
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/master.png",
+      "sha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+      "bytes": 1041462
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/observation.json",
+      "sha256": "51d57a8089d2295bf8c07d96cc37bf514b0c0a110c322f1ac66e05621698543f",
+      "bytes": 1234
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/ownership-preview-01.png",
+      "sha256": "889e404bf29668c40820396e180b2fa7ca7568f1b0c44a99494bf5c25a8aa997",
+      "bytes": 236024
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/source-evidence/generation.json",
+      "sha256": "73f647b50398c54a6368e9abed2b9335cbfe1cb93ec8e534bd245c2cfe95829c",
+      "bytes": 617
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/source-evidence/prompt.txt",
+      "sha256": "2439990c3aa05babbf7d93c4cd2a4a3704920727d0b76db09eb8e365dfa20a66",
+      "bytes": 8594
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/source-evidence/request.json",
+      "sha256": "bdfa20ce4ec5c14352e5da152d1a6d45811d991c75c56b58567ab1b540d18086",
+      "bytes": 1188
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/static-01.json",
+      "sha256": "b6f0d0696bb5aa35c0737ef83f99f9440ed68f358d00f0eed171bb06d622fb56",
+      "bytes": 3084
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/static-01.json.sources.json",
+      "sha256": "724c830fead87211c63e5ce96ce2a82d28acebb6d82f81532cca98b1bedecbd7",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/static-01.log",
+      "sha256": "d35922bbeb3d028982fdcdf4b23c04bb09bf9f64bee845471a8ae44b5f7546e8",
+      "bytes": 1060
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/static-execution-01.json",
+      "sha256": "0bbe74eaed06c15f836824f5bd4a3491f2320e623d107042e86ee20474a0dd34",
+      "bytes": 627
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm/subject-source.json",
+      "sha256": "5f716b02343653a3a95d12543aa1b0c602cf25fc7b7cd2d9905ddbf71918d4a6",
+      "bytes": 2106
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/authoring.json",
+      "sha256": "6d8987088117793b19a3de692cf45b6acc74dcee45abc5b2f34b879c8a3b88f3",
+      "bytes": 4751
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/conservation-01.json",
+      "sha256": "1ffe9eeccb9d31c79ed3d0bbd3f662bc674d898900d45c3ad2ec49819c3cc8d0",
+      "bytes": 1155
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/conservation-01.log",
+      "sha256": "43d9ecec87ac748209fca252ec37bfba2230f57099e42c932f43c2c8f103b991",
+      "bytes": 128
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/conservation-execution-01.json",
+      "sha256": "f99779cd36bc0a7de1785de2929c99f93e2e1aafb192eae9cac12e295c6d3034",
+      "bytes": 658
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/binding.json",
+      "sha256": "4bdf99031e7f828fa2fc28c3a678426d4e1217a9c5c857403a4146275b29b5f5",
+      "bytes": 958972
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/declaration.json",
+      "sha256": "85ada42eeadd96645e2ba3e253f5a3662d3607cfa4e7f40f8ee951c53be3bd93",
+      "bytes": 4991
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/intake-provenance.json",
+      "sha256": "9ae791fb33bf0da325a855d3ad10ea6a68ce0259899b577ee3dcde872cfeb197",
+      "bytes": 2912
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/atlas/c173-reference-sponge-material.json",
+      "sha256": "33a0bbf5756cc568814999d2b94ef32c53f608ca1cb67e7acc65f389ef41b670",
+      "bytes": 2175
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/atlas/c173-reference-sponge-material.png",
+      "sha256": "04aa58bf352b1d700cb7ea295964f32af9cf596f83925a048ba59f906f8cef40",
+      "bytes": 684431
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/atlas/receipt.json",
+      "sha256": "b1b02a024f05c8615939c41324a0f345db21c0984e68351caccfb97518018099",
+      "bytes": 1392
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/binding.json",
+      "sha256": "cca59955a91addd5ef2dc4da055daad630379a81373a6be71e84f016d68df068",
+      "bytes": 1937
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/keyed.png",
+      "sha256": "e7c3177136bccd2ed193ba99386a86e79b6810cfdaa480ccaf0aece7eee9dbf1",
+      "bytes": 1842462
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/manifest.json",
+      "sha256": "6be2290229c98cf9fc7efbc03a73a55811608a28b47b7786f13726b6ca3dd6a3",
+      "bytes": 850
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/ownership.png",
+      "sha256": "72d4201690762e3ec57563b6efcb89fe82b9d0a213adbc9d5cbb5ef4c348214c",
+      "bytes": 16254
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/parts/aperture.png",
+      "sha256": "e629df2e5a1707f9cba261b146e73f1a0bb8dbe0475a3db9a951e35302b24711",
+      "bytes": 92395
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/parts/base.png",
+      "sha256": "0b62895ed9ee448a15425717aef8ff74357ca81f5b2a34c8c282a20c890f221c",
+      "bytes": 86491
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/parts/body.png",
+      "sha256": "100e09e782c8939b56b43b88733335f5cc80a62d365d27b3b1950a63e1e601ad",
+      "bytes": 579477
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/parts/crown.png",
+      "sha256": "7ea0a9dde971c6b001fcc6ed72d85ab3a8853da4a181d2ce7e03841f11da7c9a",
+      "bytes": 135601
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/parts/root.png",
+      "sha256": "5b4cc6fd26f97b5a6ea1feb8d5616f3fecd98e5cb483d768a9cb8e64b995bad5",
+      "bytes": 474
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/parts/receipt.json",
+      "sha256": "2f1f58c46cf31398866d528c37963028556d91aae0e56f4b42810f8a11078df1",
+      "bytes": 1812
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/pre-split-binding.json",
+      "sha256": "1527b16c41ef90fc2bcf138eb328c64231d0f85906d66e4e1da5d20e367978e3",
+      "bytes": 717730
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/receipt.json",
+      "sha256": "491117f0ba9008d2ac8f0ba189b92eb1f1c8282d5c7b793f4e71b9af94474414",
+      "bytes": 2058
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01/record.json",
+      "sha256": "867e938d0d001f51be0753d6cd6db59721bf8770a053a980d9c68bf310311ebe",
+      "bytes": 4648
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/intake-01.log",
+      "sha256": "e1b78e09b7b4894205beea04769c831e1e4779e9bfde0a9db0886678a608bc16",
+      "bytes": 316
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/intake-execution-01.json",
+      "sha256": "91571f5b7042f0b979b8b7215b726c8d33f625da5ef06bb0ce27ddd24193a696",
+      "bytes": 626
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/joint-preview-01.png",
+      "sha256": "8c1519db5ef9021662b71af395f0dff9eefcb3600ba3eb219328eb21ba071b7a",
+      "bytes": 918346
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/master.png",
+      "sha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+      "bytes": 1425342
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/material-receipt.json",
+      "sha256": "0423d5af0ac9227ad989e939b6e7b7a7847256050c4864e72c610959fb2361d0",
+      "bytes": 1209
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/ownership-preview-01.png",
+      "sha256": "de000ae77e6a4efda1d3239efe12d24f4ff588cabe3738f81945f818a40172b2",
+      "bytes": 820406
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/static-01.json",
+      "sha256": "3b13b5e878f042b2edd6ac3f291f19ea58270e4b1173ed73117da2467d217661",
+      "bytes": 6276
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/static-01.json.sources.json",
+      "sha256": "4622e029e43ba48fe529f0955160c60dcecff079fa9ab7c7d3307c9db0ab1488",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/static-01.log",
+      "sha256": "31002e9269521c1c30835c232de744a71f6ff20abb5a43c0a29f0ecad9f721f3",
+      "bytes": 1460
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/static-execution-01.json",
+      "sha256": "c82f51481370fa1040eb6f174609388e3d78ef80e9c156a460a810c08b780a6a",
+      "bytes": 645
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/subject-source.json",
+      "sha256": "0b6dc1abb8bd45945961981cc11128e07e7b183425701a77792fc226445438c7",
+      "bytes": 2120
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/authoring-receipt.json",
+      "sha256": "984ac42025602d53b443e1463054680030bd4fff2bfceff038a9d4e951a8c382",
+      "bytes": 1472
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/authoring.json",
+      "sha256": "8bd38c4a40fe416a519e92093becc6e7fb0a373128f47444c6869f89c037bf33",
+      "bytes": 4441
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/conservation-01.json",
+      "sha256": "14109ad88626397a8771a995929bb3f31bafd8c8c00d0afb02e866da860bb938",
+      "bytes": 1155
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/conservation-01.log",
+      "sha256": "43d9ecec87ac748209fca252ec37bfba2230f57099e42c932f43c2c8f103b991",
+      "bytes": 128
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/conservation-execution-01.json",
+      "sha256": "12a7b9a84326f632324d4c7366251cb36020de139af0ea3538ff174c489727e3",
+      "bytes": 631
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/binding.json",
+      "sha256": "8ccf38a00557be309cd3f82357c9bd8e8d846a4d023ea67fb7004c0d18f901e3",
+      "bytes": 958972
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/declaration.json",
+      "sha256": "ad1446be567b4079133f4f249899725bb288e7b31042a462fa97a5805f204eec",
+      "bytes": 4991
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/intake-provenance.json",
+      "sha256": "83545b7f251eea8592e4f3335d84680cbb7857daca83f8a023a39a7546ccae24",
+      "bytes": 2840
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/atlas/c173-reference-sponge.json",
+      "sha256": "66ff3b9635876843f81541b268fdb96eeefbc16748147a0bc709d41ad97c316b",
+      "bytes": 2166
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/atlas/c173-reference-sponge.png",
+      "sha256": "04aa58bf352b1d700cb7ea295964f32af9cf596f83925a048ba59f906f8cef40",
+      "bytes": 684431
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/atlas/receipt.json",
+      "sha256": "721e5018ab8267de624eb09e62fd36e0537d63135140ab99ee813f4654cda2f1",
+      "bytes": 1383
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/binding.json",
+      "sha256": "7bd33f55793fa80972f2febb5b50bc51de5802462741d37433b56214dd149a0c",
+      "bytes": 1937
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/keyed.png",
+      "sha256": "e7c3177136bccd2ed193ba99386a86e79b6810cfdaa480ccaf0aece7eee9dbf1",
+      "bytes": 1842462
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/manifest.json",
+      "sha256": "b878889f74b74ef5c12c5111a12218cc9f614692459ead936a197818a6f909b4",
+      "bytes": 841
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/ownership.png",
+      "sha256": "72d4201690762e3ec57563b6efcb89fe82b9d0a213adbc9d5cbb5ef4c348214c",
+      "bytes": 16254
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/parts/aperture.png",
+      "sha256": "e629df2e5a1707f9cba261b146e73f1a0bb8dbe0475a3db9a951e35302b24711",
+      "bytes": 92395
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/parts/base.png",
+      "sha256": "0b62895ed9ee448a15425717aef8ff74357ca81f5b2a34c8c282a20c890f221c",
+      "bytes": 86491
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/parts/body.png",
+      "sha256": "100e09e782c8939b56b43b88733335f5cc80a62d365d27b3b1950a63e1e601ad",
+      "bytes": 579477
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/parts/crown.png",
+      "sha256": "7ea0a9dde971c6b001fcc6ed72d85ab3a8853da4a181d2ce7e03841f11da7c9a",
+      "bytes": 135601
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/parts/root.png",
+      "sha256": "5b4cc6fd26f97b5a6ea1feb8d5616f3fecd98e5cb483d768a9cb8e64b995bad5",
+      "bytes": 474
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/parts/receipt.json",
+      "sha256": "49de3270740e0091809646139dcc70f8f0390ddb6c5f89474e79981b79eec007",
+      "bytes": 1812
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/pre-split-binding.json",
+      "sha256": "5c7c4b91dc2fa1a9dfb4bc3fd43f2d359e6d404a837233bd1bf09fd5b0a6fa73",
+      "bytes": 717730
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/receipt.json",
+      "sha256": "ad1bcf809898eb5e41881236a1b08df7a2b84ebc05b7aa1e1e412f1a5851b56e",
+      "bytes": 2049
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/fit01/record.json",
+      "sha256": "f87ef6984299c2007f65f4300fec5e4ffdfb26c967d79d9cab1bbe4a3290e97c",
+      "bytes": 4329
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/intake-01.log",
+      "sha256": "d6fb1951e27d23ba9b0b6640f6b404aa50ac0d198dedcaa785ede5b91c994670",
+      "bytes": 307
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/intake-execution-01.json",
+      "sha256": "b001abc9a0e5748b5e81a7956c9513e63659b6bdb1c7e5a6f9912d07ee31890f",
+      "bytes": 599
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/joint-preview-01.png",
+      "sha256": "8c1519db5ef9021662b71af395f0dff9eefcb3600ba3eb219328eb21ba071b7a",
+      "bytes": 918346
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/master.png",
+      "sha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+      "bytes": 1425342
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/observation.json",
+      "sha256": "1d18cd868f1a9ef252b1f2cfaf8adda31c33fdd2f11816fc5110aa6b9f7dd6fc",
+      "bytes": 1195
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/ownership-preview-01.png",
+      "sha256": "de000ae77e6a4efda1d3239efe12d24f4ff588cabe3738f81945f818a40172b2",
+      "bytes": 820406
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/source-evidence/generation.json",
+      "sha256": "9c5a3acd51cc76d78069fcaa87386dae73974f1d0b630298afa0d7cfbce1039e",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/source-evidence/prompt.txt",
+      "sha256": "84dcf06950f9fe6bb91d077c9ba3e4c44edf4ffe7b07d9937b4b738d2dadb9bd",
+      "bytes": 8603
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/source-evidence/request.json",
+      "sha256": "ef6059edd03c06b0e8d3709db0ebc32137f87e80d8700523d21a079fb138594e",
+      "bytes": 1193
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/static-01.json",
+      "sha256": "41685842de76d5bb415930754e81f16502d870a1ab8ac3730c8600ee818705f6",
+      "bytes": 3075
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/static-01.json.sources.json",
+      "sha256": "531c4c4f513bb52234dcac61913e827f9d83e156ab58fd246ee7af6b7d34d12c",
+      "bytes": 15780
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/static-01.log",
+      "sha256": "7b904ba251d77f79f2007c097bf59fc4d8080234722a4aff8b59dae351745ec9",
+      "bytes": 1062
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/static-execution-01.json",
+      "sha256": "815f8938f56298b6d23454b367be4589043c1b2bb41cf6ab8f9f7e7685dd73a0",
+      "bytes": 618
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge/subject-source.json",
+      "sha256": "0b6dc1abb8bd45945961981cc11128e07e7b183425701a77792fc226445438c7",
+      "bytes": 2120
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold/master.png",
+      "sha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+      "bytes": 1393126
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold/observation-preview.png",
+      "sha256": "41e07ffdc0c8534c5f739c881aaf7f7030986668eca80b92e934d7afc037b8d9",
+      "bytes": 799083
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold/observation.json",
+      "sha256": "3b313018fca38fc993ddb9c999e7abefd6b9bf083df600408471d9451a34ae78",
+      "bytes": 4632
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold/retention-receipt.json",
+      "sha256": "1b9c06bde795770ffdd1144238e376b7983a0c1903a8a4951b10119301f7ab57",
+      "bytes": 495
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold/source-evidence/generation.json",
+      "sha256": "6d85fc23c585b6ff9d47696040534b12e1e7be731d206ea0f65f65ae877e1722",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold/source-evidence/prompt.txt",
+      "sha256": "41d59a2b310a4f49cd4ddc47e51555cc874501621a5177e4632af078927e7418",
+      "bytes": 8766
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold/source-evidence/request.json",
+      "sha256": "92b73470139d522f6ff0b21e09b28f6abcc8c7e88f8849d6536e152f2e7ac624",
+      "bytes": 1206
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/06-snail-hold/subject-source.json",
+      "sha256": "fc9b2d9a2f79e6fde9c64db862a72175ba4031955bdf7531929fd3f16c5bfc26",
+      "bytes": 2140
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold/master.png",
+      "sha256": "aa7219e68a04fe659d7ec8cd1a66213bdbd7e36c826158f7d5477a0f272428cb",
+      "bytes": 1393275
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold/observation-preview.png",
+      "sha256": "8e0c05e369c4b3bf286ac5809200387cbd06fd67407e66f0b9d3a04d8faeb6e5",
+      "bytes": 729044
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold/observation.json",
+      "sha256": "5bfd5e20d6c95c009a223e39b6008f41621c300462cdaf426ddbe7fda4300901",
+      "bytes": 6174
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold/retention-receipt.json",
+      "sha256": "b7eb07f67170331e6eef483c23843c0707ccc46c99160d26e9e0e1472dd3e3fe",
+      "bytes": 495
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold/source-evidence/generation.json",
+      "sha256": "63b38baaf4e4bbf186fb3e90d05853e7005c03d71d43fd3f496a99f9fce7e2a6",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold/source-evidence/prompt.txt",
+      "sha256": "9cb9bd80d6b5f0c364c19f7fa35e781f421c6860436a2aa16299e174f072d7fa",
+      "bytes": 8915
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold/source-evidence/request.json",
+      "sha256": "fc03969cf07a672e29ae4717bd3fd40f72d32680e185e0185da6cbf27df376de",
+      "bytes": 1209
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/07-mussel-hold/subject-source.json",
+      "sha256": "a4f6f6555c6908342188185fd7aa62f6d921af1bf6fd48d340e851881c4cae0e",
+      "bytes": 2190
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/README.md",
+      "sha256": "b0cdc9ce49d4c5e122d601c4fb22a244ed9d879a170cc2eda7bb549bba204765",
+      "bytes": 6701
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/author-caiman.mjs",
+      "sha256": "daa3d6656a5d4bf9b920d8c209bf6f39a9c2b8881abaaed882c340fa54759f94",
+      "bytes": 6844
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/author-giraffe.mjs",
+      "sha256": "2da9732e063d95425daa2aca6ba17631cf7f02f22dba198a80c353808fbab2b2",
+      "bytes": 6896
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/author-monkey.mjs",
+      "sha256": "36bfff53d76f976934d5f4aed7673c303bb2610d5ef181b7caec1fcf59f6c8b6",
+      "bytes": 6356
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/author-simple-first-two.mjs",
+      "sha256": "368087a02c79611bb1bd9c43ee41e03a7ad69c0a87b96fc46b224854a21c7220",
+      "bytes": 4538
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/caiman-review.json",
+      "sha256": "de53272e6491e7deb829e0c8b2bde78d555f873cfe1f04808348aa2974c37813",
+      "bytes": 7021
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/complete-caiman-tail-contour.mjs",
+      "sha256": "acb48afc3a1fdb7a86d837648f5f576f6e0c5bd1141c85bdf65c7f05c80a71cd",
+      "bytes": 2048
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/complete-giraffe-neck-contour.mjs",
+      "sha256": "4d8554ade1e266def994c48ef1ef6b7798d9a5e11df961006f948e7b6a806b59",
+      "bytes": 1835
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/contour-delta-proof.json",
+      "sha256": "a721083051190d3f809e987ff2c64a85d7faf12a1816d24e286e7e559fcd4762",
+      "bytes": 945
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/correct-simple-materials.mjs",
+      "sha256": "5dea6e9385e54ea791dbc5249aa72dad23797312fb2abc430189bb43d67bcbc9",
+      "bytes": 2075
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/diagnose-remainder.mjs",
+      "sha256": "bb8f647a77b5ceae3650d3684f59167b815a2bb4768dea42524453945c110a4b",
+      "bytes": 1744
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/freeze-delivery.mjs",
+      "sha256": "39ae3f3905a3a0c12dd975c5b3c456496069266b2c516ff91196f01976f80f0f",
+      "bytes": 6398
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/giraffe-contour-delta-proof.json",
+      "sha256": "e9a2a36392c91820c2eab2c7c0baf054e160c7069878128853fdf20435c84351",
+      "bytes": 833
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/giraffe-review.json",
+      "sha256": "efa5f9d64e61ef425bdd8a4f95d8c5cf5d3dbc41b98392bc55d19c9a5b6c12e4",
+      "bytes": 6522
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/helper-derivation.json",
+      "sha256": "a13fc9155ac1fde7407ea40d6a0808fb175e5091a16a8e152430f29dc3bbb446",
+      "bytes": 617
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/material-equivalence.json",
+      "sha256": "f0ce9af396d1115a386203a1630dbe207d1e66adc12d1dcad68db667bf5acc8d",
+      "bytes": 1338
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/monkey-review.json",
+      "sha256": "c1cdd779d788770cbf1a4328f2d0414a694cff7edb3ff05b2c4c706093775585",
+      "bytes": 15895
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/retain-simple-anatomical-holds.mjs",
+      "sha256": "310f89206ba048ae221885b795dfb563225ad94a10aed0338e42c0b403d30249",
+      "bytes": 6426
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/run-stage.mjs",
+      "sha256": "6d113a717cd77901557cd8b2c3ead640463fe67ff0562ae881baa1d4e0407269",
+      "bytes": 1560
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/simple-full-size-review.json",
+      "sha256": "f7d505aa3c04ba59694a6328df51f9ce38dd28b8729d92152ace38f2339b6465",
+      "bytes": 1609
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/verify-and-preview.mjs",
+      "sha256": "8cbad08688ee7310457495a2fd8b995342c4b503fc0a65ece6343bca15201a29",
+      "bytes": 5439
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/verify-caiman-contour-delta.mjs",
+      "sha256": "cb20ddcd0d0b9ed93f7add0999f73a35d5c18a4a7f9c4b8b7178becda6acfa8f",
+      "bytes": 3201
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/verify-giraffe-contour-delta.mjs",
+      "sha256": "90af801cebdbcadd17b2cac70cb8a9221616ce9b311b2eb7f34edf58359b28d5",
+      "bytes": 3211
+    },
+    {
+      "path": "audits/C173_REFERENCE_CLASSES_20261002/write-observed-packet.mjs",
+      "sha256": "dde445e4aecc33840681f06f79a3c976594f88fee3fe0f92fedd27ef1e116e6d",
+      "bytes": 2426
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "name": "Electric Eel",
+  "family": "serpent",
+  "species": {
+    "name": "Electric Eel",
+    "aspect": 8,
+    "headFrac": 0.12,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "single long ribbon anal fin running the whole underside",
+      "no dorsal fin and no pelvic fins",
+      "blunt rounded flattened head"
+    ],
+    "note": "Not a true eel but a knifefish - it undulates the belly fin and has a flat-topped head, not an eel's continuous dorsal fringe."
+  },
+  "genome": {
+    "seed": 2343305612,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 2,
+    "body": 6,
+    "loco": 9,
+    "trait": 11,
+    "size": 2,
+    "diet": 1,
+    "head": 3,
+    "limbs": 0,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 11,
+    "habitat": 1,
+    "detail": 2,
+    "accent": 13,
+    "temper": 3,
+    "sense": 2,
+    "repro": 0,
+    "life": 4,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Electric Eel"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Electric Eel\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2343305612\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "index": 361,
+  "profile": {
+    "id": "eel",
+    "names": [
+      "Eel",
+      "Electric Eel",
+      "Moray Eel",
+      "Gulper Eel"
+    ],
+    "candidateTemplates": [
+      "fish",
+      "serpent"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "bite",
+      "strike"
+    ],
+    "notes": "No legs. Electrical effects are abilities, not physical anatomy."
+  }
+}

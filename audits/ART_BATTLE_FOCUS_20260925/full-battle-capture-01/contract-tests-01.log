@@ -1,0 +1,11 @@
+✔ observes every phase of every turn through final recovery; preserves ten-second minimum (1.866584ms)
+✔ old ten-second truncation, omitted/reordered turns, erased phases and invented endpoints refuse (5.0055ms)
+✔ independent encoded duration and proportional frame floor reject old ten-second media and stalled capture (0.236083ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 92.962208

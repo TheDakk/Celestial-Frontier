@@ -1,0 +1,127 @@
+{
+ "schema": "cf.derived-ownership-evidence/v1",
+ "kind": "DERIVED OWNERSHIP EVIDENCE: derived from the admitted binding; not a manual label source, not an anatomical admission",
+ "creatureId": "eel",
+ "generatorSha256": "2c34c9ea65e397e53a2b94d262f9f287854ecf389ece81dedea43d78dbee30dc",
+ "derivation": "tools/morph/build-card-masters.mjs derived-from-binding branch (kind=part order, atlas alpha into native cut-out, far before near, R=label, A=255); malformed geometry refuses",
+ "pin": {
+  "creatureId": "eel",
+  "masterPath": "audits/ART_BATTLE_FOCUS_20260925/27-eel/master.png",
+  "masterSha256": "77890d5b4b55daf076bfc6ca2da0b03fce16930feaca08223bc2d0822e2571cb",
+  "masterWidth": 1254,
+  "masterHeight": 1254,
+  "recordPath": "audits/ART_BATTLE_FOCUS_20260925/27-eel/fit-02/record.json",
+  "recordSha256": "855a29c87b445f5bea8b401a2c5806f340392111ceea3a42a5d44998763bfbd5",
+  "recipeHash": "9b55893072b7c53f8bc5ae4f9ccb7cb89974743bfcd7bd3297a030553741e37c",
+  "alphaPath": "audits/ART_BATTLE_FOCUS_20260925/27-eel/fit-02/parts/alpha.png",
+  "alphaSha256": "73705320bda2f3e7df627500eead3db0298f8fd4ba24a48e028ee94dae8df0c6",
+  "bindingSha256": "16e668748f842e1c1376e28617b42ef4a65d75cec124b4884c92c27cd1376384",
+  "atlasPath": "audits/ART_BATTLE_FOCUS_20260925/27-eel/fit-02/parts/atlas/eel.png",
+  "atlasSha256": "ec6b20bf2d42112db1fb5d1987aa43a8b3a3eeff37a8548183833b3a30264537"
+ },
+ "sourceChecks": {
+  "record": true,
+  "master": true,
+  "alpha": true,
+  "binding": true,
+  "atlas": true,
+  "recipe": true
+ },
+ "dimensions": {
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": {
+  "pngSha256": "1b07c0600205a24f8d42a025f2d909b4374b156718a39fa2da268a0b32eac0c3",
+  "rgbaSha256": "a2dcc5a575a1e593e187e910fb9309c87aba42bacb1318282569267b4bf9ea76",
+  "map": [
+   {
+    "label": 1,
+    "id": "root",
+    "joint": "root",
+    "layer": "near"
+   },
+   {
+    "label": 2,
+    "id": "jaw",
+    "joint": "jaw",
+    "layer": "near"
+   },
+   {
+    "label": 3,
+    "id": "head",
+    "joint": "head",
+    "layer": "near"
+   },
+   {
+    "label": 4,
+    "id": "segment-0",
+    "joint": "seg0",
+    "layer": "near"
+   },
+   {
+    "label": 5,
+    "id": "segment-1",
+    "joint": "seg1",
+    "layer": "near"
+   },
+   {
+    "label": 6,
+    "id": "segment-2",
+    "joint": "seg2",
+    "layer": "near"
+   },
+   {
+    "label": 7,
+    "id": "segment-3",
+    "joint": "seg3",
+    "layer": "near"
+   },
+   {
+    "label": 8,
+    "id": "segment-4",
+    "joint": "seg4",
+    "layer": "near"
+   },
+   {
+    "label": 9,
+    "id": "segment-5",
+    "joint": "seg5",
+    "layer": "near"
+   },
+   {
+    "label": 10,
+    "id": "segment-6",
+    "joint": "seg6",
+    "layer": "near"
+   },
+   {
+    "label": 11,
+    "id": "segment-7",
+    "joint": "seg7",
+    "layer": "near"
+   },
+   {
+    "label": 12,
+    "id": "segment-8",
+    "joint": "seg8",
+    "layer": "near"
+   },
+   {
+    "label": 13,
+    "id": "segment-9",
+    "joint": "seg9",
+    "layer": "near"
+   }
+  ],
+  "overwrites": {},
+  "paintedPixels": 69953,
+  "unownedPaintedPixels": 0
+ },
+ "controls": {
+  "reproducesShippedCardLabels512": true,
+  "changedBindingBreaksReproduction": true,
+  "changedDimensionsRefuse": true,
+  "identityFinishConservation": "PASS"
+ }
+}

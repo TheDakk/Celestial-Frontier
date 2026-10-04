@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 3270681071,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 3,
+    "body": 12,
+    "loco": 16,
+    "trait": 16,
+    "size": 3,
+    "diet": 0,
+    "head": 5,
+    "limbs": 5,
+    "skin": 4,
+    "tail": 2,
+    "pattern": 2,
+    "eyes": 5,
+    "behavior": 7,
+    "habitat": 2,
+    "detail": 6,
+    "accent": 12,
+    "temper": 8,
+    "sense": 0,
+    "repro": 5,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Scallop"
+  },
+  "observation": null
+}

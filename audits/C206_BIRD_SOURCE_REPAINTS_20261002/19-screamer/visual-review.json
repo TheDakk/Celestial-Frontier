@@ -1,0 +1,28 @@
+{
+  "name": "Screamer",
+  "masterSha256": "9b9da4dd7e2e3a241c4c9f225b00d0358606d387a317066f8f743391bdc52255",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: two separate partly webbed feet, bulky feathered body, short hooked bill, forehead projection and a near-wing spur are visible. HOLD: forehead projection is still a thick rigid horn instead of the requested thin flexible spine; head/wing spur styling remains exaggerated. No claim that the earlier source anatomy defect was resolved, and no hidden far spur invented.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 285,
+      "y0": 300,
+      "x1": 968,
+      "y1": 935
+    },
+    "margins": {
+      "left": 285,
+      "right": 285,
+      "top": 300,
+      "bottom": 318
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

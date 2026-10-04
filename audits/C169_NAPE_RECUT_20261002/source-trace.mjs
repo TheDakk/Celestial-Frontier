@@ -1,0 +1,8 @@
+// Independent positive-alpha source pixel interpolation through published triangles.
+export function traceSourcePixels(record,binding,atlas,positions,selectPart=()=>true){const out=[];
+ for(const part of binding.paintSkin.parts){const owner=binding.parts.find(p=>p.id===part.id);if(!selectPart(owner))continue;const source=part.vertices.map(v=>v.triangle.reduce((p,index,k)=>[p[0]+binding.paintSkin.vertices[index].x*v.barycentric[k],p[1]+binding.paintSkin.vertices[index].y*v.barycentric[k]],[0,0])),seen=new Set();
+  for(let i=0;i<part.indices.length;i+=3){const ids=part.indices.slice(i,i+3),[a,b,c]=ids.map(j=>source[j]),d=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1]);if(Math.abs(d)<1e-14)continue;const x0=Math.max(owner.cutout.x,Math.floor(Math.min(a[0],b[0],c[0]))),x1=Math.min(owner.cutout.x+owner.cutout.width-1,Math.ceil(Math.max(a[0],b[0],c[0]))),y0=Math.max(owner.cutout.y,Math.floor(Math.min(a[1],b[1],c[1]))),y1=Math.min(owner.cutout.y+owner.cutout.height-1,Math.ceil(Math.max(a[1],b[1],c[1])));
+   for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){const key=y*record.geometry.width+x;if(seen.has(key))continue;const ax=owner.frame.x+x-owner.cutout.x,ay=owner.frame.y+y-owner.cutout.y,alpha=atlas.data[(ay*atlas.width+ax)*4+3];if(!alpha)continue;const u=((b[1]-c[1])*(x+.5-c[0])+(c[0]-b[0])*(y+.5-c[1]))/d,v=((c[1]-a[1])*(x+.5-c[0])+(a[0]-c[0])*(y+.5-c[1]))/d,z=1-u-v;if(Math.min(u,v,z)<-1e-9)continue;seen.add(key);const weights=[u,v,z],published=ids.reduce((p,id,k)=>[p[0]+positions[part.id][id*2]*weights[k],p[1]+positions[part.id][id*2+1]*weights[k]],[0,0]);out.push({part:part.id,joint:owner.joint,source:[x,y],alpha,face:i/3,vertices:ids,published});}
+  }
+ }return out;
+}

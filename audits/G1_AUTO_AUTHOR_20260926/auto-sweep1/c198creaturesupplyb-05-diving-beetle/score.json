@@ -1,0 +1,9 @@
+{
+ "id": "c198creaturesupplyb-05-diving-beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 9% paint (reference 37%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,14 @@
+{
+  "id": "15-arapaima",
+  "name": "Arapaima",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-32b62332-74c3-4139-9400-798eaeabbfe0.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "fa0ca18dfc4b4e8d7fd9bdaa4461b04a98790775b0f98f18b2094e82f8b2e21e",
+  "bytes": 1374055,
+  "promptSha256": "cd366b32870276bf7c03b98bf795c2d7b8df3f3c75a112853abb395e5e9f5faa",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

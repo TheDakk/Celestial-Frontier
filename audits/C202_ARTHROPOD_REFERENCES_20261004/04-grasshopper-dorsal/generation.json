@@ -1,0 +1,19 @@
+{
+  "id": "04-grasshopper-dorsal",
+  "name": "Grasshopper",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-d8b11064-70b4-43b6-87fa-b6a724e09612.png",
+  "masterSha256": "b54f921550ea722bb9f8a28adedf2d61381b18f256a830604d6ae0d3333ef42d",
+  "bytes": 1501275,
+  "promptSha256": "46c1aeec8f4c69bbf7f6158138e12101d47939a09a45ee90e95371de658c3458",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/master.png",
+      "sha256": "3adb0589334f5210c96e30df63d670edc4351ffa266a10332b511e4d523dc6af"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "transparentBackground": false
+}

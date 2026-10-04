@@ -1,0 +1,32 @@
+[
+  {
+    "id": "03-duck-v2",
+    "intakeExit": 0,
+    "staticExit": 0
+  },
+  {
+    "id": "04-hawk-v2",
+    "intakeExit": 0,
+    "staticExit": 0
+  },
+  {
+    "id": "05-cat-v2",
+    "intakeExit": 0,
+    "staticExit": 0
+  },
+  {
+    "id": "07-weasel",
+    "intakeExit": 0,
+    "staticExit": 0
+  },
+  {
+    "id": "08-ant",
+    "intakeExit": 0,
+    "staticExit": 0
+  },
+  {
+    "id": "09-cricket",
+    "intakeExit": 0,
+    "staticExit": 0
+  }
+]

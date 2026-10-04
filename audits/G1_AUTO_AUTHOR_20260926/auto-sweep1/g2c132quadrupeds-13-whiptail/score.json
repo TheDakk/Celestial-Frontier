@@ -1,0 +1,11 @@
+{
+ "id": "g2c132quadrupeds-13-whiptail",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 75%)",
+  "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)",
+  "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 2.2%)"
+ ],
+ "semanticPresence": null
+}

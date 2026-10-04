@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c76-23-peccary",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "4f440a245469df189a5fcf3e1d97cad01ba2dbdede8addccfdbecba7356ca98d",
+ "subjectSourceSha256": "eb5ba0ca09695d63d4c47f906c97dfe5c9e8a5337618ec25b9f46c18ccf32e4e",
+ "identity": {
+  "name": "Peccary",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Peccary\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3209952142\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "seed": 3209952142,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "suid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "8d8550f943318af12d90e04264eb87247c2a8036fc8d377baf85b7a225002490",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group suid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0052,
+     "class": "front",
+     "attach": {
+      "x": 274.5,
+      "y": 142,
+      "relX": 0.79,
+      "relY": 0
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0066,
+     "class": "top",
+     "attach": {
+      "x": 189,
+      "y": 141,
+      "relX": 0.38,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0392,
+     "class": "limb-down",
+     "attach": {
+      "x": 319.4,
+      "y": 194.4,
+      "relX": 1,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0126,
+     "class": "rear",
+     "attach": {
+      "x": 110,
+      "y": 196.5,
+      "relX": 0,
+      "relY": 0.61
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0831,
+     "class": "limb-down",
+     "attach": {
+      "x": 133,
+      "y": 231.5,
+      "relX": 0.11,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0783,
+     "class": "limb-down",
+     "attach": {
+      "x": 237,
+      "y": 232,
+      "relX": 0.61,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "limb-down": 3,
+    "rear": 1
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

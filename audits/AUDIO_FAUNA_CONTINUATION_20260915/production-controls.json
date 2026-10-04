@@ -1,0 +1,33 @@
+{
+  "schema": "cf.audio-supplement-controls/v1",
+  "pythonTests": 15,
+  "result": "PASS",
+  "log": "controls-final.log",
+  "negativeControls": [
+    "CC BY without exception",
+    "NC despite injected exception",
+    "wrong exact license version",
+    "missing attribution",
+    "observation rather than sound license",
+    "wrong taxon",
+    "hidden or flagged sound",
+    "human imitation",
+    "Commons metadata rather than file rights",
+    "unowned source",
+    "unknown game name",
+    "undecoded input",
+    "quarantined input",
+    "lossy ZIP alternate does not count as another take"
+  ],
+  "nativeAttribution": {
+    "id": "v5.reference.jaguar.350370bfc512",
+    "creatorVisible": true,
+    "licenseVisible": true,
+    "sourceVisible": true,
+    "changesVisible": true,
+    "active": 1,
+    "afterStop": 0
+  },
+  "physicalListening": false,
+  "phoneQualified": false
+}

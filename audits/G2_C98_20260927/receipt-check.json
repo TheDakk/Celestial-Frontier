@@ -1,0 +1,170 @@
+[
+  {
+    "id": "01-cold-water-fish",
+    "masterSha256": "f390eeec34399bd928515352b1aad708a693518643bbccc20178ffeded074997",
+    "promptSha256": "2059bf50dce74260375b0883a02dd7e7c5a215072f15aee544fb860a1c5ec3ce",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "02-blind-fish",
+    "masterSha256": "4c069841eace21a8698bfe84bac1103d2c425017302445017911f2c752f752df",
+    "promptSha256": "64e47f07d9d9eab0195699e8bde11cff0e46cf2aae182a1277c8298214c28a7a",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "03-small-fish",
+    "masterSha256": "b7671360fa60007a8ef75d69555376fc153d7dd190b461c6bd8f6e6eb8819d17",
+    "promptSha256": "5bcf81f395cfe98d4142dbe1c184e3c33ef0e18d7cc958c541283b980b80f0b5",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "04-sunfish",
+    "masterSha256": "b4386003e8d6c39d6a3c2eab4e607474d864adff45a916631e098b0f70580830",
+    "promptSha256": "6b6b693706b231cb94130d17529e4dfed64fcc4eecddf871108a9b7a107be4d4",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "05-tang",
+    "masterSha256": "aff4f03976bebcf11604845f82b82c7f83d69f626f34857207567dae16f83e72",
+    "promptSha256": "4232bd7df72328e6d3d16d8bb7a5b940ee95175b4bc56c607d026f6372949e68",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "06-reef-fish",
+    "masterSha256": "9754a6edfb062e8946a9321023641c144d4cd8138956390071f3787298d9c336",
+    "promptSha256": "6976dc957131d996cb5471bb5b1f8ddf3d74244d90ce80616cee6c9abefe57d9",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "07-remora",
+    "masterSha256": "3b920be4355f8c30a89756b78591ad71a010f2b05079ff9599387e97698a512a",
+    "promptSha256": "df9c4732566333ac01645fe7811e41b9c2d16af03a3d4ae4371cac06e50468d9",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "08-icefish",
+    "masterSha256": "2462810fa8bbac3ef12b25e13284553deded198bf181af72d491dd6273173afa",
+    "promptSha256": "f0b03e8b23f5662bf3a76d40dd37a47283a1ed9534577cb891033489c3279686",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "09-mudminnow",
+    "masterSha256": "e0ffc431f458a57ae600e7e26785da1be110160b2ed32ea477d08c8d457055f3",
+    "promptSha256": "46f98f01b34ef805e2e19414925f16c38df64b18ad1e2e45bba4c4b9f015acd0",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "10-snailfish",
+    "masterSha256": "d389cd2c1af54df2c649ec1cd867398062829ff0a8e3a8869f9e803a9c65967b",
+    "promptSha256": "464cd247a6d8aee2a0ad8d0178a928ee69a4b86b8bdef344e6918eda93c522ae",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "11-osprey",
+    "masterSha256": "ec143dccd72dc05822e5399779462656aed0290f40d2f5c03e0aa66557a04c67",
+    "promptSha256": "5601b120ea24f65a361d48a20d56b1eac5318d93de388de5d87a810ebb402d55",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "12-desert-owl",
+    "masterSha256": "d78a10a729388a63a73e621907c6ede3c3dcdef477f0c26dfe7cce0f85b2cc1c",
+    "promptSha256": "c0cbdd60a380fa58f18a0b3c53a94cf421ad36431a1920bd13445d8a917692a8",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "13-harpy-eagle",
+    "masterSha256": "46b2452efe1cba94077689bc740ab9e9155b85893e7316ada20e052573acccb9",
+    "promptSha256": "41cddb28153154dd8f1cc962b490e52128293f030662e4620c9784430f10739e",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "14-screamer",
+    "masterSha256": "17fed7ce9924b40343db91c341bd786977dbf70cd53bae698d2abe04da671cde",
+    "promptSha256": "3eba5d89d8040e0450f316ae0f879ff66b065a5a40ba5640cc438fb0ff373007",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "15-secretary-bird",
+    "masterSha256": "f1434e644599b47054260ce6669c036cfbaae683db6d6e220749ef934c6fcddd",
+    "promptSha256": "14b3c2c76d79110c6f9ed4e1fd3ad3a174396903a02fef5a51f6c62466e7590e",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "16-tern",
+    "masterSha256": "e12796345360741aadf25c0092424a2f2a657b05a92bb3250081f650f71b4f1d",
+    "promptSha256": "3375830967c47c5b5fc55f18c11a16f8f9946a1cd4fe11fde7073e2b3f1ef171",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "17-petrel",
+    "masterSha256": "d17d866d740ce789aa8f4cfe40f9abda554561e6a9f779368d73f3ba679e8d50",
+    "promptSha256": "16517a011fea73c863d78fefa549cb34c789ead3006f6925754fb30ce089d716",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "18-skua",
+    "masterSha256": "569ff41118ef546d0c246ce98c8cba1c2ec18a8685e6cbe1d137e28a33778193",
+    "promptSha256": "d256addcd1e69255d110afa2be6a9a7af961ffa566c662219ee419ffb5bf53ce",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "19-shrew",
+    "masterSha256": "61834feb7a501d2783e96c639fe48c1d018577de21b425c89e0ae66cc85446be",
+    "promptSha256": "400e94c811f90d8b3f979bbdfdc888ccb2f067acc69fca2923daf5dd9bc852d5",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "20-gerbil",
+    "masterSha256": "7df561d470fcec77c2b30d44c08c3e7eefec5296cc82ada7d93cef05cba3bd16",
+    "promptSha256": "4f5a828f47b686399fbc2cd193d14e8a91a4287ffc6f58dd3823fdb418e60d0e",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "21-pig",
+    "masterSha256": "8b00496988f2f8a45a67343471c4e2e139457b1a8ae84f367eae335a8a0bd4e1",
+    "promptSha256": "0fe61916596e8c6744a0512087f207d7c34861a0fe6a6d1c77e66456e9804b5c",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "22-warthog",
+    "masterSha256": "045a2107c9d43bf87f09ff7fd6429a9bb0b58f370abcb81dc8e44a18c08ca8ca",
+    "promptSha256": "eb52ec18b3f5963399b3debca9b584d16f6462e520d36abe01130572a9442d3b",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "23-honeybee",
+    "masterSha256": "de92fc91f89ea0be991c4ca75a2519f11d38810ca2348e928fb19b39ba0d8f06",
+    "promptSha256": "aab4d3bae5495824fe6233223ec485ac3f3ea1ce47c21c68fdc3a8e81224bbbb",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "24-bumblebee",
+    "masterSha256": "2b46b9f9b1240eff2026b19f637409d81aca663b19378ec5377fdc0e7a71bd2b",
+    "promptSha256": "51075b0f3e20d306a0bf2b5fc5ce2d7a9c33b7d10af9fd8561ddecb15657d71f",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  }
+]

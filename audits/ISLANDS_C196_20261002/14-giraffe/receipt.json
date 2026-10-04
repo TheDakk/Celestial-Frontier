@@ -1,0 +1,352 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c196/14-giraffe/fit",
+  "sourceMasterSha256": "16ec8a19459d429c5b445c85adca9d6d17a920842989540b0c33b95362b6a3e3",
+  "keyedRgbaSha256": "277aaab014c4e699ec98ea7aa477cb93056a1ba0ac934a5dcdb431b9637d8348",
+  "remainder": "spine",
+  "remainderPixels": 17035,
+  "movedPixels": 2263,
+  "islands": [
+    {
+      "pixels": 165,
+      "to": "ear-near-tip",
+      "border": {
+        "ear-near-tip": 20
+      }
+    },
+    {
+      "pixels": 86,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-near-tip": 14,
+        "ear-far-tip": 18
+      }
+    },
+    {
+      "pixels": 316,
+      "to": "neck",
+      "border": {
+        "neck": 28
+      }
+    },
+    {
+      "pixels": 129,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-far-tip": 19,
+        "ear-far-root": 5
+      }
+    },
+    {
+      "pixels": 303,
+      "to": "head",
+      "border": {
+        "jaw": 24,
+        "head": 37,
+        "neck": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "neck": 2
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "neck",
+      "border": {
+        "neck": 15
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "neck",
+      "border": {
+        "neck": 16
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "neck",
+      "border": {
+        "neck": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "neck": 2
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "neck",
+      "border": {
+        "neck": 6
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "neck",
+      "border": {
+        "neck": 6
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck",
+      "border": {
+        "neck": 3
+      }
+    },
+    {
+      "pixels": 721,
+      "to": "neck",
+      "border": {
+        "neck": 146,
+        "chest": 59
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "neck": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "neck": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck",
+      "border": {
+        "neck": 3
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "neck",
+      "border": {
+        "neck": 4
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "neck",
+      "border": {
+        "neck": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "neck": 2
+      }
+    },
+    {
+      "pixels": 36,
+      "to": "fore-far-root",
+      "border": {
+        "fore-far-root": 13,
+        "chest": 6
+      }
+    },
+    {
+      "pixels": 47,
+      "to": "hind-far-root",
+      "border": {
+        "hind-far-root": 17
+      }
+    },
+    {
+      "pixels": 39,
+      "to": "hind-far-root",
+      "border": {
+        "hind-far-knee": 9,
+        "hind-far-root": 29
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-root",
+      "border": {
+        "fore-near-root": 2,
+        "fore-far-root": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-root": 2,
+        "hind-far-root": 2
+      }
+    },
+    {
+      "pixels": 219,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-ankle": 1,
+        "hind-near-knee": 30,
+        "hind-near-root": 55,
+        "hind-far-root": 11
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "hind-far-knee",
+      "border": {
+        "hind-far-knee": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-knee",
+      "border": {
+        "hind-far-knee": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-knee",
+      "border": {
+        "fore-near-knee": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-knee",
+      "border": {
+        "fore-near-knee": 2
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "fore-near-knee",
+      "border": {
+        "fore-near-knee": 21
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "hind-far-ankle",
+      "border": {
+        "hind-far-ankle": 8
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-ankle",
+      "border": {
+        "hind-far-ankle": 2
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 17
+      }
+    },
+    {
+      "pixels": 93,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 19
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 2
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 7
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "14-giraffe",
+    "parts": 31,
+    "atlasSize": {
+      "width": 289,
+      "height": 1828
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 55,
+        "distancePx": 1.5132745950421405,
+        "supports": [
+          454
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 39,
+        "distancePx": 5.281098370604357,
+        "supports": [
+          520
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 44,
+        "distancePx": 7.7646635471216845,
+        "supports": [
+          54
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 50,
+        "distancePx": 6.132699242584751,
+        "supports": [
+          294
+        ]
+      }
+    ],
+    "sourceBindingHash": "30ee6c63eeecff6853e02c2b14a6c8075fadb7eb2a2f7767653ab5396bffc62f",
+    "sourceVertices": 848,
+    "vertices": 993,
+    "sharedSupports": 321,
+    "pins": 53,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 33,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 10,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

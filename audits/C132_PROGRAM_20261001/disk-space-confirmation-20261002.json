@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c132-disk-confirmation/v1",
+  "date": "2026-10-02",
+  "scope": "Documented Celestial Frontier cleanup only; no evidence attributing earlier usage to unrelated applications.",
+  "ownScratchMeasuredRecoveredBytes": 1228800000,
+  "otherLaneReports": [
+    {
+      "source": "~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md#C135",
+      "reportedRemovedApproxGB": 57,
+      "scope": "Three completed overnight build worktrees",
+      "sourceLineSha256": "e1e6381b0801f38fd521ea815ec16e1cf99d97a990cc964632967031586b1c7d"
+    },
+    {
+      "sourceCommit": "42ba1b8f4",
+      "reportedRemovedApproxGB": 43,
+      "scope": "Rewrite verification copies deleted by Claude with Dakk authority; reference lists retained",
+      "sourceDiffSha256": "6dbe42d66a59b004ca2ddbe9032a2d1d509faf2779cdc4a4e3af099adbfc1eab"
+    }
+  ],
+  "documentedRemovedApproxGB": 101.2288,
+  "summationCaveat": "Approximate reported directory sizes plus one measured free-space delta; not an exact summed APFS recovery measurement or a reconstruction of the earlier 200 GB figure.",
+  "currentAvailableBytes": 168755200000,
+  "currentAvailableGiB": 157.16552734375,
+  "preserved": "Pre-rewrite identity backup, push-ready copy and identity-rewrite-v4 remain preserved pending GitHub Support and Dakk."
+}

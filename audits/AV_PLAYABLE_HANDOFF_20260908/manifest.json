@@ -1,0 +1,99 @@
+{
+  "schema": "cf-av-playable-handoff/v1",
+  "parentCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "branch": "openai/mac",
+  "signing": "failed-1password-no-new-commit",
+  "localOnly": true,
+  "priorImplementationManifestSha256": "d188da9a0eec588607ea9630719fef74ee056a6fe658dcfa569e106a78232460",
+  "priorImplementationHashesVerified": {
+    "sourceFiles": 23,
+    "carriers": 76
+  },
+  "package": {
+    "contentSha256": "5d1da7777da722ccb04b4dfc7b258c1b85f98fb1c3e0ae47fa5286217ac292d2",
+    "manifestSha256": "4568e3aa013dc712094c5624a72b7ff1654efdf8b36205f76796385d0903f24a",
+    "sourceState": "dirty-local-only",
+    "publishable": false
+  },
+  "checks": {
+    "completeDevelopBeforeObserverFollowup": "PASS: 327 files / 3610 tests / 1 skip",
+    "previewSelftests": "PASS once",
+    "firstPackageArgument": "FAIL: invalid output basename; retained",
+    "firstPackagedReadiness": "FAIL: observer required deliberately hidden U1 breadcrumb; retained",
+    "correctedReadiness": "PASS: 21 tests",
+    "correctedTypecheck": "PASS: 3 programs",
+    "unchangedPackageBrowser": "PASS: Edge 152.0.4191.66 / 320x568 @2",
+    "loopbackFileHashes": "PASS outside sandbox; initial sandbox curl exit 7 retained in README",
+    "fullNativeAdmission": "NOT RUN",
+    "humanAcceptance": "NOT RUN"
+  },
+  "sourceAndReferenceFiles": [
+    {
+      "path": "port/v2/tools/devpreview-readiness.mjs",
+      "bytes": 3072,
+      "sha256": "cf4da319d9be367024a4d290bf2e27997f45806817d394f09d975660140db6bb"
+    },
+    {
+      "path": "port/v2/tests/devpreview-readiness.test.ts",
+      "bytes": 6415,
+      "sha256": "3b374a3742885e9781562edeef15bb7b50e6ef1e0f0ac639c5f9fa04f426d9f4"
+    },
+    {
+      "path": "port/v2/tools/devpreviewcheck.mjs",
+      "bytes": 17695,
+      "sha256": "2005dc23090a05cebdd957a02bf6d021cfcb1b07976a4db483b6ab8586a7746f"
+    },
+    {
+      "path": "port/DEVELOPMENT_PREVIEW.md",
+      "bytes": 92283,
+      "sha256": "58e9e6e12d0c704c1676f03f83bca6d571996230e5041b1d15640bb317186067"
+    },
+    {
+      "path": "port/playtests/20260908_AV_LOCAL_PREVIEW.md",
+      "bytes": 3574,
+      "sha256": "dbe704c8a52f5d0feb7869a73f36bfe8e823eae757f3f99b9108172749dc7a24"
+    }
+  ],
+  "carriers": [
+    {
+      "path": "README.md",
+      "bytes": 8741,
+      "sha256": "8a3a5ba46a85b5c6f1fbf889f6b9e204112993ee994eae5273ed782ada8ddf83"
+    },
+    {
+      "path": "cf-av-local-preview-20260908.log.gz",
+      "bytes": 699,
+      "sha256": "3454168bc5d57f0da0eb8c8fd5a96622542a78b0e30a868da26f8cd086e032c5"
+    },
+    {
+      "path": "cf-av-local-preview-package-20260908.log.gz",
+      "bytes": 2508,
+      "sha256": "0e80d57e273423f63246ce7c324b75617c4650691f20ab2975989a7876d651d2"
+    },
+    {
+      "path": "cf-av-preview-readiness-20260908.log.gz",
+      "bytes": 644,
+      "sha256": "91c503d76dc5f5a9f1f2033ff034c1cefdd01cd58234d207efb57c489084efa7"
+    },
+    {
+      "path": "preview.json",
+      "bytes": 26606,
+      "sha256": "4568e3aa013dc712094c5624a72b7ff1654efdf8b36205f76796385d0903f24a"
+    },
+    {
+      "path": "serve-preview.mjs",
+      "bytes": 2986,
+      "sha256": "f58117bc71a89fd2b6c654a0f782d49f15217d938a8e9b473bb08c6c041af1fb"
+    },
+    {
+      "path": "server.json",
+      "bytes": 532,
+      "sha256": "deffb4a1b4a433018df77fe95a25819afdbec6bfe0db5a0bd4feff5a29818ccd"
+    },
+    {
+      "path": "signing-attempt.json",
+      "bytes": 602,
+      "sha256": "e226282a04b803f1c3eda732a67ea589ac7b7ce28fd252baa24ad339ab92c5cd"
+    }
+  ]
+}

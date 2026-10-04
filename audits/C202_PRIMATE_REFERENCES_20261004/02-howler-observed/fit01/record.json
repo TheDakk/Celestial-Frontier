@@ -1,0 +1,214 @@
+{
+  "kind": "primate",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Howler Monkey\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1503017354\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"6\"]]]]",
+    "seed": 1503017354,
+    "ownerId": "authored:archetype-sprint/c202-independent-howler",
+    "earthName": "Howler Monkey"
+  },
+  "template": {
+    "id": "primate",
+    "version": 1
+  },
+  "clipSetId": "primate-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1503017354,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 7,
+    "body": 14,
+    "loco": 15,
+    "trait": 6,
+    "size": 2,
+    "diet": 1,
+    "head": 1,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 0,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 6,
+    "habitat": 4,
+    "detail": 5,
+    "accent": 8,
+    "temper": 6,
+    "sense": 7,
+    "repro": 5,
+    "life": 5,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Howler Monkey"
+  },
+  "geometry": {
+    "cutoutAssetHash": "8c8d46f3e0e6884fd5874bd68b93cafd2fe72801624bd14bf86996aa0efe8e05",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.74481658692185,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5422647527910686,
+      0.4433811802232855
+    ],
+    "pelvis": [
+      0.4218500797448166,
+      0.44178628389154706
+    ],
+    "spine": [
+      0.5263157894736842,
+      0.4043062200956938
+    ],
+    "chest": [
+      0.6499202551834131,
+      0.4098883572567783
+    ],
+    "neck": [
+      0.6929824561403509,
+      0.41626794258373206
+    ],
+    "head": [
+      0.7472089314194578,
+      0.3763955342902711
+    ],
+    "jaw": [
+      0.7759170653907496,
+      0.423444976076555
+    ],
+    "armNearShoulder": [
+      0.6180223285486444,
+      0.43859649122807015
+    ],
+    "armNearElbow": [
+      0.5877192982456141,
+      0.5709728867623605
+    ],
+    "armNearHand": [
+      0.6371610845295056,
+      0.7121212121212122
+    ],
+    "armFarShoulder": [
+      0.6953748006379585,
+      0.5151515151515151
+    ],
+    "armFarElbow": [
+      0.7352472089314195,
+      0.6140350877192983
+    ],
+    "armFarHand": [
+      0.7886762360446571,
+      0.6985645933014354
+    ],
+    "legNearHip": [
+      0.44019138755980863,
+      0.44976076555023925
+    ],
+    "legNearKnee": [
+      0.4218500797448166,
+      0.5542264752791068
+    ],
+    "legNearFoot": [
+      0.32216905901116427,
+      0.6913875598086124
+    ],
+    "legFarHip": [
+      0.49122807017543857,
+      0.5087719298245614
+    ],
+    "legFarKnee": [
+      0.49681020733652315,
+      0.5909090909090909
+    ],
+    "legFarFoot": [
+      0.4800637958532695,
+      0.6722488038277512
+    ],
+    "tail0": [
+      0.386762360446571,
+      0.47208931419457734
+    ],
+    "tail1": [
+      0.18341307814992025,
+      0.44976076555023925
+    ],
+    "tail2": [
+      0.24401913875598086,
+      0.2783094098883573
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/C202_PRIMATE_REFERENCES_20261004/02-howler-observed/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Observed arboreal monkey source in a four-contact resting pose; local projected contact levels retained."
+  },
+  "coverage": {
+    "scope": "Independent full-size Howler Monkey manual observation; no donor coordinates or masks.",
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "2ddb9e9cd2c2e528afd68cb5e0faf313fabf1ca6ab8576818826751b50939c90",
+    "subjectSourceSha256": "170f1e431f9ba944b3fbb331af7cb57c9449c1e62e7bc0d0bbd6593fa834289a",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.12042523481041982,
+      "spine": 0.11098576346224434,
+      "chest": 0.12373044976347866,
+      "neck": 0.0435321979711521,
+      "head": 0.06730764863160828,
+      "jaw": 0.055116303654314074,
+      "armFarShoulder": 0.11465796140020819,
+      "armFarElbow": 0.10661974426384864,
+      "armFarHand": 0.09999949125984406,
+      "armNearShoulder": 0.04291427128253177,
+      "armNearElbow": 0.13580052923386288,
+      "armNearHand": 0.14955714621023716,
+      "legFarHip": 0.09643848981218361,
+      "legFarKnee": 0.08232662683671127,
+      "legFarFoot": 0.08304571750100372,
+      "legNearHip": 0.019999898251968847,
+      "legNearKnee": 0.10606360394367292,
+      "legNearFoot": 0.16955668374857125,
+      "tail0": 0.046361855992818585,
+      "tail1": 0.20457149042602568,
+      "tail2": 0.1818479088152587
+    },
+    "measures": {
+      "body": 0.23028999684786416,
+      "bone-min": 0.019999898251968847,
+      "bone-max": 0.20457149042602568,
+      "arm/torso:armFar": 1.3950983599871485,
+      "arm/torso:armNear": 1.4254720188454266,
+      "leg/torso:legFar": 1.1368745396390705,
+      "leg/torso:legNear": 1.283686612491066
+    }
+  },
+  "recipeHash": "56de274948dfd6988a71ddd87abd946db875218fba82b3d7affc8826dcc4d3dc"
+}

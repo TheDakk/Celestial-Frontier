@@ -1,0 +1,3 @@
+grouse INTAKE_REFUSED
+sparrow RED [{"id":"cast","error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 8"},{"id":"faint","error":"Error: Contact: joint limit legNearFoot faint@391.6: 45.38584911801367"},{"id":"presentation","error":"Error: Contact: joint limit legNearFoot faint@389.5301919331141: 45.20697298871234"}]
+18-tapir RED [{"id":"melee:tail","error":"Error: Contact: melee:tail@246.17777777777778 exceeds scale compression bound"},{"id":"faint","error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 20"},{"id":"presentation","error":"Error: Contact: melee:tail@246.60849383970344 exceeds scale compression bound"}]

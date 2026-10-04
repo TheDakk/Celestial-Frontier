@@ -1,0 +1,10 @@
+import fs from'node:fs';import path from'node:path';import os from'node:os';import assert from'node:assert/strict';import{createHash}from'node:crypto';import{spawnSync,execFileSync}from'node:child_process';
+const base='audits/C183_PAINTED_BIRD_FAINT_20261002',tag=process.argv[2],tests=process.argv.slice(3);
+assert(/^[a-z0-9-]+$/.test(tag??''));assert(tests.length>0&&tests.every(p=>/^apps\/game\/src\/motion\/[a-z0-9-]+\.test\.ts$/.test(p)));
+const log=base+'/'+tag+'.log',receipt=base+'/'+tag+'.json';assert(!fs.existsSync(log)&&!fs.existsSync(receipt));
+const sourcePaths=['port/v2/apps/game/src/motion/painted-bird-author.test.ts','port/v2/apps/game/src/motion/axial-faint.ts','port/v2/apps/game/src/motion/axial-faint.test.ts','port/v2/apps/game/src/motion/timeline.ts','port/v2/apps/game/src/motion/grounded-bird.ts','port/v2/apps/game/src/motion/painted-supports.ts'];
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex'),sources=sourcePaths.map(p=>({path:p,sha256:sha(p)}));
+const args=['node_modules/vitest/vitest.mjs','run',...tests,'--reporter=verbose'],sourceHead=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+const r=spawnSync(process.execPath,args,{cwd:path.resolve('port/v2'),encoding:'utf8',timeout:300000,maxBuffer:16*1024*1024});
+fs.writeFileSync(log,(String(r.stdout??'')+String(r.stderr??'')+String(r.error??'')).replaceAll(os.homedir(),'~'),{flag:'wx'});
+const row={schema:'cf.c183-painted-bird-check/v1',tag,sourceHead,command:['node',...args],workingDirectory:'port/v2',exitCode:r.status,signal:r.signal,log,logSha256:sha(log),sources:sources.map(s=>({...s,unchanged:s.sha256===sha(s.path)})),nativeRuns:0};fs.writeFileSync(receipt,JSON.stringify(row,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(row));process.exitCode=r.status??1;

@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "obsidian",
+  "biome": "obsidian",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/obsidian/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/obsidian/d29/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/obsidian/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/obsidian/arena-far.webp",
+      "runtimeSha256": "4ddf0a9fa5d695061e8030f6c34896178c5e08e3e9038d7df0bb48e18afb772e",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/arena-far.png",
+        "sha256": "c28b96232ea566178b8ad6a57fab20b3f66e7ddd0663641a1feca3183e81a817"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/obsidian/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-mid.webp",
+      "runtimeSha256": "5ee3240f43cbfc4964a415641557bddd790c11d3faff5d4a77da136499327f34",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-mid.png",
+        "sha256": "cb6f82922c8ab007a118f8c53d1009600e1613c00b73cabb62c5fdbd22a7a00c"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/obsidian/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-near.webp",
+      "runtimeSha256": "e7845e9ca8be1dbeeed3bed115e73c88ede08a959e8d2366e11f86009fe4bca5",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/obsidian/keyed/arena-near.png",
+        "sha256": "4c31ca8bbe64da14507535aa83af6b9da4fabc452e5b1f762aec3fda62d3fee5"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

@@ -1,0 +1,13 @@
+{
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ]
+  ],
+  "reason": "Explicit contiguous paint at tiny torso root patch and long neck/spine coat edge; independently observed on this new Salamander. Legs/tail remain independently split."
+}

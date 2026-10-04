@@ -1,0 +1,28 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Grasshopper",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "9ee42d831a2fd443f989054190cc347cd4547a271acf4096930ae61ea3ea4209",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "cfe6e089f99dfdf85e69305b0515725efad3119c",
+  "basePromptSha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+  "purpose": "SOURCE_OBSERVABILITY_SUCCESSOR_FOR_INDEPENDENT_MANUAL_REFERENCE",
+  "sourceCorrection": "An elevated dorsal three-quarter view of a natural adult grasshopper, camera high enough to see BOTH flanks and all six actual thoracic leg emergence points. Head RIGHT, full abdomen LEFT. This explicitly overrides strict side-profile layout below solely for source observability. Three real legs on EACH flank: modest slender front and middle pairs, and the real powerful angled hind pair with massive femora, spiny tibiae and natural tarsi. Offset the paired hind limbs so neither femur hides a front or middle leg or its own tibia; all six entire leg paths and tips visible, no crossings, overlap, missing segments or extra legs. Two short stout antennae, slanted face and actual chewing mouth edge/mandibles readable. Two real folded forewing/tegmen surfaces with natural separate margins and visible thoracic attachments; do not invent or delete hidden hindwings. Quiet natural standing posture, no flight, props or diagram labels.",
+  "compositionCheck": "REFERENCE SOURCE PAINTING: one complete real animal on native 1254 x 1254 pure magenta; entire silhouette including all fine antenna/tarsal tips centered inside the middle 65 percent with at least 15 percent blank margin on every side. No floor, shadow, scenery, text, props, cutaway, detached limbs or stylized anatomy. Sole supplied image is the approved style reference, not an anatomical donor.",
+  "auditCompilerExtension": false,
+  "admission": false,
+  "batchCompilerSha256": "7a48277829ae75c647ec81b7e21a84a14d42a49365ba188c8b507970bec78a50"
+}

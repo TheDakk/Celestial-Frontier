@@ -1,0 +1,229 @@
+{
+  "schema": "cf.c132-d29-delivery-batch/v1",
+  "date": "2026-10-02",
+  "newTriplets": 16,
+  "selectedPaintings": 48,
+  "mechanicalCandidateChecksPassed": 32,
+  "registrationCorrectlyRefused": 16,
+  "sourceAndInputHashesChecked": 320,
+  "qualityAccepted": false,
+  "registered": false,
+  "upscaled": false,
+  "nativeRun": false,
+  "rows": [
+    {
+      "id": "milksea-v2",
+      "biome": "milksea",
+      "manifest": "audits/C132_ARENAS_20261001/milksea-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/milksea-v2/d29/delivery-review.json",
+      "reviewSha256": "a8dbedb1db4b84b9d30f13230dd71e5dd2c857c1e653f7d1bb0e133590a67e1d",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All originals and native1672\u00d7941 composition inspected. The repaired FAR removes unsupported planets and above-water vista; the selected arena is now wholly submerged cyan water with a clear static seabed runway.",
+        "Bright green/magenta remnants persist around side seaweed. NEAR makes a strong horizontal foreground seam that abruptly cuts MID plants, and its coarse texture differs from the band behind it.",
+        "The FAR still paints a visible overhead water texture and nearby seabed despite a distant-only request. Independent style/medium review, moving combatant occlusion and native battle proof remain pending."
+      ]
+    },
+    {
+      "id": "crystalsteppe-v2",
+      "biome": "crystalsteppe",
+      "manifest": "audits/C132_ARENAS_20261001/crystalsteppe-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/crystalsteppe-v2/d29/delivery-review.json",
+      "reviewSha256": "78f0bd75ad070446453469cd6e1fa7a0cd666ba58b5323149e3cdbfdd7c1b1be",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All originals and native1672\u00d7941 composition inspected. The repaired FAR removes unsupported celestial bodies, leaving a neutral clouded sky and distant crystals. Both static stands remain clear.",
+        "Dense crystal/grass/rock detail repeats across FAR and MID; small green/mauve edge remnants remain near low terrain silhouettes. NEAR has a discernible horizontal texture boundary.",
+        "The static composition is mechanically admissible, but independent full-size scoring and moving creature readability are untested; quality remains held."
+      ]
+    },
+    {
+      "id": "oxide-v2",
+      "biome": "oxide",
+      "manifest": "audits/C132_ARENAS_20261001/oxide-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/oxide-v2/d29/delivery-review.json",
+      "reviewSha256": "28991fa5b31ff0cdd4c2ef8b016ac22c0adf8795bcff9ad080ba06548db0f6df",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All originals and native1672\u00d7941 composition inspected. The repaired FAR removes invented ringed planet/moons and retains rust-red mineral mesas. The fighting band is open in this static view.",
+        "MID bakes in another distant mesa band, creating doubled depth. NEAR introduces a strong straight horizontal seam and truncates larger MID edge rocks.",
+        "Warm light and contrast differ between layers; small green edge traces remain around cactus/rock silhouettes. Visual repair, independent scoring and native battle proof remain pending."
+      ]
+    },
+    {
+      "id": "cratered-v2",
+      "biome": "cratered",
+      "manifest": "audits/C132_ARENAS_20261001/cratered-v2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/cratered-v2/d29/delivery-review.json",
+      "reviewSha256": "ba83726fccde504dd352c8a9f870d7cfc3054b108937ab5be6afafd126e98a2f",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "All originals and native1672\u00d7941 composition inspected. The repaired FAR removes unsupported celestial bodies, and replacement NEAR removes the visible pseudo-lettering from the first attempt.",
+        "MID adds another crater belt in front of FAR. NEAR creates a strong pale horizontal shelf that cuts the darker MID side rocks; thin green/mauve edge remnants remain.",
+        "Static stands are clear, but the repeated relief, seam and layer tonal mismatch need independent scoring/repair. No moving combatant or native qualification is claimed."
+      ]
+    },
+    {
+      "id": "boulder-v3",
+      "biome": "boulder",
+      "manifest": "audits/C132_ARENAS_20261001/boulder-v3/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/boulder-v3/d29/delivery-review.json",
+      "reviewSha256": "c80be8125e117af93ae098b217f9f5654869e76109ceef1692f70e598d73cbac",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Native full-size composite inspected at 1672\u00d7941. The new FAR has clouds without visible planets or moons; all original and refused successor canvases remain intact.",
+        "The level ochre fighting band stays clear through the stand line. Tall side boulders remain outside the center run-up, but their silhouette pressure needs finished-rig review.",
+        "The MID creates a second low rock contour in front of the FAR; the NEAR creates a conspicuous warm strip and horizontal texture transition along the lower edge. Small green/key-color edge remnants remain around side stones and plants.",
+        "Candidate mechanics do not establish visual acceptance, physical ground contact, parallax seams or performance. qualityAccepted remains false."
+      ]
+    },
+    {
+      "id": "saltflat",
+      "biome": "saltflat",
+      "manifest": "audits/C132_ARENAS_20261001/saltflat/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/saltflat/d29/delivery-review.json",
+      "reviewSha256": "89ddc88bf5b70561dc3de4a53832a602a6f79122c9dc02bea00fd7c4b919249b",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Native full-size composite inspected at 1672\u00d7941. White salt crust and distant dry cliffs read clearly, with a level open fighting path and a quiet low NEAR edge.",
+        "The MID adds a distinct miniature mountain horizon below the FAR horizon. Its scale and sharp edge create a visible doubled landscape band.",
+        "The NEAR produces a separate lower pale strip and dark contour; pink/key-color remnants remain on the lower-right shrub and small cyan/green edge remnants appear near rocks. Detailed crust texture must be checked against moving creature readability.",
+        "No acceptance or game registration is claimed. The composition requires independent full-size, finished-rig, parallax and physical-contact review."
+      ]
+    },
+    {
+      "id": "graben",
+      "biome": "graben",
+      "manifest": "audits/C132_ARENAS_20261001/graben/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/graben/d29/delivery-review.json",
+      "reviewSha256": "6b029a24aca3f485934e60e7f345b9307acb7058a30d7a61f003ab7559d0bbb7",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Native full-size composite inspected at 1672\u00d7941. The broad gray fault plain is continuous at the stand line, with side cliffs and an open central run-up.",
+        "The MID has a conspicuous second pale-gray fault-wall band across the center; its sharp clipped contour and cooler color differ from the atmospheric FAR. Some green/cyan or pink edge remnants remain on cliff tips and moss.",
+        "The lower NEAR grit/moss layer changes texture and color along its upper edge. The FAR bright region is stronger at upper right, so shared-light agreement needs visual review.",
+        "Mechanical candidate checks do not prove smooth parallax, creature-ground contact, silhouette clearance or visual acceptance; qualityAccepted stays false."
+      ]
+    },
+    {
+      "id": "ashwaste",
+      "biome": "ashwaste",
+      "manifest": "audits/C132_ARENAS_20261001/ashwaste/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/ashwaste/d29/delivery-review.json",
+      "reviewSha256": "04c8198718fd435c32749f789b1a8e043dab60ec25f8d5b4aaa56551260a8830",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Native full-size composite inspected at 1672\u00d7941. The gray ash floor stays broad and flat, with a distant volcanic plume and no visible resident creatures.",
+        "The MID repeats the distant low rock line and haze, producing a discernible hard contour across the scene; cool green/cyan or pink edge remnants are visible on some side rock tips.",
+        "The NEAR layer makes a distinct cooler foreground band. Its stony corners need moving rig clearance and parallax review; no mask or threshold was changed to hide these seams.",
+        "No visual acceptance, runtime registration, physical-medium admission or performance claim follows from technical intake. qualityAccepted remains false."
+      ]
+    },
+    {
+      "id": "karst",
+      "biome": "karst",
+      "manifest": "audits/C132_ARENAS_20261001/karst/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/karst/d29/delivery-review.json",
+      "reviewSha256": "5557a09c91a7fbf282a99712328a68029828fe198865afe21c02eca7a2a99076",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Limestone towers, foliage and the flat central stone runway have coherent material and upper-left light; the stands remain open.",
+        "FAR is a high vista over a deep valley rather than the requested low eye level. MID foliage at both outer edges contains small missing islands and pink remnants. NEAR introduces a clearly visible horizontal texture and focus transition near the lower sixth, especially on the left.",
+        "The terrain is mechanically continuous, but perspective, fringe/island repair and combatant contrast remain visual holds. No native motion, parallax or acceptance is claimed."
+      ]
+    },
+    {
+      "id": "saltpan-r2",
+      "biome": "saltpan",
+      "manifest": "audits/C132_ARENAS_20261001/saltpan-r2/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/saltpan-r2/d29/delivery-review.json",
+      "reviewSha256": "d1038a826ffc583f0098583c9cfce1a18e3fe920cf51ea246b9e7c9277261ba6",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. White salt crust and reflective brine have coherent material, while the flat runway and two stands remain unobstructed.",
+        "MID introduces a second miniature mountain horizon across the already complete FAR lake, producing an obvious pasted horizontal ridge. NEAR adds a bright salt-texture strip at the lower edge with another scale transition. White creatures and effects still need contrast scoring.",
+        "The predecessor saltpan intake refused a 1672 by 940 NEAR against 1672 by 941 FAR/MID. This additive successor reuses FAR/MID original bytes without alteration and supplies a newly generated native 1672 by 941 NEAR. Prior refusal and originals are retained; no crop or upscale."
+      ]
+    },
+    {
+      "id": "fungal",
+      "biome": "fungal",
+      "manifest": "audits/C132_ARENAS_20261001/fungal/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/fungal/d29/delivery-review.json",
+      "reviewSha256": "34c2a8ea8042ca059dee436f7cf1005bc86fb3c7ba66bd1682cba4c3d5f2b24a",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Purple fungal forms and misty geological depth are present, and the central purple-earth fighting band remains open.",
+        "MID side foliage visibly loses interior islands after keying, with gray cutout holes and pink traces around branching fronds, especially left of center and the right outer cluster. NEAR repeats ground texture at a different scale with a conspicuous horizontal join. These remain visual holds despite the mechanical key result.",
+        "Selected FAR has no invented planet or moons, and selected NEAR has no title or pseudo-text. The prior celestial-body FAR and wrong-aspect/text NEAR are retained as rejected originals. Purple creature/effect contrast and live occlusion remain unscored."
+      ]
+    },
+    {
+      "id": "geode",
+      "biome": "geode",
+      "manifest": "audits/C132_ARENAS_20261001/geode/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/geode/d29/delivery-review.json",
+      "reviewSha256": "1f19d1a35fd1f6462e16017894057d6fbcaa766ee16f20a0f0356902dddcbb81",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Amethyst clusters, cavern depth and broad pale-purple rock runway read coherently, with clear stand locations.",
+        "Fine crystal and rock boundaries contain small cutout notches and pink remnants. NEAR adds a lower shelf and another crack pattern, creating a visible horizontal change in scale. The large bridge-like natural arch and high-contrast crystals may compete with creature silhouettes.",
+        "Ground-line checks pass, but seam/fringe cleanup, independent style scoring and native parallax/creature proof remain outstanding. No acceptance is claimed."
+      ]
+    },
+    {
+      "id": "emberfield",
+      "biome": "emberfield",
+      "manifest": "audits/C132_ARENAS_20261001/emberfield/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/emberfield/d29/delivery-review.json",
+      "reviewSha256": "79161f7b9b3bc6dc8f2e36a7d7ced31dfcb1272ccc0c4dc6566edd3f5359e2b0",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Orange ash ground, basalt towers and smoke are present; the flat fighting band remains clear.",
+        "MID repeats a distant geological ridge already in FAR. Its keyed outline cuts sharply across the background, including abrupt contour steps around the left arch and right distant rocks. NEAR introduces a paler horizontal earth band at the lower edge. These are concrete composition holds.",
+        "No visible sun disk or fauna occurs in the selected paintings, but the orange directional light is stronger than the near-neutral system card and needs review. No native motion, physical-medium admission or acceptance is claimed."
+      ]
+    },
+    {
+      "id": "stormeye",
+      "biome": "stormeye",
+      "manifest": "audits/C132_ARENAS_20261001/stormeye/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/stormeye/d29/delivery-review.json",
+      "reviewSha256": "87e89eca846108571b69dfe25d1e9c82c0cdcf8a0d809dd60fde84add013e51c",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. The large storm eye and layered amber clouds are readable; the sampled shared path and both stands are clear of NEAR.",
+        "MID cloud silhouettes form a visibly hard, cut-paper edge over FAR. A second small spiral appears at the right edge, and NEAR forms an obvious separate cloud shelf with a sharp contour across the lower fifth. Their perspective and scale need a composition repair.",
+        "Amber lighting, cloudy ground readability and creature contrast remain visual holds. Authoring a cloud band does not establish valid support, motion or physical-medium behavior. No native or visual acceptance is claimed."
+      ]
+    },
+    {
+      "id": "acidhaze",
+      "biome": "acidhaze",
+      "manifest": "audits/C132_ARENAS_20261001/acidhaze/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/acidhaze/d29/delivery-review.json",
+      "reviewSha256": "ffa862557f511c84e916dc784c11052896eaaf8efaec9c27812227a4e05c9cdb",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Yellow-gray crust, eroded rock and sulfur haze form a coherent stage with an open central runway.",
+        "MID duplicates side geological contours over FAR and produces a hard keyed horizon. NEAR changes the ground to a darker, more granular texture across the lower edge. The whole image is more saturated yellow than the muted material card; scene contrast and light require independent scoring.",
+        "Selected FAR contains no visible star/disk, and selected NEAR has full-frame native proportions. The visible-star FAR and ultra-wide NEAR predecessors remain retained. No native motion, hazard/medium admission or visual acceptance is claimed."
+      ]
+    },
+    {
+      "id": "hotglow",
+      "biome": "hotglow",
+      "manifest": "audits/C132_ARENAS_20261001/hotglow/d29/delivery.pending.json",
+      "review": "audits/C132_ARENAS_20261001/hotglow/d29/delivery-review.json",
+      "reviewSha256": "676b2b7ee0b2028c7ac00dd97fe7cf298325fc4119c109c00ba2a2a8b8f37795",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "visualFindings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Amber cloud banks and a broad shared band provide the intended hot-glow material without fauna.",
+        "MID has conspicuous purple/magenta tint along the cloud rim and broad cloud faces near both sides. MID and NEAR create hard horizontal cloud shelves with independent scale and illumination, making the composition visibly layered. These remain visual holds despite the mechanical key result.",
+        "Selected FAR removes the invented planet and moon; that predecessor is retained. Intense orange light and cloud support need authoring/runtime review. No physical-medium admission, native proof or quality acceptance is claimed."
+      ]
+    }
+  ],
+  "remainingOriginallyUnpaintedTriplets": 8,
+  "scope": "Three separately painted native-size masters per set, immutable originals and additive D29 checks. Mechanical candidate readiness does not confer visual, habitat, native or phone admission."
+}

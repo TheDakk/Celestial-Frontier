@@ -1,0 +1,142 @@
+{
+  "schema": "cf.c132-theme-delivery/v1",
+  "theme": "sand",
+  "status": "MECHANICAL_PASS_REVIEW_REQUIRED",
+  "integrationCandidate": true,
+  "qualityAccepted": false,
+  "nativeProof": "DEFERRED_AFTER_C12_CAPTURE_FAILURE",
+  "abilityId": "sblast",
+  "abilityName": "Sandblast",
+  "material": "grain streams, scour, dune spill",
+  "accent": "#e8c878",
+  "anchors": "sand/final/anchors.json",
+  "anchorsSha256": "2930258125c1e99bd2882ee1d0e886eba8b8c0e5a35c54e1b523a68a7348395f",
+  "reviewSheet": "sand/final/review-sheet.png",
+  "images": [
+    {
+      "phase": "launch",
+      "image": "sand/final/registered/launch.png",
+      "imageSha256": "258a217973f61a36065885c8bca3543fe66211a8c98101aeb6b634833a2baf2d",
+      "master": "sand/launch-master.png",
+      "masterSha256": "c6bf080675d6ddb6ce02fe78182b0c5aa768a95b70baecef067cb2850b7b0f50",
+      "prompt": "sand/launch.prompt.txt",
+      "promptSha256": "f79f3a0bc38111942774c018251ff8839eb6d7f71e71901bff285744c5ec7cd3",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 111,
+        "y": 344,
+        "width": 220,
+        "height": 234
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "sand/final/registered/travel.png",
+      "imageSha256": "24c2c55ca543e43a9677a318d973a856bc40fd2081f8b7f054b0c74fda55bdb9",
+      "master": "sand/travel-master.png",
+      "masterSha256": "f9c0ffeade814bf1fb5ee1a428b124005776cb7b0dc2cd5c7da7a174fee05750",
+      "prompt": "sand/travel.prompt.txt",
+      "promptSha256": "99d1c7f929bc8fccdfe6315d894afe2b5f663798536f6addbab05c04f1526d8a",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 115,
+        "y": 408,
+        "width": 690,
+        "height": 311
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "sand/final/registered/impact.png",
+      "imageSha256": "75d5ad014f93b494d8b377fe12fc99af10d7e482906e10565c81a4b4f9771ff6",
+      "master": "sand/impact-material-master.png",
+      "masterSha256": "88cdba8ef49df85d85541e5cda103ba40500deb6013f023c617a0b91f69343c6",
+      "prompt": "sand/impact-material.prompt.txt",
+      "promptSha256": "613d06e95c9c3e780fb8df40d8bebec6c887c75ef7e8e3244843de3d0462e9a2",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 543,
+        "y": 410,
+        "width": 340,
+        "height": 281
+      }
+    }
+  ],
+  "mechanicalValidation": {
+    "anchors": "audits/C132_EFFECTS_20261001/sand/final/anchors.json",
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "sand",
+    "sequenceId": "sand-c132-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 26461,
+        "edge": 8310,
+        "fringe": 0,
+        "fringeRatio": 0,
+        "accentShare": 0.24275008145975888,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 111,
+          "y": 344,
+          "width": 220,
+          "height": 234
+        }
+      },
+      "travel": {
+        "painted": 88005,
+        "edge": 21402,
+        "fringe": 10,
+        "fringeRatio": 0.00046724605177086255,
+        "accentShare": 0.19096052719163947,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 115,
+          "y": 408,
+          "width": 690,
+          "height": 311
+        }
+      },
+      "impact": {
+        "painted": 38587,
+        "edge": 11585,
+        "fringe": 0,
+        "fringeRatio": 0,
+        "accentShare": 0.12305015029267521,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 543,
+          "y": 410,
+          "width": 340,
+          "height": 281
+        }
+      }
+    }
+  },
+  "officialCandidateTest": {
+    "theme": "sand",
+    "anchors": "audits/C132_EFFECTS_20261001/sand/final/anchors.json",
+    "exitCode": 0,
+    "log": "tests/sand.txt"
+  },
+  "manifestRow": {
+    "theme": "sand",
+    "anchors": "../C132_EFFECTS_20261001/sand/final/anchors.json",
+    "contract": "v4.3"
+  }
+}

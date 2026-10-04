@@ -1,0 +1,58 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "02-parrotfish",
+    "parts": 13,
+    "atlasSize": {
+      "width": 2025,
+      "height": 726
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "e9e2b87a47b135a66c6b4b9d7491ae0da873da7d48cc187614965fb8c16fdb5b",
+    "recordRecipeHash": "470ffdfe8767db0b3680621803f45b82af88eeeb94437dd5642a54c9ab505f52",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "e9e2b87a47b135a66c6b4b9d7491ae0da873da7d48cc187614965fb8c16fdb5b",
+      "atlasSha256": "92272f5fb33d65944c9ef728e6017fa42bf50024f6028e3954b1e1f521de6afe",
+      "parts": 13,
+      "comparedChannels": 3675052,
+      "changedChannels": 0
+    },
+    "vertices": 1470,
+    "partVertices": 2545,
+    "parts": 13,
+    "leaves": 653,
+    "triangles": 2744,
+    "ownershipEdges": 4661,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "374724790b19370182edad8891cc06c4648a6963c9d7401fd97559166c721716",
+    "sourceVertices": 1470,
+    "vertices": 1722,
+    "sharedSupports": 465,
+    "pins": 756,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 13,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "470ffdfe8767db0b3680621803f45b82af88eeeb94437dd5642a54c9ab505f52",
+  "bindingHash": "965a376a2e4756df0cd8c2e2b37073d1e3f14b896675490e7af6ab6d3ec9fd23",
+  "masterSha256": "232545118c6e65c40dbe77057c9dfb5527de4484edceff7bb8efbac073038264",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

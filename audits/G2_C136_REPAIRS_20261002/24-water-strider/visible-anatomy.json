@@ -1,0 +1,220 @@
+{
+  "id": "24-water-strider",
+  "name": "Water Strider",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "bd43e510cc75b3a05c0758ec924f61676e7eee47f95624fdcead24cacaf95fa6",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 2740,
+    "coreRadius": 6,
+    "bodyBox": {
+      "x0": 177,
+      "y0": 170,
+      "x1": 249,
+      "y1": 195
+    },
+    "detached": [
+      {
+        "frac": 0.0164,
+        "box": {
+          "x0": 90,
+          "y0": 224,
+          "x1": 118,
+          "y1": 231
+        },
+        "cx": 103,
+        "cy": 229.1
+      }
+    ],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0566,
+        "pixels": 155,
+        "box": {
+          "x0": 245,
+          "y0": 162,
+          "x1": 278,
+          "y1": 179
+        },
+        "attach": {
+          "x": 249.1,
+          "y": 172.4,
+          "relX": 1,
+          "relY": 0.1
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.08
+        },
+        "class": "front",
+        "length": 30.8
+      },
+      {
+        "k": 1,
+        "frac": 0.0277,
+        "pixels": 76,
+        "box": {
+          "x0": 151,
+          "y0": 172,
+          "x1": 199,
+          "y1": 177
+        },
+        "attach": {
+          "x": 196.1,
+          "y": 176.1,
+          "relX": 0.27,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.07
+        },
+        "class": "rear",
+        "length": 45.3
+      },
+      {
+        "k": 2,
+        "frac": 0.0376,
+        "pixels": 103,
+        "box": {
+          "x0": 249,
+          "y0": 181,
+          "x1": 291,
+          "y1": 213
+        },
+        "attach": {
+          "x": 249.8,
+          "y": 182.3,
+          "relX": 1.01,
+          "relY": 0.49
+        },
+        "dir": {
+          "x": 0.83,
+          "y": 0.56
+        },
+        "class": "limb-down",
+        "length": 51.5
+      },
+      {
+        "k": 3,
+        "frac": 0.0934,
+        "pixels": 256,
+        "box": {
+          "x0": 120,
+          "y0": 184,
+          "x1": 180,
+          "y1": 223
+        },
+        "attach": {
+          "x": 176.6,
+          "y": 191.4,
+          "relX": -0.01,
+          "relY": 0.86
+        },
+        "dir": {
+          "x": -0.94,
+          "y": 0.34
+        },
+        "class": "rear",
+        "length": 64.8
+      },
+      {
+        "k": 4,
+        "frac": 0.0292,
+        "pixels": 80,
+        "box": {
+          "x0": 240,
+          "y0": 186,
+          "x1": 270,
+          "y1": 208
+        },
+        "attach": {
+          "x": 241.3,
+          "y": 186.8,
+          "relX": 0.89,
+          "relY": 0.67
+        },
+        "dir": {
+          "x": 0.88,
+          "y": 0.48
+        },
+        "class": "front",
+        "length": 35.8
+      },
+      {
+        "k": 5,
+        "frac": 0.1146,
+        "pixels": 314,
+        "box": {
+          "x0": 216,
+          "y0": 194,
+          "x1": 331,
+          "y1": 269
+        },
+        "attach": {
+          "x": 219,
+          "y": 194,
+          "relX": 0.58,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": 0.76,
+          "y": 0.65
+        },
+        "class": "limb-down",
+        "length": 134.8
+      },
+      {
+        "k": 6,
+        "frac": 0.1135,
+        "pixels": 311,
+        "box": {
+          "x0": 102,
+          "y0": 195,
+          "x1": 212,
+          "y1": 280
+        },
+        "attach": {
+          "x": 210,
+          "y": 195,
+          "relX": 0.46,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.75,
+          "y": 0.66
+        },
+        "class": "limb-down",
+        "length": 137.4
+      }
+    ],
+    "byClass": {
+      "front": 2,
+      "rear": 2,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 102,
+        "x1": 129,
+        "cx": 115.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Bee",
+  "masterSha256": "240299d6a6d01d759c7cd50b5a3673aa1755e5994bc6a389c13598cf38335056",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: golden fur, striped abdomen, two antennae, pollen basket and folded overlapping wings. Only FOUR distal leg endpoints are clearly resolved; additional far legs are hidden or merged. The six-leg repair is NOT resolved. Wing-tip overlaps and pollen-basket attachment need source review; no grounded-six-leg admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 331,
+      "y0": 418,
+      "x1": 955,
+      "y1": 831
+    },
+    "margins": {
+      "left": 331,
+      "right": 298,
+      "top": 418,
+      "bottom": 422
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,14 @@
+{
+ "14-giraffe": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c196/14-giraffe/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "16-banteng": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c196/16-banteng/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ }
+}

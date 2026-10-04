@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hornbill\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"602034351\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"12\"]]]]",
+    "seed": 602034351,
+    "ownerId": "authored:archetype-sprint/20-hornbill",
+    "earthName": "Hornbill"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 602034351,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 0,
+    "body": 3,
+    "loco": 14,
+    "trait": 12,
+    "size": 1,
+    "diet": 1,
+    "head": 3,
+    "limbs": 0,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 1,
+    "detail": 3,
+    "accent": 4,
+    "temper": 0,
+    "sense": 2,
+    "repro": 4,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Hornbill"
+  },
+  "geometry": {
+    "cutoutAssetHash": "cc44d4c6f8fcb34ffe1f40b66685895948f2705558ed8af78622f0ca016c1020",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7052816976253897,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5312599681020734,
+      0.523444976076555
+    ],
+    "pelvis": [
+      0.504066985645933,
+      0.5692185007974482
+    ],
+    "spine": [
+      0.5774322169059012,
+      0.5026315789473684
+    ],
+    "chest": [
+      0.6585326953748006,
+      0.4267145135566188
+    ],
+    "neck0": [
+      0.6783094098883573,
+      0.37719298245614036
+    ],
+    "neck1": [
+      0.7106060606060606,
+      0.3486443381180223
+    ],
+    "head": [
+      0.7333333333333334,
+      0.30534290271132375
+    ],
+    "beak": [
+      0.8044657097288676,
+      0.3366028708133971
+    ],
+    "legNearKnee": [
+      0.4740031897926635,
+      0.6017543859649123
+    ],
+    "legNearAnkle": [
+      0.4513556618819777,
+      0.6655502392344498
+    ],
+    "legNearFoot": [
+      0.4606858054226476,
+      0.6807814992025518
+    ],
+    "legFarKnee": [
+      0.5338118022328548,
+      0.6271132376395534
+    ],
+    "legFarAnkle": [
+      0.5922647527910686,
+      0.6855661881977672
+    ],
+    "legFarFoot": [
+      0.6098883572567783,
+      0.6929027113237639
+    ],
+    "wingNearRoot": [
+      0.6089314194577352,
+      0.4433811802232855
+    ],
+    "wingNearTip": [
+      0.40622009569377987,
+      0.5166666666666666
+    ],
+    "wingFarRoot": [
+      0.6103668261562998,
+      0.4274322169059011
+    ],
+    "wingFarTip": [
+      0.5047049441786283,
+      0.43125996810207334
+    ],
+    "tailFan": [
+      0.3196969696969697,
+      0.609090909090909
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/20-hornbill/fallback-1/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 01-robin. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "abd3995abd4f15b954ad802f307041b0273d24b68b5743d4056f30b0c5e6409f",
+    "subjectSourceSha256": "6ccd8b776aeccbe859e1c2983faac37cdbe59af0d5d470c6341bb97a7ef8c11c",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.0532416553108013,
+      "spine": 0.09907711804093437,
+      "chest": 0.1110886511999663,
+      "neck0": 0.05332448292751069,
+      "neck1": 0.04310566947775759,
+      "head": 0.04890340718089412,
+      "beak": 0.07769813754150474,
+      "legFarKnee": 0.06508882137361405,
+      "legFarAnkle": 0.08266495544014987,
+      "legFarFoot": 0.019089683233151522,
+      "legNearKnee": 0.044299160767868676,
+      "legNearAnkle": 0.06769653916452194,
+      "legNearFoot": 0.01786177087260421,
+      "wingFarRoot": 0.04817121604933074,
+      "wingFarTip": 0.10573119209714402,
+      "wingNearRoot": 0.05232651670404435,
+      "wingNearTip": 0.215551950363197,
+      "tailFan": 0.18863221284855197
+    },
+    "measures": {
+      "body": 0.21015956286016882,
+      "bone-min": 0.01786177087260421,
+      "bone-max": 0.215551950363197,
+      "leg/torso:legFar": 0.7938894513114587,
+      "leg/torso:legNear": 0.6178994143197587,
+      "wing/torso": 0.7323121824766777
+    }
+  },
+  "recipeHash": "ef06213cf71cb59cce5ed979bcfb39b40c073822c4f3b14514d8fed097cebb28"
+}

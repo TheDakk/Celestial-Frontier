@@ -1,0 +1,14 @@
+{
+  "id": "21-mandrill",
+  "name": "Mandrill",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-75312b0d-e291-4209-9211-0df82900cb07.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e2087e3743058a783937edab9dcfaba4c21e1b3e47b8439cbe9e510c38b162ea",
+  "bytes": 1458735,
+  "promptSha256": "343fd651941fec604e2396fa50252b519a76a2bd4f0328abf41edd72ee33dd07",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "21-scorpionfly",
+  "name": "Scorpionfly",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-06b9b725-1e25-4acd-940f-55238dba387d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "356644d26574db6e48174c7ac717430b46d1c5c10d379fbc7468cbe09d1f0956",
+  "bytes": 1215065,
+  "promptSha256": "e21c2a596324d299685c6152c0c889b70e89adb155edbf985e86216df9eae7b0",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

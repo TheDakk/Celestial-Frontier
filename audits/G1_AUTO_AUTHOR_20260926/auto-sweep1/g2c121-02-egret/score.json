@@ -1,0 +1,9 @@
+{
+ "id": "g2c121-02-egret",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-thigh (legFarKnee) covers 10% paint (reference 72%)"
+ ],
+ "semanticPresence": null
+}

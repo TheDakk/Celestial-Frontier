@@ -1,0 +1,72 @@
+{
+  "name": "Cuttlefish",
+  "family": "cephalopod",
+  "species": {
+    "name": "Cuttlefish",
+    "aspect": 2,
+    "headFrac": 0.35,
+    "eyes": "prominent",
+    "posture": "swimming",
+    "mustRead": [
+      "W-shaped horizontal pupil",
+      "undulating fin skirt running the full length of the mantle",
+      "eight short arms plus two longer retractable tentacles"
+    ]
+  },
+  "genome": {
+    "seed": 2821509936,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 16,
+    "body": 0,
+    "loco": 16,
+    "trait": 24,
+    "size": 1,
+    "diet": 4,
+    "head": 6,
+    "limbs": 5,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 3,
+    "behavior": 8,
+    "habitat": 2,
+    "detail": 6,
+    "accent": 4,
+    "temper": 8,
+    "sense": 5,
+    "repro": 0,
+    "life": 1,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cuttlefish"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cuttlefish\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2821509936\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "index": 460,
+  "profile": {
+    "id": "cephalopod",
+    "names": [
+      "Squid",
+      "Octopus",
+      "Cuttlefish",
+      "Giant Octopus",
+      "Giant Squid",
+      "Vampire Squid",
+      "Deep-Sea Octopus",
+      "Nautilus"
+    ],
+    "candidateTemplates": [
+      "cephalopod"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "lash",
+      "bite"
+    ],
+    "notes": "Preserve arm/tentacle counts and shell; Nautilus does not inherit exactly eight arms."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "05-rhinoceros",
+  "name": "Rhinoceros",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-dcbc6e61-e53b-4edf-ba05-904bb143817b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b9933f594dc663709b14441816fb72164cf6951d7601288ac15cf259af991f21",
+  "bytes": 1354086,
+  "promptSha256": "3a82153243f6ac9c3a930634e8f8b13bf800779ab0fee6ce3e867bffad0775c9",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

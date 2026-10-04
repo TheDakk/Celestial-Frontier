@@ -1,0 +1,12 @@
+{
+ "id": "g2c114-20-tripod-fish",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: quadruped matches clearly better (0.0260 < 0.0416)",
+  "missing-anatomy: part jaw (jaw) covers 1% paint (reference 93%)",
+  "missing-anatomy: part tail-peduncle (spine5) covers 18% paint (reference 54%)",
+  "unexplained-anatomy: 8.0% of the paint lies away from the body and in no part (reference 4.0%)"
+ ],
+ "semanticPresence": null
+}

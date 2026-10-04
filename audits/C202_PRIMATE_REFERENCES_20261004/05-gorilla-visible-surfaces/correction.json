@@ -1,0 +1,8 @@
+{
+  "predecessor": "audits/C202_PRIMATE_REFERENCES_20261004/04-gorilla-side-view",
+  "reason": "The proposed chest patch is fully covered by prior actual near-arm/neck owners in the lateral view. Remove this empty ownership region; keep the internal chest frame and every actual pixel owner unchanged. No hidden chest paint invented.",
+  "change": "remove empty chest polygon only",
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": false,
+  "nativeQualified": false
+}

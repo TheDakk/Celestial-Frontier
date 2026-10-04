@@ -1,0 +1,222 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+stdout | apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > every archetype with a card fights: as ATTACKER with its own anatomy attack and as TARGET, zero rig refusals at 30 Hz
+
+Crab             brachyuran      water  ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Coconut Crab     brachyuran      ground ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Freshwater Crab  brachyuran      water  ticks  782 refusals 0  attack: pinch (clawNearDactylTip)
+Mud Crab         brachyuran      water  ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Vent Crab        brachyuran      water  ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Civet            quadruped       ground ticks  882 refusals 0  attack: claw (foreNearPaw)
+Salmon           fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Eagle            biped-bird      air    ticks  774 refusals 0  attack: peck (beak)
+Beetle           insect          ground ticks  782 refusals 0  attack: mandible (mandible)
+Python           serpent         ground ticks  788 refusals 0  attack: strike (jaw)
+Tree Frog        hopper          ground ticks  734 refusals 0  attack: bite (jaw)
+Chimpanzee       primate         ground ticks  782 refusals 0  attack: bite (jaw)
+Starfish         radial          water  ticks  796 refusals 0  attack: body (bell)
+Tarantula        arachnid        ground ticks  782 refusals 0  attack: bite (cheliceraNear)
+Octopus          cephalopod      water  ticks  812 refusals 0  attack: lash (arm4Seg2)
+Fruit Bat        flyer-membrane  air    ticks  788 refusals 0  attack: bite (jaw)
+Centipede        myriapod        ground ticks  782 refusals 0  attack: mandible (mandible)
+Bass             fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Tang             fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Dragonfly        insect          air    ticks  734 refusals 0  attack: mandible (mandible)
+Sturgeon         fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Wolf             quadruped       ground ticks  914 refusals 0  attack: claw (foreNearPaw)
+Impala           quadruped       ground ticks  914 refusals 0  attack: kick (foreNearPaw)
+River Otter      quadruped       ground ticks  914 refusals 0  attack: claw (foreNearPaw)
+Heron            biped-bird      ground ticks  796 refusals 0  attack: peck (beak)
+Marmot           quadruped       ground ticks  914 refusals 0  attack: claw (foreNearPaw)
+Wall Lizard      quadruped       ground ticks  844 refusals 0  attack: tail (tail3)
+Cougar           quadruped       ground ticks  914 refusals 0  attack: bite (jaw)
+Ibex             quadruped       ground ticks  914 refusals 0  attack: kick (foreNearPaw)
+Pike             fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Goose            biped-bird      ground ticks  796 refusals 0  attack: peck (beak)
+Gull             biped-bird      ground ticks  784 refusals 0  attack: peck (beak)
+Racer            serpent         ground ticks  788 refusals 0  attack: strike (jaw)
+Eel              serpent         water  ticks  796 refusals 0  attack: strike (jaw)
+Salamander       quadruped       ground ticks  868 refusals 0  attack: bite (jaw)
+Rat              quadruped       ground ticks  914 refusals 0  attack: bite (jaw)
+Reef Shark       fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Jellyfish        radial          water  ticks  796 refusals 0  attack: sting-arms (arm0Seg2)
+
+ ✓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > every archetype with a card fights: as ATTACKER with its own anatomy attack and as TARGET, zero rig refusals at 30 Hz 30051ms
+stdout | apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > every archetype is SIZED to its place: no body wider than its arena share; a flyer fits the air band; a swimmer is refused on the dry arena and fits the water band on a lake world — whole painted box inside, scaled never clipped
+
+Crab: ground fit 1.00 width 0.36
+Coconut Crab: ground fit 1.00 width 0.42 (capped)
+Freshwater Crab: ground fit 1.00 width 0.34
+Mud Crab: ground fit 1.00 width 0.40
+Vent Crab: ground fit 1.00 width 0.42 (capped)
+Civet: ground fit 1.00 width 0.28
+Salmon: water fit 0.87
+Eagle: air fit 0.88 width 0.28
+Beetle: ground fit 1.00 width 0.33
+Python: ground fit 1.00 width 0.42 (capped)
+Tree Frog: ground fit 1.00 width 0.37
+Chimpanzee: ground fit 1.00 width 0.24
+Starfish: water fit 0.67
+Tarantula: ground fit 1.00 width 0.27
+Octopus: water fit 0.67
+Fruit Bat: air fit 0.88 width 0.40
+Centipede: ground fit 1.00 width 0.42 (capped)
+Bass: water fit 0.69
+Tang: water fit 0.67
+Dragonfly: air fit 0.88 width 0.33
+Sturgeon: water fit 1.00
+Wolf: ground fit 1.00 width 0.29
+Impala: ground fit 1.00 width 0.19
+River Otter: ground fit 1.00 width 0.42 (capped)
+Heron: ground fit 1.00 width 0.21
+Marmot: ground fit 1.00 width 0.40
+Wall Lizard: ground fit 1.00 width 0.42 (capped)
+Cougar: ground fit 1.00 width 0.40
+Ibex: ground fit 1.00 width 0.20
+Pike: water fit 0.67
+Goose: ground fit 1.00 width 0.22
+Gull: ground fit 1.00 width 0.27
+Racer: ground fit 1.00 width 0.42 (capped)
+Eel: water fit 1.00
+Salamander: ground fit 1.00 width 0.42 (capped)
+Rat: ground fit 1.00 width 0.42 (capped)
+Reef Shark: water fit 0.84
+Jellyfish: water fit 0.67
+
+ ✓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > every archetype is SIZED to its place: no body wider than its arena share; a flyer fits the air band; a swimmer is refused on the dry arena and fits the water band on a lake world — whole painted box inside, scaled never clipped 4120ms
+ ✓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > the WET arena: water behind the swimmer and above the mid plate, the dry foreground hidden, moving with the mid plate, destroyed on dispose — and without it the stage is exactly as before 178ms
+ ✓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > every archetype stands INSIDE the frame on BOTH sides: its painted box is centred on its stand, not hung off its foot (the picker filmed a right-hand Python whose tail left the frame) — the uncentred control reproduces that exit 4124ms
+stdout | apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > SCALE SWEEP: every archetype attacks through a full bout at 0.85×, 1× and 1.15× its default presentation scale (the stage cadence follows the scale, so a latent skin fold can hide at one size) — refusals reported per archetype and scale
+
+SWEEP
+Crab ×0.85: refusals 0, anatomy attacks 3, returns 3
+Crab ×1: refusals 0, anatomy attacks 3, returns 3
+Crab ×1.15: refusals 0, anatomy attacks 3, returns 3
+Coconut Crab ×0.85: refusals 0, anatomy attacks 3, returns 3
+Coconut Crab ×1: refusals 0, anatomy attacks 3, returns 3
+Coconut Crab ×1.15: refusals 0, anatomy attacks 3, returns 3
+Freshwater Crab ×0.85: refusals 0, anatomy attacks 3, returns 3
+Freshwater Crab ×1: refusals 0, anatomy attacks 3, returns 3
+Freshwater Crab ×1.15: refusals 0, anatomy attacks 3, returns 3
+Mud Crab ×0.85: refusals 0, anatomy attacks 3, returns 3
+Mud Crab ×1: refusals 0, anatomy attacks 3, returns 3
+Mud Crab ×1.15: refusals 0, anatomy attacks 3, returns 3
+Vent Crab ×0.85: refusals 0, anatomy attacks 3, returns 3
+Vent Crab ×1: refusals 0, anatomy attacks 3, returns 3
+Vent Crab ×1.15: refusals 0, anatomy attacks 3, returns 3
+Civet ×0.85: refusals 0, anatomy attacks 3, returns 3
+Civet ×1: refusals 0, anatomy attacks 3, returns 3
+Civet ×1.15: refusals 0, anatomy attacks 3, returns 3
+Salmon ×0.85: refusals 0, anatomy attacks 3, returns 3
+Salmon ×1: refusals 0, anatomy attacks 3, returns 3
+Salmon ×1.15: refusals 0, anatomy attacks 3, returns 3
+Eagle ×0.85: refusals 0, anatomy attacks 3, returns 3
+Eagle ×1: refusals 0, anatomy attacks 3, returns 3
+Eagle ×1.15: refusals 0, anatomy attacks 3, returns 3
+Beetle ×0.85: refusals 0, anatomy attacks 3, returns 3
+Beetle ×1: refusals 0, anatomy attacks 3, returns 3
+Beetle ×1.15: refusals 0, anatomy attacks 3, returns 3
+Python ×0.85: refusals 0, anatomy attacks 3, returns 3
+Python ×1: refusals 0, anatomy attacks 3, returns 3
+Python ×1.15: refusals 0, anatomy attacks 3, returns 3
+Tree Frog ×0.85: refusals 0, anatomy attacks 3, returns 3
+Tree Frog ×1: refusals 0, anatomy attacks 3, returns 3
+Tree Frog ×1.15: refusals 0, anatomy attacks 3, returns 3
+Chimpanzee ×0.85: refusals 0, anatomy attacks 3, returns 3
+Chimpanzee ×1: refusals 0, anatomy attacks 3, returns 3
+Chimpanzee ×1.15: refusals 0, anatomy attacks 3, returns 3
+Starfish ×0.85: refusals 0, anatomy attacks 3, returns 3
+Starfish ×1: refusals 0, anatomy attacks 3, returns 3
+Starfish ×1.15: refusals 0, anatomy attacks 3, returns 3
+Tarantula ×0.85: refusals 0, anatomy attacks 3, returns 3
+Tarantula ×1: refusals 0, anatomy attacks 3, returns 3
+Tarantula ×1.15: refusals 0, anatomy attacks 3, returns 3
+Octopus ×0.85: refusals 0, anatomy attacks 3, returns 3
+Octopus ×1: refusals 0, anatomy attacks 3, returns 3
+Octopus ×1.15: refusals 0, anatomy attacks 3, returns 3
+Fruit Bat ×0.85: refusals 0, anatomy attacks 3, returns 3
+Fruit Bat ×1: refusals 0, anatomy attacks 3, returns 3
+Fruit Bat ×1.15: refusals 0, anatomy attacks 3, returns 3
+Centipede ×0.85: refusals 0, anatomy attacks 3, returns 3
+Centipede ×1: refusals 0, anatomy attacks 3, returns 3
+Centipede ×1.15: refusals 0, anatomy attacks 3, returns 3
+Bass ×0.85: refusals 0, anatomy attacks 3, returns 3
+Bass ×1: refusals 0, anatomy attacks 3, returns 3
+Bass ×1.15: refusals 0, anatomy attacks 3, returns 3
+Tang ×0.85: refusals 0, anatomy attacks 3, returns 3
+Tang ×1: refusals 0, anatomy attacks 3, returns 3
+Tang ×1.15: refusals 0, anatomy attacks 3, returns 3
+Dragonfly ×0.85: refusals 0, anatomy attacks 3, returns 3
+Dragonfly ×1: refusals 0, anatomy attacks 3, returns 3
+Dragonfly ×1.15: refusals 0, anatomy attacks 3, returns 3
+Sturgeon ×0.85: refusals 0, anatomy attacks 3, returns 3
+Sturgeon ×1: refusals 0, anatomy attacks 3, returns 3
+Sturgeon ×1.15: refusals 0, anatomy attacks 3, returns 3
+Wolf ×0.85: refusals 0, anatomy attacks 3, returns 3
+Wolf ×1: refusals 0, anatomy attacks 3, returns 3
+Wolf ×1.15: refusals 0, anatomy attacks 3, returns 3
+Impala ×0.85: refusals 0, anatomy attacks 3, returns 3
+Impala ×1: refusals 0, anatomy attacks 3, returns 3
+Impala ×1.15: refusals 0, anatomy attacks 3, returns 3
+River Otter ×0.85: refusals 0, anatomy attacks 3, returns 3
+River Otter ×1: refusals 0, anatomy attacks 3, returns 3
+River Otter ×1.15: refusals 0, anatomy attacks 3, returns 3
+Heron ×0.85: refusals 0, anatomy attacks 3, returns 3
+Heron ×1: refusals 0, anatomy attacks 3, returns 3
+Heron ×1.15: refusals 0, anatomy attacks 3, returns 3
+Marmot ×0.85: refusals 0, anatomy attacks 3, returns 3
+Marmot ×1: refusals 0, anatomy attacks 3, returns 3
+Marmot ×1.15: refusals 0, anatomy attacks 3, returns 3
+Wall Lizard ×0.85: refusals 0, anatomy attacks 3, returns 3
+Wall Lizard ×1: refusals 0, anatomy attacks 3, returns 3
+Wall Lizard ×1.15: refusals 0, anatomy attacks 3, returns 3
+Cougar ×0.85: refusals 0, anatomy attacks 3, returns 3
+Cougar ×1: refusals 0, anatomy attacks 3, returns 3
+Cougar ×1.15: refusals 0, anatomy attacks 3, returns 3
+Ibex ×0.85: refusals 0, anatomy attacks 3, returns 3
+Ibex ×1: refusals 0, anatomy attacks 3, returns 3
+Ibex ×1.15: refusals 0, anatomy attacks 3, returns 3
+Pike ×0.85: refusals 0, anatomy attacks 3, returns 3
+Pike ×1: refusals 0, anatomy attacks 3, returns 3
+Pike ×1.15: refusals 0, anatomy attacks 3, returns 3
+Goose ×0.85: refusals 0, anatomy attacks 3, returns 3
+Goose ×1: refusals 0, anatomy attacks 3, returns 3
+Goose ×1.15: refusals 0, anatomy attacks 3, returns 3
+Gull ×0.85: refusals 0, anatomy attacks 3, returns 3
+Gull ×1: refusals 0, anatomy attacks 3, returns 3
+Gull ×1.15: refusals 0, anatomy attacks 3, returns 3
+Racer ×0.85: refusals 0, anatomy attacks 3, returns 3
+Racer ×1: refusals 0, anatomy attacks 3, returns 3
+Racer ×1.15: refusals 0, anatomy attacks 3, returns 3
+Eel ×0.85: refusals 0, anatomy attacks 3, returns 3
+Eel ×1: refusals 0, anatomy attacks 3, returns 3
+Eel ×1.15: refusals 0, anatomy attacks 3, returns 3
+Salamander ×0.85: refusals 0, anatomy attacks 3, returns 3
+Salamander ×1: refusals 0, anatomy attacks 3, returns 3
+Salamander ×1.15: refusals 0, anatomy attacks 3, returns 3
+Rat ×0.85: refusals 0, anatomy attacks 3, returns 3
+Rat ×1: refusals 0, anatomy attacks 3, returns 3
+Rat ×1.15: refusals 0, anatomy attacks 3, returns 3
+Reef Shark ×0.85: refusals 0, anatomy attacks 3, returns 3
+Reef Shark ×1: refusals 0, anatomy attacks 3, returns 3
+Reef Shark ×1.15: refusals 0, anatomy attacks 3, returns 3
+Jellyfish ×0.85: refusals 0, anatomy attacks 3, returns 3
+Jellyfish ×1: refusals 0, anatomy attacks 3, returns 3
+Jellyfish ×1.15: refusals 0, anatomy attacks 3, returns 3
+
+ ✓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > SCALE SWEEP: every archetype attacks through a full bout at 0.85×, 1× and 1.15× its default presentation scale (the stage cadence follows the scale, so a latent skin fold can hide at one size) — refusals reported per archetype and scale 43385ms
+ ✓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > WET arena DRAWING: a full lake from surfaceY to the floor, three frames wide in the depth bands; a swimmer facing a GROUND fighter gets its own half and the ground fighter keeps its floor (review 2026-09-24: the land fighter stood underwater) 146ms
+ ✓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > a FLYER target takes the hit at its body and its cursor stays on screen; a grounded target is exactly as before (review 2026-09-24: the bat's burst landed on the ground, the eagle's cursor at y −26 px) 271ms
+ ✓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > a HIGH flyer's damage number stays inside the frame through its whole pop and rise (C15 2026-09-25: the Dragonfly's "9" was clipped above the viewport) 215ms
+stdout | apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > BAND CONTAINMENT from the real alpha box: on a lake world every archetype that swims or flies has its WHOLE painted box inside its band — the box taken from the rig's measured extent, not from the placement formula (review 2026-09-24: the Vent Crab sat 21 px below the water band floor)
+{"bandChecked":17,"oldAssumptionWouldBreach":7}
+
+ ✓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > BAND CONTAINMENT from the real alpha box: on a lake world every archetype that swims or flies has its WHOLE painted box inside its band — the box taken from the rig's measured extent, not from the placement formula (review 2026-09-24: the Vent Crab sat 21 px below the water band floor) 4334ms
+
+ Test Files  1 passed (1)
+      Tests  9 passed (9)
+   Start at  02:35:01
+   Duration  87.69s (transform 534ms, setup 0ms, import 754ms, tests 86.83s, environment 0ms)
+
+

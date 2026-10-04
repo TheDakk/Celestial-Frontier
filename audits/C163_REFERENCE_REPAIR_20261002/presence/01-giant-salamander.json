@@ -1,0 +1,29 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Giant Salamander",
+  "family": "quadruped",
+  "masterSha256": "86a3b41704ac12cbccd253bc658076b949147b84ba999325a0d399a96315df31",
+  "subjectSha256": "4c018d60de9d91c4ad39c92a0731fbd057aff06d21af4647c2a767dcad153609",
+  "promptSha256": "d6ba7eec688404300fb6b6a915f57577eb1618d5e198b771b5c0c378b43ef423",
+  "profileId": "salamander",
+  "profileSha256": "4e32272af8ac420f81285b7ddc69a584cd5a6c654fd16395a8edf09c07e37229",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: broad flat head, wrinkled smooth skin, wide tail and four short sprawling limbs. No projecting external pinnae. The original retains its existing framing refusal and contact-height differences; no limb-count or contact admission is inferred.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. External gills, ear openings and all other actual head/neck paint remain present and are not excluded."
+      }
+    ]
+  },
+  "scope": "exact-master-only-no-visual-admission"
+}

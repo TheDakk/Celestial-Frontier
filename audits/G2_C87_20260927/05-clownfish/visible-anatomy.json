@@ -1,0 +1,186 @@
+{
+  "id": "05-clownfish",
+  "name": "Clownfish",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "f0c243583fa619afab456422e121283c46dede7275d315519e6e771d3095f5ce",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 27782,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 145,
+      "y0": 138,
+      "x1": 324,
+      "y1": 246
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0261,
+        "pixels": 726,
+        "box": {
+          "x0": 213,
+          "y0": 121,
+          "x1": 275,
+          "y1": 137
+        },
+        "attach": {
+          "x": 244,
+          "y": 137,
+          "relX": 0.55,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.1,
+          "y": -1
+        },
+        "class": "top",
+        "length": 34.9
+      },
+      {
+        "k": 1,
+        "frac": 0.0244,
+        "pixels": 677,
+        "box": {
+          "x0": 132,
+          "y0": 142,
+          "x1": 193,
+          "y1": 183
+        },
+        "attach": {
+          "x": 158.9,
+          "y": 157.4,
+          "relX": 0.08,
+          "relY": 0.18
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.04
+        },
+        "class": "rear",
+        "length": 42.6
+      },
+      {
+        "k": 2,
+        "frac": 0.186,
+        "pixels": 5168,
+        "box": {
+          "x0": 57,
+          "y0": 166,
+          "x1": 144,
+          "y1": 245
+        },
+        "attach": {
+          "x": 144,
+          "y": 204.5,
+          "relX": -0.01,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.02
+        },
+        "class": "rear",
+        "length": 96
+      },
+      {
+        "k": 3,
+        "frac": 0.0469,
+        "pixels": 1304,
+        "box": {
+          "x0": 325,
+          "y0": 170,
+          "x1": 355,
+          "y1": 233
+        },
+        "attach": {
+          "x": 325,
+          "y": 201.5,
+          "relX": 1.01,
+          "relY": 0.59
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.07
+        },
+        "class": "front",
+        "length": 43.5
+      },
+      {
+        "k": 4,
+        "frac": 0.0437,
+        "pixels": 1214,
+        "box": {
+          "x0": 133,
+          "y0": 226,
+          "x1": 204,
+          "y1": 263
+        },
+        "attach": {
+          "x": 169.3,
+          "y": 241.7,
+          "relX": 0.14,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": -0.81,
+          "y": 0.59
+        },
+        "class": "limb-down",
+        "length": 42.1
+      },
+      {
+        "k": 5,
+        "frac": 0.0487,
+        "pixels": 1354,
+        "box": {
+          "x0": 227,
+          "y0": 247,
+          "x1": 291,
+          "y1": 280
+        },
+        "attach": {
+          "x": 261,
+          "y": 247,
+          "relX": 0.65,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.6,
+          "y": 0.8
+        },
+        "class": "limb-down",
+        "length": 47.4
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 2,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 229,
+        "x1": 261,
+        "cx": 244.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

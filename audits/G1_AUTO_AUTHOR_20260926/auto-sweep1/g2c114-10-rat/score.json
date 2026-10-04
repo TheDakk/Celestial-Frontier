@@ -1,0 +1,13 @@
+{
+ "id": "g2c114-10-rat",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) was transferred off the canvas (area < 1 px²)",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 38%)",
+  "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 58%)",
+  "missing-anatomy: part tail2 (tail2) covers 26% paint (reference 100%)",
+  "unexplained-anatomy: 23.0% of the paint lies away from the body and in no part (reference 8.6%)"
+ ],
+ "semanticPresence": null
+}

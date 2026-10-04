@@ -1,0 +1,28 @@
+{
+  "name": "Wahoo",
+  "masterSha256": "fb1450d0a3e07370ce2723ad20534a5f236d7a4116f8786fbbd3a809893121ca",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: elongate fish with visible blue vertical body bars, pointed jaws, two dorsal fins, dorsal/ventral finlet rows and stiff forked tail. Tail and snout approach the8% margin and must be measured. Far paired-fin roots are occluded; no bilateral fin completeness claim. All finlets are original source paint.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 103,
+      "y0": 467,
+      "x1": 1152,
+      "y1": 767
+    },
+    "margins": {
+      "left": 103,
+      "right": 101,
+      "top": 467,
+      "bottom": 486
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

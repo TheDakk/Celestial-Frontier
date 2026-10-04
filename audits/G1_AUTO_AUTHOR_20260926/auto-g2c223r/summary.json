@@ -1,0 +1,245 @@
+[
+ {
+  "id": "01-zebra",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "RED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "02-kudu",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)",
+   "missing-anatomy: part ear-far-root (earFarRoot) covers 21% paint (reference 68%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "03-impala",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-near-tip (earNearTip) covers 3% paint (reference 71%)",
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 8% paint (reference 77%)",
+   "unexplained-anatomy: 6.1% of the paint lies away from the body and in no part (reference 0.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "04-eland",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "05-gazelle",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "06-hartebeest",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "07-oryx",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-near-tip (earNearTip) covers 1% paint (reference 62%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "08-gaur",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part fore-far-paw (foreFarPaw) covers 7% paint (reference 57%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "09-deer",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "10-antelope",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 5% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "11-reindeer",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "12-caribou",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "13-yak",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 7.3% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "14-takin",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 39%)",
+   "missing-anatomy: part fore-far-paw (foreFarPaw) covers 17% paint (reference 57%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "15-sheep",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "16-wild-sheep",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "17-dromedary-camel",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "18-bactrian-camel",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 7.2% of the paint lies away from the body and in no part (reference 1.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "19-gibbon",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4",
+   "unexplained-anatomy: 16.8% of the paint lies away from the body and in no part (reference 9.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "20-leech",
+  "family": "annelid",
+  "verdict": "REFUSE",
+  "reasons": [
+   "wrong-family: serpent matches clearly better (0.0126 < 0.0415)",
+   "missing-anatomy (family floor): the largest rear appendage is 1.0% of the paint; every same-family reference shows at least 28.6%",
+   "unexplained-anatomy: 16.1% of the paint lies away from the body and in no part (reference 5.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "21-sea-squirt",
+  "family": "sessile-filter",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (family floor): the largest rear appendage is 1.1% of the paint; every same-family reference shows at least 2.1%",
+   "unexplained-anatomy: 41.1% of the paint lies away from the body and in no part (reference 33.1%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "22-banana-slug",
+  "family": "gastropod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family gastropod"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "23-prawn",
+  "family": "crustacean-small",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family crustacean-small"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "24-crab",
+  "family": "brachyuran",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family brachyuran"
+  ],
+  "semanticPresence": null
+ }
+]

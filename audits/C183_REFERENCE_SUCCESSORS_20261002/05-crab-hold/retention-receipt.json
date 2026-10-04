@@ -1,0 +1,34 @@
+{
+  "schema": "cf.c183-source-retention/v1",
+  "writer": "audits/C183_REFERENCE_SUCCESSORS_20261002/retain-observation-holds.mjs",
+  "writerSha256": "3b39333bef198137782db555bb518f9bffbfa99280a01906ffd9df6ab658779b",
+  "source": "audits/C213_CREATURE_SUPPLY_20261002/24-crab",
+  "inputs": [
+    {
+      "name": "master.png",
+      "sha256": "d11ee0494e3d445f8100a87394857a104f893f6a9d631303ceaa7ea1a72ea699",
+      "bytes": 1491188
+    },
+    {
+      "name": "subject-source.json",
+      "sha256": "7fa25dfe639eb7e582a33a044f052e32028d6422d58c03a391611250787fad02",
+      "bytes": 2187
+    },
+    {
+      "name": "request.json",
+      "sha256": "b2b980c79d2182c04cd59488805780b97185226335ca56ae9d2f6a1b028a8387",
+      "bytes": 1661
+    },
+    {
+      "name": "generation.json",
+      "sha256": "386d7bc93ffd13c6811a470b17ff8af0298e2438f8cdf77253eaecbeca6aa988",
+      "bytes": 607
+    },
+    {
+      "name": "prompt.txt",
+      "sha256": "a78bda2dd4d2435e1796e9bfeb74607fadc10fbc8946945b7eeffdc7036dd21b",
+      "bytes": 9241
+    }
+  ],
+  "sourceMasterUnchanged": true
+}

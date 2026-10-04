@@ -1,0 +1,28 @@
+{
+  "name": "Guillemot",
+  "masterSha256": "c278ce4a029753b1bf168d40026d0c347155c62cdf766c4361c8efb7ad4f9799",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: upright chocolate-brown/white body, narrow head blending into neck, compact folded wing, short tail and two separate webbed feet are visible. Webbing now reads clearly. Bill is pointed but relatively short rather than an unmistakably long dagger; identity proportion hold retained. Feet are vertically offset in the image, so same-level contact is not claimed.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 369,
+      "y0": 296,
+      "x1": 938,
+      "y1": 961
+    },
+    "margins": {
+      "left": 369,
+      "right": 315,
+      "top": 296,
+      "bottom": 292
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

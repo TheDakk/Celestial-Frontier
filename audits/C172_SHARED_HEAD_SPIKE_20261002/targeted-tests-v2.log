@@ -1,0 +1,21 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/axial-faint.test.ts (7 tests | 1 failed) 384ms
+   × does not trade the primate upper nape spike for an increased throat/arm gap 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/axial-faint.test.ts > does not trade the primate upper nape spike for an increased throat/arm gap
+Error: ENOENT: no such file or directory, open '~/Projects/celestial-frontier-openai-mac/audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/fit01/parts/atlas/undefined.png'
+ ❯ apps/game/src/motion/axial-faint.test.ts:50:277
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 16 passed (17)
+   Start at  13:49:30
+   Duration  686ms (transform 241ms, setup 0ms, import 329ms, tests 745ms, environment 0ms)
+

@@ -1,0 +1,58 @@
+Retained command-output transcript; copied from the two exec_command results.
+No third execution was made to produce this file.
+
+Command (both executions):
+node --test port/v2/tools/creature-animation/wasm-orientation-forward.test.mjs
+
+Attempt 1 — exit 1. The original one-sided runtime admission probe did not
+reject a valid multiply-to-add Wasm mutant. Eight other focused tests passed.
+
+✔ every pin mask and orientation sign preserves exact coordinates, counts and stalled state (5.1885ms)
+✔ deterministic shared-vertex fixtures preserve scalar ordering over repeated seeks (3.348ms)
+✔ signed-zero-only progress consumes the second pass before stalling (0.131875ms)
+✔ stationary pinned and degenerate constraints stall; contradictory constraints retain the full 64 sweeps (0.140417ms)
+✔ extreme finite inputs preserve Object.is behavior when arithmetic overflows or underflows (0.126542ms)
+✔ fixed private topology survives caller mutation and runtime absence uses an explicit null fallback (0.362208ms)
+✖ valid arithmetic mutant and a no-op forward export are rejected before caller mutation (0.873834ms)
+✔ malformed constraints and over-budget calls fail closed (0.323333ms)
+✔ memory-only artifact admission rejects relocation, globals, tables, data and function imports (1.40425ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 118.18875
+
+Failing assertion: expected createWasmOrientationForward(c, runtimeWithBytes(mutant))
+to return null; actual was {byteLength: 65536, kind: 'wasm', run: [Function: run],
+stalled: [Getter: false]}. Location wasm-orientation-forward.test.mjs:41:288.
+
+Changed source before attempt 2: runtime admission now compares the actual
+source topology on both original and vertically reflected deterministic poses.
+The C artifact, arithmetic order, limits, thresholds, fixtures and negative
+control remained unchanged.
+
+Attempt 2 — exit 0.
+
+✔ every pin mask and orientation sign preserves exact coordinates, counts and stalled state (3.487125ms)
+✔ deterministic shared-vertex fixtures preserve scalar ordering over repeated seeks (3.251708ms)
+✔ signed-zero-only progress consumes the second pass before stalling (0.131917ms)
+✔ stationary pinned and degenerate constraints stall; contradictory constraints retain the full 64 sweeps (0.154042ms)
+✔ extreme finite inputs preserve Object.is behavior when arithmetic overflows or underflows (0.193542ms)
+✔ fixed private topology survives caller mutation and runtime absence uses an explicit null fallback (0.320666ms)
+✔ valid arithmetic mutant and a no-op forward export are rejected before caller mutation (0.267458ms)
+✔ malformed constraints and over-budget calls fail closed (0.272333ms)
+✔ memory-only artifact admission rejects relocation, globals, tables, data and function imports (1.517459ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 106.093542
+
+These are focused correctness-test durations, not a native painted-tier CPU
+certificate or a performance claim.

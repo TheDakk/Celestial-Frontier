@@ -1,0 +1,65 @@
+{
+  "name": "Penguin",
+  "family": "biped-bird",
+  "species": {
+    "name": "Penguin",
+    "aspect": 0.45,
+    "headFrac": 0.2,
+    "eyes": "normal",
+    "posture": "upright",
+    "mustRead": [
+      "fully upright standing posture on short rear-set feet",
+      "stiff flipper wings held flat at the sides",
+      "black back and white belly countershading"
+    ]
+  },
+  "genome": {
+    "seed": 2103110547,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 17,
+    "body": 8,
+    "loco": 6,
+    "trait": 4,
+    "size": 0,
+    "diet": 4,
+    "head": 4,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 7,
+    "eyes": 4,
+    "behavior": 5,
+    "habitat": 9,
+    "detail": 6,
+    "accent": 15,
+    "temper": 0,
+    "sense": 5,
+    "repro": 0,
+    "life": 1,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Penguin"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Penguin\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2103110547\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "index": 321,
+  "profile": {
+    "id": "penguin",
+    "names": [
+      "Penguin"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "peck"
+    ],
+    "notes": "Flipper swimming, no aerial attack."
+  }
+}

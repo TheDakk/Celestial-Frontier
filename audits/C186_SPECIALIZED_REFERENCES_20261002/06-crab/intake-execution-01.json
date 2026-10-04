@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "intake",
+  "id": "06-crab",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab/fit01"
+  ],
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "helperUnchanged": true,
+  "exitCode": 1,
+  "signal": null,
+  "log": "audits/C186_SPECIALIZED_REFERENCES_20261002/06-crab/intake-01.log",
+  "logSha256": "13b3153d6829bf4e0b9cb45e15e455e42b8f1f42e06af0f828dd3ede96b8c459",
+  "nativeRuns": 0
+}

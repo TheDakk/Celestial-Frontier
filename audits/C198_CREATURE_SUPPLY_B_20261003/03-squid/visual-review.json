@@ -1,0 +1,28 @@
+{
+  "name": "Squid",
+  "masterSha256": "036499547cba58218195bb74d1d25def62c759286116834e22e8d5519a548860",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size native original: mottled reddish torpedo mantle, two posterior triangular fin lobes, near eye, a small far-side eye sliver, visible tubular siphon and two long club-tipped feeding tentacles. Several shorter sucker-bearing arms fan separately, but the exact eight short-arm root-to-tip paths are not all independently resolved at the overlapping crown. Far eye is only a small edge and its complete contour is not visible. Both eyes, fin/root anatomy and ten appendage paths require independent reference review; no invented far-eye or hidden-arm declaration.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 156,
+      "y0": 296,
+      "x1": 1106,
+      "y1": 977
+    },
+    "margins": {
+      "left": 156,
+      "right": 147,
+      "top": 296,
+      "bottom": 276
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

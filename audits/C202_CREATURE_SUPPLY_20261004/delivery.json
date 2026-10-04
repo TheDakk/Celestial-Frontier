@@ -1,0 +1,1310 @@
+{
+  "schema": "cf.g2-source-delivery/v1",
+  "scope": "24 originals only; source candidates with explicit holds, no rig/native/gallery admission",
+  "originals": 24,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "framingPass": 24,
+  "framingRefused": [],
+  "masterBytes": 33121782,
+  "files": [
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/generation.json",
+      "sha256": "df551be0a62aa96be034df93dcdf9b989153b43b4514cf6720af1298178bb5df",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/master.png",
+      "sha256": "d442293377589fe95fc0d143e91d6b24ef80eb31051539d7dd5b2ee77af1256b",
+      "bytes": 1358644
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/pattern-check.json",
+      "sha256": "83491aa655024196f0cda447e8985d166ea787d0d9d7ff810bf924932ba70c64",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/prompt.canonical.txt",
+      "sha256": "9727c22d77d16483cd2b6c5fece7bbe4ede8c2d6366f875918e0c28264cb5728",
+      "bytes": 8988
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/prompt.txt",
+      "sha256": "adde318798449c16602e0d5e324c4e3e5fed36cb5ba15c94a17cfc2f0a3c4cf4",
+      "bytes": 10753
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/request.json",
+      "sha256": "59e55057759b56b59e3102db78c2a7a390d12bb87b4656637c631ba3f3eb8366",
+      "bytes": 3296
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/subject-source.json",
+      "sha256": "c77a2ddcbf0869a1423f2480463c4749f98d31dc927e47ee479ef0132efeec9d",
+      "bytes": 2166
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/visible-anatomy.json",
+      "sha256": "900f29eb1b0a060f486cfd79d2caca18574952eb23350f6422be73e65ae0f1ee",
+      "bytes": 3401
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/01-tapir/visual-review.json",
+      "sha256": "d5e0b88e269f06bb51cf71d111bed37777d7c785ce519143bba97adb4b3d98a1",
+      "bytes": 906
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/generation.json",
+      "sha256": "9231bad11efec09d09faaf51c4732adaced42310cc15e2cbb1e2a6e5cab7a858",
+      "bytes": 617
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/master.png",
+      "sha256": "e1781fd17de645c4d6ab0b3aa5c037ebd2807a3e8ee28d66f11dfdfa258c4458",
+      "bytes": 1484051
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/pattern-check.json",
+      "sha256": "385f615858a4ec2d11be54b4724dda477e86eecbbf4e6619dc6242a2b578bab5",
+      "bytes": 285
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/prompt.canonical.txt",
+      "sha256": "d27b5098e26c99c2bf77a8828fdff2bc79c6d2723c978b83be75459fea9aac92",
+      "bytes": 8988
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/prompt.txt",
+      "sha256": "9331b9cda24a1bb5a4ce97f1baaea7086fb1519dc6ea4b6321012fe792986dba",
+      "bytes": 10753
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/request.json",
+      "sha256": "e6f093d303e02d26d89db2803c700d0ef701b814b30df7959b1272426c7edd9b",
+      "bytes": 3066
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/subject-source.json",
+      "sha256": "7be84df9e682b6c3f3976e61f684c2398261d470d123e18ccf7821603737e84b",
+      "bytes": 2268
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/visible-anatomy.json",
+      "sha256": "240392a92a0b7f3b20c886867cca6f4be657b8dbcd25884644706c7f909c6783",
+      "bytes": 3415
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/02-wild-boar/visual-review.json",
+      "sha256": "5ae48e1f24790a2d5441aeca9f36dac7debe0af0a98c081ca6b1c9b085cb1a5c",
+      "bytes": 922
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/generation.json",
+      "sha256": "e91ef747160a716e40001ee06cd8db1a685e2ca39b4c4d48ae928d7d81eb518a",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/master.png",
+      "sha256": "14ce2f1cb0ff8404a4c9e503aec15c7a15e154703bb797d6098392b7f8808da6",
+      "bytes": 1394898
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/pattern-check.json",
+      "sha256": "be70648d1486d629c42ecec72ad9e6a847fa54f67d01999ce73ac8b01a0c675e",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/prompt.canonical.txt",
+      "sha256": "932f7cc7cd5ad60a3f5034e0b65c8c7d593e726c51615ba01f27f4d9bbd2fa22",
+      "bytes": 8934
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/prompt.txt",
+      "sha256": "ed49f575339afe1679fbe68da4a3330548c01b8a527f963572ca347e844dff09",
+      "bytes": 10699
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/request.json",
+      "sha256": "bd8b603b54b52df1cf9a10cbcdd51dc3db0efe70d6e624fb5eed062ba6d05fbf",
+      "bytes": 3066
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/subject-source.json",
+      "sha256": "eb5ba0ca09695d63d4c47f906c97dfe5c9e8a5337618ec25b9f46c18ccf32e4e",
+      "bytes": 2209
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/visible-anatomy.json",
+      "sha256": "f0337b6a229c825507e693fbeff4bbad74e183f7dffb91076c86cf678fd89dca",
+      "bytes": 4250
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/03-peccary/visual-review.json",
+      "sha256": "b0eb0cbfbfd52903b1f074983286be377f79424721d8985a94554c54ce6ce2ce",
+      "bytes": 893
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/generation.json",
+      "sha256": "3a646f2bf108ab94499720b391e13910809dcc287f8ce0b48dd6cc207151c951",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/master.png",
+      "sha256": "6c48d5b218fe22a2a451bdd8a1149126ca13e453a7d105b2f25adbb331f0c026",
+      "bytes": 1347048
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/pattern-check.json",
+      "sha256": "6b8c68e1759a3d1517a126239f431a870862d60aa96917e55e048072f9c90453",
+      "bytes": 681
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/prompt.canonical.txt",
+      "sha256": "b69f9c72fa9f9c7a6ef9bc0e37d467c03f5a71b6b9684bdad08baf3effbc6325",
+      "bytes": 8874
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/prompt.txt",
+      "sha256": "3d11fee5c37d05fa2374ce16c00073a4ef11a82dd06e9aa11efa8dfcdd92a7eb",
+      "bytes": 10639
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/request.json",
+      "sha256": "7f76242511b8d0f3c7aa27672ce1ccd1d8251ec9751ebc281275ae42dcab2cdf",
+      "bytes": 3345
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/subject-source.json",
+      "sha256": "4da9589fc09a392a8f2dc2a0398ff0ed28529def67c1b5f25058db27ee950447",
+      "bytes": 2663
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/visible-anatomy.json",
+      "sha256": "08d7fd9d17d421ef6ff8489c4ef46035ef01c95524d712ba007be31a19f6bf57",
+      "bytes": 3829
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/visual-review.json",
+      "sha256": "b978e19ee98bee34c7ceae693d2620bac7147b44da7e04984a27f19807b8bf6c",
+      "bytes": 888
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/generation.json",
+      "sha256": "d238780173d461053b37805e5376e95b3909f18e7e808506ffe2bdd085655c84",
+      "bytes": 617
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/master.png",
+      "sha256": "d8016ea251c9f87b3cfd1f88e3a68107b6eac3b3eb667e930575c690df9c24e1",
+      "bytes": 1589278
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/pattern-check.json",
+      "sha256": "976fe2f7bc21ad5f8725ac880ba294d8dc0e541f92ccc9c1d95b44d570055ffa",
+      "bytes": 662
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/prompt.canonical.txt",
+      "sha256": "6b81c5be95303311022973872353ab4e13a42412e8d29e83006da2516c71a259",
+      "bytes": 9041
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/prompt.txt",
+      "sha256": "d232fac8a139cbf21004b5414bbd2a01e1c973a7e35f44afe054b45e8cc644fd",
+      "bytes": 10806
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/request.json",
+      "sha256": "a2e551b73d756e0e760addceac789bb186988a52c17d02dba177e62150f2251c",
+      "bytes": 3415
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/subject-source.json",
+      "sha256": "baf4a83db7d753e8b65f922c9571658640657d08d32afb9492472b12e66a1ae1",
+      "bytes": 2820
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/visible-anatomy.json",
+      "sha256": "0fc7ec4f7e2d97547551dde970b9baea15cfe10dc55f3a0473b2760f57530d51",
+      "bytes": 3340
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/visual-review.json",
+      "sha256": "3d8b8598a4b44afd6072468dc0d4acf5b4c13ece65786b9e5de7ff5d77845dba",
+      "bytes": 890
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/generation.json",
+      "sha256": "d599270717317515389667de212d64ebea419dc2186951285e9c2b71956916ec",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/master.png",
+      "sha256": "8474e759f7bcb5b9e96dee47c84190fc9b78bc81e6fa0c7c40bc9f2e31efdc7b",
+      "bytes": 1234372
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/pattern-check.json",
+      "sha256": "6139aea829bb186d467f5f43a4f4349c2c7d87e0d627309b9fbfaa5b5f73ffd5",
+      "bytes": 1040
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/prompt.canonical.txt",
+      "sha256": "b1e12938e9151e998ffd7058c835c8990b8cb2e9a66704c634e593673a87c853",
+      "bytes": 8920
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/prompt.txt",
+      "sha256": "5f8e67919ee7c8206e7e01338d36e4017d223724cddad834f8106346fcf3a550",
+      "bytes": 10685
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/request.json",
+      "sha256": "25d7c1bfb7cc99e48e0f42bf47e21af653e13a819e95906ea4ceccd5f634bfda",
+      "bytes": 4014
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/subject-source.json",
+      "sha256": "2a183d583872fcc6ffc5a22cd0afe2def061e1326fe61b6a92ec203edae1043f",
+      "bytes": 2833
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/visible-anatomy.json",
+      "sha256": "1cbf12a6be51118a9b8f6a31e11bdca1b46a1e86e14634a57712c08c06d3177d",
+      "bytes": 3394
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/06-impala/visual-review.json",
+      "sha256": "274b4c5b3de793ea00c4ad506fbb5ac0dbe4c64ddbb452b3f909bd85bf90d2c3",
+      "bytes": 881
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/generation.json",
+      "sha256": "7b13b2f54179d3932eb853ec32c99b7fc3dce3f5dbb1e4481b3f5862d122309f",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/master.png",
+      "sha256": "db9a154050efd3e2f1840915ba51dd45ad9b2f8df41ade0463dabd5a88de1b92",
+      "bytes": 1446229
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/pattern-check.json",
+      "sha256": "04361fc55cb278db76c996ab77c0fffbedeb748a5869f7510f52ef2a44d2f562",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/prompt.canonical.txt",
+      "sha256": "99cc9d51a82e9eb1154e0b5785e0b64bf8bdcb1f9b69fc695ac2136d2409b538",
+      "bytes": 9008
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/prompt.txt",
+      "sha256": "a1ac7c90963486c5b11a365798f832f59e3e2d9ea602255aa538dccda573a2b6",
+      "bytes": 10773
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/request.json",
+      "sha256": "d0bee3ccd09aa9ae1c3db3fee9ef1dd44865cb3406548e51be3091504f28fce2",
+      "bytes": 3382
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/subject-source.json",
+      "sha256": "d15dac0d48c1148983d1e96ef7e5b6c8b92f0e37a81b85f17f458af63df81c43",
+      "bytes": 2285
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/visible-anatomy.json",
+      "sha256": "119f196c0a53617d3fcdcc584b010e38674ee3268d2c3597c9a61ecf3e94f79c",
+      "bytes": 5139
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/visual-review.json",
+      "sha256": "2a9975360c402a86561e9634797429b3d005e81d273c2f7fef45b327b69967f2",
+      "bytes": 875
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/generation.json",
+      "sha256": "b342a7b8b457ab03fa4c862230d35dd090408a309be6a57c0a5d72aeb011e5cb",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/master.png",
+      "sha256": "03ead7a1418baaca1fa93f8be8f7788bb006eba37f92e92c568af57586658601",
+      "bytes": 1454248
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/pattern-check.json",
+      "sha256": "07c1643214abf751532dce547cbca906ca1358552e6fd2225760fadd82355add",
+      "bytes": 283
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/prompt.canonical.txt",
+      "sha256": "0f6e4e3a20ad3e102627217fad76a13509fc6c306ae523a3278ff288f0ad1cdd",
+      "bytes": 8979
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/prompt.txt",
+      "sha256": "a261614c3c8dd4d08d3df99339e839d68738e7cc9a19106ee344616325dd9f5c",
+      "bytes": 10744
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/request.json",
+      "sha256": "5b7a5a8c7c24e95edc8fd50d46098bb521e0053a3778bbdf6402d31d38dce712",
+      "bytes": 4347
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/subject-source.json",
+      "sha256": "89046191530df4b861bb56a33e2b6a3d7afec68d146ba7755d5a88194ceb6638",
+      "bytes": 2881
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/visible-anatomy.json",
+      "sha256": "1265630fac4517a5d5f3ef9adf631466f2b2bdac1f7fb31ff7ecc7717b72d81a",
+      "bytes": 4275
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/08-buffalo/visual-review.json",
+      "sha256": "81916bca59895611ba800c1afc9b99fb2e9e9c0f67e5ec1de3a4ee557138aa5b",
+      "bytes": 869
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/generation.json",
+      "sha256": "870929274c8543e08678342c6fedf83e3ed69abe20f91588d72a4fdfb7b466e2",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/master.png",
+      "sha256": "8f4f9abaa9906c6114cbac761198eec583e180b807f7d6797053f0e722ee743b",
+      "bytes": 1417667
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/pattern-check.json",
+      "sha256": "d3e2d6298c1eae48a1d3319133cd4903e00072959bdf71b4d5ba620e1b018a2b",
+      "bytes": 675
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/prompt.canonical.txt",
+      "sha256": "47683d87b89f7dd9f3f52a3817351327f608f74f16e8ddf268d7f6fed6bd932e",
+      "bytes": 8863
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/prompt.txt",
+      "sha256": "2c4ce6880cac38621ada7cb7fa388d2ba69c27c97526f2ac5ae2ce9d7ef1e26d",
+      "bytes": 10628
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/request.json",
+      "sha256": "386895fa9d17d348f1a9d296d1df484ac70a6bb8b8909daf08b78899cdc69971",
+      "bytes": 3955
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/subject-source.json",
+      "sha256": "0e58841c2155fad0a1d75101c79bc3340826759e2ee050812585cbb66f10f50a",
+      "bytes": 2652
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/visible-anatomy.json",
+      "sha256": "ab57eb62f6b2bc586802eefd7175fc96375f12184fea5ebd47b91a3d67fc37e9",
+      "bytes": 3694
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/09-badger/visual-review.json",
+      "sha256": "ac98e8c9305b8351b90c141819e93a3b00a497443d1757ae7234b6fdb1199bc5",
+      "bytes": 909
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/generation.json",
+      "sha256": "8a4ed5f95ed72be743c6696ea03df69e70bad0de9f117a7f096e666de5a46eec",
+      "bytes": 621
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/master.png",
+      "sha256": "cee94186d04bb44308cfb1f96fe3533e3596c440ef9cbe384db4eb3c626c7cbe",
+      "bytes": 1338026
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/pattern-check.json",
+      "sha256": "dfcc69252ccbb0134ca43a9e842a8b13a93143c6ffb8fccd33a7af761efbb1ac",
+      "bytes": 287
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/prompt.canonical.txt",
+      "sha256": "701532c5081335423c9d4daca5662f9a240fb7f76ee6be769254c3492664e649",
+      "bytes": 8872
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/prompt.txt",
+      "sha256": "cebe88a89392d136b44e33cc3079a8f1174233942f3d9f3e6ae4c8c929f49ee5",
+      "bytes": 10637
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/request.json",
+      "sha256": "331e4e2b3522aa9810b1be90da494aba1460fc73011f4df63e643b2c6d97c073",
+      "bytes": 3098
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/subject-source.json",
+      "sha256": "6415dc165174e5e7823c5e25c4415b5a6a489c600f9b55e862f52e5b58f26a66",
+      "bytes": 2186
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/visible-anatomy.json",
+      "sha256": "250a756044c228dc9139a32a7a12f8771cf406fed886e107cf725d365288c9f1",
+      "bytes": 3675
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/10-river-otter/visual-review.json",
+      "sha256": "17dd6bed64308fceaae012e933f16abdf5dc45c454919e73a55c3a9f2ef9fbd8",
+      "bytes": 899
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/generation.json",
+      "sha256": "3db64d2e9f700f9b5f0c6dcc1f876c9ad7041fdd94154b45d6e047d52b8edd74",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/master.png",
+      "sha256": "ab4d573a75c83f573de488ad3b38828a5d930af6fe1480e560cd8c98d2bd5381",
+      "bytes": 1335187
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/pattern-check.json",
+      "sha256": "b3f5703e9fe99ad98902dd980bda4d0e3bc60743fc754fb6473e80584091e8f5",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/prompt.canonical.txt",
+      "sha256": "199cb62e9bc6c72345df4cc1d3ddf4c5b13de227b0ba7fb143c7ccc245b1d09d",
+      "bytes": 8845
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/prompt.txt",
+      "sha256": "69633cb45eee171bb640756a8f22675f47af45b5c7f20bc97729feffe014e455",
+      "bytes": 10610
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/request.json",
+      "sha256": "5077c0d4fc2ea1c3392efd69aadabb3ed051f91e92bfafc6bb36a250f2f8e60d",
+      "bytes": 3708
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/subject-source.json",
+      "sha256": "adaff50bc8cbab40e430a4bc7ee0bee0323855615b6f405fe2f9530a36235e2c",
+      "bytes": 2158
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/visible-anatomy.json",
+      "sha256": "c560a4b4fa23e0d5f2a1d01b08a3e90723db9bccb2e0ab3c95b5ac897d98020f",
+      "bytes": 4197
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/11-beaver/visual-review.json",
+      "sha256": "f2b2a66f2e6f28d195c8e0108ed244b1090e974a4550fb24013dd7a7e6bd8fc8",
+      "bytes": 889
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/generation.json",
+      "sha256": "14190b236a3645e530de04daaa466defa1a832510f7fa3eedfbe6d91f6de3f30",
+      "bytes": 617
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/master.png",
+      "sha256": "2ef59bfe84259bf70cdd979a75cac10eea9c405011ee83386738ea6ecc89ac3c",
+      "bytes": 1407304
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/pattern-check.json",
+      "sha256": "ef5e9f1fc64fa0f4f4b02e3873313bc10b01e042ab27358e1463c4e39393adb3",
+      "bytes": 651
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/prompt.canonical.txt",
+      "sha256": "e90c89bb21b232c436f9f56f80bc3816a4e269c38635a5c033f064607e7d0cd6",
+      "bytes": 9012
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/prompt.txt",
+      "sha256": "edee83c570a20a9aaaf7774879e79eb163be0c9929300a4035ef52abf3b1458f",
+      "bytes": 10777
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/request.json",
+      "sha256": "62c212dacfd3e32a826b013dae9878faade5c3d31a9db9e01e344d0416764d45",
+      "bytes": 3733
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/subject-source.json",
+      "sha256": "cc1e8b34ce9e3b829cf761be49c2770443be87b7015e7a87d55d85864349a665",
+      "bytes": 2791
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/visible-anatomy.json",
+      "sha256": "3d235982cbfa8e7cd46ae8c1d2532ee1308a894484321b4fd9b9710976b77cd9",
+      "bytes": 3785
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/12-wolverine/visual-review.json",
+      "sha256": "6bb2fd516b84923a9c7a17343d30b48138b341c06f309a0550e0f7fb03480521",
+      "bytes": 865
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/generation.json",
+      "sha256": "cb47b5e5b455f7c9e920003a8335bf0276b7dc775b49b35ddc9205348fa2757f",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/master.png",
+      "sha256": "d8061ecc314acecf182be381b10ba01306a3d7734e06ff185f9e13970fbfe683",
+      "bytes": 1404419
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/pattern-check.json",
+      "sha256": "20eba670397020f8d42be5b65ff091656d11a409d85d3b375c01b67efa327896",
+      "bytes": 280
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/prompt.canonical.txt",
+      "sha256": "2a363654d7bb5a935b5a1899a048444bde06d3ca0b737b7285a7c96afce1ecac",
+      "bytes": 8851
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/prompt.txt",
+      "sha256": "597860b7770af61b1701b919010e58fc2ffaf0051cfc74b1d234ee5a0449e4e5",
+      "bytes": 10616
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/request.json",
+      "sha256": "cdcca0b6b9efefb74566593077587e11e12777b86897b377c218bf2a51231191",
+      "bytes": 3374
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/subject-source.json",
+      "sha256": "aac4d0174240b5350ada4297d2dc78f923e5a97e175d6ed00eb875377a95d8d8",
+      "bytes": 2766
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/visible-anatomy.json",
+      "sha256": "db112dcd5f35593a140a8a47542328ae466ae131a1402bcb5096b32447cd472f",
+      "bytes": 3824
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/visual-review.json",
+      "sha256": "476011aba46ae535a9c3e1eb8f53bb78d991d9ff11bb1be95005dd02c48ecd6c",
+      "bytes": 860
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/generation.json",
+      "sha256": "c68f987268fb4d1d106847f57c2f22210a212c6c3679b7b50b7329375063ae76",
+      "bytes": 613
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/master.png",
+      "sha256": "33745921fcd0a61a8e6937bd97d67d296b0dc21d3d0689b1117aae85df178f9c",
+      "bytes": 1280813
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/pattern-check.json",
+      "sha256": "98b8ad1ec8397e83cc1a453dbf42dbf2f2f55b0c3b3e1b7a5fd961b6dbdc31eb",
+      "bytes": 622
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/prompt.canonical.txt",
+      "sha256": "d36829fc648dcc984441fb83ef2cf8a10a22df023171ef7f24779d05e4f51028",
+      "bytes": 8883
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/prompt.txt",
+      "sha256": "5daefa2bfb973b63421e8fcee09cef1aaaeb04a5669a130b5a7624516bca11d0",
+      "bytes": 10648
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/request.json",
+      "sha256": "940103665e78efeea71743bc65714abc2e617dff39d01176247a5f63c4201530",
+      "bytes": 3079
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/subject-source.json",
+      "sha256": "8c6be5954958c0984e24dedd103f78dc377c42284570087d27b7e46337e1feb2",
+      "bytes": 2798
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/visible-anatomy.json",
+      "sha256": "9ef5c100943e5464b1fe68740a89e3e8f7a6566e0a973eaa6d511a49f2ceef3f",
+      "bytes": 3394
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/14-chamois/visual-review.json",
+      "sha256": "f541625b757130cb8ab1a306e785e357b5bb1e176f79499b71c84e2c4c4a5406",
+      "bytes": 863
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/generation.json",
+      "sha256": "6bc516ee2e07650cfdd8353d2059846365a0705673496bcbec9daf8d37389161",
+      "bytes": 621
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/master.png",
+      "sha256": "1403ef342d66d3bedab9f9fe10766b0fbf994f61a6bdfc48212f81713879d50c",
+      "bytes": 1415453
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/pattern-check.json",
+      "sha256": "513247e79c93543d5c6682fa9879c8fd3f89607e66a8d5f5b2ebd068d88e0695",
+      "bytes": 675
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/prompt.canonical.txt",
+      "sha256": "8b1440cbb0d0d4c09b34b126d32c5ac620b45faa07743eef97e84b697a6eb11b",
+      "bytes": 8882
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/prompt.txt",
+      "sha256": "6a30500e4a38f1b2af49d928a69cbbd2f08e130d13f2084f92efeaa842fedced",
+      "bytes": 10647
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/request.json",
+      "sha256": "a7f725b17f6ca2a42374e7daec487adb9e35ab82ae77d0e8883559fa51918038",
+      "bytes": 3701
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/subject-source.json",
+      "sha256": "435c5f82b9371856a067dda87766339f874a5a7efbd26c6c726e21661e5d1044",
+      "bytes": 2299
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/visible-anatomy.json",
+      "sha256": "6b9fc387cc8b8b254f651edddc58d636164c4deebcdcd080c191e88087152486",
+      "bytes": 3847
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/15-fishing-cat/visual-review.json",
+      "sha256": "419f59efe346a9118c05040628013166fe9c2ed079800aa9abbfd567894336d0",
+      "bytes": 873
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/generation.json",
+      "sha256": "6d65d0ceef41f0ed2f4ee4bafa4121c8098b6337bf84f015e61a863bb55cc313",
+      "bytes": 625
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/master.png",
+      "sha256": "bce5a8e2772d2d90f9d427097b9d9f5c2bb0e9df13b9cb8edd030c63a2cbf6a5",
+      "bytes": 1422526
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/pattern-check.json",
+      "sha256": "407148047fb049bfffeed24264b45e7285be97b95f1544ecc62d1b2264661a73",
+      "bytes": 625
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/prompt.canonical.txt",
+      "sha256": "a6f8c2e120eced43efa739798bf4f2026cd0ce21898e333b2a85aa26b61243fc",
+      "bytes": 8912
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/prompt.txt",
+      "sha256": "553a2d1de6281e669488bd0d84fd5dc001151e87e4a198ea2cd932b4e2ebbd62",
+      "bytes": 10677
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/request.json",
+      "sha256": "7c9c3ffc0a029df8a1b4f9a4af7ecb18c5b0b39d5d9cb08d95907321e82fabf4",
+      "bytes": 3721
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/subject-source.json",
+      "sha256": "0f2d83b776a7990933ccc6cacbd7a4d2bbc09257abc344ed786d7daeed19225b",
+      "bytes": 2090
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/visible-anatomy.json",
+      "sha256": "64672e0024ad3cd9bc6d58d961f1250d09903554e0ec14702220f119690371c8",
+      "bytes": 2973
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/16-spotted-hyena/visual-review.json",
+      "sha256": "8e05940f0f54aaf61d0aadd8adee527ab08fdd45b1ffd4d85ee4d3874a45435b",
+      "bytes": 877
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/generation.json",
+      "sha256": "90a81ad8fe30e2a958992fb24f15fee1ada24fcfb869ced1e1c2bc846c1dc4ed",
+      "bytes": 615
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/master.png",
+      "sha256": "d4026854bc8c60ff9640f9498527673bdc2a7ee47da193bcf55d187f25295f1c",
+      "bytes": 1316403
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/pattern-check.json",
+      "sha256": "b077e42bb1c11ee90fc79ccfc79accc35d66272dfc692990cac3ddaaf7718f76",
+      "bytes": 284
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/prompt.canonical.txt",
+      "sha256": "5ce6156b870308069839e9f50cbab61c760fdfb67190a8460ac5a56dd560d67e",
+      "bytes": 8864
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/prompt.txt",
+      "sha256": "3eab8b62db473b5c9fb324785713b15272cbed8466e0083d0767c62285d43d14",
+      "bytes": 10629
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/request.json",
+      "sha256": "b532518e2d54ec892338c45917b536dd96d3ceffd79f7974a9c0df8775f38c14",
+      "bytes": 3674
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/subject-source.json",
+      "sha256": "d0bc07be35d69e7846ba2992173be920368c1de2748ebc6d44dd2c0000e4141a",
+      "bytes": 1998
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/visible-anatomy.json",
+      "sha256": "3028999409cc9d3a29df86478a45acbe831c2cab53ef57f61d5dde7c74c87b0c",
+      "bytes": 4269
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/17-aardvark/visual-review.json",
+      "sha256": "bdddbd5bdc6541948407777ed9f9088de358d6f039a3c60c8e779c96e653ab9d",
+      "bytes": 892
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/generation.json",
+      "sha256": "a12053d864ec5bfcd351a29bee0415eb19821c86789a6d64fdebfe6670745650",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/master.png",
+      "sha256": "7729d7730e4ce58f37ee3e5cce63edcb38bd38d8ec24b21d8063357eb2957b2c",
+      "bytes": 1477260
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/pattern-check.json",
+      "sha256": "2521e0fc877d5c1838fbbaa5452793476d41551a4bdbfebc6042e9715bfd7900",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/prompt.canonical.txt",
+      "sha256": "501acd1b26955ad8b4a33b44d9380b0fd6183eae1a2ab47701a465ba8fdef660",
+      "bytes": 9032
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/prompt.txt",
+      "sha256": "a577bfdc849043615e73a845baf7f9974368db6d19b2373c4780eb471b1ae993",
+      "bytes": 10797
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/request.json",
+      "sha256": "aa7e8fd7a7c347d182495d299b5674b3199fc22a33fbff538ef1c26fa2b3ebab",
+      "bytes": 3627
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/subject-source.json",
+      "sha256": "8758f07b7036ef4e581a2a527e2f3b9f5d3e5ddd0bb3dc21b0605d4c22872f25",
+      "bytes": 2934
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/visible-anatomy.json",
+      "sha256": "d94da7e3a68376774288153c6d61d63a5460eb0f48d0922a7f6800048d9ef03d",
+      "bytes": 3817
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/18-bison/visual-review.json",
+      "sha256": "29285b44f09db25961e017afd2bd30bd805b5024f9680515b087fbdbfca5c29d",
+      "bytes": 880
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/generation.json",
+      "sha256": "1aa72bce8336d490af7e167b9d6a56f3050af81a297b3755bc3b487171fbe285",
+      "bytes": 621
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/master.png",
+      "sha256": "b480c0573e98c3bfecbb0127a93a3f26455ce225999093da6502b459cbd263a3",
+      "bytes": 1325953
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/pattern-check.json",
+      "sha256": "099a62ee081af855253b34a2da8e1f89bd44f7a8b978c95befb9f3e45d62c70e",
+      "bytes": 287
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/prompt.canonical.txt",
+      "sha256": "9bb1eedfe02906f7dd6752184cddaefdd8cc2ee82b04cbc00c555b03345f2993",
+      "bytes": 8864
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/prompt.txt",
+      "sha256": "d2aedb0c89a2b43bc00a818c486fd5f892d0fb3ac83d4851619955e5bff7bf25",
+      "bytes": 10629
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/request.json",
+      "sha256": "6f3b3022b821ece28194f8d85989b510221c92368064cf054d1136c8e4ad998e",
+      "bytes": 3387
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/subject-source.json",
+      "sha256": "9b29a10cb86195bba36cdf0360427942d087026e5057f19d0d003d6d27800fee",
+      "bytes": 2655
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/visible-anatomy.json",
+      "sha256": "eb7e01fd2c0ef1214ca23798178908e7c6e3201342456f49f74d011e13d00bcb",
+      "bytes": 2984
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/19-prairie-dog/visual-review.json",
+      "sha256": "444b3764b4230b1731a381758a674b6ea1a7ae1a1c3be43713a45baaf5a822ea",
+      "bytes": 869
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/generation.json",
+      "sha256": "9df91f03492dee0fca8155f510413f77853f045c15d84668dd7ce217319ece84",
+      "bytes": 619
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/master.png",
+      "sha256": "015a2e5e50217bb6cefee91103838d91a9c016fe4e38ce6b22570786a0276192",
+      "bytes": 1405014
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/pattern-check.json",
+      "sha256": "77b34596b204f95a0d1622a77c38e8987d20183f8c9a580e2906ad85f5865480",
+      "bytes": 286
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/prompt.canonical.txt",
+      "sha256": "b3e52c47c56d73573ddf1a1f7383f6d6e850cd342f6f36df078fd60be994a955",
+      "bytes": 9024
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/prompt.txt",
+      "sha256": "fdfd3188cccfe17422a67436334709f178ce3746ec27b84c886220891c42e9ea",
+      "bytes": 10789
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/request.json",
+      "sha256": "bf784045bacdcb96e6764fe4a8ed48838f7531d077d8794e4c7d67ac86045d46",
+      "bytes": 3080
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/subject-source.json",
+      "sha256": "a56e9ed12b447e70d3a821d6cfb959a75fc0b78fa024264d34de0a492cb22931",
+      "bytes": 2410
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/visible-anatomy.json",
+      "sha256": "86ebd11c9d4a92efa70c3dfa7ba7463640c6821c406cc6171f3e8275f8611820",
+      "bytes": 3400
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/visual-review.json",
+      "sha256": "03ebd0dd16593db81759be365d2aada27dfbd357003dca8b7fc0fc20230e6d5e",
+      "bytes": 890
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/generation.json",
+      "sha256": "56d758fff4694edb58ff3753ef2ce37acc5733a06b62343655c1c8cafc705885",
+      "bytes": 607
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/master.png",
+      "sha256": "5bf34cad2bc6b98a8a7c3c834623bb45c2553f7c96d1004f32162c70af2b9caa",
+      "bytes": 1295114
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/pattern-check.json",
+      "sha256": "4a8f52f652ab5333ebd370f769e32ac573030b351ff62157e08ce070305c0f8d",
+      "bytes": 280
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/prompt.canonical.txt",
+      "sha256": "7091f9ac937e8542d584fd81f57a5df7e18296b0fd24835b7965ef348c0a963e",
+      "bytes": 8966
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/prompt.txt",
+      "sha256": "9a54e6fdc371ef39a211d71ba0943d74fa8f0a9ca1823ff473a45ae204f6044c",
+      "bytes": 10731
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/request.json",
+      "sha256": "bd5510004672de26af5b417da98096e458259e68ef45edde96fee9bcd104375e",
+      "bytes": 3060
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/subject-source.json",
+      "sha256": "6363e979a98244309bde957ee5b455fc98089b1b1322e064f70e86510aa565d6",
+      "bytes": 2873
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/visible-anatomy.json",
+      "sha256": "c67480be9d1540fdba54a348c0bcb225c926b5bc691685ed7b252f7a32b4c861",
+      "bytes": 3826
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/visual-review.json",
+      "sha256": "02dfa4a2e47a74d7fb55dfa4d1097a78f56f7891121082834123c5082d287f7a",
+      "bytes": 846
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/generation.json",
+      "sha256": "6e0bd293cc25af9660d90919837909802b69bc8da0a09d81fd1faa42ac6c0302",
+      "bytes": 605
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/master.png",
+      "sha256": "56300ec542a72604e5ef96dfcaa1d8b7f59687efd1349afbaf732470c108feee",
+      "bytes": 1290697
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/pattern-check.json",
+      "sha256": "052d00e9f4e205247461c5cc6520a778a8a62d135236575cb0de91fd1394dd7f",
+      "bytes": 279
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/prompt.canonical.txt",
+      "sha256": "a918050691d3d8b3db40f702f964da77dab016d2354f8686d8ceeeb8c1762e1b",
+      "bytes": 8865
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/prompt.txt",
+      "sha256": "767307a216e2cdcfa3d4e1e84f51d11e254cbba234aabeb55a6bb3730a293ed8",
+      "bytes": 10630
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/request.json",
+      "sha256": "035e87bebede14a64d483d4c03f27aa25739fdd30e790344726eb3f2f9d1b777",
+      "bytes": 3405
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/subject-source.json",
+      "sha256": "afa1d5963cdee5e33d8d9d4c151b9fb995cefb609994a9961f145fdb6c83a7f2",
+      "bytes": 2291
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/visible-anatomy.json",
+      "sha256": "c7787616c43f4aa187afbf5834e2be5714f92f867fcd5d36656826f2912937b0",
+      "bytes": 3821
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/22-cat/visual-review.json",
+      "sha256": "5ee14aa2cfb74a185b615c4e573c109d6f59cbe58eb8843f3f0cce47d3760c5c",
+      "bytes": 857
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/generation.json",
+      "sha256": "63befedc322bbbc7275b8221a606491b6c4195b7ba9146ac2a8acfba977f3556",
+      "bytes": 605
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/master.png",
+      "sha256": "5569e828056d75eaff352a6754a5c221db9d549c483ae72dfee1021cc9f7a684",
+      "bytes": 1317629
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/pattern-check.json",
+      "sha256": "a3c75345fe183aaa2bfce18f0c3a18add70cef6dbed8948db7a5eb55b9e4cd4c",
+      "bytes": 279
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/prompt.canonical.txt",
+      "sha256": "5c45e56f574d17c6c6c5152c535efaff7919df2e95474eb8bc28d96ca70c06fc",
+      "bytes": 8935
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/prompt.txt",
+      "sha256": "3ee8dd8bc7e24b956456fb47625467c1a21e66151afddc1b626a823ca1550baf",
+      "bytes": 10700
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/request.json",
+      "sha256": "47a248bb56a75ba5aeefdbf64d8486f5fe62e164a3e498f8ecf4fba01771b698",
+      "bytes": 4027
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/subject-source.json",
+      "sha256": "79741c0e83197a072b5f02e3f2c6eb3e76474e50c8e1b42abb63d1064a646bf1",
+      "bytes": 2267
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/visible-anatomy.json",
+      "sha256": "410f2b4c3be90432936005b411e5f691a7b71125edc8ecaeee7badc670bc635e",
+      "bytes": 3812
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/23-dog/visual-review.json",
+      "sha256": "1f36b4c018d889fa94579602c893cf770f382c7aca124f1fcc9a4cbb0fa9594b",
+      "bytes": 873
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/generation.json",
+      "sha256": "22fb798ac19ac4054d0828066db73eb0218a5f1d5322880636ecfdf10982e98e",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/master.png",
+      "sha256": "fbf67a687e3d35e0a2a94fa387e158604c39daf02d8b249fd79f00b38a7acf91",
+      "bytes": 1363549
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/pattern-check.json",
+      "sha256": "d4d0bd11f9bd13f9fee01a46f3796109f4705be8e56d07862339525290c309c4",
+      "bytes": 281
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/prompt.canonical.txt",
+      "sha256": "ffd209951e8620fe02856c8e72eeb128e75574ebf5dc55ebafff846c6b53eb1c",
+      "bytes": 8936
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/prompt.txt",
+      "sha256": "f97b65977fb9f4c77f1802b95a970f0b311d6381ff3360d04ff92aa8de137233",
+      "bytes": 10701
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/request.json",
+      "sha256": "12d4939df05cace9cf52fa88f9215bd65f2666ca71cc4725bf87d6abb2ed96b9",
+      "bytes": 3379
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/subject-source.json",
+      "sha256": "38a58f79bc8352b78c33c64e100843c0419d8dfcb49d8446621c0be589a126de",
+      "bytes": 2324
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/visible-anatomy.json",
+      "sha256": "e753b837e230212026efac9145ebd9939d56f76040af10ca29b44088ff44a716",
+      "bytes": 3828
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/24-llama/visual-review.json",
+      "sha256": "ca10681a22d83455d3a970b3852858011e4f7b6857c90ba65172f97d83b7d1a7",
+      "bytes": 869
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/README.md",
+      "sha256": "9589df8b7eca1a2fa4502e8951e6095db1b4b64d59a9d111200d0974ae51eff3",
+      "bytes": 1071
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/compile.mjs",
+      "sha256": "cfa055d59ef62b4318542f7d81e2cbe6b9c6e433c9a8021f248e9abce64f9dc3",
+      "bytes": 3550
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/controls.json",
+      "sha256": "7f32407e20da70c574808d69d765d64daf0ed84be111dcf26f0e314445f79192",
+      "bytes": 1385
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/coverage-at-selection.json",
+      "sha256": "58ee0902410725ea96ebd71f2743a411bae596e5e2ff2b29de1fdaa76023fe63",
+      "bytes": 6832
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/framing.mjs",
+      "sha256": "0f83c4f3a64202d5d4b838c4493e7e33232bc4350fc71c65645f48365888320b",
+      "bytes": 963
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/freeze.mjs",
+      "sha256": "fef11c6a3620cb4050a8f0a3a800cadd18b1bfbeec8989cdbca7c00a74ea1b76",
+      "bytes": 2406
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/manual-framing.json",
+      "sha256": "d6f56643ac58441165b28aa0b5f335dd59af405181096a207f6785ad9ea70508",
+      "bytes": 213
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/observations.json",
+      "sha256": "0abeae657b29312bbc7a0620a5d66ddfc94fe3f88b7317ccef4d342d605ecdc4",
+      "bytes": 18721
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/observe.mjs",
+      "sha256": "6e909740c903b566d9571d9e0f60cd80063cadaba7387c3190c42b2c59b2b20a",
+      "bytes": 2547
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/pattern-summary.json",
+      "sha256": "07abf6c9a8cb11f1caf5b50ceeee18b8ce43c4d848466a7065567fdbd883d9b2",
+      "bytes": 2270
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/pilot.json",
+      "sha256": "d671b647a24f46e4b69440649e0a1d521bee2ca624a52cfc6559ee98315df88d",
+      "bytes": 36083
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/pipeline-proof.json",
+      "sha256": "a9f9baabbeb810b1df66aeb4477d487ff06de44f0d14e91cf3c8c7a923fc3834",
+      "bytes": 23615
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/provenance.mjs",
+      "sha256": "d48358f63701f8d22007896f4605f71c0869c4dd9e0049ff8f615ae8bc314f75",
+      "bytes": 7691
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/retain.mjs",
+      "sha256": "6582aa1c34d2a0f096efaba8fe9bc1d22d427c146839141a11693467a3371650",
+      "bytes": 1279
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/review-sheet.png",
+      "sha256": "250ff7bddf9024d76048c89a2ab54eb71edb42e49571add9127895b446f32fae",
+      "bytes": 2749263
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/review.mjs",
+      "sha256": "8f84e1feae646897995d16e4c25427ef5287ba7231aa431344366a8ccc27f637",
+      "bytes": 1985
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/roster.json",
+      "sha256": "d680eafddcb132d6f33ca446271521e950ff7d636a264b05f3a5e704c072ca6a",
+      "bytes": 15726
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/selection.json",
+      "sha256": "cc7d4f55441d171ed52fc87bd4e5811931d5213afc49767cd85ef2321e560745",
+      "bytes": 37784
+    },
+    {
+      "path": "audits/C202_CREATURE_SUPPLY_20261004/visual-notes.json",
+      "sha256": "7c962786ce997d17529bfe1132ceb12f932d5f0bf0b5f81c613c21b4e8dc5e38",
+      "bytes": 4679
+    }
+  ],
+  "bytes": 37170095
+}

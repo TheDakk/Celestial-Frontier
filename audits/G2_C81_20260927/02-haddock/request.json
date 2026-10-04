@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Haddock",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "8e3a9c1e844cbc7094ba62bcd1d49ce7cd9507c3114cac77e537d1a6c9bae351",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "fish",
+  "authoringCreated": false,
+  "sourceHead": "48c225b1de6dc5d8269478c17dc5d74c38913c13",
+  "basePromptSha256": "ebc7c4539d4949c87fdadc49b9b3bcf892774b3401c8d17f0317c6d6eb3a6272",
+  "layoutCompilerSha256": "c51024b78d65a0497013a724c921fb78ea6148ff682ef3c2c1bfa47e731bd72b",
+  "layoutClarification": "Species identity features FIRST: dark thumbprint blotch above the pectoral fin; black lateral line; tall pointed first dorsal fin and three dorsals in all. One Earth Haddock. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: horizontal fish, head RIGHT and complete caudal tail LEFT; species-correct fin count, finlets, barbels and tail shape. Natural fin rays and fin roots must stay distinct; no detached pieces. Keep the tail stalk continuous.\n\n"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "01-water-buffalo",
+  "name": "Water Buffalo",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-544f97ee-f432-4a74-9739-0aca19973297.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7700e76ce80161e6e12b1ab9b00c5b9ac6a6fe04d932d8440df5860c503ab3a9",
+  "bytes": 1420730,
+  "promptSha256": "d338fed90f70f2c5c6526cc7153d82984ec626933f89f2cb05759e9a33c3a4e1",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

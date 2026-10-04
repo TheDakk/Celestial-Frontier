@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c132-final-disk-confirmation/v1",
+  "measuredAtUtc": "2026-10-02T06:53:19.870515+00:00",
+  "freeBytes": 165888000000,
+  "freeGB": 165.888,
+  "freeGiB": 154.495,
+  "previousDocumentedCleanupApproxGB": 101.2288,
+  "cleanupComponents": [
+    {
+      "description": "Claude completed build worktrees",
+      "approxGB": 57
+    },
+    {
+      "description": "Owner-authorized rewrite verification copies",
+      "approxGB": 43
+    },
+    {
+      "description": "Measured own ignored scratch recovery",
+      "bytes": 1228800000
+    }
+  ],
+  "temporaryI5CheckoutArchived": true,
+  "temporaryCheckoutRemovalAddedToCleanupTotal": false,
+  "identityBackupsPreserved": true,
+  "scope": "Cleanup amounts are documented per operation, not an exact summed APFS before/after delta. Known CF directories explain substantial remaining use; prior attribution to unrelated activity was unsupported. This free-space figure includes newly retained C132 asset and verification evidence."
+}

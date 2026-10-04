@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Civet",
+  "masterSha256": "43087c84eb1fcdb638849f14af23f9a582d7408e9ff199b38cb99b6bd204d373",
+  "required": [
+    "masked face with dark bands through the eyes",
+    "long ringed or banded tail"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "masked face with dark bands through the eyes",
+      "status": "PRESENT",
+      "observed": "Full-size: brown-gold coat with dark spots/neck stripes, facial mask and ringed long tail, four separated feet and two ear outlines. Far upper leg and far-ear roots remain partly torso/head occluded. Foot heights differ slightly; fringe, claw counts and fitted ownership remain held."
+    },
+    {
+      "requirement": "long ringed or banded tail",
+      "status": "PRESENT",
+      "observed": "Full-size: brown-gold coat with dark spots/neck stripes, facial mask and ringed long tail, four separated feet and two ear outlines. Far upper leg and far-ear roots remain partly torso/head occluded. Foot heights differ slightly; fringe, claw counts and fitted ownership remain held."
+    }
+  ]
+}

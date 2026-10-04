@@ -1,0 +1,94 @@
+{
+  "schema": "cf.c163-all-pairs-delivery/v1",
+  "status": "PREPARED_ONLY",
+  "nativeMatrixRuns": 0,
+  "performanceClaim": null,
+  "overall60fpsQualification": "UNMEASURED",
+  "manifest": "audits/C163_ALL_PAIRS_20261002/prepared/manifest.json",
+  "manifestSha256": "19a810e06906cb8cbbee2d94379c32d538afa79a4946a3f9aaec656a3792afb7",
+  "orderedPairs": 1444,
+  "fits": 38,
+  "controls": {
+    "passed": 36,
+    "total": 36,
+    "syntheticOnly": true
+  },
+  "scope": "Audit-only current-stage instrument, explicit representative worlds, five coherent turns, exact registered support and anatomy; no product or acceptance changes.",
+  "files": [
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/README.md",
+      "sha256": "1aa3dcbe5c0d7bca488bf206d4748724d822fbe6788abe5497e03b1691392ed1",
+      "bytes": 3826
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/controls.json",
+      "sha256": "7c695240361815bd57a6c03f95799cf85816c3e0a4201403ae245a986bb2828a",
+      "bytes": 3810
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/materialize.mjs",
+      "sha256": "2509bd74950b88870ae85c2b61579e2a8aebad1dd7e39e02bb6bf1575782c7f0",
+      "bytes": 11155
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/native-entry.mjs",
+      "sha256": "63484adb5f1e398fd4cc95d2ae8171098db9de023e9cae34e9522e656866625e",
+      "bytes": 21652
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/native-runner.mjs",
+      "sha256": "b16ceb7643174ffe10f2721a489a96aaa0da1cffc686bbe1ac1083969f213028",
+      "bytes": 16832
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/preparation-receipt.json",
+      "sha256": "73abb325b63088dd0af6596663cc59d309b6b6fc5bb5ca5d8ca27ae409826021",
+      "bytes": 1090
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/prepare-entry.ts",
+      "sha256": "8c761ef18f94fb2200fcc6b9f84fdb035fd8d79da97bab27902aa46a4dfe7878",
+      "bytes": 645
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/prepare.mjs",
+      "sha256": "3236428506bfb8de583685c5c277e700dac19a2dd52ad74eae0a178f78bf260c",
+      "bytes": 9734
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/prepared/manifest.json",
+      "sha256": "19a810e06906cb8cbbee2d94379c32d538afa79a4946a3f9aaec656a3792afb7",
+      "bytes": 13781342
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/prepared/worlds.json",
+      "sha256": "b521c63db07ba5aad5ba400f767a42cdef63de6bdfa17e819635724cf3124766",
+      "bytes": 1769
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/run-sweep.mjs",
+      "sha256": "42f91adfecfc994272c1c9fce7efe605d8232688ec9e56bdcd8db612c577d3fb",
+      "bytes": 2617
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/runner-freeze.json",
+      "sha256": "a0d608b5f927aaf4425f0efb29089e6bda4ff26a0f968040f146e77c6873bb4b",
+      "bytes": 864
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/transform-receipt.json",
+      "sha256": "dd6f13498419b04660ae81c2e6219f5d2ce6ad29fc143944013ff3f6d0d5625c",
+      "bytes": 8615
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/validate.mjs",
+      "sha256": "a79ca0b4aee5a206bbfda5a16dca26ad71027597d8703af2ee68ed04f053cb40",
+      "bytes": 9749
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/validate.test.mjs",
+      "sha256": "2fba41bd15e2403c193867f8e9b1b3f918711086175d60d502b06e33f1f97d12",
+      "bytes": 11420
+    }
+  ]
+}

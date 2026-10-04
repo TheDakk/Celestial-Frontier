@@ -1,0 +1,11 @@
+{
+ "id": "g2c95-19-butterfly",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 40%)",
+  "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 26% paint (reference 77%)",
+  "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)"
+ ],
+ "semanticPresence": null
+}

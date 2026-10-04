@@ -1,0 +1,9 @@
+{
+ "id": "c186creaturesupply-01-impala",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 0.5%)"
+ ],
+ "semanticPresence": null
+}

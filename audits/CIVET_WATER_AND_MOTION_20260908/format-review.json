@@ -1,0 +1,18 @@
+{
+  "schema": "cf-local-format-review/v1",
+  "full": {
+    "exit": 2,
+    "stdout": "audits/CIVET_WATER_AND_MOTION_20260908/articulated-rig-first.log:13: new blank line at EOF.\naudits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/CanvasRenderer-BnZAmjuc.js:3040: trailing whitespace.\n+\t_GraphicsContextSystem.defaultOptions = { \naudits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/CanvasRenderer-BnZAmjuc.js:5962: trailing whitespace.\n+\t_CanvasGraphicsContextSystem.defaultOptions = { \naudits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/RenderTargetSystem-C8zObf9q.js:4109: trailing whitespace.\n+\tHelloSystem.defaultOptions = { \naudits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/study-DJ-P_ISN.js:3399: trailing whitespace.\n+\t_GlBackBufferSystem.defaultOptions = { \naudits/CIVET_WATER_AND_MOTION_20260908/native-first/dist/assets/CanvasRenderer-BnZAmjuc.js:3040: trailing whitespace.\n+\t_GraphicsContextSystem.defaultOptions = { \naudits/CIVET_WATER_AND_MOTION_20260908/native-first/dist/assets/CanvasRenderer-BnZAmjuc.js:5962: trailing whitespace.\n+\t_CanvasGraphicsContextSystem.defaultOptions = { \naudits/CIVET_WATER_AND_MOTION_20260908/native-first/dist/assets/RenderTargetSystem-C8zObf9q.js:4109: trailing whitespace.\n+\tHelloSystem.defaultOptions = { \naudits/CIVET_WATER_AND_MOTION_20260908/native-first/dist/assets/study-CHhh7uK-.js:3399: trailing whitespace.\n+\t_GlBackBufferSystem.defaultOptions = { \naudits/CIVET_WATER_AND_MOTION_20260908/v2-three-typechecks-filter-state.log:4: new blank line at EOF.\naudits/CIVET_WATER_AND_MOTION_20260908/v2-three-typechecks-reviewed.log:4: new blank line at EOF.\naudits/CIVET_WATER_AND_MOTION_20260908/v2-three-typechecks-types.log:4: new blank line at EOF.\n",
+    "stderr": ""
+  },
+  "authored": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "exclusions": [
+    "immutable compiled audits/**/dist/**",
+    "raw audits/**/*.log"
+  ],
+  "reason": "Compiled upstream Pixi and raw producer logs remain byte-exact evidence; authored source must pass."
+}

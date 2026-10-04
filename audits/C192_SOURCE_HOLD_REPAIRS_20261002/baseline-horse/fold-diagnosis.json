@@ -1,0 +1,397 @@
+{
+  "schema": "cf.c192-original-fold-localization/v1",
+  "scope": "Captured contact-resolved poses, unchanged leaf solve; no motion or native qualification",
+  "inputs": [
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/baseline-horse/fit/record.json",
+      "sha256": "f80b0e39ebf39fe24f3ceb16e40a19a2273a9393abc45471c2e1abd1874c7821"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/baseline-horse/fit/binding.json",
+      "sha256": "cc743a2216a467acddcbc2370c9237acb768fa79b6a35a30bebe8c68d6a49b3c"
+    },
+    {
+      "path": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/baseline-horse/static.json",
+      "sha256": "f1b08dec24de51d1ecb9f20f5a20622c967303d16c510726d14422389fcf09f7"
+    }
+  ],
+  "rows": [
+    {
+      "action": "faint",
+      "ms": 197.8,
+      "error": "ARAP skin: unresolved folded triangles: 3",
+      "folds": [
+        {
+          "triangle": 1089,
+          "ratio": -0.06108178202213289,
+          "vertices": [
+            {
+              "index": 687,
+              "x": 870.5,
+              "y": 851,
+              "source": {
+                "x": 870.5,
+                "y": 851,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 683,
+              "x": 861,
+              "y": 841,
+              "source": {
+                "x": 861,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarKnee",
+                    0.592743751517459
+                  ],
+                  [
+                    "foreFarAnkle",
+                    0.371993746845839
+                  ],
+                  [
+                    "foreFarPaw",
+                    0.03517128860173105
+                  ],
+                  [
+                    "foreFarRoot",
+                    0.00009104722207331464
+                  ],
+                  [
+                    "chest",
+                    1.476359916165441e-7
+                  ],
+                  [
+                    "foreNearRoot",
+                    1.781112231024455e-8
+                  ],
+                  [
+                    "neck",
+                    2.2673309554706545e-10
+                  ],
+                  [
+                    "foreNearKnee",
+                    1.3905071455065872e-10
+                  ]
+                ]
+              },
+              "pinned": false
+            },
+            {
+              "index": 682,
+              "x": 880,
+              "y": 841,
+              "source": {
+                "x": 880,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    0.4830114535429048
+                  ],
+                  [
+                    "foreFarKnee",
+                    0.46599737753503784
+                  ],
+                  [
+                    "foreFarPaw",
+                    0.0509367703712113
+                  ],
+                  [
+                    "foreFarRoot",
+                    0.00005431761419373617
+                  ],
+                  [
+                    "chest",
+                    7.277954705980152e-8
+                  ],
+                  [
+                    "foreNearRoot",
+                    7.967508470151027e-9
+                  ],
+                  [
+                    "neck",
+                    1.3478429244371444e-10
+                  ],
+                  [
+                    "foreNearKnee",
+                    5.48126072300513e-11
+                  ]
+                ]
+              },
+              "pinned": false
+            }
+          ],
+          "parts": [
+            "fore-far-ankle",
+            "fore-far-knee"
+          ]
+        },
+        {
+          "triangle": 1091,
+          "ratio": -0.06804199136946278,
+          "vertices": [
+            {
+              "index": 687,
+              "x": 870.5,
+              "y": 851,
+              "source": {
+                "x": 870.5,
+                "y": 851,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    1
+                  ]
+                ]
+              },
+              "pinned": true
+            },
+            {
+              "index": 688,
+              "x": 880,
+              "y": 861,
+              "source": {
+                "x": 880,
+                "y": 861,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    0.44899936507206545
+                  ],
+                  [
+                    "foreFarKnee",
+                    0.4367501259508874
+                  ],
+                  [
+                    "foreFarPaw",
+                    0.1142398084244419
+                  ],
+                  [
+                    "foreFarRoot",
+                    0.00001069061393703022
+                  ],
+                  [
+                    "chest",
+                    9.081916465293015e-9
+                  ],
+                  [
+                    "foreNearRoot",
+                    8.410673547346163e-10
+                  ],
+                  [
+                    "neck",
+                    1.1063019819636673e-11
+                  ],
+                  [
+                    "foreNearKnee",
+                    4.621370236755552e-12
+                  ]
+                ]
+              },
+              "pinned": false
+            },
+            {
+              "index": 689,
+              "x": 861,
+              "y": 861,
+              "source": {
+                "x": 861,
+                "y": 861,
+                "weights": [
+                  [
+                    "foreFarKnee",
+                    0.5398713772237529
+                  ],
+                  [
+                    "foreFarAnkle",
+                    0.38133005706544626
+                  ],
+                  [
+                    "foreFarPaw",
+                    0.07877674574662395
+                  ],
+                  [
+                    "foreFarRoot",
+                    0.00002179366924128148
+                  ],
+                  [
+                    "chest",
+                    2.378322272239906e-8
+                  ],
+                  [
+                    "foreNearRoot",
+                    2.4714096362339702e-9
+                  ],
+                  [
+                    "neck",
+                    2.443689005610119e-11
+                  ],
+                  [
+                    "foreNearKnee",
+                    1.5866455428541397e-11
+                  ]
+                ]
+              },
+              "pinned": false
+            }
+          ],
+          "parts": [
+            "fore-far-ankle",
+            "fore-far-knee"
+          ]
+        },
+        {
+          "triangle": 1092,
+          "ratio": -0.018258007271597102,
+          "vertices": [
+            {
+              "index": 690,
+              "x": 890,
+              "y": 851,
+              "source": {
+                "x": 890,
+                "y": 851,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    0.5671274926202317
+                  ],
+                  [
+                    "foreFarKnee",
+                    0.34395168534887616
+                  ],
+                  [
+                    "foreFarPaw",
+                    0.08890365436699009
+                  ],
+                  [
+                    "foreFarRoot",
+                    0.000017150923538423796
+                  ],
+                  [
+                    "chest",
+                    1.5289577509872168e-8
+                  ],
+                  [
+                    "foreNearRoot",
+                    1.421214751263013e-9
+                  ],
+                  [
+                    "neck",
+                    2.1735848382543402e-11
+                  ],
+                  [
+                    "foreNearKnee",
+                    7.835785126095188e-12
+                  ]
+                ]
+              },
+              "pinned": false
+            },
+            {
+              "index": 682,
+              "x": 880,
+              "y": 841,
+              "source": {
+                "x": 880,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    0.4830114535429048
+                  ],
+                  [
+                    "foreFarKnee",
+                    0.46599737753503784
+                  ],
+                  [
+                    "foreFarPaw",
+                    0.0509367703712113
+                  ],
+                  [
+                    "foreFarRoot",
+                    0.00005431761419373617
+                  ],
+                  [
+                    "chest",
+                    7.277954705980152e-8
+                  ],
+                  [
+                    "foreNearRoot",
+                    7.967508470151027e-9
+                  ],
+                  [
+                    "neck",
+                    1.3478429244371444e-10
+                  ],
+                  [
+                    "foreNearKnee",
+                    5.48126072300513e-11
+                  ]
+                ]
+              },
+              "pinned": false
+            },
+            {
+              "index": 686,
+              "x": 900,
+              "y": 841,
+              "source": {
+                "x": 900,
+                "y": 841,
+                "weights": [
+                  [
+                    "foreFarAnkle",
+                    0.5952380238150351
+                  ],
+                  [
+                    "foreFarKnee",
+                    0.3364668110798466
+                  ],
+                  [
+                    "foreFarPaw",
+                    0.06826397473224714
+                  ],
+                  [
+                    "foreFarRoot",
+                    0.00003115464317341589
+                  ],
+                  [
+                    "chest",
+                    3.247837855935106e-8
+                  ],
+                  [
+                    "foreNearRoot",
+                    3.1785252004078512e-9
+                  ],
+                  [
+                    "neck",
+                    5.405232032457878e-11
+                  ],
+                  [
+                    "foreNearKnee",
+                    1.8741782866358467e-11
+                  ]
+                ]
+              },
+              "pinned": false
+            }
+          ],
+          "parts": [
+            "fore-far-ankle",
+            "fore-far-knee"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "schema": "cf.g2-source-delivery/v1",
+  "scope": "Four invertebrate originals; audit-only compiler extension, Shrimp framing refusal and explicit anatomy holds, no rig/native/gallery admission",
+  "originals": 4,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "framingPass": 3,
+  "framingRefused": [
+    "Shrimp"
+  ],
+  "masterBytes": 5167809,
+  "files": [
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/generation.json",
+      "sha256": "4a334207dee14d73906106197c12a16b31a0535dd59df741f92abfc63567e2c6",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/master.png",
+      "sha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e",
+      "bytes": 1242234
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/pattern-check.json",
+      "sha256": "791544b9f82b20bcfdd70ba25ee4a2dc1b4bfca025d2c748f569acb1f2eb5ba5",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/prompt.txt",
+      "sha256": "726dba2e2852f7f82a6ea2ac4becedd217fc88088bf08577a69debfe068fbe8c",
+      "bytes": 9130
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/request.json",
+      "sha256": "ed74cea41a0fc2b6e59d3f5072cd4da92c5134e782eb403d251dff07ab245e9f",
+      "bytes": 1266
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/subject-source.json",
+      "sha256": "70eed98c8728dcbfd990ec7d96df46ea4903e109aac8e9dfc9527557cd3bce5b",
+      "bytes": 2382
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/visible-anatomy.json",
+      "sha256": "9b98066b42a161c8b2216aff767a0717e897aacd4e56ef22c33c91b78c22b62b",
+      "bytes": 3617
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/visual-review.json",
+      "sha256": "01456218b59f5fc76baf7c31a9ccf6e8483a7e9dbe4c255217dcbd38ba65ebd9",
+      "bytes": 1122
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/generation.json",
+      "sha256": "f66ccb60535d3533a65b3a6596edaf307a35c8bf48576effac9d1d356b063091",
+      "bytes": 623
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/master.png",
+      "sha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090",
+      "bytes": 1211388
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/pattern-check.json",
+      "sha256": "7076821ff697edf83cbc2926037e9c357fca03b56a69bfe5037447a6600ac72d",
+      "bytes": 288
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/prompt.txt",
+      "sha256": "7195a2ddd42dcf726e6f26cf95c4fa7a38ac09d974814cb90607bb8a8edf96df",
+      "bytes": 9016
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/request.json",
+      "sha256": "190661db3c2af403c64624f7aee83518af7d82470ddc6abbf725662008fcb51a",
+      "bytes": 1254
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/subject-source.json",
+      "sha256": "3d4827bea281162e4a329439442bec691561a9bc2b395d5a7bcf2d7ad5f68a4d",
+      "bytes": 2231
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/visible-anatomy.json",
+      "sha256": "ef12dc5744818bb80b5e64b66fcec1af5c18ea34e453d3590133573c13ad1f76",
+      "bytes": 3277
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star/visual-review.json",
+      "sha256": "06dfc98c6adadac8e9ed56566bfdc8841e6a392c904ae6732526074203dfbcb7",
+      "bytes": 1105
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/generation.json",
+      "sha256": "a6d95d8c0955832774b1fc68f340b56c3329447b4e875d4942b667cddb06c983",
+      "bytes": 623
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/master.png",
+      "sha256": "2609a876da2aac65c156406266917626842f19df3f5936c42ae47ebf11b84274",
+      "bytes": 1375093
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/pattern-check.json",
+      "sha256": "46ffb2b21e33a30b31bae0a5b159f19a84525d478e1cd59920562cd12620ecb6",
+      "bytes": 288
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/prompt.txt",
+      "sha256": "f7d1e6104cbcecdd83d232141f8cbc350dc1a28307c621c96d2160ab88d4cdea",
+      "bytes": 9289
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/request.json",
+      "sha256": "3364811e04a756a3a104dec0233f11d8b60db9d732407969ba8b93a944029246",
+      "bytes": 1242
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/subject-source.json",
+      "sha256": "b77cd66d7844ea3b305ea2e7455815a6b240b0d81da79e62ba9f7be87f3a9df7",
+      "bytes": 2270
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/visible-anatomy.json",
+      "sha256": "d9adc31b9109c29c87fac2ddd9ccb348d7f3da667e9f7a1b1ad03ce1a55cd4ef",
+      "bytes": 3612
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/visual-review.json",
+      "sha256": "03f0d22c9e72e0607c707b2e6f89bac8e19e9fde9282521f7474eef5fa81ad31",
+      "bytes": 1116
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/generation.json",
+      "sha256": "5a587b0be9b8a849956a4185cb676a1ff83989867234ea5ac45665b8af6f3111",
+      "bytes": 611
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/master.png",
+      "sha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+      "bytes": 1339094
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/pattern-check.json",
+      "sha256": "c59ddafa7d55ba0ad0473fc109ecf0a922dbaa655611c2813ad1aa292cadf8c4",
+      "bytes": 282
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/prompt.txt",
+      "sha256": "ca4d378d76ce146972b6abe96192891e472cd9c1a3390eef5cdb6f244c7902a8",
+      "bytes": 9307
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/request.json",
+      "sha256": "8ec12084c99626d64907ffb2f5a4daa9466a59d518e996fa49cbbe31527cc919",
+      "bytes": 1237
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/subject-source.json",
+      "sha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa",
+      "bytes": 2221
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/visible-anatomy.json",
+      "sha256": "e7b532c3cfac441ebf5440fcef6db85e3f5c1c50f86457d54c135eaf3fa115dc",
+      "bytes": 3161
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/visual-review.json",
+      "sha256": "a9393a2ca24675665d3ff780a00bb7867310e7a888c468c0b0bd10540d83f31b",
+      "bytes": 1145
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/compile.log",
+      "sha256": "084b66a4d66433c836a7e7bd166d3de2a4e79d1343a06e13c665b1279cfa8457",
+      "bytes": 96
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/compile.mjs",
+      "sha256": "616450aa88141a948ec1f23df1099085b8d92c62db953d2a27c51d51261109df",
+      "bytes": 1667
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/compiler.audit.mjs",
+      "sha256": "08a9e24c6206f51f43c0bfca71f8b8749faaf1935af2f1ccb4b8268c63637902",
+      "bytes": 23963
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/controls.json",
+      "sha256": "c1943d4c0e1f2afa0fafc26292fc8fd8e80faa54fe23850a5c65c6f682a19b00",
+      "bytes": 2517
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/controls.mjs",
+      "sha256": "399c6756f57d6e540ada93c734a39c83a982608bf24cab484ffc4e6fd0a2bc29",
+      "bytes": 2884
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/framing.mjs",
+      "sha256": "0f83c4f3a64202d5d4b838c4493e7e33232bc4350fc71c65645f48365888320b",
+      "bytes": 963
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/freeze.mjs",
+      "sha256": "1cbca959e832034603fe6cc374ea5d4f5c60aedf798d3a027e08f96b5547a2ab",
+      "bytes": 2455
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/materialize.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/materialize.mjs",
+      "sha256": "178599ab1bdcca5676e3699dc0853f100e922c5d4e0025505802f8871603698d",
+      "bytes": 7784
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/observations.json",
+      "sha256": "c1012527f6caff88f6bcb59988279194f32ca4e732fb44c0f88896f0ea32987a",
+      "bytes": 3141
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/observe.mjs",
+      "sha256": "6e909740c903b566d9571d9e0f60cd80063cadaba7387c3190c42b2c59b2b20a",
+      "bytes": 2547
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pattern-now.mjs",
+      "sha256": "a880c56356a11e38cd7db606dea5d4941cfde2ff85bfb6d14cdfb60e84068a99",
+      "bytes": 927
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pattern-summary.json",
+      "sha256": "0d23c4c97de13af826868b31e4d6ecc151b64f9f750bacfa09f44fc93513a65e",
+      "bytes": 388
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/pilot.json",
+      "sha256": "536ffcb77bfcf41455cc0bd022dc3412f246f69c72083278ca7aeba6e650fd40",
+      "bytes": 1151
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/prepare-tools.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/prepare-tools.mjs",
+      "sha256": "e36fd452003f1ead1063b811cbdf28860af884ce47a52d7059295b68e31a4ee5",
+      "bytes": 5706
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/README.md",
+      "sha256": "82b2e75b1c985201b8c1dc1b095afd987e34e74ebc6f9ba111627ee089b2eb18",
+      "bytes": 2731
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/retain.mjs",
+      "sha256": "6582aa1c34d2a0f096efaba8fe9bc1d22d427c146839141a11693467a3371650",
+      "bytes": 1279
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/review-sheet.png",
+      "sha256": "53b2c2a6e55b30d12f74c7926c6abedfb8072690f3b476df3edd33ee64769188",
+      "bytes": 438669
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/review.mjs",
+      "sha256": "97496460a4a306dbd839d443feb3aa955872d43f2df72bdadb2f659c138cfa04",
+      "bytes": 2037
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/transform-receipt.json",
+      "sha256": "2fca19202b99e88450f572df96216bf4712fe807ef585a4c580d3ff6d863043d",
+      "bytes": 6995
+    },
+    {
+      "path": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/visual-notes.json",
+      "sha256": "6db118fc99c7f6449231f1865e6272cd9668d6a79c41c2ba7318d5708b91bacc",
+      "bytes": 1758
+    }
+  ],
+  "bytes": 5813319
+}

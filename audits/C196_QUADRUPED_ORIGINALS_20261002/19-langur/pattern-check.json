@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Langur",
+  "masterSha256": "2bb01355edf9b9172dcd479fc048cf78f1b1e292161f67163fd1e96023fcded9",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

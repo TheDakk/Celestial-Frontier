@@ -1,0 +1,120 @@
+{
+  "cases": [
+    [
+      "c54-14-goose",
+      "audits/BIRD_MOTION_C69_20260927/inputs/c54-14-goose"
+    ],
+    [
+      "c54-15-quail",
+      "audits/BIRD_MOTION_C69_20260927/inputs/c54-15-quail"
+    ],
+    [
+      "c56-10-raven",
+      "audits/BIRD_MOTION_C69_20260927/inputs/c56-10-raven"
+    ],
+    [
+      "c59-08-vulture",
+      "audits/BIRD_MOTION_C69_20260927/inputs/c59-08-vulture"
+    ],
+    [
+      "c56-09-crow",
+      "audits/BIRD_MOTION_C69_20260927/inputs/c56-09-crow"
+    ],
+    [
+      "c56-13-magpie",
+      "audits/BIRD_MOTION_C69_20260927/inputs/c56-13-magpie"
+    ],
+    [
+      "c56-15-dove",
+      "audits/BIRD_MOTION_C69_20260927/inputs/c56-15-dove"
+    ],
+    [
+      "01-robin",
+      "audits/G2_REFERENCES_C62_20260927/01-robin/fit-01"
+    ],
+    [
+      "02-pigeon",
+      "audits/G2_REFERENCES_C62_20260927/02-pigeon/fit-01"
+    ],
+    [
+      "03-duck-v2",
+      "audits/G2_REFERENCES_C62_20260927/03-duck-v2/fit-01"
+    ],
+    [
+      "04-hawk-v2",
+      "audits/G2_REFERENCES_C62_20260927/04-hawk-v2/fit-01"
+    ]
+  ],
+  "sources": [
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c54-14-goose/fit/record.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c54-14-goose/record.json",
+      "sha256": "0fb3a200efac5e1cbe8501222d7711f15e86a7a8b8d872d64a482685cbee22a8"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c54-14-goose/fit/binding.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c54-14-goose/binding.json",
+      "sha256": "dff80f4b885cfbedba5a5156f08ac89d3643f129876dae50c016bd62289060ba"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c54-15-quail/fit/record.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c54-15-quail/record.json",
+      "sha256": "b709d0d12f88f3c4647721e43ff88d794f680b8f1d8ba6e91542518120f46d74"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c54-15-quail/fit/binding.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c54-15-quail/binding.json",
+      "sha256": "7bdc6c9985c8bab6eeabb79dbadb6f7f9a020caf0c1e8ad6abb02b9b6e5f1ac7"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-10-raven/fit/record.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c56-10-raven/record.json",
+      "sha256": "25b019470c95a9ac9076515f8061258c49a6a4e9d90e75f93aa5182066cb486f"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-10-raven/fit/binding.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c56-10-raven/binding.json",
+      "sha256": "1099c2f19d7b79725e5ffd04bbada4bc6a29d2ed0030527faf9d6210d65b43bd"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/fit/record.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c59-08-vulture/record.json",
+      "sha256": "34b44097545131c727ea9acec54ac282b9f6506ad81bdbcdc9cd1a421846da06"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/fit/binding.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c59-08-vulture/binding.json",
+      "sha256": "4ed05f42323def2e84c13bf88dc9ac19e8d9aef865d43fd3c9c5dd777aaa0713"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-09-crow/fit/record.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c56-09-crow/record.json",
+      "sha256": "2f43c779a92b38c15d80fb3b0b4b7b79c001360bec170c21c5b85f40b686f7e9"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-09-crow/fit/binding.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c56-09-crow/binding.json",
+      "sha256": "000b39a4458b24818bfedaabbf888a76fcf78ffbdad4a2502107fefdf675953e"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-13-magpie/fit/record.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c56-13-magpie/record.json",
+      "sha256": "b1820018ec99fb95b8766b7e722fb2bf3dd7b246d6746e35fa77780e1289ee91"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-13-magpie/fit/binding.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c56-13-magpie/binding.json",
+      "sha256": "93ff224a71d5e8e03712b78cea69a12fec195f1c5a199a9163c75a870f381c5f"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-15-dove/fit/record.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c56-15-dove/record.json",
+      "sha256": "d477d2f8ae3ef727595558f8fe40eee2dcc3530af71ea6cb724f55f0119f56b2"
+    },
+    {
+      "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-15-dove/fit/binding.json",
+      "copy": "audits/BIRD_MOTION_C69_20260927/inputs/c56-15-dove/binding.json",
+      "sha256": "bcfd3418d7091217389cf44d908b105c3576fa04bfe08456c6e0823f3801d16a"
+    }
+  ]
+}

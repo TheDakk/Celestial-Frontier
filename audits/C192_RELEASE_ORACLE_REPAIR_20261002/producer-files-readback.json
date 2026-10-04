@@ -1,0 +1,43 @@
+{
+  "scope": "Read existing producer files only; no build, native run, budget edit or rebind",
+  "product": "a0414aa6511d1ee9a9d55a4721f1f622c7fdb7dd",
+  "files": [
+    {
+      "role": "index",
+      "relativePath": "index.html",
+      "expected": "91a1dc00300818b6323778c157db57b8c0e7be6dcb8ef8a1633192d31efad93b",
+      "actual": "91a1dc00300818b6323778c157db57b8c0e7be6dcb8ef8a1633192d31efad93b",
+      "matches": true
+    },
+    {
+      "role": "owner",
+      "relativePath": "assets/tame-greeting-audio-grdmc3n3.js",
+      "expected": "8de2846ab9eea47fc97c7c5c1dd64625301179a6aff4e087429dd30a9e50eee3",
+      "actual": "8de2846ab9eea47fc97c7c5c1dd64625301179a6aff4e087429dd30a9e50eee3",
+      "matches": true
+    },
+    {
+      "role": "worker",
+      "relativePath": "assets/species-art.worker-SHcKR5tI.js",
+      "expected": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62",
+      "actual": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62",
+      "matches": true
+    },
+    {
+      "role": "painter",
+      "relativePath": "assets/species-art.worker-SHcKR5tI.js",
+      "expected": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62",
+      "actual": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62",
+      "matches": true
+    },
+    {
+      "role": "serviceWorker",
+      "relativePath": "service-worker.js",
+      "expected": "ed804c3d6c8b4956a9f3946b941a0c20be0778eef5ffd35db4e09658c425bac8",
+      "actual": "ed804c3d6c8b4956a9f3946b941a0c20be0778eef5ffd35db4e09658c425bac8",
+      "matches": true
+    }
+  ],
+  "status": "PASS",
+  "limitation": "Does not replace the pending full develop profile"
+}

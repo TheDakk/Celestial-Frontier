@@ -1,0 +1,73 @@
+{
+  "model": "skillsafeai/sdxs-512-dreamshaper-onnx-webgpu",
+  "revision": "b23bf8f4f809a0beb6d095bf52b5854e0b66caef",
+  "sourceUrl": "https://huggingface.co/api/models/skillsafeai/sdxs-512-dreamshaper-onnx-webgpu",
+  "tree": [
+    {
+      "type": "directory",
+      "oid": "76cec17bd18ca6693bff5b6fff87f4d8638467c4",
+      "size": 0,
+      "path": "tokenizer"
+    },
+    {
+      "type": "file",
+      "oid": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+      "size": 1519,
+      "path": ".gitattributes"
+    },
+    {
+      "type": "file",
+      "oid": "4b705d62bf303b8d228c52ad88bb55e4cc5169c9",
+      "size": 2004,
+      "path": "README.md"
+    },
+    {
+      "type": "file",
+      "oid": "7f08c5999dacc7a218e7e6c993f712c5b526ccef",
+      "size": 246275486,
+      "lfs": {
+        "oid": "73464847bad29badc218bf9f0d285f36b92ddccd6b874643d2a2d31766870e83",
+        "size": 246275486,
+        "pointerSize": 134
+      },
+      "xetHash": "de36cc84c9f16fa133d61ccb23e79f08e155bcbd2a444fa7193715d9f6989572",
+      "path": "text_encoder.onnx"
+    },
+    {
+      "type": "file",
+      "oid": "76e821f1b6f0a9709293c3b6b51ed90980b3166b",
+      "size": 524619,
+      "path": "tokenizer/merges.txt"
+    },
+    {
+      "type": "file",
+      "oid": "469be27c5c010538f845f518c4f5e8574c78f7c8",
+      "size": 1059962,
+      "path": "tokenizer/vocab.json"
+    },
+    {
+      "type": "file",
+      "oid": "0a15bd768d01f6736cce615c1b7b8fe7e7f6ce4d",
+      "size": 631766742,
+      "lfs": {
+        "oid": "f81dc16670944fead5561851a06038a21c23779760065249274801f47896ece7",
+        "size": 631766742,
+        "pointerSize": 134
+      },
+      "xetHash": "f89cef6c9627b531a31e4c1de2a88565abc591e86db294890895e94cbffaf252",
+      "path": "unet.onnx"
+    },
+    {
+      "type": "file",
+      "oid": "e4e0712d2d30cd36b14109190a3069df07d4e8e8",
+      "size": 2467568,
+      "lfs": {
+        "oid": "75c5e431703b1d87bcc44f5610b49f6b73594b09857a2263958123afe0be7190",
+        "size": 2467568,
+        "pointerSize": 132
+      },
+      "xetHash": "7794a7af4ce3eb4f56a436f4582efd1cfac0be3dbeda5edbd54f47dbf95330b5",
+      "path": "vae_decoder.onnx"
+    }
+  ]
+}

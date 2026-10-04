@@ -1,0 +1,14 @@
+{
+  "id": "24-snowshoe-hare",
+  "name": "Snowshoe Hare",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-339efaa8-78a8-4e89-882a-94326c7a0bdd.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "89f7b4946f99c6300bc7a1849a7485fae6500c7dafb04c9733d053b58c988d7f",
+  "bytes": 1301377,
+  "promptSha256": "d5d32ef021415ef339217bbbed67c4f38162f8c9497a02cd5a5b6b9df3af7fc4",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

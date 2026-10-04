@@ -1,0 +1,1968 @@
+{
+  "schema": "cf.all-animation-diagnostic/v1",
+  "status": "PASS",
+  "scope": "All published family action curves at 241 samples each on synthetic contract landmarks. Not skin, seam, contact, arena or art qualification.",
+  "rows": [
+    {
+      "template": "quadruped",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.112767688958633e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 4.956311824844128e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "approach:walk",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.554883181826177e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "approach:trot",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.431537320025996e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "approach:gallop",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000002335962387967072,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "approach:hop",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000001059973936679004,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "melee:bite",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000001649939385535773,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "melee:claw",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.00000782699252449559,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "melee:gore",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000004480237389414832,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "melee:tail",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000001337704042141119,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "melee:headbutt",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000002844260105369645,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.471066896860059e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.099079754659734e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.910358522129513e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.72133298357447e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000011566299760179533,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.148578813371721e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.249104860829192e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "quadruped",
+      "action": "melee:kick",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000018274131155550377,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.112767689028022e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 5.943429647256582e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "approach:hop",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.196019956636547e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "melee:kick",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000006159771749336684,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "melee:bite",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000036140459558353655,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.758381790681003e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.162637593900346e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.650961625111808e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.247875256632952e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.319287866405013e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.181462990419774e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "hopper",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.903903965824412e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.954509018374579e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 5.537187760216999e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "approach:walk",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.573178226223277e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "approach:flight",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.523432072429782e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "melee:peck",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000016957870176970147,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "melee:claw",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000003144689409317891,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.289656027171688e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.356139633569626e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000014560446094380453,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.89449469240644e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.260052638848659e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.29388079023985e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.611268553810781e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "biped-bird",
+      "action": "melee:kick",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000033532211036746418,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.072118621206935e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 4.981416313887266e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "approach:swim",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000010073394967335947,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "melee:bite",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000013465402704526674,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.864572035831685e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.716078404094607e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.588730208702877e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.969341211944148e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.163867128678891e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.893251906115895e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 6.780384486093638e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "melee:body",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.407460963533175e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "fish",
+      "action": "melee:tail",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000017875849890325313,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.112767688958633e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.476609743100078e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "approach:crawl",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.066948754548164e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "approach:flight",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.344556615165089e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "melee:mandible",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.00000314379598703729,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000015894907411384551,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.093234245305393e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000001181034819830451,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.418293287431155e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.830292348438462e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.170333052088697e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.2655876471337e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "insect",
+      "action": "melee:body",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.939563634375759e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.954509018443968e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.887243764388707e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "approach:slither",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.769608275532859e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "melee:strike",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000015104593064640959,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "melee:constrict",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000012758732824968977,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000001111839059819708,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.481296701334795e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.25676899993233e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.782099067654702e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.018790308954692e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 6.86721233308929e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "serpent",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.933887017115172e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.948374163013749e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.476609743100078e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "approach:scuttle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.066948754548164e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "melee:sting",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000022590508367281714,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "melee:bite",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000003661044842118155,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000012406537206119395,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.444641084182081e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.000001181034819830451,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.858906015429824e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.830292348438462e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.609235179202201e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.770403698259543e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "arachnid",
+      "action": "melee:body",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.428628166066599e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 6.723972461840366e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 5.231388804684267e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "approach:drift",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "approach:pulse",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.695766691609041e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "melee:sting-arms",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.429907049911645e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.476804492785206e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.83216414612653e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 6.963878582677552e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 5.277206827462855e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.193911031877498e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "radial",
+      "action": "melee:body",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.467695859770696e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "plant-woody",
+      "action": "sway",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 5.036481477323218e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "plant-woody",
+      "action": "disturb",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 6.347219425467676e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "plant-woody",
+      "action": "harvest",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 6.221004256734552e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "plant-woody",
+      "action": "grow",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 5.233135550730683e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "plant-herb",
+      "action": "sway",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "plant-herb",
+      "action": "disturb",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "plant-herb",
+      "action": "harvest",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "plant-herb",
+      "action": "grow",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.112767688958633e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.476609743100078e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "approach:crawl",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.625847132987975e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "melee:mandible",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000026403462161372904,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "melee:sting",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000017392700022433871,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000010603685391408213,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.381716518595205e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000011327698832275246,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.802243313648205e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.185120328712102e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.956671391502358e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.28344098341427e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "myriapod",
+      "action": "melee:body",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000014255548634600768,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.112767688958633e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 5.432699046042933e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "approach:jet",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.405949342843444e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "approach:crawl",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.675364631186011e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "melee:lash",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 6.997369752098637e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "melee:bite",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.335872515336963e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.716290028048078e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.941230799086597e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000011744483312536858,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.542805944837916e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.316580851457477e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.646011747873549e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "cephalopod",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 6.038765455185224e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.112767689028022e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 5.488947001155986e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "approach:flight",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.62087437165926e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "approach:crawl",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.051959201922255e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "melee:bite",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000018895926982009925,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "melee:claw",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000025573239395004776,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.972726102951523e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.424181139916499e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000010665771599804863,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.188283666914597e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.722567125807323e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.927539558971741e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "flyer-membrane",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.284907591181057e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "idle",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.112767689028022e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "alert",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 7.014706130265003e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "approach:walk",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.550422791215762e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "approach:climb",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.017331064065104e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "melee:punch",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000023924667047481307,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "melee:bite",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000015510707671584356,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "cast",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000012173715661090156,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "hit",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.162637593900346e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "dodge",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.650961625111808e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "faint",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 8.036542875067276e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "victory",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.319287866405013e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "tame",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 9.071731618542911e-7,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    },
+    {
+      "template": "primate",
+      "action": "feed",
+      "samples": 241,
+      "limitViolations": 0,
+      "maxOvershootRad": 0,
+      "maxParityError": 0.0000017730931103354663,
+      "nonFinite": 0,
+      "replay": true,
+      "settled": true
+    }
+  ],
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/motion/index.ts",
+      "sha256": "5782f93542b0f138786486d0657e3b02796ecd7192336735c83eeb78b2fbbc68"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "sha256": "600e413b90587a5d3b2f40ace148a95e6e692fb82f3b4d2eba2f17b12f0a8660"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "138791cc3a55225a14d8168b639b6f469606441dae84a805395c77d75e6b2374"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "e6b87ee8e3980df49bf90934cabdd30541364f334c2995c16d34c3b80c3d9f9e"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "dc1ef0becac76be8997789b08e1058fcddd04fcdd12edfff71d10a3ce02abcac"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "f8091e7cec3ec55fc5da48f8d996fdf0e1545fa1adf593e5bbe60f9c11c9ba3d"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "5bed829464185d536cbf213b05c7d3c458589d25926b9f7a43d9d14aca73eff9"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "6a10af5e4b07fc49ba7a6a27ce58e96ffad983b3182549aecc8309a9d0e18c97"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "d51bd0c4be3c13b852c9deb1f111df8e5d3d96a692d0d78118cebb46a922501a"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/budget.ts",
+      "sha256": "3fac6ef0eeefe1f979130a6a0ba3adf08d3a876495e5c44a047ba1df2e1bafb5"
+    },
+    {
+      "path": "port/v2/node_modules/gsap/index.js",
+      "sha256": "070038235ba75ec2186d054ebd83ae94e6de6a971f5d3f3d6cd1037551f94faa"
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "port/v2/node_modules/gsap/gsap-core.js",
+      "sha256": "83c4b6c0b020beba737b90896181560b76747342b0f7baa5ba1b185a75f65b65"
+    },
+    {
+      "path": "port/v2/node_modules/gsap/CSSPlugin.js",
+      "sha256": "41d061e8b0a2ddfdb647f8f85da690ec6d19194403021acca7088926105fe6bd"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/additional-actions.ts",
+      "sha256": "e585cd2df5c13975472a496e342f96c1704f034144a496dbe3d93df64468271f"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "sha256": "0d03b3b97e0cfed394354afb7f9a923f8eacb3a615364014d6e4a480858be262"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle-habitat.ts",
+      "sha256": "a5ccd7326dd31518680a980a1948e39eb9cf04f54da541a431e1b78c40abed41"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pose-projection.mjs",
+      "sha256": "e087da4b05e640c643412aaca4d348baff94dfa32f620f9fc104f9fc4eacc8eb"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "6a6ef14a48f4e5224ce2f1c4bff68ce8b9e806637a6236813c730add538c0862"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/test-fixtures/family-records.json",
+      "sha256": "80bc11fc5f2045d783ef2c82e39898cffac2b680e7895f6e679da4157b586b84"
+    }
+  ]
+}

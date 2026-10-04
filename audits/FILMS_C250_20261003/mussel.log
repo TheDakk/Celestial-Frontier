@@ -1,0 +1,1 @@
+{"status":"DIAGNOSTIC_PASS","refusals":{"left":0,"right":0},"attacks":{"left":"cast body pulse (D31 cast: bivalve has no admitted melee; launch at the declared siphon)","right":"cast body pulse (D31 cast: bivalve has no admitted melee; launch at the declared siphon)"},"capture":{"frames":713,"cpuP95Ms":2.0999999940395355,"frameDeltaP95Ms":16.700000000000728}}

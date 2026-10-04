@@ -1,0 +1,508 @@
+{
+  "schema": "cf.semantic-part-ownership/v1",
+  "mode": "continuous-visible-source",
+  "recordRecipeHash": "0b60e3bfdf54241decd72574a8999ec82e65552b3ae3d108126b5b275c7fc925",
+  "width": 1254,
+  "height": 1254,
+  "regions": [
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "eye-near",
+      "joint": "eyeNear",
+      "layer": "near"
+    },
+    {
+      "id": "eye-far",
+      "joint": "eyeFar",
+      "layer": "far"
+    },
+    {
+      "id": "siphon",
+      "joint": "siphon",
+      "layer": "near"
+    },
+    {
+      "id": "arm0-tip",
+      "joint": "arm0Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm0-middle",
+      "joint": "arm0Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm0-base",
+      "joint": "arm0Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm1-tip",
+      "joint": "arm1Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "arm1-middle",
+      "joint": "arm1Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "arm1-base",
+      "joint": "arm1Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "arm2-tip",
+      "joint": "arm2Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "arm2-middle",
+      "joint": "arm2Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "arm2-base",
+      "joint": "arm2Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "arm3-tip",
+      "joint": "arm3Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm3-middle",
+      "joint": "arm3Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm3-base",
+      "joint": "arm3Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-tip",
+      "joint": "arm4Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-middle",
+      "joint": "arm4Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-base",
+      "joint": "arm4Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm5-tip",
+      "joint": "arm5Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "arm5-middle",
+      "joint": "arm5Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "arm5-base",
+      "joint": "arm5Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "arm6-tip",
+      "joint": "arm6Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "arm6-middle",
+      "joint": "arm6Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "arm6-base",
+      "joint": "arm6Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "arm7-tip",
+      "joint": "arm7Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm7-middle",
+      "joint": "arm7Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm7-base",
+      "joint": "arm7Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "tentacle0-tip",
+      "joint": "tentacle0Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "tentacle0-middle",
+      "joint": "tentacle0Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "tentacle0-base",
+      "joint": "tentacle0Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "tentacle1-tip",
+      "joint": "tentacle1Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "tentacle1-middle",
+      "joint": "tentacle1Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "tentacle1-base",
+      "joint": "tentacle1Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "fin-far",
+      "joint": "finFar",
+      "layer": "far"
+    },
+    {
+      "id": "fin-near",
+      "joint": "finNear",
+      "layer": "near"
+    },
+    {
+      "id": "mantle",
+      "joint": "mantle",
+      "layer": "far"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    }
+  ],
+  "groups": [
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "regions": [
+        "body"
+      ]
+    },
+    {
+      "id": "eye-near",
+      "joint": "eyeNear",
+      "layer": "near",
+      "regions": [
+        "eye-near"
+      ]
+    },
+    {
+      "id": "eye-far",
+      "joint": "eyeFar",
+      "layer": "far",
+      "regions": [
+        "eye-far"
+      ]
+    },
+    {
+      "id": "siphon",
+      "joint": "siphon",
+      "layer": "near",
+      "regions": [
+        "siphon"
+      ]
+    },
+    {
+      "id": "arm0-tip",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "regions": [
+        "arm0-tip"
+      ]
+    },
+    {
+      "id": "arm0-middle",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "regions": [
+        "arm0-middle"
+      ]
+    },
+    {
+      "id": "arm0-base",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "regions": [
+        "arm0-base"
+      ]
+    },
+    {
+      "id": "arm1-distal",
+      "joint": "arm1Seg1",
+      "layer": "far",
+      "regions": [
+        "arm1-tip",
+        "arm1-middle"
+      ]
+    },
+    {
+      "id": "arm1-base",
+      "joint": "arm1Seg0",
+      "layer": "far",
+      "regions": [
+        "arm1-base"
+      ]
+    },
+    {
+      "id": "arm2-distal",
+      "joint": "arm2Seg1",
+      "layer": "far",
+      "regions": [
+        "arm2-tip",
+        "arm2-middle"
+      ]
+    },
+    {
+      "id": "arm2-base",
+      "joint": "arm2Seg0",
+      "layer": "far",
+      "regions": [
+        "arm2-base"
+      ]
+    },
+    {
+      "id": "arm3-distal",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "regions": [
+        "arm3-tip",
+        "arm3-middle"
+      ]
+    },
+    {
+      "id": "arm3-base",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "regions": [
+        "arm3-base"
+      ]
+    },
+    {
+      "id": "arm4-distal",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "regions": [
+        "arm4-tip",
+        "arm4-middle"
+      ]
+    },
+    {
+      "id": "arm4-base",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "regions": [
+        "arm4-base"
+      ]
+    },
+    {
+      "id": "arm5-distal",
+      "joint": "arm5Seg1",
+      "layer": "far",
+      "regions": [
+        "arm5-tip",
+        "arm5-middle"
+      ]
+    },
+    {
+      "id": "arm5-base",
+      "joint": "arm5Seg0",
+      "layer": "far",
+      "regions": [
+        "arm5-base"
+      ]
+    },
+    {
+      "id": "arm6-distal",
+      "joint": "arm6Seg1",
+      "layer": "far",
+      "regions": [
+        "arm6-tip",
+        "arm6-middle"
+      ]
+    },
+    {
+      "id": "arm6-base",
+      "joint": "arm6Seg0",
+      "layer": "far",
+      "regions": [
+        "arm6-base"
+      ]
+    },
+    {
+      "id": "arm7-tip",
+      "joint": "arm7Seg2",
+      "layer": "near",
+      "regions": [
+        "arm7-tip"
+      ]
+    },
+    {
+      "id": "arm7-middle",
+      "joint": "arm7Seg1",
+      "layer": "near",
+      "regions": [
+        "arm7-middle"
+      ]
+    },
+    {
+      "id": "arm7-base",
+      "joint": "arm7Seg0",
+      "layer": "near",
+      "regions": [
+        "arm7-base"
+      ]
+    },
+    {
+      "id": "tentacle0-tip",
+      "joint": "tentacle0Seg2",
+      "layer": "near",
+      "regions": [
+        "tentacle0-tip"
+      ]
+    },
+    {
+      "id": "tentacle0-middle",
+      "joint": "tentacle0Seg1",
+      "layer": "near",
+      "regions": [
+        "tentacle0-middle"
+      ]
+    },
+    {
+      "id": "tentacle0-base",
+      "joint": "tentacle0Seg0",
+      "layer": "near",
+      "regions": [
+        "tentacle0-base"
+      ]
+    },
+    {
+      "id": "tentacle1-tip",
+      "joint": "tentacle1Seg2",
+      "layer": "near",
+      "regions": [
+        "tentacle1-tip"
+      ]
+    },
+    {
+      "id": "tentacle1-middle",
+      "joint": "tentacle1Seg1",
+      "layer": "near",
+      "regions": [
+        "tentacle1-middle"
+      ]
+    },
+    {
+      "id": "tentacle1-base",
+      "joint": "tentacle1Seg0",
+      "layer": "near",
+      "regions": [
+        "tentacle1-base"
+      ]
+    },
+    {
+      "id": "fin-far",
+      "joint": "finFar",
+      "layer": "far",
+      "regions": [
+        "fin-far"
+      ]
+    },
+    {
+      "id": "fin-near",
+      "joint": "finNear",
+      "layer": "near",
+      "regions": [
+        "fin-near"
+      ]
+    },
+    {
+      "id": "mantle",
+      "joint": "mantle",
+      "layer": "far",
+      "regions": [
+        "mantle"
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "regions": [
+        "head"
+      ]
+    }
+  ],
+  "labelsSha256": "612089a6ad9937cbf6a7e499d7d4a067af6b77ae1687fc6cfdd85ede565e5441",
+  "rgbaSha256": "2ad459f87390cea38641fd87efcf613252724251266b42bce002b9a06c3f9104",
+  "planHash": "19204ae298d9cbb4109690c274c45189941fea3de0719cc402d3fee6a94203b3",
+  "labelsFile": "semantic-labels.png",
+  "labelsPngSha256": "c83ee431381c23432194a6b9ea4353a673fdb4c9c1f573218956da8dc0e139d1",
+  "counts": [
+    8971,
+    4997,
+    1721,
+    7477,
+    4669,
+    8385,
+    10908,
+    2919,
+    4516,
+    4054,
+    1131,
+    1837,
+    1775,
+    1087,
+    1737,
+    3506,
+    1122,
+    2433,
+    3704,
+    2340,
+    3385,
+    2899,
+    3353,
+    4662,
+    4706,
+    3948,
+    7381,
+    7882,
+    9284,
+    4417,
+    3046,
+    11044,
+    3697,
+    2356,
+    10765,
+    28674,
+    59962,
+    36683
+  ]
+}

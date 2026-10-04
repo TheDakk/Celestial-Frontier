@@ -1,0 +1,108 @@
+[
+  {
+    "id": "01-grass-snake",
+    "family": "serpent",
+    "verdict": "REFUSE",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 16.5% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a rear appendage of 13.9% paint that no reference appendage lands on",
+      "missing-anatomy: part head (head) covers 7% paint (reference 4%)",
+      "missing-anatomy: part body-segment-1 (seg1) covers 8% paint (reference 9%)",
+      "missing-anatomy: part body-segment-6 (seg6) covers 8% paint (reference 10%)",
+      "missing-anatomy: part body-segment-7 (seg7) covers 6% paint (reference 7%)",
+      "missing-anatomy: part body-segment-8 (seg8) covers 3% paint (reference 5%)",
+      "missing-anatomy: part body-segment-9 (seg9) covers 2% paint (reference 2%)"
+    ],
+    "semanticPresence": null
+  },
+  {
+    "id": "02-rat-snake",
+    "family": "serpent",
+    "verdict": "REFUSE",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 15.1% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a rear appendage of 15.3% paint that no reference appendage lands on",
+      "missing-anatomy: part head (head) covers 7% paint (reference 4%)",
+      "missing-anatomy: part body-segment-0 (seg0) covers 8% paint (reference 12%)",
+      "missing-anatomy: part body-segment-6 (seg6) covers 7% paint (reference 10%)",
+      "missing-anatomy: part body-segment-7 (seg7) covers 6% paint (reference 7%)",
+      "missing-anatomy: part body-segment-8 (seg8) covers 1% paint (reference 5%)",
+      "missing-anatomy: part body-segment-9 (seg9) covers 1% paint (reference 2%)"
+    ],
+    "semanticPresence": null
+  },
+  {
+    "id": "03-king-snake",
+    "family": "serpent",
+    "verdict": "REFUSE",
+    "reasons": [
+      "extra-anatomy (unassigned): a front appendage of 12.4% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a rear appendage of 11.4% paint that no reference appendage lands on",
+      "missing-anatomy: part head (head) covers 7% paint (reference 4%)",
+      "missing-anatomy: part body-segment-7 (seg7) covers 7% paint (reference 7%)",
+      "missing-anatomy: part body-segment-8 (seg8) covers 4% paint (reference 5%)",
+      "missing-anatomy: part body-segment-9 (seg9) covers 2% paint (reference 2%)"
+    ],
+    "semanticPresence": null
+  },
+  {
+    "id": "04-heron",
+    "family": "biped-bird",
+    "verdict": "REFUSE",
+    "reasons": [
+      "missing-anatomy: part far-thigh (legFarKnee) covers 16% paint (reference 55%)"
+    ],
+    "semanticPresence": null
+  },
+  {
+    "id": "05-pheasant",
+    "family": "biped-bird",
+    "verdict": "REFUSE",
+    "reasons": [
+      "unexplained-anatomy: 6.6% of the paint lies away from the body and in no part (reference 1.2%)"
+    ],
+    "semanticPresence": null
+  },
+  {
+    "id": "06-robin",
+    "family": "biped-bird",
+    "verdict": "ADMIT",
+    "reasons": [],
+    "semanticPresence": "UNRESOLVED",
+    "static": "PASS_STATIC",
+    "staticFails": [],
+    "staticRefusals": []
+  },
+  {
+    "id": "07-ant",
+    "family": "insect",
+    "verdict": "REFUSE",
+    "reasons": [
+      "facing: the mirrored painting matches insect better (0.0257 < 0.0320)"
+    ],
+    "semanticPresence": null
+  },
+  {
+    "id": "08-cricket",
+    "family": "insect",
+    "verdict": "REFUSE",
+    "reasons": [
+      "missing-anatomy: part antenna-near (antennaNear) covers 9% paint (reference 31%)"
+    ],
+    "semanticPresence": null
+  },
+  {
+    "id": "09-mantis",
+    "family": "insect",
+    "verdict": "REFUSE",
+    "reasons": [
+      "missing-anatomy (family floor): the largest rear appendage is 2.3% of the paint; every same-family reference shows at least 3.8%",
+      "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 3% paint (reference 32%)",
+      "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 15% paint (reference 44%)",
+      "missing-anatomy: part leg-mid-far-knee (legMidFarKnee) covers 23% paint (reference 69%)",
+      "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+      "unexplained-anatomy: 15.3% of the paint lies away from the body and in no part (reference 1.6%)"
+    ],
+    "semanticPresence": null
+  }
+]

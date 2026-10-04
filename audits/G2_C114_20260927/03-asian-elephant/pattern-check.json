@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Asian Elephant",
+  "masterSha256": "74309ea2c80c39df43590e5eaee0d11199596f133d122fbfc7e726cac96581d6",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

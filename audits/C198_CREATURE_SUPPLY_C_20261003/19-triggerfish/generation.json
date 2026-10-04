@@ -1,0 +1,14 @@
+{
+  "id": "19-triggerfish",
+  "name": "Triggerfish",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-a80fc491-f7a8-43ea-bb8d-53bc62e19f6d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "dca1dfb1e7d61703412b3f220cccc2a9d0ddd67dd2b6a51ac66f8133c2624b1d",
+  "bytes": 1511888,
+  "promptSha256": "fbb4ee7e3a32822d5dec9aab9666c0526290c70938d8e5254d6c09d3fdb22bfb",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

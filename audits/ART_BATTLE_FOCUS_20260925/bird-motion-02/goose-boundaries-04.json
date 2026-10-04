@@ -1,0 +1,14 @@
+{
+  "author": "Codex",
+  "pairs": [
+    [
+      "far-wing-shoulder",
+      "neck-lower"
+    ],
+    [
+      "near-wing-shoulder",
+      "neck-lower"
+    ]
+  ],
+  "reason": "Retain only the two proximal shoulder/neck feather junctions; body/wing welds in fit03 overconstrained flap/peck/claw/hit/victory and are explicitly rejected. Distal wing overlap edges and broad body/wing interfaces remain independent."
+}

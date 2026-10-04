@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c198-observed-absence-correction/v1",
+  "source": "audits/C196_CREATURE_SUPPLY_20261003/01-capybara/master.png",
+  "sourceSha256": "9f3c91c9f0b2024680455092d8a844c042cd667344ecda4cfd3a5146f88958aa",
+  "priorAuthoring": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/original-authoring.json",
+  "priorAuthoringSha256": "1346cc680ed125628d35eb36819e18dc4c99f5984bd080ef65087932d8736d5b",
+  "priorStatic": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/original-static.json",
+  "priorStaticSha256": "b1ba95a176c35d22360bada899646de6ba42485701b64394d0c0f6767b64ce61",
+  "removedJoints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+  ],
+  "removedParts": [
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "changedOtherLandmarks": 0,
+  "changedOtherParts": 0,
+  "changedMaterials": false,
+  "sourcePixelsChanged": 0,
+  "observations": [
+    "Canonical subject mustRead explicitly requires no visible tail.",
+    "Full-size source shows a closed rump silhouette with no external tail. Prior four tail controls occupied rump paint.",
+    "Four actual feet remain visible; existing transferred non-tail controls remain subject to all unchanged checks."
+  ],
+  "priorFailure": "melee:tail at 246.17777777777778 ms exceeds scale compression bound",
+  "qualityAccepted": false,
+  "native": false
+}

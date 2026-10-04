@@ -1,0 +1,39 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Grasshopper",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "365d42b8c331512dda79106623df0d01167b57cc671a44d23f5d7cced905559d",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "e2e9bb10cd8484ab99440e7bbb059af5220f1158",
+  "basePromptSha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+  "purpose": "TARGETED_SOURCE_CORRECTION_FOUR_SMALL_KNEES",
+  "sourceCorrection": "Change ONLY the four small front and middle leg poses to NATURALLY RELAXED BENT KNEES: each small leg must have a distinct angled upper segment, a clear bent knee outside the body, and a lower segment turning at that knee, with all four actual feet fully visible. Preserve the exact top-down dorsal camera, thoracic attachment sites, complete two huge hind legs with their current bent knees, both antennae, original body and folded wing covers. Maintain exactly THREE continuously visible root-to-foot chains per flank, SIX legs total, six distinct feet; no overlap, hidden leg, missing leg or new limb. Keep every small knee and foot outside the body silhouette. Natural connected grasshopper anatomy, no robotic joints.",
+  "compositionCheck": "central half, native1254 unchanged",
+  "auditCompilerExtension": false,
+  "admission": false,
+  "batchCompilerSha256": "7a48277829ae75c647ec81b7e21a84a14d42a49365ba188c8b507970bec78a50",
+  "predecessor": "audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/master.png",
+      "sha256": "73db555f6f0465d134f9f5864e0e30a67774ee7845b4970e34ab634477974b68"
+    }
+  ],
+  "editStyleParagraphSha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2",
+  "inheritedCanonicalProvenance": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs",
+  "compiledAgain": false
+}

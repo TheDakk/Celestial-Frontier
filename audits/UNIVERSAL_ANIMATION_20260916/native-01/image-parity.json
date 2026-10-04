@@ -1,0 +1,158 @@
+{
+  "status": "PASS",
+  "count": 30,
+  "previousRun": "audits/C2_CONTINUOUS_SKIN_20260916/native-12",
+  "scope": "All named native pose PNG files match the prior C2 source exactly.",
+  "rows": [
+    {
+      "file": "civet-anticipation.png",
+      "sha256": "e85ca29e048f4f50add60a55bf4c1d7faa860eac1e38974875ce21e826c37c83",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "civet-approach-quarter.png",
+      "sha256": "589714d3e7fcc455c57599be60c061f4b0effc1d72278d4edb45f8c0073f4b8e",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "civet-approach-three-quarter.png",
+      "sha256": "abc2fdd59a58de467a6a6efbb6e16ca21bd5e7c3b6220a537efaa744506ba28c",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "civet-hit-peak.png",
+      "sha256": "0529296f06da63dd14fa0497976f404be5040cff04907114a75a15542998d3e2",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "civet-hit-recoil.png",
+      "sha256": "ec0675d9386b1066db2edb55ae1c2f0909f351affa5ad8d98ff898baf9f9901d",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "civet-idle.png",
+      "sha256": "1b3189930957c3468ffe259ba6ef98c1da4db77f5b43e27e4bdbbe9dcf7c7e52",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "civet-impact-hold.png",
+      "sha256": "981b44c2ae6b82d6cb0dda572c0f8f14297215817e2f16da820819dd37444d66",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "civet-rest.png",
+      "sha256": "1b46280553d4e705187168a7a6b1a2893466c989f5cfa573f5757c2c3a176350",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "civet-return-end.png",
+      "sha256": "6db5b27a73e009ebfa065353c0abab72ad5f234d330543d3fd7527c6feb73580",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "civet-strike.png",
+      "sha256": "f6a60bf371f3e35cf453b1cbf773a077e20ec2f7370f211677e518805df174f3",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "fox-anticipation.png",
+      "sha256": "6f1f523adbc1c788275eecbc6966a0c34ea89b584eed977b889f4e833005c739",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "fox-approach-quarter.png",
+      "sha256": "007a596b5962b0182100199dd2f50101a5602a37074023ac9d55303ccc74f54e",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "fox-approach-three-quarter.png",
+      "sha256": "d893d0a100b45af3196a4f76506c88f4671c40fd666a86093b00ced3c5239c75",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "fox-hit-peak.png",
+      "sha256": "bd629f162602ce947ff9a6c3c40520bef624095a61c142eff6ead6089461e1f1",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "fox-hit-recoil.png",
+      "sha256": "602611f150a5b83e8e58eed9e2a350103fa506e69c5d087ab4ccfeaac304fc80",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "fox-idle.png",
+      "sha256": "26f1ac08fa1e38ebd4743ec941d3db6a26abbe577864c588c4777c88228029ce",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "fox-impact-hold.png",
+      "sha256": "ff3a91b5b5dc221aa7bd12d4ee52321f2ae5d2c93a7a86835975b26b32dadcf9",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "fox-rest.png",
+      "sha256": "71d2183e3d92f2775cb3db92b85576c719312f071ece68bc37ecce6778b9647e",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "fox-return-end.png",
+      "sha256": "be9ba24938ba196275418ee96086d1ebe97f887c5a7cae93836748efb9c40510",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "fox-strike.png",
+      "sha256": "cec79461bfd43cc36d415f4f458e413c01f020e27c4a78378e640033c16d21e0",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "procedural-anticipation.png",
+      "sha256": "c07ad14556a14dda5255c1ffee818b82ac086723b9bd01046b9da0c1de5ea3b8",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "procedural-approach-quarter.png",
+      "sha256": "917a93b212bcd31a49c2b95e5e763fa37eb5f7ac233674765bd2c38ced802438",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "procedural-approach-three-quarter.png",
+      "sha256": "50abd14edff1023b020dfcdd6a57bbbb2190173a829b256899105607db97b66b",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "procedural-hit-peak.png",
+      "sha256": "2e1e1b5c16e1b71816ada865b110f768baeba720d6afae7959ec432a77a82304",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "procedural-hit-recoil.png",
+      "sha256": "a1ef161197e22933f45877c787d43e847720aa0d6c82048872670d6600082054",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "procedural-idle.png",
+      "sha256": "be256cb02ce2cbff3f51ff237d048d215fa3315d7de553577df8884cb2294405",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "procedural-impact-hold.png",
+      "sha256": "d88826e22123256c114fec99f215e7199e30eab6ded9587a5a867e14d913dfc0",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "procedural-rest.png",
+      "sha256": "9e86766c9470301a298b16ae96e32eca501ae6eeea02c13f733a99a7cc687ac8",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "procedural-return-end.png",
+      "sha256": "edaafa4cf737ed58105f00531126fbc4b14a219546c132cc852f3e0ed16ebf77",
+      "identicalToPriorC2": true
+    },
+    {
+      "file": "procedural-strike.png",
+      "sha256": "fc163fc103aad3beacf39ac1db1b9019bc8905c06487af9dc9a418149dccaf88",
+      "identicalToPriorC2": true
+    }
+  ]
+}

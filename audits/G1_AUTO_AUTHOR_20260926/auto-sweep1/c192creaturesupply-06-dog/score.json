@@ -1,0 +1,9 @@
+{
+ "id": "c192creaturesupply-06-dog",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 16.1% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "cf.c202-primate-generated-source/v1",
+  "tool": "image_gen.imagegen",
+  "intent": "new style-referenced painting",
+  "generatedPath": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-bb883c50-b85e-48ec-b18c-e77bb4505cdc.png",
+  "retainedMaster": "master.png",
+  "sha256": "5ebd7622ff46f0a5b88e60b114b4644634e3c0d00cccc5094f4ddc8e3d0848ee",
+  "bytes": 1404019,
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "pixelsModified": false,
+  "promptSha256": "48ae5fc6509075aa9d7962eabcc93c4c43ef20408c7b989b7d928ce028114a3a",
+  "actualToolInput": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "actualToolInputSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "basePrompt": "audits/C198_CREATURE_SUPPLY_B_20261003/07-howler-monkey/prompt.txt",
+  "basePromptSha256": "df4c2605ddc36df3c2e77de61db059aa2f19114aac78995d6e24f5d6d82af79a",
+  "accepted": false
+}

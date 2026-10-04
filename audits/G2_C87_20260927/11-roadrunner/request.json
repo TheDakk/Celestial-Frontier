@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Roadrunner",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "502464742a23d03a6e74fbbcbc9929cb63d5b9eb3e7da4e59fd5a5756ed4baae",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "ground-foraging-bird",
+  "authoringCreated": false,
+  "sourceHead": "36fe9633c9efbe6d915a63a751cfe9aa2ee5429a",
+  "basePromptSha256": "1f32662dea0ffc6e381a5c1be242e9e90107977752f17f2fc637f8ef87b29c69",
+  "layoutCompilerSha256": "81a982bac26e9844354b448d5d8a8d8bc89122768db072c3fbcb0e668505640d",
+  "layoutClarification": "Species identity features FIRST: long trailing tail often cocked upward; shaggy black crest on the head; long strong bare legs and heavy pointed bill. One Earth Roadrunner. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n"
+}

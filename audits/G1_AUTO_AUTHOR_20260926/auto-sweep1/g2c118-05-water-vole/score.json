@@ -1,0 +1,11 @@
+{
+ "id": "g2c118-05-water-vole",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 15% paint (reference 43%)",
+  "missing-anatomy: part fore-near-paw (foreNearPaw) covers 15% paint (reference 48%)",
+  "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 5.1%)"
+ ],
+ "semanticPresence": null
+}

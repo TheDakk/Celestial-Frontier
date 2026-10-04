@@ -1,0 +1,56 @@
+{
+  "scope": "Actual native strike pixels; first-turn strike source poses are identical across the transition repair.",
+  "before": "native-06/procedural-strike.png",
+  "after": "native-07/procedural-strike.png",
+  "samples": [
+    {
+      "x": 827,
+      "y": 947,
+      "before": [
+        173,
+        112,
+        58,
+        192
+      ],
+      "after": [
+        227,
+        148,
+        77,
+        255
+      ]
+    },
+    {
+      "x": 840,
+      "y": 948,
+      "before": [
+        170,
+        105,
+        49,
+        191
+      ],
+      "after": [
+        225,
+        141,
+        66,
+        255
+      ]
+    }
+  ],
+  "rest": [
+    {
+      "id": "civet",
+      "changedChannels": 0,
+      "finalChangedChannels": 0
+    },
+    {
+      "id": "fox",
+      "changedChannels": 0,
+      "finalChangedChannels": 0
+    },
+    {
+      "id": "procedural",
+      "changedChannels": 0,
+      "finalChangedChannels": 0
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "id": "04-robin",
+  "name": "Robin",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "ee340ba53c25a285e4c84678ae7c5ad405aa76e2cbcdc84289d3d9f55707a082",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 40370,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 14,
+      "y0": 63,
+      "x1": 405,
+      "y1": 295
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0121,
+        "pixels": 487,
+        "box": {
+          "x0": 297,
+          "y0": 52,
+          "x1": 360,
+          "y1": 62
+        },
+        "attach": {
+          "x": 328.5,
+          "y": 62,
+          "relX": 0.8,
+          "relY": 0
+        },
+        "dir": {
+          "x": 0.03,
+          "y": -1
+        },
+        "class": "top",
+        "length": 33
+      },
+      {
+        "k": 1,
+        "frac": 0.0139,
+        "pixels": 560,
+        "box": {
+          "x0": 364,
+          "y0": 65,
+          "x1": 387,
+          "y1": 115
+        },
+        "attach": {
+          "x": 369,
+          "y": 88,
+          "relX": 0.91,
+          "relY": 0.11
+        },
+        "dir": {
+          "x": 0.74,
+          "y": -0.67
+        },
+        "class": "top",
+        "length": 32.5
+      },
+      {
+        "k": 2,
+        "frac": 0.005,
+        "pixels": 200,
+        "box": {
+          "x0": 367,
+          "y0": 138,
+          "x1": 371,
+          "y1": 198
+        },
+        "attach": {
+          "x": 367,
+          "y": 168,
+          "relX": 0.9,
+          "relY": 0.45
+        },
+        "dir": {
+          "x": 0.96,
+          "y": 0.28
+        },
+        "class": "front",
+        "length": 30.3
+      },
+      {
+        "k": 3,
+        "frac": 0.1027,
+        "pixels": 4148,
+        "box": {
+          "x0": 32,
+          "y0": 201,
+          "x1": 165,
+          "y1": 295
+        },
+        "attach": {
+          "x": 131,
+          "y": 245.3,
+          "relX": 0.3,
+          "relY": 0.79
+        },
+        "dir": {
+          "x": -0.91,
+          "y": 0.41
+        },
+        "class": "rear",
+        "length": 110.8
+      },
+      {
+        "k": 4,
+        "frac": 0.0339,
+        "pixels": 1367,
+        "box": {
+          "x0": 201,
+          "y0": 280,
+          "x1": 285,
+          "y1": 372
+        },
+        "attach": {
+          "x": 220.8,
+          "y": 285,
+          "relX": 0.53,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": 0.29,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 108.1
+      },
+      {
+        "k": 5,
+        "frac": 0.0333,
+        "pixels": 1346,
+        "box": {
+          "x0": 242,
+          "y0": 287,
+          "x1": 360,
+          "y1": 356
+        },
+        "attach": {
+          "x": 263.5,
+          "y": 287,
+          "relX": 0.64,
+          "relY": 0.97
+        },
+        "dir": {
+          "x": 0.7,
+          "y": 0.72
+        },
+        "class": "limb-down",
+        "length": 118.6
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 201,
+        "x1": 285,
+        "cx": 250.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

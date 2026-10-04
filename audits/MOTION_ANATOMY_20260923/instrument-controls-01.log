@@ -1,0 +1,13 @@
+✔ travelling wave passes; standing, anti-phase and reversed waves fail (24.995708ms)
+✔ chain identity and sample integrity refuse rather than silently pass (0.859042ms)
+✔ tripod passes; one swapped foot and forced half-duty fail (3.324958ms)
+✔ path needs real history; matching path passes and displaced path fails (5.575ms)
+✔ strike distinguishes fast extension from a slow generic excursion (0.288084ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 156.228791

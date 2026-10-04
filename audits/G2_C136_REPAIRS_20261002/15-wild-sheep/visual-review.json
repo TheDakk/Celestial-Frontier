@@ -1,0 +1,28 @@
+{
+  "name": "Wild Sheep",
+  "masterSha256": "87ec5c3fbb53dabaea831ba2a1e9c66b248ea3f5f802d8d0af7a77d835d2511d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: large natural curled horns, short attached tail and four hoof endpoints. Only near ear is clear inside the near horn curl; the far-ear repair is unresolved. Near/far foreleg roots overlap under the chest. No false absence declaration is made.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 354,
+      "y0": 370,
+      "x1": 899,
+      "y1": 882
+    },
+    "margins": {
+      "left": 354,
+      "right": 354,
+      "top": 370,
+      "bottom": 371
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

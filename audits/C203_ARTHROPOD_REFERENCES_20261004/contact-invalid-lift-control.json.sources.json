@@ -1,0 +1,283 @@
+{
+  "schema": "cf.c203-audit-prototype/v1",
+  "mode": "invalid-lift",
+  "owner": "probe",
+  "productEdited": false,
+  "runner": {
+    "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/prototype-runner.mjs",
+    "sha256": "41b0902ff53e956418496d6baeda214f63910550178df0f04c2ea7620641f9d2"
+  },
+  "transforms": [
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "originalSha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985",
+      "transformedSha256": "671c3c5508904648775394c1575690cba0effaa0d6a790404a10f51a2dbdc200",
+      "from": "swingLift!=='toward-socket'||template.id!=='myriapod'||template.anatomyModel!=='myriapod-rigid-trunk-v1'||!template.fixedPivots",
+      "to": "swingLift!=='toward-socket'||!((template.id==='myriapod'&&template.anatomyModel==='myriapod-rigid-trunk-v1')||(template.id==='insect'&&template.anatomyModel==='insect-observed-sockets-v1'))||!template.fixedPivots"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "originalSha256": "d295145272fd53027bd808dab6aa752d29c4c5f3da4091fbd7d209ed798431db",
+      "transformedSha256": "d3d317ab414be737e6178a2c540db1bd978dda65c52260cbc36a06a04ec00d4f",
+      "from": "return Object.freeze({...definition,fixedPivots:points});",
+      "to": "return Object.freeze({...definition,fixedPivots:points,...definition.anatomyModel===INSECT_MODEL?{contactStance:{...definition.contactStance,swingLift:'invalid-audit-control'}}:{}});"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/probe.ts",
+      "sha256": "24e0a295b955f088853fe038bfe97db4a21c6e584232f6f4f35188e3983b0c34",
+      "bytes": 6490
+    },
+    {
+      "path": "port/v2/apps/game/src/battle-habitat.ts",
+      "sha256": "a5ccd7326dd31518680a980a1948e39eb9cf04f54da541a431e1b78c40abed41",
+      "bytes": 7466
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-contact-travel.ts",
+      "sha256": "4313b7f67d49c55084c5c344329ab1248cb4cdf830884fd32ff5f8078679c203",
+      "bytes": 1773
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985",
+      "bytes": 32899
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-terminal-contact.ts",
+      "sha256": "46f18ef68dfaa8dc665f29a8585060ced56f5f9c1f6e3dfaf6808cfa42367485",
+      "bytes": 7831
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-terminal-support.ts",
+      "sha256": "5196b9fa4d6e8f0f5eafd22233a6400989454b3810473de3604905de403c2d0f",
+      "bytes": 2887
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "sha256": "6e520d8b580f0ded1c413ad13f40eaf8a693779d4727e5c17dd277a6b9a1499b",
+      "bytes": 19694
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9",
+      "bytes": 9143
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/additional-actions.ts",
+      "sha256": "e585cd2df5c13975472a496e342f96c1704f034144a496dbe3d93df64468271f",
+      "bytes": 3622
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/amplitude-profile.ts",
+      "sha256": "c9f6af34209068d6e525c0cb306b9975302e7cb81bb3d06203a03cb04ad601e7",
+      "bytes": 1669
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/axial-faint.ts",
+      "sha256": "dc1f130d8b2e2442c7a778cb05788b63b01173f3ab4560996d7211a5fd45ff58",
+      "bytes": 2564
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "9f8ab0acfbde47490f50ea72db760b510bc0e9fc032190d8d6720659cfd6686d",
+      "bytes": 23934
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/cast-attack.ts",
+      "sha256": "9b3c9d83d3900e66e543656a05464a2db311565952d7f4f4c720fdaa88f3ef07",
+      "bytes": 10155
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/contact-envelope.ts",
+      "sha256": "017a37dd320a2f0150949dba04f279a1009b3b1f9fd36740cae0671b10ae9942",
+      "bytes": 2907
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "d5ce727eebbcd6c54a6996454f818df709e969b52aa9f09eb9d679b0c9722986",
+      "bytes": 41686
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "01fb429e30a2ce63d3fd7fc0071db172e99346a2e965e0646f349f70a8cf4690",
+      "bytes": 22661
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/gait-phase.ts",
+      "sha256": "587408a8a0cfcc320689509aa86963c252a94b3d0e3ad86b81ba7174e9b3ef1d",
+      "bytes": 1884
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-bird.ts",
+      "sha256": "57ab01b094f39ba99abdcd18ec46dcc149a4b827b483b02285b5ff796791640a",
+      "bytes": 5975
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-insect.ts",
+      "sha256": "4fb10fa442fe50b4bb7a81a2be91ee3c03ea9508592e629cdcc09328729b46a3",
+      "bytes": 3231
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "sha256": "04a69912932c6eb854e6e9597b640472c556d2495edd15ce3d977570bb92dd8f",
+      "bytes": 3200
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/painted-supports.ts",
+      "sha256": "685981c31ef67838b6d52f0b80b126077c6ef2f8f11a4f985ce58c284d309695",
+      "bytes": 2145
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "da51acb7b05b77a561f09d084eb02c6a3bc314f180f0e3be1ccfb4f2855b8de5",
+      "bytes": 6784
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/small-crustacean-attack.ts",
+      "sha256": "11f9563b75e7fa81f24901d90a26bec22aa9cc433cdd41b2b961a2e9b410ae03",
+      "bytes": 2977
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/specialized-actions.ts",
+      "sha256": "215e21a6cdab841b64bc9b7e0ef940f5d3b93e13c6cc6a1928df6a6eb351cf77",
+      "bytes": 3405
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/sprawler-profile.ts",
+      "sha256": "6c94816fc554bfe7b49195cd92a10d7b0dfb51ee3a2718cfc179251d5ede90fe",
+      "bytes": 1872
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/stance-envelope.ts",
+      "sha256": "029320a695cf279b68c4a73a5b7b09150a53ae527b257c84d0cdcfa6f6890f1d",
+      "bytes": 5461
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "bc4ccea589ec9d52b054faf25b1e06915017a0b6d76793ef0f3ba214091e5e48",
+      "bytes": 7695
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "26c1aef49333438bdfc429ba0a4b36c458704e3e942474fbafa1e8e48e12ca91",
+      "bytes": 12992
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa",
+      "bytes": 4203
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/travelling-wave.ts",
+      "sha256": "fb0a13ead2de4f2e6bafbcc1858a5da56b5cdf4c62c28c2228570a3fa615f609",
+      "bytes": 983
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874",
+      "bytes": 14498
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927",
+      "bytes": 3639
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f",
+      "bytes": 170
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d",
+      "bytes": 20728
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749",
+      "bytes": 271
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "d0d94cb62976f12357b91e66c5e661483a72224d8a4e950ba6ab6a06b852d4c3",
+      "bytes": 4278
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a",
+      "bytes": 74520
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-record.mjs",
+      "sha256": "6127d7f9c18541ebfec411fc549942d1948a032d8297bcd708291094c4339943",
+      "bytes": 5557
+    },
+    {
+      "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "sha256": "d295145272fd53027bd808dab6aa752d29c4c5f3da4091fbd7d209ed798431db",
+      "bytes": 4509
+    },
+    {
+      "path": "port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "sha256": "a3cef7edff31f86a70f727f1433eeaabcabe2a1626929e65fbcbc0715b80a328",
+      "bytes": 2943
+    },
+    {
+      "path": "port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4b2dd39d7111311f95e0e4f8dc23ee0a27f58aab6ed38048e3af4cc2c622c0b1",
+      "bytes": 8697
+    },
+    {
+      "path": "port/v2/tools/creature-animation/motion-scale.mjs",
+      "sha256": "a38a55fbce7272597f5cd70af73bc850d73580795afcb2cc3e7db44c11653096",
+      "bytes": 1336
+    },
+    {
+      "path": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "sha256": "f65a61bd80302b3621f3ccb8f4b7373256b6efc26f07b0d21d3fa29edab1e55a",
+      "bytes": 2441
+    },
+    {
+      "path": "port/v2/tools/creature-animation/painted-contact-selector.mjs",
+      "sha256": "80d67c470c44a562242359c670d66a122a9b7ee2f7451d66a5a31416628c5522",
+      "bytes": 1231
+    },
+    {
+      "path": "port/v2/tools/creature-animation/plant-anatomy.mjs",
+      "sha256": "7e900b8355f6193b941f62a573d6c58124d127faa3348524170593ef2084e218",
+      "bytes": 1761
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pose-projection.mjs",
+      "sha256": "d60858fb2f053ce4b52aff731d12fa0f137e933172c62dec5ad6bcbafeddaca9",
+      "bytes": 2986
+    },
+    {
+      "path": "port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "dcacfdfb4920e359e049273dca982e73effe97b5618816e9fad22a335473b3aa",
+      "bytes": 13697
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "8a47a0d10f87372b4ecaac12e18442f2ab8ba0db94eda1c345644d3804ea99df",
+      "bytes": 3929
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "26c11e94b09cf8b297c408e0f02e754ba0cb70affe8fdd01779aa04285e54a1a",
+      "bytes": 4389
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "e2dca64d0077c7a3f91b1c00bc383392c6a7d245f9c1b19a9254384c8acb8596",
+      "bytes": 6203
+    },
+    {
+      "path": "port/v2/tools/creature-animation/terminal-contact-pads.mjs",
+      "sha256": "96dd7cda3a832670a3133490d41a5aabc314aef26c903056027dbcd81bec2505",
+      "bytes": 2957
+    }
+  ]
+}

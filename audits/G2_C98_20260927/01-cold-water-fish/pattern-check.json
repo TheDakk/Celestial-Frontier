@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cold-Water Fish",
+  "masterSha256": "f390eeec34399bd928515352b1aad708a693518643bbccc20178ffeded074997",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

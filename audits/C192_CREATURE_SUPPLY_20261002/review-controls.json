@@ -1,0 +1,29 @@
+{
+  "scope": "Additive metadata/observation controls only; no native, raster modification or acceptance claim",
+  "checks": [
+    {
+      "name": "review-wrapper-receipt.json exact additive transform replay",
+      "status": "PASS"
+    },
+    {
+      "name": "freeze-wrapper-receipt.json exact additive transform replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit complete synthetic pattern instrument control passes; not image acceptance",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual unresolved combined ear/coat requirement refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "Stale master binding refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "Original margin contains observed light-painted antenna pixels beyond unchanged101px boundary",
+      "status": "PASS"
+    }
+  ]
+}

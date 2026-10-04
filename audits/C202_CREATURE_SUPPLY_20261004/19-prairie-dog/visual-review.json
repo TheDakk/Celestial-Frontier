@@ -1,0 +1,28 @@
+{
+  "name": "Prairie Dog",
+  "masterSha256": "b480c0573e98c3bfecbb0127a93a3f26455ce225999093da6502b459cbd263a3",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Small sandy rodent with rounded head, small ears, short dark-tipped tail and four visible clawed feet. Near/far limb roots remain partly obscured by rounded torso.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 267,
+      "y0": 352,
+      "x1": 996,
+      "y1": 887
+    },
+    "margins": {
+      "left": 267,
+      "right": 257,
+      "top": 352,
+      "bottom": 366
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

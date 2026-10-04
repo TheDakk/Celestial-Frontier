@@ -1,0 +1,191 @@
+{
+  "id": "07-tarpon",
+  "name": "Tarpon",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "4cbce40d5e35b24168fdcc2b96f35ff21b3cc74c80c1cea39b84f73dd5962b40",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 20282,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 135,
+      "y0": 167,
+      "x1": 349,
+      "y1": 242
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0296,
+        "pixels": 600,
+        "box": {
+          "x0": 179,
+          "y0": 136,
+          "x1": 237,
+          "y1": 166
+        },
+        "attach": {
+          "x": 217,
+          "y": 166,
+          "relX": 0.38,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.41,
+          "y": -0.91
+        },
+        "class": "top",
+        "length": 48.4
+      },
+      {
+        "k": 1,
+        "frac": 0.1787,
+        "pixels": 3624,
+        "box": {
+          "x0": 39,
+          "y0": 157,
+          "x1": 134,
+          "y1": 259
+        },
+        "attach": {
+          "x": 134,
+          "y": 212.5,
+          "relX": 0,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.09
+        },
+        "class": "rear",
+        "length": 110
+      },
+      {
+        "k": 2,
+        "frac": 0.0459,
+        "pixels": 930,
+        "box": {
+          "x0": 350,
+          "y0": 186,
+          "x1": 381,
+          "y1": 229
+        },
+        "attach": {
+          "x": 350,
+          "y": 207.5,
+          "relX": 1,
+          "relY": 0.54
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.08
+        },
+        "class": "front",
+        "length": 37.7
+      },
+      {
+        "k": 3,
+        "frac": 0.0195,
+        "pixels": 396,
+        "box": {
+          "x0": 138,
+          "y0": 238,
+          "x1": 171,
+          "y1": 260
+        },
+        "attach": {
+          "x": 154.5,
+          "y": 238,
+          "relX": 0.09,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": -0.44,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 27.5
+      },
+      {
+        "k": 4,
+        "frac": 0.0172,
+        "pixels": 348,
+        "box": {
+          "x0": 268,
+          "y0": 241,
+          "x1": 300,
+          "y1": 260
+        },
+        "attach": {
+          "x": 287,
+          "y": 241,
+          "relX": 0.71,
+          "relY": 0.99
+        },
+        "dir": {
+          "x": -0.62,
+          "y": 0.78
+        },
+        "class": "limb-down",
+        "length": 26.9
+      },
+      {
+        "k": 5,
+        "frac": 0.0178,
+        "pixels": 361,
+        "box": {
+          "x0": 217,
+          "y0": 243,
+          "x1": 245,
+          "y1": 267
+        },
+        "attach": {
+          "x": 235.5,
+          "y": 243,
+          "relX": 0.47,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.55,
+          "y": 0.83
+        },
+        "class": "limb-down",
+        "length": 30.3
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 138,
+        "x1": 143,
+        "cx": 140
+      },
+      {
+        "x0": 217,
+        "x1": 231,
+        "cx": 223.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

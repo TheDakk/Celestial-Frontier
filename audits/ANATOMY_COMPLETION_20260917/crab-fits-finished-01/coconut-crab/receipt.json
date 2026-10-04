@@ -1,0 +1,105 @@
+{
+  "intake": {
+    "id": "coconut-crab",
+    "parts": 26,
+    "atlasSize": {
+      "width": 1219,
+      "height": 493
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-lower",
+        "vertex": 84,
+        "distancePx": 3.140675964107156,
+        "supports": [
+          380,
+          377
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-lower",
+        "vertex": 85,
+        "distancePx": 2.2638236897515793,
+        "supports": [
+          985
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-lower",
+        "vertex": 76,
+        "distancePx": 3.0528579996461014,
+        "supports": [
+          521
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-lower",
+        "vertex": 82,
+        "distancePx": 2.843581325677669,
+        "supports": [
+          1186
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-lower",
+        "vertex": 10,
+        "distancePx": 2.3519836445985187,
+        "supports": [
+          601,
+          602
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-lower",
+        "vertex": 70,
+        "distancePx": 2.3519836445985187,
+        "supports": [
+          1321
+        ]
+      },
+      {
+        "joint": "leg3FarFoot",
+        "part": "leg3far-lower",
+        "vertex": 18,
+        "distancePx": 2.5441416487202018,
+        "supports": [
+          764,
+          767
+        ]
+      },
+      {
+        "joint": "leg3NearFoot",
+        "part": "leg3near-lower",
+        "vertex": 78,
+        "distancePx": 2.401486297451138,
+        "supports": [
+          1480,
+          1475
+        ]
+      }
+    ],
+    "sourceBindingHash": "76970bcce362b58dcea99246ea40659bc79d9ccc390422cbc3692f88a4fce90a",
+    "sourceVertices": 1819,
+    "vertices": 2610,
+    "sharedSupports": 214,
+    "pins": 1583,
+    "independentSurfaceParts": 26,
+    "sourceJoins": 23,
+    "excludedOverlaps": 42,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "textureSource": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/coconut-crab-finished.png",
+  "nativeAcceptance": false
+}

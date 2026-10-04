@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Ibis",
+  "masterSha256": "91679c42ef0c901d425dd74dc4f6ceced266426ac91475ea8f338a918f8be22e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

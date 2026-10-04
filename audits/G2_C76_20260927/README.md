@@ -1,0 +1,13 @@
+# C76 — 24 generated originals, 2026-09-27
+
+Eight fish, eight birds and eight quadrupeds, all exact 1254-square generator originals. Every packet retains the sent prompt, canonical identity and compiler inputs, request hashes, generation receipt, original pixels, geometry observations and source-bound visual review. No hand labels, landmarks, master resizing or pixel retouch. `pilot.json` is ready for Claude's unchanged score-batch runner.
+
+Pattern owner: Char, Falcon, Kestrel and Okapi PASS; twenty NOT_REQUIRED by that narrow owner. These are observations, not whole-species identity, anatomy, motion or Dakk acceptance. Peccary's large exposed downward tusk needs identity review. Crane/Spoonbill/Swift and Pheasant retain wing-tail ownership ambiguities. Quadrupeds expose four feet but several have overlapping upper limbs and standing rather than strong-stride poses; Musk Ox turns its head slightly toward the viewer. Exact per-painting notes remain in visual-review.json.
+
+Framing: 18/24 meet the unchanged requested 8% clear margin. Pike, Bass, Char, Sturgeon, Paddlefish and Pangolin REFUSE framing only. The first three ignored the initial 200-pixel composition instruction. Before generating Sturgeon onward, the species-feature sentence plus the recorded zoomed-out composition clarification was prepended to each prompt; the previous and final prompt hashes are retained. This changes framing instructions only, never the approved style paragraph. No historical prompt was changed after generation. Sturgeon still failed; all originals remain unchanged. `framing.mjs` measures keyed paint bounds, with exact-boundary positive and four one-pixel edge, empty-mask and malformed-shape negative controls.
+
+`observe.mjs` creates diagnostic anatomy observations and a derived review sheet only. `review.mjs` verifies exact prompt/master receipt hashes and binds the visible pattern observations to each original. Geometry never substitutes for semantic counts. Root validation passes; quiet committed-head battery follows before own-branch delivery.
+
+Next: publish the painted-support faint repair only after full static/native/regression controls; then Sculpin and the other C72 fish seams, Raven/Quail ownership/folds, remaining insect/Bobcat/quad faults, and further broad G2 batches. I5's one authorized epoch is consumed and stopped; no retry or re-seal is authorized. No app switch or Dakk relay needed.
+
+Final verification: signed aeb3f10f3 quiet develop profile: 5,664 pass, I5 authority sole failure, 2 expected failures, 2 skipped. All seven remaining owners and root validate pass. 208 GiB free. PUBLIC/UNFROZEN and five exact reviewed workflows rechecked; normal own-branch push triggers no hosted run.

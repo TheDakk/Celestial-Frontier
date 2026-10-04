@@ -1,0 +1,6 @@
+{
+  "guard": "~/Projects/Celestial-Frontier/.git/hooks/pre-push",
+  "exists": true,
+  "sha256": "2cd8490b72e028e2bec0339a83575f3f0591691e3f853fed20b3df24f849e918",
+  "unchanged": true
+}

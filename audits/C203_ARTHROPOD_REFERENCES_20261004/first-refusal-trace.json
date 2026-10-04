@@ -1,0 +1,1803 @@
+{
+  "schema": "cf.c203-contact-geometric-trace/v1",
+  "recordRecipeHash": "35c007f5e0e4f7882fb0748f7a72aad363204f4f1f111f7e9c4eea5bdc405f3d",
+  "bindingHash": "48894731746cbc796cce25ac557182315bffd5111febef9abb83f31c7b01449a",
+  "bodyLength": 0.35168277828036826,
+  "scaleLength": 0.35168277828036826,
+  "timelineRoot": {
+    "dx": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 110,
+        "t": 0.24444444444444444,
+        "value": -0.08,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 270,
+        "t": 0.6,
+        "value": -0.14,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 450,
+        "t": 1,
+        "value": 0,
+        "ease": "back-out"
+      }
+    ],
+    "dy": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 110,
+        "t": 0.24444444444444444,
+        "value": 0.012,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 270,
+        "t": 0.6,
+        "value": 0.0072,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 450,
+        "t": 1,
+        "value": 0,
+        "ease": "back-out"
+      }
+    ]
+  },
+  "samples": [
+    {
+      "ms": 351.5625,
+      "status": "PASS",
+      "compression": 0.027649566511839696,
+      "trace": [
+        {
+          "pass": 0,
+          "compression": 0,
+          "shift": 0.02744617174421049,
+          "cap": 0.02813462226242946,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.07656250000000002,
+              "dy": -0.0004826741500854499
+            },
+            "thorax": {
+              "rotation": 0
+            },
+            "head": {
+              "rotation": 0.007020210944380309
+            },
+            "mandible": {
+              "rotation": 0
+            },
+            "abdomen": {
+              "rotation": 0.004680140629586882
+            },
+            "legFrontFarKnee": {
+              "rotation": 0
+            },
+            "legFrontFarFoot": {
+              "rotation": 0
+            },
+            "legFrontNearKnee": {
+              "rotation": 0
+            },
+            "legFrontNearFoot": {
+              "rotation": 0
+            },
+            "legMidFarKnee": {
+              "rotation": 0
+            },
+            "legMidFarFoot": {
+              "rotation": 0
+            },
+            "legMidNearKnee": {
+              "rotation": 0
+            },
+            "legMidNearFoot": {
+              "rotation": 0
+            },
+            "legHindFarKnee": {
+              "rotation": 0.023400703147934354
+            },
+            "legHindFarFoot": {
+              "rotation": -0.029250878934917957
+            },
+            "legHindNearKnee": {
+              "rotation": 0.023400703147934354
+            },
+            "legHindNearFoot": {
+              "rotation": -0.029250878934917957
+            },
+            "antennaFar": {
+              "rotation": 0
+            },
+            "antennaNear": {
+              "rotation": 0
+            },
+            "wingFar": {
+              "rotation": 0
+            },
+            "wingNear": {
+              "rotation": 0
+            }
+          },
+          "sourceTravel": {
+            "base": -0.049235588959251564,
+            "stride": 0.049235588959251564,
+            "progress": 0.453125,
+            "authoredDx": 0.009385330696105976
+          },
+          "contacts": [
+            {
+              "id": "legFrontFar",
+              "root": {
+                "x": 0.5679706190263464,
+                "y": 0.39616199025089543
+              },
+              "target": {
+                "x": 0.6939861016308602,
+                "y": 0.3548644338118022
+              },
+              "paintedTarget": {
+                "x": 0.6923912052991217,
+                "y": 0.3508771929824561
+              },
+              "stance": true,
+              "upper": 0.05840457232408465,
+              "lower": 0.11500961006264723,
+              "distance": 0.13260991676299555,
+              "offset": {
+                "x": -0.0015948963317384823,
+                "y": -0.003987240829346095
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legFrontNear",
+              "root": {
+                "x": 0.5831221341778615,
+                "y": 0.5644235532493005
+              },
+              "target": {
+                "x": 0.7631887485424598,
+                "y": 0.6880760268219911
+              },
+              "paintedTarget": {
+                "x": 0.7623913003765905,
+                "y": 0.6848862341585142
+              },
+              "stance": false,
+              "upper": 0.06834368057756249,
+              "lower": 0.13581223567147208,
+              "distance": 0.21843516161409066,
+              "offset": {
+                "x": -0.0007974481658692412,
+                "y": -0.0031897926634768536
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legMidFar",
+              "root": {
+                "x": 0.4834411134442091,
+                "y": 0.3969594384167647
+              },
+              "target": {
+                "x": 0.3795852523794312,
+                "y": 0.2306931111260926
+              },
+              "paintedTarget": {
+                "x": 0.3823763209599734,
+                "y": 0.2275033184626157
+              },
+              "stance": false,
+              "upper": 0.09511052983952606,
+              "lower": 0.14442400539294123,
+              "distance": 0.19603706656710446,
+              "offset": {
+                "x": 0.002791068580542233,
+                "y": -0.0031897926634768814
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legMidNear",
+              "root": {
+                "x": 0.4874283542735552,
+                "y": 0.5644235532493005
+              },
+              "target": {
+                "x": 0.35666552746818064,
+                "y": 0.7464114832535885
+              },
+              "paintedTarget": {
+                "x": 0.35666552746818064,
+                "y": 0.7496012759170654
+              },
+              "stance": true,
+              "upper": 0.07590852082240682,
+              "lower": 0.16099173034011438,
+              "distance": 0.2240948985170747,
+              "offset": {
+                "x": 0,
+                "y": 0.0031897926634768536
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legHindFar",
+              "root": {
+                "x": 0.3614315440662187,
+                "y": 0.3714410971089497
+              },
+              "target": {
+                "x": 0.1301902483613226,
+                "y": 0.3405103668261563
+              },
+              "paintedTarget": {
+                "x": 0.12939280019545338,
+                "y": 0.3349282296650718
+              },
+              "stance": true,
+              "upper": 0.1096019907402148,
+              "lower": 0.14560145704876237,
+              "distance": 0.23330076492610585,
+              "offset": {
+                "x": -0.0007974481658692134,
+                "y": -0.005582137161084522
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legHindNear",
+              "root": {
+                "x": 0.359039199568611,
+                "y": 0.5995112725475461
+              },
+              "target": {
+                "x": 0.1786352148036103,
+                "y": 0.6672231733078142
+              },
+              "paintedTarget": {
+                "x": 0.1786352148036103,
+                "y": 0.661242312063795
+              },
+              "stance": false,
+              "upper": 0.09740626146476856,
+              "lower": 0.14524287530909696,
+              "distance": 0.19269275861759574,
+              "offset": {
+                "x": 0,
+                "y": -0.005980861244019198
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "pass": 1,
+          "compression": 0.02744617174421049,
+          "shift": 0.0001967962169738824,
+          "cap": 0.02813462226242946,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.07656250000000002,
+              "dy": 0.07755973633818099
+            },
+            "thorax": {
+              "rotation": 0
+            },
+            "head": {
+              "rotation": 0.007020210944380309
+            },
+            "mandible": {
+              "rotation": 0
+            },
+            "abdomen": {
+              "rotation": 0.004680140629586882
+            },
+            "legFrontFarKnee": {
+              "rotation": -0.4110931506196818
+            },
+            "legFrontFarFoot": {
+              "rotation": 0.2554434679789096
+            },
+            "legFrontNearKnee": {
+              "rotation": -0.4855956286004332
+            },
+            "legFrontNearFoot": {
+              "rotation": 0.44693338110886394
+            },
+            "legMidFarKnee": {
+              "rotation": 0.08455518966229003
+            },
+            "legMidFarFoot": {
+              "rotation": 0.1342242732488319
+            },
+            "legMidNearKnee": {
+              "rotation": 0.03420752605266597
+            },
+            "legMidNearFoot": {
+              "rotation": 0.17716626365637267
+            },
+            "legHindFarKnee": {
+              "rotation": -0.1779053992182114
+            },
+            "legHindFarFoot": {
+              "rotation": 0.46990479900669874
+            },
+            "legHindNearKnee": {
+              "rotation": -0.23520972302272097
+            },
+            "legHindNearFoot": {
+              "rotation": 0.5272126314727491
+            },
+            "antennaFar": {
+              "rotation": 0
+            },
+            "antennaNear": {
+              "rotation": 0
+            },
+            "wingFar": {
+              "rotation": 0
+            },
+            "wingNear": {
+              "rotation": 0
+            }
+          },
+          "sourceTravel": {
+            "base": -0.049235588959251564,
+            "stride": 0.049235588959251564,
+            "progress": 0.453125,
+            "authoredDx": 0.009385330696105976
+          },
+          "contacts": [
+            {
+              "id": "legFrontFar",
+              "root": {
+                "x": 0.5679706190263464,
+                "y": 0.4236081619951059
+              },
+              "target": {
+                "x": 0.694584930858469,
+                "y": 0.35456898819758714
+              },
+              "paintedTarget": {
+                "x": 0.6923912052991217,
+                "y": 0.3508771929824561
+              },
+              "stance": true,
+              "upper": 0.05840457232408465,
+              "lower": 0.11500961006264723,
+              "distance": 0.14421370073389692,
+              "offset": {
+                "x": -0.0015948963317384823,
+                "y": -0.003987240829346095
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legFrontNear",
+              "root": {
+                "x": 0.5831221341778615,
+                "y": 0.591869724993511
+              },
+              "target": {
+                "x": 0.7633114464482162,
+                "y": 0.688042819658717
+              },
+              "paintedTarget": {
+                "x": 0.7623913003765905,
+                "y": 0.6848862341585142
+              },
+              "stance": false,
+              "upper": 0.06834368057756249,
+              "lower": 0.13581223567147208,
+              "distance": 0.2042485064668677,
+              "offset": {
+                "x": -0.0007974481658692412,
+                "y": -0.0031897926634768536
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legMidFar",
+              "root": {
+                "x": 0.4834411134442091,
+                "y": 0.42440561016097517
+              },
+              "target": {
+                "x": 0.37895947554835513,
+                "y": 0.23001130739607692
+              },
+              "paintedTarget": {
+                "x": 0.3823763209599734,
+                "y": 0.2275033184626157
+              },
+              "stance": false,
+              "upper": 0.09511052983952606,
+              "lower": 0.14442400539294123,
+              "distance": 0.22069335650365932,
+              "offset": {
+                "x": 0.002791068580542233,
+                "y": -0.0031897926634768814
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legMidNear",
+              "root": {
+                "x": 0.4874283542735552,
+                "y": 0.591869724993511
+              },
+              "target": {
+                "x": 0.3573347565320284,
+                "y": 0.7464824765172847
+              },
+              "paintedTarget": {
+                "x": 0.35666552746818064,
+                "y": 0.7496012759170654
+              },
+              "stance": true,
+              "upper": 0.07590852082240682,
+              "lower": 0.16099173034011438,
+              "distance": 0.20206297807140816,
+              "offset": {
+                "x": 0,
+                "y": 0.0031897926634768536
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legHindFar",
+              "root": {
+                "x": 0.3614315440662187,
+                "y": 0.39888726885316017
+              },
+              "target": {
+                "x": 0.12854957633074296,
+                "y": 0.34050363569301195
+              },
+              "paintedTarget": {
+                "x": 0.12939280019545338,
+                "y": 0.3349282296650718
+              },
+              "stance": true,
+              "upper": 0.1096019907402148,
+              "lower": 0.14560145704876237,
+              "distance": 0.24008885754513037,
+              "offset": {
+                "x": -0.0007974481658692134,
+                "y": -0.005582137161084522
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legHindNear",
+              "root": {
+                "x": 0.359039199568611,
+                "y": 0.6269574442917566
+              },
+              "target": {
+                "x": 0.17691349874494866,
+                "y": 0.666969998772542
+              },
+              "paintedTarget": {
+                "x": 0.1786352148036103,
+                "y": 0.661242312063795
+              },
+              "stance": false,
+              "upper": 0.09740626146476856,
+              "lower": 0.14524287530909696,
+              "distance": 0.18646923450421518,
+              "offset": {
+                "x": 0,
+                "y": -0.005980861244019198
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "pass": 2,
+          "compression": 0.027642967961184373,
+          "shift": 0.000006388591175299219,
+          "cap": 0.02813462226242946,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.07656250000000002,
+              "dy": 0.07811932079647081
+            },
+            "thorax": {
+              "rotation": 0
+            },
+            "head": {
+              "rotation": 0.007020210944380309
+            },
+            "mandible": {
+              "rotation": 0
+            },
+            "abdomen": {
+              "rotation": 0.004680140629586882
+            },
+            "legFrontFarKnee": {
+              "rotation": -0.39948074248894605
+            },
+            "legFrontFarFoot": {
+              "rotation": 0.23831891191752916
+            },
+            "legFrontNearKnee": {
+              "rotation": -0.4868725534595451
+            },
+            "legFrontNearFoot": {
+              "rotation": 0.446933435563037
+            },
+            "legMidFarKnee": {
+              "rotation": 0.0694102352348338
+            },
+            "legMidFarFoot": {
+              "rotation": 0.15759326460703083
+            },
+            "legMidNearKnee": {
+              "rotation": 0.02504326033442661
+            },
+            "legMidNearFoot": {
+              "rotation": 0.18659150392014426
+            },
+            "legHindFarKnee": {
+              "rotation": -0.20048945944044366
+            },
+            "legHindFarFoot": {
+              "rotation": 0.5073632610800844
+            },
+            "legHindNearKnee": {
+              "rotation": -0.21681595802130266
+            },
+            "legHindNearFoot": {
+              "rotation": 0.5062283890155004
+            },
+            "antennaFar": {
+              "rotation": 0
+            },
+            "antennaNear": {
+              "rotation": 0
+            },
+            "wingFar": {
+              "rotation": 0
+            },
+            "wingNear": {
+              "rotation": 0
+            }
+          },
+          "sourceTravel": {
+            "base": -0.049235588959251564,
+            "stride": 0.049235588959251564,
+            "progress": 0.453125,
+            "authoredDx": 0.009385330696105976
+          },
+          "contacts": [
+            {
+              "id": "legFrontFar",
+              "root": {
+                "x": 0.5679706190263464,
+                "y": 0.4238049582120798
+              },
+              "target": {
+                "x": 0.6946052471500269,
+                "y": 0.3545568400338236
+              },
+              "paintedTarget": {
+                "x": 0.6923912052991217,
+                "y": 0.3508771929824561
+              },
+              "stance": true,
+              "upper": 0.05840457232408465,
+              "lower": 0.11500961006264723,
+              "distance": 0.1443316698138444,
+              "offset": {
+                "x": -0.0015948963317384823,
+                "y": -0.003987240829346095
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legFrontNear",
+              "root": {
+                "x": 0.5831221341778615,
+                "y": 0.5920665212104849
+              },
+              "target": {
+                "x": 0.7633154762476249,
+                "y": 0.6880416421785043
+              },
+              "paintedTarget": {
+                "x": 0.7623913003765905,
+                "y": 0.6848862341585142
+              },
+              "stance": false,
+              "upper": 0.06834368057756249,
+              "lower": 0.13581223567147208,
+              "distance": 0.20415891940127598,
+              "offset": {
+                "x": -0.0007974481658692412,
+                "y": -0.0031897926634768536
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legMidFar",
+              "root": {
+                "x": 0.4834411134442091,
+                "y": 0.42460240637794905
+              },
+              "target": {
+                "x": 0.37893896553539563,
+                "y": 0.2299831226368171
+              },
+              "paintedTarget": {
+                "x": 0.3823763209599734,
+                "y": 0.2275033184626157
+              },
+              "stance": false,
+              "upper": 0.09511052983952606,
+              "lower": 0.14442400539294123,
+              "distance": 0.22090125513782566,
+              "offset": {
+                "x": 0.002791068580542233,
+                "y": -0.0031897926634768814
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legMidNear",
+              "root": {
+                "x": 0.4874283542735552,
+                "y": 0.5920665212104849
+              },
+              "target": {
+                "x": 0.3573355704364853,
+                "y": 0.7464826512752407
+              },
+              "paintedTarget": {
+                "x": 0.35666552746818064,
+                "y": 0.7496012759170654
+              },
+              "stance": true,
+              "upper": 0.07590852082240682,
+              "lower": 0.16099173034011438,
+              "distance": 0.2019120442931877,
+              "offset": {
+                "x": 0,
+                "y": 0.0031897926634768536
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legHindFar",
+              "root": {
+                "x": 0.3614315440662187,
+                "y": 0.39908406507013405
+              },
+              "target": {
+                "x": 0.12846674183801607,
+                "y": 0.34049047694301887
+              },
+              "paintedTarget": {
+                "x": 0.12939280019545338,
+                "y": 0.3349282296650718
+              },
+              "stance": true,
+              "upper": 0.1096019907402148,
+              "lower": 0.14560145704876237,
+              "distance": 0.24022033146017338,
+              "offset": {
+                "x": -0.0007974481658692134,
+                "y": -0.005582137161084522
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legHindNear",
+              "root": {
+                "x": 0.359039199568611,
+                "y": 0.6271542405087305
+              },
+              "target": {
+                "x": 0.1769283419484949,
+                "y": 0.6669744396161686
+              },
+              "paintedTarget": {
+                "x": 0.1786352148036103,
+                "y": 0.661242312063795
+              },
+              "stance": false,
+              "upper": 0.09740626146476856,
+              "lower": 0.14524287530909696,
+              "distance": 0.18641355294100864,
+              "offset": {
+                "x": 0,
+                "y": -0.005980861244019198
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "pass": 3,
+          "compression": 0.027649356552359672,
+          "shift": 2.0995948002422438e-7,
+          "cap": 0.02813462226242946,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.07656250000000002,
+              "dy": 0.07813748657418258
+            },
+            "thorax": {
+              "rotation": 0
+            },
+            "head": {
+              "rotation": 0.007020210944380309
+            },
+            "mandible": {
+              "rotation": 0
+            },
+            "abdomen": {
+              "rotation": 0.004680140629586882
+            },
+            "legFrontFarKnee": {
+              "rotation": -0.3990814024587097
+            },
+            "legFrontFarFoot": {
+              "rotation": 0.2377146903109897
+            },
+            "legFrontNearKnee": {
+              "rotation": -0.4869145437734696
+            },
+            "legFrontNearFoot": {
+              "rotation": 0.4469334373900618
+            },
+            "legMidFarKnee": {
+              "rotation": 0.06885015296356103
+            },
+            "legMidFarFoot": {
+              "rotation": 0.15848259554629807
+            },
+            "legMidNearKnee": {
+              "rotation": 0.024989835631429758
+            },
+            "legMidNearFoot": {
+              "rotation": 0.18668541451681953
+            },
+            "legHindFarKnee": {
+              "rotation": -0.20165126402176448
+            },
+            "legHindFarFoot": {
+              "rotation": 0.509358668338526
+            },
+            "legHindNearKnee": {
+              "rotation": -0.21695530546674302
+            },
+            "legHindNearFoot": {
+              "rotation": 0.506427112211072
+            },
+            "antennaFar": {
+              "rotation": 0
+            },
+            "antennaNear": {
+              "rotation": 0
+            },
+            "wingFar": {
+              "rotation": 0
+            },
+            "wingNear": {
+              "rotation": 0
+            }
+          },
+          "sourceTravel": {
+            "base": -0.049235588959251564,
+            "stride": 0.049235588959251564,
+            "progress": 0.453125,
+            "authoredDx": 0.009385330696105976
+          },
+          "contacts": [
+            {
+              "id": "legFrontFar",
+              "root": {
+                "x": 0.5679706190263464,
+                "y": 0.4238113468032551
+              },
+              "target": {
+                "x": 0.694606000995441,
+                "y": 0.3545563863402131
+              },
+              "paintedTarget": {
+                "x": 0.6923912052991217,
+                "y": 0.3508771929824561
+              },
+              "stance": true,
+              "upper": 0.05840457232408465,
+              "lower": 0.11500961006264723,
+              "distance": 0.14433561416087162,
+              "offset": {
+                "x": -0.0015948963317384823,
+                "y": -0.003987240829346095
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legFrontNear",
+              "root": {
+                "x": 0.5831221341778615,
+                "y": 0.5920729098016602
+              },
+              "target": {
+                "x": 0.7633156087376184,
+                "y": 0.6880416033709762
+              },
+              "paintedTarget": {
+                "x": 0.7623913003765905,
+                "y": 0.6848862341585142
+              },
+              "stance": false,
+              "upper": 0.06834368057756249,
+              "lower": 0.13581223567147208,
+              "distance": 0.20415601489870197,
+              "offset": {
+                "x": -0.0007974481658692412,
+                "y": -0.0031897926634768536
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legMidFar",
+              "root": {
+                "x": 0.4834411134442091,
+                "y": 0.42460879496912435
+              },
+              "target": {
+                "x": 0.37893814924950187,
+                "y": 0.2299819907577314
+              },
+              "paintedTarget": {
+                "x": 0.3823763209599734,
+                "y": 0.2275033184626157
+              },
+              "stance": false,
+              "upper": 0.09511052983952606,
+              "lower": 0.14442400539294123,
+              "distance": 0.22090826703186134,
+              "offset": {
+                "x": 0.002791068580542233,
+                "y": -0.0031897926634768814
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legMidNear",
+              "root": {
+                "x": 0.4874283542735552,
+                "y": 0.5920729098016602
+              },
+              "target": {
+                "x": 0.3573356966962418,
+                "y": 0.746482678405085
+              },
+              "paintedTarget": {
+                "x": 0.35666552746818064,
+                "y": 0.7496012759170654
+              },
+              "stance": true,
+              "upper": 0.07590852082240682,
+              "lower": 0.16099173034011438,
+              "distance": 0.20190709793291395,
+              "offset": {
+                "x": 0,
+                "y": 0.0031897926634768536
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legHindFar",
+              "root": {
+                "x": 0.3614315440662187,
+                "y": 0.39909045366130935
+              },
+              "target": {
+                "x": 0.12846210545608724,
+                "y": 0.3404897030457979
+              },
+              "paintedTarget": {
+                "x": 0.12939280019545338,
+                "y": 0.3349282296650718
+              },
+              "stance": true,
+              "upper": 0.1096019907402148,
+              "lower": 0.14560145704876237,
+              "distance": 0.24022657492255342,
+              "offset": {
+                "x": -0.0007974481658692134,
+                "y": -0.005582137161084522
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legHindNear",
+              "root": {
+                "x": 0.359039199568611,
+                "y": 0.6271606290999058
+              },
+              "target": {
+                "x": 0.17692800160213062,
+                "y": 0.6669743382592084
+              },
+              "paintedTarget": {
+                "x": 0.1786352148036103,
+                "y": 0.661242312063795
+              },
+              "stance": false,
+              "upper": 0.09740626146476856,
+              "lower": 0.14524287530909696,
+              "distance": 0.18641249921024114,
+              "offset": {
+                "x": 0,
+                "y": -0.005980861244019198
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ms": 352.5,
+      "status": "RED",
+      "error": "Error: Contact: hit@352.5 exceeds scale compression bound",
+      "cause": "Error: Contact: hit@352.5 rigid support exceeds scale compression bound",
+      "trace": [
+        {
+          "pass": 0,
+          "compression": 0,
+          "shift": 0.028230586062237273,
+          "cap": 0.02813462226242946,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.07583333333333335,
+              "dy": -0.0005032485520833326
+            },
+            "thorax": {
+              "rotation": 0
+            },
+            "head": {
+              "rotation": 0.007319453491456948
+            },
+            "mandible": {
+              "rotation": 0
+            },
+            "abdomen": {
+              "rotation": 0.004879635660971299
+            },
+            "legFrontFarKnee": {
+              "rotation": 0
+            },
+            "legFrontFarFoot": {
+              "rotation": 0
+            },
+            "legFrontNearKnee": {
+              "rotation": 0
+            },
+            "legFrontNearFoot": {
+              "rotation": 0
+            },
+            "legMidFarKnee": {
+              "rotation": 0
+            },
+            "legMidFarFoot": {
+              "rotation": 0
+            },
+            "legMidNearKnee": {
+              "rotation": 0
+            },
+            "legMidNearFoot": {
+              "rotation": 0
+            },
+            "legHindFarKnee": {
+              "rotation": 0.024398178304856466
+            },
+            "legHindFarFoot": {
+              "rotation": -0.03049772288107061
+            },
+            "legHindNearKnee": {
+              "rotation": 0.024398178304856466
+            },
+            "legHindNearFoot": {
+              "rotation": -0.03049772288107061
+            },
+            "antennaFar": {
+              "rotation": 0
+            },
+            "antennaNear": {
+              "rotation": 0
+            },
+            "wingFar": {
+              "rotation": 0
+            },
+            "wingNear": {
+              "rotation": 0
+            }
+          },
+          "sourceTravel": {
+            "base": -0.049235588959251564,
+            "stride": 0.049235588959251564,
+            "progress": 0.4583333333333333,
+            "authoredDx": 0.009785388512731474
+          },
+          "contacts": [
+            {
+              "id": "legFrontFar",
+              "root": {
+                "x": 0.5682270543855091,
+                "y": 0.39615475458803934
+              },
+              "target": {
+                "x": 0.6939861016308602,
+                "y": 0.3548644338118022
+              },
+              "paintedTarget": {
+                "x": 0.6923912052991217,
+                "y": 0.3508771929824561
+              },
+              "stance": true,
+              "upper": 0.05840457232408465,
+              "lower": 0.11500961006264723,
+              "distance": 0.13236400021857528,
+              "offset": {
+                "x": -0.0015948963317384823,
+                "y": -0.003987240829346095
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legFrontNear",
+              "root": {
+                "x": 0.5833785695370243,
+                "y": 0.5644163175864444
+              },
+              "target": {
+                "x": 0.7636717139614073,
+                "y": 0.6884280092692326
+              },
+              "paintedTarget": {
+                "x": 0.7628742657955381,
+                "y": 0.6852382166057558
+              },
+              "stance": false,
+              "upper": 0.06834368057756249,
+              "lower": 0.13581223567147208,
+              "distance": 0.21882531297923094,
+              "offset": {
+                "x": -0.0007974481658692412,
+                "y": -0.0031897926634768536
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legFrontNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legMidFar",
+              "root": {
+                "x": 0.48369754880337185,
+                "y": 0.3969522027539086
+              },
+              "target": {
+                "x": 0.3795840285427841,
+                "y": 0.23031880968994223
+              },
+              "paintedTarget": {
+                "x": 0.38237509712332635,
+                "y": 0.22712901702646535
+              },
+              "stance": false,
+              "upper": 0.09511052983952606,
+              "lower": 0.14442400539294123,
+              "distance": 0.1964848920020624,
+              "offset": {
+                "x": 0.002791068580542233,
+                "y": -0.0031897926634768814
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legMidNear",
+              "root": {
+                "x": 0.48768478963271794,
+                "y": 0.5644163175864444
+              },
+              "target": {
+                "x": 0.35666552746818064,
+                "y": 0.7464114832535885
+              },
+              "paintedTarget": {
+                "x": 0.35666552746818064,
+                "y": 0.7496012759170654
+              },
+              "stance": true,
+              "upper": 0.07590852082240682,
+              "lower": 0.16099173034011438,
+              "distance": 0.22425050141382288,
+              "offset": {
+                "x": 0,
+                "y": 0.0031897926634768536
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legMidNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legHindFar",
+              "root": {
+                "x": 0.36168797942538145,
+                "y": 0.3714338614460936
+              },
+              "target": {
+                "x": 0.1301902483613226,
+                "y": 0.3405103668261563
+              },
+              "paintedTarget": {
+                "x": 0.12939280019545338,
+                "y": 0.3349282296650718
+              },
+              "stance": true,
+              "upper": 0.1096019907402148,
+              "lower": 0.14560145704876237,
+              "distance": 0.233553980928,
+              "offset": {
+                "x": -0.0007974481658692134,
+                "y": -0.005582137161084522
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindFarFoot",
+                    1
+                  ]
+                ]
+              ]
+            },
+            {
+              "id": "legHindNear",
+              "root": {
+                "x": 0.3592956349277738,
+                "y": 0.59950403688469
+              },
+              "target": {
+                "x": 0.17863257613205955,
+                "y": 0.6675995969963201
+              },
+              "paintedTarget": {
+                "x": 0.17863257613205955,
+                "y": 0.6616187357523009
+              },
+              "stance": false,
+              "upper": 0.09740626146476856,
+              "lower": 0.14524287530909696,
+              "distance": 0.19307031392821716,
+              "offset": {
+                "x": 0,
+                "y": -0.005980861244019198
+              },
+              "endpointOnly": true,
+              "weights": [
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ],
+                [
+                  [
+                    "legHindNearFoot",
+                    1
+                  ]
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

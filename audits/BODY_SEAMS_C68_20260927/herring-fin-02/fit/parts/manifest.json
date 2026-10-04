@@ -1,0 +1,70 @@
+{
+  "creatureId": "herring-axial-01",
+  "parts": [
+    {
+      "name": "near-pectoral.png",
+      "path": "parts/near-pectoral.png",
+      "sha256": "6b166c6ff68dcb81f0fa061f6735967ddbff952711ae0a140d908fee64504ecd"
+    },
+    {
+      "name": "far-pectoral.png",
+      "path": "parts/far-pectoral.png",
+      "sha256": "07bcd12ee73a0054de1bc44daff317a9681094e6e582d8439de5b7bb1aacfe1a"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "6736aabda809d67ffcc28b6fc933a4a36e818d38afdf8719b6234e91054062e3"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "2f1e509ea77baae4308ccf64a04d4dce4e2b39c706d9edd7bf3f15b1835cc072"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "850ea5b70ee2838c932e7dba5b03d444bf0eadd8ac4bbe1bbea60e62bcf824b1"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "537a56486e48f8a077c674c34298492aa0907f6859746006e03c8ae642b76f0d"
+    },
+    {
+      "name": "spine5.png",
+      "path": "parts/spine5.png",
+      "sha256": "30c5513d8fc88a08af7cee5ef7456e898ee2f4542868cd025f7022dc43493136"
+    },
+    {
+      "name": "spine4.png",
+      "path": "parts/spine4.png",
+      "sha256": "4648072038bd7bed397da2cdaf2c11d97a51a2c5d9af36917cc3aa3be037f33a"
+    },
+    {
+      "name": "spine3.png",
+      "path": "parts/spine3.png",
+      "sha256": "fdb6e954b71e05f69893c1034f218d765b5bbeb9f9a8d21b4d632232f86c8826"
+    },
+    {
+      "name": "spine2.png",
+      "path": "parts/spine2.png",
+      "sha256": "8e9830b2785726c99a926232397e9a447cae8b301d758d4dbda58af2b3976e43"
+    },
+    {
+      "name": "spine1.png",
+      "path": "parts/spine1.png",
+      "sha256": "f64a56002fca664008fb86e5f47845757331734290947bb44ef8afe52d970ddb"
+    },
+    {
+      "name": "spine0.png",
+      "path": "parts/spine0.png",
+      "sha256": "9d1fb4d7f0b25f67022c96b401a6126add303265141e25ef45e9b54b54ae7c78"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "a2ab4d5d20784b4be6bae88e2a475c7ab0bdcb11773b09e588d3c0ae8b1a1644"
+    }
+  ]
+}

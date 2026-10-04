@@ -1,0 +1,267 @@
+{
+  "schema": "cf.c196-source-and-ownership-controls/v1",
+  "writer": {
+    "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/controls.mjs",
+    "sha256": "2a86078ceeec090b194a1879aca9aafd389feedea67d44e336db593f658a77e4"
+  },
+  "rows": [
+    {
+      "id": "01-prawn-contours",
+      "source": {
+        "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/master.png",
+        "sha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35"
+      },
+      "priorAuthor": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/08-prawn-opaque/authoring.json",
+        "sha256": "3081942c8732d6945face495986adc9fb188d704150a127b185ad697743f106e"
+      },
+      "author": {
+        "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/authoring.json",
+        "sha256": "919d29108de3a475975b4c16546e2c853b4e1936de882dacec9b83db86ebd313"
+      },
+      "landmarksMaterialsGenomePresenceGroundUnchanged": true,
+      "keyedRgbaChanges": 0,
+      "changedOwnedPixels": 4054,
+      "transfers": {
+        "head -> leg1FarFoot": 30,
+        "abdomen2 -> leg4FarFoot": 1,
+        "abdomen1 -> leg4FarFoot": 9,
+        "leg3FarKnee -> leg3FarFoot": 136,
+        "leg2FarKnee -> leg2FarFoot": 137,
+        "abdomen0 -> leg4FarFoot": 11,
+        "head -> antennaFarTip": 448,
+        "leg4FarKnee -> leg4FarFoot": 128,
+        "leg1FarKnee -> leg1FarFoot": 133,
+        "leg0FarKnee -> leg0FarFoot": 124,
+        "head -> leg0FarFoot": 134,
+        "thorax -> leg1FarKnee": 184,
+        "leg4FarKnee -> leg3FarKnee": 12,
+        "thorax -> leg2FarKnee": 178,
+        "thorax -> leg3FarKnee": 214,
+        "abdomen0 -> leg4FarKnee": 122,
+        "abdomen0 -> leg3FarKnee": 14,
+        "thorax -> leg0FarKnee": 204,
+        "thorax -> leg4FarKnee": 15,
+        "antennaFarTip -> leg0FarFoot": 2,
+        "head -> leg0FarKnee": 10,
+        "head -> antennaNearTip": 233,
+        "head -> leg0NearFoot": 107,
+        "thorax -> leg0NearKnee": 106,
+        "thorax -> leg1NearKnee": 127,
+        "thorax -> leg2NearKnee": 169,
+        "thorax -> leg3NearKnee": 183,
+        "abdomen0 -> leg4NearKnee": 104,
+        "thorax -> leg4NearKnee": 20,
+        "abdomen0 -> leg3NearKnee": 1,
+        "leg0NearKnee -> leg0NearFoot": 108,
+        "leg1NearKnee -> leg1NearFoot": 126,
+        "head -> leg1NearFoot": 30,
+        "leg4NearKnee -> leg4NearFoot": 132,
+        "leg2NearKnee -> leg2NearFoot": 141,
+        "leg3NearKnee -> leg3NearFoot": 151,
+        "abdomen0 -> leg4NearFoot": 8,
+        "head -> leg2NearFoot": 53,
+        "abdomen1 -> leg4NearFoot": 9
+      },
+      "attributed": [
+        {
+          "source": [
+            516,
+            456
+          ],
+          "oldJoint": "abdomen1",
+          "newJoint": "leg4FarFoot"
+        },
+        {
+          "source": [
+            1082,
+            499
+          ],
+          "oldJoint": "head",
+          "newJoint": "antennaFarTip"
+        }
+      ],
+      "controls": {
+        "changedRgbaRejected": true,
+        "deletedPaintRejected": true,
+        "stolenOwnerRejected": true
+      },
+      "qualityAccepted": false
+    },
+    {
+      "id": "02-shrimp-contours",
+      "source": {
+        "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/master.png",
+        "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7"
+      },
+      "priorAuthor": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/authoring.json",
+        "sha256": "0d3fd10a4da2c26f3061e5b97a236ac7026f828f42c5d870ba5d9dab569b4fac"
+      },
+      "author": {
+        "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/authoring.json",
+        "sha256": "f1d227bd62828edb85536b8a88c94283516570ae6ac4cdd6267ad7fce2b1f088"
+      },
+      "landmarksMaterialsGenomePresenceGroundUnchanged": true,
+      "keyedRgbaChanges": 0,
+      "changedOwnedPixels": 5069,
+      "transfers": {
+        "abdomen0 -> leg2FarFoot": 8,
+        "abdomen2 -> leg3FarFoot": 7,
+        "abdomen1 -> leg3FarFoot": 34,
+        "abdomen4 -> leg4FarFoot": 5,
+        "abdomen3 -> leg4FarFoot": 5,
+        "abdomen0 -> leg3FarFoot": 50,
+        "leg3FarKnee -> leg3FarFoot": 181,
+        "abdomen1 -> leg4FarFoot": 11,
+        "leg4FarKnee -> leg4FarFoot": 139,
+        "leg2FarKnee -> leg2FarFoot": 170,
+        "leg1FarKnee -> leg1FarFoot": 149,
+        "head -> leg0FarFoot": 21,
+        "leg0FarKnee -> leg0FarFoot": 120,
+        "leg1FarKnee -> leg0FarKnee": 250,
+        "leg2FarKnee -> leg1FarKnee": 137,
+        "leg3FarKnee -> leg2FarKnee": 41,
+        "thorax -> leg0FarKnee": 283,
+        "abdomen0 -> leg2FarKnee": 179,
+        "thorax -> leg1FarKnee": 200,
+        "abdomen1 -> leg4FarKnee": 218,
+        "leg4FarKnee -> leg3FarKnee": 1,
+        "abdomen0 -> leg3FarKnee": 335,
+        "abdomen0 -> leg4FarKnee": 77,
+        "thorax -> leg2FarKnee": 49,
+        "head -> antennaFarTip": 67,
+        "abdomen1 -> leg4NearKnee": 122,
+        "thorax -> leg1NearKnee": 170,
+        "head -> antennaNearTip": 72,
+        "abdomen0 -> leg2NearKnee": 130,
+        "abdomen0 -> leg4NearKnee": 74,
+        "thorax -> leg0NearKnee": 299,
+        "thorax -> leg2NearKnee": 26,
+        "abdomen0 -> leg3NearKnee": 171,
+        "leg2NearKnee -> leg1NearKnee": 192,
+        "leg1NearKnee -> leg0NearKnee": 199,
+        "leg3NearKnee -> leg2NearKnee": 45,
+        "leg0NearKnee -> leg0NearFoot": 114,
+        "head -> leg0NearFoot": 22,
+        "leg1NearKnee -> leg1NearFoot": 164,
+        "leg2NearKnee -> leg2NearFoot": 167,
+        "leg4NearKnee -> leg4NearFoot": 147,
+        "leg3NearKnee -> leg3NearFoot": 174,
+        "abdomen1 -> leg4NearFoot": 5,
+        "abdomen0 -> leg3NearFoot": 11,
+        "abdomen4 -> leg4NearFoot": 4,
+        "abdomen3 -> leg4NearFoot": 3,
+        "abdomen2 -> leg3NearFoot": 10,
+        "abdomen0 -> leg2NearFoot": 11
+      },
+      "attributed": [],
+      "controls": {
+        "changedRgbaRejected": true,
+        "deletedPaintRejected": true,
+        "stolenOwnerRejected": true
+      },
+      "qualityAccepted": false
+    },
+    {
+      "id": "04-shrimp-distal-only",
+      "source": {
+        "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/master.png",
+        "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7"
+      },
+      "priorAuthor": {
+        "path": "audits/C192_SPECIALIZED_REFERENCES_20261002/09-shrimp-opaque/authoring.json",
+        "sha256": "0d3fd10a4da2c26f3061e5b97a236ac7026f828f42c5d870ba5d9dab569b4fac"
+      },
+      "author": {
+        "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/authoring.json",
+        "sha256": "1efdfcd0d14fcf309113ed02d5bdeee393e91b43af5c10a4ef2348d3aa6f183a"
+      },
+      "landmarksMaterialsGenomePresenceGroundUnchanged": true,
+      "keyedRgbaChanges": 0,
+      "changedOwnedPixels": 1871,
+      "transfers": {
+        "abdomen0 -> leg2FarFoot": 8,
+        "abdomen2 -> leg3FarFoot": 7,
+        "abdomen1 -> leg3FarFoot": 34,
+        "abdomen4 -> leg4FarFoot": 5,
+        "abdomen3 -> leg4FarFoot": 5,
+        "abdomen0 -> leg3FarFoot": 50,
+        "leg3FarKnee -> leg3FarFoot": 181,
+        "abdomen1 -> leg4FarFoot": 11,
+        "leg4FarKnee -> leg4FarFoot": 139,
+        "leg2FarKnee -> leg2FarFoot": 170,
+        "leg1FarKnee -> leg1FarFoot": 149,
+        "head -> leg0FarFoot": 21,
+        "leg0FarKnee -> leg0FarFoot": 120,
+        "head -> antennaFarTip": 67,
+        "head -> antennaNearTip": 72,
+        "leg0NearKnee -> leg0NearFoot": 114,
+        "head -> leg0NearFoot": 22,
+        "leg1NearKnee -> leg1NearFoot": 164,
+        "leg2NearKnee -> leg2NearFoot": 167,
+        "leg4NearKnee -> leg4NearFoot": 147,
+        "leg3NearKnee -> leg3NearFoot": 174,
+        "abdomen1 -> leg4NearFoot": 5,
+        "abdomen0 -> leg3NearFoot": 11,
+        "abdomen4 -> leg4NearFoot": 4,
+        "abdomen3 -> leg4NearFoot": 3,
+        "abdomen2 -> leg3NearFoot": 10,
+        "abdomen0 -> leg2NearFoot": 11
+      },
+      "attributed": [
+        {
+          "source": [
+            427,
+            473
+          ],
+          "oldJoint": "abdomen4",
+          "newJoint": "leg4FarFoot"
+        },
+        {
+          "source": [
+            510,
+            444
+          ],
+          "oldJoint": "abdomen2",
+          "newJoint": "leg3FarFoot"
+        },
+        {
+          "source": [
+            594,
+            827
+          ],
+          "oldJoint": "abdomen0",
+          "newJoint": "leg2NearFoot"
+        }
+      ],
+      "controls": {
+        "changedRgbaRejected": true,
+        "deletedPaintRejected": true,
+        "stolenOwnerRejected": true
+      },
+      "qualityAccepted": false
+    }
+  ],
+  "mussel": {
+    "defaultCap": 0.5,
+    "movedPixels": 153,
+    "remainderPixels": 131367,
+    "replayMismatch": 0,
+    "sourceRgbaChanges": 0,
+    "otherPriorOwnerChanges": 0,
+    "largestAndInputProtected": true,
+    "explicitStricterCapRefuses": true
+  },
+  "earthworm": {
+    "directRecipe": "f441d86b605246cdfcac3aa1715883ccfc6654dcb10d852472d8b696a52f426f",
+    "source": {
+      "path": "audits/C186_SPECIALIZED_REFERENCES_20261002/01-earthworm-direct/master.png",
+      "sha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121"
+    },
+    "acceptedDirectSourceUnchanged": true,
+    "priorEvidenceUnchanged": true
+  },
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

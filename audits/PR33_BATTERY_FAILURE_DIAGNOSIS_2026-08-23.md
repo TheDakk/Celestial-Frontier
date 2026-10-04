@@ -74,8 +74,8 @@ rewritten or promoted. Clean repair commit
 `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier, with complete
 lifecycle/cleanup and zero findings/fatals. The report's target maxima were 8.754 ms phone and
 7.886 ms desktop. Raw/gzip SHA-256 are
-`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
-`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`.
+`db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03` /
+`a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`.
 Later evidence/reference descendants are not retroactive certificates for their own Git commit.
 
 ## Fail-fast optimization

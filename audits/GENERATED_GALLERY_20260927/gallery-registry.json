@@ -1,0 +1,3150 @@
+[
+ {
+  "family": "quadruped",
+  "name": "Coyote",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/coyote",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Arctic Fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/arctic-fox",
+  "note": "tail blotches; shoulder shards when rearing (Codex)",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Fennec Fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/fennec-fox",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Dingo",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/dingo",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Jackal",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/jackal",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Coyote (C56)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/coyote-c56-",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Caracal",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/caracal",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cougar",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/cougar",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Lion",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/lion",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Tiger (elbow repaired)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/tiger-elbow-repaired-",
+  "note": "no stripes painted (D27); hairline chest seam",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Leopard (elbow repaired)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/leopard-elbow-repaired-",
+  "note": "no spots painted (D27)",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Ocelot (elbow repaired)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ocelot-elbow-repaired-",
+  "note": "no spots painted (D27); chest notch",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Snow Leopard (elbow repaired)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/snow-leopard-elbow-repaired-",
+  "note": "pattern re-paint",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Clouded Leopard (elbow repaired)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/clouded-leopard-elbow-repaired-",
+  "note": "pattern re-paint",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Raccoon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raccoon",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Raccoon (C59)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raccoon-c59-",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Marmot",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/marmot",
+  "note": "head crumples in crouch (Codex)",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cattle",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/cattle",
+  "note": "back humps when rearing (Codex)",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Weasel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/weasel",
+  "note": "clean (re-run on the correct fallback fit)",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Mink (elbow repaired)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/mink-elbow-repaired-",
+  "note": "",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Marten",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/marten",
+  "note": "clean",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Fisher (elbow repaired)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/fisher-elbow-repaired-",
+  "note": "thin pale chest strand",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "serpent",
+  "name": "Python",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Racer",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/19-racer",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Garter Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/20-garter-snake",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Tree Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-tree-snake",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Rat Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/18-rat-snake",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Cottonmouth",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/19-cottonmouth",
+  "note": "clean; strikes mouth-open",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Mamba",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/21-mamba",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Grass Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/24-grass-snake",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Water Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c59/10-water-snake",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Raven",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raven",
+  "note": "tail splits in hit reaction (wing/tail overlap)",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Vulture",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/vulture",
+  "note": "feather shard above wing in reaction",
+  "crop": "land",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Cod + Perch (gill welds)",
+  "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
+  "note": "tails full; Cod belly sliver",
+  "crop": "water"
+ },
+ {
+  "family": "fish",
+  "name": "Carp",
+  "nativeDir": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral",
+  "note": "whole and clean after Codex fin repair",
+  "crop": "water"
+ },
+ {
+  "family": "fish",
+  "name": "Herring",
+  "nativeDir": "audits/TAIL_LABELS_CHECK_20260926/native-10-herring-welded",
+  "note": "lumpy back in reaction",
+  "crop": "water"
+ },
+ {
+  "family": "fish",
+  "name": "Trout",
+  "nativeDir": "audits/TAIL_LABELS_CHECK_20260926/native-06-trout-welded",
+  "note": "lumpy back; dorsal floats in reaction",
+  "crop": "water"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Goose",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/goose",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Quail",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/quail",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Robin",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/robin",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Starling",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/starling",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27",
+  "supports": "observed"
+ },
+ {
+  "family": "insect",
+  "name": "Beetle",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/beetle",
+  "note": "first insect; legs slightly smeared",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Mongoose",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/mongoose",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Caracal (C56)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/caracal-c56-",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Ocelot (pattern re-paint)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ocelot-pattern-re-paint-",
+  "note": "spotted; clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Donkey",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-perf-recheck/15-donkey",
+  "note": "clean (dark shoulder stripe is anatomy); after the skin-field cache; observed-support rerun: 886/887 frames, 0 refusals (borderline performance)",
+  "batch": "perf recheck",
+  "tag": "2026-09-27",
+  "supports": "rest (observed borderline)"
+ },
+ {
+  "family": "quadruped",
+  "name": "Lynx",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/lynx",
+  "note": "clean in reaction; Codex saw fragments in other frames",
+  "batch": "perf recheck",
+  "tag": "2026-09-27",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Grayling",
+  "nativeDir": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral",
+  "note": "whole after Codex far-fin collar + near-fin welds",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Minnow",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; no large opening",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Sculpin",
+  "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-sculpin-final",
+  "note": "now whole after Codex keyed-label pectoral welds (was fragmented)",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Walleye",
+  "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-walleye-final",
+  "note": "clean after Codex tail+axis repair",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Whitefish",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; no large opening",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Pacu",
+  "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-pacu-final",
+  "note": "fine seam near the pectoral remains; tail+axis repaired",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Cichlid",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; no large opening",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Tetra",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; belly loop (Codex)",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Ibis",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ibis",
+  "note": "clean",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Oystercatcher",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/oystercatcher",
+  "note": "clean",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c",
+  "supports": "observed"
+ },
+ {
+  "family": "serpent",
+  "name": "King Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/21-king-snake",
+  "note": "clean",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "serpent",
+  "name": "Grass Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/22-grass-snake",
+  "note": "clean",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "serpent",
+  "name": "Whip Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/23-whip-snake",
+  "note": "clean (the new painting; the C56 Whip was refused)",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "serpent",
+  "name": "Vine Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/24-vine-snake",
+  "note": "clean",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Pike",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; snout distortion in late pose",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "fish",
+  "name": "Bass",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/02-bass",
+  "note": "body cracks (unwelded)",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "fish",
+  "name": "Char",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "fish",
+  "name": "Sturgeon",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; chest opening (Codex)",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "fish",
+  "name": "Paddlefish",
+  "nativeDir": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis",
+  "note": "body whole after Codex axial repair; small rostrum fleck",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "fish",
+  "name": "Goldfish",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; no large opening",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Spoonbill",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/spoonbill",
+  "note": "thin crack across the wing",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Kestrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/kestrel",
+  "note": "clean",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Heron",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/heron",
+  "note": "left fighter far wing hangs away (wing split)",
+  "batch": "bird pool v2",
+  "tag": "g2bird-poolv2",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Magpie",
+  "nativeDir": "audits/BIRD_NATIVE_INPUT_C79_20260927/native-magpie-observed",
+  "note": "passes with observed supports; upper-back/neck shards (Codex)",
+  "batch": "C79 observed supports",
+  "tag": "c79"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Dove",
+  "nativeDir": "audits/BIRD_NATIVE_INPUT_C79_20260927/native-dove-observed",
+  "note": "passes with observed supports; tail curl, neck shards (Codex)",
+  "batch": "C79 observed supports",
+  "tag": "c79"
+ },
+ {
+  "family": "fish",
+  "name": "Mackerel",
+  "nativeDir": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01",
+  "note": "Codex fixed fish recipe; diagonal chest slit in late pose (Codex)",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Haddock",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; face compressed (Codex)",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Pollock",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Sardine",
+  "nativeDir": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01",
+  "note": "Codex fixed fish recipe; whole; fine seams (Codex)",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Anchovy",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Mullet",
+  "nativeDir": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01",
+  "note": "Codex fixed fish recipe; small belly edge (Codex)",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Tarpon",
+  "nativeDir": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01",
+  "note": "Codex fixed fish recipe; belly slit in late pose (Codex)",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Curlew",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/09-curlew",
+  "note": "clean",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Coot",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/14-coot",
+  "note": "clean",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Rail",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/16-rail",
+  "note": "clean",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Grouper",
+  "nativeDir": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01",
+  "note": "Codex fixed fish recipe; gill hole gone",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Barracuda",
+  "nativeDir": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01",
+  "note": "Codex fixed fish recipe; whole; fine seams (Codex)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Sailfish",
+  "nativeDir": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01",
+  "note": "Codex fixed fish recipe; chest crease (Codex)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Mahi-Mahi",
+  "nativeDir": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01",
+  "note": "Codex fixed fish recipe; whole; cracks closed",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Tanager",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/13-tanager",
+  "note": "clean",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cheetah",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/18-cheetah",
+  "note": "clean (both ears / offset feet / clear tail layout)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Maned Wolf",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/21-maned-wolf",
+  "note": "clean (C83 layout)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sand Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/22-sand-cat",
+  "note": "clean (C83 layout)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "insect",
+  "name": "Cockroach",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c54-21-cockroach",
+  "note": "clean",
+  "batch": "insect pool re-score (Codex C85 insect motion)",
+  "tag": "insect-pool",
+  "supports": "observed"
+ },
+ {
+  "family": "insect",
+  "name": "Termite",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c54-24-termite",
+  "note": "thin abdomen line (right); abdomen-peel history — check other frames",
+  "batch": "insect pool re-score (Codex C85 insect motion)",
+  "tag": "insect-pool",
+  "supports": "observed"
+ },
+ {
+  "family": "insect",
+  "name": "Dung Beetle",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c56-25-dung-beetle",
+  "note": "clean",
+  "batch": "insect pool re-score (Codex C85 insect motion)",
+  "tag": "insect-pool",
+  "supports": "observed"
+ },
+ {
+  "family": "insect",
+  "name": "Firefly",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c56-30-firefly",
+  "note": "clean; glowing abdomen",
+  "batch": "insect pool re-score (Codex C85 insect motion)",
+  "tag": "insect-pool",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Goby",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/01-goby",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Wrasse",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/03-wrasse",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Damselfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/04-damselfish",
+  "note": "small crack line (unwelded)",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Clownfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/05-clownfish",
+  "note": "small line (unwelded)",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Butterflyfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/06-butterflyfish",
+  "note": "small crack (unwelded)",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Surgeonfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/07-surgeonfish",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Roadrunner",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/11-roadrunner",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Sandgrouse",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/12-sandgrouse",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Woodpecker",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/14-woodpecker",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Eider Duck",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/16-eider-duck",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Red Panda",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/18-red-panda",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Pampas Fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/19-pampas-fox",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wildcat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/21-wildcat",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Spectacled Bear",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/23-spectacled-bear",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "serpent",
+  "name": "Anaconda",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/01-anaconda",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "serpent",
+  "name": "Viper",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/03-viper",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "serpent",
+  "name": "Sand Boa",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/05-sand-boa",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "serpent",
+  "name": "Cave Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/06-cave-snake",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Gar",
+  "nativeDir": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01",
+  "note": "whole after Codex fixed fish recipe; tiny fleck (Codex)",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Tilapia",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/10-tilapia",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Piranha",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/11-piranha",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Killifish",
+  "nativeDir": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01",
+  "note": "whole after Codex fixed fish recipe",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Arctic Cod",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/13-arctic-cod",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Viperfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/14-viperfish",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hare",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/18-hare",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Meerkat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/21-meerkat-v2",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Parrotfish",
+  "nativeDir": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01",
+  "note": "whole after Codex fixed fish recipe",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Boxfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/04-boxfish",
+  "note": "acceptable",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Archerfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/06-archerfish",
+  "note": "acceptable",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Puffin",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/07-puffin",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Swan",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/09-swan",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Cormorant",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/10-cormorant",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Mouse",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/15-mouse",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Tree Shrew",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/17-tree-shrew",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Ground Squirrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/18-ground-squirrel",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Rabbitfish",
+  "nativeDir": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01",
+  "note": "whole after Codex fixed fish recipe; angular back (Codex)",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Sea Bass",
+  "nativeDir": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01",
+  "note": "whole after Codex fixed fish recipe",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Bonefish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/04-bonefish",
+  "note": "acceptable",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Tigerfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/05-tigerfish",
+  "note": "acceptable",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Coelacanth",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/06-coelacanth",
+  "note": "acceptable",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Gannet",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/07-gannet",
+  "note": "clean; faint wing line",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Booby",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/08-booby",
+  "note": "clean",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Bustard",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/09-bustard",
+  "note": "clean",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Seriema",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/10-seriema",
+  "note": "clean",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Chicken",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/11-chicken",
+  "note": "clean",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Bongo",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/15-bongo",
+  "note": "clean",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Bobcat",
+  "nativeDir": "audits/BOBCAT_LAYOUT_C96_20260927/native-02",
+  "note": "new layout painting; speed fixed; ear-tip flecks and chest sliver (Codex visual holds)",
+  "batch": "C96 Bobcat layout",
+  "tag": "c96-bobcat",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Cold-Water Fish",
+  "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/01-cold-water-fish/native",
+  "note": "whole after Codex fish batch seam repair",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Blind Fish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/02-blind-fish",
+  "note": "acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Small Fish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/03-small-fish",
+  "note": "acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Sunfish",
+  "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/04-sunfish/native",
+  "note": "whole after Codex fish batch seam repair",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Tang",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/05-tang",
+  "note": "acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Reef Fish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/06-reef-fish",
+  "note": "acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Icefish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/08-icefish",
+  "note": "acceptable (translucent)",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Mudminnow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/09-mudminnow",
+  "note": "acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Snailfish",
+  "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/10-snailfish/native",
+  "note": "HELD: improved but splits head/trunk in late idle",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Desert Owl",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/12-desert-owl",
+  "note": "clean",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Harpy Eagle",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/13-harpy-eagle",
+  "note": "clean",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Skua",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/18-skua",
+  "note": "clean",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gerbil",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/20-gerbil",
+  "note": "clean",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Salmon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/01-salmon/native",
+  "note": "whole after the fish-seams batch (unrepaired fit split at seams)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "fish",
+  "name": "Cave Fish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/03-cave-fish/native",
+  "note": "whole after the fish-seams batch (unrepaired fit split at seams)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "fish",
+  "name": "Lanternfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/07-lanternfish/native",
+  "note": "whole after the fish-seams batch (unrepaired fit split at seams)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "fish",
+  "name": "Barreleye",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/10-barreleye/native",
+  "note": "whole after the fish-seams batch (unrepaired fit split at seams)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "fish",
+  "name": "Ocean Sunfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/12-ocean-sunfish/native",
+  "note": "whole after the fish-seams batch (unrepaired fit split at seams)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hummingbird",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/13-hummingbird",
+  "note": "HELD: far-wing fragment floats above the back in turn3 idle; walks on feet (Codex hold)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snow Petrel",
+  "nativeDir": "audits/BIRD_ISLANDS_20260927/20-snow-petrel/native",
+  "note": "HELD: floating sliver fixed by the island repair, but a wing seam gap shows background (late idle) and a grey line crosses the near wing (reaction)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "quadruped",
+  "name": "Possum",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/22-possum",
+  "note": "whole in reaction and late idle (one faint chest scratch at full size)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "fish",
+  "name": "Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/01-shark/native",
+  "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Great White Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/02-great-white-shark/native",
+  "note": "HELD: framing REFUSE by Codex (98 vs 101); motion itself whole on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Tiger Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/03-tiger-shark/native",
+  "note": "SUPERSEDED by the 2026-10-03 acceptance",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Mako Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/04-mako-shark/native",
+  "note": "HELD: extra finlets in the painting (Codex hold); motion whole on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Whale Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/05-whale-shark/native",
+  "note": "HELD: framing REFUSE by Codex (76/77 vs 101); motion itself whole on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Basking Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/06-basking-shark/native",
+  "note": "HELD: framing REFUSE by Codex (89/96 vs 101); motion itself whole on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Reef Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/07-reef-shark/native",
+  "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Hammerhead Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/08-hammerhead-shark/native",
+  "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Flounder",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/09-flounder/native",
+  "note": "HELD: body gaps remain in reaction and late idle even on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Halibut",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/10-halibut/native",
+  "note": "HELD: lower-body gap in late idle even on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Rhea",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/13-rhea",
+  "note": "SUPERSEDED by the 2026-10-03 acceptance",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Seabird",
+  "nativeDir": "audits/BIRD_ISLANDS_20260927/20-seabird/native",
+  "note": "whole in reaction and late idle after the remainder-island repair (the floating neck/back sliver is gone)",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "quadruped",
+  "name": "Fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/22-fox",
+  "note": "whole in reaction and late idle (one tiny speck above the back in late idle, visible only at full size)",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Juvenile Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107-fishseams/01-juvenile-shark/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (unrepaired fit showed seam lines)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Panda",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/12-panda/native",
+  "note": "whole after the remainder-island repair (unrepaired: white slivers floated beside the lowered head)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Mountain Goat",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/14-mountain-goat/native",
+  "note": "whole after the remainder-island repair",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gopher",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/19-gopher/native",
+  "note": "whole after the remainder-island repair (unrepaired: an ear outline floated above the lowered head)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Pony",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c107-23-wild-pony/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Ass",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/24-wild-ass",
+  "note": "SUPERSEDED by the C250 film of Codex's corrected fit",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "serpent",
+  "name": "Eel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/02-eel",
+  "note": "whole in reaction and late idle (aquatic arena; rests on the seabed, lower body near the frame edge)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "serpent",
+  "name": "Electric Eel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/03-electric-eel",
+  "note": "whole in reaction and late idle (aquatic arena; rests on the seabed, lower body near the frame edge)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Polar Bear",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-07-polar-bear/native",
+  "note": "whole after the remainder-island repair; one faint dark line at the neck in late idle remains (for Dakk's pass)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "quadruped",
+  "name": "Horse",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114/13-horse",
+  "note": "SUPERSEDED by the C250 film of Codex's corrected fit",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sun Bear",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-14-sun-bear/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "quadruped",
+  "name": "Arctic Hare",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-18-arctic-hare/native",
+  "note": "whole after the remainder-island repair (unrepaired: black ear-tip fragments floated above the lowered head)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "fish",
+  "name": "Blobfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/19-blobfish/native",
+  "note": "whole on the fish-seams fit (unrepaired fit split at seams)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "fish",
+  "name": "Monkfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/21-monkfish/native",
+  "note": "whole on the fish-seams fit (unrepaired fit split at seams)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wombat",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c118-01-wombat/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sugar Glider",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/08-sugar-glider",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "quadruped",
+  "name": "Koala",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c118-11-koala/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "fish",
+  "name": "Flounder",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/20-flounder",
+  "note": "HELD: body gap line remains in reaction and late idle even on the seams fit",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "fish",
+  "name": "Halibut",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118-fishseams/21-halibut/native",
+  "note": "whole on the fish-seams fit (this C118 painting; the C106 Halibut stays held)",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hummingbird",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/24-hummingbird",
+  "note": "HELD: crown island floats above the lowered head (same as the C101 Hummingbird); repair refused at the cap (14.8%)",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Finch",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/01-finch",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Lark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/04-lark",
+  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 10.8% > 5%, D28)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Chough",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-05-chough/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Ptarmigan",
+  "nativeDir": "audits/BIRD_ISLANDS_C121_20261001/06-ptarmigan/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated white flecks over the lowered head)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Raven",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/07-raven",
+  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 12.8% > 5%, D28)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Vulture",
+  "nativeDir": "audits/BIRD_ISLANDS_C121_20261001/08-vulture/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hawk",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-09-hawk/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Crow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/10-crow",
+  "note": "HELD: remainder island floats over the lowered head in the late idle; repair refused at the cap (island 8.3% > 5%, D28)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Sandpiper",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/12-sandpiper",
+  "note": "whole in reaction and late idle (long bill and legs intact)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snowy Owl",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c121-14-snowy-owl/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "insect",
+  "name": "Wasp",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c121/18-wasp",
+  "note": "whole in reaction and late idle; six legs, both wing pairs and antennae intact",
+  "batch": "audits/G2_C121_20260927",
+  "tag": "g2c121"
+ },
+ {
+  "family": "quadruped",
+  "name": "Alligator",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136/03-alligator",
+  "note": "SUPERSEDED by the g2c136s sprawler-profile pass (snout no longer crosses the ground)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136"
+ },
+ {
+  "family": "quadruped",
+  "name": "Iguana",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136/15-iguana",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136"
+ },
+ {
+  "family": "quadruped",
+  "name": "Horned Lizard",
+  "nativeDir": "audits/QUAD_ISLANDS_C136_20261002/22-horned-lizard/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated an orange fleck over the lowered head)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wildebeest",
+  "nativeDir": "audits/ISLANDS_C151_20261002/08-wildebeest/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head); first accepted ungulate references",
+  "batch": "audits/G2_C136_REPAIRS_20261002",
+  "tag": "g2c151"
+ },
+ {
+  "family": "quadruped",
+  "name": "Saiga",
+  "nativeDir": "audits/ISLANDS_C151_20261002/13-saiga/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a fleck over the lowered head); first accepted ungulate references",
+  "batch": "audits/G2_C136_REPAIRS_20261002",
+  "tag": "g2c151"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Lark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c151/16-lark",
+  "note": "HELD: C151 repaint still floats a fleck over the lowered head; island repair refused at the cap (6.8% > 5%, D28)",
+  "batch": "audits/G2_C136_REPAIRS_20261002",
+  "tag": "g2c151"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hawk",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c151-18-hawk/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
+  "batch": "audits/G2_C136_REPAIRS_20261002",
+  "tag": "g2c151"
+ },
+ {
+  "family": "quadruped",
+  "name": "Land Iguana",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136ra/16-land-iguana",
+  "note": "whole in reaction and late idle (sprawler pool + reviewed ear absence)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136ra"
+ },
+ {
+  "family": "quadruped",
+  "name": "Alligator",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/03-alligator",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip); the earlier snout-through-ground hold is resolved",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gharial",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/04-gharial",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip); the snout-tip ghara stays attached",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gecko",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/07-gecko",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Alligator Lizard",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/09-alligator-lizard",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Tegu",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/11-tegu",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Land Iguana",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/16-land-iguana",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Coastal Lizard",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/17-coastal-lizard",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Komodo Dragon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/18-komodo-dragon",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Horned Lizard",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/22-horned-lizard",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Newt",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/24-newt",
+  "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136s"
+ },
+ {
+  "family": "quadruped",
+  "name": "Mara",
+  "nativeDir": "audits/ISLANDS_C178_20261002/01-mara/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated an ear-tip sliver over the lowered head)",
+  "batch": "audits/G2_C163_FAMILY_ORIGINALS_20261002",
+  "tag": "g2c178"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Lark",
+  "nativeDir": "audits/HEADS_C181_20261002/lark",
+  "note": "whole in reaction and late idle on Codex's C181 head-contour repair (crest attached; earlier fits floated a crown sliver)",
+  "batch": "audits/C163_REFERENCE_REPAIR_20261002",
+  "tag": "c181heads"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hummingbird",
+  "nativeDir": "audits/HEADS_C181_20261002/hummingbird",
+  "note": "whole in reaction and late idle on Codex's C181 head-contour repair (the crown island held since C101 is gone)",
+  "batch": "audits/C163_REFERENCE_REPAIR_20261002",
+  "tag": "c181heads"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hawk",
+  "nativeDir": "audits/HEADS_C181_20261002/hawk",
+  "note": "HELD: C181 head repair removes the floating sliver, but the nape stretches into a pointed spike over the lowered head in the late idle",
+  "batch": "audits/C163_REFERENCE_REPAIR_20261002",
+  "tag": "c181heads"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Crow",
+  "nativeDir": "audits/HEADS_C181_20261002/crow",
+  "note": "HELD: C181 head repair removes the floating sliver, but the nape stretches into a pointed spike over the lowered head in the late idle",
+  "batch": "audits/C163_REFERENCE_REPAIR_20261002",
+  "tag": "c181heads"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snowy Owl",
+  "nativeDir": "audits/HEADS_C181_20261002/snowy-owl",
+  "note": "HELD: C181 head repair removes the floating sliver, but the nape stretches into a pointed spike over the lowered head in the late idle",
+  "batch": "audits/C163_REFERENCE_REPAIR_20261002",
+  "tag": "c181heads"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Pony",
+  "nativeDir": "audits/HEADS_C181_20261002/wild-pony",
+  "note": "HELD: C181 head repair still floats a small fleck beside the lowered head in the late idle",
+  "batch": "audits/C163_REFERENCE_REPAIR_20261002",
+  "tag": "c181heads"
+ },
+ {
+  "family": "flyer-membrane",
+  "name": "Bat",
+  "nativeDir": "audits/BAT_C190_20261002/bat",
+  "note": "whole in reaction and late idle, flying fully inside the frame (the earlier staging hold was a review-crop error: the crop sheet shows only the ground band)",
+  "batch": "audits/C168_MEMBRANE_REFERENCES_20261002",
+  "tag": "c190bat"
+ },
+ {
+  "family": "primate",
+  "name": "Capuchin",
+  "nativeDir": "audits/CAPUCHIN_C192_20261002/capuchin",
+  "note": "SUPERSEDED by the 2026-10-03 acceptance",
+  "batch": "audits/C168_PRIMATE_REFERENCES_20261002",
+  "tag": "c192capuchin"
+ },
+ {
+  "family": "quadruped",
+  "name": "Giraffe",
+  "nativeDir": "audits/ISLANDS_C196_20261002/14-giraffe/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated flecks over the lowered head)",
+  "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+  "tag": "g2c196"
+ },
+ {
+  "family": "quadruped",
+  "name": "Banteng",
+  "nativeDir": "audits/ISLANDS_C196_20261002/16-banteng/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated flecks over the lowered head)",
+  "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+  "tag": "g2c196"
+ },
+ {
+  "family": "fish",
+  "name": "Basking Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/basking-shark/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Flounder",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/flounder",
+  "note": "HELD: body/tail cracks remain in the late idle on both the plain and the seams fit",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Great White Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/great-white-shark-framing-v2/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Mako Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/mako-shark-framing-v2/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Snailfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/snailfish/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snow Petrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/snow-petrel",
+  "note": "HELD: a seam line at the near shoulder remains in the late idle",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Tiger Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197/tiger-shark-framing-v2",
+  "note": "SUPERSEDED by the 2026-10-03 acceptance",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "fish",
+  "name": "Whale Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/whale-shark-framing-v2/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
+  "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
+  "tag": "g2c197"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Crow",
+  "nativeDir": "audits/SPIKE_REFILM_20261002/crow",
+  "note": "whole in reaction and late idle on the C181 head contours + Codex C201 shared faint fix (spike gone)",
+  "batch": "audits/C172_SHARED_HEAD_SPIKE_20261002",
+  "tag": "c201refilm"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hawk",
+  "nativeDir": "audits/SPIKE_REFILM_20261002/hawk",
+  "note": "HELD: spike gone after C201, but a small pink opening shows at the belly between the legs in the late idle",
+  "batch": "audits/C172_SHARED_HEAD_SPIKE_20261002",
+  "tag": "c201refilm"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snowy Owl",
+  "nativeDir": "audits/SPIKE_REFILM_20261002/snowy-owl",
+  "note": "HELD: spike gone after C201, but a grey seam line shows around the neck/shoulder in the late idle",
+  "batch": "audits/C172_SHARED_HEAD_SPIKE_20261002",
+  "tag": "c201refilm"
+ },
+ {
+  "family": "primate",
+  "name": "Capuchin",
+  "nativeDir": "audits/SPIKE_REFILM_20261002/capuchin",
+  "note": "SUPERSEDED by the 2026-10-03 acceptance",
+  "batch": "audits/C172_SHARED_HEAD_SPIKE_20261002",
+  "tag": "c201refilm"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Moorhen",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/04-moorhen",
+  "note": "whole in reaction and late idle (C211 source repaint)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Bittern",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/07-bittern",
+  "note": "HELD: Codex reproduced a texture-independent walk fold (ARAP folded triangles) on this geometry; the earlier painter-texture native pass did not hit it",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Condor",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/08-condor",
+  "note": "whole in reaction and late idle (C211 source repaint)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Turkey",
+  "nativeDir": "audits/ISLANDS_C211_20261002/09-turkey/native",
+  "note": "whole after the remainder-island repair (C211 source repaint)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Grouse",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/10-grouse",
+  "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (11.7% > 5%, D28)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Guineafowl",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/12-guineafowl",
+  "note": "whole in reaction and late idle (C211 source repaint)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hornbill",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/20-hornbill",
+  "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (35.6% > 5%, D28)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Parrot",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/21-parrot",
+  "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (40.4% > 5%, D28)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Weaverbird",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/24-weaverbird",
+  "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (10% > 5%, D28)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "quadruped",
+  "name": "Marine Iguana",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/13-marine-iguana",
+  "note": "whole in reaction and late idle (sprawler profile + Codex C204 pinna review)",
+  "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+  "tag": "g2c196p"
+ },
+ {
+  "family": "quadruped",
+  "name": "Giraffe",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/14-giraffe",
+  "note": "duplicate of the C196 acceptance (pinna re-score run)",
+  "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+  "tag": "g2c196p"
+ },
+ {
+  "family": "quadruped",
+  "name": "Banteng",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/16-banteng",
+  "note": "duplicate of the C196 acceptance (pinna re-score run)",
+  "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+  "tag": "g2c196p"
+ },
+ {
+  "family": "quadruped",
+  "name": "Eland",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/04-eland",
+  "note": "whole in reaction and late idle (C223 ungulate correction)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hartebeest",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/06-hartebeest",
+  "note": "whole in reaction and late idle (C223 ungulate correction)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223"
+ },
+ {
+  "family": "quadruped",
+  "name": "Reindeer",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/11-reindeer",
+  "note": "whole in reaction and late idle (C223 ungulate correction)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Sheep",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/16-wild-sheep",
+  "note": "whole in reaction and late idle (C223 ungulate correction)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Grouse",
+  "nativeDir": "audits/SUCCESSORS_C221_20261002/grouse",
+  "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)",
+  "batch": "audits/C183_ISLAND_AUTHORING_20261002",
+  "tag": "c221succ"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hornbill",
+  "nativeDir": "audits/SUCCESSORS_C221_20261002/hornbill",
+  "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)",
+  "batch": "audits/C183_ISLAND_AUTHORING_20261002",
+  "tag": "c221succ"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Parrot",
+  "nativeDir": "audits/SUCCESSORS_C221_20261002/parrot",
+  "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)",
+  "batch": "audits/C183_ISLAND_AUTHORING_20261002",
+  "tag": "c221succ"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Weaverbird",
+  "nativeDir": "audits/SUCCESSORS_C221_20261002/weaverbird",
+  "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)",
+  "batch": "audits/C183_ISLAND_AUTHORING_20261002",
+  "tag": "c221succ"
+ },
+ {
+  "family": "fish",
+  "name": "Flounder",
+  "nativeDir": "audits/SUCCESSORS_C221_20261002/flounder",
+  "note": "whole in reaction and late idle on Codex's C222 source-bound join correction (body cracks closed)",
+  "batch": "audits/C183_REMAINING_HOLDS_20261002",
+  "tag": "c221succ"
+ },
+ {
+  "family": "quadruped",
+  "name": "Zebra",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/01-zebra",
+  "note": "HELD: ear-tip flecks float over the lowered head in the late idle; island repair refused at the cap (5.9% > 5%, D28)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223r"
+ },
+ {
+  "family": "quadruped",
+  "name": "Eland",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/04-eland",
+  "note": "duplicate of the C223 acceptance (expanded-pool re-score)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223r"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hartebeest",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/06-hartebeest",
+  "note": "duplicate of the C223 acceptance (expanded-pool re-score)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223r"
+ },
+ {
+  "family": "quadruped",
+  "name": "Reindeer",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/11-reindeer",
+  "note": "duplicate of the C223 acceptance (expanded-pool re-score)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223r"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Sheep",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/16-wild-sheep",
+  "note": "duplicate of the C223 acceptance (expanded-pool re-score)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223r"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wolf",
+  "nativeDir": "audits/ISLANDS_D28_20261002/g2c233-14-wolf/native",
+  "note": "whole after the D28 island repair (cap raised by Dakk 2026-10-02)",
+  "batch": "audits/C186_CREATURE_SUPPLY_20261002",
+  "tag": "g2c233"
+ },
+ {
+  "family": "quadruped",
+  "name": "Jaguar",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/15-jaguar",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C186_CREATURE_SUPPLY_20261002",
+  "tag": "g2c233"
+ },
+ {
+  "family": "quadruped",
+  "name": "Serval",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/16-serval",
+  "note": "SUPERSEDED by the C250 film of Codex's corrected fit",
+  "batch": "audits/C186_CREATURE_SUPPLY_20261002",
+  "tag": "g2c233"
+ },
+ {
+  "family": "quadruped",
+  "name": "Otter",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c233/17-otter",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C186_CREATURE_SUPPLY_20261002",
+  "tag": "g2c233"
+ },
+ {
+  "family": "arachnid",
+  "name": "Spider",
+  "nativeDir": "audits/FILMS_C186_20261002/03-spider-palp",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "brachyuran",
+  "name": "Crab",
+  "nativeDir": "audits/FILMS_C186_20261002/06-crab-source-joins",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "radial",
+  "name": "Brittle Star",
+  "nativeDir": "audits/FILMS_C186_20261002/07-brittle-star-part-ids",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Zebra",
+  "nativeDir": "audits/FILMS_C186_20261002/01-zebra-fallback-ears",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Kudu",
+  "nativeDir": "audits/FILMS_C186_20261002/02-kudu",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gazelle",
+  "nativeDir": "audits/FILMS_C186_20261002/05-gazelle",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Oryx",
+  "nativeDir": "audits/FILMS_C186_20261002/07-oryx-tail-ears",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gaur",
+  "nativeDir": "audits/FILMS_C186_20261002/08-gaur-observed-ears",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit (a tiny attached bluish mark on the shoulder noted)",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Deer",
+  "nativeDir": "audits/FILMS_C186_20261002/09-deer-observed-ears",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Antelope",
+  "nativeDir": "audits/FILMS_C186_20261002/10-antelope-tail",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sheep",
+  "nativeDir": "audits/FILMS_C186_20261002/15-sheep-observed-ears",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Bittern",
+  "nativeDir": "audits/FILMS_C186_20261002/bittern-fit02",
+  "note": "whole in reaction and late idle on Codex's C186 selected fit (C231 far-leg fold repair; the walk fold is gone)",
+  "batch": "audits/FILMS_C186_20261002",
+  "tag": "c186films"
+ },
+ {
+  "family": "annelid",
+  "name": "Earthworm",
+  "nativeDir": "audits/CAST_ATTACK_D31_20261002/01-earthworm-direct",
+  "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)",
+  "batch": "audits/C186_SPECIALIZED_REFERENCES_20261002",
+  "tag": "d31cast"
+ },
+ {
+  "family": "sessile-filter",
+  "name": "Sponge",
+  "nativeDir": "audits/CAST_ATTACK_D31_20261002/02-sponge-direct-anchored",
+  "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)",
+  "batch": "audits/C186_SPECIALIZED_REFERENCES_20261002",
+  "tag": "d31cast"
+ },
+ {
+  "family": "gastropod",
+  "name": "Banana Slug",
+  "nativeDir": "audits/CAST_ATTACK_D31_20261002/04-banana-slug-visible-mouth",
+  "note": "whole in reaction and late idle; fights with the D31 cast attack (merged, I5-certified, develop green)",
+  "batch": "audits/C186_SPECIALIZED_REFERENCES_20261002",
+  "tag": "d31cast"
+ },
+ {
+  "family": "quadruped",
+  "name": "African Wild Dog",
+  "nativeDir": "audits/ISLANDS_C239_20261003/11-african-wild-dog/native",
+  "note": "whole after the remainder-island repair (D28 cap)",
+  "batch": "audits/C192_CREATURE_SUPPLY_20261002",
+  "tag": "g2c239"
+ },
+ {
+  "family": "quadruped",
+  "name": "Giant Otter",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/02-giant-otter",
+  "note": "whole in reaction and late idle (C248)",
+  "batch": "audits/C196_CREATURE_SUPPLY_20261003",
+  "tag": "g2c248"
+ },
+ {
+  "family": "quadruped",
+  "name": "Musk Ox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/07-musk-ox",
+  "note": "whole in reaction and late idle (C248)",
+  "batch": "audits/C196_CREATURE_SUPPLY_20261003",
+  "tag": "g2c248"
+ },
+ {
+  "family": "quadruped",
+  "name": "Bull",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/09-bull",
+  "note": "whole in reaction and late idle (C248)",
+  "batch": "audits/C196_CREATURE_SUPPLY_20261003",
+  "tag": "g2c248"
+ },
+ {
+  "family": "quadruped",
+  "name": "Quoll",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c248/10-quoll",
+  "note": "whole in reaction and late idle (C248)",
+  "batch": "audits/C196_CREATURE_SUPPLY_20261003",
+  "tag": "g2c248"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Ass",
+  "nativeDir": "audits/FILMS_C250_20261003/wild-ass",
+  "note": "whole in reaction and late idle on Codex's selected fit (the loose hoof fragment is gone)",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Horse",
+  "nativeDir": "audits/FILMS_C250_20261003/horse",
+  "note": "whole in reaction and late idle on Codex's selected fit",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Serval",
+  "nativeDir": "audits/FILMS_C250_20261003/serval",
+  "note": "whole in reaction and late idle on Codex's selected fit",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "gastropod",
+  "name": "Snail",
+  "nativeDir": "audits/FILMS_C250_20261003/snail",
+  "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "annelid",
+  "name": "Leech",
+  "nativeDir": "audits/FILMS_C250_20261003/leech",
+  "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "bivalve",
+  "name": "Mussel",
+  "nativeDir": "audits/FILMS_C250_20261003/mussel",
+  "note": "whole in reaction and late idle on Codex's selected fit (D31 cast attack)",
+  "batch": "audits/FILMS_C250_20261003",
+  "tag": "c250films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Civet",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/08-civet",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "quadruped",
+  "name": "Stoat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/09-stoat",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "quadruped",
+  "name": "Chipmunk",
+  "nativeDir": "audits/ISLANDS_C256_20261003/11-chipmunk/native",
+  "note": "whole after the remainder-island repair",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hamster",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/17-hamster",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "quadruped",
+  "name": "Tasmanian Devil",
+  "nativeDir": "audits/ISLANDS_C256_20261003/21-tasmanian-devil/native",
+  "note": "whole after the remainder-island repair",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "quadruped",
+  "name": "Pika",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c256/23-pika",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_A_20261003",
+  "tag": "g2c256"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Plover",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/03-plover",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Partridge",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/04-partridge",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Rooster",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/05-rooster",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Swallow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/08-swallow",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Jay",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/09-jay",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Rhea",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/10-rhea",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "fish",
+  "name": "Snapper",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/18-snapper",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "fish",
+  "name": "Triggerfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/19-triggerfish",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "fish",
+  "name": "Pufferfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/22-pufferfish",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "fish",
+  "name": "Remora",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c258/24-remora",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/C198_CREATURE_SUPPLY_C_20261003",
+  "tag": "g2c258"
+ },
+ {
+  "family": "crustacean-small",
+  "name": "Prawn",
+  "nativeDir": "audits/FILMS_C261_20261003/prawn",
+  "note": "whole in reaction and late idle on Codex's C252/C260 selected fit (foreleg-tip strike)",
+  "batch": "audits/FILMS_C261_20261003",
+  "tag": "c261films"
+ },
+ {
+  "family": "primate",
+  "name": "Capuchin",
+  "nativeDir": "audits/FILMS_C261_20261003/capuchin",
+  "note": "whole in reaction and late idle on Codex's C252/C260 selected fit",
+  "batch": "audits/FILMS_C261_20261003",
+  "tag": "c261films"
+ },
+ {
+  "family": "fish",
+  "name": "Tiger Shark",
+  "nativeDir": "audits/FILMS_C261_20261003/tiger-shark",
+  "note": "whole in reaction and late idle on Codex's C252/C260 selected fit",
+  "batch": "audits/FILMS_C261_20261003",
+  "tag": "c261films"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Pig",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/07-wild-pig",
+  "note": "HELD (RED): held faint (turn3 idle-50/90): head folds ~90deg down, snout driven below the ground plane, near foreleg folds back under the chest",
+  "batch": "audits/C203_CREATURE_SUPPLY_20261004",
+  "tag": "g2c274"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/10-cow",
+  "note": "HELD (RED): held faint: two sharp triangular spikes tear up from the withers, see-through hole on the flank, ear tip detached at the neck",
+  "batch": "audits/C203_CREATURE_SUPPLY_20261004",
+  "tag": "g2c274"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hyrax",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/16-hyrax",
+  "note": "HELD (HOLD-minor): whole in reaction/faint/late idle",
+  "batch": "audits/C203_CREATURE_SUPPLY_20261004",
+  "tag": "g2c274"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Cardinal",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/17-cardinal",
+  "note": "HELD (RED): turn3 victory: attacker body stretches into a twisted ribbon, head lost, wing pulled to a long spike",
+  "batch": "audits/C203_CREATURE_SUPPLY_20261004",
+  "tag": "g2c274"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Sparrow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/18-sparrow",
+  "note": "HELD (HOLD-minor): after island repair (audits/ISLANDS_C274_20261004, 2,445 px shard -> far-wing-root) the floating shard is gone and native PASS",
+  "batch": "audits/C203_CREATURE_SUPPLY_20261004",
+  "tag": "g2c274"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Pigeon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/19-pigeon",
+  "note": "HELD (RED): turn3 victory: neck stretches into a thin S ribbon carrying the head to the raised wing",
+  "batch": "audits/C203_CREATURE_SUPPLY_20261004",
+  "tag": "g2c274"
+ },
+ {
+  "family": "fish",
+  "name": "Cardinalfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c274/23-cardinalfish",
+  "note": "whole in reaction, faint and late idle",
+  "batch": "audits/C203_CREATURE_SUPPLY_20261004",
+  "tag": "g2c274"
+ },
+ {
+  "family": "quadruped",
+  "name": "Capybara",
+  "nativeDir": "audits/ISLANDS_C274_20261004/02-capybara/native",
+  "note": "whole after the remainder-island repair",
+  "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
+  "tag": "g2c275"
+ },
+ {
+  "family": "quadruped",
+  "name": "Grizzly Bear",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/08-grizzly-bear",
+  "note": "whole in reaction, faint and late idle",
+  "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
+  "tag": "g2c275"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Toucan",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/11-toucan",
+  "note": "HELD (RED): victory neck stretches into a yellow ribbon",
+  "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
+  "tag": "g2c275"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Duck",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/14-duck",
+  "note": "HELD (RED): victory neck ribbon",
+  "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
+  "tag": "g2c275"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Stork",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/16-stork",
+  "note": "HELD (RED): crown/eye piece separates from the face with a gap",
+  "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
+  "tag": "g2c275"
+ },
+ {
+  "family": "fish",
+  "name": "Arapaima",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/17-arapaima-framing02",
+  "note": "HELD (HOLD): victory: pectoral strand tears off below the gill",
+  "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
+  "tag": "g2c275"
+ },
+ {
+  "family": "fish",
+  "name": "Angelfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/20-angelfish",
+  "note": "HELD (HOLD): defender dorsal filament floats detached above the fin",
+  "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
+  "tag": "g2c275"
+ },
+ {
+  "family": "fish",
+  "name": "Tuna",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/21-tuna",
+  "note": "HELD (HOLD): pale rectangular holes on the defender flank",
+  "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
+  "tag": "g2c275"
+ },
+ {
+  "family": "fish",
+  "name": "Swordfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c275/23-swordfish-framing02",
+  "note": "HELD (RED): victory: bill detaches and floats free of the head, pectoral chunk floats loose",
+  "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
+  "tag": "g2c275"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hyrax",
+  "nativeDir": "audits/C208_REPAIRS_20261004/native-16-hyrax",
+  "note": "whole after Codex C287 source joins (chest seam and chin flap closed)",
+  "batch": "audits/C208_REPAIRS_20261004",
+  "tag": "c287"
+ },
+ {
+  "family": "fish",
+  "name": "Tuna",
+  "nativeDir": "audits/C208_REPAIRS_20261004/native-21-tuna",
+  "note": "whole after Codex C287 fish-seams (flank holes closed)",
+  "batch": "audits/C208_REPAIRS_20261004",
+  "tag": "c287"
+ },
+ {
+  "family": "fish",
+  "name": "Arapaima",
+  "nativeDir": "audits/C208_REPAIRS_20261004/native-17-arapaima-framing02",
+  "note": "HELD (C287 successor): throat notch opens when the victory head lifts; nape hairline; tail-fin sliver",
+  "batch": "audits/C208_REPAIRS_20261004",
+  "tag": "c287"
+ },
+ {
+  "family": "fish",
+  "name": "Swordfish",
+  "nativeDir": "audits/C208_REPAIRS_20261004/native-23-swordfish-framing02",
+  "note": "HELD (C287 successor): bill floats free of the head in victory",
+  "batch": "audits/C208_REPAIRS_20261004",
+  "tag": "c287"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c132references-04-cat",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snow Petrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c173holdsourcerepaints-snow-petrel",
+  "note": "HELD (HOLD): dark tear lines on the wing",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Red Fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c198creaturesupplya-01-red-fox",
+  "note": "HELD (HOLD): original C198 fit: head folds over the nape in the faint",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Bear",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c198creaturesupplya-05-bear",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Albatross",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c198creaturesupplyc-11-albatross",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Impala",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-06-impala",
+  "note": "HELD (RED): a horn piece floats free above both fighters (detached horn island)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "River Otter",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-10-river-otter",
+  "note": "HELD (HOLD): see-through slivers at the attacker mouth and across the chest in the strike",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wolverine",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-12-wolverine",
+  "note": "HELD (HOLD): fur shred tears off the throat during the rear",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Fishing Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-15-fishing-cat",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Spotted Hyena",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-16-spotted-hyena",
+  "note": "HELD (HOLD): defender back splits into a step/notch at the shoulder hump in the faint",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-22-cat",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Pig",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupply-07-wild-pig",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupply-10-cow",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Cardinal",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupply-17-cardinal",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Sparrow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupply-18-sparrow",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Pigeon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupply-19-pigeon",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Toucan",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-11-toucan",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Duck",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-14-duck",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Stork",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-16-stork",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "fish",
+  "name": "Arapaima",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-17-arapaima-framing02",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "fish",
+  "name": "Angelfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-20-angelfish",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "fish",
+  "name": "Swordfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-23-swordfish-framing02",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "fish",
+  "name": "Swordfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-23-swordfish",
+  "note": "HELD (RED): bill detaches and floats, fin chunks loose",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snow Petrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c101-20-snow-petrel",
+  "note": "HELD (HOLD): white flag sliver on the defender back, wing tear line",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Lemming",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c106-24-lemming",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Caribou",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c110-17-caribou",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Tahr",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c114-17-tahr",
+  "note": "HELD (HOLD): magenta keying fringe on the mane/back edges survives the AI finish",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Loon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c114-22-loon",
+  "note": "HELD (HOLD): tail end becomes a hooked dark strand in victory",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sea Otter",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c118-04-sea-otter",
+  "note": "HELD (HOLD): see-through slit at the open mouth and across the chest in the strike (otter mouth class)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Colugo",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c118-09-colugo",
+  "note": "HELD (HOLD): see-through slit across eye/mouth in the strike, chest sliver (mouth class)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Caribou",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c136repairs-12-caribou",
+  "note": "HELD (HOLD): small see-through dots on both flanks (g2c110 packet accepted instead)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "insect",
+  "name": "Bee",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c136targetededits-21-bee",
+  "note": "HELD (RED): abdomen stretches into a ribbon in victory, a wing tears down to the ground",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Elk",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c59-01-elk",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Egret",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c72-12-egret",
+  "note": "HELD (RED): body splits at the base of the neck in victory, white slivers float",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Falcon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c76-11-falcon",
+  "note": "HELD (RED): victory stretches neck and wing into a ribbon (bird victory class)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Prairie Dog",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c83-23-prairie-dog",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "River Otter",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c90-24-river-otter",
+  "note": "HELD (HOLD): same open-mouth slit and chest sliver",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Nilgai",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c95-17-nilgai",
+  "note": "HELD (HOLD): defender back shows a step at the shoulder in the faint (hyena class)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Petrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c98-17-petrel",
+  "note": "HELD (HOLD): thin dark strand hangs from the tail tip in victory",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Pig",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c98-21-pig",
+  "note": "HELD (HOLD): loose sliver above the ear and an ear flap in the strike",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2referencesc62-05-cat",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ }
+]

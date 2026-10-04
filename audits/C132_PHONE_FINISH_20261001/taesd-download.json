@@ -1,0 +1,24 @@
+{
+  "model": "madebyollin/taesd",
+  "revision": "614f76814bbe30edbe2e627ace1c2234c81a2c0e",
+  "files": [
+    {
+      "path": "taesd_encoder.safetensors",
+      "bytes": 4895600,
+      "sha256": "160d90c61c3a5ce50fe2cbe6404b3429f5763772d61b38523cc37e1525b4e19f",
+      "url": "https://huggingface.co/madebyollin/taesd/resolve/614f76814bbe30edbe2e627ace1c2234c81a2c0e/taesd_encoder.safetensors"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1315,
+      "sha256": "929bdbabc7bbfa10e647b90767e962dbf8823537f9cc86e648fef334bed3bd10",
+      "url": "https://huggingface.co/madebyollin/taesd/resolve/614f76814bbe30edbe2e627ace1c2234c81a2c0e/README.md"
+    },
+    {
+      "path": "config.json",
+      "bytes": 597,
+      "sha256": "3ebefd1aa96ac474cc6430fe6ea81febccf7ee82461715691ee9315c884adeef",
+      "url": "https://huggingface.co/madebyollin/taesd/resolve/614f76814bbe30edbe2e627ace1c2234c81a2c0e/config.json"
+    }
+  ]
+}

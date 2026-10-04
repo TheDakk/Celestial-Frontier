@@ -1,0 +1,82 @@
+{
+  "name": "Mountain Lizard",
+  "family": "quadruped",
+  "species": {
+    "name": "Mountain Lizard",
+    "aspect": 4.5,
+    "headFrac": 0.24,
+    "eyes": "normal",
+    "posture": "sprawling",
+    "mustRead": [
+      "tail longer than head and body combined",
+      "splayed sprawling legs with long clawed toes",
+      "flattened granular-scaled body"
+    ],
+    "note": "Not a specific taxon - read as a generic alpine rock lizard (lacertid type)."
+  },
+  "genome": {
+    "seed": 3082086362,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 10,
+    "body": 15,
+    "loco": 0,
+    "trait": 12,
+    "size": 5,
+    "diet": 4,
+    "head": 2,
+    "limbs": 0,
+    "skin": 0,
+    "tail": 0,
+    "pattern": 6,
+    "eyes": 1,
+    "behavior": 9,
+    "habitat": 4,
+    "detail": 2,
+    "accent": 4,
+    "temper": 7,
+    "sense": 4,
+    "repro": 6,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Mountain Lizard"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mountain Lizard\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3082086362\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "index": 175,
+  "profile": {
+    "id": "lizard",
+    "names": [
+      "Monitor Lizard",
+      "Anole",
+      "Gecko",
+      "Skink",
+      "Alligator Lizard",
+      "Mountain Lizard",
+      "Tegu",
+      "Wall Lizard",
+      "Lizard",
+      "Whiptail",
+      "Agama",
+      "Iguana",
+      "Land Iguana",
+      "Coastal Lizard",
+      "Komodo Dragon",
+      "Gila Monster",
+      "Frilled Lizard"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "tail"
+    ],
+    "notes": "Reptile-specific absence and skin declarations required."
+  }
+}

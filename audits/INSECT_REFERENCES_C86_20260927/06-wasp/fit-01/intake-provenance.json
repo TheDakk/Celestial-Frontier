@@ -1,0 +1,64 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "REFUSED",
+  "sourceHead": "73cbbcdb11dd4d4586eb25c614279010d839dfbf",
+  "helperSha256": "a77ac9896f3414c540cf5fbd9e55418f6dcd58d7658ec3bfa42983c4a8c6437d",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp/master.png",
+      "sha256": "12e63984cf520e264a89d3f03c5de338f239c13bd5bc4a2bf947aebf7ea55259"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp/authoring.json",
+      "sha256": "d343dc4fa665a939a14c7d926b71dbf4439c7ca548f92f529ff3eb74a90149a1"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp/subject-source.json",
+      "sha256": "40f442869665e989355028a7a3baaa8cd3c7699ace4b11eb6be3daaadf400335"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp/presence.json",
+      "sha256": "dd02dd32267d60f29fe8517a616ed653763837ed7407dc4235856f27733a6768"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "unchangedInputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp/master.png",
+      "sha256": "12e63984cf520e264a89d3f03c5de338f239c13bd5bc4a2bf947aebf7ea55259",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp/authoring.json",
+      "sha256": "d343dc4fa665a939a14c7d926b71dbf4439c7ca548f92f529ff3eb74a90149a1",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp/subject-source.json",
+      "sha256": "40f442869665e989355028a7a3baaa8cd3c7699ace4b11eb6be3daaadf400335",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp/presence.json",
+      "sha256": "dd02dd32267d60f29fe8517a616ed653763837ed7407dc4235856f27733a6768",
+      "unchanged": true
+    }
+  ],
+  "refusal": {
+    "stage": "family-record",
+    "error": "Error: Anatomy inventory: invalid folded leg declaration\n    at resolveAnatomyInventory (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs:29:141)\n    at familyContractForRecord (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contracts.mjs:4279:102)\n    at checkFamilyGeometry (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:22:41)\n    at sealFamilyRecord (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:48:36)\n    at sealPortableFamilyRecord (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/portable-record-writer.mjs:20:75)\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/intake-authored.mjs:69:22"
+  }
+}

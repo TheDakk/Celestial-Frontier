@@ -1,0 +1,24 @@
+{
+ "id": "c196creaturesupply-22-carrion-beetle",
+ "family": "insect",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonP",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 1% paint (reference 25%)"
+   ]
+  }
+ ]
+}

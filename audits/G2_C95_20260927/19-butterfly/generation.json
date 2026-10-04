@@ -1,0 +1,13 @@
+{
+  "id": "19-butterfly",
+  "name": "Butterfly",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-99884abc-4ab5-4e5a-9ffd-28cc9e45dbf2.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "255d95fef85bed773495055720729a8538358a39c019c6683f46575eaa8c37c8",
+  "bytes": 1439905,
+  "promptSha256": "88d303a7a40e5d6ecbcd7280b7a50681be81ff1bb26910551c89cdb6269096c0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,117 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "02-sponge",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+ "subjectSourceSha256": "0b6dc1abb8bd45945961981cc11128e07e7b183425701a77792fc226445438c7",
+ "identity": {
+  "name": "Sponge",
+  "family": "sessile-filter",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sponge\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1852297885\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 1852297885,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "codex-ref-02-sea-squirt",
+  "authoringSha256": "f516bedde1816b69ad00f54ebda433f7ab911b70022bce1fed31dfb0edb90c8c",
+  "masterSha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875"
+ },
+ "habitat": {
+  "profileId": "sponge",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "8aa5239e8a4dde06488c8eeca7adcffe8dcd639f6e6e309097d0a45176be714b",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "warty",
+  "source": "species group sponge (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0144,
+     "class": "top",
+     "attach": {
+      "x": 208.5,
+      "y": 89,
+      "relX": 0.49,
+      "relY": 0
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0094,
+     "class": "top",
+     "attach": {
+      "x": 283,
+      "y": 189,
+      "relX": 1.01,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0111,
+     "class": "limb-down",
+     "attach": {
+      "x": 137,
+      "y": 190.5,
+      "relX": -0.01,
+      "relY": 0.42
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0084,
+     "class": "front",
+     "attach": {
+      "x": 251,
+      "y": 313.5,
+      "relX": 0.78,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0207,
+     "class": "rear",
+     "attach": {
+      "x": 201.9,
+      "y": 328.1,
+      "relX": 0.44,
+      "relY": 0.99
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 1,
+    "front": 1,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "codex-ref-02-sea-squirt",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

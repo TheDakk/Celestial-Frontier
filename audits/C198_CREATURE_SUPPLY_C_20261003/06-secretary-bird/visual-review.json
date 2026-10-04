@@ -1,0 +1,28 @@
+{
+  "name": "Secretary Bird",
+  "masterSha256": "6d31085268258a90672c5efd95196be1d05dc1137985730c203c117ce7914f02",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original visual inspection by parent Codex: Two long independently visible legs and complete toes; head plumes and long tail intact. Far wing/root hidden; near shoulder ownership needs author review. Full-size feather textures crisp, every tip with generous margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 197,
+      "y0": 202,
+      "x1": 989,
+      "y1": 1035
+    },
+    "margins": {
+      "left": 197,
+      "right": 264,
+      "top": 202,
+      "bottom": 218
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

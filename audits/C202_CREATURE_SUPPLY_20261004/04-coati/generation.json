@@ -1,0 +1,14 @@
+{
+  "id": "04-coati",
+  "name": "Coati",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-dc8e68c7-1cbf-4cf8-88b1-735082f78985.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6c48d5b218fe22a2a451bdd8a1149126ca13e453a7d105b2f25adbb331f0c026",
+  "bytes": 1347048,
+  "promptSha256": "3d11fee5c37d05fa2374ce16c00073a4ef11a82dd06e9aa11efa8dfcdd92a7eb",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

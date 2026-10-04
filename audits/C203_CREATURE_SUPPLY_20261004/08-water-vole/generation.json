@@ -1,0 +1,14 @@
+{
+  "id": "08-water-vole",
+  "name": "Water Vole",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-0d11dc92-8331-482a-bc83-d3cdb46351a5.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a39e6f49d0f702b79c0cb9392be606260092ad910d37969a66411354a20cab3c",
+  "bytes": 1346208,
+  "promptSha256": "ff9d2e3a68e170993ace627507d5bb49c5c547e681048be9681a9b0176c864d9",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

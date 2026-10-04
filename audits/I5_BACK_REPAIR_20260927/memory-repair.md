@@ -1,0 +1,13 @@
+# I5 product memory repair — 2026-09-27
+
+The `compact-epoch` on signed87557292 stopped at calibration1: desktop final lazy-control foreground service did not supply its rendering turn within30seconds. The phone completed; its raw reduction exposed real memory/resource overages and an error-publication observation accepted before the painted sibling settled. No calibration2 or certification; no resume. All stopped raw bytes are retained. The runtime `instrument/shared` dependency symlink is ignored; its target was this lane's `port/v2` and its imported bytes are bound by the manifest/invariants.
+
+The product now decodes masters only after acquiring its render slot, drops default-app master/label/mask buffers when the render batch drains, and preserves cached card PNG bytes. Explicit authoring LRU use is unchanged. PNG base64 encoding uses a flat native string with a byte-for-byte oracle. Broker and painted thumbnails share the existing device cache/pixel/byte caps; leased broker images remain protected. Reveal input listeners live only while another modal blocks a queued reveal; dispose cancels pending input pulses.
+
+The v2 error publication predicate now waits for both actual owners. The independently evaluated raw painted rows must be settled as well as broker error rows. No limit, timeout, outcome or v1 authority changed. The old publication is rejected, not rewritten.
+
+Focused native first-list heap captures are diagnostics, not calibrated evidence: backing storage11686714→9371177bytes, heap10165848→9779676bytes, retained painted buffers2359296→0. Full snapshots remain in `/private/tmp` at the recorded hashes. The retained PCM left/right buffers account for6144000bytes before this repair; C105 asks the soundscape owner for a real admission/lifetime fix. That separate issue remains open.
+
+Controls: painted idle-clear removal fails OWNERSHIP; reserving zero sibling cache capacity exceeds the original combined cap; restoring permanent reveal listeners fails idle ownership; removing painted publication admission accepts the old premature witness and fails. The first reveal-mutant invocation matched no test and is retained as invalid diagnostic evidence; the corrected invocation executes and fails. No certificate is claimed.
+
+Sixty focused product tests and67 v2 instrument tests pass. Root validate/determinism passes. The320-second hidden desktop probe supplies arm→rAF→later-task within105ms on return, so hidden duration alone did not reproduce the stopped epoch. V2 stopped foreground errors now retain their last raw sample in the diagnostic message; classifier/deadline/cleanup are unchanged, and the injected pending-timeout control proves retention plus cleanup.

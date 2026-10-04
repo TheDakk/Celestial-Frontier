@@ -1,0 +1,14 @@
+{
+  "id": "16-land-iguana",
+  "name": "Land Iguana",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-61ac6cc7-dcce-46b9-99d8-fab554b67dd0.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b2dd574965c5dec8535760ec0bae208f4ba17952b96f09f7fb4011f8e4726607",
+  "bytes": 1079537,
+  "promptSha256": "3d5d44051722fc0f4aafef66fa050d2a169758dcc9655707707b258521e049d6",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

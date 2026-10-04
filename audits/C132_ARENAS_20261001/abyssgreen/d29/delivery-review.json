@@ -1,0 +1,164 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "abyssgreen",
+  "biome": "abyssgreen",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "abyssgreen"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "abyssgreen"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "abyssgreen"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-far.generation.json",
+      "sha256": "b332e402722446a61bddec6739fd7480c6e81e25c57c35ff9501efa480be2762"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-mid.generation.json",
+      "sha256": "e0d188c7415026a6700e9f51b0981fba0b63c0e7e69f67a54fdf5b4a4f3b024a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-near.generation.json",
+      "sha256": "12c23020479cef03112972cfe48aea4b90f3e33bb67022ea765e4184d7c41275"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-composed-review.png",
+      "sha256": "963b7680f00f32b728568ff080659aa90d6bfdde045ff69ac9e52c748ea0603b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-far.png",
+      "sha256": "e55c659e3f98a987bb39fbecf20e0fd140d94456d6af361bd054c0748d90d569"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-mid.png",
+      "sha256": "3d5e435133c8be139479c6a986eed717ab4eaad6b9b98a87f6d68bcc93f9d87f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-near.png",
+      "sha256": "92af4909b92fd76a0f87316c668a6c8beb8dc566ecfb91ba04fad4f270ca5aa7"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/visual-notes.d29.json",
+      "sha256": "9ef8cbc8aacb7d72aaaed240e52e2c623a0a07b2671216aac197a5c4b8421440"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-manifest.json",
+      "sha256": "57ced51f55571a24707c32611234112af7b8efecf42d136c79e32d63f5f7a165"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-recipe.json",
+      "sha256": "cc125a3ebcd1c83d85933c8bf00461c3b0da6b1142606cee34c4e128a3a11a8d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-far.generation.json",
+      "sha256": "b332e402722446a61bddec6739fd7480c6e81e25c57c35ff9501efa480be2762"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/authoring-prompts/arena-far.prompt.txt",
+      "sha256": "bd3d5cd007bdf09a466b0cc21a19fa58c2f569a1c1db636e9210af5f12dd41ed"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-mid.generation.json",
+      "sha256": "e0d188c7415026a6700e9f51b0981fba0b63c0e7e69f67a54fdf5b4a4f3b024a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/authoring-prompts/arena-mid.prompt.txt",
+      "sha256": "d92b834cb63bd660ffb400244308cca45a901a7330a77ae72333006e17c31303"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/keyed/arena-mid.png",
+      "sha256": "aada22f925d9d0b5be1afd2597796126915acb83f2776b0121faa3b5be8ecd05"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/arena-near.generation.json",
+      "sha256": "12c23020479cef03112972cfe48aea4b90f3e33bb67022ea765e4184d7c41275"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/authoring-prompts/arena-near.prompt.txt",
+      "sha256": "4b811b748b80baa9f308f71e40de8af54a82a5a9d2c59e87b3a7411969e02d2d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssgreen/keyed/arena-near.png",
+      "sha256": "2a0d675b834f6f34e951a085aba3cbff4d1c5502fad32cf8a5dab6b1038adce8"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/abyssgreen/visual-notes.d29.json",
+    "findings": [
+      "All originals and native1672×941 composition inspected. Dense olive atmosphere and barren mineral ground follow the greenhouse family, with open static stands and no flora/fauna or celestial bodies observed.",
+      "A brighter sky opening appears toward upper right while the template requests upper-left authoring light; layer lighting needs independent review. NEAR is browner/finer than the MID and makes a clear bottom seam.",
+      "Side ridge edges retain subtle green/mauve traces; the strongly colored atmosphere needs combatant readability review. Mechanical clearance does not supply acceptance."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

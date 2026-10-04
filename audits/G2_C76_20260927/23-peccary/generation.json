@@ -1,0 +1,13 @@
+{
+  "id": "23-peccary",
+  "name": "Peccary",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-83a973a6-9093-4b4c-9b5b-051a41b42403.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4f440a245469df189a5fcf3e1d97cad01ba2dbdede8addccfdbecba7356ca98d",
+  "bytes": 1327522,
+  "promptSha256": "2e5cd684107ca3b19ae6c490dc70e1aa76bd50c4555916e1b0f4322805dd3361",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,12 @@
+✔ POSIX and Windows writers are relative, relocatable and refuse escapes (0.399375ms)
+✔ normalization precedes hashing without mutating an old record (5.564917ms)
+✔ source symlink into another repository refuses (0.601834ms)
+✔ quadruped reseal removes historical recipe metadata before sealing a portable source (1.606041ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 129.045292

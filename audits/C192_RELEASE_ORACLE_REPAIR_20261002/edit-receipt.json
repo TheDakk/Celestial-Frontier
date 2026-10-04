@@ -1,0 +1,38 @@
+{
+  "status": "CANDIDATE_NOT_GATE_RETRY",
+  "changes": [
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "beforeSha256": "cd0615f3b96f8c918caffa62ca213e8257ce44b3aba5d9da545a7782bcc1ed88",
+      "afterSha256": "ac16c248da3dd5c938ddf816bfd0ba670e69cdef0c8f586ca593259b114bc357",
+      "exactUniqueReplacements": 1
+    },
+    {
+      "path": "port/v2/tools/glassmatrix.mjs",
+      "beforeSha256": "b480d4c0befacf2ca0add2e985f896ab79bb5eefb312925335db445d3ea577a6",
+      "afterSha256": "66d69486a50339d6991553c0e1ffb2cbe6c6208bc7762373450c8e13a721f078",
+      "exactUniqueReplacements": 3
+    },
+    {
+      "path": "port/v2/tests/guide-release.test.ts",
+      "beforeSha256": "16939b8e58c689d93dca534bfe339e603586a69597b2618a237bf4834e33b5fa",
+      "afterSha256": "4004a0d0b514500a040f9d3075602117d7c6d1c1ee3c1d99d741a5f3376ff9fa",
+      "exactUniqueReplacements": 2
+    },
+    {
+      "path": "port/v2/tests/exceptional-crafting-evidence-contract.test.ts",
+      "beforeSha256": "34b213efbf140a325d3248947f848fa0503657cc30ce77efd7bb505be6ecd4c6",
+      "afterSha256": "8b4f9624372e712e6231456b86b9948ac46c802867b0a969cdb734a8a3480c6c",
+      "exactUniqueReplacements": 1
+    },
+    {
+      "path": "port/v2/tests/slicesmoke-sixth-red-contract.test.ts",
+      "beforeSha256": "ff7148e97b744ad78ba1808d3fbeb770551cf0c417811b99f6d5b3db8203f90d",
+      "afterSha256": "d002e903422fc0211da5877cc7f1f1003eda64c596572a25c437295575af1cc8",
+      "exactUniqueReplacements": 11
+    }
+  ],
+  "runtimeProductChanged": false,
+  "epochRetries": 0,
+  "developRetries": 0
+}

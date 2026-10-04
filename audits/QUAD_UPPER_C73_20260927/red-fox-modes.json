@@ -1,0 +1,12 @@
+[
+  {
+    "mode": "rest",
+    "status": "REFUSED",
+    "error": "Error: Layered stance reach: zero-displacement composite refuses {\"ms\":54.36666666666667,\"idleFraction\":0.46875,\"displacement\":0,\"error\":\"Error: Contact: approach:trot@54.36666666666667 exceeds scale compression bound\"}"
+  },
+  {
+    "mode": "observed",
+    "status": "REFUSED",
+    "error": "Error: Layered stance reach: zero-displacement composite refuses {\"ms\":54.36666666666667,\"idleFraction\":0.46875,\"displacement\":0,\"error\":\"Error: Contact: approach:trot@54.36666666666667 exceeds scale compression bound\"}"
+  }
+]

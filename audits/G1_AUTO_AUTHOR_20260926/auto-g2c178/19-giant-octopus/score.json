@@ -1,0 +1,14 @@
+{
+ "id": "19-giant-octopus",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 7.6% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 31.3% paint that no reference appendage lands on",
+  "missing-anatomy: part arm4-tip (arm4Seg2) covers 12% paint (reference 72%)",
+  "missing-anatomy: part arm7-base (arm7Seg0) covers 23% paint (reference 97%)",
+  "missing-anatomy: part arm1-middle (arm1Seg1) covers 12% paint (reference 95%)",
+  "unexplained-anatomy: 22.0% of the paint lies away from the body and in no part (reference 2.9%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,63 @@
+{
+  "sourceSha256": {
+    "tools/local-image-generation/gpu-profile.mjs": "741865d536ed0a6c2490291e94ab1f2bea37a44553d22294dfc23547b70ff088",
+    "tools/local-image-generation/gpu-profile.test.mjs": "3da6e53a38f4f11857a7cc7bf4701cd1f9c5c1ac0872d616dc92e09a3d4057eb",
+    "tools/local-image-generation/proof-server.mjs": "812a9a5e887e93d07d539f217b7aeb935e26c5adae101ceef9f76aa790cd14aa",
+    "tools/local-image-generation/run-browser-proof.mjs": "ed42d0643395a5d7eb06c58c466075d9ac17862d84cccdbfd02ce16409cc9347"
+  },
+  "steps": [
+    {
+      "name": "syntax-gpu-profile",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/gpu-profile.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-gpu-profile.test",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/gpu-profile.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-proof-server",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/proof-server.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-run-browser-proof",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/run-browser-proof.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused",
+      "command": [
+        "node",
+        "--test",
+        "tools/local-image-generation/gpu-profile.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "d24a1b2ee568d938721a27715dfa48b018775d2ea7d19f1f603fd1dff01e5359"
+    }
+  ],
+  "sourceUnchanged": true,
+  "status": "PASS",
+  "finishedAt": "2026-09-09T06:14:46.782751+00:00"
+}

@@ -1,0 +1,65 @@
+[
+ {
+  "id": "04-elk",
+  "name": "Elk",
+  "family": "quadruped",
+  "packet": "audits/C203_CREATURE_SUPPLY_20261004/04-elk",
+  "master": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Keep complete branching antlers, both actual ears, four narrow cloven hoof chains and a naturally short tail.",
+   "priorSources": [
+    {
+     "pilot": "audits/C196_CREATURE_SUPPLY_20261003/pilot.json",
+     "id": "05-elk",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/05-elk/master.png",
+     "packet": "audits/C196_CREATURE_SUPPLY_20261003/05-elk"
+    },
+    {
+     "pilot": "audits/G2_C59_20260926/pilot.json",
+     "id": "01-elk",
+     "master": "audits/G2_C59_20260926/01-elk/master.png",
+     "packet": "audits/G2_C59_20260926/01-elk"
+    }
+   ]
+  }
+ },
+ {
+  "id": "05-moose",
+  "name": "Moose",
+  "family": "quadruped",
+  "packet": "audits/C203_CREATURE_SUPPLY_20261004/05-moose",
+  "master": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Keep complete palmated antlers and long muzzle/dewlap; long legs and short tail remain species accurate.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C59_20260926/pilot.json",
+     "id": "02-moose",
+     "master": "audits/G2_C59_20260926/02-moose/master.png",
+     "packet": "audits/G2_C59_20260926/02-moose"
+    }
+   ]
+  }
+ },
+ {
+  "id": "15-tahr",
+  "name": "Tahr",
+  "family": "quadruped",
+  "packet": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr",
+  "master": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve shaggy brown coat and short recurved horns; true short tail and all four cloven hooves remain distinct.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C114_20260927/pilot.json",
+     "id": "17-tahr",
+     "master": "audits/G2_C114_20260927/17-tahr/master.png",
+     "packet": "audits/G2_C114_20260927/17-tahr"
+    }
+   ]
+  }
+ }
+]

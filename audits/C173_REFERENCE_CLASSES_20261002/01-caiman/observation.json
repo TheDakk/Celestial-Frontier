@@ -1,0 +1,138 @@
+{
+  "schema": "cf.c173-reference-observation/v1",
+  "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+  "source": "audits/C196_QUADRUPED_ORIGINALS_20261002/01-caiman",
+  "sourceMasterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "fullSizeInspected": true,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "landmarksPx": {
+    "root": [
+      717,
+      612
+    ],
+    "pelvis": [
+      604,
+      610
+    ],
+    "spine": [
+      717,
+      592
+    ],
+    "chest": [
+      845,
+      610
+    ],
+    "neck": [
+      945,
+      581
+    ],
+    "head": [
+      1047,
+      550
+    ],
+    "jaw": [
+      1061,
+      582
+    ],
+    "hindNearRoot": [
+      589,
+      596
+    ],
+    "hindNearKnee": [
+      591,
+      658
+    ],
+    "hindNearAnkle": [
+      523,
+      717
+    ],
+    "hindNearPaw": [
+      552,
+      750
+    ],
+    "hindFarRoot": [
+      650,
+      666
+    ],
+    "hindFarKnee": [
+      639,
+      702
+    ],
+    "hindFarAnkle": [
+      665,
+      721
+    ],
+    "hindFarPaw": [
+      698,
+      730
+    ],
+    "foreNearRoot": [
+      850,
+      628
+    ],
+    "foreNearKnee": [
+      811,
+      674
+    ],
+    "foreNearAnkle": [
+      829,
+      720
+    ],
+    "foreNearPaw": [
+      849,
+      750
+    ],
+    "foreFarRoot": [
+      916,
+      668
+    ],
+    "foreFarKnee": [
+      945,
+      703
+    ],
+    "foreFarAnkle": [
+      965,
+      723
+    ],
+    "foreFarPaw": [
+      995,
+      733
+    ],
+    "tail0": [
+      555,
+      612
+    ],
+    "tail1": [
+      430,
+      644
+    ],
+    "tail2": [
+      287,
+      675
+    ],
+    "tail3": [
+      102,
+      728
+    ]
+  },
+  "sourceVisibleTerminalFeet": [
+    "hindNearPaw",
+    "hindFarPaw",
+    "foreNearPaw",
+    "foreFarPaw"
+  ],
+  "physicalCoplanarGroundClaim": false,
+  "limitations": [
+    "Far limb roots are placed at the visible emergence boundary beneath the torso, not at invented hidden proximal segments. Internal skeletal attachment location is not proven by the surface painting.",
+    "Four terminal feet are distinct; far toes reach approximately y739/744 and near toes y763/768. These perspective heights are preserved and do not assert four coplanar ground contacts.",
+    "Left and right painted margins are approximately 6.3% and 6.4%, below the requested 8% intake framing; no crop or rescale was applied.",
+    "Closed snout retains small light tooth-like marks along the seam; exact Caiman closed-mouth species anatomy awaits scoring.",
+    "No moving-paint, native performance, or quality acceptance."
+  ],
+  "qualityAccepted": false
+}

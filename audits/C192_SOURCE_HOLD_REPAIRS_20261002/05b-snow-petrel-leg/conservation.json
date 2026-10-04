@@ -1,0 +1,448 @@
+{
+  "schema": "cf.c192-source-conservation/v1",
+  "id": "05b-snow-petrel-leg",
+  "masterSha256": "10a09e9b3436e465c8e32f366031a6ed12d7d310278744e83537456a1d015d37",
+  "authoringSha256": "8519d4e0e35d2773e92d40c17aa191083d4e068deee5dd17a3599dbd0ec276bb",
+  "bindingSha256": "6b445d7059a7efb02c7d8e89c2e38717709a23949e9c639ac0583ffc4b916c10",
+  "keyedRgbaSha256": "ebb28fcd7721174dd7187ad731b6cb2f209688a5e286b5541b9ca13225cad46e",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "unchangedOtherPolygons": true,
+  "unchangedOtherLandmarks": true,
+  "changedOwnership": {
+    "legNearKnee -> root": 1,
+    "root -> legNearKnee": 640,
+    "legNearKnee -> legNearAnkle": 205,
+    "root -> legNearAnkle": 101,
+    "legNearAnkle -> legNearFoot": 33,
+    "legNearFoot -> legNearAnkle": 27,
+    "legNearFoot -> root": 28,
+    "root -> legNearFoot": 4
+  },
+  "originalCap": {
+    "status": "PASS",
+    "wouldMovePixels": 4330,
+    "remainderPixels": 20577,
+    "islands": [
+      {
+        "pixels": 206,
+        "to": "wingFarRoot",
+        "border": {
+          "9": 11,
+          "10": 10,
+          "11": 31
+        }
+      },
+      {
+        "pixels": 12,
+        "to": "neck1",
+        "border": {
+          "8": 5,
+          "9": 6
+        }
+      },
+      {
+        "pixels": 3023,
+        "to": "wingFarRoot",
+        "border": {
+          "10": 77,
+          "11": 152,
+          "12": 16,
+          "13": 115,
+          "14": 42
+        }
+      },
+      {
+        "pixels": 101,
+        "to": "tailFan",
+        "border": {
+          "14": 34,
+          "15": 41
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "wingNearTip",
+        "border": {
+          "14": 2,
+          "15": 2
+        }
+      },
+      {
+        "pixels": 39,
+        "to": "tailFan",
+        "border": {
+          "15": 8
+        }
+      },
+      {
+        "pixels": 893,
+        "to": "tailFan",
+        "border": {
+          "15": 80
+        }
+      },
+      {
+        "pixels": 1,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 1,
+        "to": "legFarKnee",
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "legFarAnkle",
+        "border": {
+          "4": 2
+        }
+      },
+      {
+        "pixels": 11,
+        "to": "legFarAnkle",
+        "border": {
+          "2": 5,
+          "4": 9
+        }
+      },
+      {
+        "pixels": 5,
+        "to": "legNearFoot",
+        "border": {
+          "1": 4,
+          "3": 3
+        }
+      },
+      {
+        "pixels": 33,
+        "to": "legFarFoot",
+        "border": {
+          "2": 6
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "legNearFoot",
+        "border": {
+          "1": 1
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 4354,
+    "remainderPixels": 19861,
+    "islands": [
+      {
+        "pixels": 206,
+        "to": "wingFarRoot",
+        "border": {
+          "9": 11,
+          "10": 10,
+          "11": 31
+        }
+      },
+      {
+        "pixels": 12,
+        "to": "neck1",
+        "border": {
+          "8": 5,
+          "9": 6
+        }
+      },
+      {
+        "pixels": 3023,
+        "to": "wingFarRoot",
+        "border": {
+          "10": 77,
+          "11": 152,
+          "12": 16,
+          "13": 115,
+          "14": 42
+        }
+      },
+      {
+        "pixels": 101,
+        "to": "tailFan",
+        "border": {
+          "14": 34,
+          "15": 41
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "wingNearTip",
+        "border": {
+          "14": 2,
+          "15": 2
+        }
+      },
+      {
+        "pixels": 39,
+        "to": "tailFan",
+        "border": {
+          "15": 8
+        }
+      },
+      {
+        "pixels": 893,
+        "to": "tailFan",
+        "border": {
+          "15": 80
+        }
+      },
+      {
+        "pixels": 1,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 1,
+        "to": "legFarKnee",
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "legFarAnkle",
+        "border": {
+          "4": 2
+        }
+      },
+      {
+        "pixels": 11,
+        "to": "legFarAnkle",
+        "border": {
+          "2": 5,
+          "4": 9
+        }
+      },
+      {
+        "pixels": 17,
+        "to": "legNearAnkle",
+        "border": {
+          "1": 3,
+          "3": 10
+        }
+      },
+      {
+        "pixels": 33,
+        "to": "legFarFoot",
+        "border": {
+          "2": 6
+        }
+      },
+      {
+        "pixels": 7,
+        "to": "legNearAnkle",
+        "border": {
+          "3": 4
+        }
+      },
+      {
+        "pixels": 9,
+        "to": "legNearFoot",
+        "border": {
+          "1": 10
+        }
+      }
+    ],
+    "applied": false
+  },
+  "originalRemainderComponents": [
+    {
+      "pixels": 16246,
+      "minX": 407,
+      "minY": 659,
+      "maxX": 756,
+      "maxY": 799
+    },
+    {
+      "pixels": 3023,
+      "minX": 652,
+      "minY": 479,
+      "maxX": 784,
+      "maxY": 540
+    },
+    {
+      "pixels": 893,
+      "minX": 297,
+      "minY": 707,
+      "maxX": 383,
+      "maxY": 729
+    },
+    {
+      "pixels": 206,
+      "minX": 740,
+      "minY": 462,
+      "maxX": 769,
+      "maxY": 476
+    },
+    {
+      "pixels": 101,
+      "minX": 409,
+      "minY": 646,
+      "maxX": 447,
+      "maxY": 650
+    },
+    {
+      "pixels": 39,
+      "minX": 291,
+      "minY": 687,
+      "maxX": 300,
+      "maxY": 693
+    },
+    {
+      "pixels": 33,
+      "minX": 732,
+      "minY": 833,
+      "maxX": 739,
+      "maxY": 839
+    },
+    {
+      "pixels": 12,
+      "minX": 901,
+      "minY": 464,
+      "maxX": 905,
+      "maxY": 468
+    },
+    {
+      "pixels": 11,
+      "minX": 742,
+      "minY": 819,
+      "maxX": 745,
+      "maxY": 823
+    },
+    {
+      "pixels": 5,
+      "minX": 613,
+      "minY": 829,
+      "maxX": 614,
+      "maxY": 833
+    },
+    {
+      "pixels": 4,
+      "minX": 690,
+      "minY": 875,
+      "maxX": 691,
+      "maxY": 877
+    },
+    {
+      "pixels": 1,
+      "minX": 538,
+      "minY": 663,
+      "maxX": 538,
+      "maxY": 663
+    }
+  ],
+  "candidateRemainderComponents": [
+    {
+      "pixels": 15506,
+      "minX": 407,
+      "minY": 659,
+      "maxX": 756,
+      "maxY": 752
+    },
+    {
+      "pixels": 3023,
+      "minX": 652,
+      "minY": 479,
+      "maxX": 784,
+      "maxY": 540
+    },
+    {
+      "pixels": 893,
+      "minX": 297,
+      "minY": 707,
+      "maxX": 383,
+      "maxY": 729
+    },
+    {
+      "pixels": 206,
+      "minX": 740,
+      "minY": 462,
+      "maxX": 769,
+      "maxY": 476
+    },
+    {
+      "pixels": 101,
+      "minX": 409,
+      "minY": 646,
+      "maxX": 447,
+      "maxY": 650
+    },
+    {
+      "pixels": 39,
+      "minX": 291,
+      "minY": 687,
+      "maxX": 300,
+      "maxY": 693
+    },
+    {
+      "pixels": 33,
+      "minX": 732,
+      "minY": 833,
+      "maxX": 739,
+      "maxY": 839
+    },
+    {
+      "pixels": 17,
+      "minX": 613,
+      "minY": 829,
+      "maxX": 614,
+      "maxY": 840
+    },
+    {
+      "pixels": 12,
+      "minX": 901,
+      "minY": 464,
+      "maxX": 905,
+      "maxY": 468
+    },
+    {
+      "pixels": 11,
+      "minX": 742,
+      "minY": 819,
+      "maxX": 745,
+      "maxY": 823
+    },
+    {
+      "pixels": 9,
+      "minX": 615,
+      "minY": 843,
+      "maxX": 620,
+      "maxY": 846
+    },
+    {
+      "pixels": 7,
+      "minX": 577,
+      "minY": 836,
+      "maxX": 580,
+      "maxY": 840
+    }
+  ],
+  "unchangedD28Cap": 0.5,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent ownership replay",
+    "no source alpha addition/deletion",
+    "unchanged unedited landmarks",
+    "unchanged unedited polygons",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "legacy structural-island negative control refused with explicit 0.05; authorized default is 0.5"
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

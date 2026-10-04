@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c132-arena-painting-successor/v1",
+  "reason": "Original FAR invents celestial bodies and solid icy spires although the source medium is air.",
+  "mode": "targeted-edit",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/ammonia/arena-far.prompt.txt",
+    "sha256": "6f93ecba4de71d26cac956facfc858a65d8289b5b533d4c625fca3c90051dbcc"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.prompt.txt",
+    "sha256": "49c01c547247478d2b04cc017eef071338f2f7af424e9017a8791fd339e33074"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia/arena-far.png",
+      "sha256": "2d753931ba321372ea5ae3451ae86e8fad1c3b196e81e23824f111b7ad670435"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the unchanged predecessor; actual sole image input is the predecessor named above."
+  },
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/ammonia/arena-far.png",
+    "sha256": "2d753931ba321372ea5ae3451ae86e8fad1c3b196e81e23824f111b7ad670435"
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2b7fb75d-e5e2-4c77-92b2-931f72ca2b48.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "Generated successor bytes are retained exactly. The predecessor is unchanged. No post-generation resizing, padding, cropping or upscaling.",
+  "qualityAccepted": false
+}

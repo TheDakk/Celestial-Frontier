@@ -1,0 +1,85 @@
+{
+  "schema": "cf.fixed-shape-comparison/v1",
+  "status": "PASS",
+  "baseline": "audits/LOCAL_AV_AI_CONTINUATION_20260909/browser-identity-only-1024-01",
+  "candidate": "audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01",
+  "baselineElapsedMs": 69948.08500003815,
+  "candidateElapsedMs": 69034.54999995232,
+  "differenceMs": 913.5350000858307,
+  "percentFaster": 1.306018599487509,
+  "recipeEqualExceptOptIn": true,
+  "rawPngByteEqual": true,
+  "rawPngSha256": "2b0fea42177e2eeaf94e3c71480d6f0502177c3d1a7f9879c5149ef58ef370b7",
+  "resolvedInputs": [
+    {
+      "name": "hidden_states",
+      "isTensor": true,
+      "type": "float16",
+      "shape": [
+        1,
+        2904,
+        128
+      ]
+    },
+    {
+      "name": "encoder_hidden_states",
+      "isTensor": true,
+      "type": "float16",
+      "shape": [
+        1,
+        512,
+        7680
+      ]
+    },
+    {
+      "name": "timestep",
+      "isTensor": true,
+      "type": "float16",
+      "shape": [
+        1
+      ]
+    },
+    {
+      "name": "img_ids",
+      "isTensor": true,
+      "type": "int64",
+      "shape": [
+        1,
+        2904,
+        4
+      ]
+    },
+    {
+      "name": "txt_ids",
+      "isTensor": true,
+      "type": "int64",
+      "shape": [
+        1,
+        512,
+        4
+      ]
+    }
+  ],
+  "sourceUnchanged": true,
+  "sourceCount": 88,
+  "uiStatus": "PASS",
+  "nativeVisibilityControls": [
+    {
+      "phase": "running-planet",
+      "id": "landing-progress",
+      "status": "PASS",
+      "rejection": "Landing UI running-planet: pending progress must replace Land and be visible on the planet",
+      "restored": true
+    },
+    {
+      "phase": "complete-still-journal",
+      "id": "notice",
+      "status": "PASS",
+      "rejection": "Landing UI complete-still-journal: completion must notify while keeping the journal selected",
+      "restored": true
+    }
+  ],
+  "defaultAdopted": false,
+  "qualityAccepted": false,
+  "interpretation": "About 0.9 seconds (1.3%) faster in one comparison; too small to establish a reliable new speedup. Remains opt-in. Original Q8 improvement remains the meaningful proven gain. No extra inference run."
+}

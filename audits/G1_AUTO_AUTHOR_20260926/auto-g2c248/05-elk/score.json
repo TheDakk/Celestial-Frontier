@@ -1,0 +1,10 @@
+{
+ "id": "05-elk",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 20% paint (reference 62%)",
+  "missing-anatomy: part tail3 (tail3) covers 1% paint (reference 6%)"
+ ],
+ "semanticPresence": null
+}

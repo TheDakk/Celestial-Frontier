@@ -1,0 +1,117 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "21-sea-squirt",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "1d316c5070d16692d4aab1f66cde58b8d15711997cda7db8f9eac49eddc08875",
+ "subjectSourceSha256": "5ed04dcf712b75a98c55baa71fc0837443746b0d1935d1a8f093e5ea7c97d257",
+ "identity": {
+  "name": "Sea Squirt",
+  "family": "sessile-filter",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sea Squirt\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"3057975812\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "seed": 3057975812,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "codex-ref-05-sponge-material",
+  "authoringSha256": "6d8987088117793b19a3de692cf45b6acc74dcee45abc5b2f34b879c8a3b88f3",
+  "masterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0"
+ },
+ "habitat": {
+  "profileId": "sessile-tunicate",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "155c72f5e831363f759564a3700271b6da56743e97af3c4c86bf3ce29ba760ae",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "translucent",
+  "source": "species group sessile-tunicate (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0897,
+     "class": "top",
+     "attach": {
+      "x": 200.5,
+      "y": 120,
+      "relX": 0.44,
+      "relY": 0
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0235,
+     "class": "top",
+     "attach": {
+      "x": 267.2,
+      "y": 131.3,
+      "relX": 0.87,
+      "relY": 0.05
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0057,
+     "class": "front",
+     "attach": {
+      "x": 288,
+      "y": 227,
+      "relX": 1.01,
+      "relY": 0.46
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0105,
+     "class": "rear",
+     "attach": {
+      "x": 164.3,
+      "y": 329.2,
+      "relX": 0.2,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0251,
+     "class": "limb-down",
+     "attach": {
+      "x": 227.1,
+      "y": 346.5,
+      "relX": 0.61,
+      "relY": 0.99
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "codex-ref-05-sponge-material",
+   "byClass": {
+    "top": 2,
+    "limb-down": 1,
+    "front": 1,
+    "rear": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

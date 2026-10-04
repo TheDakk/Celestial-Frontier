@@ -1,0 +1,77 @@
+{
+  "name": "Maned Wolf",
+  "family": "quadruped",
+  "species": {
+    "name": "Maned Wolf",
+    "aspect": 1.15,
+    "headFrac": 0.26,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "absurdly long stilt legs with black stockings",
+      "very large erect ears",
+      "dark mane along the neck and shoulders"
+    ],
+    "note": "The legs are the whole point: leg length is roughly 60% of standing height, far leggier than any fox or wolf. Body itself is small and slim."
+  },
+  "genome": {
+    "seed": 307993994,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 10,
+    "body": 7,
+    "loco": 12,
+    "trait": 19,
+    "size": 0,
+    "diet": 4,
+    "head": 2,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 3,
+    "eyes": 1,
+    "behavior": 7,
+    "habitat": 0,
+    "detail": 5,
+    "accent": 13,
+    "temper": 5,
+    "sense": 0,
+    "repro": 2,
+    "life": 5,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Maned Wolf"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Maned Wolf\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"307993994\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 239,
+  "profile": {
+    "id": "canid",
+    "names": [
+      "Jackal",
+      "Wolf",
+      "Coyote",
+      "Fox",
+      "Red Fox",
+      "Arctic Fox",
+      "African Wild Dog",
+      "Maned Wolf",
+      "Pampas Fox",
+      "Fennec Fox",
+      "Dog",
+      "Dingo"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

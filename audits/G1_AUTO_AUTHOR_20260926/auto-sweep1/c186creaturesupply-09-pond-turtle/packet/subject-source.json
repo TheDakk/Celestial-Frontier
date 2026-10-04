@@ -1,0 +1,69 @@
+{
+  "name": "Pond Turtle",
+  "family": "quadruped",
+  "species": {
+    "name": "Pond Turtle",
+    "aspect": 2,
+    "headFrac": 0.22,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "low flattened domed shell with a scute mosaic",
+      "webbed clawed feet",
+      "head extended forward on a wrinkled neck"
+    ],
+    "note": "generic representative: a freshwater slider/terrapin type; the shell is low and streamlined, not high-domed like a tortoise"
+  },
+  "genome": {
+    "seed": 53980249,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 8,
+    "body": 9,
+    "loco": 1,
+    "trait": 6,
+    "size": 5,
+    "diet": 1,
+    "head": 4,
+    "limbs": 0,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 2,
+    "habitat": 15,
+    "detail": 1,
+    "accent": 5,
+    "temper": 8,
+    "sense": 5,
+    "repro": 0,
+    "life": 3,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Pond Turtle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pond Turtle\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"53980249\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "index": 59,
+  "profile": {
+    "id": "freshwater-turtle",
+    "names": [
+      "Pond Turtle",
+      "Snapping Turtle",
+      "Softshell Turtle",
+      "Turtle"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": ""
+  }
+}

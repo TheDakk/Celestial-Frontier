@@ -1,0 +1,32 @@
+{
+  "comparedTo": "a0414aa6511d1ee9a9d55a4721f1f622c7fdb7dd",
+  "changedV2Paths": [
+    "port/v2/budgets/compendium-memory-active.json",
+    "port/v2/tests/exceptional-crafting-evidence-contract.test.ts",
+    "port/v2/tests/guide-release.test.ts",
+    "port/v2/tests/slicesmoke-sixth-red-contract.test.ts",
+    "port/v2/tools/glassmatrix.mjs",
+    "port/v2/tools/slicesmoke.mjs"
+  ],
+  "onlySelectorAndReleaseOracleChanges": true,
+  "runtimeProductBytesChanged": false,
+  "unchangedOwnerPins": [
+    {
+      "path": "port/v2/tools/compendiummem.mjs",
+      "sha256": "3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e"
+    },
+    {
+      "path": "port/v2/tools/compendiummem-contract.mjs",
+      "sha256": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692"
+    },
+    {
+      "path": "port/v2/tools/compendiummem-v2.mjs",
+      "sha256": "b4adafdb1af0956fc8b78de3945025174c79649c67798417798bf90fb3ca0cac"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "366c5acfee0cd3281dbead4467ab9d406c7b9ea13593f436511abe2d81fde9c6"
+    }
+  ],
+  "fullDevelopRetried": false
+}

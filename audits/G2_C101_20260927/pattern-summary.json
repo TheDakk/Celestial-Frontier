@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Salmon",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Lungfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Cave Fish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Pipefish",
+    "status": "PASS"
+  },
+  {
+    "name": "Flying Fish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Anglerfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Lanternfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Fangtooth",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Dragonfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Barreleye",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Deep-Sea Fish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Ocean Sunfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Hummingbird",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Peacock",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Ostrich",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Flamingo",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Pelican",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Albatross",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Condor",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Snow Petrel",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Civet",
+    "status": "PASS"
+  },
+  {
+    "name": "Possum",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Mole",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Beaver",
+    "status": "NOT_REQUIRED"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Condor",
+  "masterSha256": "da14edf1ce0b74a91b68e982d5f97ce28fc8fbf98bc7b00d6148323f2a463f70",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

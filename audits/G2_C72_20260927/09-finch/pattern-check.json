@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Finch",
+  "masterSha256": "1835355802ca545cac8afc59da13bea01aa0480f20cacbf657510ff1c3f7fbfc",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,66 @@
+{
+  "name": "Fiddler Crab",
+  "family": "brachyuran",
+  "species": {
+    "name": "Fiddler Crab",
+    "aspect": 1.9,
+    "headFrac": 0.5,
+    "eyes": "prominent",
+    "posture": "crawling",
+    "mustRead": [
+      "one enormously oversized claw, the other tiny",
+      "long stalked eyes standing up off the carapace"
+    ],
+    "note": "the two claws must be grossly unequal; a crab with matched claws is not a fiddler"
+  },
+  "genome": {
+    "seed": 1216492720,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 13,
+    "body": 7,
+    "loco": 17,
+    "trait": 22,
+    "size": 2,
+    "diet": 2,
+    "head": 5,
+    "limbs": 2,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 4,
+    "eyes": 5,
+    "behavior": 5,
+    "habitat": 9,
+    "detail": 1,
+    "accent": 14,
+    "temper": 8,
+    "sense": 6,
+    "repro": 5,
+    "life": 3,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fiddler Crab"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Fiddler Crab\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1216492720\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "index": 425,
+  "profile": {
+    "needsObservedFit": true,
+    "id": "fiddler-crab",
+    "names": [
+      "Fiddler Crab"
+    ],
+    "candidateTemplates": [
+      "brachyuran"
+    ],
+    "media": [
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "pinch"
+    ],
+    "notes": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."
+  }
+}

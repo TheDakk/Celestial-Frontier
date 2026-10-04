@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Banana Slug",
+  "masterSha256": "19d78b8c5eb9ffeb3e90abf021b1e7c76abf31185b658900f9de0a0b8348dc04",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

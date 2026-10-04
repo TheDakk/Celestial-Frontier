@@ -1,0 +1,15 @@
+✔ one-pixel erosion and sampled inward despill remove injected pink edge without recolouring the interior (1.591125ms)
+✔ premultiplied sampling cannot carry invisible magenta into a scaled edge (0.152708ms)
+✔ latent interiors stay anchored while boundary and ground remain editable; no-mask control fails (2.629833ms)
+✔ prepared profile meets scale relationships and refuses the former unmasked recipe (0.687875ms)
+✔ 8px erosion opens additional boundary area; unchanged 4px control fails the wider-edge criterion (1.9155ms)
+✔ two low runner instances share one organism mask; single-instance control fails (7.442625ms)
+✔ arena terrain opt-in permits full-width ground but refuses opaque-scene extraction (4.334583ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54.93725

@@ -1,0 +1,139 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c163familyoriginals-20-deep-sea-octopus",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "61564a71a8c916c94f35b7288236879a736494576379dc78872e250b26e1b783",
+ "subjectSourceSha256": "f85378862466bdcf5bd9580fe52a66da55c11b880a14b9198b51c2a5a6a6b549",
+ "identity": {
+  "name": "Deep-Sea Octopus",
+  "family": "cephalopod",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Deep-Sea Octopus\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3774467959\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "seed": 3774467959,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c202-qualified-octopus",
+  "authoringSha256": "0a36b6dc625f34009d3b5d1c6c1262959e0388fcb536fb831ec51488e2814431",
+  "masterSha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+ },
+ "habitat": {
+  "profileId": "cephalopod",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "22935aae923bebded3f3fae3f8608629f56923f64690646ed5c65f2b8ce08855",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group cephalopod (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1148,
+     "class": "top",
+     "attach": {
+      "x": 226.3,
+      "y": 147.8,
+      "relX": 0.46,
+      "relY": 0.08
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1558,
+     "class": "rear",
+     "attach": {
+      "x": 172.8,
+      "y": 204.3,
+      "relX": 0.06,
+      "relY": 0.46
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0204,
+     "class": "limb-down",
+     "attach": {
+      "x": 299,
+      "y": 188.5,
+      "relX": 1.01,
+      "relY": 0.36
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0252,
+     "class": "front",
+     "attach": {
+      "x": 293,
+      "y": 243.5,
+      "relX": 0.96,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0338,
+     "class": "limb-down",
+     "attach": {
+      "x": 179.7,
+      "y": 269.8,
+      "relX": 0.11,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0222,
+     "class": "limb-down",
+     "attach": {
+      "x": 291.4,
+      "y": 276.4,
+      "relX": 0.95,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0559,
+     "class": "limb-down",
+     "attach": {
+      "x": 257,
+      "y": 284,
+      "relX": 0.69,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 4,
+    "front": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "c202-qualified-octopus",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

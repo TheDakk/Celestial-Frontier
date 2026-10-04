@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c192-checkout-retirement/v1",
+  "checkout": "~/.codex/worktrees/c192-i5/celestial-frontier-openai-mac",
+  "method": "Codex managed worktree archival",
+  "epochExited": true,
+  "selectorReplayPassedBeforeRetirement": true,
+  "sourceDirectoryAbsent": true,
+  "freeGiBBefore": 109.56,
+  "freeGiBAfter": 132.75,
+  "observedFreeSpaceIncreaseGiB": 23.19,
+  "attribution": "Observed machine free-space change, not an exclusive disk allocation measurement; concurrent remote asset intake may change free space.",
+  "retainedAuditEvidenceDeleted": false
+}

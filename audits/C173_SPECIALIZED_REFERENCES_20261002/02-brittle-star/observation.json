@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-reference-observation/v1",
+  "source": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/02-brittle-star",
+  "masterSha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "sourceBytesUnchanged": true,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "fullSizeInspected": true,
+  "visibleAnatomy": [
+    "central disc",
+    "five uninterrupted noncrossing arms",
+    "all five terminal tips",
+    "marginal arm spines"
+  ],
+  "biologicalArms": 5,
+  "walkingLegs": 0,
+  "legacyBellControlMeaning": "visible central-disc rim only",
+  "limitations": [
+    "Five complete painted arms are explicitly declared. The default six-arm inventory is not used; zero walking legs does not mean zero radial arms.",
+    "The centre landmark is the observed central disc. Legacy template name bell denotes an observed upper disc-rim control, not a biological jellyfish bell or invented organ.",
+    "Three controls per arm represent continuous source curves, not the many biological arm ossicles. Visible marginal spines stay owned by the enclosing arm region.",
+    "The naturally small disc and long curved arms may exceed the unchanged arm/bell ratio guard. The disc is not enlarged, its centre is not displaced and no limit is changed to force intake.",
+    "Only dorsal paint is observed; no mouth, eyes, underside, tube feet or hidden structures are invented.",
+    "groundLineY is the bottom painted envelope, not a claim that the flat dorsal view shows five coplanar planted tips. Static and native support behavior remain unmeasured at authoring."
+  ],
+  "qualityAccepted": false
+}

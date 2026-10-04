@@ -1,0 +1,6 @@
+
+> cf-v2@0.0.0 overridecheck
+> node tools/overridecheck.mjs
+
+OVERRIDE CHECK: 1014 table keys · 1014 reach a real catalog species · 0 dead
+  coverage: fauna 631 · flora 334 · fungi 27 · microbe 22 = 1010/1010 Earth species (100.0%)  ·  1014 routes (the 4 cross-kingdom organisms own two each)

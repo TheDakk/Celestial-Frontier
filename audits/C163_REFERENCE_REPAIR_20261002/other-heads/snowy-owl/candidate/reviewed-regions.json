@@ -1,0 +1,66 @@
+{
+  "schema": "cf.c163-reviewed-authoring-regions/v1",
+  "id": "snowy-owl",
+  "sourceAuthoring": {
+    "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/original/authoring.json",
+    "sha256": "d5ee90ade2b6934a21b2b397d5491321fec4de33e71ae9399083eb41bd5cb959"
+  },
+  "candidateAuthoringSha256": "7915d259b21efcaf64821a2ba5a3e12dedc2670cadf71519c476d04c9fd475f0",
+  "sourceMasterSha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+  "additions": [
+    {
+      "id": "reviewed-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          637,
+          381
+        ],
+        [
+          776,
+          381
+        ],
+        [
+          776,
+          472
+        ],
+        [
+          637,
+          472
+        ]
+      ],
+      "reason": "Upper dorsal nape plumage; existing head and wing polygons retain priority."
+    },
+    {
+      "id": "reviewed-crown",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          875,
+          333
+        ],
+        [
+          930,
+          333
+        ],
+        [
+          930,
+          391
+        ],
+        [
+          875,
+          391
+        ]
+      ],
+      "reason": "Front crown above eye and facial disk, following head."
+    }
+  ],
+  "landmarksChanged": false,
+  "existingPolygonsChanged": false,
+  "sourcePixelsChanged": false,
+  "repairCapUnchanged": 0.05,
+  "qualityAccepted": false,
+  "remaining": "Exact ownership conservation, deterministic replay, unchanged intake/static and actual moving-paint/native review still required."
+}

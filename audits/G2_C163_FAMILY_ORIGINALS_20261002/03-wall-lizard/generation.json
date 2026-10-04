@@ -1,0 +1,14 @@
+{
+  "id": "03-wall-lizard",
+  "name": "Wall Lizard",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2b35d70c-7e4b-446d-84b0-6e93401bcb8f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1a42430fe33356cdf808f7748ba2730eb812f82139dac5563af25bb2bb7adfb4",
+  "bytes": 1058165,
+  "promptSha256": "a32180f69f149acabba1b64f83d9752e09b2fc3e7d6a798a2e7429331654e7de",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

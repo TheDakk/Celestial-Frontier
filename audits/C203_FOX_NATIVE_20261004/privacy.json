@@ -1,0 +1,7 @@
+{
+  "scope": "Path-only home abbreviation in diagnostic report; no numerical value, source hash, frame or media changed",
+  "originalReportSha256": "0f80a0dd0bca2bbbe8c447b8f1f91fe6b2f32e4539beb11a4eaada8ac6e5eed9",
+  "reportSha256": "86dd6afc99181435cb1ab276e10fac2d4c6424fb75fe1862534b931958e769b2",
+  "replacement": "home prefix to ~",
+  "certificateBytesChanged": false
+}

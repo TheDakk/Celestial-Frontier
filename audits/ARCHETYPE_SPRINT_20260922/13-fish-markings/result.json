@@ -1,0 +1,25 @@
+{
+  "schema": "cf.archetype-sprint-result/v1",
+  "item": 13,
+  "name": "Salmon markings",
+  "family": "fish markings",
+  "status": "PASS",
+  "scope": "format and alpha conservation; human art acceptance pending",
+  "runId": "archetype-sprint-13-fish-markings-01",
+  "maskCount": 6,
+  "outsideAlphaPixels": 0,
+  "alphaExceedsKeyedPixels": 0,
+  "generationAttempts": 11,
+  "correctedReprompts": 5,
+  "film": null,
+  "cpuP95Ms": null,
+  "artReview": {
+    "striped": "Separated longitudinal stripes in the saved composite; sampled inter-stripe gaps retain alpha0/1 out of255. Inline generator preview overstated fill.",
+    "spotted": "Separate solid dots, with some clipped by the keyed silhouette; no registration transform.",
+    "banded": "Separate transverse bands; retained first output.",
+    "mottled": "Separated irregular blotches; retained corrected output.",
+    "marbled": "Sparse branched veins; retained corrected output.",
+    "eye-spotted": "Hollow rings in the saved composite; sampled centers retain alpha0/1 out of255. Inline generator preview overstated fill."
+  },
+  "paintHumanAccepted": false
+}

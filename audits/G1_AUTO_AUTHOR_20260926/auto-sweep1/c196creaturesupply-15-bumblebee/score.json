@@ -1,0 +1,9 @@
+{
+ "id": "c196creaturesupply-15-bumblebee",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part head (head) covers 31% paint (reference 98%)"
+ ],
+ "semanticPresence": null
+}

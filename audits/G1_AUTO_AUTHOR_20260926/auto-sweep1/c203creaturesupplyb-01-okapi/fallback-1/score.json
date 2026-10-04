@@ -1,0 +1,10 @@
+{
+ "id": "c203creaturesupplyb-01-okapi",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on",
+  "missing-anatomy: part tail3 (tail3) covers 11% paint (reference 38%)"
+ ],
+ "semanticPresence": null
+}

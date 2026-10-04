@@ -1,0 +1,39 @@
+{
+  "schema": "cf-ui-preparation-review/v1",
+  "syntax": [
+    {
+      "path": "/private/tmp/cf-u3-run-panel-checkpoint-20260906.cjs",
+      "sha256": "a501d4cc18b76b47445a0c69fef5041cab4bd02b4c0ec602db9c41aadfe54c10",
+      "command": [
+        "node",
+        "--check",
+        "/private/tmp/cf-u3-run-panel-checkpoint-20260906.cjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "path": "/private/tmp/cf-u3-shipyard-review-prepared-20260906/shipyard-review.mjs",
+      "sha256": "0941e2bf6734742e1a02d4d264b687272a9c5599bfb5e75754bac22d774f1fbb",
+      "command": [
+        "node",
+        "--check",
+        "/private/tmp/cf-u3-shipyard-review-prepared-20260906/shipyard-review.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "path": "/private/tmp/cf-u3-normal-predecessor-20260906.mjs",
+      "sha256": "204a91072ad4c6020d8e39347be057f2e8684b56a5a18ca1943e621053a57480",
+      "command": [
+        "node",
+        "--check",
+        "/private/tmp/cf-u3-normal-predecessor-20260906.mjs"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "shipyardApplicationDryRun": "3 exact source files matched; no application",
+  "runtimeTests": "NOT_RUN",
+  "browser": "NOT_RUN",
+  "preparations": "Unapplied; archived drafts retain original status and known stale guards."
+}

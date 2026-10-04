@@ -9,6 +9,7 @@
    COLOUR is their identity (Fly Agaric red, Lion's Mane white) force it. */
 import { mulberry32, TAU } from '@cf/domain-rand';
 import type { ArtContext2D } from './speciescanvas.js';
+import {isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
 
 type Ctx = ArtContext2D;
 type G = Record<string, unknown>;
@@ -298,6 +299,7 @@ export function microbeForam(c: Ctx, g: G, pIn: Pal): void {
 function shade2(p: Pal, m: number): string { return `rgb(${p.cr * m | 0},${p.cg * m | 0},${p.cb * m | 0})`; }
 export function tardigrade(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0x7A16);
+  const observed:DrawnFeature[]|null=isObservingPainterTopology(c)?[]:null;
   /* ★ WAVE 46 — THIS PAINTER DREW ONE FIXED ANIMAL. `r` was created on the line
      above and never called once: every dimension below was a constant, so every
      genome routed here rendered the SAME tardigrade and differed only in
@@ -316,6 +318,7 @@ export function tardigrade(c: Ctx, g: G, p: Pal): void {
   };
   const cx = S * 0.46, cy = S * 0.52,
     bw = S * 0.20 * v(0x11, 0.16), bh = S * 0.135 * v(0x22, 0.20);
+  observed?.push({id:'body',kind:'body',points:[[cx,cy]],widths:[2*bw,2*bh],curve:'ellipse',layer:'near'});
   shadow(c, cx, cy + bh + S * 0.05, S * 0.20);
   /* FOUR PAIRS of stubby legs, each ending in claws — the audit's ask */
   c.lineCap = 'round';
@@ -329,6 +332,9 @@ export function tardigrade(c: Ctx, g: G, p: Pal): void {
       const lo = s < 0 ? -bh * 0.30 : 0;
       const ly = cy + bh * (s < 0 ? 0.50 : 0.64);
       c.strokeStyle = s < 0 ? shade2(p, 0.55) : p.dark; c.lineWidth = bh * (s < 0 ? 0.24 : 0.30);
+      const id='leg'+i+(s<0?'Far':'Near'),layer=s<0?'far' as const:'near' as const;
+      observed?.push({id,kind:'leg',points:[[lx+lo,cy+bh*.3],[lx+lo+s*bh*.1,ly],[lx+lo-bh*.14,ly+bh*.42]],widths:[bh*(s<0?.24:.30)],curve:'quadratic',layer});
+      for(let k=-1;k<=1;k++)observed?.push({id:id+'Claw'+(k+1),kind:'body',points:[[lx+lo-bh*.14,ly+bh*.42],[lx+lo-bh*.14+k*4,ly+bh*.60]],widths:[2],curve:'polyline',layer});
       c.beginPath(); c.moveTo(lx + lo, cy + bh * 0.3); c.quadraticCurveTo(lx + lo + s * bh * 0.1, ly, lx + lo - bh * 0.14, ly + bh * 0.42); c.stroke();
       c.strokeStyle = p.dark; c.lineWidth = 2;   /* the claws */
       for (let k = -1; k <= 1; k++) { c.beginPath(); c.moveTo(lx + lo - bh * 0.14, ly + bh * 0.42); c.lineTo(lx + lo - bh * 0.14 + k * 4, ly + bh * 0.60); c.stroke(); }
@@ -345,15 +351,18 @@ export function tardigrade(c: Ctx, g: G, p: Pal): void {
   const segs = 4 + Math.floor(r() * 3);
   for (let i = 1; i < segs; i++) {
     const x = cx - bw * 0.66 + i * (bw * 1.32 / segs);
+    observed?.push({id:'fold'+i,kind:'mark',points:[[x,cy-bh*.8],[x+bh*.1,cy],[x,cy+bh*.7]],widths:[2],curve:'quadratic',layer:'near'});
     c.beginPath(); c.moveTo(x, cy - bh * 0.8); c.quadraticCurveTo(x + bh * 0.1, cy, x, cy + bh * 0.7); c.stroke();
   }
   c.strokeStyle = 'rgba(214,226,244,0.4)'; c.lineWidth = 2;
   c.beginPath(); c.ellipse(cx, cy, bw, bh, 0, -2.8, 0.3); c.stroke();
   /* the blunt snout with the circular mouth */
   const hx = cx + bw * 0.92;
+  observed?.push({id:'head',kind:'head',points:[[hx,cy+bh*.1]],widths:[bh,bh*1.1],curve:'ellipse',layer:'near'},{id:'mouth',kind:'body',points:[[hx+bh*.3,cy+bh*.1]],widths:[bh*.28,bh*.28],curve:'ellipse',layer:'near'});
   c.fillStyle = bg; c.beginPath(); c.ellipse(hx, cy + bh * 0.1, bh * 0.5, bh * 0.55, 0, 0, TAU); c.fill();
   c.fillStyle = 'rgba(20,16,14,0.7)'; c.beginPath(); c.arc(hx + bh * 0.3, cy + bh * 0.1, bh * 0.14, 0, TAU); c.fill();
   c.fillStyle = '#12151b'; c.beginPath(); c.arc(hx - bh * 0.05, cy - bh * 0.15, bh * 0.10, 0, TAU); c.fill();
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'tardigrade',family:'lobopod',coordinateSize:S,materials:{surface:'smooth skin',paletteSource:'genome'},features:observed,unresolved:['Four leg pairs are actual limbs; seeded cuticle folds are surface details, not extra body segments','Hidden leg roots and reverse surfaces','Source part masks, fitted joint graph, contacts and complete motion']});
 }
 
 /* ── MACROALGAE: a green sheet/mat (Sea Lettuce, Green Algae-as-flora) ── */

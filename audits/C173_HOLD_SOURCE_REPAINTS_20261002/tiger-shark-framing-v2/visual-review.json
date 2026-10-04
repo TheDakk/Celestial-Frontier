@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-source-review/v1",
+  "name": "Tiger Shark",
+  "masterSha256": "16983f593fe1b3e24b939e988931e266234424f782c0227bce7be3cc6ee4b9a5",
+  "review": "Full native1254-square original inspected by Codex",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 269,
+      "y0": 488,
+      "x1": 985,
+      "y1": 771
+    },
+    "margins": {
+      "left": 269,
+      "right": 268,
+      "top": 488,
+      "bottom": 482
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "observation": "Distinct vertical dark flank bands, blunt snout and complete fins/tail. New framing edit resolves the numerical margin hold; no fit or motion claim.",
+  "status": "SOURCE_CANDIDATE_FOR_SCORING",
+  "rigAuthored": false,
+  "motionAccepted": false,
+  "runtimeAdmitted": false
+}

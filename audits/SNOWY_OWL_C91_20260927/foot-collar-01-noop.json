@@ -1,0 +1,7 @@
+{
+  "status": "NO_OP_NOT_A_REPAIR",
+  "reason": "Bird contact endpoints are Ankles (shin owners), not Foot joints; their available shape vertices were already boundary-constrained, so the proposed endpoint collar changed zero weights/pins. No full-static/native run authorized by this no-op.",
+  "changedWeights": 0,
+  "changedPins": 0,
+  "nextCandidate": "foot-collar-02 targets actually observed *Foot shape joints, not endpoint names"
+}

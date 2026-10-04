@@ -1,0 +1,62 @@
+{
+  "schema": "cf.bounded-diagnostic-execution/v1",
+  "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/run.mjs",
+  "toolReceipt": "011ae9",
+  "exitCode": 0,
+  "scope": "Exactly hit15ms and dodge14ms ARAP reproduction; no full row, later pose or target scan",
+  "arapExecutions": 2,
+  "exactRefusalsReproduced": 2,
+  "loadedSourceCount": 58,
+  "staticSourceCount": 62,
+  "allHashesMatchedAtExecution": true,
+  "hardBoundaryInspection": {
+    "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/hard-boundary.mjs",
+    "toolReceipt": "2d65d3",
+    "exitCode": 0,
+    "scope": "Stored-pose Float32 LBS target and hard-edge/triangle source comparison; no contact/ARAP execution",
+    "properHardEdgeCrossings": 0,
+    "newPinnedPointIntrusions": 0,
+    "claimedFeasibility": false
+  },
+  "sourcePixelEquality": [
+    {
+      "kind": "master",
+      "before": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/master.png",
+      "after": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-11/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "identical": true
+    },
+    {
+      "kind": "labels",
+      "before": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/labels.png",
+      "after": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/labels.png",
+      "sha256": "4c133c6cab717ae73a07a7859b5636e617c939dc8c1e449187513877dd0395a1",
+      "identical": true
+    },
+    {
+      "kind": "keyed",
+      "before": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/parts/keyed.png",
+      "after": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/parts/keyed.png",
+      "sha256": "2e5b90fe110deefac59fa32e471a540b9e35e3d98d2a687be548ba13ec44fdd3",
+      "identical": true
+    }
+  ],
+  "hashes": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/report.json",
+      "sha256": "0a6bfd49b3f88f2c5d6b0e5566a46f59a091b0a534cf5e55466ad94d1a08d7b0"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/sources.json",
+      "sha256": "c09c540289403f7f4341d5eb170763d74af5379b92dc7a0f9e12ce62ebe1dc2c"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/hard-boundary.mjs",
+      "sha256": "2841b13e741c4536608f58903c8660b7bfe855115e851f5a62ebbba8edad5fc1"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/hard-boundary.json",
+      "sha256": "f6a12d9d60771ab78e888972ea3495c3fe6428d594c7bf3eab81487be2afdc38"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+ "id": "13-marine-iguana",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 7% paint (reference 16%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,282 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%",
+  "missing-anatomy: part jaw (jaw) covers 17% paint (reference 64%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": false,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [
+  {
+   "id": "jaw",
+   "repairs": 1
+  }
+ ],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "dorsal"
+    ],
+    "names": [
+     "fin"
+    ],
+    "refFrac": 0.0178,
+    "target": -1,
+    "overlap": 0
+   },
+   {
+    "owners": [
+     "dorsal"
+    ],
+    "names": [
+     "fin"
+    ],
+    "refFrac": 0.0322,
+    "target": -1,
+    "overlap": 0
+   },
+   {
+    "owners": [
+     "caudal",
+     "body-5"
+    ],
+    "names": [
+     "fin",
+     "other"
+    ],
+    "refFrac": 0.1527,
+    "target": 0,
+    "overlap": 0.219
+   },
+   {
+    "owners": [
+     "body-3"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0342,
+    "target": 2,
+    "overlap": 0.077
+   },
+   {
+    "owners": [
+     "body-0"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0248,
+    "target": 3,
+    "overlap": 0.114
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0494,
+     "class": "rear",
+     "attach": {
+      "x": 85,
+      "y": 198.5,
+      "relX": 0,
+      "relY": 0.5
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0414,
+     "class": "front",
+     "attach": {
+      "x": 347,
+      "y": 199.5,
+      "relX": 1,
+      "relY": 0.52
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0165,
+     "class": "limb-down",
+     "attach": {
+      "x": 194.5,
+      "y": 222,
+      "relX": 0.42,
+      "relY": 0.9
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0146,
+     "class": "limb-down",
+     "attach": {
+      "x": 295.5,
+      "y": 223,
+      "relX": 0.81,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0103,
+     "class": "limb-down",
+     "attach": {
+      "x": 308,
+      "y": 223,
+      "relX": 0.85,
+      "relY": 0.92
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "bass",
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0333,
+  "ref": 0.0625
+ },
+ "bestReference": "bass",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "bass",
+   "cost": 0.02711
+  },
+  {
+   "ref": "pike",
+   "cost": 0.02781
+  },
+  {
+   "ref": "tang",
+   "cost": 0.02952
+  },
+  {
+   "ref": "herring",
+   "cost": 0.03176
+  },
+  {
+   "ref": "reef-shark",
+   "cost": 0.03347
+  },
+  {
+   "ref": "salmon",
+   "cost": 0.03378
+  },
+  {
+   "ref": "sturgeon",
+   "cost": 0.03876
+  }
+ ],
+ "mirrorBest": 0.0258,
+ "otherFamilyBest": {
+  "family": "quadruped",
+  "cost": 0.0212
+ },
+ "coverage": [
+  {
+   "id": "near-pectoral",
+   "joint": "pectoralNear",
+   "paint": 1,
+   "area": 6142.18
+  },
+  {
+   "id": "far-pectoral",
+   "joint": "pectoralFar",
+   "paint": 0.4644808743169399,
+   "area": 2946.8350000000028
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.16587677725118483,
+   "area": 3392.040000000008
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.5955585464333782,
+   "area": 23765.905000000028
+  },
+  {
+   "id": "dorsal",
+   "joint": "dorsal",
+   "paint": 0.6130099228224918,
+   "area": 14563.285000000003
+  },
+  {
+   "id": "caudal",
+   "joint": "caudal",
+   "paint": 0.8470066518847007,
+   "area": 14497.864999999994
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0.9311649016641452,
+   "area": 21188.15500000001
+  },
+  {
+   "id": "body-0",
+   "joint": "spine0",
+   "paint": 0.5552486187845304,
+   "area": 17458.210000000014
+  },
+  {
+   "id": "body-1",
+   "joint": "spine1",
+   "paint": 0.8664383561643836,
+   "area": 14012.234999999979
+  },
+  {
+   "id": "body-2",
+   "joint": "spine2",
+   "paint": 0.7217332430602573,
+   "area": 24354.184999999972
+  },
+  {
+   "id": "body-3",
+   "joint": "spine3",
+   "paint": 0.6637831603229527,
+   "area": 27754.344999999983
+  },
+  {
+   "id": "body-4",
+   "joint": "spine4",
+   "paint": 0.7766911165444172,
+   "area": 19575.07500000001
+  },
+  {
+   "id": "body-5",
+   "joint": "spine5",
+   "paint": 0.7616099071207431,
+   "area": 15500.144999999986
+  }
+ ],
+ "unclaimedFrac": 0.0714
+}

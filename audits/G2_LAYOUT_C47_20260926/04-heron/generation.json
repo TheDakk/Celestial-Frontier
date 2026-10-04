@@ -1,0 +1,11 @@
+{
+  "tool": "image_gen.imagegen",
+  "originalPath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-02f55ed9-14f9-48f9-9b1e-07361ec8d804.png",
+  "masterSha256": "62b53f1fda275a8db6f3eb497300dfc5821c216406c9ebb13715b4ef8772abda",
+  "promptSha256": "dfb6f748365d3e97932c18c28a69bddd8b53b5e4b538ea8ca7b3a75fb2c2f902",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "bytes": 1069335,
+  "transparent_background": false,
+  "edited": false,
+  "authoringCreated": false
+}

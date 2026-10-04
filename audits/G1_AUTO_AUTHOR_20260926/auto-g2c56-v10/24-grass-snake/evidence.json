@@ -1,0 +1,206 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a front appendage of 19.4% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 13.5% paint that no reference appendage lands on",
+  "missing-anatomy: part head (head) covers 6% paint (reference 4%)",
+  "missing-anatomy: part body-segment-6 (seg6) covers 7% paint (reference 10%)",
+  "missing-anatomy: part body-segment-7 (seg7) covers 4% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 2% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 1% paint (reference 2%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "remainderMarker": false,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [
+  {
+   "id": "head",
+   "vertices": 1
+  },
+  {
+   "id": "body-segment-9",
+   "vertices": 2
+  }
+ ],
+ "untangled": [],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a front appendage of 19.4% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 13.5% paint that no reference appendage lands on"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "head"
+    ],
+    "names": [
+     "head"
+    ],
+    "refFrac": 0.0922,
+    "target": 0,
+    "overlap": 0.057
+   },
+   {
+    "owners": [
+     "body-segment-9",
+     "body-segment-8"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.1004,
+    "target": 1,
+    "overlap": 0.019
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1939,
+     "class": "front",
+     "attach": {
+      "x": 330.8,
+      "y": 210.8,
+      "relX": 0.98,
+      "relY": 0.32
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1352,
+     "class": "rear",
+     "attach": {
+      "x": 124.3,
+      "y": 234.3,
+      "relX": 0.02,
+      "relY": 0.72
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "python",
+   "byClass": {
+    "top": 1,
+    "rear": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0333,
+  "ref": 0.1125
+ },
+ "bestReference": "python",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "python",
+   "cost": 0.00942
+  },
+  {
+   "ref": "racer",
+   "cost": 0.01134
+  },
+  {
+   "ref": "eel",
+   "cost": 0.01212
+  }
+ ],
+ "mirrorBest": 0.01322,
+ "otherFamilyBest": {
+  "family": "radial",
+  "cost": 0.01886
+ },
+ "coverage": [
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.3,
+   "area": 3270.0150000000067
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.05723862317906407,
+   "area": 123850.78499999981
+  },
+  {
+   "id": "body-segment-0",
+   "joint": "seg0",
+   "paint": 0.09424790710234944,
+   "area": 59264.91999999995
+  },
+  {
+   "id": "body-segment-1",
+   "joint": "seg1",
+   "paint": 0.0995875073659399,
+   "area": 108549.0250000001
+  },
+  {
+   "id": "body-segment-2",
+   "joint": "seg2",
+   "paint": 0.08815180038846557,
+   "area": 107127.34499999994
+  },
+  {
+   "id": "body-segment-3",
+   "joint": "seg3",
+   "paint": 0.10695022345507782,
+   "area": 103860.36
+  },
+  {
+   "id": "body-segment-4",
+   "joint": "seg4",
+   "paint": 0.09441233140655106,
+   "area": 99607.99999999994
+  },
+  {
+   "id": "body-segment-5",
+   "joint": "seg5",
+   "paint": 0.10821080455972246,
+   "area": 96858.01000000011
+  },
+  {
+   "id": "body-segment-6",
+   "joint": "seg6",
+   "paint": 0.07011191573403555,
+   "area": 97197.23999999998
+  },
+  {
+   "id": "body-segment-7",
+   "joint": "seg7",
+   "paint": 0.04493891797556719,
+   "area": 110103.82499999998
+  },
+  {
+   "id": "body-segment-8",
+   "joint": "seg8",
+   "paint": 0.022422874341610232,
+   "area": 106207.34000000001
+  },
+  {
+   "id": "body-segment-9",
+   "joint": "seg9",
+   "paint": 0.0053376034160661865,
+   "area": 58666.08000000001
+  },
+  {
+   "id": "neck-root",
+   "joint": "root",
+   "paint": 0.08115394985171205,
+   "area": 59253.640000000174
+  }
+ ],
+ "unclaimedFrac": 0.0592
+}

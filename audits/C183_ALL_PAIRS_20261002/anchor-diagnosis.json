@@ -1,0 +1,495 @@
+{
+  "schema": "cf.c183-all-pairs-anchor-diagnosis/v1",
+  "classification": "INSTRUMENT_SEMANTIC_TIME_MISMATCH",
+  "status": "OFFLINE_DIAGNOSIS_ONLY",
+  "originalRunStatus": "FAIL",
+  "originalError": "Error: All-pairs: launch differs from posed contact joint 1",
+  "finding": "The gate compares a launch anchor sampled at exact actionStart with a contact observation sampled just before actionStart after lossy global-clock addition/subtraction. Turns 1 and 2 take the approach branch; the other three land exactly on actionStart and match.",
+  "mechanism": [
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/native-entry.mjs",
+      "lines": [
+        109,
+        111,
+        112,
+        115,
+        121,
+        122
+      ],
+      "fact": "gates calls stageAt(offsetMs + actionStart); entering a segment calls stage.play with clockMs=segment offset, then sets the clock to the global seek."
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/stage.ts",
+      "lines": [
+        199,
+        240,
+        290
+      ],
+      "fact": "play stores clock as startMs. The plan anchor probes sampleTurn(plan, actionStart) directly; tick instead samples clock-startMs."
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/choreography.ts",
+      "lines": [
+        274,
+        285
+      ],
+      "fact": "strict ms < actionStart chooses approach; ms >= actionStart chooses anatomical action."
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/validate.mjs",
+      "lines": [
+        54,
+        55,
+        56
+      ],
+      "fact": "the independent anchor comparison correctly refuses two different pose samples at its unchanged 1e-6 normalized-coordinate tolerance."
+    }
+  ],
+  "rows": [
+    {
+      "turn": 0,
+      "attacker": "left",
+      "offsetMs": 0,
+      "requestedLocalBeatMs": 1740,
+      "naiveGlobalSeekMs": 1740,
+      "recoveredLocalMs": 1740,
+      "clockErrorMs": 0,
+      "selectedBranch": "action",
+      "effectLaunch": {
+        "x": 0.5014350314778946,
+        "y": 0.6058594250125984
+      },
+      "observedContact": {
+        "x": 0.5014350314778946,
+        "y": 0.6058594250125984
+      },
+      "deltaFramePx": {
+        "x": 0,
+        "y": 0
+      },
+      "anchorEqualityAtExistingTolerance": true,
+      "exactLocalProbeArithmetic": {
+        "requestedGlobalMs": 1740,
+        "clockOriginMs": 0,
+        "clockNowMs": 1740,
+        "recoveredLocalMs": 1740
+      },
+      "nearestActualFrames": [
+        {
+          "sampleIndex": 104,
+          "ms": 1733.3000000000002,
+          "turn": 0,
+          "localMs": 1733.3000000000002,
+          "phase": "approach",
+          "cpuMs": 2.4000000059604645,
+          "attackerAction": "approach:scuttle",
+          "targetAction": "idle",
+          "refusals": 0
+        },
+        {
+          "sampleIndex": 105,
+          "ms": 1750,
+          "turn": 0,
+          "localMs": 1750,
+          "phase": "action",
+          "cpuMs": 2.9000000059604645,
+          "attackerAction": "melee:pinch",
+          "targetAction": "idle",
+          "refusals": 0
+        }
+      ]
+    },
+    {
+      "turn": 1,
+      "attacker": "right",
+      "offsetMs": 3296.6666666666665,
+      "requestedLocalBeatMs": 1740,
+      "naiveGlobalSeekMs": 5036.666666666666,
+      "recoveredLocalMs": 1739.9999999999995,
+      "clockErrorMs": -4.547473508864641e-13,
+      "selectedBranch": "approach",
+      "effectLaunch": {
+        "x": 0.4985649685221054,
+        "y": 0.6058594250125984
+      },
+      "observedContact": {
+        "x": 0.4985649685221054,
+        "y": 0.6102277989243715
+      },
+      "deltaFramePx": {
+        "x": 0,
+        "y": 2.5161833731813275
+      },
+      "anchorEqualityAtExistingTolerance": false,
+      "exactLocalProbeArithmetic": {
+        "requestedGlobalMs": 5036.666666666666,
+        "clockOriginMs": 0,
+        "clockNowMs": 1740,
+        "recoveredLocalMs": 1740
+      },
+      "nearestActualFrames": [
+        {
+          "sampleIndex": 302,
+          "ms": 5033.200000000001,
+          "turn": 1,
+          "localMs": 1736.5333333333342,
+          "phase": "approach",
+          "cpuMs": 2.699999988079071,
+          "attackerAction": "approach:scuttle",
+          "targetAction": "idle",
+          "refusals": 0
+        },
+        {
+          "sampleIndex": 303,
+          "ms": 5049.799999999999,
+          "turn": 1,
+          "localMs": 1753.1333333333328,
+          "phase": "action",
+          "cpuMs": 3.0999999940395355,
+          "attackerAction": "melee:pinch",
+          "targetAction": "idle",
+          "refusals": 0
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "attacker": "left",
+      "offsetMs": 6593.333333333333,
+      "requestedLocalBeatMs": 1740,
+      "naiveGlobalSeekMs": 8333.333333333332,
+      "recoveredLocalMs": 1739.999999999999,
+      "clockErrorMs": -9.094947017729282e-13,
+      "selectedBranch": "approach",
+      "effectLaunch": {
+        "x": 0.5014350314778946,
+        "y": 0.6058594250125984
+      },
+      "observedContact": {
+        "x": 0.5014350314778945,
+        "y": 0.6102277989243715
+      },
+      "deltaFramePx": {
+        "x": -1.1368683772161603e-13,
+        "y": 2.5161833731813275
+      },
+      "anchorEqualityAtExistingTolerance": false,
+      "exactLocalProbeArithmetic": {
+        "requestedGlobalMs": 8333.333333333332,
+        "clockOriginMs": 0,
+        "clockNowMs": 1740,
+        "recoveredLocalMs": 1740
+      },
+      "nearestActualFrames": [
+        {
+          "sampleIndex": 500,
+          "ms": 8333,
+          "turn": 2,
+          "localMs": 1739.666666666667,
+          "phase": "approach",
+          "cpuMs": 2.2999999970197678,
+          "attackerAction": "approach:scuttle",
+          "targetAction": "idle",
+          "refusals": 0
+        },
+        {
+          "sampleIndex": 501,
+          "ms": 8349.7,
+          "turn": 2,
+          "localMs": 1756.3666666666677,
+          "phase": "action",
+          "cpuMs": 2.7999999970197678,
+          "attackerAction": "melee:pinch",
+          "targetAction": "idle",
+          "refusals": 0
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "attacker": "right",
+      "offsetMs": 9820,
+      "requestedLocalBeatMs": 1740,
+      "naiveGlobalSeekMs": 11560,
+      "recoveredLocalMs": 1740,
+      "clockErrorMs": 0,
+      "selectedBranch": "action",
+      "effectLaunch": {
+        "x": 0.4985649685221054,
+        "y": 0.6058594250125984
+      },
+      "observedContact": {
+        "x": 0.4985649685221054,
+        "y": 0.6058594250125984
+      },
+      "deltaFramePx": {
+        "x": 0,
+        "y": 0
+      },
+      "anchorEqualityAtExistingTolerance": true,
+      "exactLocalProbeArithmetic": {
+        "requestedGlobalMs": 11560,
+        "clockOriginMs": 0,
+        "clockNowMs": 1740,
+        "recoveredLocalMs": 1740
+      },
+      "nearestActualFrames": [
+        {
+          "sampleIndex": 694,
+          "ms": 11566.3,
+          "turn": 3,
+          "localMs": 1746.2999999999993,
+          "phase": "action",
+          "cpuMs": 2.5999999940395355,
+          "attackerAction": "melee:pinch",
+          "targetAction": "idle",
+          "refusals": 0
+        },
+        {
+          "sampleIndex": 693,
+          "ms": 11549.5,
+          "turn": 3,
+          "localMs": 1729.5,
+          "phase": "approach",
+          "cpuMs": 2.6000000089406967,
+          "attackerAction": "approach:scuttle",
+          "targetAction": "idle",
+          "refusals": 0
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "attacker": "left",
+      "offsetMs": 13046.666666666666,
+      "requestedLocalBeatMs": 1740,
+      "naiveGlobalSeekMs": 14786.666666666666,
+      "recoveredLocalMs": 1740,
+      "clockErrorMs": 0,
+      "selectedBranch": "action",
+      "effectLaunch": {
+        "x": 0.5014350314778946,
+        "y": 0.6058594250125984
+      },
+      "observedContact": {
+        "x": 0.5014350314778946,
+        "y": 0.6058594250125984
+      },
+      "deltaFramePx": {
+        "x": 0,
+        "y": 0
+      },
+      "anchorEqualityAtExistingTolerance": true,
+      "exactLocalProbeArithmetic": {
+        "requestedGlobalMs": 14786.666666666666,
+        "clockOriginMs": 0,
+        "clockNowMs": 1740,
+        "recoveredLocalMs": 1740
+      },
+      "nearestActualFrames": [
+        {
+          "sampleIndex": 887,
+          "ms": 14782.7,
+          "turn": 4,
+          "localMs": 1736.0333333333347,
+          "phase": "approach",
+          "cpuMs": 2.3999999910593033,
+          "attackerAction": "approach:scuttle",
+          "targetAction": "idle",
+          "refusals": 0
+        },
+        {
+          "sampleIndex": 888,
+          "ms": 14799.5,
+          "turn": 4,
+          "localMs": 1752.833333333334,
+          "phase": "action",
+          "cpuMs": 2.300000011920929,
+          "attackerAction": "melee:pinch",
+          "targetAction": "idle",
+          "refusals": 0
+        }
+      ]
+    }
+  ],
+  "arithmeticRegression": {
+    "status": "PASS",
+    "checks": 11,
+    "controls": [
+      {
+        "name": "Exact raw ledger matches the report sample pin and every retained sample",
+        "status": "PASS"
+      },
+      {
+        "name": "The exact five retained turns are present",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual naive global-offset clock selects pre-launch approach only on turns 1 and 2",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual anchor equality fails on exactly those same two turns without widening tolerance",
+        "status": "PASS"
+      },
+      {
+        "name": "Recorded mismatch is 2.5161833731813275 vertical frame pixels on both failing turns",
+        "status": "PASS"
+      },
+      {
+        "name": "Exact local-origin arithmetic preserves all five requested launch beats",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative control: claiming the naive clock preserves every requested beat must fail",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative control: the recorded pre-beat poses must not be relabelled exact launch poses",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative control: exact-local semantics do not move a deliberately early probe across the boundary",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative control: exact-local semantics preserve a deliberately late probe rather than forcing equality",
+        "status": "PASS"
+      },
+      {
+        "name": "The actual supervisor remains stopped with zero qualified pair results",
+        "status": "PASS"
+      }
+    ],
+    "scope": "Binary64 arithmetic and actual recorded anchor outcomes only. No rig replay, browser, native retry, product change, or substitute run qualification.",
+    "referenceFormula": "naive = (offsetMs + actionStart) - offsetMs; exact local probe = localClock(actionStart) - localClock(0)"
+  },
+  "observedCapture": {
+    "frames": 982,
+    "rigRefusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.6000000089406967,
+    "maxCpuMs": 15.5,
+    "rawCpuOverBudgetFrames": [],
+    "qualification": "NONE: this pair and the matrix remain unqualified because the instrument stopped."
+  },
+  "prospectiveCorrection": {
+    "scope": "Additive audit instrument successor only; retain this frozen runner and failed evidence unchanged.",
+    "recommendation": "Introduce an explicit named-turn/local-beat gate probe. Set the injected stage clock origin to zero, play the corresponding unchanged turn input through BattleStage, set the injected clock to the exact requested beat, tick, and read the actual published contact joint. Record frame.sample.ms and attacker context, and assert they equal the requested beat/action before comparing anchors. Reset the diagnostic segment bookkeeping and restore the ordinary global stage path before capture. Retain ordinary live rAF sampling and original playback clocks; do not snap or reclassify actual measured frames.",
+    "controlsRequired": [
+      "All five actual offset/beat tuples above, both directions and random seek order through the real loaded rig.",
+      "Deliberate genuine anchor mismatch must still fail at the original 1e-6 tolerance.",
+      "Deliberately pre-beat and post-beat probes must remain distinct; do not silently relabel them as launch.",
+      "Probe restoration must preserve full five-turn capture, labels, source hashes, media and all raw CPU/red samples.",
+      "Check an independent nonzero-clock stage start as well as zero-origin exact-beat probing."
+    ],
+    "forbiddenShortcuts": [
+      "No tolerance widening or suppression of failing turns.",
+      "No coordinate substitution from plan launchPoint into observed contactAtLaunch.",
+      "No product timing, motion or guard changes to satisfy this diagnostic.",
+      "No automatic native retry."
+    ]
+  },
+  "limitations": [
+    "The pre-action and action poses differ; this instrument diagnosis does not establish smoothness of that product transition. Assess any visible discontinuity separately from anchor correctness.",
+    "The retained live frames do not sample exact actionStart and do not independently prove an exact launch equality. The frozen gate intended that independent exact-beat observation but selected the wrong pose on two turns.",
+    "The proposed exact-local probe has arithmetic controls only; it was not implemented, bundled, replayed or natively tested here."
+  ],
+  "evidence": [
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/retained-first-pair/report.json",
+      "sha256": "6c5f10a8f851a8b0921c0df7d1b9ddb37cc4baa67a1b667b253303accd4e32cd",
+      "bytes": 542871,
+      "originalLocalPath": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/report.json",
+      "byteExactRetainedCopyVerified": true
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/retained-first-pair/frame-samples.json",
+      "sha256": "1be982e05b1663e399995ea2dbf1971473d106240f1c89cd33b0c01b079ea212",
+      "bytes": 174476,
+      "originalLocalPath": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab/frame-samples.json",
+      "byteExactRetainedCopyVerified": true
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/native-01/summary.json",
+      "sha256": "d4e8c17e43ce1d0643cb59bc15df387f6100b404686c7593edf38e169b68aa0c",
+      "bytes": 554
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/retained-first-pair/case.json",
+      "sha256": "fce8b5fd47f3757d55bc79468c2133d2d5c65ed7e2df496ee58e4577f90d75ef",
+      "bytes": 272486,
+      "originalLocalPath": "audits/C183_ALL_PAIRS_20261002/native-01/0001-crab--crab-input/case.json",
+      "byteExactRetainedCopyVerified": true
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/invocation.json",
+      "sha256": "a76bfb1f753a7f397b1b8cb54e82947ca7a4c74e90a2846ca93b17bfd3e966be",
+      "bytes": 769
+    }
+  ],
+  "sources": [
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/native-entry.mjs",
+      "sha256": "63484adb5f1e398fd4cc95d2ae8171098db9de023e9cae34e9522e656866625e",
+      "recordedNativeSha256": "63484adb5f1e398fd4cc95d2ae8171098db9de023e9cae34e9522e656866625e",
+      "identity": "exact current bytes match native source pin"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/native-runner.mjs",
+      "sha256": "b16ceb7643174ffe10f2721a489a96aaa0da1cffc686bbe1ac1083969f213028",
+      "recordedNativeSha256": "b16ceb7643174ffe10f2721a489a96aaa0da1cffc686bbe1ac1083969f213028",
+      "identity": "exact current bytes match native source pin"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/validate.mjs",
+      "sha256": "77164c00473f378d3e770e3cdad21852d0ab60e1889378dfe31b969e962088f6",
+      "recordedNativeSha256": "77164c00473f378d3e770e3cdad21852d0ab60e1889378dfe31b969e962088f6",
+      "identity": "exact current bytes match native source pin"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/validate-v2.mjs",
+      "sha256": "aa7124a57393c406fdb64757dbdf3fb8a70985aaaba64e172fbfb042183d6fee",
+      "recordedNativeSha256": "aa7124a57393c406fdb64757dbdf3fb8a70985aaaba64e172fbfb042183d6fee",
+      "identity": "exact current bytes match native source pin"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/stage.ts",
+      "sha256": "9834fd14ceccbe8efadf79b81fb71da3282ac5980cdb11454170638e719020fc",
+      "recordedNativeSha256": "9834fd14ceccbe8efadf79b81fb71da3282ac5980cdb11454170638e719020fc",
+      "identity": "exact current bytes match native source pin"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/choreography.ts",
+      "sha256": "a47c4f0123eb3cec3c0fd3804ecc5db2300186b9f9859bd4716ddbef7423d272",
+      "recordedNativeSha256": "a47c4f0123eb3cec3c0fd3804ecc5db2300186b9f9859bd4716ddbef7423d272",
+      "identity": "exact current bytes match native source pin"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/parts-rig.ts",
+      "sha256": "d9f9a1611cbeb04c241bf94570847308eb5df4607865f725eec7e3ed9c477fa7",
+      "recordedNativeSha256": "d9f9a1611cbeb04c241bf94570847308eb5df4607865f725eec7e3ed9c477fa7",
+      "identity": "exact current bytes match native source pin"
+    }
+  ],
+  "nativeRuns": 0,
+  "productEdits": false,
+  "frozenOwnersModified": false,
+  "retentionNote": "Report, frame ledger and case pins use committed byte-identical retained copies wherever present. Original ignored raw media and stills remain local; no admission or media reclassification is made.",
+  "retainedSupervisorSummary": {
+    "status": "STOPPED_INSTRUMENT_OR_RESOURCE",
+    "qualification": null,
+    "manifestSha256": "a5049258dc7bb133e794eaedee78069fce17e546932f1697080f89304fe68476",
+    "completed": 0,
+    "total": 1444,
+    "failure": {
+      "id": "0001-crab--crab",
+      "error": "Native runner exit 1",
+      "runnerStatus": 1
+    },
+    "results": [],
+    "scope": "1444 ordered registered-fit pairs at default presentation; five coherent turns and one representative habitat each. Reverse ordered pairs cover the opposite losing fit. No every-verb, every-habitat or all-scale claim."
+  }
+}

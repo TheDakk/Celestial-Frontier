@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c132-develop-gate/v1",
+  "head": "f85c1ce94e00e0fdf05fe2a265599d822bf16126",
+  "command": [
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 130.829,
+  "optionalLocalAiRuntimeRenamedAside": true,
+  "optionalLocalAiRuntimeRestored": true,
+  "logSha256": "f89cc6e67e3e04d0e160d7e33bb924161a77498dff358a2b709a7cc415fbb79c",
+  "reasonForNewRun": "Specific test factory Node[] type correction; prior red retained."
+}

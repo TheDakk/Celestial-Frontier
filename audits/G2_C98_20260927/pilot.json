@@ -1,0 +1,170 @@
+[
+  {
+    "id": "01-cold-water-fish",
+    "name": "Cold-Water Fish",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/01-cold-water-fish",
+    "master": "audits/G2_C98_20260927/01-cold-water-fish/master.png"
+  },
+  {
+    "id": "02-blind-fish",
+    "name": "Blind Fish",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/02-blind-fish",
+    "master": "audits/G2_C98_20260927/02-blind-fish/master.png"
+  },
+  {
+    "id": "03-small-fish",
+    "name": "Small Fish",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/03-small-fish",
+    "master": "audits/G2_C98_20260927/03-small-fish/master.png"
+  },
+  {
+    "id": "04-sunfish",
+    "name": "Sunfish",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/04-sunfish",
+    "master": "audits/G2_C98_20260927/04-sunfish/master.png"
+  },
+  {
+    "id": "05-tang",
+    "name": "Tang",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/05-tang",
+    "master": "audits/G2_C98_20260927/05-tang/master.png"
+  },
+  {
+    "id": "06-reef-fish",
+    "name": "Reef Fish",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/06-reef-fish",
+    "master": "audits/G2_C98_20260927/06-reef-fish/master.png"
+  },
+  {
+    "id": "07-remora",
+    "name": "Remora",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/07-remora",
+    "master": "audits/G2_C98_20260927/07-remora/master.png"
+  },
+  {
+    "id": "08-icefish",
+    "name": "Icefish",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/08-icefish",
+    "master": "audits/G2_C98_20260927/08-icefish/master.png"
+  },
+  {
+    "id": "09-mudminnow",
+    "name": "Mudminnow",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/09-mudminnow",
+    "master": "audits/G2_C98_20260927/09-mudminnow/master.png"
+  },
+  {
+    "id": "10-snailfish",
+    "name": "Snailfish",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/10-snailfish",
+    "master": "audits/G2_C98_20260927/10-snailfish/master.png"
+  },
+  {
+    "id": "11-osprey",
+    "name": "Osprey",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/11-osprey",
+    "master": "audits/G2_C98_20260927/11-osprey/master.png"
+  },
+  {
+    "id": "12-desert-owl",
+    "name": "Desert Owl",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/12-desert-owl",
+    "master": "audits/G2_C98_20260927/12-desert-owl/master.png"
+  },
+  {
+    "id": "13-harpy-eagle",
+    "name": "Harpy Eagle",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/13-harpy-eagle",
+    "master": "audits/G2_C98_20260927/13-harpy-eagle/master.png"
+  },
+  {
+    "id": "14-screamer",
+    "name": "Screamer",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/14-screamer",
+    "master": "audits/G2_C98_20260927/14-screamer/master.png"
+  },
+  {
+    "id": "15-secretary-bird",
+    "name": "Secretary Bird",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/15-secretary-bird",
+    "master": "audits/G2_C98_20260927/15-secretary-bird/master.png"
+  },
+  {
+    "id": "16-tern",
+    "name": "Tern",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/16-tern",
+    "master": "audits/G2_C98_20260927/16-tern/master.png"
+  },
+  {
+    "id": "17-petrel",
+    "name": "Petrel",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/17-petrel",
+    "master": "audits/G2_C98_20260927/17-petrel/master.png"
+  },
+  {
+    "id": "18-skua",
+    "name": "Skua",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/18-skua",
+    "master": "audits/G2_C98_20260927/18-skua/master.png"
+  },
+  {
+    "id": "19-shrew",
+    "name": "Shrew",
+    "family": "quadruped",
+    "packet": "audits/G2_C98_20260927/19-shrew",
+    "master": "audits/G2_C98_20260927/19-shrew/master.png"
+  },
+  {
+    "id": "20-gerbil",
+    "name": "Gerbil",
+    "family": "quadruped",
+    "packet": "audits/G2_C98_20260927/20-gerbil",
+    "master": "audits/G2_C98_20260927/20-gerbil/master.png"
+  },
+  {
+    "id": "21-pig",
+    "name": "Pig",
+    "family": "quadruped",
+    "packet": "audits/G2_C98_20260927/21-pig",
+    "master": "audits/G2_C98_20260927/21-pig/master.png"
+  },
+  {
+    "id": "22-warthog",
+    "name": "Warthog",
+    "family": "quadruped",
+    "packet": "audits/G2_C98_20260927/22-warthog",
+    "master": "audits/G2_C98_20260927/22-warthog/master.png"
+  },
+  {
+    "id": "23-honeybee",
+    "name": "Honeybee",
+    "family": "insect",
+    "packet": "audits/G2_C98_20260927/23-honeybee",
+    "master": "audits/G2_C98_20260927/23-honeybee/master.png"
+  },
+  {
+    "id": "24-bumblebee",
+    "name": "Bumblebee",
+    "family": "insect",
+    "packet": "audits/G2_C98_20260927/24-bumblebee",
+    "master": "audits/G2_C98_20260927/24-bumblebee/master.png"
+  }
+]

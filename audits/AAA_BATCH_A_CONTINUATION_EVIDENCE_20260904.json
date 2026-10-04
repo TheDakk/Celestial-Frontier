@@ -1,0 +1,129 @@
+{
+  "schema": "cf-batch-a-continuation-1",
+  "date": "2026-09-04",
+  "parked_remote_sha": "cf1b9a7843200ecc281c5113b4139909dc0e3a29",
+  "pr_candidate": {
+    "head": "8bf9c45d4aae74a6924bcdc201424db0af4770e6",
+    "base": "7bf3e84761da2d1abe21dc6fe751b4bad2308f3b",
+    "tree": "378400f9e32f992742a2c1a6710d43429c0d4938",
+    "owned_head_unchanged": "c9fcb971dd7789511cf47a33ec13b41af3b770b6",
+    "method": "git archive exact-commit static snapshot; not standard tracked-input-preflight",
+    "tracked_files": 1845,
+    "archive_sha256": "ff74ef4e0966c579f1350cd567ef7f33010d40c5531c57828af5e9b8ba4ba7a2",
+    "node_version": "v26.7.0",
+    "commands": [
+      {
+        "name": "install",
+        "command": [
+          "npm",
+          "ci",
+          "--prefer-offline",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 1.771,
+        "log_sha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de"
+      },
+      {
+        "name": "develop",
+        "command": [
+          "node",
+          "tools/check-profile.mjs",
+          "--profile=develop"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 42.915,
+        "log_sha256": "418dc44665d84e393c0e3c4dbdcc4c6c1b005c7170798e21026e507c733ebd17"
+      }
+    ],
+    "snapshot_tracked_bytes_after": "unchanged",
+    "active_checkout_after": "unchanged clean openai/mac",
+    "result": "PASS"
+  },
+  "develop_summary": {
+    "files_passed": 274,
+    "tests_passed": 2885,
+    "tests_skipped": 1,
+    "vitest_seconds": 37.0,
+    "profile_seconds": 42.915,
+    "typescript_programs": 3,
+    "art_sources": 34,
+    "art_findings": 0,
+    "routes": 1014,
+    "spec_fields": 454
+  },
+  "develop_log_gzip_base64": "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",
+  "concept": {
+    "scope": "Blender-authored Jungle world-inspired concept; Lanternback is an invented specimen",
+    "source_id": "cf-blender-lanternback-jungle-concept-20260904-v2",
+    "source_sha256": "4f4cd1e8b10e838222584032048c986ca3bf2056b456095c0c5ce901d567cf92",
+    "render_recipe_sha256": "2ee90cd5ea5151fae3c726dad0ae1a6f058d2fb65d544aae651dab23a67125b4",
+    "tool": "Blender 5.2.1 LTS / 9e2066aef7ef",
+    "renderer": "Cycles CPU, 64 samples, denoised, AgX",
+    "backup_status": "Same-device preservation verified; independent backup pending",
+    "outputs": [
+      {
+        "file": "ecosystem.png",
+        "dimensions": [
+          1600,
+          1000
+        ],
+        "bytes": 1892410,
+        "sha256": "b6fc21d5a5884355dbb67f9b3525d90f255cf540a631150aebe96f00e054de39"
+      },
+      {
+        "file": "creature.png",
+        "dimensions": [
+          1400,
+          1000
+        ],
+        "bytes": 1667468,
+        "sha256": "321aeb1c7f45b7ae72de48f1f7cd3c771fd9ad34928763a6d66b5a6d7a822125"
+      }
+    ]
+  },
+  "browser_audio": {
+    "browser": {
+      "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+      "product": "Edg/152.0.4191.62",
+      "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "js_version": "15.2.23.8",
+      "protocol_version": "1.3"
+    },
+    "results": [
+      {
+        "format": "wav",
+        "sha256": "ab918498276dfa96faeaee3493d400e63e88ee4b4e73cbec72bc5209b18c33b9",
+        "decodedChannels": 2,
+        "decodedSampleRate": 48000,
+        "decodedFrames": 192000,
+        "duration": 4,
+        "renderedFrames": 192000,
+        "nonzero": 347216,
+        "clipped": 0,
+        "peak": 0.022754430770874023,
+        "peakDb": -32.85868048828513,
+        "rmsDb": -46.73070742032191
+      },
+      {
+        "format": "flac",
+        "sha256": "52b1829012c6c0c9775bf9bf472a60280fa65218394a7b69fdfc924126ef1e36",
+        "decodedChannels": 2,
+        "decodedSampleRate": 48000,
+        "decodedFrames": 192000,
+        "duration": 4,
+        "renderedFrames": 192000,
+        "nonzero": 281878,
+        "clipped": 0,
+        "peak": 0.022760706022381783,
+        "peakDb": -32.85628541068093,
+        "rmsDb": -46.73054391086865
+      }
+    ],
+    "invalidInputRejected": true,
+    "scope": "Local media decode plus offline gain-graph render; not audible listening, autoplay, Safari/iPhone or in-game lifecycle acceptance",
+    "result": "PASS"
+  }
+}

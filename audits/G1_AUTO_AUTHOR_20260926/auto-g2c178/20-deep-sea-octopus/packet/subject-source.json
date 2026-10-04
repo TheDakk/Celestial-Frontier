@@ -1,0 +1,73 @@
+{
+  "name": "Deep-Sea Octopus",
+  "family": "cephalopod",
+  "species": {
+    "name": "Deep-Sea Octopus",
+    "aspect": 1.4,
+    "headFrac": 0.3,
+    "eyes": "prominent",
+    "posture": "swimming",
+    "mustRead": [
+      "ear-like fins flapping from the top of the mantle",
+      "webbed umbrella of skin between the eight arms",
+      "soft translucent gelatinous body"
+    ],
+    "note": "generic name - drawn as a finned dumbo-type deep-water octopus"
+  },
+  "genome": {
+    "seed": 3774467959,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 13,
+    "body": 1,
+    "loco": 5,
+    "trait": 9,
+    "size": 2,
+    "diet": 4,
+    "head": 0,
+    "limbs": 2,
+    "skin": 5,
+    "tail": 6,
+    "pattern": 0,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 3,
+    "detail": 0,
+    "accent": 13,
+    "temper": 4,
+    "sense": 7,
+    "repro": 4,
+    "life": 2,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Deep-Sea Octopus"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Deep-Sea Octopus\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3774467959\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "index": 505,
+  "profile": {
+    "id": "cephalopod",
+    "names": [
+      "Squid",
+      "Octopus",
+      "Cuttlefish",
+      "Giant Octopus",
+      "Giant Squid",
+      "Vampire Squid",
+      "Deep-Sea Octopus",
+      "Nautilus"
+    ],
+    "candidateTemplates": [
+      "cephalopod"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "lash",
+      "bite"
+    ],
+    "notes": "Preserve arm/tentacle counts and shell; Nautilus does not inherit exactly eight arms."
+  }
+}

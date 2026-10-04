@@ -1,0 +1,20 @@
+{
+  "schema": "cf.c183-source-edit-request/v1",
+  "tool": "image_gen.imagegen",
+  "intent": "precise-object-edit",
+  "attemptLimit": 1,
+  "actualImageInput": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/master.png",
+  "actualImageInputSha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+  "basePrompt": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/04-spider/prompt.txt",
+  "basePromptSha256": "ca4d378d76ce146972b6abe96192891e472cd9c1a3390eef5cdb6f244c7902a8",
+  "sentPromptSha256": "79271131e446e3448355cda2eb14c2e9684df51c319f18c9d109f667d97da300",
+  "promptAdaptation": "SUBJECT-only; all other sections byte-identical",
+  "prefixSha256": "1c542666ff279637c924c5c757c2908de7aa102979ed9a66cda0aa42122fd435",
+  "suffixSha256": "7184102bef1af18fc4654310382dd5eefbf89047f8e2a5175bcfea6a88106c2f",
+  "styleAuthority": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "styleAuthoritySha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "styleInheritedFromOriginal": true,
+  "transparentBackground": false,
+  "originalPreserved": true,
+  "qualityAccepted": false
+}

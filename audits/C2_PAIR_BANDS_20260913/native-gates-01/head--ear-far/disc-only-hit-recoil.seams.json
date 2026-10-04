@@ -1,0 +1,28 @@
+{
+  "schema": "cf.seam-oracle/v1",
+  "render": "disc-only-hit-recoil.png",
+  "record": "civet.landmarks.json",
+  "size": {
+    "width": 1254,
+    "height": 1254
+  },
+  "opaquePixels": 68456,
+  "closeRadiusPx": 25.08,
+  "discRadiusPx": 75.24,
+  "gapPixelsInsideEnvelope": 11275,
+  "perJoint": {
+    "earFarTip": {
+      "pivot": [
+        974,
+        296
+      ],
+      "seamPixels": 838,
+      "bounds": {
+        "x": 915,
+        "y": 226,
+        "width": 128,
+        "height": 102
+      }
+    }
+  }
+}

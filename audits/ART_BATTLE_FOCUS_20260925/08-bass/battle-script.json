@@ -1,0 +1,48 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "world": {
+    "key": "lake",
+    "liquid": "water",
+    "surfaceWater": true,
+    "cardHash": "lake-1"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Bass",
+      "dn": "Bass",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Bass",
+      "dn": "Bass",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Bass",
+      "dn": "Bass",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Bass",
+      "dn": "Bass",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ]
+}

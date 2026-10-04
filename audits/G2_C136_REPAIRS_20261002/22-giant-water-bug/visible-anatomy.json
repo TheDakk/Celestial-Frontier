@@ -1,0 +1,184 @@
+{
+  "id": "22-giant-water-bug",
+  "name": "Giant Water Bug",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "9be93dedacfc64fe89a6c8af14cecd28601601c3d159214b2afe60f7e837bb3c",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 11547,
+    "coreRadius": 18,
+    "bodyBox": {
+      "x0": 138,
+      "y0": 157,
+      "x1": 269,
+      "y1": 220
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1704,
+        "pixels": 1968,
+        "box": {
+          "x0": 249,
+          "y0": 167,
+          "x1": 316,
+          "y1": 258
+        },
+        "attach": {
+          "x": 266.9,
+          "y": 190.9,
+          "relX": 0.98,
+          "relY": 0.54
+        },
+        "dir": {
+          "x": 0.63,
+          "y": 0.78
+        },
+        "class": "limb-down",
+        "length": 83.1
+      },
+      {
+        "k": 1,
+        "frac": 0.0475,
+        "pixels": 549,
+        "box": {
+          "x0": 108,
+          "y0": 173,
+          "x1": 137,
+          "y1": 208
+        },
+        "attach": {
+          "x": 137,
+          "y": 190.5,
+          "relX": -0.01,
+          "relY": 0.53
+        },
+        "dir": {
+          "x": -0.99,
+          "y": -0.15
+        },
+        "class": "rear",
+        "length": 33.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0366,
+        "pixels": 423,
+        "box": {
+          "x0": 102,
+          "y0": 210,
+          "x1": 143,
+          "y1": 242
+        },
+        "attach": {
+          "x": 139.1,
+          "y": 212.4,
+          "relX": 0.01,
+          "relY": 0.88
+        },
+        "dir": {
+          "x": -0.81,
+          "y": 0.59
+        },
+        "class": "limb-down",
+        "length": 47.5
+      },
+      {
+        "k": 3,
+        "frac": 0.0485,
+        "pixels": 560,
+        "box": {
+          "x0": 216,
+          "y0": 213,
+          "x1": 253,
+          "y1": 269
+        },
+        "attach": {
+          "x": 236.5,
+          "y": 213,
+          "relX": 0.75,
+          "relY": 0.89
+        },
+        "dir": {
+          "x": -0.21,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 59.6
+      },
+      {
+        "k": 4,
+        "frac": 0.0089,
+        "pixels": 103,
+        "box": {
+          "x0": 153,
+          "y0": 221,
+          "x1": 177,
+          "y1": 234
+        },
+        "attach": {
+          "x": 170.5,
+          "y": 221,
+          "relX": 0.25,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.83,
+          "y": 0.55
+        },
+        "class": "limb-down",
+        "length": 21.8
+      },
+      {
+        "k": 5,
+        "frac": 0.0656,
+        "pixels": 757,
+        "box": {
+          "x0": 147,
+          "y0": 221,
+          "x1": 204,
+          "y1": 274
+        },
+        "attach": {
+          "x": 192.5,
+          "y": 221,
+          "relX": 0.42,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.72,
+          "y": 0.7
+        },
+        "class": "limb-down",
+        "length": 69.9
+      }
+    ],
+    "byClass": {
+      "limb-down": 5,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 147,
+        "x1": 153,
+        "cx": 150.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

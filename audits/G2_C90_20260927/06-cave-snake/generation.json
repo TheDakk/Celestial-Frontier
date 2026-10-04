@@ -1,0 +1,13 @@
+{
+  "id": "06-cave-snake",
+  "name": "Cave Snake",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-fc60fccc-1e08-4e22-a5aa-769a6164c737.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2d45de388d3f51e5d02d041b0789f6267be66a4d018d7f7810944aaa23048d4c",
+  "bytes": 1029074,
+  "promptSha256": "8a548bebd9a5576a0b39cae3e5e012743e508d75ecda25c302be61e12d4a3b03",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

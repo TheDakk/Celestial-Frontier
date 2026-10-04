@@ -1,0 +1,13 @@
+{
+  "id": "14-coot",
+  "name": "Coot",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-03285bf1-40d8-4e81-ac31-f6c591ebf02c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "eb91f1edf108c7d682d8fec496163b10492fd43bc27313c8b9d9f3e17677f939",
+  "bytes": 1175399,
+  "promptSha256": "dc40eb86a39da64e3404f8c7a4b1dad280991a16d8dec692bffb4dd15291716a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

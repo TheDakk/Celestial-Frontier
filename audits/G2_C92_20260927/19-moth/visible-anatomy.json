@@ -1,0 +1,172 @@
+{
+  "id": "19-moth",
+  "name": "Moth",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "cab5adf003dc1f840c70bb8f1ea756e7a3269a3f6cbad77cfcb97991b7d7d3ef",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 22178,
+    "coreRadius": 31,
+    "bodyBox": {
+      "x0": 107,
+      "y0": 146,
+      "x1": 262,
+      "y1": 251
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0141,
+        "pixels": 313,
+        "box": {
+          "x0": 125,
+          "y0": 138,
+          "x1": 182,
+          "y1": 145
+        },
+        "attach": {
+          "x": 153.5,
+          "y": 145,
+          "relX": 0.3,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.88,
+          "y": -0.47
+        },
+        "class": "rear",
+        "length": 29.3
+      },
+      {
+        "k": 1,
+        "frac": 0.2217,
+        "pixels": 4917,
+        "box": {
+          "x0": 215,
+          "y0": 144,
+          "x1": 348,
+          "y1": 281
+        },
+        "attach": {
+          "x": 252.4,
+          "y": 224.4,
+          "relX": 0.94,
+          "relY": 0.75
+        },
+        "dir": {
+          "x": 0.94,
+          "y": -0.34
+        },
+        "class": "front",
+        "length": 124.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0526,
+        "pixels": 1167,
+        "box": {
+          "x0": 77,
+          "y0": 167,
+          "x1": 113,
+          "y1": 228
+        },
+        "attach": {
+          "x": 106.4,
+          "y": 200.6,
+          "relX": 0,
+          "relY": 0.52
+        },
+        "dir": {
+          "x": -0.9,
+          "y": 0.43
+        },
+        "class": "rear",
+        "length": 44.6
+      },
+      {
+        "k": 3,
+        "frac": 0.0463,
+        "pixels": 1026,
+        "box": {
+          "x0": 96,
+          "y0": 229,
+          "x1": 175,
+          "y1": 265
+        },
+        "attach": {
+          "x": 136.8,
+          "y": 248.7,
+          "relX": 0.19,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": -0.93,
+          "y": 0.36
+        },
+        "class": "rear",
+        "length": 45.3
+      },
+      {
+        "k": 4,
+        "frac": 0.0169,
+        "pixels": 374,
+        "box": {
+          "x0": 170,
+          "y0": 249,
+          "x1": 212,
+          "y1": 279
+        },
+        "attach": {
+          "x": 197.5,
+          "y": 249,
+          "relX": 0.58,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": -0.39,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 40.7
+      }
+    ],
+    "byClass": {
+      "rear": 3,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 170,
+        "x1": 184,
+        "cx": 176.8
+      },
+      {
+        "x0": 234,
+        "x1": 241,
+        "cx": 237
+      },
+      {
+        "x0": 289,
+        "x1": 302,
+        "cx": 295.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

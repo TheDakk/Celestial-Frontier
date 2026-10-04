@@ -1,0 +1,125 @@
+{
+  "id": "22-mayfly",
+  "name": "Mayfly",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "dbac85ac57471aae694f4118f53ac130e4ef57d9ed2a97fcfd133efdcab758e3",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 11154,
+    "coreRadius": 16,
+    "bodyBox": {
+      "x0": 220,
+      "y0": 121,
+      "x1": 296,
+      "y1": 260
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0152,
+        "pixels": 169,
+        "box": {
+          "x0": 232,
+          "y0": 109,
+          "x1": 253,
+          "y1": 120
+        },
+        "attach": {
+          "x": 242.5,
+          "y": 120,
+          "relX": 0.3,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.35,
+          "y": -0.94
+        },
+        "class": "top",
+        "length": 15.2
+      },
+      {
+        "k": 1,
+        "frac": 0.2011,
+        "pixels": 2243,
+        "box": {
+          "x0": 58,
+          "y0": 195,
+          "x1": 284,
+          "y1": 293
+        },
+        "attach": {
+          "x": 263.3,
+          "y": 257.2,
+          "relX": 0.57,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": -0.99,
+          "y": -0.1
+        },
+        "class": "front",
+        "length": 214.5
+      },
+      {
+        "k": 2,
+        "frac": 0.1191,
+        "pixels": 1328,
+        "box": {
+          "x0": 281,
+          "y0": 223,
+          "x1": 363,
+          "y1": 299
+        },
+        "attach": {
+          "x": 296.3,
+          "y": 247.3,
+          "relX": 1,
+          "relY": 0.91
+        },
+        "dir": {
+          "x": 0.94,
+          "y": 0.33
+        },
+        "class": "front",
+        "length": 84.4
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 2
+    },
+    "ground": [
+      {
+        "x0": 242,
+        "x1": 253,
+        "cx": 247.4
+      },
+      {
+        "x0": 290,
+        "x1": 302,
+        "cx": 295.2
+      },
+      {
+        "x0": 324,
+        "x1": 329,
+        "cx": 326.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

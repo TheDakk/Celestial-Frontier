@@ -1,0 +1,4 @@
+{
+  "stage": "authored-parts",
+  "error": "Error: Family admission: landmark outside painted alpha: antennaFarTip\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:10:39)\n    at checkFamilyGeometry (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:41:4)\n    at admitFamilyRecordContent (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:65:18)\n    at async cutAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:14:78)\n    at async buildAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-authored-parts.mjs:34:15)\n    at async file://~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs:112:16"
+}

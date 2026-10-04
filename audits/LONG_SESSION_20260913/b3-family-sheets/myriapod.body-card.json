@@ -1,0 +1,721 @@
+{
+ "kind": "body-card",
+ "identity": {
+  "speciesVisualKey": "synthetic:myriapod",
+  "seed": 659721,
+  "ownerId": "synthetic:a11-fixture",
+  "earthName": null
+ },
+ "recipeHash": null,
+ "template": {
+  "id": "myriapod",
+  "version": 1,
+  "clipSetId": "myriapod-v1"
+ },
+ "massClass": {
+  "name": "medium",
+  "multiplier": 1
+ },
+ "locomotion": {
+  "loco": "burrowers",
+  "gait": "walk",
+  "templateGait": "crawl"
+ },
+ "realm": "land",
+ "materials": {
+  "body": "chitinous",
+  "head": "chitinous",
+  "legs": "chitinous",
+  "tail": "chitinous",
+  "ears": "chitinous",
+  "wings": "chitinous",
+  "fins": "chitinous",
+  "antennae": "chitinous",
+  "fronds": "chitinous",
+  "arms": "chitinous"
+ },
+ "parts": [
+  {
+   "joint": "head",
+   "parent": "root",
+   "group": "head",
+   "pivot": [
+    0.55,
+    0.62
+   ],
+   "tip": [
+    0.7,
+    0.58
+   ],
+   "boneLength": 0.15524174696260018
+  },
+  {
+   "joint": "mandible",
+   "parent": "head",
+   "group": "head",
+   "pivot": [
+    0.7,
+    0.58
+   ],
+   "tip": [
+    0.76,
+    0.61
+   ],
+   "boneLength": 0.06708203932499375
+  },
+  {
+   "joint": "seg0",
+   "parent": "root",
+   "group": "body",
+   "pivot": [
+    0.55,
+    0.62
+   ],
+   "tip": [
+    0.48,
+    0.62
+   ],
+   "boneLength": 0.07000000000000006
+  },
+  {
+   "joint": "seg1",
+   "parent": "seg0",
+   "group": "body",
+   "pivot": [
+    0.48,
+    0.62
+   ],
+   "tip": [
+    0.41,
+    0.63
+   ],
+   "boneLength": 0.07071067811865477
+  },
+  {
+   "joint": "seg2",
+   "parent": "seg1",
+   "group": "body",
+   "pivot": [
+    0.41,
+    0.63
+   ],
+   "tip": [
+    0.34,
+    0.64
+   ],
+   "boneLength": 0.07071067811865471
+  },
+  {
+   "joint": "seg3",
+   "parent": "seg2",
+   "group": "body",
+   "pivot": [
+    0.34,
+    0.64
+   ],
+   "tip": [
+    0.27,
+    0.64
+   ],
+   "boneLength": 0.07
+  },
+  {
+   "joint": "seg4",
+   "parent": "seg3",
+   "group": "body",
+   "pivot": [
+    0.27,
+    0.64
+   ],
+   "tip": [
+    0.2,
+    0.63
+   ],
+   "boneLength": 0.07071067811865477
+  },
+  {
+   "joint": "seg5",
+   "parent": "seg4",
+   "group": "body",
+   "pivot": [
+    0.2,
+    0.63
+   ],
+   "tip": [
+    0.13,
+    0.62
+   ],
+   "boneLength": 0.07071067811865477
+  },
+  {
+   "joint": "seg6",
+   "parent": "seg5",
+   "group": "body",
+   "pivot": [
+    0.13,
+    0.62
+   ],
+   "tip": [
+    0.07,
+    0.61
+   ],
+   "boneLength": 0.0608276253029822
+  },
+  {
+   "joint": "seg7",
+   "parent": "seg6",
+   "group": "body",
+   "pivot": [
+    0.07,
+    0.61
+   ],
+   "tip": [
+    0.02,
+    0.6
+   ],
+   "boneLength": 0.050990195135927854
+  },
+  {
+   "joint": "legAFarKnee",
+   "parent": "seg0",
+   "group": "legs",
+   "pivot": [
+    0.48,
+    0.62
+   ],
+   "tip": [
+    0.5,
+    0.7
+   ],
+   "boneLength": 0.08246211251235316
+  },
+  {
+   "joint": "legAFarFoot",
+   "parent": "legAFarKnee",
+   "group": "legs",
+   "pivot": [
+    0.5,
+    0.7
+   ],
+   "tip": [
+    0.52,
+    0.8
+   ],
+   "boneLength": 0.10198039027185579
+  },
+  {
+   "joint": "legANearKnee",
+   "parent": "seg0",
+   "group": "legs",
+   "pivot": [
+    0.48,
+    0.62
+   ],
+   "tip": [
+    0.52,
+    0.72
+   ],
+   "boneLength": 0.10770329614269007
+  },
+  {
+   "joint": "legANearFoot",
+   "parent": "legANearKnee",
+   "group": "legs",
+   "pivot": [
+    0.52,
+    0.72
+   ],
+   "tip": [
+    0.54,
+    0.82
+   ],
+   "boneLength": 0.10198039027185568
+  },
+  {
+   "joint": "legBFarKnee",
+   "parent": "seg2",
+   "group": "legs",
+   "pivot": [
+    0.34,
+    0.64
+   ],
+   "tip": [
+    0.36,
+    0.71
+   ],
+   "boneLength": 0.07280109889280513
+  },
+  {
+   "joint": "legBFarFoot",
+   "parent": "legBFarKnee",
+   "group": "legs",
+   "pivot": [
+    0.36,
+    0.71
+   ],
+   "tip": [
+    0.37,
+    0.81
+   ],
+   "boneLength": 0.10049875621120899
+  },
+  {
+   "joint": "legBNearKnee",
+   "parent": "seg2",
+   "group": "legs",
+   "pivot": [
+    0.34,
+    0.64
+   ],
+   "tip": [
+    0.38,
+    0.73
+   ],
+   "boneLength": 0.09848857801796101
+  },
+  {
+   "joint": "legBNearFoot",
+   "parent": "legBNearKnee",
+   "group": "legs",
+   "pivot": [
+    0.38,
+    0.73
+   ],
+   "tip": [
+    0.39,
+    0.83
+   ],
+   "boneLength": 0.10049875621120888
+  },
+  {
+   "joint": "legCFarKnee",
+   "parent": "seg4",
+   "group": "legs",
+   "pivot": [
+    0.2,
+    0.63
+   ],
+   "tip": [
+    0.22,
+    0.7
+   ],
+   "boneLength": 0.07280109889280513
+  },
+  {
+   "joint": "legCFarFoot",
+   "parent": "legCFarKnee",
+   "group": "legs",
+   "pivot": [
+    0.22,
+    0.7
+   ],
+   "tip": [
+    0.22,
+    0.8
+   ],
+   "boneLength": 0.10000000000000009
+  },
+  {
+   "joint": "legCNearKnee",
+   "parent": "seg4",
+   "group": "legs",
+   "pivot": [
+    0.2,
+    0.63
+   ],
+   "tip": [
+    0.24,
+    0.72
+   ],
+   "boneLength": 0.09848857801796101
+  },
+  {
+   "joint": "legCNearFoot",
+   "parent": "legCNearKnee",
+   "group": "legs",
+   "pivot": [
+    0.24,
+    0.72
+   ],
+   "tip": [
+    0.24,
+    0.82
+   ],
+   "boneLength": 0.09999999999999998
+  },
+  {
+   "joint": "legDFarKnee",
+   "parent": "seg6",
+   "group": "legs",
+   "pivot": [
+    0.07,
+    0.61
+   ],
+   "tip": [
+    0.09,
+    0.68
+   ],
+   "boneLength": 0.07280109889280525
+  },
+  {
+   "joint": "legDFarFoot",
+   "parent": "legDFarKnee",
+   "group": "legs",
+   "pivot": [
+    0.09,
+    0.68
+   ],
+   "tip": [
+    0.08,
+    0.78
+   ],
+   "boneLength": 0.10049875621120888
+  },
+  {
+   "joint": "legDNearKnee",
+   "parent": "seg6",
+   "group": "legs",
+   "pivot": [
+    0.07,
+    0.61
+   ],
+   "tip": [
+    0.11,
+    0.7
+   ],
+   "boneLength": 0.09848857801796101
+  },
+  {
+   "joint": "legDNearFoot",
+   "parent": "legDNearKnee",
+   "group": "legs",
+   "pivot": [
+    0.11,
+    0.7
+   ],
+   "tip": [
+    0.1,
+    0.8
+   ],
+   "boneLength": 0.10049875621120899
+  },
+  {
+   "joint": "antennaFar",
+   "parent": "head",
+   "group": "antennae",
+   "pivot": [
+    0.7,
+    0.58
+   ],
+   "tip": [
+    0.78,
+    0.5
+   ],
+   "boneLength": 0.11313708498984762
+  },
+  {
+   "joint": "antennaNear",
+   "parent": "head",
+   "group": "antennae",
+   "pivot": [
+    0.7,
+    0.58
+   ],
+   "tip": [
+    0.8,
+    0.52
+   ],
+   "boneLength": 0.11661903789690606
+  }
+ ],
+ "secondaryParts": [
+  {
+   "id": "tail",
+   "driver": "seg5",
+   "joints": [
+    "seg6",
+    "seg7"
+   ],
+   "lagOrder": [
+    0,
+    1
+   ],
+   "material": "chitinous",
+   "kind": "tail"
+  },
+  {
+   "id": "antennaFar",
+   "driver": "head",
+   "joints": [
+    "antennaFar"
+   ],
+   "lagOrder": [
+    0
+   ],
+   "material": "chitinous",
+   "kind": "antenna"
+  },
+  {
+   "id": "antennaNear",
+   "driver": "head",
+   "joints": [
+    "antennaNear"
+   ],
+   "lagOrder": [
+    0
+   ],
+   "material": "chitinous",
+   "kind": "antenna"
+  }
+ ],
+ "weapons": [
+  "bite",
+  "sting"
+ ],
+ "luminous": false,
+ "bodyLength": 0.680294054067798,
+ "groundLineY": 0.82,
+ "landmarks": {
+  "root": [
+   0.55,
+   0.62
+  ],
+  "head": [
+   0.7,
+   0.58
+  ],
+  "mandible": [
+   0.76,
+   0.61
+  ],
+  "seg0": [
+   0.48,
+   0.62
+  ],
+  "seg1": [
+   0.41,
+   0.63
+  ],
+  "seg2": [
+   0.34,
+   0.64
+  ],
+  "seg3": [
+   0.27,
+   0.64
+  ],
+  "seg4": [
+   0.2,
+   0.63
+  ],
+  "seg5": [
+   0.13,
+   0.62
+  ],
+  "seg6": [
+   0.07,
+   0.61
+  ],
+  "seg7": [
+   0.02,
+   0.6
+  ],
+  "legAFarKnee": [
+   0.5,
+   0.7
+  ],
+  "legAFarFoot": [
+   0.52,
+   0.8
+  ],
+  "legANearKnee": [
+   0.52,
+   0.72
+  ],
+  "legANearFoot": [
+   0.54,
+   0.82
+  ],
+  "legBFarKnee": [
+   0.36,
+   0.71
+  ],
+  "legBFarFoot": [
+   0.37,
+   0.81
+  ],
+  "legBNearKnee": [
+   0.38,
+   0.73
+  ],
+  "legBNearFoot": [
+   0.39,
+   0.83
+  ],
+  "legCFarKnee": [
+   0.22,
+   0.7
+  ],
+  "legCFarFoot": [
+   0.22,
+   0.8
+  ],
+  "legCNearKnee": [
+   0.24,
+   0.72
+  ],
+  "legCNearFoot": [
+   0.24,
+   0.82
+  ],
+  "legDFarKnee": [
+   0.09,
+   0.68
+  ],
+  "legDFarFoot": [
+   0.08,
+   0.78
+  ],
+  "legDNearKnee": [
+   0.11,
+   0.7
+  ],
+  "legDNearFoot": [
+   0.1,
+   0.8
+  ],
+  "antennaFar": [
+   0.78,
+   0.5
+  ],
+  "antennaNear": [
+   0.8,
+   0.52
+  ]
+ },
+ "bounds": {
+  "inside": true,
+  "clamped": [],
+  "limitsDeg": {
+   "root": {
+    "min": -20,
+    "max": 20
+   },
+   "head": {
+    "min": -35,
+    "max": 35
+   },
+   "mandible": {
+    "min": -40,
+    "max": 5
+   },
+   "seg0": {
+    "min": -35,
+    "max": 35
+   },
+   "seg1": {
+    "min": -35,
+    "max": 35
+   },
+   "seg2": {
+    "min": -35,
+    "max": 35
+   },
+   "seg3": {
+    "min": -35,
+    "max": 35
+   },
+   "seg4": {
+    "min": -60,
+    "max": 60
+   },
+   "seg5": {
+    "min": -60,
+    "max": 60
+   },
+   "seg6": {
+    "min": -60,
+    "max": 60
+   },
+   "seg7": {
+    "min": -60,
+    "max": 60
+   },
+   "legAFarKnee": {
+    "min": -60,
+    "max": 60
+   },
+   "legAFarFoot": {
+    "min": -70,
+    "max": 70
+   },
+   "legANearKnee": {
+    "min": -60,
+    "max": 60
+   },
+   "legANearFoot": {
+    "min": -70,
+    "max": 70
+   },
+   "legBFarKnee": {
+    "min": -60,
+    "max": 60
+   },
+   "legBFarFoot": {
+    "min": -70,
+    "max": 70
+   },
+   "legBNearKnee": {
+    "min": -60,
+    "max": 60
+   },
+   "legBNearFoot": {
+    "min": -70,
+    "max": 70
+   },
+   "legCFarKnee": {
+    "min": -60,
+    "max": 60
+   },
+   "legCFarFoot": {
+    "min": -70,
+    "max": 70
+   },
+   "legCNearKnee": {
+    "min": -60,
+    "max": 60
+   },
+   "legCNearFoot": {
+    "min": -70,
+    "max": 70
+   },
+   "legDFarKnee": {
+    "min": -60,
+    "max": 60
+   },
+   "legDFarFoot": {
+    "min": -70,
+    "max": 70
+   },
+   "legDNearKnee": {
+    "min": -60,
+    "max": 60
+   },
+   "legDNearFoot": {
+    "min": -70,
+    "max": 70
+   },
+   "antennaFar": {
+    "min": -50,
+    "max": 50
+   },
+   "antennaNear": {
+    "min": -50,
+    "max": 50
+   }
+  }
+ },
+ "notes": [
+  "gait \"walk\" has no myriapod approach; using crawl"
+ ]
+}

@@ -1,0 +1,196 @@
+{
+  "schema": "cf.c163-unique-transform/v1",
+  "inputs": [
+    {
+      "path": "audits/C132_EFFECTS_20261001/native-runner.mjs",
+      "sha256": "ebea324f81f73d6e8530ee02c59a61f4dd686dd4ec8490a491848b3e3a7e0628"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/native-entry.mjs",
+      "sha256": "48417f22fccbb01ca80ca06a4017d59529b272cdb0e93d0790a1a8e89845b833"
+    }
+  ],
+  "changes": [
+    {
+      "label": "audit entry and exact case",
+      "fromSha256": "c1980e1239bf7a8a0fa4c6b9a6c5f210377c09cc27074aef8f6f5343415426b0",
+      "toSha256": "dab6c955c7cbfbb8fc5bb92a15337ad78efdb58ae7e97d582b51b3f4cad8d615"
+    },
+    {
+      "label": "current audit entry",
+      "fromSha256": "bd0b2dfffade3f19a993b43c914ddb912866bb42560740ee12799c7a7d60e8b5",
+      "toSha256": "61fd0a9cd5bf1eaf59bf909eef97ec942c2611f84c9494081c00c88d0c217091"
+    },
+    {
+      "label": "audit Pixi resolution",
+      "fromSha256": "334c8824a119b62618dff153e1a2bbc8dc07b68d4e9aac33b26d63130c8e0ab2",
+      "toSha256": "652ee8079540d350a0b6e04ff88d736412948f7a4af81d6928210a93674bda0a"
+    },
+    {
+      "label": "registered markings",
+      "fromSha256": "d8b96bf6c119cdefa264476d2ef24ce4806a528604caccb094cef001ca6a34a7",
+      "toSha256": "5b2ef147c3340bd81e73400eeb2091b6ee9ddcfcdbd6088844dd4fcee7d5fb80"
+    },
+    {
+      "label": "script input receipt",
+      "fromSha256": "7e150105da8bcb8e0c8b262fa112d9c8fb64e6bbb5ae47369f63743abb048557",
+      "toSha256": "a12254b67e257a287677d82fb297fe1b1a8b5ff2999c0ea2ef3e00891b9ac474"
+    },
+    {
+      "label": "WebP MIME despite flat aliases",
+      "fromSha256": "57bfcfe04ad39c34240aad8a6b1e088bf2548dceb53c7a0765b6730091d13b01",
+      "toSha256": "f8fb7c9c19e7e12050dd30987eb09df65f9649e5225065edcc2a0ea09ae18d84"
+    },
+    {
+      "label": "launch review stills",
+      "fromSha256": "22c4df4e56d68651fe3ce7dedf281fe047f249fcc351ded0989ca732a62227e8",
+      "toSha256": "5334ca2dc50ab94304b79dce15c49e59c3c14e173a89abd89bf04dcf472b1faf"
+    },
+    {
+      "label": "default four-times CPU",
+      "fromSha256": "0db5115764dd6381b15e46af45ec27abdef45bd9e4087177cfba5e0441e16e9d",
+      "toSha256": "07e39b5bb2fe43b3c5549fcb7fee8d0bdda773b49a72a8e7a543e85023e37bc9"
+    },
+    {
+      "label": "exact sweep throttle",
+      "fromSha256": "40e4e5f3716749a3879acc251f2cde93548f42d4852bacd547954f25571bcddf",
+      "toSha256": "27b279bf7713bd871cf0fabce33f7d8f66c67bcfe4068aa4407785d08581ffed"
+    },
+    {
+      "label": "immutable raw sample ledger",
+      "fromSha256": "4170340a1d93ceffd194145fc1161f95cd06020143c428ad81304ab5d249d064",
+      "toSha256": "b1ce3ea6077441998558e41ba572335db210dbdb27ae14d0e145c4db4085740a"
+    },
+    {
+      "label": "retained source guard",
+      "fromSha256": "f26274ab77131d227cf69960fd5ac7da2765ac24fac060e293f648bd213bfc07",
+      "toSha256": "f26274ab77131d227cf69960fd5ac7da2765ac24fac060e293f648bd213bfc07"
+    },
+    {
+      "label": "strict pair validator before final save",
+      "fromSha256": "785e1e393d7bdd1cde99bd422872b7fdce31155569c43a1173d47b2407882286",
+      "toSha256": "4383bb2b80d3e649c835f96c965b8ff38298ed322fbbcaae186d8ea3892d77e2"
+    },
+    {
+      "label": "truthful scope",
+      "fromSha256": "1dac685d8d5e41fc618da0ebc24238d0bd12873298fe2ea4e282c1f5736ae4ec",
+      "toSha256": "33b8186a0a0ce5644d6e81bfa7a7cb26752c62d235bfea04387081cc061d6a17"
+    },
+    {
+      "label": "actual pair asset and producer guards",
+      "fromSha256": "7edddf05700a0ad3b2c271e8c93b1a1ac47b4efb1f47930dae2c051aa977e1fa",
+      "toSha256": "28b77dfab7491c63a0a8eb732ae2548372446525393fa369446fde0143c006d6"
+    },
+    {
+      "label": "timeline owner",
+      "fromSha256": "b1d5606b034cfd1ac165c56d46db514495d9adc7194e9b533d907968cad4ff58",
+      "toSha256": "6785be35338610de73f01f1ba642218e4b454f625eae85f55b492ddff2c1950c"
+    },
+    {
+      "label": "media owner",
+      "fromSha256": "833b165762391faa39fff084178f371a840f3db52a65a36fc4413a3fe39a51ef",
+      "toSha256": "c752a84ac230c326a6be73ab66b45ac85baa40889aee19b12cc1341c0da95a80"
+    },
+    {
+      "label": "guardian timeline owner",
+      "fromSha256": "294140a4db4e02261e66a8487e8bb94988b5612a353e9a3087bb598389a0f843",
+      "toSha256": "6a71231fe404e66034a22f6393f2538e259a2b026306a07844058080cf2cf761"
+    },
+    {
+      "label": "registered supports source",
+      "fromSha256": "4148d219713d538b5a6ebba89db1daa11c13ad8918e878543205d7666cbdc78f",
+      "toSha256": "37e8af2f719c4372da7871b43a6f5b68a8b31f8814e15c837a4c95c821040065"
+    },
+    {
+      "label": "per-side registered support validation",
+      "fromSha256": "2ea51d917fd37fdf308ef9a5f6c21ec54707cd15085abb53bee77c142d55fac7",
+      "toSha256": "59451f38361fee6747baaf847a1b815e4d5c9f27446bac9a49b6ba753e2669eb"
+    },
+    {
+      "label": "body card support mode",
+      "fromSha256": "ce82d73fab8fcc8765f98e9aa06ed557e9425f9cb07637f2e3d1b6fb93dee2fa",
+      "toSha256": "42a38ad5471874537c1e5a4241ec2699ea2db359eac1c38490380cab87b43b37"
+    },
+    {
+      "label": "rig support mode",
+      "fromSha256": "b93221ce9f61b08ec0e95e655ef95cbb6e4070079d5d3ac9701821e84610856a",
+      "toSha256": "dc8fef8ba92b03bf0d8bf2f8c8ff57be7a7ef1eafbde6af56b39b5f3feca91e1"
+    },
+    {
+      "label": "support evidence",
+      "fromSha256": "604c9bcbeb960d7f6803089f109f1698c28eab08c7e58f910626454d6d5ea58a",
+      "toSha256": "57574d00c1e4c0c4a2c918212f90444815bb995bff206dfee2979625802501f7"
+    },
+    {
+      "label": "exact declared world context",
+      "fromSha256": "ba0024986398bce0ab06e43457e15bfd0d2c0f22e62b772d39a760b6223e3050",
+      "toSha256": "5da95b2846a249fb209e2204be0ebdac50176c824546eb11fd1eca3ea6b22146"
+    },
+    {
+      "label": "accepted water plate behavior",
+      "fromSha256": "d27c230f038688fe26a9da93ae3aed1931a41c4d5a9772ac1123329b488d4f50",
+      "toSha256": "9bbf2a0b65ced16575c06ec05698aee01d650f377bed215c5d0c8fd0cd4b0378"
+    },
+    {
+      "label": "no anatomical fallback",
+      "fromSha256": "7938a0428242529a0bc83ea6e9c57c6dbbf0f873da1abb740ecd97a8563cf4d7",
+      "toSha256": "6a3cd7a3158311e861bb9147887be41510b5f7c6901f416d0102b1061b159064"
+    },
+    {
+      "label": "left mirror-pair transcript label",
+      "fromSha256": "f70b92d5b89a4ea8f2db3ff7829620ee5a8a7116bbff433cb90048624236bcb1",
+      "toSha256": "5eb770ca3f23db99bddf283ae1db1117b5ac0ab1ee8e57ec2f70b2afab30906f"
+    },
+    {
+      "label": "right mirror-pair transcript label",
+      "fromSha256": "3bab6169340a902df582bb5eae5acf0cdd520cc05c1ae7870480663f320ae073",
+      "toSha256": "38513b5b1b32642d18ab92ba05c259f8e078c738fcbaf445c69ed19de6de947a"
+    },
+    {
+      "label": "actual turn anatomy and effect evidence",
+      "fromSha256": "4c64f9b11b080abca69b0b3fe389d6dbe2dba64ecaef01142d1009d7297f2ee2",
+      "toSha256": "6dfae820e565e2304462908b41cae69a625fd64ac996c3d0259ecd9a30e64498"
+    },
+    {
+      "label": "posed launch contact observation",
+      "fromSha256": "4dfdf6b9d8814bb6ce45ec5463b7701aab4ccb600be9f075332cb0a4cd85b9cf",
+      "toSha256": "c28304f93cbf20778496bf40a795831136ac127fd539ed4c1c010a2a9d9ad5e2"
+    },
+    {
+      "label": "actual supports and plate medium gates",
+      "fromSha256": "a227df84bea6a683c5d77a1e4ea4653193a8cdc6969f1e02e8af15586f28f034",
+      "toSha256": "57eee503ca30f441d60d2d00f91f5c884dc95866db2c211b52ea28a1cd1a3f8e"
+    },
+    {
+      "label": "independent live sequence counter",
+      "fromSha256": "4b5b23953e114691cbf69cc9ac9f6a0ab90bd6fd18f6f4f8955189961af60a22",
+      "toSha256": "f87bfd6bdb625ea59a9d80183631d054eb22180d064d42eff25af772293a704d"
+    },
+    {
+      "label": "live sample index",
+      "fromSha256": "062bcc5be22d9a1b0b27371d6a819529a445f9c03094a3a86368fa6f4a1c890c",
+      "toSha256": "ffdedfe977b36d1bea1e010f3d12f0b56201328f1c456d8657d12b585308f44d"
+    },
+    {
+      "label": "live actions outside timed stage work",
+      "fromSha256": "1e92d69694c40ef525392e88999245983499f97ff3ef17831d0f54c9d4e528d2",
+      "toSha256": "71aac6d6ef9f5a4738f133f89201518f1d33d157e5d1a9fd13947bf8741a8f82"
+    },
+    {
+      "label": "sequence completeness evidence",
+      "fromSha256": "915c21fa79d3ac6b2964f4bc9b47fc4c821b95b741e027758e100481ee65b927",
+      "toSha256": "57e105a4dcbdd4ebef43d080b6c923fb0463d58943110524bdb6ef1300ea8513"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/native-runner.mjs",
+      "sha256": "b16ceb7643174ffe10f2721a489a96aaa0da1cffc686bbe1ac1083969f213028"
+    },
+    {
+      "path": "audits/C163_ALL_PAIRS_20261002/native-entry.mjs",
+      "sha256": "63484adb5f1e398fd4cc95d2ae8171098db9de023e9cae34e9522e656866625e"
+    }
+  ],
+  "productionEdited": false
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Whiptail",
+  "masterSha256": "b382a570d15152f738fc8073d59e5ceb5ad879c4db404da56ea356046e427f77",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Slender striped body with very long complete whip tail, pointed snout and four separate feet. Near/far distal shafts are distinct, though far attachments remain behind the trunk. Contacts at differing heights; tail tip near left margin. Natural tail length retained rather than shortened.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 97,
+      "y0": 527,
+      "x1": 1138,
+      "y1": 719
+    },
+    "margins": {
+      "left": 97,
+      "right": 115,
+      "top": 527,
+      "bottom": 534
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

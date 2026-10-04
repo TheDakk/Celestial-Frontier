@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "savanna-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/savanna-v2/arena-composed-review.png"
+  ],
+  "findings": [
+    "Full-size existing 1672×941 composite re-inspected under D29. The corrected MID avoids the prior baked mountain/chopped-canopy problem; warm grasses and acacias establish the biome.",
+    "The NEAR makes a conspicuous horizontal ridge and abrupt texture transition across the bottom, with bright edge remnants on grasses. Repeated horizontal dirt bands read as layered strips in the static composition.",
+    "D29 removes only the native-size rejection. Current mechanical validation cannot confer seam quality, native performance, registration or Dakk acceptance; earlier evidence and original bytes remain unchanged."
+  ]
+}

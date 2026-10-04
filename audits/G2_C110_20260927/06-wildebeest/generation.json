@@ -1,0 +1,13 @@
+{
+  "id": "06-wildebeest",
+  "name": "Wildebeest",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-3651ff91-1820-494c-ac66-b04e22aece17.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2a9cb7c16dbfe52d06bd9e3030dc78d380f82eb92e3058bb21acbf7fd8469b6f",
+  "bytes": 1285765,
+  "promptSha256": "ccc407067ce034073740ad6238a9db06b04d491b2bcdf75ef0d74bd966a5e019",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

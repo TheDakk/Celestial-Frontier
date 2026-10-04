@@ -1,0 +1,166 @@
+{
+  "schema": "cf.c198-tortoise-conservation/v1",
+  "status": "PASS",
+  "before": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin",
+  "after": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes",
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": 0,
+  "materialsChanged": 0,
+  "priorRegionsChanged": 0,
+  "addedRegions": [
+    {
+      "id": "far-front-shin-fringe",
+      "joint": "foreFarKnee",
+      "layer": "far",
+      "polygonPx": [
+        [
+          860,
+          785
+        ],
+        [
+          885,
+          787
+        ],
+        [
+          900,
+          816
+        ],
+        [
+          895,
+          842
+        ],
+        [
+          874,
+          846
+        ],
+        [
+          865,
+          829
+        ],
+        [
+          859,
+          810
+        ]
+      ]
+    },
+    {
+      "id": "far-hind-shin-fringe",
+      "joint": "hindFarKnee",
+      "layer": "far",
+      "polygonPx": [
+        [
+          399,
+          782
+        ],
+        [
+          424,
+          776
+        ],
+        [
+          439,
+          790
+        ],
+        [
+          444,
+          814
+        ],
+        [
+          425,
+          839
+        ],
+        [
+          399,
+          832
+        ]
+      ]
+    }
+  ],
+  "ownerPixelsChanged": 433,
+  "ownerChanges": {
+    "foreFarKnee": 398,
+    "hindFarKnee": 35
+  },
+  "changedSourceBoundsPx": {
+    "foreFarKnee": [
+      862,
+      795,
+      883,
+      838
+    ],
+    "hindFarKnee": [
+      407,
+      808,
+      410,
+      821
+    ]
+  },
+  "nonRootPriorOwnerChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "controls": [
+    "independent original and candidate owner replay",
+    "exact original source and keyed RGBA",
+    "changed RGB rejected",
+    "deleted paint rejected",
+    "non-root owner theft rejected",
+    "unrelated owner assignment rejected",
+    "changed landmark rejected",
+    "changed material rejected"
+  ],
+  "inputs": [
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/keyed.png",
+      "sha256": "ab4258dc5c41a09fdf238334b29554f839d436f744e9b4240cfbfadf894322f7"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/parts/ownership.png",
+      "sha256": "ec9dde6ef8626423c4dfaf892676edcaae594765619d31bfdf723e89dc978d01"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/keyed.png",
+      "sha256": "ab4258dc5c41a09fdf238334b29554f839d436f744e9b4240cfbfadf894322f7"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/parts/ownership.png",
+      "sha256": "291b6ec94536504ed87affc64880855500a85996f0786287841a855bbde8624b"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/authoring.json",
+      "sha256": "2dd7eceb19646b145ae3403a7461058cef10a2bfb62575d481d63db8976dbe32"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/authoring.json",
+      "sha256": "c0c96e04de651327b755db970698a7b654fca09d57c3328a525784c9cac5e15e"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/record.json",
+      "sha256": "5ae7be808a4d663a43f48f851f14f218fd613401a9c4c5fceaa8ee35fab582a5"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/record.json",
+      "sha256": "18cd7b0f7a6c16193b626444910b4b83f06c20c208ebce692686aef9ac53f798"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/binding.json",
+      "sha256": "4d434d310c76478ed379c52931bf4ccff52ecefae32dfc0228eadf65e0898705"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/02-both-far-leg-fringes/fit01/binding.json",
+      "sha256": "87866ac33885922e92b496bdb6ea399c245ad70421aacababea6f8df87b0d8cc"
+    },
+    {
+      "path": "audits/C198_TORTOISE_CAPTURE_20261003/source-controls.mjs",
+      "sha256": "2d89812be5f8130164c7abc8058d0c02542fa6d99d82a7f080c8a5ee0610840e"
+    }
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

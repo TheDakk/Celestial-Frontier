@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wildcat",
+  "masterSha256": "16fa30958dfa493f6672ecdcc134a86580e5abd8bd6bf5d5fbb90d850cb5c6c9",
+  "required": [
+    "broad head with a striped tabby coat"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "broad head with a striped tabby coat",
+      "status": "PRESENT",
+      "observed": "Four distinct feet and both ear tips, grey-brown tabby striping, dark tail rings and a blunt black tail tip. Tail is complete and clear of the legs but rather short in projection; automatic identity/length review required. No extra limb apparent."
+    }
+  ]
+}

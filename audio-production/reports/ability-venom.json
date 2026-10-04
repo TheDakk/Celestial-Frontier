@@ -1,0 +1,450 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "ability.venom.cast.1",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 0.6,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": 67,
+      "requirements": [
+        "ability.venom.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/ability-venom/ability.venom.cast.1.wav",
+      "masterSha256": "322c03f7db21b4ed4ff56bee7eb8c357de55e0d9ea1b9f3a19d343f986a2a71c",
+      "opus": "masters/ability-venom/ability.venom.cast.1.opus",
+      "opusSha256": "753434d40f94b52b093ffb037e63ebff20daded880670cb88cf87d35b6c8cb77",
+      "previewSha256": "cdc4994833c9a2f25595903218ecf2691c83364dc4bd8d4d1a5fe3d3c94b9963",
+      "previewBytes": 57714,
+      "previewUrl": "/__cf-audio-review/ability.venom.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "ability.venom.cast.2",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": 68,
+      "requirements": [
+        "ability.venom.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1.6,
+      "master": "masters/ability-venom/ability.venom.cast.2.wav",
+      "masterSha256": "cb42e154ef8976eba5b8c6a476faee47379e5ebd5c96aaed1fe686bdbc344419",
+      "opus": "masters/ability-venom/ability.venom.cast.2.opus",
+      "opusSha256": "8108630af24f91819452d286c0a845eea589b542a0731899dfceac3e6a679604",
+      "previewSha256": "92a6efa593e22a09eebcb5230eae462fe58fc57cd1c860bd3fb00750947f09e5",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.venom.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.6,
+      "opusDbTP": -6.5
+    },
+    {
+      "id": "ability.venom.cast.3",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 0.6374,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": 69,
+      "requirements": [
+        "ability.venom.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 6.6,
+      "master": "masters/ability-venom/ability.venom.cast.3.wav",
+      "masterSha256": "32ab0f2e1a7fdc0e1204bd41d45b753d58e1306a85e9fbb800970610ab4bf15e",
+      "opus": "masters/ability-venom/ability.venom.cast.3.opus",
+      "opusSha256": "b0e71ac4124a39e1c1cf259aec446fc3ec64a088a0748b6303d5eebab9ecdc8f",
+      "previewSha256": "724369709186a51877c0b299459bbd12d3db4feaf3d18d2483aed4e1383dea6c",
+      "previewBytes": 61304,
+      "previewUrl": "/__cf-audio-review/ability.venom.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.7,
+      "opusDbTP": -5.7
+    },
+    {
+      "id": "ability.venom.impact.1",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 0.6,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": 55,
+      "requirements": [
+        "ability.venom.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 8.2374,
+      "master": "masters/ability-venom/ability.venom.impact.1.wav",
+      "masterSha256": "96c99dcf3973fe1529a9ead4a6ab9f914c592df23255b30b008643bf9383e4d6",
+      "opus": "masters/ability-venom/ability.venom.impact.1.opus",
+      "opusSha256": "96510a29105fb3555a8fa1a2d8a9643044b121a14254633362064461c364490e",
+      "previewSha256": "8f4c638f60f9203bb33ff5995371ebae5369b328ab96444dd4b6fcbe1494015a",
+      "previewBytes": 57714,
+      "previewUrl": "/__cf-audio-review/ability.venom.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "ability.venom.impact.2",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": 56,
+      "requirements": [
+        "ability.venom.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 9.837399999999999,
+      "master": "masters/ability-venom/ability.venom.impact.2.wav",
+      "masterSha256": "f8b3bbdb6ec4368b53e0fd99b0a54b827aaf08b2021b876a56c686b7e94c5a1d",
+      "opus": "masters/ability-venom/ability.venom.impact.2.opus",
+      "opusSha256": "cf25261dd474fb46911b99710e6fed440983d79a1108f9fc86d0e5dc0f28e7df",
+      "previewSha256": "50cbb8df39e5546e5ca98f4c7e79ae1606682456d41c09c36b1732d79418cea0",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.venom.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.7,
+      "opusDbTP": -6.7
+    },
+    {
+      "id": "ability.venom.impact.3",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 0.6374,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": 57,
+      "requirements": [
+        "ability.venom.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 14.837399999999999,
+      "master": "masters/ability-venom/ability.venom.impact.3.wav",
+      "masterSha256": "61119aa2997dfe4a44d60ac871fff0db0c21d0bc9fff93aabb83a4a9994e8271",
+      "opus": "masters/ability-venom/ability.venom.impact.3.opus",
+      "opusSha256": "c10327a1bb2ec05ea8c2d0ca07c7a3a0086a6838173f205c870f75884babafd6",
+      "previewSha256": "2a532f768f2e90ed46045416c60f9d10192ff213bba45d427afa98ee764e101c",
+      "previewBytes": 61304,
+      "previewUrl": "/__cf-audio-review/ability.venom.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.7,
+      "opusDbTP": -5.7
+    },
+    {
+      "id": "ability.venom.sustain.1",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 0.5,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": 55,
+      "requirements": [
+        "ability.venom.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 16.4748,
+      "master": "masters/ability-venom/ability.venom.sustain.1.wav",
+      "masterSha256": "a9025a53c69e2befa772a3d60587f76176d2de0a97e3ce1b164edc1690e01d0f",
+      "opus": "masters/ability-venom/ability.venom.sustain.1.opus",
+      "opusSha256": "3392524f927ffca66a2243c4b4624edcde50466c5dfae447b99b87f7622faa6d",
+      "previewSha256": "5688fbc239a5378d8dd64756900dd62741bc452e4e05c310a0a7980edde2f2d3",
+      "previewBytes": 48114,
+      "previewUrl": "/__cf-audio-review/ability.venom.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "ability.venom.sustain.2",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 4.7098,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": 56,
+      "requirements": [
+        "ability.venom.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 17.9748,
+      "master": "masters/ability-venom/ability.venom.sustain.2.wav",
+      "masterSha256": "261109e5bec21c481d27a2f9ab6ad50c9e943ea5bccd95cb0e8ab13ee57c2a0d",
+      "opus": "masters/ability-venom/ability.venom.sustain.2.opus",
+      "opusSha256": "b6a603894be78be662a70987e9e5c904717b6768f531c7d43537d20a9aab5502",
+      "previewSha256": "71349714151f715264ce69c16c130c0368fc84eb81c20989e6499c0b25e315af",
+      "previewBytes": 452254,
+      "previewUrl": "/__cf-audio-review/ability.venom.sustain.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "ability.venom.sustain.3",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 0.5374,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": 57,
+      "requirements": [
+        "ability.venom.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 23.6846,
+      "master": "masters/ability-venom/ability.venom.sustain.3.wav",
+      "masterSha256": "cff29cb6a15c70e2012f9e64e8c9088f2919371171d7042551dcf8869d8dc34e",
+      "opus": "masters/ability-venom/ability.venom.sustain.3.opus",
+      "opusSha256": "a6e3db002944e0d4037cb093f190dd759495005a723cd76a8059f0f255a6aa0f",
+      "previewSha256": "b874b2b072c9cca2a37f0e22b0d73739fb05dad9edd534e987966abca9a5731d",
+      "previewBytes": 51704,
+      "previewUrl": "/__cf-audio-review/ability.venom.sustain.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.7,
+      "opusDbTP": -5.6
+    },
+    {
+      "id": "ability.venom.release.1",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 0.6,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": 55,
+      "requirements": [
+        "ability.venom.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 25.222,
+      "master": "masters/ability-venom/ability.venom.release.1.wav",
+      "masterSha256": "52db08b4d982a366820990a865f6b73a8e13d6667cd5590dd999c6e30c337e39",
+      "opus": "masters/ability-venom/ability.venom.release.1.opus",
+      "opusSha256": "2ea7c04f9708dc9317f67d80b7782279e5d27a9742dfe4be54748c9c4373124b",
+      "previewSha256": "9c8f2a018292b7e623bda676be0578f3002d7b66ead0ad4236c9329ab0fd68fb",
+      "previewBytes": 57714,
+      "previewUrl": "/__cf-audio-review/ability.venom.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "ability.venom.release.2",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": 56,
+      "requirements": [
+        "ability.venom.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 26.822000000000003,
+      "master": "masters/ability-venom/ability.venom.release.2.wav",
+      "masterSha256": "679324f1edc80a7658a5c8a3006f9e59047f16d1205f7594c7a099b9403cdae0",
+      "opus": "masters/ability-venom/ability.venom.release.2.opus",
+      "opusSha256": "3df6376c56bcb5bfcd79328a86e02fc3e60dd52849733b7c67ec9f07c04b6ff0",
+      "previewSha256": "b986572f3030591a90177061de2f21cb326562920e5c1a6c4c2fcba15a94db64",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/ability.venom.release.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.7,
+      "opusDbTP": -6.7
+    },
+    {
+      "id": "ability.venom.release.3",
+      "group": "ability-venom",
+      "kind": "designed",
+      "duration": 0.6374,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": 57,
+      "requirements": [
+        "ability.venom.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 31.822000000000003,
+      "master": "masters/ability-venom/ability.venom.release.3.wav",
+      "masterSha256": "f762f89ad666657986efacc00f99234e0b988b68863034705a0297930f908a6e",
+      "opus": "masters/ability-venom/ability.venom.release.3.opus",
+      "opusSha256": "9283cbc73f8b829d10f4dec6bb33150ccc8c6e8191eda0a6d91dc3335556a109",
+      "previewSha256": "6d5b87ce9b6b8e9d24c7728b1a948677409d5649c0c3926722fa4a38f59781f9",
+      "previewBytes": 61304,
+      "previewUrl": "/__cf-audio-review/ability.venom.release.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.7,
+      "opusDbTP": -5.6
+    }
+  ],
+  "listeningAccepted": false
+}

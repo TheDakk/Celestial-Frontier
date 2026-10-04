@@ -1,0 +1,122 @@
+[
+  {
+    "id": "01-robin",
+    "static": "PASS",
+    "nativeStatus": "DIAGNOSTIC_PASS",
+    "frames": 765,
+    "cpuP95MsAt4x": 5.099999904632568,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "error": "",
+    "visualReview": "Lifted far-wing feather fragment in lethal reaction.",
+    "NickVisualAcceptance": "PENDING",
+    "defaultReferencePoolAdmission": false
+  },
+  {
+    "id": "02-pigeon",
+    "static": "PASS",
+    "nativeStatus": "FAIL",
+    "frames": 753,
+    "cpuP95MsAt4x": 6,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "error": "Error: Encoded capture does not cover the complete row schedule",
+    "visualReview": "Encoded coverage fails;0rig refusals; no native PASS or retry.",
+    "NickVisualAcceptance": "PENDING",
+    "defaultReferencePoolAdmission": false
+  },
+  {
+    "id": "03-duck-v2",
+    "static": "PASS",
+    "nativeStatus": "DIAGNOSTIC_PASS",
+    "frames": 776,
+    "cpuP95MsAt4x": 5.899999976158142,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "error": "",
+    "visualReview": "Thin lifted feather/neck-tail edge fragments visible in lethal reaction.",
+    "NickVisualAcceptance": "PENDING",
+    "defaultReferencePoolAdmission": false
+  },
+  {
+    "id": "04-hawk-v2",
+    "static": "PASS",
+    "nativeStatus": "FAIL",
+    "frames": 763,
+    "cpuP95MsAt4x": 5,
+    "refusals": {
+      "left": 0,
+      "right": 62
+    },
+    "error": "Error: rig refusals in play: {\"left\":0,\"right\":62} {\"left\":null,\"right\":\"Contact: joint limit legNearFoot faint@1399.999998999999: 48.38643957422762\"}",
+    "visualReview": "Native faint legNearFoot exceeds45deg; no visual acceptance.",
+    "NickVisualAcceptance": "PENDING",
+    "defaultReferencePoolAdmission": false
+  },
+  {
+    "id": "05-cat-v2",
+    "static": "PASS",
+    "nativeStatus": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "cpuP95MsAt4x": 7.100000023841858,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "error": "",
+    "visualReview": "Ear/neck triangular fragments lift away during lethal reaction.",
+    "NickVisualAcceptance": "PENDING",
+    "defaultReferencePoolAdmission": false
+  },
+  {
+    "id": "07-weasel",
+    "static": "PASS",
+    "nativeStatus": "DIAGNOSTIC_PASS",
+    "frames": 934,
+    "cpuP95MsAt4x": 4.799999952316284,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "error": "",
+    "visualReview": "Pointed neck/ear fragments in lethal reaction.",
+    "NickVisualAcceptance": "PENDING",
+    "defaultReferencePoolAdmission": false
+  },
+  {
+    "id": "08-ant",
+    "static": "PASS",
+    "nativeStatus": "FAIL",
+    "frames": 789,
+    "cpuP95MsAt4x": 3.5999999046325684,
+    "refusals": {
+      "left": 0,
+      "right": 59
+    },
+    "error": "Error: rig refusals in play: {\"left\":0,\"right\":59} {\"left\":null,\"right\":\"Contact: joint limit legFrontFarFoot faint@1239.9999989999988: -88.32693887995094\"}",
+    "visualReview": "Native faint legFrontFarFoot exceeds bound; no visual acceptance.",
+    "NickVisualAcceptance": "PENDING",
+    "defaultReferencePoolAdmission": false
+  },
+  {
+    "id": "09-cricket",
+    "static": "PASS",
+    "nativeStatus": "FAIL",
+    "frames": 789,
+    "cpuP95MsAt4x": 3.799999952316284,
+    "refusals": {
+      "left": 0,
+      "right": 61
+    },
+    "error": "Error: rig refusals in play: {\"left\":0,\"right\":61} {\"left\":null,\"right\":\"Contact: joint limit legFrontFarFoot faint@1239.9999989999988: -101.93249238220862\"}",
+    "visualReview": "Native faint legFrontFarFoot exceeds bound; no visual acceptance.",
+    "NickVisualAcceptance": "PENDING",
+    "defaultReferencePoolAdmission": false
+  }
+]

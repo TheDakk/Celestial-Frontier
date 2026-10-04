@@ -1,0 +1,306 @@
+[
+  {
+    "path": "CREATURE_ANIMATION.md",
+    "sha256": "4baaca3f4fa98a2991cc04ae7a187741ba3f7761dcb321c98a2bffda95e973dc"
+  },
+  {
+    "path": "ROADMAP.md",
+    "sha256": "ab90dd87cee3130fa3d1b7775b002d74d53d2f8d30818dc59793d5a1b9708a2b"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/README.md",
+    "sha256": "13bee22f544880317131ec42af1c55405e2daa7232c11ae99fede9d44c7482be"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/alpha-hash.log",
+    "sha256": "99b87441188533f8acdf1ed6480d6dbea0db6a9355d87c8726b0ac30f2b5baed"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/app-types-01.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/app-types-02.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/build-01.log",
+    "sha256": "41a10e7abdbbb9d65deab62296f72af654f1ff4d7d7045749ef4fc3656d802c4"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/build-02.log",
+    "sha256": "4cbc5c31ae44026764227ff1e6d4b866d0307b12df34ddc9a4e93286fa96748d"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/build-artifact-hashes.json",
+    "sha256": "376cc669c20e4898ef1f29dfcb174f50f5bddf01483775e4a0a93ff42aa1c3ca"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/caller-race.log",
+    "sha256": "4362b925f1ea62b802349724f2ed7c2052dc874e426352408cbe3a1524e6feb1"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/cf-c23-build-01-source-map-hashes.json",
+    "sha256": "95980f0c4d89273162f309b0b7366ed1f8bb9d894626902a15f954abf5e83bbd"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/cf-c23-build-02-source-map-hashes.json",
+    "sha256": "b4004dd3341c421ccc44e68e593c30da96788a21cd57ef08480d9edbdd55ca1b"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/cold-01/picker-1.png",
+    "sha256": "bdf09b8fb15a7561fc1d3531c81b73cf2f9968a2e87e9e1da0fe2ad90b0fdf7e"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/cold-01/picker-2.png",
+    "sha256": "125646c53832735fef46ce238476dd44177c564ca36116f7866fef8953697bf1"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/cold-01/report.json",
+    "sha256": "493d74048d8f1fb9a63b55c0bbfa12d6220e0b0af715374b079f4a8787a70046"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/cold-01.log",
+    "sha256": "61121cba4413af76d8243f8f16367c520e2b91567875faa752934f95fc01c098"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/cold-02/picker-1.png",
+    "sha256": "021fed1b16859103796b3991c55b7273ed42ed1271efa6c4f44b7232671e0be7"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/cold-02/picker-2.png",
+    "sha256": "f857c5de53d423abfc1ef971c2004fd933cb8581b3986498827d7ece1d188b0b"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/cold-02/report.json",
+    "sha256": "7022e9d5a048631d9b2dbf8136beca492c8415726e2f0cc6c0e27806cffcb8eb"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/cold-02.log",
+    "sha256": "6ebd3de80bc589310e982751874328250d93e9bae902f41398be481e5106386a"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/develop-profile.log",
+    "sha256": "1356119af9eabb689a8434eb4d4e6a0bbf064b2a7e3145a6cd3df4575193d3bf"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/forged-authority.log",
+    "sha256": "414af4e26d84e8e2be3602528261928f5a526959c32f72f15ff88ca60bb19e63"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/imported-authorities.json",
+    "sha256": "e623c91d63019111cb235e881327f0e2abd71d0db8a1673b6bd8ac783d6268ca"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/mutation-controls.mjs",
+    "sha256": "5781fb95c1c515d3d1d1a00dd8276b4391260193285cb7d4ce77d0e91f6966f5"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/mutation-results.json",
+    "sha256": "2888a114d163fd8ee4dc512e658b72568d55938d8edb9ba93c5505358ea4b8af"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/mutation-run.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/picker-smoke.mjs",
+    "sha256": "193733f457e7381f9128279f65f4745b2874997c4674d0eb216ab5d8e92096ae"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/release-tests.log",
+    "sha256": "eb44196a7a9fb242203ccae15ae1b3a8ef80e48097aca3c1f067a7f9f7d5b7de"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/root-validate.log",
+    "sha256": "341cc9b2f71d7693aedb63e8b680d7ac4143039634c37ff0de0ac5bf359d9f9e"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/run.mjs",
+    "sha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/runner.log",
+    "sha256": "a1a49d51425221b686e519756f7f9acd0e26f72e29eff27cb10342b411aec0e4"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/civet-static.json",
+    "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/civet-support-samples.jsonl.gz",
+    "sha256": "c8deace40f822ac707b337c16ee63cf73ca6838ee094ef80324093ab08ab2d2f"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/coconut-crab-static.json",
+    "sha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/coconut-crab-support-samples.jsonl.gz",
+    "sha256": "031446c269052b8a91d89e4244f190fa65c7f60c64cb2056e8b5f2351e01d32b"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/crab-static.json",
+    "sha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/crab-support-samples.jsonl.gz",
+    "sha256": "258aa03be580be6fcb1e07658ecd5a903db050f2cd63e0c297f3ff8d1fb4b1b8"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/freshwater-crab-static.json",
+    "sha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/freshwater-crab-support-samples.jsonl.gz",
+    "sha256": "84e207fd9353806843dee605d7937f4fd99d7a9e4dd3c4c865b92abcc660b127"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/identity.json",
+    "sha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/mud-crab-static.json",
+    "sha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/mud-crab-support-samples.jsonl.gz",
+    "sha256": "fe6b52249ff1391607394571ca0b3693c88439f61f6c9f9bdf7c6763daec6e41"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/sources.json",
+    "sha256": "80ac809bcc14858c8a4958998c26349e09c87af09db0601e7d0c429b0a8099f4"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/static.json",
+    "sha256": "41a489e6466796c76f48be510b9735b76cc17775095e143971a8e66f30b48442"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/vent-crab-static.json",
+    "sha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2/vent-crab-support-samples.jsonl.gz",
+    "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2-execution.json",
+    "sha256": "b3494329e9f93889446194a5833094b8ab82d6e93338412e21d95c469ba4b47e"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/s2-checks/s2-run.log",
+    "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/targeted-01.log",
+    "sha256": "3b2ebeb4d97d974079833b06c37a0baf1845aee06d3d9727cc7e53efd4c43c94"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/targeted-03.log",
+    "sha256": "4fca17ae09e21e74af5397ad8659d829cc50dfd6014be97f061dccafcdb52435"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/wiring-02.log",
+    "sha256": "102b8a610dce7067cc625839dd9684da99d3c4cc9b2e0e33ac729a9ffbe1f6ca"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/worker-offline-01/picker-1.png",
+    "sha256": "de1d2e34e18f3162ec70d6878a511ed6e344ff9771d1caf3dcacc716cf3086a0"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/worker-offline-01/picker-2.png",
+    "sha256": "5886f20b4a4f9dc95aa6f9a22a532ffbdcfe3b0d8a75b958c0897dc8512297ea"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/worker-offline-01/picker-3-offline.png",
+    "sha256": "7138f70144f336e1142ebdf8f5e8727ca963bd21572f2989aa16a4c853046eac"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/worker-offline-01/report.json",
+    "sha256": "a4688cb4846b5132302c2e7ab7014baf1b686e04d5f69eb09bb852a97acf5b59"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/worker-offline-01.log",
+    "sha256": "82ecc16f207721f5286a0ff80759d05c3a184b87b4c3e8eb1257d77976840681"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/worker-offline-02/picker-1.png",
+    "sha256": "44e009662c877c1aab026e046ddcdb078e9d2e86460cc02a05106bc5ce441301"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/worker-offline-02/picker-2.png",
+    "sha256": "b64454d4c509d63d2f19c6e5ece10588a98035cf4e491aedaec4de56b615aa49"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/worker-offline-02/picker-3-offline.png",
+    "sha256": "8c3e48e5b9e386ec61c4851a1e5b603249fe33d9af2913d2216abb806f345189"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/worker-offline-02/report.json",
+    "sha256": "103555721f2458e051cb5b1a01e1a0b7f7be1cdacab77dc3305cd2ff6a5060e9"
+  },
+  {
+    "path": "audits/C23_PINNED_LOADER_20260925/worker-offline-02.log",
+    "sha256": "265826548fbfd06e7d6a628b546d6d9713efc5ac010c27cc24b687c6fbee4c69"
+  },
+  {
+    "path": "audits/MAILBOX/TO_CLAUDE.md",
+    "sha256": "cc7e0b1e9ba81afb61ed6dfc70b8e2a31e2e039ec07c26913d7638c09cd753dc"
+  },
+  {
+    "path": "celestial-frontier-codebase-reference.md",
+    "sha256": "d9646b4c60c856e7f00eed90cb56da72eb2b598464856ce62a5cb9f9e4abe849"
+  },
+  {
+    "path": "port/v2/apps/game/src/battle2-master-pin-admission.ts",
+    "sha256": "8e6c86f6882ef40c73e57fb890089205192d5764c5445427eeb97cf09177d570"
+  },
+  {
+    "path": "port/v2/apps/game/src/battle2-master-pins.generated.ts",
+    "sha256": "fe2ff60780ac4a1b8725ff9db846349b7281c4ae015b65dd2f7eb94a265e93a5"
+  },
+  {
+    "path": "port/v2/apps/game/src/battle2-wiring.test.ts",
+    "sha256": "260ed2de5491ddce06fefbb6c01dce63ef0141590ee051c6fe11624e5df625e7"
+  },
+  {
+    "path": "port/v2/apps/game/src/battle2-wiring.ts",
+    "sha256": "db42a5682e9fc5a9168f030d362042e65aa5ed167dc714e997dd4a94582999be"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-pinned.test.ts",
+    "sha256": "010ccf58478e3fec1a228ea3cc28acc15f21d16dcd54bff0d26d993d066da185"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig.ts",
+    "sha256": "d4aca60c17238c3319797c9cc4273d6064cb0f06c0fd5177adfb5bf3a9626aba"
+  },
+  {
+    "path": "port/v2/apps/game/src/release-content.ts",
+    "sha256": "a3a6d6b7d36f070e095b4424634fa8b1d7b7e581b4912287a152cd660e8ae4e3"
+  },
+  {
+    "path": "port/v2/tools/creature-animation/family-record.d.mts",
+    "sha256": "f2e96127cc32c900c7d63da2d3683db5c628fc13a148d5f9c95e786f1ec2ab9d"
+  },
+  {
+    "path": "port/v2/tools/creature-animation/family-record.mjs",
+    "sha256": "6127d7f9c18541ebfec411fc549942d1948a032d8297bcd708291094c4339943"
+  },
+  {
+    "path": "port/v2/tools/creature-animation/quadruped-template.d.mts",
+    "sha256": "18c40f449329a3e3b7f83e71eee7eaee6aa8ab658076756af57c2e1929ba69b3"
+  },
+  {
+    "path": "port/v2/tools/creature-animation/quadruped-template.mjs",
+    "sha256": "dcacfdfb4920e359e049273dca982e73effe97b5618816e9fad22a335473b3aa"
+  },
+  {
+    "path": "port/v2/tools/morph/battle2-pin-contract.d.mts",
+    "sha256": "7dcaf6115b4f534ac6c6035b9ac198c4d7b09aab1a37bdc520b8c220d5a59001"
+  },
+  {
+    "path": "port/v2/tools/morph/battle2-pin-contract.mjs",
+    "sha256": "ebcd4885cce32e0e897b5f91a2638b86389a12be6c21e3e96351822fa1f63d9c"
+  }
+]

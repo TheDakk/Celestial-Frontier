@@ -1,0 +1,31 @@
+{
+ "id": "06-mountain-lizard",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonP",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED",
+   "reasons": []
+  },
+  {
+   "rank": 2,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "extra-anatomy (unassigned): a limb-down appendage of 7.6% paint that no reference appendage lands on",
+    "missing-anatomy: part tail3 (tail3) covers 21% paint (reference 65%)"
+   ]
+  }
+ ]
+}

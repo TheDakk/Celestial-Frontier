@@ -1,0 +1,102 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "df82f8b7961d53568646e2537787f5fb256e498d2cf9f1f40e6048214c43ebd3",
+  "atlasSha256": "85a6a30f296da774f0b9a29368e579907799e0d65d0ecc6478032bc928361d79",
+  "atlasSize": {
+    "width": 1529,
+    "height": 507
+  },
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1517,
+        "y": 5,
+        "width": 7,
+        "height": 8
+      },
+      "cutout": {
+        "x": 631,
+        "y": 1035,
+        "width": 7,
+        "height": 8
+      }
+    },
+    {
+      "id": "aperture",
+      "joint": "aperture",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1335,
+        "y": 5,
+        "width": 172,
+        "height": 130
+      },
+      "cutout": {
+        "x": 521,
+        "y": 165,
+        "width": 172,
+        "height": 130
+      }
+    },
+    {
+      "id": "crown",
+      "joint": "crown",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 499,
+        "y": 5,
+        "width": 420,
+        "height": 216
+      },
+      "cutout": {
+        "x": 461,
+        "y": 290,
+        "width": 420,
+        "height": 216
+      }
+    },
+    {
+      "id": "base",
+      "joint": "base",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 929,
+        "y": 5,
+        "width": 396,
+        "height": 203
+      },
+      "cutout": {
+        "x": 433,
+        "y": 886,
+        "width": 396,
+        "height": 203
+      }
+    },
+    {
+      "id": "body",
+      "joint": "body",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 484,
+        "height": 497
+      },
+      "cutout": {
+        "x": 388,
+        "y": 432,
+        "width": 484,
+        "height": 497
+      }
+    }
+  ],
+  "bindingHash": "665f66d3683eae074f83497113edd95218cd0cd8b463c396af8f28541689d969"
+}

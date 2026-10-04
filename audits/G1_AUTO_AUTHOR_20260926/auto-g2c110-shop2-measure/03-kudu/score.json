@@ -1,0 +1,9 @@
+{
+ "id": "03-kudu",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 18% paint (reference 62%)"
+ ],
+ "semanticPresence": null
+}

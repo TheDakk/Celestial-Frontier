@@ -1,0 +1,326 @@
+{
+  "kind": "crustacean-small",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Prawn\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1266391561\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"11\"]]]]",
+    "seed": 1266391561,
+    "ownerId": "authored:archetype-sprint/c192-independent-prawn",
+    "earthName": "Prawn"
+  },
+  "template": {
+    "id": "crustacean-small",
+    "version": 1
+  },
+  "clipSetId": "crustacean-small-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1266391561,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 13,
+    "body": 1,
+    "loco": 11,
+    "trait": 11,
+    "size": 3,
+    "diet": 1,
+    "head": 3,
+    "limbs": 1,
+    "skin": 1,
+    "tail": 6,
+    "pattern": 5,
+    "eyes": 2,
+    "behavior": 6,
+    "habitat": 9,
+    "detail": 6,
+    "accent": 11,
+    "temper": 0,
+    "sense": 5,
+    "repro": 1,
+    "life": 5,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Prawn"
+  },
+  "geometry": {
+    "cutoutAssetHash": "b8190e40c1a8e0d714fef73d845bf1ff518b40ed9ec6bd7f5046463a60be9051",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6746411483253588,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5199362041467305,
+      0.4904306220095694
+    ],
+    "thorax": [
+      0.5287081339712919,
+      0.4960127591706539
+    ],
+    "head": [
+      0.6012759170653907,
+      0.49521531100478466
+    ],
+    "leg0FarRoot": [
+      0.5701754385964912,
+      0.4529505582137161
+    ],
+    "leg0FarKnee": [
+      0.6100478468899522,
+      0.43779904306220097
+    ],
+    "leg0FarFoot": [
+      0.6626794258373205,
+      0.4609250398724083
+    ],
+    "leg1FarRoot": [
+      0.5406698564593302,
+      0.4473684210526316
+    ],
+    "leg1FarKnee": [
+      0.5996810207336523,
+      0.4098883572567783
+    ],
+    "leg1FarFoot": [
+      0.6323763955342903,
+      0.3484848484848485
+    ],
+    "leg2FarRoot": [
+      0.5103668261562998,
+      0.4473684210526316
+    ],
+    "leg2FarKnee": [
+      0.5574162679425837,
+      0.3835725677830941
+    ],
+    "leg2FarFoot": [
+      0.5669856459330144,
+      0.3197767145135566
+    ],
+    "leg3FarRoot": [
+      0.4880382775119617,
+      0.44896331738437
+    ],
+    "leg3FarKnee": [
+      0.507177033492823,
+      0.37559808612440193
+    ],
+    "leg3FarFoot": [
+      0.4768740031897927,
+      0.3181818181818182
+    ],
+    "leg4FarRoot": [
+      0.47368421052631576,
+      0.45055821371610844
+    ],
+    "leg4FarKnee": [
+      0.45773524720893144,
+      0.39074960127591707
+    ],
+    "leg4FarFoot": [
+      0.4019138755980861,
+      0.3508771929824561
+    ],
+    "leg0NearRoot": [
+      0.5709728867623605,
+      0.5374800637958532
+    ],
+    "leg0NearKnee": [
+      0.6092503987240829,
+      0.5502392344497608
+    ],
+    "leg0NearFoot": [
+      0.6618819776714514,
+      0.5271132376395534
+    ],
+    "leg1NearRoot": [
+      0.5414673046251993,
+      0.5430622009569378
+    ],
+    "leg1NearKnee": [
+      0.5988835725677831,
+      0.5797448165869219
+    ],
+    "leg1NearFoot": [
+      0.6283891547049442,
+      0.645933014354067
+    ],
+    "leg2NearRoot": [
+      0.5143540669856459,
+      0.5462519936204147
+    ],
+    "leg2NearKnee": [
+      0.5645933014354066,
+      0.6044657097288676
+    ],
+    "leg2NearFoot": [
+      0.5741626794258373,
+      0.6746411483253588
+    ],
+    "leg3NearRoot": [
+      0.4904306220095694,
+      0.5470494417862839
+    ],
+    "leg3NearKnee": [
+      0.5151515151515151,
+      0.6148325358851675
+    ],
+    "leg3NearFoot": [
+      0.48724082934609253,
+      0.6738437001594896
+    ],
+    "leg4NearRoot": [
+      0.4728867623604466,
+      0.5446570972886763
+    ],
+    "leg4NearKnee": [
+      0.45933014354066987,
+      0.6052631578947368
+    ],
+    "leg4NearFoot": [
+      0.40271132376395535,
+      0.6427432216905901
+    ],
+    "antennaFarBase": [
+      0.6323763955342903,
+      0.4704944178628389
+    ],
+    "antennaFarTip": [
+      0.8676236044657097,
+      0.40350877192982454
+    ],
+    "antennaNearBase": [
+      0.6323763955342903,
+      0.518341307814992
+    ],
+    "antennaNearTip": [
+      0.8676236044657097,
+      0.5877192982456141
+    ],
+    "abdomen0": [
+      0.45215311004784686,
+      0.4960127591706539
+    ],
+    "abdomen1": [
+      0.4194577352472089,
+      0.4960127591706539
+    ],
+    "abdomen2": [
+      0.3843700159489633,
+      0.4960127591706539
+    ],
+    "abdomen3": [
+      0.35406698564593303,
+      0.49521531100478466
+    ],
+    "abdomen4": [
+      0.32057416267942584,
+      0.4944178628389155
+    ],
+    "abdomen5": [
+      0.28149920255183414,
+      0.4944178628389155
+    ],
+    "tailFan": [
+      0.23285486443381181,
+      0.4944178628389155
+    ]
+  },
+  "materials": {
+    "surface": "plated"
+  },
+  "source": "audits/C192_SPECIALIZED_REFERENCES_20261002/02-prawn-dorsal/master.png",
+  "coverage": {
+    "scope": "Independent visible dorsal Prawn reference candidate",
+    "limitations": [
+      "Independent manual Prawn landmarks and priority ownership on the retained dorsal master. Five real walking chains are observed separately on each side; no hidden legs are inferred.",
+      "Far/Near are stable upper/lower image-side identifiers in this dorsal projection, not a claim that the camera sees lateral depth. Leg root/knee/foot are coarse controls at observed attachment, bend and terminal paint.",
+      "The full leg painting is retained. The three-joint template does not represent every biological segment; painted additional bends remain on their source chain.",
+      "The actual two eyes, short antennules, swimmerets and small rostral structures remain painted under the continuous head/abdominal owners. No extra template joint, appendage deletion or absent declaration is invented.",
+      "The dorsal view exposes the anatomical chains but does not provide a common ground-contact line. groundLineY records the painted lower walking-tip envelope only; swimming and crawling motion require full-size review.",
+      "Long antennae cross anterior structures in the source; visibility at crossings is limited to the painted topmost contour. The declared owners and software motion review must retain any cut-gap hold.",
+      "All originals and painting-side framing successors remain separate; source preservation is exact to this selected successor, not an assertion that the generator preserved predecessor pixels.",
+      "No reference-pool, native or family-wide admission."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "8b83997309e80c0ab6a0d6b98023c14305e8e88b922eddf40759fb9991442afa",
+    "subjectSourceSha256": "adc6d9af35d82d61dbbfb6592f3a0b4ea8e1bccdb946f2e483be4c36ebc6ed72",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "thorax": 0.010397452001918118,
+      "head": 0.07257216454515758,
+      "abdomen0": 0.07655502392344504,
+      "abdomen1": 0.032695374800637944,
+      "abdomen2": 0.03508771929824561,
+      "abdomen3": 0.030313521226073677,
+      "abdomen4": 0.033502315051993636,
+      "abdomen5": 0.03907496012759171,
+      "tailFan": 0.04864433811802232,
+      "leg0FarRoot": 0.05978202492501213,
+      "leg0FarKnee": 0.04265415987341734,
+      "leg0FarFoot": 0.057488214713615766,
+      "leg0NearRoot": 0.05921019068850576,
+      "leg0NearKnee": 0.04034804032112763,
+      "leg0NearFoot": 0.057488214713615864,
+      "leg1FarRoot": 0.05009345701607466,
+      "leg1FarKnee": 0.06990760109710716,
+      "leg1FarFoot": 0.06956564110865833,
+      "leg1NearRoot": 0.048748809300089055,
+      "leg1NearKnee": 0.06813400115883207,
+      "leg1NearFoot": 0.07246693660501644,
+      "leg2FarRoot": 0.05198726000959052,
+      "leg2FarKnee": 0.0792689148833846,
+      "leg2FarFoot": 0.06450956432585869,
+      "leg2NearRoot": 0.05224959250679798,
+      "leg2NearKnee": 0.07689484651947477,
+      "leg2NearFoot": 0.0708248909447353,
+      "leg3FarRoot": 0.06219073240301515,
+      "leg3FarKnee": 0.07582050605425651,
+      "leg3FarFoot": 0.06492227252646769,
+      "leg3NearRoot": 0.06379585326953752,
+      "leg3NearKnee": 0.07215033196980877,
+      "leg3NearFoot": 0.06527881655744108,
+      "leg4FarRoot": 0.07137049708218329,
+      "leg4FarKnee": 0.06189862319082941,
+      "leg4FarFoot": 0.06859908506413581,
+      "leg4NearRoot": 0.07404253614954429,
+      "leg4NearKnee": 0.062103755892942654,
+      "leg4NearFoot": 0.0679002646169314,
+      "antennaFarBase": 0.03972860831604832,
+      "antennaFarTip": 0.24459829531516794,
+      "antennaNearBase": 0.03875630902782413,
+      "antennaNearTip": 0.24526425517432096
+    },
+    "measures": {
+      "body": 0.24721407619279925,
+      "bone-min": 0.010397452001918118,
+      "bone-max": 0.24526425517432096
+    }
+  },
+  "recipeHash": "5c009a75d735ea35fab2deb72bd9ecfa1295e679e1f264f285072f954163c5c8"
+}

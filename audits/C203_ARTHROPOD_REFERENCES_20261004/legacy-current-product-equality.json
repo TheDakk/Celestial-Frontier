@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "byteIdentical": true,
+  "baseline": {
+    "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/legacy-baseline.json",
+    "sha256": "42a4d6423c148dc645b6f362ebf8705c206a39a38fac44749d29e7595596aa0d"
+  },
+  "current": {
+    "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/legacy-current-product.json",
+    "sha256": "42a4d6423c148dc645b6f362ebf8705c206a39a38fac44749d29e7595596aa0d"
+  }
+}

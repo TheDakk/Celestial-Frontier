@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c173-specialized-anatomical-hold-retention/v1",
+  "writerSha256": "6e5a11480c7af1e178a65be32db7402fd8960f16a69e5b4d5be8bfe350a7587c",
+  "masterSha256": "2609a876da2aac65c156406266917626842f19df3f5936c42ae47ebf11b84274",
+  "observationSha256": "72bca97b4e1153be9329fad44aec4357dec421738219b394e8a223f0970201fc",
+  "sourceEvidence": [
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/source-evidence/generation.json",
+      "sha256": "a6d95d8c0955832774b1fc68f340b56c3329447b4e875d4942b667cddb06c983"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/source-evidence/request.json",
+      "sha256": "3364811e04a756a3a104dec0233f11d8b60db9d732407969ba8b93a944029246"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/source-evidence/prompt.txt",
+      "sha256": "f7d1e6104cbcecdd83d232141f8cbc350dc1a28307c621c96d2160ab88d4cdea"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/03-fiddler-crab-hold/source-evidence/pattern-check.json",
+      "sha256": "46ffb2b21e33a30b31bae0a5b159f19a84525d478e1cd59920562cd12620ecb6"
+    }
+  ],
+  "sourceBytesChanged": 0,
+  "anatomyInvented": false,
+  "negativeOutcomeRetained": true
+}

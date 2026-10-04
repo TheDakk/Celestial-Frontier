@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Seahorse",
+  "masterSha256": "a9b37a6c7274b40bc789b1a41a503a147648477c7bcf53e5d8677e43dd80ac86",
+  "required": [
+    "ringed bony armour plating"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "ringed bony armour plating",
+      "status": "PRESENT",
+      "observed": "Full-size original inspected: natural upright tube-snouted silhouette, plated/ringed body, coronet and spines, visible near eye, small head-side fin, larger dorsal fin and continuous tightly curled prehensile tail. No legs or artificial horizontal fish stance. The far eye and far head-side fin are not exposed by this profile and are not declared absent. Species-general proportion, fin size and exact coiled-tail ownership remain held for author review."
+    }
+  ]
+}

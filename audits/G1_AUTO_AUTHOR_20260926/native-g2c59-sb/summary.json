@@ -1,0 +1,77 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C59_20260926",
+ "tag": "g2c59-sb",
+ "pilot": 12,
+ "patternSkipped": [
+  {
+   "id": "11-mountain-viper",
+   "pattern": "REFUSE"
+  }
+ ],
+ "scored": 11,
+ "admitPassStatic": [
+  "04-raccoon",
+  "08-vulture",
+  "10-water-snake"
+ ],
+ "refused": [
+  {
+   "id": "01-elk",
+   "reason": "missing-anatomy: part ear-far-root (earFarRoot) covers 19% paint (reference 68%)"
+  },
+  {
+   "id": "02-moose",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 1% paint (reference 6%)"
+  },
+  {
+   "id": "03-bison",
+   "reason": "unexplained-anatomy: 10.1% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "05-badger",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "06-wolverine",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "07-starling",
+   "reason": "facing: the mirrored painting matches biped-bird better (0.0180 < 0.0218)"
+  },
+  {
+   "id": "09-kingfisher",
+   "reason": "unexplained-anatomy: 13.2% of the paint lies away from the body and in no part (reference 4.3%)"
+  },
+  {
+   "id": "12-ladybug",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 0.9% of the paint; every same-family reference shows at least 3.8%"
+  }
+ ],
+ "staticRed": [],
+ "native": [
+  {
+   "id": "04-raccoon",
+   "name": "Raccoon",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-vulture",
+   "name": "Vulture",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-water-snake",
+   "name": "Water Snake",
+   "family": "serpent",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

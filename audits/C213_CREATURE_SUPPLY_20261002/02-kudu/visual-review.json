@@ -1,0 +1,28 @@
+{
+  "name": "Kudu",
+  "masterSha256": "72ef33496996ebefd5a8220ae4a3a7dcd5c7767034185ff221c8c389925bb867",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: two towering corkscrew horns, both large rounded ear blades, multiple thin white flank stripes, pale facial chevron, real throat fringe and full tufted tail are visible. Four separate hoof endpoints; far upper limbs remain partly occluded. Horn tips approach the top edge, so framing is held for the unchanged observer. Ear roots and horn bases overlap naturally rather than receiving invented gaps.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 175,
+      "y0": 63,
+      "x1": 1093,
+      "y1": 1128
+    },
+    "margins": {
+      "left": 175,
+      "right": 160,
+      "top": 63,
+      "bottom": 125
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "producerSha256": "a55f4244c7cd3909cb602fadce05753b83afa9b88e9bc59477dfc1a2ee9f8bdb",
+  "removedMappingReproducesRefusal": true,
+  "actualOutcomeCheckRejectsMutant": true,
+  "sourceRestoredExactly": true
+}

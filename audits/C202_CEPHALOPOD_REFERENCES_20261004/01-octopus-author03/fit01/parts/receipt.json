@@ -1,0 +1,412 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "source-bound exact labels on authored keyer output; not painter draw stages",
+  "recordRecipeHash": "c06bdb5ce60e1e35130041b2e22a8aeee684ca0d06642686406ff410ec13d126",
+  "declarationHash": "fe9c6ac4b6653e9acf4ae2218dffea233d15806f0c979531a1646bd606fe99f5",
+  "paintedPixels": 269668,
+  "parts": [
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 238,
+        "y": 367,
+        "width": 814,
+        "height": 580
+      },
+      "pixels": 5422
+    },
+    {
+      "id": "eye-near",
+      "joint": "eyeNear",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 635,
+        "y": 408,
+        "width": 67,
+        "height": 75
+      },
+      "pixels": 3553
+    },
+    {
+      "id": "eye-far",
+      "joint": "eyeFar",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 733,
+        "y": 431,
+        "width": 33,
+        "height": 56
+      },
+      "pixels": 1229
+    },
+    {
+      "id": "siphon",
+      "joint": "siphon",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 575,
+        "y": 454,
+        "width": 57,
+        "height": 72
+      },
+      "pixels": 2868
+    },
+    {
+      "id": "arm0-tip",
+      "joint": "arm0Seg2",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 234,
+        "y": 343,
+        "width": 123,
+        "height": 100
+      },
+      "pixels": 3665
+    },
+    {
+      "id": "arm0-middle",
+      "joint": "arm0Seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 334,
+        "y": 375,
+        "width": 114,
+        "height": 179
+      },
+      "pixels": 8392
+    },
+    {
+      "id": "arm0-base",
+      "joint": "arm0Seg0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 413,
+        "y": 485,
+        "width": 233,
+        "height": 111
+      },
+      "pixels": 13805
+    },
+    {
+      "id": "arm1-tip",
+      "joint": "arm1Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 167,
+        "y": 505,
+        "width": 140,
+        "height": 96
+      },
+      "pixels": 4974
+    },
+    {
+      "id": "arm1-middle",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 284,
+        "y": 518,
+        "width": 165,
+        "height": 152
+      },
+      "pixels": 10455
+    },
+    {
+      "id": "arm1-base",
+      "joint": "arm1Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 396,
+        "y": 553,
+        "width": 243,
+        "height": 145
+      },
+      "pixels": 16683
+    },
+    {
+      "id": "arm2-tip",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 183,
+        "y": 689,
+        "width": 117,
+        "height": 122
+      },
+      "pixels": 4445
+    },
+    {
+      "id": "arm2-middle",
+      "joint": "arm2Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 280,
+        "y": 688,
+        "width": 184,
+        "height": 99
+      },
+      "pixels": 9892
+    },
+    {
+      "id": "arm2-base",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 419,
+        "y": 635,
+        "width": 201,
+        "height": 152
+      },
+      "pixels": 10896
+    },
+    {
+      "id": "arm3-tip",
+      "joint": "arm3Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 392,
+        "y": 841,
+        "width": 118,
+        "height": 136
+      },
+      "pixels": 5575
+    },
+    {
+      "id": "arm3-middle",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 485,
+        "y": 756,
+        "width": 194,
+        "height": 138
+      },
+      "pixels": 11720
+    },
+    {
+      "id": "arm3-base",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 582,
+        "y": 583,
+        "width": 114,
+        "height": 217
+      },
+      "pixels": 13768
+    },
+    {
+      "id": "arm4-tip",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 769,
+        "y": 859,
+        "width": 88,
+        "height": 156
+      },
+      "pixels": 4582
+    },
+    {
+      "id": "arm4-middle",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 719,
+        "y": 779,
+        "width": 98,
+        "height": 136
+      },
+      "pixels": 5917
+    },
+    {
+      "id": "arm4-base",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 687,
+        "y": 587,
+        "width": 106,
+        "height": 235
+      },
+      "pixels": 12455
+    },
+    {
+      "id": "arm5-tip",
+      "joint": "arm5Seg2",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 982,
+        "y": 775,
+        "width": 79,
+        "height": 124
+      },
+      "pixels": 3740
+    },
+    {
+      "id": "arm5-middle",
+      "joint": "arm5Seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 864,
+        "y": 765,
+        "width": 149,
+        "height": 71
+      },
+      "pixels": 6492
+    },
+    {
+      "id": "arm5-base",
+      "joint": "arm5Seg0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 752,
+        "y": 673,
+        "width": 130,
+        "height": 155
+      },
+      "pixels": 8375
+    },
+    {
+      "id": "arm6-tip",
+      "joint": "arm6Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 986,
+        "y": 609,
+        "width": 102,
+        "height": 120
+      },
+      "pixels": 4373
+    },
+    {
+      "id": "arm6-middle",
+      "joint": "arm6Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 881,
+        "y": 611,
+        "width": 135,
+        "height": 104
+      },
+      "pixels": 6832
+    },
+    {
+      "id": "arm6-base",
+      "joint": "arm6Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 748,
+        "y": 581,
+        "width": 146,
+        "height": 140
+      },
+      "pixels": 10570
+    },
+    {
+      "id": "arm7-tip",
+      "joint": "arm7Seg2",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 926,
+        "y": 411,
+        "width": 123,
+        "height": 85
+      },
+      "pixels": 3647
+    },
+    {
+      "id": "arm7-middle",
+      "joint": "arm7Seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 878,
+        "y": 443,
+        "width": 81,
+        "height": 151
+      },
+      "pixels": 6257
+    },
+    {
+      "id": "arm7-base",
+      "joint": "arm7Seg0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 753,
+        "y": 506,
+        "width": 144,
+        "height": 118
+      },
+      "pixels": 8507
+    },
+    {
+      "id": "mantle",
+      "joint": "mantle",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 442,
+        "y": 257,
+        "width": 281,
+        "height": 255
+      },
+      "pixels": 44962
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 608,
+        "y": 410,
+        "width": 173,
+        "height": 239
+      },
+      "pixels": 15617
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyedRgbaSha256": "ba63ee74a77cb88f8ff6182c285801ec637f7d57aedb32189749f7b82c3c65eb",
+  "keyer": {
+    "erodedPixels": 10964,
+    "despilledPixels": 77,
+    "unresolvedEdgePixels": 1
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}
