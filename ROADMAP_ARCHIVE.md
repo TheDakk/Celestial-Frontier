@@ -1,3 +1,20 @@
+# C203 completed certification/source continuation handoff — archived 2026-10-04
+
+## Current Codex sprint handoff — 2026-10-04, C203 certified delivery
+
+**C272 reservation TERMINAL — RELEASED (C273).** Dakk/C203 authorized exactly one combined I5(3+1) and one develop on456ac7c52. All four epoch phases and named verifiers PASS, activation replay PASS; selection08dd81237(G). Develop on that selection: **6,005PASS,2expected fail,3skipped,0red**, all required owners PASS. Optional local-AI runtime was renamed aside then restored. No retries, limit change or re-bind. Prior certificate hashes unchanged; new instrument/shared symlink relative. Evidence: `audits/C203_I5_EPOCH_20261004`. Product35d5d6935 is now certified. Normal guarded own-lane push follows.
+
+**C274–C278 source deliveries:**48 new identities in two24-original batches; B all24 selected framingPASS and four failed predecessor masters retained. Primate and arthropod queues are terminal HELD with empty qualified pools; full-size source defects remain. Fox `audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit` closes the reviewed head/torso gaps and passes static; Snow Petrel remains visualRED. New local product candidate is fixed low-slack trot plus observed-insect reactions,147 motion tests/49 insect tests/3typechecks/root validate green. A4.7s per-seed search was rejected in favor of0.2–1.3ms fixed-profile setup. Product/native handoff follows; C203 certificate does not cover it.
+
+**Delivered source:** C26524-original uncovered-quadruped batch; C266 Tortoise ankle repair (841native frames, zero refusals); C268 Octopus qualified8-arm reference (961frames,5turns, zero skips/refusals); C269 Albatross contours/shared-faint repair (780frames,4turns, zero skips/refusals). Paths and exact hashes are in the mailbox and prior handoff now archived verbatim. Claude owns scoring, finish/re-film and gallery admission. Octopus pool: `audits/C202_CEPHALOPOD_REFERENCES_20261004/qualified-reference-pool.json`; add its entry while retaining other qualified pool entries. Coverage remains270 until Claude admits sources.
+
+**Continue C264+ queues:** primate Gorilla/Howler hand-grounding and source seams; insect Beetle solver-owned hit and visible Grasshopper chains; counted myriapod sources under unchanged64joint cap. These pools remain empty; static-only success is not qualification. Red Fox layered-placement compression and Snow Petrel source tears remain held. Continue24-original supply toward existing qualified classes. Preserve every failed predecessor and never invent concealed anatomy. New product changes require fresh combined I5 plus develop authorization; C203 authority is consumed. All-pairs HOLD. No PR, label, hosted run, develop/main merge, release or deploy.
+
+**Coordination:** Claude C203 stayed quiet through terminal; Codex now resumes disjoint source queues. Read sibling mailbox at each batch end and post new native reservations before native work. No Dakk relay/app switch needed. Temporary certified checkout is archived after terminal; disk receipt follows.
+
+**C279 native reservation ACTIVE:** one Red Fox film on the frozen low-slack/insect candidate. All source queues terminal. No second I5/develop without fresh Dakk authorization. Prior green product/source-only head d8755d36d is pushed; candidate is local.
+
+
 ## Current Codex sprint handoff — 2026-10-04, C203 authorized measurement
 
 **C272 native/performance reservation ACTIVE.** Dakk/C203 authorize ONE combined I5(3+1) then ONE develop on exact456ac7c52. No product edits until this chain is terminal; first red stops/no retry/no re-bind. Source agents stay quiet. Evidence: `audits/C203_I5_EPOCH_20261004`. The earlier pending-authorization text below is superseded by this explicit authorization.
