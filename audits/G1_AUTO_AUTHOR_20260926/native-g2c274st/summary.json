@@ -1,0 +1,26 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C203_CREATURE_SUPPLY_20261004",
+ "tag": "g2c274st",
+ "pilot": 3,
+ "patternSkipped": [],
+ "scored": 3,
+ "admitPassStatic": [],
+ "refused": [
+  {
+   "id": "04-elk",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 9% paint (reference 91%)"
+  },
+  {
+   "id": "05-moose",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 14% paint (reference 91%)"
+  },
+  {
+   "id": "15-tahr",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  }
+ ],
+ "staticRed": [],
+ "native": [],
+ "runnerExit": 0
+}

@@ -1,0 +1,102 @@
+[
+ {
+  "id": "03-pronghorn",
+  "name": "Pronghorn",
+  "family": "quadruped",
+  "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/03-pronghorn",
+  "master": "audits/C203_CREATURE_SUPPLY_B_20261004/03-pronghorn/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve true forked pronghorn horns, large white rump patch and paired white neck bands; tail and all four actual cloven feet are separate.",
+   "priorSources": [
+    {
+     "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "15-pronghorn",
+     "master": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/master.png",
+     "packet": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn"
+    },
+    {
+     "pilot": "audits/G2_C95_20260927/pilot.json",
+     "id": "13-pronghorn",
+     "master": "audits/G2_C95_20260927/13-pronghorn/master.png",
+     "packet": "audits/G2_C95_20260927/13-pronghorn"
+    }
+   ]
+  }
+ },
+ {
+  "id": "05-duiker",
+  "name": "Duiker",
+  "family": "quadruped",
+  "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/05-duiker",
+  "master": "audits/C203_CREATURE_SUPPLY_B_20261004/05-duiker/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve compact arched-backed duiker form, short spike horns where present, real narrow feet and natural short tail.",
+   "priorSources": [
+    {
+     "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "17-duiker",
+     "master": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/master.png",
+     "packet": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker"
+    },
+    {
+     "pilot": "audits/G2_C95_20260927/pilot.json",
+     "id": "16-duiker",
+     "master": "audits/G2_C95_20260927/16-duiker/master.png",
+     "packet": "audits/G2_C95_20260927/16-duiker"
+    }
+   ]
+  }
+ },
+ {
+  "id": "06-serow",
+  "name": "Serow",
+  "family": "quadruped",
+  "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/06-serow",
+  "master": "audits/C203_CREATURE_SUPPLY_B_20261004/06-serow/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve the coarse dark coat, pale lower legs, short conical horns and large ears; no long curling ibex horns.",
+   "priorSources": [
+    {
+     "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+     "id": "18-serow",
+     "master": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/master.png",
+     "packet": "audits/C192_CREATURE_SUPPLY_20261002/18-serow"
+    },
+    {
+     "pilot": "audits/G2_C95_20260927/pilot.json",
+     "id": "18-serow",
+     "master": "audits/G2_C95_20260927/18-serow/master.png",
+     "packet": "audits/G2_C95_20260927/18-serow"
+    }
+   ]
+  }
+ },
+ {
+  "id": "07-brown-bear",
+  "name": "Brown Bear",
+  "family": "quadruped",
+  "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/07-brown-bear",
+  "master": "audits/C203_CREATURE_SUPPLY_B_20261004/07-brown-bear/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve brown bear anatomy, short natural tail, rounded ears and four plantigrade paws; do not invent extra claws or extend the tail.",
+   "priorSources": [
+    {
+     "pilot": "audits/C198_CREATURE_SUPPLY_A_20261003/pilot.json",
+     "id": "04-brown-bear",
+     "master": "audits/C198_CREATURE_SUPPLY_A_20261003/04-brown-bear/master.png",
+     "packet": "audits/C198_CREATURE_SUPPLY_A_20261003/04-brown-bear"
+    },
+    {
+     "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+     "id": "12-brown-bear",
+     "master": null,
+     "packet": "audits/G2_QUADRUPED_PILOT_20260926/12-brown-bear"
+    }
+   ]
+  }
+ }
+]

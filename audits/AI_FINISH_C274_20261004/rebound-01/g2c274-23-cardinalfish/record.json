@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cardinalfish\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3075261172\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"6\"]]]]",
+    "seed": 3075261172,
+    "ownerId": "authored:archetype-sprint/23-cardinalfish",
+    "earthName": "Cardinalfish"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3075261172,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 4,
+    "body": 6,
+    "loco": 7,
+    "trait": 6,
+    "size": 3,
+    "diet": 4,
+    "head": 2,
+    "limbs": 1,
+    "skin": 7,
+    "tail": 3,
+    "pattern": 4,
+    "eyes": 5,
+    "behavior": 7,
+    "habitat": 3,
+    "detail": 6,
+    "accent": 3,
+    "temper": 3,
+    "sense": 0,
+    "repro": 5,
+    "life": 1,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cardinalfish"
+  },
+  "geometry": {
+    "cutoutAssetHash": "86777bf06ea84e45e7162d54bbab8406c2c5531838a5a0b26dc0bda7c0a2f41f",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7208338485464169,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6959330143540671,
+      0.5018341307814992
+    ],
+    "head": [
+      0.7696969696969698,
+      0.4667464114832536
+    ],
+    "jaw": [
+      0.7949760765550239,
+      0.5433014354066985
+    ],
+    "spine0": [
+      0.6674641148325359,
+      0.4964912280701755
+    ],
+    "spine1": [
+      0.6255980861244019,
+      0.49633173843700157
+    ],
+    "spine2": [
+      0.5728867623604466,
+      0.4939393939393939
+    ],
+    "spine3": [
+      0.5064593301435407,
+      0.48492822966507176
+    ],
+    "spine4": [
+      0.4181020733652312,
+      0.4811004784688995
+    ],
+    "spine5": [
+      0.30749601275917066,
+      0.4875598086124402
+    ],
+    "caudal": [
+      0.223444976076555,
+      0.487799043062201
+    ],
+    "dorsal": [
+      0.5840510366826156,
+      0.36985645933014355
+    ],
+    "pectoralNear": [
+      0.6374003189792663,
+      0.5625996810207337
+    ],
+    "pectoralFar": [
+      0.6537480063795853,
+      0.5913078149920256
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/23-cardinalfish/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from bass. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "0c30ba18b57c2cc55644c2203f216b0cb2bcdd402ee253ab6ebfb7737291eb1d",
+    "subjectSourceSha256": "05d5d1be1265d071024f9b12fb10e88849bb275bad3ca9f2769f06d9697dae01",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.08168395897226223,
+      "jaw": 0.08062074752481613,
+      "spine0": 0.028965925660156443,
+      "spine1": 0.04186633249680923,
+      "spine2": 0.05276558504502494,
+      "spine3": 0.06703584736922806,
+      "spine4": 0.08844012949226117,
+      "spine5": 0.11079451064332922,
+      "caudal": 0.08405137714841059,
+      "dorsal": 0.13312457903210764,
+      "pectoralFar": 0.09891974051731073,
+      "pectoralNear": 0.0843713726551616
+    },
+    "measures": {
+      "body": 0.36007888686207457,
+      "bone-min": 0.028965925660156443,
+      "bone-max": 0.13312457903210764,
+      "caudal/body": 0.2334248971965019,
+      "head/body": 0.22685017631581003
+    }
+  },
+  "recipeHash": "1fc7c9255fa938526cff4943041cad0dc2802574c5ffa0a9d58fb034aad31389"
+}

@@ -83,5 +83,27 @@
   "Cardinalfish",
   "Grizzly Bear",
   "Capybara"
- ]
+ ],
+ "aiFinish": {
+  "dir": "audits/AI_FINISH_C274_20261004",
+  "result": "finish+rebind+native PASS for Cardinalfish, Grizzly Bear, Capybara; finished stills reviewed whole"
+ },
+ "shortTailRescore": {
+  "pool": "audits/C204_SHORT_TAIL_REFERENCE_20261004/reference-pool-preserved-plus-reindeer.json (19 entries)",
+  "tags": [
+   "g2c274st",
+   "g2c275st"
+  ],
+  "result": "0/7",
+  "detail": {
+   "Elk": "tail now passes; missing ear-near-tip 9% (ref 91%) - antlers hide the near ear",
+   "Moose": "missing ear-near-tip 14% (ref 91%)",
+   "Tahr": "tail3 0% (ref 38%)",
+   "Pronghorn": "tail3 0% (ref 6%)",
+   "Duiker": "tail3 2% (ref 6%)",
+   "Serow": "tail3 12% (ref 38%)",
+   "Brown Bear": "tail3 0% (ref 38%)"
+  },
+  "conclusion": "a short tail paints no third tail segment; the missing-anatomy rule needs an explicit absent-segment allowance (author policy, Codex), not another reference"
+ }
 }

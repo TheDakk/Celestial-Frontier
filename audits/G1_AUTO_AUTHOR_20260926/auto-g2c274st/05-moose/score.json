@@ -1,0 +1,11 @@
+{
+ "id": "05-moose",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 14% paint (reference 91%)",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 24% paint (reference 96%)",
+  "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 25%)"
+ ],
+ "semanticPresence": null
+}
