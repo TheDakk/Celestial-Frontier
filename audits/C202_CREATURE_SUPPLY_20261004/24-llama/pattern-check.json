@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Llama",
+  "masterSha256": "fbf67a687e3d35e0a2a94fa387e158604c39daf02d8b249fd79f00b38a7acf91",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

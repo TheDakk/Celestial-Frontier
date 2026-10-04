@@ -1,0 +1,199 @@
+{
+  "id": "15-fishing-cat",
+  "name": "Fishing Cat",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "1403ef342d66d3bedab9f9fe10766b0fbf994f61a6bdfc48212f81713879d50c",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 28776,
+    "coreRadius": 26,
+    "bodyBox": {
+      "x0": 117,
+      "y0": 138,
+      "x1": 311,
+      "y1": 244
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1057,
+        "pixels": 3043,
+        "box": {
+          "x0": 267,
+          "y0": 114,
+          "x1": 359,
+          "y1": 193
+        },
+        "attach": {
+          "x": 301.4,
+          "y": 155.1,
+          "relX": 0.95,
+          "relY": 0.16
+        },
+        "dir": {
+          "x": 0.98,
+          "y": -0.21
+        },
+        "class": "front",
+        "length": 70.7
+      },
+      {
+        "k": 1,
+        "frac": 0.0776,
+        "pixels": 2234,
+        "box": {
+          "x0": 55,
+          "y0": 160,
+          "x1": 116,
+          "y1": 245
+        },
+        "attach": {
+          "x": 116,
+          "y": 184.5,
+          "relX": -0.01,
+          "relY": 0.44
+        },
+        "dir": {
+          "x": -0.66,
+          "y": 0.75
+        },
+        "class": "limb-down",
+        "length": 85.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0409,
+        "pixels": 1178,
+        "box": {
+          "x0": 98,
+          "y0": 216,
+          "x1": 137,
+          "y1": 291
+        },
+        "attach": {
+          "x": 120.5,
+          "y": 236.5,
+          "relX": 0.02,
+          "relY": 0.93
+        },
+        "dir": {
+          "x": -0.33,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 59
+      },
+      {
+        "k": 3,
+        "frac": 0.0515,
+        "pixels": 1482,
+        "box": {
+          "x0": 262,
+          "y0": 232,
+          "x1": 313,
+          "y1": 293
+        },
+        "attach": {
+          "x": 278.9,
+          "y": 233.9,
+          "relX": 0.83,
+          "relY": 0.9
+        },
+        "dir": {
+          "x": 0.24,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 68.2
+      },
+      {
+        "k": 4,
+        "frac": 0.0498,
+        "pixels": 1432,
+        "box": {
+          "x0": 217,
+          "y0": 234,
+          "x1": 260,
+          "y1": 294
+        },
+        "attach": {
+          "x": 241.5,
+          "y": 234,
+          "relX": 0.64,
+          "relY": 0.91
+        },
+        "dir": {
+          "x": -0.35,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 64.8
+      },
+      {
+        "k": 5,
+        "frac": 0.0425,
+        "pixels": 1224,
+        "box": {
+          "x0": 136,
+          "y0": 245,
+          "x1": 183,
+          "y1": 294
+        },
+        "attach": {
+          "x": 153.5,
+          "y": 245,
+          "relX": 0.19,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.11,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 57.2
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "ground": [
+      {
+        "x0": 101,
+        "x1": 126,
+        "cx": 114
+      },
+      {
+        "x0": 150,
+        "x1": 183,
+        "cx": 168.4
+      },
+      {
+        "x0": 218,
+        "x1": 243,
+        "cx": 230.6
+      },
+      {
+        "x0": 283,
+        "x1": 313,
+        "cx": 298.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

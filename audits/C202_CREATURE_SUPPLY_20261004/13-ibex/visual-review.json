@@ -1,0 +1,28 @@
+{
+  "name": "Ibex",
+  "masterSha256": "d8061ecc314acecf182be381b10ba01306a3d7734e06ff185f9e13970fbfe683",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Long heavy ridged swept horns, beard, brown coat and four separate hooves; short pale-ended tail. Far ear obscured by horn/head. No claimed hidden ear landmark.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 306,
+      "y0": 200,
+      "x1": 996,
+      "y1": 1000
+    },
+    "margins": {
+      "left": 306,
+      "right": 257,
+      "top": 200,
+      "bottom": 253
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

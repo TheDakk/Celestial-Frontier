@@ -1,0 +1,14 @@
+{
+  "id": "16-spotted-hyena",
+  "name": "Spotted Hyena",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-3fcad93c-22aa-4f51-a012-af6b47eeed33.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "bce5a8e2772d2d90f9d427097b9d9f5c2bb0e9df13b9cb8edd030c63a2cbf6a5",
+  "bytes": 1422526,
+  "promptSha256": "553a2d1de6281e669488bd0d84fd5dc001151e87e4a198ea2cd932b4e2ebbd62",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Beaver",
+  "masterSha256": "ab4d573a75c83f573de488ad3b38828a5d930af6fe1480e560cd8c98d2bd5381",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Badger",
+  "masterSha256": "8f4f9abaa9906c6114cbac761198eec583e180b807f7d6797053f0e722ee743b",
+  "required": [
+    "white stripe running back over the face"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "white stripe running back over the face",
+      "status": "PRESENT",
+      "observed": "White and black facial stripes, grizzled body and strong claws on four feet. Tail appears much longer and bushier than expected for the canonical badger: identity hold for Claude, even though framing passes."
+    }
+  ]
+}

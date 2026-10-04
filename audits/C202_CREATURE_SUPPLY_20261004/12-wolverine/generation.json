@@ -1,0 +1,14 @@
+{
+  "id": "12-wolverine",
+  "name": "Wolverine",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-c0b5b484-e243-49d2-8bfc-5c91a79d97e0.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2ef59bfe84259bf70cdd979a75cac10eea9c405011ee83386738ea6ecc89ac3c",
+  "bytes": 1407304,
+  "promptSha256": "edee83c570a20a9aaaf7774879e79eb163be0c9929300a4035ef52abf3b1458f",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

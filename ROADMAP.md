@@ -101,6 +101,8 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 
 ## Current Codex sprint handoff — 2026-10-04, C202 references ACTIVE
 
+**C265 delivery:**24 new native1254 uncovered-quadruped originals at `audits/C202_CREATURE_SUPPLY_20261004`;24 framing passes/14 provenance controls. Named source holds remain. Reference qualification and exact remaining native failures continue under C264. Product/certificate unchanged;123.98GiB free.
+
 **C264 reservation ACTIVE.** C202 signed handoff merged at387b366d0; coverage270. Current work prioritizes qualified primate/cephalopod/insect/myriapod references, exact remaining Tortoise/Red Fox/Albatross/Petrel source repairs, and24 originals aimed at qualified classes. Three disjoint agents prepare source/static evidence; root owns serial native qualification. The previous C201 handoff below is historical pending this batch’s final archive. Only explicit C264 TERMINAL releases the window.
 
 ### Prior completed C201 handoff

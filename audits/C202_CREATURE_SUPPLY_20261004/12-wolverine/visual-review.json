@@ -1,0 +1,28 @@
+{
+  "name": "Wolverine",
+  "masterSha256": "2ef59bfe84259bf70cdd979a75cac10eea9c405011ee83386738ea6ecc89ac3c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Stocky dark body with broad pale flank bands and bushy tail, rounded ears, four strong separated clawed feet. Tail fully framed; far ear only partially visible.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 134,
+      "y0": 383,
+      "x1": 1141,
+      "y1": 867
+    },
+    "margins": {
+      "left": 134,
+      "right": 112,
+      "top": 383,
+      "bottom": 386
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

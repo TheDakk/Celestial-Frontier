@@ -1,0 +1,28 @@
+{
+  "name": "Bison",
+  "masterSha256": "7729d7730e4ce58f37ee3e5cce63edcb38bd38d8ec24b21d8063357eb2957b2c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Massive shoulder hump, dense shaggy front coat and beard, short horns, four complete hooves and tufted tail. Far ear concealed by mane/horn. Head-down fur ownership needs scoring.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 210,
+      "y0": 306,
+      "x1": 1061,
+      "y1": 913
+    },
+    "margins": {
+      "left": 210,
+      "right": 192,
+      "top": 306,
+      "bottom": 340
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

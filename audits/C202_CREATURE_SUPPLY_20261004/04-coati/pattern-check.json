@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Coati",
+  "masterSha256": "6c48d5b218fe22a2a451bdd8a1149126ca13e453a7d105b2f25adbb331f0c026",
+  "required": [
+    "faintly banded tail held straight up like a flagpole"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "faintly banded tail held straight up like a flagpole",
+      "status": "PRESENT",
+      "observed": "Long narrow muzzle and upright banded bushy tail; four separated feet with claws. Tail/root continuity visible; far ear mostly hidden and far upper limb concealed. No invented joint claim."
+    }
+  ]
+}

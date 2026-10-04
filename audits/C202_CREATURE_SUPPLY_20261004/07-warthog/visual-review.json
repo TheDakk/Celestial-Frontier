@@ -1,0 +1,28 @@
+{
+  "name": "Warthog",
+  "masterSha256": "db9a154050efd3e2f1840915ba51dd45ad9b2f8df41ade0463dabd5a88de1b92",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Sparse bristled brown body, cheek warts and large curved paired tusks; upright thin tufted tail and four complete hooves. Mane strands are attached but need island scoring.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 268,
+      "y0": 311,
+      "x1": 1080,
+      "y1": 966
+    },
+    "margins": {
+      "left": 268,
+      "right": 173,
+      "top": 311,
+      "bottom": 287
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}
