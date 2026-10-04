@@ -1,0 +1,27 @@
+{
+  "unchangedLimits": {
+    "requirements": true,
+    "growthGuard": true,
+    "ceilings": true
+  },
+  "previousCertificateFilesUnchanged": {
+    "calibration-budget.json": true,
+    "compendium-memory-v2.json": true,
+    "execution.json": true,
+    "instrument/manifest.json": true,
+    "instrument-authority.json": true,
+    "calibration-1-report.json": true,
+    "calibration-2-report.json": true,
+    "calibration-3-report.json": true,
+    "certification-report.json": true
+  },
+  "newEpoch": "i5-v2-456ac7c52ddf",
+  "activationReplay": {
+    "ok": true,
+    "errors": [],
+    "epoch": "i5-v2-456ac7c52ddf",
+    "source": "456ac7c52ddfdc5aab11233a7c98c8cede7dbf82"
+  },
+  "absoluteHomePaths": [],
+  "sharedSymlinkRelative": true
+}
