@@ -1,0 +1,18 @@
+node:fs:778
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open 'audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/07-wild-pig/packet/master.png'
+    at Object.openSync (node:fs:778:18)
+    at Object.readFileSync (node:fs:624:35)
+    at file://~/Projects/celestial-frontier-openai-mac/audits/C208_REPAIRS_20261004/review-rig02.bundle.mjs:49908:19
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/07-wild-pig/packet/master.png'
+}
+
+Node.js v26.10.0

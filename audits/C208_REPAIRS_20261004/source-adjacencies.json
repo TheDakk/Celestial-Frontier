@@ -1,0 +1,2107 @@
+[
+  {
+    "id": "07-wild-pig",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/07-wild-pig/fit",
+    "excluded": [
+      {
+        "parts": [
+          "ear-far-root",
+          "ear-near-root"
+        ],
+        "joints": [
+          "earFarRoot",
+          "earNearRoot"
+        ],
+        "edges": 26
+      },
+      {
+        "parts": [
+          "ear-far-root",
+          "ear-near-tip"
+        ],
+        "joints": [
+          "earFarRoot",
+          "earNearTip"
+        ],
+        "edges": 16
+      },
+      {
+        "parts": [
+          "ear-far-tip",
+          "ear-near-tip"
+        ],
+        "joints": [
+          "earFarTip",
+          "earNearTip"
+        ],
+        "edges": 40
+      },
+      {
+        "parts": [
+          "ear-far-tip",
+          "spine"
+        ],
+        "joints": [
+          "earFarTip",
+          "spine"
+        ],
+        "edges": 5
+      },
+      {
+        "parts": [
+          "ear-near-root",
+          "neck"
+        ],
+        "joints": [
+          "earNearRoot",
+          "neck"
+        ],
+        "edges": 84
+      },
+      {
+        "parts": [
+          "ear-near-tip",
+          "neck"
+        ],
+        "joints": [
+          "earNearTip",
+          "neck"
+        ],
+        "edges": 25
+      },
+      {
+        "parts": [
+          "ear-near-tip",
+          "spine"
+        ],
+        "joints": [
+          "earNearTip",
+          "spine"
+        ],
+        "edges": 44
+      },
+      {
+        "parts": [
+          "fore-far-ankle",
+          "spine"
+        ],
+        "joints": [
+          "foreFarAnkle",
+          "spine"
+        ],
+        "edges": 1
+      },
+      {
+        "parts": [
+          "fore-far-paw",
+          "spine"
+        ],
+        "joints": [
+          "foreFarPaw",
+          "spine"
+        ],
+        "edges": 3
+      },
+      {
+        "parts": [
+          "fore-far-root",
+          "fore-near-root"
+        ],
+        "joints": [
+          "foreFarRoot",
+          "foreNearRoot"
+        ],
+        "edges": 168
+      },
+      {
+        "parts": [
+          "fore-near-ankle",
+          "spine"
+        ],
+        "joints": [
+          "foreNearAnkle",
+          "spine"
+        ],
+        "edges": 42
+      },
+      {
+        "parts": [
+          "head",
+          "spine"
+        ],
+        "joints": [
+          "head",
+          "spine"
+        ],
+        "edges": 86
+      },
+      {
+        "parts": [
+          "hind-far-ankle",
+          "spine"
+        ],
+        "joints": [
+          "hindFarAnkle",
+          "spine"
+        ],
+        "edges": 7
+      },
+      {
+        "parts": [
+          "hind-far-paw",
+          "spine"
+        ],
+        "joints": [
+          "hindFarPaw",
+          "spine"
+        ],
+        "edges": 14
+      },
+      {
+        "parts": [
+          "hind-far-root",
+          "hind-near-root"
+        ],
+        "joints": [
+          "hindFarRoot",
+          "hindNearRoot"
+        ],
+        "edges": 160
+      },
+      {
+        "parts": [
+          "hind-near-ankle",
+          "spine"
+        ],
+        "joints": [
+          "hindNearAnkle",
+          "spine"
+        ],
+        "edges": 23
+      },
+      {
+        "parts": [
+          "hind-near-paw",
+          "spine"
+        ],
+        "joints": [
+          "hindNearPaw",
+          "spine"
+        ],
+        "edges": 85
+      },
+      {
+        "parts": [
+          "jaw",
+          "spine"
+        ],
+        "joints": [
+          "jaw",
+          "spine"
+        ],
+        "edges": 87
+      },
+      {
+        "parts": [
+          "neck",
+          "spine"
+        ],
+        "joints": [
+          "neck",
+          "spine"
+        ],
+        "edges": 436
+      },
+      {
+        "parts": [
+          "root",
+          "spine"
+        ],
+        "joints": [
+          "root",
+          "spine"
+        ],
+        "edges": 52
+      },
+      {
+        "parts": [
+          "spine",
+          "tail1"
+        ],
+        "joints": [
+          "spine",
+          "tail1"
+        ],
+        "edges": 2
+      }
+    ],
+    "joins": 37
+  },
+  {
+    "id": "10-cow",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/10-cow/fit",
+    "excluded": [
+      {
+        "parts": [
+          "ear-far-root",
+          "ear-near-root"
+        ],
+        "joints": [
+          "earFarRoot",
+          "earNearRoot"
+        ],
+        "edges": 28
+      },
+      {
+        "parts": [
+          "ear-far-root",
+          "ear-near-tip"
+        ],
+        "joints": [
+          "earFarRoot",
+          "earNearTip"
+        ],
+        "edges": 22
+      },
+      {
+        "parts": [
+          "ear-far-root",
+          "spine"
+        ],
+        "joints": [
+          "earFarRoot",
+          "spine"
+        ],
+        "edges": 31
+      },
+      {
+        "parts": [
+          "ear-far-tip",
+          "ear-near-tip"
+        ],
+        "joints": [
+          "earFarTip",
+          "earNearTip"
+        ],
+        "edges": 67
+      },
+      {
+        "parts": [
+          "ear-far-tip",
+          "spine"
+        ],
+        "joints": [
+          "earFarTip",
+          "spine"
+        ],
+        "edges": 38
+      },
+      {
+        "parts": [
+          "ear-near-root",
+          "neck"
+        ],
+        "joints": [
+          "earNearRoot",
+          "neck"
+        ],
+        "edges": 82
+      },
+      {
+        "parts": [
+          "ear-near-tip",
+          "neck"
+        ],
+        "joints": [
+          "earNearTip",
+          "neck"
+        ],
+        "edges": 25
+      },
+      {
+        "parts": [
+          "ear-near-tip",
+          "spine"
+        ],
+        "joints": [
+          "earNearTip",
+          "spine"
+        ],
+        "edges": 61
+      },
+      {
+        "parts": [
+          "fore-far-ankle",
+          "spine"
+        ],
+        "joints": [
+          "foreFarAnkle",
+          "spine"
+        ],
+        "edges": 9
+      },
+      {
+        "parts": [
+          "fore-far-paw",
+          "spine"
+        ],
+        "joints": [
+          "foreFarPaw",
+          "spine"
+        ],
+        "edges": 2
+      },
+      {
+        "parts": [
+          "fore-far-root",
+          "fore-near-root"
+        ],
+        "joints": [
+          "foreFarRoot",
+          "foreNearRoot"
+        ],
+        "edges": 184
+      },
+      {
+        "parts": [
+          "head",
+          "spine"
+        ],
+        "joints": [
+          "head",
+          "spine"
+        ],
+        "edges": 57
+      },
+      {
+        "parts": [
+          "hind-far-ankle",
+          "spine"
+        ],
+        "joints": [
+          "hindFarAnkle",
+          "spine"
+        ],
+        "edges": 56
+      },
+      {
+        "parts": [
+          "hind-far-paw",
+          "spine"
+        ],
+        "joints": [
+          "hindFarPaw",
+          "spine"
+        ],
+        "edges": 12
+      },
+      {
+        "parts": [
+          "hind-far-root",
+          "hind-near-root"
+        ],
+        "joints": [
+          "hindFarRoot",
+          "hindNearRoot"
+        ],
+        "edges": 170
+      },
+      {
+        "parts": [
+          "hind-near-ankle",
+          "spine"
+        ],
+        "joints": [
+          "hindNearAnkle",
+          "spine"
+        ],
+        "edges": 1
+      },
+      {
+        "parts": [
+          "hind-near-paw",
+          "spine"
+        ],
+        "joints": [
+          "hindNearPaw",
+          "spine"
+        ],
+        "edges": 24
+      },
+      {
+        "parts": [
+          "jaw",
+          "spine"
+        ],
+        "joints": [
+          "jaw",
+          "spine"
+        ],
+        "edges": 14
+      },
+      {
+        "parts": [
+          "neck",
+          "spine"
+        ],
+        "joints": [
+          "neck",
+          "spine"
+        ],
+        "edges": 372
+      },
+      {
+        "parts": [
+          "root",
+          "spine"
+        ],
+        "joints": [
+          "root",
+          "spine"
+        ],
+        "edges": 60
+      }
+    ],
+    "joins": 37
+  },
+  {
+    "id": "16-hyrax",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/16-hyrax/fit",
+    "excluded": [
+      {
+        "parts": [
+          "ear-far-root",
+          "ear-near-root"
+        ],
+        "joints": [
+          "earFarRoot",
+          "earNearRoot"
+        ],
+        "edges": 36
+      },
+      {
+        "parts": [
+          "ear-far-root",
+          "ear-near-tip"
+        ],
+        "joints": [
+          "earFarRoot",
+          "earNearTip"
+        ],
+        "edges": 10
+      },
+      {
+        "parts": [
+          "ear-far-root",
+          "spine"
+        ],
+        "joints": [
+          "earFarRoot",
+          "spine"
+        ],
+        "edges": 70
+      },
+      {
+        "parts": [
+          "ear-far-tip",
+          "ear-near-tip"
+        ],
+        "joints": [
+          "earFarTip",
+          "earNearTip"
+        ],
+        "edges": 17
+      },
+      {
+        "parts": [
+          "ear-near-root",
+          "neck"
+        ],
+        "joints": [
+          "earNearRoot",
+          "neck"
+        ],
+        "edges": 64
+      },
+      {
+        "parts": [
+          "ear-near-root",
+          "spine"
+        ],
+        "joints": [
+          "earNearRoot",
+          "spine"
+        ],
+        "edges": 11
+      },
+      {
+        "parts": [
+          "ear-near-tip",
+          "neck"
+        ],
+        "joints": [
+          "earNearTip",
+          "neck"
+        ],
+        "edges": 16
+      },
+      {
+        "parts": [
+          "ear-near-tip",
+          "spine"
+        ],
+        "joints": [
+          "earNearTip",
+          "spine"
+        ],
+        "edges": 2
+      },
+      {
+        "parts": [
+          "fore-far-ankle",
+          "spine"
+        ],
+        "joints": [
+          "foreFarAnkle",
+          "spine"
+        ],
+        "edges": 55
+      },
+      {
+        "parts": [
+          "fore-far-knee",
+          "fore-near-root"
+        ],
+        "joints": [
+          "foreFarKnee",
+          "foreNearRoot"
+        ],
+        "edges": 2
+      },
+      {
+        "parts": [
+          "fore-far-paw",
+          "spine"
+        ],
+        "joints": [
+          "foreFarPaw",
+          "spine"
+        ],
+        "edges": 77
+      },
+      {
+        "parts": [
+          "fore-far-root",
+          "fore-near-root"
+        ],
+        "joints": [
+          "foreFarRoot",
+          "foreNearRoot"
+        ],
+        "edges": 158
+      },
+      {
+        "parts": [
+          "fore-near-ankle",
+          "spine"
+        ],
+        "joints": [
+          "foreNearAnkle",
+          "spine"
+        ],
+        "edges": 3
+      },
+      {
+        "parts": [
+          "fore-near-paw",
+          "spine"
+        ],
+        "joints": [
+          "foreNearPaw",
+          "spine"
+        ],
+        "edges": 47
+      },
+      {
+        "parts": [
+          "head",
+          "spine"
+        ],
+        "joints": [
+          "head",
+          "spine"
+        ],
+        "edges": 112
+      },
+      {
+        "parts": [
+          "hind-far-ankle",
+          "spine"
+        ],
+        "joints": [
+          "hindFarAnkle",
+          "spine"
+        ],
+        "edges": 7
+      },
+      {
+        "parts": [
+          "hind-far-knee",
+          "hind-near-knee"
+        ],
+        "joints": [
+          "hindFarKnee",
+          "hindNearKnee"
+        ],
+        "edges": 31
+      },
+      {
+        "parts": [
+          "hind-far-root",
+          "hind-near-knee"
+        ],
+        "joints": [
+          "hindFarRoot",
+          "hindNearKnee"
+        ],
+        "edges": 12
+      },
+      {
+        "parts": [
+          "hind-far-root",
+          "hind-near-root"
+        ],
+        "joints": [
+          "hindFarRoot",
+          "hindNearRoot"
+        ],
+        "edges": 168
+      },
+      {
+        "parts": [
+          "hind-near-ankle",
+          "spine"
+        ],
+        "joints": [
+          "hindNearAnkle",
+          "spine"
+        ],
+        "edges": 32
+      },
+      {
+        "parts": [
+          "hind-near-paw",
+          "spine"
+        ],
+        "joints": [
+          "hindNearPaw",
+          "spine"
+        ],
+        "edges": 49
+      },
+      {
+        "parts": [
+          "jaw",
+          "neck"
+        ],
+        "joints": [
+          "jaw",
+          "neck"
+        ],
+        "edges": 28
+      },
+      {
+        "parts": [
+          "jaw",
+          "spine"
+        ],
+        "joints": [
+          "jaw",
+          "spine"
+        ],
+        "edges": 31
+      },
+      {
+        "parts": [
+          "neck",
+          "spine"
+        ],
+        "joints": [
+          "neck",
+          "spine"
+        ],
+        "edges": 286
+      },
+      {
+        "parts": [
+          "pelvis",
+          "tail1"
+        ],
+        "joints": [
+          "pelvis",
+          "tail1"
+        ],
+        "edges": 16
+      },
+      {
+        "parts": [
+          "pelvis",
+          "tail2"
+        ],
+        "joints": [
+          "pelvis",
+          "tail2"
+        ],
+        "edges": 13
+      },
+      {
+        "parts": [
+          "pelvis",
+          "tail3"
+        ],
+        "joints": [
+          "pelvis",
+          "tail3"
+        ],
+        "edges": 26
+      },
+      {
+        "parts": [
+          "root",
+          "spine"
+        ],
+        "joints": [
+          "root",
+          "spine"
+        ],
+        "edges": 27
+      },
+      {
+        "parts": [
+          "spine",
+          "tail3"
+        ],
+        "joints": [
+          "spine",
+          "tail3"
+        ],
+        "edges": 3
+      }
+    ],
+    "joins": 42
+  },
+  {
+    "id": "17-cardinal",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/17-cardinal/fit",
+    "excluded": [
+      {
+        "parts": [
+          "beak",
+          "body"
+        ],
+        "joints": [
+          "beak",
+          "root"
+        ],
+        "edges": 42
+      },
+      {
+        "parts": [
+          "body",
+          "far-foot"
+        ],
+        "joints": [
+          "root",
+          "legFarFoot"
+        ],
+        "edges": 3
+      },
+      {
+        "parts": [
+          "body",
+          "far-shin"
+        ],
+        "joints": [
+          "root",
+          "legFarAnkle"
+        ],
+        "edges": 8
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingFarTip"
+        ],
+        "edges": 1
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingFarRoot"
+        ],
+        "edges": 146
+      },
+      {
+        "parts": [
+          "body",
+          "head"
+        ],
+        "joints": [
+          "root",
+          "head"
+        ],
+        "edges": 94
+      },
+      {
+        "parts": [
+          "body",
+          "near-foot"
+        ],
+        "joints": [
+          "root",
+          "legNearFoot"
+        ],
+        "edges": 6
+      },
+      {
+        "parts": [
+          "body",
+          "near-shin"
+        ],
+        "joints": [
+          "root",
+          "legNearAnkle"
+        ],
+        "edges": 19
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingNearTip"
+        ],
+        "edges": 329
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingNearRoot"
+        ],
+        "edges": 113
+      },
+      {
+        "parts": [
+          "body",
+          "neck-upper"
+        ],
+        "joints": [
+          "root",
+          "neck1"
+        ],
+        "edges": 27
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearTip"
+        ],
+        "edges": 156
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearRoot"
+        ],
+        "edges": 15
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "wingNearRoot"
+        ],
+        "edges": 163
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "neck0"
+        ],
+        "edges": 8
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "neck-upper"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "neck1"
+        ],
+        "edges": 49
+      },
+      {
+        "parts": [
+          "near-wing-flight",
+          "tail"
+        ],
+        "joints": [
+          "wingNearTip",
+          "tailFan"
+        ],
+        "edges": 51
+      },
+      {
+        "parts": [
+          "near-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingNearRoot",
+          "neck0"
+        ],
+        "edges": 68
+      }
+    ],
+    "joins": 15
+  },
+  {
+    "id": "18-sparrow",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/18-sparrow/fit",
+    "excluded": [
+      {
+        "parts": [
+          "body",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingNearTip"
+        ],
+        "edges": 271
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingNearRoot"
+        ],
+        "edges": 114
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearTip"
+        ],
+        "edges": 158
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearRoot"
+        ],
+        "edges": 14
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "head"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "head"
+        ],
+        "edges": 92
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "wingNearRoot"
+        ],
+        "edges": 138
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "neck0"
+        ],
+        "edges": 8
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "neck-upper"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "neck1"
+        ],
+        "edges": 80
+      },
+      {
+        "parts": [
+          "near-wing-flight",
+          "tail"
+        ],
+        "joints": [
+          "wingNearTip",
+          "tailFan"
+        ],
+        "edges": 58
+      },
+      {
+        "parts": [
+          "near-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingNearRoot",
+          "neck0"
+        ],
+        "edges": 96
+      }
+    ],
+    "joins": 15
+  },
+  {
+    "id": "19-pigeon",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/19-pigeon/fit",
+    "excluded": [
+      {
+        "parts": [
+          "body",
+          "far-foot"
+        ],
+        "joints": [
+          "root",
+          "legFarFoot"
+        ],
+        "edges": 27
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingFarTip"
+        ],
+        "edges": 377
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-shoulder"
+        ],
+        "joints": [
+          "root",
+          "wingFarRoot"
+        ],
+        "edges": 111
+      },
+      {
+        "parts": [
+          "body",
+          "near-foot"
+        ],
+        "joints": [
+          "root",
+          "legNearFoot"
+        ],
+        "edges": 71
+      },
+      {
+        "parts": [
+          "body",
+          "near-shin"
+        ],
+        "joints": [
+          "root",
+          "legNearAnkle"
+        ],
+        "edges": 43
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingNearTip"
+        ],
+        "edges": 660
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-shoulder"
+        ],
+        "joints": [
+          "root",
+          "wingNearRoot"
+        ],
+        "edges": 195
+      },
+      {
+        "parts": [
+          "body",
+          "neck-lower"
+        ],
+        "joints": [
+          "root",
+          "neck0"
+        ],
+        "edges": 8
+      },
+      {
+        "parts": [
+          "body",
+          "neck-upper"
+        ],
+        "joints": [
+          "root",
+          "neck1"
+        ],
+        "edges": 19
+      },
+      {
+        "parts": [
+          "far-foot",
+          "near-foot"
+        ],
+        "joints": [
+          "legFarFoot",
+          "legNearFoot"
+        ],
+        "edges": 43
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearTip"
+        ],
+        "edges": 374
+      },
+      {
+        "parts": [
+          "far-wing-shoulder",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "wingNearTip"
+        ],
+        "edges": 31
+      },
+      {
+        "parts": [
+          "far-wing-shoulder",
+          "near-wing-shoulder"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "wingNearRoot"
+        ],
+        "edges": 115
+      },
+      {
+        "parts": [
+          "far-wing-shoulder",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "neck0"
+        ],
+        "edges": 92
+      },
+      {
+        "parts": [
+          "far-wing-shoulder",
+          "neck-upper"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "neck1"
+        ],
+        "edges": 6
+      },
+      {
+        "parts": [
+          "near-wing-flight",
+          "tail"
+        ],
+        "joints": [
+          "wingNearTip",
+          "tailFan"
+        ],
+        "edges": 79
+      },
+      {
+        "parts": [
+          "near-wing-shoulder",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingNearRoot",
+          "neck0"
+        ],
+        "edges": 137
+      }
+    ],
+    "joins": 15
+  },
+  {
+    "id": "11-toucan",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/11-toucan/fit",
+    "excluded": [
+      {
+        "parts": [
+          "beak",
+          "body"
+        ],
+        "joints": [
+          "beak",
+          "root"
+        ],
+        "edges": 59
+      },
+      {
+        "parts": [
+          "body",
+          "far-foot"
+        ],
+        "joints": [
+          "root",
+          "legFarFoot"
+        ],
+        "edges": 12
+      },
+      {
+        "parts": [
+          "body",
+          "far-shin"
+        ],
+        "joints": [
+          "root",
+          "legFarAnkle"
+        ],
+        "edges": 12
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingFarRoot"
+        ],
+        "edges": 381
+      },
+      {
+        "parts": [
+          "body",
+          "head"
+        ],
+        "joints": [
+          "root",
+          "head"
+        ],
+        "edges": 74
+      },
+      {
+        "parts": [
+          "body",
+          "near-foot"
+        ],
+        "joints": [
+          "root",
+          "legNearFoot"
+        ],
+        "edges": 10
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingNearTip"
+        ],
+        "edges": 382
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingNearRoot"
+        ],
+        "edges": 137
+      },
+      {
+        "parts": [
+          "body",
+          "neck-lower"
+        ],
+        "joints": [
+          "root",
+          "neck0"
+        ],
+        "edges": 18
+      },
+      {
+        "parts": [
+          "body",
+          "neck-upper"
+        ],
+        "joints": [
+          "root",
+          "neck1"
+        ],
+        "edges": 58
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearTip"
+        ],
+        "edges": 385
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearRoot"
+        ],
+        "edges": 5
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "wingNearRoot"
+        ],
+        "edges": 78
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "neck0"
+        ],
+        "edges": 55
+      },
+      {
+        "parts": [
+          "near-thigh",
+          "tail"
+        ],
+        "joints": [
+          "legNearKnee",
+          "tailFan"
+        ],
+        "edges": 59
+      },
+      {
+        "parts": [
+          "near-wing-flight",
+          "tail"
+        ],
+        "joints": [
+          "wingNearTip",
+          "tailFan"
+        ],
+        "edges": 155
+      },
+      {
+        "parts": [
+          "near-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingNearRoot",
+          "neck0"
+        ],
+        "edges": 157
+      }
+    ],
+    "joins": 15
+  },
+  {
+    "id": "14-duck",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/14-duck/fit",
+    "excluded": [
+      {
+        "parts": [
+          "beak",
+          "body"
+        ],
+        "joints": [
+          "beak",
+          "root"
+        ],
+        "edges": 57
+      },
+      {
+        "parts": [
+          "body",
+          "far-foot"
+        ],
+        "joints": [
+          "root",
+          "legFarFoot"
+        ],
+        "edges": 11
+      },
+      {
+        "parts": [
+          "body",
+          "far-shin"
+        ],
+        "joints": [
+          "root",
+          "legFarAnkle"
+        ],
+        "edges": 29
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingFarTip"
+        ],
+        "edges": 5
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingFarRoot"
+        ],
+        "edges": 96
+      },
+      {
+        "parts": [
+          "body",
+          "head"
+        ],
+        "joints": [
+          "root",
+          "head"
+        ],
+        "edges": 165
+      },
+      {
+        "parts": [
+          "body",
+          "near-foot"
+        ],
+        "joints": [
+          "root",
+          "legNearFoot"
+        ],
+        "edges": 84
+      },
+      {
+        "parts": [
+          "body",
+          "near-shin"
+        ],
+        "joints": [
+          "root",
+          "legNearAnkle"
+        ],
+        "edges": 27
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingNearTip"
+        ],
+        "edges": 271
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingNearRoot"
+        ],
+        "edges": 108
+      },
+      {
+        "parts": [
+          "body",
+          "neck-lower"
+        ],
+        "joints": [
+          "root",
+          "neck0"
+        ],
+        "edges": 17
+      },
+      {
+        "parts": [
+          "body",
+          "neck-upper"
+        ],
+        "joints": [
+          "root",
+          "neck1"
+        ],
+        "edges": 106
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearTip"
+        ],
+        "edges": 194
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearRoot"
+        ],
+        "edges": 39
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "wingNearRoot"
+        ],
+        "edges": 79
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "neck0"
+        ],
+        "edges": 23
+      },
+      {
+        "parts": [
+          "near-wing-flight",
+          "tail"
+        ],
+        "joints": [
+          "wingNearTip",
+          "tailFan"
+        ],
+        "edges": 271
+      },
+      {
+        "parts": [
+          "near-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingNearRoot",
+          "neck0"
+        ],
+        "edges": 93
+      }
+    ],
+    "joins": 15
+  },
+  {
+    "id": "16-stork",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/16-stork/native-fit",
+    "excluded": [
+      {
+        "parts": [
+          "beak",
+          "body"
+        ],
+        "joints": [
+          "beak",
+          "root"
+        ],
+        "edges": 32
+      },
+      {
+        "parts": [
+          "body",
+          "far-foot"
+        ],
+        "joints": [
+          "root",
+          "legFarFoot"
+        ],
+        "edges": 23
+      },
+      {
+        "parts": [
+          "body",
+          "far-shin"
+        ],
+        "joints": [
+          "root",
+          "legFarAnkle"
+        ],
+        "edges": 250
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingFarTip"
+        ],
+        "edges": 11
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingFarRoot"
+        ],
+        "edges": 12
+      },
+      {
+        "parts": [
+          "body",
+          "head"
+        ],
+        "joints": [
+          "root",
+          "head"
+        ],
+        "edges": 205
+      },
+      {
+        "parts": [
+          "body",
+          "near-foot"
+        ],
+        "joints": [
+          "root",
+          "legNearFoot"
+        ],
+        "edges": 38
+      },
+      {
+        "parts": [
+          "body",
+          "near-shin"
+        ],
+        "joints": [
+          "root",
+          "legNearAnkle"
+        ],
+        "edges": 57
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingNearTip"
+        ],
+        "edges": 319
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingNearRoot"
+        ],
+        "edges": 70
+      },
+      {
+        "parts": [
+          "body",
+          "neck-lower"
+        ],
+        "joints": [
+          "root",
+          "neck0"
+        ],
+        "edges": 3
+      },
+      {
+        "parts": [
+          "body",
+          "neck-upper"
+        ],
+        "joints": [
+          "root",
+          "neck1"
+        ],
+        "edges": 29
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearTip"
+        ],
+        "edges": 138
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearRoot"
+        ],
+        "edges": 11
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "wingNearRoot"
+        ],
+        "edges": 88
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "neck-upper"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "neck1"
+        ],
+        "edges": 12
+      },
+      {
+        "parts": [
+          "near-wing-flight",
+          "tail"
+        ],
+        "joints": [
+          "wingNearTip",
+          "tailFan"
+        ],
+        "edges": 91
+      },
+      {
+        "parts": [
+          "near-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingNearRoot",
+          "neck0"
+        ],
+        "edges": 52
+      }
+    ],
+    "joins": 15
+  },
+  {
+    "id": "13-falcon",
+    "fit": "audits/C208_REPAIRS_20261004/inputs/13-falcon/fit",
+    "excluded": [
+      {
+        "parts": [
+          "beak",
+          "body"
+        ],
+        "joints": [
+          "beak",
+          "root"
+        ],
+        "edges": 5
+      },
+      {
+        "parts": [
+          "body",
+          "far-shin"
+        ],
+        "joints": [
+          "root",
+          "legFarAnkle"
+        ],
+        "edges": 41
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingFarRoot"
+        ],
+        "edges": 199
+      },
+      {
+        "parts": [
+          "body",
+          "head"
+        ],
+        "joints": [
+          "root",
+          "head"
+        ],
+        "edges": 48
+      },
+      {
+        "parts": [
+          "body",
+          "near-foot"
+        ],
+        "joints": [
+          "root",
+          "legNearFoot"
+        ],
+        "edges": 2
+      },
+      {
+        "parts": [
+          "body",
+          "near-shin"
+        ],
+        "joints": [
+          "root",
+          "legNearAnkle"
+        ],
+        "edges": 29
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "root",
+          "wingNearTip"
+        ],
+        "edges": 262
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-root"
+        ],
+        "joints": [
+          "root",
+          "wingNearRoot"
+        ],
+        "edges": 96
+      },
+      {
+        "parts": [
+          "body",
+          "neck-lower"
+        ],
+        "joints": [
+          "root",
+          "neck0"
+        ],
+        "edges": 10
+      },
+      {
+        "parts": [
+          "body",
+          "neck-upper"
+        ],
+        "joints": [
+          "root",
+          "neck1"
+        ],
+        "edges": 130
+      },
+      {
+        "parts": [
+          "chest",
+          "far-thigh"
+        ],
+        "joints": [
+          "chest",
+          "legFarKnee"
+        ],
+        "edges": 29
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-flight"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearTip"
+        ],
+        "edges": 185
+      },
+      {
+        "parts": [
+          "far-wing-flight",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarTip",
+          "wingNearRoot"
+        ],
+        "edges": 69
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "near-wing-root"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "wingNearRoot"
+        ],
+        "edges": 119
+      },
+      {
+        "parts": [
+          "far-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingFarRoot",
+          "neck0"
+        ],
+        "edges": 25
+      },
+      {
+        "parts": [
+          "near-wing-flight",
+          "tail"
+        ],
+        "joints": [
+          "wingNearTip",
+          "tailFan"
+        ],
+        "edges": 226
+      },
+      {
+        "parts": [
+          "near-wing-root",
+          "neck-lower"
+        ],
+        "joints": [
+          "wingNearRoot",
+          "neck0"
+        ],
+        "edges": 77
+      }
+    ],
+    "joins": 15
+  }
+]

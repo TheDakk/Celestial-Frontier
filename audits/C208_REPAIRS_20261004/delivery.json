@@ -1,0 +1,36 @@
+{
+  "schema": "cf.c208-repairs/v1",
+  "productChanged": false,
+  "limitsChanged": false,
+  "galleryAdmissions": 0,
+  "coverage": 273,
+  "fishOwnerResealed": true,
+  "readyForClaudeReview": [
+    {
+      "species": "Hyrax",
+      "fit": "audits/C208_REPAIRS_20261004/joins01/16-hyrax/fit"
+    },
+    {
+      "species": "Arapaima",
+      "fit": "audits/C208_REPAIRS_20261004/fish-17-arapaima-framing02/fit"
+    },
+    {
+      "species": "Tuna",
+      "fit": "audits/C208_REPAIRS_20261004/fish-21-tuna/fit"
+    },
+    {
+      "species": "Swordfish",
+      "fit": "audits/C208_REPAIRS_20261004/fish-23-swordfish-framing02/fit"
+    }
+  ],
+  "held": {
+    "Angelfish": "Native numeric pass; detached dorsal filament remains.",
+    "Sparrow": "Hairline joins repaired and faint intact; native victory wing stretches. Not a full visual pass.",
+    "Falcon": "Six native approach:walk folded-triangle refusals (one/two triangles), despite static PASS. No retry.",
+    "Stork": "Source joins alone do not close crown/beak split; no native run of visibly failed candidate.",
+    "Wild Pig/Cow": "Smaller-motion audit prototype avoids deep collapse but leaves source/ear defects and inadequate faint collapse; not promoted.",
+    "Cardinal/Pigeon/Toucan/Duck": "Zero folded-wing excursion removes extreme ribbon in audit-only stills, but source seams/tail separation remain. Not promoted."
+  },
+  "policy": "MISSING_ANATOMY_PROPOSAL.md \u2014 proposal only; seven targets remain held.",
+  "allPairs": "HOLD"
+}

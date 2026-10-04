@@ -1,0 +1,95 @@
+{
+  "sourceFit": "audits/C208_REPAIRS_20261004/inputs/18-sparrow/fit",
+  "sourceBindingSha256": "8bf4a2128a4fd77e1bc86bbff7983ba95c7222245197a8d6c2e716ed5334b3a0",
+  "candidateBindingSha256": "4062ce90469105e083dbd16f071d3634026e416e137513af87aa4d12a7896765",
+  "sourceMasterSha256": "97fa381cee47b59f2e3646274b31a75e55eda9502276ff91bad442d6afa35599",
+  "sourceAtlasSha256": "3412b2677468696a3aa3d211208fe7b0b6445e4811f203d6ee8e0dab4effb0db",
+  "paintBoundaryPairs": [
+    [
+      "body",
+      "near-wing-root"
+    ],
+    [
+      "far-wing-root",
+      "head"
+    ],
+    [
+      "far-wing-root",
+      "neck-lower"
+    ],
+    [
+      "far-wing-root",
+      "neck-upper"
+    ],
+    [
+      "near-wing-root",
+      "neck-lower"
+    ]
+  ],
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": false,
+  "recordChanged": false,
+  "solverLimitsChanged": false,
+  "reason": "Actual observed continuous axial source boundaries and proximal bird wing-to-neck/torso boundaries. No distal cross-wing, near/far limb, foot or tail overlap welded.",
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 36,
+        "distancePx": 7.938391584056903,
+        "supports": [
+          57,
+          59
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 20,
+        "distancePx": 3.0805843601498117,
+        "supports": [
+          11,
+          14
+        ]
+      }
+    ],
+    "sourceBindingHash": "d13e1a70a721d4ec4bd42888a99e1ceb84e07397deb17f68c3fe2e103a083089",
+    "sourceVertices": 883,
+    "vertices": 1016,
+    "sharedSupports": 278,
+    "pins": 442,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 5,
+    "independentExcludedBoundaries": 5,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "near-wing-root"
+      ],
+      [
+        "far-wing-root",
+        "head"
+      ],
+      [
+        "far-wing-root",
+        "neck-lower"
+      ],
+      [
+        "far-wing-root",
+        "neck-upper"
+      ],
+      [
+        "near-wing-root",
+        "neck-lower"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "visualAccepted": false
+}

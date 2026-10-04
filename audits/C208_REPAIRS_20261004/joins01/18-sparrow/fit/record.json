@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sparrow\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4188265330\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"16\"]]]]",
+    "seed": 4188265330,
+    "ownerId": "authored:archetype-sprint/18-sparrow",
+    "earthName": "Sparrow"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4188265330,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 10,
+    "body": 13,
+    "loco": 7,
+    "trait": 16,
+    "size": 1,
+    "diet": 0,
+    "head": 8,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 13,
+    "detail": 4,
+    "accent": 9,
+    "temper": 9,
+    "sense": 8,
+    "repro": 1,
+    "life": 5,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sparrow"
+  },
+  "geometry": {
+    "cutoutAssetHash": "97fa381cee47b59f2e3646274b31a75e55eda9502276ff91bad442d6afa35599",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7052223759476594,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.4937001594896332,
+      0.5232057416267942
+    ],
+    "pelvis": [
+      0.4709728867623605,
+      0.5687400318979267
+    ],
+    "spine": [
+      0.5444976076555024,
+      0.5086124401913875
+    ],
+    "chest": [
+      0.6370813397129187,
+      0.44976076555023925
+    ],
+    "neck0": [
+      0.6597288676236044,
+      0.40199362041467307
+    ],
+    "neck1": [
+      0.6668261562998405,
+      0.36586921850079746
+    ],
+    "head": [
+      0.6593301435406698,
+      0.32224880382775123
+    ],
+    "beak": [
+      0.7129186602870813,
+      0.3437001594896332
+    ],
+    "legNearKnee": [
+      0.44489633173843696,
+      0.5981658692185008
+    ],
+    "legNearAnkle": [
+      0.4473684210526316,
+      0.6629186602870814
+    ],
+    "legNearFoot": [
+      0.4566985645933015,
+      0.6803030303030303
+    ],
+    "legFarKnee": [
+      0.5382775119617225,
+      0.5940988835725678
+    ],
+    "legFarAnkle": [
+      0.5880382775119617,
+      0.669377990430622
+    ],
+    "legFarFoot": [
+      0.6080542264752791,
+      0.6786283891547049
+    ],
+    "wingNearRoot": [
+      0.5517543859649122,
+      0.4293460925039872
+    ],
+    "wingNearTip": [
+      0.36945773524720893,
+      0.49968102073365234
+    ],
+    "wingFarRoot": [
+      0.532695374800638,
+      0.3929027113237639
+    ],
+    "wingFarTip": [
+      0.4462519936204147,
+      0.4185007974481658
+    ],
+    "tailFan": [
+      0.30653907496012756,
+      0.5461722488038278
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/18-sparrow/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 01-robin. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "76b8e75d07483c4e6fc56398c5926b042be2a463b8e721f3b24c6e3e1c161def",
+    "subjectSourceSha256": "0a2ed650bcf1e2cfc219300be2b5b53a2479a9c0d919ee1eb2f2db22c0068c51",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.05089106518943752,
+      "spine": 0.09498006036449276,
+      "chest": 0.1097053647263753,
+      "neck0": 0.052864077357573654,
+      "neck1": 0.03681499586023405,
+      "head": 0.044259810025960994,
+      "beak": 0.05772252408560268,
+      "legFarKnee": 0.07192345883981832,
+      "legFarAnkle": 0.09023900330506877,
+      "legFarFoot": 0.02205012674468429,
+      "legNearKnee": 0.03931751039845485,
+      "legNearAnkle": 0.06479996278354334,
+      "legNearFoot": 0.019729873272297756,
+      "wingFarRoot": 0.11886659749941826,
+      "wingFarTip": 0.09015386937398576,
+      "wingNearRoot": 0.08773510079494869,
+      "wingNearTip": 0.195394654461079,
+      "tailFan": 0.1659752490511596
+    },
+    "measures": {
+      "body": 0.2043234787347302,
+      "bone-min": 0.019729873272297756,
+      "bone-max": 0.195394654461079,
+      "leg/torso:legFar": 0.9015732799299662,
+      "leg/torso:legNear": 0.6061337014288256,
+      "wing/torso": 1.022988000046592
+    }
+  },
+  "recipeHash": "b61e396f93453a807ac91d64119aed57f5c6a1a76b901efc9e6054067c9efc2e"
+}

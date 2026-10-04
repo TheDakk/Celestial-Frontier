@@ -1,0 +1,118 @@
+{
+  "sourceFit": "audits/C208_REPAIRS_20261004/inputs/13-falcon/fit",
+  "sourceBindingSha256": "6b3169258708070fb1a4a35d0a95215a0ba316d8fab9eb7867d3935bf88e0360",
+  "candidateBindingSha256": "5c9da73b0a9369d7e799a12bb4fa9af2696573fcb400fd454e80abc5c07bba18",
+  "sourceMasterSha256": "2ae658cdd7edce1a4e0640757f2637680ab7e77feef37305236a066dec89cdf3",
+  "sourceAtlasSha256": "ca8f3d70279b2a1c26a302d1a72e5077751ec1b4f476fd1ba5bf02ba721560ef",
+  "paintBoundaryPairs": [
+    [
+      "beak",
+      "body"
+    ],
+    [
+      "body",
+      "far-wing-root"
+    ],
+    [
+      "body",
+      "head"
+    ],
+    [
+      "body",
+      "near-wing-root"
+    ],
+    [
+      "body",
+      "neck-lower"
+    ],
+    [
+      "body",
+      "neck-upper"
+    ],
+    [
+      "far-wing-root",
+      "neck-lower"
+    ],
+    [
+      "near-wing-root",
+      "neck-lower"
+    ]
+  ],
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": false,
+  "recordChanged": false,
+  "solverLimitsChanged": false,
+  "reason": "Actual observed continuous axial source boundaries and proximal bird wing-to-neck/torso boundaries. No distal cross-wing, near/far limb, foot or tail overlap welded.",
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 13,
+        "distancePx": 10.420172743289799,
+        "supports": [
+          61
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 35,
+        "distancePx": 6.417084623818857,
+        "supports": [
+          21,
+          15
+        ]
+      }
+    ],
+    "sourceBindingHash": "6522dd3282b4845cb47311c04a91572168eddd2aea33d07d73ed90e506e3a22e",
+    "sourceVertices": 1033,
+    "vertices": 1229,
+    "sharedSupports": 295,
+    "pins": 662,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 17,
+    "observedExcludedBoundaries": 17,
+    "weldedExcludedBoundaries": 8,
+    "independentExcludedBoundaries": 9,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "beak",
+        "body"
+      ],
+      [
+        "body",
+        "far-wing-root"
+      ],
+      [
+        "body",
+        "head"
+      ],
+      [
+        "body",
+        "near-wing-root"
+      ],
+      [
+        "body",
+        "neck-lower"
+      ],
+      [
+        "body",
+        "neck-upper"
+      ],
+      [
+        "far-wing-root",
+        "neck-lower"
+      ],
+      [
+        "near-wing-root",
+        "neck-lower"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "visualAccepted": false
+}

@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Falcon\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1513206783\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"16\"]]]]",
+    "seed": 1513206783,
+    "ownerId": "authored:archetype-sprint/13-falcon",
+    "earthName": "Falcon"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1513206783,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 4,
+    "body": 5,
+    "loco": 12,
+    "trait": 16,
+    "size": 4,
+    "diet": 5,
+    "head": 6,
+    "limbs": 3,
+    "skin": 5,
+    "tail": 0,
+    "pattern": 2,
+    "eyes": 2,
+    "behavior": 1,
+    "habitat": 12,
+    "detail": 6,
+    "accent": 9,
+    "temper": 6,
+    "sense": 8,
+    "repro": 0,
+    "life": 0,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Falcon"
+  },
+  "geometry": {
+    "cutoutAssetHash": "2ae658cdd7edce1a4e0640757f2637680ab7e77feef37305236a066dec89cdf3",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6995230721160437,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5222488038277512,
+      0.45869218500797454
+    ],
+    "pelvis": [
+      0.5131578947368421,
+      0.5206539074960127
+    ],
+    "spine": [
+      0.5834928229665072,
+      0.44250398724082934
+    ],
+    "chest": [
+      0.6645933014354067,
+      0.41738437001594897
+    ],
+    "neck0": [
+      0.70207336523126,
+      0.38740031897926636
+    ],
+    "neck1": [
+      0.7275917065390749,
+      0.3383572567783094
+    ],
+    "head": [
+      0.740749601275917,
+      0.2980861244019139
+    ],
+    "beak": [
+      0.8003189792663477,
+      0.3130781499202552
+    ],
+    "legNearKnee": [
+      0.4800637958532695,
+      0.5854864433811803
+    ],
+    "legNearAnkle": [
+      0.4728867623604466,
+      0.6611642743221691
+    ],
+    "legNearFoot": [
+      0.49362041467304624,
+      0.6781499202551834
+    ],
+    "legFarKnee": [
+      0.5939393939393939,
+      0.6178628389154704
+    ],
+    "legFarAnkle": [
+      0.6294258373205741,
+      0.6772727272727272
+    ],
+    "legFarFoot": [
+      0.6554226475279107,
+      0.6848484848484848
+    ],
+    "wingNearRoot": [
+      0.6098086124401915,
+      0.41068580542264754
+    ],
+    "wingNearTip": [
+      0.33221690590111647,
+      0.516347687400319
+    ],
+    "wingFarRoot": [
+      0.5838118022328549,
+      0.37025518341307817
+    ],
+    "wingFarTip": [
+      0.4800637958532695,
+      0.4161881977671451
+    ],
+    "tailFan": [
+      0.3121212121212121,
+      0.576475279106858
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c275/13-falcon/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile raptor media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 02-pigeon. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "664b40e528f9d82e4802870371ebb28316598d21e96497510a7bf50587c6750d",
+    "subjectSourceSha256": "fb956ac984aec4d454f4218ee1383cf3d1422590d4370243739f44572d366683",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.06262507230960956,
+      "spine": 0.10513996464220278,
+      "chest": 0.08490160644775191,
+      "neck0": 0.04799790098235146,
+      "neck1": 0.05528478717648342,
+      "head": 0.042366192852119594,
+      "beak": 0.06142696169687537,
+      "legFarKnee": 0.12639314443878952,
+      "legFarAnkle": 0.06920131861798175,
+      "legFarFoot": 0.027078150671767214,
+      "legNearKnee": 0.07279063875401304,
+      "legNearAnkle": 0.07601739212634162,
+      "legNearFoot": 0.0268029197286694,
+      "wingFarRoot": 0.09352438635596654,
+      "wingFarTip": 0.113461405929018,
+      "wingNearRoot": 0.05519268897157569,
+      "wingNearTip": 0.29702119258116805,
+      "tailFan": 0.20864269286417306
+    },
+    "measures": {
+      "body": 0.18329560762142105,
+      "bone-min": 0.0268029197286694,
+      "bone-max": 0.29702119258116805,
+      "leg/torso:legFar": 1.214827876227382,
+      "leg/torso:legNear": 0.9580750618516245,
+      "wing/torso": 1.129245784833498
+    }
+  },
+  "recipeHash": "fd2b441733122029dab4ac75451632e6c228380f45c57f52eeaa8daf99504dca"
+}
