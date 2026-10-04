@@ -1,0 +1,9 @@
+{
+ "id": "g2c92-05-lionfish",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 10.0% of the paint lies away from the body and in no part (reference 4.6%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c87-17-coati",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "7dc0efc0af808bba6a89c9470e50b70a59c182eb37980bb43fc4e355a12c8ee9",
+ "subjectSourceSha256": "4da9589fc09a392a8f2dc2a0398ff0ed28529def67c1b5f25058db27ee950447",
+ "identity": {
+  "name": "Coati",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Coati\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"3723369538\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "seed": 3723369538,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "rat",
+  "authoringSha256": "033b37d14089e19e2038c6bef89967d721bf07634a5e4039e47501a554f1955b",
+  "masterSha256": "41f8ed50d1e195f7cbd2096ac228dc48df5f9da6b1a95537d67ab3427e3c4701"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2311,
+     "class": "top",
+     "attach": {
+      "x": 138.5,
+      "y": 222,
+      "relX": 0.01,
+      "relY": 0.25
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0856,
+     "class": "front",
+     "attach": {
+      "x": 276.3,
+      "y": 216.7,
+      "relX": 0.96,
+      "relY": 0.15
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0645,
+     "class": "limb-down",
+     "attach": {
+      "x": 143.4,
+      "y": 257.6,
+      "relX": 0.04,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0455,
+     "class": "limb-down",
+     "attach": {
+      "x": 180,
+      "y": 263,
+      "relX": 0.3,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0502,
+     "class": "limb-down",
+     "attach": {
+      "x": 263.5,
+      "y": 266,
+      "relX": 0.87,
+      "relY": 1.02
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.043,
+     "class": "limb-down",
+     "attach": {
+      "x": 230.5,
+      "y": 266,
+      "relX": 0.64,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "rat",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

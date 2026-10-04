@@ -1,0 +1,11 @@
+{
+ "id": "g2c132quadrupeds-10-mountain-lizard",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 11% paint (reference 40%)",
+  "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 27% paint (reference 80%)",
+  "missing-anatomy: part hind-far-paw (hindFarPaw) covers 15% paint (reference 46%)"
+ ],
+ "semanticPresence": null
+}

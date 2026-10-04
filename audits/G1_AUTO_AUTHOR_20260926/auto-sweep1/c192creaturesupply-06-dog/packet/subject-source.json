@@ -1,0 +1,77 @@
+{
+  "name": "Dog",
+  "family": "quadruped",
+  "species": {
+    "name": "Dog",
+    "aspect": 1.5,
+    "headFrac": 0.25,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "muzzle ending in a black nose",
+      "erect or folded ears",
+      "plumed tail carried above the back"
+    ],
+    "note": "Generic - interpreted as a mid-sized domestic dog of no particular breed."
+  },
+  "genome": {
+    "seed": 461126352,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 14,
+    "body": 12,
+    "loco": 5,
+    "trait": 21,
+    "size": 2,
+    "diet": 1,
+    "head": 9,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 10,
+    "habitat": 5,
+    "detail": 8,
+    "accent": 4,
+    "temper": 3,
+    "sense": 1,
+    "repro": 6,
+    "life": 4,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Dog"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Dog\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"461126352\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"21\"]]]]",
+  "index": 556,
+  "profile": {
+    "id": "canid",
+    "names": [
+      "Jackal",
+      "Wolf",
+      "Coyote",
+      "Fox",
+      "Red Fox",
+      "Arctic Fox",
+      "African Wild Dog",
+      "Maned Wolf",
+      "Pampas Fox",
+      "Fennec Fox",
+      "Dog",
+      "Dingo"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

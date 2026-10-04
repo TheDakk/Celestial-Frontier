@@ -1,0 +1,15 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.2401478873119947,"gap":0.00008379179920774505,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"RED","samples":27,"drift":0.0012635233112625805,"gap":0.00007927822220976915,"exactRest":true,"firstRefusal":{"ms":92.7,"sampleNumber":28,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 12"}}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.019998373084335275,"gap":0.00008221445254884312,"exactRest":true,"firstRefusal":null}
+{"id":"approach:flight","status":"RED","samples":9,"drift":0,"gap":0.00007933257805465222,"exactRest":true,"firstRefusal":{"ms":45.9,"sampleNumber":10,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"}}
+{"id":"melee:peck","status":"PASS","samples":121,"drift":0.17246000310213072,"gap":0.00008221445246845438,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.00003600298178843513,"gap":0.00007927822220976915,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"RED","samples":32,"drift":0.04963291235617563,"gap":0.00007129195086111594,"exactRest":true,"firstRefusal":{"ms":213.86666666666667,"sampleNumber":33,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 8"}}
+{"id":"hit","status":"PASS","samples":121,"drift":0.00003600298178843513,"gap":0.00006958575036553131,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0.20993689262149026,"gap":0.00008061035531510185,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"RED","samples":34,"drift":0.24968706877107105,"gap":0.0000792782218882142,"exactRest":true,"firstRefusal":{"ms":201.73333333333332,"sampleNumber":35,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"}}
+{"id":"victory","status":"RED","samples":17,"drift":0.0012635233112625805,"gap":0.0000673735333808031,"exactRest":true,"firstRefusal":{"ms":112.2,"sampleNumber":18,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 25"}}
+{"id":"tame","status":"PASS","samples":121,"drift":0.00003600298178843513,"gap":0.00007695388913233485,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.05657738074623826,"gap":0.00008221445254884312,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.00007927822220976915,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":14,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

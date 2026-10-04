@@ -1,0 +1,9 @@
+{
+ "id": "c198creaturesupplyb-23-grasshopper",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%)"
+ ],
+ "semanticPresence": null
+}

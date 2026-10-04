@@ -1,0 +1,187 @@
+{
+ "schema": "cf.claude-fullsize-review/v1",
+ "method": "review-sheets.mjs: full frames (reaction-50, turn3 idle-50, idle-90) + 2x fighter zooms of turn3 idle-50",
+ "verdicts": {
+  "c132references-04-cat": {
+   "name": "Cat",
+   "verdict": "ACCEPT",
+   "note": "whole in rear, faint and late idle; 1-2 px flank tick only"
+  },
+  "c198creaturesupplya-05-bear": {
+   "name": "Bear",
+   "verdict": "ACCEPT",
+   "note": "whole; head-down faint coherent; thin vertical streaks are leaf hit FX"
+  },
+  "c202creaturesupply-15-fishing-cat": {
+   "name": "Fishing Cat",
+   "verdict": "ACCEPT",
+   "note": "whole in strike, victory and late idle"
+  },
+  "c198creaturesupplyc-11-albatross": {
+   "name": "Albatross",
+   "verdict": "ACCEPT",
+   "note": "now native PASS on the certified product; victory head-tuck coherent, wings attached"
+  },
+  "c202creaturesupply-06-impala": {
+   "name": "Impala",
+   "verdict": "RED",
+   "note": "a horn piece floats free above both fighters (detached horn island)"
+  },
+  "c202creaturesupply-10-river-otter": {
+   "name": "River Otter",
+   "verdict": "HOLD",
+   "note": "see-through slivers at the attacker mouth and across the chest in the strike"
+  },
+  "c202creaturesupply-12-wolverine": {
+   "name": "Wolverine",
+   "verdict": "HOLD",
+   "note": "fur shred tears off the throat during the rear; small see-through flank hole"
+  },
+  "c202creaturesupply-16-spotted-hyena": {
+   "name": "Spotted Hyena",
+   "verdict": "HOLD",
+   "note": "defender back splits into a step/notch at the shoulder hump in the faint"
+  },
+  "c198creaturesupplya-01-red-fox": {
+   "name": "Red Fox",
+   "verdict": "HOLD",
+   "note": "original C198 fit: head folds over the nape in the faint; Codex's fox-islands-02 fit is the candidate"
+  },
+  "c173holdsourcerepaints-snow-petrel": {
+   "name": "Snow Petrel",
+   "verdict": "HOLD",
+   "note": "dark tear lines on the wing; a white sliver splits from the defender back (known Codex hold)"
+  },
+  "g2c59-01-elk": {
+   "name": "Elk",
+   "verdict": "ACCEPT",
+   "note": "whole in strike and late idle; antlers attached (a C59 original, not the C274 one)"
+  },
+  "g2c114-17-tahr": {
+   "name": "Tahr",
+   "verdict": "ACCEPT-PENDING-FINISH",
+   "note": "whole; faint pink keying fringe on the mane edge at 2x, decide on the finished stills"
+  },
+  "g2c110-17-caribou": {
+   "name": "Caribou",
+   "verdict": "ACCEPT",
+   "note": "whole in rear and head-down faint; yellow flakes are leaf hit FX"
+  },
+  "g2c136repairs-12-caribou": {
+   "name": "Caribou",
+   "verdict": "HOLD",
+   "note": "small see-through dots on both flanks (g2c110 packet accepted instead)"
+  },
+  "g2c106-24-lemming": {
+   "name": "Lemming",
+   "verdict": "ACCEPT",
+   "note": "whole; 1-2 px chest tick only"
+  },
+  "g2c83-23-prairie-dog": {
+   "name": "Prairie Dog",
+   "verdict": "ACCEPT",
+   "note": "whole in strike and late idle"
+  },
+  "g2c118-04-sea-otter": {
+   "name": "Sea Otter",
+   "verdict": "HOLD",
+   "note": "see-through slit at the open mouth and across the chest in the strike (otter mouth class)"
+  },
+  "g2c90-24-river-otter": {
+   "name": "River Otter",
+   "verdict": "HOLD",
+   "note": "same open-mouth slit and chest sliver"
+  },
+  "g2c118-09-colugo": {
+   "name": "Colugo",
+   "verdict": "HOLD",
+   "note": "see-through slit across eye/mouth in the strike, chest sliver (mouth class)"
+  },
+  "g2c136targetededits-21-bee": {
+   "name": "Bee",
+   "verdict": "RED",
+   "note": "abdomen stretches into a ribbon in victory, a wing tears down to the ground"
+  },
+  "g2c72-12-egret": {
+   "name": "Egret",
+   "verdict": "RED",
+   "note": "body splits at the base of the neck in victory, white slivers float"
+  },
+  "g2c114-22-loon": {
+   "name": "Loon",
+   "verdict": "HOLD",
+   "note": "tail end becomes a hooked dark strand in victory"
+  },
+  "g2c98-17-petrel": {
+   "name": "Petrel",
+   "verdict": "HOLD",
+   "note": "thin dark strand hangs from the tail tip in victory; otherwise whole"
+  },
+  "g2c101-20-snow-petrel": {
+   "name": "Snow Petrel",
+   "verdict": "HOLD",
+   "note": "white flag sliver on the defender back, wing tear line"
+  },
+  "g2c95-17-nilgai": {
+   "name": "Nilgai",
+   "verdict": "HOLD",
+   "note": "defender back shows a step at the shoulder in the faint (hyena class)"
+  },
+  "g2c98-21-pig": {
+   "name": "Pig",
+   "verdict": "HOLD",
+   "note": "loose sliver above the ear and an ear flap in the strike"
+  },
+  "g2c76-11-falcon": {
+   "name": "Falcon",
+   "verdict": "RED",
+   "note": "victory stretches neck and wing into a ribbon (bird victory class)"
+  },
+  "c203creaturesupplyb-23-swordfish": {
+   "name": "Swordfish",
+   "verdict": "RED",
+   "note": "bill detaches and floats, fin chunks loose"
+  }
+ },
+ "duplicatesOfMorningReview": [
+  "Wild Pig",
+  "Cow",
+  "Cardinal",
+  "Sparrow",
+  "Pigeon",
+  "Toucan",
+  "Duck",
+  "Stork",
+  "Arapaima",
+  "Angelfish",
+  "Swordfish-framing02"
+ ],
+ "nativeFail": [
+  "Falcon (C275)",
+  "Springtail (g2c95)"
+ ],
+ "summary": {
+  "scored": 480,
+  "admit": 102,
+  "staticPass": 43,
+  "nativePass": 41,
+  "acceptCandidates": [
+   "Cat",
+   "Bear",
+   "Fishing Cat",
+   "Albatross",
+   "Elk",
+   "Tahr",
+   "Caribou",
+   "Lemming",
+   "Prairie Dog"
+  ]
+ },
+ "systemicForCodex": [
+  "open-mouth/chest see-through slit when the jaw opens (River Otter x2, Sea Otter, Colugo)",
+  "back step at the shoulder hump in the faint (Spotted Hyena, Nilgai)",
+  "bird victory neck/wing ribbon (Falcon g2c76, Egret, and the C274 four)",
+  "appendage islands detach in victory (Impala horn, Swordfish bill, Loon/Petrel tail strand)",
+  "22 materials-unknown refusals (species groups without a material)"
+ ]
+}

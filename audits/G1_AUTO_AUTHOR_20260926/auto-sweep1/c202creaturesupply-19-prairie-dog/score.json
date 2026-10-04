@@ -1,0 +1,9 @@
+{
+ "id": "c202creaturesupply-19-prairie-dog",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-near-paw (foreNearPaw) covers 13% paint (reference 48%)"
+ ],
+ "semanticPresence": null
+}

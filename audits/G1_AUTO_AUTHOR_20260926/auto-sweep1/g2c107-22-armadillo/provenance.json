@@ -1,0 +1,139 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c107-22-armadillo",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "3d6fceaf77d7b140513e8a67c0faa21781dd5bccca605d83e330e6883f54b423",
+ "subjectSourceSha256": "76dbe307c7d77b8543519fc754821a0e7fbc0efcf43ecfb1e1396ea4b7ec4a77",
+ "identity": {
+  "name": "Armadillo",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Armadillo\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"926957789\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "seed": 926957789,
+  "checks": [
+   "materials-unknown: no species-group material for profile xenarthran; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "07-weasel",
+  "authoringSha256": "7d2448a7a59064154d2b480d9e8606d3080499295d0b1214f0f39c83bb326385",
+  "masterSha256": "43006af17548682e07146521da9d676d75643dcb0012334230f0549f2ab5560b"
+ },
+ "habitat": {
+  "profileId": "xenarthran",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "e7fcac27fd86cdfd6ac58a6c4fa95a7a19d767c5050637e9f54707a534f1ef12",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group xenarthran (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0059,
+     "class": "top",
+     "attach": {
+      "x": 208.5,
+      "y": 141,
+      "relX": 0.48,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1286,
+     "class": "front",
+     "attach": {
+      "x": 291,
+      "y": 198,
+      "relX": 1.01,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0685,
+     "class": "limb-down",
+     "attach": {
+      "x": 132,
+      "y": 196,
+      "relX": -0.01,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0451,
+     "class": "limb-down",
+     "attach": {
+      "x": 144.7,
+      "y": 227.8,
+      "relX": 0.07,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0361,
+     "class": "limb-down",
+     "attach": {
+      "x": 182.5,
+      "y": 228,
+      "relX": 0.32,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0426,
+     "class": "limb-down",
+     "attach": {
+      "x": 274.2,
+      "y": 232.7,
+      "relX": 0.9,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0276,
+     "class": "limb-down",
+     "attach": {
+      "x": 244.5,
+      "y": 233,
+      "relX": 0.71,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "07-weasel",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

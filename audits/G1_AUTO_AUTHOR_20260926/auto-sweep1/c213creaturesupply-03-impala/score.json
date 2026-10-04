@@ -1,0 +1,9 @@
+{
+ "id": "c213creaturesupply-03-impala",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 25%)"
+ ],
+ "semanticPresence": null
+}

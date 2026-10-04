@@ -1,0 +1,15 @@
+{
+ "id": "g2c118-19-mayfly",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches insect better (0.0445 < 0.0546)",
+  "missing-anatomy: part mandible (mandible) covers 10% paint (reference 56%)",
+  "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 0% paint (reference 25%)",
+  "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 7% paint (reference 40%)",
+  "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 10% paint (reference 44%)",
+  "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 13% paint (reference 52%)",
+  "unexplained-anatomy: 15.6% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

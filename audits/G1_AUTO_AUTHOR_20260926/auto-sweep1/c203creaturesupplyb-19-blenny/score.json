@@ -1,0 +1,10 @@
+{
+ "id": "c203creaturesupplyb-19-blenny",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a front appendage of 9.8% paint that no reference appendage lands on",
+  "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 3.5%)"
+ ],
+ "semanticPresence": null
+}

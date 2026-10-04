@@ -1,0 +1,20 @@
+{
+ "id": "c186creaturesupply-23-vampire-squid",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-eye (eyeNear) covers 1% paint (reference 100%)",
+  "missing-anatomy: part arm4-tip (arm4Seg2) covers 12% paint (reference 72%)",
+  "missing-anatomy: part arm2-tip (arm2Seg2) covers 23% paint (reference 68%)",
+  "missing-anatomy: part arm6-tip (arm6Seg2) covers 19% paint (reference 72%)",
+  "missing-anatomy: part arm6-middle (arm6Seg1) covers 0% paint (reference 93%)",
+  "missing-anatomy: part arm1-tip (arm1Seg2) covers 19% paint (reference 69%)",
+  "missing-anatomy: part arm1-middle (arm1Seg1) covers 4% paint (reference 95%)",
+  "missing-anatomy: part arm1-base (arm1Seg0) covers 8% paint (reference 99%)",
+  "missing-anatomy: part arm5-tip (arm5Seg2) covers 21% paint (reference 77%)",
+  "missing-anatomy: part arm5-middle (arm5Seg1) covers 9% paint (reference 85%)",
+  "missing-anatomy: part arm5-base (arm5Seg0) covers 3% paint (reference 87%)",
+  "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 2.9%)"
+ ],
+ "semanticPresence": null
+}

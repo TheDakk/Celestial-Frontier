@@ -1,0 +1,126 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c198creaturesupplya-24-snowshoe-hare",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "89f7b4946f99c6300bc7a1849a7485fae6500c7dafb04c9733d053b58c988d7f",
+ "subjectSourceSha256": "e80b913179f521c6a1e6e21352237c8d4b89c22be355683deb1fd13bc15aa43f",
+ "identity": {
+  "name": "Snowshoe Hare",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Snowshoe Hare\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3526958197\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "seed": 3526958197,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "rabbit-hopper",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "92aa085ad17fc58e06928c07a62a0875f94aeb36d26fa48207c0174e01ae9637",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group rabbit-hopper (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1681,
+     "class": "top",
+     "attach": {
+      "x": 274.8,
+      "y": 189.2,
+      "relX": 0.94,
+      "relY": 0.21
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0041,
+     "class": "top",
+     "attach": {
+      "x": 184.5,
+      "y": 170,
+      "relX": 0.39,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0091,
+     "class": "rear",
+     "attach": {
+      "x": 120,
+      "y": 225,
+      "relX": -0.01,
+      "relY": 0.61
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0915,
+     "class": "limb-down",
+     "attach": {
+      "x": 241,
+      "y": 253,
+      "relX": 0.74,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0779,
+     "class": "limb-down",
+     "attach": {
+      "x": 140.3,
+      "y": 259.7,
+      "relX": 0.12,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0613,
+     "class": "limb-down",
+     "attach": {
+      "x": 177,
+      "y": 260,
+      "relX": 0.34,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

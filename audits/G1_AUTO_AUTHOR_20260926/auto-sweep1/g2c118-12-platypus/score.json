@@ -1,0 +1,10 @@
+{
+ "id": "g2c118-12-platypus",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "materials-unknown: no species-group material for profile platypus; the motion kit refuses an unclassified surface",
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+ ],
+ "semanticPresence": null
+}

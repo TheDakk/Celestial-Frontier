@@ -1,0 +1,118 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c206birdsourcerepaints-03-avocet",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "20d810533b805611a521692c68c1bf17cd781c43d0bf1df4deb23a3608b267c7",
+ "subjectSourceSha256": "39364f6fe232589a8cf21b579f0722f508b2eb908f8c0e51455d050d9ffc203f",
+ "identity": {
+  "name": "Avocet",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Avocet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2348468699\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "seed": 2348468699,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "03-duck-v2",
+  "authoringSha256": "53c2d3034b1fa503733ae87189e647efdb0121d99ee0685b0e26c2db76241976",
+  "masterSha256": "b1311edf9b88da5e6854e2c7fac562eaaa89ce2e674a47616fc8adc2d089af97"
+ },
+ "habitat": {
+  "profileId": "wading-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "6d8efc434397d850b8454feeae51f8b874edc579c5d7ef1b95bbdff2553a7074",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group wading-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2107,
+     "class": "top",
+     "attach": {
+      "x": 263.1,
+      "y": 179.4,
+      "relX": 1,
+      "relY": 0.29
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0044,
+     "class": "front",
+     "attach": {
+      "x": 217,
+      "y": 159,
+      "relX": 0.57,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1093,
+     "class": "rear",
+     "attach": {
+      "x": 154,
+      "y": 199.5,
+      "relX": -0.01,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0638,
+     "class": "limb-down",
+     "attach": {
+      "x": 184,
+      "y": 228,
+      "relX": 0.27,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0659,
+     "class": "limb-down",
+     "attach": {
+      "x": 208.5,
+      "y": 228,
+      "relX": 0.5,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "03-duck-v2",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

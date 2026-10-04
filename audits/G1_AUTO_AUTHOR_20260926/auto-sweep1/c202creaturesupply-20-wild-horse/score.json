@@ -1,0 +1,11 @@
+{
+ "id": "c202creaturesupply-20-wild-horse",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 10.7% paint that no reference appendage lands on",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 19% paint (reference 57%)",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,10 @@
+{
+ "id": "g2c83-09-macaw",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-thigh (legNearKnee) covers 29% paint (reference 84%)",
+  "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 4.6%)"
+ ],
+ "semanticPresence": null
+}

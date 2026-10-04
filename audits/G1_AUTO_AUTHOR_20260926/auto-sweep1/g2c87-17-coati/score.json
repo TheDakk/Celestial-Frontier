@@ -1,0 +1,10 @@
+{
+ "id": "g2c87-17-coati",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches quadruped better (0.0204 < 0.0353)",
+  "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

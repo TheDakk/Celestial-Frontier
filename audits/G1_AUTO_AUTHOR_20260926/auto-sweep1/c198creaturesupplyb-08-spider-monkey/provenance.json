@@ -1,0 +1,137 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c198creaturesupplyb-08-spider-monkey",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "1caa0ccefe5a80ac85b149c9da56278c016abb97dd7d49d27ef2d1cff92b1484",
+ "subjectSourceSha256": "e1bfc21d05916c76bde778dad6c16f8fc49f5a480267063d644ea3cf7f19f0cf",
+ "identity": {
+  "name": "Spider Monkey",
+  "family": "primate",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Spider Monkey\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"961586278\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "seed": 961586278,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "chimpanzee",
+  "authoringSha256": "3618a00115f3decd733fcd9e3380b184914098c12b90447e893c944e6cc7dbd9",
+  "masterSha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
+ },
+ "habitat": {
+  "profileId": "primate",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "d77f7bd5e1f75556cf1b6bc0349a2762d94011e87ddf7513239b65619b9fe881",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group primate (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1868,
+     "class": "top",
+     "attach": {
+      "x": 150,
+      "y": 196,
+      "relX": -0.01,
+      "relY": 0.35
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0563,
+     "class": "front",
+     "attach": {
+      "x": 289.4,
+      "y": 179.6,
+      "relX": 0.96,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0044,
+     "class": "limb-down",
+     "attach": {
+      "x": 150,
+      "y": 225,
+      "relX": -0.01,
+      "relY": 0.78
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0809,
+     "class": "limb-down",
+     "attach": {
+      "x": 285.8,
+      "y": 223.7,
+      "relX": 0.94,
+      "relY": 0.76
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0863,
+     "class": "limb-down",
+     "attach": {
+      "x": 258.5,
+      "y": 233,
+      "relX": 0.75,
+      "relY": 0.9
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.1063,
+     "class": "limb-down",
+     "attach": {
+      "x": 164.5,
+      "y": 240.9,
+      "relX": 0.09,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0932,
+     "class": "limb-down",
+     "attach": {
+      "x": 201,
+      "y": 241,
+      "relX": 0.35,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "chimpanzee",
+   "byClass": {
+    "top": 1,
+    "other": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

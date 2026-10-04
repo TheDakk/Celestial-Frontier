@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "insectreferencesc86-03-giant-water-bug",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "3673b6ef31855c5b5292ed781c3ac3c5b6098375efdade0b27b7c35cf5ef87cb",
+ "subjectSourceSha256": "100fb3255011695b163925acc9f41d86c7d6f7db411c981ff2da58e6d237c708",
+ "identity": {
+  "name": "Giant Water Bug",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Giant Water Bug\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3911532801\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"23\"]]]]",
+  "seed": 3911532801,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "beetle",
+  "authoringSha256": "478fa93e5ed189385100c44e78808f103ce96659f942dbaa9612c5c4d04db5ef",
+  "masterSha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb"
+ },
+ "habitat": {
+  "profileId": "aquatic-insect",
+  "media": [
+   "water",
+   "ground",
+   "air"
+  ],
+  "profileSha256": "07e868a36d9794e1c936db97be9c1b2cb2656100662d952c0a6e9e199f504013",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group aquatic-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1983,
+     "class": "limb-down",
+     "attach": {
+      "x": 292.7,
+      "y": 190.6,
+      "relX": 0.66,
+      "relY": 0.55
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0483,
+     "class": "rear",
+     "attach": {
+      "x": 84,
+      "y": 193.5,
+      "relX": 0,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0263,
+     "class": "limb-down",
+     "attach": {
+      "x": 236.5,
+      "y": 220,
+      "relX": 0.48,
+      "relY": 0.9
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0121,
+     "class": "limb-down",
+     "attach": {
+      "x": 192,
+      "y": 227,
+      "relX": 0.34,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0137,
+     "class": "rear",
+     "attach": {
+      "x": 138,
+      "y": 229,
+      "relX": 0.17,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0224,
+     "class": "limb-down",
+     "attach": {
+      "x": 164,
+      "y": 229,
+      "relX": 0.25,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "limb-down": 4,
+    "rear": 2
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "beetle",
+   "byClass": {
+    "top": 1,
+    "rear": 3,
+    "limb-down": 6
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,148 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c196quadrupedoriginals-18-tamarin",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "68ea5985a80094d046798941237a2f662a1aeb573522d97e4f5df53565977742",
+ "subjectSourceSha256": "cf935a669fdef942e83e052c900e7046ae5861909e8e23fe1c5797cfbb2f1596",
+ "identity": {
+  "name": "Tamarin",
+  "family": "primate",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tamarin\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1098576234\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "seed": 1098576234,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "chimpanzee",
+  "authoringSha256": "3618a00115f3decd733fcd9e3380b184914098c12b90447e893c944e6cc7dbd9",
+  "masterSha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
+ },
+ "habitat": {
+  "profileId": "primate",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "d77f7bd5e1f75556cf1b6bc0349a2762d94011e87ddf7513239b65619b9fe881",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group primate (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0161,
+     "class": "top",
+     "attach": {
+      "x": 303.5,
+      "y": 142,
+      "relX": 0.85,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0247,
+     "class": "other",
+     "attach": {
+      "x": 325,
+      "y": 165.5,
+      "relX": 1.01,
+      "relY": 0.24
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0062,
+     "class": "top",
+     "attach": {
+      "x": 230.5,
+      "y": 161,
+      "relX": 0.31,
+      "relY": 0.19
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1665,
+     "class": "limb-down",
+     "attach": {
+      "x": 187,
+      "y": 191.5,
+      "relX": -0.01,
+      "relY": 0.51
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0357,
+     "class": "limb-down",
+     "attach": {
+      "x": 198.1,
+      "y": 235.9,
+      "relX": 0.07,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0526,
+     "class": "limb-down",
+     "attach": {
+      "x": 297.5,
+      "y": 230,
+      "relX": 0.8,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0565,
+     "class": "limb-down",
+     "attach": {
+      "x": 267.5,
+      "y": 230,
+      "relX": 0.58,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0509,
+     "class": "limb-down",
+     "attach": {
+      "x": 223.5,
+      "y": 239,
+      "relX": 0.26,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "other": 1,
+    "limb-down": 5
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "chimpanzee",
+   "byClass": {
+    "top": 1,
+    "other": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

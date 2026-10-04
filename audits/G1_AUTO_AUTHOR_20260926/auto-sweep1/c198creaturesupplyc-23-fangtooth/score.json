@@ -1,0 +1,10 @@
+{
+ "id": "c198creaturesupplyc-23-fangtooth",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on",
+  "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 4.6%)"
+ ],
+ "semanticPresence": null
+}

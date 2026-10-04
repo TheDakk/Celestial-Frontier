@@ -1,0 +1,391 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c163familyoriginals-14-giant-centipede",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "546a1648d5968949326c2e4e7654ecd04b7e6d63f1877098ca0585f3f58d4a9d",
+ "subjectSourceSha256": "80905b996cb71db2dddf6261e25fc82d42cea5aeb4b313010d3f63dbda5bdf9d",
+ "identity": {
+  "name": "Giant Centipede",
+  "family": "myriapod",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Giant Centipede\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"1158637081\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "seed": 1158637081,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "centipede",
+  "authoringSha256": "f9340f385333ab4a6f8ca53b277a7fdf3470b53f3a9b37457c1c1d6f42720d93",
+  "masterSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
+ },
+ "habitat": {
+  "profileId": "centipede",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "a3707562d6c89af98dc7b242290e8f9fb224727877f9d09bbc3cd9c5fc2052f3",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group centipede (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0071,
+     "class": "top",
+     "attach": {
+      "x": 137,
+      "y": 170,
+      "relX": 0.12,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0092,
+     "class": "top",
+     "attach": {
+      "x": 122,
+      "y": 170,
+      "relX": 0.03,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0075,
+     "class": "top",
+     "attach": {
+      "x": 151.5,
+      "y": 174,
+      "relX": 0.2,
+      "relY": 0.05
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0463,
+     "class": "rear",
+     "attach": {
+      "x": 115,
+      "y": 177.5,
+      "relX": -0.01,
+      "relY": 0.1
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0511,
+     "class": "front",
+     "attach": {
+      "x": 298,
+      "y": 203.5,
+      "relX": 1.01,
+      "relY": 0.52
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0064,
+     "class": "top",
+     "attach": {
+      "x": 164.8,
+      "y": 182.2,
+      "relX": 0.27,
+      "relY": 0.18
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.007,
+     "class": "top",
+     "attach": {
+      "x": 175,
+      "y": 191.5,
+      "relX": 0.33,
+      "relY": 0.33
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0063,
+     "class": "top",
+     "attach": {
+      "x": 186.3,
+      "y": 198.2,
+      "relX": 0.39,
+      "relY": 0.43
+     }
+    },
+    {
+     "k": 8,
+     "frac": 0.0105,
+     "class": "rear",
+     "attach": {
+      "x": 122.4,
+      "y": 189.6,
+      "relX": 0.04,
+      "relY": 0.29
+     }
+    },
+    {
+     "k": 9,
+     "frac": 0.0042,
+     "class": "top",
+     "attach": {
+      "x": 257.2,
+      "y": 195.2,
+      "relX": 0.78,
+      "relY": 0.38
+     }
+    },
+    {
+     "k": 10,
+     "frac": 0.0072,
+     "class": "other",
+     "attach": {
+      "x": 196,
+      "y": 206,
+      "relX": 0.44,
+      "relY": 0.56
+     }
+    },
+    {
+     "k": 11,
+     "frac": 0.0104,
+     "class": "rear",
+     "attach": {
+      "x": 134.1,
+      "y": 195.4,
+      "relX": 0.1,
+      "relY": 0.39
+     }
+    },
+    {
+     "k": 12,
+     "frac": 0.0081,
+     "class": "other",
+     "attach": {
+      "x": 207.5,
+      "y": 209,
+      "relX": 0.51,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 13,
+     "frac": 0.0053,
+     "class": "front",
+     "attach": {
+      "x": 249,
+      "y": 199,
+      "relX": 0.73,
+      "relY": 0.44
+     }
+    },
+    {
+     "k": 14,
+     "frac": 0.0053,
+     "class": "front",
+     "attach": {
+      "x": 239.5,
+      "y": 203,
+      "relX": 0.68,
+      "relY": 0.51
+     }
+    },
+    {
+     "k": 15,
+     "frac": 0.007,
+     "class": "other",
+     "attach": {
+      "x": 219,
+      "y": 210,
+      "relX": 0.57,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 16,
+     "frac": 0.0057,
+     "class": "front",
+     "attach": {
+      "x": 230,
+      "y": 207,
+      "relX": 0.63,
+      "relY": 0.57
+     }
+    },
+    {
+     "k": 17,
+     "frac": 0.012,
+     "class": "rear",
+     "attach": {
+      "x": 145,
+      "y": 203,
+      "relX": 0.16,
+      "relY": 0.51
+     }
+    },
+    {
+     "k": 18,
+     "frac": 0.0119,
+     "class": "rear",
+     "attach": {
+      "x": 154.2,
+      "y": 212.3,
+      "relX": 0.21,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 19,
+     "frac": 0.0123,
+     "class": "limb-down",
+     "attach": {
+      "x": 291,
+      "y": 212,
+      "relX": 0.97,
+      "relY": 0.65
+     }
+    },
+    {
+     "k": 20,
+     "frac": 0.0082,
+     "class": "limb-down",
+     "attach": {
+      "x": 275.3,
+      "y": 214.8,
+      "relX": 0.88,
+      "relY": 0.7
+     }
+    },
+    {
+     "k": 21,
+     "frac": 0.0122,
+     "class": "limb-down",
+     "attach": {
+      "x": 164.3,
+      "y": 220.3,
+      "relX": 0.27,
+      "relY": 0.78
+     }
+    },
+    {
+     "k": 22,
+     "frac": 0.0107,
+     "class": "limb-down",
+     "attach": {
+      "x": 265.6,
+      "y": 219.6,
+      "relX": 0.83,
+      "relY": 0.77
+     }
+    },
+    {
+     "k": 23,
+     "frac": 0.0113,
+     "class": "limb-down",
+     "attach": {
+      "x": 173.7,
+      "y": 226.3,
+      "relX": 0.32,
+      "relY": 0.88
+     }
+    },
+    {
+     "k": 24,
+     "frac": 0.0105,
+     "class": "limb-down",
+     "attach": {
+      "x": 255.6,
+      "y": 225.6,
+      "relX": 0.77,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 25,
+     "frac": 0.0122,
+     "class": "limb-down",
+     "attach": {
+      "x": 185.3,
+      "y": 231.7,
+      "relX": 0.38,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 26,
+     "frac": 0.0131,
+     "class": "limb-down",
+     "attach": {
+      "x": 243,
+      "y": 230,
+      "relX": 0.7,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 27,
+     "frac": 0.0128,
+     "class": "limb-down",
+     "attach": {
+      "x": 199.1,
+      "y": 234.9,
+      "relX": 0.46,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 28,
+     "frac": 0.0135,
+     "class": "limb-down",
+     "attach": {
+      "x": 229,
+      "y": 234,
+      "relX": 0.62,
+      "relY": 1
+     }
+    },
+    {
+     "k": 29,
+     "frac": 0.0152,
+     "class": "limb-down",
+     "attach": {
+      "x": 217.5,
+      "y": 235,
+      "relX": 0.56,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 7,
+    "rear": 5,
+    "front": 4,
+    "other": 3,
+    "limb-down": 11
+   },
+   "ground": 0
+  },
+  "reference": {
+   "subject": "centipede",
+   "byClass": {
+    "top": 16,
+    "limb-down": 16
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

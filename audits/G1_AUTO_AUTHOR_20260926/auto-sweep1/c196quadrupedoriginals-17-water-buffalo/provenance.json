@@ -1,0 +1,154 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c196quadrupedoriginals-17-water-buffalo",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "0ec1da34c61152637b0e102fd3a557289791ab4f97b726c06be0f41a7c9a5200",
+ "subjectSourceSha256": "d170dec63e28797f6d120e712cb7c47fb9f8c7103bcffd4adf1cf55b3e321298",
+ "identity": {
+  "name": "Water Buffalo",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Water Buffalo\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1470826168\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"23\"]]]]",
+  "seed": 1470826168,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "738d991892404fbab5da926013e6864a2a9ee687d91d59a50cd40c003bcd260b",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0187,
+     "class": "top",
+     "attach": {
+      "x": 239.5,
+      "y": 154,
+      "relX": 0.72,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1178,
+     "class": "front",
+     "attach": {
+      "x": 289,
+      "y": 180.5,
+      "relX": 1,
+      "relY": 0.3
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0337,
+     "class": "limb-down",
+     "attach": {
+      "x": 109,
+      "y": 193.5,
+      "relX": -0.01,
+      "relY": 0.45
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0471,
+     "class": "limb-down",
+     "attach": {
+      "x": 119,
+      "y": 235.5,
+      "relX": 0.05,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0432,
+     "class": "limb-down",
+     "attach": {
+      "x": 147,
+      "y": 240,
+      "relX": 0.21,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0072,
+     "class": "limb-down",
+     "attach": {
+      "x": 185.5,
+      "y": 242,
+      "relX": 0.42,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0864,
+     "class": "limb-down",
+     "attach": {
+      "x": 232,
+      "y": 242,
+      "relX": 0.68,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 5
+   },
+   "ground": 5
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 5
+   },
+   "groundContacts": 5,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "hindFar+hindNear",
+   "foreNear+foreFar"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "id": "c198creaturesupplyb-19-giant-centipede",
+ "family": "myriapod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+  "missing-anatomy: part leg0-far (leg0FarFoot) covers 0% paint (reference 25%)",
+  "missing-anatomy: part leg1-far (leg1FarFoot) covers 3% paint (reference 23%)",
+  "missing-anatomy: part leg8-far (leg8FarFoot) covers 0% paint (reference 26%)",
+  "missing-anatomy: part head (head) covers 8% paint (reference 21%)",
+  "unexplained-anatomy: 21.8% of the paint lies away from the body and in no part (reference 10.3%)"
+ ],
+ "semanticPresence": null
+}

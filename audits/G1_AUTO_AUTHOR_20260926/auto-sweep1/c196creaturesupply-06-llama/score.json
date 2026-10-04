@@ -1,0 +1,9 @@
+{
+ "id": "c196creaturesupply-06-llama",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+ ],
+ "semanticPresence": null
+}

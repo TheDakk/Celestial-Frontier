@@ -1,0 +1,160 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c136repairs-04-blind-salamander",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "e9b6b1c67854e873ac998afb711e829a61413e450cfcb0ba3afd632980d24c3a",
+ "subjectSourceSha256": "1820b6a52b3d421df88af48e5ff8e0667b1b7a9a2a0dc78ca7773fde78a77e29",
+ "identity": {
+  "name": "Blind Salamander",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Blind Salamander\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1514633582\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "seed": 1514633582,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "05-cat-v2",
+  "authoringSha256": "ec9cf490284487f4628222fe7c84c8a82f76645988ca20daf5f21701ed0888da",
+  "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4"
+ },
+ "habitat": {
+  "profileId": "salamander",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "4e32272af8ac420f81285b7ddc69a584cd5a6c654fd16395a8edf09c07e37229",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group salamander (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0248,
+     "class": "top",
+     "attach": {
+      "x": 275.1,
+      "y": 189.1,
+      "relX": 0.79,
+      "relY": -0.03
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0205,
+     "class": "top",
+     "attach": {
+      "x": 260.5,
+      "y": 191,
+      "relX": 0.72,
+      "relY": 0.03
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0112,
+     "class": "top",
+     "attach": {
+      "x": 288,
+      "y": 189,
+      "relX": 0.86,
+      "relY": -0.03
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0214,
+     "class": "front",
+     "attach": {
+      "x": 319,
+      "y": 205.5,
+      "relX": 1,
+      "relY": 0.42
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0323,
+     "class": "rear",
+     "attach": {
+      "x": 109,
+      "y": 218.5,
+      "relX": 0,
+      "relY": 0.77
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0396,
+     "class": "limb-down",
+     "attach": {
+      "x": 191.5,
+      "y": 218.3,
+      "relX": 0.39,
+      "relY": 0.77
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0214,
+     "class": "limb-down",
+     "attach": {
+      "x": 213.5,
+      "y": 218,
+      "relX": 0.5,
+      "relY": 0.76
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0225,
+     "class": "limb-down",
+     "attach": {
+      "x": 278.5,
+      "y": 220,
+      "relX": 0.81,
+      "relY": 0.81
+     }
+    },
+    {
+     "k": 8,
+     "frac": 0.0258,
+     "class": "limb-down",
+     "attach": {
+      "x": 261,
+      "y": 222,
+      "relX": 0.73,
+      "relY": 0.86
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 3,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "05-cat-v2",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

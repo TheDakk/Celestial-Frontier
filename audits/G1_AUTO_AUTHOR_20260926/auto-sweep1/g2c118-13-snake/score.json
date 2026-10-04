@@ -1,0 +1,9 @@
+{
+ "id": "g2c118-13-snake",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "body not continuous: 1.7 % of the length has no paint"
+ ],
+ "semanticPresence": null
+}

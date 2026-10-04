@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c203creaturesupplyb-17-arapaima",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "54c32eeab5df4c74034ee9f9d832d29797aa139f52a80f07e3612729b2f3d438",
+ "subjectSourceSha256": "2a30c90040a578c24fe060a465f75375defeb04cd4b33d0fd735df797d879ba8",
+ "identity": {
+  "name": "Arapaima",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Arapaima\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1641421920\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "seed": 1641421920,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "pike",
+  "authoringSha256": "4705494141027b8c796fb646efc6293f447974230da934522ae6894c404cd004",
+  "masterSha256": "964a23d815434e6f36196eb71c3574951ca74d9d08998d8f40d458fcc7e24468"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0147,
+     "class": "rear",
+     "attach": {
+      "x": 96,
+      "y": 163.5,
+      "relX": 0.2,
+      "relY": 0.03
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1157,
+     "class": "rear",
+     "attach": {
+      "x": 63.5,
+      "y": 201.5,
+      "relX": 0.11,
+      "relY": 0.47
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.063,
+     "class": "front",
+     "attach": {
+      "x": 351.7,
+      "y": 208.4,
+      "relX": 0.88,
+      "relY": 0.55
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.016,
+     "class": "rear",
+     "attach": {
+      "x": 98.3,
+      "y": 242.7,
+      "relX": 0.21,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0217,
+     "class": "limb-down",
+     "attach": {
+      "x": 195.5,
+      "y": 239,
+      "relX": 0.46,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0115,
+     "class": "limb-down",
+     "attach": {
+      "x": 282.5,
+      "y": 241,
+      "relX": 0.69,
+      "relY": 0.93
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 3,
+    "front": 1,
+    "limb-down": 2
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "pike",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,38 @@
+[
+ {
+  "id": "c132references-04-cat",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c132references-04-cat/fit"
+ },
+ {
+  "id": "c198creaturesupplya-05-bear",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplya-05-bear/fit"
+ },
+ {
+  "id": "c202creaturesupply-15-fishing-cat",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-15-fishing-cat/fit"
+ },
+ {
+  "id": "c198creaturesupplyc-11-albatross",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c198creaturesupplyc-11-albatross/fit"
+ },
+ {
+  "id": "g2c59-01-elk",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c59-01-elk/fit"
+ },
+ {
+  "id": "g2c114-17-tahr",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c114-17-tahr/fit"
+ },
+ {
+  "id": "g2c110-17-caribou",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c110-17-caribou/fit"
+ },
+ {
+  "id": "g2c106-24-lemming",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c106-24-lemming/fit"
+ },
+ {
+  "id": "g2c83-23-prairie-dog",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c83-23-prairie-dog/fit"
+ }
+]

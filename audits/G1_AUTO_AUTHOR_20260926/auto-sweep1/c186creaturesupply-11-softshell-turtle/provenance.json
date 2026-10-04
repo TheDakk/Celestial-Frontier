@@ -1,0 +1,117 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c186creaturesupply-11-softshell-turtle",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "1c7f3e94470012bfbdcda71caf25274e4c1e6dd09bdbbfd0fdb1c01f95e44bc0",
+ "subjectSourceSha256": "cb5bac8c60c9c16ef979edf33405aa78726e76f4df723dfe1613d7d8c9068630",
+ "identity": {
+  "name": "Softshell Turtle",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Softshell Turtle\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2801702982\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "seed": 2801702982,
+  "checks": [
+   "materials-unknown: no species-group material for profile freshwater-turtle; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "freshwater-turtle",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "5ab1922faec81a0106dbf4e03678fb0a2c7e8221fe27bd1d69e0eee750ff4754",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group freshwater-turtle (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1015,
+     "class": "front",
+     "attach": {
+      "x": 292,
+      "y": 186,
+      "relX": 1.01,
+      "relY": 0.49
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1397,
+     "class": "limb-down",
+     "attach": {
+      "x": 107.2,
+      "y": 198.8,
+      "relX": 0,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0488,
+     "class": "limb-down",
+     "attach": {
+      "x": 287.9,
+      "y": 218.9,
+      "relX": 0.98,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0727,
+     "class": "limb-down",
+     "attach": {
+      "x": 257.5,
+      "y": 230.5,
+      "relX": 0.82,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0431,
+     "class": "limb-down",
+     "attach": {
+      "x": 142.5,
+      "y": 227,
+      "relX": 0.19,
+      "relY": 0.97
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

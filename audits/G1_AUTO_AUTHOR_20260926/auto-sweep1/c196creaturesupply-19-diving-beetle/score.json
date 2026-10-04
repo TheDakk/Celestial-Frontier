@@ -1,0 +1,13 @@
+{
+ "id": "c196creaturesupply-19-diving-beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 32% paint (reference 99%)",
+  "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 4% paint (reference 25%)",
+  "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 31%)",
+  "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 0% paint (reference 81%)",
+  "missing-anatomy: part antenna-far (antennaFar) covers 7% paint (reference 25%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,139 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c107-11-mountain-tapir",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "cc47d3d9f4d7f625e1cad1dbe04972b5ffd0526b7a4c1143bce70bd29772b703",
+ "subjectSourceSha256": "6a15263e40980f75500ba02e685c0c3806b3b75c129dbdd61984b342eb41a207",
+ "identity": {
+  "name": "Mountain Tapir",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mountain Tapir\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1515410668\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "seed": 1515410668,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "tapir",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "1758d0246104af4a75229fc0deecf5ab9604438efba8756895028246d9985e34",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group tapir (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1269,
+     "class": "front",
+     "attach": {
+      "x": 284.2,
+      "y": 154.3,
+      "relX": 0.94,
+      "relY": 0.2
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.009,
+     "class": "top",
+     "attach": {
+      "x": 175,
+      "y": 131,
+      "relX": 0.4,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.021,
+     "class": "rear",
+     "attach": {
+      "x": 91,
+      "y": 197.5,
+      "relX": 0,
+      "relY": 0.58
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0559,
+     "class": "limb-down",
+     "attach": {
+      "x": 106.9,
+      "y": 235.1,
+      "relX": 0.07,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0491,
+     "class": "limb-down",
+     "attach": {
+      "x": 257.9,
+      "y": 243.9,
+      "relX": 0.81,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.049,
+     "class": "limb-down",
+     "attach": {
+      "x": 147.5,
+      "y": 236,
+      "relX": 0.27,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0377,
+     "class": "limb-down",
+     "attach": {
+      "x": 218,
+      "y": 245,
+      "relX": 0.61,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

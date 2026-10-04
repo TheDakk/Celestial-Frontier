@@ -1,0 +1,116 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c101-08-fangtooth",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "71a79e65976bc70c3bdbc632ca6c13cb52ba15161d5ad83f24fc7a18fd5453c2",
+ "subjectSourceSha256": "15d98bf6df23421345132a68630f2c9c46113c57436cd51ceb437b85c30da304",
+ "identity": {
+  "name": "Fangtooth",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Fangtooth\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1809988570\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 1809988570,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "bass",
+  "authoringSha256": "dd60d0253965cb37a46ac5434693058f8bac78d815fba2505ea0ffe7c7f0721f",
+  "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0348,
+     "class": "top",
+     "attach": {
+      "x": 230,
+      "y": 154,
+      "relX": 0.48,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0045,
+     "class": "front",
+     "attach": {
+      "x": 281.5,
+      "y": 154,
+      "relX": 0.75,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1801,
+     "class": "rear",
+     "attach": {
+      "x": 144.3,
+      "y": 218.2,
+      "relX": 0.02,
+      "relY": 0.61
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0838,
+     "class": "front",
+     "attach": {
+      "x": 317.3,
+      "y": 230.4,
+      "relX": 0.94,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0241,
+     "class": "limb-down",
+     "attach": {
+      "x": 229,
+      "y": 255,
+      "relX": 0.47,
+      "relY": 0.97
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 2,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "bass",
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

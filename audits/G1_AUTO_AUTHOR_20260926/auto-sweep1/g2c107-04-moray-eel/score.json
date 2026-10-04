@@ -1,0 +1,9 @@
+{
+ "id": "g2c107-04-moray-eel",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong family: length/thickness 7.96 < 8"
+ ],
+ "semanticPresence": null
+}

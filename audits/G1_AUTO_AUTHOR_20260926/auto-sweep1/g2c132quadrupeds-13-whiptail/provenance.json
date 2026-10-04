@@ -1,0 +1,115 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c132quadrupeds-13-whiptail",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "3a4fe01bce3688e8c71e412adad6f38e85fc5da126c079e519b04b0143a1c383",
+ "subjectSourceSha256": "8a1fbf2efe1303ee958a3dbae661d26969a7c320b2543456d207be81f360a24b",
+ "identity": {
+  "name": "Whiptail",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Whiptail\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2908382726\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "seed": 2908382726,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wall-lizard",
+  "authoringSha256": "f1afa2d0fcd9a04fe75ba9c794f46d8bec1f7765518f3f6d48357d86853ed9ca",
+  "masterSha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1467,
+     "class": "front",
+     "attach": {
+      "x": 296.8,
+      "y": 198.8,
+      "relX": 0.98,
+      "relY": 0.12
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2637,
+     "class": "rear",
+     "attach": {
+      "x": 241,
+      "y": 205.5,
+      "relX": -0.02,
+      "relY": 0.57
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0686,
+     "class": "limb-down",
+     "attach": {
+      "x": 246,
+      "y": 211,
+      "relX": 0.07,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0595,
+     "class": "limb-down",
+     "attach": {
+      "x": 288.5,
+      "y": 212,
+      "relX": 0.83,
+      "relY": 1
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0323,
+     "class": "limb-down",
+     "attach": {
+      "x": 264,
+      "y": 213,
+      "relX": 0.39,
+      "relY": 1.07
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "wall-lizard",
+   "byClass": {
+    "front": 3,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

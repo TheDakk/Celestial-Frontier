@@ -1,0 +1,10 @@
+{
+ "id": "c213creaturesupply-19-gibbon",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4",
+  "unexplained-anatomy: 16.8% of the paint lies away from the body and in no part (reference 9.6%)"
+ ],
+ "semanticPresence": null
+}

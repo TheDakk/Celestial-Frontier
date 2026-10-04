@@ -1,0 +1,137 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c90-22-kinkajou",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "42d0e313c3708a50bb7065d3d81e79d28e62d88c6c731e3a49a34ce9363019ed",
+ "subjectSourceSha256": "e70c958c8c579956bd6c16745e377818bbf4259d79c5687f6df41736e6940c85",
+ "identity": {
+  "name": "Kinkajou",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Kinkajou\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1890992104\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "seed": 1890992104,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "05-cat-v2",
+  "authoringSha256": "ec9cf490284487f4628222fe7c84c8a82f76645988ca20daf5f21701ed0888da",
+  "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0968,
+     "class": "front",
+     "attach": {
+      "x": 300.8,
+      "y": 169.2,
+      "relX": 0.96,
+      "relY": 0.23
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.005,
+     "class": "top",
+     "attach": {
+      "x": 212.5,
+      "y": 149,
+      "relX": 0.36,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1956,
+     "class": "rear",
+     "attach": {
+      "x": 159.2,
+      "y": 191.8,
+      "relX": -0.01,
+      "relY": 0.51
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0363,
+     "class": "limb-down",
+     "attach": {
+      "x": 169.6,
+      "y": 229.4,
+      "relX": 0.07,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0325,
+     "class": "limb-down",
+     "attach": {
+      "x": 246.8,
+      "y": 229.2,
+      "relX": 0.59,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0531,
+     "class": "limb-down",
+     "attach": {
+      "x": 275,
+      "y": 230,
+      "relX": 0.78,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0424,
+     "class": "limb-down",
+     "attach": {
+      "x": 196.5,
+      "y": 233,
+      "relX": 0.25,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "05-cat-v2",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

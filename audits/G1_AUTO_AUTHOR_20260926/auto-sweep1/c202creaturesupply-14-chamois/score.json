@@ -1,0 +1,10 @@
+{
+ "id": "c202creaturesupply-14-chamois",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)",
+  "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+ ],
+ "semanticPresence": null
+}

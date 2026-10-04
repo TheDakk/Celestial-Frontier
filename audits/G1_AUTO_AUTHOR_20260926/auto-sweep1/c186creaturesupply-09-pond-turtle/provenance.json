@@ -1,0 +1,106 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c186creaturesupply-09-pond-turtle",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "0c816666bd32ec2ea57cf50e67593a3c2afefb394bebec8d171bccc4e44bc984",
+ "subjectSourceSha256": "87d4e6d6eb702355cd1a01d74734e06ab913a1d380050f16cdec4fb87c250bb8",
+ "identity": {
+  "name": "Pond Turtle",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pond Turtle\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"53980249\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "seed": 53980249,
+  "checks": [
+   "materials-unknown: no species-group material for profile freshwater-turtle; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "marmot",
+  "authoringSha256": "b85329419d55c6af508fa17439346cc9e5b8c84bf478e175cb858b0280c5b0df",
+  "masterSha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22"
+ },
+ "habitat": {
+  "profileId": "freshwater-turtle",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "5ab1922faec81a0106dbf4e03678fb0a2c7e8221fe27bd1d69e0eee750ff4754",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group freshwater-turtle (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1366,
+     "class": "front",
+     "attach": {
+      "x": 288,
+      "y": 202.5,
+      "relX": 1.01,
+      "relY": 0.57
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1204,
+     "class": "limb-down",
+     "attach": {
+      "x": 121.3,
+      "y": 217.7,
+      "relX": 0.01,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0515,
+     "class": "limb-down",
+     "attach": {
+      "x": 279.4,
+      "y": 236.9,
+      "relX": 0.95,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.03,
+     "class": "limb-down",
+     "attach": {
+      "x": 169.6,
+      "y": 243.9,
+      "relX": 0.3,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "marmot",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

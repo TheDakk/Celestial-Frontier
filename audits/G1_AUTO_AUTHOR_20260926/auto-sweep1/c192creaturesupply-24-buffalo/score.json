@@ -1,0 +1,9 @@
+{
+ "id": "c192creaturesupply-24-buffalo",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 7.6% of the paint lies away from the body and in no part (reference 1.7%)"
+ ],
+ "semanticPresence": null
+}

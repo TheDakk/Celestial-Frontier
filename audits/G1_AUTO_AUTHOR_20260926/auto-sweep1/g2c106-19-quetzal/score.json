@@ -1,0 +1,9 @@
+{
+ "id": "g2c106-19-quetzal",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 15.6% of the paint lies away from the body and in no part (reference 2.3%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,9 @@
+{
+ "id": "g2c87-25-angelfish-marine",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 4.6%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,11 @@
+{
+ "id": "g2c92-19-moth",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mandible (mandible) covers 1% paint (reference 56%)",
+  "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 0% paint (reference 67%)",
+  "unexplained-anatomy: 8.3% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

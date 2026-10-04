@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c110-24-bactrian-camel",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "be09e814c9539c7b6baa677440d1deaf75a9b4f9749f8b77bb9742913fbecfb7",
+ "subjectSourceSha256": "09ec9c2b574e2c52cb8ef2e379d5225936b65519ad50ebbbda285e4261a98811",
+ "identity": {
+  "name": "Bactrian Camel",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Bactrian Camel\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2036945634\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "seed": 2036945634,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "738d991892404fbab5da926013e6864a2a9ee687d91d59a50cd40c003bcd260b",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "hoofed-unhorned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "59125cd7203f98e5ecd7f73a3daf063827ef7247f1d140cc45f471cb12326034",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-unhorned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0349,
+     "class": "top",
+     "attach": {
+      "x": 160,
+      "y": 138,
+      "relX": 0.24,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0423,
+     "class": "top",
+     "attach": {
+      "x": 218,
+      "y": 145,
+      "relX": 0.54,
+      "relY": 0.06
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1239,
+     "class": "top",
+     "attach": {
+      "x": 304.8,
+      "y": 187.2,
+      "relX": 0.97,
+      "relY": 0.49
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1625,
+     "class": "limb-down",
+     "attach": {
+      "x": 121.3,
+      "y": 204.2,
+      "relX": 0.05,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0525,
+     "class": "limb-down",
+     "attach": {
+      "x": 207.7,
+      "y": 234.9,
+      "relX": 0.48,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0554,
+     "class": "limb-down",
+     "attach": {
+      "x": 267,
+      "y": 239,
+      "relX": 0.78,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 3,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

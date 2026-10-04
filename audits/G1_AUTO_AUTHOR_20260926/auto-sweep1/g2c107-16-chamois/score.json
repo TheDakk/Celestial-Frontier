@@ -1,0 +1,9 @@
+{
+ "id": "g2c107-16-chamois",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 1% paint (reference 6%)"
+ ],
+ "semanticPresence": null
+}

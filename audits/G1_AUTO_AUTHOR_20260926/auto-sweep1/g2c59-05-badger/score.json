@@ -1,0 +1,11 @@
+{
+ "id": "g2c59-05-badger",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+  "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)",
+  "unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 5.7%)"
+ ],
+ "semanticPresence": null
+}

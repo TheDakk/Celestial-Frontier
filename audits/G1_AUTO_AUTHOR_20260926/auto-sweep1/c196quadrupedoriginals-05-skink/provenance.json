@@ -1,0 +1,126 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c196quadrupedoriginals-05-skink",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "aad336737411ed13050aaef3e3f713650d06d5e95941f96113b613bf8bf3603c",
+ "subjectSourceSha256": "6b279794d0d006263364bc24a7445ea7c6010261142b9870d86169bd0fcb7a0f",
+ "identity": {
+  "name": "Skink",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Skink\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1551660903\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"3\"]]]]",
+  "seed": 1551660903,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wall-lizard",
+  "authoringSha256": "f1afa2d0fcd9a04fe75ba9c794f46d8bec1f7765518f3f6d48357d86853ed9ca",
+  "masterSha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0958,
+     "class": "front",
+     "attach": {
+      "x": 339.8,
+      "y": 186.8,
+      "relX": 0.97,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.239,
+     "class": "rear",
+     "attach": {
+      "x": 198,
+      "y": 213.5,
+      "relX": -0.01,
+      "relY": 0.71
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.021,
+     "class": "limb-down",
+     "attach": {
+      "x": 328,
+      "y": 218.5,
+      "relX": 0.89,
+      "relY": 0.83
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0352,
+     "class": "limb-down",
+     "attach": {
+      "x": 215,
+      "y": 224,
+      "relX": 0.11,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0115,
+     "class": "limb-down",
+     "attach": {
+      "x": 241.8,
+      "y": 224.5,
+      "relX": 0.3,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0228,
+     "class": "limb-down",
+     "attach": {
+      "x": 306,
+      "y": 224,
+      "relX": 0.74,
+      "relY": 0.95
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "wall-lizard",
+   "byClass": {
+    "front": 3,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

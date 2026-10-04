@@ -1,0 +1,10 @@
+{
+ "id": "c198creaturesupplya-13-mole",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 45%)",
+  "unexplained-anatomy: 9.9% of the paint lies away from the body and in no part (reference 5.7%)"
+ ],
+ "semanticPresence": null
+}

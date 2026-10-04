@@ -1,0 +1,10 @@
+{
+ "id": "c202creaturesupply-17-aardvark",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part jaw (jaw) covers 10% paint (reference 31%)",
+  "unexplained-anatomy: 12.3% of the paint lies away from the body and in no part (reference 5.6%)"
+ ],
+ "semanticPresence": null
+}

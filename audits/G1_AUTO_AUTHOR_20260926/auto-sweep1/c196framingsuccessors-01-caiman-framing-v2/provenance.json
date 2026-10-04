@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c196framingsuccessors-01-caiman-framing-v2",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "f608f2a1c58310cc8c35038ccdd5c4430694c805ecc084298d02a8c25191c461",
+ "subjectSourceSha256": "d52aab22e476a592f304a7ec6fa7bfdd25d491e2b8e02ae2dac46be3e8068494",
+ "identity": {
+  "name": "Caiman",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Caiman\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3804786974\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "seed": 3804786974,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c136-sprawler-24-newt",
+  "authoringSha256": "6186efefde5a9bfbe92ed442a3e5d7c716a97f808acb23b83d7eebb48d0af2a3",
+  "masterSha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc"
+ },
+ "habitat": {
+  "profileId": "crocodilian",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "208d726376a7fcac049d70c5300a48147d53cf15b48eb364cbf2a3dae49f4e99",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group crocodilian (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1382,
+     "class": "front",
+     "attach": {
+      "x": 273.7,
+      "y": 197.8,
+      "relX": 0.97,
+      "relY": 0.35
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2482,
+     "class": "rear",
+     "attach": {
+      "x": 182.4,
+      "y": 207.6,
+      "relX": -0.01,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0536,
+     "class": "limb-down",
+     "attach": {
+      "x": 199,
+      "y": 217,
+      "relX": 0.17,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0281,
+     "class": "limb-down",
+     "attach": {
+      "x": 267.9,
+      "y": 218.9,
+      "relX": 0.91,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0281,
+     "class": "limb-down",
+     "attach": {
+      "x": 213.1,
+      "y": 219.9,
+      "relX": 0.32,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0312,
+     "class": "limb-down",
+     "attach": {
+      "x": 245,
+      "y": 221,
+      "relX": 0.67,
+      "relY": 1.03
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "c136-sprawler-24-newt",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

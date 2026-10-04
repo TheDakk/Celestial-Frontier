@@ -1,0 +1,119 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c87-15-guillemot",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "5699a582606854edeac1e5477a02aec67ed3b9d648af8d9034105c603b43e43c",
+ "subjectSourceSha256": "93829443d08e045dd8779b632184810c20fd910d7aeb88bf73af153a526e4d6a",
+ "identity": {
+  "name": "Guillemot",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Guillemot\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1599860343\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "seed": 1599860343,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "03-duck-v2",
+  "authoringSha256": "53c2d3034b1fa503733ae87189e647efdb0121d99ee0685b0e26c2db76241976",
+  "masterSha256": "b1311edf9b88da5e6854e2c7fac562eaaa89ce2e674a47616fc8adc2d089af97"
+ },
+ "habitat": {
+  "profileId": "swimming-bird",
+  "media": [
+   "air",
+   "water",
+   "ground"
+  ],
+  "profileSha256": "2cc9d25e4388d5e74ca457e9ba1ab01e14bd812a845fb73e050eee00145bda31",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group swimming-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1671,
+     "class": "top",
+     "attach": {
+      "x": 256.5,
+      "y": 157,
+      "relX": 0.82,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0081,
+     "class": "front",
+     "attach": {
+      "x": 280,
+      "y": 183.5,
+      "relX": 1.01,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0725,
+     "class": "rear",
+     "attach": {
+      "x": 156,
+      "y": 253.5,
+      "relX": -0.01,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0353,
+     "class": "limb-down",
+     "attach": {
+      "x": 191.5,
+      "y": 273,
+      "relX": 0.28,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0427,
+     "class": "limb-down",
+     "attach": {
+      "x": 217,
+      "y": 273,
+      "relX": 0.49,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "03-duck-v2",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

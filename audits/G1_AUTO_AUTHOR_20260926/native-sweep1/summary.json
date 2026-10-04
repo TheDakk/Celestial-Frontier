@@ -1,0 +1,2210 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/SWEEP1_20261004",
+ "tag": "sweep1",
+ "pilot": 505,
+ "patternSkipped": [
+  {
+   "id": "c136birdinsectreferences-02-egret",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "c136birdinsectreferences-03-stork",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "c136birdinsectreferences-24-water-strider",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "c136sprawlerreferences-05-monitor-lizard",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "c192creaturesupply-12-spotted-hyena",
+   "pattern": "REFUSE"
+  },
+  {
+   "id": "g2c59-11-mountain-viper",
+   "pattern": "REFUSE"
+  },
+  {
+   "id": "g2familypilot-03-pheasant",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2familypilot-05-kingfisher",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2familypilot-16-ant",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2familypilot-18-cricket",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2familypilot-19-grasshopper",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2familypilot-20-mantis",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2layoutc47-05-pheasant",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2layoutc47-07-ant",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2layoutc47-08-cricket",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2layoutc47-09-mantis",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2stridepilot-02-eagle",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2stridepilot-03-sparrow",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2stridepilot-06-tapir",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2throughputc54-03-hyena",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2throughputc54-13-duck",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2throughputc54-18-boa",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2throughputc54-22-locust",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2throughputc56-22-mountain-viper",
+   "pattern": "REFUSE"
+  },
+  {
+   "id": "g2throughputc56-27-ladybug",
+   "pattern": "REFUSE"
+  }
+ ],
+ "scored": 480,
+ "admitPassStatic": [
+  "c132references-04-cat",
+  "c173holdsourcerepaints-snow-petrel",
+  "c198creaturesupplya-01-red-fox",
+  "c198creaturesupplya-05-bear",
+  "c198creaturesupplyc-11-albatross",
+  "c202creaturesupply-06-impala",
+  "c202creaturesupply-10-river-otter",
+  "c202creaturesupply-12-wolverine",
+  "c202creaturesupply-15-fishing-cat",
+  "c202creaturesupply-16-spotted-hyena",
+  "c202creaturesupply-22-cat",
+  "c203creaturesupply-07-wild-pig",
+  "c203creaturesupply-10-cow",
+  "c203creaturesupply-17-cardinal",
+  "c203creaturesupply-18-sparrow",
+  "c203creaturesupply-19-pigeon",
+  "c203creaturesupplyb-11-toucan",
+  "c203creaturesupplyb-13-falcon",
+  "c203creaturesupplyb-14-duck",
+  "c203creaturesupplyb-16-stork",
+  "c203creaturesupplyb-17-arapaima-framing02",
+  "c203creaturesupplyb-20-angelfish",
+  "c203creaturesupplyb-23-swordfish-framing02",
+  "c203creaturesupplyb-23-swordfish",
+  "g2c101-20-snow-petrel",
+  "g2c106-24-lemming",
+  "g2c110-17-caribou",
+  "g2c114-17-tahr",
+  "g2c114-22-loon",
+  "g2c118-04-sea-otter",
+  "g2c118-09-colugo",
+  "g2c136repairs-12-caribou",
+  "g2c136targetededits-21-bee",
+  "g2c59-01-elk",
+  "g2c72-12-egret",
+  "g2c76-11-falcon",
+  "g2c83-23-prairie-dog",
+  "g2c90-24-river-otter",
+  "g2c95-17-nilgai",
+  "g2c95-23-springtail",
+  "g2c98-17-petrel",
+  "g2c98-21-pig",
+  "g2referencesc62-05-cat"
+ ],
+ "refused": [
+  {
+   "id": "c132references-03-dog",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  },
+  {
+   "id": "c186creaturesupply-01-impala",
+   "reason": "unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 0.5%)"
+  },
+  {
+   "id": "c186creaturesupply-06-sloth",
+   "reason": "materials-unknown: no species-group material for profile xenarthran; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "c186creaturesupply-07-tortoise",
+   "reason": "materials-unknown: no species-group material for profile tortoise; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "c186creaturesupply-08-box-turtle",
+   "reason": "materials-unknown: no species-group material for profile tortoise; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "c186creaturesupply-09-pond-turtle",
+   "reason": "materials-unknown: no species-group material for profile freshwater-turtle; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "c186creaturesupply-10-snapping-turtle",
+   "reason": "materials-unknown: no species-group material for profile freshwater-turtle; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "c186creaturesupply-11-softshell-turtle",
+   "reason": "materials-unknown: no species-group material for profile freshwater-turtle; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "c186creaturesupply-12-turtle",
+   "reason": "materials-unknown: no species-group material for profile freshwater-turtle; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "c186creaturesupply-13-dog",
+   "reason": "extra-anatomy (unassigned): a top appendage of 14.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c186creaturesupply-18-wolverine",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 45%)"
+  },
+  {
+   "id": "c186creaturesupply-19-badger",
+   "reason": "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "c186creaturesupply-20-beaver",
+   "reason": "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.9%)"
+  },
+  {
+   "id": "c186creaturesupply-21-seahorse",
+   "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+  },
+  {
+   "id": "c186creaturesupply-22-giant-squid",
+   "reason": "facing: the mirrored painting matches cephalopod better (0.0414 < 0.0525)"
+  },
+  {
+   "id": "c186creaturesupply-23-vampire-squid",
+   "reason": "missing-anatomy: part near-eye (eyeNear) covers 1% paint (reference 100%)"
+  },
+  {
+   "id": "c186creaturesupply-24-nautilus",
+   "reason": "missing-anatomy: part eye-near (eyeNear) covers 0% paint (reference 100%)"
+  },
+  {
+   "id": "c192creaturesupply-01-clam",
+   "reason": "no-reference: no other hand-authored subject of family bivalve"
+  },
+  {
+   "id": "c192creaturesupply-03-shrimp",
+   "reason": "materials-unknown: no species-group material for profile shrimp-prawn; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "c192creaturesupply-05-impala",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 91%)"
+  },
+  {
+   "id": "c192creaturesupply-06-dog",
+   "reason": "extra-anatomy (unassigned): a top appendage of 16.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c192creaturesupply-07-wolverine",
+   "reason": "unexplained-anatomy: 11.0% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "c192creaturesupply-08-badger",
+   "reason": "unexplained-anatomy: 10.5% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "c192creaturesupply-09-beaver",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "c192creaturesupply-13-aardvark",
+   "reason": "missing-anatomy: part jaw (jaw) covers 10% paint (reference 31%)"
+  },
+  {
+   "id": "c192creaturesupply-14-okapi",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+  },
+  {
+   "id": "c192creaturesupply-15-pronghorn",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+  },
+  {
+   "id": "c192creaturesupply-16-springbok",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c192creaturesupply-17-duiker",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 39%)"
+  },
+  {
+   "id": "c192creaturesupply-18-serow",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c192creaturesupply-19-bison",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 33%)"
+  },
+  {
+   "id": "c192creaturesupply-20-warthog",
+   "reason": "missing-anatomy: part tail0 (tail0) covers 0% paint (reference 87%)"
+  },
+  {
+   "id": "c192creaturesupply-21-caribou",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 9% paint (reference 96%)"
+  },
+  {
+   "id": "c192creaturesupply-22-yak",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.9% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c192creaturesupply-23-bactrian-camel",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)"
+  },
+  {
+   "id": "c192creaturesupply-24-buffalo",
+   "reason": "unexplained-anatomy: 7.6% of the paint lies away from the body and in no part (reference 1.7%)"
+  },
+  {
+   "id": "c196creaturesupply-03-water-vole",
+   "reason": "missing-anatomy: part fore-near-paw (foreNearPaw) covers 13% paint (reference 48%)"
+  },
+  {
+   "id": "c196creaturesupply-04-marsh-rodent",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "c196creaturesupply-05-elk",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 29% paint (reference 91%)"
+  },
+  {
+   "id": "c196creaturesupply-06-llama",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+  },
+  {
+   "id": "c196creaturesupply-08-ibex",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 35%)"
+  },
+  {
+   "id": "c196creaturesupply-11-mountain-tapir",
+   "reason": "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "c196creaturesupply-12-porcupine",
+   "reason": "facing: the mirrored painting matches quadruped better (0.0292 < 0.0379)"
+  },
+  {
+   "id": "c196creaturesupply-13-bee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%)"
+  },
+  {
+   "id": "c196creaturesupply-14-honeybee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 8% paint (reference 32%)"
+  },
+  {
+   "id": "c196creaturesupply-15-bumblebee",
+   "reason": "missing-anatomy: part head (head) covers 31% paint (reference 98%)"
+  },
+  {
+   "id": "c196creaturesupply-16-dragonfly",
+   "reason": "extra-anatomy (unassigned): a top appendage of 6.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c196creaturesupply-17-damselfly",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 17.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c196creaturesupply-19-diving-beetle",
+   "reason": "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 32% paint (reference 99%)"
+  },
+  {
+   "id": "c196creaturesupply-20-stick-insect",
+   "reason": "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 7% paint (reference 26%)"
+  },
+  {
+   "id": "c196creaturesupply-21-scorpionfly",
+   "reason": "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 12% paint (reference 47%)"
+  },
+  {
+   "id": "c196creaturesupply-23-orchid-bee",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c196framingsuccessors-01-caiman-framing-v2",
+   "reason": "unexplained-anatomy: 13.9% of the paint lies away from the body and in no part (reference 9.7%)"
+  },
+  {
+   "id": "c196framingsuccessors-02-crocodile-framing-v2",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "c196framingsuccessors-03-monitor-lizard-framing-v2",
+   "reason": "missing-anatomy: part tail-tip-lower-rim (tail3) covers 0% paint (reference 55%)"
+  },
+  {
+   "id": "c196framingsuccessors-04-anole-framing-v2",
+   "reason": "missing-anatomy: part hind-far-root (hindFarRoot) covers 25% paint (reference 100%)"
+  },
+  {
+   "id": "c196framingsuccessors-05-skink-framing-v2",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)"
+  },
+  {
+   "id": "c196framingsuccessors-08-whiptail-framing-v2",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c196invertebrateoriginals-01-shrimp",
+   "reason": "materials-unknown: no species-group material for profile shrimp-prawn; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "c196invertebrateoriginals-03-fiddler-crab",
+   "reason": "no-reference: no other hand-authored subject of family brachyuran"
+  },
+  {
+   "id": "c196quadrupedoriginals-02-crocodile",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "c196quadrupedoriginals-03-monitor-lizard",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "c196quadrupedoriginals-04-anole",
+   "reason": "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 2.2%)"
+  },
+  {
+   "id": "c196quadrupedoriginals-05-skink",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "c196quadrupedoriginals-07-lizard",
+   "reason": "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "c196quadrupedoriginals-08-whiptail",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c196quadrupedoriginals-11-frilled-lizard",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 5% paint (reference 10%)"
+  },
+  {
+   "id": "c196quadrupedoriginals-12-chameleon",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 36%)"
+  },
+  {
+   "id": "c196quadrupedoriginals-15-buffalo",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 38%)"
+  },
+  {
+   "id": "c196quadrupedoriginals-18-tamarin",
+   "reason": "wrong-family: quadruped matches clearly better (0.0143 < 0.0205)"
+  },
+  {
+   "id": "c196quadrupedoriginals-19-langur",
+   "reason": "wrong-family: quadruped matches clearly better (0.0174 < 0.0271)"
+  },
+  {
+   "id": "c196quadrupedoriginals-20-monkey",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 17.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c196quadrupedoriginals-22-marmoset",
+   "reason": "wrong-family: quadruped matches clearly better (0.0069 < 0.0150)"
+  },
+  {
+   "id": "c196quadrupedoriginals-23-aye-aye",
+   "reason": "wrong-family: quadruped matches clearly better (0.0188 < 0.0270)"
+  },
+  {
+   "id": "c196quadrupedoriginals-24-proboscis-monkey",
+   "reason": "wrong-family: quadruped matches clearly better (0.0099 < 0.0162)"
+  },
+  {
+   "id": "c198creaturesupplya-02-hyena",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c198creaturesupplya-03-sloth-bear",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)"
+  },
+  {
+   "id": "c198creaturesupplya-04-brown-bear",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 24%)"
+  },
+  {
+   "id": "c198creaturesupplya-10-squirrel",
+   "reason": "facing: the mirrored painting matches quadruped better (0.0273 < 0.0325)"
+  },
+  {
+   "id": "c198creaturesupplya-12-vole",
+   "reason": "missing-anatomy: part fore-near-paw (foreNearPaw) covers 12% paint (reference 48%)"
+  },
+  {
+   "id": "c198creaturesupplya-13-mole",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 45%)"
+  },
+  {
+   "id": "c198creaturesupplya-14-shrew",
+   "reason": "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 20% paint (reference 66%)"
+  },
+  {
+   "id": "c198creaturesupplya-15-hedgehog",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%)"
+  },
+  {
+   "id": "c198creaturesupplya-16-lemming",
+   "reason": "missing-anatomy: part tail2 (tail2) covers 21% paint (reference 63%)"
+  },
+  {
+   "id": "c198creaturesupplya-18-agouti",
+   "reason": "missing-anatomy: part fore-far-paw (foreFarPaw) covers 12% paint (reference 57%)"
+  },
+  {
+   "id": "c198creaturesupplya-19-guinea-pig",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 30% paint (reference 88%)"
+  },
+  {
+   "id": "c198creaturesupplya-20-rat",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 39%)"
+  },
+  {
+   "id": "c198creaturesupplya-24-snowshoe-hare",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 45%)"
+  },
+  {
+   "id": "c198creaturesupplyb-03-squid",
+   "reason": "wrong-family: insect matches clearly better (0.0306 < 0.0481)"
+  },
+  {
+   "id": "c198creaturesupplyb-04-cuttlefish",
+   "reason": "missing-anatomy: part arm2-middle (arm2Seg1) covers 19% paint (reference 92%)"
+  },
+  {
+   "id": "c198creaturesupplyb-05-diving-beetle",
+   "reason": "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 9% paint (reference 37%)"
+  },
+  {
+   "id": "c198creaturesupplyb-06-chimpanzee",
+   "reason": "no-reference: no other hand-authored subject of family primate"
+  },
+  {
+   "id": "c198creaturesupplyb-07-howler-monkey",
+   "reason": "wrong-family: quadruped matches clearly better (0.0122 < 0.0205)"
+  },
+  {
+   "id": "c198creaturesupplyb-08-spider-monkey",
+   "reason": "extra-anatomy (unassigned): a top appendage of 18.7% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c198creaturesupplyb-10-macaque",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c198creaturesupplyb-11-langur",
+   "reason": "extra-anatomy (unassigned): a top appendage of 14.5% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c198creaturesupplyb-13-lemur",
+   "reason": "extra-anatomy (unassigned): a top appendage of 25.9% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c198creaturesupplyb-14-mandrill",
+   "reason": "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "c198creaturesupplyb-15-marmoset",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "c198creaturesupplyb-16-octopus",
+   "reason": "no-reference: no other hand-authored subject of family cephalopod"
+  },
+  {
+   "id": "c198creaturesupplyb-17-giant-octopus",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 13.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c198creaturesupplyb-18-centipede",
+   "reason": "no-reference: no other hand-authored subject of family myriapod"
+  },
+  {
+   "id": "c198creaturesupplyb-19-giant-centipede",
+   "reason": "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1"
+  },
+  {
+   "id": "c198creaturesupplyb-20-millipede",
+   "reason": "wrong-family: quadruped matches clearly better (0.0247 < 0.0732)"
+  },
+  {
+   "id": "c198creaturesupplyb-21-leafcutter-ant",
+   "reason": "missing-anatomy: part leg-front-near (legFrontNearKnee) covers 24% paint (reference 88%)"
+  },
+  {
+   "id": "c198creaturesupplyb-23-grasshopper",
+   "reason": "missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%)"
+  },
+  {
+   "id": "c198creaturesupplyb-24-dobsonfly",
+   "reason": "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)"
+  },
+  {
+   "id": "c198creaturesupplyc-01-crane",
+   "reason": "unexplained-anatomy: 9.6% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "c198creaturesupplyc-06-secretary-bird",
+   "reason": "unexplained-anatomy: 9.9% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "c198creaturesupplyc-12-snow-petrel",
+   "reason": "missing-anatomy: part far-foot (legFarFoot) covers 15% paint (reference 53%)"
+  },
+  {
+   "id": "c198creaturesupplyc-13-catfish",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 10% paint (reference 86%)"
+  },
+  {
+   "id": "c198creaturesupplyc-14-bowfin",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c198creaturesupplyc-15-arapaima",
+   "reason": "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 4.0%)"
+  },
+  {
+   "id": "c198creaturesupplyc-16-arowana",
+   "reason": "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 4.0%)"
+  },
+  {
+   "id": "c198creaturesupplyc-17-lungfish",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%"
+  },
+  {
+   "id": "c198creaturesupplyc-21-lionfish",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c198creaturesupplyc-23-fangtooth",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c202creaturesupply-02-wild-boar",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 38%)"
+  },
+  {
+   "id": "c202creaturesupply-03-peccary",
+   "reason": "unexplained-anatomy: 10.4% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "c202creaturesupply-04-coati",
+   "reason": "facing: the mirrored painting matches quadruped better (0.0140 < 0.0287)"
+  },
+  {
+   "id": "c202creaturesupply-05-porcupine",
+   "reason": "facing: the mirrored painting matches quadruped better (0.0324 < 0.0436)"
+  },
+  {
+   "id": "c202creaturesupply-07-warthog",
+   "reason": "missing-anatomy: part tail2 (tail2) covers 5% paint (reference 63%)"
+  },
+  {
+   "id": "c202creaturesupply-08-buffalo",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)"
+  },
+  {
+   "id": "c202creaturesupply-09-badger",
+   "reason": "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "c202creaturesupply-11-beaver",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 16%)"
+  },
+  {
+   "id": "c202creaturesupply-13-ibex",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 18% paint (reference 62%)"
+  },
+  {
+   "id": "c202creaturesupply-14-chamois",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+  },
+  {
+   "id": "c202creaturesupply-17-aardvark",
+   "reason": "missing-anatomy: part jaw (jaw) covers 10% paint (reference 31%)"
+  },
+  {
+   "id": "c202creaturesupply-19-prairie-dog",
+   "reason": "missing-anatomy: part fore-near-paw (foreNearPaw) covers 13% paint (reference 48%)"
+  },
+  {
+   "id": "c202creaturesupply-20-wild-horse",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 10.7% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c202creaturesupply-21-goat",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c202creaturesupply-23-dog",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 50%)"
+  },
+  {
+   "id": "c202creaturesupply-24-llama",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+  },
+  {
+   "id": "c203creaturesupply-01-water-buffalo",
+   "reason": "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.7%)"
+  },
+  {
+   "id": "c203creaturesupply-02-mountain-tapir",
+   "reason": "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "c203creaturesupply-04-elk",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 9% paint (reference 91%)"
+  },
+  {
+   "id": "c203creaturesupply-05-moose",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 14% paint (reference 91%)"
+  },
+  {
+   "id": "c203creaturesupply-06-hippopotamus",
+   "reason": "materials-unknown: no species-group material for profile hippo; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "c203creaturesupply-08-water-vole",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 24%)"
+  },
+  {
+   "id": "c203creaturesupply-09-marsh-rodent",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "c203creaturesupply-11-pig",
+   "reason": "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 4.7%)"
+  },
+  {
+   "id": "c203creaturesupply-12-alpaca",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  },
+  {
+   "id": "c203creaturesupply-13-gerenuk",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c203creaturesupply-14-nilgai",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 35%)"
+  },
+  {
+   "id": "c203creaturesupply-15-tahr",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  },
+  {
+   "id": "c203creaturesupply-22-catfish",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 9% paint (reference 86%)"
+  },
+  {
+   "id": "c203creaturesupplyb-03-pronghorn",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+  },
+  {
+   "id": "c203creaturesupplyb-04-springbok",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c203creaturesupplyb-05-duiker",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+  },
+  {
+   "id": "c203creaturesupplyb-06-serow",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 38%)"
+  },
+  {
+   "id": "c203creaturesupplyb-07-brown-bear",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  },
+  {
+   "id": "c203creaturesupplyb-09-kingfisher",
+   "reason": "unexplained-anatomy: 10.9% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "c203creaturesupplyb-10-macaw",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 28% paint (reference 84%)"
+  },
+  {
+   "id": "c203creaturesupplyb-12-pheasant",
+   "reason": "missing-anatomy: part near-thigh (legNearKnee) covers 27% paint (reference 84%)"
+  },
+  {
+   "id": "c203creaturesupplyb-15-egret",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 25% paint (reference 72%)"
+  },
+  {
+   "id": "c203creaturesupplyb-18-arowana-framing02",
+   "reason": "unexplained-anatomy: 8.8% of the paint lies away from the body and in no part (reference 4.0%)"
+  },
+  {
+   "id": "c203creaturesupplyb-19-blenny",
+   "reason": "extra-anatomy (unassigned): a front appendage of 9.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c203creaturesupplyb-22-marlin-framing02",
+   "reason": "missing-anatomy: part head (head) covers 14% paint (reference 48%)"
+  },
+  {
+   "id": "c203creaturesupplyb-24-fangtooth",
+   "reason": "extra-anatomy (unassigned): a front appendage of 7.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c203creaturesupplyb-17-arapaima",
+   "reason": "unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 4.0%)"
+  },
+  {
+   "id": "c203creaturesupplyb-18-arowana",
+   "reason": "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 4.0%)"
+  },
+  {
+   "id": "c203creaturesupplyb-22-marlin",
+   "reason": "missing-anatomy: part head (head) covers 12% paint (reference 48%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-01-snipe",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 25% paint (reference 72%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-02-godwit",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 16% paint (reference 72%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-03-avocet",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 21% paint (reference 72%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-05-egret",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 9% paint (reference 72%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-06-stork",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 17% paint (reference 72%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-11-peacock",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 2% paint (reference 35%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-13-pheasant",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 17% paint (reference 50%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-14-guillemot",
+   "reason": "unexplained-anatomy: 8.3% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-15-auk",
+   "reason": "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-16-grebe",
+   "reason": "missing-anatomy: part far-foot (legFarFoot) covers 0% paint (reference 40%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-17-penguin",
+   "reason": "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 3.0%)"
+  },
+  {
+   "id": "c206birdsourcerepaints-18-pelican",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "c206birdsourcerepaints-23-tern",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 12% paint (reference 50%)"
+  },
+  {
+   "id": "c213creaturesupply-03-impala",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 25%)"
+  },
+  {
+   "id": "c213creaturesupply-12-caribou",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 1% paint (reference 91%)"
+  },
+  {
+   "id": "c213creaturesupply-13-yak",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c213creaturesupply-14-takin",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 39%)"
+  },
+  {
+   "id": "c213creaturesupply-17-dromedary-camel",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+  },
+  {
+   "id": "c213creaturesupply-18-bactrian-camel",
+   "reason": "unexplained-anatomy: 7.2% of the paint lies away from the body and in no part (reference 1.7%)"
+  },
+  {
+   "id": "c213creaturesupply-19-gibbon",
+   "reason": "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "c213creaturesupply-21-sea-squirt",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 1.1% of the paint; every same-family reference shows at least 2.1%"
+  },
+  {
+   "id": "g2c101-02-lungfish",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 3.8% of the paint; every same-family reference shows at least 10.0%"
+  },
+  {
+   "id": "g2c101-04-pipefish",
+   "reason": "unexplained-anatomy: 13.6% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "g2c101-05-flying-fish",
+   "reason": "unexplained-anatomy: 11.4% of the paint lies away from the body and in no part (reference 6.9%)"
+  },
+  {
+   "id": "g2c101-06-anglerfish",
+   "reason": "unexplained-anatomy: 19.2% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "g2c101-08-fangtooth",
+   "reason": "extra-anatomy (unassigned): a front appendage of 8.4% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c101-09-dragonfish",
+   "reason": "missing-anatomy: part jaw (jaw) covers 10% paint (reference 93%)"
+  },
+  {
+   "id": "g2c101-11-deep-sea-fish",
+   "reason": "missing-anatomy: part far-pectoral (pectoralFar) covers 17% paint (reference 82%)"
+  },
+  {
+   "id": "g2c101-14-peacock",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 1% paint (reference 35%)"
+  },
+  {
+   "id": "g2c101-15-ostrich",
+   "reason": "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "g2c101-16-flamingo",
+   "reason": "missing-anatomy: part near-shin (legNearAnkle) covers 29% paint (reference 84%)"
+  },
+  {
+   "id": "g2c101-17-pelican",
+   "reason": "unexplained-anatomy: 9.0% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "g2c101-23-mole",
+   "reason": "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 0% paint (reference 90%)"
+  },
+  {
+   "id": "g2c101-24-beaver",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 14% paint (reference 52%)"
+  },
+  {
+   "id": "g2c106-11-knifefish",
+   "reason": "extra-anatomy (unassigned): a front appendage of 7.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c106-12-flying-gurnard",
+   "reason": "missing-anatomy: part jaw (jaw) covers 3% paint (reference 56%)"
+  },
+  {
+   "id": "g2c106-14-emu",
+   "reason": "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "g2c106-15-cassowary",
+   "reason": "unexplained-anatomy: 8.4% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "g2c106-16-kiwi",
+   "reason": "facing: the mirrored painting matches biped-bird better (0.0147 < 0.0218)"
+  },
+  {
+   "id": "g2c106-19-quetzal",
+   "reason": "unexplained-anatomy: 15.6% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "g2c106-23-porcupine",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.7% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c107-04-moray-eel",
+   "reason": "wrong family: length/thickness 7.96 < 8"
+  },
+  {
+   "id": "g2c107-05-gulper-eel",
+   "reason": "missing-anatomy: part segment-7 owns 1.79 % of the paint (reference 8.64 %)"
+  },
+  {
+   "id": "g2c107-06-oarfish",
+   "reason": "unexplained-anatomy: 18.2% of the paint lies away from the body and in no part (reference 3.5%)"
+  },
+  {
+   "id": "g2c107-09-tropicbird",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 16% paint (reference 48%)"
+  },
+  {
+   "id": "g2c107-10-giant-anteater",
+   "reason": "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c107-11-mountain-tapir",
+   "reason": "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "g2c107-13-snowshoe-hare",
+   "reason": "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "g2c107-15-ibex",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 11% paint (reference 62%)"
+  },
+  {
+   "id": "g2c107-16-chamois",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 1% paint (reference 6%)"
+  },
+  {
+   "id": "g2c107-18-jackrabbit",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 77%)"
+  },
+  {
+   "id": "g2c107-21-guinea-pig",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 29% paint (reference 88%)"
+  },
+  {
+   "id": "g2c107-22-armadillo",
+   "reason": "materials-unknown: no species-group material for profile xenarthran; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c110-04-impala",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 25%)"
+  },
+  {
+   "id": "g2c110-05-buffalo",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+  },
+  {
+   "id": "g2c110-13-water-buffalo",
+   "reason": "unexplained-anatomy: 16.0% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "g2c110-19-yak",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)"
+  },
+  {
+   "id": "g2c110-20-takin",
+   "reason": "missing-anatomy: part fore-far-paw (foreFarPaw) covers 19% paint (reference 57%)"
+  },
+  {
+   "id": "g2c110-23-dromedary-camel",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+  },
+  {
+   "id": "g2c110-24-bactrian-camel",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 38%)"
+  },
+  {
+   "id": "g2c114-01-forest-elephant",
+   "reason": "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c114-02-elephant",
+   "reason": "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c114-03-asian-elephant",
+   "reason": "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c114-04-african-elephant",
+   "reason": "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c114-05-rhinoceros",
+   "reason": "materials-unknown: no species-group material for profile rhino; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c114-06-hippopotamus",
+   "reason": "materials-unknown: no species-group material for profile hippo; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c114-10-rat",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) was transferred off the canvas (area < 1 px²)"
+  },
+  {
+   "id": "g2c114-11-cow",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 11% paint (reference 38%)"
+  },
+  {
+   "id": "g2c114-16-gerenuk",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c114-20-tripod-fish",
+   "reason": "wrong-family: quadruped matches clearly better (0.0260 < 0.0416)"
+  },
+  {
+   "id": "g2c114-24-diving-beetle",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c118-05-water-vole",
+   "reason": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 15% paint (reference 43%)"
+  },
+  {
+   "id": "g2c118-07-flying-squirrel",
+   "reason": "unexplained-anatomy: 9.6% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "g2c118-10-echidna",
+   "reason": "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c118-12-platypus",
+   "reason": "materials-unknown: no species-group material for profile platypus; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c118-13-snake",
+   "reason": "body not continuous: 1.7 % of the length has no paint"
+  },
+  {
+   "id": "g2c118-14-penguin",
+   "reason": "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "g2c118-15-water-beetle",
+   "reason": "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 31%)"
+  },
+  {
+   "id": "g2c118-16-diving-beetle",
+   "reason": "missing-anatomy: part antenna-far (antennaFar) covers 8% paint (reference 25%)"
+  },
+  {
+   "id": "g2c118-17-dragonfly",
+   "reason": "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 10% paint (reference 36%)"
+  },
+  {
+   "id": "g2c118-18-damselfly",
+   "reason": "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)"
+  },
+  {
+   "id": "g2c118-19-mayfly",
+   "reason": "facing: the mirrored painting matches insect better (0.0445 < 0.0546)"
+  },
+  {
+   "id": "g2c118-23-rhinoceros",
+   "reason": "materials-unknown: no species-group material for profile rhino; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c121-02-egret",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 10% paint (reference 72%)"
+  },
+  {
+   "id": "g2c121-15-peacock",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 16% paint (reference 84%)"
+  },
+  {
+   "id": "g2c121-17-bee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 6% paint (reference 32%)"
+  },
+  {
+   "id": "g2c121-19-giant-water-bug",
+   "reason": "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 1% paint (reference 31%)"
+  },
+  {
+   "id": "g2c121-21-stick-insect",
+   "reason": "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 12% paint (reference 44%)"
+  },
+  {
+   "id": "g2c121-23-water-strider",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c132quadrupeds-01-caiman",
+   "reason": "unexplained-anatomy: 15.5% of the paint lies away from the body and in no part (reference 9.7%)"
+  },
+  {
+   "id": "g2c132quadrupeds-05-monitor-lizard",
+   "reason": "missing-anatomy: part jaw (jaw) covers 9% paint (reference 31%)"
+  },
+  {
+   "id": "g2c132quadrupeds-06-anole",
+   "reason": "missing-anatomy: part hind-far-root (hindFarRoot) covers 0% paint (reference 100%)"
+  },
+  {
+   "id": "g2c132quadrupeds-08-skink",
+   "reason": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 13% paint (reference 40%)"
+  },
+  {
+   "id": "g2c132quadrupeds-10-mountain-lizard",
+   "reason": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 11% paint (reference 40%)"
+  },
+  {
+   "id": "g2c132quadrupeds-12-lizard",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "g2c132quadrupeds-13-whiptail",
+   "reason": "missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 75%)"
+  },
+  {
+   "id": "g2c132quadrupeds-14-agama",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "g2c132quadrupeds-20-frilled-lizard",
+   "reason": "unexplained-anatomy: 16.1% of the paint lies away from the body and in no part (reference 8.3%)"
+  },
+  {
+   "id": "g2c136repairs-01-giant-salamander",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "g2c136repairs-02-alpine-salamander",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "g2c136repairs-03-olm",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "g2c136repairs-04-blind-salamander",
+   "reason": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 16% paint (reference 53%)"
+  },
+  {
+   "id": "g2c136repairs-05-axolotl",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "g2c136repairs-07-buffalo",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)"
+  },
+  {
+   "id": "g2c136repairs-10-water-buffalo",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 84%)"
+  },
+  {
+   "id": "g2c136repairs-14-yak",
+   "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 22% paint (reference 70%)"
+  },
+  {
+   "id": "g2c136repairs-21-bee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 3% paint (reference 32%)"
+  },
+  {
+   "id": "g2c136repairs-22-giant-water-bug",
+   "reason": "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 29% paint (reference 88%)"
+  },
+  {
+   "id": "g2c136repairs-23-carrion-beetle",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c136repairs-24-water-strider",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c136targetededits-01-giant-salamander",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "g2c136targetededits-07-buffalo",
+   "reason": "unexplained-anatomy: 6.1% of the paint lies away from the body and in no part (reference 1.7%)"
+  },
+  {
+   "id": "g2c163familyoriginals-03-wall-lizard",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "g2c163familyoriginals-04-gorilla",
+   "reason": "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "g2c163familyoriginals-05-chimpanzee",
+   "reason": "no-reference: no other hand-authored subject of family primate"
+  },
+  {
+   "id": "g2c163familyoriginals-06-orangutan",
+   "reason": "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "g2c163familyoriginals-08-howler-monkey",
+   "reason": "extra-anatomy (unassigned): a other appendage of 16.4% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c163familyoriginals-09-spider-monkey",
+   "reason": "extra-anatomy (unassigned): a top appendage of 23.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c163familyoriginals-10-macaque",
+   "reason": "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "g2c163familyoriginals-11-baboon",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 6.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c163familyoriginals-12-lemur",
+   "reason": "extra-anatomy (unassigned): a top appendage of 33.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c163familyoriginals-13-centipede",
+   "reason": "no-reference: no other hand-authored subject of family myriapod"
+  },
+  {
+   "id": "g2c163familyoriginals-14-giant-centipede",
+   "reason": "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1"
+  },
+  {
+   "id": "g2c163familyoriginals-15-millipede",
+   "reason": "wrong-family: sessile-filter matches clearly better (0.0263 < 0.0648)"
+  },
+  {
+   "id": "g2c163familyoriginals-16-octopus",
+   "reason": "no-reference: no other hand-authored subject of family cephalopod"
+  },
+  {
+   "id": "g2c163familyoriginals-17-squid",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 12.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c163familyoriginals-18-cuttlefish",
+   "reason": "wrong-family: insect matches clearly better (0.0281 < 0.0462)"
+  },
+  {
+   "id": "g2c163familyoriginals-19-giant-octopus",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 31.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c163familyoriginals-20-deep-sea-octopus",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 15.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c163familyoriginals-21-fruit-bat",
+   "reason": "no-reference: no other hand-authored subject of family flyer-membrane"
+  },
+  {
+   "id": "g2c163familyoriginals-23-insect-eating-bat",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "g2c163familyoriginals-24-vampire-bat",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "g2c59-02-moose",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 25%)"
+  },
+  {
+   "id": "g2c59-03-bison",
+   "reason": "unexplained-anatomy: 10.1% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "g2c59-05-badger",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c59-06-wolverine",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c59-09-kingfisher",
+   "reason": "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "g2c72-17-water-strider",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c72-20-stick-insect",
+   "reason": "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 16% paint (reference 49%)"
+  },
+  {
+   "id": "g2c76-06-arowana",
+   "reason": "extra-anatomy (unassigned): a front appendage of 7.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c76-07-arapaima",
+   "reason": "unexplained-anatomy: 8.5% of the paint lies away from the body and in no part (reference 4.0%)"
+  },
+  {
+   "id": "g2c76-09-swift",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c76-12-crane",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 22% paint (reference 75%)"
+  },
+  {
+   "id": "g2c76-16-pheasant",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 14% paint (reference 50%)"
+  },
+  {
+   "id": "g2c76-18-agouti",
+   "reason": "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "g2c76-19-alpaca",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  },
+  {
+   "id": "g2c76-20-llama",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+  },
+  {
+   "id": "g2c76-22-pangolin",
+   "reason": "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "g2c76-23-peccary",
+   "reason": "unexplained-anatomy: 14.1% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "g2c76-24-okapi",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 53%)"
+  },
+  {
+   "id": "g2c81-10-snipe",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 0% paint (reference 72%)"
+  },
+  {
+   "id": "g2c81-12-godwit",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 20% paint (reference 72%)"
+  },
+  {
+   "id": "g2c81-13-avocet",
+   "reason": "missing-anatomy: part near-thigh (legNearKnee) covers 0% paint (reference 67%)"
+  },
+  {
+   "id": "g2c81-17-bee",
+   "reason": "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%)"
+  },
+  {
+   "id": "g2c81-19-dragonfly",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 10.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c81-20-damselfly",
+   "reason": "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)"
+  },
+  {
+   "id": "g2c81-21-caddisfly",
+   "reason": "missing-anatomy: part antenna-far (antennaFar) covers 1% paint (reference 32%)"
+  },
+  {
+   "id": "g2c81-22-mayfly",
+   "reason": "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 29%)"
+  },
+  {
+   "id": "g2c81-23-stonefly",
+   "reason": "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 5% paint (reference 40%)"
+  },
+  {
+   "id": "g2c81-24-giant-water-bug",
+   "reason": "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)"
+  },
+  {
+   "id": "g2c83-04-marlin",
+   "reason": "missing-anatomy: part head (head) covers 12% paint (reference 48%)"
+  },
+  {
+   "id": "g2c83-06-swordfish",
+   "reason": "missing-anatomy: part jaw (jaw) covers 0% paint (reference 93%)"
+  },
+  {
+   "id": "g2c83-08-wahoo",
+   "reason": "missing-anatomy: part dorsal (dorsal) covers 30% paint (reference 92%)"
+  },
+  {
+   "id": "g2c83-09-macaw",
+   "reason": "missing-anatomy: part near-thigh (legNearKnee) covers 29% paint (reference 84%)"
+  },
+  {
+   "id": "g2c83-11-toucan",
+   "reason": "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "g2c83-17-fishing-cat",
+   "reason": "unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "g2c83-20-spotted-hyena",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c83-24-aardvark",
+   "reason": "unexplained-anatomy: 15.4% of the paint lies away from the body and in no part (reference 8.6%)"
+  },
+  {
+   "id": "g2c87-02-blenny",
+   "reason": "unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 3.5%)"
+  },
+  {
+   "id": "g2c87-25-angelfish-marine",
+   "reason": "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "g2c87-09-owl",
+   "reason": "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 2.2%)"
+  },
+  {
+   "id": "g2c87-15-guillemot",
+   "reason": "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "g2c87-17-coati",
+   "reason": "facing: the mirrored painting matches quadruped better (0.0204 < 0.0353)"
+  },
+  {
+   "id": "g2c90-02-cobra",
+   "reason": "not x-monotone: the dominant column run holds 94.4 % (coil or overlap; vertical strips cannot separate it)"
+  },
+  {
+   "id": "g2c90-04-rattlesnake",
+   "reason": "tail not tapered: tip 56px vs median 89px (truncated tail?)"
+  },
+  {
+   "id": "g2c90-07-catfish",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 15% paint (reference 86%)"
+  },
+  {
+   "id": "g2c90-09-bowfin",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c90-15-squirrel",
+   "reason": "facing: the mirrored painting matches quadruped better (0.0167 < 0.0270)"
+  },
+  {
+   "id": "g2c90-17-rabbit",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 1% paint (reference 38%)"
+  },
+  {
+   "id": "g2c90-20-hedgehog",
+   "reason": "unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "g2c90-22-kinkajou",
+   "reason": "unexplained-anatomy: 16.6% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "g2c90-23-sloth-bear",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)"
+  },
+  {
+   "id": "g2c92-05-lionfish",
+   "reason": "unexplained-anatomy: 10.0% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "g2c92-08-auk",
+   "reason": "unexplained-anatomy: 10.7% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "g2c92-12-grebe",
+   "reason": "unexplained-anatomy: 9.4% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "g2c92-16-vole",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)"
+  },
+  {
+   "id": "g2c92-21-dobsonfly",
+   "reason": "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 6% paint (reference 25%)"
+  },
+  {
+   "id": "g2c92-22-scorpionfly",
+   "reason": "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 15% paint (reference 49%)"
+  },
+  {
+   "id": "g2c92-24-orchid-bee",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.7% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c95-13-pronghorn",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+  },
+  {
+   "id": "g2c95-14-springbok",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+  },
+  {
+   "id": "g2c95-16-duiker",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 6%)"
+  },
+  {
+   "id": "g2c95-18-serow",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+  },
+  {
+   "id": "g2c95-19-butterfly",
+   "reason": "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 40%)"
+  },
+  {
+   "id": "g2c95-20-mosquito",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c95-21-black-fly",
+   "reason": "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+  },
+  {
+   "id": "g2c95-22-fly",
+   "reason": "missing-anatomy: part mandible (mandible) covers 10% paint (reference 32%)"
+  },
+  {
+   "id": "g2c95-24-cold-adapted-insect",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.4% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c98-14-screamer",
+   "reason": "missing-anatomy: part beak (beak) covers 6% paint (reference 52%)"
+  },
+  {
+   "id": "g2c98-15-secretary-bird",
+   "reason": "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "g2c98-16-tern",
+   "reason": "missing-anatomy: part near-shin (legNearAnkle) covers 15% paint (reference 49%)"
+  },
+  {
+   "id": "g2c98-19-shrew",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+  },
+  {
+   "id": "g2c98-22-warthog",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)"
+  },
+  {
+   "id": "g2c98-23-honeybee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+  },
+  {
+   "id": "g2c98-24-bumblebee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 6% paint (reference 32%)"
+  },
+  {
+   "id": "g2referencesc62-08-ant",
+   "reason": "facing: the mirrored painting matches insect better (0.0304 < 0.0383)"
+  },
+  {
+   "id": "g2referencesc62-09-cricket",
+   "reason": "facing: the mirrored painting matches insect better (0.0389 < 0.0478)"
+  },
+  {
+   "id": "g2throughputc56-16-pigeon",
+   "reason": "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "g2throughputc56-28-leafcutter-ant",
+   "reason": "missing-anatomy: part wing-near (wingNear) covers 27% paint (reference 82%)"
+  },
+  {
+   "id": "g2throughputc56-29-cave-cricket",
+   "reason": "missing-anatomy: part mandible (mandible) covers 1% paint (reference 60%)"
+  },
+  {
+   "id": "g2throughputc56-31-carrion-beetle",
+   "reason": "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 31%)"
+  },
+  {
+   "id": "g2throughputc56-32-stick-insect",
+   "reason": "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 6% paint (reference 26%)"
+  },
+  {
+   "id": "insectreferencesc86-01-bee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+  },
+  {
+   "id": "insectreferencesc86-02-dragonfly",
+   "reason": "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 20% paint (reference 59%)"
+  },
+  {
+   "id": "insectreferencesc86-03-giant-water-bug",
+   "reason": "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)"
+  },
+  {
+   "id": "insectreferencesc86-05-dragonfly-six-legs",
+   "reason": "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 19% paint (reference 59%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "c192creaturesupply-10-fishing-cat",
+   "static": "RED"
+  },
+  {
+   "id": "c196creaturesupply-18-water-beetle",
+   "static": "RED"
+  },
+  {
+   "id": "c196creaturesupply-22-carrion-beetle",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c196quadrupedoriginals-01-caiman",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c196quadrupedoriginals-06-mountain-lizard",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c196quadrupedoriginals-09-agama",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c196quadrupedoriginals-10-gila-monster",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c196quadrupedoriginals-17-water-buffalo",
+   "static": "RED"
+  },
+  {
+   "id": "c196quadrupedoriginals-21-mandrill",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c198creaturesupplya-07-kinkajou",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c198creaturesupplya-22-rabbit",
+   "static": "RED"
+  },
+  {
+   "id": "c198creaturesupplyb-01-gorilla",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c198creaturesupplyb-09-tamarin",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c198creaturesupplyb-12-baboon",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c198creaturesupplyb-22-locust",
+   "static": "RED"
+  },
+  {
+   "id": "c198creaturesupplyc-02-flamingo",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c198creaturesupplyc-07-cardinal",
+   "static": "RED"
+  },
+  {
+   "id": "c202creaturesupply-01-tapir",
+   "static": "RED"
+  },
+  {
+   "id": "c202creaturesupply-18-bison",
+   "static": "RED"
+  },
+  {
+   "id": "c203creaturesupply-03-black-bear",
+   "static": "RED"
+  },
+  {
+   "id": "c203creaturesupply-20-kookaburra",
+   "static": "RED"
+  },
+  {
+   "id": "c203creaturesupply-24-wahoo",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "c203creaturesupplyb-01-okapi",
+   "static": "RED"
+  },
+  {
+   "id": "c206birdsourcerepaints-19-screamer",
+   "static": "RED"
+  },
+  {
+   "id": "c206birdsourcerepaints-22-macaw",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c101-18-albatross",
+   "static": "RED"
+  },
+  {
+   "id": "g2c106-17-kakapo",
+   "static": "RED"
+  },
+  {
+   "id": "g2c106-18-hoatzin",
+   "static": "RED"
+  },
+  {
+   "id": "g2c107-07-gull",
+   "static": "RED"
+  },
+  {
+   "id": "g2c107-08-frigatebird",
+   "static": "RED"
+  },
+  {
+   "id": "g2c114-08-bear",
+   "static": "RED"
+  },
+  {
+   "id": "g2c114-09-wild-pig",
+   "static": "RED"
+  },
+  {
+   "id": "g2c114-23-water-beetle",
+   "static": "RED"
+  },
+  {
+   "id": "g2c118-06-marsh-rodent",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c118-22-loon",
+   "static": "RED"
+  },
+  {
+   "id": "g2c121-03-stork",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c121-11-sparrow",
+   "static": "RED"
+  },
+  {
+   "id": "g2c121-22-carrion-beetle",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c132quadrupeds-02-crocodile",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c132quadrupeds-19-gila-monster",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c132quadrupeds-21-chameleon",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c163familyoriginals-02-salamander",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c59-12-ladybug",
+   "static": "RED"
+  },
+  {
+   "id": "g2c72-14-stork",
+   "static": "RED"
+  },
+  {
+   "id": "g2c72-19-carrion-beetle",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c83-15-kookaburra",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2c83-16-cockatoo",
+   "static": "RED"
+  },
+  {
+   "id": "g2c87-20-striped-hyena",
+   "static": "RED"
+  },
+  {
+   "id": "g2c87-22-black-bear",
+   "static": "RED"
+  },
+  {
+   "id": "g2c92-19-moth",
+   "static": "RED"
+  },
+  {
+   "id": "g2c92-20-aphid",
+   "static": "RED"
+  },
+  {
+   "id": "g2c92-23-thrips",
+   "static": "RED"
+  },
+  {
+   "id": "g2c98-11-osprey",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "g2referencesc62-02-pigeon",
+   "static": "RED"
+  },
+  {
+   "id": "g2referencesc62-03-duck",
+   "static": "RED"
+  },
+  {
+   "id": "g2referencesc62-06-dog",
+   "static": "RED"
+  },
+  {
+   "id": "g2throughputc56-12-cardinal",
+   "static": "RED"
+  },
+  {
+   "id": "g2throughputc56-26-cicada",
+   "static": "RED"
+  },
+  {
+   "id": "insectreferencesc86-04-bee-six-legs",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "c132references-04-cat",
+   "name": "Cat",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c173holdsourcerepaints-snow-petrel",
+   "name": "Snow Petrel",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c198creaturesupplya-01-red-fox",
+   "name": "Red Fox",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c198creaturesupplya-05-bear",
+   "name": "Bear",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c198creaturesupplyc-11-albatross",
+   "name": "Albatross",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c202creaturesupply-06-impala",
+   "name": "Impala",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c202creaturesupply-10-river-otter",
+   "name": "River Otter",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c202creaturesupply-12-wolverine",
+   "name": "Wolverine",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c202creaturesupply-15-fishing-cat",
+   "name": "Fishing Cat",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c202creaturesupply-16-spotted-hyena",
+   "name": "Spotted Hyena",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c202creaturesupply-22-cat",
+   "name": "Cat",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupply-07-wild-pig",
+   "name": "Wild Pig",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupply-10-cow",
+   "name": "Cow",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupply-17-cardinal",
+   "name": "Cardinal",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupply-18-sparrow",
+   "name": "Sparrow",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupply-19-pigeon",
+   "name": "Pigeon",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupplyb-11-toucan",
+   "name": "Toucan",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupplyb-13-falcon",
+   "name": "Falcon",
+   "family": "biped-bird",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "c203creaturesupplyb-14-duck",
+   "name": "Duck",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupplyb-16-stork",
+   "name": "Stork",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupplyb-17-arapaima-framing02",
+   "name": "Arapaima",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupplyb-20-angelfish",
+   "name": "Angelfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupplyb-23-swordfish-framing02",
+   "name": "Swordfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "c203creaturesupplyb-23-swordfish",
+   "name": "Swordfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c101-20-snow-petrel",
+   "name": "Snow Petrel",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c106-24-lemming",
+   "name": "Lemming",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c110-17-caribou",
+   "name": "Caribou",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c114-17-tahr",
+   "name": "Tahr",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c114-22-loon",
+   "name": "Loon",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c118-04-sea-otter",
+   "name": "Sea Otter",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c118-09-colugo",
+   "name": "Colugo",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c136repairs-12-caribou",
+   "name": "Caribou",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c136targetededits-21-bee",
+   "name": "Bee",
+   "family": "insect",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c59-01-elk",
+   "name": "Elk",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c72-12-egret",
+   "name": "Egret",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c76-11-falcon",
+   "name": "Falcon",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c83-23-prairie-dog",
+   "name": "Prairie Dog",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c90-24-river-otter",
+   "name": "River Otter",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c95-17-nilgai",
+   "name": "Nilgai",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c95-23-springtail",
+   "name": "Springtail",
+   "family": "insect",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "g2c98-17-petrel",
+   "name": "Petrel",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2c98-21-pig",
+   "name": "Pig",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "g2referencesc62-05-cat",
+   "name": "Cat",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

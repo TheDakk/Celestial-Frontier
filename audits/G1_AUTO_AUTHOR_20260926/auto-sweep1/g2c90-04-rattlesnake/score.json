@@ -1,0 +1,9 @@
+{
+ "id": "g2c90-04-rattlesnake",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "tail not tapered: tip 56px vs median 89px (truncated tail?)"
+ ],
+ "semanticPresence": null
+}

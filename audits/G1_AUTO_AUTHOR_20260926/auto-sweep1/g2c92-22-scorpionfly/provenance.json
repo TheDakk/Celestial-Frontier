@@ -1,0 +1,139 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c92-22-scorpionfly",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "0274e0580dad342a521dc0f5cfbdcf7f0bed9161ce06855370b29d736b6daaa3",
+ "subjectSourceSha256": "21e9ede5ea04b0b0ab9642637426b15422aafc5180cfa88956ead78a02a1f372",
+ "identity": {
+  "name": "Scorpionfly",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Scorpionfly\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1050894244\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "seed": 1050894244,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "09-cricket",
+  "authoringSha256": "dd3ecced51db3d376540f1967668f3c5ed1887671e3b3be489de62b91299bee1",
+  "masterSha256": "69d905966cfb597f0c09d44f0f857cce30e28201ed1d7358621e289ded468ca4"
+ },
+ "habitat": {
+  "profileId": "soft-mouth-insect",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "62522b378c939b2fa7bfd76c74cbc2b0f32e407c5a6cb2897a536de41ba2f7ed",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group soft-mouth-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1064,
+     "class": "front",
+     "attach": {
+      "x": 266,
+      "y": 194.5,
+      "relX": 1.01,
+      "relY": 0.27
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1246,
+     "class": "other",
+     "attach": {
+      "x": 94.4,
+      "y": 209.4,
+      "relX": 0,
+      "relY": 0.53
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0491,
+     "class": "limb-down",
+     "attach": {
+      "x": 259,
+      "y": 211.1,
+      "relX": 0.96,
+      "relY": 0.56
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0553,
+     "class": "limb-down",
+     "attach": {
+      "x": 227.5,
+      "y": 222.6,
+      "relX": 0.78,
+      "relY": 0.77
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0118,
+     "class": "rear",
+     "attach": {
+      "x": 101.6,
+      "y": 234.4,
+      "relX": 0.04,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0157,
+     "class": "limb-down",
+     "attach": {
+      "x": 192.5,
+      "y": 233.3,
+      "relX": 0.58,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0095,
+     "class": "limb-down",
+     "attach": {
+      "x": 185,
+      "y": 236,
+      "relX": 0.53,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "other": 1,
+    "limb-down": 4,
+    "rear": 1
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "09-cricket",
+   "byClass": {
+    "front": 1,
+    "rear": 3,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

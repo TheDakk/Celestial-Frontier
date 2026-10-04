@@ -1,0 +1,11 @@
+{
+ "id": "c196quadrupedoriginals-11-frilled-lizard",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 5% paint (reference 10%)",
+  "missing-anatomy: part tail2 (tail2) covers 6% paint (reference 14%)",
+  "unexplained-anatomy: 10.6% of the paint lies away from the body and in no part (reference 2.2%)"
+ ],
+ "semanticPresence": null
+}

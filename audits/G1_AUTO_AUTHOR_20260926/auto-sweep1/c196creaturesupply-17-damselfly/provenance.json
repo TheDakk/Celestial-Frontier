@@ -1,0 +1,82 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c196creaturesupply-17-damselfly",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "1e51ec300a93eee25a1cf007bec7bfd29595a8ecf725c292893d7aca754a88de",
+ "subjectSourceSha256": "3f5bbc5f5ba699f254f2572f04881a76c510d49ce36161336ba572a72f1e0907",
+ "identity": {
+  "name": "Damselfly",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Damselfly\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2284214973\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "seed": 2284214973,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "dragonfly",
+  "authoringSha256": "df6b9a783fd35bd1b3ce1d2a79b4018677392ec4d02a8fd60e88d204121a5c0f",
+  "masterSha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1696,
+     "class": "rear",
+     "attach": {
+      "x": 149.7,
+      "y": 172.8,
+      "relX": 0.33,
+      "relY": 0.43
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.5368,
+     "class": "limb-down",
+     "attach": {
+      "x": 212.8,
+      "y": 187.9,
+      "relX": 0.92,
+      "relY": 0.75
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "limb-down": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "dragonfly",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

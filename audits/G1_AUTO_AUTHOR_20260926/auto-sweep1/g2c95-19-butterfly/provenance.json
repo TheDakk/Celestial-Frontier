@@ -1,0 +1,138 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c95-19-butterfly",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "255d95fef85bed773495055720729a8538358a39c019c6683f46575eaa8c37c8",
+ "subjectSourceSha256": "20d4956c9a4218239bc999ec2f2dd8c4d5a9a1529aec91f3e666d70f9670bfdd",
+ "identity": {
+  "name": "Butterfly",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Butterfly\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1023541417\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "seed": 1023541417,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "beetle",
+  "authoringSha256": "478fa93e5ed189385100c44e78808f103ce96659f942dbaa9612c5c4d04db5ef",
+  "masterSha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb"
+ },
+ "habitat": {
+  "profileId": "soft-mouth-insect",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "62522b378c939b2fa7bfd76c74cbc2b0f32e407c5a6cb2897a536de41ba2f7ed",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group soft-mouth-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0369,
+     "class": "top",
+     "attach": {
+      "x": 161.5,
+      "y": 105,
+      "relX": 0.33,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0142,
+     "class": "rear",
+     "attach": {
+      "x": 113,
+      "y": 228,
+      "relX": -0.01,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0553,
+     "class": "limb-down",
+     "attach": {
+      "x": 260,
+      "y": 240.5,
+      "relX": 1.01,
+      "relY": 0.76
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0056,
+     "class": "limb-down",
+     "attach": {
+      "x": 249,
+      "y": 275,
+      "relX": 0.93,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0084,
+     "class": "limb-down",
+     "attach": {
+      "x": 234.5,
+      "y": 276,
+      "relX": 0.83,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.025,
+     "class": "rear",
+     "attach": {
+      "x": 157.3,
+      "y": 282.7,
+      "relX": 0.3,
+      "relY": 1
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0042,
+     "class": "limb-down",
+     "attach": {
+      "x": 216.5,
+      "y": 277,
+      "relX": 0.71,
+      "relY": 0.97
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 2,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "beetle",
+   "byClass": {
+    "top": 1,
+    "rear": 3,
+    "limb-down": 6
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

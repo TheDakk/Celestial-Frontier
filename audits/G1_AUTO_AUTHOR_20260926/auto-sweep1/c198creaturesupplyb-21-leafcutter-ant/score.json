@@ -1,0 +1,9 @@
+{
+ "id": "c198creaturesupplyb-21-leafcutter-ant",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part leg-front-near (legFrontNearKnee) covers 24% paint (reference 88%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,484 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 38%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [
+  {
+   "chain": "hindFar",
+   "refined": true,
+   "snap": {
+    "terminal": 0,
+    "end": 0.0001
+   }
+  },
+  {
+   "chain": "foreFar",
+   "refined": true,
+   "snap": {
+    "terminal": 0,
+    "end": 0
+   }
+  },
+  {
+   "chain": "hindNear",
+   "refined": true,
+   "snap": {
+    "terminal": 0,
+    "end": 0
+   }
+  },
+  {
+   "chain": "foreNear",
+   "refined": true,
+   "snap": {
+    "terminal": 0,
+    "end": 0
+   }
+  }
+ ],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [],
+ "separation": null,
+ "inventory": {
+  "reasons": [],
+  "assign": [
+   {
+    "owners": [
+     "ear-near-tip",
+     "ear-far-tip",
+     "neck"
+    ],
+    "names": [
+     "head-appendage",
+     "head"
+    ],
+    "refFrac": 0.011,
+    "target": 2,
+    "overlap": 0.282
+   },
+   {
+    "owners": [
+     "head",
+     "jaw"
+    ],
+    "names": [
+     "head"
+    ],
+    "refFrac": 0.0547,
+    "target": 2,
+    "overlap": 0.838
+   },
+   {
+    "owners": [
+     "tail1",
+     "tail2",
+     "tail3"
+    ],
+    "names": [
+     "tail"
+    ],
+    "refFrac": 0.102,
+    "target": 3,
+    "overlap": 0.441
+   },
+   {
+    "owners": [
+     "hind-far-ankle",
+     "hind-near-ankle"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.1175,
+    "target": 3,
+    "overlap": 0.767
+   },
+   {
+    "owners": [
+     "fore-near-knee",
+     "fore-far-ankle",
+     "fore-near-ankle"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.1026,
+    "target": 4,
+    "overlap": 0.471
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0349,
+     "class": "top",
+     "attach": {
+      "x": 160,
+      "y": 138,
+      "relX": 0.24,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0423,
+     "class": "top",
+     "attach": {
+      "x": 218,
+      "y": 145,
+      "relX": 0.54,
+      "relY": 0.06
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1239,
+     "class": "top",
+     "attach": {
+      "x": 304.8,
+      "y": 187.2,
+      "relX": 0.97,
+      "relY": 0.49
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1625,
+     "class": "limb-down",
+     "attach": {
+      "x": 121.3,
+      "y": 204.2,
+      "relX": 0.05,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0525,
+     "class": "limb-down",
+     "attach": {
+      "x": 207.7,
+      "y": 234.9,
+      "relX": 0.48,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0554,
+     "class": "limb-down",
+     "attach": {
+      "x": 267,
+      "y": 239,
+      "relX": 0.78,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 3,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0833,
+  "ref": 0.025
+ },
+ "bestReference": "wild-horse",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "wild-horse",
+   "cost": 0.01452
+  },
+  {
+   "ref": "cattle",
+   "cost": 0.01491
+  },
+  {
+   "ref": "brown-bear",
+   "cost": 0.01821
+  },
+  {
+   "ref": "codex-ref-02-giraffe-neck-contour",
+   "cost": 0.01923
+  },
+  {
+   "ref": "cougar",
+   "cost": 0.02043
+  },
+  {
+   "ref": "wolf",
+   "cost": 0.02139
+  },
+  {
+   "ref": "05-cat-v2",
+   "cost": 0.02163
+  },
+  {
+   "ref": "codex-ref-01-caiman-tail-contour",
+   "cost": 0.02217
+  },
+  {
+   "ref": "marmot",
+   "cost": 0.02264
+  },
+  {
+   "ref": "07-weasel",
+   "cost": 0.02313
+  },
+  {
+   "ref": "impala",
+   "cost": 0.02323
+  },
+  {
+   "ref": "river-otter",
+   "cost": 0.02522
+  },
+  {
+   "ref": "c204-qualified-short-tail-reindeer",
+   "cost": 0.02627
+  },
+  {
+   "ref": "c136-sprawler-24-newt",
+   "cost": 0.02658
+  },
+  {
+   "ref": "salamander",
+   "cost": 0.02729
+  },
+  {
+   "ref": "ibex",
+   "cost": 0.03112
+  },
+  {
+   "ref": "rat",
+   "cost": 0.03133
+  },
+  {
+   "ref": "c136-sprawler-05-monitor-lizard",
+   "cost": 0.03704
+  },
+  {
+   "ref": "c136-sprawler-15-iguana",
+   "cost": 0.04493
+  },
+  {
+   "ref": "wall-lizard",
+   "cost": 0.04758
+  }
+ ],
+ "mirrorBest": 0.02209,
+ "otherFamilyBest": {
+  "family": "flyer-membrane",
+  "cost": 0.02065
+ },
+ "coverage": [
+  {
+   "id": "root",
+   "joint": "root",
+   "paint": 1,
+   "area": 115.70000000000005
+  },
+  {
+   "id": "ear-near-tip",
+   "joint": "earNearTip",
+   "paint": 1,
+   "area": 1067.965000000002
+  },
+  {
+   "id": "ear-near-root",
+   "joint": "earNearRoot",
+   "paint": 1,
+   "area": 1007.4000000000015
+  },
+  {
+   "id": "ear-far-tip",
+   "joint": "earFarTip",
+   "paint": 0.9272727272727272,
+   "area": 902.2000000000007
+  },
+  {
+   "id": "ear-far-root",
+   "joint": "earFarRoot",
+   "paint": 1,
+   "area": 850.2100000000064
+  },
+  {
+   "id": "hind-near-paw",
+   "joint": "hindNearPaw",
+   "paint": 0.8111888111888111,
+   "area": 2299.8550000000023
+  },
+  {
+   "id": "hind-near-ankle",
+   "joint": "hindNearAnkle",
+   "paint": 0.7161016949152542,
+   "area": 7611.259999999998
+  },
+  {
+   "id": "hind-near-knee",
+   "joint": "hindNearKnee",
+   "paint": 0.7988826815642458,
+   "area": 5776.245000000003
+  },
+  {
+   "id": "hind-near-root",
+   "joint": "hindNearRoot",
+   "paint": 0.9314601958280119,
+   "area": 37672.385
+  },
+  {
+   "id": "fore-near-paw",
+   "joint": "foreNearPaw",
+   "paint": 0.6061946902654868,
+   "area": 3643.990000000007
+  },
+  {
+   "id": "fore-near-ankle",
+   "joint": "foreNearAnkle",
+   "paint": 0.6348195329087049,
+   "area": 7547.55000000001
+  },
+  {
+   "id": "fore-near-knee",
+   "joint": "foreNearKnee",
+   "paint": 0.7454545454545455,
+   "area": 8801.270000000011
+  },
+  {
+   "id": "fore-near-root",
+   "joint": "foreNearRoot",
+   "paint": 0.9571263035921205,
+   "area": 27650.59500000001
+  },
+  {
+   "id": "hind-far-paw",
+   "joint": "hindFarPaw",
+   "paint": 0.7121212121212122,
+   "area": 2100.895
+  },
+  {
+   "id": "hind-far-ankle",
+   "joint": "hindFarAnkle",
+   "paint": 0.7356608478802993,
+   "area": 6442.800000000007
+  },
+  {
+   "id": "hind-far-knee",
+   "joint": "hindFarKnee",
+   "paint": 0.7351694915254238,
+   "area": 7548.0300000000025
+  },
+  {
+   "id": "hind-far-root",
+   "joint": "hindFarRoot",
+   "paint": 0.900126422250316,
+   "area": 12660.790000000005
+  },
+  {
+   "id": "fore-far-paw",
+   "joint": "foreFarPaw",
+   "paint": 0.6046511627906976,
+   "area": 3479.234999999991
+  },
+  {
+   "id": "fore-far-ankle",
+   "joint": "foreFarAnkle",
+   "paint": 0.528046421663443,
+   "area": 8277.384999999998
+  },
+  {
+   "id": "fore-far-knee",
+   "joint": "foreFarKnee",
+   "paint": 0.6687116564417178,
+   "area": 7910.424999999996
+  },
+  {
+   "id": "fore-far-root",
+   "joint": "foreFarRoot",
+   "paint": 0.8402130492676432,
+   "area": 24053.86000000001
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.6719367588932806,
+   "area": 4031.3799999999983
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.92,
+   "area": 6431.605
+  },
+  {
+   "id": "neck",
+   "joint": "neck",
+   "paint": 0.7472029834842834,
+   "area": 60057.08999999997
+  },
+  {
+   "id": "tail3",
+   "joint": "tail3",
+   "paint": 0.0916030534351145,
+   "area": 6301.790000000003
+  },
+  {
+   "id": "tail2",
+   "joint": "tail2",
+   "paint": 0.5688073394495413,
+   "area": 3466.529999999999
+  },
+  {
+   "id": "tail1",
+   "joint": "tail1",
+   "paint": 0.6426858513189448,
+   "area": 6664.614999999996
+  },
+  {
+   "id": "tail0",
+   "joint": "tail0",
+   "paint": 0.708256880733945,
+   "area": 8744.605000000003
+  },
+  {
+   "id": "chest",
+   "joint": "chest",
+   "paint": 0.9856062454257136,
+   "area": 65756.94999999998
+  },
+  {
+   "id": "pelvis",
+   "joint": "pelvis",
+   "paint": 0.9099186991869919,
+   "area": 49170.89999999998
+  },
+  {
+   "id": "spine",
+   "joint": "spine",
+   "paint": 0,
+   "area": 0.5
+  }
+ ],
+ "unclaimedFrac": 0.0503
+}

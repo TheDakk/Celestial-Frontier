@@ -1,0 +1,10 @@
+{
+ "id": "c203creaturesupply-10-cow",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

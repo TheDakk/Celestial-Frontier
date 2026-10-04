@@ -1,0 +1,11 @@
+{
+ "id": "g2c163familyoriginals-15-millipede",
+ "family": "myriapod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: sessile-filter matches clearly better (0.0263 < 0.0648)",
+  "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+  "unexplained-anatomy: 33.3% of the paint lies away from the body and in no part (reference 10.3%)"
+ ],
+ "semanticPresence": null
+}

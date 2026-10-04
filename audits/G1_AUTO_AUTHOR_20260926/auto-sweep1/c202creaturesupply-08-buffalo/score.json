@@ -1,0 +1,10 @@
+{
+ "id": "c202creaturesupply-08-buffalo",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)",
+  "unexplained-anatomy: 7.0% of the paint lies away from the body and in no part (reference 1.7%)"
+ ],
+ "semanticPresence": null
+}

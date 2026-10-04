@@ -1,0 +1,129 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c72-17-water-strider",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "b475b86f0f327455c6c66e7e5f7a416d0b16f4fffdbe572808f6738d56f0cfb9",
+ "subjectSourceSha256": "07de671ecc94c05a66d9b7344869cfce9e96f5fcaea96ca6a78c0e64e4922d37",
+ "identity": {
+  "name": "Water Strider",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Water Strider\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2009587222\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"21\"]]]]",
+  "seed": 2009587222,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "08-ant",
+  "authoringSha256": "0ef6659dc3425e1ae001566a0cdf15903f83327f7e8aee8a4df08f75017e9d34",
+  "masterSha256": "c08ceac5e56a3ee468c08e38487f28f3a9d25a5d08d0eb266491c02fb319b754"
+ },
+ "habitat": {
+  "profileId": "aquatic-insect",
+  "media": [
+   "water",
+   "ground",
+   "air"
+  ],
+  "profileSha256": "07e868a36d9794e1c936db97be9c1b2cb2656100662d952c0a6e9e199f504013",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group aquatic-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2165,
+     "class": "front",
+     "attach": {
+      "x": 280,
+      "y": 166.9,
+      "relX": 0.97,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0616,
+     "class": "rear",
+     "attach": {
+      "x": 185,
+      "y": 146,
+      "relX": 0.34,
+      "relY": 0.12
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0042,
+     "class": "top",
+     "attach": {
+      "x": 251,
+      "y": 140,
+      "relX": 0.78,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0446,
+     "class": "rear",
+     "attach": {
+      "x": 133,
+      "y": 168.5,
+      "relX": -0.01,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1042,
+     "class": "limb-down",
+     "attach": {
+      "x": 231.5,
+      "y": 184,
+      "relX": 0.65,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0807,
+     "class": "rear",
+     "attach": {
+      "x": 199.5,
+      "y": 185,
+      "relX": 0.44,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 3,
+    "top": 1,
+    "limb-down": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "08-ant",
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

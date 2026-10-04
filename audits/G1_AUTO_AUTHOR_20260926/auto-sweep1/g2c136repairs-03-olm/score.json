@@ -1,0 +1,10 @@
+{
+ "id": "g2c136repairs-03-olm",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part jaw (jaw) covers 21% paint (reference 59%)"
+ ],
+ "semanticPresence": null
+}

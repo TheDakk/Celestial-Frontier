@@ -1,0 +1,12 @@
+{
+ "id": "g2c107-15-ibex",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 11% paint (reference 62%)",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)",
+  "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 6%)",
+  "unexplained-anatomy: 9.3% of the paint lies away from the body and in no part (reference 0.0%)"
+ ],
+ "semanticPresence": null
+}

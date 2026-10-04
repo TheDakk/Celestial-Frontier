@@ -1,0 +1,14 @@
+{
+ "id": "insectreferencesc86-02-dragonfly",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 20% paint (reference 59%)",
+  "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 6% paint (reference 46%)",
+  "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 22% paint (reference 63%)",
+  "missing-anatomy: part leg-hind-near (legHindNearKnee) covers 0% paint (reference 100%)",
+  "missing-anatomy: part mandible (mandible) covers 18% paint (reference 55%)",
+  "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

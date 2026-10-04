@@ -1,0 +1,20 @@
+{
+ "id": "c186creaturesupply-22-giant-squid",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches cephalopod better (0.0414 < 0.0525)",
+  "extra-anatomy (unassigned): a rear appendage of 11.1% paint that no reference appendage lands on",
+  "missing-anatomy: part arm0-tip (arm0Seg2) covers 0% paint (reference 42%)",
+  "missing-anatomy: part arm2-tip (arm2Seg2) covers 0% paint (reference 43%)",
+  "missing-anatomy: part arm4-tip (arm4Seg2) covers 22% paint (reference 66%)",
+  "missing-anatomy: part arm6-tip (arm6Seg2) covers 12% paint (reference 68%)",
+  "missing-anatomy: part mantle (mantle) covers 24% paint (reference 82%)",
+  "missing-anatomy: part contour-arm0seg2 (arm0Seg2) covers 0% paint (reference 40%)",
+  "missing-anatomy: part contour-arm2seg2 (arm2Seg2) covers 0% paint (reference 34%)",
+  "missing-anatomy: part contour-arm6seg2 (arm6Seg2) covers 13% paint (reference 51%)",
+  "missing-anatomy: part contour-mantle (mantle) covers 19% paint (reference 73%)",
+  "unexplained-anatomy: 11.5% of the paint lies away from the body and in no part (reference 0.4%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,9 @@
+{
+ "id": "c186creaturesupply-19-badger",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 5.7%)"
+ ],
+ "semanticPresence": null
+}

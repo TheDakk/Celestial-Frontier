@@ -1,0 +1,289 @@
+{
+  "id": "c213creaturesupply-21-sea-squirt",
+  "family": "sessile-filter",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile sessile-tunicate media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "landmarksPx": {
+    "root": [
+      641.5,
+      1045.1
+    ],
+    "base": [
+      634,
+      1016.5
+    ],
+    "body": [
+      618.1,
+      731.3
+    ],
+    "crown": [
+      623.2,
+      437.4
+    ],
+    "aperture": [
+      626.1,
+      317.9
+    ]
+  },
+  "groundLineY": 0.8582116638553317,
+  "materials": {
+    "surface": "translucent"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          636.5,
+          1040.3
+        ],
+        [
+          647.4,
+          1042.6
+        ],
+        [
+          645.3,
+          1051.1
+        ],
+        [
+          635.6,
+          1048.4
+        ]
+      ]
+    },
+    {
+      "id": "aperture",
+      "joint": "aperture",
+      "layer": "near",
+      "polygonPx": [
+        [
+          540.8,
+          195.2
+        ],
+        [
+          561.6,
+          181.1
+        ],
+        [
+          573.6,
+          177.8
+        ],
+        [
+          590.8,
+          179.8
+        ],
+        [
+          628.7,
+          189.7
+        ],
+        [
+          656.5,
+          211.1
+        ],
+        [
+          665.8,
+          291.9
+        ],
+        [
+          709.5,
+          360.9
+        ],
+        [
+          764.8,
+          353.3
+        ],
+        [
+          792.5,
+          339
+        ],
+        [
+          798.6,
+          343.3
+        ],
+        [
+          774.8,
+          362.4
+        ],
+        [
+          750.2,
+          380.7
+        ],
+        [
+          728.7,
+          401.1
+        ],
+        [
+          692.2,
+          424.3
+        ],
+        [
+          656.9,
+          439.8
+        ],
+        [
+          627.8,
+          437.4
+        ],
+        [
+          608.8,
+          410.3
+        ],
+        [
+          588.3,
+          398.3
+        ],
+        [
+          572.2,
+          364.7
+        ],
+        [
+          565,
+          329.7
+        ],
+        [
+          554,
+          311.4
+        ],
+        [
+          547.8,
+          255.1
+        ]
+      ]
+    },
+    {
+      "id": "crown",
+      "joint": "crown",
+      "layer": "near",
+      "polygonPx": [
+        [
+          508.3,
+          39.8
+        ],
+        [
+          833.1,
+          240.7
+        ],
+        [
+          853,
+          323.7
+        ],
+        [
+          856,
+          378.5
+        ],
+        [
+          800.6,
+          444.2
+        ],
+        [
+          751.6,
+          465
+        ],
+        [
+          694.6,
+          501.2
+        ],
+        [
+          640,
+          515.3
+        ],
+        [
+          584,
+          513
+        ],
+        [
+          527.7,
+          488.7
+        ],
+        [
+          488.7,
+          436.3
+        ],
+        [
+          493.4,
+          336.3
+        ]
+      ]
+    },
+    {
+      "id": "base",
+      "joint": "base",
+      "layer": "near",
+      "polygonPx": [
+        [
+          415.1,
+          982.6
+        ],
+        [
+          488.7,
+          995.4
+        ],
+        [
+          569.4,
+          997.7
+        ],
+        [
+          645.9,
+          995.3
+        ],
+        [
+          703.1,
+          991.4
+        ],
+        [
+          763.9,
+          962.1
+        ],
+        [
+          826.1,
+          974.9
+        ],
+        [
+          838.7,
+          1138.9
+        ],
+        [
+          421.7,
+          1072.8
+        ],
+        [
+          393.1,
+          1003.9
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "body",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from codex-ref-05-sponge-material. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic"
+  }
+}

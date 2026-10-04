@@ -1,0 +1,10 @@
+{
+ "id": "g2c92-16-vole",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)",
+  "missing-anatomy: part tail2 (tail2) covers 21% paint (reference 63%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,140 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c202creaturesupply-10-river-otter",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "cee94186d04bb44308cfb1f96fe3533e3596c440ef9cbe384db4eb3c626c7cbe",
+ "subjectSourceSha256": "6415dc165174e5e7823c5e25c4415b5a6a489c600f9b55e862f52e5b58f26a66",
+ "identity": {
+  "name": "River Otter",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"River Otter\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3920864942\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 3920864942,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "cougar",
+  "authoringSha256": "2762791a739706d8116e5af5f1eae9d6c343baf466818d2eb56467d736c7651b",
+  "masterSha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635"
+ },
+ "habitat": {
+  "profileId": "aquatic-pawed-mammal",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "9b8e1bd74f93b745a58339250e98399de256e5ed0328aba786c97644ec2490d7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group aquatic-pawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0991,
+     "class": "top",
+     "attach": {
+      "x": 322.3,
+      "y": 158.3,
+      "relX": 0.94,
+      "relY": 0.12
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1368,
+     "class": "limb-down",
+     "attach": {
+      "x": 149.5,
+      "y": 210.5,
+      "relX": 0,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0306,
+     "class": "limb-down",
+     "attach": {
+      "x": 310.7,
+      "y": 234.7,
+      "relX": 0.88,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.045,
+     "class": "limb-down",
+     "attach": {
+      "x": 175.5,
+      "y": 234,
+      "relX": 0.14,
+      "relY": 1
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0356,
+     "class": "limb-down",
+     "attach": {
+      "x": 210,
+      "y": 234,
+      "relX": 0.33,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0427,
+     "class": "limb-down",
+     "attach": {
+      "x": 281,
+      "y": 235,
+      "relX": 0.72,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "cougar",
+   "byClass": {
+    "top": 2,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "foreNear+foreFar"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

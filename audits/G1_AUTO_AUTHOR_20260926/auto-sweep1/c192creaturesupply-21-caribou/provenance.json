@@ -1,0 +1,124 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c192creaturesupply-21-caribou",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "0734724070440ff3873b12b46ba3fabd12f60cabeb143c2d75d925f91da63ac8",
+ "subjectSourceSha256": "288038c032007bdbb74de5fdd76cd928ede640bb5162acf1d8ee44e8d294b9fe",
+ "identity": {
+  "name": "Caribou",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Caribou\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"630921880\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 630921880,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c204-qualified-short-tail-reindeer",
+  "authoringSha256": "63b3097ab0ea1776156afc64073e064d04a96cace379ae01a08634749243a399",
+  "masterSha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2207,
+     "class": "top",
+     "attach": {
+      "x": 285.7,
+      "y": 183.8,
+      "relX": 0.95,
+      "relY": 0.15
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0081,
+     "class": "top",
+     "attach": {
+      "x": 228,
+      "y": 172,
+      "relX": 0.63,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0129,
+     "class": "top",
+     "attach": {
+      "x": 112,
+      "y": 205,
+      "relX": -0.01,
+      "relY": 0.44
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1218,
+     "class": "limb-down",
+     "attach": {
+      "x": 131.3,
+      "y": 241.2,
+      "relX": 0.1,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0103,
+     "class": "limb-down",
+     "attach": {
+      "x": 269,
+      "y": 239,
+      "relX": 0.86,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0994,
+     "class": "limb-down",
+     "attach": {
+      "x": 229,
+      "y": 246,
+      "relX": 0.64,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 3,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "c204-qualified-short-tail-reindeer",
+   "byClass": {
+    "top": 3,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

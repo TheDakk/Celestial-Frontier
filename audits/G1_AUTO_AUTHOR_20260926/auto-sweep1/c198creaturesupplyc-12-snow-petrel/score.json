@@ -1,0 +1,10 @@
+{
+ "id": "c198creaturesupplyc-12-snow-petrel",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-foot (legFarFoot) covers 15% paint (reference 53%)",
+  "missing-anatomy: part far-shin (legFarAnkle) covers 7% paint (reference 35%)"
+ ],
+ "semanticPresence": null
+}

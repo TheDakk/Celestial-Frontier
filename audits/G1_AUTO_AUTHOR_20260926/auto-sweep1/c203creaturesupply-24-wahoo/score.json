@@ -1,0 +1,24 @@
+{
+ "id": "c203creaturesupply-24-wahoo",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Family admission: proportion bound: caudal/body\n    at need (file://~/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/family-record.mjs:10:39)\n    at checkF",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "extra-anatomy (unassigned): a front appendage of 8.2% paint that no reference appendage lands on"
+   ]
+  }
+ ]
+}

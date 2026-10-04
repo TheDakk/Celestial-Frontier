@@ -1,0 +1,11 @@
+{
+ "id": "c198creaturesupplyb-24-dobsonfly",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)",
+  "missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 31%)",
+  "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+ ],
+ "semanticPresence": null
+}

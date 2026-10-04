@@ -1,0 +1,65 @@
+{
+  "name": "Box Turtle",
+  "family": "quadruped",
+  "species": {
+    "name": "Box Turtle",
+    "aspect": 1.6,
+    "headFrac": 0.2,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "high domed shell",
+      "hinged underside that shuts like a box",
+      "scaly clawed elephantine feet"
+    ]
+  },
+  "genome": {
+    "seed": 2769615324,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 8,
+    "body": 4,
+    "loco": 7,
+    "trait": 19,
+    "size": 5,
+    "diet": 1,
+    "head": 0,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 0,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 8,
+    "detail": 6,
+    "accent": 9,
+    "temper": 5,
+    "sense": 4,
+    "repro": 4,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Box Turtle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Box Turtle\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2769615324\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 133,
+  "profile": {
+    "id": "tortoise",
+    "names": [
+      "Tortoise",
+      "Box Turtle"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": "Shell and retracted limbs need actual observed topology."
+  }
+}

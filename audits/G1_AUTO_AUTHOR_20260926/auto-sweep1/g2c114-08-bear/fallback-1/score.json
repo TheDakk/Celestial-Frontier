@@ -1,0 +1,9 @@
+{
+ "id": "g2c114-08-bear",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 7% paint (reference 24%)"
+ ],
+ "semanticPresence": null
+}

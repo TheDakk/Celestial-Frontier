@@ -1,0 +1,11 @@
+{
+ "id": "g2c81-13-avocet",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-thigh (legNearKnee) covers 0% paint (reference 67%)",
+  "missing-anatomy: part far-thigh (legFarKnee) covers 23% paint (reference 72%)",
+  "missing-anatomy: part tail (tailFan) covers 14% paint (reference 89%)"
+ ],
+ "semanticPresence": null
+}

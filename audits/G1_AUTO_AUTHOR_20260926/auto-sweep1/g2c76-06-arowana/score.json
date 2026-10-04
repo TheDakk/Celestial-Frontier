@@ -1,0 +1,9 @@
+{
+ "id": "g2c76-06-arowana",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a front appendage of 7.0% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

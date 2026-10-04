@@ -1,0 +1,160 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c203creaturesupply-22-catfish",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "fae1988c5e7109e8675b57957b67dff556402cf91fb1624254dd93fc3532aa3d",
+ "subjectSourceSha256": "a8c31bfaca0c6a439378f8ffc5aff13d7b327181ac346fee116028ce5637a5d0",
+ "identity": {
+  "name": "Catfish",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Catfish\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1863026488\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "seed": 1863026488,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "sturgeon",
+  "authoringSha256": "9492131d67b710cca0ab4a83afcc97fae1795f31b310972b56cc5bb60e1d2d57",
+  "masterSha256": "cd1a2cd6aecb629019d576abe64b50f549f95a4efa2cb8c58744aa5b0a9601f2"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0534,
+     "class": "top",
+     "attach": {
+      "x": 243.6,
+      "y": 165.1,
+      "relX": 0.57,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2062,
+     "class": "rear",
+     "attach": {
+      "x": 127,
+      "y": 198,
+      "relX": 0,
+      "relY": 0.44
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0051,
+     "class": "top",
+     "attach": {
+      "x": 138.2,
+      "y": 176.7,
+      "relX": 0.05,
+      "relY": 0.15
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0578,
+     "class": "front",
+     "attach": {
+      "x": 333,
+      "y": 206.5,
+      "relX": 1,
+      "relY": 0.55
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0085,
+     "class": "rear",
+     "attach": {
+      "x": 127,
+      "y": 226,
+      "relX": 0,
+      "relY": 0.82
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0054,
+     "class": "limb-down",
+     "attach": {
+      "x": 331,
+      "y": 230,
+      "relX": 1,
+      "relY": 0.88
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0273,
+     "class": "limb-down",
+     "attach": {
+      "x": 206.2,
+      "y": 237.8,
+      "relX": 0.38,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0054,
+     "class": "front",
+     "attach": {
+      "x": 248.5,
+      "y": 238,
+      "relX": 0.59,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 8,
+     "frac": 0.015,
+     "class": "limb-down",
+     "attach": {
+      "x": 150,
+      "y": 240,
+      "relX": 0.11,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 2,
+    "front": 2,
+    "limb-down": 3
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "sturgeon",
+   "byClass": {
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

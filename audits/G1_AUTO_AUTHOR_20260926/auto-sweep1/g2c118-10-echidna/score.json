@@ -1,0 +1,11 @@
+{
+ "id": "g2c118-10-echidna",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface",
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 7% paint (reference 38%)",
+  "missing-anatomy: part tail2 (tail2) covers 15% paint (reference 63%)"
+ ],
+ "semanticPresence": null
+}

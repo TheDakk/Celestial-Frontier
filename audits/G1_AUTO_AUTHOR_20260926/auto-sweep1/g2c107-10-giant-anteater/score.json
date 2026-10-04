@@ -1,0 +1,9 @@
+{
+ "id": "g2c107-10-giant-anteater",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface"
+ ],
+ "semanticPresence": null
+}

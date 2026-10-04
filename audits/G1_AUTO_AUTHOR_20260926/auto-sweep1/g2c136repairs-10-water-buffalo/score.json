@@ -1,0 +1,9 @@
+{
+ "id": "g2c136repairs-10-water-buffalo",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 84%)"
+ ],
+ "semanticPresence": null
+}

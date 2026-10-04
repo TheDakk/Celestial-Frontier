@@ -1,0 +1,9 @@
+{
+ "id": "g2throughputc56-16-pigeon",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 2.3%)"
+ ],
+ "semanticPresence": null
+}

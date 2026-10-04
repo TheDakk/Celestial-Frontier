@@ -1,0 +1,126 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c198creaturesupplyc-14-bowfin",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "a67c727c1f09ef24ab3495aadf8ab77e7b683c69f16fd3ae625cfdcd4296059c",
+ "subjectSourceSha256": "507118d0809dd1e9b957f334810747a89409292d61cbac0a4ef55a18df165374",
+ "identity": {
+  "name": "Bowfin",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Bowfin\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"3669033946\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "seed": 3669033946,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "bass",
+  "authoringSha256": "dd60d0253965cb37a46ac5434693058f8bac78d815fba2505ea0ffe7c7f0721f",
+  "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0185,
+     "class": "rear",
+     "attach": {
+      "x": 120,
+      "y": 167,
+      "relX": 0,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1756,
+     "class": "rear",
+     "attach": {
+      "x": 120,
+      "y": 203,
+      "relX": 0,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0624,
+     "class": "front",
+     "attach": {
+      "x": 349.7,
+      "y": 202.7,
+      "relX": 0.84,
+      "relY": 0.58
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0266,
+     "class": "rear",
+     "attach": {
+      "x": 144.8,
+      "y": 242.2,
+      "relX": 0.09,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0146,
+     "class": "limb-down",
+     "attach": {
+      "x": 302.5,
+      "y": 238,
+      "relX": 0.67,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0225,
+     "class": "rear",
+     "attach": {
+      "x": 246.5,
+      "y": 240,
+      "relX": 0.46,
+      "relY": 0.96
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 4,
+    "front": 1,
+    "limb-down": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "bass",
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

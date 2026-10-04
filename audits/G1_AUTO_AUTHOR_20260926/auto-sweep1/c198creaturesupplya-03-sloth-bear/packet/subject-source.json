@@ -1,0 +1,74 @@
+{
+  "name": "Sloth Bear",
+  "family": "quadruped",
+  "species": {
+    "name": "Sloth Bear",
+    "aspect": 1.6,
+    "headFrac": 0.28,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "shaggy unkempt black coat with a shoulder mane",
+      "pale U or Y-shaped chest blaze",
+      "long pale mobile snout with huge curved claws"
+    ],
+    "note": "the muzzle is long, grey and flexible with protrusible lips - unlike any other bear's short face"
+  },
+  "genome": {
+    "seed": 2147936159,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 14,
+    "body": 6,
+    "loco": 12,
+    "trait": 19,
+    "size": 3,
+    "diet": 3,
+    "head": 8,
+    "limbs": 1,
+    "skin": 4,
+    "tail": 5,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 6,
+    "habitat": 13,
+    "detail": 9,
+    "accent": 2,
+    "temper": 1,
+    "sense": 4,
+    "repro": 7,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sloth Bear"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sloth Bear\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2147936159\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 49,
+  "profile": {
+    "id": "bear",
+    "names": [
+      "Sloth Bear",
+      "Spectacled Bear",
+      "Panda",
+      "Black Bear",
+      "Brown Bear",
+      "Polar Bear",
+      "Bear",
+      "Sun Bear",
+      "Grizzly Bear"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

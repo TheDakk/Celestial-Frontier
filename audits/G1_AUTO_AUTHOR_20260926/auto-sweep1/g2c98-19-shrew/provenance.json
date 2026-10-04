@@ -1,0 +1,126 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c98-19-shrew",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "61834feb7a501d2783e96c639fe48c1d018577de21b425c89e0ae66cc85446be",
+ "subjectSourceSha256": "13fca383e33b9cb577a19e66734916b734d204edac55485f15714d7ebd1f29b2",
+ "identity": {
+  "name": "Shrew",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Shrew\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"2241557994\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "seed": 2241557994,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "738d991892404fbab5da926013e6864a2a9ee687d91d59a50cd40c003bcd260b",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0234,
+     "class": "top",
+     "attach": {
+      "x": 267,
+      "y": 170,
+      "relX": 0.84,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0052,
+     "class": "top",
+     "attach": {
+      "x": 199,
+      "y": 161,
+      "relX": 0.42,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0797,
+     "class": "front",
+     "attach": {
+      "x": 293,
+      "y": 194.5,
+      "relX": 1.01,
+      "relY": 0.43
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0584,
+     "class": "limb-down",
+     "attach": {
+      "x": 133.8,
+      "y": 218.2,
+      "relX": 0.01,
+      "relY": 0.75
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0282,
+     "class": "limb-down",
+     "attach": {
+      "x": 167.5,
+      "y": 236,
+      "relX": 0.22,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0502,
+     "class": "limb-down",
+     "attach": {
+      "x": 233,
+      "y": 238,
+      "relX": 0.63,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

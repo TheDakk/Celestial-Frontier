@@ -1,0 +1,34 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c198creaturesupplyb-01-gorilla",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "96d8bfdda5432d26eb1c0f968bc16f5714bfb2eb693bd999848eb5c048c125a8",
+ "subjectSourceSha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048",
+ "identity": {
+  "name": "Gorilla",
+  "family": "primate",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Gorilla\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3633000217\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 3633000217,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": null,
+ "habitat": {
+  "profileId": "primate",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "d77f7bd5e1f75556cf1b6bc0349a2762d94011e87ddf7513239b65619b9fe881",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group primate (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

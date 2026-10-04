@@ -1,0 +1,9 @@
+{
+ "id": "c213creaturesupply-17-dromedary-camel",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+ ],
+ "semanticPresence": null
+}

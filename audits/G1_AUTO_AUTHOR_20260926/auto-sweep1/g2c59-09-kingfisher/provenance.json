@@ -1,0 +1,129 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c59-09-kingfisher",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "5950108568f92d885dc1cac633d9e01c15120d76ebc955e91ae5ef9ed88b217c",
+ "subjectSourceSha256": "7569d03a0578c58c7686ee85b4941a0a5b588818bd34d0edf0a3b67b2e3c7700",
+ "identity": {
+  "name": "Kingfisher",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Kingfisher\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2344934961\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "seed": 2344934961,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "01-robin",
+  "authoringSha256": "2ec6f99c17cd3d2a25e3b5f02e39207c40a412ed64a67d148deb7d9d8245f16f",
+  "masterSha256": "e23c895629f36cd69be0861a16c0bf27516f85bb1ad385f00016ea2bf7d8a080"
+ },
+ "habitat": {
+  "profileId": "bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "080136b779f700a6c6860d1d4eb9593834bb0258212903c6b3656f9a8aca3675",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0097,
+     "class": "top",
+     "attach": {
+      "x": 241.5,
+      "y": 77,
+      "relX": 0.57,
+      "relY": 0
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0747,
+     "class": "front",
+     "attach": {
+      "x": 294.9,
+      "y": 114.8,
+      "relX": 0.71,
+      "relY": 0.17
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0067,
+     "class": "front",
+     "attach": {
+      "x": 279,
+      "y": 189,
+      "relX": 0.67,
+      "relY": 0.5
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.058,
+     "class": "rear",
+     "attach": {
+      "x": 86.5,
+      "y": 272.2,
+      "relX": 0.18,
+      "relY": 0.88
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0257,
+     "class": "limb-down",
+     "attach": {
+      "x": 222,
+      "y": 294,
+      "relX": 0.53,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0247,
+     "class": "limb-down",
+     "attach": {
+      "x": 154,
+      "y": 297,
+      "relX": 0.35,
+      "relY": 0.99
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "01-robin",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

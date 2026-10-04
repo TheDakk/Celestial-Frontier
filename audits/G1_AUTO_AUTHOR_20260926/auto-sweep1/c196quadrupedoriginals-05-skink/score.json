@@ -1,0 +1,10 @@
+{
+ "id": "c196quadrupedoriginals-05-skink",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)"
+ ],
+ "semanticPresence": null
+}

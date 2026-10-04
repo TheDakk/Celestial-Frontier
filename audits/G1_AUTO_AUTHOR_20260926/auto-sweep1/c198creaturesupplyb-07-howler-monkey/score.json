@@ -1,0 +1,10 @@
+{
+ "id": "c198creaturesupplyb-07-howler-monkey",
+ "family": "primate",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: quadruped matches clearly better (0.0122 < 0.0205)",
+  "extra-anatomy (unassigned): a rear appendage of 15.4% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

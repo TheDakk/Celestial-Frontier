@@ -1,0 +1,9 @@
+{
+ "id": "c198creaturesupplyc-01-crane",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 9.6% of the paint lies away from the body and in no part (reference 2.4%)"
+ ],
+ "semanticPresence": null
+}

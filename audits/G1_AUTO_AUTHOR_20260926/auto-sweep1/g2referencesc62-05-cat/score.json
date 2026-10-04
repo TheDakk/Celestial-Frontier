@@ -1,0 +1,10 @@
+{
+ "id": "g2referencesc62-05-cat",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

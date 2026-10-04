@@ -1,0 +1,10 @@
+{
+ "id": "g2c136targetededits-21-bee",
+ "family": "insect",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

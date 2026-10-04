@@ -1,0 +1,10 @@
+{
+ "id": "c198creaturesupplya-15-hedgehog",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%)",
+  "unexplained-anatomy: 10.6% of the paint lies away from the body and in no part (reference 5.7%)"
+ ],
+ "semanticPresence": null
+}

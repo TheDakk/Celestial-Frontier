@@ -2818,5 +2818,333 @@
   "note": "HELD (C287 successor): bill floats free of the head in victory",
   "batch": "audits/C208_REPAIRS_20261004",
   "tag": "c287"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c132references-04-cat",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snow Petrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c173holdsourcerepaints-snow-petrel",
+  "note": "HELD (HOLD): dark tear lines on the wing",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Red Fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c198creaturesupplya-01-red-fox",
+  "note": "HELD (HOLD): original C198 fit: head folds over the nape in the faint",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Bear",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c198creaturesupplya-05-bear",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Albatross",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c198creaturesupplyc-11-albatross",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Impala",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-06-impala",
+  "note": "HELD (RED): a horn piece floats free above both fighters (detached horn island)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "River Otter",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-10-river-otter",
+  "note": "HELD (HOLD): see-through slivers at the attacker mouth and across the chest in the strike",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wolverine",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-12-wolverine",
+  "note": "HELD (HOLD): fur shred tears off the throat during the rear",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Fishing Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-15-fishing-cat",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Spotted Hyena",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-16-spotted-hyena",
+  "note": "HELD (HOLD): defender back splits into a step/notch at the shoulder hump in the faint",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c202creaturesupply-22-cat",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Pig",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupply-07-wild-pig",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupply-10-cow",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Cardinal",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupply-17-cardinal",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Sparrow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupply-18-sparrow",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Pigeon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupply-19-pigeon",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Toucan",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-11-toucan",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Duck",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-14-duck",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Stork",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-16-stork",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "fish",
+  "name": "Arapaima",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-17-arapaima-framing02",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "fish",
+  "name": "Angelfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-20-angelfish",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "fish",
+  "name": "Swordfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-23-swordfish-framing02",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "fish",
+  "name": "Swordfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/c203creaturesupplyb-23-swordfish",
+  "note": "HELD (RED): bill detaches and floats, fin chunks loose",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snow Petrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c101-20-snow-petrel",
+  "note": "HELD (HOLD): white flag sliver on the defender back, wing tear line",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Lemming",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c106-24-lemming",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Caribou",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c110-17-caribou",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Tahr",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c114-17-tahr",
+  "note": "HELD (ACCEPT-PENDING-FINISH): whole",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Loon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c114-22-loon",
+  "note": "HELD (HOLD): tail end becomes a hooked dark strand in victory",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sea Otter",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c118-04-sea-otter",
+  "note": "HELD (HOLD): see-through slit at the open mouth and across the chest in the strike (otter mouth class)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Colugo",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c118-09-colugo",
+  "note": "HELD (HOLD): see-through slit across eye/mouth in the strike, chest sliver (mouth class)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Caribou",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c136repairs-12-caribou",
+  "note": "HELD (HOLD): small see-through dots on both flanks (g2c110 packet accepted instead)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "insect",
+  "name": "Bee",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c136targetededits-21-bee",
+  "note": "HELD (RED): abdomen stretches into a ribbon in victory, a wing tears down to the ground",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Elk",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c59-01-elk",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Egret",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c72-12-egret",
+  "note": "HELD (RED): body splits at the base of the neck in victory, white slivers float",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Falcon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c76-11-falcon",
+  "note": "HELD (RED): victory stretches neck and wing into a ribbon (bird victory class)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Prairie Dog",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c83-23-prairie-dog",
+  "note": "whole in reaction, victory/faint and late idle (sweep1)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "River Otter",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c90-24-river-otter",
+  "note": "HELD (HOLD): same open-mouth slit and chest sliver",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Nilgai",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c95-17-nilgai",
+  "note": "HELD (HOLD): defender back shows a step at the shoulder in the faint (hyena class)",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Petrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c98-17-petrel",
+  "note": "HELD (HOLD): thin dark strand hangs from the tail tip in victory",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Pig",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c98-21-pig",
+  "note": "HELD (HOLD): loose sliver above the ear and an ear flap in the strike",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2referencesc62-05-cat",
+  "note": "HELD (duplicate of the C274/C275 review): same packet as the morning review",
+  "batch": "audits/SWEEP1_20261004",
+  "tag": "sweep1"
  }
 ]

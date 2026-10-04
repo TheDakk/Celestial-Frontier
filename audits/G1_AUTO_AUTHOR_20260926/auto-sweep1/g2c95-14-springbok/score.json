@@ -1,0 +1,10 @@
+{
+ "id": "g2c95-14-springbok",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)",
+  "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 6%)"
+ ],
+ "semanticPresence": null
+}

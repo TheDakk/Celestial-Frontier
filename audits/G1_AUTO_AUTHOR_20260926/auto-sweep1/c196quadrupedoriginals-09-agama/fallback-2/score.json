@@ -1,0 +1,9 @@
+{
+ "id": "c196quadrupedoriginals-09-agama",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+ ],
+ "semanticPresence": null
+}

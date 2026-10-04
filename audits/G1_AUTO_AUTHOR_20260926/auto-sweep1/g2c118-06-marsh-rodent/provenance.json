@@ -1,0 +1,141 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "g2c118-06-marsh-rodent",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "c1e0c233125e8040851842e6ef31578d49cdab7626c62db5f58c3257e06f51da",
+ "subjectSourceSha256": "1be6ab11e387c60e2ecfc04f461699c9e521c6cb0d134defa8c7963a36e16131",
+ "identity": {
+  "name": "Marsh Rodent",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Marsh Rodent\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2150779537\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "seed": 2150779537,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "codex-ref-01-caiman-tail-contour",
+  "authoringSha256": "f206f2358d4e96a66550c87799f4889c168e2168899dab5b96f82ee622cadd50",
+  "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b"
+ },
+ "habitat": {
+  "profileId": "aquatic-pawed-mammal",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "9b8e1bd74f93b745a58339250e98399de256e5ed0328aba786c97644ec2490d7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group aquatic-pawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0086,
+     "class": "top",
+     "attach": {
+      "x": 218,
+      "y": 144,
+      "relX": 0.4,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1297,
+     "class": "front",
+     "attach": {
+      "x": 309.2,
+      "y": 169.8,
+      "relX": 0.96,
+      "relY": 0.29
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.125,
+     "class": "limb-down",
+     "attach": {
+      "x": 155.7,
+      "y": 207.3,
+      "relX": 0.02,
+      "relY": 0.72
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0461,
+     "class": "limb-down",
+     "attach": {
+      "x": 200,
+      "y": 227,
+      "relX": 0.29,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0365,
+     "class": "limb-down",
+     "attach": {
+      "x": 290.4,
+      "y": 231.9,
+      "relX": 0.84,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0215,
+     "class": "limb-down",
+     "attach": {
+      "x": 262.5,
+      "y": 232,
+      "relX": 0.67,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "codex-ref-01-caiman-tail-contour",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "id": "g2c136repairs-01-giant-salamander",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+ ],
+ "semanticPresence": null
+}
