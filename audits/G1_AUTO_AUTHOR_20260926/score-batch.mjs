@@ -36,6 +36,9 @@ if (!flags.includes('--no-native')) for (const r of passes) { const p = eligible
   /* the passing packet may be a labelled fallback candidate: native must use THAT candidate's fit (bug found on the hand-ref Beetle) */
   const win = r.fallbackFrom ? (r.candidates ?? []).find((c) => c.static === 'PASS_STATIC') : null;
   const A = win && win.rank > 0 ? path.join(HERE, `auto-${tag}`, r.id, `fallback-${win.rank}`) : path.join(HERE, `auto-${tag}`, r.id), fit = ['merge-joint', 'tail-labels'].map((d) => path.join(A, d, 'fit')).find((f) => fs.existsSync(path.join(f, 'binding.json'))) ?? path.join(A, 'fit');
+  /* resumable (2026-10-04): a film that already reached a terminal status is not re-run (sweeps outlive one background slot) */
+  let prior = null; try { prior = JSON.parse(fs.readFileSync(path.join(N, r.id, 'report.json'), 'utf8')).status; } catch {}
+  if (prior && prior !== 'RUNNING') { natives.push({ id: r.id, name, family: r.family, exit: 0, status: prior, resumed: true }); continue; }
   const nr = run(process.execPath, ['tools/battle2-proof/native-runner.mjs', fit, fit, path.join(N, r.id), script], { cwd: path.join(ROOT, 'port/v2'), env: { ...process.env, CF_CPU_THROTTLE: '4' }, timeout: 1800e3 });
   fs.writeFileSync(path.join(N, `${r.id}.log`), nr.out); let status = 'NO_REPORT'; try { status = JSON.parse(fs.readFileSync(path.join(N, r.id, 'report.json'), 'utf8')).status; } catch {}
   natives.push({ id: r.id, name, family: r.family, exit: nr.code, status }); }
@@ -49,6 +52,8 @@ if (ok.length) { run(process.execPath, [path.join(HERE, 'native-g2c54/sheet.mjs'
   run(process.execPath, [path.join(HERE, 'native-g2c54/crops.mjs'), path.join(N, 'fullsize-reaction.png'), 'turn1-hit-reaction-50.png', ...ok.map((n) => `${n.name}=${path.join(N, n.id)}`)]);
   /* keep the committed sheet small: JPEG, drop the PNG */
   run(process.execPath, ['-e', `const {createRequire}=require('module'),path=require('path');const req=createRequire(path.resolve('port/v2/package.json')),sharp=createRequire(req.resolve('free-tex-packer-core'))('sharp');sharp(${JSON.stringify(path.join(N, 'fullsize-reaction.png'))}).jpeg({quality:88}).toFile(${JSON.stringify(path.join(N, 'fullsize-reaction.jpg'))}).then(()=>require('fs').rmSync(${JSON.stringify(path.join(N, 'fullsize-reaction.png'))}))`]); }
+/* 4b. full-size review sheets (2026-10-04): <name>-frames.png + <name>-zoom.png per native pass, for Claude's review */
+if (ok.length) run(process.execPath, [path.join(HERE, 'review-sheets.mjs'), path.join(N, 'review'), ...ok.map((n) => path.join(N, n.id))]);
 /* 5. gallery registry (data only; notes stay "unreviewed" until Claude looks at full size) */
 const regFile = path.join(ROOT, 'audits/GENERATED_GALLERY_20260927/gallery-registry.json'), reg = fs.existsSync(regFile) ? JSON.parse(fs.readFileSync(regFile, 'utf8')) : [];
 for (const n of ok) if (!reg.some((e) => e.nativeDir === rel(path.join(N, n.id)))) reg.push({ family: n.family, name: n.name, nativeDir: rel(path.join(N, n.id)), note: 'unreviewed', batch: rel(batch), tag });

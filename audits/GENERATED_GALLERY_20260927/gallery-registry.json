@@ -2786,5 +2786,37 @@
   "note": "HELD (RED): victory: bill detaches and floats free of the head, pectoral chunk floats loose",
   "batch": "audits/C203_CREATURE_SUPPLY_B_20261004",
   "tag": "g2c275"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hyrax",
+  "nativeDir": "audits/C208_REPAIRS_20261004/native-16-hyrax",
+  "note": "whole after Codex C287 source joins (chest seam and chin flap closed)",
+  "batch": "audits/C208_REPAIRS_20261004",
+  "tag": "c287"
+ },
+ {
+  "family": "fish",
+  "name": "Tuna",
+  "nativeDir": "audits/C208_REPAIRS_20261004/native-21-tuna",
+  "note": "whole after Codex C287 fish-seams (flank holes closed)",
+  "batch": "audits/C208_REPAIRS_20261004",
+  "tag": "c287"
+ },
+ {
+  "family": "fish",
+  "name": "Arapaima",
+  "nativeDir": "audits/C208_REPAIRS_20261004/native-17-arapaima-framing02",
+  "note": "HELD (C287 successor): throat notch opens when the victory head lifts; nape hairline; tail-fin sliver",
+  "batch": "audits/C208_REPAIRS_20261004",
+  "tag": "c287"
+ },
+ {
+  "family": "fish",
+  "name": "Swordfish",
+  "nativeDir": "audits/C208_REPAIRS_20261004/native-23-swordfish-framing02",
+  "note": "HELD (C287 successor): bill floats free of the head in victory",
+  "batch": "audits/C208_REPAIRS_20261004",
+  "tag": "c287"
  }
 ]

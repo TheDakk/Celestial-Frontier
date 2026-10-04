@@ -1,22 +1,20 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 273,
- "pct": 43.3,
+ "covered": 275,
+ "pct": 43.6,
  "heldNotCounted": [
   "Angelfish",
   "Arapaima",
   "Cardinal",
   "Cow",
   "Duck",
-  "Hyrax",
   "Pigeon",
   "Snow Petrel",
   "Sparrow",
   "Stork",
   "Swordfish",
   "Toucan",
-  "Tuna",
   "Wild Pig"
  ],
  "unmatchedRegistryNames": [],
@@ -24,8 +22,8 @@
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 94,
-   "pct": 45.9,
+   "covered": 95,
+   "pct": 46.3,
    "names": [
     "Jaguar",
     "Leopard",
@@ -75,6 +73,7 @@
     "Gopher",
     "Hamster",
     "Gerbil",
+    "Hyrax",
     "Tree Shrew",
     "Wombat",
     "Tasmanian Devil",
@@ -126,8 +125,8 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 84,
-   "pct": 63.6,
+   "covered": 85,
+   "pct": 64.4,
    "names": [
     "Salmon",
     "Trout",
@@ -184,6 +183,7 @@
     "Boxfish",
     "Rabbitfish",
     "Sea Bass",
+    "Tuna",
     "Haddock",
     "Pollock",
     "Sailfish",

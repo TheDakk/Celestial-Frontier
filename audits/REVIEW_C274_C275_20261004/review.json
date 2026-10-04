@@ -82,7 +82,9 @@
  "accepted": [
   "Cardinalfish",
   "Grizzly Bear",
-  "Capybara"
+  "Capybara",
+  "Hyrax",
+  "Tuna"
  ],
  "aiFinish": {
   "dir": "audits/AI_FINISH_C274_20261004",
@@ -105,5 +107,11 @@
    "Brown Bear": "tail3 0% (ref 38%)"
   },
   "conclusion": "a short tail paints no third tail segment; the missing-anatomy rule needs an explicit absent-segment allowance (author policy, Codex), not another reference"
+ },
+ "c287Successors": {
+  "Hyrax": "ACCEPT - chest seam reduced to a 1-2 px tick, chin flap gone",
+  "Tuna": "ACCEPT - whole in reaction, victory and late idle; flank holes gone",
+  "Arapaima": "HOLD - pectoral strand gone; see-through throat notch in victory, nape hairline, tail-fin sliver",
+  "Swordfish": "HOLD - bill floats free of the head in victory"
  }
 }
