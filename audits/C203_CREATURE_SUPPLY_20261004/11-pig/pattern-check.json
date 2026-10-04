@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pig",
+  "masterSha256": "f3d06aad2a2ca4dcec007cb194babdb5bff93ff68da9fe379e6b7da7b46d175d",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

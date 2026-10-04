@@ -1,0 +1,28 @@
+{
+  "name": "Kookaburra",
+  "masterSha256": "93e2814091921d393c99f7355f517880745ac9f7df2e0dba4c222de1fc6d3401",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: large dagger bill, pale head with a clear dark brown eye stripe, brown/blue-marked near wing and attached barred tail. Two distinct short legs and complete visible foot silhouettes. Far wing/root hidden; exact syndactyl toe attachments cannot all be resolved from this view. No full unseen anatomy claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 216,
+      "y0": 301,
+      "x1": 1035,
+      "y1": 917
+    },
+    "margins": {
+      "left": 216,
+      "right": 218,
+      "top": 301,
+      "bottom": 336
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

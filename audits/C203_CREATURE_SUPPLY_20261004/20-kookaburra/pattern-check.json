@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Kookaburra",
+  "masterSha256": "93e2814091921d393c99f7355f517880745ac9f7df2e0dba4c222de1fc6d3401",
+  "required": [
+    "dark brown eye stripe on a whitish head"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "dark brown eye stripe on a whitish head",
+      "status": "PRESENT",
+      "observed": "Full-size original reviewed: large dagger bill, pale head with a clear dark brown eye stripe, brown/blue-marked near wing and attached barred tail. Two distinct short legs and complete visible foot silhouettes. Far wing/root hidden; exact syndactyl toe attachments cannot all be resolved from this view. No full unseen anatomy claim."
+    }
+  ]
+}

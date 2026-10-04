@@ -1,0 +1,49 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Kookaburra",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "851a9d5d0d4ded600cf3720c413af25c098765abc46e72c1cee5c343da2a9e9c",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "bird",
+  "authoringCreated": false,
+  "sourceHead": "e2e9bb10cd8484ab99440e7bbb059af5220f1158",
+  "basePromptSha256": "7ab0bb25dac528cdf28b9a9cb3829855acdd0a748174c13e50e8994e5da1546d",
+  "batchCompilerSha256": "80d7bc1346ebb2d87fc3794b1a915dff81261a6b7ddd649f286b90b5142eb9f4",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Source visibility correction: two real legs separately readable from feather-body emergence through ankles and complete toes. Quiet planted side view with both feet at one level, no branch or perch. Preserve natural folded wing attachment, complete tail fan and canonical markings. No floating crown/beak feather islands. Both actual wings only where visible; never invent hidden far anatomy. Keep the full bird small within the central half of the canvas.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_C83_20260927/pilot.json",
+        "id": "15-kookaburra",
+        "master": "audits/G2_C83_20260927/15-kookaburra/master.png",
+        "packet": "audits/G2_C83_20260927/15-kookaburra"
+      },
+      {
+        "pilot": "audits/G2_C83_20260927/pilot-original.json",
+        "id": "15-kookaburra",
+        "master": "audits/G2_C83_20260927/15-kookaburra/master.png",
+        "packet": "audits/G2_C83_20260927/15-kookaburra"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_C83_20260927/pilot.json",
+    "audits/G2_C83_20260927/pilot-original.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Source visibility correction: two real legs separately readable from feather-body emergence through ankles and complete toes. Quiet planted side view with both feet at one level, no branch or perch. Preserve natural folded wing attachment, complete tail fan and canonical markings. No floating crown/beak feather islands. Both actual wings only where visible; never invent hidden far anatomy. Keep the full bird small within the central half of the canvas.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

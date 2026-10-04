@@ -1,0 +1,14 @@
+{
+  "id": "10-cow",
+  "name": "Cow",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-b8a5a661-7afd-4b5f-9057-bffb57957882.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "94e4f1fcd8c3da4d22a6d825526760d3ed6dfa73d31d3a50bbe13065c9349011",
+  "bytes": 1314204,
+  "promptSha256": "7893932ee92a3ecaf218b55c75c04b0a13625ad0305f62652d6c94f6aa5efaa3",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

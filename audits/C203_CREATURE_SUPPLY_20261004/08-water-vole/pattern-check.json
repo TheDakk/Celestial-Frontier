@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Water Vole",
+  "masterSha256": "a39e6f49d0f702b79c0cb9392be606260092ad910d37969a66411354a20cab3c",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

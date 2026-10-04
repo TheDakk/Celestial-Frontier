@@ -1,0 +1,469 @@
+{
+  "schema": "cf.g2-source-pipeline-proof/v1",
+  "scope": "24 unchanged canonical compiler routes with disclosed source-visibility/composition additions. Native generator bytes retained. No authoring, native, reference-pool, runtime or gallery admission.",
+  "sourceCompiler": {
+    "path": "port/v2/tools/painted-creature/compile-library-master.mjs",
+    "sha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3"
+  },
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "batchCompilerSha256": "80d7bc1346ebb2d87fc3794b1a915dff81261a6b7ddd649f286b90b5142eb9f4",
+  "coveredAtSelection": 270,
+  "entries": [
+    {
+      "name": "Water Buffalo",
+      "id": "01-water-buffalo",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "e39660e6051b2c4f6e80ba1cc775d7bc9c2f894a5436db699182864a53407987",
+      "finalPromptSha256": "d338fed90f70f2c5c6526cc7153d82984ec626933f89f2cb05759e9a33c3a4e1",
+      "masterSha256": "7700e76ce80161e6e12b1ab9b00c5b9ac6a6fe04d932d8440df5860c503ab3a9",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four distinct cloven hoof endpoints, full attached tufted tail and swept horns. Near ear clear; far ear is not independently exposed. Far foreleg upper root remains behind the chest and contact heights differ slightly. No full hidden-root claim."
+    },
+    {
+      "name": "Mountain Tapir",
+      "id": "02-mountain-tapir",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "140a24c84c33abc001d8af9b4a56a6a094bfb49054d1cb3b45a369d07be9b09e",
+      "finalPromptSha256": "24c983ad7e0687ef479abe7cd699b798688450415fafd8b3b3e3ce3937908673",
+      "masterSha256": "603d5b4f75dcbcb46bc537dc40bf54feeec723af0c34190e986414edf5467d2c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four separate distal feet, short trunk, pale lip rim, dark shaggy coat and short attached tail. Both ears are readable, though far ear partly overlapped. Far upper forelimb emerges from behind chest; toe inventory is not fully visible. No full hidden-root claim."
+    },
+    {
+      "name": "Black Bear",
+      "id": "03-black-bear",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "9f08400fa8eb20d8e861600630d9b9bc6f41c515ace1d59060ace58a93cbb082",
+      "finalPromptSha256": "222b4a60d7b4fd1aac1f2aae3d0e8c9b707027d3c9abf0eef2ab85661788ab09",
+      "masterSha256": "e9681ad382082d2c9402e97a51ae4549b40ffea3ad25616d9c0bcca1ccd3bfb7",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four distinct planted paws and claw groups, rounded ears, short attached tail and black coat with tan muzzle. Far upper roots are partially hidden by torso/fur; projected contacts differ slightly. Small pale belly fringe remains attached in this rest source; lowered-head motion is unmeasured."
+    },
+    {
+      "name": "Elk",
+      "id": "04-elk",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "d70210a885b19d41bb7d96f7035d2170012e1965b6a63d1801205dc163c01668",
+      "finalPromptSha256": "0d34a9ec14f87d7d5a9536571a0ecb21d0e4a9d4efe30fc9b7de49376ccff9f3",
+      "masterSha256": "81c93eb6f92bd29bb7df5dd5bfc2f494a33dd420841bb55889c312ff5667b45e",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four cloven feet, short rump tail and complete branching antlers. Near ear clear; far ear/root partly occluded by antlers/head. Far forelimb emerges beneath chest rather than exposing an entire proximal joint. Head is shallow three-quarter while torso is side-on."
+    },
+    {
+      "name": "Moose",
+      "id": "05-moose",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "c0c64eba536bb3193f325e23906682d9556decb4c93f5be628bf3f0dcd022121",
+      "finalPromptSha256": "2dfd713aa15dcfc5e01589af103b7fbc824d6ecb0875e936ea0f595ea46acb05",
+      "masterSha256": "91c68ad20ed635cf49b24a4724dd4ca6c4446d348b4a95b80b253054f7eb589c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four separate cloven feet, palmated antlers, long muzzle/dewlap and short attached tail. Near ear clear, far ear partly blocked by the antler/head junction. Far foreleg root overlaps the chest; full joint exposure is not claimed."
+    },
+    {
+      "name": "Hippopotamus",
+      "id": "06-hippopotamus",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "43f942faaa5972d8c3ddeae1b0b8b176ddbb2ef8eb0e8d2405c1ae4f564032e5",
+      "finalPromptSha256": "a3331dbdf36eb5c625415fa4d1e42e628270883c1840bc4a845a6e43be192225",
+      "masterSha256": "d55a35d455b0cb350e28089b8a2441196db769d627cc711470f1d3bdee391d3b",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four complete short feet with separate visible toe groups, small ears and short attached tail. Far foreleg emerges behind the near foreleg/shoulder, so its full upper root is not exposed. Wet skin is unusually glossy and needs style scoring; feet are almost level."
+    },
+    {
+      "name": "Wild Pig",
+      "id": "07-wild-pig",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "2043eaeb1ff757027bb86e1bcdf39f5dde2a66ed2ec89b43b3caad143621b9df",
+      "finalPromptSha256": "053f9ffebcd96514a34f427572bb1d523cde4d865f28cf881f230a9b66de11d3",
+      "masterSha256": "219352a189359ce881a03e2d7909911b69db17928de6a73ecf21273a4ef67342",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four separated cloven feet, small tusk, bristled back, two readable ears and complete attached tail. Thin fur edges at belly and tail remain source pixels, not proven motion-safe islands. Far proximal limb roots remain occluded."
+    },
+    {
+      "name": "Water Vole",
+      "id": "08-water-vole",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "76ad69979690ebabfc33b7a39cc3192cc23de1844fe57d6b40ea54a42c22fcf7",
+      "finalPromptSha256": "ff9d2e3a68e170993ace627507d5bb49c5c547e681048be9681a9b0176c864d9",
+      "masterSha256": "a39e6f49d0f702b79c0cb9392be606260092ad910d37969a66411354a20cab3c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four distinct small feet and a rounded muzzle with one clear near ear. Far ear is not independently visible; upper far roots are hidden by the thick coat. Tail is conspicuously bushy and broad rather than a clearly slender vole tail: retain an identity/source hold. Projected contacts are unequal; no hidden-root or full anatomy acceptance claim."
+    },
+    {
+      "name": "Marsh Rodent",
+      "id": "09-marsh-rodent",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "6210debdc622db15672be88d10bcc617c14d4903bae27cc7bdeb8896bf29a4f9",
+      "finalPromptSha256": "39951828f105029bd2cec351ff6c3f764804cc7ce528a8eeeb568d76dbceb954",
+      "masterSha256": "4a15820c33893693cf23d2816249646ee03b4d93a577eeafb27ee4f3662ad83c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four separate clawed feet, complete scaled tail, orange incisors and small ears. Far rear leg is strongly bent with higher projected contact; far roots partly hidden by shaggy belly. Flat broad scaling on tail needs identity review against the generic canonical marsh-rodent note; no fin or flipper invented."
+    },
+    {
+      "name": "Cow",
+      "id": "10-cow",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "58743c55c2265f23b0764c773049d2bd90c0b19a431327ca9379dc070c08eaef",
+      "finalPromptSha256": "7893932ee92a3ecaf218b55c75c04b0a13625ad0305f62652d6c94f6aa5efaa3",
+      "masterSha256": "94e4f1fcd8c3da4d22a6d825526760d3ed6dfa73d31d3a50bbe13065c9349011",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four separate cloven hoof endpoints, two real ear contours, attached tufted tail and visible udder. Brown-white patches are preserved. Far front upper limb overlaps the near shoulder/chest and projected contacts differ; udder is biological ventral paint, not an extra leg. Head is shallow three-quarter."
+    },
+    {
+      "name": "Pig",
+      "id": "11-pig",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "18b6ea0173554c389f68779c1a4739ac456d63b4ac0d2a04f643c81287d09024",
+      "finalPromptSha256": "88e06354f0c3205fb85b8413a32b2b023a46968ea1e25b5a22649fb1c8e6da50",
+      "masterSha256": "f3d06aad2a2ca4dcec007cb194babdb5bff93ff68da9fe379e6b7da7b46d175d",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four separated cloven feet, two ears, complete curled tail and visible ventral teats. Pink-tan skin and irregular dark patches are present; key conservation still requires measurement. Far foreleg root is partly behind shoulder and head is turned slightly toward viewer; no hidden joint claim."
+    },
+    {
+      "name": "Alpaca",
+      "id": "12-alpaca",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "caa8d593e10af6e9e2fc511a463123619dc87e0a7f40b35a1e470f21aabd4c51",
+      "finalPromptSha256": "52393944cf670870e608b505e96ce3b122911514054769cea33cd3cade7bb3ec",
+      "masterSha256": "d4a635b00f5211a899a951ac27910abe6909b91541c9831439aaa30c113eed82",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four separate foot endpoints, two short pointed ears, long neck and short attached woolly tail. Dense wool hides proximal limb boundaries. Feet appear hard and cloven/hoof-like rather than clearly padded camelid toes: explicit anatomy-detail hold. Crown and belly fringe remain unmeasured for posed islands."
+    },
+    {
+      "name": "Gerenuk",
+      "id": "13-gerenuk",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "90cb0ecd18fb03ceca02a83d1c53bc89b40b0fc079501b11e9519c2ce7a52022",
+      "finalPromptSha256": "42afc19155131605cddb2a053027b8b455df53bc7611524097deb5a16c364a55",
+      "masterSha256": "698cdd4bb32f9b98cfd0aa9c598b5905f23e848921862364bc9bd988276e1987",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four separate long leg chains and cloven foot tips, long slender neck, two visible ears, curved horns and attached tufted tail. Far upper foreleg remains hidden at chest and has only its exposed shaft authored by appearance; contacts are nearly level. No whole hidden-root claim."
+    },
+    {
+      "name": "Nilgai",
+      "id": "14-nilgai",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "075e868241cfd32022712e53df06c12e58eebdd286479fc57ecf1d18e688b3e2",
+      "finalPromptSha256": "f6a79ce998c98093ca42b2bcc0d71d63c70b74e78359dbe79422fe08d322905e",
+      "masterSha256": "9d96931f0af1f87d865181fd0f1a861d5470f66df3f7f6a4429a43c86931e28e",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four separate cloven hooves with white lower-leg patches, blue-gray body, two ears, throat tuft and full tail. Far foreleg upper root remains behind chest. Horns appear fairly long and narrow for the requested short conical pair, retained as a proportion review hold."
+    },
+    {
+      "name": "Tahr",
+      "id": "15-tahr",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "cd439737107e6a990212bfbd1a5fe992691a31c9e609e924f8d03145f66d0976",
+      "finalPromptSha256": "b6786f295f05c1c68d1d679cafeaf344f49ef55833841f7e76bb6e1c5aa84de3",
+      "masterSha256": "9839c4ac570575823dd0c5b7bb835917cdec4a1e23523964b282ce4fc20067d5",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four distinct cloven hoof endpoints, short attached tail and recurved horns. Long chest/belly mane hides proximal forelimb roots; near ear visible but far ear not independently exposed. Fine long fur edges remain untested for ownership islands and head-down motion."
+    },
+    {
+      "name": "Hyrax",
+      "id": "16-hyrax",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "7e27ed7b5f855b174cc9eb0912b2202dbf520c70066acbeaedf1285530f284ee",
+      "finalPromptSha256": "d9f82f0fac634d6c219ab71759769d1091886d294e8baef47ded8564dfcf9bff",
+      "masterSha256": "686068536b23cc9e7f492b68754c48f64cb5ddcb9c2a0f17bdfaec722458b5d2",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: four separate padded-looking feet, rounded ears and naturally tailless rump. Far ear is only a small crown-side sliver and upper limbs are partly hidden by the torso. Small individual toes are visible but complete biological toe inventory is not asserted; no tail was invented."
+    },
+    {
+      "name": "Cardinal",
+      "id": "17-cardinal",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "5488b647c7fc67c91ffc2ca3c8073e23962482cb59cd0b6e99e3bd11f55825e9",
+      "finalPromptSha256": "7ef733248d955ee1f14106f65ff87a679c70a98bfd790721458f6ca842ceb042",
+      "masterSha256": "ce827ea3a6e7cf2811078c0a38ac1c2a7e87e2d4cb8646f41ef02be62d984521",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: red plumage, black facial/throat mask, orange bill and attached pointed crest. Two separated leg shafts and complete feet, continuous folded near wing and long tail. Far wing/root is not independently visible in this side view; no second-wing completeness claim. Crest feathers require later ownership/motion review."
+    },
+    {
+      "name": "Sparrow",
+      "id": "18-sparrow",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "d0527b9335068dda08e1646144e80340174c9a128cd1d20374263c8eb6b7e244",
+      "finalPromptSha256": "680927694f65ad62c24480bef0dd376742ea8aa0fc0a2bf0f3e393d8f9287975",
+      "masterSha256": "97fa381cee47b59f2e3646274b31a75e55eda9502276ff91bad442d6afa35599",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: streaked brown back, gray crown, pale cheeks, black throat patch and short bill. Two distinct legs/feet, a continuous folded near wing and complete short tail are visible. Far wing/root is hidden; projected toe contacts differ slightly. No concealed wing anatomy is asserted."
+    },
+    {
+      "name": "Pigeon",
+      "id": "19-pigeon",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "92efa42ba5b619f0ae0ad7f9e124bc1ae49fe10ea005d0f5b2925589915178a6",
+      "finalPromptSha256": "c4c5613fc34d351e0090d25664a349be0a3f167ce3dceda8a7a892d1fabb4f6e",
+      "masterSha256": "7c93c25025d4f8c4e1edd4953f1a35610f1c5b3c24f9cc3af96af7dfa7ce556a",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: gray deep-chested pigeon with iridescent green/violet neck, white cere and two separate red legs/feet. Near folded wing and continuous tail visible; far wing hidden. Multiple dark bars across the near wing need species-style scoring; no hidden-root or bilateral-wing completeness claim."
+    },
+    {
+      "name": "Kookaburra",
+      "id": "20-kookaburra",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "7ab0bb25dac528cdf28b9a9cb3829855acdd0a748174c13e50e8994e5da1546d",
+      "finalPromptSha256": "851a9d5d0d4ded600cf3720c413af25c098765abc46e72c1cee5c343da2a9e9c",
+      "masterSha256": "93e2814091921d393c99f7355f517880745ac9f7df2e0dba4c222de1fc6d3401",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: large dagger bill, pale head with a clear dark brown eye stripe, brown/blue-marked near wing and attached barred tail. Two distinct short legs and complete visible foot silhouettes. Far wing/root hidden; exact syndactyl toe attachments cannot all be resolved from this view. No full unseen anatomy claim."
+    },
+    {
+      "name": "Bowfin",
+      "id": "21-bowfin",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "7f1e8e37f034589e83089323416abe8cda679241dfd69a5eaefb647686125220",
+      "finalPromptSha256": "480252f61eab935087b6d7a100a5d7b437d05b64059a46742b50caff4badab60",
+      "masterSha256": "a41ea9c48adc03495bce4801b352c11eaebee92b397f48c134f06f5bda0b44e6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: very long dorsal fin, rounded fan tail, clear dark tail-base eyespot and continuously attached visible ventral/pectoral fins. Full fish is present, but tail and snout lie close to the left/right edges: likely below the8% framing margin, to retain as a framing refusal if measured. Far paired-fin roots and the chin plate are not independently resolved."
+    },
+    {
+      "name": "Catfish",
+      "id": "22-catfish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "8731ad31286958e2bdd316a821b87ad7b589beb683d78b11f5f69bd83482ad85",
+      "finalPromptSha256": "a4b5f6f6ac27b588de2efdfa92bcea735e23d1f9e37adb721f10f501cef97963",
+      "masterSha256": "fae1988c5e7109e8675b57957b67dff556402cf91fb1624254dd93fc3532aa3d",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: broad scaleless head, long drooping barbels, main dorsal plus small adipose fin, separate visible paired/ventral fin shapes and full forked tail. Thin far barbels and far fin roots partly overlap head/body; full bilateral inventories are not claimed. Entire whisker tips remain visible, though right-side margin is close to the minimum."
+    },
+    {
+      "name": "Cardinalfish",
+      "id": "23-cardinalfish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "269fdee3b521a707191d3ae6cfbbaf11163466f8b7cd7d5eac132a621f04309b",
+      "finalPromptSha256": "05929d2c23180f97a9142be9199a3590bb4850e50ae40ec9f492b66c71b2ddd6",
+      "masterSha256": "86777bf06ea84e45e7162d54bbab8406c2c5531838a5a0b26dc0bda7c0a2f41f",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: two clearly separate dorsal fins, large mouth, oversized eye, near pectoral fin, ventral fins and full tail. Far paired-fin roots are not independently visible. Metallic/glassy highlights, very large round eye and stiff spines need style/anatomy-detail review; this is source visibility evidence only."
+    },
+    {
+      "name": "Wahoo",
+      "id": "24-wahoo",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "a48a9cd2b5280675d03159491e1bbc8bb10f16cb274f0a1d284152798fb7ec18",
+      "finalPromptSha256": "3693d85fbf0e4af1a0086be300f34cc99ed62fdcfda02bffd3e61263ee04ad7f",
+      "masterSha256": "fb1450d0a3e07370ce2723ad20534a5f236d7a4116f8786fbbd3a809893121ca",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Full-size original reviewed: elongate fish with visible blue vertical body bars, pointed jaws, two dorsal fins, dorsal/ventral finlet rows and stiff forked tail. Tail and snout approach the8% margin and must be measured. Far paired-fin roots are occluded; no bilateral fin completeness claim. All finlets are original source paint."
+    }
+  ]
+}

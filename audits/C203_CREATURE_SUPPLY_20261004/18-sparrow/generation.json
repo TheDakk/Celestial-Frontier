@@ -1,0 +1,14 @@
+{
+  "id": "18-sparrow",
+  "name": "Sparrow",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-6b91254a-bea1-4672-8ac0-2733642878f3.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "97fa381cee47b59f2e3646274b31a75e55eda9502276ff91bad442d6afa35599",
+  "bytes": 1224056,
+  "promptSha256": "680927694f65ad62c24480bef0dd376742ea8aa0fc0a2bf0f3e393d8f9287975",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

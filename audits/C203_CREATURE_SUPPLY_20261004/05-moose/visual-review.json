@@ -1,0 +1,28 @@
+{
+  "name": "Moose",
+  "masterSha256": "91c68ad20ed635cf49b24a4724dd4ca6c4446d348b4a95b80b253054f7eb589c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four separate cloven feet, palmated antlers, long muzzle/dewlap and short attached tail. Near ear clear, far ear partly blocked by the antler/head junction. Far foreleg root overlaps the chest; full joint exposure is not claimed.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 241,
+      "y0": 236,
+      "x1": 1060,
+      "y1": 982
+    },
+    "margins": {
+      "left": 241,
+      "right": 193,
+      "top": 236,
+      "bottom": 271
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

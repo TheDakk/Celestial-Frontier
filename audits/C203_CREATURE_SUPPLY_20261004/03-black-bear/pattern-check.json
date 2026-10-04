@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Black Bear",
+  "masterSha256": "e9681ad382082d2c9402e97a51ae4549b40ffea3ad25616d9c0bcca1ccd3bfb7",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

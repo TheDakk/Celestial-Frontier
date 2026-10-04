@@ -1,0 +1,28 @@
+{
+  "name": "Black Bear",
+  "masterSha256": "e9681ad382082d2c9402e97a51ae4549b40ffea3ad25616d9c0bcca1ccd3bfb7",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four distinct planted paws and claw groups, rounded ears, short attached tail and black coat with tan muzzle. Far upper roots are partially hidden by torso/fur; projected contacts differ slightly. Small pale belly fringe remains attached in this rest source; lowered-head motion is unmeasured.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 233,
+      "y0": 357,
+      "x1": 1064,
+      "y1": 888
+    },
+    "margins": {
+      "left": 233,
+      "right": 189,
+      "top": 357,
+      "bottom": 365
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

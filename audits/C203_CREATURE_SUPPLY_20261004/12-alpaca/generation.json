@@ -1,0 +1,14 @@
+{
+  "id": "12-alpaca",
+  "name": "Alpaca",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-9e0ea419-c464-41c0-b605-9b8668982b2e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d4a635b00f5211a899a951ac27910abe6909b91541c9831439aaa30c113eed82",
+  "bytes": 1409225,
+  "promptSha256": "52393944cf670870e608b505e96ce3b122911514054769cea33cd3cade7bb3ec",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

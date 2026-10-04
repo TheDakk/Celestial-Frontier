@@ -1,0 +1,28 @@
+{
+  "name": "Cardinalfish",
+  "masterSha256": "86777bf06ea84e45e7162d54bbab8406c2c5531838a5a0b26dc0bda7c0a2f41f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: two clearly separate dorsal fins, large mouth, oversized eye, near pectoral fin, ventral fins and full tail. Far paired-fin roots are not independently visible. Metallic/glassy highlights, very large round eye and stiff spines need style/anatomy-detail review; this is source visibility evidence only.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 172,
+      "y0": 320,
+      "x1": 1080,
+      "y1": 907
+    },
+    "margins": {
+      "left": 172,
+      "right": 173,
+      "top": 320,
+      "bottom": 346
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

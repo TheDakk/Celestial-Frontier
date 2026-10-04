@@ -1,0 +1,28 @@
+{
+  "name": "Mountain Tapir",
+  "masterSha256": "603d5b4f75dcbcb46bc537dc40bf54feeec723af0c34190e986414edf5467d2c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four separate distal feet, short trunk, pale lip rim, dark shaggy coat and short attached tail. Both ears are readable, though far ear partly overlapped. Far upper forelimb emerges from behind chest; toe inventory is not fully visible. No full hidden-root claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 235,
+      "y0": 354,
+      "x1": 1053,
+      "y1": 903
+    },
+    "margins": {
+      "left": 235,
+      "right": 200,
+      "top": 354,
+      "bottom": 350
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

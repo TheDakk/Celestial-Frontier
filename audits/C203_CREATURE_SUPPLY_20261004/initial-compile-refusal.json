@@ -1,0 +1,4 @@
+{
+  "status": "REFUSED_BEFORE_CANONICAL_EXPORT",
+  "reason": "Outer audit lock conflicted with the canonical kit-export lock. No prompt, master, product or gate output was produced. Empty first packet directory removed; next invocation delegates locking to the unchanged canonical compiler."
+}

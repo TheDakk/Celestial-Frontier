@@ -1,0 +1,42 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Alpaca",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "52393944cf670870e608b505e96ce3b122911514054769cea33cd3cade7bb3ec",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "hoofed-unhorned",
+  "authoringCreated": false,
+  "sourceHead": "e2e9bb10cd8484ab99440e7bbb059af5220f1158",
+  "basePromptSha256": "caa8d593e10af6e9e2fc511a463123619dc87e0a7f40b35a1e470f21aabd4c51",
+  "batchCompilerSha256": "80d7bc1346ebb2d87fc3794b1a915dff81261a6b7ddd649f286b90b5142eb9f4",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve fluffy alpaca body, short pointed ears, long slender neck and short natural tail; four distinct two-toed feet, no horse hooves.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_C76_20260927/pilot.json",
+        "id": "19-alpaca",
+        "master": "audits/G2_C76_20260927/19-alpaca/master.png",
+        "packet": "audits/G2_C76_20260927/19-alpaca"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_C76_20260927/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve fluffy alpaca body, short pointed ears, long slender neck and short natural tail; four distinct two-toed feet, no horse hooves.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

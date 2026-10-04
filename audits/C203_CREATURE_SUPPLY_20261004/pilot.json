@@ -1,0 +1,554 @@
+[
+  {
+    "id": "01-water-buffalo",
+    "name": "Water Buffalo",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/01-water-buffalo/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve broad laterally swept horns, actual cloven hooves and thin tufted tail; do not merge horns into ears.",
+      "priorSources": [
+        {
+          "pilot": "audits/C196_QUADRUPED_ORIGINALS_20261002/pilot.json",
+          "id": "17-water-buffalo",
+          "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/17-water-buffalo/master.png",
+          "packet": "audits/C196_QUADRUPED_ORIGINALS_20261002/17-water-buffalo"
+        },
+        {
+          "pilot": "audits/G2_C136_REPAIRS_20261002/pilot.json",
+          "id": "10-water-buffalo",
+          "master": "audits/G2_C136_REPAIRS_20261002/10-water-buffalo/master.png",
+          "packet": "audits/G2_C136_REPAIRS_20261002/10-water-buffalo"
+        },
+        {
+          "pilot": "audits/G2_C110_20260927/pilot.json",
+          "id": "13-water-buffalo",
+          "master": "audits/G2_C110_20260927/13-water-buffalo/master.png",
+          "packet": "audits/G2_C110_20260927/13-water-buffalo"
+        }
+      ]
+    }
+  },
+  {
+    "id": "02-mountain-tapir",
+    "name": "Mountain Tapir",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/02-mountain-tapir/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve the dark woolly coat, pale lip margin, short trunk and natural tiny tail; no horse mane or long tail.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C107_20260927/pilot.json",
+          "id": "11-mountain-tapir",
+          "master": "audits/G2_C107_20260927/11-mountain-tapir/master.png",
+          "packet": "audits/G2_C107_20260927/11-mountain-tapir"
+        },
+        {
+          "pilot": "audits/C196_CREATURE_SUPPLY_20261003/pilot.json",
+          "id": "11-mountain-tapir",
+          "master": "audits/C196_CREATURE_SUPPLY_20261003/11-mountain-tapir/master.png",
+          "packet": "audits/C196_CREATURE_SUPPLY_20261003/11-mountain-tapir"
+        }
+      ]
+    }
+  },
+  {
+    "id": "03-black-bear",
+    "name": "Black Bear",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/03-black-bear/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve a black bear build and short natural tail, rounded actual ears and four complete plantigrade paws; no grizzly shoulder hump.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C87_20260927/pilot-original.json",
+          "id": "22-black-bear",
+          "master": "audits/G2_C87_20260927/22-black-bear/master.png",
+          "packet": "audits/G2_C87_20260927/22-black-bear"
+        },
+        {
+          "pilot": "audits/G2_C87_20260927/pilot.json",
+          "id": "22-black-bear",
+          "master": "audits/G2_C87_20260927/22-black-bear/master.png",
+          "packet": "audits/G2_C87_20260927/22-black-bear"
+        }
+      ]
+    }
+  },
+  {
+    "id": "04-elk",
+    "name": "Elk",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/04-elk",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/04-elk/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Keep complete branching antlers, both actual ears, four narrow cloven hoof chains and a naturally short tail.",
+      "priorSources": [
+        {
+          "pilot": "audits/C196_CREATURE_SUPPLY_20261003/pilot.json",
+          "id": "05-elk",
+          "master": "audits/C196_CREATURE_SUPPLY_20261003/05-elk/master.png",
+          "packet": "audits/C196_CREATURE_SUPPLY_20261003/05-elk"
+        },
+        {
+          "pilot": "audits/G2_C59_20260926/pilot.json",
+          "id": "01-elk",
+          "master": "audits/G2_C59_20260926/01-elk/master.png",
+          "packet": "audits/G2_C59_20260926/01-elk"
+        }
+      ]
+    }
+  },
+  {
+    "id": "05-moose",
+    "name": "Moose",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/05-moose",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/05-moose/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Keep complete palmated antlers and long muzzle/dewlap; long legs and short tail remain species accurate.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C59_20260926/pilot.json",
+          "id": "02-moose",
+          "master": "audits/G2_C59_20260926/02-moose/master.png",
+          "packet": "audits/G2_C59_20260926/02-moose"
+        }
+      ]
+    }
+  },
+  {
+    "id": "06-hippopotamus",
+    "name": "Hippopotamus",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/06-hippopotamus/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Keep the stocky barrel body, small ears, broad muzzle and four short distinct feet with real toes; expose the true short tail without lengthening it.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C114_20260927/pilot.json",
+          "id": "06-hippopotamus",
+          "master": "audits/G2_C114_20260927/06-hippopotamus/master.png",
+          "packet": "audits/G2_C114_20260927/06-hippopotamus"
+        }
+      ]
+    }
+  },
+  {
+    "id": "07-wild-pig",
+    "name": "Wild Pig",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/07-wild-pig/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve bristled body, long snout, small tusks if naturally visible, cloven hooves and real tail; no warthog facial warts.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C114_20260927/pilot.json",
+          "id": "09-wild-pig",
+          "master": "audits/G2_C114_20260927/09-wild-pig/master.png",
+          "packet": "audits/G2_C114_20260927/09-wild-pig"
+        }
+      ]
+    }
+  },
+  {
+    "id": "08-water-vole",
+    "name": "Water Vole",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve a rounded vole muzzle, small ears, compact body and its natural furry tail; no beaver paddle.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C118_20260927/pilot.json",
+          "id": "05-water-vole",
+          "master": "audits/G2_C118_20260927/05-water-vole/master.png",
+          "packet": "audits/G2_C118_20260927/05-water-vole"
+        },
+        {
+          "pilot": "audits/C196_CREATURE_SUPPLY_20261003/pilot.json",
+          "id": "03-water-vole",
+          "master": "audits/C196_CREATURE_SUPPLY_20261003/03-water-vole/master.png",
+          "packet": "audits/C196_CREATURE_SUPPLY_20261003/03-water-vole"
+        }
+      ]
+    }
+  },
+  {
+    "id": "09-marsh-rodent",
+    "name": "Marsh Rodent",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/09-marsh-rodent/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve the canonical marsh-rodent proportions and natural tail; distinct actual feet and small ears, not a generic aquatic mammal flipper.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C118_20260927/pilot.json",
+          "id": "06-marsh-rodent",
+          "master": "audits/G2_C118_20260927/06-marsh-rodent/master.png",
+          "packet": "audits/G2_C118_20260927/06-marsh-rodent"
+        },
+        {
+          "pilot": "audits/C196_CREATURE_SUPPLY_20261003/pilot.json",
+          "id": "04-marsh-rodent",
+          "master": "audits/C196_CREATURE_SUPPLY_20261003/04-marsh-rodent/master.png",
+          "packet": "audits/C196_CREATURE_SUPPLY_20261003/04-marsh-rodent"
+        }
+      ]
+    }
+  },
+  {
+    "id": "10-cow",
+    "name": "Cow",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/10-cow",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/10-cow/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Four real separate cloven feet and naturally thin tufted tail; include the actual udder as ventral anatomy if visible, never a fifth limb.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C114_20260927/pilot.json",
+          "id": "11-cow",
+          "master": "audits/G2_C114_20260927/11-cow/master.png",
+          "packet": "audits/G2_C114_20260927/11-cow"
+        }
+      ]
+    }
+  },
+  {
+    "id": "11-pig",
+    "name": "Pig",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/11-pig",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/11-pig/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Four real separate cloven feet, natural curled tail, pig ears and snout; no extra hoof beneath belly.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C98_20260927/pilot.json",
+          "id": "21-pig",
+          "master": "audits/G2_C98_20260927/21-pig/master.png",
+          "packet": "audits/G2_C98_20260927/21-pig"
+        }
+      ]
+    }
+  },
+  {
+    "id": "12-alpaca",
+    "name": "Alpaca",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/12-alpaca/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve fluffy alpaca body, short pointed ears, long slender neck and short natural tail; four distinct two-toed feet, no horse hooves.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "19-alpaca",
+          "master": "audits/G2_C76_20260927/19-alpaca/master.png",
+          "packet": "audits/G2_C76_20260927/19-alpaca"
+        }
+      ]
+    }
+  },
+  {
+    "id": "13-gerenuk",
+    "name": "Gerenuk",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/13-gerenuk/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Long slender neck and legs, small head and real curved horns; complete two ears and short tufted tail, no giraffe patches.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C114_20260927/pilot.json",
+          "id": "16-gerenuk",
+          "master": "audits/G2_C114_20260927/16-gerenuk/master.png",
+          "packet": "audits/G2_C114_20260927/16-gerenuk"
+        }
+      ]
+    }
+  },
+  {
+    "id": "14-nilgai",
+    "name": "Nilgai",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/14-nilgai/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve blue-gray male coat, short conical horns and actual white lower-leg markings; separate two ears, four cloven feet and full tufted tail.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "17-nilgai",
+          "master": "audits/G2_C95_20260927/17-nilgai/master.png",
+          "packet": "audits/G2_C95_20260927/17-nilgai"
+        }
+      ]
+    }
+  },
+  {
+    "id": "15-tahr",
+    "name": "Tahr",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/15-tahr/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve shaggy brown coat and short recurved horns; true short tail and all four cloven hooves remain distinct.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C114_20260927/pilot.json",
+          "id": "17-tahr",
+          "master": "audits/G2_C114_20260927/17-tahr/master.png",
+          "packet": "audits/G2_C114_20260927/17-tahr"
+        }
+      ]
+    }
+  },
+  {
+    "id": "16-hyrax",
+    "name": "Hyrax",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/16-hyrax/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Show exactly four biologically real limbs in a quiet planted staggered stance, with clear contour gaps from each visible body emergence through complete separate feet on one ground level. No crossed or merged legs. Preserve true tail length and structure, continuously attached to its source base; no false extra hoof or fur island. A very shallow natural head turn may reveal the far ear, but never invent hidden anatomy. All extremities fit well within the central half of the native canvas. Preserve the small tailless hyrax build, rounded ears and actual broad padded feet; do not invent a mouse tail.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C87_20260927/pilot-original.json",
+          "id": "24-hyrax",
+          "master": "audits/G2_C87_20260927/24-hyrax/master.png",
+          "packet": "audits/G2_C87_20260927/24-hyrax"
+        },
+        {
+          "pilot": "audits/G2_C87_20260927/pilot.json",
+          "id": "24-hyrax",
+          "master": "audits/G2_C87_20260927/24-hyrax/master.png",
+          "packet": "audits/G2_C87_20260927/24-hyrax"
+        }
+      ]
+    }
+  },
+  {
+    "id": "17-cardinal",
+    "name": "Cardinal",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/17-cardinal/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction: two real legs separately readable from feather-body emergence through ankles and complete toes. Quiet planted side view with both feet at one level, no branch or perch. Preserve natural folded wing attachment, complete tail fan and canonical markings. No floating crown/beak feather islands. Both actual wings only where visible; never invent hidden far anatomy. Keep the full bird small within the central half of the canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+          "id": "07-cardinal",
+          "master": "audits/C198_CREATURE_SUPPLY_C_20261003/07-cardinal/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/07-cardinal"
+        },
+        {
+          "pilot": "audits/G2_THROUGHPUT_C56_20260926/pilot.json",
+          "id": "12-cardinal",
+          "master": "audits/G2_THROUGHPUT_C56_20260926/12-cardinal/master.png",
+          "packet": "audits/G2_THROUGHPUT_C56_20260926/12-cardinal"
+        }
+      ]
+    }
+  },
+  {
+    "id": "18-sparrow",
+    "name": "Sparrow",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/18-sparrow/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction: two real legs separately readable from feather-body emergence through ankles and complete toes. Quiet planted side view with both feet at one level, no branch or perch. Preserve natural folded wing attachment, complete tail fan and canonical markings. No floating crown/beak feather islands. Both actual wings only where visible; never invent hidden far anatomy. Keep the full bird small within the central half of the canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C121_20260927/pilot.json",
+          "id": "11-sparrow",
+          "master": "audits/G2_C121_20260927/11-sparrow/master.png",
+          "packet": "audits/G2_C121_20260927/11-sparrow"
+        },
+        {
+          "pilot": "audits/G2_STRIDE_PILOT_20260926/pilot.json",
+          "id": "03-sparrow",
+          "master": null,
+          "packet": "audits/G2_STRIDE_PILOT_20260926/03-sparrow"
+        }
+      ]
+    }
+  },
+  {
+    "id": "19-pigeon",
+    "name": "Pigeon",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/19-pigeon/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction: two real legs separately readable from feather-body emergence through ankles and complete toes. Quiet planted side view with both feet at one level, no branch or perch. Preserve natural folded wing attachment, complete tail fan and canonical markings. No floating crown/beak feather islands. Both actual wings only where visible; never invent hidden far anatomy. Keep the full bird small within the central half of the canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_REFERENCES_C62_20260927/pilot.json",
+          "id": "02-pigeon",
+          "master": "audits/G2_REFERENCES_C62_20260927/02-pigeon/master.png",
+          "packet": "audits/G2_REFERENCES_C62_20260927/02-pigeon"
+        },
+        {
+          "pilot": "audits/G2_THROUGHPUT_C56_20260926/pilot.json",
+          "id": "16-pigeon",
+          "master": "audits/G2_THROUGHPUT_C56_20260926/16-pigeon/master.png",
+          "packet": "audits/G2_THROUGHPUT_C56_20260926/16-pigeon"
+        }
+      ]
+    }
+  },
+  {
+    "id": "20-kookaburra",
+    "name": "Kookaburra",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction: two real legs separately readable from feather-body emergence through ankles and complete toes. Quiet planted side view with both feet at one level, no branch or perch. Preserve natural folded wing attachment, complete tail fan and canonical markings. No floating crown/beak feather islands. Both actual wings only where visible; never invent hidden far anatomy. Keep the full bird small within the central half of the canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "15-kookaburra",
+          "master": "audits/G2_C83_20260927/15-kookaburra/master.png",
+          "packet": "audits/G2_C83_20260927/15-kookaburra"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "15-kookaburra",
+          "master": "audits/G2_C83_20260927/15-kookaburra/master.png",
+          "packet": "audits/G2_C83_20260927/15-kookaburra"
+        }
+      ]
+    }
+  },
+  {
+    "id": "21-bowfin",
+    "name": "Bowfin",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/21-bowfin/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction: horizontal head-right unbent fish, complete native tail at left, every species-correct fin continuously attached at its true root. Near/far paired fins may be offset only where biologically visible; no duplicated fin or generic inventory. Preserve canonical markings, actual barbels and the species-correct dorsal/anal/adipose fin counts. No detached fin rays or tail notch substitutes. Whole fish within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C90_20260927/pilot.json",
+          "id": "09-bowfin",
+          "master": "audits/G2_C90_20260927/09-bowfin/master.png",
+          "packet": "audits/G2_C90_20260927/09-bowfin"
+        },
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+          "id": "14-bowfin",
+          "master": "audits/C198_CREATURE_SUPPLY_C_20261003/14-bowfin/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/14-bowfin"
+        }
+      ]
+    }
+  },
+  {
+    "id": "22-catfish",
+    "name": "Catfish",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction: horizontal head-right unbent fish, complete native tail at left, every species-correct fin continuously attached at its true root. Near/far paired fins may be offset only where biologically visible; no duplicated fin or generic inventory. Preserve canonical markings, actual barbels and the species-correct dorsal/anal/adipose fin counts. No detached fin rays or tail notch substitutes. Whole fish within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C90_20260927/pilot.json",
+          "id": "07-catfish",
+          "master": "audits/G2_C90_20260927/07-catfish/master.png",
+          "packet": "audits/G2_C90_20260927/07-catfish"
+        },
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+          "id": "13-catfish",
+          "master": "audits/C198_CREATURE_SUPPLY_C_20261003/13-catfish/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/13-catfish"
+        }
+      ]
+    }
+  },
+  {
+    "id": "23-cardinalfish",
+    "name": "Cardinalfish",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/23-cardinalfish/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction: horizontal head-right unbent fish, complete native tail at left, every species-correct fin continuously attached at its true root. Near/far paired fins may be offset only where biologically visible; no duplicated fin or generic inventory. Preserve canonical markings, actual barbels and the species-correct dorsal/anal/adipose fin counts. No detached fin rays or tail notch substitutes. Whole fish within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+          "id": "20-cardinalfish",
+          "master": "audits/C198_CREATURE_SUPPLY_C_20261003/20-cardinalfish/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/20-cardinalfish"
+        },
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "01-cardinalfish",
+          "master": "audits/G2_C95_20260927/01-cardinalfish/master.png",
+          "packet": "audits/G2_C95_20260927/01-cardinalfish"
+        }
+      ]
+    }
+  },
+  {
+    "id": "24-wahoo",
+    "name": "Wahoo",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/24-wahoo/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Source visibility correction: horizontal head-right unbent fish, complete native tail at left, every species-correct fin continuously attached at its true root. Near/far paired fins may be offset only where biologically visible; no duplicated fin or generic inventory. Preserve canonical markings, actual barbels and the species-correct dorsal/anal/adipose fin counts. No detached fin rays or tail notch substitutes. Whole fish within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "08-wahoo",
+          "master": "audits/G2_C83_20260927/08-wahoo/master.png",
+          "packet": "audits/G2_C83_20260927/08-wahoo"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "08-wahoo",
+          "master": "audits/G2_C83_20260927/08-wahoo/master.png",
+          "packet": "audits/G2_C83_20260927/08-wahoo"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "name": "Alpaca",
+  "masterSha256": "d4a635b00f5211a899a951ac27910abe6909b91541c9831439aaa30c113eed82",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four separate foot endpoints, two short pointed ears, long neck and short attached woolly tail. Dense wool hides proximal limb boundaries. Feet appear hard and cloven/hoof-like rather than clearly padded camelid toes: explicit anatomy-detail hold. Crown and belly fringe remain unmeasured for posed islands.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 269,
+      "y0": 212,
+      "x1": 1016,
+      "y1": 1006
+    },
+    "margins": {
+      "left": 269,
+      "right": 237,
+      "top": 212,
+      "bottom": 247
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}
