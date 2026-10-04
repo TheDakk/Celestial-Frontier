@@ -65,6 +65,14 @@ the archive verbatim and refresh this handoff in place.
   `pkill` by name; scrub `/Users/<name>` to `~` and check `mode 120000` symlinks before every commit; review fliers on FULL
   frames (the crop sheet shows only the ground band); after a TaskStop of a native run remove this worktree's stale workspace lock;
   zsh does not word-split `$x` (use explicit args). The all-pairs sweep stays on HOLD until Dakk says otherwise.
+- **SESSION 8 (2026-10-04, in progress):** static scoring done, Node only (`adc3e4cd7`): **g2c274 7/23** (Wild Pig, Cow, Hyrax, Cardinal,
+  Sparrow, Pigeon, Cardinalfish; Bowfin held at framing REFUSE), **g2c275 10/24** (Capybara, Grizzly, Toucan, Falcon, Duck, Stork,
+  Arapaima-f02, Angelfish, Tuna, Swordfish-f02), **g2c257ceph 0/4** (Octopus is leave-one-species-out of its own reference; Giant Octopus
+  extra rear appendage 13.2 %, Cuttlefish arm2 19 %, Squid wrong-family). Static RED, which are motion limits and not mine to touch: Black Bear and Okapi
+  (gallop scale compression), Kookaburra (folded triangles), Wahoo intake (caudal/body bound). Systemic: 7 short-tailed ungulates/bears
+  refuse on `tail3` against long-tailed refs, so a short-tail reference is needed. **Next:** after Codex's C204 TERMINAL row, re-run the same three
+  `score-batch.mjs … --pilot=<file> --extra-refs=…c223-octopus.json --fish-seams` commands WITHOUT `--no-native` (intake/static are
+  cached), then review, island repair, finish, gate and push. Pilots: `pilots/c274-scoring.json`, Codex's `C203_CREATURE_SUPPLY_B_20261004/pilot-selected.json`.
 - **Open for Dakk:** D28 (island cap; 6 more birds now wait on it); finisher scope (every accepted G2 original vs procedural creatures);
   dev-preview redeploy; PR #44 hosted attempt.
 
