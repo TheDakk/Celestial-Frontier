@@ -1,0 +1,264 @@
+{
+  "schema": "cf.c202-actual-rig-software-review/v1",
+  "status": "PASS_OFFLINE",
+  "scope": "Actual loaded CreatureRig positions equal independent publication; source-size software rendering only, no native or GPU acceptance",
+  "rows": [
+    {
+      "action": "approach:gallop",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-gallop-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:gallop",
+      "ms": 186.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-gallop-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:gallop",
+      "ms": 838.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-gallop-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:gallop",
+      "ms": 932,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-gallop-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:gallop",
+      "ms": 186.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-gallop-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "hit-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 192.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "hit-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 865.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "hit-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 962,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "hit-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 192.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "hit-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "dodge",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "dodge-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "dodge",
+      "ms": 158.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "dodge-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "dodge",
+      "ms": 712.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "dodge-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "dodge",
+      "ms": 792,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "dodge-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "dodge",
+      "ms": 158.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "dodge-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 206.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 928.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 1032,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 206.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 604.5086229965091,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 2720.288803484291,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 3022.5431149825454,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 604.5086229965091,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer-contours/fit01/record.json",
+      "sha256": "e4a0b2a56010f8cddcf9e5d8a0a629704ea80765ac0e28e0ab329712716de72e"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer-contours/fit01/binding.json",
+      "sha256": "fcb4881ba822cb9dc0c7e49e9a82c2be41b6f58b38b7f1b1c166be4123a414f8"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer-contours/fit01/parts/atlas/c163-reference-reindeer.png",
+      "sha256": "fb457f25f87869aa5fb7b25fb12f19784ea17c4cd1baf516fb1452b516b120c9"
+    },
+    {
+      "path": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer-contours/master.png",
+      "sha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8"
+    },
+    {
+      "path": "audits/C204_SHORT_TAIL_REFERENCE_20261004/review-rig.mjs",
+      "sha256": "36302bd84232c868440d340d27c96a74975b370549c1098014eb4b0ad892e87a"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

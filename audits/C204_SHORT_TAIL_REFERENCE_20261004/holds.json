@@ -1,0 +1,27 @@
+{
+  "source": "Claude adc3e4cd7 and Dakk direct handoff",
+  "staticSummary": "17/47 PASS",
+  "holds": {
+    "Black Bear": "gallop contact scale compression",
+    "Okapi": "gallop contact scale compression",
+    "Kookaburra": "unresolved folded ARAP triangles: alert/cast/victory",
+    "Wahoo": "Family admission: proportion bound caudal/body",
+    "shortTailTargets": [
+      "Elk",
+      "Moose",
+      "Pronghorn",
+      "Duiker",
+      "Serow",
+      "Brown Bear",
+      "Tahr"
+    ],
+    "cephalopods": {
+      "Octopus": "leave-one-species-out exclusion remains correct",
+      "Giant Octopus": "unassigned 13.2% rear appendage",
+      "Cuttlefish": "arm2 covers 19%",
+      "Squid": "matches insect better"
+    }
+  },
+  "octopusDecision": "Qualified authoring reference does not itself count as an admitted gallery identity. Native anatomical qualification passes; wet/glossy style and gallery decision remain with Claude. Do not self-score or weaken leave-one-species-out.",
+  "allPairs": "HOLD"
+}

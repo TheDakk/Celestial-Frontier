@@ -1,0 +1,16 @@
+[
+  {
+    "run": "native-01",
+    "originalReportSha256": "ec2ae4590b8093f72e66fb05fdeb7780cd526ebd62aa2ff3927ed0a522059536",
+    "verifiedInputs": 907,
+    "allInputsUnchanged": true,
+    "portableReportSha256": "4032057bd9458ee4f6e220e17e5226dbd8d892143a2ad88129df3f8eedfb8188"
+  },
+  {
+    "run": "native-02",
+    "originalReportSha256": "32d2723393f8c6e58de265f9fd29e327f4ef6faaf3d88c36b5b5116a905fb054",
+    "verifiedInputs": 907,
+    "allInputsUnchanged": true,
+    "portableReportSha256": "77dd9134ae2c87531fc70df3d935e27f9df4bd5f3e7d6f8a3b29a876fac1e360"
+  }
+]

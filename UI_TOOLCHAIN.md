@@ -492,3 +492,5 @@ uninterrupted Node 26.9.0 run. Full-row native films, finished texture proofs an
 captures use isolated native browsers. The accumulated packet separates static clip tails
 from real-time film rig and whole-frame CPU. Phone D1 is retained PNG delivery with painter
 fallback; desktop mobile viewports never claim physical-device animation qualification.
+
+**October 4 C204 startup:** fresh official stable metadata check PASS under shared lock; approved tools current. REAPER7.81 bundle suffix resolved by empty `brew outdated --json=v2 --greedy reaper`. No eligible updates or runtime/dependency changes. Node26.10.0 retained throughout exact I5/develop and source-only C284 review. Receipt `audits/C204_I5_EPOCH_20261004/startup.json`; optional local-AI absent from certification checkout and set aside/restored for develop.
