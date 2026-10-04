@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c202-cephalopod-source-request/v1",
+  "species": "Cuttlefish",
+  "sourceCanonicalPrompt": "audits/C198_CREATURE_SUPPLY_B_20261003/04-cuttlefish/prompt.canonical.txt",
+  "canonicalSha256": "1815be6a188da5f5fbc0bd82d64730e68606468b428f866da3df5637f1c028e2",
+  "promptSha256": "ca79d6a5777466d324b3822a0c1dbc92532514e8adec0c3e797245d39e3012d1",
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "styleSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "artKit": "ART_KIT.md",
+  "artKitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "generator": "builtin image_gen",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedCountsAreNotEvidence": true,
+  "compositionOverride": "near-frontal slightly underside arm crown; canonical side-view overridden for actual root visibility",
+  "qualityAccepted": false
+}

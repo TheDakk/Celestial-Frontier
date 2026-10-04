@@ -1,0 +1,50 @@
+{
+  "schema": "cf.c202-observed-source-joins/v1",
+  "sourceFit": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit",
+  "sourceRecordSha256": "1daf1af73b05d4824268b497559b5134d1d819ab9378111b3afbbd988017ed1b",
+  "sourcePreSplitSha256": "bf4712825f56ce08e8d3ca084de32cfb2398bb27305caf24f6060aa00472a4d9",
+  "sourceBindingSha256": "6a9d2b8a1e876e17faaf3949662389af5677020c00cc7ebc7435614b44dd349e",
+  "candidateBindingSha256": "257802cabeabed20a400f621ee6bf9da9954045b1cee5693ccfa17c60a0ea4b8",
+  "sourceAtlasSha256": "e7a61e065b52ce21a16d2fbbca17be2c7428b7896ca6eea7d891c9f7297a87bb",
+  "sourceMasterSha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a",
+  "reason": "Actual continuous mantle/head attachment is a sibling edge in the family graph; faint reveals its unjoined bright notch. Other arm silhouette crossings remain independent.",
+  "paintBoundaryPairs": [
+    [
+      "head",
+      "mantle"
+    ]
+  ],
+  "existingFishRecipe": null,
+  "existingFishRecipeSha256": null,
+  "sourcePixelsChanged": 0,
+  "ownershipChanged": false,
+  "recordChanged": false,
+  "motionChanged": false,
+  "solverLimitsChanged": false,
+  "compilerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "4ab39ed276c7d124339b8674cd075bba37d8d0af8e288244f60319374c90a822",
+    "sourceVertices": 1905,
+    "vertices": 2196,
+    "sharedSupports": 431,
+    "pins": 587,
+    "independentSurfaceParts": 30,
+    "sourceJoins": 27,
+    "excludedOverlaps": 15,
+    "observedExcludedBoundaries": 15,
+    "weldedExcludedBoundaries": 1,
+    "independentExcludedBoundaries": 14,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "head",
+        "mantle"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

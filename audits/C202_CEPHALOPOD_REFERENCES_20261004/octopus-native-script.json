@@ -1,0 +1,61 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "world": {
+    "key": "opensea",
+    "liquid": "water",
+    "surfaceWater": true,
+    "cardHash": "c202-cephalopod-opensea-reference"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Octopus A",
+      "dn": "Octopus B",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 40,
+      "hpB": 31
+    },
+    {
+      "side": "B",
+      "an": "Octopus B",
+      "dn": "Octopus A",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 34,
+      "hpB": 31
+    },
+    {
+      "side": "A",
+      "an": "Octopus A",
+      "dn": "Octopus B",
+      "dodge": true,
+      "hpA": 34,
+      "hpB": 31
+    },
+    {
+      "side": "B",
+      "an": "Octopus B",
+      "dn": "Octopus A",
+      "dmg": 8,
+      "crit": false,
+      "hpA": 26,
+      "hpB": 31
+    },
+    {
+      "side": "A",
+      "an": "Octopus A",
+      "dn": "Octopus B",
+      "dmg": 31,
+      "crit": true,
+      "hpA": 26,
+      "hpB": 0
+    }
+  ],
+  "supports": "observed"
+}

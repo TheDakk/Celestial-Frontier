@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "manifest": "audits/C202_CEPHALOPOD_REFERENCES_20261004/delivery.json",
+  "sha256": "04cec881ccb2b1a70d7f86353820664698ae151b2286f293cb8476d2e6d82282",
+  "files": 645,
+  "mismatches": []
+}

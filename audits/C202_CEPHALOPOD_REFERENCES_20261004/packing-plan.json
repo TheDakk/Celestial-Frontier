@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c202-semantic-packing-plan/v1",
+  "status": "REVIEWED_DESIGN_NOT_IMPLEMENTED",
+  "problem": "Truthful Cuttlefish source has 38 independently observed semantic joint regions but ordinary mask intake admits at most 32 parts.",
+  "unchangedLimits": {"renderParts":32,"joints":64,"fieldVertices":40000,"vertexInfluences":8,"solverIterations":4,"globalIterations":4,"targetWeight":0.35},
+  "proposedProductOwners": ["port/v2/tools/creature-animation/semantic-part-packing.mjs", "port/v2/tools/creature-animation/semantic-part-packing.test.mjs", "port/v2/tools/creature-animation/build-paint-skin.mjs", "port/v2/tools/creature-animation/build-paint-skin.test.mjs", "port/v2/tools/creature-animation/split-observed-surfaces.mjs"],
+  "method": [
+    "Retain every semantic region id, joint, source label, boundary and hash before explicit render grouping.",
+    "Require groups to partition the region inventory exactly, preserve source order, use one depth layer, be connected in both the anatomical graph and actual source-pixel adjacency, and number at most 32.",
+    "Build ordinary keyed parts from grouped labels using unchanged intake and exact keyed RGBA; no pixel is added, removed, recolored or assigned to another semantic region.",
+    "Compile a continuous source field from the original semantic owner labels and all semantic boundaries; use grouped ownership only to emit draw meshes and UVs.",
+    "Retain all observed joint influences with unchanged smoothing and solver profile. Do not call the existing splitter, which resets weights from draw-part owners; add a fail-closed guard for this incompatible operation.",
+    "Prove field coordinates, triangles and original semantic weights agree with an independently unpacked continuous-field control, and every semantic joint moves actual published painted geometry.",
+    "Require unchanged static, source conservation, source-size actual-rig review and serial native qualification before any reference admission. A continuous source field is not a hidden-surface reconstruction."
+  ],
+  "negativeControls": ["omitted or duplicated source region", "unknown or biologically absent joint", "cross-depth grouping", "nonadjacent source regions", "disconnected anatomical chain", "reordered or noncontiguous groups", "source-label/hash mutation", "grouped-label mismatch", "more than 32 render groups", "destructive legacy split after semantic compilation", "lost semantic joint influence", "source RGBA mutation"],
+  "qualification": "No compiler or Cuttlefish native qualification yet. Product writes wait for the initial Octopus native batch terminal.",
+  "qualityAccepted": false
+}

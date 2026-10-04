@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c202-contour-successor/v1",
+  "source": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/master.png",
+  "sourceSha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033",
+  "predecessor": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01",
+  "landmarksUnchanged": true,
+  "reason": "Source-observed complete outer contours after existing priority owners, plus central real arm crown as root. Corrects omitted sucker/fin/arm-edge strips; preserves source RGBA, all landmarks and all 38 anatomical joints."
+}

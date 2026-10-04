@@ -1,0 +1,95 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "cfe6e089f99dfdf85e69305b0515725efad3119c",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/master.png",
+      "sha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/authoring.json",
+      "sha256": "73f060344a2f178960acd8973cdd799dc4337fee79caae7e82d9309ef1cb316e"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/subject-source.json",
+      "sha256": "f721c27305a198577f719fd25bdf5243845abb6b9f2b609d4b86a9cd9e5598a1"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/presence.json",
+      "sha256": "406575d117d173568cfb3ec9f018c8460ee1cf962265011066aae730a93a14cc"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "81197bcce8f02765336015cb57ec38207fc633c5ea7ea9cc14daceb28b498bf1",
+  "bindingHash": "6425200eb76a0411eedf9e82cfe7b0b32a50b872ba1e135a6c62c34378a4f9ab",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "eyeNear",
+    "eyeFar",
+    "siphon",
+    "arm0Seg2",
+    "arm0Seg1",
+    "arm0Seg0",
+    "arm1Seg2",
+    "arm1Seg1",
+    "arm1Seg0",
+    "arm2Seg2",
+    "arm2Seg1",
+    "arm2Seg0",
+    "arm3Seg2",
+    "arm3Seg1",
+    "arm3Seg0",
+    "arm4Seg2",
+    "arm4Seg1",
+    "arm4Seg0",
+    "arm5Seg2",
+    "arm5Seg1",
+    "arm5Seg0",
+    "arm6Seg2",
+    "arm6Seg1",
+    "arm6Seg0",
+    "arm7Seg2",
+    "arm7Seg1",
+    "arm7Seg0",
+    "mantle",
+    "head"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/master.png",
+      "sha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/authoring.json",
+      "sha256": "73f060344a2f178960acd8973cdd799dc4337fee79caae7e82d9309ef1cb316e",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/subject-source.json",
+      "sha256": "f721c27305a198577f719fd25bdf5243845abb6b9f2b609d4b86a9cd9e5598a1",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/presence.json",
+      "sha256": "406575d117d173568cfb3ec9f018c8460ee1cf962265011066aae730a93a14cc",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "cf.c202-truthful-topology-diagnosis/v1",
+  "qualifiedReference": false,
+  "sourceHold": "No source/frame/native acceptance is implied by a topology implementation or a synthetic outcome control.",
+  "insect": {
+    "sources": [
+      {
+        "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/master.png",
+        "sha256": "2673f287573558969262fabc5bd524083d1e773abe1b5c58ef09a9588284ffab"
+      },
+      {
+        "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/master.png",
+        "sha256": "37790d9e90adcef9eee96bccad51426bdf74b2b8032236c83b37daa9bf60392c"
+      }
+    ],
+    "observedWalkingChains": 6,
+    "modelFault": "Six knees inherit a single thorax-centre pivot despite six independently observed source emergence sockets. Existing fixed-pivot math can express those sockets with the same21-joint graph; a present exact six-socket declaration opts in. No declaration preserves original behavior.",
+    "sourceCaveat": "Dorsal projected contact heights and nearly straight grasshopper hind legs may still fail unchanged contact/pose limits after correct sockets. Real source poses must improve if they do; do not tune landmark coordinates to hide the geometry."
+  },
+  "millipede": {
+    "biologicalFault": "Existing compact count declaration requires a specialized ultimate pair, which is not a generic millipede requirement. Explicit zero-ultimate creates no phantom trailing leg joints, sockets, painter features or motion tracks.",
+    "budgetFormula": "5 + 4*walkingLegPairs + 2*ultimateLegPairs; unchanged maximum64",
+    "realRepresentative": {
+      "name": "Polyxenus adult",
+      "walkingLegPairs": 13,
+      "ultimateLegPairs": 0,
+      "joints": 57,
+      "canonicalOverride": true,
+      "notCatalogueReplacement": true,
+      "research": "https://www.sciencedirect.com/org/science/article/pii/S1313298925000072"
+    },
+    "sourceStatus": "Both generated representatives remain held; the dorsal successor visibly has14 apparent pairs instead of13. No presence declaration or fit invented."
+  },
+  "centipede": {
+    "canonicalIdentity": "Canonical Centipede describes a scolopendrid, not a15-pair lithobiomorph substitution.",
+    "research": [
+      {
+        "url": "https://www.ento.csiro.au/biology/centipedes/key2Text/scolopendraOrder.htm",
+        "finding": "Scolopendromorpha commonly21 or23 leg pairs; preserve actual species inventory."
+      }
+    ],
+    "minimumExpectedWalkingPairs": 20,
+    "minimumExpectedUltimatePairs": 1,
+    "minimumCurrentGraphJoints": 87,
+    "unchangedJointLimit": 64,
+    "currentSourceExactPairCount": "UNOBSERVABLE: retained C198 masters overlap far roots/tips; the biological minimum is a model proof, not a fabricated count of the painting.",
+    "status": "ARCHITECTURE_AND_SOURCE_BLOCKED",
+    "futureArchitecture": "A separately designed procedural repeated-limb component could retain every source leg and articulated trunk segment while deriving each limb transform from a bounded locomotion control field. It would need source-bound count/segment/leg ownership, independent exact output transforms for every observed leg, and unchanged64 control-channel/32 render-part budgets. Existing skeleton joints cannot simply be relabeled as derived controls; this is a new architecture requiring equivalence/refusal/outcome tests and performance measurement, not this minimal opt-in patch.",
+    "forbiddenWorkarounds": [
+      "Do not drop real legs or move source landmarks.",
+      "Do not relabel scolopendrid as a different centipede lineage.",
+      "Do not raise64joint cap or32render-part cap.",
+      "Do not claim rigid trunk provides articulated segment movement."
+    ]
+  }
+}

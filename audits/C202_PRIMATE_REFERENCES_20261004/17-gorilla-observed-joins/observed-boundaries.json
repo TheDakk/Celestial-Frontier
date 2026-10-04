@@ -1,0 +1,100 @@
+{
+  "schema": "cf.c202-observed-source-joins/v1",
+  "sourcePacket": "audits/C202_PRIMATE_REFERENCES_20261004/16-gorilla-observed-guide",
+  "basis": "Actual continuously painted throat-to-shoulder surfaces, mandibular/throat margin and six source pixels at proximal upper-arm/forearm/torso junction. These are the visible same-source joins opened by independent surface publication. Distinct arm-to-arm, hand-to-hand, and hind-leg silhouette overlaps remain independent.",
+  "authored": [
+    {
+      "parts": [
+        "near-upper-arm",
+        "neck"
+      ],
+      "sourceEdges": 289,
+      "sourceBounds": [
+        720,
+        374,
+        883,
+        494
+      ]
+    },
+    {
+      "parts": [
+        "far-upper-arm",
+        "neck"
+      ],
+      "sourceEdges": 44,
+      "sourceBounds": [
+        883,
+        494,
+        908,
+        513
+      ]
+    },
+    {
+      "parts": [
+        "jaw",
+        "neck"
+      ],
+      "sourceEdges": 86,
+      "sourceBounds": [
+        900,
+        458,
+        923,
+        512.9999999999999
+      ]
+    },
+    {
+      "parts": [
+        "far-upper-arm",
+        "jaw"
+      ],
+      "sourceEdges": 29,
+      "sourceBounds": [
+        908,
+        513,
+        924,
+        526
+      ]
+    },
+    {
+      "parts": [
+        "body",
+        "near-forearm"
+      ],
+      "sourceEdges": 6,
+      "sourceBounds": [
+        682,
+        666,
+        684,
+        670
+      ]
+    }
+  ],
+  "unchangedSourceInputs": [
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/16-gorilla-observed-guide/master.png",
+      "sha256": "78da7b6d2ad46eaa6a452cdb71a2c08ce75f898be89e5c234ff6ff72f88fc3a5"
+    },
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/16-gorilla-observed-guide/authoring.json",
+      "sha256": "97972d99673d6bf1083eeaad1e043e471da1b342ec4dcbd25ab979b61c3d8fcb"
+    },
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/16-gorilla-observed-guide/presence.json",
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db"
+    },
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/16-gorilla-observed-guide/subject-source.json",
+      "sha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048"
+    }
+  ],
+  "sourceBindingHash": "82eb3be23eeab0e7b2bce5016de92e5eebc99640f4241f91f099c7cb22e4f8e8",
+  "resultBindingHash": "8bb0bd1577efdb96403ddd86631a93e22c619fb6ad52cb54eff11bb5851bd90a",
+  "controls": {
+    "sameSourceVertices": true,
+    "recordBytesUnchanged": true,
+    "atlasBytesUnchanged": true,
+    "sourceRGBAUnchanged": true,
+    "runtimeChanged": false
+  },
+  "admission": false
+}

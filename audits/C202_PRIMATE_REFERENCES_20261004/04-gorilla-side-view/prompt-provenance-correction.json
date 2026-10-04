@@ -1,0 +1,6 @@
+{
+  "reason": "Serialization retained one extra trailing LF; original prompt.txt and generation.json are retained. The tool sent exactly prompt.sent.txt.",
+  "historicalFileSha256": "675c41abd0a31e52125f1e4b91b69c7c0953b15cd5e8559988bf8e42b6e02060",
+  "actualSentPromptSha256": "3b78a95c6087bb8a3341286dc4155d00310509e6dc71a4b2fb96419b125e40a8",
+  "sameContentExceptOneTrailingLF": true
+}

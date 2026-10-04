@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c202-source-generation/v1",
+  "generator": "builtin image_gen",
+  "originalPath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-e5b75c77-5097-43cd-bd7b-893281e42ea6.png",
+  "retainedPath": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/master.png",
+  "masterSha256": "7785b7a5ba2f314e14edfe85bd605e7cdebfd03ea30107d0ce68f22515374a5b",
+  "promptSha256": "8094e4bdf6baa49f2b4859055233df9319c682747284e6866599b0696d452153",
+  "bytesCopiedUnmodified": true,
+  "qualityAccepted": false
+}

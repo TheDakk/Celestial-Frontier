@@ -1,0 +1,65 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "REFUSED",
+  "sourceHead": "cfe6e089f99dfdf85e69305b0515725efad3119c",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/master.png",
+      "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/authoring.json",
+      "sha256": "6d99a0bbd78c6d937e123bfb6e5a3f2d33e4d7a331b1513645e6b8f37a9089aa"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/subject-source.json",
+      "sha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/presence.json",
+      "sha256": "d3b9f04ffc723a2745dad03a3206259b0f18f03f7980cb6ead43e58b558858b5"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/master.png",
+      "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/authoring.json",
+      "sha256": "6d99a0bbd78c6d937e123bfb6e5a3f2d33e4d7a331b1513645e6b8f37a9089aa",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/subject-source.json",
+      "sha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/presence.json",
+      "sha256": "d3b9f04ffc723a2745dad03a3206259b0f18f03f7980cb6ead43e58b558858b5",
+      "unchanged": true
+    }
+  ],
+  "refusal": {
+    "stage": "authored-parts",
+    "error": "Error: Part masks: painter part budget\n    at requireValue (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cutPainterParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:72:2)\n    at async cutKeyedParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/keyed-part-labels.mjs:13:15)\n    at async buildAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-authored-parts.mjs:33:10)\n    at async file://~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs:112:16"
+  }
+}

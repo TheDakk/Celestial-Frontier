@@ -1,0 +1,10 @@
+{
+  "predecessor": "audits/C202_PRIMATE_REFERENCES_20261004/13-gorilla-neck-contour",
+  "onlyChanges": [
+    "id",
+    "groundLineY"
+  ],
+  "sourceGuideYBefore": 977,
+  "sourceGuideYAfter": 978,
+  "basis": "Exact positive-alpha source knuckle texels extend through y977; their lower edge is978. Earlier source guide was1px short. Source/contact landmarks, pixels, geometry, materials and limits unchanged. This cannot resolve the retained large faint hand penetration."
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Grasshopper",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "46c1aeec8f4c69bbf7f6158138e12101d47939a09a45ee90e95371de658c3458",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "cfe6e089f99dfdf85e69305b0515725efad3119c",
+  "basePromptSha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+  "purpose": "TARGETED_VIEW_EDIT_OF_RETAINED_SOURCE",
+  "sourceCorrection": "Change the camera to a STRICT DIRECTLY OVERHEAD DORSAL view of this same real adult grasshopper, head RIGHT and abdomen LEFT. Spread and offset the three real legs on the TOP side and three on the BOTTOM side so every actual emergence, femur, knee, tibia and foot is continuously visible without crossing or body occlusion. Keep the huge naturally angled hind femora, short front/middle legs, TWO true antennae, real mouth, complete tapered abdomen and two actual folded forewing surfaces. No extra limbs, artificial segmented tail or detached parts. Make the whole animal and all tips occupy the central HALF of the same native1254 square magenta canvas, about300px empty margin. Preserve species anatomy and the same painted style; no labels, props, floor or cutaway.",
+  "compositionCheck": "central half, native1254 unchanged",
+  "auditCompilerExtension": false,
+  "admission": false,
+  "batchCompilerSha256": "7a48277829ae75c647ec81b7e21a84a14d42a49365ba188c8b507970bec78a50",
+  "predecessor": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/master.png",
+      "sha256": "3adb0589334f5210c96e30df63d670edc4351ffa266a10332b511e4d523dc6af"
+    }
+  ],
+  "editStyleParagraphSha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2"
+}

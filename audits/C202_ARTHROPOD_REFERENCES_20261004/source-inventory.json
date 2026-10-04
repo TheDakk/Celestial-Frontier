@@ -1,0 +1,97 @@
+{
+  "schema": "cf.c202-native-master-inventory/v1",
+  "originals": 10,
+  "distinctHashes": 10,
+  "rows": [
+    {
+      "id": "01-beetle-source",
+      "masterSha256": "2fc73953a7a8601bb57490131f341a8f9c7153e2fe7c9f54dcf99de3388deefc",
+      "bytes": 1462196,
+      "width": 1254,
+      "height": 1254,
+      "framing": "REFUSE",
+      "anatomyAdmission": false
+    },
+    {
+      "id": "02-grasshopper-source",
+      "masterSha256": "3adb0589334f5210c96e30df63d670edc4351ffa266a10332b511e4d523dc6af",
+      "bytes": 1526760,
+      "width": 1254,
+      "height": 1254,
+      "framing": "REFUSE",
+      "anatomyAdmission": false
+    },
+    {
+      "id": "03-beetle-dorsal",
+      "masterSha256": "2673f287573558969262fabc5bd524083d1e773abe1b5c58ef09a9588284ffab",
+      "bytes": 1455022,
+      "width": 1254,
+      "height": 1254,
+      "framing": "PASS_FRAMING_ONLY",
+      "anatomyAdmission": false
+    },
+    {
+      "id": "04-grasshopper-dorsal",
+      "masterSha256": "b54f921550ea722bb9f8a28adedf2d61381b18f256a830604d6ae0d3333ef42d",
+      "bytes": 1501275,
+      "width": 1254,
+      "height": 1254,
+      "framing": "REFUSE",
+      "anatomyAdmission": false
+    },
+    {
+      "id": "05-grasshopper-framed",
+      "masterSha256": "37790d9e90adcef9eee96bccad51426bdf74b2b8032236c83b37daa9bf60392c",
+      "bytes": 1178141,
+      "width": 1254,
+      "height": 1254,
+      "framing": "PASS_FRAMING_ONLY",
+      "anatomyAdmission": false
+    },
+    {
+      "id": "06-polyxenus-reference",
+      "masterSha256": "6442f17acc4bca3b581f4139fd3824f866a1b004b684894f1572313ace7a1a03",
+      "bytes": 1585413,
+      "width": 1254,
+      "height": 1254,
+      "framing": "REFUSE",
+      "anatomyAdmission": false
+    },
+    {
+      "id": "07-polyxenus-dorsal",
+      "masterSha256": "be1a7e85561d793f5fdae059c8bab5fb08a58d9fdd3f353ed835c4e01e30fea4",
+      "bytes": 1615610,
+      "width": 1254,
+      "height": 1254,
+      "framing": "REFUSE",
+      "anatomyAdmission": false
+    },
+    {
+      "id": "08-polyxenus-count-correction",
+      "masterSha256": "a1fb2fed339450411eb4370901a7417808623f041dd985eace1535cc82947681",
+      "bytes": 1488913,
+      "width": 1254,
+      "height": 1254,
+      "framing": "REFUSE",
+      "anatomyAdmission": false
+    },
+    {
+      "id": "11-beetle-relaxed-legs",
+      "masterSha256": "e1eca972d8481b7471239b47c54598657364c06334b21be37b60fe6ea8c5e275",
+      "bytes": 1453188,
+      "width": 1254,
+      "height": 1254,
+      "framing": "PASS_FRAMING_ONLY",
+      "anatomyAdmission": false
+    },
+    {
+      "id": "12-grasshopper-relaxed-legs",
+      "masterSha256": "199ff589b83595a79b82e5bee7948d82c803636d1af2550fa1319f4cff77f28e",
+      "bytes": 1280918,
+      "width": 1254,
+      "height": 1254,
+      "framing": "PASS_FRAMING_ONLY",
+      "anatomyAdmission": false
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "kind": "cephalopod",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cuttlefish\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2821509936\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"24\"]]]]",
+    "seed": 2821509936,
+    "ownerId": "authored:archetype-sprint/c202-cuttlefish-source03-author02",
+    "earthName": "Cuttlefish"
+  },
+  "template": {
+    "id": "cephalopod",
+    "version": 1
+  },
+  "clipSetId": "cephalopod-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "appendages": {
+      "arms": 8,
+      "feedingTentacles": 2
+    }
+  },
+  "genome": {
+    "seed": 2821509936,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 16,
+    "body": 0,
+    "loco": 16,
+    "trait": 24,
+    "size": 1,
+    "diet": 4,
+    "head": 6,
+    "limbs": 5,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 3,
+    "behavior": 8,
+    "habitat": 2,
+    "detail": 6,
+    "accent": 4,
+    "temper": 8,
+    "sense": 5,
+    "repro": 0,
+    "life": 1,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cuttlefish"
+  },
+  "geometry": {
+    "cutoutAssetHash": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.89,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5151515151515151,
+      0.3939393939393939
+    ],
+    "mantle": [
+      0.36921850079744817,
+      0.28548644338118023
+    ],
+    "head": [
+      0.5741626794258373,
+      0.3827751196172249
+    ],
+    "eyeNear": [
+      0.4768740031897927,
+      0.3269537480063796
+    ],
+    "eyeFar": [
+      0.6634768740031898,
+      0.3293460925039872
+    ],
+    "siphon": [
+      0.5789473684210527,
+      0.5366826156299841
+    ],
+    "finNear": [
+      0.3141945773524721,
+      0.3628389154704944
+    ],
+    "finFar": [
+      0.24641148325358853,
+      0.22248803827751196
+    ],
+    "arm0Seg0": [
+      0.518341307814992,
+      0.44417862838915473
+    ],
+    "arm0Seg1": [
+      0.4003189792663477,
+      0.42424242424242425
+    ],
+    "arm0Seg2": [
+      0.29904306220095694,
+      0.4704944178628389
+    ],
+    "arm1Seg0": [
+      0.4824561403508772,
+      0.4824561403508772
+    ],
+    "arm1Seg1": [
+      0.40271132376395535,
+      0.5023923444976076
+    ],
+    "arm1Seg2": [
+      0.3437001594896332,
+      0.5645933014354066
+    ],
+    "arm2Seg0": [
+      0.4864433811802233,
+      0.518341307814992
+    ],
+    "arm2Seg1": [
+      0.43620414673046254,
+      0.5598086124401914
+    ],
+    "arm2Seg2": [
+      0.39553429027113235,
+      0.6116427432216905
+    ],
+    "arm3Seg0": [
+      0.5215311004784688,
+      0.5199362041467305
+    ],
+    "arm3Seg1": [
+      0.4880382775119617,
+      0.5701754385964912
+    ],
+    "arm3Seg2": [
+      0.4688995215311005,
+      0.6339712918660287
+    ],
+    "arm4Seg0": [
+      0.6180223285486444,
+      0.5223285486443381
+    ],
+    "arm4Seg1": [
+      0.6483253588516746,
+      0.5781499202551834
+    ],
+    "arm4Seg2": [
+      0.6730462519936204,
+      0.6403508771929824
+    ],
+    "arm5Seg0": [
+      0.6746411483253588,
+      0.5263157894736842
+    ],
+    "arm5Seg1": [
+      0.7360446570972887,
+      0.5725677830940988
+    ],
+    "arm5Seg2": [
+      0.7783094098883573,
+      0.6259968102073366
+    ],
+    "arm6Seg0": [
+      0.682615629984051,
+      0.4768740031897927
+    ],
+    "arm6Seg1": [
+      0.7703349282296651,
+      0.49122807017543857
+    ],
+    "arm6Seg2": [
+      0.8596491228070176,
+      0.5303030303030303
+    ],
+    "arm7Seg0": [
+      0.6523125996810207,
+      0.44178628389154706
+    ],
+    "arm7Seg1": [
+      0.7559808612440191,
+      0.39553429027113235
+    ],
+    "arm7Seg2": [
+      0.8373205741626795,
+      0.4266347687400319
+    ],
+    "tentacle0Seg0": [
+      0.49760765550239233,
+      0.5406698564593302
+    ],
+    "tentacle0Seg1": [
+      0.43381180223285487,
+      0.6770334928229665
+    ],
+    "tentacle0Seg2": [
+      0.4019138755980861,
+      0.828548644338118
+    ],
+    "tentacle1Seg0": [
+      0.6602870813397129,
+      0.5502392344497608
+    ],
+    "tentacle1Seg1": [
+      0.7137161084529505,
+      0.6850079744816587
+    ],
+    "tentacle1Seg2": [
+      0.7918660287081339,
+      0.8492822966507177
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "source": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "canonical Cuttlefish aquatic species"
+  },
+  "coverage": {
+    "scope": "Independent full-size source-pixel observation of eight short arms plus two long feeding tentacles, both eyes, siphon and fin skirt",
+    "landmarkMethod": "Manual source points and priority boundary polygons, no donor coordinates or hidden-root inference. Roots name painted emergence boundaries, never invisible attachments.",
+    "armOrder": [
+      "upper-left",
+      "middle-left",
+      "lower-left",
+      "inner-left",
+      "inner-right",
+      "lower-right",
+      "middle-right",
+      "upper-right"
+    ],
+    "nativeAcceptance": false,
+    "contourCorrection": "Source-observed complete outer contours after existing priority owners, plus central real arm crown as root. Corrects omitted sucker/fin/arm-edge strips; preserves source RGBA, all landmarks and all 38 anatomical joints."
+  },
+  "provenance": {
+    "authoringSha256": "58634c011f761965dfc1d503d21e8f9b1fb28843ef2c81ed63564b21f12b5222",
+    "subjectSourceSha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461",
+    "presenceSha256": "d3b9f04ffc723a2745dad03a3206259b0f18f03f7980cb6ead43e58b558858b5",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "mantle": 0.18181993059960908,
+      "head": 0.06005795975681893,
+      "eyeFar": 0.10407538753840054,
+      "eyeNear": 0.11216555644349116,
+      "siphon": 0.15398185145561286,
+      "finFar": 0.1380230509865064,
+      "finNear": 0.09492648255153416,
+      "arm0Seg0": 0.08298443479364401,
+      "arm0Seg1": 0.11969428671337766,
+      "arm0Seg2": 0.1113375870553102,
+      "arm1Seg0": 0.13544886564165093,
+      "arm1Seg1": 0.08219907547084647,
+      "arm1Seg2": 0.08573958568239624,
+      "arm2Seg0": 0.16147094682070642,
+      "arm2Seg1": 0.0651422906488336,
+      "arm2Seg2": 0.06588485666901063,
+      "arm3Seg0": 0.14691237596541434,
+      "arm3Seg1": 0.06038004528288973,
+      "arm3Seg2": 0.06660482621314548,
+      "arm4Seg0": 0.14628338379461037,
+      "arm4Seg1": 0.06351613317939356,
+      "arm4Seg2": 0.06693341169934065,
+      "arm5Seg0": 0.17521371697225407,
+      "arm5Seg1": 0.07687416863529226,
+      "arm5Seg2": 0.0681246670946525,
+      "arm6Seg0": 0.14358496569761756,
+      "arm6Seg1": 0.08888596359229843,
+      "arm6Seg2": 0.09748783443063065,
+      "arm7Seg0": 0.0979271542775678,
+      "arm7Seg1": 0.113518083886917,
+      "arm7Seg2": 0.08708265417799672,
+      "tentacle0Seg0": 0.17547484039131345,
+      "tentacle0Seg1": 0.15054883665011298,
+      "tentacle0Seg2": 0.15483642614790746,
+      "tentacle1Seg0": 0.18831261870004234,
+      "tentacle1Seg1": 0.144973356959313,
+      "tentacle1Seg2": 0.18191608768878945
+    },
+    "measures": {
+      "body": 0.22686384215521652,
+      "bone-min": 0.06005795975681893,
+      "bone-max": 0.18831261870004234,
+      "arm/body:arm0": 1.3841619959318465,
+      "arm/body:arm1": 1.3373110669055888,
+      "arm/body:arm2": 1.2893112069327832,
+      "arm/body:arm3": 1.2073199715715541,
+      "arm/body:arm4": 1.219819456658979,
+      "arm/body:arm5": 1.4114746081180918,
+      "arm/body:arm6": 1.4544352268123637,
+      "arm/body:arm7": 1.3158901370374994,
+      "arm/body:tentacle0": 2.119597810832884,
+      "arm/body:tentacle1": 2.270974777001493
+    }
+  },
+  "recipeHash": "0b60e3bfdf54241decd72574a8999ec82e65552b3ae3d108126b5b275c7fc925"
+}

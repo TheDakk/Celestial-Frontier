@@ -1,0 +1,319 @@
+{
+  "schema": "cf.c202-source-boundary-inventory/v1",
+  "scope": "Actual unchanged positive-alpha adjacency; an excluded boundary is not automatically an observed anatomical join",
+  "inputs": [
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/11-howler-full-contours/fit01/record.json",
+      "sha256": "7bbd0a7060c14706e304f88dad8a638021d84c9847f503d8baa15d9ebe45dea0"
+    },
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/11-howler-full-contours/fit01/pre-split-binding.json",
+      "sha256": "1a1ae25a768a99384131e53abc56066d5e6310837a1a75604cc3402eb77ccdc5"
+    },
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/11-howler-full-contours/fit01/parts/atlas/c202-howler-full-contours.png",
+      "sha256": "dd2414f0593d4c51410ba3a59253352b98c6d80a79aed09803003f42d401604f"
+    }
+  ],
+  "joins": [
+    {
+      "name": "body--near-thigh",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 325,
+      "sourceBounds": [
+        580,
+        430,
+        693,
+        642
+      ]
+    },
+    {
+      "name": "body--near-upper-arm",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 317,
+      "sourceBounds": [
+        753,
+        394,
+        829,
+        635
+      ]
+    },
+    {
+      "name": "body--neck",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 12,
+      "sourceBounds": [
+        828,
+        383,
+        829,
+        394
+      ]
+    },
+    {
+      "name": "far-forearm--far-hand",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 58,
+      "sourceBounds": [
+        933,
+        808,
+        971,
+        826
+      ]
+    },
+    {
+      "name": "far-shin--far-foot",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 92,
+      "sourceBounds": [
+        370,
+        755,
+        427,
+        783
+      ]
+    },
+    {
+      "name": "far-thigh--far-shin",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 13,
+      "sourceBounds": [
+        503,
+        618,
+        513,
+        621
+      ]
+    },
+    {
+      "name": "far-upper-arm--far-forearm",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 101,
+      "sourceBounds": [
+        863,
+        687,
+        927,
+        708
+      ]
+    },
+    {
+      "name": "head--jaw",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 98,
+      "sourceBounds": [
+        979,
+        482,
+        1062,
+        497
+      ]
+    },
+    {
+      "name": "near-forearm--near-hand",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 72,
+      "sourceBounds": [
+        843,
+        816,
+        895,
+        832
+      ]
+    },
+    {
+      "name": "near-shin--near-foot",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 81,
+      "sourceBounds": [
+        546,
+        801,
+        600,
+        822
+      ]
+    },
+    {
+      "name": "near-thigh--near-shin",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 208,
+      "sourceBounds": [
+        561,
+        599,
+        688,
+        644
+      ]
+    },
+    {
+      "name": "near-upper-arm--near-forearm",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 135,
+      "sourceBounds": [
+        774,
+        647,
+        855,
+        690
+      ]
+    },
+    {
+      "name": "neck--head",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 213,
+      "sourceBounds": [
+        878,
+        370,
+        979,
+        482
+      ]
+    },
+    {
+      "name": "tail-middle--tail-tip",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 78,
+      "sourceBounds": [
+        204,
+        539,
+        243,
+        576
+      ]
+    },
+    {
+      "name": "tail-root--tail-middle",
+      "reason": "nearest anatomical attachment",
+      "sourceEdges": 87,
+      "sourceBounds": [
+        388,
+        551,
+        424,
+        602
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body|head",
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "sourceEdges": 125,
+      "sourceBounds": [
+        982,
+        367,
+        1035,
+        439
+      ]
+    },
+    {
+      "name": "far-forearm|near-forearm",
+      "reason": "independent sibling adjacency",
+      "sourceEdges": 101,
+      "sourceBounds": [
+        863,
+        703,
+        895,
+        773
+      ]
+    },
+    {
+      "name": "far-hand|near-hand",
+      "reason": "independent sibling adjacency",
+      "sourceEdges": 56,
+      "sourceBounds": [
+        943,
+        840,
+        977,
+        862
+      ]
+    },
+    {
+      "name": "far-shin|near-shin",
+      "reason": "independent sibling adjacency",
+      "sourceEdges": 79,
+      "sourceBounds": [
+        551,
+        637,
+        561,
+        706
+      ]
+    },
+    {
+      "name": "far-shin|near-thigh",
+      "reason": "independent sibling adjacency",
+      "sourceEdges": 75,
+      "sourceBounds": [
+        513,
+        614,
+        561,
+        637
+      ]
+    },
+    {
+      "name": "far-thigh|near-thigh",
+      "reason": "independent sibling adjacency",
+      "sourceEdges": 22,
+      "sourceBounds": [
+        505,
+        604,
+        513,
+        618
+      ]
+    },
+    {
+      "name": "far-upper-arm|near-forearm",
+      "reason": "independent sibling adjacency",
+      "sourceEdges": 21,
+      "sourceBounds": [
+        855,
+        690,
+        863,
+        703
+      ]
+    },
+    {
+      "name": "far-upper-arm|near-upper-arm",
+      "reason": "independent sibling adjacency",
+      "sourceEdges": 133,
+      "sourceBounds": [
+        855,
+        596,
+        894,
+        690
+      ]
+    },
+    {
+      "name": "far-upper-arm|neck",
+      "reason": "independent sibling adjacency",
+      "sourceEdges": 66,
+      "sourceBounds": [
+        894,
+        596,
+        923,
+        633
+      ]
+    },
+    {
+      "name": "jaw|neck",
+      "reason": "non-nearest ancestral silhouette adjacency",
+      "sourceEdges": 211,
+      "sourceBounds": [
+        947,
+        480,
+        1045,
+        555
+      ]
+    },
+    {
+      "name": "near-thigh|tail-root",
+      "reason": "independent sibling adjacency",
+      "sourceEdges": 88,
+      "sourceBounds": [
+        481,
+        488,
+        488,
+        565
+      ]
+    },
+    {
+      "name": "near-upper-arm|neck",
+      "reason": "independent sibling adjacency",
+      "sourceEdges": 309,
+      "sourceBounds": [
+        829,
+        393,
+        914,
+        596
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c202-source-generation/v1",
+  "generator": "builtin image_gen",
+  "originalPath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-5c8c4f75-68b0-472f-88f1-c702d3974dbd.png",
+  "retainedPath": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/master.png",
+  "masterSha256": "25777a6fa13cd2a810f5a296ff0a5cdb2bbf0af37f998cdcc47e0d7df08a328b",
+  "referencePaths": [
+    "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "bytesCopiedUnmodified": true,
+  "qualityAccepted": false,
+  "intendedPromptSha256": "ca79d6a5777466d324b3822a0c1dbc92532514e8adec0c3e797245d39e3012d1",
+  "sentPrompt": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/prompt.sent.txt",
+  "sentPromptSha256": "52c7c5594d88a4238fba484092e96d2243aa36656589521eecc91b3be7d756c5",
+  "promptTransmissionNote": "The actual first-generation prompt included one trailing failed optional material-file glob diagnostic; exact bytes are retained. It was not carried into later correction prompts."
+}

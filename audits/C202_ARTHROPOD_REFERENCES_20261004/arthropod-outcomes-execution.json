@@ -1,0 +1,13 @@
+{
+  "args": [
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "apps/game/src/creature-rig-contact-insect-sockets.test.ts",
+    "apps/game/src/creature-rig-contact-fixed-attachments.test.ts",
+    "apps/game/src/motion/compact-myriapod.test.ts"
+  ],
+  "cwd": "port/v2",
+  "status": "FAIL",
+  "exitCode": 1,
+  "nodeVersion": "v26.10.0"
+}

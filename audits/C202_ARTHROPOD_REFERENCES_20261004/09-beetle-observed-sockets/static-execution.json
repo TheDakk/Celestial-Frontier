@@ -1,0 +1,11 @@
+{
+  "args": [
+    "audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs",
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01",
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/static-01.json"
+  ],
+  "status": "REFUSED",
+  "exitCode": 1,
+  "helperSha256": "e43a19c2a3d32539cf99725f36384ab3885e60fdf1d123b4e369560738626d2b",
+  "native": false
+}

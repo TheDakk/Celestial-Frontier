@@ -1,0 +1,7 @@
+{
+  "predecessor": "audits/C202_PRIMATE_REFERENCES_20261004/11-howler-full-contours",
+  "parts": [
+    "head"
+  ],
+  "scope": "Complete exact positive-alpha source contour ownership. Gorilla dorsal nape belongs neck rather than crown; retained cast folds were in root/head/nape region. Howler disconnected forehead strip [984,368..1042,438] belongs head. Gorilla inner far toes [324,899..378,921] belong foot. All source pixels/landmarks/limits unchanged."
+}

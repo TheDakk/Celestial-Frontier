@@ -1,0 +1,19 @@
+{
+  "id": "08-polyxenus-count-correction",
+  "name": "Polyxenus",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-9c15e174-0c40-4edd-bde3-519792e83993.png",
+  "masterSha256": "a1fb2fed339450411eb4370901a7417808623f041dd985eace1535cc82947681",
+  "bytes": 1488913,
+  "promptSha256": "bd954f7b293bc00cee955aed5bbe0cf947a250baf5a5fbc8add2bcf520b58a53",
+  "actualImageInputs": [
+    {
+      "role": "sole style reference",
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "transparentBackground": false
+}

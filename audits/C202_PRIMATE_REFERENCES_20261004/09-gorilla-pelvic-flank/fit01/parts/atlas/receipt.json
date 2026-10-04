@@ -1,0 +1,99 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c202-gorilla-pelvic-flank",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "8adb3f0647a6ad4893c1a4e2c9849367db51f1465386f631175c28c6c480cb11",
+    "pngSha256": "4d0a51c3c2c3a5e6581a3c6a23000f82e1d21bcb84aaf4cfcdbe6fb51ef62624"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "de2868a413f8751ba48ad337fdf306289e498dad354d23683fcb3d402cbdf9ad"
+    },
+    {
+      "name": "far-foot.png",
+      "sha256": "48f2d951c778d738e492172bf9d8ec04d98f0464d6f2fe5cb4687c0921ffa946"
+    },
+    {
+      "name": "far-forearm.png",
+      "sha256": "89d20730104ded85c2f96574d1c299de0f1ad0d95ee42b985bfd5a8d6ffbc9d9"
+    },
+    {
+      "name": "far-hand.png",
+      "sha256": "6c76cf22e83efabc64171454f83b49f40f5d860bbabb175edb33676279e8c367"
+    },
+    {
+      "name": "far-shin.png",
+      "sha256": "089b5e09f905ed21e87b20b9723e6ea2c35dfd7f46e6a5c3fc9db2a52af2f863"
+    },
+    {
+      "name": "far-thigh.png",
+      "sha256": "5252622b24cdd95c5583432854db63212dd821ffccccbb49d02b2014e3fe5caf"
+    },
+    {
+      "name": "far-upper-arm.png",
+      "sha256": "9a8cdc23bbcfc26e054f2c298417c6aa0531c3154d2605d49dd6f3c64da90dde"
+    },
+    {
+      "name": "head.png",
+      "sha256": "cdbd571e42fcda7a63709d1d3a99b8ff0758b49e8f1f09cc769cc36a63d2b7f6"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "ade55747708d0f81300ecdd45c0f8be4c41038a2ff2d5880f39c423dea1a25bf"
+    },
+    {
+      "name": "near-foot.png",
+      "sha256": "a33bb44b11df94824fed8efceb05191aa5a33b28dfafc1a29ffa34a0b75bd751"
+    },
+    {
+      "name": "near-forearm.png",
+      "sha256": "9349190a46c4c040b23d1c398412b1ac3facc2ea388380534bbc49fdb3770256"
+    },
+    {
+      "name": "near-hand.png",
+      "sha256": "54f325121aa9144c524ca6938390675476008d6257f1634455bb7bfc6656f3d9"
+    },
+    {
+      "name": "near-shin.png",
+      "sha256": "3096fa5cf222e59d32a27aaed3c1aa9e7f54f11efd3048e86ee426d0e9a51e6d"
+    },
+    {
+      "name": "near-thigh.png",
+      "sha256": "8d13f7ca77264dd35863a86aa0f122b21497dd06d9581f511e14cf017fa74430"
+    },
+    {
+      "name": "near-upper-arm.png",
+      "sha256": "1b555f01a77530a67f376e3c98e05aec393bda7ef98a62c1a39ef8c5975c9a80"
+    },
+    {
+      "name": "neck.png",
+      "sha256": "9ff98abe50a5b185aea7f4a1baf0c9bacccf15f20a943b3d92fa9d7b93817947"
+    },
+    {
+      "name": "pelvis.png",
+      "sha256": "221cf09d8387ca68f8f7fcc1ed287105fc7e9579ad1437aa252dec65d840676c"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "c202-howler-crown-contour",
+    "parts": 19,
+    "atlasSize": {
+      "width": 743,
+      "height": 1187
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "a8852bfb1996af47151bc400160c06c86994d8200b5584d765198958ded1c209",
+    "recordRecipeHash": "1a6a4e0705ff505fe5381aa73fe441494c603382417abfdd3a535d25d833bffe",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "a8852bfb1996af47151bc400160c06c86994d8200b5584d765198958ded1c209",
+      "atlasSha256": "2fcd35735daa00c574a84ff57773bee9a77deef38bdf864860f84adf622fe24d",
+      "parts": 19,
+      "comparedChannels": 1916260,
+      "changedChannels": 0
+    },
+    "vertices": 1457,
+    "partVertices": 2328,
+    "parts": 19,
+    "leaves": 634,
+    "triangles": 2630,
+    "ownershipEdges": 3049,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarFoot",
+        "part": "far-foot",
+        "vertex": 40,
+        "distancePx": 7.15891053163819,
+        "supports": [
+          248
+        ]
+      },
+      {
+        "joint": "legNearFoot",
+        "part": "near-foot",
+        "vertex": 30,
+        "distancePx": 11.335784048754608,
+        "supports": [
+          155
+        ]
+      }
+    ],
+    "sourceBindingHash": "397619811e2617ea020dd483097fe96d62a08189963fb398109ec999fc76fba6",
+    "sourceVertices": 1457,
+    "vertices": 1697,
+    "sharedSupports": 290,
+    "pins": 732,
+    "independentSurfaceParts": 19,
+    "sourceJoins": 15,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "1a6a4e0705ff505fe5381aa73fe441494c603382417abfdd3a535d25d833bffe",
+  "bindingHash": "d7809aa71ce077aa5fa8d713a55ce2b3096436bdead551e9964941dc105e765e",
+  "masterSha256": "5ebd7622ff46f0a5b88e60b114b4644634e3c0d00cccc5094f4ddc8e3d0848ee",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

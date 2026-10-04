@@ -10,10 +10,10 @@ const root=new URL('../../../../../../',import.meta.url);
 const inputs=JSON.parse(fs.readFileSync(new URL('audits/BIRD_SUPPORT_C75_20260927/inputs.json',root),'utf8')).cases as [string,string][];
 const read=(dir:string,file:string)=>JSON.parse(fs.readFileSync(new URL(dir+'/'+file,root),'utf8'));
 const fixtures=(name:string)=>{const dir=inputs.find(r=>r[0]===name)![1],record=read(dir,'record.json'),binding=read(dir,'binding.json'),base=compileBodyCard(record,record.genome);return{record,binding,base,painted:withPaintedContactSupports(base,record,binding)};};
-function failures(f:ReturnType<typeof fixtures>,timeline:ReturnType<typeof buildTimeline>){
+function failures(f:ReturnType<typeof fixtures>,timeline:ReturnType<typeof buildTimeline>,travel?:'solver'|'stage'){
  const solver=createFamilyContactSolver(f.record,observedContactSupports(f.record,f.binding));let pose:Record<string,{rotation:number;dx?:number;dy?:number}>={},n=0;
  const player=createGsapPlayer(timeline,{setJoint(j,rotation,dx,dy){pose[j]={rotation,dx,dy};}},{now:()=>0});
- try{for(let i=0;i<=120;i++){const ms=timeline.durationMs*i/120;pose={};player.seek(ms);try{solver.resolve(pose,{actionId:timeline.actionId,elapsedMs:ms,durationMs:timeline.durationMs,weight:1,realm:f.painted.realm,...timeline.actionId.startsWith('melee:')?{travel:'stage' as const}:{}});}catch{n++;}}}finally{player.stop();}return n;
+ try{for(let i=0;i<=120;i++){const ms=timeline.durationMs*i/120;pose={};player.seek(ms);try{solver.resolve(pose,{actionId:timeline.actionId,elapsedMs:ms,durationMs:timeline.durationMs,weight:1,realm:f.painted.realm,...(travel?{travel}:timeline.actionId.startsWith('melee:')?{travel:'stage' as const}:{})});}catch{n++;}}}finally{player.stop();}return n;
 }
 // C201 changes only the final local neck/head curl before the existing painted
 // torso author. Contact-valid curves still need that silhouette repair: a green
@@ -43,7 +43,14 @@ it('preserves every already-passing probe outcome',()=>{
   const before=buildTimeline(f.base,id,f.base.identity.seed),after=buildTimeline(f.painted,id,f.painted.identity.seed);
   if(failures(f,before)===0){
    expect(failures(f,after)).toBe(0);
-   if(id==='faint')expectPassingFaint(before,after);else expect(after).toEqual(before);
+   if(id==='faint'){
+    // C202 proves a solver-only green can refuse in the stage adapter. Keep
+    // exact curves when both contexts already pass; retain every old solver
+    // success and require the new stage outcome in either case.
+    expect(failures(f,after,'stage')).toBe(0);
+    if(failures(f,before,'stage')===0)expectPassingFaint(before,after);
+    else expectCoherentFaintHead(before,after);
+   }else expect(after).toEqual(before);
   }
  }}
 },20_000); // Exhaustive fixture/action/contact sampling; retain every assertion under full-profile contention.
@@ -70,4 +77,19 @@ it('rejects restored nape curl, erased anticipation and unrelated faint changes'
  mutate(t=>({...t,tracks:{...t.tracks,wingNearTip:t.tracks.wingNearTip!.map((k,i)=>i===1?{...k,value:k.value+.01}:k)}}));
  mutate(t=>({...t,limitsRad:{...t.limitsRad,head:{...t.limitsRad.head!,max:t.limitsRad.head!.max+.01}}}));
  mutate(t=>({...t,durationMs:t.durationMs+1}));
+});
+
+// Retained source-bound Albatross: the old author passed standalone while the
+// actual battle faint exceeded its unchanged -45 degree foot limit.
+it('authors Albatross faint for both standalone and stage-owned travel',()=>{
+ const dir='audits/C202_NATIVE_HOLDS_20261004/albatross-source-01/fit01',record=read(dir,'record.json'),binding=read(dir,'binding.json'),base=compileBodyCard(record,record.genome),f={record,binding,base,painted:withPaintedContactSupports(base,record,binding)};
+ const after=buildTimeline(f.painted,'faint',1),raw=buildTimeline(base,'faint',1);
+ const retained=JSON.parse(fs.readFileSync(new URL('audits/C202_NATIVE_HOLDS_20261004/albatross-travel-before-timeline.json',root),'utf8'));
+ expect(failures(f,retained,'solver')).toBe(0);
+ expect(failures(f,retained,'stage')).toBeGreaterThan(0);
+ expect(failures(f,after,'solver')).toBe(0);expect(failures(f,after,'stage')).toBe(0);
+ expect(after.phases).toEqual(raw.phases);expect(after.durationMs).toBe(raw.durationMs);
+ expect(after.limitsRad).toEqual(raw.limitsRad);expect(after.secondary).toEqual(raw.secondary);expect(after.deform).toEqual(raw.deform);
+ for(const[joint,keys]of Object.entries(retained.tracks))if(!['root','pelvis','spine','chest'].includes(joint))expect(after.tracks[joint]).toEqual(keys);
+ expectCoherentFaintHead(raw,after);
 });

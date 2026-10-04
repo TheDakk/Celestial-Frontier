@@ -1,0 +1,150 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "near-hand",
+      "joint": "armNearHand",
+      "owner": "near-hand"
+    },
+    {
+      "region": "far-hand",
+      "joint": "armFarHand",
+      "owner": "far-hand"
+    },
+    {
+      "region": "near-foot",
+      "joint": "legNearFoot",
+      "owner": "near-foot"
+    },
+    {
+      "region": "far-foot",
+      "joint": "legFarFoot",
+      "owner": "far-foot"
+    },
+    {
+      "region": "near-forearm",
+      "joint": "armNearElbow",
+      "owner": "near-forearm"
+    },
+    {
+      "region": "far-forearm",
+      "joint": "armFarElbow",
+      "owner": "far-forearm"
+    },
+    {
+      "region": "near-shin",
+      "joint": "legNearKnee",
+      "owner": "near-shin"
+    },
+    {
+      "region": "far-shin",
+      "joint": "legFarKnee",
+      "owner": "far-shin"
+    },
+    {
+      "region": "near-thigh",
+      "joint": "legNearHip",
+      "owner": "near-thigh"
+    },
+    {
+      "region": "far-thigh",
+      "joint": "legFarHip",
+      "owner": "far-thigh"
+    },
+    {
+      "region": "near-upper-arm",
+      "joint": "armNearShoulder",
+      "owner": "near-upper-arm"
+    },
+    {
+      "region": "far-upper-arm",
+      "joint": "armFarShoulder",
+      "owner": "far-upper-arm"
+    },
+    {
+      "region": "tail-tip",
+      "joint": "tail2",
+      "owner": "tail-tip"
+    },
+    {
+      "region": "tail-middle",
+      "joint": "tail1",
+      "owner": "tail-middle"
+    },
+    {
+      "region": "tail-root",
+      "joint": "tail0",
+      "owner": "tail-root"
+    },
+    {
+      "region": "jaw",
+      "joint": "jaw",
+      "owner": "jaw"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "neck",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "throat-pouch",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "chest",
+      "joint": "chest",
+      "owner": "chest"
+    },
+    {
+      "region": "pelvis",
+      "joint": "pelvis",
+      "owner": "pelvis"
+    },
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    4866,
+    3615,
+    4457,
+    4915,
+    12696,
+    6235,
+    10344,
+    5722,
+    26397,
+    5353,
+    25782,
+    8668,
+    8726,
+    10843,
+    13296,
+    3416,
+    15954,
+    22896,
+    5227,
+    2430,
+    51108
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "c2e023828358f09b8588bfaac87dd944d58a3c2e19267d09f9638eee9eb9dacb",
+  "intake": {
+    "erodedPixels": 7596,
+    "despilledPixels": 770,
+    "unresolvedEdgePixels": 22
+  },
+  "remainderPart": "body"
+}

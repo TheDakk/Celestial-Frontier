@@ -1,0 +1,9 @@
+{
+  "status": "SOURCE_FRAMING_CORRECTION_NEEDED",
+  "observedArmTips": 8,
+  "findings": [
+    "The missing low-right eighth arm now visibly emerges beside the central arm and continues to a separate low-right tip.",
+    "Eight actual source arm chains can now be distinguished; no absence declaration is needed.",
+    "Leftmost and rightmost tips still have insufficient requested margin."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "07-polyxenus-dorsal",
+  "name": "Polyxenus",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-bffb77be-a88b-4301-8c6a-b09f825cbf8e.png",
+  "masterSha256": "be1a7e85561d793f5fdae059c8bab5fb08a58d9fdd3f353ed835c4e01e30fea4",
+  "bytes": 1615610,
+  "promptSha256": "eb17fe009deec52b57b1bd815cfef64c6dfb58892c381918b9a2e80d9cdde0a6",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/master.png",
+      "sha256": "6442f17acc4bca3b581f4139fd3824f866a1b004b684894f1572313ace7a1a03"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "transparentBackground": false
+}

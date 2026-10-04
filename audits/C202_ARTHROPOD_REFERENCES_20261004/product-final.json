@@ -1,0 +1,65 @@
+{
+  "schema": "cf.c202-product-final/v1",
+  "ownedFiles": [
+    {
+      "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "sha256": "d295145272fd53027bd808dab6aa752d29c4c5f3da4091fbd7d209ed798431db",
+      "bytes": 4509
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "8a47a0d10f87372b4ecaac12e18442f2ab8ba0db94eda1c345644d3804ea99df",
+      "bytes": 3929
+    },
+    {
+      "path": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "sha256": "f65a61bd80302b3621f3ccb8f4b7373256b6efc26f07b0d21d3fa29edab1e55a",
+      "bytes": 2441
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "39443a28ecfc31ecc96915a3e8d6256b39182063251460b88f7cfdfc94ec91dc",
+      "bytes": 1862
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "d5ce727eebbcd6c54a6996454f818df709e969b52aa9f09eb9d679b0c9722986",
+      "bytes": 41686
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-topology.ts",
+      "sha256": "bb21fa793b2b0fc9cbe6750a6c68502ee0cccef45f95e2bde52c476e6673f5c2",
+      "bytes": 4415
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "sha256": "eef4e5e023f21707639d90a796e6bf900aea8d255b6d2b5327aeaa43c05e215f",
+      "bytes": 12966
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact-insect-sockets.test.ts",
+      "sha256": "071fed6786e7ee2e19c598e663ce8cd003966732d01d659adbcbee9b5d0d1b6c",
+      "bytes": 5144
+    },
+    {
+      "path": "CREATURE_ANIMATION.md",
+      "sha256": "94b08595e104a448757e840faf1afc46d3380260f4467dc63d83ed7285a0e075",
+      "bytes": 116972
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "sha256": "a739f293e7aa2b32233156e5011294880ab8a33aa3a74e18d544bf946bae11fa",
+      "bytes": 634480
+    }
+  ],
+  "controls": {
+    "nodeFixedAttachment": 7,
+    "insectAndCompactContact": 6,
+    "compactTopologyAndActions": 9,
+    "appTypes": "PASS",
+    "legacyFamilyEquivalence": 14,
+    "oneUltimateCountEquivalence": 14
+  },
+  "nativeQualification": false,
+  "qualifiedReferencePool": []
+}

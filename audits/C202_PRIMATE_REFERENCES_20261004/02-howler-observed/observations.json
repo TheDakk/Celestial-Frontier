@@ -1,0 +1,10 @@
+{
+  "independentSource": true,
+  "changes": "Independent manual Howler control frames and source contours; throat pouch follows neck; feet retain separate actual support levels.",
+  "source": "audits/C198_CREATURE_SUPPLY_B_20261003/07-howler-monkey/master.png",
+  "sourceSha256": "8c8d46f3e0e6884fd5874bd68b93cafd2fe72801624bd14bf86996aa0efe8e05",
+  "pixelsChanged": 0,
+  "sourceGeneration": false,
+  "staticAccepted": false,
+  "nativeQualified": false
+}

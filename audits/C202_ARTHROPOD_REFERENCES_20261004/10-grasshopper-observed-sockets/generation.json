@@ -1,0 +1,19 @@
+{
+  "id": "05-grasshopper-framed",
+  "name": "Grasshopper",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-632f8d83-4246-4f0f-8203-013ad5994979.png",
+  "masterSha256": "37790d9e90adcef9eee96bccad51426bdf74b2b8032236c83b37daa9bf60392c",
+  "bytes": 1178141,
+  "promptSha256": "009082b6b7762bfde9f12efeeadeba5e7c4c1a2ae849fbe4c0c4497388e2ed12",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/master.png",
+      "sha256": "b54f921550ea722bb9f8a28adedf2d61381b18f256a830604d6ae0d3333ef42d"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "transparentBackground": false
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "cf.c202-contour-successor/v1",
+  "source": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/master.png",
+  "sourceSha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a",
+  "predecessor": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01",
+  "landmarksUnchanged": true,
+  "priorNonBodyOwnersPreserved": true,
+  "reason": "Full-size ownership showed arm-edge strips assigned to stationary body; manually extend the actual corresponding source regions without altering prior owned paint."
+}

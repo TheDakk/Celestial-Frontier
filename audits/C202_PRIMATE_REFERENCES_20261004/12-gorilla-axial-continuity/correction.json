@@ -1,0 +1,13 @@
+{
+  "predecessor": "audits/C202_PRIMATE_REFERENCES_20261004/10-gorilla-full-contours",
+  "scope": "The continuous axial/pelvic painted surface stays in the root remainder; pelvis skeleton landmark retained. This makes the actual body-to-thigh paint adjacency the existing nearest attachment, without adding seams or changing product topology. Extend only the last root-owned inner far-hind edge, near toe edge, and crown fringe into empty key background.",
+  "landmarkChanges": [],
+  "removedPaintOwners": [
+    "pelvis"
+  ],
+  "allRemovedOwnerPaintRetainedBy": "body",
+  "sourcePixelEdits": 0,
+  "runtimeChanged": false,
+  "limitsChanged": false,
+  "acceptance": "Pending unchanged intake/static and full-size actual-rig review"
+}

@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c202-source-generation/v1",
+  "generator": "builtin image_gen",
+  "originalPath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-48e733e5-3960-4952-9213-9e166e2f7cfa.png",
+  "retainedPath": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/master.png",
+  "masterSha256": "d951cb7c97780c87f9a16364d358b898a330530b3ab3d9ca4bee99673a2fcb31",
+  "promptSha256": "dba5fd2361c2ea0962775600765b7065cfe851094671e535a28d46db33048bcf",
+  "bytesCopiedUnmodified": true,
+  "qualityAccepted": false
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "cf.c202-cephalopod-source-request/v1",
+  "species": "Octopus",
+  "sourceCanonicalPrompt": "audits/C198_CREATURE_SUPPLY_B_20261003/16-octopus/prompt.canonical.txt",
+  "canonicalSha256": "e5c2a1090734d57de2eca9636ee7996f3e359c7e26f5b8ba2fc41d7cd86b3ee5",
+  "promptSha256": "ae6bbd858147ea4198d2e8e3ba89cba76241a724ee22795a081e1fdd0d97d1d0",
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "styleSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "artKit": "ART_KIT.md",
+  "artKitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "generator": "builtin image_gen",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedCountsAreNotEvidence": true,
+  "compositionOverride": "near-frontal slightly underside arm crown; canonical side-view overridden for actual root visibility",
+  "qualityAccepted": false
+}

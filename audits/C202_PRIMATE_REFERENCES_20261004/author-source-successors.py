@@ -1,0 +1,31 @@
+from pathlib import Path
+import json,shutil
+B=Path('audits/C202_PRIMATE_REFERENCES_20261004')
+def write(p,j):p.write_text(json.dumps(j,indent=2)+'\n')
+src=B/'07-gorilla-haunch-boundary';d=B/'08-gorilla-visible-haunch';d.mkdir();j=json.loads((src/'authoring.json').read_text());j['id']='c202-gorilla-visible-haunch';j['parts']=[p for p in j['parts'] if p['id']!='pelvis'];write(d/'authoring.json',j)
+for f in ['master.png','subject-source.json','presence.json']:shutil.copyfile(src/f,d/f)
+write(d/'correction.json',{'predecessor':str(src),'change':'Omit empty pelvis painted part; the control joint remains. Visible haunch is near thigh, with no separately exposed pelvis paint. No landmark or other owner change.','retainedPredecessorFailure':'authored-parts empty pelvis; its subsequent static invocation only failed missing complete fit and is not a valid static attempt.'})
+p=B/'06-howler-side-view';parts=[]
+def P(i,j,poly,layer='near'):parts.append({'id':i,'joint':j,'polygonPx':poly,'layer':layer})
+P('near-hand','armNearHand',[[852,838],[885,822],[916,836],[945,850],[974,864],[989,893],[983,922],[945,930],[916,918],[889,892],[864,883]])
+P('far-hand','armFarHand',[[940,816],[971,822],[990,839],[1019,845],[1046,863],[1054,893],[1042,905],[1016,897],[995,878],[966,874],[945,857]],'far')
+P('near-foot','legNearFoot',[[535,822],[566,816],[595,837],[625,839],[666,839],[701,856],[725,887],[714,906],[689,902],[669,883],[637,879],[602,880],[565,879],[535,866]])
+P('far-foot','legFarFoot',[[367,776],[394,769],[418,789],[417,823],[442,825],[475,839],[492,859],[479,874],[452,865],[428,858],[417,874],[397,870],[381,844],[371,812]],'far')
+P('near-shin','legNearKnee',[[579,623],[621,607],[660,630],[685,661],[680,704],[659,750],[626,801],[597,849],[566,868],[535,853],[533,822],[548,777],[562,729],[574,680]])
+P('far-shin','legFarKnee',[[490,640],[526,631],[555,650],[561,675],[542,706],[518,735],[481,761],[445,785],[422,817],[392,821],[367,799],[366,770],[385,744],[419,716],[457,690]],'far')
+P('near-thigh','legNearHip',[[527,457],[566,440],[610,454],[642,490],[657,536],[663,579],[676,622],[676,664],[655,700],[617,711],[582,681],[551,649],[528,618],[506,582],[497,542],[500,498]])
+P('far-thigh','legFarHip',[[491,593],[516,585],[541,605],[555,634],[555,661],[533,687],[504,702],[480,688],[477,661]],'far')
+P('near-forearm','armNearElbow',[[764,681],[795,660],[824,672],[846,705],[862,743],[884,788],[918,840],[923,868],[890,891],[860,873],[835,841],[807,803],[786,767],[771,733]])
+P('far-forearm','armFarElbow',[[879,713],[907,703],[932,735],[950,776],[974,815],[990,844],[974,869],[949,863],[932,837],[911,807],[894,774]],'far')
+P('near-upper-arm','armNearShoulder',[[801,416],[837,407],[877,429],[895,467],[895,508],[889,553],[873,601],[852,644],[839,689],[814,721],[781,721],[760,703],[765,654],[774,606],[779,553],[784,493]])
+P('far-upper-arm','armFarShoulder',[[862,595],[888,602],[907,640],[923,678],[932,720],[915,754],[889,759],[870,731],[858,694],[850,654]],'far')
+P('jaw','jaw',[[964,487],[994,494],[1025,502],[1057,506],[1064,527],[1044,544],[1009,540],[977,524]])
+P('head','head',[[887,373],[927,366],[963,378],[990,395],[1009,423],[1019,452],[1044,471],[1070,489],[1068,511],[1048,524],[1016,516],[988,501],[963,470],[945,437],[916,422],[893,401]])
+P('neck','neck',[[843,386],[876,362],[914,367],[945,395],[964,432],[980,474],[991,510],[1026,537],[1048,575],[1041,613],[1011,643],[979,651],[939,633],[907,607],[888,566],[871,522],[855,477]])
+# Three continuous, actually painted tail regions, distal first.
+P('tail-tip','tail2',[[156,506],[154,463],[158,416],[174,369],[199,336],[232,318],[273,312],[298,324],[302,348],[291,369],[256,375],[226,405],[213,443],[214,485],[234,524],[218,559],[187,548]])
+P('tail-middle','tail1',[[176,492],[205,478],[225,512],[256,541],[298,562],[344,568],[388,563],[417,590],[402,615],[354,630],[305,622],[256,610],[216,588],[185,557]])
+P('tail-root','tail0',[[347,563],[391,549],[433,524],[472,499],[508,480],[539,495],[527,529],[505,553],[473,580],[438,603],[397,620],[365,617]])
+P('body','root',[[0,0],[1,0],[0,1]])
+j={'id':'c202-howler-lateral-independent','family':'primate','habitat':{'realm':'land','source':'Four real primate hands/feet at their own observed projected contact heights; independently authored Howler Monkey.'},'landmarksPx':{'root':[719,557],'pelvis':[555,552],'spine':[700,499],'chest':[839,489],'neck':[913,494],'head':[971,441],'jaw':[1020,510],'armNearShoulder':[837,487],'armNearElbow':[807,711],'armNearHand':[901,866],'armFarShoulder':[877,627],'armFarElbow':[910,742],'armFarHand':[982,858],'legNearHip':[580,545],'legNearKnee':[628,661],'legNearFoot':[560,850],'legFarHip':[528,570],'legFarKnee':[521,660],'legFarFoot':[394,815],'tail0':[508,528],'tail1':[324,589],'tail2':[191,456]},'groundLineY':917/1254,'materials':{'surface':'fur'},'parts':parts,'remainderPart':'body','coverage':{'scope':'Source-specific manual control/contours. No donor fitting; no hidden appendages added.','qualityAccepted':False}}
+write(p/'authoring.json',j);write(p/'presence.json',{'schema':'cf.anatomy-presence/v2','absent':[],'hidden':[],'folded':[]});write(p/'observations.json',{'independentSubject':'Howler Monkey, distinct from prior admitted Capuchin','visible':'Both hind thighs emerge separately, real opposing long hind toes and palms, shallow tail arc, throat pouch. Source contact Ys retained.','limitations':'Far arm proximal attachment is partly covered by throat/near arm; landmark is visible arm emergence. No internal shoulder anatomy asserted. Painting style/material and native full motion remain unqualified.'})

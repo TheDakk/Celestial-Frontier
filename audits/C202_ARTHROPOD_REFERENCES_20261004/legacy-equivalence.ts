@@ -1,0 +1,5 @@
+import fs from'node:fs';import{createHash}from'node:crypto';
+import{FAMILY_CONTRACTS,familyContract}from'../../port/v2/tools/creature-animation/family-contracts.mjs';
+import{resolveAnatomyInventory}from'../../port/v2/tools/creature-animation/anatomy-inventory.mjs';
+import{actionsFor}from'../../port/v2/apps/game/src/motion/family-actions.ts';
+const sha=(s:string)=>createHash('sha256').update(s).digest('hex'),stable=(x:unknown)=>JSON.stringify(x);const rows=FAMILY_CONTRACTS.map(c=>({id:c.id,contractSha256:sha(stable(c)),actionsSha256:sha(stable(actionsFor(c.id)))}));const compact=Array.from({length:14},(_,i)=>{const pairs=i+1,anatomy={schema:'cf.anatomy-presence/v2'as const,absent:[],hidden:[],folded:[],appendages:{walkingLegPairs:pairs,ultimateLegPairs:1}};return{pairs,contractSha256:sha(stable(resolveAnatomyInventory(familyContract('myriapod'),anatomy))),actionsSha256:sha(stable(actionsFor('myriapod',anatomy)))};});console.log(JSON.stringify({legacyFamilies:rows,existingOneUltimateCounts:compact}));

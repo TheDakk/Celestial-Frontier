@@ -1,0 +1,3254 @@
+{
+  "schema": "cf.c202-cephalopod-delivery/v1",
+  "status": "OCTOPUS_NATIVE_SEQUENCE_PENDING_CUTTLEFISH_HELD",
+  "qualityAccepted": false,
+  "technicalReferenceQualified": false,
+  "octopus": {
+    "fit": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit",
+    "ready": {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-ready02.json",
+      "sha256": "7d0890717a6848cd5dd96d2ac18b2151d48eae82ca8fd01ad1003800d28e5c88"
+    }
+  },
+  "cuttlefish": {
+    "fit": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01",
+    "terminal": {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/cuttlefish-terminal.json",
+      "sha256": "f622795e9b37ef813113f2adec6e2c035f7f103fff64149aaec88e1fa97b0e1b"
+    }
+  },
+  "compiler": {
+    "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/compiler-delivery.json",
+    "sha256": "7c906ebaf4b41b0d0792ef578121b25b50ac3becedcc1d95b1e104c39c4871a0"
+  },
+  "fileCount": 645,
+  "totalBytes": 166907134,
+  "files": [
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/authoring.json",
+      "bytes": 22283,
+      "sha256": "73fc1344600cd7c2f61dafebdead645c6ec41155bf040a6af60012ffb9b05dae"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/conservation.json",
+      "bytes": 10658,
+      "sha256": "e74fae0b15058ffbc39f5fdc211f3b3ac4de76491e9b4a866c6adb0d14d8ab77"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/binding.json",
+      "bytes": 2768522,
+      "sha256": "63c63ac4fba0ee7630068d4ded17dc2fa44f873c571d2ace9cf5c1a6dad76e12"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/declaration.json",
+      "bytes": 30256,
+      "sha256": "5ecb1940257d9681d9a8d9a152acdd0644246b994471a682306de31267ff47dc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/intake-provenance.json",
+      "bytes": 3352,
+      "sha256": "59586af53c2777c0550689fe1931d647fb52cdbceaa3f0fdd41419cb99587a9c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/atlas/c202-octopus-source04-author01.json",
+      "bytes": 12285,
+      "sha256": "815e8a3acdaf638bdcc6a23770e5d938598f45f0b73edf7dd0cefa0eefbcf658"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/atlas/c202-octopus-source04-author01.png",
+      "bytes": 768560,
+      "sha256": "d71e898d23ec4693da4f6dac05f3b965b9b277494ef3d50022908afd280fdcc9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/atlas/receipt.json",
+      "bytes": 4576,
+      "sha256": "3a7fac5b0f45c572b9f44fb99536a1ba8d6e9871952b963edf89edc33b192a4d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/binding.json",
+      "bytes": 9976,
+      "sha256": "7e4e6a58b5f07c5c45fc5e75e8642d556496adccb12da307b1604c3bcbf27667"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/keyed.png",
+      "bytes": 2054661,
+      "sha256": "3061613aec2512ca3165cbdefe51a49d4b8ea929465cb7a3c6ce1a2c8987d7de"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/manifest.json",
+      "bytes": 4968,
+      "sha256": "f1f77471c72efd1b9aab0a0ca2387e763fc434e241b43261da602a3622f610a9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/ownership.png",
+      "bytes": 26537,
+      "sha256": "228ebaa6620897d1db6db1f5e32f0bc93c83a6472bc756cbd208054385edeaa7"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm0-base.png",
+      "bytes": 21209,
+      "sha256": "2e2b44fc66de10b9b5a15dfc3dc53886f3206cd15aa474ea8ac7f92c06f99744"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm0-middle.png",
+      "bytes": 18516,
+      "sha256": "38869e3b46562ad0788d65f898a8e0182770338248b07eb058da66bd2151ff69"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm0-tip.png",
+      "bytes": 10141,
+      "sha256": "1b189311032c2209c89bce15d643584f04232ab2f60e3928fd15eff3cb01f208"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm1-base.png",
+      "bytes": 31129,
+      "sha256": "bf35a2d62c83c075243acd7eea93723c54f884557c0491e0654a3cc035568580"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm1-middle.png",
+      "bytes": 31767,
+      "sha256": "a9bce6f74eda2d2f4b7f5ae9002f11ab516766bec74cea353479c23e51f438e2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm1-tip.png",
+      "bytes": 16101,
+      "sha256": "d1ad19990f16b14530fb0eeb65aa9c94140993522836b2fca2cff542b85b1984"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm2-base.png",
+      "bytes": 20544,
+      "sha256": "3ad58487921d3f0e49afd5ccb316f1ee1a7b73438cd78ac1e340cbe28a7df622"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm2-middle.png",
+      "bytes": 23497,
+      "sha256": "d0dc170849bf6e98a432810bc213ddd73abcfaff17fd6ee28591d1a42689f973"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm2-tip.png",
+      "bytes": 13595,
+      "sha256": "3cf312fbe95c780288b10ad4b1dbf520301a0aea65c3cc7c251d922fca193e6b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm3-base.png",
+      "bytes": 43201,
+      "sha256": "be14adf82d57566cb40e58ebfb004c4a4ccc18a1588998790df1df3aa62602fc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm3-middle.png",
+      "bytes": 30410,
+      "sha256": "4ad21735747ff0cc01e9212f0760b53bd4753ef62f9cf687f27adc1101d5b4a6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm3-tip.png",
+      "bytes": 19157,
+      "sha256": "d614d1635a73f04a2ffb43f1b633d4181f3af26dc99904b3a7f974998acc0ada"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm4-base.png",
+      "bytes": 35204,
+      "sha256": "8d15c0813a2a482ad1b5438c885850fd3e681421ffbbde53108ca6e69df7de7c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm4-middle.png",
+      "bytes": 13719,
+      "sha256": "d61e0e695a78106519f939d2dc5383fee072d71a2a1e5139fa0eb03ce62f1030"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm4-tip.png",
+      "bytes": 16054,
+      "sha256": "426cb69f2b5e846cb08ad03ce2fcc14bf468efe461bba1720428c8651e09b139"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm5-base.png",
+      "bytes": 25071,
+      "sha256": "21f206f5ae457a739059a878753e5e28165a1ab97bc0bacca27384a8a204b7c2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm5-middle.png",
+      "bytes": 20828,
+      "sha256": "c740db9fcb35fe9b36c38fdfd497055066c19bac8ac201c99d2812acd8a91e4b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm5-tip.png",
+      "bytes": 11870,
+      "sha256": "d248f3c637f54748285ad208d875fa5068384b6f96db1c426730f2a2fe1a4b90"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm6-base.png",
+      "bytes": 34590,
+      "sha256": "6c45146e6007ab2f7c651ccb6f38e91f7c61cd6155d4df80640f4bc6aacebec7"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm6-middle.png",
+      "bytes": 22342,
+      "sha256": "faa931802af75b5556c4969acbcfc59dc945f91f00c26c4d92ee4d0fd3507e86"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm6-tip.png",
+      "bytes": 14116,
+      "sha256": "a0b48a954df73ec453af78fae2cf068c841f0957b432128c286c1423d6b12250"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm7-base.png",
+      "bytes": 27805,
+      "sha256": "f3489d4034d15c7a2954d710c961537054ed3814c2be0d11581a8f6045a6d7af"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm7-middle.png",
+      "bytes": 18334,
+      "sha256": "469f10894ddbeb90d8b2636157bdadf72cc9b44037560fbedf8ca5d4d75d5958"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/arm7-tip.png",
+      "bytes": 12865,
+      "sha256": "64fc7d0f06011a2ffbfdf74e28791e093f88e716da88f1eda58f609c3b13d44c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/body.png",
+      "bytes": 169976,
+      "sha256": "f066ec753ca30a99fcedc2c77e6f465c0e5b89617b214f5bf45905a22ef06571"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/eye-far.png",
+      "bytes": 4440,
+      "sha256": "dc0ddaeba84775065f60c6370de9b07299a9525ed0e11f253687833dc1bcdb2a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/eye-near.png",
+      "bytes": 12328,
+      "sha256": "2496a8709226145de9ad1926d5a1b397de70914883909d87a78369708e0abf9c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/head.png",
+      "bytes": 60683,
+      "sha256": "2d3354e43d05d772eb7461473d792beb29b8e58af2e71cb7d2c015d3a0838788"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/mantle.png",
+      "bytes": 150539,
+      "sha256": "e847edf60f2cd222004959720d7cf78d5fd98c0a205f9b0de557584bb8b4a181"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/parts/siphon.png",
+      "bytes": 9745,
+      "sha256": "f025d1b5c38da4ede8040f2b83dd654e5b09ccaf91071e7038df04a67aec83b9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/parts/receipt.json",
+      "bytes": 7673,
+      "sha256": "467b8c70a43be50127769f6687311c04784fd70af699efdbdccd1df7a2962802"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/pre-split-binding.json",
+      "bytes": 1798128,
+      "sha256": "7496c061ca2968f84fba6e4f3a920eab06b382c8cd7b3cb10bdc6c4ecb23fc8e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/receipt.json",
+      "bytes": 2067,
+      "sha256": "c2ef33e03ef1c9a055a8d9eb86392195cc54c792d6d016af770f7faeca24905e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/fit01/record.json",
+      "bytes": 7492,
+      "sha256": "130018cbdacfc5742cdbd859d30e479e95fad5f123f5cb21d84ac4efab1690bf"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/intake-execution.json",
+      "bytes": 484,
+      "sha256": "75f57de721673079a31c0d5b5a41a53bb00f0381ed22e5bd64e4b045ebb3566d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/intake.log",
+      "bytes": 322,
+      "sha256": "3fcc5b9bd3a4e2c9c4f527acf47b14152780f2dee4208e77e22b1216c5041eae"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/master.png",
+      "bytes": 1518976,
+      "sha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/presence.json",
+      "bytes": 167,
+      "sha256": "406575d117d173568cfb3ec9f018c8460ee1cf962265011066aae730a93a14cc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/review01/approach-jet-0.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/review01/approach-jet-0p2.png",
+      "bytes": 707524,
+      "sha256": "44d2eb8b5743d8ef1a8a9b94d626d93b638a43fb35b5b4f2971b18d9ee587c57"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/review01/approach-jet-0p9.png",
+      "bytes": 723796,
+      "sha256": "3637c06977f7d79c7867a520a15ffa0a3bdd00a06498f7fb2411d4deece42eee"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/review01/approach-jet-1.png",
+      "bytes": 720782,
+      "sha256": "5c36da8fc382fb923ff3e8d07e447aa829554c249fd150ca28a42b951633e7ae"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/review01/idle-0.png",
+      "bytes": 723145,
+      "sha256": "5016578f6547bee0b03bce07e9f5af050a8adbc7aaba4b9c28b1008aff891e6e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/review01/idle-0p2.png",
+      "bytes": 706608,
+      "sha256": "e83baaf534cb5b5115db6de205765be6330c353b0bcbe3c113fbc216dd9665bc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/review01/idle-0p9.png",
+      "bytes": 715274,
+      "sha256": "47b0be697d2ba2215758523f8064e6a7b3b9d09c46391a4660dc6e863d2a7207"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/review01/idle-1.png",
+      "bytes": 723145,
+      "sha256": "5016578f6547bee0b03bce07e9f5af050a8adbc7aaba4b9c28b1008aff891e6e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/source-observations.json",
+      "bytes": 577,
+      "sha256": "21252220aa1b8c00f6e6ec8771902fc2a8042fb07de41081129e249e065290bb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/static-01.json",
+      "bytes": 7422,
+      "sha256": "a6b617407d267d7c95d971187e2189b5f8915dcdd498b8b6814cc8f9b9beaabc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "61ea187e5c98fca138a5cf149305e2919895e8b100388ffeb93cb391cf895e0a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/static-execution.json",
+      "bytes": 510,
+      "sha256": "224a4d4ce44f59da3f671b1a85b08da599a3300e104c9def1b092dcc7b3d6129"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/static.log",
+      "bytes": 1829,
+      "sha256": "61acfc042232bcbaa9471597264f2c57a8f9f121292a31aabd1879da39559d23"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/subject-source.json",
+      "bytes": 2379,
+      "sha256": "f721c27305a198577f719fd25bdf5243845abb6b9f2b609d4b86a9cd9e5598a1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/authoring.json",
+      "bytes": 40421,
+      "sha256": "73f060344a2f178960acd8973cdd799dc4337fee79caae7e82d9309ef1cb316e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/conservation.json",
+      "bytes": 7227,
+      "sha256": "e144753c24bfec4469072e2c14d7afbcfa43ed10617cbde0796ccd6026dae325"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/correction.json",
+      "bytes": 553,
+      "sha256": "6ab8a8a4af7abae80cf99532f1714333edefcaac07ddd26a3ef0cc02b3f6ebc3"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/binding.json",
+      "bytes": 2645907,
+      "sha256": "f93118f594d167e2ecdb0549e4020a5014df26c016cc0e2da10c277dae9508d9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/declaration.json",
+      "bytes": 3102,
+      "sha256": "93429b1d42083fcd1316f7082f48b3fe7e749fb12e809b90464a864ce62cdd2a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/intake-provenance.json",
+      "bytes": 3396,
+      "sha256": "8058b19008e8328454d77f08259ce0a6b555be22f6db8750f19145b413ce9aa8"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/label-authoring-receipt.json",
+      "bytes": 6362,
+      "sha256": "b9e68e38f7045627e47fe0b6b02c12923f0a4880f5d0d8ff1b163c47e92256d7"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/labels.png",
+      "bytes": 49902,
+      "sha256": "6c12f51343b144c2216ac91e7fdd99a9ee1d31901bf5998ac398377df320e9a4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/atlas/c202-octopus-source04-author02.json",
+      "bytes": 12293,
+      "sha256": "26bb5ba6e7707b87658841f58971bbe0c67f274833cd3a767ee3ce6e65e1903c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/atlas/c202-octopus-source04-author02.png",
+      "bytes": 763304,
+      "sha256": "a83ddaedf8fff3d0512ff19d10c6709e08c5f32a05caf5cb5a9e8dd61665d3ef"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/atlas/receipt.json",
+      "bytes": 4576,
+      "sha256": "87519ca0fc711feb2f670c73b9424f9c6fd23d3aed0b3f02119057ebdc270cf5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/binding.json",
+      "bytes": 9982,
+      "sha256": "c66f881139ad294bde5e9e992895b0ccdc9182bc9053a2ae19440db4611e65f1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/keyed.png",
+      "bytes": 2054661,
+      "sha256": "3061613aec2512ca3165cbdefe51a49d4b8ea929465cb7a3c6ce1a2c8987d7de"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/manifest.json",
+      "bytes": 4968,
+      "sha256": "bf9e2c4d0003a6e05f133053d9ed90a9becb260c7855b9bf6a9e632b4c6daa16"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/ownership.png",
+      "bytes": 25412,
+      "sha256": "4f8e8b9ced8d50aac0ba5ec7b27de51a50816bff8330808a5913f763b2eddf96"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm0-base.png",
+      "bytes": 46411,
+      "sha256": "3c3e18b96e3c4c10e2b34b1e196378d2a6dddef0479f288f7fd0c44b45be1b80"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm0-middle.png",
+      "bytes": 27194,
+      "sha256": "2f0379a0185bd97b4dd0c9daaf3d0afd1e96560f339e08ea1e8bd5241acf6575"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm0-tip.png",
+      "bytes": 13072,
+      "sha256": "4372e4985d7c1ade4d0371a33c9df76753fa0d7af61b4cbe8251c973e3c5c16a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm1-base.png",
+      "bytes": 55406,
+      "sha256": "9d359080810b4eab3c1ed9e4f68d29cee29ceb69ba5bd2d7196cc2ed2eeb53d0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm1-middle.png",
+      "bytes": 36264,
+      "sha256": "753e17e1eac1878a11e99f2642b8d4e2d51790a2e741a6447dd42ceb58713a8f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm1-tip.png",
+      "bytes": 17442,
+      "sha256": "5e3e0b32d0d135fcd294909d6c5735b397007651e9ce2d91b75c866270934d6c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm2-base.png",
+      "bytes": 37624,
+      "sha256": "1e8fdb066a9863549543bf7fa52e94bf4f2d56dfdce2281e3b5ee7e71245b86e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm2-middle.png",
+      "bytes": 34022,
+      "sha256": "67d9c1567c19888856d42e67d21c5c6358e1a23676be7acbba62745142882221"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm2-tip.png",
+      "bytes": 15565,
+      "sha256": "c5e04e7c82ae21d6f71c942e41a6cb7764d1bd8ed9826fe8b75210bdece32e88"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm3-base.png",
+      "bytes": 48491,
+      "sha256": "e7337713da46c3b42f33bf77d9302b548620d61628ff98225f24c646559e9602"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm3-middle.png",
+      "bytes": 38665,
+      "sha256": "0a486caa41b19c318ecd66ec48bb28b624353a00001029cb666f66b72ac7599a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm3-tip.png",
+      "bytes": 19421,
+      "sha256": "9f3628290465b0c1a3dd4b34417106c0ba6e520e239c9a7da1a386aae4518647"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm4-base.png",
+      "bytes": 38243,
+      "sha256": "bce9deffee415b843760a6a5a0d21a4b405aee994e6c2438a6af27ea36c6f733"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm4-middle.png",
+      "bytes": 14442,
+      "sha256": "bd840426626cd2a69730cbf8de513f0f1752058df7c72516f6ceb245a0464ade"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm4-tip.png",
+      "bytes": 16286,
+      "sha256": "e3b9398b31d8fa238b36800a36f7ad5d84c457820f76eaf125a274934b6ba701"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm5-base.png",
+      "bytes": 28742,
+      "sha256": "cfd52a8e46ce3d3ea7c8dcedf2b4523ea1fd829707100c3467477485547026bf"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm5-middle.png",
+      "bytes": 22365,
+      "sha256": "314ae6a6c1b254b358a8f313351bb890b0767058267e866768cb4710073e3989"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm5-tip.png",
+      "bytes": 13269,
+      "sha256": "cc426e7bcde0ce503fa0a126d9622a1e42059cae9bb6e96cd4a588fe72b69ac1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm6-base.png",
+      "bytes": 36240,
+      "sha256": "98ca12a398c68b5fa810efed8beca1de52095fe0400f70018f8487dd062a7698"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm6-middle.png",
+      "bytes": 23603,
+      "sha256": "bf8abd650b116e2bf7b31c93167029fb41b11dd0a03e1a100597d5512ac1682c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm6-tip.png",
+      "bytes": 15479,
+      "sha256": "8d87c7dcbb2b0077e4f3fe7b65e0a381233dec9ab3e66d195e51d28c3aaa0750"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm7-base.png",
+      "bytes": 29334,
+      "sha256": "1ed722fb4ab500a97bdb278a72268b622b91a336ebd436c02079515d8e344eeb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm7-middle.png",
+      "bytes": 21646,
+      "sha256": "961ea8b90416ba03792e17a627313bf47ff78fb0469786e4abfa17b19a11943e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/arm7-tip.png",
+      "bytes": 12928,
+      "sha256": "f392d8aa7ae58fda68b4dc9fdde226ea10173f16e79f4103ef1c926b7d102f58"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/body.png",
+      "bytes": 31975,
+      "sha256": "1fe11c2181c6ea562686c2ff7b952fa955203a4b3ae4b4cca50901e9952f7839"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/eye-far.png",
+      "bytes": 4440,
+      "sha256": "dc0ddaeba84775065f60c6370de9b07299a9525ed0e11f253687833dc1bcdb2a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/eye-near.png",
+      "bytes": 12328,
+      "sha256": "2496a8709226145de9ad1926d5a1b397de70914883909d87a78369708e0abf9c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/head.png",
+      "bytes": 61896,
+      "sha256": "68cfe1dd5854bf7809c64fb65b0a585d8eab737cee76c932f8128da344c91239"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/mantle.png",
+      "bytes": 151257,
+      "sha256": "e103a97efb084d4a85de944faeaf288fa07efe77cd336d4a3e242a5f9e057664"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/parts/siphon.png",
+      "bytes": 9745,
+      "sha256": "f025d1b5c38da4ede8040f2b83dd654e5b09ccaf91071e7038df04a67aec83b9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/parts/receipt.json",
+      "bytes": 7858,
+      "sha256": "87c74f6f62f6cb53ff31228b59521c9824100e7e58cada56b59bfd4b77135052"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/pre-split-binding.json",
+      "bytes": 1662591,
+      "sha256": "1bcf0df598ab0d5d4c6bad5012ad4dafe720c15e3c1c25122ef10a07b4e6773a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/receipt.json",
+      "bytes": 2066,
+      "sha256": "6cfd10caf7e9c5c79adac75f928b9380e3dddbcb02c58b9cfc1207dc14251dbe"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/fit01/record.json",
+      "bytes": 7716,
+      "sha256": "79393674e9790977bcc129e06f87d8c09b6bd5b155ca9b779b6f64ad145da448"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/intake-execution.json",
+      "bytes": 484,
+      "sha256": "1771ac10accdb6fc5c529ca08fa075aab0d95ec573ce8d7b895a83d074bd6299"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/intake.log",
+      "bytes": 322,
+      "sha256": "1d7729fad8c900b3161b78e94785b1778f95a9256e4d6770b669a5e71bb211df"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/master.png",
+      "bytes": 1518976,
+      "sha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/presence.json",
+      "bytes": 167,
+      "sha256": "406575d117d173568cfb3ec9f018c8460ee1cf962265011066aae730a93a14cc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/approach-jet-0.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/approach-jet-0p2.png",
+      "bytes": 733910,
+      "sha256": "889d1612ae4e1b629220e9b46f095b713e365579bf61ed17f7b928504b4a8278"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/approach-jet-0p9.png",
+      "bytes": 726338,
+      "sha256": "fe80784dcf1aa4418286547deb3b714209ef38a99b0869e9c543f3fa901c13c0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/approach-jet-1.png",
+      "bytes": 720782,
+      "sha256": "5c36da8fc382fb923ff3e8d07e447aa829554c249fd150ca28a42b951633e7ae"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/faint-0.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/faint-0p2.png",
+      "bytes": 715454,
+      "sha256": "44c06f2fc4494c9ad9ce8ff4696e9f545dff52842fdf2bb76e84babc1d4caabe"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/faint-0p9.png",
+      "bytes": 747291,
+      "sha256": "b811a642fcca770db9fe1dfba346876ef6e0922345c2c11ae70e9a15f4e4b571"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/faint-1.png",
+      "bytes": 743530,
+      "sha256": "f974924eaa733047f0b14031452e88787e5bd267d470361ba28131c027c96378"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/idle-0.png",
+      "bytes": 722930,
+      "sha256": "69ec48c17d00273d5785ab2bd54e6653c26e9f1018186520d05d0c78ed37fd20"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/idle-0p2.png",
+      "bytes": 717633,
+      "sha256": "d6c01a46d033f3c9d4122d5e72ac246255694811485e99e2b9b4fa0282e1f59d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/idle-0p9.png",
+      "bytes": 726860,
+      "sha256": "937f53d795e918a02f0eb341d9fb1163291292f62f733afffa41d59ed2a1935f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/idle-1.png",
+      "bytes": 722930,
+      "sha256": "69ec48c17d00273d5785ab2bd54e6653c26e9f1018186520d05d0c78ed37fd20"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/melee-lash-0.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/melee-lash-0p2.png",
+      "bytes": 703645,
+      "sha256": "9c1f54802e3d5bea7ce2d689500616d40f72806d932753d1f6724f526a4dcd79"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/melee-lash-0p9.png",
+      "bytes": 720360,
+      "sha256": "07258b18559e8d8bfa38a37d4083adaf63437b50c6512f0a87917f71feffd39c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/melee-lash-1.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/review01/review.json",
+      "bytes": 5755,
+      "sha256": "ae1dca56bce7986a662819b0b0312e9d509a470f82d51dc0dda4f16d5f62876d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/source-observations.json",
+      "bytes": 577,
+      "sha256": "21252220aa1b8c00f6e6ec8771902fc2a8042fb07de41081129e249e065290bb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/static-01.json",
+      "bytes": 7424,
+      "sha256": "3e9a75b1d05b826ac0c4ed89ffafac837b3ec726d3829918330223059aca099c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "ee1f13a27b6a5224951f792ca3d33f26a5c4246524b0fe43707a0bd7541b1472"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/static-execution.json",
+      "bytes": 503,
+      "sha256": "52659928882a86f656dd715fcbfee858df82ae389f18c57dea66efe2146255e1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/static.log",
+      "bytes": 1831,
+      "sha256": "7f4b662f647ba6d988bbdf57aa11f0fcfb49616d9c726f487b33008a59a22ee3"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02/subject-source.json",
+      "bytes": 2379,
+      "sha256": "f721c27305a198577f719fd25bdf5243845abb6b9f2b609d4b86a9cd9e5598a1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/authoring.json",
+      "bytes": 44263,
+      "sha256": "0a36b6dc625f34009d3b5d1c6c1262959e0388fcb536fb831ec51488e2814431"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/conservation.json",
+      "bytes": 6888,
+      "sha256": "3fbaa7806728b88a86d7e5a00c93dcd2917eb3d0834825c590a7dc63de70c901"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/correction.json",
+      "bytes": 456,
+      "sha256": "7df8185b7f6d51d4c7de7a223d45fa0831d80013f4d6e3c596944bdd544633f6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/binding.json",
+      "bytes": 2629654,
+      "sha256": "adcac7f3b8172fa29b8c5ca113630917af4acb45f9d3901b829a13711e0df75d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/declaration.json",
+      "bytes": 3102,
+      "sha256": "17b5bb036ebda4e5460304571eee31ffe9fe1e55e53f0bc9245f73147678bca0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/intake-provenance.json",
+      "bytes": 3396,
+      "sha256": "bf85d75f98df95107453ff4882e533fa3ff51ad8ae3b3fda9a50c91d2f8ab3c4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/label-authoring-receipt.json",
+      "bytes": 7075,
+      "sha256": "7cd48e2b421519cd209d848869ec0390c635102a297d9214f375b2972a076043"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/labels.png",
+      "bytes": 50034,
+      "sha256": "6a6acff54dddc1d98e838dbe490858c4384b112717191a878f69a012417b41fe"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/atlas/c202-octopus-source04-author03.json",
+      "bytes": 12297,
+      "sha256": "926d9890541f7b37c32790c9a156245516af08f3ae7c56fe320f63286f51ac5a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/atlas/c202-octopus-source04-author03.png",
+      "bytes": 762820,
+      "sha256": "ead2756d1313ca3fdc07d8dc1e04a0d7458f27e433465a8224d7fd41bec4cc01"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/atlas/receipt.json",
+      "bytes": 4576,
+      "sha256": "693b3e5d21fc08e0ed095a9571df6baf22fa5c515859c2a6dc0e4ff804ec205f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/binding.json",
+      "bytes": 9985,
+      "sha256": "05df6cc8cf4df8c74f495aab7b2ebf5ac183051069413c262e8f7161a9f9b97b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/keyed.png",
+      "bytes": 2054661,
+      "sha256": "3061613aec2512ca3165cbdefe51a49d4b8ea929465cb7a3c6ce1a2c8987d7de"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/manifest.json",
+      "bytes": 4968,
+      "sha256": "e6023c639e31909234e86e0f1c4c83f6a0a3e50b0ca62cbd759a0f577691ebaf"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/ownership.png",
+      "bytes": 25584,
+      "sha256": "68fbe4e59320587920750717bfb308540dac64655642385fca638cf0f078df54"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm0-base.png",
+      "bytes": 46880,
+      "sha256": "035ddf1acc2d3c469a686f3a25135b47a7daff98c5dfe9cb21245a1f676be3ac"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm0-middle.png",
+      "bytes": 29302,
+      "sha256": "f0aad635013d45eb7225c12b9ba55efc822fb406cfb4627b256ae7e50ffd89f3"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm0-tip.png",
+      "bytes": 13072,
+      "sha256": "4372e4985d7c1ade4d0371a33c9df76753fa0d7af61b4cbe8251c973e3c5c16a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm1-base.png",
+      "bytes": 57283,
+      "sha256": "ea1bdb0c4c7fca3326dac16617206e331bd023b92c9f37908b854f1c5675ae7f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm1-middle.png",
+      "bytes": 36264,
+      "sha256": "753e17e1eac1878a11e99f2642b8d4e2d51790a2e741a6447dd42ceb58713a8f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm1-tip.png",
+      "bytes": 17442,
+      "sha256": "5e3e0b32d0d135fcd294909d6c5735b397007651e9ce2d91b75c866270934d6c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm2-base.png",
+      "bytes": 37624,
+      "sha256": "1e8fdb066a9863549543bf7fa52e94bf4f2d56dfdce2281e3b5ee7e71245b86e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm2-middle.png",
+      "bytes": 34022,
+      "sha256": "67d9c1567c19888856d42e67d21c5c6358e1a23676be7acbba62745142882221"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm2-tip.png",
+      "bytes": 15565,
+      "sha256": "c5e04e7c82ae21d6f71c942e41a6cb7764d1bd8ed9826fe8b75210bdece32e88"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm3-base.png",
+      "bytes": 47399,
+      "sha256": "af8d46e16d30f994bcdb7043d142883ac3a2b12b4a14091dc6e03dda83804ea5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm3-middle.png",
+      "bytes": 40460,
+      "sha256": "79bd2727a9477a3849bcbd2655bb9a6ac57692523f18d5cbf37bd2c902ae6770"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm3-tip.png",
+      "bytes": 19421,
+      "sha256": "9f3628290465b0c1a3dd4b34417106c0ba6e520e239c9a7da1a386aae4518647"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm4-base.png",
+      "bytes": 42656,
+      "sha256": "fe4e70bda230341c1a4f08b85fd8ab6938d868df1b3d2d35b0557acaccadadd4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm4-middle.png",
+      "bytes": 20814,
+      "sha256": "2e917cf7f974343feefd8518b1af0e752586b1b2ba92b003840413fb5e0276d7"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm4-tip.png",
+      "bytes": 16286,
+      "sha256": "e3b9398b31d8fa238b36800a36f7ad5d84c457820f76eaf125a274934b6ba701"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm5-base.png",
+      "bytes": 28742,
+      "sha256": "cfd52a8e46ce3d3ea7c8dcedf2b4523ea1fd829707100c3467477485547026bf"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm5-middle.png",
+      "bytes": 22365,
+      "sha256": "314ae6a6c1b254b358a8f313351bb890b0767058267e866768cb4710073e3989"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm5-tip.png",
+      "bytes": 13269,
+      "sha256": "cc426e7bcde0ce503fa0a126d9622a1e42059cae9bb6e96cd4a588fe72b69ac1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm6-base.png",
+      "bytes": 36240,
+      "sha256": "98ca12a398c68b5fa810efed8beca1de52095fe0400f70018f8487dd062a7698"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm6-middle.png",
+      "bytes": 23603,
+      "sha256": "bf8abd650b116e2bf7b31c93167029fb41b11dd0a03e1a100597d5512ac1682c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm6-tip.png",
+      "bytes": 15479,
+      "sha256": "8d87c7dcbb2b0077e4f3fe7b65e0a381233dec9ab3e66d195e51d28c3aaa0750"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm7-base.png",
+      "bytes": 29334,
+      "sha256": "1ed722fb4ab500a97bdb278a72268b622b91a336ebd436c02079515d8e344eeb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm7-middle.png",
+      "bytes": 21646,
+      "sha256": "961ea8b90416ba03792e17a627313bf47ff78fb0469786e4abfa17b19a11943e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/arm7-tip.png",
+      "bytes": 12928,
+      "sha256": "f392d8aa7ae58fda68b4dc9fdde226ea10173f16e79f4103ef1c926b7d102f58"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/body.png",
+      "bytes": 23560,
+      "sha256": "1d252cf3f15bb01c8d7553cbe043d3f1b6c014bd24b7d946018ff9d76fb2283c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/eye-far.png",
+      "bytes": 4440,
+      "sha256": "dc0ddaeba84775065f60c6370de9b07299a9525ed0e11f253687833dc1bcdb2a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/eye-near.png",
+      "bytes": 12328,
+      "sha256": "2496a8709226145de9ad1926d5a1b397de70914883909d87a78369708e0abf9c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/head.png",
+      "bytes": 54302,
+      "sha256": "389e4a0dd5083a961dfc6908c0ed9423a5f463df50834307e8cd8ed825c2953b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/mantle.png",
+      "bytes": 151257,
+      "sha256": "e103a97efb084d4a85de944faeaf288fa07efe77cd336d4a3e242a5f9e057664"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/parts/siphon.png",
+      "bytes": 9745,
+      "sha256": "f025d1b5c38da4ede8040f2b83dd654e5b09ccaf91071e7038df04a67aec83b9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/parts/receipt.json",
+      "bytes": 7859,
+      "sha256": "c95cc686ad792dcc2656ee80090c7c9835356e8ee30cce2f1fe34bedd73a75ec"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/pre-split-binding.json",
+      "bytes": 1654097,
+      "sha256": "c315d943a770c42711051b281cd98af5dfc094ab0931b449cd6f9fc6cce0f3b3"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/receipt.json",
+      "bytes": 2067,
+      "sha256": "8f345fad562f12bbfb5fc5d8ff5ec121e7fe0ded45c321befb536d0b37256a34"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01/record.json",
+      "bytes": 7901,
+      "sha256": "1daf1af73b05d4824268b497559b5134d1d819ab9378111b3afbbd988017ed1b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/intake-execution.json",
+      "bytes": 484,
+      "sha256": "146c57b56716196bca0dc7b4c88f0cfaaa87d79caa8c84f341e810a34f383682"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/intake.log",
+      "bytes": 322,
+      "sha256": "d425bb91d84df35a386447a338d9987ef46ed57ad49154a64d165b8cdc2d27b0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/binding.json",
+      "bytes": 2511601,
+      "sha256": "6a9d2b8a1e876e17faaf3949662389af5677020c00cc7ebc7435614b44dd349e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/declaration.json",
+      "bytes": 3102,
+      "sha256": "3510c2f9d16a5133868ad226fedee562645dceeb50028b439bac4283469d0809"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/labels.png",
+      "bytes": 49676,
+      "sha256": "d9e1a9cdcb969152bcc5958e6f2276dfec83ce5356f37d01fb0e29899264986c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/atlas/c192-islands-01-octopus-author03.json",
+      "bytes": 12272,
+      "sha256": "1c7ec8cb7ec1e12006ead8696f1a6d45bbe45a6769f97ae68c905028d161e07d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/atlas/c192-islands-01-octopus-author03.png",
+      "bytes": 750562,
+      "sha256": "e7a61e065b52ce21a16d2fbbca17be2c7428b7896ca6eea7d891c9f7297a87bb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/atlas/receipt.json",
+      "bytes": 4578,
+      "sha256": "c0395285c615a2612d77eeab6d413acb86b9b9c6593127976c691c3e740a4fe5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/binding.json",
+      "bytes": 9956,
+      "sha256": "f33a098ee43666f23c5cd2aa5bd14548841f1c3c459d224ee756e72b06efae98"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/keyed.png",
+      "bytes": 2054661,
+      "sha256": "3061613aec2512ca3165cbdefe51a49d4b8ea929465cb7a3c6ce1a2c8987d7de"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/manifest.json",
+      "bytes": 4970,
+      "sha256": "6dd89779998b2719cf2694263c466e9459e9d449990db3fe1e52cf2809fe639d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/ownership.png",
+      "bytes": 25283,
+      "sha256": "c55b08bd3cf89040aec3545ec48b325ff266c69671e69aa1d2977cec168badbb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm0-base.png",
+      "bytes": 47288,
+      "sha256": "b9ba7696d8dc4c1605b54a08e136449bf9cafa6055011ca09cfc435944d9119b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm0-middle.png",
+      "bytes": 29479,
+      "sha256": "eccc19708b0990a6f1d13fe41b9c2584042083f94e1cef89bae1f4b73507b332"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm0-tip.png",
+      "bytes": 13208,
+      "sha256": "6a84bebd583039c58f81980e6e92ecb0665f8a09813216ed196e43faa8c82078"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm1-base.png",
+      "bytes": 57286,
+      "sha256": "e5714f19255965951bb4528df0836bb855a6def235b90c3b09fce0d5d2114e1f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm1-middle.png",
+      "bytes": 36664,
+      "sha256": "67056b7f18771c014c096208a63a8b443656cee8aefea4313b05621421b3d4b0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm1-tip.png",
+      "bytes": 17442,
+      "sha256": "5e3e0b32d0d135fcd294909d6c5735b397007651e9ce2d91b75c866270934d6c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm2-base.png",
+      "bytes": 38007,
+      "sha256": "9a3f6b4588947cc4a827847a70b1f4e066f47b63ebaddea9812a1567ed754af4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm2-middle.png",
+      "bytes": 34022,
+      "sha256": "67d9c1567c19888856d42e67d21c5c6358e1a23676be7acbba62745142882221"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm2-tip.png",
+      "bytes": 15565,
+      "sha256": "c5e04e7c82ae21d6f71c942e41a6cb7764d1bd8ed9826fe8b75210bdece32e88"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm3-base.png",
+      "bytes": 47399,
+      "sha256": "af8d46e16d30f994bcdb7043d142883ac3a2b12b4a14091dc6e03dda83804ea5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm3-middle.png",
+      "bytes": 41711,
+      "sha256": "718c94f1df7bffcb24600c6729147ae13775a87db7c238f75724a06a78f3befd"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm3-tip.png",
+      "bytes": 19421,
+      "sha256": "9f3628290465b0c1a3dd4b34417106c0ba6e520e239c9a7da1a386aae4518647"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm4-base.png",
+      "bytes": 42750,
+      "sha256": "d88b6db31af31104c842f8576b6c8411b521acd320356c57e3cc31e4992d1e2f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm4-middle.png",
+      "bytes": 24151,
+      "sha256": "fd124510b3082164daa2c4b7ed5132e03c253e10c4de60c8d1d0dec3f4a5d3fc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm4-tip.png",
+      "bytes": 16580,
+      "sha256": "27ee90925336437a2d995ee7a7c7cbd08710e089d7b0cb4e815bc99d1f9fce57"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm5-base.png",
+      "bytes": 28988,
+      "sha256": "90571e3a12ab3ea8c4fd95408c28d6f4b72281c19697b96fbf06a3e59f26a67e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm5-middle.png",
+      "bytes": 22389,
+      "sha256": "49e770e74fca8470d6909730e412eccd1e2a57ce42ae6b19e1e8d7ca885b1664"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm5-tip.png",
+      "bytes": 13326,
+      "sha256": "069ae0ca235b1b98f7afb6f20db195512ddf2dbdd449e7ba859c820a02b54c05"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm6-base.png",
+      "bytes": 36240,
+      "sha256": "98ca12a398c68b5fa810efed8beca1de52095fe0400f70018f8487dd062a7698"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm6-middle.png",
+      "bytes": 23603,
+      "sha256": "bf8abd650b116e2bf7b31c93167029fb41b11dd0a03e1a100597d5512ac1682c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm6-tip.png",
+      "bytes": 15582,
+      "sha256": "a17b3da6ba0f4128524b6adb2b653a0ea3cdca2f6a48e37be73db7368d567e91"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm7-base.png",
+      "bytes": 29334,
+      "sha256": "1ed722fb4ab500a97bdb278a72268b622b91a336ebd436c02079515d8e344eeb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm7-middle.png",
+      "bytes": 22599,
+      "sha256": "dff74d4542dc276772ed1dfefa0a16b2441daa22a99d453d0f113da4037857a4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/arm7-tip.png",
+      "bytes": 12945,
+      "sha256": "6a41c9c78e180e0ce6a974bb35fd0ba5261e297efeb127d83c0a93473555b527"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/body.png",
+      "bytes": 11975,
+      "sha256": "18dbdfc5aca9b3b25afdf8fe4bd8e384281c88f4757d0c4e18d72790491f9d6c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/eye-far.png",
+      "bytes": 4440,
+      "sha256": "dc0ddaeba84775065f60c6370de9b07299a9525ed0e11f253687833dc1bcdb2a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/eye-near.png",
+      "bytes": 12328,
+      "sha256": "2496a8709226145de9ad1926d5a1b397de70914883909d87a78369708e0abf9c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/head.png",
+      "bytes": 54330,
+      "sha256": "c2b4f6ea98accc95f11866a7e2144c1f92312e08d1d6a1cc4ff7a50d22456083"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/mantle.png",
+      "bytes": 151257,
+      "sha256": "e103a97efb084d4a85de944faeaf288fa07efe77cd336d4a3e242a5f9e057664"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/parts/siphon.png",
+      "bytes": 9748,
+      "sha256": "02c05e18f0edd26f5c7126da3af2f28cc706b1b3807ee2ad2d2c654ed20208b0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/parts/receipt.json",
+      "bytes": 7861,
+      "sha256": "f7c27f2baf2f434f8c2cca40708f47d57826cf6a9c556a96fc200d849cd5cd9f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/pre-split-binding.json",
+      "bytes": 1587924,
+      "sha256": "bf4712825f56ce08e8d3ca084de32cfb2398bb27305caf24f6060aa00472a4d9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/fit/record.json",
+      "bytes": 7901,
+      "sha256": "1daf1af73b05d4824268b497559b5134d1d819ab9378111b3afbbd988017ed1b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/receipt.json",
+      "bytes": 5405,
+      "sha256": "9aed5288ae4abeb0eb45fd8ff6f879a3146f27b804e1307846aa35439afce29c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/approach-jet-0.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/approach-jet-0p2.png",
+      "bytes": 730286,
+      "sha256": "8eb1e19935e57e11bb1789018373ab62f068bc7f1c507ef58f7c8e2f3c629f8c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/approach-jet-0p9.png",
+      "bytes": 726209,
+      "sha256": "229d1b02152a2357a0462d2d2dd97d7c833733c92f9197a22c8f1b2e000402f4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/approach-jet-1.png",
+      "bytes": 720782,
+      "sha256": "5c36da8fc382fb923ff3e8d07e447aa829554c249fd150ca28a42b951633e7ae"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/faint-0.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/faint-0p2.png",
+      "bytes": 721223,
+      "sha256": "513eccbc3f2d3c6920723ec3ceb0a975c8b4ca10731e8cfbc5b8189bbbd2e380"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/faint-0p9.png",
+      "bytes": 758767,
+      "sha256": "52918fe85a5ca26edc0da442699bb288329daeccebf4b0ece2164f609ac4e631"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/faint-1.png",
+      "bytes": 757166,
+      "sha256": "d65d72cb26d97b6828304347f9b68cea1fe3efe9f272701c15e9a4b0b10ce99d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/idle-0.png",
+      "bytes": 721860,
+      "sha256": "738fb1d6e15ee1f58ae7c21bfd109237939cbde6de1119f61feb4710d846414d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/idle-0p2.png",
+      "bytes": 723786,
+      "sha256": "ba7db9a58279ded41e2d9b07dc8364d284bcc8626119a0e40bad7036a35aa903"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/idle-0p9.png",
+      "bytes": 727391,
+      "sha256": "5001bf9efc78e7ce2a5c4bc4fd3074e70b63e0e3408c07013978118e5266f083"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/idle-1.png",
+      "bytes": 721860,
+      "sha256": "738fb1d6e15ee1f58ae7c21bfd109237939cbde6de1119f61feb4710d846414d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/melee-lash-0.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/melee-lash-0p2.png",
+      "bytes": 703572,
+      "sha256": "8259d7003cec039bac59dc3f90c3314719f5dc09ac162a84ee38a502ee327069"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/melee-lash-0p9.png",
+      "bytes": 721245,
+      "sha256": "221890b84ef5d5cbe50366e4d9bcecc123671fe8627ce1af7835f826ec843c5e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/melee-lash-1.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/review01/review.json",
+      "bytes": 5784,
+      "sha256": "a51d49eb334c2e8dbe2ab79789b6b499c2349d1ef15f6e0351c625380238576a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/static-execution.json",
+      "bytes": 345,
+      "sha256": "f03779bb8b7cfcda03149b0eb9c9f648523ad588fdf52291a1229a2e8997a4cf"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/static.json",
+      "bytes": 7472,
+      "sha256": "ab1d3c33cf23a2855a10a8906b3046014774c9b40078c3056176cd1047f1acd2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "f3ca1c62ae10ec694c01d95fd8fc89469c4b738b1ddcc74289e602efec235a79"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/islands-01/static.log",
+      "bytes": 1832,
+      "sha256": "a229fac318428e74b8923d621facfddbde9506f421f083ac38272909d9531f9c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/master.png",
+      "bytes": 1518976,
+      "sha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/presence.json",
+      "bytes": 167,
+      "sha256": "406575d117d173568cfb3ec9f018c8460ee1cf962265011066aae730a93a14cc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/binding.json",
+      "bytes": 2542517,
+      "sha256": "257802cabeabed20a400f621ee6bf9da9954045b1cee5693ccfa17c60a0ea4b8"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/declaration.json",
+      "bytes": 3102,
+      "sha256": "3510c2f9d16a5133868ad226fedee562645dceeb50028b439bac4283469d0809"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/labels.png",
+      "bytes": 49676,
+      "sha256": "d9e1a9cdcb969152bcc5958e6f2276dfec83ce5356f37d01fb0e29899264986c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/atlas/c192-islands-01-octopus-author03.json",
+      "bytes": 12272,
+      "sha256": "1c7ec8cb7ec1e12006ead8696f1a6d45bbe45a6769f97ae68c905028d161e07d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/atlas/c192-islands-01-octopus-author03.png",
+      "bytes": 750562,
+      "sha256": "e7a61e065b52ce21a16d2fbbca17be2c7428b7896ca6eea7d891c9f7297a87bb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/atlas/receipt.json",
+      "bytes": 4578,
+      "sha256": "c0395285c615a2612d77eeab6d413acb86b9b9c6593127976c691c3e740a4fe5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/binding.json",
+      "bytes": 9956,
+      "sha256": "f33a098ee43666f23c5cd2aa5bd14548841f1c3c459d224ee756e72b06efae98"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/keyed.png",
+      "bytes": 2054661,
+      "sha256": "3061613aec2512ca3165cbdefe51a49d4b8ea929465cb7a3c6ce1a2c8987d7de"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/manifest.json",
+      "bytes": 4970,
+      "sha256": "6dd89779998b2719cf2694263c466e9459e9d449990db3fe1e52cf2809fe639d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/ownership.png",
+      "bytes": 25283,
+      "sha256": "c55b08bd3cf89040aec3545ec48b325ff266c69671e69aa1d2977cec168badbb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm0-base.png",
+      "bytes": 47288,
+      "sha256": "b9ba7696d8dc4c1605b54a08e136449bf9cafa6055011ca09cfc435944d9119b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm0-middle.png",
+      "bytes": 29479,
+      "sha256": "eccc19708b0990a6f1d13fe41b9c2584042083f94e1cef89bae1f4b73507b332"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm0-tip.png",
+      "bytes": 13208,
+      "sha256": "6a84bebd583039c58f81980e6e92ecb0665f8a09813216ed196e43faa8c82078"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm1-base.png",
+      "bytes": 57286,
+      "sha256": "e5714f19255965951bb4528df0836bb855a6def235b90c3b09fce0d5d2114e1f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm1-middle.png",
+      "bytes": 36664,
+      "sha256": "67056b7f18771c014c096208a63a8b443656cee8aefea4313b05621421b3d4b0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm1-tip.png",
+      "bytes": 17442,
+      "sha256": "5e3e0b32d0d135fcd294909d6c5735b397007651e9ce2d91b75c866270934d6c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm2-base.png",
+      "bytes": 38007,
+      "sha256": "9a3f6b4588947cc4a827847a70b1f4e066f47b63ebaddea9812a1567ed754af4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm2-middle.png",
+      "bytes": 34022,
+      "sha256": "67d9c1567c19888856d42e67d21c5c6358e1a23676be7acbba62745142882221"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm2-tip.png",
+      "bytes": 15565,
+      "sha256": "c5e04e7c82ae21d6f71c942e41a6cb7764d1bd8ed9826fe8b75210bdece32e88"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm3-base.png",
+      "bytes": 47399,
+      "sha256": "af8d46e16d30f994bcdb7043d142883ac3a2b12b4a14091dc6e03dda83804ea5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm3-middle.png",
+      "bytes": 41711,
+      "sha256": "718c94f1df7bffcb24600c6729147ae13775a87db7c238f75724a06a78f3befd"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm3-tip.png",
+      "bytes": 19421,
+      "sha256": "9f3628290465b0c1a3dd4b34417106c0ba6e520e239c9a7da1a386aae4518647"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm4-base.png",
+      "bytes": 42750,
+      "sha256": "d88b6db31af31104c842f8576b6c8411b521acd320356c57e3cc31e4992d1e2f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm4-middle.png",
+      "bytes": 24151,
+      "sha256": "fd124510b3082164daa2c4b7ed5132e03c253e10c4de60c8d1d0dec3f4a5d3fc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm4-tip.png",
+      "bytes": 16580,
+      "sha256": "27ee90925336437a2d995ee7a7c7cbd08710e089d7b0cb4e815bc99d1f9fce57"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm5-base.png",
+      "bytes": 28988,
+      "sha256": "90571e3a12ab3ea8c4fd95408c28d6f4b72281c19697b96fbf06a3e59f26a67e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm5-middle.png",
+      "bytes": 22389,
+      "sha256": "49e770e74fca8470d6909730e412eccd1e2a57ce42ae6b19e1e8d7ca885b1664"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm5-tip.png",
+      "bytes": 13326,
+      "sha256": "069ae0ca235b1b98f7afb6f20db195512ddf2dbdd449e7ba859c820a02b54c05"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm6-base.png",
+      "bytes": 36240,
+      "sha256": "98ca12a398c68b5fa810efed8beca1de52095fe0400f70018f8487dd062a7698"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm6-middle.png",
+      "bytes": 23603,
+      "sha256": "bf8abd650b116e2bf7b31c93167029fb41b11dd0a03e1a100597d5512ac1682c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm6-tip.png",
+      "bytes": 15582,
+      "sha256": "a17b3da6ba0f4128524b6adb2b653a0ea3cdca2f6a48e37be73db7368d567e91"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm7-base.png",
+      "bytes": 29334,
+      "sha256": "1ed722fb4ab500a97bdb278a72268b622b91a336ebd436c02079515d8e344eeb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm7-middle.png",
+      "bytes": 22599,
+      "sha256": "dff74d4542dc276772ed1dfefa0a16b2441daa22a99d453d0f113da4037857a4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/arm7-tip.png",
+      "bytes": 12945,
+      "sha256": "6a41c9c78e180e0ce6a974bb35fd0ba5261e297efeb127d83c0a93473555b527"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/body.png",
+      "bytes": 11975,
+      "sha256": "18dbdfc5aca9b3b25afdf8fe4bd8e384281c88f4757d0c4e18d72790491f9d6c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/eye-far.png",
+      "bytes": 4440,
+      "sha256": "dc0ddaeba84775065f60c6370de9b07299a9525ed0e11f253687833dc1bcdb2a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/eye-near.png",
+      "bytes": 12328,
+      "sha256": "2496a8709226145de9ad1926d5a1b397de70914883909d87a78369708e0abf9c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/head.png",
+      "bytes": 54330,
+      "sha256": "c2b4f6ea98accc95f11866a7e2144c1f92312e08d1d6a1cc4ff7a50d22456083"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/mantle.png",
+      "bytes": 151257,
+      "sha256": "e103a97efb084d4a85de944faeaf288fa07efe77cd336d4a3e242a5f9e057664"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/parts/siphon.png",
+      "bytes": 9748,
+      "sha256": "02c05e18f0edd26f5c7126da3af2f28cc706b1b3807ee2ad2d2c654ed20208b0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/parts/receipt.json",
+      "bytes": 7861,
+      "sha256": "f7c27f2baf2f434f8c2cca40708f47d57826cf6a9c556a96fc200d849cd5cd9f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/pre-split-binding.json",
+      "bytes": 1587924,
+      "sha256": "bf4712825f56ce08e8d3ca084de32cfb2398bb27305caf24f6060aa00472a4d9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/record.json",
+      "bytes": 7901,
+      "sha256": "1daf1af73b05d4824268b497559b5134d1d819ab9378111b3afbbd988017ed1b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/recipe.json",
+      "bytes": 1937,
+      "sha256": "070206c02b71d18ae02ccb98ad980c508d0c79836b73d3be9524090dca5f8bc3"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/approach-jet-0.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/approach-jet-0p2.png",
+      "bytes": 731259,
+      "sha256": "fda9beeab51e30d09ca4bb7a3aefa78b8b4af62b702632ec5f20136bc25c3d55"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/approach-jet-0p9.png",
+      "bytes": 726209,
+      "sha256": "229d1b02152a2357a0462d2d2dd97d7c833733c92f9197a22c8f1b2e000402f4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/approach-jet-1.png",
+      "bytes": 720782,
+      "sha256": "5c36da8fc382fb923ff3e8d07e447aa829554c249fd150ca28a42b951633e7ae"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/faint-0.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/faint-0p2.png",
+      "bytes": 721284,
+      "sha256": "34e45d7b321aca2afeb8ea9b8e72214130a5c0860a96983f1c614085116e51c9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/faint-0p9.png",
+      "bytes": 758666,
+      "sha256": "e3d3688921925dd0a1bfb678d6ed19327eff76b8650e14e5515f97d87808c680"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/faint-1.png",
+      "bytes": 756893,
+      "sha256": "f48ae759ff9cef9367bd6b8ec0da5a9050f72e8cbeb2fabd11910bbe80989dd8"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/idle-0.png",
+      "bytes": 721860,
+      "sha256": "738fb1d6e15ee1f58ae7c21bfd109237939cbde6de1119f61feb4710d846414d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/idle-0p2.png",
+      "bytes": 723677,
+      "sha256": "78338721aa5272986244b5701e7c3580d056bee68490da259062e0cf2964d0c4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/idle-0p9.png",
+      "bytes": 727229,
+      "sha256": "7977d9f34ec8cec2873d3dc21f9f77f4e808aa8c63c07891df463334ce3f6c21"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/idle-1.png",
+      "bytes": 721860,
+      "sha256": "738fb1d6e15ee1f58ae7c21bfd109237939cbde6de1119f61feb4710d846414d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/melee-lash-0.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/melee-lash-0p2.png",
+      "bytes": 703377,
+      "sha256": "68c5c262d11e28637d0677f5f305e431793a06724168920a36ed002e7b0b0edd"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/melee-lash-0p9.png",
+      "bytes": 721245,
+      "sha256": "221890b84ef5d5cbe50366e4d9bcecc123671fe8627ce1af7835f826ec843c5e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/melee-lash-1.png",
+      "bytes": 720766,
+      "sha256": "e0ab64fb43d9928eb502a2ac990850282dab7659bd71846bacc3c34e225be609"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/review.json",
+      "bytes": 5799,
+      "sha256": "868a0161aea9250eb39cadbb7cd161a02682211dc7404a607f929bdf2318c5bb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/static-execution.json",
+      "bytes": 335,
+      "sha256": "de49565b25e781237b85884f8154a9f9e037d8d2795fe52a0446f072b6eb64ad"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/static.json",
+      "bytes": 7497,
+      "sha256": "e0a95b404f526c0f51cb100dcc267be9e4d0acb140e3e86b626e96d155401485"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "30e12805ba7c7eca6506f9b6c75400ea3ad95d87d9fb4423e8a8a9621268730a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/static.log",
+      "bytes": 1832,
+      "sha256": "a229fac318428e74b8923d621facfddbde9506f421f083ac38272909d9531f9c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-observations.json",
+      "bytes": 577,
+      "sha256": "21252220aa1b8c00f6e6ec8771902fc2a8042fb07de41081129e249e065290bb"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/static-01.json",
+      "bytes": 7426,
+      "sha256": "2555d7452a5e0bc5cbc771bceb90e3dc2badf0b640f8cbb121486ad354731455"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "8aff3ed256043c1ddb7d2dea3d18af48e0ae0cf7a75af5c84060c42c57fee1e8"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/static-execution.json",
+      "bytes": 510,
+      "sha256": "dfc67556312d62c494d9c2fca65b106acf415020322dde0b76c41100f1e2be6d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/static.log",
+      "bytes": 1833,
+      "sha256": "6f963911d340ede629a1d27071e7fbef47f08fc187b2673d348d53415993107c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/subject-source.json",
+      "bytes": 2379,
+      "sha256": "f721c27305a198577f719fd25bdf5243845abb6b9f2b609d4b86a9cd9e5598a1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/generation.json",
+      "bytes": 635,
+      "sha256": "1bb60aebba8aef5b2591d2d567689dd8b2cce4caed20a50264547567706102ab"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/master.png",
+      "bytes": 1942994,
+      "sha256": "765d280700be19820172f0a33bbeae3699ccec5ab603efe89b078e9ac78b9894"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/prompt.canonical.txt",
+      "bytes": 8836,
+      "sha256": "e5c2a1090734d57de2eca9636ee7996f3e359c7e26f5b8ba2fc41d7cd86b3ee5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/prompt.sent.txt",
+      "bytes": 11063,
+      "sha256": "ae6bbd858147ea4198d2e8e3ba89cba76241a724ee22795a081e1fdd0d97d1d0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/prompt.txt",
+      "bytes": 11063,
+      "sha256": "ae6bbd858147ea4198d2e8e3ba89cba76241a724ee22795a081e1fdd0d97d1d0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/request.json",
+      "bytes": 915,
+      "sha256": "67830b113a3c8a10ac282909bf5a9fd4f6d3ce51ee4f35f62f571da690beae13"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/subject-source.json",
+      "bytes": 2379,
+      "sha256": "f721c27305a198577f719fd25bdf5243845abb6b9f2b609d4b86a9cd9e5598a1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/visual-review.json",
+      "bytes": 389,
+      "sha256": "63e387f22d84b831d3efefb43e2eafcffc1d8202a12a0c961e124235134130d5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source02/generation.json",
+      "bytes": 541,
+      "sha256": "a6c9649445b09505fb20dcc9a595211acdb672781bb2ea6a6d648f02ebf99193"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source02/master.png",
+      "bytes": 1684324,
+      "sha256": "35b2125db84fb43ce43e2c57391fcd8b892a8c05e0fe3dd40af5bf6c027b6505"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source02/prompt.canonical.txt",
+      "bytes": 8836,
+      "sha256": "e5c2a1090734d57de2eca9636ee7996f3e359c7e26f5b8ba2fc41d7cd86b3ee5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source02/prompt.sent.txt",
+      "bytes": 10087,
+      "sha256": "9b592de262d998b80d60d82dd3ef7a75dd6ec43e80f89a4f5238e9b2a763561e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source02/prompt.txt",
+      "bytes": 10087,
+      "sha256": "9b592de262d998b80d60d82dd3ef7a75dd6ec43e80f89a4f5238e9b2a763561e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source02/request.json",
+      "bytes": 424,
+      "sha256": "daade06764b097c7a0318b9abec6e8c570faa422f8d037452d1b00aab0746bfe"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source02/subject-source.json",
+      "bytes": 2379,
+      "sha256": "f721c27305a198577f719fd25bdf5243845abb6b9f2b609d4b86a9cd9e5598a1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source02/visual-review.json",
+      "bytes": 205,
+      "sha256": "233dfb7e1af4bf29d0a9ffb217240ab6d58f8ec5ae435f2ffddd69f1d8a28bd2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/generation.json",
+      "bytes": 541,
+      "sha256": "c6f2cac8959b6445a438d06a325b9b7b00e0d93de71c28c4206b9408e15f3e09"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/master.png",
+      "bytes": 1725186,
+      "sha256": "d951cb7c97780c87f9a16364d358b898a330530b3ab3d9ca4bee99673a2fcb31"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/prompt.canonical.txt",
+      "bytes": 8836,
+      "sha256": "e5c2a1090734d57de2eca9636ee7996f3e359c7e26f5b8ba2fc41d7cd86b3ee5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/prompt.sent.txt",
+      "bytes": 1570,
+      "sha256": "dba5fd2361c2ea0962775600765b7065cfe851094671e535a28d46db33048bcf"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/prompt.txt",
+      "bytes": 1570,
+      "sha256": "dba5fd2361c2ea0962775600765b7065cfe851094671e535a28d46db33048bcf"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/request.json",
+      "bytes": 1363,
+      "sha256": "4940cfb379d04e4f252b58618d235a56babe165b81074a3155757c2204d6e955"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/subject-source.json",
+      "bytes": 2379,
+      "sha256": "f721c27305a198577f719fd25bdf5243845abb6b9f2b609d4b86a9cd9e5598a1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/visual-review.json",
+      "bytes": 396,
+      "sha256": "efdcf2bea2bb6a40ff9c2c37845716986d132bf84f6ad9d56d8af53e05f0f0a3"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/generation.json",
+      "bytes": 541,
+      "sha256": "1d93af89fc1726fd9f80bc4c4eff4838a895b95536c0dbaeb4ca4e38216c9776"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/master.png",
+      "bytes": 1518976,
+      "sha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/prompt.canonical.txt",
+      "bytes": 8836,
+      "sha256": "e5c2a1090734d57de2eca9636ee7996f3e359c7e26f5b8ba2fc41d7cd86b3ee5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/prompt.sent.txt",
+      "bytes": 1140,
+      "sha256": "03713b879b2859bc875457a25c397815004145d7c9af1c374330c30acaa424ac"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/prompt.txt",
+      "bytes": 1140,
+      "sha256": "03713b879b2859bc875457a25c397815004145d7c9af1c374330c30acaa424ac"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/request.json",
+      "bytes": 408,
+      "sha256": "33f6a8e147e4a081ce4e2379dcde2965fa25422dbb0068c189099aa7d8f70b41"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/subject-source.json",
+      "bytes": 2379,
+      "sha256": "f721c27305a198577f719fd25bdf5243845abb6b9f2b609d4b86a9cd9e5598a1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/visual-review.json",
+      "bytes": 876,
+      "sha256": "dbb4e58f1a9125054532e93a9a2712d0f4cdc551bccdfaee3d2737fb67dbea3f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/authoring.json",
+      "bytes": 28025,
+      "sha256": "6d99a0bbd78c6d937e123bfb6e5a3f2d33e4d7a331b1513645e6b8f37a9089aa"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/fit01/declaration.json",
+      "bytes": 3850,
+      "sha256": "92454f63f37add134616fbda3e51661eae3525e0c08ebb52c5ae4ba48c8092fc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/fit01/intake-provenance.json",
+      "bytes": 3501,
+      "sha256": "f38a31ba684661c204c7f4a56c247895744c207a6e7114deb95150c393d1ebc6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/fit01/label-authoring-receipt.json",
+      "bytes": 4719,
+      "sha256": "9ad9dd31509b79af81d3d93dec8a105d5f8e56ec14ed6e5bd282f3e175c1dd72"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/fit01/labels.png",
+      "bytes": 49878,
+      "sha256": "13252550be130d630f9cde2c5357ad1e053d1e2409d963ae649c58d98b8ea597"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/fit01/record.json",
+      "bytes": 8567,
+      "sha256": "e1bd6165af48fba64180d1417b5fd6bc3d5c0e54b49da928fb67795a4643894b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/fit01/refusal.json",
+      "bytes": 743,
+      "sha256": "72172dfc90a241d885ebf9cefe5453449ba8dbd520a36a0a8f591f5f75074b1c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/intake-execution.json",
+      "bytes": 499,
+      "sha256": "18325c2df33e32dc7e03c959aa8c09823ce793e2900996ff15c0cb7745b505f4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/intake.log",
+      "bytes": 874,
+      "sha256": "fe369088b3d681cb05678cb23e720607110538f250b5e41350a96bc2eae582fa"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/master.png",
+      "bytes": 1525713,
+      "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/presence.json",
+      "bytes": 153,
+      "sha256": "d3b9f04ffc723a2745dad03a3206259b0f18f03f7980cb6ead43e58b558858b5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/source-observations.json",
+      "bytes": 599,
+      "sha256": "da954cbb37715c9d43fd1db3bb9774006d953d2e684d2f2e5e02279d30d09cb6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/subject-source.json",
+      "bytes": 2304,
+      "sha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/authoring.json",
+      "bytes": 50387,
+      "sha256": "58634c011f761965dfc1d503d21e8f9b1fb28843ef2c81ed63564b21f12b5222"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/correction.json",
+      "bytes": 577,
+      "sha256": "7649a99a0457fcab88aee5218f2a4c9cf60284525860d3d1b7c376ec37a6d10f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/fit01/declaration.json",
+      "bytes": 3850,
+      "sha256": "cbc55d492a35ffa00a92daa3ffbdd94ac18dafe56ce2806d4e8addbc68a06e72"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/fit01/intake-provenance.json",
+      "bytes": 3501,
+      "sha256": "2f05244be2ac14b89a5b34c593a60d63d26ce80189333d738c173d6e30be1be6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/fit01/label-authoring-receipt.json",
+      "bytes": 8402,
+      "sha256": "a4770f07fcdfcfdd068a80a0cef5e31f43e67bb5f132c31f7e9be770cad366af"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/fit01/labels.png",
+      "bytes": 49190,
+      "sha256": "c83ee431381c23432194a6b9ea4353a673fdb4c9c1f573218956da8dc0e139d1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/fit01/record.json",
+      "bytes": 8816,
+      "sha256": "3663acf8364fba18053f6d04c6ec48ca4fcf23f2d6c0395cf4ddaa3823677302"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/fit01/refusal.json",
+      "bytes": 743,
+      "sha256": "72172dfc90a241d885ebf9cefe5453449ba8dbd520a36a0a8f591f5f75074b1c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/intake-execution.json",
+      "bytes": 499,
+      "sha256": "41ee47a564f2a3dc1d504bbbd5e762c505e8c123bd8c712f4cfab785b468a2d3"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/intake.log",
+      "bytes": 874,
+      "sha256": "1fb950bce00e1b2e1c98f51d5ed6c35bc2d8ebf9613cde9edf0cfa5543d49f2a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/master.png",
+      "bytes": 1525713,
+      "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/presence.json",
+      "bytes": 153,
+      "sha256": "d3b9f04ffc723a2745dad03a3206259b0f18f03f7980cb6ead43e58b558858b5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/source-observations.json",
+      "bytes": 599,
+      "sha256": "da954cbb37715c9d43fd1db3bb9774006d953d2e684d2f2e5e02279d30d09cb6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/subject-source.json",
+      "bytes": 2304,
+      "sha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/authoring.json",
+      "bytes": 28025,
+      "sha256": "6d99a0bbd78c6d937e123bfb6e5a3f2d33e4d7a331b1513645e6b8f37a9089aa"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/failure.json",
+      "bytes": 437,
+      "sha256": "35ff588a0f26e05c0cb56fdce548022dcda73cffc77a800bc6292beca86caf12"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/declaration.json",
+      "bytes": 3338,
+      "sha256": "820173da096f8b83893575e66362427e47028152f935b3485fd5552e6e9ec7c1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/labels.png",
+      "bytes": 35218,
+      "sha256": "f23a5b1fc199af170211453624a81a5e8b12b207be32a3e355ebea6669d0827d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/atlas/c202-cuttlefish-packed01.json",
+      "bytes": 13105,
+      "sha256": "3b994fe96df6fe31bea6e5555865a814a9378f6d6645eaac2d4ac1438568978b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/atlas/c202-cuttlefish-packed01.png",
+      "bytes": 826542,
+      "sha256": "a425d156a6399d6087d84c1025c24d8bc87b6a679a539ada74aba8b16b1b692d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/atlas/receipt.json",
+      "bytes": 4859,
+      "sha256": "e4068ce41cfe82d0dbb05764263e89f01523ba4e3c27ccfbafea2fd4f4e5be93"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/binding.json",
+      "bytes": 10671,
+      "sha256": "3ebed8c9cb9d6775dd7c6fce7a7789c34f9f00b417bb00b730c3e56a15d4e48f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/keyed.png",
+      "bytes": 2037551,
+      "sha256": "b9a1b656197e60ea34a92325094e953f369404e03cba55b988ee01d80fc1d677"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/manifest.json",
+      "bytes": 5360,
+      "sha256": "c68d62e17a7f60dd12fa54206931723c74cbe34db6614275f39ccecd8f28f336"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/ownership.png",
+      "bytes": 25834,
+      "sha256": "cd97986450572ec301d7685271edd29ddb152169fde1300458b9df854484239b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm0-base.png",
+      "bytes": 42872,
+      "sha256": "d1680fb32a0c564f052d08979124e34f76c6f24935938f6f4ecc4ce0bf8b5927"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm0-middle.png",
+      "bytes": 25741,
+      "sha256": "b8c036c1ed58a9ef1012db4607a1db4877d8ced4adc188f32196d070924c2197"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm0-tip.png",
+      "bytes": 15882,
+      "sha256": "35bb55279a67b09a50870bfdcc4549e5383b5c14a6e66590462e26980c73e5c6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm1-base.png",
+      "bytes": 10802,
+      "sha256": "5ebee943d3a70b6883b199af092c7fac89087dc737e9b572500d2cbfc3a0dfa8"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm1-distal.png",
+      "bytes": 19172,
+      "sha256": "bee35a374eab54351d540aa820c926e3f7299196e4deff1a027c068976bf8a1c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm2-base.png",
+      "bytes": 6339,
+      "sha256": "95deefc6c4e287309c300fb5f69d81b98400895574f02ab33bf825df84447ed4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm2-distal.png",
+      "bytes": 7329,
+      "sha256": "a29bb22d5ca1e8750aecae2e358e7924e6a8d67f7f998eee2902d95f329c0341"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm3-base.png",
+      "bytes": 9555,
+      "sha256": "13148ed2bfb03d6471cee0818d5f55665a1323f869d773c841e717da59c46b19"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm3-distal.png",
+      "bytes": 9755,
+      "sha256": "1f7f48e6e1108ed7a97001f465553dc8092211ada8d3f23b95523d009c06c743"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm4-base.png",
+      "bytes": 8563,
+      "sha256": "5fd030e914bccfcd74bd9e299a0359ff5873c9910c8568df8f32b4f510967a0c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm4-distal.png",
+      "bytes": 11543,
+      "sha256": "1c85f39278e1d248102967c087c9d30f953eca2b4f7fea178163ba4b4a27d4b9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm5-base.png",
+      "bytes": 6873,
+      "sha256": "fc9c7fbe770ee0f45e1b496516462cfbec9d4cca98981242c02906f1fcfc5598"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm5-distal.png",
+      "bytes": 13489,
+      "sha256": "b024da2a5f9de9896af0ace3444de9d2ef8362d6bdbf743f5f716024cd3464ca"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm6-base.png",
+      "bytes": 14500,
+      "sha256": "eddec5ec4839aace32854bbdf56b2bf90ea5d0e6c72c003eccbd5d14af1245da"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm6-distal.png",
+      "bytes": 22199,
+      "sha256": "336925a1bf1ebd4c69bc0b828d48f937c53ecdce1db152ccb582b2549cf4ee31"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm7-base.png",
+      "bytes": 26401,
+      "sha256": "b926caacd82238a7eceaf16f79525dc290127100512b16b533c3069f605fe216"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm7-middle.png",
+      "bytes": 21360,
+      "sha256": "25e2ce957614159c9f2cc5f7210ab9a422fe47d7c37b5bb84e4240a3842d2fdc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/arm7-tip.png",
+      "bytes": 12525,
+      "sha256": "2928a4b4d72f6bb9d496176d0c2c1f637da24250823e3744a28a681a441eeee0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/body.png",
+      "bytes": 102284,
+      "sha256": "ea24a762a6619b755ac276b250a731afa3147470a8a63de28829b6c74d20ecde"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/eye-far.png",
+      "bytes": 6165,
+      "sha256": "fa28ba67c721117006b78bdb26df5ed479d13d516de37fe894a1f583cf0489a5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/eye-near.png",
+      "bytes": 17289,
+      "sha256": "cf557b4953275773b20915cce15e7a3f441df266922d8598e3730b24de20a7d2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/fin-far.png",
+      "bytes": 34216,
+      "sha256": "5ec5feef89f1ecabdacaaee62b68a5bdc544f7f8e5531d6f198cddb5656c3bd0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/fin-near.png",
+      "bytes": 80226,
+      "sha256": "9881683654d0b5a55c197cd9a3438726c4a64cb7c01d2d20721b69666b823f78"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/head.png",
+      "bytes": 129339,
+      "sha256": "06dcc5ff9b3dc6c9c260201e6456c832371aceb2823edfcea14779c7c36305de"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/mantle.png",
+      "bytes": 200566,
+      "sha256": "ae5e59e3d4ae1952d81beb6b48f39dc6d8b43b68990a927a97f36e4478704be5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/siphon.png",
+      "bytes": 25576,
+      "sha256": "11d47c03f695a61f6500006be24e825a27a67e0990b91780ce916ae0323f229e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/tentacle0-base.png",
+      "bytes": 10186,
+      "sha256": "2811fac499f4915ae26c93e7c1b9bb7c4fb5f70e4749b3e87cb6befe8dfc1f25"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/tentacle0-middle.png",
+      "bytes": 13876,
+      "sha256": "54d42364b4134ef9c3d738efaf8142b179299ef8ac93aa20551be0a516e4b85f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/tentacle0-tip.png",
+      "bytes": 31446,
+      "sha256": "ad14398baf30afa956fd6444206e62e3441cdc955dab5b0821a0866f4102b30b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/tentacle1-base.png",
+      "bytes": 8166,
+      "sha256": "c373eac2944248eb42dee72c35aef7193b288a98f35b2b26d38542532387ad3d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/tentacle1-middle.png",
+      "bytes": 9291,
+      "sha256": "0eea7c828eb43300f96ab4d3c326cf525a211e5717852a35501ceb2cdb46a33b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/parts/tentacle1-tip.png",
+      "bytes": 35258,
+      "sha256": "f15b8ed01ca03a4b585d079ae3d7951b2e33263636ef79b47aece2310f802551"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/parts/receipt.json",
+      "bytes": 8375,
+      "sha256": "59ca2c30a6799b6bd71d9da669a7268872f57ca84125dc3d5c9a05790b5719ba"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/fit01/record.json",
+      "bytes": 8567,
+      "sha256": "e1bd6165af48fba64180d1417b5fd6bc3d5c0e54b49da928fb67795a4643894b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/master.png",
+      "bytes": 1525713,
+      "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/presence.json",
+      "bytes": 153,
+      "sha256": "d3b9f04ffc723a2745dad03a3206259b0f18f03f7980cb6ead43e58b558858b5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/semantic-labels.png",
+      "bytes": 49878,
+      "sha256": "13252550be130d630f9cde2c5357ad1e053d1e2409d963ae649c58d98b8ea597"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/semantic-plan.json",
+      "bytes": 8842,
+      "sha256": "b3614488355fd7b1c74ed967642f252ff1c8f2d268c31b67cf3ee9ae2472fb20"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/source-observations.json",
+      "bytes": 599,
+      "sha256": "da954cbb37715c9d43fd1db3bb9774006d953d2e684d2f2e5e02279d30d09cb6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01/subject-source.json",
+      "bytes": 2304,
+      "sha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/authoring.json",
+      "bytes": 28025,
+      "sha256": "6d99a0bbd78c6d937e123bfb6e5a3f2d33e4d7a331b1513645e6b8f37a9089aa"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/binding.json",
+      "bytes": 2625588,
+      "sha256": "5d99b6cc74f38ff836512626974015a741b698e2b87c3b4ef27d3f9a012169ec"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/declaration.json",
+      "bytes": 3338,
+      "sha256": "820173da096f8b83893575e66362427e47028152f935b3485fd5552e6e9ec7c1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/labels.png",
+      "bytes": 35218,
+      "sha256": "f23a5b1fc199af170211453624a81a5e8b12b207be32a3e355ebea6669d0827d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/atlas/c202-cuttlefish-packed01.json",
+      "bytes": 13105,
+      "sha256": "3b994fe96df6fe31bea6e5555865a814a9378f6d6645eaac2d4ac1438568978b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/atlas/c202-cuttlefish-packed01.png",
+      "bytes": 826542,
+      "sha256": "a425d156a6399d6087d84c1025c24d8bc87b6a679a539ada74aba8b16b1b692d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/atlas/receipt.json",
+      "bytes": 4859,
+      "sha256": "e4068ce41cfe82d0dbb05764263e89f01523ba4e3c27ccfbafea2fd4f4e5be93"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/binding.json",
+      "bytes": 10671,
+      "sha256": "3ebed8c9cb9d6775dd7c6fce7a7789c34f9f00b417bb00b730c3e56a15d4e48f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/keyed.png",
+      "bytes": 2037551,
+      "sha256": "b9a1b656197e60ea34a92325094e953f369404e03cba55b988ee01d80fc1d677"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/manifest.json",
+      "bytes": 5360,
+      "sha256": "c68d62e17a7f60dd12fa54206931723c74cbe34db6614275f39ccecd8f28f336"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/ownership.png",
+      "bytes": 25834,
+      "sha256": "cd97986450572ec301d7685271edd29ddb152169fde1300458b9df854484239b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm0-base.png",
+      "bytes": 42872,
+      "sha256": "d1680fb32a0c564f052d08979124e34f76c6f24935938f6f4ecc4ce0bf8b5927"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm0-middle.png",
+      "bytes": 25741,
+      "sha256": "b8c036c1ed58a9ef1012db4607a1db4877d8ced4adc188f32196d070924c2197"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm0-tip.png",
+      "bytes": 15882,
+      "sha256": "35bb55279a67b09a50870bfdcc4549e5383b5c14a6e66590462e26980c73e5c6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm1-base.png",
+      "bytes": 10802,
+      "sha256": "5ebee943d3a70b6883b199af092c7fac89087dc737e9b572500d2cbfc3a0dfa8"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm1-distal.png",
+      "bytes": 19172,
+      "sha256": "bee35a374eab54351d540aa820c926e3f7299196e4deff1a027c068976bf8a1c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm2-base.png",
+      "bytes": 6339,
+      "sha256": "95deefc6c4e287309c300fb5f69d81b98400895574f02ab33bf825df84447ed4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm2-distal.png",
+      "bytes": 7329,
+      "sha256": "a29bb22d5ca1e8750aecae2e358e7924e6a8d67f7f998eee2902d95f329c0341"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm3-base.png",
+      "bytes": 9555,
+      "sha256": "13148ed2bfb03d6471cee0818d5f55665a1323f869d773c841e717da59c46b19"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm3-distal.png",
+      "bytes": 9755,
+      "sha256": "1f7f48e6e1108ed7a97001f465553dc8092211ada8d3f23b95523d009c06c743"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm4-base.png",
+      "bytes": 8563,
+      "sha256": "5fd030e914bccfcd74bd9e299a0359ff5873c9910c8568df8f32b4f510967a0c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm4-distal.png",
+      "bytes": 11543,
+      "sha256": "1c85f39278e1d248102967c087c9d30f953eca2b4f7fea178163ba4b4a27d4b9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm5-base.png",
+      "bytes": 6873,
+      "sha256": "fc9c7fbe770ee0f45e1b496516462cfbec9d4cca98981242c02906f1fcfc5598"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm5-distal.png",
+      "bytes": 13489,
+      "sha256": "b024da2a5f9de9896af0ace3444de9d2ef8362d6bdbf743f5f716024cd3464ca"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm6-base.png",
+      "bytes": 14500,
+      "sha256": "eddec5ec4839aace32854bbdf56b2bf90ea5d0e6c72c003eccbd5d14af1245da"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm6-distal.png",
+      "bytes": 22199,
+      "sha256": "336925a1bf1ebd4c69bc0b828d48f937c53ecdce1db152ccb582b2549cf4ee31"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm7-base.png",
+      "bytes": 26401,
+      "sha256": "b926caacd82238a7eceaf16f79525dc290127100512b16b533c3069f605fe216"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm7-middle.png",
+      "bytes": 21360,
+      "sha256": "25e2ce957614159c9f2cc5f7210ab9a422fe47d7c37b5bb84e4240a3842d2fdc"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/arm7-tip.png",
+      "bytes": 12525,
+      "sha256": "2928a4b4d72f6bb9d496176d0c2c1f637da24250823e3744a28a681a441eeee0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/body.png",
+      "bytes": 102284,
+      "sha256": "ea24a762a6619b755ac276b250a731afa3147470a8a63de28829b6c74d20ecde"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/eye-far.png",
+      "bytes": 6165,
+      "sha256": "fa28ba67c721117006b78bdb26df5ed479d13d516de37fe894a1f583cf0489a5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/eye-near.png",
+      "bytes": 17289,
+      "sha256": "cf557b4953275773b20915cce15e7a3f441df266922d8598e3730b24de20a7d2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/fin-far.png",
+      "bytes": 34216,
+      "sha256": "5ec5feef89f1ecabdacaaee62b68a5bdc544f7f8e5531d6f198cddb5656c3bd0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/fin-near.png",
+      "bytes": 80226,
+      "sha256": "9881683654d0b5a55c197cd9a3438726c4a64cb7c01d2d20721b69666b823f78"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/head.png",
+      "bytes": 129339,
+      "sha256": "06dcc5ff9b3dc6c9c260201e6456c832371aceb2823edfcea14779c7c36305de"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/mantle.png",
+      "bytes": 200566,
+      "sha256": "ae5e59e3d4ae1952d81beb6b48f39dc6d8b43b68990a927a97f36e4478704be5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/siphon.png",
+      "bytes": 25576,
+      "sha256": "11d47c03f695a61f6500006be24e825a27a67e0990b91780ce916ae0323f229e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/tentacle0-base.png",
+      "bytes": 10186,
+      "sha256": "2811fac499f4915ae26c93e7c1b9bb7c4fb5f70e4749b3e87cb6befe8dfc1f25"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/tentacle0-middle.png",
+      "bytes": 13876,
+      "sha256": "54d42364b4134ef9c3d738efaf8142b179299ef8ac93aa20551be0a516e4b85f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/tentacle0-tip.png",
+      "bytes": 31446,
+      "sha256": "ad14398baf30afa956fd6444206e62e3441cdc955dab5b0821a0866f4102b30b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/tentacle1-base.png",
+      "bytes": 8166,
+      "sha256": "c373eac2944248eb42dee72c35aef7193b288a98f35b2b26d38542532387ad3d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/tentacle1-middle.png",
+      "bytes": 9291,
+      "sha256": "0eea7c828eb43300f96ab4d3c326cf525a211e5717852a35501ceb2cdb46a33b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/parts/tentacle1-tip.png",
+      "bytes": 35258,
+      "sha256": "f15b8ed01ca03a4b585d079ae3d7951b2e33263636ef79b47aece2310f802551"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/parts/receipt.json",
+      "bytes": 8375,
+      "sha256": "59ca2c30a6799b6bd71d9da669a7268872f57ca84125dc3d5c9a05790b5719ba"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/pre-finish-binding.json",
+      "bytes": 1774570,
+      "sha256": "07a579c953f67eba941e20ee4526752623ccdfb81137f82dc93145eb40a0658d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/fit01/record.json",
+      "bytes": 8567,
+      "sha256": "e1bd6165af48fba64180d1417b5fd6bc3d5c0e54b49da928fb67795a4643894b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/master.png",
+      "bytes": 1525713,
+      "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/presence.json",
+      "bytes": 153,
+      "sha256": "d3b9f04ffc723a2745dad03a3206259b0f18f03f7980cb6ead43e58b558858b5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/receipt.json",
+      "bytes": 9354,
+      "sha256": "3e4d909c41c659d556b360b254302d6c511ab7f420174eb7d5cca9b382a30b82"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/semantic-labels.png",
+      "bytes": 49878,
+      "sha256": "13252550be130d630f9cde2c5357ad1e053d1e2409d963ae649c58d98b8ea597"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/semantic-plan.json",
+      "bytes": 8842,
+      "sha256": "b3614488355fd7b1c74ed967642f252ff1c8f2d268c31b67cf3ee9ae2472fb20"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/source-observations.json",
+      "bytes": 599,
+      "sha256": "da954cbb37715c9d43fd1db3bb9774006d953d2e684d2f2e5e02279d30d09cb6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/static-execution.json",
+      "bytes": 292,
+      "sha256": "50d7b5e84df4ba731ba76b6c6bfbe9b3c0469f3b4625c28c25d4681bce370aa1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/static.json",
+      "bytes": 139559,
+      "sha256": "dc03f2d3d842ac39bf2b7a1c38a23da9a3f6ae348fae4ba95914782f85cd2f65"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "f009d96221d78f4e1ffb66668205429b41b4842f00360c2984d14a0c442f31e3"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/static.log",
+      "bytes": 2983,
+      "sha256": "0fc4a90bb551efa76f1faa80b8ee7da0e66f03c7776f68737740b67c7cca8858"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed02/subject-source.json",
+      "bytes": 2304,
+      "sha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/authoring.json",
+      "bytes": 50387,
+      "sha256": "58634c011f761965dfc1d503d21e8f9b1fb28843ef2c81ed63564b21f12b5222"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/binding.json",
+      "bytes": 2567829,
+      "sha256": "4ff0a32cb485d66852d9e99cf81dea9346311fc63e645555feea4a2a48fa8516"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/declaration.json",
+      "bytes": 3338,
+      "sha256": "b9a5fb6becf9b8a6f89d8c98eb413b232cc95e7ff00efb511289897093707b00"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/labels.png",
+      "bytes": 32507,
+      "sha256": "ef40189aac6308a66acc227054b72e628762d6d133e3a55c9edb08da9b5fc91b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/atlas/c202-cuttlefish-packed01.json",
+      "bytes": 13114,
+      "sha256": "b0f331881df611d1e5022bdce2d8c024faa172e9ed0c5e53968a42aa9f86cc81"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/atlas/c202-cuttlefish-packed01.png",
+      "bytes": 815203,
+      "sha256": "d4769a18c16dac2a4f7246385891ad4918c3c2da940dddfa69920fe0ef761e78"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/atlas/receipt.json",
+      "bytes": 4859,
+      "sha256": "3853d2663ac44260225503ad68fa4c2524ee9b7aaf8cd1cfc4004f8d3993ab04"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/binding.json",
+      "bytes": 10677,
+      "sha256": "a26616ad65f485ff341e764efd0de1977031d6253592ca2c5e9a4a7e7be21d1f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/keyed.png",
+      "bytes": 2037551,
+      "sha256": "b9a1b656197e60ea34a92325094e953f369404e03cba55b988ee01d80fc1d677"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/manifest.json",
+      "bytes": 5360,
+      "sha256": "ba6950208e8697ed568419844f7331027a5a3b99d89e39834b042c52f8f25aa7"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/ownership.png",
+      "bytes": 25160,
+      "sha256": "6574f7785c4b2fe43d69639218e86bfe48b7887a27ebd6b2eb5fc8b944f3bf41"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm0-base.png",
+      "bytes": 37239,
+      "sha256": "6a3ebcf1e955c209a03de4ef60dc67bcd441645354fafda4be57704901ac783f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm0-middle.png",
+      "bytes": 28272,
+      "sha256": "efa93b7d0a90a02f0a762e40ae9a383467b76947ab130b55aae269bf57a32af9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm0-tip.png",
+      "bytes": 15882,
+      "sha256": "35bb55279a67b09a50870bfdcc4549e5383b5c14a6e66590462e26980c73e5c6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm1-base.png",
+      "bytes": 13759,
+      "sha256": "0b00b9bca4d8cc90f3612f7c2809326b3dc0fc86d6a81f818cbcc912ccf2eb2a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm1-distal.png",
+      "bytes": 25746,
+      "sha256": "91773e9d0e984329c7c6cc0f2b308b24bc58c1b1833ee4c6d317381c2ba01409"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm2-base.png",
+      "bytes": 6349,
+      "sha256": "2a0d85e7acca8efe644c1b33b879e61f22856dbda6b4a5f50ddabde0cb59a017"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm2-distal.png",
+      "bytes": 10662,
+      "sha256": "50b35d24a2981058a3f09ab665571a0135bd66cb88d8124460ed4b32f78fb11b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm3-base.png",
+      "bytes": 12021,
+      "sha256": "640d7a6abd4770f50dac3da992d5c387eecc9a27ee709b9e42f78f26b7ceecb4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm3-distal.png",
+      "bytes": 9967,
+      "sha256": "77ffdc802b0c7b65399c4a0b2ebfe2bbdd456d1b797133c126b0fefabfc34b30"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm4-base.png",
+      "bytes": 12680,
+      "sha256": "f1710d9f5077de2de732476ef2eb54c19749ed14aaae243dfe76082b0050205e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm4-distal.png",
+      "bytes": 12374,
+      "sha256": "aa58ae3b5282978d4fb3be8c33a02bf308a16c5ef06b004d2c82adc05ed5f616"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm5-base.png",
+      "bytes": 10089,
+      "sha256": "bc1720080bd09af282a855948ccff57248c20e23750c21e53a20b662d7af0a79"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm5-distal.png",
+      "bytes": 19877,
+      "sha256": "41087bbace73ea72f28720a43e0d7a0ac4b6b53059970e06a64751fae8b4d7a4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm6-base.png",
+      "bytes": 16111,
+      "sha256": "5834ce0ca23ed91b67c7665097fe291f27d89bdb02cb04c858a2c5ae83e7e03a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm6-distal.png",
+      "bytes": 27456,
+      "sha256": "0c0937940c32942c18e93f00a29594de65eed4dd7a17e9ba54f7feb90e464df6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm7-base.png",
+      "bytes": 27029,
+      "sha256": "2ff78975bdd2cac5393267dedd554348fa2e7b302f01bafeea7ce46352f460f5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm7-middle.png",
+      "bytes": 24989,
+      "sha256": "d7f0661b73675801cb060a351320256fd8cd358f11948e91565e92f45a9fb356"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/arm7-tip.png",
+      "bytes": 13793,
+      "sha256": "f3d089256ff656854e8cc6956bd841ce1cdca269695a6772089380787596f45d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/body.png",
+      "bytes": 35856,
+      "sha256": "a041eb229f289e548c6c74a4ee6a770a0664985fe17c1cced907e16b8a087f18"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/eye-far.png",
+      "bytes": 6165,
+      "sha256": "fa28ba67c721117006b78bdb26df5ed479d13d516de37fe894a1f583cf0489a5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/eye-near.png",
+      "bytes": 17289,
+      "sha256": "cf557b4953275773b20915cce15e7a3f441df266922d8598e3730b24de20a7d2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/fin-far.png",
+      "bytes": 36960,
+      "sha256": "9938751ded43175b778643e809477d0b743b58d41f496dab28b27846492a8a68"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/fin-near.png",
+      "bytes": 96752,
+      "sha256": "6019300894b2de5479821aa7f53a2827c9c75c96c84badaa2fe9c9283e3c0d8e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/head.png",
+      "bytes": 124767,
+      "sha256": "3855539f1d16b683ea24202b3f44675daed99d65d11cd1b0f0e559f87cbcdb62"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/mantle.png",
+      "bytes": 200957,
+      "sha256": "49ed0e505dd35f31b853f139edae404ba75f53204e1f66bf7133c1154a3f5497"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/siphon.png",
+      "bytes": 24853,
+      "sha256": "a61ae9cfdc09570d3ccd181e18eb143ebd1791c6974f038f032a4809414750f0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/tentacle0-base.png",
+      "bytes": 10918,
+      "sha256": "2fe974f2566669698ce33de0e9321937946d5b88335d3f7cf231a36c38ce7dee"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/tentacle0-middle.png",
+      "bytes": 15333,
+      "sha256": "fb82593d71b645ed093dfab1f323138c25bb344b9742e2e07e32d6ca6f768d1f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/tentacle0-tip.png",
+      "bytes": 31789,
+      "sha256": "2ce04d1a37adf1929698df46223483d3412ca24147e5f9d50b17503126a21861"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/tentacle1-base.png",
+      "bytes": 8207,
+      "sha256": "fbfed213ebc938ba17ae1dd91afa8aefe8980e5e5023c7d9ee7446bee23295a9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/tentacle1-middle.png",
+      "bytes": 12827,
+      "sha256": "8c737eb1d2fb51f5c34cb15b107940b4ad1b90eebcc2216e597b2046484a5d8b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/parts/tentacle1-tip.png",
+      "bytes": 37542,
+      "sha256": "338401cfddf05bb79903120822023cf6d0fde9db3e26738c479e246a31326f75"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/parts/receipt.json",
+      "bytes": 8378,
+      "sha256": "fdc9c971b3a69a6ea1a2860c4a8d1eb508213b82d0bb3f5f381b38b658d4b398"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/pre-finish-binding.json",
+      "bytes": 1672741,
+      "sha256": "11aab76e9481384d3d3df38391ab2fba56c265142515c2938c30fc029b978d83"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/fit01/record.json",
+      "bytes": 8816,
+      "sha256": "3663acf8364fba18053f6d04c6ec48ca4fcf23f2d6c0395cf4ddaa3823677302"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/master.png",
+      "bytes": 1525713,
+      "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/presence.json",
+      "bytes": 153,
+      "sha256": "d3b9f04ffc723a2745dad03a3206259b0f18f03f7980cb6ead43e58b558858b5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/receipt.json",
+      "bytes": 8067,
+      "sha256": "1f2b6b7bdf6bdcc0e77e5817b3ea18d180a6b2511d665d1dd241b08050fed9f7"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/approach-jet-0.png",
+      "bytes": 764270,
+      "sha256": "c0e110dc199fac03a7d5aa57301a657fca22ac84f084f16f2171e95028e82270"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/approach-jet-0p9.png",
+      "bytes": 769604,
+      "sha256": "bb53c7b6252d575b302304f2d119fcb8884deafbfd40529ac965ea867072d758"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/approach-jet-1.png",
+      "bytes": 764255,
+      "sha256": "07cbd9b9201d2370824d5073a9c8224a205751d72fba4eb3f1cdac701632c212"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/faint-0.png",
+      "bytes": 764270,
+      "sha256": "c0e110dc199fac03a7d5aa57301a657fca22ac84f084f16f2171e95028e82270"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/faint-0p2.png",
+      "bytes": 793337,
+      "sha256": "79fddb2f280eccae9113705be7a01b017247299fbbe5ff407ea8031f50e7518f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/idle-0.png",
+      "bytes": 763576,
+      "sha256": "1e5ec6f0c7461079119a34c6e37a9cad277df54aacdf86213ca2eb5ff21c5bb9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/idle-0p2.png",
+      "bytes": 784616,
+      "sha256": "6ba62dd94d250b8a1f611422e0510ef9a8a39b1d0640bf0181950a05f67744f6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/idle-0p9.png",
+      "bytes": 754528,
+      "sha256": "3f328e50503ffcd1b8e092945b09e8a85d457706e3e57bb13f1e4bc95d707406"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/idle-1.png",
+      "bytes": 763576,
+      "sha256": "1e5ec6f0c7461079119a34c6e37a9cad277df54aacdf86213ca2eb5ff21c5bb9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/melee-lash-0.png",
+      "bytes": 764270,
+      "sha256": "c0e110dc199fac03a7d5aa57301a657fca22ac84f084f16f2171e95028e82270"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/melee-lash-0p9.png",
+      "bytes": 766160,
+      "sha256": "6b2725ba8335059e2b79aac19215ba828947a1c608ee9addadffd2b0b18dba17"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/melee-lash-1.png",
+      "bytes": 764270,
+      "sha256": "c0e110dc199fac03a7d5aa57301a657fca22ac84f084f16f2171e95028e82270"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/review01/review.json",
+      "bytes": 5561,
+      "sha256": "a66e019965cdc50be9748e02368f3e30df8b38be5447a2064253ed8bade5a0f2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/semantic-labels.png",
+      "bytes": 49190,
+      "sha256": "c83ee431381c23432194a6b9ea4353a673fdb4c9c1f573218956da8dc0e139d1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/semantic-plan.json",
+      "bytes": 8843,
+      "sha256": "9764254197449c153c7bee2a6ca60668064ca12eedea76c243761f560e9d95a0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/source-observations.json",
+      "bytes": 599,
+      "sha256": "da954cbb37715c9d43fd1db3bb9774006d953d2e684d2f2e5e02279d30d09cb6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/static-execution.json",
+      "bytes": 292,
+      "sha256": "c1da06b0a3b3d7c078c8df86521c1503eb8f7b2e940fc325580cc191d2cb964b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/static.json",
+      "bytes": 139534,
+      "sha256": "ae080d30bb9fd463ab7b75ef08ad76fd45d7e263ede065e08fb53150d103a2cf"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "909493f5b9ae6c31f53fd5e19443a04fcb558c8417bad1e35a79f11acc47a891"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/static.log",
+      "bytes": 2958,
+      "sha256": "3f6ff568dcfe843a736ed3c28c858a3509db688cc25d4388c58224c295a0127e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed03/subject-source.json",
+      "bytes": 2304,
+      "sha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/generation.json",
+      "bytes": 1048,
+      "sha256": "50fbdb3d81d4d24bbc9d10dca8a008bad2ef514bf0e5f9ca8b2af558d72c90ee"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/master.png",
+      "bytes": 1801153,
+      "sha256": "25777a6fa13cd2a810f5a296ff0a5cdb2bbf0af37f998cdcc47e0d7df08a328b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/prompt.canonical.txt",
+      "bytes": 8714,
+      "sha256": "1815be6a188da5f5fbc0bd82d64730e68606468b428f866da3df5637f1c028e2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/prompt.sent.txt",
+      "bytes": 11107,
+      "sha256": "52c7c5594d88a4238fba484092e96d2243aa36656589521eecc91b3be7d756c5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/prompt.txt",
+      "bytes": 11039,
+      "sha256": "ca79d6a5777466d324b3822a0c1dbc92532514e8adec0c3e797245d39e3012d1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/request.json",
+      "bytes": 921,
+      "sha256": "48cdcfe5f21b6b885b0707ba3419ef7e1a5ce3ad38b4a8ba7750752f79429a60"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/subject-source.json",
+      "bytes": 2304,
+      "sha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/visual-review.json",
+      "bytes": 480,
+      "sha256": "7160eb92e4f1049f51bdc892eba8241f1bcc15380f4c6933a285493091b3de65"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/generation.json",
+      "bytes": 544,
+      "sha256": "7021a5838ff36b955e7186160fe440d9fa1dc3968e0c5ada3cf21caaadbaedb9"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/master.png",
+      "bytes": 1769252,
+      "sha256": "7785b7a5ba2f314e14edfe85bd605e7cdebfd03ea30107d0ce68f22515374a5b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/prompt.canonical.txt",
+      "bytes": 8714,
+      "sha256": "1815be6a188da5f5fbc0bd82d64730e68606468b428f866da3df5637f1c028e2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/prompt.sent.txt",
+      "bytes": 9803,
+      "sha256": "8094e4bdf6baa49f2b4859055233df9319c682747284e6866599b0696d452153"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/prompt.txt",
+      "bytes": 9803,
+      "sha256": "8094e4bdf6baa49f2b4859055233df9319c682747284e6866599b0696d452153"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/request.json",
+      "bytes": 427,
+      "sha256": "3be43a53a538577b3c43135c0c1189c85c35125e20a4127071722c54790438b4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/subject-source.json",
+      "bytes": 2304,
+      "sha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/visual-review.json",
+      "bytes": 302,
+      "sha256": "97ebeebcf17eb006ee40bd3ab6448852916c880e92b8ce214e872ad63bfa96df"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/generation.json",
+      "bytes": 544,
+      "sha256": "63d3062cacbe5d75e80bd963ddb69d06d31bd6e39cb8bf4eacaf6c3e9557f688"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/master.png",
+      "bytes": 1525713,
+      "sha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/prompt.canonical.txt",
+      "bytes": 8714,
+      "sha256": "1815be6a188da5f5fbc0bd82d64730e68606468b428f866da3df5637f1c028e2"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/prompt.sent.txt",
+      "bytes": 1192,
+      "sha256": "296caefe03e135c7ecb1c74f7f94e42afb2e0e264f6ae963058958b4d047a438"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/prompt.txt",
+      "bytes": 1192,
+      "sha256": "296caefe03e135c7ecb1c74f7f94e42afb2e0e264f6ae963058958b4d047a438"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/request.json",
+      "bytes": 991,
+      "sha256": "e90b47ee4b3a4a7f7e3fb51f74e9a01c7db7fd828b8b3fa569ddb33ef0fac8c0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/subject-source.json",
+      "bytes": 2304,
+      "sha256": "20eaac6511c0baf66d0d3767112db19efef4c8d11c578398b3f23331372fa461"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/visual-review.json",
+      "bytes": 902,
+      "sha256": "8960ea4fada24d266064306c2197b2835c5ff114c4640804bd9d091024a86146"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/author-cuttlefish.mjs",
+      "bytes": 7449,
+      "sha256": "a749ddf23735ad17c48c16614d2f02500fc20b53cd5a5686dc45912d2ad4758a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/author-octopus.mjs",
+      "bytes": 6243,
+      "sha256": "9752fe547acd7c87f27168c7af15352734e633da37eec6bdc7a656d5ae019a4d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/bundle-review.mjs",
+      "bytes": 1226,
+      "sha256": "a1f41a332b1dce04735811d18eccbfeb3091b776e00d7c1609959e6c7b1dc268"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/bundle-review02.mjs",
+      "bytes": 1230,
+      "sha256": "9e0e312fbd827f76a018a1ad5f5e68cd2126aa1c36101626c19e43441ff2f418"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/compile-source-joins.mjs",
+      "bytes": 3966,
+      "sha256": "b8644834b051af5fe8d7b7941e2628d0a3c4b651726278d35488c4e37314e8c8"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/compiler-delivery.json",
+      "bytes": 2875,
+      "sha256": "7c906ebaf4b41b0d0792ef578121b25b50ac3becedcc1d95b1e104c39c4871a0"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/conserve-independent.mjs",
+      "bytes": 5899,
+      "sha256": "36f462323bd7956ef7981f72e626573f335479f6e4f35830e7b38618f682ed5f"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/cuttlefish-terminal.json",
+      "bytes": 11963,
+      "sha256": "f622795e9b37ef813113f2adec6e2c035f7f103fff64149aaec88e1fa97b0e1b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/freeze-packet.mjs",
+      "bytes": 9321,
+      "sha256": "b3b82f93d7bf148830d0073676e790037120daa3ddd38b008f4e939f822bd67b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/intake-cuttlefish-packed.mjs",
+      "bytes": 4946,
+      "sha256": "29992093712ba042c46ae96153b3b66215561f92c076882b64e4b353f161ca26"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/locked-job.mjs",
+      "bytes": 652,
+      "sha256": "6c946f8a20c084fce648f19c1ea8ff4ee1121fffd967eda5c4965c7eb2a52db7"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/battle-full.webm",
+      "bytes": 7560858,
+      "sha256": "d94fb9c41b672f8dc9d3ebac2ba4cdb19c6d20f0f30e60ab20b46acdc626266b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/report.json",
+      "bytes": 361153,
+      "sha256": "9adba645b52803bdb73559cd71b2fa861a8f6637f9b9854f300bbbd8d68dd85e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn0-hit-approach-50.png",
+      "bytes": 1122933,
+      "sha256": "a2d65d2ae75a528ad07618e8b52c18fd3152c239557980bb6734464dc1042f8d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn0-hit-impact.png",
+      "bytes": 634204,
+      "sha256": "ab27b1286eb41e4928ca15f79c082524fe2773c86793981db71bf0545e6d3c35"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn0-hit-reaction-50.png",
+      "bytes": 1123893,
+      "sha256": "336cb9c2ffce934f920296d78e9645027be4461da48491ae12c34d438ef6ae1e"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn0-hit-return-end.png",
+      "bytes": 1122609,
+      "sha256": "c5f0cc4ed5478d3e67893a0ac27470fdde37f6bb7f298ff1c1445347f5fbe955"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn1-hit-approach-50.png",
+      "bytes": 1123817,
+      "sha256": "71d12b85063efb9fd2514d1cc30a201a045566ebca8e66255266a60670e9052a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn1-hit-impact.png",
+      "bytes": 1125450,
+      "sha256": "04ba9d0d2b1d4f73d367144077d69955ecc0d5720e681816daf07b8df2e99313"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn1-hit-reaction-50.png",
+      "bytes": 1130497,
+      "sha256": "03d4428e8a85cc3043bf43e341f779aa5cf870b3543cbeab40c097d25fb8d547"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn1-hit-return-end.png",
+      "bytes": 1122795,
+      "sha256": "7a5f186655cd05f073f58b474252e9fe18b0e409c02600d2575515801bb810ee"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn2-hit-approach-50.png",
+      "bytes": 1123817,
+      "sha256": "71d12b85063efb9fd2514d1cc30a201a045566ebca8e66255266a60670e9052a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn2-hit-impact.png",
+      "bytes": 624916,
+      "sha256": "3245ce4b3b322f70f6677978a601945b429ec08d721e6ade7290620ad6612dc5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn2-hit-reaction-50.png",
+      "bytes": 1130552,
+      "sha256": "5c6d8f1824253b1196aeddd76d8a203f6e4b288bcecf741950f46c8a1c9405ce"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn2-hit-return-end.png",
+      "bytes": 1122795,
+      "sha256": "7a5f186655cd05f073f58b474252e9fe18b0e409c02600d2575515801bb810ee"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn3-hit-approach-50.png",
+      "bytes": 1122933,
+      "sha256": "a2d65d2ae75a528ad07618e8b52c18fd3152c239557980bb6734464dc1042f8d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn3-hit-idle-50.png",
+      "bytes": 1118594,
+      "sha256": "5942e13efd6fb1b0d55fc5969a72a3803eb9a58d06d67502d42c721972331b58"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn3-hit-idle-90.png",
+      "bytes": 1122411,
+      "sha256": "4db48d58b5f6548ff5d8e75e38c247bf4c5e8c540e3d4dac2fd6cb463a13205b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn3-hit-impact.png",
+      "bytes": 1122579,
+      "sha256": "26a621704b04eeff20b938f2ddc8c107f0f3ac9bb2889af842735875faf5501d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn3-hit-reaction-50.png",
+      "bytes": 1122869,
+      "sha256": "3ae6a14b0410d2f961f9de38881a947fe7a1b5673d119e3df9673f09cb37adda"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-01/turn3-hit-return-end.png",
+      "bytes": 1123545,
+      "sha256": "7022b5948138a9fddeb78c8bf507e3a86bbe02f9c14d1131f60df993249d82c3"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-ready.json",
+      "bytes": 3824,
+      "sha256": "c532d2c091c0344f42735252825ac7b62d92f5e4d0b6fd3ac4277d6fe06eb035"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-ready02.json",
+      "bytes": 3368,
+      "sha256": "7d0890717a6848cd5dd96d2ac18b2151d48eae82ca8fd01ad1003800d28e5c88"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-review01.json",
+      "bytes": 1547,
+      "sha256": "c6a3d612971544996bd985a77a4092b66c4529e83bd4375d233141f91ca86ebd"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-script.json",
+      "bytes": 1020,
+      "sha256": "35cc874a73117e520d31a97c508f2bf546e241a859fae87d4ab92ed82f194ac4"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-script02.json",
+      "bytes": 1000,
+      "sha256": "7da10854a5631665156c942e94c50433f6e340289300c8617ae32d8ea4592093"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/packing-plan.json",
+      "bytes": 2659,
+      "sha256": "893d1b4b0ae20c19638f2a8188e5d397aef38b476605503bd3ff6e6efe37ed77"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/packing-tests-01.json",
+      "bytes": 255,
+      "sha256": "e5f87e768e3adb6cae40490830bae5790b7a06d36dce6d56daa02da882a4b6f5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/packing-tests-01.log",
+      "bytes": 1242,
+      "sha256": "0cbd1c90fca8c4a1a4e326457af5ff7ded25572e3cb97ac90de8f92775c24926"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/packing-tests-02.json",
+      "bytes": 255,
+      "sha256": "e5f87e768e3adb6cae40490830bae5790b7a06d36dce6d56daa02da882a4b6f5"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/packing-tests-02.log",
+      "bytes": 1407,
+      "sha256": "d4e7ae045d3345c101fa1dff86a3e95bdc35067f57b0e49486f4e83348e1f017"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/place-eligible.mjs",
+      "bytes": 6246,
+      "sha256": "030fd577da60c2e1d1f3c8670e81151dfd848e31013eb671d231f336f9630dea"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/prompt-transmission-inventory.json",
+      "bytes": 3041,
+      "sha256": "4d27210599f46da790cb70789633ac6bbccd0dbade25a2ea9861da1465e21101"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/README.md",
+      "bytes": 5225,
+      "sha256": "b316af926ec3614e160ece2736d1ead7ea29f4c3c80ef74bad2658e3e5c91c29"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/refine-cuttlefish-contours.mjs",
+      "bytes": 5591,
+      "sha256": "175293b1e11530a279767c8c5bc21fa7667626c5297f9bac368ae584648d0901"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/refine-octopus-contours.mjs",
+      "bytes": 4911,
+      "sha256": "6477346e0f735b2548f083aefca2ae693fe4f2a0e5771da60319d205d916ec8d"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/refine-octopus-crown.mjs",
+      "bytes": 2207,
+      "sha256": "a9a651e599b6be25eda99e12f62b31fe958a622edc593c9ac4af6b4689262e19"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/retained-instrument-refusals.json",
+      "bytes": 1327,
+      "sha256": "dc55e6b2d001d231368158c534f7da88c10b4820e21aa7111999ab4cd0489f06"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/review-bundle-receipt.json",
+      "bytes": 178712,
+      "sha256": "1237bc830324eb0a738999cbc37c92486d03a96b896e9b5303a073f660a84898"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/review-bundle-receipt02.json",
+      "bytes": 178714,
+      "sha256": "46d933f8195b82b77e77f24f821cd9c6be4ba87fc80337dd8219036ca4a92e09"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/review-rig.bundle.mjs",
+      "bytes": 1355230,
+      "sha256": "d870e5a1f27825579b27b27d5f921481023fc0a7e52f86948f240a3c17d601f3"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/review-rig.mjs",
+      "bytes": 4446,
+      "sha256": "1f54c7379997f57e3ab12cfb5433aec50c842aadcb64282b7483f5da27b0afd6"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/review-rig02.bundle.mjs",
+      "bytes": 1356451,
+      "sha256": "614a2589ab5bd30d83da5a1be54acd72a34c3f9d5f83ebbe572b93c556615eb1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/run-candidates.mjs",
+      "bytes": 1292,
+      "sha256": "5fcb714faa9047e9863426def422f5d496030c2a630915f4f02e082d8a4e7d55"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/test-packing.mjs",
+      "bytes": 883,
+      "sha256": "f108c992e6a9c4eca8a3ff36cd2d488964ec3bb40f469917e94252c3a1f659bb"
+    }
+  ],
+  "cpuTerminal": true
+}

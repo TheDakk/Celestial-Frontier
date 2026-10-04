@@ -1,0 +1,63 @@
+{
+  "schema": "cf.c202-exact-prompt-transmission/v1",
+  "rows": [
+    {
+      "id": "01-octopus-source01",
+      "sentPrompt": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/prompt.sent.txt",
+      "sentSha256": "ae6bbd858147ea4198d2e8e3ba89cba76241a724ee22795a081e1fdd0d97d1d0",
+      "intendedSha256": "ae6bbd858147ea4198d2e8e3ba89cba76241a724ee22795a081e1fdd0d97d1d0",
+      "sentEqualsIntended": true,
+      "difference": null
+    },
+    {
+      "id": "02-cuttlefish-source01",
+      "sentPrompt": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/prompt.sent.txt",
+      "sentSha256": "52c7c5594d88a4238fba484092e96d2243aa36656589521eecc91b3be7d756c5",
+      "intendedSha256": "ca79d6a5777466d324b3822a0c1dbc92532514e8adec0c3e797245d39e3012d1",
+      "sentEqualsIntended": false,
+      "difference": "Exact tool prompt included a trailing failed optional material-file glob diagnostic. Preserved verbatim as sent; this line is not art direction."
+    },
+    {
+      "id": "01-octopus-source02",
+      "sentPrompt": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source02/prompt.sent.txt",
+      "sentSha256": "9b592de262d998b80d60d82dd3ef7a75dd6ec43e80f89a4f5238e9b2a763561e",
+      "intendedSha256": "9b592de262d998b80d60d82dd3ef7a75dd6ec43e80f89a4f5238e9b2a763561e",
+      "sentEqualsIntended": true,
+      "difference": null
+    },
+    {
+      "id": "02-cuttlefish-source02",
+      "sentPrompt": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/prompt.sent.txt",
+      "sentSha256": "8094e4bdf6baa49f2b4859055233df9319c682747284e6866599b0696d452153",
+      "intendedSha256": "8094e4bdf6baa49f2b4859055233df9319c682747284e6866599b0696d452153",
+      "sentEqualsIntended": true,
+      "difference": null
+    },
+    {
+      "id": "01-octopus-source03",
+      "sentPrompt": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/prompt.sent.txt",
+      "sentSha256": "dba5fd2361c2ea0962775600765b7065cfe851094671e535a28d46db33048bcf",
+      "intendedSha256": "dba5fd2361c2ea0962775600765b7065cfe851094671e535a28d46db33048bcf",
+      "sentEqualsIntended": true,
+      "difference": null
+    },
+    {
+      "id": "02-cuttlefish-source03",
+      "sentPrompt": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/prompt.sent.txt",
+      "sentSha256": "296caefe03e135c7ecb1c74f7f94e42afb2e0e264f6ae963058958b4d047a438",
+      "intendedSha256": "296caefe03e135c7ecb1c74f7f94e42afb2e0e264f6ae963058958b4d047a438",
+      "sentEqualsIntended": true,
+      "difference": null
+    },
+    {
+      "id": "01-octopus-source04",
+      "sentPrompt": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source04/prompt.sent.txt",
+      "sentSha256": "03713b879b2859bc875457a25c397815004145d7c9af1c374330c30acaa424ac",
+      "intendedSha256": "03713b879b2859bc875457a25c397815004145d7c9af1c374330c30acaa424ac",
+      "sentEqualsIntended": true,
+      "difference": null
+    }
+  ],
+  "generator": "builtin image_gen",
+  "modelVersion": "not reported by builtin tool"
+}

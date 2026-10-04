@@ -1,0 +1,9 @@
+{
+  "schema": "cf.c202-source-edit/v1",
+  "predecessor": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source02/master.png",
+  "predecessorSha256": "7785b7a5ba2f314e14edfe85bd605e7cdebfd03ea30107d0ce68f22515374a5b",
+  "promptSha256": "296caefe03e135c7ecb1c74f7f94e42afb2e0e264f6ae963058958b4d047a438",
+  "canonicalIdentityRetainedAt": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/prompt.canonical.txt",
+  "editScope": "Zoom the view OUT by 20 percent. Keep this exact entire cuttlefish unchanged in anatomy, eight short arms and two long clubbed tentacles, pose, markings and painterly style. Center the creature so its WHOLE silhouette fits inside x160..1094 and y160..1094 of the 1254 square. Fill all surrounding space with the same flat pure magenta. Do not crop, rotate, add or remove any anatomy. No text. This is purely a more generous framing edit. Preserve every existing appendage and the open upper-left short arm.",
+  "qualityAccepted": false
+}

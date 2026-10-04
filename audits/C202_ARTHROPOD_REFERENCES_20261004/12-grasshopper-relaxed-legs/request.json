@@ -1,0 +1,37 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Grasshopper",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "e5ea8b800535d0bae663586747a377bed96335c14556ffb75ec1ab21f93ead03",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "cfe6e089f99dfdf85e69305b0515725efad3119c",
+  "basePromptSha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+  "purpose": "SOURCE_RESTING_POSE_CORRECTION_WITH_REAL_FLEXED_LEGS",
+  "sourceCorrection": "Keep its natural dorsal grasshopper form, but paint a RELAXED FLEXED resting stance with all six real leg chains fully visible. The two huge hind FEMORA angle backward to their knees; the spiny hind TIBIAE fold naturally FORWARD at those knees, forming the normal bent grasshopper jumping-leg shape, instead of pointing backward as a straight extension of the femora. Give all four small front/middle legs natural bent knees too. Six connected nonoverlapping legs, exactly three on each flank; preserve the genuine thoracic emergence and whole leg paths. Preserve its two short antennae, real mouth edge, full body and both folded tegmina. No extra appendages.",
+  "compositionCheck": "central half, native1254 unchanged",
+  "auditCompilerExtension": false,
+  "admission": false,
+  "batchCompilerSha256": "7a48277829ae75c647ec81b7e21a84a14d42a49365ba188c8b507970bec78a50",
+  "predecessor": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/master.png",
+      "sha256": "37790d9e90adcef9eee96bccad51426bdf74b2b8032236c83b37daa9bf60392c"
+    }
+  ],
+  "editStyleParagraphSha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2"
+}

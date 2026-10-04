@@ -1,0 +1,12 @@
+{
+  "schema": "cf.c202-independent-source-authoring/v1",
+  "masterSha256": "2673f287573558969262fabc5bd524083d1e773abe1b5c58ef09a9588284ffab",
+  "fullSizeInspected": true,
+  "observedWalkingChains": 6,
+  "observedAntennae": 2,
+  "method": "Manual source-specific landmarks and priority polygons; no donor coordinates or masks read",
+  "note": "Direct dorsal source shows six distinct complete leg paths and two antennae. Near/far denote lower/upper image flanks, not a fabricated side-view. Leg controls mark visible knees/feet; thorax/root/abdomen are internal control frames. Elytral suture and exposed perimeter belong to the rigid body control, while two continuous hardened forewing covers have separate owners; this does not claim unseen soft abdomen or hindwing anatomy. Dorsal projection and large contact-height spread remain strict static/native review concerns.",
+  "sourcePixelsChanged": 0,
+  "qualityAccepted": false,
+  "native": false
+}

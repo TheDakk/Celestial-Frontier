@@ -1,0 +1,84 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "cfe6e089f99dfdf85e69305b0515725efad3119c",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_PRIMATE_REFERENCES_20261004/08-gorilla-visible-haunch/master.png",
+      "sha256": "78da7b6d2ad46eaa6a452cdb71a2c08ce75f898be89e5c234ff6ff72f88fc3a5"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_PRIMATE_REFERENCES_20261004/08-gorilla-visible-haunch/authoring.json",
+      "sha256": "9410e81ac584aed06e49f98f9d7e4bac7185b1137cde3d6f50e89949378c919e"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_PRIMATE_REFERENCES_20261004/08-gorilla-visible-haunch/subject-source.json",
+      "sha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_PRIMATE_REFERENCES_20261004/08-gorilla-visible-haunch/presence.json",
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "d2f3e8db7230d9428db9b48522d0321d267f88e9f515be868f6ac7ca1ab62589",
+  "bindingHash": "3599076cba18b72a2780c918aae76218ec018f4c5a4efe15d1eca6b84eb17409",
+  "contactEndpoints": [
+    "legFarFoot",
+    "legNearFoot"
+  ],
+  "shapeJoints": [
+    "armNearHand",
+    "armFarHand",
+    "legNearFoot",
+    "legFarFoot",
+    "legNearKnee",
+    "legFarKnee",
+    "legNearHip",
+    "legFarHip",
+    "armNearElbow",
+    "armFarElbow",
+    "armNearShoulder",
+    "armFarShoulder",
+    "jaw",
+    "head",
+    "neck"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_PRIMATE_REFERENCES_20261004/08-gorilla-visible-haunch/master.png",
+      "sha256": "78da7b6d2ad46eaa6a452cdb71a2c08ce75f898be89e5c234ff6ff72f88fc3a5",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_PRIMATE_REFERENCES_20261004/08-gorilla-visible-haunch/authoring.json",
+      "sha256": "9410e81ac584aed06e49f98f9d7e4bac7185b1137cde3d6f50e89949378c919e",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_PRIMATE_REFERENCES_20261004/08-gorilla-visible-haunch/subject-source.json",
+      "sha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_PRIMATE_REFERENCES_20261004/08-gorilla-visible-haunch/presence.json",
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db",
+      "unchanged": true
+    }
+  ]
+}

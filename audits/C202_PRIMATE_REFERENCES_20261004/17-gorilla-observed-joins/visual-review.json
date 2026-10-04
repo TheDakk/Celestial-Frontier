@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c202-primate-fullsize-review/v1",
+  "status": "HELD_VISUAL_FOREHAND_GROUNDING",
+  "handAuthoredCandidate": true,
+  "qualifiedReference": false,
+  "staticSummary": {
+    "actions": 13,
+    "sampledPoses": 1573,
+    "presentationSamples": 871,
+    "unchangedGuards": true,
+    "changedVisibleRgbaChannels": 0
+  },
+  "actualRigReview": "review-01/review.json",
+  "fullSizeInspections": [
+    "review-01/cast-0p5-left.png",
+    "review-01/faint-1-left.png"
+  ],
+  "observedImprovements": [
+    "Detached root-owned forearm/hind/toe/crown strips removed by source contour coverage.",
+    "Axial/pelvic continuity removes the earlier large torso-thigh opening.",
+    "Observed throat/shoulder source joins close the separated neck/arm boundary."
+  ],
+  "remainingHolds": [
+    "Canonical faint puts painted forehands below the source floor guide; not native-qualified.",
+    "Thin hind/arm overlap cut edges, angular bent-limb silhouettes and local stretch remain visible; static pass is not visual acceptance.",
+    "High-arm poses extend outside the fixed source-size software canvas; this is not a native stage framing test."
+  ],
+  "faintWorstBelowGuidePx": 166.63598549365997,
+  "units": "Posed 1254-square source-coordinate pixels, not native film or screen pixels.",
+  "nativeRan": false,
+  "runtimeEdited": false,
+  "D28": "No D28 automatic island repair applied; these are independent manual source authorings and explicit observed joins, not repair-cap admission."
+}

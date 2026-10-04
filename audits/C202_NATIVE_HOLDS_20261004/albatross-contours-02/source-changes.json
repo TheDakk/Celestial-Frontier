@@ -1,0 +1,15 @@
+{
+  "source": "audits/C202_NATIVE_HOLDS_20261004/albatross-source-01",
+  "scope": "Expand owner polygons only across observed ankle, foot and neck contour paint left in body remainder. No source pixel, landmark, joint, material or limit changes. Full-size successor review required.",
+  "changedOwners": [
+    "near-foot",
+    "far-foot",
+    "near-shin",
+    "far-shin",
+    "near-thigh",
+    "head",
+    "neck-upper",
+    "neck-lower"
+  ],
+  "qualityAccepted": false
+}

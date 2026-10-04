@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c202-primate-stage/v1",
+  "args": [
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C202_PRIMATE_REFERENCES_20261004/04-gorilla-side-view",
+    "audits/C202_PRIMATE_REFERENCES_20261004/04-gorilla-side-view/fit01"
+  ],
+  "status": "REFUSED",
+  "exitCode": 1,
+  "elapsedMs": 458.856625,
+  "error": null,
+  "node": "v26.10.0",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "native": false
+}

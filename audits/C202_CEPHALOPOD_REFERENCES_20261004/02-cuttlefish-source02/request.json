@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c202-source-edit/v1",
+  "predecessor": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source01/master.png",
+  "predecessorSha256": "25777a6fa13cd2a810f5a296ff0a5cdb2bbf0af37f998cdcc47e0d7df08a328b",
+  "promptSha256": "8094e4bdf6baa49f2b4859055233df9319c682747284e6866599b0696d452153",
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "qualityAccepted": false
+}

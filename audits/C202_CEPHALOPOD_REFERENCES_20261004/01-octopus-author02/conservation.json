@@ -1,0 +1,405 @@
+{
+  "schema": "cf.c202-independent-source-conservation/v1",
+  "packet": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author02",
+  "masterSha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a",
+  "authoringSha256": "73f060344a2f178960acd8973cdd799dc4337fee79caae7e82d9309ef1cb316e",
+  "bindingSha256": "f93118f594d167e2ecdb0549e4020a5014df26c016cc0e2da10c277dae9508d9",
+  "keyedRgbaSha256": "ba63ee74a77cb88f8ff6182c285801ec637f7d57aedb32189749f7b82c3c65eb",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 3561,
+    "remainderPixels": 7628,
+    "islands": [
+      {
+        "pixels": 37,
+        "to": "arm0Seg2",
+        "border": {
+          "4": 10,
+          "5": 10
+        }
+      },
+      {
+        "pixels": 3,
+        "to": null,
+        "border": {}
+      },
+      {
+        "pixels": 7,
+        "to": "head",
+        "border": {
+          "28": 4,
+          "29": 5
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "arm0Seg1",
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "arm0Seg1",
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "arm0Seg1",
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 845,
+        "to": "arm0Seg0",
+        "border": {
+          "5": 82,
+          "6": 114
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "arm7Seg1",
+        "border": {
+          "26": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "arm7Seg1",
+        "border": {
+          "26": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "arm7Seg1",
+        "border": {
+          "26": 4
+        }
+      },
+      {
+        "pixels": 16,
+        "to": "arm7Seg1",
+        "border": {
+          "26": 19
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "arm7Seg2",
+        "border": {
+          "25": 5
+        }
+      },
+      {
+        "pixels": 14,
+        "to": "arm7Seg1",
+        "border": {
+          "26": 19
+        }
+      },
+      {
+        "pixels": 231,
+        "to": "arm7Seg1",
+        "border": {
+          "26": 71,
+          "27": 37
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "arm7Seg2",
+        "border": {
+          "25": 1
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "siphon",
+        "border": {
+          "3": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "arm0Seg0",
+        "border": {
+          "6": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "arm0Seg0",
+        "border": {
+          "6": 3
+        }
+      },
+      {
+        "pixels": 61,
+        "to": "arm0Seg0",
+        "border": {
+          "6": 18
+        }
+      },
+      {
+        "pixels": 99,
+        "to": "arm0Seg0",
+        "border": {
+          "6": 22
+        }
+      },
+      {
+        "pixels": 63,
+        "to": "arm0Seg0",
+        "border": {
+          "6": 20
+        }
+      },
+      {
+        "pixels": 403,
+        "to": "arm1Seg0",
+        "border": {
+          "6": 52,
+          "9": 68
+        }
+      },
+      {
+        "pixels": 25,
+        "to": "arm6Seg2",
+        "border": {
+          "22": 19
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "arm6Seg2",
+        "border": {
+          "22": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "arm1Seg1",
+        "border": {
+          "8": 2
+        }
+      },
+      {
+        "pixels": 17,
+        "to": "arm1Seg1",
+        "border": {
+          "8": 8
+        }
+      },
+      {
+        "pixels": 87,
+        "to": "arm1Seg1",
+        "border": {
+          "8": 13,
+          "9": 13
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "arm1Seg0",
+        "border": {
+          "9": 2,
+          "12": 2
+        }
+      },
+      {
+        "pixels": 118,
+        "to": "arm2Seg0",
+        "border": {
+          "9": 27,
+          "12": 68
+        }
+      },
+      {
+        "pixels": 822,
+        "to": "arm3Seg1",
+        "border": {
+          "12": 18,
+          "13": 4,
+          "14": 191,
+          "15": 61
+        }
+      },
+      {
+        "pixels": 290,
+        "to": "arm3Seg0",
+        "border": {
+          "14": 18,
+          "15": 55
+        }
+      },
+      {
+        "pixels": 100,
+        "to": "arm3Seg1",
+        "border": {
+          "14": 26
+        }
+      },
+      {
+        "pixels": 66,
+        "to": "arm5Seg0",
+        "border": {
+          "20": 5,
+          "21": 15
+        }
+      },
+      {
+        "pixels": 86,
+        "to": "arm3Seg1",
+        "border": {
+          "14": 27
+        }
+      },
+      {
+        "pixels": 7,
+        "to": "arm5Seg1",
+        "border": {
+          "20": 9
+        }
+      },
+      {
+        "pixels": 18,
+        "to": "arm5Seg2",
+        "border": {
+          "19": 20
+        }
+      },
+      {
+        "pixels": 39,
+        "to": "arm3Seg1",
+        "border": {
+          "14": 26
+        }
+      },
+      {
+        "pixels": 87,
+        "to": "arm4Seg2",
+        "border": {
+          "16": 35
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "arm4Seg2",
+        "border": {
+          "16": 2
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateRemainderComponents": [
+    {
+      "pixels": 4064,
+      "minX": 687,
+      "minY": 719,
+      "maxX": 813,
+      "maxY": 914
+    },
+    {
+      "pixels": 845,
+      "minX": 386,
+      "minY": 433,
+      "maxX": 496,
+      "maxY": 517
+    },
+    {
+      "pixels": 822,
+      "minX": 494,
+      "minY": 705,
+      "maxX": 607,
+      "maxY": 841
+    },
+    {
+      "pixels": 403,
+      "minX": 471,
+      "minY": 583,
+      "maxX": 522,
+      "maxY": 599
+    },
+    {
+      "pixels": 290,
+      "minX": 658,
+      "minY": 756,
+      "maxX": 679,
+      "maxY": 802
+    },
+    {
+      "pixels": 231,
+      "minX": 852,
+      "minY": 485,
+      "maxX": 900,
+      "maxY": 543
+    },
+    {
+      "pixels": 118,
+      "minX": 462,
+      "minY": 694,
+      "maxX": 513,
+      "maxY": 709
+    },
+    {
+      "pixels": 100,
+      "minX": 646,
+      "minY": 809,
+      "maxX": 660,
+      "maxY": 826
+    },
+    {
+      "pixels": 99,
+      "minX": 438,
+      "minY": 566,
+      "maxX": 453,
+      "maxY": 577
+    },
+    {
+      "pixels": 87,
+      "minX": 411,
+      "minY": 669,
+      "maxX": 428,
+      "maxY": 677
+    },
+    {
+      "pixels": 87,
+      "minX": 816,
+      "minY": 916,
+      "maxX": 827,
+      "maxY": 939
+    },
+    {
+      "pixels": 86,
+      "minX": 628,
+      "minY": 833,
+      "maxX": 645,
+      "maxY": 848
+    }
+  ],
+  "unchangedD28Cap": 0.5,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent normalized-polygon ownership replay",
+    "no source alpha addition/deletion",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "ownership mutation rejected",
+    "legacy structural-island negative control refused with explicit 0.05; authorized default remains 0.5"
+  ],
+  "sourceControlFrameLimit": null,
+  "qualityAccepted": false,
+  "native": false
+}

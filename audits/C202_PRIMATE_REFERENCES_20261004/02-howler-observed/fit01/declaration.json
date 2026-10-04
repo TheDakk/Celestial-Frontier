@@ -1,0 +1,116 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "56de274948dfd6988a71ddd87abd946db875218fba82b3d7affc8826dcc4d3dc",
+  "cutoutSha256": "8c8d46f3e0e6884fd5874bd68b93cafd2fe72801624bd14bf86996aa0efe8e05",
+  "keyedRgbaSha256": "c2e023828358f09b8588bfaac87dd944d58a3c2e19267d09f9638eee9eb9dacb",
+  "labelsFile": "labels.png",
+  "labelsSha256": "f2daeeeaf15c30fa88295a380e6348a016d333eb89cc85d312531a79c8bcc6fa",
+  "parts": [
+    {
+      "id": "near-hand",
+      "joint": "armNearHand",
+      "layer": "near"
+    },
+    {
+      "id": "far-hand",
+      "joint": "armFarHand",
+      "layer": "far"
+    },
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-forearm",
+      "joint": "armNearElbow",
+      "layer": "near"
+    },
+    {
+      "id": "far-forearm",
+      "joint": "armFarElbow",
+      "layer": "far"
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearHip",
+      "layer": "near"
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarHip",
+      "layer": "far"
+    },
+    {
+      "id": "near-upper-arm",
+      "joint": "armNearShoulder",
+      "layer": "near"
+    },
+    {
+      "id": "far-upper-arm",
+      "joint": "armFarShoulder",
+      "layer": "far"
+    },
+    {
+      "id": "tail-tip",
+      "joint": "tail2",
+      "layer": "near"
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail1",
+      "layer": "near"
+    },
+    {
+      "id": "tail-root",
+      "joint": "tail0",
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "8cacc3bafd1f2948a84af164dee889801fa165470a0fcc53a136bc2c13b69737"
+}

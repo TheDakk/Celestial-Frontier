@@ -1,0 +1,12 @@
+{
+  "masterSha256": "199ff589b83595a79b82e5bee7948d82c803636d1af2550fa1319f4cff77f28e",
+  "status": "SOURCE_LEG_VISIBILITY_HOLD",
+  "fullSizeInspected": true,
+  "findings": [
+    "Hind knees are now naturally bent, a positive source correction.",
+    "Far hind tibia disappears behind the wing/body; small far legs overlap below the head/body. Six complete separately traceable root-to-tip chains no longer observable.",
+    "Both eyes, antennae and folded tegmina readable, but this does not justify inventing hidden far-leg landmarks.",
+    "No authoring or fit created; retain predecessor six-chain source static red."
+  ],
+  "qualityAccepted": false
+}

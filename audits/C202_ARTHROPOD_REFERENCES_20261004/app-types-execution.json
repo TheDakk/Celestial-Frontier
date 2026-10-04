@@ -1,0 +1,10 @@
+{
+  "args": [
+    "node_modules/typescript/bin/tsc",
+    "--noEmit",
+    "-p",
+    "apps/game/tsconfig.json"
+  ],
+  "status": "PASS",
+  "exitCode": 0
+}

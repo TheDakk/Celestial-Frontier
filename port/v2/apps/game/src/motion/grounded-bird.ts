@@ -24,7 +24,11 @@ export function groundedBirdAction(card:BodyCard,action:MotionAction,base:Motion
  const fits=(tl:MotionTimeline)=>{
   for(let i=0;i<=128;i++){const ms=tl.durationMs*i/128,p=sample(tl,ms),pose:Record<string,CreaturePoseV1[string]>={};
    for(const[j,rotation]of Object.entries(p.joints))pose[j]={rotation};pose.root={rotation:p.root.rotation,dx:p.root.dx,dy:p.root.dy};
-   try{solver.resolve(pose,{actionId:action.id,elapsedMs:ms,durationMs:tl.durationMs,weight:1,realm:card.realm,...action.id==='melee:claw'?{travel:'stage' as const}:{}});}catch{return false;}
+   // The battle adapter owns horizontal travel, including stationary faint.
+   // Preserve the standalone solver outcome too: a source may fit only while
+   // its authored root translation is present, or only after stage removal.
+   const modes=action.id==='faint'?['solver','stage'] as const:action.id==='melee:claw'?['stage'] as const:['solver'] as const;
+   try{for(const travel of modes)solver.resolve(pose,{actionId:action.id,elapsedMs:ms,durationMs:tl.durationMs,weight:1,realm:card.realm,travel});}catch{return false;}
   }return true;
  };
  if(fits(base))return finish(action,null);

@@ -1,0 +1,7 @@
+{
+  "predecessor": "audits/C202_PRIMATE_REFERENCES_20261004/08-gorilla-visible-haunch",
+  "retainedFailure": "Widening near-thigh onto the posterior pelvic flank incorrectly made pelvic paint follow the hip and produced many folds; retained as negative.",
+  "change": "Restore exact original near-thigh; posterior flank moved from wrong far-thigh to anatomically observed pelvis. Same corrected far knee/ankle and only exposed far thigh retained.",
+  "limitsChanged": false,
+  "runtimeChanged": false
+}

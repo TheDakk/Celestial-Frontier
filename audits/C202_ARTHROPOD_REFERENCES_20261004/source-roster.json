@@ -1,0 +1,14 @@
+[
+  {
+    "id": "01-beetle-source",
+    "name": "Beetle",
+    "view": "A true dorsal three-quarter natural ground-beetle view, camera high enough to see BOTH sides of the thorax. Head RIGHT, abdomen LEFT. This explicitly overrides strict side-profile layout below, solely for source observability. Exactly three genuine walking legs on EACH side, six total, spread modestly apart so all six actual thoracic emergence points, femora, knees, tibiae, tarsi and tips are continuously visible without crossing, overlap, body occlusion or invented paths. Keep the six actual leg endpoints separated. Two complete segmented antennae attached at the head, visible mouth/mandibles, actual hard closed elytra separated by a clear median seam. The two elytra are real hardened forewings; do not expose invented flight wings or delete real appendages. No flying/display pose. Natural grounded stance; do not pose leg ends as an anatomical diagram detached from the body.",
+    "packet": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source"
+  },
+  {
+    "id": "02-grasshopper-source",
+    "name": "Grasshopper",
+    "view": "An elevated dorsal three-quarter view of a natural adult grasshopper, camera high enough to see BOTH flanks and all six actual thoracic leg emergence points. Head RIGHT, full abdomen LEFT. This explicitly overrides strict side-profile layout below solely for source observability. Three real legs on EACH flank: modest slender front and middle pairs, and the real powerful angled hind pair with massive femora, spiny tibiae and natural tarsi. Offset the paired hind limbs so neither femur hides a front or middle leg or its own tibia; all six entire leg paths and tips visible, no crossings, overlap, missing segments or extra legs. Two short stout antennae, slanted face and actual chewing mouth edge/mandibles readable. Two real folded forewing/tegmen surfaces with natural separate margins and visible thoracic attachments; do not invent or delete hidden hindwings. Quiet natural standing posture, no flight, props or diagram labels.",
+    "packet": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source"
+  }
+]

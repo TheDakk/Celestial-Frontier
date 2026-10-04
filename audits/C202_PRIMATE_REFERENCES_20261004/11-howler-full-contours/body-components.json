@@ -1,0 +1,33 @@
+{
+  "sourcePart": "body",
+  "positiveAlpha": true,
+  "components": [
+    {
+      "area": 27155,
+      "bounds": [
+        580,
+        382,
+        828,
+        644
+      ]
+    },
+    {
+      "area": 724,
+      "bounds": [
+        984,
+        368,
+        1042,
+        438
+      ]
+    },
+    {
+      "area": 2,
+      "bounds": [
+        982,
+        367,
+        983,
+        367
+      ]
+    }
+  ]
+}

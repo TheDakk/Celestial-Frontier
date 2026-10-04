@@ -324,6 +324,26 @@ openings, bird ground flecks and primate hand penetration; static publication do
 not establish native performance or full visual admission. Evidence:
 `audits/C172_SHARED_HEAD_SPIKE_20261002`.
 
+### Observed insect sockets and counted myriapods — matches code 2026-10-04
+
+An explicit six-socket insect declaration uses the actual painted upper-leg origins
+without adding joints or changing undeclared legacy insects. Counted myriapods may
+declare zero or one observed ultimate pair; zero creates no phantom chains or tracks.
+The 64-joint, 32-part and contact limits remain unchanged. These authoring capabilities
+do not qualify the C202 insect/myriapod sources: the best Beetle still fails its
+standalone source-step hit, while the same stage-owned hit passes. The retained
+packets and empty qualified pool are in `audits/C202_ARTHROPOD_REFERENCES_20261004`.
+
+### Painted bird faint travel ownership — matches code 2026-10-04
+
+The grounded bird author tests each faint sample in both standalone and stage-owned
+travel. Battle removes the authored horizontal root shift; a solver-only authoring
+pass can therefore exceed a real foot limit in battle. Both contexts must pass before
+the complete torso curve is selected. The existing 129 samples, 90% author reserve,
+limb/head/wing timing, contact limits and runtime refusals remain unchanged. The
+retained Albatross negative control passes standalone and fails 47/121 stage probes;
+the corrected author passes both. Evidence: `audits/C202_NATIVE_HOLDS_20261004`.
+
 ### Observed small-crustacean strike — matches code 2026-10-03
 
 `motion/small-crustacean-attack.ts` authors canonical `crustacean-small` `melee:claw`

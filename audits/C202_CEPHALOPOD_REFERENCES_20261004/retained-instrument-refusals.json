@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c202-retained-instrument-refusals/v1",
+  "rows": [
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author01/review01",
+      "status": "ABORTED",
+      "cause": "First software review requested invalid action attack:lash. Partial idle/jet images retained; later review uses actual melee:lash. No completed review claim for this directory."
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-packed01",
+      "status": "REFUSED_SOURCE_RGBA_HASH",
+      "cause": "Initial compiler compared full keyed RGBA hash against positive-alpha-only reconstructed buffer; transparent RGB differed. Source atlas/keyed evidence retained. Corrected compiler checks atlas alpha/positive RGB then hashes exact keyed RGBA, now covered by positive and negative controls."
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author01/fit01",
+      "status": "REFUSED_PART_BUDGET",
+      "cause": "38 semantic owners exceed unchanged32 render-part intake budget before explicit packing."
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-author02/fit01",
+      "status": "REFUSED_PART_BUDGET",
+      "cause": "Same38-owner refusal after the one contour successor, before explicit packing."
+    }
+  ]
+}

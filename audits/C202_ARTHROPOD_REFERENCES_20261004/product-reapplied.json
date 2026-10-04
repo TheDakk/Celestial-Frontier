@@ -1,0 +1,38 @@
+{
+  "schema": "cf.c202-product-reapply/v1",
+  "patchVerified": true,
+  "changedFiles": [
+    {
+      "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "sha256": "d295145272fd53027bd808dab6aa752d29c4c5f3da4091fbd7d209ed798431db"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "8a47a0d10f87372b4ecaac12e18442f2ab8ba0db94eda1c345644d3804ea99df"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "sha256": "f65a61bd80302b3621f3ccb8f4b7373256b6efc26f07b0d21d3fa29edab1e55a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "39443a28ecfc31ecc96915a3e8d6256b39182063251460b88f7cfdfc94ec91dc"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "d5ce727eebbcd6c54a6996454f818df709e969b52aa9f09eb9d679b0c9722986"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-topology.ts",
+      "sha256": "bb21fa793b2b0fc9cbe6750a6c68502ee0cccef45f95e2bde52c476e6673f5c2"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "sha256": "9dc0b80e9a8fd0fbf3c87abbe7abd43c9ab7f4c71869c4beba74f56050daf7d4"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact-insect-sockets.test.ts",
+      "sha256": "071fed6786e7ee2e19c598e663ce8cd003966732d01d659adbcbee9b5d0d1b6c"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "schema": "cf.c198-actual-rig-software-review/v1",
+  "status": "PASS_OFFLINE",
+  "scope": "Actual loaded CreatureRig positions equal independent publication; source-size software rendering only, no native or GPU acceptance",
+  "rows": [
+    {
+      "action": "idle",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 17,
+      "image": "idle-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 666.732267960906,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 3000.295205824077,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 17,
+      "image": "idle-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 3333.66133980453,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 17,
+      "image": "idle-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 666.732267960906,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 17,
+      "image": "faint-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 142.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 640.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 17,
+      "image": "faint-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 712,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 17,
+      "image": "faint-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 142.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:walk",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 17,
+      "image": "approach-walk-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:walk",
+      "ms": 122.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "approach-walk-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:walk",
+      "ms": 550.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 17,
+      "image": "approach-walk-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:walk",
+      "ms": 612,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 17,
+      "image": "approach-walk-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:walk",
+      "ms": 122.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "approach-walk-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 17,
+      "image": "hit-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 128.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "hit-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 577.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 17,
+      "image": "hit-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 642,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 17,
+      "image": "hit-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 128.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "hit-0p2.png",
+      "publishedPartParity": "byte-exact"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/fit/record.json",
+      "sha256": "1c6ec4915f4d404af4afbbc3100735742d21a4a87642192fc58b01779374a334"
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/fit/binding.json",
+      "sha256": "77e66d60290dfb82c243854dd152188a7b73be02dec682ffec6384a5230f0318"
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/fit/parts/atlas/c202-albatross-observed-contour-successor.png",
+      "sha256": "4c8d2860e08a676e54188b6883e7721f80ef2b571ef21599479af7532277a61d"
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/master.png",
+      "sha256": "96b1750faf0a6e1f8844ae75bdaa8f7b3cee3c1b0392643e84b1978c65d58657"
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/review-rig.mjs",
+      "sha256": "14bd84793cc0f9c1c89a9e2a4841f10325830fd48c16fd09945a878fa79ec021"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

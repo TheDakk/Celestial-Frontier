@@ -1,0 +1,93 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "a1ded076f4be19705c8ae6af3cfab9995f4743eb",
+  "helperSha256": "c2687fcebe9c238066c5461a0fd26b8ca003e694b7e03068594a25ed1c0591cc",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/master.png",
+      "sha256": "2673f287573558969262fabc5bd524083d1e773abe1b5c58ef09a9588284ffab"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/authoring.json",
+      "sha256": "60c3dab8b0f5342f036c108b7e44f37ec11e69518ceb00d7a7abb340a7853e6e"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/subject-source.json",
+      "sha256": "f1ccf1d44f06ac677777c12d209af137e4f40dfc7f756752691f4804ab6ef60e"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "d9a59e1280be31cd3794ddbd24a3349977b27fab3014b50c6cb8368e3d5c5cc3",
+  "bindingHash": "14346021d9f0a79a091676b95e76fee127682f037ba7088607ee5a4646fef944",
+  "contactEndpoints": [
+    "legFrontFarFoot",
+    "legFrontNearFoot",
+    "legMidFarFoot",
+    "legMidNearFoot",
+    "legHindFarFoot",
+    "legHindNearFoot"
+  ],
+  "shapeJoints": [
+    "legFrontFarFoot",
+    "legMidFarFoot",
+    "legHindFarFoot",
+    "legFrontNearFoot",
+    "legMidNearFoot",
+    "legHindNearFoot",
+    "legFrontFarKnee",
+    "legMidFarKnee",
+    "legHindFarKnee",
+    "legFrontNearKnee",
+    "legMidNearKnee",
+    "legHindNearKnee",
+    "antennaFar",
+    "antennaNear",
+    "mandible",
+    "head",
+    "abdomen",
+    "wingFar",
+    "wingNear",
+    "thorax"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/master.png",
+      "sha256": "2673f287573558969262fabc5bd524083d1e773abe1b5c58ef09a9588284ffab",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/authoring.json",
+      "sha256": "60c3dab8b0f5342f036c108b7e44f37ec11e69518ceb00d7a7abb340a7853e6e",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/subject-source.json",
+      "sha256": "f1ccf1d44f06ac677777c12d209af137e4f40dfc7f756752691f4804ab6ef60e",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

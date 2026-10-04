@@ -1,0 +1,65 @@
+{
+  "schema": "cf.c202-audit-hit-authoring/v1",
+  "scope": "Audit-only pure contact proof on actual source-bound supports; not moving paint or native qualification",
+  "recordRecipeHash": "35c007f5e0e4f7882fb0748f7a72aad363204f4f1f111f7e9c4eea5bdc405f3d",
+  "bindingHash": "48894731746cbc796cce25ac557182315bffd5111febef9abb83f31c7b01449a",
+  "masterSha256": "e1eca972d8481b7471239b47c54598657364c06334b21be37b60fe6ea8c5e275",
+  "probes": [
+    {
+      "gain": 1,
+      "pass": false,
+      "modes": [
+        {
+          "travel": "solver",
+          "checked": 101,
+          "maxCompression": 0.027649566511839696,
+          "limit": 0.02813462226242946,
+          "refusal": {
+            "ms": 355.078125,
+            "error": "Error: Contact: hit@355.078125 exceeds scale compression bound"
+          }
+        },
+        {
+          "travel": "stage",
+          "checked": 129,
+          "maxCompression": 0,
+          "limit": 0.02813462226242946,
+          "refusal": null
+        }
+      ]
+    },
+    {
+      "gain": 0,
+      "pass": false,
+      "modes": [
+        {
+          "travel": "solver",
+          "checked": 14,
+          "maxCompression": 0.0017162954692848675,
+          "limit": 0.02813462226242946,
+          "refusal": {
+            "ms": 49.21875,
+            "error": "Error: Contact: hit@49.21875 exceeds scale compression bound"
+          }
+        },
+        {
+          "travel": "stage",
+          "checked": 129,
+          "maxCompression": 0,
+          "limit": 0.02813462226242946,
+          "refusal": null
+        }
+      ]
+    }
+  ],
+  "selected": null,
+  "preserved": [
+    "all non-torso tracks",
+    "secondary curves",
+    "limits",
+    "deform",
+    "timing",
+    "phase inventory"
+  ],
+  "productChanged": false
+}
