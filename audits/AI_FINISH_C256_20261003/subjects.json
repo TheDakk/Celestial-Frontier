@@ -1,0 +1,18 @@
+[
+ {
+  "id": "08-civet",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c256/08-civet/fit"
+ },
+ {
+  "id": "09-stoat",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c256/09-stoat/fit"
+ },
+ {
+  "id": "17-hamster",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c256/17-hamster/fit"
+ },
+ {
+  "id": "23-pika",
+  "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c256/23-pika/fit"
+ }
+]
