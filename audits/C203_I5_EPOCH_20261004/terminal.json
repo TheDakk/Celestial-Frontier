@@ -1,0 +1,30 @@
+{
+  "schema": "cf.c203-terminal/v1",
+  "reservation": "C272",
+  "state": "TERMINAL \u2014 RELEASED",
+  "time": "2026-10-04T03:26:12.650059+00:00",
+  "productHead": "456ac7c52ddfdc5aab11233a7c98c8cede7dbf82",
+  "selectionHead": "08dd81237a8ba7cd93debf1be451295f1195813f",
+  "i5": "PASS: 3 calibrations + 1 certification, every named verifier PASS",
+  "develop": {
+    "head": "08dd81237a8ba7cd93debf1be451295f1195813f",
+    "startedAt": "2026-10-04T03:22:16.608869+00:00",
+    "finishedAt": "2026-10-04T03:24:36.450860+00:00",
+    "durationSeconds": 139.842,
+    "exitCode": 0,
+    "optionalRuntimeRenamedAside": true,
+    "optionalRuntimeRestored": true,
+    "asideAbsent": true,
+    "command": "node port/v2/tools/check-profile.mjs --profile=develop"
+  },
+  "tests": {
+    "passed": 6005,
+    "expectedFail": 2,
+    "skipped": 3,
+    "red": 0
+  },
+  "retries": 0,
+  "allPairs": "HOLD, not run",
+  "nextAuthority": "No further combined epoch or develop gate authorized",
+  "freeGiB": 123.6
+}

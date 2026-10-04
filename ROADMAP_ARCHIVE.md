@@ -1,3 +1,24 @@
+## Current Codex sprint handoff — 2026-10-04, C203 authorized measurement
+
+**C272 native/performance reservation ACTIVE.** Dakk/C203 authorize ONE combined I5(3+1) then ONE develop on exact456ac7c52. No product edits until this chain is terminal; first red stops/no retry/no re-bind. Source agents stay quiet. Evidence: `audits/C203_I5_EPOCH_20261004`. The earlier pending-authorization text below is superseded by this explicit authorization.
+
+### C202 completed source handoff
+
+**C266 delivery:** Tortoise observed ankle/paw boundary corrected; exact retained4-fold context now passes and native841frames has zero refusals. Selected fit: `audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/fit02`; Claude finish/admission remains.
+
+**C265 delivery:**24 new native1254 uncovered-quadruped originals at `audits/C202_CREATURE_SUPPLY_20261004`;24 framing passes/14 provenance controls. Named source holds remain. Source-only delivery was pushed at a1ded076f. See final queue outcomes below.
+
+**C264 reservation TERMINAL — RELEASED at C271.** C202 signed handoff merged at387b366d0; coverage270. Current work prioritizes qualified primate/cephalopod/insect/myriapod references, exact remaining Tortoise/Red Fox/Albatross/Petrel source repairs, and24 originals aimed at qualified classes. Three disjoint agents prepare source/static evidence; root owns serial native qualification. The completed C201 handoff is preserved verbatim at the top of ROADMAP_ARCHIVE.md. All agents and native jobs are terminal; no CPU window remains held.
+
+**Combined product candidate:** shared bird faint author now requires both solver-owned and stage-owned travel; exact retained Albatross false-green is rejected without changing limits. Insect sockets are explicit/opt-in, counted myriapods can omit a genuinely absent ultimate pair, and cephalopod semantic ownership can be packed within32render parts while retaining all observed joint influences. Existing undeclared assets retain their old outputs.76 focused bird/release checks,22 arthropod checks,13 compiler controls and all three TypeScript projects pass; Octopus961frames/5turns and Albatross780frames/4turns pass with no skipped turn or rig refusal. These product bytes at35d5d6935(G) are not yet I5-certified.
+
+**Reference holds remain real:** Gorilla/Howler pass static but faint drives painted hands below ground; all bounded torso gains fail. Insect/myriapod pool is empty: bent Beetle is12/13 with a source-step hit refusal, other sources still conceal or miscount required chains, and the named scolopendrid exceeds the unchanged64joint budget. Cuttlefish retains static folds and visible stalk/arm distortions despite lossless semantic packing. Octopus now qualifies as an authoring reference after the complete5turn/961frame native successor, zero skipped turns/refusals, and full-size source/pose review. Its single-entry pool is `audits/C202_CEPHALOPOD_REFERENCES_20261004/qualified-reference-pool.json`; preserve existing qualified pool entries when using it. No diagnostic-only packet is qualified.
+
+**Gate authority:** C200 used Dakk's prior replacement develop approval (6,000PASS). The selected C198 I5 certificate still describes the prior product869ce0e44/selector5e485e206, not this candidate. ONE fresh combined changed-product I5(3+1) plus develop requires Dakk's new word under the latest request; first-red stop, no re-bind, optional local-AI runtime aside/restored. No full epoch/gate has run this sprint. All-pairs HOLD. Source-only C265/C266 are normally pushed through021cba472(G); pending product work stays local until the required battery is green. No PR, label, hosted run, develop/main merge, release or deploy.
+
+**Final queue ledger:**1/8 requested specialist references qualified (Octopus);7held with retained source/model failures. Tortoise and Albatross native repairs delivered; Red Fox and Snow Petrel remain held.24 new quadruped originals delivered; gallery coverage stays270 until Claude admits candidates. Final free space122.83GiB; no cleanup this sprint. Receipts and next authorization boundary are in `audits/C202_PROGRAM_20261004/terminal.json`, mailbox C268–C271.
+
+
 ## Completed C201 Codex handoff — archived 2026-10-04
 
 ### Prior completed C201 handoff
