@@ -3031,7 +3031,7 @@
   "family": "quadruped",
   "name": "Tahr",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep1/g2c114-17-tahr",
-  "note": "HELD (ACCEPT-PENDING-FINISH): whole",
+  "note": "HELD (HOLD): magenta keying fringe on the mane/back edges survives the AI finish",
   "batch": "audits/SWEEP1_20261004",
   "tag": "sweep1"
  },

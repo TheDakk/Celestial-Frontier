@@ -1,0 +1,263 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Fishing Cat\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"24635309\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"4\"]]]]",
+    "seed": 24635309,
+    "ownerId": "authored:archetype-sprint/c202creaturesupply-15-fishing-cat",
+    "earthName": "Fishing Cat"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 24635309,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 9,
+    "body": 12,
+    "loco": 1,
+    "trait": 4,
+    "size": 1,
+    "diet": 3,
+    "head": 8,
+    "limbs": 2,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 2,
+    "habitat": 14,
+    "detail": 4,
+    "accent": 7,
+    "temper": 8,
+    "sense": 7,
+    "repro": 4,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fishing Cat"
+  },
+  "geometry": {
+    "cutoutAssetHash": "1403ef342d66d3bedab9f9fe10766b0fbf994f61a6bdfc48212f81713879d50c",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7038085899261178,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5021531100478469,
+      0.4396331738437001
+    ],
+    "pelvis": [
+      0.34035087719298246,
+      0.46355661881977667
+    ],
+    "spine": [
+      0.4803030303030303,
+      0.43460925039872406
+    ],
+    "chest": [
+      0.6358054226475279,
+      0.46666666666666673
+    ],
+    "neck": [
+      0.7014354066985646,
+      0.4103668261562999
+    ],
+    "head": [
+      0.795933014354067,
+      0.3701754385964912
+    ],
+    "jaw": [
+      0.8343700159489633,
+      0.411244019138756
+    ],
+    "hindNearRoot": [
+      0.33883572567783093,
+      0.4995215311004785
+    ],
+    "hindNearKnee": [
+      0.28875598086124404,
+      0.5732854864433812
+    ],
+    "hindNearAnkle": [
+      0.2567783094098884,
+      0.6660287081339713
+    ],
+    "hindNearPaw": [
+      0.2827751196172249,
+      0.6882775119617225
+    ],
+    "hindFarRoot": [
+      0.3802232854864434,
+      0.539872408293461
+    ],
+    "hindFarKnee": [
+      0.35645933014354064,
+      0.6146730462519936
+    ],
+    "hindFarAnkle": [
+      0.3980861244019139,
+      0.6842105263157895
+    ],
+    "hindFarPaw": [
+      0.42272727272727273,
+      0.6911483253588517
+    ],
+    "foreNearRoot": [
+      0.6147527910685805,
+      0.5035885167464115
+    ],
+    "foreNearKnee": [
+      0.5574960127591707,
+      0.5756778309409888
+    ],
+    "foreNearAnkle": [
+      0.5389154704944178,
+      0.6720893141945773
+    ],
+    "foreNearPaw": [
+      0.5615629984051037,
+      0.693939393939394
+    ],
+    "foreFarRoot": [
+      0.6748006379585327,
+      0.5191387559808612
+    ],
+    "foreFarKnee": [
+      0.6718500797448166,
+      0.6048644338118022
+    ],
+    "foreFarAnkle": [
+      0.7036682615629983,
+      0.6821371610845295
+    ],
+    "foreFarPaw": [
+      0.7311802232854864,
+      0.6885964912280702
+    ],
+    "tail0": [
+      0.25151515151515147,
+      0.4266347687400319
+    ],
+    "tail1": [
+      0.23532695374800638,
+      0.4980861244019139
+    ],
+    "tail2": [
+      0.18676236044657096,
+      0.5429027113237639
+    ],
+    "tail3": [
+      0.15015948963317385,
+      0.5543062200956937
+    ],
+    "earNearRoot": [
+      0.7596491228070176,
+      0.3338118022328549
+    ],
+    "earNearTip": [
+      0.7850877192982456,
+      0.28588516746411485
+    ],
+    "earFarRoot": [
+      0.7976874003189792,
+      0.3099681020733652
+    ],
+    "earFarTip": [
+      0.8066188197767146,
+      0.28588516746411485
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-15-fishing-cat/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile felid media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from wild-horse. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "5c93de699cb861622908f27ee4d7df913e64ea7bcdbeab829c65046f57623ee4",
+    "subjectSourceSha256": "435c5f82b9371856a067dda87766339f874a5a7efbd26c6c726e21661e5d1044",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.1635612844665361,
+      "spine": 0.14291450345798506,
+      "chest": 0.1587723904293131,
+      "neck": 0.0864694561566804,
+      "head": 0.10268955880027926,
+      "jaw": 0.05624972354921,
+      "hindFarRoot": 0.08610405719890413,
+      "hindFarKnee": 0.07848478204431068,
+      "hindFarAnkle": 0.08104474772526438,
+      "hindFarPaw": 0.02559920401798171,
+      "foreFarRoot": 0.06537543096720992,
+      "foreFarKnee": 0.08577643985003583,
+      "foreFarAnkle": 0.08356716504931923,
+      "foreFarPaw": 0.028260059867645383,
+      "hindNearRoot": 0.03599681374055823,
+      "hindNearKnee": 0.08915773633692257,
+      "hindNearAnkle": 0.09810135901709412,
+      "hindNearPaw": 0.0342175892301318,
+      "foreNearRoot": 0.04250219182242301,
+      "foreNearKnee": 0.09206089225842527,
+      "foreNearAnkle": 0.09818559290450532,
+      "foreNearPaw": 0.03146961241134288,
+      "tail0": 0.0962029582186431,
+      "tail1": 0.07326222746319522,
+      "tail2": 0.06608363024121451,
+      "tail3": 0.0383381032928563,
+      "earFarRoot": 0.060232891689863455,
+      "earFarTip": 0.025685754669143804,
+      "earNearRoot": 0.05136959057053912,
+      "earNearTip": 0.05425941864505849
+    },
+    "measures": {
+      "torso": 0.2954709136740231,
+      "head": 0.10268955880027926,
+      "head/torso": 0.3475454064949724,
+      "bone-min": 0.02559920401798171,
+      "bone-max": 0.1635612844665361,
+      "leg/torso:hindFar": 0.6265548492932174,
+      "leg/torso:foreFar": 0.668775353586938,
+      "leg/torso:hindNear": 0.7495718676001103,
+      "leg/torso:foreNear": 0.7503821436003704
+    }
+  },
+  "recipeHash": "98cbe1d1003d24d9884b6d635fdb39d581f00e2c148a8c31238907eb6689e485"
+}

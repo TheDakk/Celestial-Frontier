@@ -1,0 +1,315 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "root",
+      "joint": "root",
+      "owner": "root"
+    },
+    {
+      "region": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "owner": "hind-near-paw"
+    },
+    {
+      "region": "hind-near-ankle",
+      "joint": "hindNearAnkle",
+      "owner": "hind-near-ankle"
+    },
+    {
+      "region": "hind-near-knee",
+      "joint": "hindNearKnee",
+      "owner": "hind-near-knee"
+    },
+    {
+      "region": "hind-near-root",
+      "joint": "hindNearRoot",
+      "owner": "hind-near-root"
+    },
+    {
+      "region": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "owner": "fore-near-paw"
+    },
+    {
+      "region": "fore-near-ankle",
+      "joint": "foreNearAnkle",
+      "owner": "fore-near-ankle"
+    },
+    {
+      "region": "fore-near-knee",
+      "joint": "foreNearKnee",
+      "owner": "fore-near-knee"
+    },
+    {
+      "region": "fore-near-root",
+      "joint": "foreNearRoot",
+      "owner": "fore-near-root"
+    },
+    {
+      "region": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "owner": "hind-far-paw"
+    },
+    {
+      "region": "hind-far-ankle",
+      "joint": "hindFarAnkle",
+      "owner": "hind-far-ankle"
+    },
+    {
+      "region": "hind-far-knee",
+      "joint": "hindFarKnee",
+      "owner": "hind-far-knee"
+    },
+    {
+      "region": "hind-far-root",
+      "joint": "hindFarRoot",
+      "owner": "hind-far-root"
+    },
+    {
+      "region": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "owner": "fore-far-paw"
+    },
+    {
+      "region": "fore-far-ankle",
+      "joint": "foreFarAnkle",
+      "owner": "fore-far-ankle"
+    },
+    {
+      "region": "fore-far-knee",
+      "joint": "foreFarKnee",
+      "owner": "fore-far-knee"
+    },
+    {
+      "region": "fore-far-root",
+      "joint": "foreFarRoot",
+      "owner": "fore-far-root"
+    },
+    {
+      "region": "ear-near-tip",
+      "joint": "earNearTip",
+      "owner": "ear-near-tip"
+    },
+    {
+      "region": "ear-near-root",
+      "joint": "earNearRoot",
+      "owner": "ear-near-root"
+    },
+    {
+      "region": "ear-far-tip",
+      "joint": "earFarTip",
+      "owner": "ear-far-tip"
+    },
+    {
+      "region": "ear-far-root",
+      "joint": "earFarRoot",
+      "owner": "ear-far-root"
+    },
+    {
+      "region": "tail3",
+      "joint": "tail3",
+      "owner": "tail3"
+    },
+    {
+      "region": "tail2",
+      "joint": "tail2",
+      "owner": "tail2"
+    },
+    {
+      "region": "tail1",
+      "joint": "tail1",
+      "owner": "tail1"
+    },
+    {
+      "region": "tail0",
+      "joint": "tail0",
+      "owner": "tail0"
+    },
+    {
+      "region": "jaw",
+      "joint": "jaw",
+      "owner": "jaw"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "head-antlers",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "neck",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "chest",
+      "joint": "chest",
+      "owner": "chest"
+    },
+    {
+      "region": "pelvis",
+      "joint": "pelvis",
+      "owner": "pelvis"
+    },
+    {
+      "region": "reviewed-hind-near-paw-0",
+      "joint": "hindNearPaw",
+      "owner": "hind-near-paw"
+    },
+    {
+      "region": "reviewed-hind-near-ankle-1",
+      "joint": "hindNearAnkle",
+      "owner": "hind-near-ankle"
+    },
+    {
+      "region": "reviewed-hind-near-knee-2",
+      "joint": "hindNearKnee",
+      "owner": "hind-near-knee"
+    },
+    {
+      "region": "reviewed-hind-near-root-3",
+      "joint": "hindNearRoot",
+      "owner": "hind-near-root"
+    },
+    {
+      "region": "reviewed-fore-near-paw-4",
+      "joint": "foreNearPaw",
+      "owner": "fore-near-paw"
+    },
+    {
+      "region": "reviewed-fore-near-ankle-5",
+      "joint": "foreNearAnkle",
+      "owner": "fore-near-ankle"
+    },
+    {
+      "region": "reviewed-fore-near-knee-6",
+      "joint": "foreNearKnee",
+      "owner": "fore-near-knee"
+    },
+    {
+      "region": "reviewed-fore-near-root-7",
+      "joint": "foreNearRoot",
+      "owner": "fore-near-root"
+    },
+    {
+      "region": "reviewed-hind-far-paw-8",
+      "joint": "hindFarPaw",
+      "owner": "hind-far-paw"
+    },
+    {
+      "region": "reviewed-hind-far-ankle-9",
+      "joint": "hindFarAnkle",
+      "owner": "hind-far-ankle"
+    },
+    {
+      "region": "reviewed-hind-far-knee-10",
+      "joint": "hindFarKnee",
+      "owner": "hind-far-knee"
+    },
+    {
+      "region": "reviewed-hind-far-root-11",
+      "joint": "hindFarRoot",
+      "owner": "hind-far-root"
+    },
+    {
+      "region": "reviewed-fore-far-paw-12",
+      "joint": "foreFarPaw",
+      "owner": "fore-far-paw"
+    },
+    {
+      "region": "reviewed-fore-far-ankle-13",
+      "joint": "foreFarAnkle",
+      "owner": "fore-far-ankle"
+    },
+    {
+      "region": "reviewed-fore-far-knee-14",
+      "joint": "foreFarKnee",
+      "owner": "fore-far-knee"
+    },
+    {
+      "region": "reviewed-fore-far-root-15",
+      "joint": "foreFarRoot",
+      "owner": "fore-far-root"
+    },
+    {
+      "region": "reviewed-tail3-16",
+      "joint": "tail3",
+      "owner": "tail3"
+    },
+    {
+      "region": "reviewed-tail2-17",
+      "joint": "tail2",
+      "owner": "tail2"
+    },
+    {
+      "region": "reviewed-tail1-18",
+      "joint": "tail1",
+      "owner": "tail1"
+    },
+    {
+      "region": "reviewed-tail0-19",
+      "joint": "tail0",
+      "owner": "tail0"
+    },
+    {
+      "region": "reviewed-neck-20",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "spine",
+      "joint": "spine",
+      "owner": "spine"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    240,
+    1823,
+    2347,
+    6156,
+    1559,
+    1819,
+    2093,
+    5157,
+    1602,
+    2029,
+    1565,
+    5204,
+    1980,
+    1782,
+    1923,
+    4622,
+    1546,
+    751,
+    422,
+    291,
+    335,
+    284,
+    361,
+    901,
+    785,
+    3348,
+    35498,
+    22173,
+    11808,
+    16446,
+    32382
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "72b04d6531969df9aa6451261ef0896de867a704000ebcaa391c19d8b7a9b96d",
+  "intake": {
+    "erodedPixels": 8474,
+    "despilledPixels": 147,
+    "unresolvedEdgePixels": 7
+  },
+  "remainderPart": "spine"
+}

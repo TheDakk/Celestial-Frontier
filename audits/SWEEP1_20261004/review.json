@@ -59,8 +59,8 @@
   },
   "g2c114-17-tahr": {
    "name": "Tahr",
-   "verdict": "ACCEPT-PENDING-FINISH",
-   "note": "whole; faint pink keying fringe on the mane edge at 2x, decide on the finished stills"
+   "verdict": "HOLD",
+   "note": "whole in motion, but magenta keying fringe stays on the mane and back edges after the AI finish"
   },
   "g2c110-17-caribou": {
    "name": "Caribou",
@@ -175,6 +175,16 @@
    "Caribou",
    "Lemming",
    "Prairie Dog"
+  ],
+  "accepted": [
+   "Cat",
+   "Bear",
+   "Fishing Cat",
+   "Albatross",
+   "Elk",
+   "Caribou",
+   "Lemming",
+   "Prairie Dog"
   ]
  },
  "systemicForCodex": [
@@ -182,6 +192,11 @@
   "back step at the shoulder hump in the faint (Spotted Hyena, Nilgai)",
   "bird victory neck/wing ribbon (Falcon g2c76, Egret, and the C274 four)",
   "appendage islands detach in victory (Impala horn, Swordfish bill, Loon/Petrel tail strand)",
-  "22 materials-unknown refusals (species groups without a material)"
- ]
+  "22 materials-unknown refusals (species groups without a material)",
+  "magenta keying fringe on long-fur edges survives the AI finish (Tahr)"
+ ],
+ "aiFinish": {
+  "dir": "audits/AI_FINISH_SWEEP1_20261004",
+  "result": "finish+rebind+native PASS for all nine; Tahr held on its finished stills (fringe)"
+ }
 }
