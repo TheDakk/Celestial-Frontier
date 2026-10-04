@@ -1,0 +1,9 @@
+{
+  "status": "FAIL",
+  "manifest": "audits/C202_PRIMATE_REFERENCES_20261004/delivery.json",
+  "sha256": "2a910f2b3e4061ca0a39ac81ab39f9fba2fed2babc840f81089fbfea084ad223",
+  "files": 1344,
+  "mismatches": [
+    "README.md"
+  ]
+}

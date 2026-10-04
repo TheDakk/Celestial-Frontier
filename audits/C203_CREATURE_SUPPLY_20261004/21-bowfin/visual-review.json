@@ -1,0 +1,28 @@
+{
+  "name": "Bowfin",
+  "masterSha256": "a41ea9c48adc03495bce4801b352c11eaebee92b397f48c134f06f5bda0b44e6",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: very long dorsal fin, rounded fan tail, clear dark tail-base eyespot and continuously attached visible ventral/pectoral fins. Full fish is present, but tail and snout lie close to the left/right edges: likely below the8% framing margin, to retain as a framing refusal if measured. Far paired-fin roots and the chin plate are not independently resolved.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 89,
+      "y0": 446,
+      "x1": 1162,
+      "y1": 787
+    },
+    "margins": {
+      "left": 89,
+      "right": 91,
+      "top": 446,
+      "bottom": 466
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

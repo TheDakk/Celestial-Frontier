@@ -1,0 +1,28 @@
+{
+  "name": "Peccary",
+  "masterSha256": "14ce2f1cb0ff8404a4c9e503aec15c7a15e154703bb797d6098392b7f8808da6",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Stocky bristled dark subject with pale shoulder collar and four separated hooves; no long boar tail. Two conspicuous downward tusks require species-identity review, not automatic acceptance.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 304,
+      "y0": 343,
+      "x1": 1034,
+      "y1": 901
+    },
+    "margins": {
+      "left": 304,
+      "right": 219,
+      "top": 343,
+      "bottom": 352
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

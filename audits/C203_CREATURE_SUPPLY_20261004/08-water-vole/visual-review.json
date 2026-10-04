@@ -1,0 +1,28 @@
+{
+  "name": "Water Vole",
+  "masterSha256": "a39e6f49d0f702b79c0cb9392be606260092ad910d37969a66411354a20cab3c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four distinct small feet and a rounded muzzle with one clear near ear. Far ear is not independently visible; upper far roots are hidden by the thick coat. Tail is conspicuously bushy and broad rather than a clearly slender vole tail: retain an identity/source hold. Projected contacts are unequal; no hidden-root or full anatomy acceptance claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 183,
+      "y0": 404,
+      "x1": 1052,
+      "y1": 841
+    },
+    "margins": {
+      "left": 183,
+      "right": 201,
+      "top": 404,
+      "bottom": 412
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

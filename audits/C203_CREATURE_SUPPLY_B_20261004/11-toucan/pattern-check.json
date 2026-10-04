@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Toucan",
+  "masterSha256": "b965671e8e031c0a9c9e1a5d160b971a096f3599f0973ab750ca5618e434beda",
+  "required": [
+    "oversized brightly banded bill nearly as long as the body"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "oversized brightly banded bill nearly as long as the body",
+      "status": "PRESENT",
+      "observed": "Two distinct blue-gray feet, near folded wing, full tail and large orange/yellow black-tipped bill are visible. White throat and orange vent patches are present. Far wing root is hidden and exact opposing toe layout needs anatomy review. Bill highlights and large glossy eye may read overly polished for the requested natural painted style."
+    }
+  ]
+}

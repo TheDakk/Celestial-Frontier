@@ -112,16 +112,17 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   return {...c,root,joint,endPoint:end,support:point(support),model,endpointOnly,terminalSolver,offset:{x:support[0]-end.x,y:support[1]-end.y},chain:createTwoBoneChain({root,joint,end,bend:cross<0?-1:1})};
  });
  if(Object.keys(paintedSupports).length&&(Object.keys(paintedSupports).length!==chains.length||chains.some(c=>!Object.hasOwn(paintedSupports,c.end))))throw Error('Contact: exact painted support inventory required');
- // An explicit compact source-layout convention retracts upper-side feet
+ // Explicit compact and observed-insect layouts retract upper-side feet
  // toward their fixed socket. No declaration retains the exact screen-up path.
+ const compactMyriapod=template.id==='myriapod'&&template.anatomyModel==='myriapod-rigid-trunk-v1',observedInsect=template.id==='insect'&&template.anatomyModel==='insect-observed-sockets-v1';
  const swingLift=template.contactStance?.swingLift;
  if(template.contactStance&&Object.hasOwn(template.contactStance,'swingLift')&&
-  (swingLift!=='toward-socket'||template.id!=='myriapod'||template.anatomyModel!=='myriapod-rigid-trunk-v1'||!template.fixedPivots||chains.some(c=>!Object.hasOwn(template.fixedPivots!,c.knee))))throw Error('Contact: invalid swing lift declaration');
- // Step cadence is an explicit compact-model choice, not a reach-based
- // adjustment. Only declared hit, dodge and tame source-step actions subdivide.
+  (swingLift!=='toward-socket'||!(compactMyriapod||observedInsect)||!template.fixedPivots||chains.some(c=>!Object.hasOwn(template.fixedPivots!,c.knee))))throw Error('Contact: invalid swing lift declaration');
+ // Cadence is a model convention, not a reach-based adjustment. Compact
+ // myriapods retain their declarations; observed insects require hit+tame.
  const travelSubsteps=template.contactStance?.travelSubsteps;
  if(template.contactStance&&Object.hasOwn(template.contactStance,'travelSubsteps')&&
-  (template.id!=='myriapod'||template.anatomyModel!=='myriapod-rigid-trunk-v1'||!travelSubsteps||typeof travelSubsteps!=='object'||Array.isArray(travelSubsteps)||![Object.prototype,null].includes(Object.getPrototypeOf(travelSubsteps))||!Reflect.ownKeys(travelSubsteps).length||Reflect.ownKeys(travelSubsteps).some(id=>(id!=='hit'&&id!=='dodge'&&id!=='tame')||travelSubsteps[id]!==2||template.contactStance?.travel?.[id]!=='source-steps')))throw Error('Contact: invalid travel substeps declaration');
+  (!travelSubsteps||typeof travelSubsteps!=='object'||Array.isArray(travelSubsteps)||![Object.prototype,null].includes(Object.getPrototypeOf(travelSubsteps))||!(compactMyriapod||(observedInsect&&Reflect.ownKeys(travelSubsteps).length===2&&travelSubsteps.hit===2&&travelSubsteps.tame===2))||!Reflect.ownKeys(travelSubsteps).length||Reflect.ownKeys(travelSubsteps).some(id=>(id!=='hit'&&id!=='dodge'&&id!=='tame')||travelSubsteps[id]!==2||template.contactStance?.travel?.[id]!=='source-steps')))throw Error('Contact: invalid travel substeps declaration');
  // Explicit named support groups must resolve to complete existing chains.
  // An absent declaration retains the historical hind-name convention exactly.
  const declaredHind=template.contactStance?.hind,hasDeclaredHind=!!template.contactStance&&Object.hasOwn(template.contactStance,'hind');

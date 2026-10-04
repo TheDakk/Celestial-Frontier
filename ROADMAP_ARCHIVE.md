@@ -1,3 +1,62 @@
+# C203 completed certification/source continuation handoff — archived 2026-10-04
+
+## Current Codex sprint handoff — 2026-10-04, C203 certified delivery
+
+**C272 reservation TERMINAL — RELEASED (C273).** Dakk/C203 authorized exactly one combined I5(3+1) and one develop on456ac7c52. All four epoch phases and named verifiers PASS, activation replay PASS; selection08dd81237(G). Develop on that selection: **6,005PASS,2expected fail,3skipped,0red**, all required owners PASS. Optional local-AI runtime was renamed aside then restored. No retries, limit change or re-bind. Prior certificate hashes unchanged; new instrument/shared symlink relative. Evidence: `audits/C203_I5_EPOCH_20261004`. Product35d5d6935 is now certified. Normal guarded own-lane push follows.
+
+**C274–C278 source deliveries:**48 new identities in two24-original batches; B all24 selected framingPASS and four failed predecessor masters retained. Primate and arthropod queues are terminal HELD with empty qualified pools; full-size source defects remain. Fox `audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit` closes the reviewed head/torso gaps and passes static; Snow Petrel remains visualRED. New local product candidate is fixed low-slack trot plus observed-insect reactions,147 motion tests/49 insect tests/3typechecks/root validate green. A4.7s per-seed search was rejected in favor of0.2–1.3ms fixed-profile setup. Product/native handoff follows; C203 certificate does not cover it.
+
+**Delivered source:** C26524-original uncovered-quadruped batch; C266 Tortoise ankle repair (841native frames, zero refusals); C268 Octopus qualified8-arm reference (961frames,5turns, zero skips/refusals); C269 Albatross contours/shared-faint repair (780frames,4turns, zero skips/refusals). Paths and exact hashes are in the mailbox and prior handoff now archived verbatim. Claude owns scoring, finish/re-film and gallery admission. Octopus pool: `audits/C202_CEPHALOPOD_REFERENCES_20261004/qualified-reference-pool.json`; add its entry while retaining other qualified pool entries. Coverage remains270 until Claude admits sources.
+
+**Continue C264+ queues:** primate Gorilla/Howler hand-grounding and source seams; insect Beetle solver-owned hit and visible Grasshopper chains; counted myriapod sources under unchanged64joint cap. These pools remain empty; static-only success is not qualification. Red Fox layered-placement compression and Snow Petrel source tears remain held. Continue24-original supply toward existing qualified classes. Preserve every failed predecessor and never invent concealed anatomy. New product changes require fresh combined I5 plus develop authorization; C203 authority is consumed. All-pairs HOLD. No PR, label, hosted run, develop/main merge, release or deploy.
+
+**Coordination:** Claude C203 stayed quiet through terminal; Codex now resumes disjoint source queues. Read sibling mailbox at each batch end and post new native reservations before native work. No Dakk relay/app switch needed. Temporary certified checkout is archived after terminal; disk receipt follows.
+
+**C279 native reservation ACTIVE:** one Red Fox film on the frozen low-slack/insect candidate. All source queues terminal. No second I5/develop without fresh Dakk authorization. Prior green product/source-only head d8755d36d is pushed; candidate is local.
+
+
+## Current Codex sprint handoff — 2026-10-04, C203 authorized measurement
+
+**C272 native/performance reservation ACTIVE.** Dakk/C203 authorize ONE combined I5(3+1) then ONE develop on exact456ac7c52. No product edits until this chain is terminal; first red stops/no retry/no re-bind. Source agents stay quiet. Evidence: `audits/C203_I5_EPOCH_20261004`. The earlier pending-authorization text below is superseded by this explicit authorization.
+
+### C202 completed source handoff
+
+**C266 delivery:** Tortoise observed ankle/paw boundary corrected; exact retained4-fold context now passes and native841frames has zero refusals. Selected fit: `audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/fit02`; Claude finish/admission remains.
+
+**C265 delivery:**24 new native1254 uncovered-quadruped originals at `audits/C202_CREATURE_SUPPLY_20261004`;24 framing passes/14 provenance controls. Named source holds remain. Source-only delivery was pushed at a1ded076f. See final queue outcomes below.
+
+**C264 reservation TERMINAL — RELEASED at C271.** C202 signed handoff merged at387b366d0; coverage270. Current work prioritizes qualified primate/cephalopod/insect/myriapod references, exact remaining Tortoise/Red Fox/Albatross/Petrel source repairs, and24 originals aimed at qualified classes. Three disjoint agents prepare source/static evidence; root owns serial native qualification. The completed C201 handoff is preserved verbatim at the top of ROADMAP_ARCHIVE.md. All agents and native jobs are terminal; no CPU window remains held.
+
+**Combined product candidate:** shared bird faint author now requires both solver-owned and stage-owned travel; exact retained Albatross false-green is rejected without changing limits. Insect sockets are explicit/opt-in, counted myriapods can omit a genuinely absent ultimate pair, and cephalopod semantic ownership can be packed within32render parts while retaining all observed joint influences. Existing undeclared assets retain their old outputs.76 focused bird/release checks,22 arthropod checks,13 compiler controls and all three TypeScript projects pass; Octopus961frames/5turns and Albatross780frames/4turns pass with no skipped turn or rig refusal. These product bytes at35d5d6935(G) are not yet I5-certified.
+
+**Reference holds remain real:** Gorilla/Howler pass static but faint drives painted hands below ground; all bounded torso gains fail. Insect/myriapod pool is empty: bent Beetle is12/13 with a source-step hit refusal, other sources still conceal or miscount required chains, and the named scolopendrid exceeds the unchanged64joint budget. Cuttlefish retains static folds and visible stalk/arm distortions despite lossless semantic packing. Octopus now qualifies as an authoring reference after the complete5turn/961frame native successor, zero skipped turns/refusals, and full-size source/pose review. Its single-entry pool is `audits/C202_CEPHALOPOD_REFERENCES_20261004/qualified-reference-pool.json`; preserve existing qualified pool entries when using it. No diagnostic-only packet is qualified.
+
+**Gate authority:** C200 used Dakk's prior replacement develop approval (6,000PASS). The selected C198 I5 certificate still describes the prior product869ce0e44/selector5e485e206, not this candidate. ONE fresh combined changed-product I5(3+1) plus develop requires Dakk's new word under the latest request; first-red stop, no re-bind, optional local-AI runtime aside/restored. No full epoch/gate has run this sprint. All-pairs HOLD. Source-only C265/C266 are normally pushed through021cba472(G); pending product work stays local until the required battery is green. No PR, label, hosted run, develop/main merge, release or deploy.
+
+**Final queue ledger:**1/8 requested specialist references qualified (Octopus);7held with retained source/model failures. Tortoise and Albatross native repairs delivered; Red Fox and Snow Petrel remain held.24 new quadruped originals delivered; gallery coverage stays270 until Claude admits candidates. Final free space122.83GiB; no cleanup this sprint. Receipts and next authorization boundary are in `audits/C202_PROGRAM_20261004/terminal.json`, mailbox C268–C271.
+
+
+## Completed C201 Codex handoff — archived 2026-10-04
+
+### Prior completed C201 handoff
+
+**Development ACTIVE; C251 reservation TERMINAL — RELEASED at C261.** All three parallel source queues and CPU jobs are terminal. Signed anthropic/mac C198 merged --no-ff at b3335e613; latest sibling mailbox is C201 after startup and read-only review. Preserve Claude’s handoff above. Coverage remains251/631; no new admissions claimed. Detailed current receipts: `audits/C198_PROGRAM_20261003` and TO_CLAUDE C252–C261.
+
+**I5 PASS; replacement develop GREEN6,000.** Claude C199 records Dakk’s replacement authorization; C200 records6,000 PASS/zero red/two expected failures/three skipped on merge39811d3ee, whose complete tree is identical to our66c146409. Signed Claude descendants through6976a955b merged --no-ff at327c5b407; later differences are audit/mailbox only. All nine selected C198 I5 files remain exact. No additional gate/epoch/re-bind is needed or run. Product869ce0e44 and selected proof5e485e206 remain authoritative; coverage-map correction ea8f87a99 preserves53 pending identities and built product bytes.
+
+**Claude C201 native window ACTIVE.** Claude films Prawn strikes, Tortoise fit02, prior-source Capuchin D28 and Tiger Shark source joins, then scores all72 A/B/C originals. Codex runs no native, gate or heavy CPU work during that window. Three disjoint read-only reviews confirmed the completed deliveries and held statuses; no duplicate generation or admission claim. Normal guarded own-lane push completed through e834910f0, recorded in C263 and push.json; the final receipt commit follows on the same unchanged product. Current evidence: `audits/C201_SYNC_20261003`. Final free space127.41GiB; no cleanup or new worktree this synchronization.
+
+**Deliveries:**
+- C252/C255 Prawn physical observed foreleg-tip strike (not D31 cast),35 original focus tests plus18 correction checks;200 prior family timelines/11 non-melee Prawn timelines byte-identical. Source pink swimmeret fringe remains held. Current additive repair proof is `audits/C198_PRAWN_ATTACK_20261003/pending-map-correction`.
+- C254 Tortoise source packet: C250 actually retained7 rig refusals, five captured walk contexts reproduced. Final02-both-far-leg-fringes/fit01 clears all five through exactly433 prior-root pixels, source paint/landmarks/materials unchanged.19 static actions/2,299 samples +1,492 presentation and10 exact-context actual-rig rasters PASS. Two earlier refusals remain unlocated. Hanging shin strips/gaps stay HELD_VISUAL; no native grounding/admission claim.
+- C256–C258 supply A/B/C:72 distinct unchanged native1254-square originals, exactly24 each, one built-in generation per source on unchanged canonical pipeline.64 framing PASS/eight REFUSE; six required pattern PASS/66 not required;46 evidence controls PASS. All72 full-size inspected, source-specific roots/limbs/contacts/proportions held explicitly. No source count is an admission count.
+- C259 references: independently authored new Gorilla/Capuchin diagnostics retain real static/contact/fold reds; no pool admission. Squid/Cuttlefish arm roots and insect six-complete-chain visibility remain source-blocked. Partial Grasshopper/Dobsonfly inventories never equate visible feet to full chains.
+- C260 holds: Tiger Shark source joins close the reviewed pectoral opening with intact tail notch; prior-source Capuchin D28 removes the detached hindleg strip. Both exact selected fits in queue-status.final.json are held scoring candidates. Petrel join is VISUAL_REJECT (crushed head/eye despite green mechanics). Capybara true tail-absence correction still RED. Rhea/Prawn/Shrimp/C239/C248 exact holds remain; C190-accepted Hawk/Owl preserved.
+
+**Verification/operations:** parent rehashed1,630 manifest entries/289,304,505 bytes, independently checked72 original hashes and full-size review subsets. Root validate/golden50 PASS. All20 commits through e18a0bd76 have G signatures. Unchanged pre-push guard passes read-only local rehearsal;25 tracked symlinks have relative targets only. Isolated I5 checkout archived after jobs ended: observed24.90GiB recovery,128.94GiB free at final source check. Optional local-AI runtime restored. New records use Dakk/TheDakk and~/ paths.
+
+**Next:** Claude continues its C201 sequential filming/scoring, preserving all visual/static/anatomy holds and posts its terminal result. Codex reads that mailbox before any further native/heavy work; current source queues are terminal and all72 originals await Claude’s admission. The normal guarded openai/mac push is complete; its signed receipt and the current coordination are in C262–C263. **All-pairs remains HOLD**, zero runs. No PR, label, hosted run, develop/main merge, release or deploy. Dakk need not relay files or open the other app.
+
 ## Superseded C198 pending replacement handoff — archived 2026-10-03
 
 ## Current Codex sprint handoff — 2026-10-03, C198 terminal

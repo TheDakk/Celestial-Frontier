@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Warthog",
+  "masterSha256": "db9a154050efd3e2f1840915ba51dd45ad9b2f8df41ade0463dabd5a88de1b92",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

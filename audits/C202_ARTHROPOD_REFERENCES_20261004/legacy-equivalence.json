@@ -1,0 +1,183 @@
+{
+  "schema": "cf.c202-legacy-equivalence/v1",
+  "status": "PASS",
+  "scope": "Exact JSON output hashes for all legacy family contracts/actions and all existing1-through14walking-pair +one-ultimate compact contracts/actions; only this patch was substituted with verified prior source bytes",
+  "comparedOwnedSources": [
+    {
+      "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "beforeSha256": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf",
+      "afterSha256": "d295145272fd53027bd808dab6aa752d29c4c5f3da4091fbd7d209ed798431db"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "beforeSha256": "926e3a309668dd60bd6ef94bfda6a27790602153c8aa30bed5f5c30b81531684",
+      "afterSha256": "8a47a0d10f87372b4ecaac12e18442f2ab8ba0db94eda1c345644d3804ea99df"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "beforeSha256": "911a2619de2d78933f357af2edd50ed53a55ceac2b6edcafe0b7668c9c78ebae",
+      "afterSha256": "f65a61bd80302b3621f3ccb8f4b7373256b6efc26f07b0d21d3fa29edab1e55a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "beforeSha256": "5e7b34989379940755376e8fdf8710fcfb8123bd764763a27faa7d2ed954c9f1",
+      "afterSha256": "39443a28ecfc31ecc96915a3e8d6256b39182063251460b88f7cfdfc94ec91dc"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "beforeSha256": "ce7ebf4e06ee82e91a74128701e5e0bebb637817bb2012e96d6ba33b791bd201",
+      "afterSha256": "d5ce727eebbcd6c54a6996454f818df709e969b52aa9f09eb9d679b0c9722986"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-topology.ts",
+      "beforeSha256": "98eee6f0a25dc5150b8cc70013dd3af8f43ed18edec9db3ad880d5df4328e0b9",
+      "afterSha256": "bb21fa793b2b0fc9cbe6750a6c68502ee0cccef45f95e2bde52c476e6673f5c2"
+    }
+  ],
+  "outputs": {
+    "legacyFamilies": [
+      {
+        "id": "quadruped",
+        "contractSha256": "0ece4143612c9c6aba19ce07e32559156050c0bdc6dff19ff3dcc15f913a50d4",
+        "actionsSha256": "34bb42de9a50c45eb3dbc501fb2f841418ce56ba803ed92c29f3bf32e281ea75"
+      },
+      {
+        "id": "hopper",
+        "contractSha256": "92dc75a32cb808e2b84004ab1f86f8dfb8767a36b0e71d5f1b8e1d57ff3a59c3",
+        "actionsSha256": "2042b009a7e9e506917ef31329768a7db5940f7face4017a4876fec935ad8e95"
+      },
+      {
+        "id": "biped-bird",
+        "contractSha256": "88f237027c0953fce2f2ed43e33210bbf9586756d4a5dd4bf795d5f242ee5764",
+        "actionsSha256": "1455fae209d5a4a9dd04a687aa07c57ca2a2a3dac63409fa204a40e3932509e1"
+      },
+      {
+        "id": "fish",
+        "contractSha256": "e6cf4f7eb78b527ce89d3bc3dc35b296e797c85e56367cf43faf13749983a6fd",
+        "actionsSha256": "bc1a0d556fb71ba7bc446403a5b7dbb55a426a08bfbb23cce532288a71f5fdbd"
+      },
+      {
+        "id": "insect",
+        "contractSha256": "3c15b6df775bc9d6172ce3a6d7e40ab2638706b90db33fabd8b5f4d5f5573cde",
+        "actionsSha256": "4bb12cd1c12a4aadee184ba5517825da9b9330b8215522ca3efa8fc550996a6d"
+      },
+      {
+        "id": "serpent",
+        "contractSha256": "5eee58a0e382170a07cbc582cb92c32f7a20ddaa48061a40124c1439aa1dc673",
+        "actionsSha256": "9009d9f9f0dfa7b4c662efd79b9cba8596f627f3ae2dfed81efe58f46dd5f3e5"
+      },
+      {
+        "id": "arachnid",
+        "contractSha256": "0226d0f43ab161e9088e91d9671e2a4e7a07106e6dc90523e0745bd0cf3ffd9b",
+        "actionsSha256": "1c35f94168116a0d4f6ef2d53fc3efb911931f02731cf42fe88f2b00228d08b1"
+      },
+      {
+        "id": "radial",
+        "contractSha256": "6f94669b01f0337475014930feefb8340ed98aae0bb38cad891bdaa0cdcbed80",
+        "actionsSha256": "6055a645b5504164547ac1e14ebd896c7309953d77991114db828f6e27dc2690"
+      },
+      {
+        "id": "plant-woody",
+        "contractSha256": "f0c232d6ce321ae05ae7ee299bfe8db0147aec20ea62c05db1ac69323b113bcb",
+        "actionsSha256": "0ef2e88e2ad7cce346ed06944b358b846fed6ce13b13fefb40631d3b39a2acd4"
+      },
+      {
+        "id": "plant-herb",
+        "contractSha256": "4512030477962a90f03d92d4cd889a822f5666023f4d0e147ea4eb285b6c6259",
+        "actionsSha256": "e8c87881c348678dc0a6b6a642a4f356ac1c003696fbd752bdd705549bc1c63a"
+      },
+      {
+        "id": "myriapod",
+        "contractSha256": "2586d9e32bdf3bb0c7860d3eca245a8cd68d88b9b02a4dd37a54daadf05eb296",
+        "actionsSha256": "331e745299e3ca37fd9cfcc91cdb83004efeeb91a1c6dc0ec597971fd64616e4"
+      },
+      {
+        "id": "cephalopod",
+        "contractSha256": "1cece40b2f23609683144d3287932ad790f584c938f04ad216b2c01078ee5910",
+        "actionsSha256": "2a019ba9b1d28ddf863f195cc881ead6e5bb49e44eef7174cfca76eae3ed4c88"
+      },
+      {
+        "id": "flyer-membrane",
+        "contractSha256": "7912c04fda0a1e24fa3be479d17a3508383558f9e0c4d302073a03e428f18428",
+        "actionsSha256": "038e9bcf30145cd652970f8305f5d8d08fbdc5487e0f72c555304964a3497a82"
+      },
+      {
+        "id": "primate",
+        "contractSha256": "96c5e4b0ba6708f99c2b3f69a6930e84823fe3e457d2b578e5a52aaaec364f4a",
+        "actionsSha256": "e9f5bf19659a91235d2acc5bfffb287d99dfcb5c207f0252a61a337a1d5c1f1f"
+      }
+    ],
+    "existingOneUltimateCounts": [
+      {
+        "pairs": 1,
+        "contractSha256": "a42d13c3e63532d878394dee94d76f6237bb83721e271b90bedf000a196238c3",
+        "actionsSha256": "eb8d328b10f866e54a13ed8e90b485c9a458181497c649fb4dfabea2b636b4b9"
+      },
+      {
+        "pairs": 2,
+        "contractSha256": "ea0345cfd7231d174dc0b12d292f37284182222901e0665d3daa131e92451fd4",
+        "actionsSha256": "b7f490cb30f6404875b2b140636549116e01e1d78059802a828c8ea063375e85"
+      },
+      {
+        "pairs": 3,
+        "contractSha256": "debc086f6cac87ae9dfd3a8e0280bebee1e2e40e41c7396efb93a235e5eff42c",
+        "actionsSha256": "1d4718b427d49466ff634add3db7fcd623c2f298b3ffa07067e8ab48e11eee0e"
+      },
+      {
+        "pairs": 4,
+        "contractSha256": "393523861b5a28c2099022279598b714bdbaf60c032dc40aa96a103f6331a621",
+        "actionsSha256": "29b2eb4e0b4ccb3345fc3110ef76834166fda18404ef6eaad2172d6af491c626"
+      },
+      {
+        "pairs": 5,
+        "contractSha256": "abee745c99f96087a770ae0bdf0f348b009fac8fdf8ffe975c8907a69506f25b",
+        "actionsSha256": "6b0155697f4a70aa819f22f3f4a703e43f1a0457b0e60136821b66d47788cbcf"
+      },
+      {
+        "pairs": 6,
+        "contractSha256": "4891a572c3c4ad38f437d03ac2a5316b374568ac80bc7abf5f788527c2814f49",
+        "actionsSha256": "e746cf5971ab0ec0a740b484dced1b3819333d54b90afb556fab88a5cef9ecdc"
+      },
+      {
+        "pairs": 7,
+        "contractSha256": "5ed14a8468e79e485189db8521ff9996ea93071873c4d879075b1a2b628b2b54",
+        "actionsSha256": "f3564db02b2663933c5ccc9f9c00536a5bdfcd4499069291ec57efb538c73f45"
+      },
+      {
+        "pairs": 8,
+        "contractSha256": "04e1cd1e197fecb1d8c7475fd54813247ce565543b523616e10409b01a761782",
+        "actionsSha256": "271c7e187f3caf7b049a31fd7277130d27ad2f2fab1e2d8c5b93e9fcd37eb840"
+      },
+      {
+        "pairs": 9,
+        "contractSha256": "263b401798eab41ba9e82db9dc3d117dfd8e08c9a809e105a05eeebed36a8030",
+        "actionsSha256": "7aaef93608d45da37c1841145854398ed127ffd94fb51d20d54e2f97fc2abb34"
+      },
+      {
+        "pairs": 10,
+        "contractSha256": "8f4996841865d79296ec593553e7d6a997fc26fe60358e5b99a74327531c300a",
+        "actionsSha256": "a05db2d2b1eae685a9e2355de2929afc342de8cc54c1c848a4c9494ccfdee664"
+      },
+      {
+        "pairs": 11,
+        "contractSha256": "4eb5056b95e0ac0484b28d6dcdbeaa898c29448c82f1cf5d27745bab284dd435",
+        "actionsSha256": "1e560c8f86a2b24b1b3b5a428c56c43a7e683f583db4a3ec52371e0faac99660"
+      },
+      {
+        "pairs": 12,
+        "contractSha256": "e344c1caa244f26e53ef7dfdbfe3a4367b8aa99eaa31c8c4540404341fd7d0a8",
+        "actionsSha256": "df6600c3ca030531580c2fef467f225022c07dd014d32ba672aa6d2bbafd560e"
+      },
+      {
+        "pairs": 13,
+        "contractSha256": "a72d8ce7f38320c6fc65e537074b24383303cfe45517faad785a741ab3f844a6",
+        "actionsSha256": "e3b3187dfb7a14fdfd6020ca193b9df90799eec0712a062ca1434feb6cd7b21c"
+      },
+      {
+        "pairs": 14,
+        "contractSha256": "b13bfad2a294de1f9b8c3380000afa3928d308b32f95bd944e722e829c83c5a5",
+        "actionsSha256": "5e82b15d24a90878c467bb195963b22c30a1bd7a5ae953e5fd7cea265de59514"
+      }
+    ]
+  }
+}

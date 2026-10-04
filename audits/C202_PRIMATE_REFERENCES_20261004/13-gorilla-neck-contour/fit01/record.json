@@ -1,0 +1,201 @@
+{
+  "kind": "primate",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Gorilla\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3633000217\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"10\"]]]]",
+    "seed": 3633000217,
+    "ownerId": "authored:archetype-sprint/c202-gorilla-neck-contour",
+    "earthName": "Gorilla"
+  },
+  "template": {
+    "id": "primate",
+    "version": 1
+  },
+  "clipSetId": "primate-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "tail"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3633000217,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 15,
+    "body": 7,
+    "loco": 15,
+    "trait": 10,
+    "size": 3,
+    "diet": 3,
+    "head": 3,
+    "limbs": 1,
+    "skin": 6,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 1,
+    "habitat": 4,
+    "detail": 1,
+    "accent": 3,
+    "temper": 8,
+    "sense": 2,
+    "repro": 7,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Gorilla"
+  },
+  "geometry": {
+    "cutoutAssetHash": "78da7b6d2ad46eaa6a452cdb71a2c08ce75f898be89e5c234ff6ff72f88fc3a5",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7791068580542265,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.48165869218500795,
+      0.4649122807017544
+    ],
+    "pelvis": [
+      0.34290271132376393,
+      0.4688995215311005
+    ],
+    "spine": [
+      0.49282296650717705,
+      0.41068580542264754
+    ],
+    "chest": [
+      0.620414673046252,
+      0.39473684210526316
+    ],
+    "neck": [
+      0.6610845295055822,
+      0.3668261562998405
+    ],
+    "head": [
+      0.7185007974481659,
+      0.310207336523126
+    ],
+    "jaw": [
+      0.7719298245614035,
+      0.3875598086124402
+    ],
+    "armNearShoulder": [
+      0.6036682615629984,
+      0.386762360446571
+    ],
+    "armNearElbow": [
+      0.6259968102073366,
+      0.5709728867623605
+    ],
+    "armNearHand": [
+      0.6499202551834131,
+      0.7567783094098883
+    ],
+    "armFarShoulder": [
+      0.69377990430622,
+      0.44019138755980863
+    ],
+    "armFarElbow": [
+      0.7376395534290271,
+      0.5829346092503987
+    ],
+    "armFarHand": [
+      0.7886762360446571,
+      0.7320574162679426
+    ],
+    "legNearHip": [
+      0.35645933014354064,
+      0.4728867623604466
+    ],
+    "legNearKnee": [
+      0.41626794258373206,
+      0.5821371610845295
+    ],
+    "legNearFoot": [
+      0.40749601275917063,
+      0.7496012759170654
+    ],
+    "legFarHip": [
+      0.3022328548644338,
+      0.49282296650717705
+    ],
+    "legFarKnee": [
+      0.284688995215311,
+      0.5917065390749602
+    ],
+    "legFarFoot": [
+      0.19936204146730463,
+      0.7192982456140351
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/C202_PRIMATE_REFERENCES_20261004/13-gorilla-neck-contour/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Lateral Gorilla painting; two real knuckle hands and two full hind feet, preserving local projected supports."
+  },
+  "coverage": {
+    "scope": "Independent manual observation of new lateral Gorilla source. Hind controls follow separately painted haunch/knee/ankle paths.",
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "1b0cdc6534a737d4dfa999ebe6bf222067b360e7980c60c1ef3146f6cc179a93",
+    "subjectSourceSha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048",
+    "presenceSha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.13881325698288735,
+      "spine": 0.16082574314274212,
+      "chest": 0.12858465308291142,
+      "neck": 0.04932589184750281,
+      "head": 0.08063695540732327,
+      "jaw": 0.0940109880630728,
+      "armFarShoulder": 0.08630511491393737,
+      "armFarElbow": 0.14932948858073783,
+      "armFarHand": 0.15761457592875155,
+      "armNearShoulder": 0.01854817121150403,
+      "armNearElbow": 0.18555883727298667,
+      "armNearHand": 0.18733922788553878,
+      "legFarHip": 0.04718440890745459,
+      "legFarKnee": 0.10042782450673791,
+      "legFarFoot": 0.15349375431419948,
+      "legNearHip": 0.014130817501331218,
+      "legNearKnee": 0.12455006922275123,
+      "legNearFoot": 0.1676936984787794
+    },
+    "measures": {
+      "body": 0.2872507474640983,
+      "bone-min": 0.014130817501331218,
+      "bone-max": 0.18733922788553878,
+      "arm/torso:armFar": 1.3690101171018765,
+      "arm/torso:armNear": 1.3627335692797595,
+      "leg/torso:legFar": 1.0482339572189463,
+      "leg/torso:legNear": 1.06657541506016
+    }
+  },
+  "recipeHash": "2f8102e50c160e524f58367a0256b7b90b7ca6735d5ad6929f01041808b5f9d0"
+}

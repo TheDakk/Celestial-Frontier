@@ -1,0 +1,14 @@
+{
+  "id": "13-ibex",
+  "name": "Ibex",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-9c7d3076-4b3d-4af5-b478-af0f413a3413.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d8061ecc314acecf182be381b10ba01306a3d7734e06ff185f9e13970fbfe683",
+  "bytes": 1404419,
+  "promptSha256": "597860b7770af61b1701b919010e58fc2ffaf0051cfc74b1d234ee5a0449e4e5",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

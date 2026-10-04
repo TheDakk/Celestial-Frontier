@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c203-observed-insect-product-candidate/v1",
+  "baseCommit": "e2e9bb10c",
+  "scope": "Six observed insect sockets only: toward-socket swing and exactly two complete source steps for hit and tame, including tame return. Legacy templates and compact myriapods keep their contract.",
+  "sourceFiles": [
+    {
+      "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "sha256": "9c4db416b78b2130b4d3fadfcf5273bc846dfe86480ab8aecfcafd6e59e7a889",
+      "bytes": 4877
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "39e326eda6dd32c74921a332ce3fc933b2a5ab84ab02be091134a70f65b24484",
+      "bytes": 33099
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact-insect-sockets.test.ts",
+      "sha256": "d5c84a7f0adc58026878ad22de99718dfe1c1d5b4f010385133c8e3bfb338015",
+      "bytes": 11858
+    }
+  ],
+  "unchangedNumericalOwnerTail": {
+    "fromMarker": "// Explicit named support groups must resolve to complete existing chains.",
+    "sha256": "b471fa902ff4826c5939720d6e5d280096f41bf8a19ac68b6b4b3b0b17cbd8a1",
+    "byteIdenticalToBase": true
+  },
+  "focusedTests": 49,
+  "appTypecheck": "PASS",
+  "actualProductStatic": "static-product.json",
+  "visualStatus": "HOLD: exact loaded-rig render exposes stranded fringe and closed-elytra model mismatch",
+  "nativeReady": false,
+  "qualifiedReferencePool": []
+}

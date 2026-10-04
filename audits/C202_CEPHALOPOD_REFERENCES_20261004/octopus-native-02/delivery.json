@@ -1,0 +1,130 @@
+{
+  "schema": "cf.c202-native-delivery/v1",
+  "files": [
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn2-dodge-reaction-50.png",
+      "sha256": "9e7ba35f95d14648e501eb93b318c4c2cd65d5dc7256a539d98d0d584c76ce4f",
+      "bytes": 1147826
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/report.json",
+      "sha256": "d06a008f5858d7f025406c5c0858edc6d894244dff056763918d2ef72c1abc9c",
+      "bytes": 398044
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn0-hit-return-end.png",
+      "sha256": "c5f0cc4ed5478d3e67893a0ac27470fdde37f6bb7f298ff1c1445347f5fbe955",
+      "bytes": 1122609
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn3-hit-approach-50.png",
+      "sha256": "71d12b85063efb9fd2514d1cc30a201a045566ebca8e66255266a60670e9052a",
+      "bytes": 1123817
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn0-hit-approach-50.png",
+      "sha256": "a2d65d2ae75a528ad07618e8b52c18fd3152c239557980bb6734464dc1042f8d",
+      "bytes": 1122933
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn1-hit-approach-50.png",
+      "sha256": "71d12b85063efb9fd2514d1cc30a201a045566ebca8e66255266a60670e9052a",
+      "bytes": 1123817
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/battle-full.webm",
+      "sha256": "eb13d239d9556b24b7086c92475df6ffea90e8114896e6ca701861fd929e29b3",
+      "bytes": 9630628
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn4-hit-approach-50.png",
+      "sha256": "a2d65d2ae75a528ad07618e8b52c18fd3152c239557980bb6734464dc1042f8d",
+      "bytes": 1122933
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn3-hit-return-end.png",
+      "sha256": "ffea218a2530f4fd0c0216a12709507ba412db66125f0528a242f67a68924e66",
+      "bytes": 1122754
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn1-hit-reaction-50.png",
+      "sha256": "03d4428e8a85cc3043bf43e341f779aa5cf870b3543cbeab40c097d25fb8d547",
+      "bytes": 1130497
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn0-hit-reaction-50.png",
+      "sha256": "336cb9c2ffce934f920296d78e9645027be4461da48491ae12c34d438ef6ae1e",
+      "bytes": 1123893
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn2-dodge-return-end.png",
+      "sha256": "c5f0cc4ed5478d3e67893a0ac27470fdde37f6bb7f298ff1c1445347f5fbe955",
+      "bytes": 1122609
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn3-hit-reaction-50.png",
+      "sha256": "03d4428e8a85cc3043bf43e341f779aa5cf870b3543cbeab40c097d25fb8d547",
+      "bytes": 1130497
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn1-hit-impact.png",
+      "sha256": "04ba9d0d2b1d4f73d367144077d69955ecc0d5720e681816daf07b8df2e99313",
+      "bytes": 1125450
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/native.log",
+      "sha256": "5168cc2440afbdcc1ce903021ac9b027234a757730dea6b55521708e7a597d77",
+      "bytes": 197
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn4-hit-reaction-50.png",
+      "sha256": "3ae6a14b0410d2f961f9de38881a947fe7a1b5673d119e3df9673f09cb37adda",
+      "bytes": 1122869
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn0-hit-impact.png",
+      "sha256": "ab27b1286eb41e4928ca15f79c082524fe2773c86793981db71bf0545e6d3c35",
+      "bytes": 634204
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn1-hit-return-end.png",
+      "sha256": "7a5f186655cd05f073f58b474252e9fe18b0e409c02600d2575515801bb810ee",
+      "bytes": 1122795
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn4-hit-idle-50.png",
+      "sha256": "5942e13efd6fb1b0d55fc5969a72a3803eb9a58d06d67502d42c721972331b58",
+      "bytes": 1118594
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn2-dodge-impact.png",
+      "sha256": "a274dce3d707f37adefbb41f866e7741943ab30ca13fd386d56fe0da51273775",
+      "bytes": 1137473
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn4-hit-idle-90.png",
+      "sha256": "4db48d58b5f6548ff5d8e75e38c247bf4c5e8c540e3d4dac2fd6cb463a13205b",
+      "bytes": 1122411
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn2-dodge-approach-50.png",
+      "sha256": "a2d65d2ae75a528ad07618e8b52c18fd3152c239557980bb6734464dc1042f8d",
+      "bytes": 1122933
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn4-hit-return-end.png",
+      "sha256": "7022b5948138a9fddeb78c8bf507e3a86bbe02f9c14d1131f60df993249d82c3",
+      "bytes": 1123545
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn3-hit-impact.png",
+      "sha256": "04ba9d0d2b1d4f73d367144077d69955ecc0d5720e681816daf07b8df2e99313",
+      "bytes": 1125450
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/turn4-hit-impact.png",
+      "sha256": "26a621704b04eeff20b938f2ddc8c107f0f3ac9bb2889af842735875faf5501d",
+      "bytes": 1122579
+    }
+  ]
+}

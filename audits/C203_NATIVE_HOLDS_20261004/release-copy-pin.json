@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "count": 121,
+  "previousSha256": "404ca25f0099f5a7f2304592102acffff41b84a753bca14796003728c3a2c9f6",
+  "reviewedSha256": "117f8e0158c734e1fdadbebbd78ec39432f25a00ae06fb7a35050333c84d5854",
+  "onlyAddedSentence": "Painted quadrupeds keep idle and trot motion within their foot reach, and insects with observed leg sockets take shorter recovery steps.",
+  "allPriorCopyExact": true,
+  "reorderedRowsRejected": true,
+  "scope": "Development bulletin only; no I5 certificate or allowance rebind"
+}

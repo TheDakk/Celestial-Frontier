@@ -1,0 +1,19 @@
+{
+  "id": "03-beetle-dorsal",
+  "name": "Beetle",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-63a1011f-9e21-453e-a0c8-85fe906deef5.png",
+  "masterSha256": "2673f287573558969262fabc5bd524083d1e773abe1b5c58ef09a9588284ffab",
+  "bytes": 1455022,
+  "promptSha256": "e8c18190542a697caeff0078a24cf3bfdad57cd59533358fe3eef9b03983896e",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/master.png",
+      "sha256": "2fc73953a7a8601bb57490131f341a8f9c7153e2fe7c9f54dcf99de3388deefc"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "transparentBackground": false
+}

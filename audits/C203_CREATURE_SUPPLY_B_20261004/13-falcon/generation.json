@@ -1,0 +1,14 @@
+{
+  "id": "13-falcon",
+  "name": "Falcon",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-1e5ea797-9a09-4fd4-975f-1f2e7154fbc3.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2ae658cdd7edce1a4e0640757f2637680ab7e77feef37305236a066dec89cdf3",
+  "bytes": 1256579,
+  "promptSha256": "7f334b0e55596762137545916705005f9e3630d4bfb2017186f20f1fe987d228",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

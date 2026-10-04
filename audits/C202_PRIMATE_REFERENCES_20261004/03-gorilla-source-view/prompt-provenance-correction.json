@@ -1,0 +1,7 @@
+{
+  "actualSentPromptSha256": "5d1902606d889dd3bc5f4a58530ed02cd2487813d07c3c9354174d1cd9ff5440",
+  "retainedHistoricalPromptSha256": "5d1902606d889dd3bc5f4a58530ed02cd2487813d07c3c9354174d1cd9ff5440",
+  "sameContentExceptOneTrailingLF": false,
+  "actualSentFile": "prompt.sent.txt",
+  "scope": "Preserve historical serialization; distinguish exact tool-sent prompt from retained text-file trailing LF."
+}

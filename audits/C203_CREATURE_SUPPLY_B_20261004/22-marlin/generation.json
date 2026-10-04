@@ -1,0 +1,14 @@
+{
+  "id": "22-marlin",
+  "name": "Marlin",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-64e86394-1ee8-4a1d-b1ce-5e5964c2d475.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f171e0c9061860bc36bc39259a8384d58801a9b14df151e898928e584924e52e",
+  "bytes": 1180159,
+  "promptSha256": "725c119be4218747f0c738bdd2caa98e8dfc6feb1b064a16e8a1aeeb3ffa5bb4",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,128 @@
+{
+  "masterSha256": "a1fb2fed339450411eb4370901a7417808623f041dd985eace1535cc82947681",
+  "status": "SOURCE_COUNT_AND_ROOT_VISIBILITY_HOLD",
+  "fullSizeInspected": true,
+  "unambiguousDistalTips": {
+    "upperFlank": [
+      [
+        234,
+        510
+      ],
+      [
+        268,
+        470
+      ],
+      [
+        343,
+        443
+      ],
+      [
+        411,
+        425
+      ],
+      [
+        480,
+        431
+      ],
+      [
+        541,
+        415
+      ],
+      [
+        600,
+        433
+      ],
+      [
+        654,
+        426
+      ],
+      [
+        720,
+        431
+      ],
+      [
+        821,
+        423
+      ],
+      [
+        844,
+        447
+      ],
+      [
+        929,
+        435
+      ],
+      [
+        986,
+        473
+      ]
+    ],
+    "lowerFlank": [
+      [
+        238,
+        748
+      ],
+      [
+        297,
+        786
+      ],
+      [
+        351,
+        798
+      ],
+      [
+        409,
+        821
+      ],
+      [
+        477,
+        824
+      ],
+      [
+        541,
+        831
+      ],
+      [
+        609,
+        831
+      ],
+      [
+        688,
+        840
+      ],
+      [
+        767,
+        821
+      ],
+      [
+        836,
+        816
+      ],
+      [
+        899,
+        799
+      ],
+      [
+        975,
+        780
+      ]
+    ]
+  },
+  "ambiguousProjections": [
+    {
+      "point": [
+        1057,
+        530
+      ],
+      "note": "Thin head-adjacent projection may be appendage or bristle; no invented classification."
+    }
+  ],
+  "findings": [
+    "Lower flank has only12unambiguous distal walking tips; upper has13plus an ambiguous projection. Does not establish13complete pairs.",
+    "Dense bristles overlap emergence roots; cannot author genuine26root-to-tip chains from this source.",
+    "Long antennae and bristles still crowd lateral margins; no local resize or deletion performed."
+  ],
+  "presenceCreated": false,
+  "fitCreated": false,
+  "qualityAccepted": false
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "cf.c203-holds-visual-review/v1",
+  "redFox": {
+    "selectedFit": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit",
+    "static": "PASS_STATIC",
+    "actualRigSamples": 35,
+    "inspectedFullSize": [
+      "fox-review-03/faint-0p9.png",
+      "fox-review-03/idle-0p9.png",
+      "fox-review-03/approach-trot-0p2.png",
+      "fox-review-03/melee-0p9.png",
+      "fox-review-03/hit-0p2.png"
+    ],
+    "finding": "Whole-head/nape paint and torso remainder ownership close the earlier nape opening and tiny torso root-patch hole. Tail and paw fringe is assigned by unchanged D28. Selected for native; not admitted.",
+    "native": false,
+    "finalProductStatic": "fox-islands-02/static-fast-profile.json",
+    "finalActualRigReview": "fox-review-04/review.json",
+    "additionalFullSizeReview": "fox-review-04/approach-trot-0p2.png"
+  },
+  "snowPetrel": {
+    "status": "HELD_VISUAL",
+    "bestOldSource": "petrel-source-joins-02/fit",
+    "oldFinding": "Head/chest gaps close; early faint diagonal proximal-wing tear remains. Enlarged wing partition produces folds and is rejected.",
+    "newSource": "snow-petrel-folded-source-01/master.png",
+    "newFit": "petrel-folded-source-joins-01/fit",
+    "newStatic": "PASS_STATIC",
+    "newFinding": "Actual source-bound joins close chest/neck gap but tail stretches across the folded wing; shoulder contour is pulled. Full-size visual RED; no native.",
+    "native": false
+  },
+  "limitsChanged": false,
+  "sourcePixelsEdited": false
+}

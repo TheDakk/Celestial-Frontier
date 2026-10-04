@@ -1,0 +1,222 @@
+{
+  "schema": "cf.g2-framing-successor-proof/v1",
+  "selected": 24,
+  "originalAttempts": 24,
+  "successorAttempts": 4,
+  "exactNativeDimensions": [
+    1254,
+    1254
+  ],
+  "localRescale": false,
+  "qualityAccepted": false,
+  "rigAdmission": false,
+  "originalRefusals": [
+    {
+      "id": "17-arapaima",
+      "masterSha256": "54c32eeab5df4c74034ee9f9d832d29797aa139f52a80f07e3612729b2f3d438",
+      "framing": {
+        "status": "REFUSE",
+        "bounds": {
+          "x0": 64,
+          "y0": 464,
+          "x1": 1190,
+          "y1": 784
+        },
+        "margins": {
+          "left": 64,
+          "right": 63,
+          "top": 464,
+          "bottom": 469
+        },
+        "required": {
+          "x": 101,
+          "y": 101
+        },
+        "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+      }
+    },
+    {
+      "id": "18-arowana",
+      "masterSha256": "faa938837ccad0b1b4421350ebd22c9fc4e28e2cb17bd9788dc37eb4960a30e3",
+      "framing": {
+        "status": "REFUSE",
+        "bounds": {
+          "x0": 100,
+          "y0": 432,
+          "x1": 1165,
+          "y1": 786
+        },
+        "margins": {
+          "left": 100,
+          "right": 88,
+          "top": 432,
+          "bottom": 467
+        },
+        "required": {
+          "x": 101,
+          "y": 101
+        },
+        "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+      }
+    },
+    {
+      "id": "22-marlin",
+      "masterSha256": "f171e0c9061860bc36bc39259a8384d58801a9b14df151e898928e584924e52e",
+      "framing": {
+        "status": "REFUSE",
+        "bounds": {
+          "x0": 111,
+          "y0": 369,
+          "x1": 1186,
+          "y1": 826
+        },
+        "margins": {
+          "left": 111,
+          "right": 67,
+          "top": 369,
+          "bottom": 427
+        },
+        "required": {
+          "x": 101,
+          "y": 101
+        },
+        "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+      }
+    },
+    {
+      "id": "23-swordfish",
+      "masterSha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db",
+      "framing": {
+        "status": "REFUSE",
+        "bounds": {
+          "x0": 70,
+          "y0": 354,
+          "x1": 1199,
+          "y1": 817
+        },
+        "margins": {
+          "left": 70,
+          "right": 54,
+          "top": 354,
+          "bottom": 436
+        },
+        "required": {
+          "x": 101,
+          "y": 101
+        },
+        "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+      }
+    }
+  ],
+  "selectedSuccessors": [
+    {
+      "id": "17-arapaima-framing02",
+      "master": "audits/C203_CREATURE_SUPPLY_B_20261004/17-arapaima-framing02/master.png",
+      "masterSha256": "df335aeff1080374441505501bacf45284c15a709f5ffa0144061a465ed66226",
+      "promptSha256": "a51a0e0668e85dde8404b160cc091b2285c0946654a3955b1a2116176cce6e59",
+      "framing": {
+        "status": "PASS_FRAMING_ONLY",
+        "bounds": {
+          "x0": 164,
+          "y0": 498,
+          "x1": 1087,
+          "y1": 755
+        },
+        "margins": {
+          "left": 164,
+          "right": 166,
+          "top": 498,
+          "bottom": 498
+        },
+        "required": {
+          "x": 101,
+          "y": 101
+        },
+        "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+      },
+      "remainingHolds": "Full-size successor retains complete rounded tail, posterior dorsal/anal fins, near pectoral/pelvic fins, continuous scales and red-orange rear edging with visibly broader side margins. Far paired fins remain hidden and metallic scale gloss remains held. It is smaller but does not fully meet the stronger central-60% prompt target; unchanged minimum8% framing is measured separately."
+    },
+    {
+      "id": "18-arowana-framing02",
+      "master": "audits/C203_CREATURE_SUPPLY_B_20261004/18-arowana-framing02/master.png",
+      "masterSha256": "004b0861091dbd2770f37631892332c39090dd78456bec6d36218bc3b53888bb",
+      "promptSha256": "311290800309b30657f177f6775fbac32de90f87f5a7d97ff6fdab571b02bd6d",
+      "framing": {
+        "status": "PASS_FRAMING_ONLY",
+        "bounds": {
+          "x0": 199,
+          "y0": 467,
+          "x1": 1069,
+          "y1": 767
+        },
+        "margins": {
+          "left": 199,
+          "right": 184,
+          "top": 467,
+          "bottom": 486
+        },
+        "required": {
+          "x": 101,
+          "y": 101
+        },
+        "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+      },
+      "remainingHolds": "Full-size successor retains both complete forward barbels, tail and visible near fins with broader margins. Far paired roots remain hidden and glossy orange highlights remain an art hold. It is smaller but does not fully meet the stronger central-60% prompt target; unchanged minimum8% framing is measured separately."
+    },
+    {
+      "id": "22-marlin-framing02",
+      "master": "audits/C203_CREATURE_SUPPLY_B_20261004/22-marlin-framing02/master.png",
+      "masterSha256": "f2519935ed58fc4d2abd74ceb861de3567ebf8b16f6d2177bf1257aead18cd54",
+      "promptSha256": "f3af6f19690d699aaadf746da22c5ec98ef66d692c4878257550b2d4d3bb7245",
+      "framing": {
+        "status": "PASS_FRAMING_ONLY",
+        "bounds": {
+          "x0": 231,
+          "y0": 445,
+          "x1": 1059,
+          "y1": 788
+        },
+        "margins": {
+          "left": 231,
+          "right": 194,
+          "top": 445,
+          "bottom": 465
+        },
+        "required": {
+          "x": 101,
+          "y": 101
+        },
+        "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+      },
+      "remainingHolds": "Full-size successor shows the entire bill and crescent tail with broader margins, retaining pale body bars and the visible fins. Small repeated rear projections still resemble finlets and remain an anatomy hold; no correct-fin-count or rig claim. The stronger central-60% prompt target is not fully met, while minimum8% framing is measured separately."
+    },
+    {
+      "id": "23-swordfish-framing02",
+      "master": "audits/C203_CREATURE_SUPPLY_B_20261004/23-swordfish-framing02/master.png",
+      "masterSha256": "4f199d6aaae2ccc38c67b2154d82705727a8f3f35c807f7511b971daf5d18417",
+      "promptSha256": "c393d3f4aaea24627bc30009b000a2389da2401fc5c7b177f743b3dd150c4ff5",
+      "framing": {
+        "status": "PASS_FRAMING_ONLY",
+        "bounds": {
+          "x0": 213,
+          "y0": 448,
+          "x1": 1061,
+          "y1": 771
+        },
+        "margins": {
+          "left": 213,
+          "right": 192,
+          "top": 448,
+          "bottom": 482
+        },
+        "required": {
+          "x": 101,
+          "y": 101
+        },
+        "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+      },
+      "remainingHolds": "Full-size successor shows the entire flattened bill, crescent tail and visible fins with broader margins. Finlet-like rear projections and the large underside fin near the pectoral root remain anatomy ambiguities; glossy treatment stays held. The stronger central-60% prompt target is not fully met, while minimum8% framing is measured separately."
+    }
+  ],
+  "selectedPilotSha256": "e415569ab2cf3c61cc2926a0faea931540a9e8e55480e2b5c6f6611cabbd9d8a"
+}

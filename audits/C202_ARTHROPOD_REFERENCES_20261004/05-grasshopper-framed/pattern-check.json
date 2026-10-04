@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Grasshopper",
+  "masterSha256": "37790d9e90adcef9eee96bccad51426bdf74b2b8032236c83b37daa9bf60392c",
+  "required": [],
+  "source": "explicit full-size visual observation; no pigment feature required by canonical insect identity; Polyxenus is an explicitly separate researched reference and retains bristly morphology hold",
+  "status": "NOT_REQUIRED"
+}

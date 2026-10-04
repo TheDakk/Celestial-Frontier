@@ -1,0 +1,646 @@
+[
+  {
+    "id": "01-okapi",
+    "name": "Okapi",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/01-okapi",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/01-okapi/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve clear zebra-like white stripes on hindquarters and upper legs, solid dark body, large ears and real short horns on a male; no giraffe patches.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "24-okapi",
+          "master": "audits/G2_C76_20260927/24-okapi/master.png",
+          "packet": "audits/G2_C76_20260927/24-okapi"
+        },
+        {
+          "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "14-okapi",
+          "master": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/master.png",
+          "packet": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi"
+        }
+      ]
+    }
+  },
+  {
+    "id": "02-capybara",
+    "name": "Capybara",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/02-capybara",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/02-capybara/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve naturally tailless rump, blunt large head and real partially webbed feet; no added rodent tail or hooves.",
+      "priorSources": [
+        {
+          "pilot": "audits/C196_CREATURE_SUPPLY_20261003/pilot.json",
+          "id": "01-capybara",
+          "master": "audits/C196_CREATURE_SUPPLY_20261003/01-capybara/master.png",
+          "packet": "audits/C196_CREATURE_SUPPLY_20261003/01-capybara"
+        },
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "17-capybara",
+          "master": "audits/G2_C76_20260927/17-capybara/master.png",
+          "packet": "audits/G2_C76_20260927/17-capybara"
+        }
+      ]
+    }
+  },
+  {
+    "id": "03-pronghorn",
+    "name": "Pronghorn",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/03-pronghorn",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/03-pronghorn/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve true forked pronghorn horns, large white rump patch and paired white neck bands; tail and all four actual cloven feet are separate.",
+      "priorSources": [
+        {
+          "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "15-pronghorn",
+          "master": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/master.png",
+          "packet": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn"
+        },
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "13-pronghorn",
+          "master": "audits/G2_C95_20260927/13-pronghorn/master.png",
+          "packet": "audits/G2_C95_20260927/13-pronghorn"
+        }
+      ]
+    }
+  },
+  {
+    "id": "04-springbok",
+    "name": "Springbok",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/04-springbok",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/04-springbok/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve dark horizontal flank stripe, white belly/rump and lyre-shaped horns; no extra leg, standing crest or exotic appendage.",
+      "priorSources": [
+        {
+          "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "16-springbok",
+          "master": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/master.png",
+          "packet": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok"
+        },
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "14-springbok",
+          "master": "audits/G2_C95_20260927/14-springbok/master.png",
+          "packet": "audits/G2_C95_20260927/14-springbok"
+        }
+      ]
+    }
+  },
+  {
+    "id": "05-duiker",
+    "name": "Duiker",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/05-duiker",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/05-duiker/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve compact arched-backed duiker form, short spike horns where present, real narrow feet and natural short tail.",
+      "priorSources": [
+        {
+          "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "17-duiker",
+          "master": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/master.png",
+          "packet": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker"
+        },
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "16-duiker",
+          "master": "audits/G2_C95_20260927/16-duiker/master.png",
+          "packet": "audits/G2_C95_20260927/16-duiker"
+        }
+      ]
+    }
+  },
+  {
+    "id": "06-serow",
+    "name": "Serow",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/06-serow",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/06-serow/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve the coarse dark coat, pale lower legs, short conical horns and large ears; no long curling ibex horns.",
+      "priorSources": [
+        {
+          "pilot": "audits/C192_CREATURE_SUPPLY_20261002/pilot.json",
+          "id": "18-serow",
+          "master": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/master.png",
+          "packet": "audits/C192_CREATURE_SUPPLY_20261002/18-serow"
+        },
+        {
+          "pilot": "audits/G2_C95_20260927/pilot.json",
+          "id": "18-serow",
+          "master": "audits/G2_C95_20260927/18-serow/master.png",
+          "packet": "audits/G2_C95_20260927/18-serow"
+        }
+      ]
+    }
+  },
+  {
+    "id": "07-brown-bear",
+    "name": "Brown Bear",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/07-brown-bear",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/07-brown-bear/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve brown bear anatomy, short natural tail, rounded ears and four plantigrade paws; do not invent extra claws or extend the tail.",
+      "priorSources": [
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_A_20261003/pilot.json",
+          "id": "04-brown-bear",
+          "master": "audits/C198_CREATURE_SUPPLY_A_20261003/04-brown-bear/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_A_20261003/04-brown-bear"
+        },
+        {
+          "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+          "id": "12-brown-bear",
+          "master": null,
+          "packet": "audits/G2_QUADRUPED_PILOT_20260926/12-brown-bear"
+        }
+      ]
+    }
+  },
+  {
+    "id": "08-grizzly-bear",
+    "name": "Grizzly Bear",
+    "family": "quadruped",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/08-grizzly-bear",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/08-grizzly-bear/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve muscular shoulder hump, brown grizzled coat, dish-shaped muzzle, rounded ears and long real foreclaws; four complete paws and very short tail.",
+      "priorSources": [
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_A_20261003/pilot.json",
+          "id": "06-grizzly-bear",
+          "master": "audits/C198_CREATURE_SUPPLY_A_20261003/06-grizzly-bear/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_A_20261003/06-grizzly-bear"
+        },
+        {
+          "pilot": "audits/G2_C114_20260927/pilot.json",
+          "id": "15-grizzly-bear",
+          "master": "audits/G2_C114_20260927/15-grizzly-bear/master.png",
+          "packet": "audits/G2_C114_20260927/15-grizzly-bear"
+        }
+      ]
+    }
+  },
+  {
+    "id": "09-kingfisher",
+    "name": "Kingfisher",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/09-kingfisher",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/09-kingfisher/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Two real legs separately readable from feather-body emergence through ankles and complete natural toes, both feet planted on one level. Near and far leg shafts have clear contour gaps. Preserve true bill, folded wing attachment and continuous complete feather tail. No perch, floating feather islands, extra wing or invented far-side anatomy. A real folded far-wing edge may show only where naturally exposed. Complete bird including tail and bill stays within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C59_20260926/pilot.json",
+          "id": "09-kingfisher",
+          "master": "audits/G2_C59_20260926/09-kingfisher/master.png",
+          "packet": "audits/G2_C59_20260926/09-kingfisher"
+        },
+        {
+          "pilot": "audits/G2_FAMILY_PILOT_20260926/pilot.json",
+          "id": "05-kingfisher",
+          "master": null,
+          "packet": "audits/G2_FAMILY_PILOT_20260926/05-kingfisher"
+        }
+      ]
+    }
+  },
+  {
+    "id": "10-macaw",
+    "name": "Macaw",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/10-macaw",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/10-macaw/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Two real legs separately readable from feather-body emergence through ankles and complete natural toes, both feet planted on one level. Near and far leg shafts have clear contour gaps. Preserve true bill, folded wing attachment and continuous complete feather tail. No perch, floating feather islands, extra wing or invented far-side anatomy. A real folded far-wing edge may show only where naturally exposed. Complete bird including tail and bill stays within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/pilot.json",
+          "id": "22-macaw",
+          "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/master.png",
+          "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "09-macaw",
+          "master": "audits/G2_C83_20260927/09-macaw/master.png",
+          "packet": "audits/G2_C83_20260927/09-macaw"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "09-macaw",
+          "master": "audits/G2_C83_20260927/09-macaw/master.png",
+          "packet": "audits/G2_C83_20260927/09-macaw"
+        }
+      ]
+    }
+  },
+  {
+    "id": "11-toucan",
+    "name": "Toucan",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/11-toucan",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/11-toucan/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Two real legs separately readable from feather-body emergence through ankles and complete natural toes, both feet planted on one level. Near and far leg shafts have clear contour gaps. Preserve true bill, folded wing attachment and continuous complete feather tail. No perch, floating feather islands, extra wing or invented far-side anatomy. A real folded far-wing edge may show only where naturally exposed. Complete bird including tail and bill stays within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "11-toucan",
+          "master": "audits/G2_C83_20260927/11-toucan/master.png",
+          "packet": "audits/G2_C83_20260927/11-toucan"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "11-toucan",
+          "master": "audits/G2_C83_20260927/11-toucan/master.png",
+          "packet": "audits/G2_C83_20260927/11-toucan"
+        }
+      ]
+    }
+  },
+  {
+    "id": "12-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/12-pheasant",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/12-pheasant/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Two real legs separately readable from feather-body emergence through ankles and complete natural toes, both feet planted on one level. Near and far leg shafts have clear contour gaps. Preserve true bill, folded wing attachment and continuous complete feather tail. No perch, floating feather islands, extra wing or invented far-side anatomy. A real folded far-wing edge may show only where naturally exposed. Complete bird including tail and bill stays within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_LAYOUT_C47_20260926/pilot.json",
+          "id": "05-pheasant",
+          "master": null,
+          "packet": "audits/G2_LAYOUT_C47_20260926/05-pheasant"
+        },
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "16-pheasant",
+          "master": "audits/G2_C76_20260927/16-pheasant/master.png",
+          "packet": "audits/G2_C76_20260927/16-pheasant"
+        },
+        {
+          "pilot": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/pilot.json",
+          "id": "13-pheasant",
+          "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/master.png",
+          "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant"
+        },
+        {
+          "pilot": "audits/G2_FAMILY_PILOT_20260926/pilot.json",
+          "id": "03-pheasant",
+          "master": null,
+          "packet": "audits/G2_FAMILY_PILOT_20260926/03-pheasant"
+        }
+      ]
+    }
+  },
+  {
+    "id": "13-falcon",
+    "name": "Falcon",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/13-falcon",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/13-falcon/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Two real legs separately readable from feather-body emergence through ankles and complete natural toes, both feet planted on one level. Near and far leg shafts have clear contour gaps. Preserve true bill, folded wing attachment and continuous complete feather tail. No perch, floating feather islands, extra wing or invented far-side anatomy. A real folded far-wing edge may show only where naturally exposed. Complete bird including tail and bill stays within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "11-falcon",
+          "master": "audits/G2_C76_20260927/11-falcon/master.png",
+          "packet": "audits/G2_C76_20260927/11-falcon"
+        }
+      ]
+    }
+  },
+  {
+    "id": "14-duck",
+    "name": "Duck",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/14-duck",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/14-duck/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Two real legs separately readable from feather-body emergence through ankles and complete natural toes, both feet planted on one level. Near and far leg shafts have clear contour gaps. Preserve true bill, folded wing attachment and continuous complete feather tail. No perch, floating feather islands, extra wing or invented far-side anatomy. A real folded far-wing edge may show only where naturally exposed. Complete bird including tail and bill stays within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_THROUGHPUT_C54_20260926/pilot.json",
+          "id": "13-duck",
+          "master": "audits/G2_THROUGHPUT_C54_20260926/13-duck/master.png",
+          "packet": "audits/G2_THROUGHPUT_C54_20260926/13-duck"
+        },
+        {
+          "pilot": "audits/G2_REFERENCES_C62_20260927/pilot.json",
+          "id": "03-duck",
+          "master": "audits/G2_REFERENCES_C62_20260927/03-duck/master.png",
+          "packet": "audits/G2_REFERENCES_C62_20260927/03-duck"
+        }
+      ]
+    }
+  },
+  {
+    "id": "15-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/15-egret",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/15-egret/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Two real legs separately readable from feather-body emergence through ankles and complete natural toes, both feet planted on one level. Near and far leg shafts have clear contour gaps. Preserve true bill, folded wing attachment and continuous complete feather tail. No perch, floating feather islands, extra wing or invented far-side anatomy. A real folded far-wing edge may show only where naturally exposed. Complete bird including tail and bill stays within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C121_20260927/pilot.json",
+          "id": "02-egret",
+          "master": "audits/G2_C121_20260927/02-egret/master.png",
+          "packet": "audits/G2_C121_20260927/02-egret"
+        },
+        {
+          "pilot": "audits/G2_C72_20260927/pilot.json",
+          "id": "12-egret",
+          "master": "audits/G2_C72_20260927/12-egret/master.png",
+          "packet": "audits/G2_C72_20260927/12-egret"
+        },
+        {
+          "pilot": "audits/C136_BIRD_INSECT_REFERENCES_20261002/pilot.json",
+          "id": "02-egret",
+          "master": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/master.png",
+          "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02"
+        },
+        {
+          "pilot": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/pilot.json",
+          "id": "05-egret",
+          "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/master.png",
+          "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret"
+        }
+      ]
+    }
+  },
+  {
+    "id": "16-stork",
+    "name": "Stork",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/16-stork",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/16-stork/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Two real legs separately readable from feather-body emergence through ankles and complete natural toes, both feet planted on one level. Near and far leg shafts have clear contour gaps. Preserve true bill, folded wing attachment and continuous complete feather tail. No perch, floating feather islands, extra wing or invented far-side anatomy. A real folded far-wing edge may show only where naturally exposed. Complete bird including tail and bill stays within central half of canvas.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C121_20260927/pilot.json",
+          "id": "03-stork",
+          "master": "audits/G2_C121_20260927/03-stork/master.png",
+          "packet": "audits/G2_C121_20260927/03-stork"
+        },
+        {
+          "pilot": "audits/G2_C72_20260927/pilot.json",
+          "id": "14-stork",
+          "master": "audits/G2_C72_20260927/14-stork/master.png",
+          "packet": "audits/G2_C72_20260927/14-stork"
+        },
+        {
+          "pilot": "audits/C136_BIRD_INSECT_REFERENCES_20261002/pilot.json",
+          "id": "03-stork",
+          "master": "audits/C136_BIRD_INSECT_REFERENCES_20261002/03-stork/candidate-02/master.png",
+          "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/03-stork/candidate-02"
+        },
+        {
+          "pilot": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/pilot.json",
+          "id": "06-stork",
+          "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/master.png",
+          "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork"
+        }
+      ]
+    }
+  },
+  {
+    "id": "17-arapaima-framing02",
+    "name": "Arapaima",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/17-arapaima-framing02",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/17-arapaima-framing02/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+          "id": "15-arapaima",
+          "master": "audits/C198_CREATURE_SUPPLY_C_20261003/15-arapaima/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/15-arapaima"
+        },
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "07-arapaima",
+          "master": "audits/G2_C76_20260927/07-arapaima/master.png",
+          "packet": "audits/G2_C76_20260927/07-arapaima"
+        }
+      ]
+    },
+    "supersedes": "17-arapaima",
+    "selectedFor": "framing-only successor pending unchanged check"
+  },
+  {
+    "id": "18-arowana-framing02",
+    "name": "Arowana",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/18-arowana-framing02",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/18-arowana-framing02/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+          "id": "16-arowana",
+          "master": "audits/C198_CREATURE_SUPPLY_C_20261003/16-arowana/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/16-arowana"
+        },
+        {
+          "pilot": "audits/G2_C76_20260927/pilot.json",
+          "id": "06-arowana",
+          "master": "audits/G2_C76_20260927/06-arowana/master.png",
+          "packet": "audits/G2_C76_20260927/06-arowana"
+        }
+      ]
+    },
+    "supersedes": "18-arowana",
+    "selectedFor": "framing-only successor pending unchanged check"
+  },
+  {
+    "id": "19-blenny",
+    "name": "Blenny",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/19-blenny",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/19-blenny/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C87_20260927/pilot-original.json",
+          "id": "02-blenny",
+          "master": "audits/G2_C87_20260927/02-blenny/master.png",
+          "packet": "audits/G2_C87_20260927/02-blenny"
+        },
+        {
+          "pilot": "audits/G2_C87_20260927/pilot.json",
+          "id": "02-blenny",
+          "master": "audits/G2_C87_20260927/02-blenny/master.png",
+          "packet": "audits/G2_C87_20260927/02-blenny"
+        }
+      ]
+    }
+  },
+  {
+    "id": "20-angelfish",
+    "name": "Angelfish",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/20-angelfish",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/20-angelfish/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C87_20260927/pilot-original.json",
+          "id": "08-angelfish",
+          "master": "audits/G2_C87_20260927/08-angelfish/master.png",
+          "packet": "audits/G2_C87_20260927/08-angelfish"
+        },
+        {
+          "pilot": "audits/G2_C87_20260927/pilot.json",
+          "id": "25-angelfish-marine",
+          "master": "audits/G2_C87_20260927/25-angelfish-marine/master.png",
+          "packet": "audits/G2_C87_20260927/25-angelfish-marine"
+        }
+      ]
+    }
+  },
+  {
+    "id": "21-tuna",
+    "name": "Tuna",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/21-tuna",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/21-tuna/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "03-tuna",
+          "master": "audits/G2_C83_20260927/03-tuna/master.png",
+          "packet": "audits/G2_C83_20260927/03-tuna"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "03-tuna",
+          "master": "audits/G2_C83_20260927/03-tuna/master.png",
+          "packet": "audits/G2_C83_20260927/03-tuna"
+        }
+      ]
+    }
+  },
+  {
+    "id": "22-marlin-framing02",
+    "name": "Marlin",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/22-marlin-framing02",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/22-marlin-framing02/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "04-marlin",
+          "master": "audits/G2_C83_20260927/04-marlin/master.png",
+          "packet": "audits/G2_C83_20260927/04-marlin"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "04-marlin",
+          "master": "audits/G2_C83_20260927/04-marlin/master.png",
+          "packet": "audits/G2_C83_20260927/04-marlin"
+        }
+      ]
+    },
+    "supersedes": "22-marlin",
+    "selectedFor": "framing-only successor pending unchanged check"
+  },
+  {
+    "id": "23-swordfish-framing02",
+    "name": "Swordfish",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/23-swordfish-framing02",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/23-swordfish-framing02/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/G2_C83_20260927/pilot-original.json",
+          "id": "06-swordfish",
+          "master": "audits/G2_C83_20260927/06-swordfish/master.png",
+          "packet": "audits/G2_C83_20260927/06-swordfish"
+        },
+        {
+          "pilot": "audits/G2_C83_20260927/pilot.json",
+          "id": "06-swordfish",
+          "master": "audits/G2_C83_20260927/06-swordfish/master.png",
+          "packet": "audits/G2_C83_20260927/06-swordfish"
+        }
+      ]
+    },
+    "supersedes": "23-swordfish",
+    "selectedFor": "framing-only successor pending unchanged check"
+  },
+  {
+    "id": "24-fangtooth",
+    "name": "Fangtooth",
+    "family": "fish",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/24-fangtooth",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/24-fangtooth/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+      "priorSources": [
+        {
+          "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+          "id": "23-fangtooth",
+          "master": "audits/C198_CREATURE_SUPPLY_C_20261003/23-fangtooth/master.png",
+          "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/23-fangtooth"
+        },
+        {
+          "pilot": "audits/G2_C101_20260927/pilot.json",
+          "id": "08-fangtooth",
+          "master": "audits/G2_C101_20260927/08-fangtooth/master.png",
+          "packet": "audits/G2_C101_20260927/08-fangtooth"
+        }
+      ]
+    }
+  }
+]

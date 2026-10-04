@@ -1,0 +1,7 @@
+{
+  "status": "VISUAL_REJECT",
+  "image": "faint-0p9.png",
+  "sha256": "ff3f7c96b480051f2ce7b47ea9f9f582f7ee02caafc6f5cc9e1690b37d5b1683",
+  "finding": "Removing nonadjacent torso-head ties reduces the crushed skull, but upper-head arc, under-beak gap and rectangular belly tears remain. Preserve Snow Petrel hold; no native run for this visibly rejected candidate.",
+  "qualityAccepted": false
+}

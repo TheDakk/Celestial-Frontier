@@ -1,0 +1,28 @@
+{
+  "name": "Pheasant",
+  "masterSha256": "14737b54f95ecf346fe58588d27668977d76faecc1e3d1fa0ff6ad2df3770eb8",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two separate scaled legs/feet with visible spurs, attached near folded wing and complete long barred tail are visible. White neck ring, red face and black flank spots are present. Tail consists of two very thin dominant feather tips; full tail fan/root count is not independently visible. Far wing is body-occluded; preserve feather/tail ownership hold.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 168,
+      "y0": 351,
+      "x1": 1046,
+      "y1": 883
+    },
+    "margins": {
+      "left": 168,
+      "right": 207,
+      "top": 351,
+      "bottom": 370
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

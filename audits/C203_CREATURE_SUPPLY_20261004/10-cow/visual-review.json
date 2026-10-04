@@ -1,0 +1,28 @@
+{
+  "name": "Cow",
+  "masterSha256": "94e4f1fcd8c3da4d22a6d825526760d3ed6dfa73d31d3a50bbe13065c9349011",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four separate cloven hoof endpoints, two real ear contours, attached tufted tail and visible udder. Brown-white patches are preserved. Far front upper limb overlaps the near shoulder/chest and projected contacts differ; udder is biological ventral paint, not an extra leg. Head is shallow three-quarter.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 208,
+      "y0": 324,
+      "x1": 1065,
+      "y1": 893
+    },
+    "margins": {
+      "left": 208,
+      "right": 188,
+      "top": 324,
+      "bottom": 360
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "14-duck",
+  "name": "Duck",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-02b87310-fa4a-492f-bcc6-032d2229f6b2.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "32d7773a62afe13bcb43f0349ce9ed932241a32f7e27f6133d2fa56fc9245d37",
+  "bytes": 1266850,
+  "promptSha256": "e0e39cfb97ddcbcde155886366ec800ea02b1b25a0bdf2618d3c37c1264f513b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

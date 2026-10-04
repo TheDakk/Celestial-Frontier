@@ -1,0 +1,10 @@
+{
+  "status": "SOURCE_ANATOMY_REFUSAL",
+  "observedArms": 7,
+  "requiredArms": 8,
+  "findings": [
+    "Only seven independent distal arm tips are visible: three left, three right, one low center. No eighth root-to-tip chain can be honestly authored.",
+    "Both eyes and siphon are present, but far eye is edge-on.",
+    "Several tips have less than the requested 8 percent margin."
+  ]
+}

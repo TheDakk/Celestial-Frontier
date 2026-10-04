@@ -1,0 +1,78 @@
+{
+  "schema": "cf.g2-framing-successor-controls/v1",
+  "scope": "Browser-free in-memory mutations; originals and product unchanged",
+  "controls": [
+    {
+      "name": "all four exact generator-painted successors preserve predecessor receipts",
+      "status": "PASS"
+    },
+    {
+      "name": "altered successor prompt refused",
+      "status": "PASS"
+    },
+    {
+      "name": "altered successor master refused",
+      "status": "PASS"
+    },
+    {
+      "name": "stale predecessor master hash refused",
+      "status": "PASS"
+    },
+    {
+      "name": "stale predecessor request hash refused",
+      "status": "PASS"
+    },
+    {
+      "name": "altered style reference refused",
+      "status": "PASS"
+    },
+    {
+      "name": "local resized output flag refused",
+      "status": "PASS"
+    },
+    {
+      "name": "second correction attempt refused",
+      "status": "PASS"
+    },
+    {
+      "name": "framing-red successor refused",
+      "status": "PASS"
+    },
+    {
+      "name": "widened margin allowance refused",
+      "status": "PASS"
+    },
+    {
+      "name": "missing full-size review refused",
+      "status": "PASS"
+    },
+    {
+      "name": "selected24 unique framing-eligible uncovered names",
+      "status": "PASS"
+    },
+    {
+      "name": "accepted identity refused",
+      "status": "PASS"
+    },
+    {
+      "name": "previous C202 identity refused",
+      "status": "PASS"
+    },
+    {
+      "name": "previous C203 A identity refused",
+      "status": "PASS"
+    },
+    {
+      "name": "old framing-red original cannot be selected",
+      "status": "PASS"
+    },
+    {
+      "name": "same-count duplicate identity refused",
+      "status": "PASS"
+    },
+    {
+      "name": "missing selected source refused",
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Springbok",
+  "masterSha256": "56cbdddd56053fae72e77f6b6891e43d44aac23a9fbf7639d97c3fb687fbd4d4",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Four separate cloven hoof endpoints, dark flank band, white belly and face stripe, black-tufted tail and paired ringed horns are visible. Far ear appears only as a narrow sliver behind the horn; far foreleg upper root remains hidden by chest. Fine tail strands need key/fringe review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 253,
+      "y0": 205,
+      "x1": 1052,
+      "y1": 1007
+    },
+    "margins": {
+      "left": 253,
+      "right": 201,
+      "top": 205,
+      "bottom": 246
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

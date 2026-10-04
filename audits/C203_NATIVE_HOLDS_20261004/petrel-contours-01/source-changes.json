@@ -1,0 +1,18 @@
+{
+  "source": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open",
+  "changedOwners": [
+    "beak",
+    "head",
+    "upper-neck",
+    "lower-neck",
+    "chest",
+    "near-thigh",
+    "far-thigh",
+    "near-shin",
+    "far-shin"
+  ],
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": false,
+  "limitsChanged": false,
+  "scope": "Observed complete nape/throat and beak contour; thigh starts at actual feather cone rather than belly patch. Original failed source/fit preserved. Candidate only, full-size and native review pending."
+}

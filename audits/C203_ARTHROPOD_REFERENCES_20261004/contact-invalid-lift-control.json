@@ -1,0 +1,25 @@
+{
+  "status": "CONTROL_PASS",
+  "controls": [
+    {
+      "name": "missing observed socket refuses; no legacy fallback",
+      "status": "PASS"
+    },
+    {
+      "name": "extra observed socket refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "nonfinite observed socket refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "legacy insect does not acquire lift declaration",
+      "status": "PASS"
+    },
+    {
+      "name": "invalid lift declaration refuses before solving",
+      "status": "PASS"
+    }
+  ]
+}

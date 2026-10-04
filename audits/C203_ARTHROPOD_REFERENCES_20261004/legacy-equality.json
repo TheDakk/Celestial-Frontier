@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "byteIdentical": true,
+  "sha256": "42a4d6423c148dc645b6f362ebf8705c206a39a38fac44749d29e7595596aa0d",
+  "families": 14,
+  "legacyContactFixtures": 14,
+  "legacyContactOutcomes": 336,
+  "compactMyriapodDeclarations": 28
+}

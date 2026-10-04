@@ -1,0 +1,28 @@
+{
+  "name": "Fishing Cat",
+  "masterSha256": "1403ef342d66d3bedab9f9fe10766b0fbf994f61a6bdfc48212f81713879d50c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Dense dark spots over grey-brown body and facial stripes; thick short ringed tail and four separate feet. Some far upper limb remains obscured; spots remain distinct.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 164,
+      "y0": 341,
+      "x1": 1073,
+      "y1": 878
+    },
+    "margins": {
+      "left": 164,
+      "right": 180,
+      "top": 341,
+      "bottom": 375
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

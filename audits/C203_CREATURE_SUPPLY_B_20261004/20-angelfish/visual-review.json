@@ -1,0 +1,28 @@
+{
+  "name": "Angelfish",
+  "masterSha256": "2457139219d232d2e1c12e9781adde739de9f7a4086071e02df1d62c95ce7a22",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Complete disc body, tail, near pectoral fin and long dorsal/anal/pelvic extensions are visible. Strong blue/yellow vertical bands and pale blue edge stripes are present. Highly glossy metallic scale texture and unusually long fin extensions require identity/style scoring; far paired fins remain hidden. No inference of unseen roots.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 224,
+      "y0": 265,
+      "x1": 1029,
+      "y1": 955
+    },
+    "margins": {
+      "left": 224,
+      "right": 224,
+      "top": 265,
+      "bottom": 298
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "15-fishing-cat",
+  "name": "Fishing Cat",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-cd2beae9-332c-407b-af80-5b5bdbd38d80.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1403ef342d66d3bedab9f9fe10766b0fbf994f61a6bdfc48212f81713879d50c",
+  "bytes": 1415453,
+  "promptSha256": "6a30500e4a38f1b2af49d928a69cbbd2f08e130d13f2084f92efeaa842fedced",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

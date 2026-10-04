@@ -1,0 +1,14 @@
+{
+  "id": "11-beaver",
+  "name": "Beaver",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-2ea1f32d-7779-48b2-8740-ca7ccc3e4450.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ab4d573a75c83f573de488ad3b38828a5d930af6fe1480e560cd8c98d2bd5381",
+  "bytes": 1335187,
+  "promptSha256": "69633cb45eee171bb640756a8f22675f47af45b5c7f20bc97729feffe014e455",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

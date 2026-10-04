@@ -1,0 +1,113 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "near-hand",
+      "joint": "armNearHand",
+      "owner": "near-hand"
+    },
+    {
+      "region": "far-hand",
+      "joint": "armFarHand",
+      "owner": "far-hand"
+    },
+    {
+      "region": "near-foot",
+      "joint": "legNearFoot",
+      "owner": "near-foot"
+    },
+    {
+      "region": "far-foot",
+      "joint": "legFarFoot",
+      "owner": "far-foot"
+    },
+    {
+      "region": "near-shin",
+      "joint": "legNearKnee",
+      "owner": "near-shin"
+    },
+    {
+      "region": "far-shin",
+      "joint": "legFarKnee",
+      "owner": "far-shin"
+    },
+    {
+      "region": "near-thigh",
+      "joint": "legNearHip",
+      "owner": "near-thigh"
+    },
+    {
+      "region": "far-thigh",
+      "joint": "legFarHip",
+      "owner": "far-thigh"
+    },
+    {
+      "region": "near-forearm",
+      "joint": "armNearHand",
+      "owner": "near-hand"
+    },
+    {
+      "region": "far-forearm",
+      "joint": "armFarHand",
+      "owner": "far-hand"
+    },
+    {
+      "region": "near-upper-arm",
+      "joint": "armNearElbow",
+      "owner": "near-upper-arm"
+    },
+    {
+      "region": "far-upper-arm",
+      "joint": "armFarElbow",
+      "owner": "far-upper-arm"
+    },
+    {
+      "region": "jaw",
+      "joint": "jaw",
+      "owner": "jaw"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "neck",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    41096,
+    28399,
+    10377,
+    9434,
+    26054,
+    19828,
+    26314,
+    3773,
+    57510,
+    4284,
+    6879,
+    21840,
+    17467,
+    58113
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "7b78596cd10eee4be9b82b1b3eba91756d8ef3273b96ae53b1bd00e4738512e0",
+  "intake": {
+    "erodedPixels": 6563,
+    "despilledPixels": 3099,
+    "unresolvedEdgePixels": 79
+  },
+  "remainderPart": "body"
+}

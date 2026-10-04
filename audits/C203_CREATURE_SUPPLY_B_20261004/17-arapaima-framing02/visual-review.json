@@ -1,0 +1,29 @@
+{
+  "name": "Arapaima",
+  "masterSha256": "df335aeff1080374441505501bacf45284c15a709f5ffa0144061a465ed66226",
+  "method": "Full native original inspection by Codex",
+  "observation": "Full-size successor retains complete rounded tail, posterior dorsal/anal fins, near pectoral/pelvic fins, continuous scales and red-orange rear edging with visibly broader side margins. Far paired fins remain hidden and metallic scale gloss remains held. It is smaller but does not fully meet the stronger central-60% prompt target; unchanged minimum8% framing is measured separately.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 164,
+      "y0": 498,
+      "x1": 1087,
+      "y1": 755
+    },
+    "margins": {
+      "left": 164,
+      "right": 166,
+      "top": 498,
+      "bottom": 498
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "predecessor": "audits/C203_CREATURE_SUPPLY_B_20261004/17-arapaima/master.png",
+  "scope": "Framing-only source successor, all anatomical/style holds persist; no rig/native/gallery acceptance"
+}

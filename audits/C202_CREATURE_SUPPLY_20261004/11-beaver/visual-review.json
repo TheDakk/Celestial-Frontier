@@ -1,0 +1,28 @@
+{
+  "name": "Beaver",
+  "masterSha256": "ab4d573a75c83f573de488ad3b38828a5d930af6fe1480e560cd8c98d2bd5381",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Broad flattened scaly paddle tail, rounded brown body, orange incisors and four distinct feet. Far ear concealed and rear webbing not plainly readable; candidate requires anatomy scoring.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 164,
+      "y0": 396,
+      "x1": 1065,
+      "y1": 843
+    },
+    "margins": {
+      "left": 164,
+      "right": 188,
+      "top": 396,
+      "bottom": 410
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

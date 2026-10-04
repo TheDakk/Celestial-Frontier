@@ -1,0 +1,46 @@
+{
+  "schema": "cf.c203-source-observed-authoring/v1",
+  "masterSha256": "73db555f6f0465d134f9f5864e0e30a67774ee7845b4970e34ab634477974b68",
+  "fullSizeInspected": true,
+  "observedWalkingChains": 6,
+  "observedAntennae": 2,
+  "sourcePixelsChanged": 0,
+  "method": "Manual contour authoring on exact targeted edit. Four newly observed hind-leg owners and actual new hind knees/feet; unchanged body/front-middle-leg contours reviewed against the new source and retained from its own exact edit target.",
+  "sameSpeciesPredecessor": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets",
+  "retainedReviewedPartIds": [
+    "front-far-lower",
+    "middle-far-lower",
+    "front-near-lower",
+    "middle-near-lower",
+    "front-far-upper",
+    "middle-far-upper",
+    "front-near-upper",
+    "middle-near-upper",
+    "antenna-far",
+    "antenna-near",
+    "mouth",
+    "head",
+    "abdomen-rim",
+    "abdomen-dorsal-rim",
+    "abdomen-ventral-rim",
+    "far-tegmen",
+    "near-tegmen",
+    "thorax",
+    "body"
+  ],
+  "modifiedPartIds": [
+    "hind-far-lower",
+    "hind-far-upper",
+    "hind-near-lower",
+    "hind-near-upper"
+  ],
+  "oldAuthoringSha256": "49e1d1929694c09104a963025d80b3470e86834940d681fc0104be079ed7dbbc",
+  "positiveChange": "Both natural enlarged hind femora now meet distinct bent knees; each spiny tibia folds forward with clear magenta separation. All six thoracic emergence-to-foot paths and two antennae remain visible.",
+  "holds": [
+    "Dorsal stage projection and true ground contact require full moving-paint/native review.",
+    "Glossy gold-green highlights require ART_KIT style review.",
+    "Small mouth edge is limited; no unseen hindwing declaration made.",
+    "Remainder/fringe ownership is not automatically relocated."
+  ],
+  "qualityAccepted": false
+}

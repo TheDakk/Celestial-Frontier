@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tahr",
+  "masterSha256": "9839c4ac570575823dd0c5b7bb835917cdec4a1e23523964b282ce4fc20067d5",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

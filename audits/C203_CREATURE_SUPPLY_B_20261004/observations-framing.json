@@ -1,0 +1,148 @@
+[
+  {
+    "id": "17-arapaima-framing02",
+    "name": "Arapaima",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "df335aeff1080374441505501bacf45284c15a709f5ffa0144061a465ed66226",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 164,
+        "y0": 498,
+        "x1": 1087,
+        "y1": 755
+      },
+      "margins": {
+        "left": 164,
+        "right": 166,
+        "top": 498,
+        "bottom": 498
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 3,
+      "front": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "18-arowana-framing02",
+    "name": "Arowana",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "004b0861091dbd2770f37631892332c39090dd78456bec6d36218bc3b53888bb",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 199,
+        "y0": 467,
+        "x1": 1069,
+        "y1": 767
+      },
+      "margins": {
+        "left": 199,
+        "right": 184,
+        "top": 467,
+        "bottom": 486
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "rear": 3,
+      "front": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "22-marlin-framing02",
+    "name": "Marlin",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "f2519935ed58fc4d2abd74ceb861de3567ebf8b16f6d2177bf1257aead18cd54",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 231,
+        "y0": 445,
+        "x1": 1059,
+        "y1": 788
+      },
+      "margins": {
+        "left": 231,
+        "right": 194,
+        "top": 445,
+        "bottom": 465
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "23-swordfish-framing02",
+    "name": "Swordfish",
+    "family": "fish",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "4f199d6aaae2ccc38c67b2154d82705727a8f3f35c807f7511b971daf5d18417",
+    "keyed": true,
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 213,
+        "y0": 448,
+        "x1": 1061,
+        "y1": 771
+      },
+      "margins": {
+        "left": 213,
+        "right": 192,
+        "top": 448,
+        "bottom": 482
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  }
+]

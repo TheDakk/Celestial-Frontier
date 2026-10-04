@@ -18,6 +18,7 @@ export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['ro
  const {bindingHash,...body}=input;need(await hashJSON(body)===bindingHash,'binding hash');
  need(input.recordRecipeHash===recipeHash,'record binding');
  need(probe.recordRecipeHash===record.recipeHash&&probe.bindingHash===bindingHash,'probe binding');
+ need(!input.paintSkin?.semanticOwnership,'semantic field must retain original source owners; use semantic field finisher');
  const skin=input.paintSkin,source=skin.vertices,owners=new Map(input.parts.map(p=>[p.id,p])),fields=new Map(skin.parts.map(p=>[p.id,p]));
  need(source.length<=40000&&owners.size===input.parts.length&&fields.size===skin.parts.length&&owners.size===fields.size,'source inventory');
  need(input.parts.every(p=>Object.hasOwn(record.landmarks,p.joint))&&[...fixedJoints,...shapeJoints,...contactEndpoints].every(j=>Object.hasOwn(record.landmarks,j)),'unknown joint');

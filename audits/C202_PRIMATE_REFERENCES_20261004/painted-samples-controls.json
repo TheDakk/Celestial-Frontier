@@ -1,0 +1,48 @@
+{
+  "schema": "cf.c202-painted-hand-controls/v1",
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "17-gorilla-observed-joins",
+      "joint": "armNearHand",
+      "positiveTexels": 6739,
+      "translationDelta": 313.50007474422466,
+      "expectedDelta": 313.5,
+      "missingSurfaceRejected": true,
+      "clearanceAndPenetrationControls": true,
+      "facingYInvariant": true
+    },
+    {
+      "id": "17-gorilla-observed-joins",
+      "joint": "armFarHand",
+      "positiveTexels": 8662,
+      "translationDelta": 313.50007474422455,
+      "expectedDelta": 313.5,
+      "missingSurfaceRejected": true,
+      "clearanceAndPenetrationControls": true,
+      "facingYInvariant": true
+    },
+    {
+      "id": "15-howler-observed-joins",
+      "joint": "armNearHand",
+      "positiveTexels": 6350,
+      "translationDelta": 313.5,
+      "expectedDelta": 313.5,
+      "missingSurfaceRejected": true,
+      "clearanceAndPenetrationControls": true,
+      "facingYInvariant": true
+    },
+    {
+      "id": "15-howler-observed-joins",
+      "joint": "armFarHand",
+      "positiveTexels": 3488,
+      "translationDelta": 313.5,
+      "expectedDelta": 313.5,
+      "missingSurfaceRejected": true,
+      "clearanceAndPenetrationControls": true,
+      "facingYInvariant": true
+    }
+  ],
+  "helperSha256": "0f40c7222da68c5cab1f3189a193b87445a2e00ebc20266b1ebd3ad590daef2a",
+  "runtimeChanged": false
+}

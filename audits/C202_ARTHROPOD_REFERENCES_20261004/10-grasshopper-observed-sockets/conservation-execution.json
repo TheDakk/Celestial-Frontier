@@ -1,0 +1,12 @@
+{
+  "args": [
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/verify-and-preview.mjs",
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets",
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01",
+    "01"
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "helperSha256": "650947c4a0ff684398d07482810f6d733ece7585881d4bb3b0dcffa377f8c33c",
+  "native": false
+}

@@ -1,0 +1,14 @@
+{
+  "id": "03-black-bear",
+  "name": "Black Bear",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-fde86449-8f14-46ce-a199-f6a6cee70332.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e9681ad382082d2c9402e97a51ae4549b40ffea3ad25616d9c0bcca1ccd3bfb7",
+  "bytes": 1359664,
+  "promptSha256": "222b4a60d7b4fd1aac1f2aae3d0e8c9b707027d3c9abf0eef2ab85661788ab09",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

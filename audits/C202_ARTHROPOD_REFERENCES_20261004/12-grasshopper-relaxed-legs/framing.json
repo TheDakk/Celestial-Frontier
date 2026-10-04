@@ -1,0 +1,21 @@
+{
+  "masterSha256": "199ff589b83595a79b82e5bee7948d82c803636d1af2550fa1319f4cff77f28e",
+  "status": "PASS_FRAMING_ONLY",
+  "bounds": {
+    "x0": 183,
+    "y0": 391,
+    "x1": 1113,
+    "y1": 885
+  },
+  "margins": {
+    "left": 183,
+    "right": 140,
+    "top": 391,
+    "bottom": 368
+  },
+  "required": {
+    "x": 101,
+    "y": 101
+  },
+  "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+}

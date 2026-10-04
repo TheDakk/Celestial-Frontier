@@ -42,7 +42,11 @@ World path-following, actual S-neck recruitment/constriction and Bear guardian s
 
 The local native proof’s ground presentation now fits the complete published moving envelope against the viewport around the unchanged source ground registration, including measured camera extrema and a5% presentation reserve. An optional groundViewport input leaves legacy helper callers unchanged. The tighter ground reduction is shared across roles to preserve the original combatantScale mass ratios; height and foot-offset receipts use the final scale. Water/air fitting, motion, runtime solver, viewport/habitat gates, source pixels and numerical CPU limits are unchanged.21 focused geometry controls pass, including retained clipping and unequal-role-size negative controls. Both superseded native attempts and the expected-value test correction remain in the packet. All accepted prior bindings and S2 inputs are unchanged. The wide battle view is small, delivered safe margins/fringe miss the prompt, and family poses remain stylized; Dakk retains full-film art acceptance. No production roster or PR43 claim.
 
-**Compact Centipede anatomy — matches code 2026-09-23.** Explicit myriapod presence may declare 14 walking leg pairs plus one ultimate pair. The `myriapod-rigid-trunk-v1` variant has 63 real joints, 28 two-link walking chains and 31 source-authored fixed sockets; sockets add no pose channels. It retains one rigid painted trunk rather than the legacy eight-segment wave. Admission and motion use the same socket origins, with exact inventory, finite-coordinate and source-alpha validation. The original 64-joint/32-part ceilings and numerical motion/contact bounds remain unchanged. Records without the explicit count keep the legacy model. The packet-local compiler assigns observed proximal-limb and antenna/mandible influences within 32 actual texture parts, preserving raster, UVs, topology, inherited pins and the standard solver profile.
+**Observed insect sockets and compact myriapod anatomy — matches code 2026-10-04.** An insect may explicitly supply exactly six source-observed knee attachment sockets in `geometry.fixedAttachments`; `insect-observed-sockets-v1` retains the existing 21 joints, six two-link legs, numerical limits and action library. Each upper leg rotates around its actual visible emergence instead of the shared thorax centre. Missing, extra, nonfinite, off-source or substituted sockets refuse. Insects without this declaration retain the exact legacy parent-pivot behavior.
+
+Explicit myriapod presence declares walking leg pairs and either zero or one specialized ultimate pair. Zero creates no invented ultimate joint, socket, painter feature, secondary chain or motion track. The existing 14-walking-plus-one-ultimate `myriapod-rigid-trunk-v1` model remains 63 joints, 28 walking chains and 31 sockets; a truthful 13-walking/zero-ultimate declaration is 57 joints, 26 chains and 27 sockets. The formula `5 + 4*walkingLegPairs + 2*ultimateLegPairs` still refuses above 64. Socket, source-alpha, joint-limit, 32-part and motion/contact bounds are unchanged. The compact body is rigid; it does not claim the legacy segmented wave. Records without explicit counts retain the legacy model and existing rigs/actions.
+
+The C202 candidates are not qualified references. The new bent-knee Beetle passes 12/13 unchanged static actions but solver-owned hit travel exceeds the existing compression bound; stage-owned hit contact alone passes. Grasshopper retains source-pose/contact failures, and its bent-knee repaint hides required chains. The three explicitly named Polyxenus source attempts do not expose a truthful 13-pair inventory and remain held. A canonical scolopendrid centipede with 20 walking plus one ultimate pair requires 87 current-model joints: no leg deletion, species relabeling or cap increase is authorized by these opt-ins. Source/model evidence is in `audits/C202_ARTHROPOD_REFERENCES_20261004`; synthetic topology tests and exact source conservation do not replace moving-paint/native qualification.
 
 Its explicit `contactStance.swingLift: 'toward-socket'` convention retracts both projected leg rows toward their source sockets with the existing swing amplitude; omission retains screen-up swing. The shared painted-contact selector preserves runtime normalized per-corner arithmetic and strict tie ordering, and the intake writer uses the same selected vertex for contact locks. The independent static paint observer is unchanged. This repairs a pixel-sum/normalized-sum tie mismatch without editing accepted bindings or loosening painted-point tolerances.
 
@@ -420,6 +424,23 @@ including attachments whose bones are siblings. Skin topology and bone ancestry 
 relationships. Distinct limbs and distal limb/body overlaps remain separate; coincident image
 coordinates do not authorize welding them. This replaces the root-plane and ancestry-only rules.
 `source-join-continuity.mjs` independently checks these boundaries in the actual published meshes.
+
+**Semantic render-part packing — matches code 2026-10-04.** Explicit continuous visible surfaces
+may retain up to 64 independently authored semantic ownership regions while grouping adjacent,
+same-depth regions along a connected anatomical chain into at most 32 render parts.
+`semantic-part-packing.mjs` binds the original source RGBA (including transparent RGB), semantic
+labels and complete region/group inventory; `build-paint-skin.mjs` derives ownership edges and
+weights from those original regions, with separate grouped atlas ownership for drawing.
+Packing changes neither source pixels nor the original semantic field vertices, triangles or
+weights. The explicit field finisher then applies the existing bounded smoothing and 4-pass,
+4-sweep, 0.35-target ARAP profile while retaining every semantic joint influence. The legacy
+observed-surface splitter refuses this metadata because it would replace semantic weights
+with coarser render-part owners. The 32-part/64-joint budgets, source-alpha, fold, strain and
+contact checks remain unchanged. Thirteen focused controls include exact default-path parity,
+38-to-32 source reconstruction and per-joint published-paint influence, mutation and omission
+refusals. This compiler does not confer fit acceptance: the first Cuttlefish candidates compile
+but remain statically refused, and the Octopus still requires its corrected full native sequence.
+Current evidence: `audits/C202_CEPHALOPOD_REFERENCES_20261004/README.md`.
 
 `paw-contact-pins.mjs` samples the lowest nonzero-alpha texel in each original paw column, including
 fringe, and pins every supporting field vertex to that paw's unchanged transform. Conflicting paw
@@ -909,3 +930,13 @@ Painted insect feeding (matches code 2026-09-27): `motion/grounded-insect.ts` se
 PNG card/atlas codec ownership (matches code2026-09-27): `png-stream.ts` waits for both readable EOF and native writer closure, releases reader/writer locks and propagates failures through both owners. PNG/straight-alpha bytes are unchanged. `audits/I5_PNG_STREAM_20260927` records outcome tests, two actual mutants and native parity; the I5 Back transient remains uncertified.
 
 Card raster scratch (matches code2026-09-27): `RasterScratch` owns only fresh private padding/palette/proportion/rotation buffers and detaches their backing stores after synchronous rendering on engines with ArrayBuffer.transfer. Public composite outputs, caller masters/labels/masks and returned thumbnails remain intact. Older engines preserve GC fallback and exact output. Native reproduction shows the old post-GC three-buffer excess7,077,888bytes eliminated;120pre-change rasters remain byte-identical. Evidence:audits/I5_CARD_SCRATCH_20260927; certification remains separate.
+
+### Painted trot with additive idle — matches code 2026-10-04
+
+Painted, grounded quadrupeds with an observed leg below the existing3% rest-slack diagnostic use a fixed0.25 torso/root excursion profile for trot. This authors a quieter trunk while retaining full idle, limb, head and tail tracks, easing, phase times and runtime limits. Unpainted cards, non-trot actions and legs at/above3% retain their prior curves. The real placement/publication owners still admit or refuse each source; the profile is not automatic acceptance. Both retained Red Fox placements now admit positive cadence. An earlier runtime lattice-search prototype was rejected for4.7-second setup cost; the fixed profile takes0.2–1.3ms in the retained unthrottled Node diagnostic. Evidence: `audits/C203_NATIVE_HOLDS_20261004/{rejected-lattice.json,fast-profile-timing.json}`.
+
+### Observed insect reaction cadence — matches code 2026-10-04
+
+The explicit six-socket insect model retracts swinging feet toward their observed socket and takes two complete source steps for its existing hit and tame translations, including the tame return blend. Body travel, phase times, total distance, amplitudes and numerical guards stay unchanged. This is a fixed anatomy-model convention, not a reach-dependent step count. Legacy undeclared insects, other families and existing compact myriapods keep their previous behavior. The retained Beetle passes13 static actions plus full presentation; native and full-size qualification remain separate. Evidence and negative controls: `audits/C203_ARTHROPOD_REFERENCES_20261004`.
+
+Full-size review still holds the new primate/arthropod references and Snow Petrel. Static success is not admission.

@@ -1,0 +1,354 @@
+{
+  "schema": "cf.c198-actual-rig-software-review/v1",
+  "status": "PASS_OFFLINE",
+  "scope": "Actual loaded CreatureRig positions equal independent publication; source-size software rendering only, no native or GPU acceptance",
+  "rows": [
+    {
+      "action": "idle",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 569.761298187077,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 2563.9258418418467,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 2848.806490935385,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "idle",
+      "ms": 569.761298187077,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "idle-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 206.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 928.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 1032,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "faint",
+      "ms": 206.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "faint-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:trot",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-trot-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:trot",
+      "ms": 186.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-trot-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:trot",
+      "ms": 838.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-trot-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:trot",
+      "ms": 932,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-trot-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "approach:trot",
+      "ms": 186.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "approach-trot-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "hit-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 192.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "hit-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 865.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "hit-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 962,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "hit-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "hit",
+      "ms": 192.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "hit-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "cast",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "cast-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "cast",
+      "ms": 224.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "cast-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "cast",
+      "ms": 1009.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "cast-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "cast",
+      "ms": 1122,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "cast-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "cast",
+      "ms": 224.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "cast-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "tame",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "tame-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "tame",
+      "ms": 230.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "tame-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "tame",
+      "ms": 1036.8,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "tame-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "tame",
+      "ms": 1152,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "tame-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "tame",
+      "ms": 230.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "tame-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee",
+      "ms": 203.73333333333335,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee",
+      "ms": 916.8,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee",
+      "ms": 1018.6666666666666,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "melee",
+      "ms": 203.73333333333335,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 31,
+      "image": "melee-0p2.png",
+      "publishedPartParity": "byte-exact"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/fit01/record.json",
+      "sha256": "db2e11d8cacfa045c2c4ac247f05f310d76f7c25a80b8317866436d5ee4c30e6"
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/fit01/binding.json",
+      "sha256": "d2cbfdeafd37392addc691a38304d957b806463fbfdc218e4ab2f8b798e4569b"
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/fit01/parts/atlas/c202-red-fox-observed-carpus.png",
+      "sha256": "31c58b37048df566dbbc7c8e0e0a776979826e078b646f3f26ccefbe812ccebc"
+    },
+    {
+      "path": "audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/master.png",
+      "sha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/review-rig.mjs",
+      "sha256": "e723314348f707ec2e8eb13b955963fe09246c43856d9b2599c35e4fad3d89da"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

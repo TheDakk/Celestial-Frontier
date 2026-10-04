@@ -1,0 +1,28 @@
+{
+  "name": "Elk",
+  "masterSha256": "81c93eb6f92bd29bb7df5dd5bfc2f494a33dd420841bb55889c312ff5667b45e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four cloven feet, short rump tail and complete branching antlers. Near ear clear; far ear/root partly occluded by antlers/head. Far forelimb emerges beneath chest rather than exposing an entire proximal joint. Head is shallow three-quarter while torso is side-on.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 267,
+      "y0": 227,
+      "x1": 996,
+      "y1": 989
+    },
+    "margins": {
+      "left": 267,
+      "right": 257,
+      "top": 227,
+      "bottom": 264
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

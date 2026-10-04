@@ -1,0 +1,29 @@
+{
+  "name": "Arowana",
+  "masterSha256": "004b0861091dbd2770f37631892332c39090dd78456bec6d36218bc3b53888bb",
+  "method": "Full native original inspection by Codex",
+  "observation": "Full-size successor retains both complete forward barbels, tail and visible near fins with broader margins. Far paired roots remain hidden and glossy orange highlights remain an art hold. It is smaller but does not fully meet the stronger central-60% prompt target; unchanged minimum8% framing is measured separately.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 199,
+      "y0": 467,
+      "x1": 1069,
+      "y1": 767
+    },
+    "margins": {
+      "left": 199,
+      "right": 184,
+      "top": 467,
+      "bottom": 486
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "predecessor": "audits/C203_CREATURE_SUPPLY_B_20261004/18-arowana/master.png",
+  "scope": "Framing-only source successor, all anatomical/style holds persist; no rig/native/gallery acceptance"
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c202-source-observation/v1",
+  "source": "audits/C202_CEPHALOPOD_REFERENCES_20261004/02-cuttlefish-source03/master.png",
+  "sourceSha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033",
+  "fullSizeInspected": true,
+  "observedShortArmTips": 8,
+  "observedFeedingTentacles": 2,
+  "observedEyes": 2,
+  "observedSiphon": true,
+  "qualityAccepted": false,
+  "holds": [
+    "Proximal arm crown has normal shallow webbing; only observed emergence boundaries authored.",
+    "The source is glossy relative to the ideal paint reference; scoring still required."
+  ]
+}

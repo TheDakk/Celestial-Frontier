@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-753c30d5-483a-4bab-948b-15db9414a3d6.png",
+  "masterSha256": "1f852cd42b9790e03a332c36d97b9e08fbaea98ee6c759010a2ef877dbbba16f",
+  "promptSha256": "f07e9331553e8abeccfc2233f600ce7d00fc256026567c6e7129fc9f51bdc47d",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "fullSizeReview": "Complete four-legged source; near forelimb still near-collinear, requested natural elbow bend not achieved. Not a source repair admission."
+}

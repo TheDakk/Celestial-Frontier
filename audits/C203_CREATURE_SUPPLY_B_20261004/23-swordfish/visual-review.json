@@ -1,0 +1,28 @@
+{
+  "name": "Swordfish",
+  "masterSha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Complete long flattened bill, crescent tail, tall dorsal fin and visible pectoral/anal fin projections are present on a continuous blue/silver body. Both lateral margins are visibly narrow and require refusal measurement. Small rear finlet-like projections and large underside fin near pectoral root are anatomical ambiguities; no full correct-fin-count claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 70,
+      "y0": 354,
+      "x1": 1199,
+      "y1": 817
+    },
+    "margins": {
+      "left": 70,
+      "right": 54,
+      "top": 354,
+      "bottom": 436
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

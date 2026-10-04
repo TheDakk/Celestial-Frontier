@@ -1,0 +1,14 @@
+{
+  "id": "06-hippopotamus",
+  "name": "Hippopotamus",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-cdbc1ebc-b38d-4d4c-b336-927926243b17.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d55a35d455b0cb350e28089b8a2441196db769d627cc711470f1d3bdee391d3b",
+  "bytes": 1476784,
+  "promptSha256": "a3331dbdf36eb5c625415fa4d1e42e628270883c1840bc4a845a6e43be192225",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

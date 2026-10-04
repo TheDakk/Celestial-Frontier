@@ -1,0 +1,34 @@
+import fs from 'node:fs';
+import {expect,it} from 'vitest';
+import {compileBodyCard} from './body-card.js';
+import {withPaintedContactSupports} from './painted-supports.js';
+import {buildTimeline,buildActionTimeline,sampleTimeline} from './timeline.js';
+import {groundedQuadrupedAction} from './grounded-quadruped.js';
+import {QUADRUPED_ACTIONS} from './actions.js';
+import {sampleClip,addPose} from '../battle2/choreography.js';
+import {createFamilyContactSolver,observedContactSupports} from '../creature-rig-contact.js';
+import {measureLayeredStanceReach} from '../creature-layered-stance-reach.js';
+const root=new URL('../../../../../../',import.meta.url);
+it.each(['original-fit','fit01'])('admits actual layered Red Fox placement while preserving gait expression (%s)',name=>{
+ const fit='audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/'+name,read=(f:string)=>JSON.parse(fs.readFileSync(new URL(fit+'/'+f,root),'utf8')),record=read('record.json'),binding=read('binding.json'),base=compileBodyCard(record,record.genome),card=withPaintedContactSupports(base,record,binding),supports=observedContactSupports(record,binding),solver=createFamilyContactSolver(record,supports);
+ const before=buildActionTimeline(card,QUADRUPED_ACTIONS['approach:trot']!,5),idle=buildTimeline(card,'idle',5),after=buildTimeline(card,'approach',5),ms=46.6;
+ const retained=addPose(sampleClip({source:'timeline',timeline:idle},idle.durationMs*.46875),sampleClip({source:'timeline',timeline:before},ms));
+ expect(()=>solver.resolve(retained,{actionId:before.actionId,elapsedMs:ms,durationMs:before.durationMs,weight:1,realm:card.realm,travel:'stage',stageDisplacement:0})).toThrow('exceeds scale compression bound');
+ const placement=measureLayeredStanceReach(record,supports,.12,card);expect(placement.applicable).toBe(true);expect(placement.admitted).toBeGreaterThan(0);expect(placement.poseSamples).toBe(3872);
+ expect(after.notes.some(n=>n.startsWith('grounded-quadruped:layered-trot-gain='))).toBe(true);
+ expect(buildTimeline(base,'approach',5)).toEqual(before);expect(buildTimeline(base,'idle',5)).toEqual(idle);
+ for(const[j,keys]of Object.entries(before.tracks))if(!['root','pelvis','spine','chest'].includes(j))expect(after.tracks[j]).toEqual(keys);
+ expect(after.phases).toEqual(before.phases);expect(after.durationMs).toBe(before.durationMs);expect(after.limitsRad).toEqual(before.limitsRad);expect(after.secondary).toEqual(before.secondary);expect(after.deform).toEqual(before.deform);
+ // Returning the old torso curve is a real negative control above; the positive
+ // check runs the placement owner over every idle/gait combination and cadence.
+},30_000); // Full3872-pose placement grid plus canonical author, under parallel profile load.
+
+it('reuses exactly equal idle pose geometry while retaining pose-sensitive authoring',()=>{
+ const fit='audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/fit01',read=(f:string)=>JSON.parse(fs.readFileSync(new URL(fit+'/'+f,root),'utf8')),record=read('record.json'),binding=read('binding.json'),card=withPaintedContactSupports(compileBodyCard(record,record.genome),record,binding),action=QUADRUPED_ACTIONS['approach:trot']!,base=buildActionTimeline(card,action,5),idle=buildTimeline(card,'idle',5);
+ let calls=0;const sample:typeof sampleTimeline=(tl,ms)=>{calls++;return sampleTimeline(tl,ms);},compile=(a:typeof action)=>buildActionTimeline(card,a,5);
+ const first=groundedQuadrupedAction(card,action,base,sample,compile,idle);expect(calls).toBeGreaterThan(32);calls=0;
+ const equal=groundedQuadrupedAction(card,action,{...base,seed:123,hash:'metadata-only'},sample,compile,{...idle,seed:123,hash:'metadata-only'});
+ expect(equal).toBe(first);expect(calls).toBe(32);calls=0;
+ const changed={...idle,root:{...idle.root,dy:idle.root.dy.map(k=>({...k,value:k.value-.0001}))}};
+ groundedQuadrupedAction(card,action,base,sample,compile,changed);expect(calls).toBeGreaterThan(32);
+},30_000);

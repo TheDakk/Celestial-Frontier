@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Peccary",
+  "masterSha256": "14ce2f1cb0ff8404a4c9e503aec15c7a15e154703bb797d6098392b7f8808da6",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

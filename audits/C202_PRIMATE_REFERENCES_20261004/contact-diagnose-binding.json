@@ -1,0 +1,11 @@
+{
+  "source": "port/v2/apps/game/src/creature-rig-contact.ts",
+  "sha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985",
+  "unchanged": true,
+  "replacement": {
+    "from": "throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' exceeds scale compression bound')",
+    "to": "throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' exceeds scale compression bound '+JSON.stringify({compression,shift,bound:scaleLength*.08,pass,chains:activeChains.map((c,i)=>({id:c.id,root:transformPoint(matrices[c.hip],c.root),target:contacts[i].endpointTarget,max:c.chain.lengths.upper+c.chain.lengths.lower,offset:c.offset}))}))"
+  },
+  "exitCode": 0,
+  "native": false
+}

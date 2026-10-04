@@ -1,0 +1,28 @@
+{
+  "name": "Kingfisher",
+  "masterSha256": "6a54c3e8a473f6cd7bf9830e1e5f4484d3b0bf70f8c188681228dffca443a0fb",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two orange feet with distinguishable toes, attached near folded wing, short tail and long pointed bill are visible. Blue crown/wing speckles and orange breast/white throat markings are present. Far wing/root is hidden; eye is large and glossy, requiring natural-style scoring. Folded primaries overlap belly/tail and do not establish independent far-wing geometry.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 266,
+      "y0": 344,
+      "x1": 1047,
+      "y1": 896
+    },
+    "margins": {
+      "left": 266,
+      "right": 206,
+      "top": 344,
+      "bottom": 357
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

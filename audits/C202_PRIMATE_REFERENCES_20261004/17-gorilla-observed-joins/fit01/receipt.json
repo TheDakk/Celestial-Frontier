@@ -1,0 +1,100 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "c202-gorilla-observed-guide",
+    "parts": 16,
+    "atlasSize": {
+      "width": 639,
+      "height": 1711
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "17f7cbde575069c66bc7257d0bdd69bd2b9f9e7f9e35c1f6f951205e8f9cae37",
+    "recordRecipeHash": "f2889b98f63bf7e32a61887097b65802bc294bddba00d324f5b134b4d1dcfa19",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "17f7cbde575069c66bc7257d0bdd69bd2b9f9e7f9e35c1f6f951205e8f9cae37",
+      "atlasSha256": "d9b9f5af5f1b035d75ab923f7f7ffae2bf0af159b705fcaf6a8dc963ef5e2d0a",
+      "parts": 16,
+      "comparedChannels": 2471844,
+      "changedChannels": 0
+    },
+    "vertices": 1652,
+    "partVertices": 2590,
+    "parts": 16,
+    "leaves": 724,
+    "triangles": 3042,
+    "ownershipEdges": 3738,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarFoot",
+        "part": "far-foot",
+        "vertex": 40,
+        "distancePx": 3.605551275464005,
+        "supports": [
+          270
+        ]
+      },
+      {
+        "joint": "legNearFoot",
+        "part": "near-foot",
+        "vertex": 35,
+        "distancePx": 1.9999999999999871,
+        "supports": [
+          166
+        ]
+      }
+    ],
+    "sourceBindingHash": "ed1efc7bb8d2c3ad93ba4569036ee7d6816d60f995debad5806e2464a2c36935",
+    "sourceVertices": 1652,
+    "vertices": 1781,
+    "sharedSupports": 445,
+    "pins": 662,
+    "independentSurfaceParts": 16,
+    "sourceJoins": 14,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 5,
+    "independentExcludedBoundaries": 6,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "near-upper-arm",
+        "neck"
+      ],
+      [
+        "far-upper-arm",
+        "neck"
+      ],
+      [
+        "jaw",
+        "neck"
+      ],
+      [
+        "far-upper-arm",
+        "jaw"
+      ],
+      [
+        "body",
+        "near-forearm"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "f2889b98f63bf7e32a61887097b65802bc294bddba00d324f5b134b4d1dcfa19",
+  "bindingHash": "8bb0bd1577efdb96403ddd86631a93e22c619fb6ad52cb54eff11bb5851bd90a",
+  "masterSha256": "78da7b6d2ad46eaa6a452cdb71a2c08ce75f898be89e5c234ff6ff72f88fc3a5",
+  "manualAuthoring": true,
+  "nativeAcceptance": false,
+  "observedBoundaryAuthoring": "../observed-boundaries.json"
+}

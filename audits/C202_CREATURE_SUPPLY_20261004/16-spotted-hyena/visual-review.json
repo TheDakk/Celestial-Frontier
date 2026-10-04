@@ -1,0 +1,28 @@
+{
+  "name": "Spotted Hyena",
+  "masterSha256": "bce5a8e2772d2d90f9d427097b9d9f5c2bb0e9df13b9cb8edd030c63a2cbf6a5",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Heavy front shoulders, sloping back, rounded ears, spotted sandy coat, dark muzzle and short bushy tail. Four complete separated feet; dark spots preserved across body.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 219,
+      "y0": 290,
+      "x1": 1066,
+      "y1": 941
+    },
+    "margins": {
+      "left": 219,
+      "right": 187,
+      "top": 290,
+      "bottom": 312
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

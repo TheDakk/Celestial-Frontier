@@ -1,0 +1,252 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "eye-near",
+      "joint": "eyeNear",
+      "owner": "eye-near"
+    },
+    {
+      "region": "eye-far",
+      "joint": "eyeFar",
+      "owner": "eye-far"
+    },
+    {
+      "region": "siphon",
+      "joint": "siphon",
+      "owner": "siphon"
+    },
+    {
+      "region": "arm0-tip",
+      "joint": "arm0Seg2",
+      "owner": "arm0-tip"
+    },
+    {
+      "region": "arm0-middle",
+      "joint": "arm0Seg1",
+      "owner": "arm0-middle"
+    },
+    {
+      "region": "arm0-base",
+      "joint": "arm0Seg0",
+      "owner": "arm0-base"
+    },
+    {
+      "region": "arm1-tip",
+      "joint": "arm1Seg2",
+      "owner": "arm1-tip"
+    },
+    {
+      "region": "arm1-middle",
+      "joint": "arm1Seg1",
+      "owner": "arm1-middle"
+    },
+    {
+      "region": "arm1-base",
+      "joint": "arm1Seg0",
+      "owner": "arm1-base"
+    },
+    {
+      "region": "arm2-tip",
+      "joint": "arm2Seg2",
+      "owner": "arm2-tip"
+    },
+    {
+      "region": "arm2-middle",
+      "joint": "arm2Seg1",
+      "owner": "arm2-middle"
+    },
+    {
+      "region": "arm2-base",
+      "joint": "arm2Seg0",
+      "owner": "arm2-base"
+    },
+    {
+      "region": "arm3-tip",
+      "joint": "arm3Seg2",
+      "owner": "arm3-tip"
+    },
+    {
+      "region": "arm3-middle",
+      "joint": "arm3Seg1",
+      "owner": "arm3-middle"
+    },
+    {
+      "region": "arm3-base",
+      "joint": "arm3Seg0",
+      "owner": "arm3-base"
+    },
+    {
+      "region": "arm4-tip",
+      "joint": "arm4Seg2",
+      "owner": "arm4-tip"
+    },
+    {
+      "region": "arm4-middle",
+      "joint": "arm4Seg1",
+      "owner": "arm4-middle"
+    },
+    {
+      "region": "arm4-base",
+      "joint": "arm4Seg0",
+      "owner": "arm4-base"
+    },
+    {
+      "region": "arm5-tip",
+      "joint": "arm5Seg2",
+      "owner": "arm5-tip"
+    },
+    {
+      "region": "arm5-middle",
+      "joint": "arm5Seg1",
+      "owner": "arm5-middle"
+    },
+    {
+      "region": "arm5-base",
+      "joint": "arm5Seg0",
+      "owner": "arm5-base"
+    },
+    {
+      "region": "arm6-tip",
+      "joint": "arm6Seg2",
+      "owner": "arm6-tip"
+    },
+    {
+      "region": "arm6-middle",
+      "joint": "arm6Seg1",
+      "owner": "arm6-middle"
+    },
+    {
+      "region": "arm6-base",
+      "joint": "arm6Seg0",
+      "owner": "arm6-base"
+    },
+    {
+      "region": "arm7-tip",
+      "joint": "arm7Seg2",
+      "owner": "arm7-tip"
+    },
+    {
+      "region": "arm7-middle",
+      "joint": "arm7Seg1",
+      "owner": "arm7-middle"
+    },
+    {
+      "region": "arm7-base",
+      "joint": "arm7Seg0",
+      "owner": "arm7-base"
+    },
+    {
+      "region": "tentacle0-tip",
+      "joint": "tentacle0Seg2",
+      "owner": "tentacle0-tip"
+    },
+    {
+      "region": "tentacle0-middle",
+      "joint": "tentacle0Seg1",
+      "owner": "tentacle0-middle"
+    },
+    {
+      "region": "tentacle0-base",
+      "joint": "tentacle0Seg0",
+      "owner": "tentacle0-base"
+    },
+    {
+      "region": "tentacle1-tip",
+      "joint": "tentacle1Seg2",
+      "owner": "tentacle1-tip"
+    },
+    {
+      "region": "tentacle1-middle",
+      "joint": "tentacle1Seg1",
+      "owner": "tentacle1-middle"
+    },
+    {
+      "region": "tentacle1-base",
+      "joint": "tentacle1Seg0",
+      "owner": "tentacle1-base"
+    },
+    {
+      "region": "fin-far",
+      "joint": "finFar",
+      "owner": "fin-far"
+    },
+    {
+      "region": "fin-near",
+      "joint": "finNear",
+      "owner": "fin-near"
+    },
+    {
+      "region": "fin-far-front",
+      "joint": "finFar",
+      "owner": "fin-far"
+    },
+    {
+      "region": "mantle",
+      "joint": "mantle",
+      "owner": "mantle"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    4997,
+    1721,
+    7711,
+    4669,
+    7642,
+    12663,
+    2794,
+    2689,
+    3202,
+    907,
+    1116,
+    1773,
+    1079,
+    1697,
+    2769,
+    1107,
+    2228,
+    2546,
+    1561,
+    2285,
+    1980,
+    2816,
+    3667,
+    4234,
+    3573,
+    6280,
+    7695,
+    9184,
+    3996,
+    2845,
+    10362,
+    2652,
+    2351,
+    9944,
+    23751,
+    59861,
+    38085,
+    27001
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "2ad459f87390cea38641fd87efcf613252724251266b42bce002b9a06c3f9104",
+  "intake": {
+    "erodedPixels": 7632,
+    "despilledPixels": 90,
+    "unresolvedEdgePixels": 2
+  },
+  "remainderPart": "body"
+}

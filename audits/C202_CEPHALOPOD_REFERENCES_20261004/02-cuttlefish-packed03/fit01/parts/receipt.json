@@ -1,0 +1,438 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "source-bound exact labels on authored keyer output; not painter draw stages",
+  "recordRecipeHash": "0b60e3bfdf54241decd72574a8999ec82e65552b3ae3d108126b5b275c7fc925",
+  "declarationHash": "97d8062d1ad5bf38a89c52ae2e211e1d65061bc6fa42327509f3c3a211df7bb7",
+  "paintedPixels": 287433,
+  "parts": [
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 275,
+        "y": 323,
+        "width": 719,
+        "height": 597
+      },
+      "pixels": 8971
+    },
+    {
+      "id": "eye-near",
+      "joint": "eyeNear",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 560,
+        "y": 357,
+        "width": 75,
+        "height": 94
+      },
+      "pixels": 4997
+    },
+    {
+      "id": "eye-far",
+      "joint": "eyeFar",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 813,
+        "y": 371,
+        "width": 35,
+        "height": 73
+      },
+      "pixels": 1721
+    },
+    {
+      "id": "siphon",
+      "joint": "siphon",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 684,
+        "y": 579,
+        "width": 74,
+        "height": 143
+      },
+      "pixels": 7477
+    },
+    {
+      "id": "arm0-tip",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 369,
+        "y": 489,
+        "width": 112,
+        "height": 105
+      },
+      "pixels": 4669
+    },
+    {
+      "id": "arm0-middle",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 454,
+        "y": 492,
+        "width": 136,
+        "height": 98
+      },
+      "pixels": 8385
+    },
+    {
+      "id": "arm0-base",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 577,
+        "y": 443,
+        "width": 140,
+        "height": 157
+      },
+      "pixels": 10908
+    },
+    {
+      "id": "arm1-distal",
+      "joint": "arm1Seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 411,
+        "y": 594,
+        "width": 154,
+        "height": 117
+      },
+      "pixels": 7435
+    },
+    {
+      "id": "arm1-base",
+      "joint": "arm1Seg0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 547,
+        "y": 585,
+        "width": 108,
+        "height": 74
+      },
+      "pixels": 4054
+    },
+    {
+      "id": "arm2-distal",
+      "joint": "arm2Seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 483,
+        "y": 658,
+        "width": 109,
+        "height": 113
+      },
+      "pixels": 2968
+    },
+    {
+      "id": "arm2-base",
+      "joint": "arm2Seg0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 561,
+        "y": 626,
+        "width": 84,
+        "height": 70
+      },
+      "pixels": 1775
+    },
+    {
+      "id": "arm3-distal",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 567,
+        "y": 665,
+        "width": 97,
+        "height": 133
+      },
+      "pixels": 2824
+    },
+    {
+      "id": "arm3-base",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 626,
+        "y": 598,
+        "width": 68,
+        "height": 84
+      },
+      "pixels": 3506
+    },
+    {
+      "id": "arm4-distal",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 781,
+        "y": 662,
+        "width": 79,
+        "height": 145
+      },
+      "pixels": 3555
+    },
+    {
+      "id": "arm4-base",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 748,
+        "y": 593,
+        "width": 67,
+        "height": 104
+      },
+      "pixels": 3704
+    },
+    {
+      "id": "arm5-distal",
+      "joint": "arm5Seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 855,
+        "y": 643,
+        "width": 142,
+        "height": 150
+      },
+      "pixels": 5725
+    },
+    {
+      "id": "arm5-base",
+      "joint": "arm5Seg0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 799,
+        "y": 595,
+        "width": 91,
+        "height": 89
+      },
+      "pixels": 2899
+    },
+    {
+      "id": "arm6-distal",
+      "joint": "arm6Seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 883,
+        "y": 567,
+        "width": 200,
+        "height": 104
+      },
+      "pixels": 8015
+    },
+    {
+      "id": "arm6-base",
+      "joint": "arm6Seg0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 805,
+        "y": 563,
+        "width": 105,
+        "height": 79
+      },
+      "pixels": 4706
+    },
+    {
+      "id": "arm7-tip",
+      "joint": "arm7Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 944,
+        "y": 455,
+        "width": 113,
+        "height": 86
+      },
+      "pixels": 3948
+    },
+    {
+      "id": "arm7-middle",
+      "joint": "arm7Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 854,
+        "y": 453,
+        "width": 103,
+        "height": 117
+      },
+      "pixels": 7381
+    },
+    {
+      "id": "arm7-base",
+      "joint": "arm7Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 762,
+        "y": 463,
+        "width": 113,
+        "height": 135
+      },
+      "pixels": 7882
+    },
+    {
+      "id": "tentacle0-tip",
+      "joint": "tentacle0Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 476,
+        "y": 889,
+        "width": 97,
+        "height": 158
+      },
+      "pixels": 9284
+    },
+    {
+      "id": "tentacle0-middle",
+      "joint": "tentacle0Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 522,
+        "y": 752,
+        "width": 52,
+        "height": 167
+      },
+      "pixels": 4417
+    },
+    {
+      "id": "tentacle0-base",
+      "joint": "tentacle0Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 531,
+        "y": 623,
+        "width": 113,
+        "height": 158
+      },
+      "pixels": 3046
+    },
+    {
+      "id": "tentacle1-tip",
+      "joint": "tentacle1Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 899,
+        "y": 882,
+        "width": 114,
+        "height": 192
+      },
+      "pixels": 11044
+    },
+    {
+      "id": "tentacle1-middle",
+      "joint": "tentacle1Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 855,
+        "y": 747,
+        "width": 78,
+        "height": 152
+      },
+      "pixels": 3697
+    },
+    {
+      "id": "tentacle1-base",
+      "joint": "tentacle1Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 805,
+        "y": 640,
+        "width": 76,
+        "height": 132
+      },
+      "pixels": 2356
+    },
+    {
+      "id": "fin-far",
+      "joint": "finFar",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 232,
+        "y": 210,
+        "width": 683,
+        "height": 284
+      },
+      "pixels": 10765
+    },
+    {
+      "id": "fin-near",
+      "joint": "finNear",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 185,
+        "y": 288,
+        "width": 350,
+        "height": 215
+      },
+      "pixels": 28674
+    },
+    {
+      "id": "mantle",
+      "joint": "mantle",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 260,
+        "y": 241,
+        "width": 529,
+        "height": 343
+      },
+      "pixels": 59962
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 552,
+        "y": 341,
+        "width": 315,
+        "height": 268
+      },
+      "pixels": 36683
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyedRgbaSha256": "2ad459f87390cea38641fd87efcf613252724251266b42bce002b9a06c3f9104",
+  "keyer": {
+    "erodedPixels": 7632,
+    "despilledPixels": 90,
+    "unresolvedEdgePixels": 2
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "8f248c79fc4365bdbd7f4aabe29f58756539d86305f4fe3de763886108d8d033",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

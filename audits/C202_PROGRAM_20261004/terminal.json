@@ -1,0 +1,132 @@
+{
+  "schema": "cf.c202-terminal/v1",
+  "status": "TERMINAL_RESERVATION_RELEASED_WITH_HOLDS",
+  "productHead": "35d5d6935",
+  "productSignature": "G",
+  "pushedSourceHead": "021cba472",
+  "native": [
+    {
+      "name": "octopus",
+      "status": "DIAGNOSTIC_PASS",
+      "frames": 961,
+      "turns": 5,
+      "skipped": [],
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "producerFiles": 907,
+      "changedInputs": []
+    },
+    {
+      "name": "albatross",
+      "status": "DIAGNOSTIC_PASS",
+      "frames": 780,
+      "turns": 4,
+      "skipped": [],
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "producerFiles": 907,
+      "changedInputs": []
+    }
+  ],
+  "referenceQualification": {
+    "qualified": [
+      "Octopus"
+    ],
+    "held": [
+      "Gorilla",
+      "Howler Monkey",
+      "Cuttlefish",
+      "Beetle",
+      "Grasshopper",
+      "Centipede",
+      "Millipede"
+    ],
+    "pool": "audits/C202_CEPHALOPOD_REFERENCES_20261004/qualified-reference-pool.json"
+  },
+  "holds": [
+    "Red Fox layered placement compression",
+    "Snow Petrel visual tears"
+  ],
+  "supplyOriginals": 24,
+  "coverageAdmissionClaims": 0,
+  "verification": {
+    "focusedTests": 111,
+    "typecheckProjects": 3,
+    "rootValidate": "PASS",
+    "goldenFingerprintProbes": 50
+  },
+  "gate": "Not run: prior C200 authority consumed; awaiting Dakk for one fresh combined I5(3+1) plus develop, unchanged limits/first-red/no rebind/optionalAI aside-and-restore.",
+  "allPairsRuns": 0,
+  "allPairsStatus": "HOLD",
+  "freeGiB": 122.83,
+  "productFiles": [
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact-insect-sockets.test.ts",
+      "sha256": "071fed6786e7ee2e19c598e663ce8cd003966732d01d659adbcbee9b5d0d1b6c"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "sha256": "eef4e5e023f21707639d90a796e6bf900aea8d255b6d2b5327aeaa43c05e215f"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "d5ce727eebbcd6c54a6996454f818df709e969b52aa9f09eb9d679b0c9722986"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-bird.ts",
+      "sha256": "57ab01b094f39ba99abdcd18ec46dcc149a4b827b483b02285b5ff796791640a"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/painted-bird-author.test.ts",
+      "sha256": "48d583de7f56346509979da412b4d83ab3f835c0c0b7ed4ffd7df5491c5d9af4"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "3a68ca4813a417bdc7ddfca923dd1e3bbdee3bf60e094d3da13b312830a3228c"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-topology.ts",
+      "sha256": "bb21fa793b2b0fc9cbe6750a6c68502ee0cccef45f95e2bde52c476e6673f5c2"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-paint-skin.mjs",
+      "sha256": "4759217539b4d3d8a4ab2acfbd1084b7b1d3dff8fe8a77194e1a7dcfc1d38750"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "39443a28ecfc31ecc96915a3e8d6256b39182063251460b88f7cfdfc94ec91dc"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "sha256": "d295145272fd53027bd808dab6aa752d29c4c5f3da4091fbd7d209ed798431db"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "sha256": "f65a61bd80302b3621f3ccb8f4b7373256b6efc26f07b0d21d3fa29edab1e55a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "8a47a0d10f87372b4ecaac12e18442f2ab8ba0db94eda1c345644d3804ea99df"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/semantic-part-packing.mjs",
+      "sha256": "9e68eacfae52fe116d4c52a649e00e77e77caa52c2d452363c894e4bc3c2242d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/semantic-part-packing.test.mjs",
+      "sha256": "3e163b090da5e8172d8023fbac26a10a884174791a64f8ad2dc66c0aca0e452a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "sha256": "c88f2c0f08e89fbca0267c8e94da296b0e556fa5eddadeec3fdc6d130911248d"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "sha256": "f5884cfc276345a217a3a5b1bbfcb546e3732467032ab1e7b00a3973befa853b"
+    }
+  ]
+}

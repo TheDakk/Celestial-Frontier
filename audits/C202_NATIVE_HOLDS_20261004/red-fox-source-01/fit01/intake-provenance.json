@@ -1,0 +1,101 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "cfe6e089f99dfdf85e69305b0515725efad3119c",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/master.png",
+      "sha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/authoring.json",
+      "sha256": "3973c32d4b476b47a80205d1333d455438de5a1dc5e0db59fdd5b26794c0db5e"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/subject-source.json",
+      "sha256": "4107e783b5806c1009a641347c3415252c99b6bcac82096b823ed71c4297b427"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "5c3005574b1cf5987b0894fc838a03a955a581edaeea62e8caf38b91dc03a4ae",
+  "bindingHash": "9a6c0e2aebb03d4ac4a60e900775209c7e7b0c7911c632b2edaf3a1fe1ea4c05",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/master.png",
+      "sha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/authoring.json",
+      "sha256": "3973c32d4b476b47a80205d1333d455438de5a1dc5e0db59fdd5b26794c0db5e",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/subject-source.json",
+      "sha256": "4107e783b5806c1009a641347c3415252c99b6bcac82096b823ed71c4297b427",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

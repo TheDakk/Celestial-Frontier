@@ -1,0 +1,176 @@
+{
+  "id": "20-wild-horse",
+  "name": "Wild Horse",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "015a2e5e50217bb6cefee91103838d91a9c016fe4e38ce6b22570786a0276192",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 29585,
+    "coreRadius": 25,
+    "bodyBox": {
+      "x0": 115,
+      "y0": 105,
+      "x1": 334,
+      "y1": 225
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0116,
+        "pixels": 344,
+        "box": {
+          "x0": 284,
+          "y0": 93,
+          "x1": 337,
+          "y1": 110
+        },
+        "attach": {
+          "x": 311.1,
+          "y": 104.4,
+          "relX": 0.9,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.47,
+          "y": -0.88
+        },
+        "class": "top",
+        "length": 29.4
+      },
+      {
+        "k": 1,
+        "frac": 0.0398,
+        "pixels": 1178,
+        "box": {
+          "x0": 309,
+          "y0": 122,
+          "x1": 359,
+          "y1": 185
+        },
+        "attach": {
+          "x": 330.1,
+          "y": 152.6,
+          "relX": 0.98,
+          "relY": 0.4
+        },
+        "dir": {
+          "x": 0.76,
+          "y": 0.65
+        },
+        "class": "limb-down",
+        "length": 43.4
+      },
+      {
+        "k": 2,
+        "frac": 0.1074,
+        "pixels": 3177,
+        "box": {
+          "x0": 69,
+          "y0": 157,
+          "x1": 114,
+          "y1": 292
+        },
+        "attach": {
+          "x": 114,
+          "y": 181,
+          "relX": 0,
+          "relY": 0.63
+        },
+        "dir": {
+          "x": -0.43,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 119.8
+      },
+      {
+        "k": 3,
+        "frac": 0.1193,
+        "pixels": 3529,
+        "box": {
+          "x0": 103,
+          "y0": 218,
+          "x1": 177,
+          "y1": 315
+        },
+        "attach": {
+          "x": 143,
+          "y": 218,
+          "relX": 0.13,
+          "relY": 0.94
+        },
+        "dir": {
+          "x": -0.15,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 104.9
+      },
+      {
+        "k": 4,
+        "frac": 0.1001,
+        "pixels": 2961,
+        "box": {
+          "x0": 220,
+          "y0": 223,
+          "x1": 290,
+          "y1": 314
+        },
+        "attach": {
+          "x": 252.9,
+          "y": 225.9,
+          "relX": 0.63,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.04,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 95.6
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 104,
+        "x1": 128,
+        "cx": 116.3
+      },
+      {
+        "x0": 156,
+        "x1": 177,
+        "cx": 165.8
+      },
+      {
+        "x0": 221,
+        "x1": 245,
+        "cx": 233.2
+      },
+      {
+        "x0": 269,
+        "x1": 290,
+        "cx": 278.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

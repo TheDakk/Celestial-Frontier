@@ -1,0 +1,10 @@
+{
+  "status": "SOURCE_CORRECTION_NEEDED",
+  "observedShortArmTips": 8,
+  "observedFeedingClubs": 2,
+  "findings": [
+    "Four short arm tips on each side plus two long clubbed tentacles; both eyes and siphon are visible.",
+    "Top-left arm curls tightly back over itself; this creates a difficult overlap for independent source-bound segmentation.",
+    "Rightmost short arm lies too close to the edge; preserve full anatomy and repaint composition with generous margins."
+  ]
+}

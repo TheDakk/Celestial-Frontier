@@ -1,0 +1,10 @@
+{
+  "status": "REJECTED_RUNTIME_COST",
+  "evidence": "cache-timing.json",
+  "newSeedMs": [
+    4736.120333,
+    4749.814125
+  ],
+  "reason": "Do not ship multi-second synchronous authoring in turn planning. Exact cache hits are fast but each genuinely different idle sample lattice remains expensive.",
+  "positiveEvidenceRetained": "Exact placement gains and full-size source corrections are useful; no quality or guard weakening."
+}

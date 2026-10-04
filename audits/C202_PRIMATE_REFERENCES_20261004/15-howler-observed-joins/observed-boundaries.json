@@ -1,0 +1,87 @@
+{
+  "schema": "cf.c202-observed-source-joins/v1",
+  "sourcePacket": "audits/C202_PRIMATE_REFERENCES_20261004/14-howler-crown-contour",
+  "basis": "Actual continuously painted tail insertion into pelvic/haunch skin, throat-to-shoulder surfaces and mandibular/throat margin. These are the visible same-source joins opened by independent surface publication. Distinct arm-to-arm, hand-to-hand, and hind-leg silhouette overlaps remain independent.",
+  "authored": [
+    {
+      "parts": [
+        "near-thigh",
+        "tail-root"
+      ],
+      "sourceEdges": 88,
+      "sourceBounds": [
+        481,
+        488,
+        488,
+        565
+      ]
+    },
+    {
+      "parts": [
+        "near-upper-arm",
+        "neck"
+      ],
+      "sourceEdges": 309,
+      "sourceBounds": [
+        829,
+        393,
+        914,
+        596
+      ]
+    },
+    {
+      "parts": [
+        "far-upper-arm",
+        "neck"
+      ],
+      "sourceEdges": 66,
+      "sourceBounds": [
+        894,
+        596,
+        923,
+        633
+      ]
+    },
+    {
+      "parts": [
+        "jaw",
+        "neck"
+      ],
+      "sourceEdges": 211,
+      "sourceBounds": [
+        947,
+        480,
+        1045,
+        555
+      ]
+    }
+  ],
+  "unchangedSourceInputs": [
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/14-howler-crown-contour/master.png",
+      "sha256": "5ebd7622ff46f0a5b88e60b114b4644634e3c0d00cccc5094f4ddc8e3d0848ee"
+    },
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/14-howler-crown-contour/authoring.json",
+      "sha256": "603fba6623f243c4c3ee533a2f0e72e42a966afa9005319b7fecf59b487390b2"
+    },
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/14-howler-crown-contour/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C202_PRIMATE_REFERENCES_20261004/14-howler-crown-contour/subject-source.json",
+      "sha256": "170f1e431f9ba944b3fbb331af7cb57c9449c1e62e7bc0d0bbd6593fa834289a"
+    }
+  ],
+  "sourceBindingHash": "d7809aa71ce077aa5fa8d713a55ce2b3096436bdead551e9964941dc105e765e",
+  "resultBindingHash": "c188f04008be03bee49292aa8049ccbb6056192d4d0fdc85df00487bc401b632",
+  "controls": {
+    "sameSourceVertices": true,
+    "recordBytesUnchanged": true,
+    "atlasBytesUnchanged": true,
+    "sourceRGBAUnchanged": true,
+    "runtimeChanged": false
+  },
+  "admission": false
+}

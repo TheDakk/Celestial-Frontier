@@ -1,0 +1,28 @@
+{
+  "name": "Badger",
+  "masterSha256": "8f4f9abaa9906c6114cbac761198eec583e180b807f7d6797053f0e722ee743b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "White and black facial stripes, grizzled body and strong claws on four feet. Tail appears much longer and bushier than expected for the canonical badger: identity hold for Claude, even though framing passes.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 177,
+      "y0": 399,
+      "x1": 1082,
+      "y1": 854
+    },
+    "margins": {
+      "left": 177,
+      "right": 171,
+      "top": 399,
+      "bottom": 399
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

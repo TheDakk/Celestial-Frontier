@@ -1,0 +1,25 @@
+{
+  "fit": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit",
+  "rows": [
+    {
+      "fraction": 0.7166666666666667,
+      "ms": 510.26666666666665,
+      "error": null,
+      "folds": []
+    },
+    {
+      "fraction": 0.9,
+      "ms": 640.8000000000001,
+      "error": null,
+      "folds": []
+    },
+    {
+      "fraction": 1,
+      "ms": 712,
+      "error": null,
+      "folds": []
+    }
+  ],
+  "native": false,
+  "limitsUnchanged": true
+}

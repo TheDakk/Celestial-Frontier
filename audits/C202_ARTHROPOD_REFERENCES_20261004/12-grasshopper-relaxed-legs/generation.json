@@ -1,0 +1,19 @@
+{
+  "id": "12-grasshopper-relaxed-legs",
+  "name": "Grasshopper",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ce67c9bb-6ebb-4da8-93f8-ecda81d03554.png",
+  "masterSha256": "199ff589b83595a79b82e5bee7948d82c803636d1af2550fa1319f4cff77f28e",
+  "bytes": 1280918,
+  "promptSha256": "e5ea8b800535d0bae663586747a377bed96335c14556ffb75ec1ab21f93ead03",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/master.png",
+      "sha256": "37790d9e90adcef9eee96bccad51426bdf74b2b8032236c83b37daa9bf60392c"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "transparentBackground": false
+}

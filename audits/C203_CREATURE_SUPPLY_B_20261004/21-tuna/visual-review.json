@@ -1,0 +1,28 @@
+{
+  "name": "Tuna",
+  "masterSha256": "5f66d386506f0b464f166334904f80857ab304a6f0a9a33cb9fda91bfa9dc5fa",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Complete crescent tail, separated dorsal/anal fins, yellow finlets and near pectoral/pelvic projections are visible on a blue/silver body. Far paired-fin roots remain hidden. Highly reflective silver treatment is a style hold; exact finlet count and smaller fin roots need anatomy scoring.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 132,
+      "y0": 395,
+      "x1": 1125,
+      "y1": 841
+    },
+    "margins": {
+      "left": 132,
+      "right": 128,
+      "top": 395,
+      "bottom": 412
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

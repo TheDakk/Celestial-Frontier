@@ -1,0 +1,39 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Grasshopper",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "026b4669b50202c91914fd7defe91254634f128f80d36bf7b6bbc7a71023f4ae",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "e2e9bb10cd8484ab99440e7bbb059af5220f1158",
+  "basePromptSha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+  "purpose": "TARGETED_SOURCE_CORRECTION_DORSAL_HIND_KNEE_VISIBILITY",
+  "sourceCorrection": "Keep the EXACT straight top-down dorsal camera of this source. Preserve its body, two antennae, folded wings, both four small front/middle leg chains and every visible thoracic attachment. Change ONLY the two oversized hind-leg poses: bend each real knee into a clearly separated natural V, with its spiny lower tibia folding forward and outward toward the head, leaving open magenta space between femur and tibia. Both hind knees must remain outside the body silhouette and the entire two hind tibiae/feet must be visible, with no crossing or overlap with the four small legs. Exactly THREE complete connected leg paths on EACH flank, all SIX feet visible; do not lower or turn the camera, hide a leg, add a limb or move an attachment under the body. Preserve its realistic grasshopper head, short antennae, long folded tegmina, green-brown pigment and existing painted texture.",
+  "compositionCheck": "central half, native1254 unchanged",
+  "auditCompilerExtension": false,
+  "admission": false,
+  "batchCompilerSha256": "7a48277829ae75c647ec81b7e21a84a14d42a49365ba188c8b507970bec78a50",
+  "predecessor": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/master.png",
+      "sha256": "37790d9e90adcef9eee96bccad51426bdf74b2b8032236c83b37daa9bf60392c"
+    }
+  ],
+  "editStyleParagraphSha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2",
+  "inheritedCanonicalProvenance": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs",
+  "compiledAgain": false
+}

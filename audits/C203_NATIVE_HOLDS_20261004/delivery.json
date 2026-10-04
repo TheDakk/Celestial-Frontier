@@ -1,0 +1,4093 @@
+{
+  "schema": "cf.c203-native-holds-source-delivery/v1",
+  "status": "FOX_NATIVE_READY_PETREL_HELD",
+  "qualifiedReferences": [],
+  "native": false,
+  "files": [
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/.gitignore",
+      "bytes": 13,
+      "sha256": "181b5f9a1201bec63dcf89f311c61ffafa6fe8f1201f68e1bc07bd620e9e418a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/README.md",
+      "bytes": 3447,
+      "sha256": "37cb5869a565e574e6c60fa406179a14a2cdafe6c2ee0f3595a02c9816c01eb2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/author-folded-petrel.mjs",
+      "bytes": 5127,
+      "sha256": "73323c76fdd719021467fb90c67cf3762e8a903e32ec833295d16c7b7e2e806c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/bundle-v2.mjs",
+      "bytes": 1226,
+      "sha256": "81417867133d3eaf11419dcbf83e32b4a2793a96faee1877edf6042b88c809f1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/bundle-v3.mjs",
+      "bytes": 1226,
+      "sha256": "8360b6cbd94b42481e951f865e784199ff70516bdb2447ac879db63795ff97e7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/bundle.mjs",
+      "bytes": 1217,
+      "sha256": "f0a05d9edfd54672554b31b95c3c9968b815886052fc126bc94a91bcfd48ad4e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/c203-final-placement.log",
+      "bytes": 240,
+      "sha256": "76d7b659d9b6d1a25635bc942997a53ad634aaf49e36c7368b409eb1f03c0056"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/c203-motion-fast-profile.log",
+      "bytes": 535,
+      "sha256": "9eccd91a4820840822aed27dd094a76704f2799789363603591ccad0594e8997"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/c203-types-fast-profile.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/cache-timing.json",
+      "bytes": 2420,
+      "sha256": "18ab712ed6f921c44b6f455e24bb0b44f6f1fc94fa69bf7a27dabc65ac7f96f6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/cache-timing.mjs",
+      "bytes": 355,
+      "sha256": "7af40878d49b3714aa7d3f905fe9549899e315620181c05e2f04119248f09486"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/cache-timing.ts",
+      "bytes": 916,
+      "sha256": "db6ac7da8dca441b5102ccba1ef3b655b54f9e87b6c0b344f9badbee54d3fb66"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/candidate-checks.json",
+      "bytes": 1609,
+      "sha256": "2669805bb3a0bbb418286ffd0c2065156c8b009cf5672858c2029c8a1af44740"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/compile-fox.mjs",
+      "bytes": 1997,
+      "sha256": "9a1bef2207c8693bd26ede60a869d16b4c75094fbabf46d7765f024a77e5075e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/compile-petrel.mjs",
+      "bytes": 2144,
+      "sha256": "83597cac8c3279dbc639602c3909ac107f2216bc76e70c485a6897be74d9b049"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fast-profile-timing.json",
+      "bytes": 2400,
+      "sha256": "a55d1dfa5df29fd976768387009559c1ba8c8dfceeec142490afb1974167533b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fast-profile-timing.mjs",
+      "bytes": 376,
+      "sha256": "90c725d7748c9fb56b3bf6c6880ce7305db3119c65d71acf7645397600474c98"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fast-profile-timing.ts",
+      "bytes": 923,
+      "sha256": "6a34b29414425eea868b90a302335bac1b643db06e4cfe6fd5419770552d70a2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-author-before.json",
+      "bytes": 225752,
+      "sha256": "7ffe318475626d665ae879bb04a18a3258947595213aa3a2594789ccf07df1e3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-author-before.log",
+      "bytes": 1404,
+      "sha256": "9010919459feab48f9ca2428197dd25d088b80da529695ba9c87bc3f5471f653"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-author-check.mjs",
+      "bytes": 2231,
+      "sha256": "358672e4a66e6cebfbcf219b2a19918fc11a2aa25796b799edefca611bc5c13a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-author-check.ts",
+      "bytes": 1341,
+      "sha256": "6a130c72015c47f57e70c72e088abc41fe3432407e70c9fee4a0aa6eedb909d6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-author-controls.json",
+      "bytes": 11073,
+      "sha256": "a39aa3e63cac9833a81232c559890a222e2f1316e9b65490b70f3b6018ce18bb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-author-patch.json",
+      "bytes": 2964,
+      "sha256": "ef5073b7f847f68baae57d27aee0392fd19e6810c36068cf3a7705722ff0a218"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-author-prototype.json",
+      "bytes": 226197,
+      "sha256": "b370fc13d7c6b8ae3dfef56f0aed07e67e00446ae51fdf51ebda5bb5426868d1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-author-prototype.log",
+      "bytes": 1563,
+      "sha256": "fb0f4f4709a02e2b4e9c90e07b8b0a2a7c754dfec8e5f482eae8e92a4e7d8025"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-author-prototype.mjs",
+      "bytes": 2889,
+      "sha256": "1a20d3f509533be8840bc25a81bd0922a6a37f049f6c25022e6e14c300ef760e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/authoring.json",
+      "bytes": 15364,
+      "sha256": "b33c8f0e72040200205a3f3a2643106c486eb05f400c957660a3c7a193d5cf63"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/fit/declaration.json",
+      "bytes": 18145,
+      "sha256": "e8e459fa51d1fc2e6b6cfbbcc08f9ff0ab991363cc70e8e3eb482633f0c65cb0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/fit/intake-provenance.json",
+      "bytes": 3351,
+      "sha256": "3db6e49020531a45ecab0acd617c1ab890c2107626c7dad983247323d650df24"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/fit/record.json",
+      "bytes": 7507,
+      "sha256": "1f8aceddb874e06e0a676b4fecb4015e536887e221733c38b70a1c7324048077"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/fit/refusal.json",
+      "bytes": 766,
+      "sha256": "889261da1dcb47d0a7291341766445f48ba1dd5f7daf82c73a68e52f3b8cadee"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/master.png",
+      "bytes": 1346170,
+      "sha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/source-changes.json",
+      "bytes": 418,
+      "sha256": "4f7c323f5afd319c49295f1150ffd827bd6b07361f94e1bc4fd61a477d0757c3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/subject-source.json",
+      "bytes": 2210,
+      "sha256": "4107e783b5806c1009a641347c3415252c99b6bcac82096b823ed71c4297b427"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/authoring.json",
+      "bytes": 15124,
+      "sha256": "5801cb85934b3c3a1fc111b2c5bb4cd24d9d9261029e7553a62f3fd974596267"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/binding.json",
+      "bytes": 2289873,
+      "sha256": "72c577fd9c972330eb8ab1e7d1a3d8961347e0408cfb5e4642b80e3ef8759486"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/declaration.json",
+      "bytes": 17862,
+      "sha256": "74056b9fde53e90fff8ab8790ec42eea06be9466e81843daf394c334d79ba5bd"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/intake-provenance.json",
+      "bytes": 3389,
+      "sha256": "7ecf1838317969e224581347af781307dfc309a908d8478235327c91d36cc165"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/atlas/c203-red-fox-whole-head-body-contours.json",
+      "bytes": 12290,
+      "sha256": "8692fe794a57962b74656b6d6f8c50f136460013d4f0187514159d07816a9778"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/atlas/c203-red-fox-whole-head-body-contours.png",
+      "bytes": 596288,
+      "sha256": "5da2f4aaa3f9db92140e9f0b57b383b12365d9435ecf49b553c78636aef9ec34"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/atlas/receipt.json",
+      "bytes": 4635,
+      "sha256": "8f0798bc23988d5536c88f9d6d7aac0a129573b9020c438307f661215385bd2e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/binding.json",
+      "bytes": 10036,
+      "sha256": "4433fbbc3633f458e79c8c86ab16f16920e727dac7027147151a7d20cecdd7b0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/keyed.png",
+      "bytes": 1759611,
+      "sha256": "bab7384f67d4aa9430ff986224dfcb67b011ddd12b870800acd800c618792fe7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/manifest.json",
+      "bytes": 5079,
+      "sha256": "46989d9aad323b731f86fdd6f8a952932fad716c52cbc023ac874f8ad05d2b60"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/ownership.png",
+      "bytes": 21504,
+      "sha256": "eb3c6814d0d41648d3689b99cef71cd69967a5e681b3d70bd322299ae810ce8b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/chest.png",
+      "bytes": 11862,
+      "sha256": "b8c887dc4ba68ab5ab68b2925436b74bcada9b77e3787326a408205f181a5693"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/ear-far-root.png",
+      "bytes": 11668,
+      "sha256": "1e613e15d34b4f95ded77bec2a444b0b48e36a62f036d0ba37e2a9064bdcd5e5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/ear-far-tip.png",
+      "bytes": 5223,
+      "sha256": "38bd1a116d57f6505dd18d25a17aec3342577b091370efaa4567913f5a3ae98c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/ear-near-root.png",
+      "bytes": 22025,
+      "sha256": "768dc0f5e8f612d2beaa5c74f4414216c73c7594255652ffa9ad7c34f71e93df"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/ear-near-tip.png",
+      "bytes": 14943,
+      "sha256": "23bd5f0db581f850a2584a72733fd4663e902fdf609b9a7a4fa41c873b3cc95c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/fore-far-ankle.png",
+      "bytes": 6478,
+      "sha256": "c91dc2c0dcd96a4d1737156dd5a308a318b5d3ef09389d0a91d2940f696abe2f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/fore-far-knee.png",
+      "bytes": 21810,
+      "sha256": "2e30873f204194c8a5c4dc92314eead1609315843ff01691e60e4b23310616f2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/fore-far-paw.png",
+      "bytes": 6569,
+      "sha256": "c91e5c380fc7c3fbb9f70097d47c40d41d1341cf8452c9c1803637b62b86031e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/fore-far-root.png",
+      "bytes": 19606,
+      "sha256": "ad857532c2dcdad5d54aebce5ef65d9d3b8e1f37f9744137ee273b16b9bbc862"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/fore-near-ankle.png",
+      "bytes": 8415,
+      "sha256": "1cd2ece0de1b3a02665fc7c7a460b9ba20c1ef2925abae0f67e29ba50c911775"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/fore-near-knee.png",
+      "bytes": 23796,
+      "sha256": "a635198870ab3ad1e7994a2a0d2e5a7f5827596c7141f5fd4f33242c4399692a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/fore-near-paw.png",
+      "bytes": 6329,
+      "sha256": "a1e6b92028a33b448886c90ff46c6fd3538db53e75536c3e29e3525a630b48ab"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/fore-near-root.png",
+      "bytes": 56969,
+      "sha256": "291a1e36969e1d0d0815dee0703ee73e646d1df507a60db8c1b9874f67df979b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/head.png",
+      "bytes": 39930,
+      "sha256": "6cea33a97dfc045f4c6a1867b6d12a6517ce0eb0efbcfac4258a32431aed3a7c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/hind-far-ankle.png",
+      "bytes": 10546,
+      "sha256": "7eb00c895a524e7c1d30878565e270663f4675a0ce5d835456ba8b974be7e2f8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/hind-far-knee.png",
+      "bytes": 14566,
+      "sha256": "21fa55d530f281353cd4f090e358e31e38e1d4f213c278facd56fc5ae2e3522e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/hind-far-paw.png",
+      "bytes": 6147,
+      "sha256": "c4b8df44cd0b5344a7829521573f51d28627076d3b89740d5e938be40b6c9454"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/hind-far-root.png",
+      "bytes": 8485,
+      "sha256": "15eaf1d39e49a96fff8f7082ccc4d58b14a129b4f0dd3529580de665d20612ea"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/hind-near-ankle.png",
+      "bytes": 12895,
+      "sha256": "e1572a3d0e43ec1fb2ccba5d612fe6133a2274a2dbc2a263b95d5ecdf1d31600"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/hind-near-knee.png",
+      "bytes": 47458,
+      "sha256": "a1ddc42cbfa9689e9a043f77b6f8cf31b17ab44c01fff4c513916e7f851e6cd5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/hind-near-paw.png",
+      "bytes": 6198,
+      "sha256": "a6036ab6982c26ff64d276af800e2a6aa0761efcb775b133c827caffd7729038"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/hind-near-root.png",
+      "bytes": 79978,
+      "sha256": "776182ac8b2caea1d052a37814a240c1e42158ef11685968e6f5d77b43214d7f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/jaw.png",
+      "bytes": 8683,
+      "sha256": "bc00d10a7a6e5c32fe05573eeac23c72211a520f50c04c84a5349fde68aa1377"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/neck.png",
+      "bytes": 43875,
+      "sha256": "34a24a61124897a89fbc39056fe40688d4e544cf1afa84b8eebf8b4ab4ca6163"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/pelvis.png",
+      "bytes": 9466,
+      "sha256": "6e16f79e86e340e1f606f01233d3368add0a318f35737eba0a97716729c9c14f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/spine.png",
+      "bytes": 117938,
+      "sha256": "a7a6e834eafa199496443fec57bee369781b94b526089ae75f91c5a4e6a7ee61"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/tail0.png",
+      "bytes": 765,
+      "sha256": "79f8db1e5805092410e95ac205121138f45bde3369f3f64fed691125fd6df2ef"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/tail1.png",
+      "bytes": 26390,
+      "sha256": "b6b6dba303186852bd8dce1540f9a1283c5028c4baca28162f5ee774e0d29519"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/tail2.png",
+      "bytes": 67911,
+      "sha256": "7dea874ae1cbcdf97b01491c471b9b4937c52ac93d6f498fd153d6aa77d3bf89"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/parts/tail3.png",
+      "bytes": 31296,
+      "sha256": "4524a0ab225c6ed455b7a469f631ba2ffb593ab19135c55d99cf9893b99e4202"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/parts/receipt.json",
+      "bytes": 7760,
+      "sha256": "c9586e36d8a2c369ee6e2c4169df3544dae5a176dc9b4bfa8cc605971a1784ee"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/pre-split-binding.json",
+      "bytes": 1329510,
+      "sha256": "ad66bae91f10687fd4ba7c54ce941d93b08e01b4a8d2e8e3ce176c52a83926b2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/receipt.json",
+      "bytes": 2882,
+      "sha256": "9a183329211a87d43fa9ca92a1c10d883be20f5435be197fe6fee5fcd71652c3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit/record.json",
+      "bytes": 7512,
+      "sha256": "5da3c9345699d7b34899a95f0b587dbf9ce99558c3d41ce09bede1c7fc42e80d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/master.png",
+      "bytes": 1346170,
+      "sha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/source-changes.json",
+      "bytes": 339,
+      "sha256": "46b3b67e3b6cb12d102249418169bfd4afb17158fee81c2a9e9b275b96977086"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/subject-source.json",
+      "bytes": 2210,
+      "sha256": "4107e783b5806c1009a641347c3415252c99b6bcac82096b823ed71c4297b427"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours01-dependent-error.log",
+      "bytes": 749,
+      "sha256": "fd20575e51308b1d96bd37def03d78b67dd8fcdf1aca0e17ec3f9d0fa1b7e1f6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-contours02-intake.log",
+      "bytes": 307,
+      "sha256": "9a9f93cf60d0538b72820ae68c9064a1867d49dd1f5602748e811421fa0a807f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-focused-tests.log",
+      "bytes": 233,
+      "sha256": "a129db32083f4e3a035276c40e6604b24d00225c43c4214ea240aeacb780d7a6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/binding.json",
+      "bytes": 2209501,
+      "sha256": "c3c45b231cef6fce32a892b33f826d491a664fcf317f0e4515901279425ee994"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/declaration.json",
+      "bytes": 3279,
+      "sha256": "90e00d089e61e2b7399c60816eb2abe83aee117a47d3cbb99161dbcd3bee19f5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/labels.png",
+      "bytes": 45972,
+      "sha256": "bf8ffadc09560f5dbebf7d5e43e08eb26a2e5890f88837bba2470281cb8eb167"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/atlas/c203-fox-islands.json",
+      "bytes": 12649,
+      "sha256": "22bd3df42e6f0822356588465a4ffeeaae9638e5d372624e49ad1eb77b162da2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/atlas/c203-fox-islands.png",
+      "bytes": 587535,
+      "sha256": "c7c871086f1bbb33e9048e48ff7907fb51014047899b7c00b13cee79b699d1b6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/atlas/receipt.json",
+      "bytes": 4736,
+      "sha256": "1b7b8194fedc1f012eddc4740b2f63538cf14dd9aede39c160c98c673fd11582"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/binding.json",
+      "bytes": 10331,
+      "sha256": "35ce92b671a628078355735cbbfceabaa7fe96319d157e16513f81136d39041c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/keyed.png",
+      "bytes": 1759611,
+      "sha256": "bab7384f67d4aa9430ff986224dfcb67b011ddd12b870800acd800c618792fe7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/manifest.json",
+      "bytes": 5212,
+      "sha256": "3777292598d89fe62463782557788b1e3bde3f58649880c78285b9d3b878f6da"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/ownership.png",
+      "bytes": 21055,
+      "sha256": "616b9f2ea7aa7f30bcabe68bb147e60db20cbdabb1c410344768e2137ad75544"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/chest.png",
+      "bytes": 27452,
+      "sha256": "5d6fdbb39c85818e3099e5e46452d90c9a33ca420d25300c2f530edd4235a82c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/ear-far-root.png",
+      "bytes": 10190,
+      "sha256": "bf4b24ac32d47227b2cc569571ef9c2d7fde5f56272a6f8d77efa0be77e5959f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/ear-far-tip.png",
+      "bytes": 5223,
+      "sha256": "38bd1a116d57f6505dd18d25a17aec3342577b091370efaa4567913f5a3ae98c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/ear-near-root.png",
+      "bytes": 24491,
+      "sha256": "f7b86396742fae112a31816b665b66b3eee190062c366ccbb930ec37d803c910"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/ear-near-tip.png",
+      "bytes": 14943,
+      "sha256": "23bd5f0db581f850a2584a72733fd4663e902fdf609b9a7a4fa41c873b3cc95c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/fore-far-ankle.png",
+      "bytes": 6840,
+      "sha256": "818117917a7d58f07445a6aa1b4028db8e0323b5d00078ce863f2ff8e6551fc4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/fore-far-knee.png",
+      "bytes": 22164,
+      "sha256": "8d63f86982f0cde621ea8bf5b1133d8cf796162b99895032126b2a97db26f6cb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/fore-far-paw.png",
+      "bytes": 6569,
+      "sha256": "c91e5c380fc7c3fbb9f70097d47c40d41d1341cf8452c9c1803637b62b86031e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/fore-far-root.png",
+      "bytes": 19606,
+      "sha256": "ad857532c2dcdad5d54aebce5ef65d9d3b8e1f37f9744137ee273b16b9bbc862"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/fore-near-ankle.png",
+      "bytes": 8508,
+      "sha256": "1f3f0084321615a45c6699abd38fec8f0f9f31f8cd6a9ab98e49bdf5a097e020"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/fore-near-knee.png",
+      "bytes": 23796,
+      "sha256": "a635198870ab3ad1e7994a2a0d2e5a7f5827596c7141f5fd4f33242c4399692a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/fore-near-paw.png",
+      "bytes": 6329,
+      "sha256": "a1e6b92028a33b448886c90ff46c6fd3538db53e75536c3e29e3525a630b48ab"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/fore-near-root.png",
+      "bytes": 56969,
+      "sha256": "291a1e36969e1d0d0815dee0703ee73e646d1df507a60db8c1b9874f67df979b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/head.png",
+      "bytes": 24019,
+      "sha256": "cf0d4f8529ad1c46422d2f96400c8210b6866996f9a9e60ceed9243225d45b16"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/hind-far-ankle.png",
+      "bytes": 10546,
+      "sha256": "7eb00c895a524e7c1d30878565e270663f4675a0ce5d835456ba8b974be7e2f8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/hind-far-knee.png",
+      "bytes": 14575,
+      "sha256": "6e204b489ddca6511f50a99db4dbf90fa23682f8339305abe1ba854d5fc54473"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/hind-far-paw.png",
+      "bytes": 6147,
+      "sha256": "c4b8df44cd0b5344a7829521573f51d28627076d3b89740d5e938be40b6c9454"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/hind-far-root.png",
+      "bytes": 8485,
+      "sha256": "15eaf1d39e49a96fff8f7082ccc4d58b14a129b4f0dd3529580de665d20612ea"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/hind-near-ankle.png",
+      "bytes": 12895,
+      "sha256": "e1572a3d0e43ec1fb2ccba5d612fe6133a2274a2dbc2a263b95d5ecdf1d31600"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/hind-near-knee.png",
+      "bytes": 47458,
+      "sha256": "a1ddc42cbfa9689e9a043f77b6f8cf31b17ab44c01fff4c513916e7f851e6cd5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/hind-near-paw.png",
+      "bytes": 6406,
+      "sha256": "57a563294df432f73b9903e4d7289f27fb4e1fa13991657761b0bb9a65ce5d05"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/hind-near-root.png",
+      "bytes": 79978,
+      "sha256": "776182ac8b2caea1d052a37814a240c1e42158ef11685968e6f5d77b43214d7f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/jaw.png",
+      "bytes": 8683,
+      "sha256": "bc00d10a7a6e5c32fe05573eeac23c72211a520f50c04c84a5349fde68aa1377"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/neck.png",
+      "bytes": 45321,
+      "sha256": "0f52ba0107b8882087abe20cb25d48c9ea7b38e4c38261d4ea0d12edf53943bd"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/pelvis.png",
+      "bytes": 9466,
+      "sha256": "6e16f79e86e340e1f606f01233d3368add0a318f35737eba0a97716729c9c14f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/root.png",
+      "bytes": 510,
+      "sha256": "c7d0687cc10b414adae5082615072c125e7d312862b22e353fa19b60760a89fa"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/spine.png",
+      "bytes": 80761,
+      "sha256": "14a88119d7a1ec9e57fe98162e4f6a80ec551e27d710f5db93fe321502a12cc0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/tail0.png",
+      "bytes": 765,
+      "sha256": "79f8db1e5805092410e95ac205121138f45bde3369f3f64fed691125fd6df2ef"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/tail1.png",
+      "bytes": 26411,
+      "sha256": "7571fb21c2ce5be8a3202e20c1d904dec9c75a57a09942cf85a5a5b1cb31922d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/tail2.png",
+      "bytes": 95352,
+      "sha256": "850c03d4599ddee063aefa182d5fd4ac133f35ad28f6dbd8bff2e9915a0c4e93"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/parts/tail3.png",
+      "bytes": 31296,
+      "sha256": "4524a0ab225c6ed455b7a469f631ba2ffb593ab19135c55d99cf9893b99e4202"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/parts/receipt.json",
+      "bytes": 8161,
+      "sha256": "0dfb18cd2a0965d72cef94c2b5fd0ced442e9f4f1c26b28743aa6d5a2202047b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/pre-split-binding.json",
+      "bytes": 1269018,
+      "sha256": "3596780efa5d562bee9272fc79aa97f4b805d457c36668a890df5256056e5861"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/fit/record.json",
+      "bytes": 7506,
+      "sha256": "db2e11d8cacfa045c2c4ac247f05f310d76f7c25a80b8317866436d5ee4c30e6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-01/receipt.json",
+      "bytes": 5035,
+      "sha256": "c75b039289c931a19fc039c1fbb97018c7e2a9ec9b5335676176057f6e4a2572"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/binding.json",
+      "bytes": 2206791,
+      "sha256": "ff0f457c372fc74fdc2bfddeed2b061567c906ae6a947495d11f718d6acdf97f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/declaration.json",
+      "bytes": 3201,
+      "sha256": "2e1262dcfc3e8540b2f8f18355d6dec597f297e06f44aea0ada0d44ede24dc85"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/labels.png",
+      "bytes": 45974,
+      "sha256": "a84170088828b1894587756f44aa0a418e1129c23654f3404a7df93889440ea2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/atlas/c203-red-fox-whole-head-body-contours.json",
+      "bytes": 12267,
+      "sha256": "1c9ded228f1c56476d3b9ea3066c8935bd0e0738fdafae155935298c49111a48"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/atlas/c203-red-fox-whole-head-body-contours.png",
+      "bytes": 596171,
+      "sha256": "1991a35d835d67aa4a29f9d59e94a86c876da4dcf20a41af5ff87ccdef1fc53d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/atlas/receipt.json",
+      "bytes": 4635,
+      "sha256": "1780e6ecb74a84e939c69dae63550cd958e099e2f57e737ae54edbda3d12d2c1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/binding.json",
+      "bytes": 10013,
+      "sha256": "7653c53d4df5fee02f04ecc8bd1ba98be7318400aacc0111674b174c889e2518"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/keyed.png",
+      "bytes": 1759611,
+      "sha256": "bab7384f67d4aa9430ff986224dfcb67b011ddd12b870800acd800c618792fe7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/manifest.json",
+      "bytes": 5079,
+      "sha256": "0843be290b774f2f4551de0f90e29915d56efba7c2370e55e6eed87e2f95e247"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/ownership.png",
+      "bytes": 21122,
+      "sha256": "647dffcaf8f406207a57667db8acca9b47bf890963c852f528e6d385113743d2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/chest.png",
+      "bytes": 11885,
+      "sha256": "00fea76c5b851df6be6dfa0eea14d2a57bd7535f16cd2b473eb86c3b97e96c93"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/ear-far-root.png",
+      "bytes": 11668,
+      "sha256": "1e613e15d34b4f95ded77bec2a444b0b48e36a62f036d0ba37e2a9064bdcd5e5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/ear-far-tip.png",
+      "bytes": 5223,
+      "sha256": "38bd1a116d57f6505dd18d25a17aec3342577b091370efaa4567913f5a3ae98c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/ear-near-root.png",
+      "bytes": 22025,
+      "sha256": "768dc0f5e8f612d2beaa5c74f4414216c73c7594255652ffa9ad7c34f71e93df"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/ear-near-tip.png",
+      "bytes": 15232,
+      "sha256": "4715ac9c19cb96fb1b81e40be9dc17fbb413d1d3580cd41912ef69456b7ce921"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/fore-far-ankle.png",
+      "bytes": 6840,
+      "sha256": "818117917a7d58f07445a6aa1b4028db8e0323b5d00078ce863f2ff8e6551fc4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/fore-far-knee.png",
+      "bytes": 22164,
+      "sha256": "8d63f86982f0cde621ea8bf5b1133d8cf796162b99895032126b2a97db26f6cb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/fore-far-paw.png",
+      "bytes": 6569,
+      "sha256": "c91e5c380fc7c3fbb9f70097d47c40d41d1341cf8452c9c1803637b62b86031e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/fore-far-root.png",
+      "bytes": 19606,
+      "sha256": "ad857532c2dcdad5d54aebce5ef65d9d3b8e1f37f9744137ee273b16b9bbc862"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/fore-near-ankle.png",
+      "bytes": 8508,
+      "sha256": "1f3f0084321615a45c6699abd38fec8f0f9f31f8cd6a9ab98e49bdf5a097e020"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/fore-near-knee.png",
+      "bytes": 23796,
+      "sha256": "a635198870ab3ad1e7994a2a0d2e5a7f5827596c7141f5fd4f33242c4399692a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/fore-near-paw.png",
+      "bytes": 6329,
+      "sha256": "a1e6b92028a33b448886c90ff46c6fd3538db53e75536c3e29e3525a630b48ab"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/fore-near-root.png",
+      "bytes": 56969,
+      "sha256": "291a1e36969e1d0d0815dee0703ee73e646d1df507a60db8c1b9874f67df979b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/head.png",
+      "bytes": 42376,
+      "sha256": "fe365112cfabd60c4426d0550ee1a33e5e4136617b25869b566783edcc7d48f8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/hind-far-ankle.png",
+      "bytes": 10546,
+      "sha256": "7eb00c895a524e7c1d30878565e270663f4675a0ce5d835456ba8b974be7e2f8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/hind-far-knee.png",
+      "bytes": 14575,
+      "sha256": "6e204b489ddca6511f50a99db4dbf90fa23682f8339305abe1ba854d5fc54473"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/hind-far-paw.png",
+      "bytes": 6147,
+      "sha256": "c4b8df44cd0b5344a7829521573f51d28627076d3b89740d5e938be40b6c9454"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/hind-far-root.png",
+      "bytes": 8485,
+      "sha256": "15eaf1d39e49a96fff8f7082ccc4d58b14a129b4f0dd3529580de665d20612ea"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/hind-near-ankle.png",
+      "bytes": 12895,
+      "sha256": "e1572a3d0e43ec1fb2ccba5d612fe6133a2274a2dbc2a263b95d5ecdf1d31600"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/hind-near-knee.png",
+      "bytes": 47458,
+      "sha256": "a1ddc42cbfa9689e9a043f77b6f8cf31b17ab44c01fff4c513916e7f851e6cd5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/hind-near-paw.png",
+      "bytes": 6406,
+      "sha256": "57a563294df432f73b9903e4d7289f27fb4e1fa13991657761b0bb9a65ce5d05"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/hind-near-root.png",
+      "bytes": 79978,
+      "sha256": "776182ac8b2caea1d052a37814a240c1e42158ef11685968e6f5d77b43214d7f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/jaw.png",
+      "bytes": 8683,
+      "sha256": "bc00d10a7a6e5c32fe05573eeac23c72211a520f50c04c84a5349fde68aa1377"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/neck.png",
+      "bytes": 44308,
+      "sha256": "cf8cd235f02fdb2ca89f6621babebf9070d0dc407fa93de02529fb37303d733b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/pelvis.png",
+      "bytes": 9466,
+      "sha256": "6e16f79e86e340e1f606f01233d3368add0a318f35737eba0a97716729c9c14f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/spine.png",
+      "bytes": 81048,
+      "sha256": "d0f2e6d8ca2183e1518edd5f52cc815459d862ad01d980af0c8eba9d22d6c7d8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/tail0.png",
+      "bytes": 765,
+      "sha256": "79f8db1e5805092410e95ac205121138f45bde3369f3f64fed691125fd6df2ef"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/tail1.png",
+      "bytes": 26411,
+      "sha256": "7571fb21c2ce5be8a3202e20c1d904dec9c75a57a09942cf85a5a5b1cb31922d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/tail2.png",
+      "bytes": 95352,
+      "sha256": "850c03d4599ddee063aefa182d5fd4ac133f35ad28f6dbd8bff2e9915a0c4e93"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/parts/tail3.png",
+      "bytes": 31296,
+      "sha256": "4524a0ab225c6ed455b7a469f631ba2ffb593ab19135c55d99cf9893b99e4202"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/parts/receipt.json",
+      "bytes": 7939,
+      "sha256": "330ae694e6bd443c59d77b6faaf75d8b264e0679e487798fcd0dc0409930600b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/pre-split-binding.json",
+      "bytes": 1270804,
+      "sha256": "8ea68a2ffbdc92f0741246b89bcfb42efef709c3f8e405cc5472c68f29b875b6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/fit/record.json",
+      "bytes": 7512,
+      "sha256": "5da3c9345699d7b34899a95f0b587dbf9ce99558c3d41ce09bede1c7fc42e80d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/receipt.json",
+      "bytes": 5111,
+      "sha256": "64509348e57ec927734fd2ecbdfffe3bcfac5667415f48de9bd1c6b64e519452"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/static-fast-profile.json",
+      "bytes": 10392,
+      "sha256": "78647eeade0b92298c703c239d03c4e66919b42e26f60ff430a5763d8f7f94cc"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/static-fast-profile.json.sources.json",
+      "bytes": 16218,
+      "sha256": "3b487d4107c131fa8f97095288d3fbeb03a7c2cb7f68312abc37bae6aa9ec87f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/static.json",
+      "bytes": 10393,
+      "sha256": "da328392dcf0a4672c880b42e2db02dc4542bbc04b5758b77877523706fc128e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-islands-02/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "01470df0b7dc7b2996fdea54df6ec791dfc9cfe30a46caae594d9f1236e30048"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-layered-probe-inputs.json",
+      "bytes": 11586,
+      "sha256": "9c98410c54cd4110d7abb1229e5288be654d461fd94381127eed9d245884556d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-layered-probe.json",
+      "bytes": 3058,
+      "sha256": "78c63db3b73cd0bfe626f168cb9273344b518fdd53dd80481a5c08ac8c3458c0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-layered-probe.log",
+      "bytes": 1927,
+      "sha256": "ac37de4013634f71c3b066fa6e7d957bf14569cf528cf71783c6c97e15a48fdd"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-layered-probe.mjs",
+      "bytes": 1086,
+      "sha256": "2d44936e51f9e37f522e76a91dc6305b5651153e97e00820cffc5af84fc44b87"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-layered-probe.ts",
+      "bytes": 2062,
+      "sha256": "b047d7de833a27dfa432601835ea59692f469372297937eee5ee9f3d5ef865a4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-native-script.json",
+      "bytes": 658,
+      "sha256": "6eaf92208baadea0032644abf57e1ab6d7896377cf2998389c1317140c95d71e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/approach-trot-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/approach-trot-0p2.png",
+      "bytes": 567474,
+      "sha256": "30d70fe5b5472faae0f330ef79f3c4678dd7ee2233dc3adcb1e4acf742efbd6e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/approach-trot-0p9.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/approach-trot-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/cast-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/cast-0p2.png",
+      "bytes": 551981,
+      "sha256": "675140669c3dac9c63ea9848e17ebb0d50a105777caa00b74efdc07da6e9e05e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/cast-0p9.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/cast-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/faint-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/faint-0p2.png",
+      "bytes": 549216,
+      "sha256": "f3cc8289902cc385bd10810b350fc8e1e988657f070488e89f669ad4eac0c6ea"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/faint-0p9.png",
+      "bytes": 545850,
+      "sha256": "8b2d24394eb90f2c19d2e83e3d5c6c18a4bb8bfc984f728401d55eea187bc389"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/faint-1.png",
+      "bytes": 546787,
+      "sha256": "99cb9d828cf784da2b54fdd2393045a53d94eb18e82d08525130894864cadf4a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/hit-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/hit-0p2.png",
+      "bytes": 557516,
+      "sha256": "efaf6f50021b0bf7c49d0b7c682d26c50a06289ddc01ceabf2cf4d34700e9f91"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/hit-0p9.png",
+      "bytes": 563435,
+      "sha256": "36ed6ec23c5844ecadef0440590e17f276d860d0e2db6e60fb0381671c4dffa1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/hit-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/idle-0.png",
+      "bytes": 562518,
+      "sha256": "785fb75105c4294945a3c1e8867082d894310c08cca102d98eb02a86a53a0782"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/idle-0p2.png",
+      "bytes": 564800,
+      "sha256": "f1ad47ae928c51c848ca85553639455370b0a3d56ee08754b043c522170a6f0a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/idle-0p9.png",
+      "bytes": 557008,
+      "sha256": "ded659f9130a313300d53b21a51ab5240c1dab8662025e7e2484c454d17aebe8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/idle-1.png",
+      "bytes": 562518,
+      "sha256": "785fb75105c4294945a3c1e8867082d894310c08cca102d98eb02a86a53a0782"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/melee-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/melee-0p2.png",
+      "bytes": 564156,
+      "sha256": "7f9de81f382b9d9118ad1020067fb35c4ad294a8790520cd0f9c1e54433c2fe8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/melee-0p9.png",
+      "bytes": 563343,
+      "sha256": "565238dafa3b52e6c1e14739fa641d810e0c80154af7568e9c5d833431270c2d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/melee-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/review.json",
+      "bytes": 8534,
+      "sha256": "0dbbefc221ef8119a932d1214c65f6db14a203ebe36ad3c90907afb2dd77fdfd"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/tame-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/tame-0p2.png",
+      "bytes": 560898,
+      "sha256": "3fd3aaaa60a10f6e0b1f8c9ebbcd3086862f9010acdd917eb1ff9345c3cd7d1c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/tame-0p9.png",
+      "bytes": 566819,
+      "sha256": "e0295006a7c26db56e4934ef9f7852ab2d7b4e9e719da8f614ddf96b4394d79c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-01/tame-1.png",
+      "bytes": 566588,
+      "sha256": "a1cefa75a111c52f85d02602244258e56c87c1912a37d9c3f3fc27670433f013"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/approach-trot-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/approach-trot-0p2.png",
+      "bytes": 567387,
+      "sha256": "71a09cfa75c700e5dd3fd07472965a245afa20f3fc6b26527616dab924bd8fe7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/approach-trot-0p9.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/approach-trot-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/cast-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/cast-0p2.png",
+      "bytes": 569174,
+      "sha256": "7a32564c2ea0a8c93467a25ad1e0a7f97ccbd0e3b1e6ffd9ad986dc293581ab7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/cast-0p9.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/cast-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/faint-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/faint-0p2.png",
+      "bytes": 563290,
+      "sha256": "e795df1cfb518ad92cd8f6a11dd27f15967772c8a6095a235e37442f6a20af8b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/faint-0p9.png",
+      "bytes": 553310,
+      "sha256": "419b4b0fbb6d6499dcdfe8cbb5d311489744c31e3a1d237b58e28b2fcd222a69"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/faint-1.png",
+      "bytes": 553996,
+      "sha256": "5b9ba7169baa427c3d1062a04d47a0ac134a70672bead31f62042fe4ca6991ff"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/hit-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/hit-0p2.png",
+      "bytes": 568038,
+      "sha256": "51955fb946e90c5ba159bb53fcb602f2d912461bfa7d012a69ec7c210285bc06"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/hit-0p9.png",
+      "bytes": 563333,
+      "sha256": "e68bd32739c090f8f7661ada28047b666c6bf5512af5fc1e0262ff155918add7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/hit-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/idle-0.png",
+      "bytes": 563643,
+      "sha256": "847b753a5cc0016a1c94bf69e79b0377dfdbe4935a08289590e91f95731e561e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/idle-0p2.png",
+      "bytes": 568067,
+      "sha256": "7abcc9e648ab9fa311ae48c85aa327ae4bb57a530c22b314fb0e268983f2f8ce"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/idle-0p9.png",
+      "bytes": 565327,
+      "sha256": "601328ea4818e800b005d09c7938853a9f2221144b98db86ef5144cdf7612d84"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/idle-1.png",
+      "bytes": 563643,
+      "sha256": "847b753a5cc0016a1c94bf69e79b0377dfdbe4935a08289590e91f95731e561e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/melee-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/melee-0p2.png",
+      "bytes": 576887,
+      "sha256": "227211098ce6795a3f91372f0a910adfadf7ad9fc0886caeafd04f66985cfe70"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/melee-0p9.png",
+      "bytes": 563214,
+      "sha256": "f0cc1a5b4b5d824d55b5e300d15609d0a5838b726edb72e4033ba8103bb859c0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/melee-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/review.json",
+      "bytes": 8507,
+      "sha256": "f95a58d981323404dbd37cfe06d3ad58341e6461534f54933972e4d0d0340328"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/tame-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/tame-0p2.png",
+      "bytes": 562298,
+      "sha256": "2d6b213613f7ff3aac79bbfc5cb60aea34b2cdfda94f19c209c28e5b9bc39bd1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/tame-0p9.png",
+      "bytes": 565931,
+      "sha256": "0df9a837eaabc0786f119f9c0d9c5b5a4df6e3e51f439279369619225c40dadd"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-02/tame-1.png",
+      "bytes": 565868,
+      "sha256": "f288618edc047cb24f7c5ac153ab4ef7fdd2b4fc8d4f245663d13c7737df2414"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/approach-trot-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/approach-trot-0p2.png",
+      "bytes": 567285,
+      "sha256": "b5876a76ff2955f221a537880d711c73e5ae357dc2e62752d929850f81faecbb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/approach-trot-0p9.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/approach-trot-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/cast-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/cast-0p2.png",
+      "bytes": 570702,
+      "sha256": "22f49917df96dd863bb9205bf27e72ee2716ed7038941535bb65d0215a6419a8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/cast-0p9.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/cast-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/faint-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/faint-0p2.png",
+      "bytes": 564635,
+      "sha256": "6816e7b6e8495aeeabc3aacd938e4c4784f4faf742e48f7b31e4e3c0f0bf563e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/faint-0p9.png",
+      "bytes": 554366,
+      "sha256": "1096c95a5490ef02ca7fda47ad924ec79bef4606efe8d37f44d7337278b89fef"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/faint-1.png",
+      "bytes": 555050,
+      "sha256": "1717a366465a3523409d52d74f307f40d47dafa951e820440c729aa12498d351"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/hit-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/hit-0p2.png",
+      "bytes": 567512,
+      "sha256": "539877c47a00eb4e51dd05194ef6df0c782fa52a5b7d0a3442fc7ae18f7da1b7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/hit-0p9.png",
+      "bytes": 563333,
+      "sha256": "e68bd32739c090f8f7661ada28047b666c6bf5512af5fc1e0262ff155918add7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/hit-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/idle-0.png",
+      "bytes": 563643,
+      "sha256": "847b753a5cc0016a1c94bf69e79b0377dfdbe4935a08289590e91f95731e561e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/idle-0p2.png",
+      "bytes": 568084,
+      "sha256": "3793a90d148f6fc85f8a6a9638c7c0c29dbc084d5d18137c833e5291cca9d346"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/idle-0p9.png",
+      "bytes": 565322,
+      "sha256": "a7a0ac8324b245d3e4ede303384192e0c0017c333df1ef7733d49969c17d5cb0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/idle-1.png",
+      "bytes": 563643,
+      "sha256": "847b753a5cc0016a1c94bf69e79b0377dfdbe4935a08289590e91f95731e561e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/melee-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/melee-0p2.png",
+      "bytes": 576383,
+      "sha256": "e7151236343491b3ddba929bf41a829576ac52e5133536c26581d69a05731f72"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/melee-0p9.png",
+      "bytes": 563214,
+      "sha256": "f0cc1a5b4b5d824d55b5e300d15609d0a5838b726edb72e4033ba8103bb859c0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/melee-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/review.json",
+      "bytes": 8526,
+      "sha256": "552cdd529b5c8b086922a0cbf86d5dbc03fd4cbb9c1280e683a1f593e6b9ddf6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/tame-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/tame-0p2.png",
+      "bytes": 561730,
+      "sha256": "e35acdbfa57637d722f07e4bdb961de595744f1f7d38d68c484627c61e2c5964"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/tame-0p9.png",
+      "bytes": 566793,
+      "sha256": "1e66176926f9b514fd20fdcdb4b88047c92256c2313bf08a84836414c48603e8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-03/tame-1.png",
+      "bytes": 566727,
+      "sha256": "c3a31909a8d3a7c63cac9daca2fa403bce9a6abf21448912a80c457dba416c91"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/approach-trot-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/approach-trot-0p2.png",
+      "bytes": 567340,
+      "sha256": "4d68d3753394f1b6cbba33b3b3ea95c3524da43ff5f7f57aec579737c0598008"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/approach-trot-0p9.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/approach-trot-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/cast-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/cast-0p2.png",
+      "bytes": 570702,
+      "sha256": "22f49917df96dd863bb9205bf27e72ee2716ed7038941535bb65d0215a6419a8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/cast-0p9.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/cast-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/faint-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/faint-0p2.png",
+      "bytes": 564635,
+      "sha256": "6816e7b6e8495aeeabc3aacd938e4c4784f4faf742e48f7b31e4e3c0f0bf563e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/faint-0p9.png",
+      "bytes": 554366,
+      "sha256": "1096c95a5490ef02ca7fda47ad924ec79bef4606efe8d37f44d7337278b89fef"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/faint-1.png",
+      "bytes": 555050,
+      "sha256": "1717a366465a3523409d52d74f307f40d47dafa951e820440c729aa12498d351"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/hit-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/hit-0p2.png",
+      "bytes": 567512,
+      "sha256": "539877c47a00eb4e51dd05194ef6df0c782fa52a5b7d0a3442fc7ae18f7da1b7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/hit-0p9.png",
+      "bytes": 563333,
+      "sha256": "e68bd32739c090f8f7661ada28047b666c6bf5512af5fc1e0262ff155918add7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/hit-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/idle-0.png",
+      "bytes": 563643,
+      "sha256": "847b753a5cc0016a1c94bf69e79b0377dfdbe4935a08289590e91f95731e561e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/idle-0p2.png",
+      "bytes": 568084,
+      "sha256": "3793a90d148f6fc85f8a6a9638c7c0c29dbc084d5d18137c833e5291cca9d346"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/idle-0p9.png",
+      "bytes": 565322,
+      "sha256": "a7a0ac8324b245d3e4ede303384192e0c0017c333df1ef7733d49969c17d5cb0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/idle-1.png",
+      "bytes": 563643,
+      "sha256": "847b753a5cc0016a1c94bf69e79b0377dfdbe4935a08289590e91f95731e561e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/melee-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/melee-0p2.png",
+      "bytes": 576383,
+      "sha256": "e7151236343491b3ddba929bf41a829576ac52e5133536c26581d69a05731f72"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/melee-0p9.png",
+      "bytes": 563214,
+      "sha256": "f0cc1a5b4b5d824d55b5e300d15609d0a5838b726edb72e4033ba8103bb859c0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/melee-1.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/review.json",
+      "bytes": 8529,
+      "sha256": "9fc57a23ba287ea2edc73ae533d78903300d438505f27e009dd8134e56a0e732"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/tame-0.png",
+      "bytes": 563270,
+      "sha256": "61f226c7fca4b7f43225a66dd796769260c4c48de8a33101f7b1e5c323023920"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/tame-0p2.png",
+      "bytes": 561730,
+      "sha256": "e35acdbfa57637d722f07e4bdb961de595744f1f7d38d68c484627c61e2c5964"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/tame-0p9.png",
+      "bytes": 566793,
+      "sha256": "1e66176926f9b514fd20fdcdb4b88047c92256c2313bf08a84836414c48603e8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/fox-review-04/tame-1.png",
+      "bytes": 566727,
+      "sha256": "c3a31909a8d3a7c63cac9daca2fa403bce9a6abf21448912a80c457dba416c91"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/motion-suite.log",
+      "bytes": 533,
+      "sha256": "e5dcbe4a5e0c0ba510c6182a63aac7b7e6d8769f767ddf10fc3e139280556382"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/authoring.json",
+      "bytes": 13860,
+      "sha256": "e24dd5d48e4cbd46621a78395f1a9797678acb22e5bfe2157217e9254af1cb16"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/binding.json",
+      "bytes": 1375304,
+      "sha256": "a583358ccda0ccc6d9685ded2a7d1497033d25435dfaf350916d4ec4abf4e18c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/declaration.json",
+      "bytes": 18562,
+      "sha256": "6be07ef4ebb103f9d2ee2415cd5f4f8ccf4e74ae7f00ba428cf044409fa0b715"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/intake-provenance.json",
+      "bytes": 3140,
+      "sha256": "39fae589dbcd290df186c21e128cefdd7483906fb858286f2c2ef5875f99d8ed"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/atlas/c203-snow-petrel-whole-contours.json",
+      "bytes": 7422,
+      "sha256": "a26e4b3cc69c95c336ac43879393c06326ed56d1a6c98e48a41598525aac6d51"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/atlas/c203-snow-petrel-whole-contours.png",
+      "bytes": 442232,
+      "sha256": "de7fee365e756c7c80f04e23e53947abdfd65d56931bb7441d047a3e10b9b1e7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/atlas/receipt.json",
+      "bytes": 3057,
+      "sha256": "b7e511ac1d236049c4bd0c3f4c98bcfe299e0568c0964ef3ab87483830d5266f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/binding.json",
+      "bytes": 6131,
+      "sha256": "03dd3a64f5f330b133b0635e240229ad7d000648b95e894fc723e7a12aa1d9ad"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/keyed.png",
+      "bytes": 1480518,
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/manifest.json",
+      "bytes": 3009,
+      "sha256": "12497fb162051f9a94ae78e46e19de754fea52e8b90622c13b7db922b83b1860"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/ownership.png",
+      "bytes": 17406,
+      "sha256": "1632165542d3684b21fed8be485d569dc319e0a1804d49751c09806e54b951d7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/beak.png",
+      "bytes": 7419,
+      "sha256": "2611f15432a058a4607c8fedd84464000192cf218108e2c799b1d52337776f26"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/body.png",
+      "bytes": 101149,
+      "sha256": "830851caad3ae2725d7018625ab06e1ba0a6adcc5b7340efeb0126d50f078b8e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/chest.png",
+      "bytes": 40625,
+      "sha256": "f36fc8becc7adccaf8d79dd34500825e9421fe2a0e05583adf39e80f2706064a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/far-foot.png",
+      "bytes": 6853,
+      "sha256": "6b28b745215e74f883bfca6211882339cffa909a4a2bcbc9a005357341fec3fa"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/far-shin.png",
+      "bytes": 3710,
+      "sha256": "f3f15b6f9c646b29e48bddc8591c5aa802cb42a933d9e2d91aadcca8dc8215f0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/far-thigh.png",
+      "bytes": 4190,
+      "sha256": "eb1241438ea32ed47a49c93b1091ee67b3a1d4ad7158d5ef35a57b4138f6d1d3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/far-wing-root.png",
+      "bytes": 6177,
+      "sha256": "e170ae27186811c3b5b37a047142e9212db4089f37f2f9713ad3012f09f6efcb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/far-wing-tip.png",
+      "bytes": 35278,
+      "sha256": "e257d46ebb03ee9a0753a71add452ea66bbf5123cba7a214e76f8886005e90d2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/head.png",
+      "bytes": 35851,
+      "sha256": "bb0430ebd5c37c5c2a20aba52d305af82988734be7c4771f9732771773d1d1f1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/lower-neck.png",
+      "bytes": 18674,
+      "sha256": "59267a1620e90b200b66ce1e364b476c815ce0815c57dd90c93e4c645eeb8899"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/near-foot.png",
+      "bytes": 7224,
+      "sha256": "12a9b33985e613b8a2c4abd2547f79b624b2d2e81d118f93a3600dfe1e24d391"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/near-shin.png",
+      "bytes": 3637,
+      "sha256": "8b207815ef06ea3b0c1b285f4076512583e3c3d2668628ddb2b8bcd767c3ebd0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/near-thigh.png",
+      "bytes": 6521,
+      "sha256": "34fd3722cff5eb5da3362863545460ce046405639cdbeafb80e840b553f97d14"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/near-wing-flight.png",
+      "bytes": 92824,
+      "sha256": "f3d83dc5ae9811609ebc125676d7e3ae7d5e698a77b17d0d8b34fb178bae34b4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/near-wing-root.png",
+      "bytes": 51264,
+      "sha256": "cc625bd5b857ab882e725faa3d7e7b0c5030dd7a76aea98131c8b5ce713cb81d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/pelvis.png",
+      "bytes": 18787,
+      "sha256": "9872a396d1f9dc13add6ed5eb5ab71adcd8580a9b58e7bb72f8024e94ae24b8f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/tail.png",
+      "bytes": 43596,
+      "sha256": "7a243c5731967ef280bb94e4e073d60bcd4f0bffc7920106b2e517adffdef6a5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/parts/upper-neck.png",
+      "bytes": 12663,
+      "sha256": "4ced0543edea0a4b7014576ad60b40402cd5d59dbc782e2fd6581650c24051ea"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/parts/receipt.json",
+      "bytes": 4887,
+      "sha256": "935918af97a1148ae9c3dad77e23b3006ea9e6e28221b8b2287b336c593829bb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/pre-split-binding.json",
+      "bytes": 1077971,
+      "sha256": "45cc931c49c14de44dd3cbb4391f9af79fbbcaa6f80659f1d2cc0239581647a6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/receipt.json",
+      "bytes": 2469,
+      "sha256": "5d50aa3041f67b7192733ab832b44a272038facb5e21445e9c9cffb5d45bc8a2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/fit/record.json",
+      "bytes": 5926,
+      "sha256": "50955d4850d86f4c29cb33ace4013a765bc1a1fead3b733dfa968ef1ca3dda94"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/master.png",
+      "bytes": 1210796,
+      "sha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/source-changes.json",
+      "bytes": 535,
+      "sha256": "614b9d3077c9ffd7849700f5147681812ca97d9ad07b0960bb5d61d4116adc7b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/static.json",
+      "bytes": 8297,
+      "sha256": "be3c1ad9b941e6065e6a2a5ee0578ed5fab17ccb19e15cd4e9920427b9728221"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "dfdecb1fb2a07d981e296f7a62b31742140258aa274579a990608830f3306c60"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-01/subject-source.json",
+      "bytes": 2718,
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/authoring.json",
+      "bytes": 14063,
+      "sha256": "78212f7a57f55883b47a0bd4ec9a75734cf4032516e843fb3649f69a888d09ab"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/binding.json",
+      "bytes": 1352860,
+      "sha256": "62ee8d5bf1add3a15dd46439950b9b22a00c1852257955e2c3360f088feea091"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/declaration.json",
+      "bytes": 18882,
+      "sha256": "736fa7f32c4b4a6df007899887b260dfbc3b6c814c15968626e177532db8aebe"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/intake-provenance.json",
+      "bytes": 3140,
+      "sha256": "fa73e62282696b0bb6924a994d70278a4dfc07f0f1d55582ed5b07956b4d65ac"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/atlas/c203-snow-petrel-proximal-feathers.json",
+      "bytes": 7428,
+      "sha256": "ee04f86ef4c64121b4f118e89fc3cff0f4b208a367b17cf42a93014410dafdaa"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/atlas/c203-snow-petrel-proximal-feathers.png",
+      "bytes": 440090,
+      "sha256": "6c24b44278a9a19eee0cbabafe8be9c42ba04142c8f03917444c03e88cb7be7e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/atlas/receipt.json",
+      "bytes": 3060,
+      "sha256": "a9218ce87146ce0aab75c32a46865fa9a91f6a7a4bf08536f9b03c93f4bceccd"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/binding.json",
+      "bytes": 6134,
+      "sha256": "2b68d16847296c0835636326f374e642651e77780bc5d09a4ac305d884b4dc64"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/keyed.png",
+      "bytes": 1480518,
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/manifest.json",
+      "bytes": 3012,
+      "sha256": "d3ba7c879a5d9ac78031403fde5c8068bb9c0172d40c687b927134053e8432ab"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/ownership.png",
+      "bytes": 17220,
+      "sha256": "fcb7a307ba9cdfdafcc7fbdc215399b47f829cb92f24f5acd4cb373bcb8a9c5d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/beak.png",
+      "bytes": 7419,
+      "sha256": "2611f15432a058a4607c8fedd84464000192cf218108e2c799b1d52337776f26"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/body.png",
+      "bytes": 88104,
+      "sha256": "65e319b0f7a6a1c01e2025afe54f6568de8f075a76cc71ef2524c67f04adaada"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/chest.png",
+      "bytes": 40625,
+      "sha256": "f36fc8becc7adccaf8d79dd34500825e9421fe2a0e05583adf39e80f2706064a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/far-foot.png",
+      "bytes": 6853,
+      "sha256": "6b28b745215e74f883bfca6211882339cffa909a4a2bcbc9a005357341fec3fa"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/far-shin.png",
+      "bytes": 3710,
+      "sha256": "f3f15b6f9c646b29e48bddc8591c5aa802cb42a933d9e2d91aadcca8dc8215f0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/far-thigh.png",
+      "bytes": 4190,
+      "sha256": "eb1241438ea32ed47a49c93b1091ee67b3a1d4ad7158d5ef35a57b4138f6d1d3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/far-wing-root.png",
+      "bytes": 5895,
+      "sha256": "4d9b48250a15cbf15d5c5b9fb38cbc3e54dc77a2ab0101f9419818a6eb9b6db9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/far-wing-tip.png",
+      "bytes": 34704,
+      "sha256": "a1704e4f8ca938e9a15b26b42c7dee6ab614bd9adb8884366e9e8b5178867856"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/head.png",
+      "bytes": 35851,
+      "sha256": "bb0430ebd5c37c5c2a20aba52d305af82988734be7c4771f9732771773d1d1f1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/lower-neck.png",
+      "bytes": 18674,
+      "sha256": "59267a1620e90b200b66ce1e364b476c815ce0815c57dd90c93e4c645eeb8899"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/near-foot.png",
+      "bytes": 7224,
+      "sha256": "12a9b33985e613b8a2c4abd2547f79b624b2d2e81d118f93a3600dfe1e24d391"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/near-shin.png",
+      "bytes": 3637,
+      "sha256": "8b207815ef06ea3b0c1b285f4076512583e3c3d2668628ddb2b8bcd767c3ebd0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/near-thigh.png",
+      "bytes": 6521,
+      "sha256": "34fd3722cff5eb5da3362863545460ce046405639cdbeafb80e840b553f97d14"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/near-wing-flight.png",
+      "bytes": 68557,
+      "sha256": "6fd96248f3a29877ea23bda17c470eba338ee9bbf811ecf0e95fc653a4a4bcde"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/near-wing-root.png",
+      "bytes": 86521,
+      "sha256": "b7306b0bd35be6e783d92fef1d8bf5cfebc30cebc3ae5fb7b34dc6ad86066dee"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/pelvis.png",
+      "bytes": 18787,
+      "sha256": "9872a396d1f9dc13add6ed5eb5ab71adcd8580a9b58e7bb72f8024e94ae24b8f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/tail.png",
+      "bytes": 43596,
+      "sha256": "7a243c5731967ef280bb94e4e073d60bcd4f0bffc7920106b2e517adffdef6a5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/parts/upper-neck.png",
+      "bytes": 12663,
+      "sha256": "4ced0543edea0a4b7014576ad60b40402cd5d59dbc782e2fd6581650c24051ea"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/parts/receipt.json",
+      "bytes": 4887,
+      "sha256": "ada2da6d7a5894b1659d1ccf2ec4bec5a36d489dbc2e3ade9de7507ba829e774"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/pre-split-binding.json",
+      "bytes": 1061897,
+      "sha256": "54e963dd0800af7bf9c33c895b3994748c0efdb0412e0fd09bf3f6a285b6e62e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/receipt.json",
+      "bytes": 2472,
+      "sha256": "07d2096ef0cce6f7b1bfd4b9f756a4e05d999cb04c2ec0fa469ce3087fe4df10"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit/record.json",
+      "bytes": 5929,
+      "sha256": "d51d8123d84527fe18c0551ecbd3652463710ccba467d524e3822b5836db473d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/master.png",
+      "bytes": 1210796,
+      "sha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/source-changes.json",
+      "bytes": 367,
+      "sha256": "aa38c4c943aadb34583c946e627e9a7f367b982726c2251a83a9669f6fdee911"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/subject-source.json",
+      "bytes": 2718,
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-probe-inputs.json",
+      "bytes": 12837,
+      "sha256": "83d73358448665a5155b4ded46e38203f7ad275d5837fa9424aa65c389fee4a5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-probe-units.json",
+      "bytes": 287,
+      "sha256": "d43b049d0ecd44a2b1611cb4709f14fa794d6afa0f63b59edf71cab2f0eb606b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-probe.json",
+      "bytes": 456,
+      "sha256": "ce9af65e5f1ffdb73fab323762aafd1869fe537b8fbd08e01a57c9943b9bb986"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-probe.log",
+      "bytes": 194,
+      "sha256": "3903940cbe5ef51f1844c9f8a31552470dba37ffed3da99bc3139f8fb9c2cd4d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-probe.mjs",
+      "bytes": 1086,
+      "sha256": "a0b8bff2f842107c37849fe22464b0e87abb436de29f33f856100d17e2f04705"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-probe.ts",
+      "bytes": 2755,
+      "sha256": "383e0555779150404b77ee9d44eb4ef5a0bcf74b9a73ad5968e40f87ab6b0cad"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-solver-probe-inputs.json",
+      "bytes": 12844,
+      "sha256": "78d8f4d6b7b223d21cf5d7937d2c74572c6a7c1e5ceb4beb188b531c2e2b41c4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-solver-probe.json",
+      "bytes": 8122,
+      "sha256": "0c4b5992d6d65f0a3b374c42622cd3eaa4f9318368dc6971adee8d5f7a453b15"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-solver-probe.log",
+      "bytes": 2659,
+      "sha256": "b8c43b80027d70da91286696cebbed1f2303ea32d53ea5951391965f34166fab"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-solver-probe.mjs",
+      "bytes": 1121,
+      "sha256": "c12226d51e8a80fc6f7174ce46ca6b2078322794578b13889674362d9f38f07a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-fold-solver-probe.ts",
+      "bytes": 2763,
+      "sha256": "91faa9fdb15d2d0294af73754422c75096d65eee360d98c3376ef0e3e7bd067e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/binding.json",
+      "bytes": 1609307,
+      "sha256": "bc263884f530827eb36c92094bb1217a378b4ea14df2c31573f5938d3806a5db"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/declaration.json",
+      "bytes": 2088,
+      "sha256": "f77e8af4d2060ddd8f6edea510633265aaf0afd9676d4ab81ad9a35618b33e86"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/labels.png",
+      "bytes": 43071,
+      "sha256": "570dadbcff9876c60327f7807bfcdd0265ec11a4ba72bb3dc8a8b780f34084b3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/atlas/c203-petrel-folded-islands.json",
+      "bytes": 7421,
+      "sha256": "35592b4e54e7ee5705d14d26c2a009107c908cb7584b356e87aec8875e4cafef"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/atlas/c203-petrel-folded-islands.png",
+      "bytes": 683188,
+      "sha256": "6882c9dfd5d86da7bbd816a8b9b00ae9cbf9ba35e62555e2806edcffcbdcf781"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/atlas/receipt.json",
+      "bytes": 3052,
+      "sha256": "c74450f2ec9dd4ea2242486d3664ad34bb87a959bb43e0d0985968014960acc9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/binding.json",
+      "bytes": 6135,
+      "sha256": "5e392094ddc3078af4a5353ddd8f5bc5ee8b9ae7341d2b512f89f9b13c2951f9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/keyed.png",
+      "bytes": 1679930,
+      "sha256": "bcf82fb1f636865f76f862d7f531f3c3344fa7701be57d70e7efdad5b80e4a10"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/manifest.json",
+      "bytes": 3004,
+      "sha256": "7e9b14292f288a734408cdf520a6d0d9f94779734ffcc5c50d302575f5cfb8ad"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/ownership.png",
+      "bytes": 19923,
+      "sha256": "ba9352f5016f976ad2a883568a9b8a075614e04898f87316e103aab20d1965dc"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/beak.png",
+      "bytes": 13487,
+      "sha256": "1202b9445ff6cae0fc6179821b5542e9606a5642a4f3fb4f951d10d712326216"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/body.png",
+      "bytes": 57364,
+      "sha256": "1bcd97d11381bf453c59370ed5b12688ce0d8c83d1169cb32e875eac0979a34a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/chest.png",
+      "bytes": 51906,
+      "sha256": "683a2b6a8faf8c1bfa4d07328b04a381ff1bd4e1afa2be6391aee71469fbe7c5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/far-foot.png",
+      "bytes": 18523,
+      "sha256": "39d11115759052569944623f01bb1ac39072bf4f2ad25fa51109843556b3f829"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/far-shin.png",
+      "bytes": 9453,
+      "sha256": "50b0a171ecddbbe705734e653c0ef8d798141c56bb6065b1a807490cfe7c9247"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/far-thigh.png",
+      "bytes": 7063,
+      "sha256": "b3da87f3e26f07e8f0cde7507a0027369e9767bbc0b426dea1fb64c136c3aaf1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/far-wing-root.png",
+      "bytes": 5044,
+      "sha256": "02d97770a889ffe337cd827c91f33265209304d039ec45f0b97fe40c3fc0a4ed"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/far-wing-tip.png",
+      "bytes": 15309,
+      "sha256": "2743ab9dcad8c1f5542b18f62f0830c35cbcaab8e19fff9d35b11d78bf774fa0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/head.png",
+      "bytes": 73110,
+      "sha256": "a6ea901cae31bb56eb365b81db0fbd5d40b573b5bcc549e7c96535a177d4a375"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/lower-neck.png",
+      "bytes": 33056,
+      "sha256": "18693242d03ed034a3cfad1ab28378293ebd04cfa0ee31a48c4281e1d35f486b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/near-foot.png",
+      "bytes": 20686,
+      "sha256": "1170331de0a55cdd3da6edcd252c74409dfe80ad04fe572f0e18f6111fa895f1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/near-shin.png",
+      "bytes": 9988,
+      "sha256": "a303f1c90e314c3d06e4f20ee2275d229716f729482d4ae01f5059c74b8f8d0e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/near-thigh.png",
+      "bytes": 11650,
+      "sha256": "17c8752093928f9c924f12c5015e348d565af061f8eea2e0d7071589583a923f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/near-wing-flight.png",
+      "bytes": 171455,
+      "sha256": "4cea8a67997a54634d94722439b9875860e13f87d4d14012dbf8dd9af933da60"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/near-wing-root.png",
+      "bytes": 130104,
+      "sha256": "425f12d5ff470bec3e64fbc026368504cc312b1a36ffaf33d8d3194bc940a0b0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/pelvis.png",
+      "bytes": 34955,
+      "sha256": "5ed38e97e823624b0343c598c1d30d0d69d6ea4b14fbaca5655b86037244aa29"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/tail.png",
+      "bytes": 40617,
+      "sha256": "2c31b0f1001b159772f0e97dedb0d9060d2af13965fddc1fef94012f129153c9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/parts/upper-neck.png",
+      "bytes": 26211,
+      "sha256": "4fd08b8442f697b3821a0d6fa60cdf33a238fea2db944a3e7ee4c7ff4a6a7cff"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/parts/receipt.json",
+      "bytes": 5071,
+      "sha256": "e13294a28e7bdca3ab25038821bb165f5f2e3ca29a9ff9d391286a04c0063b9d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/pre-split-binding.json",
+      "bytes": 1245334,
+      "sha256": "3beeba3d4363bbe0cc24ae4448becf9ac43f2084b1087e280cd9ca96a8138313"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/fit/record.json",
+      "bytes": 5934,
+      "sha256": "2555a11c1d2efcbe1a3f60aa933b0c7ae654f18de67be8613563a3ef86bfc9be"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-islands-01/receipt.json",
+      "bytes": 3571,
+      "sha256": "063c19a46f6a6fd301d303e99ce751af833750e6baf512228987d29961d3c238"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/approach-walk-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/approach-walk-0p2.png",
+      "bytes": 662623,
+      "sha256": "31c63c9b6ac692f493c57ae52d33c83fa8fabfaa3f4fee7a25877d53033a6b7a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/approach-walk-0p9.png",
+      "bytes": 660044,
+      "sha256": "d73ebe9ec75e1c6cb4d5aa78867b2757b487f2687dc523045a49645ddf86703d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/approach-walk-1.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/cast-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/cast-0p2.png",
+      "bytes": 603033,
+      "sha256": "bd9237ec0d5f66d22616c0850edbf16a47714d6f57674e3033262d1a5ca18424"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/cast-0p9.png",
+      "bytes": 662078,
+      "sha256": "9abeac5b55fb6542b3875a9957dcae1bb5ee5aa060785c5df76de74955f109af"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/cast-1.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/faint-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/faint-0p2.png",
+      "bytes": 650212,
+      "sha256": "ed6ac7428375c85908d353ab6ba92f4f2f4bbe965aaf32bad92443f09e899610"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/faint-0p9.png",
+      "bytes": 551888,
+      "sha256": "abfe547fabbe0f5f1e8a211b998d0a8af80bea26198c5925f671b67bbef720c2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/faint-1.png",
+      "bytes": 604279,
+      "sha256": "05ef171cfeb019a8ab5614a3e8ff4fbbd63154bc4e44b2ba86f82af94592a676"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/hit-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/hit-0p2.png",
+      "bytes": 634145,
+      "sha256": "9f611d22ecb54e3f26809c19ab6d7eb10427f746fb0bc9ce33e91d09f56e283d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/hit-0p9.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/hit-1.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/idle-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/idle-0p2.png",
+      "bytes": 661975,
+      "sha256": "0893d498a4f48fb166476498774a6e968352e4cfd3acba762da0e3a7707bebb0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/idle-0p9.png",
+      "bytes": 662708,
+      "sha256": "ef1d6ab51af78cea4a674e4371e59e59677f6d60a49acdd72a002b53d45f6919"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/idle-1.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/melee-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/melee-0p2.png",
+      "bytes": 627482,
+      "sha256": "b056c79869dc4aabc102006a0f4f3a451312d7bb86af636cd9bd2b219da72183"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/melee-0p9.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/melee-1.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/review.json",
+      "bytes": 8566,
+      "sha256": "418dff0ae240c2bcc8af4bcca4c3bb9496a48af3703eef07242e7049cf1542b2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/tame-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/tame-0p2.png",
+      "bytes": 662011,
+      "sha256": "3d599a34cafc2a545f8a5ab171acf5b41247cbf68415d6e30a3ee6593047c7f4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/tame-0p9.png",
+      "bytes": 663367,
+      "sha256": "fdcc6398fee01320757ad237b4bd97022823394d4eb182655a4bf8e62cd22d14"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-01/tame-1.png",
+      "bytes": 662199,
+      "sha256": "90736eccfa0a0116b680694946933343e9056b092d8ea5bfbc2374cd9a213e7e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/approach-walk-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/approach-walk-0p2.png",
+      "bytes": 663332,
+      "sha256": "559a509023b43c6b590b48ffa9454c8687ed10344ee7276468119179b818a59a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/approach-walk-0p9.png",
+      "bytes": 660044,
+      "sha256": "b3b05f1e537963e24f01127290bb19a07141f99e2ed77ec0d82f0a64f1ebbe2f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/approach-walk-1.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/cast-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/cast-0p2.png",
+      "bytes": 661629,
+      "sha256": "bd57b0485b7c029067b744b03f6754e41e445032256ff1c793ad14c425479527"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/cast-0p9.png",
+      "bytes": 662078,
+      "sha256": "9abeac5b55fb6542b3875a9957dcae1bb5ee5aa060785c5df76de74955f109af"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/cast-1.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/faint-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/faint-0p2.png",
+      "bytes": 653084,
+      "sha256": "4edb13c0b82b180e9b2edb654070a1df65e4ba4a9945b65a3169343bde3cb615"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/faint-0p9.png",
+      "bytes": 566766,
+      "sha256": "07c77adac48538b0390cf27f2fd73fa8409bf04fc0a34bb84d1d61f73eccb2f4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/faint-1.png",
+      "bytes": 617882,
+      "sha256": "d6e51bb0ef1296890b83204e33aba37b20826b0fe68bbd8982ee167281e954e4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/hit-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/hit-0p2.png",
+      "bytes": 660213,
+      "sha256": "b47667d5f5a888bfa98c3a69298fdecbb4f6d202c6294a14f5d87e7e63856edb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/hit-0p9.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/hit-1.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/idle-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/idle-0p2.png",
+      "bytes": 661853,
+      "sha256": "4236e71c80eba2481c2a5c86e371911d62f284b4a88625ad9d0286069cd515b2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/idle-0p9.png",
+      "bytes": 662712,
+      "sha256": "1e69f2e2973cb8b9e9b5f4cacd5cdb4e1c6691f8c3aa3861753b2d8c4240a824"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/idle-1.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/melee-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/melee-0p2.png",
+      "bytes": 648183,
+      "sha256": "e967838a3e67bf1abff4462fb0824f831b122a55812ff29473e7070427064a95"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/melee-0p9.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/melee-1.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/review.json",
+      "bytes": 8581,
+      "sha256": "a31f325cf347b4aa3b348be3a23dd4bb0374a71bbb93ef7e0f98882876914853"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/tame-0.png",
+      "bytes": 661475,
+      "sha256": "451158ed971282ec98845b5915a51ee011d1f1e600a2184e3cc64141b69e62ec"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/tame-0p2.png",
+      "bytes": 662011,
+      "sha256": "11a46af44c6ea5e0be0a3b100759d34646bb9672bb574386171de69b1b6430de"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/tame-0p9.png",
+      "bytes": 663150,
+      "sha256": "acc0136e4e20f5c802042d236dd668306ebf9ab790e90b76e88c66b1c3ef5b29"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-review-02/tame-1.png",
+      "bytes": 662064,
+      "sha256": "580cdef597e7610eb49e9a6029bd6faa5a529e02e0dfdd36ebed1d621bbd68c3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01.mjs",
+      "bytes": 2446,
+      "sha256": "906c4b7db381c4ee6b7d11b025e90800da67d69ae5bf69024bbc2e6a94fcf5e3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/binding.json",
+      "bytes": 1832876,
+      "sha256": "581069eb04a62bf139b25be37af26e748f64bdb41ee3d82fdb6e5eed450defe3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/declaration.json",
+      "bytes": 2088,
+      "sha256": "f77e8af4d2060ddd8f6edea510633265aaf0afd9676d4ab81ad9a35618b33e86"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/labels.png",
+      "bytes": 43071,
+      "sha256": "570dadbcff9876c60327f7807bfcdd0265ec11a4ba72bb3dc8a8b780f34084b3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/atlas/c203-petrel-folded-islands.json",
+      "bytes": 7421,
+      "sha256": "35592b4e54e7ee5705d14d26c2a009107c908cb7584b356e87aec8875e4cafef"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/atlas/c203-petrel-folded-islands.png",
+      "bytes": 683188,
+      "sha256": "6882c9dfd5d86da7bbd816a8b9b00ae9cbf9ba35e62555e2806edcffcbdcf781"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/atlas/receipt.json",
+      "bytes": 3052,
+      "sha256": "c74450f2ec9dd4ea2242486d3664ad34bb87a959bb43e0d0985968014960acc9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/binding.json",
+      "bytes": 6135,
+      "sha256": "5e392094ddc3078af4a5353ddd8f5bc5ee8b9ae7341d2b512f89f9b13c2951f9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/keyed.png",
+      "bytes": 1679930,
+      "sha256": "bcf82fb1f636865f76f862d7f531f3c3344fa7701be57d70e7efdad5b80e4a10"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/manifest.json",
+      "bytes": 3004,
+      "sha256": "7e9b14292f288a734408cdf520a6d0d9f94779734ffcc5c50d302575f5cfb8ad"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/ownership.png",
+      "bytes": 19923,
+      "sha256": "ba9352f5016f976ad2a883568a9b8a075614e04898f87316e103aab20d1965dc"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/beak.png",
+      "bytes": 13487,
+      "sha256": "1202b9445ff6cae0fc6179821b5542e9606a5642a4f3fb4f951d10d712326216"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/body.png",
+      "bytes": 57364,
+      "sha256": "1bcd97d11381bf453c59370ed5b12688ce0d8c83d1169cb32e875eac0979a34a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/chest.png",
+      "bytes": 51906,
+      "sha256": "683a2b6a8faf8c1bfa4d07328b04a381ff1bd4e1afa2be6391aee71469fbe7c5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/far-foot.png",
+      "bytes": 18523,
+      "sha256": "39d11115759052569944623f01bb1ac39072bf4f2ad25fa51109843556b3f829"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/far-shin.png",
+      "bytes": 9453,
+      "sha256": "50b0a171ecddbbe705734e653c0ef8d798141c56bb6065b1a807490cfe7c9247"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/far-thigh.png",
+      "bytes": 7063,
+      "sha256": "b3da87f3e26f07e8f0cde7507a0027369e9767bbc0b426dea1fb64c136c3aaf1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/far-wing-root.png",
+      "bytes": 5044,
+      "sha256": "02d97770a889ffe337cd827c91f33265209304d039ec45f0b97fe40c3fc0a4ed"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/far-wing-tip.png",
+      "bytes": 15309,
+      "sha256": "2743ab9dcad8c1f5542b18f62f0830c35cbcaab8e19fff9d35b11d78bf774fa0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/head.png",
+      "bytes": 73110,
+      "sha256": "a6ea901cae31bb56eb365b81db0fbd5d40b573b5bcc549e7c96535a177d4a375"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/lower-neck.png",
+      "bytes": 33056,
+      "sha256": "18693242d03ed034a3cfad1ab28378293ebd04cfa0ee31a48c4281e1d35f486b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/near-foot.png",
+      "bytes": 20686,
+      "sha256": "1170331de0a55cdd3da6edcd252c74409dfe80ad04fe572f0e18f6111fa895f1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/near-shin.png",
+      "bytes": 9988,
+      "sha256": "a303f1c90e314c3d06e4f20ee2275d229716f729482d4ae01f5059c74b8f8d0e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/near-thigh.png",
+      "bytes": 11650,
+      "sha256": "17c8752093928f9c924f12c5015e348d565af061f8eea2e0d7071589583a923f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/near-wing-flight.png",
+      "bytes": 171455,
+      "sha256": "4cea8a67997a54634d94722439b9875860e13f87d4d14012dbf8dd9af933da60"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/near-wing-root.png",
+      "bytes": 130104,
+      "sha256": "425f12d5ff470bec3e64fbc026368504cc312b1a36ffaf33d8d3194bc940a0b0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/pelvis.png",
+      "bytes": 34955,
+      "sha256": "5ed38e97e823624b0343c598c1d30d0d69d6ea4b14fbaca5655b86037244aa29"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/tail.png",
+      "bytes": 40617,
+      "sha256": "2c31b0f1001b159772f0e97dedb0d9060d2af13965fddc1fef94012f129153c9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/parts/upper-neck.png",
+      "bytes": 26211,
+      "sha256": "4fd08b8442f697b3821a0d6fa60cdf33a238fea2db944a3e7ee4c7ff4a6a7cff"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/parts/receipt.json",
+      "bytes": 5071,
+      "sha256": "e13294a28e7bdca3ab25038821bb165f5f2e3ca29a9ff9d391286a04c0063b9d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/pre-split-binding.json",
+      "bytes": 1245334,
+      "sha256": "3beeba3d4363bbe0cc24ae4448becf9ac43f2084b1087e280cd9ca96a8138313"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/fit/record.json",
+      "bytes": 5934,
+      "sha256": "2555a11c1d2efcbe1a3f60aa933b0c7ae654f18de67be8613563a3ef86bfc9be"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/recipe.json",
+      "bytes": 2055,
+      "sha256": "06b0018ce029dfc317316b8d80db0e47290d3627eb84590e961578b737b1e13e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/static.json",
+      "bytes": 8351,
+      "sha256": "764e869cc67f790c12d9a07d47c031dc43282943f6d002b87af11f18511a2e9b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-folded-source-joins-01/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "78720c229a603aa76e7cbdd0515e348bb50721829d8482b9026e5a4e938a59c6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/binding.json",
+      "bytes": 1254864,
+      "sha256": "0bf844bc28413a96c8bbc93d1713504383008819bce2a4df6a3978545906652f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/declaration.json",
+      "bytes": 2088,
+      "sha256": "57755f4af4aeca141bb020858ddd0ea40aeb2aabd10a5af590a68a6367717458"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/labels.png",
+      "bytes": 41815,
+      "sha256": "2747cb1daaf02d42bf2f184bc239b8bf96ad82413449e30bf2b668d6970e00c3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/atlas/c203-petrel-whole-contour-islands.json",
+      "bytes": 7414,
+      "sha256": "ce9bbde7894a4bfbe03feb8c705209972ec43c52af9894bb3b437ca9726907b7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/atlas/c203-petrel-whole-contour-islands.png",
+      "bytes": 434407,
+      "sha256": "d296bd2693a9a469792af9ee8e96b91e1da959cc7255118772037decd9171358"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/atlas/receipt.json",
+      "bytes": 3059,
+      "sha256": "0873c00fc4ba47a0f6698f393af5da426efb62a6334a2968f89f044d5085b376"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/binding.json",
+      "bytes": 6121,
+      "sha256": "5402fa721144cf9a457fa4bf6dafb89cd1bef89fb3c35398781276562804d6ff"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/keyed.png",
+      "bytes": 1480518,
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/manifest.json",
+      "bytes": 3011,
+      "sha256": "87cbf3006bdd83f585e5e290c38308d0d52b85827c2222150b1b01cb48f956c8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/ownership.png",
+      "bytes": 17008,
+      "sha256": "546b75c3ac36ba58bbd40e0c3062e3a1483840e387b4404f01b0eefb47d2da3d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/beak.png",
+      "bytes": 7662,
+      "sha256": "eac41067ba4e02d256350d75842a76cf84a3a3123f56b529fcae5ce37e89a621"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/body.png",
+      "bytes": 84383,
+      "sha256": "cd52bc5a3a2a1334e72fb6d779f1bf6532dc27a41c3e0006ae7336ce741ad11f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/chest.png",
+      "bytes": 40628,
+      "sha256": "88a116baf9faf863d53bec1eaa8566894a1ed33b38382c03f9d85f5b0543b909"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/far-foot.png",
+      "bytes": 7171,
+      "sha256": "88bef31da51c3bfac4489ddb7e5175eed756523c395c9afb501fd3d8fd821f89"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/far-shin.png",
+      "bytes": 3710,
+      "sha256": "f3f15b6f9c646b29e48bddc8591c5aa802cb42a933d9e2d91aadcca8dc8215f0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/far-thigh.png",
+      "bytes": 4190,
+      "sha256": "eb1241438ea32ed47a49c93b1091ee67b3a1d4ad7158d5ef35a57b4138f6d1d3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/far-wing-root.png",
+      "bytes": 6177,
+      "sha256": "e170ae27186811c3b5b37a047142e9212db4089f37f2f9713ad3012f09f6efcb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/far-wing-tip.png",
+      "bytes": 36473,
+      "sha256": "ef13d7ecc54e95d9875eb30f3ff67040f335b82eadc31ca7f63423ac5740740c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/head.png",
+      "bytes": 36108,
+      "sha256": "2700e3b2a700fe151eeef8a4ba382393054860d87559b6b12c6054d9d8a2358f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/lower-neck.png",
+      "bytes": 18674,
+      "sha256": "59267a1620e90b200b66ce1e364b476c815ce0815c57dd90c93e4c645eeb8899"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/near-foot.png",
+      "bytes": 7924,
+      "sha256": "e171467398c0303631f56cf467cdb55aff018b9f354a8ece9523311cc22d17f4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/near-shin.png",
+      "bytes": 3637,
+      "sha256": "8b207815ef06ea3b0c1b285f4076512583e3c3d2668628ddb2b8bcd767c3ebd0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/near-thigh.png",
+      "bytes": 6521,
+      "sha256": "34fd3722cff5eb5da3362863545460ce046405639cdbeafb80e840b553f97d14"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/near-wing-flight.png",
+      "bytes": 98300,
+      "sha256": "0c3c78b3948046da02fe4e30f7242d7fad73a7768dd7c259a8682b9b7d4b290b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/near-wing-root.png",
+      "bytes": 53159,
+      "sha256": "8a9fc1e193c90af2a655b05c620a18b02538e4d75814614c86c35d18d554c60b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/pelvis.png",
+      "bytes": 18814,
+      "sha256": "7b0ca010f17adfd36d10232ba5894e1a6436b1aa026805733d80176a1ef4abf3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/tail.png",
+      "bytes": 44209,
+      "sha256": "871610767fd73935b8fd70d355814130157df38e9e9100d49f7ae4ee427569cb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/parts/upper-neck.png",
+      "bytes": 12922,
+      "sha256": "c08f8727c2a6c7bec1312e21d312d67888882f5dc07997bccdc8f536fe09ac8b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/parts/receipt.json",
+      "bytes": 5066,
+      "sha256": "d4decd984a40c28f54f40d71459bb19b5efb96aa4a10d3144bc137f6c8d06d6d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/pre-split-binding.json",
+      "bytes": 999850,
+      "sha256": "7950a739cb69db784f748dc6f6581e4f6bc0eaf4365c867d7554cb75c08d61e9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit/record.json",
+      "bytes": 5926,
+      "sha256": "50955d4850d86f4c29cb33ace4013a765bc1a1fead3b733dfa968ef1ca3dda94"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/receipt.json",
+      "bytes": 5988,
+      "sha256": "ecdaf2f75b23e3f9fa7da619026960cb47e1ed561e7ee4b21c9076ab83c7667b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/binding.json",
+      "bytes": 1242618,
+      "sha256": "b5e9bb1f7c0e9af6aeee27bcb9f58599ff875a05a3fff1c2480c56e356b308ca"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/declaration.json",
+      "bytes": 2088,
+      "sha256": "4caf5231fc344c6f473211433d169a3990dcbcd104d8d688451555bb907eba32"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/labels.png",
+      "bytes": 41730,
+      "sha256": "a5a4f2b56a079b9c984bbd9a48652b242689473c15d886cd6bcfcf7159bb4457"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/atlas/c203-petrel-proximal-feather-islands.json",
+      "bytes": 7423,
+      "sha256": "4d451b16587eecd068000b08afe46fac544b7718386033e846a650b530efc46e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/atlas/c203-petrel-proximal-feather-islands.png",
+      "bytes": 431319,
+      "sha256": "583ac835c4b1f37f55fc65af401f6e8f033ca3974a20d3fd22ff513c13558665"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/atlas/receipt.json",
+      "bytes": 3062,
+      "sha256": "07d87cccecbcf7a1ea72d4233feb9cd721582ca37c793e3e45c3281064da21c4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/binding.json",
+      "bytes": 6127,
+      "sha256": "5ad1d1845190b54626abbb264f612009a81385f8cc4759efa87fbc7686311d1f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/keyed.png",
+      "bytes": 1480518,
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/manifest.json",
+      "bytes": 3014,
+      "sha256": "fb2e9134d9d08ebfa75dc87a108237d9ca7b2e70eb869c560492825b846068e0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/ownership.png",
+      "bytes": 16915,
+      "sha256": "7c7d0d5b39e4e371989ea50816c89fecedff90880190ea00fd054111db4e3194"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/beak.png",
+      "bytes": 7662,
+      "sha256": "eac41067ba4e02d256350d75842a76cf84a3a3123f56b529fcae5ce37e89a621"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/body.png",
+      "bytes": 73302,
+      "sha256": "9c45ec1ea22ecb52bbec563130a6107d0324d26e1642fc3a4fd6f7841e702298"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/chest.png",
+      "bytes": 40628,
+      "sha256": "88a116baf9faf863d53bec1eaa8566894a1ed33b38382c03f9d85f5b0543b909"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/far-foot.png",
+      "bytes": 7171,
+      "sha256": "88bef31da51c3bfac4489ddb7e5175eed756523c395c9afb501fd3d8fd821f89"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/far-shin.png",
+      "bytes": 3710,
+      "sha256": "f3f15b6f9c646b29e48bddc8591c5aa802cb42a933d9e2d91aadcca8dc8215f0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/far-thigh.png",
+      "bytes": 4190,
+      "sha256": "eb1241438ea32ed47a49c93b1091ee67b3a1d4ad7158d5ef35a57b4138f6d1d3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/far-wing-root.png",
+      "bytes": 5895,
+      "sha256": "4d9b48250a15cbf15d5c5b9fb38cbc3e54dc77a2ab0101f9419818a6eb9b6db9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/far-wing-tip.png",
+      "bytes": 35811,
+      "sha256": "fc31445d60c3c70e651d976cb530ba021134063248287fa069d456643f9261be"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/head.png",
+      "bytes": 36108,
+      "sha256": "2700e3b2a700fe151eeef8a4ba382393054860d87559b6b12c6054d9d8a2358f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/lower-neck.png",
+      "bytes": 18674,
+      "sha256": "59267a1620e90b200b66ce1e364b476c815ce0815c57dd90c93e4c645eeb8899"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/near-foot.png",
+      "bytes": 7924,
+      "sha256": "e171467398c0303631f56cf467cdb55aff018b9f354a8ece9523311cc22d17f4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/near-shin.png",
+      "bytes": 3637,
+      "sha256": "8b207815ef06ea3b0c1b285f4076512583e3c3d2668628ddb2b8bcd767c3ebd0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/near-thigh.png",
+      "bytes": 6521,
+      "sha256": "34fd3722cff5eb5da3362863545460ce046405639cdbeafb80e840b553f97d14"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/near-wing-flight.png",
+      "bytes": 73215,
+      "sha256": "ade457707869d3a38ec7e6b1f86a3ee97fb066275172982b3f0a3001d5685ae2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/near-wing-root.png",
+      "bytes": 87219,
+      "sha256": "48696b51b6cb3370b8c4537694d91c567fdc69975b10156e2df5ca266eeab9b0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/pelvis.png",
+      "bytes": 18814,
+      "sha256": "7b0ca010f17adfd36d10232ba5894e1a6436b1aa026805733d80176a1ef4abf3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/tail.png",
+      "bytes": 44209,
+      "sha256": "871610767fd73935b8fd70d355814130157df38e9e9100d49f7ae4ee427569cb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/parts/upper-neck.png",
+      "bytes": 12922,
+      "sha256": "c08f8727c2a6c7bec1312e21d312d67888882f5dc07997bccdc8f536fe09ac8b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/parts/receipt.json",
+      "bytes": 5066,
+      "sha256": "2e0d5f8a1df371730129aea97902223ce87ef1379ad6624d711cdba1d74ee0ef"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/pre-split-binding.json",
+      "bytes": 990553,
+      "sha256": "0f101ddb552b80ef96a1c4f2bee6696dd22284691a2e5f921328ca92e789e8ac"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit/record.json",
+      "bytes": 5929,
+      "sha256": "d51d8123d84527fe18c0551ecbd3652463710ccba467d524e3822b5836db473d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/receipt.json",
+      "bytes": 5844,
+      "sha256": "7db5252f1ce65f04ee62589121bac354f731d89ac6f4e12461f81875e188a7b9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/approach-walk-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/approach-walk-0p2.png",
+      "bytes": 417931,
+      "sha256": "cde6f62ab9eedbe913fc198d75345bd6f5a2b66d1cf52044a90c49c398babe7e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/approach-walk-0p9.png",
+      "bytes": 416346,
+      "sha256": "a1c1c08a2e3b2482a666755893af64eca0a72cdd34dbfd099469a73c58cd8f3a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/approach-walk-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/faint-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/faint-0p2.png",
+      "bytes": 415448,
+      "sha256": "58cd23ffe0291f40de26aa4bafd7db839e8ee7f9fd06baf668a8df4ea2067c25"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/faint-0p9.png",
+      "bytes": 361768,
+      "sha256": "e890f69fcd332c137c9f3d6cb612ca6d0487cecfdf91ec37a4b3380bd4075352"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/faint-1.png",
+      "bytes": 402157,
+      "sha256": "b95f9480f54fb06305aac8f5bbe77ee9cac24a5f0be994402143b600592632b7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/hit-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/hit-0p2.png",
+      "bytes": 386702,
+      "sha256": "9437f35e63c0cee72c30e780f7514697bc91baf1106e48b9e98baeaf43901549"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/hit-0p9.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/hit-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/idle-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/idle-0p2.png",
+      "bytes": 414623,
+      "sha256": "ae506de870dcf01a7d92026bf2902aeec38b54728b52d93c70f4af3d933a3319"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/idle-0p9.png",
+      "bytes": 418317,
+      "sha256": "4d5355eaa88e6d0ae2dca8f39e98ad9fded543fba09df60f1b6f6f27db48da91"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/idle-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-01/review.json",
+      "bytes": 5586,
+      "sha256": "0f442e4894c5ebbfc1037d4d9726f91b403c3d76435c33ad093be9b792f96af6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/approach-walk-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/approach-walk-0p2.png",
+      "bytes": 418001,
+      "sha256": "a877cf571270e98e5b7ea11cd7585a4303e9c04b5c13908ec45deb6e0ac38423"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/approach-walk-0p9.png",
+      "bytes": 416240,
+      "sha256": "e70033a7f0f986c7b69c5d9387a1ed436cc5faab4a56ffe850189b0fc728807e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/approach-walk-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/faint-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/faint-0p2.png",
+      "bytes": 415023,
+      "sha256": "f23eb0fa975122a27f122ddef751ea66e19b22d27efa0a7846b4cdd1eecbbc65"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/faint-0p9.png",
+      "bytes": 358334,
+      "sha256": "401ed5e678a5d1854607a30ceb7c5588dc0b7fb331b8f3167984713c98368824"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/faint-1.png",
+      "bytes": 404041,
+      "sha256": "c637dc009c956887124e4e2bc1c2ea4eb343df6492e1f988fb399c4e4781746e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/hit-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/hit-0p2.png",
+      "bytes": 385129,
+      "sha256": "66c6bc69f388cd6822fe2438a7318d51f78240c1fc8b924972f47a9d8489cada"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/hit-0p9.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/hit-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/idle-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/idle-0p2.png",
+      "bytes": 413685,
+      "sha256": "ee987ae3486287b23d8af4b59db175deff207e352df456c33a90c7f2c9939ea3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/idle-0p9.png",
+      "bytes": 417978,
+      "sha256": "d5a71b00d3ee35c61b9a6857ccc1f5e7daaa609e22cdcad1a69d626413904767"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/idle-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-02/review.json",
+      "bytes": 5600,
+      "sha256": "13a5ddeaa65e3cf86a3d17deff0dff6ac2918af4cdd1e5450ca824c299f0057b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/approach-walk-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/approach-walk-0p2.png",
+      "bytes": 418001,
+      "sha256": "a877cf571270e98e5b7ea11cd7585a4303e9c04b5c13908ec45deb6e0ac38423"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/approach-walk-0p9.png",
+      "bytes": 416240,
+      "sha256": "e70033a7f0f986c7b69c5d9387a1ed436cc5faab4a56ffe850189b0fc728807e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/approach-walk-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/faint-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/faint-0p2.png",
+      "bytes": 415023,
+      "sha256": "f23eb0fa975122a27f122ddef751ea66e19b22d27efa0a7846b4cdd1eecbbc65"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/faint-0p9.png",
+      "bytes": 358327,
+      "sha256": "5c1200bf263fea8864f0fe86f7f2736360fc802d474e62efaeaceb4fde556f05"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/faint-1.png",
+      "bytes": 404021,
+      "sha256": "3afa235fd92a729328c13de49083d18dd1fc62d2f57062d73f3eb73f27112b1b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/hit-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/hit-0p2.png",
+      "bytes": 394233,
+      "sha256": "c78f635f3856e060c7e522b4770aeebfeecd728a10492d86c81b5ff26f5e4feb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/hit-0p9.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/hit-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/idle-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/idle-0p2.png",
+      "bytes": 414004,
+      "sha256": "ab63e0996c7b03749714b30f01939c523ca5f0bca8a33a05bb05113a2c577abe"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/idle-0p9.png",
+      "bytes": 418163,
+      "sha256": "6df84604f149839868a4f79be825884102ecaf3442b95fa6afedcb1a975307b4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/idle-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-03/review.json",
+      "bytes": 5600,
+      "sha256": "1fc8d099ff848ff24d625d3257234f1f143c438a50074effde6c5e88a45cb2c0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/approach-walk-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/approach-walk-0p2.png",
+      "bytes": 418001,
+      "sha256": "46025494e7cf51ed4e667f613b9d551cc1bf078fb633579ecb13fd8ab1e3bc4c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/approach-walk-0p9.png",
+      "bytes": 416240,
+      "sha256": "e70033a7f0f986c7b69c5d9387a1ed436cc5faab4a56ffe850189b0fc728807e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/approach-walk-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/faint-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/faint-0p2.png",
+      "bytes": 414491,
+      "sha256": "c5c14f7ef2c5d23233ebf091d16063d4df56a01b36535a13b02de47de15af69c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/faint-1.png",
+      "bytes": 407045,
+      "sha256": "24373813b9951b777f97fd47ea1783091c5dfff1a80ada434354a7cf29ea02a7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/hit-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/hit-0p2.png",
+      "bytes": 430584,
+      "sha256": "e99d33007730af2bf5f8b996c84bf99ad1cbd646403de1226e705103a30755f7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/hit-0p9.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/hit-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/idle-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/idle-0p2.png",
+      "bytes": 414003,
+      "sha256": "79dbab66afea17d794c30a7f91c5be1536f67d11da15fc48a9c3730a01968325"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/idle-0p9.png",
+      "bytes": 418162,
+      "sha256": "3022e1b6a1de4e0e256139fba6be4417a37729612b69c60eaf9eb3be827177b0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/idle-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-review-04/review.json",
+      "bytes": 5578,
+      "sha256": "184804f78ccb4cabbf03137ad0e82aa25789120b772899129d6b0633ae37ab31"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/binding.json",
+      "bytes": 1465609,
+      "sha256": "a4881bb6e0f8ff5f161379f4eeeb3759d830f554958c3abb39e3263f19801dd7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/declaration.json",
+      "bytes": 2088,
+      "sha256": "57755f4af4aeca141bb020858ddd0ea40aeb2aabd10a5af590a68a6367717458"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/labels.png",
+      "bytes": 41815,
+      "sha256": "2747cb1daaf02d42bf2f184bc239b8bf96ad82413449e30bf2b668d6970e00c3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/atlas/c203-petrel-whole-contour-islands.json",
+      "bytes": 7414,
+      "sha256": "ce9bbde7894a4bfbe03feb8c705209972ec43c52af9894bb3b437ca9726907b7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/atlas/c203-petrel-whole-contour-islands.png",
+      "bytes": 434407,
+      "sha256": "d296bd2693a9a469792af9ee8e96b91e1da959cc7255118772037decd9171358"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/atlas/receipt.json",
+      "bytes": 3059,
+      "sha256": "0873c00fc4ba47a0f6698f393af5da426efb62a6334a2968f89f044d5085b376"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/binding.json",
+      "bytes": 6121,
+      "sha256": "5402fa721144cf9a457fa4bf6dafb89cd1bef89fb3c35398781276562804d6ff"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/keyed.png",
+      "bytes": 1480518,
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/manifest.json",
+      "bytes": 3011,
+      "sha256": "87cbf3006bdd83f585e5e290c38308d0d52b85827c2222150b1b01cb48f956c8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/ownership.png",
+      "bytes": 17008,
+      "sha256": "546b75c3ac36ba58bbd40e0c3062e3a1483840e387b4404f01b0eefb47d2da3d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/beak.png",
+      "bytes": 7662,
+      "sha256": "eac41067ba4e02d256350d75842a76cf84a3a3123f56b529fcae5ce37e89a621"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/body.png",
+      "bytes": 84383,
+      "sha256": "cd52bc5a3a2a1334e72fb6d779f1bf6532dc27a41c3e0006ae7336ce741ad11f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/chest.png",
+      "bytes": 40628,
+      "sha256": "88a116baf9faf863d53bec1eaa8566894a1ed33b38382c03f9d85f5b0543b909"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/far-foot.png",
+      "bytes": 7171,
+      "sha256": "88bef31da51c3bfac4489ddb7e5175eed756523c395c9afb501fd3d8fd821f89"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/far-shin.png",
+      "bytes": 3710,
+      "sha256": "f3f15b6f9c646b29e48bddc8591c5aa802cb42a933d9e2d91aadcca8dc8215f0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/far-thigh.png",
+      "bytes": 4190,
+      "sha256": "eb1241438ea32ed47a49c93b1091ee67b3a1d4ad7158d5ef35a57b4138f6d1d3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/far-wing-root.png",
+      "bytes": 6177,
+      "sha256": "e170ae27186811c3b5b37a047142e9212db4089f37f2f9713ad3012f09f6efcb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/far-wing-tip.png",
+      "bytes": 36473,
+      "sha256": "ef13d7ecc54e95d9875eb30f3ff67040f335b82eadc31ca7f63423ac5740740c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/head.png",
+      "bytes": 36108,
+      "sha256": "2700e3b2a700fe151eeef8a4ba382393054860d87559b6b12c6054d9d8a2358f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/lower-neck.png",
+      "bytes": 18674,
+      "sha256": "59267a1620e90b200b66ce1e364b476c815ce0815c57dd90c93e4c645eeb8899"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/near-foot.png",
+      "bytes": 7924,
+      "sha256": "e171467398c0303631f56cf467cdb55aff018b9f354a8ece9523311cc22d17f4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/near-shin.png",
+      "bytes": 3637,
+      "sha256": "8b207815ef06ea3b0c1b285f4076512583e3c3d2668628ddb2b8bcd767c3ebd0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/near-thigh.png",
+      "bytes": 6521,
+      "sha256": "34fd3722cff5eb5da3362863545460ce046405639cdbeafb80e840b553f97d14"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/near-wing-flight.png",
+      "bytes": 98300,
+      "sha256": "0c3c78b3948046da02fe4e30f7242d7fad73a7768dd7c259a8682b9b7d4b290b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/near-wing-root.png",
+      "bytes": 53159,
+      "sha256": "8a9fc1e193c90af2a655b05c620a18b02538e4d75814614c86c35d18d554c60b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/pelvis.png",
+      "bytes": 18814,
+      "sha256": "7b0ca010f17adfd36d10232ba5894e1a6436b1aa026805733d80176a1ef4abf3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/tail.png",
+      "bytes": 44209,
+      "sha256": "871610767fd73935b8fd70d355814130157df38e9e9100d49f7ae4ee427569cb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/parts/upper-neck.png",
+      "bytes": 12922,
+      "sha256": "c08f8727c2a6c7bec1312e21d312d67888882f5dc07997bccdc8f536fe09ac8b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/parts/receipt.json",
+      "bytes": 5066,
+      "sha256": "d4decd984a40c28f54f40d71459bb19b5efb96aa4a10d3144bc137f6c8d06d6d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/pre-split-binding.json",
+      "bytes": 999850,
+      "sha256": "7950a739cb69db784f748dc6f6581e4f6bc0eaf4365c867d7554cb75c08d61e9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/fit/record.json",
+      "bytes": 5926,
+      "sha256": "50955d4850d86f4c29cb33ace4013a765bc1a1fead3b733dfa968ef1ca3dda94"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/recipe.json",
+      "bytes": 2137,
+      "sha256": "fdb166ad30d38fa308a422687baa23976cfbb16a9536c9b4334a1d1e4f0291b7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/static.json",
+      "bytes": 15128,
+      "sha256": "c437d1d2e84afc6de7648e5dc88e245de05cda552fcb3df06f0417348cedefe9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-01/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "b1037b257d08b545dc71fb00c6b34f7be6f5c16ba4c8090ab959f168820d2c08"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02.mjs",
+      "bytes": 2432,
+      "sha256": "0ce1b196c199f6177c2b7c3d8b3f9b9215aca901966c316ef247477e375cc9bb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/binding.json",
+      "bytes": 1452294,
+      "sha256": "e2cd22592c15f96b3fdc8817e4ec3a14d20e462fa159bd9167e3d1e7ec3232e4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/declaration.json",
+      "bytes": 2088,
+      "sha256": "57755f4af4aeca141bb020858ddd0ea40aeb2aabd10a5af590a68a6367717458"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/labels.png",
+      "bytes": 41815,
+      "sha256": "2747cb1daaf02d42bf2f184bc239b8bf96ad82413449e30bf2b668d6970e00c3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/atlas/c203-petrel-whole-contour-islands.json",
+      "bytes": 7414,
+      "sha256": "ce9bbde7894a4bfbe03feb8c705209972ec43c52af9894bb3b437ca9726907b7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/atlas/c203-petrel-whole-contour-islands.png",
+      "bytes": 434407,
+      "sha256": "d296bd2693a9a469792af9ee8e96b91e1da959cc7255118772037decd9171358"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/atlas/receipt.json",
+      "bytes": 3059,
+      "sha256": "0873c00fc4ba47a0f6698f393af5da426efb62a6334a2968f89f044d5085b376"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/binding.json",
+      "bytes": 6121,
+      "sha256": "5402fa721144cf9a457fa4bf6dafb89cd1bef89fb3c35398781276562804d6ff"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/keyed.png",
+      "bytes": 1480518,
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/manifest.json",
+      "bytes": 3011,
+      "sha256": "87cbf3006bdd83f585e5e290c38308d0d52b85827c2222150b1b01cb48f956c8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/ownership.png",
+      "bytes": 17008,
+      "sha256": "546b75c3ac36ba58bbd40e0c3062e3a1483840e387b4404f01b0eefb47d2da3d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/beak.png",
+      "bytes": 7662,
+      "sha256": "eac41067ba4e02d256350d75842a76cf84a3a3123f56b529fcae5ce37e89a621"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/body.png",
+      "bytes": 84383,
+      "sha256": "cd52bc5a3a2a1334e72fb6d779f1bf6532dc27a41c3e0006ae7336ce741ad11f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/chest.png",
+      "bytes": 40628,
+      "sha256": "88a116baf9faf863d53bec1eaa8566894a1ed33b38382c03f9d85f5b0543b909"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/far-foot.png",
+      "bytes": 7171,
+      "sha256": "88bef31da51c3bfac4489ddb7e5175eed756523c395c9afb501fd3d8fd821f89"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/far-shin.png",
+      "bytes": 3710,
+      "sha256": "f3f15b6f9c646b29e48bddc8591c5aa802cb42a933d9e2d91aadcca8dc8215f0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/far-thigh.png",
+      "bytes": 4190,
+      "sha256": "eb1241438ea32ed47a49c93b1091ee67b3a1d4ad7158d5ef35a57b4138f6d1d3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/far-wing-root.png",
+      "bytes": 6177,
+      "sha256": "e170ae27186811c3b5b37a047142e9212db4089f37f2f9713ad3012f09f6efcb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/far-wing-tip.png",
+      "bytes": 36473,
+      "sha256": "ef13d7ecc54e95d9875eb30f3ff67040f335b82eadc31ca7f63423ac5740740c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/head.png",
+      "bytes": 36108,
+      "sha256": "2700e3b2a700fe151eeef8a4ba382393054860d87559b6b12c6054d9d8a2358f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/lower-neck.png",
+      "bytes": 18674,
+      "sha256": "59267a1620e90b200b66ce1e364b476c815ce0815c57dd90c93e4c645eeb8899"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/near-foot.png",
+      "bytes": 7924,
+      "sha256": "e171467398c0303631f56cf467cdb55aff018b9f354a8ece9523311cc22d17f4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/near-shin.png",
+      "bytes": 3637,
+      "sha256": "8b207815ef06ea3b0c1b285f4076512583e3c3d2668628ddb2b8bcd767c3ebd0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/near-thigh.png",
+      "bytes": 6521,
+      "sha256": "34fd3722cff5eb5da3362863545460ce046405639cdbeafb80e840b553f97d14"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/near-wing-flight.png",
+      "bytes": 98300,
+      "sha256": "0c3c78b3948046da02fe4e30f7242d7fad73a7768dd7c259a8682b9b7d4b290b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/near-wing-root.png",
+      "bytes": 53159,
+      "sha256": "8a9fc1e193c90af2a655b05c620a18b02538e4d75814614c86c35d18d554c60b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/pelvis.png",
+      "bytes": 18814,
+      "sha256": "7b0ca010f17adfd36d10232ba5894e1a6436b1aa026805733d80176a1ef4abf3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/tail.png",
+      "bytes": 44209,
+      "sha256": "871610767fd73935b8fd70d355814130157df38e9e9100d49f7ae4ee427569cb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/parts/upper-neck.png",
+      "bytes": 12922,
+      "sha256": "c08f8727c2a6c7bec1312e21d312d67888882f5dc07997bccdc8f536fe09ac8b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/parts/receipt.json",
+      "bytes": 5066,
+      "sha256": "d4decd984a40c28f54f40d71459bb19b5efb96aa4a10d3144bc137f6c8d06d6d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/pre-split-binding.json",
+      "bytes": 999850,
+      "sha256": "7950a739cb69db784f748dc6f6581e4f6bc0eaf4365c867d7554cb75c08d61e9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/fit/record.json",
+      "bytes": 5926,
+      "sha256": "50955d4850d86f4c29cb33ace4013a765bc1a1fead3b733dfa968ef1ca3dda94"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/recipe.json",
+      "bytes": 2044,
+      "sha256": "b25c6a021a59854a8835af87e63c7bce4a81b1a3cfe94f7b78eb08fb257b96a8"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/static.json",
+      "bytes": 8318,
+      "sha256": "df8ee8a416ba984db94d15086e81036efc90be93ccfed11814a33813f802075e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-02/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "b82dddc6c3b711d76893075c55a03267dfc059f68a2960b4f23a2986ff8d2044"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03.mjs",
+      "bytes": 2432,
+      "sha256": "efd66f181b682e6aec938830461d6e17aef12e647ea4f50afa6d65d523a28e48"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/binding.json",
+      "bytes": 1434157,
+      "sha256": "4af710aa14fc729be16d3fe03ad6901677cbbd945699c811ebf900d8df2d7969"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/declaration.json",
+      "bytes": 2088,
+      "sha256": "4caf5231fc344c6f473211433d169a3990dcbcd104d8d688451555bb907eba32"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/labels.png",
+      "bytes": 41730,
+      "sha256": "a5a4f2b56a079b9c984bbd9a48652b242689473c15d886cd6bcfcf7159bb4457"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/atlas/c203-petrel-proximal-feather-islands.json",
+      "bytes": 7423,
+      "sha256": "4d451b16587eecd068000b08afe46fac544b7718386033e846a650b530efc46e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/atlas/c203-petrel-proximal-feather-islands.png",
+      "bytes": 431319,
+      "sha256": "583ac835c4b1f37f55fc65af401f6e8f033ca3974a20d3fd22ff513c13558665"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/atlas/receipt.json",
+      "bytes": 3062,
+      "sha256": "07d87cccecbcf7a1ea72d4233feb9cd721582ca37c793e3e45c3281064da21c4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/binding.json",
+      "bytes": 6127,
+      "sha256": "5ad1d1845190b54626abbb264f612009a81385f8cc4759efa87fbc7686311d1f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/keyed.png",
+      "bytes": 1480518,
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/manifest.json",
+      "bytes": 3014,
+      "sha256": "fb2e9134d9d08ebfa75dc87a108237d9ca7b2e70eb869c560492825b846068e0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/ownership.png",
+      "bytes": 16915,
+      "sha256": "7c7d0d5b39e4e371989ea50816c89fecedff90880190ea00fd054111db4e3194"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/beak.png",
+      "bytes": 7662,
+      "sha256": "eac41067ba4e02d256350d75842a76cf84a3a3123f56b529fcae5ce37e89a621"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/body.png",
+      "bytes": 73302,
+      "sha256": "9c45ec1ea22ecb52bbec563130a6107d0324d26e1642fc3a4fd6f7841e702298"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/chest.png",
+      "bytes": 40628,
+      "sha256": "88a116baf9faf863d53bec1eaa8566894a1ed33b38382c03f9d85f5b0543b909"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/far-foot.png",
+      "bytes": 7171,
+      "sha256": "88bef31da51c3bfac4489ddb7e5175eed756523c395c9afb501fd3d8fd821f89"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/far-shin.png",
+      "bytes": 3710,
+      "sha256": "f3f15b6f9c646b29e48bddc8591c5aa802cb42a933d9e2d91aadcca8dc8215f0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/far-thigh.png",
+      "bytes": 4190,
+      "sha256": "eb1241438ea32ed47a49c93b1091ee67b3a1d4ad7158d5ef35a57b4138f6d1d3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/far-wing-root.png",
+      "bytes": 5895,
+      "sha256": "4d9b48250a15cbf15d5c5b9fb38cbc3e54dc77a2ab0101f9419818a6eb9b6db9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/far-wing-tip.png",
+      "bytes": 35811,
+      "sha256": "fc31445d60c3c70e651d976cb530ba021134063248287fa069d456643f9261be"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/head.png",
+      "bytes": 36108,
+      "sha256": "2700e3b2a700fe151eeef8a4ba382393054860d87559b6b12c6054d9d8a2358f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/lower-neck.png",
+      "bytes": 18674,
+      "sha256": "59267a1620e90b200b66ce1e364b476c815ce0815c57dd90c93e4c645eeb8899"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/near-foot.png",
+      "bytes": 7924,
+      "sha256": "e171467398c0303631f56cf467cdb55aff018b9f354a8ece9523311cc22d17f4"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/near-shin.png",
+      "bytes": 3637,
+      "sha256": "8b207815ef06ea3b0c1b285f4076512583e3c3d2668628ddb2b8bcd767c3ebd0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/near-thigh.png",
+      "bytes": 6521,
+      "sha256": "34fd3722cff5eb5da3362863545460ce046405639cdbeafb80e840b553f97d14"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/near-wing-flight.png",
+      "bytes": 73215,
+      "sha256": "ade457707869d3a38ec7e6b1f86a3ee97fb066275172982b3f0a3001d5685ae2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/near-wing-root.png",
+      "bytes": 87219,
+      "sha256": "48696b51b6cb3370b8c4537694d91c567fdc69975b10156e2df5ca266eeab9b0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/pelvis.png",
+      "bytes": 18814,
+      "sha256": "7b0ca010f17adfd36d10232ba5894e1a6436b1aa026805733d80176a1ef4abf3"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/tail.png",
+      "bytes": 44209,
+      "sha256": "871610767fd73935b8fd70d355814130157df38e9e9100d49f7ae4ee427569cb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/parts/upper-neck.png",
+      "bytes": 12922,
+      "sha256": "c08f8727c2a6c7bec1312e21d312d67888882f5dc07997bccdc8f536fe09ac8b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/parts/receipt.json",
+      "bytes": 5066,
+      "sha256": "2e0d5f8a1df371730129aea97902223ce87ef1379ad6624d711cdba1d74ee0ef"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/pre-split-binding.json",
+      "bytes": 990553,
+      "sha256": "0f101ddb552b80ef96a1c4f2bee6696dd22284691a2e5f921328ca92e789e8ac"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/fit/record.json",
+      "bytes": 5929,
+      "sha256": "d51d8123d84527fe18c0551ecbd3652463710ccba467d524e3822b5836db473d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/recipe.json",
+      "bytes": 2044,
+      "sha256": "25e39683d358b41f6425cd37319f40506080bf6c554ecc0bd2912b30a0420f89"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/static.json",
+      "bytes": 26853,
+      "sha256": "4f148a2d84fd0765f95909dfd0c35ba816a22b0319986882b056c702a8715f28"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins-03/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "56ccdbf74db34c01e0f41d4a0e9bd56d1ac1ddf62cccecc9f322568a20aad4a2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/petrel-source-joins.mjs",
+      "bytes": 2453,
+      "sha256": "b6ba53944e7d24ef9935a29c9fe11b63aa58e8ae241b2c47765dcdf9030af346"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/product-focused-tests.log",
+      "bytes": 236,
+      "sha256": "0af804b81cc13001581cf47f3855a3ab2363052991ae02925210b325e04b2bcb"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/red-fox-relaxed-source-01/compiler-inputs.json",
+      "bytes": 15811,
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/red-fox-relaxed-source-01/generation.json",
+      "bytes": 652,
+      "sha256": "71958f9d7849dffa1e0ef1d635c55624a2972cdf4a7137adad03ec3d9f65f566"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/red-fox-relaxed-source-01/master.png",
+      "bytes": 1469820,
+      "sha256": "1f852cd42b9790e03a332c36d97b9e08fbaea98ee6c759010a2ef877dbbba16f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/red-fox-relaxed-source-01/prompt.canonical.txt",
+      "bytes": 8869,
+      "sha256": "50daa31212aff20a8e420c329e407adf49b02e9de0c2c5812a19131ff8bccaf2"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/red-fox-relaxed-source-01/prompt.txt",
+      "bytes": 10446,
+      "sha256": "f07e9331553e8abeccfc2233f600ce7d00fc256026567c6e7129fc9f51bdc47d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/red-fox-relaxed-source-01/request.json",
+      "bytes": 1953,
+      "sha256": "5f20c949403c2f3bc5098bba1649ef4b92e34df95ea0b7ff37f4e5c280f94032"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/red-fox-relaxed-source-01/subject-source.json",
+      "bytes": 2210,
+      "sha256": "4107e783b5806c1009a641347c3415252c99b6bcac82096b823ed71c4297b427"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/rejected-lattice-author.patch",
+      "bytes": 6628,
+      "sha256": "33b8dd6dc9fd4f31597dcde27bfb942ef87cc86c88ad78d10636aa828f9983f0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/rejected-lattice-test.ts.txt",
+      "bytes": 3930,
+      "sha256": "e11b203ecb8c7d727b03d0131c737756d4640b25449ca43bfc39c9e21be5a3cc"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/rejected-lattice.json",
+      "bytes": 435,
+      "sha256": "c80edda157da0da6b0c59685aee86b46b3e6ba47387ea1bd6520ac8782cd2d0a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/release-copy-pin.json",
+      "bytes": 519,
+      "sha256": "a1f024b9ec12a41a3a48041251decbff93b6ceac455dd3f92398c76e720a603d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/release-copy-pin.mjs",
+      "bytes": 1754,
+      "sha256": "eb10f12955c40d630be95d9c46665bfc64d5e3571c0458a18ae3c7e305e78673"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/review-bundle-receipt.json",
+      "bytes": 178694,
+      "sha256": "4e69b78e15836fdd341108b5dd059f33fb19c2b248f6a07db8eda68f79ea497b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/review-bundle-v2-receipt.json",
+      "bytes": 178700,
+      "sha256": "ad2e0e3e003ee00e8a88982b967ef1e49850b7514800e73cb7a2fa1f2cbadffc"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/review-bundle-v3-receipt.json",
+      "bytes": 178700,
+      "sha256": "64975d407d7de551dfce0613eff28535ef611d238011c2077cd6dcea2d447b8d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/review-rig-v2.mjs",
+      "bytes": 4382,
+      "sha256": "a25b699f5e3651dd39dce579c14d4c1af6c9b1cc42d746e367f83cd161a4bcc1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/review-rig-v3.mjs",
+      "bytes": 4385,
+      "sha256": "4f7f61b588febd0eeeeec09eb7879591ec135e1806012e0351b6e277b3061dfd"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/review-rig.mjs",
+      "bytes": 4335,
+      "sha256": "e723314348f707ec2e8eb13b955963fe09246c43856d9b2599c35e4fad3d89da"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/authoring.json",
+      "bytes": 12999,
+      "sha256": "f3fe1e6f8b58739b15b53434689cd0bce87c403933ae468ff087374a889d826a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/compiler-inputs.json",
+      "bytes": 15811,
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/binding.json",
+      "bytes": 1627112,
+      "sha256": "2742c687b69653c371f40dbf74fcf8f53ab6e9d857ebb3518e2656cee5beb7c0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/declaration.json",
+      "bytes": 17084,
+      "sha256": "c4040aa77de6cb72165ef95f1887a254235cd018266ce7521d71b0d5fce05f7f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/intake-provenance.json",
+      "bytes": 3220,
+      "sha256": "9da1ecaa09a4bdf1088d37105358b41186d155ead16df1da97b3be20f84e4a03"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/atlas/c203-snow-petrel-folded-observed.json",
+      "bytes": 7432,
+      "sha256": "3ace536c0d5ca89f7cbb1222112c05f3d5e7c5207429b8b978b95a3f3e16901b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/atlas/c203-snow-petrel-folded-observed.png",
+      "bytes": 686887,
+      "sha256": "c9653b9bf3868b8a83b5a437779051a13f86f211ce898cea6521471ec5589f6d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/atlas/receipt.json",
+      "bytes": 3058,
+      "sha256": "2092594b8cb1ea47d1a559e19fa99ff9a253d2530243148966eb79696ca6d30b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/binding.json",
+      "bytes": 6140,
+      "sha256": "d804cc9c60a3de46b0c14359737a2133cba04ef1799fd3417d5de1f573f9082e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/keyed.png",
+      "bytes": 1679930,
+      "sha256": "bcf82fb1f636865f76f862d7f531f3c3344fa7701be57d70e7efdad5b80e4a10"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/manifest.json",
+      "bytes": 3010,
+      "sha256": "3aaad38c538618f384f50c05ffa68df24714879fa0ef368678876ce38cf4fb16"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/ownership.png",
+      "bytes": 20248,
+      "sha256": "8e3297a2ae17ee107f336ba67103efe4c29ef7fc2bd58248f02dee992d41ce10"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/beak.png",
+      "bytes": 13487,
+      "sha256": "1202b9445ff6cae0fc6179821b5542e9606a5642a4f3fb4f951d10d712326216"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/body.png",
+      "bytes": 70657,
+      "sha256": "4452c0d580497ca9dfe9bf54c79fef9384f7306bd971396a409d8b0e9c660301"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/chest.png",
+      "bytes": 51906,
+      "sha256": "683a2b6a8faf8c1bfa4d07328b04a381ff1bd4e1afa2be6391aee71469fbe7c5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/far-foot.png",
+      "bytes": 18480,
+      "sha256": "89b19a9ef9c96ef3129717879f73bc35baaa27baf63d58bf319f3044911cd1ad"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/far-shin.png",
+      "bytes": 9453,
+      "sha256": "50b0a171ecddbbe705734e653c0ef8d798141c56bb6065b1a807490cfe7c9247"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/far-thigh.png",
+      "bytes": 6973,
+      "sha256": "831049f05d25ae76619d4e3f02d7a70c34e82ac73b3571be6ab990571f06ced7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/far-wing-root.png",
+      "bytes": 5044,
+      "sha256": "02d97770a889ffe337cd827c91f33265209304d039ec45f0b97fe40c3fc0a4ed"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/far-wing-tip.png",
+      "bytes": 15303,
+      "sha256": "812c9b286f4475cd5cabfdaff459282937782e04033d850ce61629285a953c86"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/head.png",
+      "bytes": 71886,
+      "sha256": "38b206678463280306d33dde6a182e9e302d7ecf4ca53da2d75413d696a610e6"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/lower-neck.png",
+      "bytes": 33056,
+      "sha256": "18693242d03ed034a3cfad1ab28378293ebd04cfa0ee31a48c4281e1d35f486b"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/near-foot.png",
+      "bytes": 19933,
+      "sha256": "f7424ed4009bd38632fe6068ad197b32a0ddd667e855358cda03ea049b88d3c1"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/near-shin.png",
+      "bytes": 9987,
+      "sha256": "6f66de9b495905d317e9c5d326bfe7d3c67d987359e8f99b01e55fefeac4b18c"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/near-thigh.png",
+      "bytes": 11650,
+      "sha256": "17c8752093928f9c924f12c5015e348d565af061f8eea2e0d7071589583a923f"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/near-wing-flight.png",
+      "bytes": 171455,
+      "sha256": "4cea8a67997a54634d94722439b9875860e13f87d4d14012dbf8dd9af933da60"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/near-wing-root.png",
+      "bytes": 130104,
+      "sha256": "425f12d5ff470bec3e64fbc026368504cc312b1a36ffaf33d8d3194bc940a0b0"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/pelvis.png",
+      "bytes": 29034,
+      "sha256": "7b08d2a36e8b5bae8f15003c834fec09fa665bf85b911db7d954e4419febf579"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/tail.png",
+      "bytes": 40617,
+      "sha256": "2c31b0f1001b159772f0e97dedb0d9060d2af13965fddc1fef94012f129153c9"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/parts/upper-neck.png",
+      "bytes": 26170,
+      "sha256": "37b1418efd4fb91aec0c2d21b0db81c077c649886d4ae972ca6a41ca59fd5992"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/parts/receipt.json",
+      "bytes": 4892,
+      "sha256": "e1f5edddcf39786a229a419dac77b97d7e99d9c938ac664d954ce3235097a770"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/pre-split-binding.json",
+      "bytes": 1277895,
+      "sha256": "ee12d8c40f49aed9586aa89430c9345dccf7c473b90f65be962e1efd6d7abe48"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/receipt.json",
+      "bytes": 2474,
+      "sha256": "8709bdcdc811bcffe55dd613d4fdb675fb93bd4df4373feab7eaa2e693bfc812"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/fit/record.json",
+      "bytes": 5934,
+      "sha256": "2555a11c1d2efcbe1a3f60aa933b0c7ae654f18de67be8613563a3ef86bfc9be"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/generation.json",
+      "bytes": 490,
+      "sha256": "0f28e00d223e6b0e73fee4a03a33f6c15c799336305599c412b6946d436fe326"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/master.png",
+      "bytes": 1386135,
+      "sha256": "48d607ad2fe4402bfd38fbfbe4d2e39bf6b340ca76a4a288beddc0ab05b42c4a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/prompt.canonical.txt",
+      "bytes": 9872,
+      "sha256": "ce19423ed2289d9ab10f171183d9db69c9ba78fd99cbf6864eb3e54124a649a7"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/prompt.txt",
+      "bytes": 11725,
+      "sha256": "8cf9fa9495e5e63794dc023d78a4cb49cf6116481c57b36db67b2923de29603d"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/request.json",
+      "bytes": 2148,
+      "sha256": "ae2ad740efdbe67694e57163395f3257fabac8bc89620881a41d8d6737df6fa5"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/static.json",
+      "bytes": 8354,
+      "sha256": "24780689b09fe4a289d37fb55fb5119b9035289abd9ef78359782fc162c9066e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "85e407a81d014d1e75d7e20eec402c8f1aa3243b2651da345bbc53414f7104bf"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/subject-source.json",
+      "bytes": 2718,
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/typecheck.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/validate.log",
+      "bytes": 1083,
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a"
+    },
+    {
+      "path": "audits/C203_NATIVE_HOLDS_20261004/visual-review.json",
+      "bytes": 1502,
+      "sha256": "995e594d96746abde24256e163eb50e43cc2254b0d484ff5b6dafff506c647fc"
+    }
+  ]
+}

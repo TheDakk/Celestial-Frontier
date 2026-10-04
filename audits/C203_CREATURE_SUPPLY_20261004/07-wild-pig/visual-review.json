@@ -1,0 +1,28 @@
+{
+  "name": "Wild Pig",
+  "masterSha256": "219352a189359ce881a03e2d7909911b69db17928de6a73ecf21273a4ef67342",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four separated cloven feet, small tusk, bristled back, two readable ears and complete attached tail. Thin fur edges at belly and tail remain source pixels, not proven motion-safe islands. Far proximal limb roots remain occluded.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 209,
+      "y0": 324,
+      "x1": 1098,
+      "y1": 898
+    },
+    "margins": {
+      "left": 209,
+      "right": 155,
+      "top": 324,
+      "bottom": 355
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

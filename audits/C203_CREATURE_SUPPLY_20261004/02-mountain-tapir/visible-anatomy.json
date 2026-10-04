@@ -1,0 +1,201 @@
+{
+  "id": "02-mountain-tapir",
+  "name": "Mountain Tapir",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "603d5b4f75dcbcb46bc537dc40bf54feeec723af0c34190e986414edf5467d2c",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 28838,
+    "coreRadius": 29,
+    "bodyBox": {
+      "x0": 97,
+      "y0": 133,
+      "x1": 291,
+      "y1": 235
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1294,
+        "pixels": 3732,
+        "box": {
+          "x0": 241,
+          "y0": 118,
+          "x1": 353,
+          "y1": 207
+        },
+        "attach": {
+          "x": 280.1,
+          "y": 153.9,
+          "relX": 0.94,
+          "relY": 0.21
+        },
+        "dir": {
+          "x": 0.95,
+          "y": 0.3
+        },
+        "class": "front",
+        "length": 90.2
+      },
+      {
+        "k": 1,
+        "frac": 0.0065,
+        "pixels": 187,
+        "box": {
+          "x0": 147,
+          "y0": 127,
+          "x1": 198,
+          "y1": 132
+        },
+        "attach": {
+          "x": 172.5,
+          "y": 132,
+          "relX": 0.39,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.68,
+          "y": -0.74
+        },
+        "class": "top",
+        "length": 26
+      },
+      {
+        "k": 2,
+        "frac": 0.0156,
+        "pixels": 449,
+        "box": {
+          "x0": 79,
+          "y0": 170,
+          "x1": 96,
+          "y1": 221
+        },
+        "attach": {
+          "x": 96,
+          "y": 195,
+          "relX": -0.01,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.14
+        },
+        "class": "rear",
+        "length": 31.1
+      },
+      {
+        "k": 3,
+        "frac": 0.0588,
+        "pixels": 1696,
+        "box": {
+          "x0": 86,
+          "y0": 230,
+          "x1": 136,
+          "y1": 301
+        },
+        "attach": {
+          "x": 114.8,
+          "y": 234.7,
+          "relX": 0.09,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.36,
+          "y": 0.93
+        },
+        "class": "limb-down",
+        "length": 72.3
+      },
+      {
+        "k": 4,
+        "frac": 0.1049,
+        "pixels": 3024,
+        "box": {
+          "x0": 197,
+          "y0": 234,
+          "x1": 292,
+          "y1": 302
+        },
+        "attach": {
+          "x": 233.8,
+          "y": 236,
+          "relX": 0.7,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.37,
+          "y": 0.93
+        },
+        "class": "limb-down",
+        "length": 88.1
+      },
+      {
+        "k": 5,
+        "frac": 0.0525,
+        "pixels": 1513,
+        "box": {
+          "x0": 137,
+          "y0": 235,
+          "x1": 180,
+          "y1": 298
+        },
+        "attach": {
+          "x": 154.5,
+          "y": 235,
+          "relX": 0.3,
+          "relY": 1
+        },
+        "dir": {
+          "x": 0.01,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 68
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 86,
+        "x1": 114,
+        "cx": 99.9
+      },
+      {
+        "x0": 152,
+        "x1": 180,
+        "cx": 165.8
+      },
+      {
+        "x0": 217,
+        "x1": 245,
+        "cx": 230
+      },
+      {
+        "x0": 266,
+        "x1": 292,
+        "cx": 278.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

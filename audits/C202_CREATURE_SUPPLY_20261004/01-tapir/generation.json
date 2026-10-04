@@ -1,0 +1,14 @@
+{
+  "id": "01-tapir",
+  "name": "Tapir",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-e50d281b-f0d6-4290-9175-665ee7e8af02.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d442293377589fe95fc0d143e91d6b24ef80eb31051539d7dd5b2ee77af1256b",
+  "bytes": 1358644,
+  "promptSha256": "adde318798449c16602e0d5e324c4e3e5fed36cb5ba15c94a17cfc2f0a3c4cf4",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

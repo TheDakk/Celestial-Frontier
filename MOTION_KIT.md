@@ -324,6 +324,26 @@ openings, bird ground flecks and primate hand penetration; static publication do
 not establish native performance or full visual admission. Evidence:
 `audits/C172_SHARED_HEAD_SPIKE_20261002`.
 
+### Observed insect sockets and counted myriapods — matches code 2026-10-04
+
+An explicit six-socket insect declaration uses the actual painted upper-leg origins
+without adding joints or changing undeclared legacy insects. Counted myriapods may
+declare zero or one observed ultimate pair; zero creates no phantom chains or tracks.
+The 64-joint, 32-part and contact limits remain unchanged. These authoring capabilities
+do not qualify the C202 insect/myriapod sources: the best Beetle still fails its
+standalone source-step hit, while the same stage-owned hit passes. The retained
+packets and empty qualified pool are in `audits/C202_ARTHROPOD_REFERENCES_20261004`.
+
+### Painted bird faint travel ownership — matches code 2026-10-04
+
+The grounded bird author tests each faint sample in both standalone and stage-owned
+travel. Battle removes the authored horizontal root shift; a solver-only authoring
+pass can therefore exceed a real foot limit in battle. Both contexts must pass before
+the complete torso curve is selected. The existing 129 samples, 90% author reserve,
+limb/head/wing timing, contact limits and runtime refusals remain unchanged. The
+retained Albatross negative control passes standalone and fails 47/121 stage probes;
+the corrected author passes both. Evidence: `audits/C202_NATIVE_HOLDS_20261004`.
+
 ### Observed small-crustacean strike — matches code 2026-10-03
 
 `motion/small-crustacean-attack.ts` authors canonical `crustacean-small` `melee:claw`
@@ -353,3 +373,13 @@ bodies keep root and base fixed. The battle plan casts the theme effect from the
 emitter (`aperture`, `mouth`, `siphon`) or the painted body centre. All other families and
 actions are byte-identical (before/after fingerprint of 362 timeline/plan entries: only the
 seven D31 `cast` entries changed). Evidence: `audits/CAST_ATTACK_D31_20261002`.
+
+### Painted trot with additive idle — matches code 2026-10-04
+
+Painted, grounded quadrupeds with an observed leg below the existing3% rest-slack diagnostic use a fixed0.25 torso/root excursion profile for trot. This authors a quieter trunk while retaining full idle, limb, head and tail tracks, easing, phase times and runtime limits. Unpainted cards, non-trot actions and legs at/above3% retain their prior curves. The real placement/publication owners still admit or refuse each source; the profile is not automatic acceptance. Both retained Red Fox placements now admit positive cadence. An earlier runtime lattice-search prototype was rejected for4.7-second setup cost; the fixed profile takes0.2–1.3ms in the retained unthrottled Node diagnostic. Evidence: `audits/C203_NATIVE_HOLDS_20261004/{rejected-lattice.json,fast-profile-timing.json}`.
+
+### Observed insect reaction cadence — matches code 2026-10-04
+
+The explicit six-socket insect model retracts swinging feet toward their observed socket and takes two complete source steps for its existing hit and tame translations, including the tame return blend. Body travel, phase times, total distance, amplitudes and numerical guards stay unchanged. This is a fixed anatomy-model convention, not a reach-dependent step count. Legacy undeclared insects, other families and existing compact myriapods keep their previous behavior. The retained Beetle passes13 static actions plus full presentation; native and full-size qualification remain separate. Evidence and negative controls: `audits/C203_ARTHROPOD_REFERENCES_20261004`.
+
+Full-size review still holds the new primate/arthropod references and Snow Petrel. Static success is not admission.

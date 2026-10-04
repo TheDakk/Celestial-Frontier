@@ -1,0 +1,469 @@
+{
+  "schema": "cf.g2-source-pipeline-proof/v1",
+  "scope": "24 unchanged canonical compiler routes with disclosed source-visibility/composition additions. Native generator bytes retained. No authoring, native, reference-pool, runtime or gallery admission.",
+  "sourceCompiler": {
+    "path": "port/v2/tools/painted-creature/compile-library-master.mjs",
+    "sha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3"
+  },
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "batchCompilerSha256": "cfa055d59ef62b4318542f7d81e2cbe6b9c6e433c9a8021f248e9abce64f9dc3",
+  "coveredAtSelection": 270,
+  "entries": [
+    {
+      "name": "Tapir",
+      "id": "01-tapir",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "9727c22d77d16483cd2b6c5fece7bbe4ede8c2d6366f875918e0c28264cb5728",
+      "finalPromptSha256": "adde318798449c16602e0d5e324c4e3e5fed36cb5ba15c94a17cfc2f0a3c4cf4",
+      "masterSha256": "d442293377589fe95fc0d143e91d6b24ef80eb31051539d7dd5b2ee77af1256b",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Whole brown tapir with elongated flexible snout, rounded pale-edged ears and four separate complete feet. Short tail stays attached. Far upper-leg emergence remains partly concealed; source candidate only."
+    },
+    {
+      "name": "Wild Boar",
+      "id": "02-wild-boar",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "d27b5098e26c99c2bf77a8828fdff2bc79c6d2723c978b83be75459fea9aac92",
+      "finalPromptSha256": "9331b9cda24a1bb5a4ce97f1baaea7086fb1519dc6ea4b6321012fe792986dba",
+      "masterSha256": "e1781fd17de645c4d6ab0b3aa5c037ebd2807a3e8ee28d66f11dfdfa258c4458",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Whole brown bristled boar, raised mane, long snout and visible curved tusk, four separated hooved lower limbs and attached tufted tail. Far shoulder origin partially hidden by torso; fringe ownership must be reviewed."
+    },
+    {
+      "name": "Peccary",
+      "id": "03-peccary",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "932f7cc7cd5ad60a3f5034e0b65c8c7d593e726c51615ba01f27f4d9bbd2fa22",
+      "finalPromptSha256": "ed49f575339afe1679fbe68da4a3330548c01b8a527f963572ca347e844dff09",
+      "masterSha256": "14ce2f1cb0ff8404a4c9e503aec15c7a15e154703bb797d6098392b7f8808da6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Stocky bristled dark subject with pale shoulder collar and four separated hooves; no long boar tail. Two conspicuous downward tusks require species-identity review, not automatic acceptance."
+    },
+    {
+      "name": "Coati",
+      "id": "04-coati",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "b69f9c72fa9f9c7a6ef9bc0e37d467c03f5a71b6b9684bdad08baf3effbc6325",
+      "finalPromptSha256": "3d11fee5c37d05fa2374ce16c00073a4ef11a82dd06e9aa11efa8dfcdd92a7eb",
+      "masterSha256": "6c48d5b218fe22a2a451bdd8a1149126ca13e453a7d105b2f25adbb331f0c026",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Long narrow muzzle and upright banded bushy tail; four separated feet with claws. Tail/root continuity visible; far ear mostly hidden and far upper limb concealed. No invented joint claim."
+    },
+    {
+      "name": "Porcupine",
+      "id": "05-porcupine",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "6b81c5be95303311022973872353ab4e13a42412e8d29e83006da2516c71a259",
+      "finalPromptSha256": "d232fac8a139cbf21004b5414bbd2a01e1c973a7e35f44afe054b45e8cc644fd",
+      "masterSha256": "d8016ea251c9f87b3cfd1f88e3a68107b6eac3b3eb667e930575c690df9c24e1",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Dense black-and-cream long quills over rounded body with four exposed clawed feet. Near ear visible; far ear concealed by quills. Quill and tail-tip ownership require full-size scoring."
+    },
+    {
+      "name": "Impala",
+      "id": "06-impala",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "b1e12938e9151e998ffd7058c835c8990b8cb2e9a66704c634e593673a87c853",
+      "finalPromptSha256": "5f8e67919ee7c8206e7e01338d36e4017d223724cddad834f8106346fcf3a550",
+      "masterSha256": "8474e759f7bcb5b9e96dee47c84190fc9b78bc81e6fa0c7c40bc9f2e31efdc7b",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Slender tan body, white belly, black tail/rump marks, long ridged lyre horns and four separated hooves. Second ear obscured by horns/head; horns must not be misclassified as ears."
+    },
+    {
+      "name": "Warthog",
+      "id": "07-warthog",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "99cc9d51a82e9eb1154e0b5785e0b64bf8bdcb1f9b69fc695ac2136d2409b538",
+      "finalPromptSha256": "a1ac7c90963486c5b11a365798f832f59e3e2d9ea602255aa538dccda573a2b6",
+      "masterSha256": "db9a154050efd3e2f1840915ba51dd45ad9b2f8df41ade0463dabd5a88de1b92",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Sparse bristled brown body, cheek warts and large curved paired tusks; upright thin tufted tail and four complete hooves. Mane strands are attached but need island scoring."
+    },
+    {
+      "name": "Buffalo",
+      "id": "08-buffalo",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "0f6e4e3a20ad3e102627217fad76a13509fc6c306ae523a3278ff288f0ad1cdd",
+      "finalPromptSha256": "a261614c3c8dd4d08d3df99339e839d68738e7cc9a19106ee344616325dd9f5c",
+      "masterSha256": "03ead7a1418baaca1fa93f8be8f7788bb006eba37f92e92c568af57586658601",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Heavy brown-black body, broad fused-looking horn boss and curved horns, drooping near ear, four separated hooves and tufted tail. Far ear concealed; do not invent it."
+    },
+    {
+      "name": "Badger",
+      "id": "09-badger",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "47683d87b89f7dd9f3f52a3817351327f608f74f16e8ddf268d7f6fed6bd932e",
+      "finalPromptSha256": "2c4ce6880cac38621ada7cb7fa388d2ba69c27c97526f2ac5ae2ce9d7ef1e26d",
+      "masterSha256": "8f4f9abaa9906c6114cbac761198eec583e180b807f7d6797053f0e722ee743b",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "White and black facial stripes, grizzled body and strong claws on four feet. Tail appears much longer and bushier than expected for the canonical badger: identity hold for Claude, even though framing passes."
+    },
+    {
+      "name": "River Otter",
+      "id": "10-river-otter",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "701532c5081335423c9d4daca5662f9a240fb7f76ee6be769254c3492664e649",
+      "finalPromptSha256": "cebe88a89392d136b44e33cc3079a8f1174233942f3d9f3e6ae4c8c929f49ee5",
+      "masterSha256": "cee94186d04bb44308cfb1f96fe3533e3596c440ef9cbe384db4eb3c626c7cbe",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Long brown body, pale muzzle/throat, small rounded ears and long tapering thick tail, four visible clawed feet. Limb emergence still partly hidden by body fur; webbing not independently clear."
+    },
+    {
+      "name": "Beaver",
+      "id": "11-beaver",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "199cb62e9bc6c72345df4cc1d3ddf4c5b13de227b0ba7fb143c7ccc245b1d09d",
+      "finalPromptSha256": "69633cb45eee171bb640756a8f22675f47af45b5c7f20bc97729feffe014e455",
+      "masterSha256": "ab4d573a75c83f573de488ad3b38828a5d930af6fe1480e560cd8c98d2bd5381",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Broad flattened scaly paddle tail, rounded brown body, orange incisors and four distinct feet. Far ear concealed and rear webbing not plainly readable; candidate requires anatomy scoring."
+    },
+    {
+      "name": "Wolverine",
+      "id": "12-wolverine",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "e90c89bb21b232c436f9f56f80bc3816a4e269c38635a5c033f064607e7d0cd6",
+      "finalPromptSha256": "edee83c570a20a9aaaf7774879e79eb163be0c9929300a4035ef52abf3b1458f",
+      "masterSha256": "2ef59bfe84259bf70cdd979a75cac10eea9c405011ee83386738ea6ecc89ac3c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Stocky dark body with broad pale flank bands and bushy tail, rounded ears, four strong separated clawed feet. Tail fully framed; far ear only partially visible."
+    },
+    {
+      "name": "Ibex",
+      "id": "13-ibex",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "2a363654d7bb5a935b5a1899a048444bde06d3ca0b737b7285a7c96afce1ecac",
+      "finalPromptSha256": "597860b7770af61b1701b919010e58fc2ffaf0051cfc74b1d234ee5a0449e4e5",
+      "masterSha256": "d8061ecc314acecf182be381b10ba01306a3d7734e06ff185f9e13970fbfe683",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Long heavy ridged swept horns, beard, brown coat and four separate hooves; short pale-ended tail. Far ear obscured by horn/head. No claimed hidden ear landmark."
+    },
+    {
+      "name": "Chamois",
+      "id": "14-chamois",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "d36829fc648dcc984441fb83ef2cf8a10a22df023171ef7f24779d05e4f51028",
+      "finalPromptSha256": "5daefa2bfb973b63421e8fcee09cef1aaaeb04a5669a130b5a7624516bca11d0",
+      "masterSha256": "33745921fcd0a61a8e6937bd97d67d296b0dc21d3d0689b1117aae85df178f9c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Short hooked horns, pale face with dark eye stripe, tan coat, dark lower legs and four separate hooves. Short tail visible; both ear silhouettes mostly readable."
+    },
+    {
+      "name": "Fishing Cat",
+      "id": "15-fishing-cat",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "8b1440cbb0d0d4c09b34b126d32c5ac620b45faa07743eef97e84b697a6eb11b",
+      "finalPromptSha256": "6a30500e4a38f1b2af49d928a69cbbd2f08e130d13f2084f92efeaa842fedced",
+      "masterSha256": "1403ef342d66d3bedab9f9fe10766b0fbf994f61a6bdfc48212f81713879d50c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Dense dark spots over grey-brown body and facial stripes; thick short ringed tail and four separate feet. Some far upper limb remains obscured; spots remain distinct."
+    },
+    {
+      "name": "Spotted Hyena",
+      "id": "16-spotted-hyena",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "a6f8c2e120eced43efa739798bf4f2026cd0ce21898e333b2a85aa26b61243fc",
+      "finalPromptSha256": "553a2d1de6281e669488bd0d84fd5dc001151e87e4a198ea2cd932b4e2ebbd62",
+      "masterSha256": "bce5a8e2772d2d90f9d427097b9d9f5c2bb0e9df13b9cb8edd030c63a2cbf6a5",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Heavy front shoulders, sloping back, rounded ears, spotted sandy coat, dark muzzle and short bushy tail. Four complete separated feet; dark spots preserved across body."
+    },
+    {
+      "name": "Aardvark",
+      "id": "17-aardvark",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "5ce6156b870308069839e9f50cbab61c760fdfb67190a8460ac5a56dd560d67e",
+      "finalPromptSha256": "3eab8b62db473b5c9fb324785713b15272cbed8466e0083d0767c62285d43d14",
+      "masterSha256": "d4026854bc8c60ff9640f9498527673bdc2a7ee47da193bcf55d187f25295f1c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Long tubular snout, large upright ears, arched brown body, long thick tapered tail and four strong clawed feet. Source shows natural rounded haunch rather than a generic long-legged frame."
+    },
+    {
+      "name": "Bison",
+      "id": "18-bison",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "501acd1b26955ad8b4a33b44d9380b0fd6183eae1a2ab47701a465ba8fdef660",
+      "finalPromptSha256": "a577bfdc849043615e73a845baf7f9974368db6d19b2373c4780eb471b1ae993",
+      "masterSha256": "7729d7730e4ce58f37ee3e5cce63edcb38bd38d8ec24b21d8063357eb2957b2c",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Massive shoulder hump, dense shaggy front coat and beard, short horns, four complete hooves and tufted tail. Far ear concealed by mane/horn. Head-down fur ownership needs scoring."
+    },
+    {
+      "name": "Prairie Dog",
+      "id": "19-prairie-dog",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "9bb1eedfe02906f7dd6752184cddaefdd8cc2ee82b04cbc00c555b03345f2993",
+      "finalPromptSha256": "d2aedb0c89a2b43bc00a818c486fd5f892d0fb3ac83d4851619955e5bff7bf25",
+      "masterSha256": "b480c0573e98c3bfecbb0127a93a3f26455ce225999093da6502b459cbd263a3",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Small sandy rodent with rounded head, small ears, short dark-tipped tail and four visible clawed feet. Near/far limb roots remain partly obscured by rounded torso."
+    },
+    {
+      "name": "Wild Horse",
+      "id": "20-wild-horse",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "b3e52c47c56d73573ddf1a1f7383f6d6e850cd342f6f36df078fd60be994a955",
+      "finalPromptSha256": "fdfd3188cccfe17422a67436334709f178ce3746ec27b84c886220891c42e9ea",
+      "masterSha256": "015a2e5e50217bb6cefee91103838d91a9c016fe4e38ce6b22570786a0276192",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Dun body, upright dark mane, pale muzzle, dark lower legs and long dark tail; four complete hooves. Ear tips and mane remain within frame; near/far upper legs partly overlap naturally."
+    },
+    {
+      "name": "Goat",
+      "id": "21-goat",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "7091f9ac937e8542d584fd81f57a5df7e18296b0fd24835b7965ef348c0a963e",
+      "finalPromptSha256": "9a54e6fdc371ef39a211d71ba0943d74fa8f0a9ca1823ff473a45ae204f6044c",
+      "masterSha256": "5bf34cad2bc6b98a8a7c3c834623bb45c2553f7c96d1004f32162c70af2b9caa",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Brown-white coat, beard, paired swept horns, two ears, short raised tail and four hooves. Fine beard and tail fringes need island/ownership review."
+    },
+    {
+      "name": "Cat",
+      "id": "22-cat",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "a918050691d3d8b3db40f702f964da77dab016d2354f8686d8ceeeb8c1762e1b",
+      "finalPromptSha256": "767307a216e2cdcfa3d4e1e84f51d11e254cbba234aabeb55a6bb3730a293ed8",
+      "masterSha256": "56300ec542a72604e5ef96dfcaa1d8b7f59687efd1349afbaf732470c108feee",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Brown tabby with visible dark striping, pale muzzle/chest, long ringed tail and four complete paws. Both ears visible; patterned face and body remain distinct."
+    },
+    {
+      "name": "Dog",
+      "id": "23-dog",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "5c45e56f574d17c6c6c5152c535efaff7919df2e95474eb8bc28d96ca70c06fc",
+      "finalPromptSha256": "3ee8dd8bc7e24b956456fb47625467c1a21e66151afddc1b626a823ca1550baf",
+      "masterSha256": "5569e828056d75eaff352a6754a5c221db9d549c483ae72dfee1021cc9f7a684",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Brown-white medium dog, upright ears, white chest and feet, curled bushy tail and four separated paws. Fur fringes attached; no anatomical landmarks inferred from coat alone."
+    },
+    {
+      "name": "Llama",
+      "id": "24-llama",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "ffd209951e8620fe02856c8e72eeb128e75574ebf5dc55ebafff846c6b53eb1c",
+      "finalPromptSha256": "f97b65977fb9f4c77f1802b95a970f0b311d6381ff3360d04ff92aa8de137233",
+      "masterSha256": "fbf67a687e3d35e0a2a94fa387e158604c39daf02d8b249fd79f00b38a7acf91",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Long neck, long inward-curved ears, shaggy brown-white coat and four separate feet with short tail. Lower foot anatomy and upper-leg visibility need independent review."
+    }
+  ]
+}

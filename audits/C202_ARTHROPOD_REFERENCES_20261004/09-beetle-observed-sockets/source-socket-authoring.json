@@ -1,0 +1,39 @@
+{
+  "schema": "cf.c202-source-observed-sockets/v1",
+  "predecessor": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal",
+  "masterSha256": "2673f287573558969262fabc5bd524083d1e773abe1b5c58ef09a9588284ffab",
+  "predecessorAuthoringSha256": "b9895a2d2e170c5782065f6ded3612b8d1146fb7c4136431914ade9a8ad78676",
+  "authoringSha256": "60c3dab8b0f5342f036c108b7e44f37ec11e69518ceb00d7a7abb340a7853e6e",
+  "change": "Add six observed leg emergence sockets; same21landmarks and same priority polygons/materials. No source repaint, landmark relocation, deletion or automatic island relocation.",
+  "actualGeneratorCallOwner": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/generation.json",
+  "fixedAttachmentsPx": {
+    "legFrontFarKnee": [
+      769,
+      499
+    ],
+    "legMidFarKnee": [
+      653,
+      523
+    ],
+    "legHindFarKnee": [
+      494,
+      470
+    ],
+    "legFrontNearKnee": [
+      770,
+      709
+    ],
+    "legMidNearKnee": [
+      652,
+      700
+    ],
+    "legHindNearKnee": [
+      489,
+      743
+    ]
+  },
+  "geometryIntent": "Each coordinate is the visible limb emergence in this exact master, not a hidden anatomical shoulder. Existing two-link knee/foot graph retained.",
+  "qualityAccepted": false,
+  "staticStatus": "UNRUN",
+  "nativeStatus": "UNRUN"
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Stork",
+  "masterSha256": "9c97f28fbf2ee0f9c0ee7f9c57e344de6171d6c2c47f16f3800d0395c03fe461",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two separate long red leg chains with bends/toes, red pointed bill, long white neck and attached near folded wing with black flight feathers are visible. Far wing and tail base remain mostly behind near plumage. Body-feather overlap conceals upper leg roots; exact painted emergence boundaries must be authored later.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 317,
+      "y0": 254,
+      "x1": 965,
+      "y1": 997
+    },
+    "margins": {
+      "left": 317,
+      "right": 288,
+      "top": 254,
+      "bottom": 256
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

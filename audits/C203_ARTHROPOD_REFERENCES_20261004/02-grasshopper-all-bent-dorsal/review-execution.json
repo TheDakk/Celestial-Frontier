@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "audits/C203_ARTHROPOD_REFERENCES_20261004/review-rig.bundle.mjs",
+    "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal/fit01",
+    "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal/master.png",
+    "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal/review01",
+    "idle,hit,tame,cast,faint"
+  ],
+  "exitCode": 0,
+  "signal": null
+}

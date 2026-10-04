@@ -1,0 +1,310 @@
+{
+  "schema": "cf.c202-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/fit01",
+  "sourceConservationSha256": "3fbaa7806728b88a86d7e5a00c93dcd2917eb3d0834825c590a7dc63de70c901",
+  "sourceMasterSha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a",
+  "sourceBindingSha256": "adcac7f3b8172fa29b8c5ca113630917af4acb45f9d3901b829a13711e0df75d",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.5,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "75aaca39a476c98582850693caebb6bf9388cd1c1f4cbd2f667047999f2b0c3d",
+  "movedPixels": 2232,
+  "remainderPixels": 5422,
+  "islands": [
+    {
+      "pixels": 37,
+      "to": "arm0-tip",
+      "border": {
+        "5": 10,
+        "6": 10
+      }
+    },
+    {
+      "pixels": 3,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 7,
+      "to": "head",
+      "border": {
+        "29": 4,
+        "30": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "arm0-middle",
+      "border": {
+        "6": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "arm7-middle",
+      "border": {
+        "27": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "arm7-middle",
+      "border": {
+        "27": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "arm7-middle",
+      "border": {
+        "27": 4
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "arm7-middle",
+      "border": {
+        "27": 19
+      }
+    },
+    {
+      "pixels": 43,
+      "to": "arm0-middle",
+      "border": {
+        "6": 37
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "arm7-tip",
+      "border": {
+        "26": 5
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "arm7-middle",
+      "border": {
+        "27": 19
+      }
+    },
+    {
+      "pixels": 231,
+      "to": "arm7-middle",
+      "border": {
+        "27": 71,
+        "28": 37
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "arm7-tip",
+      "border": {
+        "26": 1
+      }
+    },
+    {
+      "pixels": 65,
+      "to": "arm0-base",
+      "border": {
+        "6": 5,
+        "7": 28
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "siphon",
+      "border": {
+        "4": 2
+      }
+    },
+    {
+      "pixels": 54,
+      "to": "arm0-base",
+      "border": {
+        "7": 18,
+        "10": 6
+      }
+    },
+    {
+      "pixels": 25,
+      "to": "arm6-tip",
+      "border": {
+        "23": 19
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "arm6-tip",
+      "border": {
+        "23": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "arm1-middle",
+      "border": {
+        "9": 2
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "arm1-middle",
+      "border": {
+        "9": 8
+      }
+    },
+    {
+      "pixels": 87,
+      "to": "arm1-middle",
+      "border": {
+        "9": 13,
+        "10": 13
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "arm1-base",
+      "border": {
+        "10": 2,
+        "13": 2
+      }
+    },
+    {
+      "pixels": 118,
+      "to": "arm2-base",
+      "border": {
+        "10": 27,
+        "13": 68
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "arm3-middle",
+      "border": {
+        "15": 5,
+        "16": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "arm4-base",
+      "border": {
+        "19": 2
+      }
+    },
+    {
+      "pixels": 26,
+      "to": "arm4-base",
+      "border": {
+        "19": 17
+      }
+    },
+    {
+      "pixels": 320,
+      "to": "arm3-middle",
+      "border": {
+        "14": 4,
+        "15": 155,
+        "16": 8
+      }
+    },
+    {
+      "pixels": 837,
+      "to": "arm4-middle",
+      "border": {
+        "18": 82,
+        "19": 52
+      }
+    },
+    {
+      "pixels": 66,
+      "to": "arm5-base",
+      "border": {
+        "21": 5,
+        "22": 15
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "arm5-middle",
+      "border": {
+        "21": 9
+      }
+    },
+    {
+      "pixels": 18,
+      "to": "arm5-tip",
+      "border": {
+        "20": 20
+      }
+    },
+    {
+      "pixels": 36,
+      "to": "arm3-middle",
+      "border": {
+        "15": 28
+      }
+    },
+    {
+      "pixels": 62,
+      "to": "arm4-middle",
+      "border": {
+        "18": 16
+      }
+    },
+    {
+      "pixels": 34,
+      "to": "arm4-middle",
+      "border": {
+        "18": 16
+      }
+    },
+    {
+      "pixels": 87,
+      "to": "arm4-tip",
+      "border": {
+        "17": 35
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "arm4-tip",
+      "border": {
+        "17": 2
+      }
+    }
+  ],
+  "intake": {
+    "id": "c192-islands-01-octopus-author03",
+    "parts": 30,
+    "atlasSize": {
+      "width": 1989,
+      "height": 703
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "4ab39ed276c7d124339b8674cd075bba37d8d0af8e288244f60319374c90a822",
+    "sourceVertices": 1905,
+    "vertices": 2214,
+    "sharedSupports": 427,
+    "pins": 667,
+    "independentSurfaceParts": 30,
+    "sourceJoins": 27,
+    "excludedOverlaps": 15,
+    "observedExcludedBoundaries": 15,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 15,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

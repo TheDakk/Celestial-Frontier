@@ -1,0 +1,14 @@
+{
+  "id": "09-kingfisher",
+  "name": "Kingfisher",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-90bb8753-5d68-4135-83b4-09b2dbc60697.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6a54c3e8a473f6cd7bf9830e1e5f4484d3b0bf70f8c188681228dffca443a0fb",
+  "bytes": 1248571,
+  "promptSha256": "e6fc15d891a6d11d9e05b6832109c1c43f34fe2bd56a488a4a2f389fa8990463",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

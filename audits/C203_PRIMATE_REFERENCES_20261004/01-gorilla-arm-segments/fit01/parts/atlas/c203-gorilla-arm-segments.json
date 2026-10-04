@@ -1,0 +1,349 @@
+{
+  "frames": {
+    "body.png": {
+      "frame": {
+        "h": 374,
+        "w": 411,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 374,
+        "w": 411
+      },
+      "spriteSourceSize": {
+        "h": 374,
+        "w": 411,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-foot.png": {
+      "frame": {
+        "h": 96,
+        "w": 185,
+        "x": 230,
+        "y": 622
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 185
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 185,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-hand.png": {
+      "frame": {
+        "h": 312,
+        "w": 195,
+        "x": 5,
+        "y": 731
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 312,
+        "w": 195
+      },
+      "spriteSourceSize": {
+        "h": 312,
+        "w": 195,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-shin.png": {
+      "frame": {
+        "h": 187,
+        "w": 188,
+        "x": 729,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 187,
+        "w": 188
+      },
+      "spriteSourceSize": {
+        "h": 187,
+        "w": 188,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-thigh.png": {
+      "frame": {
+        "h": 78,
+        "w": 111,
+        "x": 426,
+        "y": 231
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 78,
+        "w": 111
+      },
+      "spriteSourceSize": {
+        "h": 78,
+        "w": 111,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-upper-arm.png": {
+      "frame": {
+        "h": 191,
+        "w": 89,
+        "x": 630,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 191,
+        "w": 89
+      },
+      "spriteSourceSize": {
+        "h": 191,
+        "w": 89,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 223,
+        "w": 167,
+        "x": 230,
+        "y": 389
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 223,
+        "w": 167
+      },
+      "spriteSourceSize": {
+        "h": 223,
+        "w": 167,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "jaw.png": {
+      "frame": {
+        "h": 84,
+        "w": 107,
+        "x": 425,
+        "y": 621
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 84,
+        "w": 107
+      },
+      "spriteSourceSize": {
+        "h": 84,
+        "w": 107,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-foot.png": {
+      "frame": {
+        "h": 75,
+        "w": 193,
+        "x": 547,
+        "y": 231
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 75,
+        "w": 193
+      },
+      "spriteSourceSize": {
+        "h": 75,
+        "w": 193,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-hand.png": {
+      "frame": {
+        "h": 332,
+        "w": 215,
+        "x": 5,
+        "y": 389
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 332,
+        "w": 215
+      },
+      "spriteSourceSize": {
+        "h": 332,
+        "w": 215,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-shin.png": {
+      "frame": {
+        "h": 222,
+        "w": 149,
+        "x": 407,
+        "y": 389
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 222,
+        "w": 149
+      },
+      "spriteSourceSize": {
+        "h": 222,
+        "w": 149,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-thigh.png": {
+      "frame": {
+        "h": 216,
+        "w": 194,
+        "x": 426,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 216,
+        "w": 194
+      },
+      "spriteSourceSize": {
+        "h": 216,
+        "w": 194,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-upper-arm.png": {
+      "frame": {
+        "h": 301,
+        "w": 235,
+        "x": 5,
+        "y": 1053
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 301,
+        "w": 235
+      },
+      "spriteSourceSize": {
+        "h": 301,
+        "w": 235,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "neck.png": {
+      "frame": {
+        "h": 258,
+        "w": 227,
+        "x": 210,
+        "y": 731
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 258,
+        "w": 227
+      },
+      "spriteSourceSize": {
+        "h": 258,
+        "w": 227,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c203-gorilla-arm-segments.png",
+    "scale": "1",
+    "size": {
+      "h": 1359,
+      "w": 922
+    }
+  }
+}

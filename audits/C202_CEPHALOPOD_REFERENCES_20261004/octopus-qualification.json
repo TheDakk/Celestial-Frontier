@@ -1,0 +1,84 @@
+{
+  "schema": "cf.c202-reference-qualification/v1",
+  "status": "QUALIFIED_AUTHORING_REFERENCE",
+  "subject": "Octopus",
+  "family": "cephalopod",
+  "packet": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03",
+  "selectedFit": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit",
+  "productHead": "35d5d6935908a886ed00bd67cef02fb58f0772a2",
+  "static": {
+    "actions": 13,
+    "samples": 1573,
+    "presentationSamples": 1110,
+    "status": "PASS"
+  },
+  "native": {
+    "frames": 961,
+    "turns": 5,
+    "skipped": [],
+    "rigRefusals": {
+      "left": 0,
+      "right": 0
+    },
+    "report": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/report.json"
+  },
+  "fullSizeReview": {
+    "status": "PASS_FOR_ANATOMICAL_AUTHORING_REFERENCE",
+    "masterResolution": [
+      1254,
+      1254
+    ],
+    "observations": [
+      "Eight observed arm roots/chains remain readable; no invented fins or feeding tentacles.",
+      "Source-size faint keeps the mantle/head attachment and all eight arms connected.",
+      "Native approach in both directions, dodge and final idle retain coherent silhouette without visible tears.",
+      "Wet glossy source treatment is disclosed; reference qualification does not admit this painting to the game gallery. Claude retains gallery/style scoring."
+    ],
+    "viewed": [
+      "01-octopus-author03/master.png",
+      "01-octopus-author03/source-joins-02/review01/faint-0p9.png",
+      "octopus-native-02/turn2-dodge-reaction-50.png",
+      "octopus-native-02/turn4-hit-idle-90.png",
+      "octopus-native-02/turn1-hit-approach-50.png"
+    ]
+  },
+  "limitations": [
+    "The first native film skipped dodge and remains partial evidence; this successor supersedes only that missing sequence.",
+    "CPU throttle1 diagnostic does not establish strict60fps at4xCPU or iPhone performance.",
+    "New product head still awaits one authorized combined I5/develop; this local reference pass is not I5 certification."
+  ],
+  "inputs": [
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/master.png",
+      "sha256": "1ebd180f0e4c2547f685298e7067f51bab31ef057b871bfde059e6a0ca9a273a"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/authoring.json",
+      "sha256": "0a36b6dc625f34009d3b5d1c6c1262959e0388fcb536fb831ec51488e2814431"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/subject-source.json",
+      "sha256": "f721c27305a198577f719fd25bdf5243845abb6b9f2b609d4b86a9cd9e5598a1"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/record.json",
+      "sha256": "1daf1af73b05d4824268b497559b5134d1d819ab9378111b3afbbd988017ed1b"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/fit/binding.json",
+      "sha256": "257802cabeabed20a400f621ee6bf9da9954045b1cee5693ccfa17c60a0ea4b8"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-script02.json",
+      "sha256": "7da10854a5631665156c942e94c50433f6e340289300c8617ae32d8ea4592093"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/octopus-native-02/report.json",
+      "sha256": "d06a008f5858d7f025406c5c0858edc6d894244dff056763918d2ef72c1abc9c"
+    },
+    {
+      "path": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-author03/source-joins-02/review01/faint-0p9.png",
+      "sha256": "e3d3688921925dd0a1bfb678d6ed19327eff76b8650e14e5515f97d87808c680"
+    }
+  ]
+}

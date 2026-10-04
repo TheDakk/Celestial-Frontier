@@ -1,0 +1,14 @@
+{
+  "id": "12-pheasant",
+  "name": "Pheasant",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-39f85dea-089f-41b0-90dc-9429cbfbec70.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "14737b54f95ecf346fe58588d27668977d76faecc1e3d1fa0ff6ad2df3770eb8",
+  "bytes": 1156886,
+  "promptSha256": "83cd0c7e9757c9ac3c50055921e713ba13f18fc60aa3112f9ba2f19f7624c4c8",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

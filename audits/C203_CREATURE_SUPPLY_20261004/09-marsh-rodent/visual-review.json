@@ -1,0 +1,28 @@
+{
+  "name": "Marsh Rodent",
+  "masterSha256": "4a15820c33893693cf23d2816249646ee03b4d93a577eeafb27ee4f3662ad83c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four separate clawed feet, complete scaled tail, orange incisors and small ears. Far rear leg is strongly bent with higher projected contact; far roots partly hidden by shaggy belly. Flat broad scaling on tail needs identity review against the generic canonical marsh-rodent note; no fin or flipper invented.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 129,
+      "y0": 415,
+      "x1": 1069,
+      "y1": 847
+    },
+    "margins": {
+      "left": 129,
+      "right": 184,
+      "top": 415,
+      "bottom": 406
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

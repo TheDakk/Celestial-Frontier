@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c203-source-correction-review/v1",
+  "status": "HELD_SOURCE",
+  "fullSizeInspected": true,
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "sha256": "a69d94e28846b9fdc4b303fa3d781a11f9aeb9e21e0eb62ca46d2b2f7b77e2fc",
+  "findings": [
+    "The successor retains the overall right-facing Gorilla and real folded knuckles; lower-arm negative space is wider below the elbows.",
+    "The requested independently exposed far shoulder/upper-arm chain did not land. The far upper arm still emerges beneath the throat and is occluded by the near upper-arm silhouette around the observed source boundary near x843\u2013870/y665\u2013700.",
+    "The source provides no visible far-arm underlap in the very region opened by the bounded faint flexion. Copying old landmarks or painting in inferred anatomy would not make this a truthful qualified reference.",
+    "Small fur/face/hand pixels changed beyond the requested region. The generated output is retained as a new immutable original, never claimed pixel-identical to the edit target."
+  ],
+  "authoringAttempted": false,
+  "reasonNoFit": "Concrete unresolved source visibility at the known independent arm-overlap opening; no invented hidden root/paint or mechanical-only fit claim.",
+  "nextRequiredSource": "A visibly exposed far shoulder-to-elbow contour outside the near upper-arm silhouette, with real continuous far-arm paint, before source-specific landmarks and coverage can be authored.",
+  "qualified": false,
+  "native": false
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c202-source-edit/v1",
+  "predecessor": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source03/master.png",
+  "predecessorSha256": "d951cb7c97780c87f9a16364d358b898a330530b3ab3d9ca4bee99673a2fcb31",
+  "promptSha256": "03713b879b2859bc875457a25c397815004145d7c9af1c374330c30acaa424ac",
+  "editScope": "framing only; preserve eight complete source arms",
+  "qualityAccepted": false
+}

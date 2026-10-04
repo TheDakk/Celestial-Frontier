@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "count": 121,
+  "previousSha256": "56481b6d76d8720fa9dcba999d3e934036768662463e0eb19296d196e5498e14",
+  "reviewedSha256": "404ca25f0099f5a7f2304592102acffff41b84a753bca14796003728c3a2c9f6",
+  "onlyAddedSentence": "Painted birds keep their feet within the same movement limits in battle and in the motion preview.",
+  "allPriorCopyExact": true,
+  "reorderedRowsRejected": true,
+  "scope": "Development bulletin only; no I5 certificate or allowance rebind"
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "cf.c202-temporary-product-restoration/v1",
+  "status": "EXACT_BEFORE_BYTES_RESTORED",
+  "patchSha256": "1ef659b60e8ef6e585b859cebd2b60462275ee5e62c5f9a09ebbc88b10da1ac5",
+  "files": [
+    {
+      "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "restoredSha256": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf",
+      "expectedSha256": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "restoredSha256": "926e3a309668dd60bd6ef94bfda6a27790602153c8aa30bed5f5c30b81531684",
+      "expectedSha256": "926e3a309668dd60bd6ef94bfda6a27790602153c8aa30bed5f5c30b81531684"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "restoredSha256": "911a2619de2d78933f357af2edd50ed53a55ceac2b6edcafe0b7668c9c78ebae",
+      "expectedSha256": "911a2619de2d78933f357af2edd50ed53a55ceac2b6edcafe0b7668c9c78ebae"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "restoredSha256": "5e7b34989379940755376e8fdf8710fcfb8123bd764763a27faa7d2ed954c9f1",
+      "expectedSha256": "5e7b34989379940755376e8fdf8710fcfb8123bd764763a27faa7d2ed954c9f1"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "restoredSha256": "ce7ebf4e06ee82e91a74128701e5e0bebb637817bb2012e96d6ba33b791bd201",
+      "expectedSha256": "ce7ebf4e06ee82e91a74128701e5e0bebb637817bb2012e96d6ba33b791bd201"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-topology.ts",
+      "restoredSha256": "98eee6f0a25dc5150b8cc70013dd3af8f43ed18edec9db3ad880d5df4328e0b9",
+      "expectedSha256": "98eee6f0a25dc5150b8cc70013dd3af8f43ed18edec9db3ad880d5df4328e0b9"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "restoredSha256": "aada5fce752daac93e73d84ea526576bbfeaffdf27744dc08f5365c62d3c4275",
+      "expectedSha256": "aada5fce752daac93e73d84ea526576bbfeaffdf27744dc08f5365c62d3c4275"
+    }
+  ],
+  "ownedProductDiff": []
+}

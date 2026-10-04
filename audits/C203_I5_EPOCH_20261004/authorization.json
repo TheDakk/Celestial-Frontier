@@ -1,0 +1,15 @@
+{
+  "candidate": "456ac7c52ddfdc5aab11233a7c98c8cede7dbf82",
+  "signature": "G",
+  "authority": "Dakk latest direct message and Claude mailbox C203",
+  "epochAttempts": 1,
+  "calibrations": 3,
+  "certifications": 1,
+  "developAttempts": 1,
+  "firstRedStop": true,
+  "retry": false,
+  "rebind": false,
+  "reservation": "C272",
+  "startupReceipt": "audits/C202_PROGRAM_20261004/startup.json",
+  "freeGiB": 123.6
+}

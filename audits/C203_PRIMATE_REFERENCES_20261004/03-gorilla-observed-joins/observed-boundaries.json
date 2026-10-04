@@ -1,0 +1,86 @@
+{
+  "schema": "cf.c203-observed-source-joins/v1",
+  "sourcePacket": "audits/C203_PRIMATE_REFERENCES_20261004/01-gorilla-arm-segments",
+  "basis": "The exact visibly continuous C202 source boundaries are retained after anatomical arm segment remapping. Former forearm pixels now merge with the same-side hand owner. Independent limb overlaps remain independent.",
+  "authored": [
+    {
+      "parts": [
+        "near-upper-arm",
+        "neck"
+      ],
+      "alreadyAutomatic": false,
+      "sourceEdges": 289,
+      "sourceBounds": [
+        720,
+        374,
+        883,
+        494
+      ]
+    },
+    {
+      "parts": [
+        "far-upper-arm",
+        "neck"
+      ],
+      "alreadyAutomatic": false,
+      "sourceEdges": 44,
+      "sourceBounds": [
+        883,
+        494,
+        908,
+        513
+      ]
+    },
+    {
+      "parts": [
+        "jaw",
+        "neck"
+      ],
+      "alreadyAutomatic": false,
+      "sourceEdges": 86,
+      "sourceBounds": [
+        900,
+        458,
+        923,
+        512.9999999999999
+      ]
+    },
+    {
+      "parts": [
+        "far-upper-arm",
+        "jaw"
+      ],
+      "alreadyAutomatic": false,
+      "sourceEdges": 29,
+      "sourceBounds": [
+        908,
+        513,
+        924,
+        526
+      ]
+    },
+    {
+      "parts": [
+        "body",
+        "near-hand"
+      ],
+      "alreadyAutomatic": false,
+      "sourceEdges": 6,
+      "sourceBounds": [
+        682,
+        666,
+        684,
+        670
+      ]
+    }
+  ],
+  "sourceBindingHash": "b6fcca911477c6c7bd7d88a5c814f34795fef01807ca737fb90af1c6a055b537",
+  "resultBindingHash": "80b9fcbf9b0e6dc26a3b4db30fa99519caa486c1a92215596ed1ef03350afa8e",
+  "controls": {
+    "recordBytesUnchanged": true,
+    "atlasBytesUnchanged": true,
+    "sourceRGBAUnchanged": true,
+    "sourceCoordinateChanges": 0
+  },
+  "admission": false
+}

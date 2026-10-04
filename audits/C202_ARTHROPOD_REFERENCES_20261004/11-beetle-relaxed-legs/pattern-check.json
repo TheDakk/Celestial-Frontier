@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Beetle",
+  "masterSha256": "e1eca972d8481b7471239b47c54598657364c06334b21be37b60fe6ea8c5e275",
+  "required": [],
+  "source": "explicit full-size visual observation; no pigment feature required by canonical insect identity; Polyxenus is an explicitly separate researched reference and retains bristly morphology hold",
+  "status": "NOT_REQUIRED"
+}

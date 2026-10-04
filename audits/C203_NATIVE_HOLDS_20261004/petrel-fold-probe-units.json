@@ -1,0 +1,1 @@
+{"originalProbeCoordinates":"source pixel coordinates accidentally multiplied by1254 in display fields; source.x/source.y are authoritative unchanged pixels","correction":"divide displayed x/y by1254; fold vertices are around(420,753.5),(430,744),(430,763),(440,753.5), tail ownership"}

@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c202-source-generation/v1",
+  "generator": "builtin image_gen",
+  "originalPath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-d255784b-fb0a-47f7-8353-0210f54cc03a.png",
+  "retainedPath": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/master.png",
+  "masterSha256": "765d280700be19820172f0a33bbeae3699ccec5ab603efe89b078e9ac78b9894",
+  "promptSha256": "ae6bbd858147ea4198d2e8e3ba89cba76241a724ee22795a081e1fdd0d97d1d0",
+  "referencePaths": [
+    "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "bytesCopiedUnmodified": true,
+  "qualityAccepted": false
+}

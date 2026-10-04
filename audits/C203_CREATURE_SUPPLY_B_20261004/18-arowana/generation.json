@@ -1,0 +1,14 @@
+{
+  "id": "18-arowana",
+  "name": "Arowana",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-bc7d450b-5686-4d53-8b3d-e9fff6f4f29a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "faa938837ccad0b1b4421350ebd22c9fc4e28e2cb17bd9788dc37eb4960a30e3",
+  "bytes": 1345358,
+  "promptSha256": "11af6293813bf8f2fe470a4a55302b83f732dc14c38f0d96bccfa99aafc3bde8",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

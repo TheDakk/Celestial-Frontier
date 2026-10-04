@@ -1,0 +1,28 @@
+{
+  "name": "Capybara",
+  "masterSha256": "ca45af3e18f80811e623afb7c5b5540b9934069453ff63a63e18f3f9adb295ed",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Four distinct feet, rounded ears, broad blunt head and naturally tailless rump are visible. Far foreleg upper root is hidden. Foot webbing is not clearly separable and exposed claws look somewhat long/pointed; anatomy-detail hold.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 225,
+      "y0": 301,
+      "x1": 1045,
+      "y1": 948
+    },
+    "margins": {
+      "left": 225,
+      "right": 208,
+      "top": 301,
+      "bottom": 305
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

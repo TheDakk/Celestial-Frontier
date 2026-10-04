@@ -1,0 +1,28 @@
+{
+  "name": "Pronghorn",
+  "masterSha256": "d54130a66add54a0f70b8b9d3be78bf2c5d60398dff93fcb4aa2dcb1ffbed70d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Four distinct cloven hoof endpoints, white rump/belly/throat markings, short pale tail and two pronged horns are visible. Near ear is clear; far ear is largely hidden by horns/head. Far foreleg proximal attachment overlaps chest. No complete far-ear/root ownership claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 254,
+      "y0": 220,
+      "x1": 1027,
+      "y1": 972
+    },
+    "margins": {
+      "left": 254,
+      "right": 226,
+      "top": 220,
+      "bottom": 281
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

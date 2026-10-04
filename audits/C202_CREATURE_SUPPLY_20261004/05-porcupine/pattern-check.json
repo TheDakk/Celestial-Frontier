@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Porcupine",
+  "masterSha256": "d8016ea251c9f87b3cfd1f88e3a68107b6eac3b3eb667e930575c690df9c24e1",
+  "required": [
+    "long banded quills laid back over the rump"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "long banded quills laid back over the rump",
+      "status": "PRESENT",
+      "observed": "Dense black-and-cream long quills over rounded body with four exposed clawed feet. Near ear visible; far ear concealed by quills. Quill and tail-tip ownership require full-size scoring."
+    }
+  ]
+}

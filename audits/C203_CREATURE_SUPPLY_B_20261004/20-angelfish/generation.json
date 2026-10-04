@@ -1,0 +1,14 @@
+{
+  "id": "20-angelfish",
+  "name": "Angelfish",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-7f74d5d9-c6cd-4f2e-92b4-d790811dc196.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2457139219d232d2e1c12e9781adde739de9f7a4086071e02df1d62c95ce7a22",
+  "bytes": 1556620,
+  "promptSha256": "0d29d55c42f4bba9c23ec9bf0e4df3a08b18226d909fae2966d389b034c66231",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

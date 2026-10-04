@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c202-source-visual-review/v1",
+  "status": "SOURCE_CONTOURS_IMPROVED_PENDING_NATIVE",
+  "viewedAtNativeResolution": [
+    "albatross-review-02/idle-0.png",
+    "albatross-review-02/faint-0p9.png",
+    "albatross-review-03/faint-0p9.png"
+  ],
+  "before": "Rigid root-owned fragments left gaps at both shins/feet and nape during faint. Static contact PASS did not establish surface continuity.",
+  "successor": "Source-only ownership polygons now include observed continuous leg/neck edges. Main leg and neck tears are closed at full size; a few isolated fringe pixels remain for explicit D28 review. Original source pixels/landmarks/materials preserved.",
+  "fit": "audits/C202_NATIVE_HOLDS_20261004/albatross-contours-02/fit",
+  "softwarePublication": "20 actual-loaded-rig parity samples pass; not native certification or gallery admission.",
+  "qualityAccepted": false
+}

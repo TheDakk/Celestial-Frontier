@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "manifest": "audits/C202_ARTHROPOD_REFERENCES_20261004/delivery.json",
+      "sha256": "abff8508432f5ffe9139b6fb80eb2b4ca895a96a5484cabc16092b37567df7f8",
+      "files": 400,
+      "bytes": 50039968,
+      "mismatches": []
+    },
+    {
+      "manifest": "audits/C202_CREATURE_SUPPLY_20261004/delivery.json",
+      "sha256": "f0138ac916fad87e842449430bf018ae4de7820409fb55e59d64f03b9d045f23",
+      "files": 259,
+      "bytes": 37170095,
+      "mismatches": []
+    }
+  ]
+}

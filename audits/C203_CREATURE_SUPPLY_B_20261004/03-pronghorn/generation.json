@@ -1,0 +1,14 @@
+{
+  "id": "03-pronghorn",
+  "name": "Pronghorn",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-d4a1efc4-62b1-4aed-a8a5-cce06b5d2585.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d54130a66add54a0f70b8b9d3be78bf2c5d60398dff93fcb4aa2dcb1ffbed70d",
+  "bytes": 1306062,
+  "promptSha256": "e226109fd75f4161480e0e77f58799939064202312140532600c16545c12e023",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

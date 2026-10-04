@@ -1,0 +1,4354 @@
+{
+  "schema": "cf.c203-primate-forehand-probe/v1",
+  "mode": "support",
+  "gain": 0.25,
+  "fit": "audits/C203_PRIMATE_REFERENCES_20261004/01-gorilla-arm-segments/fit01",
+  "sourceHands": [
+    {
+      "joint": "armNearHand",
+      "hull": [
+        [
+          758,
+          935
+        ],
+        [
+          766,
+          909
+        ],
+        [
+          769,
+          908
+        ],
+        [
+          777,
+          906
+        ],
+        [
+          794,
+          902
+        ],
+        [
+          798,
+          902
+        ],
+        [
+          802,
+          903
+        ],
+        [
+          828,
+          910
+        ],
+        [
+          839,
+          913
+        ],
+        [
+          846,
+          915
+        ],
+        [
+          849,
+          916
+        ],
+        [
+          863,
+          930
+        ],
+        [
+          867,
+          949
+        ],
+        [
+          868,
+          954
+        ],
+        [
+          868,
+          961
+        ],
+        [
+          867,
+          966
+        ],
+        [
+          866,
+          968
+        ],
+        [
+          862,
+          973
+        ],
+        [
+          859,
+          974
+        ],
+        [
+          840,
+          977
+        ],
+        [
+          814,
+          978
+        ],
+        [
+          802,
+          978
+        ],
+        [
+          777,
+          976
+        ],
+        [
+          772,
+          975
+        ],
+        [
+          769,
+          974
+        ],
+        [
+          767,
+          973
+        ],
+        [
+          764,
+          970
+        ],
+        [
+          762,
+          967
+        ],
+        [
+          760,
+          961
+        ],
+        [
+          758,
+          954
+        ]
+      ],
+      "positiveTexels": 6739
+    },
+    {
+      "joint": "armFarHand",
+      "hull": [
+        [
+          944,
+          868
+        ],
+        [
+          945,
+          867
+        ],
+        [
+          950,
+          864
+        ],
+        [
+          962,
+          857
+        ],
+        [
+          983,
+          845
+        ],
+        [
+          985,
+          844
+        ],
+        [
+          988,
+          844
+        ],
+        [
+          1022,
+          854
+        ],
+        [
+          1025,
+          855
+        ],
+        [
+          1027,
+          856
+        ],
+        [
+          1038,
+          938
+        ],
+        [
+          1038,
+          950
+        ],
+        [
+          1037,
+          952
+        ],
+        [
+          1035,
+          955
+        ],
+        [
+          1032,
+          958
+        ],
+        [
+          1030,
+          959
+        ],
+        [
+          1027,
+          960
+        ],
+        [
+          1021,
+          961
+        ],
+        [
+          1007,
+          963
+        ],
+        [
+          983,
+          963
+        ],
+        [
+          967,
+          960
+        ],
+        [
+          961,
+          957
+        ],
+        [
+          958,
+          955
+        ],
+        [
+          950,
+          947
+        ],
+        [
+          948,
+          944
+        ],
+        [
+          947,
+          942
+        ],
+        [
+          945,
+          934
+        ],
+        [
+          944,
+          872
+        ]
+      ],
+      "positiveTexels": 8662
+    }
+  ],
+  "scope": "Audit-only 17-sample pilot, conservative whole positive-alpha lower arm/hand bounds, source-coordinate pixels; not a native qualification.",
+  "rows": [
+    {
+      "fraction": 0,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999996423722,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              802.5,
+              977.5
+            ],
+            "posedCenterY": 977.4999983489514,
+            "conservativeHalfTexelY": 0.5000012934207916
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 963.0000296831131,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              983.5,
+              962.5
+            ],
+            "posedCenterY": 962.500028192997,
+            "conservativeHalfTexelY": 0.5000014901161194
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0
+          },
+          "armFarHand": {
+            "rotation": 0
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0
+          },
+          "armNearHand": {
+            "rotation": 0
+          },
+          "legFarHip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": 0
+          },
+          "legFarFoot": {
+            "rotation": 0
+          },
+          "legNearHip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": 0
+          },
+          "legNearFoot": {
+            "rotation": 0
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6491228070175439,
+              "y": 0.7799043062200957
+            },
+            "target": {
+              "x": 0.6491228070175439,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0,
+              "armNearHand": 0
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7799043062200957
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.803030303030303,
+              "y": 0.7679425837320574
+            },
+            "target": {
+              "x": 0.803030303030303,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0,
+              "armFarHand": 0
+            },
+            "selectedHullIndex": 18,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 0,
+      "paintTargetError": 0,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0
+        },
+        "armFarHand": {
+          "rotation": 0
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0
+        },
+        "armNearHand": {
+          "rotation": 0
+        },
+        "legFarHip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0
+        },
+        "legFarFoot": {
+          "rotation": 0
+        },
+        "legNearHip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0
+        },
+        "legNearFoot": {
+          "rotation": 0
+        }
+      }
+    },
+    {
+      "fraction": 0.0625,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999996423722,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              802.5,
+              977.5
+            ],
+            "posedCenterY": 977.4706110835076,
+            "conservativeHalfTexelY": 0.5293885588645935
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999753952026,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              983.5,
+              962.5
+            ],
+            "posedCenterY": 962.4729601621627,
+            "conservativeHalfTexelY": 0.5270152330398564
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.00038575
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.0708274305166714
+          },
+          "armFarHand": {
+            "rotation": -0.126438291385667
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.06838926161509984
+          },
+          "armNearHand": {
+            "rotation": -0.1290460121910737
+          },
+          "legFarHip": {
+            "rotation": 0.002525,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.003527257062457712
+          },
+          "legFarFoot": {
+            "rotation": 0.0013105386045149103
+          },
+          "legNearHip": {
+            "rotation": 0.002525,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.004706760075054439
+          },
+          "legNearFoot": {
+            "rotation": 0.003543928456996026
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6395534290271132,
+              "y": 0.7799043062200957
+            },
+            "target": {
+              "x": 0.6395534290271132,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.06838926161509984,
+              "armNearHand": -0.1290460121910737
+            },
+            "selectedHullIndex": 21,
+            "maxPredictedY": 0.7799043062200957
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.0708274305166714,
+              "armFarHand": -0.126438291385667
+            },
+            "selectedHullIndex": 19,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.5700924586837752e-16,
+      "paintTargetError": 4.070492598687502e-8,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.00038575
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.0708274305166714
+        },
+        "armFarHand": {
+          "rotation": -0.126438291385667
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.06838926161509984
+        },
+        "armNearHand": {
+          "rotation": -0.1290460121910737
+        },
+        "legFarHip": {
+          "rotation": 0.002525,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.003527257062457712
+        },
+        "legFarFoot": {
+          "rotation": 0.0013105386045149103
+        },
+        "legNearHip": {
+          "rotation": 0.002525,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.004706760075054439
+        },
+        "legNearFoot": {
+          "rotation": 0.003543928456996026
+        }
+      }
+    },
+    {
+      "fraction": 0.125,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999996423722,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              802.5,
+              977.5
+            ],
+            "posedCenterY": 977.4625577867032,
+            "conservativeHalfTexelY": 0.5374418556690216
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 963.0000060796738,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              983.5,
+              962.5
+            ],
+            "posedCenterY": 962.4644981324673,
+            "conservativeHalfTexelY": 0.5355079472064977
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.00154325
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.09348455831213331
+          },
+          "armFarHand": {
+            "rotation": -0.16729047309163136
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.08780325706888006
+          },
+          "armNearHand": {
+            "rotation": -0.16580620985710404
+          },
+          "legFarHip": {
+            "rotation": 0.01010025,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.014054440482482023
+          },
+          "legFarFoot": {
+            "rotation": 0.005157764109879004
+          },
+          "legNearHip": {
+            "rotation": 0.01010025,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.01875509481279055
+          },
+          "legNearFoot": {
+            "rotation": 0.014043972001749118
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6395534290271132,
+              "y": 0.7799043062200957
+            },
+            "target": {
+              "x": 0.6395534290271132,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.08780325706888006,
+              "armNearHand": -0.16580620985710404
+            },
+            "selectedHullIndex": 21,
+            "maxPredictedY": 0.7799043062200957
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.09348455831213331,
+              "armFarHand": -0.16729047309163136
+            },
+            "selectedHullIndex": 19,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.2412670766236366e-16,
+      "paintTargetError": 1.565079177540803e-7,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.00154325
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.09348455831213331
+        },
+        "armFarHand": {
+          "rotation": -0.16729047309163136
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.08780325706888006
+        },
+        "armNearHand": {
+          "rotation": -0.16580620985710404
+        },
+        "legFarHip": {
+          "rotation": 0.01010025,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.014054440482482023
+        },
+        "legFarFoot": {
+          "rotation": 0.005157764109879004
+        },
+        "legNearHip": {
+          "rotation": 0.01010025,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.01875509481279055
+        },
+        "legNearFoot": {
+          "rotation": 0.014043972001749118
+        }
+      }
+    },
+    {
+      "fraction": 0.1875,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999830325444,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              777.5,
+              975.5
+            ],
+            "posedCenterY": 977.4435994823773,
+            "conservativeHalfTexelY": 0.5563835501670837
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999667406082,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              983.5,
+              962.5
+            ],
+            "posedCenterY": 962.4549613595009,
+            "conservativeHalfTexelY": 0.5450053811073311
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.00347225
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.11912268200139708
+          },
+          "armFarHand": {
+            "rotation": -0.21375456142551275
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.13462201275091146
+          },
+          "armNearHand": {
+            "rotation": -0.2549094650429087
+          },
+          "legFarHip": {
+            "rotation": 0.02272575,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.03141667684097739
+          },
+          "legFarFoot": {
+            "rotation": 0.01128775273305749
+          },
+          "legNearHip": {
+            "rotation": 0.02272575,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.041937215049078005
+          },
+          "legNearFoot": {
+            "rotation": 0.03112070809394174
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6196172248803827,
+              "y": 0.7783094098883573
+            },
+            "target": {
+              "x": 0.6196172248803827,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.13462201275091146,
+              "armNearHand": -0.2549094650429087
+            },
+            "selectedHullIndex": 22,
+            "maxPredictedY": 0.7799043062200955
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.11912268200139708,
+              "armFarHand": -0.21375456142551275
+            },
+            "selectedHullIndex": 19,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.7772239894833365e-16,
+      "paintTargetError": 3.2968755574015826e-7,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.00347225
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.11912268200139708
+        },
+        "armFarHand": {
+          "rotation": -0.21375456142551275
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.13462201275091146
+        },
+        "armNearHand": {
+          "rotation": -0.2549094650429087
+        },
+        "legFarHip": {
+          "rotation": 0.02272575,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.03141667684097739
+        },
+        "legFarFoot": {
+          "rotation": 0.01128775273305749
+        },
+        "legNearHip": {
+          "rotation": 0.02272575,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.041937215049078005
+        },
+        "legNearFoot": {
+          "rotation": 0.03112070809394174
+        }
+      }
+    },
+    {
+      "fraction": 0.25,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 978.0000328620274,
+          "maximumBelowGuidePx": 0.00003286202741037414,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              777.5,
+              975.5
+            ],
+            "posedCenterY": 977.4315905769665,
+            "conservativeHalfTexelY": 0.5684422850608826
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 963.0000351905823,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              983.5,
+              962.5
+            ],
+            "posedCenterY": 962.4453197479248,
+            "conservativeHalfTexelY": 0.5547154426574716
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.00617275
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.14567229204739435
+          },
+          "armFarHand": {
+            "rotation": -0.2621365009420653
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.1659218567154493
+          },
+          "armNearHand": {
+            "rotation": -0.3143466381751794
+          },
+          "legFarHip": {
+            "rotation": 0.04040125,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.055357616356136743
+          },
+          "legFarFoot": {
+            "rotation": 0.01931002177758767
+          },
+          "legNearHip": {
+            "rotation": 0.04040125,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.07394731793064518
+          },
+          "legNearFoot": {
+            "rotation": 0.05421280408002937
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6196172248803827,
+              "y": 0.7783094098883573
+            },
+            "target": {
+              "x": 0.6196172248803827,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.1659218567154493,
+              "armNearHand": -0.3143466381751794
+            },
+            "selectedHullIndex": 22,
+            "maxPredictedY": 0.7799043062200957
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.14567229204739435,
+              "armFarHand": -0.2621365009420653
+            },
+            "selectedHullIndex": 19,
+            "maxPredictedY": 0.7679425837320573
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.3877787807814457e-16,
+      "paintTargetError": 5.360529242242168e-7,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.00617275
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.14567229204739435
+        },
+        "armFarHand": {
+          "rotation": -0.2621365009420653
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.1659218567154493
+        },
+        "armNearHand": {
+          "rotation": -0.3143466381751794
+        },
+        "legFarHip": {
+          "rotation": 0.04040125,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.055357616356136743
+        },
+        "legFarFoot": {
+          "rotation": 0.01931002177758767
+        },
+        "legNearHip": {
+          "rotation": 0.04040125,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.07394731793064518
+        },
+        "legNearFoot": {
+          "rotation": 0.05421280408002937
+        }
+      }
+    },
+    {
+      "fraction": 0.3125,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999830325444,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              777.5,
+              975.5
+            ],
+            "posedCenterY": 977.4210267265637,
+            "conservativeHalfTexelY": 0.5789563059806824
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 963.0000060796738,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              983.5,
+              962.5
+            ],
+            "posedCenterY": 962.4356188327074,
+            "conservativeHalfTexelY": 0.5643872469663631
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.009645
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.1725436717927431
+          },
+          "armFarHand": {
+            "rotation": -0.31138189643397096
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.1941705729093921
+          },
+          "armNearHand": {
+            "rotation": -0.36803618154937534
+          },
+          "legFarHip": {
+            "rotation": 0.06312675,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.08554905777022927
+          },
+          "legFarFoot": {
+            "rotation": 0.028731026580971927
+          },
+          "legNearHip": {
+            "rotation": 0.06312675,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.11442590545687648
+          },
+          "legNearFoot": {
+            "rotation": 0.082653545267799
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6196172248803827,
+              "y": 0.7783094098883573
+            },
+            "target": {
+              "x": 0.6196172248803827,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.1941705729093921,
+              "armNearHand": -0.36803618154937534
+            },
+            "selectedHullIndex": 22,
+            "maxPredictedY": 0.7799043062200955
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.1725436717927431,
+              "armFarHand": -0.31138189643397096
+            },
+            "selectedHullIndex": 19,
+            "maxPredictedY": 0.7679425837320573
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.2412670766236366e-16,
+      "paintTargetError": 7.500690851210064e-7,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.009645
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.1725436717927431
+        },
+        "armFarHand": {
+          "rotation": -0.31138189643397096
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.1941705729093921
+        },
+        "armNearHand": {
+          "rotation": -0.36803618154937534
+        },
+        "legFarHip": {
+          "rotation": 0.06312675,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.08554905777022927
+        },
+        "legFarFoot": {
+          "rotation": 0.028731026580971927
+        },
+        "legNearHip": {
+          "rotation": 0.06312675,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.11442590545687648
+        },
+        "legNearFoot": {
+          "rotation": 0.082653545267799
+        }
+      }
+    },
+    {
+      "fraction": 0.375,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 978.000007947286,
+          "maximumBelowGuidePx": 0.000007947286007947696,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              772.5,
+              974.5
+            ],
+            "posedCenterY": 977.4112310806911,
+            "conservativeHalfTexelY": 0.5887768665949503
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999942779541,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              983.5,
+              962.5
+            ],
+            "posedCenterY": 962.4260663241148,
+            "conservativeHalfTexelY": 0.5739279538393034
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.013889
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.1995167153220559
+          },
+          "armFarHand": {
+            "rotation": -0.3610963489423116
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.22103636442062397
+          },
+          "armNearHand": {
+            "rotation": -0.4195209507436677
+          },
+          "legFarHip": {
+            "rotation": 0.0909025,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.12160838719691967
+          },
+          "legFarFoot": {
+            "rotation": 0.03898518147300001
+          },
+          "legNearHip": {
+            "rotation": 0.0909025,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.16299861362991006
+          },
+          "legNearFoot": {
+            "rotation": 0.11573892162403053
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6156299840510366,
+              "y": 0.777511961722488
+            },
+            "target": {
+              "x": 0.6156299840510366,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.22103636442062397,
+              "armNearHand": -0.4195209507436677
+            },
+            "selectedHullIndex": 23,
+            "maxPredictedY": 0.7799043062200957
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.1995167153220559,
+              "armFarHand": -0.3610963489423116
+            },
+            "selectedHullIndex": 19,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.5700924586837752e-16,
+      "paintTargetError": 9.486942657831006e-7,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.013889
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.1995167153220559
+        },
+        "armFarHand": {
+          "rotation": -0.3610963489423116
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.22103636442062397
+        },
+        "armNearHand": {
+          "rotation": -0.4195209507436677
+        },
+        "legFarHip": {
+          "rotation": 0.0909025,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.12160838719691967
+        },
+        "legFarFoot": {
+          "rotation": 0.03898518147300001
+        },
+        "legNearHip": {
+          "rotation": 0.0909025,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.16299861362991006
+        },
+        "legNearFoot": {
+          "rotation": 0.11573892162403053
+        }
+      }
+    },
+    {
+      "fraction": 0.4375,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999913374584,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              772.5,
+              974.5
+            ],
+            "posedCenterY": 977.4014437397321,
+            "conservativeHalfTexelY": 0.598547597726186
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 963.0000163078308,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              983.5,
+              962.5
+            ],
+            "posedCenterY": 962.416731262207,
+            "conservativeHalfTexelY": 0.5832850456237808
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.01890425
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.2264913766299732
+          },
+          "armFarHand": {
+            "rotation": -0.41110041304788747
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.24920339947680925
+          },
+          "armNearHand": {
+            "rotation": -0.47312554692494935
+          },
+          "legFarHip": {
+            "rotation": 0.1237285,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.16311506670094345
+          },
+          "legFarFoot": {
+            "rotation": 0.04946584757714546
+          },
+          "legNearHip": {
+            "rotation": 0.1237285,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.2193054285780801
+          },
+          "legNearFoot": {
+            "rotation": 0.1527797982908583
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6156299840510366,
+              "y": 0.777511961722488
+            },
+            "target": {
+              "x": 0.6156299840510366,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.24920339947680925,
+              "armNearHand": -0.47312554692494935
+            },
+            "selectedHullIndex": 23,
+            "maxPredictedY": 0.7799043062200955
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.2264913766299732,
+              "armFarHand": -0.41110041304788747
+            },
+            "selectedHullIndex": 19,
+            "maxPredictedY": 0.7679425837320575
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.1443916996305594e-16,
+      "paintTargetError": 0.0000011135532724799555,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.01890425
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.2264913766299732
+        },
+        "armFarHand": {
+          "rotation": -0.41110041304788747
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.24920339947680925
+        },
+        "armNearHand": {
+          "rotation": -0.47312554692494935
+        },
+        "legFarHip": {
+          "rotation": 0.1237285,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.16311506670094345
+        },
+        "legFarFoot": {
+          "rotation": 0.04946584757714546
+        },
+        "legNearHip": {
+          "rotation": 0.1237285,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.2193054285780801
+        },
+        "legNearFoot": {
+          "rotation": 0.1527797982908583
+        }
+      }
+    },
+    {
+      "fraction": 0.5,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999913374584,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              772.5,
+              974.5
+            ],
+            "posedCenterY": 977.386266509692,
+            "conservativeHalfTexelY": 0.6137248277664185
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999848365785,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3931327402593,
+            "conservativeHalfTexelY": 0.6068520963191987
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0.01060175,
+            "dx": 0,
+            "dy": 0.0252065
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.28697485625930436
+          },
+          "armFarHand": {
+            "rotation": -0.5439731738884117
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.28923697980099167
+          },
+          "armNearHand": {
+            "rotation": -0.5654709468350745
+          },
+          "legFarHip": {
+            "rotation": 0.1384725,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.18010321279222577
+          },
+          "legFarFoot": {
+            "rotation": 0.03054988902793787
+          },
+          "legNearHip": {
+            "rotation": 0.1384725,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.25294908370570635
+          },
+          "legNearFoot": {
+            "rotation": 0.16510827408136686
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6156299840510366,
+              "y": 0.777511961722488
+            },
+            "target": {
+              "x": 0.6156299840510366,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.28923697980099167,
+              "armNearHand": -0.5654709468350745
+            },
+            "selectedHullIndex": 23,
+            "maxPredictedY": 0.7799043062200955
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7711323763955343,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.28697485625930436,
+              "armFarHand": -0.5439731738884117
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.3877787807814457e-16,
+      "paintTargetError": 1.8565796251504442e-7,
+      "resolved": {
+        "root": {
+          "rotation": 0.01060175,
+          "dx": 0,
+          "dy": 0.0252065
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.28697485625930436
+        },
+        "armFarHand": {
+          "rotation": -0.5439731738884117
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.28923697980099167
+        },
+        "armNearHand": {
+          "rotation": -0.5654709468350745
+        },
+        "legFarHip": {
+          "rotation": 0.1384725,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.18010321279222577
+        },
+        "legFarFoot": {
+          "rotation": 0.03054988902793787
+        },
+        "legNearHip": {
+          "rotation": 0.1384725,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.25294908370570635
+        },
+        "legNearFoot": {
+          "rotation": 0.16510827408136686
+        }
+      }
+    },
+    {
+      "fraction": 0.5625,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999747276307,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              772.5,
+              974.5
+            ],
+            "posedCenterY": 977.3748929301898,
+            "conservativeHalfTexelY": 0.6250817974408467
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999885737896,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3761714071035,
+            "conservativeHalfTexelY": 0.623817166686058
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0.02243425,
+            "dx": 0,
+            "dy": 0.0310175
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.3313430730287156
+          },
+          "armFarHand": {
+            "rotation": -0.648902703680974
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.31923181206351037
+          },
+          "armNearHand": {
+            "rotation": -0.6406174359368129
+          },
+          "legFarHip": {
+            "rotation": 0.146924,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.1876880034828431
+          },
+          "legFarFoot": {
+            "rotation": 0.00497813596994745
+          },
+          "legNearHip": {
+            "rotation": 0.146924,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.27685632015564654
+          },
+          "legNearFoot": {
+            "rotation": 0.17009647184938026
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6156299840510366,
+              "y": 0.777511961722488
+            },
+            "target": {
+              "x": 0.6156299840510366,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.31923181206351037,
+              "armNearHand": -0.6406174359368129
+            },
+            "selectedHullIndex": 23,
+            "maxPredictedY": 0.7799043062200955
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7711323763955343,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.3313430730287156,
+              "armFarHand": -0.648902703680974
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 2.220446049250313e-16,
+      "paintTargetError": 0.0000017482885727773928,
+      "resolved": {
+        "root": {
+          "rotation": 0.02243425,
+          "dx": 0,
+          "dy": 0.0310175
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.3313430730287156
+        },
+        "armFarHand": {
+          "rotation": -0.648902703680974
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.31923181206351037
+        },
+        "armNearHand": {
+          "rotation": -0.6406174359368129
+        },
+        "legFarHip": {
+          "rotation": 0.146924,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.1876880034828431
+        },
+        "legFarFoot": {
+          "rotation": 0.00497813596994745
+        },
+        "legNearHip": {
+          "rotation": 0.146924,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.27685632015564654
+        },
+        "legNearFoot": {
+          "rotation": 0.17009647184938026
+        }
+      }
+    },
+    {
+      "fraction": 0.625,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 978.0000120997429,
+          "maximumBelowGuidePx": 0.000012099742889404297,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              769.5,
+              973.5
+            ],
+            "posedCenterY": 977.3667665719986,
+            "conservativeHalfTexelY": 0.6332455277442932
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999923110008,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3646196871996,
+            "conservativeHalfTexelY": 0.6353726238012314
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0.03268875,
+            "dx": 0,
+            "dy": 0.03605375
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.3618266463901782
+          },
+          "armFarHand": {
+            "rotation": -0.7255738306634438
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.34052817265408314
+          },
+          "armNearHand": {
+            "rotation": -0.6974664009710203
+          },
+          "legFarHip": {
+            "rotation": 0.154249,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.19286413845298567
+          },
+          "legFarFoot": {
+            "rotation": -0.019323468712725275
+          },
+          "legNearHip": {
+            "rotation": 0.154249,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.2975189886502176
+          },
+          "legNearFoot": {
+            "rotation": 0.1743924052358865
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.613237639553429,
+              "y": 0.7767145135566188
+            },
+            "target": {
+              "x": 0.613237639553429,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.34052817265408314,
+              "armNearHand": -0.6974664009710203
+            },
+            "selectedHullIndex": 24,
+            "maxPredictedY": 0.7799043062200957
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7711323763955343,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.3618266463901782,
+              "armFarHand": -0.7255738306634438
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320575
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.2412670766236366e-16,
+      "paintTargetError": 0.00000366432857077185,
+      "resolved": {
+        "root": {
+          "rotation": 0.03268875,
+          "dx": 0,
+          "dy": 0.03605375
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.3618266463901782
+        },
+        "armFarHand": {
+          "rotation": -0.7255738306634438
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.34052817265408314
+        },
+        "armNearHand": {
+          "rotation": -0.6974664009710203
+        },
+        "legFarHip": {
+          "rotation": 0.154249,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.19286413845298567
+        },
+        "legFarFoot": {
+          "rotation": -0.019323468712725275
+        },
+        "legNearHip": {
+          "rotation": 0.154249,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.2975189886502176
+        },
+        "legNearFoot": {
+          "rotation": 0.1743924052358865
+        }
+      }
+    },
+    {
+      "fraction": 0.6875,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.999999642372,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              769.5,
+              973.5
+            ],
+            "posedCenterY": 977.3607330520947,
+            "conservativeHalfTexelY": 0.6392665902773539
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999997854233,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3563529759646,
+            "conservativeHalfTexelY": 0.6436468094587326
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0.041366,
+            "dx": 0,
+            "dy": 0.040315
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.38384106700191656
+          },
+          "armFarHand": {
+            "rotation": -0.7837234829424973
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.35705849704578907
+          },
+          "armNearHand": {
+            "rotation": -0.7421922681123241
+          },
+          "legFarHip": {
+            "rotation": 0.16044675,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.1960538628770021
+          },
+          "legFarFoot": {
+            "rotation": -0.04173297217018668
+          },
+          "legNearHip": {
+            "rotation": 0.16044675,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.31496072979321554
+          },
+          "legNearFoot": {
+            "rotation": 0.17800679295073518
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.613237639553429,
+              "y": 0.7767145135566188
+            },
+            "target": {
+              "x": 0.613237639553429,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.35705849704578907,
+              "armNearHand": -0.7421922681123241
+            },
+            "selectedHullIndex": 24,
+            "maxPredictedY": 0.7799043062200957
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7711323763955343,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.38384106700191656,
+              "armFarHand": -0.7837234829424973
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320575
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 2.2887833992611187e-16,
+      "paintTargetError": 0.000005783325828466305,
+      "resolved": {
+        "root": {
+          "rotation": 0.041366,
+          "dx": 0,
+          "dy": 0.040315
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.38384106700191656
+        },
+        "armFarHand": {
+          "rotation": -0.7837234829424973
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.35705849704578907
+        },
+        "armNearHand": {
+          "rotation": -0.7421922681123241
+        },
+        "legFarHip": {
+          "rotation": 0.16044675,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.1960538628770021
+        },
+        "legFarFoot": {
+          "rotation": -0.04173297217018668
+        },
+        "legNearHip": {
+          "rotation": 0.16044675,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.31496072979321554
+        },
+        "legNearFoot": {
+          "rotation": 0.17800679295073518
+        }
+      }
+    },
+    {
+      "fraction": 0.75,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999747276306,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              769.5,
+              973.5
+            ],
+            "posedCenterY": 977.356298228105,
+            "conservativeHalfTexelY": 0.6436764995257059
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999773621558,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3503304600715,
+            "conservativeHalfTexelY": 0.6496469020843506
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0.04846525,
+            "dx": 0,
+            "dy": 0.04380175
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.39990191946954834
+          },
+          "armFarHand": {
+            "rotation": -0.8278485117910327
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.36933210464976907
+          },
+          "armNearHand": {
+            "rotation": -0.7764046248757546
+          },
+          "legFarHip": {
+            "rotation": 0.16551775,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.19771818110183736
+          },
+          "legFarFoot": {
+            "rotation": -0.06154979562385376
+          },
+          "legNearHip": {
+            "rotation": 0.16551775,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.32920516793849797
+          },
+          "legNearFoot": {
+            "rotation": 0.1809546982268073
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.613237639553429,
+              "y": 0.7767145135566188
+            },
+            "target": {
+              "x": 0.613237639553429,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.36933210464976907,
+              "armNearHand": -0.7764046248757546
+            },
+            "selectedHullIndex": 24,
+            "maxPredictedY": 0.7799043062200958
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7711323763955343,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.39990191946954834,
+              "armFarHand": -0.8278485117910327
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320575
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.2412670766236366e-16,
+      "paintTargetError": 0.000008024745097021476,
+      "resolved": {
+        "root": {
+          "rotation": 0.04846525,
+          "dx": 0,
+          "dy": 0.04380175
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.39990191946954834
+        },
+        "armFarHand": {
+          "rotation": -0.8278485117910327
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.36933210464976907
+        },
+        "armNearHand": {
+          "rotation": -0.7764046248757546
+        },
+        "legFarHip": {
+          "rotation": 0.16551775,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.19771818110183736
+        },
+        "legFarFoot": {
+          "rotation": -0.06154979562385376
+        },
+        "legNearHip": {
+          "rotation": 0.16551775,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.32920516793849797
+        },
+        "legNearFoot": {
+          "rotation": 0.1809546982268073
+        }
+      }
+    },
+    {
+      "fraction": 0.8125,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 978.000003794829,
+          "maximumBelowGuidePx": 0.0000037948290128042572,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              769.5,
+              973.5
+            ],
+            "posedCenterY": 977.3531548182169,
+            "conservativeHalfTexelY": 0.6468489766120911
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999885737896,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3460775136947,
+            "conservativeHalfTexelY": 0.6539110600948335
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0.053987,
+            "dx": 0,
+            "dy": 0.0465135
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.4113906928106579
+          },
+          "armFarHand": {
+            "rotation": -0.8604036603713296
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.37822895483623903
+          },
+          "armNearHand": {
+            "rotation": -0.8017787772139525
+          },
+          "legFarHip": {
+            "rotation": 0.169462,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.19832517309852712
+          },
+          "legFarFoot": {
+            "rotation": -0.07805139311043786
+          },
+          "legNearHip": {
+            "rotation": 0.169462,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.3402670182896765
+          },
+          "legNearFoot": {
+            "rotation": 0.18323968484034014
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.613237639553429,
+              "y": 0.7767145135566188
+            },
+            "target": {
+              "x": 0.613237639553429,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.37822895483623903,
+              "armNearHand": -0.8017787772139525
+            },
+            "selectedHullIndex": 24,
+            "maxPredictedY": 0.7799043062200955
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7711323763955343,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.4113906928106579,
+              "armFarHand": -0.8604036603713296
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.5700924586837752e-16,
+      "paintTargetError": 0.000010227713419622908,
+      "resolved": {
+        "root": {
+          "rotation": 0.053987,
+          "dx": 0,
+          "dy": 0.0465135
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.4113906928106579
+        },
+        "armFarHand": {
+          "rotation": -0.8604036603713296
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.37822895483623903
+        },
+        "armNearHand": {
+          "rotation": -0.8017787772139525
+        },
+        "legFarHip": {
+          "rotation": 0.169462,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.19832517309852712
+        },
+        "legFarFoot": {
+          "rotation": -0.07805139311043786
+        },
+        "legNearHip": {
+          "rotation": 0.169462,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.3402670182896765
+        },
+        "legNearFoot": {
+          "rotation": 0.18323968484034014
+        }
+      }
+    },
+    {
+      "fraction": 0.875,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 978.000007947286,
+          "maximumBelowGuidePx": 0.000007947286007947696,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              769.5,
+              973.5
+            ],
+            "posedCenterY": 977.3510204553604,
+            "conservativeHalfTexelY": 0.6489874919255574
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 963.0000147342681,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3432484447956,
+            "conservativeHalfTexelY": 0.6567662894725801
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0.05793125,
+            "dx": 0,
+            "dy": 0.0484505
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.419126371833163
+          },
+          "armFarHand": {
+            "rotation": -0.8828337590365931
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.3842781718166362
+          },
+          "armNearHand": {
+            "rotation": -0.8193216769190097
+          },
+          "legFarHip": {
+            "rotation": 0.17227925,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.19833843957585442
+          },
+          "legFarFoot": {
+            "rotation": -0.09050796797602699
+          },
+          "legNearHip": {
+            "rotation": 0.17227925,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.3481594778876207
+          },
+          "legNearFoot": {
+            "rotation": 0.1848682987815623
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.613237639553429,
+              "y": 0.7767145135566188
+            },
+            "target": {
+              "x": 0.613237639553429,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.3842781718166362,
+              "armNearHand": -0.8193216769190097
+            },
+            "selectedHullIndex": 24,
+            "maxPredictedY": 0.7799043062200955
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7711323763955343,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.419126371833163,
+              "armFarHand": -0.8828337590365931
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.1102230246251565e-16,
+      "paintTargetError": 0.000012141237176290243,
+      "resolved": {
+        "root": {
+          "rotation": 0.05793125,
+          "dx": 0,
+          "dy": 0.0484505
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.419126371833163
+        },
+        "armFarHand": {
+          "rotation": -0.8828337590365931
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.3842781718166362
+        },
+        "armNearHand": {
+          "rotation": -0.8193216769190097
+        },
+        "legFarHip": {
+          "rotation": 0.17227925,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.19833843957585442
+        },
+        "legFarFoot": {
+          "rotation": -0.09050796797602699
+        },
+        "legNearHip": {
+          "rotation": 0.17227925,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.3481594778876207
+        },
+        "legNearFoot": {
+          "rotation": 0.1848682987815623
+        }
+      }
+    },
+    {
+      "fraction": 0.9375,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 978.000007947286,
+          "maximumBelowGuidePx": 0.000007947286007947696,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              769.5,
+              973.5
+            ],
+            "posedCenterY": 977.3497871756554,
+            "conservativeHalfTexelY": 0.650220771630605
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.999981099367,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.34157230556,
+            "conservativeHalfTexelY": 0.6584087938070298
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0.06029775,
+            "dx": 0,
+            "dy": 0.0496125
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.42359460132690113
+          },
+          "armFarHand": {
+            "rotation": -0.8959895369115498
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.3877948730616517
+          },
+          "armNearHand": {
+            "rotation": -0.8296326281221342
+          },
+          "legFarHip": {
+            "rotation": 0.1739695,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.19815814768590795
+          },
+          "legFarFoot": {
+            "rotation": -0.0982831640673214
+          },
+          "legNearHip": {
+            "rotation": 0.1739695,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.352890689500922
+          },
+          "legNearFoot": {
+            "rotation": 0.1858432051870682
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.613237639553429,
+              "y": 0.7767145135566188
+            },
+            "target": {
+              "x": 0.613237639553429,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.3877948730616517,
+              "armNearHand": -0.8296326281221342
+            },
+            "selectedHullIndex": 24,
+            "maxPredictedY": 0.7799043062200957
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7711323763955343,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.42359460132690113,
+              "armFarHand": -0.8959895369115498
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320575
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.6653345369377348e-16,
+      "paintTargetError": 0.000013464613662974931,
+      "resolved": {
+        "root": {
+          "rotation": 0.06029775,
+          "dx": 0,
+          "dy": 0.0496125
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.42359460132690113
+        },
+        "armFarHand": {
+          "rotation": -0.8959895369115498
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.3877948730616517
+        },
+        "armNearHand": {
+          "rotation": -0.8296326281221342
+        },
+        "legFarHip": {
+          "rotation": 0.1739695,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.19815814768590795
+        },
+        "legFarFoot": {
+          "rotation": -0.0982831640673214
+        },
+        "legNearHip": {
+          "rotation": 0.1739695,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.352890689500922
+        },
+        "legNearFoot": {
+          "rotation": 0.1858432051870682
+        }
+      }
+    },
+    {
+      "fraction": 1,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 978.0000287095705,
+          "maximumBelowGuidePx": 0.00002870957052891754,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              769.5,
+              973.5
+            ],
+            "posedCenterY": 977.3494009971619,
+            "conservativeHalfTexelY": 0.6506277124087015
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 963.000010997057,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3410659134388,
+            "conservativeHalfTexelY": 0.6589450836181641
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0.0610865,
+            "dx": 0,
+            "dy": 0.05
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.42505693472722444
+          },
+          "armFarHand": {
+            "rotation": -0.9003275840577752
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.38894966566807493
+          },
+          "armNearHand": {
+            "rotation": -0.8330362916811112
+          },
+          "legFarHip": {
+            "rotation": 0.174533,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.1980664021450741
+          },
+          "legFarFoot": {
+            "rotation": -0.10092545036418744
+          },
+          "legNearHip": {
+            "rotation": 0.174533,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.35446787582438555
+          },
+          "legNearFoot": {
+            "rotation": 0.18616908489725004
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.613237639553429,
+              "y": 0.7767145135566188
+            },
+            "target": {
+              "x": 0.613237639553429,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.38894966566807493,
+              "armNearHand": -0.8330362916811112
+            },
+            "selectedHullIndex": 24,
+            "maxPredictedY": 0.7799043062200957
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7711323763955343,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.42505693472722444,
+              "armFarHand": -0.9003275840577752
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.1102230246251565e-16,
+      "paintTargetError": 0.000013939459886784326,
+      "resolved": {
+        "root": {
+          "rotation": 0.0610865,
+          "dx": 0,
+          "dy": 0.05
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.42505693472722444
+        },
+        "armFarHand": {
+          "rotation": -0.9003275840577752
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.38894966566807493
+        },
+        "armNearHand": {
+          "rotation": -0.8330362916811112
+        },
+        "legFarHip": {
+          "rotation": 0.174533,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.1980664021450741
+        },
+        "legFarFoot": {
+          "rotation": -0.10092545036418744
+        },
+        "legNearHip": {
+          "rotation": 0.174533,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.35446787582438555
+        },
+        "legNearFoot": {
+          "rotation": 0.18616908489725004
+        }
+      }
+    }
+  ],
+  "native": false,
+  "qualified": false
+}

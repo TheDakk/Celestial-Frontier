@@ -1,0 +1,18 @@
+[
+  {
+    "source": "audits/C202_PRIMATE_REFERENCES_20261004/review-rig.mjs",
+    "sourceSha256": "2eac2f34eec2273fda5df1c17e10421114bf821615c8b68e3878228dfb4376a6",
+    "output": "audits/C203_ARTHROPOD_REFERENCES_20261004/review-rig.mjs",
+    "outputSha256": "63de43ab2ca8efcb0a9157512ad78bb69a4f134450d5085629567fc5fd03ab05",
+    "transform": "Only audit directory identity changed",
+    "replacements": 2
+  },
+  {
+    "source": "audits/C202_PRIMATE_REFERENCES_20261004/bundle-review.mjs",
+    "sourceSha256": "1443eca51f74ecfa2d8888da6d6beee550165464adf0d050d5baae293f5229c1",
+    "output": "audits/C203_ARTHROPOD_REFERENCES_20261004/bundle-review.mjs",
+    "outputSha256": "0196686508d202fe2168b0e29ca97c2edb96fe2c1bb515ab2efd46c093f340fd",
+    "transform": "Only audit directory identity changed",
+    "replacements": 1
+  }
+]

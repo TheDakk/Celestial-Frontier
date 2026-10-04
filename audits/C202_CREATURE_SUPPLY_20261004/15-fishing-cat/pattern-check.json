@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Fishing Cat",
+  "masterSha256": "1403ef342d66d3bedab9f9fe10766b0fbf994f61a6bdfc48212f81713879d50c",
+  "required": [
+    "olive coat with rows of solid dark spots and neck stripes"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "olive coat with rows of solid dark spots and neck stripes",
+      "status": "PRESENT",
+      "observed": "Dense dark spots over grey-brown body and facial stripes; thick short ringed tail and four separate feet. Some far upper limb remains obscured; spots remain distinct."
+    }
+  ]
+}

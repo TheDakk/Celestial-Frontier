@@ -1,0 +1,28 @@
+{
+  "name": "Pigeon",
+  "masterSha256": "7c93c25025d4f8c4e1edd4953f1a35610f1c5b3c24f9cc3af96af7dfa7ce556a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: gray deep-chested pigeon with iridescent green/violet neck, white cere and two separate red legs/feet. Near folded wing and continuous tail visible; far wing hidden. Multiple dark bars across the near wing need species-style scoring; no hidden-root or bilateral-wing completeness claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 216,
+      "y0": 317,
+      "x1": 989,
+      "y1": 944
+    },
+    "margins": {
+      "left": 216,
+      "right": 264,
+      "top": 317,
+      "bottom": 309
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

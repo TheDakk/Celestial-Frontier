@@ -1,0 +1,28 @@
+{
+  "name": "Aardvark",
+  "masterSha256": "d4026854bc8c60ff9640f9498527673bdc2a7ee47da193bcf55d187f25295f1c",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Long tubular snout, large upright ears, arched brown body, long thick tapered tail and four strong clawed feet. Source shows natural rounded haunch rather than a generic long-legged frame.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 148,
+      "y0": 353,
+      "x1": 1085,
+      "y1": 851
+    },
+    "margins": {
+      "left": 148,
+      "right": 168,
+      "top": 353,
+      "bottom": 402
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

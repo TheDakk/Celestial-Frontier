@@ -1,0 +1,2010 @@
+{
+  "schema": "cf.c202-arthropod-delivery/v1",
+  "status": "FROZEN_WITH_SOURCE_AND_MOTION_HOLDS",
+  "sourceOriginals": 10,
+  "qualifiedReferencePool": [],
+  "nativeRuns": 0,
+  "files": [
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/framing.json",
+      "sha256": "c773876e46c3fb4bf045e0499d5bd038be26f6aeb31a2b13e6c690c85161e525",
+      "bytes": 414
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/generation.json",
+      "sha256": "89819716e740663c852026cdbdf416dc932f9cbf354ca75a9aa3e6ddab2802c5",
+      "bytes": 734
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/master.png",
+      "sha256": "2fc73953a7a8601bb57490131f341a8f9c7153e2fe7c9f54dcf99de3388deefc",
+      "bytes": 1462196
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/pattern-check.json",
+      "sha256": "ab75d0f7369ac6d5bd1c4b97b9f957599d53176a013ac6225289e9af30542cca",
+      "bytes": 404
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/prompt.canonical.txt",
+      "sha256": "47ed2fa2fc90feba25890509cb2cf30fcec69fabd2b4fcefc3c36791238029ce",
+      "bytes": 9613
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/prompt.txt",
+      "sha256": "ec7b34abf1455f34fd10ec937a4242a6081081a4c641b1c240e19fd0028753f9",
+      "bytes": 12190
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/request.json",
+      "sha256": "7b80a89e07b15e74856eaa6e2e7116b1b4877a510a4134740ef537b81ed040ab",
+      "bytes": 2568
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/source-review.json",
+      "sha256": "f665cb92452dbaa0fd151d3bf7475a49bc427de338c02a1b5b0da9a1f04a7897",
+      "bytes": 396
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/subject-source.json",
+      "sha256": "f1ccf1d44f06ac677777c12d209af137e4f40dfc7f756752691f4804ab6ef60e",
+      "bytes": 2766
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/framing.json",
+      "sha256": "f34123d19a6e31e2c35e822ac0176cbe8fe75ea648eb04bd5e8bd14f8ae0a8b4",
+      "bytes": 412
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/generation.json",
+      "sha256": "cdd684f321b49e1edf8706947a0d88eee790de92a592d4422cc2065d08f6c2d5",
+      "bytes": 744
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/master.png",
+      "sha256": "3adb0589334f5210c96e30df63d670edc4351ffa266a10332b511e4d523dc6af",
+      "bytes": 1526760
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/pattern-check.json",
+      "sha256": "37edf987a5912831a58b056dbe05474d5d5d3f7304438a5683ed11cb75b2531d",
+      "bytes": 409
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/prompt.canonical.txt",
+      "sha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+      "bytes": 9527
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/prompt.txt",
+      "sha256": "9ee42d831a2fd443f989054190cc347cd4547a271acf4096930ae61ea3ea4209",
+      "bytes": 12202
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/request.json",
+      "sha256": "a590b522d29ad88668d5644a814bcd36697350f1e1f4b4a839af504f8e6d2538",
+      "bytes": 2622
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/source-review.json",
+      "sha256": "7607679cd96265e2744b8fa065e8b685e1c5a685bbf6507b560ff8d291bfac0e",
+      "bytes": 390
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/02-grasshopper-source/subject-source.json",
+      "sha256": "5c12de6316a7b223a6363ea4a274c14a07278b2bf7df86acb347ed076caaabc3",
+      "bytes": 2698
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/authoring.json",
+      "sha256": "b9895a2d2e170c5782065f6ded3612b8d1146fb7c4136431914ade9a8ad78676",
+      "bytes": 19673
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/binding.json",
+      "sha256": "2a52ac2e68bb858c22e89288bc78f576884b94cb18ec63756eafa844fa502b1a",
+      "bytes": 1816788
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/declaration.json",
+      "sha256": "0e8e76254086a8b8e99115c77747eb1860374e3ad5ba8e302f659b324a1d0912",
+      "bytes": 2498
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/intake-provenance.json",
+      "sha256": "087ef0826b3f630c030ca7ed8575819fce6edf335c7dddcf7e12389962cc351e",
+      "bytes": 3443
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/label-authoring-receipt.json",
+      "sha256": "6cc24271e502b6e5e276c0ccee8d3d9adb0b12e2479c141b6a3a48ea298d2ece",
+      "bytes": 3116
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/labels.png",
+      "sha256": "066ea5684d729e151114ee3b29e415b0dcc9ecb46ce363da5867e7da5d3929c5",
+      "bytes": 46545
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/atlas/c202-03-beetle-dorsal.json",
+      "sha256": "5b7474547c5252314bf66c0005f30cacc2ed0a905d1ac13c5b50d96185046ea6",
+      "bytes": 8728
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/atlas/c202-03-beetle-dorsal.png",
+      "sha256": "fe3c2e9865057a0e4237fe0499d8c6af17bcb4a530c391a00b1efa9906b3edb6",
+      "bytes": 625152
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/atlas/receipt.json",
+      "sha256": "0d6715ad60bc660d228d183e0ad569ff829c80eb9c8d811c807d2b20372ed8a9",
+      "bytes": 3514
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/binding.json",
+      "sha256": "368f7fe3761c7525c3a205582f4032134b60a5b11115d7337a73b0b2f0283a6c",
+      "bytes": 7259
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/keyed.png",
+      "sha256": "08ac548f280c98d369eb343c5fb41ece5e9119353b6d665ff946a1d3b3e9a52e",
+      "bytes": 1804008
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/manifest.json",
+      "sha256": "c63b11a7dceda42d1e8c5834ae4b52e725514e308c22c8ae3a209a1d70d64bac",
+      "bytes": 3663
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/ownership.png",
+      "sha256": "f1a047f998001372d93a47d3c070d4256fc18251b26e727f71d937d7c6325de1",
+      "bytes": 21626
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/antenna-far.png",
+      "sha256": "cb762d2e210ac592c0639c95c08a51a3f2821f5d63ca5374d54885862febedd6",
+      "bytes": 3841
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/antenna-near.png",
+      "sha256": "69b0f7eb7ca1f5cb166dd664bafab36316588b4bc72af4d06ce2c50937a66383",
+      "bytes": 6503
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/body.png",
+      "sha256": "c0b120ddab7ba3ffab00a7bdc3a3b538e915bb6003bb638fa1aef7a53e2901ea",
+      "bytes": 47323
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/elytral-suture.png",
+      "sha256": "a46b954fbe7fa0acd9b7c7daeb33a9dacb8f262889816c0a026a34b03971ec81",
+      "bytes": 29806
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/far-elytron.png",
+      "sha256": "de122fd81b2af126ab73aa7936cd0e6ad0f9720f7ab0b9eee11f8c5e97d2e5d1",
+      "bytes": 145072
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/front-far-lower.png",
+      "sha256": "4f13ca159e3ae33241b8300bb511dfd429e2e45088af3339098bfbe9eaeb2206",
+      "bytes": 13619
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/front-far-upper.png",
+      "sha256": "82a06f59751aabeb23b3e0720a260a6f9b9602a79cb3993b799ffa0acc00173f",
+      "bytes": 6330
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/front-near-lower.png",
+      "sha256": "03ab87fe7e32887b409d3699c2020b0427c871107b8003354ca2222dc49d48a7",
+      "bytes": 14415
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/front-near-upper.png",
+      "sha256": "8ee39e2523bcd0e04622f0237d2ee84012eeec19004cb0a4cd2bcef509f61256",
+      "bytes": 7729
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/head.png",
+      "sha256": "80f547010ce83e2eb544abfb4e0720026590547de814a0363a9d0cb4c6d7f9e8",
+      "bytes": 51587
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/hind-far-lower.png",
+      "sha256": "f37ea237b64e5d6661ef51ec47f9b93acd08b3d24f14b83b9e712a7a15266a06",
+      "bytes": 12076
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/hind-far-upper.png",
+      "sha256": "b10a2d99d0950a3c72601756079369553c394fbbdab787abee376c9575c4d31f",
+      "bytes": 10064
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/hind-near-lower.png",
+      "sha256": "6dd79efdac12b177b9594541f89719e3ef383e3fb70d9d6bb4746019d570ba76",
+      "bytes": 12452
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/hind-near-upper.png",
+      "sha256": "bd184e344d4dcad5f2622a70ee328a4792c8c31a30b1c052630924a3788591a6",
+      "bytes": 8102
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/mandible.png",
+      "sha256": "34623315b0847bb7550004c1d0c1bfed85dbad47fde9ef10ed3063dc74883893",
+      "bytes": 15702
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/middle-far-lower.png",
+      "sha256": "c17b8ac82895c4e16382aeabd1c2ddf73b063442c0844b57e7f31ee3099e3ca6",
+      "bytes": 10926
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/middle-far-upper.png",
+      "sha256": "397565f913e2d5fc138ed0fd0d3d258ca08e6a2d74f53030b9ddac5338c0a63f",
+      "bytes": 13117
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/middle-near-lower.png",
+      "sha256": "bed020cf14f5c235e2af6eb4baee653ff55d7fa838669fa0d567db306bf4f023",
+      "bytes": 10969
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/middle-near-upper.png",
+      "sha256": "7131a5d7d29a7e1c061dcf414d09fe975d016812b71c202d41b1cf98e53d7f07",
+      "bytes": 10116
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/near-elytron.png",
+      "sha256": "24505cab37e76e6d62a1fe2d1b5e6d65a2c35e312679477a2c7c9149ff440e37",
+      "bytes": 158011
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/parts/thorax.png",
+      "sha256": "f13eac04525f122cd15b09222f5bf83c47f78ffe7bc3e92eea5f71bdd40db289",
+      "bytes": 97608
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/parts/receipt.json",
+      "sha256": "b6a49d10d766aa7694d6908c340fa0571213dc89eb3eae37a8b41f6add1ab5fb",
+      "bytes": 5921
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/pre-split-binding.json",
+      "sha256": "e1b190e95b04c3aa280ab1745941f44b688681688f7c9a5579927605a2c94f14",
+      "bytes": 1333418
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/receipt.json",
+      "sha256": "e6c9d29020629008b95fcacfaa1d352e4bd085238a47199e2838759db9377c71",
+      "bytes": 3240
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/fit01/record.json",
+      "sha256": "6a3213aca12506c515ec3f9b540432618a4118cff5263f468249a61a9fafc076",
+      "bytes": 6179
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/framing.json",
+      "sha256": "6490dffbfcecea033d26430d5ea1db0839fa5b9296c213b15fa8a545f31cbc80",
+      "bytes": 425
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/generation.json",
+      "sha256": "74c82c12f21447e2df97c04b89a4a8c77e3be7b00482030ac39a2b5eb1567f52",
+      "bytes": 744
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/intake-execution.json",
+      "sha256": "afc032611ec79dcea83841f696cbab90dfc0ce061e691b5fdd005342949f451f",
+      "bytes": 483
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/intake.log",
+      "sha256": "8efaa41486f97029bb4ee85d7e1dac35b683934908d650e50195318752c80bcf",
+      "bytes": 318
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/master.png",
+      "sha256": "2673f287573558969262fabc5bd524083d1e773abe1b5c58ef09a9588284ffab",
+      "bytes": 1455022
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/pattern-check.json",
+      "sha256": "d7688e2ca59d83a6a2b0a31b8a2e29ae5f346a89b2e191bd0051401e7289ae61",
+      "bytes": 404
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/prompt.canonical.txt",
+      "sha256": "47ed2fa2fc90feba25890509cb2cf30fcec69fabd2b4fcefc3c36791238029ce",
+      "bytes": 9613
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/prompt.txt",
+      "sha256": "e8c18190542a697caeff0078a24cf3bfdad57cd59533358fe3eef9b03983896e",
+      "bytes": 1380
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/request.json",
+      "sha256": "65cdc45990bda13f1ed063373b4e77339e8bc80891747712129cc5359fcb1e93",
+      "bytes": 2444
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/source-observations.json",
+      "sha256": "9def10a65828b4bd3ba3074aa2372727c8568c5e86b16c33e58858e392e20eb9",
+      "bytes": 951
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/static-01.json",
+      "sha256": "f17048f96e4440981820cc81a403cd9582a1214f801afeafe80cda7936692abb",
+      "bytes": 37479
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/static-01.json.sources.json",
+      "sha256": "0932091ff6c9de79470d85df2995d67d83e2800a5bf1a3c463d889b5a4b98e2c",
+      "bytes": 16218
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/static-execution.json",
+      "sha256": "ed60879ce310b936852f3b0446c6c64bd062e64d80db4a8f99c824d2b432b65c",
+      "bytes": 498
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/static.log",
+      "sha256": "b00162508c0cb7ec1e411b53b56d8f32adc0d2838281de7dc871867196d8149d",
+      "bytes": 2855
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/03-beetle-dorsal/subject-source.json",
+      "sha256": "f1ccf1d44f06ac677777c12d209af137e4f40dfc7f756752691f4804ab6ef60e",
+      "bytes": 2766
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/framing.json",
+      "sha256": "8c74a9dcbd67e9bc6c5335ff80a4c3b02698940d973eefd260af2fd0c196c7ee",
+      "bytes": 411
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/generation.json",
+      "sha256": "ff761b01a227faa22441312f668a31d0196286c4269d24fc1bfa8040e16fcf77",
+      "bytes": 759
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/master.png",
+      "sha256": "b54f921550ea722bb9f8a28adedf2d61381b18f256a830604d6ae0d3333ef42d",
+      "bytes": 1501275
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/pattern-check.json",
+      "sha256": "2f8bc2572293b4caaed457a9ed8c1074df06de047fbb22019eaaf88f8bacae2a",
+      "bytes": 409
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/prompt.canonical.txt",
+      "sha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+      "bytes": 9527
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/prompt.txt",
+      "sha256": "46c1aeec8f4c69bbf7f6158138e12101d47939a09a45ee90e95371de658c3458",
+      "bytes": 1419
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/request.json",
+      "sha256": "da5e4770ac36a393f3ac50da66ee099e7b03a4f23bbee3d2729dcd215eb779f5",
+      "bytes": 2498
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/source-review.json",
+      "sha256": "97efcea3292090331146798f30cf19dc39ed536c027861b34ba282b07cc5a39c",
+      "bytes": 435
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/04-grasshopper-dorsal/subject-source.json",
+      "sha256": "5c12de6316a7b223a6363ea4a274c14a07278b2bf7df86acb347ed076caaabc3",
+      "bytes": 2698
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/authoring.json",
+      "sha256": "808c6a5ff7a89f861ded211c8fed8bc494e281adac2280a161f7bcdeef762916",
+      "bytes": 20356
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/binding.json",
+      "sha256": "af31dbf0e50dd7f435fa7e7b4939852154faa288a72351ac703613792f4346ab",
+      "bytes": 1252299
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/declaration.json",
+      "sha256": "ec269d64a22d6e1fdde8bed51879731baa29cda1d6bebbc67dff15d42c95072f",
+      "bytes": 2490
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/intake-provenance.json",
+      "sha256": "ec68bd831bc08b06d7ef5d066109a7835dcce7580f6ff1b0909f4764be295611",
+      "bytes": 3483
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/label-authoring-receipt.json",
+      "sha256": "487c1f4b974c263fd4c688238424c8b3c2d169c4b745da9de63aa550a251805e",
+      "bytes": 3194
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/labels.png",
+      "sha256": "94d577eb1fac55b1ec8c42b0cf06e547281b97c105a2f5655f47e9a77d2d4b08",
+      "bytes": 41818
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/atlas/c202-05-grasshopper-framed.json",
+      "sha256": "d896f6c8bb92164ce5e9607543527b7ba2857b35defde1d43ddf8e409698b3bb",
+      "bytes": 8688
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/atlas/c202-05-grasshopper-framed.png",
+      "sha256": "82753bc1a3a2893649d6b5420ce754642f6f342551e85ac31ffe2644c7252167",
+      "bytes": 314093
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/atlas/receipt.json",
+      "sha256": "1966b80c1c9ad2852db76933ad42088b4913f51062dffa6181c65c7b8d5925ac",
+      "bytes": 3511
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/binding.json",
+      "sha256": "c15a953c464768c3021cd68c669de024bb8211e549bdb206f7da49f8b8aea2ef",
+      "bytes": 7225
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/keyed.png",
+      "sha256": "bda4b3c0def1517235d1673ba09d70e62e54600c7e14421ac1d27b1788b7ac6c",
+      "bytes": 1410478
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/manifest.json",
+      "sha256": "c8c0cfa5c233195c45ce02212c6b4b79bcce5f233eb5ab5b1f577e09c201cd9d",
+      "bytes": 3652
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/ownership.png",
+      "sha256": "8cb12d607c676aea616f3978b985b92fa5bc3fa05a3bcb6a0be4f90cfa2a79f7",
+      "bytes": 15190
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/abdomen-rim.png",
+      "sha256": "be628ec5e17be31750da65822fa930dcf78aaa78caf72c854bd3f3d8579bacfa",
+      "bytes": 28748
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/antenna-far.png",
+      "sha256": "a92398267d70c52f3c0e4f407508708dd9b64d45f3462c8107e0b4c3cbe6ee8b",
+      "bytes": 1831
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/antenna-near.png",
+      "sha256": "64e05181723308dcd0ac46a1423d10b68069a12196ea13c1aac6d54192ce55b2",
+      "bytes": 1729
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/body.png",
+      "sha256": "44e664e9bc3110e6691a6251f8a12a6110122f09d98013290c7c50a423297ee7",
+      "bytes": 54352
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/far-tegmen.png",
+      "sha256": "777880b54d7d1f0b8c4e6395ac2a9d5ad939b6c182fa920d954e32b6fffe6d08",
+      "bytes": 62560
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/front-far-lower.png",
+      "sha256": "0ead7795e16c9a302a31daee1f8e3932682622e4a3e35f4e75fc016c02c91241",
+      "bytes": 3312
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/front-far-upper.png",
+      "sha256": "4eabceeff7aaa860fab23b24c2a98d98eb1781226bb6fd28961131f54825d7dc",
+      "bytes": 4473
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/front-near-lower.png",
+      "sha256": "a3a5ad36eb393e3accabc0304b3389c06db261256558fb588adf3ccf55f053f9",
+      "bytes": 3571
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/front-near-upper.png",
+      "sha256": "f8e80d2c829afb00e83f2567a618a026fca458676787beb1f46d0cadec7eaff4",
+      "bytes": 3844
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/head.png",
+      "sha256": "ff0d830972e18d83b3fc4c3195eeaef0e363da0b03524c1e5433e9a915e9c91e",
+      "bytes": 19080
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/hind-far-lower.png",
+      "sha256": "c34ebfc830021e4ec0bc2d3e48412d0d2eb0ec6e4ee23e445e226493191a749e",
+      "bytes": 5238
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/hind-far-upper.png",
+      "sha256": "4c2bc5ec3d91dab6b2f44aadba0e5615ac9d1dee4c2934a7e377112a54f13943",
+      "bytes": 18956
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/hind-near-lower.png",
+      "sha256": "b403bb5e03e1e91a285d448f9b636f50d1dff6f67520b8bb1a46da4598f300f3",
+      "bytes": 6111
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/hind-near-upper.png",
+      "sha256": "98a69ff750e63eaa539c629d6af67edf6a8402241fe875a7f0b029849cbc3206",
+      "bytes": 16611
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/middle-far-lower.png",
+      "sha256": "be77928fbd6b52ea0acdc99d33ff288c5269d211c3b90d8b93d43b597fadab8c",
+      "bytes": 5124
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/middle-far-upper.png",
+      "sha256": "3696b6461c761e7229f0916626ce9e20ac552630551c6993c9788f5d8a6dfde0",
+      "bytes": 6049
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/middle-near-lower.png",
+      "sha256": "2b39cd96d61928f2f666d7d151095d07f9574b0875845cd533bc903ec9ba7495",
+      "bytes": 4262
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/middle-near-upper.png",
+      "sha256": "d1900c533ecce63f467c0ae62e7f435cbe7af2cb507e70927911b5cec0f8055f",
+      "bytes": 4734
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/mouth.png",
+      "sha256": "3dd9cd6c2816fd03abd0a621c474d41480c3780366e064bd00ec1d4e1d3c8654",
+      "bytes": 1351
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/near-tegmen.png",
+      "sha256": "172ba37fccf4695894b7a6efb71324e95cc7a6e31b699f5a14df9a46fa33b0af",
+      "bytes": 67646
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/parts/thorax.png",
+      "sha256": "fee49b17b4ef59d9e618ae755b7b89c6b7882d4d45c7b867e585a232f8521be6",
+      "bytes": 37067
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/parts/receipt.json",
+      "sha256": "9fb26089ee9ce0d0d00736774f6215ffa3055926bf3cc85d666eba8dd983c4eb",
+      "bytes": 5895
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/pre-split-binding.json",
+      "sha256": "64583662d6d4fc9a533315eb5310fab73117cc6cb48442a4d7d3fee9eddc2a1c",
+      "bytes": 955550
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/receipt.json",
+      "sha256": "e7bb2a9fb8693374ad56f09f8687c01c8c1150a2ce43cc6d7d788375989dc741",
+      "bytes": 3257
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/fit01/record.json",
+      "sha256": "89c25e3d747c48a9cccb798b6438a94a517ff548b60880507a359667cda8cc92",
+      "bytes": 6210
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/framing.json",
+      "sha256": "db0432ef3823cc0f4e7cfbb6422082a5f8ca39c3202a0513f6fbadd838283086",
+      "bytes": 424
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/generation.json",
+      "sha256": "29108f246da4fb74617e9f9535f481d0d956d29828cbeb385346d4ce5dddbe6d",
+      "bytes": 759
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/intake-execution.json",
+      "sha256": "fa3330a04d0bd7536972dc71b927d8febb315430623ba4bf1a477003cb1d0da9",
+      "bytes": 486
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/intake.log",
+      "sha256": "10744121d561e2e7313e866f58bf7f0466c82cf0760aba77f83eba71af2714ed",
+      "bytes": 323
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/master.png",
+      "sha256": "37790d9e90adcef9eee96bccad51426bdf74b2b8032236c83b37daa9bf60392c",
+      "bytes": 1178141
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/pattern-check.json",
+      "sha256": "f1834f6b230f2643e82c55ab6e2c18a06f79f2009ae7dc08684f23e75be241da",
+      "bytes": 409
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/prompt.canonical.txt",
+      "sha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+      "bytes": 9527
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/prompt.txt",
+      "sha256": "009082b6b7762bfde9f12efeeadeba5e7c4c1a2ae849fbe4c0c4497388e2ed12",
+      "bytes": 1094
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/request.json",
+      "sha256": "49b9148976fc0c7d3107b9c5bbbe0a1c165d3b6eaf48d83fab533795a298c531",
+      "bytes": 1805
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/source-observations.json",
+      "sha256": "8712c7f62bcbfdc3cc647356fe562be80bf7fe75340b7537a8964f1c6cd3ed66",
+      "bytes": 896
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/static-01.json",
+      "sha256": "489f40ab08ea92dcfad70587782c9ec2c37213e4416a50597b687dfb5d006f49",
+      "bytes": 44064
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/static-01.json.sources.json",
+      "sha256": "cdb9b0fb23db1676700676091fd1830e5ad3d61b644db654f6cee3b91c6b782d",
+      "bytes": 16218
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/static-execution.json",
+      "sha256": "b8f70ec69c73e4add4a16890ce3eeed4f82b72b9bbac6384292d6c4faae269e6",
+      "bytes": 515
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/static.log",
+      "sha256": "bac97459e97e3cb1cdfefa102623e9a1c27e90a3930f0807211cd9453f637764",
+      "bytes": 3090
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/05-grasshopper-framed/subject-source.json",
+      "sha256": "5c12de6316a7b223a6363ea4a274c14a07278b2bf7df86acb347ed076caaabc3",
+      "bytes": 2698
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/framing.json",
+      "sha256": "0c30068666d6c7c3b95664057a6a41c80ee7e2c350760a40da45b2fd4c52fc0f",
+      "bytes": 411
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/generation.json",
+      "sha256": "bf80304c897f9bafa121e5205efdaeac658334257787f257d7eb78be1331dc37",
+      "bytes": 748
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/master.png",
+      "sha256": "6442f17acc4bca3b581f4139fd3824f866a1b004b684894f1572313ace7a1a03",
+      "bytes": 1585413
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/pattern-check.json",
+      "sha256": "b59f883f9421caced056b36369d7d8aa0a8c151dd3a386765ca796a02a9ce91c",
+      "bytes": 407
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/prompt.canonical.txt",
+      "sha256": "c669188ca36015c4f81b84463bcf8a8a0658f0d019c48fc56ec4806fb17670a2",
+      "bytes": 8536
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/prompt.txt",
+      "sha256": "f5474faf0ed31ef2446bd28cd9388b040f532c99ae2211c551040cc7fa380804",
+      "bytes": 7314
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/request.json",
+      "sha256": "c12dc13c4e62c2047d002cf8a273e1651105cbe85b006d872984ad04c2011796",
+      "bytes": 3091
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/source-review.json",
+      "sha256": "12568a7f6a052ef73b214e3a84a88b78514d1dcff21af7ccf56ee97c2d652afb",
+      "bytes": 521
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference/subject-source.json",
+      "sha256": "dd45e46e86989a17601852f2d452a0f28fe67e3a56fe9e789e65d171ede30428",
+      "bytes": 1592
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal/framing.json",
+      "sha256": "63f83c6e872f3621b8c0d35c9c49701fb222876fc9a47f0e290c4631b609d900",
+      "bytes": 411
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal/generation.json",
+      "sha256": "2b9eebefeb03581337a56bcc13a9d50e8b539384b646df251b0219345d40770a",
+      "bytes": 756
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal/master.png",
+      "sha256": "be1a7e85561d793f5fdae059c8bab5fb08a58d9fdd3f353ed835c4e01e30fea4",
+      "bytes": 1615610
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal/pattern-check.json",
+      "sha256": "a7cc8a8076b8c577e4da3654eb4c95c29a9f84d9888f1b9e1732bcad2b1f4ce2",
+      "bytes": 407
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal/prompt.canonical.txt",
+      "sha256": "c669188ca36015c4f81b84463bcf8a8a0658f0d019c48fc56ec4806fb17670a2",
+      "bytes": 8536
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal/prompt.txt",
+      "sha256": "eb17fe009deec52b57b1bd815cfef64c6dfb58892c381918b9a2e80d9cdde0a6",
+      "bytes": 1455
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal/request.json",
+      "sha256": "34e6d25b74a8c33857e53453ae3f491eb18ccb634fd5859ec63d7c064d1da4e7",
+      "bytes": 3254
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal/source-review.json",
+      "sha256": "d567cdbdb00748024afbb4f63518d80a53211f92c820a17ac49ef4ea2a2c66c9",
+      "bytes": 1780
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal/subject-source.json",
+      "sha256": "dd45e46e86989a17601852f2d452a0f28fe67e3a56fe9e789e65d171ede30428",
+      "bytes": 1592
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/08-polyxenus-count-correction/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/08-polyxenus-count-correction/framing.json",
+      "sha256": "c91ba5ff60d4955632fcfaf84938f3ce1970ad236b0afbc4cae29cf7e3624751",
+      "bytes": 411
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/08-polyxenus-count-correction/generation.json",
+      "sha256": "770ed9a1059d4348a4d00d4cfe7e52a6e88f0aba5e10555f033d8564e1bcf7ea",
+      "bytes": 755
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/08-polyxenus-count-correction/master.png",
+      "sha256": "a1fb2fed339450411eb4370901a7417808623f041dd985eace1535cc82947681",
+      "bytes": 1488913
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/08-polyxenus-count-correction/pattern-check.json",
+      "sha256": "7b4ba465f77b8725e5b1817e7bd51903f7d99725948144e7a349aa1f641e4c9a",
+      "bytes": 407
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/08-polyxenus-count-correction/prompt.canonical.txt",
+      "sha256": "c669188ca36015c4f81b84463bcf8a8a0658f0d019c48fc56ec4806fb17670a2",
+      "bytes": 8536
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/08-polyxenus-count-correction/prompt.txt",
+      "sha256": "bd954f7b293bc00cee955aed5bbe0cf947a250baf5a5fbc8add2bcf520b58a53",
+      "bytes": 9400
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/08-polyxenus-count-correction/request.json",
+      "sha256": "098882e4ec33a977e494c1e0b1da57123f4cff099e87aeab6488e23ceb840a35",
+      "bytes": 4319
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/08-polyxenus-count-correction/source-review.json",
+      "sha256": "f977a97d439708ceb94599ac1e630b2132c193e7f976f6acc0d1f74f477ae00f",
+      "bytes": 1953
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/08-polyxenus-count-correction/subject-source.json",
+      "sha256": "dd45e46e86989a17601852f2d452a0f28fe67e3a56fe9e789e65d171ede30428",
+      "bytes": 1592
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/authoring.json",
+      "sha256": "60c3dab8b0f5342f036c108b7e44f37ec11e69518ceb00d7a7abb340a7853e6e",
+      "bytes": 20028
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/conservation-01.json",
+      "sha256": "9016710761a59f54c67eeadbe0a04b7851a5b418fa50a35ae3e809c00059cc74",
+      "bytes": 10425
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/conservation-execution.json",
+      "sha256": "eb874e905bad69e54e0998c316cd8d91d84774ec65d7c459f1679e4df74c8baa",
+      "bytes": 401
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/conservation.log",
+      "sha256": "ec9a8ea225dea192f042b5979fc71ee1c91a48c653cdfafc36fa659a5765f6c1",
+      "bytes": 3628
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/binding.json",
+      "sha256": "4e28df6e8e209be667a1cca0b28f677bb9833dca5d8a0569f56731eb8085e32a",
+      "bytes": 1816788
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/declaration.json",
+      "sha256": "dbb46cd583bb6bb9edcd2ad86b4424153fef01b10842e9cec58c1d1931a166b2",
+      "bytes": 2498
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/intake-provenance.json",
+      "sha256": "479ec36f597976b1988f0c2eafe97fbbe84c3091467b00b1a7674ca7f2aaea88",
+      "bytes": 3523
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/label-authoring-receipt.json",
+      "sha256": "6cc24271e502b6e5e276c0ccee8d3d9adb0b12e2479c141b6a3a48ea298d2ece",
+      "bytes": 3116
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/labels.png",
+      "sha256": "066ea5684d729e151114ee3b29e415b0dcc9ecb46ce363da5867e7da5d3929c5",
+      "bytes": 46545
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/atlas/c202-09-beetle-observed-sockets.json",
+      "sha256": "17e95957895bf9d1d323c35ff2e9b4f9470957b9e0429905f1cfe99d75d6d70e",
+      "bytes": 8738
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/atlas/c202-09-beetle-observed-sockets.png",
+      "sha256": "fe3c2e9865057a0e4237fe0499d8c6af17bcb4a530c391a00b1efa9906b3edb6",
+      "bytes": 625152
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/atlas/receipt.json",
+      "sha256": "c5f14f1d0e7a9c4281b82b2a22d0783cd965c00794ace3e19a1af06d481d31a2",
+      "bytes": 3524
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/binding.json",
+      "sha256": "9eeedbc09d0c74f1d4c3f093857a3375805efe6ba0d31d1ad743a02c402e6d4c",
+      "bytes": 7259
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/keyed.png",
+      "sha256": "08ac548f280c98d369eb343c5fb41ece5e9119353b6d665ff946a1d3b3e9a52e",
+      "bytes": 1804008
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/manifest.json",
+      "sha256": "22b392990da217c2a152502b7dbe1facece24784cfdd26830157b34b10d9b0d9",
+      "bytes": 3673
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/ownership.png",
+      "sha256": "f1a047f998001372d93a47d3c070d4256fc18251b26e727f71d937d7c6325de1",
+      "bytes": 21626
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/antenna-far.png",
+      "sha256": "cb762d2e210ac592c0639c95c08a51a3f2821f5d63ca5374d54885862febedd6",
+      "bytes": 3841
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/antenna-near.png",
+      "sha256": "69b0f7eb7ca1f5cb166dd664bafab36316588b4bc72af4d06ce2c50937a66383",
+      "bytes": 6503
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/body.png",
+      "sha256": "c0b120ddab7ba3ffab00a7bdc3a3b538e915bb6003bb638fa1aef7a53e2901ea",
+      "bytes": 47323
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/elytral-suture.png",
+      "sha256": "a46b954fbe7fa0acd9b7c7daeb33a9dacb8f262889816c0a026a34b03971ec81",
+      "bytes": 29806
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/far-elytron.png",
+      "sha256": "de122fd81b2af126ab73aa7936cd0e6ad0f9720f7ab0b9eee11f8c5e97d2e5d1",
+      "bytes": 145072
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/front-far-lower.png",
+      "sha256": "4f13ca159e3ae33241b8300bb511dfd429e2e45088af3339098bfbe9eaeb2206",
+      "bytes": 13619
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/front-far-upper.png",
+      "sha256": "82a06f59751aabeb23b3e0720a260a6f9b9602a79cb3993b799ffa0acc00173f",
+      "bytes": 6330
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/front-near-lower.png",
+      "sha256": "03ab87fe7e32887b409d3699c2020b0427c871107b8003354ca2222dc49d48a7",
+      "bytes": 14415
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/front-near-upper.png",
+      "sha256": "8ee39e2523bcd0e04622f0237d2ee84012eeec19004cb0a4cd2bcef509f61256",
+      "bytes": 7729
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/head.png",
+      "sha256": "80f547010ce83e2eb544abfb4e0720026590547de814a0363a9d0cb4c6d7f9e8",
+      "bytes": 51587
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/hind-far-lower.png",
+      "sha256": "f37ea237b64e5d6661ef51ec47f9b93acd08b3d24f14b83b9e712a7a15266a06",
+      "bytes": 12076
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/hind-far-upper.png",
+      "sha256": "b10a2d99d0950a3c72601756079369553c394fbbdab787abee376c9575c4d31f",
+      "bytes": 10064
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/hind-near-lower.png",
+      "sha256": "6dd79efdac12b177b9594541f89719e3ef383e3fb70d9d6bb4746019d570ba76",
+      "bytes": 12452
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/hind-near-upper.png",
+      "sha256": "bd184e344d4dcad5f2622a70ee328a4792c8c31a30b1c052630924a3788591a6",
+      "bytes": 8102
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/mandible.png",
+      "sha256": "34623315b0847bb7550004c1d0c1bfed85dbad47fde9ef10ed3063dc74883893",
+      "bytes": 15702
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/middle-far-lower.png",
+      "sha256": "c17b8ac82895c4e16382aeabd1c2ddf73b063442c0844b57e7f31ee3099e3ca6",
+      "bytes": 10926
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/middle-far-upper.png",
+      "sha256": "397565f913e2d5fc138ed0fd0d3d258ca08e6a2d74f53030b9ddac5338c0a63f",
+      "bytes": 13117
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/middle-near-lower.png",
+      "sha256": "bed020cf14f5c235e2af6eb4baee653ff55d7fa838669fa0d567db306bf4f023",
+      "bytes": 10969
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/middle-near-upper.png",
+      "sha256": "7131a5d7d29a7e1c061dcf414d09fe975d016812b71c202d41b1cf98e53d7f07",
+      "bytes": 10116
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/near-elytron.png",
+      "sha256": "24505cab37e76e6d62a1fe2d1b5e6d65a2c35e312679477a2c7c9149ff440e37",
+      "bytes": 158011
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/parts/thorax.png",
+      "sha256": "f13eac04525f122cd15b09222f5bf83c47f78ffe7bc3e92eea5f71bdd40db289",
+      "bytes": 97608
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/parts/receipt.json",
+      "sha256": "0df21bf435e837e097b629fcde2ee2fda946972158cfc3ae5f5f19ea229fbf2e",
+      "bytes": 5921
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/pre-split-binding.json",
+      "sha256": "ef77417b00b428be2cd699a47fd09c1efc5e161d7e688f3a09ea391f3924c166",
+      "bytes": 1333418
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/receipt.json",
+      "sha256": "ea65de8dabffbb0baa5522e6098f0943589b6458f5a89bcc610436d2ef252adb",
+      "bytes": 3250
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/fit01/record.json",
+      "sha256": "61a46e1738e95072477c0f265e050596123214d6b2fbb9fbe5ecb5b658520e83",
+      "bytes": 6772
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/full-size-review.json",
+      "sha256": "c63c37e614760b314ff8c3b8fae6e653b3a055095a90e3834e2f184f942853b0",
+      "bytes": 1067
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/generation.json",
+      "sha256": "74c82c12f21447e2df97c04b89a4a8c77e3be7b00482030ac39a2b5eb1567f52",
+      "bytes": 744
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/intake-execution.json",
+      "sha256": "48669314c1e04e5f40cbbb232b65c01d5f1fdfc921d24f88311dabec77e84bc2",
+      "bytes": 396
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/intake.log",
+      "sha256": "c1e69e8482bb62688f5db632efd20111d8204fa9564236bf0854b5d2ebd561e3",
+      "bytes": 328
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/joint-preview-01.png",
+      "sha256": "c23c11bad52e03ff1fe1395de1d3ba338d4c079d3c84fed4476ba4613addb53e",
+      "bytes": 706758
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/master.png",
+      "sha256": "2673f287573558969262fabc5bd524083d1e773abe1b5c58ef09a9588284ffab",
+      "bytes": 1455022
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/ownership-preview-01.png",
+      "sha256": "274b60d48412dbcfb09f1deeae51c27ba6b78ea32639262d28921fccaba2eb1a",
+      "bytes": 657943
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/prompt.canonical.txt",
+      "sha256": "47ed2fa2fc90feba25890509cb2cf30fcec69fabd2b4fcefc3c36791238029ce",
+      "bytes": 9613
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/prompt.txt",
+      "sha256": "e8c18190542a697caeff0078a24cf3bfdad57cd59533358fe3eef9b03983896e",
+      "bytes": 1380
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/request.json",
+      "sha256": "65cdc45990bda13f1ed063373b4e77339e8bc80891747712129cc5359fcb1e93",
+      "bytes": 2444
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/source-socket-authoring.json",
+      "sha256": "7d80bfe0be627dac707dbf1c00dd3607fba630c9e1295e23c7d43a8cd533225c",
+      "bytes": 1301
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/static-01.json",
+      "sha256": "18325b9158951fb568bd3f2d30fbab054233b4b36132414c0315f8f085169808",
+      "bytes": 37460
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/static-01.json.sources.json",
+      "sha256": "edfb7ea5e75827341d9e850eed773640f41ba4c039630b4a173aff52a76460ef",
+      "bytes": 16218
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/static-execution.json",
+      "sha256": "289f93f5d86d19543a1be9120307b0219f2c4d2a437fabab4adcba9fc69957e5",
+      "bytes": 400
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/static.log",
+      "sha256": "2718c276d392e1e2d86ff2fcce4d0eec1fa99ad8a25e61e3e99026f4da058fbc",
+      "bytes": 2848
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/09-beetle-observed-sockets/subject-source.json",
+      "sha256": "f1ccf1d44f06ac677777c12d209af137e4f40dfc7f756752691f4804ab6ef60e",
+      "bytes": 2766
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/authoring.json",
+      "sha256": "49e1d1929694c09104a963025d80b3470e86834940d681fc0104be079ed7dbbc",
+      "bytes": 20711
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/conservation-01.json",
+      "sha256": "c3d5a965b3b7329d58d89548f75957a1385d2b6d2bde270c57ae5ca6f3db5e94",
+      "bytes": 8689
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/conservation-execution.json",
+      "sha256": "b3b5d60da3cc2d66f5af52ca1f37637da253ffffd4fb7d24c2f813812fdf1f40",
+      "bytes": 411
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/conservation.log",
+      "sha256": "8eb513251810726283b6c5d91784dde179e07ce021c1d9c1451e3dbeb05f6c85",
+      "bytes": 2945
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/binding.json",
+      "sha256": "76c83bf71412534075df209176a7955944bcca0feef7e039c619df0e686ee59c",
+      "bytes": 1252299
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/declaration.json",
+      "sha256": "bbf8311914ed0def305e569d248a71a3a449d0a7c5cea6e031157a1a2de1bd7d",
+      "bytes": 2490
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/intake-provenance.json",
+      "sha256": "64d8c9d0706a54864f72531a35353ebba2759df90703f1a1a48a169f2009017b",
+      "bytes": 3563
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/label-authoring-receipt.json",
+      "sha256": "487c1f4b974c263fd4c688238424c8b3c2d169c4b745da9de63aa550a251805e",
+      "bytes": 3194
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/labels.png",
+      "sha256": "94d577eb1fac55b1ec8c42b0cf06e547281b97c105a2f5655f47e9a77d2d4b08",
+      "bytes": 41818
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/atlas/c202-10-grasshopper-observed-sockets.json",
+      "sha256": "629fa0d4507032fe60332b17819e31025e17448bd8054726e0d6dd6b5c5f3741",
+      "bytes": 8698
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/atlas/c202-10-grasshopper-observed-sockets.png",
+      "sha256": "82753bc1a3a2893649d6b5420ce754642f6f342551e85ac31ffe2644c7252167",
+      "bytes": 314093
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/atlas/receipt.json",
+      "sha256": "ebfcb9f4b623c4eaa9cb22c6daaf5bf4a2ece41a70147c248fcd349d64a2371f",
+      "bytes": 3521
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/binding.json",
+      "sha256": "ac773da63f18067425b50fc376469750c5d93a01613cde1fc8a63e9b33f4aaf8",
+      "bytes": 7225
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/keyed.png",
+      "sha256": "bda4b3c0def1517235d1673ba09d70e62e54600c7e14421ac1d27b1788b7ac6c",
+      "bytes": 1410478
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/manifest.json",
+      "sha256": "014fe23d7299900872806e6e4fdcd17b0ca03e7b6a9b020ed7aa161029387d36",
+      "bytes": 3662
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/ownership.png",
+      "sha256": "8cb12d607c676aea616f3978b985b92fa5bc3fa05a3bcb6a0be4f90cfa2a79f7",
+      "bytes": 15190
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/abdomen-rim.png",
+      "sha256": "be628ec5e17be31750da65822fa930dcf78aaa78caf72c854bd3f3d8579bacfa",
+      "bytes": 28748
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/antenna-far.png",
+      "sha256": "a92398267d70c52f3c0e4f407508708dd9b64d45f3462c8107e0b4c3cbe6ee8b",
+      "bytes": 1831
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/antenna-near.png",
+      "sha256": "64e05181723308dcd0ac46a1423d10b68069a12196ea13c1aac6d54192ce55b2",
+      "bytes": 1729
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/body.png",
+      "sha256": "44e664e9bc3110e6691a6251f8a12a6110122f09d98013290c7c50a423297ee7",
+      "bytes": 54352
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/far-tegmen.png",
+      "sha256": "777880b54d7d1f0b8c4e6395ac2a9d5ad939b6c182fa920d954e32b6fffe6d08",
+      "bytes": 62560
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/front-far-lower.png",
+      "sha256": "0ead7795e16c9a302a31daee1f8e3932682622e4a3e35f4e75fc016c02c91241",
+      "bytes": 3312
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/front-far-upper.png",
+      "sha256": "4eabceeff7aaa860fab23b24c2a98d98eb1781226bb6fd28961131f54825d7dc",
+      "bytes": 4473
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/front-near-lower.png",
+      "sha256": "a3a5ad36eb393e3accabc0304b3389c06db261256558fb588adf3ccf55f053f9",
+      "bytes": 3571
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/front-near-upper.png",
+      "sha256": "f8e80d2c829afb00e83f2567a618a026fca458676787beb1f46d0cadec7eaff4",
+      "bytes": 3844
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/head.png",
+      "sha256": "ff0d830972e18d83b3fc4c3195eeaef0e363da0b03524c1e5433e9a915e9c91e",
+      "bytes": 19080
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/hind-far-lower.png",
+      "sha256": "c34ebfc830021e4ec0bc2d3e48412d0d2eb0ec6e4ee23e445e226493191a749e",
+      "bytes": 5238
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/hind-far-upper.png",
+      "sha256": "4c2bc5ec3d91dab6b2f44aadba0e5615ac9d1dee4c2934a7e377112a54f13943",
+      "bytes": 18956
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/hind-near-lower.png",
+      "sha256": "b403bb5e03e1e91a285d448f9b636f50d1dff6f67520b8bb1a46da4598f300f3",
+      "bytes": 6111
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/hind-near-upper.png",
+      "sha256": "98a69ff750e63eaa539c629d6af67edf6a8402241fe875a7f0b029849cbc3206",
+      "bytes": 16611
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/middle-far-lower.png",
+      "sha256": "be77928fbd6b52ea0acdc99d33ff288c5269d211c3b90d8b93d43b597fadab8c",
+      "bytes": 5124
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/middle-far-upper.png",
+      "sha256": "3696b6461c761e7229f0916626ce9e20ac552630551c6993c9788f5d8a6dfde0",
+      "bytes": 6049
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/middle-near-lower.png",
+      "sha256": "2b39cd96d61928f2f666d7d151095d07f9574b0875845cd533bc903ec9ba7495",
+      "bytes": 4262
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/middle-near-upper.png",
+      "sha256": "d1900c533ecce63f467c0ae62e7f435cbe7af2cb507e70927911b5cec0f8055f",
+      "bytes": 4734
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/mouth.png",
+      "sha256": "3dd9cd6c2816fd03abd0a621c474d41480c3780366e064bd00ec1d4e1d3c8654",
+      "bytes": 1351
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/near-tegmen.png",
+      "sha256": "172ba37fccf4695894b7a6efb71324e95cc7a6e31b699f5a14df9a46fa33b0af",
+      "bytes": 67646
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/parts/thorax.png",
+      "sha256": "fee49b17b4ef59d9e618ae755b7b89c6b7882d4d45c7b867e585a232f8521be6",
+      "bytes": 37067
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/parts/receipt.json",
+      "sha256": "e7da21d194fbd8ede4026cd765717000d7b35f57f5661917859174689e826ad2",
+      "bytes": 5895
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/pre-split-binding.json",
+      "sha256": "802e9e2269e9347a9867d2843f89b0f4f3730d5184977b44f89867bd0cee1887",
+      "bytes": 955550
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/receipt.json",
+      "sha256": "4d8f0d5b9e7d5b849ca30cf7af48e7ec4f3c2ff371d6aecae95e3372e43c363f",
+      "bytes": 3267
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/fit01/record.json",
+      "sha256": "10d0e8d1fe1193e42e0ded0c8d3dec8333b69de51969de621ed99626d5754c96",
+      "bytes": 6813
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/full-size-review.json",
+      "sha256": "b6f2dee151d3b4ac7e223859962e2c6ba2da9f8e7b38f8a1f92129cb52887619",
+      "bytes": 1067
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/generation.json",
+      "sha256": "29108f246da4fb74617e9f9535f481d0d956d29828cbeb385346d4ce5dddbe6d",
+      "bytes": 759
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/intake-execution.json",
+      "sha256": "852edf69cf211ea691dfb66c58a1e61d1f4ac1e44a99015e8539b477f1fd2128",
+      "bytes": 406
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/intake.log",
+      "sha256": "a2066f77e525ba9d482c3f46f84e0b83ed04365bdac3c6423740aa5cc984b57d",
+      "bytes": 333
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/joint-preview-01.png",
+      "sha256": "1d7c799df641165601b2653c14bd136c713e1801978ffe5f76bd01db2704200d",
+      "bytes": 381335
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/master.png",
+      "sha256": "37790d9e90adcef9eee96bccad51426bdf74b2b8032236c83b37daa9bf60392c",
+      "bytes": 1178141
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/ownership-preview-01.png",
+      "sha256": "acd7790849ff75ee86e53935bba006d096b690bec4aafa9bd00dff94d86d6b73",
+      "bytes": 335195
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/prompt.canonical.txt",
+      "sha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+      "bytes": 9527
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/prompt.txt",
+      "sha256": "009082b6b7762bfde9f12efeeadeba5e7c4c1a2ae849fbe4c0c4497388e2ed12",
+      "bytes": 1094
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/request.json",
+      "sha256": "49b9148976fc0c7d3107b9c5bbbe0a1c165d3b6eaf48d83fab533795a298c531",
+      "bytes": 1805
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/source-socket-authoring.json",
+      "sha256": "1572c81e6eb99091cfbf244b4cea4e35b9b2a30c88cf32457ca7b4737058cf86",
+      "bytes": 1311
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/static-01.json",
+      "sha256": "b6cb93e8295eeeb8b82495f299a74dbb4934070fdbbcbae96bb6c1671d7cde0f",
+      "bytes": 47639
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/static-01.json.sources.json",
+      "sha256": "a3b2672feca8522ecfc904d8e9adf7380e5d0915f483fa2a88c6f71c5311324c",
+      "bytes": 16218
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/static-execution.json",
+      "sha256": "0d94424e8d72e8ede434e4ee86c5c08130cead17e2da18ae7ff23e14af99bb3f",
+      "bytes": 410
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/static.log",
+      "sha256": "692d277bebc6d40a26d781c6296e7f7e86f67d3945c493a0528eab25897bf2f6",
+      "bytes": 3291
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/10-grasshopper-observed-sockets/subject-source.json",
+      "sha256": "5c12de6316a7b223a6363ea4a274c14a07278b2bf7df86acb347ed076caaabc3",
+      "bytes": 2698
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/authoring.json",
+      "sha256": "696f9e03d94fd7e616407ebe6097bf879691775d3f849a2724e8d7e856948cc9",
+      "bytes": 22166
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/conservation-01.json",
+      "sha256": "809f628eca6cd133b59670e0456b734e4559040b3ee475a2e2a6a7f4fccea0b2",
+      "bytes": 9961
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/conservation-execution.json",
+      "sha256": "f5ba6b494f138aee87e6de940be2efc45179e962ee6d8477798a58d93c98bbdc",
+      "bytes": 307
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/conservation.log",
+      "sha256": "bd7709a32f829a1b8fa9d79942bbf3cf74bef1de72206d3d41acd3642e0e552a",
+      "bytes": 3457
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/binding.json",
+      "sha256": "fe1900236651e493a6d56e0fea2ce989f3b63319dd9c9ffb3ed5e3f89d246512",
+      "bytes": 1790283
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/declaration.json",
+      "sha256": "b13f1b817f558a2e07d416f7184105746a31965873ca1bfbc352f7d89ab65a48",
+      "bytes": 2498
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/intake-provenance.json",
+      "sha256": "5755d9ca23017d7cdeb982f285d44ab5831c30d98746d63ed05fd4c3743083db",
+      "bytes": 3491
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/label-authoring-receipt.json",
+      "sha256": "d6f36a326e97c0c7604c08af27d1260839695e345464a618fb0a22ffed46b456",
+      "bytes": 3116
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/labels.png",
+      "sha256": "2459855c141c818eb7d44ca9a0a22121e6a9c5589b14887795dfd8d5b9bde285",
+      "bytes": 46423
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/atlas/c202-beetle-relaxed-legs.json",
+      "sha256": "38b752d30438aff431b6529278de0a23b311a0a9e8e0a152b17d0593044157e4",
+      "bytes": 8735
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/atlas/c202-beetle-relaxed-legs.png",
+      "sha256": "54b07afae094c742e39f185037e5d9a6aa8c234668b9e3db0302e81eba635704",
+      "bytes": 625651
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/atlas/receipt.json",
+      "sha256": "5dd47b4a2c3ea5b1dab8000cda219419c2ec61477cd631cf1b9ff55992cb9a5e",
+      "bytes": 3517
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/binding.json",
+      "sha256": "82a48943d81f39e00ee601d04bd42e2da832f3259987c96fd2f9bc025c97aa5e",
+      "bytes": 7262
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/keyed.png",
+      "sha256": "8438327fcfe6663d2fb9e633a488c0dc7569c02692265a3b29ebc4702d7a8fe3",
+      "bytes": 1807566
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/manifest.json",
+      "sha256": "ac5595385afb20bf4d62b77b6998b30b77526c7fb7eaf20ac6b5e0a13bb7336d",
+      "bytes": 3666
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/ownership.png",
+      "sha256": "b170bf1cc93cf5484a233ac060aa0802f9488824173919c7b9cc5a84cbc35085",
+      "bytes": 21906
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/antenna-far.png",
+      "sha256": "24d019a92b6d0bba2c8a974bd0632c6fc462a15e58427b43888ecc8b0a597caa",
+      "bytes": 3946
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/antenna-near.png",
+      "sha256": "32f491d223b0504a8f1a8665fdfe154fbdc74b6378e74bf4a4dd3e4fd06e1b5f",
+      "bytes": 6599
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/body.png",
+      "sha256": "5f5008e182f2843d72815a11d43fc870c84473f59ec8a09e6c9dc0033d9c3104",
+      "bytes": 53609
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/elytral-suture.png",
+      "sha256": "ec8d622891744347001dcfe86c1cb1e1c87f494ae170102e8b5014abab2ed0fb",
+      "bytes": 29705
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/far-elytron.png",
+      "sha256": "f9ab418cb67e8574fe4d56478b40069117f8a45e0802a3558a975336cbcb4287",
+      "bytes": 145647
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/front-far-lower.png",
+      "sha256": "b37e2ca6cbeff7a639e33d0b93ec0d06348ca02ff1be91be5038e77c4d067f51",
+      "bytes": 10464
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/front-far-upper.png",
+      "sha256": "faba1a64cbe11565a9261b888c7394aa95d923682d7c1ffb74603a25a6997c0a",
+      "bytes": 7751
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/front-near-lower.png",
+      "sha256": "080794ebaa91575d23c159aeb8b01d477281919ef5a510e4efb24e8efb98a72e",
+      "bytes": 12876
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/front-near-upper.png",
+      "sha256": "6edfaae73b7914a5525876061888ef2bd8520a582b08ee7d04bd77a02963d018",
+      "bytes": 9725
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/head.png",
+      "sha256": "f0d87d0eac6aee83a67ce9b2e4715ac7b470d6409d01a318869c23de31774270",
+      "bytes": 51230
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/hind-far-lower.png",
+      "sha256": "e9d58a0fb343be11f3bf9bd758a75b3aae1369e7bc286f1ae78e80eb05614316",
+      "bytes": 13208
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/hind-far-upper.png",
+      "sha256": "3de0453187f1909c6bd637781458693e567c2d993b5e494a5cfe4c38cd237972",
+      "bytes": 15285
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/hind-near-lower.png",
+      "sha256": "a9c194de3a420e1a11e5f9cf7fc654e838c240eeed6dd1ba61c262751ec4b031",
+      "bytes": 13831
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/hind-near-upper.png",
+      "sha256": "a4d6dfbfaca938c56dac5359fbe827d3050f5516f4435953f03f1d4de34fb573",
+      "bytes": 14139
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/mandible.png",
+      "sha256": "eb3e711b7bbb4e2ecb56c766c19dd0201a1570dad45f2bf01f8ce5d845bb9d97",
+      "bytes": 15629
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/middle-far-lower.png",
+      "sha256": "2562579bc2f54d8eabdf278b01e79d210b6d26bf77e296e237d10f5ef78cb718",
+      "bytes": 10790
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/middle-far-upper.png",
+      "sha256": "072c23d06403cd6206f6592405263822c76b112463fb9b961c46fe5272ba9858",
+      "bytes": 15175
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/middle-near-lower.png",
+      "sha256": "8e096e0b00e54ba5a15b5d75e1691e02313ba183963c06f960e1126b83cdb1b0",
+      "bytes": 11955
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/middle-near-upper.png",
+      "sha256": "bd11e7dfb4e9ec1a557d37bb5071994617b6d83aa57c22401ec7de5534a63a3f",
+      "bytes": 10760
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/near-elytron.png",
+      "sha256": "f81debea63ff1395da3ea8a955460dcaca95883056064a8d9586ac4f77a1d11c",
+      "bytes": 159292
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/parts/thorax.png",
+      "sha256": "96efff513bc0a9a5439b6d825fba7dd6828a191a562d0e52b3b456f8f9782527",
+      "bytes": 98810
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/parts/receipt.json",
+      "sha256": "f53c5483454aeced1fd223fe6622e5a477d16691a3afe9d4f063d61e08b3c453",
+      "bytes": 5922
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/pre-split-binding.json",
+      "sha256": "da7b6375e288809d8449647df7e282a82f35b09ab16fd9306f24e1aab2426ffd",
+      "bytes": 1355064
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/receipt.json",
+      "sha256": "b217fcc0fc41443e04824c8145073cb214bcbffb4ae5e2b45efb3c983d96d077",
+      "bytes": 3246
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/record.json",
+      "sha256": "cdd289a3e019ecee0985c3748fc856a3e7e0536ff6167ff113fecf9ae6eabfe3",
+      "bytes": 6768
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/framing.json",
+      "sha256": "bfc204cb53c575d87642f6c2cd54a0b0d92204fc546c746a8497ffead8092672",
+      "bytes": 425
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/full-size-review.json",
+      "sha256": "ab6cd9794baf112805bb21985924fc28181ffd9f8342e538f8bfdda7c876590e",
+      "bytes": 1100
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/generation.json",
+      "sha256": "c9e648a5d9dff6205cfd99e6cec60bb18080fff625877a6954085baee50a571d",
+      "bytes": 750
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/intake-execution.json",
+      "sha256": "a341a6db3f390662bf242d75ea562714603b16178bb8c5fe4bfe0c34dd7cd2e0",
+      "bytes": 302
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/intake.log",
+      "sha256": "ea7bd4e3366daffa0c6e23e47419fb98af3ee318568ae0d4cb698588b10b4c7a",
+      "bytes": 324
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/joint-preview-01.png",
+      "sha256": "48b73308602231b76bf75b7617f512e38f388bd009c19593378a21f0a93ca01a",
+      "bytes": 733100
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/master.png",
+      "sha256": "e1eca972d8481b7471239b47c54598657364c06334b21be37b60fe6ea8c5e275",
+      "bytes": 1453188
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/ownership-preview-01.png",
+      "sha256": "2cc0b32be94a36fb58daf975b8bf81a575b57e8cae798ec2a0faaf69d6318ae5",
+      "bytes": 680090
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/pattern-check.json",
+      "sha256": "82234d4ed566cca983d053c35c0c6fee530d66e308e164ebfa6bd9cd19b95e7d",
+      "bytes": 404
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/prompt.canonical.txt",
+      "sha256": "47ed2fa2fc90feba25890509cb2cf30fcec69fabd2b4fcefc3c36791238029ce",
+      "bytes": 9613
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/prompt.txt",
+      "sha256": "9a0a72332b0c95a02ea096cb867fb667674cd65f193df0fe2e69a2bb90bea8db",
+      "bytes": 1540
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/request.json",
+      "sha256": "6fe072354b11f9194afc806c590821d0e47d3928523da67d8f6a696de78806dc",
+      "bytes": 2265
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/source-observations.json",
+      "sha256": "0068a638dd62c12db433cbefccd5ccb4286299d2a905fcbab8885a4116b842a5",
+      "bytes": 853
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/static-01.json",
+      "sha256": "7eea0f12f8697f1fa10a387e5e05e4a8cb1bcc7c3bcba1c2e92433e652869d84",
+      "bytes": 15168
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/static-01.json.sources.json",
+      "sha256": "afea7670f05d19c9ea1c35fb1b447056b06aab7ff4bfa4172dfcaffb96ba496f",
+      "bytes": 16218
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/static-execution.json",
+      "sha256": "ee7fad12cff95475ec3fe1a4ed3de7e30f61634feb649d6316da1b89c368a6e2",
+      "bytes": 306
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/static.log",
+      "sha256": "a6139a954360747c60794d05a6f5a856e284928a069dd365d599cebefb966353",
+      "bytes": 2143
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/subject-source.json",
+      "sha256": "f1ccf1d44f06ac677777c12d209af137e4f40dfc7f756752691f4804ab6ef60e",
+      "bytes": 2766
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs/compiler-inputs.json",
+      "sha256": "7862f2cbeee5c0268df1f681d52603f4456edb363db57942c296c122dfcc693a",
+      "bytes": 15811
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs/framing.json",
+      "sha256": "0e4e154883aa78a2ae966acd24935ce7af2ff8e367e1110d6fd7cdd16a9e0608",
+      "bytes": 425
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs/generation.json",
+      "sha256": "494a0c5d90e5644d4f54d0c58bd4dcae3262bac274af2dfd89e4620e1f4072f8",
+      "bytes": 765
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs/master.png",
+      "sha256": "199ff589b83595a79b82e5bee7948d82c803636d1af2550fa1319f4cff77f28e",
+      "bytes": 1280918
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs/pattern-check.json",
+      "sha256": "1ebb5a4c90c9b60d12dc66f3f823219e1970a5c210a538e8fa8747cd4c36969b",
+      "bytes": 409
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs/prompt.canonical.txt",
+      "sha256": "9b44df9a255f2a03bc250e175ff7c948de4bf090817f7e851d01e06388b49551",
+      "bytes": 9527
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs/prompt.txt",
+      "sha256": "e5ea8b800535d0bae663586747a377bed96335c14556ffb75ec1ab21f93ead03",
+      "bytes": 1664
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs/request.json",
+      "sha256": "80ca702f5393716ddebfb50231475bdb1c46129b8be4ca6fb98925d9c3d58334",
+      "bytes": 2404
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs/source-review.json",
+      "sha256": "6296d49ad2b43c788d8cb0e3d40edb05a3e0e19613c19a513940924e739d7354",
+      "bytes": 656
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/12-grasshopper-relaxed-legs/subject-source.json",
+      "sha256": "5c12de6316a7b223a6363ea4a274c14a07278b2bf7df86acb347ed076caaabc3",
+      "bytes": 2698
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/README.md",
+      "sha256": "0ee2f2f6895af4310dc3afd2b72584168a0dbe4ec65afddc7651f95943e5061b",
+      "bytes": 4231
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/app-types-execution.json",
+      "sha256": "d54db226d46a0f000a652cffd8927f531b7aa986c09f821cc9f3015a4e5343ec",
+      "bytes": 152
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/app-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/arthropod-outcomes-execution.json",
+      "sha256": "e7b3029c2958e9df327e19bf7cc77e960f8e2a8848eb9745bd2e58a07671ce87",
+      "bytes": 340
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/arthropod-outcomes.log",
+      "sha256": "95512b1e9a8b41042d08aa8f94e0b4c3e77d619021b557453c08725c43b9b16a",
+      "bytes": 12271
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/audit-adapter-transforms.json",
+      "sha256": "6b8472546815f1885901473f104e9a7e625f49f61a0330a5e0992e90cef4f053",
+      "bytes": 2477
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/author-insects.mjs",
+      "sha256": "15fe75375027ab350d47925f48a602f88593788c2c37304ad70e162120bd88eb",
+      "bytes": 11699
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/diagnose-hit.bundle.mjs",
+      "sha256": "a05a1746b7b9d2dc8afd9737e85b2f3e82bc8ec99a038f18d34ebc2c85c927a9",
+      "bytes": 339674
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/diagnose-hit.ts",
+      "sha256": "4c27580a765ee4fe3cda5b70e18c1808c012fcafd0e2799c5ddf7d2bc44607e5",
+      "bytes": 3503
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/fixed-attachments-execution.json",
+      "sha256": "2ffcdaada54097d91a59b017800c53501edf012c8ded1dc94ea54662fe8eed3e",
+      "bytes": 180
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/fixed-attachments.log",
+      "sha256": "8ad6b87a84c793d99f71a9f7d8ab4290f08179468c2e2347a8e2d701697ca744",
+      "bytes": 888
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/hit-gain-diagnosis.json",
+      "sha256": "dec45d119dd84db8d784962f4a2a76f3e3b37b0e028bb10626f95f21d5f8ec65",
+      "bytes": 1759
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/hit-gain-diagnosis.log",
+      "sha256": "0e3c3f7f3110ec18e266ed86e7991cc2163b5cc3d23a89b410eca1e17c35e3b9",
+      "bytes": 709
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/hit-gain-diagnosis.sources.json",
+      "sha256": "b922e14b165803e39893ec94fa8bcf2eb29f3f65bbfd59512da553089f1b6b2e",
+      "bytes": 7907
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/insect-test.draft.txt",
+      "sha256": "071fed6786e7ee2e19c598e663ce8cd003966732d01d659adbcbee9b5d0d1b6c",
+      "bytes": 5144
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/intake-observed-sockets.mjs",
+      "sha256": "c2687fcebe9c238066c5461a0fd26b8ca003e694b7e03068594a25ed1c0591cc",
+      "bytes": 12697
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/legacy-equivalence.json",
+      "sha256": "199d7b31b54875b8632046bfac763f10e65e1bb5ba0b7efc2f2045d5e24710e1",
+      "bytes": 8311
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/legacy-equivalence.ts",
+      "sha256": "74aeef8db4b237349c791b9c5be5718ee2dfa0a8d04cea2507142ec0474f39bf",
+      "bytes": 1015
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/millipede-outcomes-v2-execution.json",
+      "sha256": "6ce290ef97df14731c39e20fbd461d702961443ed1068e5a433fd5237ecccf99",
+      "bytes": 273
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/millipede-outcomes-v2.log",
+      "sha256": "8014931b6675105a469790244939fad198049bc9d4718e2f8794b042082334d9",
+      "bytes": 232
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/millipede-test.draft.txt",
+      "sha256": "4663f4ae6a69ae7f9fb34539fed5f89980d3f610da28ac0c93bacc912b7220dc",
+      "bytes": 2601
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/port__v2__apps__game__src__motion__compact-myriapod.test.ts.proposed",
+      "sha256": "4bf6250ee2628ff0c1fbb474ba1046b83d18bc2973ca5e64c5627e08a30b3633",
+      "bytes": 10364
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/port__v2__apps__game__src__motion__family-actions.ts.proposed",
+      "sha256": "d5ce727eebbcd6c54a6996454f818df709e969b52aa9f09eb9d679b0c9722986",
+      "bytes": 41686
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/port__v2__packages__art__src__painter-topology.ts.proposed",
+      "sha256": "bb21fa793b2b0fc9cbe6750a6c68502ee0cccef45f95e2bde52c476e6673f5c2",
+      "bytes": 4415
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/port__v2__tools__creature-animation__family-contracts.d.mts.proposed",
+      "sha256": "39443a28ecfc31ecc96915a3e8d6256b39182063251460b88f7cfdfc94ec91dc",
+      "bytes": 1862
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/port__v2__tools__creature-animation__fixed-attachments.mjs.proposed",
+      "sha256": "d295145272fd53027bd808dab6aa752d29c4c5f3da4091fbd7d209ed798431db",
+      "bytes": 4509
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/port__v2__tools__creature-animation__myriapod-anatomy.mjs.proposed",
+      "sha256": "f65a61bd80302b3621f3ccb8f4b7373256b6efc26f07b0d21d3fa29edab1e55a",
+      "bytes": 2441
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/port__v2__tools__creature-animation__repeated-anatomy.mjs.proposed",
+      "sha256": "8a47a0d10f87372b4ecaac12e18442f2ab8ba0db94eda1c345644d3804ea99df",
+      "bytes": 3929
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/prepare-sources.mjs",
+      "sha256": "7a48277829ae75c647ec81b7e21a84a14d42a49365ba188c8b507970bec78a50",
+      "bytes": 3875
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/product-final.json",
+      "sha256": "8a8be8624416f1bfac944e269bc8198f4457449d02465e6ede14af0f26bd7533",
+      "bytes": 2187
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/product-proposed.patch",
+      "sha256": "1ef659b60e8ef6e585b859cebd2b60462275ee5e62c5f9a09ebbc88b10da1ac5",
+      "bytes": 14110
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/product-reapplied.json",
+      "sha256": "c22ca8c948171e5d0f7625d87513c9718ee7c47278d0d22aa7b782e62d632f04",
+      "bytes": 1429
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/product-restored-for-native.json",
+      "sha256": "e836871ad9f13132967779dae5177d30a2c8f673f5bdb01c337ac7634410157d",
+      "bytes": 2086
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/product-transform.json",
+      "sha256": "b1874f3c43053b7cc377a830c447780626cc3e7fbe1f93f46d165e527cf6c42e",
+      "bytes": 1978
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/retain-source.mjs",
+      "sha256": "c5716460c45b0b6039e77d6568672a18fd94f1de9cb0e554a001732d7623d972",
+      "bytes": 1166
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/run-candidates.mjs",
+      "sha256": "ebcdd24d381b5c64e65450224cb3faa8ef286aa4b3590ec4ea54672770ec2504",
+      "bytes": 1285
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/source-inventory.json",
+      "sha256": "461f8530177649bc6eb79b500c6da871d8a70827b4df39af6a9611502eabf5b4",
+      "bytes": 2820
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/source-roster.json",
+      "sha256": "6ae35167e6303030de5cda2e1923e3552fbccb11445b74c0b956442d8bbc6544",
+      "bytes": 2145
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/terminal-outcomes.json",
+      "sha256": "bc04cd4347d5ddce69a2d914992052da875ad1bd4f18a10029c70823f7f9ee07",
+      "bytes": 9167
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/topology-diagnosis.json",
+      "sha256": "3d82b1065cb60cecea6e2022334dd1e112e515e039dd6733051ba5d18614bd92",
+      "bytes": 3716
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/verify-and-preview.mjs",
+      "sha256": "650947c4a0ff684398d07482810f6d733ece7585881d4bb3b0dcffa377f8c33c",
+      "bytes": 5545
+    }
+  ],
+  "totalBytes": 50039968
+}

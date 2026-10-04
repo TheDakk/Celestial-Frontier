@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c202-source-edit/v1",
+  "predecessor": "audits/C202_CEPHALOPOD_REFERENCES_20261004/01-octopus-source01/master.png",
+  "predecessorSha256": "765d280700be19820172f0a33bbeae3699ccec5ab603efe89b078e9ac78b9894",
+  "promptSha256": "9b592de262d998b80d60d82dd3ef7a75dd6ec43e80f89a4f5238e9b2a763561e",
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "qualityAccepted": false
+}

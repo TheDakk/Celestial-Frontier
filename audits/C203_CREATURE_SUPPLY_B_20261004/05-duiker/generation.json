@@ -1,0 +1,14 @@
+{
+  "id": "05-duiker",
+  "name": "Duiker",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-18e2e19d-cd1a-4d28-84ab-80674970c068.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e5fe8739c99722d043e3bb1feb04dc3ce6b26d808e0c1e179bf3dbe2fbd70d95",
+  "bytes": 1328298,
+  "promptSha256": "c9aa20366d32714d4fbda76fc262226b2460f203f6d504102c9e4787164eb93b",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

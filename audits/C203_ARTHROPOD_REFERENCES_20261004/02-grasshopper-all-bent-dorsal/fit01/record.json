@@ -1,0 +1,238 @@
+{
+  "kind": "insect",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Grasshopper\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3128410420\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"10\"]]]]",
+    "seed": 3128410420,
+    "ownerId": "authored:archetype-sprint/c203-grasshopper-all-bent-dorsal",
+    "earthName": "Grasshopper"
+  },
+  "template": {
+    "id": "insect",
+    "version": 1
+  },
+  "clipSetId": "insect-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3128410420,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 4,
+    "body": 11,
+    "loco": 10,
+    "trait": 10,
+    "size": 0,
+    "diet": 4,
+    "head": 0,
+    "limbs": 5,
+    "skin": 4,
+    "tail": 0,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 1,
+    "habitat": 3,
+    "detail": 0,
+    "accent": 12,
+    "temper": 8,
+    "sense": 4,
+    "repro": 6,
+    "life": 1,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Grasshopper"
+  },
+  "geometry": {
+    "cutoutAssetHash": "fb72c3a69e626fd80c47ef77256c5d95fb7c49a704a245a06ebc319a48dd937e",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.733652312599681,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ],
+    "fixedAttachments": {
+      "legFrontFarKnee": [
+        0.6379585326953748,
+        0.46012759170653905
+      ],
+      "legMidFarKnee": [
+        0.5637958532695375,
+        0.44577352472089316
+      ],
+      "legHindFarKnee": [
+        0.48484848484848486,
+        0.4449760765550239
+      ],
+      "legFrontNearKnee": [
+        0.6379585326953748,
+        0.5502392344497608
+      ],
+      "legMidNearKnee": [
+        0.5629984051036683,
+        0.5582137161084529
+      ],
+      "legHindNearKnee": [
+        0.48724082934609253,
+        0.5574162679425837
+      ]
+    }
+  },
+  "landmarks": {
+    "root": [
+      0.507177033492823,
+      0.5023923444976076
+    ],
+    "thorax": [
+      0.6060606060606061,
+      0.5015948963317385
+    ],
+    "head": [
+      0.6706539074960127,
+      0.5039872408293461
+    ],
+    "mandible": [
+      0.7025518341307815,
+      0.5055821371610846
+    ],
+    "abdomen": [
+      0.405103668261563,
+      0.5039872408293461
+    ],
+    "legFrontFarKnee": [
+      0.6515151515151515,
+      0.38915470494417864
+    ],
+    "legFrontFarFoot": [
+      0.7376395534290271,
+      0.3939393939393939
+    ],
+    "legMidFarKnee": [
+      0.5502392344497608,
+      0.3843700159489633
+    ],
+    "legMidFarFoot": [
+      0.4880382775119617,
+      0.335725677830941
+    ],
+    "legHindFarKnee": [
+      0.32216905901116427,
+      0.3277511961722488
+    ],
+    "legHindFarFoot": [
+      0.45454545454545453,
+      0.2607655502392344
+    ],
+    "legFrontNearKnee": [
+      0.6491228070175439,
+      0.6116427432216905
+    ],
+    "legFrontNearFoot": [
+      0.7320574162679426,
+      0.6586921850079744
+    ],
+    "legMidNearKnee": [
+      0.5653907496012759,
+      0.6196172248803827
+    ],
+    "legMidNearFoot": [
+      0.5167464114832536,
+      0.682615629984051
+    ],
+    "legHindNearKnee": [
+      0.33014354066985646,
+      0.6650717703349283
+    ],
+    "legHindNearFoot": [
+      0.46172248803827753,
+      0.726475279106858
+    ],
+    "antennaFar": [
+      0.7886762360446571,
+      0.42424242424242425
+    ],
+    "antennaNear": [
+      0.7894736842105263,
+      0.5789473684210527
+    ],
+    "wingFar": [
+      0.4258373205741627,
+      0.47527910685805425
+    ],
+    "wingNear": [
+      0.4266347687400319,
+      0.5303030303030303
+    ]
+  },
+  "materials": {
+    "surface": "chitin"
+  },
+  "source": "audits/C203_ARTHROPOD_REFERENCES_20261004/02-grasshopper-all-bent-dorsal/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Canonical terrestrial insect; direct dorsal projection retained"
+  },
+  "coverage": {
+    "scope": "Independent source-observed insect reference candidate",
+    "qualityAccepted": false,
+    "axialFrames": "Body control frames lie inside painted tissue; no unseen skeletal coordinates claimed",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "06ec3f2cb07a247a78fae6b975848d90973e3b244cb596f615f5f1d5208f2697",
+    "subjectSourceSha256": "5c12de6316a7b223a6363ea4a274c14a07278b2bf7df86acb347ed076caaabc3",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "thorax": 0.09888678803230126,
+      "head": 0.06463758892873821,
+      "mandible": 0.03193777415390877,
+      "abdomen": 0.20097117744035756,
+      "legFrontFarKnee": 0.07225602098930964,
+      "legFrontFarFoot": 0.08625720754698539,
+      "legFrontNearKnee": 0.06241019075956347,
+      "legFrontNearFoot": 0.09535092754618196,
+      "legMidFarKnee": 0.0628822137279628,
+      "legMidFarFoot": 0.07896347684162856,
+      "legMidNearKnee": 0.061450095213105176,
+      "legMidNearFoot": 0.07959315722187663,
+      "legHindFarKnee": 0.20051500734737096,
+      "legHindFarFoot": 0.14835965373279228,
+      "legHindNearKnee": 0.19044491409531722,
+      "legHindNearFoot": 0.14520127506356886,
+      "antennaFar": 0.14243772607187308,
+      "antennaNear": 0.14048900336699593,
+      "wingFar": 0.18213443772980262,
+      "wingNear": 0.1817079746579736
+    },
+    "measures": {
+      "body": 0.2655502392344497,
+      "bone-min": 0.03193777415390877,
+      "bone-max": 0.20097117744035756,
+      "leg/body:legFrontFar": 0.5969236894429849,
+      "leg/body:legFrontNear": 0.5940914184846992,
+      "leg/body:legMidFar": 0.5341576455683711,
+      "leg/body:legMidNear": 0.5311358515119136,
+      "leg/body:legHindFar": 1.3137802552388131,
+      "leg/body:legHindNear": 1.263964928544274
+    }
+  },
+  "recipeHash": "1913633e2a6cb81b8cdc7eb51877b5be33d30a017b8b6a6904effa64ba209efa"
+}

@@ -1,0 +1,250 @@
+{
+  "schema": "cf.c202-arthropod-terminal-outcomes/v1",
+  "qualifiedReferencePool": [],
+  "nativeRuns": 0,
+  "sourceOriginals": 10,
+  "fitCandidates": [
+    {
+      "id": "03-beetle-dorsal",
+      "recordRecipeHash": "852d7f26f9adbab97165f9c6ad33529bfdbd70997e5babd498ca1e36ed63b5e7",
+      "bindingHash": "db0e8cbe63d1f263bab30878fbb308d8b2d626e8188277c693766be7f1e602f3",
+      "status": "RED",
+      "actions": 13,
+      "passed": 6,
+      "refusals": [
+        {
+          "action": "approach:crawl",
+          "ms": 59.5,
+          "reason": "Error: Contact: approach:crawl@59.5 legMidFar RangeError: target outside two-bone reach"
+        },
+        {
+          "action": "melee:mandible",
+          "ms": 71.77777777777777,
+          "reason": "Error: Contact: melee:mandible@71.77777777777777 legMidFar outside accommodatable reach"
+        },
+        {
+          "action": "cast",
+          "ms": 320.25,
+          "reason": "Error: Contact: cast@320.25 legHindFar RangeError: target outside two-bone reach"
+        },
+        {
+          "action": "hit",
+          "ms": 7.5,
+          "reason": "Error: Contact: hit@7.5 legMidFar outside accommodatable reach"
+        },
+        {
+          "action": "victory",
+          "ms": 215,
+          "reason": "Error: Contact: victory@215 exceeds scale compression bound"
+        },
+        {
+          "action": "tame",
+          "ms": 21.333333333333332,
+          "reason": "Error: Contact: tame@21.333333333333332 legMidFar outside accommodatable reach"
+        },
+        {
+          "action": "melee:body",
+          "ms": 181.55555555555554,
+          "reason": "Error: Contact: melee:body@181.55555555555554 legMidFar outside accommodatable reach"
+        }
+      ],
+      "presentation": "RED",
+      "exactRest": true,
+      "sourcePixelRest": "PASS"
+    },
+    {
+      "id": "05-grasshopper-framed",
+      "recordRecipeHash": "f0489314b31bf47cd349935a242d0a8784df10f9fc15834e6b22f4896c46315d",
+      "bindingHash": "b8352e3720b9c0b5aa48187dd0e40eba2bb6b950a244a02664686082f714b378",
+      "status": "RED",
+      "actions": 13,
+      "passed": 4,
+      "refusals": [
+        {
+          "action": "idle",
+          "ms": 250.04010028671473,
+          "reason": "Error: Contact: idle@250.04010028671473 legHindFar outside accommodatable reach"
+        },
+        {
+          "action": "approach:crawl",
+          "ms": 10.5,
+          "reason": "Error: Contact: approach:crawl@10.5 legHindFar outside accommodatable reach"
+        },
+        {
+          "action": "melee:mandible",
+          "ms": 29.555555555555554,
+          "reason": "Error: Contact: melee:mandible@29.555555555555554 legMidFar outside accommodatable reach"
+        },
+        {
+          "action": "cast",
+          "ms": 315.1666666666667,
+          "reason": "Error: Contact: cast@315.1666666666667 exceeds scale compression bound"
+        },
+        {
+          "action": "hit",
+          "ms": 3.75,
+          "reason": "Error: Contact: hit@3.75 legMidFar outside accommodatable reach"
+        },
+        {
+          "action": "faint",
+          "ms": 472.3333333333333,
+          "reason": "Error: Contact: faint@472.3333333333333 legHindFar outside accommodatable reach"
+        },
+        {
+          "action": "victory",
+          "ms": 95,
+          "reason": "Error: Contact: victory@95 exceeds scale compression bound"
+        },
+        {
+          "action": "tame",
+          "ms": 5.333333333333333,
+          "reason": "Error: Contact: tame@5.333333333333333 legHindFar outside accommodatable reach"
+        },
+        {
+          "action": "melee:body",
+          "ms": 164.66666666666666,
+          "reason": "Error: Contact: melee:body@164.66666666666666 legMidFar outside accommodatable reach"
+        }
+      ],
+      "presentation": "RED",
+      "exactRest": true,
+      "sourcePixelRest": "PASS"
+    },
+    {
+      "id": "09-beetle-observed-sockets",
+      "recordRecipeHash": "d9a59e1280be31cd3794ddbd24a3349977b27fab3014b50c6cb8368e3d5c5cc3",
+      "bindingHash": "14346021d9f0a79a091676b95e76fee127682f037ba7088607ee5a4646fef944",
+      "status": "RED",
+      "actions": 13,
+      "passed": 6,
+      "refusals": [
+        {
+          "action": "approach:crawl",
+          "ms": 122.5,
+          "reason": "Error: Contact: approach:crawl@122.5 legMidFar outside accommodatable reach"
+        },
+        {
+          "action": "melee:mandible",
+          "ms": 135.11111111111111,
+          "reason": "Error: Contact: melee:mandible@135.11111111111111 legFrontFar outside accommodatable reach"
+        },
+        {
+          "action": "cast",
+          "ms": 320.25,
+          "reason": "Error: Contact: cast@320.25 exceeds scale compression bound"
+        },
+        {
+          "action": "hit",
+          "ms": 18.75,
+          "reason": "Error: Contact: hit@18.75 legMidFar outside accommodatable reach"
+        },
+        {
+          "action": "victory",
+          "ms": 105,
+          "reason": "Error: Contact: victory@105 exceeds scale compression bound"
+        },
+        {
+          "action": "tame",
+          "ms": 53.333333333333336,
+          "reason": "Error: Contact: tame@53.333333333333336 legMidFar outside accommodatable reach"
+        },
+        {
+          "action": "melee:body",
+          "ms": 130.88888888888889,
+          "reason": "Error: Contact: melee:body@130.88888888888889 legFrontFar RangeError: target outside two-bone reach"
+        }
+      ],
+      "presentation": "RED",
+      "exactRest": true,
+      "sourcePixelRest": "PASS"
+    },
+    {
+      "id": "10-grasshopper-observed-sockets",
+      "recordRecipeHash": "14df049378ed160e7153e913b556469d993016f885e68955dff27dec288c6e76",
+      "bindingHash": "3f38aea1c0fd4cbaf85bd893b514461713649a53d71c4a09f6d3a1a96397271a",
+      "status": "RED",
+      "actions": 13,
+      "passed": 3,
+      "refusals": [
+        {
+          "action": "idle",
+          "ms": 83.34670009557158,
+          "reason": "Error: Contact: idle@83.34670009557158 legHindFar outside accommodatable reach"
+        },
+        {
+          "action": "alert",
+          "ms": 3.6666666666666665,
+          "reason": "Error: Contact: alert@3.6666666666666665 legHindFar RangeError: target outside two-bone reach"
+        },
+        {
+          "action": "approach:crawl",
+          "ms": 3.5,
+          "reason": "Error: Contact: approach:crawl@3.5 legHindFar outside accommodatable reach"
+        },
+        {
+          "action": "melee:mandible",
+          "ms": 8.444444444444445,
+          "reason": "Error: Contact: melee:mandible@8.444444444444445 legHindFar outside accommodatable reach"
+        },
+        {
+          "action": "cast",
+          "ms": 310.0833333333333,
+          "reason": "Error: Contact: cast@310.0833333333333 legHindFar RangeError: target outside two-bone reach"
+        },
+        {
+          "action": "hit",
+          "ms": 7.5,
+          "reason": "Error: Contact: hit@7.5 legMidFar outside accommodatable reach"
+        },
+        {
+          "action": "faint",
+          "ms": 73.66666666666667,
+          "reason": "Error: Contact: faint@73.66666666666667 legHindFar outside accommodatable reach"
+        },
+        {
+          "action": "victory",
+          "ms": 5,
+          "reason": "Error: Contact: victory@5 legHindFar RangeError: target outside two-bone reach"
+        },
+        {
+          "action": "tame",
+          "ms": 5.333333333333333,
+          "reason": "Error: Contact: tame@5.333333333333333 legHindFar outside accommodatable reach"
+        },
+        {
+          "action": "melee:body",
+          "ms": 25.333333333333332,
+          "reason": "Error: Contact: melee:body@25.333333333333332 legHindFar RangeError: target outside two-bone reach"
+        }
+      ],
+      "presentation": "RED",
+      "exactRest": true,
+      "sourcePixelRest": "PASS"
+    },
+    {
+      "id": "11-beetle-relaxed-legs",
+      "recordRecipeHash": "35c007f5e0e4f7882fb0748f7a72aad363204f4f1f111f7e9c4eea5bdc405f3d",
+      "bindingHash": "48894731746cbc796cce25ac557182315bffd5111febef9abb83f31c7b01449a",
+      "status": "RED",
+      "actions": 13,
+      "passed": 12,
+      "refusals": [
+        {
+          "action": "hit",
+          "ms": 352.5,
+          "reason": "Error: Contact: hit@352.5 exceeds scale compression bound"
+        }
+      ],
+      "presentation": "RED",
+      "exactRest": true,
+      "sourcePixelRest": "PASS"
+    }
+  ],
+  "product": "Opt-in source sockets and zero-ultimate topology, unchanged caps/limits; direct outcomes pass",
+  "blocked": {
+    "beetle": "Bent source12of13static actionsPASS; hit solver-owned travel remains above compression bound. Stage-owned hit purecontact passes129samples, not a native or full-paint admission.",
+    "grasshopper": "Six-chain source has nearly extended limbs and static reds; relaxed successor occludes far chains, no invented fit.",
+    "millipede": "Three explicit Polyxenus sources have occluded, surplus or missing visible leg paths; no truthful13-pair source declaration.",
+    "centipede": "Canonical scolopendrid minimum20walking+1ultimate requires87current-model joints, above unchanged64; no species substitution or leg suppression."
+  }
+}

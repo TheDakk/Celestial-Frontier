@@ -1,0 +1,14 @@
+{
+  "id": "04-springbok",
+  "name": "Springbok",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-154d1dd7-f2bc-48b3-b9a2-019237f48e9c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "56cbdddd56053fae72e77f6b6891e43d44aac23a9fbf7639d97c3fb687fbd4d4",
+  "bytes": 1312146,
+  "promptSha256": "424076a6a0e351d49475f03b022042d7ccde6c7ab12086a2f973cfadb2236d8a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

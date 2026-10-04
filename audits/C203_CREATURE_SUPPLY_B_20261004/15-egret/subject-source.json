@@ -1,0 +1,82 @@
+{
+  "name": "Egret",
+  "family": "biped-bird",
+  "species": {
+    "name": "Egret",
+    "aspect": 0.8,
+    "headFrac": 0.3,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "pure white plumage",
+      "S-curved neck",
+      "thin spear bill and long dark legs"
+    ]
+  },
+  "genome": {
+    "seed": 690863727,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 12,
+    "body": 4,
+    "loco": 16,
+    "trait": 16,
+    "size": 2,
+    "diet": 2,
+    "head": 3,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 7,
+    "habitat": 13,
+    "detail": 7,
+    "accent": 1,
+    "temper": 1,
+    "sense": 3,
+    "repro": 4,
+    "life": 3,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Egret"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Egret\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"690863727\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "index": 179,
+  "profile": {
+    "id": "wading-bird",
+    "names": [
+      "Heron",
+      "Egret",
+      "Ibis",
+      "Stork",
+      "Crane",
+      "Spoonbill",
+      "Flamingo",
+      "Curlew",
+      "Snipe",
+      "Plover",
+      "Sandpiper",
+      "Rail",
+      "Bittern",
+      "Oystercatcher",
+      "Godwit",
+      "Avocet",
+      "Screamer"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": ""
+  }
+}

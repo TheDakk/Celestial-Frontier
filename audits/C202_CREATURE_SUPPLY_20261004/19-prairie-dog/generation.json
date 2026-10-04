@@ -1,0 +1,14 @@
+{
+  "id": "19-prairie-dog",
+  "name": "Prairie Dog",
+  "sourcePath": "~/.codex/generated_images/01a0fa5d-c13f-7c00-807f-59a8df458289/exec-878deb7b-3190-46ea-b2fb-33c73b742f39.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b480c0573e98c3bfecbb0127a93a3f26455ce225999093da6502b459cbd263a3",
+  "bytes": 1325953,
+  "promptSha256": "d2aedb0c89a2b43bc00a818c486fd5f892d0fb3ac83d4851619955e5bff7bf25",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

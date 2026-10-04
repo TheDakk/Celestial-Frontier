@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Nilgai",
+  "masterSha256": "9d96931f0af1f87d865181fd0f1a861d5470f66df3f7f6a4429a43c86931e28e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

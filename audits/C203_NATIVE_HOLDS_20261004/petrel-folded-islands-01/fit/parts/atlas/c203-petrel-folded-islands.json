@@ -1,0 +1,445 @@
+{
+  "frames": {
+    "beak.png": {
+      "frame": {
+        "h": 81,
+        "w": 95,
+        "x": 1925,
+        "y": 63
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 81,
+        "w": 95
+      },
+      "spriteSourceSize": {
+        "h": 81,
+        "w": 95,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body.png": {
+      "frame": {
+        "h": 439,
+        "w": 377,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 439,
+        "w": 377
+      },
+      "spriteSourceSize": {
+        "h": 439,
+        "w": 377,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "chest.png": {
+      "frame": {
+        "h": 255,
+        "w": 243,
+        "x": 1103,
+        "y": 223
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 255,
+        "w": 243
+      },
+      "spriteSourceSize": {
+        "h": 255,
+        "w": 243,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-foot.png": {
+      "frame": {
+        "h": 80,
+        "w": 191,
+        "x": 1711,
+        "y": 153
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 80,
+        "w": 191
+      },
+      "spriteSourceSize": {
+        "h": 80,
+        "w": 191,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-shin.png": {
+      "frame": {
+        "h": 117,
+        "w": 72,
+        "x": 1907,
+        "y": 289
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 117,
+        "w": 72
+      },
+      "spriteSourceSize": {
+        "h": 117,
+        "w": 72,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-thigh.png": {
+      "frame": {
+        "h": 46,
+        "w": 84,
+        "x": 1912,
+        "y": 233
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 46,
+        "w": 84
+      },
+      "spriteSourceSize": {
+        "h": 46,
+        "w": 84,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-wing-root.png": {
+      "frame": {
+        "h": 48,
+        "w": 105,
+        "x": 1925,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 105
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 105,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-wing-tip.png": {
+      "frame": {
+        "h": 83,
+        "w": 268,
+        "x": 1131,
+        "y": 130
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 83,
+        "w": 268
+      },
+      "spriteSourceSize": {
+        "h": 83,
+        "w": 268,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 165,
+        "w": 265,
+        "x": 828,
+        "y": 133
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 165,
+        "w": 265
+      },
+      "spriteSourceSize": {
+        "h": 165,
+        "w": 265,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "lower-neck.png": {
+      "frame": {
+        "h": 138,
+        "w": 204,
+        "x": 1711,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 138,
+        "w": 204
+      },
+      "spriteSourceSize": {
+        "h": 138,
+        "w": 204,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-foot.png": {
+      "frame": {
+        "h": 93,
+        "w": 186,
+        "x": 1711,
+        "y": 243
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 93,
+        "w": 186
+      },
+      "spriteSourceSize": {
+        "h": 93,
+        "w": 186,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-shin.png": {
+      "frame": {
+        "h": 108,
+        "w": 69,
+        "x": 1356,
+        "y": 318
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 108,
+        "w": 69
+      },
+      "spriteSourceSize": {
+        "h": 108,
+        "w": 69,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-thigh.png": {
+      "frame": {
+        "h": 69,
+        "w": 89,
+        "x": 1912,
+        "y": 154
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 69,
+        "w": 89
+      },
+      "spriteSourceSize": {
+        "h": 69,
+        "w": 89,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-wing-flight.png": {
+      "frame": {
+        "h": 304,
+        "w": 426,
+        "x": 392,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 304,
+        "w": 426
+      },
+      "spriteSourceSize": {
+        "h": 304,
+        "w": 426,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-wing-root.png": {
+      "frame": {
+        "h": 303,
+        "w": 274,
+        "x": 1427,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 303,
+        "w": 274
+      },
+      "spriteSourceSize": {
+        "h": 303,
+        "w": 274,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "pelvis.png": {
+      "frame": {
+        "h": 118,
+        "w": 293,
+        "x": 828,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 118,
+        "w": 293
+      },
+      "spriteSourceSize": {
+        "h": 118,
+        "w": 293,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "tail.png": {
+      "frame": {
+        "h": 115,
+        "w": 286,
+        "x": 1131,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 115,
+        "w": 286
+      },
+      "spriteSourceSize": {
+        "h": 115,
+        "w": 286,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "upper-neck.png": {
+      "frame": {
+        "h": 93,
+        "w": 233,
+        "x": 828,
+        "y": 318
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 93,
+        "w": 233
+      },
+      "spriteSourceSize": {
+        "h": 93,
+        "w": 233,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c203-petrel-folded-islands.png",
+    "scale": "1",
+    "size": {
+      "h": 483,
+      "w": 2035
+    }
+  }
+}

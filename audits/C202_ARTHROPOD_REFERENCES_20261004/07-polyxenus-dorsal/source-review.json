@@ -1,0 +1,129 @@
+{
+  "masterSha256": "be1a7e85561d793f5fdae059c8bab5fb08a58d9fdd3f353ed835c4e01e30fea4",
+  "status": "SOURCE_ANATOMY_AND_FRAMING_HOLD",
+  "fullSizeInspected": true,
+  "observedDistalTips": {
+    "upperFlank": [
+      [
+        241,
+        478
+      ],
+      [
+        258,
+        423
+      ],
+      [
+        311,
+        399
+      ],
+      [
+        383,
+        378
+      ],
+      [
+        464,
+        374
+      ],
+      [
+        512,
+        381
+      ],
+      [
+        571,
+        368
+      ],
+      [
+        650,
+        365
+      ],
+      [
+        696,
+        378
+      ],
+      [
+        749,
+        373
+      ],
+      [
+        837,
+        372
+      ],
+      [
+        920,
+        377
+      ],
+      [
+        1007,
+        399
+      ],
+      [
+        1038,
+        464
+      ]
+    ],
+    "lowerFlank": [
+      [
+        243,
+        776
+      ],
+      [
+        261,
+        820
+      ],
+      [
+        317,
+        849
+      ],
+      [
+        390,
+        860
+      ],
+      [
+        459,
+        866
+      ],
+      [
+        523,
+        875
+      ],
+      [
+        584,
+        885
+      ],
+      [
+        643,
+        879
+      ],
+      [
+        702,
+        879
+      ],
+      [
+        765,
+        877
+      ],
+      [
+        827,
+        878
+      ],
+      [
+        913,
+        877
+      ],
+      [
+        996,
+        864
+      ],
+      [
+        1039,
+        812
+      ]
+    ]
+  },
+  "findings": [
+    "Fourteen apparent articulated walking legs per flank contradict researched adult Polyxenus13-pair inventory. Cannot silently admit14because template would fit.",
+    "Bristles obscure proximal roots, so distal count is not proof of every complete chain.",
+    "Both horizontal margins fail8percent."
+  ],
+  "qualityAccepted": false
+}

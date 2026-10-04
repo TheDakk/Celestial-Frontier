@@ -1,0 +1,28 @@
+{
+  "name": "Marlin",
+  "masterSha256": "f171e0c9061860bc36bc39259a8384d58801a9b14df151e898928e584924e52e",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Complete pointed bill, crescent tail, high anterior dorsal fin, near pectoral and ventral fin projections are visible. Pale vertical bars cross the blue body. Bill tip is too close to right edge and must be measured. Repeated small projections along rear dorsal/ventral edge resemble tuna-like finlets, an anatomical hold for Marlin; farther-out framing cannot resolve this source detail.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 111,
+      "y0": 369,
+      "x1": 1186,
+      "y1": 826
+    },
+    "margins": {
+      "left": 111,
+      "right": 67,
+      "top": 369,
+      "bottom": 427
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

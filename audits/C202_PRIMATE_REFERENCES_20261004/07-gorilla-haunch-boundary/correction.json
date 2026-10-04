@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c202-source-attributed-authoring/v1",
+  "predecessor": "audits/C202_PRIMATE_REFERENCES_20261004/05-gorilla-visible-surfaces",
+  "sourceUnchanged": true,
+  "basis": "All 11 retained fold triangles lie on the visible near haunch incorrectly assigned to far-thigh. The dark far thigh emerges below the near-haunch silhouette around y700. Reassign full visible near haunch to nearHip; bound far-thigh to its actually exposed lower area. Far knee is the visible bend at357,742; previous333,751 lay on the lower shaft, nearly straightening the observed chain. Ankle250,902 follows the far heel bend instead of mid-foot268,914.",
+  "landmarkChanges": {
+    "legFarKnee": {
+      "old": [
+        333,
+        751
+      ],
+      "new": [
+        357,
+        742
+      ]
+    },
+    "legFarFoot": {
+      "old": [
+        268,
+        914
+      ],
+      "new": [
+        250,
+        902
+      ]
+    }
+  },
+  "partChanges": [
+    "near-thigh",
+    "far-thigh",
+    "far-shin"
+  ],
+  "limitsChanged": false,
+  "runtimeChanged": false
+}

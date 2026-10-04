@@ -1,0 +1,28 @@
+{
+  "name": "Sparrow",
+  "masterSha256": "97fa381cee47b59f2e3646274b31a75e55eda9502276ff91bad442d6afa35599",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: streaked brown back, gray crown, pale cheeks, black throat patch and short bill. Two distinct legs/feet, a continuous folded near wing and complete short tail are visible. Far wing/root is hidden; projected toe contacts differ slightly. No concealed wing anatomy is asserted.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 258,
+      "y0": 357,
+      "x1": 929,
+      "y1": 886
+    },
+    "margins": {
+      "left": 258,
+      "right": 324,
+      "top": 357,
+      "bottom": 367
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

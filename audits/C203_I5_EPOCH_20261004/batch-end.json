@@ -1,0 +1,10 @@
+{
+  "freeGiBBeforeTemporaryCheckout": 123.6,
+  "freeGiBBeforeArchive": 98.56,
+  "freeGiBAfterArchive": 123.83,
+  "recoveredApproxGiB": 25.27,
+  "temporaryCheckoutAbsent": true,
+  "trackedSymlinksRelative": 26,
+  "guardSha256": "2cd8490b72e028e2bec0339a83575f3f0591691e3f853fed20b3df24f849e918",
+  "productUnchangedAfterGate": true
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Beetle",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "e8c18190542a697caeff0078a24cf3bfdad57cd59533358fe3eef9b03983896e",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "cfe6e089f99dfdf85e69305b0515725efad3119c",
+  "basePromptSha256": "47ed2fa2fc90feba25890509cb2cf30fcec69fabd2b4fcefc3c36791238029ce",
+  "purpose": "TARGETED_VIEW_EDIT_OF_RETAINED_SOURCE",
+  "sourceCorrection": "Change the camera to a STRICT DIRECTLY OVERHEAD DORSAL view of this same real ground beetle, horizontal head RIGHT and abdomen LEFT. Three complete separated genuine walking legs on the TOP side and three on the BOTTOM side. Each leg must be visible continuously from its actual body emergence through knee to foot, outside the body outline, without overlaps or severed paths. Preserve two antennae, real mandibles and two closed hardened forewing cases. Do not turn a palp into a sixth leg. Make the entire beetle and all tips occupy the central HALF of the same native1254 square magenta canvas, with about300px empty margin. Preserve connected natural anatomy and the same painted style; no labels, floor, props or extra limbs.",
+  "compositionCheck": "central half, native1254 unchanged",
+  "auditCompilerExtension": false,
+  "admission": false,
+  "batchCompilerSha256": "7a48277829ae75c647ec81b7e21a84a14d42a49365ba188c8b507970bec78a50",
+  "predecessor": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source",
+  "actualImageInputs": [
+    {
+      "role": "sole edit target",
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/01-beetle-source/master.png",
+      "sha256": "2fc73953a7a8601bb57490131f341a8f9c7153e2fe7c9f54dcf99de3388deefc"
+    }
+  ],
+  "editStyleParagraphSha256": "46587d2ff91f48c84f02e9bc90eacea8357a5629f03eb9082b57a06cd36352e2"
+}

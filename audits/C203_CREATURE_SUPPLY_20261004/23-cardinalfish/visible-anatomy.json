@@ -1,0 +1,163 @@
+{
+  "id": "23-cardinalfish",
+  "name": "Cardinalfish",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "86777bf06ea84e45e7162d54bbab8406c2c5531838a5a0b26dc0bda7c0a2f41f",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 28390,
+    "coreRadius": 30,
+    "bodyBox": {
+      "x0": 168,
+      "y0": 156,
+      "x1": 331,
+      "y1": 253
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.085,
+        "pixels": 2412,
+        "box": {
+          "x0": 157,
+          "y0": 107,
+          "x1": 228,
+          "y1": 176
+        },
+        "attach": {
+          "x": 198.1,
+          "y": 157.6,
+          "relX": 0.18,
+          "relY": 0.02
+        },
+        "dir": {
+          "x": -0.52,
+          "y": -0.85
+        },
+        "class": "top",
+        "length": 65.2
+      },
+      {
+        "k": 1,
+        "frac": 0.0429,
+        "pixels": 1218,
+        "box": {
+          "x0": 235,
+          "y0": 109,
+          "x1": 286,
+          "y1": 155
+        },
+        "attach": {
+          "x": 262,
+          "y": 155,
+          "relX": 0.58,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.39,
+          "y": -0.92
+        },
+        "class": "top",
+        "length": 53.3
+      },
+      {
+        "k": 2,
+        "frac": 0.2638,
+        "pixels": 7489,
+        "box": {
+          "x0": 57,
+          "y0": 158,
+          "x1": 204,
+          "y1": 286
+        },
+        "attach": {
+          "x": 173.7,
+          "y": 226.9,
+          "relX": 0.03,
+          "relY": 0.73
+        },
+        "dir": {
+          "x": -0.98,
+          "y": -0.2
+        },
+        "class": "rear",
+        "length": 135.5
+      },
+      {
+        "k": 3,
+        "frac": 0.04,
+        "pixels": 1135,
+        "box": {
+          "x0": 332,
+          "y0": 178,
+          "x1": 362,
+          "y1": 237
+        },
+        "attach": {
+          "x": 332,
+          "y": 207.5,
+          "relX": 1.01,
+          "relY": 0.53
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.14
+        },
+        "class": "front",
+        "length": 42.1
+      },
+      {
+        "k": 4,
+        "frac": 0.0474,
+        "pixels": 1347,
+        "box": {
+          "x0": 227,
+          "y0": 254,
+          "x1": 287,
+          "y1": 304
+        },
+        "attach": {
+          "x": 258.5,
+          "y": 254,
+          "relX": 0.56,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.39,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 59.1
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 230,
+        "x1": 245,
+        "cx": 237
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

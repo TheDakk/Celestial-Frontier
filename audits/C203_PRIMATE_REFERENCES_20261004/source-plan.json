@@ -1,0 +1,112 @@
+{
+  "schema": "cf.c203-primate-source-plan/v1",
+  "scope": "Audit-only anatomical segment ownership and forehand support prototype. No product edits, native qualification, threshold changes or source distortion.",
+  "rows": [
+    {
+      "subject": "gorilla",
+      "sourcePacket": "audits/C202_PRIMATE_REFERENCES_20261004/17-gorilla-observed-joins",
+      "candidatePacket": "audits/C203_PRIMATE_REFERENCES_20261004/01-gorilla-arm-segments",
+      "changes": [
+        {
+          "part": "near-forearm",
+          "old": "armNearElbow",
+          "new": "armNearHand"
+        },
+        {
+          "part": "far-forearm",
+          "old": "armFarElbow",
+          "new": "armFarHand"
+        },
+        {
+          "part": "near-upper-arm",
+          "old": "armNearShoulder",
+          "new": "armNearElbow"
+        },
+        {
+          "part": "far-upper-arm",
+          "old": "armFarShoulder",
+          "new": "armFarElbow"
+        }
+      ],
+      "sourceInputs": [
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/17-gorilla-observed-joins/master.png",
+          "sha256": "78da7b6d2ad46eaa6a452cdb71a2c08ce75f898be89e5c234ff6ff72f88fc3a5"
+        },
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/17-gorilla-observed-joins/authoring.json",
+          "sha256": "97972d99673d6bf1083eeaad1e043e471da1b342ec4dcbd25ab979b61c3d8fcb"
+        },
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/17-gorilla-observed-joins/subject-source.json",
+          "sha256": "78f2d8da3bc02e8ed4c4fbbf40d770ea75936751884f3c24dc165e3e20eb9048"
+        },
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/17-gorilla-observed-joins/presence.json",
+          "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db"
+        },
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/17-gorilla-observed-joins/fit01/record.json",
+          "sha256": "9b305242347dfb8b6712ce2f635c473be5deef392b5559d463d9c1981c2764d6"
+        },
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/17-gorilla-observed-joins/fit01/binding.json",
+          "sha256": "bd55c39e9d1ceb85ffb402b32064a3951169cfcc084298d463d240673bc8e5e8"
+        }
+      ]
+    },
+    {
+      "subject": "howler",
+      "sourcePacket": "audits/C202_PRIMATE_REFERENCES_20261004/15-howler-observed-joins",
+      "candidatePacket": "audits/C203_PRIMATE_REFERENCES_20261004/02-howler-arm-segments",
+      "changes": [
+        {
+          "part": "near-forearm",
+          "old": "armNearElbow",
+          "new": "armNearHand"
+        },
+        {
+          "part": "far-forearm",
+          "old": "armFarElbow",
+          "new": "armFarHand"
+        },
+        {
+          "part": "near-upper-arm",
+          "old": "armNearShoulder",
+          "new": "armNearElbow"
+        },
+        {
+          "part": "far-upper-arm",
+          "old": "armFarShoulder",
+          "new": "armFarElbow"
+        }
+      ],
+      "sourceInputs": [
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/15-howler-observed-joins/master.png",
+          "sha256": "5ebd7622ff46f0a5b88e60b114b4644634e3c0d00cccc5094f4ddc8e3d0848ee"
+        },
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/15-howler-observed-joins/authoring.json",
+          "sha256": "603fba6623f243c4c3ee533a2f0e72e42a966afa9005319b7fecf59b487390b2"
+        },
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/15-howler-observed-joins/subject-source.json",
+          "sha256": "170f1e431f9ba944b3fbb331af7cb57c9449c1e62e7bc0d0bbd6593fa834289a"
+        },
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/15-howler-observed-joins/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+        },
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/15-howler-observed-joins/fit01/record.json",
+          "sha256": "15a6ec9da099ef45ac122ec11fe1278e0f3ec7ec0bde405e0aad6db9b50a28d2"
+        },
+        {
+          "path": "audits/C202_PRIMATE_REFERENCES_20261004/15-howler-observed-joins/fit01/binding.json",
+          "sha256": "f5e7f573298045fd94b210ac428994f29f5226a51b324d663b991cea5f2c7e54"
+        }
+      ]
+    }
+  ]
+}

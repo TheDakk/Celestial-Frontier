@@ -1,0 +1,46 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Polyxenus",
+  "family": "myriapod",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "bd954f7b293bc00cee955aed5bbe0cf947a250baf5a5fbc8add2bcf520b58a53",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 26,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "13 real walking pairs; two antennae; caudal bristle brushes, no specialized ultimate leg pair",
+  "profileId": "millipede",
+  "authoringCreated": false,
+  "basePromptSha256": "c669188ca36015c4f81b84463bcf8a8a0658f0d019c48fc56ec4806fb17670a2",
+  "batchCompilerSha256": "263d500eaf1948488008b8355e7a604f411f34bf1f78a136b18b5c3facc27610",
+  "purpose": "RESEARCHED_REPRESENTATIVE_COUNT_AND_VISIBILITY_SUCCESSOR",
+  "auditCompilerExtension": true,
+  "compositionCheck": "One entire small animal centered on native1254 x1254 pure magenta, occupying central55percent canvas width with at least15percent blank margin beyond every antenna, bristle and foot. Discovery Atlas reference is STYLE ONLY. No floor, cast shadow, prop, other subject, cutaway, scale bar or text.",
+  "admission": false,
+  "representativeOverride": "One real adult Polyxenus, a tiny bristly millipede, as an explicitly named independent family reference. This is NOT the generic cylindrical catalogue Millipede and must not be painted as a long centipede. Short broad softly articulated tan-brown body, natural transverse rows/tufts of fine hooked bristles, head at RIGHT with two genuine short segmented antennae and small natural mouth. Preserve the adult biological thirteen walking-leg pairs, twenty-six short true legs total, in their real segment arrangement; a modest direct dorsal-oblique view should expose both flanks with thirteen separate genuinely connected leg paths per flank, every root and distal tip visible. Legs remain short and flexed, naturally paired along the body, no detached rows, no overlapping coil, no extra or omitted legs. The paired caudal brushes at LEFT are real bristle bundles, not elongated ultimate walking limbs and not a stinger. Do not replace bristles with fake limbs or erase real setae to improve count. Exact biological representation has priority; source visibility will be independently reviewed. No diagram labels.",
+  "actualImageInputs": [
+    {
+      "role": "sole style reference",
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "research": [
+    {
+      "url": "https://zookeys.pensoft.net/article/135808/",
+      "doi": "10.3897/zookeys.1223.135808",
+      "finding": "Genus Polyxenus adults have13 walking-leg pairs; real bristly morphology retained"
+    }
+  ],
+  "predecessors": [
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/06-polyxenus-reference",
+    "audits/C202_ARTHROPOD_REFERENCES_20261004/07-polyxenus-dorsal"
+  ],
+  "sourceCorrection": "BIOLOGICAL COUNT CORRECTION: Paint a fresh real adult Polyxenus bristly millipede from STRICTDIRECTDORSAL view, small and centered on canvas. Thirteen real short legs on its upper flank and thirteen on its lower flank; exactly26 genuine walking legs total. Keep both flank rows continuously visible from their actual body emergence through each bend to every little terminal claw. The source must actually depict the adult13-pair anatomy; requesting a number is not permission to invent or suppress real anatomy. Do not substitute14pairs. Separate the natural bristle tufts from the short real legs so all roots remain readable, without shaving its bristly morphology. Preserve two real antennae and two real rear bristle brushes; those brushes are not a leg pair. Natural relaxed flexed limbs, no stiff evenly spaced artificial diagram pose. Entire animal HALFcanvaswidth with every tip inside15percent blank margins. No ground/shadow/scenery. This is a new independent biological source, not permission to erase pixels from a prior master.\n"
+}

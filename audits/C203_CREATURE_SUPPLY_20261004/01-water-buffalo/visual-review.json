@@ -1,0 +1,28 @@
+{
+  "name": "Water Buffalo",
+  "masterSha256": "7700e76ce80161e6e12b1ab9b00c5b9ac6a6fe04d932d8440df5860c503ab3a9",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four distinct cloven hoof endpoints, full attached tufted tail and swept horns. Near ear clear; far ear is not independently exposed. Far foreleg upper root remains behind the chest and contact heights differ slightly. No full hidden-root claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 167,
+      "y0": 333,
+      "x1": 1093,
+      "y1": 919
+    },
+    "margins": {
+      "left": 167,
+      "right": 160,
+      "top": 333,
+      "bottom": 334
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

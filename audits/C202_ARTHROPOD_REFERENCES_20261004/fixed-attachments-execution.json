@@ -1,0 +1,10 @@
+{
+  "args": [
+    "--test",
+    "port/v2/tools/creature-animation/fixed-attachments.test.mjs"
+  ],
+  "cwd": ".",
+  "status": "PASS",
+  "exitCode": 0,
+  "nodeVersion": "v26.10.0"
+}

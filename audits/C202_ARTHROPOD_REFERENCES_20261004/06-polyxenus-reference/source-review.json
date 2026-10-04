@@ -1,0 +1,11 @@
+{
+  "masterSha256": "6442f17acc4bca3b581f4139fd3824f866a1b004b684894f1572313ace7a1a03",
+  "status": "SOURCE_VISIBILITY_AND_FRAMING_HOLD",
+  "fullSizeInspected": true,
+  "findings": [
+    "Thirteen near-side distal legs visible; far-side root-to-tip paths are occluded by body and bristles, so26 completechains are not observed.",
+    "Two rear bristle brushes and two antennae visible; retain actual soft bristly morphology.",
+    "Left bristles/right antenna encroach required margin."
+  ],
+  "qualityAccepted": false
+}

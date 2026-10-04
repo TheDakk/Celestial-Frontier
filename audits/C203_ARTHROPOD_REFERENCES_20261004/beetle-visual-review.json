@@ -1,0 +1,49 @@
+{
+  "schema": "cf.c203-loaded-rig-fullsize-review/v1",
+  "status": "VISUAL_RED",
+  "fullSize": true,
+  "inspected": [
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/beetle-review01/idle-0-right.png",
+      "sha256": "9c23b2e8cb2b777490e2e969c64dfd77583d72b73e27d850134a2a67f07fd473"
+    },
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/beetle-review01/faint-0p9-right.png",
+      "sha256": "3e102cf424a383a3219cd9a33e4470cd9a76276ed66756a07206cad954084b3f"
+    },
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/beetle-review01/faint-1-left.png",
+      "sha256": "6d5748d6e19cfa09529b9fe8cf06022962e28f5eb2991f7083c2f5b04e7171e7"
+    },
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/beetle-review01/hit-0p5-right.png",
+      "sha256": "eb4c68dfa1ea3a48dfff543bd59816c803a46253f0829349068ad19657e8d09b"
+    },
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/beetle-review01/tame-0p5-right.png",
+      "sha256": "9d8226e939e52f8fbb7c0b61ec9d4db09ca53e88eae1af3186049a2c4f2c01aa"
+    },
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/beetle-review01/cast-0p5-right.png",
+      "sha256": "51592d47530a198b771de2ac8655ed2eb4fe021630837bf79d069e479fe9e66a"
+    }
+  ],
+  "rigReview": {
+    "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/beetle-review01/review.json",
+    "sha256": "55f5838546da9dd5c9bfed8c7a690a9545d89d3670d889e4cd76d9d18cdbe683"
+  },
+  "master": {
+    "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/master.png",
+    "sha256": "e1eca972d8481b7471239b47c54598657364c06334b21be37b60fe6ea8c5e275"
+  },
+  "findings": [
+    "Rest reconstructs the complete source with six legs and two antennae.",
+    "Hit and tame leave displaced antenna edge fragments while the main chain moves. Both high-side and low-side leg/spine fringes detach.",
+    "Faint opens a broad horizontal elytral gap; the separately abdomen-owned elytral suture rotates into a spear across the back. The left-facing final frame preserves the same defect.",
+    "Cast opens the two painted covers over an unpainted abdomen; residual curved body strips remain in space. No hidden-body pixels may be invented to fill this.",
+    "Actual loaded-rig positions match independent publication for all30 samples; that numerical success does not constitute visual qualification."
+  ],
+  "nativeReady": false,
+  "qualityAccepted": false,
+  "qualifiedReferencePool": []
+}

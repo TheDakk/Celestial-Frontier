@@ -1,0 +1,14 @@
+{
+  "id": "21-tuna",
+  "name": "Tuna",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-ca8de974-14fd-4d21-a0bb-4efbc42b4b56.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5f66d386506f0b464f166334904f80857ab304a6f0a9a33cb9fda91bfa9dc5fa",
+  "bytes": 1289315,
+  "promptSha256": "7fa614ac94c257303d566f2f4a19a2ad4665c3817bc2a66d3ec18dce762bfa15",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Hyrax",
+  "masterSha256": "686068536b23cc9e7f492b68754c48f64cb5ddcb9c2a0f17bdfaec722458b5d2",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original reviewed: four separate padded-looking feet, rounded ears and naturally tailless rump. Far ear is only a small crown-side sliver and upper limbs are partly hidden by the torso. Small individual toes are visible but complete biological toe inventory is not asserted; no tail was invented.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 256,
+      "y0": 360,
+      "x1": 1032,
+      "y1": 877
+    },
+    "margins": {
+      "left": 256,
+      "right": 221,
+      "top": 360,
+      "bottom": 376
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

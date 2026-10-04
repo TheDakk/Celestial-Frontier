@@ -1,0 +1,72 @@
+{
+  "schema": "cf.c203-observed-source-joins/v1",
+  "sourcePacket": "audits/C203_PRIMATE_REFERENCES_20261004/02-howler-arm-segments",
+  "basis": "The exact visibly continuous C202 source boundaries are retained after anatomical arm segment remapping. Former forearm pixels now merge with the same-side hand owner. Independent limb overlaps remain independent.",
+  "authored": [
+    {
+      "parts": [
+        "near-thigh",
+        "tail-root"
+      ],
+      "alreadyAutomatic": false,
+      "sourceEdges": 88,
+      "sourceBounds": [
+        481,
+        488,
+        488,
+        565
+      ]
+    },
+    {
+      "parts": [
+        "near-upper-arm",
+        "neck"
+      ],
+      "alreadyAutomatic": false,
+      "sourceEdges": 309,
+      "sourceBounds": [
+        829,
+        393,
+        914,
+        596
+      ]
+    },
+    {
+      "parts": [
+        "far-upper-arm",
+        "neck"
+      ],
+      "alreadyAutomatic": false,
+      "sourceEdges": 66,
+      "sourceBounds": [
+        894,
+        596,
+        923,
+        633
+      ]
+    },
+    {
+      "parts": [
+        "jaw",
+        "neck"
+      ],
+      "alreadyAutomatic": false,
+      "sourceEdges": 211,
+      "sourceBounds": [
+        947,
+        480,
+        1045,
+        555
+      ]
+    }
+  ],
+  "sourceBindingHash": "cd2881b2777ab25f279163a27d062d56a63fa672c7b3e98ce6653ad180907a96",
+  "resultBindingHash": "eec84e98cb018c6057cf1cf71f35608226e990766e326cb61e66e58fca1d7481",
+  "controls": {
+    "recordBytesUnchanged": true,
+    "atlasBytesUnchanged": true,
+    "sourceRGBAUnchanged": true,
+    "sourceCoordinateChanges": 0
+  },
+  "admission": false
+}

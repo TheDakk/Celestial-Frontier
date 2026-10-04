@@ -1,0 +1,19 @@
+{
+  "id": "02-grasshopper-source",
+  "name": "Grasshopper",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-62383052-ca7a-4a2a-9e19-86d354b6083b.png",
+  "masterSha256": "3adb0589334f5210c96e30df63d670edc4351ffa266a10332b511e4d523dc6af",
+  "bytes": 1526760,
+  "promptSha256": "9ee42d831a2fd443f989054190cc347cd4547a271acf4096930ae61ea3ea4209",
+  "actualImageInputs": [
+    {
+      "role": "style reference",
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "transparentBackground": false
+}

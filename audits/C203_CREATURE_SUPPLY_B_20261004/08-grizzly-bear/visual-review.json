@@ -1,0 +1,28 @@
+{
+  "name": "Grizzly Bear",
+  "masterSha256": "822d0d126c63d2202e6ff7c590a74d887f2bb7b8040507a64d80c39b6f9079cf",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Four distinct paws with pale claws, two rounded ears, short tail, shoulder hump and grizzled tan-brown fur are visible. Far upper-leg roots are body-occluded; dense fur hides precise joint centers. Similar silhouette to the Brown Bear original remains a catalogue differentiation hold.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 216,
+      "y0": 319,
+      "x1": 1073,
+      "y1": 905
+    },
+    "margins": {
+      "left": 216,
+      "right": 180,
+      "top": 319,
+      "bottom": 348
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

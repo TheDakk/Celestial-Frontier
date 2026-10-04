@@ -1,0 +1,336 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "48f700390f17fc371bfb188ced51504ad7ca919581fa9574aabc211f95f8f542",
+  "atlasSha256": "6c24b44278a9a19eee0cbabafe8be9c42ba04142c8f03917444c03e88cb7be7e",
+  "atlasSize": {
+    "width": 2046,
+    "height": 561
+  },
+  "parts": [
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1762,
+        "y": 185,
+        "width": 116,
+        "height": 45
+      },
+      "cutout": {
+        "x": 566,
+        "y": 881,
+        "width": 116,
+        "height": 45
+      }
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1545,
+        "y": 189,
+        "width": 116,
+        "height": 38
+      },
+      "cutout": {
+        "x": 730,
+        "y": 869,
+        "width": 116,
+        "height": 38
+      }
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearAnkle",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1001,
+        "y": 121,
+        "width": 33,
+        "height": 76
+      },
+      "cutout": {
+        "x": 586,
+        "y": 813,
+        "width": 33,
+        "height": 76
+      }
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarAnkle",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1929,
+        "y": 67,
+        "width": 66,
+        "height": 82
+      },
+      "cutout": {
+        "x": 716,
+        "y": 800,
+        "width": 66,
+        "height": 82
+      }
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1545,
+        "y": 237,
+        "width": 63,
+        "height": 53
+      },
+      "cutout": {
+        "x": 590,
+        "y": 762,
+        "width": 63,
+        "height": 53
+      }
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1746,
+        "y": 240,
+        "width": 50,
+        "height": 65
+      },
+      "cutout": {
+        "x": 704,
+        "y": 764,
+        "width": 50,
+        "height": 65
+      }
+    },
+    {
+      "id": "near-wing-root",
+      "joint": "wingNearRoot",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 744,
+        "y": 121,
+        "width": 247,
+        "height": 252
+      },
+      "cutout": {
+        "x": 482,
+        "y": 422,
+        "width": 247,
+        "height": 252
+      }
+    },
+    {
+      "id": "near-wing-flight",
+      "joint": "wingNearTip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1059,
+        "y": 5,
+        "width": 304,
+        "height": 178
+      },
+      "cutout": {
+        "x": 255,
+        "y": 424,
+        "width": 304,
+        "height": 178
+      }
+    },
+    {
+      "id": "far-wing-tip",
+      "joint": "wingFarTip",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1373,
+        "y": 131,
+        "width": 162,
+        "height": 158
+      },
+      "cutout": {
+        "x": 635,
+        "y": 364,
+        "width": 162,
+        "height": 158
+      }
+    },
+    {
+      "id": "far-wing-root",
+      "joint": "wingFarRoot",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1929,
+        "y": 5,
+        "width": 112,
+        "height": 52
+      },
+      "cutout": {
+        "x": 672,
+        "y": 490,
+        "width": 112,
+        "height": 52
+      }
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 744,
+        "y": 5,
+        "width": 305,
+        "height": 106
+      },
+      "cutout": {
+        "x": 269,
+        "y": 688,
+        "width": 305,
+        "height": 106
+      }
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1671,
+        "y": 189,
+        "width": 65,
+        "height": 72
+      },
+      "cutout": {
+        "x": 948,
+        "y": 444,
+        "width": 65,
+        "height": 72
+      }
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1373,
+        "y": 5,
+        "width": 189,
+        "height": 116
+      },
+      "cutout": {
+        "x": 785,
+        "y": 393,
+        "width": 189,
+        "height": 116
+      }
+    },
+    {
+      "id": "upper-neck",
+      "joint": "neck1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1762,
+        "y": 118,
+        "width": 148,
+        "height": 57
+      },
+      "cutout": {
+        "x": 784,
+        "y": 500,
+        "width": 148,
+        "height": 57
+      }
+    },
+    {
+      "id": "lower-neck",
+      "joint": "neck0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1762,
+        "y": 5,
+        "width": 157,
+        "height": 103
+      },
+      "cutout": {
+        "x": 761,
+        "y": 518,
+        "width": 157,
+        "height": 103
+      }
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1572,
+        "y": 5,
+        "width": 180,
+        "height": 174
+      },
+      "cutout": {
+        "x": 731,
+        "y": 569,
+        "width": 180,
+        "height": 174
+      }
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1920,
+        "y": 159,
+        "width": 119,
+        "height": 108
+      },
+      "cutout": {
+        "x": 540,
+        "y": 669,
+        "width": 119,
+        "height": 108
+      }
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 729,
+        "height": 551
+      },
+      "cutout": {
+        "x": 255,
+        "y": 364,
+        "width": 729,
+        "height": 551
+      }
+    }
+  ],
+  "bindingHash": "3d8a7e64d6f98a3b111c6a45d5b581c90277a015e32cdfe1513d59ad75ce51d7"
+}

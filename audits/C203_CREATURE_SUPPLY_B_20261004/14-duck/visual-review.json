@@ -1,0 +1,28 @@
+{
+  "name": "Duck",
+  "masterSha256": "32d7773a62afe13bcb43f0349ce9ed932241a32f7e27f6133d2fa56fc9245d37",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two separate orange webbed feet, broad yellow bill, green head/white neck ring and attached folded wing with blue speculum are visible. Curled rump feather and full tail are retained. Far wing/root remains body-occluded; folded feathers overlap rump. The two feet have unequal projected heights, requiring later observed contact authoring.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 217,
+      "y0": 317,
+      "x1": 1039,
+      "y1": 931
+    },
+    "margins": {
+      "left": 217,
+      "right": 214,
+      "top": 317,
+      "bottom": 322
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

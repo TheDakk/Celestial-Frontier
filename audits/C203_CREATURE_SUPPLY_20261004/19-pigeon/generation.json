@@ -1,0 +1,14 @@
+{
+  "id": "19-pigeon",
+  "name": "Pigeon",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-584eb91e-4657-45c1-9071-bbf17d19ac16.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7c93c25025d4f8c4e1edd4953f1a35610f1c5b3c24f9cc3af96af7dfa7ce556a",
+  "bytes": 1295440,
+  "promptSha256": "c4c5613fc34d351e0090d25664a349be0a3f167ce3dceda8a7a892d1fabb4f6e",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

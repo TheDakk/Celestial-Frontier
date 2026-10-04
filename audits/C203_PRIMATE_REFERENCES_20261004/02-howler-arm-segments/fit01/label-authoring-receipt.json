@@ -1,0 +1,131 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "near-hand",
+      "joint": "armNearHand",
+      "owner": "near-hand"
+    },
+    {
+      "region": "far-hand",
+      "joint": "armFarHand",
+      "owner": "far-hand"
+    },
+    {
+      "region": "near-foot",
+      "joint": "legNearFoot",
+      "owner": "near-foot"
+    },
+    {
+      "region": "far-foot",
+      "joint": "legFarFoot",
+      "owner": "far-foot"
+    },
+    {
+      "region": "near-shin",
+      "joint": "legNearKnee",
+      "owner": "near-shin"
+    },
+    {
+      "region": "far-shin",
+      "joint": "legFarKnee",
+      "owner": "far-shin"
+    },
+    {
+      "region": "near-thigh",
+      "joint": "legNearHip",
+      "owner": "near-thigh"
+    },
+    {
+      "region": "far-thigh",
+      "joint": "legFarHip",
+      "owner": "far-thigh"
+    },
+    {
+      "region": "near-forearm",
+      "joint": "armNearHand",
+      "owner": "near-hand"
+    },
+    {
+      "region": "far-forearm",
+      "joint": "armFarHand",
+      "owner": "far-hand"
+    },
+    {
+      "region": "near-upper-arm",
+      "joint": "armNearElbow",
+      "owner": "near-upper-arm"
+    },
+    {
+      "region": "far-upper-arm",
+      "joint": "armFarElbow",
+      "owner": "far-upper-arm"
+    },
+    {
+      "region": "jaw",
+      "joint": "jaw",
+      "owner": "jaw"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "neck",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "tail-tip",
+      "joint": "tail2",
+      "owner": "tail-tip"
+    },
+    {
+      "region": "tail-middle",
+      "joint": "tail1",
+      "owner": "tail-middle"
+    },
+    {
+      "region": "tail-root",
+      "joint": "tail0",
+      "owner": "tail-root"
+    },
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    19626,
+    10250,
+    7932,
+    5229,
+    19949,
+    13819,
+    29235,
+    94,
+    34229,
+    3412,
+    5287,
+    13453,
+    19463,
+    14235,
+    11181,
+    5324,
+    27155
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "a002b3260aff5cb758d8b6706e3571af986547b478b9666c713699dd7413007d",
+  "intake": {
+    "erodedPixels": 6736,
+    "despilledPixels": 324,
+    "unresolvedEdgePixels": 1
+  },
+  "remainderPart": "body"
+}

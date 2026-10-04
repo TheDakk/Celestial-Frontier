@@ -1,0 +1,28 @@
+{
+  "name": "Llama",
+  "masterSha256": "fbf67a687e3d35e0a2a94fa387e158604c39daf02d8b249fd79f00b38a7acf91",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Long neck, long inward-curved ears, shaggy brown-white coat and four separate feet with short tail. Lower foot anatomy and upper-leg visibility need independent review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 283,
+      "y0": 186,
+      "x1": 985,
+      "y1": 1026
+    },
+    "margins": {
+      "left": 283,
+      "right": 268,
+      "top": 186,
+      "bottom": 227
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

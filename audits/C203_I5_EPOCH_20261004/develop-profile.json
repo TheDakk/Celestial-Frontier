@@ -1,0 +1,11 @@
+{
+  "head": "08dd81237a8ba7cd93debf1be451295f1195813f",
+  "startedAt": "2026-10-04T03:22:16.608869+00:00",
+  "finishedAt": "2026-10-04T03:24:36.450860+00:00",
+  "durationSeconds": 139.842,
+  "exitCode": 0,
+  "optionalRuntimeRenamedAside": true,
+  "optionalRuntimeRestored": true,
+  "asideAbsent": true,
+  "command": "node port/v2/tools/check-profile.mjs --profile=develop"
+}

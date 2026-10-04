@@ -1,0 +1,65 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "REFUSED",
+  "sourceHead": "22a1c36ede73fd7635373912a258533da0250e05",
+  "helperSha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/master.png",
+      "sha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/authoring.json",
+      "sha256": "b33c8f0e72040200205a3f3a2643106c486eb05f400c957660a3c7a193d5cf63"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/subject-source.json",
+      "sha256": "4107e783b5806c1009a641347c3415252c99b6bcac82096b823ed71c4297b427"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": true,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/master.png",
+      "sha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/authoring.json",
+      "sha256": "b33c8f0e72040200205a3f3a2643106c486eb05f400c957660a3c7a193d5cf63",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/subject-source.json",
+      "sha256": "4107e783b5806c1009a641347c3415252c99b6bcac82096b823ed71c4297b427",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ],
+  "refusal": {
+    "stage": "authored-parts",
+    "error": "Error: Part masks: empty authored part: root\n    at requireValue (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:36:20\n    at Array.map (<anonymous>)\n    at cutAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:35:32)\n    at async buildAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-authored-parts.mjs:34:15)\n    at async file://~/Projects/celestial-frontier-openai-mac/audits/C196_SPECIALIZED_REFERENCES_20261003/intake-retained.mjs:112:16"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Toucan",
+  "masterSha256": "b965671e8e031c0a9c9e1a5d160b971a096f3599f0973ab750ca5618e434beda",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two distinct blue-gray feet, near folded wing, full tail and large orange/yellow black-tipped bill are visible. White throat and orange vent patches are present. Far wing root is hidden and exact opposing toe layout needs anatomy review. Bill highlights and large glossy eye may read overly polished for the requested natural painted style.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 161,
+      "y0": 312,
+      "x1": 1099,
+      "y1": 918
+    },
+    "margins": {
+      "left": 161,
+      "right": 154,
+      "top": 312,
+      "bottom": 335
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

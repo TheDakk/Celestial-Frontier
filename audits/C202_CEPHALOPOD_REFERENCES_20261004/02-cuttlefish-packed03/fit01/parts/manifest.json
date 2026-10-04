@@ -1,0 +1,165 @@
+{
+  "creatureId": "c202-cuttlefish-packed01",
+  "parts": [
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "a041eb229f289e548c6c74a4ee6a770a0664985fe17c1cced907e16b8a087f18"
+    },
+    {
+      "name": "eye-near.png",
+      "path": "parts/eye-near.png",
+      "sha256": "cf557b4953275773b20915cce15e7a3f441df266922d8598e3730b24de20a7d2"
+    },
+    {
+      "name": "eye-far.png",
+      "path": "parts/eye-far.png",
+      "sha256": "fa28ba67c721117006b78bdb26df5ed479d13d516de37fe894a1f583cf0489a5"
+    },
+    {
+      "name": "siphon.png",
+      "path": "parts/siphon.png",
+      "sha256": "a61ae9cfdc09570d3ccd181e18eb143ebd1791c6974f038f032a4809414750f0"
+    },
+    {
+      "name": "arm0-tip.png",
+      "path": "parts/arm0-tip.png",
+      "sha256": "35bb55279a67b09a50870bfdcc4549e5383b5c14a6e66590462e26980c73e5c6"
+    },
+    {
+      "name": "arm0-middle.png",
+      "path": "parts/arm0-middle.png",
+      "sha256": "efa93b7d0a90a02f0a762e40ae9a383467b76947ab130b55aae269bf57a32af9"
+    },
+    {
+      "name": "arm0-base.png",
+      "path": "parts/arm0-base.png",
+      "sha256": "6a3ebcf1e955c209a03de4ef60dc67bcd441645354fafda4be57704901ac783f"
+    },
+    {
+      "name": "arm1-distal.png",
+      "path": "parts/arm1-distal.png",
+      "sha256": "91773e9d0e984329c7c6cc0f2b308b24bc58c1b1833ee4c6d317381c2ba01409"
+    },
+    {
+      "name": "arm1-base.png",
+      "path": "parts/arm1-base.png",
+      "sha256": "0b00b9bca4d8cc90f3612f7c2809326b3dc0fc86d6a81f818cbcc912ccf2eb2a"
+    },
+    {
+      "name": "arm2-distal.png",
+      "path": "parts/arm2-distal.png",
+      "sha256": "50b35d24a2981058a3f09ab665571a0135bd66cb88d8124460ed4b32f78fb11b"
+    },
+    {
+      "name": "arm2-base.png",
+      "path": "parts/arm2-base.png",
+      "sha256": "2a0d85e7acca8efe644c1b33b879e61f22856dbda6b4a5f50ddabde0cb59a017"
+    },
+    {
+      "name": "arm3-distal.png",
+      "path": "parts/arm3-distal.png",
+      "sha256": "77ffdc802b0c7b65399c4a0b2ebfe2bbdd456d1b797133c126b0fefabfc34b30"
+    },
+    {
+      "name": "arm3-base.png",
+      "path": "parts/arm3-base.png",
+      "sha256": "640d7a6abd4770f50dac3da992d5c387eecc9a27ee709b9e42f78f26b7ceecb4"
+    },
+    {
+      "name": "arm4-distal.png",
+      "path": "parts/arm4-distal.png",
+      "sha256": "aa58ae3b5282978d4fb3be8c33a02bf308a16c5ef06b004d2c82adc05ed5f616"
+    },
+    {
+      "name": "arm4-base.png",
+      "path": "parts/arm4-base.png",
+      "sha256": "f1710d9f5077de2de732476ef2eb54c19749ed14aaae243dfe76082b0050205e"
+    },
+    {
+      "name": "arm5-distal.png",
+      "path": "parts/arm5-distal.png",
+      "sha256": "41087bbace73ea72f28720a43e0d7a0ac4b6b53059970e06a64751fae8b4d7a4"
+    },
+    {
+      "name": "arm5-base.png",
+      "path": "parts/arm5-base.png",
+      "sha256": "bc1720080bd09af282a855948ccff57248c20e23750c21e53a20b662d7af0a79"
+    },
+    {
+      "name": "arm6-distal.png",
+      "path": "parts/arm6-distal.png",
+      "sha256": "0c0937940c32942c18e93f00a29594de65eed4dd7a17e9ba54f7feb90e464df6"
+    },
+    {
+      "name": "arm6-base.png",
+      "path": "parts/arm6-base.png",
+      "sha256": "5834ce0ca23ed91b67c7665097fe291f27d89bdb02cb04c858a2c5ae83e7e03a"
+    },
+    {
+      "name": "arm7-tip.png",
+      "path": "parts/arm7-tip.png",
+      "sha256": "f3d089256ff656854e8cc6956bd841ce1cdca269695a6772089380787596f45d"
+    },
+    {
+      "name": "arm7-middle.png",
+      "path": "parts/arm7-middle.png",
+      "sha256": "d7f0661b73675801cb060a351320256fd8cd358f11948e91565e92f45a9fb356"
+    },
+    {
+      "name": "arm7-base.png",
+      "path": "parts/arm7-base.png",
+      "sha256": "2ff78975bdd2cac5393267dedd554348fa2e7b302f01bafeea7ce46352f460f5"
+    },
+    {
+      "name": "tentacle0-tip.png",
+      "path": "parts/tentacle0-tip.png",
+      "sha256": "2ce04d1a37adf1929698df46223483d3412ca24147e5f9d50b17503126a21861"
+    },
+    {
+      "name": "tentacle0-middle.png",
+      "path": "parts/tentacle0-middle.png",
+      "sha256": "fb82593d71b645ed093dfab1f323138c25bb344b9742e2e07e32d6ca6f768d1f"
+    },
+    {
+      "name": "tentacle0-base.png",
+      "path": "parts/tentacle0-base.png",
+      "sha256": "2fe974f2566669698ce33de0e9321937946d5b88335d3f7cf231a36c38ce7dee"
+    },
+    {
+      "name": "tentacle1-tip.png",
+      "path": "parts/tentacle1-tip.png",
+      "sha256": "338401cfddf05bb79903120822023cf6d0fde9db3e26738c479e246a31326f75"
+    },
+    {
+      "name": "tentacle1-middle.png",
+      "path": "parts/tentacle1-middle.png",
+      "sha256": "8c737eb1d2fb51f5c34cb15b107940b4ad1b90eebcc2216e597b2046484a5d8b"
+    },
+    {
+      "name": "tentacle1-base.png",
+      "path": "parts/tentacle1-base.png",
+      "sha256": "fbfed213ebc938ba17ae1dd91afa8aefe8980e5e5023c7d9ee7446bee23295a9"
+    },
+    {
+      "name": "fin-far.png",
+      "path": "parts/fin-far.png",
+      "sha256": "9938751ded43175b778643e809477d0b743b58d41f496dab28b27846492a8a68"
+    },
+    {
+      "name": "fin-near.png",
+      "path": "parts/fin-near.png",
+      "sha256": "6019300894b2de5479821aa7f53a2827c9c75c96c84badaa2fe9c9283e3c0d8e"
+    },
+    {
+      "name": "mantle.png",
+      "path": "parts/mantle.png",
+      "sha256": "49ed0e505dd35f31b853f139edae404ba75f53204e1f66bf7133c1154a3f5497"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "3855539f1d16b683ea24202b3f44675daed99d65d11cd1b0f0e559f87cbcdb62"
+    }
+  ]
+}

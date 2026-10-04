@@ -1,0 +1,41 @@
+{
+  "schema": "cf.c202-product-transform/v1",
+  "scope": "Opt-in source sockets and truthful zero-ultimate inventory; unchanged limits",
+  "changes": [
+    {
+      "path": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "beforeSha256": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf",
+      "afterSha256": "d295145272fd53027bd808dab6aa752d29c4c5f3da4091fbd7d209ed798431db"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "beforeSha256": "926e3a309668dd60bd6ef94bfda6a27790602153c8aa30bed5f5c30b81531684",
+      "afterSha256": "8a47a0d10f87372b4ecaac12e18442f2ab8ba0db94eda1c345644d3804ea99df"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "beforeSha256": "911a2619de2d78933f357af2edd50ed53a55ceac2b6edcafe0b7668c9c78ebae",
+      "afterSha256": "f65a61bd80302b3621f3ccb8f4b7373256b6efc26f07b0d21d3fa29edab1e55a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "beforeSha256": "5e7b34989379940755376e8fdf8710fcfb8123bd764763a27faa7d2ed954c9f1",
+      "afterSha256": "39443a28ecfc31ecc96915a3e8d6256b39182063251460b88f7cfdfc94ec91dc"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "beforeSha256": "ce7ebf4e06ee82e91a74128701e5e0bebb637817bb2012e96d6ba33b791bd201",
+      "afterSha256": "d5ce727eebbcd6c54a6996454f818df709e969b52aa9f09eb9d679b0c9722986"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-topology.ts",
+      "beforeSha256": "98eee6f0a25dc5150b8cc70013dd3af8f43ed18edec9db3ad880d5df4328e0b9",
+      "afterSha256": "bb21fa793b2b0fc9cbe6750a6c68502ee0cccef45f95e2bde52c476e6673f5c2"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "beforeSha256": "aada5fce752daac93e73d84ea526576bbfeaffdf27744dc08f5365c62d3c4275",
+      "afterSha256": "4bf6250ee2628ff0c1fbb474ba1046b83d18bc2973ca5e64c5627e08a30b3633"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "cfe6e089f99dfdf85e69305b0515725efad3119c",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/authoring.json",
+      "sha256": "c84bacf10f00c99ffaef9fb9d489acbe591b0499838bde163d7ecf1d283c7e70"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/subject-source.json",
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "8a035f7105a03cce22e46a2a4d0b4e0aee1fdd2095abe91db6f23738b2f28c5e",
+  "bindingHash": "4efb1786f147a08ae60f48c812ac05789b08242810c99d837203e09f02047936",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/master.png",
+      "sha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/authoring.json",
+      "sha256": "c84bacf10f00c99ffaef9fb9d489acbe591b0499838bde163d7ecf1d283c7e70",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/subject-source.json",
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C202_NATIVE_HOLDS_20261004/tortoise-ankle-boundary-01/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "unchanged": true
+    }
+  ]
+}

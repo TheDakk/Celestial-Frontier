@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Falcon",
+  "masterSha256": "2ae658cdd7edce1a4e0640757f2637680ab7e77feef37305236a066dec89cdf3",
+  "required": [
+    "dark malar moustache stripe below the eye"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "dark malar moustache stripe below the eye",
+      "status": "PRESENT",
+      "observed": "Two separate yellow feet/talons, hooked bill with yellow cere, attached folded near wing and barred tail are visible. Cream breast carries dark streaks/bars. Far wing/root remains hidden. Near folded wing overlaps the tail and belly; visible toe tips do not independently establish every joint or opposing talon."
+    }
+  ]
+}

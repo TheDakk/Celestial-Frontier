@@ -1,0 +1,150 @@
+{
+  "schema": "cf.c203-fox-native-delivery/v1",
+  "summary": {
+    "status": "DIAGNOSTIC_PASS",
+    "source": "f50abbd596ada241c53ba901228aceac106209a2",
+    "frames": 933,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "turns": 4,
+    "encodedFrames": {
+      "frames": 937,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 15.617758,
+      "minimumFrames": 886
+    },
+    "scriptDurationMs": 15532.666666666666,
+    "cpuThrottle": 1,
+    "fullSizeSourceReview": "audits/C203_NATIVE_HOLDS_20261004/visual-review.json",
+    "nativeStillsReviewed": [
+      "turn0-hit-impact.png",
+      "turn0-hit-approach-50.png",
+      "turn1-hit-reaction-50.png",
+      "turn2-dodge-return-end.png",
+      "turn3-hit-idle-90.png"
+    ],
+    "visualFinding": "Grounded strokes and whole head/nape silhouette remain attached in reviewed native attack, return and held-faint poses. Full-size source action review also passed. Claude retains final gallery/AI-finish admission.",
+    "fullFilmRetainedAs": "Named Red Fox candidate acceptance evidence, not I5 or all-pair performance evidence",
+    "allPairs": "HOLD"
+  },
+  "files": [
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/battle-full.webm",
+      "bytes": 11036131,
+      "sha256": "d181ed5fc57b39ef4c7bdba9dad3c9b731c133dcfb78223ea49aecbc65a931c1"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/native.log",
+      "bytes": 214,
+      "sha256": "45ab66258c983171b6a14f8c6baedb7b7bd0d6c209477abf6e4e0fb47e2d6d83"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/privacy.json",
+      "bytes": 376,
+      "sha256": "0f5d42c409d53b78985e50dd5423863041d6da9ced14b2e26902d2e46db7ba0f"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/report.json",
+      "bytes": 389724,
+      "sha256": "86dd6afc99181435cb1ab276e10fac2d4c6424fb75fe1862534b931958e769b2"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/review.json",
+      "bytes": 1017,
+      "sha256": "4ae5a3aec5df4a06e47b37cb1570ab4b065ad90a46067e586746deaa710b0696"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn0-hit-approach-50.png",
+      "bytes": 1507560,
+      "sha256": "74b0da57ea731a6c1dd3bcd6b4cb93911f479f0b736923931535e5a6731673cc"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn0-hit-impact.png",
+      "bytes": 985119,
+      "sha256": "5eae9f2e05408749e8e8f4bb94a92c3e4db7db302e1e50797ffad040be15d4c9"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn0-hit-reaction-50.png",
+      "bytes": 1507663,
+      "sha256": "60c8bf52e40c6dece96ff11880cbc612c9e563f12bd0105388b4ff93cfbe4dd0"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn0-hit-return-end.png",
+      "bytes": 1507463,
+      "sha256": "ab6bd390fbaaca16ae5077f155bfe3a0651662aa558c5be27321f6901a98daa2"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn1-hit-approach-50.png",
+      "bytes": 1507573,
+      "sha256": "b0ea08e39181ab52f775d95b4e9c08cb69c44206192721c9292f528a8e0fd6a2"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn1-hit-impact.png",
+      "bytes": 1511703,
+      "sha256": "c7b69063278a66bdd5f1301ee68c392cd7574632ee18282bae065ebf6decd8ac"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn1-hit-reaction-50.png",
+      "bytes": 1508990,
+      "sha256": "d55f6287bd50bcc02e4416cb1ac29ce532b3c4d3d8a7cf18893139821244a56e"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn1-hit-return-end.png",
+      "bytes": 1507385,
+      "sha256": "50a4c6dbb122ba42312e208de63116fe052deee13ce2ae581d8986f53caa056c"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn2-dodge-approach-50.png",
+      "bytes": 1507576,
+      "sha256": "6860519cdc5caa86c3512f14a2b556485d0b3c92d7277050a12df7692e810ec2"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn2-dodge-impact.png",
+      "bytes": 1529265,
+      "sha256": "73dc14e99de6dce4415ebabf74cf3e55db4df66e4538c6c80f4b2d4b2e15ea8e"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn2-dodge-reaction-50.png",
+      "bytes": 1533823,
+      "sha256": "a195aa5db95cb23452ada45ef1ab967e55aeb258752b6c421d93b43ac87e175e"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn2-dodge-return-end.png",
+      "bytes": 1507507,
+      "sha256": "4aed4cb96558084401b5a81a4100c6e612c5cbe2024f22cf3cc0d1c5c1d875c0"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn3-hit-approach-50.png",
+      "bytes": 1507560,
+      "sha256": "74b0da57ea731a6c1dd3bcd6b4cb93911f479f0b736923931535e5a6731673cc"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn3-hit-idle-50.png",
+      "bytes": 1510557,
+      "sha256": "cf9e37c81ee5e63eab20557483ec56cfb5c91a40684ddbc803d727481917aa62"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn3-hit-idle-90.png",
+      "bytes": 1501897,
+      "sha256": "58ece01ec2a48cadbc6a0e340529384aa43bbd6b67ac818667b74cdbf0f53d03"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn3-hit-impact.png",
+      "bytes": 1509197,
+      "sha256": "f0a82619b655ce1c39a83dcb88a9b6a43df92c5c2aba292684665e2315db79d4"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn3-hit-reaction-50.png",
+      "bytes": 1503637,
+      "sha256": "65280fd867124bf21ada264b4d8d9b13e945d93ad771c24b0cf86d441890a1e9"
+    },
+    {
+      "path": "audits/C203_FOX_NATIVE_20261004/turn3-hit-return-end.png",
+      "bytes": 1502464,
+      "sha256": "e22c352807254ecde71a2bb004e1a08bea22c5c6c44492d041811cf65ce55b48"
+    }
+  ]
+}

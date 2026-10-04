@@ -1,0 +1,21 @@
+✔ mesh profile refuses nonpositive, fractional and excessive steps before reading sources (0.8295ms)
+✔ absent and empty refinements are byte-identical to the retained writer including receipt and hashes (29.997125ms)
+✔ local rectangles refine intersecting ink while preserving distant geometry, source ownership and packed bytes (14.205083ms)
+✔ refinement confined to an empty quadtree region retains binding bytes and records only the authored receipt (7.25175ms)
+✔ malformed, out-of-image and coarsening refinement rectangles refuse before source reads (0.655459ms)
+✔ 38 actual semantic regions pack into32 without dropping alpha or an owner (6.584167ms)
+✔ rejects coercible labels and RGBA inputs before snapshotting (2.781917ms)
+✔ transparent source RGB is preserved and mutation fails its exact hash (104.264125ms)
+✔ snapshots prevent caller mutation during awaited hashing (1.669667ms)
+✔ plan refuses omitted/duplicate/reordered regions and an extra render part (1.156916ms)
+✔ refuses cross-depth, disconnected anatomy, nonadjacent source and unknown/empty owners (3.366708ms)
+✔ hash/paint/group mutation and biological absence are rejected (3.684583ms)
+✔ packing retains exact38-owner field bytes; every joint moves actual published geometry (598.583708ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 872.418792

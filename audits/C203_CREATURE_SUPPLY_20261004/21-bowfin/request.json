@@ -1,0 +1,49 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Bowfin",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "480252f61eab935087b6d7a100a5d7b437d05b64059a46742b50caff4badab60",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "fish",
+  "authoringCreated": false,
+  "sourceHead": "e2e9bb10cd8484ab99440e7bbb059af5220f1158",
+  "basePromptSha256": "7f1e8e37f034589e83089323416abe8cda679241dfd69a5eaefb647686125220",
+  "batchCompilerSha256": "80d7bc1346ebb2d87fc3794b1a915dff81261a6b7ddd649f286b90b5142eb9f4",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Source visibility correction: horizontal head-right unbent fish, complete native tail at left, every species-correct fin continuously attached at its true root. Near/far paired fins may be offset only where biologically visible; no duplicated fin or generic inventory. Preserve canonical markings, actual barbels and the species-correct dorsal/anal/adipose fin counts. No detached fin rays or tail notch substitutes. Whole fish within central half of canvas.",
+    "priorSources": [
+      {
+        "pilot": "audits/G2_C90_20260927/pilot.json",
+        "id": "09-bowfin",
+        "master": "audits/G2_C90_20260927/09-bowfin/master.png",
+        "packet": "audits/G2_C90_20260927/09-bowfin"
+      },
+      {
+        "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+        "id": "14-bowfin",
+        "master": "audits/C198_CREATURE_SUPPLY_C_20261003/14-bowfin/master.png",
+        "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/14-bowfin"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/G2_C90_20260927/pilot.json",
+    "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Source visibility correction: horizontal head-right unbent fish, complete native tail at left, every species-correct fin continuously attached at its true root. Near/far paired fins may be offset only where biologically visible; no duplicated fin or generic inventory. Preserve canonical markings, actual barbels and the species-correct dorsal/anal/adipose fin counts. No detached fin rays or tail notch substitutes. Whole fish within central half of canvas.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}
