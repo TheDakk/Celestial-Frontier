@@ -1,0 +1,170 @@
+{
+  "schema": "cf.c202-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C163_REFERENCE_REPAIR_20261002/manual-references/reindeer-contours/fit01",
+  "sourceConservationSha256": "daad78d6f8d66a86ad415863bdb5ea7ab3a9a085243b0f4adb2ae1489fdd5c36",
+  "sourceMasterSha256": "8782f25a07422cb73e74799d83fcc166d26577739100721d4fc694a90a2be0e8",
+  "sourceBindingSha256": "fcb4881ba822cb9dc0c7e49e9a82c2be41b6f58b38b7f1b1c166be4123a414f8",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.5,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "75aaca39a476c98582850693caebb6bf9388cd1c1f4cbd2f667047999f2b0c3d",
+  "movedPixels": 609,
+  "remainderPixels": 22519,
+  "islands": [
+    {
+      "pixels": 78,
+      "to": "ear-near-tip",
+      "border": {
+        "18": 24,
+        "19": 15,
+        "27": 2,
+        "28": 9
+      }
+    },
+    {
+      "pixels": 42,
+      "to": "tail1",
+      "border": {
+        "24": 19,
+        "25": 17
+      }
+    },
+    {
+      "pixels": 149,
+      "to": "neck",
+      "border": {
+        "26": 16,
+        "27": 9,
+        "28": 30
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck",
+      "border": {
+        "28": 4
+      }
+    },
+    {
+      "pixels": 167,
+      "to": "hind-near-knee",
+      "border": {
+        "4": 27,
+        "12": 2,
+        "30": 14
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "neck",
+      "border": {
+        "28": 1
+      }
+    },
+    {
+      "pixels": 73,
+      "to": "hind-near-paw",
+      "border": {
+        "2": 7,
+        "3": 7
+      }
+    },
+    {
+      "pixels": 32,
+      "to": "hind-far-ankle",
+      "border": {
+        "10": 5,
+        "11": 8
+      }
+    },
+    {
+      "pixels": 59,
+      "to": "fore-near-ankle",
+      "border": {
+        "7": 14
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "fore-far-paw",
+      "border": {
+        "14": 5
+      }
+    }
+  ],
+  "intake": {
+    "id": "c192-islands-reindeer",
+    "parts": 31,
+    "atlasSize": {
+      "width": 1017,
+      "height": 576
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 15,
+        "distancePx": 6.500000000000029,
+        "supports": [
+          251
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 4,
+        "distancePx": 4.242640687119208,
+        "supports": [
+          322
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 28,
+        "distancePx": 5.499999999999948,
+        "supports": [
+          10
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 17,
+        "distancePx": 5.656854249492344,
+        "supports": [
+          115
+        ]
+      }
+    ],
+    "sourceBindingHash": "c0bdb61bb2d75407de1a5ba5652bf74ec480303eba73e5000350a03e3ec48233",
+    "sourceVertices": 917,
+    "vertices": 1008,
+    "sharedSupports": 288,
+    "pins": 198,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 39,
+    "excludedOverlaps": 12,
+    "observedExcludedBoundaries": 12,
+    "weldedExcludedBoundaries": 1,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "root",
+        "spine"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

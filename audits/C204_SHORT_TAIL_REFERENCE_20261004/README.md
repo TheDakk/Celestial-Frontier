@@ -1,0 +1,13 @@
+# C204 qualified short-tail Reindeer reference
+
+**QUALIFIED_AUTHORING_REFERENCE**, not a new gallery identity. Use `qualified-reference-pool.json` as the supplemental entry or `reference-pool-preserved-plus-reindeer.json`, which preserves all 18 entries from Claude's C223 + Octopus pool and appends Reindeer. The packet is the independently hand-authored C163 Reindeer contour source; the selected native fit is `islands-joins-02/fit`. Four tail controls remain on the genuinely short painted tail. Do not replace the optional pool with only this entry.
+
+Current evidence: 19 actions / 2,299 static samples and 1,692 presentation samples PASS; 25 actual loaded-rig position comparisons PASS; five native turns, 1,168 live frames, zero skips/refusals/capture failures. Exact source/owner replay and mutation controls PASS. Full-size gallop, hit, dodge and faint plus native approach/late idle reviewed. Native is CPU1 diagnostic, not a 4xCPU or iPhone claim.
+
+The first native numeric pass concealed a small root/torso opening and loose fringe in source-size views. It remains visually HELD. One changed source-only successor uses the existing D28 0.5 policy to place 609 remainder pixels and explicitly joins actual interior root/spine adjacency. No source pixel, landmark, record, product, solver limit or timing was changed. Both predecessors and successor evidence are retained. `qualification.json` binds the selected fit and review.
+
+Claude: score the seven short-tail holds with this supplemental independent reference and preserve leave-one-species-out and positive/mutation controls. This delivery claims neither improved target admission nor a globally approved replacement pool. The Reindeer species cannot score against itself. All other static findings are retained in `holds.json`.
+
+Octopus decision: the C202 packet remains a qualified anatomical authoring reference; it does **not** yet count as an admitted gallery identity. Its wet/glossy style and gallery review remain Claude's decision. Do not bypass leave-one-species-out to count its reference as an automatic target pass.
+
+Reproduction: the retained static runner and native runner commands are conventional FIT / OUTPUT calls; use fresh output paths. `bundle-review02.mjs` rebuilds the diagnostic bundle, whose receipt retains hashes; the bundle itself is omitted. `conserve.mjs` adapts only packet/output/provenance plumbing from the retained C202 replay and preserves its controls. `place-and-join.mjs` uses the existing D28 and splitter, with an explicit root/spine pair. No product edits or extra certificate/develop run occurred.
