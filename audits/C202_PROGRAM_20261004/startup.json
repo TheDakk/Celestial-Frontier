@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "toolUpdatesRequired": false,
+  "reaperSuffix": "brew scoped outdated empty; current",
+  "updates": [
+    {
+      "name": "imagemagick",
+      "state": "current"
+    },
+    {
+      "name": "ffmpeg",
+      "state": "current"
+    },
+    {
+      "name": "python@3.12",
+      "state": "current"
+    },
+    {
+      "name": "node",
+      "state": "current"
+    },
+    {
+      "name": "gh",
+      "state": "current"
+    },
+    {
+      "name": "pngquant",
+      "state": "current"
+    },
+    {
+      "name": "oxipng",
+      "state": "current"
+    },
+    {
+      "name": "blender",
+      "state": "current"
+    },
+    {
+      "name": "inkscape",
+      "state": "current"
+    },
+    {
+      "name": "reaper",
+      "state": "metadata-differs"
+    },
+    {
+      "name": "surge-xt",
+      "state": "current"
+    },
+    {
+      "name": "gsap",
+      "state": "current"
+    }
+  ],
+  "merge": "387b366d0cd8ff638ff970c977e272f863ee7626",
+  "freeGiB": 123.96,
+  "siblingWindow": "C202 TERMINAL_RELEASED",
+  "reservation": "C264",
+  "owner": "Dakk",
+  "rules": "No runtime/limit changes by reference agents; root owns native/browser and any separately authorized product gate."
+}
