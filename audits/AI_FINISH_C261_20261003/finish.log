@@ -1,0 +1,17 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"prawn","rows":[{"id":"prawn","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"prawn","rows":[{"id":"prawn","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"prawn","rows":[{"id":"prawn","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"prawn","rows":[{"id":"prawn","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"capuchin","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"FAIL"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"running","subject":"capuchin","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"FAIL"}],"last":{"phase":"inference-start","stage":"text"}}
+{"status":"running","subject":"capuchin","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"capuchin","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"capuchin","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"FAIL"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"running","subject":"tiger-shark","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"PASS"},{"id":"tiger-shark","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"tiger-shark","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"PASS"},{"id":"tiger-shark","status":"FAIL"}],"last":{"phase":"inference-start","stage":"text"}}
+{"status":"running","subject":"tiger-shark","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"PASS"},{"id":"tiger-shark","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"tiger-shark","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"PASS"},{"id":"tiger-shark","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"tiger-shark","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"PASS"},{"id":"tiger-shark","status":"FAIL"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"tiger-shark","rows":[{"id":"prawn","status":"PASS"},{"id":"capuchin","status":"PASS"},{"id":"tiger-shark","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-anthropic-mac/audits/AI_FINISH_C261_20261003/finish-01"}

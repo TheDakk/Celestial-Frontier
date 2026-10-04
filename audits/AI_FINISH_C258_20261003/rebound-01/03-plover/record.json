@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Plover\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"728015385\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"24\"]]]]",
+    "seed": 728015385,
+    "ownerId": "authored:archetype-sprint/03-plover",
+    "earthName": "Plover"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 728015385,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 2,
+    "body": 12,
+    "loco": 9,
+    "trait": 24,
+    "size": 5,
+    "diet": 4,
+    "head": 9,
+    "limbs": 2,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 2,
+    "habitat": 2,
+    "detail": 2,
+    "accent": 15,
+    "temper": 1,
+    "sense": 1,
+    "repro": 2,
+    "life": 3,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Plover"
+  },
+  "geometry": {
+    "cutoutAssetHash": "30d96db1a148f540afdb372717d4104c873b60a6636065e9357f0c8b18ee6143",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7607120056317112,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.55,
+      0.49752791068580543
+    ],
+    "pelvis": [
+      0.5423444976076556,
+      0.5472886762360446
+    ],
+    "spine": [
+      0.5885167464114832,
+      0.4852472089314195
+    ],
+    "chest": [
+      0.6622807017543859,
+      0.43397129186602873
+    ],
+    "neck0": [
+      0.6791068580542265,
+      0.3871610845295056
+    ],
+    "neck1": [
+      0.6834130781499203,
+      0.34960127591706536
+    ],
+    "head": [
+      0.6890749601275917,
+      0.2920255183413078
+    ],
+    "beak": [
+      0.7539074960127592,
+      0.3236044657097289
+    ],
+    "legNearKnee": [
+      0.4880382775119617,
+      0.5818181818181818
+    ],
+    "legNearAnkle": [
+      0.4665071770334928,
+      0.6955342902711324
+    ],
+    "legNearFoot": [
+      0.47296650717703353,
+      0.7303827751196172
+    ],
+    "legFarKnee": [
+      0.562200956937799,
+      0.623444976076555
+    ],
+    "legFarAnkle": [
+      0.5885167464114832,
+      0.7169059011164274
+    ],
+    "legFarFoot": [
+      0.6076555023923444,
+      0.732615629984051
+    ],
+    "wingNearRoot": [
+      0.5883572567783094,
+      0.4059011164274322
+    ],
+    "wingNearTip": [
+      0.3639553429027113,
+      0.47073365231259967
+    ],
+    "wingFarRoot": [
+      0.5677033492822966,
+      0.3660287081339713
+    ],
+    "wingFarTip": [
+      0.46411483253588515,
+      0.3758373205741627
+    ],
+    "tailFan": [
+      0.2920255183413078,
+      0.49872408293460924
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/03-plover/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile wading-bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 01-robin. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "ac95f1dfb3e9cff7cfc4fde9f0c7c35dee8052e56851572ea263caf0e04d58b8",
+    "subjectSourceSha256": "92f7b5977bd7cb59bd63916077677996484ef9b6c61d206505557d005c0b8f58",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.050346206461113444,
+      "spine": 0.0773370559622839,
+      "chest": 0.08983507543675005,
+      "neck0": 0.049742487339446056,
+      "neck1": 0.037805856087591724,
+      "head": 0.057853476714467944,
+      "beak": 0.07211440650937256,
+      "legFarKnee": 0.07870235690579648,
+      "legFarAnkle": 0.09709513522793975,
+      "legFarFoot": 0.024760605032777373,
+      "legNearKnee": 0.06435411639381576,
+      "legNearAnkle": 0.11573651804636756,
+      "legNearFoot": 0.03544206317553097,
+      "wingFarRoot": 0.11645200850486628,
+      "wingFarTip": 0.10405186052985042,
+      "wingNearRoot": 0.07907344981904227,
+      "wingNearTip": 0.23357970087388344,
+      "tailFan": 0.25498649200198836
+    },
+    "measures": {
+      "body": 0.1650015838275139,
+      "bone-min": 0.024760605032777373,
+      "bone-max": 0.25498649200198836,
+      "leg/torso:legFar": 1.2154919517388942,
+      "leg/torso:legNear": 1.3062462348302282,
+      "wing/torso": 1.3363742572630253
+    }
+  },
+  "recipeHash": "f2b582d8d6211dafe736c6c6847648911d2ef98617c72e0756d8cd93019f8074"
+}
