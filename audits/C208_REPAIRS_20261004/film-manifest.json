@@ -1,0 +1,51 @@
+[
+  {
+    "source": "audits/C208_REPAIRS_20261004/native-20-angelfish/battle-full.webm",
+    "scratch": "/tmp/cf-c208-retained-films/native-20-angelfish-battle-full.webm",
+    "sha256": "505f925c032f7b43033bb3f687df11ff03bf060f0221ff1fd7927965b82adb7c",
+    "bytes": 6947279,
+    "reason": "Diagnostic video; native reports and every captured still retained in lane audit."
+  },
+  {
+    "source": "audits/C208_REPAIRS_20261004/native-18-sparrow/battle-full.webm",
+    "scratch": "/tmp/cf-c208-retained-films/native-18-sparrow-battle-full.webm",
+    "sha256": "50f443078ef49976486cb2c66c861475718ee58ba1c07edaf3c8027448c68e8d",
+    "bytes": 8950803,
+    "reason": "Diagnostic video; native reports and every captured still retained in lane audit."
+  },
+  {
+    "source": "audits/C208_REPAIRS_20261004/native-23-swordfish-framing02/battle-full.webm",
+    "scratch": "/tmp/cf-c208-retained-films/native-23-swordfish-framing02-battle-full.webm",
+    "sha256": "c7e75b3382dc78e7358a78af2cf6f344e5484fcfe1ed6c12fa8d195be2cdc654",
+    "bytes": 7478432,
+    "reason": "Diagnostic video; native reports and every captured still retained in lane audit."
+  },
+  {
+    "source": "audits/C208_REPAIRS_20261004/native-16-hyrax/battle-full.webm",
+    "scratch": "/tmp/cf-c208-retained-films/native-16-hyrax-battle-full.webm",
+    "sha256": "6a5768d2db4beaeb43cd4ae9f585a3dff7087d49b7a59f1360f612c28156cce0",
+    "bytes": 10454132,
+    "reason": "Diagnostic video; native reports and every captured still retained in lane audit."
+  },
+  {
+    "source": "audits/C208_REPAIRS_20261004/native-21-tuna/battle-full.webm",
+    "scratch": "/tmp/cf-c208-retained-films/native-21-tuna-battle-full.webm",
+    "sha256": "7ddf9c11e3b83704bbbe2269b9fcc2e18e4938f4dc53dbe5690783cdacc0913a",
+    "bytes": 7223968,
+    "reason": "Diagnostic video; native reports and every captured still retained in lane audit."
+  },
+  {
+    "source": "audits/C208_REPAIRS_20261004/native-13-falcon/battle-full.webm",
+    "scratch": "/tmp/cf-c208-retained-films/native-13-falcon-battle-full.webm",
+    "sha256": "dbed695894f696c9f2447bb08488ec66b067cb688e6f02f02851e02cf13ae06a",
+    "bytes": 9061726,
+    "reason": "Diagnostic video; native reports and every captured still retained in lane audit."
+  },
+  {
+    "source": "audits/C208_REPAIRS_20261004/native-17-arapaima-framing02/battle-full.webm",
+    "scratch": "/tmp/cf-c208-retained-films/native-17-arapaima-framing02-battle-full.webm",
+    "sha256": "406e34d7a3f95529194af38c00fda7d3c217d0e8f5799bec5d0295c33a7e21b0",
+    "bytes": 7541097,
+    "reason": "Diagnostic video; native reports and every captured still retained in lane audit."
+  }
+]

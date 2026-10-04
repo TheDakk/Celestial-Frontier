@@ -1,0 +1,99 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "17-cardinal",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "acc3a8958244a880d69fab7ef19ec1367c8bf900833593af4f1ad88f72f3ffc9",
+    "pngSha256": "978e19e50cc6d1d4dec396ac0be10df9ff4f627cfa0e749f572a97063b570017"
+  },
+  "parts": [
+    {
+      "name": "beak.png",
+      "sha256": "002c125005c942efce4fcc299e026339ca7f683d5f18181e4b0e2da70a6120f2"
+    },
+    {
+      "name": "body.png",
+      "sha256": "4390e66dce32ded4d9d4ad498227da7de6cffc0db361cad3cea903db4961b0d6"
+    },
+    {
+      "name": "chest.png",
+      "sha256": "b6411c743cedb79ae70632fe442cae275ac4e9b18ff56d87ea5831e10ca62158"
+    },
+    {
+      "name": "far-foot.png",
+      "sha256": "3c7cd089ff1afc1e9b9b6e150ed0b88e0d7bfe291c48bf711f6927549fb1dd96"
+    },
+    {
+      "name": "far-shin.png",
+      "sha256": "bacdf2920d77cfe459a85a8c36ec99ad1b38df6caa33c4daa00a63790bdbd012"
+    },
+    {
+      "name": "far-thigh.png",
+      "sha256": "41324dbeccb3543d5cd7b4b967b5f254e2451095a2f0aeedc134592c743de309"
+    },
+    {
+      "name": "far-wing-flight.png",
+      "sha256": "679bc2d96c1fe6d99064739f1344c910287b6b6e62c6c81235262460cf13be99"
+    },
+    {
+      "name": "far-wing-root.png",
+      "sha256": "77d6bcdd6f48fa5aafb836267ecb528056f5e666a9b8716f65ac92442743ac0b"
+    },
+    {
+      "name": "head.png",
+      "sha256": "0ec48b58eacfb2bd451930c8c9e45d87392cea58f6a9a1ecd4a4d15aad8cf00d"
+    },
+    {
+      "name": "near-foot.png",
+      "sha256": "c09ca3286758c7094c37bebdfd279151579a24382bbb07570f17f3c7578f7d76"
+    },
+    {
+      "name": "near-shin.png",
+      "sha256": "bcf2e7d63ac79828e92081184e9ba2c6b174c6e5e4407a7983c832b75502afe6"
+    },
+    {
+      "name": "near-thigh.png",
+      "sha256": "644e80614dd1f9999cec502b2a2cc0792f8965c0bc3caa607962ac4001859a04"
+    },
+    {
+      "name": "near-wing-flight.png",
+      "sha256": "00ec029bd1333e8e170fe3380a11790585d31831f075f61c84f4f51370e4c910"
+    },
+    {
+      "name": "near-wing-root.png",
+      "sha256": "01d3e201ee302bc5db2da369d9cedcca92e6019e08341503cb01d784a2e845b7"
+    },
+    {
+      "name": "neck-lower.png",
+      "sha256": "f5b5e77ff05b1358d5e3950787a9d17975ce102d12835f3db40a0b3d908f5b3a"
+    },
+    {
+      "name": "neck-upper.png",
+      "sha256": "549c50e7accc77c60a7a4d51e79b6ebd619bf90169f2f03915341a3702c113e6"
+    },
+    {
+      "name": "tail.png",
+      "sha256": "f967322d53d17f01b79a4e2ce09f4468b6a855f67562f2e66354509a159f11c1"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

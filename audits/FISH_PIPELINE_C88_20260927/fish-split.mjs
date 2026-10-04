@@ -12,7 +12,7 @@ export function selectFishFinBoundaries(record,binding,probe){
 }
 const owner=new URL('../../port/v2/tools/creature-animation/split-observed-surfaces.mjs',import.meta.url),original=fs.readFileSync(owner,'utf8'),sha=b=>createHash('sha256').update(b).digest('hex');
 export const sourceOwnerSha256=sha(original);
-if(sourceOwnerSha256!=='5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95')throw Error('Source split owner changed; fresh review required');
+if(sourceOwnerSha256!=='c88f2c0f08e89fbca0267c8e94da296b0e556fa5eddadeec3fdc6d130911248d')throw Error('Source split owner changed; fresh review required');
 const old='for(const [i,j]of shape)if(!collar.has(i))locked.set(i,j);',replacement="let finCollar=new Set(collar);for(let i=0;i<2;i++)finCollar=new Set([...finCollar,...[...finCollar].flatMap(j=>[...near[j]])]);\n for(const [i,j]of shape)if(!collar.has(i)&&!(j==='pectoralFar'&&finCollar.has(i)))locked.set(i,j);";
 if(original.split(old).length!==2)throw Error('Exact collar site');
 const source=original.replace(old,replacement).replace(/from '(\.\/[^']+)'/g,(_,p)=>'from '+JSON.stringify(new URL(p,owner).href));

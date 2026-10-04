@@ -1,0 +1,84 @@
+{
+  "schema": "cf.c202-actual-rig-software-review/v1",
+  "status": "PASS_OFFLINE",
+  "scope": "Actual loaded CreatureRig positions equal independent publication; source-size software rendering only, no native or GPU acceptance",
+  "rows": [
+    {
+      "action": "victory",
+      "ms": 0,
+      "fraction": 0,
+      "status": "PASS",
+      "parts": 17,
+      "image": "victory-0.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "victory",
+      "ms": 158.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "victory-0p2.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "victory",
+      "ms": 712.8000000000001,
+      "fraction": 0.9,
+      "status": "PASS",
+      "parts": 17,
+      "image": "victory-0p9.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "victory",
+      "ms": 792,
+      "fraction": 1,
+      "status": "PASS",
+      "parts": 17,
+      "image": "victory-1.png",
+      "publishedPartParity": "byte-exact"
+    },
+    {
+      "action": "victory",
+      "ms": 158.4,
+      "fraction": 0.2,
+      "status": "PASS",
+      "parts": 17,
+      "image": "victory-0p2.png",
+      "publishedPartParity": "byte-exact"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/C208_REPAIRS_20261004/joins01/17-cardinal/fit/record.json",
+      "sha256": "b922ce9cef28f518f5f3b1a3e5543635a839cd941fbdcf150c17278484ab2837"
+    },
+    {
+      "path": "audits/C208_REPAIRS_20261004/joins01/17-cardinal/fit/binding.json",
+      "sha256": "d9e0854925bd48fbe5a802cbc3cb12026f2e437e2cfce532e5adef714434eb49"
+    },
+    {
+      "path": "audits/C208_REPAIRS_20261004/joins01/17-cardinal/fit/parts/atlas/17-cardinal.png",
+      "sha256": "978e19e50cc6d1d4dec396ac0be10df9ff4f627cfa0e749f572a97063b570017"
+    },
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c274/17-cardinal/packet/master.png",
+      "sha256": "ce827ea3a6e7cf2811078c0a38ac1c2a7e87e2d4cb8646f41ef02be62d984521"
+    },
+    {
+      "path": "audits/C208_REPAIRS_20261004/review-rig.mjs",
+      "sha256": "49472545af39795bca22c8c6217160fb34e6d5f869e8cf54b1dee61e387ead3b"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/paint-publication.mjs",
+      "sha256": "08fd6b48bfb395a4cdf06e73896af7edf263884d51164a63e6d448f56f248fe3"
+    },
+    {
+      "path": "audits/C132_FAINT_GROUND_20261002/render-mesh.mjs",
+      "sha256": "2aba532466e9b1d0b2ca88e83ef7862421e945ab44000be427c9f1eaa8622f35"
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

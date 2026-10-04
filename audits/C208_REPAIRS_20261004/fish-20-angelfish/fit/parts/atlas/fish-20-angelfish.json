@@ -1,0 +1,325 @@
+{
+  "frames": {
+    "body-0.png": {
+      "frame": {
+        "h": 583,
+        "w": 178,
+        "x": 5,
+        "y": 793
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 583,
+        "w": 178
+      },
+      "spriteSourceSize": {
+        "h": 583,
+        "w": 178,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body-1.png": {
+      "frame": {
+        "h": 447,
+        "w": 166,
+        "x": 5,
+        "y": 1386
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 447,
+        "w": 166
+      },
+      "spriteSourceSize": {
+        "h": 447,
+        "w": 166,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body-2.png": {
+      "frame": {
+        "h": 567,
+        "w": 195,
+        "x": 412,
+        "y": 537
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 567,
+        "w": 195
+      },
+      "spriteSourceSize": {
+        "h": 567,
+        "w": 195,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body-3.png": {
+      "frame": {
+        "h": 631,
+        "w": 480,
+        "x": 689,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 631,
+        "w": 480
+      },
+      "spriteSourceSize": {
+        "h": 631,
+        "w": 480,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body-4.png": {
+      "frame": {
+        "h": 465,
+        "w": 167,
+        "x": 193,
+        "y": 793
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 465,
+        "w": 167
+      },
+      "spriteSourceSize": {
+        "h": 465,
+        "w": 167,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body-5.png": {
+      "frame": {
+        "h": 400,
+        "w": 51,
+        "x": 617,
+        "y": 537
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 400,
+        "w": 51
+      },
+      "spriteSourceSize": {
+        "h": 400,
+        "w": 51,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body.png": {
+      "frame": {
+        "h": 522,
+        "w": 674,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 522,
+        "w": 674
+      },
+      "spriteSourceSize": {
+        "h": 522,
+        "w": 674,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "caudal.png": {
+      "frame": {
+        "h": 244,
+        "w": 153,
+        "x": 343,
+        "y": 1386
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 244,
+        "w": 153
+      },
+      "spriteSourceSize": {
+        "h": 244,
+        "w": 153,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "dorsal.png": {
+      "frame": {
+        "h": 246,
+        "w": 397,
+        "x": 5,
+        "y": 537
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 246,
+        "w": 397
+      },
+      "spriteSourceSize": {
+        "h": 246,
+        "w": 397,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-pectoral.png": {
+      "frame": {
+        "h": 125,
+        "w": 37,
+        "x": 302,
+        "y": 1843
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 125,
+        "w": 37
+      },
+      "spriteSourceSize": {
+        "h": 125,
+        "w": 37,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 286,
+        "w": 152,
+        "x": 181,
+        "y": 1386
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 286,
+        "w": 152
+      },
+      "spriteSourceSize": {
+        "h": 286,
+        "w": 152,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "jaw.png": {
+      "frame": {
+        "h": 127,
+        "w": 128,
+        "x": 164,
+        "y": 1843
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 127,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 127,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-pectoral.png": {
+      "frame": {
+        "h": 181,
+        "w": 149,
+        "x": 5,
+        "y": 1843
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 181,
+        "w": 149
+      },
+      "spriteSourceSize": {
+        "h": 181,
+        "w": 149,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "fish-20-angelfish.png",
+    "scale": "1",
+    "size": {
+      "h": 2029,
+      "w": 1174
+    }
+  }
+}
