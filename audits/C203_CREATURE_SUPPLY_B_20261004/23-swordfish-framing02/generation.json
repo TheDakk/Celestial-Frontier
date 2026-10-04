@@ -1,0 +1,26 @@
+{
+  "id": "23-swordfish-framing02",
+  "name": "Swordfish",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-a28774f1-5a24-4851-8e45-d3864aefb5bf.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4f199d6aaae2ccc38c67b2154d82705727a8f3f35c807f7511b971daf5d18417",
+  "bytes": 1077594,
+  "promptSha256": "c393d3f4aaea24627bc30009b000a2389da2401fc5c7b177f743b3dd150c4ff5",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "referencedImages": [
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_B_20261004/23-swordfish/master.png",
+      "sha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "handAuthoring": false,
+  "editSuccessor": true,
+  "localRescale": false
+}

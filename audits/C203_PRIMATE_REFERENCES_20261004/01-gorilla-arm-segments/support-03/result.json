@@ -1,0 +1,1993 @@
+{
+  "schema": "cf.c203-primate-forehand-probe/v1",
+  "mode": "support",
+  "fit": "audits/C203_PRIMATE_REFERENCES_20261004/01-gorilla-arm-segments/fit01",
+  "sourceHands": [
+    {
+      "joint": "armNearHand",
+      "hull": [
+        [
+          758,
+          935
+        ],
+        [
+          766,
+          909
+        ],
+        [
+          769,
+          908
+        ],
+        [
+          777,
+          906
+        ],
+        [
+          794,
+          902
+        ],
+        [
+          798,
+          902
+        ],
+        [
+          802,
+          903
+        ],
+        [
+          828,
+          910
+        ],
+        [
+          839,
+          913
+        ],
+        [
+          846,
+          915
+        ],
+        [
+          849,
+          916
+        ],
+        [
+          863,
+          930
+        ],
+        [
+          867,
+          949
+        ],
+        [
+          868,
+          954
+        ],
+        [
+          868,
+          961
+        ],
+        [
+          867,
+          966
+        ],
+        [
+          866,
+          968
+        ],
+        [
+          862,
+          973
+        ],
+        [
+          859,
+          974
+        ],
+        [
+          840,
+          977
+        ],
+        [
+          814,
+          978
+        ],
+        [
+          802,
+          978
+        ],
+        [
+          777,
+          976
+        ],
+        [
+          772,
+          975
+        ],
+        [
+          769,
+          974
+        ],
+        [
+          767,
+          973
+        ],
+        [
+          764,
+          970
+        ],
+        [
+          762,
+          967
+        ],
+        [
+          760,
+          961
+        ],
+        [
+          758,
+          954
+        ]
+      ],
+      "positiveTexels": 6739
+    },
+    {
+      "joint": "armFarHand",
+      "hull": [
+        [
+          944,
+          868
+        ],
+        [
+          945,
+          867
+        ],
+        [
+          950,
+          864
+        ],
+        [
+          962,
+          857
+        ],
+        [
+          983,
+          845
+        ],
+        [
+          985,
+          844
+        ],
+        [
+          988,
+          844
+        ],
+        [
+          1022,
+          854
+        ],
+        [
+          1025,
+          855
+        ],
+        [
+          1027,
+          856
+        ],
+        [
+          1038,
+          938
+        ],
+        [
+          1038,
+          950
+        ],
+        [
+          1037,
+          952
+        ],
+        [
+          1035,
+          955
+        ],
+        [
+          1032,
+          958
+        ],
+        [
+          1030,
+          959
+        ],
+        [
+          1027,
+          960
+        ],
+        [
+          1021,
+          961
+        ],
+        [
+          1007,
+          963
+        ],
+        [
+          983,
+          963
+        ],
+        [
+          967,
+          960
+        ],
+        [
+          961,
+          957
+        ],
+        [
+          958,
+          955
+        ],
+        [
+          950,
+          947
+        ],
+        [
+          948,
+          944
+        ],
+        [
+          947,
+          942
+        ],
+        [
+          945,
+          934
+        ],
+        [
+          944,
+          872
+        ]
+      ],
+      "positiveTexels": 8662
+    }
+  ],
+  "scope": "Audit-only 17-sample pilot, conservative whole positive-alpha lower arm/hand bounds, source-coordinate pixels; not a native qualification.",
+  "rows": [
+    {
+      "fraction": 0,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999996423722,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              802.5,
+              977.5
+            ],
+            "posedCenterY": 977.4999983489514,
+            "conservativeHalfTexelY": 0.5000012934207916
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 963.0000296831131,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              983.5,
+              962.5
+            ],
+            "posedCenterY": 962.500028192997,
+            "conservativeHalfTexelY": 0.5000014901161194
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0
+          },
+          "armFarHand": {
+            "rotation": 0
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0
+          },
+          "armNearHand": {
+            "rotation": 0
+          },
+          "legFarHip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": 0
+          },
+          "legFarFoot": {
+            "rotation": 0
+          },
+          "legNearHip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": 0
+          },
+          "legNearFoot": {
+            "rotation": 0
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6491228070175439,
+              "y": 0.7799043062200957
+            },
+            "target": {
+              "x": 0.6491228070175439,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0,
+              "armNearHand": 0
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7799043062200957
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0,
+              "armFarHand": 0
+            },
+            "selectedHullIndex": 19,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 0,
+      "paintTargetError": 0,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0
+        },
+        "armFarHand": {
+          "rotation": 0
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0
+        },
+        "armNearHand": {
+          "rotation": 0
+        },
+        "legFarHip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0
+        },
+        "legFarFoot": {
+          "rotation": 0
+        },
+        "legNearHip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0
+        },
+        "legNearFoot": {
+          "rotation": 0
+        }
+      }
+    },
+    {
+      "fraction": 0.0625,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"target outside two-bone reach\"},{\"index\":1,\"error\":\"target outside two-bone reach\"},{\"index\":2,\"error\":\"target outside two-bone reach\"},{\"index\":3,\"error\":\"target outside two-bone reach\"},{\"index\":4,\"error\":\"target outside two-bone reach\"},{\"index\":5,\"error\":\"target outside two-bone reach\"},{\"index\":6,\"error\":\"target outside two-bone reach\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"target outside two-bone reach\"},{\"index\":12,\"error\":\"target outside two-bone reach\"},{\"index\":13,\"error\":\"target outside two-bone reach\"},{\"index\":14,\"error\":\"target outside two-bone reach\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"reverses actual anatomical elbow\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"reverses actual anatomical elbow\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"other painted hand contour below support\"},{\"index\":21,\"error\":\"target outside two-bone reach\"},{\"index\":22,\"error\":\"target outside two-bone reach\"},{\"index\":23,\"error\":\"target outside two-bone reach\"},{\"index\":24,\"error\":\"target outside two-bone reach\"},{\"index\":25,\"error\":\"target outside two-bone reach\"},{\"index\":26,\"error\":\"target outside two-bone reach\"},{\"index\":27,\"error\":\"target outside two-bone reach\"},{\"index\":28,\"error\":\"target outside two-bone reach\"},{\"index\":29,\"error\":\"target outside two-bone reach\"}]"
+    },
+    {
+      "fraction": 0.125,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"target outside two-bone reach\"},{\"index\":1,\"error\":\"target outside two-bone reach\"},{\"index\":2,\"error\":\"target outside two-bone reach\"},{\"index\":3,\"error\":\"target outside two-bone reach\"},{\"index\":4,\"error\":\"target outside two-bone reach\"},{\"index\":5,\"error\":\"target outside two-bone reach\"},{\"index\":6,\"error\":\"target outside two-bone reach\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"target outside two-bone reach\"},{\"index\":12,\"error\":\"target outside two-bone reach\"},{\"index\":13,\"error\":\"target outside two-bone reach\"},{\"index\":14,\"error\":\"target outside two-bone reach\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"reverses actual anatomical elbow\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"reverses actual anatomical elbow\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"other painted hand contour below support\"},{\"index\":21,\"error\":\"reverses actual anatomical elbow\"},{\"index\":21,\"error\":\"other painted hand contour below support\"},{\"index\":22,\"error\":\"target outside two-bone reach\"},{\"index\":23,\"error\":\"target outside two-bone reach\"},{\"index\":24,\"error\":\"target outside two-bone reach\"},{\"index\":25,\"error\":\"target outside two-bone reach\"},{\"index\":26,\"error\":\"target outside two-bone reach\"},{\"index\":27,\"error\":\"target outside two-bone reach\"},{\"index\":28,\"error\":\"target outside two-bone reach\"},{\"index\":29,\"error\":\"target outside two-bone reach\"}]"
+    },
+    {
+      "fraction": 0.1875,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999996423721,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              772.5,
+              974.5
+            ],
+            "posedCenterY": 977.4040639400482,
+            "conservativeHalfTexelY": 0.5959357023239136
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999942779541,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              983.5,
+              962.5
+            ],
+            "posedCenterY": 962.4260663241148,
+            "conservativeHalfTexelY": 0.5739279538393034
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.013889
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.1995167153220559
+          },
+          "armFarHand": {
+            "rotation": -0.3610963489423116
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.060756807468478335
+          },
+          "armNearHand": {
+            "rotation": -0.2777960171542755
+          },
+          "legFarHip": {
+            "rotation": 0.090903,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.12160860713202529
+          },
+          "legFarFoot": {
+            "rotation": 0.03898459896438711
+          },
+          "legNearHip": {
+            "rotation": 0.090903,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.16299920070963564
+          },
+          "legNearFoot": {
+            "rotation": 0.11573904773774102
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6156299840510366,
+              "y": 0.777511961722488
+            },
+            "target": {
+              "x": 0.6491228070175439,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.060756807468478335,
+              "armNearHand": -0.2777960171542755
+            },
+            "selectedHullIndex": 23,
+            "maxPredictedY": 0.7799043062200955
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.1995167153220559,
+              "armFarHand": -0.3610963489423116
+            },
+            "selectedHullIndex": 19,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.1102230246251565e-16,
+      "paintTargetError": 9.486619628503872e-7,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.013889
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.1995167153220559
+        },
+        "armFarHand": {
+          "rotation": -0.3610963489423116
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.060756807468478335
+        },
+        "armNearHand": {
+          "rotation": -0.2777960171542755
+        },
+        "legFarHip": {
+          "rotation": 0.090903,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.12160860713202529
+        },
+        "legFarFoot": {
+          "rotation": 0.03898459896438711
+        },
+        "legNearHip": {
+          "rotation": 0.090903,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.16299920070963564
+        },
+        "legNearFoot": {
+          "rotation": 0.11573904773774102
+        }
+      }
+    },
+    {
+      "fraction": 0.25,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999996423722,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              772.5,
+              974.5
+            ],
+            "posedCenterY": 977.3757400314014,
+            "conservativeHalfTexelY": 0.624259610970815
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.999996048212,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.4152084469795,
+            "conservativeHalfTexelY": 0.5847876012325287
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.024691
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.14336909441340961
+          },
+          "armFarHand": {
+            "rotation": -0.3317409344089688
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.14741310951797476
+          },
+          "armNearHand": {
+            "rotation": -0.44388289388162055
+          },
+          "legFarHip": {
+            "rotation": 0.161605,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.20963154709960263
+          },
+          "legFarFoot": {
+            "rotation": 0.0595630642066003
+          },
+          "legNearHip": {
+            "rotation": 0.161605,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.2830241382379726
+          },
+          "legNearFoot": {
+            "rotation": 0.19314164176799764
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6156299840510366,
+              "y": 0.777511961722488
+            },
+            "target": {
+              "x": 0.6491228070175439,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.14741310951797476,
+              "armNearHand": -0.44388289388162055
+            },
+            "selectedHullIndex": 23,
+            "maxPredictedY": 0.7799043062200954
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.14336909441340961,
+              "armFarHand": -0.3317409344089688
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320575
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 5.551115123125783e-17,
+      "paintTargetError": 0.000001231905595853273,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.024691
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.14336909441340961
+        },
+        "armFarHand": {
+          "rotation": -0.3317409344089688
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.14741310951797476
+        },
+        "armNearHand": {
+          "rotation": -0.44388289388162055
+        },
+        "legFarHip": {
+          "rotation": 0.161605,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.20963154709960263
+        },
+        "legFarFoot": {
+          "rotation": 0.0595630642066003
+        },
+        "legNearHip": {
+          "rotation": 0.161605,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.2830241382379726
+        },
+        "legNearFoot": {
+          "rotation": 0.19314164176799764
+        }
+      }
+    },
+    {
+      "fraction": 0.3125,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999788800875,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              769.5,
+              973.5
+            ],
+            "posedCenterY": 977.3561487396557,
+            "conservativeHalfTexelY": 0.6438301404317219
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.9999997854231,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3875493466853,
+            "conservativeHalfTexelY": 0.6124504387378693
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.03858
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.22802361019620365
+          },
+          "armFarHand": {
+            "rotation": -0.4900543887625129
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.20105316522898575
+          },
+          "armNearHand": {
+            "rotation": -0.5601735842983211
+          },
+          "legFarHip": {
+            "rotation": 0.252507,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.31588952296513123
+          },
+          "legFarFoot": {
+            "rotation": 0.07622598467228392
+          },
+          "legNearHip": {
+            "rotation": 0.252507,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.43161752242538487
+          },
+          "legNearFoot": {
+            "rotation": 0.2816105202555603
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.613237639553429,
+              "y": 0.7767145135566188
+            },
+            "target": {
+              "x": 0.6491228070175439,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.20105316522898575,
+              "armNearHand": -0.5601735842983211
+            },
+            "selectedHullIndex": 24,
+            "maxPredictedY": 0.7799043062200958
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.22802361019620365,
+              "armFarHand": -0.4900543887625129
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320575
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.5700924586837752e-16,
+      "paintTargetError": 0.0000012997942217153311,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.03858
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.22802361019620365
+        },
+        "armFarHand": {
+          "rotation": -0.4900543887625129
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.20105316522898575
+        },
+        "armNearHand": {
+          "rotation": -0.5601735842983211
+        },
+        "legFarHip": {
+          "rotation": 0.252507,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.31588952296513123
+        },
+        "legFarFoot": {
+          "rotation": 0.07622598467228392
+        },
+        "legNearHip": {
+          "rotation": 0.252507,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.43161752242538487
+        },
+        "legNearFoot": {
+          "rotation": 0.2816105202555603
+        }
+      }
+    },
+    {
+      "fraction": 0.375,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999830325445,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              769.5,
+              973.5
+            ],
+            "posedCenterY": 977.340851088365,
+            "conservativeHalfTexelY": 0.6591319441795349
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 962.999996048212,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3668769627809,
+            "conservativeHalfTexelY": 0.633119085431099
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.055556
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.2964606269373069
+          },
+          "armFarHand": {
+            "rotation": -0.6203253704807198
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.2601485369136298
+          },
+          "armNearHand": {
+            "rotation": -0.675065153013166
+          },
+          "legFarHip": {
+            "rotation": 0.36361,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.43673575856629476
+          },
+          "legFarFoot": {
+            "rotation": 0.08445446521488087
+          },
+          "legNearHip": {
+            "rotation": 0.36361,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.6070309766318979
+          },
+          "legNearFoot": {
+            "rotation": 0.37732499522857427
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.613237639553429,
+              "y": 0.7767145135566188
+            },
+            "target": {
+              "x": 0.6491228070175439,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.2601485369136298,
+              "armNearHand": -0.675065153013166
+            },
+            "selectedHullIndex": 24,
+            "maxPredictedY": 0.7799043062200955
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.2964606269373069,
+              "armFarHand": -0.6203253704807198
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 2.2887833992611187e-16,
+      "paintTargetError": 0.000001118416753374472,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.055556
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.2964606269373069
+        },
+        "armFarHand": {
+          "rotation": -0.6203253704807198
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.2601485369136298
+        },
+        "armNearHand": {
+          "rotation": -0.675065153013166
+        },
+        "legFarHip": {
+          "rotation": 0.36361,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.43673575856629476
+        },
+        "legFarFoot": {
+          "rotation": 0.08445446521488087
+        },
+        "legNearHip": {
+          "rotation": 0.36361,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.6070309766318979
+        },
+        "legNearFoot": {
+          "rotation": 0.37732499522857427
+        }
+      }
+    },
+    {
+      "fraction": 0.4375,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 978.0000059366226,
+          "maximumBelowGuidePx": 0.000005936622642366274,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              767.5,
+              972.5
+            ],
+            "posedCenterY": 977.327564406395,
+            "conservativeHalfTexelY": 0.6724415302276612
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 963.0000035226345,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              967.5,
+              959.5
+            ],
+            "posedCenterY": 962.3496689736843,
+            "conservativeHalfTexelY": 0.6503345489501953
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.075617
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.35862446059775316
+          },
+          "armFarHand": {
+            "rotation": -0.7405586070394643
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.30899792908556556
+          },
+          "armNearHand": {
+            "rotation": -0.7799700952131292
+          },
+          "legFarHip": {
+            "rotation": 0.494914,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.5685500930871025
+          },
+          "legFarFoot": {
+            "rotation": 0.08031587256903894
+          },
+          "legNearHip": {
+            "rotation": 0.494914,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.808052557768068
+          },
+          "legNearFoot": {
+            "rotation": 0.47728077158577764
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6116427432216905,
+              "y": 0.7759170653907496
+            },
+            "target": {
+              "x": 0.6491228070175439,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.30899792908556556,
+              "armNearHand": -0.7799700952131292
+            },
+            "selectedHullIndex": 25,
+            "maxPredictedY": 0.7799043062200959
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.7711323763955343,
+              "y": 0.7655502392344498
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.35862446059775316,
+              "armFarHand": -0.7405586070394643
+            },
+            "selectedHullIndex": 20,
+            "maxPredictedY": 0.7679425837320574
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 2.2887833992611187e-16,
+      "paintTargetError": 6.690731905480534e-7,
+      "resolved": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.075617
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.35862446059775316
+        },
+        "armFarHand": {
+          "rotation": -0.7405586070394643
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.30899792908556556
+        },
+        "armNearHand": {
+          "rotation": -0.7799700952131292
+        },
+        "legFarHip": {
+          "rotation": 0.494914,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.5685500930871025
+        },
+        "legFarFoot": {
+          "rotation": 0.08031587256903894
+        },
+        "legNearHip": {
+          "rotation": 0.494914,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.808052557768068
+        },
+        "legNearFoot": {
+          "rotation": 0.47728077158577764
+        }
+      }
+    },
+    {
+      "fraction": 0.5,
+      "status": "PUBLISHED",
+      "hands": [
+        {
+          "part": "near-hand",
+          "positiveTexels": 41096,
+          "maximumPaintedYBound": 977.9999894142152,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              767.5,
+              972.5
+            ],
+            "posedCenterY": 977.3110661923886,
+            "conservativeHalfTexelY": 0.6889232218265533
+          }
+        },
+        {
+          "part": "far-hand",
+          "positiveTexels": 28399,
+          "maximumPaintedYBound": 963.0000285029412,
+          "maximumBelowGuidePx": 0,
+          "centersBelow": 0,
+          "worst": {
+            "sourceCenter": [
+              961.5,
+              956.5
+            ],
+            "posedCenterY": 962.3182861357927,
+            "conservativeHalfTexelY": 0.6817423671483993
+          }
+        }
+      ],
+      "forehand": {
+        "pose": {
+          "root": {
+            "rotation": 0.042407,
+            "dx": 0,
+            "dy": 0.100826
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": 0.4221735642868288
+          },
+          "armFarHand": {
+            "rotation": -0.9813227108522382
+          },
+          "armNearShoulder": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": 0.3741450309911194
+          },
+          "armNearHand": {
+            "rotation": -0.9746955215218749
+          },
+          "legFarHip": {
+            "rotation": 0.55389,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.5994902708312243
+          },
+          "legFarFoot": {
+            "rotation": -0.044834473229196314
+          },
+          "legNearHip": {
+            "rotation": 0.55389,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.9326080898236995
+          },
+          "legNearFoot": {
+            "rotation": 0.5056819747107997
+          }
+        },
+        "contacts": [
+          {
+            "joint": "armNearHand",
+            "sourceSupport": {
+              "x": 0.6116427432216905,
+              "y": 0.7759170653907496
+            },
+            "target": {
+              "x": 0.6491228070175439,
+              "y": 0.7799043062200957
+            },
+            "sourceHullPoints": 30,
+            "rotations": {
+              "armNearElbow": 0.3741450309911194,
+              "armNearHand": -0.9746955215218749
+            },
+            "selectedHullIndex": 25,
+            "maxPredictedY": 0.7799043062200958
+          },
+          {
+            "joint": "armFarHand",
+            "sourceSupport": {
+              "x": 0.766347687400319,
+              "y": 0.7631578947368421
+            },
+            "target": {
+              "x": 0.7838915470494418,
+              "y": 0.7679425837320574
+            },
+            "sourceHullPoints": 28,
+            "rotations": {
+              "armFarElbow": 0.4221735642868288,
+              "armFarHand": -0.9813227108522382
+            },
+            "selectedHullIndex": 21,
+            "maxPredictedY": 0.7679425837320576
+          }
+        ],
+        "changed": true
+      },
+      "contactError": 1.2412670766236366e-16,
+      "paintTargetError": 0.000007872846573768558,
+      "resolved": {
+        "root": {
+          "rotation": 0.042407,
+          "dx": 0,
+          "dy": 0.100826
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": 0.4221735642868288
+        },
+        "armFarHand": {
+          "rotation": -0.9813227108522382
+        },
+        "armNearShoulder": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": 0.3741450309911194
+        },
+        "armNearHand": {
+          "rotation": -0.9746955215218749
+        },
+        "legFarHip": {
+          "rotation": 0.55389,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.5994902708312243
+        },
+        "legFarFoot": {
+          "rotation": -0.044834473229196314
+        },
+        "legNearHip": {
+          "rotation": 0.55389,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.9326080898236995
+        },
+        "legNearFoot": {
+          "rotation": 0.5056819747107997
+        }
+      }
+    },
+    {
+      "fraction": 0.5625,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"reverses actual anatomical elbow\"},{\"index\":0,\"error\":\"other painted hand contour below support\"},{\"index\":1,\"error\":\"target outside two-bone reach\"},{\"index\":2,\"error\":\"target outside two-bone reach\"},{\"index\":3,\"error\":\"target outside two-bone reach\"},{\"index\":4,\"error\":\"target outside two-bone reach\"},{\"index\":5,\"error\":\"target outside two-bone reach\"},{\"index\":6,\"error\":\"target outside two-bone reach\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"reverses actual anatomical elbow\"},{\"index\":8,\"error\":\"reverses actual anatomical elbow\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"reverses actual anatomical elbow\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"reverses actual anatomical elbow\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"reverses actual anatomical elbow\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"reverses actual anatomical elbow\"},{\"index\":13,\"error\":\"other painted hand contour below support\"},{\"index\":13,\"error\":\"reverses actual anatomical elbow\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":14,\"error\":\"reverses actual anatomical elbow\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"reverses actual anatomical elbow\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"reverses actual anatomical elbow\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"other painted hand contour below support\"},{\"index\":21,\"error\":\"reverses actual anatomical elbow\"},{\"index\":21,\"error\":\"other painted hand contour below support\"},{\"index\":22,\"error\":\"reverses actual anatomical elbow\"},{\"index\":22,\"error\":\"original joint limit armNearHand -63.86257001606626\"},{\"index\":23,\"error\":\"reverses actual anatomical elbow\"},{\"index\":23,\"error\":\"original joint limit armNearHand -64.61099255327584\"},{\"index\":24,\"error\":\"reverses actual anatomical elbow\"},{\"index\":24,\"error\":\"original joint limit armNearHand -64.9050800427115\"},{\"index\":25,\"error\":\"reverses actual anatomical elbow\"},{\"index\":25,\"error\":\"original joint limit armNearHand -64.9615518149622\"},{\"index\":26,\"error\":\"reverses actual anatomical elbow\"},{\"index\":26,\"error\":\"original joint limit armNearHand -64.37498147004297\"},{\"index\":27,\"error\":\"reverses actual anatomical elbow\"},{\"index\":27,\"error\":\"original joint limit armNearHand -63.50895593185284\"},{\"index\":28,\"error\":\"reverses actual anatomical elbow\"},{\"index\":28,\"error\":\"original joint limit armNearHand -61.118318266010036\"},{\"index\":29,\"error\":\"reverses actual anatomical elbow\"},{\"index\":29,\"error\":\"other painted hand contour below support\"}]"
+    },
+    {
+      "fraction": 0.625,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"reverses actual anatomical elbow\"},{\"index\":0,\"error\":\"other painted hand contour below support\"},{\"index\":1,\"error\":\"reverses actual anatomical elbow\"},{\"index\":1,\"error\":\"other painted hand contour below support\"},{\"index\":2,\"error\":\"reverses actual anatomical elbow\"},{\"index\":2,\"error\":\"other painted hand contour below support\"},{\"index\":3,\"error\":\"reverses actual anatomical elbow\"},{\"index\":3,\"error\":\"other painted hand contour below support\"},{\"index\":4,\"error\":\"other painted hand contour below support\"},{\"index\":4,\"error\":\"other painted hand contour below support\"},{\"index\":5,\"error\":\"reverses actual anatomical elbow\"},{\"index\":5,\"error\":\"other painted hand contour below support\"},{\"index\":6,\"error\":\"reverses actual anatomical elbow\"},{\"index\":6,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"reverses actual anatomical elbow\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"reverses actual anatomical elbow\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"reverses actual anatomical elbow\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"reverses actual anatomical elbow\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"reverses actual anatomical elbow\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"reverses actual anatomical elbow\"},{\"index\":13,\"error\":\"other painted hand contour below support\"},{\"index\":13,\"error\":\"reverses actual anatomical elbow\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":14,\"error\":\"reverses actual anatomical elbow\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"reverses actual anatomical elbow\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"reverses actual anatomical elbow\"},{\"index\":19,\"error\":\"original joint limit armNearHand -61.28492813437953\"},{\"index\":19,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"original joint limit armNearHand -65.71667825990322\"},{\"index\":21,\"error\":\"reverses actual anatomical elbow\"},{\"index\":21,\"error\":\"original joint limit armNearHand -67.92828979994447\"},{\"index\":22,\"error\":\"reverses actual anatomical elbow\"},{\"index\":22,\"error\":\"original joint limit armNearHand -72.48298750710725\"},{\"index\":23,\"error\":\"reverses actual anatomical elbow\"},{\"index\":23,\"error\":\"original joint limit armNearHand -73.28798454945616\"},{\"index\":24,\"error\":\"reverses actual anatomical elbow\"},{\"index\":24,\"error\":\"original joint limit armNearHand -73.64218641499116\"},{\"index\":25,\"error\":\"reverses actual anatomical elbow\"},{\"index\":25,\"error\":\"original joint limit armNearHand -73.7626676952673\"},{\"index\":26,\"error\":\"reverses actual anatomical elbow\"},{\"index\":26,\"error\":\"original joint limit armNearHand -73.38982137899815\"},{\"index\":27,\"error\":\"reverses actual anatomical elbow\"},{\"index\":27,\"error\":\"original joint limit armNearHand -72.75786731368088\"},{\"index\":28,\"error\":\"reverses actual anatomical elbow\"},{\"index\":28,\"error\":\"original joint limit armNearHand -70.90892656962463\"},{\"index\":29,\"error\":\"reverses actual anatomical elbow\"},{\"index\":29,\"error\":\"original joint limit armNearHand -68.51949411785468\"}]"
+    },
+    {
+      "fraction": 0.6875,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"reverses actual anatomical elbow\"},{\"index\":0,\"error\":\"original joint limit armNearHand -68.6959002245734\"},{\"index\":1,\"error\":\"reverses actual anatomical elbow\"},{\"index\":1,\"error\":\"other painted hand contour below support\"},{\"index\":2,\"error\":\"reverses actual anatomical elbow\"},{\"index\":2,\"error\":\"other painted hand contour below support\"},{\"index\":3,\"error\":\"reverses actual anatomical elbow\"},{\"index\":3,\"error\":\"other painted hand contour below support\"},{\"index\":4,\"error\":\"reverses actual anatomical elbow\"},{\"index\":4,\"error\":\"other painted hand contour below support\"},{\"index\":5,\"error\":\"reverses actual anatomical elbow\"},{\"index\":5,\"error\":\"other painted hand contour below support\"},{\"index\":6,\"error\":\"reverses actual anatomical elbow\"},{\"index\":6,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"reverses actual anatomical elbow\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"reverses actual anatomical elbow\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"reverses actual anatomical elbow\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"reverses actual anatomical elbow\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"reverses actual anatomical elbow\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"reverses actual anatomical elbow\"},{\"index\":13,\"error\":\"other painted hand contour below support\"},{\"index\":13,\"error\":\"reverses actual anatomical elbow\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":14,\"error\":\"reverses actual anatomical elbow\"},{\"index\":15,\"error\":\"original joint limit armNearHand -60.314922168457024\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"original joint limit armNearHand -61.18203227682407\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":17,\"error\":\"original joint limit armNearHand -63.48868156508684\"},{\"index\":17,\"error\":\"reverses actual anatomical elbow\"},{\"index\":18,\"error\":\"original joint limit armNearHand -64.20054369304881\"},{\"index\":18,\"error\":\"reverses actual anatomical elbow\"},{\"index\":19,\"error\":\"original joint limit armNearHand -67.76555571047254\"},{\"index\":19,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"original joint limit armNearHand -72.32254926412148\"},{\"index\":21,\"error\":\"reverses actual anatomical elbow\"},{\"index\":21,\"error\":\"original joint limit armNearHand -74.57773958779407\"},{\"index\":22,\"error\":\"reverses actual anatomical elbow\"},{\"index\":22,\"error\":\"original joint limit armNearHand -79.23662129512454\"},{\"index\":23,\"error\":\"reverses actual anatomical elbow\"},{\"index\":23,\"error\":\"original joint limit armNearHand -80.07687697150703\"},{\"index\":24,\"error\":\"reverses actual anatomical elbow\"},{\"index\":24,\"error\":\"original joint limit armNearHand -80.46839469104236\"},{\"index\":25,\"error\":\"reverses actual anatomical elbow\"},{\"index\":25,\"error\":\"original joint limit armNearHand -80.62844077942356\"},{\"index\":26,\"error\":\"reverses actual anatomical elbow\"},{\"index\":26,\"error\":\"original joint limit armNearHand -80.38643353328081\"},{\"index\":27,\"error\":\"reverses actual anatomical elbow\"},{\"index\":27,\"error\":\"original joint limit armNearHand -79.89553286027649\"},{\"index\":28,\"error\":\"reverses actual anatomical elbow\"},{\"index\":28,\"error\":\"original joint limit armNearHand -78.36399698774184\"},{\"index\":29,\"error\":\"reverses actual anatomical elbow\"},{\"index\":29,\"error\":\"original joint limit armNearHand -76.40191091440283\"}]"
+    },
+    {
+      "fraction": 0.75,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"reverses actual anatomical elbow\"},{\"index\":0,\"error\":\"original joint limit armNearHand -75.5722843749786\"},{\"index\":1,\"error\":\"reverses actual anatomical elbow\"},{\"index\":1,\"error\":\"original joint limit armNearHand -60.976713919721334\"},{\"index\":2,\"error\":\"reverses actual anatomical elbow\"},{\"index\":2,\"error\":\"other painted hand contour below support\"},{\"index\":3,\"error\":\"reverses actual anatomical elbow\"},{\"index\":3,\"error\":\"other painted hand contour below support\"},{\"index\":4,\"error\":\"reverses actual anatomical elbow\"},{\"index\":4,\"error\":\"other painted hand contour below support\"},{\"index\":5,\"error\":\"reverses actual anatomical elbow\"},{\"index\":5,\"error\":\"other painted hand contour below support\"},{\"index\":6,\"error\":\"reverses actual anatomical elbow\"},{\"index\":6,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"reverses actual anatomical elbow\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"reverses actual anatomical elbow\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"reverses actual anatomical elbow\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"reverses actual anatomical elbow\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"reverses actual anatomical elbow\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"reverses actual anatomical elbow\"},{\"index\":13,\"error\":\"original joint limit armNearHand -60.86351598920226\"},{\"index\":13,\"error\":\"reverses actual anatomical elbow\"},{\"index\":14,\"error\":\"original joint limit armNearHand -63.48718333160423\"},{\"index\":14,\"error\":\"reverses actual anatomical elbow\"},{\"index\":15,\"error\":\"original joint limit armNearHand -65.40930402063343\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"original joint limit armNearHand -66.23324420080242\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":17,\"error\":\"original joint limit armNearHand -68.44654266380125\"},{\"index\":17,\"error\":\"reverses actual anatomical elbow\"},{\"index\":18,\"error\":\"original joint limit armNearHand -69.15548608842046\"},{\"index\":18,\"error\":\"reverses actual anatomical elbow\"},{\"index\":19,\"error\":\"original joint limit armNearHand -72.76321939433639\"},{\"index\":19,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"original joint limit armNearHand -77.40338753321497\"},{\"index\":21,\"error\":\"reverses actual anatomical elbow\"},{\"index\":21,\"error\":\"original joint limit armNearHand -79.68738016266225\"},{\"index\":22,\"error\":\"reverses actual anatomical elbow\"},{\"index\":22,\"error\":\"original joint limit armNearHand -84.41482686626819\"},{\"index\":23,\"error\":\"reverses actual anatomical elbow\"},{\"index\":23,\"error\":\"original joint limit armNearHand -85.27819264453792\"},{\"index\":24,\"error\":\"reverses actual anatomical elbow\"},{\"index\":24,\"error\":\"original joint limit armNearHand -85.69411671385451\"},{\"index\":25,\"error\":\"reverses actual anatomical elbow\"},{\"index\":25,\"error\":\"original joint limit armNearHand -85.87998129572426\"},{\"index\":26,\"error\":\"reverses actual anatomical elbow\"},{\"index\":26,\"error\":\"original joint limit armNearHand -85.72292110954467\"},{\"index\":27,\"error\":\"reverses actual anatomical elbow\"},{\"index\":27,\"error\":\"original joint limit armNearHand -85.32284679001027\"},{\"index\":28,\"error\":\"reverses actual anatomical elbow\"},{\"index\":28,\"error\":\"original joint limit armNearHand -83.99279599186433\"},{\"index\":29,\"error\":\"reverses actual anatomical elbow\"},{\"index\":29,\"error\":\"original joint limit armNearHand -82.29553502375182\"}]"
+    },
+    {
+      "fraction": 0.8125,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"reverses actual anatomical elbow\"},{\"index\":0,\"error\":\"original joint limit armNearHand -80.50587572094298\"},{\"index\":1,\"error\":\"reverses actual anatomical elbow\"},{\"index\":1,\"error\":\"original joint limit armNearHand -67.41589325092487\"},{\"index\":2,\"error\":\"reverses actual anatomical elbow\"},{\"index\":2,\"error\":\"original joint limit armNearHand -65.90664616151433\"},{\"index\":3,\"error\":\"reverses actual anatomical elbow\"},{\"index\":3,\"error\":\"original joint limit armNearHand -62.23825338544756\"},{\"index\":4,\"error\":\"reverses actual anatomical elbow\"},{\"index\":4,\"error\":\"other painted hand contour below support\"},{\"index\":5,\"error\":\"reverses actual anatomical elbow\"},{\"index\":5,\"error\":\"other painted hand contour below support\"},{\"index\":6,\"error\":\"reverses actual anatomical elbow\"},{\"index\":6,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"reverses actual anatomical elbow\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"reverses actual anatomical elbow\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"reverses actual anatomical elbow\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"reverses actual anatomical elbow\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"reverses actual anatomical elbow\"},{\"index\":12,\"error\":\"original joint limit armNearHand -63.159679604360875\"},{\"index\":12,\"error\":\"reverses actual anatomical elbow\"},{\"index\":13,\"error\":\"original joint limit armNearHand -64.8818304316487\"},{\"index\":13,\"error\":\"reverses actual anatomical elbow\"},{\"index\":14,\"error\":\"original joint limit armNearHand -67.36846181341856\"},{\"index\":14,\"error\":\"reverses actual anatomical elbow\"},{\"index\":15,\"error\":\"original joint limit armNearHand -69.20636939034742\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"original joint limit armNearHand -70.0013263410264\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":17,\"error\":\"original joint limit armNearHand -72.151740737786\"},{\"index\":17,\"error\":\"reverses actual anatomical elbow\"},{\"index\":18,\"error\":\"original joint limit armNearHand -72.85871344343849\"},{\"index\":18,\"error\":\"reverses actual anatomical elbow\"},{\"index\":19,\"error\":\"original joint limit armNearHand -76.49526468255063\"},{\"index\":19,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"original joint limit armNearHand -81.19136677253086\"},{\"index\":21,\"error\":\"reverses actual anatomical elbow\"},{\"index\":21,\"error\":\"original joint limit armNearHand -83.49467494620433\"},{\"index\":22,\"error\":\"reverses actual anatomical elbow\"},{\"index\":22,\"error\":\"original joint limit armNearHand -88.26799036341068\"},{\"index\":23,\"error\":\"reverses actual anatomical elbow\"},{\"index\":23,\"error\":\"original joint limit armNearHand -89.14678029437763\"},{\"index\":24,\"error\":\"reverses actual anatomical elbow\"},{\"index\":24,\"error\":\"original joint limit armNearHand -89.57897374787923\"},{\"index\":25,\"error\":\"reverses actual anatomical elbow\"},{\"index\":25,\"error\":\"original joint limit armNearHand -89.78202668099694\"},{\"index\":26,\"error\":\"reverses actual anatomical elbow\"},{\"index\":26,\"error\":\"original joint limit armNearHand -89.68135519168298\"},{\"index\":27,\"error\":\"reverses actual anatomical elbow\"},{\"index\":27,\"error\":\"original joint limit armNearHand -89.34129093942217\"},{\"index\":28,\"error\":\"reverses actual anatomical elbow\"},{\"index\":28,\"error\":\"original joint limit armNearHand -88.14330370586352\"},{\"index\":29,\"error\":\"reverses actual anatomical elbow\"},{\"index\":29,\"error\":\"original joint limit armNearHand -86.6173392311728\"}]"
+    },
+    {
+      "fraction": 0.875,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"reverses actual anatomical elbow\"},{\"index\":0,\"error\":\"original joint limit armNearHand -83.85498855253823\"},{\"index\":1,\"error\":\"reverses actual anatomical elbow\"},{\"index\":1,\"error\":\"original joint limit armNearHand -71.63653353422994\"},{\"index\":2,\"error\":\"reverses actual anatomical elbow\"},{\"index\":2,\"error\":\"original joint limit armNearHand -70.18547458566658\"},{\"index\":3,\"error\":\"reverses actual anatomical elbow\"},{\"index\":3,\"error\":\"original joint limit armNearHand -66.63848716238225\"},{\"index\":4,\"error\":\"reverses actual anatomical elbow\"},{\"index\":4,\"error\":\"other painted hand contour below support\"},{\"index\":5,\"error\":\"reverses actual anatomical elbow\"},{\"index\":5,\"error\":\"other painted hand contour below support\"},{\"index\":6,\"error\":\"reverses actual anatomical elbow\"},{\"index\":6,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"reverses actual anatomical elbow\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"reverses actual anatomical elbow\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"reverses actual anatomical elbow\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"reverses actual anatomical elbow\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"reverses actual anatomical elbow\"},{\"index\":12,\"error\":\"original joint limit armNearHand -66.01061457339624\"},{\"index\":12,\"error\":\"reverses actual anatomical elbow\"},{\"index\":13,\"error\":\"original joint limit armNearHand -67.65966235489779\"},{\"index\":13,\"error\":\"reverses actual anatomical elbow\"},{\"index\":14,\"error\":\"original joint limit armNearHand -70.05840709401275\"},{\"index\":14,\"error\":\"reverses actual anatomical elbow\"},{\"index\":15,\"error\":\"original joint limit armNearHand -71.84203168625817\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"original joint limit armNearHand -72.61825966990696\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":17,\"error\":\"original joint limit armNearHand -74.7279583677168\"},{\"index\":17,\"error\":\"reverses actual anatomical elbow\"},{\"index\":18,\"error\":\"original joint limit armNearHand -75.4336533439402\"},{\"index\":18,\"error\":\"reverses actual anatomical elbow\"},{\"index\":19,\"error\":\"original joint limit armNearHand -79.08887840314104\"},{\"index\":19,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"original joint limit armNearHand -83.8211601458726\"},{\"index\":21,\"error\":\"reverses actual anatomical elbow\"},{\"index\":21,\"error\":\"original joint limit armNearHand -86.13694184744008\"},{\"index\":22,\"error\":\"reverses actual anatomical elbow\"},{\"index\":22,\"error\":\"original joint limit armNearHand -90.93983568065461\"},{\"index\":23,\"error\":\"reverses actual anatomical elbow\"},{\"index\":23,\"error\":\"original joint limit armNearHand -91.82855827007798\"},{\"index\":24,\"error\":\"reverses actual anatomical elbow\"},{\"index\":24,\"error\":\"original joint limit armNearHand -92.27122119040975\"},{\"index\":25,\"error\":\"reverses actual anatomical elbow\"},{\"index\":25,\"error\":\"original joint limit armNearHand -92.48532654252138\"},{\"index\":26,\"error\":\"reverses actual anatomical elbow\"},{\"index\":26,\"error\":\"original joint limit armNearHand -92.42085265504461\"},{\"index\":27,\"error\":\"reverses actual anatomical elbow\"},{\"index\":27,\"error\":\"original joint limit armNearHand -92.11920578063095\"},{\"index\":28,\"error\":\"reverses actual anatomical elbow\"},{\"index\":28,\"error\":\"original joint limit armNearHand -91.00537225240991\"},{\"index\":29,\"error\":\"reverses actual anatomical elbow\"},{\"index\":29,\"error\":\"original joint limit armNearHand -89.58773301208863\"}]"
+    },
+    {
+      "fraction": 0.9375,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"reverses actual anatomical elbow\"},{\"index\":0,\"error\":\"original joint limit armNearHand -85.80421464329336\"},{\"index\":1,\"error\":\"reverses actual anatomical elbow\"},{\"index\":1,\"error\":\"original joint limit armNearHand -74.04892983783442\"},{\"index\":2,\"error\":\"reverses actual anatomical elbow\"},{\"index\":2,\"error\":\"original joint limit armNearHand -72.62790064009823\"},{\"index\":3,\"error\":\"reverses actual anatomical elbow\"},{\"index\":3,\"error\":\"original joint limit armNearHand -69.14318660000072\"},{\"index\":4,\"error\":\"reverses actual anatomical elbow\"},{\"index\":4,\"error\":\"original joint limit armNearHand -62.099876411319876\"},{\"index\":5,\"error\":\"reverses actual anatomical elbow\"},{\"index\":5,\"error\":\"original joint limit armNearHand -60.98594221056137\"},{\"index\":6,\"error\":\"reverses actual anatomical elbow\"},{\"index\":6,\"error\":\"original joint limit armNearHand -60.4187545960124\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"reverses actual anatomical elbow\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"reverses actual anatomical elbow\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"reverses actual anatomical elbow\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"reverses actual anatomical elbow\"},{\"index\":11,\"error\":\"original joint limit armNearHand -61.13466664798758\"},{\"index\":11,\"error\":\"reverses actual anatomical elbow\"},{\"index\":12,\"error\":\"original joint limit armNearHand -67.68489855163803\"},{\"index\":12,\"error\":\"reverses actual anatomical elbow\"},{\"index\":13,\"error\":\"original joint limit armNearHand -69.29306169299184\"},{\"index\":13,\"error\":\"reverses actual anatomical elbow\"},{\"index\":14,\"error\":\"original joint limit armNearHand -71.64248862120378\"},{\"index\":14,\"error\":\"reverses actual anatomical elbow\"},{\"index\":15,\"error\":\"original joint limit armNearHand -73.39556609332267\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"original joint limit armNearHand -74.16123989638247\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":17,\"error\":\"original joint limit armNearHand -76.24796924984031\"},{\"index\":17,\"error\":\"reverses actual anatomical elbow\"},{\"index\":18,\"error\":\"original joint limit armNearHand -76.95294286047127\"},{\"index\":18,\"error\":\"reverses actual anatomical elbow\"},{\"index\":19,\"error\":\"original joint limit armNearHand -80.61870727617901\"},{\"index\":19,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"original joint limit armNearHand -85.3713880841959\"},{\"index\":21,\"error\":\"reverses actual anatomical elbow\"},{\"index\":21,\"error\":\"original joint limit armNearHand -87.69419632070564\"},{\"index\":22,\"error\":\"reverses actual anatomical elbow\"},{\"index\":22,\"error\":\"original joint limit armNearHand -92.51373879013929\"},{\"index\":23,\"error\":\"reverses actual anatomical elbow\"},{\"index\":23,\"error\":\"original joint limit armNearHand -93.40804784984171\"},{\"index\":24,\"error\":\"reverses actual anatomical elbow\"},{\"index\":24,\"error\":\"original joint limit armNearHand -93.85659680783331\"},{\"index\":25,\"error\":\"reverses actual anatomical elbow\"},{\"index\":25,\"error\":\"original joint limit armNearHand -94.07691330015336\"},{\"index\":26,\"error\":\"reverses actual anatomical elbow\"},{\"index\":26,\"error\":\"original joint limit armNearHand -94.03276219596479\"},{\"index\":27,\"error\":\"reverses actual anatomical elbow\"},{\"index\":27,\"error\":\"original joint limit armNearHand -93.75265156443339\"},{\"index\":28,\"error\":\"reverses actual anatomical elbow\"},{\"index\":28,\"error\":\"original joint limit armNearHand -92.68587165816902\"},{\"index\":29,\"error\":\"reverses actual anatomical elbow\"},{\"index\":29,\"error\":\"original joint limit armNearHand -91.32854527455163\"}]"
+    },
+    {
+      "fraction": 1,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"reverses actual anatomical elbow\"},{\"index\":0,\"error\":\"original joint limit armNearHand -86.4446826879032\"},{\"index\":1,\"error\":\"reverses actual anatomical elbow\"},{\"index\":1,\"error\":\"original joint limit armNearHand -74.8353603328252\"},{\"index\":2,\"error\":\"reverses actual anatomical elbow\"},{\"index\":2,\"error\":\"original joint limit armNearHand -73.42367615178856\"},{\"index\":3,\"error\":\"reverses actual anatomical elbow\"},{\"index\":3,\"error\":\"original joint limit armNearHand -69.95829172231262\"},{\"index\":4,\"error\":\"reverses actual anatomical elbow\"},{\"index\":4,\"error\":\"original joint limit armNearHand -62.94834502629353\"},{\"index\":5,\"error\":\"reverses actual anatomical elbow\"},{\"index\":5,\"error\":\"original joint limit armNearHand -61.83231172916753\"},{\"index\":6,\"error\":\"reverses actual anatomical elbow\"},{\"index\":6,\"error\":\"original joint limit armNearHand -61.253667076641676\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":7,\"error\":\"reverses actual anatomical elbow\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"reverses actual anatomical elbow\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"reverses actual anatomical elbow\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"reverses actual anatomical elbow\"},{\"index\":11,\"error\":\"original joint limit armNearHand -61.74750833684633\"},{\"index\":11,\"error\":\"reverses actual anatomical elbow\"},{\"index\":12,\"error\":\"original joint limit armNearHand -68.23728150999509\"},{\"index\":12,\"error\":\"reverses actual anatomical elbow\"},{\"index\":13,\"error\":\"original joint limit armNearHand -69.83226827563752\"},{\"index\":13,\"error\":\"reverses actual anatomical elbow\"},{\"index\":14,\"error\":\"original joint limit armNearHand -72.16577700419882\"},{\"index\":14,\"error\":\"reverses actual anatomical elbow\"},{\"index\":15,\"error\":\"original joint limit armNearHand -73.9089823523253\"},{\"index\":15,\"error\":\"reverses actual anatomical elbow\"},{\"index\":16,\"error\":\"original joint limit armNearHand -74.6712431606831\"},{\"index\":16,\"error\":\"reverses actual anatomical elbow\"},{\"index\":17,\"error\":\"original joint limit armNearHand -76.75054107926783\"},{\"index\":17,\"error\":\"reverses actual anatomical elbow\"},{\"index\":18,\"error\":\"original joint limit armNearHand -77.45528122218109\"},{\"index\":18,\"error\":\"reverses actual anatomical elbow\"},{\"index\":19,\"error\":\"original joint limit armNearHand -81.12445619215258\"},{\"index\":19,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"reverses actual anatomical elbow\"},{\"index\":20,\"error\":\"original joint limit armNearHand -85.88373521781953\"},{\"index\":21,\"error\":\"reverses actual anatomical elbow\"},{\"index\":21,\"error\":\"original joint limit armNearHand -88.20881531229176\"},{\"index\":22,\"error\":\"reverses actual anatomical elbow\"},{\"index\":22,\"error\":\"original joint limit armNearHand -93.03373877650459\"},{\"index\":23,\"error\":\"reverses actual anatomical elbow\"},{\"index\":23,\"error\":\"original joint limit armNearHand -93.92985281692647\"},{\"index\":24,\"error\":\"reverses actual anatomical elbow\"},{\"index\":24,\"error\":\"original joint limit armNearHand -94.38030320444747\"},{\"index\":25,\"error\":\"reverses actual anatomical elbow\"},{\"index\":25,\"error\":\"original joint limit armNearHand -94.60262576505609\"},{\"index\":26,\"error\":\"reverses actual anatomical elbow\"},{\"index\":26,\"error\":\"original joint limit armNearHand -94.5650357083667\"},{\"index\":27,\"error\":\"reverses actual anatomical elbow\"},{\"index\":27,\"error\":\"original joint limit armNearHand -94.29187312609785\"},{\"index\":28,\"error\":\"reverses actual anatomical elbow\"},{\"index\":28,\"error\":\"original joint limit armNearHand -93.24025610198659\"},{\"index\":29,\"error\":\"reverses actual anatomical elbow\"},{\"index\":29,\"error\":\"original joint limit armNearHand -91.90232841978171\"}]"
+    }
+  ],
+  "native": false,
+  "qualified": false
+}

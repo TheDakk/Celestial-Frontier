@@ -1,0 +1,469 @@
+{
+  "schema": "cf.g2-source-pipeline-proof/v1",
+  "scope": "24 unchanged canonical compiler routes with disclosed source-visibility/composition additions. Native generator bytes retained. No authoring, native, reference-pool, runtime or gallery admission.",
+  "sourceCompiler": {
+    "path": "port/v2/tools/painted-creature/compile-library-master.mjs",
+    "sha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3"
+  },
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "batchCompilerSha256": "a51df0731fa7c90413b71639508b9d1b27e31a1d53bbc66f55761ea4a3fc3ccc",
+  "coveredAtSelection": 270,
+  "entries": [
+    {
+      "name": "Okapi",
+      "id": "01-okapi",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "bb92615b6b884c1f4053510a38b2aac2900753fb2d8eb98952c90bf8e79f56c6",
+      "finalPromptSha256": "b4edd7941ae9499dc0368fb23fe1e6b4457d65da1fc946fdc6c08a6b1787c1a2",
+      "masterSha256": "c643d4ff0239e0bbf2150defa24894fd13f9d82570207c44bf7b3a9333da134d",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Four separate cloven hoof endpoints, two actual ears, small ossicones and attached tufted tail are visible. Cream stripes cross the dark hindquarters and upper legs. Far foreleg upper root is hidden behind the chest; shallow three-quarter head limits a complete root-visibility claim."
+    },
+    {
+      "name": "Capybara",
+      "id": "02-capybara",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "9e946f66e4563cc3467e7e0a9bd33dd3ed1676708e3655d5def0373b4a090c05",
+      "finalPromptSha256": "a198b7e1fde67409ac537b6b6f215486c92522f0d450070e7565131fb4b0dcd4",
+      "masterSha256": "ca45af3e18f80811e623afb7c5b5540b9934069453ff63a63e18f3f9adb295ed",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Four distinct feet, rounded ears, broad blunt head and naturally tailless rump are visible. Far foreleg upper root is hidden. Foot webbing is not clearly separable and exposed claws look somewhat long/pointed; anatomy-detail hold."
+    },
+    {
+      "name": "Pronghorn",
+      "id": "03-pronghorn",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "4080825ef8e781f91122a88c3c2749d4d1c6c5e722434e630341d07e1c0b2b00",
+      "finalPromptSha256": "e226109fd75f4161480e0e77f58799939064202312140532600c16545c12e023",
+      "masterSha256": "d54130a66add54a0f70b8b9d3be78bf2c5d60398dff93fcb4aa2dcb1ffbed70d",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Four distinct cloven hoof endpoints, white rump/belly/throat markings, short pale tail and two pronged horns are visible. Near ear is clear; far ear is largely hidden by horns/head. Far foreleg proximal attachment overlaps chest. No complete far-ear/root ownership claim."
+    },
+    {
+      "name": "Springbok",
+      "id": "04-springbok",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "7c6de0e0331b9548af51d9ff8a734062d1b0dcda907506fadd7bd4b11ff1b45b",
+      "finalPromptSha256": "424076a6a0e351d49475f03b022042d7ccde6c7ab12086a2f973cfadb2236d8a",
+      "masterSha256": "56cbdddd56053fae72e77f6b6891e43d44aac23a9fbf7639d97c3fb687fbd4d4",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Four separate cloven hoof endpoints, dark flank band, white belly and face stripe, black-tufted tail and paired ringed horns are visible. Far ear appears only as a narrow sliver behind the horn; far foreleg upper root remains hidden by chest. Fine tail strands need key/fringe review."
+    },
+    {
+      "name": "Duiker",
+      "id": "05-duiker",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "880ac5b1c689ec775ac2d091d77894dd05c71364d4e93f5ec32729ee9e13b670",
+      "finalPromptSha256": "c9aa20366d32714d4fbda76fc262226b2460f203f6d504102c9e4787164eb93b",
+      "masterSha256": "e5fe8739c99722d043e3bb1feb04dc3ce6b26d808e0c1e179bf3dbe2fbd70d95",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Four distinct hoof endpoints, arched back, short pale-tipped tail and paired short pointed horns are visible. Near ear is clear but far ear is not independently readable. Far foreleg and hindleg upper roots overlap body; no hidden anatomy claim. Fine tail/body fur fringe needs keyed inspection."
+    },
+    {
+      "name": "Serow",
+      "id": "06-serow",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "61d919118306fe5ad2b3b792f15232193aef094e8dc185631ef4e70ec1e93a67",
+      "finalPromptSha256": "a1b301cd0303fbac9303d4148b91f2767d869eacb0b43f53724b91f7d202491c",
+      "masterSha256": "548b1528953812c070126f0e6fc230e7445b4c7d98efe3300f7d1491c4c1c660",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Four separate cloven hooves, two clearly visible ears, paired short horns and coarse gray-brown mane are visible. Far foreleg proximal root is body-occluded. Tail is conspicuously long with a pale tuft for this generic identity; retain species-proportion/style hold, plus spiky fur-fringe review."
+    },
+    {
+      "name": "Brown Bear",
+      "id": "07-brown-bear",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "96578fbee0fa6da1ee69317f490d78cd94e0cb5f3b4db014d2b7e6be27a9f3b5",
+      "finalPromptSha256": "e93f440ea9413508ec52764a058ecdf58de0a9245099e4658aa0de431c352658",
+      "masterSha256": "b4b4a70dba8d7fff52b00de9edc38acb5787416b6c16197aa754d324d082de95",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Four distinct planted paw endpoints with visible pale claws, two rounded ears, short attached tail and pronounced shoulder hump are visible. Upper far-leg roots remain behind the body; long shaggy fur obscures individual joints. Both brown-bear catalogue identities need final differentiation review."
+    },
+    {
+      "name": "Grizzly Bear",
+      "id": "08-grizzly-bear",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "quadruped",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "61d69329660a1efcfa7b4c1189570b11bd59ec30ee97899e7486114263893b52",
+      "finalPromptSha256": "7abd790e05e4b7cd0be2360a711cfc3d154a5718130985ac112d55a0bd9f7688",
+      "masterSha256": "822d0d126c63d2202e6ff7c590a74d887f2bb7b8040507a64d80c39b6f9079cf",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Four distinct paws with pale claws, two rounded ears, short tail, shoulder hump and grizzled tan-brown fur are visible. Far upper-leg roots are body-occluded; dense fur hides precise joint centers. Similar silhouette to the Brown Bear original remains a catalogue differentiation hold."
+    },
+    {
+      "name": "Kingfisher",
+      "id": "09-kingfisher",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "aba58273401daef2021ac5fa6201af81d887f7a38d7aa978fb7a1e3d75e2ff90",
+      "finalPromptSha256": "e6fc15d891a6d11d9e05b6832109c1c43f34fe2bd56a488a4a2f389fa8990463",
+      "masterSha256": "6a54c3e8a473f6cd7bf9830e1e5f4484d3b0bf70f8c188681228dffca443a0fb",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Two orange feet with distinguishable toes, attached near folded wing, short tail and long pointed bill are visible. Blue crown/wing speckles and orange breast/white throat markings are present. Far wing/root is hidden; eye is large and glossy, requiring natural-style scoring. Folded primaries overlap belly/tail and do not establish independent far-wing geometry."
+    },
+    {
+      "name": "Macaw",
+      "id": "10-macaw",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "0c53208648a2e664fe1afae07bd766242cfe3b8ea1f38de6964046812286dc17",
+      "finalPromptSha256": "782ffb9daaa3f20ac6813508def2296116966a7d62082667402dc131d409b76e",
+      "masterSha256": "56597421092300176d768ca2cff14c0320203ab9534c408d51d65999162a937d",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Two separate feet, long complete blue/yellow tail, attached folded near wing, hooked bill and white facial patch with dark stripes are visible. Far wing root is hidden. Exact zygodactyl toe count/ownership is not fully separable from this view; retain foot-anatomy review. Long narrow tail tips need whole-silhouette framing check."
+    },
+    {
+      "name": "Toucan",
+      "id": "11-toucan",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "ee64943e78ef36d4c6f0b4561ab6f4a88d5eea741ed8c97f87400b1a7e09b155",
+      "finalPromptSha256": "2a855ac6cb6239dd6862868a88e693bdc999759fdff6eca55a1e0eefd0421dc4",
+      "masterSha256": "b965671e8e031c0a9c9e1a5d160b971a096f3599f0973ab750ca5618e434beda",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Two distinct blue-gray feet, near folded wing, full tail and large orange/yellow black-tipped bill are visible. White throat and orange vent patches are present. Far wing root is hidden and exact opposing toe layout needs anatomy review. Bill highlights and large glossy eye may read overly polished for the requested natural painted style."
+    },
+    {
+      "name": "Pheasant",
+      "id": "12-pheasant",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "7099b0ef931c72b470b28d8a5777ca8ba7f1b2c6bd71fee8edc915390c420f86",
+      "finalPromptSha256": "83cd0c7e9757c9ac3c50055921e713ba13f18fc60aa3112f9ba2f19f7624c4c8",
+      "masterSha256": "14737b54f95ecf346fe58588d27668977d76faecc1e3d1fa0ff6ad2df3770eb8",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Two separate scaled legs/feet with visible spurs, attached near folded wing and complete long barred tail are visible. White neck ring, red face and black flank spots are present. Tail consists of two very thin dominant feather tips; full tail fan/root count is not independently visible. Far wing is body-occluded; preserve feather/tail ownership hold."
+    },
+    {
+      "name": "Falcon",
+      "id": "13-falcon",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "530d5fa40bf3454e58dd333718aa77d5e8f09792728cc2c4d4600f48813c36d4",
+      "finalPromptSha256": "7f334b0e55596762137545916705005f9e3630d4bfb2017186f20f1fe987d228",
+      "masterSha256": "2ae658cdd7edce1a4e0640757f2637680ab7e77feef37305236a066dec89cdf3",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "PASS",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Two separate yellow feet/talons, hooked bill with yellow cere, attached folded near wing and barred tail are visible. Cream breast carries dark streaks/bars. Far wing/root remains hidden. Near folded wing overlaps the tail and belly; visible toe tips do not independently establish every joint or opposing talon."
+    },
+    {
+      "name": "Duck",
+      "id": "14-duck",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "a2fb5a247152ab0a031d2d49fca6c8a98f230d46888a2c48cc6cc7d549c74d3e",
+      "finalPromptSha256": "e0e39cfb97ddcbcde155886366ec800ea02b1b25a0bdf2618d3c37c1264f513b",
+      "masterSha256": "32d7773a62afe13bcb43f0349ce9ed932241a32f7e27f6133d2fa56fc9245d37",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Two separate orange webbed feet, broad yellow bill, green head/white neck ring and attached folded wing with blue speculum are visible. Curled rump feather and full tail are retained. Far wing/root remains body-occluded; folded feathers overlap rump. The two feet have unequal projected heights, requiring later observed contact authoring."
+    },
+    {
+      "name": "Egret",
+      "id": "15-egret",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "2b136a918acaf56ea6197608c71c9fc0297bfbb9e66291e321049d48ff956d00",
+      "finalPromptSha256": "560a48b42c5aa60bbbb1291adb383f775104a40b904b9c1e7da9f876332385d0",
+      "masterSha256": "b169408d42640b6e4277f22220f0f96da93d606955f363c77f00ecc14fbd4d1a",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Two complete long black leg chains with visible bends/toes, S-curved neck, long yellow pointed bill and attached near folded wing are visible. White breeding plumes extend behind the body. Far wing/root is hidden and delicate trailing plumes make source ownership/key fringes uncertain. Shoulder/body feather overlap is observed, not proof of separated wing motion."
+    },
+    {
+      "name": "Stork",
+      "id": "16-stork",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "biped-bird",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "1a07d66e380daf1ffc39a66d88cd6080b823bed886b2e9be0df8b9a683dc1376",
+      "finalPromptSha256": "1cb7a78442a387e49f2931ec530eb8cf88cfe4a0509042087e6e9e00461923a5",
+      "masterSha256": "9c97f28fbf2ee0f9c0ee7f9c57e344de6171d6c2c47f16f3800d0395c03fe461",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Two separate long red leg chains with bends/toes, red pointed bill, long white neck and attached near folded wing with black flight feathers are visible. Far wing and tail base remain mostly behind near plumage. Body-feather overlap conceals upper leg roots; exact painted emergence boundaries must be authored later."
+    },
+    {
+      "name": "Arapaima",
+      "id": "17-arapaima",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "1cc7d9a880fc819b889b8e620b58b45dff0a570cc17002cfe57da5bdb01ab1c5",
+      "finalPromptSha256": "b171c114d083013c12bc911885fea329ad0e93a5e12c795480ca71eec8e4e84c",
+      "masterSha256": "54c32eeab5df4c74034ee9f9d832d29797aa139f52a80f07e3612729b2f3d438",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Complete rounded tail, posterior dorsal/anal fins, near pectoral/pelvic fins and continuous scale-covered body are visible. Rear scales/fins carry red-orange edging. Both horizontal margins are visibly narrow and require framing refusal measurement. Far paired fins/roots are not visible; reflective scales also need natural-painted style review."
+    },
+    {
+      "name": "Arowana",
+      "id": "18-arowana",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "adeaf3d348d2799ed7bdc549b85744bc5d90e70b35ccc462dc3d0ba9a2c720f5",
+      "finalPromptSha256": "11af6293813bf8f2fe470a4a55302b83f732dc14c38f0d96bccfa99aafc3bde8",
+      "masterSha256": "faa938837ccad0b1b4421350ebd22c9fc4e28e2cb17bd9788dc37eb4960a30e3",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Complete rounded tail, dorsal/anal fins, near paired-fin projections and two forward barbels are visible. Orange-red scale edges/fin rays are present. Tail and especially barbel tip margins are narrow; whole-feature framing must include barbels. Far paired fins are hidden, and metallic orange highlights read strongly glossy."
+    },
+    {
+      "name": "Blenny",
+      "id": "19-blenny",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "a98ccb0e87dc53ed9d617597d3d14a4e35eaf34192d2d0b3b89ed6443561241c",
+      "finalPromptSha256": "02fc3fb7e7e80b96fff95355885d51a951b34a8ccbea57e307d5ff8b2d3a9f29",
+      "masterSha256": "41a78853ce7994cb4bfe271c6bb87c6dda0e48ce84b033c221dcf2b7c26417f6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Continuous dorsal/anal fin roots, complete rounded tail, visible near pectoral and small ventral fins, mottled brown/white body and striped tail rays are visible. Branched head cirri are exaggerated and eye/lips read oversized and glossy; retain natural anatomy/style hold. Far paired-fin roots are not independently observed."
+    },
+    {
+      "name": "Angelfish",
+      "id": "20-angelfish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "eee790330514ad7b45d734aa02bdc7557a2629e631ed0db7401e245c16f9b7c9",
+      "finalPromptSha256": "0d29d55c42f4bba9c23ec9bf0e4df3a08b18226d909fae2966d389b034c66231",
+      "masterSha256": "2457139219d232d2e1c12e9781adde739de9f7a4086071e02df1d62c95ce7a22",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Complete disc body, tail, near pectoral fin and long dorsal/anal/pelvic extensions are visible. Strong blue/yellow vertical bands and pale blue edge stripes are present. Highly glossy metallic scale texture and unusually long fin extensions require identity/style scoring; far paired fins remain hidden. No inference of unseen roots."
+    },
+    {
+      "name": "Tuna",
+      "id": "21-tuna",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "acb22dd5a8a087044b5abb3a9e17fdad205c6f9bea4bf93dee5389e2d05a3b23",
+      "finalPromptSha256": "7fa614ac94c257303d566f2f4a19a2ad4665c3817bc2a66d3ec18dce762bfa15",
+      "masterSha256": "5f66d386506f0b464f166334904f80857ab304a6f0a9a33cb9fda91bfa9dc5fa",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Complete crescent tail, separated dorsal/anal fins, yellow finlets and near pectoral/pelvic projections are visible on a blue/silver body. Far paired-fin roots remain hidden. Highly reflective silver treatment is a style hold; exact finlet count and smaller fin roots need anatomy scoring."
+    },
+    {
+      "name": "Marlin",
+      "id": "22-marlin",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "582cd7c5ddd22e9b0517a4437bab03be183147692ee3fb3f93b67b18fc69d45c",
+      "finalPromptSha256": "725c119be4218747f0c738bdd2caa98e8dfc6feb1b064a16e8a1aeeb3ffa5bb4",
+      "masterSha256": "f171e0c9061860bc36bc39259a8384d58801a9b14df151e898928e584924e52e",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Complete pointed bill, crescent tail, high anterior dorsal fin, near pectoral and ventral fin projections are visible. Pale vertical bars cross the blue body. Bill tip is too close to right edge and must be measured. Repeated small projections along rear dorsal/ventral edge resemble tuna-like finlets, an anatomical hold for Marlin; farther-out framing cannot resolve this source detail."
+    },
+    {
+      "name": "Swordfish",
+      "id": "23-swordfish",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "b656872e4294bcd9f7d018282336f430b76292a517c22924e5503547fe2f2ad5",
+      "finalPromptSha256": "a8e3e91cfc96afc0f1f028e66aef247917a2eb75d15d706c8a3a9ca65ec83f4c",
+      "masterSha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "REFUSE",
+      "wholeOriginalFraming": "REFUSE",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Complete long flattened bill, crescent tail, tall dorsal fin and visible pectoral/anal fin projections are present on a continuous blue/silver body. Both lateral margins are visibly narrow and require refusal measurement. Small rear finlet-like projections and large underside fin near pectoral root are anatomical ambiguities; no full correct-fin-count claim."
+    },
+    {
+      "name": "Fangtooth",
+      "id": "24-fangtooth",
+      "purpose": "TARGETED_SOURCE_REPAINT",
+      "family": "fish",
+      "compiler": "UNCHANGED_PRODUCTION_CANONICAL_COMPILER",
+      "canonicalPromptSha256": "5b726aa92d6ca171041d5361b67d829091f2c693d8006053ea29ca2e663e8b4f",
+      "finalPromptSha256": "1cacd12618123af85335b3be78d2af768ebf4e2facb5a888771111de7eab3d9d",
+      "masterSha256": "9b56a2ae611ddeae2b702c4d76d40083e91bf4854b799a59936b8da8d6064ef1",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "patternStatus": "NOT_REQUIRED",
+      "automaticFraming": "PASS_FRAMING_ONLY",
+      "wholeOriginalFraming": "PASS_FRAMING_ONLY",
+      "sourceDisposition": "SOURCE_CANDIDATE_WITH_EXPLICIT_VISUAL_HOLDS",
+      "visualHolds": "Complete tail and visible dorsal/anal/near pectoral fins surround a continuous brown body; large jaw and prominent fangs are visible. Extremely armored-looking skull, very large glossy eye and exaggerated curving fangs read stylized/fantasy-like; retain explicit identity/natural-style hold. Far paired roots remain hidden."
+    }
+  ]
+}

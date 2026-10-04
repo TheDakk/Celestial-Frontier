@@ -1,0 +1,92 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Arowana",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "311290800309b30657f177f6775fbac32de90f87f5a7d97ff6fdab571b02bd6d",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "fish",
+  "authoringCreated": false,
+  "sourceHead": "22a1c36ede73fd7635373912a258533da0250e05",
+  "basePromptSha256": "adeaf3d348d2799ed7bdc549b85744bc5d90e70b35ccc462dc3d0ba9a2c720f5",
+  "batchCompilerSha256": "a51df0731fa7c90413b71639508b9d1b27e31a1d53bbc66f55761ea4a3fc3ccc",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+    "priorSources": [
+      {
+        "pilot": "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+        "id": "16-arowana",
+        "master": "audits/C198_CREATURE_SUPPLY_C_20261003/16-arowana/master.png",
+        "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/16-arowana"
+      },
+      {
+        "pilot": "audits/G2_C76_20260927/pilot.json",
+        "id": "06-arowana",
+        "master": "audits/G2_C76_20260927/06-arowana/master.png",
+        "packet": "audits/G2_C76_20260927/06-arowana"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C198_CREATURE_SUPPLY_C_20261003/pilot.json",
+    "audits/G2_C76_20260927/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Unbent horizontal side view, head right and complete tail left. Preserve every actual fin root continuously attached to the body and the named species fin inventory, finlets, dorsal separation and true tail shape. Offset paired fins only where naturally visible; no invented far fin, duplicate dorsal or generic tail substitution. Preserve real skin/scales, species markings and true bill or teeth. Entire fish including every bill, fin and tail tip stays within central half of native1254-square canvas, with about300pixels empty all around.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission",
+  "framingSuccessor": {
+    "originalId": "18-arowana",
+    "originalMaster": "audits/C203_CREATURE_SUPPLY_B_20261004/18-arowana/master.png",
+    "originalMasterSha256": "faa938837ccad0b1b4421350ebd22c9fc4e28e2cb17bd9788dc37eb4960a30e3",
+    "originalPrompt": "audits/C203_CREATURE_SUPPLY_B_20261004/18-arowana/prompt.txt",
+    "originalPromptSha256": "11af6293813bf8f2fe470a4a55302b83f732dc14c38f0d96bccfa99aafc3bde8",
+    "originalRequest": "audits/C203_CREATURE_SUPPLY_B_20261004/18-arowana/request.json",
+    "originalRequestSha256": "4c89c7c3ec9f8e1bdcc770151304c3e178a30e3d5eefe4d02f2b8f93ae41f883",
+    "originalFraming": {
+      "status": "REFUSE",
+      "bounds": {
+        "x0": 100,
+        "y0": 432,
+        "x1": 1165,
+        "y1": 786
+      },
+      "margins": {
+        "left": 100,
+        "right": 88,
+        "top": 432,
+        "bottom": 467
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "correction": "FRAMING SUCCESSOR ONLY — Arowana. The first attached image is the exact prior original, retained as a failed-margin control. Paint one new farther-out version at native 1254 x 1254 pixels. The ENTIRE animal INCLUDING every tail, bill, barbel and fin tip must fit comfortably inside the CENTRAL 60% of the canvas width and height, from pixel 251 through 1002. Leave broad empty pure magenta (#FF00FF) on all four sides. Make the subject clearly smaller in the frame; do not shorten, amputate or crop any appendage to achieve clearance. Preserve the same identity, pose, visible anatomy and natural painted treatment, with the second attached Discovery Atlas as the frozen style reference. No new scene, ground, shadow, text, border or extra anatomy. This is a new generator-painted composition successor, never a local rescale or crop. Existing anatomical/style concerns in the first original remain unaccepted; the requested change is framing only.",
+    "preparerSha256": "5a3164073e74f4defd8e4b64ba0aa2a6e7e4d7b73a458d73e9b81f9dc8199340",
+    "references": [
+      {
+        "path": "audits/C203_CREATURE_SUPPLY_B_20261004/18-arowana/master.png",
+        "sha256": "faa938837ccad0b1b4421350ebd22c9fc4e28e2cb17bd9788dc37eb4960a30e3"
+      },
+      {
+        "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+      }
+    ],
+    "attempt": 1,
+    "localRescale": false
+  }
+}

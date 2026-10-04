@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c203-primate-finalization/v1",
+  "status": "FROZEN_HELD",
+  "scope": "Only additive C203 primate audit files; C202 immutable and product unchanged by this agent.",
+  "qualifiedReferenceCount": 0,
+  "nativeRuns": 0,
+  "productEdits": 0,
+  "newImageGenerationRequests": 1,
+  "sourceHold": "Far-arm overlap visibility remained unresolved in the one painting successor.",
+  "cpu": "Terminal; no active subprocess.",
+  "privacy": {
+    "personalHomePathOccurrences": 0,
+    "symlinks": 0
+  },
+  "replay": "Each execution retains its exact bundled executable and hash. Historical input source hashes describe the source at that execution; later audit-helper corrections remain additive with their own execution bundles.",
+  "batchEndMailbox": "Read sibling TO_CODEX through C203; no new native reservation row observed."
+}

@@ -1,0 +1,94 @@
+{
+  "sourceFit": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-01/fit",
+  "sourceBindingSha256": "0bf844bc28413a96c8bbc93d1713504383008819bce2a4df6a3978545906652f",
+  "candidateBindingSha256": "a4881bb6e0f8ff5f161379f4eeeb3759d830f554958c3abb39e3263f19801dd7",
+  "sourceAtlasSha256": "d296bd2693a9a469792af9ee8e96b91e1da959cc7255118772037decd9171358",
+  "paintBoundaryPairs": [
+    [
+      "body",
+      "chest"
+    ],
+    [
+      "body",
+      "lower-neck"
+    ],
+    [
+      "body",
+      "near-wing-root"
+    ],
+    [
+      "body",
+      "far-wing-root"
+    ],
+    [
+      "body",
+      "tail"
+    ]
+  ],
+  "sourcePixelsChanged": 0,
+  "recordChanged": false,
+  "limitsChanged": false,
+  "reason": "Continuous painted torso to proximal chest/neck/wing/tail boundary only. No ties across intermediate neck or distal overlapping wing.",
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 30,
+        "distancePx": 4.242640687119208,
+        "supports": [
+          62,
+          56
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 28,
+        "distancePx": 9.486832980505254,
+        "supports": [
+          2,
+          3
+        ]
+      }
+    ],
+    "sourceBindingHash": "d51489d8169e304f4ba208ce81c7f53df8a5fc9c1b05623bbe9fd0d20b03d32a",
+    "sourceVertices": 1194,
+    "vertices": 1345,
+    "sharedSupports": 388,
+    "pins": 569,
+    "independentSurfaceParts": 18,
+    "sourceJoins": 13,
+    "excludedOverlaps": 12,
+    "observedExcludedBoundaries": 12,
+    "weldedExcludedBoundaries": 5,
+    "independentExcludedBoundaries": 7,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "chest"
+      ],
+      [
+        "body",
+        "lower-neck"
+      ],
+      [
+        "body",
+        "near-wing-root"
+      ],
+      [
+        "body",
+        "far-wing-root"
+      ],
+      [
+        "body",
+        "tail"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

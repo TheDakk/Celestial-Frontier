@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Grasshopper",
+  "masterSha256": "fb72c3a69e626fd80c47ef77256c5d95fb7c49a704a245a06ebc319a48dd937e",
+  "required": [],
+  "source": "Canonical identity requires no pigment regex feature; full-size inspection confirms green-brown chitin and mottled folded tegmina.",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Kingfisher",
+  "masterSha256": "6a54c3e8a473f6cd7bf9830e1e5f4484d3b0bf70f8c188681228dffca443a0fb",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

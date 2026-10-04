@@ -1,0 +1,16 @@
+node:fs:778
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/fit/pre-split-binding.json'
+    at Object.openSync (node:fs:778:18)
+    at Object.readFileSync (node:fs:624:35)
+    at read (file://~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs:51:37)
+    at file://~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs:53:23 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/fox-contours-01/fit/pre-split-binding.json'
+}
+
+Node.js v26.10.0

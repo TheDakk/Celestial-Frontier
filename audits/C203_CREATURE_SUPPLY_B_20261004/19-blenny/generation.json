@@ -1,0 +1,14 @@
+{
+  "id": "19-blenny",
+  "name": "Blenny",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-3dd852ac-1ab1-46c6-ad8b-1162bbfb87e3.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "41a78853ce7994cb4bfe271c6bb87c6dda0e48ce84b033c221dcf2b7c26417f6",
+  "bytes": 1361280,
+  "promptSha256": "02fc3fb7e7e80b96fff95355885d51a951b34a8ccbea57e307d5ff8b2d3a9f29",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

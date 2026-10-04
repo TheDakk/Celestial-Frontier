@@ -1,0 +1,74 @@
+{
+  "schema": "cf.c203-closed-elytra-model-diagnosis/v1",
+  "status": "MODEL_AND_SOURCE_VISUAL_HOLD",
+  "masterSha256": "e1eca972d8481b7471239b47c54598657364c06334b21be37b60fe6ea8c5e275",
+  "recordRecipeHash": "35c007f5e0e4f7882fb0748f7a72aad363204f4f1f111f7e9c4eea5bdc405f3d",
+  "observed": "Two complete hardened closed covers are visible. No exposed underlying abdomen or flight-wing surface is painted.",
+  "biology": {
+    "source": "https://qrius.si.edu/browse/object/10003763",
+    "paraphrase": "The hardened front wings (elytra) protect softer hind wings beneath them; closed covers are visible anatomy and cannot be called absent."
+  },
+  "currentContract": "Only one wingFar/wingNear control pair. Existing anatomy.hidden supports only final brachyuran leg chains; anatomy.folded supports leg IDs only. There is no closed-cover state or independent cover versus hidden-flight-wing inventory.",
+  "testedRefusals": [
+    {
+      "field": "hidden",
+      "name": "wings",
+      "error": "Hidden anatomy: unsupported hidden chain"
+    },
+    {
+      "field": "hidden",
+      "name": "wingFar",
+      "error": "Hidden anatomy: unsupported hidden chain"
+    },
+    {
+      "field": "hidden",
+      "name": "wingNear",
+      "error": "Hidden anatomy: unsupported hidden chain"
+    },
+    {
+      "field": "folded",
+      "name": "wings",
+      "error": "Anatomy inventory: invalid folded leg declaration"
+    },
+    {
+      "field": "folded",
+      "name": "wingFar",
+      "error": "Anatomy inventory: invalid folded leg declaration"
+    },
+    {
+      "field": "folded",
+      "name": "wingNear",
+      "error": "Anatomy inventory: invalid folded leg declaration"
+    }
+  ],
+  "rejectedShortcuts": [
+    "Do not mark actual covers or hidden-but-present wings absent.",
+    "Do not invent hidden wing/abdomen landmarks or repaint missing surfaces locally.",
+    "Assigning every cover pixel to thorax/body without a truthful model declaration would make the wing tracks visually vacuous and would not establish the requested reference.",
+    "Material overrides select physical material and secondary behavior; they do not provide a source-presence or closed-wing action contract."
+  ],
+  "futureOptions": [
+    "Explicit reviewed closed-cover/hidden-flight-wing inventory and action eligibility with meaningful outcome controls.",
+    "Separately generated biologically real open-cover source that actually exposes all required moving surfaces, with exact anatomy review."
+  ],
+  "sourceOwners": [
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "d0d94cb62976f12357b91e66c5e661483a72224d8a4e950ba6ab6a06b852d4c3"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "sha256": "a3cef7edff31f86a70f727f1433eeaabcabe2a1626929e65fbcbc0715b80a328"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "01fb429e30a2ce63d3fd7fc0071db172e99346a2e965e0646f349f70a8cf4690"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "d5ce727eebbcd6c54a6996454f818df709e969b52aa9f09eb9d679b0c9722986"
+    }
+  ],
+  "qualityAccepted": false,
+  "qualifiedReferencePool": []
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Arowana",
+  "masterSha256": "faa938837ccad0b1b4421350ebd22c9fc4e28e2cb17bd9788dc37eb4960a30e3",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Complete rounded tail, dorsal/anal fins, near paired-fin projections and two forward barbels are visible. Orange-red scale edges/fin rays are present. Tail and especially barbel tip margins are narrow; whole-feature framing must include barbels. Far paired fins are hidden, and metallic orange highlights read strongly glossy.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 100,
+      "y0": 432,
+      "x1": 1165,
+      "y1": 786
+    },
+    "margins": {
+      "left": 100,
+      "right": 88,
+      "top": 432,
+      "bottom": 467
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

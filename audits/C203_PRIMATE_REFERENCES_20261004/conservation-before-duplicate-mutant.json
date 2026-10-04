@@ -1,0 +1,50 @@
+{
+  "schema": "cf.c203-primate-source-conservation/v1",
+  "status": "PASS_SOURCE_CONTROLS",
+  "rows": [
+    {
+      "source": "audits/C202_PRIMATE_REFERENCES_20261004/17-gorilla-observed-joins",
+      "candidate": "audits/C203_PRIMATE_REFERENCES_20261004/03-gorilla-observed-joins",
+      "sourceOriginalSha256": "78da7b6d2ad46eaa6a452cdb71a2c08ce75f898be89e5c234ff6ff72f88fc3a5",
+      "keyedRGBAHash": "f2e20a2933add420a110ec5f9be0dc80a9a62a3059599ea59f2dc3a06347a956",
+      "changedRGBAChannels": 0,
+      "landmarksGeometryMaterialsPresenceUnchanged": true,
+      "anatomicalOwnerChanges": {
+        "armNearShoulder -> armNearElbow": 57510,
+        "armFarShoulder -> armFarElbow": 4284,
+        "armNearElbow -> armNearHand": 34357,
+        "armFarElbow -> armFarHand": 19737
+      },
+      "allNonArmOwnersUnchanged": true,
+      "controls": [
+        "wrong head owner rejected",
+        "one visible RGB channel mutation rejected",
+        "duplicate source paint rejected"
+      ],
+      "d28AutomaticRepairApplied": false,
+      "qualification": false
+    },
+    {
+      "source": "audits/C202_PRIMATE_REFERENCES_20261004/15-howler-observed-joins",
+      "candidate": "audits/C203_PRIMATE_REFERENCES_20261004/04-howler-observed-joins",
+      "sourceOriginalSha256": "5ebd7622ff46f0a5b88e60b114b4644634e3c0d00cccc5094f4ddc8e3d0848ee",
+      "keyedRGBAHash": "8b9d832c20ed62d860476e1c4520b3d3dbb42253873c90452a8e106d7fba1c58",
+      "changedRGBAChannels": 0,
+      "landmarksGeometryMaterialsPresenceUnchanged": true,
+      "anatomicalOwnerChanges": {
+        "armNearShoulder -> armNearElbow": 34229,
+        "armFarShoulder -> armFarElbow": 3412,
+        "armNearElbow -> armNearHand": 13276,
+        "armFarElbow -> armFarHand": 6762
+      },
+      "allNonArmOwnersUnchanged": true,
+      "controls": [
+        "wrong head owner rejected",
+        "one visible RGB channel mutation rejected",
+        "duplicate source paint rejected"
+      ],
+      "d28AutomaticRepairApplied": false,
+      "qualification": false
+    }
+  ]
+}

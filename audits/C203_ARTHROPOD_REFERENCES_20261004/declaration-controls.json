@@ -1,0 +1,63 @@
+{
+  "schema": "cf.c203-declaration-controls/v1",
+  "status": "PASS",
+  "rows": [
+    {
+      "name": "null",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "empty",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "array",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "one step",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "three steps",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "fractional",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "string",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "missing return",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "extra undeclared dodge",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "unknown action",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "inherited",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "symbol",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "invalid swing direction",
+      "status": "REFUSED_AS_REQUIRED"
+    },
+    {
+      "name": "valid exact six-socket declaration",
+      "status": "PASS"
+    }
+  ],
+  "scope": "Audit-only stance mutants injected after exact source socket validation; original numerical guards untouched"
+}

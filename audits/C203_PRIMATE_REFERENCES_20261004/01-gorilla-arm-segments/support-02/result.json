@@ -1,0 +1,341 @@
+{
+  "schema": "cf.c203-primate-forehand-probe/v1",
+  "mode": "support",
+  "fit": "audits/C203_PRIMATE_REFERENCES_20261004/01-gorilla-arm-segments/fit01",
+  "sourceHands": [
+    {
+      "joint": "armNearHand",
+      "hull": [
+        [
+          758,
+          935
+        ],
+        [
+          766,
+          909
+        ],
+        [
+          769,
+          908
+        ],
+        [
+          777,
+          906
+        ],
+        [
+          794,
+          902
+        ],
+        [
+          798,
+          902
+        ],
+        [
+          802,
+          903
+        ],
+        [
+          828,
+          910
+        ],
+        [
+          839,
+          913
+        ],
+        [
+          846,
+          915
+        ],
+        [
+          849,
+          916
+        ],
+        [
+          863,
+          930
+        ],
+        [
+          867,
+          949
+        ],
+        [
+          868,
+          954
+        ],
+        [
+          868,
+          961
+        ],
+        [
+          867,
+          966
+        ],
+        [
+          866,
+          968
+        ],
+        [
+          862,
+          973
+        ],
+        [
+          859,
+          974
+        ],
+        [
+          840,
+          977
+        ],
+        [
+          814,
+          978
+        ],
+        [
+          802,
+          978
+        ],
+        [
+          777,
+          976
+        ],
+        [
+          772,
+          975
+        ],
+        [
+          769,
+          974
+        ],
+        [
+          767,
+          973
+        ],
+        [
+          764,
+          970
+        ],
+        [
+          762,
+          967
+        ],
+        [
+          760,
+          961
+        ],
+        [
+          758,
+          954
+        ]
+      ],
+      "positiveTexels": 6739
+    },
+    {
+      "joint": "armFarHand",
+      "hull": [
+        [
+          944,
+          868
+        ],
+        [
+          945,
+          867
+        ],
+        [
+          950,
+          864
+        ],
+        [
+          962,
+          857
+        ],
+        [
+          983,
+          845
+        ],
+        [
+          985,
+          844
+        ],
+        [
+          988,
+          844
+        ],
+        [
+          1022,
+          854
+        ],
+        [
+          1025,
+          855
+        ],
+        [
+          1027,
+          856
+        ],
+        [
+          1038,
+          938
+        ],
+        [
+          1038,
+          950
+        ],
+        [
+          1037,
+          952
+        ],
+        [
+          1035,
+          955
+        ],
+        [
+          1032,
+          958
+        ],
+        [
+          1030,
+          959
+        ],
+        [
+          1027,
+          960
+        ],
+        [
+          1021,
+          961
+        ],
+        [
+          1007,
+          963
+        ],
+        [
+          983,
+          963
+        ],
+        [
+          967,
+          960
+        ],
+        [
+          961,
+          957
+        ],
+        [
+          958,
+          955
+        ],
+        [
+          950,
+          947
+        ],
+        [
+          948,
+          944
+        ],
+        [
+          947,
+          942
+        ],
+        [
+          945,
+          934
+        ],
+        [
+          944,
+          872
+        ]
+      ],
+      "positiveTexels": 8662
+    }
+  ],
+  "scope": "Audit-only 17-sample pilot, conservative whole positive-alpha lower arm/hand bounds, source-coordinate pixels; not a native qualification.",
+  "rows": [
+    {
+      "fraction": 0,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"target outside two-bone reach\"},{\"index\":12,\"error\":\"target outside two-bone reach\"},{\"index\":13,\"error\":\"target outside two-bone reach\"},{\"index\":14,\"error\":\"target outside two-bone reach\"},{\"index\":15,\"error\":\"target outside two-bone reach\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.0625,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"target outside two-bone reach\"},{\"index\":12,\"error\":\"target outside two-bone reach\"},{\"index\":13,\"error\":\"target outside two-bone reach\"},{\"index\":14,\"error\":\"target outside two-bone reach\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.125,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"target outside two-bone reach\"},{\"index\":12,\"error\":\"target outside two-bone reach\"},{\"index\":13,\"error\":\"target outside two-bone reach\"},{\"index\":14,\"error\":\"target outside two-bone reach\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.1875,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"target outside two-bone reach\"},{\"index\":12,\"error\":\"target outside two-bone reach\"},{\"index\":13,\"error\":\"target outside two-bone reach\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.25,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"target outside two-bone reach\"},{\"index\":12,\"error\":\"target outside two-bone reach\"},{\"index\":13,\"error\":\"target outside two-bone reach\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.3125,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"target outside two-bone reach\"},{\"index\":12,\"error\":\"target outside two-bone reach\"},{\"index\":13,\"error\":\"other painted hand contour below support\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.375,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"target outside two-bone reach\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":13,\"error\":\"other painted hand contour below support\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.4375,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"target outside two-bone reach\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":13,\"error\":\"other painted hand contour below support\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.5,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"target outside two-bone reach\"},{\"index\":9,\"error\":\"target outside two-bone reach\"},{\"index\":10,\"error\":\"target outside two-bone reach\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":13,\"error\":\"other painted hand contour below support\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.5625,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"target outside two-bone reach\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":13,\"error\":\"other painted hand contour below support\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"other painted hand contour below support\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.625,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":13,\"error\":\"other painted hand contour below support\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"other painted hand contour below support\"},{\"index\":16,\"error\":\"other painted hand contour below support\"},{\"index\":17,\"error\":\"other painted hand contour below support\"},{\"index\":18,\"error\":\"other painted hand contour below support\"},{\"index\":19,\"error\":\"original joint limit armNearHand -61.28492813437953\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.6875,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":13,\"error\":\"other painted hand contour below support\"},{\"index\":14,\"error\":\"other painted hand contour below support\"},{\"index\":15,\"error\":\"original joint limit armNearHand -60.314922168457024\"},{\"index\":16,\"error\":\"original joint limit armNearHand -61.18203227682407\"},{\"index\":17,\"error\":\"original joint limit armNearHand -63.48868156508684\"},{\"index\":18,\"error\":\"original joint limit armNearHand -64.20054369304881\"},{\"index\":19,\"error\":\"original joint limit armNearHand -67.76555571047254\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.75,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"other painted hand contour below support\"},{\"index\":13,\"error\":\"original joint limit armNearHand -60.86351598920226\"},{\"index\":14,\"error\":\"original joint limit armNearHand -63.48718333160423\"},{\"index\":15,\"error\":\"original joint limit armNearHand -65.40930402063343\"},{\"index\":16,\"error\":\"original joint limit armNearHand -66.23324420080242\"},{\"index\":17,\"error\":\"original joint limit armNearHand -68.44654266380125\"},{\"index\":18,\"error\":\"original joint limit armNearHand -69.15548608842046\"},{\"index\":19,\"error\":\"original joint limit armNearHand -72.76321939433639\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.8125,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"original joint limit armNearHand -63.159679604360875\"},{\"index\":13,\"error\":\"original joint limit armNearHand -64.8818304316487\"},{\"index\":14,\"error\":\"original joint limit armNearHand -67.36846181341856\"},{\"index\":15,\"error\":\"original joint limit armNearHand -69.20636939034742\"},{\"index\":16,\"error\":\"original joint limit armNearHand -70.0013263410264\"},{\"index\":17,\"error\":\"original joint limit armNearHand -72.151740737786\"},{\"index\":18,\"error\":\"original joint limit armNearHand -72.85871344343849\"},{\"index\":19,\"error\":\"original joint limit armNearHand -76.49526468255063\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.875,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"other painted hand contour below support\"},{\"index\":12,\"error\":\"original joint limit armNearHand -66.01061457339624\"},{\"index\":13,\"error\":\"original joint limit armNearHand -67.65966235489779\"},{\"index\":14,\"error\":\"original joint limit armNearHand -70.05840709401275\"},{\"index\":15,\"error\":\"original joint limit armNearHand -71.84203168625817\"},{\"index\":16,\"error\":\"original joint limit armNearHand -72.61825966990696\"},{\"index\":17,\"error\":\"original joint limit armNearHand -74.7279583677168\"},{\"index\":18,\"error\":\"original joint limit armNearHand -75.4336533439402\"},{\"index\":19,\"error\":\"original joint limit armNearHand -79.08887840314104\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 0.9375,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"original joint limit armNearHand -61.13466664798758\"},{\"index\":12,\"error\":\"original joint limit armNearHand -67.68489855163803\"},{\"index\":13,\"error\":\"original joint limit armNearHand -69.29306169299184\"},{\"index\":14,\"error\":\"original joint limit armNearHand -71.64248862120378\"},{\"index\":15,\"error\":\"original joint limit armNearHand -73.39556609332267\"},{\"index\":16,\"error\":\"original joint limit armNearHand -74.16123989638247\"},{\"index\":17,\"error\":\"original joint limit armNearHand -76.24796924984031\"},{\"index\":18,\"error\":\"original joint limit armNearHand -76.95294286047127\"},{\"index\":19,\"error\":\"original joint limit armNearHand -80.61870727617901\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    },
+    {
+      "fraction": 1,
+      "status": "REFUSED",
+      "error": "Forehand support: armNearHand no unchanged-limit candidate [{\"index\":0,\"error\":\"support reverses observed bend\"},{\"index\":1,\"error\":\"support reverses observed bend\"},{\"index\":2,\"error\":\"support reverses observed bend\"},{\"index\":3,\"error\":\"support reverses observed bend\"},{\"index\":4,\"error\":\"support reverses observed bend\"},{\"index\":5,\"error\":\"support reverses observed bend\"},{\"index\":6,\"error\":\"support reverses observed bend\"},{\"index\":7,\"error\":\"other painted hand contour below support\"},{\"index\":8,\"error\":\"other painted hand contour below support\"},{\"index\":9,\"error\":\"other painted hand contour below support\"},{\"index\":10,\"error\":\"other painted hand contour below support\"},{\"index\":11,\"error\":\"original joint limit armNearHand -61.74750833684633\"},{\"index\":12,\"error\":\"original joint limit armNearHand -68.23728150999509\"},{\"index\":13,\"error\":\"original joint limit armNearHand -69.83226827563752\"},{\"index\":14,\"error\":\"original joint limit armNearHand -72.16577700419882\"},{\"index\":15,\"error\":\"original joint limit armNearHand -73.9089823523253\"},{\"index\":16,\"error\":\"original joint limit armNearHand -74.6712431606831\"},{\"index\":17,\"error\":\"original joint limit armNearHand -76.75054107926783\"},{\"index\":18,\"error\":\"original joint limit armNearHand -77.45528122218109\"},{\"index\":19,\"error\":\"original joint limit armNearHand -81.12445619215258\"},{\"index\":20,\"error\":\"support reverses observed bend\"},{\"index\":21,\"error\":\"support reverses observed bend\"},{\"index\":22,\"error\":\"support reverses observed bend\"},{\"index\":23,\"error\":\"support reverses observed bend\"},{\"index\":24,\"error\":\"support reverses observed bend\"},{\"index\":25,\"error\":\"support reverses observed bend\"},{\"index\":26,\"error\":\"support reverses observed bend\"},{\"index\":27,\"error\":\"support reverses observed bend\"},{\"index\":28,\"error\":\"support reverses observed bend\"},{\"index\":29,\"error\":\"support reverses observed bend\"}]"
+    }
+  ],
+  "native": false,
+  "qualified": false
+}

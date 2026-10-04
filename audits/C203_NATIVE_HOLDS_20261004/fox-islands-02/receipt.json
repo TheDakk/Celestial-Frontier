@@ -1,0 +1,268 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-02/fit",
+  "sourceMasterSha256": "1c86821df3f5d61235f6de666b2d34ee42df20e9e8a0fde7b60e7504dbd5261f",
+  "keyedRgbaSha256": "2c66d111e7a8bdced4c9451668ef7b5f2e9eedde2f15c9ed80979277e210b333",
+  "remainder": "spine",
+  "remainderPixels": 34991,
+  "movedPixels": 10281,
+  "islands": [
+    {
+      "pixels": 75,
+      "to": "ear-near-tip",
+      "border": {
+        "ear-near-tip": 15,
+        "head": 14
+      }
+    },
+    {
+      "pixels": 712,
+      "to": "head",
+      "border": {
+        "head": 40,
+        "neck": 37,
+        "chest": 13
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 2,
+      "to": "chest",
+      "border": {
+        "chest": 3
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck",
+      "border": {
+        "neck": 1
+      }
+    },
+    {
+      "pixels": 66,
+      "to": "neck",
+      "border": {
+        "neck": 24
+      }
+    },
+    {
+      "pixels": 59,
+      "to": "neck",
+      "border": {
+        "neck": 17,
+        "chest": 7
+      }
+    },
+    {
+      "pixels": 1174,
+      "to": "tail2",
+      "border": {
+        "tail2": 116,
+        "tail1": 41
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "chest",
+      "border": {
+        "chest": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 9,
+      "to": "tail1",
+      "border": {
+        "hind-near-knee": 5,
+        "tail1": 8
+      }
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 6899,
+      "to": "tail2",
+      "border": {
+        "tail3": 67,
+        "tail2": 265,
+        "tail1": 47
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "tail2",
+      "border": {
+        "tail2": 1
+      }
+    },
+    {
+      "pixels": 18,
+      "to": "tail2",
+      "border": {
+        "tail2": 4
+      }
+    },
+    {
+      "pixels": 917,
+      "to": "tail2",
+      "border": {
+        "tail3": 25,
+        "tail2": 86
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "hind-far-knee",
+      "border": {
+        "hind-far-knee": 2,
+        "hind-far-root": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-knee",
+      "border": {
+        "hind-far-knee": 2
+      }
+    },
+    {
+      "pixels": 103,
+      "to": "fore-far-knee",
+      "border": {
+        "fore-far-knee": 29,
+        "chest": 7
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-knee",
+      "border": {
+        "fore-far-knee": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 131,
+      "to": "fore-far-ankle",
+      "border": {
+        "fore-far-ankle": 41,
+        "fore-far-knee": 5
+      }
+    },
+    {
+      "pixels": 27,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-paw": 7,
+        "fore-near-ankle": 12
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 19
+      }
+    },
+    {
+      "pixels": 53,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 19
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "c203-red-fox-whole-head-body-contours",
+    "parts": 30,
+    "atlasSize": {
+      "width": 1594,
+      "height": 1023
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 28,
+        "distancePx": 6.80073525436772,
+        "supports": [
+          515
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 54,
+        "distancePx": 5.556977595779775,
+        "supports": [
+          830,
+          831
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 37,
+        "distancePx": 6.403124237432834,
+        "supports": [
+          220
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 61,
+        "distancePx": 6.000000000000031,
+        "supports": [
+          615,
+          607
+        ]
+      }
+    ],
+    "sourceBindingHash": "93d165acc6f750370e634b3f8114e60c66df43daff1e043c317a33526db01a14",
+    "sourceVertices": 1428,
+    "vertices": 1590,
+    "sharedSupports": 553,
+    "pins": 75,
+    "independentSurfaceParts": 30,
+    "sourceJoins": 40,
+    "excludedOverlaps": 9,
+    "observedExcludedBoundaries": 9,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 9,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "e2e9bb10cd8484ab99440e7bbb059af5220f1158",
+  "helperSha256": "c2687fcebe9c238066c5461a0fd26b8ca003e694b7e03068594a25ed1c0591cc",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/master.png",
+      "sha256": "73db555f6f0465d134f9f5864e0e30a67774ee7845b4970e34ab634477974b68"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/authoring.json",
+      "sha256": "ee279c66d174203fb7c668f985a876d0dc808bc9ce109afd34ce482946e81c9d"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/subject-source.json",
+      "sha256": "5c12de6316a7b223a6363ea4a274c14a07278b2bf7df86acb347ed076caaabc3"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "d050718d53700d4d6a9230d055b04f937997bc2f070e19062f379d118104f5bc",
+  "bindingHash": "e4791885157329cc95a078b42d9d5e9409db82ff8ca5bf0e95a7fb50b6e950f4",
+  "contactEndpoints": [
+    "legFrontFarFoot",
+    "legFrontNearFoot",
+    "legMidFarFoot",
+    "legMidNearFoot",
+    "legHindFarFoot",
+    "legHindNearFoot"
+  ],
+  "shapeJoints": [
+    "legFrontFarFoot",
+    "legMidFarFoot",
+    "legHindFarFoot",
+    "legFrontNearFoot",
+    "legMidNearFoot",
+    "legHindNearFoot",
+    "legFrontFarKnee",
+    "legMidFarKnee",
+    "legHindFarKnee",
+    "legFrontNearKnee",
+    "legMidNearKnee",
+    "legHindNearKnee",
+    "antennaFar",
+    "antennaNear",
+    "mandible",
+    "head",
+    "abdomen",
+    "wingFar",
+    "wingNear",
+    "thorax"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/master.png",
+      "sha256": "73db555f6f0465d134f9f5864e0e30a67774ee7845b4970e34ab634477974b68",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/authoring.json",
+      "sha256": "ee279c66d174203fb7c668f985a876d0dc808bc9ce109afd34ce482946e81c9d",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/subject-source.json",
+      "sha256": "5c12de6316a7b223a6363ea4a274c14a07278b2bf7df86acb347ed076caaabc3",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_ARTHROPOD_REFERENCES_20261004/01-grasshopper-bent-dorsal/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

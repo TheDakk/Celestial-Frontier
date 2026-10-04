@@ -1,0 +1,185 @@
+{
+  "id": "17-arapaima",
+  "name": "Arapaima",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "54c32eeab5df4c74034ee9f9d832d29797aa139f52a80f07e3612729b2f3d438",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 25826,
+    "coreRadius": 23,
+    "bodyBox": {
+      "x0": 21,
+      "y0": 161,
+      "x1": 398,
+      "y1": 247
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0147,
+        "pixels": 380,
+        "box": {
+          "x0": 70,
+          "y0": 155,
+          "x1": 125,
+          "y1": 181
+        },
+        "attach": {
+          "x": 96,
+          "y": 163.5,
+          "relX": 0.2,
+          "relY": 0.03
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.1
+        },
+        "class": "rear",
+        "length": 33.9
+      },
+      {
+        "k": 1,
+        "frac": 0.1157,
+        "pixels": 2988,
+        "box": {
+          "x0": 23,
+          "y0": 172,
+          "x1": 81,
+          "y1": 233
+        },
+        "attach": {
+          "x": 63.5,
+          "y": 201.5,
+          "relX": 0.11,
+          "relY": 0.47
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.08
+        },
+        "class": "rear",
+        "length": 51.3
+      },
+      {
+        "k": 2,
+        "frac": 0.063,
+        "pixels": 1628,
+        "box": {
+          "x0": 343,
+          "y0": 186,
+          "x1": 396,
+          "y1": 231
+        },
+        "attach": {
+          "x": 351.7,
+          "y": 208.4,
+          "relX": 0.88,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.09
+        },
+        "class": "front",
+        "length": 49.7
+      },
+      {
+        "k": 3,
+        "frac": 0.016,
+        "pixels": 413,
+        "box": {
+          "x0": 74,
+          "y0": 221,
+          "x1": 128,
+          "y1": 252
+        },
+        "attach": {
+          "x": 98.3,
+          "y": 242.7,
+          "relX": 0.21,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": -0.96,
+          "y": -0.26
+        },
+        "class": "rear",
+        "length": 36.7
+      },
+      {
+        "k": 4,
+        "frac": 0.0217,
+        "pixels": 560,
+        "box": {
+          "x0": 174,
+          "y0": 238,
+          "x1": 209,
+          "y1": 262
+        },
+        "attach": {
+          "x": 195.5,
+          "y": 239,
+          "relX": 0.46,
+          "relY": 0.91
+        },
+        "dir": {
+          "x": -0.65,
+          "y": 0.76
+        },
+        "class": "limb-down",
+        "length": 31.5
+      },
+      {
+        "k": 5,
+        "frac": 0.0115,
+        "pixels": 298,
+        "box": {
+          "x0": 266,
+          "y0": 241,
+          "x1": 299,
+          "y1": 254
+        },
+        "attach": {
+          "x": 282.5,
+          "y": 241,
+          "relX": 0.69,
+          "relY": 0.93
+        },
+        "dir": {
+          "x": -0.45,
+          "y": 0.89
+        },
+        "class": "limb-down",
+        "length": 21
+      }
+    ],
+    "byClass": {
+      "rear": 3,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 174,
+        "x1": 192,
+        "cx": 182.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

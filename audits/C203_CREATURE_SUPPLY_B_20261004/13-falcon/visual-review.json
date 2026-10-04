@@ -1,0 +1,28 @@
+{
+  "name": "Falcon",
+  "masterSha256": "2ae658cdd7edce1a4e0640757f2637680ab7e77feef37305236a066dec89cdf3",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two separate yellow feet/talons, hooked bill with yellow cere, attached folded near wing and barred tail are visible. Cream breast carries dark streaks/bars. Far wing/root remains hidden. Near folded wing overlaps the tail and belly; visible toe tips do not independently establish every joint or opposing talon.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 226,
+      "y0": 330,
+      "x1": 1020,
+      "y1": 893
+    },
+    "margins": {
+      "left": 226,
+      "right": 233,
+      "top": 330,
+      "bottom": 360
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

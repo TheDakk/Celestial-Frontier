@@ -1,0 +1,148 @@
+{
+  "schema": "cf.c203-socket-lift-contact-proof/v1",
+  "scope": "Source-bound pure contact outcomes; no mesh/native/visual qualification",
+  "recordRecipeHash": "35c007f5e0e4f7882fb0748f7a72aad363204f4f1f111f7e9c4eea5bdc405f3d",
+  "bindingHash": "48894731746cbc796cce25ac557182315bffd5111febef9abb83f31c7b01449a",
+  "inputs": [
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/record.json",
+      "sha256": "cdd289a3e019ecee0985c3748fc856a3e7e0536ff6167ff113fecf9ae6eabfe3"
+    },
+    {
+      "path": "audits/C202_ARTHROPOD_REFERENCES_20261004/11-beetle-relaxed-legs/fit01/binding.json",
+      "sha256": "fe1900236651e493a6d56e0fea2ce989f3b63319dd9c9ffb3ed5e3f89d246512"
+    }
+  ],
+  "definition": {
+    "anatomyModel": "insect-observed-sockets-v1",
+    "swingLift": null
+  },
+  "modes": [
+    {
+      "gain": 1,
+      "travel": "solver",
+      "checked": 376,
+      "total": 481,
+      "maxCompression": 0.027649566511839696,
+      "compressionLimit": 0.02813462226242946,
+      "maxPaintErrorPx": 0.04281324015134265,
+      "refusal": {
+        "ms": 352.5,
+        "error": "Error: Contact: hit@352.5 exceeds scale compression bound"
+      }
+    },
+    {
+      "gain": 1,
+      "travel": "stage",
+      "checked": 481,
+      "total": 481,
+      "maxCompression": 0,
+      "compressionLimit": 0.02813462226242946,
+      "maxPaintErrorPx": 0.000012010328119394573,
+      "refusal": null
+    },
+    {
+      "gain": 0,
+      "travel": "solver",
+      "checked": 49,
+      "total": 481,
+      "maxCompression": 0,
+      "compressionLimit": 0.02813462226242946,
+      "maxPaintErrorPx": 0.014830409494958325,
+      "refusal": {
+        "ms": 45.9375,
+        "error": "Error: Contact: hit@45.9375 legMidFar RangeError: target outside two-bone reach"
+      }
+    },
+    {
+      "gain": 0,
+      "travel": "stage",
+      "checked": 481,
+      "total": 481,
+      "maxCompression": 0,
+      "compressionLimit": 0.02813462226242946,
+      "maxPaintErrorPx": 0,
+      "refusal": null
+    }
+  ],
+  "swingDirections": [
+    {
+      "joint": "legFrontNearFoot",
+      "ms": 250,
+      "delta": -0.012452497589683698,
+      "toward": -1,
+      "towardSocket": true
+    },
+    {
+      "joint": "legMidFarFoot",
+      "ms": 250,
+      "delta": -0.013242102746901768,
+      "toward": 1,
+      "towardSocket": false
+    },
+    {
+      "joint": "legHindNearFoot",
+      "ms": 250,
+      "delta": -0.013317184168003315,
+      "toward": -1,
+      "towardSocket": true
+    },
+    {
+      "joint": "legFrontFarFoot",
+      "ms": 750,
+      "delta": -0.010545124193080402,
+      "toward": 1,
+      "towardSocket": false
+    },
+    {
+      "joint": "legMidNearFoot",
+      "ms": 750,
+      "delta": -0.01476118204009802,
+      "toward": -1,
+      "towardSocket": true
+    },
+    {
+      "joint": "legHindFarFoot",
+      "ms": 750,
+      "delta": -0.013350062194249002,
+      "toward": 1,
+      "towardSocket": false
+    }
+  ],
+  "legacyOutputSha256": "7eac35b2c2c79b8bef02d399ab83040fe9aebac7ea0f8cdb8c09ab2683a80a51",
+  "controls": [
+    {
+      "name": "missing observed socket refuses; no legacy fallback",
+      "status": "PASS"
+    },
+    {
+      "name": "extra observed socket refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "nonfinite observed socket refuses",
+      "status": "PASS"
+    },
+    {
+      "name": "legacy insect does not acquire lift declaration",
+      "status": "PASS"
+    },
+    {
+      "name": "all six complete source chains observed during swing",
+      "status": "PASS"
+    },
+    {
+      "name": "old screen-up mutant exposes wrong-direction far-foot lift",
+      "status": "PASS"
+    },
+    {
+      "name": "unreachable displacement remains a refusal",
+      "status": "PASS"
+    },
+    {
+      "name": "record and paint binding never mutated",
+      "status": "PASS"
+    }
+  ],
+  "qualifiedReferencePool": []
+}

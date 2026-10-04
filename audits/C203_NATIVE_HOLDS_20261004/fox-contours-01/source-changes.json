@@ -1,0 +1,13 @@
+{
+  "source": "audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01",
+  "changedOwners": [
+    "root",
+    "head",
+    "neck",
+    "ear-near-root",
+    "ear-far-root"
+  ],
+  "scope": "Complete observed crown/nape/ear-root contour and remove accidental interior root-owned rectangle. No source pixel/landmark/material/limit change. Existing failed original fit remains.",
+  "native": false,
+  "qualityAccepted": false
+}

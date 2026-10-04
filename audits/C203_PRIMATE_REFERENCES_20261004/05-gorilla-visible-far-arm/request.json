@@ -1,0 +1,23 @@
+{
+  "schema": "cf.c203-primate-source-edit-request/v1",
+  "intent": "One focused far-arm visibility edit; retain predecessors, no fallback or broad regeneration loop",
+  "tool": "built-in image_gen",
+  "actualImageInput": {
+    "path": "audits/C202_PRIMATE_REFERENCES_20261004/04-gorilla-side-view/master.png",
+    "sha256": "78da7b6d2ad46eaa6a452cdb71a2c08ce75f898be89e5c234ff6ff72f88fc3a5",
+    "role": "edit target with inherited approved hand"
+  },
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+    "attached": false
+  },
+  "basePrompt": "audits/C202_PRIMATE_REFERENCES_20261004/04-gorilla-side-view/prompt.sent.txt",
+  "basePromptSha256": "3b78a95c6087bb8a3341286dc4155d00310509e6dc71a4b2fb96419b125e40a8",
+  "sentPromptSha256": "5d59d1950f1fb4874f980dee066313de41b6fcfaa38d0bc715792473467c5456",
+  "onlySubjectChanged": true,
+  "prefixSha256": "df88afb14ac482b1a0f735b15c4ea22cc3e3cd83e0af0e5845adfc3522e95283",
+  "suffixSha256": "49b8bee151b78f1e99cee0600e828077e3e395c7b6526a0946dda7b706ff12fe",
+  "transparentBackground": false,
+  "qualified": false
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "5bb1c3b52fcb463feb3ff154e486f01d34c9a3dca4d484ee8d0485765e221ba1",
+  "cutoutSha256": "5ebd7622ff46f0a5b88e60b114b4644634e3c0d00cccc5094f4ddc8e3d0848ee",
+  "keyedRgbaSha256": "a002b3260aff5cb758d8b6706e3571af986547b478b9666c713699dd7413007d",
+  "labelsFile": "labels.png",
+  "labelsSha256": "440872d887b3afda6d8bcd4603f6ffb0f2f051bdeef7c2874e5f895814d03301",
+  "parts": [
+    {
+      "id": "near-hand",
+      "joint": "armNearHand",
+      "layer": "near"
+    },
+    {
+      "id": "far-hand",
+      "joint": "armFarHand",
+      "layer": "far"
+    },
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearHip",
+      "layer": "near"
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarHip",
+      "layer": "far"
+    },
+    {
+      "id": "near-upper-arm",
+      "joint": "armNearElbow",
+      "layer": "near"
+    },
+    {
+      "id": "far-upper-arm",
+      "joint": "armFarElbow",
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near"
+    },
+    {
+      "id": "tail-tip",
+      "joint": "tail2",
+      "layer": "near"
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail1",
+      "layer": "near"
+    },
+    {
+      "id": "tail-root",
+      "joint": "tail0",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "5bb64da23345e1c551004c13ed35a9ab7b9cc9729b26368915cf818ed903d1c1"
+}

@@ -1,0 +1,330 @@
+{
+  "families": [
+    {
+      "id": "quadruped",
+      "contractSha256": "0ece4143612c9c6aba19ce07e32559156050c0bdc6dff19ff3dcc15f913a50d4",
+      "actionsSha256": "34bb42de9a50c45eb3dbc501fb2f841418ce56ba803ed92c29f3bf32e281ea75"
+    },
+    {
+      "id": "hopper",
+      "contractSha256": "92dc75a32cb808e2b84004ab1f86f8dfb8767a36b0e71d5f1b8e1d57ff3a59c3",
+      "actionsSha256": "2042b009a7e9e506917ef31329768a7db5940f7face4017a4876fec935ad8e95"
+    },
+    {
+      "id": "biped-bird",
+      "contractSha256": "88f237027c0953fce2f2ed43e33210bbf9586756d4a5dd4bf795d5f242ee5764",
+      "actionsSha256": "1455fae209d5a4a9dd04a687aa07c57ca2a2a3dac63409fa204a40e3932509e1"
+    },
+    {
+      "id": "fish",
+      "contractSha256": "e6cf4f7eb78b527ce89d3bc3dc35b296e797c85e56367cf43faf13749983a6fd",
+      "actionsSha256": "bc1a0d556fb71ba7bc446403a5b7dbb55a426a08bfbb23cce532288a71f5fdbd"
+    },
+    {
+      "id": "insect",
+      "contractSha256": "3c15b6df775bc9d6172ce3a6d7e40ab2638706b90db33fabd8b5f4d5f5573cde",
+      "actionsSha256": "4bb12cd1c12a4aadee184ba5517825da9b9330b8215522ca3efa8fc550996a6d"
+    },
+    {
+      "id": "serpent",
+      "contractSha256": "5eee58a0e382170a07cbc582cb92c32f7a20ddaa48061a40124c1439aa1dc673",
+      "actionsSha256": "9009d9f9f0dfa7b4c662efd79b9cba8596f627f3ae2dfed81efe58f46dd5f3e5"
+    },
+    {
+      "id": "arachnid",
+      "contractSha256": "0226d0f43ab161e9088e91d9671e2a4e7a07106e6dc90523e0745bd0cf3ffd9b",
+      "actionsSha256": "1c35f94168116a0d4f6ef2d53fc3efb911931f02731cf42fe88f2b00228d08b1"
+    },
+    {
+      "id": "radial",
+      "contractSha256": "6f94669b01f0337475014930feefb8340ed98aae0bb38cad891bdaa0cdcbed80",
+      "actionsSha256": "6055a645b5504164547ac1e14ebd896c7309953d77991114db828f6e27dc2690"
+    },
+    {
+      "id": "plant-woody",
+      "contractSha256": "f0c232d6ce321ae05ae7ee299bfe8db0147aec20ea62c05db1ac69323b113bcb",
+      "actionsSha256": "0ef2e88e2ad7cce346ed06944b358b846fed6ce13b13fefb40631d3b39a2acd4"
+    },
+    {
+      "id": "plant-herb",
+      "contractSha256": "4512030477962a90f03d92d4cd889a822f5666023f4d0e147ea4eb285b6c6259",
+      "actionsSha256": "e8c87881c348678dc0a6b6a642a4f356ac1c003696fbd752bdd705549bc1c63a"
+    },
+    {
+      "id": "myriapod",
+      "contractSha256": "2586d9e32bdf3bb0c7860d3eca245a8cd68d88b9b02a4dd37a54daadf05eb296",
+      "actionsSha256": "331e745299e3ca37fd9cfcc91cdb83004efeeb91a1c6dc0ec597971fd64616e4"
+    },
+    {
+      "id": "cephalopod",
+      "contractSha256": "1cece40b2f23609683144d3287932ad790f584c938f04ad216b2c01078ee5910",
+      "actionsSha256": "2a019ba9b1d28ddf863f195cc881ead6e5bb49e44eef7174cfca76eae3ed4c88"
+    },
+    {
+      "id": "flyer-membrane",
+      "contractSha256": "7912c04fda0a1e24fa3be479d17a3508383558f9e0c4d302073a03e428f18428",
+      "actionsSha256": "038e9bcf30145cd652970f8305f5d8d08fbdc5487e0f72c555304964a3497a82"
+    },
+    {
+      "id": "primate",
+      "contractSha256": "96c5e4b0ba6708f99c2b3f69a6930e84823fe3e457d2b578e5a52aaaec364f4a",
+      "actionsSha256": "e9f5bf19659a91235d2acc5bfffb287d99dfcb5c207f0252a61a337a1d5c1f1f"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "biped-bird",
+      "resolvedContractSha256": "88f237027c0953fce2f2ed43e33210bbf9586756d4a5dd4bf795d5f242ee5764",
+      "resultsSha256": "730c54f5d0f089c0b8c34d69a069570608cc2766a6b7e1a5f2014ade1fa20237",
+      "cases": 24
+    },
+    {
+      "id": "plant-woody",
+      "resolvedContractSha256": "f0c232d6ce321ae05ae7ee299bfe8db0147aec20ea62c05db1ac69323b113bcb",
+      "resultsSha256": "8ac2d5a4f1bf8c10ad7964dd33261425a0ec931f9be37e10ad2f52743ca1b89b",
+      "cases": 24
+    },
+    {
+      "id": "insect",
+      "resolvedContractSha256": "3c15b6df775bc9d6172ce3a6d7e40ab2638706b90db33fabd8b5f4d5f5573cde",
+      "resultsSha256": "1ddde752c08c7ee000d3db8e145e98f075842769fa0173ed705a2463e06bb96e",
+      "cases": 24
+    },
+    {
+      "id": "flyer-membrane",
+      "resolvedContractSha256": "7912c04fda0a1e24fa3be479d17a3508383558f9e0c4d302073a03e428f18428",
+      "resultsSha256": "8b5eba72475a2bb03eb1bea3077a28d2c479041e0701610d430f97c7f3a8e545",
+      "cases": 24
+    },
+    {
+      "id": "myriapod",
+      "resolvedContractSha256": "2586d9e32bdf3bb0c7860d3eca245a8cd68d88b9b02a4dd37a54daadf05eb296",
+      "resultsSha256": "c69f496a8094a8b19633d64dbbb0e6e6a706a22936cc6a03f5a10a5a07b1efac",
+      "cases": 24
+    },
+    {
+      "id": "plant-herb",
+      "resolvedContractSha256": "4512030477962a90f03d92d4cd889a822f5666023f4d0e147ea4eb285b6c6259",
+      "resultsSha256": "8ac2d5a4f1bf8c10ad7964dd33261425a0ec931f9be37e10ad2f52743ca1b89b",
+      "cases": 24
+    },
+    {
+      "id": "primate",
+      "resolvedContractSha256": "96c5e4b0ba6708f99c2b3f69a6930e84823fe3e457d2b578e5a52aaaec364f4a",
+      "resultsSha256": "ff735d09f3252aadd74f75a77ca56c0b6daf35aba58876cd56fee84d23681624",
+      "cases": 24
+    },
+    {
+      "id": "cephalopod",
+      "resolvedContractSha256": "1cece40b2f23609683144d3287932ad790f584c938f04ad216b2c01078ee5910",
+      "resultsSha256": "8ac2d5a4f1bf8c10ad7964dd33261425a0ec931f9be37e10ad2f52743ca1b89b",
+      "cases": 24
+    },
+    {
+      "id": "arachnid",
+      "resolvedContractSha256": "0226d0f43ab161e9088e91d9671e2a4e7a07106e6dc90523e0745bd0cf3ffd9b",
+      "resultsSha256": "2ff336c5600337130837badf6b82e1a62c30a01cace9919645b88b5de289ef24",
+      "cases": 24
+    },
+    {
+      "id": "radial",
+      "resolvedContractSha256": "6f94669b01f0337475014930feefb8340ed98aae0bb38cad891bdaa0cdcbed80",
+      "resultsSha256": "8ac2d5a4f1bf8c10ad7964dd33261425a0ec931f9be37e10ad2f52743ca1b89b",
+      "cases": 24
+    },
+    {
+      "id": "hopper",
+      "resolvedContractSha256": "92dc75a32cb808e2b84004ab1f86f8dfb8767a36b0e71d5f1b8e1d57ff3a59c3",
+      "resultsSha256": "5ca0a67b84d78e3793c7b1493502e39a9b9bff06f80a92d20f408924ed2355eb",
+      "cases": 24
+    },
+    {
+      "id": "fish",
+      "resolvedContractSha256": "e6cf4f7eb78b527ce89d3bc3dc35b296e797c85e56367cf43faf13749983a6fd",
+      "resultsSha256": "8ac2d5a4f1bf8c10ad7964dd33261425a0ec931f9be37e10ad2f52743ca1b89b",
+      "cases": 24
+    },
+    {
+      "id": "serpent",
+      "resolvedContractSha256": "5eee58a0e382170a07cbc582cb92c32f7a20ddaa48061a40124c1439aa1dc673",
+      "resultsSha256": "8ac2d5a4f1bf8c10ad7964dd33261425a0ec931f9be37e10ad2f52743ca1b89b",
+      "cases": 24
+    },
+    {
+      "id": "quadruped",
+      "resolvedContractSha256": "0ece4143612c9c6aba19ce07e32559156050c0bdc6dff19ff3dcc15f913a50d4",
+      "resultsSha256": "80b46b9c2c86051b4e02b8a3a64e7b4962090296b39c43013b4d4765c48d63ec",
+      "cases": 24
+    }
+  ],
+  "compact": [
+    {
+      "walkingLegPairs": 1,
+      "ultimateLegPairs": 0,
+      "contractSha256": "69275849c5d99cd2cb8fa892045d5c6a89565648d2541b40e0d234dbc92690de",
+      "actionsSha256": "ec3878e088c2120685db53e690d4120e50a02676a1f063ae26251552826ed52c"
+    },
+    {
+      "walkingLegPairs": 2,
+      "ultimateLegPairs": 0,
+      "contractSha256": "504ca3ef81d762f8e34cfafbdab81cf79325e02d970e032390567bc969c35dcb",
+      "actionsSha256": "baf8f3452179c59cd127e612535551afac17cac5b3e069bf85d2735f954fd27c"
+    },
+    {
+      "walkingLegPairs": 3,
+      "ultimateLegPairs": 0,
+      "contractSha256": "66ddc98e0939485155cee92966023f31ce2ff62bb1355bae491159e5d6ed9948",
+      "actionsSha256": "4726c0b1786ce0d07d18ba0a966fd1ced714451a7de9e1bcad4c3ca3471410d3"
+    },
+    {
+      "walkingLegPairs": 4,
+      "ultimateLegPairs": 0,
+      "contractSha256": "14f136c505a4e2eee09e559773897cc36ea6779786dd76e27645ffc86bd3e759",
+      "actionsSha256": "afaca4944e9f57c3b031fd1254bc0f96b80bcdfa3c6250e60f7ae2466022c3db"
+    },
+    {
+      "walkingLegPairs": 5,
+      "ultimateLegPairs": 0,
+      "contractSha256": "c7560a64e12959b715a73d97500d22fd8bb0631faab2a85748aba4c1d248043d",
+      "actionsSha256": "97df87f903f19cfe4caa5d485f759d33afcfe64ee5a684c4414b2f8c0e0e2eb7"
+    },
+    {
+      "walkingLegPairs": 6,
+      "ultimateLegPairs": 0,
+      "contractSha256": "175e59edfba0f1827ca3a48fe44bc3f45bdfa65c5fbc664425f4bdfdbaa3e1c3",
+      "actionsSha256": "8aae4e7d50dadcbbca842fd0630c91754a9c549c68af4ab2a242bf3ab2467e4c"
+    },
+    {
+      "walkingLegPairs": 7,
+      "ultimateLegPairs": 0,
+      "contractSha256": "bf2612bbcf555101a4fa961574752493ac7fd5a39513b0a8353f982fa47d90a9",
+      "actionsSha256": "236c142db41489720c3ed26a6dd83789aeae2f823277f488ef6fcb8864a8e068"
+    },
+    {
+      "walkingLegPairs": 8,
+      "ultimateLegPairs": 0,
+      "contractSha256": "36ca7fdb42bec2c132a3a99d8fcaf06303100494d4dc019d794e84c784a14470",
+      "actionsSha256": "be82a481f015495ee2a1b9a0f0fc36b4fbf7a8e2b9ae4587d01df95dd65216a3"
+    },
+    {
+      "walkingLegPairs": 9,
+      "ultimateLegPairs": 0,
+      "contractSha256": "13b17b1dc431305a1d19a5b5d2db1be35e6a337ddfe71bd50cd8bcbf76d8173e",
+      "actionsSha256": "ccfd439cead65ee55b7e2a9dd24da6c91ddae29771088d9f1193c6ef808720e0"
+    },
+    {
+      "walkingLegPairs": 10,
+      "ultimateLegPairs": 0,
+      "contractSha256": "cb89e0d1b7ea20794490258dbbc28238a2100a16276ee82bed10e0988228d936",
+      "actionsSha256": "6387ea5358f0cf71bcefd83af51ecdd75a0199221a5b365cec52e90bdaa0899a"
+    },
+    {
+      "walkingLegPairs": 11,
+      "ultimateLegPairs": 0,
+      "contractSha256": "4278321e5ecbca34d3a8b33d537eef477087ba2d31e937899b50c8bcbcfcd557",
+      "actionsSha256": "99e940b6eaafe90dae4198ba10afa63861e49cf2f50c54c28ec37ade888710f2"
+    },
+    {
+      "walkingLegPairs": 12,
+      "ultimateLegPairs": 0,
+      "contractSha256": "9302fc9ea3ded6eeb9b58e63d57dc866954e2a0b7f74a73f54de57f78d133a17",
+      "actionsSha256": "bf59422c449b1f128e67f1e3eda71c9dfda6c7da223cf47ef4f77e90b2846f36"
+    },
+    {
+      "walkingLegPairs": 13,
+      "ultimateLegPairs": 0,
+      "contractSha256": "fc6264487df3ab6963f93ca5cdcf211f5b916721001614a74f61a0879eb20ed0",
+      "actionsSha256": "f819e386f91f64eaf967e70eb4357401a19cca4efea7c87234b85a4992780a21"
+    },
+    {
+      "walkingLegPairs": 14,
+      "ultimateLegPairs": 0,
+      "contractSha256": "5f1da2e8c0b76070cc0c16f490e0d65d65843b0da6c2c014e1b9d517aac78f67",
+      "actionsSha256": "786f7b6f3a624b8aabec3e40b36fd8bf855bd6a4a6211fa1c1e2ce2600d3b4e5"
+    },
+    {
+      "walkingLegPairs": 1,
+      "ultimateLegPairs": 1,
+      "contractSha256": "a42d13c3e63532d878394dee94d76f6237bb83721e271b90bedf000a196238c3",
+      "actionsSha256": "eb8d328b10f866e54a13ed8e90b485c9a458181497c649fb4dfabea2b636b4b9"
+    },
+    {
+      "walkingLegPairs": 2,
+      "ultimateLegPairs": 1,
+      "contractSha256": "ea0345cfd7231d174dc0b12d292f37284182222901e0665d3daa131e92451fd4",
+      "actionsSha256": "b7f490cb30f6404875b2b140636549116e01e1d78059802a828c8ea063375e85"
+    },
+    {
+      "walkingLegPairs": 3,
+      "ultimateLegPairs": 1,
+      "contractSha256": "debc086f6cac87ae9dfd3a8e0280bebee1e2e40e41c7396efb93a235e5eff42c",
+      "actionsSha256": "1d4718b427d49466ff634add3db7fcd623c2f298b3ffa07067e8ab48e11eee0e"
+    },
+    {
+      "walkingLegPairs": 4,
+      "ultimateLegPairs": 1,
+      "contractSha256": "393523861b5a28c2099022279598b714bdbaf60c032dc40aa96a103f6331a621",
+      "actionsSha256": "29b2eb4e0b4ccb3345fc3110ef76834166fda18404ef6eaad2172d6af491c626"
+    },
+    {
+      "walkingLegPairs": 5,
+      "ultimateLegPairs": 1,
+      "contractSha256": "abee745c99f96087a770ae0bdf0f348b009fac8fdf8ffe975c8907a69506f25b",
+      "actionsSha256": "6b0155697f4a70aa819f22f3f4a703e43f1a0457b0e60136821b66d47788cbcf"
+    },
+    {
+      "walkingLegPairs": 6,
+      "ultimateLegPairs": 1,
+      "contractSha256": "4891a572c3c4ad38f437d03ac2a5316b374568ac80bc7abf5f788527c2814f49",
+      "actionsSha256": "e746cf5971ab0ec0a740b484dced1b3819333d54b90afb556fab88a5cef9ecdc"
+    },
+    {
+      "walkingLegPairs": 7,
+      "ultimateLegPairs": 1,
+      "contractSha256": "5ed14a8468e79e485189db8521ff9996ea93071873c4d879075b1a2b628b2b54",
+      "actionsSha256": "f3564db02b2663933c5ccc9f9c00536a5bdfcd4499069291ec57efb538c73f45"
+    },
+    {
+      "walkingLegPairs": 8,
+      "ultimateLegPairs": 1,
+      "contractSha256": "04e1cd1e197fecb1d8c7475fd54813247ce565543b523616e10409b01a761782",
+      "actionsSha256": "271c7e187f3caf7b049a31fd7277130d27ad2f2fab1e2d8c5b93e9fcd37eb840"
+    },
+    {
+      "walkingLegPairs": 9,
+      "ultimateLegPairs": 1,
+      "contractSha256": "263b401798eab41ba9e82db9dc3d117dfd8e08c9a809e105a05eeebed36a8030",
+      "actionsSha256": "7aaef93608d45da37c1841145854398ed127ffd94fb51d20d54e2f97fc2abb34"
+    },
+    {
+      "walkingLegPairs": 10,
+      "ultimateLegPairs": 1,
+      "contractSha256": "8f4996841865d79296ec593553e7d6a997fc26fe60358e5b99a74327531c300a",
+      "actionsSha256": "a05db2d2b1eae685a9e2355de2929afc342de8cc54c1c848a4c9494ccfdee664"
+    },
+    {
+      "walkingLegPairs": 11,
+      "ultimateLegPairs": 1,
+      "contractSha256": "4eb5056b95e0ac0484b28d6dcdbeaa898c29448c82f1cf5d27745bab284dd435",
+      "actionsSha256": "1e560c8f86a2b24b1b3b5a428c56c43a7e683f583db4a3ec52371e0faac99660"
+    },
+    {
+      "walkingLegPairs": 12,
+      "ultimateLegPairs": 1,
+      "contractSha256": "e344c1caa244f26e53ef7dfdbfe3a4367b8aa99eaa31c8c4540404341fd7d0a8",
+      "actionsSha256": "df6600c3ca030531580c2fef467f225022c07dd014d32ba672aa6d2bbafd560e"
+    },
+    {
+      "walkingLegPairs": 13,
+      "ultimateLegPairs": 1,
+      "contractSha256": "a72d8ce7f38320c6fc65e537074b24383303cfe45517faad785a741ab3f844a6",
+      "actionsSha256": "e3b3187dfb7a14fdfd6020ca193b9df90799eec0712a062ca1434feb6cd7b21c"
+    },
+    {
+      "walkingLegPairs": 14,
+      "ultimateLegPairs": 1,
+      "contractSha256": "b13bfad2a294de1f9b8c3380000afa3928d308b32f95bd944e722e829c83c5a5",
+      "actionsSha256": "5e82b15d24a90878c467bb195963b22c30a1bd7a5ae953e5fd7cea265de59514"
+    }
+  ]
+}

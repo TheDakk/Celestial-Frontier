@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Macaw",
+  "masterSha256": "56597421092300176d768ca2cff14c0320203ab9534c408d51d65999162a937d",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

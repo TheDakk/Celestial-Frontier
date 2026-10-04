@@ -1,0 +1,27 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Snow Petrel",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "8cf9fa9495e5e63794dc023d78a4cb49cf6116481c57b36db67b2923de29603d",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "bird",
+  "authoringCreated": false,
+  "sourceHead": "e2e9bb10cd8484ab99440e7bbb059af5220f1158",
+  "basePromptSha256": "ce19423ed2289d9ab10f171183d9db69c9ba78fd99cbf6864eb3e54124a649a7",
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Natural adult Snow Petrel calmly standing with both wings naturally FOLDED tight against its body. No raised wing, spread flight fan or lifted shoulder; continuous feather coverts blend through the shoulder and back with no seams or cut lines. The far folded wing appears only as its own visible narrow upper edge and natural root emergence behind the near wing; no invented extra wing. Both distinct dark feet and complete lower leg shafts must be clearly separated, each with naturally flexed ankle on the same ground plane. Preserve white plumage, small black hooked bill with natural tubular nostril, dark eye and complete short feather tail. Entire head crown, beak, both natural wings and feet are in frame.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete animal centered on native1254 by1254 magenta canvas; whole silhouette in central two-thirds with generous empty margin, no crop, floor or shadow.",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "priorSource": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/master.png",
+  "admission": "SOURCE_CANDIDATE_ONLY"
+}

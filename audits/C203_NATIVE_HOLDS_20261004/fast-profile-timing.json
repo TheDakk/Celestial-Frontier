@@ -1,0 +1,49 @@
+{
+  "scope": "Unthrottled Node diagnostic only; not native/performance qualification",
+  "rows": [
+    {
+      "seed": 5,
+      "ms": 1.2719590000000025,
+      "hash": "de67840d",
+      "notes": [
+        "physical realm: G1 automatic: Earth fauna profile canid media ground (capability, not painted pose; adult flight is a separate declaration)",
+        "materials: record surface \"fur\" wins over genome skin \"chitinous\" (observer disagreement)",
+        "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): hindFar 2.0%, foreFar 1.9%, foreNear 0.0%",
+        "grounded-quadruped:low-slack-trot-gain=0.25"
+      ]
+    },
+    {
+      "seed": 5,
+      "ms": 0.3343330000000009,
+      "hash": "de67840d",
+      "notes": [
+        "physical realm: G1 automatic: Earth fauna profile canid media ground (capability, not painted pose; adult flight is a separate declaration)",
+        "materials: record surface \"fur\" wins over genome skin \"chitinous\" (observer disagreement)",
+        "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): hindFar 2.0%, foreFar 1.9%, foreNear 0.0%",
+        "grounded-quadruped:low-slack-trot-gain=0.25"
+      ]
+    },
+    {
+      "seed": 6,
+      "ms": 0.1922089999999983,
+      "hash": "8aee1780",
+      "notes": [
+        "physical realm: G1 automatic: Earth fauna profile canid media ground (capability, not painted pose; adult flight is a separate declaration)",
+        "materials: record surface \"fur\" wins over genome skin \"chitinous\" (observer disagreement)",
+        "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): hindFar 2.0%, foreFar 1.9%, foreNear 0.0%",
+        "grounded-quadruped:low-slack-trot-gain=0.25"
+      ]
+    },
+    {
+      "seed": 6,
+      "ms": 0.5235000000000056,
+      "hash": "8aee1780",
+      "notes": [
+        "physical realm: G1 automatic: Earth fauna profile canid media ground (capability, not painted pose; adult flight is a separate declaration)",
+        "materials: record surface \"fur\" wins over genome skin \"chitinous\" (observer disagreement)",
+        "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): hindFar 2.0%, foreFar 1.9%, foreNear 0.0%",
+        "grounded-quadruped:low-slack-trot-gain=0.25"
+      ]
+    }
+  ]
+}

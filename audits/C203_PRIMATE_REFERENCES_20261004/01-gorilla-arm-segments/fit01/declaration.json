@@ -1,0 +1,81 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "20779173af21cb9715b5f335dc37fab069b851a484c9adc46128fcad2f36ef50",
+  "cutoutSha256": "78da7b6d2ad46eaa6a452cdb71a2c08ce75f898be89e5c234ff6ff72f88fc3a5",
+  "keyedRgbaSha256": "7b78596cd10eee4be9b82b1b3eba91756d8ef3273b96ae53b1bd00e4738512e0",
+  "labelsFile": "labels.png",
+  "labelsSha256": "092551eade871ae52b46d0cff8ce0e290b9668733745146cf713a526332b6b43",
+  "parts": [
+    {
+      "id": "near-hand",
+      "joint": "armNearHand",
+      "layer": "near"
+    },
+    {
+      "id": "far-hand",
+      "joint": "armFarHand",
+      "layer": "far"
+    },
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearHip",
+      "layer": "near"
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarHip",
+      "layer": "far"
+    },
+    {
+      "id": "near-upper-arm",
+      "joint": "armNearElbow",
+      "layer": "near"
+    },
+    {
+      "id": "far-upper-arm",
+      "joint": "armFarElbow",
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "b499db16809aecb6967633f9975136daab1e7e6ac81ac7c830e43703824391d2"
+}

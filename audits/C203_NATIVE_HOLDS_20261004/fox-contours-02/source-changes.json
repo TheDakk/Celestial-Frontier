@@ -1,0 +1,8 @@
+{
+  "predecessor": "audits/C203_NATIVE_HOLDS_20261004/fox-contours-01",
+  "changes": [
+    "Remove empty root paint part; root remains the virtual skeleton controller; unassigned observed torso paint belongs to spine.",
+    "Retain source pixels, anatomy landmarks and exact expanded observed head/nape polygons."
+  ],
+  "native": false
+}

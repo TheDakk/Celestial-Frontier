@@ -1,0 +1,75 @@
+{
+  "creatureId": "c203-gorilla-arm-segments",
+  "parts": [
+    {
+      "name": "near-hand.png",
+      "path": "parts/near-hand.png",
+      "sha256": "455b36efc3846f798fd90ea2e87236a7920ce49db15f8a633cfffc9d96337766"
+    },
+    {
+      "name": "far-hand.png",
+      "path": "parts/far-hand.png",
+      "sha256": "a23f56ed7303f771f8d96f526cd9ff39209db9ef788d9c5110aced5435746b6a"
+    },
+    {
+      "name": "near-foot.png",
+      "path": "parts/near-foot.png",
+      "sha256": "dd1db9d372f0325aaa778be574d2e636578e4a41c5354246a7c217780bd09542"
+    },
+    {
+      "name": "far-foot.png",
+      "path": "parts/far-foot.png",
+      "sha256": "0b955778a1d07be6007177a18dbd77e30971b9c6e42b4d6016c3511efddb6394"
+    },
+    {
+      "name": "near-shin.png",
+      "path": "parts/near-shin.png",
+      "sha256": "3105dd58afc333418d4845282d6612b76d664991b9655cc55249c48e3697b888"
+    },
+    {
+      "name": "far-shin.png",
+      "path": "parts/far-shin.png",
+      "sha256": "c110338d16c50c86ba106a65b9e3af36dd48cbab32ea5ad10e193a6722e395ea"
+    },
+    {
+      "name": "near-thigh.png",
+      "path": "parts/near-thigh.png",
+      "sha256": "ed484acb8b73ec642b9f9d83f455531e6b2e5896522443e7646d2f1f48b1e4de"
+    },
+    {
+      "name": "far-thigh.png",
+      "path": "parts/far-thigh.png",
+      "sha256": "055beed564596a6f6fa85e25daedb343a9afe3b3caefb70dbd67c93fd29d5cdb"
+    },
+    {
+      "name": "near-upper-arm.png",
+      "path": "parts/near-upper-arm.png",
+      "sha256": "dcd8af333c5ba1aa54456d2e68b0927ec3b26d66477c4baf359cbc87a269dc9d"
+    },
+    {
+      "name": "far-upper-arm.png",
+      "path": "parts/far-upper-arm.png",
+      "sha256": "b32bbc326ea093336050cf47ac37a33e6689f835a707c21056b40718a16e18ee"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "e90dab8cf68c46f9968ceabb3b4e595ee1567b76a0625e360d93aee397716b8c"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "589f44c2c0161fa21ae997a1f41a54d4f0c30398b33a91c1a84ca69395113b7d"
+    },
+    {
+      "name": "neck.png",
+      "path": "parts/neck.png",
+      "sha256": "a40b5b6744e8ab14ea2e0bb568e80cae212ab9be9107e209567549adf5840605"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "ff53b286fd67bdfc1d3a8af52179de4afb9a646caff6761df298ec8854a5ee43"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c203-grasshopper-bent-dorsal",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "1ff140c9c1ded69866df021718e4f63ba62ad5cb6c9227d4c6f4bdf54241b36f",
+    "pngSha256": "ef0700fd6520d40b860b0d55ebdabff26505594b50549f30f81392d777deb1f2"
+  },
+  "parts": [
+    {
+      "name": "abdomen-rim.png",
+      "sha256": "1d7af82afb30a53856ff6ee836eaeb6d5ef8c4fcb252426142234df929c47491"
+    },
+    {
+      "name": "antenna-far.png",
+      "sha256": "22107d0b116370fd649c335ff9e3efc71d7d4ac53c71b9cdabbe87b96162c09e"
+    },
+    {
+      "name": "antenna-near.png",
+      "sha256": "debbc01052ed0672804b6d7bab914847a28c31db308be0d0328b8e592d28e7d4"
+    },
+    {
+      "name": "body.png",
+      "sha256": "9c454a91b338938527c39739266af46d45418c73e041c2bf61b87ad98a104dbb"
+    },
+    {
+      "name": "far-tegmen.png",
+      "sha256": "1ba269231f1832c4cf5ab4d23b948230ec194ea4a9c59fad4cef77e0763e5e84"
+    },
+    {
+      "name": "front-far-lower.png",
+      "sha256": "5c68ca6ca7c686b1fda5c58457ec08476da80ae1d72089c33c2bba41432609cc"
+    },
+    {
+      "name": "front-far-upper.png",
+      "sha256": "1173ae1aa72de8f8b19eaa949be96662847db4b44329f9bb30f616ffaa588915"
+    },
+    {
+      "name": "front-near-lower.png",
+      "sha256": "483fa92319332503a5b8b84e1584c074ddeb42611e533a116ffdbf3b201f120c"
+    },
+    {
+      "name": "front-near-upper.png",
+      "sha256": "71e066b3a4d9d152bbabbb3172cbff992d77e989238fe3b283ddc99b7aebf1f1"
+    },
+    {
+      "name": "head.png",
+      "sha256": "007995d76e6581be89df2c79d042031fca29522e31c30c9bf699f5096fd228ec"
+    },
+    {
+      "name": "hind-far-lower.png",
+      "sha256": "d8721e75caa7454edcd648867b27ad67d360c3670b3136c218bf1f78ec8c4727"
+    },
+    {
+      "name": "hind-far-upper.png",
+      "sha256": "fac8be3ff2a000d60707b09f14cd27f0a6086bfc8362d9bb3aafa047469e5161"
+    },
+    {
+      "name": "hind-near-lower.png",
+      "sha256": "49f67185add64fc4085332b8452794c4c459691f8dbb62abe403f126538e86de"
+    },
+    {
+      "name": "hind-near-upper.png",
+      "sha256": "7aedbdd27fbb6df8145cedd87cb4a0dddd1cd87f24d204dec29dbca2a6100ea7"
+    },
+    {
+      "name": "middle-far-lower.png",
+      "sha256": "0ae86ab2a79e91320b956561af97e60a9ba3611a7c8345d11abe78418d50e02b"
+    },
+    {
+      "name": "middle-far-upper.png",
+      "sha256": "61836fd31e7cc4f3248aae0728e55acb769741b2d36ffaf7cc1d52ab810f8566"
+    },
+    {
+      "name": "middle-near-lower.png",
+      "sha256": "b0ef9fc851002e568627d28b1ee6735c1b4cc4a331c19f78162c9e388553b9ef"
+    },
+    {
+      "name": "middle-near-upper.png",
+      "sha256": "602a24055eee6cf0e7e3c60ba822e8a22ee5462ce398eebdccb359754cefad91"
+    },
+    {
+      "name": "mouth.png",
+      "sha256": "c5c388688d8da203a4882a268fc25aba851832c5645c5181973bf4a1bb7c5042"
+    },
+    {
+      "name": "near-tegmen.png",
+      "sha256": "be7cf123f0fea77db35de5ef1e77d612df5f062942c76b3dbd100244e1ef0b8c"
+    },
+    {
+      "name": "thorax.png",
+      "sha256": "10b6eaefa72eeae0a5b39fc74ea9e05461bfbe794321778120b3480db9c74a95"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

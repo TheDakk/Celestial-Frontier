@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Okapi",
+  "masterSha256": "c643d4ff0239e0bbf2150defa24894fd13f9d82570207c44bf7b3a9333da134d",
+  "required": [
+    "horizontal white stripes on the hindquarters and upper legs"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "horizontal white stripes on the hindquarters and upper legs",
+      "status": "PRESENT",
+      "observed": "Four separate cloven hoof endpoints, two actual ears, small ossicones and attached tufted tail are visible. Cream stripes cross the dark hindquarters and upper legs. Far foreleg upper root is hidden behind the chest; shallow three-quarter head limits a complete root-visibility claim."
+    }
+  ]
+}

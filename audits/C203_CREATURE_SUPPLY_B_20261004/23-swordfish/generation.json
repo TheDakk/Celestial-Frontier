@@ -1,0 +1,14 @@
+{
+  "id": "23-swordfish",
+  "name": "Swordfish",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-61ffa7c0-ddf3-4b5b-a12b-24aa42710f46.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "28d8b912bb76a8d4220f3681bf898c1f609f0077937b10adb38781605e74a2db",
+  "bytes": 1195785,
+  "promptSha256": "a8e3e91cfc96afc0f1f028e66aef247917a2eb75d15d706c8a3a9ca65ec83f4c",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

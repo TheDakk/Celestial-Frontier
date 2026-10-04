@@ -1,0 +1,392 @@
+{
+  "schema": "cf.c203-primate-full-size-review/v1",
+  "status": "HELD_VISUAL",
+  "rows": [
+    {
+      "subject": "Gorilla",
+      "fit": "audits/C203_PRIMATE_REFERENCES_20261004/03-gorilla-observed-joins/fit01",
+      "measured": "audits/C203_PRIMATE_REFERENCES_20261004/03-gorilla-observed-joins/dense-01/result.json",
+      "status": "HELD_VISUAL_NOT_QUALIFIED",
+      "summary": {
+        "samples": 1297,
+        "refusals": 0,
+        "held": 0,
+        "maxBelowSourcePx": 5.362431204503082e-05,
+        "maxContact": 3.433175098891678e-16,
+        "maxAdjacentHandRotationRad": 0.00697073510748264
+      },
+      "fullSizeViews": [
+        "audits/C203_PRIMATE_REFERENCES_20261004/03-gorilla-observed-joins/dense-01/held-0-right.png",
+        "audits/C203_PRIMATE_REFERENCES_20261004/03-gorilla-observed-joins/dense-01/held-0-left.png",
+        "audits/C203_PRIMATE_REFERENCES_20261004/03-gorilla-observed-joins/dense-01/phase-0-64-right.png",
+        "audits/C203_PRIMATE_REFERENCES_20261004/03-gorilla-observed-joins/dense-01/faint-0-right.png"
+      ],
+      "findings": [
+        "Floor penetration is removed by the audit-only shallow faint and observed forearm hinge. The upper body/head remain coherent.",
+        "An elbow opening and narrow far-upper-arm surface remain conspicuous where independent projected limbs overlap. Required anatomical joins pass, but that is not complete painted coverage.",
+        "The original side view occludes part of the far arm behind the near upper arm. Rotating independent forearms exposes that missing underlap; do not weld opposite arms together or stretch paint to hide it."
+      ],
+      "posedSourceOverlapMeasurements": [
+        {
+          "name": "far-hand|near-hand",
+          "sourceEdges": 198,
+          "samples": 218,
+          "maxGapPx": 80.12750217155632,
+          "violations": 218,
+          "worst": {
+            "source": [
+              897,
+              819
+            ],
+            "ancestor": [
+              923.7721976995468,
+              860.2949325084686
+            ],
+            "descendant": [
+              924.5387445688248,
+              780.1710970401764
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-hand",
+            "near-hand"
+          ],
+          "reason": "independent sibling adjacency"
+        },
+        {
+          "name": "far-hand|near-upper-arm",
+          "sourceEdges": 37,
+          "samples": 42,
+          "maxGapPx": 47.22952236912617,
+          "violations": 42,
+          "worst": {
+            "source": [
+              843,
+              675
+            ],
+            "ancestor": [
+              821.8325866162779,
+              740.1707339286804
+            ],
+            "descendant": [
+              821.6134077231088,
+              692.9417201360066
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-hand",
+            "near-upper-arm"
+          ],
+          "reason": "independent sibling adjacency"
+        },
+        {
+          "name": "far-shin|near-shin",
+          "sourceEdges": 25,
+          "samples": 32,
+          "maxGapPx": 38.282859286754146,
+          "violations": 32,
+          "worst": {
+            "source": [
+              417,
+              771
+            ],
+            "ancestor": [
+              401.70020679831504,
+              767.6709439337253
+            ],
+            "descendant": [
+              436.08070266246796,
+              784.5101487636566
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-shin",
+            "near-shin"
+          ],
+          "reason": "independent sibling adjacency"
+        },
+        {
+          "name": "far-thigh|near-shin",
+          "sourceEdges": 53,
+          "samples": 62,
+          "maxGapPx": 32.595138800504806,
+          "violations": 62,
+          "worst": {
+            "source": [
+              420,
+              749
+            ],
+            "ancestor": [
+              402.19321596622467,
+              747.9981182813644
+            ],
+            "descendant": [
+              431.88160153077195,
+              761.4533342214731
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-thigh",
+            "near-shin"
+          ],
+          "reason": "independent sibling adjacency"
+        },
+        {
+          "name": "far-thigh|near-thigh",
+          "sourceEdges": 5,
+          "samples": 9,
+          "maxGapPx": 0.21204455561112287,
+          "violations": 1,
+          "worst": {
+            "source": [
+              426,
+              702
+            ],
+            "ancestor": [
+              419.0672291815281,
+              708.922061920166
+            ],
+            "descendant": [
+              419.2213010532515,
+              709.0677490915572
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-thigh",
+            "near-thigh"
+          ],
+          "reason": "independent sibling adjacency"
+        },
+        {
+          "name": "far-upper-arm|near-upper-arm",
+          "sourceEdges": 200,
+          "samples": 211,
+          "maxGapPx": 29.6270040707364,
+          "violations": 197,
+          "worst": {
+            "source": [
+              870,
+              665
+            ],
+            "ancestor": [
+              848.3294086456299,
+              718.0401480754216
+            ],
+            "descendant": [
+              853.1885632038117,
+              688.8143377840519
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-upper-arm",
+            "near-upper-arm"
+          ],
+          "reason": "independent sibling adjacency"
+        }
+      ],
+      "measurementUnits": "1254-square posed source-coordinate pixels; neither native stage pixels nor screen-distance measurements",
+      "sourceFloorScope": "Per-hand observed source floor retains perspective relief. This software diagnostic does not establish native arena grounding.",
+      "nativeRun": false,
+      "qualityAccepted": false
+    },
+    {
+      "subject": "Howler Monkey",
+      "fit": "audits/C203_PRIMATE_REFERENCES_20261004/04-howler-observed-joins/fit01",
+      "measured": "audits/C203_PRIMATE_REFERENCES_20261004/04-howler-observed-joins/dense-02/result.json",
+      "status": "HELD_VISUAL_NOT_QUALIFIED",
+      "summary": {
+        "samples": 1297,
+        "refusals": 0,
+        "held": 0,
+        "maxBelowSourcePx": 0,
+        "maxContact": 3.7238012298709097e-16,
+        "maxAdjacentHandRotationRad": 0.005205360168158965
+      },
+      "fullSizeViews": [
+        "audits/C203_PRIMATE_REFERENCES_20261004/04-howler-observed-joins/dense-02/held-0-right.png",
+        "audits/C203_PRIMATE_REFERENCES_20261004/04-howler-observed-joins/dense-02/held-0-left.png",
+        "audits/C203_PRIMATE_REFERENCES_20261004/04-howler-observed-joins/dense-02/phase-0-64-right.png",
+        "audits/C203_PRIMATE_REFERENCES_20261004/04-howler-observed-joins/dense-02/faint-0-right.png"
+      ],
+      "findings": [
+        "Floor penetration is removed by the audit-only shallow faint and observed forearm hinge. Tail/throat source joins remain continuous.",
+        "A thin light opening remains along the near/far-arm and pouch edge; independent projected silhouette overlaps are unresolved.",
+        "The source has no separate hidden underpaint where those projected limbs meet. This is a visual source-coverage hold, not a numeric joint/contact failure."
+      ],
+      "posedSourceOverlapMeasurements": [
+        {
+          "name": "far-hand|near-hand",
+          "sourceEdges": 157,
+          "samples": 169,
+          "maxGapPx": 21.730361057585327,
+          "violations": 169,
+          "worst": {
+            "source": [
+              886,
+              757.3
+            ],
+            "ancestor": [
+              877.5370797157289,
+              787.1497410535812
+            ],
+            "descendant": [
+              881.948947262764,
+              765.8719588279723
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-hand",
+            "near-hand"
+          ],
+          "reason": "independent sibling adjacency"
+        },
+        {
+          "name": "far-shin|near-shin",
+          "sourceEdges": 79,
+          "samples": 91,
+          "maxGapPx": 25.882912818846652,
+          "violations": 91,
+          "worst": {
+            "source": [
+              551,
+              706
+            ],
+            "ancestor": [
+              548.0553016387499,
+              703.7590504426223
+            ],
+            "descendant": [
+              569.2089752554893,
+              718.6737166643143
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-shin",
+            "near-shin"
+          ],
+          "reason": "independent sibling adjacency"
+        },
+        {
+          "name": "far-shin|near-thigh",
+          "sourceEdges": 75,
+          "samples": 82,
+          "maxGapPx": 10.244137082143753,
+          "violations": 82,
+          "worst": {
+            "source": [
+              561,
+              637
+            ],
+            "ancestor": [
+              557.5528185623032,
+              634.8371134655815
+            ],
+            "descendant": [
+              558.0592971303884,
+              645.0687225285698
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-shin",
+            "near-thigh"
+          ],
+          "reason": "independent sibling adjacency"
+        },
+        {
+          "name": "far-thigh|near-thigh",
+          "sourceEdges": 22,
+          "samples": 24,
+          "maxGapPx": 5.334985584776159,
+          "violations": 24,
+          "worst": {
+            "source": [
+              513,
+              618
+            ],
+            "ancestor": [
+              507.6457850961916,
+              614.450060730019
+            ],
+            "descendant": [
+              502.34008298814297,
+              613.8918525874615
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-thigh",
+            "near-thigh"
+          ],
+          "reason": "independent sibling adjacency"
+        },
+        {
+          "name": "far-upper-arm|near-hand",
+          "sourceEdges": 21,
+          "samples": 23,
+          "maxGapPx": 14.33407741678267,
+          "violations": 23,
+          "worst": {
+            "source": [
+              863,
+              703
+            ],
+            "ancestor": [
+              849.4505231022835,
+              731.8534554719924
+            ],
+            "descendant": [
+              852.4864399552345,
+              717.844565999508
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-upper-arm",
+            "near-hand"
+          ],
+          "reason": "independent sibling adjacency"
+        },
+        {
+          "name": "far-upper-arm|near-upper-arm",
+          "sourceEdges": 133,
+          "samples": 141,
+          "maxGapPx": 10.268570418440813,
+          "violations": 134,
+          "worst": {
+            "source": [
+              855,
+              690
+            ],
+            "ancestor": [
+              842.510035097599,
+              717.3446148633957
+            ],
+            "descendant": [
+              844.0377273201943,
+              707.190320456028
+            ]
+          },
+          "status": "OBSERVATION_ONLY",
+          "parts": [
+            "far-upper-arm",
+            "near-upper-arm"
+          ],
+          "reason": "independent sibling adjacency"
+        }
+      ],
+      "measurementUnits": "1254-square posed source-coordinate pixels; neither native stage pixels nor screen-distance measurements",
+      "sourceFloorScope": "Per-hand observed source floor retains perspective relief. This software diagnostic does not establish native arena grounding.",
+      "nativeRun": false,
+      "qualityAccepted": false
+    }
+  ]
+}

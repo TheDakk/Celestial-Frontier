@@ -1,0 +1,103 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c203-petrel-folded-islands",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "35592b4e54e7ee5705d14d26c2a009107c908cb7584b356e87aec8875e4cafef",
+    "pngSha256": "6882c9dfd5d86da7bbd816a8b9b00ae9cbf9ba35e62555e2806edcffcbdcf781"
+  },
+  "parts": [
+    {
+      "name": "beak.png",
+      "sha256": "1202b9445ff6cae0fc6179821b5542e9606a5642a4f3fb4f951d10d712326216"
+    },
+    {
+      "name": "body.png",
+      "sha256": "1bcd97d11381bf453c59370ed5b12688ce0d8c83d1169cb32e875eac0979a34a"
+    },
+    {
+      "name": "chest.png",
+      "sha256": "683a2b6a8faf8c1bfa4d07328b04a381ff1bd4e1afa2be6391aee71469fbe7c5"
+    },
+    {
+      "name": "far-foot.png",
+      "sha256": "39d11115759052569944623f01bb1ac39072bf4f2ad25fa51109843556b3f829"
+    },
+    {
+      "name": "far-shin.png",
+      "sha256": "50b0a171ecddbbe705734e653c0ef8d798141c56bb6065b1a807490cfe7c9247"
+    },
+    {
+      "name": "far-thigh.png",
+      "sha256": "b3da87f3e26f07e8f0cde7507a0027369e9767bbc0b426dea1fb64c136c3aaf1"
+    },
+    {
+      "name": "far-wing-root.png",
+      "sha256": "02d97770a889ffe337cd827c91f33265209304d039ec45f0b97fe40c3fc0a4ed"
+    },
+    {
+      "name": "far-wing-tip.png",
+      "sha256": "2743ab9dcad8c1f5542b18f62f0830c35cbcaab8e19fff9d35b11d78bf774fa0"
+    },
+    {
+      "name": "head.png",
+      "sha256": "a6ea901cae31bb56eb365b81db0fbd5d40b573b5bcc549e7c96535a177d4a375"
+    },
+    {
+      "name": "lower-neck.png",
+      "sha256": "18693242d03ed034a3cfad1ab28378293ebd04cfa0ee31a48c4281e1d35f486b"
+    },
+    {
+      "name": "near-foot.png",
+      "sha256": "1170331de0a55cdd3da6edcd252c74409dfe80ad04fe572f0e18f6111fa895f1"
+    },
+    {
+      "name": "near-shin.png",
+      "sha256": "a303f1c90e314c3d06e4f20ee2275d229716f729482d4ae01f5059c74b8f8d0e"
+    },
+    {
+      "name": "near-thigh.png",
+      "sha256": "17c8752093928f9c924f12c5015e348d565af061f8eea2e0d7071589583a923f"
+    },
+    {
+      "name": "near-wing-flight.png",
+      "sha256": "4cea8a67997a54634d94722439b9875860e13f87d4d14012dbf8dd9af933da60"
+    },
+    {
+      "name": "near-wing-root.png",
+      "sha256": "425f12d5ff470bec3e64fbc026368504cc312b1a36ffaf33d8d3194bc940a0b0"
+    },
+    {
+      "name": "pelvis.png",
+      "sha256": "5ed38e97e823624b0343c598c1d30d0d69d6ea4b14fbaca5655b86037244aa29"
+    },
+    {
+      "name": "tail.png",
+      "sha256": "2c31b0f1001b159772f0e97dedb0d9060d2af13965fddc1fef94012f129153c9"
+    },
+    {
+      "name": "upper-neck.png",
+      "sha256": "4fd08b8442f697b3821a0d6fa60cdf33a238fea2db944a3e7ee4c7ff4a6a7cff"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

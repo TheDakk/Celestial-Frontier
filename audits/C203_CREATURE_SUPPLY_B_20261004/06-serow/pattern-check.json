@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Serow",
+  "masterSha256": "548b1528953812c070126f0e6fc230e7445b4c7d98efe3300f7d1491c4c1c660",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

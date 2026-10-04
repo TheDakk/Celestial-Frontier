@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {compileLibraryMaster} from '../../port/v2/tools/painted-creature/compile-library-master.mjs';
+const packet='audits/C203_NATIVE_HOLDS_20261004/red-fox-relaxed-source-01',sha=b=>createHash('sha256').update(b).digest('hex');
+await compileLibraryMaster('Red Fox',packet);
+const q=JSON.parse(fs.readFileSync(packet+'/request.json')),canonical=fs.readFileSync(packet+'/prompt.txt','utf8');
+const correction='TARGETED SOURCE CORRECTION: A relaxed natural adult Red Fox standing with four distinct separated legs and paws on one ground level. Both forelimbs show a clearly readable natural elbow bend and flexed wrist, with the paws slightly forward of their wrists: do not draw rigid straight vertical forelegs. Keep actual fox proportions, visible shoulder-to-elbow-to-wrist-to-paw paths, naturally bent hind legs and clear gaps between all four leg shafts. The ears, jaw, bushy white-tipped tail and every paw are complete. No invented extra joint, protrusion, floating part, hidden far limb or extreme crouch.';
+const composition='COMPOSITION PRIORITY: small complete animal centered on native1254 by1254 magenta canvas; whole silhouette in central two-thirds with generous empty margin, no crop, floor or shadow.';
+const prompt=composition+'\n'+correction+'\n\n'+canonical+'\n\n'+correction+'\n'+composition+'\n';
+fs.writeFileSync(packet+'/prompt.canonical.txt',canonical,{flag:'wx'});fs.writeFileSync(packet+'/prompt.txt.tmp',prompt,{flag:'wx'});fs.renameSync(packet+'/prompt.txt.tmp',packet+'/prompt.txt');
+fs.writeFileSync(packet+'/request.json.tmp',JSON.stringify({...q,basePromptSha256:q.promptSha256,promptSha256:sha(prompt),sourceCorrection:correction,compositionCheck:composition,purpose:'TARGETED_SOURCE_REPAINT',priorSource:'audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/master.png',admission:'SOURCE_CANDIDATE_ONLY'},null,2)+'\n',{flag:'wx'});fs.renameSync(packet+'/request.json.tmp',packet+'/request.json');

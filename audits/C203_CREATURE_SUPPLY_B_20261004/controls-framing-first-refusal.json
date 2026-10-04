@@ -1,0 +1,11 @@
+{
+  "schema": "cf.audit-instrument-development-correction/v1",
+  "status": "FIRST_EXECUTION_REFUSED_REPAIRED_INSTRUMENT",
+  "firstSourceSha256": "5624a1cd0ae64c04da43cd572ef391f8ae6f3d33af4c777387df826659f1a1b0",
+  "correctedSourceSha256": "7e2e66d3ff6aad4c4e464349c84c3c351c72402e0c0121b0d4a47cc89939fcbe",
+  "failure": "verifySelection expected PASS_FRAMING_ONLY but saw REFUSE after negative control mutated shared in-memory observation object",
+  "diagnosis": "packet() returned a reference to the shared observation; framing-red mutation control changed it before selection positive. No file or source image was mutated.",
+  "correction": "Deep-copy each packet observation before in-memory negative controls. No threshold or selected asset change.",
+  "native": false,
+  "productChanged": false
+}

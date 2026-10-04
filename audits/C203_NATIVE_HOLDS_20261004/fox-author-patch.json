@@ -1,0 +1,45 @@
+{
+  "scope": "Audit prototype only; complete constant torso-curve author, unchanged 90percent reserve and all runtime guards. Source-bound layered trot only; legacy endpoint cards retain outputs.",
+  "edits": [
+    {
+      "file": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "from": "compile:(a:MotionAction)=>MotionTimeline):",
+      "to": "compile:(a:MotionAction)=>MotionTimeline,idle?:MotionTimeline):"
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "from": " const unchanged={action,note:null};",
+      "to": " const unchanged={action,note:null};\n const layeredTrot=action.id==='approach:trot'&&!!card.paintedContactSupports&&!!idle;"
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "from": "!['approach:gallop','cast'].includes(action.id)",
+      "to": "(!['approach:gallop','cast'].includes(action.id)&&!layeredTrot)"
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "from": "timeline:{...base,seed:0,hash:''}})",
+      "to": "timeline:{...base,seed:0,hash:''},...layeredTrot?{idle}:{} })"
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "from": "solver=createFamilyContactSolver(record);",
+      "to": "solver=createFamilyContactSolver(record,layeredTrot?card.paintedContactSupports!.supports:{});"
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "from": "  }return true;",
+      "to": "  }\n  if(layeredTrot&&idle){\n   const idlePoses=Array.from({length:32},(_,i)=>sample(idle,idle.durationMs*i/32));\n   for(let i=0;i<=120;i++){const ms=tl.durationMs*i/120,p=sample(tl,ms);\n    for(const under of idlePoses){const pose:Record<string,CreaturePoseV1[string]>={};\n     for(const part of [under,p]){\n      for(const[j,rotation]of Object.entries(part.joints))if(j!=='root')pose[j]={rotation:(pose[j]?.rotation??0)+rotation};\n      const old=pose.root??{rotation:0};pose.root={rotation:old.rotation+part.root.rotation,dx:(old.dx??0)+part.root.dx,dy:(old.dy??0)+part.root.dy};\n     }\n     try{solver.resolve(pose,{actionId:action.id,elapsedMs:ms,durationMs:tl.durationMs,weight:1,realm:card.realm,travel:'stage',stageDisplacement:0});}catch{return false;}\n    }\n   }\n  }return true;"
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+      "from": "'grounded-quadruped:torso-gain='+gain",
+      "to": "(layeredTrot?'grounded-quadruped:layered-trot-gain=':'grounded-quadruped:torso-gain=')+gain"
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/timeline.ts",
+      "from": "?groundedQuadrupedAction(card,action,base,sampleTimeline,a=>buildActionTimeline(card,a,seed,notes))",
+      "to": "?groundedQuadrupedAction(card,action,base,sampleTimeline,a=>buildActionTimeline(card,a,seed,notes),action.id==='approach:trot'&&card.paintedContactSupports?buildTimeline(card,'idle',seed):undefined)"
+    }
+  ]
+}

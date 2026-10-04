@@ -1,0 +1,28 @@
+{
+  "name": "Macaw",
+  "masterSha256": "56597421092300176d768ca2cff14c0320203ab9534c408d51d65999162a937d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two separate feet, long complete blue/yellow tail, attached folded near wing, hooked bill and white facial patch with dark stripes are visible. Far wing root is hidden. Exact zygodactyl toe count/ownership is not fully separable from this view; retain foot-anatomy review. Long narrow tail tips need whole-silhouette framing check.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 138,
+      "y0": 308,
+      "x1": 1023,
+      "y1": 888
+    },
+    "margins": {
+      "left": 138,
+      "right": 230,
+      "top": 308,
+      "bottom": 365
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

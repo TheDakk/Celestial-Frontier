@@ -1,0 +1,204 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "source-bound exact labels on authored keyer output; not painter draw stages",
+  "recordRecipeHash": "20779173af21cb9715b5f335dc37fab069b851a484c9adc46128fcad2f36ef50",
+  "declarationHash": "b499db16809aecb6967633f9975136daab1e7e6ac81ac7c830e43703824391d2",
+  "paintedPixels": 331368,
+  "parts": [
+    {
+      "id": "near-hand",
+      "joint": "armNearHand",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 682,
+        "y": 646,
+        "width": 215,
+        "height": 332
+      },
+      "pixels": 41096
+    },
+    {
+      "id": "far-hand",
+      "joint": "armFarHand",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 843,
+        "y": 651,
+        "width": 195,
+        "height": 312
+      },
+      "pixels": 28399
+    },
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 456,
+        "y": 892,
+        "width": 193,
+        "height": 75
+      },
+      "pixels": 10377
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 215,
+        "y": 853,
+        "width": 185,
+        "height": 96
+      },
+      "pixels": 9434
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 417,
+        "y": 681,
+        "width": 149,
+        "height": 222
+      },
+      "pixels": 26054
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 232,
+        "y": 700,
+        "width": 188,
+        "height": 187
+      },
+      "pixels": 19828
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearHip",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 370,
+        "y": 486,
+        "width": 194,
+        "height": 216
+      },
+      "pixels": 26314
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarHip",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 315,
+        "y": 671,
+        "width": 111,
+        "height": 78
+      },
+      "pixels": 3773
+    },
+    {
+      "id": "near-upper-arm",
+      "joint": "armNearElbow",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 656,
+        "y": 374,
+        "width": 235,
+        "height": 301
+      },
+      "pixels": 57510
+    },
+    {
+      "id": "far-upper-arm",
+      "joint": "armFarElbow",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 870,
+        "y": 494,
+        "width": 89,
+        "height": 191
+      },
+      "pixels": 4284
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 900,
+        "y": 454,
+        "width": 107,
+        "height": 84
+      },
+      "pixels": 6879
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 835,
+        "y": 237,
+        "width": 167,
+        "height": 223
+      },
+      "pixels": 21840
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 696,
+        "y": 255,
+        "width": 227,
+        "height": 258
+      },
+      "pixels": 17467
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 309,
+        "y": 330,
+        "width": 411,
+        "height": 374
+      },
+      "pixels": 58113
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyedRgbaSha256": "7b78596cd10eee4be9b82b1b3eba91756d8ef3273b96ae53b1bd00e4738512e0",
+  "keyer": {
+    "erodedPixels": 6563,
+    "despilledPixels": 3099,
+    "unresolvedEdgePixels": 79
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "78da7b6d2ad46eaa6a452cdb71a2c08ce75f898be89e5c234ff6ff72f88fc3a5",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

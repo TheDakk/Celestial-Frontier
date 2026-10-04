@@ -1,0 +1,10 @@
+import fs from'node:fs';import{createHash}from'node:crypto';
+import{FAMILY_CONTRACTS,familyContract,familyContractForRecord}from'../../port/v2/tools/creature-animation/family-contracts.mjs';
+import{resolveAnatomyInventory}from'../../port/v2/tools/creature-animation/anatomy-inventory.mjs';
+import{actionsFor}from'../../port/v2/apps/game/src/motion/family-actions.ts';
+import{createFamilyContactSolver}from'../../port/v2/apps/game/src/creature-rig-contact.ts';
+const[,out]=process.argv.slice(2),sha=(x:any)=>createHash('sha256').update(JSON.stringify(x)).digest('hex'),records=JSON.parse(fs.readFileSync('port/v2/tools/creature-animation/test-fixtures/family-records.json','utf8')).records;
+const families=FAMILY_CONTRACTS.map(c=>({id:c.id,contractSha256:sha(c),actionsSha256:sha(actionsFor(c.id))}));
+const contacts=Object.entries(records).map(([id,r]:[string,any])=>{const results=[];for(const actionId of['idle','approach:crawl','hit','tame'])for(const travel of['solver','stage']as const)for(const elapsedMs of[0,250,750]){try{const s=createFamilyContactSolver(r);results.push({actionId,travel,elapsedMs,result:s.resolve({},{actionId,travel,elapsedMs,durationMs:1000,realm:'land'})});}catch(e){results.push({actionId,travel,elapsedMs,error:String(e)});}}return{id,resolvedContractSha256:sha(familyContractForRecord(r)),resultsSha256:sha(results),cases:results.length};});
+const compact=[0,1].flatMap(ultimateLegPairs=>Array.from({length:14},(_,i)=>{const walkingLegPairs=i+1,anatomy={schema:'cf.anatomy-presence/v2'as const,absent:[],hidden:[],folded:[],appendages:{walkingLegPairs,ultimateLegPairs}};return{walkingLegPairs,ultimateLegPairs,contractSha256:sha(resolveAnatomyInventory(familyContract('myriapod'),anatomy)),actionsSha256:sha(actionsFor('myriapod',anatomy))};}));
+fs.writeFileSync(out,JSON.stringify({families,contacts,compact},null,2)+'\n',{flag:'wx'});

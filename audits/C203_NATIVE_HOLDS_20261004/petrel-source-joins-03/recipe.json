@@ -1,0 +1,86 @@
+{
+  "sourceFit": "audits/C203_NATIVE_HOLDS_20261004/petrel-islands-02/fit",
+  "sourceBindingSha256": "b5e9bb1f7c0e9af6aeee27bcb9f58599ff875a05a3fff1c2480c56e356b308ca",
+  "candidateBindingSha256": "4af710aa14fc729be16d3fe03ad6901677cbbd945699c811ebf900d8df2d7969",
+  "sourceAtlasSha256": "583ac835c4b1f37f55fc65af401f6e8f033ca3974a20d3fd22ff513c13558665",
+  "paintBoundaryPairs": [
+    [
+      "body",
+      "chest"
+    ],
+    [
+      "body",
+      "lower-neck"
+    ],
+    [
+      "body",
+      "near-wing-root"
+    ],
+    [
+      "body",
+      "far-wing-root"
+    ]
+  ],
+  "sourcePixelsChanged": 0,
+  "recordChanged": false,
+  "limitsChanged": false,
+  "reason": "Continuous painted torso to proximal chest/neck/wing boundary only. No ties across intermediate neck or distal overlapping wing.",
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 30,
+        "distancePx": 4.242640687119208,
+        "supports": [
+          62,
+          56
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 28,
+        "distancePx": 9.486832980505254,
+        "supports": [
+          2,
+          3
+        ]
+      }
+    ],
+    "sourceBindingHash": "744ba3b0c2d38dc6821374892bc64816cd8d95c03309884a4c830407841ab657",
+    "sourceVertices": 1179,
+    "vertices": 1348,
+    "sharedSupports": 350,
+    "pins": 615,
+    "independentSurfaceParts": 18,
+    "sourceJoins": 13,
+    "excludedOverlaps": 12,
+    "observedExcludedBoundaries": 12,
+    "weldedExcludedBoundaries": 4,
+    "independentExcludedBoundaries": 8,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "chest"
+      ],
+      [
+        "body",
+        "lower-neck"
+      ],
+      [
+        "body",
+        "near-wing-root"
+      ],
+      [
+        "body",
+        "far-wing-root"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Red Fox",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "f07e9331553e8abeccfc2233f600ce7d00fc256026567c6e7129fc9f51bdc47d",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "canid",
+  "authoringCreated": false,
+  "sourceHead": "e2e9bb10cd8484ab99440e7bbb059af5220f1158",
+  "basePromptSha256": "50daa31212aff20a8e420c329e407adf49b02e9de0c2c5812a19131ff8bccaf2",
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: A relaxed natural adult Red Fox standing with four distinct separated legs and paws on one ground level. Both forelimbs show a clearly readable natural elbow bend and flexed wrist, with the paws slightly forward of their wrists: do not draw rigid straight vertical forelegs. Keep actual fox proportions, visible shoulder-to-elbow-to-wrist-to-paw paths, naturally bent hind legs and clear gaps between all four leg shafts. The ears, jaw, bushy white-tipped tail and every paw are complete. No invented extra joint, protrusion, floating part, hidden far limb or extreme crouch.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete animal centered on native1254 by1254 magenta canvas; whole silhouette in central two-thirds with generous empty margin, no crop, floor or shadow.",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "priorSource": "audits/C202_NATIVE_HOLDS_20261004/red-fox-source-01/master.png",
+  "admission": "SOURCE_CANDIDATE_ONLY"
+}

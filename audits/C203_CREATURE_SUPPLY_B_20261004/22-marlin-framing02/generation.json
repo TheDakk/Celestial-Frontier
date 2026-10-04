@@ -1,0 +1,26 @@
+{
+  "id": "22-marlin-framing02",
+  "name": "Marlin",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-de9d2e37-1dce-4891-addd-17eef9e83845.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f2519935ed58fc4d2abd74ceb861de3567ebf8b16f6d2177bf1257aead18cd54",
+  "bytes": 1085333,
+  "promptSha256": "f3af6f19690d699aaadf746da22c5ec98ef66d692c4878257550b2d4d3bb7245",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "referencedImages": [
+    {
+      "path": "audits/C203_CREATURE_SUPPLY_B_20261004/22-marlin/master.png",
+      "sha256": "f171e0c9061860bc36bc39259a8384d58801a9b14df151e898928e584924e52e"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "outputModified": false,
+  "sourceOriginalRetained": true,
+  "handAuthoring": false,
+  "editSuccessor": true,
+  "localRescale": false
+}

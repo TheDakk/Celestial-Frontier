@@ -1,0 +1,28 @@
+{
+  "name": "Egret",
+  "masterSha256": "b169408d42640b6e4277f22220f0f96da93d606955f363c77f00ecc14fbd4d1a",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Two complete long black leg chains with visible bends/toes, S-curved neck, long yellow pointed bill and attached near folded wing are visible. White breeding plumes extend behind the body. Far wing/root is hidden and delicate trailing plumes make source ownership/key fringes uncertain. Shoulder/body feather overlap is observed, not proof of separated wing motion.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 301,
+      "y0": 275,
+      "x1": 1000,
+      "y1": 982
+    },
+    "margins": {
+      "left": 301,
+      "right": 253,
+      "top": 275,
+      "bottom": 271
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

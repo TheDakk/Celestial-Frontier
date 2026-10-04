@@ -1,0 +1,86 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "e2e9bb10cd8484ab99440e7bbb059af5220f1158",
+  "helperSha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/master.png",
+      "sha256": "48d607ad2fe4402bfd38fbfbe4d2e39bf6b340ca76a4a288beddc0ab05b42c4a"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/authoring.json",
+      "sha256": "f3fe1e6f8b58739b15b53434689cd0bce87c403933ae468ff087374a889d826a"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/subject-source.json",
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": true,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "81691092ed46df2f4bc07c5d47d49bff6c351a67287e9dc93b72273d72cbee5d",
+  "bindingHash": "006bdf17c36e89d539e1bd04ae80eb18cadc360ddf9b487350dccf983bfb3fc3",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingNearRoot",
+    "wingNearTip",
+    "wingFarTip",
+    "wingFarRoot",
+    "tailFan",
+    "pelvis",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/master.png",
+      "sha256": "48d607ad2fe4402bfd38fbfbe4d2e39bf6b340ca76a4a288beddc0ab05b42c4a",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/authoring.json",
+      "sha256": "f3fe1e6f8b58739b15b53434689cd0bce87c403933ae468ff087374a889d826a",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/subject-source.json",
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C203_NATIVE_HOLDS_20261004/snow-petrel-folded-source-01/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

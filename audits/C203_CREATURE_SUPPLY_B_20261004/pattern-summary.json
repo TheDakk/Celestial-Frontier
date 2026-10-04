@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Okapi",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Capybara",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Pronghorn",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Springbok",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Duiker",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Serow",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Brown Bear",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Grizzly Bear",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Kingfisher",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Macaw",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Toucan",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Pheasant",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Falcon",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Duck",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Egret",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Stork",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Arapaima",
+    "status": "NOT_REQUIRED",
+    "framing": "REFUSE"
+  },
+  {
+    "name": "Arowana",
+    "status": "NOT_REQUIRED",
+    "framing": "REFUSE"
+  },
+  {
+    "name": "Blenny",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Angelfish",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Tuna",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Marlin",
+    "status": "NOT_REQUIRED",
+    "framing": "REFUSE"
+  },
+  {
+    "name": "Swordfish",
+    "status": "NOT_REQUIRED",
+    "framing": "REFUSE"
+  },
+  {
+    "name": "Fangtooth",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "name": "Swordfish",
+  "masterSha256": "4f199d6aaae2ccc38c67b2154d82705727a8f3f35c807f7511b971daf5d18417",
+  "method": "Full native original inspection by Codex",
+  "observation": "Full-size successor shows the entire flattened bill, crescent tail and visible fins with broader margins. Finlet-like rear projections and the large underside fin near the pectoral root remain anatomy ambiguities; glossy treatment stays held. The stronger central-60% prompt target is not fully met, while minimum8% framing is measured separately.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 213,
+      "y0": 448,
+      "x1": 1061,
+      "y1": 771
+    },
+    "margins": {
+      "left": 213,
+      "right": 192,
+      "top": 448,
+      "bottom": 482
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "predecessor": "audits/C203_CREATURE_SUPPLY_B_20261004/23-swordfish/master.png",
+  "scope": "Framing-only source successor, all anatomical/style holds persist; no rig/native/gallery acceptance"
+}

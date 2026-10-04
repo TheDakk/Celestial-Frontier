@@ -1,0 +1,28 @@
+{
+  "name": "Arapaima",
+  "masterSha256": "54c32eeab5df4c74034ee9f9d832d29797aa139f52a80f07e3612729b2f3d438",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Complete rounded tail, posterior dorsal/anal fins, near pectoral/pelvic fins and continuous scale-covered body are visible. Rear scales/fins carry red-orange edging. Both horizontal margins are visibly narrow and require framing refusal measurement. Far paired fins/roots are not visible; reflective scales also need natural-painted style review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 64,
+      "y0": 464,
+      "x1": 1190,
+      "y1": 784
+    },
+    "margins": {
+      "left": 64,
+      "right": 63,
+      "top": 464,
+      "bottom": 469
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

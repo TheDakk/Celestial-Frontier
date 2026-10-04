@@ -1,0 +1,101 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "81691092ed46df2f4bc07c5d47d49bff6c351a67287e9dc93b72273d72cbee5d",
+  "cutoutSha256": "48d607ad2fe4402bfd38fbfbe4d2e39bf6b340ca76a4a288beddc0ab05b42c4a",
+  "parts": [
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "upper-neck",
+      "joint": "neck1",
+      "layer": "near"
+    },
+    {
+      "id": "lower-neck",
+      "joint": "neck0",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-root",
+      "joint": "wingNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-flight",
+      "joint": "wingNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "far-wing-tip",
+      "joint": "wingFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "far-wing-root",
+      "joint": "wingFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "near"
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "layer": "near"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "570dadbcff9876c60327f7807bfcdd0265ec11a4ba72bb3dc8a8b780f34084b3",
+  "keyedRgbaSha256": "5a107aa5d19089ed5fcda0e3a57bc1754821bdc46744c81e88f61768e3e8c349",
+  "declarationHash": "d899fdd43396d42d2a3c378829d296cea375cdd32dc677200d531cd86303c1ed"
+}

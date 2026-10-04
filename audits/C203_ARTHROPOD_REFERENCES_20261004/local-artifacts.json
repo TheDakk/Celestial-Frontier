@@ -1,0 +1,36 @@
+{
+  "schema": "cf.c203-local-artifacts/v1",
+  "scope": "Local reproducible output, excluded from deliverable bytes and Git",
+  "artifacts": [
+    {
+      "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/review-rig.bundle.mjs",
+      "sha256": "973ebe81c1e3b4884f5076eae1e23101bb8bdebeb00a14d662a3c39383e6f0cb",
+      "bytes": 1358342,
+      "disposition": "LOCAL_ONLY_DO_NOT_COMMIT",
+      "reason": "Generated dependency code contains absolute home paths; original local bytes preserved",
+      "reproductionOwner": {
+        "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/bundle-review.mjs",
+        "sha256": "0196686508d202fe2168b0e29ca97c2edb96fe2c1bb515ab2efd46c093f340fd",
+        "bytes": 1225
+      },
+      "sourceEntry": {
+        "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/review-rig.mjs",
+        "sha256": "63de43ab2ca8efcb0a9157512ad78bb69a4f134450d5085629567fc5fd03ab05",
+        "bytes": 4549
+      },
+      "sourceAndBundleReceipt": {
+        "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/review-bundle-receipt.json",
+        "sha256": "e591b8c66dbf4de9a319f9c451df01df4afb866b370442053b7441c02160a993",
+        "bytes": 178710
+      },
+      "reproduction": "Run the existing bundle-review.mjs with the exact bound inputs in a clean local output location; current producer intentionally refuses overwriting an existing bundle."
+    }
+  ],
+  "historicalManifest": {
+    "path": "audits/C203_ARTHROPOD_REFERENCES_20261004/delivery.json",
+    "sha256": "d919094bdc1d25d06d52552390e683899082c1ef0834630769ad16052111efea",
+    "bytes": 66082,
+    "status": "SUPERSEDED_LOCAL_INCLUSIVE_SCOPE",
+    "successor": "audits/C203_ARTHROPOD_REFERENCES_20261004/delivery-v2.json"
+  }
+}

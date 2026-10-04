@@ -1,0 +1,314 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/C203_NATIVE_HOLDS_20261004/petrel-contours-02/fit",
+  "sourceMasterSha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924",
+  "keyedRgbaSha256": "636515659ee5bc240f708c792faffbe41aedda3347b6d733e46c1365831f6e74",
+  "remainder": "body",
+  "remainderPixels": 31769,
+  "movedPixels": 3128,
+  "islands": [
+    {
+      "pixels": 34,
+      "to": "far-wing-tip",
+      "border": {
+        "far-wing-tip": 27
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-tip",
+      "border": {
+        "far-wing-tip": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-tip",
+      "border": {
+        "far-wing-tip": 2
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "far-wing-tip",
+      "border": {
+        "far-wing-tip": 5
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "far-wing-tip",
+      "border": {
+        "far-wing-tip": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-tip",
+      "border": {
+        "far-wing-tip": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-wing-tip",
+      "border": {
+        "far-wing-tip": 2
+      }
+    },
+    {
+      "pixels": 344,
+      "to": "far-wing-tip",
+      "border": {
+        "far-wing-tip": 141
+      }
+    },
+    {
+      "pixels": 1400,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-root": 10,
+        "near-wing-flight": 284
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "far-wing-tip",
+      "border": {
+        "near-wing-root": 1,
+        "far-wing-tip": 2
+      }
+    },
+    {
+      "pixels": 282,
+      "to": "near-wing-root",
+      "border": {
+        "near-wing-root": 56,
+        "far-wing-tip": 39,
+        "far-wing-root": 21
+      }
+    },
+    {
+      "pixels": 80,
+      "to": "beak",
+      "border": {
+        "beak": 21,
+        "head": 12
+      }
+    },
+    {
+      "pixels": 72,
+      "to": "head",
+      "border": {
+        "head": 21,
+        "upper-neck": 15
+      }
+    },
+    {
+      "pixels": 106,
+      "to": "upper-neck",
+      "border": {
+        "far-wing-root": 19,
+        "upper-neck": 22,
+        "lower-neck": 19
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 2
+      }
+    },
+    {
+      "pixels": 127,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 78
+      }
+    },
+    {
+      "pixels": 82,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 22
+      }
+    },
+    {
+      "pixels": 18,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 8
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "chest",
+      "border": {
+        "chest": 2
+      }
+    },
+    {
+      "pixels": 263,
+      "to": "tail",
+      "border": {
+        "tail": 31,
+        "pelvis": 31
+      }
+    },
+    {
+      "pixels": 10,
+      "to": "pelvis",
+      "border": {
+        "pelvis": 8
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "tail",
+      "border": {
+        "tail": 4
+      }
+    },
+    {
+      "pixels": 134,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 38,
+        "near-shin": 18
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 8
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 1,
+        "far-shin": 1
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 6
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 3
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 4
+      }
+    },
+    {
+      "pixels": 44,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 28
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2
+      }
+    },
+    {
+      "pixels": 68,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 29
+      }
+    },
+    {
+      "pixels": 18,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 9
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "c203-petrel-proximal-feather-islands",
+    "parts": 18,
+    "atlasSize": {
+      "width": 1452,
+      "height": 443
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 30,
+        "distancePx": 4.242640687119208,
+        "supports": [
+          62,
+          56
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 28,
+        "distancePx": 9.486832980505254,
+        "supports": [
+          2,
+          3
+        ]
+      }
+    ],
+    "sourceBindingHash": "744ba3b0c2d38dc6821374892bc64816cd8d95c03309884a4c830407841ab657",
+    "sourceVertices": 1179,
+    "vertices": 1478,
+    "sharedSupports": 251,
+    "pins": 766,
+    "independentSurfaceParts": 18,
+    "sourceJoins": 13,
+    "excludedOverlaps": 12,
+    "observedExcludedBoundaries": 12,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 12,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

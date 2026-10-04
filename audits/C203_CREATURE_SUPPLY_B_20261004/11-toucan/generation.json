@@ -1,0 +1,14 @@
+{
+  "id": "11-toucan",
+  "name": "Toucan",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-ae1798f7-c824-44c6-a1e3-d05835d2d2a7.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b965671e8e031c0a9c9e1a5d160b971a096f3599f0973ab750ca5618e434beda",
+  "bytes": 1237262,
+  "promptSha256": "2a855ac6cb6239dd6862868a88e693bdc999759fdff6eca55a1e0eefd0421dc4",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Okapi",
+  "masterSha256": "c643d4ff0239e0bbf2150defa24894fd13f9d82570207c44bf7b3a9333da134d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Four separate cloven hoof endpoints, two actual ears, small ossicones and attached tufted tail are visible. Cream stripes cross the dark hindquarters and upper legs. Far foreleg upper root is hidden behind the chest; shallow three-quarter head limits a complete root-visibility claim.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 244,
+      "y0": 206,
+      "x1": 1056,
+      "y1": 986
+    },
+    "margins": {
+      "left": 244,
+      "right": 197,
+      "top": 206,
+      "bottom": 267
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

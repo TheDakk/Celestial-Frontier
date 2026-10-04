@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "apps/game/src/creature-rig-contact-insect-sockets.test.ts",
+    "apps/game/src/creature-rig-contact-travel-substeps.test.ts",
+    "apps/game/src/motion/compact-myriapod.test.ts"
+  ],
+  "cwd": "port/v2",
+  "exitCode": 0,
+  "signal": null
+}

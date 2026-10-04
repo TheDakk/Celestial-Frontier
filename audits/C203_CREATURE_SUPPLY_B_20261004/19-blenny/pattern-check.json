@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Blenny",
+  "masterSha256": "41a78853ce7994cb4bfe271c6bb87c6dda0e48ce84b033c221dcf2b7c26417f6",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

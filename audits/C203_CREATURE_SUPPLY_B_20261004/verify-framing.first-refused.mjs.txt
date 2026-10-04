@@ -1,0 +1,51 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {assessPatternObservation,patternRequirements} from '../../port/v2/tools/painted-creature/pattern-observation.mjs';
+const base=path.relative(process.cwd(),import.meta.dirname),sha=b=>createHash('sha256').update(b).digest('hex'),read=p=>JSON.parse(fs.readFileSync(p));
+const originals=read(base+'/pilot.json'),rows=read(base+'/pilot-framing-successors.json'),originalObs=read(base+'/observations.json'),obs=read(base+'/observations-framing.json'),notes=read(base+'/visual-notes-framing.json');
+function packet(r){return{r,q:read(r.packet+'/request.json'),g:read(r.packet+'/generation.json'),bytes:fs.readFileSync(r.master),prompt:fs.readFileSync(r.packet+'/prompt.txt','utf8'),canonical:fs.readFileSync(r.packet+'/prompt.canonical.txt'),subject:fs.readFileSync(r.packet+'/subject-source.json'),o:obs.find(x=>x.id===r.id),note:notes[r.id]};}
+function verify(p){
+ const {r,q,g,bytes,prompt,canonical,subject,o,note}=p,s=q.framingSuccessor,old=originals.find(x=>x.id===r.supersedes);assert(old);assert.equal(r.name,old.name);assert.equal(r.family,old.family);assert.equal(r.master,r.packet+'/master.png');assert.equal(r.packet,old.packet+'-framing02');assert.equal(r.id,old.id+'-framing02');
+ const oldRequest=read(old.packet+'/request.json'),oldPrompt=fs.readFileSync(old.packet+'/prompt.txt','utf8');
+ assert.equal(s.originalId,old.id);assert.equal(s.originalMaster,old.master);assert.equal(s.originalMasterSha256,sha(fs.readFileSync(old.master)));assert.equal(s.originalRequestSha256,sha(fs.readFileSync(old.packet+'/request.json')));assert.equal(s.originalPromptSha256,sha(oldPrompt));assert.equal(s.preparerSha256,sha(fs.readFileSync(base+'/framing-successors.mjs')));assert.equal(s.attempt,1);assert.equal(s.localRescale,false);
+ assert.deepEqual(s.originalFraming,originalObs.find(x=>x.id===old.id).framing);assert.equal(s.originalFraming.status,'REFUSE');
+ assert.deepEqual({...q,promptSha256:oldRequest.promptSha256,framingSuccessor:undefined},{...oldRequest,framingSuccessor:undefined});
+ assert.equal(prompt,s.correction+'\n\n'+oldPrompt+'\n\n'+s.correction+'\n');assert.equal(q.promptSha256,sha(prompt));assert(canonical.equals(fs.readFileSync(old.packet+'/prompt.canonical.txt')));assert(subject.equals(fs.readFileSync(old.packet+'/subject-source.json')));
+ assert.deepEqual(s.references,[{path:old.master,sha256:sha(fs.readFileSync(old.master))},{path:q.reference,sha256:sha(fs.readFileSync(q.reference))}]);assert.deepEqual(g.referencedImages,s.references);
+ assert.equal(g.tool,'image_gen.imagegen');assert.equal(g.editSuccessor,true);assert.equal(g.outputModified,false);assert.equal(g.localRescale,false);assert.equal(g.sourceOriginalRetained,true);assert.equal(g.promptSha256,q.promptSha256);assert.equal(g.styleReferenceSha256,q.referenceSha256);assert.equal(g.masterSha256,sha(bytes));assert.equal(g.bytes,bytes.length);
+ const source=g.sourcePath.startsWith('~/')?path.join(os.homedir(),g.sourcePath.slice(2)):g.sourcePath;assert(bytes.equals(fs.readFileSync(source)));assert.notEqual(g.masterSha256,s.originalMasterSha256);
+ assert.equal(o.masterSha256,g.masterSha256);assert.equal(o.width,1254);assert.equal(o.height,1254);assert.equal(o.framing.status,'PASS_FRAMING_ONLY');assert.equal(o.framing.required.x,101);assert.equal(o.framing.required.y,101);assert(note?.length>80);
+}
+assert.equal(rows.length,4);const packets=rows.map(packet);for(const p of packets)verify(p);
+const controls=[];function check(name,fn){fn();controls.push({name,status:'PASS'});}
+check('all four exact generator-painted successors preserve predecessor receipts',()=>assert.equal(packets.length,4));
+for(const[name,mutate]of [
+ ['altered successor prompt refused',p=>p.prompt+=' changed'],
+ ['altered successor master refused',p=>p.bytes=Buffer.concat([p.bytes,Buffer.from([0])])],
+ ['stale predecessor master hash refused',p=>p.q.framingSuccessor.originalMasterSha256='0'.repeat(64)],
+ ['stale predecessor request hash refused',p=>p.q.framingSuccessor.originalRequestSha256='0'.repeat(64)],
+ ['altered style reference refused',p=>p.q.framingSuccessor.references[1].sha256='0'.repeat(64)],
+ ['local resized output flag refused',p=>p.g.localRescale=true],
+ ['second correction attempt refused',p=>p.q.framingSuccessor.attempt=2],
+ ['framing-red successor refused',p=>p.o.framing.status='REFUSE'],
+ ['widened margin allowance refused',p=>p.o.framing.required.x=50],
+ ['missing full-size review refused',p=>p.note=null]
+])check(name,()=>{const p=packet(rows[0]);mutate(p);assert.throws(()=>verify(p));});
+const selected=originals.map(r=>rows.find(s=>s.supersedes===r.id)??r),accepted=new Set(read(base+'/coverage-at-selection.json').families.flatMap(f=>f.names));
+const recentA=read('audits/C203_CREATURE_SUPPLY_20261004/pilot.json').map(r=>r.name),recent202=read('audits/C202_CREATURE_SUPPLY_20261004/pilot.json').map(r=>r.name);
+function verifySelection(rr){assert.equal(rr.length,24);assert.equal(new Set(rr.map(r=>r.name)).size,24);for(const r of rr){assert(!accepted.has(r.name)&&!recentA.includes(r.name)&&!recent202.includes(r.name));assert.deepEqual(r,selected.find(s=>s.name===r.name));const o=[...originalObs,...obs].find(x=>x.id===r.id);assert.equal(o.framing.status,'PASS_FRAMING_ONLY');}}
+check('selected24 unique framing-eligible uncovered names',()=>verifySelection(selected));
+check('accepted identity refused',()=>assert.throws(()=>verifySelection([{...selected[0],name:[...accepted][0]},...selected.slice(1)])));
+check('previous C202 identity refused',()=>assert.throws(()=>verifySelection([{...selected[0],name:recent202[0]},...selected.slice(1)])));
+check('previous C203 A identity refused',()=>assert.throws(()=>verifySelection([{...selected[0],name:recentA[0]},...selected.slice(1)])));
+check('old framing-red original cannot be selected',()=>assert.throws(()=>verifySelection(selected.map(r=>r.supersedes===rows[0].supersedes?originals.find(o=>o.id===r.supersedes):r))));
+check('same-count duplicate identity refused',()=>assert.throws(()=>verifySelection([selected[0],selected[0],...selected.slice(2)])));
+check('missing selected source refused',()=>assert.throws(()=>verifySelection(selected.slice(1))));
+for(const p of packets){const species=JSON.parse(p.subject).species,requirements=patternRequirements(species),pattern=assessPatternObservation(species,p.bytes,{name:p.r.name,masterSha256:p.g.masterSha256,status:'PRESENT',features:requirements.map(requirement=>({requirement,status:'PRESENT',observed:p.note}))});fs.writeFileSync(p.r.packet+'/pattern-check.json',JSON.stringify(pattern,null,2)+'\n',{flag:'wx'});fs.writeFileSync(p.r.packet+'/visual-review.json',JSON.stringify({name:p.r.name,masterSha256:p.g.masterSha256,method:'Full native original inspection by Codex',observation:p.note,status:'DIAGNOSTIC_NOT_ADMITTED',framing:p.o.framing,predecessor:p.q.framingSuccessor.originalMaster,scope:'Framing-only source successor, all anatomical/style holds persist; no rig/native/gallery acceptance'},null,2)+'\n',{flag:'wx'});}
+fs.writeFileSync(base+'/pilot-selected.json',JSON.stringify(selected,null,2)+'\n',{flag:'wx'});
+fs.writeFileSync(base+'/controls-framing.json',JSON.stringify({schema:'cf.g2-framing-successor-controls/v1',scope:'Browser-free in-memory mutations; originals and product unchanged',controls},null,2)+'\n',{flag:'wx'});
+fs.writeFileSync(base+'/framing-successor-proof.json',JSON.stringify({schema:'cf.g2-framing-successor-proof/v1',selected:24,originalAttempts:24,successorAttempts:4,exactNativeDimensions:[1254,1254],localRescale:false,qualityAccepted:false,rigAdmission:false,originalRefusals:packets.map(p=>({id:p.r.supersedes,masterSha256:p.q.framingSuccessor.originalMasterSha256,framing:p.q.framingSuccessor.originalFraming})),selectedSuccessors:packets.map(p=>({id:p.r.id,master:p.r.master,masterSha256:p.g.masterSha256,promptSha256:p.q.promptSha256,framing:p.o.framing,remainingHolds:p.note})),selectedPilotSha256:sha(fs.readFileSync(base+'/pilot-selected.json'))},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({selected:24,successors:4,controls:controls.length,status:'PASS_FRAMING_AND_PROVENANCE_ONLY'}));

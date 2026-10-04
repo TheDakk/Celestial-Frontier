@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pheasant",
+  "masterSha256": "14737b54f95ecf346fe58588d27668977d76faecc1e3d1fa0ff6ad2df3770eb8",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

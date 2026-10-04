@@ -1,0 +1,14 @@
+{
+  "id": "15-egret",
+  "name": "Egret",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-e9a317df-349f-4362-9991-f962b80605a7.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b169408d42640b6e4277f22220f0f96da93d606955f363c77f00ecc14fbd4d1a",
+  "bytes": 1200956,
+  "promptSha256": "560a48b42c5aa60bbbb1291adb383f775104a40b904b9c1e7da9f876332385d0",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
