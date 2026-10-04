@@ -52,6 +52,19 @@ the archive verbatim and refresh this handoff in place.
   `native-g2c54/crops.mjs` shows only the ground band — review aerial fighters on full frames. Dakk's queue: three arena repaints
   (marsh-r3, dunesea-r2, freshwater-lake-v3 — registration is a product change for the next I5 batch), guardian choreography
   default, D28, preview redeploy, PR #44.
+- **STATE 2026-10-04 (read this first in a new session):** coverage **270/631 (42.8 %)**, only Snow Petrel held
+  (`audits/GENERATED_GALLERY_20260927/coverage.json`). Both lanes pushed and develop-green (6,005); I5 re-certified on Codex's
+  456ac7c52. Decisions D28 (island cap 0.5), D29 (arena 1672x941), D30 (WebP arenas, all 45 accepted), D31 (cast attack for
+  limbless/sessile — merged) are in `audits/MAILBOX/DECISIONS.md`. **Pending:** Dakk authorized ONE combined I5 3+1 + ONE develop
+  gate on Codex's `f8ff0413e` (mailbox C204) — Codex runs it; hold native/heavy CPU until its TERMINAL row. **Next for Claude:**
+  score Codex's C274–C281 deliveries (48 identities) and re-score Supply B cephalopods with the qualified Octopus reference;
+  per batch: `score-batch.mjs <batch> <tag> --fish-seams --extra-refs=audits/G1_AUTO_AUTHOR_20260926/pilots/reference-pool-extras-c223.json`
+  → full-frame + zoomed late-idle review → island repair (`audits/BIRD_ISLANDS_C121_20261001/run.mjs` pattern) → registry/coverage
+  → AI finish (`audits/AI_FINISH_C121_20261001/{finish-batch,rebind-batch,native}.mjs`) → mailbox row → push. **Laws learned:**
+  post "Claude native window ACTIVE/TERMINAL" rows around native work; a Codex reservation ends only at its TERMINAL row; never
+  `pkill` by name; scrub `/Users/<name>` to `~` and check `mode 120000` symlinks before every commit; review fliers on FULL
+  frames (the crop sheet shows only the ground band); after a TaskStop of a native run remove this worktree's stale workspace lock;
+  zsh does not word-split `$x` (use explicit args). The all-pairs sweep stays on HOLD until Dakk says otherwise.
 - **Open for Dakk:** D28 (island cap; 6 more birds now wait on it); finisher scope (every accepted G2 original vs procedural creatures);
   dev-preview redeploy; PR #44 hosted attempt.
 
