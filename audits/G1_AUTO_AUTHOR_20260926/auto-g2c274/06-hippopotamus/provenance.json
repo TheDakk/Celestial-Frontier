@@ -1,0 +1,141 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "06-hippopotamus",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "d55a35d455b0cb350e28089b8a2441196db769d627cc711470f1d3bdee391d3b",
+ "subjectSourceSha256": "f368aac51b05730062862b7a0f3fef288012f63fa8c9522bb33114ed8cb7f28d",
+ "identity": {
+  "name": "Hippopotamus",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hippopotamus\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1327369223\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "seed": 1327369223,
+  "checks": [
+   "materials-unknown: no species-group material for profile hippo; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "hippo",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "eb714c5a7cd2b6ab58c05681e7ead939864536a22e63c06738c8f40a670c12cb",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group hippo (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0047,
+     "class": "top",
+     "attach": {
+      "x": 159,
+      "y": 135,
+      "relX": 0.34,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0683,
+     "class": "front",
+     "attach": {
+      "x": 332.3,
+      "y": 189.3,
+      "relX": 1,
+      "relY": 0.47
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0188,
+     "class": "rear",
+     "attach": {
+      "x": 70,
+      "y": 200,
+      "relX": 0,
+      "relY": 0.56
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0396,
+     "class": "limb-down",
+     "attach": {
+      "x": 83.5,
+      "y": 240,
+      "relX": 0.05,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0609,
+     "class": "limb-down",
+     "attach": {
+      "x": 245,
+      "y": 247.5,
+      "relX": 0.66,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0281,
+     "class": "limb-down",
+     "attach": {
+      "x": 125,
+      "y": 251,
+      "relX": 0.21,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0056,
+     "class": "limb-down",
+     "attach": {
+      "x": 172,
+      "y": 251,
+      "relX": 0.39,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

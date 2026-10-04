@@ -1,0 +1,30 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C198_CREATURE_SUPPLY_B_20261003",
+ "tag": "g2c257ceph",
+ "pilot": 4,
+ "patternSkipped": [],
+ "scored": 4,
+ "admitPassStatic": [],
+ "refused": [
+  {
+   "id": "03-squid",
+   "reason": "wrong-family: insect matches clearly better (0.0306 < 0.0481)"
+  },
+  {
+   "id": "04-cuttlefish",
+   "reason": "missing-anatomy: part arm2-middle (arm2Seg1) covers 19% paint (reference 92%)"
+  },
+  {
+   "id": "16-octopus",
+   "reason": "no-reference: no other hand-authored subject of family cephalopod"
+  },
+  {
+   "id": "17-giant-octopus",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 13.2% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [],
+ "native": [],
+ "runnerExit": 0
+}

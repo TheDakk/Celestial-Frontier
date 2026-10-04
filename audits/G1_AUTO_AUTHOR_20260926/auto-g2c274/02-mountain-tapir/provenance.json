@@ -1,0 +1,128 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "02-mountain-tapir",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "603d5b4f75dcbcb46bc537dc40bf54feeec723af0c34190e986414edf5467d2c",
+ "subjectSourceSha256": "6a15263e40980f75500ba02e685c0c3806b3b75c129dbdd61984b342eb41a207",
+ "identity": {
+  "name": "Mountain Tapir",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mountain Tapir\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1515410668\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "seed": 1515410668,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "3fc573567179fd35c2defeef84a1cbf3acdd5daffaba29e90257ba5d52c30655",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "tapir",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "1758d0246104af4a75229fc0deecf5ab9604438efba8756895028246d9985e34",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group tapir (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1294,
+     "class": "front",
+     "attach": {
+      "x": 280.1,
+      "y": 153.9,
+      "relX": 0.94,
+      "relY": 0.21
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0065,
+     "class": "top",
+     "attach": {
+      "x": 172.5,
+      "y": 132,
+      "relX": 0.39,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0156,
+     "class": "rear",
+     "attach": {
+      "x": 96,
+      "y": 195,
+      "relX": -0.01,
+      "relY": 0.61
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0588,
+     "class": "limb-down",
+     "attach": {
+      "x": 114.8,
+      "y": 234.7,
+      "relX": 0.09,
+      "relY": 1
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1049,
+     "class": "limb-down",
+     "attach": {
+      "x": 233.8,
+      "y": 236,
+      "relX": 0.7,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0525,
+     "class": "limb-down",
+     "attach": {
+      "x": 154.5,
+      "y": 235,
+      "relX": 0.3,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "id": "10-macaw",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-shin (legFarAnkle) covers 28% paint (reference 84%)"
+ ],
+ "semanticPresence": null
+}

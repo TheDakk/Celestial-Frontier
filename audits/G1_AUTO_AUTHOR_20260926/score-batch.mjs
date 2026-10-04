@@ -3,12 +3,13 @@
  * Usage (repo root; native needs the real browser, so run OUT of the sandbox):
  *   node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir-with-pilot.json> <tag> [--no-native] [--fish-seams]
  *   optional (2026-10-02): --extra-refs=<pool json> replaces the default reference pool; --reviewed-presence=<json> is passed to run-auto
+ *   optional (2026-10-04): --pilot=<json> scores that pilot list instead of <batchDir>/pilot.json (framing successors, re-score subsets)
  * Writes: pilots/<tag>-eligible.json, auto-<tag>/ (runner), native-<tag>/ (scripts, films, stills, sheets, summary.json), and appends
  * every native PASS to gallery-registry.json (entries are data; the gallery notes start as "unreviewed" until Claude looks). */
 import fs from 'node:fs'; import path from 'node:path'; import { spawnSync } from 'node:child_process';
 const [batchArg, tag, ...flags] = process.argv.slice(2); if (!batchArg || !tag) throw Error('usage: score-batch.mjs <batchDir> <tag> [--no-native] [--fish-seams]');
 const ROOT = path.resolve(import.meta.dirname, '../..'), HERE = import.meta.dirname, rel = (p) => path.relative(ROOT, p);
-const batch = path.resolve(ROOT, batchArg), pilot = JSON.parse(fs.readFileSync(path.join(batch, 'pilot.json'), 'utf8'));
+const batch = path.resolve(ROOT, batchArg), pilot = JSON.parse(fs.readFileSync(flags.find((f) => f.startsWith('--pilot='))?.slice(8) ?? path.join(batch, 'pilot.json'), 'utf8')) /* --pilot=<json> (2026-10-04): score a selected subset, e.g. Codex's pilot-selected.json */;
 const run = (cmd, args, opts = {}) => { const r = spawnSync(cmd, args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 1 << 28, ...opts }); return { code: r.status, out: (r.stdout || '') + (r.stderr || '') }; };
 /* 1. pattern gate: only PASS / NOT_REQUIRED paintings are scored (Codex's pattern-observation contract) */
 const eligible = [], skipped = [];

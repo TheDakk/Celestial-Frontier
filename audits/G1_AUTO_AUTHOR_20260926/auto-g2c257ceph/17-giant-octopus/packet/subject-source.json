@@ -1,0 +1,73 @@
+{
+  "name": "Giant Octopus",
+  "family": "cephalopod",
+  "species": {
+    "name": "Giant Octopus",
+    "aspect": 1.6,
+    "headFrac": 0.3,
+    "eyes": "prominent",
+    "posture": "crawling",
+    "mustRead": [
+      "bulbous bag-like mantle sitting above the eyes",
+      "eight suckered arms of unequal length",
+      "horizontal slit pupil in a bulging eye"
+    ],
+    "note": "the big 'head' bulb is the mantle - the eyes sit below it, where the arms attach; no tentacles, only eight arms"
+  },
+  "genome": {
+    "seed": 1923676993,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 7,
+    "body": 7,
+    "loco": 11,
+    "trait": 18,
+    "size": 5,
+    "diet": 4,
+    "head": 1,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 1,
+    "habitat": 14,
+    "detail": 5,
+    "accent": 4,
+    "temper": 4,
+    "sense": 6,
+    "repro": 7,
+    "life": 5,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Giant Octopus"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Giant Octopus\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1923676993\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 469,
+  "profile": {
+    "id": "cephalopod",
+    "names": [
+      "Squid",
+      "Octopus",
+      "Cuttlefish",
+      "Giant Octopus",
+      "Giant Squid",
+      "Vampire Squid",
+      "Deep-Sea Octopus",
+      "Nautilus"
+    ],
+    "candidateTemplates": [
+      "cephalopod"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "lash",
+      "bite"
+    ],
+    "notes": "Preserve arm/tentacle counts and shell; Nautilus does not inherit exactly eight arms."
+  }
+}

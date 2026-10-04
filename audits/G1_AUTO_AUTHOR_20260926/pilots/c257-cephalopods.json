@@ -1,0 +1,78 @@
+[
+ {
+  "id": "03-squid",
+  "name": "Squid",
+  "family": "cephalopod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/03-squid",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/03-squid/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: an elevated near-frontal three-quarter view with the animal directed generally right, exposing BOTH actual eyes, the real siphon, continuous mantle/head and both natural fin roots where fins exist. This explicitly overrides shallow strict side view only for source observability. Arms extend in gentle noncrossing separated curves with each real root-to-tip path visible; no invented far eye or disconnected arm. Squid and Cuttlefish have eight arms PLUS two longer club-tipped feeding tentacles; Octopus and Giant Octopus have eight arms, no added feeding tentacles or fins. Preserve natural webbing and source-observed anatomy, never alter counts to fit a template.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "17-squid",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/17-squid/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/17-squid"
+    }
+   ]
+  }
+ },
+ {
+  "id": "04-cuttlefish",
+  "name": "Cuttlefish",
+  "family": "cephalopod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/04-cuttlefish",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/04-cuttlefish/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: an elevated near-frontal three-quarter view with the animal directed generally right, exposing BOTH actual eyes, the real siphon, continuous mantle/head and both natural fin roots where fins exist. This explicitly overrides shallow strict side view only for source observability. Arms extend in gentle noncrossing separated curves with each real root-to-tip path visible; no invented far eye or disconnected arm. Squid and Cuttlefish have eight arms PLUS two longer club-tipped feeding tentacles; Octopus and Giant Octopus have eight arms, no added feeding tentacles or fins. Preserve natural webbing and source-observed anatomy, never alter counts to fit a template.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "18-cuttlefish",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish"
+    }
+   ]
+  }
+ },
+ {
+  "id": "16-octopus",
+  "name": "Octopus",
+  "family": "cephalopod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/16-octopus",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/16-octopus/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: an elevated near-frontal three-quarter view with the animal directed generally right, exposing BOTH actual eyes, the real siphon, continuous mantle/head and both natural fin roots where fins exist. This explicitly overrides shallow strict side view only for source observability. Arms extend in gentle noncrossing separated curves with each real root-to-tip path visible; no invented far eye or disconnected arm. Squid and Cuttlefish have eight arms PLUS two longer club-tipped feeding tentacles; Octopus and Giant Octopus have eight arms, no added feeding tentacles or fins. Preserve natural webbing and source-observed anatomy, never alter counts to fit a template.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "16-octopus",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/16-octopus/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/16-octopus"
+    }
+   ]
+  }
+ },
+ {
+  "id": "17-giant-octopus",
+  "name": "Giant Octopus",
+  "family": "cephalopod",
+  "packet": "audits/C198_CREATURE_SUPPLY_B_20261003/17-giant-octopus",
+  "master": "audits/C198_CREATURE_SUPPLY_B_20261003/17-giant-octopus/master.png",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+   "correction": "Reference-source correction: an elevated near-frontal three-quarter view with the animal directed generally right, exposing BOTH actual eyes, the real siphon, continuous mantle/head and both natural fin roots where fins exist. This explicitly overrides shallow strict side view only for source observability. Arms extend in gentle noncrossing separated curves with each real root-to-tip path visible; no invented far eye or disconnected arm. Squid and Cuttlefish have eight arms PLUS two longer club-tipped feeding tentacles; Octopus and Giant Octopus have eight arms, no added feeding tentacles or fins. Preserve natural webbing and source-observed anatomy, never alter counts to fit a template.",
+   "priorSources": [
+    {
+     "pilot": "audits/G2_C163_FAMILY_ORIGINALS_20261002/pilot.json",
+     "id": "19-giant-octopus",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus/master.png",
+     "packet": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus"
+    }
+   ]
+  }
+ }
+]

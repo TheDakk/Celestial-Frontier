@@ -1,0 +1,54 @@
+[
+ {
+  "id": "03-squid",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "wrong-family: insect matches clearly better (0.0306 < 0.0481)",
+   "extra-anatomy (unassigned): a rear appendage of 15.1% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a limb-down appendage of 9.4% paint that no reference appendage lands on",
+   "missing-anatomy: part arm5-middle (arm5Seg1) covers 24% paint (reference 89%)",
+   "missing-anatomy: part arm6-middle (arm6Seg1) covers 5% paint (reference 92%)",
+   "missing-anatomy: part arm7-middle (arm7Seg1) covers 25% paint (reference 81%)",
+   "missing-anatomy: part contour-arm5seg1 (arm5Seg1) covers 15% paint (reference 74%)",
+   "missing-anatomy: part contour-arm6seg1 (arm6Seg1) covers 19% paint (reference 71%)",
+   "unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 0.4%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "04-cuttlefish",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part arm2-middle (arm2Seg1) covers 19% paint (reference 92%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "16-octopus",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family cephalopod"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "17-giant-octopus",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 13.2% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a limb-down appendage of 9.6% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on",
+   "missing-anatomy: part arm0-middle (arm0Seg1) covers 13% paint (reference 66%)",
+   "missing-anatomy: part arm0-base (arm0Seg0) covers 32% paint (reference 99%)",
+   "missing-anatomy: part arm4-tip (arm4Seg2) covers 21% paint (reference 66%)",
+   "missing-anatomy: part final-arm0seg1 (arm0Seg1) covers 3% paint (reference 92%)",
+   "missing-anatomy: part final-arm0seg0 (arm0Seg0) covers 13% paint (reference 95%)",
+   "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 0.4%)"
+  ],
+  "semanticPresence": null
+ }
+]
