@@ -1,0 +1,74 @@
+{
+  "name": "Sun Bear",
+  "family": "quadruped",
+  "species": {
+    "name": "Sun Bear",
+    "aspect": 1.7,
+    "headFrac": 0.25,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "golden-cream crescent patch on the chest",
+      "short sleek jet-black coat",
+      "very long curved climbing claws and blunt short muzzle"
+    ],
+    "note": "The smallest bear - stocky and loose-skinned with a short face, not a scaled-down grizzly."
+  },
+  "genome": {
+    "seed": 2371456613,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 2,
+    "body": 15,
+    "loco": 6,
+    "trait": 24,
+    "size": 1,
+    "diet": 5,
+    "head": 8,
+    "limbs": 0,
+    "skin": 3,
+    "tail": 1,
+    "pattern": 6,
+    "eyes": 1,
+    "behavior": 2,
+    "habitat": 12,
+    "detail": 3,
+    "accent": 1,
+    "temper": 5,
+    "sense": 7,
+    "repro": 4,
+    "life": 2,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sun Bear"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sun Bear\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2371456613\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "index": 589,
+  "profile": {
+    "id": "bear",
+    "names": [
+      "Sloth Bear",
+      "Spectacled Bear",
+      "Panda",
+      "Black Bear",
+      "Brown Bear",
+      "Polar Bear",
+      "Bear",
+      "Sun Bear",
+      "Grizzly Bear"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

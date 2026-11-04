@@ -1,0 +1,15 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.09565125043714864,"gap":0.00007515717904712406,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.16991670110857815,"gap":0.00006157537747406242,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.2230262979124508,"gap":0.00007515717927919907,"exactRest":true,"firstRefusal":null}
+{"id":"approach:flight","status":"PASS","samples":121,"drift":0,"gap":0.00006733763354730728,"exactRest":true,"firstRefusal":null}
+{"id":"melee:peck","status":"PASS","samples":121,"drift":0.02936634452648573,"gap":0.00006768148748911484,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.1645437593519992,"gap":0.00006814267534424792,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.24354617032847725,"gap":0.00007253765291286196,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"RED","samples":19,"drift":0.00002177044939574061,"gap":0.00005365501149930733,"exactRest":true,"firstRefusal":{"ms":101.65,"sampleNumber":20,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 11"}}
+{"id":"dodge","status":"PASS","samples":121,"drift":0.24366715956747595,"gap":0.00007515717936845868,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"RED","samples":68,"drift":0.24391603905411038,"gap":0.00007788737604813216,"exactRest":true,"firstRefusal":{"ms":403.46666666666664,"sampleNumber":69,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 5"}}
+{"id":"victory","status":"PASS","samples":121,"drift":0.1083356389176121,"gap":0.00006406647821677325,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.22876591312453085,"gap":0.00007461479731715539,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.1251382667930617,"gap":0.00006676060788047868,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.00007091950898785093,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":14,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

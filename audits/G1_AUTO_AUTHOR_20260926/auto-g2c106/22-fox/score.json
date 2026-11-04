@@ -1,0 +1,24 @@
+{
+ "id": "22-fox",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": [],
+ "fallbackFrom": "RED",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "RED"
+  },
+  {
+   "rank": 1,
+   "verdict": "ADMIT",
+   "static": "PASS_STATIC",
+   "reasons": []
+  }
+ ]
+}

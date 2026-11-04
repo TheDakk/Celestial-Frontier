@@ -1,0 +1,66 @@
+{
+  "name": "Koala",
+  "family": "quadruped",
+  "species": {
+    "name": "Koala",
+    "aspect": 0.8,
+    "headFrac": 0.34,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "huge round fluffy ears",
+      "large spoon-shaped black nose",
+      "no visible tail, gripping a vertical trunk"
+    ],
+    "note": "Not a bear - the nose is enormous and leathery and the eyes are small and beady."
+  },
+  "genome": {
+    "seed": 548554154,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 13,
+    "body": 15,
+    "loco": 2,
+    "trait": 13,
+    "size": 1,
+    "diet": 5,
+    "head": 1,
+    "limbs": 3,
+    "skin": 6,
+    "tail": 5,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 4,
+    "detail": 7,
+    "accent": 2,
+    "temper": 7,
+    "sense": 5,
+    "repro": 6,
+    "life": 3,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Koala"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Koala\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"548554154\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "index": 564,
+  "profile": {
+    "id": "koala",
+    "names": [
+      "Koala"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

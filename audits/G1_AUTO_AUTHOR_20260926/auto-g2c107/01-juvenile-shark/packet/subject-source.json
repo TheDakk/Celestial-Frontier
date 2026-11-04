@@ -1,0 +1,71 @@
+{
+  "name": "Juvenile Shark",
+  "family": "fish",
+  "species": {
+    "name": "Juvenile Shark",
+    "aspect": 4,
+    "headFrac": 0.22,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "asymmetric tail with a long upper lobe",
+      "row of five gill slits behind the head",
+      "triangular dorsal fin and stiff pectoral wings"
+    ],
+    "note": "A juvenile has proportionally larger eyes and fins and a slimmer body than an adult."
+  },
+  "genome": {
+    "seed": 1999291809,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 3,
+    "body": 11,
+    "loco": 16,
+    "trait": 22,
+    "size": 1,
+    "diet": 4,
+    "head": 1,
+    "limbs": 2,
+    "skin": 5,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 0,
+    "behavior": 8,
+    "habitat": 0,
+    "detail": 1,
+    "accent": 10,
+    "temper": 2,
+    "sense": 8,
+    "repro": 2,
+    "life": 2,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Juvenile Shark"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Juvenile Shark\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1999291809\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "index": 394,
+  "profile": {
+    "id": "predatory-shark",
+    "names": [
+      "Juvenile Shark",
+      "Shark",
+      "Reef Shark",
+      "Hammerhead Shark",
+      "Great White Shark",
+      "Tiger Shark",
+      "Mako Shark"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "bite"
+    ],
+    "notes": ""
+  }
+}

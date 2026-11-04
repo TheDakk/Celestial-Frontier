@@ -1,0 +1,74 @@
+{
+  "name": "Polar Bear",
+  "family": "quadruped",
+  "species": {
+    "name": "Polar Bear",
+    "aspect": 1.9,
+    "headFrac": 0.21,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "long neck with a small narrow Roman-nosed head",
+      "huge furred paws",
+      "sloping shoulders on a long body"
+    ],
+    "note": "Head is smaller and the neck far longer than on a brown bear, and there is no shoulder hump."
+  },
+  "genome": {
+    "seed": 2146338200,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 10,
+    "body": 4,
+    "loco": 15,
+    "trait": 24,
+    "size": 3,
+    "diet": 4,
+    "head": 6,
+    "limbs": 1,
+    "skin": 7,
+    "tail": 5,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 8,
+    "detail": 4,
+    "accent": 0,
+    "temper": 5,
+    "sense": 6,
+    "repro": 0,
+    "life": 4,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Polar Bear"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Polar Bear\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2146338200\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "index": 296,
+  "profile": {
+    "id": "bear",
+    "names": [
+      "Sloth Bear",
+      "Spectacled Bear",
+      "Panda",
+      "Black Bear",
+      "Brown Bear",
+      "Polar Bear",
+      "Bear",
+      "Sun Bear",
+      "Grizzly Bear"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

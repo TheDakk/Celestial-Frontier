@@ -1,0 +1,118 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "18-wasp",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "a352c2431982e52fdcba9783c25c48ae637d343724c3e84d627522514a46c6f2",
+ "subjectSourceSha256": "40f442869665e989355028a7a3baaa8cd3c7699ace4b11eb6be3daaadf400335",
+ "identity": {
+  "name": "Wasp",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wasp\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3763256145\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 3763256145,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "beetle",
+  "authoringSha256": "478fa93e5ed189385100c44e78808f103ce96659f942dbaa9612c5c4d04db5ef",
+  "masterSha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0277,
+     "class": "rear",
+     "attach": {
+      "x": 130.6,
+      "y": 155.6,
+      "relX": 0.28,
+      "relY": 0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.5804,
+     "class": "front",
+     "attach": {
+      "x": 178.6,
+      "y": 183,
+      "relX": 0.99,
+      "relY": 0.39
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0109,
+     "class": "rear",
+     "attach": {
+      "x": 124,
+      "y": 173,
+      "relX": 0.18,
+      "relY": 0.26
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0343,
+     "class": "rear",
+     "attach": {
+      "x": 114.8,
+      "y": 222.7,
+      "relX": 0.04,
+      "relY": 0.93
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 3,
+    "front": 1
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "beetle",
+   "byClass": {
+    "top": 1,
+    "rear": 3,
+    "limb-down": 6
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "rear": 3,
+    "front": 1
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "legHindNear+legHindFar"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}
