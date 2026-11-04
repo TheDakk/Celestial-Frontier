@@ -1,0 +1,315 @@
+{
+ "verdict": "ADMIT",
+ "reasons": [],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [
+  {
+   "chain": "legFrontFar",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0008
+   }
+  },
+  {
+   "chain": "legFrontNear",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "legMidFar",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0018
+   }
+  },
+  {
+   "chain": "legMidNear",
+   "refined": false,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "legHindFar",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0028
+   }
+  },
+  {
+   "chain": "legHindNear",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0013
+   }
+  }
+ ],
+ "nudged": [],
+ "clamped": [
+  {
+   "id": "antenna-near",
+   "vertices": 1
+  },
+  {
+   "id": "abdomen",
+   "vertices": 2
+  }
+ ],
+ "untangled": [],
+ "separation": null,
+ "inventory": {
+  "reasons": [],
+  "assign": [
+   {
+    "owners": [
+     "thorax",
+     "head"
+    ],
+    "names": [
+     "other",
+     "head"
+    ],
+    "refFrac": 0.623,
+    "target": 0,
+    "overlap": 0.701
+   },
+   {
+    "owners": [
+     "abdomen",
+     "hind-far-lower"
+    ],
+    "names": [
+     "other",
+     "leg"
+    ],
+    "refFrac": 0.0395,
+    "target": 1,
+    "overlap": 0.03
+   },
+   {
+    "owners": [
+     "hind-near-lower"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0277,
+    "target": 0,
+    "overlap": 0.301
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.4526,
+     "class": "rear",
+     "attach": {
+      "x": 206.7,
+      "y": 191,
+      "relX": 0.49,
+      "relY": 0.56
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0245,
+     "class": "rear",
+     "attach": {
+      "x": 34.2,
+      "y": 210.2,
+      "relX": 0.07,
+      "relY": 0.74
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0216,
+     "class": "limb-down",
+     "attach": {
+      "x": 134,
+      "y": 236,
+      "relX": 0.32,
+      "relY": 0.99
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 2,
+    "limb-down": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "08-ant",
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0542,
+  "ref": 0.0208
+ },
+ "bestReference": "08-ant",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "08-ant",
+   "cost": 0.0229
+  },
+  {
+   "ref": "beetle",
+   "cost": 0.02802
+  },
+  {
+   "ref": "dragonfly",
+   "cost": 0.03489
+  },
+  {
+   "ref": "honeybee",
+   "cost": 0.04617
+  },
+  {
+   "ref": "09-cricket",
+   "cost": 0.04927
+  }
+ ],
+ "mirrorBest": 0.03216,
+ "otherFamilyBest": {
+  "family": "quadruped",
+  "cost": 0.03567
+ },
+ "coverage": [
+  {
+   "id": "front-near-lower",
+   "joint": "legFrontNearFoot",
+   "paint": 0.6198979591836735,
+   "area": 6370.129999999997
+  },
+  {
+   "id": "front-far-lower",
+   "joint": "legFrontFarFoot",
+   "paint": 0.1984732824427481,
+   "area": 2091.919999999993
+  },
+  {
+   "id": "mid-near-lower",
+   "joint": "legMidNearFoot",
+   "paint": 0.3602058319039451,
+   "area": 9355.714999999997
+  },
+  {
+   "id": "mid-far-lower",
+   "joint": "legMidFarFoot",
+   "paint": 0.5393258426966292,
+   "area": 2839.2700000000013
+  },
+  {
+   "id": "hind-near-lower",
+   "joint": "legHindNearFoot",
+   "paint": 0.5714285714285714,
+   "area": 6001.155000000008
+  },
+  {
+   "id": "hind-far-lower",
+   "joint": "legHindFarFoot",
+   "paint": 0.4007308160779537,
+   "area": 13089.470000000001
+  },
+  {
+   "id": "front-near-upper",
+   "joint": "legFrontNearKnee",
+   "paint": 0.6044520547945206,
+   "area": 9199.509999999995
+  },
+  {
+   "id": "front-far-upper",
+   "joint": "legFrontFarKnee",
+   "paint": 0.5022222222222222,
+   "area": 3637.1799999999857
+  },
+  {
+   "id": "mid-near-upper",
+   "joint": "legMidNearKnee",
+   "paint": 0.7983193277310925,
+   "area": 5735.760000000002
+  },
+  {
+   "id": "mid-far-upper",
+   "joint": "legMidFarKnee",
+   "paint": 0.9138755980861244,
+   "area": 6678.219999999994
+  },
+  {
+   "id": "hind-near-upper",
+   "joint": "legHindNearKnee",
+   "paint": 0.9339019189765458,
+   "area": 7521.145
+  },
+  {
+   "id": "hind-far-upper",
+   "joint": "legHindFarKnee",
+   "paint": 0.8256302521008403,
+   "area": 7587.174999999992
+  },
+  {
+   "id": "antenna-far",
+   "joint": "antennaFar",
+   "paint": 0.36809815950920244,
+   "area": 7808.694999999992
+  },
+  {
+   "id": "antenna-near",
+   "joint": "antennaNear",
+   "paint": 0.3413848631239936,
+   "area": 9926.849999999999
+  },
+  {
+   "id": "mandible",
+   "joint": "mandible",
+   "paint": 0.5322997416020672,
+   "area": 6266.459999999999
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.7212543554006968,
+   "area": 23048.750000000007
+  },
+  {
+   "id": "abdomen",
+   "joint": "abdomen",
+   "paint": 0.651494298073142,
+   "area": 162405.935
+  },
+  {
+   "id": "thorax",
+   "joint": "thorax",
+   "paint": 0.6845945945945946,
+   "area": 59254.00999999995
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.5
+  }
+ ],
+ "unclaimedFrac": 0.0177
+}
