@@ -1,0 +1,10 @@
+{
+  "toolReceipt": "b8e34b",
+  "exitCode": 128,
+  "signer": "/Applications/1Password.app/Contents/MacOS/op-ssh-sign",
+  "tty": true,
+  "error": "1Password: agent returned an error; fatal: failed to write commit object",
+  "sourceHeadUnchanged": "2283e5388793a31b7fbc0d68897492adb6beadd1",
+  "interpretation": "Per-request failure; app lock state and root cause are not established.",
+  "nextAction": "User asked whether 1Password displays SSH request waiting and to approve pending Git key use. No personal UI inspection, security change or unsigned fallback."
+}

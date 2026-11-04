@@ -1,0 +1,81 @@
+{
+  "schema": "cf.authored-mask-conservation/v1",
+  "width": 1254,
+  "height": 1254,
+  "foregroundPixels": 594263,
+  "unassignedForegroundPixels": 0,
+  "labeledOutsideAlphaPixels": 0,
+  "rootPixelsOutsideAuthoredCore": 0,
+  "parts": [
+    {
+      "id": "central-disc-upper",
+      "pixels": 11049
+    },
+    {
+      "id": "arm0-base",
+      "pixels": 31747
+    },
+    {
+      "id": "arm0-middle",
+      "pixels": 37080
+    },
+    {
+      "id": "arm0-tip",
+      "pixels": 18960
+    },
+    {
+      "id": "arm4-base",
+      "pixels": 36727
+    },
+    {
+      "id": "arm4-middle",
+      "pixels": 37948
+    },
+    {
+      "id": "arm4-tip",
+      "pixels": 19951
+    },
+    {
+      "id": "arm2-base",
+      "pixels": 22121
+    },
+    {
+      "id": "arm2-middle",
+      "pixels": 42585
+    },
+    {
+      "id": "arm2-tip",
+      "pixels": 38284
+    },
+    {
+      "id": "arm3-base",
+      "pixels": 27633
+    },
+    {
+      "id": "arm3-middle",
+      "pixels": 54351
+    },
+    {
+      "id": "arm3-tip",
+      "pixels": 21077
+    },
+    {
+      "id": "arm1-base",
+      "pixels": 32590
+    },
+    {
+      "id": "arm1-middle",
+      "pixels": 38047
+    },
+    {
+      "id": "arm1-tip",
+      "pixels": 23738
+    },
+    {
+      "id": "body",
+      "pixels": 100375
+    }
+  ],
+  "originalMasterUnchanged": true,
+  "presenceUnchanged": true
+}

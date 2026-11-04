@@ -1,0 +1,71 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "4f82025c490d39b80b78bfab81ac53232a780a74",
+  "helperSha256": "3d4c64c4760fe8b17cfa9b6f8bb2f5fe23c980aee00a4aa80f50238b9bbe29ce",
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/08-radial/master.png",
+      "sha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/08-radial/authoring.json",
+      "sha256": "cbc685725e77a1fd76614308a7fdfcc03dd26e0a4a2bd02147fe16deb38c5619"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/08-radial/subject-source.json",
+      "sha256": "a6ad4b171fe23f5a8892c303d35bdac2c9f11019fcf4a5ccaacb5bc05daf6d3b"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/08-radial/presence.json",
+      "sha256": "301237f98346c6f5301d071ed5e4eb0990f026f41a334b7e3149d3c3410fa563"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "2083de71c8d079fa6e07ad31ef36c32484ed705e3940c623f91a50ca860b1ba1",
+  "bindingHash": "0b2317154b00f12c80f0734af843e08a6b28129ae3185697328fc39d1b9557df",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "bell",
+    "arm0Seg2",
+    "arm1Seg2",
+    "arm2Seg2",
+    "arm3Seg2",
+    "arm4Seg2"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/08-radial/master.png",
+      "sha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/08-radial/authoring.json",
+      "sha256": "cbc685725e77a1fd76614308a7fdfcc03dd26e0a4a2bd02147fe16deb38c5619",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/08-radial/subject-source.json",
+      "sha256": "a6ad4b171fe23f5a8892c303d35bdac2c9f11019fcf4a5ccaacb5bc05daf6d3b",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/08-radial/presence.json",
+      "sha256": "301237f98346c6f5301d071ed5e4eb0990f026f41a334b7e3149d3c3410fa563",
+      "unchanged": true
+    }
+  ]
+}

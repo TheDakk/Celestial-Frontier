@@ -1,0 +1,56 @@
+{
+  "polygons": {
+    "near": [
+      [
+        759,
+        845
+      ],
+      [
+        782.5,
+        845
+      ],
+      [
+        779.5,
+        865
+      ],
+      [
+        779.5,
+        884
+      ],
+      [
+        759,
+        884
+      ]
+    ],
+    "far": [
+      [
+        782.5,
+        845
+      ],
+      [
+        809,
+        845
+      ],
+      [
+        809,
+        884
+      ],
+      [
+        779.5,
+        884
+      ],
+      [
+        779.5,
+        865
+      ]
+    ]
+  },
+  "counts": {
+    "near": 283,
+    "far": 600
+  },
+  "total": 883,
+  "dividerSamples": 39,
+  "dividerCrossingsAboveAlpha8": [],
+  "scope": "Manually authored near/far divider through visible source gap; source alpha is preserved, threshold8 is inspection visibility only, no pixels discarded or acceptance rule altered."
+}
