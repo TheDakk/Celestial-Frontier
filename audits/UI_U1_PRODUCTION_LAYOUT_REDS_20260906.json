@@ -1,0 +1,56 @@
+{
+  "schema": "cf-u1-production-layout-reds/v1",
+  "runs": [
+    {
+      "source": "852c4964c9cfca61aec1005e82fce05e6eb65706",
+      "stage": "vitest",
+      "result": "1file/2tests failed;310files/3315tests passed;1skipped",
+      "cause": "Prime source contract requires the shared touch-target token; CSS rewrite used identical44px literal.",
+      "correction": "Restore min-height:var(--cf-touch-target) in the board base rule. No metric or assertion change.",
+      "laterStages": "Not run; stopped at first red",
+      "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_852c496_20260906/manifest.json"
+    },
+    {
+      "source": "8ecc5a0b07b5ed196a3ea5a37511d2255e68cbed",
+      "stage": "slice core-flow golden layout",
+      "runId": "20260906151437452-9603-cfc08d49b5bd",
+      "priorStages": "Typecheck,artunused,311files/3317tests/1skip,Glass selftest,normalbuild,three-viewreview9images/63trustedinputs PASS",
+      "result": "Both native rails top122 while current header bottom131.4375; observed rail target44 and gap8 otherwise correct.",
+      "cause": "Initial geometry sample immediately follows native Settings close in same task; Objective returns to header before ResizeObserver updates published114px height. Normal review consumes render frames and passed. Bounded diagnosis/correction pending.",
+      "laterStages": "Two phone Glass rows not run after Slice red",
+      "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_8ecc5a0_20260906/manifest.json",
+      "correction": "Await document.fonts.ready and two real animation frames before desktop/phone geometry samples; log actual/published header heights. No app sync or polling to green. Stale anchored controls still fail the same1px oracle. Align hidden Prime negative-control prefix to its existing current failure. Focused29PASS; initial stale source-extraction fixture endpoint red retained."
+    },
+    {
+      "source": "9c869c316d081d2ea352b81d6c6a6abca802fe3d",
+      "stage": "slice core-flow golden layout",
+      "runId": "20260906152547550-11463-bba745f6935b",
+      "priorStages": "Typecheck, artunused, 311 files / 3318 tests / 1 skipped, Glass selftest, normal build and review (9 images / 63 trusted native inputs) PASS",
+      "result": "RED repeated despite fonts loaded and two animation frames. Header 131.4375px, published height 114px; rails top 122px. Phone published 221px versus actual 220.78125px.",
+      "cause": "Timing-only diagnosis disproved. Same-task Settings open, Motion change and Close can publish the hidden-objective height, then restore the previously observed height without a net ResizeObserver change. Body-class MutationObserver updates surface clearance only. Independently, three restored wide rail buttons omit type=button and fail native-control availability.",
+      "correction": "Republish header height from the existing body-class observer before surface clearance; regression covers coalesced same-task class changes without ResizeObserver delivery. Declare type=button on the three restored visible controls. Preserve rendered-boundary receipts and the unchanged geometry/native-control oracle.",
+      "laterStages": "Two phone Glass rows not run after Slice RED; no unchanged-source retry.",
+      "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_9c869c3_20260906/manifest.json"
+    },
+    {
+      "source": "7bff7967fef6b6d6f6b99480098a92c8501da994",
+      "stage": "normal ui-shell review, new programmatic Settings trace",
+      "priorStages": "Typecheck, artunused, 311 files / 3319 tests / 1 skipped, Glass selftest and normal build PASS",
+      "result": "RED: expected three programmatic click receipts, trace supplied only docksets and Close. Auto was already selected, so that value did not prove the Motion handler ran.",
+      "cause": "The reloaded desktop review document lacked mutation authority. The product read-only guard captures [data-motion] and calls stopImmediatePropagation, correctly blocking that Settings mutation and preventing the later recorder from seeing it. Initial filtered-recorder diagnosis was incorrect.",
+      "correction": "Run the exact sequence in the first writable review document at a temporary wide viewport, collect three per-control actual untrusted click receipts and retain the document trace separately, then restore original viewport/shell in finally. Never force save authority or bypass the read-only guard. Keep63 native count and geometry oracle; no product changes.",
+      "laterStages": "Slice and both phone Glass rows not run after the diagnostic RED; no unchanged-source retry.",
+      "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_7bff796_20260906/manifest.json"
+    },
+    {
+      "source": "08cd97d79b67cab4b8d19bfd493293e997dec528",
+      "stage": "normal ui-shell review, phone before first Notifications input",
+      "priorStages": "Typecheck, artunused, 311 files / 3319 tests / 1 skipped, Glass selftest and normal build PASS",
+      "result": "RED: after Training Skip and native Escape ascent, Cosmos changed to Cosmos/Milky Way before the first Notifications press was dispatched. New Settings sequence was not reached.",
+      "cause": "Unresolved normal-navigation transition. It occurs before Notifications and after Training completion. Bounded source inspection found no support for a simple camera-easing or pending Training teardown explanation; the DOM trace lacks camera target and travel-authority/commit evidence needed to identify the initiating operation.",
+      "laterStages": "Slice and both phone Glass rows not run after review RED; no unchanged-source retry.",
+      "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_08cd97d_20260906/manifest.json",
+      "next": "Independent review and a separately bounded navigation diagnosis. Do not insert arbitrary waits, force app state, retry unchanged source, or weaken the scope assertion."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "marmot",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "cpuP95Ms": 7.199999928474426,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "source": "e8e2a0671ceb2b41a68bcf7bd0e1b20257cbe288"
+  },
+  {
+    "name": "cattle",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 933,
+    "cpuP95Ms": 8,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "source": "e8e2a0671ceb2b41a68bcf7bd0e1b20257cbe288"
+  }
+]

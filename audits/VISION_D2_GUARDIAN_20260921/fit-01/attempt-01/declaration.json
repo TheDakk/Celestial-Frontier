@@ -1,0 +1,95 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+  "cutoutSha256": "1fdbef97b7c612d85ebe4a3ed7b580c31d7671a379c92e46ba3f200f655d035d",
+  "labelsFile": "labels.png",
+  "labelsSha256": "6bf697c68a3c017bf4eff04bc65bf81cdc32c8cca97d2115e8b0e3da04b15a10",
+  "parts": [
+    {
+      "id": "body",
+      "joint": "spine",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-upper",
+      "joint": "hindFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "hind-far-lower",
+      "joint": "hindFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "layer": "far"
+    },
+    {
+      "id": "fore-far-upper",
+      "joint": "foreFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "fore-far-lower",
+      "joint": "foreFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "layer": "far"
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "hindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "hind-near-lower",
+      "joint": "hindNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "layer": "near"
+    },
+    {
+      "id": "fore-near-upper",
+      "joint": "foreNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "fore-near-lower",
+      "joint": "foreNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "ear-far",
+      "joint": "earFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "ear-near",
+      "joint": "earNearTip",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "efd6c40f3d54d644c07a79793a62d39212b002be4facabe65dc0e81fee5203a7"
+}

@@ -1,0 +1,5 @@
+{"id":"easy","baselineWins":256,"plannedWins":256,"commandWins":256,"oracleWins":256,"phaseNodes":0,"withdrawnTerminals":0,"swapEdges":0,"planningGapPp":0,"commandEdgePp":0}
+{"id":"normal","baselineWins":132,"plannedWins":160,"commandWins":160,"oracleWins":160,"phaseNodes":0,"withdrawnTerminals":0,"swapEdges":0,"planningGapPp":10.9375,"commandEdgePp":0}
+{"id":"guardian","baselineWins":49,"plannedWins":92,"commandWins":129,"oracleWins":130,"phaseNodes":470,"withdrawnTerminals":1914,"swapEdges":586,"solo":{"v1Wins":42,"phaseWins":30},"planningGapPp":16.796875,"commandEdgePp":14.453125}
+{"id":"titan","baselineWins":93,"plannedWins":146,"commandWins":199,"oracleWins":200,"phaseNodes":561,"withdrawnTerminals":2231,"swapEdges":801,"solo":{"v1Wins":17,"phaseWins":11},"planningGapPp":20.703125,"commandEdgePp":20.703125}
+{"status":"RED","findings":["guardian: readiness","titan: planning gap 20.703125"]}

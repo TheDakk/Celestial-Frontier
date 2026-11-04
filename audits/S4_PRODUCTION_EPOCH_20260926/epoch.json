@@ -1,0 +1,94 @@
+{
+  "schema": "cf-s4-production-epoch/v1",
+  "sourceBase": "6cbeefe0ac987594af3ae92e7d8a5da5159cbc6a",
+  "evaluation": {
+    "seedBase": 90000000,
+    "count": 1024,
+    "hookSeedBase": 100000000,
+    "poolSize": 50000
+  },
+  "training": {
+    "seedBase": 110000000,
+    "count": 256,
+    "hookSeedBase": 130000000,
+    "poolSize": 50000
+  },
+  "forecast": {
+    "seedBase": 120000000,
+    "count": 16
+  },
+  "careFed": [
+    0,
+    10,
+    20,
+    40,
+    60
+  ],
+  "partyBands": [
+    [
+      0.6,
+      0.8
+    ],
+    [
+      0.7,
+      0.9
+    ],
+    [
+      0.8,
+      1
+    ]
+  ],
+  "soloBand": [
+    0.9,
+    1.1
+  ],
+  "wildPower": {
+    "easy": [
+      180,
+      220
+    ],
+    "normal": [
+      250,
+      350
+    ]
+  },
+  "wildBands": {
+    "easy": [
+      1.8,
+      2.2
+    ],
+    "normal": [
+      0.9,
+      1.1
+    ]
+  },
+  "region": 0,
+  "targets": {
+    "easyPlanningPp": [
+      0,
+      5
+    ],
+    "normalPlanningPp": [
+      10,
+      20
+    ],
+    "guardianPlanningPp": [
+      10,
+      20
+    ],
+    "titanPlanningPp": [
+      10,
+      20
+    ],
+    "partyAutoReadiness": [
+      0.2,
+      0.8
+    ],
+    "easyBaselineMin": 0.9,
+    "commandEdgeMinPp": 5,
+    "soloDeltaMaxPp": 5
+  },
+  "route": "planCombatPartySettlementV1, registered encounters, compare decisive transcript to runEncounterV1; raw engine forecasts use independent public-stat seeds",
+  "evaluationRule": "One held-out run after candidate freeze and signed clean source; no retry, re-selection or tuning against its outcomes",
+  "scope": "Two fixed registered boss worlds, region0, natural fauna/guardianFor genomes with declared care exposure; bounded balance benchmark, not whole-campaign or persistence certificate"
+}

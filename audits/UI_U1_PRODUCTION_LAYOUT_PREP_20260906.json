@@ -1,0 +1,53 @@
+{
+  "schema": "cf-u1-production-layout-preparation/v1",
+  "scope": "Mutable preparation only; exact-source candidate checks recorded separately.",
+  "records": [
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-name-hp-chrome-prep.log.gz",
+      "sha256": "3e25516511a4a8f071b370a7e19358bfd08614213771a9898a1d33d751a62283",
+      "originalSha256": "3143d3c048e9f5ade31c1cecf789589c572a6962f4b653c3551108f272aa275c"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-name-hp-wiring-prep.log.gz",
+      "sha256": "adeb88aad519d1bca96f15cf1b04e98be1c7981001d3f59d0f7d65e7bd876117",
+      "originalSha256": "610f6a74e3fc0fdb124e643c814b2edee484072668bfc259153c35d137ad9c47"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-production-rail-slice-prep.log.gz",
+      "sha256": "429a95828fcf55169fc9b61206afa0709247304e8b8cdca1d07b787221aacc95",
+      "originalSha256": "37978a615ff5d511f53df6d438e4cdc0617fd1dfd3cac91f7b15b110c7c9f339"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-production-rail-feed-prep.log.gz",
+      "sha256": "2b7240f4e6e9aff1f5c86a353eebc54bc26cb7c10f929df4f94792bf718d9afc",
+      "originalSha256": "d78ad550f5195019fca9588e794e9ce9223721dbdebe63092f4d28ebcc6b9781"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-review-static-check.mjs.gz",
+      "sha256": "766c6f2b651f2592bc609385a43d41c964d59d66e09fcc6c1b62a9f78da20b38",
+      "originalSha256": "cc7d526bdf291474731fe0999f120f24b356bd68eba8dc634ace78548e11e4e6"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-screenshot-instruments-20260906.log.gz",
+      "sha256": "d73cfa373ce5862172d0bb681ecb51ffae49296d60a5e499e15de57480e3370d",
+      "originalSha256": "103c3b504045330c8eadf95d228c296f9fe9ba718cd3e41c03c745ea005ba176"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-screenshot-instruments-fixed-20260906.log.gz",
+      "sha256": "5a730dad857074ae7ffbb2ff76f33fd7cf4be483792f74ed35b9749c0bc9ad4a",
+      "originalSha256": "96fa0f9c2a806e0dd8073a9c6385d06fbff4502c297f5201f3c01cd062961ff1"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-shelf-control-focused-20260906.log.gz",
+      "sha256": "0a0038ae723eb0f93e2ec8cbe2beb70d42fccd340da02a6081d953577adb3ccc",
+      "originalSha256": "25b784c4a4a17283b48073469a4f112090b52bcfdf437beb1df05c2e23537fd7"
+    }
+  ],
+  "observations": [
+    "Name/HP initial stale wiring contract failed; changed safe textContent contract then2files/11PASS.",
+    "Rail focus prep4files/36PASS and Feed one stale inverse-selector assertion RED; corrected Feed-only15PASS. Combined5files/51PASS.",
+    "Normal-review static fixture:36 malformed outcomes rejected;45 generated expression shapes compiled; trusted delivery assessor unchanged. No browser evidence claimed.",
+    "Instrument prep initially rejected two stale fixture literals (compact dock Atlas and old Guide utility wording). Corrected syntax,4suites/113tests and Glass selftest PASS. Three final diagnostic descriptions then changed wording only; exact-source chain follows.",
+    "After signed d8f40ca but before any candidate run, final instrument review found the transparent-header hidden mutant needed the positive visibility predicate. Signed successor binds both to shelfVisible; focused43/43PASS. d8f40ca had no candidate attempt."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "positive": "known nearest axis owner, preserved foreign labels/input",
+  "negative": [
+    "reversed axis",
+    "nonfinite joint",
+    "duplicate owner"
+  ],
+  "status": "PASS"
+}
