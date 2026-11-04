@@ -1,0 +1,11 @@
+[
+  {
+    "tool": "image_gen.imagegen",
+    "source": "/Users/dakk/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-e1073de2-1f01-4cb1-affa-52c3ddbec8bd.png",
+    "output": "master.png",
+    "sha256": "abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a",
+    "prompt": "prompt.txt",
+    "promptSha256": "380145f5fd890138d0aa466246b3b8202fea21d4118ada281108634529281fca",
+    "finding": "Complete four-hoof right-facing plain antelope, both horn tips in canvas. Dakk art acceptance pending"
+  }
+]

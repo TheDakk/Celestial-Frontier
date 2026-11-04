@@ -1,0 +1,20 @@
+[
+  {
+    "tool": "image_gen.imagegen",
+    "source": "/Users/dakk/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-5835d70b-fe08-4969-b8c6-fa5d835f5a42.png",
+    "output": "master-generation-01.png",
+    "sha256": "b30eb2c8541c3d6dc08c3042f62be163293cf7e7a0d7ca7e5778031420f5f03a",
+    "prompt": "prompt.txt",
+    "promptSha256": "0bc699a2234be7201a03b952bdfa9335c320be9e3c5a65d874c344e30759065a",
+    "finding": "Far pectoral not visible; retained rejected master"
+  },
+  {
+    "tool": "image_gen.imagegen",
+    "source": "/Users/dakk/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-0c492d9d-3c73-4c19-aad3-97a506a9712d.png",
+    "output": "master.png",
+    "sha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8",
+    "prompt": "prompt-correction-02.txt",
+    "promptSha256": "faace401d09c7caa0c16cb11fc84b5275eecf5f0a087034ee1a4392aa3d4c364",
+    "finding": "Far pectoral visible below gill, two pelvic fins retained, right-facing; Dakk pending"
+  }
+]
