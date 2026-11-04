@@ -1,0 +1,55 @@
+{
+  "sourceFit": "audits/C215_PROGRAM_20261009/phase5/redfox-fit01",
+  "sourceBindingSha256": "818813190a6b13acda8ed61f07a5930a0999b44f23da9dac9d1a436e187baeca",
+  "candidateBindingSha256": "722438743a945d5d68d39bc4637d0d420b010419aec02ec40a412590ae2b797f",
+  "paintBoundaryPairs": [
+    [
+      "ear-far-root",
+      "ear-near-root"
+    ],
+    [
+      "ear-far-root",
+      "ear-near-tip"
+    ],
+    [
+      "ear-far-root",
+      "spine"
+    ],
+    [
+      "ear-far-tip",
+      "spine"
+    ],
+    [
+      "ear-near-root",
+      "neck"
+    ],
+    [
+      "fore-far-root",
+      "fore-near-root"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ],
+    [
+      "spine",
+      "tail1"
+    ],
+    [
+      "spine",
+      "tail2"
+    ],
+    [
+      "spine",
+      "tail3"
+    ]
+  ],
+  "sourceMasterSha256": "33adca09e84ff407eef260aab716d6a0d2af8d8ea882133d70e240d5aaa45e10",
+  "sourceAtlasSha256": "7a45ff5375da6870731d1630a02572eb8ff85f6e31437159e0eca98904f3d37d",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

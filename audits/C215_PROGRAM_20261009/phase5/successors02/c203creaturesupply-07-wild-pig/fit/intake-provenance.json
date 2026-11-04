@@ -1,0 +1,101 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "2f11953747b2ea4ac7aa0455a68be91193e9f73d",
+  "helperSha256": "ac8afa1311104c5aeb431585641e1f325d59df43730fa5e89cf4000bd9252517",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-07-wild-pig/packet/master.png",
+      "sha256": "219352a189359ce881a03e2d7909911b69db17928de6a73ecf21273a4ef67342"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-07-wild-pig/packet/authoring.json",
+      "sha256": "86ef59f2312a04349d49b08a07c9b573e3d95a988ed85478bd6e34b96e0daaea"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-07-wild-pig/packet/subject-source.json",
+      "sha256": "4b6c77b9cf160f0891c10f0ed2e780c9c8858a7e1954ed2a7a2d972c6e1ef8a2"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-07-wild-pig/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "b189286d9dd2dd9c87103d83ddb81bfb81528442f3a58fbc43c8a1ae56498e86",
+  "bindingHash": "3d2830a63b05d95572bd1a09c00e3da6b793246bd50cd91b8373631ae5609f84",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-07-wild-pig/packet/master.png",
+      "sha256": "219352a189359ce881a03e2d7909911b69db17928de6a73ecf21273a4ef67342",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-07-wild-pig/packet/authoring.json",
+      "sha256": "86ef59f2312a04349d49b08a07c9b573e3d95a988ed85478bd6e34b96e0daaea",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-07-wild-pig/packet/subject-source.json",
+      "sha256": "4b6c77b9cf160f0891c10f0ed2e780c9c8858a7e1954ed2a7a2d972c6e1ef8a2",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-07-wild-pig/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

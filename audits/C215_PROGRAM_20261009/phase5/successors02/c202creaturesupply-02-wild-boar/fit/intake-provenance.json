@@ -1,0 +1,117 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "2f11953747b2ea4ac7aa0455a68be91193e9f73d",
+  "helperSha256": "ac8afa1311104c5aeb431585641e1f325d59df43730fa5e89cf4000bd9252517",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/master.png",
+      "sha256": "e1781fd17de645c4d6ab0b3aa5c037ebd2807a3e8ee28d66f11dfdfa258c4458"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/authoring.json",
+      "sha256": "5515322d182ac876e9b96f1f6aa6adcd432d39c95f278235d05dac94c1dbbe5f"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/subject-source.json",
+      "sha256": "7be84df9e682b6c3f3976e61f684c2398261d470d123e18ccf7821603737e84b"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/presence.json",
+      "sha256": "c0d6eaa6d2fa765cd0f223247a932c709f1e3a78bf678e60bd67f13c366a705e"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/representation-review.json",
+      "sha256": "4461be44869bd939ca054d6d5bdbd4ee95d65c121f32525092a215b7bb087044"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/prompt.txt",
+      "sha256": "9331b9cda24a1bb5a4ce97f1baaea7086fb1519dc6ea4b6321012fe792986dba"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "2bdebe5e53e5d6c68b136dfee426f8eb8bf24950eb67357b340cc48bc27d0fde",
+  "bindingHash": "c2f58cd2358d0078b4cf401a3bc549346c7830f719cbe92a2821096d88643ab4",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "tail0",
+    "tail1",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/master.png",
+      "sha256": "e1781fd17de645c4d6ab0b3aa5c037ebd2807a3e8ee28d66f11dfdfa258c4458",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/authoring.json",
+      "sha256": "5515322d182ac876e9b96f1f6aa6adcd432d39c95f278235d05dac94c1dbbe5f",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/subject-source.json",
+      "sha256": "7be84df9e682b6c3f3976e61f684c2398261d470d123e18ccf7821603737e84b",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/presence.json",
+      "sha256": "c0d6eaa6d2fa765cd0f223247a932c709f1e3a78bf678e60bd67f13c366a705e",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/representation-review.json",
+      "sha256": "4461be44869bd939ca054d6d5bdbd4ee95d65c121f32525092a215b7bb087044",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/prompt.txt",
+      "sha256": "9331b9cda24a1bb5a4ce97f1baaea7086fb1519dc6ea4b6321012fe792986dba",
+      "unchanged": true
+    }
+  ]
+}

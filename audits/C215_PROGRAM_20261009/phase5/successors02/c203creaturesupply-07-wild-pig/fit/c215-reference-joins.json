@@ -1,0 +1,63 @@
+{
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c203creaturesupply-07-wild-pig/fit",
+  "sourceBindingSha256": "71c9200427392368e80df65aaa0a0e9fdfc2685cb1b6ae9f9cc2f9a427aecf31",
+  "candidateBindingSha256": "cbd85f442b868f478af9d3f389279be0bc928be6b6f2f2a09f19ec7ba661a9b0",
+  "paintBoundaryPairs": [
+    [
+      "ear-far-root",
+      "ear-near-root"
+    ],
+    [
+      "ear-far-root",
+      "ear-near-tip"
+    ],
+    [
+      "ear-far-tip",
+      "ear-near-tip"
+    ],
+    [
+      "ear-far-tip",
+      "spine"
+    ],
+    [
+      "ear-near-root",
+      "neck"
+    ],
+    [
+      "ear-near-tip",
+      "neck"
+    ],
+    [
+      "ear-near-tip",
+      "spine"
+    ],
+    [
+      "fore-far-root",
+      "fore-near-root"
+    ],
+    [
+      "head",
+      "spine"
+    ],
+    [
+      "jaw",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ],
+    [
+      "spine",
+      "tail1"
+    ]
+  ],
+  "sourceMasterSha256": "219352a189359ce881a03e2d7909911b69db17928de6a73ecf21273a4ef67342",
+  "sourceAtlasSha256": "96b7ffab119dd0f345b20078cae7f888746bc3244801d234871ad12272426fdc",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

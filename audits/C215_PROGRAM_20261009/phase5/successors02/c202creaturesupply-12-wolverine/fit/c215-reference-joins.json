@@ -1,0 +1,47 @@
+{
+  "sourceFit": "audits/ISLANDS_SWEEP3_20261009/c202creaturesupply-12-wolverine/fit",
+  "sourceBindingSha256": "1f20745adf3e2a81c2001a4014a21ff4d6d19e877257cd5358d9855fb5a07f63",
+  "candidateBindingSha256": "a2ef0b3d43b2f1f488b6d23514810d31f67389602b28d37dffec6bca4b4e970d",
+  "paintBoundaryPairs": [
+    [
+      "ear-far-root",
+      "ear-near-root"
+    ],
+    [
+      "ear-far-root",
+      "ear-near-tip"
+    ],
+    [
+      "ear-far-tip",
+      "ear-near-tip"
+    ],
+    [
+      "ear-far-tip",
+      "head"
+    ],
+    [
+      "ear-near-root",
+      "neck"
+    ],
+    [
+      "ear-near-tip",
+      "head"
+    ],
+    [
+      "ear-near-tip",
+      "neck"
+    ],
+    [
+      "fore-far-root",
+      "fore-near-root"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourceMasterSha256": "2ef59bfe84259bf70cdd979a75cac10eea9c405011ee83386738ea6ecc89ac3c",
+  "sourceAtlasSha256": "9a8d07db58d537049b82bc02cc3d5029bab52fc8f4a1f618f200eda5d80db7fa",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

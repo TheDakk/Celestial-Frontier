@@ -1,0 +1,35 @@
+{
+  "sourceFit": "audits/C213_PROGRAM_20261004/phase4-keyed-successors/g2c95-17-nilgai/fit",
+  "sourceBindingSha256": "f9bde083abcafecb86143ab4a0b283f406e415029025b404aa9c2e6211513ab3",
+  "candidateBindingSha256": "c358a31a328e5853bdd6565d3f3dd78978bb1372e4af37531676ab00c033fe4a",
+  "paintBoundaryPairs": [
+    [
+      "ear-far-tip",
+      "head"
+    ],
+    [
+      "ear-near-root",
+      "neck"
+    ],
+    [
+      "fore-far-root",
+      "fore-near-root"
+    ],
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "sourceMasterSha256": "712f3f8fc2b2822575d78e0e193654a820708cafc27bf8713e795db5e907f906",
+  "sourceAtlasSha256": "ce5bd7dba624cd5aa29b55f23037bf13d0b1845692c3596425e95a3026351f12",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

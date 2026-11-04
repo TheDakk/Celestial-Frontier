@@ -1,0 +1,166 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "21221d1e4c786532b374aba9518f0331cbb7791caa6ddb108c5464969a5f01d1",
+  "cutoutSha256": "712f3f8fc2b2822575d78e0e193654a820708cafc27bf8713e795db5e907f906",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "hind-near-hoof",
+      "joint": "hindNearPaw",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-hoof",
+      "joint": "hindFarPaw",
+      "layer": "far"
+    },
+    {
+      "id": "fore-near-hoof",
+      "joint": "foreNearPaw",
+      "layer": "near"
+    },
+    {
+      "id": "fore-far-hoof",
+      "joint": "foreFarPaw",
+      "layer": "far"
+    },
+    {
+      "id": "hind-near-ankle",
+      "joint": "hindNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-ankle",
+      "joint": "hindFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "fore-near-ankle",
+      "joint": "foreNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "fore-far-ankle",
+      "joint": "foreFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "hind-near-knee",
+      "joint": "hindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-knee",
+      "joint": "hindFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "fore-near-knee",
+      "joint": "foreNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "fore-far-knee",
+      "joint": "foreFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "hind-near-root",
+      "joint": "hindNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-root",
+      "joint": "hindFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "fore-near-root",
+      "joint": "foreNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "fore-far-root",
+      "joint": "foreFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "ear-near-tip",
+      "joint": "earNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "ear-near-root",
+      "joint": "earNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "ear-far-tip",
+      "joint": "earFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "ear-far-root",
+      "joint": "earFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "tail-tuft",
+      "joint": "tail3",
+      "layer": "near"
+    },
+    {
+      "id": "tail-lower",
+      "joint": "tail2",
+      "layer": "near"
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail1",
+      "layer": "near"
+    },
+    {
+      "id": "tail-root",
+      "joint": "tail0",
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "layer": "near"
+    },
+    {
+      "id": "spine",
+      "joint": "spine",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "bd4b1187c1b75b8be05201a7409dd3168cd8e205abae3245920380d77257f80d",
+  "keyedRgbaSha256": "3998eb307c2e967dc47d649b88ea6ebcdc56789b50f066e44a4ca299ef2ca5e1",
+  "declarationHash": "4b134d1ec7ffb48292fb0541f956dc034d874849b41467f8d959756dcdd5ab64"
+}

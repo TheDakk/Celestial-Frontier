@@ -1,0 +1,132 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "arm-near-hand",
+      "joint": "armNearHand",
+      "owner": "arm-near-hand"
+    },
+    {
+      "region": "arm-far-hand",
+      "joint": "armFarHand",
+      "owner": "arm-far-hand"
+    },
+    {
+      "region": "leg-near-foot",
+      "joint": "legNearFoot",
+      "owner": "leg-near-foot"
+    },
+    {
+      "region": "leg-far-foot",
+      "joint": "legFarFoot",
+      "owner": "leg-far-foot"
+    },
+    {
+      "region": "arm-near-elbow",
+      "joint": "armNearElbow",
+      "owner": "arm-near-elbow"
+    },
+    {
+      "region": "arm-far-elbow",
+      "joint": "armFarElbow",
+      "owner": "arm-far-elbow"
+    },
+    {
+      "region": "leg-near-knee",
+      "joint": "legNearKnee",
+      "owner": "leg-near-knee"
+    },
+    {
+      "region": "leg-far-knee",
+      "joint": "legFarKnee",
+      "owner": "leg-far-knee"
+    },
+    {
+      "region": "tail2",
+      "joint": "tail2",
+      "owner": "tail2"
+    },
+    {
+      "region": "tail1",
+      "joint": "tail1",
+      "owner": "tail1"
+    },
+    {
+      "region": "tail0",
+      "joint": "tail0",
+      "owner": "tail0"
+    },
+    {
+      "region": "jaw",
+      "joint": "jaw",
+      "owner": "jaw"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "neck",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "chest",
+      "joint": "chest",
+      "owner": "chest"
+    },
+    {
+      "region": "pelvis",
+      "joint": "pelvis",
+      "owner": "pelvis"
+    },
+    {
+      "region": "far-arm-inner-upper-contour",
+      "joint": "armFarElbow",
+      "owner": "arm-far-elbow"
+    },
+    {
+      "region": "far-arm-inner-lower-contour",
+      "joint": "armFarHand",
+      "owner": "arm-far-hand"
+    },
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    3142,
+    4427,
+    11766,
+    13489,
+    21172,
+    5384,
+    11632,
+    5992,
+    8337,
+    11951,
+    2186,
+    642,
+    15566,
+    7551,
+    9053,
+    1992,
+    20202
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "7212ec13c2e5ebf3fca1fdf2e93c73e2f211bd52c5f8fbab92a5eea6b598fba8",
+  "intake": {
+    "erodedPixels": 7156,
+    "despilledPixels": 715,
+    "unresolvedEdgePixels": 1,
+    "narrowEdgeDonors": 20
+  },
+  "remainderPart": "body"
+}
