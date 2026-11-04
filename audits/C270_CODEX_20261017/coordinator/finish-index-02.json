@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Hoatzin",
+    "run": "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin",
+    "nativePlan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/plan.json",
+    "review": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-hoatzin-01/visual-review-final.json"
+  },
+  {
+    "name": "Kookaburra",
+    "run": "audits/C270_CODEX_20261017/coordinator/finishes/kookaburra",
+    "nativePlan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/kookaburra/plan.json",
+    "review": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-kookaburra-01/visual-review-final.json"
+  }
+]

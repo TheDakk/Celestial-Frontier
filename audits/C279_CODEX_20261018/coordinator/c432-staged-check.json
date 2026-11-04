@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "pathsBeforeThisReceipt": 210,
+  "exactStagedBytes": true,
+  "explainedRawConsoleLogWhitespaceOnly": [
+    "audits/C279_CODEX_20261018/coordinator/aquatic-cap-focused-final.log:9: new blank line at EOF.",
+    "audits/C279_CODEX_20261018/coordinator/aquatic-cap-original-red.log:211: trailing whitespace.",
+    "audits/C279_CODEX_20261018/coordinator/aquatic-cap-original-red.log:245: new blank line at EOF.",
+    "audits/C279_CODEX_20261018/coordinator/aquatic-cap-targeted-green.log:211: trailing whitespace.",
+    "audits/C279_CODEX_20261018/coordinator/aquatic-cap-targeted-green.log:231: new blank line at EOF.",
+    "audits/C279_CODEX_20261018/coordinator/aquatic-cap-typecheck-r02.log:4: new blank line at EOF.",
+    "audits/C279_CODEX_20261018/w2-motion/candidate-green.log:9: new blank line at EOF.",
+    "audits/C279_CODEX_20261018/w2-motion/original-red.log:29: new blank line at EOF."
+  ],
+  "canonicalSourceAndTestsWhitespaceFindings": 0
+}

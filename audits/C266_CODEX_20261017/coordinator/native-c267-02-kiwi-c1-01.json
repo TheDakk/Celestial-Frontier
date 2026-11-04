@@ -1,0 +1,20 @@
+{
+  "stage": "native-c267-02-kiwi-c1-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C400-c267-02-kiwi-c1-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/c267-02-kiwi-c1-01/plan.json"
+  ],
+  "startedUnix": 1792278099.4450188,
+  "beforeGiB": 91.32139205932617,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.03,
+  "lowestGiB": 90.9183464050293,
+  "afterGiB": 91.29589080810547
+}

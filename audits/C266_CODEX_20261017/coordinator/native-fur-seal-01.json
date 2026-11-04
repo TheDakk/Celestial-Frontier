@@ -1,0 +1,20 @@
+{
+  "stage": "native-fur-seal-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C395-fur-seal",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/fur-seal-01/plan.json"
+  ],
+  "startedUnix": 1792273766.227115,
+  "beforeGiB": 84.33091735839844,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 28.058,
+  "lowestGiB": 83.94927597045898,
+  "afterGiB": 84.30800247192383
+}

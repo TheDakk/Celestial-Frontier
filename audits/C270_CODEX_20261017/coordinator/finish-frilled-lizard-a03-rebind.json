@@ -1,0 +1,20 @@
+{
+  "stage": "finish-frilled-lizard-a03-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-frilled-lizard-a03-rebind",
+    "--",
+    "node",
+    "audits/C270_CODEX_20261017/coordinator/rebind-one.mjs",
+    "audits/C270_CODEX_20261017/coordinator/finishes/frilled-lizard-a03"
+  ],
+  "startedUnix": 1792287387.7117188,
+  "beforeGiB": 77.10811996459961,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 77.10809707641602,
+  "afterGiB": 78.1041030883789
+}

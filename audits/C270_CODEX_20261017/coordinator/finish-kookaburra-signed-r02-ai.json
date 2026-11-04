@@ -1,0 +1,21 @@
+{
+  "stage": "finish-kookaburra-signed-r02-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-kookaburra-signed-r02-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C270_CODEX_20261017/coordinator/finishes/kookaburra-signed-r02/finished",
+    "audits/C270_CODEX_20261017/coordinator/finishes/kookaburra-signed-r02/subjects.json"
+  ],
+  "startedUnix": 1792288568.0158458,
+  "beforeGiB": 78.86118698120117,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 54.65,
+  "lowestGiB": 69.48200607299805,
+  "afterGiB": 77.84772872924805
+}

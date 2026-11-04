@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Dromedary Camel",
+  "slug": "11-dromedary-camel",
+  "id": "c266-intake-dromedary-camel",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-16-dromedary-camel",
+  "masterSha256": "07afcdc3daac6c05a695a9d3613e3606250e63addbd82ad7b27caf538b9cad9f",
+  "masterCopySha256": "07afcdc3daac6c05a695a9d3613e3606250e63addbd82ad7b27caf538b9cad9f",
+  "subjectSourceSha256": "1db4a6c6eda55224f6fe7c43512245df57ae7f42c8e54d9b055b4c56d56f658c",
+  "promptSha256": "5b6636e4ada97982f62c5d40cf27f80b4a38b7b6448ca7a3451a7a5abd370333",
+  "refusal": "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 1.7%)",
+  "observation": "Full-size review: single-humped camel walking right; four separate long legs with knee pads and splayed padded feet (hind far x≈350-450, hind near x≈420-550, fore far x≈620-676, fore near x≈640-790), long S-curved neck, one ear visible, long tufted tail. No extra anatomy: the 12.2% unexplained paint is the long legs, long neck and tail tuft the transferred short-legged reference did not reach.",
+  "joints": 31,
+  "parts": 26,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/11-dromedary-camel.mjs"
+}

@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "candidates": 1,
+  "verifiedFiles": 4,
+  "proofs": [
+    {
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-34-guillemot-c1-01/native/report.json",
+      "reportSha256": "b9cbc04f3e75300bb111648d8fa6ce7a9ea364152a675a59cb4a1c375b21ec6e",
+      "verified": [
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/34-guillemot-c1/qual-r01/islands/fit/record.json",
+          "sha256": "15a77c7e8818e33e3c5701d8e81a058d78b2c966e9aee4179491b3440b88beb1"
+        },
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/34-guillemot-c1/qual-r01/islands/fit/binding.json",
+          "sha256": "93d59b9996dbfac969b16f0023ecc3b619db189d6c4096f9f9670c5796b46c96"
+        },
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/34-guillemot-c1/qual-r01/islands/fit/parts/keyed.png",
+          "sha256": "18628c780d78eae38a633bad4bc4233179d6dbc2e4373cca1f3e73e5095befee"
+        },
+        {
+          "file": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/34-guillemot-c1/qual-r01/islands/fit/parts/atlas/c266-34-guillemot-c1.png",
+          "sha256": "927cbc26d90cbc2d75a849844f08fa93ec4e61d47c257fe6b280ac8ba9b01771"
+        }
+      ]
+    }
+  ]
+}

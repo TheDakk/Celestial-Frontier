@@ -1,0 +1,20 @@
+{
+  "stage": "first-insect-eating-bat",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-insect-eating-bat",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/w2-checkpoint/plans/insect-eating-bat/plan.json"
+  ],
+  "startedUnix": 1792286622.226994,
+  "beforeGiB": 81.21331787109375,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 18.054,
+  "lowestGiB": 80.78926086425781,
+  "afterGiB": 81.16057968139648
+}

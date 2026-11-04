@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Pheasant",
+    "run": "audits/C270_CODEX_20261017/coordinator/finishes/pheasant",
+    "nativePlan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/pheasant/plan.json",
+    "review": "audits/C270_CODEX_20261017/w2-checkpoint/reviews/c270-pheasant-01/visual-review-final.json"
+  }
+]

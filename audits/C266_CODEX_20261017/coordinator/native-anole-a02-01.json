@@ -1,0 +1,20 @@
+{
+  "stage": "native-anole-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C395-anole",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/anole-a02-01/plan.json"
+  ],
+  "startedUnix": 1792273905.992494,
+  "beforeGiB": 84.18989181518555,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 24.079,
+  "lowestGiB": 83.78377532958984,
+  "afterGiB": 84.15847396850586
+}

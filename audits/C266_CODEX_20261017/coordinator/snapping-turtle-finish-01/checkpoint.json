@@ -1,0 +1,10 @@
+{
+  "id": "c266-05-snapping-turtle",
+  "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/05-snapping-turtle/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-01/native/report.json",
+  "name": "Snapping Turtle",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/snapping-turtle-01/visual-review.json",
+  "checkpointReviewSha256": "9acfacdc6f7268545000ad7e610b3a6e3a6cc1357a1a8a8681101facbc43c8ae",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

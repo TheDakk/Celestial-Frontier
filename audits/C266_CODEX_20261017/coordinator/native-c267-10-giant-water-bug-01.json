@@ -1,0 +1,20 @@
+{
+  "stage": "native-c267-10-giant-water-bug-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C398-c267-10-giant-water-bug-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/c267-10-giant-water-bug-01/plan.json"
+  ],
+  "startedUnix": 1792277017.521128,
+  "beforeGiB": 91.76057052612305,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.076,
+  "lowestGiB": 91.34877014160156,
+  "afterGiB": 91.70972442626953
+}

@@ -1,0 +1,55 @@
+[
+  {
+    "id": "c266-16-water-vole",
+    "name": "Water Vole",
+    "family": "quadruped",
+    "packet": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/packets/16-water-vole",
+    "fit": "audits/C266_CODEX_20261017/coordinator/water-vole-finish-01/rebound/c266-16-water-vole",
+    "packetId": "water-vole-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/water-vole-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/water-vole-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/water-vole-finish-01/native/report.json",
+    "masterSha256": "a8186faafd418ce56c3488d6b9dca5ee8f88182cc3a2107e7d576f0a39159ce7",
+    "status": "DIAGNOSTIC_PASS",
+    "staticReport": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/16-water-vole/static.json",
+    "staticReportSha256": "c3111880bae3608c86ed7442265920280b3231d91cdd8cc8267e6b29b04ff493",
+    "recordSha256": "069bb3f3abc1a534f3a0c789c7573e816ae7c290c9eef714d58765340dc939de",
+    "bindingSha256": "39580302e63e8db9cded71726fab3418c1ae86c703d009771cedefe347b89d19",
+    "partsManifestSha256": "2150b3eb8edc8d3fd4b7ae24b117bd4759f0aa10b7aecd84d868f531843d44f7",
+    "recipeHash": "dc457f21da6f2b49d8f9b20c6c6b550c737dad62dde08813ec8080b7621abf23",
+    "canonicalMarkers": [
+      "blunt rounded muzzle with a chubby face",
+      "small ears almost buried in fur",
+      "short furred tail about half the body length"
+    ],
+    "canonicalNote": "Not a rat - blunt face, tiny hidden ears, and a furry rather than scaly tail.",
+    "sourceCoverage": {
+      "declarations": "Four legs, near ear, head, jaw, neck and tail hand-authored on the exact original.",
+      "limitations": "INTERPRETATION: the far ear is occluded behind the head and owns no paint. Whiskers outside the head polygon are placed by the D28 remainder-island step. Near legs are the pair with the lower feet."
+    },
+    "sourceOwnerCheck": {
+      "packet": "16-water-vole",
+      "family": "quadruped",
+      "status": "PASS",
+      "short": [],
+      "min": 210
+    },
+    "ownerCheckRerun": false,
+    "ownerCheckEvidence": "Exact input copies match existing independently controlled owner-check inputs; sourceOwnerCheck is retained existing result, not a new run.",
+    "ownerSizeCaveat": false,
+    "verifierFilmCaveats": [
+      "Far ear is source-occluded; inspect small feet, neck and all limb/body joins."
+    ],
+    "classHoldInherited": false,
+    "sharedRepairDependency": null,
+    "visualVerdict": null,
+    "nativeExecutedByWorker": false,
+    "AIExecuted": false,
+    "accepted": false,
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/water-vole-finish-01/finished/c266-16-water-vole-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/water-vole-finish-01/finished/c266-16-water-vole-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quad-secondary/water-vole-01/visual-review.json",
+    "exitCode": 0
+  }
+]

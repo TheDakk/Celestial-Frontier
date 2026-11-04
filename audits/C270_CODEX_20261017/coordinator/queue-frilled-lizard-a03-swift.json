@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "frilled-lizard-a03",
+    "plan": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/plan.json",
+    "exitCode": 0,
+    "output": "270_CODEX_20261017/w1-source/frilled-lizard-a03/plan.json\"], \"startedUnix\": 1792286210.5563672, \"beforeGiB\": 81.83854293823242, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 24.066, \"lowestGiB\": 81.42720031738281, \"afterGiB\": 81.79228591918945}\n"
+  },
+  {
+    "slug": "frigatebird",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/frigatebird/plan.json",
+    "exitCode": 0,
+    "output": "C270_CODEX_20261017/w2-checkpoint/plans/frigatebird/plan.json\"], \"startedUnix\": 1792286234.70836, \"beforeGiB\": 81.79227828979492, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 20.035, \"lowestGiB\": 81.367431640625, \"afterGiB\": 81.74946975708008}\n"
+  },
+  {
+    "slug": "macaw",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/macaw/plan.json",
+    "exitCode": 0,
+    "output": "its/C270_CODEX_20261017/w2-checkpoint/plans/macaw/plan.json\"], \"startedUnix\": 1792286254.772906, \"beforeGiB\": 81.74945831298828, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 20.066, \"lowestGiB\": 81.3155403137207, \"afterGiB\": 81.68964385986328}\n"
+  },
+  {
+    "slug": "swift",
+    "plan": "audits/C270_CODEX_20261017/w2-checkpoint/plans/swift/plan.json",
+    "exitCode": 0,
+    "output": "its/C270_CODEX_20261017/w2-checkpoint/plans/swift/plan.json\"], \"startedUnix\": 1792286274.88474, \"beforeGiB\": 81.68963623046875, \"status\": \"PASS\", \"exitCode\": 0, \"elapsedSeconds\": 22.068, \"lowestGiB\": 81.28745651245117, \"afterGiB\": 81.66047668457031}\n"
+  }
+]

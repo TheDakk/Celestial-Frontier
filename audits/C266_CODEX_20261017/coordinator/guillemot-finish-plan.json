@@ -1,0 +1,18 @@
+{
+  "status": "ONE_C261_CLEAN_WAIT_SIGNED_PRODUCER",
+  "jobs": [
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/guillemot-finish-01",
+      "slug": "guillemot",
+      "id": "c266-34-guillemot-c1",
+      "fit": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/34-guillemot-c1/qual-r01/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-34-guillemot-c1-01/native/report.json",
+      "name": "Guillemot",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/c267-34-guillemot-c1-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-fish-birds-produced/c267-34-guillemot-c1-01/visual-review.json",
+      "checkpointReviewSha256": "d017fe802104b249cd96568d1dc25b12d0345117b45eb7c1195e8a36f8fe4c8a",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    }
+  ],
+  "accepted": 0
+}

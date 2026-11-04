@@ -1,0 +1,53 @@
+[
+  {
+    "id": "c266-06-softshell-turtle",
+    "name": "Softshell Turtle",
+    "family": "quadruped",
+    "packet": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/packets/06-softshell-turtle",
+    "fit": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-finish-01/rebound/c266-06-softshell-turtle",
+    "packetId": "softshell-turtle-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-finish-01/native/report.json",
+    "masterSha256": "ead89bd3f4ff12785589a604efa0c30b5d1a7fc94c00d613b99088a52b512c35",
+    "status": "DIAGNOSTIC_PASS",
+    "staticReport": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/06-softshell-turtle/static.json",
+    "staticReportSha256": "263474db4d4e9c0036ce1cd62be52e85b8837dd9cf4a0c0e402d6f1f3f2440fd",
+    "recordSha256": "b65ad3b7f8ee2ca756b79b6c5d0a69603bb5582a130fec96c1e4e25f6f0b6c8a",
+    "bindingSha256": "bb50778b26782dca158026a47e20bd459d14c7c340e94c57d372df94987b0e4f",
+    "partsManifestSha256": "875123846c0b367749760e04821fd714b872d0254f15689b4f2a412b598266e6",
+    "recipeHash": "d6229ae040d8117859f47d58a2c52ad416935444893aa9c3a41d420134f4cd89",
+    "canonicalMarkers": [
+      "flat leathery pancake shell with no scutes",
+      "tubular snorkel snout",
+      "broad fully webbed paddle feet"
+    ],
+    "canonicalNote": "",
+    "sourceCoverage": {
+      "declarations": "External pinnae are anatomically absent (chelonian). Four visible feet, exposed neck, head and tail are hand-authored on the exact original.",
+      "limitations": "Interior root/spine/pelvis/chest points are source-local control frames inside the shell, not seen bones. Far limb emergence under the shell is partly occluded; far hip/shoulder landmarks are interpretations under the shell rim. Each ankle part is the whole visible foot block with the ankle landmark in its interior (the C266 tortoise a02/a03 lesson). Fore-far is the limb visible under the plastron, toes pointing forward; fore-near is the large paddle in front of the neck base."
+    },
+    "sourceOwnerCheck": {
+      "packet": "06-softshell-turtle",
+      "family": "quadruped",
+      "status": "PASS",
+      "short": [],
+      "min": 799
+    },
+    "ownerCheckRerun": false,
+    "ownerCheckEvidence": "Exact input copies match existing independently controlled owner-check inputs; sourceOwnerCheck is retained existing result, not a new run.",
+    "ownerSizeCaveat": false,
+    "verifierFilmCaveats": [],
+    "classHoldInherited": false,
+    "sharedRepairDependency": null,
+    "visualVerdict": null,
+    "nativeExecutedByWorker": false,
+    "AIExecuted": false,
+    "accepted": false,
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-finish-01/finished/c266-06-softshell-turtle-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-finish-01/finished/c266-06-softshell-turtle-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/softshell-turtle-01/visual-review.json",
+    "exitCode": 0
+  }
+]

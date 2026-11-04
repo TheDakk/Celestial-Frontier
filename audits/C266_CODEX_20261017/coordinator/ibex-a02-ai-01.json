@@ -1,0 +1,21 @@
+{
+  "stage": "ibex-a02-ai-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-ibex-a02-ai-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/ibex-a02-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/ibex-a02-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792280116.065591,
+  "beforeGiB": 86.73198318481445,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 55.006,
+  "lowestGiB": 76.35274505615234,
+  "afterGiB": 85.69814682006836
+}

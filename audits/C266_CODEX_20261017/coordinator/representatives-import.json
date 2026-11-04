@@ -1,0 +1,954 @@
+{
+  "status": "PASS",
+  "independentVerifierRequired": true,
+  "jobs": [
+    {
+      "id": "c243b05r1c1-09-wallaby",
+      "name": "Wallaby",
+      "family": "hopper",
+      "packet": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet",
+      "fit": "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit",
+      "packetId": "wallaby-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/wallaby-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/wallaby-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/wallaby-01/native/report.json",
+      "masterSha256": "c37bb615cd9989762387dd937a58306fc45de929f73a83552752f8d4497976f2",
+      "scope": "One source-side representative; no runtime adoption or class propagation before C261 W2 CLEAN"
+    },
+    {
+      "id": "c243b06r2c1-16-monkey",
+      "name": "Monkey",
+      "family": "primate",
+      "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-16-monkey/packet",
+      "fit": "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit",
+      "packetId": "monkey-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/monkey-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/monkey-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/monkey-01/native/report.json",
+      "masterSha256": "092da79918093be6c7fd6f9c1e96d889cf07ff40d2c150f417a80784dc30fb3a",
+      "scope": "One source-side representative; no runtime adoption or class propagation before C261 W2 CLEAN"
+    },
+    {
+      "id": "c243b04r2c1-18-kakapo",
+      "name": "Kakapo",
+      "family": "biped-bird",
+      "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1e/c243b04r2c1-18-kakapo/fallback-1/packet",
+      "fit": "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit",
+      "packetId": "kakapo-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/kakapo-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/kakapo-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/kakapo-01/native/report.json",
+      "masterSha256": "6b64d6e4aac680984d84b5570eea518fcb71e16416c2937963499df8ee720a3d",
+      "scope": "One source-side representative; no runtime adoption or class propagation before C261 W2 CLEAN"
+    },
+    {
+      "id": "c266-giant-clam-pairs",
+      "name": "Giant Clam",
+      "family": "bivalve",
+      "packet": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/packet-pairs",
+      "fit": "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs",
+      "packetId": "giant-clam-01",
+      "script": "audits/C266_CODEX_20261017/coordinator/giant-clam-01/script.json",
+      "nativeDir": "audits/C266_CODEX_20261017/coordinator/giant-clam-01/native",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/giant-clam-01/native/report.json",
+      "masterSha256": "323a293b3a162b78fedd9e22ed87aaf5c275ffcd36b00e6b5862876c436736ae",
+      "scope": "One source-side representative; no runtime adoption or class propagation before C261 W2 CLEAN"
+    }
+  ],
+  "files": {
+    "audits/C266_ALLOUT_20261017/seams-mammals/README.md": {
+      "sha256": "76636ba093c7812e056c22d336ded405593b22224e0defbd879d76570f4dba2d",
+      "size": 7402
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/verify/README.md": {
+      "sha256": "82067e5e29bd7238162e670db33b521d8779cc11b2bcb0d34256949696ced2be",
+      "size": 5590
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/README.md": {
+      "sha256": "ab38310b6355c9fca0b1e2be5c747cb604b5e53c7cde8820107005cad00b534a",
+      "size": 8383
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/verify/README.md": {
+      "sha256": "fbc8e8b9389ccc5b81ab9bd9b3d00564a739befe3d65719fe72e74327a290cef",
+      "size": 5674
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/README.md": {
+      "sha256": "f59aec95a6d2d844059de7564b0bb405ece8020c0533cd7af5abc77cfe1b9233",
+      "size": 7894
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/verify/README.md": {
+      "sha256": "5d65ada7dab1f5df6838c02977e3cde5fe603b46a8dbb46da7cc2e05ed70046d",
+      "size": 5935
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/binding.json": {
+      "sha256": "09d413c5e80cdf34ec88213999fe7b4cc68a1a8a96a530f73cad3e1584cc023d",
+      "size": 1308937
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/declaration.json": {
+      "sha256": "7ecdec2b0a29b11d189187af6b4c2ab2526e1141c9888680335fa8829d81e118",
+      "size": 3279
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/labels.png": {
+      "sha256": "06ebc6fd0340bd08afb2f4da5b05004f9cf0507f7f7a99750fa316a30c8384f3",
+      "size": 40486
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/atlas/c243b05r1c1-09-wallaby.json": {
+      "sha256": "050035fe74ab1b223bb7f9de952e4317685673dc97c056a65f18903b4b7ab75b",
+      "size": 12603
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/atlas/c243b05r1c1-09-wallaby.png": {
+      "sha256": "c68cfe68ca5a8908b8c847041503260567defe3d754bf8e337157309006ba25f",
+      "size": 326894
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/atlas/receipt.json": {
+      "sha256": "0656ccff54b82f3a642d8ecd9d4f3cb8c2f6b774793d8216273e41eb200ef892",
+      "size": 4742
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/binding.json": {
+      "sha256": "8ffac912fa0058fcd823afcfa57161228bf236ebaa4773192f4204bf786fe7ee",
+      "size": 10291
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/keyed.png": {
+      "sha256": "c1cf88f257be95c85837da0c64ee3d6e862d90d8ff4aa7be0a85a6ba0e2c32cf",
+      "size": 1387851
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/manifest.json": {
+      "sha256": "d25188305aeff14e6bda45adb2dce65872272e072433bf48ee0fb2a094e438f0",
+      "size": 5218
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/ownership.png": {
+      "sha256": "87b02db7a994c3817ed40b7856661434d44df153468f9e0852b70e8d5626409c",
+      "size": 14174
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/chest.png": {
+      "sha256": "15f5fb44307cbff27af47e54dab73a856a25a38f20e06074f91a13a5a01a5282",
+      "size": 23043
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/ear-far-root.png": {
+      "sha256": "6040ea4f7ed9a37260e6f54c555c6d75c564df7edacfc96847de45cb5e968ca1",
+      "size": 3275
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/ear-far-tip.png": {
+      "sha256": "36283393d04f4652c1e93a17312d031ee53c0b632005e64a8846268fa212b683",
+      "size": 1846
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/ear-near-root.png": {
+      "sha256": "170ca1c4ca7ccaf334b3f7012e8f9146b768f7c1317d4ca92558e5a61008e2b8",
+      "size": 9392
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/ear-near-tip.png": {
+      "sha256": "e78881bd52bb439b3985acca7ed69cd6451a07a43cae0a65399405d2ffada1f5",
+      "size": 3778
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-far-ankle.png": {
+      "sha256": "d9f6bc06a9a9034cf365688e229c82c8b432e741ab68d0f911e0ad3fcaf75698",
+      "size": 1756
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-far-knee.png": {
+      "sha256": "00d25d0ea6e65844d37b25f617a2dea46aaaea793f6ee86ce0e8c3b7ec15fcae",
+      "size": 4034
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-far-paw.png": {
+      "sha256": "0b8b9a28ab1a9c1dd335aaf992a2f53654f0614d0bd82e3ebeefd816112d7161",
+      "size": 1702
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-far-root.png": {
+      "sha256": "083126eeaba98275064a908e0e07ebb7937f0ef78c71affe03b73825d43c0181",
+      "size": 3628
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-near-ankle.png": {
+      "sha256": "f03ae6a5efd28d0488b09fa5599fe21759b1685a373cc53fc6af6f50be858fa2",
+      "size": 2014
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-near-knee.png": {
+      "sha256": "72c54ae5cbe97428db091fbd7dab76ec8fd9a9e4c57e7010b7d36c9c4c77a7ab",
+      "size": 5809
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-near-paw.png": {
+      "sha256": "51a46773c3404e71751c7a5070630690f5969e7d3b0d28fdc1a0c79653b47e8e",
+      "size": 2328
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/fore-near-root.png": {
+      "sha256": "37ca5c94bcb69dd7ed210b58124b12fc50b76a3d5cee964287e90f1d671a2aa1",
+      "size": 7775
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/head.png": {
+      "sha256": "725188e31bb9cd2dbeacef7a77a0fbdb6a21fe989a9e746ce4833462b116fdf2",
+      "size": 29171
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-far-ankle.png": {
+      "sha256": "babfe259536844b53ae8930c361e9844e4daa857cb3ed86a4128a37bc5991540",
+      "size": 9367
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-far-knee.png": {
+      "sha256": "7d714ace19b51c34421c9df4b3f24765f4a9b0ff12426a217b84cc7aaa1ace3f",
+      "size": 2280
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-far-paw.png": {
+      "sha256": "701fe69d1ddcf6f1331da85b23221defee71f63e7b2c1984f3ad683cee2be187",
+      "size": 5515
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-far-root.png": {
+      "sha256": "9fd29c927122bed4742ede904d82b02b1865d3b8190050076a07ad9b661525f2",
+      "size": 1486
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-near-ankle.png": {
+      "sha256": "9b8d46c1d82b4c4fba124b36e936c08052286d7430e1e19c7d6da338ed1c56f0",
+      "size": 9060
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-near-knee.png": {
+      "sha256": "9dcad0ed63a8aed479f644ece889b2029ef20ee4c9d70e53054e09e639e3bcee",
+      "size": 12942
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-near-paw.png": {
+      "sha256": "e2d51930eafff298dd311741eafa42ba8f2404012e236d741b5ad136a0819c99",
+      "size": 5059
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/hind-near-root.png": {
+      "sha256": "081547b17a5d36f427ff024031ec97cac1967dd619dd0da7f24290b781e688ec",
+      "size": 81288
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/jaw.png": {
+      "sha256": "8cade58ba80be1c31ac0972a836160289b19a0632d81a83a454968dae605180c",
+      "size": 3489
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/neck.png": {
+      "sha256": "47483a6b1ebe0402eae499fe61eec3988a45457f4eb2b778112af6d5547403d3",
+      "size": 25088
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/pelvis.png": {
+      "sha256": "138a849595d82aaec1a601c1e26e1e085eccd48c683fa6ddb8b227fa671ace81",
+      "size": 16906
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/root.png": {
+      "sha256": "34cfbe089ea907ac8809e806fecc9e4ff2d7a0f762caa57913f91fb6930c1c53",
+      "size": 9144
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/spine.png": {
+      "sha256": "aac372055d37eebae30831c18c8b9f0f61ed2fbb7b92165fb3c36739ce16bd11",
+      "size": 51551
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/tail0.png": {
+      "sha256": "e1f0254da902345326a1e9d5013c80a4af225aff5c826e24b0404f6e20c1b311",
+      "size": 12329
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/tail1.png": {
+      "sha256": "10f0a65975d4b7e156b86747bf81a0676ffe4ca4d0a9dc9fc95048fb3903c672",
+      "size": 14519
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/tail2.png": {
+      "sha256": "498d8ca64452f3f1ea37de589a42702f08f26bb4e039a1551a172a4c6510cfea",
+      "size": 9418
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/parts/tail3.png": {
+      "sha256": "000d65a010c042ac72cc84731ab975cac022d215807421568a1b30f0707c995e",
+      "size": 4366
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/parts/receipt.json": {
+      "sha256": "2af5a603cb181a4042a241c97edd0117a7a869d4fb433864c17735bea1cf31cf",
+      "size": 8162
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/pre-split-binding.json": {
+      "sha256": "3391bc9ebacf501421ce368a9a18db0ae6ef0bc652ffa5f11c02a51c05cf4ec1",
+      "size": 790622
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/islands/fit/record.json": {
+      "sha256": "60dc0befcf34d31c3097875f0ae5a10bb03c0a9462386c378ac753c32c5a732b",
+      "size": 7817
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet/authoring.json": {
+      "sha256": "d87686b66b0df415679dc149c5e58f7335dbc2813db7c6127194c2495d97cf27",
+      "size": 19339
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet/master.png": {
+      "sha256": "c37bb615cd9989762387dd937a58306fc45de929f73a83552752f8d4497976f2",
+      "size": 1424004
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet/presence.json": {
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "size": 89
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet/source.json": {
+      "sha256": "35e63f6750c4c643836b024e85e4578f155d8c698996408605a8a76c14a803d2",
+      "size": 325
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/wallaby/r01/packet/subject-source.json": {
+      "sha256": "72c2c976139e71abeb6588460ef0f5d3881e703858fbbc4407f8856ba422ca7c",
+      "size": 2159
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/binding.json": {
+      "sha256": "0d5b6874b1989ebbc8a4c3e376af4837549cf54cdb5d9e01bc2e62f36d1e849e",
+      "size": 1306794
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/declaration.json": {
+      "sha256": "2ca37361801fa5c7031b7c3753bd50f1f45fbd13495a24843e58e1b5f96a9344",
+      "size": 1985
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/labels.png": {
+      "sha256": "118d63902ad6ad37c42ef1233d403fe4b3a01a2286da2358fb625b836b0bcfa4",
+      "size": 42949
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/atlas/c243b06r2c1-16-monkey.json": {
+      "sha256": "e4a0a9186554e4fc71af22768ce82f2fe1db43677fb94240efdc47da1821d34e",
+      "size": 7009
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/atlas/c243b06r2c1-16-monkey.png": {
+      "sha256": "f3ed62e8380429d9bcf4e013200bbc83c8e3f0fbbe3b8c0dca7b4f3ececb688d",
+      "size": 414545
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/atlas/receipt.json": {
+      "sha256": "dd0c88a48c3e1d0660b6110d8ac22a2d380cc330b1b2fe1d8998c954170aee11",
+      "size": 2917
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/binding.json": {
+      "sha256": "599fe56b083a23896fb68a866307847104fb1f4fb702364dedc3497126e1de4c",
+      "size": 5793
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/keyed.png": {
+      "sha256": "8f8c2730e7f0edb781dbadb3bff440d21861c348f3f4967eb2ae4531aeb4aad3",
+      "size": 1513095
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/manifest.json": {
+      "sha256": "2dee2704803a4897dd3b4a4c6e7a772e9da321415d3d86f79e04de95cac86db1",
+      "size": 2829
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/ownership.png": {
+      "sha256": "d3d65fcde17388184d74d45af1650c61cc5946f1107ebda562ba6b2efacface0",
+      "size": 17375
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/arm-far-elbow.png": {
+      "sha256": "e94bda9c102bc930381873db16f49994afa3569434eb1a0ec99e4daaa60a1f19",
+      "size": 19739
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/arm-far-hand.png": {
+      "sha256": "eca1a35e3ca4ab908ccc704bf4d92f7a30e2d4f4c390f0334b5ebef43e0b2541",
+      "size": 24953
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/arm-near-elbow.png": {
+      "sha256": "8b660416b0d14df8fe56917cb3aaeaf1194f8c53de545d07074f369a24b0f295",
+      "size": 22759
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/arm-near-hand.png": {
+      "sha256": "4c4f0d698af13391190a8763223a5d230c9f044e1ef69d5c4bdb74dc1d4bba5a",
+      "size": 25146
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/body.png": {
+      "sha256": "97d9143c6d0e520cd9b350183d9b57dfc563daef1ee592d17aa111d2d0c99c54",
+      "size": 68751
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/chest.png": {
+      "sha256": "a1ee436226f84425b6605d62ccd7bfca12d987323af10bc0da5351f33f94c565",
+      "size": 31661
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/head.png": {
+      "sha256": "37447fe25552cd84550f26a2faae371cb5d338acb3246c9e16891977970c9d8b",
+      "size": 53197
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/jaw.png": {
+      "sha256": "3fed3a11e7c86895b13da8f642e8ba69a708e9a566a64e090935da9441eb8f76",
+      "size": 3272
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/leg-far-foot.png": {
+      "sha256": "6881edb79e8a525863f55fa9ddf49db83ee860beeed9d6530beaaa2304814355",
+      "size": 30856
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/leg-far-knee.png": {
+      "sha256": "744fac480a9d5fc1ee647f3f7124f2f6eac77bc7342cb83afc4e2a4ef27b4572",
+      "size": 15233
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/leg-near-foot.png": {
+      "sha256": "ba2aff9215a99b09e2518abc727b30d0070d283daf062edbdd5e80d899d88254",
+      "size": 36952
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/leg-near-knee.png": {
+      "sha256": "f4bf154ece9eac156d2cb283e83b53eb6529e65279d02073ec34da7ff95bf6d9",
+      "size": 40665
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/neck.png": {
+      "sha256": "a636e3d0b08ac23b924e1b784e5dafa13b7edea80ae1ba10a8e8d67f73c12788",
+      "size": 26808
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/pelvis.png": {
+      "sha256": "2856c6239ae9bac9539c4076b096ae9f3f1974e9900fedf23cb94bfc087b14f7",
+      "size": 6600
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/tail0.png": {
+      "sha256": "9f6604a42f4fc5f7461c09caf2c022cf623e27ed34578ab5af662a7b8bf84e29",
+      "size": 5739
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/tail1.png": {
+      "sha256": "0dad67e91d00ee273cadd7399d086a2304766e8aa5bdcaeeb41f20f470904b54",
+      "size": 48219
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/parts/tail2.png": {
+      "sha256": "54a527d469aea56bff7ee315c4d791bb1f40ae40498eea5c49907b4dc83ec245",
+      "size": 28757
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/parts/receipt.json": {
+      "sha256": "2dc7f0a57512766ede4cce876158f0f4fd73d215c822c9b05c4b47e63ed2e309",
+      "size": 4878
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/pre-split-binding.json": {
+      "sha256": "18824de462e01014fa7ed51c15f10380c33c93fd698b0d51ed7a86f80eb383f0",
+      "size": 908748
+    },
+    "audits/C266_ALLOUT_20261017/seams-mammals/monkey/r01/islands/fit/record.json": {
+      "sha256": "c3a85e575695ec76bcdb87febc8617f45b42d83535082df4490103b6902a9284",
+      "size": 6369
+    },
+    "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-16-monkey/packet/master.png": {
+      "sha256": "092da79918093be6c7fd6f9c1e96d889cf07ff40d2c150f417a80784dc30fb3a",
+      "size": 1467265
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/binding.json": {
+      "sha256": "10707d24e3a03cfe32489ad34146f5a6a74f7faa74e038f81e1abdc8b70fa4b7",
+      "size": 1244222
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/declaration.json": {
+      "sha256": "c152fc3d1b54194adffed2184df062575125dab9e04c9cdcbbe14840038d086c",
+      "size": 2009
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/labels.png": {
+      "sha256": "67dfa804efa6b509928eb9ff03a076ab88db5fdc972093ed74aa9854fe92d1f0",
+      "size": 40319
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/atlas/c243b04r2c1-18-kakapo.json": {
+      "sha256": "dc11ff63020e7d09a0992fa82cc59623b23dd0ce60fea600a5aecd28500cdfcf",
+      "size": 6986
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/atlas/c243b04r2c1-18-kakapo.png": {
+      "sha256": "09dc1431da10d50ad9398f2636ae66cd392474cfbbe70a7c30f1067f1a532d6f",
+      "size": 486650
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/atlas/receipt.json": {
+      "sha256": "d526083698809b8bb7639185b70a06897873686f7100930a14b27ceae642a53c",
+      "size": 2926
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/binding.json": {
+      "sha256": "7d169cd0ce5993ad3c9f0e9e80d05bcfddea5dec32ee7b89e868be02261629c1",
+      "size": 5796
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/keyed.png": {
+      "sha256": "86c5b9a5c7a65d873d2727939deb8d3a3e8de2c0b6de6f7dd3e0958b6d2d1fa8",
+      "size": 1554881
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/manifest.json": {
+      "sha256": "39da785f3eee1eada558179fe338ce41843e9147c3ae1399eca39d1974f251c4",
+      "size": 2847
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/ownership.png": {
+      "sha256": "657c4855203ca6d09d1acd656f6ea011fb4dfcd38cea9b26a1fec6cdcb8356a2",
+      "size": 15338
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/beak.png": {
+      "sha256": "f9b473b451b15dccea8a08a405c36e5f0283600d28d70e781f1b215766f6f9a8",
+      "size": 6144
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/body.png": {
+      "sha256": "1132cd6aa05e099c0b1e035e0d1d9510f352d5268ed21e4ea1f5b4c7192ba35a",
+      "size": 133140
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/chest.png": {
+      "sha256": "e0f16d6ad6e44eea0a39b86775e5eb650df859629f127cbaa9576400e4399dd5",
+      "size": 197701
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/far-foot.png": {
+      "sha256": "8315bc2508f9cc6f57ea74bb87a22d4d085af03a4f70b7c219a59c2ec9c28554",
+      "size": 10289
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/far-shin.png": {
+      "sha256": "48bc805bcf7f4b074c85a0876c0f197ef508c8c39ca5582633451b09af675947",
+      "size": 7886
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/far-thigh.png": {
+      "sha256": "6fd5b5ebeaf1771fedf5760a9423c78132f65b98f6e96dd5cd98f34a2e7bfc51",
+      "size": 5311
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/far-wing-flight.png": {
+      "sha256": "1e0d6c68006cd279ab576163a920ac1b6393a5eba27f4287d669b8500094906a",
+      "size": 1314
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/far-wing-root.png": {
+      "sha256": "8b1b6b76e65e3e54521ee47f5f28b8bbf1e58fd1c79a3a6c775ebc88d790ee31",
+      "size": 2843
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/head.png": {
+      "sha256": "905576140ce4be862a23cafc31cc9e0c1c61c39f0a5411a281fcc4332eaa58d7",
+      "size": 76898
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/near-foot.png": {
+      "sha256": "753fa1e59ab5636ec64e97b0e870a68750fc36f8c8230fe928dccf031c70e004",
+      "size": 12726
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/near-shin.png": {
+      "sha256": "e04b70afb55ad974b58e6fb7c426fc29602e27ebbff69fb6a0ca4823e2883d99",
+      "size": 5393
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/near-thigh.png": {
+      "sha256": "0f37b6fd1b77f5805f7a3672f326e96c8f2507489996d15896857762c2c45b94",
+      "size": 10832
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/near-wing-flight.png": {
+      "sha256": "cea4787de0dc3a2de1edc89f43d93dc89a97699832c5191049718d4fae827bf1",
+      "size": 5578
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/near-wing-root.png": {
+      "sha256": "bac4710eb41f6802fd607452ea937ef7899815e9d788b65781965516488736ca",
+      "size": 8789
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/neck-lower.png": {
+      "sha256": "69a7d6ab18f89b1b79f2c513302e8413777152a3196e81ed87c0904b0ef1f769",
+      "size": 32790
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/neck-upper.png": {
+      "sha256": "6c5d49f61d83acbc71f0312550e6c1ce5cefd55141469ba29e0f7975bc7fa2c8",
+      "size": 26698
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/parts/tail.png": {
+      "sha256": "3ff6cc214899170624767eb9c34d4f9d5d1f56d4119ee89aa574df12531eb04f",
+      "size": 38572
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/parts/receipt.json": {
+      "sha256": "f47b9d3388d6976e8fe6c9be2640e2a87fed4222424a7a656d972c31878441ed",
+      "size": 4855
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/pre-split-binding.json": {
+      "sha256": "43d45d57f27622dfb54781984f4b62fae42f7435e861db8d3f2d6910a58d6a9c",
+      "size": 867447
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/kakapo/cand09/fit/record.json": {
+      "sha256": "d1396171276d48fdad0d8945165bb34ddf03fa56ae74473008d08c948f490a3e",
+      "size": 6941
+    },
+    "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1e/c243b04r2c1-18-kakapo/fallback-1/packet/master.png": {
+      "sha256": "6b64d6e4aac680984d84b5570eea518fcb71e16416c2937963499df8ee720a3d",
+      "size": 1521341
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/binding.json": {
+      "sha256": "3da9abfc15cfe8ac812079c3af354a784fd707b234ac5e3b24b243b3f282e54e",
+      "size": 921169
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/declaration.json": {
+      "sha256": "bbcd5394a0434dba92a0852c405cbe029e51ba3c2e2709e1a0c37e07ffc8d2d7",
+      "size": 56058
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/intake-provenance.json": {
+      "sha256": "e19f0048340e273be41f0971fdd03ca8126be01a53cc8959eafcd7ec2868881c",
+      "size": 3173
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/atlas/c266-giant-clam-pairs.json": {
+      "sha256": "c94e298e8ec7375f1826d058dfeca065d76a61450e4c82923e320889e9ead26a",
+      "size": 1776
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/atlas/c266-giant-clam-pairs.png": {
+      "sha256": "0e0d9340ba49220af490b706956520fed96c8264e77aee605398ecae284f6fec",
+      "size": 614324
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/atlas/receipt.json": {
+      "sha256": "b6235252d3fa0360f6a40a3fe3fa70008b1c8707f5e04443b01c41b8c2ed8a18",
+      "size": 1268
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/binding.json": {
+      "sha256": "9d70f77c0821ae64bc58dda29ee2729f21f53fb23e7368d6d94cf8e20e985590",
+      "size": 1640
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/keyed.png": {
+      "sha256": "8e7b87b366003109fe90b3bc042f62a6aa951ecbb7a4b23fb58700eecc756bc4",
+      "size": 1663739
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/manifest.json": {
+      "sha256": "7bcd16dab40925539b3045d25d67dbb662810b8de1fa744f248ba7b3d228af40",
+      "size": 701
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/ownership.png": {
+      "sha256": "edcc1d8596ae137a7f79298bc320773cc05e3ba42857231bfa64f2a373892d5a",
+      "size": 14768
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/parts/hinge.png": {
+      "sha256": "e86dafcb419a4bff106bcc4defe5606269a2a015e05c99a315797ef77f5c3258",
+      "size": 2388
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/parts/mantle.png": {
+      "sha256": "88e7a11079642fd44027cdf354fbb260bda737ed7c5457ef9b99f45847b31daf",
+      "size": 277116
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/parts/valvefar.png": {
+      "sha256": "97882bfbb2ea9968fc37204f88e1d74179bd730db2ea8951c206b78087ba3c2b",
+      "size": 126013
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/parts/valvenear.png": {
+      "sha256": "21536f7cae0b514214732a07164ca18e7c3ef46c3bf7a62ad486c59df3490b8f",
+      "size": 333733
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/parts/receipt.json": {
+      "sha256": "589cdd002b6bdaa66fa0879aab2223e79d0e4e75347c653388aab25d6a5a6c7d",
+      "size": 1598
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/pre-split-binding.json": {
+      "sha256": "4d05b444541ca73787c96247172f5b3edcbb0e7e113b00bd9b2801976645663e",
+      "size": 700657
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/receipt.json": {
+      "sha256": "46c2fb8fbf629c10dfef2c97e62b4c08a7391a050f3a3dc8f4222fd1c60faf8a",
+      "size": 2190
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/fit-pairs/record.json": {
+      "sha256": "f7e77ab9d53d72d42e66e6b4f076017f5a60846e292606d2da943a142df635bb",
+      "size": 4648
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/packet-pairs/authoring.json": {
+      "sha256": "8bda8f5b8e99b45b13dadea6acde868d5374cca9820bd186e7fe3e699333e0c5",
+      "size": 26543
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/packet-pairs/master.png": {
+      "sha256": "323a293b3a162b78fedd9e22ed87aaf5c275ffcd36b00e6b5862876c436736ae",
+      "size": 1621685
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/packet-pairs/presence.json": {
+      "sha256": "2d1dfef96a6391b90d91003f6e1a49faaa9ab49bb2e10b47a486206f1c848e5d",
+      "size": 117
+    },
+    "audits/C266_ALLOUT_20261017/seams-birds-shells/giant-clam/packet-pairs/subject-source.json": {
+      "sha256": "eebee6cd3ec4030e26af8ebe364aacc8080019e530a5ec8770df978dac00236d",
+      "size": 2167
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/authoring.json": {
+      "sha256": "5ce67373b630654d5050b5411aa072bb3412fcfc81c46e2ae81bb98aba1b17b1",
+      "size": 14788
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/master.png": {
+      "sha256": "2c54eaebbf64734d63a3772f6cbd13a691a0d3c6fb552346b24deb9aadf3b611",
+      "size": 1429609
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/presence.json": {
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "size": 89
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/prompt.txt": {
+      "sha256": "7305b1bb7135f5ad166fae903711005e8ea6f9d1d0932d31b314ace1734e307d",
+      "size": 12694
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/intake.log": {
+      "sha256": "2fbfda8f6f0a9ff98434b6d155c43c53ffe3448d307cb8b0fd8ce20040b1e3b1",
+      "size": 349
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/binding.json": {
+      "sha256": "0518fffb7c5b8af8bd001ce4c8c6a7efd1ad07d237017a9391a0379aca06885f",
+      "size": 1082137
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/declaration.json": {
+      "sha256": "e8755f0516e8007b6a711edf8f5586856874f17fb613ba60b67ea4094cec2490",
+      "size": 2409
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/labels.png": {
+      "sha256": "712d74669d44998585a79fa29f4e1ad549878db1f4979cc8c802fcacee938577",
+      "size": 42013
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/atlas/c266-11-grasshopper.json": {
+      "sha256": "b9c66ba70b14c8dd81f495001c9e36cfe33256d75e909d21a507453999d52289",
+      "size": 8271
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/atlas/c266-11-grasshopper.png": {
+      "sha256": "1b07ff892328cd3ef3450bc05980630621d67ec01508fcf3415f2fc5298e667a",
+      "size": 311946
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/atlas/receipt.json": {
+      "sha256": "0766f18e9d75ac15ead080d32a52b61124c48d3f08f1d66b1e84c4c2d459e8cd",
+      "size": 3381
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/binding.json": {
+      "sha256": "6622b87dfa4af4b3f99f317d86dfa303322891ff6b3637cfde2388e4db3ef9a0",
+      "size": 6897
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/keyed.png": {
+      "sha256": "2c24ff01ab8ad090b2d43b84c520a71585990234994d467d1c81704e4b4fdc16",
+      "size": 1421669
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/manifest.json": {
+      "sha256": "24f7fbe040a986ced0f033341b71760a5e97dc411c74a208cfbe396c265cae08",
+      "size": 3489
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/ownership.png": {
+      "sha256": "82ee4a4323fb920250887d04dc60ae97e5e1013fa517d5987b14f931d11c9de3",
+      "size": 15616
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/abdomen.png": {
+      "sha256": "d4ddf03d0c7d236213ea21dc1929f225fb82f32114af592bf43dac4fda3bcf06",
+      "size": 61951
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/antenna-far-0.png": {
+      "sha256": "3ffed6c65127dbc726de9a13a7f43f52baa6fe420e7c9d226151f7a9c8d96234",
+      "size": 1145
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/antenna-near-0.png": {
+      "sha256": "61dd68feb65b831921e16ee075925479c2607b1ceb25d471975abc19391aac1e",
+      "size": 1717
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/body.png": {
+      "sha256": "fcf0af7800539bd64afe40668a2b45e2bae88d480aff1dc4f974a66b559501cd",
+      "size": 2738
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/front-far-lower-0.png": {
+      "sha256": "b6cbd1e96fcd52cbc324fac0a3d8b5ad31eda2b9017dac3b7f33bfb65e3a57b8",
+      "size": 918
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/front-far-upper.png": {
+      "sha256": "1e9708b055649ae57ffad7f66c96767f5a9354a2304d851cd6c51ede47f1aff4",
+      "size": 1780
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/front-near-lower-0.png": {
+      "sha256": "0f8047c8be59ff4570314caca114eca28e78374a7d8d7a9a95a52c7ed0c144e9",
+      "size": 4463
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/front-near-upper.png": {
+      "sha256": "66377d95fcc40474f6f2dfa8bc4510e50d805c8ee5a053dca4a28e61b0a620ea",
+      "size": 6219
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/head.png": {
+      "sha256": "0e842706ad0e922f3fd67fe256b47202eaff6278de6a4b9b803dd2206bb94638",
+      "size": 23473
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/hind-far-femur.png": {
+      "sha256": "c38deb798479c4e21fb5b156c1a5fdbc39523e7fbf34b80b8a750c7b4daf7990",
+      "size": 30320
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/hind-far-tibia-b-0.png": {
+      "sha256": "8916ab7c6a43e4aaa1e751495c0b8036530670a5175cdd51e91780090cf7b39b",
+      "size": 9443
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/hind-near-femur.png": {
+      "sha256": "a0b23140b7b5ddf1cbcf11904d7336fe2161e26748d2adeaf3f6187a3c89130b",
+      "size": 53865
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/hind-near-tibia-b-0.png": {
+      "sha256": "5ae7b5459ed8acf9688b38bc68f86581104cc8f9c2468a58ce481dcb008dcc3b",
+      "size": 17894
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/mandible.png": {
+      "sha256": "bedc14e7bed8cc2a39816bd8cdbbe74a8b87a2a3fa6c58d7a82cabe95e0ea476",
+      "size": 4873
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/mid-far-lower-0.png": {
+      "sha256": "241c49c1ced099fbe94be717b3d4a587a1b2ea3a1e31c686c62e2b0d8d5cad65",
+      "size": 4633
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/mid-far-upper.png": {
+      "sha256": "d0148e60d24623d530d5452eb872fcdabfebcd050d3eb607e3305888d435ccae",
+      "size": 3771
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/mid-near-lower-0.png": {
+      "sha256": "b40201e8700c02645b70b8a0b784c76bf520a7c40f99c74705f7ec0cd3c02d40",
+      "size": 4691
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/mid-near-upper.png": {
+      "sha256": "9205a48218c20425ce83b32a404ad32d3515ee75b28461e1f559280a846a5837",
+      "size": 5576
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/thorax.png": {
+      "sha256": "c461af392f751c7d96c3296c093d94fff156ec0333d8316a9c226dd7c4f96a1f",
+      "size": 64917
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/parts/wing-near.png": {
+      "sha256": "e88f3b6942605fe33c4ace202d319f1816214874a6986c41f5bf740580d760d6",
+      "size": 62781
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/parts/receipt.json": {
+      "sha256": "abd9fb4d4050b950311407de72ff650ed22b0e60cba0dfb33a379400eeab8aa4",
+      "size": 5695
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/pre-split-binding.json": {
+      "sha256": "ffee110419d6c0a3f0099e256037089469eda1f11072b230fb6e33d9f5321d17",
+      "size": 766045
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/fit/record.json": {
+      "sha256": "03dcc41cb0ddf42aedfbb1aa436d77ab7183238991e6c6d9ed9eb7dc9758b43d",
+      "size": 6773
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands/receipt.json": {
+      "sha256": "4cac0147b4ec8e5d5d4c0ea100d178d7f360598d1dcae75cdde0da1e94625174",
+      "size": 9367
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/islands.log": {
+      "sha256": "28ce0f3ba29dc37667713d27653df624729b1670277fa8d13669fe38a71de394",
+      "size": 1156
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/binding.json": {
+      "sha256": "84b908220f327060ba15357602e3f2241b1bfb652a1b92d65a3195d8f4c241f5",
+      "size": 1135063
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/declaration.json": {
+      "sha256": "261b83a62cef2d7652a5e94ad4465de621982a4cd1f63b6630785b62dcb02a3d",
+      "size": 2409
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/intake-provenance.json": {
+      "sha256": "4c412abae2760b992ec0c7ee058beebd07d9e0852e85532dc930f1d973ccd359",
+      "size": 3588
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/label-authoring-receipt.json": {
+      "sha256": "5292e33ff54d38199238ede8fc7c3eb7a30f61e5fc51e21b7cb1aceaa3e99558",
+      "size": 4676
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/labels.png": {
+      "sha256": "feaada18a36130602fb2f0f61025c1254017c261cc12ee00613cda0a8729b083",
+      "size": 42409
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/atlas/c266-insect-grasshopper.json": {
+      "sha256": "a9710dfae61c78080d762b9fb6977910479d52f564b40aa7208ee034d82cb84c",
+      "size": 8297
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/atlas/c266-insect-grasshopper.png": {
+      "sha256": "480d8b888e54f5fc64723a9cfc5482eb7353e1d7c345e0678dec9299a5f05071",
+      "size": 319704
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/atlas/receipt.json": {
+      "sha256": "b55ba9e28b87764e869c1e58ea48dd3afe682de869f9266f9497a45062fadbb9",
+      "size": 3385
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/binding.json": {
+      "sha256": "91f28eb4455e8e5c320541af8c3b98fc9ab14aa59078069009dd55545f9c4911",
+      "size": 6919
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/keyed.png": {
+      "sha256": "2c24ff01ab8ad090b2d43b84c520a71585990234994d467d1c81704e4b4fdc16",
+      "size": 1421669
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/manifest.json": {
+      "sha256": "e85f592ad9804c3e9072f3a02e535f5832c43ee3f9ba027d4dfb0473bf8c55f7",
+      "size": 3493
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/ownership.png": {
+      "sha256": "a942ed9e7ed375ebeedec4561915497d3e86f1edee261d6e00f894e645f23e02",
+      "size": 15858
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/abdomen.png": {
+      "sha256": "d4ddf03d0c7d236213ea21dc1929f225fb82f32114af592bf43dac4fda3bcf06",
+      "size": 61951
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/antenna-far-0.png": {
+      "sha256": "3ffed6c65127dbc726de9a13a7f43f52baa6fe420e7c9d226151f7a9c8d96234",
+      "size": 1145
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/antenna-near-0.png": {
+      "sha256": "61dd68feb65b831921e16ee075925479c2607b1ceb25d471975abc19391aac1e",
+      "size": 1717
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/body.png": {
+      "sha256": "cad364a5caefed96acc5ca057c807c0297905d0e8fa1b62d72d4b6d2ef04df53",
+      "size": 9754
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/front-far-lower-0.png": {
+      "sha256": "49fd9942c18244ba9da384b15ecaaae520ab77c64f1ab2ecf5285deea2634555",
+      "size": 881
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/front-far-upper.png": {
+      "sha256": "1e9708b055649ae57ffad7f66c96767f5a9354a2304d851cd6c51ede47f1aff4",
+      "size": 1780
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/front-near-lower-0.png": {
+      "sha256": "f58ca8466b38d704c5a288e35881d6c50384bf211c853a0844be5421accb0f31",
+      "size": 4447
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/front-near-upper.png": {
+      "sha256": "638b5347d3725a6c48357dd703ffe4ff40a43a61c72054ec6fca0d09e5653adb",
+      "size": 6163
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/head.png": {
+      "sha256": "467dfc4db0c60c5a6e7496807cd340ea2399b6bba45229d2fe7707ae13c4912e",
+      "size": 23407
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/hind-far-femur.png": {
+      "sha256": "f7b031e1ad49a7abf3d1dcdbc1af32245c0db662e23541a28f7541cb40fb627d",
+      "size": 30023
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/hind-far-tibia-b-0.png": {
+      "sha256": "ec38ac796172f4be5f795d4e8c042a0e0082a0b4528353d32a02ac249e6d1522",
+      "size": 8503
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/hind-near-femur.png": {
+      "sha256": "16970424f530dab29b220df38fbfe9f8bcde14d7147bed8caa8f98361ec7e242",
+      "size": 52682
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/hind-near-tibia-b-0.png": {
+      "sha256": "9cdf783a32cec670e6efbecd30fca8cada8dd8dd500f14bb8fe2acc969cd1742",
+      "size": 17766
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/mandible.png": {
+      "sha256": "39ad3783e472fd5a4675f09ad531ea877f5853df92a2b389af0bfa91aa5f2d3a",
+      "size": 4523
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/mid-far-lower-0.png": {
+      "sha256": "c39a74aa37f8a19a6b56a6594099059a2875848019d19f3b53e0e650d7b2574a",
+      "size": 4580
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/mid-far-upper.png": {
+      "sha256": "d0148e60d24623d530d5452eb872fcdabfebcd050d3eb607e3305888d435ccae",
+      "size": 3771
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/mid-near-lower-0.png": {
+      "sha256": "fad7cc92699e13ad246886ec66b0da80b099d6e59db9ac4456b263e2250e87fe",
+      "size": 4567
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/mid-near-upper.png": {
+      "sha256": "9205a48218c20425ce83b32a404ad32d3515ee75b28461e1f559280a846a5837",
+      "size": 5576
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/thorax.png": {
+      "sha256": "44041477f28554050853fb6e3d01d53d8a6be011741fb832ef3069392cbd795d",
+      "size": 63827
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/parts/wing-near.png": {
+      "sha256": "6277cc34f26fd7d92b7e4bda8820e817f1341ae0110a6269bf904d43124986f5",
+      "size": 62710
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/parts/receipt.json": {
+      "sha256": "60ba1457c28ff84be70cd24e3979ed9c379e72617bf51e3937a9b048c26265ba",
+      "size": 5696
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/pre-split-binding.json": {
+      "sha256": "ae47fe903276d4d9c7bd8e58eebbfc786f5ef9e971bc570bdacf5733adff867a",
+      "size": 817239
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/receipt.json": {
+      "sha256": "62f2834bb98a1a06cf7867448877c6d8a97007cb7111e199a2bccd77f28228b6",
+      "size": 3256
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/raw-fit/record.json": {
+      "sha256": "03dcc41cb0ddf42aedfbb1aa436d77ab7183238991e6c6d9ed9eb7dc9758b43d",
+      "size": 6773
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/static.json": {
+      "sha256": "a740f1747199757b71cd2ab562a68a5b20305eec1a3aa64e4d8711f90fb02a2f",
+      "size": 8136
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/static.json.sources.json": {
+      "sha256": "cef65e766777282f3cf20876c9ee4b3ecf2ef05b9dd4b78d49b5414576c4196d",
+      "size": 18023
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/static.log": {
+      "sha256": "1166d5e4d4559720da5ce20c8bbc2acf9d3a7a4326fb032aa351a89a96f52705",
+      "size": 2039
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/qual-r01/summary.json": {
+      "sha256": "836cdd8ebd95376e837563343b3d5b49036b9a60154ea4d756a897cc1f4a7a18",
+      "size": 1030
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/source.json": {
+      "sha256": "28d06f70d841896e683c88e71b8a3fd33e47c89fb5138161a916769d55c5cb56",
+      "size": 1146
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/11-grasshopper/subject-source.json": {
+      "sha256": "5c12de6316a7b223a6363ea4a274c14a07278b2bf7df86acb347ed076caaabc3",
+      "size": 2698
+    },
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/tools/qualify.mjs": {
+      "sha256": "ae9d346fbbc9e55aa6d9eb1a41154358db94016ab724be418c6b0ba47983ba9b",
+      "size": 3647
+    }
+  },
+  "runtimeChanges": false,
+  "notes": [
+    "Kangaroo is NOT verifier-ready; Gibbon diagnosis only; Oyster patch held.",
+    "Kakapo all-action thorax ownership is diagnostic source evidence; Dakk adoption question remains.",
+    "Grasshopper must be recompiled from its unchanged packet, then independently checkpointed before hexapod propagation."
+  ]
+}

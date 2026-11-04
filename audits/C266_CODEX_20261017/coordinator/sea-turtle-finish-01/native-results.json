@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c266-07-sea-turtle",
+    "name": "Sea Turtle",
+    "family": "quadruped",
+    "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle",
+    "fit": "audits/C266_CODEX_20261017/coordinator/sea-turtle-finish-01/rebound/c266-07-sea-turtle",
+    "packetId": "sea-turtle-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/sea-turtle-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/sea-turtle-finish-01/native/report.json",
+    "masterSha256": "4afba8310070c6ddcb317ab81ee1c8246af8a861378d96ff5b6228983fc54060",
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/sea-turtle-finish-01/finished/c266-07-sea-turtle-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/sea-turtle-finish-01/finished/c266-07-sea-turtle-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/sea-turtle01/visual-review.json",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

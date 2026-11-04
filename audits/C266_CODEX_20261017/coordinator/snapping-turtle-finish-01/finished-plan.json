@@ -1,0 +1,52 @@
+[
+  {
+    "id": "c266-05-snapping-turtle",
+    "name": "Snapping Turtle",
+    "family": "quadruped",
+    "packet": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/packets/05-snapping-turtle",
+    "fit": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-finish-01/rebound/c266-05-snapping-turtle",
+    "packetId": "snapping-turtle-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-finish-01/native/report.json",
+    "masterSha256": "cb575b448e21f209cca9e9f98449b9e69e04dca2da24bd5972660da8a0ca9259",
+    "status": "STATIC_READY_NATIVE_PENDING",
+    "staticReport": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/05-snapping-turtle/static.json",
+    "staticReportSha256": "951e474258286b3869578bcdce8c59f8f43cb866e283fdea0dbf73c8c1bb8554",
+    "recordSha256": "ebff06af69c312c78f1023b4e9fa5de36a59dad90b7ec5ff3e561bf72a3faedb",
+    "bindingSha256": "ff05209efd3e2d18a522203d04bab9d138fa89f22a0ddb6d4836c77e8616f948",
+    "partsManifestSha256": "67162f5037b889fa961d824dd9dbfcbfd4858373a6d9f35240406d4ccb7d858e",
+    "recipeHash": "f13c0fabaf89ba28d70224c1f55e143c1e23b6cf8d3699a9e26426c939d141b6",
+    "canonicalMarkers": [
+      "massive hooked beak on an oversized head",
+      "long saw-toothed crested tail",
+      "rough ridged shell too small to withdraw into"
+    ],
+    "canonicalNote": "",
+    "sourceCoverage": {
+      "declarations": "External pinnae are anatomically absent (chelonian). Four visible feet, exposed neck, head and tail are hand-authored on the exact original.",
+      "limitations": "Interior root/spine/pelvis/chest points are source-local control frames inside the shell, not seen bones. Far limb emergence under the shell is partly occluded; far hip/shoulder landmarks are interpretations under the shell rim. Each ankle part is the whole visible foot block with the ankle landmark in its interior (the C266 tortoise a02/a03 lesson). The open gape interior is owned by the jaw. The tail is cut into four vertical slices along its length (dorsal saw-teeth go with their slice)."
+    },
+    "sourceOwnerCheck": {
+      "packet": "05-snapping-turtle",
+      "family": "quadruped",
+      "status": "PASS",
+      "short": [],
+      "min": 286
+    },
+    "ownerCheckRerun": false,
+    "ownerCheckEvidence": "Exact input copies match existing independently controlled owner-check inputs; sourceOwnerCheck is retained existing result, not a new run.",
+    "ownerSizeCaveat": false,
+    "verifierFilmCaveats": [],
+    "classHoldInherited": false,
+    "sharedRepairDependency": null,
+    "visualVerdict": null,
+    "nativeExecutedByWorker": false,
+    "AIExecuted": false,
+    "accepted": false,
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-finish-01/finished/c266-05-snapping-turtle-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-finish-01/finished/c266-05-snapping-turtle-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/snapping-turtle-01/visual-review.json"
+  }
+]

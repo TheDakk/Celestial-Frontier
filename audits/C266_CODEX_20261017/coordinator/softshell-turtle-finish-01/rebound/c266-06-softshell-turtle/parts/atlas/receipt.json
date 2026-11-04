@@ -1,0 +1,127 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c266-06-softshell-turtle",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "6b8ba9212555bbc07e3e147ba85411d2f0123f82a127bc02bc124c4fa425f814",
+    "pngSha256": "61ba386be28b3d81c22cfd7df07954a4d7854639e1a567b5b276b1138361c6d3"
+  },
+  "parts": [
+    {
+      "name": "far-front-ankle.png",
+      "sha256": "e9dbffa07e3fcb243cddb05aa1989d5eab632c854cca5d176a27cd8277e6caa0"
+    },
+    {
+      "name": "far-front-emergence.png",
+      "sha256": "a972d6a7115d1844633c11cb11cd880b1699c6cc45dd489658624d7970ca0522"
+    },
+    {
+      "name": "far-front-paw.png",
+      "sha256": "5ea3b47a2dd376c570668d8470f80f21078924fbcda4649366d0520220fc41ae"
+    },
+    {
+      "name": "far-front-shin.png",
+      "sha256": "5d54258c08585a02f42e8d5654ce77e2ebb7d62851803b2d391e12f96f37386b"
+    },
+    {
+      "name": "far-hind-ankle.png",
+      "sha256": "f80d9d3710caa2f051cc4486752758290385d31871b7b38c66c12a10d2d272dc"
+    },
+    {
+      "name": "far-hind-emergence.png",
+      "sha256": "c8e1b84f42a11d0fadc068506c79640b6e38b540f9b3000ef33f917c87acb484"
+    },
+    {
+      "name": "far-hind-paw.png",
+      "sha256": "6f9b211267253850a0f624630901d8fae484d4799a317f71ef23bf06c9bd03bb"
+    },
+    {
+      "name": "far-hind-shin.png",
+      "sha256": "71e7fef7fae0353ae3e0bad4d92753d5e4c80348eab15351b96a75760fdf6fc9"
+    },
+    {
+      "name": "head.png",
+      "sha256": "e20e68a1f2aaba69c13615490153dd7d2fe75b1846d072e29babd40c25513b1e"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "84315dd8082f43d98b689727f38b0c2a01d5ad2e24b705e16fe4fe346d4b8d03"
+    },
+    {
+      "name": "near-front-ankle.png",
+      "sha256": "ed8d9d385454aeb9f0f0c895c333f9217fcfdfda631fa1eae0850d2bb3d2410d"
+    },
+    {
+      "name": "near-front-emergence.png",
+      "sha256": "f4831764acb36df39f88fbff3c9dc8a477e5166b90f2a8007bcadf883756ae15"
+    },
+    {
+      "name": "near-front-paw.png",
+      "sha256": "087761ba88b1a78f8a375f69eae069c4a29523fbe89ebf3b82a8247d83b9ba7c"
+    },
+    {
+      "name": "near-front-shin.png",
+      "sha256": "61800dcfef23e099169e5b7faf3b8c2703d4702c5625f10e125e9c80a70ed610"
+    },
+    {
+      "name": "near-hind-ankle.png",
+      "sha256": "b73dbc700f4051dbc00c265d38cdce571506c82346e4ae098c18b75b9c991b9b"
+    },
+    {
+      "name": "near-hind-emergence.png",
+      "sha256": "6192aeb177ee29eb27bfca296262578ea1154b0d8190fdf86b46a4051b2f18f7"
+    },
+    {
+      "name": "near-hind-paw.png",
+      "sha256": "fb135e7003169fd1d07c592def998db444346ebbc0e21ef03a6fbb1fb5bcbcf8"
+    },
+    {
+      "name": "near-hind-shin.png",
+      "sha256": "c32efd96a470278a39fba3f3033463ac36856ce06b0495b71f776b3a0a5dd9ef"
+    },
+    {
+      "name": "neck.png",
+      "sha256": "9f3422595e7240726627c01c943b44218660012ea2d463ca9e421129b8fe24f7"
+    },
+    {
+      "name": "plate-remainder.png",
+      "sha256": "f36d30741a2810ec6d27b79d70c6357d03e911cdf333cfdd4f681c56f3991f39"
+    },
+    {
+      "name": "tail-base.png",
+      "sha256": "ee360036f29c418b7910ef9e500133fd2dfe367e0f57045596ac7e098b8f6b1a"
+    },
+    {
+      "name": "tail-distal.png",
+      "sha256": "c955da5610208e2e510aeeff23632afa01c2ba238bc9cf7a6d1dac360192efb6"
+    },
+    {
+      "name": "tail-middle.png",
+      "sha256": "bb9cc2d63c413f3b76ed35bf4173d80fe763f2c926d6bf06fd25eb6d53de9f90"
+    },
+    {
+      "name": "tail-tip.png",
+      "sha256": "7c3871f4eba9218736f78f06a10100b893d2872d84cc1b0d17434cad2240d0c5"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

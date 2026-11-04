@@ -1,0 +1,20 @@
+{
+  "stage": "first-pheasant",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-pheasant",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/w2-checkpoint/plans/pheasant/plan.json"
+  ],
+  "startedUnix": 1792286511.4053252,
+  "beforeGiB": 81.43250274658203,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.074,
+  "lowestGiB": 81.01740264892578,
+  "afterGiB": 81.39770126342773
+}

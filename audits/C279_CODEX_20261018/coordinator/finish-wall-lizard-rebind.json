@@ -1,0 +1,20 @@
+{
+  "stage": "finish-wall-lizard-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-wall-lizard-rebind",
+    "--",
+    "node",
+    "audits/C279_CODEX_20261018/coordinator/rebind-one.mjs",
+    "audits/C279_CODEX_20261018/coordinator/finishes/wall-lizard"
+  ],
+  "startedUnix": 1792346291.441786,
+  "beforeGiB": 66.22441864013672,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 66.22440719604492,
+  "afterGiB": 66.2197494506836
+}

@@ -1,0 +1,21 @@
+{
+  "stage": "sea-lion-ai-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-sea-lion-ai-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/sea-lion-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/sea-lion-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792279961.789473,
+  "beforeGiB": 86.9073486328125,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 51.103,
+  "lowestGiB": 78.5268669128418,
+  "afterGiB": 85.88728332519531
+}

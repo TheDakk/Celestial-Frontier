@@ -1,0 +1,20 @@
+{
+  "stage": "native-sea-turtle-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C395-sea-turtle",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/plan.json"
+  ],
+  "startedUnix": 1792273591.86994,
+  "beforeGiB": 83.47074508666992,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 24.07,
+  "lowestGiB": 83.47072982788086,
+  "afterGiB": 84.44193649291992
+}

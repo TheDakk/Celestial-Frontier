@@ -1,0 +1,29 @@
+{
+  "stage": "c261-seven-r02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-current-seven-C261",
+    "--",
+    "node",
+    "audits/DISK_RECOVERY_20261017/exclusive.mjs",
+    "python3",
+    "audits/C279_CODEX_20261018/coordinator/freeze-triage.py",
+    "triage-seven",
+    "audits/C279_CODEX_20261018/coordinator/plans/moray-eel/native",
+    "audits/C279_CODEX_20261018/coordinator/plans/gulper-eel/native",
+    "audits/C279_CODEX_20261018/coordinator/plans/frigatebird/native",
+    "audits/C279_CODEX_20261018/coordinator/plans/osprey/native",
+    "audits/C279_CODEX_20261018/coordinator/plans/swift/native",
+    "audits/C279_CODEX_20261018/coordinator/finishes/swift/native",
+    "audits/C279_CODEX_20261018/coordinator/plans/frigatebird-owner-r02/native"
+  ],
+  "startedUnix": 1792337671.556745,
+  "beforeGiB": 73.09062576293945,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 42.154,
+  "lowestGiB": 73.0888671875,
+  "afterGiB": 73.08915710449219
+}

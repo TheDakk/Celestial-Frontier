@@ -1,0 +1,20 @@
+{
+  "stage": "softshell-turtle-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-softshell-turtle-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "softshell-turtle"
+  ],
+  "startedUnix": 1792279937.651204,
+  "beforeGiB": 85.94532012939453,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 85.94530487060547,
+  "afterGiB": 85.93986129760742
+}

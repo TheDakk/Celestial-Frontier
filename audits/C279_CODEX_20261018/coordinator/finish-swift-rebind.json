@@ -1,0 +1,20 @@
+{
+  "stage": "finish-swift-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-swift-rebind",
+    "--",
+    "node",
+    "audits/C279_CODEX_20261018/coordinator/rebind-one.mjs",
+    "audits/C279_CODEX_20261018/coordinator/finishes/swift"
+  ],
+  "startedUnix": 1792337545.232527,
+  "beforeGiB": 71.17959976196289,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 71.1795883178711,
+  "afterGiB": 71.17543411254883
+}

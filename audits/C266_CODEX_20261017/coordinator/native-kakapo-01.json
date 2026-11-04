@@ -1,0 +1,20 @@
+{
+  "stage": "native-kakapo-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C394-kakapo-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/kakapo-01/plan.json"
+  ],
+  "startedUnix": 1792271728.53549,
+  "beforeGiB": 96.08276748657227,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 24.052,
+  "lowestGiB": 95.64097595214844,
+  "afterGiB": 96.03619003295898
+}

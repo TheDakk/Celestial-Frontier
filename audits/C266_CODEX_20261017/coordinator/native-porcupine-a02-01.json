@@ -1,0 +1,20 @@
+{
+  "stage": "native-porcupine-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-porcupine-a02-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/porcupine-a02-01/plan.json"
+  ],
+  "startedUnix": 1792277525.36751,
+  "beforeGiB": 91.98225784301758,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.061,
+  "lowestGiB": 91.55038833618164,
+  "afterGiB": 91.92727279663086
+}

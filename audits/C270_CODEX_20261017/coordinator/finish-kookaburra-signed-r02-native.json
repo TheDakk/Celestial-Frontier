@@ -1,0 +1,20 @@
+{
+  "stage": "finish-kookaburra-signed-r02-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-kookaburra-signed-r02-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/coordinator/finishes/kookaburra-signed-r02/finished-plan.json"
+  ],
+  "startedUnix": 1792288624.781197,
+  "beforeGiB": 78.84320068359375,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.079,
+  "lowestGiB": 78.43180465698242,
+  "afterGiB": 78.80855560302734
+}

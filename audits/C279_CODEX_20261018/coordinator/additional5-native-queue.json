@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Black Fly",
+    "plan": "audits/C279_CODEX_20261018/coordinator/plans/additional-black-fly/plan.json"
+  },
+  {
+    "name": "Moth",
+    "plan": "audits/C279_CODEX_20261018/coordinator/plans/additional-moth/plan.json"
+  },
+  {
+    "name": "Caecilian",
+    "plan": "audits/C279_CODEX_20261018/coordinator/plans/additional-caecilian-observed02/plan.json"
+  },
+  {
+    "name": "Dragonfish",
+    "plan": "audits/C279_CODEX_20261018/coordinator/plans/additional-dragonfish-observed02/plan.json"
+  },
+  {
+    "name": "Thrips",
+    "plan": "audits/C279_CODEX_20261018/coordinator/plans/additional-thrips/plan.json"
+  }
+]

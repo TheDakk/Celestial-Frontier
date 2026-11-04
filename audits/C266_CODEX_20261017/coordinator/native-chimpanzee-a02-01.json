@@ -1,0 +1,20 @@
+{
+  "stage": "native-chimpanzee-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C395-chimpanzee",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/chimpanzee-a02-01/plan.json"
+  ],
+  "startedUnix": 1792274029.458596,
+  "beforeGiB": 84.0505485534668,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 6.019,
+  "lowestGiB": 84.0027961730957,
+  "afterGiB": 84.05033493041992
+}

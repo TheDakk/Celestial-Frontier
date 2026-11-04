@@ -1,0 +1,20 @@
+{
+  "stage": "first-macaw",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-macaw",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/w2-checkpoint/plans/macaw/plan.json"
+  ],
+  "startedUnix": 1792286254.772906,
+  "beforeGiB": 81.74945831298828,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.066,
+  "lowestGiB": 81.3155403137207,
+  "afterGiB": 81.68964385986328
+}

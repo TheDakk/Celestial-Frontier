@@ -1,0 +1,20 @@
+{
+  "stage": "native-softshell-turtle-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-softshell-turtle-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/softshell-turtle-01/plan.json"
+  ],
+  "startedUnix": 1792277376.7788138,
+  "beforeGiB": 92.27666091918945,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.07,
+  "lowestGiB": 91.870361328125,
+  "afterGiB": 92.23983383178711
+}

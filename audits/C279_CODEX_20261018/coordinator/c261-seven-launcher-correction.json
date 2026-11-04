@@ -1,0 +1,9 @@
+{
+  "status": "ARGUMENT_CORRECTION_BEFORE_MEASUREMENT",
+  "originalStage": "c261-seven",
+  "diagnosis": "freeze-triage.py interprets argv1 relative to its coordinator directory; passing a coordinator-relative path duplicated that prefix and mkdir failed before freeze/checker.",
+  "changedArgument": "triage-seven",
+  "originalEvidenceRetained": true,
+  "numericMeasurementsFromFailedLauncher": 0,
+  "checkerOrLimitsChanged": false
+}

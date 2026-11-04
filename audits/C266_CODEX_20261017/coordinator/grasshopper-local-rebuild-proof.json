@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "file": "atlas/c266-11-grasshopper.json",
+      "equal": true
+    },
+    {
+      "file": "atlas/c266-11-grasshopper.png",
+      "equal": true
+    },
+    {
+      "file": "atlas/receipt.json",
+      "equal": true
+    },
+    {
+      "file": "binding.json",
+      "equal": true
+    },
+    {
+      "file": "keyed.png",
+      "equal": true
+    },
+    {
+      "file": "manifest.json",
+      "equal": true
+    },
+    {
+      "file": "ownership.png",
+      "equal": true
+    },
+    {
+      "file": "parts/abdomen.png",
+      "equal": true
+    },
+    {
+      "file": "parts/antenna-far-0.png",
+      "equal": true
+    },
+    {
+      "file": "parts/antenna-near-0.png",
+      "equal": true
+    },
+    {
+      "file": "parts/body.png",
+      "equal": true
+    },
+    {
+      "file": "parts/front-far-lower-0.png",
+      "equal": true
+    },
+    {
+      "file": "parts/front-far-upper.png",
+      "equal": true
+    },
+    {
+      "file": "parts/front-near-lower-0.png",
+      "equal": true
+    },
+    {
+      "file": "parts/front-near-upper.png",
+      "equal": true
+    },
+    {
+      "file": "parts/head.png",
+      "equal": true
+    },
+    {
+      "file": "parts/hind-far-femur.png",
+      "equal": true
+    },
+    {
+      "file": "parts/hind-far-tibia-b-0.png",
+      "equal": true
+    },
+    {
+      "file": "parts/hind-near-femur.png",
+      "equal": true
+    },
+    {
+      "file": "parts/hind-near-tibia-b-0.png",
+      "equal": true
+    },
+    {
+      "file": "parts/mandible.png",
+      "equal": true
+    },
+    {
+      "file": "parts/mid-far-lower-0.png",
+      "equal": true
+    },
+    {
+      "file": "parts/mid-far-upper.png",
+      "equal": true
+    },
+    {
+      "file": "parts/mid-near-lower-0.png",
+      "equal": true
+    },
+    {
+      "file": "parts/mid-near-upper.png",
+      "equal": true
+    },
+    {
+      "file": "parts/thorax.png",
+      "equal": true
+    },
+    {
+      "file": "parts/wing-near.png",
+      "equal": true
+    },
+    {
+      "file": "receipt.json",
+      "equal": true
+    }
+  ],
+  "note": "Manifest recipe/source hashes may differ after local path recompilation; all actual atlas/keyed/ownership pixels compared byte-for-byte"
+}

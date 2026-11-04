@@ -1,0 +1,20 @@
+{
+  "stage": "native-dromedary-camel-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-dromedary-camel-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/dromedary-camel-01/plan.json"
+  ],
+  "startedUnix": 1792277423.185056,
+  "beforeGiB": 92.18709945678711,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.057,
+  "lowestGiB": 91.77350234985352,
+  "afterGiB": 92.14491271972656
+}

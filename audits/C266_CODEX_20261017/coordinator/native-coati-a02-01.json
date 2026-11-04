@@ -1,0 +1,20 @@
+{
+  "stage": "native-coati-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-coati-a02-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/coati-a02-01/plan.json"
+  ],
+  "startedUnix": 1792277549.668478,
+  "beforeGiB": 91.92721939086914,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.051,
+  "lowestGiB": 91.53313827514648,
+  "afterGiB": 91.89030456542969
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-giant-water-bug-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C401-rebind-giant-water-bug-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "giant-water-bug"
+  ],
+  "startedUnix": 1792278988.617594,
+  "beforeGiB": 86.62379455566406,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 86.62377166748047,
+  "afterGiB": 86.62020874023438
+}

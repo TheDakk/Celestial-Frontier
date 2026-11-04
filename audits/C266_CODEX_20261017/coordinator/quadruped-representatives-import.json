@@ -1,0 +1,230 @@
+{
+  "status": "PASS",
+  "files": {
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/README.md": {
+      "sha256": "5af06d229ab80692577cf33d9a2acb0fa5010c86cdc503a1afb3730d67f1bef3",
+      "size": 10355
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/verify/README.md": {
+      "sha256": "cbc6af74e2578e324832a78607b314a8fa9c60f02f0c28a200473c1ffb71aefb",
+      "size": 5552
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/selected.json": {
+      "sha256": "05e9761c74dcb2fc414fa5528278d132bd9fdbf2a070b078cc0f08f6be8f8ae7",
+      "size": 1245
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/tools/qualify.mjs": {
+      "sha256": "629faed3630475998366e2a5e4a4bb546d3520e16e95e95a31221dcb0c3ce6e3",
+      "size": 3796
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/source.json": {
+      "sha256": "cfa70e81a392582d9c620b792d4e95303c9632399223bce194514d6097f213c5",
+      "size": 1204
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/presence.json": {
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "size": 112
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/master.png": {
+      "sha256": "883b143342b5344961f2ffab576c472e5c73af9ed6130cd47bd58519c63c644b",
+      "size": 1544560
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/prompt.txt": {
+      "sha256": "b675f081ef20006567c3b3bc0364938e32fc665d089012ca392786e49303836b",
+      "size": 11596
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/authoring.json": {
+      "sha256": "d838008f7405b9460762ce0f9a75ca1a92c990d5e5ffbf7da79e2e8bdeb03f35",
+      "size": 15238
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/subject-source.json": {
+      "sha256": "93dfc0edd7a9708ea59de68e76a7612f784a979572f22969f65f1610b470c540",
+      "size": 2190
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/source.json": {
+      "sha256": "7cb6d5829c8f727c0a1a210bb0df75e577fb23e76961b3a980cb749132718584",
+      "size": 1401
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/presence.json": {
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "size": 112
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/master.png": {
+      "sha256": "4afba8310070c6ddcb317ab81ee1c8246af8a861378d96ff5b6228983fc54060",
+      "size": 1447030
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/prompt.txt": {
+      "sha256": "430c1d1125e058ffb742461190b90d596c9943fc9a68270c26f80adf5b017a46",
+      "size": 12214
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/authoring.json": {
+      "sha256": "baac34f77c10e88a87f6ecb61d1d5279a976a1034b430dac6de95e54d1ca03de",
+      "size": 12988
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/subject-source.json": {
+      "sha256": "104afa88009b04f3972a019fdb2a2d8fc4a00df3a5d151442cd7f237719a74a2",
+      "size": 2177
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/source.json": {
+      "sha256": "b122be0d4218800f898fdae5957cdde6b50059116ed65fb36156ebd09bb992b1",
+      "size": 1288
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/presence.json": {
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "size": 89
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/master.png": {
+      "sha256": "b1c578f74b2fc205e02ec5aff739141e29d33963b4dfabeb533a32bff0c54f60",
+      "size": 1541063
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/prompt.txt": {
+      "sha256": "9ff19aaa80458939ca45c850dc2f7c2f15f0cac640f5c67c2e06c83ada267777",
+      "size": 11410
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/authoring.json": {
+      "sha256": "c16c5d31b4ecca7534573e5cada1847cae3a6427d2e9728cdf778c1a808babbe",
+      "size": 10622
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/subject-source.json": {
+      "sha256": "537d9ce00f24b948ef1cfee36d4abbefefbeb18fc2be80acd21d2e68ee859d53",
+      "size": 2254
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/source.json": {
+      "sha256": "5efd7101c8be04d5212e66d0d11ba5f38d97ea5f22a28a6eaf6d030966bd836b",
+      "size": 1130
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/presence.json": {
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "size": 89
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/master.png": {
+      "sha256": "1532e8117ea868f2fe19b0b75f7c3f50fa9e6f1c07f93ebb105e9dcbedd64a34",
+      "size": 1506636
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/prompt.txt": {
+      "sha256": "57877f3bcf1f965c45aa6b730ff866db9d0222a69e76c012cfd09df1be0d7a31",
+      "size": 11463
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/authoring.json": {
+      "sha256": "9f95a45bf5f90520d953d8396d1a8639d650ceb3c773bf0f57a8c8e969a87739",
+      "size": 13266
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/subject-source.json": {
+      "sha256": "6363e979a98244309bde957ee5b455fc98089b1b1322e064f70e86510aa565d6",
+      "size": 2873
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/source.json": {
+      "sha256": "a32d8873b9966cc06fc2035e1f5e16b26f4904d157e9ea3bad55ab103b7f466c",
+      "size": 1147
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/presence.json": {
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "size": 89
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/master.png": {
+      "sha256": "c414f18ce04df4813aa3ee630b5e3ed82752a217226f9e86a43f1161a6ffdb96",
+      "size": 1431416
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/prompt.txt": {
+      "sha256": "349933930c8c4582356808c2dfe6a931c04d5da2d0e8dccecf0898b0272b692f",
+      "size": 10891
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/authoring.json": {
+      "sha256": "9f55565d693bcdec2a5bbeb8d1517821a40368b6e8ccc284e8c5acb8d65bb566",
+      "size": 11993
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/subject-source.json": {
+      "sha256": "13fca383e33b9cb577a19e66734916b734d204edac55485f15714d7ebd1f29b2",
+      "size": 2633
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/source.json": {
+      "sha256": "b7c662f02654ae4409127d9db5faf647fb5946e0ed3af4bcb4443f1c79f937b8",
+      "size": 1316
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/presence.json": {
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "size": 112
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/master.png": {
+      "sha256": "0b6c477240376791e4734f8e1f09977373df28a4204a0d9469d1f431fdce7a53",
+      "size": 1268800
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/prompt.txt": {
+      "sha256": "40665382cc1a07c938f7e5cd4a8a9b052a86a2aca5b88d64a0a5ea447d12755b",
+      "size": 12311
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/authoring.json": {
+      "sha256": "ff02179b1a158063b5f38e5bb86aa866bceb2fc5297c4c782e5127aed119b33a",
+      "size": 14745
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/subject-source.json": {
+      "sha256": "43388f373b8f8a4edfa96aeca8e955d05ba43afea7e6abaa824d83b217c155b0",
+      "size": 2527
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/source.json": {
+      "sha256": "2baa4837310cf50e57e215c904caaded77321c5da147bd804f11b1080770a1e6",
+      "size": 1246
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/presence.json": {
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "size": 112
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/master.png": {
+      "sha256": "9a671beb029f3480400283cc4ca3ab6b348f877f39353f01e2d9aa02cbcc39ab",
+      "size": 1284031
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/prompt.txt": {
+      "sha256": "ddca68a2f49e509f836cc4a9eb406236e180ac9852564ea8c6b4f51b3de75496",
+      "size": 12069
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/authoring.json": {
+      "sha256": "7029434d62d8f542625cb26f8bcdd02de63fdc8d25882f21fb0ec037ea5247e4",
+      "size": 11890
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/25-olm-a02/subject-source.json": {
+      "sha256": "861c3c3400320b339491d50072ceace9a324d92714bb042f3dafc97bba182e61",
+      "size": 2303
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/source.json": {
+      "sha256": "d5cd12e8dd182afb5cbaf6d28f89ea9ffc725f4578a6eb137420b0363689e5e1",
+      "size": 1518
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/presence.json": {
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db",
+      "size": 103
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/master.png": {
+      "sha256": "9d0696ed48a22ebe3fa89646173108a7290b73f3c00c4f6847cfadd8fbb1b4be",
+      "size": 1518168
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/prompt.txt": {
+      "sha256": "0d632ff778df308d3d3e619038b8c66f7f7c2484aac60d19b27e45374d015484",
+      "size": 11639
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/authoring.json": {
+      "sha256": "2a1ebed1470db645a90773f02e6f7b35ffe82903a2ca1413056d2ce69f089b44",
+      "size": 7669
+    },
+    "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/26-chimpanzee-a02/subject-source.json": {
+      "sha256": "d0f93a863c913d7b4e2eecc5677cc534f8f5a0bbfe0bef09ddd9253d5996b4cb",
+      "size": 2327
+    }
+  },
+  "selected": [
+    "01-tortoise-a04",
+    "07-sea-turtle",
+    "08-fur-seal",
+    "13-goat-a02",
+    "14-shrew",
+    "22-anole-a02",
+    "25-olm-a02",
+    "26-chimpanzee-a02"
+  ],
+  "runtimeChanges": false,
+  "scope": "New independently authored intake packets, separate from the held Monkey seam-relabel class. First representative per contact/anatomy class before propagation.",
+  "holds": [
+    "Seal template conflict",
+    "Squirrel canonical sitting/food pose absent",
+    "All runtime patches unapplied"
+  ]
+}

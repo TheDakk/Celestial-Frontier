@@ -1,0 +1,11 @@
+# C270 Codex scoped delivery
+
+**Two finished packets READY_FOR_CLAUDE: Frilled Lizard and Hoatzin. Zero new admissions.** Signed C269/C270 were merged as `170746f0cf` G; current coverage is385 certified +76 pending certification +170 unaccepted =631.
+
+The complete [W4 delivery](w4-delivery/final/snapshot-01/README.md) binds actual W1/W2/W3 evidence and all28 unique requested targets. Fourteen first-native diagnostics and four successful finish chains passed. Current dispositions are2 READY,12 film HOLD,8 new-original source HOLD,5 pre-film HOLD and1 Fiddler CPU source HOLD. Kookaburra and Pheasant remain HOLD for retained worst-pose defects outside their clean selected-five checkpoints. No new original qualified for authoring. Coconut/Mud and Fiddler source anatomy remains insufficient; Vent's carpus repair succeeded but identity remains HOLD.
+
+The final frozen cohort contains371 films/742 unchanged frame pins. Independent full-size and actual2x reviews retain all pink and auxiliary caveats, including Frilled foreFarAnkle115<150 FAIL. Three initial bird dispatches refused before inference on dirty tracked paperwork are preserved; C409 froze that paperwork before fresh successful chains. W4 verifies1977 selected files,1006 protected canonical source paths and18 native cases. Scope151pins/28targets also verifies. Selected evidence measures467.601MiB including manifest paths; large raw media/model files remain local by hash.
+
+Workers used disjoint W1 source, W2 checkpoint, W3 finished and W4 paperwork folders; coordinator owned the serial GPU queue, commits and mailbox. Eight generation leases are RELEASED, all worker/native/inference jobs are finished, and minimum recorded stage disk was69.418GiB. C410 signs complete delivery as `6a5fb482486339ef5940cc3f546e411190a3f608` G; C411 explicitly releases the C406 reservation as TERMINAL (`coordinator/terminal.json`). Claude then merges signed local results after usual checks and reviews only the two READY candidates for admission. Codex stops this queue. No Dakk relay, app switch or PR is needed.
+
+Pink-fringe species including Dragonfish remain HOLD. Kangaroo, Gibbon, Vampire Bat and Cave Cricket were not filmed. Runtime patches stay unapplied pending Dakk. All-pairs HOLD; no push, PR, GitHub, certification or C223.

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c266-14-shrew",
+    "name": "Shrew",
+    "family": "quadruped",
+    "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew",
+    "fit": "audits/C266_CODEX_20261017/coordinator/shrew-finish-01/rebound/c266-14-shrew",
+    "packetId": "shrew-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/shrew-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/shrew-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/shrew-finish-01/native/report.json",
+    "masterSha256": "c414f18ce04df4813aa3ee630b5e3ed82752a217226f9e86a43f1161a6ffdb96",
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/shrew-finish-01/finished/c266-14-shrew-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/shrew-finish-01/finished/c266-14-shrew-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-quad-secondary/shrew-01/visual-review.json",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-ant-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C401-rebind-ant-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "ant"
+  ],
+  "startedUnix": 1792278894.857384,
+  "beforeGiB": 85.67006301879883,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 85.6700439453125,
+  "afterGiB": 85.66617965698242
+}

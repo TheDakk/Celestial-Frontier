@@ -1,0 +1,20 @@
+{
+  "stage": "finish-hoatzin-signed-r02-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-hoatzin-signed-r02-rebind",
+    "--",
+    "node",
+    "audits/C270_CODEX_20261017/coordinator/rebind-one.mjs",
+    "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02"
+  ],
+  "startedUnix": 1792288543.5938141,
+  "beforeGiB": 77.89496231079102,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.002,
+  "lowestGiB": 77.89495849609375,
+  "afterGiB": 77.89129257202148
+}

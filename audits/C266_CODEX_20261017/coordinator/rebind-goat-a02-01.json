@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-goat-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-rebind-goat-a02-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "goat-a02"
+  ],
+  "startedUnix": 1792275857.455892,
+  "beforeGiB": 91.41830062866211,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.004,
+  "lowestGiB": 91.41827774047852,
+  "afterGiB": 91.41217422485352
+}

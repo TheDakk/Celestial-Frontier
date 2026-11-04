@@ -1,0 +1,10 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/motion/aquatic-serpent-victory.test.ts(47,422): error TS2532: Object is possibly 'undefined'.
+apps/game/src/motion/aquatic-serpent-victory.test.ts(48,242): error TS2379: Argument of type '{ amplitudeProfile?: import('./amplitude-profile.js').AmplitudeProfile; kind: 'body-card'; contactGeometry?: import('../creature-rig-types.js').CreatureRigRecordV1['geometry']; ... 23 more ...; realm: 'terrestrial'; }' is not assignable to parameter of type 'BodyCard' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'realm' are incompatible.
+    Type '"terrestrial"' is not assignable to type 'Realm'.
+apps/game/src/motion/aquatic-serpent-victory.test.ts(48,337): error TS2532: Object is possibly 'undefined'.
+apps/game/src/motion/aquatic-serpent-victory.test.ts(48,375): error TS2532: Object is possibly 'undefined'.

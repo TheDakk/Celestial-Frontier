@@ -1,0 +1,5 @@
+{
+  "checkpointReview": "audits/C279_CODEX_20261018/w2-motion/current-films/additional-black-fly/checkpoint-final.json",
+  "checkpointReviewSha256": "44ecf7012781ce8bfee75e650968571a686fd80a5d37f3b7acc99ded4cc18c09",
+  "nativePlan": "audits/C279_CODEX_20261018/coordinator/plans/additional-black-fly/plan.json"
+}

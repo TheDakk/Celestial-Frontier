@@ -1,0 +1,10 @@
+{
+  "id": "c266-09-sea-lion",
+  "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/09-sea-lion/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/sea-lion-01/native/report.json",
+  "name": "Sea Lion",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/sea-lion-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/sea-lion-01/visual-review.json",
+  "checkpointReviewSha256": "49ca4377c5d3f4bf50237dce22f15ac7774b447aa9042ef0c3740c30ada2a020",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

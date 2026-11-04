@@ -1,0 +1,20 @@
+{
+  "stage": "first-vent-crab-a02-near",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-vent-crab-a02-near",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/w1-source/vent-crab-a02-near/plan.json"
+  ],
+  "startedUnix": 1792286449.1124759,
+  "beforeGiB": 81.53105163574219,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.051,
+  "lowestGiB": 81.44367599487305,
+  "afterGiB": 81.50153732299805
+}

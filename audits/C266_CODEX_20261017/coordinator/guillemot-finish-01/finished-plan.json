@@ -1,0 +1,18 @@
+[
+  {
+    "id": "c266-34-guillemot-c1",
+    "name": "Guillemot",
+    "family": "biped-bird",
+    "packet": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/34-guillemot-c1",
+    "fit": "audits/C266_CODEX_20261017/coordinator/guillemot-finish-01/rebound/c266-34-guillemot-c1",
+    "packetId": "c267-34-guillemot-c1-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/c267-34-guillemot-c1-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/guillemot-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/guillemot-finish-01/native/report.json",
+    "masterSha256": "bf8c2f81ca3f35356ff1e9fe264fdac6f35ffb18c26d444b8477552328b61964",
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/guillemot-finish-01/finished/c266-34-guillemot-c1-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/guillemot-finish-01/finished/c266-34-guillemot-c1-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-fish-birds-produced/c267-34-guillemot-c1-01/visual-review.json"
+  }
+]

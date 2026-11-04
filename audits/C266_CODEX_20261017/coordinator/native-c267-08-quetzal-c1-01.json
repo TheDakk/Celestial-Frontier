@@ -1,0 +1,20 @@
+{
+  "stage": "native-c267-08-quetzal-c1-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C400-c267-08-quetzal-c1-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/c267-08-quetzal-c1-01/plan.json"
+  ],
+  "startedUnix": 1792278168.7873962,
+  "beforeGiB": 91.21045303344727,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.058,
+  "lowestGiB": 90.79066848754883,
+  "afterGiB": 91.1674919128418
+}

@@ -1,0 +1,21 @@
+{
+  "stage": "finish-pheasant-signed-r02-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-pheasant-signed-r02-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C270_CODEX_20261017/coordinator/finishes/pheasant-signed-r02/finished",
+    "audits/C270_CODEX_20261017/coordinator/finishes/pheasant-signed-r02/subjects.json"
+  ],
+  "startedUnix": 1792288647.186867,
+  "beforeGiB": 78.80843734741211,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 52.811,
+  "lowestGiB": 69.41788101196289,
+  "afterGiB": 75.77657699584961
+}

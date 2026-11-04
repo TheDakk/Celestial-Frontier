@@ -1,0 +1,21 @@
+{
+  "stage": "softshell-turtle-ai-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-softshell-turtle-ai-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/softshell-turtle-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/softshell-turtle-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792279880.869729,
+  "beforeGiB": 88.96772003173828,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 56.722,
+  "lowestGiB": 76.5780029296875,
+  "afterGiB": 85.94533920288086
+}

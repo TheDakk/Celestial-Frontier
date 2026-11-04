@@ -1,0 +1,20 @@
+{
+  "stage": "first-hoatzin",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-hoatzin",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/w2-checkpoint/plans/hoatzin/plan.json"
+  ],
+  "startedUnix": 1792286471.202888,
+  "beforeGiB": 81.50152969360352,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.07,
+  "lowestGiB": 81.09087753295898,
+  "afterGiB": 81.46663665771484
+}

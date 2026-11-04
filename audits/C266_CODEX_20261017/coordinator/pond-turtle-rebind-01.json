@@ -1,0 +1,20 @@
+{
+  "stage": "pond-turtle-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-pond-turtle-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "pond-turtle"
+  ],
+  "startedUnix": 1792279696.228556,
+  "beforeGiB": 86.17912292480469,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.03,
+  "lowestGiB": 86.1791000366211,
+  "afterGiB": 86.17488098144531
+}

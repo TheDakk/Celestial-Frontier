@@ -1,0 +1,21 @@
+{
+  "stage": "finish-pheasant-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-pheasant-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C270_CODEX_20261017/coordinator/finishes/pheasant/finished",
+    "audits/C270_CODEX_20261017/coordinator/finishes/pheasant/subjects.json"
+  ],
+  "startedUnix": 1792288204.9241421,
+  "beforeGiB": 79.97590637207031,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 2.007,
+  "lowestGiB": 79.97590255737305,
+  "afterGiB": 79.97586441040039
+}

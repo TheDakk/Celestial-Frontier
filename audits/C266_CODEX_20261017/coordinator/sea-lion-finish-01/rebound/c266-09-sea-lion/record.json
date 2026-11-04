@@ -1,0 +1,262 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sea Lion\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3714168032\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"19\"]]]]",
+    "seed": 3714168032,
+    "ownerId": "authored:archetype-sprint/c266-intake-sea-lion",
+    "earthName": "Sea Lion"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3714168032,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 0,
+    "body": 15,
+    "loco": 14,
+    "trait": 19,
+    "size": 2,
+    "diet": 2,
+    "head": 9,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 3,
+    "detail": 0,
+    "accent": 9,
+    "temper": 0,
+    "sense": 5,
+    "repro": 5,
+    "life": 3,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sea Lion"
+  },
+  "geometry": {
+    "cutoutAssetHash": "b1fbf73c7fc9ced7c6255eb3b0c5d848d828755e0d583295130080eb37442281",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6842105263157895,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.4784688995215311,
+      0.5103668261562998
+    ],
+    "spine": [
+      0.4784688995215311,
+      0.4784688995215311
+    ],
+    "pelvis": [
+      0.3349282296650718,
+      0.5661881977671451
+    ],
+    "chest": [
+      0.6299840510366826,
+      0.5103668261562998
+    ],
+    "neck": [
+      0.6698564593301436,
+      0.40669856459330145
+    ],
+    "head": [
+      0.7177033492822966,
+      0.33891547049441784
+    ],
+    "jaw": [
+      0.7615629984051037,
+      0.3652312599681021
+    ],
+    "earNearRoot": [
+      0.6794258373205742,
+      0.3508771929824561
+    ],
+    "earNearTip": [
+      0.6682615629984051,
+      0.35964912280701755
+    ],
+    "earFarRoot": [
+      0.69377990430622,
+      0.33891547049441784
+    ],
+    "earFarTip": [
+      0.6842105263157895,
+      0.3444976076555024
+    ],
+    "hindNearRoot": [
+      0.34290271132376393,
+      0.5940988835725678
+    ],
+    "hindNearKnee": [
+      0.3349282296650718,
+      0.6355661881977671
+    ],
+    "hindNearAnkle": [
+      0.3508771929824561,
+      0.6618819776714514
+    ],
+    "hindNearPaw": [
+      0.39473684210526316,
+      0.6682615629984051
+    ],
+    "hindFarRoot": [
+      0.30303030303030304,
+      0.580542264752791
+    ],
+    "hindFarKnee": [
+      0.2711323763955343,
+      0.6060606060606061
+    ],
+    "hindFarAnkle": [
+      0.23923444976076555,
+      0.6220095693779905
+    ],
+    "hindFarPaw": [
+      0.2113237639553429,
+      0.6339712918660287
+    ],
+    "foreNearRoot": [
+      0.5980861244019139,
+      0.5582137161084529
+    ],
+    "foreNearKnee": [
+      0.5940988835725678,
+      0.6475279106858054
+    ],
+    "foreNearAnkle": [
+      0.60207336523126,
+      0.671451355661882
+    ],
+    "foreNearPaw": [
+      0.5462519936204147,
+      0.6738437001594896
+    ],
+    "foreFarRoot": [
+      0.6698564593301436,
+      0.5582137161084529
+    ],
+    "foreFarKnee": [
+      0.6738437001594896,
+      0.6236044657097288
+    ],
+    "foreFarAnkle": [
+      0.69377990430622,
+      0.6379585326953748
+    ],
+    "foreFarPaw": [
+      0.7416267942583732,
+      0.6419457735247209
+    ],
+    "tail0": [
+      0.30303030303030304,
+      0.5909090909090909
+    ],
+    "tail1": [
+      0.29904306220095694,
+      0.5964912280701754
+    ],
+    "tail2": [
+      0.29505582137161085,
+      0.60207336523126
+    ],
+    "tail3": [
+      0.291866028708134,
+      0.6068580542264753
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/packets/09-sea-lion/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "Pinned Earth fauna profile pinniped capability (water+ground); haul-out pose."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Four flippers, small tail, near ear flap, head and jaw hand-authored on the exact original.",
+    "limitations": "INTERPRETATION: the far ear (earFarRoot/Tip) is occluded behind the head and owns no paint. Interior root/spine/pelvis/chest are control frames; flipper roots sit inside the body. Each fore-flipper column down to below the belly edge is one root part (C266 fold lesson). Whisker strands outside the head polygon are placed by the D28 remainder-island step.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "dbc5030f46f8f6f6ddbcd348dacceaaa52423b57a41022fb56438d93b4dbca1f",
+    "subjectSourceSha256": "73d77f6ee38d0ea87ddc002bff91b3e8131dcdbe92182d65f7cef3cc3b005e03",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.15401282229527882,
+      "spine": 0.16822187487822154,
+      "chest": 0.15483642614790752,
+      "neck": 0.11107167685154795,
+      "head": 0.0829691070441978,
+      "jaw": 0.051148700831976354,
+      "hindFarRoot": 0.03497880733566397,
+      "hindFarKnee": 0.04084927743178856,
+      "hindFarAnkle": 0.035662966148322005,
+      "hindFarPaw": 0.03036592147473647,
+      "foreFarRoot": 0.062282692790324244,
+      "foreFarKnee": 0.06551219903840784,
+      "foreFarAnkle": 0.024566063478069212,
+      "foreFarPaw": 0.048012737554993225,
+      "hindNearRoot": 0.02902755139266554,
+      "hindNearKnee": 0.04222712055781088,
+      "hindNearAnkle": 0.03077158115083695,
+      "hindNearPaw": 0.04432119053138838,
+      "foreNearRoot": 0.05750480503132363,
+      "foreNearKnee": 0.08940315118849212,
+      "foreNearAnkle": 0.025217525200704794,
+      "foreNearPaw": 0.05587261261755461,
+      "tail0": 0.04035592002832538,
+      "tail1": 0.006859908506413529,
+      "tail2": 0.006859908506413618,
+      "tail3": 0.00575048050313237,
+      "earFarRoot": 0.02392344497607657,
+      "earFarTip": 0.011078503978827568,
+      "earNearRoot": 0.04010300146947417,
+      "earNearTip": 0.014198160936814083
+    },
+    "measures": {
+      "torso": 0.30028979878409456,
+      "head": 0.0829691070441978,
+      "head/torso": 0.2762967885694038,
+      "bone-min": 0.00575048050313237,
+      "bone-max": 0.16822187487822154,
+      "leg/torso:hindFar": 0.35591673605832813,
+      "leg/torso:foreFar": 0.45985911153364334,
+      "leg/torso:hindNear": 0.39068890356940855,
+      "leg/torso:foreNear": 0.5677625070751556
+    }
+  },
+  "recipeHash": "c5ffff64dde6956060991ca6585f5d2b6d3f97cac4e78a4201a8c74c6d5c791a"
+}

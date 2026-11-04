@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c266-03-ostrich-c1",
+    "name": "Ostrich",
+    "family": "biped-bird",
+    "packet": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-ostrich-c1",
+    "fit": "audits/C266_CODEX_20261017/coordinator/ostrich-finish-01/rebound/c266-03-ostrich-c1",
+    "packetId": "c267-03-ostrich-c1-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/c267-03-ostrich-c1-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/ostrich-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/ostrich-finish-01/native/report.json",
+    "masterSha256": "1cd9c0aaac312a55b51415acd1fbc445dac5fd96fcde517a56fa2669a219b29b",
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/ostrich-finish-01/finished/c266-03-ostrich-c1-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/ostrich-finish-01/finished/c266-03-ostrich-c1-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-bird-secondary/c267-03-ostrich-c1-01/visual-review.json",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

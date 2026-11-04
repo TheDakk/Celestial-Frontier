@@ -1,0 +1,20 @@
+{
+  "stage": "ostrich-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C402-ostrich-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "ostrich"
+  ],
+  "startedUnix": 1792281547.889919,
+  "beforeGiB": 85.89012145996094,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 85.89010620117188,
+  "afterGiB": 85.88558197021484
+}

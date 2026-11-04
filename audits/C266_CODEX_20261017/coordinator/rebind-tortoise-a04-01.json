@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-tortoise-a04-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-rebind-tortoise-a04-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "tortoise-a04"
+  ],
+  "startedUnix": 1792275599.417291,
+  "beforeGiB": 90.57439422607422,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 90.57436752319336,
+  "afterGiB": 90.56993865966797
+}

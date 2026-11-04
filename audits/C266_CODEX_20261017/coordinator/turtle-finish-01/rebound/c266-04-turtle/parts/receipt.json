@@ -1,0 +1,335 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "source-bound exact labels on authored keyer output; not painter draw stages",
+  "recordRecipeHash": "c47253c228baa3e3453467e22b4b977cb2ff1ba789a6b2f0f0b1f9f3151eaa7a",
+  "declarationHash": "3e6a1d5c7c60db42330efb159174d495a8cb9fa5effffe72f1a2f6b16e590404",
+  "paintedPixels": 122712,
+  "parts": [
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 915,
+        "y": 574,
+        "width": 64,
+        "height": 50
+      },
+      "pixels": 1278
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 898,
+        "y": 535,
+        "width": 84,
+        "height": 93
+      },
+      "pixels": 4544
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 822,
+        "y": 550,
+        "width": 113,
+        "height": 112
+      },
+      "pixels": 6690
+    },
+    {
+      "id": "tail-tip",
+      "joint": "tail3",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 305,
+        "y": 653,
+        "width": 8,
+        "height": 3
+      },
+      "pixels": 14
+    },
+    {
+      "id": "tail-distal",
+      "joint": "tail2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 313,
+        "y": 650,
+        "width": 12,
+        "height": 7
+      },
+      "pixels": 58
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 324,
+        "y": 645,
+        "width": 16,
+        "height": 12
+      },
+      "pixels": 126
+    },
+    {
+      "id": "tail-base",
+      "joint": "tail0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 338,
+        "y": 637,
+        "width": 21,
+        "height": 20
+      },
+      "pixels": 275
+    },
+    {
+      "id": "plate-remainder",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 347,
+        "y": 474,
+        "width": 490,
+        "height": 246
+      },
+      "pixels": 84916
+    },
+    {
+      "id": "near-hind-paw",
+      "joint": "hindNearPaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 284,
+        "y": 746,
+        "width": 74,
+        "height": 30
+      },
+      "pixels": 1048
+    },
+    {
+      "id": "near-hind-ankle",
+      "joint": "hindNearAnkle",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 279,
+        "y": 702,
+        "width": 78,
+        "height": 44
+      },
+      "pixels": 2396
+    },
+    {
+      "id": "near-hind-shin",
+      "joint": "hindNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 298,
+        "y": 667,
+        "width": 86,
+        "height": 63
+      },
+      "pixels": 2857
+    },
+    {
+      "id": "near-hind-emergence",
+      "joint": "hindNearRoot",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 349,
+        "y": 640,
+        "width": 75,
+        "height": 66
+      },
+      "pixels": 2711
+    },
+    {
+      "id": "far-hind-paw",
+      "joint": "hindFarPaw",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 520,
+        "y": 735,
+        "width": 33,
+        "height": 26
+      },
+      "pixels": 550
+    },
+    {
+      "id": "far-hind-ankle",
+      "joint": "hindFarAnkle",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 467,
+        "y": 735,
+        "width": 53,
+        "height": 25
+      },
+      "pixels": 1014
+    },
+    {
+      "id": "far-hind-shin",
+      "joint": "hindFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 467,
+        "y": 716,
+        "width": 68,
+        "height": 19
+      },
+      "pixels": 994
+    },
+    {
+      "id": "far-hind-emergence",
+      "joint": "hindFarRoot",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 468,
+        "y": 707,
+        "width": 67,
+        "height": 9
+      },
+      "pixels": 490
+    },
+    {
+      "id": "near-front-paw",
+      "joint": "foreNearPaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 788,
+        "y": 778,
+        "width": 73,
+        "height": 15
+      },
+      "pixels": 376
+    },
+    {
+      "id": "near-front-ankle",
+      "joint": "foreNearAnkle",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 777,
+        "y": 742,
+        "width": 84,
+        "height": 36
+      },
+      "pixels": 2290
+    },
+    {
+      "id": "near-front-shin",
+      "joint": "foreNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 775,
+        "y": 700,
+        "width": 70,
+        "height": 42
+      },
+      "pixels": 2598
+    },
+    {
+      "id": "near-front-emergence",
+      "joint": "foreNearRoot",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 776,
+        "y": 633,
+        "width": 69,
+        "height": 67
+      },
+      "pixels": 3862
+    },
+    {
+      "id": "far-front-paw",
+      "joint": "foreFarPaw",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 902,
+        "y": 719,
+        "width": 32,
+        "height": 29
+      },
+      "pixels": 320
+    },
+    {
+      "id": "far-front-ankle",
+      "joint": "foreFarAnkle",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 875,
+        "y": 700,
+        "width": 41,
+        "height": 41
+      },
+      "pixels": 828
+    },
+    {
+      "id": "far-front-shin",
+      "joint": "foreFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 844,
+        "y": 672,
+        "width": 62,
+        "height": 77
+      },
+      "pixels": 2098
+    },
+    {
+      "id": "far-front-emergence",
+      "joint": "foreFarRoot",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 843,
+        "y": 660,
+        "width": 19,
+        "height": 48
+      },
+      "pixels": 379
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyedRgbaSha256": "7c5fd7a65b44df3d707a3001ec9995f468ab562d67149f156846b9c95f9f1c69",
+  "keyer": {
+    "erodedPixels": 3234,
+    "despilledPixels": 74,
+    "unresolvedEdgePixels": 0,
+    "narrowEdgeDonors": 3
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "29fefd93172a0f8def37010abb8c8ec48b206e20b65ce593f2afc470d54886de",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

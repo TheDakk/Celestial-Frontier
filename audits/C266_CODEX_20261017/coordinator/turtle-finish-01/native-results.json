@@ -1,0 +1,53 @@
+[
+  {
+    "id": "c266-04-turtle",
+    "name": "Turtle",
+    "family": "quadruped",
+    "packet": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/packets/04-turtle",
+    "fit": "audits/C266_CODEX_20261017/coordinator/turtle-finish-01/rebound/c266-04-turtle",
+    "packetId": "turtle-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/turtle-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/turtle-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/turtle-finish-01/native/report.json",
+    "masterSha256": "29fefd93172a0f8def37010abb8c8ec48b206e20b65ce593f2afc470d54886de",
+    "status": "DIAGNOSTIC_PASS",
+    "staticReport": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/04-turtle/static.json",
+    "staticReportSha256": "259f488bc6e92e46ec78e6f7847072cfa771e7b7ac23b1a6e673c927e159fd41",
+    "recordSha256": "987548c45cc267c6e81c8759fcbb9f81763cc9fad56e3d2f7437217f32d3b3e8",
+    "bindingSha256": "c7a8a7e57ef5cf298e10a9625ea45e18978b84077f8a71f5711fd8e92424f5dd",
+    "partsManifestSha256": "9e09789f20df299a21747e2549d3bd3388f68d90f0c7cd357585ebb990e770bc",
+    "recipeHash": "c47253c228baa3e3453467e22b4b977cb2ff1ba789a6b2f0f0b1f9f3151eaa7a",
+    "canonicalMarkers": [
+      "domed shell covering the whole trunk",
+      "head and neck poking out the front",
+      "stumpy scaly legs"
+    ],
+    "canonicalNote": "Generic name interpreted as a representative freshwater pond turtle. Commonly drawn with the shell as a separate hat sitting on the back; the shell IS the body wall, legs and neck emerge from under its rim.",
+    "sourceCoverage": {
+      "declarations": "External pinnae are anatomically absent (chelonian). Four visible feet, exposed neck, head and tail are hand-authored on the exact original.",
+      "limitations": "Interior root/spine/pelvis/chest points are source-local control frames inside the shell, not seen bones. Far limb emergence under the shell is partly occluded; far hip/shoulder landmarks are interpretations under the shell rim. Each ankle part is the whole visible foot block with the ankle landmark in its interior (the C266 tortoise a02/a03 lesson)."
+    },
+    "sourceOwnerCheck": {
+      "packet": "04-turtle",
+      "family": "quadruped",
+      "status": "PASS",
+      "short": [],
+      "min": 322
+    },
+    "ownerCheckRerun": false,
+    "ownerCheckEvidence": "Exact input copies match existing independently controlled owner-check inputs; sourceOwnerCheck is retained existing result, not a new run.",
+    "ownerSizeCaveat": false,
+    "verifierFilmCaveats": [],
+    "classHoldInherited": false,
+    "sharedRepairDependency": null,
+    "visualVerdict": null,
+    "nativeExecutedByWorker": false,
+    "AIExecuted": false,
+    "accepted": false,
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/turtle-finish-01/finished/c266-04-turtle-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/turtle-finish-01/finished/c266-04-turtle-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/turtle-01/visual-review.json",
+    "exitCode": 0
+  }
+]

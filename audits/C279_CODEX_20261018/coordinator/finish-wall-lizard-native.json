@@ -1,0 +1,20 @@
+{
+  "stage": "finish-wall-lizard-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-wall-lizard-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/finishes/wall-lizard/finished-plan.json"
+  ],
+  "startedUnix": 1792346293.483538,
+  "beforeGiB": 66.2197494506836,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.068,
+  "lowestGiB": 66.21974182128906,
+  "afterGiB": 67.19869613647461
+}

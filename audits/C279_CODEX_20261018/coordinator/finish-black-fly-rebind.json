@@ -1,0 +1,20 @@
+{
+  "stage": "finish-black-fly-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-black-fly-rebind",
+    "--",
+    "node",
+    "audits/C279_CODEX_20261018/coordinator/rebind-one.mjs",
+    "audits/C279_CODEX_20261018/coordinator/finishes/black-fly"
+  ],
+  "startedUnix": 1792339770.015251,
+  "beforeGiB": 69.70818328857422,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 69.70817565917969,
+  "afterGiB": 70.70407485961914
+}

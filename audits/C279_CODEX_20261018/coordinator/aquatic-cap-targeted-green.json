@@ -1,0 +1,20 @@
+{
+  "stage": "aquatic-cap-targeted-green",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-aquatic-targeted-green",
+    "--",
+    "node",
+    "port/v2/tools/run-unit-tests.mjs",
+    "apps/game/src/motion/"
+  ],
+  "startedUnix": 1792334538.660098,
+  "beforeGiB": 77.13681411743164,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 16.108,
+  "lowestGiB": 77.09712600708008,
+  "afterGiB": 77.114990234375
+}

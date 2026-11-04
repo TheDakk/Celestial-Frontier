@@ -1,0 +1,20 @@
+{
+  "stage": "aquatic-cap-original-red",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-aquatic-regression-red",
+    "--",
+    "node",
+    "port/v2/tools/run-unit-tests.mjs",
+    "apps/game/src/motion/aquatic-serpent-victory.test.ts"
+  ],
+  "startedUnix": 1792334445.530443,
+  "beforeGiB": 77.18131256103516,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 8.029,
+  "lowestGiB": 77.12782287597656,
+  "afterGiB": 77.1214370727539
+}

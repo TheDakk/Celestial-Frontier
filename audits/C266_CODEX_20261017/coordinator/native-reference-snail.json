@@ -1,0 +1,20 @@
+{
+  "stage": "native-reference-snail",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C389-native-reference-snail",
+    "--",
+    "python3",
+    "audits/C243_ALLOUT_20261011/execution/run-native.py",
+    "audits/C266_CODEX_20261017/coordinator/reference-snail/plan.json"
+  ],
+  "startedUnix": 1792268361.276425,
+  "beforeGiB": 99.4072036743164,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.06,
+  "lowestGiB": 98.99336624145508,
+  "afterGiB": 99.36574172973633
+}

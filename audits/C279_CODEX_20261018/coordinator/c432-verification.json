@@ -1,0 +1,68 @@
+{
+  "status": "PASS_C432_RUNTIME_AND_SOURCE_REQUEST_REVIEW",
+  "canonical": [
+    {
+      "path": "port/v2/apps/game/src/motion/serpent-victory.ts",
+      "bytes": 3509,
+      "sha256": "d6a281213ad5aeb8ec9e8b440fee85f5e3d0ef17c1460399b071b938caa81a3d"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/serpent-victory.test.ts",
+      "bytes": 5936,
+      "sha256": "a255cb1bfffeb383d817b56500f818f4b2d1f51356d366c940e46b0c5c3667bd"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/aquatic-serpent-victory.test.ts",
+      "bytes": 6854,
+      "sha256": "b630a265d111e3938fbbbb898a21575dc18c6e954898750197a2ffb5b5c7d9dd"
+    }
+  ],
+  "W2CurrentHelperSelection": {
+    "path": "audits/C279_CODEX_20261018/w2-motion/helper-freeze-r02.json",
+    "sha256": "a805a30af521563234ea17777ce69ed32dd6709c41e9155a78e242f9466764ce",
+    "bytes": 5912
+  },
+  "W2AppliedReview": {
+    "path": "audits/C279_CODEX_20261018/w2-motion/applied-review.json",
+    "sha256": "e0d2ca3ea9e91230786202bd66e9cde32717126ab4ca47350e747899e17af34c",
+    "bytes": 2060
+  },
+  "W2Prompt72": {
+    "path": "audits/C279_CODEX_20261018/w2-motion/all18-prompt-review-r02.json",
+    "sha256": "368806c85764a07eeb15415f44f0065f79d7ffcbb008891b50d772956526690e",
+    "bytes": 60702
+  },
+  "W1Source226": {
+    "path": "audits/C279_CODEX_20261018/w1-source/verification.json",
+    "sha256": "91f03b7eb112ac686a842b3ab345468642da2cb1962eea9b86cca117c11e9e9f",
+    "bytes": 52749
+  },
+  "sourceRequestFilesFreshHashChecked": 151,
+  "runtimeRequiresClaudeRecertification": true,
+  "runtimePathsChanged": [
+    "port/v2/apps/game/src/motion/serpent-victory.ts"
+  ],
+  "gameImportedToolPathsChanged": [],
+  "tests": {
+    "wholeMotion": {
+      "files": 31,
+      "passed": 195
+    },
+    "focusedFinal": {
+      "files": 2,
+      "passed": 17
+    },
+    "typecheck": "PASS_r02",
+    "rootValidation": "PASS_1010_50"
+  },
+  "intentionalOriginalRegressionRED": {
+    "path": "audits/C279_CODEX_20261018/coordinator/aquatic-cap-original-red.json",
+    "sha256": "622f2fcebfa042ee9c36bfd526379b4c996fb6683071d4fec73f4a23e6f75799",
+    "bytes": 481
+  },
+  "existingNumericRulersUnchanged": true,
+  "C198SealedRowRebound": false,
+  "historicalKeyedRgbaSealsRebound": false,
+  "freshNativeReview": "PENDING",
+  "seedChoice": "Four independently requested fresh draws; generator numeric seeds not exposed/null, no controllable-seed claim"
+}

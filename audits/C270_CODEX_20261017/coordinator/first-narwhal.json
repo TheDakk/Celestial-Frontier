@@ -1,0 +1,20 @@
+{
+  "stage": "first-narwhal",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-narwhal",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/w2-checkpoint/plans/narwhal/plan.json"
+  ],
+  "startedUnix": 1792286549.738901,
+  "beforeGiB": 81.37100219726562,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 18.081,
+  "lowestGiB": 80.9657974243164,
+  "afterGiB": 81.34455108642578
+}

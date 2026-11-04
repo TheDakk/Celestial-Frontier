@@ -1,0 +1,21 @@
+{
+  "stage": "finish-black-fly-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-black-fly-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C279_CODEX_20261018/coordinator/finishes/black-fly/finished",
+    "audits/C279_CODEX_20261018/coordinator/finishes/black-fly/subjects.json"
+  ],
+  "startedUnix": 1792339718.958864,
+  "beforeGiB": 70.7265510559082,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 50.968,
+  "lowestGiB": 62.34306335449219,
+  "afterGiB": 69.70820999145508
+}

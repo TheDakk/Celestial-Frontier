@@ -1,0 +1,20 @@
+{
+  "stage": "native-pond-turtle-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-pond-turtle-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/pond-turtle-01/plan.json"
+  ],
+  "startedUnix": 1792277303.111586,
+  "beforeGiB": 91.42444610595703,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.057,
+  "lowestGiB": 91.00729370117188,
+  "afterGiB": 91.38129425048828
+}

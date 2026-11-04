@@ -1,0 +1,20 @@
+{
+  "stage": "finish-caecilian-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-caecilian-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/finishes/caecilian/finished-plan.json"
+  ],
+  "startedUnix": 1792342706.877345,
+  "beforeGiB": 69.68410873413086,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.07,
+  "lowestGiB": 69.27701187133789,
+  "afterGiB": 69.6404800415039
+}

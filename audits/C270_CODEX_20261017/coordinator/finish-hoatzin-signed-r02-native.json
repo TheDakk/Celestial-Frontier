@@ -1,0 +1,20 @@
+{
+  "stage": "finish-hoatzin-signed-r02-native",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C270-hoatzin-signed-r02-native",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C270_CODEX_20261017/coordinator/finishes/hoatzin-signed-r02/finished-plan.json"
+  ],
+  "startedUnix": 1792288545.625909,
+  "beforeGiB": 77.89129257202148,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.062,
+  "lowestGiB": 77.8473892211914,
+  "afterGiB": 78.8612060546875
+}

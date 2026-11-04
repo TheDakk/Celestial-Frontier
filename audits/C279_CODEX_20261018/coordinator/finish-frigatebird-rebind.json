@@ -1,0 +1,20 @@
+{
+  "stage": "finish-frigatebird-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-frigatebird-rebind",
+    "--",
+    "node",
+    "audits/C279_CODEX_20261018/coordinator/rebind-one.mjs",
+    "audits/C279_CODEX_20261018/coordinator/finishes/frigatebird"
+  ],
+  "startedUnix": 1792338427.443475,
+  "beforeGiB": 70.72237777709961,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 4.024,
+  "lowestGiB": 70.72237014770508,
+  "afterGiB": 71.71734237670898
+}

@@ -1,0 +1,8 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"c243b04r2c2-19-kookaburra","rows":[{"id":"c243b04r2c2-19-kookaburra","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"c243b04r2c2-19-kookaburra","rows":[{"id":"c243b04r2c2-19-kookaburra","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"c243b04r2c2-19-kookaburra","rows":[{"id":"c243b04r2c2-19-kookaburra","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"c243b04r2c2-19-kookaburra","rows":[{"id":"c243b04r2c2-19-kookaburra","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"c243b04r2c2-19-kookaburra","rows":[{"id":"c243b04r2c2-19-kookaburra","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"c243b04r2c2-19-kookaburra","rows":[{"id":"c243b04r2c2-19-kookaburra","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C270_CODEX_20261017/coordinator/finishes/kookaburra-signed-r02/finished"}

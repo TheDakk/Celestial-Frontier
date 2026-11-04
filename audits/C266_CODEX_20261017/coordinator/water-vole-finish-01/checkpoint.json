@@ -1,0 +1,18 @@
+{
+  "id": "c266-16-water-vole",
+  "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/16-water-vole/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/water-vole-01/native/report.json",
+  "name": "Water Vole",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/water-vole-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quad-secondary/water-vole-01/visual-review.json",
+  "checkpointReviewSha256": "fbdb0ae637cd48cd7a5cd52b3148674967a61b4449943f28cea9282b7aec5599",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER",
+  "auxiliaryOwnerCheck": {
+    "packet": "16-water-vole",
+    "family": "quadruped",
+    "status": "PASS",
+    "short": [],
+    "min": 210
+  },
+  "eligibilityRationale": "Four feet, jaw/neck, ear, whiskers and tail root remain attached; fur pattern stays continuous in all five checkpoint views."
+}

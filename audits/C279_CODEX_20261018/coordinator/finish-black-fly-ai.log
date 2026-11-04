@@ -1,0 +1,7 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"c275-w1-22-c266-black-fly","rows":[{"id":"c275-w1-22-c266-black-fly","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"c275-w1-22-c266-black-fly","rows":[{"id":"c275-w1-22-c266-black-fly","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"c275-w1-22-c266-black-fly","rows":[{"id":"c275-w1-22-c266-black-fly","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"c275-w1-22-c266-black-fly","rows":[{"id":"c275-w1-22-c266-black-fly","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"complete","subject":"c275-w1-22-c266-black-fly","rows":[{"id":"c275-w1-22-c266-black-fly","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C279_CODEX_20261018/coordinator/finishes/black-fly/finished"}

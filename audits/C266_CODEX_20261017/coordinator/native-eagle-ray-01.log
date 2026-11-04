@@ -1,0 +1,4 @@
+{"starting": "Eagle Ray"}
+{"name": "Eagle Ray", "exitCode": 0, "status": "DIAGNOSTIC_PASS"}
+{"nativePass": 1, "nativeTotal": 1}
+{"status": "PASS", "nativeResults": [{"status": "DIAGNOSTIC_PASS", "exitCode": 0}]}

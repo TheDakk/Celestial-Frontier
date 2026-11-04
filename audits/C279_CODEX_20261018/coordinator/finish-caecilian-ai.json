@@ -1,0 +1,21 @@
+{
+  "stage": "finish-caecilian-ai",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-caecilian-ai",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C279_CODEX_20261018/coordinator/finishes/caecilian/finished",
+    "audits/C279_CODEX_20261018/coordinator/finishes/caecilian/subjects.json"
+  ],
+  "startedUnix": 1792342651.582198,
+  "beforeGiB": 71.70407485961914,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 52.99,
+  "lowestGiB": 61.328269958496094,
+  "afterGiB": 68.6877670288086
+}

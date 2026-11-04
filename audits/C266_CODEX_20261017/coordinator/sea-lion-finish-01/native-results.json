@@ -1,0 +1,55 @@
+[
+  {
+    "id": "c266-09-sea-lion",
+    "name": "Sea Lion",
+    "family": "quadruped",
+    "packet": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/packets/09-sea-lion",
+    "fit": "audits/C266_CODEX_20261017/coordinator/sea-lion-finish-01/rebound/c266-09-sea-lion",
+    "packetId": "sea-lion-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/sea-lion-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/sea-lion-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/sea-lion-finish-01/native/report.json",
+    "masterSha256": "b1fbf73c7fc9ced7c6255eb3b0c5d848d828755e0d583295130080eb37442281",
+    "status": "DIAGNOSTIC_PASS",
+    "staticReport": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/09-sea-lion/static.json",
+    "staticReportSha256": "08a8f58e4f7ae1c4c439a740127020fdb38ae4509617e0b47139d393cd00723e",
+    "recordSha256": "0ed246b120adde08416a93550ace887cc9eaaf9f7a4f16aa6350f38d0620e78b",
+    "bindingSha256": "184fe00e6585d1dd0512c0b2e46427cb2746bd2d45cd8ed784f47cf44e442abd",
+    "partsManifestSha256": "aea5f3d4d924561635c3a64ee6bc2e0bfd53b905b17c33a9295c199ed2ee9006",
+    "recipeHash": "c5ffff64dde6956060991ca6585f5d2b6d3f97cac4e78a4201a8c74c6d5c791a",
+    "canonicalMarkers": [
+      "small external ear flaps",
+      "long fore-flippers lifting the chest clear of the ground",
+      "blunt dog-like whiskered muzzle"
+    ],
+    "canonicalNote": "Walks on all fours with hind flippers rotated forward - a true seal cannot, and has no ear flaps.",
+    "sourceCoverage": {
+      "declarations": "Four flippers, small tail, near ear flap, head and jaw hand-authored on the exact original.",
+      "limitations": "INTERPRETATION: the far ear (earFarRoot/Tip) is occluded behind the head and owns no paint. Interior root/spine/pelvis/chest are control frames; flipper roots sit inside the body. Each fore-flipper column down to below the belly edge is one root part (C266 fold lesson). Whisker strands outside the head polygon are placed by the D28 remainder-island step."
+    },
+    "sourceOwnerCheck": {
+      "packet": "09-sea-lion",
+      "family": "quadruped",
+      "status": "PASS",
+      "short": [],
+      "min": 515
+    },
+    "ownerCheckRerun": false,
+    "ownerCheckEvidence": "Exact input copies match existing independently controlled owner-check inputs; sourceOwnerCheck is retained existing result, not a new run.",
+    "ownerSizeCaveat": false,
+    "verifierFilmCaveats": [
+      "Far ear is source-occluded and owns no paint. Inspect fore/hind flipper joins and hauling posture; no new earless Seal template inference."
+    ],
+    "classHoldInherited": false,
+    "sharedRepairDependency": null,
+    "visualVerdict": null,
+    "nativeExecutedByWorker": false,
+    "AIExecuted": false,
+    "accepted": false,
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/sea-lion-finish-01/finished/c266-09-sea-lion-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/sea-lion-finish-01/finished/c266-09-sea-lion-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/sea-lion-01/visual-review.json",
+    "exitCode": 0
+  }
+]

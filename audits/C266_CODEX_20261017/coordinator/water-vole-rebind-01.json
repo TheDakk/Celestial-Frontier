@@ -1,0 +1,20 @@
+{
+  "stage": "water-vole-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C400-water-vole-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "water-vole"
+  ],
+  "startedUnix": 1792280320.1815722,
+  "beforeGiB": 85.55339431762695,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 85.55338287353516,
+  "afterGiB": 85.55797576904297
+}

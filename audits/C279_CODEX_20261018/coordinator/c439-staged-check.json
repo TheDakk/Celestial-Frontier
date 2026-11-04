@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "exactBytesVerified": 690,
+  "whitespaceRawLogsOnly": [],
+  "sourceVerifier": "4404+6 controls PASS",
+  "checkpointVerifier": "205+6 controls PASS",
+  "W1independent": "81 PASS",
+  "W2independent": "7 mutants rejected",
+  "rootValidation": "1010 renders/50 fingerprints PASS"
+}

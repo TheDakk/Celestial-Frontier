@@ -1,0 +1,20 @@
+{
+  "stage": "rebind-godwit-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-rebind-godwit-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "godwit"
+  ],
+  "startedUnix": 1792275410.532403,
+  "beforeGiB": 90.71144104003906,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 90.71142196655273,
+  "afterGiB": 90.70839309692383
+}

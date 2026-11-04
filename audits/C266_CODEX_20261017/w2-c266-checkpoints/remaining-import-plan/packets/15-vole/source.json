@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Vole",
+  "slug": "15-vole",
+  "id": "c266-intake-vole",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r2c3-32-vole",
+  "masterSha256": "c4157d152211abbc335c2963329e69ef55bd87c88072022830f20dc560b74234",
+  "masterCopySha256": "c4157d152211abbc335c2963329e69ef55bd87c88072022830f20dc560b74234",
+  "subjectSourceSha256": "a7696d8dabc4aa46f3b9474fa2f58c381a1acf9ff8202362e40160ea84e21275",
+  "promptSha256": "0bc36be55b1b29d42f8d091a5e070841fb49e92a07bbfea44bc6446264910647",
+  "refusal": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%)",
+  "observation": "Full-size review: chubby vole walking right; blunt rounded muzzle with whiskers, near ear half-buried in fur behind the eye (x≈745-789, y≈503-562), stubby tail, four separate small clawed feet. The far ear is hidden behind the head (canonical \"ears half-buried in fur\"); the refusal is about an occluded far ear, not missing anatomy.",
+  "joints": 31,
+  "parts": 26,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/15-vole.mjs"
+}

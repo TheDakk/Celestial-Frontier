@@ -1,0 +1,21 @@
+{
+  "stage": "water-vole-ai-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C400-water-vole-ai-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/water-vole-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/water-vole-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792280264.935935,
+  "beforeGiB": 86.3637809753418,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 55.179,
+  "lowestGiB": 79.18239212036133,
+  "afterGiB": 85.55341720581055
+}
