@@ -1,0 +1,81 @@
+{
+  "schema": "cf.o2-d40-donor-exclusion-input-pins/v1",
+  "inputs": [
+    {
+      "path": "audits/C274_ALL170_20261017/w2-decisions/d37/packets/02-butterfly/master.png",
+      "sha256": "96dd32bd9125c645b56f084ea3e3ed1cbe15ed019f81714a7b91db291051802b",
+      "bytes": 1600722
+    },
+    {
+      "path": "audits/C274_ALL170_20261017/w2-decisions/d37/qualified/02-butterfly/islands/fit/parts/keyed.png",
+      "sha256": "afb03f63690274e95dd24b23eb30b5391d93a899863c26167a01cd91f425a393",
+      "bytes": 1613710
+    },
+    {
+      "path": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/master.png",
+      "sha256": "172b1734ee5e85a965fe88a0196869382061fb11a06b2e49db8389a1037b3d76",
+      "bytes": 1490009
+    },
+    {
+      "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/keyed-preview.png",
+      "sha256": "f76ab561a49aadb88944a959e978025ba66700095b5f0876cba7dc4b3b800668",
+      "bytes": 1463194
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/butterfly/cli-receipt.json",
+      "sha256": "fa896152338576d36a8edcf9f0fa209aa25fe0af14c368969558ed2953723390",
+      "bytes": 3196
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/butterfly/request.json",
+      "sha256": "ad513d69438a640a28991b931134f1860d22e3aa8aff09b14d35a5a6a80dbe25",
+      "bytes": 1523
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/cricket/cli-receipt.json",
+      "sha256": "61adf09c74bfae6c672310866c217bef5d6d1eab81f19b07f09dd3bf95c58bf3",
+      "bytes": 3052
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/cricket/request.json",
+      "sha256": "a6790063f2bd290d20d3bf2173f08e483b685aa530b878979453b90669005597",
+      "bytes": 1372
+    },
+    {
+      "path": "audits/C475_DECISIONS_20261019/w1-keyer/positive-fringe-r01/freeze-r01.json",
+      "sha256": "2ab60c15e1a89979a5f5119f8347d32f0403009ded415f85b45f653695aa4911",
+      "bytes": 74033
+    },
+    {
+      "path": "audits/O2_20261102/coordinator/egret-green-generation-r03/original.png",
+      "sha256": "12e399f1bc0dc84e8525c42c21602c5500a2ae4a937665393a3aaa98b7249411",
+      "bytes": 1567290
+    },
+    {
+      "path": "audits/O2_20261102/coordinator/egret-green-observed-source-r03/canonical-seal.json",
+      "sha256": "e7b9c90a7cf79fa4193a28d572078de2fd267ac466cfce781fb95af257c84a46",
+      "bytes": 1230
+    },
+    {
+      "path": "audits/O2_20261102/coordinator/egret-green-observed-source-r03/keyed-canonical.png",
+      "sha256": "e1b5fb5bc296e3f62d8b23d21d4f42ee66412744dd5edc24ffd20b71aa3fd5eb",
+      "bytes": 1667097
+    },
+    {
+      "path": "audits/O2_20261102/w3-tint-queue/egret-r03-material-api-review-r01/review.json",
+      "sha256": "0f7124739dbe8b1a355657bb6978dcc079996423da93dc64ab5fd605160e14a3",
+      "bytes": 8680
+    },
+    {
+      "path": "port/v2/tools/creature-animation/derive-post-key-matte.mjs",
+      "sha256": "b8b6feb0af06174ea4d91a4a248ce09c8b4955646e4682dfcf9e3df7392f1931",
+      "bytes": 3663
+    },
+    {
+      "path": "port/v2/tools/creature-animation/post-key-matte.mjs",
+      "sha256": "94d00c0f1d041035c6a36e12cd8b0ec1eb7fc5d9fea774eeddcc2687623f1c35",
+      "bytes": 4614
+    }
+  ],
+  "workerProductionRuns": 0
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "cf.o2-d40-donor-exclusion-outcome-controls/v1",
+  "status": "PREPARED_NOT_EXECUTED",
+  "controls": [
+    {
+      "id": "remove-contaminated-donor",
+      "outcome": "Selected mixed target takes an actual reachable unexcluded source donor and expected current unmix alpha; contaminated source seed is excluded only in its source-bound literal list.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "reverse-exclusion",
+      "outcome": "Remove the exclusion and reproduce exact original contaminated donor/RGBA. Restore the exclusion and reproduce the corrected result. Reverse the observed outcome, not a code-path flag.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "excluded-donor-not-target",
+      "outcome": "A source donor exclusion without a target does not recolour the excluded pixel. Nonempty exclusions require explicit targets; reject rather than run globally.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "empty-default",
+      "outcome": "Omitted and [] exclusions retain exact synthetic default RGBA/algorithm receipt and historical Butterfly/Cricket hashes/receipts.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "opaque-biological-pigment",
+      "outcome": "Exact opaque brown, cream, green, coral and magenta pigment outside targets retains every RGBA byte. Protected pigment cannot be selected or excluded as a donor; wrong-pigment selection/control mutations must reject.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "no-donor",
+      "outcome": "Exclude every donor in a connected component: preserve target default RGBA, return exact unresolved target indices/status, block production. Restoring one valid donor resolves the target.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "no-gap-or-disconnected-donor",
+      "outcome": "A closer-looking neutral donor across a real source key gap cannot be used. Gap stays alpha0; no fill/bridge/restored source island. Removing the gap in a synthetic control changes reachability, proving the instrument sees the actual geometry.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "source-binding",
+      "outcome": "Wrong original SHA/RGBA/dimensions or altered canonical/seal rejects; restore exact inputs to pass.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "selection-conservation",
+      "outcome": "Every changed channel lies in the explicit target set; no positive support/opacity increase versus default, no protected pigment change. Outside-selection/alpha-growth/pigment-damage mutants reject.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "ignored-exclusion-mutant",
+      "outcome": "Ignoring the exclusion must fail the required material outcome; re-enabling it restores that outcome.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "actual-r03",
+      "outcome": "Record every changed canonical-positive channel, old/new donor index and actual raw donor RGB; preserve source/canonical/seal/approved19 controls and all protected anatomy, open gaps and topology. Actual gray/black full1254/plumes/underbody review decides CLEAN or HOLD; numbers alone cannot.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    },
+    {
+      "id": "historical-material-hold",
+      "outcome": "R02 cyan/self-donor failure and C475 opaque-brown material failure remain retained. A test never accepts merely because fewer pixels exceed a key-excess metric.",
+      "expected": "ROOT_RED_BEFORE_IMPLEMENTATION_THEN_GREEN_OR_RETAIN_HOLD"
+    }
+  ],
+  "execution": "Root reserved CPU/test queue only after concrete proposal review; no worker execution. Historical fixtures require exact retained outcomes."
+}

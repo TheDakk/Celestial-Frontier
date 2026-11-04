@@ -1,0 +1,17 @@
+{
+  "program": "O1",
+  "status": "STARTING_SERIAL_RESERVATION",
+  "cutoffUTC": "2026-11-02T11:00:00Z",
+  "cutoffLocal": "2026-11-02 06:00 EST",
+  "stageStartGiB": 42,
+  "runningFloorGiB": 30,
+  "queueOwnerSha256": "d5fe8a3ac08249a8b99f541721b063bc01d65fe79201fefacdc1ab0bb17576bf",
+  "rootOnlyHeavyCommitsMailbox": true,
+  "CPUWorkers": [
+    "w1-source",
+    "w2-checkpoint",
+    "w4-paperwork"
+  ],
+  "startFreeGiB": 64.4683837890625,
+  "noD44OrI5ByCodex": true
+}

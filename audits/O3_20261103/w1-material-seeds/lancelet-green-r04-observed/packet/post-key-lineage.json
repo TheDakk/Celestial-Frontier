@@ -1,0 +1,58 @@
+{
+  "original": {
+    "path": "audits/O3_20261103/coordinator/sources/lancelet-green-r02/original.png",
+    "sha256": "9091767b24557fadd4c628246ab89985373966b4706992f4a2149fbc7d79ca52",
+    "bytes": 1267291
+  },
+  "canonical": {
+    "path": "audits/O3_20261103/coordinator/lancelet-green-r02-source/keyed-canonical.png",
+    "sha256": "95db3549cbd5b1308e08b219535cea1c7fc86c71fa60d0860cfd7ad4ba9437b4",
+    "bytes": 1146151
+  },
+  "canonicalRgbaSha256": "eb1e16ca679c9764b5f46696f0be1a435e248c128579a52dbddb86633ac74fdc",
+  "derivative": {
+    "path": "audits/O3_20261103/coordinator/lancelet-green-r04-fringe/derivative/master.png",
+    "sha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf",
+    "bytes": 1145022
+  },
+  "receipt": {
+    "path": "audits/O3_20261103/coordinator/lancelet-green-r04-fringe/derivative/post-key-derivative.json",
+    "sha256": "21301298c54add6d84526d4de1883f9d71badfaa90cb26b3e21be2e1d37487e3",
+    "bytes": 142527
+  },
+  "classification": "Same green-key edited RAW/original canonical seal and first default D40, then exact source-bound reviewed-donor R04 derivative; not a new untouched generated original and not a re-bound sealed intake.",
+  "materialApproval": true,
+  "request": {
+    "path": "audits/O3_20261103/w1-material-seeds/lancelet-r04/recipe.json",
+    "sha256": "a8c1ee514e31ca61915941ae25accdcc9a04ddc96291c3dafa66856d7b92f76c",
+    "bytes": 210773
+  },
+  "priorUnintakenObservedPacket": {
+    "master": {
+      "path": "audits/O3_20261103/coordinator/observed/lancelet-green-r02/packet/master.png",
+      "sha256": "e3b291c1516e58f02e030318dfacef55adea8c904764d0342bbb0f1960b158ce",
+      "bytes": 1144952
+    },
+    "authoring": {
+      "path": "audits/O3_20261103/coordinator/observed/lancelet-green-r02/packet/authoring.json",
+      "sha256": "117eab172dd1aa1b4c8fc3d3297a8061afd2c339d6bb5f74479b26521240f9f4",
+      "bytes": 4914
+    },
+    "lineage": {
+      "path": "audits/O3_20261103/coordinator/observed/lancelet-green-r02/packet/post-key-lineage.json",
+      "sha256": "c8212ab3fc1dd43fb5d03a424a12032bf7ff0c4a91f3469c6f28215921922dd1",
+      "bytes": 1130
+    }
+  },
+  "conservationReadback": {
+    "path": "audits/O3_20261103/coordinator/lancelet-green-r04-fringe/readback/readback.json",
+    "sha256": "965dbe35cbdbae1c79cc4a0427b0f1f1d2fb334af8121ee79660dbbbf1a9f77f",
+    "bytes": 1001
+  },
+  "materialReview": {
+    "path": "audits/O3_20261103/w2-wave-a/lancelet-green-r04-material/review.json",
+    "sha256": "ae68348850c80e2445df56bc95125f2c9524a7fbb2b30c37df0e01fe2b172f76",
+    "bytes": 16268
+  },
+  "materialApprovalScope": "Independent W2 source-material clean on exact R04 master plus root source cross-review; compiled geometry/parts/native/C261 remain pending"
+}

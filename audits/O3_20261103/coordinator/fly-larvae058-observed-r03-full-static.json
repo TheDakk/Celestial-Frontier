@@ -1,0 +1,230 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "3a6a4c9122a7c1fd4bc9baea83de65857b3672ad",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007982686681023377,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007046953071021482,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "approach:undulate",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000631640800930928,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007479187793888131,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006989060586325512,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007046953079060355,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007330022078955337,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000631640800930928,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007330022078955337,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007046953071021482,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "a09dfa97a7001e80afc2d7943eb1492f11dde267acc2777c5f632b6afd5ac00a",
+  "bindingHash": "1a69e28501aba1d573e315b0c7c947495f9027fc2551a8233185ac499343f44a",
+  "family": "larva",
+  "contacts": [],
+  "realm": "amphibious",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:undulate",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 714,
+    "attemptedSamples": 714,
+    "status": "PASS",
+    "maxPaintDriftPx": 0,
+    "maxGapPx": 0.0000747918778455552,
+    "maxEndpointError": 0,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 3894.2621813341975
+      },
+      {
+        "id": "alert",
+        "startMs": 3894.2621813341975,
+        "endMs": 4494.2621813341975
+      },
+      {
+        "id": "approach:undulate",
+        "startMs": 4494.2621813341975,
+        "endMs": 5194.2621813341975
+      },
+      {
+        "id": "cast",
+        "startMs": 5194.2621813341975,
+        "endMs": 6084.2621813341975
+      },
+      {
+        "id": "hit",
+        "startMs": 6084.2621813341975,
+        "endMs": 6814.2621813341975
+      },
+      {
+        "id": "dodge",
+        "startMs": 6814.2621813341975,
+        "endMs": 7414.2621813341975
+      },
+      {
+        "id": "faint",
+        "startMs": 7414.2621813341975,
+        "endMs": 8214.262181334198
+      },
+      {
+        "id": "victory",
+        "startMs": 8214.262181334198,
+        "endMs": 9094.262181334198
+      },
+      {
+        "id": "tame",
+        "startMs": 9094.262181334198,
+        "endMs": 10014.262181334198
+      },
+      {
+        "id": "feed",
+        "startMs": 10014.262181334198,
+        "endMs": 10874.262181334198
+      }
+    ],
+    "durationMs": 11874.262181334198
+  },
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/coordinator/fly-larvae058-observed-r03/record.json",
+      "sha256": "3936edc7372295d0015ba67f563fc96c7b9f04e066bb3a7d30b6759caaf9cc2b",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/coordinator/fly-larvae058-observed-r03/binding.json",
+      "sha256": "787a37a814d0ea4eba93db266ba886242356a7a17be0ea8e05f959953b784608",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/coordinator/fly-larvae058-observed-r03/parts/manifest.json",
+      "sha256": "145143a50f781e3cec82f2f4e11a7af7f9c464ca5b117fc06526885e54fb35a2",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/coordinator/fly-larvae058-observed-r03/parts/atlas/o3-fly-larvae-observed-r03.png",
+      "sha256": "05b9cd326532e6fec512e0a4fd3b2b6e83a99efa82455ed857bd41d36c8a7889",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/coordinator/fly-larvae058-observed-r03/parts/keyed.png",
+      "sha256": "e6ea666b26c7b7868b1ce9db284afaa7940000660fc72ee3d331d36cc1c6d45f",
+      "unchanged": true
+    }
+  ]
+}

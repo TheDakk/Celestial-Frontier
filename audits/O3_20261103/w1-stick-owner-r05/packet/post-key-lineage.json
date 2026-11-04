@@ -1,0 +1,25 @@
+{
+  "original": {
+    "path": "audits/OVERNIGHT_20261101/codex/sources/wave03/014-14-stick-insect/original.png",
+    "sha256": "19cbc4500ddaa5df8bab17c158bc7700e0ef30dbd99c7f5a14d5968d4b58d86c",
+    "bytes": 1258945
+  },
+  "canonical": {
+    "path": "audits/O2_20261102/coordinator/deferred-authoring/002-stick-insect-r01/keyed-canonical.png",
+    "sha256": "ee58bad09f3df94827ad7a2310617938617812b5ad795f46d2782ea1dfb200fe",
+    "bytes": 1116340
+  },
+  "canonicalRgbaSha256": "dca2b41c075a04ecc4992b2c7dde7b23532312462b233ba3acd2410661afc406",
+  "derivative": {
+    "path": "audits/O2_20261102/coordinator/deferred-authoring/002-stick-insect-r01/derivative/master.png",
+    "sha256": "e1941500c2b561a63e1ee20607fa262c65249e0f551b19cb31543634e2c46287",
+    "bytes": 1116089
+  },
+  "receipt": {
+    "path": "audits/O2_20261102/coordinator/deferred-authoring/002-stick-insect-r01/derivative/post-key-derivative.json",
+    "sha256": "c2d2f8f20042d74795a5cb607bb0d7f77990d61decf0958f5148b9e8b5ed325b",
+    "bytes": 3098
+  },
+  "classification": "Current default D40 native-alpha derivative, not untouched painting",
+  "materialApproval": false
+}

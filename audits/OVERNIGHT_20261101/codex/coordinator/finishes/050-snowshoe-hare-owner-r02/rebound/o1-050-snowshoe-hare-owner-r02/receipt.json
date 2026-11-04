@@ -1,0 +1,90 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "o1-050-snowshoe-hare-owner-r02",
+    "parts": 29,
+    "atlasSize": {
+      "width": 739,
+      "height": 988
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "26a8e77067ae9d6965c9a86b8cd64941abc66c6ffda42c11486bcab039ed891c",
+    "recordRecipeHash": "6756e6fe6c8d060216b00098ca0cb5bc1f355a69905f495dbe813e87e7dd8c00",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "26a8e77067ae9d6965c9a86b8cd64941abc66c6ffda42c11486bcab039ed891c",
+      "atlasSha256": "49c064e7c5f94bee826f06247fafba053cf5a527f4d5e470adc5a61e117502b7",
+      "parts": 29,
+      "comparedChannels": 1168636,
+      "changedChannels": 0
+    },
+    "vertices": 634,
+    "partVertices": 1728,
+    "parts": 29,
+    "leaves": 283,
+    "triangles": 1144,
+    "ownershipEdges": 3507,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 11,
+        "distancePx": 6.670832032063221,
+        "supports": [
+          340
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 9,
+        "distancePx": 4.123105625617643,
+        "supports": [
+          530
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 9,
+        "distancePx": 10.816653826391967,
+        "supports": [
+          156
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 23,
+        "distancePx": 4.924428900898008,
+        "supports": [
+          436
+        ]
+      }
+    ],
+    "sourceBindingHash": "56a8722dd3edcc2bc29f2d16c421a1f17e6d457c678a6d33a5190022ccdc8a89",
+    "sourceVertices": 634,
+    "vertices": 841,
+    "sharedSupports": 355,
+    "pins": 66,
+    "independentSurfaceParts": 29,
+    "sourceJoins": 40,
+    "excludedOverlaps": 21,
+    "observedExcludedBoundaries": 21,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 21,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

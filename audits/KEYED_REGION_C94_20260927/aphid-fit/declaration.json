@@ -1,0 +1,116 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "caceeede1cb836fc745f5d6ff9b353a583a3d526ce3ed119aac48df5e2ed7be6",
+  "cutoutSha256": "270b9474cd56de89e54f163423ce716262bf3b4f2c4fa35fe7445fae532f26a5",
+  "keyedRgbaSha256": "d678ef8f40fbba78aad87ac546bdf4682aeb7c120cdb5e7fd2ea36bc2479bc48",
+  "labelsFile": "labels.png",
+  "labelsSha256": "a3bcfac7a8d400608501f40503810fa94d5db3b9a0c3543015b72610dc28d705",
+  "parts": [
+    {
+      "id": "hind-near-lower",
+      "joint": "legHindNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "mid-near-lower",
+      "joint": "legMidNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "front-near-lower",
+      "joint": "legFrontNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "legHindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "mid-near-upper",
+      "joint": "legMidNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "front-near-upper",
+      "joint": "legFrontNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-lower",
+      "joint": "legHindFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "mid-far-lower",
+      "joint": "legMidFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "front-far-lower",
+      "joint": "legFrontFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "front-far-upper",
+      "joint": "legFrontFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "mid-far-upper",
+      "joint": "legMidFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "hind-far-upper",
+      "joint": "legHindFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "antenna-far",
+      "joint": "antennaFar",
+      "layer": "far"
+    },
+    {
+      "id": "antenna-near",
+      "joint": "antennaNear",
+      "layer": "near"
+    },
+    {
+      "id": "mandible",
+      "joint": "mandible",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "thorax",
+      "joint": "thorax",
+      "layer": "near"
+    },
+    {
+      "id": "membrane-near",
+      "joint": "wingNear",
+      "layer": "near"
+    },
+    {
+      "id": "membrane-far",
+      "joint": "wingFar",
+      "layer": "far"
+    },
+    {
+      "id": "abdomen",
+      "joint": "abdomen",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "610576cc9914b8562553faadfd5d33a4f4b2b5ca155ee4a1e3143d512a438328"
+}

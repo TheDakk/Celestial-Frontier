@@ -1,0 +1,324 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/g2c76-18-agouti/fit",
+  "sourceMasterSha256": "3a59d159f7e56fc58f6905ea2cfd2811a3986809f41f91cd77b53d15618faddc",
+  "keyedRgbaSha256": "44dd7cef91de2677417c1d6dcd669172aa25526ec45962851d503154f67c383d",
+  "remainder": "spine",
+  "remainderPixels": 4835,
+  "movedPixels": 3749,
+  "islands": [
+    {
+      "pixels": 84,
+      "to": "pelvis",
+      "border": {
+        "pelvis": 50
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "pelvis",
+      "border": {
+        "pelvis": 2
+      }
+    },
+    {
+      "pixels": 41,
+      "to": "pelvis",
+      "border": {
+        "chest": 5,
+        "pelvis": 29
+      }
+    },
+    {
+      "pixels": 30,
+      "to": "pelvis",
+      "border": {
+        "pelvis": 25
+      }
+    },
+    {
+      "pixels": 1050,
+      "to": "head",
+      "border": {
+        "ear-far-tip": 19,
+        "ear-far-root": 49,
+        "head": 174
+      }
+    },
+    {
+      "pixels": 37,
+      "to": "ear-far-root",
+      "border": {
+        "ear-near-root": 9,
+        "ear-far-root": 17,
+        "head": 16
+      }
+    },
+    {
+      "pixels": 13,
+      "to": "ear-near-tip",
+      "border": {
+        "ear-near-tip": 13,
+        "ear-near-root": 1,
+        "neck": 10
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "chest",
+      "border": {
+        "chest": 4,
+        "pelvis": 3
+      }
+    },
+    {
+      "pixels": 22,
+      "to": "neck",
+      "border": {
+        "fore-near-root": 3,
+        "fore-far-root": 7,
+        "neck": 10,
+        "pelvis": 4
+      }
+    },
+    {
+      "pixels": 365,
+      "to": "neck",
+      "border": {
+        "jaw": 28,
+        "neck": 47
+      }
+    },
+    {
+      "pixels": 30,
+      "to": "fore-far-root",
+      "border": {
+        "fore-far-root": 11,
+        "neck": 8
+      }
+    },
+    {
+      "pixels": 140,
+      "to": "pelvis",
+      "border": {
+        "fore-near-knee": 13,
+        "pelvis": 36
+      }
+    },
+    {
+      "pixels": 64,
+      "to": "hind-near-knee",
+      "border": {
+        "hind-near-knee": 34,
+        "hind-far-knee": 7
+      }
+    },
+    {
+      "pixels": 224,
+      "to": "fore-far-knee",
+      "border": {
+        "fore-near-knee": 12,
+        "fore-far-knee": 26,
+        "chest": 19
+      }
+    },
+    {
+      "pixels": 416,
+      "to": "hind-near-knee",
+      "border": {
+        "hind-near-knee": 70,
+        "pelvis": 1
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "hind-far-knee",
+      "border": {
+        "hind-far-paw": 2,
+        "hind-far-ankle": 3,
+        "hind-far-knee": 8
+      }
+    },
+    {
+      "pixels": 67,
+      "to": "hind-far-ankle",
+      "border": {
+        "hind-far-paw": 10,
+        "hind-far-ankle": 18,
+        "hind-far-knee": 6
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "hind-near-ankle",
+      "border": {
+        "hind-near-ankle": 12,
+        "hind-near-knee": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-ankle",
+      "border": {
+        "fore-far-ankle": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 2
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "fore-far-ankle",
+      "border": {
+        "fore-far-ankle": 4
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "fore-far-ankle",
+      "border": {
+        "fore-far-ankle": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-ankle",
+      "border": {
+        "fore-far-ankle": 2
+      }
+    },
+    {
+      "pixels": 74,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 16,
+        "hind-near-ankle": 16
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "fore-far-ankle",
+      "border": {
+        "fore-far-paw": 3,
+        "fore-far-ankle": 7
+      }
+    },
+    {
+      "pixels": 256,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 22
+      }
+    },
+    {
+      "pixels": 334,
+      "to": "fore-far-paw",
+      "border": {
+        "fore-far-paw": 22
+      }
+    },
+    {
+      "pixels": 364,
+      "to": "fore-near-paw",
+      "border": {
+        "fore-near-paw": 67
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "fore-far-paw",
+      "border": {
+        "fore-far-paw": 3
+      }
+    },
+    {
+      "pixels": 63,
+      "to": "fore-far-paw",
+      "border": {
+        "fore-far-paw": 22
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 13
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "g2c76-18-agouti",
+    "parts": 29,
+    "atlasSize": {
+      "width": 1076,
+      "height": 505
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 23,
+        "distancePx": 6.099999999999963,
+        "supports": [
+          458
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 3,
+        "distancePx": 16.13753388842299,
+        "supports": [
+          650,
+          651
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 1,
+        "distancePx": 6.896375859826703,
+        "supports": [
+          133
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 0,
+        "distancePx": 6.4660652641308545,
+        "supports": [
+          291
+        ]
+      }
+    ],
+    "sourceBindingHash": "847909328f95306b9f2a9cf97b62ad2ebf1d6bc31248bdfba87e8193bf52da92",
+    "sourceVertices": 950,
+    "vertices": 1151,
+    "sharedSupports": 354,
+    "pins": 124,
+    "independentSurfaceParts": 29,
+    "sourceJoins": 36,
+    "excludedOverlaps": 18,
+    "observedExcludedBoundaries": 18,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 18,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "officialCheck": "queue/attempts/startup-official-inspect/result.json",
+  "eligibleUpdates": [],
+  "updatesApplied": [],
+  "capabilityVerify": "queue/attempts/startup-capability-verify/result.json",
+  "rootValidate": {
+    "exitCode": 0,
+    "bootErrors": 0,
+    "rendered": 1010,
+    "fingerprintProbes": 50,
+    "fingerprint": "MATCH",
+    "toolSessionId": 61703
+  },
+  "versionsFixedForO3": true,
+  "mergedHead": "c6a9d386c6a6ac18079ceac51c499ed543746bdb",
+  "develop": "Deferred to between waves only; merged peer PASS per C549/C553",
+  "timeUnix": 1793764246.424484
+}

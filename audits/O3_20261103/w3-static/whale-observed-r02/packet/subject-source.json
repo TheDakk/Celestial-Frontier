@@ -1,0 +1,95 @@
+{
+  "name": "Whale",
+  "family": "fish",
+  "species": {
+    "name": "Whale",
+    "aspect": 5,
+    "headFrac": 0.25,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "horizontal notched tail flukes",
+      "blowhole on top of the head",
+      "long paddle flippers and a smooth streamlined body"
+    ],
+    "note": "generic name - drawn as a representative baleen whale; flukes are horizontal, never vertical like a fish"
+  },
+  "genome": {
+    "seed": 788972679,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 16,
+    "body": 15,
+    "loco": 10,
+    "trait": 12,
+    "size": 0,
+    "diet": 4,
+    "head": 1,
+    "limbs": 3,
+    "skin": 1,
+    "tail": 0,
+    "pattern": 5,
+    "eyes": 0,
+    "behavior": 5,
+    "habitat": 0,
+    "detail": 6,
+    "accent": 10,
+    "temper": 8,
+    "sense": 3,
+    "repro": 5,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Whale"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Whale\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"788972679\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "index": 518,
+  "profile": {
+    "id": "baleen-cetacean",
+    "names": [
+      "Right Whale",
+      "Blue Whale",
+      "Humpback Whale",
+      "Gray Whale",
+      "Whale"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "body",
+      "tail"
+    ],
+    "notes": "No biting teeth invented. Generic Whale is conservative; fluke contact needs observed anatomy."
+  },
+  "o2SourceBinding": {
+    "source": {
+      "path": "audits/OVERNIGHT_20261101/codex/sources/wave05/030-14-whale/original.png",
+      "sha256": "fdf6373af4c798f0375712331020bafd94c8936f87fdaeadfe527cec5200ec3e",
+      "bytes": 1329885,
+      "exists": true
+    },
+    "canonicalMetadata": {
+      "path": "audits/C243_ALLOUT_20261011/execution/batch02/c243b02r2c1-30-whale/subject-source.json",
+      "sha256": "5548b7337159b25f3aade96668fd2192a28537745a6585f405902c9498abfe01",
+      "bytes": 2313
+    },
+    "canonicalFamily": "fish",
+    "sourceProfileFamily": "fish",
+    "routeMeaning": "Current registered source-profile vocabulary only; candidate family, not observed anatomy/absence/motion acceptance",
+    "alternateCanonicalPath": false,
+    "prompt": {
+      "path": "audits/OVERNIGHT_20261101/codex/sources/wave05/030-14-whale/prompt.txt",
+      "sha256": "f05bffbc4b854a777d500bac22f99ce4592f008235fce3b236e3d5fbd29a5dce",
+      "bytes": 11366
+    },
+    "genomeVisualKeyUnchanged": true,
+    "authoringCreated": false,
+    "sourceLabelsReused": false
+  }
+}

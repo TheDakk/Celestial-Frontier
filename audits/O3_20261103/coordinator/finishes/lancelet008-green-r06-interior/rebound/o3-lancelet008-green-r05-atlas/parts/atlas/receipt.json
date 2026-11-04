@@ -1,0 +1,76 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "o3-lancelet-green-source-observed-r04",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "dd810e37c7ac56a9e372b4d618396739b9bb976e3edfdf31c5e8f2861f9d2560",
+    "pngSha256": "6d5880db352527fb72c09d4ff04457d382af1d7abab5e6233c25520f99cf7f29"
+  },
+  "parts": [
+    {
+      "name": "anterior-body.png",
+      "sha256": "24308d31f4994709411a5844072459ff6ffda634721eb57cbb0d9939e86b6f8e"
+    },
+    {
+      "name": "caudal-whole-tip.png",
+      "sha256": "65259b93bf03a7e146b801df3dad06e51631d1330dcff33c2118e31cebbaecec"
+    },
+    {
+      "name": "oral-hood-cirri.png",
+      "sha256": "9c2335fee646b92418c74004f82321550263d99d026a2716a6260b92bd899f28"
+    },
+    {
+      "name": "spine0.png",
+      "sha256": "c0e3c7a5127e761e5055fc4d58cc9aea14e0ac76fa2ea2832e7385717f2d5017"
+    },
+    {
+      "name": "spine1.png",
+      "sha256": "2faedae5855c9b6a17b452cb96c85c09a99ed20067ed252cb0b320c35c0ba952"
+    },
+    {
+      "name": "spine2.png",
+      "sha256": "41d2a1142c141653339df626609fe5c11375ae18c7b10be7ffa21e149a6881d2"
+    },
+    {
+      "name": "spine3.png",
+      "sha256": "ba0e16eaf03e2986066a89fa727827ed1f4085821cdf2720bc103bea4cb9895a"
+    },
+    {
+      "name": "spine4.png",
+      "sha256": "526cc6171dd81acf5e83600865fb62687690c2d4d7c72227d955c81037274057"
+    },
+    {
+      "name": "spine5.png",
+      "sha256": "7072a890b619736918a0d133bc86af0414a234974b7fa374058f1d7aa2baead8"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1",
+  "sourceEdgeGutters": {
+    "changedTexels": 1660,
+    "correctedRgbaSha256": "084654bc5d374c8382802692c227dec7971d19c9bd3d942bced55ed0ae154dba",
+    "innerFramesUnchanged": true,
+    "packedPngSha256": "5491bad4f34dbdf4adb6f7f11c7ffcfc998aa60944236df98faad093268d7cb0",
+    "packedRgbaSha256": "9b243f7f63287ae231794c2441ae60f6e55169e09c9b4e2db67243dba42c09c1",
+    "ringTexels": 3020,
+    "schema": "cf.atlas-source-edge-gutters/v1"
+  }
+}

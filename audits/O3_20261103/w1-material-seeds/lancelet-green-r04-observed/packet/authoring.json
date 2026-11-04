@@ -1,0 +1,311 @@
+{
+  "id": "o3-lancelet-green-source-observed-r04",
+  "family": "fish",
+  "landmarksPx": {
+    "root": [
+      831,
+      612
+    ],
+    "head": [
+      869,
+      619
+    ],
+    "spine0": [
+      789,
+      608
+    ],
+    "spine1": [
+      711,
+      610
+    ],
+    "spine2": [
+      625,
+      617
+    ],
+    "spine3": [
+      540,
+      623
+    ],
+    "spine4": [
+      456,
+      628
+    ],
+    "spine5": [
+      383,
+      631
+    ],
+    "caudal": [
+      333,
+      635
+    ],
+    "dorsal": [
+      708,
+      568
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin",
+    "paletteSource": "Same actual green-key RAW9091767b24557fadd4c628246ab89985373966b4706992f4a2149fbc7d79ca52 and original canonical seal/default D40; exact source-bound R04 reviewed-donor derivative97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf. Canonical named genome unchanged."
+  },
+  "habitat": {
+    "realm": "aquatic",
+    "source": "Existing jawless-fish Earth profile water; isolated swimming source"
+  },
+  "groundLineY": 0.55,
+  "parts": [
+    {
+      "id": "dorsal-fold-support",
+      "joint": "spine1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          698,
+          561
+        ],
+        [
+          722,
+          561
+        ],
+        [
+          722,
+          578
+        ],
+        [
+          698,
+          578
+        ]
+      ]
+    },
+    {
+      "id": "oral-hood-cirri",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          839,
+          500
+        ],
+        [
+          1000,
+          500
+        ],
+        [
+          1000,
+          720
+        ],
+        [
+          839,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "caudal-whole-tip",
+      "joint": "caudal",
+      "layer": "near",
+      "polygonPx": [
+        [
+          280,
+          500
+        ],
+        [
+          361,
+          500
+        ],
+        [
+          361,
+          720
+        ],
+        [
+          280,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "spine5",
+      "joint": "spine5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          361,
+          500
+        ],
+        [
+          418,
+          500
+        ],
+        [
+          418,
+          720
+        ],
+        [
+          361,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "spine4",
+      "joint": "spine4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          418,
+          500
+        ],
+        [
+          496,
+          500
+        ],
+        [
+          496,
+          720
+        ],
+        [
+          418,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "spine3",
+      "joint": "spine3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          496,
+          500
+        ],
+        [
+          582,
+          500
+        ],
+        [
+          582,
+          720
+        ],
+        [
+          496,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "spine2",
+      "joint": "spine2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          582,
+          500
+        ],
+        [
+          668,
+          500
+        ],
+        [
+          668,
+          720
+        ],
+        [
+          582,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "spine1",
+      "joint": "spine1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          668,
+          500
+        ],
+        [
+          751,
+          500
+        ],
+        [
+          751,
+          720
+        ],
+        [
+          668,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "spine0",
+      "joint": "spine0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          751,
+          500
+        ],
+        [
+          803,
+          500
+        ],
+        [
+          803,
+          720
+        ],
+        [
+          751,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "anterior-body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          803,
+          500
+        ],
+        [
+          839,
+          500
+        ],
+        [
+          839,
+          720
+        ],
+        [
+          803,
+          720
+        ]
+      ]
+    }
+  ],
+  "remainderPart": "anterior-body",
+  "coverage": {
+    "sourceObservation": "New actual native1254 source reviewed directly by coordinator. Its oral cirri, median fins and caudal tip are whole source courses. Re-observed anterior/axial controls lie in present painted body/fin; head is an anterior/oral-hood controller, not an anatomical vertebrate head. Jaw and paired pectoral fins absent under same explicit jawless named anatomy; no eyes or fins fabricated. Existing whole-cross-section partition strategy re-observed on this source; no source labels/masks/fit/geometry seal imported.",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "materialAcceptance": false,
+    "physicalAcceptance": false,
+    "nativeAcceptance": false,
+    "independentMaterialReviewRequiredBeforeIntake": true,
+    "r04Reobservation": {
+      "master": {
+        "path": "audits/O3_20261103/coordinator/lancelet-green-r04-fringe/derivative/master.png",
+        "sha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf",
+        "bytes": 1145022
+      },
+      "independentSourceMaterialReview": {
+        "path": "audits/O3_20261103/w2-wave-a/lancelet-green-r04-material/review.json",
+        "sha256": "ae68348850c80e2445df56bc95125f2c9524a7fbb2b30c37df0e01fe2b172f76",
+        "bytes": 16268
+      },
+      "meaning": "Ten existing source-observed controls re-viewed on same actual RAW and exact R04 master; nine merged whole source owners re-projected at pixel centers. No old bound record, source labels or raster masks reused. Oral cirri remain whole under oral-hood controller, median folds remain with axial bands and full caudal tip remains. Existing optional jaw and paired pectoral fins remain source-observed absent; no donor absence inherited.",
+      "pending": "Root intake/full static, independent actual compiled part/pivot/source-join and later native/C261 review."
+    }
+  }
+}

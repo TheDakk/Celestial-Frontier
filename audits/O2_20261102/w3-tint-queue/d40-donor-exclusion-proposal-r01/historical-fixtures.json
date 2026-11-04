@@ -1,0 +1,93 @@
+{
+  "schema": "cf.o2-d40-historical-default-fixtures/v1",
+  "rows": [
+    {
+      "name": "butterfly",
+      "request": {
+        "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/butterfly/request.json",
+        "sha256": "ad513d69438a640a28991b931134f1860d22e3aa8aff09b14d35a5a6a80dbe25",
+        "bytes": 1523
+      },
+      "receipt": {
+        "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/butterfly/cli-receipt.json",
+        "sha256": "fa896152338576d36a8edcf9f0fa209aa25fe0af14c368969558ed2953723390",
+        "bytes": 3196
+      },
+      "original": {
+        "path": "audits/C274_ALL170_20261017/w2-decisions/d37/packets/02-butterfly/master.png",
+        "sha256": "96dd32bd9125c645b56f084ea3e3ed1cbe15ed019f81714a7b91db291051802b"
+      },
+      "canonical": {
+        "path": "audits/C274_ALL170_20261017/w2-decisions/d37/qualified/02-butterfly/islands/fit/parts/keyed.png",
+        "sha256": "afb03f63690274e95dd24b23eb30b5391d93a899863c26167a01cd91f425a393",
+        "rgbaSha256": "2832d3d44e36242f2d38a9e15e009eca14119051e6834852b35bae3e68f8be62"
+      },
+      "expectedDefaultRgbaSha256": "265fdb703d2ceec2b3d4337b79db515f451411838cf21337f66ed848cbb88db1",
+      "expectedAlgorithmReceipt": {
+        "schema": "cf.post-key-matte/v1",
+        "originalRgbaSha256": "db711e6cf1c9ac22a8899024ae9c21715acdce64de16bc14641216b2706fc4b8",
+        "canonicalRgbaSha256": "2832d3d44e36242f2d38a9e15e009eca14119051e6834852b35bae3e68f8be62",
+        "outputRgbaSha256": "265fdb703d2ceec2b3d4337b79db515f451411838cf21337f66ed848cbb88db1",
+        "keyColor": "magenta",
+        "restoredSourcePixels": 6224,
+        "despilledPixels": 3488,
+        "unresolvedPixels": 0,
+        "protectedPigmentPixels": 0,
+        "canonicalUnchanged": true,
+        "originalUnchanged": true,
+        "sourceClassifier": "unchanged keyAndDespill pre-erosion classifier",
+        "matte": "source-supported connected recovery; no erosion; no fabricated bridges",
+        "despill": "observed-source donor through connected support; least-squares key unmix",
+        "admission": false
+      },
+      "meaning": "Omitted and empty exclusions must exactly match the retained historical default raw RGBA and algorithm receipt, not just match each other."
+    },
+    {
+      "name": "cricket",
+      "request": {
+        "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/cricket/request.json",
+        "sha256": "a6790063f2bd290d20d3bf2173f08e483b685aa530b878979453b90669005597",
+        "bytes": 1372
+      },
+      "receipt": {
+        "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/cricket/cli-receipt.json",
+        "sha256": "61adf09c74bfae6c672310866c217bef5d6d1eab81f19b07f09dd3bf95c58bf3",
+        "bytes": 3052
+      },
+      "original": {
+        "path": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/master.png",
+        "sha256": "172b1734ee5e85a965fe88a0196869382061fb11a06b2e49db8389a1037b3d76"
+      },
+      "canonical": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/keyed-preview.png",
+        "sha256": "f76ab561a49aadb88944a959e978025ba66700095b5f0876cba7dc4b3b800668",
+        "rgbaSha256": "1c1614e7c550922ad9c299d0e4662c4d7b11af9aaf805cac99deeeeaff388df0"
+      },
+      "expectedDefaultRgbaSha256": "7e461b8f0526ee9c98093356ba6e79b4a2fac7d182c2702e9c188c423eb9a583",
+      "expectedAlgorithmReceipt": {
+        "schema": "cf.post-key-matte/v1",
+        "originalRgbaSha256": "910804966801939828a0fd85f197e7e1517282cd35d45aa29fbecd56f85abb30",
+        "canonicalRgbaSha256": "1c1614e7c550922ad9c299d0e4662c4d7b11af9aaf805cac99deeeeaff388df0",
+        "outputRgbaSha256": "7e461b8f0526ee9c98093356ba6e79b4a2fac7d182c2702e9c188c423eb9a583",
+        "keyColor": "magenta",
+        "restoredSourcePixels": 10235,
+        "despilledPixels": 5240,
+        "unresolvedPixels": 0,
+        "protectedPigmentPixels": 0,
+        "canonicalUnchanged": true,
+        "originalUnchanged": true,
+        "sourceClassifier": "unchanged keyAndDespill pre-erosion classifier",
+        "matte": "source-supported connected recovery; no erosion; no fabricated bridges",
+        "despill": "observed-source donor through connected support; least-squares key unmix",
+        "admission": false
+      },
+      "meaning": "Omitted and empty exclusions must exactly match the retained historical default raw RGBA and algorithm receipt, not just match each other."
+    }
+  ],
+  "naturalPigmentControls": {
+    "path": "audits/C475_DECISIONS_20261019/w1-keyer/evidence/natural-pigment-controls-r01.json",
+    "sha256": "090a042b8cb02a1f3f809e158f76af4a84faffa4d3fa7384b8d79ede82df2159",
+    "bytes": 4295
+  },
+  "noArchivedFeatureImported": true
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "name": "bobcat",
+    "before": {
+      "report": "audits/C59_REPAIR_20260926/bobcat-profile/report.json",
+      "sha256": "9b6987e832d0fb79e2f1b48cb589ffaeefcfbd8558fabf4f9df7e306c703f0ac",
+      "frames": 850
+    },
+    "after": {
+      "report": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/report.json",
+      "sha256": "52d306b92610cecb8ece04e6c9316c7a6aaabb39509bb3df0b80a2716110b3df",
+      "status": "FAIL",
+      "frames": 868,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "lethalPhases": {
+        "impact": {
+          "frames": 19,
+          "cpuP95Ms": 192.10000002384186
+        },
+        "return": {
+          "frames": 1,
+          "cpuP95Ms": 190.30000007152557
+        },
+        "idle": {
+          "frames": 22,
+          "cpuP95Ms": 29.40000009536743
+        }
+      }
+    }
+  },
+  {
+    "name": "donkey",
+    "before": {
+      "report": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/15-donkey/report.json",
+      "sha256": "d0954e55c35bc792598523ecbf02f86eee143aea8e1f1698192fcd3a35521efa",
+      "frames": 862
+    },
+    "after": {
+      "report": "audits/LATE_REACTION_C70_20260927/donkey/native-01/report.json",
+      "sha256": "9446dd3f29d73b70753c780491542f38c504b3d5dc52e2e736923f51d0709112",
+      "status": "DIAGNOSTIC_PASS",
+      "frames": 894,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "lethalPhases": {
+        "impact": {
+          "frames": 23,
+          "cpuP95Ms": 69.70000004768372
+        },
+        "return": {
+          "frames": 7,
+          "cpuP95Ms": 70.39999997615814
+        },
+        "idle": {
+          "frames": 37,
+          "cpuP95Ms": 7.399999976158142
+        }
+      }
+    }
+  },
+  {
+    "name": "lynx",
+    "before": {
+      "report": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/q20-06-lynx/report.json",
+      "sha256": "080ad21542f582cb1e024ca5eee1648614a709a63e993df3095b36cdd1c66e06",
+      "frames": 874
+    },
+    "after": {
+      "report": "audits/LATE_REACTION_C70_20260927/lynx/native-01/report.json",
+      "sha256": "2aef41eb4610240ea7714de4b729a376e5078691946c4c5c7dee083c3c9d4b76",
+      "status": "DIAGNOSTIC_PASS",
+      "frames": 902,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "lethalPhases": {
+        "impact": {
+          "frames": 29,
+          "cpuP95Ms": 49
+        },
+        "return": {
+          "frames": 10,
+          "cpuP95Ms": 50.200000047683716
+        },
+        "idle": {
+          "frames": 37,
+          "cpuP95Ms": 12.5
+        }
+      }
+    }
+  }
+]

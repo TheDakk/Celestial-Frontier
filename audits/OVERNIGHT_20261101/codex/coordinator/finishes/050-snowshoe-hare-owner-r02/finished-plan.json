@@ -1,0 +1,26 @@
+[
+  {
+    "id": "o1-050-snowshoe-hare-owner-r02",
+    "packetId": "o1-050-snowshoe-hare-owner-r02",
+    "name": "Snowshoe Hare",
+    "fit": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/rebound/o1-050-snowshoe-hare-owner-r02",
+    "nativeDir": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/native",
+    "nativeReport": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/native/report.json",
+    "script": "audits/OVERNIGHT_20261101/codex/coordinator/plans/050-snowshoe-hare-owner-r02/script.json",
+    "masterSha256": "57a0fcd95352dba6646ca9460b8a0696b644129509f81cce78c7b9f8f6198e99",
+    "observedPacket": "audits/OVERNIGHT_20261101/codex/w4-paperwork/snowshoe-hare050-owner-repair-r02/candidate-r02",
+    "staticReport": "audits/OVERNIGHT_20261101/codex/w4-paperwork/snowshoe-hare050-owner-repair-r02/candidate-r02/static.json",
+    "sourceHead": "25f8d36fa0dc14474ddeaeedcd24c7b2211902d5",
+    "status": "SIGNED_PRODUCER_BOUND_FOR_NATIVE",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "exactWorstContext": "Actual distal paw/earowners repaired; allfourpawchain joins/head/muzzle/tinyattachedtail at every still; no sourcegeometryinvented",
+    "nativeAcceptance": false,
+    "producerMustBeSignedBeforeNative": true,
+    "sourceHeadMustMatchNativeReportSource": true,
+    "compiledRealm": "land",
+    "realmProof": "audits/OVERNIGHT_20261101/codex/coordinator/plans/050-snowshoe-hare-owner-r02/realm-proof.json",
+    "finishedMaster": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/finished/o1-050-snowshoe-hare-owner-r02-finished.png",
+    "finishReceipt": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/finished/o1-050-snowshoe-hare-owner-r02-receipt.json",
+    "checkpointReview": "audits/OVERNIGHT_20261101/codex/coordinator/checkpoints/snowshoe-hare050-original-r02/W2.json"
+  }
+]

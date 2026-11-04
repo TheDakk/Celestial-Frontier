@@ -1,0 +1,68 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "o3-whale-observed-r03",
+    "parts": 13,
+    "atlasSize": {
+      "width": 760,
+      "height": 291
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "d2338a44811ef281126e4974f1752c9acdbba29ee82e05ef82a9e63ca6028c18",
+    "recordRecipeHash": "782b11fa1ec42ae28b67923c5ffe5c0ecb1e894a91399b38457f3bccffb2d2b4",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "d2338a44811ef281126e4974f1752c9acdbba29ee82e05ef82a9e63ca6028c18",
+      "atlasSha256": "a3e1ca34a274a7b9181ab71f41b54259e41a7ee19a5750fb8be2352255b27ac8",
+      "parts": 13,
+      "comparedChannels": 580048,
+      "changedChannels": 0
+    },
+    "vertices": 561,
+    "partVertices": 1105,
+    "parts": 13,
+    "leaves": 244,
+    "triangles": 998,
+    "ownershipEdges": 1591,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "4253069353b0dd40a21a50428113233d20f336c4b687dac363563547f875d83c",
+    "sourceVertices": 561,
+    "vertices": 657,
+    "sharedSupports": 175,
+    "pins": 189,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 9,
+    "excludedOverlaps": 6,
+    "observedExcludedBoundaries": 6,
+    "weldedExcludedBoundaries": 2,
+    "independentExcludedBoundaries": 4,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "actual-eye-upper-head",
+        "whole-source-body-remainder"
+      ],
+      [
+        "actual-pleated-lower-head-jaw",
+        "whole-source-body-remainder"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "782b11fa1ec42ae28b67923c5ffe5c0ecb1e894a91399b38457f3bccffb2d2b4",
+  "bindingHash": "7bab8e065b4615638df2603173d1260c7b25915a7a093a86383815754b21bb6e",
+  "masterSha256": "c111e2b54f814f311cab79c3b2c4153fbd4f3d1374d8e332e312170cf9767728",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

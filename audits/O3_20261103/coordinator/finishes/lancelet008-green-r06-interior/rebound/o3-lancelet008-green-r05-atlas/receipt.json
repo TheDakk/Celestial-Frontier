@@ -1,0 +1,58 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "o3-lancelet-green-source-observed-r04",
+    "parts": 9,
+    "atlasSize": {
+      "width": 209,
+      "height": 498
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "28dc468771c996480c6b5bb6fe3b1b98cc5b121f7efe4b9622f50c10ff987d33",
+    "recordRecipeHash": "9287d65cce66865ff758e8d9106c809e38f4474323a67a0eee970299372b15ad",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "28dc468771c996480c6b5bb6fe3b1b98cc5b121f7efe4b9622f50c10ff987d33",
+      "atlasSha256": "6d5880db352527fb72c09d4ff04457d382af1d7abab5e6233c25520f99cf7f29",
+      "parts": 9,
+      "comparedChannels": 254852,
+      "changedChannels": 0
+    },
+    "vertices": 377,
+    "partVertices": 716,
+    "parts": 9,
+    "leaves": 162,
+    "triangles": 666,
+    "ownershipEdges": 670,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "259c75dc1bad306c287171de2c9ccdb230fc214d34fc5901587bb2a1b53ceb04",
+    "sourceVertices": 377,
+    "vertices": 379,
+    "sharedSupports": 123,
+    "pins": 59,
+    "independentSurfaceParts": 9,
+    "sourceJoins": 8,
+    "excludedOverlaps": 0,
+    "observedExcludedBoundaries": 0,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 0,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "9287d65cce66865ff758e8d9106c809e38f4474323a67a0eee970299372b15ad",
+  "bindingHash": "cedf40082673177f7557bd5abe5f763b7be146598c4457a0c81468d11980f39f",
+  "masterSha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

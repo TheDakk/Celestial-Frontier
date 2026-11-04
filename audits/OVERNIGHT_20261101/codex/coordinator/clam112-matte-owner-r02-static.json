@@ -1,0 +1,246 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "81919185ebc958ee90361b49a1d8d48d605b17e4",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045611133085,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045611133085,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "approach:settle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045611133085,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "approach:jet",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045611133085,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045611133085,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045619171958,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045611133085,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045611133085,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045611133085,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045611133085,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005007045611133085,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "370bbd88b13412f519091cfaa6196d546beb44431c0509a8a404204856659e00",
+  "bindingHash": "631f358948a6f6b99173e7987b39934d09b28b7402516b9a227aee54d08d2a30",
+  "family": "bivalve",
+  "contacts": [],
+  "realm": "aquatic",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:settle",
+    "approach:jet",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 782,
+    "attemptedSamples": 782,
+    "status": "PASS",
+    "maxPaintDriftPx": 0,
+    "maxGapPx": 0.00005007045611133085,
+    "maxEndpointError": 0,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4328.058882728219
+      },
+      {
+        "id": "alert",
+        "startMs": 4328.058882728219,
+        "endMs": 4928.058882728219
+      },
+      {
+        "id": "approach:settle",
+        "startMs": 4928.058882728219,
+        "endMs": 5628.058882728219
+      },
+      {
+        "id": "approach:jet",
+        "startMs": 5628.058882728219,
+        "endMs": 6328.058882728219
+      },
+      {
+        "id": "cast",
+        "startMs": 6328.058882728219,
+        "endMs": 7218.058882728219
+      },
+      {
+        "id": "hit",
+        "startMs": 7218.058882728219,
+        "endMs": 7948.058882728219
+      },
+      {
+        "id": "dodge",
+        "startMs": 7948.058882728219,
+        "endMs": 8548.058882728219
+      },
+      {
+        "id": "faint",
+        "startMs": 8548.058882728219,
+        "endMs": 9348.058882728219
+      },
+      {
+        "id": "victory",
+        "startMs": 9348.058882728219,
+        "endMs": 10228.058882728219
+      },
+      {
+        "id": "tame",
+        "startMs": 10228.058882728219,
+        "endMs": 11148.058882728219
+      },
+      {
+        "id": "feed",
+        "startMs": 11148.058882728219,
+        "endMs": 12008.058882728219
+      }
+    ],
+    "durationMs": 13008.058882728219
+  },
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/OVERNIGHT_20261101/codex/coordinator/clam112-matte-owner-r02/record.json",
+      "sha256": "c387953a6f6af3246930aa9ecab170ffd815741f40e35cc39e7709000f601438",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/OVERNIGHT_20261101/codex/coordinator/clam112-matte-owner-r02/binding.json",
+      "sha256": "45fa10a91c271eccda541385574abcfe7628dbbbd2757c19de31b689f5a6e931",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/OVERNIGHT_20261101/codex/coordinator/clam112-matte-owner-r02/parts/manifest.json",
+      "sha256": "874c57135c1dd509fe93dd28e3506265caae5bde69aa3186c88dedf7ee7f28d8",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/OVERNIGHT_20261101/codex/coordinator/clam112-matte-owner-r02/parts/atlas/o1-clam112-matte-owner-r02.png",
+      "sha256": "668ad37b08133c9428bd1ecad480310fc57afe255f513bd009a40f7b6c7cdef4",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/OVERNIGHT_20261101/codex/coordinator/clam112-matte-owner-r02/parts/keyed.png",
+      "sha256": "60fb2bcda7448fa6399bef14383942e6024c563faf7c0350b7c4da10638968b9",
+      "unchanged": true
+    }
+  ]
+}

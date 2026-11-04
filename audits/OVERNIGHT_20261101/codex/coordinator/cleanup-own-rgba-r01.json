@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/finished/prepared/o1-050-snowshoe-hare-owner-r02-master.rgba",
+      "bytes": 6290064,
+      "sha256": "97c5b6b4c933a446f1ea0b70730810e6c52b9495fff5c057cc76e60c45626730",
+      "regenerateFrom": {
+        "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/finished/prepared/o1-050-snowshoe-hare-owner-r02-masterPng.png",
+        "sha256": "57a0fcd95352dba6646ca9460b8a0696b644129509f81cce78c7b9f8f6198e99"
+      }
+    },
+    {
+      "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/finished/prepared/o1-050-snowshoe-hare-owner-r02-labels.rgba",
+      "bytes": 6290064,
+      "sha256": "15ca22abf1e48f668a32bf7d3b772ed6414fecf3403c042096c52bec5cbbef72",
+      "regenerateFrom": {
+        "path": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/finished/prepared/o1-050-snowshoe-hare-owner-r02-labels.png",
+        "sha256": "aefaefa1fadea6cba9f13d312a59f60b692a06d42671efef0a89197ecab036b0"
+      }
+    }
+  ],
+  "bytesRemoved": 12580128,
+  "protectedReadyPins": 66,
+  "protectedPinsUnchanged": true,
+  "scope": "Only two regenerable own O1 raw buffers; retained exact decoded PNGs, all originals/finished images/receipts/native evidence untouched"
+}

@@ -1,0 +1,27 @@
+{
+  "scope": "Read-only 16x15 raw-source inspection, no donor propagation or derivative execution.",
+  "source": "audits/O2_20261102/coordinator/egret-green-generation-r03/original.png",
+  "roi": [
+    345,
+    635,
+    16,
+    15
+  ],
+  "matches": [
+    {
+      "xy": [
+        355,
+        639
+      ],
+      "index": 801661,
+      "rawRGBA": [
+        200,
+        208,
+        186,
+        255
+      ],
+      "greenExcessExistingD40": 8,
+      "meaning": "Exact observed-source RGB matching recovered [352,642] donor RGB. Local match is a candidate donor identity; authoritative original donor map must be recorded by root."
+    }
+  ]
+}

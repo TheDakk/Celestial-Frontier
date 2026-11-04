@@ -1,0 +1,101 @@
+COMPOSITION FIRST — TINY WHOLE SPECIMEN, VAST EMPTY CANVAS.
+Create a native1254 x1254 PNG. The entire animal, INCLUDING the furthest antenna, feather, toe, wing, tail, spine and every other appendage tip, fits inside an imaginary300 x300 pixel square at the exact centre of this canvas. Paint that scale directly. The complete tip-to-tip silhouette uses LESS THAN ONE QUARTER of the canvas width AND less than two fifths of its height. About five sixths of the picture is empty uniform magenta background (#FF00FF). The animal is a small specimen surrounded by a very broad uninterrupted empty field, not a close-up.
+Leave at least400 pixels of empty background on EVERY side of the complete silhouette; target about477 pixels on every side for the central300-square composition. Long antennae and tails count toward this total size; shrink the WHOLE requested composition naturally at creation time rather than shortening a real appendage. Keep the entire actual species anatomy, natural proportions and requested pose. Nothing touches or approaches the image edges. Do not paint the imaginary square, a border, scale, grid, text or measurement marks. This is a fresh original painting; do not crop, resize, pad or extend a previous image.
+
+
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Dakk at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: Earth Whale; real named anatomy and natural materials take priority over raw procedural genes. Isolated library master, not an Earth landing resident claim.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+Species identity features FIRST: horizontal notched tail flukes; blowhole on top of the head; long paddle flippers and a smooth streamlined body. One Earth Whale. These canonical identity features and natural patterns take priority over raw procedural colour or limb genes.
+Canonical identity note: generic name - drawn as a representative baleen whale; flukes are horizontal, never vertical like a fish
+Genomic identity (Earth anatomy takes priority): {"seed":788972679,"kingdom":"fauna","color":15,"form":16,"body":15,"loco":10,"trait":12,"size":0,"diet":4,"head":1,"limbs":3,"skin":1,"tail":0,"pattern":5,"eyes":0,"behavior":5,"habitat":0,"detail":6,"accent":10,"temper":8,"sense":3,"repro":5,"life":4,"metab":4,"lumin":false,"gen":0,"heat":1,"_earthName":"Whale"}
+One whole anatomically accurate specimen of Whale in the approved painted hand, facing RIGHT. Preserve every canonical identity feature and natural pigment/pattern. Isolated on uniform pure magenta, no floor, cast shadow, props, scenery, labels or text. The WHOLE silhouette and every natural appendage tip must have generous clear margin on ALL four sides, with the complete subject in the central half of a square image and empty magenta occupying at least the outer quarter on every side. Do not crop, mirror or manually shrink anatomy to satisfy a generic rig. This is an original painting only; no supported limb count or animation is implied. Horizontal relaxed shallow side swimming view, head right, paired pectoral flippers slightly offset and complete horizontal tail visible at left. Retain natural named-species anatomy: dorsal fin only where present, no fish gills or pelvic fins. Preserve natural head proportions, flipper lengths and colour patterns. No predatory teeth; preserve the natural baleen-whale feeding anatomy.
+SOURCE COMPOSITION PRIORITY: Native square1254 original; the entire tip-to-tip silhouette occupies only the central HALF of both axes, with roughly25percent empty canvas at every side. Every complete antenna, toe, feather, spine and tentacle tip remains within that region. Paint the small complete animal in this composition directly; do not resize, crop or pad an old original. Preserve natural joint bends, connected material and all real appendages. No repeated detached dots or background-coloured gaps in fine shafts. The canonical admission margin remains8percent; this25percent composition is a request, never a new gate.
+
+ACCURACY
+One anatomically accurate Whale; aquatic mammal body, two pectoral flippers and horizontal tail flukes or named paddle tail, species-correct dorsal structure; all canonical counts repeated in the visible painting. Required counts are requests, not observed evidence. No invented anatomy, gear, armour or fantasy growth.
+
+LAYOUT
+One whole anatomically accurate specimen of Whale in the approved painted hand, facing RIGHT. Preserve every canonical identity feature and natural pigment/pattern. Isolated on uniform pure magenta, no floor, cast shadow, props, scenery, labels or text. The WHOLE silhouette and every natural appendage tip must have generous clear margin on ALL four sides, with the complete subject in the central half of a square image and empty magenta occupying at least the outer quarter on every side. Do not crop, mirror or manually shrink anatomy to satisfy a generic rig. This is an original painting only; no supported limb count or animation is implied. Horizontal relaxed shallow side swimming view, head right, paired pectoral flippers slightly offset and complete horizontal tail visible at left. Retain natural named-species anatomy: dorsal fin only where present, no fish gills or pelvic fins. Preserve natural head proportions, flipper lengths and colour patterns. No predatory teeth; preserve the natural baleen-whale feeding anatomy. Whole silhouette inside central half; at least8percent clear margin on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1254 x 1254 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+
+FINAL COMPOSITION CHECK BEFORE RENDERING: Native1254square. One tiny COMPLETE animal, all real appendages included, contained inside the CENTRAL300x300 region. Every extremity has at least400px empty magenta (#FF00FF) beyond it on ALL FOUR SIDES; target477px. The longest head-to-tail-or-antenna span is under25percent of the whole canvas width, and the full height is under25percent too. Keep the species complete and anatomically correct. No close-up, cropped extremity, oversized silhouette, frame, text or cast shadow. Paint this requested size in the fresh original; never repair an old image by resizing, padding or cropping.

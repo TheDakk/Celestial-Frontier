@@ -1,0 +1,30 @@
+{
+  "gameCodeAndImportedTools": [],
+  "offlineTools": [
+    "port/v2/tools/anatomy-verify/auto-author.mjs",
+    "audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs",
+    "port/v2/tools/anatomy-verify/kin-pin.mjs",
+    "port/v2/tools/anatomy-verify/kin-pin.test.mjs",
+    "port/v2/tools/creature-animation/rig-atlas.mjs",
+    "port/v2/tools/creature-animation/atlas-source-edge-gutters.mjs",
+    "port/v2/tools/creature-animation/rig-atlas-source-edge.test.mjs",
+    "port/v2/tools/creature-animation/intake-authored.mjs",
+    "port/v2/tools/creature-animation/intake-painted-boundary-pairs.test.mjs"
+  ],
+  "authority": "C549: offline D40 authoring tools are outside game/I5 imports; C502 remains selected.",
+  "offlineEvidenceTools": [
+    "audits/O3_20261103/coordinator/derive-lancelet-finish-r06.mjs",
+    "audits/O3_20261103/coordinator/finish-interior-delta.test.mjs",
+    "audits/O3_20261103/w3-static/lancelet-finish-boundary-repair-r01/PROPOSAL-ONLY-interior-delta-feather.mjs"
+  ],
+  "proposedButRestoredGamePaths": [
+    "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+    "CREATURE_ANIMATION.md",
+    "celestial-frontier-codebase-reference.md",
+    "port/v2/apps/game/src/release-content.ts",
+    "port/v2/tools/slicesmoke.mjs",
+    "port/v2/apps/game/src/motion/grounded-quadruped-tail.test.ts"
+  ],
+  "restorationEvidence": "audits/O3_20261103/coordinator/guardian-tail-first-red/restoration.json",
+  "currentGameChanges": 0
+}

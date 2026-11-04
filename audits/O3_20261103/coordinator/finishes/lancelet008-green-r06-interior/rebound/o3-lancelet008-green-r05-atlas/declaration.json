@@ -1,0 +1,55 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "9287d65cce66865ff758e8d9106c809e38f4474323a67a0eee970299372b15ad",
+  "cutoutSha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf",
+  "labelsFile": "labels.png",
+  "labelsSha256": "bdaecfb3e7de1e58d539723eae449d066aa26bc23015512a3e59920818fdaa55",
+  "parts": [
+    {
+      "id": "spine1",
+      "joint": "spine1",
+      "layer": "near"
+    },
+    {
+      "id": "oral-hood-cirri",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "caudal-whole-tip",
+      "joint": "caudal",
+      "layer": "near"
+    },
+    {
+      "id": "spine5",
+      "joint": "spine5",
+      "layer": "near"
+    },
+    {
+      "id": "spine4",
+      "joint": "spine4",
+      "layer": "near"
+    },
+    {
+      "id": "spine3",
+      "joint": "spine3",
+      "layer": "near"
+    },
+    {
+      "id": "spine2",
+      "joint": "spine2",
+      "layer": "near"
+    },
+    {
+      "id": "spine0",
+      "joint": "spine0",
+      "layer": "near"
+    },
+    {
+      "id": "anterior-body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "4d6d1d3a7af3dc5399f3b74c093d21ccc12be09691d2e959fa6f3a71759751f6"
+}

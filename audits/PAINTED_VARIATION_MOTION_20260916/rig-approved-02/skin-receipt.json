@@ -1,0 +1,68 @@
+{
+  "schema": "cf.anatomical-surface-intake/v1",
+  "sourceBindingHash": "e6c530d614889c4d0a1cb493c4daee7d81189821e44968a62b8e2a76db3276a6",
+  "recordRecipeHash": "20ae0243dfaec2525647d54db002dbdb3339fd5cc5891523632bf49d9f5eecc9",
+  "atlasSha256": "1949770d03999d26907454e0956a1e1dac20ff2975d117021277f2f586ce0e9b",
+  "sourceVertices": 2162,
+  "vertices": 2252,
+  "triangles": 4086,
+  "surfaces": {
+    "axial": 1365,
+    "hindFar": 182,
+    "foreFar": 238,
+    "hindNear": 217,
+    "foreNear": 250
+  },
+  "pins": 254,
+  "contacts": {
+    "schema": "cf.source-paw-contact-pins/v1",
+    "samples": 0,
+    "fieldVertices": 0,
+    "parts": [],
+    "method": "lowest nonzero-alpha texel centre in every original paw column; all covering triangle field supports hard-pinned to that paw matrix"
+  },
+  "physicalSkinAdjacency": {
+    "axialInfluences": "all surfaces share axial plus proximal Root/Knee influence space; distal Ankle/Paw remain branch-exclusive",
+    "rule": "all axial/upper-leg source cuts share field support; independent limbs and distal crossings remain split",
+    "classes": {
+      "axial-continuous": 2370,
+      "same-limb-continuous": 973,
+      "axial-upper-socket": 1381,
+      "independent-limbs": 475,
+      "axial-distal-crossing": 10
+    },
+    "socketPairs": {
+      "neck|forefar-upper": 186,
+      "torso|hindnear-upper": 266,
+      "tail-1|hindnear-upper": 252,
+      "torso|forenear-upper": 268,
+      "chest|forenear-upper": 60,
+      "neck|forenear-upper": 92,
+      "torso|hindfar-upper": 257
+    }
+  },
+  "explicitPartFaces": 5555,
+  "attachmentSockets": {
+    "hindFar": {
+      "edges": 257,
+      "fieldSupports": 48
+    },
+    "foreFar": {
+      "edges": 186,
+      "fieldSupports": 31
+    },
+    "hindNear": {
+      "edges": 518,
+      "fieldSupports": 80
+    },
+    "foreNear": {
+      "edges": 420,
+      "fieldSupports": 67
+    }
+  },
+  "diffusionIterations": 32,
+  "maxDiscardedWeight": 0.00012764764713490973,
+  "sourceInterpolationDifferentCoordinates": 0,
+  "unchangedPartCount": 22,
+  "nativeAcceptance": false
+}

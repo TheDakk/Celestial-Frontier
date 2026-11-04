@@ -1,0 +1,229 @@
+{
+  "frames": {
+    "anterior-body.png": {
+      "frame": {
+        "h": 79,
+        "w": 36,
+        "x": 101,
+        "y": 115
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 79,
+        "w": 36
+      },
+      "spriteSourceSize": {
+        "h": 79,
+        "w": 36,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "caudal-whole-tip.png": {
+      "frame": {
+        "h": 38,
+        "w": 60,
+        "x": 101,
+        "y": 204
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 38,
+        "w": 60
+      },
+      "spriteSourceSize": {
+        "h": 38,
+        "w": 60,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "oral-hood-cirri.png": {
+      "frame": {
+        "h": 105,
+        "w": 112,
+        "x": 5,
+        "y": 388
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 105,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 105,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "spine0.png": {
+      "frame": {
+        "h": 100,
+        "w": 52,
+        "x": 101,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 100,
+        "w": 52
+      },
+      "spriteSourceSize": {
+        "h": 100,
+        "w": 52,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "spine1.png": {
+      "frame": {
+        "h": 116,
+        "w": 83,
+        "x": 5,
+        "y": 262
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 116,
+        "w": 83
+      },
+      "spriteSourceSize": {
+        "h": 116,
+        "w": 83,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "spine2.png": {
+      "frame": {
+        "h": 121,
+        "w": 86,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 121,
+        "w": 86
+      },
+      "spriteSourceSize": {
+        "h": 121,
+        "w": 86,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "spine3.png": {
+      "frame": {
+        "h": 116,
+        "w": 86,
+        "x": 5,
+        "y": 136
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 116,
+        "w": 86
+      },
+      "spriteSourceSize": {
+        "h": 116,
+        "w": 86,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "spine4.png": {
+      "frame": {
+        "h": 100,
+        "w": 78,
+        "x": 98,
+        "y": 262
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 100,
+        "w": 78
+      },
+      "spriteSourceSize": {
+        "h": 100,
+        "w": 78,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "spine5.png": {
+      "frame": {
+        "h": 67,
+        "w": 57,
+        "x": 147,
+        "y": 115
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 67,
+        "w": 57
+      },
+      "spriteSourceSize": {
+        "h": 67,
+        "w": 57,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "o3-lancelet-green-source-observed-r04.png",
+    "scale": "1",
+    "size": {
+      "h": 498,
+      "w": 209
+    }
+  }
+}

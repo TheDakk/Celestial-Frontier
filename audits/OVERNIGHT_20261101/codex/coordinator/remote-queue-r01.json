@@ -1,0 +1,1150 @@
+{
+  "status": "PREPARED_NOT_GENERATED",
+  "canonicalMargin": 0.08,
+  "compositionNumbersArePromptQAOnly": true,
+  "rows": [
+    {
+      "ordinal": 5,
+      "name": "Dragonfly",
+      "wave": "wave02",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave02/005-prompt.txt",
+      "actualPromptSha256": "aa73175b10ded9784e93afe4d74703fcd03f63d0b8b34fcfe7b7a74bb50ca23e",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/05-dragonfly/canonicalprompt.txt",
+      "basePromptSha256": "c554b36d1403fe53a3ec326c40531a5705f5b87f79067ca2c3cf121ca726a5dd"
+    },
+    {
+      "ordinal": 6,
+      "name": "Fly",
+      "wave": "wave02",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave02/006-prompt.txt",
+      "actualPromptSha256": "39403af5da16ac0343e615e0d8345218a118ddb767fc287b78234ecb21f8f3e6",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/06-fly/canonicalprompt.txt",
+      "basePromptSha256": "7ff161e686326f4807138b5ae928fa32de23f9b81aadc1a182947400373d9b3b"
+    },
+    {
+      "ordinal": 7,
+      "name": "Honeybee",
+      "wave": "wave02",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave02/007-prompt.txt",
+      "actualPromptSha256": "1fe22c049c79d64393548b72ad909d2ceec7495811549268a2230622c1c2d3de",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/07-honeybee/canonicalprompt.txt",
+      "basePromptSha256": "72581e46eeac18afe9362126346d52c3bc696fd30091b0c16cb4ce1371f7b2a2"
+    },
+    {
+      "ordinal": 8,
+      "name": "Leafcutter Ant",
+      "wave": "wave02",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave02/008-prompt.txt",
+      "actualPromptSha256": "8dea0fc1b2a40c99ef3b277486bf69164c8c6368e3450eebf5949c38a3e78e0e",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/08-leafcutter-ant/canonicalprompt-r02.txt",
+      "basePromptSha256": "7c65018e915efec247818d0491661f9d1d80cf82e30c14a36b979904861e0cd4"
+    },
+    {
+      "ordinal": 9,
+      "name": "Mantis",
+      "wave": "wave02",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave02/009-prompt.txt",
+      "actualPromptSha256": "25552574273909fff0c904788ffc66c73e6e7495f077448da0a0d1c929f984fd",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/09-mantis/canonicalprompt.txt",
+      "basePromptSha256": "dfc245a5c0e75ce827c020a4d638547d301513729918080317b248b8e98cf95a"
+    },
+    {
+      "ordinal": 10,
+      "name": "Mayfly",
+      "wave": "wave02",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave02/010-prompt.txt",
+      "actualPromptSha256": "c1496b3fac32472d4b362c3929be3aa5fa9ed7363e1ccb543f7ad6a4262de864",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/10-mayfly/canonicalprompt.txt",
+      "basePromptSha256": "9f05fcf1b5cc5b3e3e6a6ab6efe338a62999132fe528c4bacb8642f5cf831798"
+    },
+    {
+      "ordinal": 11,
+      "name": "Mosquito",
+      "wave": "wave02",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave02/011-prompt.txt",
+      "actualPromptSha256": "536e0dbdd121c15f1052a19cafdc7cff33e907168fdd3d4b85370818f0bf4b38",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/11-mosquito/canonicalprompt.txt",
+      "basePromptSha256": "d1340fc09f787e5ab0f69fd8580e0141604d7efbc10a61de0bcb83caa22c7486"
+    },
+    {
+      "ordinal": 12,
+      "name": "Orchid Bee",
+      "wave": "wave02",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave02/012-prompt.txt",
+      "actualPromptSha256": "bbed04e59aa4c23d9742d556a014b4cd680a90f464a7cb981c2fc04d8428ee4d",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/12-orchid-bee/canonicalprompt.txt",
+      "basePromptSha256": "97ec5293d2fb236367348d67457f0c41c5edb939856d84600077f9d5c3483ba4"
+    },
+    {
+      "ordinal": 13,
+      "name": "Scorpionfly",
+      "wave": "wave03",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave03/013-prompt.txt",
+      "actualPromptSha256": "89b4c0e5ceb21feaece03b5bff25b7b60ee393e520c4c1fb7fdd80f194a3d40c",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/13-scorpionfly/canonicalprompt.txt",
+      "basePromptSha256": "b7ae949a2d0d1511aff5efd758023175bea2acdc6d8b146f0c6f891603b303bb"
+    },
+    {
+      "ordinal": 14,
+      "name": "Stick Insect",
+      "wave": "wave03",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave03/014-prompt.txt",
+      "actualPromptSha256": "316aefc31d36964cf8f24f8e78e0c7a38347c8363425d2b951f8788a109a1e5d",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/14-stick-insect/canonicalprompt.txt",
+      "basePromptSha256": "087fab0f67952239ebfdf5a54d433161de2e6ad3e2f7e1b38f9878d82fb8ac8c"
+    },
+    {
+      "ordinal": 15,
+      "name": "Thrips",
+      "wave": "wave03",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave03/015-prompt.txt",
+      "actualPromptSha256": "e4f6dda75851a4976a352f52054551833340fb883b7b0f356afa5bf047bdcc32",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/15-thrips/canonicalprompt.txt",
+      "basePromptSha256": "4624ce6ea5bcb5410ed7a2aefefaa7cf6a3b1058f6d50e729ba44331818dbc25"
+    },
+    {
+      "ordinal": 16,
+      "name": "Water Strider",
+      "wave": "wave03",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave03/016-prompt.txt",
+      "actualPromptSha256": "6f4d1d33b9ff1cd53921eb061e29ef258204a5f3fd8942f98ff4f412fd5bf930",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/01-insect/16-water-strider/canonicalprompt.txt",
+      "basePromptSha256": "ce9d649070610fb717ffaa29be687dcb0adbd1848d56d9fb26befcb704174802"
+    },
+    {
+      "ordinal": 17,
+      "name": "Blue Whale",
+      "wave": "wave03",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave03/017-prompt.txt",
+      "actualPromptSha256": "ef9a1aca2d89a37dbd67f11ce5c9873a9258c75565fb3364ae861f050b67b305",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/01-blue-whale/canonicalprompt.txt",
+      "basePromptSha256": "17de9fc0ca4be567eb178aa891f02401a715719d990a1582eee0e8580223d51c"
+    },
+    {
+      "ordinal": 18,
+      "name": "Eagle Ray",
+      "wave": "wave03",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave03/018-prompt.txt",
+      "actualPromptSha256": "fe09dd9b2ec6bcfe2739e94fbbd7e474aaff5b1b4acd3f72313f34bf3b5ce231",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/02-eagle-ray/canonicalprompt.txt",
+      "basePromptSha256": "651d2be52352f001734537a8c52f85a549ee567fccf1e6e83d83d9498af2a047"
+    },
+    {
+      "ordinal": 19,
+      "name": "Fangtooth",
+      "wave": "wave03",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave03/019-prompt.txt",
+      "actualPromptSha256": "15afd82d6c78b1e52d0155a028c9e21c27fa1cc77fa0c2f5b54f89e386da79e6",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/03-fangtooth/canonicalprompt.txt",
+      "basePromptSha256": "e98b35e99666023241bd445b70140e7303cfe55856de30ab7a86afbb4f52caae"
+    },
+    {
+      "ordinal": 20,
+      "name": "Gulper Eel",
+      "wave": "wave03",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave03/020-prompt.txt",
+      "actualPromptSha256": "5b8555f7bd7ca1c48526771454de8306016e2537e706a4d46ea8c27e712b2bf0",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/04-gulper-eel/canonicalprompt.txt",
+      "basePromptSha256": "dba74b68c2cba0ede5c870cbb5ec6fd72ea784efe1e4c18db2ae31163b8b16f2"
+    },
+    {
+      "ordinal": 21,
+      "name": "Lancelet",
+      "wave": "wave04",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave04/021-prompt.txt",
+      "actualPromptSha256": "d8d8eb5e5f54b65aa3c6c9e018fc0d002bc23b6885f55e15a38fdd9267153e10",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/05-lancelet/canonicalprompt.txt",
+      "basePromptSha256": "a164ee51bbe19e9b3fbbb8e2e6f57c8ce9aad361bbc0aade11564d2ff3b8dc1e"
+    },
+    {
+      "ordinal": 22,
+      "name": "Lungfish",
+      "wave": "wave04",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave04/022-prompt.txt",
+      "actualPromptSha256": "f36209c366725574a5134fbb3b44745270eddc81b59e76e654fd2fbae936b492",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/06-lungfish/canonicalprompt.txt",
+      "basePromptSha256": "7ef66a7680ed8a9b64e5b1a4d69d280922680cf0109f4b0920217a3313be6edf"
+    },
+    {
+      "ordinal": 23,
+      "name": "Manta Ray",
+      "wave": "wave04",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave04/023-prompt.txt",
+      "actualPromptSha256": "4b7f78b430d2d22ed1675c0356cfaf8658af0a8d9f4dafa13545f5d532d3d3ae",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/07-manta-ray/canonicalprompt.txt",
+      "basePromptSha256": "98c84519a3810b8daa5f2004095edbf4c0e410a8783cbd53a9b50eb1ef605092"
+    },
+    {
+      "ordinal": 24,
+      "name": "Narwhal",
+      "wave": "wave04",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave04/024-prompt.txt",
+      "actualPromptSha256": "47310aae18dc6e4fe626dd62c9d5a77f829de559a8cc851462d1156cfaa6105a",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/08-narwhal/canonicalprompt.txt",
+      "basePromptSha256": "dc9ce7fce2bf751bc9d6deedbfba32b21a5c3bc2dcd1fd2f5f9aa606c37fb6f3"
+    },
+    {
+      "ordinal": 25,
+      "name": "Oarfish",
+      "wave": "wave04",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave04/025-prompt.txt",
+      "actualPromptSha256": "879ec1253ebf6ff34225de836633ddc3d8b0baf590f6796603dc77a0929c4b2b",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/09-oarfish/canonicalprompt.txt",
+      "basePromptSha256": "a3d5b738ef4bba6dd4e43d32727501c8d7832d39f00cc45770d4d69ab170ac26"
+    },
+    {
+      "ordinal": 26,
+      "name": "Ray",
+      "wave": "wave04",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave04/026-prompt.txt",
+      "actualPromptSha256": "ba8bbee36fab498344f833f503c91f7e61d1e3d56afb2a2f95520f626c59d5fe",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/10-ray/canonicalprompt.txt",
+      "basePromptSha256": "a14d822bd5138fc003db779d77d1712a59ad3c6aefbae61adf7c1f562c78025c"
+    },
+    {
+      "ordinal": 27,
+      "name": "Seahorse",
+      "wave": "wave04",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave04/027-prompt.txt",
+      "actualPromptSha256": "e91d755f378c3c9daa5985973fd151e2daea3ca0c515cb6e44d32755fefdb22d",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/11-seahorse/canonicalprompt.txt",
+      "basePromptSha256": "9e37713618e466e009f5d32037481a14ab7642c08f3874cb3162109c1f74a4b3"
+    },
+    {
+      "ordinal": 28,
+      "name": "Stingray",
+      "wave": "wave04",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave04/028-prompt.txt",
+      "actualPromptSha256": "50ab88c2b146d84d28fc7e8e628bf3462953dca825c0a7cbc7d9592a9284210d",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/12-stingray/canonicalprompt.txt",
+      "basePromptSha256": "b254853277110b6d074b1bc4fcb286b39996214474d1a7d920d8e2619295e7da"
+    },
+    {
+      "ordinal": 29,
+      "name": "Tripod Fish",
+      "wave": "wave05",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave05/029-prompt.txt",
+      "actualPromptSha256": "9e9383a8c87b2b1442183f48f3c879a5ec246357687a084e6abf6a704d2b4b4d",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/13-tripod-fish/canonicalprompt.txt",
+      "basePromptSha256": "987bde36a1b405217e7562b9354be702557c66b7568762f3aac1209afeed6019"
+    },
+    {
+      "ordinal": 30,
+      "name": "Whale",
+      "wave": "wave05",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave05/030-prompt.txt",
+      "actualPromptSha256": "f05bffbc4b854a777d500bac22f99ce4592f008235fce3b236e3d5fbd29a5dce",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/02-fish/14-whale/canonicalprompt.txt",
+      "basePromptSha256": "2ab4c70785e7204a9cc52d2700a5d6e9e20ea9c45432552936214edcb5f6398d"
+    },
+    {
+      "ordinal": 31,
+      "name": "Amphipod",
+      "wave": "wave05",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave05/031-prompt.txt",
+      "actualPromptSha256": "573d0669e4dadb266d3df8bfe911e3cfb0875992218ee838f48f6da17e97106d",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/01-amphipod/canonicalprompt.txt",
+      "basePromptSha256": "2f6a3faeb1d90c4317d8e7c74c07ff20c1db62ad7c862b237ee630912f3b9646"
+    },
+    {
+      "ordinal": 32,
+      "name": "Brine Shrimp",
+      "wave": "wave05",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave05/032-prompt.txt",
+      "actualPromptSha256": "30d93aef80bebf2f47658294ebd4ec85e763ba03f56d349a20afaae16c12197c",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/02-brine-shrimp/canonicalprompt.txt",
+      "basePromptSha256": "a860e5d91ffd28fc6db19d405f469dc6cb159a7b8637908e8e8db3772c0aa5e7"
+    },
+    {
+      "ordinal": 33,
+      "name": "Cave Shrimp",
+      "wave": "wave05",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave05/033-prompt.txt",
+      "actualPromptSha256": "5cfdf98b4e062ad69d389db3428e3c34590ea468729bf3c42312d748ba7edd7a",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/03-cave-shrimp/canonicalprompt.txt",
+      "basePromptSha256": "dee75e38f0a8c9caaf516a15f92608ae3cf060119bb05f4430c5fd131c5d06b5"
+    },
+    {
+      "ordinal": 34,
+      "name": "Copepod",
+      "wave": "wave05",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave05/034-prompt.txt",
+      "actualPromptSha256": "3220c87363865ab21721c85d1094711549645da928d37bca04162676665688c7",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/04-copepod/canonicalprompt.txt",
+      "basePromptSha256": "352114cf3d3fbcf7df834f7256f50b630f87d2bd1a79e8a4311f7223f8bdbbef"
+    },
+    {
+      "ordinal": 35,
+      "name": "Fairy Shrimp",
+      "wave": "wave05",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave05/035-prompt.txt",
+      "actualPromptSha256": "106aed77f34ef93dc1480d8d9e87a0f99a2c2326dee50539bd7e1f3b489c5617",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/05-fairy-shrimp/canonicalprompt.txt",
+      "basePromptSha256": "99a03bff67d21c4ed6853311a649affd3042556bc1dc6166c3c91375d5957d5c"
+    },
+    {
+      "ordinal": 36,
+      "name": "Freshwater Shrimp",
+      "wave": "wave05",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave05/036-prompt.txt",
+      "actualPromptSha256": "38496a68df67fdfe3a3194ec82ba31633668c0e30b60fa55cf5ce2353e084238",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/06-freshwater-shrimp/canonicalprompt.txt",
+      "basePromptSha256": "27500d166d5ef396e10d12a8711f556a0d160d81ad7618d212cc7d3fa8c6ac3a"
+    },
+    {
+      "ordinal": 37,
+      "name": "Isopod",
+      "wave": "wave06",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave06/037-prompt.txt",
+      "actualPromptSha256": "fbdf04fb77a9a9a144349ab2db087cc3bbf237a797ec4cacf1b41ad5469e8e6b",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/07-isopod/canonicalprompt.txt",
+      "basePromptSha256": "278c1b42e149fd10bfdcfdf132d2d845e4401d3fcf4be5c689b5f0076265df40"
+    },
+    {
+      "ordinal": 38,
+      "name": "Krill",
+      "wave": "wave06",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave06/038-prompt.txt",
+      "actualPromptSha256": "e32d1778e79ebe5f957937b88e12827622b437b9a7510aaca8ceb933085bcde7",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/08-krill/canonicalprompt.txt",
+      "basePromptSha256": "8ba8a1a77d58ebec3e1d75b27fc98918e31555d92841cd2b93809290834dfe7f"
+    },
+    {
+      "ordinal": 39,
+      "name": "Shrimp",
+      "wave": "wave06",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave06/039-prompt.txt",
+      "actualPromptSha256": "c0edb2f477590dfe76d4fc7e6c5cb7c747ce0a37d84c79cefacebf5c83da216d",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/09-shrimp/canonicalprompt-r02.txt",
+      "basePromptSha256": "0e22f41771672985ff0c5e35a3ca91ffa946c8c185be173dbdbae71fb7027f1b"
+    },
+    {
+      "ordinal": 40,
+      "name": "Tadpole Shrimp",
+      "wave": "wave06",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave06/040-prompt.txt",
+      "actualPromptSha256": "fd91867928c48e67c0ab57ee288cd9b18b6c2b94ac422aae0e0c2ff66b2efd7f",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/10-tadpole-shrimp/canonicalprompt.txt",
+      "basePromptSha256": "109352c395f1ccf58fdf3db9707b6fc0452cb7ec573168f522c9e41e1c485139"
+    },
+    {
+      "ordinal": 41,
+      "name": "Vent Shrimp",
+      "wave": "wave06",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave06/041-prompt.txt",
+      "actualPromptSha256": "a430fa982f2f41b08c78a463a45f7627b8125e64b53604681f1529e603fc1156",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/11-vent-shrimp/canonicalprompt.txt",
+      "basePromptSha256": "c001c6756599a9873a5f8025b356cb67b60294bbb45e6e8ab9387130a93aa794"
+    },
+    {
+      "ordinal": 42,
+      "name": "Water Flea",
+      "wave": "wave06",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave06/042-prompt.txt",
+      "actualPromptSha256": "82410489ea837627a74be6e07bd4447dcda9cbab1b4322dbe807a40c4444bce2",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/03-crustacean-small/12-water-flea/canonicalprompt.txt",
+      "basePromptSha256": "0dea4ff60ff7637e0e09116c5de9d653eca1c208a2fee5b77ab67053bd5fe232"
+    },
+    {
+      "ordinal": 43,
+      "name": "Bullfrog",
+      "wave": "wave06",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave06/043-prompt.txt",
+      "actualPromptSha256": "7442b44ccb98e4c135be78a328a8633701e5c6a21c268a8297be4d9587f5eb60",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/01-bullfrog/canonicalprompt.txt",
+      "basePromptSha256": "737ced1b15235c9f9c9d59f2ef7600a73be58ea7903c59f46cfbed341ff3ad4d"
+    },
+    {
+      "ordinal": 44,
+      "name": "Cave Frog",
+      "wave": "wave06",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave06/044-prompt.txt",
+      "actualPromptSha256": "b079087abc1b84cbfdfb4891c418f88a4cf56b959799fdad3f02208680433d77",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/02-cave-frog/canonicalprompt.txt",
+      "basePromptSha256": "57eef84cdb170fb6e3f7d714a008479dc1b1e1b5acb975a236e062234a4aee69"
+    },
+    {
+      "ordinal": 45,
+      "name": "Frog",
+      "wave": "wave07",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave07/045-prompt.txt",
+      "actualPromptSha256": "a3fec21a67ef34df62a819374c23c7e78319b19bfebff2632d376a74f51bb819",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/03-frog/canonicalprompt.txt",
+      "basePromptSha256": "be537f22acdd999ba9e00a3e84c02edfd626193d26982cb4d140e8b25e948e15"
+    },
+    {
+      "ordinal": 46,
+      "name": "Glass Frog",
+      "wave": "wave07",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave07/046-prompt.txt",
+      "actualPromptSha256": "d7b8605d11968d0cb22822593105900ca01b2c68c902dc66d9d58633c8ac2e52",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/04-glass-frog/canonicalprompt.txt",
+      "basePromptSha256": "e00e75aca567426e04c420899d67c24dc92349b7f9dc040859b2d50c232c3914"
+    },
+    {
+      "ordinal": 47,
+      "name": "Jerboa",
+      "wave": "wave07",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave07/047-prompt.txt",
+      "actualPromptSha256": "62e5db1dc7f3d2e2902e50e23cd3764a8009c3aaba585e7626002b176a8df9d8",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/05-jerboa/canonicalprompt.txt",
+      "basePromptSha256": "416d72f38a2b676452a57e9fd4a96a692cdec0005055b1e2cbd5780289b5e482"
+    },
+    {
+      "ordinal": 48,
+      "name": "Kangaroo",
+      "wave": "wave07",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave07/048-prompt.txt",
+      "actualPromptSha256": "c14d6ac64a1cea9b804aed24adc11ed648c54850f0626fdd1e21cc8f5d879495",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/06-kangaroo/canonicalprompt.txt",
+      "basePromptSha256": "ced55e13098eb8aac90fe2522b1144a72d9cff499c80f87b778ef872c76193fd"
+    },
+    {
+      "ordinal": 49,
+      "name": "Poison Dart Frog",
+      "wave": "wave07",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave07/049-prompt.txt",
+      "actualPromptSha256": "880612b02fd2a82d3ad6a8a1daa9948a110d7942cea1421e317e87ec6013eca8",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/07-poison-dart-frog/canonicalprompt.txt",
+      "basePromptSha256": "13b53f35c753d2a152130ee46a6df16c6d1ea60c33e262944ac534b51c5eeb0d"
+    },
+    {
+      "ordinal": 50,
+      "name": "Snowshoe Hare",
+      "wave": "wave07",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave07/050-prompt.txt",
+      "actualPromptSha256": "2cd48f4914448ca795a21c31e31bbb93ef8e5cb697e90a9f72b89fe69d14b536",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/08-snowshoe-hare/canonicalprompt.txt",
+      "basePromptSha256": "f4f98ef6f9d0ed4ec9f7960b28c61223989b6926467dff5b835fc0a576be3cda"
+    },
+    {
+      "ordinal": 51,
+      "name": "Toad",
+      "wave": "wave07",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave07/051-prompt.txt",
+      "actualPromptSha256": "4ef2cde22fcfcc9a43556617b566c1dbcf1b222bc9c453067b384c96e523589a",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/09-toad/canonicalprompt.txt",
+      "basePromptSha256": "474c22117a5bf179d23be7d1bbbbe5e400f9ea65a662df9193354c87a0cb08c3"
+    },
+    {
+      "ordinal": 52,
+      "name": "Tree Frog",
+      "wave": "wave07",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave07/052-prompt.txt",
+      "actualPromptSha256": "0528aa28ab0fc956fca7fb7532522f445c236440ef5be2a40edadc8f20141098",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/10-tree-frog/canonicalprompt.txt",
+      "basePromptSha256": "cb563bf60f36b03654e727bbbb4f15ae064d954a464b387ce16c115784b3c145"
+    },
+    {
+      "ordinal": 53,
+      "name": "Wallaby",
+      "wave": "wave08",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave08/053-prompt.txt",
+      "actualPromptSha256": "24608640e2ac344e8d8e08dece2c8cdb074d4783f6cb2c53283990ef281b77af",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/11-wallaby/canonicalprompt.txt",
+      "basePromptSha256": "d8e7f8bd7ad2813cead9707aaffc690c71b283216f8594f610c4e8a18a2c7d1b"
+    },
+    {
+      "ordinal": 54,
+      "name": "Wood Frog",
+      "wave": "wave08",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave08/054-prompt.txt",
+      "actualPromptSha256": "cd5db19fe5d56a468df6b773fce1aee2c03ad8a06de432fef77873fa82cc9013",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/04-hopper/12-wood-frog/canonicalprompt.txt",
+      "basePromptSha256": "d3f336c8c6518edad1564c7e4ecc7b0b448aff0d5dec3fa28c5f58c8c13d8fa9"
+    },
+    {
+      "ordinal": 55,
+      "name": "Echidna",
+      "wave": "wave08",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave08/055-prompt.txt",
+      "actualPromptSha256": "f411f4a20549684a754e18140e981a79684beffe5a5b5dd46d76839d76151bbc",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/01-echidna/canonicalprompt.txt",
+      "basePromptSha256": "a78cbf7703fb43879b1e978e2f42593f1c3b6475ecd2f526f17274a5f5f2a667"
+    },
+    {
+      "ordinal": 56,
+      "name": "Giant Anteater",
+      "wave": "wave08",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave08/056-prompt.txt",
+      "actualPromptSha256": "49cd8bdb49ea982c8737cdf30c932d97e751dad93e9ee2f694fa235962db8203",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/02-giant-anteater/canonicalprompt.txt",
+      "basePromptSha256": "1264a241a96e1ed99800d7b17c3528b6724294cc25332bf4c166a9c7c5825958"
+    },
+    {
+      "ordinal": 57,
+      "name": "Olm",
+      "wave": "wave08",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave08/057-prompt.txt",
+      "actualPromptSha256": "d972ee4d63876490ece2a8f020f7c87e1e1461da089554dbdd6191ac9cd31911",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/03-olm/canonicalprompt.txt",
+      "basePromptSha256": "9265cf18e1646e1a0317063e5e7349176ba760ed038887a537f507973c0bea9d"
+    },
+    {
+      "ordinal": 58,
+      "name": "Pangolin",
+      "wave": "wave08",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave08/058-prompt.txt",
+      "actualPromptSha256": "ba0a2299804cb8be6e45ae2c52d806149e339f65c3f1fb26011ac038c14a4b42",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/04-pangolin/canonicalprompt.txt",
+      "basePromptSha256": "b15a75e2d707db290f9e077230ef0c4e953d0515d1841ff0984fd313193754a1"
+    },
+    {
+      "ordinal": 59,
+      "name": "Porcupine",
+      "wave": "wave08",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave08/059-prompt.txt",
+      "actualPromptSha256": "6a189cb09a52e4019a327fdd77ffb67d853b3c706320065b26561b335afa9c08",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/05-porcupine/canonicalprompt.txt",
+      "basePromptSha256": "7f6d95baa7466c5807536d56c85e2e01086f30d792d51c9275b1c7432defee6f"
+    },
+    {
+      "ordinal": 60,
+      "name": "Seal",
+      "wave": "wave08",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave08/060-prompt.txt",
+      "actualPromptSha256": "a79c1b6c75768220964325541f9bbe69e2a5c38fca736a5677b1c68bceeeddae",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/06-seal/canonicalprompt.txt",
+      "basePromptSha256": "302addf9798f39797c91ee3dcf889134bfc22b9d586de524fe2cdd6006c12172"
+    },
+    {
+      "ordinal": 61,
+      "name": "Squirrel",
+      "wave": "wave09",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave09/061-prompt.txt",
+      "actualPromptSha256": "eb3da8d2747775040e2adb57c59092896754f9c33eb1448410436381a6eb32d9",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/07-squirrel/canonicalprompt.txt",
+      "basePromptSha256": "bbb1d24c46716eff4300ef2d90066df8629acdd229430737f3fd966af95bbf7f"
+    },
+    {
+      "ordinal": 62,
+      "name": "Walrus",
+      "wave": "wave09",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave09/062-prompt.txt",
+      "actualPromptSha256": "a4c1776fc378d3cefb0606268d5c38a1158b7772a385ec0eeb29564666cb3965",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/08-walrus/canonicalprompt.txt",
+      "basePromptSha256": "6eb1bdfaaa65d1f2711b3823fec483176f477602bcf262e854a44d64b77e77f1"
+    },
+    {
+      "ordinal": 63,
+      "name": "Warthog",
+      "wave": "wave09",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave09/063-prompt.txt",
+      "actualPromptSha256": "1dffcb837e3bacc0c8b5eaca0fce2ad5dd3791423a7599d30185d830d3fa7515",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/09-warthog/canonicalprompt.txt",
+      "basePromptSha256": "f7f31621f2cf1d1ff288f221b0da02c358656fd0ef4af10dccf9766456515f19"
+    },
+    {
+      "ordinal": 64,
+      "name": "Whiptail",
+      "wave": "wave09",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave09/064-prompt.txt",
+      "actualPromptSha256": "b9950c6c25e800c42b7426e7d354da2ea63aac66ec3553db6c1ac292a263cc5a",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/05-quadruped/10-whiptail/canonicalprompt.txt",
+      "basePromptSha256": "60b6e9502cd1e3caae6ddcbd05156a70c3680d34057b34f95c69f0e48dc5c4b5"
+    },
+    {
+      "ordinal": 65,
+      "name": "Cassowary",
+      "wave": "wave09",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave09/065-prompt.txt",
+      "actualPromptSha256": "6a7faba0d397c7c01b9621f6c86a564dd8c00406c3c9c1110b652fb3c41eabb0",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/01-cassowary/canonicalprompt.txt",
+      "basePromptSha256": "c5105544f874c895cc494767eb45986efef41d9e9847acec59b70307a94b96c7"
+    },
+    {
+      "ordinal": 66,
+      "name": "Grebe",
+      "wave": "wave09",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave09/066-prompt.txt",
+      "actualPromptSha256": "dff238fc4805ce0923aec464bfc5a8107fceebdbe0f49c028b90184e2e7e8596",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/02-grebe/canonicalprompt.txt",
+      "basePromptSha256": "024714579ae2f7347fa93bda777b12305f378a0636bd634a71198d522c052e7b"
+    },
+    {
+      "ordinal": 67,
+      "name": "Kakapo",
+      "wave": "wave09",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave09/067-prompt.txt",
+      "actualPromptSha256": "19da0d18769b1cfa1f056eeafc029c0849ff38c168cd2e17fff848050778b1cc",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/03-kakapo/canonicalprompt.txt",
+      "basePromptSha256": "63b798621823fdd970c3f95651c08e9783cde5f4cf3f3f9cf06a62daf33f0111"
+    },
+    {
+      "ordinal": 68,
+      "name": "Kingfisher",
+      "wave": "wave09",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave09/068-prompt.txt",
+      "actualPromptSha256": "ad7b951d2918d120806564db9f8debc33b22de1620f2476bdc2b9365ca9ad053",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/04-kingfisher/canonicalprompt.txt",
+      "basePromptSha256": "4afa45c6a103d15f69bb608bea2e2fe1178e8d6011d3cb940736e521b31de356"
+    },
+    {
+      "ordinal": 69,
+      "name": "Kiwi",
+      "wave": "wave10",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave10/069-prompt.txt",
+      "actualPromptSha256": "877c6fee546662893146ca725ab1ff8690fd3165af6a13ea32f6f9f59f9940ce",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/05-kiwi/canonicalprompt.txt",
+      "basePromptSha256": "c9c57a0426f168bd41bbf161105641a31592ef3da599921defc3f07020c2004a"
+    },
+    {
+      "ordinal": 70,
+      "name": "Peacock",
+      "wave": "wave10",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave10/070-prompt.txt",
+      "actualPromptSha256": "3b44b7da4fd3f67bf0870900a6dbdb92d6b4568864621048a8365f2faadb790b",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/06-peacock/canonicalprompt.txt",
+      "basePromptSha256": "996bd8732506a0777f768e0e2dc207cf4e6ff0eda66ae8aecca7cc968f3c22c7"
+    },
+    {
+      "ordinal": 71,
+      "name": "Quetzal",
+      "wave": "wave10",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave10/071-prompt.txt",
+      "actualPromptSha256": "424afde515b2f78316c6ef2c4638be75dff75bed6c2eb8eb73f7efffe16814af",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/07-quetzal/canonicalprompt.txt",
+      "basePromptSha256": "749d21ffaf9792d5d3820729c37b4a4208126b60afcc45356459f59c19718567"
+    },
+    {
+      "ordinal": 72,
+      "name": "Secretary Bird",
+      "wave": "wave10",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave10/072-prompt.txt",
+      "actualPromptSha256": "cf2f7bab239bf1d55bec76ad114206c5d6cc106bd52c1a43d1410edd2e47c712",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/08-secretary-bird/canonicalprompt.txt",
+      "basePromptSha256": "7264448f22c351b9be9906f0a0d287361512d0afb0507e10f7c4cf33a0a11876"
+    },
+    {
+      "ordinal": 73,
+      "name": "Tropicbird",
+      "wave": "wave10",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave10/073-prompt.txt",
+      "actualPromptSha256": "9b3eb47377ede17c95ae1551b40a627a671a7242d2b6d2f38feb36dcdebace4e",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/06-biped-bird/09-tropicbird/canonicalprompt.txt",
+      "basePromptSha256": "9aace7ae15ccc1f734b19ab108c270c87e2119b72bfc855f6cc3e10f09126a9b"
+    },
+    {
+      "ordinal": 74,
+      "name": "Cold-Water Coral",
+      "wave": "wave10",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave10/074-prompt.txt",
+      "actualPromptSha256": "160858c4e629460ed650d3026cec8b07c78135e7234d82af9a6d054dfbcd13a4",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/01-cold-water-coral/canonicalprompt.txt",
+      "basePromptSha256": "21840b004f97d9dcca80bbc6b697235232333b2546b674332d81010ec00e3db1"
+    },
+    {
+      "ordinal": 75,
+      "name": "Comb Jelly",
+      "wave": "wave10",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave10/075-prompt.txt",
+      "actualPromptSha256": "229f4109b942c276367a5989c194a9f4f152486960d216f9c9ee611e323ac74c",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/02-comb-jelly/canonicalprompt.txt",
+      "basePromptSha256": "850b7fcff847d65e17e1836cf821edf26cd9947931109cbd21c8f162cd2b2706"
+    },
+    {
+      "ordinal": 76,
+      "name": "Coral",
+      "wave": "wave10",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave10/076-prompt.txt",
+      "actualPromptSha256": "cada3b7b9c73f63ff864569eea3caefeca0bb7c61cbf83a7b7d21290d250a00b",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/03-coral/canonicalprompt.txt",
+      "basePromptSha256": "e3f643e694b4879b390f81f187d5dc8118f3340dc986773b2f1e6a0590a0e6ac"
+    },
+    {
+      "ordinal": 77,
+      "name": "Deep-Water Coral",
+      "wave": "wave11",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave11/077-prompt.txt",
+      "actualPromptSha256": "74d070100866c42ca72ffaeecd503bd890dee34b33337b892b14d653c821b654",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/04-deep-water-coral/canonicalprompt.txt",
+      "basePromptSha256": "9f2d752edd758cf32fa68861a77b9a24e98ad10a01b17ebed066fe76d959cbcc"
+    },
+    {
+      "ordinal": 78,
+      "name": "Jellyfish",
+      "wave": "wave11",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave11/078-prompt.txt",
+      "actualPromptSha256": "47ac4aad0b4be1172d3d2650e3826d27091bbbfa32ebe85e4c63f909109e7305",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/05-jellyfish/canonicalprompt.txt",
+      "basePromptSha256": "7788a9b4fcfb3a66f4d43a09a20a1c73d1233090a363af3e36c9ddc2295afca9"
+    },
+    {
+      "ordinal": 79,
+      "name": "Portuguese Man-of-War",
+      "wave": "wave11",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave11/079-prompt.txt",
+      "actualPromptSha256": "1de6f1ac2c1e11a5b8acda685109cc2fedd33adb6cf4f8fd9783fce28d151a8d",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/06-portuguese-man-of-war/canonicalprompt.txt",
+      "basePromptSha256": "c12af967f5ad95444c0371b6399e0ab691f2dcba104a3724369dcd42a0d2b18b"
+    },
+    {
+      "ordinal": 80,
+      "name": "Sea Cucumber",
+      "wave": "wave11",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave11/080-prompt.txt",
+      "actualPromptSha256": "3c36b64879e9d60732154770626979c80865856eb4737d7c9a43ba10081370cf",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/07-sea-cucumber/canonicalprompt.txt",
+      "basePromptSha256": "613d35339e38997ac4041ca145fc2fe76ddf9e0f899857d31db44fb566d069fc"
+    },
+    {
+      "ordinal": 81,
+      "name": "Sea Urchin",
+      "wave": "wave11",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave11/081-prompt.txt",
+      "actualPromptSha256": "8ab5d43a84650127338cf5c7cc8aed26deb329987c3c0a5526d576fa5b608087",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/08-sea-urchin/canonicalprompt.txt",
+      "basePromptSha256": "7251c0a1016f1e398db44c6e7931013f54873312af58df35023e539a4e09ded3"
+    },
+    {
+      "ordinal": 82,
+      "name": "Starfish",
+      "wave": "wave11",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave11/082-prompt.txt",
+      "actualPromptSha256": "1347535cbe126a7babbbf5329798ec50f1481b2d6b7d6bb6c7a5e366c5fff2b8",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/07-radial/09-starfish/canonicalprompt.txt",
+      "basePromptSha256": "262318d5605e9bbf8ce2e80bbd825b49f693bf96821ec3cd8e8d7b56cc0cd57e"
+    },
+    {
+      "ordinal": 83,
+      "name": "Camel Spider",
+      "wave": "wave11",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave11/083-prompt.txt",
+      "actualPromptSha256": "7e7bb257fbe99dc0dcb6b1eb938fc6ea77f3cb4e99ff76aa5ac57c579364d1a2",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/01-camel-spider/canonicalprompt.txt",
+      "basePromptSha256": "73891f7c543bb57e7d44fbd30fe312a9824e5f675c3ab3a52470b58c30a2f0a3"
+    },
+    {
+      "ordinal": 84,
+      "name": "Deer Tick",
+      "wave": "wave11",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave11/084-prompt.txt",
+      "actualPromptSha256": "a4d7719c2e9eeb6efa6752c8cb617cef6dced9f65bf93960e29284f41daf9e75",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/02-deer-tick/canonicalprompt.txt",
+      "basePromptSha256": "a4e636ec55b84fbf0203e666beaa6e8e653f0bb2c1b1701a3f130ff4e5f04ad9"
+    },
+    {
+      "ordinal": 85,
+      "name": "Harvestman",
+      "wave": "wave12",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave12/085-prompt.txt",
+      "actualPromptSha256": "f0d841956ac15bc6ad5084ebbb6181d7d046341d0cc34a1a3a9e9c6f28cbf68c",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/03-harvestman/canonicalprompt.txt",
+      "basePromptSha256": "f94d5e58447729180d851101435fa8396d5d64220767eb76a178b0ef192167c1"
+    },
+    {
+      "ordinal": 86,
+      "name": "Mite",
+      "wave": "wave12",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave12/086-prompt.txt",
+      "actualPromptSha256": "1a2c5bcb454f25d79ad8d991de7d57bd7a022d0596bb89330e3f4e1a62c4b4e5",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/04-mite/canonicalprompt-r02.txt",
+      "basePromptSha256": "616c260bc977a3efd1ad606d90bf9f3fad54ff0ba1007025b74797b5cec7ae8c"
+    },
+    {
+      "ordinal": 87,
+      "name": "Pseudoscorpion",
+      "wave": "wave12",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave12/087-prompt.txt",
+      "actualPromptSha256": "50f757dc76c8ae3ed5e249449c1d221f203e7e3ef01cd1b924b2ae88ea4fff0c",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/05-pseudoscorpion/canonicalprompt.txt",
+      "basePromptSha256": "6c5f3e039caf516a0d5fc4567a80cfc971c72eb798a26edc127c73b9e42c21e6"
+    },
+    {
+      "ordinal": 88,
+      "name": "Scorpion",
+      "wave": "wave12",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave12/088-prompt.txt",
+      "actualPromptSha256": "6a5f7f5a5b9e0ae89356f930a05c9c8625f5297a67d46ee39d0915a965762f8f",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/06-scorpion/canonicalprompt.txt",
+      "basePromptSha256": "89a3a1595f7dbb1977e730b6db6e330de5982ca3d4e31cd74539c4f15373e122"
+    },
+    {
+      "ordinal": 89,
+      "name": "Sea Spider",
+      "wave": "wave12",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave12/089-prompt.txt",
+      "actualPromptSha256": "d4555ec5f1beabc9899063fa42b931ab0ae70df938d40cf4bfe98cab5c2cdbdc",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/07-sea-spider/canonicalprompt-r02.txt",
+      "basePromptSha256": "08f0371158306ee1bfc3b671a7bd889e7983aaa49f40e05acb185c97a59bb8fd"
+    },
+    {
+      "ordinal": 90,
+      "name": "Tarantula",
+      "wave": "wave12",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave12/090-prompt.txt",
+      "actualPromptSha256": "5ab47f37ce3df92a8e6f3b2025dde5c984cbdd08d95819406dea68775900cd04",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/08-arachnid/08-tarantula/canonicalprompt.txt",
+      "basePromptSha256": "81a1c3adefe9a3ba6190ea065f6f84e7f6cbab920c66f8ad5ebb0fbe18175e1c"
+    },
+    {
+      "ordinal": 91,
+      "name": "Cuttlefish",
+      "wave": "wave12",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave12/091-prompt.txt",
+      "actualPromptSha256": "0f0a066454f58cb705addb01b5bc9d16a3954ea1e9d2575a7d911bb61a565ce8",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/01-cuttlefish/canonicalprompt.txt",
+      "basePromptSha256": "68985e4331bd33a1e6f289a51748494326fcb16d26c833c6978d01f34df7087e"
+    },
+    {
+      "ordinal": 92,
+      "name": "Deep-Sea Octopus",
+      "wave": "wave12",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave12/092-prompt.txt",
+      "actualPromptSha256": "c424de5f568a3088a893724931c1e939fddd7376b8d518f3704794023825c553",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/02-deep-sea-octopus/canonicalprompt.txt",
+      "basePromptSha256": "0fc1511017dd56304b20447878c07cba85b95448a2754d2e8e4980bcb8c5259a"
+    },
+    {
+      "ordinal": 93,
+      "name": "Giant Octopus",
+      "wave": "wave13",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave13/093-prompt.txt",
+      "actualPromptSha256": "64a237d0545eb63ed43c6766ecd2ca6bec1e29298d49062754c64e8774cc50f9",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/03-giant-octopus/canonicalprompt.txt",
+      "basePromptSha256": "7f1f8a6eeb66922114db00184326ebce15bf2b138ff231564be77007d7b11d02"
+    },
+    {
+      "ordinal": 94,
+      "name": "Giant Squid",
+      "wave": "wave13",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave13/094-prompt.txt",
+      "actualPromptSha256": "58e1123efd8f08a7c267e7fce52785fb615786e59a0557bbc83a726778d9ec6e",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/04-giant-squid/canonicalprompt.txt",
+      "basePromptSha256": "efb0ca059a5f4525d277bada63954b8db73c7db9ff9c995e23960925eec01588"
+    },
+    {
+      "ordinal": 95,
+      "name": "Octopus",
+      "wave": "wave13",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave13/095-prompt.txt",
+      "actualPromptSha256": "252136f753660d70d5a51a8779fe2b0f70db69dabaf6ccc2f0f313b2116a28f5",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/05-octopus/canonicalprompt.txt",
+      "basePromptSha256": "832fbcb2e2b32c08d5bcf4b739dde067af14db7a6980f1dc7ade77c41e6d1e7a"
+    },
+    {
+      "ordinal": 96,
+      "name": "Squid",
+      "wave": "wave13",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave13/096-prompt.txt",
+      "actualPromptSha256": "e4f95e0d7b606f5959ddb2ffa555de5d4311b8ec7cc9f6267163c280aaf5e249",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/06-squid/canonicalprompt.txt",
+      "basePromptSha256": "5a27f48a7c6b10233b59121aa253bbcc2b64d25cfe32b6e8f286e984b598f97d"
+    },
+    {
+      "ordinal": 97,
+      "name": "Vampire Squid",
+      "wave": "wave13",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave13/097-prompt.txt",
+      "actualPromptSha256": "d3f41ad4e785585d49a51c278e3ba4209046718a1bd34c41e60712f5bec9dfd9",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/09-cephalopod/07-vampire-squid/canonicalprompt.txt",
+      "basePromptSha256": "24e226db45f6e0724891a9218362aae4b218b11ada7e30e15f88a79e1ba3292d"
+    },
+    {
+      "ordinal": 98,
+      "name": "Baboon",
+      "wave": "wave13",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave13/098-prompt.txt",
+      "actualPromptSha256": "fd601d6ec3c6118a383476f5985343401f3667026d757c1e5a18568600c8c754",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/01-baboon/canonicalprompt.txt",
+      "basePromptSha256": "8cc8aec7ad27de71770c2aa2f95c3c99283914de83c2f12be0def23cbcad1063"
+    },
+    {
+      "ordinal": 99,
+      "name": "Chimpanzee",
+      "wave": "wave13",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave13/099-prompt.txt",
+      "actualPromptSha256": "f01b5274b93a2dde6e9e86d22bb2a06d1a923a8c7eea980eec83225bfd33005b",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/02-chimpanzee/canonicalprompt.txt",
+      "basePromptSha256": "64d98303d554d70ec91aedcd89244ff6e4661ee3da7506a38a6faa3c9201e4ae"
+    },
+    {
+      "ordinal": 100,
+      "name": "Gibbon",
+      "wave": "wave13",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave13/100-prompt.txt",
+      "actualPromptSha256": "0a3e696254aee4dc8b1057c2572e46666b68ae91112760fe0253f80a1a824faa",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/03-gibbon/canonicalprompt.txt",
+      "basePromptSha256": "ccaf734a8e6afebcdc87a4308ba8ddb61e1728c649ac205b7dca4cd4fce3b8d7"
+    },
+    {
+      "ordinal": 101,
+      "name": "Mandrill",
+      "wave": "wave14",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave14/101-prompt.txt",
+      "actualPromptSha256": "c2884c1b5e0779fe9ead247247c92fe9e9f535b0c948d51cfae5d2e9b6e1e84e",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/04-mandrill/canonicalprompt.txt",
+      "basePromptSha256": "1e2534a5e8b5b4f6d89cb068f1f6e03b99b199992762d3f9d88e8feafd8234a1"
+    },
+    {
+      "ordinal": 102,
+      "name": "Marmoset",
+      "wave": "wave14",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave14/102-prompt.txt",
+      "actualPromptSha256": "723a17b466bbfc71ce9d0f20297c7129b5e566614eb353cfba89d096645d918c",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/05-marmoset/canonicalprompt.txt",
+      "basePromptSha256": "9062f0aca0e9258e923464c4ce6fd177482b31f86cb52b8a5e250d5402ab729e"
+    },
+    {
+      "ordinal": 103,
+      "name": "Orangutan",
+      "wave": "wave14",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave14/103-prompt.txt",
+      "actualPromptSha256": "182c305cd6af473b0e841fc58283a2917cbc566f298e8e22aa1512f73473b163",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/10-primate/06-orangutan/canonicalprompt.txt",
+      "basePromptSha256": "09e2def997a4e7c607350701c72fbcf5729fb2f82ee39ed7fc2ceb054770d65b"
+    },
+    {
+      "ordinal": 104,
+      "name": "Giant Tube Worm",
+      "wave": "wave14",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave14/104-prompt.txt",
+      "actualPromptSha256": "7ba452d216450e981f1498fd59ae3f95c3724d6890e96c6a65cae4677e36fbc0",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/01-giant-tube-worm/canonicalprompt.txt",
+      "basePromptSha256": "28e37d2bfb2c23510c4570b0006e1f928a638fd6a44f2d940cbe2f3537d5636b"
+    },
+    {
+      "ordinal": 105,
+      "name": "Marine Worm",
+      "wave": "wave14",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave14/105-prompt.txt",
+      "actualPromptSha256": "f24dab0617614856c6528113c3bc563a408e515b7d02f6c35d9e198dc4808019",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/02-marine-worm/canonicalprompt.txt",
+      "basePromptSha256": "4c5ae072915e808fdb8aeb8c4aa1b19694cf7d306e3bfc2eaeb35c9392496e56"
+    },
+    {
+      "ordinal": 106,
+      "name": "Polychaete Worm",
+      "wave": "wave14",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave14/106-prompt.txt",
+      "actualPromptSha256": "55721bc0235e71b3eeae665e7913bba30be423c67129310e28137356a26d2370",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/03-polychaete-worm/canonicalprompt.txt",
+      "basePromptSha256": "2de70bc01ba07f9ba227622461ccd7b43aed6e83f32e45ba2992d61e26a81133"
+    },
+    {
+      "ordinal": 107,
+      "name": "Scale Worm",
+      "wave": "wave14",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave14/107-prompt.txt",
+      "actualPromptSha256": "86ceab5a1665d6075f05f26d1f4c6e14aa63e89e7bab47cb153947887e9b138b",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/11-annelid/04-scale-worm/canonicalprompt.txt",
+      "basePromptSha256": "185ade70603bd5a67e4fd1664cfe60ea47eaa2f4769cefe0ae96e3e12f709b7b"
+    },
+    {
+      "ordinal": 108,
+      "name": "Coconut Crab",
+      "wave": "wave14",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave14/108-prompt.txt",
+      "actualPromptSha256": "e0b7c7485534ff5358b910fe907591e1a8866f70b7872407ec84c67389c95663",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/01-coconut-crab/canonicalprompt.txt",
+      "basePromptSha256": "22836cd6dd60eab19df85ed573763c8625d15ac0783d8f512038d4645092d823"
+    },
+    {
+      "ordinal": 109,
+      "name": "Fiddler Crab",
+      "wave": "wave15",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave15/109-prompt.txt",
+      "actualPromptSha256": "115c61d366000bf55f973907f8b4d43fa7b615ae6a4bc913c4d89b12395c916b",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/02-fiddler-crab/canonicalprompt.txt",
+      "basePromptSha256": "c27c428a03bbcfccbd7a0330765e50d1fb6437ef64f6dca63b0441195e68b715"
+    },
+    {
+      "ordinal": 110,
+      "name": "Mud Crab",
+      "wave": "wave15",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave15/110-prompt.txt",
+      "actualPromptSha256": "18d16a7d1fc32b317bb61eae63d91d4d848459635ba836052cc1416c5f63d2f2",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/03-mud-crab/canonicalprompt-r02.txt",
+      "basePromptSha256": "5c618eab665a96f0a1e9c149c882969c004714c57229b1f784553a539cac9fd7"
+    },
+    {
+      "ordinal": 111,
+      "name": "Vent Crab",
+      "wave": "wave15",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave15/111-prompt.txt",
+      "actualPromptSha256": "038eb3703759abedf2703076cf724b499975c6b905d1bdcac33da11f388cf461",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/12-brachyuran/04-vent-crab/canonicalprompt.txt",
+      "basePromptSha256": "205c117c64b03e7e288140d70c690e10f0c3f2c6a120a5265446e4fd896d02ad"
+    },
+    {
+      "ordinal": 112,
+      "name": "Clam",
+      "wave": "wave15",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave15/112-prompt.txt",
+      "actualPromptSha256": "d35e7b5e95e5109fb46bb2b4e2f591adc4e9642ebbea9c2f2e430e0a7c059bcc",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/13-bivalve/01-clam/canonicalprompt.txt",
+      "basePromptSha256": "b736d3a3dab32b42981d8346cf9f1b28ef003d94e7d2e70b0fbb83d8b958271c"
+    },
+    {
+      "ordinal": 113,
+      "name": "Giant Clam",
+      "wave": "wave15",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave15/113-prompt.txt",
+      "actualPromptSha256": "8d9a704971d29d21aa85b82b108e2ef4ac8073dfe0067180413f5ab6ea4125d3",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/13-bivalve/02-giant-clam/canonicalprompt.txt",
+      "basePromptSha256": "16815a7a91218894735e6a601f4a96c277dad7e97e5040ba4e6e9f1135f5298a"
+    },
+    {
+      "ordinal": 114,
+      "name": "Razor Clam",
+      "wave": "wave15",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave15/114-prompt.txt",
+      "actualPromptSha256": "67092bac08bb85b9f399945fd08c9171d2bce9c8cbaf591df2839584d5b50f2b",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/13-bivalve/03-razor-clam/canonicalprompt.txt",
+      "basePromptSha256": "e6adf9ed01ac6b4453342db5ea03cdcfe3dbcea405225920f0dfcd3436c5e222"
+    },
+    {
+      "ordinal": 115,
+      "name": "Crayfish",
+      "wave": "wave15",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave15/115-prompt.txt",
+      "actualPromptSha256": "052d63cdb9d76cfea187ca2bda9e872ea2f089542460de4eea95ecfdfc778c77",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/14-crustacean-clawed/01-crayfish/canonicalprompt.txt",
+      "basePromptSha256": "dea7d4bfb248efbcfd91a2f70b2b869c343b10fffed91f00a5d847319260e05c"
+    },
+    {
+      "ordinal": 116,
+      "name": "Hermit Crab",
+      "wave": "wave15",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave15/116-prompt.txt",
+      "actualPromptSha256": "187933dcc7d192b7f3bb5589adb3c80f40088506d598b94f209428af98973e79",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/14-crustacean-clawed/02-hermit-crab/canonicalprompt.txt",
+      "basePromptSha256": "6bf346a92fe1c4846b9ad9aaf7e8cb52833de399b9150e8dcc9ff57a75ef74ec"
+    },
+    {
+      "ordinal": 117,
+      "name": "Lobster",
+      "wave": "wave16",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave16/117-prompt.txt",
+      "actualPromptSha256": "cc654fc1da6c754c67dd62cf5196e07c3d752636b02fe82fcfee27c18f16ae66",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/14-crustacean-clawed/03-lobster/canonicalprompt.txt",
+      "basePromptSha256": "92bcfe813711aaf6ce0ec67ac3f9f809ef10445ef658211f19d551f4d0d3eb57"
+    },
+    {
+      "ordinal": 118,
+      "name": "Fruit Bat",
+      "wave": "wave16",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave16/118-prompt.txt",
+      "actualPromptSha256": "ca7665819ee2972ca412fcf5dd5ce5ce25b34fc3aa59024bc556cb2ea95a309c",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/15-flyer-membrane/01-fruit-bat/canonicalprompt.txt",
+      "basePromptSha256": "1992b1ab4df2e0dd5bf670ce515b156775f4cf7ac18ced4b13b86a67c29b7f15"
+    },
+    {
+      "ordinal": 119,
+      "name": "Insect-Eating Bat",
+      "wave": "wave16",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave16/119-prompt.txt",
+      "actualPromptSha256": "56f869823328e8d58ab9fa2ee776b1b0a6510fd32b8a0862fc7e168e869e420a",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/15-flyer-membrane/02-insect-eating-bat/canonicalprompt.txt",
+      "basePromptSha256": "887a006106198a7b643fa7bcf8f8ef4cbac8a78512c4804c9963bfe11108db6f"
+    },
+    {
+      "ordinal": 120,
+      "name": "Vampire Bat",
+      "wave": "wave16",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave16/120-prompt.txt",
+      "actualPromptSha256": "6c8736daba5ca72c1713e1d5fd288b0cd894f3f4227bcd00a19ade1886a35143",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/15-flyer-membrane/03-vampire-bat/canonicalprompt.txt",
+      "basePromptSha256": "a70064eee71f0520cb03e0d9361a6dcb459972812b8ffcc4d5d004095f3ae8a0"
+    },
+    {
+      "ordinal": 121,
+      "name": "Centipede",
+      "wave": "wave16",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave16/121-prompt.txt",
+      "actualPromptSha256": "e5b04678376fb86333ffc04eb44e91fbee20c9ee8410db2962f10c896c12a4b0",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/16-myriapod/01-centipede/canonicalprompt.txt",
+      "basePromptSha256": "162a75da54209eb772b8688d22c36b0b698ce004504bf3e54de0495aeb3db1e9"
+    },
+    {
+      "ordinal": 122,
+      "name": "Giant Centipede",
+      "wave": "wave16",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave16/122-prompt.txt",
+      "actualPromptSha256": "65eac730159bbdf157c405fe2ce447d4e951853d9413f3fcb3d7c03cf9efd3aa",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/16-myriapod/02-giant-centipede/canonicalprompt.txt",
+      "basePromptSha256": "4c9493dc09fb95f6d957204dc8476fd85d2cdc4b0645ff27cf9dba4c45f8f822"
+    },
+    {
+      "ordinal": 123,
+      "name": "Millipede",
+      "wave": "wave16",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave16/123-prompt.txt",
+      "actualPromptSha256": "d4bdc6d4d8d6bdf821469ee8ed58b0a58d6caae60b7b02999837cbcedb837b43",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/16-myriapod/03-millipede/canonicalprompt.txt",
+      "basePromptSha256": "9250d338e6c8c48266d9dfbdf8c8e7b1d3be7d5885ef9412f1f1f76e461c5904"
+    },
+    {
+      "ordinal": 124,
+      "name": "Pyrosome",
+      "wave": "wave16",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave16/124-prompt.txt",
+      "actualPromptSha256": "2cb63a2b21b8e6743eb4e27408794adf73aa8e1a83447952e1a46fbf561f5e58",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/17-colonial-filter/01-pyrosome/canonicalprompt.txt",
+      "basePromptSha256": "4a2289415b42878563800f38e3bd3ef250812993f9e32cb321e6bbf398d59892"
+    },
+    {
+      "ordinal": 125,
+      "name": "Salp",
+      "wave": "wave17",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave17/125-prompt.txt",
+      "actualPromptSha256": "692b3d3f4ccbcf2279b05da6f91637820c67480aa274f008cde442600cbb6b08",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/17-colonial-filter/02-salp/canonicalprompt.txt",
+      "basePromptSha256": "18069db42bb370001abb27b48c0eb301ad20401aa8fb58def6664d107d76b0df"
+    },
+    {
+      "ordinal": 126,
+      "name": "Barnacle",
+      "wave": "wave17",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave17/126-prompt.txt",
+      "actualPromptSha256": "1915efebaa169d05689efa165cbdacdf97aacced3620d5cc824ffc8a7e0516ff",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/18-barnacle/01-barnacle/canonicalprompt.txt",
+      "basePromptSha256": "5491a655aa288e83c730b8859d1d84724654607979910d8c03e3b3877298546a"
+    },
+    {
+      "ordinal": 127,
+      "name": "Fly Larvae",
+      "wave": "wave17",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave17/127-prompt.txt",
+      "actualPromptSha256": "6fc29e5fd1caea46fd016ced27910d4b10dd40a3ddab65b6fbf6488a20626805",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/19-larva/01-fly-larvae/canonicalprompt.txt",
+      "basePromptSha256": "4de2ada9b8d164455c7adf8097dccc3e2335a61e07a5e28604f0b57f58f73422"
+    },
+    {
+      "ordinal": 128,
+      "name": "Tardigrade",
+      "wave": "wave17",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave17/128-prompt.txt",
+      "actualPromptSha256": "e19740bfd411b121786bba8ecdd287c6deb4a39df251d6830ab1dfb652e0634a",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/20-lobopod/01-tardigrade/canonicalprompt.txt",
+      "basePromptSha256": "a7f8d5675d916a950d206cf9ea00e3f092bddccbf98b75ec06a86defe33c0ddf"
+    },
+    {
+      "ordinal": 129,
+      "name": "Rattlesnake",
+      "wave": "wave17",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave17/129-prompt.txt",
+      "actualPromptSha256": "aa4e447f4ec05dea0c7f5ba82f93e2bf7053766ae87e8b0a934688cdd4648dce",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/21-serpent/01-rattlesnake/canonicalprompt.txt",
+      "basePromptSha256": "2ecdda880b7b3aa232b29f84c5d0b310ffbe8697aa850f4005dda55c8f5d2327"
+    },
+    {
+      "ordinal": 130,
+      "name": "Sea Squirt",
+      "wave": "wave17",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave17/130-prompt.txt",
+      "actualPromptSha256": "48763bb25f1efa7debb1127ced503f900c408f24ad3dcaacc4844e911e5cb0a7",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/22-sessile-filter/01-sea-squirt/canonicalprompt.txt",
+      "basePromptSha256": "037962552d220a385f58dc3f1c3f2772f098959c3a3bab75db43218137cbc44c"
+    },
+    {
+      "ordinal": 131,
+      "name": "Horseshoe Crab",
+      "wave": "wave17",
+      "actualPrompt": "audits/OVERNIGHT_20261101/codex/coordinator/requests/wave17/131-prompt.txt",
+      "actualPromptSha256": "30c9a39ed1ca268a27a634e752e4e4e79f40b8bb73ad6837caab9c5c64ebc02f",
+      "basePrompt": "audits/OVERNIGHT_20261101/codex/w1-source/23-xiphosuran/01-horseshoe-crab/canonicalprompt.txt",
+      "basePromptSha256": "f714d63e42e4ab7b455873259f787c25fd35e9ca447fa0e58dad96a1423a404e"
+    }
+  ]
+}

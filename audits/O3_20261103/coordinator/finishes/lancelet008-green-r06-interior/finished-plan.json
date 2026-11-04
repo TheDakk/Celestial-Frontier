@@ -1,0 +1,26 @@
+[
+  {
+    "id": "o3-lancelet008-green-r05-atlas",
+    "packetId": "o3-lancelet008-green-r05-atlas",
+    "name": "Lancelet",
+    "fit": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r06-interior/rebound/o3-lancelet008-green-r05-atlas",
+    "nativeDir": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r06-interior/native",
+    "nativeReport": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r06-interior/native/report.json",
+    "script": "audits/O3_20261103/coordinator/plans/lancelet008-green-r05-atlas/script.json",
+    "masterSha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf",
+    "observedPacket": "audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet",
+    "staticReport": "audits/O3_20261103/coordinator/plans/lancelet008-green-r05-atlas/static.json",
+    "sourceHead": "e7eb9fd724b3cff4f7ee0967fc3e6bbb08d0dc9d",
+    "status": "SIGNED_PRODUCER_BOUND_FOR_NATIVE",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "exactWorstContext": "Same source, controls and ownership as R04; exact source-edge atlas gutter correction only. Require actual no-rectangle physical W2 before AI.",
+    "nativeAcceptance": false,
+    "producerMustBeSignedBeforeNative": true,
+    "sourceHeadMustMatchNativeReportSource": true,
+    "compiledRealm": "aquatic",
+    "realmProof": "audits/O3_20261103/coordinator/plans/lancelet008-green-r05-atlas/realm-proof.json",
+    "finishedMaster": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r06-interior/finished/o3-lancelet008-green-r05-atlas-finished.png",
+    "finishReceipt": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r06-interior/finished/o3-lancelet008-green-r05-atlas-receipt.json",
+    "checkpointReview": "audits/O3_20261103/coordinator/checkpoints/lancelet008-green-r05-atlas-original/W2.json"
+  }
+]

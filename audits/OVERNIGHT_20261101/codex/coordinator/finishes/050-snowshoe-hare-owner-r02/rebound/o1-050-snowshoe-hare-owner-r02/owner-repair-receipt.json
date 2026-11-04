@@ -1,0 +1,142 @@
+{
+  "schema": "cf.o1-snowshoe-hare-bounded-owner-repair/v1",
+  "status": "BUILT_CANDIDATE_FRESH_STATIC_AND_INDEPENDENT_PHYSICAL_PENDING",
+  "sourceFit": "audits/OVERNIGHT_20261101/codex/coordinator/fits/snowshoe-hare050-r01",
+  "output": "audits/OVERNIGHT_20261101/codex/w4-paperwork/snowshoe-hare050-owner-repair-r02/candidate-r02/fit",
+  "changedPixels": 4152,
+  "componentCount": 4,
+  "transfers": {
+    "hind-near-knee": 294,
+    "hind-near-ankle": 1801,
+    "hind-near-paw": 840,
+    "fore-far-knee": 98,
+    "fore-far-ankle": 154,
+    "fore-far-paw": 405,
+    "ear-near-tip": 164,
+    "ear-near-root": 234,
+    "hind-far-paw": 162
+  },
+  "landmarkChanges": [
+    {
+      "joint": "hindNearAnkle",
+      "fromPx": [
+        441,
+        773.7
+      ],
+      "toPx": [
+        441,
+        738
+      ],
+      "sourceRGBA": [
+        168,
+        159,
+        148,
+        255
+      ],
+      "evidence": "Move from the straight descending course to the external rear hock bend visible around [441,738]."
+    },
+    {
+      "joint": "hindFarAnkle",
+      "fromPx": [
+        536.7,
+        787.7
+      ],
+      "toPx": [
+        525,
+        755
+      ],
+      "sourceRGBA": [
+        163,
+        158,
+        148,
+        255
+      ],
+      "evidence": "Move from the foot approach to the second external rear hock bend visible around [525,755]."
+    },
+    {
+      "joint": "foreNearAnkle",
+      "fromPx": [
+        670.2999999999998,
+        789.3
+      ],
+      "toPx": [
+        671,
+        771
+      ],
+      "sourceRGBA": [
+        182,
+        184,
+        169,
+        255
+      ],
+      "evidence": "Move from paw/heel material to the visible carpal bend between the vertical fore course and foot."
+    },
+    {
+      "joint": "foreFarAnkle",
+      "fromPx": [
+        765.3,
+        800
+      ],
+      "toPx": [
+        748,
+        782
+      ],
+      "sourceRGBA": [
+        226,
+        227,
+        214,
+        255
+      ],
+      "evidence": "Move from horizontal foot material to the visible carpal bend where the diagonal fore course turns into its paw."
+    },
+    {
+      "joint": "earNearRoot",
+      "fromPx": [
+        734.0999999999999,
+        492.5
+      ],
+      "toPx": [
+        740,
+        515
+      ],
+      "sourceRGBA": [
+        133,
+        114,
+        98,
+        255
+      ],
+      "evidence": "Move from the near-ear shaft to the visible furred base where its contour joins the cranium."
+    },
+    {
+      "joint": "earFarRoot",
+      "fromPx": [
+        758.2,
+        461.50000000000006
+      ],
+      "toPx": [
+        768,
+        494
+      ],
+      "sourceRGBA": [
+        99,
+        67,
+        48,
+        255
+      ],
+      "evidence": "Move from the middle of the far-ear shaft to the visible base immediately above the cranium; no hidden attachment inferred."
+    }
+  ],
+  "sourceRGBAChangedChannels": 0,
+  "tailChangedPixels": 0,
+  "anatomyPresenceChanges": 0,
+  "parts": 29,
+  "recordRecipeHash": "6756e6fe6c8d060216b00098ca0cb5bc1f355a69905f495dbe813e87e7dd8c00",
+  "bindingHash": "bd06a81493e9f1a4e8b821b926589b79ef1249eaf3f41e78927829ff74661d18",
+  "oldHoldRetained": true,
+  "sealedRowRebinds": [],
+  "limitChanges": [],
+  "runtimeChanges": [],
+  "native": false,
+  "AI": false,
+  "newAdmissions": 0
+}

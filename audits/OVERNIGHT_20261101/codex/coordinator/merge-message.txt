@@ -1,0 +1,4 @@
+Merge signed anthropic/mac C509: authorized overnight O1 work order
+
+TwoG incoming commits through6c5612bb26, hand-reviewed no-ff.
+Only D44-D46 decisions, C509 mailbox and work order added; no conflicts or runtime/registry/seal changes. No remote action.

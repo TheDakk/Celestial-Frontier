@@ -1,0 +1,118 @@
+{
+  "status": "READBACK_HASHED",
+  "scope": "Workspace artifacts; excludes this inventory and later format receipt. Does not imply runtime/art/native acceptance.",
+  "files": 22,
+  "totalBytes": 12554960,
+  "artifacts": [
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas-prompt.txt",
+      "bytes": 3832,
+      "sha256": "395efb2b19958779e920b3fa9524724b74efadeecf8e09c93bd0ec664f3830d4"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "bytes": 2954509,
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-result.json",
+      "bytes": 444,
+      "sha256": "09e36d535d249b48e05697343b894f2dad4df343db63c8b428765e4c70ce0b09"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds-prompt.txt",
+      "bytes": 3481,
+      "sha256": "51b502d63a95d2b7f72c63a268f2af96ad703d5f31e9c17bf1290d7a3fbd052a"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "bytes": 3014976,
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-result.json",
+      "bytes": 444,
+      "sha256": "0ce7718a139be4bd25adef91749aa1b06551a68d05f4d6cf72e46404bab9ba65"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall-prompt.txt",
+      "bytes": 3628,
+      "sha256": "7abd6563fab6bf666fa10c450c4654722be12d4723af345e77933e1afba71c5c"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall.png",
+      "bytes": 3156154,
+      "sha256": "93c1b9cd6a57dc087cd4896ce05cb6025fbe5877dcba3a52f7b0ab6268289eec"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/03-result.json",
+      "bytes": 575,
+      "sha256": "9b9b3241decdd5d68d2bf2aaa2623b13f8b98778e44dc601499c6e769530e221"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall-prompt.txt",
+      "bytes": 3738,
+      "sha256": "d15e6e70c632872a5ccd6a7b9315f80b60a36e2fabc7a9bbaa39571aba5c6378"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall.png",
+      "bytes": 3255598,
+      "sha256": "c808c6fe442d5827c4c0f56649115de60266f3863b057d2e65c3231c32b6e116"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/04-result.json",
+      "bytes": 646,
+      "sha256": "59fa2d95752787858c8e3fb0aa618e996f47ffa6e523a54cc15253f10ecf37f9"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/README.md",
+      "bytes": 6402,
+      "sha256": "645a2d11bbb3b9f240953a9ee1c66a46ea6d0ceebe6719c95458365602564989"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/REVIEW.md",
+      "bytes": 8053,
+      "sha256": "e1d61d21f738282a210042e2f09b9ea4d4ebbcfeb32ae6963037877bd8d56efd"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md",
+      "bytes": 10599,
+      "sha256": "d63ee20d5baeb9cf6186c17ba9b020f8e87ed4c4a57f174fd40138951e302cd5"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/README.md",
+      "bytes": 5371,
+      "sha256": "3a1cab8d20529cc826d62f029596cfbb5dae2433d230de8fdce52b2c9ac516be"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/capture-facts.mjs",
+      "bytes": 2076,
+      "sha256": "d5f067239cc9425ac8a1ffbcd39056075858c1754fb7bf9477643c1afafb94d8"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/derivation-receipt.json",
+      "bytes": 4089,
+      "sha256": "fb6487148bfadb1996c2d55a8ac5908453fea939ed55d8309851a0e316dcc63c"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/execution.json",
+      "bytes": 4776,
+      "sha256": "8646b1d0333ff35a3c96cb94a6a04149b6fb2a3f3790ba62c7ccf10de953de43"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/fact-entry.ts",
+      "bytes": 2404,
+      "sha256": "fbece60184fd499d8a2d7206d058b0885d2615d76063019abe156be022b739d3"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/known-system.json",
+      "bytes": 111556,
+      "sha256": "13d5687eca230524a8339244ce3059d3a3f838225fcb6aec27d04c0f7eb8a0ff"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/intake.json",
+      "bytes": 1609,
+      "sha256": "669f646b2c6ee525e8d54558ef2c70efa570f525adf0b5914bdd7f5d6a94ce3a"
+    }
+  ]
+}

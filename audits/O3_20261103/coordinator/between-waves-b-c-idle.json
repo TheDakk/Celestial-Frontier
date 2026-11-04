@@ -1,0 +1,16 @@
+{
+  "status": "IDLE_BEFORE_POST_CODE_DEVELOP",
+  "producerCommit": "3a6a4c9122a7c1fd4bc9baea83de65857b3672ad",
+  "signature": "G",
+  "workerCPUIdle": [
+    "o3_wave_a_cpu",
+    "o3_disk_inventory",
+    "o3_kin_design"
+  ],
+  "nativeAIQueue": "WAITING",
+  "systemLoad1m": 3.9677734375,
+  "freeGiB": 48.4466552734375,
+  "timeUnix": 1793769411.6780312,
+  "firstRedStops": true,
+  "retries": 0
+}

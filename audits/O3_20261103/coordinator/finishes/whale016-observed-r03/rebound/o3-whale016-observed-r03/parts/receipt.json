@@ -1,0 +1,188 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "winning painter draw-stage RGBA changes",
+  "recordRecipeHash": "782b11fa1ec42ae28b67923c5ffe5c0ecb1e894a91399b38457f3bccffb2d2b4",
+  "declarationHash": "7beecfb89cf97d6ddbd5930043db4abed7437a1dfc05a1173f71207777c5a412",
+  "paintedPixels": 77324,
+  "parts": [
+    {
+      "id": "source-body-root-patch",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 742,
+        "y": 591,
+        "width": 12,
+        "height": 10
+      },
+      "pixels": 120
+    },
+    {
+      "id": "whole-long-near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 572,
+        "y": 600,
+        "width": 179,
+        "height": 163
+      },
+      "pixels": 9003
+    },
+    {
+      "id": "whole-narrow-far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 726,
+        "y": 650,
+        "width": 82,
+        "height": 97
+      },
+      "pixels": 3145
+    },
+    {
+      "id": "actual-small-dorsal",
+      "joint": "dorsal",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 576,
+        "y": 521,
+        "width": 73,
+        "height": 33
+      },
+      "pixels": 1339
+    },
+    {
+      "id": "actual-pleated-lower-head-jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 790,
+        "y": 542,
+        "width": 193,
+        "height": 110
+      },
+      "pixels": 11477
+    },
+    {
+      "id": "actual-eye-upper-head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 755,
+        "y": 516,
+        "width": 228,
+        "height": 79
+      },
+      "pixels": 7849
+    },
+    {
+      "id": "whole-horizontal-notched-flukes",
+      "joint": "caudal",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 271,
+        "y": 531,
+        "width": 174,
+        "height": 69
+      },
+      "pixels": 6000
+    },
+    {
+      "id": "actual-axial-body-spine5",
+      "joint": "spine5",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 389,
+        "y": 582,
+        "width": 68,
+        "height": 62
+      },
+      "pixels": 2523
+    },
+    {
+      "id": "actual-axial-body-spine4",
+      "joint": "spine4",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 457,
+        "y": 568,
+        "width": 53,
+        "height": 95
+      },
+      "pixels": 4181
+    },
+    {
+      "id": "actual-axial-body-spine3",
+      "joint": "spine3",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 510,
+        "y": 550,
+        "width": 58,
+        "height": 126
+      },
+      "pixels": 6432
+    },
+    {
+      "id": "actual-axial-body-spine2",
+      "joint": "spine2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 568,
+        "y": 542,
+        "width": 60,
+        "height": 140
+      },
+      "pixels": 7886
+    },
+    {
+      "id": "actual-axial-body-spine1",
+      "joint": "spine1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 628,
+        "y": 527,
+        "width": 59,
+        "height": 155
+      },
+      "pixels": 6892
+    },
+    {
+      "id": "whole-source-body-remainder",
+      "joint": "spine0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 687,
+        "y": 519,
+        "width": 125,
+        "height": 160
+      },
+      "pixels": 10477
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "mode": "native painter alpha; no keyer"
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "c111e2b54f814f311cab79c3b2c4153fbd4f3d1374d8e332e312170cf9767728",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

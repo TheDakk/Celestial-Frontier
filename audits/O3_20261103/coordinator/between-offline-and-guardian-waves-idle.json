@@ -1,0 +1,16 @@
+{
+  "status": "ALL_CPU_IDLE_BEFORE_GUARDIAN_WAVE",
+  "producerCommit": "b608e71f7b2ecd807fc93aaa8c0cd9628d2536d9",
+  "signature": "G",
+  "workerCPUIdle": [
+    "o3_wave_a_cpu",
+    "o3_disk_inventory",
+    "o3_kin_design"
+  ],
+  "nativeAIQueue": "WAITING",
+  "systemLoad1m": 2.86669921875,
+  "freeGiB": 46.1578369140625,
+  "timeUnix": 1793777277.91241,
+  "firstRedStops": true,
+  "retries": 0
+}

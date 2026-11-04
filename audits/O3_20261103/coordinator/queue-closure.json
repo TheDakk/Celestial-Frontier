@@ -1,0 +1,747 @@
+{
+  "status": "READ_ONLY_CLOSURE_OF_EXISTING_STAGE_EVIDENCE",
+  "recordedStages": 101,
+  "minimumStartGiB": 46.160491943359375,
+  "minimumRunningGiB": 38.195640563964844,
+  "startFloorGiB": 42,
+  "runningFloorGiB": 30,
+  "startFloorHeld": true,
+  "runningFloorHeld": true,
+  "rows": [
+    {
+      "id": "atlas-source-edge-expected-negative",
+      "status": "RED",
+      "beforeGiB": 48.064659118652344,
+      "lowestGiB": 48.064517974853516,
+      "afterGiB": 48.064537048339844
+    },
+    {
+      "id": "atlas-source-edge-fixed-outcomes",
+      "status": "PASS",
+      "beforeGiB": 48.040611267089844,
+      "lowestGiB": 48.04038619995117,
+      "afterGiB": 48.04046630859375
+    },
+    {
+      "id": "b-c-source-freeze-root-validate",
+      "status": "PASS",
+      "beforeGiB": 48.7628288269043,
+      "lowestGiB": 48.76240921020508,
+      "afterGiB": 48.76240539550781
+    },
+    {
+      "id": "c556-root-validate",
+      "status": "PASS",
+      "beforeGiB": 51.52199172973633,
+      "lowestGiB": 51.5216064453125,
+      "afterGiB": 51.5216064453125
+    },
+    {
+      "id": "c558-root-validate",
+      "status": "PASS",
+      "beforeGiB": 51.48027038574219,
+      "lowestGiB": 51.48004913330078,
+      "afterGiB": 51.48043441772461
+    },
+    {
+      "id": "c560-root-validate",
+      "status": "PASS",
+      "beforeGiB": 51.51793670654297,
+      "lowestGiB": 51.516014099121094,
+      "afterGiB": 51.516014099121094
+    },
+    {
+      "id": "c562-root-validate",
+      "status": "PASS",
+      "beforeGiB": 49.316864013671875,
+      "lowestGiB": 49.3167839050293,
+      "afterGiB": 49.3206672668457
+    },
+    {
+      "id": "c564-root-validate",
+      "status": "PASS",
+      "beforeGiB": 48.81299591064453,
+      "lowestGiB": 48.81279373168945,
+      "afterGiB": 48.81279373168945
+    },
+    {
+      "id": "c566-root-validate",
+      "status": "PASS",
+      "beforeGiB": 48.35011672973633,
+      "lowestGiB": 48.34988021850586,
+      "afterGiB": 48.350006103515625
+    },
+    {
+      "id": "c568-root-validate",
+      "status": "PASS",
+      "beforeGiB": 48.2443962097168,
+      "lowestGiB": 48.244140625,
+      "afterGiB": 48.24436569213867
+    },
+    {
+      "id": "c570-root-validate",
+      "status": "PASS",
+      "beforeGiB": 47.997772216796875,
+      "lowestGiB": 47.97587585449219,
+      "afterGiB": 47.97587966918945
+    },
+    {
+      "id": "c572-root-validate",
+      "status": "PASS",
+      "beforeGiB": 47.89151382446289,
+      "lowestGiB": 47.89113235473633,
+      "afterGiB": 47.89152145385742
+    },
+    {
+      "id": "c574-root-validate",
+      "status": "PASS",
+      "beforeGiB": 47.77631378173828,
+      "lowestGiB": 47.775142669677734,
+      "afterGiB": 47.775142669677734
+    },
+    {
+      "id": "c576-root-validate",
+      "status": "PASS",
+      "beforeGiB": 46.64964294433594,
+      "lowestGiB": 46.633296966552734,
+      "afterGiB": 46.633323669433594
+    },
+    {
+      "id": "c578-root-validate",
+      "status": "PASS",
+      "beforeGiB": 46.450416564941406,
+      "lowestGiB": 46.45026397705078,
+      "afterGiB": 46.45021438598633
+    },
+    {
+      "id": "c580-root-validate",
+      "status": "PASS",
+      "beforeGiB": 46.3719482421875,
+      "lowestGiB": 46.37163162231445,
+      "afterGiB": 46.37163162231445
+    },
+    {
+      "id": "c582-root-validate",
+      "status": "PASS",
+      "beforeGiB": 46.269622802734375,
+      "lowestGiB": 46.26950454711914,
+      "afterGiB": 46.26970291137695
+    },
+    {
+      "id": "cold-water-coral-green-r02-default-source",
+      "status": "PASS",
+      "beforeGiB": 46.4912223815918,
+      "lowestGiB": 46.487728118896484,
+      "afterGiB": 46.48591232299805
+    },
+    {
+      "id": "cold-water-coral-green-r02-margin",
+      "status": "PASS",
+      "beforeGiB": 46.488895416259766,
+      "lowestGiB": 46.488861083984375,
+      "afterGiB": 46.48880386352539
+    },
+    {
+      "id": "egret-r04-fringe-derive-r01",
+      "status": "PASS",
+      "beforeGiB": 51.66035079956055,
+      "lowestGiB": 51.66032409667969,
+      "afterGiB": 51.649932861328125
+    },
+    {
+      "id": "egret-r04-fringe-readback-r01",
+      "status": "PASS",
+      "beforeGiB": 51.637577056884766,
+      "lowestGiB": 51.63756561279297,
+      "afterGiB": 51.63774490356445
+    },
+    {
+      "id": "egret-r04-literal-seeds-r03-derive",
+      "status": "PASS",
+      "beforeGiB": 48.1750373840332,
+      "lowestGiB": 48.14181137084961,
+      "afterGiB": 48.11256408691406
+    },
+    {
+      "id": "egret-r04-literal-seeds-r03-readback",
+      "status": "RED",
+      "beforeGiB": 48.10577392578125,
+      "lowestGiB": 48.10575485229492,
+      "afterGiB": 48.10574722290039
+    },
+    {
+      "id": "egret-r04-r03-pinned-default-observation",
+      "status": "PASS",
+      "beforeGiB": 48.084224700927734,
+      "lowestGiB": 48.08110427856445,
+      "afterGiB": 48.0806884765625
+    },
+    {
+      "id": "egret-r04-white-plumage-r02",
+      "status": "PASS",
+      "beforeGiB": 51.397789001464844,
+      "lowestGiB": 51.39775466918945,
+      "afterGiB": 51.39379119873047
+    },
+    {
+      "id": "egret-r04-white-plumage-r02-readback",
+      "status": "PASS",
+      "beforeGiB": 51.520652770996094,
+      "lowestGiB": 51.5206184387207,
+      "afterGiB": 51.5206184387207
+    },
+    {
+      "id": "explicit-painted-pairs-expected-negative",
+      "status": "RED",
+      "beforeGiB": 48.015045166015625,
+      "lowestGiB": 48.01073455810547,
+      "afterGiB": 48.01495361328125
+    },
+    {
+      "id": "fly-larvae058-observed-r03-intake",
+      "status": "PASS",
+      "beforeGiB": 48.76360321044922,
+      "lowestGiB": 48.76186752319336,
+      "afterGiB": 48.76136779785156
+    },
+    {
+      "id": "fly-larvae058-observed-r03-static",
+      "status": "PASS",
+      "beforeGiB": 48.74886703491211,
+      "lowestGiB": 48.748191833496094,
+      "afterGiB": 48.74880599975586
+    },
+    {
+      "id": "fly-larvae058-rig-pose-sheet",
+      "status": "RED",
+      "beforeGiB": 48.745933532714844,
+      "lowestGiB": 48.74591064453125,
+      "afterGiB": 48.74591064453125
+    },
+    {
+      "id": "guardian-tail-targeted-unit-once",
+      "status": "RED",
+      "beforeGiB": 46.160491943359375,
+      "lowestGiB": 46.069644927978516,
+      "afterGiB": 46.174842834472656
+    },
+    {
+      "id": "kangaroo025-owner-r02-intake",
+      "status": "PASS",
+      "beforeGiB": 51.63219451904297,
+      "lowestGiB": 51.629844665527344,
+      "afterGiB": 51.628944396972656
+    },
+    {
+      "id": "kangaroo025-owner-r02-static",
+      "status": "RED",
+      "beforeGiB": 51.58131790161133,
+      "lowestGiB": 51.58064270019531,
+      "afterGiB": 51.58125305175781
+    },
+    {
+      "id": "lancelet-green-r02-explicit-fringe",
+      "status": "PASS",
+      "beforeGiB": 51.53299331665039,
+      "lowestGiB": 51.53297805786133,
+      "afterGiB": 51.531471252441406
+    },
+    {
+      "id": "lancelet-green-r02-fringe-readback",
+      "status": "PASS",
+      "beforeGiB": 51.528526306152344,
+      "lowestGiB": 51.52837371826172,
+      "afterGiB": 51.527896881103516
+    },
+    {
+      "id": "lancelet-green-r02-source-prep",
+      "status": "PASS",
+      "beforeGiB": 51.54545211791992,
+      "lowestGiB": 51.54435729980469,
+      "afterGiB": 51.54219055175781
+    },
+    {
+      "id": "lancelet-green-r03-explicit-fringe",
+      "status": "PASS",
+      "beforeGiB": 51.48307800292969,
+      "lowestGiB": 51.48301315307617,
+      "afterGiB": 51.481483459472656
+    },
+    {
+      "id": "lancelet-green-r03-fringe-readback",
+      "status": "PASS",
+      "beforeGiB": 51.482749938964844,
+      "lowestGiB": 51.481483459472656,
+      "afterGiB": 51.48113250732422
+    },
+    {
+      "id": "lancelet-green-r04-c261",
+      "status": "PASS",
+      "beforeGiB": 48.252647399902344,
+      "lowestGiB": 48.245933532714844,
+      "afterGiB": 48.24716567993164
+    },
+    {
+      "id": "lancelet-green-r04-intake",
+      "status": "PASS",
+      "beforeGiB": 48.72230529785156,
+      "lowestGiB": 48.72081756591797,
+      "afterGiB": 48.72002029418945
+    },
+    {
+      "id": "lancelet-green-r04-native",
+      "status": "PASS",
+      "beforeGiB": 48.30948257446289,
+      "lowestGiB": 47.91523361206055,
+      "afterGiB": 48.283782958984375
+    },
+    {
+      "id": "lancelet-green-r04-readback",
+      "status": "PASS",
+      "beforeGiB": 48.7890625,
+      "lowestGiB": 48.78848648071289,
+      "afterGiB": 48.788429260253906
+    },
+    {
+      "id": "lancelet-green-r04-reviewed-donors",
+      "status": "PASS",
+      "beforeGiB": 48.786983489990234,
+      "lowestGiB": 48.78694534301758,
+      "afterGiB": 48.785400390625
+    },
+    {
+      "id": "lancelet-green-r04-static",
+      "status": "PASS",
+      "beforeGiB": 48.718929290771484,
+      "lowestGiB": 48.71727752685547,
+      "afterGiB": 48.717891693115234
+    },
+    {
+      "id": "lancelet-green-r05-atlas-c261",
+      "status": "PASS",
+      "beforeGiB": 47.84185791015625,
+      "lowestGiB": 47.819786071777344,
+      "afterGiB": 47.81968307495117
+    },
+    {
+      "id": "lancelet-green-r05-atlas-intake",
+      "status": "PASS",
+      "beforeGiB": 48.01215744018555,
+      "lowestGiB": 48.01038360595703,
+      "afterGiB": 48.0098876953125
+    },
+    {
+      "id": "lancelet-green-r05-atlas-native",
+      "status": "PASS",
+      "beforeGiB": 47.88683319091797,
+      "lowestGiB": 47.49374008178711,
+      "afterGiB": 47.85836410522461
+    },
+    {
+      "id": "lancelet-green-r05-atlas-static",
+      "status": "PASS",
+      "beforeGiB": 48.012638092041016,
+      "lowestGiB": 48.009788513183594,
+      "afterGiB": 48.010398864746094
+    },
+    {
+      "id": "lancelet008-c261-pre-ai",
+      "status": "PASS",
+      "beforeGiB": 51.655555725097656,
+      "lowestGiB": 51.65375518798828,
+      "afterGiB": 51.66236114501953
+    },
+    {
+      "id": "lancelet008-green-r05-atlas-ai-finish",
+      "status": "PASS",
+      "beforeGiB": 47.72005844116211,
+      "lowestGiB": 39.350521087646484,
+      "afterGiB": 44.70305633544922
+    },
+    {
+      "id": "lancelet008-green-r05-atlas-finished-c261",
+      "status": "PASS",
+      "beforeGiB": 46.655879974365234,
+      "lowestGiB": 46.65089797973633,
+      "afterGiB": 46.65091323852539
+    },
+    {
+      "id": "lancelet008-green-r05-atlas-finished-native",
+      "status": "PASS",
+      "beforeGiB": 46.686859130859375,
+      "lowestGiB": 46.295589447021484,
+      "afterGiB": 46.65922546386719
+    },
+    {
+      "id": "lancelet008-green-r05-atlas-finished-rebind",
+      "status": "PASS",
+      "beforeGiB": 46.68323516845703,
+      "lowestGiB": 46.67977523803711,
+      "afterGiB": 46.680686950683594
+    },
+    {
+      "id": "lancelet008-green-r06-conserved-interior",
+      "status": "PASS",
+      "beforeGiB": 46.390411376953125,
+      "lowestGiB": 46.390411376953125,
+      "afterGiB": 46.389259338378906
+    },
+    {
+      "id": "lancelet008-green-r06-interior-c261",
+      "status": "PASS",
+      "beforeGiB": 46.323577880859375,
+      "lowestGiB": 46.320064544677734,
+      "afterGiB": 46.320045471191406
+    },
+    {
+      "id": "lancelet008-green-r06-interior-native",
+      "status": "PASS",
+      "beforeGiB": 46.360877990722656,
+      "lowestGiB": 45.96722412109375,
+      "afterGiB": 46.332183837890625
+    },
+    {
+      "id": "lancelet008-green-r06-interior-rebind",
+      "status": "PASS",
+      "beforeGiB": 46.37175750732422,
+      "lowestGiB": 46.36836624145508,
+      "afterGiB": 46.36927795410156
+    },
+    {
+      "id": "lancelet008-native-r01",
+      "status": "PASS",
+      "beforeGiB": 51.688690185546875,
+      "lowestGiB": 51.299835205078125,
+      "afterGiB": 51.669349670410156
+    },
+    {
+      "id": "offline-atlas-boundary-targeted-suite",
+      "status": "PASS",
+      "beforeGiB": 48.01298522949219,
+      "lowestGiB": 48.00484848022461,
+      "afterGiB": 48.01285934448242
+    },
+    {
+      "id": "offline-repair-boundary-develop-once",
+      "status": "PASS",
+      "beforeGiB": 47.916934967041016,
+      "lowestGiB": 47.78932189941406,
+      "afterGiB": 47.89377212524414
+    },
+    {
+      "id": "polychaete-green-r02-margin",
+      "status": "PASS",
+      "beforeGiB": 47.9909553527832,
+      "lowestGiB": 47.9909553527832,
+      "afterGiB": 47.99093246459961
+    },
+    {
+      "id": "polychaete-green-r02-source-prep",
+      "status": "PASS",
+      "beforeGiB": 47.99699783325195,
+      "lowestGiB": 47.99390411376953,
+      "afterGiB": 47.99235534667969
+    },
+    {
+      "id": "polychaete-worm-fresh-default-source",
+      "status": "PASS",
+      "beforeGiB": 48.036251068115234,
+      "lowestGiB": 48.033817291259766,
+      "afterGiB": 48.032596588134766
+    },
+    {
+      "id": "pre-guardian-boundary-develop-once",
+      "status": "PASS",
+      "beforeGiB": 46.249359130859375,
+      "lowestGiB": 46.12803649902344,
+      "afterGiB": 46.21746063232422
+    },
+    {
+      "id": "salp-fresh-default-source",
+      "status": "PASS",
+      "beforeGiB": 48.0303955078125,
+      "lowestGiB": 48.02916717529297,
+      "afterGiB": 48.026729583740234
+    },
+    {
+      "id": "startup-capability-verify",
+      "status": "PASS",
+      "beforeGiB": 51.734066009521484,
+      "lowestGiB": 51.733863830566406,
+      "afterGiB": 51.733985900878906
+    },
+    {
+      "id": "startup-official-inspect",
+      "status": "PASS",
+      "beforeGiB": 51.74125289916992,
+      "lowestGiB": 51.727378845214844,
+      "afterGiB": 51.73957824707031
+    },
+    {
+      "id": "stick002-owner-r02-intake",
+      "status": "PASS",
+      "beforeGiB": 51.63258743286133,
+      "lowestGiB": 51.63071823120117,
+      "afterGiB": 51.630126953125
+    },
+    {
+      "id": "stick002-owner-r03-intake",
+      "status": "PASS",
+      "beforeGiB": 51.55105972290039,
+      "lowestGiB": 51.5493049621582,
+      "afterGiB": 51.5487174987793
+    },
+    {
+      "id": "stick002-owner-r04-intake",
+      "status": "PASS",
+      "beforeGiB": 51.530330657958984,
+      "lowestGiB": 51.528568267822266,
+      "afterGiB": 51.527992248535156
+    },
+    {
+      "id": "stick002-owner-r05-ai-finish",
+      "status": "PASS",
+      "beforeGiB": 51.50153350830078,
+      "lowestGiB": 41.136592864990234,
+      "afterGiB": 47.489070892333984
+    },
+    {
+      "id": "stick002-owner-r05-finished-c261",
+      "status": "PASS",
+      "beforeGiB": 48.333255767822266,
+      "lowestGiB": 48.31435775756836,
+      "afterGiB": 48.31434631347656
+    },
+    {
+      "id": "stick002-owner-r05-finished-native",
+      "status": "PASS",
+      "beforeGiB": 48.44598388671875,
+      "lowestGiB": 48.03109359741211,
+      "afterGiB": 48.40863800048828
+    },
+    {
+      "id": "stick002-owner-r05-finished-rebind",
+      "status": "PASS",
+      "beforeGiB": 48.483184814453125,
+      "lowestGiB": 48.479713439941406,
+      "afterGiB": 48.48069763183594
+    },
+    {
+      "id": "stick002-owner-r05-intake",
+      "status": "PASS",
+      "beforeGiB": 51.49915313720703,
+      "lowestGiB": 51.49699401855469,
+      "afterGiB": 51.49642562866211
+    },
+    {
+      "id": "stick002-owner-r05-native",
+      "status": "PASS",
+      "beforeGiB": 51.47697830200195,
+      "lowestGiB": 51.07746124267578,
+      "afterGiB": 51.440940856933594
+    },
+    {
+      "id": "stick002-owner-r05-static",
+      "status": "PASS",
+      "beforeGiB": 51.48735427856445,
+      "lowestGiB": 51.48642349243164,
+      "afterGiB": 51.487037658691406
+    },
+    {
+      "id": "stick002-r05-c261-pre-ai",
+      "status": "PASS",
+      "beforeGiB": 51.42974853515625,
+      "lowestGiB": 51.40222930908203,
+      "afterGiB": 51.410499572753906
+    },
+    {
+      "id": "water-flea-green-r02-source-prepare",
+      "status": "PASS",
+      "beforeGiB": 48.7225227355957,
+      "lowestGiB": 48.72029495239258,
+      "afterGiB": 48.715885162353516
+    },
+    {
+      "id": "water-flea-green-r03-source-prepare",
+      "status": "PASS",
+      "beforeGiB": 48.37443542480469,
+      "lowestGiB": 48.37273025512695,
+      "afterGiB": 48.36936950683594
+    },
+    {
+      "id": "wave-a-b-develop-once",
+      "status": "PASS",
+      "beforeGiB": 49.19375991821289,
+      "lowestGiB": 48.87297439575195,
+      "afterGiB": 48.961387634277344
+    },
+    {
+      "id": "wave-b-c-post-code-develop-once",
+      "status": "PASS",
+      "beforeGiB": 48.771209716796875,
+      "lowestGiB": 48.66104507446289,
+      "afterGiB": 48.75034713745117
+    },
+    {
+      "id": "wave-b-default-after",
+      "status": "PASS",
+      "beforeGiB": 48.94097900390625,
+      "lowestGiB": 48.940181732177734,
+      "afterGiB": 48.9381103515625
+    },
+    {
+      "id": "wave-b-default-before",
+      "status": "PASS",
+      "beforeGiB": 48.96409225463867,
+      "lowestGiB": 48.9634895324707,
+      "afterGiB": 48.962032318115234
+    },
+    {
+      "id": "wave-b-eighteen-pin-attempts",
+      "status": "PASS",
+      "beforeGiB": 48.86174392700195,
+      "lowestGiB": 48.832733154296875,
+      "afterGiB": 48.830665588378906
+    },
+    {
+      "id": "wave-b-pin-targeted-tests",
+      "status": "PASS",
+      "beforeGiB": 48.93275833129883,
+      "lowestGiB": 48.93273162841797,
+      "afterGiB": 48.932708740234375
+    },
+    {
+      "id": "wave-b-whale-pin-integration",
+      "status": "PASS",
+      "beforeGiB": 48.88163757324219,
+      "lowestGiB": 48.88140106201172,
+      "afterGiB": 48.879451751708984
+    },
+    {
+      "id": "wave-c-larva-default-source",
+      "status": "PASS",
+      "beforeGiB": 48.82755661010742,
+      "lowestGiB": 48.82542419433594,
+      "afterGiB": 48.82434844970703
+    },
+    {
+      "id": "wave-c-marine-default-source",
+      "status": "PASS",
+      "beforeGiB": 48.83251953125,
+      "lowestGiB": 48.831180572509766,
+      "afterGiB": 48.82878494262695
+    },
+    {
+      "id": "whale016-observed-r02-c261",
+      "status": "PASS",
+      "beforeGiB": 48.19549560546875,
+      "lowestGiB": 48.163333892822266,
+      "afterGiB": 48.17623519897461
+    },
+    {
+      "id": "whale016-observed-r02-intake",
+      "status": "PASS",
+      "beforeGiB": 48.35783767700195,
+      "lowestGiB": 48.355594635009766,
+      "afterGiB": 48.354896545410156
+    },
+    {
+      "id": "whale016-observed-r02-native",
+      "status": "PASS",
+      "beforeGiB": 48.199928283691406,
+      "lowestGiB": 47.81782531738281,
+      "afterGiB": 48.19761657714844
+    },
+    {
+      "id": "whale016-observed-r02-static",
+      "status": "PASS",
+      "beforeGiB": 48.28421401977539,
+      "lowestGiB": 48.283504486083984,
+      "afterGiB": 48.284114837646484
+    },
+    {
+      "id": "whale016-observed-r03-ai-finish",
+      "status": "PASS",
+      "beforeGiB": 46.57075881958008,
+      "lowestGiB": 38.195640563964844,
+      "afterGiB": 45.55442428588867
+    },
+    {
+      "id": "whale016-observed-r03-c261",
+      "status": "PASS",
+      "beforeGiB": 47.7737922668457,
+      "lowestGiB": 47.77254104614258,
+      "afterGiB": 47.77252960205078
+    },
+    {
+      "id": "whale016-observed-r03-finished-c261",
+      "status": "PASS",
+      "beforeGiB": 46.502227783203125,
+      "lowestGiB": 46.493343353271484,
+      "afterGiB": 46.493309020996094
+    },
+    {
+      "id": "whale016-observed-r03-finished-native",
+      "status": "PASS",
+      "beforeGiB": 46.55414581298828,
+      "lowestGiB": 46.16089630126953,
+      "afterGiB": 46.52643966674805
+    },
+    {
+      "id": "whale016-observed-r03-finished-rebind",
+      "status": "PASS",
+      "beforeGiB": 46.55783462524414,
+      "lowestGiB": 46.55389404296875,
+      "afterGiB": 46.554779052734375
+    },
+    {
+      "id": "whale016-observed-r03-intake",
+      "status": "PASS",
+      "beforeGiB": 48.00984191894531,
+      "lowestGiB": 48.00759506225586,
+      "afterGiB": 48.006839752197266
+    },
+    {
+      "id": "whale016-observed-r03-native",
+      "status": "PASS",
+      "beforeGiB": 47.797115325927734,
+      "lowestGiB": 47.397705078125,
+      "afterGiB": 47.773006439208984
+    },
+    {
+      "id": "whale016-observed-r03-static",
+      "status": "PASS",
+      "beforeGiB": 48.00494384765625,
+      "lowestGiB": 48.00425720214844,
+      "afterGiB": 48.0048713684082
+    }
+  ],
+  "ownerTerminal": {
+    "status": "TERMINAL",
+    "reason": "STOP_FILE",
+    "completed": 101,
+    "endedUnix": 1793778012.790702,
+    "descendantsDrained": true
+  },
+  "lastRequiredCheck": {
+    "id": "guardian-tail-targeted-unit-once",
+    "jobSha256": "97b5531d33e3b9cc14f2fa467705643ed153ed3490c7add826545b40912ce0eb",
+    "status": "HOLD",
+    "startedUnix": 1793777591.269227,
+    "error": "Stage failed or left live owned descendants",
+    "stage": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/coordinator/queue/attempts/guardian-tail-targeted-unit-once/stage.json",
+    "log": "~/Projects/celestial-frontier-openai-mac/audits/O3_20261103/coordinator/queue/attempts/guardian-tail-targeted-unit-once/stage.log",
+    "exitCode": 1,
+    "endedUnix": 1793777604.7716422
+  },
+  "laterBuildStaticNativeAIProfileRuns": 0,
+  "manualExternalGenerationReservations": [
+    {
+      "path": "audits/O3_20261103/coordinator/sources/cold-water-coral-green-r02/manual-start.json",
+      "freeGiB": 46.1578369140625,
+      "oneHeavySerial": true
+    }
+  ],
+  "speciesQueueDrained": false,
+  "currentFreeGiB": 46.9207763671875
+}

@@ -1,0 +1,207 @@
+{
+  "status": "PASS_CONSERVED_DERIVATIVE_MATERIAL_REVIEW_PENDING",
+  "inputs": [
+    {
+      "path": "audits/O3_20261103/w1-material-seeds/lancelet-green-r04-observed/packet/master.png",
+      "sha256": "97473bf3ff86e9756d7f27a8bc6573e4249200a3c44736da94928639fdec03cf",
+      "bytes": 1145022
+    },
+    {
+      "path": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r05-atlas/finished/o3-lancelet008-green-r05-atlas-finished.png",
+      "sha256": "52563ba9b81862824aa2bc7b6ba5c1226ff24018a98da0e553fa80af9630ca50",
+      "bytes": 1151555
+    },
+    {
+      "path": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r05-atlas/rebound/o3-lancelet008-green-r05-atlas/labels.png",
+      "sha256": "bdaecfb3e7de1e58d539723eae449d066aa26bc23015512a3e59920818fdaa55",
+      "bytes": 36406
+    },
+    {
+      "path": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r05-atlas/rebound/o3-lancelet008-green-r05-atlas/binding.json",
+      "sha256": "6e9c52be36b90004198a0c7c98999ef71e729ec6787e1e78f270b9fb02564a4d",
+      "bytes": 516261
+    },
+    {
+      "path": "audits/O3_20261103/w3-static/lancelet-finish-boundary-repair-r01/proposal.json",
+      "sha256": "3f1b8969184bad95c3e46016356245cf92c85112a93823fc0a4fd2aa8120f4a1",
+      "bytes": 5265
+    },
+    {
+      "path": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r05-atlas/finished/o3-lancelet008-green-r05-atlas-receipt.json",
+      "sha256": "19d6b677e21923a803075b6114a18abdef2e258685d270c7e26e77a9d000387c",
+      "bytes": 12438
+    }
+  ],
+  "output": {
+    "path": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r06-interior/finished/o3-lancelet008-green-r05-atlas-finished.png",
+    "sha256": "0f31db58b9ba1d8ee0825882c41d473535a2f7a597aebcbdae7c506af643adcc",
+    "bytes": 1149797
+  },
+  "repair": {
+    "selectedLabels": [
+      8,
+      9
+    ],
+    "existingRadius": 4,
+    "existingInteriorAlphaMin": 250,
+    "changed": 1640,
+    "protectedChanged": 0,
+    "alphaChanged": 0,
+    "unselectedChanged": 0,
+    "deepAiRetained": 3483,
+    "editableSha256": "5cc34c2e1a33f795e9596d447e1e1481ace5665dddd1e33852ee3e6dfa9a85ff",
+    "selectedSha256": "01769b99823cf78a4d210b95a79689d16fa9bae1ef3ac860edd4ebf5fb6cafee"
+  },
+  "conservation": {
+    "status": "PASS",
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "ratio": 0.95,
+    "parts": [
+      {
+        "label": 7,
+        "pixels": 10115,
+        "components": 1,
+        "boundarySamples": 207,
+        "beforeGradient": 20677.89448653361,
+        "afterGradient": 20677.89448653361,
+        "sumSquaredError": 3823939,
+        "meanDeltaE76": 5.758298484782777,
+        "luminanceSsim": 0.9530276357450367,
+        "ssimScope": "whole labeled part, population moments",
+        "rgbRms": 11.225660586085896,
+        "gradientRatio": 1,
+        "componentsAfter": 1
+      },
+      {
+        "label": 1,
+        "pixels": 9054,
+        "components": 1,
+        "boundarySamples": 199,
+        "beforeGradient": 19423.270137614854,
+        "afterGradient": 19423.270137614854,
+        "sumSquaredError": 3951349,
+        "meanDeltaE76": 5.728856796975573,
+        "luminanceSsim": 0.947223612254336,
+        "ssimScope": "whole labeled part, population moments",
+        "rgbRms": 12.061236203092061,
+        "gradientRatio": 1,
+        "componentsAfter": 1
+      },
+      {
+        "label": 8,
+        "pixels": 4712,
+        "components": 1,
+        "boundarySamples": 152,
+        "beforeGradient": 14082.790866798232,
+        "afterGradient": 14082.790866798232,
+        "sumSquaredError": 1689328,
+        "meanDeltaE76": 4.907896783740179,
+        "luminanceSsim": 0.9582533213604045,
+        "ssimScope": "whole labeled part, population moments",
+        "rgbRms": 10.931851460026614,
+        "gradientRatio": 1,
+        "componentsAfter": 1
+      },
+      {
+        "label": 6,
+        "pixels": 9417,
+        "components": 1,
+        "boundarySamples": 202,
+        "beforeGradient": 18699.414345894387,
+        "afterGradient": 18699.414345894387,
+        "sumSquaredError": 4063457,
+        "meanDeltaE76": 6.16503322124428,
+        "luminanceSsim": 0.952043152473937,
+        "ssimScope": "whole labeled part, population moments",
+        "rgbRms": 11.993085273120547,
+        "gradientRatio": 1,
+        "componentsAfter": 1
+      },
+      {
+        "label": 9,
+        "pixels": 2471,
+        "components": 1,
+        "boundarySamples": 115,
+        "beforeGradient": 9066.706955050346,
+        "afterGradient": 9066.706955050346,
+        "sumSquaredError": 426956,
+        "meanDeltaE76": 3.5036508629777368,
+        "luminanceSsim": 0.9820690733837932,
+        "ssimScope": "whole labeled part, population moments",
+        "rgbRms": 7.589174878774229,
+        "gradientRatio": 1,
+        "componentsAfter": 1
+      },
+      {
+        "label": 5,
+        "pixels": 6611,
+        "components": 1,
+        "boundarySamples": 178,
+        "beforeGradient": 17266.089295977392,
+        "afterGradient": 17266.089295977392,
+        "sumSquaredError": 2863220,
+        "meanDeltaE76": 6.286813433506796,
+        "luminanceSsim": 0.9437665520551101,
+        "ssimScope": "whole labeled part, population moments",
+        "rgbRms": 12.015259462055042,
+        "gradientRatio": 1,
+        "componentsAfter": 1
+      },
+      {
+        "label": 2,
+        "pixels": 5368,
+        "components": 1,
+        "boundarySamples": 779,
+        "beforeGradient": 146467.24716587338,
+        "afterGradient": 146467.24716587338,
+        "sumSquaredError": 1089779,
+        "meanDeltaE76": 2.3257434693533066,
+        "luminanceSsim": 0.9832662715007535,
+        "ssimScope": "whole labeled part, population moments",
+        "rgbRms": 8.226258195235824,
+        "gradientRatio": 1,
+        "componentsAfter": 1
+      },
+      {
+        "label": 4,
+        "pixels": 3015,
+        "components": 1,
+        "boundarySamples": 124,
+        "beforeGradient": 13371.669433417519,
+        "afterGradient": 13371.669433417519,
+        "sumSquaredError": 1177426,
+        "meanDeltaE76": 5.544371304459279,
+        "luminanceSsim": 0.9436911701249145,
+        "ssimScope": "whole labeled part, population moments",
+        "rgbRms": 11.409392617994762,
+        "gradientRatio": 1,
+        "componentsAfter": 1
+      },
+      {
+        "label": 3,
+        "pixels": 1232,
+        "components": 1,
+        "boundarySamples": 98,
+        "beforeGradient": 13098.548638477512,
+        "afterGradient": 13098.548638477512,
+        "sumSquaredError": 179445,
+        "meanDeltaE76": 2.5621449814187383,
+        "luminanceSsim": 0.9775287618521952,
+        "ssimScope": "whole labeled part, population moments",
+        "rgbRms": 6.967864548312946,
+        "gradientRatio": 1,
+        "componentsAfter": 1
+      }
+    ],
+    "failures": [],
+    "componentCountBasis": "identical alpha and original label topology; invalid when alpha gate fails"
+  },
+  "originalAiResultUnchanged": {
+    "path": "audits/O3_20261103/coordinator/finishes/lancelet008-green-r05-atlas/finished/result.json",
+    "sha256": "fb445b64a046d931af364a08c25aedfa4303e06c3f40d720310a2b2be1e35ff0",
+    "bytes": 42203
+  },
+  "newAiRuns": 0,
+  "nativeRuns": 0
+}
