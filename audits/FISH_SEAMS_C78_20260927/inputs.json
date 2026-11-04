@@ -1,0 +1,474 @@
+[
+  {
+    "name": "03-sculpin",
+    "sourceReadOnly": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/03-sculpin/fit",
+    "copy": "audits/FISH_SEAMS_C78_20260927/inputs/03-sculpin",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/03-sculpin/packet/master.png",
+    "canonicalMaster": "audits/G2_C72_20260927/03-sculpin/master.png",
+    "masterSha256": "2cc3bf01dcfb7de2242ed45e70a04a1c52f51247749d6f88407f4132c39ab600",
+    "files": [
+      {
+        "path": "record.json",
+        "sha256": "74ecb0894f00b2c916be59f1eee10efee6da2e46bc913ab58ec406989cd7a0aa"
+      },
+      {
+        "path": "binding.json",
+        "sha256": "98582638db500c7a1a6bf170dfa915d4793180a66a0c02ca6c4bfff17229ba72"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "cceb890135541108c71502cbe722e5c4007fe2299d1ff9bc2913496db5ee6456"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "e77464fe1969eb0220da11ae84b5f0113517472746064f9a0dc9d33f590f4d67"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "2244eb6942936448fd2ba2a53996f039e00b0e31361feb6db9d70ed247518213"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "f79e0ea2188040c8bc0570b98322aba5408f979d7cfaf5c8a5ac51dc97a78403"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "499b8c3338cef681e64459e15b0cd6b4f922c07b019715d72efebc0e962aa60d"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "4da9e2ef501c03cb0de6d72b60cccdd0eee13444a5e476d7ce79b510efabc945"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "3be96d2c33b461dc63ab1c4620043d54d4e8398c9f1e046fd3c4a8960b8acbbf"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "44bc7669288e6dc21074741edb7a3270b4905c2ffe18843b59fff3d84356f08f"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "6ed917619c66156c4ffaf16c6ee396e7ee09d829660c7581e0931095affd89d1"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "b1f40fe9fa10d0a4ae2f12f440464643a2c7982b5b94a3fb02c5d67791459e00"
+      },
+      {
+        "path": "parts/parts/caudal.png",
+        "sha256": "f61ba2a37908e61008d6f5d39d4286e72702352114c0486157c42ec8a01fe6f5"
+      },
+      {
+        "path": "parts/parts/body-2.png",
+        "sha256": "e133f9c0f1b6e54093347215d0a6362ae22db322686b7ea7af25e18bc2ca8a24"
+      },
+      {
+        "path": "parts/parts/body-3.png",
+        "sha256": "cc16421a158de0630b7968be0cceae8636f85ee7293e9d4d5572ddef974f098c"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "05c40f034ea5c1a917026f3805f671df144ddbfc02e5cc240fe53c44aa40d273"
+      },
+      {
+        "path": "parts/parts/body-1.png",
+        "sha256": "004b4d212ec1f9d2500451a156f89cb13ce7ac60bc57de6282a3257fa1688057"
+      },
+      {
+        "path": "parts/parts/body-0.png",
+        "sha256": "78e5777ee86dafcb46db4a26fdcbed296f41978ae03c20eb3e1852e7ccfdc42d"
+      },
+      {
+        "path": "parts/parts/body-4.png",
+        "sha256": "b1c6188f722fcb9128dd6e1d2214c5a06a9c6cd93655208d5e34211761081b96"
+      },
+      {
+        "path": "parts/parts/body-5.png",
+        "sha256": "b1a219a5ac4bd5098afcd427fd82fefde8a3d0c9da5166e4a46d453cf11de72d"
+      },
+      {
+        "path": "parts/parts/near-pectoral.png",
+        "sha256": "68e05186c112c4d46b37cee624e4684e05334fdeaf44870bcbd69e33763e9345"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "4a86a57afe32d0cd9375ecffd78fbb4ae6da1b049c3834a81646743a9c10494f"
+      },
+      {
+        "path": "parts/parts/dorsal.png",
+        "sha256": "a4e125ef1347e5ec491f6fedeeb2c8c1da1ec389f1aceb94135d6bd1baf02526"
+      },
+      {
+        "path": "parts/parts/far-pectoral.png",
+        "sha256": "9e9e70a8615b96039c0db161523fda105e9abbbf4cd1ee32a2d08b87d16bb5cf"
+      },
+      {
+        "path": "parts/atlas/03-sculpin.json",
+        "sha256": "e996375ac4e6efaed36c669d9870d15c392d9d0530cdd4e8cc5e6ab0f364886f"
+      },
+      {
+        "path": "parts/atlas/03-sculpin.png",
+        "sha256": "d28ce18bf7d4c5c031dead66b8c2d1cb70a3174cae23a876ea7368db7bcf570f"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "f1660a0b823bd3eaa08306cafe95239bc907ac704cd84ecf275e93f517ca7f90"
+      }
+    ]
+  },
+  {
+    "name": "01-grayling",
+    "sourceReadOnly": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/01-grayling/fit",
+    "copy": "audits/FISH_SEAMS_C78_20260927/inputs/01-grayling",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/01-grayling/packet/master.png",
+    "canonicalMaster": "audits/G2_C72_20260927/01-grayling/master.png",
+    "masterSha256": "09ba182690b8c5d3207ea28c1ada45b57482813b939d292ee1b7d88f73a68905",
+    "files": [
+      {
+        "path": "record.json",
+        "sha256": "3e87e522c1d6ef4b4ca9e55042a157009f5ea37e8308e3c6674f3a8e34f6cda7"
+      },
+      {
+        "path": "binding.json",
+        "sha256": "4a3aa49285f8ac8f0fcdd3e4f076f1a22d9942fc0a736f1e31acf968f1726b4f"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "71012a1cb850dd77744c5e8900849bedf6d4a885a0b0a85d2ca6fbb6e45218e3"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "4f987c5cb6892caa6dbdbe17ba4b6248390c14cad3694f8c99f6c3ed902a1b98"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "782d364ab9b0b8555dd7f26968129018cb84bb33df0ec02ec173023ee8c932bb"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "ac9b71c95c352ec891d037e378d94b4ef8687985e96f6a7b822712d29a13f765"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "98693c5245746db5b84f8df544e973917e4e05db714b8198dda1c6a78d7b742d"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "76ff9729e57783be51c1239e2f8a687b0fe6b9bcd56325ac5e5a99e68b1c0a8c"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "64bdf1cf9ef246542958ff6b5e274e38c00ca21ef949c4a8c3d743fc7a4108b4"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "476feecabe608c6ec4261a7ade04ab147934e63a68b7820642c5bf98be5484fe"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "19450fa2641078a14a92355e4f01637000373ec34b31f6850fe8c1eefe0973ec"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "6c047604993f073e694efcfabd69d7bd0a7d27af80851645c6385a81bafa4683"
+      },
+      {
+        "path": "parts/parts/caudal.png",
+        "sha256": "eb4ba3b652c376a1d6ed6080683b33c3e4a509d58d57edfafc1012532855eddd"
+      },
+      {
+        "path": "parts/parts/body-2.png",
+        "sha256": "5e7bb1ce24e8fdcfdb2d2483878e2ee0473fb60af7c64db7d2bf1e6e4826f832"
+      },
+      {
+        "path": "parts/parts/body-3.png",
+        "sha256": "4cd404fb9c953dc57a24a7f8862782900e9cee820606aae894bfaa393071dba4"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "eaf52ec52ba461f7e4d3f6e54de084c4a000873df638b44dad4941fd06d07cb2"
+      },
+      {
+        "path": "parts/parts/body-1.png",
+        "sha256": "5ed9a4452704052f85a3ca402a306923567856cd7fdc60340b4559a9176d297f"
+      },
+      {
+        "path": "parts/parts/body-0.png",
+        "sha256": "3b549057710973529d45f2f9ea52129ec82a458739255f914ac7a258581df939"
+      },
+      {
+        "path": "parts/parts/body-4.png",
+        "sha256": "8a4803628b020d76a27e278f403efe665237ecf19e08672a4a1db22436cc145b"
+      },
+      {
+        "path": "parts/parts/body-5.png",
+        "sha256": "e29a060b9a3c3dbc0b3b79c7bc8e49c64a06503409c7f91039944f981cf919d7"
+      },
+      {
+        "path": "parts/parts/near-pectoral.png",
+        "sha256": "3b8b373833b8c6a3b5578ed7bc634e0f384a9340bce14ae9c8c5686d54bc989f"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "1bbd12d4dc0ad61f68cc1178bdbb7708c25325d297a4510ff20b35cbf64f545f"
+      },
+      {
+        "path": "parts/parts/dorsal.png",
+        "sha256": "d552db53b433c53459865cc91b59d0f0a9fed2f78f17a0b8786a1c32d785ae64"
+      },
+      {
+        "path": "parts/parts/far-pectoral.png",
+        "sha256": "7c206d27a5a264eaa18b03109bf21c839dd52fa76333cb276063134ad34ec6ad"
+      },
+      {
+        "path": "parts/atlas/01-grayling.png",
+        "sha256": "505275d999b5619794b7683d57e7773935d18c3e17f4fbc3395d10e3e83f618c"
+      },
+      {
+        "path": "parts/atlas/01-grayling.json",
+        "sha256": "2095595f4a5771b2ae5d5bae85403bfdbe5e9d12f6789d9060684a989cc9798a"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "a405054fe9bf367e45b03dc3b597157bd683a52515f52f4327a4f390a0575d3d"
+      }
+    ]
+  },
+  {
+    "name": "04-walleye",
+    "sourceReadOnly": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/04-walleye/fit",
+    "copy": "audits/FISH_SEAMS_C78_20260927/inputs/04-walleye",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/04-walleye/packet/master.png",
+    "canonicalMaster": "audits/G2_C72_20260927/04-walleye/master.png",
+    "masterSha256": "d9af5e52a51e9dab8fad982dc4adf37f57719bf9847c70d7bb9b88848d3cb423",
+    "files": [
+      {
+        "path": "record.json",
+        "sha256": "df13119f385bb2435c6dfc8f37a2bab2c4a3c0e3eb709566a0097c1d385a6d72"
+      },
+      {
+        "path": "binding.json",
+        "sha256": "9cfa54c72c44a000c5499308dbf693e447b9156d1bf1ca61de6989931f7b030b"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "0210fcd1b08c94cc72279bf0878f09a1612adea44217baabf968b3c4aa3d1bc2"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "7100b07dd1d098db2e455ceed011b88425f3dd6506d7813f5531a45ae5cd98f2"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "ebbc043e83e0ad3bface1732fc3ff06122a7e4bc026b85f2323f49ba952919dd"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "8933b1b7dfe89dce6e52cb2e8b5816bb84e0ab23e32eac356c5c80e4528e9c79"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "4df5d054cf28616ea52f7d31aee1988f05333f45232e4f2f098590fbc81c1d25"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "2624cc3ad7175e3b57e9a99111eda96f841a1bd67a4363838b7ffb329b884178"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "51ce13c49adfa785c1b734be629d31b7b034ef4377625a2e8bcfb4a904be40de"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "6a4cd96e06e09228c8c407424d9eeea3560f59a026f6ba4778f53084444cdc26"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "84f6c83a05c5d29fdf78654769c0cf6cca48132af4fb8745583670eba69becd0"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "309df8e61f17a348dc3db7a34d088e0c6989eac5402207f69591a9dd804c657f"
+      },
+      {
+        "path": "parts/parts/caudal.png",
+        "sha256": "3815c71597d4a3f50ed5dfb0f35d7338474f2af024aa78112525d0de47b5a0fd"
+      },
+      {
+        "path": "parts/parts/body-2.png",
+        "sha256": "071b587d7c385e003a11a6bacb0244e99773a1d528561627312e22b4b1a29031"
+      },
+      {
+        "path": "parts/parts/body-3.png",
+        "sha256": "9c368325866e94a13bac1455826000e1b6b53eef8bf1c4bf401fc8f6402febac"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "7432c0a60e27b0fa349d057248fb6d19caffc7610fd116fbb5c249a4f61535d2"
+      },
+      {
+        "path": "parts/parts/body-1.png",
+        "sha256": "dcf051921b984211d6abe5e5fd36f2530ac73e3d48479250f30a6c052b3902b1"
+      },
+      {
+        "path": "parts/parts/body-0.png",
+        "sha256": "c54d0fb2ae77feb48492f1aaccb1de0e67e47eeb506acba30e5b8b3896b19543"
+      },
+      {
+        "path": "parts/parts/body-4.png",
+        "sha256": "38fa271e7ef371a4808da96d1b152dc50ec4b5d1c93bafc63f1588719c5a2144"
+      },
+      {
+        "path": "parts/parts/body-5.png",
+        "sha256": "514030fe51f5180ce48dbec04fa02b19479c6026ae22adccebdaee30b6c89fb3"
+      },
+      {
+        "path": "parts/parts/near-pectoral.png",
+        "sha256": "4768173a98f0168342478250957b018040b2756c621ee6839e0f2b88483eddd2"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "5f18f1fd56d24923815b1ee68e6149cbaa99b62488da15140e2c3e13aefedff8"
+      },
+      {
+        "path": "parts/parts/dorsal.png",
+        "sha256": "348eb202d248e74c27d46c28ad7e602fa0d64b4ccfe30bc63395b29bb923cefa"
+      },
+      {
+        "path": "parts/parts/far-pectoral.png",
+        "sha256": "536a6474dc9d1bc82b6e96e8a811744e7d88770623f94a372589c4d16d4768ef"
+      },
+      {
+        "path": "parts/atlas/04-walleye.json",
+        "sha256": "350ee4f2c36d45c070584479281a634f4778d53b38cdbda34efc968f37efbfe6"
+      },
+      {
+        "path": "parts/atlas/04-walleye.png",
+        "sha256": "5fd99bdc84343a95792feee23063a216ca09bd49f8ea876319dfe3d55adbf77e"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "057d2967d7ee83648ea7a3f209fac723f210e46b4938ec1fbd50c3d26c82a299"
+      }
+    ]
+  },
+  {
+    "name": "06-pacu",
+    "sourceReadOnly": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/06-pacu/fit",
+    "copy": "audits/FISH_SEAMS_C78_20260927/inputs/06-pacu",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/06-pacu/packet/master.png",
+    "canonicalMaster": "audits/G2_C72_20260927/06-pacu/master.png",
+    "masterSha256": "f99c5c9f4d11c99170d51a0ceccd6293b1c0c4fb3bde2a3e5337ba0e5767afd6",
+    "files": [
+      {
+        "path": "record.json",
+        "sha256": "464497699af0618da1789d00ab0903d36fec86449bed0a1ed8457142a04cb355"
+      },
+      {
+        "path": "binding.json",
+        "sha256": "f6b054cdad1a74ceb787890e8c2da9eb0bd865299eea02755899f94f8418d737"
+      },
+      {
+        "path": "pre-split-binding.json",
+        "sha256": "ba17115af4bb490962c8741ccd2a0a24501276a6cde136146d35a156fd0cf6e8"
+      },
+      {
+        "path": "intake-provenance.json",
+        "sha256": "5ba7441eaecce164f40b14273a1dc89e21ab4fe67a6005b8433f7ac4f85931fd"
+      },
+      {
+        "path": "declaration.json",
+        "sha256": "d06a81adbd999504c89616f3de9de5c7986385f41fbb19826bcf598dff4aafb6"
+      },
+      {
+        "path": "receipt.json",
+        "sha256": "460566892f90ec3b58ce149753451f6065631d5399040d3c102ccb80fb885aa5"
+      },
+      {
+        "path": "parts/binding.json",
+        "sha256": "acca8fe2262203f5d37e38e31d2168d5ac11e8d461b8edb26c2725201aa7bb3c"
+      },
+      {
+        "path": "parts/keyed.png",
+        "sha256": "f24b15d63e279c391507796ca6a3bcfee3b9c35d9b22d086cbf1af954915baca"
+      },
+      {
+        "path": "parts/ownership.png",
+        "sha256": "774adeaf1412d9bfdc5e63fc47b85ea68a1b2cc15e3347de91fbb5345b810956"
+      },
+      {
+        "path": "parts/manifest.json",
+        "sha256": "9e293ddd1a42be2938e07010eb411a4b83bc0faec186653b06669399638e40b7"
+      },
+      {
+        "path": "parts/receipt.json",
+        "sha256": "493363d80bcae2e949abff68c393bc309c115b3abba7f56078ebcf5c67f0b527"
+      },
+      {
+        "path": "parts/parts/jaw.png",
+        "sha256": "c3869ec64b3766d5b38a994e9da18ce727c5fa54a999e5b98f97544de143dcd9"
+      },
+      {
+        "path": "parts/parts/caudal.png",
+        "sha256": "a16f1f6106c01ba1966b4e501673120a9a6572524139f4ce3365894fc3e64695"
+      },
+      {
+        "path": "parts/parts/body-2.png",
+        "sha256": "1df5f6304b600b2fdecbe7f1b2284e3a3a5d88d4206aad691aaee3767e19e5e7"
+      },
+      {
+        "path": "parts/parts/body-3.png",
+        "sha256": "9bdca481be44b975acfcbc1a5f7beb4fbcec44565d510f7dac4b78e7b847de6c"
+      },
+      {
+        "path": "parts/parts/body.png",
+        "sha256": "5581fb6c40d84afcf49af66527cdf5e6594db7133d4096a299f75ba49354342f"
+      },
+      {
+        "path": "parts/parts/body-1.png",
+        "sha256": "177b8b8c63a042f519f720be4298bba346956de553dd714adb1d5f254226610a"
+      },
+      {
+        "path": "parts/parts/body-0.png",
+        "sha256": "e559e5ab74944447723e94f6dbae02a721442da425f372cf4cbcec9c2b8934be"
+      },
+      {
+        "path": "parts/parts/body-4.png",
+        "sha256": "24d83621095b8da14e3e47157e786c0bb9e92fde3c8d7002ee2c4e762225b853"
+      },
+      {
+        "path": "parts/parts/body-5.png",
+        "sha256": "5d907272c25d0d82950b4c463bebd3c220d1905ceb677be8ad9340d456b44c11"
+      },
+      {
+        "path": "parts/parts/near-pectoral.png",
+        "sha256": "e8298fc194e6cc891cd6b76cc34375671b8e453f539b7ea6e01e64ce53aa090f"
+      },
+      {
+        "path": "parts/parts/head.png",
+        "sha256": "7aa9ae02780302453302ce677fae5ceb848e45f608db810b5955d994b314f09c"
+      },
+      {
+        "path": "parts/parts/dorsal.png",
+        "sha256": "2c69b79ed87a81e78960443132b3ea6d3b7ee49564f2b5beb5da42a4e7b5a95a"
+      },
+      {
+        "path": "parts/parts/far-pectoral.png",
+        "sha256": "701cf0225ed0a80be43b2d478ca625e3cbf3c070a49a56f860dc4631b9f058f4"
+      },
+      {
+        "path": "parts/atlas/06-pacu.png",
+        "sha256": "5c50b3f4c3cab82ff8df48fa76ebd8fe74fab5ca0bcede8f83cdae6f17e05782"
+      },
+      {
+        "path": "parts/atlas/06-pacu.json",
+        "sha256": "a817a496c0da7a74abc6ce67c1b26ebec83b7a7a55b016996bc71d0de41ec6c1"
+      },
+      {
+        "path": "parts/atlas/receipt.json",
+        "sha256": "2674da5297adc3db29abb5c3584a7b3e4176eb1a635cf80441c44f6169bdab39"
+      }
+    ]
+  }
+]

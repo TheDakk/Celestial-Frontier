@@ -1,0 +1,325 @@
+{
+  "frames": {
+    "body-0.png": {
+      "frame": {
+        "h": 319,
+        "w": 173,
+        "x": 5,
+        "y": 343
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 319,
+        "w": 173
+      },
+      "spriteSourceSize": {
+        "h": 319,
+        "w": 173,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body-1.png": {
+      "frame": {
+        "h": 322,
+        "w": 122,
+        "x": 5,
+        "y": 672
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 322,
+        "w": 122
+      },
+      "spriteSourceSize": {
+        "h": 322,
+        "w": 122,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body-2.png": {
+      "frame": {
+        "h": 231,
+        "w": 137,
+        "x": 5,
+        "y": 1004
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 231,
+        "w": 137
+      },
+      "spriteSourceSize": {
+        "h": 231,
+        "w": 137,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body-3.png": {
+      "frame": {
+        "h": 246,
+        "w": 198,
+        "x": 430,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 246,
+        "w": 198
+      },
+      "spriteSourceSize": {
+        "h": 246,
+        "w": 198,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body-4.png": {
+      "frame": {
+        "h": 122,
+        "w": 73,
+        "x": 188,
+        "y": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 122,
+        "w": 73
+      },
+      "spriteSourceSize": {
+        "h": 122,
+        "w": 73,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body-5.png": {
+      "frame": {
+        "h": 87,
+        "w": 94,
+        "x": 188,
+        "y": 550
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 87,
+        "w": 94
+      },
+      "spriteSourceSize": {
+        "h": 87,
+        "w": 94,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body.png": {
+      "frame": {
+        "h": 208,
+        "w": 120,
+        "x": 137,
+        "y": 672
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 208,
+        "w": 120
+      },
+      "spriteSourceSize": {
+        "h": 208,
+        "w": 120,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "caudal.png": {
+      "frame": {
+        "h": 225,
+        "w": 181,
+        "x": 199,
+        "y": 183
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 225,
+        "w": 181
+      },
+      "spriteSourceSize": {
+        "h": 225,
+        "w": 181,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "dorsal.png": {
+      "frame": {
+        "h": 168,
+        "w": 415,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 168,
+        "w": 415
+      },
+      "spriteSourceSize": {
+        "h": 168,
+        "w": 415,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-pectoral.png": {
+      "frame": {
+        "h": 56,
+        "w": 62,
+        "x": 390,
+        "y": 261
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 56,
+        "w": 62
+      },
+      "spriteSourceSize": {
+        "h": 56,
+        "w": 62,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 150,
+        "w": 184,
+        "x": 5,
+        "y": 183
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 150,
+        "w": 184
+      },
+      "spriteSourceSize": {
+        "h": 150,
+        "w": 184,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "jaw.png": {
+      "frame": {
+        "h": 78,
+        "w": 167,
+        "x": 271,
+        "y": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 78,
+        "w": 167
+      },
+      "spriteSourceSize": {
+        "h": 78,
+        "w": 167,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-pectoral.png": {
+      "frame": {
+        "h": 90,
+        "w": 167,
+        "x": 137,
+        "y": 890
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 90,
+        "w": 167
+      },
+      "spriteSourceSize": {
+        "h": 90,
+        "w": 167,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "03-sea-bass-fixed-01.png",
+    "scale": "1",
+    "size": {
+      "h": 1240,
+      "w": 633
+    }
+  }
+}

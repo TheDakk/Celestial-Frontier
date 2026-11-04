@@ -1,0 +1,842 @@
+[
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn2-dodge-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "de1bac0d52e61f7edbccd962697b2f4b61e6b78398c73a96f51add89732abc37",
+    "bytes": 1242154,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn0-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn0-hit-return-end.png",
+    "sha256": "2e86fb21f15191b5139ad635a603285c26f87e72db1596276ce848be73be78a1",
+    "bytes": 1192865,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn3-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn3-hit-approach-50.png",
+    "sha256": "ae4d5e3b0d9b1100a3ad2ae30276ce5211a323c251d353e6190c6eb1e6dd8199",
+    "bytes": 1193114,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn0-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn0-hit-approach-50.png",
+    "sha256": "ae4d5e3b0d9b1100a3ad2ae30276ce5211a323c251d353e6190c6eb1e6dd8199",
+    "bytes": 1193114,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn1-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn1-hit-approach-50.png",
+    "sha256": "1fdfdb921db53400186af090d6bcfc3d5b32cc8cc1896eef36f02ad5501eeac3",
+    "bytes": 1195657,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn3-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn3-hit-return-end.png",
+    "sha256": "fc59eb2ad20b58c72b8e8623b778f1c47f14848e7b1d9e6d982fe25afa023dd5",
+    "bytes": 1203180,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn0-hit-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn0-hit-reaction-50.png",
+    "sha256": "9e644c84aec3a7b1db27f49e7c2e968abcd614870704e6b7d189234645708e0b",
+    "bytes": 1240748,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn2-dodge-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn2-dodge-return-end.png",
+    "sha256": "2e86fb21f15191b5139ad635a603285c26f87e72db1596276ce848be73be78a1",
+    "bytes": 1192865,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn1-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn1-hit-impact.png",
+    "sha256": "4ded93f51a5624f3e65fe281c56429542f8a48bed93d98efc92d590c7e759e30",
+    "bytes": 1196958,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn0-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn0-hit-impact.png",
+    "sha256": "2e0af706830d0b78e752c14147dcd2d2bfca17091b318323e8f3e36b59750659",
+    "bytes": 702990,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn1-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn1-hit-return-end.png",
+    "sha256": "8de9a7ac6c853c1ab4834f5365cdc02a714068db2da559ae17557acda037aa9d",
+    "bytes": 1192811,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn2-dodge-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn2-dodge-impact.png",
+    "sha256": "44cfa1242baab013790f934d73cfdeaa9eeec0ab533df59320262b6df5724a39",
+    "bytes": 1234668,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn2-dodge-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn2-dodge-approach-50.png",
+    "sha256": "ae4d5e3b0d9b1100a3ad2ae30276ce5211a323c251d353e6190c6eb1e6dd8199",
+    "bytes": 1193114,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn3-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn3-hit-impact.png",
+    "sha256": "d5a7b8b0493e101aa9032b00b932961d0d8011b841ef6f4fb557969a931c4ab5",
+    "bytes": 1196679,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn3-hit-idle-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/02-barracuda-native-01/turn3-hit-idle-50.png",
+    "sha256": "62588ccc6cf8eb47aac27d8c403cc4f222f1797d9c40edb36623e196867daa92",
+    "bytes": 1202461,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn2-dodge-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "b56bef0b8b0709e80d18ac8838d84c740856d84c3e78c2a6bb0b0a897a757d6f",
+    "bytes": 1227317,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn0-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn0-hit-return-end.png",
+    "sha256": "be2365ea0b07fa2e86805b46b897f4dc779ecaf4e2bc2ad76831f8fd5d7e4e26",
+    "bytes": 1205346,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn3-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn3-hit-approach-50.png",
+    "sha256": "67a8445f01fc0a8d6f283dd02a2b7d6a6e31d5403b1bfb08ad8c3e0b5444981c",
+    "bytes": 1206092,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn0-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn0-hit-approach-50.png",
+    "sha256": "67a8445f01fc0a8d6f283dd02a2b7d6a6e31d5403b1bfb08ad8c3e0b5444981c",
+    "bytes": 1206092,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn1-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn1-hit-approach-50.png",
+    "sha256": "d9899f0bb24bfe99287d0f545782acba4f25e627431761c93b32bddf0cbbebbf",
+    "bytes": 1207392,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn3-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn3-hit-return-end.png",
+    "sha256": "fa97617ffc9320fcc33e9d3c904e432074abdcd88a64c76543b6f7233eb84eeb",
+    "bytes": 1210002,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn0-hit-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn0-hit-reaction-50.png",
+    "sha256": "8ad80c0ae09afdf7ab015a5a57a16fad1de5c6968d47d2969595802c4796c04d",
+    "bytes": 1225722,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn2-dodge-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn2-dodge-return-end.png",
+    "sha256": "be2365ea0b07fa2e86805b46b897f4dc779ecaf4e2bc2ad76831f8fd5d7e4e26",
+    "bytes": 1205346,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn1-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn1-hit-impact.png",
+    "sha256": "d021cd52ed49bfe5c5b760b7a6c144e5cf2829efbd4eb6a9ac9ae43e9b47d200",
+    "bytes": 1208681,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn0-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn0-hit-impact.png",
+    "sha256": "b0efd2cb7e92eac520103228cc3617bae8f2b87d54ad4d999a04e17c5a454244",
+    "bytes": 694172,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn1-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn1-hit-return-end.png",
+    "sha256": "ade9f93d552d1506c8f2a6e1cab68105ee576cff5bcbcacbf4f29506135d9576",
+    "bytes": 1205467,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn2-dodge-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn2-dodge-impact.png",
+    "sha256": "cae65691c288eb80721e06b4313f4894dcd1f07034e8879996c0894ace5ce1ed",
+    "bytes": 1223318,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn2-dodge-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn2-dodge-approach-50.png",
+    "sha256": "67a8445f01fc0a8d6f283dd02a2b7d6a6e31d5403b1bfb08ad8c3e0b5444981c",
+    "bytes": 1206092,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn3-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn3-hit-impact.png",
+    "sha256": "6924cb8945709d962791e06326d15f412220fe91fd43b832e47994d9a054d071",
+    "bytes": 1207780,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn3-hit-idle-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-grouper-native-01/turn3-hit-idle-50.png",
+    "sha256": "ac138f9bcbc536b8804660f1fe36f560cd03d8328a2b2d4611c72a943a48c3ad",
+    "bytes": 1209853,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn2-dodge-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "748962938e98ad05333a0d1a0664c6d25f3978e0436bb0fa0787864deebbcfbd",
+    "bytes": 1240046,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn0-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn0-hit-return-end.png",
+    "sha256": "40b52576aec1bbc02084540588dfaeadb368990fc88f839343907239382e0e4e",
+    "bytes": 1197047,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn3-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn3-hit-approach-50.png",
+    "sha256": "3c011944c00ca55c060875f08c21c80fd3a280152169e317ac12b4638abbbcb5",
+    "bytes": 1198096,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn0-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn0-hit-approach-50.png",
+    "sha256": "3c011944c00ca55c060875f08c21c80fd3a280152169e317ac12b4638abbbcb5",
+    "bytes": 1198096,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn1-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn1-hit-approach-50.png",
+    "sha256": "242a11b4f772358e18519f2e4b7f4cd6e54eb6254b2bc857ac6954f065bae03f",
+    "bytes": 1199727,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn3-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn3-hit-return-end.png",
+    "sha256": "0751d726dcd41fd6cdf0c3b4ae467d6fb5c3cc054e167a9813c3da6239bf5ac0",
+    "bytes": 1203504,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn0-hit-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn0-hit-reaction-50.png",
+    "sha256": "69d177f057eb256adf769d191853cc26b7d0da8aa64adc7389de2d9b77a97e7a",
+    "bytes": 1237166,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn2-dodge-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn2-dodge-return-end.png",
+    "sha256": "40b52576aec1bbc02084540588dfaeadb368990fc88f839343907239382e0e4e",
+    "bytes": 1197047,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn1-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn1-hit-impact.png",
+    "sha256": "8b0a8a9da4a9a575e5c283724ea53a4462008566e322861a60ef6701d2915e4b",
+    "bytes": 1199824,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn0-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn0-hit-impact.png",
+    "sha256": "23b377a0414731130058b5d3751e40784131300243e0790a95ccec519730c202",
+    "bytes": 702078,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn1-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn1-hit-return-end.png",
+    "sha256": "29060c261ecd546292b3f93f4501895c795cc4cdd9923017834f124cab809238",
+    "bytes": 1197142,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn2-dodge-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn2-dodge-impact.png",
+    "sha256": "0a2d05e173ffa9befb3b4f0fe0559caf57cb6acb12070b523be0d236c94e737d",
+    "bytes": 1232362,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn2-dodge-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn2-dodge-approach-50.png",
+    "sha256": "3c011944c00ca55c060875f08c21c80fd3a280152169e317ac12b4638abbbcb5",
+    "bytes": 1198096,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn3-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn3-hit-impact.png",
+    "sha256": "3a056493be778adc8571aea8d350ecd091f9e950a834423eb016ce5a4c2a82cf",
+    "bytes": 1198985,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn3-hit-idle-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-tarpon-native-01/turn3-hit-idle-50.png",
+    "sha256": "c6d53eda850c7ca7e74412996d45616a6c7d2dde3c37def26745d83018315460",
+    "bytes": 1204617,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn2-dodge-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "df59c5c37c34808b490fd56802fff170f74199ad6b99cd074b74cc91b144d721",
+    "bytes": 1198577,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn0-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn0-hit-return-end.png",
+    "sha256": "251807473b39e7d6dc70a4c5263ad319fd8b3dd4a5418a5ac2fd5747c0a0fc63",
+    "bytes": 1185757,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn3-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn3-hit-approach-50.png",
+    "sha256": "9c52b110c056fe6dd98a200ad4a9b1e432c393cd2e65859b0f38cb54a0caaac8",
+    "bytes": 1186422,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn0-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn0-hit-approach-50.png",
+    "sha256": "9c52b110c056fe6dd98a200ad4a9b1e432c393cd2e65859b0f38cb54a0caaac8",
+    "bytes": 1186422,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn1-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn1-hit-approach-50.png",
+    "sha256": "f2a57ee1b3a7735a8f4cf7ce7d1a00f563b8ca2d0885156ef3bcc9d450b84054",
+    "bytes": 1187473,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn3-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn3-hit-return-end.png",
+    "sha256": "9e63114f999937d6b200ab0218d00c890349ea99c2ca7a938b4607231447e99d",
+    "bytes": 1189049,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn0-hit-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn0-hit-reaction-50.png",
+    "sha256": "2aa5c594e019af1882c27c933de4241fd75d140d0ec51d343ae2c52b8c0b1d41",
+    "bytes": 1197408,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn2-dodge-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn2-dodge-return-end.png",
+    "sha256": "251807473b39e7d6dc70a4c5263ad319fd8b3dd4a5418a5ac2fd5747c0a0fc63",
+    "bytes": 1185757,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn1-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn1-hit-impact.png",
+    "sha256": "0f93e9dd460c556035f195cd94df83440ac2ab543c8bc257a235a8f408e5456b",
+    "bytes": 1189280,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn0-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn0-hit-impact.png",
+    "sha256": "ac4d7d7b6a1204a57c43d5304ea5cf7b9bb5cf11141bdab412044c9dcc6c06f2",
+    "bytes": 673926,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn1-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn1-hit-return-end.png",
+    "sha256": "418a2e43dc765ab52d9d5ccaf52977974b59f9ca6d369eea318cc3a2186fca8b",
+    "bytes": 1186026,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn2-dodge-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn2-dodge-impact.png",
+    "sha256": "975978bb4a0064c0f23f4456d6a28a0d9e7c13588843557c1376ebd46add75d0",
+    "bytes": 1197069,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn2-dodge-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn2-dodge-approach-50.png",
+    "sha256": "9c52b110c056fe6dd98a200ad4a9b1e432c393cd2e65859b0f38cb54a0caaac8",
+    "bytes": 1186422,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn3-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn3-hit-impact.png",
+    "sha256": "2a0a1e37131625fa81cae7c2ee20bd378974bfeee5625de4d679d99b4afc0304",
+    "bytes": 1188843,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn3-hit-idle-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/07-mahi-mahi-native-01/turn3-hit-idle-50.png",
+    "sha256": "912fcee5e34ab332e94eea8337e9fc3f552f20ddde235a1e2d02940f96864e8f",
+    "bytes": 1190270,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn2-dodge-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "ba48bcfc30ed07cefdcd19c37c86b67bed5ec182880f5ffd2a5b63e888d552b7",
+    "bytes": 1217611,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn0-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn0-hit-return-end.png",
+    "sha256": "2fffa5e4f8d1826a95e5b7ad41e790c8bc52396d8f44ef589eddea2ed38509b4",
+    "bytes": 1177117,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn3-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn3-hit-approach-50.png",
+    "sha256": "13e4badc6764bb18878a0cc49dde6fb62ac4593f7a3f7ed08fe3e2daa49c2d5f",
+    "bytes": 1178504,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn0-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn0-hit-approach-50.png",
+    "sha256": "13e4badc6764bb18878a0cc49dde6fb62ac4593f7a3f7ed08fe3e2daa49c2d5f",
+    "bytes": 1178504,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn1-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn1-hit-approach-50.png",
+    "sha256": "1c0029770d7a4b2a978a47028188724ec715dd0e2d0d6f617977298f4ed09979",
+    "bytes": 1180469,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn3-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn3-hit-return-end.png",
+    "sha256": "9fe6f1d72bf6d0fe0b13182f11fac9909fb69d24b0a75937fd6bfca5a8b7005c",
+    "bytes": 1179426,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn0-hit-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn0-hit-reaction-50.png",
+    "sha256": "d1d3d670eba952ce47eec15789a9fb5aefa3b3c7453b7f4df211fb013cf53ece",
+    "bytes": 1215119,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn2-dodge-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn2-dodge-return-end.png",
+    "sha256": "2fffa5e4f8d1826a95e5b7ad41e790c8bc52396d8f44ef589eddea2ed38509b4",
+    "bytes": 1177117,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn1-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn1-hit-impact.png",
+    "sha256": "90dc1342b31d3a5f2499ea14b098ad0c8bc921047c1dacc91b7412c07227ca64",
+    "bytes": 1181258,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn0-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn0-hit-impact.png",
+    "sha256": "2391c54fa9bf4269ed50fcd9e2f06dc7c5fa2e8ae569f4e3ea417997f61d9717",
+    "bytes": 682958,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn1-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn1-hit-return-end.png",
+    "sha256": "665edff6ff6646e1ba684dfbb9f34b41dd3a9d562e040d85fdcf975b330381bf",
+    "bytes": 1177232,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn2-dodge-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn2-dodge-impact.png",
+    "sha256": "5edb0624c28f68bbb50992c434900c2124c62e283d1391f68cd340733c6ffe67",
+    "bytes": 1211097,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn2-dodge-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn2-dodge-approach-50.png",
+    "sha256": "13e4badc6764bb18878a0cc49dde6fb62ac4593f7a3f7ed08fe3e2daa49c2d5f",
+    "bytes": 1178504,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn3-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn3-hit-impact.png",
+    "sha256": "4056de0819039b760997eee483f84aa40c01bc7e671ce6a23d4ca0fa84e8935a",
+    "bytes": 1180380,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn3-hit-idle-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/05-sailfish-native-01/turn3-hit-idle-50.png",
+    "sha256": "00f4a98fa2831a3c3e4a124d0ba944e69809ba7110dc5d8cbd274b7b305c84b4",
+    "bytes": 1180649,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn2-dodge-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "1ddd7c86f419995e96efd9d048f4bd1268fef2e6c7bce0c785684d9e6e11c225",
+    "bytes": 1239485,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn0-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn0-hit-return-end.png",
+    "sha256": "8a8b03d403dd2b5bcbb262fa7961a60eb9c2ab2caa9273c191d5336c1aa40e91",
+    "bytes": 1194022,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn3-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn3-hit-approach-50.png",
+    "sha256": "275a00e5fa332b7d9fc1e4486344a0a6abcc61d1bdaf8c47cd9a7d02923df9c4",
+    "bytes": 1194530,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn0-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn0-hit-approach-50.png",
+    "sha256": "275a00e5fa332b7d9fc1e4486344a0a6abcc61d1bdaf8c47cd9a7d02923df9c4",
+    "bytes": 1194530,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn1-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn1-hit-approach-50.png",
+    "sha256": "11ddcfb2beb5db1e1cf2ecc25534346fb734d01b004c23dd052492ca6b76f68c",
+    "bytes": 1196283,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn3-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn3-hit-return-end.png",
+    "sha256": "8dcfd2d00b2aa46d27d096ba422f5d1c69778f49887fe317ff7ce5bec5eca68e",
+    "bytes": 1201707,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn0-hit-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn0-hit-reaction-50.png",
+    "sha256": "fb2f3cad10584d93e65350104bb47216fae3e3bc1ed66fd8a93016c51a48ed36",
+    "bytes": 1238115,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn2-dodge-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn2-dodge-return-end.png",
+    "sha256": "8a8b03d403dd2b5bcbb262fa7961a60eb9c2ab2caa9273c191d5336c1aa40e91",
+    "bytes": 1194022,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn1-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn1-hit-impact.png",
+    "sha256": "a80a9ca65a2c5b7ec4c60b16964d8ab292967a12030cc574b283c197b5b50ed0",
+    "bytes": 1197366,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn0-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn0-hit-impact.png",
+    "sha256": "151b366c0bc607839212f70d7dbaaa277ef855777a75e9ceec739ea2d14a37a7",
+    "bytes": 701995,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn1-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn1-hit-return-end.png",
+    "sha256": "db6ee4be886d81b7543ea78b602f8e02971eafa639bf9c500a8ac1ba29b7635b",
+    "bytes": 1194027,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn2-dodge-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn2-dodge-impact.png",
+    "sha256": "5a09d7e13294fe680aadd451e38349f354132bc9d1e20345f57fd3bf828b18dd",
+    "bytes": 1231772,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn2-dodge-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn2-dodge-approach-50.png",
+    "sha256": "275a00e5fa332b7d9fc1e4486344a0a6abcc61d1bdaf8c47cd9a7d02923df9c4",
+    "bytes": 1194530,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn3-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn3-hit-impact.png",
+    "sha256": "4007b8a1aee2744a7f186f8baff018a8d2ccc476411e86a1071606265f1d894a",
+    "bytes": 1196781,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn3-hit-idle-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/01-mackerel-native-01/turn3-hit-idle-50.png",
+    "sha256": "5dda71a4ab879615f23f6a094dc483cd7e891f9b5087b08170b3659669f08936",
+    "bytes": 1202890,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn2-dodge-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "efa87f870228398e998a73248ca6d7f191b61639563223567eca0abe3ef45d43",
+    "bytes": 1255968,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn0-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn0-hit-return-end.png",
+    "sha256": "f28ea664374fb6bf3d573d5c7b0ace9e356a17c7a7def4056b3683352850a832",
+    "bytes": 1196890,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn3-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn3-hit-approach-50.png",
+    "sha256": "0fc28660b4f6066e8d9bcf3d5074dec0920dcc4d7597806ed32eaea88384bfa5",
+    "bytes": 1197539,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn0-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn0-hit-approach-50.png",
+    "sha256": "0fc28660b4f6066e8d9bcf3d5074dec0920dcc4d7597806ed32eaea88384bfa5",
+    "bytes": 1197539,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn1-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn1-hit-approach-50.png",
+    "sha256": "f77b63e6c83228103dcb3c2c2be8ad7d7dca3ac26b132c46954f387ea6b86a08",
+    "bytes": 1199648,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn3-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn3-hit-return-end.png",
+    "sha256": "59dc0edf469b802969a580eaba789dee452742bb921f9b1284f585cc3cad96f9",
+    "bytes": 1206984,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn0-hit-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn0-hit-reaction-50.png",
+    "sha256": "f849d3d5c2858b87c8826b1c8e08ee382c55f62925b7f46f83cbc891d56fcbd3",
+    "bytes": 1252703,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn2-dodge-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn2-dodge-return-end.png",
+    "sha256": "f28ea664374fb6bf3d573d5c7b0ace9e356a17c7a7def4056b3683352850a832",
+    "bytes": 1196890,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn1-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn1-hit-impact.png",
+    "sha256": "8df499ce97d659d000110e40da73215764210bec5c806093604c55f15a607f1d",
+    "bytes": 1201345,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn0-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn0-hit-impact.png",
+    "sha256": "571836412b34e2952de95481967615e1bd7c69a4d9e45191ec34e5740378eac7",
+    "bytes": 713141,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn1-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn1-hit-return-end.png",
+    "sha256": "f012dfaa59124b0e5a62d004baf613596549cdd5ed6e834e25ca6ae83f7b0f48",
+    "bytes": 1196542,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn2-dodge-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn2-dodge-impact.png",
+    "sha256": "0812a761154f68c2f9da5588d797ae7d86878230a34ec80576ee15a99a6303b2",
+    "bytes": 1245459,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn2-dodge-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn2-dodge-approach-50.png",
+    "sha256": "0fc28660b4f6066e8d9bcf3d5074dec0920dcc4d7597806ed32eaea88384bfa5",
+    "bytes": 1197539,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn3-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn3-hit-impact.png",
+    "sha256": "1714f0b1b7864597a02ce6b954a24b8541e72f3ebc73c482450cb0881cc55496",
+    "bytes": 1200405,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn3-hit-idle-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/04-sardine-native-01/turn3-hit-idle-50.png",
+    "sha256": "cd8eef74607798cf2536b91f58e4bdf006e85f6a1ff6d9f7a204c28a29f63323",
+    "bytes": 1208593,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn2-dodge-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "3dd144dd9e5b86693b7e32cd5327dd0dc4700b69225964bd246ba2208d8dd9b7",
+    "bytes": 1232893,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn0-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn0-hit-return-end.png",
+    "sha256": "9cbeace01f0b85b0f9d9ee10e33d08a7fd67c19e769095effeaa26903349871b",
+    "bytes": 1191056,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn3-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn3-hit-approach-50.png",
+    "sha256": "d148fd2ff7eeb220f4a3221bcc49c6bc3e090abae82452af5ac786a5c6280b02",
+    "bytes": 1192161,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn0-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn0-hit-approach-50.png",
+    "sha256": "d148fd2ff7eeb220f4a3221bcc49c6bc3e090abae82452af5ac786a5c6280b02",
+    "bytes": 1192161,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn1-hit-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn1-hit-approach-50.png",
+    "sha256": "e708c576639600acf56141802f14efe57dd7136944f887fff1f21818a60e08be",
+    "bytes": 1193741,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn3-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn3-hit-return-end.png",
+    "sha256": "b006c3836dc96f708f7c10eca4424265ad1b6c4d5fd764b2b4ad6ba2e319b487",
+    "bytes": 1197371,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn0-hit-reaction-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn0-hit-reaction-50.png",
+    "sha256": "bdd7fad0d8a7b74a803ba16c51dd18cde592527cd85a06b9fd74027e95b38efa",
+    "bytes": 1230706,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn2-dodge-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn2-dodge-return-end.png",
+    "sha256": "9cbeace01f0b85b0f9d9ee10e33d08a7fd67c19e769095effeaa26903349871b",
+    "bytes": 1191056,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn1-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn1-hit-impact.png",
+    "sha256": "df817e428dd8011e5e8eb5c11b0e1ef920cf6b58a367c0dde2a4f857e8560149",
+    "bytes": 1194011,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn0-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn0-hit-impact.png",
+    "sha256": "fa9bd9086c8d76c96e8a7f62d2df22675dee693d6c693632eb50cc88c1e3e02f",
+    "bytes": 693669,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn1-hit-return-end.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn1-hit-return-end.png",
+    "sha256": "6f0155b14f5d14a0a041236bc3dc1a97955678b85046514f5b10e4e7c04a3d4d",
+    "bytes": 1190949,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn2-dodge-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn2-dodge-impact.png",
+    "sha256": "735ae3f5930cdbc7627dca7e48be8d92c467d3438685957f97da261a21f00716",
+    "bytes": 1223686,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn2-dodge-approach-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn2-dodge-approach-50.png",
+    "sha256": "d148fd2ff7eeb220f4a3221bcc49c6bc3e090abae82452af5ac786a5c6280b02",
+    "bytes": 1192161,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn3-hit-impact.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn3-hit-impact.png",
+    "sha256": "a0c9ecb1be9424da08681a16c0490ae0dbd7ad6eb0f307235f21e7427b42e199",
+    "bytes": 1193319,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  },
+  {
+    "originalPath": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn3-hit-idle-50.png",
+    "scratchPath": "/private/tmp/cf-c88-unreviewed-stills-20260927/06-mullet-native-01/turn3-hit-idle-50.png",
+    "sha256": "300028853cc063180debd73147a2fb975f0f77dcf1f5b4bc86ca881a0e74b6bf",
+    "bytes": 1198055,
+    "fullFilmRetained": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/battle-full.webm"
+  }
+]

@@ -1,0 +1,218 @@
+[
+  {
+    "id": "01-mackerel",
+    "name": "Mackerel",
+    "moved": 13916,
+    "originalPartsDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false,
+    "sourceCoordinateChanges": 0,
+    "observedBoundaryWelds": 4,
+    "staticStatus": "PASS_STATIC",
+    "presentation": {
+      "id": "presentation",
+      "samples": 912,
+      "attemptedSamples": 912,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 6.658481493666243e-05,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "id": "04-sardine",
+    "name": "Sardine",
+    "moved": 7033,
+    "originalPartsDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false,
+    "sourceCoordinateChanges": 0,
+    "observedBoundaryWelds": 3,
+    "staticStatus": "PASS_STATIC",
+    "presentation": {
+      "id": "presentation",
+      "samples": 941,
+      "attemptedSamples": 941,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 7.317989740585103e-05,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "id": "06-mullet",
+    "name": "Mullet",
+    "moved": 9947,
+    "originalPartsDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false,
+    "sourceCoordinateChanges": 0,
+    "observedBoundaryWelds": 5,
+    "staticStatus": "PASS_STATIC",
+    "presentation": {
+      "id": "presentation",
+      "samples": 945,
+      "attemptedSamples": 945,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 8.627730630475072e-05,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "id": "07-tarpon",
+    "name": "Tarpon",
+    "moved": 23133,
+    "originalPartsDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false,
+    "sourceCoordinateChanges": 0,
+    "observedBoundaryWelds": 3,
+    "staticStatus": "PASS_STATIC",
+    "presentation": {
+      "id": "presentation",
+      "samples": 926,
+      "attemptedSamples": 926,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 6.627082336249823e-05,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "id": "01-grouper",
+    "name": "Grouper",
+    "moved": 29249,
+    "originalPartsDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false,
+    "sourceCoordinateChanges": 0,
+    "observedBoundaryWelds": 9,
+    "staticStatus": "PASS_STATIC",
+    "presentation": {
+      "id": "presentation",
+      "samples": 944,
+      "attemptedSamples": 944,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 7.428140764722446e-05,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "id": "02-barracuda",
+    "name": "Barracuda",
+    "moved": 4985,
+    "originalPartsDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false,
+    "sourceCoordinateChanges": 0,
+    "observedBoundaryWelds": 5,
+    "staticStatus": "PASS_STATIC",
+    "presentation": {
+      "id": "presentation",
+      "samples": 943,
+      "attemptedSamples": 943,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 8.901414421578567e-05,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "id": "05-sailfish",
+    "name": "Sailfish",
+    "moved": 22118,
+    "originalPartsDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false,
+    "sourceCoordinateChanges": 0,
+    "observedBoundaryWelds": 5,
+    "staticStatus": "PASS_STATIC",
+    "presentation": {
+      "id": "presentation",
+      "samples": 937,
+      "attemptedSamples": 937,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 8.828244514961905e-05,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "id": "07-mahi-mahi",
+    "name": "Mahi-Mahi",
+    "moved": 10701,
+    "originalPartsDifferentChannels": 0,
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false,
+    "sourceCoordinateChanges": 0,
+    "observedBoundaryWelds": 10,
+    "staticStatus": "PASS_STATIC",
+    "presentation": {
+      "id": "presentation",
+      "samples": 935,
+      "attemptedSamples": 935,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 8.456343691656878e-05,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  }
+]

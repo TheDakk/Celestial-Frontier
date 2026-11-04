@@ -1,0 +1,72 @@
+[
+  {
+    "id": "08-gar",
+    "name": "Gar",
+    "exitCode": 0,
+    "fit": "audits/FISH_PIPELINE_C99_20260927/08-gar-fixed-01/fit",
+    "nativeDir": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01",
+    "competingJobsAtEnd": [],
+    "quietStartOnlyNotWholeRunProof": true,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "error": null,
+    "refusals": null,
+    "capture": null
+  },
+  {
+    "id": "12-killifish",
+    "name": "Killifish",
+    "exitCode": 0,
+    "fit": "audits/FISH_PIPELINE_C99_20260927/12-killifish-fixed-01/fit",
+    "nativeDir": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01",
+    "competingJobsAtEnd": [],
+    "quietStartOnlyNotWholeRunProof": true,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "error": null,
+    "refusals": null,
+    "capture": null
+  },
+  {
+    "id": "02-parrotfish",
+    "name": "Parrotfish",
+    "exitCode": 0,
+    "fit": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-fixed-01/fit",
+    "nativeDir": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01",
+    "competingJobsAtEnd": [],
+    "quietStartOnlyNotWholeRunProof": true,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "error": null,
+    "refusals": null,
+    "capture": null
+  },
+  {
+    "id": "02-rabbitfish",
+    "name": "Rabbitfish",
+    "exitCode": 0,
+    "fit": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-fixed-01/fit",
+    "nativeDir": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01",
+    "competingJobsAtEnd": [],
+    "quietStartOnlyNotWholeRunProof": true,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "error": null,
+    "refusals": null,
+    "capture": null
+  },
+  {
+    "id": "03-sea-bass",
+    "name": "Sea Bass",
+    "exitCode": 0,
+    "fit": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-fixed-01/fit",
+    "nativeDir": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01",
+    "competingJobsAtEnd": [],
+    "quietStartOnlyNotWholeRunProof": true,
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "error": null,
+    "refusals": null,
+    "capture": null
+  }
+]

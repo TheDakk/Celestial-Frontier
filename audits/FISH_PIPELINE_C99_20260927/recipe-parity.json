@@ -1,0 +1,44 @@
+[
+  {
+    "source": "audits/FISH_PIPELINE_C88_20260927/compile.mjs",
+    "copy": "audits/FISH_PIPELINE_C99_20260927/compile.mjs",
+    "sha256": "7728e4212c72865af76f5e11b6b860ea513bb8de226949c3ea258449e5160472",
+    "unchanged": true
+  },
+  {
+    "source": "audits/FISH_PIPELINE_C88_20260927/fish-split.mjs",
+    "copy": "audits/FISH_PIPELINE_C99_20260927/fish-split.mjs",
+    "sha256": "4ce0b5ad3ed9b51916e01ca8061fd225064b6726c14f26bbc06fbbbbac2eebc4",
+    "unchanged": true
+  },
+  {
+    "source": "audits/FISH_PIPELINE_C88_20260927/run-candidates.py",
+    "copy": "audits/FISH_PIPELINE_C99_20260927/run-candidates.py",
+    "sha256": "efc8efb3df020c69d442d1a6677f5062eeeac7dad945eeb72357daeef4164ada",
+    "unchanged": true
+  },
+  {
+    "source": "audits/FISH_PIPELINE_C88_20260927/run-native.py",
+    "copy": "audits/FISH_PIPELINE_C99_20260927/run-native.py",
+    "sha256": "975cc3cf0b07888576e1da43ec4730aecd5b9196b97177d28d17783bd314e3cc",
+    "unchanged": true
+  },
+  {
+    "source": "audits/FISH_PIPELINE_C88_20260927/restore-masters.mjs",
+    "copy": "audits/FISH_PIPELINE_C99_20260927/restore-masters.mjs",
+    "sha256": "e84625be1207f4eca29e4c502b097a7bea334f73ff549024c479e3fdfd174f43",
+    "unchanged": true
+  },
+  {
+    "source": "audits/FISH_PIPELINE_C88_20260927/selection-controls.mjs",
+    "copy": "audits/FISH_PIPELINE_C99_20260927/selection-controls.mjs",
+    "sha256": "9f2fe803a5de66fea56c3b969136aeca1bdecc4a2e344ea6a96c5a1e81b62527",
+    "unchanged": true
+  },
+  {
+    "source": "audits/FISH_PIPELINE_C88_20260927/selector-mutations.mjs",
+    "copy": "audits/FISH_PIPELINE_C99_20260927/selector-mutations.mjs",
+    "sha256": "977ed872e433f98d07fe4edeb257c5c8bc530504f31ac38003a73b20baaa1825",
+    "unchanged": true
+  }
+]
