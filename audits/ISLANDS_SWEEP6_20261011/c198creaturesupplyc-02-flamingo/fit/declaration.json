@@ -1,0 +1,106 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "7f85bb10fdaf635dc06e818350617c129e2eb492f694236cddf3bc5303982a59",
+  "cutoutSha256": "1a8827a4e64120ad280b8ffb1123b68b858669fbe777db08318258d8f07692e4",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck-upper",
+      "joint": "neck1",
+      "layer": "near"
+    },
+    {
+      "id": "neck-lower",
+      "joint": "neck0",
+      "layer": "near"
+    },
+    {
+      "id": "foot-near",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "shin-near",
+      "joint": "legNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "thigh-near",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "foot-far",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "shin-far",
+      "joint": "legFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "thigh-far",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "far-wing-tip",
+      "joint": "wingFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "far-wing-root",
+      "joint": "wingFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-wing-tip",
+      "joint": "wingNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-root",
+      "joint": "wingNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "near"
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "layer": "near"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "spine",
+      "joint": "spine",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "3b65651a22b4c962988b0f4ce4938a4c6deabc5820d30b2f2220c461cd1d3e4e",
+  "keyedRgbaSha256": "088c5b126d90c901d47c72750b59e1ef9d6c6fbf15ea775b1edfc7611a34830b",
+  "declarationHash": "ba009b9ec1c348e0b7079778fb4639de6d46732a653a5fcbab303a93d5215451"
+}

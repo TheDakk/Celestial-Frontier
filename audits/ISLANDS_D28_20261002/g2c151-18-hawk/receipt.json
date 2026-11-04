@@ -1,0 +1,156 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/fit",
+  "sourceMasterSha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa",
+  "keyedRgbaSha256": "74a027ec877a2877e0e925f1e46c14fc6b0204161ae19ff9589e9057f3332c9a",
+  "remainder": "body",
+  "remainderPixels": 18462,
+  "movedPixels": 3313,
+  "islands": [
+    {
+      "pixels": 198,
+      "to": "beak",
+      "border": {
+        "beak": 39,
+        "head": 13
+      }
+    },
+    {
+      "pixels": 1595,
+      "to": "far-wing-root",
+      "border": {
+        "head": 53,
+        "neck-upper": 25,
+        "far-wing-root": 93
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail",
+      "border": {
+        "tail": 2
+      }
+    },
+    {
+      "pixels": 12,
+      "to": "near-shin",
+      "border": {
+        "near-shin": 7,
+        "near-thigh": 4
+      }
+    },
+    {
+      "pixels": 1461,
+      "to": "tail",
+      "border": {
+        "tail": 81
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "far-shin",
+      "border": {
+        "far-shin": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2
+      }
+    },
+    {
+      "pixels": 21,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 14
+      }
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "18-hawk",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1115,
+      "height": 476
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 28,
+        "distancePx": 7.0028565600045605,
+        "supports": [
+          53,
+          54
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 30,
+        "distancePx": 13.607201327894016,
+        "supports": [
+          12,
+          10
+        ]
+      }
+    ],
+    "sourceBindingHash": "785f9380e8d85b5105e0d959ee096a87e873f38bf6e6434f5b3a6d5a91c63663",
+    "sourceVertices": 669,
+    "vertices": 851,
+    "sharedSupports": 193,
+    "pins": 372,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

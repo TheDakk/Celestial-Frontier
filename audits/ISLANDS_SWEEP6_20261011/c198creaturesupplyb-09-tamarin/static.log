@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.00014911790867902614,"gap":0.00007238751009346491,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.00014911790867902614,"gap":0.000057687775151609416,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.009299824762501695,"gap":0.00006901703210149097,"exactRest":true,"firstRefusal":null}
+{"id":"approach:climb","status":"PASS","samples":121,"drift":0,"gap":0.00006730744989572455,"exactRest":true,"firstRefusal":null}
+{"id":"melee:punch","status":"PASS","samples":121,"drift":0.0002540683344420027,"gap":0.00006869251700383503,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.001187160593820694,"gap":0.00006901703194416989,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.002241692020314749,"gap":0.0000739520136451102,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0.0005513167245828598,"gap":0.00006207577039486214,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00006977245601513427,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.011380918558869444,"gap":0.00006810535743656419,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.00003926661528159927,"gap":0.000050070456030942114,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.0009565067325313815,"gap":0.00007264199194636523,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.00009081369628294386,"gap":0.00006276943757084659,"exactRest":true,"firstRefusal":null}
+{"status":"PASS_STATIC","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

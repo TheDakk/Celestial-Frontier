@@ -1,0 +1,376 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c198creaturesupplyb-09-tamarin/fit",
+  "sourceMasterSha256": "53ba5f05bc48a04a7e173c160cb9b6c2373b1262275ed765953a09f4e02204b7",
+  "keyedRgbaSha256": "039dddffe3244294bab7a63402761d893f59d93203dd269ac53c2ba7ee01070d",
+  "remainder": "spine",
+  "remainderPixels": 54655,
+  "movedPixels": 27223,
+  "islands": [
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 7,
+      "to": "head",
+      "border": {
+        "head": 4
+      }
+    },
+    {
+      "pixels": 116,
+      "to": "head",
+      "border": {
+        "head": 9
+      }
+    },
+    {
+      "pixels": 3,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 220,
+      "to": "head",
+      "border": {
+        "head": 51
+      }
+    },
+    {
+      "pixels": 13724,
+      "to": "tail-middle",
+      "border": {
+        "thigh-near": 25,
+        "tail-end": 98,
+        "tail-middle": 342,
+        "tail-root": 305,
+        "pelvis": 175
+      }
+    },
+    {
+      "pixels": 5336,
+      "to": "upper-arm-far",
+      "border": {
+        "upper-arm-far": 126,
+        "head": 27,
+        "neck": 118
+      }
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 4880,
+      "to": "upper-arm-far",
+      "border": {
+        "forearm-near": 48,
+        "upper-arm-near": 95,
+        "hand-far": 30,
+        "forearm-far": 161,
+        "upper-arm-far": 186,
+        "chest": 22
+      }
+    },
+    {
+      "pixels": 3,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 1,
+      "to": "tail-middle",
+      "border": {
+        "tail-middle": 2
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "tail-middle",
+      "border": {
+        "tail-middle": 8
+      }
+    },
+    {
+      "pixels": 23,
+      "to": "upper-arm-near",
+      "border": {
+        "upper-arm-near": 11
+      }
+    },
+    {
+      "pixels": 66,
+      "to": "forearm-far",
+      "border": {
+        "forearm-far": 38,
+        "upper-arm-far": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 363,
+      "to": "thigh-near",
+      "border": {
+        "thigh-near": 72,
+        "shin-far": 43,
+        "thigh-far": 21
+      }
+    },
+    {
+      "pixels": 750,
+      "to": "forearm-near",
+      "border": {
+        "hand-near": 131,
+        "forearm-near": 157
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "forearm-far",
+      "border": {
+        "forearm-far": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "forearm-far",
+      "border": {
+        "forearm-far": 2
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "forearm-far",
+      "border": {
+        "forearm-far": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "thigh-near",
+      "border": {
+        "thigh-near": 2
+      }
+    },
+    {
+      "pixels": 147,
+      "to": "shin-near",
+      "border": {
+        "shin-near": 40,
+        "thigh-near": 11
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "shin-near",
+      "border": {
+        "shin-near": 2
+      }
+    },
+    {
+      "pixels": 732,
+      "to": "foot-far",
+      "border": {
+        "foot-far": 157,
+        "shin-far": 13
+      }
+    },
+    {
+      "pixels": 202,
+      "to": "foot-near",
+      "border": {
+        "foot-near": 56
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "foot-far",
+      "border": {
+        "foot-far": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "foot-far",
+      "border": {
+        "foot-far": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hand-far",
+      "border": {
+        "hand-far": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "hand-far",
+      "border": {
+        "hand-far": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "foot-near",
+      "border": {
+        "foot-near": 2
+      }
+    },
+    {
+      "pixels": 129,
+      "to": "hand-far",
+      "border": {
+        "hand-far": 23
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "hand-far",
+      "border": {
+        "hand-far": 7
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hand-far",
+      "border": {
+        "hand-far": 2
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "hand-far",
+      "border": {
+        "hand-far": 2
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "hand-far",
+      "border": {
+        "hand-far": 8
+      }
+    },
+    {
+      "pixels": 166,
+      "to": "foot-far",
+      "border": {
+        "foot-far": 15
+      }
+    },
+    {
+      "pixels": 89,
+      "to": "foot-far",
+      "border": {
+        "foot-far": 23
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 8,
+      "to": "tail-end",
+      "border": {
+        "tail-end": 7,
+        "tail-middle": 1
+      }
+    },
+    {
+      "pixels": 151,
+      "to": "tail-end",
+      "border": {
+        "tail-end": 85
+      }
+    },
+    {
+      "pixels": 70,
+      "to": "hand-near",
+      "border": {
+        "hand-near": 18
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "c198creaturesupplyb-09-tamarin",
+    "parts": 22,
+    "atlasSize": {
+      "width": 2048,
+      "height": 790
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarFoot",
+        "part": "foot-far",
+        "vertex": 66,
+        "distancePx": 6.612866246946153,
+        "supports": [
+          780
+        ]
+      },
+      {
+        "joint": "legNearFoot",
+        "part": "foot-near",
+        "vertex": 17,
+        "distancePx": 2.2135943621178846,
+        "supports": [
+          564
+        ]
+      }
+    ],
+    "sourceBindingHash": "d8bcd1d26ec625b080844be7423bac4498a44c92aa08e2897cafef82c5b86d17",
+    "sourceVertices": 1639,
+    "vertices": 1990,
+    "sharedSupports": 425,
+    "pins": 538,
+    "independentSurfaceParts": 22,
+    "sourceJoins": 20,
+    "excludedOverlaps": 17,
+    "observedExcludedBoundaries": 17,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 17,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

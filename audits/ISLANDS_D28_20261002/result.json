@@ -1,0 +1,54 @@
+{
+ "g2c107-23-wild-pony": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c107/23-wild-pony/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c107-24-wild-ass": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c107/24-wild-ass/fallback-1/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c114-13-horse": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c114/13-horse/fallback-1/fit",
+  "islands": "PLACED",
+  "static": "RED"
+ },
+ "g2c121-05-chough": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/05-chough/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c121-09-hawk": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/09-hawk/fallback-1/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c121-14-snowy-owl": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/14-snowy-owl/fallback-2/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c151-18-hawk": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/18-hawk/fallback-1/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c233-14-wolf": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/14-wolf/fit",
+  "islands": "PLACED",
+  "static": "PASS_STATIC",
+  "native": "DIAGNOSTIC_PASS"
+ },
+ "g2c233-16-serval": {
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/16-serval/fit",
+  "islands": "PLACED",
+  "static": "RED"
+ }
+}

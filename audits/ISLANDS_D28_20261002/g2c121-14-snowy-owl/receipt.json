@@ -1,0 +1,161 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/14-snowy-owl/fallback-2/fit",
+  "sourceMasterSha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+  "keyedRgbaSha256": "c50e5c78894f72b5c908f3f5dcdb922e5ff995a9252fe926dbdf5b08cb3dc18d",
+  "remainder": "body",
+  "remainderPixels": 34930,
+  "movedPixels": 4701,
+  "islands": [
+    {
+      "pixels": 1063,
+      "to": "beak",
+      "border": {
+        "beak": 60,
+        "head": 45
+      }
+    },
+    {
+      "pixels": 3389,
+      "to": "far-wing-root",
+      "border": {
+        "head": 101,
+        "neck-upper": 28,
+        "far-wing-root": 153,
+        "far-wing-flight": 3
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "far-shin",
+      "border": {
+        "far-shin": 5
+      }
+    },
+    {
+      "pixels": 104,
+      "to": "near-shin",
+      "border": {
+        "near-foot": 14,
+        "near-shin": 37
+      }
+    },
+    {
+      "pixels": 25,
+      "to": "tail",
+      "border": {
+        "tail": 12
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "tail",
+      "border": {
+        "tail": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail",
+      "border": {
+        "tail": 1
+      }
+    },
+    {
+      "pixels": 25,
+      "to": "far-shin",
+      "border": {
+        "far-shin": 6
+      }
+    },
+    {
+      "pixels": 58,
+      "to": "far-shin",
+      "border": {
+        "far-foot": 4,
+        "far-shin": 15
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 1
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 1
+      }
+    },
+    {
+      "pixels": 8,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "14-snowy-owl",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1506,
+      "height": 506
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 44,
+        "distancePx": 5.758472019555247,
+        "supports": [
+          84,
+          195
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 44,
+        "distancePx": 9.219544457292862,
+        "supports": [
+          10
+        ]
+      }
+    ],
+    "sourceBindingHash": "226b803f3649fe5aa4d57646a31ec3d1f5ba03caa2809a2ae7f24762bcbaf7a6",
+    "sourceVertices": 1085,
+    "vertices": 1320,
+    "sharedSupports": 302,
+    "pins": 616,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 12,
+    "observedExcludedBoundaries": 12,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 12,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

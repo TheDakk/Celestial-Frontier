@@ -1,0 +1,110 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/g2c107-16-chamois/fit",
+  "sourceMasterSha256": "b89c8bb84eadea00443c3d20351731a494e6f0bf712453cc74bce037972da147",
+  "keyedRgbaSha256": "3e39f39ff3172b34565a29689b40c640913cb02a7c4edc56ed5c2b781e9b8ad3",
+  "remainder": "spine",
+  "remainderPixels": 32895,
+  "movedPixels": 965,
+  "islands": [
+    {
+      "pixels": 902,
+      "to": "ear-near-tip",
+      "border": {
+        "ear-near-tip": 42,
+        "ear-near-root": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 2
+      }
+    },
+    {
+      "pixels": 61,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 25
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "g2c107-16-chamois",
+    "parts": 29,
+    "atlasSize": {
+      "width": 514,
+      "height": 1596
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 43,
+        "distancePx": 3.605551275464034,
+        "supports": [
+          683
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 22,
+        "distancePx": 3.546829570193644,
+        "supports": [
+          802
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 52,
+        "distancePx": 2.5806975801128385,
+        "supports": [
+          86
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 26,
+        "distancePx": 8.10061726043152,
+        "supports": [
+          365
+        ]
+      }
+    ],
+    "sourceBindingHash": "4fa6b30b95e9cd96b5f447dad862957c3b69c3f7fa04018a6ae57c2a76745ebe",
+    "sourceVertices": 1237,
+    "vertices": 1364,
+    "sharedSupports": 401,
+    "pins": 167,
+    "independentSurfaceParts": 29,
+    "sourceJoins": 32,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

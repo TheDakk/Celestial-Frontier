@@ -1,0 +1,127 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c192creaturesupply-15-pronghorn/fit",
+  "sourceMasterSha256": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46",
+  "keyedRgbaSha256": "02e631e3024e5dd568edef9378f92ee2cdaf726814bea00934f897fc655e9adf",
+  "remainder": "spine",
+  "remainderPixels": 34491,
+  "movedPixels": 1426,
+  "islands": [
+    {
+      "pixels": 261,
+      "to": "head",
+      "border": {
+        "head": 14
+      }
+    },
+    {
+      "pixels": 475,
+      "to": "head",
+      "border": {
+        "head": 58
+      }
+    },
+    {
+      "pixels": 600,
+      "to": "head",
+      "border": {
+        "ear-near-tip": 44,
+        "ear-near-root": 1,
+        "head": 64
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "ear-near-root",
+      "border": {
+        "ear-near-root": 6,
+        "neck": 5
+      }
+    },
+    {
+      "pixels": 48,
+      "to": "hind-near-ankle",
+      "border": {
+        "hind-near-ankle": 30,
+        "hind-near-paw": 28
+      }
+    },
+    {
+      "pixels": 25,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 14
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "c192creaturesupply-15-pronghorn",
+    "parts": 29,
+    "atlasSize": {
+      "width": 571,
+      "height": 1172
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 39,
+        "distancePx": 5.742821606144601,
+        "supports": [
+          652
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 35,
+        "distancePx": 1.220655561573373,
+        "supports": [
+          782
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 27,
+        "distancePx": 7.100704190430728,
+        "supports": [
+          85
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 27,
+        "distancePx": 7.01783442380916,
+        "supports": [
+          356
+        ]
+      }
+    ],
+    "sourceBindingHash": "134c085931fae6ddd939115a6157e55b951b4c5b0dbdef8c6e8c76b7f6159447",
+    "sourceVertices": 1202,
+    "vertices": 1345,
+    "sharedSupports": 394,
+    "pins": 151,
+    "independentSurfaceParts": 29,
+    "sourceJoins": 34,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 10,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

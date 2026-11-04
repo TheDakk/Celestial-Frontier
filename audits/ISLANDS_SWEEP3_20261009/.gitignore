@@ -1,0 +1,9 @@
+*.webm
+*/native/*.png
+!*/native/turn1-hit-reaction-50.png
+!*/native/turn3-hit-idle-50.png
+!*/native/turn3-hit-idle-90.png
+*/fit/
+c202creaturesupply-12-wolverine/native/*.png
+c203creaturesupplyb-04-springbok/native/*.png
+g2c76-19-alpaca/native/*.png

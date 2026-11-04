@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.0005493045187819812,"gap":0.00007935648290357455,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.0010753615228642293,"gap":0.000059613432658984574,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.04215190695696959,"gap":0.00007231715625575336,"exactRest":true,"firstRefusal":null}
+{"id":"approach:climb","status":"PASS","samples":121,"drift":0,"gap":0.0000776964526686309,"exactRest":true,"firstRefusal":null}
+{"id":"melee:punch","status":"PASS","samples":121,"drift":0.04479313164519701,"gap":0.00007675196303842975,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.04479313164519701,"gap":0.00006058154040016191,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.047055476046340194,"gap":0.00006708499463793534,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0.05953163595246935,"gap":0.0000722634887800725,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00006828866586073429,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.05961838611987991,"gap":0.00007052456345793063,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.000029044347137779742,"gap":0.00004785965566658335,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.034911393634015596,"gap":0.00006906822918385467,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.00023123664771915105,"gap":0.00006315284965159464,"exactRest":true,"firstRefusal":null}
+{"status":"PASS_STATIC","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}
