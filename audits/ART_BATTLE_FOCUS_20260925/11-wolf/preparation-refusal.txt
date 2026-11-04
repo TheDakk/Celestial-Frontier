@@ -1,0 +1,1 @@
+weld-03 preparation: copy helper exact-match guard expected four fit-01 tokens but measured three; stopped before creating helper. Following shell line found no helper and failed. No split/binding/native attempt occurred. Corrected guarded match count to three; actual split is weld-04.
