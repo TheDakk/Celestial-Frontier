@@ -1,0 +1,76 @@
+{
+  "name": "African Wild Dog",
+  "family": "quadruped",
+  "species": {
+    "name": "African Wild Dog",
+    "aspect": 1.9,
+    "headFrac": 0.24,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "huge rounded bat-like ears",
+      "irregular patchwork blotches of black, tan and white",
+      "white brush tail tip on a lean long-legged frame"
+    ]
+  },
+  "genome": {
+    "seed": 1062028811,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 14,
+    "body": 10,
+    "loco": 4,
+    "trait": 8,
+    "size": 2,
+    "diet": 5,
+    "head": 1,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 2,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 2,
+    "habitat": 13,
+    "detail": 4,
+    "accent": 3,
+    "temper": 3,
+    "sense": 3,
+    "repro": 1,
+    "life": 0,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "African Wild Dog"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"African Wild Dog\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1062028811\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "index": 196,
+  "profile": {
+    "id": "canid",
+    "names": [
+      "Jackal",
+      "Wolf",
+      "Coyote",
+      "Fox",
+      "Red Fox",
+      "Arctic Fox",
+      "African Wild Dog",
+      "Maned Wolf",
+      "Pampas Fox",
+      "Fennec Fox",
+      "Dog",
+      "Dingo"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

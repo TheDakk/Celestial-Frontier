@@ -1,0 +1,103 @@
+{
+  "name": "Quoll",
+  "family": "quadruped",
+  "species": {
+    "name": "Quoll",
+    "aspect": 2,
+    "headFrac": 0.25,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "white spots scattered over the back and the tail",
+      "pointed pink snout",
+      "long bushy tail on a low slinking body"
+    ],
+    "note": "Unlike most spotted mammals the spots continue onto the tail."
+  },
+  "genome": {
+    "seed": 786158363,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 0,
+    "body": 14,
+    "loco": 16,
+    "trait": 11,
+    "size": 1,
+    "diet": 4,
+    "head": 5,
+    "limbs": 3,
+    "skin": 5,
+    "tail": 2,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 6,
+    "habitat": 0,
+    "detail": 5,
+    "accent": 4,
+    "temper": 9,
+    "sense": 4,
+    "repro": 2,
+    "life": 2,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Quoll"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Quoll\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"786158363\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "index": 571,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

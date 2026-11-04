@@ -1,0 +1,102 @@
+{
+  "name": "Tasmanian Devil",
+  "family": "quadruped",
+  "species": {
+    "name": "Tasmanian Devil",
+    "aspect": 1.9,
+    "headFrac": 0.28,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "oversized blocky head and gaping jaws",
+      "black fur with a white chest band",
+      "thick short tapering tail on a low stocky body"
+    ]
+  },
+  "genome": {
+    "seed": 4041999108,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 14,
+    "body": 15,
+    "loco": 16,
+    "trait": 9,
+    "size": 4,
+    "diet": 0,
+    "head": 3,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 4,
+    "eyes": 5,
+    "behavior": 9,
+    "habitat": 12,
+    "detail": 1,
+    "accent": 10,
+    "temper": 3,
+    "sense": 8,
+    "repro": 7,
+    "life": 3,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tasmanian Devil"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tasmanian Devil\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"4041999108\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "index": 568,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

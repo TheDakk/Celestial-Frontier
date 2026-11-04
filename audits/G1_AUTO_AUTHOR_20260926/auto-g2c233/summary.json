@@ -1,0 +1,268 @@
+[
+ {
+  "id": "01-impala",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 77%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "02-banana-slug",
+  "family": "gastropod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family gastropod"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "03-prawn",
+  "family": "crustacean-small",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family crustacean-small"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "04-crab",
+  "family": "brachyuran",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family brachyuran"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "05-brittle-star",
+  "family": "radial",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a top appendage of 14.9% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 15.4% paint that no reference appendage lands on",
+   "missing-anatomy: part arm0-base (arm0Seg0) covers 20% paint (reference 63%)",
+   "missing-anatomy: part arm0-middle (arm0Seg1) covers 10% paint (reference 29%)",
+   "missing-anatomy: part arm0-tip (arm0Seg2) covers 4% paint (reference 8%)",
+   "missing-anatomy: part arm4-tip (arm4Seg2) covers 6% paint (reference 17%)",
+   "missing-anatomy: part arm2-tip (arm2Seg2) covers 8% paint (reference 29%)",
+   "missing-anatomy: part arm3-tip (arm3Seg2) covers 7% paint (reference 22%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "06-sloth",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "materials-unknown: no species-group material for profile xenarthran; the motion kit refuses an unclassified surface",
+   "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "07-tortoise",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "materials-unknown: no species-group material for profile tortoise; the motion kit refuses an unclassified surface",
+   "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)",
+   "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "08-box-turtle",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "materials-unknown: no species-group material for profile tortoise; the motion kit refuses an unclassified surface",
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 5% paint (reference 24%)",
+   "unexplained-anatomy: 12.3% of the paint lies away from the body and in no part (reference 5.1%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "09-pond-turtle",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "materials-unknown: no species-group material for profile freshwater-turtle; the motion kit refuses an unclassified surface",
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 24%)",
+   "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 31%)",
+   "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 5.1%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "10-snapping-turtle",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "materials-unknown: no species-group material for profile freshwater-turtle; the motion kit refuses an unclassified surface",
+   "missing-anatomy: part tail2 (tail2) covers 16% paint (reference 63%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "11-softshell-turtle",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "materials-unknown: no species-group material for profile freshwater-turtle; the motion kit refuses an unclassified surface",
+   "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 45%)",
+   "unexplained-anatomy: 10.8% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "12-turtle",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "materials-unknown: no species-group material for profile freshwater-turtle; the motion kit refuses an unclassified surface",
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 24%)",
+   "unexplained-anatomy: 12.9% of the paint lies away from the body and in no part (reference 5.1%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "13-dog",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a top appendage of 14.0% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "14-wolf",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "15-jaguar",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "16-serval",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "17-otter",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "18-wolverine",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 45%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "19-badger",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "20-beaver",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "21-seahorse",
+  "family": "fish",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+   "unexplained-anatomy: 22.9% of the paint lies away from the body and in no part (reference 4.0%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "22-giant-squid",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "facing: the mirrored painting matches cephalopod better (0.0414 < 0.0575)",
+   "wrong-family: insect matches clearly better (0.0376 < 0.0575)",
+   "extra-anatomy (unassigned): a top appendage of 7.7% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 11.1% paint that no reference appendage lands on",
+   "missing-anatomy: part arm4-tip (arm4Seg2) covers 18% paint (reference 72%)",
+   "missing-anatomy: part arm7-middle (arm7Seg1) covers 25% paint (reference 83%)",
+   "missing-anatomy: part arm3-tip (arm3Seg2) covers 9% paint (reference 63%)",
+   "unexplained-anatomy: 15.8% of the paint lies away from the body and in no part (reference 2.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "23-vampire-squid",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part near-eye (eyeNear) covers 1% paint (reference 100%)",
+   "missing-anatomy: part arm4-tip (arm4Seg2) covers 12% paint (reference 72%)",
+   "missing-anatomy: part arm2-tip (arm2Seg2) covers 23% paint (reference 68%)",
+   "missing-anatomy: part arm6-tip (arm6Seg2) covers 19% paint (reference 72%)",
+   "missing-anatomy: part arm6-middle (arm6Seg1) covers 0% paint (reference 93%)",
+   "missing-anatomy: part arm1-tip (arm1Seg2) covers 19% paint (reference 69%)",
+   "missing-anatomy: part arm1-middle (arm1Seg1) covers 4% paint (reference 95%)",
+   "missing-anatomy: part arm1-base (arm1Seg0) covers 8% paint (reference 99%)",
+   "missing-anatomy: part arm5-tip (arm5Seg2) covers 21% paint (reference 77%)",
+   "missing-anatomy: part arm5-middle (arm5Seg1) covers 9% paint (reference 85%)",
+   "missing-anatomy: part arm5-base (arm5Seg0) covers 3% paint (reference 87%)",
+   "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 2.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "24-nautilus",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part far-eye-rim (eyeFar) covers 8% paint (reference 86%)",
+   "missing-anatomy: part arm4-middle (arm4Seg1) covers 30% paint (reference 95%)",
+   "missing-anatomy: part arm6-tip (arm6Seg2) covers 24% paint (reference 72%)",
+   "missing-anatomy: part arm6-middle (arm6Seg1) covers 4% paint (reference 93%)",
+   "missing-anatomy: part arm0-tip (arm0Seg2) covers 17% paint (reference 57%)",
+   "missing-anatomy: part arm7-middle (arm7Seg1) covers 18% paint (reference 83%)",
+   "missing-anatomy: part arm5-tip (arm5Seg2) covers 14% paint (reference 77%)",
+   "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 2.9%)"
+  ],
+  "semanticPresence": null
+ }
+]
