@@ -1,7 +1,27 @@
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { assessArc2InventorySuccessorBoundary } from '../tools/slicesmoke-contract.mjs';
+// @ts-expect-error This executable JavaScript helper is not included in the partial declaration shim.
+import { assessInventoryPanelClose } from '../tools/slicesmoke-contract.mjs';
+
+interface OpenerPoint {
+  ok: boolean; x: number; y: number; targetId: string | null;
+  buttonId: string | null; buttonTag: string | null;
+}
+interface OpenerPointer {
+  targetId: string | null; tag: string | null; buttonId: string | null; buttonTag: string | null;
+  x: number; y: number; trusted: boolean; pointerType: string | null;
+}
+interface OpenerTestWindow {
+  document: Document; eval(source: string): unknown; close(): void;
+  MouseEvent: typeof MouseEvent; __cfPanelPointer?: OpenerPointer;
+}
+const require = createRequire(import.meta.url);
+const { JSDOM } = require('jsdom') as {
+  JSDOM: new (html: string, options: Record<string, unknown>) => { window: OpenerTestWindow };
+};
 
 const source = readFileSync(
   fileURLToPath(new URL('../tools/slicesmoke.mjs', import.meta.url)),
@@ -345,6 +365,175 @@ function ownerErrors(owner: string): string[] {
 describe('Slice Arc 2 Inventory causal interaction chain', () => {
   const owner = inventoryOwner(source);
   const reloadAssessor = exactSection(source, RELOAD_ASSESSOR_START, RELOAD_ASSESSOR_END);
+
+  it('binds nested nameplate hits to their observed button without rewriting raw targets', async () => {
+    const dom = new JSDOM('<header id="topbar"><button id="dockinventory"><span id="playerchip">Explorer</span></button><button id="dockrecords">Records</button></header>',
+      { runScripts: 'outside-only' });
+    const w = dom.window;
+    try {
+      const button = w.document.getElementById('dockinventory')!;
+      const child = w.document.getElementById('playerchip')!;
+      const other = w.document.getElementById('dockrecords')!;
+      button.getBoundingClientRect = () => ({ left: 10, right: 230, top: 10, bottom: 54,
+        width: 220, height: 44, x: 10, y: 10, toJSON: () => ({}) });
+      let hit: Element = child;
+      Object.defineProperty(w.document, 'elementFromPoint', { value: () => hit });
+      const pointOwner = exactSection(source, '  const railButtonPoint = (id) =>',
+        '  const openDesktopRailPanel = async');
+      const pointExpression = Function(`${pointOwner}; return railButtonPoint;`)() as (id: string) => string;
+      const point = w.eval(pointExpression('dockinventory')) as OpenerPoint;
+      expect(point).toMatchObject({ ok: true, targetId: 'playerchip', buttonId: 'dockinventory', buttonTag: 'BUTTON' });
+      hit = other;
+      expect(w.eval(pointExpression('dockinventory'))).toMatchObject({ ok: false,
+        targetId: 'dockrecords', buttonId: 'dockrecords' });
+      hit = child;
+      const pointerOwner = exactSection(source, '  const armDesktopPointerReceipt = async () =>',
+        '  const takeDesktopPointerReceipt = async');
+      const arm = Function('evalIn', `${pointerOwner}; return armDesktopPointerReceipt;`)(
+        (expression: string) => w.eval(expression)) as () => Promise<unknown>;
+      const press = async (target: Element): Promise<OpenerPointer> => {
+        await arm();
+        const event = new w.MouseEvent('pointerdown', { bubbles: true, clientX: point.x, clientY: point.y });
+        Object.defineProperty(event, 'pointerType', { value: 'mouse' });
+        target.dispatchEvent(event);
+        const pointer = w.__cfPanelPointer;
+        if (!pointer) throw new Error('pointer receipt missing');
+        return pointer;
+      };
+      const receipt = await press(child);
+      expect(receipt).toMatchObject({ targetId: 'playerchip', tag: 'SPAN',
+        buttonId: 'dockinventory', buttonTag: 'BUTTON', trusted: false });
+      expect(await press(other)).toMatchObject({ targetId: 'dockrecords', buttonId: 'dockrecords' });
+      const surfaceOwner = exactSection(source, '  const openerPoint = surface?.opener?.preClick;',
+        '  const selectedRow = surface?.rows?.find');
+      const assess = Function('surface', `const reasons=[];${surfaceOwner};return reasons;`) as (surface: unknown) => string[];
+      const surface = { opener: { id: 'dockinventory', tag: 'BUTTON', visible: true, preClick: point,
+        pointer: { ...receipt, trusted: true } }, panelOpen: 'inventory', panelDirectCloseCount: 1, panelFocus: 'inventory' };
+      expect(assess(surface)).toEqual([]);
+      expect(assess({ ...surface, opener: { ...surface.opener, pointer: receipt } })).toEqual(['real Inventory opener/one-panel surface']);
+      expect(assess({ ...surface, opener: { ...surface.opener, pointer: { ...surface.opener.pointer,
+        buttonId: 'railinventory' } } })).toEqual(['real Inventory opener/one-panel surface']);
+      expect(assess({ ...surface, opener: { ...surface.opener, preClick: { ...point,
+        buttonId: 'dockrecords' } } })).toEqual(['real Inventory opener/one-panel surface']);
+      expect(assess({ ...surface, opener: { ...surface.opener, pointer: { ...surface.opener.pointer,
+        buttonTag: 'SPAN' } } })).toEqual(['real Inventory opener/one-panel surface']);
+      expect(assess({ ...surface, opener: { ...surface.opener, pointer: { ...surface.opener.pointer,
+        x: point.x + 2 } } })).toEqual(['real Inventory opener/one-panel surface']);
+      expect(assess(surface)).toEqual([]);
+    } finally { w.close(); }
+  });
+
+  it('uses the shelf Inventory owner through surface, operations, reload and exact focus restoration', () => {
+    expect(owner).not.toContain("'railinventory'");
+    expect(owner).toContain("railButtonPoint('dockinventory')");
+    expect(owner).toContain("openDesktopRailPanel('dockinventory', 'inventory', 'ARC 2 INVENTORY')");
+    expect(owner).toContain("openDesktopRailPanel('dockinventory', 'inventory', 'ARC 2 INVENTORY RELOAD')");
+    expect(reloadAssessor).toContain("surface?.inventoryPointer?.buttonId !== 'dockinventory'");
+    expect(reloadAssessor).toContain("surface?.inventoryPointer?.buttonTag !== 'BUTTON'");
+    expect(reloadAssessor).toContain('!assessInventoryPanelClose(surface?.inventoryClose).ok');
+    const fixtureOwner = exactSection(reportSource, '  const inventoryPanelClose = Object.freeze({',
+      '  const inventoryPanelCloseControls = [');
+    const fixture = Function(`${fixtureOwner};return inventoryPanelClose;`)() as {
+      point: Record<string, unknown>; pointer: Record<string, unknown>;
+      settled: Record<string, unknown> & { focusId: string };
+    };
+    expect(fixture.settled.focusId).toBe('dockinventory');
+    expect(assessInventoryPanelClose(fixture)).toEqual({ ok: true, reasons: [] });
+    expect(assessInventoryPanelClose({ ...fixture, settled: { ...fixture.settled,
+      focusId: 'railinventory' } })).toEqual({ ok: false, reasons: ['closed panel/focus/zero ownership'] });
+    expect(assessInventoryPanelClose(fixture)).toEqual({ ok: true, reasons: [] });
+  });
+
+  it('measures each owned gap between unequal-width rail pills and rejects displaced edges, background hits and collapsed spacing', () => {
+    const owner = exactSection(source, '  const railGapProbe =', '  const railButtonPoint =');
+    const probe = Function(`${owner};return railGapProbe;`)() as (root: string, upper: string, lower: string) => string;
+    const make = (id: string, left: number, top: number, width = 140, height = 44) => ({ id,
+      getBoundingClientRect: () => ({ left, right: left + width, top, bottom: top + height, width, height }),
+      hasAttribute: () => true });
+    const leftRail = make('raillft', 18, 130, 140, 96);
+    const rightRail = make('railrgt', 1122, 130, 140, 96);
+    const nodes = new Map([leftRail, rightRail,
+      make('docksurvey', 18, 130, 100), make('railcodex', 18, 182, 140),
+      make('railatlas', 1122, 130, 140), make('railshipyard', 1162, 182, 100)].map(node => [node.id, node]));
+    let hit: unknown = leftRail;
+    let pointerEvents = 'auto';
+    const document = { getElementById: (id: string) => nodes.get(id) ?? null, elementFromPoint: () => hit };
+    const sample = (root: string, upper: string, lower: string) => Function('document', 'getComputedStyle', 'innerWidth', 'innerHeight', 'window',
+      `return ${probe(root, upper, lower)};`)(document, () => ({ display: 'flex', pointerEvents }), 1280, 800,
+      { __CF_SLICE__: { api: { state: () => ({ panelOpen: 'codex', cardOpen: false }) } } }) as {
+        geometry: boolean; ownerId: string; gap: number; overlapLeft: number; overlapRight: number;
+        ownerEdge: string; targetId: string | null; point: { x: number; y: number } };
+    const pairs = [['raillft', 'docksurvey', 'railcodex'], ['railrgt', 'railatlas', 'railshipyard']] as const;
+    for (const [root, upper, lower] of pairs) {
+      hit = nodes.get(root);
+      const baseline = sample(root, upper, lower);
+      expect(baseline).toMatchObject({ geometry: true, ownerId: root, gap: 8, targetId: root,
+        ownerEdge: root === 'raillft' ? 'left' : 'right' });
+      expect(baseline.overlapRight - baseline.overlapLeft).toBe(100);
+      expect(baseline.point.x).toBe((baseline.overlapLeft + baseline.overlapRight) / 2);
+      expect(nodes.get(upper)!.getBoundingClientRect().width).not.toBe(nodes.get(lower)!.getBoundingClientRect().width);
+      hit = { id: 'game-canvas' };
+      expect(sample(root, upper, lower).geometry).toBe(false);
+      hit = nodes.get(root); pointerEvents = 'none';
+      expect(sample(root, upper, lower).geometry).toBe(false);
+      pointerEvents = 'auto';
+      const original = nodes.get(lower)!;
+      const rect = original.getBoundingClientRect();
+      for (const mutant of [make(lower, rect.left, rect.top - 8, rect.width),
+        make(lower, rect.left + 8, rect.top, rect.width), make(lower, rect.left, rect.top, rect.width, 43),
+        make(lower, rect.right + 20, rect.top, rect.width)]) {
+        nodes.set(lower, mutant);
+        expect(sample(root, upper, lower).geometry).toBe(false);
+        nodes.set(lower, original);
+        expect(sample(root, upper, lower).geometry).toBe(true);
+      }
+      const originalOwner = nodes.get(root)!, ownerRect = originalOwner.getBoundingClientRect();
+      nodes.set(root, make(root, ownerRect.left + 4, ownerRect.top, ownerRect.width, ownerRect.height));
+      hit = nodes.get(root);
+      expect(sample(root, upper, lower).geometry).toBe(false);
+      nodes.set(root, originalOwner);
+      hit = originalOwner;
+      expect(sample(root, upper, lower).geometry).toBe(true);
+    }
+    hit = leftRail;
+    const leftPoint = sample(...pairs[0]).point;
+    hit = rightRail;
+    expect(leftPoint.x).toBeLessThan(sample(...pairs[1]).point.x);
+  });
+
+  it('opens the actual wide controls while keeping two measured rail gaps and removed-owner controls', () => {
+    const gapOwner = exactSection(source, "  if (await openDesktopRailPanel('railcodex', 'codex', 'RIGHT RAIL GAP')) {",
+      '  /* Search keeps its established outside-dismiss policy');
+    expect(gapOwner).not.toContain("'railrecords'");
+    expect(gapOwner).toContain("openDesktopRailPanel('dockrecords', 'rec', 'LEFT RAIL GAP')");
+    expect(gapOwner).toContain("button=document.getElementById('dockrecords')");
+    expect(gapOwner).toContain("railId: 'raillft', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec'");
+    expect(gapOwner).toContain("openDesktopRailPanel('dockrecords', 'rec', 'PANEL NON-ELEMENT TARGET')");
+    expect(gapOwner).toContain("receipt?.targetId !== 'raillft' || receipt?.trusted !== true");
+    expect(gapOwner).toContain("receipt?.targetId !== 'railrgt' || receipt?.trusted !== true");
+    expect(gapOwner).toContain("receipt?.targetId !== railId || receipt?.trusted !== true");
+    expect(gapOwner).toContain("?.removeAttribute('data-panel-boundary')");
+    expect(gapOwner).toContain("element.setAttribute('data-panel-boundary',prior.value)");
+    expect(gapOwner).toContain("ancestorIds: ['dock']");
+    expect(gapOwner).toContain("pressGap('restored-protection', panelId, ids)");
+    expect(gapOwner).toContain('await clickDesktopPoint(before.point)');
+    expect(source).toContain("const rightGap = railGapProbe('railrgt', 'railatlas', 'railshipyard')");
+    expect(source).toContain("const leftGap = railGapProbe('raillft', 'docksurvey', 'railcodex')");
+    expect(source).toContain('Math.abs(gap-8)<=0.5');
+    expect(source).toContain("style.pointerEvents==='auto'");
+    expect(source).toContain("['raillft','railrgt'].includes(rail.id)");
+    expect(source).toContain('&&hit===rail');
+    expect(reloadAssessor).toContain("surface?.atlasPreClick?.buttonId !== 'railatlas'");
+    expect(reloadAssessor).toContain("surface?.atlasPointer?.buttonId !== 'railatlas'");
+    expect(reloadAssessor).toContain("surface?.atlasPointer?.buttonTag !== 'BUTTON'");
+    expect(source).toContain("surface.atlasPreClick.buttonId = 'inventorypanel'");
+    expect(source).toContain("surface.atlasPointer.buttonId = 'inventorypanel'");
+    const openOwner = exactSection(source, '  const openDesktopRailPanel = async', '  const closeDesktopPanel = async');
+    expect(openOwner).toContain('const point = await evalIn(railButtonPoint(buttonId))');
+    expect(openOwner).toContain('if (!point.ok)');
+    expect(openOwner).toContain('await clickDesktopPoint(point)');
+    expect(openOwner).toContain('window.__CF_SLICE__.api.state().panelOpen===${JSON.stringify(panelId)}');
+  });
 
   it('binds one settled row reveal to green-only surface, action, controls and reload stages', () => {
     expect(occurrences(source, OWNER_START)).toBe(1);

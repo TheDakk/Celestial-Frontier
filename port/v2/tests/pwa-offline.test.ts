@@ -2,6 +2,8 @@ import { webcrypto } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { describe, expect, it } from 'vitest';
+import { resolveConfig } from 'vite';
+import { audioProductionAssets } from '../apps/game/audio-production-assets.js';
 import {
   CF_PWA_SCHEMA,
   __pwaBuildTestOnly,
@@ -108,10 +110,12 @@ function createWorkerHarness(
     matchAllOmittedClientIds?: readonly string[];
     revealClientIdsAtClaim?: readonly string[];
     sourceTransform?: (source: string) => string;
+    networkResponse?: (request: Request, body: string) => Response;
+    libraryPin?: Readonly<{ path: string; sha256: string; bytes: number }>;
   }> = Object.freeze({}),
 ): WorkerHarness {
   const workerRevision = options.workerRevision ?? pwaWorkerRevisionV1();
-  const generatedSource = __pwaBuildTestOnly.serviceWorkerSource('/', assets, workerRevision);
+  const generatedSource = __pwaBuildTestOnly.serviceWorkerSource('/', assets, workerRevision, undefined, options.libraryPin ?? null);
   const source = options.sourceTransform?.(generatedSource) ?? generatedSource;
   const listeners = new Map<string, (event: Record<string, unknown>) => void>();
   const caches = options.caches ?? new MemoryCacheStorage();
@@ -152,7 +156,7 @@ function createWorkerHarness(
     const url = new URL(request.url);
     const body = network[url.pathname];
     if (body === undefined) return responseAt(request.url, 'missing');
-    return responseAt(request.url, body);
+    return options.networkResponse?.(request, body) ?? responseAt(request.url, body);
   };
   const context = vm.createContext({
     self,
@@ -278,7 +282,26 @@ async function readClientPin(caches: MemoryCacheStorage, clientId: string): Prom
 }
 
 describe('Celestial Frontier exact-build PWA', () => {
-  it('seals both production Worker graphs and reserves ambiguous platform-loader names', () => {
+  it('admits the exact 128 MiB shipped boundary including the final UTF-8 service worker', () => {
+    const { assertShippedPackBytes } = __pwaBuildTestOnly;
+    const worker = __pwaBuildTestOnly.serviceWorkerSource('/', assetsFor({ '/index.html': 'index' }));
+    const workerBytes = new TextEncoder().encode(worker).byteLength;
+    const runtimeBytes = 134_217_728 - workerBytes;
+    expect(assertShippedPackBytes([runtimeBytes - 17, 17, 0], workerBytes)).toBe(134_217_728);
+    expect(assertShippedPackBytes([runtimeBytes - 1], workerBytes)).toBe(134_217_727);
+    expect(() => assertShippedPackBytes([runtimeBytes + 1], workerBytes)).toThrow(/exceeds 128 MiB/u);
+    expect(() => assertShippedPackBytes([runtimeBytes], workerBytes + 1)).toThrow(/exceeds 128 MiB/u);
+    expect(() => assertShippedPackBytes([runtimeBytes, 1], workerBytes)).toThrow(/exceeds 128 MiB/u);
+  });
+
+  it.each([-1, 0.5, NaN, Infinity, -Infinity, Number.MAX_SAFE_INTEGER + 1, '1', undefined, null])(
+    'refuses invalid runtime and service-worker byte counts: %j', (invalid) => {
+      const { assertShippedPackBytes } = __pwaBuildTestOnly;
+      expect(() => assertShippedPackBytes([invalid as number], 100)).toThrow(/invalid byte count/u);
+      expect(() => assertShippedPackBytes([100], invalid as number)).toThrow(/invalid byte count/u);
+    });
+
+  it('seals all three scene painter Worker graphs and reserves ambiguous platform-loader names', () => {
     const falsePositiveControls = [
       'const cssHex = /^#[0-9a-f]{6}$/u;',
       'const workerWords = /new\\s+Worker\\s*\\(/u;',
@@ -298,6 +321,7 @@ describe('Celestial Frontier exact-build PWA', () => {
         fileName: 'assets/biome-vista.worker-biome.js',
         source: `${falsePositiveControls}\nconst biomeVista = true;`,
       },
+      { fileName: 'assets/earth-resident.worker-earth.js', source: `${falsePositiveControls}\nconst earthResidents = true;` },
       { fileName: 'assets/main-owner.js', source: 'import("./ordinary-window-chunk.js");' },
     ] as const;
     expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs(sealed)).not.toThrow();
@@ -316,7 +340,7 @@ describe('Celestial Frontier exact-build PWA', () => {
       'class Worker {} new Worker();',
       'function importScripts() {} importScripts();',
     ] as const;
-    for (const workerName of ['species-art.worker-species.js', 'biome-vista.worker-biome.js']) {
+    for (const workerName of ['species-art.worker-species.js', 'biome-vista.worker-biome.js', 'earth-resident.worker-earth.js']) {
       for (const edgeMutant of edgeMutants) {
         const mutant = sealed.map((record) => record.fileName.endsWith(workerName)
           ? { ...record, source: `${record.source}\n${edgeMutant}` }
@@ -328,6 +352,8 @@ describe('Celestial Frontier exact-build PWA', () => {
 
     expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs(sealed.slice(0, 1)))
       .toThrow(/exactly one sealed assets\/biome-vista\.worker-/u);
+    expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs(sealed.filter(row => !row.fileName.includes('earth-resident.worker-'))))
+      .toThrow(/exactly one sealed assets\/earth-resident\.worker-/u);
     expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs([...sealed, sealed[0]]))
       .toThrow(/exactly one sealed assets\/species-art\.worker-/u);
   });
@@ -373,7 +399,7 @@ describe('Celestial Frontier exact-build PWA', () => {
     });
     const source = __pwaBuildTestOnly.serviceWorkerSource('/', assets);
     expect(source).toContain(`const BUILD_ID=${JSON.stringify(pwaBuildIdV1(assets))}`);
-    expect(source).toContain("Written last: its presence means every exact response above was fetched and verified.");
+    expect(source).toContain("Written last: the eager shell is complete; first-use files remain pinned but need not be downloaded.");
     expect(source).not.toMatch(/"path":"[^"]+\.map"/u);
     expect(source.indexOf("self.addEventListener('install'"))
       .toBeLessThan(source.indexOf("self.addEventListener('activate'"));
@@ -1129,11 +1155,25 @@ function ordered(source: string, needles: readonly string[]): boolean {
 }
 
 describe('PWA production wiring', () => {
+  it('excludes local audio acquisition assets from the actual Vite build plugin graph', async () => {
+    const plugin = audioProductionAssets();
+    const includes = async (command: 'serve' | 'build', candidate = plugin): Promise<boolean> => {
+      const config = await resolveConfig({ configFile: false, logLevel: 'silent', plugins: [candidate] }, command);
+      return config.plugins.some(p => p.name === plugin.name);
+    };
+    expect(await includes('serve')).toBe(true);
+    expect(await includes('build')).toBe(false);
+    // The same Vite resolution exposes a wrongly build-enabled endpoint.
+    expect(await includes('build', { ...plugin, apply: 'build' })).toBe(true);
+  });
   it('wires only emitted builds into Settings and crosses the owned replacement boundary on reload', () => {
     const main = readFileSync(new URL('../apps/game/src/main.ts', import.meta.url), 'utf8');
     const config = readFileSync(new URL('../apps/game/vite.config.ts', import.meta.url), 'utf8');
     expect(config).toContain("import { celestialFrontierPwaPlugin } from './pwa-build.js';");
-    expect(config).toContain('plugins: [celestialFrontierPwaPlugin()]');
+    // + the dev-preview HTML stamp (2026-09-24, Claude): inert unless tools/devpreview.mjs sets CF_DEV_PREVIEW_HTML; it stamps HTML BEFORE
+    // this plugin pins it (tests/dev-preview-html-plugin.test.ts; picker-smoke-08-stamped: 309/309 pins match)
+    expect(config).toMatch(/plugins:\s*\[celestialFrontierPwaPlugin\(\),\s*kitRuntimeAssets\(\),\s*audioProductionAssets\(\),\s*devPreviewHtmlPlugin\(\)\]/);
+    expect(config).toContain("import { devPreviewHtmlPlugin } from './dev-preview-html-plugin.js';");
     expect(main).toContain("type ReplacementReloadReason = 'training-restart' | 'training-complete' | 'training-recovery' | 'save-import' | 'storage-retry' | 'pwa-update';");
     expect(main).toContain('if (pwaUpdateControl) el.append(pwaUpdateControl.element);');
     expect(ordered(main, [
@@ -1179,5 +1219,119 @@ describe('PWA production wiring', () => {
     const bypassed = mount.replace('void reloadForPwaUpdate();', 'location.reload();');
     expect(bypassed).toContain('location.reload();');
     expect(bypassed).not.toContain('void reloadForPwaUpdate();');
+  });
+});
+
+
+describe('first-use battle2 assets', () => {
+  const url='https://game.test/battle2/atlas.png';
+  const pins=(body='paint'):readonly PwaAssetDigestV1[] => [
+    {path:'/index.html',sha256:sha256Hex('index')},
+    {path:'/battle2/atlas.png',sha256:sha256Hex(body),bytes:new TextEncoder().encode(body).byteLength,cache:'first-use'},
+  ];
+  const get=(h:WorkerHarness,init:Record<string,unknown>={})=>h.dispatch('fetch',{request:new Request(url),...init}) as Promise<Response>;
+  it('does not fetch arena files at install, verifies first use once, and serves the pinned file offline',async()=>{
+    const net:Record<string,string>={'/index.html':'index','/battle2/atlas.png':'paint'};
+    const h=createWorkerHarness(pins(),net);await h.dispatch('install');await h.dispatch('activate');
+    expect(h.fetches).toEqual(['https://game.test/index.html']);
+    const pair=await Promise.all([get(h),get(h)]);expect(await pair[0]!.text()).toBe('paint');expect(await pair[1]!.text()).toBe('paint');
+    expect(h.fetches.filter(x=>x===url)).toHaveLength(1);
+    delete net['/battle2/atlas.png'];expect(await (await get(h)).text()).toBe('paint');expect(h.fetches.filter(x=>x===url)).toHaveLength(1);
+    const cache=await h.caches.open('cf-v2-build-'+h.buildId);
+    await cache.put(url,new Response('wrong'));
+    expect((await get(h)).status).toBe(503);expect(await cache.match(url)).toBeUndefined();
+  });
+  it.each(['wrong','too-large','x'])('refuses and never caches changed, oversized or truncated payload %s',async(body)=>{
+    const h=createWorkerHarness(pins(),{'/index.html':'index','/battle2/atlas.png':body});await h.dispatch('install');await h.dispatch('activate');
+    expect((await get(h)).status).toBe(503);expect(await (await h.caches.open('cf-v2-build-'+h.buildId)).match(url)).toBeUndefined();
+  });
+  it('rejects redirects, partial responses, unpinned paths, range/query variants and ownerless GETs',async()=>{
+    for(const variant of ['redirect','partial']){
+      const h=createWorkerHarness(pins(),{'/index.html':'index','/battle2/atlas.png':'paint'}, {networkResponse:(request,body)=>{
+        if(request.url!==url)return responseAt(request.url,body);
+        const r=variant==='partial'?new Response(body,{status:206}):responseAt(request.url,body);
+        Object.defineProperty(r,'url',{value:variant==='redirect'?url+'-other':url});return r;
+      }});await h.dispatch('install');await h.dispatch('activate');expect((await get(h)).status).toBe(503);
+    }
+    const h=createWorkerHarness(pins(),{'/index.html':'index','/battle2/atlas.png':'paint'});await h.dispatch('install');await h.dispatch('activate');
+    for(const request of [new Request(url+'?bust=1'),new Request(url,{headers:{range:'bytes=0-'}})])expect((await get(h,{request})).status).toBe(403);
+    expect((await get(h,{clientId:''})).status).toBe(503);
+    expect((await get(h,{request:new Request(url+'-foreign')})).status).toBe(503);
+    expect(h.fetches).toHaveLength(1);
+  });
+  it('retains old-client bytes separately from a new build at the same path',async()=>{
+    const caches=new MemoryCacheStorage();
+    const old=createWorkerHarness(pins('old!!'),{'/index.html':'index','/battle2/atlas.png':'old!!'},{caches});await old.dispatch('install');await old.dispatch('activate');expect(await (await get(old)).text()).toBe('old!!');
+    const next=createWorkerHarness(pins('new!!'),{'/index.html':'index','/battle2/atlas.png':'new!!'},{caches,clientIds:['client-current','client-new']});await next.dispatch('install');await next.dispatch('activate');
+    await seedClientPin(caches,'client-new',next.buildId);
+    expect(await (await get(next)).text()).toBe('old!!');
+    expect(await (await get(next,{clientId:'client-new'})).text()).toBe('new!!');
+    expect(await (await get(next)).text()).toBe('old!!');
+    const oldCache=await caches.open('cf-v2-build-'+old.buildId);await oldCache.delete(url);
+    expect((await get(next)).status).toBe(503); // server only has new bytes: never mix them into the old build
+  });
+  it('negative control: bypassing the digest check admits the wrong same-length bytes',async()=>{
+    const h=createWorkerHarness(pins(),{'/index.html':'index','/battle2/atlas.png':'wrong'},{sourceTransform:source=>{
+      const needle="at!==asset.bytes||await sha256(bytes)!==asset.sha256";
+      expect(source.split(needle)).toHaveLength(2);return source.replace(needle,'at!==asset.bytes');
+    }});await h.dispatch('install');await h.dispatch('activate');
+    expect(await (await get(h)).text()).toBe('wrong');
+  });
+});
+
+/* G3 (audits/G3_ART_DELIVERY_20260926): the on-demand ART LIBRARY route — outside the build table and the pack, one pinned manifest
+   authenticates every file, a response is cached only after its exact size and digest match, LRU-bounded, served offline. */
+describe('on-demand art library (G3)', () => {
+  const files: Record<string, string> = { '/library/cards/wolf/card/master-512.png': 'wolf-paint', '/library/battle2/audits/X/fit/parts/atlas/wolf.png': 'wolf-atlas', '/library/cards/ibex/record.json': '{"ibex":1}' };
+  const manifestBody = (rows: Record<string, string> = files) => JSON.stringify({ schema: 'cf-art-library/v1', files: Object.entries(rows).map(([p, b]) => ({ path: p.slice(1), bytes: new TextEncoder().encode(b).byteLength, sha256: sha256Hex(b) })) });
+  const pinOf = (body: string) => Object.freeze({ path: 'library/art-library.json', sha256: sha256Hex(body), bytes: new TextEncoder().encode(body).byteLength });
+  const index = { '/index.html': 'index' };
+  const setup = (net: Record<string, string>, options: Parameters<typeof createWorkerHarness>[2] = {}) => { const body = manifestBody();
+    return createWorkerHarness(assetsFor(index), { ...index, '/library/art-library.json': body, ...net }, { libraryPin: pinOf(body), ...options }); };
+  const get = (h: WorkerHarness, path: string, init: RequestInit = {}) => h.dispatch('fetch', { request: new Request('https://game.test' + path, init) }) as Promise<Response>;
+  const libraryCache = (h: WorkerHarness) => h.caches.open('cf-art-library-v1');
+  it('fetches on first use, verifies, caches, and serves the verified copy offline; the build cache never holds it', async () => {
+    const net: Record<string, string> = { ...files }, h = setup(net); await h.dispatch('install'); await h.dispatch('activate');
+    expect(h.fetches).toEqual(['https://game.test/index.html']); // nothing from the library at install
+    const path = '/library/cards/wolf/card/master-512.png';
+    expect(await (await get(h, path)).text()).toBe('wolf-paint');
+    expect(await (await libraryCache(h)).match('https://game.test' + path)).toBeDefined();
+    for (const k of Object.keys(files)) delete net[k];
+    expect(await (await get(h, path)).text()).toBe('wolf-paint'); // offline: the verified cached copy
+    expect(h.fetches.filter((u) => u.endsWith(path))).toHaveLength(1);
+    expect(await (await h.caches.open('cf-v2-build-' + h.buildId)).match('https://game.test' + path)).toBeUndefined();
+  });
+  it.each([['tampered', 'wolf-PAINT'], ['oversized', 'wolf-paint!!'], ['truncated', 'wolf']])('refuses and never caches a %s file', async (_label, body) => {
+    const h = setup({ ...files, '/library/cards/wolf/card/master-512.png': body }); await h.dispatch('install'); await h.dispatch('activate');
+    expect((await get(h, '/library/cards/wolf/card/master-512.png')).status).toBe(503);
+    expect(await (await libraryCache(h)).match('https://game.test/library/cards/wolf/card/master-512.png')).toBeUndefined();
+  });
+  it('a manifest that does not match the worker pin authenticates nothing; unlisted paths are 404; query/range variants are 403', async () => {
+    const h = setup({ ...files, '/library/art-library.json': manifestBody() + ' ' }); await h.dispatch('install'); await h.dispatch('activate');
+    expect((await get(h, '/library/cards/wolf/card/master-512.png')).status).toBe(503);
+    const ok = setup({ ...files }); await ok.dispatch('install'); await ok.dispatch('activate');
+    expect((await get(ok, '/library/cards/nobody/card.json')).status).toBe(404);
+    expect((await get(ok, '/library/cards/wolf/card/master-512.png?x=1')).status).toBe(403);
+    expect((await get(ok, '/library/cards/wolf/card/master-512.png', { headers: { range: 'bytes=0-' } })).status).toBe(403);
+  });
+  it('evicts the least recently used files beyond the byte cap, keeping the newest', async () => {
+    const h = setup({ ...files }, { sourceTransform: (src) => src.replace(/const ART_LIBRARY_CACHE_BYTES=\d+;/u, 'const ART_LIBRARY_CACHE_BYTES=25;') });
+    await h.dispatch('install'); await h.dispatch('activate');
+    for (const p of Object.keys(files)) expect((await get(h, p)).status).toBe(200);
+    const cache = await libraryCache(h), cached = await Promise.all(Object.keys(files).map(async (p) => (await cache.match('https://game.test' + p)) !== undefined));
+    expect(cached.filter(Boolean).length).toBeLessThan(Object.keys(files).length); // the cap forced an eviction
+    expect(cached[cached.length - 1]).toBe(true); // the most recently used file stays
+  });
+  it('a quota failure still serves the verified bytes, uncached', async () => {
+    const caches = new MemoryCacheStorage(), open = caches.open.bind(caches);
+    caches.open = async (name: string) => { const c = await open(name); if (name === 'cf-art-library-v1') c.put = async () => { throw new Error('QuotaExceededError'); }; return c; };
+    const h = setup({ ...files }, { caches }); await h.dispatch('install'); await h.dispatch('activate');
+    const r = await get(h, '/library/cards/ibex/record.json'); expect(r.status).toBe(200); expect(await r.text()).toBe('{"ibex":1}');
+    expect(await (await libraryCache(h)).match('https://game.test/library/cards/ibex/record.json')).toBeUndefined();
+  });
+  it('mutation control: a worker that skips library verification serves a tampered file — so the refusal test would fail', async () => {
+    const h = setup({ ...files, '/library/cards/wolf/card/master-512.png': 'wolf-PAINT' }, { sourceTransform: (src) => src.replace('const verified=await verifiedLazyBytes(response,pin);', 'const verified=response;') });
+    await h.dispatch('install'); await h.dispatch('activate');
+    const r = await get(h, '/library/cards/wolf/card/master-512.png'); expect(r.status).toBe(200); expect(await r.text()).toBe('wolf-PAINT');
   });
 });

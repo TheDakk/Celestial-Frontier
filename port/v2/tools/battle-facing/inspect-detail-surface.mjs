@@ -1,0 +1,4 @@
+import fs from'node:fs';import{createRequire}from'node:module';import{triangulateAlpha}from'../creature-animation/quadruped-template.mjs';import{compileHeadDetails}from'./head-details.mjs';
+const require=createRequire(import.meta.url),{PNG}=createRequire(require.resolve('free-tex-packer-core'))('pngjs');
+const directory=process.argv[2],triangle=Number(process.argv[3]),binding=JSON.parse(fs.readFileSync(directory+'/views.json')),v=binding.views[0],png=PNG.sync.read(fs.readFileSync(directory+'/'+v.file)),mesh=triangulateAlpha(Uint8Array.from({length:png.width*png.height},(_,i)=>png.data[i*4+3]),png.width,png.height),program=compileHeadDetails(mesh.rest,v.details,v.details.map(d=>d.joint));
+console.log(JSON.stringify({triangle,vertices:[...mesh.indices.slice(triangle*3,triangle*3+3)].map(i=>({i,source:[mesh.rest[i*2],mesh.rest[i*2+1]],influences:program.compiled.map(d=>({joint:d.joint,weight:d.weights[i]}))}))},null,2));

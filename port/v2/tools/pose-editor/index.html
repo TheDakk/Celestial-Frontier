@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="robots" content="noindex"><title>Pose editor (dev) — template action tables</title>
+<style>
+html,body{margin:0;background:#141a20;color:#e6dfcd;font:13px/1.35 system-ui,sans-serif}
+#app{display:grid;grid-template-columns:300px 1fr 330px;grid-template-rows:auto auto 1fr;gap:10px;padding:10px;min-height:100vh;box-sizing:border-box}
+header{grid-column:1/4;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:6px 8px;background:#1d252d;border-radius:6px}
+header b{color:#f4d58d}select,button,input[type=number]{background:#0f1418;color:#e6dfcd;border:1px solid #3a4652;border-radius:4px;padding:4px 6px;font:inherit}
+button{cursor:pointer}button:hover{border-color:#f4d58d}button.on{background:#f4d58d;color:#141a20}
+section{background:#1d252d;border-radius:6px;padding:8px;overflow:auto}h2{margin:0 0 6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#9fb3c8}
+#poses li{display:flex;gap:4px;align-items:center;padding:3px 4px;border-radius:4px}#poses li.sel{background:#2c3a48}#poses li span{flex:1;font-family:ui-monospace,monospace;font-size:12px}
+#poses button{padding:1px 6px}#poses input{width:64px}
+.j{display:grid;grid-template-columns:96px 1fr 60px;gap:6px;align-items:center;padding:2px 0}.j label{font-family:ui-monospace,monospace;font-size:11.5px;white-space:nowrap}.j input[type=range]{width:100%}.j output{font-family:ui-monospace,monospace;font-size:11.5px;text-align:right}
+.j.edited label{color:#f4d58d}
+#previews{display:grid;grid-template-columns:1fr 1fr;gap:10px}canvas{display:block;width:100%;background:#0f1418;border-radius:4px}
+#status{grid-column:1/4;font-family:ui-monospace,monospace;font-size:11.5px;color:#9fb3c8;white-space:pre-wrap;padding:4px 8px}#status.bad{color:#ff8a80}
+</style>
+<div id="app">
+<header><b>Pose editor</b> <span>edits <b>template</b> action tables (never a creature) · preview = runtime sampler</span>
+ template <select id="template"></select> action <select id="action"></select>
+ <button id="play">Play</button> <button id="reset">Reset to table</button> <button id="export">Export overlay JSON</button>
+ <label><button id="importBtn">Import overlay JSON</button><input id="import" type="file" accept="application/json" hidden></label>
+</header>
+<div id="status">loading…</div>
+<section><h2>Key poses (t · ease)</h2><ol id="poses"></ol>
+ <p><button id="add">+ add after selected</button> <button id="remove">− remove</button> <button id="up">↑</button> <button id="down">↓</button></p>
+ <div class="j"><label>t</label><input id="t" type="number" step="0.005" min="0" max="1"><output id="tOut"></output></div>
+ <div class="j"><label>ease</label><select id="ease"></select><output></output></div>
+ <div class="j"><label>root dx (BL)</label><input id="dx" type="range" min="-0.5" max="0.5" step="0.002"><output id="dxOut"></output></div>
+ <div class="j"><label>root dy (BL)</label><input id="dy" type="range" min="-0.5" max="0.5" step="0.002"><output id="dyOut"></output></div></section>
+<section><h2>Preview — skeleton (always) · painted (record + keyed cut-out)</h2><div id="previews"><canvas id="skeleton" width="440" height="440"></canvas><canvas id="painted" width="440" height="440"></canvas></div>
+ <div class="j"><label>scrub</label><input id="scrub" type="range" min="0" max="1000" step="1" value="0"><output id="scrubOut"></output></div></section>
+<section><h2>Joints (degrees, template limits)</h2><div id="joints"></div></section>
+</div>
+<script type="module" src="./bundle.js"></script></html>

@@ -204,7 +204,7 @@ describe('additive Paragon durable ownership reader', () => {
     section(text, 'const orderedObject = (value, fields, overrides = {}) =>', 'const inspectArc4Ownership = (rows) =>'),
     section(text, 'const arc5CreatureId = (value) =>', 'const arc5NullableNumber = (value, maximum) =>'),
     section(text, 'const ARC5_NON_SPECIES_GENOME_FIELDS = new Set([', 'const orderedArc5Receipt = (value) =>'),
-    section(text, 'const legacyWorldWhere = (address) =>', 'const legacyMirrorMatches = (ownership, legacy) =>'),
+    section(text, 'const legacyWorldWhere = (address) =>', 'const legacyMirrorMatches = (ownership, legacy, v2Target = null) =>'),
     'return { discovery: orderedDiscovery, mirror: registeredMirrorForDigest, project: projectLegacyMirror, identity: arc5GenomeIdentity };',
   ].join('\n'))(createHash) as {
     discovery: (value: unknown) => Discovery | null;

@@ -124,7 +124,9 @@ function hasEnvironmentBoundWorkerBoundary(source: string): boolean {
   const start = source.indexOf('function requestSurfaceVista(');
   const end = source.indexOf('\n/* ---- renderer', start);
   const section = source.slice(start, end < 0 ? undefined : end);
-  return start >= 0
+  const binding = section.indexOf('surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;');
+  const cache = section.indexOf('const cachedOutcome = mountCachedBiomeVistaV1(');
+  return start >= 0 && binding >= 0 && cache > binding
     && section.includes('request.environmentFingerprint}|${roster.fullRosterFingerprint}')
     && section.includes('surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;')
     && section.includes('surfaceVistaEnvironmentFingerprint !== request.environmentFingerprint')
@@ -380,6 +382,39 @@ describe('surface biome-vista projection', () => {
     expect(code).toMatch(/mulberry32/u);
   });
 
+  it('binds pilot presentation before a cached native mount and reapplies visibility at existing lifecycle boundaries', () => {
+    const source = readFileSync(fileURLToPath(new URL('../apps/game/src/main.ts', import.meta.url)), 'utf8');
+    const bindingBeforeCache = (input: string): boolean => {
+      const start = input.indexOf('function requestSurfaceVista(');
+      const end = input.indexOf('\nfunction clearWorld(', start);
+      const owner = input.slice(start, end);
+      const binding = owner.indexOf('audiovisualPilotVistaBinding = JSON.stringify(request);');
+      const cache = owner.indexOf('const cachedOutcome = mountCachedBiomeVistaV1(');
+      return start >= 0 && end > start && binding >= 0 && cache > binding;
+    };
+    expect(bindingBeforeCache(source)).toBe(true);
+    const withoutBinding = source.replace('audiovisualPilotVistaBinding = JSON.stringify(request);', '/* removed binding */');
+    expect(bindingBeforeCache(withoutBinding)).toBe(false);
+    expect(bindingBeforeCache(withoutBinding.replace('  if (cachedOutcome !== \'miss\') {',
+      '  audiovisualPilotVistaBinding = JSON.stringify(request);\n  if (cachedOutcome !== \'miss\') {'))).toBe(false);
+    const clear = source.slice(source.indexOf('function clearWorld('), source.indexOf('/* ---- draw passes ---- */'));
+    const releaseBeforeVisibility = (input: string): boolean => {
+      const release = input.indexOf('try { releaseSurfaceVistaOwner(); }');
+      const captured = input.indexOf('catch (error) { releaseFailures.push(error); }', release);
+      const visibility = input.indexOf('applyAudiovisualPilotSceneVisibility();');
+      return release >= 0 && captured > release && visibility > captured;
+    };
+    expect(releaseBeforeVisibility(clear)).toBe(true);
+    expect(releaseBeforeVisibility(clear.replace('releaseSurfaceVistaOwner();', '/* removed release */'))).toBe(false);
+    expect(releaseBeforeVisibility(clear.replace('applyAudiovisualPilotSceneVisibility();', '/* removed visibility */'))).toBe(false);
+    expect(releaseBeforeVisibility(clear.replace('try { releaseSurfaceVistaOwner(); }',
+      'applyAudiovisualPilotSceneVisibility(); try { releaseSurfaceVistaOwner(); }'))).toBe(false);
+    const mount = source.slice(source.indexOf('function mountSurfaceVistaCanvas('), source.indexOf('function requestSurfaceVista('));
+    expect(mount).toContain('surfaceVistaSprite = sprite;\n  audiovisualPilotVistaReady = true; syncAudiovisualPilot();');
+    const sync = source.slice(source.indexOf('function syncAudiovisualPilot('), source.indexOf('function startAudiovisualPilot('));
+    expect(sync).toContain('audiovisualPilot?.sync(pilotSceneSnapshot());\n  applyAudiovisualPilotSceneVisibility();');
+  });
+
   it('wires the roster resolved during ordinary landing into the live vista request', () => {
     const source = readFileSync(fileURLToPath(new URL('../apps/game/src/main.ts', import.meta.url)), 'utf8');
     expect(source).toContain('const currentSurfaceRoster = fillPlanetside(state, preparedRoster);');
@@ -417,6 +452,10 @@ describe('surface biome-vista projection', () => {
   it('binds cache, stale-work, and worker publication to one canonical environment profile', () => {
     const source = readFileSync(fileURLToPath(new URL('../apps/game/src/main.ts', import.meta.url)), 'utf8');
     expect(hasEnvironmentBoundWorkerBoundary(source)).toBe(true);
+    const assignment = 'surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;';
+    const lookup = 'const cachedOutcome = mountCachedBiomeVistaV1(surfaceVistaCacheOwner, cacheKey);';
+    const lateBinding = source.replace(assignment, '').replace(lookup, lookup + '\n  ' + assignment);
+    expect(hasEnvironmentBoundWorkerBoundary(lateBinding), 'cache hit must retain current environment').toBe(false);
     for (const token of [
       'request.environmentFingerprint}|${roster.fullRosterFingerprint}',
       'surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;',

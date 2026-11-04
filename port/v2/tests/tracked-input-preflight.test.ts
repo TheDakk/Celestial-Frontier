@@ -35,14 +35,22 @@ const EXPECTED_DEVELOP_COMMANDS = [
   ['npm', 'run', 'overridecheck'],
   ['node', 'tools/speccheck.mjs'],
 ] as const;
+/* D55 (Dakk 2026-11-04): the library battery is its own profile and the tail of production. */
+const EXPECTED_LIBRARY_COMMANDS = [
+  ['node', 'tools/library-battery.mjs', '--part=sweep'],
+  ['node', 'tools/library-battery.mjs', '--part=arena'],
+  ['node', 'tools/library-battery.mjs', '--part=matchup'],
+] as const;
 const EXPECTED_PRODUCTION_COMMANDS = [
   ...EXPECTED_DEVELOP_COMMANDS,
   ['npm', 'run', 'overridecontrol'],
+  ...EXPECTED_LIBRARY_COMMANDS,
 ] as const;
 const EXPECTED_CHECK_PROFILE_COMMANDS = {
   dev: EXPECTED_DEV_COMMANDS,
   develop: EXPECTED_DEVELOP_COMMANDS,
   production: EXPECTED_PRODUCTION_COMMANDS,
+  library: EXPECTED_LIBRARY_COMMANDS,
 } as const;
 const EXPECTED_TRACKED_DEVELOP_COMMANDS = [
   ['node', 'tools/check-profile.mjs', '--profile=develop'],
@@ -86,7 +94,7 @@ function checkProfileToolContractErrors(source: string): string[] {
     [/for \(const commandTokens of checkProfileCommands\(profile\)\)/, 'ordered fail-fast execution'],
     [/execFileSync\(invocation\.executable, invocation\.args/, 'shell-free execution'],
     [/env: checkProfileEnvironment\(profile, process\.env\)/, 'profile child environment'],
-    [/\^--profile=\(dev\|develop\|production\)\$/, 'exact CLI parser'],
+    [/\^--profile=\(dev\|develop\|production\|library\)\$/, 'exact CLI parser'],
     [/CHECK PROFILE: PASS \(\$\{profile\}\)/, 'terminal marker'],
   ];
   for (const [pattern, description] of requiredPatterns) {

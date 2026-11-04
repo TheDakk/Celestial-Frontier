@@ -1,0 +1,79 @@
+/* V2 mixed-owner worker controls and topology-derived native keyboard entry. */
+export function flowPatch({collector,contract}) {
+ const once=(s,a,b)=>{if(s.split(a).length!==2)throw new Error('v2 flow edit drift: '+a.slice(0,90));return s.replace(a,b)};
+ contract=once(contract,'paintedFindings, paintedSettlementFindings, compendiumResources','paintedFindings, paintedSettlementFindings, compendiumResources, paintedErrorRows');
+ // CDP nativeVirtualKeyCode is platform-specific. Windows A=65 is macOS
+ // keypad decimal; forwarding it creates a native reinjection storm in Edge.
+ // Keep key/code/Windows code/modifiers/edit commands and both event phases.
+ contract=once(contract,'    nativeVirtualKeyCode: keyCode, modifiers };',`    nativeVirtualKeyCode: process.platform === 'darwin'
+      ? ({ KeyA: 0, Enter: 36, Tab: 48, Backspace: 51 }[code]
+        ?? (() => { throw new TypeError('Unmapped macOS native key: ' + code); })())
+      : keyCode, modifiers };`);
+ collector=`import { keyboardEntryExpression, keyboardEntryPlan } from './painted.mjs';\n`+collector;
+ // Both initial traversal and post-Back focus pinning enter through the same
+ // observed native control inventory. Keep the sealed outcome assertions.
+ const entryMarker='    for (let tabs = 0; tabs < 4; tabs++) {';
+ if(collector.split(entryMarker).length!==3)throw new Error('two native entry boundaries required');
+ for(const target of ['first','pinned']) {
+  const from=collector.indexOf(entryMarker),to=collector.indexOf('    assert(await evaluate(sessionId,',from);
+  if(from<0||to<from||!collector.slice(from,to).includes('active === targets.'+target))throw new Error('native entry boundary drift: '+target);
+  collector=collector.slice(0,from)+`    {
+      const entryInventory = await evaluate(sessionId, keyboardEntryExpression(), 'keyboard entry inventory');
+      const entryPlan = keyboardEntryPlan(entryInventory, targets.${target});
+      for (const expected of entryPlan) {
+        await key(sessionId, 'Tab', 'Tab');
+        const observed = await evaluate(sessionId, keyboardEntryExpression(), 'keyboard entry step');
+        assert(observed?.active === expected, profile + ': native Tab diverged from observed entry inventory');
+      }
+    }
+`+collector.slice(to);
+ }
+ // Retain the last foreground sample in a stopped failure, not just its timeout.
+ // This is diagnosis only: the original classifier, deadline and cleanup stay intact.
+ const fgStart=collector.indexOf('export async function ownCandidateForeground('),fgEnd=collector.indexOf('\nexport ',fgStart+1);
+ let fg=collector.slice(fgStart,fgEnd);
+ fg=once(fg,'  try {\n    await sendStage', '  let lastForegroundObservation = null;\n  try {\n    await sendStage');
+ fg=once(fg,'        onObservation: (value, command) => {', '        onObservation: (value, command) => {\n          lastForegroundObservation = value;');
+ fg=once(fg,'  } catch (primary) {', `  } catch (primary) {
+    if (primary instanceof Error && lastForegroundObservation !== null) {
+      primary.message += '; last foreground observation: ' + JSON.stringify(lastForegroundObservation);
+    }`);
+ // Activate the real page before focus emulation masks its focus state.
+ // Same commands, exact service receipt and 5000ms deadline; v1 stays sealed.
+ fg=once(fg,"    await sendStage(`${label} foreground focus emulation`,\n      'Emulation.setFocusEmulationEnabled', { enabled: true }, attachment.sessionId);\n    await sendStage(`${label} foreground bring-to-front`,\n      'Page.bringToFront', {}, attachment.sessionId);","    await sendStage(`${label} foreground bring-to-front`,\n      'Page.bringToFront', {}, attachment.sessionId);\n    await sendStage(`${label} foreground focus emulation`,\n      'Emulation.setFocusEmulationEnabled', { enabled: true }, attachment.sessionId);");
+ collector=collector.slice(0,fgStart)+fg+collector.slice(fgEnd);
+ // Publication must settle BOTH owners before accepting the error witness.
+ const workStart=collector.indexOf('export function candidateProducerErrorWorkExpression('),workEnd=collector.indexOf('export function validCandidateProducerErrorExpression(',workStart);
+ let work=collector.slice(workStart,workEnd);
+ work=once(work,'    return observation})()',`    const p=observation.paintedArt;
+    observation.ready=observation.ready&&(!p||(p.keys.pendingThumbs.length===0&&p.keys.pendingPortraits.length===0&&rows.filter(row=>p.keys.leasedThumbs.includes(row.visualKey)).every(row=>p.keys.cachedThumbs.includes(row.visualKey)&&!row.cached&&row.thumbState==='ready'&&row.complete&&row.naturalWidth===132&&row.naturalHeight===132)));
+    return observation})()`);
+ collector=collector.slice(0,workStart)+work+collector.slice(workEnd);
+ contract=once(contract, "const expectedReady = observation.panelMode === 'list' && observation.sourceCount === 1500", "const expectedReady = paintedErrorRows(observation) !== null && observation.panelMode === 'list' && observation.sourceCount === 1500");
+ // Raw sibling evidence appears on pre-arm, publication and recovery carriers.
+ collector=once(collector,'return `art:{cacheLimit:a.limits.cacheEntries,','return `paintedArt:d.paintedArt,art:{cacheLimit:a.limits.cacheEntries,');
+ contract=once(contract,"'planetsideDistinctVisualKeys', 'cachedKeys', 'art',","'planetsideDistinctVisualKeys', 'cachedKeys', 'art', 'paintedArt',");
+ contract=once(contract,"'stateCounts', 'rows', 'art',","'stateCounts', 'rows', 'art', 'paintedArt',");
+ contract=once(contract,'|| observation.cachedKeys.length !== observation.art.cachedKeyCount) return false;','|| observation.cachedKeys.length !== observation.art.cachedKeyCount || paintedFindings(observation.paintedArt).length) return false;');
+ contract=once(contract,'|| !validProducerErrorArtTelemetry(observation.art)) return false;','|| !validProducerErrorArtTelemetry(observation.art) || paintedFindings(observation.paintedArt).length) return false;');
+ contract=once(contract,'&& observation.art.live.leases === observation.planetsideImageCount','&& observation.art.live.leases + (observation.paintedArt?.leases ?? 0) === observation.planetsideImageCount');
+ contract=once(contract,".filter((key) => typeof key === 'string' && key.length > 0 && !cached.has(key))).size;",".filter((key) => typeof key === 'string' && key.length > 0 && !cached.has(key)\n      && !witness.publication.accepted.paintedArt?.keys.leasedThumbs.includes(key))).size;");
+ const pub=contract.indexOf('function producerErrorPublicationWorkBound('),rec=contract.indexOf('function producerErrorRecoveryWorkBound('),end=contract.indexOf('export function producerErrorContained(',rec);
+ let p=contract.slice(pub,rec),r=contract.slice(rec,end);
+ p=once(p,'  const leaseAcquireDelta =',"  const painted = paintedErrorRows(publication); if (painted === null) return false;\n  const brokerRows = publication.mountedRowCount - painted.length;\n  const leaseAcquireDelta =");
+ // Cardinalities constrain only this owner's actual job population.
+ p=p.replaceAll('pre.art.live.leases + publication.mountedRowCount','pre.art.live.leases + brokerRows').replaceAll('=== publication.mountedRowCount','=== brokerRows');
+ r=once(r,'  const leaseAcquireDelta =',"  const painted = paintedErrorRows(recovery); if (painted === null) return false;\n  const brokerRows = recovery.mountedRowCount - painted.length;\n  const leaseAcquireDelta =");
+ r=r.replaceAll('pre.art.live.leases + recovery.mountedRowCount','pre.art.live.leases + brokerRows').replaceAll('>= recovery.mountedRowCount +','>= brokerRows +');
+ contract=contract.slice(0,pub)+p+r+contract.slice(end);
+ contract=once(contract,'&& row === publication.rows[0] && row.index === 0','&& row === publication.rows.find(item => !publication.paintedArt?.keys.leasedThumbs.includes(item.visualKey))');
+ contract=once(contract,": item.thumbState === 'ready' && item.cached === true",": item.thumbState === 'ready' && (item.cached === true || paintedErrorRows(publication)?.includes(item))");
+ contract=once(contract, '&& row.naturalWidth === 132 && row.naturalHeight === 132 && row.cached === true);', '&& row.naturalWidth === 132 && row.naturalHeight === 132 && (row.cached === true || paintedErrorRows(recovery)?.includes(row)));');
+ contract=once(contract, '&& pre.art.live.leases === pre.planetsideImageCount', '&& pre.art.live.leases + (pre.paintedArt?.leases ?? 0) === pre.planetsideImageCount');
+ contract=once(contract, '&& !pre.cachedKeys.includes(publication.rows[0]?.visualKey);', '&& !pre.cachedKeys.includes(publication.rows.find(row => !publication.paintedArt?.keys.leasedThumbs.includes(row.visualKey))?.visualKey);');
+ // Dedupe is measured from actual cache/pending hits in both owners, separately.
+ const dedupe='`window.__CF_SLICE__.api.compendiumDiagnostics().art.totals.dedupeHits`';
+ if(collector.split(dedupe).length!==3)throw new Error('dedupe calls drift');
+ collector=collector.replaceAll(dedupe,'`(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return d.art.totals.dedupeHits+(d.paintedArt?.totals.dedupeHits??0)})()`');
+ return {collector,contract};
+}

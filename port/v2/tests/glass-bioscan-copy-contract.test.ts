@@ -211,7 +211,7 @@ describe('Glass Charter bioscan Guide/copy source contract', () => {
   it('executes all current rendered Guide carrier, removal, contradiction, and restoration controls', async () => {
     const result = await replayRenderedGuideControls(glassSource);
     expect(result.error).toBeNull();
-    expect(result.product).toMatchObject({ ok: true, expectedCount: 23 });
+    expect(result.product, JSON.stringify(result.baselineRows)).toMatchObject({ ok: true, expectedCount: 23 });
     expect(result.baselineRows).toHaveLength(23);
     expect(result.baselineRows.every((row) => row.current.ok)).toBe(true);
     expect(result.rows).toHaveLength(23);

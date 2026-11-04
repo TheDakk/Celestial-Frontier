@@ -1,0 +1,18 @@
+/** Run from repository root: node .../derive-post-key-matte.mjs RECIPE NEW_OUTPUT.
+ * The output is a NEW native-alpha derivative master for the existing painter
+ * intake. Canonical source/labels/keyed/declaration stay at their original paths.
+ * Never call the keyer here: historical sealed keyed pixels are input evidence. */
+import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';import {createHash} from 'node:crypto';import {fileURLToPath,pathToFileURL} from 'node:url';import {derivePostKeyMatte} from './post-key-matte.mjs';
+const sha=b=>createHash('sha256').update(b).digest('hex');
+export async function derivePostKeyMatteFile(recipeFile,output){
+ const root=process.cwd(),need=(ok,s)=>{if(!ok)throw Error('Post-key derivative CLI: '+s);},req=createRequire(path.join(root,'port/v2/package.json')),sharp=createRequire(req.resolve('free-tex-packer-core'))('sharp');
+ const recipeBytes=fs.readFileSync(recipeFile),recipe=JSON.parse(recipeBytes),out=path.resolve(output);need(recipe.schema==='cf.post-key-matte-request/v1','recipe schema');need(out.startsWith(path.join(root,'audits')+path.sep)&&!fs.existsSync(out),'new audits output required');
+ const refs=[recipe.original,recipe.canonical,...(recipe.lineage??[])];for(const pin of refs){need(pin&&typeof pin.path==='string'&&/^[a-f0-9]{64}$/.test(pin.sha256??''),'input pin');need(sha(fs.readFileSync(path.resolve(root,pin.path)))===pin.sha256,'changed input '+pin.path);}
+ const original=await sharp(path.resolve(root,recipe.original.path)).ensureAlpha().raw().toBuffer({resolveWithObject:true}),canonical=await sharp(path.resolve(root,recipe.canonical.path)).ensureAlpha().raw().toBuffer({resolveWithObject:true});need(original.info.width===canonical.info.width&&original.info.height===canonical.info.height,'matching unchanged source dimensions');
+ const result=derivePostKeyMatte({originalRgba:original.data,canonicalRgba:canonical.data,width:original.info.width,height:original.info.height,canonicalRgbaSha256:recipe.canonical.rgbaSha256,keyColor:recipe.keyColor,protectedPixels:recipe.protectedPixels??[],despillPixels:recipe.despillPixels??[],donorExclusionPixels:recipe.donorExclusionPixels??[],donorExclusionSource:recipe.donorExclusionSource});
+ const png=await sharp(Buffer.from(result.rgba),{raw:{width:original.info.width,height:original.info.height,channels:4}}).png().toBuffer();
+ for(const pin of refs)need(sha(fs.readFileSync(path.resolve(root,pin.path)))===pin.sha256,'input changed during derivation '+pin.path);
+ fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'master.png'),png,{flag:'wx'});fs.writeFileSync(path.join(out,'request.json'),recipeBytes,{flag:'wx'});
+ const receipt={schema:'cf.post-key-derivative-receipt/v1',requestSha256:sha(recipeBytes),implementation:{cliSha256:sha(fs.readFileSync(fileURLToPath(import.meta.url))),mathSha256:sha(fs.readFileSync(new URL('./post-key-matte.mjs',import.meta.url)))},inputs:refs,originalSource:recipe.original.path,canonicalKeyed:recipe.canonical.path,canonicalRgbaSha256:recipe.canonical.rgbaSha256,output:{file:'master.png',sha256:sha(png),rgbaSha256:sha(result.rgba),width:original.info.width,height:original.info.height},derivative:result.receipt,classification:'source-bound post-seal matte derivative; never a new untouched generated original',nativeAcceptance:false,aiAcceptance:false};fs.writeFileSync(path.join(out,'post-key-derivative.json'),JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});return receipt;
+}
+if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){const args=process.argv.slice(2);if(args.length!==2)throw Error('Usage: RECIPE NEW_OUTPUT');console.log(JSON.stringify(await derivePostKeyMatteFile(...args),null,2));}

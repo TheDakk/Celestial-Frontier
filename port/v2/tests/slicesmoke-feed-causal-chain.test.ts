@@ -388,6 +388,12 @@ function projectedFeedAudioGraph(events = feedAudioProtocolEvents(), sourceMark 
 }
 
 function committedBundle() {
+  const priorNotices = [
+    { id: 3, tt: 'Charted <world>', ms: 'Keep exact & escaped copy.', t: 300, read: true },
+    { id: 2, tt: 'A prior unread notice', ms: 'Retain its unread state.', t: 200, read: false },
+  ];
+  const mealMessage = `Meals ${fixture.fedBefore} → ${fixture.fedAfter}. Used 1 flora; ${fixture.foodQuantityAfter} remain in that lot.`;
+  const savedNotices = [{ id: 4, tt: 'Meal complete.', ms: mealMessage, t: 2_001, read: false }, ...priorNotices];
   const sessionDraws = { tame: 4 };
   const predecessor = { ordinal: 0, kind: 'predecessor', witness: 'prior' };
   const authorityBefore = {
@@ -414,6 +420,8 @@ function committedBundle() {
     foodInvariantFingerprint: digest('9'),
     targetRemainderFingerprint: digest('a'),
     unrelatedFingerprint: digest('b'),
+    unrelatedExceptNotificationsFingerprint: digest('b'),
+    notificationHistory: { legacy: priorNotices, player: structuredClone(priorNotices) },
     durableFingerprint: digest('c'),
     fixedCarrierCount: 5,
     receiptKeys: ['receipt:0'],
@@ -443,6 +451,7 @@ function committedBundle() {
   };
   const after = {
     ...before,
+    notificationHistory: structuredClone(before.notificationHistory),
     globalRevision: 41,
     ownershipRevision: 10,
     receiptCount: 2,
@@ -505,7 +514,8 @@ function committedBundle() {
       controller: { pendingWork: 0, lastOutcome: { kind: 'committed' } },
       lastOutcome: 'committed:41',
       toastSerial: 6,
-      toastText: 'Meal complete',
+      toastText: `Meal complete.${mealMessage}`,
+      notificationToast: { title: 'Meal complete.', message: mealMessage, visible: true, serial: 6, observedAt: 2_002 },
     },
     audioCreates: 1,
     audioStarts: [{
@@ -525,8 +535,12 @@ function committedBundle() {
     reloaded: {
       ...readyFeedPresentation,
       ...after,
+      notificationHistory: { legacy: savedNotices, player: structuredClone(savedNotices) },
+      unrelatedFingerprint: digest('f'),
+      codecAt: 2_100,
+      segmentCodecAt: 2_100,
       durableFingerprint: after.durableFingerprint,
-      globalRevision: after.globalRevision,
+      globalRevision: after.globalRevision + 1,
       ownershipRevision: after.ownershipRevision,
       logicalId: fixture.logicalId,
       creatureId: fixture.creatureId,
@@ -534,7 +548,7 @@ function committedBundle() {
       foodLotId: fixture.foodLotId,
       foodQuantity: fixture.foodQuantityAfter,
       pendingWork: 0,
-      runtime: { revision: 41, sessionSeed: 68, sessionOrdinal: 4, sessionDraws },
+      runtime: { revision: 42, sessionSeed: 68, sessionOrdinal: 4, sessionDraws },
     },
   };
 }
@@ -2107,6 +2121,12 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       candidate.receiptRows[lastReceipt]!.witness = exhaustedWitness;
       candidate.receiptRawRows[lastReceipt] = JSON.stringify(candidate.receiptRows[lastReceipt]);
     }
+    const exhaustedNoticeMessage = `Meals ${exhausted.fixture.fedBefore} → ${exhausted.fixture.fedAfter}. Used 1 flora; the exact lot is now empty.`;
+    exhausted.settled.notificationToast.message = exhaustedNoticeMessage;
+    exhausted.settled.toastText = `Meal complete.${exhaustedNoticeMessage}`;
+    for (const history of Object.values(exhausted.reloaded.notificationHistory)) {
+      history[0]!.ms = exhaustedNoticeMessage;
+    }
     Object.assign(exhausted.settled.result, {
       foodQuantityBefore: 1,
       foodQuantityAfter: 0,
@@ -2131,6 +2151,126 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       ok: false,
       reasons: ['same-document Compendium refresh'],
     });
+  });
+
+  it('requires exactly one durable unread Feed notice and preserves prior history in both codec owners', () => {
+    const good = committedBundle();
+    const reason = { ok: false, reasons: ['exact post-Feed notification checkpoint'] };
+    expect(assessCompendiumFeedCommittedOutcome(good)).toEqual({ ok: true, reasons: [] });
+    type Bundle = ReturnType<typeof committedBundle>;
+    const mutateRows = (bundle: Bundle, mutate: (rows: Bundle['before']['notificationHistory']['legacy']) => void) => {
+      for (const rows of Object.values(bundle.reloaded.notificationHistory)) mutate(rows);
+    };
+    const mutations: Array<(bundle: Bundle) => void> = [
+      (b) => { Reflect.deleteProperty(b.reloaded, 'notificationHistory'); },
+      (b) => { b.reloaded.notificationHistory = structuredClone(b.after.notificationHistory); },
+      (b) => mutateRows(b, (rows) => { rows[0]!.read = true; }),
+      (b) => mutateRows(b, (rows) => { rows[0]!.tt = 'Another result'; }),
+      (b) => mutateRows(b, (rows) => { rows[0]!.ms += ' changed'; }),
+      (b) => mutateRows(b, (rows) => { rows[0]!.id = rows[1]!.id; }),
+      (b) => mutateRows(b, (rows) => { rows[0]!.id += 1; }),
+      (b) => mutateRows(b, (rows) => { rows[0]!.t = b.after.codecAt - 1; }),
+      (b) => mutateRows(b, (rows) => { rows[0]!.t = b.settled.notificationToast.observedAt + 1; }),
+      (b) => mutateRows(b, (rows) => { rows[0]!.tt = 'x'.repeat(201); }),
+      (b) => mutateRows(b, (rows) => { rows[0]!.ms = 'x'.repeat(401); }),
+      (b) => mutateRows(b, (rows) => { rows[0]!.id = 0x8000_0000; }),
+      (b) => mutateRows(b, (rows) => { Reflect.set(rows[0]!, 'extra', true); }),
+      (b) => mutateRows(b, (rows) => { Reflect.deleteProperty(rows[0]!, 'read'); }),
+      (b) => mutateRows(b, (rows) => { rows[1]!.read = !rows[1]!.read; }),
+      (b) => mutateRows(b, (rows) => { rows[1]!.ms += ' changed'; }),
+      (b) => mutateRows(b, (rows) => { rows.splice(1, 1); }),
+      (b) => mutateRows(b, (rows) => { rows.splice(1, 2, rows[2]!, rows[1]!); }),
+      (b) => mutateRows(b, (rows) => { rows.splice(1, 0, { ...rows[0]! }); }),
+      (b) => { b.reloaded.notificationHistory.player[0]!.read = true; },
+      (b) => { b.after.notificationHistory.player[0]!.read = false; },
+      (b) => { b.settled.notificationToast.visible = false; },
+      (b) => { b.settled.notificationToast.message = 'A different painted result'; },
+      (b) => { b.settled.notificationToast.serial -= 1; },
+      (b) => { Reflect.deleteProperty(b.settled, 'notificationToast'); },
+    ];
+    for (const [index, mutate] of mutations.entries()) {
+      const bad = structuredClone(good);
+      mutate(bad);
+      expect(assessCompendiumFeedCommittedOutcome(bad), `notice mutation ${index}`).toEqual(reason);
+    }
+    const unrelated = structuredClone(good);
+    unrelated.reloaded.unrelatedExceptNotificationsFingerprint = digest('0');
+    expect(assessCompendiumFeedCommittedOutcome(unrelated)).toEqual({
+      ok: false, reasons: ['full-reload durable fixed point'],
+    });
+    const earlyMutation = structuredClone(good);
+    earlyMutation.after.unrelatedFingerprint = digest('0');
+    expect(assessCompendiumFeedCommittedOutcome(earlyMutation)).toEqual({
+      ok: false, reasons: ['Arc 5-only fixed-five successor'],
+    });
+  });
+
+  it('accepts the first notice and exact 50-row retention with signed-ID wrap and collisions', () => {
+    const first = committedBundle();
+    for (const state of [first.before, first.after]) {
+      state.notificationHistory = { legacy: [], player: [] };
+    }
+    const firstNotice = { ...first.reloaded.notificationHistory.legacy[0]!, id: 1 };
+    first.reloaded.notificationHistory = { legacy: [firstNotice], player: [{ ...firstNotice }] };
+    expect(assessCompendiumFeedCommittedOutcome(first)).toEqual({ ok: true, reasons: [] });
+    const capped = committedBundle();
+    const prior = Array.from({ length: 50 }, (_, index) => ({
+      id: index === 0 ? 0x7FFF_FFFF : index < 3 ? -0x8000_0000 + index - 1 : index,
+      tt: `Prior ${index}`, ms: `Exact previous ${index}`, t: index + 100, read: index % 2 === 0,
+    }));
+    for (const state of [capped.before, capped.after]) {
+      state.notificationHistory = { legacy: structuredClone(prior), player: structuredClone(prior) };
+    }
+    const head = { ...capped.reloaded.notificationHistory.legacy[0]!, id: -0x8000_0000 + 2 };
+    const next = [head, ...prior.slice(0, 49)];
+    capped.reloaded.notificationHistory = { legacy: next, player: structuredClone(next) };
+    expect(assessCompendiumFeedCommittedOutcome(capped)).toEqual({ ok: true, reasons: [] });
+    for (const rows of Object.values(capped.reloaded.notificationHistory)) rows.push(prior[49]!);
+    expect(assessCompendiumFeedCommittedOutcome(capped)).toEqual({
+      ok: false, reasons: ['exact post-Feed notification checkpoint'],
+    });
+  });
+
+  it('keeps the full fingerprint and removes only the two codec notification vectors from the separate digest', () => {
+    const start = source.indexOf('  const arc5FeedCodecStableRecord =');
+    const end = source.indexOf('  const arc5FeedFixture =', start);
+    expect(start).toBeGreaterThan(0);
+    expect(end).toBeGreaterThan(start);
+    const project = Function(`${source.slice(start, end)}; return arc5FeedUnrelatedData;`)() as
+      (raw: unknown, omitNotifications?: boolean) => unknown;
+    const prior = committedBundle().before.notificationHistory.legacy;
+    const raw = {
+      legacy: { notifs: prior, hp: 70, at: 1_000 },
+      playerRow: { data: { notifs: structuredClone(prior), hp: 70, at: 1_000 }, extensions: {} },
+      creaturesRow: { data: { creatures: ['a'] }, extensions: {} },
+      catalogRow: { data: { codex: ['a'] }, extensions: {} },
+      inventoryRow: { data: { items: ['a'], notifs: ['unrelated nested name'] }, extensions: {} },
+      settingsRow: { data: { snd: true }, extensions: {} },
+    };
+    const noticeOnly = structuredClone(raw);
+    noticeOnly.legacy.notifs.unshift({ id: 4, tt: 'Meal complete.', ms: 'A new message', t: 2_000, read: false });
+    noticeOnly.playerRow.data.notifs = structuredClone(noticeOnly.legacy.notifs);
+    expect(hashCanonical(project(noticeOnly))).not.toBe(hashCanonical(project(raw)));
+    expect(hashCanonical(project(noticeOnly, true))).toBe(hashCanonical(project(raw, true)));
+    const mutations: Array<(candidate: typeof raw) => void> = [
+      (b) => { b.legacy.hp += 1; },
+      (b) => { b.playerRow.data.hp += 1; },
+      (b) => { b.creaturesRow.data.creatures.push('new'); },
+      (b) => { b.catalogRow.data.codex.push('new'); },
+      (b) => { b.inventoryRow.data.items.push('new'); },
+      (b) => { b.inventoryRow.data.notifs.push('must stay guarded'); },
+      (b) => { b.settingsRow.data.snd = false; },
+      (b) => { Reflect.set(b.playerRow.extensions, 'unrelated.owner', { version: 1, json: '{}' }); },
+    ];
+    for (const mutate of mutations) {
+      const changed = structuredClone(raw);
+      mutate(changed);
+      expect(hashCanonical(project(changed, true))).not.toBe(hashCanonical(project(raw, true)));
+    }
+    expect(source).toContain('unrelatedFingerprint: arc5FeedHash(arc5FeedUnrelatedData(raw))');
+    expect(source).toContain('legacy: raw?.legacy?.notifs ?? null');
+    expect(source).toContain('player: raw?.playerRow?.data?.notifs ?? null');
+    expect(source).toContain('observedAt:Date.now()');
   });
 
   it('requires one native two-document winner and one stale loser fixed point', () => {

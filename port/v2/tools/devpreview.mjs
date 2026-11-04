@@ -23,6 +23,7 @@ import { execFileSync, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import { assertBuiltGameMode } from './build-mode.mjs';
+import { DEV_PREVIEW_HTML_ENV, DEVELOPMENT_CHANNEL, PROD_ORIGIN, SCHEMA, transformHtml } from './devpreview-html.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -30,11 +31,8 @@ const repoRoot = path.resolve(v2Root, '..', '..');
 const appDir = path.join(v2Root, 'apps', 'game');
 const distDir = path.join(appDir, 'dist');
 const evidenceRoot = path.join(appDir, 'smoke');
-const PROD_ORIGIN = 'https://celestialfrontier.github.io';
-const SCHEMA = 'cf-dev-preview/v3';
 const VERSION_SCHEMA = 'cf-v2-version/v1';
 const SITE_VERSION_SCHEMA = 'cf-development-site-version/v1';
-const DEVELOPMENT_CHANNEL = 'development';
 const DEFAULT_ORIGIN = 'https://dev-celestialfrontier.github.io';
 const CI_PREVIEW_BROWSER = '/usr/bin/google-chrome';
 const CONTROLLED_PREVIEW_WORKFLOWS = Object.freeze([
@@ -326,57 +324,6 @@ export function assertPreviewWorkflowBrowserContract(source, label = 'preview wo
   return Object.freeze({ job: jobName, browser: CI_PREVIEW_BROWSER, smokeLine: smokeLine + 1 });
 }
 
-function transformHtml(source, {
-  expectedOrigin, entryName, commit, shortCommit, clean, publishable,
-  developmentVersion, buildId,
-}) {
-  assert((source.match(/<head(?:\s[^>]*)?>/g) || []).length === 1,
-    `${entryName}: expected exactly one <head>`);
-  assert((source.match(/<body(?:\s[^>]*)?>/g) || []).length === 1,
-    `${entryName}: expected exactly one <body>`);
-  const scripts = [...source.matchAll(/<script type="module"([^>]*) src="([^"]+)"><\/script>/g)];
-  assert(scripts.length === 1, `${entryName}: expected exactly one built module entry, found ${scripts.length}`);
-  const rawEntry = scripts[0][2];
-  const entry = `./${rawEntry.replace(/^\/+/, '')}`;
-  assert(!entry.includes('..') && /^\.\/[A-Za-z0-9_./-]+\.js$/.test(entry),
-    `${entryName}: built module entry is unsafe: ${rawEntry}`);
-  const runtime = {
-    schema: SCHEMA,
-    expectedOrigin,
-    productionOrigin: PROD_ORIGIN,
-    sourceCommit: commit,
-    shortCommit,
-    sourceState: clean ? 'committed' : 'dirty-local-only',
-    publishable,
-    developmentVersion,
-    buildId,
-    channel: DEVELOPMENT_CHANNEL,
-    entry,
-  };
-  const loader = `<script type="module" data-cf-dev-loader>
-const info=Object.freeze(${scriptJson(runtime)});
-window.__CF_DEV_PREVIEW__=info;
-const local=['localhost','127.0.0.1','[::1]'].includes(location.hostname);
-if((location.origin===info.expectedOrigin&&info.publishable)||local){
-  import(info.entry).catch((error)=>{ console.error('CF DEV PREVIEW entry failed',error); });
-}else{
-  document.documentElement.dataset.cfPreviewBlocked='true';
-  const block=()=>{ document.body.innerHTML='<main style="max-width:52rem;margin:12vh auto;padding:2rem;font:16px/1.5 system-ui;color:#fff;background:#270d16;border:2px solid #ff6b8b;border-radius:16px"><h1>Development preview blocked</h1><p>This build is bound to a different test origin. It did not start, so it cannot read or write game storage here.</p></main>'; };
-  document.readyState==='loading'?addEventListener('DOMContentLoaded',block,{once:true}):block();
-}
-</script>`;
-  const robots = '<meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />';
-  let html = source.replace(scripts[0][0], loader);
-  html = html.replace(/\b(src|href)="\/([^"]+)"/g, '$1="./$2"');
-  html = html.replace(/<\/head>/, `${robots}\n</head>`);
-  assert(!/<script type="module"[^>]*\ssrc=/.test(html), `${entryName}: unguarded module entry survived`);
-  assert(!html.includes('cf-dev-preview-banner')
-    && !html.includes('cf-development-site-banner')
-    && !html.includes('data-cf-dev-banner-style'),
-    `${entryName}: a visible development corner badge survived packaging`);
-  return html;
-}
-
 function fileInventory(root) {
   const out = [];
   const walk = (dir) => {
@@ -547,6 +494,8 @@ function packagePreviewLocked(args) {
     if (clean) {
       snapshot = exactCommitSnapshot(repoRoot, commit, [
         'port/v2', 'port/baseline-v1.8.9/content-registry.json',
+        'ART_KIT.md', // imported `?raw` by apps/game/src/{local-ai-game,worldlife-wiring}.ts — the app's build reaches it
+        'tools/local-image-generation', // tracked modules only (node_modules is ignored): kit-contact-math.mjs is imported by battle2-wiring.ts and the vite config serves /__local_ai/kit-stage-worker.mjs from here
       ], 'port/v2');
       buildV2Root = snapshot.sourceRoot;
       attachInstalledDependencies(buildV2Root);
@@ -556,7 +505,9 @@ function packagePreviewLocked(args) {
     developmentVersion = readDevelopmentVersion(buildV2Root).version;
     viteVersion = JSON.parse(fs.readFileSync(path.join(buildAppDir, 'package.json'), 'utf8')).devDependencies.vite;
     lockfileSha256 = sha256Bytes(fs.readFileSync(path.join(buildV2Root, 'package-lock.json')));
-    execSync('npx vite build', { cwd: buildAppDir, stdio: 'inherit' });
+    // the HTML stamp is applied INSIDE the build (apps/game/dev-preview-html-plugin.ts) so the service worker pins the stamped bytes
+    const stamp = { expectedOrigin, commit, shortCommit, clean, publishable, developmentVersion, buildId: `develop-${shortCommit}` };
+    execSync('npx vite build', { cwd: buildAppDir, stdio: 'inherit', env: { ...process.env, [DEV_PREVIEW_HTML_ENV]: JSON.stringify(stamp) } });
     assert(fs.existsSync(path.join(buildDistDir, 'index.html')), 'vite build did not produce index.html');
     assertBuiltGameMode(buildDistDir, 'distributable');
     fs.cpSync(buildDistDir, output, { recursive: true, errorOnExist: true, force: false });
@@ -577,13 +528,10 @@ function packagePreviewLocked(args) {
   assert(htmlFiles.includes('index.html'), 'preview build has no index.html');
   assert(developmentVersion, 'preview build did not resolve its shared v2 version');
   const buildId = `develop-${shortCommit}`;
-  for (const name of htmlFiles) {
-    const file = path.join(output, name);
-    const source = fs.readFileSync(file, 'utf8');
-    fs.writeFileSync(file, transformHtml(source, {
-      expectedOrigin, entryName: name, commit, shortCommit, clean, publishable,
-      developmentVersion, buildId,
-    }));
+  for (const name of htmlFiles) { // stamped by the build itself; rewriting here would break the worker's pinned HTML hashes
+    const source = fs.readFileSync(path.join(output, name), 'utf8');
+    assert(source.includes('data-cf-dev-loader') && source.includes(JSON.stringify(buildId)) && !/<script type="module"[^>]*\ssrc=/.test(source),
+      `${name}: the build did not stamp the development preview HTML (apps/game/dev-preview-html-plugin.ts)`);
   }
   fs.writeFileSync(path.join(output, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
   fs.writeFileSync(path.join(output, 'version.json'), `${JSON.stringify({
