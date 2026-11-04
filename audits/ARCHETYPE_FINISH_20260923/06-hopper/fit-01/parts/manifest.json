@@ -1,0 +1,90 @@
+{
+  "creatureId": "tree-frog",
+  "parts": [
+    {
+      "name": "near-front-foot.png",
+      "path": "parts/near-front-foot.png",
+      "sha256": "f0092eaa797925ef11567d2bdeefb56f28b6a4a4498209f368c8019842e45fa3"
+    },
+    {
+      "name": "far-front-foot.png",
+      "path": "parts/far-front-foot.png",
+      "sha256": "bd50701ce3f822adfe07c0c487c8b6ce53a053cd34a522473bcd07ec631220fe"
+    },
+    {
+      "name": "near-hind-foot.png",
+      "path": "parts/near-hind-foot.png",
+      "sha256": "c2fd37acbd742b21a998d61a076111eaf45dbd5c2750629b29ad2384a41e08d7"
+    },
+    {
+      "name": "far-hind-foot.png",
+      "path": "parts/far-hind-foot.png",
+      "sha256": "666862b1f8e896151dd49bc5e745e3fbc079ade40dafc7c4a401d3403f51f16c"
+    },
+    {
+      "name": "near-front-lower.png",
+      "path": "parts/near-front-lower.png",
+      "sha256": "8c40485269a50bea0779ca2cc20a5284549cc0240ecc66e5cfc0ca57cb9d4ac5"
+    },
+    {
+      "name": "near-front-upper.png",
+      "path": "parts/near-front-upper.png",
+      "sha256": "467225e8f3112e755c0ea23b261d9c33e140649d3d772b9f34c9131259310aa1"
+    },
+    {
+      "name": "near-hind-lower.png",
+      "path": "parts/near-hind-lower.png",
+      "sha256": "8b6d47b5405ca85064e661b37c974a3e6eded573d5c0fc32509860dbc657d810"
+    },
+    {
+      "name": "near-hind-upper.png",
+      "path": "parts/near-hind-upper.png",
+      "sha256": "4dc4cb5e63bbcc0220d1f2e915e89228f52b69bfaa5de51038a88462fcf2a1ee"
+    },
+    {
+      "name": "far-hind-lower.png",
+      "path": "parts/far-hind-lower.png",
+      "sha256": "270def0a399366846198ad80338fc528dbcb7cdf342dadfc1ec11ce297f5300a"
+    },
+    {
+      "name": "far-hind-upper.png",
+      "path": "parts/far-hind-upper.png",
+      "sha256": "8f7f41791bcb94e070a4bad7eb380e8c47b6410a332c4c4f19ad74482d9e8b47"
+    },
+    {
+      "name": "far-front-lower.png",
+      "path": "parts/far-front-lower.png",
+      "sha256": "b605aec7d11100a4d0cf622174f3158d9c549e6aa2830dc4bb2655cf10e3426b"
+    },
+    {
+      "name": "far-front-upper.png",
+      "path": "parts/far-front-upper.png",
+      "sha256": "979343ac8ddfb3a03d78e02b167fb74a321a0a0cd4f50fa8d35963db2a87f1d7"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "c3b950dd7e36b2a1f4e9d16804a52cae0588ccc1727faebb43364b96f72b38ff"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "0def03f21dc88c209fdf842339b69fbdc08d476f34555dcac8531597f8af39c8"
+    },
+    {
+      "name": "neck.png",
+      "path": "parts/neck.png",
+      "sha256": "6167d52c1c32230abc9880183d4b1bfb70cd7962854416ec1f3c70993a33708f"
+    },
+    {
+      "name": "chest.png",
+      "path": "parts/chest.png",
+      "sha256": "a6edf4e6265cdc05277874ae19dba11cfce7774ad97fd025d66985e11d9ac475"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "38e2d4bd20076a928b36e4bc9d7d71f7127a658b9212bc738d63657f49882fef"
+    }
+  ]
+}

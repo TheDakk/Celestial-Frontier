@@ -1,0 +1,27 @@
+==> Fetching downloads for: ffmpeg
+==> Would upgrade 2 dependencies:
+libvmaf  3.2.0 -> 3.2.1
+xz       5.8.3 -> 5.8.4
+==> Would upgrade 1 requested outdated package
+ffmpeg 9.0.1_1 -> 9.0.2 (21.5MB)
+✔︎ Bottle Manifest libvmaf (3.2.1)
+✔︎ Bottle xz (5.8.4)
+✔︎ Bottle libvmaf (3.2.1)
+✔︎ Bottle ffmpeg (9.0.2)
+==> Upgrading ffmpeg
+  9.0.1_1 -> 9.0.2 
+==> Installing dependencies for ffmpeg: libvmaf and xz
+==> Upgrading ffmpeg dependency: libvmaf
+==> Pouring libvmaf--3.2.1.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libvmaf/3.2.1: 243 files, 8.2MB
+==> Upgrading ffmpeg dependency: xz
+==> Pouring xz--5.8.4.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/xz/5.8.4: 96 files, 2.7MB
+==> Installing ffmpeg
+==> Pouring ffmpeg--9.0.2.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/ffmpeg/9.0.2: 290 files, 53.9MB
+==> Caveats
+==> ffmpeg
+ffmpeg-full includes additional tools and libraries that are not included in the regular ffmpeg formula.
+==> Upgraded 1 requested outdated package
+ffmpeg 9.0.1_1 -> 9.0.2

@@ -1,0 +1,86 @@
+{
+  "root": [
+    704,
+    610
+  ],
+  "thorax": [
+    771,
+    646
+  ],
+  "head": [
+    964,
+    630
+  ],
+  "mandible": [
+    1023,
+    720
+  ],
+  "abdomen": [
+    527,
+    602
+  ],
+  "legFrontFarKnee": [
+    926,
+    713
+  ],
+  "legFrontFarFoot": [
+    1032,
+    814
+  ],
+  "legFrontNearKnee": [
+    838,
+    749
+  ],
+  "legFrontNearFoot": [
+    977,
+    956
+  ],
+  "legMidFarKnee": [
+    689,
+    759
+  ],
+  "legMidFarFoot": [
+    771,
+    872
+  ],
+  "legMidNearKnee": [
+    619,
+    713
+  ],
+  "legMidNearFoot": [
+    551,
+    964
+  ],
+  "legHindFarKnee": [
+    514,
+    790
+  ],
+  "legHindFarFoot": [
+    478,
+    840
+  ],
+  "legHindNearKnee": [
+    488,
+    671
+  ],
+  "legHindNearFoot": [
+    267,
+    932
+  ],
+  "antennaFar": [
+    1187,
+    444
+  ],
+  "antennaNear": [
+    1213,
+    584
+  ],
+  "wingFar": [
+    269,
+    419
+  ],
+  "wingNear": [
+    281,
+    561
+  ]
+}

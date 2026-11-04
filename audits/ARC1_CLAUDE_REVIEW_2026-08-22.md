@@ -35,8 +35,8 @@ Every finding below has a bounded correction; three of the four cost nothing bey
 Each item was recomputed here, not read from a summary.
 
 1. **Committed evidence hashes match.** `ARC1C_SCENEMEM_LOCAL_CERTIFICATION.json.gz` gzip
-   `0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6` / raw
-   `e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5`;
+   `5cc27677bf2d676d0593b8503db6157c2bd1402586993d5d8ecce9212e0dab23` / raw
+   `dca1f51757b1367b5e36fb8484cfbf7c8044ade492663f3068fbcf7a726ca502`;
    `ARC1C_SCENEMEM_CALIBRATION_CANDIDATE1.json.gz` gzip `ada50b3c…` / raw `045b43a2…`;
    `budgets/scene-memory-v2.json` = `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`.
 2. **All 21 producer-authority inputs at the reviewed head hash byte-identical to the budget's

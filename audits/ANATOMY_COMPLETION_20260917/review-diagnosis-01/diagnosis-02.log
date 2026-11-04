@@ -1,0 +1,448 @@
+{
+  "contacts": [
+    {
+      "subject": "mud-crab",
+      "action": "hit",
+      "ms": 236.25,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.118112367179767,
+      "worldRotationDeg": -6.779712045053325,
+      "driftPx": 0.2504741445163317,
+      "rotationOnlyPredictionPx": 0.2504864370301771,
+      "predictionErrorPx": 0.000013976594023834392,
+      "supports": [
+        {
+          "i": 783,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "mud-crab",
+      "action": "dodge",
+      "ms": 128.33333333333334,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.118112367179767,
+      "worldRotationDeg": -6.941128027524677,
+      "driftPx": 0.2564678211093445,
+      "rotationOnlyPredictionPx": 0.2564429774057906,
+      "predictionErrorPx": 0.00002488527479655213,
+      "supports": [
+        {
+          "i": 783,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "mud-crab",
+      "action": "faint",
+      "ms": 242.66666666666666,
+      "joint": "leg0FarFoot",
+      "part": "leg0far-lower",
+      "index": 37,
+      "sourceOffsetPx": 2.1648094604375516,
+      "worldRotationDeg": 6.666068715409154,
+      "driftPx": 0.2517090898957988,
+      "rotationOnlyPredictionPx": 0.2517223971972914,
+      "predictionErrorPx": 0.000014537864559470715,
+      "supports": [
+        {
+          "i": 325,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0FarFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "mud-crab",
+      "action": "presentation",
+      "ms": 6700,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.118112367179767,
+      "worldRotationDeg": -7.304356989829907,
+      "driftPx": 0.2698444492159867,
+      "rotationOnlyPredictionPx": 0.2698449012738572,
+      "predictionErrorPx": 4.6559062724931994e-7,
+      "supports": [
+        {
+          "i": 783,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "vent-crab",
+      "action": "approach",
+      "ms": 210,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.540236209489158,
+      "worldRotationDeg": -7.852906956294815,
+      "driftPx": 0.3478885580395846,
+      "rotationOnlyPredictionPx": 0.34788999509690616,
+      "predictionErrorPx": 0.000010676244740869156,
+      "supports": [
+        {
+          "i": 796,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "vent-crab",
+      "action": "hit",
+      "ms": 210,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.540236209489158,
+      "worldRotationDeg": -5.753694357340809,
+      "driftPx": 0.2549672692312021,
+      "rotationOnlyPredictionPx": 0.2549856617079418,
+      "predictionErrorPx": 0.000024021903260278628,
+      "supports": [
+        {
+          "i": 796,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "vent-crab",
+      "action": "dodge",
+      "ms": 114.33333333333333,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.540236209489158,
+      "worldRotationDeg": -6.063556197615815,
+      "driftPx": 0.26868782781686756,
+      "rotationOnlyPredictionPx": 0.2687052743689286,
+      "predictionErrorPx": 0.000020689767687035904,
+      "supports": [
+        {
+          "i": 796,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "vent-crab",
+      "action": "presentation",
+      "ms": 1216.6666666666667,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.540236209489158,
+      "worldRotationDeg": -7.4450756264273465,
+      "driftPx": 0.3298619189129027,
+      "rotationOnlyPredictionPx": 0.32984887105174,
+      "predictionErrorPx": 0.000015666072057342666,
+      "supports": [
+        {
+          "i": 796,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "flora": [
+    {
+      "id": "rest",
+      "ms": 0,
+      "error": null,
+      "stats": {
+        "rigid": true,
+        "maximumTargetErrorPx": 0,
+        "rmsTargetErrorPx": 0,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 1,
+        "orientationPasses": 0
+      },
+      "orientation": {
+        "visits": 0,
+        "projections": 0
+      },
+      "targetFolds": 0,
+      "allPinnedTargetFolds": 0,
+      "finalFolds": 0,
+      "allPinnedFinalFolds": 0,
+      "parts": {}
+    },
+    {
+      "id": "disturb",
+      "ms": 62,
+      "error": null,
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 32.076588742981926,
+        "rmsTargetErrorPx": 4.008702055380315,
+        "maximumProjectionPx": 26.65569256913182,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.06055663146568454,
+        "orientationPasses": 65
+      },
+      "orientation": {
+        "visits": 89,
+        "projections": 89,
+        "stalled": false
+      },
+      "targetFolds": 397,
+      "allPinnedTargetFolds": 0,
+      "finalFolds": 0,
+      "allPinnedFinalFolds": 0,
+      "parts": {}
+    },
+    {
+      "id": "disturb",
+      "ms": 67.16666666666667,
+      "error": "Error: ARAP skin: unresolved folded triangles: 84",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 84.7601002776574,
+        "rmsTargetErrorPx": 8.581573786646247,
+        "maximumProjectionPx": 84.45656409103671,
+        "flippedTriangles": 84,
+        "minimumAreaRatio": -0.16556671456346048,
+        "orientationPasses": 128
+      },
+      "orientation": {
+        "visits": 487296,
+        "projections": 487296,
+        "stalled": false
+      },
+      "targetFolds": 449,
+      "allPinnedTargetFolds": 0,
+      "finalFolds": 84,
+      "allPinnedFinalFolds": 0,
+      "parts": {
+        "branch-3-foliage": 47,
+        "branch-4-foliage": 52,
+        "trunk": 2
+      }
+    },
+    {
+      "id": "presentation",
+      "ms": 1200,
+      "error": "Error: ARAP skin: unresolved folded triangles: 209",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 94.89304289679554,
+        "rmsTargetErrorPx": 10.409274110121,
+        "maximumProjectionPx": 94.3971533631554,
+        "flippedTriangles": 209,
+        "minimumAreaRatio": -0.06550886685546957,
+        "orientationPasses": 128
+      },
+      "orientation": {
+        "visits": 487296,
+        "projections": 487296,
+        "stalled": false
+      },
+      "targetFolds": 533,
+      "allPinnedTargetFolds": 0,
+      "finalFolds": 209,
+      "allPinnedFinalFolds": 0,
+      "parts": {
+        "branch-3-foliage": 93,
+        "branch-4-foliage": 99,
+        "trunk": 12,
+        "branch-5-foliage": 31,
+        "branch-6-foliage": 17
+      }
+    }
+  ],
+  "ablations": [
+    {
+      "control": "neutralize local foliage rotation (diagnostic only; not adopted)",
+      "joints": [
+        "leaf3"
+      ],
+      "error": "Error: ARAP skin: unresolved folded triangles: 61",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 81.07263116046995,
+        "rmsTargetErrorPx": 7.54144797519383,
+        "maximumProjectionPx": 81.34627647628682,
+        "flippedTriangles": 61,
+        "minimumAreaRatio": -0.026712789264914445,
+        "orientationPasses": 128
+      }
+    },
+    {
+      "control": "neutralize local foliage rotation (diagnostic only; not adopted)",
+      "joints": [
+        "leaf4"
+      ],
+      "error": "Error: ARAP skin: unresolved folded triangles: 76",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 87.14059073160263,
+        "rmsTargetErrorPx": 8.314531605923406,
+        "maximumProjectionPx": 86.78744442570172,
+        "flippedTriangles": 76,
+        "minimumAreaRatio": -0.0610492713960142,
+        "orientationPasses": 128
+      }
+    },
+    {
+      "control": "neutralize local foliage rotation (diagnostic only; not adopted)",
+      "joints": [
+        "leaf3",
+        "leaf4"
+      ],
+      "error": null,
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 35.95095281049676,
+        "rmsTargetErrorPx": 4.537429306658236,
+        "maximumProjectionPx": 34.46990397935471,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060655346346776336,
+        "orientationPasses": 66
+      }
+    },
+    {
+      "control": "neutralize local foliage rotation (diagnostic only; not adopted)",
+      "joints": [
+        "leaf0",
+        "leaf1",
+        "leaf2",
+        "leaf3",
+        "leaf4",
+        "leaf5",
+        "leaf6",
+        "leaf7",
+        "leaf8",
+        "leaf9",
+        "leaf10"
+      ],
+      "error": null,
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 40.54711702630978,
+        "rmsTargetErrorPx": 4.463372153518626,
+        "maximumProjectionPx": 39.32982585893461,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.06014311061640627,
+        "orientationPasses": 66
+      }
+    },
+    {
+      "control": "remove named rigid pins in memory (diagnostic only; not a valid candidate)",
+      "joints": [
+        "leaf3"
+      ],
+      "removedPins": 105,
+      "error": null,
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 36.15057091421131,
+        "rmsTargetErrorPx": 4.5492552327828655,
+        "maximumProjectionPx": 30.789675326914445,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060304786380845035,
+        "orientationPasses": 65
+      }
+    },
+    {
+      "control": "remove named rigid pins in memory (diagnostic only; not a valid candidate)",
+      "joints": [
+        "leaf4"
+      ],
+      "removedPins": 88,
+      "error": null,
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 35.830095922529026,
+        "rmsTargetErrorPx": 4.584630885027249,
+        "maximumProjectionPx": 31.871585858096548,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060003918441251615,
+        "orientationPasses": 65
+      }
+    },
+    {
+      "control": "remove named rigid pins in memory (diagnostic only; not a valid candidate)",
+      "joints": [
+        "leaf3",
+        "leaf4"
+      ],
+      "removedPins": 193,
+      "error": null,
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 36.30149921679853,
+        "rmsTargetErrorPx": 4.5744765350487855,
+        "maximumProjectionPx": 32.43872740661015,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.06015951606714905,
+        "orientationPasses": 65
+      }
+    }
+  ]
+}

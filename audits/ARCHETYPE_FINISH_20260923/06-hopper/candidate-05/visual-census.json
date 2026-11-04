@@ -1,0 +1,14 @@
+{
+  "status": "CANDIDATE_FOR_INTAKE",
+  "legs": 4,
+  "padBearingExtremities": 4,
+  "farElbow": "Clear protruding elbow bend, lower arm descends back toward wrist",
+  "farShoulder": "Explicit estimated occluded chest attachment",
+  "absent": [
+    "tail",
+    "external-ears"
+  ],
+  "hidden": [],
+  "folded": [],
+  "artDiscrepancy": "Requested8percent margin not delivered; all visible tips retained"
+}
