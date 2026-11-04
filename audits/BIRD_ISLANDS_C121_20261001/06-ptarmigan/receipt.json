@@ -1,0 +1,161 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/06-ptarmigan/fit",
+  "sourceMasterSha256": "6720df96f5b78cc893a610dd22a538e2d7debd6c22801add40ba07c4b4dcaa69",
+  "keyedRgbaSha256": "6a3a29b73ef548d9ba3a239c577f4a6301c44379f3bf08ff7b20e3d02f68a98e",
+  "remainder": "body",
+  "remainderPixels": 36428,
+  "movedPixels": 3101,
+  "islands": [
+    {
+      "pixels": 80,
+      "to": "beak",
+      "border": {
+        "beak": 19,
+        "head": 10
+      }
+    },
+    {
+      "pixels": 1724,
+      "to": "far-wing-root",
+      "border": {
+        "head": 82,
+        "neck-upper": 30,
+        "far-wing-root": 100
+      }
+    },
+    {
+      "pixels": 65,
+      "to": "far-wing-root",
+      "border": {
+        "far-wing-root": 38,
+        "far-wing-flight": 10
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "neck-lower",
+      "border": {
+        "neck-lower": 2,
+        "far-wing-root": 2,
+        "near-wing-root": 2
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "tail",
+      "border": {
+        "tail": 1
+      }
+    },
+    {
+      "pixels": 3,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 877,
+      "to": "near-shin",
+      "border": {
+        "near-foot": 85,
+        "near-shin": 121
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "far-shin",
+      "border": {
+        "far-shin": 2
+      }
+    },
+    {
+      "pixels": 105,
+      "to": "far-shin",
+      "border": {
+        "far-foot": 6,
+        "far-shin": 60
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "far-shin",
+      "border": {
+        "far-shin": 7
+      }
+    },
+    {
+      "pixels": 37,
+      "to": "far-shin",
+      "border": {
+        "far-shin": 17
+      }
+    },
+    {
+      "pixels": 68,
+      "to": "far-shin",
+      "border": {
+        "far-foot": 10,
+        "far-shin": 20
+      }
+    },
+    {
+      "pixels": 125,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 49
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "06-ptarmigan",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1201,
+      "height": 556
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 57,
+        "distancePx": 10.00899595364096,
+        "supports": [
+          84
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 42,
+        "distancePx": 1.280624847486554,
+        "supports": [
+          8
+        ]
+      }
+    ],
+    "sourceBindingHash": "7826e014a5fcba2847b102fef297c96a0c99c29dccececf96b168868f8d89a2a",
+    "sourceVertices": 1110,
+    "vertices": 1333,
+    "sharedSupports": 295,
+    "pins": 621,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

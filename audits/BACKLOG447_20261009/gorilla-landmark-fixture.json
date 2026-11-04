@@ -1,0 +1,83 @@
+{
+  "landmarksPx": {
+    "root": [
+      673.9,
+      696.2
+    ],
+    "pelvis": [
+      478,
+      616.7
+    ],
+    "spine": [
+      608.9,
+      587.5
+    ],
+    "chest": [
+      754.9,
+      466.3
+    ],
+    "neck": [
+      823.2,
+      383.4
+    ],
+    "head": [
+      861.1,
+      320.7
+    ],
+    "jaw": [
+      902.3,
+      353
+    ],
+    "armFarShoulder": [
+      882.9,
+      468.5
+    ],
+    "armFarElbow": [
+      885.6,
+      636.1
+    ],
+    "armFarHand": [
+      965.1,
+      965.2
+    ],
+    "armNearShoulder": [
+      745.4,
+      519.8
+    ],
+    "armNearElbow": [
+      682,
+      798.8
+    ],
+    "armNearHand": [
+      704.5,
+      944.1
+    ],
+    "legFarHip": [
+      433.4,
+      629.5
+    ],
+    "legFarKnee": [
+      368,
+      750.8
+    ],
+    "legFarFoot": [
+      319.5,
+      932.2
+    ],
+    "legNearHip": [
+      421.8,
+      617
+    ],
+    "legNearKnee": [
+      584,
+      685
+    ],
+    "legNearFoot": [
+      541.8,
+      897.6
+    ]
+  },
+  "fixtureSource": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c198creaturesupplyb-01-gorilla/packet/authoring.json",
+  "sourceAuthoringSha256": "13842b35a7ba3a9257c050242458b78c9e109caee9764492dd2778d770ceaf70",
+  "scope": "Saved topology counterexample only; no master or delivered rig implied."
+}

@@ -1,0 +1,257 @@
+[
+  {
+    "id": "c196creaturesupply-22-carrion-beetle",
+    "name": "Carrion Beetle",
+    "family": "insect",
+    "missing": [
+      "wingFar",
+      "wingNear"
+    ],
+    "extra": [],
+    "reference": "08-ant",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196creaturesupply-22-carrion-beetle/packet"
+  },
+  {
+    "id": "c196quadrupedoriginals-01-caiman",
+    "name": "Caiman",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "c136-sprawler-24-newt",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-01-caiman/packet"
+  },
+  {
+    "id": "c196quadrupedoriginals-06-mountain-lizard",
+    "name": "Mountain Lizard",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "wall-lizard",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-06-mountain-lizard/packet"
+  },
+  {
+    "id": "c196quadrupedoriginals-09-agama",
+    "name": "Agama",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "c136-sprawler-15-iguana",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-09-agama/packet"
+  },
+  {
+    "id": "c196quadrupedoriginals-10-gila-monster",
+    "name": "Gila Monster",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "codex-ref-01-caiman-tail-contour",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-10-gila-monster/packet"
+  },
+  {
+    "id": "c196quadrupedoriginals-21-mandrill",
+    "name": "Mandrill",
+    "family": "primate",
+    "missing": [
+      "tail0",
+      "tail1",
+      "tail2"
+    ],
+    "extra": [],
+    "reference": "chimpanzee",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c196quadrupedoriginals-21-mandrill/packet"
+  },
+  {
+    "id": "c198creaturesupplya-07-kinkajou",
+    "name": "Kinkajou",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "salamander",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c198creaturesupplya-07-kinkajou/packet"
+  },
+  {
+    "id": "c198creaturesupplyb-01-gorilla",
+    "name": "Gorilla",
+    "family": "primate",
+    "missing": [
+      "tail0",
+      "tail1",
+      "tail2"
+    ],
+    "extra": [],
+    "reference": "chimpanzee",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c198creaturesupplyb-01-gorilla/packet"
+  },
+  {
+    "id": "c198creaturesupplyb-09-tamarin",
+    "name": "Tamarin",
+    "family": "primate",
+    "missing": [
+      "tail0",
+      "tail1",
+      "tail2"
+    ],
+    "extra": [],
+    "reference": "chimpanzee",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c198creaturesupplyb-09-tamarin/packet"
+  },
+  {
+    "id": "c198creaturesupplyb-12-baboon",
+    "name": "Baboon",
+    "family": "primate",
+    "missing": [
+      "tail0",
+      "tail1",
+      "tail2"
+    ],
+    "extra": [],
+    "reference": "chimpanzee",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c198creaturesupplyb-12-baboon/packet"
+  },
+  {
+    "id": "c210originals-02-baboon-framing02",
+    "name": "Baboon",
+    "family": "primate",
+    "missing": [
+      "tail0",
+      "tail1",
+      "tail2"
+    ],
+    "extra": [],
+    "reference": "chimpanzee",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/c210originals-02-baboon-framing02/packet"
+  },
+  {
+    "id": "g2c107-10-giant-anteater",
+    "name": "Giant Anteater",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "codex-ref-01-caiman-tail-contour",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6/g2c107-10-giant-anteater/packet"
+  },
+  {
+    "id": "g2c118-06-marsh-rodent",
+    "name": "Marsh Rodent",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "codex-ref-01-caiman-tail-contour",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c118-06-marsh-rodent/packet"
+  },
+  {
+    "id": "g2c121-22-carrion-beetle",
+    "name": "Carrion Beetle",
+    "family": "insect",
+    "missing": [
+      "wingFar",
+      "wingNear"
+    ],
+    "extra": [],
+    "reference": "08-ant",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c121-22-carrion-beetle/packet"
+  },
+  {
+    "id": "g2c132quadrupeds-02-crocodile",
+    "name": "Crocodile",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "codex-ref-01-caiman-tail-contour",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c132quadrupeds-02-crocodile/packet"
+  },
+  {
+    "id": "g2c132quadrupeds-19-gila-monster",
+    "name": "Gila Monster",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "codex-ref-01-caiman-tail-contour",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c132quadrupeds-19-gila-monster/packet"
+  },
+  {
+    "id": "g2c132quadrupeds-21-chameleon",
+    "name": "Chameleon",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "codex-ref-01-caiman-tail-contour",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c132quadrupeds-21-chameleon/packet"
+  },
+  {
+    "id": "g2c163familyoriginals-02-salamander",
+    "name": "Salamander",
+    "family": "quadruped",
+    "missing": [
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "extra": [],
+    "reference": "codex-ref-01-caiman-tail-contour",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c163familyoriginals-02-salamander/packet"
+  },
+  {
+    "id": "g2c72-19-carrion-beetle",
+    "name": "Carrion Beetle",
+    "family": "insect",
+    "missing": [
+      "wingFar",
+      "wingNear"
+    ],
+    "extra": [],
+    "reference": "08-ant",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c213p6resume/g2c72-19-carrion-beetle/packet"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "ref": "a817ad64^",
+    "commit": "6279e180c4e8bf34cd4c0859db5f6978a1d9864d",
+    "source": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "sha256": "dddf25255c7ca7d31f5d85665983951354aaef1b25b5df1ba147c86855f7c0f1"
+  },
+  {
+    "ref": "a817ad64",
+    "commit": "a817ad646fac9313c59b04e0f677eec0881e742a",
+    "source": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "sha256": "351e6eb7ac37d295f36eb2daf2604a1831e014f3db32521e3de07aa571215d70"
+  },
+  {
+    "ref": "1ff30009",
+    "commit": "1ff30009d9b8cda3a92d72a2ef07a36c8506d91b",
+    "source": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "sha256": "351e6eb7ac37d295f36eb2daf2604a1831e014f3db32521e3de07aa571215d70"
+  }
+]

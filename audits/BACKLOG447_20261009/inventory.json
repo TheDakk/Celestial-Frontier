@@ -1,0 +1,4498 @@
+{
+  "total": 447,
+  "counts": {
+    "AUTHOR_REFUSED": 347,
+    "PASS_STATIC": 43,
+    "RED": 31,
+    "INTAKE_REFUSED": 25,
+    "STATIC_ERROR": 1
+  },
+  "records": [
+    {
+      "id": "c132references-03-dog",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)",
+        "missing-anatomy: part tail2 (tail2) covers 10% paint (reference 69%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c173holdsourcerepaints-snow-petrel",
+      "family": "biped-bird",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c186creaturesupply-01-impala",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 0.5%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-06-sloth",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-07-tortoise",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)",
+        "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-08-box-turtle",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 5% paint (reference 24%)",
+        "unexplained-anatomy: 12.3% of the paint lies away from the body and in no part (reference 5.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-09-pond-turtle",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 24%)",
+        "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 31%)",
+        "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 5.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-10-snapping-turtle",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail2 (tail2) covers 16% paint (reference 63%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-11-softshell-turtle",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 45%)",
+        "unexplained-anatomy: 10.8% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-12-turtle",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 24%)",
+        "unexplained-anatomy: 12.9% of the paint lies away from the body and in no part (reference 5.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-13-dog",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a top appendage of 14.0% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-18-wolverine",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 45%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-19-badger",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-20-beaver",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.9%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-21-seahorse",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+        "unexplained-anatomy: 22.9% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-22-giant-squid",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches cephalopod better (0.0414 < 0.0525)",
+        "extra-anatomy (unassigned): a rear appendage of 11.1% paint that no reference appendage lands on",
+        "missing-anatomy: part arm0-tip (arm0Seg2) covers 0% paint (reference 42%)",
+        "missing-anatomy: part arm2-tip (arm2Seg2) covers 0% paint (reference 43%)",
+        "missing-anatomy: part arm4-tip (arm4Seg2) covers 22% paint (reference 66%)",
+        "missing-anatomy: part arm6-tip (arm6Seg2) covers 12% paint (reference 68%)",
+        "missing-anatomy: part mantle (mantle) covers 24% paint (reference 82%)",
+        "missing-anatomy: part contour-arm0seg2 (arm0Seg2) covers 0% paint (reference 40%)",
+        "missing-anatomy: part contour-arm2seg2 (arm2Seg2) covers 0% paint (reference 34%)",
+        "missing-anatomy: part contour-arm6seg2 (arm6Seg2) covers 13% paint (reference 51%)",
+        "missing-anatomy: part contour-mantle (mantle) covers 19% paint (reference 73%)",
+        "unexplained-anatomy: 11.5% of the paint lies away from the body and in no part (reference 0.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-23-vampire-squid",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-eye (eyeNear) covers 1% paint (reference 100%)",
+        "missing-anatomy: part arm4-tip (arm4Seg2) covers 12% paint (reference 72%)",
+        "missing-anatomy: part arm2-tip (arm2Seg2) covers 23% paint (reference 68%)",
+        "missing-anatomy: part arm6-tip (arm6Seg2) covers 19% paint (reference 72%)",
+        "missing-anatomy: part arm6-middle (arm6Seg1) covers 0% paint (reference 93%)",
+        "missing-anatomy: part arm1-tip (arm1Seg2) covers 19% paint (reference 69%)",
+        "missing-anatomy: part arm1-middle (arm1Seg1) covers 4% paint (reference 95%)",
+        "missing-anatomy: part arm1-base (arm1Seg0) covers 8% paint (reference 99%)",
+        "missing-anatomy: part arm5-tip (arm5Seg2) covers 21% paint (reference 77%)",
+        "missing-anatomy: part arm5-middle (arm5Seg1) covers 9% paint (reference 85%)",
+        "missing-anatomy: part arm5-base (arm5Seg0) covers 3% paint (reference 87%)",
+        "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 2.9%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c186creaturesupply-24-nautilus",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part eye-near (eyeNear) covers 0% paint (reference 100%)",
+        "missing-anatomy: part eye-far (eyeFar) covers 0% paint (reference 84%)",
+        "missing-anatomy: part siphon (siphon) covers 4% paint (reference 100%)",
+        "missing-anatomy: part arm1-middle (arm1Seg1) covers 12% paint (reference 97%)",
+        "missing-anatomy: part arm3-tip (arm3Seg2) covers 10% paint (reference 66%)",
+        "missing-anatomy: part arm5-tip (arm5Seg2) covers 19% paint (reference 63%)",
+        "missing-anatomy: part arm5-middle (arm5Seg1) covers 18% paint (reference 89%)",
+        "missing-anatomy: part arm6-tip (arm6Seg2) covers 13% paint (reference 68%)",
+        "missing-anatomy: part arm6-middle (arm6Seg1) covers 9% paint (reference 92%)",
+        "missing-anatomy: part arm7-middle (arm7Seg1) covers 15% paint (reference 81%)",
+        "missing-anatomy: part mantle (mantle) covers 0% paint (reference 82%)",
+        "missing-anatomy: part contour-arm1seg1 (arm1Seg1) covers 20% paint (reference 81%)",
+        "missing-anatomy: part contour-arm3seg1 (arm3Seg1) covers 19% paint (reference 94%)",
+        "missing-anatomy: part contour-arm3seg2 (arm3Seg2) covers 7% paint (reference 50%)",
+        "missing-anatomy: part contour-arm5seg2 (arm5Seg2) covers 11% paint (reference 48%)",
+        "missing-anatomy: part contour-arm6seg1 (arm6Seg1) covers 11% paint (reference 71%)",
+        "missing-anatomy: part contour-arm7seg1 (arm7Seg1) covers 16% paint (reference 76%)",
+        "missing-anatomy: part contour-mantle (mantle) covers 0% paint (reference 73%)",
+        "missing-anatomy: part final-arm4seg1 (arm4Seg1) covers 26% paint (reference 97%)",
+        "missing-anatomy: part final-arm3seg1 (arm3Seg1) covers 23% paint (reference 73%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-01-clam",
+      "family": "bivalve",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "no-reference: no other hand-authored subject of family bivalve"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-03-shrimp",
+      "family": "crustacean-small",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "no-reference: no other hand-authored subject of family crustacean-small"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-05-impala",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 91%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-06-dog",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a top appendage of 16.1% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-07-wolverine",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 11.0% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-08-badger",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 10.5% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-09-beaver",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+        "unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 1.9%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-13-aardvark",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part jaw (jaw) covers 10% paint (reference 31%)",
+        "unexplained-anatomy: 14.8% of the paint lies away from the body and in no part (reference 5.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-14-okapi",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-15-pronghorn",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c192creaturesupply-16-springbok",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c192creaturesupply-19-bison",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 33%)",
+        "unexplained-anatomy: 10.7% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-20-warthog",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail0 (tail0) covers 0% paint (reference 87%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-22-yak",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 7.9% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-23-bactrian-camel",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)",
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 57%)",
+        "unexplained-anatomy: 11.6% of the paint lies away from the body and in no part (reference 4.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c192creaturesupply-24-buffalo",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 7.6% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-03-water-vole",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-near-paw (foreNearPaw) covers 13% paint (reference 48%)",
+        "unexplained-anatomy: 11.4% of the paint lies away from the body and in no part (reference 5.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-04-marsh-rodent",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+        "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 1.9%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-06-llama",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c196creaturesupply-08-ibex",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 35%)",
+        "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 0.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-11-mountain-tapir",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-12-porcupine",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches quadruped better (0.0292 < 0.0379)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 33%)",
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 69%)",
+        "unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-13-bee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 32% paint (reference 98%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-14-honeybee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 8% paint (reference 32%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-15-bumblebee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part head (head) covers 31% paint (reference 98%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-16-dragonfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a top appendage of 6.6% paint that no reference appendage lands on",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 29% paint (reference 99%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 2% paint (reference 25%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%)",
+        "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 16% paint (reference 81%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-17-damselfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 17.0% paint that no reference appendage lands on",
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+        "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 8% paint (reference 25%)",
+        "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 11% paint (reference 40%)",
+        "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 1% paint (reference 32%)",
+        "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 14% paint (reference 44%)",
+        "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 15% paint (reference 52%)",
+        "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 0% paint (reference 67%)",
+        "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 14% paint (reference 75%)",
+        "missing-anatomy: part head (head) covers 27% paint (reference 88%)",
+        "unexplained-anatomy: 10.7% of the paint lies away from the body and in no part (reference 1.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-18-water-beetle",
+      "family": "insect",
+      "status": "RED",
+      "reasons": [
+        "['cast', 'hit', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-19-diving-beetle",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 32% paint (reference 99%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 4% paint (reference 25%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 31%)",
+        "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 0% paint (reference 81%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 7% paint (reference 25%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-20-stick-insect",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 7% paint (reference 26%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 9% paint (reference 34%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 7% paint (reference 36%)",
+        "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 20% paint (reference 58%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 3% paint (reference 32%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 6% paint (reference 35%)",
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 63%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-21-scorpionfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 12% paint (reference 47%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 20% paint (reference 82%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 14% paint (reference 60%)",
+        "missing-anatomy: part mandible (mandible) covers 7% paint (reference 60%)",
+        "unexplained-anatomy: 6.5% of the paint lies away from the body and in no part (reference 0.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-22-carrion-beetle",
+      "family": "insect",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196creaturesupply-23-orchid-bee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 6.9% of the paint lies away from the body and in no part (reference 0.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196framingsuccessors-01-caiman-framing-v2",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 13.9% of the paint lies away from the body and in no part (reference 9.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196framingsuccessors-02-crocodile-framing-v2",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "unexplained-anatomy: 14.9% of the paint lies away from the body and in no part (reference 9.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196framingsuccessors-03-monitor-lizard-framing-v2",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail-tip-lower-rim (tail3) covers 0% paint (reference 55%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196framingsuccessors-04-anole-framing-v2",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-far-root (hindFarRoot) covers 25% paint (reference 100%)",
+        "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196framingsuccessors-05-skink-framing-v2",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196framingsuccessors-08-whiptail-framing-v2",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+        "missing-anatomy: part hind-far-knee (hindFarKnee) covers 27% paint (reference 83%)",
+        "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 20%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196invertebrateoriginals-01-shrimp",
+      "family": "crustacean-small",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "no-reference: no other hand-authored subject of family crustacean-small"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196invertebrateoriginals-03-fiddler-crab",
+      "family": "brachyuran",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "no-reference: no other hand-authored subject of family brachyuran"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-01-caiman",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-02-crocodile",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "unexplained-anatomy: 14.6% of the paint lies away from the body and in no part (reference 9.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-03-monitor-lizard",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-04-anole",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 2.2%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-05-skink",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-06-mountain-lizard",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-07-lizard",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 2"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-08-whiptail",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on",
+        "missing-anatomy: part hind-far-knee (hindFarKnee) covers 25% paint (reference 83%)",
+        "missing-anatomy: part fore-near-paw (foreNearPaw) covers 14% paint (reference 48%)",
+        "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 20%)",
+        "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 8.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-09-agama",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-10-gila-monster",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-11-frilled-lizard",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 5% paint (reference 10%)",
+        "missing-anatomy: part tail2 (tail2) covers 6% paint (reference 14%)",
+        "unexplained-anatomy: 10.6% of the paint lies away from the body and in no part (reference 2.2%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-12-chameleon",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 36%)",
+        "unexplained-anatomy: 13.0% of the paint lies away from the body and in no part (reference 5.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-15-buffalo",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 38%)",
+        "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-17-water-buffalo",
+      "family": "quadruped",
+      "status": "RED",
+      "reasons": [
+        "['melee:tail']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-18-tamarin",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: quadruped matches clearly better (0.0143 < 0.0205)",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-19-langur",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: quadruped matches clearly better (0.0174 < 0.0271)",
+        "extra-anatomy (unassigned): a limb-down appendage of 8.1% paint that no reference appendage lands on",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4",
+        "missing-anatomy: part far-leg-upper (legFarKnee) covers 2% paint (reference 77%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-20-monkey",
+      "family": "primate",
+      "status": "RED",
+      "reasons": [
+        "['approach:walk', 'faint', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-21-mandrill",
+      "family": "primate",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-22-marmoset",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: quadruped matches clearly better (0.0069 < 0.0150)",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-23-aye-aye",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: quadruped matches clearly better (0.0188 < 0.0270)",
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c196quadrupedoriginals-24-proboscis-monkey",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: quadruped matches clearly better (0.0099 < 0.0162)",
+        "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 4"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-01-red-fox",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c198creaturesupplya-02-hyena",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-03-sloth-bear",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-04-brown-bear",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 24%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-07-kinkajou",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-10-squirrel",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches quadruped better (0.0273 < 0.0325)",
+        "wrong-family: biped-bird matches clearly better (0.0201 < 0.0325)",
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 5% paint (reference 43%)",
+        "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 31%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-12-vole",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-near-paw (foreNearPaw) covers 12% paint (reference 48%)",
+        "unexplained-anatomy: 11.1% of the paint lies away from the body and in no part (reference 5.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-13-mole",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 45%)",
+        "unexplained-anatomy: 9.9% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-14-shrew",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 20% paint (reference 66%)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 15% paint (reference 52%)",
+        "unexplained-anatomy: 6.1% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-15-hedgehog",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%)",
+        "unexplained-anatomy: 10.6% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-18-agouti",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 12% paint (reference 57%)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 5% paint (reference 23%)",
+        "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 4.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-19-guinea-pig",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 30% paint (reference 88%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-20-rat",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 39%)",
+        "unexplained-anatomy: 10.1% of the paint lies away from the body and in no part (reference 1.9%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-22-rabbit",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 9.3% of the paint lies away from the body and in no part (reference 3.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplya-24-snowshoe-hare",
+      "family": "quadruped",
+      "status": "RED",
+      "reasons": [
+        "['tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-01-gorilla",
+      "family": "primate",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-03-squid",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: insect matches clearly better (0.0306 < 0.0481)",
+        "extra-anatomy (unassigned): a rear appendage of 15.1% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a limb-down appendage of 9.4% paint that no reference appendage lands on",
+        "missing-anatomy: part arm5-middle (arm5Seg1) covers 24% paint (reference 89%)",
+        "missing-anatomy: part arm6-middle (arm6Seg1) covers 5% paint (reference 92%)",
+        "missing-anatomy: part arm7-middle (arm7Seg1) covers 25% paint (reference 81%)",
+        "missing-anatomy: part contour-arm5seg1 (arm5Seg1) covers 15% paint (reference 74%)",
+        "missing-anatomy: part contour-arm6seg1 (arm6Seg1) covers 19% paint (reference 71%)",
+        "unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 0.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-04-cuttlefish",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part arm2-middle (arm2Seg1) covers 19% paint (reference 92%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-05-diving-beetle",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 9% paint (reference 37%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-06-chimpanzee",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: quadruped matches clearly better (0.0156 < 0.0238)",
+        "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4",
+        "unexplained-anatomy: 7.0% of the paint lies away from the body and in no part (reference 0.5%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-07-howler-monkey",
+      "family": "primate",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c198creaturesupplyb-08-spider-monkey",
+      "family": "primate",
+      "status": "RED",
+      "reasons": [
+        "['faint', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-09-tamarin",
+      "family": "primate",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-10-macaque",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on",
+        "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4",
+        "missing-anatomy: part far-leg-upper (legFarKnee) covers 25% paint (reference 77%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-11-langur",
+      "family": "primate",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c198creaturesupplyb-12-baboon",
+      "family": "primate",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-13-lemur",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a top appendage of 8.7% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-14-mandrill",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-15-marmoset",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-16-octopus",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "no-reference: no other hand-authored subject of family cephalopod"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-17-giant-octopus",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 13.2% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a limb-down appendage of 9.6% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on",
+        "missing-anatomy: part arm0-middle (arm0Seg1) covers 13% paint (reference 66%)",
+        "missing-anatomy: part arm0-base (arm0Seg0) covers 32% paint (reference 99%)",
+        "missing-anatomy: part arm4-tip (arm4Seg2) covers 21% paint (reference 66%)",
+        "missing-anatomy: part final-arm0seg1 (arm0Seg1) covers 3% paint (reference 92%)",
+        "missing-anatomy: part final-arm0seg0 (arm0Seg0) covers 13% paint (reference 95%)",
+        "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 0.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-18-centipede",
+      "family": "myriapod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "no-reference: no other hand-authored subject of family myriapod"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-19-giant-centipede",
+      "family": "myriapod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+        "missing-anatomy: part leg0-far (leg0FarFoot) covers 0% paint (reference 25%)",
+        "missing-anatomy: part leg1-far (leg1FarFoot) covers 3% paint (reference 23%)",
+        "missing-anatomy: part leg8-far (leg8FarFoot) covers 0% paint (reference 26%)",
+        "missing-anatomy: part head (head) covers 8% paint (reference 21%)",
+        "unexplained-anatomy: 21.8% of the paint lies away from the body and in no part (reference 10.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-20-millipede",
+      "family": "myriapod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: quadruped matches clearly better (0.0247 < 0.0732)",
+        "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+        "unexplained-anatomy: 29.5% of the paint lies away from the body and in no part (reference 10.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-21-leafcutter-ant",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part leg-front-near (legFrontNearKnee) covers 24% paint (reference 88%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-22-locust",
+      "family": "insect",
+      "status": "RED",
+      "reasons": [
+        "['approach:flight', 'cast', 'hit', 'victory', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-23-grasshopper",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyb-24-dobsonfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 31%)",
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-01-crane",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 9.6% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-02-flamingo",
+      "family": "biped-bird",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Observed surfaces: contact conflicts with fixed owner\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:6:36)\n "
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-06-secretary-bird",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 9.9% of the paint lies away from the body and in no part (reference 2.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-12-snow-petrel",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-foot (legFarFoot) covers 15% paint (reference 53%)",
+        "missing-anatomy: part far-shin (legFarAnkle) covers 7% paint (reference 35%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-13-catfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-pectoral (pectoralNear) covers 10% paint (reference 86%)",
+        "missing-anatomy: part jaw (jaw) covers 4% paint (reference 16%)",
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-14-bowfin",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a front appendage of 6.2% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-15-arapaima",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-16-arowana",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-17-lungfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%",
+        "missing-anatomy: part jaw (jaw) covers 17% paint (reference 64%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-21-lionfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a front appendage of 6.1% paint that no reference appendage lands on",
+        "unexplained-anatomy: 15.4% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c198creaturesupplyc-23-fangtooth",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on",
+        "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-01-tapir",
+      "family": "quadruped",
+      "status": "RED",
+      "reasons": [
+        "['melee:tail', 'faint', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-02-wild-boar",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c202creaturesupply-03-peccary",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 10.4% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-04-coati",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches quadruped better (0.0140 < 0.0287)",
+        "wrong-family: primate matches clearly better (0.0169 < 0.0287)",
+        "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-05-porcupine",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches quadruped better (0.0324 < 0.0436)",
+        "missing-anatomy: part ear-near-tip (earNearTip) covers 31% paint (reference 89%)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 7% paint (reference 24%)",
+        "unexplained-anatomy: 11.5% of the paint lies away from the body and in no part (reference 5.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-06-impala",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c202creaturesupply-07-warthog",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail2 (tail2) covers 5% paint (reference 63%)",
+        "missing-anatomy: part tail1 (tail1) covers 18% paint (reference 81%)",
+        "missing-anatomy: part tail0 (tail0) covers 0% paint (reference 87%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-08-buffalo",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)",
+        "unexplained-anatomy: 7.0% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-09-badger",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-10-river-otter",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c202creaturesupply-11-beaver",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 16%)",
+        "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 1.9%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-12-wolverine",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c202creaturesupply-13-ibex",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-near-tip (earNearTip) covers 18% paint (reference 62%)",
+        "unexplained-anatomy: 8.0% of the paint lies away from the body and in no part (reference 0.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-14-chamois",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-16-spotted-hyena",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c202creaturesupply-17-aardvark",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part jaw (jaw) covers 10% paint (reference 31%)",
+        "unexplained-anatomy: 12.3% of the paint lies away from the body and in no part (reference 5.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-18-bison",
+      "family": "quadruped",
+      "status": "RED",
+      "reasons": [
+        "['faint', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-20-wild-horse",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 10.7% paint that no reference appendage lands on",
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 19% paint (reference 57%)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-21-goat",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)",
+        "missing-anatomy: part ear-far-root (earFarRoot) covers 0% paint (reference 90%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-23-dog",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 50%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c202creaturesupply-24-llama",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-01-water-buffalo",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-02-mountain-tapir",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-03-black-bear",
+      "family": "quadruped",
+      "status": "RED",
+      "reasons": [
+        "['approach:gallop', 'melee:tail', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-05-moose",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-near-tip (earNearTip) covers 14% paint (reference 91%)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 24% paint (reference 96%)",
+        "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 25%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-06-hippopotamus",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-07-wild-pig",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupply-08-water-vole",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 24%)",
+        "unexplained-anatomy: 10.4% of the paint lies away from the body and in no part (reference 5.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-09-marsh-rodent",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+        "unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 1.9%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-10-cow",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupply-11-pig",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 9.3% of the paint lies away from the body and in no part (reference 4.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-12-alpaca",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupply-13-gerenuk",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupply-14-nilgai",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 35%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-15-tahr",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-18-sparrow",
+      "family": "biped-bird",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupply-19-pigeon",
+      "family": "biped-bird",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupply-20-kookaburra",
+      "family": "biped-bird",
+      "status": "RED",
+      "reasons": [
+        "['alert', 'cast', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-22-catfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-pectoral (pectoralNear) covers 9% paint (reference 86%)",
+        "missing-anatomy: part far-pectoral (pectoralFar) covers 26% paint (reference 77%)",
+        "missing-anatomy: part jaw (jaw) covers 3% paint (reference 16%)",
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupply-24-wahoo",
+      "family": "fish",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Family admission: proportion bound: caudal/body\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:10:39)\n    at checkFami"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-01-okapi",
+      "family": "quadruped",
+      "status": "RED",
+      "reasons": [
+        "['approach:gallop', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-03-pronghorn",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-04-springbok",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupplyb-07-brown-bear",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)",
+        "missing-anatomy: part tail2 (tail2) covers 0% paint (reference 69%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-09-kingfisher",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 10.9% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-10-macaw",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-shin (legFarAnkle) covers 28% paint (reference 84%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-12-pheasant",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-thigh (legNearKnee) covers 27% paint (reference 84%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-15-egret",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 25% paint (reference 72%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-16-stork",
+      "family": "biped-bird",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupplyb-17-arapaima",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-17-arapaima-framing02",
+      "family": "fish",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupplyb-18-arowana",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-18-arowana-framing02",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.8% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-19-blenny",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 3.5%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-20-angelfish",
+      "family": "fish",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupplyb-22-marlin",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part head (head) covers 12% paint (reference 48%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-22-marlin-framing02",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part head (head) covers 14% paint (reference 48%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c203creaturesupplyb-23-swordfish",
+      "family": "fish",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupplyb-23-swordfish-framing02",
+      "family": "fish",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c203creaturesupplyb-24-fangtooth",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a front appendage of 7.6% paint that no reference appendage lands on",
+        "unexplained-anatomy: 11.5% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-01-snipe",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 25% paint (reference 72%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-02-godwit",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 16% paint (reference 72%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-03-avocet",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 21% paint (reference 72%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-05-egret",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 9% paint (reference 72%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-06-stork",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 17% paint (reference 72%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-11-peacock",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-foot (legNearFoot) covers 2% paint (reference 35%)",
+        "missing-anatomy: part far-shin (legFarAnkle) covers 25% paint (reference 84%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-13-pheasant",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-shin (legFarAnkle) covers 17% paint (reference 50%)",
+        "missing-anatomy: part tail (tailFan) covers 21% paint (reference 61%)",
+        "unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 1.2%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-14-guillemot",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.3% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-15-auk",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-16-grebe",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-foot (legFarFoot) covers 0% paint (reference 40%)",
+        "missing-anatomy: part near-shin (legNearAnkle) covers 9% paint (reference 84%)",
+        "missing-anatomy: part far-shin (legFarAnkle) covers 0% paint (reference 77%)",
+        "unexplained-anatomy: 14.8% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-17-penguin",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 3.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-18-pelican",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part far-thigh (legFarKnee) covers 19% paint (reference 72%)",
+        "unexplained-anatomy: 10.1% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-19-screamer",
+      "family": "biped-bird",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "c206birdsourcerepaints-22-macaw",
+      "family": "biped-bird",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Observed surfaces: contact conflicts with fixed owner\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:6:36)\n "
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c206birdsourcerepaints-23-tern",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-shin (legFarAnkle) covers 12% paint (reference 50%)",
+        "missing-anatomy: part tail (tailFan) covers 9% paint (reference 61%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c210originals-01-macaque-framing02",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c210originals-02-baboon-framing02",
+      "family": "primate",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c210originals-03-cricket-framing02",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 0% paint (reference 25%)",
+        "missing-anatomy: part mandible (mandible) covers 3% paint (reference 32%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c210originals-04-locust-framing02",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 10% paint (reference 37%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c210originals-05-centipede-framing02",
+      "family": "myriapod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "no-reference: no other hand-authored subject of family myriapod"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c210originals-06-millipede-framing02",
+      "family": "myriapod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: sessile-filter matches clearly better (0.0187 < 0.0860)",
+        "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+        "unexplained-anatomy: 34.5% of the paint lies away from the body and in no part (reference 10.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c213creaturesupply-03-impala",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 25%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c213creaturesupply-13-yak",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 7.3% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c213creaturesupply-14-takin",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 39%)",
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 17% paint (reference 57%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c213creaturesupply-17-dromedary-camel",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c213creaturesupply-18-bactrian-camel",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 7.2% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c213creaturesupply-19-gibbon",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4",
+        "unexplained-anatomy: 16.8% of the paint lies away from the body and in no part (reference 9.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "c213creaturesupply-21-sea-squirt",
+      "family": "sessile-filter",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 1.1% of the paint; every same-family reference shows at least 2.1%",
+        "unexplained-anatomy: 41.1% of the paint lies away from the body and in no part (reference 33.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-02-lungfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (family floor): the largest rear appendage is 3.8% of the paint; every same-family reference shows at least 10.0%",
+        "missing-anatomy: part jaw (jaw) covers 0% paint (reference 64%)",
+        "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-04-pipefish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 13.6% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-05-flying-fish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 11.4% of the paint lies away from the body and in no part (reference 6.9%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-06-anglerfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 19.2% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-08-fangtooth",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a front appendage of 8.4% paint that no reference appendage lands on",
+        "unexplained-anatomy: 10.4% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-09-dragonfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part jaw (jaw) covers 10% paint (reference 93%)",
+        "unexplained-anatomy: 21.1% of the paint lies away from the body and in no part (reference 6.9%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-11-deep-sea-fish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-pectoral (pectoralFar) covers 17% paint (reference 82%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-14-peacock",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-foot (legNearFoot) covers 1% paint (reference 35%)",
+        "missing-anatomy: part near-shin (legNearAnkle) covers 11% paint (reference 65%)",
+        "missing-anatomy: part far-shin (legFarAnkle) covers 16% paint (reference 84%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-15-ostrich",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-16-flamingo",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-shin (legNearAnkle) covers 29% paint (reference 84%)",
+        "missing-anatomy: part tail (tailFan) covers 16% paint (reference 89%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-17-pelican",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 9.0% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-20-snow-petrel",
+      "family": "biped-bird",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c101-23-mole",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 0% paint (reference 90%)",
+        "unexplained-anatomy: 11.1% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c101-24-beaver",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 14% paint (reference 52%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c106-11-knifefish",
+      "family": "fish",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c106-12-flying-gurnard",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part jaw (jaw) covers 3% paint (reference 56%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c106-14-emu",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c106-15-cassowary",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.4% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c106-16-kiwi",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches biped-bird better (0.0147 < 0.0218)",
+        "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 1.5%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c106-17-kakapo",
+      "family": "biped-bird",
+      "status": "RED",
+      "reasons": [
+        "['approach:walk', 'approach:flight', 'faint', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c106-18-hoatzin",
+      "family": "biped-bird",
+      "status": "RED",
+      "reasons": [
+        "['melee:kick', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c106-19-quetzal",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 15.6% of the paint lies away from the body and in no part (reference 2.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c106-23-porcupine",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.7% paint that no reference appendage lands on",
+        "missing-anatomy: part tail3 (tail3) covers 14% paint (reference 45%)",
+        "missing-anatomy: part tail1 (tail1) covers 27% paint (reference 81%)",
+        "unexplained-anatomy: 11.6% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-04-moray-eel",
+      "family": "serpent",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong family: length/thickness 7.96 < 8"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-05-gulper-eel",
+      "family": "serpent",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part segment-7 owns 1.79 % of the paint (reference 8.64 %)",
+        "missing-anatomy: part segment-8 owns 0.84 % of the paint (reference 6.60 %)",
+        "missing-anatomy: part segment-9 owns 0.67 % of the paint (reference 5.96 %)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-06-oarfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 18.2% of the paint lies away from the body and in no part (reference 3.5%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-07-gull",
+      "family": "biped-bird",
+      "status": "RED",
+      "reasons": [
+        "['approach:flight', 'faint', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-08-frigatebird",
+      "family": "biped-bird",
+      "status": "RED",
+      "reasons": [
+        "['approach:flight', 'faint', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-09-tropicbird",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-foot (legNearFoot) covers 16% paint (reference 48%)",
+        "missing-anatomy: part tail (tailFan) covers 19% paint (reference 61%)",
+        "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.2%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-10-giant-anteater",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-11-mountain-tapir",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-13-snowshoe-hare",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-15-ibex",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-near-tip (earNearTip) covers 11% paint (reference 62%)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)",
+        "unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 0.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-16-chamois",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c107-18-jackrabbit",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 77%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-21-guinea-pig",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 29% paint (reference 88%)",
+        "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 45%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c107-22-armadillo",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 22.0% of the paint lies away from the body and in no part (reference 8.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c110-04-impala",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 25%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c110-05-buffalo",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)",
+        "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c110-13-water-buffalo",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 16.0% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c110-19-yak",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)",
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 57%)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c110-20-takin",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 19% paint (reference 57%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c110-23-dromedary-camel",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c110-24-bactrian-camel",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 38%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-01-forest-elephant",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 13.0% of the paint lies away from the body and in no part (reference 5.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-02-elephant",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c114-03-asian-elephant",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail2 (tail2) covers 14% paint (reference 42%)",
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 8% paint (reference 57%)",
+        "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 4.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-04-african-elephant",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 6.9% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-05-rhinoceros",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 7% paint (reference 57%)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 8% paint (reference 23%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-06-hippopotamus",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 33%)",
+        "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-09-wild-pig",
+      "family": "quadruped",
+      "status": "STATIC_ERROR",
+      "reasons": [
+        "Error: Contact: melee:tail@246.17777777777778 exceeds scale compression bound"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-10-rat",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) was transferred off the canvas (area < 1 px\u00b2)",
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 38%)",
+        "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 58%)",
+        "missing-anatomy: part tail2 (tail2) covers 26% paint (reference 100%)",
+        "unexplained-anatomy: 23.0% of the paint lies away from the body and in no part (reference 8.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-11-cow",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 11% paint (reference 38%)",
+        "unexplained-anatomy: 6.1% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-16-gerenuk",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 77%)",
+        "missing-anatomy: part ear-far-root (earFarRoot) covers 17% paint (reference 94%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-17-tahr",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c114-20-tripod-fish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: quadruped matches clearly better (0.0260 < 0.0416)",
+        "missing-anatomy: part jaw (jaw) covers 1% paint (reference 93%)",
+        "missing-anatomy: part tail-peduncle (spine5) covers 18% paint (reference 54%)",
+        "unexplained-anatomy: 8.0% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-23-water-beetle",
+      "family": "insect",
+      "status": "RED",
+      "reasons": [
+        "['cast', 'hit', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c114-24-diving-beetle",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 31%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-04-sea-otter",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c118-05-water-vole",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 15% paint (reference 43%)",
+        "missing-anatomy: part fore-near-paw (foreNearPaw) covers 15% paint (reference 48%)",
+        "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 5.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-06-marsh-rodent",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-07-flying-squirrel",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 9.6% of the paint lies away from the body and in no part (reference 5.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-09-colugo",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c118-10-echidna",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-near-tip (earNearTip) covers 7% paint (reference 38%)",
+        "missing-anatomy: part tail2 (tail2) covers 15% paint (reference 63%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-12-platypus",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-13-snake",
+      "family": "serpent",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "body not continuous: 1.7 % of the length has no paint"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-14-penguin",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 2.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-15-water-beetle",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 31%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-16-diving-beetle",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part antenna-far (antennaFar) covers 8% paint (reference 25%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-17-dragonfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 10% paint (reference 36%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 12% paint (reference 40%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%)",
+        "missing-anatomy: part elytron-far (thorax) covers 23% paint (reference 79%)",
+        "missing-anatomy: part membrane-near (wingNear) covers 21% paint (reference 89%)",
+        "missing-anatomy: part membrane-far (wingFar) covers 14% paint (reference 86%)",
+        "unexplained-anatomy: 6.5% of the paint lies away from the body and in no part (reference 1.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-18-damselfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+        "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 6% paint (reference 29%)",
+        "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 4% paint (reference 25%)",
+        "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 8% paint (reference 32%)",
+        "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 11% paint (reference 44%)",
+        "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 11% paint (reference 56%)",
+        "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 18% paint (reference 52%)",
+        "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 0% paint (reference 67%)",
+        "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 0% paint (reference 75%)",
+        "unexplained-anatomy: 13.5% of the paint lies away from the body and in no part (reference 1.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-19-mayfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches insect better (0.0445 < 0.0546)",
+        "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 0% paint (reference 25%)",
+        "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 7% paint (reference 40%)",
+        "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 10% paint (reference 44%)",
+        "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 13% paint (reference 52%)",
+        "unexplained-anatomy: 15.6% of the paint lies away from the body and in no part (reference 1.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c118-23-rhinoceros",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 39%)",
+        "missing-anatomy: part tail2 (tail2) covers 14% paint (reference 42%)",
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 13% paint (reference 57%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c121-02-egret",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 10% paint (reference 72%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c121-03-stork",
+      "family": "biped-bird",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Part masks: empty authored part: far-thigh\n    at requireValue (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at file:///Us"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c121-11-sparrow",
+      "family": "biped-bird",
+      "status": "RED",
+      "reasons": [
+        "['melee:kick', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c121-15-peacock",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-shin (legFarAnkle) covers 16% paint (reference 84%)",
+        "unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c121-17-bee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 6% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 26% paint (reference 98%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c121-19-giant-water-bug",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 1% paint (reference 31%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c121-21-stick-insect",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 12% paint (reference 44%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 4% paint (reference 26%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 12% paint (reference 34%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 13% paint (reference 42%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 3% paint (reference 78%)",
+        "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 17% paint (reference 69%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 3% paint (reference 32%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 4% paint (reference 35%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c121-22-carrion-beetle",
+      "family": "insect",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c121-23-water-strider",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a limb-down appendage of 8.7% paint that no reference appendage lands on",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 6% paint (reference 26%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 8% paint (reference 34%)",
+        "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 4% paint (reference 58%)",
+        "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 14% paint (reference 69%)",
+        "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 25% paint (reference 73%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 16% paint (reference 81%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 32%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 35%)",
+        "missing-anatomy: part mandible (mandible) covers 14% paint (reference 63%)",
+        "missing-anatomy: part abdomen (abdomen) covers 8% paint (reference 54%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-01-caiman",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 15.5% of the paint lies away from the body and in no part (reference 9.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-02-crocodile",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-05-monitor-lizard",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part jaw (jaw) covers 9% paint (reference 31%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-06-anole",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-far-root (hindFarRoot) covers 0% paint (reference 100%)",
+        "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 10%)",
+        "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 2.2%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-08-skink",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 13% paint (reference 40%)",
+        "missing-anatomy: part fore-near-paw (foreNearPaw) covers 0% paint (reference 48%)",
+        "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 20% paint (reference 87%)",
+        "unexplained-anatomy: 14.2% of the paint lies away from the body and in no part (reference 8.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-10-mountain-lizard",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 11% paint (reference 40%)",
+        "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 27% paint (reference 80%)",
+        "missing-anatomy: part hind-far-paw (hindFarPaw) covers 15% paint (reference 46%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-12-lizard",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+        "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 19% paint (reference 83%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-13-whiptail",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 75%)",
+        "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)",
+        "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 2.2%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-14-agama",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-19-gila-monster",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-20-frilled-lizard",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 16.1% of the paint lies away from the body and in no part (reference 8.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c132quadrupeds-21-chameleon",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-01-giant-salamander",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-02-alpine-salamander",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-03-olm",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part jaw (jaw) covers 21% paint (reference 59%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-04-blind-salamander",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 16% paint (reference 53%)",
+        "missing-anatomy: part hind-far-paw (hindFarPaw) covers 5% paint (reference 53%)",
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 44%)",
+        "missing-anatomy: part fore-far-knee (foreFarKnee) covers 18% paint (reference 59%)",
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-05-axolotl",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part hind-near-paw (hindNearPaw) covers 18% paint (reference 53%)",
+        "missing-anatomy: part ear-near-tip (earNearTip) covers 15% paint (reference 66%)",
+        "missing-anatomy: part ear-near-root (earNearRoot) covers 33% paint (reference 100%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-07-buffalo",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)",
+        "unexplained-anatomy: 6.4% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-10-water-buffalo",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 84%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-14-yak",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 22% paint (reference 70%)",
+        "missing-anatomy: part fore-far-paw (foreFarPaw) covers 17% paint (reference 57%)",
+        "missing-anatomy: part head (head) covers 19% paint (reference 61%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-21-bee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 3% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 11% paint (reference 98%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-22-giant-water-bug",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 29% paint (reference 88%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-23-carrion-beetle",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a limb-down appendage of 8.7% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136repairs-24-water-strider",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (detached): 1 separate paint island(s) of \u2265 1% (reference 0)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 8% paint (reference 44%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 26%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 0% paint (reference 34%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 36%)",
+        "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 9% paint (reference 58%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 3% paint (reference 42%)",
+        "missing-anatomy: part hind-near-upper (legHindNearKnee) covers 7% paint (reference 88%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 11% paint (reference 35%)",
+        "missing-anatomy: part mandible (mandible) covers 8% paint (reference 63%)",
+        "missing-anatomy: part abdomen (abdomen) covers 3% paint (reference 54%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136targetededits-01-giant-salamander",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136targetededits-07-buffalo",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 6.1% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c136targetededits-21-bee",
+      "family": "insect",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c163familyoriginals-02-salamander",
+      "family": "quadruped",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-03-wall-lizard",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-04-gorilla",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-05-chimpanzee",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: quadruped matches clearly better (0.0157 < 0.0248)",
+        "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4",
+        "missing-anatomy: part jaw (jaw) covers 1% paint (reference 62%)",
+        "unexplained-anatomy: 8.5% of the paint lies away from the body and in no part (reference 0.5%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-06-orangutan",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 4"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-08-howler-monkey",
+      "family": "primate",
+      "status": "RED",
+      "reasons": [
+        "['faint', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-09-spider-monkey",
+      "family": "primate",
+      "status": "RED",
+      "reasons": [
+        "['faint', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-10-macaque",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 4"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-11-baboon",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 6.8% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-12-lemur",
+      "family": "primate",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.4% of the paint lies away from the body and in no part (reference 0.5%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-13-centipede",
+      "family": "myriapod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "no-reference: no other hand-authored subject of family myriapod"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-14-giant-centipede",
+      "family": "myriapod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-15-millipede",
+      "family": "myriapod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: sessile-filter matches clearly better (0.0263 < 0.0648)",
+        "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+        "unexplained-anatomy: 33.3% of the paint lies away from the body and in no part (reference 10.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-16-octopus",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "no-reference: no other hand-authored subject of family cephalopod"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-17-squid",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 12.8% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a front appendage of 11.1% paint that no reference appendage lands on",
+        "missing-anatomy: part eye-near (eyeNear) covers 7% paint (reference 100%)",
+        "missing-anatomy: part arm2-tip (arm2Seg2) covers 0% paint (reference 43%)",
+        "missing-anatomy: part arm6-tip (arm6Seg2) covers 24% paint (reference 68%)",
+        "missing-anatomy: part arm6-middle (arm6Seg1) covers 13% paint (reference 92%)",
+        "missing-anatomy: part mantle (mantle) covers 19% paint (reference 82%)",
+        "missing-anatomy: part contour-arm2seg2 (arm2Seg2) covers 0% paint (reference 34%)",
+        "missing-anatomy: part contour-arm6seg2 (arm6Seg2) covers 12% paint (reference 51%)",
+        "missing-anatomy: part contour-mantle (mantle) covers 10% paint (reference 73%)",
+        "missing-anatomy: part final-arm3seg1 (arm3Seg1) covers 0% paint (reference 73%)",
+        "unexplained-anatomy: 9.6% of the paint lies away from the body and in no part (reference 0.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-18-cuttlefish",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "wrong-family: insect matches clearly better (0.0281 < 0.0462)",
+        "missing-anatomy: part arm2-tip (arm2Seg2) covers 0% paint (reference 43%)",
+        "missing-anatomy: part arm2-middle (arm2Seg1) covers 0% paint (reference 75%)",
+        "missing-anatomy: part contour-arm2seg1 (arm2Seg1) covers 0% paint (reference 68%)",
+        "missing-anatomy: part final-arm4seg1 (arm4Seg1) covers 34% paint (reference 97%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-19-giant-octopus",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 31.3% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a limb-down appendage of 10.4% paint that no reference appendage lands on",
+        "missing-anatomy: part final-arm0seg1 (arm0Seg1) covers 30% paint (reference 92%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-20-deep-sea-octopus",
+      "family": "cephalopod",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 15.6% paint that no reference appendage lands on",
+        "missing-anatomy: part eye-far (eyeFar) covers 0% paint (reference 84%)",
+        "missing-anatomy: part contour-arm6seg2 (arm6Seg2) covers 14% paint (reference 51%)",
+        "missing-anatomy: part final-arm0seg0 (arm0Seg0) covers 3% paint (reference 95%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-21-fruit-bat",
+      "family": "flyer-membrane",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "no-reference: no other hand-authored subject of family flyer-membrane"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-23-insect-eating-bat",
+      "family": "flyer-membrane",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part leg-near-upper (legNearKnee) covers 18% paint (reference 64%)",
+        "unexplained-anatomy: 21.0% of the paint lies away from the body and in no part (reference 8.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c163familyoriginals-24-vampire-bat",
+      "family": "flyer-membrane",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part leg-near-foot (legNearFoot) covers 7% paint (reference 29%)",
+        "unexplained-anatomy: 21.6% of the paint lies away from the body and in no part (reference 8.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c59-02-moose",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 25%)",
+        "missing-anatomy: part tail2 (tail2) covers 25% paint (reference 81%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c59-03-bison",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 10.1% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c59-05-badger",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+        "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)",
+        "unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c59-06-wolverine",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 7.8% paint that no reference appendage lands on",
+        "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c59-09-kingfisher",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 2.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c59-12-ladybug",
+      "family": "insect",
+      "status": "RED",
+      "reasons": [
+        "['cast', 'hit', 'faint', 'victory', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c72-12-egret",
+      "family": "biped-bird",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c72-14-stork",
+      "family": "biped-bird",
+      "status": "RED",
+      "reasons": [
+        "['approach:flight', 'faint', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c72-17-water-strider",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 6.2% paint that no reference appendage lands on",
+        "extra-anatomy (unassigned): a limb-down appendage of 10.4% paint that no reference appendage lands on",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 44%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 36%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)",
+        "missing-anatomy: part mandible (mandible) covers 17% paint (reference 63%)",
+        "unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 0.1%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c72-19-carrion-beetle",
+      "family": "insect",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Skeleton pose: exact landmark inventory\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonPose"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c72-20-stick-insect",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 16% paint (reference 49%)",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 12% paint (reference 39%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 17% paint (reference 51%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 15% paint (reference 47%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 14% paint (reference 46%)",
+        "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 18% paint (reference 68%)",
+        "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 14% paint (reference 96%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 82%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 0% paint (reference 60%)",
+        "missing-anatomy: part mandible (mandible) covers 11% paint (reference 60%)",
+        "missing-anatomy: part abdomen (abdomen) covers 10% paint (reference 76%)",
+        "unexplained-anatomy: 20.2% of the paint lies away from the body and in no part (reference 0.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c76-06-arowana",
+      "family": "fish",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c76-07-arapaima",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.5% of the paint lies away from the body and in no part (reference 4.0%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c76-09-swift",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c76-12-crane",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-shin (legFarAnkle) covers 22% paint (reference 75%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c76-16-pheasant",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-shin (legFarAnkle) covers 14% paint (reference 50%)",
+        "unexplained-anatomy: 8.0% of the paint lies away from the body and in no part (reference 1.2%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c76-18-agouti",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c76-19-alpaca",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c76-20-llama",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c76-22-pangolin",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 12.5% of the paint lies away from the body and in no part (reference 8.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c76-23-peccary",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 14.1% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c76-24-okapi",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 53%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c81-10-snipe",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 0% paint (reference 72%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c81-12-godwit",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 20% paint (reference 72%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c81-13-avocet",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-thigh (legNearKnee) covers 0% paint (reference 67%)",
+        "missing-anatomy: part far-thigh (legFarKnee) covers 23% paint (reference 72%)",
+        "missing-anatomy: part tail (tailFan) covers 14% paint (reference 89%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c81-17-bee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c81-19-dragonfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 10.6% paint that no reference appendage lands on",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 6% paint (reference 25%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%)",
+        "missing-anatomy: part elytron-near (thorax) covers 27% paint (reference 98%)",
+        "missing-anatomy: part elytron-far (thorax) covers 22% paint (reference 79%)",
+        "missing-anatomy: part membrane-near (wingNear) covers 23% paint (reference 89%)",
+        "missing-anatomy: part membrane-far (wingFar) covers 27% paint (reference 86%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c81-20-damselfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+        "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 8% paint (reference 29%)",
+        "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 7% paint (reference 25%)",
+        "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 6% paint (reference 31%)",
+        "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 13% paint (reference 40%)",
+        "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 0% paint (reference 32%)",
+        "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 14% paint (reference 44%)",
+        "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 19% paint (reference 56%)",
+        "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 13% paint (reference 52%)",
+        "missing-anatomy: part leg-mid-far-knee (legMidFarKnee) covers 23% paint (reference 69%)",
+        "missing-anatomy: part leg-mid-near-knee (legMidNearKnee) covers 0% paint (reference 62%)",
+        "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 9% paint (reference 67%)",
+        "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 12% paint (reference 75%)",
+        "missing-anatomy: part head (head) covers 29% paint (reference 88%)",
+        "unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 1.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c81-21-caddisfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part antenna-far (antennaFar) covers 1% paint (reference 32%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 8% paint (reference 35%)",
+        "missing-anatomy: part mandible (mandible) covers 13% paint (reference 63%)",
+        "missing-anatomy: part head (head) covers 21% paint (reference 72%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c81-22-mayfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 29%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 26%)",
+        "missing-anatomy: part wing-near (wingNear) covers 5% paint (reference 79%)",
+        "unexplained-anatomy: 18.2% of the paint lies away from the body and in no part (reference 1.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c81-23-stonefly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 5% paint (reference 40%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 20% paint (reference 88%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 4% paint (reference 25%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 2% paint (reference 31%)",
+        "missing-anatomy: part mandible (mandible) covers 1% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 12% paint (reference 98%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c81-24-giant-water-bug",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)",
+        "missing-anatomy: part mandible (mandible) covers 2% paint (reference 63%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c83-04-marlin",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part head (head) covers 12% paint (reference 48%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c83-06-swordfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part jaw (jaw) covers 0% paint (reference 93%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c83-08-wahoo",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part dorsal (dorsal) covers 30% paint (reference 92%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c83-09-macaw",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-thigh (legNearKnee) covers 29% paint (reference 84%)",
+        "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c83-15-kookaburra",
+      "family": "biped-bird",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Observed surfaces: contact conflicts with fixed owner\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:6:36)\n "
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c83-16-cockatoo",
+      "family": "biped-bird",
+      "status": "RED",
+      "reasons": [
+        "['dodge', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c83-20-spotted-hyena",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.6% paint that no reference appendage lands on",
+        "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 38%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c83-24-aardvark",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 15.4% of the paint lies away from the body and in no part (reference 8.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c87-02-blenny",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 3.5%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c87-09-owl",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 2.2%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c87-15-guillemot",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c87-17-coati",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches quadruped better (0.0204 < 0.0353)",
+        "wrong-family: primate matches clearly better (0.0226 < 0.0353)",
+        "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c87-20-striped-hyena",
+      "family": "quadruped",
+      "status": "RED",
+      "reasons": [
+        "['cast', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c87-22-black-bear",
+      "family": "quadruped",
+      "status": "RED",
+      "reasons": [
+        "['melee:tail', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c87-25-angelfish-marine",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c90-02-cobra",
+      "family": "serpent",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "not x-monotone: the dominant column run holds 94.4 % (coil or overlap; vertical strips cannot separate it)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c90-04-rattlesnake",
+      "family": "serpent",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "tail not tapered: tip 56px vs median 89px (truncated tail?)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c90-07-catfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-pectoral (pectoralNear) covers 15% paint (reference 86%)",
+        "missing-anatomy: part far-pectoral (pectoralFar) covers 23% paint (reference 77%)",
+        "missing-anatomy: part jaw (jaw) covers 6% paint (reference 16%)",
+        "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c90-09-bowfin",
+      "family": "fish",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c90-15-squirrel",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches quadruped better (0.0167 < 0.0270)",
+        "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 61%)",
+        "unexplained-anatomy: 15.1% of the paint lies away from the body and in no part (reference 5.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c90-17-rabbit",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c90-20-hedgehog",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 5.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c90-22-kinkajou",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 16.6% of the paint lies away from the body and in no part (reference 5.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c90-23-sloth-bear",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)",
+        "missing-anatomy: part tail2 (tail2) covers 20% paint (reference 63%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c90-24-river-otter",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c92-05-lionfish",
+      "family": "fish",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 10.0% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c92-08-auk",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 10.7% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c92-12-grebe",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 9.4% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c92-16-vole",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)",
+        "missing-anatomy: part tail2 (tail2) covers 21% paint (reference 63%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c92-19-moth",
+      "family": "insect",
+      "status": "RED",
+      "reasons": [
+        "['cast', 'hit', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c92-20-aphid",
+      "family": "insect",
+      "status": "RED",
+      "reasons": [
+        "['cast', 'hit', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c92-21-dobsonfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 6% paint (reference 25%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 8% paint (reference 62%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 8% paint (reference 31%)",
+        "missing-anatomy: part mandible (mandible) covers 5% paint (reference 32%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c92-22-scorpionfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 15% paint (reference 49%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 47%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 17% paint (reference 82%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 18% paint (reference 60%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 8% paint (reference 18%)",
+        "missing-anatomy: part mandible (mandible) covers 5% paint (reference 60%)",
+        "unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 0.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c92-23-thrips",
+      "family": "insect",
+      "status": "RED",
+      "reasons": [
+        "['approach:flight', 'cast', 'hit', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c92-24-orchid-bee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 6.7% paint that no reference appendage lands on",
+        "missing-anatomy: part mandible (mandible) covers 8% paint (reference 63%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c95-13-pronghorn",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c95-14-springbok",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c95-17-nilgai",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c95-19-butterfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 40%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 26% paint (reference 77%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c95-20-mosquito",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on",
+        "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 8% paint (reference 36%)",
+        "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 40%)",
+        "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 24% paint (reference 99%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 26% paint (reference 88%)",
+        "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 1% paint (reference 25%)",
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 11% paint (reference 31%)",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 6% paint (reference 37%)",
+        "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 11% paint (reference 77%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 0% paint (reference 62%)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 4% paint (reference 25%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 31%)",
+        "missing-anatomy: part mandible (mandible) covers 3% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 20% paint (reference 98%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c95-21-black-fly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c95-22-fly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 10% paint (reference 32%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c95-23-springtail",
+      "family": "insect",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c95-24-cold-adapted-insect",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "extra-anatomy (unassigned): a limb-down appendage of 7.4% paint that no reference appendage lands on",
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 7% paint (reference 26%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c98-11-osprey",
+      "family": "biped-bird",
+      "status": "INTAKE_REFUSED",
+      "reasons": [
+        "Error: Observed surfaces: contact conflicts with fixed owner\n    at need (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:6:36)\n "
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c98-14-screamer",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part beak (beak) covers 6% paint (reference 52%)",
+        "unexplained-anatomy: 6.7% of the paint lies away from the body and in no part (reference 2.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c98-15-secretary-bird",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 2.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c98-16-tern",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part near-shin (legNearAnkle) covers 15% paint (reference 49%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c98-19-shrew",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)",
+        "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 1.7%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c98-21-pig",
+      "family": "quadruped",
+      "status": "PASS_STATIC",
+      "reasons": [
+        "PASS_STATIC"
+      ],
+      "resolution": "review/native pending"
+    },
+    {
+      "id": "g2c98-22-warthog",
+      "family": "quadruped",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c98-23-honeybee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 28% paint (reference 98%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2c98-24-bumblebee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 6% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 19% paint (reference 98%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2referencesc62-02-pigeon",
+      "family": "biped-bird",
+      "status": "RED",
+      "reasons": [
+        "['alert', 'cast', 'hit', 'faint', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2referencesc62-06-dog",
+      "family": "quadruped",
+      "status": "RED",
+      "reasons": [
+        "['approach:hop', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2referencesc62-08-ant",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches insect better (0.0304 < 0.0383)",
+        "wrong-family: quadruped matches clearly better (0.0254 < 0.0383)",
+        "missing-anatomy: part hind-near-upper (legHindNearKnee) covers 27% paint (reference 100%)",
+        "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 18% paint (reference 62%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2referencesc62-09-cricket",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "facing: the mirrored painting matches insect better (0.0389 < 0.0478)",
+        "wrong-family: quadruped matches clearly better (0.0310 < 0.0478)",
+        "missing-anatomy: part antenna-far (antennaFar) covers 8% paint (reference 25%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 9% paint (reference 31%)",
+        "missing-anatomy: part mandible (mandible) covers 0% paint (reference 32%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2throughputc56-16-pigeon",
+      "family": "biped-bird",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 2.3%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2throughputc56-26-cicada",
+      "family": "insect",
+      "status": "RED",
+      "reasons": [
+        "['cast', 'hit', 'faint', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2throughputc56-28-leafcutter-ant",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part wing-near (wingNear) covers 27% paint (reference 82%)",
+        "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 16% paint (reference 46%)",
+        "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 1.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2throughputc56-29-cave-cricket",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 1% paint (reference 60%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2throughputc56-31-carrion-beetle",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 31%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "g2throughputc56-32-stick-insect",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 6% paint (reference 26%)",
+        "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 12% paint (reference 78%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)",
+        "missing-anatomy: part mandible (mandible) covers 15% paint (reference 63%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "insectreferencesc86-01-bee",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)",
+        "missing-anatomy: part head (head) covers 22% paint (reference 98%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "insectreferencesc86-02-dragonfly",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 20% paint (reference 59%)",
+        "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 6% paint (reference 46%)",
+        "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 22% paint (reference 63%)",
+        "missing-anatomy: part leg-hind-near (legHindNearKnee) covers 0% paint (reference 100%)",
+        "missing-anatomy: part mandible (mandible) covers 18% paint (reference 55%)",
+        "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 1.6%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "insectreferencesc86-03-giant-water-bug",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%)",
+        "missing-anatomy: part antenna-near (antennaNear) covers 7% paint (reference 31%)"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "insectreferencesc86-04-bee-six-legs",
+      "family": "insect",
+      "status": "RED",
+      "reasons": [
+        "['cast', 'hit', 'victory', 'tame', 'presentation']"
+      ],
+      "resolution": "OPEN"
+    },
+    {
+      "id": "insectreferencesc86-05-dragonfly-six-legs",
+      "family": "insect",
+      "status": "AUTHOR_REFUSED",
+      "reasons": [
+        "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 19% paint (reference 59%)",
+        "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 14% paint (reference 46%)",
+        "missing-anatomy: part leg-mid-far (legMidFarKnee) covers 20% paint (reference 81%)",
+        "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 17% paint (reference 63%)",
+        "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 9% paint (reference 81%)",
+        "missing-anatomy: part leg-hind-near (legHindNearKnee) covers 0% paint (reference 100%)",
+        "missing-anatomy: part mandible (mandible) covers 18% paint (reference 55%)",
+        "unexplained-anatomy: 12.6% of the paint lies away from the body and in no part (reference 1.6%)"
+      ],
+      "resolution": "OPEN"
+    }
+  ]
+}

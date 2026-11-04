@@ -1,0 +1,2 @@
+speccheck --selftest: 5/5 controls
+SPEC CHECK: 454 declared fields · 0 never read · 0 inert

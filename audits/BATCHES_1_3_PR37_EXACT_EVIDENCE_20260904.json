@@ -1,0 +1,66 @@
+{
+  "head": "121df53d0d101822f32f2ca98a878db10518e65d",
+  "parents": [
+    "8bf9c45d4aae74a6924bcdc201424db0af4770e6",
+    "0cad14dea80b4f2d5052210fa19d583bd0ada085"
+  ],
+  "tree": "4010b927d8b34aaa658d6e4fcc29e0534e845af6",
+  "commands": [
+    {
+      "label": "develop",
+      "command": [
+        "node",
+        "port/v2/tools/tracked-input-preflight.mjs",
+        "--profile=develop"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 47.133,
+      "log_sha256": "269e2ab73fc4db04fcace3ac0e13531f6cfae4368dc004b49d5fc1f16689c348"
+    },
+    {
+      "label": "actions-policy",
+      "command": [
+        "node",
+        "tools/actions-budget-policy.js",
+        "--selftest"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.08,
+      "log_sha256": "1ab2241b0cc782e6bcf334dee82417b186c4ed52b552e13e72a2e200f0817163"
+    }
+  ],
+  "clean_exact_head_after": true,
+  "result": "PASS",
+  "pr": {
+    "number": 37,
+    "url": "https://github.com/TheDakk/Celestial-Frontier/pull/37",
+    "draft": true,
+    "head": "121df53d0d101822f32f2ca98a878db10518e65d",
+    "base": "0cad14dea80b4f2d5052210fa19d583bd0ada085",
+    "labels": [],
+    "mergeable": true,
+    "mergeable_state": "blocked"
+  },
+  "source_branch": "openai/review-batches-1-3-20260904",
+  "lane_selector_non_comment_sha256": "234c2bc1355343972bba0447c5dd94c799b3f8fae7e7123c0650341fef1a39fa",
+  "full_lane_guards": 5,
+  "policy_code_matches_develop": true,
+  "develop_summary": {
+    "files": 274,
+    "passed": 2886,
+    "skipped": 1,
+    "vitest_seconds": 37.02,
+    "tracked_input_wrapper_seconds": 47.133
+  },
+  "actions_policy_controls": 79,
+  "logs": {
+    "develop": {
+      "sha256": "269e2ab73fc4db04fcace3ac0e13531f6cfae4368dc004b49d5fc1f16689c348",
+      "gzip_base64": "H4sIAAAAAAAC/6VY3W7juBW+F9An6A17USABIlr/lo3uYBLbyWSSmQS2s5POYLFLS5TNWKJUknLiQa/6Cu1l36P3fZR9kh5KtmNb9s4s6gCxxMNzvvNPHn9RgkRzGpuMF6X6CUV5ljGlaIwkJ4Wc5QrZjh0nvhtbsW3ZoeMkrpM4EemEJGyH8cS2fDukgR8bBoljYLRdHxUglEypRIwjRxq8yNAzERxepSJpaspIsEJJZK93ohmRaypaUzmgL6kCpRZUgOTJEgE5fx7V9O5xuQglki4oV/Ktg13sopPVju7maYNSCCph5+npUXHHcYYlR79o6j4hlb8glSNBF4w+n6FcHN5GikKAcegvxXz6puKoDMSG8WUvMDyPKdDzVLaiGY3mJjAmLKU4e5LIXL/9EIPVaV4Af7Wru3oHfkBXVCrDeIOixFw4by0Mf/XaG7Rg+gGJkhuGgYYPHxFaeNjGtoVahWALomhrQUQrydOYCtmyVEtZ3BbFtOMFC7s9seLIjcWLI4QFnylvjVsAs2MEKEmTlE1nynzJotF1r1XkQrUWjqGVehslrSnJ6EqvScnSeKVY/QJWZtoJ4NKY8ogaRkVbhNhZ72d8iqKUQTQR5Qsmcp7p5wTcv+bCGBt//OLc/AFU4xIoGTDB4q///ifqBAECiDKFxN2QaYwNQTlYXUmflXwutRCoFLBJr02/sgJJ9rWSHTOpWqSMmcIzlaXo+z4W9j00v0C//usflbhuteYGsFZLnC0ngsVmRpRgL98j2cKBe0BiuJGYEc4SiDl+ppP18zcktp0NN4tyDplIwVWKkdRMwNeKUQEayjmZQF7KxXSbG1LpgD6++02J+4K+X6KkYsEiaj7nYg5ynuQ3XGa3cdB+1QdC/vI7Yth2cNva08cOsPMaQyIlVbI1YXlGzQWsEFyrZvbdx+Ho/ef3Ozo6DsQw3OeWBY0YlSYRasPN+ah/82G5xW2fubaDnQY3xLpmOocm1E/N6fzpPDjoGajBdtO7VkOigIARSU1dXYqppdm7LmlME9aQah2M1+taRqqlKtEaMFOqxvRFlYJeEBXNLiA6VyIvC7M/n/De+OrrBs7CnnUg8e0GjI3bnX2YHuELIu+hzZoX9PnWZ1//diRvLBwegPH8BoyLfWcfJqpgHhRLpdn79KPPovL8ME5wIAzO1toaxrFxx92HuSiThIohlXkpoA6o/9JbfvZ/biLZUDcHYMKG0xwfB42EZpwpcxRw3xu4T79VZraP3YbTvAMwPhzZjdhUTdXsza5n48XF3W/gQNU1uymsWfswQYg970Cm3efOKtkuRZ6Nau9Z5OUj6bNiAwy+sBvWhHXJbsPYVrvG3oGpG/qHqp+bvccP8/Hi4a+HjHJdHDr7fcXGVsOaDsD4+zCf6OTq/mFYnV/QKi7UYiom3G8CuWHdOndgrLpEdqxxXNxpN3qayJ9l3VV65+8+Xjvi8nCAPAcHXtMa29uH8QMcdA5Zc7sxJsgeP3x2PlkHkCCyVsOacKtBr2AcSMlOIwVqhDERkAujpVQ0M/s343Q5Ch93sdoHziDo2s6+NU7gbB8tO81mY07/8eb9bRqFTXPCNvYaMLC2n2le4GKv4bQrCueNEtCZ/UuVi0F0pHTgdl8X9zaMCxbuNxvfsmrs3bop4Qgw4RBXcBCYvfnN8Pnh5wNlaoOD2v4ejGdjp5FpkJJucOT82xw3/tXL4MYUL/tAtttpxsb3tjrD2mmehwPr2LG2sacIrNBXjfZmg+Ztuwnz6si1NZACnnvEGjjMzQs77oiLx86B6NhnTuDXVbcF4wKMtWuNd+a5Xn3x24HJCOPmBSOzp3A8PNo57bMAWtVrHGoYDwre3u3Q/lkYBtiuYmN8KdJyCmOevoDDdbirL+WmoPpqT8VPyDj50ykaQQaurs6ICIpSXVoCqRnhOpu0cJLAdgSXcZawiCiWc4x6cCOEQIuuYaIHqa/a8ZKTjEWIZVr+yamemCIYCkxZpEyBQKpHqnQloWJbTQ9Y5Gka58/8rtAkifNSwf0da+6RZq6u8iAORFcjWaUurHXRTKlCdluttQQsdH7AyarnidZdJWctdUcc4J/HTyXcqyth1YyAUgYDdjWSqBmT1VipkReMrBSt9o5g66eadKsZsKEHlMrHeqaGOg8lDGpjfWm/ZHpggY7gwTQNAY/RCTyfGnVU9RZNhZCtyX+HuVvOWVFUW8OwXe0dKUhDRJTuil3f7rq+Xu2XovIltII2thyJTjaTEXId3AnlGYIcKwtkZfBYBwau0pAfLryrCt0OArgawev2VNYOgOPUODyq0hcawcCHlNRfPB9op+mHB16CCbd5RFL5e1gLnRiymjBbQMl5wqZQCZAk/6+QzXhxTBYM1ZD1qrq/7I/fm/U32xP+elUP94ZxPhyj84f+9Rhq3tMcqL7QSfTf/yALJXAXhjSREK0ImhbvgiQUUxJDuBl0L1Ht02tMRkTon2gEbF8tlpU/EZQVhf2CZJpgbHpCJWpKOYUsoEiSVK0ZdTKbOU+XaEEEq3OkphREASo3p2k+mdD4VZj+haLSQv+es1zLUSSl5qTkMRAFqA0KH/ej5oR7E63I+87cJe54dIdUu/Xux8FweN0foN67Qe+mq88/Dyk9u6I5XVZmVkugUzRDRH+nCBoLSfMpWjXuOgLa2dr7GoRMaRclpOQEBTB0AD1Jc0HgGudVLyWfMihV/QyNTOQTCoMe+kFDWS39Dw0gwrMNwIkNp63151OkOVYKQevSFN3tPAQypDR1p4rzDOViCrO8hChCo0LqOUda+9MDDn31jYZ69cvmDfJe0jTRFQwtv+UjfRZCD5TG6H7QW3vNgwMV3AodHbIoYTSNV07hgCSqgNbvDHII0r9iQ/fDu8vr20EX3Z+PRuhkpRWoOR6e924GfXT98f5hDNsGl7fXV+/G643f+1vkqfE/qVrsPtkUAAA="
+    },
+    "actions-policy": {
+      "sha256": "1ab2241b0cc782e6bcf334dee82417b186c4ed52b552e13e72a2e200f0817163",
+      "gzip_base64": "H4sIAAAAAAAC/3N0DvH09wtWcAp1cXcNUQh29XELcQ0OsVIIcAwOVnjUMEXB3FIhLTEzRzc5J784NUUhOT+vpCg/p5gLAJApZIs6AAAA"
+    }
+  }
+}

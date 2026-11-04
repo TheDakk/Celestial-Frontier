@@ -1,0 +1,27 @@
+✔ tailed target cannot inherit missing tail from cheaper tailless reference; contour judge stays unchanged (1.095625ms)
+✔ explicit admitted absence permits earless reference but never removes a required ear implicitly (0.097875ms)
+✔ no compatible reference stays empty; no joint is synthesized (0.064042ms)
+✔ undeclared extra joints refuse rather than silently discard (0.053583ms)
+✔ unchanged compatible order and legacy callers are preserved (0.07325ms)
+✔ contradictory and malformed inventories refuse (0.182792ms)
+✔ retained Gorilla counterexample demonstrates tail inventory mismatch without borrowing absence (0.276625ms)
+✔ exact reviewed Hyrax removes only the optional tail inventory (5.490792ms)
+✔ refuses different master (0.909291ms)
+✔ refuses different subject (0.658875ms)
+✔ refuses different request (0.649875ms)
+✔ refuses species mismatch (1.0705ms)
+✔ refuses missing life stage (1.010958ms)
+✔ refuses different pose (0.964792ms)
+✔ refuses unreviewed (0.9765ms)
+✔ refuses invented evidence (1.019041ms)
+✔ refuses mandatory leg absence (1.449125ms)
+✔ refuses duplicate declaration (1.300041ms)
+✔ refuses reference-only absence on a tailed species (2.821708ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 263.722875

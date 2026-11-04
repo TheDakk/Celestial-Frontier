@@ -1,0 +1,1298 @@
+[
+ {
+  "fit": "auto-g2c76/02-bass",
+  "islands": 18,
+  "islandPx": 17228,
+  "big": 8,
+  "biggest": 8269,
+  "biggestShare": 0.301
+ },
+ {
+  "fit": "auto-g2c106/10-halibut",
+  "islands": 23,
+  "islandPx": 18232,
+  "big": 4,
+  "biggest": 8144,
+  "biggestShare": 0.306
+ },
+ {
+  "fit": "auto-g2c87/04-damselfish",
+  "islands": 10,
+  "islandPx": 9029,
+  "big": 5,
+  "biggest": 7204,
+  "biggestShare": 0.435
+ },
+ {
+  "fit": "auto-g2c72/07-cichlid",
+  "islands": 26,
+  "islandPx": 20781,
+  "big": 10,
+  "biggest": 6813,
+  "biggestShare": 0.195
+ },
+ {
+  "fit": "auto-g2c72b/07-cichlid",
+  "islands": 26,
+  "islandPx": 20781,
+  "big": 10,
+  "biggest": 6813,
+  "biggestShare": 0.195
+ },
+ {
+  "fit": "auto-g2c72c/07-cichlid",
+  "islands": 26,
+  "islandPx": 20781,
+  "big": 10,
+  "biggest": 6813,
+  "biggestShare": 0.195
+ },
+ {
+  "fit": "auto-g2c101/12-ocean-sunfish",
+  "islands": 7,
+  "islandPx": 15835,
+  "big": 6,
+  "biggest": 6685,
+  "biggestShare": 0.164
+ },
+ {
+  "fit": "auto-g2c87/10-snowy-owl",
+  "islands": 10,
+  "islandPx": 7078,
+  "big": 3,
+  "biggest": 6541,
+  "biggestShare": 0.429
+ },
+ {
+  "fit": "auto-g2c83/22-sand-cat",
+  "islands": 18,
+  "islandPx": 11741,
+  "big": 8,
+  "biggest": 6414,
+  "biggestShare": 0.122
+ },
+ {
+  "fit": "auto-g2c87/05-clownfish",
+  "islands": 8,
+  "islandPx": 7120,
+  "big": 4,
+  "biggest": 5863,
+  "biggestShare": 0.196
+ },
+ {
+  "fit": "auto-v10/wild-horse",
+  "islands": 20,
+  "islandPx": 11863,
+  "big": 10,
+  "biggest": 5622,
+  "biggestShare": 0.104
+ },
+ {
+  "fit": "auto-v3/wild-horse",
+  "islands": 20,
+  "islandPx": 11863,
+  "big": 10,
+  "biggest": 5622,
+  "biggestShare": 0.104
+ },
+ {
+  "fit": "auto-v5/wild-horse",
+  "islands": 20,
+  "islandPx": 11863,
+  "big": 10,
+  "biggest": 5622,
+  "biggestShare": 0.104
+ },
+ {
+  "fit": "auto-v6/wild-horse",
+  "islands": 20,
+  "islandPx": 11863,
+  "big": 10,
+  "biggest": 5622,
+  "biggestShare": 0.104
+ },
+ {
+  "fit": "auto-v8/wild-horse",
+  "islands": 20,
+  "islandPx": 11863,
+  "big": 10,
+  "biggest": 5622,
+  "biggestShare": 0.104
+ },
+ {
+  "fit": "auto-g2c106/09-flounder",
+  "islands": 19,
+  "islandPx": 19202,
+  "big": 7,
+  "biggest": 5278,
+  "biggestShare": 0.204
+ },
+ {
+  "fit": "auto-g2c72/16-oystercatcher",
+  "islands": 10,
+  "islandPx": 13303,
+  "big": 5,
+  "biggest": 4908,
+  "biggestShare": 0.112
+ },
+ {
+  "fit": "auto-g2c72b/16-oystercatcher",
+  "islands": 10,
+  "islandPx": 13303,
+  "big": 5,
+  "biggest": 4908,
+  "biggestShare": 0.112
+ },
+ {
+  "fit": "auto-g2c72c/16-oystercatcher",
+  "islands": 10,
+  "islandPx": 13303,
+  "big": 5,
+  "biggest": 4908,
+  "biggestShare": 0.112
+ },
+ {
+  "fit": "auto-g2c81/02-haddock",
+  "islands": 32,
+  "islandPx": 9339,
+  "big": 10,
+  "biggest": 4904,
+  "biggestShare": 0.344
+ },
+ {
+  "fit": "auto-g2c72/08-tetra",
+  "islands": 54,
+  "islandPx": 11275,
+  "big": 8,
+  "biggest": 4825,
+  "biggestShare": 0.054
+ },
+ {
+  "fit": "auto-g2c72b/08-tetra",
+  "islands": 54,
+  "islandPx": 11275,
+  "big": 8,
+  "biggest": 4825,
+  "biggestShare": 0.054
+ },
+ {
+  "fit": "auto-g2c72c/08-tetra",
+  "islands": 54,
+  "islandPx": 11275,
+  "big": 8,
+  "biggest": 4825,
+  "biggestShare": 0.054
+ },
+ {
+  "fit": "auto-g2c76/08-goldfish",
+  "islands": 10,
+  "islandPx": 11253,
+  "big": 6,
+  "biggest": 4717,
+  "biggestShare": 0.173
+ },
+ {
+  "fit": "auto-g2c83/01-grouper",
+  "islands": 2,
+  "islandPx": 4481,
+  "big": 2,
+  "biggest": 4311,
+  "biggestShare": 0.087
+ },
+ {
+  "fit": "auto-g2c87/21-wildcat",
+  "islands": 20,
+  "islandPx": 8864,
+  "big": 9,
+  "biggest": 4241,
+  "biggestShare": 0.113
+ },
+ {
+  "fit": "auto-g2c72/06-pacu",
+  "islands": 4,
+  "islandPx": 4655,
+  "big": 2,
+  "biggest": 4171,
+  "biggestShare": 0.043
+ },
+ {
+  "fit": "auto-g2c72b/06-pacu",
+  "islands": 4,
+  "islandPx": 4655,
+  "big": 2,
+  "biggest": 4171,
+  "biggestShare": 0.043
+ },
+ {
+  "fit": "auto-g2c72c/06-pacu",
+  "islands": 4,
+  "islandPx": 4655,
+  "big": 2,
+  "biggest": 4171,
+  "biggestShare": 0.043
+ },
+ {
+  "fit": "auto-g2c90/18-hare",
+  "islands": 24,
+  "islandPx": 12147,
+  "big": 10,
+  "biggest": 4118,
+  "biggestShare": 0.092
+ },
+ {
+  "fit": "auto-g2c106/06-basking-shark",
+  "islands": 22,
+  "islandPx": 9624,
+  "big": 5,
+  "biggest": 3905,
+  "biggestShare": 0.077
+ },
+ {
+  "fit": "auto-g2c98/05-tang",
+  "islands": 9,
+  "islandPx": 3796,
+  "big": 1,
+  "biggest": 3768,
+  "biggestShare": 0.111
+ },
+ {
+  "fit": "auto-g2c95/05-tigerfish",
+  "islands": 51,
+  "islandPx": 6015,
+  "big": 3,
+  "biggest": 3731,
+  "biggestShare": 0.072
+ },
+ {
+  "fit": "auto-g2c106/17-kakapo",
+  "islands": 16,
+  "islandPx": 4170,
+  "big": 3,
+  "biggest": 3670,
+  "biggestShare": 0.164
+ },
+ {
+  "fit": "auto-g2c98/06-reef-fish",
+  "islands": 43,
+  "islandPx": 4593,
+  "big": 3,
+  "biggest": 3661,
+  "biggestShare": 0.237
+ },
+ {
+  "fit": "auto-g2c98/01-cold-water-fish",
+  "islands": 54,
+  "islandPx": 7302,
+  "big": 8,
+  "biggest": 3595,
+  "biggestShare": 0.224
+ },
+ {
+  "fit": "auto-g2c98/10-snailfish",
+  "islands": 17,
+  "islandPx": 7915,
+  "big": 4,
+  "biggest": 3490,
+  "biggestShare": 0.297
+ },
+ {
+  "fit": "auto-g2c87/07-surgeonfish",
+  "islands": 15,
+  "islandPx": 5519,
+  "big": 5,
+  "biggest": 3359,
+  "biggestShare": 0.273
+ },
+ {
+  "fit": "auto-g2c101/22-possum",
+  "islands": 18,
+  "islandPx": 7007,
+  "big": 6,
+  "biggest": 3351,
+  "biggestShare": 0.085
+ },
+ {
+  "fit": "auto-g2c87/18-red-panda",
+  "islands": 17,
+  "islandPx": 6659,
+  "big": 6,
+  "biggest": 3296,
+  "biggestShare": 0.108
+ },
+ {
+  "fit": "auto-g2c76/14-kestrel",
+  "islands": 32,
+  "islandPx": 4950,
+  "big": 3,
+  "biggest": 3214,
+  "biggestShare": 0.177
+ },
+ {
+  "fit": "auto-g2c83/07-mahi-mahi",
+  "islands": 21,
+  "islandPx": 8789,
+  "big": 7,
+  "biggest": 3189,
+  "biggestShare": 0.255
+ },
+ {
+  "fit": "auto-g2c90/21-meerkat-v2",
+  "islands": 22,
+  "islandPx": 8618,
+  "big": 9,
+  "biggest": 3146,
+  "biggestShare": 0.098
+ },
+ {
+  "fit": "auto-g2c101/13-hummingbird",
+  "islands": 5,
+  "islandPx": 3357,
+  "big": 2,
+  "biggest": 3118,
+  "biggestShare": 0.134
+ },
+ {
+  "fit": "auto-g2c90/24-river-otter",
+  "islands": 23,
+  "islandPx": 8499,
+  "big": 8,
+  "biggest": 2939,
+  "biggestShare": 0.073
+ },
+ {
+  "fit": "auto-g2c98/12-desert-owl",
+  "islands": 12,
+  "islandPx": 3794,
+  "big": 3,
+  "biggest": 2936,
+  "biggestShare": 0.179
+ },
+ {
+  "fit": "auto-g2c87/19-pampas-fox",
+  "islands": 25,
+  "islandPx": 9018,
+  "big": 9,
+  "biggest": 2918,
+  "biggestShare": 0.085
+ },
+ {
+  "fit": "auto-g2c106/07-reef-shark",
+  "islands": 78,
+  "islandPx": 5810,
+  "big": 8,
+  "biggest": 2895,
+  "biggestShare": 0.221
+ },
+ {
+  "fit": "auto-g2c106/02-great-white-shark",
+  "islands": 13,
+  "islandPx": 4793,
+  "big": 2,
+  "biggest": 2776,
+  "biggestShare": 0.06
+ },
+ {
+  "fit": "auto-g2c106/21-wolf",
+  "islands": 20,
+  "islandPx": 6249,
+  "big": 8,
+  "biggest": 2769,
+  "biggestShare": 0.093
+ },
+ {
+  "fit": "auto-g2c81/06-mullet",
+  "islands": 1,
+  "islandPx": 2769,
+  "big": 1,
+  "biggest": 2769,
+  "biggestShare": 0.17
+ },
+ {
+  "fit": "auto-g2c106/22-fox",
+  "islands": 24,
+  "islandPx": 8799,
+  "big": 10,
+  "biggest": 2732,
+  "biggestShare": 0.085
+ },
+ {
+  "fit": "auto-g2c81/01-mackerel",
+  "islands": 6,
+  "islandPx": 4538,
+  "big": 2,
+  "biggest": 2704,
+  "biggestShare": 0.14
+ },
+ {
+  "fit": "auto-g2c72/01-grayling",
+  "islands": 9,
+  "islandPx": 4975,
+  "big": 4,
+  "biggest": 2695,
+  "biggestShare": 0.068
+ },
+ {
+  "fit": "auto-g2c72b/01-grayling",
+  "islands": 9,
+  "islandPx": 4975,
+  "big": 4,
+  "biggest": 2695,
+  "biggestShare": 0.068
+ },
+ {
+  "fit": "auto-g2c72c/01-grayling",
+  "islands": 9,
+  "islandPx": 4975,
+  "big": 4,
+  "biggest": 2695,
+  "biggestShare": 0.068
+ },
+ {
+  "fit": "auto-g2c83/18-cheetah",
+  "islands": 20,
+  "islandPx": 7933,
+  "big": 9,
+  "biggest": 2639,
+  "biggestShare": 0.093
+ },
+ {
+  "fit": "auto-g2c87/12-sandgrouse",
+  "islands": 24,
+  "islandPx": 2861,
+  "big": 1,
+  "biggest": 2638,
+  "biggestShare": 0.254
+ },
+ {
+  "fit": "auto-g2c83/16-cockatoo",
+  "islands": 21,
+  "islandPx": 7466,
+  "big": 7,
+  "biggest": 2596,
+  "biggestShare": 0.179
+ },
+ {
+  "fit": "auto-g2c92/18-ground-squirrel",
+  "islands": 14,
+  "islandPx": 6368,
+  "big": 8,
+  "biggest": 2559,
+  "biggestShare": 0.067
+ },
+ {
+  "fit": "auto-g2c106/05-whale-shark",
+  "islands": 90,
+  "islandPx": 4562,
+  "big": 2,
+  "biggest": 2478,
+  "biggestShare": 0.058
+ },
+ {
+  "fit": "auto-g2c72/13-ibis",
+  "islands": 22,
+  "islandPx": 12895,
+  "big": 11,
+  "biggest": 2476,
+  "biggestShare": 0.045
+ },
+ {
+  "fit": "auto-g2c72b/13-ibis",
+  "islands": 22,
+  "islandPx": 12895,
+  "big": 11,
+  "biggest": 2476,
+  "biggestShare": 0.045
+ },
+ {
+  "fit": "auto-g2c72c/13-ibis",
+  "islands": 22,
+  "islandPx": 12895,
+  "big": 11,
+  "biggest": 2476,
+  "biggestShare": 0.045
+ },
+ {
+  "fit": "auto-g2c72/03-sculpin",
+  "islands": 11,
+  "islandPx": 5266,
+  "big": 3,
+  "biggest": 2425,
+  "biggestShare": 0.063
+ },
+ {
+  "fit": "auto-g2c72b/03-sculpin",
+  "islands": 11,
+  "islandPx": 5266,
+  "big": 3,
+  "biggest": 2425,
+  "biggestShare": 0.063
+ },
+ {
+  "fit": "auto-g2c72c/03-sculpin",
+  "islands": 11,
+  "islandPx": 5266,
+  "big": 3,
+  "biggest": 2425,
+  "biggestShare": 0.063
+ },
+ {
+  "fit": "auto-g2c81/07-tarpon",
+  "islands": 66,
+  "islandPx": 6139,
+  "big": 6,
+  "biggest": 2322,
+  "biggestShare": 0.148
+ },
+ {
+  "fit": "auto-g2c81/03-pollock",
+  "islands": 52,
+  "islandPx": 5346,
+  "big": 7,
+  "biggest": 2255,
+  "biggestShare": 0.187
+ },
+ {
+  "fit": "auto-g2c92/17-tree-shrew",
+  "islands": 31,
+  "islandPx": 8792,
+  "big": 9,
+  "biggest": 2242,
+  "biggestShare": 0.058
+ },
+ {
+  "fit": "auto-g2c106/13-rhea",
+  "islands": 18,
+  "islandPx": 4129,
+  "big": 6,
+  "biggest": 2226,
+  "biggestShare": 0.077
+ },
+ {
+  "fit": "auto-g2c98/20-gerbil",
+  "islands": 17,
+  "islandPx": 4898,
+  "big": 8,
+  "biggest": 2178,
+  "biggestShare": 0.076
+ },
+ {
+  "fit": "auto-g2c87/11-roadrunner",
+  "islands": 26,
+  "islandPx": 7298,
+  "big": 13,
+  "biggest": 2148,
+  "biggestShare": 0.152
+ },
+ {
+  "fit": "auto-g2c83/05-sailfish",
+  "islands": 36,
+  "islandPx": 6754,
+  "big": 7,
+  "biggest": 2061,
+  "biggestShare": 0.09
+ },
+ {
+  "fit": "auto-g2c95/08-booby",
+  "islands": 26,
+  "islandPx": 5540,
+  "big": 4,
+  "biggest": 2057,
+  "biggestShare": 0.096
+ },
+ {
+  "fit": "auto-g2c106/01-shark",
+  "islands": 12,
+  "islandPx": 3417,
+  "big": 2,
+  "biggest": 2025,
+  "biggestShare": 0.067
+ },
+ {
+  "fit": "auto-g2c87/14-woodpecker",
+  "islands": 14,
+  "islandPx": 4408,
+  "big": 7,
+  "biggest": 1997,
+  "biggestShare": 0.136
+ },
+ {
+  "fit": "auto-g2c92/10-cormorant",
+  "islands": 11,
+  "islandPx": 2836,
+  "big": 3,
+  "biggest": 1973,
+  "biggestShare": 0.216
+ },
+ {
+  "fit": "auto-g2c106/04-mako-shark",
+  "islands": 20,
+  "islandPx": 3361,
+  "big": 2,
+  "biggest": 1875,
+  "biggestShare": 0.061
+ },
+ {
+  "fit": "auto-g2c95/06-coelacanth",
+  "islands": 8,
+  "islandPx": 3279,
+  "big": 3,
+  "biggest": 1821,
+  "biggestShare": 0.05
+ },
+ {
+  "fit": "auto-g2c90/13-arctic-cod",
+  "islands": 4,
+  "islandPx": 1785,
+  "big": 1,
+  "biggest": 1740,
+  "biggestShare": 0.092
+ },
+ {
+  "fit": "auto-g2c101/10-barreleye",
+  "islands": 7,
+  "islandPx": 1892,
+  "big": 2,
+  "biggest": 1711,
+  "biggestShare": 0.046
+ },
+ {
+  "fit": "auto-g2c98/03-small-fish",
+  "islands": 22,
+  "islandPx": 2974,
+  "big": 3,
+  "biggest": 1706,
+  "biggestShare": 0.062
+ },
+ {
+  "fit": "auto-g2c92/04-boxfish",
+  "islands": 11,
+  "islandPx": 4591,
+  "big": 5,
+  "biggest": 1674,
+  "biggestShare": 0.045
+ },
+ {
+  "fit": "auto-g2c101/07-lanternfish",
+  "islands": 69,
+  "islandPx": 4696,
+  "big": 7,
+  "biggest": 1667,
+  "biggestShare": 0.134
+ },
+ {
+  "fit": "auto-g2c92/15-mouse",
+  "islands": 20,
+  "islandPx": 3418,
+  "big": 7,
+  "biggest": 1626,
+  "biggestShare": 0.058
+ },
+ {
+  "fit": "auto-g2c87/01-goby",
+  "islands": 14,
+  "islandPx": 2476,
+  "big": 4,
+  "biggest": 1625,
+  "biggestShare": 0.12
+ },
+ {
+  "fit": "auto-g2c87/24-hyrax",
+  "islands": 33,
+  "islandPx": 4745,
+  "big": 9,
+  "biggest": 1577,
+  "biggestShare": 0.038
+ },
+ {
+  "fit": "auto-g2hyrax-reviewed/24-hyrax",
+  "islands": 33,
+  "islandPx": 4753,
+  "big": 9,
+  "biggest": 1577,
+  "biggestShare": 0.038
+ },
+ {
+  "fit": "auto-g2c72/05-whitefish",
+  "islands": 3,
+  "islandPx": 1576,
+  "big": 1,
+  "biggest": 1565,
+  "biggestShare": 0.091
+ },
+ {
+  "fit": "auto-g2c72b/05-whitefish",
+  "islands": 3,
+  "islandPx": 1576,
+  "big": 1,
+  "biggest": 1565,
+  "biggestShare": 0.091
+ },
+ {
+  "fit": "auto-g2c72c/05-whitefish",
+  "islands": 3,
+  "islandPx": 1576,
+  "big": 1,
+  "biggest": 1565,
+  "biggestShare": 0.091
+ },
+ {
+  "fit": "auto-g2c83/13-tanager",
+  "islands": 15,
+  "islandPx": 1953,
+  "big": 2,
+  "biggest": 1522,
+  "biggestShare": 0.091
+ },
+ {
+  "fit": "auto-g2c106/18-hoatzin",
+  "islands": 58,
+  "islandPx": 5130,
+  "big": 11,
+  "biggest": 1510,
+  "biggestShare": 0.139
+ },
+ {
+  "fit": "auto-g2c98/13-harpy-eagle",
+  "islands": 11,
+  "islandPx": 2431,
+  "big": 4,
+  "biggest": 1503,
+  "biggestShare": 0.12
+ },
+ {
+  "fit": "auto-g2c76/03-char",
+  "islands": 22,
+  "islandPx": 4148,
+  "big": 7,
+  "biggest": 1442,
+  "biggestShare": 0.084
+ },
+ {
+  "fit": "auto-g2c106/08-hammerhead-shark",
+  "islands": 44,
+  "islandPx": 3011,
+  "big": 3,
+  "biggest": 1441,
+  "biggestShare": 0.067
+ },
+ {
+  "fit": "auto-g2c106/03-tiger-shark",
+  "islands": 19,
+  "islandPx": 2877,
+  "big": 2,
+  "biggest": 1390,
+  "biggestShare": 0.042
+ },
+ {
+  "fit": "auto-g2c101/01-salmon",
+  "islands": 13,
+  "islandPx": 1424,
+  "big": 1,
+  "biggest": 1335,
+  "biggestShare": 0.042
+ },
+ {
+  "fit": "auto-g2c76/13-spoonbill",
+  "islands": 23,
+  "islandPx": 6771,
+  "big": 10,
+  "biggest": 1316,
+  "biggestShare": 0.071
+ },
+ {
+  "fit": "auto-g2c72/02-minnow",
+  "islands": 2,
+  "islandPx": 1312,
+  "big": 1,
+  "biggest": 1306,
+  "biggestShare": 0.097
+ },
+ {
+  "fit": "auto-g2c72b/02-minnow",
+  "islands": 2,
+  "islandPx": 1312,
+  "big": 1,
+  "biggest": 1306,
+  "biggestShare": 0.097
+ },
+ {
+  "fit": "auto-g2c72c/02-minnow",
+  "islands": 2,
+  "islandPx": 1312,
+  "big": 1,
+  "biggest": 1306,
+  "biggestShare": 0.097
+ },
+ {
+  "fit": "auto-g2c95/11-chicken",
+  "islands": 19,
+  "islandPx": 4766,
+  "big": 6,
+  "biggest": 1288,
+  "biggestShare": 0.033
+ },
+ {
+  "fit": "auto-g2c81/05-anchovy",
+  "islands": 28,
+  "islandPx": 3507,
+  "big": 7,
+  "biggest": 1217,
+  "biggestShare": 0.162
+ },
+ {
+  "fit": "auto-g2c90/12-killifish",
+  "islands": 19,
+  "islandPx": 2518,
+  "big": 4,
+  "biggest": 1138,
+  "biggestShare": 0.067
+ },
+ {
+  "fit": "auto-g2c83/21-maned-wolf",
+  "islands": 25,
+  "islandPx": 3115,
+  "big": 5,
+  "biggest": 1132,
+  "biggestShare": 0.063
+ },
+ {
+  "fit": "auto-g2c95/04-bonefish",
+  "islands": 1,
+  "islandPx": 1097,
+  "big": 1,
+  "biggest": 1097,
+  "biggestShare": 0.073
+ },
+ {
+  "fit": "auto-g2c81/14-coot",
+  "islands": 18,
+  "islandPx": 2066,
+  "big": 5,
+  "biggest": 1083,
+  "biggestShare": 0.034
+ },
+ {
+  "fit": "auto-g2c87/03-wrasse",
+  "islands": 12,
+  "islandPx": 2376,
+  "big": 5,
+  "biggest": 1065,
+  "biggestShare": 0.033
+ },
+ {
+  "fit": "auto-v10/salamander",
+  "islands": 13,
+  "islandPx": 3846,
+  "big": 9,
+  "biggest": 1043,
+  "biggestShare": 0.03
+ },
+ {
+  "fit": "auto-v6/salamander",
+  "islands": 13,
+  "islandPx": 3846,
+  "big": 9,
+  "biggest": 1043,
+  "biggestShare": 0.03
+ },
+ {
+  "fit": "auto-v7/salamander",
+  "islands": 13,
+  "islandPx": 3846,
+  "big": 9,
+  "biggest": 1043,
+  "biggestShare": 0.03
+ },
+ {
+  "fit": "auto-v8/salamander",
+  "islands": 13,
+  "islandPx": 3846,
+  "big": 9,
+  "biggest": 1043,
+  "biggestShare": 0.03
+ },
+ {
+  "fit": "auto-g2c81/04-sardine",
+  "islands": 4,
+  "islandPx": 1120,
+  "big": 1,
+  "biggest": 1041,
+  "biggestShare": 0.074
+ },
+ {
+  "fit": "auto-g2c95/09-bustard",
+  "islands": 25,
+  "islandPx": 2457,
+  "big": 6,
+  "biggest": 1016,
+  "biggestShare": 0.043
+ },
+ {
+  "fit": "auto-g2c83/02-barracuda",
+  "islands": 21,
+  "islandPx": 5971,
+  "big": 9,
+  "biggest": 1010,
+  "biggestShare": 0.101
+ },
+ {
+  "fit": "auto-g2c76/01-pike",
+  "islands": 20,
+  "islandPx": 5993,
+  "big": 11,
+  "biggest": 966,
+  "biggestShare": 0.099
+ },
+ {
+  "fit": "auto-g2c95/10-seriema",
+  "islands": 37,
+  "islandPx": 2902,
+  "big": 5,
+  "biggest": 960,
+  "biggestShare": 0.047
+ },
+ {
+  "fit": "auto-g2c98/08-icefish",
+  "islands": 22,
+  "islandPx": 4378,
+  "big": 7,
+  "biggest": 949,
+  "biggestShare": 0.12
+ },
+ {
+  "fit": "auto-g2c87/20-striped-hyena",
+  "islands": 33,
+  "islandPx": 2469,
+  "big": 6,
+  "biggest": 943,
+  "biggestShare": 0.047
+ },
+ {
+  "fit": "auto-g2c76/05-paddlefish",
+  "islands": 67,
+  "islandPx": 1352,
+  "big": 3,
+  "biggest": 904,
+  "biggestShare": 0.067
+ },
+ {
+  "fit": "auto-g2c76/04-sturgeon",
+  "islands": 12,
+  "islandPx": 2029,
+  "big": 4,
+  "biggest": 871,
+  "biggestShare": 0.032
+ },
+ {
+  "fit": "auto-g2c98/21-pig",
+  "islands": 21,
+  "islandPx": 4250,
+  "big": 12,
+  "biggest": 867,
+  "biggestShare": 0.019
+ },
+ {
+  "fit": "auto-g2c90/14-viperfish",
+  "islands": 28,
+  "islandPx": 3070,
+  "big": 6,
+  "biggest": 863,
+  "biggestShare": 0.214
+ },
+ {
+  "fit": "auto-g2c90/11-piranha",
+  "islands": 7,
+  "islandPx": 1903,
+  "big": 3,
+  "biggest": 845,
+  "biggestShare": 0.02
+ },
+ {
+  "fit": "auto-g2c101/20-snow-petrel",
+  "islands": 18,
+  "islandPx": 1497,
+  "big": 3,
+  "biggest": 792,
+  "biggestShare": 0.028
+ },
+ {
+  "fit": "auto-g2c92/07-puffin",
+  "islands": 13,
+  "islandPx": 2162,
+  "big": 5,
+  "biggest": 733,
+  "biggestShare": 0.02
+ },
+ {
+  "fit": "auto-g2c87/23-spectacled-bear",
+  "islands": 42,
+  "islandPx": 3513,
+  "big": 10,
+  "biggest": 628,
+  "biggestShare": 0.017
+ },
+ {
+  "fit": "auto-g2c92/09-swan",
+  "islands": 18,
+  "islandPx": 2198,
+  "big": 5,
+  "biggest": 612,
+  "biggestShare": 0.015
+ },
+ {
+  "fit": "auto-g2c90/08-gar",
+  "islands": 5,
+  "islandPx": 1090,
+  "big": 3,
+  "biggest": 569,
+  "biggestShare": 0.035
+ },
+ {
+  "fit": "auto-g2c101/18-albatross",
+  "islands": 17,
+  "islandPx": 1147,
+  "big": 3,
+  "biggest": 530,
+  "biggestShare": 0.014
+ },
+ {
+  "fit": "auto-g2c106/24-lemming",
+  "islands": 27,
+  "islandPx": 1947,
+  "big": 6,
+  "biggest": 510,
+  "biggestShare": 0.017
+ },
+ {
+  "fit": "auto-g2c98/18-skua",
+  "islands": 22,
+  "islandPx": 1626,
+  "big": 4,
+  "biggest": 474,
+  "biggestShare": 0.011
+ },
+ {
+  "fit": "auto-g2c98/17-petrel",
+  "islands": 19,
+  "islandPx": 1288,
+  "big": 3,
+  "biggest": 454,
+  "biggestShare": 0.015
+ },
+ {
+  "fit": "auto-g2c87/22-black-bear",
+  "islands": 46,
+  "islandPx": 3144,
+  "big": 9,
+  "biggest": 453,
+  "biggestShare": 0.013
+ },
+ {
+  "fit": "auto-g2c95/07-gannet",
+  "islands": 23,
+  "islandPx": 1189,
+  "big": 4,
+  "biggest": 408,
+  "biggestShare": 0.012
+ },
+ {
+  "fit": "auto-g2c83/23-prairie-dog",
+  "islands": 30,
+  "islandPx": 1716,
+  "big": 6,
+  "biggest": 314,
+  "biggestShare": 0.01
+ },
+ {
+  "fit": "auto-g2c87/06-butterflyfish",
+  "islands": 14,
+  "islandPx": 615,
+  "big": 2,
+  "biggest": 307,
+  "biggestShare": 0.007
+ },
+ {
+  "fit": "auto-g2c106/20-seabird",
+  "islands": 23,
+  "islandPx": 856,
+  "big": 3,
+  "biggest": 261,
+  "biggestShare": 0.009
+ },
+ {
+  "fit": "auto-g2c101/03-cave-fish",
+  "islands": 7,
+  "islandPx": 453,
+  "big": 1,
+  "biggest": 244,
+  "biggestShare": 0.011
+ },
+ {
+  "fit": "auto-g2c87/16-eider-duck",
+  "islands": 22,
+  "islandPx": 904,
+  "big": 3,
+  "biggest": 222,
+  "biggestShare": 0.007
+ },
+ {
+  "fit": "auto-g2c95/15-bongo",
+  "islands": 4,
+  "islandPx": 426,
+  "big": 2,
+  "biggest": 210,
+  "biggestShare": 0.008
+ },
+ {
+  "fit": "auto-g2c95/03-sea-bass",
+  "islands": 4,
+  "islandPx": 199,
+  "big": 1,
+  "biggest": 194,
+  "biggestShare": 0.011
+ },
+ {
+  "fit": "auto-g2c92/02-parrotfish",
+  "islands": 10,
+  "islandPx": 321,
+  "big": 2,
+  "biggest": 181,
+  "biggestShare": 0.006
+ },
+ {
+  "fit": "auto-g2c98/09-mudminnow",
+  "islands": 20,
+  "islandPx": 507,
+  "big": 1,
+  "biggest": 146,
+  "biggestShare": 0.007
+ },
+ {
+  "fit": "auto-g2c81/16-rail",
+  "islands": 11,
+  "islandPx": 177,
+  "big": 0,
+  "biggest": 84,
+  "biggestShare": 0.003
+ },
+ {
+  "fit": "auto-g2c95/02-rabbitfish",
+  "islands": 9,
+  "islandPx": 95,
+  "big": 0,
+  "biggest": 70,
+  "biggestShare": 0.003
+ },
+ {
+  "fit": "auto-g2c90/10-tilapia",
+  "islands": 9,
+  "islandPx": 199,
+  "big": 0,
+  "biggest": 67,
+  "biggestShare": 0.002
+ },
+ {
+  "fit": "auto-g2c92/06-archerfish",
+  "islands": 4,
+  "islandPx": 69,
+  "big": 0,
+  "biggest": 40,
+  "biggestShare": 0.002
+ },
+ {
+  "fit": "auto-g2c72/04-walleye",
+  "islands": 9,
+  "islandPx": 50,
+  "big": 0,
+  "biggest": 23,
+  "biggestShare": 0.001
+ },
+ {
+  "fit": "auto-g2c72b/04-walleye",
+  "islands": 9,
+  "islandPx": 50,
+  "big": 0,
+  "biggest": 23,
+  "biggestShare": 0.001
+ },
+ {
+  "fit": "auto-g2c72c/04-walleye",
+  "islands": 9,
+  "islandPx": 50,
+  "big": 0,
+  "biggest": 23,
+  "biggestShare": 0.001
+ },
+ {
+  "fit": "auto-g2c98/04-sunfish",
+  "islands": 4,
+  "islandPx": 52,
+  "big": 0,
+  "biggest": 21,
+  "biggestShare": 0.001
+ },
+ {
+  "fit": "auto-g2c72c/21-king-snake",
+  "islands": 0,
+  "islandPx": 0,
+  "big": 0,
+  "biggest": 0,
+  "biggestShare": 0
+ },
+ {
+  "fit": "auto-g2c72c/22-grass-snake",
+  "islands": 0,
+  "islandPx": 0,
+  "big": 0,
+  "biggest": 0,
+  "biggestShare": 0
+ },
+ {
+  "fit": "auto-g2c72c/23-whip-snake",
+  "islands": 0,
+  "islandPx": 0,
+  "big": 0,
+  "biggest": 0,
+  "biggestShare": 0
+ },
+ {
+  "fit": "auto-g2c72c/24-vine-snake",
+  "islands": 0,
+  "islandPx": 0,
+  "big": 0,
+  "biggest": 0,
+  "biggestShare": 0
+ },
+ {
+  "fit": "auto-g2c90/01-anaconda",
+  "islands": 0,
+  "islandPx": 0,
+  "big": 0,
+  "biggest": 0,
+  "biggestShare": 0
+ },
+ {
+  "fit": "auto-g2c90/03-viper",
+  "islands": 0,
+  "islandPx": 0,
+  "big": 0,
+  "biggest": 0,
+  "biggestShare": 0
+ },
+ {
+  "fit": "auto-g2c90/05-sand-boa",
+  "islands": 0,
+  "islandPx": 0,
+  "big": 0,
+  "biggest": 0,
+  "biggestShare": 0
+ },
+ {
+  "fit": "auto-g2c90/06-cave-snake",
+  "islands": 0,
+  "islandPx": 0,
+  "big": 0,
+  "biggest": 0,
+  "biggestShare": 0
+ }
+]

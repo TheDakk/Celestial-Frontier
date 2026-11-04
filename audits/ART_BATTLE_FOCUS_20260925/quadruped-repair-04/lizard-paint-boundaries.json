@@ -1,0 +1,9 @@
+{
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "reason": "New12x12interior fixed root patch joins surrounding continuous torso paint; other anatomical boundaries use unchanged source topology."
+}

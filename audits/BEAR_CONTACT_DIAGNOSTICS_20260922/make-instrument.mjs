@@ -1,0 +1,12 @@
+import fs from'node:fs';import path from'node:path';import{createHash}from'node:crypto';
+const out='audits/BEAR_CONTACT_DIAGNOSTICS_20260922',source='port/v2/apps/game/src/creature-rig-contact.ts';let s=fs.readFileSync(source,'utf8');const edits=[];
+function edit(old,value){if(s.split(old).length!==2)throw Error('Unique diagnostic anchor required: '+old);s=s.replace(old,value);edits.push({old,value});}
+edit('export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupports:Readonly<Record<string,ContactSupport>>={}){','export function createDiagnosticFamilyContactSolver(record:CreatureRigRecordV1,paintedSupports:Readonly<Record<string,ContactSupport>>={},diagnostic:{passes:number;trace:(v:any)=>void}){');
+edit('pass<=(hasOffset?3:0)','pass<=(hasOffset?diagnostic.passes:0)');
+edit('   if(compression+shift>scaleLength*.08)',`   diagnostic.trace({event:'accommodation',pass,compression,shift,bound:scaleLength*.08,width:record.geometry.width,legs:activeChains.map((c,i)=>{const target=contacts[i]!.endpointTarget,root=transformPoint(matrices[c.hip]!,c.root),dx=target.x-root.x,max=c.chain.lengths.upper+c.chain.lengths.lower;return {joint:c.end,hip:c.hip,knee:c.knee,root,target,reach:max,distance:Math.hypot(dx,target.y-root.y),shiftNeeded:Math.hypot(dx,target.y-root.y)<=max?0:target.y-Math.sqrt(max*max-dx*dx)+1e-10-root.y};})});
+   if(compression+shift>scaleLength*.08)`);
+edit('   final=program.evaluate(pose);\n  }',`   final=program.evaluate(pose);
+   diagnostic.trace({event:'iteration',pass,compression,supports:activeChains.map((c,i)=>{const contact=contacts[i]!,paint=c.endpointOnly?transformPoint(final[c.end]!,c.support):predictContactSupport(c.model,final);return {joint:c.end,stance:contact.stance,endpointOnly:c.endpointOnly,offset:c.offset,predicted:paint,target:contact.paintedTarget,residualPx:Math.hypot((paint.x-contact.paintedTarget.x)*record.geometry.width,(paint.y-contact.paintedTarget.y)*record.geometry.height)};})});
+  }`);
+s=s.replace(/from '([^']+)'/g,(whole,p)=>p.startsWith('.')?"from '"+path.relative(out,path.resolve(path.dirname(source),p)).replaceAll(path.sep,'/')+"'":whole);
+fs.writeFileSync(out+'/solver-instrument.ts',s,{flag:'wx'});fs.writeFileSync(out+'/instrument-receipt.json',JSON.stringify({source,sourceSha256:createHash('sha256').update(fs.readFileSync(source)).digest('hex'),diagnosticOnly:true,productionFilesChanged:false,edits},null,2)+'\n',{flag:'wx'});

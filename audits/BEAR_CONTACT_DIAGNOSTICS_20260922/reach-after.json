@@ -1,0 +1,239 @@
+{
+  "producer": "99fc32eed25828cf1612516a342f7d0710584437",
+  "rows": [
+    {
+      "subject": "freshwater-crab",
+      "recipeHash": "ffb9a6786ed27e1cf9fd98d9a653111e2f69f0856bbd5b70ccad71dffca5419f",
+      "bindingHash": "00d3c3451f011b84cfe80f833d44f32e4f73984f7852f296840ce7ce691fd092",
+      "presence": null,
+      "rest": {
+        "applicable": true,
+        "forward": 0.070494,
+        "backward": 0.070494,
+        "samples": 121,
+        "bodyPlanted": [],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.070494,
+            "refusedAt": 0.07049515830810887,
+            "refusal": {
+              "ms": 0,
+              "displacement": 0.07049515830810887,
+              "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.070494,
+            "refusedAt": 0.07049515830810887,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.07049515830810887,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "applicable": true,
+        "forward": 0.070494,
+        "backward": 0.070494,
+        "samples": 121,
+        "bodyPlanted": [],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.070494,
+            "refusedAt": 0.07049515830810887,
+            "refusal": {
+              "ms": 0,
+              "displacement": 0.07049515830810887,
+              "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.070494,
+            "refusedAt": 0.07049515830810887,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.07049515830810887,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "subject": "mud-crab",
+      "recipeHash": "15b149aab62ff824e197e34dbe6b2b98bed80dd1c320045489b82ce7eb9fd22a",
+      "bindingHash": "716d7608c833b93814d69806003d9d676071fe0bc518fb004fe366902b3b7ef1",
+      "presence": {
+        "schema": "cf.anatomy-presence/v2",
+        "absent": [],
+        "hidden": [],
+        "folded": [
+          "leg0Far",
+          "leg1Far",
+          "leg2Far",
+          "leg3Far"
+        ]
+      },
+      "rest": {
+        "applicable": true,
+        "forward": 0.506777,
+        "backward": 0.046092,
+        "samples": 121,
+        "bodyPlanted": [
+          "leg0Far",
+          "leg1Far",
+          "leg2Far",
+          "leg3Far"
+        ],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.506777,
+            "refusedAt": 0.5067781340670174,
+            "refusal": {
+              "ms": 210,
+              "displacement": 0.5067781340670174,
+              "error": "Error: Contact: joint limit leg0NearFoot approach:scuttle@210: 105.00000618227179"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.046092,
+            "refusedAt": 0.046092704661766654,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.046092704661766654,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "applicable": true,
+        "forward": 0.491849,
+        "backward": 0.041061,
+        "samples": 121,
+        "bodyPlanted": [
+          "leg0Far",
+          "leg1Far",
+          "leg2Far",
+          "leg3Far"
+        ],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.491849,
+            "refusedAt": 0.4918497516607777,
+            "refusal": {
+              "ms": 210,
+              "displacement": 0.4918497516607777,
+              "error": "Error: Contact: joint limit leg0NearFoot approach:scuttle@210: 105.00001513363556"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.041061,
+            "refusedAt": 0.041061878167168234,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.041061878167168234,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      },
+      "declarationControl": "PASS"
+    },
+    {
+      "subject": "vent-crab",
+      "recipeHash": "cbb1c415eca9c4c763b4f87a1c83d7f1928b1f3b5ded1165b6bdc99a9cae2505",
+      "bindingHash": "3bd9150f21dce608a1931175cdf30a63ea23bc1aa15a4a2516e47b4b5a687c95",
+      "presence": {
+        "schema": "cf.anatomy-presence/v2",
+        "absent": [],
+        "hidden": [],
+        "folded": [
+          "leg0Far",
+          "leg1Far",
+          "leg2Far",
+          "leg3Far"
+        ]
+      },
+      "rest": {
+        "applicable": true,
+        "forward": 0.837427,
+        "backward": 0.036701,
+        "samples": 121,
+        "bodyPlanted": [
+          "leg0Far",
+          "leg1Far",
+          "leg2Far",
+          "leg3Far"
+        ],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.837427,
+            "refusedAt": 0.8374278919819953,
+            "refusal": {
+              "ms": 210,
+              "displacement": 0.8374278919819953,
+              "error": "Error: Contact: joint limit leg0NearFoot approach:scuttle@210: 105.00002000301264"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.036701,
+            "refusedAt": 0.03670226009799192,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.03670226009799192,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "applicable": true,
+        "forward": 0.865524,
+        "backward": 0.036701,
+        "samples": 121,
+        "bodyPlanted": [
+          "leg0Far",
+          "leg1Far",
+          "leg2Far",
+          "leg3Far"
+        ],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.865524,
+            "refusedAt": 0.8655248892334957,
+            "refusal": {
+              "ms": 210,
+              "displacement": 0.8655248892334957,
+              "error": "Error: Contact: joint limit leg0NearFoot approach:scuttle@210: 105.00000668459595"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.036701,
+            "refusedAt": 0.03670226009799192,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.03670226009799192,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      },
+      "declarationControl": "PASS"
+    }
+  ]
+}

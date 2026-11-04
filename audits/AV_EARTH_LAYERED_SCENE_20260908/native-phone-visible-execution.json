@@ -1,0 +1,18 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "earth-layered-native-phone-visible",
+    "--",
+    "node",
+    "audits/AV_EARTH_LAYERED_SCENE_20260908/native-earth-layers-visible-runner.mjs",
+    "port/v2/apps/game/smoke/earth-layered-visible-evidence-dist-20260908",
+    "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-visible",
+    "phone"
+  ],
+  "startedAt": "2026-09-08T17:00:53.952252+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 5.84
+}
