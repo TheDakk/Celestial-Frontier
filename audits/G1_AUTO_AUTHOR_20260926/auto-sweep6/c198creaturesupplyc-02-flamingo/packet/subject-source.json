@@ -1,0 +1,83 @@
+{
+  "name": "Flamingo",
+  "family": "biped-bird",
+  "species": {
+    "name": "Flamingo",
+    "aspect": 0.55,
+    "headFrac": 0.16,
+    "eyes": "small",
+    "posture": "biped",
+    "mustRead": [
+      "neck kinked into a long S",
+      "thick bill bent sharply downward at the middle",
+      "extremely long pink legs with a backward-bending ankle"
+    ],
+    "note": "The 'backward knee' is the ankle. Bill points down when feeding, held upside down in the water."
+  },
+  "genome": {
+    "seed": 2991867733,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 9,
+    "body": 4,
+    "loco": 14,
+    "trait": 13,
+    "size": 5,
+    "diet": 0,
+    "head": 6,
+    "limbs": 3,
+    "skin": 6,
+    "tail": 0,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 6,
+    "habitat": 12,
+    "detail": 4,
+    "accent": 16,
+    "temper": 2,
+    "sense": 9,
+    "repro": 4,
+    "life": 1,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Flamingo"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Flamingo\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2991867733\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "index": 211,
+  "profile": {
+    "id": "wading-bird",
+    "names": [
+      "Heron",
+      "Egret",
+      "Ibis",
+      "Stork",
+      "Crane",
+      "Spoonbill",
+      "Flamingo",
+      "Curlew",
+      "Snipe",
+      "Plover",
+      "Sandpiper",
+      "Rail",
+      "Bittern",
+      "Oystercatcher",
+      "Godwit",
+      "Avocet",
+      "Screamer"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": ""
+  }
+}

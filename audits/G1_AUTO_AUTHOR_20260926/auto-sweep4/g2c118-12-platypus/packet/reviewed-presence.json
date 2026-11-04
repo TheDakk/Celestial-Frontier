@@ -1,0 +1,12 @@
+{
+  "schema": "cf.canonical-external-pinnae/v1",
+  "name": "Platypus",
+  "family": "quadruped",
+  "masterSha256": "133a504266934c3bf8cbb4dc9f85bc0502f3e6e72b6fd36e35493589181901d9",
+  "subjectSha256": "9623a3f0983c69089695dd4c0a14c6712331eb279b87444ea83e61aa4c0a12f8",
+  "promptSha256": "15e4442cf94304966c228a12a2a6dc9a78f5024ebc605eceacaea2f06bbc67a2",
+  "profileId": "platypus",
+  "profileSha256": "707d7fcee489077befeec1d9ad3593d63a40505a9566196a327be09a17b0db1d",
+  "fact": "external-pinnae-absent",
+  "scope": "canonical-group-fact-no-painted-limb-or-motion-exemption"
+}

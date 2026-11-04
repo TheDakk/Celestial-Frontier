@@ -1,0 +1,65 @@
+{
+  "name": "Armadillo",
+  "family": "quadruped",
+  "species": {
+    "name": "Armadillo",
+    "aspect": 2.4,
+    "headFrac": 0.22,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "hinged bands of armour across the middle of the back",
+      "long pointed snout with small tubular ears",
+      "tapering armoured tail"
+    ]
+  },
+  "genome": {
+    "seed": 926957789,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 3,
+    "body": 13,
+    "loco": 15,
+    "trait": 0,
+    "size": 2,
+    "diet": 0,
+    "head": 4,
+    "limbs": 2,
+    "skin": 5,
+    "tail": 1,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 6,
+    "habitat": 9,
+    "detail": 0,
+    "accent": 9,
+    "temper": 3,
+    "sense": 4,
+    "repro": 7,
+    "life": 1,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Armadillo"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Armadillo\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"926957789\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "index": 241,
+  "profile": {
+    "id": "xenarthran",
+    "names": [
+      "Sloth",
+      "Armadillo"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw"
+    ],
+    "notes": ""
+  }
+}

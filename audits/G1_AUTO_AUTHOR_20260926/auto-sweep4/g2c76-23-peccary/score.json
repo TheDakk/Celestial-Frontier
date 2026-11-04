@@ -1,0 +1,17 @@
+{
+ "id": "g2c76-23-peccary",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "reviewedPresence": {
+  "absent": [],
+  "removedParts": [
+   "tail-tip",
+   "tail-distal"
+  ]
+ },
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

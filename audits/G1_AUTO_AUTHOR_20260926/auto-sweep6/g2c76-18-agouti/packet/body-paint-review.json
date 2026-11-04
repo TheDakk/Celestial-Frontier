@@ -1,0 +1,85 @@
+{
+  "schema": "cf.reviewed-body-paint/v1",
+  "name": "Agouti",
+  "masterSha256": "3a59d159f7e56fc58f6905ea2cfd2811a3986809f41f91cd77b53d15618faddc",
+  "subjectSha256": "81c5846a10133492adfd755d47fb9386e303e3b11a763f5d6c80b6b1c2a5272a",
+  "reviewer": "Codex",
+  "method": "Full-original visual inspection",
+  "observation": "Observed elevated rump and continuous arched trunk. No tail is fabricated; all four delicate leg owners remain required.",
+  "scope": "body-surface-only-no-inventory-exemption",
+  "regions": [
+    {
+      "id": "reviewed-body-torso",
+      "kind": "torso",
+      "joint": "pelvis",
+      "canonicalFeature": "arched hunched back rising to the rump",
+      "polygonPx": [
+        [
+          365,
+          563
+        ],
+        [
+          399,
+          494
+        ],
+        [
+          466,
+          441
+        ],
+        [
+          547,
+          407
+        ],
+        [
+          612,
+          409
+        ],
+        [
+          670,
+          438
+        ],
+        [
+          722,
+          476
+        ],
+        [
+          783,
+          478
+        ],
+        [
+          811,
+          511
+        ],
+        [
+          796,
+          566
+        ],
+        [
+          766,
+          619
+        ],
+        [
+          713,
+          660
+        ],
+        [
+          646,
+          679
+        ],
+        [
+          565,
+          667
+        ],
+        [
+          479,
+          666
+        ],
+        [
+          406,
+          632
+        ]
+      ]
+    }
+  ],
+  "regionsSha256": "2f52db6cf3f31d4c9c655ea6606c3f51ebce837165c76f3a572160a047e4404e"
+}

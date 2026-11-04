@@ -1,0 +1,89 @@
+{
+  "schema": "cf.reviewed-body-paint/v1",
+  "name": "Hippopotamus",
+  "masterSha256": "d55a35d455b0cb350e28089b8a2441196db769d627cc711470f1d3bdee391d3b",
+  "subjectSha256": "f368aac51b05730062862b7a0f3fef288012f63fa8c9522bb33114ed8cb7f28d",
+  "reviewer": "Codex",
+  "method": "Full-original visual inspection",
+  "observation": "Observed deep continuous barrel between shoulder and rump; no toes, ears, muzzle or tail represented by this region.",
+  "scope": "body-surface-only-no-inventory-exemption",
+  "regions": [
+    {
+      "id": "reviewed-body-torso",
+      "kind": "torso",
+      "joint": "spine",
+      "canonicalFeature": "enormous barrel body on stumpy pillar legs",
+      "polygonPx": [
+        [
+          191,
+          593
+        ],
+        [
+          219,
+          512
+        ],
+        [
+          294,
+          452
+        ],
+        [
+          388,
+          404
+        ],
+        [
+          483,
+          392
+        ],
+        [
+          593,
+          409
+        ],
+        [
+          699,
+          414
+        ],
+        [
+          771,
+          408
+        ],
+        [
+          795,
+          499
+        ],
+        [
+          797,
+          589
+        ],
+        [
+          770,
+          662
+        ],
+        [
+          702,
+          715
+        ],
+        [
+          622,
+          744
+        ],
+        [
+          501,
+          762
+        ],
+        [
+          384,
+          744
+        ],
+        [
+          282,
+          706
+        ],
+        [
+          206,
+          666
+        ]
+      ]
+    }
+  ],
+  "regionsSha256": "ead8441548cf8cdfd3551595fe7e79570bdfe82295f08fa1be3057db3344b7ec"
+}

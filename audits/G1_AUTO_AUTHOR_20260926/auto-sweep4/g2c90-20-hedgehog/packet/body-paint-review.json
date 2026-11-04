@@ -1,0 +1,89 @@
+{
+  "schema": "cf.reviewed-body-paint/v1",
+  "name": "Hedgehog",
+  "masterSha256": "e7a272cc39429cec3fc9d134d14f4861aef567ecbf8d0563198bd5ded02b54dd",
+  "subjectSha256": "ecb37ca6e614e8f8174fc437e9440079a73b5bf7996bcfbd125ebfdeafebd55d",
+  "reviewer": "Codex",
+  "method": "Full-original visual inspection",
+  "observation": "Continuous dorsal spine cape; four legs, tail and head excluded from this body region.",
+  "scope": "body-surface-only-no-inventory-exemption",
+  "regions": [
+    {
+      "id": "reviewed-body-spines",
+      "kind": "spines",
+      "joint": "spine",
+      "canonicalFeature": "dense cape of spines over the back",
+      "polygonPx": [
+        [
+          321,
+          637
+        ],
+        [
+          351,
+          551
+        ],
+        [
+          397,
+          491
+        ],
+        [
+          454,
+          449
+        ],
+        [
+          525,
+          417
+        ],
+        [
+          598,
+          414
+        ],
+        [
+          674,
+          439
+        ],
+        [
+          749,
+          469
+        ],
+        [
+          801,
+          491
+        ],
+        [
+          826,
+          521
+        ],
+        [
+          793,
+          585
+        ],
+        [
+          734,
+          644
+        ],
+        [
+          651,
+          688
+        ],
+        [
+          573,
+          720
+        ],
+        [
+          451,
+          739
+        ],
+        [
+          347,
+          726
+        ],
+        [
+          313,
+          679
+        ]
+      ]
+    }
+  ],
+  "regionsSha256": "029497887758c96524b13fbecb87a2de45c8c4b803db62d2b2972e63713b7214"
+}

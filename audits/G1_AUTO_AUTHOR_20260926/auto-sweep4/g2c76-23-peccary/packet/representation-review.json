@@ -1,0 +1,108 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Peccary",
+  "family": "quadruped",
+  "masterSha256": "4f440a245469df189a5fcf3e1d97cad01ba2dbdede8addccfdbecba7356ca98d",
+  "subjectSha256": "eb5ba0ca09695d63d4c47f906c97dfe5c9e8a5337618ec25b9f46c18ccf32e4e",
+  "promptSha256": "2e5cd684107ca3b19ae6c490dc70e1aa76bd50c4555916e1b0f4322805dd3361",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "method": "Measured compact-tail v1",
+    "reviewer": "Codex",
+    "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+      "landmarksPx": {
+        "tail0": [
+          328,
+          587
+        ],
+        "tail1": [
+          330,
+          654
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              301.05,
+              584.6928571428572
+            ],
+            [
+              304.0357142857143,
+              563.7928571428572
+            ],
+            [
+              307.0214285714286,
+              542.8928571428571
+            ],
+            [
+              321.95,
+              521.9928571428571
+            ],
+            [
+              327.9214285714286,
+              519.0071428571429
+            ],
+            [
+              331.9214285714286,
+              519.0071428571429
+            ],
+            [
+              331.9214285714286,
+              620.4127931769723
+            ],
+            [
+              307.66812169312175,
+              621.1367724867724
+            ],
+            [
+              307.0214285714286,
+              618.55
+            ],
+            [
+              301.05,
+              591.6785714285714
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              331.9214285714286,
+              620.4127931769723
+            ],
+            [
+              331.9214285714286,
+              657.3642857142858
+            ],
+            [
+              324.9357142857143,
+              657.3642857142858
+            ],
+            [
+              310.00714285714287,
+              630.4928571428571
+            ],
+            [
+              307.66812169312175,
+              621.1367724867724
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "c9bc063974de09b3d97f637b5cc01921f2cade90edc563541c953d1a1f383b5d"
+}
