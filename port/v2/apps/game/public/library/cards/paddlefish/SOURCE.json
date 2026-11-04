@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Paddlefish",
+ "fitDir": "audits/FISH_FOLD_C80_20260927/paddlefish-first-axis-03/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "891d3f542e8a5112b33c7e1784f3ddef8e73b49f6241767fb0e11c4a97887f79"
+}

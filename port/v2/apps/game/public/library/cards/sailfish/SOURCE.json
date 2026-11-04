@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sailfish",
+ "fitDir": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b6162d828f98b87545c30a85db9cec2bce64aaf0c7f7161f6da74c09ce861ab9"
+}

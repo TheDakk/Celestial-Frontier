@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Caracal",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2quad-handrefs/c56-02-caracal/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "79c19cdd948ed11a58db01f189467cc5ad7a1523d23dfd597cc3bcff1452f996"
+}

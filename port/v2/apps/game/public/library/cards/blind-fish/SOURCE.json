@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Blind Fish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/02-blind-fish/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6ea8dd4e14a29a085cc39bb244239bfe7cba7027e0d308ee3752adb5714922d5"
+}

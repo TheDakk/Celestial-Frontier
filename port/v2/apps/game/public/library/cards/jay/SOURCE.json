@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Jay",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/09-jay/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "9ed33ea9e6553ea76d6aa29bc8738e70c69571bfa55899f7b2f3511eeac7e139"
+}

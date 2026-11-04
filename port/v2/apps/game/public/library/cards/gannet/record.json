@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Gannet\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2088744805\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"7\"]]]]",
+    "seed": 2088744805,
+    "ownerId": "authored:archetype-sprint/07-gannet",
+    "earthName": "Gannet"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2088744805,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 7,
+    "body": 3,
+    "loco": 14,
+    "trait": 7,
+    "size": 2,
+    "diet": 1,
+    "head": 0,
+    "limbs": 5,
+    "skin": 6,
+    "tail": 2,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 7,
+    "habitat": 2,
+    "detail": 7,
+    "accent": 1,
+    "temper": 6,
+    "sense": 1,
+    "repro": 2,
+    "life": 0,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Gannet"
+  },
+  "geometry": {
+    "cutoutAssetHash": "478cf8fec158c3901e6850cea8d7660342f6ec472786fbc7d9a36790327caa97",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7177086973618141,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.48468899521531095,
+      0.5231259968102073
+    ],
+    "pelvis": [
+      0.4660287081339713,
+      0.5807017543859649
+    ],
+    "spine": [
+      0.5437001594896331,
+      0.5137161084529506
+    ],
+    "chest": [
+      0.6337320574162679,
+      0.4932216905901116
+    ],
+    "neck0": [
+      0.6329346092503988,
+      0.43835725677830945
+    ],
+    "neck1": [
+      0.6321371610845296,
+      0.3787081339712918
+    ],
+    "head": [
+      0.6576555023923445,
+      0.30590111642743223
+    ],
+    "beak": [
+      0.7682615629984051,
+      0.3350877192982456
+    ],
+    "legNearKnee": [
+      0.4449760765550239,
+      0.642902711323764
+    ],
+    "legNearAnkle": [
+      0.43779904306220097,
+      0.6823763955342903
+    ],
+    "legNearFoot": [
+      0.4472089314194577,
+      0.6980861244019139
+    ],
+    "legFarKnee": [
+      0.5454545454545454,
+      0.6186602870813397
+    ],
+    "legFarAnkle": [
+      0.5696172248803827,
+      0.6868421052631578
+    ],
+    "legFarFoot": [
+      0.6082934609250399,
+      0.6949760765550239
+    ],
+    "wingNearRoot": [
+      0.5638755980861244,
+      0.4687400318979266
+    ],
+    "wingNearTip": [
+      0.32384370015948966,
+      0.5220095693779905
+    ],
+    "wingFarRoot": [
+      0.5328548644338118,
+      0.42783094098883573
+    ],
+    "wingFarTip": [
+      0.42862838915470497,
+      0.45797448165869215
+    ],
+    "tailFan": [
+      0.23556618819776712,
+      0.5966507177033493
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/07-gannet/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 03-duck-v2. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "48b40300be8fe10e2e5141c9d60939023d63e0bf73970ef6c5fde0da263c962b",
+    "subjectSourceSha256": "32ae645774b17a704cde450a405ec3830fa78a8c3d4ce88cc83499619403d854",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.06052416190564245,
+      "spine": 0.10256671544296476,
+      "chest": 0.092335062721637,
+      "neck0": 0.054870228913928086,
+      "neck1": 0.0596544531047257,
+      "head": 0.07714951423524333,
+      "beak": 0.11439212573394256,
+      "legFarKnee": 0.08803018708636338,
+      "legFarAnkle": 0.07233668092755074,
+      "legFarFoot": 0.039522306657872874,
+      "legNearKnee": 0.06566713287769478,
+      "legNearAnkle": 0.04012083691686227,
+      "legNearFoot": 0.01831233409454626,
+      "wingFarRoot": 0.12021712938444527,
+      "wingFarTip": 0.1084978856624476,
+      "wingNearRoot": 0.07402213535466692,
+      "wingNearTip": 0.24587182767776047,
+      "tailFan": 0.23101372800386688
+    },
+    "measures": {
+      "body": 0.18914855252479873,
+      "bone-min": 0.01831233409454626,
+      "bone-max": 0.24587182767776047,
+      "leg/torso:legFar": 1.0567840567829887,
+      "leg/torso:legNear": 0.656099675268902,
+      "wing/torso": 1.209181947173012
+    }
+  },
+  "recipeHash": "c9ada9aee324531d1c34ad5881cac781cf41dd21e3ba05ed0426762eb206aee8"
+}

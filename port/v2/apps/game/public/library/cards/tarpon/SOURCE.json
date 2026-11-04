@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tarpon",
+ "fitDir": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "80e30c5356e78afb93452e7a5899425c4cbd8ea658b3d6642733d10b32f5235f"
+}

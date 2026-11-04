@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sloth",
+ "fitDir": "audits/ISLANDS_SWEEP6_20261011/c186creaturesupply-06-sloth/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3d1f419c6a4a8b877e0c9042194963e3578868734f7b0ab10524eda79cf5d1cf"
+}

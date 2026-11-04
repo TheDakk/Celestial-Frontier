@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Arapaima",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep3-fishseams/c203creaturesupplyb-17-arapaima-framing02/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "202a5c2356601c3c6f125a6a118a19c0539a92a2fb5e7bc020dea8dcbf91ea1d"
+}

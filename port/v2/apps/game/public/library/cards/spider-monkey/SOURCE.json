@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Spider Monkey",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-02/c243b06r2c2-18-spider-monkey/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "0b13014d84717c5d8bebee13495c2453fe3d0367fab322970a79c30adb4de5db"
+}

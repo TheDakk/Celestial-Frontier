@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Monkfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/21-monkfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "42f03fbc235b00d4945c5edb45f2fcd02877282d2aaeee992ae9d852c51a5ac3"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Robin",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-11-robin/fallback-2/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "db9e4b4f7c5f40ea1d68e3560890be707359178aae8ea93ffd03d109eee81bcc"
+}

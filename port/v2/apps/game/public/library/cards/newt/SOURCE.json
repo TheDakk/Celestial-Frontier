@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Newt",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/24-newt/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "17857bc3a39c4633cb7b7d3ebff86ff5a186e5234835836e240b905dd1259899"
+}

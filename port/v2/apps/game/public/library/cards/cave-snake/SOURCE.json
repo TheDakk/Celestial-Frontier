@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cave Snake",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/06-cave-snake/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "e0ebad9bd07520531c57d2a5dedb0a46f72ba646b1ab1d8a4b46f3bc70540c98"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Bactrian Camel",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/c213creaturesupply-18-bactrian-camel/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b32b91c8963844999238d0a388cdb77c81c95653536180b9ce7a0e6b786aac72"
+}

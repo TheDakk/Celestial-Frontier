@@ -1,0 +1,171 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-13",
+ "files": [
+  {
+   "path": "library/cards/desert-owl/SOURCE.json",
+   "bytes": 302,
+   "sha256": "705a4db617ee3d557915224a372ff35f81d5b1c3976bca88bb26ce34ca93c92c"
+  },
+  {
+   "path": "library/cards/desert-owl/card/card.json",
+   "bytes": 3791,
+   "sha256": "25fa3a53899aad5d585b2c2c022c3b9058025f5b3341da870945fcd778b11c43"
+  },
+  {
+   "path": "library/cards/desert-owl/card/labels-512.png",
+   "bytes": 4753,
+   "sha256": "07857e2d98a1383b2dbf704e08a606326a54c14c60f21bc6498b467466cfe906"
+  },
+  {
+   "path": "library/cards/desert-owl/card/master-512.png",
+   "bytes": 79738,
+   "sha256": "f6b66f1e851b089be1d825fdf124afb5f3fd9f101fb20facb154d2d31b8669bb"
+  },
+  {
+   "path": "library/cards/desert-owl/record.json",
+   "bytes": 5975,
+   "sha256": "de08e05c1af82e5debfc6a184d393c47efea430d37c39ad24c7c16c769877640"
+  },
+  {
+   "path": "library/cards/impala/SOURCE.json",
+   "bytes": 298,
+   "sha256": "a328951b533394e7c526108d1e628c0f5ae86e485d9581147289ebb525530ca5"
+  },
+  {
+   "path": "library/cards/impala/card/card.json",
+   "bytes": 5889,
+   "sha256": "dc9787928746898a73f4804caba440c6de5d2375ed2cfe9c09a69810ed5bc000"
+  },
+  {
+   "path": "library/cards/impala/card/labels-512.png",
+   "bytes": 13548,
+   "sha256": "2db5328c448a3de396558a21fd7ddd0d1c8e456ebc9a6684f3372a4882e5a8d3"
+  },
+  {
+   "path": "library/cards/impala/card/master-512.png",
+   "bytes": 171715,
+   "sha256": "8f8b7464f0869aafafc4d6099d4a7f21f6020099405c8434db703847d8bcb949"
+  },
+  {
+   "path": "library/cards/impala/markings.json",
+   "bytes": 25451,
+   "sha256": "e0a6ddf980c5ef9e85c9bfe708705027e80b3040ee8b2a7a508dc3494ea05822"
+  },
+  {
+   "path": "library/cards/impala/markings/banded.png",
+   "bytes": 19202,
+   "sha256": "f81bb965cef65dd6824fc2967bd401249b219f5de8313bf02b01958fb1629f10"
+  },
+  {
+   "path": "library/cards/impala/markings/eye-spotted.png",
+   "bytes": 29627,
+   "sha256": "7a9b7f9712d2190f9a7f84b24bb5cdc57e2913bfe435e13bdb103257d0d2fc39"
+  },
+  {
+   "path": "library/cards/impala/markings/marbled.png",
+   "bytes": 34747,
+   "sha256": "d229cbf5d8dc0eba4697c8df016c87b5a8fdb3187a4a36fa109aede66c98974c"
+  },
+  {
+   "path": "library/cards/impala/markings/mottled.png",
+   "bytes": 25126,
+   "sha256": "ab33586877863a5f7470880ffeeffcca2c5af2aa64cdb5bd75aea608629b7e9d"
+  },
+  {
+   "path": "library/cards/impala/markings/spotted.png",
+   "bytes": 23949,
+   "sha256": "ad2278c3cf7dd413de3182aaddf5c5693647aed02c0cb5a71ca6ac3b1be1abd1"
+  },
+  {
+   "path": "library/cards/impala/markings/striped.png",
+   "bytes": 35669,
+   "sha256": "363319f5961632df69e3e44bc4fba16343531364ba22007e8519c5607cb3ac4b"
+  },
+  {
+   "path": "library/cards/impala/record.json",
+   "bytes": 7582,
+   "sha256": "66392e80063d0c436f9b7cd9727e0b53717ed1a6c95816450db1dba62467874f"
+  },
+  {
+   "path": "library/cards/musk-ox/SOURCE.json",
+   "bytes": 286,
+   "sha256": "e2ee7bacc513ec2084a4c62c12b43ac3ef4d5a9cb919e9e456d839e612869ff7"
+  },
+  {
+   "path": "library/cards/musk-ox/card/card.json",
+   "bytes": 5889,
+   "sha256": "1803bc568df6bdc28fe25e85662573bce75fc0b527f961f6508f677380465ff0"
+  },
+  {
+   "path": "library/cards/musk-ox/card/labels-512.png",
+   "bytes": 6577,
+   "sha256": "8a3be14e39b142fe0d531f72524b5b6eb7bca6509e49598aa5afc1c5486a2b99"
+  },
+  {
+   "path": "library/cards/musk-ox/card/master-512.png",
+   "bytes": 142074,
+   "sha256": "122301661f811c352a298d3af66bee2fe145be475abae0d00c74a55112535946"
+  },
+  {
+   "path": "library/cards/musk-ox/record.json",
+   "bytes": 7496,
+   "sha256": "4ff8bed02672440b223eddead9318fa59160cfc2a9fb32b41cd0a6224e3a86a8"
+  },
+  {
+   "path": "library/cards/newt/SOURCE.json",
+   "bytes": 281,
+   "sha256": "a947073fa3e4a9c829a59f464d4c5e6113c8c5eb54a4bb1c67acb78022ab7440"
+  },
+  {
+   "path": "library/cards/newt/card/card.json",
+   "bytes": 5246,
+   "sha256": "efffe6a0ed91438b1755143235d9185bd814a81681b5ee96f2c9f0906f1a2a3d"
+  },
+  {
+   "path": "library/cards/newt/card/labels-512.png",
+   "bytes": 2730,
+   "sha256": "ac253acdf49e16ef4cef6ced94b1dc858b5449a759fb19367fef345cc6321a2a"
+  },
+  {
+   "path": "library/cards/newt/card/master-512.png",
+   "bytes": 17980,
+   "sha256": "49371602672a9a237c281f1d019b0b59592e42b62e9c066e54c049de6f47fac9"
+  },
+  {
+   "path": "library/cards/newt/record.json",
+   "bytes": 7073,
+   "sha256": "a13fbf52c0e845c61fda6f6b65c31a9adcc7e92d4aad658acf7042f7023b22df"
+  },
+  {
+   "path": "library/creature-finish-source/08-vulture/labels.png",
+   "bytes": 41049,
+   "sha256": "fb624296c465d0379527d718a3aed2f59b39c018060374eeb5eacc819f351832"
+  },
+  {
+   "path": "library/creature-finish-source/08-vulture/master.png",
+   "bytes": 1259092,
+   "sha256": "fe23842892a09f05140db1c51461da63bb317775f57b05fbc5d66862d91f0b18"
+  },
+  {
+   "path": "library/creature-finish-source/c243b02r1c1-20-marlin/labels.png",
+   "bytes": 37987,
+   "sha256": "b3aab3517e443071da0e49c162d3a3c800286889cff1537719b5309507c3c6a8"
+  },
+  {
+   "path": "library/creature-finish-source/c243b02r1c1-20-marlin/master.png",
+   "bytes": 1291905,
+   "sha256": "7f0106058353f9f3183d85f0f778607f291d132d5eaf40f0e5221f046a3046aa"
+  },
+  {
+   "path": "library/creature-finish-source/g2throughputc56-26-cicada/labels.png",
+   "bytes": 52627,
+   "sha256": "710efcb43143817d523b2356c588ba8f101faa2482a0036e4731099842ac249e"
+  },
+  {
+   "path": "library/creature-finish-source/g2throughputc56-26-cicada/master.png",
+   "bytes": 1043658,
+   "sha256": "6c97bd893432d211c78e8537ea4bd45691333e43ca265140790ef7a6842d69ff"
+  }
+ ]
+}

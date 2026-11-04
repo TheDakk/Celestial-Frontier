@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Proboscis Monkey",
+ "fitDir": "audits/ISLANDS_SWEEP6_20261011/c196quadrupedoriginals-24-proboscis-monkey/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "dac79e2060b4672c04ff5db0828bdb9e998ecf5fc4b58ff68618d30700a72e2e"
+}

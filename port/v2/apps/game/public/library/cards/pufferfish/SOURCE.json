@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Pufferfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/22-pufferfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "1ddbd323405e7a68e5165b6d494b3d20407ec1e639c753154a057f6e9cc27712"
+}

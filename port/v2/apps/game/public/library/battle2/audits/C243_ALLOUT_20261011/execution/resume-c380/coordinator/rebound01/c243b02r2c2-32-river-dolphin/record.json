@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"River Dolphin\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4167239938\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"18\"]]]]",
+    "seed": 4167239938,
+    "ownerId": "authored:archetype-sprint/c243b02r2c2-32-river-dolphin",
+    "earthName": "River Dolphin"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4167239938,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 8,
+    "body": 7,
+    "loco": 17,
+    "trait": 18,
+    "size": 5,
+    "diet": 4,
+    "head": 1,
+    "limbs": 3,
+    "skin": 6,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 5,
+    "habitat": 10,
+    "detail": 6,
+    "accent": 0,
+    "temper": 1,
+    "sense": 0,
+    "repro": 1,
+    "life": 2,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "River Dolphin"
+  },
+  "geometry": {
+    "cutoutAssetHash": "f718a0ad8e6f8765959f8d105988887be37636ca8a3903dc64900466cbe1345a",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.727568809701079,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6470494417862839,
+      0.488755980861244
+    ],
+    "head": [
+      0.7165071770334929,
+      0.4651515151515151
+    ],
+    "jaw": [
+      0.7777511961722487,
+      0.47719298245614034
+    ],
+    "spine0": [
+      0.6369218500797449,
+      0.4847687400318979
+    ],
+    "spine1": [
+      0.5858851674641149,
+      0.4988038277511962
+    ],
+    "spine2": [
+      0.5238437001594897,
+      0.4927432216905901
+    ],
+    "spine3": [
+      0.43572567783094096,
+      0.4799840510366826
+    ],
+    "spine4": [
+      0.3390749601275917,
+      0.49848484848484853
+    ],
+    "spine5": [
+      0.2124401913875598,
+      0.5314194577352472
+    ],
+    "caudal": [
+      0.17583732057416268,
+      0.5244019138755981
+    ],
+    "dorsal": [
+      0.47456140350877196,
+      0.4085326953748006
+    ],
+    "pectoralNear": [
+      0.5629984051036683,
+      0.5788676236044656
+    ],
+    "pectoralFar": [
+      0.6047049441786283,
+      0.5834928229665072
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-32-river-dolphin/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile toothed-cetacean media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from salmon. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "75885654414d8a20fc4742aa32efeb5342e487b7d3742803039d40e6d5ae22da",
+    "subjectSourceSha256": "562386fa20499dadef9fbf778c499f0c33f8ef2d94538b5b462260a8bcc0dec5",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.07335903343906017,
+      "jaw": 0.062416558821491074,
+      "spine0": 0.010884218079658352,
+      "spine1": 0.05293133910734685,
+      "spine2": 0.06233678377276724,
+      "spine3": 0.08903697150549394,
+      "spine4": 0.09840549140566585,
+      "spine5": 0.130847442238348,
+      "caudal": 0.03726950594795077,
+      "dorsal": 0.14332430973739818,
+      "pectoralFar": 0.10376957998239326,
+      "pectoralNear": 0.12322615357668357
+    },
+    "measures": {
+      "body": 0.42703743164774943,
+      "bone-min": 0.010884218079658352,
+      "bone-max": 0.14332430973739818,
+      "caudal/body": 0.08727456467725593,
+      "head/body": 0.17178595598985305
+    }
+  },
+  "recipeHash": "9b8211bb49d02ae068c5043910327efeb8d670f6a649c0ee33d28bccec4bdcd5"
+}

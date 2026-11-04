@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Herring",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-labels-final/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d8116b491fcea6401ab23962e8bed3fe3be71a8f65b84a5f7df44c7cffe1c455"
+}

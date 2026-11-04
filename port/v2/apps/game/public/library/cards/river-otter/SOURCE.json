@@ -1,0 +1,8 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "River Otter",
+ "fitDir": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/",
+ "markingsDir": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "e8e59458dcdce12b6048a2576dc19e9eed5bfb5211351a19ed60083e8c9c9255"
+}

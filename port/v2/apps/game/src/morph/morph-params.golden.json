@@ -1,0 +1,2827 @@
+{
+ "sealed": "2026-09-22",
+ "reason": "first seal (morph step 1)",
+ "archetypes": [
+  "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+  "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc"
+ ],
+ "seeds": 64,
+ "params": [
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 134.692,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 152.15200000000004,
+    "chroma": 1.05
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 0.7,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 355.664,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 18.624000000000024,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 1.025,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 270.55999999999995,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 156.98400000000004,
+    "chroma": 0.85
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 1.35,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 35.41199999999998,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 169.27600000000007,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 0.9166666666666666,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 178.91200000000003,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 325.39200000000005,
+    "chroma": 1.1
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 1.2416666666666667,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 244.19600000000003,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 345.72800000000007,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 0.8083333333333333,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 40.68799999999999,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 200.688,
+    "chroma": 0.45
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 1.1333333333333333,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 20.255999999999972,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 288.284,
+    "chroma": 0.7
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 0.7,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 207.69600000000003,
+    "chroma": 0.45
+   },
+   "accent": {
+    "hue": 233.93600000000004,
+    "chroma": 0.95
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 1.025,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "accent": {
+    "hue": 193.89200000000005,
+    "chroma": 0.9
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 1.35,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "accent": {
+    "hue": 279.87200000000007,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 0.9166666666666666,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 315.528,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 1.2416666666666667,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 192.164,
+    "chroma": 0.9
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 0.8083333333333333,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 23,
+    "chroma": 0.8
+   },
+   "accent": {
+    "hue": 36.29599999999999,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 1.1333333333333333,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 144.69600000000003,
+    "chroma": 0.85
+   },
+   "accent": {
+    "hue": 23,
+    "chroma": 0.8
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 0.7,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 291.44000000000005,
+    "chroma": 0.7
+   },
+   "accent": {
+    "hue": 48.672000000000025,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 1.025,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 1.35,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 152.08000000000004,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 144.988,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 0.9166666666666666,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 357.70399999999995,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 5.567999999999984,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 1.2416666666666667,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 286.496,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 147.52800000000002,
+    "chroma": 0.85
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 0.8083333333333333,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 56.75999999999999,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 186.808,
+    "chroma": 1
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 1.1333333333333333,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 174.31600000000003,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 303.20399999999995,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 0.7,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 246.84799999999996,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 340.304,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 1.025,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 41.52800000000002,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 205.164,
+    "chroma": 0.45
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 1.35,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 24.49200000000002,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 299.32400000000007,
+    "chroma": 0.7
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 0.9166666666666666,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 215.41200000000003,
+    "chroma": 0.45
+   },
+   "accent": {
+    "hue": 245.56399999999996,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 1.2416666666666667,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "accent": {
+    "hue": 184.70000000000005,
+    "chroma": 0.9
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 0.8083333333333333,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "accent": {
+    "hue": 272.63599999999997,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 1.1333333333333333,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 314.328,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 0.7,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 189.836,
+    "chroma": 0.9
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 1.025,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 24.139999999999986,
+    "chroma": 0.8
+   },
+   "accent": {
+    "hue": 47.31200000000001,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 1.35,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 149.88,
+    "chroma": 0.85
+   },
+   "accent": {
+    "hue": 33.29599999999999,
+    "chroma": 0.8
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 0.9166666666666666,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 282.39200000000005,
+    "chroma": 0.7
+   },
+   "accent": {
+    "hue": 49.416,
+    "chroma": 1.1
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 1.2416666666666667,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 0.8083333333333333,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 139.57600000000002,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 134.74,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 1.1333333333333333,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 344.24,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 18.576000000000022,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 0.7,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 272.4680000000001,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 139.536,
+    "chroma": 0.85
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 1.025,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 39.875999999999976,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 169.45600000000002,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 1.35,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 169.45600000000002,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 306.15599999999995,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 0.9166666666666666,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 248.75599999999997,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 357.044,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 1.2416666666666667,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 38.54000000000002,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 201.79200000000003,
+    "chroma": 0.45
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 0.8083333333333333,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 12.456000000000017,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 284.996,
+    "chroma": 0.7
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 1.1333333333333333,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 203.70000000000005,
+    "chroma": 0.45
+   },
+   "accent": {
+    "hue": 246.65599999999995,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 0.7,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "accent": {
+    "hue": 173.56399999999996,
+    "chroma": 0.9
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 1.025,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "accent": {
+    "hue": 272.53999999999996,
+    "chroma": 1
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 1.35,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 306.9,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 0.9166666666666666,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 189.91999999999996,
+    "chroma": 0.9
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 1.2416666666666667,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 43.66399999999999,
+    "chroma": 0.8
+   },
+   "accent": {
+    "hue": 48.03199999999998,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 0.8083333333333333,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 151.452,
+    "chroma": 0.85
+   },
+   "accent": {
+    "hue": 37.15999999999997,
+    "chroma": 0.8
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 1.1333333333333333,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 297.284,
+    "chroma": 0.7
+   },
+   "accent": {
+    "hue": 35.639999999999986,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 0.7,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 1.025,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 156.35199999999998,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 150.17200000000003,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 1.35,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 347.91200000000003,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 7.608000000000004,
+    "chroma": 0.95
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 0.9166666666666666,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 269.15599999999995,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 151.188,
+    "chroma": 0.85
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 1.2416666666666667,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 43.18799999999999,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 173.39200000000005,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 0.8083333333333333,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 176.428,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 318.432,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 1.1333333333333333,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 243.01999999999998,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 347.18000000000006,
+    "chroma": 1.1
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 0.7,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 33.908000000000015,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 215.20799999999997,
+    "chroma": 0.45
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 1.025,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 18.76800000000003,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 278.39599999999996,
+    "chroma": 0.7
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 1.35,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 210.82799999999997,
+    "chroma": 0.45
+   },
+   "accent": {
+    "hue": 243.01999999999998,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 0.9166666666666666,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "accent": {
+    "hue": 194.68399999999997,
+    "chroma": 0.9
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 1.2416666666666667,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "accent": {
+    "hue": 286.856,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 0.8083333333333333,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 322.452,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 1.1333333333333333,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+   "base": {
+    "hue": 194.68399999999997,
+    "chroma": 0.9
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 0.7,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 133.41999999999996,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 151.36,
+    "chroma": 1.05
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 0.7,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 356.384,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 24.576000000000022,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 1.025,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 274.928,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 154.572,
+    "chroma": 0.85
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 1.35,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 48.648000000000025,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 175.096,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 0.9166666666666666,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 170.06799999999998,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 310.764,
+    "chroma": 1.1
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 1.2416666666666667,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 250.94000000000005,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 339.24800000000005,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 0.8083333333333333,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 33.77600000000001,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 198.74400000000003,
+    "chroma": 0.45
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 1.1333333333333333,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 24.480000000000018,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 280.544,
+    "chroma": 0.7
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 0.7,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 215.60400000000004,
+    "chroma": 0.45
+   },
+   "accent": {
+    "hue": 246.46399999999994,
+    "chroma": 0.95
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 1.025,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "accent": {
+    "hue": 174.03200000000004,
+    "chroma": 0.9
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 1.35,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "accent": {
+    "hue": 281.168,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 0.9166666666666666,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 320.96399999999994,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 1.2416666666666667,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 183.29600000000005,
+    "chroma": 0.9
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 0.8083333333333333,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 24.75200000000001,
+    "chroma": 0.8
+   },
+   "accent": {
+    "hue": 44.120000000000005,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 1.1333333333333333,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 154.452,
+    "chroma": 0.85
+   },
+   "accent": {
+    "hue": 24.75200000000001,
+    "chroma": 0.8
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 0.7,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 282.908,
+    "chroma": 0.7
+   },
+   "accent": {
+    "hue": 50.903999999999996,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 1.025,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 1.35,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 153.15999999999997,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 149.11599999999999,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 0.9166666666666666,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 357.65599999999995,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 20.71199999999999,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 1.2416666666666667,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 274.74800000000005,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 160.38,
+    "chroma": 0.85
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 0.8083333333333333,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 47.07600000000002,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 169.91200000000003,
+    "chroma": 1
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 1.1333333333333333,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 177.67599999999993,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 308.448,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 0.7,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 247.91599999999994,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 344.5640000000001,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 1.025,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 48.127999999999986,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 211.41599999999994,
+    "chroma": 0.45
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 1.35,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 24.588000000000022,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 298.28,
+    "chroma": 0.7
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 0.9166666666666666,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 220.812,
+    "chroma": 0.45
+   },
+   "accent": {
+    "hue": 236.336,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 1.2416666666666667,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "accent": {
+    "hue": 184.86799999999994,
+    "chroma": 0.9
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 0.8083333333333333,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "accent": {
+    "hue": 269.192,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 1.1333333333333333,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 326.79600000000005,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 0.7,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 178.94000000000005,
+    "chroma": 0.9
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 1.025,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 28.18399999999997,
+    "chroma": 0.8
+   },
+   "accent": {
+    "hue": 43.80799999999999,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 1.35,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 153.29999999999995,
+    "chroma": 0.85
+   },
+   "accent": {
+    "hue": 33.572,
+    "chroma": 0.8
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 0.9166666666666666,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 297.29600000000005,
+    "chroma": 0.7
+   },
+   "accent": {
+    "hue": 45.49200000000002,
+    "chroma": 1.1
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 1.2416666666666667,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 0.8083333333333333,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 149.62,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 149.62,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 1.1333333333333333,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 1.7239999999999895,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 18.120000000000005,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 0.7,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 264.62,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 142.14,
+    "chroma": 0.85
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 1.025,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 53.51999999999998,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 176.94399999999996,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 1.35,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 176.94399999999996,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 314.1600000000001,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 0.9166666666666666,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 239.44399999999996,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 357.60799999999995,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 1.2416666666666667,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 29.98399999999998,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 208.05600000000004,
+    "chroma": 0.45
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 0.8083333333333333,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 16.187999999999988,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 296.6600000000001,
+    "chroma": 0.7
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 1.1333333333333333,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 204.68399999999997,
+    "chroma": 0.45
+   },
+   "accent": {
+    "hue": 253.976,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 0.7,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "accent": {
+    "hue": 179.24,
+    "chroma": 0.9
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 1.025,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "accent": {
+    "hue": 270.452,
+    "chroma": 1
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 1.35,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 312.37200000000007,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 0.9166666666666666,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 178.08799999999997,
+    "chroma": 0.9
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 1.2416666666666667,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 45.403999999999996,
+    "chroma": 0.8
+   },
+   "accent": {
+    "hue": 49.375999999999976,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 0.8083333333333333,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 149.50800000000004,
+    "chroma": 0.85
+   },
+   "accent": {
+    "hue": 38.91199999999998,
+    "chroma": 0.8
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 1.1333333333333333,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 291.932,
+    "chroma": 0.7
+   },
+   "accent": {
+    "hue": 40.872000000000014,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 0.7,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 1.025,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 140.608,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 152.58400000000006,
+    "chroma": 1.05
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 1.35,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 353.72,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 4.2239999999999895,
+    "chroma": 0.95
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 0.9166666666666666,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 274.74800000000005,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 139.91999999999996,
+    "chroma": 0.85
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 1.2416666666666667,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 38.952,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 181.192,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 0.8083333333333333,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 183.49599999999998,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 320.50800000000004,
+    "chroma": 1.1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 1.1333333333333333,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 247.96399999999994,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 357.764,
+    "chroma": 1.1
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 0.85,
+    "tail": 0.7,
+    "ears": 0.88,
+    "antennae": 0.88
+   },
+   "clamped": [],
+   "pattern": 0
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 38.06,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 205.788,
+    "chroma": 0.45
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.9,
+    "tail": 1.025,
+    "ears": 0.9228571428571428,
+    "antennae": 0.9228571428571428
+   },
+   "clamped": [],
+   "pattern": 1
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 24.024,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 300.0319999999999,
+    "chroma": 0.7
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 0.95,
+    "tail": 1.35,
+    "ears": 0.9657142857142857,
+    "antennae": 0.9657142857142857
+   },
+   "clamped": [],
+   "pattern": 2
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 210.61199999999997,
+    "chroma": 0.45
+   },
+   "accent": {
+    "hue": 247.96399999999994,
+    "chroma": 0.95
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1,
+    "tail": 0.9166666666666666,
+    "ears": 1.0085714285714285,
+    "antennae": 1.0085714285714285
+   },
+   "clamped": [],
+   "pattern": 3
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "accent": {
+    "hue": 178.05200000000002,
+    "chroma": 0.9
+   },
+   "lumin": true,
+   "proportion": {
+    "head": 1.05,
+    "tail": 1.2416666666666667,
+    "ears": 1.0514285714285716,
+    "antennae": 1.0514285714285716
+   },
+   "clamped": [],
+   "pattern": 4
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "accent": {
+    "hue": 284.63599999999997,
+    "chroma": 1
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.1,
+    "tail": 0.8083333333333333,
+    "ears": 1.0942857142857143,
+    "antennae": 1.0942857142857143
+   },
+   "clamped": [],
+   "pattern": 5
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 309.39599999999996,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.15,
+    "tail": 1.1333333333333333,
+    "ears": 1.1371428571428572,
+    "antennae": 1.1371428571428572
+   },
+   "clamped": [],
+   "pattern": 6
+  },
+  {
+   "schema": "cf.morph-params/v1",
+   "identity": false,
+   "archetype": "7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc",
+   "base": {
+    "hue": 178.05200000000002,
+    "chroma": 0.9
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "lumin": false,
+   "proportion": {
+    "head": 1.2,
+    "tail": 0.7,
+    "ears": 1.18,
+    "antennae": 1.18
+   },
+   "clamped": [],
+   "pattern": 7
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Dog",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-03/g2referencesc62-06-dog/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5069746aa2244414de00dd8f5d35037d8a21c2bdfcf4c791b0382ab67e0410e7"
+}

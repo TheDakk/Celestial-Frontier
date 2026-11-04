@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Pronghorn",
+ "fitDir": "audits/ISLANDS_SWEEP3_20261009/c192creaturesupply-15-pronghorn/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "381482079eff2f760a722b60c173b017b6a49e8ec2ae28925b319a598f883d96"
+}

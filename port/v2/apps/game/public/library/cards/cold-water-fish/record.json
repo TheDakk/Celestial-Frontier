@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cold-Water Fish\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3599245294\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"5\"]]]]",
+    "seed": 3599245294,
+    "ownerId": "authored:archetype-sprint/01-cold-water-fish",
+    "earthName": "Cold-Water Fish"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3599245294,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 0,
+    "body": 6,
+    "loco": 17,
+    "trait": 5,
+    "size": 0,
+    "diet": 2,
+    "head": 2,
+    "limbs": 1,
+    "skin": 4,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 4,
+    "habitat": 14,
+    "detail": 9,
+    "accent": 3,
+    "temper": 2,
+    "sense": 0,
+    "repro": 5,
+    "life": 0,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cold-Water Fish"
+  },
+  "geometry": {
+    "cutoutAssetHash": "f390eeec34399bd928515352b1aad708a693518643bbccc20178ffeded074997",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.780242481561759,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.7118819776714513,
+      0.4993620414673047
+    ],
+    "head": [
+      0.8354864433811803,
+      0.4852472089314195
+    ],
+    "jaw": [
+      0.8879585326953748,
+      0.5251196172248804
+    ],
+    "spine0": [
+      0.6882775119617225,
+      0.49059011164274324
+    ],
+    "spine1": [
+      0.6249601275917066,
+      0.49377990430622015
+    ],
+    "spine2": [
+      0.5422647527910686,
+      0.47974481658692186
+    ],
+    "spine3": [
+      0.41874003189792663,
+      0.4641945773524721
+    ],
+    "spine4": [
+      0.3003987240829346,
+      0.47990430622009567
+    ],
+    "spine5": [
+      0.22185007974481658,
+      0.4933014354066986
+    ],
+    "caudal": [
+      0.13102073365231262,
+      0.4874003189792664
+    ],
+    "dorsal": [
+      0.5784688995215311,
+      0.36674641148325354
+    ],
+    "pectoralNear": [
+      0.6319776714513556,
+      0.564274322169059
+    ],
+    "pectoralFar": [
+      0.6728867623604465,
+      0.6027113237639553
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/01-cold-water-fish/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from salmon. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "ee68326e983726eca1614129ff1ac80c050dbff54129d13658b6f8fc07a3b8d3",
+    "subjectSourceSha256": "c45c147e233fe6d0715284274bc7b1937fdadcfa619107bdf35789431007a9f8",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.12440776680297592,
+      "jaw": 0.06590242104898168,
+      "spine0": 0.025181690854444137,
+      "spine1": 0.06339768087790201,
+      "spine2": 0.0838779392969713,
+      "spine3": 0.12449966510789189,
+      "spine4": 0.11937948197431976,
+      "spine5": 0.07968295048376842,
+      "caudal": 0.09102083984825658,
+      "dorsal": 0.13527358421464178,
+      "pectoralFar": 0.11046130982558738,
+      "pectoralNear": 0.10294805650627009
+    },
+    "measures": {
+      "body": 0.46643531255792514,
+      "bone-min": 0.025181690854444137,
+      "bone-max": 0.13527358421464178,
+      "caudal/body": 0.1951413998847975,
+      "head/body": 0.2667203006580384
+    }
+  },
+  "recipeHash": "055974a65dbab7baaf5b9aa72bd808efb943223f175256c3ac8564064fd93f58"
+}

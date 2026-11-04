@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Pig",
+ "fitDir": "audits/C213_PROGRAM_20261004/phase4-successors/g2c98-21-pig/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7f80af196abf60cd5c08a3201687db15caac59da8eab05715cf4bb7e0a001fe3"
+}

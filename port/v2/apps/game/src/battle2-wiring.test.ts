@@ -1,0 +1,611 @@
+import { morphAtlasCache } from './morph/morph-atlas-cache.js';
+/* A6 part 2 — battle2 wiring. Two kinds of check: (1) the main.ts gate exists and is the ONLY route
+ * into battle2/ (source-text checks, because the gate itself is the thing under test; a mutation
+ * control proves the checker bites); (2) the adapter's behaviour through fake pixi / asset / ticker
+ * objects: flag off → no work; flag on → stage constructed, ticker attached, turns advance on the
+ * injected clock, dispose releases everything; no wall clock, no Math.random. */
+import { readFileSync } from 'node:fs';
+// Lives beside the app (not under tests/): its closure reaches Codex's pixi-backed creature-rig, whose @webgpu/types
+// collide with lib.dom in the fully strict root program (apps/game/tsconfig.json _skipLibCheckReason).
+import { createRequire } from 'node:module';
+import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
+import { installCaptureHooks } from '@cf/domain-descriptors';
+import { systemFor } from '@cf/domain-worldgen';
+import { liveBattleArena, liveSettlementEncounter } from './battle2-live-worlds.js';
+import { speciesVisualKey } from '@cf/art/species-identity';
+import { ARENA_FALLBACK_SET_ID, ARENA_SETS, FIXTURE_RIG_LABEL, parseArenaSets, PORTRAIT_RIG_LABEL, type FixturePartCut } from './battle2/index.js';
+import { BATTLE2_ASSETS, PLAYER_PLACEHOLDER_LABEL, alphaBox, battle2Enabled, fnv1a32, liveArenaInput, genomeMass, genomeSeed, genomeTheme, matchRecord, mountBattle2Study, mountBattle2StudyIfEnabled,
+  type Battle2AssetSource, type Battle2Image, type Battle2Keyer, type Battle2PixiBindings, type Battle2Raster, type Battle2StudyInput } from './battle2-wiring.js';
+import type { ResolvedAnatomyRecord } from './motion/body-card.js';
+import { BATTLE2_DEFAULT, battle2On } from './battle2-gate.js';
+import { civetRecord } from '../../../tools/motion-proof/fixtures.js';
+import { makeGenome } from '@cf/domain-genome';
+import { runEncounterV1 } from '@cf/domain-combatcore';
+
+const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string) => { window: Window & typeof globalThis } };
+const mainSource = readFileSync(new URL('./main.ts', import.meta.url), 'utf8');
+const AUDIT = new URL('../../../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/', import.meta.url);
+const auditJson = (name: string): unknown => JSON.parse(readFileSync(new URL(name, AUDIT), 'utf8'));
+
+/** The gate contract (A4, 2026-09-26: the painted stage is the default; `?battle2=0` opts out): the gate call `battle2On(location.search)`
+ * and the static-string dynamic import share ONE line, that line sits inside the fight presenter (never on the boot path), and battle2 is
+ * never imported statically. `flag` is kept in the signature for the matchup picker's own gate check. */
+const GATE_CALL = 'battle2On(location.search)';
+function gateViolations(source: string, flag: string, module: string, dir: string): string[] {
+  const out: string[] = [];
+  void flag;
+  const lines = source.split('\n');
+  const gated = lines.filter((l) => l.includes(`if (${GATE_CALL})`) && l.includes(`import('./${module}.js')`));
+  if (gated.length !== 1) out.push(`expected exactly one gated import line, found ${gated.length}`);
+  for (const l of lines) if (l.includes(`import('./${module}.js')`) && !l.includes(`if (${GATE_CALL})`)) out.push(`ungated dynamic import: ${l.trim().slice(0, 80)}`);
+  // never on the boot path: the gated import lives inside the function that presents a settled fight
+  const start = source.indexOf('\nfunction presentCommittedCombatChronicle('), end = start < 0 ? -1 : source.indexOf('\n}\n', start);
+  const at = gated.length === 1 ? source.indexOf(gated[0]!) : -1;
+  if (at < 0 || start < 0 || end < 0 || at < start || at > end) out.push('the gated import is not inside presentCommittedCombatChronicle');
+  for (const l of lines) if (/^\s*import\b/.test(l) && (l.includes(`'./${module}.js'`) || l.includes(`'./${dir}/`))) out.push(`static import: ${l.trim().slice(0, 80)}`);
+  for (const l of lines) if (/\bfrom '\.\/(battle2|worldlife|effects|motion|soundkit)\//.test(l)) out.push(`static import of a study module: ${l.trim().slice(0, 80)}`);
+  return out;
+}
+
+describe('main.ts battle2 gate (source text)', () => {
+  it('imports battle2-wiring only through the one gate, only when a fight is presented, and never statically', () => {
+    expect(gateViolations(mainSource, 'battle2', 'battle2-wiring', 'battle2')).toEqual([]);
+    // the gate module main.ts imports statically is dependency-free (boot pays nothing for the stage)
+    const gate = readFileSync(new URL('./battle2-gate.ts', import.meta.url), 'utf8');
+    expect(gate.split('\n').filter((l) => /^\s*import\b/.test(l))).toEqual([]);
+    expect(mainSource).toMatch(/^import \{ battle2On, guardianChoreoOn \} from '\.\/battle2-gate\.js';$/m);   // the stage gate + the opt-in guardian choreography study flag
+  });
+  it('A4: the painted stage is the DEFAULT; ?battle2=0 opts out, ?battle2=1 forces on; the matchup picker stays opt-in', () => {
+    expect(BATTLE2_DEFAULT).toBe(true);
+    expect(battle2On('')).toBe(true); expect(battle2On('?worldlife=1')).toBe(true); expect(battle2On('?battle2')).toBe(true);
+    expect(battle2On('?battle2=0')).toBe(false); expect(battle2On('?battle2=0&worldlife=1')).toBe(false);
+    expect(battle2On('?battle2=1')).toBe(true);
+    // the picker line keeps its explicit opt-in: ?battle2=1 AND vs
+    // (the H1 device probe's own `mountMatchup:` import is excluded by name — its test pins it inside the ?deviceProbe=1 block)
+    const picker = mainSource.split('\n').filter((l) => l.includes("import('./battle2-matchup.js')") && !/^\s*mountMatchup: async/.test(l));
+    expect(picker).toHaveLength(1); expect(picker[0]).toContain("get('battle2') === '1'"); expect(picker[0]).toContain("get('vs') !== null");
+    // mutation control: the same gate module with the default flipped off makes this test's default assertion fail
+    const gateSrc = readFileSync(new URL('./battle2-gate.ts', import.meta.url), 'utf8').replace('export const BATTLE2_DEFAULT = true;', 'export const BATTLE2_DEFAULT = false;');
+    expect(gateSrc).toContain('BATTLE2_DEFAULT = false');
+    const js = gateSrc.replace(/^export /gm, '').replace(/ as const/g, '').replace(/\(search: string\): boolean/g, '(search)');
+    const offOn = new Function(`${js}; return battle2On;`)() as (search: string) => boolean;
+    expect(offOn('')).toBe(false); expect(offOn('?battle2=1')).toBe(true);
+  });
+  it('mutation controls: a static import, an ungated dynamic import, or a missing gate all fail the check', () => {
+    expect(gateViolations(`${mainSource}\nimport { BattleStage } from './battle2/stage.js';\n`, 'battle2', 'battle2-wiring', 'battle2')).not.toEqual([]);
+    expect(gateViolations(`${mainSource}\nvoid import('./battle2-wiring.js');\n`, 'battle2', 'battle2-wiring', 'battle2')).not.toEqual([]);
+    // the gate ON THE IMPORT LINE is mutated (main.ts also reads the flag earlier to set the Chronicle pacer, 2026-09-24)
+    const ungate = (src: string) => src.split('\n').map((l) => (l.includes("import('./battle2-wiring.js')") ? l.replace(`if (${GATE_CALL})`, 'if (true)') : l)).join('\n');
+    expect(ungate(mainSource)).not.toBe(mainSource);
+    expect(gateViolations(ungate(mainSource), 'battle2', 'battle2-wiring', 'battle2')).not.toEqual([]);
+    // the boot path: the same gated line moved to the top level (outside the fight presenter) fails the check
+    const gatedLine = mainSource.split('\n').find((l) => l.includes(`if (${GATE_CALL})`) && l.includes("import('./battle2-wiring.js')"))!;
+    const hoisted = mainSource.replace(`${gatedLine}\n`, '') + `\n${gatedLine.trim()}\n`;
+    expect(gateViolations(hoisted, 'battle2', 'battle2-wiring', 'battle2')).toContain('the gated import is not inside presentCommittedCombatChronicle');
+  });
+  it('neither wiring module reads a wall clock or Math.random outside comments (the clock is injected by main.ts)', () => {
+    for (const file of ['battle2-wiring.ts', 'worldlife-wiring.ts']) {
+      const code = readFileSync(new URL(`./${file}`, import.meta.url), 'utf8').split('\n').filter((l) => !/^\s*(\*|\/\/|\/\*)/.test(l)).join('\n');
+      expect(code, file).not.toMatch(/Math\.random|Date\.now|performance\.now/);
+    }
+  });
+  it('battle2Enabled is exactly the rule main.ts gates on (battle2On)', () => {
+    for (const q of ['', '?battle2=1', '?battle2=1&worldlife=1', '?battle2=0', '?battle2', '?battle2=0&vs=A,B']) expect(battle2Enabled(q), q).toBe(battle2On(q));
+    expect(battle2Enabled('')).toBe(true); expect(battle2Enabled('?battle2=0')).toBe(false);
+  });
+});
+
+/* ---------- fakes ---------- */
+class Node { x = 0; y = 0; rotation = 0; alpha = 1; visible = true; destroyed = false; text = ''; children: object[] = []; ops = 0;
+  readonly scale = { set: (_x: number, _y: number) => {} }; readonly anchor = { set: (_x: number, _y: number) => {} };
+  addChild(c: object) { this.children.push(c); } addChildAt(c: object, i: number) { this.children.splice(i, 0, c); } removeChild(c: object) { this.children = this.children.filter((x) => x !== c); }
+  clear() { this.ops++; } rect() { this.ops++; } fill() { this.ops++; } moveTo() {} lineTo() {} circle() {} stroke() {}
+  addParticle(...p: object[]) { this.children.push(...p); } removeParticle(...p: object[]) { this.children = this.children.filter((x) => !p.includes(x)); } destroy() { this.destroyed = true; } }
+class FakeApp { static made: FakeApp[] = []; initOptions: Record<string, unknown> | null = null; renders = 0; destroyed = false; destroyOptions: unknown = null; readonly canvas: HTMLCanvasElement; readonly stage = new Node();
+  readonly renderer = { render: () => { this.renders++; } };
+  constructor(doc: Document) { this.canvas = doc.createElement('canvas'); FakeApp.made.push(this); }
+  async init(o: Record<string, unknown>) { this.initOptions = o; } destroy(options?: unknown) { this.destroyOptions = options; this.destroyed = true; } }
+function fakePixi(doc: Document) {
+  const counts = { container: 0, sprite: 0, text: 0, graphics: 0, particle: 0, particleContainer: 0, texture: 0 };
+  const pixi: Battle2PixiBindings = {
+    Application: class { constructor() { return new FakeApp(doc); } } as unknown as Battle2PixiBindings['Application'],
+    Container: class extends Node { constructor() { super(); counts.container++; } },
+    Sprite: class extends Node { constructor(_t: unknown) { super(); counts.sprite++; } },
+    Text: class extends Node { constructor(o: { text: string }) { super(); this.text = o.text; counts.text++; } },
+    Graphics: class extends Node { constructor() { super(); counts.graphics++; } },
+    Texture: { from: (source: unknown) => { counts.texture++; const s = source as { width?: number; height?: number }; return { width: s.width ?? 8, height: s.height ?? 8 }; } },
+    Particle: class { x = 0; y = 0; scaleX = 1; scaleY = 1; anchorX = 0; anchorY = 0; rotation = 0; alpha = 1; constructor(_t: unknown) { counts.particle++; } },
+    ParticleContainer: class extends Node { constructor(_o: unknown) { super(); counts.particleContainer++; } },
+  };
+  return { pixi, counts };
+}
+const image = (width: number, height: number, alphaRect: [number, number, number, number] | null, tag = ''): Battle2Image => ({ width, height, source: { width, height, tag }, pixels: () => {
+  const px = new Uint8ClampedArray(width * height * 4);
+  if (alphaRect) { const [x0, y0, w, h] = alphaRect; for (let y = y0; y < y0 + h; y++) for (let x = x0; x < x0 + w; x++) { const i = (y * width + x) * 4; px[i] = 200; px[i + 1] = 150; px[i + 2] = 100; px[i + 3] = 255; } }
+  return px; } });
+const raster: Battle2Raster = (rgba, width, height) => ({ width, height, source: { width, height, tag: 'raster' }, pixels: () => rgba });
+const MASTER = { w: 120, h: 120 };
+/** Synthetic keyer: every pixel of the master's painted band is opaque, so the fixture cut has parts. */
+const keyer: Battle2Keyer = (rgba, w, h) => { const alpha = new Uint8Array(w * h); for (let y = 30; y < 100; y++) for (let x = 5; x < 115; x++) alpha[y * w + x] = 255; return { alpha, rgba, bounds: { x: 5, y: 30, width: 110, height: 70 } }; };
+function fakeAssets() {
+  const calls: string[] = [];
+  const assets: Battle2AssetSource = {
+    json: async (path) => { calls.push(path); if (path === BATTLE2_ASSETS.recipe) return auditJson('arena-recipe.json'); if (path === BATTLE2_ASSETS.anchors) return auditJson('wild-anchors.json'); if (path === BATTLE2_ASSETS.civetRecord) return civetRecord(); throw new Error(`unexpected json ${path}`); },
+    image: async (path) => { calls.push(path); if (path === BATTLE2_ASSETS.civetMaster) return image(MASTER.w, MASTER.h, [5, 30, 110, 70], path); return image(1672, 941, null, path); },
+  };
+  return { assets, calls };
+}
+const fakeTicker = () => { const fns = new Set<() => void>(); return { fns, add: (fn: () => void) => { fns.add(fn); }, remove: (fn: () => void) => { fns.delete(fn); }, step: () => { for (const fn of [...fns]) fn(); } }; };
+/** Rebuilds the genome the Civet record was keyed from, from its own visual key (the key is a stable JSON encoding). */
+function genomeFromVisualKey(key: string): Record<string, unknown> {
+  const decode = (node: unknown): unknown => { const [kind, v] = node as [string, unknown]; if (kind === 'number') return Number(v); if (kind === 'null') return null; if (kind === 'array') return (v as unknown[]).map(decode); if (kind === 'object') return Object.fromEntries((v as [string, unknown][]).map(([k, n]) => [k, decode(n)])); return v; };
+  return decode(JSON.parse(key)) as Record<string, unknown>;
+}
+const LOG = [
+  { side: 'A', an: 'Civet', dn: 'Platypus', dmg: 12, crit: false, hpA: 30, hpB: 18 },
+  { tick: true, bA: 0, bB: 1, rA: 0, rB: 0, hpA: 30, hpB: 17 },
+  { side: 'B', an: 'Platypus', dn: 'Civet', dmg: 7, crit: true, hpA: 23, hpB: 17 },
+];
+function harness(over: Partial<Battle2StudyInput> = {}) {
+  const dom = new JSDOM('<body><div id="panel"><div id="mount" data-combat-chronicle-generation="7"><ol data-combat-chronicle-log></ol></div></div></body>');
+  const doc = dom.window.document, mount = doc.getElementById('mount')!;
+  const { pixi, counts } = fakePixi(doc), { assets, calls } = fakeAssets(), ticker = fakeTicker();
+  let now = 0; const clock = () => now;
+  const listeners = new Map<string, Set<EventListener>>();
+  const win = { addEventListener: (t: string, fn: EventListener) => { (listeners.get(t) ?? listeners.set(t, new Set()).get(t)!).add(fn); }, removeEventListener: (t: string, fn: EventListener) => { listeners.get(t)?.delete(fn); }, MutationObserver: dom.window.MutationObserver } as unknown as NonNullable<Battle2StudyInput['win']>;
+  const genome = genomeFromVisualKey(civetRecord().identity.speciesVisualKey);
+  const input: Battle2StudyInput = {
+    mount, generation: 7, ticker, clock, reducedMotion: false, deviceTier: 'medium', pixi, artLoader: null, assets, keyer, raster, records: [civetRecord()], win,
+    /* the fake assets serve the Wild files only: pin the Wild-only manifest so these fixtures keep testing the procedural fallback
+     * (the shipped manifest's painted rows are validated from their delivered files in tests/effects-theme-delivery.test.ts) */
+    paintedThemes: { schema: 'cf.painted-theme-manifest/v1', rows: [{ theme: 'wild', anchors: 'wild-anchors.json', contract: 'v4.2-grandfathered', required: true }] },
+    // likewise the fake assets serve the temperate plates only: pin the temperate-only arena registry (the shipped one is pinned in battle2-live-worlds.test.ts)
+    arenaSets: ARENA_SETS.filter((s) => s.id === ARENA_FALLBACK_SET_ID),
+    settlement: { battleId: 'battle-1', champion: { kind: 'owned-fauna', name: 'Civet', genome }, encounter: { defender: { battleGenome: { seed: 424242, size: 2, kingdom: 'fauna' } } }, transcript: { log: LOG } },
+    chronicle: { championName: 'Civet', defenderName: 'Platypus' },
+    portrait: async () => image(132, 132, [20, 30, 90, 96], 'thumb'),
+    ...over,
+  };
+  return { dom, doc, mount, pixi, counts, assets, calls, ticker, clock, setNow: (ms: number) => { now = ms; }, listeners, input, genome };
+}
+const fire = (h: ReturnType<typeof harness>, type: string, persisted: boolean) => { for (const fn of h.listeners.get(type) ?? []) fn({ type, persisted } as unknown as Event); };
+
+describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+
+  it('opted out (?battle2=0): mountBattle2StudyIfEnabled does no work at all', () => {
+    const h = harness();
+    expect(mountBattle2StudyIfEnabled('?battle2=0', h.input)).toBeNull(); expect(mountBattle2StudyIfEnabled('?battle2=0&worldlife=1', h.input)).toBeNull();
+    expect(h.counts).toEqual({ container: 0, sprite: 0, text: 0, graphics: 0, particle: 0, particleContainer: 0, texture: 0 });
+    expect(h.calls).toEqual([]); expect(h.ticker.fns.size).toBe(0); expect(h.mount.querySelector('[data-battle2-stage]')).toBeNull(); expect(FakeApp.made).toHaveLength(0);
+  });
+
+  it('the DEFAULT (no query, A4): builds the stage (Civet fixture rig + portrait fallback), attaches the ticker, advances turns on the injected clock, disposes totally', async () => {
+    const h = harness();
+    const handle = mountBattle2StudyIfEnabled('', h.input)!;
+    expect(handle).not.toBeNull(); expect(handle.status().phase).toBe('loading');
+    const section = h.mount.querySelector<HTMLElement>('[data-battle2-stage]')!;
+    expect(section).not.toBeNull(); expect(section.getAttribute('aria-hidden')).toBe('true'); expect(section.dataset.battle2Generation).toBe('7');
+    const ready = await handle.ready;
+    expect(ready.reason).toBeNull(); expect(ready.phase).toBe('playing');
+    expect(ready.rigs).toEqual({ left: FIXTURE_RIG_LABEL, right: PORTRAIT_RIG_LABEL });
+    expect(ready.label).toContain(FIXTURE_RIG_LABEL); expect(section.dataset.battle2Label).toBe(ready.label);
+    expect(ready.turns).toBe(2); expect(ready.skipped).toEqual([expect.stringContaining('parts rig needs raw asset bytes; fixture fallback'), expect.stringContaining('tick')]); // E1: a byte-less asset source cannot build a parts rig; the fixture path is labelled expect(ready.turnIndex).toBe(0);
+    // B2: each combatant plays its own ability theme (combat domain abilityTheme); Wild is painted, every other theme is the labelled procedural emitter.
+    const themeRe = /^(fire|frost|storm|tide|stone|venom|void|sand|chem|psionic|wild): (painted sequence|procedural emitter effect \(labelled;)/;
+    expect(ready.effects.left).toMatch(themeRe); expect(ready.effects.right).toMatch(themeRe);
+    expect(ready.effects.left).toBe(`${genomeTheme(h.genome)}: ${genomeTheme(h.genome) === 'wild' ? 'painted sequence' : 'procedural emitter effect (labelled; no painted sequence for this theme yet)'}`);
+    // Assets resolved by their audit paths, the Civet master keyed, the three Wild phase images fetched.
+    expect(h.calls).toEqual(expect.arrayContaining([BATTLE2_ASSETS.recipe, BATTLE2_ASSETS.anchors, BATTLE2_ASSETS.far, BATTLE2_ASSETS.mid, BATTLE2_ASSETS.near, BATTLE2_ASSETS.civetMaster, 'keyed/wild-launch.png', 'keyed/wild-travel.png', 'keyed/wild-impact.png']));
+    // The renderer: one Application, initialised at the 1024×576 frame, its canvas inside the study section, driven by the injected ticker.
+    expect(FakeApp.made).toHaveLength(1); const app = FakeApp.made[0]!;
+    expect(app.initOptions).toMatchObject({ width: 1024, height: 576, autoStart: false }); expect(section.contains(app.canvas)).toBe(true);
+    expect(app.stage.children).toHaveLength(1); expect(h.ticker.fns.size).toBe(1); expect(app.renders).toBe(1);
+    expect(h.counts.particleContainer).toBeGreaterThanOrEqual(1); expect(h.counts.sprite).toBeGreaterThan(19); // 19 fixture parts + portrait + plates + effect phases
+    // Turns advance only through the injected clock: turn 2 starts when turn 1 is done, then the study finishes and releases the ticker.
+    // (performance.now is spied only across the synchronous ticks and read back before any expect: the vitest runner
+    //  itself reads performance.now around awaits and inside expect, so the count is taken first.)
+    const perfNow = vi.spyOn(performance, 'now'), dateNow = vi.spyOn(Date, 'now'), random = vi.spyOn(Math, 'random');
+    h.setNow(10); h.ticker.step(); const s1 = handle.status(), r1 = app.renders;
+    h.setNow(20_000); h.ticker.step(); const s2 = handle.status();
+    h.setNow(60_000); h.ticker.step(); const s3 = handle.status(), tickerAfter = h.ticker.fns.size, clockCalls = perfNow.mock.calls.length + dateNow.mock.calls.length + random.mock.calls.length;
+    perfNow.mockRestore(); dateNow.mockRestore(); random.mockRestore();
+    expect(s1.turnIndex).toBe(0); expect(r1).toBe(2);
+    expect(s2.turnIndex).toBe(1); expect(s2.phase).toBe('playing');
+    expect(s3.phase).toBe('finished'); expect(tickerAfter).toBe(0); expect(section.dataset.battle2Status).toBe('finished');
+    expect(clockCalls).toBe(0);
+    // Dispose releases the renderer, the section and the listeners.
+    handle.dispose('test');
+    expect(app.destroyed).toBe(true); expect(app.destroyOptions).toEqual({removeView:true,releaseGlobalResources:false}); expect(h.mount.querySelector('[data-battle2-stage]')).toBeNull(); expect(handle.status()).toMatchObject({ phase: 'disposed', reason: 'test' });
+    expect([...(h.listeners.get('pagehide') ?? [])]).toHaveLength(0);
+    handle.dispose(); // idempotent
+  });
+
+  it('PACING (Dakk 2026-09-24): the study releases each staged turn\'s Chronicle row at its IMPACT (before the turn ends), in order, and everything on finish; dispose and a failed build release everything', async () => {
+    const released: number[] = []; let all = 0;
+    const pacer = { pacer: { waitFor: async () => {} }, release: (i: number) => { released.push(i); }, releaseAll: () => { all++; } };
+    const h = harness({ pacer });
+    const handle = mountBattle2Study(h.input); expect((await handle.ready).phase).toBe('playing');
+    const log = (h.input.settlement.transcript.log as readonly Record<string, unknown>[]);
+    // walk turn 0 in 50 ms steps: its row must be released while turnIndex is still 0 (at impact), not only when the turn ends
+    h.setNow(10); h.ticker.step(); expect(released).toEqual([]);
+    let t = 10, releasedAt = -1, turnEndedAt = -1;
+    while (t < 60_000 && turnEndedAt < 0) { t += 50; h.setNow(t); h.ticker.step(); if (releasedAt < 0 && released.length === 1) releasedAt = t; if (handle.status().turnIndex > 0 || handle.status().phase === 'finished') turnEndedAt = t; }
+    expect(releasedAt).toBeGreaterThan(10); expect(turnEndedAt).toBeGreaterThan(releasedAt);
+    h.setNow(200_000); h.ticker.step(); h.setNow(400_000); h.ticker.step();
+    expect(handle.status().phase).toBe('finished');
+    expect(released).toHaveLength(2); expect(released[1]!).toBeGreaterThan(released[0]!); expect(released[1]!).toBeLessThan(log.length);
+    expect(all).toBe(1);
+    handle.dispose('test'); expect(all).toBe(2);
+    // a build that fails releases everything so the log is never held
+    let failedAll = 0; const empty = harness({ pacer: { ...pacer, releaseAll: () => { failedAll++; } }, settlement: { ...h.input.settlement, transcript: { log: [] } } as Battle2StudyInput['settlement'] });
+    expect((await mountBattle2Study(empty.input).ready).phase).toBe('failed'); expect(failedAll).toBe(1);
+  });
+
+  it('§20 RELAY BEATS: a party settlement holds one captioned beat per earlier fighter before the decisive leg; a lone fighter starts at once', async () => {
+    const defenderGenome = makeGenome(424242, 'fauna', 0.5) as unknown as Record<string, unknown>;
+    let party: unknown = null;
+    for (let base = 5; base < 6_000 && party === null; base += 11) {
+      const members = [base, base + 1_000, base + 2_000].map((seed) => ({ champion: { kind: 'owned-fauna', creatureId: `c${seed}`, name: `Fighter ${seed}`, genome: makeGenome(seed, 'fauna', 0.5) }, stance: 'balanced' as const }));
+      const r = runEncounterV1({ mode: 'auto', defender: { name: 'Platypus', genome: defenderGenome as never }, party: members.map((m) => ({ name: m.champion.name, genome: m.champion.genome as never, stance: m.stance })) });
+      if (r.status === 'finished' && r.legs.length >= 2) party = { schema: 'cf-v2-combat-party/v1', mode: 'auto', decisions: [], decisiveIndex: r.legs[r.legs.length - 1]!.fighterIndex, members, encounterFingerprint: 'x' };
+    }
+    expect(party).not.toBeNull();
+    const h = harness();
+    const settlement = { ...h.input.settlement, encounter: { defender: { battleGenome: defenderGenome } }, party } as unknown as Battle2StudyInput['settlement'];
+    const handle = mountBattle2Study({ ...h.input, settlement });
+    expect((await handle.ready).phase).toBe('playing');
+    const app = FakeApp.made[FakeApp.made.length - 1]!;
+    expect(app.stage.children, 'the stage root plus the relay caption').toHaveLength(2);
+    const count = handle.status().beats!.count;
+    expect(count).toBeGreaterThanOrEqual(1);
+    h.setNow(10); h.ticker.step();
+    expect(handle.status().beats).toMatchObject({ index: 0, text: expect.stringMatching(/^↻ Fighter \d+ /u) });
+    expect(handle.status().turnIndex, 'the decisive leg waits for the beats').toBe(-1);
+    let t = 10;
+    for (let i = 1; i < count; i++) { t += 1_100; h.setNow(t); h.ticker.step(); expect(handle.status().beats!.index).toBe(i); expect(handle.status().turnIndex).toBe(-1); }
+    t += 1_100; h.setNow(t); h.ticker.step();
+    expect(handle.status().turnIndex, 'after the last beat the decisive leg plays').toBe(0);
+    expect((app.stage.children[1] as { visible: boolean }).visible).toBe(false);
+    handle.dispose('test');
+    // control: the same study without a party starts its first turn on the first tick, with no caption
+    const lone = harness(); const loneHandle = mountBattle2Study(lone.input); await loneHandle.ready;
+    lone.setNow(10); lone.ticker.step();
+    expect(loneHandle.status().turnIndex).toBe(0); expect(loneHandle.status().beats).toMatchObject({ count: 0 });
+    expect(FakeApp.made[FakeApp.made.length - 1]!.stage.children).toHaveLength(1);
+    loneHandle.dispose('test');
+  });
+
+  it('GUARDIAN CHOREOGRAPHY (opt-in): a Guardian fight plays entrance → turn 0 → the phase beat after the turn that took it to half → turn 1; flag off or a non-guardian keeps today\'s path', async () => {
+    const guardianSettlement = (kind: string) => ({ ...harness().input.settlement, encounter: { defender: { battleGenome: { seed: 424242, size: 2, kingdom: 'fauna' }, kind } }, transcript: { log: LOG, maxB: 36 } }) as unknown as Battle2StudyInput['settlement'];
+    const walk = async (over: Partial<Battle2StudyInput>) => {
+      const h = harness(over), handle = mountBattle2Study(h.input); await handle.ready;
+      const trail: string[] = []; let last = '';
+      for (let t = 10; t < 60_000 && handle.status().phase === 'playing'; t += 50) {
+        h.setNow(t); h.ticker.step(); const s = handle.status();
+        const at = `${s.guardian?.piece ?? '-'}/${s.turnIndex}`; if (at !== last) { trail.push(at); last = at; }
+      }
+      const out = { trail, status: handle.status(), app: FakeApp.made[FakeApp.made.length - 1]! }; handle.dispose('test'); return out;
+    };
+    const on = await walk({ settlement: guardianSettlement('guardian'), guardianChoreo: true });
+    expect(on.trail).toEqual(['guardian-entrance/-1', '-/0', 'guardian-phase/0', '-/1']);
+    expect(on.status.phase).toBe('finished');
+    expect(on.status.guardian).toEqual({ piece: null, played: ['guardian-entrance', 'guardian-phase'], phase: 'row 0 took the guardian to half health' });
+    expect(on.app.stage.children, 'the stage root plus the guardian caption').toHaveLength(2);
+    // controls: the flag off (absent or false), and a non-guardian defender with the flag on, play today's path with no caption
+    for (const over of [{ settlement: guardianSettlement('guardian') }, { settlement: guardianSettlement('guardian'), guardianChoreo: false }, { settlement: guardianSettlement('wild'), guardianChoreo: true }]) {
+      const off = await walk(over);
+      expect(off.trail).toEqual(['-/0', '-/1']); expect('guardian' in off.status).toBe(false); expect(off.app.stage.children).toHaveLength(1);
+    }
+  });
+
+  it('a throw inside the stage tick fails the STUDY (labelled) and never escapes into the game\'s shared ticker (a throw there stops Pixi\'s ticker and freezes the game, 2026-09-24)', async () => {
+    let boom = false; const h = harness(); const clock = h.input.clock; const input = { ...h.input, clock: () => { if (boom) throw new Error('boom from the clock'); return clock(); } };
+    const handle = mountBattle2Study(input); expect((await handle.ready).phase).toBe('playing');
+    h.setNow(10); h.ticker.step(); expect(handle.status().phase).toBe('playing');
+    boom = true; expect(() => h.ticker.step()).not.toThrow();
+    expect(handle.status().phase).toBe('failed'); expect(handle.status().reason).toMatch(/stage tick failed: boom from the clock/); expect(h.ticker.fns.size).toBe(0);
+  });
+
+  it('a player champion gets the labelled placeholder; a genome matched by _earthName also takes the fixture rig; themes follow the combat domain', async () => {
+    const h = harness({ settlement: { battleId: 'battle-2', champion: { kind: 'player', name: 'Explorer' }, encounter: { defender: { battleGenome: { _earthName: 'Civet', seed: 9, size: 1, loco: 3 } } }, transcript: { log: [{ side: 'A', an: 'Explorer', dn: 'Civet', dmg: 3, hpA: 10, hpB: 5 }, { side: 'B', an: 'Civet', dn: 'Explorer', dmg: 2, hpA: 8, hpB: 5 }] } }, chronicle: { championName: 'Explorer', defenderName: 'Civet' } });
+    const handle = mountBattle2Study(h.input); const s = await handle.ready;
+    expect(s.phase).toBe('playing'); expect(s.rigs).toEqual({ left: PLAYER_PLACEHOLDER_LABEL, right: FIXTURE_RIG_LABEL });
+    expect(genomeTheme(null)).toBe('wild'); expect(genomeTheme({ loco: 3 })).toBe('storm'); expect(genomeTheme({ loco: 4 })).toBe('tide'); expect(genomeTheme({ loco: 1 })).toBe('stone');
+    expect(s.effects).toEqual({ left: 'wild: painted sequence', right: 'storm: procedural emitter effect (labelled; no painted sequence for this theme yet)' });
+    // The storm turn (B) plays with no phase sprite: only the particle container joins the effect layer, and the far plate is never used as a phase texture.
+    const spritesBefore = h.counts.sprite; h.setNow(20_000); h.ticker.step(); expect(handle.status().turnIndex).toBe(1); expect(h.counts.sprite).toBe(spritesBefore);
+    handle.dispose();
+  });
+
+  it('a theme registered by ONE painted-themes row plays painted with its own phase images; a refused row plays procedural and names why', async () => {
+    const V43 = new URL('../../../../../audits/WILD_V43_PROOF_20260913/', import.meta.url);
+    const storm = { ...(JSON.parse(readFileSync(new URL('wild-anchors.json', V43), 'utf8')) as Record<string, unknown>), theme: 'storm', sequenceId: 'storm-delivery-test-v1' };
+    const manifest = { schema: 'cf.painted-theme-manifest/v1', rows: [{ theme: 'wild', anchors: 'wild-anchors.json', contract: 'v4.2-grandfathered', required: true }, { theme: 'storm', anchors: '../STORM_TEST/storm-anchors.json', contract: 'v4.3' }] };
+    const settlement = { battleId: 'battle-3', champion: { kind: 'player', name: 'Explorer' }, encounter: { defender: { battleGenome: { _earthName: 'Civet', seed: 9, size: 1, loco: 3 } } }, transcript: { log: [{ side: 'A', an: 'Explorer', dn: 'Civet', dmg: 3, hpA: 10, hpB: 5 }, { side: 'B', an: 'Civet', dn: 'Explorer', dmg: 2, hpA: 8, hpB: 5 }] } };
+    const run = async (stormSize: number) => {
+      const h = harness(), extra: string[] = [];
+      const assets: Battle2AssetSource = { json: async (p) => { if (p === '../STORM_TEST/storm-anchors.json') { extra.push(p); return storm; } return h.assets.json(p); },
+        image: async (p) => { if (p.startsWith('../STORM_TEST/')) { extra.push(p); return image(stormSize, stormSize, null, p); } return h.assets.image(p); } };
+      const input = { ...h.input, assets, paintedThemes: manifest, settlement, chronicle: { championName: 'Explorer', defenderName: 'Civet' } } as Battle2StudyInput;
+      const handle = mountBattle2Study(input); const s = await handle.ready; return { h, handle, s, extra };
+    };
+    const ok = await run(1024);
+    expect(ok.s.phase).toBe('playing'); expect(ok.s.effects).toEqual({ left: 'wild: painted sequence', right: 'storm: painted sequence' });
+    expect(ok.extra).toEqual(['../STORM_TEST/storm-anchors.json', '../STORM_TEST/registered/wild-launch.png', '../STORM_TEST/second-pass/registered/wild-travel.png', '../STORM_TEST/targeted-pass/registered/wild-impact.png']);
+    expect(ok.h.calls).toEqual(expect.arrayContaining(['keyed/wild-launch.png', 'keyed/wild-travel.png', 'keyed/wild-impact.png'])); // Wild still loads its own images
+    // the storm turn (B) now creates its painted phase sprites (the procedural control in the test above creates none)
+    const before = ok.h.counts.sprite; ok.h.setNow(20_000); ok.h.ticker.step(); expect(ok.handle.status().turnIndex).toBe(1); expect(ok.h.counts.sprite).toBe(before + 3);
+    ok.handle.dispose();
+    const refused = await run(1254);
+    expect(refused.s.phase).toBe('playing'); expect(refused.s.effects.left).toBe('wild: painted sequence');
+    expect(refused.s.effects.right).toBe('storm: procedural emitter effect (labelled; no painted sequence for this theme yet) (phase image ../STORM_TEST/registered/wild-launch.png is 1254x1254, its anchors say 1024x1024)');
+    expect(refused.s.skipped).toEqual(expect.arrayContaining([expect.stringMatching(/^storm effect: phase image .* is 1254x1254.*; procedural emitter$/)]));
+    refused.handle.dispose();
+  });
+
+  it('reduced motion builds without an effects host; a transcript with no stageable row fails closed with a reason', async () => {
+    const h = harness({ reducedMotion: true });
+    const handle = mountBattle2Study(h.input); expect((await handle.ready).phase).toBe('playing'); expect(h.counts.particleContainer).toBe(0); handle.dispose();
+    const empty = harness({ settlement: { ...h.input.settlement, transcript: { log: [{ tick: true }, { stun: true }] } } });
+    const failed = mountBattle2Study(empty.input); const st = await failed.ready;
+    expect(st.phase).toBe('failed'); expect(st.reason).toContain('no stageable turn'); expect(empty.ticker.fns.size).toBe(0); expect(FakeApp.made).toHaveLength(1); failed.dispose();
+  });
+
+  it('dispose during loading, pagehide, mount replacement and a superseding study all tear down', async () => {
+    const a = harness(); const early = mountBattle2Study(a.input); early.dispose('early');
+    const s = await early.ready; expect(s.phase).toBe('disposed'); expect(a.ticker.fns.size).toBe(0); expect(a.mount.querySelector('[data-battle2-stage]')).toBeNull();
+    expect(FakeApp.made.every((app) => app.destroyed || app.initOptions === null)).toBe(true);
+    const b = harness(); const bfc = mountBattle2Study(b.input); await bfc.ready; expect(b.ticker.fns.size).toBe(1);
+    fire(b, 'pagehide', true); expect(b.ticker.fns.size).toBe(0); expect(bfc.status().phase).toBe('playing');
+    fire(b, 'pageshow', true); expect(b.ticker.fns.size).toBe(1);
+    fire(b, 'pagehide', false); expect(bfc.status()).toMatchObject({ phase: 'disposed', reason: 'pagehide' }); expect(b.ticker.fns.size).toBe(0);
+    const c = harness(); const gen = mountBattle2Study(c.input); await gen.ready;
+    c.mount.dataset.combatChronicleGeneration = '8'; await new Promise((r) => setTimeout(r, 0));
+    expect(gen.status()).toMatchObject({ phase: 'disposed', reason: 'chronicle generation replaced' });
+    const d = harness(); const first = mountBattle2Study(d.input); await first.ready; const second = mountBattle2Study(harness().input); await second.ready;
+    expect(first.status().phase).toBe('disposed'); expect(second.status().phase).toBe('playing'); second.dispose();
+    const e = harness(); const gone = mountBattle2Study(e.input); await gone.ready; e.mount.remove(); e.ticker.step();
+    expect(gone.status()).toMatchObject({ phase: 'disposed', reason: 'mount left the document' });
+  });
+
+  it('STAND-INS on the stage (Dakk 2026-09-24): no record of its own → the painted stand-in\'s record (Earth body plan, or the procedural body family); exact still wins; an unpainted family stays null', async () => {
+    const { matchRecord } = await import('./battle2-wiring.js'); const { makeGenome } = await import('@cf/domain-genome'); const { paintedStandInV1, proceduralFamilyV1 } = await import('./morph/painted-stand-in.js');
+    const rec = (earthName: string) => ({ identity: { earthName, speciesVisualKey: `key:${earthName}` } }) as never;
+    const records = ['Civet', 'Python', 'Salmon', 'Beetle', 'Tarantula', 'Crab', 'Octopus', 'Fruit Bat', 'Tree Frog', 'Eagle', 'Chimpanzee'].map(rec);
+    expect((matchRecord(records, { _earthName: 'Brown Bear', seed: 1 }) as unknown as { identity: { earthName: string } }).identity.earthName).toBe('Civet');
+    expect((matchRecord(records, { _earthName: 'Civet', seed: 1 }) as unknown as { identity: { earthName: string } }).identity.earthName).toBe('Civet');
+    const painted = new Set(['Civet', 'Python', 'Salmon', 'Beetle', 'Tarantula', 'Crab', 'Octopus', 'Fruit Bat', 'Tree Frog', 'Eagle', 'Chimpanzee']);
+    let checked = 0, none = 0;
+    for (let i = 0; i < 400; i++) { const g = makeGenome(3000 + i * 7919, 'fauna', 0.5) as unknown as Record<string, unknown>, s = paintedStandInV1(g, painted), r = matchRecord(records, g) as unknown as { identity: { earthName: string } } | null;
+      if (s) { expect(r?.identity.earthName, proceduralFamilyV1(g)).toBe(s.earthName); checked++; } else { expect(r, proceduralFamilyV1(g)).toBeNull(); none++; } }
+    expect(checked).toBeGreaterThan(100); expect(none).toBeGreaterThan(100);
+  });
+  it('pure helpers: record matching by visual key or Earth name, genome mass/seed, alpha box, fnv', () => {
+    const rec = civetRecord(), genome = genomeFromVisualKey(rec.identity.speciesVisualKey);
+    expect(speciesVisualKey(genome)).toBe(rec.identity.speciesVisualKey);
+    expect(matchRecord([rec], genome)).toBe(rec); expect(matchRecord([rec], { _earthName: 'Civet' })).toBe(rec);
+    expect(matchRecord([rec], { seed: 1, size: 2 })).toBeNull(); expect(matchRecord([rec], null)).toBeNull();
+    const other: ResolvedAnatomyRecord = { ...rec, identity: { ...rec.identity, speciesVisualKey: 'x', earthName: 'Red Fox' } };
+    expect(matchRecord([other, rec], genome)).toBe(rec);
+    expect(genomeMass({ size: 0 })).toBe(0.7); expect(genomeMass({ size: 5 })).toBe(1.6); expect(genomeMass({ size: 7 })).toBe(0.85); expect(genomeMass(null)).toBe(1);
+    expect(genomeSeed({ seed: 3212817920 }, 'x')).toBe(3212817920); expect(genomeSeed(null, 'battle-1:left:Civet')).toBe(fnv1a32('battle-1:left:Civet')); expect(fnv1a32('a')).toBe(fnv1a32('a')); expect(fnv1a32('a')).not.toBe(fnv1a32('b'));
+    expect(alphaBox(image(10, 10, [2, 3, 4, 5]).pixels(), 10, 10)).toEqual({ x: 2, y: 3, width: 4, height: 5 }); expect(alphaBox(image(4, 4, null).pixels(), 4, 4)).toEqual({ x: 0, y: 0, width: 4, height: 4 });
+  });
+
+  it('assets are a dev-only fetch: a build that inlined arena-recipe.json fails closed with a named reason', async () => {
+    const { devAssetSource } = await import('./battle2-wiring.js');
+    expect(() => devAssetSource('data:application/json;base64,e30=', 'http://localhost/')).toThrow(/dev-only fetch/);
+    const src = devAssetSource('/@fs/repo/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json', 'http://localhost:5173/');
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue({ ok: false, status: 404 } as Response);
+    await expect(src.json(BATTLE2_ASSETS.civetRecord)).rejects.toThrow(/HTTP 404/);
+    expect(fetchSpy).toHaveBeenCalledWith('http://localhost:5173/@fs/repo/audits/CIVET_2D_PROOF_20260912/civet.landmarks.json');
+  });
+
+  it('a .gz asset (the shipped part bindings) is gunzipped to the same JSON; a server that already decoded it still parses; plain JSON is untouched', async () => {
+    const { devAssetSource } = await import('./battle2-wiring.js');
+    const { gzipSync } = await import('node:zlib');
+    const value = { parts: [{ id: 'head', box: [1, 2, 3, 4] }], note: 'binding' }, text = JSON.stringify(value), gz = new Uint8Array(gzipSync(Buffer.from(text)));
+    const src = devAssetSource('/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json', 'http://localhost/', false); // core-pack files only (the library path has its own tests)
+    const reply = (bytes: Uint8Array) => ({ ok: true, status: 200, arrayBuffer: async () => bytes.slice().buffer, json: async () => JSON.parse(new TextDecoder().decode(bytes)) } as unknown as Response);
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(reply(gz)).mockResolvedValueOnce(reply(new TextEncoder().encode(text))).mockResolvedValueOnce(reply(new TextEncoder().encode(text)));
+    expect(await src.json('../X/binding.json.gz')).toEqual(value);
+    expect(await src.json('../X/binding.json.gz')).toEqual(value); // already decoded by the server
+    expect(await src.json('../X/record.json')).toEqual(value);
+    // control: the gzip bytes are not JSON, so the .gz path really decompressed
+    expect(() => JSON.parse(new TextDecoder().decode(gz))).toThrow();
+    fetchSpy.mockRestore();
+  });
+});
+
+
+// Keeps the part type referenced so a rename in fixture-rig surfaces here as a type error.
+const _partTypeGuard: FixturePartCut | null = null; void _partTypeGuard;
+
+describe('battle2 wiring: master-pin preflight order (C13)', { timeout: 60_000 }, () => {
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+  const SERVED = new URL('../public/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', import.meta.url);
+  const civetFit = BATTLE2_ASSETS.partsFits.find((f) => f.earthName === 'Civet')!;
+  const fitRecord = JSON.parse(readFileSync(new URL(civetFit.dir + 'record.json', SERVED), 'utf8')) as ResolvedAnatomyRecord & { source: string };
+  const masterAsset = '../' + fitRecord.source.slice('audits/'.length);
+  async function runWith(opts: { tamperAtlas?: boolean; creatureId?: string }) {
+    const base = harness(), log = { json: [] as string[], bytes: [] as string[], image: [] as string[] };
+    const assets: Battle2AssetSource = {
+      json: async (p) => { log.json.push(p); if (p === civetFit.dir + 'parts/manifest.json' && opts.creatureId) return { creatureId: opts.creatureId }; return p.startsWith(civetFit.dir) ? JSON.parse(readFileSync(new URL(p, SERVED), 'utf8')) : base.assets.json(p); },
+      bytes: async (p) => { log.bytes.push(p); const b = new Uint8Array(readFileSync(new URL(p, SERVED))); if (opts.tamperAtlas && p.includes('/parts/atlas/')) b[b.length >> 1] = b[b.length >> 1]! ^ 1; return b; },
+      image: async (p) => { log.image.push(p); return base.assets.image(p); },
+    };
+    const acquire = vi.spyOn(morphAtlasCache, 'acquire');
+    const genome = genomeFromVisualKey(fitRecord.identity.speciesVisualKey);
+    const h = harness({ assets, records: [fitRecord], settlement: { ...base.input.settlement, champion: { kind: 'owned-fauna', name: 'Civet', genome } } });
+    const handle = mountBattle2Study(h.input), ready = await handle.ready; handle.dispose();
+    return { ready, log, acquires: acquire.mock.calls.length };
+  }
+  const beforeDecode = (log: { json: string[]; bytes: string[]; image: string[] }) => ({
+    master: log.bytes.includes(masterAsset), alphaImage: log.image.some((p) => p.endsWith('parts/alpha.png')), masks: log.json.some((p) => p.endsWith('markings.json')) || log.bytes.some((p) => p.includes('/markings/')) });
+  it('a tampered atlas refuses by name before any master fetch, alpha decode, mask fetch or cache lease', async () => {
+    const r = await runWith({ tamperAtlas: true });
+    expect(r.ready.reason).toMatch(/battle2 pin refused \(atlas-mismatch\)/);
+    expect(beforeDecode(r.log)).toEqual({ master: false, alphaImage: false, masks: false }); expect(r.acquires).toBe(0);
+  });
+  it('a creature with no bundled pin is a named refusal, never a master-download fallback', async () => {
+    const r = await runWith({ creatureId: 'ghost-creature' });
+    expect(r.ready.reason).toMatch(/\(missing-pin\): no bundled build pin for ghost-creature/);
+    expect(r.log.bytes).toEqual([]); expect(beforeDecode(r.log)).toEqual({ master: false, alphaImage: false, masks: false }); expect(r.acquires).toBe(0);
+  });
+  it('control: genuine served bytes pass preflight without fetching a master', async () => {
+    const r = await runWith({});
+    expect(r.ready.skipped.filter((s) => s.includes('pin refused'))).toEqual([]);
+    expect(r.log.bytes).not.toContain(masterAsset);
+    expect(r.log.bytes.some(p=>p.includes('/parts/atlas/'))).toBe(true);
+  });
+});
+
+/* D15 Stage 0 — ONE voice per creature. OUTCOME through the real study and the real Compendium read model over one registered ownership
+ * state: the owned champion's voice card on the painted stage is BYTE-IDENTICAL to the card its Compendium row carries, and it does not
+ * change with the battle. Controls: without the ownership state the stage cannot resolve the owned individual (a bred lineage would differ);
+ * a different companion gets a different voice; and the legacy per-battle path gives a different card seed from the identity one. */
+describe('battle2 wiring: one voice per creature (D15 Stage 0)', { timeout: 60_000 }, () => {
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+  async function ownedFixture() {
+    const acq = await import('@cf/domain-acquisition');
+    const identity = acq.canonicalGenomeIdentityV1(makeGenome(68, 'fauna', 1));
+    const discoveries = [0, 1].map((index) => acq.createLegacyDiscoveryRecordV1({ recordId: acq.ownershipContentId('discovery', `voice-${index}`) as never, speciesId: identity.speciesId,
+      legacyCodexId: `codex-voice-${index}`, legacySourceIndex: index, from: 'Legacy', legacyLocation: null, firstForSpecies: index === 0 }));
+    const creatureIds = ['voice-left', 'voice-right'].map((k) => acq.ownershipContentId('creature', k) as never);
+    const creatures = creatureIds.map((creatureId, index) => acq.createCreatureInstanceV1({ creatureId, speciesId: identity.speciesId, genomeIdentity: identity.genomeIdentity,
+      genome: identity.genome, nickname: null, origin: 'legacy', acquisitionRecordId: discoveries[index]!.recordId,
+      lineage: { kind: 'none', generation: 0 }, xp: 0, hurt: null, fed: 11, brood: null, assignment: null, bond: null }));
+    const ownership = acq.migrateOwnershipStateV1ToV2(acq.createInitialOwnershipStateV1({ catalogSpecies: [acq.createCatalogSpeciesV1({ identity, alias: null, firstObservationId: discoveries[0]!.recordId })],
+      discoveries, creatures, specimenLots: [], biosphereProgress: [], legacyBioX: [], scoutCreatureId: null }));
+    return { identity, ownership, creatureIds, genome: identity.genome as unknown as Record<string, unknown> };
+  }
+  it('the owned champion speaks with the SAME voice card on the stage as on its Compendium row, in every battle', async () => {
+    const f = await ownedFixture(), { projectCompendiumAuditionV1 } = await import('./compendium-audition.js');
+    const model = projectCompendiumAuditionV1({ generation: 7, logicalId: 'codex-voice', record: { id: 'codex-voice', name: 'Voice', g: f.identity.genome as never }, ownership: f.ownership, fixture: false }) as unknown as { availability: string; creatures?: readonly { creatureId: string; voice: unknown }[] };
+    expect(model.availability).toBe('ready');
+    const row = model.creatures!.find((c) => c.creatureId === f.creatureIds[0])!, other = model.creatures!.find((c) => c.creatureId === f.creatureIds[1])!;
+    expect(row.voice, 'the Compendium carries a voice card').not.toBeNull();
+    const cardOn = async (battleId: string, ownership: unknown) => { const h = harness({ ownership: ownership as never, settlement: { battleId, champion: { kind: 'owned-fauna', creatureId: f.creatureIds[0], name: 'Voice', genome: f.genome } as never,
+      encounter: { defender: { battleGenome: makeGenome(424242, 'fauna', 0.5) as unknown as Record<string, unknown> } }, transcript: { log: LOG } } as Battle2StudyInput['settlement'] });
+      const handle = mountBattle2Study(h.input); await handle.ready; const s = handle.status(); handle.dispose('test'); return s.voiceCards; };
+    const first = await cardOn('battle-A', f.ownership), second = await cardOn('battle-B', f.ownership);
+    expect(first.left).toEqual(row.voice); // byte-identical parameters on the stage and in the Compendium
+    expect(second.left).toEqual(first.left); // and the same in another battle
+    expect(first.right, 'the wild defender resolves its own identity voice').not.toBeNull();
+    // an unbred companion with the SAME genome is the same identity, so the same voice (the signature is genome + lineage, never a row id)
+    expect(other.voice).toEqual(row.voice);
+    // controls: another genome has another voice; the legacy per-record card (no identity) seeds differently
+    const { creatureVoiceCardV1 } = await import('./soundkit/voice-identity.js'), another = creatureVoiceCardV1(makeGenome(69, 'fauna', 1) as unknown as Record<string, unknown>);
+    expect(another.ok && another.card).not.toEqual(row.voice);
+    const { compileVoiceCard } = await import('./soundkit/voice-card.js');
+    const legacy = compileVoiceCard({ template: { id: (row.voice as { archetype: string }).archetype }, identity: {} }, f.genome as never);
+    expect(legacy.ok && legacy.card.seed).not.toBe((row.voice as { seed: number }).seed);
+  });
+});
+
+describe('battle2 wiring: home-ground arena route (2026-10-01)', () => {
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+  const world = (key: string, biome: 'temperate' | 'canyon' | 'packice', seed: number) => Object.freeze({ key, biome, seed, solid: true, atmosphere: true, liquid: null, surfaceWater: false, signature: key, cardHash: 'c-' + key });
+  it('no worlds: the default temperate set, labelled; a guardian lair on an unpainted world: its world, named fallback; a duel: the routed world is the habitat world', async () => {
+    const plain = harness(), ready = await mountBattle2Study(plain.input).ready;
+    expect(ready.phase).toBe('playing'); expect(ready.arenaRoute).toMatch(/^no world context: accepted earth-temperate-v1 plates$/);
+    const lair = harness({ worlds: { home: world('lair-canyon', 'canyon', 3), visitor: world('visitor-temperate', 'temperate', 4) }, arenaContext: { kind: 'guardian' } });
+    const r = await mountBattle2Study(lair.input).ready;
+    expect(r.phase).toBe('playing'); expect(r.arenaRoute).toMatch(/guardian's lair lair-canyon \(canyon, desert\): no painted desert set yet; fallback accepted earth-temperate-v1 plates$/);
+    expect(r.arena).toMatch(/^lair-canyon/); // the habitat compiler placed both fighters on the routed (lair) world
+    expect(lair.calls).toEqual(expect.arrayContaining([BATTLE2_ASSETS.recipe, BATTLE2_ASSETS.far, BATTLE2_ASSETS.mid, BATTLE2_ASSETS.near]));
+    // a duel over two rounds: host and visitor alternate, and the plates' world is the habitat world every time (one rule)
+    const worlds = { home: world('host-temperate', 'temperate', 5), visitor: world('visitor-packice', 'packice', 6) };
+    const both: [boolean, boolean][] = [];
+    for (const round of [0, 1]) { const d = harness({ worlds, arenaContext: { kind: 'duel', round, seed: 77 } }); const s = await mountBattle2Study(d.input).ready; both.push([s.arenaRoute!.includes('visitor-packice'), s.arena!.startsWith('visitor-packice')]); }
+    for (const [routeOnVisitor, habitatOnVisitor] of both) expect(habitatOnVisitor).toBe(routeOnVisitor);
+    expect(both.map(([v]) => v).sort()).toEqual([false, true]);
+  });
+});
+
+describe('battle2 wiring: live home-ground worlds (2026-10-02, main.ts liveArenaInput)', () => {
+  beforeAll(() => installCaptureHooks());
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+  const SOL = { galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 424242, x: 560, y: 170 } } as const;
+  const EARTH = { ...SOL, planet: { seed: 133 } };
+  const DEEP = { galaxy: { seed: 2775120088, x: -15585.946043489894, y: -13862.482918268226 }, star: { seed: 510510541, x: -550.8509466005489, y: -8.055439678020775 }, planet: { seed: 3303620273 } };
+  const settlementWith = (h: ReturnType<typeof harness>, world: unknown, kind: string) => ({ ...h.input.settlement, encounter: { ...h.input.settlement.encounter, defender: { ...h.input.settlement.encounter.defender, kind }, identity: { world } } });
+  /** Everything the fake renderer was asked to draw: each node's type, transform, visibility and text, depth-first. */
+  const scene = (app: FakeApp): string[] => { const out: string[] = []; const walk = (n: unknown, d: number) => { const o = n as Node & { constructor: { name: string } };
+    out.push(`${d}:${o.constructor.name}:${[o.x, o.y, o.rotation, o.alpha].map((v) => Number(v ?? 0).toFixed(5)).join(',')}:${o.visible}:${o.text ?? ''}`); for (const c of o.children ?? []) walk(c, d + 1); }; walk(app.stage, 0); return out; };
+  /** Mount, then play the whole fight on the injected clock, capturing the drawn scene at fixed times. */
+  async function film(over: Partial<Battle2StudyInput>, mutate?: (h: ReturnType<typeof harness>) => Partial<Battle2StudyInput>) {
+    const h = harness(over); if (mutate) Object.assign(h.input, mutate(h));
+    const handle = mountBattle2Study(h.input), ready = await handle.ready.catch(() => handle.status()), app = FakeApp.made.at(-1);
+    const frames: string[][] = [];
+    if (app && ready.phase === 'playing') for (let t = 0; t <= 12000; t += 250) { h.setNow(t); h.ticker.step(); frames.push(scene(app)); }
+    const end = handle.status(); handle.dispose('test');
+    return { ready, end, frames, calls: h.calls, plates: h.calls.filter((c) => /\.(png|webp)$/.test(c) && /arena-(far|mid|near)/.test(c)) }; // D30: the arena plates are WebP runtime copies
+  }
+  it('today\'s encounters: Earth and every generated world draw the same plates and the same scene, frame for frame; only the route label changes', async () => {
+    const base = await film({});
+    expect(base.ready.phase).toBe('playing'); expect(base.end.phase).toBe('finished'); expect(base.frames.length).toBeGreaterThan(40);
+    const worlds = [EARTH, DEEP, ...systemFor(SOL.star.seed).planets.map((p) => ({ ...SOL, planet: { seed: (p.P as { seed: number }).seed } })).filter((a) => a.planet.seed !== 133)];
+    const routes: string[] = [];
+    for (const w of worlds) for (const kind of ['fauna', 'guardian']) {
+      const live = await film({}, (h) => liveArenaInput(settlementWith(h, w, kind)));
+      expect(live.plates, JSON.stringify(w.planet)).toEqual(base.plates); expect(live.plates).toEqual([BATTLE2_ASSETS.far, BATTLE2_ASSETS.mid, BATTLE2_ASSETS.near]);
+      expect(live.calls).toEqual(base.calls);
+      expect(live.frames).toEqual(base.frames); // the drawn scene is byte-identical at every sampled moment
+      expect({ ...live.end, arenaRoute: null, arena: null }).toEqual({ ...base.end, arenaRoute: null, arena: null });
+      // the habitat report differs only in the world's name: the same medium and source for each side
+      expect(live.end.arena!.slice(live.end.arena!.indexOf(' · left '))).toBe(base.end.arena!.slice(base.end.arena!.indexOf(' · left ')));
+      expect(live.end.arenaRoute).not.toBe(base.end.arenaRoute); routes.push(live.end.arenaRoute!);
+    }
+    expect(routes[0]).toBe("the wild creature's world is Earth (home world, no generator biome): accepted earth-temperate-v1 plates");
+    expect(routes[3]).toMatch(/^the guardian's lair CF1\|.+ \(acidhaze, venus\): no painted venus set yet; fallback accepted earth-temperate-v1 plates$/);
+  });
+  it('a wet generated world (archipelago) with two ground fighters: same scene; Earth with a swimmer: the lake world instead of a refusal', async () => {
+    const base = await film({});
+    const ocean = liveBattleArena('battle-1', liveSettlementEncounter('fauna', { key: 'w|ocean', address: null, source: { planetSeed: 9, planetType: 'ocean', climateBand: 'temperate', biomeKey: 'archipelago' } }));
+    expect(ocean.worlds!.home.liquid).toBe('water');
+    const wet = await film({ worlds: ocean.worlds, arenaContext: ocean.arenaContext });
+    expect(wet.frames).toEqual(base.frames); expect(wet.plates).toEqual(base.plates);
+    expect(wet.end.arenaRoute).toMatch(/no painted ocean set yet; fallback accepted earth-temperate-v1 plates; world liquid water/);
+    // the Civet declared a swimmer: the dry default refuses it (today), the Earth preset stages it on the lake world, a generated wet world in its own water
+    const swimmer = (h: ReturnType<typeof harness>) => ({ records: [{ ...h.input.records![0]!, habitat: { realm: 'aquatic' as const, source: 'test: declared swimmer' } }] as NonNullable<Battle2StudyInput['records']> });
+    const dry = await film({}, swimmer);
+    expect(dry.ready.phase).toBe('failed'); expect(dry.ready.reason).toMatch(/battle2 habitat: Selected home arena cannot support both organisms/);
+    const earth = await film({}, (h) => ({ ...swimmer(h), ...liveArenaInput(settlementWith(h, EARTH, 'fauna')) }));
+    expect(earth.ready.phase).toBe('playing'); expect(earth.ready.arena).toMatch(/^lake · left Civet: water/);
+    expect(earth.ready.arenaRoute).toBe("the wild creature's world is Earth (home world, no generator biome): accepted earth-temperate-v1 plates; a side lives in water: the lake world (Earth's open water)");
+    expect(earth.plates).toEqual(base.plates);
+    const sea = await film({ worlds: ocean.worlds, arenaContext: ocean.arenaContext }, swimmer);
+    expect(sea.ready.phase).toBe('playing'); expect(sea.ready.arena).toMatch(/^w\|ocean · left Civet: water/);
+  });
+  it('a painted WATER set (2026-10-02): two swimmers fight inside it with NO procedural water on top; a swimmer facing a land fighter keeps the ground set and its procedural half lake', async () => {
+    // a water row on the temperate set's own files (the fake assets serve only those), registered beside the temperate set
+    const T = ARENA_SETS.find((s) => s.id === ARENA_FALLBACK_SET_ID)!, withLake = parseArenaSets({ schema: 'cf.arena-sets/v1', sets: [T, { ...T, id: 'test-lake', medium: 'water' }] });
+    const swim = (h: ReturnType<typeof harness>, both: boolean) => ({ records: [{ ...h.input.records![0]!, habitat: { realm: 'aquatic' as const, source: 'test: declared swimmer' } }] as NonNullable<Battle2StudyInput['records']>,
+      ...liveArenaInput(settlementWith(h, EARTH, 'fauna')),
+      // the defender is the same painted body (so it is a swimmer too) only when `both`
+      ...(both ? { settlement: { ...h.input.settlement, encounter: { ...h.input.settlement.encounter, defender: { ...h.input.settlement.encounter.defender, battleGenome: h.genome } } } } : {}) });
+    const graphics = (f: { frames: string[][] }) => f.frames[0]!.filter((l) => /:Graphics:/.test(l)).length;
+    const painted = await film({ arenaSets: withLake }, (h) => swim(h, true));
+    expect(painted.ready.phase, painted.ready.reason ?? '').toBe('playing');
+    expect(painted.ready.arena).toMatch(/left Civet: water .* right Platypus: water/);
+    expect(painted.ready.arenaRoute).toMatch(/water fight \(both combatants in water\): painted water set test-lake/);
+    // control: the same two swimmers with only the ground set registered → the ground plates plus the procedural lake (one more Graphics)
+    const procedural = await film({}, (h) => swim(h, true));
+    expect(procedural.ready.phase).toBe('playing'); expect(procedural.ready.arenaRoute).not.toMatch(/test-lake/);
+    expect(graphics(procedural) - graphics(painted)).toBe(1); // no double water: the painted set draws no procedural bands
+    // a swimmer facing a land fighter is NOT a water fight: the ground set (the land fighter keeps its floor) and the half lake, with the water set registered
+    const mixed = await film({ arenaSets: withLake }, (h) => swim(h, false));
+    expect(mixed.ready.phase).toBe('playing'); expect(mixed.ready.arena).toMatch(/left Civet: water .* right Platypus: ground/);
+    expect(mixed.ready.arenaRoute).not.toMatch(/test-lake/); expect(graphics(mixed)).toBe(graphics(procedural));
+    // and a land fight with the water set registered: the scene of today, frame for frame
+    const base = await film({}), land = await film({ arenaSets: withLake });
+    expect(land.frames).toEqual(base.frames); expect(land.end.arenaRoute).toBe(base.end.arenaRoute);
+  });
+  it('main.ts spreads liveArenaInput(settlement) into the one gated study call (the settled encounter carries its world identity)', () => {
+    const line = mainSource.split('\n').find((l) => l.includes(`if (${GATE_CALL})`) && l.includes("import('./battle2-wiring.js')"))!;
+    expect(line).toContain('m.mountBattle2Study({ ...m.liveArenaInput(settlement)');
+    expect(line.indexOf('...m.liveArenaInput(settlement)')).toBeLessThan(line.indexOf('settlement, chronicle'));
+  });
+});

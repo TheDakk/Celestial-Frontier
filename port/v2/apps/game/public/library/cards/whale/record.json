@@ -1,0 +1,175 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Whale\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"788972679\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"12\"]]]]",
+    "seed": 788972679,
+    "ownerId": "authored:archetype-sprint/o3-whale-observed-r03",
+    "earthName": "Whale"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 788972679,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 16,
+    "body": 15,
+    "loco": 10,
+    "trait": 12,
+    "size": 0,
+    "diet": 4,
+    "head": 1,
+    "limbs": 3,
+    "skin": 1,
+    "tail": 0,
+    "pattern": 5,
+    "eyes": 0,
+    "behavior": 5,
+    "habitat": 0,
+    "detail": 6,
+    "accent": 10,
+    "temper": 8,
+    "sense": 3,
+    "repro": 5,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Whale"
+  },
+  "geometry": {
+    "cutoutAssetHash": "c111e2b54f814f311cab79c3b2c4153fbd4f3d1374d8e332e312170cf9767728",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6076555023923444,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5964912280701754,
+      0.47527910685805425
+    ],
+    "head": [
+      0.6738437001594896,
+      0.42503987240829344
+    ],
+    "jaw": [
+      0.6818181818181818,
+      0.4665071770334928
+    ],
+    "spine0": [
+      0.5669856459330144,
+      0.4784688995215311
+    ],
+    "spine1": [
+      0.5255183413078149,
+      0.4864433811802233
+    ],
+    "spine2": [
+      0.4768740031897927,
+      0.4920255183413078
+    ],
+    "spine3": [
+      0.42822966507177035,
+      0.49122807017543857
+    ],
+    "spine4": [
+      0.38516746411483255,
+      0.48724082934609253
+    ],
+    "spine5": [
+      0.3437001594896332,
+      0.47926634768740034
+    ],
+    "caudal": [
+      0.31100478468899523,
+      0.4649122807017544
+    ],
+    "dorsal": [
+      0.4824561403508772,
+      0.4266347687400319
+    ],
+    "pectoralNear": [
+      0.580542264752791,
+      0.49920255183413076
+    ],
+    "pectoralFar": [
+      0.6212121212121212,
+      0.543859649122807
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin",
+    "paletteSource": "Actual retained blue-slate/cream baleen-whale source; default D40 master exact. Fine greenish ventral/tip rim remains independent material-review question; no repaint."
+  },
+  "source": "audits/O3_20261103/coordinator/sources/whale-observed-r03/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "Actual whole swimming baleen whale with two exposed long paddle flippers, real small dorsal, horizontal notched paired flukes and pleated lower throat. No fish gills, pelvic fins, teeth or concealed jaw fabricated."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "authoring": "MANUAL_SOURCE_OBSERVED_UNSCORED; old automatic10.4percent unexplained-anatomy REFUSE remains unchanged. No G1 admission is claimed.",
+    "controls": "All13 integer source controls reobserved against actual source; no Gray Whale transferred coordinates or source labels reused.",
+    "owners": "Priority whole actual paddle/fluke/head/jaw fields before posterior body axial fields and full source remainder. Offline priority projection still requires independent actual compiled part/attachment/pose review.",
+    "absence": "No absent, hidden or folded anatomy declared.",
+    "boundaryRefinement": "Actual offline separated source-projection review found finite edge remnants at flukes/nose/dorsal and flipper distal rims. Whole-source envelope boundaries expanded locally to observed paint; no joint/control/alpha/RGB or runtime/score/threshold change.",
+    "finalPeduncleObservation": "Source pixel389600is actual posterior neck/body boundary paint and lies immediately beyond previous axial-spine5left385..390draft bound. Final spine5envelope starts385, assigning this observed neck pixel to its contiguous posterior axial body rather than distant spine0remainder; sourceRGBA/controls unchanged.",
+    "dorsalTerminalWitness": "Actual small curled dorsal overhang579526/579527/580527 was still left on source axial projection; observed dorsal outline extends locally to enclose that real tip. No body/control/source/limit edits.",
+    "nearPaddleOwnerRepairR02": "Retraced actual pale right paddle edge at full root-to-ventral-throat crossing. The body/throat pleat strip behind the paddle returns to contiguous spine0body; controls, source RGBA, other region boundaries/depth/order remain exact. Three W2 witnesses are locators, not a threepixel relabel.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "a5e9489081886fa03d292f05d4a3751c73437c483e2ef38b75c3a5e5d6a68cee",
+    "subjectSourceSha256": "06db6eff9a35a9b3c4798e70f62c9e56ba4a26184e4422b7de8c342d71e7711d",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.09223549000480326,
+      "jaw": 0.04222712055781094,
+      "spine0": 0.029677502497493402,
+      "spine1": 0.042227120557811,
+      "spine2": 0.04896357713878383,
+      "spine3": 0.048650874139297105,
+      "spine4": 0.04324640147673445,
+      "spine5": 0.04222712055781094,
+      "caudal": 0.03570751702908789,
+      "dorsal": 0.07369819043420743,
+      "pectoralFar": 0.07290002287422856,
+      "pectoralNear": 0.028752402515661767
+    },
+    "measures": {
+      "body": 0.22328691045342228,
+      "bone-min": 0.028752402515661767,
+      "bone-max": 0.09223549000480326,
+      "caudal/body": 0.15991764567200858,
+      "head/body": 0.41308059580162276
+    }
+  },
+  "recipeHash": "782b11fa1ec42ae28b67923c5ffe5c0ecb1e894a91399b38457f3bccffb2d2b4"
+}

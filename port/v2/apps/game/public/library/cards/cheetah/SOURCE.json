@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cheetah",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/18-cheetah/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "50b023de83b09146de598d6d4d74e17cde2aa45640c415f2ff64bd831a393363"
+}

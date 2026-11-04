@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Hyrax",
+ "fitDir": "audits/C208_REPAIRS_20261004/joins01/16-hyrax/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "845147d1e70cdad0841d6b0ed05a389ad34df802ed2010bb0bdf3f7d64f3f14b"
+}

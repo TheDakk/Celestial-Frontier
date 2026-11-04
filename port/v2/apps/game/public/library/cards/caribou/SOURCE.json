@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Caribou",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/g2c110-17-caribou/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a4e74a29fc4a2d888102277d40892e3a564465aae5b14acea3f7eb333800f876"
+}

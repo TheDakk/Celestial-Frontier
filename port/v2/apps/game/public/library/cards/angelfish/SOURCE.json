@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Angelfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-sweep3-fishseams/c203creaturesupplyb-20-angelfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a832b9f473376e72caaee37dd44ecc68e026ec4b3669ba057d9cfd750f2bbee3"
+}

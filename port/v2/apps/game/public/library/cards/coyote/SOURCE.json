@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Coyote",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/03-coyote/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "994a96ade6fd39f4ec09f9b21c24f3d874a7c027b24afe16078a09b8ee47b91f"
+}

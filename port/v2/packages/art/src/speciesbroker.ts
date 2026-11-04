@@ -179,7 +179,12 @@ export interface SpeciesArtUnownedCacheReleaseOptions {
   readonly retainRecentThumbEntries?: number;
 }
 
+export interface ExternalThumbResources {
+  readonly entries: number; readonly decodedPixels: number; readonly decodedBytes: number; readonly encodedBytes: number;
+}
 export interface SpeciesArtBrokerOptions {
+  /** Sibling painted thumbnails share these SAME device limits; never enlarge the budget. */
+  readonly externalThumbResources?: (() => ExternalThumbResources) | undefined;
   readonly createProducer: SpeciesArtProducerFactory;
   /** Releases any external URL/resource owned by a settled cached asset. */
   readonly disposeAsset?: ((asset: SpeciesArtAsset) => void) | undefined;
@@ -1104,12 +1109,12 @@ export class SpeciesArtBroker {
       this.disposeAsset(asset);
       return existing;
     }
-    const limits = this.limits();
+    const limits = this.limits(), external = this.externalThumbResources();
     if (asset.encodedBytes > limits.thumbEncodedBytes) return null;
-    while (this.thumbCache.size + 1 > limits.thumbCacheEntries
-      || this.thumbCache.size * THUMB_PIXELS + THUMB_PIXELS > limits.thumbDecodedPixels
-      || this.thumbCache.size * THUMB_DECODED_BYTES + THUMB_DECODED_BYTES > limits.thumbDecodedBytes
-      || this.thumbEncodedBytes + asset.encodedBytes > limits.thumbEncodedBytes) {
+    while (this.thumbCache.size + external.entries + 1 > limits.thumbCacheEntries
+      || this.thumbCache.size * THUMB_PIXELS + external.decodedPixels + THUMB_PIXELS > limits.thumbDecodedPixels
+      || this.thumbCache.size * THUMB_DECODED_BYTES + external.decodedBytes + THUMB_DECODED_BYTES > limits.thumbDecodedBytes
+      || this.thumbEncodedBytes + external.encodedBytes + asset.encodedBytes > limits.thumbEncodedBytes) {
       let victim: SpeciesVisualKey | undefined;
       for (const key of this.thumbCache.keys()) {
         if (!this.thumbKeyIsLeased(key)) { victim = key; break; }
@@ -1141,11 +1146,11 @@ export class SpeciesArtBroker {
     return asset;
   }
   private trimThumbCache(): void {
-    const limits = this.limits();
-    while (this.thumbCache.size > limits.thumbCacheEntries
-      || this.thumbCache.size * THUMB_PIXELS > limits.thumbDecodedPixels
-      || this.thumbCache.size * THUMB_DECODED_BYTES > limits.thumbDecodedBytes
-      || this.thumbEncodedBytes > limits.thumbEncodedBytes) {
+    const limits = this.limits(), external = this.externalThumbResources();
+    while (this.thumbCache.size + external.entries > limits.thumbCacheEntries
+      || this.thumbCache.size * THUMB_PIXELS + external.decodedPixels > limits.thumbDecodedPixels
+      || this.thumbCache.size * THUMB_DECODED_BYTES + external.decodedBytes > limits.thumbDecodedBytes
+      || this.thumbEncodedBytes + external.encodedBytes > limits.thumbEncodedBytes) {
       let victim: SpeciesVisualKey | undefined;
       for (const key of this.thumbCache.keys()) {
         if (!this.thumbKeyIsLeased(key)) { victim = key; break; }
@@ -1162,6 +1167,14 @@ export class SpeciesArtBroker {
       if (victim === undefined) break;
       this.disposePortraitCache(victim);
     }
+  }
+  private externalThumbResources(): ExternalThumbResources {
+    const r = this.options.externalThumbResources?.() ?? { entries: 0, decodedPixels: 0, decodedBytes: 0, encodedBytes: 0 };
+    if ([r.entries, r.decodedPixels, r.decodedBytes, r.encodedBytes].some(v => !Number.isSafeInteger(v) || v < 0)
+      || r.decodedPixels !== r.entries * THUMB_PIXELS || r.decodedBytes < r.decodedPixels * 4) {
+      throw new TypeError('invalid external thumbnail resource accounting');
+    }
+    return r;
   }
   private trimCaches(): void {
     this.trimThumbCache();

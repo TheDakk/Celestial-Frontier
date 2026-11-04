@@ -28,6 +28,13 @@ export * from './readiness.js';
 export * from './auto-extractor.js';
 export * from './achievements.js';
 export * from './rank.js';
+import { hashInt } from '@cf/domain-rand';
+
+/** Stable per-cycle Charter ordering, owned by the progression domain.
+ * Persistence uses this existing dependency; no extra package or RNG draw. */
+export function weeklyCharterRankV1(cycle: number, index: number): number {
+  return hashInt(cycle >>> 0, 0x57EE0 + index, 0xC4A7) >>> 0;
+}
 
 /** Injected elapsed seconds per epoch — v1.7 balance: 240→1200 ("slow evolution, not
     a 4-min farm"). ⚠ SHARED knob: drives biosphere recovery AND harvest

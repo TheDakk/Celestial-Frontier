@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Striped Hyena",
+ "fitDir": "audits/ISLANDS_SWEEP5_20261010/g2c87-20-striped-hyena/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f2a24eb3d356e48d0bdb2795b1c45c234d526c0a06c2e7786ec0119bea4f6235"
+}

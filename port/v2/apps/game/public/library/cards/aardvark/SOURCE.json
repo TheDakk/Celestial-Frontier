@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Aardvark",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/g2c83-24-aardvark/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d7a2f89d525264b00afc472cad6b51ca77f9a295cfa173908a92443e67d76133"
+}

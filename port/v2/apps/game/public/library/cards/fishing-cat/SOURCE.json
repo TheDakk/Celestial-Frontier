@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Fishing Cat",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c202creaturesupply-15-fishing-cat/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "98cbe1d1003d24d9884b6d635fdb39d581f00e2c148a8c31238907eb6689e485"
+}

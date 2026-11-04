@@ -1,0 +1,201 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-0b",
+ "files": [
+  {
+   "path": "library/cards/beluga/SOURCE.json",
+   "bytes": 316,
+   "sha256": "00eed9ba3358978ad3296ffdb3e4eff27ea189da14b2f9736cd262f694998edc"
+  },
+  {
+   "path": "library/cards/beluga/card/card.json",
+   "bytes": 2415,
+   "sha256": "f8679cb01fa150257e1b308dc8bc5a94967ab8f84469c570fafeaf36eff36eae"
+  },
+  {
+   "path": "library/cards/beluga/card/labels-512.png",
+   "bytes": 4295,
+   "sha256": "c663eee1b84bd0aa0fafb0919dc55a86a7fece081bdc4ccc78d9ea0815eaad06"
+  },
+  {
+   "path": "library/cards/beluga/card/master-512.png",
+   "bytes": 42431,
+   "sha256": "5fb71081aceaa65aaeb2bb6a65e5638a608453de8444e73e7c7bd00c45d84567"
+  },
+  {
+   "path": "library/cards/beluga/record.json",
+   "bytes": 5181,
+   "sha256": "35d0945e7844295cb0049f5368f8f68e02612c12fc92a41c42294a329c3d02a3"
+  },
+  {
+   "path": "library/cards/carrion-beetle/SOURCE.json",
+   "bytes": 332,
+   "sha256": "23dd604a2f746e4706592af799891d22d5ffd6d81404b2c4a2a4017b05eb0d21"
+  },
+  {
+   "path": "library/cards/carrion-beetle/card/card.json",
+   "bytes": 4453,
+   "sha256": "3b0908e86ba4eb4d9c19ea3e6f3c28e9160f5ce48f71799454bcf377fddaf0b9"
+  },
+  {
+   "path": "library/cards/carrion-beetle/card/labels-512.png",
+   "bytes": 7980,
+   "sha256": "eab64d30f61924b27f4b121920c0a0f20ee7fa9932df88e153754d5da8e02712"
+  },
+  {
+   "path": "library/cards/carrion-beetle/card/master-512.png",
+   "bytes": 76084,
+   "sha256": "552914b85829386d3734a0a645d069638d2ff889b8f0e2b90d8972aff319b183"
+  },
+  {
+   "path": "library/cards/carrion-beetle/record.json",
+   "bytes": 6526,
+   "sha256": "52ffb3969b0571787c78b19e85badab975c04475c21a83befa4c86236f4a3f49"
+  },
+  {
+   "path": "library/cards/dromedary-camel/SOURCE.json",
+   "bytes": 333,
+   "sha256": "80e5262ee2cd0d12f1cc32e3c86a70f7f9a7c4f606abb95f6a65dd41555ca2ba"
+  },
+  {
+   "path": "library/cards/dromedary-camel/card/card.json",
+   "bytes": 5499,
+   "sha256": "8d0c14ab0e5c92582424a0cade3f0efa811885d59208b482746e0554a8d9c85a"
+  },
+  {
+   "path": "library/cards/dromedary-camel/card/labels-512.png",
+   "bytes": 5695,
+   "sha256": "13a5c2ab515972114a8b090ec34c3f447d9e584558c6c7b2a1ef434ba3d15368"
+  },
+  {
+   "path": "library/cards/dromedary-camel/card/master-512.png",
+   "bytes": 57659,
+   "sha256": "caf9eba15bcd9b87fe4669e314f60f83af3a93b7d016f243d381e59e32861316"
+  },
+  {
+   "path": "library/cards/dromedary-camel/record.json",
+   "bytes": 7507,
+   "sha256": "aa04ad515bf0ac8918faa529b1f4e2d2428021e1d930ca6568aa965a6d5949d4"
+  },
+  {
+   "path": "library/cards/giraffe/SOURCE.json",
+   "bytes": 287,
+   "sha256": "768e5381a215690983e3c25c203d9d6ec15d0b3bd7cf05661f4514e5f7fe4f8b"
+  },
+  {
+   "path": "library/cards/giraffe/card/card.json",
+   "bytes": 5897,
+   "sha256": "c44a95aaa01838950fe8c552500a5e99e492fd1f773d8f94b46cfa29829c0d28"
+  },
+  {
+   "path": "library/cards/giraffe/card/labels-512.png",
+   "bytes": 5467,
+   "sha256": "44db6efb82808732d7079951609dfab7844d1e16448429c460e70b52f9cae740"
+  },
+  {
+   "path": "library/cards/giraffe/card/master-512.png",
+   "bytes": 58089,
+   "sha256": "5e61b4332b262037c1235852cea80acc3ff29e4247ae20acb808d5550596cdef"
+  },
+  {
+   "path": "library/cards/giraffe/record.json",
+   "bytes": 7499,
+   "sha256": "66e1aad0c72ad5d8b22925b35fa62ad8e3896064e906cacec587a67af0040000"
+  },
+  {
+   "path": "library/cards/hare/SOURCE.json",
+   "bytes": 279,
+   "sha256": "23c91391aba91b90ef1cf81b3248b81727e01ac1fe91f8ec7ec5e210cfb8ce56"
+  },
+  {
+   "path": "library/cards/hare/card/card.json",
+   "bytes": 5894,
+   "sha256": "26fc3adacac2d92333b7cba70807fa018e49e0cdff3faf11bc4d0e88625fb1a6"
+  },
+  {
+   "path": "library/cards/hare/card/labels-512.png",
+   "bytes": 6445,
+   "sha256": "78178ac4ef173021d6525a254384252868004188f6f9005f11f2fa7f3056f1cf"
+  },
+  {
+   "path": "library/cards/hare/card/master-512.png",
+   "bytes": 92182,
+   "sha256": "8294099d71f8b3e0def0aeed4bb5e5ed0e545f715d3cb1e483404ec4fbc5d53a"
+  },
+  {
+   "path": "library/cards/hare/record.json",
+   "bytes": 7489,
+   "sha256": "f8b9880e2c85f4277a7bdc813d904da8dc1b3a2d1dad3a2623e36cab2a7706ec"
+  },
+  {
+   "path": "library/cards/sandpiper/SOURCE.json",
+   "bytes": 290,
+   "sha256": "6799c8e00fa2b08b7a9a7d75a5e127f1c098a8974e90f6f43aee9d4734c807e3"
+  },
+  {
+   "path": "library/cards/sandpiper/card/card.json",
+   "bytes": 3779,
+   "sha256": "4b076ef0574fb7dec7c4d91b8d7b276816a062dbe2439d1c8046cc1e9455512a"
+  },
+  {
+   "path": "library/cards/sandpiper/card/labels-512.png",
+   "bytes": 4472,
+   "sha256": "be7a19059b95737acb2ed110f45d5d71d391e790a3beee046e8f5846d30c0820"
+  },
+  {
+   "path": "library/cards/sandpiper/card/master-512.png",
+   "bytes": 54942,
+   "sha256": "507302db742d49287973dc4d997d7b4380c94c8a3747c2c0cb297838d973004a"
+  },
+  {
+   "path": "library/cards/sandpiper/record.json",
+   "bytes": 5970,
+   "sha256": "7f5042e836d4305293ab6685bba98c0a1a675a894fdbdde3bdbc8b77777d8e71"
+  },
+  {
+   "path": "library/cards/tree-shrew/SOURCE.json",
+   "bytes": 302,
+   "sha256": "2fc31579bf7161911ebadf1de9b1f99eb911e614418da0dd4ec2cdf98a3ced6c"
+  },
+  {
+   "path": "library/cards/tree-shrew/card/card.json",
+   "bytes": 5923,
+   "sha256": "1a35fe8333aec71241ae4f9b4297e9e574ca95aebdc19d0ca4675541d3f543fc"
+  },
+  {
+   "path": "library/cards/tree-shrew/card/labels-512.png",
+   "bytes": 5373,
+   "sha256": "ece88dbdc6e8f42ebfbebc59eb04bdea551d3a6b94ac43200c096462b3a4092a"
+  },
+  {
+   "path": "library/cards/tree-shrew/card/master-512.png",
+   "bytes": 66368,
+   "sha256": "f3ca7e1bfd140d6d7ea1d085e326714431350c2c541603bb1d424ee289d9d395"
+  },
+  {
+   "path": "library/cards/tree-shrew/record.json",
+   "bytes": 7554,
+   "sha256": "aad2a4a540667602727a027da752b49ad551ee5229da35e1a7727f72a33d5595"
+  },
+  {
+   "path": "library/creature-finish-source/c196-islands-02-serval-ear-base/labels.png",
+   "bytes": 46213,
+   "sha256": "a2d1bc7431dbdf89bdaf16d104d686a89219c3ddaa6f840e9445899dd724099e"
+  },
+  {
+   "path": "library/creature-finish-source/c196-islands-02-serval-ear-base/master.png",
+   "bytes": 1373589,
+   "sha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735"
+  },
+  {
+   "path": "library/creature-finish-source/marmot/labels.png",
+   "bytes": 49244,
+   "sha256": "18366bee7fb2829c3def587db9be787b70081f66dd8cc1bf07f323a5e0c2382d"
+  },
+  {
+   "path": "library/creature-finish-source/marmot/master.png",
+   "bytes": 1221068,
+   "sha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22"
+  }
+ ]
+}

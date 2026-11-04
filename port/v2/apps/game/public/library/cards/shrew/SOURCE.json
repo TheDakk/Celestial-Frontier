@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Shrew",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/shrew-finish-01/rebound/c266-14-shrew/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6bcde34f969e3d02c273e3691d8948b930b8e2d0130a2a441951b3cef83623a7"
+}

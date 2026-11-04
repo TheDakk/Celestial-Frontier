@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Axolotl",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch01/ai-finish/rebound-01/c243b01r1c1-37-axolotl/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8f4ab012a42bf788df041f1f9b9c43bbb590085038368c3c2a20dac5e27417a9"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tapir",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/c202creaturesupply-01-tapir/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "14c289558cfeac7eb66b99d41946e3986a7112b38f18baae8d8b614c3abd4d60"
+}

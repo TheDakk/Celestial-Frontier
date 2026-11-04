@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Carp",
+ "fitDir": "audits/FISH_FOLD_C80_20260927/carp-pectoral-02/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "81e34da6cbcf5eeade4b4036f617b978e19bab2ccc38ec45691f25f9c151c7db"
+}

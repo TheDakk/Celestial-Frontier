@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Ocelot",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2quad-handrefs/c57-04-ocelot/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "0d51d8625fdb14ec3b67c38e671ed0c681d98cf23f011c9d3418eb709ca6d27a"
+}

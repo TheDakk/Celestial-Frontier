@@ -1,0 +1,260 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Agouti\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"3677331737\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"20\"]]]]",
+    "seed": 3677331737,
+    "ownerId": "authored:archetype-sprint/g2c76-18-agouti",
+    "earthName": "Agouti"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "representation": {
+      "schema": "cf.source-representation/v1",
+      "reviewSha256": "7255f21e511bb8ea0dd6d774bfbebb2b77afc4698c80ac662095385ab2bb7815",
+      "compactTail": {
+        "terminal": "tail1"
+      }
+    }
+  },
+  "genome": {
+    "seed": 3677331737,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 17,
+    "body": 15,
+    "loco": 14,
+    "trait": 20,
+    "size": 0,
+    "diet": 0,
+    "head": 4,
+    "limbs": 2,
+    "skin": 2,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 5,
+    "behavior": 7,
+    "habitat": 3,
+    "detail": 1,
+    "accent": 0,
+    "temper": 7,
+    "sense": 6,
+    "repro": 2,
+    "life": 0,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Agouti"
+  },
+  "geometry": {
+    "cutoutAssetHash": "3a59d159f7e56fc58f6905ea2cfd2811a3986809f41f91cd77b53d15618faddc",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.655214454922321,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5445773524720893,
+      0.4403508771929825
+    ],
+    "pelvis": [
+      0.37392344497607655,
+      0.45614035087719296
+    ],
+    "spine": [
+      0.5426634768740032,
+      0.4303030303030303
+    ],
+    "chest": [
+      0.6055821371610846,
+      0.43165869218500796
+    ],
+    "neck": [
+      0.6834130781499203,
+      0.4026315789473684
+    ],
+    "head": [
+      0.7362041467304625,
+      0.3996810207336523
+    ],
+    "jaw": [
+      0.7574162679425837,
+      0.44577352472089316
+    ],
+    "hindNearRoot": [
+      0.36674641148325354,
+      0.47950558213716105
+    ],
+    "hindNearKnee": [
+      0.3407496012759171,
+      0.5412280701754386
+    ],
+    "hindNearAnkle": [
+      0.2942583732057416,
+      0.6137161084529505
+    ],
+    "hindNearPaw": [
+      0.28923444976076557,
+      0.6517543859649122
+    ],
+    "hindFarRoot": [
+      0.4145933014354067,
+      0.48181818181818187
+    ],
+    "hindFarKnee": [
+      0.4043062200956938,
+      0.5540669856459329
+    ],
+    "hindFarAnkle": [
+      0.38516746411483255,
+      0.6075757575757575
+    ],
+    "hindFarPaw": [
+      0.4089314194577352,
+      0.651993620414673
+    ],
+    "foreNearRoot": [
+      0.6005582137161085,
+      0.4422647527910686
+    ],
+    "foreNearKnee": [
+      0.5748006379585326,
+      0.5264752791068581
+    ],
+    "foreNearAnkle": [
+      0.5582137161084529,
+      0.5976076555023924
+    ],
+    "foreNearPaw": [
+      0.5528708133971292,
+      0.642902711323764
+    ],
+    "foreFarRoot": [
+      0.6464912280701754,
+      0.451993620414673
+    ],
+    "foreFarKnee": [
+      0.5996810207336523,
+      0.5231259968102073
+    ],
+    "foreFarAnkle": [
+      0.6235247208931419,
+      0.598006379585327
+    ],
+    "foreFarPaw": [
+      0.6448963317384371,
+      0.6517543859649122
+    ],
+    "earNearRoot": [
+      0.6811004784688995,
+      0.3645135566188198
+    ],
+    "earNearTip": [
+      0.6606060606060606,
+      0.346969696969697
+    ],
+    "earFarRoot": [
+      0.6889154704944178,
+      0.35047846889952156
+    ],
+    "earFarTip": [
+      0.6749601275917065,
+      0.33668261562998403
+    ],
+    "tail0": [
+      0.3141945773524721,
+      0.45215311004784686
+    ],
+    "tail1": [
+      0.30861244019138756,
+      0.507177033492823
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/g2c76-18-agouti/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile small-clawed-mammal media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from brown-bear. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "d9dc12fe8ec70908dedec7532708e782db7eb1c102cd5070976225efccf8a806",
+    "subjectSourceSha256": "81c5846a10133492adfd755d47fb9386e303e3b11a763f5d6c80b6b1c2a5272a",
+    "presenceSha256": "4f46a4b6c28f69c701602bed35e54b8c5098ff65e068777534c682f4146762e3",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.17138279850347304,
+      "spine": 0.1707066650701294,
+      "chest": 0.06293326331487506,
+      "neck": 0.08306761509829431,
+      "head": 0.05287345946359143,
+      "jaw": 0.050739264974293166,
+      "hindFarRoot": 0.048097694604383325,
+      "hindFarKnee": 0.0729774876042655,
+      "hindFarAnkle": 0.056828519723224696,
+      "hindFarPaw": 0.05037531253219357,
+      "foreFarRoot": 0.045684384915569254,
+      "foreFarKnee": 0.08515286538082122,
+      "foreFarAnkle": 0.07858494615283568,
+      "foreFarPaw": 0.05784110942835269,
+      "hindNearRoot": 0.024442664371727013,
+      "hindNearKnee": 0.06697387304458054,
+      "hindNearAnkle": 0.08611591014902593,
+      "hindNearPaw": 0.038368611687914736,
+      "foreNearRoot": 0.011735771315103703,
+      "foreNearKnee": 0.08806171387890163,
+      "foreNearAnkle": 0.07304068009086863,
+      "foreNearPaw": 0.04560908562165922,
+      "tail0": 0.0598618051601292,
+      "tail1": 0.055306350508452014,
+      "earFarRoot": 0.06824302167363182,
+      "earFarTip": 0.0196233830663029,
+      "earNearRoot": 0.06536944843081069,
+      "earNearTip": 0.026977920137118975
+    },
+    "measures": {
+      "torso": 0.23294870954179792,
+      "head": 0.05287345946359143,
+      "head/torso": 0.2269746828286437,
+      "bone-min": 0.011735771315103703,
+      "bone-max": 0.17138279850347304,
+      "leg/torso:hindFar": 0.7734806525182913,
+      "leg/torso:foreFar": 0.95119187995438,
+      "leg/torso:hindNear": 0.8218907726860273,
+      "leg/torso:foreNear": 0.8873690693458824
+    }
+  },
+  "recipeHash": "040c3bdca417f624f01ffc553907dee9b4f3ad6a3b3f621e19da4f9c2ccf32ab"
+}

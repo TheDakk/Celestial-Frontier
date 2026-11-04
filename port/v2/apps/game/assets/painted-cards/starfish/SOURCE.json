@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Starfish",
+ "fitDir": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "2083de71c8d079fa6e07ad31ef36c32484ed705e3940c623f91a50ca860b1ba1"
+}

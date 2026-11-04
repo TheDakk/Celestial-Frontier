@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Mullet",
+ "fitDir": "audits/FISH_PIPELINE_C88_20260927/06-mullet-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ec96526a98a5b8d12e929f710b9affceb8fa7c9a61366e79cc2ff8f2508ebace"
+}

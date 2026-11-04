@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Grouper",
+ "fitDir": "audits/FISH_PIPELINE_C88_20260927/01-grouper-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3ac6dbff39a73d191292ee86374f01721e71a958baf88195ee9263294f9d3355"
+}

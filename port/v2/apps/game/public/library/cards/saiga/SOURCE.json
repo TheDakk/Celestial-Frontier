@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Saiga",
+ "fitDir": "audits/ISLANDS_C151_20261002/13-saiga/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "bf1e68bb331103bf042084cdc959ec8bc7c24ac2973021bd7088b32e6b343619"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Kestrel",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/14-kestrel/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "47a00d2ded4002a15b02c9886728a9b8a92f4fbb404343a1a8128e9b67ff4569"
+}

@@ -1,0 +1,269 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sea Turtle\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4048427421\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"11\"]]]]",
+    "seed": 4048427421,
+    "ownerId": "authored:archetype-sprint/c266-intake-sea-turtle",
+    "earthName": "Sea Turtle"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "external-ears"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4048427421,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 5,
+    "body": 4,
+    "loco": 1,
+    "trait": 11,
+    "size": 4,
+    "diet": 5,
+    "head": 9,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 0,
+    "detail": 7,
+    "accent": 6,
+    "temper": 3,
+    "sense": 2,
+    "repro": 1,
+    "life": 4,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sea Turtle"
+  },
+  "geometry": {
+    "cutoutAssetHash": "4afba8310070c6ddcb317ab81ee1c8246af8a861378d96ff5b6228983fc54060",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6794258373205742,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.44657097288676234,
+      0.4226475279106858
+    ],
+    "spine": [
+      0.44657097288676234,
+      0.4585326953748006
+    ],
+    "pelvis": [
+      0.34290271132376393,
+      0.4944178628389155
+    ],
+    "chest": [
+      0.6060606060606061,
+      0.4864433811802233
+    ],
+    "neck": [
+      0.6618819776714514,
+      0.44657097288676234
+    ],
+    "head": [
+      0.7416267942583732,
+      0.41626794258373206
+    ],
+    "jaw": [
+      0.7671451355661882,
+      0.4529505582137161
+    ],
+    "hindNearRoot": [
+      0.3444976076555024,
+      0.5023923444976076
+    ],
+    "hindNearKnee": [
+      0.3269537480063796,
+      0.5223285486443381
+    ],
+    "hindNearAnkle": [
+      0.3094098883572568,
+      0.5382775119617225
+    ],
+    "hindNearPaw": [
+      0.291866028708134,
+      0.5518341307814992
+    ],
+    "hindFarRoot": [
+      0.3149920255183413,
+      0.4768740031897927
+    ],
+    "hindFarKnee": [
+      0.28708133971291866,
+      0.48086124401913877
+    ],
+    "hindFarAnkle": [
+      0.2551834130781499,
+      0.48883572567783096
+    ],
+    "hindFarPaw": [
+      0.22727272727272727,
+      0.4920255183413078
+    ],
+    "foreNearRoot": [
+      0.6060606060606061,
+      0.4984051036682616
+    ],
+    "foreNearKnee": [
+      0.5701754385964912,
+      0.5422647527910686
+    ],
+    "foreNearAnkle": [
+      0.5263157894736842,
+      0.5901116427432217
+    ],
+    "foreNearPaw": [
+      0.4864433811802233,
+      0.6299840510366826
+    ],
+    "foreFarRoot": [
+      0.6698564593301436,
+      0.4904306220095694
+    ],
+    "foreFarKnee": [
+      0.69377990430622,
+      0.5303030303030303
+    ],
+    "foreFarAnkle": [
+      0.7216905901116427,
+      0.5741626794258373
+    ],
+    "foreFarPaw": [
+      0.7416267942583732,
+      0.6060606060606061
+    ],
+    "tail0": [
+      0.28149920255183414,
+      0.45215311004784686
+    ],
+    "tail1": [
+      0.2727272727272727,
+      0.45055821371610844
+    ],
+    "tail2": [
+      0.26555023923444976,
+      0.44896331738437
+    ],
+    "tail3": [
+      0.25757575757575757,
+      0.4473684210526316
+    ]
+  },
+  "materials": {
+    "surface": "plated",
+    "joints": {
+      "neck": "scaled",
+      "head": "scaled",
+      "jaw": "scaled",
+      "hindNearRoot": "scaled",
+      "hindNearKnee": "scaled",
+      "hindNearAnkle": "scaled",
+      "hindNearPaw": "scaled",
+      "hindFarRoot": "scaled",
+      "hindFarKnee": "scaled",
+      "hindFarAnkle": "scaled",
+      "hindFarPaw": "scaled",
+      "foreNearRoot": "scaled",
+      "foreNearKnee": "scaled",
+      "foreNearAnkle": "scaled",
+      "foreNearPaw": "scaled",
+      "foreFarRoot": "scaled",
+      "foreFarKnee": "scaled",
+      "foreFarAnkle": "scaled",
+      "foreFarPaw": "scaled",
+      "tail0": "scaled",
+      "tail1": "scaled",
+      "tail2": "scaled",
+      "tail3": "scaled"
+    }
+  },
+  "source": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "Pinned Earth fauna profile sea-turtle capability (water+ground); flipper topology, swimming pose."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "External pinnae are anatomically absent (chelonian). Four visible feet, exposed neck, head and tail are hand-authored on the exact original.",
+    "limitations": "Interior root/spine/pelvis/chest points are source-local control frames inside the shell, not seen bones. Far limb emergence under the shell is partly occluded; far hip/shoulder landmarks are interpretations under the shell rim. Each ankle part is the whole visible foot block with the ankle landmark in its interior (the C266 tortoise a02/a03 lesson). Flipper chains: root at the shell/plastron emergence, knee/ankle/paw spaced along the flipper; flipper tips are the paw parts. Hind near is the lower hind flipper, hind far the upper one. The tail is a small cone (x≈316-360) under the rim, cut into four short slices.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "baac34f77c10e88a87f6ecb61d1d5279a976a1034b430dac6de95e54d1ca03de",
+    "subjectSourceSha256": "104afa88009b04f3972a019fdb2a2d8fc4a00df3a5d151442cd7f237719a74a2",
+    "presenceSha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.1260876260035239,
+      "spine": 0.10970348079902396,
+      "chest": 0.16191340115029473,
+      "neck": 0.06859908506413581,
+      "head": 0.08530831974683459,
+      "jaw": 0.044685568504376105,
+      "hindFarRoot": 0.03296654961498304,
+      "hindFarKnee": 0.028194050286544977,
+      "hindFarAnkle": 0.03287963018833862,
+      "hindFarPaw": 0.028092368347382022,
+      "foreFarRoot": 0.06392033310160052,
+      "foreFarKnee": 0.046498818938160213,
+      "foreFarAnkle": 0.05198726000959053,
+      "foreFarPaw": 0.03761555475301678,
+      "hindNearRoot": 0.0081324075176918,
+      "hindNearKnee": 0.026556340997363186,
+      "hindNearAnkle": 0.02370983851246971,
+      "hindNearPaw": 0.02217135370726932,
+      "foreNearRoot": 0.011961722488038284,
+      "foreNearKnee": 0.05666933972708091,
+      "foreNearAnkle": 0.06490757813436888,
+      "foreNearPaw": 0.056388100573089905,
+      "tail0": 0.074543277483584,
+      "tail1": 0.008915741537080525,
+      "tail2": 0.007352108817617913,
+      "tail3": 0.008132407517691844
+    },
+    "measures": {
+      "torso": 0.26327869249153396,
+      "head": 0.08530831974683459,
+      "head/torso": 0.3240228783405166,
+      "bone-min": 0.007352108817617913,
+      "bone-max": 0.16191340115029473,
+      "leg/torso:hindFar": 0.33867552280225965,
+      "leg/torso:foreFar": 0.5169489122449362,
+      "leg/torso:hindNear": 0.2751363299915793,
+      "leg/torso:foreNear": 0.6759567846162196
+    }
+  },
+  "recipeHash": "caa3de35daf46396a36640c5613b412ac60e108c62d2aa19ea9b70cea6fa72e6"
+}

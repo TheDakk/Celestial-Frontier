@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Giant Salamander",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch07/round2/ai-finish/rebound-01/c243b07r2c3-26-giant-salamander/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "28b72f8d85c1cd0967450fe38aee08fc381db9804e81304001c16d686fb95bb2"
+}

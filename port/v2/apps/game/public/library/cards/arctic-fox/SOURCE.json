@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Arctic Fox",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/03-arctic-fox/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "166c64cc866b1b0fb34fc9f174991fd9ee17686ba004a1649eda47ae441d4517"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Ladybug",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound02/c243b03r1c3-24-ladybug/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6e58c066c08ac91c61ecda427c5a5acbc165f2bd88ea8fbd919af78fd5cd3d4a"
+}

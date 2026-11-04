@@ -1,0 +1,100 @@
+{
+  "creatureId": "c198creaturesupplyc-02-flamingo",
+  "parts": [
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "35e4f753d5c2a32d407041c530d8c5a1647262c993fa43cc36c8af0af0d29549"
+    },
+    {
+      "name": "beak.png",
+      "path": "parts/beak.png",
+      "sha256": "3f7fc27cafd258d02f2c2147865bcf8caa2b2a6293e8a9da92a1c3bfeede41aa"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "fd21c2404f4699a41f1cc6b637a18111050b2582d7ed24b45a42f0c277f7074d"
+    },
+    {
+      "name": "neck-upper.png",
+      "path": "parts/neck-upper.png",
+      "sha256": "177f6fdc0fb6fb24aa2a6dd563038938f510b5ea36f9a94f221db1d280f04ed7"
+    },
+    {
+      "name": "neck-lower.png",
+      "path": "parts/neck-lower.png",
+      "sha256": "e91bce0368d02a743df80735f9b7e40b2240a2b53950d51cf40c3bb04fb1f4fa"
+    },
+    {
+      "name": "foot-near.png",
+      "path": "parts/foot-near.png",
+      "sha256": "82faa383ffdd3827e4da800821b5aabd09885dae109b94257577c6e3223a6a8a"
+    },
+    {
+      "name": "shin-near.png",
+      "path": "parts/shin-near.png",
+      "sha256": "f21862ee59b513a7f9f67541a0750e89e7e397387719e6b90acbe4a65aff8126"
+    },
+    {
+      "name": "thigh-near.png",
+      "path": "parts/thigh-near.png",
+      "sha256": "1c178e44a5cc0255b9303caf100954568c1e5865d5edd13604bde257b2ad9941"
+    },
+    {
+      "name": "foot-far.png",
+      "path": "parts/foot-far.png",
+      "sha256": "d73fe9264a35f771322bdbdb4301cb051bcbdfd0abef099b9192a7621d2d607c"
+    },
+    {
+      "name": "shin-far.png",
+      "path": "parts/shin-far.png",
+      "sha256": "e4f6f856a99e98954ef65a89511478d389fd9c6bd45c790a9c1734e325d3bfaf"
+    },
+    {
+      "name": "thigh-far.png",
+      "path": "parts/thigh-far.png",
+      "sha256": "43b068dba5e82465f7a9f3fdf19ee1992c86b911313be37ff0407928d0680cd2"
+    },
+    {
+      "name": "far-wing-tip.png",
+      "path": "parts/far-wing-tip.png",
+      "sha256": "6688c0234e0e56fe1286f01c7ca010c75066b8f800e2196a8ef508cd87d0a802"
+    },
+    {
+      "name": "far-wing-root.png",
+      "path": "parts/far-wing-root.png",
+      "sha256": "06cc769ad0d5b9dee676863e032e27c9f0e50bfc8d873cb5118f10357cad1c21"
+    },
+    {
+      "name": "near-wing-tip.png",
+      "path": "parts/near-wing-tip.png",
+      "sha256": "92e52e14088aba602181408865e2a009ae50577ad2a30eb03e857f108b4c7d1f"
+    },
+    {
+      "name": "near-wing-root.png",
+      "path": "parts/near-wing-root.png",
+      "sha256": "dc3adf3ddad5d08121e28e18c109172598058d40911692f6390e2cccb9422bbd"
+    },
+    {
+      "name": "tail.png",
+      "path": "parts/tail.png",
+      "sha256": "d5d843f3165e6a474dbdefcf78c11fc8471d88eadf58defb8dd138cdb76f6a28"
+    },
+    {
+      "name": "pelvis.png",
+      "path": "parts/pelvis.png",
+      "sha256": "58cfc051dc84623e0d3b96875a43191f1814ee39a508d5530bbeec7ad0d1689c"
+    },
+    {
+      "name": "chest.png",
+      "path": "parts/chest.png",
+      "sha256": "e50805094acb5db9df0a321236a64173ef2be6cefbef5b02878353058502dd24"
+    },
+    {
+      "name": "spine.png",
+      "path": "parts/spine.png",
+      "sha256": "900900caf9aa978bf876e2080426d1fb6403af9594a33ed6853a7355814f86da"
+    }
+  ]
+}

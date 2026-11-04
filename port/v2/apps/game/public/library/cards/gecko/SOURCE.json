@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Gecko",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/07-gecko/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "e311c8f13476b61adf031db4e1a1ec5fa6202191ead0dd7859180ed68b9e90bc"
+}

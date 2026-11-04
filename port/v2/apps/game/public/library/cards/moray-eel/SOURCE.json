@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Moray Eel",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-02/c243b02r2c2-21-moray-eel/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f4817c076459849c8437974adbc2c84bd3fb3f448c4c406c36ec1c0e9f998ce0"
+}

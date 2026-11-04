@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Gopher",
+ "fitDir": "audits/QUAD_ISLANDS_20260927/19-gopher/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "79696b64d97a121b71b15f2eb98fa199ebfa897e9946b98655ebae8cdf99dc69"
+}

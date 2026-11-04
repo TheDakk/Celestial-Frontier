@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Shark",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/01-shark/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a8d9913c50762cacd76d04723e54073cb5238a6617d9c9f724b2b94e2a0ed5f0"
+}

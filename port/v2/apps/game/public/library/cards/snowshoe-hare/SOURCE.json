@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Snowshoe Hare",
+ "fitDir": "audits/OVERNIGHT_20261101/codex/coordinator/finishes/050-snowshoe-hare-owner-r02/rebound/o1-050-snowshoe-hare-owner-r02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6756e6fe6c8d060216b00098ca0cb5bc1f355a69905f495dbe813e87e7dd8c00"
+}

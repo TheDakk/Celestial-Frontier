@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Desert Owl",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/12-desert-owl/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "cf6bf2d783607f54dba6fd283dfe2bb222a03f31749c5275d418e93285988ccb"
+}

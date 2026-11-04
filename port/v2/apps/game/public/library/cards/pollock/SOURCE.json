@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Pollock",
+ "fitDir": "audits/FISH_PIPELINE_C84_20260927/03-pollock-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "0c7f2243c9c833bb2f5e525b724d5220c3f05e3346cb548df1cb031964ccd392"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Colugo",
+ "fitDir": "audits/C213_PROGRAM_20261004/phase4-successors/g2c118-09-colugo/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b24205d950ff7237c9374fa17ac3443ee62b5965fbc551e8c36e5490770539a2"
+}

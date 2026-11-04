@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Rhea",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/10-rhea/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d9905aff30ca3446798498919b146a3f5071f1b678dfee5b66d3e8e86b66a03b"
+}

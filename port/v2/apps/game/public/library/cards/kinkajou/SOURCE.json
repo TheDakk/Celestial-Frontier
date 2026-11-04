@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Kinkajou",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-03/c213originals-09-kinkajou/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a964184de2bf1c8a8652de498b3b362a90a850885ed2e7526507a84f8e3504b9"
+}

@@ -1,0 +1,40 @@
+{
+  "creatureId": "c243b02r1c2-14-lamprey",
+  "parts": [
+    {
+      "name": "near-pectoral.png",
+      "path": "parts/near-pectoral.png",
+      "sha256": "bcb0f46ad97feac45ad965f2115e11bdbc63d79b9e2a1710753c3f3123f686d2"
+    },
+    {
+      "name": "far-pectoral.png",
+      "path": "parts/far-pectoral.png",
+      "sha256": "425a37812b7b3271670267ff16d0b22667900eff74bd575fb42353e7672fb5d8"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "f1bb03eac1912d2f87ec2fbaddf5f5d96a0488cdc6eb8f531584963cd4c575b1"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "1d8a6d5535a95fe25f4b2d5feda81d110a66be9eb913a038ef44e97a43dc5595"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "52d5095aa0e7ceb7880b489d7bf5c7dce3a32a1ab162b04b72a402478a2f42a9"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "83756195000240e3f8d317e32693054d29e0b9637026ac4f03d772a3dd35c761"
+    },
+    {
+      "name": "axial-body.png",
+      "path": "parts/axial-body.png",
+      "sha256": "b145624207fecef3c0329239aa25acbc57611ba856c25ee9253d06c7350e6876"
+    }
+  ]
+}

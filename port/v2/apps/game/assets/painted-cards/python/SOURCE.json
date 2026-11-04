@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Python",
+ "fitDir": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "87e2648ad7289a9589505054b5e2a306ddfd5613f3e65c1eaadaef91c039fd15"
+}

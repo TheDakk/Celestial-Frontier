@@ -1,0 +1,157 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Grass Snake",
+ "recordRecipeHash": "a911dbcd92178cd9fd10b201aaca1c1c3f90fc07990f511e62d7d9db22a8daac",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/22-grass-snake/packet/master.png",
+  "masterSha256": "7a1c0925239b4357a0fb40d773f9f3985a5e4077f9eaf50637f06d69849fa5b3",
+  "keyedSha256": "7522723deefde38414eced3d780df46171ea0ebee1c9de7e1831ba980997f645",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "a8075e649663155f68f5b09f101122bdb39b4ae3f3bc6e6240a49c11735a2a2f",
+  "labelSource": "binding parts (atlas frames → cut-out boxes, far then near)",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "root-patch",
+   "joint": "root",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "jaw",
+   "joint": "jaw",
+   "layer": "near"
+  },
+  {
+   "label": 3,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "segment-0",
+   "joint": "seg0",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "segment-1",
+   "joint": "seg1",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "segment-2",
+   "joint": "seg2",
+   "layer": "near"
+  },
+  {
+   "label": 7,
+   "id": "segment-3",
+   "joint": "seg3",
+   "layer": "near"
+  },
+  {
+   "label": 8,
+   "id": "segment-4",
+   "joint": "seg4",
+   "layer": "near"
+  },
+  {
+   "label": 9,
+   "id": "segment-5",
+   "joint": "seg5",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "segment-6",
+   "joint": "seg6",
+   "layer": "near"
+  },
+  {
+   "label": 11,
+   "id": "segment-7",
+   "joint": "seg7",
+   "layer": "near"
+  },
+  {
+   "label": 12,
+   "id": "segment-8",
+   "joint": "seg8",
+   "layer": "near"
+  },
+  {
+   "label": 13,
+   "id": "segment-9",
+   "joint": "seg9",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.8212121212121212,
+   0.4233652312599681
+  ],
+  "head": [
+   0.8655502392344498,
+   0.4108452950558214
+  ],
+  "jaw": [
+   0.8753588516746412,
+   0.4308612440191387
+  ],
+  "seg0": [
+   0.7842902711323764,
+   0.44649122807017544
+  ],
+  "seg1": [
+   0.7363636363636363,
+   0.5044657097288676
+  ],
+  "seg2": [
+   0.6625199362041467,
+   0.5212918660287081
+  ],
+  "seg3": [
+   0.5763955342902711,
+   0.49776714513556625
+  ],
+  "seg4": [
+   0.4964114832535885,
+   0.4524720893141946
+  ],
+  "seg5": [
+   0.41515151515151516,
+   0.46945773524720896
+  ],
+  "seg6": [
+   0.3327751196172249,
+   0.5114035087719297
+  ],
+  "seg7": [
+   0.24043062200956938,
+   0.5065390749601276
+  ],
+  "seg8": [
+   0.14696969696969697,
+   0.4778309409888358
+  ],
+  "seg9": [
+   0.09154704944178628,
+   0.4943381180223285
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "1981752b3e740cbd9c3d99fa0ea591a544a26b3a5ad13109c8710c26d49d7554",
+  "labelsSha256": "3b4d552a288ebbab395a994d7a2d3f41842bf22ec27fc91dcc2ca2948f22bbd5",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

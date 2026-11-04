@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Char",
+ "fitDir": "audits/FISH_PIPELINE_C84_20260927/03-char-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "99b1b537e2f00455bf80b6a5d2b84685273805e284fbc6db1a0c2ab6bf828e6c"
+}

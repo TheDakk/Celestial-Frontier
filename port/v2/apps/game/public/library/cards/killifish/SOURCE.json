@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Killifish",
+ "fitDir": "audits/FISH_PIPELINE_C99_20260927/12-killifish-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "738b374b91677cf6a8d2cdb7482c0eefc964c53aca2d8952c224f84cedd97778"
+}

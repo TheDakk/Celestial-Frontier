@@ -1,0 +1,125 @@
+{
+  "creatureId": "c266-05-snapping-turtle",
+  "parts": [
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "34eadc72599b43c3658a1b9bff16231aa785b16e2c41d90cca2f7a93234ffe5f"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "b3ed9822d69477b8a63772663284874fbacb345aeff94caffc22f7bdb0458d9f"
+    },
+    {
+      "name": "neck.png",
+      "path": "parts/neck.png",
+      "sha256": "580a7880da779410647a054a8c4e653a06485b131fba7a8c77e8cb95cef1682e"
+    },
+    {
+      "name": "tail-tip.png",
+      "path": "parts/tail-tip.png",
+      "sha256": "68fca6532f465b2b8112e307953a008c21d73efa6f2ae2f90664a1c6de990fb0"
+    },
+    {
+      "name": "tail-distal.png",
+      "path": "parts/tail-distal.png",
+      "sha256": "63ea0dbfe7d2f26ca8f66826f6b63a04134e0f3d05a63d44d7cb5c79baa97a9c"
+    },
+    {
+      "name": "tail-middle.png",
+      "path": "parts/tail-middle.png",
+      "sha256": "abd4c07e5e520b8c7d657a4c93b4ad007e81f715b5ab8c8a7b9480225c0597d5"
+    },
+    {
+      "name": "tail-base.png",
+      "path": "parts/tail-base.png",
+      "sha256": "1b79dd332406d739d62441684b33c73aa1703e6242252fa8d88164accfb513c8"
+    },
+    {
+      "name": "plate-remainder.png",
+      "path": "parts/plate-remainder.png",
+      "sha256": "b37b1b2965c7ba27867420f73c7445aa4826a999dfe69b5ed7d236b98a60bce2"
+    },
+    {
+      "name": "near-hind-paw.png",
+      "path": "parts/near-hind-paw.png",
+      "sha256": "64ffe6f6d7297ba95a0f8ceb3b35ce9ec1d08b61facf20a816c8e6c414891e78"
+    },
+    {
+      "name": "near-hind-ankle.png",
+      "path": "parts/near-hind-ankle.png",
+      "sha256": "383346e2ec93b42d967c58a15c0be69b426666a4a739313c9440cf87d778e146"
+    },
+    {
+      "name": "near-hind-shin.png",
+      "path": "parts/near-hind-shin.png",
+      "sha256": "5b4eebd8a09baa43f55b8db374a0b58d9ce17de9b53d9f66ad80a000efea887e"
+    },
+    {
+      "name": "near-hind-emergence.png",
+      "path": "parts/near-hind-emergence.png",
+      "sha256": "9bddd10d9764e276925686ee3d286bc6ff1d95a3af53c1e9016651dc846d844b"
+    },
+    {
+      "name": "far-hind-paw.png",
+      "path": "parts/far-hind-paw.png",
+      "sha256": "901a784cd36984ccb509ca37c2cc89114ab4a4952dca28f04fab2049aa3b0b5a"
+    },
+    {
+      "name": "far-hind-ankle.png",
+      "path": "parts/far-hind-ankle.png",
+      "sha256": "c843887a1f9e4bc936c28df3fc7ce6cc94c664953e71d85cfbbb8af90da1cfef"
+    },
+    {
+      "name": "far-hind-shin.png",
+      "path": "parts/far-hind-shin.png",
+      "sha256": "db43946253b5df614e70c92c6e996d9ad0c2cf5b7f0cf1d7b2ec0ecac3fae749"
+    },
+    {
+      "name": "far-hind-emergence.png",
+      "path": "parts/far-hind-emergence.png",
+      "sha256": "1a09cb7964fe1d8e802bb0f264cd4af5fb3cfd49d06a25e03d556f648d8f6702"
+    },
+    {
+      "name": "near-front-paw.png",
+      "path": "parts/near-front-paw.png",
+      "sha256": "9013c58fae19de1dbe847ca891a3c88d44af395e152edf79d57485e5157c4188"
+    },
+    {
+      "name": "near-front-ankle.png",
+      "path": "parts/near-front-ankle.png",
+      "sha256": "3eb9043133ea702d2858bb982137016a6749481dc9fdb3f5aaffb1439b480f8b"
+    },
+    {
+      "name": "near-front-shin.png",
+      "path": "parts/near-front-shin.png",
+      "sha256": "888cd5e332ddb2c288ae5f13ac1a7c565e90854b20e961a5bced61774446a593"
+    },
+    {
+      "name": "near-front-emergence.png",
+      "path": "parts/near-front-emergence.png",
+      "sha256": "20f591d0e615b4e4f0c5f3a8f634a7826c9bcde06788d02d83c405dfd5b41bf4"
+    },
+    {
+      "name": "far-front-paw.png",
+      "path": "parts/far-front-paw.png",
+      "sha256": "d13d1d48b6a08156b2c5abd9985dc070c6542f40f5916b769da693cdb171182d"
+    },
+    {
+      "name": "far-front-ankle.png",
+      "path": "parts/far-front-ankle.png",
+      "sha256": "8ded5ebe8b661f3a0cb02433b8d014af0532c512dd74ce222bc50c30cb832635"
+    },
+    {
+      "name": "far-front-shin.png",
+      "path": "parts/far-front-shin.png",
+      "sha256": "e2c4f20d70f412ade2bae8376c404c71bcdb0f0ce6be83b85cbda3e598fa9e8b"
+    },
+    {
+      "name": "far-front-emergence.png",
+      "path": "parts/far-front-emergence.png",
+      "sha256": "81868c05772cbe301fe751de0d7fe2d446396c1c9c99015e5fa6c4d7435b8282"
+    }
+  ]
+}

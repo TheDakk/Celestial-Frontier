@@ -22,6 +22,16 @@ export type EngineeringPanelOperation = 'mine' | 'skim' | 'research' | 'fabricat
 export interface EngineeringPanelActionRequest {
   readonly operation: EngineeringPanelOperation;
   readonly id?: string;
+  /** v1.8.9 parity (D16, the Fabricator's ×5): fabricate this recipe up to N times in one press, each its own receipt,
+   * stopping at the first press that does not commit. Only `fabricate` may carry it; absent = once. */
+  readonly repeat?: typeof ENGINEERING_FABRICATE_BATCH;
+}
+
+/** v1.8.9 `data-craft5`: "Craft up to five in one press", offered only for stackable parts and components. */
+export const ENGINEERING_FABRICATE_BATCH = 5 as const;
+/** The v1 rule: the ×5 press exists only for `part` and `comp` recipes (never gear or a permanent system). */
+export function fabricationBatchOffered(row: Pick<EngineeringFabricationRowReadModel, 'category' | 'outputKind'>): boolean {
+  return (row.category === 'part' || row.category === 'comp') && row.outputKind === 'stackable';
 }
 
 export interface EngineeringCostQuantity {
@@ -149,12 +159,27 @@ export interface EngineeringPanelDiagnostics {
   readonly lastRequest: EngineeringPanelActionRequest | null;
 }
 
+/** Explicit pilot-only presentation. Null keeps the current comparison view. */
+export interface EngineeringPanelPresentation {
+  readonly mode: 'audiovisual-pilot';
+  readonly starterScoutImageUrl?: string;
+}
+
 export interface EngineeringPanelControllerOptions {
   readonly panel: HTMLElement;
   readonly body?: HTMLElement;
   readonly openers?: readonly (HTMLElement | null)[];
   /** Called synchronously. Any returned promise is deliberately ignored. */
   readonly onAction?: (request: EngineeringPanelActionRequest) => void;
+  /** v1.8.9 parity (D16, the Fabricator's 📌): the pinned recipe is VIEW state (save `pin`), never an Engineering action, so
+   * its press is not latched by a pending action. Absent = no pin buttons. */
+  readonly recipePin?: EngineeringRecipePinPort;
+}
+
+export interface EngineeringRecipePinPort {
+  pinned(): string | null;
+  /** Pin `baseId`, or unpin it when it is already the pinned recipe (v1: one pin at a time). */
+  toggle(baseId: string): void;
 }
 
 const SHIP_CHASSIS = Object.freeze([
@@ -180,11 +205,34 @@ const DORMANT_EFFECT_REASON = 'Gameplay effect is not connected; fabrication is 
 const COORDINATOR_UNAVAILABLE_REASON = 'Engineering action coordinator is unavailable.';
 const PENDING_REASON = 'Another engineering action is pending.';
 
+// Open-lifetime, opt-in density only. Panel bounds, Close geometry, native
+// scrolling, focus-visible decoration and 44px touch floors stay shell-owned.
+const PILOT_SHIPYARD_STYLE = `
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] {gap:var(--cf-pilot-gap,8px);font-size:var(--cf-pilot-body-size,13px);line-height:1.4}
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] .engineering-panel-title {font-size:var(--cf-pilot-title-size,16px);margin-bottom:2px}
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] .engineering-ship-overview {padding:0;border:0;border-radius:0;background:transparent}
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] .engineering-ship-overview > h4 {font-size:var(--cf-pilot-small-size,12px);font-weight:500;color:var(--dim);margin-bottom:2px}
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] .engineering-ship-role {font-size:var(--cf-pilot-heading-size,15px);font-weight:700;color:#eaf2ff;margin:2px 0 4px}
+#shipyardpanel [data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] [data-cf-shipyard-preview="v1"] {border-radius:var(--cf-pilot-radius,8px);margin:4px 0 8px;pointer-events:none}
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] .engineering-section {border:0;border-top:1px solid var(--cf-pilot-rule,rgba(87,112,154,.42));border-radius:0;background:transparent}
+#shipyardpanel [data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] details.engineering-section > summary {padding:7px 0;letter-spacing:.035em;font-size:var(--cf-pilot-small-size,12px);text-transform:none}
+#shipyardpanel [data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] details.engineering-section > :not(summary) {margin-left:0;margin-right:0}
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] .engineering-row-list,
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] .engineering-fabrication-groups,
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] .engineering-fabrication-group {gap:4px}
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] .engineering-row {padding:8px 0;border:0;border-bottom:1px solid rgba(87,112,154,.28);border-radius:0;background:transparent}
+[data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] .engineering-row :is(h4,h5) {font-size:var(--cf-pilot-heading-size,14px);margin-bottom:4px}
+#shipyardpanel [data-engineering-panel-body][data-engineering-presentation="audiovisual-pilot"] button.engineering-action {border-radius:var(--cf-pilot-radius,8px);margin:4px 0 6px}
+`;
+
 interface ViewReceipt {
   readonly focusKey: string | null;
   readonly semanticKey: string | null;
   /** Native details are visibility owners. Reopen them before restoring focus. */
   readonly openSectionIds: readonly string[];
+  readonly preservePilotViewport: boolean;
+  readonly scrollTop: number;
+  readonly scrollLeft: number;
 }
 
 interface SettlementFocusReceipt {
@@ -333,7 +381,7 @@ function assertView(view: EngineeringPanelView): void {
 }
 
 function sameRequest(left: EngineeringPanelActionRequest, right: EngineeringPanelActionRequest): boolean {
-  return left.operation === right.operation && left.id === right.id;
+  return left.operation === right.operation && left.id === right.id && left.repeat === right.repeat;
 }
 
 function copyRequest(request: EngineeringPanelActionRequest): EngineeringPanelActionRequest {
@@ -347,9 +395,14 @@ function copyRequest(request: EngineeringPanelActionRequest): EngineeringPanelAc
   if ((request.operation === 'mine' || request.operation === 'skim') && request.id !== undefined) {
     throw new TypeError(`${request.operation} request must not carry an id`);
   }
+  if (request.repeat !== undefined && (request.operation !== 'fabricate' || request.repeat !== ENGINEERING_FABRICATE_BATCH)) {
+    throw new TypeError('only a fabricate request may repeat, and only ×' + ENGINEERING_FABRICATE_BATCH);
+  }
   return request.id === undefined
     ? Object.freeze({ operation: request.operation })
-    : Object.freeze({ operation: request.operation, id: request.id });
+    : request.repeat === undefined
+      ? Object.freeze({ operation: request.operation, id: request.id })
+      : Object.freeze({ operation: request.operation, id: request.id, repeat: request.repeat });
 }
 
 export class EngineeringPanelController {
@@ -358,7 +411,9 @@ export class EngineeringPanelController {
   readonly #document: Document;
   readonly #openers: readonly (HTMLElement | null)[];
   readonly #onAction: EngineeringPanelControllerOptions['onAction'] | null;
+  readonly #recipePin: EngineeringRecipePinPort | null;
   #view: EngineeringPanelView | null = null;
+  #presentation: EngineeringPanelPresentation | null = null;
   #pending: EngineeringPanelActionRequest | null = null;
   #lastRequest: EngineeringPanelActionRequest | null = null;
   #emissionLocked = false;
@@ -376,6 +431,7 @@ export class EngineeringPanelController {
     this.#document = options.panel.ownerDocument;
     this.#openers = Object.freeze([...(options.openers ?? [])]);
     this.#onAction = options.onAction ?? null;
+    this.#recipePin = options.recipePin ?? null;
     const bodies = [...this.#panel.querySelectorAll<HTMLElement>('[data-engineering-panel-body]')];
     if (options.body !== undefined) {
       if (bodies.length !== 1 || bodies[0] !== options.body || options.body.parentElement !== this.#panel) {
@@ -391,6 +447,20 @@ export class EngineeringPanelController {
     this.#body.replaceChildren();
     this.#body.addEventListener('click', this.#onClick);
     this.#listenerInstalled = true;
+  }
+
+  setPresentation(presentation: EngineeringPanelPresentation | null): void {
+    this.#assertLive();
+    if (presentation !== null && (presentation.mode !== 'audiovisual-pilot'
+      || (presentation.starterScoutImageUrl !== undefined
+        && (typeof presentation.starterScoutImageUrl !== 'string'
+          || presentation.starterScoutImageUrl.trim().length === 0)))) {
+      throw new TypeError('Engineering pilot presentation requires an optional nonempty image URL');
+    }
+    if ((this.#presentation === null) === (presentation === null)
+      && this.#presentation?.starterScoutImageUrl === presentation?.starterScoutImageUrl) return;
+    this.#presentation = presentation === null ? null : Object.freeze({ ...presentation });
+    if (this.#active) this.#render();
   }
 
   setView(view: EngineeringPanelView): void {
@@ -487,6 +557,7 @@ export class EngineeringPanelController {
       this.#listenerInstalled = false;
     }
     this.#view = null;
+    this.#presentation = null;
     this.#pending = null;
     this.#lastRequest = null;
     this.#emissionLocked = false;
@@ -522,6 +593,7 @@ export class EngineeringPanelController {
   };
 
   readonly #onClick = (event: Event): void => {
+    if (this.#onRecipePin(event)) return;
     if (this.#disposed || this.#isBusy()) return;
     const view = this.#document.defaultView;
     const target = event.target;
@@ -531,7 +603,8 @@ export class EngineeringPanelController {
     const operation = button.dataset.engineeringAction as EngineeringPanelOperation | undefined;
     if (!operation) return;
     const id = button.dataset.actionId;
-    const request = copyRequest(id === undefined ? { operation } : { operation, id });
+    const repeat = button.dataset.actionRepeat === String(ENGINEERING_FABRICATE_BATCH) ? ENGINEERING_FABRICATE_BATCH : undefined;
+    const request = copyRequest(id === undefined ? { operation } : repeat === undefined ? { operation, id } : { operation, id, repeat });
     this.#retainSettlementFocus(request);
     this.#emissionLocked = true;
     this.#lastRequest = request;
@@ -560,6 +633,14 @@ export class EngineeringPanelController {
     const view = this.#viewForRender(this.#captureView());
     this.#disposePreview();
     const fragment = this.#document.createDocumentFragment();
+    if (this.#presentation !== null) {
+      this.#body.dataset.engineeringPresentation = 'audiovisual-pilot';
+      const style = this.#node('style', '', PILOT_SHIPYARD_STYLE);
+      style.dataset.engineeringPilotStyle = 'true';
+      fragment.append(style);
+    } else {
+      delete this.#body.dataset.engineeringPresentation;
+    }
     fragment.append(this.#node('h3', 'engineering-panel-title', 'Engineering & Shipyard'));
     if (this.#view === null) {
       const empty = this.#node('p', 'engineering-empty', 'Engineering presentation is not initialized.');
@@ -580,16 +661,29 @@ export class EngineeringPanelController {
       unavailable.dataset.engineeringUnavailable = this.#view.reason!;
       fragment.append(unavailable);
     } else {
-      fragment.append(
-        this.#miningDetails(this.#view.engineering.mining),
-        this.#skimmingDetails(this.#view.engineering.skimming),
-        this.#researchDetails(this.#view.engineering.research),
-        this.#fabricatorDetails(this.#view.engineering.fabricationGroups),
-      );
+      const engineering = this.#view.engineering;
+      if (this.#presentation !== null) {
+        fragment.append(
+          this.#fabricatorDetails(engineering.fabricationGroups),
+          this.#researchDetails(engineering.research),
+          this.#miningDetails(engineering.mining),
+          this.#skimmingDetails(engineering.skimming),
+        );
+      } else {
+        fragment.append(
+          this.#miningDetails(engineering.mining),
+          this.#skimmingDetails(engineering.skimming),
+          this.#researchDetails(engineering.research),
+          this.#fabricatorDetails(engineering.fabricationGroups),
+        );
+      }
     }
     fragment.append(this.#pendingStatus());
     this.#body.replaceChildren(fragment);
-    this.#previewOwner = new ShipyardPreviewOwner(previewMount.mount);
+    this.#previewOwner = new ShipyardPreviewOwner(previewMount.mount,
+      this.#presentation?.starterScoutImageUrl
+        ? { starterScoutImageUrl: this.#presentation.starterScoutImageUrl }
+        : null);
     this.#previewElement = this.#previewOwner.open(this.#view.ship);
     this.#applyActionAvailability();
     this.#restoreView(view);
@@ -601,13 +695,14 @@ export class EngineeringPanelController {
     const section = this.#node('section', 'engineering-ship-overview');
     section.dataset.engineeringShip = 'overview';
     section.dataset.chassisStage = String(ship.chassisStage);
+    const provenance = this.#node('p', 'engineering-ship-provenance', ship.provenance === 'legacy-charter-refit'
+      ? 'Legacy expedition reach is shown as a generic charter refit. No missing drive is claimed.'
+      : 'Chassis and fittings reflect this expedition’s owned permanent systems.');
     section.append(
       this.#node('h4', '', 'Ship overview'),
       this.#node('p', 'engineering-ship-role', `${chassis.name} · ${chassis.reach}`),
-      this.#node('p', 'engineering-ship-provenance', ship.provenance === 'legacy-charter-refit'
-        ? 'Legacy expedition reach is shown as a generic charter refit. No missing drive is claimed.'
-        : 'Chassis and fittings reflect this expedition’s owned permanent systems.'),
     );
+    if (this.#presentation === null) section.append(provenance);
     const mount = this.#node('div', 'engineering-preview-mount');
     mount.dataset.engineeringPreviewMount = 'true';
     section.append(mount);
@@ -635,12 +730,25 @@ export class EngineeringPanelController {
       row.dataset.fitted = String(fitted);
       hardpoints.append(row);
     }
-    section.append(systems, hardpoints);
+    if (this.#presentation !== null) {
+      section.dataset.engineeringPresentation = 'audiovisual-pilot';
+      const status = this.#node('p', 'engineering-ship-status', ship.installedSystemIds.length === 0
+        ? 'No permanent ship systems installed.'
+        : `${ship.installedSystemIds.length} permanent ship systems installed.`);
+      status.style.margin = '4px 0 8px';
+      status.style.color = '#eaf2ff';
+      const details = this.#details('ship-details', 'Ship details', false);
+      details.append(provenance, systems, hardpoints);
+      section.append(status, details);
+    } else {
+      section.append(systems, hardpoints);
+    }
     return Object.freeze({ section, mount });
   }
 
   #miningDetails(model: EngineeringMiningReadModel): HTMLDetailsElement {
-    const details = this.#details('mining', 'Mining', true);
+    const details = this.#details('mining', this.#presentation === null
+      ? 'Mining' : `Mining · ${this.#opportunityStatusLabel(model.status)}`, this.#presentation === null);
     details.dataset.status = model.status;
     details.append(
       this.#fact('Location', model.locationLabel, 'mining-location'),
@@ -674,7 +782,8 @@ export class EngineeringPanelController {
   }
 
   #skimmingDetails(model: EngineeringSkimmingReadModel): HTMLDetailsElement {
-    const details = this.#details('skimming', 'Stellar Skimming', false);
+    const details = this.#details('skimming', this.#presentation === null
+      ? 'Stellar Skimming' : `Stellar Skimming · ${this.#opportunityStatusLabel(model.status)}`, false);
     details.dataset.status = model.status;
     details.append(
       this.#fact('Star', model.starLabel, 'skimming-star'),
@@ -688,7 +797,9 @@ export class EngineeringPanelController {
   }
 
   #researchDetails(rows: readonly EngineeringResearchRowReadModel[]): HTMLDetailsElement {
-    const details = this.#details('research', 'Research Bench', false);
+    const available = rows.filter((row) => row.status === 'available').length;
+    const details = this.#details('research', this.#presentation === null
+      ? 'Research Bench' : `Research Bench · ${available} available`, false);
     const list = this.#node('div', 'engineering-row-list');
     list.dataset.engineeringResearchRows = 'true';
     for (const [index, row] of rows.entries()) {
@@ -718,7 +829,11 @@ export class EngineeringPanelController {
   }
 
   #fabricatorDetails(groups: readonly EngineeringFabricationGroupReadModel[]): HTMLDetailsElement {
-    const details = this.#details('fabricator', 'Fabricator', false);
+    const available = groups.reduce((count, group) => count + group.recipes.filter(
+      (row) => row.status === 'available' && row.effectSupport === 'live',
+    ).length, 0);
+    const details = this.#details('fabricator', this.#presentation === null
+      ? 'Fabricator' : `Fabricator · ${available} available`, false);
     const groupList = this.#node('div', 'engineering-fabrication-groups');
     for (const [groupIndex, group] of groups.entries()) {
       const section = this.#node('section', 'engineering-fabrication-group');
@@ -764,6 +879,20 @@ export class EngineeringPanelController {
             forcedReason ?? 'Fabrication is available.',
           ),
         );
+        if (this.#recipePin !== null && row.status !== 'owned') article.append(this.#recipePinButton(row.baseId, row.name));
+        if (fabricationBatchOffered(row)) {
+          const batch = this.#actionButton(
+            'fabricate',
+            row.baseId,
+            `×${ENGINEERING_FABRICATE_BATCH}`,
+            row.status === 'available' && row.effectSupport === 'live',
+            forcedReason ?? 'Fabrication is available.',
+            ENGINEERING_FABRICATE_BATCH,
+          );
+          batch.setAttribute('aria-label', `Fabricate up to ${ENGINEERING_FABRICATE_BATCH} ${row.name}`);
+          batch.title = `Craft up to ${ENGINEERING_FABRICATE_BATCH} in one press`;
+          article.append(batch);
+        }
         rows.append(article);
       }
       if (group.recipes.length === 0) rows.append(this.#node('p', 'engineering-empty', 'No recipes in this group.'));
@@ -886,17 +1015,47 @@ export class EngineeringPanelController {
     label: string,
     available: boolean,
     disabledReason: string,
+    repeat?: typeof ENGINEERING_FABRICATE_BATCH,
   ): HTMLButtonElement {
     const button = this.#node('button', 'engineering-action', label);
     button.type = 'button';
     button.dataset.engineeringAction = operation;
     if (id !== undefined) button.dataset.actionId = id;
-    button.dataset.focusKey = id === undefined ? `action:${operation}` : `action:${operation}:${id}`;
+    if (repeat !== undefined) button.dataset.actionRepeat = String(repeat);
+    button.dataset.focusKey = (id === undefined ? `action:${operation}` : `action:${operation}:${id}`) + (repeat === undefined ? '' : `:x${repeat}`);
     button.dataset.modelEnabled = String(available && this.#onAction !== null);
     button.dataset.disabledReason = available && this.#onAction === null
       ? COORDINATOR_UNAVAILABLE_REASON
       : disabledReason;
     return button;
+  }
+
+  #recipePinButton(baseId: string, name: string): HTMLButtonElement {
+    const button = this.#node('button', 'engineering-pin', '📌');
+    button.type = 'button';
+    button.dataset.recipePin = baseId;
+    this.#paintRecipePin(button, name);
+    return button;
+  }
+
+  #paintRecipePin(button: HTMLButtonElement, name = button.closest<HTMLElement>('[data-recipe-id]')?.querySelector('h5')?.textContent ?? ''): void {
+    const on = this.#recipePin?.pinned() === button.dataset.recipePin;
+    button.classList.toggle('on', on);
+    button.setAttribute('aria-pressed', String(on));
+    button.setAttribute('aria-label', on ? `Unpin ${name}` : `Pin ${name}`);
+    button.title = on ? 'Unpin this recipe' : 'Pin — a chip tracks the missing materials while you explore';
+  }
+
+  /** The 📌 press: view state only, never latched by a pending Engineering action. */
+  #onRecipePin(event: Event): boolean {
+    const view = this.#document.defaultView;
+    const target = event.target;
+    if (this.#disposed || this.#recipePin === null || !view || !(target instanceof view.Element)) return false;
+    const button = target.closest<HTMLButtonElement>('button[data-recipe-pin]');
+    if (!button || !this.#body.contains(button)) return false;
+    this.#recipePin.toggle(button.dataset.recipePin!);
+    for (const pin of this.#body.querySelectorAll<HTMLButtonElement>('button[data-recipe-pin]')) this.#paintRecipePin(pin);
+    return true;
   }
 
   #pendingStatus(): HTMLElement {
@@ -962,14 +1121,18 @@ export class EngineeringPanelController {
       openSectionIds: Object.freeze(sections
         .filter((section) => section.open)
         .map((section) => section.dataset.engineeringSection!)),
+      preservePilotViewport: this.#presentation !== null
+        || this.#body.dataset.engineeringPresentation === 'audiovisual-pilot',
+      scrollTop: this.#panel.scrollTop,
+      scrollLeft: this.#panel.scrollLeft,
     });
   }
 
   #retainSettlementFocus(request: EngineeringPanelActionRequest): void {
     const receipt = this.#captureView();
-    const focusKey = request.id === undefined
+    const focusKey = (request.id === undefined
       ? `action:${request.operation}`
-      : `action:${request.operation}:${request.id}`;
+      : `action:${request.operation}:${request.id}`) + (request.repeat === undefined ? '' : `:x${request.repeat}`);
     const semanticKey = request.operation === 'research'
       ? `research:${request.id}`
       : request.operation === 'fabricate'
@@ -994,6 +1157,9 @@ export class EngineeringPanelController {
       focusKey: settlement.focusKey,
       semanticKey: settlement.semanticKey,
       openSectionIds: receipt.openSectionIds,
+      preservePilotViewport: receipt.preservePilotViewport,
+      scrollTop: receipt.scrollTop,
+      scrollLeft: receipt.scrollLeft,
     });
   }
 
@@ -1006,13 +1172,24 @@ export class EngineeringPanelController {
       section.open = openSectionIds.has(section.dataset.engineeringSection!);
     }
     const keyedTarget = this.#focusKeyTarget(receipt.focusKey, receipt.semanticKey);
-    if (keyedTarget !== null && !this.#disabled(keyedTarget)
-      && this.#restoreElement(keyedTarget)) return;
+    const restoredKey = keyedTarget !== null && !this.#disabled(keyedTarget)
+      && this.#restoreElement(keyedTarget, receipt.preservePilotViewport);
     /* Pending and permanently unavailable actions both fall through to their
        semantic row. The original action identity remains in settlementFocus;
        unlock decides from the final model and current focus lineage whether
        the exact replacement action may receive focus. */
-    this.#restoreElement(this.#semanticTarget(receipt.semanticKey));
+    if (!restoredKey) {
+      this.#restoreElement(this.#semanticTarget(receipt.semanticKey), receipt.preservePilotViewport);
+      if (receipt.focusKey === 'section:ship-details' && this.#presentation === null) {
+        this.#restoreElement(this.#panel.querySelector<HTMLElement>('[data-pnx="shipyard"]'), receipt.preservePilotViewport);
+      }
+    }
+    // Only the optional pilot owns reading-position preservation, including
+    // the render that removes it. Ordinary focus keeps its native scrolling.
+    if (receipt.preservePilotViewport) {
+      this.#panel.scrollTop = receipt.scrollTop;
+      this.#panel.scrollLeft = receipt.scrollLeft;
+    }
   }
 
   #disabled(element: HTMLElement): boolean {
@@ -1052,7 +1229,7 @@ export class EngineeringPanelController {
     return this.#restoreElement(target);
   }
 
-  #restoreElement(element: HTMLElement | null): boolean {
+  #restoreElement(element: HTMLElement | null, preventScroll = this.#presentation !== null): boolean {
     if (!element?.isConnected || this.#disabled(element)) return false;
     const view = this.#document.defaultView;
     if (view) {
@@ -1064,7 +1241,8 @@ export class EngineeringPanelController {
       }
     }
     try {
-      element.focus();
+      if (preventScroll) element.focus({ preventScroll: true });
+      else element.focus();
     } catch {
       return false;
     }
@@ -1081,6 +1259,7 @@ export class EngineeringPanelController {
     this.#disposePreview();
     this.#body.replaceChildren();
     this.#body.removeAttribute('aria-busy');
+    delete this.#body.dataset.engineeringPresentation;
   }
 
   #isBusy(): boolean {

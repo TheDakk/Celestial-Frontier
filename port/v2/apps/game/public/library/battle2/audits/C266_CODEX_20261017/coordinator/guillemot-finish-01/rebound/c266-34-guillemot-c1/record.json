@@ -1,0 +1,210 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Guillemot\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1599860343\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"7\"]]]]",
+    "seed": 1599860343,
+    "ownerId": "authored:archetype-sprint/c266-guillemot-c1",
+    "earthName": "Guillemot"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1599860343,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 17,
+    "body": 8,
+    "loco": 4,
+    "trait": 7,
+    "size": 1,
+    "diet": 0,
+    "head": 4,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 0,
+    "pattern": 6,
+    "eyes": 1,
+    "behavior": 0,
+    "habitat": 17,
+    "detail": 7,
+    "accent": 7,
+    "temper": 9,
+    "sense": 2,
+    "repro": 5,
+    "life": 3,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Guillemot"
+  },
+  "geometry": {
+    "cutoutAssetHash": "bf8c2f81ca3f35356ff1e9fe264fdac6f35ffb18c26d444b8477552328b61964",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7257,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5103668261562998,
+      0.5582137161084529
+    ],
+    "pelvis": [
+      0.4704944178628389,
+      0.6140350877192983
+    ],
+    "spine": [
+      0.518341307814992,
+      0.4944178628389155
+    ],
+    "chest": [
+      0.6100478468899522,
+      0.4784688995215311
+    ],
+    "neck0": [
+      0.5701754385964912,
+      0.3787878787878788
+    ],
+    "neck1": [
+      0.5741626794258373,
+      0.3349282296650718
+    ],
+    "head": [
+      0.5901116427432217,
+      0.27910685805422647
+    ],
+    "beak": [
+      0.6818181818181818,
+      0.2719298245614035
+    ],
+    "legNearKnee": [
+      0.4529505582137161,
+      0.6499202551834131
+    ],
+    "legNearAnkle": [
+      0.43620414673046254,
+      0.6905901116427432
+    ],
+    "legNearFoot": [
+      0.4585326953748006,
+      0.7065390749601276
+    ],
+    "legFarKnee": [
+      0.5223285486443381,
+      0.645933014354067
+    ],
+    "legFarAnkle": [
+      0.5454545454545454,
+      0.7001594896331739
+    ],
+    "legFarFoot": [
+      0.5757575757575758,
+      0.7121212121212122
+    ],
+    "wingNearRoot": [
+      0.518341307814992,
+      0.5223285486443381
+    ],
+    "wingNearTip": [
+      0.3827751196172249,
+      0.5996810207336523
+    ],
+    "wingFarRoot": [
+      0.5263157894736842,
+      0.430622009569378
+    ],
+    "wingFarTip": [
+      0.4266347687400319,
+      0.5103668261562998
+    ],
+    "tailFan": [
+      0.3588516746411483,
+      0.6395534290271132
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/34-guillemot-c1/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "Canonical auk ground/water capability; not a painted-pose claim."
+  },
+  "coverage": {
+    "scope": "C266 Claude manual observed-source annotation of one exact C243 original: landmarks placed by eye on full-size gridded crops, hand-drawn priority polygons and explicit local capsule/band partitions between those landmarks. No donor labels, no transferred reference coordinates, no auto-author output.",
+    "sourceFacing": "right",
+    "observed": {
+      "legs": 2,
+      "feet": 2,
+      "webbedFeet": true,
+      "wingsFolded": 2,
+      "tail": "short dark tail under the primaries"
+    },
+    "limitations": [
+      "Short-legged mapping: tibiotarsus is inside the body; thigh owner is the leg exit only.",
+      "Far wing is not separately visible; far-wing owners are the dark back and the upper wing edge (interpretation, robin convention)."
+    ],
+    "nativeAcceptance": false,
+    "visualAcceptance": "PENDING_NATIVE_AND_FULL_SIZE_REVIEW"
+  },
+  "provenance": {
+    "authoringSha256": "a407983fe88a3c4391903c2be7923ca7c51044bd9f2f4242ce3666c8a88d970f",
+    "subjectSourceSha256": "93829443d08e045dd8779b632184810c20fd910d7aeb88bf73af153a526e4d6a",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.06859908506413578,
+      "spine": 0.12883169395058622,
+      "chest": 0.09308307440134576,
+      "neck0": 0.10735974495882188,
+      "neck1": 0.04404051442259671,
+      "head": 0.058055102785331124,
+      "beak": 0.09198695080751551,
+      "legFarKnee": 0.060862589802526894,
+      "legFarAnkle": 0.0589518646834967,
+      "legFarFoot": 0.032578466053932296,
+      "legNearKnee": 0.03994411415109474,
+      "legNearAnkle": 0.043982718447010065,
+      "legNearFoot": 0.027439634025654292,
+      "wingFarRoot": 0.09643848981218364,
+      "wingFarTip": 0.127653991974339,
+      "wingNearRoot": 0.10165509397114807,
+      "wingNearTip": 0.156082017929038,
+      "tailFan": 0.1145219972632615
+    },
+    "measures": {
+      "body": 0.19455937637569146,
+      "bone-min": 0.027439634025654292,
+      "bone-max": 0.156082017929038,
+      "leg/torso:legFar": 0.7832720446517432,
+      "leg/torso:legNear": 0.5724034929507175,
+      "wing/torso": 1.1517948194581131
+    }
+  },
+  "recipeHash": "8ed8739a03ad697fa3b593ad1d3f8d4d12ef61fa045963cf3baa5fdf7fbcb332"
+}

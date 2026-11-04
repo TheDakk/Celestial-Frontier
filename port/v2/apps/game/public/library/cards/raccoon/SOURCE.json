@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Raccoon",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c59-v10s/04-raccoon/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a9e6d8d37fba58e177cc5a7b15ab8c4feb281829087adb61d5c387db0f445ae2"
+}

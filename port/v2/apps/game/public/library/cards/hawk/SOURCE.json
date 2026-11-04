@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Hawk",
+ "fitDir": "audits/ISLANDS_D28_20261002/g2c151-18-hawk/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "08515b14ce19a785793fcdc37175bd090b80ed33b70dbe00d7594ca9c2541dd0"
+}

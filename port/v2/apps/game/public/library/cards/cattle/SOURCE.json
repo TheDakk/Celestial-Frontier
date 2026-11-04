@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cattle",
+ "fitDir": "audits/QUAD_UPPER_C73_20260927/13-cattle/source-fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a3affcfc5815b94201aa9815b8437cc83f7b06cf1fee18bdd1b9108846c05e9b"
+}

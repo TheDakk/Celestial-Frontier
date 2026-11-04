@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Beaver",
+ "fitDir": "audits/ISLANDS_SWEEP6_20261011/g2c101-24-beaver/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "58e66cce17cf59c3dee338a4b2d1cfe455e6c185f6f912ac8dd261d43c4a2b94"
+}

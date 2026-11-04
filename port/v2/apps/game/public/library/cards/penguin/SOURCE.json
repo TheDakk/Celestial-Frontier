@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Penguin",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c206birdsourcerepaints-17-penguin/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "2712ded20b817acb4dc0f29af9b91c200279cec89f423bf365333716e862f441"
+}

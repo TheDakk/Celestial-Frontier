@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Bison",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-03/g2c59-03-bison/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f0904ec58707a1ac143091795c40d243946a20afee0a7c7f53fcce0b6b676edf"
+}

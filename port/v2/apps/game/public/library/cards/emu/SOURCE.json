@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Emu",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/g2c106-14-emu/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a4cbafc27fc67cf4124eb8e82e72119296cc87d34efcf999a32e6b6cd2b69b99"
+}

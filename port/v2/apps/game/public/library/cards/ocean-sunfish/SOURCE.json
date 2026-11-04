@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Ocean Sunfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/12-ocean-sunfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f41a7117a50708ebd66190aaf68cafd6881fc9403670fb8eb292ce6ea5c839ef"
+}

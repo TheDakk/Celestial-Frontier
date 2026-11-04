@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Wild Pony",
+ "fitDir": "audits/ISLANDS_D28_20261002/g2c107-23-wild-pony/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "75e6b5358e6a87de597856e5efa4f5714b5891fd2ac8ef30a6a2b42b9f5ce739"
+}

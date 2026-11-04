@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Godwit",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/godwit-finish-01/rebound/c266-32-godwit-c1/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "bbc39786ae77eaa2d3d4fcce59ba0cd8eea7560325ab210879c470ceb40410eb"
+}

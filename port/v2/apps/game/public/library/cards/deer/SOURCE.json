@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Deer",
+ "fitDir": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/09-deer-observed-ears/islands-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6042d26161ecec8f6efe28cf7d02d6f6fff797c14e9f0c8065d62755d5df3387"
+}

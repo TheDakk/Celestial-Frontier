@@ -1,0 +1,226 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-15",
+ "files": [
+  {
+   "path": "library/cards/avocet/SOURCE.json",
+   "bytes": 290,
+   "sha256": "f560aca2bf9194b4d7e8bfc9f7509e8779a44ef30b1a6ab12247a8d62b58ee1d"
+  },
+  {
+   "path": "library/cards/avocet/card/card.json",
+   "bytes": 3939,
+   "sha256": "498ea18c99f6edd21dd09eb97273f8700cfc08908d1b3ae4e6416cb07d965d5f"
+  },
+  {
+   "path": "library/cards/avocet/card/labels-512.png",
+   "bytes": 4458,
+   "sha256": "a68fee5df44e9f24b28a8e6962bf8126e1bdf795b6561ed141ac7942944d8f5e"
+  },
+  {
+   "path": "library/cards/avocet/card/master-512.png",
+   "bytes": 38594,
+   "sha256": "5c35920699c1c94fc26465a56da86b62def43e042a1c3601fcf531da498c8b13"
+  },
+  {
+   "path": "library/cards/avocet/record.json",
+   "bytes": 5967,
+   "sha256": "a84472f33f1eaee0a57c97a91ca5632011189b03193106e42b1b7d24dfa3f829"
+  },
+  {
+   "path": "library/cards/coelacanth/SOURCE.json",
+   "bytes": 291,
+   "sha256": "e2075b9092dd8ed657d7cd25b9c18b0f823b9acf07b1bdc38a1bd8d0fc45a99b"
+  },
+  {
+   "path": "library/cards/coelacanth/card/card.json",
+   "bytes": 2941,
+   "sha256": "b4732105e5f1846bdecd9515bd40db5b30267dbf87042ce91fbb3a2497b9820d"
+  },
+  {
+   "path": "library/cards/coelacanth/card/labels-512.png",
+   "bytes": 5580,
+   "sha256": "0158c274c7894e6b478bc2eb84740b10faf1920a212fe2095eb1935e3ab2e8d3"
+  },
+  {
+   "path": "library/cards/coelacanth/card/master-512.png",
+   "bytes": 140993,
+   "sha256": "7983ff0ccdec813729f1a61d5089cd48ec5bb1a3babd1541084fffb51e45efe0"
+  },
+  {
+   "path": "library/cards/coelacanth/record.json",
+   "bytes": 5143,
+   "sha256": "94a64544efb7bf9cc2f6b6b8a1285f2ed392d753f11c8866216b53058a960fa1"
+  },
+  {
+   "path": "library/cards/koala/SOURCE.json",
+   "bytes": 275,
+   "sha256": "b6f242c31455de44e15934135d20b239ce36c9ab578c78ace438972af40d2559"
+  },
+  {
+   "path": "library/cards/koala/card/card.json",
+   "bytes": 5860,
+   "sha256": "de86fa2871a1fd1598b9a225d67dd8316f54993135720cb1b12a452a78d58800"
+  },
+  {
+   "path": "library/cards/koala/card/labels-512.png",
+   "bytes": 7936,
+   "sha256": "9b58b2e269473235822a44e72c3344b102d6c586511b86eaa4b8bae1bd0f5123"
+  },
+  {
+   "path": "library/cards/koala/card/master-512.png",
+   "bytes": 119474,
+   "sha256": "62fc31ee3aecd9d4908d9c3ae7a370564cb4d4cac140751184d7da4a21308c7a"
+  },
+  {
+   "path": "library/cards/koala/record.json",
+   "bytes": 7486,
+   "sha256": "71e0c9c09ea591c9788fba5dffec7a6e1fdfc9e0bd7f39234714cb6307efa0c3"
+  },
+  {
+   "path": "library/cards/platypus/SOURCE.json",
+   "bytes": 295,
+   "sha256": "b5c8af7a328abcbd897cc0da3fae911ed749c0735f0256d4d5a14df6c14af10e"
+  },
+  {
+   "path": "library/cards/platypus/card/card.json",
+   "bytes": 5237,
+   "sha256": "7c3c08805f26c9bef33801d7863d8083c2ed36526cca72ead9a93ddd26da5ee7"
+  },
+  {
+   "path": "library/cards/platypus/card/labels-512.png",
+   "bytes": 8321,
+   "sha256": "af83567b9e64802186b64d36dbba93c23b14e675d8ed29461f40e66d2df4b51d"
+  },
+  {
+   "path": "library/cards/platypus/card/master-512.png",
+   "bytes": 93946,
+   "sha256": "a3153b8142ce133abf2f51afad0a33e5b1e8d2b80bfcfcd1ee83f7b5fce7750c"
+  },
+  {
+   "path": "library/cards/platypus/record.json",
+   "bytes": 7103,
+   "sha256": "78074f3593450c6920e42a56f827cbd78fe63da3876dd8a3aae30736c3afe892"
+  },
+  {
+   "path": "library/cards/sculpin/SOURCE.json",
+   "bytes": 283,
+   "sha256": "a167173eeafd35335e04471aabc66ba464b13df2332ff82fc2519a79380807dd"
+  },
+  {
+   "path": "library/cards/sculpin/card/card.json",
+   "bytes": 2904,
+   "sha256": "9a75fb9c6ad5ef4b5cb0dfe257e9e08fe577c6ac262f5f063fff2594bba6f82e"
+  },
+  {
+   "path": "library/cards/sculpin/card/labels-512.png",
+   "bytes": 7107,
+   "sha256": "509fd97c363b2bef837690b2940b7fba728c25cbd9f561eb7befc73b62d7221d"
+  },
+  {
+   "path": "library/cards/sculpin/card/master-512.png",
+   "bytes": 159846,
+   "sha256": "5c73974a7fa35d852be42b9efa48cc7af737e0a71eeff890823aa650e0925e11"
+  },
+  {
+   "path": "library/cards/sculpin/record.json",
+   "bytes": 5135,
+   "sha256": "74ecb0894f00b2c916be59f1eee10efee6da2e46bc913ab58ec406989cd7a0aa"
+  },
+  {
+   "path": "library/cards/starling/SOURCE.json",
+   "bytes": 301,
+   "sha256": "770e6b53fdd642a763f1f051d2672142b1ebc7a22d8d5cddb5184ea7a0be8f53"
+  },
+  {
+   "path": "library/cards/starling/card/card.json",
+   "bytes": 3753,
+   "sha256": "478cbafb303db443ff5d098b4a17dd0be3c26bcff2e75bbec7fc1de707f4db7c"
+  },
+  {
+   "path": "library/cards/starling/card/labels-512.png",
+   "bytes": 11141,
+   "sha256": "0c8d54047bd9cf5e239113e96c1a28e61d0daed6a41c234f186a8d7104063d7d"
+  },
+  {
+   "path": "library/cards/starling/card/master-512.png",
+   "bytes": 207610,
+   "sha256": "14b17f0cc399d60b35ee240751f3d2a0e23820027e964b4d902c9907efcec5f9"
+  },
+  {
+   "path": "library/cards/starling/record.json",
+   "bytes": 5952,
+   "sha256": "c4d3ace87a9edd93ad7677689c38e9ed4ae56f715ab2152c1a8c10c0ef62331e"
+  },
+  {
+   "path": "library/cards/tilapia/SOURCE.json",
+   "bytes": 285,
+   "sha256": "7505362742367d8c579a50f856bcb77fd08a09bb4d38a1ddad5ad5eaf8a02eab"
+  },
+  {
+   "path": "library/cards/tilapia/card/card.json",
+   "bytes": 2933,
+   "sha256": "a8eb96ca15a2b752495872249dc5ea1bc84a37cce6e67a559295bf15e173eba2"
+  },
+  {
+   "path": "library/cards/tilapia/card/labels-512.png",
+   "bytes": 4968,
+   "sha256": "8a7694dcdb7a09c0f1ef667334837070c0e8b22a26cbc983fb4e084cc6aaa85b"
+  },
+  {
+   "path": "library/cards/tilapia/card/master-512.png",
+   "bytes": 125610,
+   "sha256": "6ee06cbea49b786f8b65e21b52d182ef94fcd3980cacb70fa16679c90007db4e"
+  },
+  {
+   "path": "library/cards/tilapia/record.json",
+   "bytes": 5131,
+   "sha256": "567e33216d7691e47efee503c7ac7b999f8702ee2047b8ccec88eb782c82810a"
+  },
+  {
+   "path": "library/cards/wild-ass/SOURCE.json",
+   "bytes": 301,
+   "sha256": "2e1731593fda0f313592035681d772b53ec410f1d2db2e73600a7ce0d8d4c661"
+  },
+  {
+   "path": "library/cards/wild-ass/card/card.json",
+   "bytes": 5871,
+   "sha256": "6cfe3992c0ea6551fdf5089828d23202def41617d3199fce8aade68bd3e2254a"
+  },
+  {
+   "path": "library/cards/wild-ass/card/labels-512.png",
+   "bytes": 7196,
+   "sha256": "517ac8bd00a1329e98f370395e4bdd1c1376aec276dfafdcd62d48315a723bcd"
+  },
+  {
+   "path": "library/cards/wild-ass/card/master-512.png",
+   "bytes": 65948,
+   "sha256": "06060fd12278f97e40f1c34c3669a4b5b17e6881b00b02dbdf193b5c362ff474"
+  },
+  {
+   "path": "library/cards/wild-ass/record.json",
+   "bytes": 7408,
+   "sha256": "9221a9a40f60055536fd5805019c23ee2058b6035f30235cac70146e46a9aa42"
+  },
+  {
+   "path": "library/creature-finish-source/03-arctic-fox/labels.png",
+   "bytes": 56367,
+   "sha256": "e86bcffb2bd3d7e0a882fa0b32fb7da979cdca28b8ca23de2351e486b7527b97"
+  },
+  {
+   "path": "library/creature-finish-source/03-arctic-fox/master.png",
+   "bytes": 1201427,
+   "sha256": "a280208f10b4781ed3f2eb21530f0e7c7a6076a850dd0dd9b6802d6cb967a246"
+  },
+  {
+   "path": "library/creature-finish-source/q20-06-lynx/labels.png",
+   "bytes": 62283,
+   "sha256": "ab1ac689d0840fd1ba43f785857b4dbcb1bcd8a091f8bb245dde175957d864fe"
+  },
+  {
+   "path": "library/creature-finish-source/q20-06-lynx/master.png",
+   "bytes": 1651307,
+   "sha256": "17a2640ae3cf7e98cacf844925cfed0dca4508d396e48c638a2545b651eeeffa"
+  }
+ ]
+}

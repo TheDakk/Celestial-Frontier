@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Flying Squirrel",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/g2c118-07-flying-squirrel/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "843f2fbd006c8c27d06e29bab7b7c98f4f194df10f27eb78c828df1a6d0740d1"
+}

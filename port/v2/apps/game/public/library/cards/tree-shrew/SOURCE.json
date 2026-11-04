@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tree Shrew",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/17-tree-shrew/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "27103d549d2c23bb450acb10e256f33e93beb1719c268061a54a959e85f1223d"
+}

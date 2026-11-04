@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Porpoise",
+ "fitDir": "audits/C234_PROGRAM_20261011/phase1/rebound-retained/c215program-41-porpoise/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "92df3b98644b649bae5956097df2305c300ab9f9d5c0f1a47391de16d777f02c"
+}

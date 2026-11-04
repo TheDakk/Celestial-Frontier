@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cottonmouth",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2serp-strips-v1/19-cottonmouth/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "0c46015f147980ee345fa9651e4b86ce786ecbd8d494651c00a8e1b072706dda"
+}

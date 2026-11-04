@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Archerfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/06-archerfish/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3803a308573bc28222e8cee434017e2a1b8a9839c265f4fa769f63d96db5917a"
+}

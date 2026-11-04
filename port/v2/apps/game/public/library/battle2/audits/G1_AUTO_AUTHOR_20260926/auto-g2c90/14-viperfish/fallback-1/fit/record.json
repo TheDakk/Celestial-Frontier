@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Viperfish\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2520456812\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"4\"]]]]",
+    "seed": 2520456812,
+    "ownerId": "authored:archetype-sprint/14-viperfish",
+    "earthName": "Viperfish"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2520456812,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 0,
+    "body": 11,
+    "loco": 5,
+    "trait": 4,
+    "size": 5,
+    "diet": 2,
+    "head": 7,
+    "limbs": 4,
+    "skin": 8,
+    "tail": 4,
+    "pattern": 0,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 0,
+    "detail": 9,
+    "accent": 4,
+    "temper": 7,
+    "sense": 7,
+    "repro": 5,
+    "life": 0,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Viperfish"
+  },
+  "geometry": {
+    "cutoutAssetHash": "6e120d370d837adc760b7ca2c812f3aca8a7841ed8de0b8f916a8c2037b80582",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6850487118964078,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.7011961722488038,
+      0.47535885167464115
+    ],
+    "head": [
+      0.8148325358851675,
+      0.4944178628389155
+    ],
+    "jaw": [
+      0.8473684210526315,
+      0.4984051036682616
+    ],
+    "spine0": [
+      0.6692185007974482,
+      0.4835725677830941
+    ],
+    "spine1": [
+      0.6043062200956938,
+      0.48181818181818187
+    ],
+    "spine2": [
+      0.5450558213716108,
+      0.4814992025518341
+    ],
+    "spine3": [
+      0.4603668261562998,
+      0.48963317384370014
+    ],
+    "spine4": [
+      0.34537480063795856,
+      0.4957735247208932
+    ],
+    "spine5": [
+      0.25893141945773523,
+      0.4974481658692185
+    ],
+    "caudal": [
+      0.17496012759170654,
+      0.5017543859649123
+    ],
+    "dorsal": [
+      0.6152312599681021,
+      0.42145135566188197
+    ],
+    "pectoralNear": [
+      0.7378787878787878,
+      0.510207336523126
+    ],
+    "pectoralFar": [
+      0.720414673046252,
+      0.546012759170654
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/14-viperfish/fallback-1/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from herring. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "aa31ae46b79b0b17f732597468b6c4e4e4834552f8f75a2b8bf6376eef5fdb16",
+    "subjectSourceSha256": "abe7b86ffeda2f4b6f115f68f4f6a11e034fe3ef8e043a16d6d98ed2f0baff6a",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.11522356116287936,
+      "jaw": 0.03277929091761465,
+      "spine0": 0.033015702381762324,
+      "spine1": 0.06493598429235699,
+      "spine2": 0.05925125734307395,
+      "spine3": 0.08507871296367775,
+      "spine4": 0.11515585022787984,
+      "spine5": 0.08645960081358837,
+      "caudal": 0.08408163526693765,
+      "dorsal": 0.061347454685574745,
+      "pectoralFar": 0.0732210722221182,
+      "pectoralNear": 0.05059675074243625
+    },
+    "measures": {
+      "body": 0.4105216453934042,
+      "bone-min": 0.03277929091761465,
+      "bone-max": 0.11522356116287936,
+      "caudal/body": 0.20481656987017569,
+      "head/body": 0.2806759703315041
+    }
+  },
+  "recipeHash": "b8a5f78715b3cafa715d3a322706e5643393ed6c8951e344e9d7acffd6802639"
+}

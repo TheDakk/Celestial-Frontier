@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Ant",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/ant-finish-01/rebound/c266-34-ant/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "baffa691361ded9ffa1d8b140735fb14f30287320991f9c9f886b10c4850be8a"
+}

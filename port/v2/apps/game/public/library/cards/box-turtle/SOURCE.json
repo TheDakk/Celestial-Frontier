@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Box Turtle",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-finish-01/rebound/c266-02-box-turtle-a03/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "15d6632239169863c81c837b4d1c4502ab0e68fa4acd2db0c0fd40f3319cd064"
+}

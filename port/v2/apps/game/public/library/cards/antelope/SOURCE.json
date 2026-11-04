@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Antelope",
+ "fitDir": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/10-antelope-tail/islands-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "9ec24c5a2d4529626ac20dcea627582d63352d06aa8332e551fb02d8a28cb175"
+}

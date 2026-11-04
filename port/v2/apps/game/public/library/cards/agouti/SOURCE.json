@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Agouti",
+ "fitDir": "audits/ISLANDS_SWEEP6_20261011/g2c76-18-agouti/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "040c3bdca417f624f01ffc553907dee9b4f3ad6a3b3f621e19da4f9c2ccf32ab"
+}

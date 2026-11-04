@@ -63,7 +63,7 @@ Verified: the html from the tag hashes identically to the working tree at captur
 A second copy under this directory would be 1.9 MB of duplication of something git holds better.
 The same reasoning applies to `tools/baseline.json` (the v1.0 fingerprint), which is also tracked
 — reference it at `tools/baseline.json`, sha256
-`6f9a42a29c7a3276a72417267254b59be4ebf9999dfa5656073988c1fbf8081c`.
+`678fa4a971ee70b94b890a9e11f290980e5a6de18f6f540596892e79bbf5bb5a`.
 
 **`main.js` is gitignored by design.** `celestial-frontier.html` is the tracked canonical artifact
 and `main.js` is derived from it. On a *fresh clone only*, bootstrap with `node tools/extract.js`.

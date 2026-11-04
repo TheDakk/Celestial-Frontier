@@ -1,0 +1,217 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Capuchin",
+ "recordRecipeHash": "fc4bea0ed333f25bd35bffb5a4d2a1a1f9083ff9cce9abd9f17b6f618901ad5b",
+ "source": {
+  "master": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/master.png",
+  "masterSha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3",
+  "keyedSha256": "c1d61389b86cab59695794c77ad0142e3ad2579ff20aafb2ce2a9955858c4863",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "f6d580d31f125fe20ebb846e13cbc6fc1a6f8adaf723d5cc194117ad468af6ed",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "arm-near-hand",
+   "joint": "armNearHand",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "arm-far-hand",
+   "joint": "armFarHand",
+   "layer": "far"
+  },
+  {
+   "label": 3,
+   "id": "leg-near-foot",
+   "joint": "legNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "leg-far-foot",
+   "joint": "legFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 5,
+   "id": "arm-near-elbow",
+   "joint": "armNearElbow",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "arm-far-elbow",
+   "joint": "armFarElbow",
+   "layer": "far"
+  },
+  {
+   "label": 7,
+   "id": "leg-near-knee",
+   "joint": "legNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 8,
+   "id": "leg-far-knee",
+   "joint": "legFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 9,
+   "id": "tail2",
+   "joint": "tail2",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "tail1",
+   "joint": "tail1",
+   "layer": "near"
+  },
+  {
+   "label": 11,
+   "id": "tail0",
+   "joint": "tail0",
+   "layer": "near"
+  },
+  {
+   "label": 12,
+   "id": "jaw",
+   "joint": "jaw",
+   "layer": "near"
+  },
+  {
+   "label": 13,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 14,
+   "id": "neck",
+   "joint": "neck",
+   "layer": "near"
+  },
+  {
+   "label": 15,
+   "id": "chest",
+   "joint": "chest",
+   "layer": "near"
+  },
+  {
+   "label": 16,
+   "id": "pelvis",
+   "joint": "pelvis",
+   "layer": "near"
+  },
+  {
+   "label": 17,
+   "id": "body",
+   "joint": "root",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.529505582137161,
+   0.5063795853269537
+  ],
+  "pelvis": [
+   0.4370015948963317,
+   0.49681020733652315
+  ],
+  "spine": [
+   0.5223285486443381,
+   0.46172248803827753
+  ],
+  "chest": [
+   0.6578947368421053,
+   0.5127591706539075
+  ],
+  "neck": [
+   0.6881977671451356,
+   0.4665071770334928
+  ],
+  "head": [
+   0.7360446570972887,
+   0.4585326953748006
+  ],
+  "jaw": [
+   0.759170653907496,
+   0.5135566188197768
+  ],
+  "armNearShoulder": [
+   0.6403508771929824,
+   0.5311004784688995
+  ],
+  "armNearElbow": [
+   0.5956937799043063,
+   0.6084529505582137
+  ],
+  "armNearHand": [
+   0.6467304625199362,
+   0.7352472089314195
+  ],
+  "armFarShoulder": [
+   0.7065390749601276,
+   0.55103668261563
+  ],
+  "armFarElbow": [
+   0.7360446570972887,
+   0.6323763955342903
+  ],
+  "armFarHand": [
+   0.803030303030303,
+   0.7352472089314195
+  ],
+  "legNearHip": [
+   0.43859649122807015,
+   0.529505582137161
+  ],
+  "legNearKnee": [
+   0.4944178628389155,
+   0.5909090909090909
+  ],
+  "legNearFoot": [
+   0.49920255183413076,
+   0.7232854864433812
+  ],
+  "legFarHip": [
+   0.40350877192982454,
+   0.529505582137161
+  ],
+  "legFarKnee": [
+   0.3923444976076555,
+   0.5988835725677831
+  ],
+  "legFarFoot": [
+   0.31259968102073366,
+   0.7129186602870813
+  ],
+  "tail0": [
+   0.41148325358851673,
+   0.4784688995215311
+  ],
+  "tail1": [
+   0.21850079744816586,
+   0.3883572567783094
+  ],
+  "tail2": [
+   0.2878787878787879,
+   0.2783094098883573
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "17b616c73144d4f026348a9a1d180484e7cf2ed3b81c37dd7db943226cbafedc",
+  "labelsSha256": "2a991bd377e4679519b5842b99253d64db4a6fdedd603e4154152d51ad0e4c8c",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

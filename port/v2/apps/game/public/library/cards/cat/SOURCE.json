@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cat",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep1/c132references-04-cat/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "82b305ba713691824f3403a7386eaadb966fd1c25f22fcd0016e10cc74311401"
+}

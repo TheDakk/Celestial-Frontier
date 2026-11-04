@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Meerkat",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/21-meerkat-v2/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c7aca27da2648b0bedf1ff1f67468313c538c331c180f52238cb77965bdd3a79"
+}

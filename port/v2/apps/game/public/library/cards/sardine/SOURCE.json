@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sardine",
+ "fitDir": "audits/FISH_PIPELINE_C88_20260927/04-sardine-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "e782a9e964160b0cffa1a3708579c226603c613335884a4e1f1b41d3241651fd"
+}

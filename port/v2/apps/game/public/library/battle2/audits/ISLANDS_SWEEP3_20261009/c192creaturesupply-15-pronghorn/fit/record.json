@@ -1,0 +1,260 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pronghorn\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1668284013\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"4\"]]]]",
+    "seed": 1668284013,
+    "ownerId": "authored:archetype-sprint/c192creaturesupply-15-pronghorn",
+    "earthName": "Pronghorn"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "representation": {
+      "schema": "cf.source-representation/v1",
+      "reviewSha256": "eaf56a1067a2ed7a8d9b199e786bcd7fb69bc48db2dc745b74b140bf0c27d5a7",
+      "compactTail": {
+        "terminal": "tail1"
+      }
+    }
+  },
+  "genome": {
+    "seed": 1668284013,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 10,
+    "body": 6,
+    "loco": 3,
+    "trait": 4,
+    "size": 1,
+    "diet": 3,
+    "head": 8,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 1,
+    "behavior": 1,
+    "habitat": 12,
+    "detail": 2,
+    "accent": 6,
+    "temper": 2,
+    "sense": 2,
+    "repro": 7,
+    "life": 0,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Pronghorn"
+  },
+  "geometry": {
+    "cutoutAssetHash": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7824246460030833,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.43508771929824563,
+      0.44537480063795853
+    ],
+    "pelvis": [
+      0.3100478468899522,
+      0.43548644338118025
+    ],
+    "spine": [
+      0.4480063795853269,
+      0.44577352472089316
+    ],
+    "chest": [
+      0.5637958532695375,
+      0.44298245614035087
+    ],
+    "neck": [
+      0.6463317384370016,
+      0.3862838915470494
+    ],
+    "head": [
+      0.7049441786283892,
+      0.309170653907496
+    ],
+    "jaw": [
+      0.759090909090909,
+      0.36555023923444974
+    ],
+    "hindNearRoot": [
+      0.31012759170653903,
+      0.43907496012759173
+    ],
+    "hindNearKnee": [
+      0.3287878787878788,
+      0.5141148325358852
+    ],
+    "hindNearAnkle": [
+      0.24170653907496015,
+      0.6107655502392344
+    ],
+    "hindNearPaw": [
+      0.2309409888357257,
+      0.764274322169059
+    ],
+    "hindFarRoot": [
+      0.32161084529505585,
+      0.4494417862838916
+    ],
+    "hindFarKnee": [
+      0.3365231259968102,
+      0.5355661881977671
+    ],
+    "hindFarAnkle": [
+      0.31993620414673046,
+      0.6365231259968103
+    ],
+    "hindFarPaw": [
+      0.37559808612440193,
+      0.7692982456140351
+    ],
+    "foreNearRoot": [
+      0.5626794258373206,
+      0.45550239234449763
+    ],
+    "foreNearKnee": [
+      0.5773524720893142,
+      0.5565390749601276
+    ],
+    "foreNearAnkle": [
+      0.5988835725677831,
+      0.6399521531100478
+    ],
+    "foreNearPaw": [
+      0.6396331738437002,
+      0.7720095693779905
+    ],
+    "foreFarRoot": [
+      0.5471291866028708,
+      0.4598086124401914
+    ],
+    "foreFarKnee": [
+      0.5293460925039872,
+      0.562360446570973
+    ],
+    "foreFarAnkle": [
+      0.5143540669856459,
+      0.6549441786283892
+    ],
+    "foreFarPaw": [
+      0.5165869218500797,
+      0.7659489633173844
+    ],
+    "earNearRoot": [
+      0.6494417862838915,
+      0.3263955342902711
+    ],
+    "earNearTip": [
+      0.6686602870813397,
+      0.22679425837320571
+    ],
+    "earFarRoot": [
+      0.7444178628389154,
+      0.2708133971291866
+    ],
+    "earFarTip": [
+      0.7800637958532696,
+      0.22607655502392343
+    ],
+    "tail0": [
+      0.266347687400319,
+      0.4473684210526316
+    ],
+    "tail1": [
+      0.2679425837320574,
+      0.4960127591706539
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c192creaturesupply-15-pronghorn/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile hoofed-horned media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from impala. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "b27a467a4f86c51b0b3c1924b80d49938a19cb403fe62caf161b21c8a4ce35f6",
+    "subjectSourceSha256": "787d056dec38bf2e8fc8c2f7a09a5559e375dd8bf16a75dc062653d970bfff66",
+    "presenceSha256": "97b33eb99cc28811caeb7b023a470e69dcbe308f591696cd12f38d20ec621d1b",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.12543025672109573,
+      "spine": 0.13834153673409388,
+      "chest": 0.1158231077112326,
+      "neck": 0.10013440750969471,
+      "head": 0.09686005143733521,
+      "jaw": 0.07816985391709538,
+      "hindFarRoot": 0.01812331447745377,
+      "hindFarKnee": 0.08740588493202667,
+      "hindFarAnkle": 0.10231045531235075,
+      "hindFarPaw": 0.14397040492637578,
+      "foreFarRoot": 0.023683270753940267,
+      "foreFarKnee": 0.10408226130958666,
+      "foreFarAnkle": 0.09378970237090017,
+      "foreFarPaw": 0.11102723929151717,
+      "hindNearRoot": 0.0035894026905667832,
+      "hindNearKnee": 0.07732521429010707,
+      "hindNearAnkle": 0.13009427719453784,
+      "hindNearPaw": 0.15388580224100074,
+      "foreNearRoot": 0.012569614662642265,
+      "foreNearKnee": 0.10209656958137564,
+      "foreNearAnkle": 0.08614714095231851,
+      "foreNearPaw": 0.13820163239090524,
+      "tail0": 0.04528670150059778,
+      "tail1": 0.04867047693673725,
+      "earFarRoot": 0.05504044778805407,
+      "earFarTip": 0.05720155226927913,
+      "earNearRoot": 0.05811378545718281,
+      "earNearTip": 0.10143847858287758
+    },
+    "measures": {
+      "torso": 0.25385870272436933,
+      "head": 0.09686005143733521,
+      "head/torso": 0.3815510376356976,
+      "bone-min": 0.0035894026905667832,
+      "bone-max": 0.15388580224100074,
+      "leg/torso:hindFar": 1.314458561355914,
+      "leg/torso:foreFar": 1.2168154948282222,
+      "leg/torso:hindNear": 1.4232535258715866,
+      "leg/torso:foreNear": 1.2859332353834723
+    }
+  },
+  "recipeHash": "381482079eff2f760a722b60c173b017b6a49e8ec2ae28925b319a598f883d96"
+}

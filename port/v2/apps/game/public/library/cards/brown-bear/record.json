@@ -1,0 +1,260 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Brown Bear\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2139010517\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"10\"]]]]",
+    "seed": 2139010517,
+    "ownerId": "authored:archetype-sprint/c203creaturesupplyb-07-brown-bear",
+    "earthName": "Brown Bear"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "representation": {
+      "schema": "cf.source-representation/v1",
+      "reviewSha256": "fa1bb47cff7cbdddc77fe66a167ee551e471833ac3b1290a9f9d08a226c571cb",
+      "compactTail": {
+        "terminal": "tail1"
+      }
+    }
+  },
+  "genome": {
+    "seed": 2139010517,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 9,
+    "body": 3,
+    "loco": 12,
+    "trait": 10,
+    "size": 4,
+    "diet": 0,
+    "head": 7,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 17,
+    "detail": 0,
+    "accent": 13,
+    "temper": 3,
+    "sense": 8,
+    "repro": 7,
+    "life": 1,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Brown Bear"
+  },
+  "geometry": {
+    "cutoutAssetHash": "b4b4a70dba8d7fff52b00de9edc38acb5787416b6c16197aa754d324d082de95",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7075048712074702,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.430622009569378,
+      0.4731259968102073
+    ],
+    "pelvis": [
+      0.27535885167464114,
+      0.5090111642743221
+    ],
+    "spine": [
+      0.42894736842105263,
+      0.4485645933014354
+    ],
+    "chest": [
+      0.5931419457735246,
+      0.43173843700159487
+    ],
+    "neck": [
+      0.6658692185007975,
+      0.4117224880382775
+    ],
+    "head": [
+      0.7370813397129187,
+      0.4018341307814992
+    ],
+    "jaw": [
+      0.768341307814992,
+      0.45191387559808616
+    ],
+    "earNearRoot": [
+      0.7329346092503988,
+      0.3451355661881978
+    ],
+    "earNearTip": [
+      0.7446570972886762,
+      0.32822966507177037
+    ],
+    "earFarRoot": [
+      0.7716905901116428,
+      0.3262360446570973
+    ],
+    "earFarTip": [
+      0.7788676236044657,
+      0.31945773524720894
+    ],
+    "hindNearRoot": [
+      0.2535885167464115,
+      0.5464912280701754
+    ],
+    "hindNearKnee": [
+      0.2350079744816587,
+      0.6078947368421053
+    ],
+    "hindNearAnkle": [
+      0.21929824561403508,
+      0.6591706539074961
+    ],
+    "hindNearPaw": [
+      0.23118022328548643,
+      0.6838915470494418
+    ],
+    "hindFarRoot": [
+      0.37424242424242427,
+      0.5995215311004785
+    ],
+    "hindFarKnee": [
+      0.38197767145135564,
+      0.6299043062200956
+    ],
+    "hindFarAnkle": [
+      0.3984051036682616,
+      0.6639553429027113
+    ],
+    "hindFarPaw": [
+      0.4144338118022329,
+      0.6798245614035088
+    ],
+    "foreNearRoot": [
+      0.6138755980861244,
+      0.5428229665071771
+    ],
+    "foreNearKnee": [
+      0.6523125996810207,
+      0.6059011164274322
+    ],
+    "foreNearAnkle": [
+      0.6907496012759171,
+      0.6604465709728868
+    ],
+    "foreNearPaw": [
+      0.7237639553429027,
+      0.680622009569378
+    ],
+    "foreFarRoot": [
+      0.540829346092504,
+      0.5629186602870814
+    ],
+    "foreFarKnee": [
+      0.5462519936204147,
+      0.6216905901116427
+    ],
+    "foreFarAnkle": [
+      0.55518341307815,
+      0.6676236044657098
+    ],
+    "foreFarPaw": [
+      0.5730462519936205,
+      0.6937001594896332
+    ],
+    "tail0": [
+      0.23524720893141945,
+      0.4218500797448166
+    ],
+    "tail1": [
+      0.215311004784689,
+      0.4473684210526316
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/c203creaturesupplyb-07-brown-bear/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile bear media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from c215-qualified-heavy-hippo. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "b4a34ce8c47333b76adcda0ab01f9c44f9505339b621d988d7f0d21079c4dc04",
+    "subjectSourceSha256": "19801f49ece13ad5a2447a0cf391e9af1cc802bba1659e11b3fdf7009df2e5fd",
+    "presenceSha256": "2a0b4011959310eb755c0d5b6c08804fe566dd7a8518952e29bf66b003787ad9",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.1593561842018488,
+      "spine": 0.16505520415528543,
+      "chest": 0.16505447212294364,
+      "neck": 0.07543138876654236,
+      "head": 0.0718953810530796,
+      "jaw": 0.05903529831073193,
+      "hindFarRoot": 0.13405255471930927,
+      "hindFarKnee": 0.031351986752875954,
+      "hindFarAnkle": 0.03780652891237011,
+      "hindFarPaw": 0.022555522167976738,
+      "foreFarRoot": 0.14122626903879043,
+      "foreFarKnee": 0.059021562513331696,
+      "foreFarAnkle": 0.04679329077101699,
+      "foreFarPaw": 0.03160803277706079,
+      "hindNearRoot": 0.043344003795548515,
+      "hindNearKnee": 0.06415315612155599,
+      "hindNearAnkle": 0.05362849291180093,
+      "hindNearPaw": 0.027428159820162317,
+      "foreNearRoot": 0.11300290719134769,
+      "foreNearKnee": 0.07386647472952965,
+      "foreNearAnkle": 0.06672787800594537,
+      "foreNearPaw": 0.038691031221990906,
+      "tail0": 0.09594789492177232,
+      "tail1": 0.03238268023005893,
+      "earFarRoot": 0.08314367587997339,
+      "earFarTip": 0.009871944500111605,
+      "earNearRoot": 0.056850000883637314,
+      "earNearTip": 0.020572462622787294
+    },
+    "measures": {
+      "torso": 0.3270430694499199,
+      "head": 0.0718953810530796,
+      "head/torso": 0.21983459601821326,
+      "bone-min": 0.009871944500111605,
+      "bone-max": 0.16505520415528543,
+      "leg/torso:hindFar": 0.2804341274911712,
+      "leg/torso:foreFar": 0.4201981295385715,
+      "leg/torso:hindNear": 0.4440082130398278,
+      "leg/torso:foreNear": 0.5482011413940692
+    }
+  },
+  "recipeHash": "8d0467f4bb750b0a5a3b96f3d04fae8789c64de4564caffb690aac8a13958d41"
+}

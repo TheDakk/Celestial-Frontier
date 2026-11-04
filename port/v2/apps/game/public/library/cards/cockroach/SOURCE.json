@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cockroach",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2insect-pool/c54-21-cockroach/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6d62e1283646e92a0e8438b5f96f86115a117f2bcb086ed35d979dbc59280369"
+}

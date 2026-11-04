@@ -274,8 +274,14 @@ function esc(value: unknown): string {
   })[character]!);
 }
 
-function signatureRow(row: PrimeCodexSignatureRowV1): string {
+function signatureRow(row: PrimeCodexSignatureRowV1, options?: PrimeCodexRenderOptionsV1): string {
   const { definition, claim } = row;
+  /* D16 parity (v1 data-pgo / data-tgo): travel to a claim's world; track an in-reach Titan. Absent sets = no buttons. */
+  const verb = claim !== null
+    ? (options?.travel?.has(definition.id) ? '<button type="button" class="prime-travel" data-prime-travel="' + esc(definition.id)
+      + '" aria-label="Travel to the world where ' + esc(definition.signatureName) + ' was claimed">Travel there ↗</button>' : '')
+    : (options?.track?.has(definition.id) ? '<button type="button" class="prime-travel" data-prime-track="' + esc(definition.id)
+      + '" aria-label="Track the ' + esc(definition.element) + ' Titan">📡 Track the Titan ↗</button>' : '');
   const status = claim === null ? 'Unclaimed' : 'Claimed';
   const body = claim === null
     ? '<p class="prime-guardian">⚔ Guarded by <b>' + esc(definition.guardianName) + '</b></p>'
@@ -286,19 +292,24 @@ function signatureRow(row: PrimeCodexSignatureRowV1): string {
       + '<b>' + esc(claim.title) + '</b>'
       + (claim.sub ? '<span class="sub">' + esc(claim.sub) + '</span>' : '')
       + '<span class="sub">Tier ' + claim.tier + ' record</span></div>';
+  const actions = verb === '' ? '' : '<div class="prime-travel-row">' + verb + '</div>';
   return '<details class="prime-signature" data-prime-signature-id="' + esc(definition.id)
     + '" data-prime-signature-state="' + (claim === null ? 'unclaimed' : 'claimed') + '">'
     + '<summary><span class="prime-signature-icon" aria-hidden="true">' + esc(definition.icon)
     + '</span><span><b>' + esc(definition.signatureName) + '</b><span class="sub">'
     + esc(definition.element) + ' · ' + status + '</span></span><span aria-hidden="true">'
     + (claim === null ? '○' : '✓') + '</span></summary><div class="prime-signature-body">'
-    + body + '</div></details>';
+    + body + actions + '</div></details>';
 }
 
 export interface PrimeCodexRenderOptionsV1 {
   readonly pending: boolean;
   readonly writable: boolean;
   readonly status: string | null;
+  /** Claimed Signatures whose saved world resolves (a "Travel there" button). */
+  readonly travel?: ReadonlySet<string>;
+  /** Unclaimed Signatures whose resonance is strong (a "Track the Titan" button). */
+  readonly track?: ReadonlySet<string>;
 }
 
 function frontierMarkup(
@@ -354,6 +365,6 @@ export function renderPrimeCodexPanelV1(
     + '</b> / ' + projection.rows.length + ' Signatures</span><progress aria-label="Prime Codex completion" value="'
     + projection.claimedCount + '" max="' + projection.rows.length + '"></progress></div>'
     + '<div class="prime-signature-list" aria-label="Nine elemental Signatures">'
-    + projection.rows.map(signatureRow).join('') + '</div>'
+    + projection.rows.map((row) => signatureRow(row, options)).join('') + '</div>'
     + frontierMarkup(projection, options) + '</section>';
 }

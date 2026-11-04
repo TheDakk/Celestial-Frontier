@@ -1,0 +1,157 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Parrotfish",
+ "recordRecipeHash": "470ffdfe8767db0b3680621803f45b82af88eeeb94437dd5642a54c9ab505f52",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/02-parrotfish/packet/master.png",
+  "masterSha256": "232545118c6e65c40dbe77057c9dfb5527de4484edceff7bb8efbac073038264",
+  "keyedSha256": "b3c063111d973a02f2e40ff44502e2de7d0ff9d54257f32027deb320051bac34",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "3ec6bd109064fac7c3920b1db628e7bb386905b5983260935b1d65122d331182",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "near-pectoral",
+   "joint": "pectoralNear",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "far-pectoral",
+   "joint": "pectoralFar",
+   "layer": "far"
+  },
+  {
+   "label": 3,
+   "id": "jaw",
+   "joint": "jaw",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "dorsal",
+   "joint": "dorsal",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "caudal",
+   "joint": "caudal",
+   "layer": "near"
+  },
+  {
+   "label": 7,
+   "id": "body",
+   "joint": "root",
+   "layer": "near"
+  },
+  {
+   "label": 8,
+   "id": "body-0",
+   "joint": "spine0",
+   "layer": "near"
+  },
+  {
+   "label": 9,
+   "id": "body-1",
+   "joint": "spine1",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "body-2",
+   "joint": "spine2",
+   "layer": "near"
+  },
+  {
+   "label": 11,
+   "id": "body-3",
+   "joint": "spine3",
+   "layer": "near"
+  },
+  {
+   "label": 12,
+   "id": "body-4",
+   "joint": "spine4",
+   "layer": "near"
+  },
+  {
+   "label": 13,
+   "id": "body-5",
+   "joint": "spine5",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.7481658692185008,
+   0.49074960127591705
+  ],
+  "head": [
+   0.8377192982456141,
+   0.4728867623604466
+  ],
+  "jaw": [
+   0.8420255183413079,
+   0.5605263157894737
+  ],
+  "spine0": [
+   0.7063795853269537,
+   0.4677830940988836
+  ],
+  "spine1": [
+   0.6352472089314195,
+   0.4563795853269537
+  ],
+  "spine2": [
+   0.5457735247208931,
+   0.45534290271132377
+  ],
+  "spine3": [
+   0.44465709728867625,
+   0.4696969696969697
+  ],
+  "spine4": [
+   0.33118022328548646,
+   0.4874003189792664
+  ],
+  "spine5": [
+   0.25885167464114833,
+   0.490829346092504
+  ],
+  "caudal": [
+   0.19170653907496013,
+   0.49354066985645934
+  ],
+  "dorsal": [
+   0.5185805422647528,
+   0.33588516746411484
+  ],
+  "pectoralNear": [
+   0.6980861244019139,
+   0.5300637958532696
+  ],
+  "pectoralFar": [
+   0.7267145135566188,
+   0.5702551834130781
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "7cfd24094ebdf072e1ad6114872345aae896fa6489a8f5abae1081d7f1fc89c9",
+  "labelsSha256": "1404b7e0126f5a178bc99bcac07a5fb04ea1eb0a835d894825e55a2dc01d820a",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

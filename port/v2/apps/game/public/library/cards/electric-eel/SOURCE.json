@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Electric Eel",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c107/03-electric-eel/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5aa0aeed73551d02f2190e5d7b0ebae5d0d565ceab9bba3f881b5f85bb7e00d2"
+}

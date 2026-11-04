@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Dolphin",
+ "fitDir": "audits/C234_PROGRAM_20261011/phase1/rebound-retained/c215program-40-dolphin/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d55bbce9ec692b3054ad2b3b2df2dda5f8705e9f96495657edbf4eb8d21b4d2a"
+}

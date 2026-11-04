@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Kudu",
+ "fitDir": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/02-kudu/islands-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5e825f2cd263da07a4aa2ab1fef057787da1f870786faa2ce8ecb5165290e352"
+}

@@ -28,6 +28,8 @@ export interface BioscanHazardPolicyInputV1 {
   readonly settled: boolean;
   readonly reinforcedHull: boolean;
   readonly fieldWoundReduction: number;
+  /** D14: a FINISHED Field Shelter stands on this world (outposts `finishedShelterPlanetSeedsV1`). Optional; absent = false. */
+  readonly sheltered?: boolean;
 }
 
 export interface BioscanHazardPolicyV1 {
@@ -37,7 +39,7 @@ export interface BioscanHazardPolicyV1 {
   readonly baseDamage: number;
   readonly hullAdjustedDamage: number;
   readonly finalDamage: number;
-  readonly safeReason: 'no-fauna' | 'settled' | null;
+  readonly safeReason: 'no-fauna' | 'settled' | 'shelter' | null;
 }
 
 export type BioscanHazardOutcomeV1 = Readonly<{
@@ -67,11 +69,12 @@ export function strongestFaunaPowerForBioscanV1(roster: CanonicalWorldRoster): n
 function capture(value: BioscanHazardPolicyInputV1): BioscanHazardPolicyInputV1 | null {
   try {
     if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
-    const expected = [
+    const base = [
       'address', 'fieldWoundReduction', 'planetType', 'reinforcedHull', 'settled',
       'strongestFaunaPower',
     ];
     const keys = Reflect.ownKeys(value);
+    const expected = keys.includes('sheltered') ? [...base, 'sheltered'].sort() : base;
     if (keys.some((key) => typeof key !== 'string')
       || (keys as string[]).sort().some((key, index) => key !== expected[index])
       || keys.length !== expected.length) return null;
@@ -90,7 +93,8 @@ function capture(value: BioscanHazardPolicyInputV1): BioscanHazardPolicyInputV1 
       || typeof data.fieldWoundReduction !== 'number'
       || !Number.isFinite(data.fieldWoundReduction)
       || data.fieldWoundReduction < 0
-      || data.fieldWoundReduction > BIOSCAN_FIELD_WOUND_REDUCTION_CAP_V1) return null;
+      || data.fieldWoundReduction > BIOSCAN_FIELD_WOUND_REDUCTION_CAP_V1
+      || ('sheltered' in data && typeof data.sheltered !== 'boolean')) return null;
     return Object.freeze(data) as unknown as BioscanHazardPolicyInputV1;
   } catch {
     return null;
@@ -117,7 +121,7 @@ export function projectBioscanHazardPolicyV1(
   if (!noFauna && (input.planetType === 'lava' || input.planetType === 'venus')) {
     probability = Math.min(0.65, probability + 0.12);
   }
-  if (input.settled) probability = 0;
+  if (input.settled || input.sheltered === true) probability = 0;
   const baseDamage = noFauna ? 0 : Math.max(1, Math.round(
     (10 + input.strongestFaunaPower / 22) * depthTax,
   ));
@@ -134,7 +138,7 @@ export function projectBioscanHazardPolicyV1(
     baseDamage,
     hullAdjustedDamage,
     finalDamage,
-    safeReason: noFauna ? 'no-fauna' : input.settled ? 'settled' : null,
+    safeReason: noFauna ? 'no-fauna' : input.settled ? 'settled' : input.sheltered === true ? 'shelter' : null,
   });
   HAZARD_POLICIES.add(policy);
   return policy;

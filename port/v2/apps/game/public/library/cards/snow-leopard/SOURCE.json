@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Snow Leopard",
+ "fitDir": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4c215afb355f2c111be1875150e8e6d9a0b55adb9d85d8060cd3c1e8d5127671"
+}

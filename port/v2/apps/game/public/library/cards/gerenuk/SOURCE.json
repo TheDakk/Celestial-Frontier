@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Gerenuk",
+ "fitDir": "audits/C215_PROGRAM_20261009/phase5/successors02/c203creaturesupply-13-gerenuk/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "05081713ea8a1369d480992f49a44efdf38ce8f3f8aeee16365622a5f2dfed9f"
+}

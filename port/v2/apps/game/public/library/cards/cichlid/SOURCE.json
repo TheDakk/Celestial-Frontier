@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cichlid",
+ "fitDir": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a44b1d85ac1507c7fe1a81faa7ee58fb6f5dfff73cce73c3fb19ec2b5277fd8c"
+}

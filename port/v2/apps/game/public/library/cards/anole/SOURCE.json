@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Anole",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/anole-a02-finish-01/rebound/c266-22-anole-a02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c714175a9efe5afae77ce3bff503793668a1f8a621130e230317791943117e20"
+}

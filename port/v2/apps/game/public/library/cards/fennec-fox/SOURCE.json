@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Fennec Fox",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/04-fennec-fox/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "498209d8bcf4c9d8712cdbd8a7eb96c5224a8b84a00c072015b136d46922075a"
+}

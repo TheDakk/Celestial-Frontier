@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Whitefish",
+ "fitDir": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "83abb4226e653f9791290bae017a9cbaa81f3c49338a20ce870dc6ef0d522a9b"
+}

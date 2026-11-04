@@ -1,0 +1,231 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-3a",
+ "files": [
+  {
+   "path": "library/cards/cold-water-fish/SOURCE.json",
+   "bytes": 300,
+   "sha256": "5c9849a6d94c5119131e091c168912ae702da337a773d6ffbb57dd30fed720d1"
+  },
+  {
+   "path": "library/cards/cold-water-fish/card/card.json",
+   "bytes": 2920,
+   "sha256": "90e14873cbb053a9365230d67d118b54a9711ac831707f64596232f39c17c592"
+  },
+  {
+   "path": "library/cards/cold-water-fish/card/labels-512.png",
+   "bytes": 6200,
+   "sha256": "dcc6bfd469dc5e5abcd5c769ee78184cef143f8dd37aed0bd5f9dcbc8ac703ab"
+  },
+  {
+   "path": "library/cards/cold-water-fish/card/master-512.png",
+   "bytes": 96096,
+   "sha256": "efd04d83a9b7d7587356a461b27a8df05c327d26d16cc5b0cad0c930666928c9"
+  },
+  {
+   "path": "library/cards/cold-water-fish/record.json",
+   "bytes": 5176,
+   "sha256": "85975b75125f891c4d41404c35b3bc9978025149ff5bf128058c5bde86052bf4"
+  },
+  {
+   "path": "library/cards/emu/SOURCE.json",
+   "bytes": 285,
+   "sha256": "10e72742a6ea36a31f27d24c2223337babc3cfdb1e78d9c4219ac17822a44a96"
+  },
+  {
+   "path": "library/cards/emu/card/card.json",
+   "bytes": 3939,
+   "sha256": "9469910ab35a065db81a57935895e702918800ac9918e0c248672c91c839cbac"
+  },
+  {
+   "path": "library/cards/emu/card/labels-512.png",
+   "bytes": 5676,
+   "sha256": "041fd3263f9fab5189f09e48b4e546c42969c735397e862f49f8a40e4246b943"
+  },
+  {
+   "path": "library/cards/emu/card/master-512.png",
+   "bytes": 81219,
+   "sha256": "bccc4a5b643ba0a09f34c82a6f0df391df69a226f0aeeffc205287b8f4d08cd0"
+  },
+  {
+   "path": "library/cards/emu/record.json",
+   "bytes": 5953,
+   "sha256": "5eb2140203be5e937bcc0967b169b4b12e8dd171a715bb30ba43bc228f07366e"
+  },
+  {
+   "path": "library/cards/flying-gurnard/SOURCE.json",
+   "bytes": 332,
+   "sha256": "8355ad82fb6f1d359c3d2cdbda7140eed370d574e518c9446cfacf1c57380c33"
+  },
+  {
+   "path": "library/cards/flying-gurnard/card/card.json",
+   "bytes": 2941,
+   "sha256": "f1c8ead445a09b5879835616b5a4e317ba3647ba6f5a6299ee62ba91418df523"
+  },
+  {
+   "path": "library/cards/flying-gurnard/card/labels-512.png",
+   "bytes": 6267,
+   "sha256": "101c24d4f9b9c9013b60c53d16256caeada9de1cb0e28ecaee1e98df41b53d26"
+  },
+  {
+   "path": "library/cards/flying-gurnard/card/master-512.png",
+   "bytes": 89686,
+   "sha256": "64b96fe1fdcea0e474cd486e724073d39fc73cf9ae1da289d85b471aad9623ea"
+  },
+  {
+   "path": "library/cards/flying-gurnard/record.json",
+   "bytes": 5206,
+   "sha256": "ca936ee0a26fccbcc78555283056be93cdc4c3d1d59d918ca7776135a04066d3"
+  },
+  {
+   "path": "library/cards/harpy-eagle/SOURCE.json",
+   "bytes": 304,
+   "sha256": "53b3176f9b4cdf9e04fb3146576cb7dae43ab0dd9b2be7ed2e12f15f1f09aac4"
+  },
+  {
+   "path": "library/cards/harpy-eagle/card/card.json",
+   "bytes": 3793,
+   "sha256": "f04a587ade6b00ae724b6f54a823381497770d07c29d1fd04dafc2d1ac9eab2e"
+  },
+  {
+   "path": "library/cards/harpy-eagle/card/labels-512.png",
+   "bytes": 4964,
+   "sha256": "f9f76c642146da49432c06688f5f926bc75bebc4596859c4357a461d6f5b7908"
+  },
+  {
+   "path": "library/cards/harpy-eagle/card/master-512.png",
+   "bytes": 72045,
+   "sha256": "a77bc856563b44166d1c8cbeaf450d5dded40b2839c6a135893ea2706cdbd782"
+  },
+  {
+   "path": "library/cards/harpy-eagle/record.json",
+   "bytes": 5969,
+   "sha256": "b7e050bc3ba63606701535b501b55ba553366451d6234c98e3ab900dbb7214bd"
+  },
+  {
+   "path": "library/cards/mara/SOURCE.json",
+   "bytes": 266,
+   "sha256": "ce1f713d68a46fa104fb30f614a0c000f819a46abb53efa787e9e84a09e563e2"
+  },
+  {
+   "path": "library/cards/mara/card/card.json",
+   "bytes": 5867,
+   "sha256": "f63e0c1051e0ad38d4c23335cbac3610b51f49afb37232caf08e70080300622f"
+  },
+  {
+   "path": "library/cards/mara/card/labels-512.png",
+   "bytes": 7247,
+   "sha256": "25d2b5b07cefac00cd52deda285958986772ff78619be61d610d0cdf430d323b"
+  },
+  {
+   "path": "library/cards/mara/card/master-512.png",
+   "bytes": 89981,
+   "sha256": "36cf6a89abe7056ffcb1f31a0e454423ddaacc634ab139dd03329172cc6276e0"
+  },
+  {
+   "path": "library/cards/mara/record.json",
+   "bytes": 7496,
+   "sha256": "b16f441c1f9cfac5fc1933cacf49ee620ab1cc0cd090b65fad8cb6d1533c00e4"
+  },
+  {
+   "path": "library/cards/ptarmigan/SOURCE.json",
+   "bytes": 281,
+   "sha256": "c4386201494705532f81dd094e96dfcafbc83c62afda3d87b0f899a56aa79d7b"
+  },
+  {
+   "path": "library/cards/ptarmigan/card/card.json",
+   "bytes": 3745,
+   "sha256": "4896c0b47944ba5e35953885a7fce4753fd637bffafe81b6c3bb853d69071328"
+  },
+  {
+   "path": "library/cards/ptarmigan/card/labels-512.png",
+   "bytes": 6347,
+   "sha256": "696002f9de800018799baefb3138df96b58fc61cd23f49a1f9ccc6634e17e550"
+  },
+  {
+   "path": "library/cards/ptarmigan/card/master-512.png",
+   "bytes": 86039,
+   "sha256": "39011c9f9349af4b3c4617d4bc270c021e713b6d6b61798d9810fb2f0a8d7725"
+  },
+  {
+   "path": "library/cards/ptarmigan/record.json",
+   "bytes": 5964,
+   "sha256": "25f0d40ea15364de6d2eff2e1f7aaaa8c2f79f0f5febc2eb43fc4528219a5698"
+  },
+  {
+   "path": "library/cards/whale/SOURCE.json",
+   "bytes": 321,
+   "sha256": "bc1ea610ebe6049c4c81660a1a9681473a885ab5f49751e42fc7a2887ac64a68"
+  },
+  {
+   "path": "library/cards/whale/card/card.json",
+   "bytes": 3143,
+   "sha256": "c6a88a49446d45e2fba14fcd266c7aba2d4d6efc29434717ad3bfa1ff813d581"
+  },
+  {
+   "path": "library/cards/whale/card/labels-512.png",
+   "bytes": 4166,
+   "sha256": "2d802f33a8022799ae84a836257eac5194116a206689b494f941794aa6a89710"
+  },
+  {
+   "path": "library/cards/whale/card/master-512.png",
+   "bytes": 41585,
+   "sha256": "90fdb67bdc83ce16afd88d533c9175b12f86f2649d2329a421ca2c390884a864"
+  },
+  {
+   "path": "library/cards/whale/record.json",
+   "bytes": 6890,
+   "sha256": "48b560bccdb27935f5256b6c8c6241d132d7f876d9c464ef1b864c95771a8fb1"
+  },
+  {
+   "path": "library/creature-finish-source/c192-islands-02b-tiger-shark-habitat/labels.png",
+   "bytes": 39897,
+   "sha256": "1547687411720d487da8f3ae2b6726c4d351a117f300488bf13ff73eca59bd37"
+  },
+  {
+   "path": "library/creature-finish-source/c192-islands-02b-tiger-shark-habitat/master.png",
+   "bytes": 1144815,
+   "sha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039"
+  },
+  {
+   "path": "library/creature-finish-source/c215program-37-beluga/labels.png",
+   "bytes": 14041,
+   "sha256": "5bb7302b711badda2416a6bd137591aca4a41bf55a83fc6618f84619f0a2ba0a"
+  },
+  {
+   "path": "library/creature-finish-source/c215program-37-beluga/master.png",
+   "bytes": 1287835,
+   "sha256": "d489b86385257231040da602128de765ebc89427fbe4a8a1377d0b8b2a1b6f4b"
+  },
+  {
+   "path": "library/creature-finish-source/c215program-40-dolphin/labels.png",
+   "bytes": 38965,
+   "sha256": "782e9c016097319b1cf21bce7784ef9b389399d2bcb27f8b56e954e365312503"
+  },
+  {
+   "path": "library/creature-finish-source/c215program-40-dolphin/master.png",
+   "bytes": 1287180,
+   "sha256": "b8987ae848d58a5f0b30c37be7bee7994dc87d1574429e44e1598d3b388ca3da"
+  },
+  {
+   "path": "library/creature-finish-source/c243b02r2c1-11-gray-whale/labels.png",
+   "bytes": 39271,
+   "sha256": "a700d44f56092501a3db6a6a8f0702b2e0643ff875829dbc1e2a21537b62fe5b"
+  },
+  {
+   "path": "library/creature-finish-source/c243b02r2c1-11-gray-whale/master.png",
+   "bytes": 1441678,
+   "sha256": "e08b64a4966af1c81556781240b929d3bcd2cfe0c2ac47640e5787798d76f3b7"
+  },
+  {
+   "path": "library/creature-finish-source/civet/labels.png",
+   "bytes": 18746,
+   "sha256": "da39e0a76713f5adee819751c96db00ffebad52288b3d113a84baf218ced2132"
+  },
+  {
+   "path": "library/creature-finish-source/civet/master.png",
+   "bytes": 1931944,
+   "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b"
+  }
+ ]
+}

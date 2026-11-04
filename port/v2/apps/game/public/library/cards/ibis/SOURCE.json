@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Ibis",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/13-ibis/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "58aa4cb14e70482e69043746358f9cf8247fd1bc1fa67de51ad5f4da0eb8ed7b"
+}

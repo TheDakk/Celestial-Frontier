@@ -1,0 +1,247 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Tamarin",
+ "recordRecipeHash": "e5fea38bc98eccfb2687fcc844be84e2f018ee1133a208a2c384046fd2a87b6d",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c198creaturesupplyb-09-tamarin/packet/master.png",
+  "masterSha256": "53ba5f05bc48a04a7e173c160cb9b6c2373b1262275ed765953a09f4e02204b7",
+  "keyedSha256": "6d4d056da9a1787b74abdde69bee95b9c83b44f1eb39e09058b81c30723e31de",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "04999d3775b8c0b1b97d5f11cf82738cf2045e3ae4f3511d4e472fdf4d3e0031",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "root",
+   "joint": "root",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "hand-near",
+   "joint": "armNearHand",
+   "layer": "near"
+  },
+  {
+   "label": 3,
+   "id": "forearm-near",
+   "joint": "armNearElbow",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "upper-arm-near",
+   "joint": "armNearShoulder",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "hand-far",
+   "joint": "armFarHand",
+   "layer": "far"
+  },
+  {
+   "label": 6,
+   "id": "forearm-far",
+   "joint": "armFarElbow",
+   "layer": "far"
+  },
+  {
+   "label": 7,
+   "id": "upper-arm-far",
+   "joint": "armFarShoulder",
+   "layer": "far"
+  },
+  {
+   "label": 8,
+   "id": "foot-near",
+   "joint": "legNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 9,
+   "id": "shin-near",
+   "joint": "legNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "thigh-near",
+   "joint": "legNearHip",
+   "layer": "near"
+  },
+  {
+   "label": 11,
+   "id": "foot-far",
+   "joint": "legFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 12,
+   "id": "shin-far",
+   "joint": "legFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 13,
+   "id": "thigh-far",
+   "joint": "legFarHip",
+   "layer": "far"
+  },
+  {
+   "label": 14,
+   "id": "jaw",
+   "joint": "jaw",
+   "layer": "near"
+  },
+  {
+   "label": 15,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 16,
+   "id": "neck",
+   "joint": "neck",
+   "layer": "near"
+  },
+  {
+   "label": 17,
+   "id": "tail-end",
+   "joint": "tail2",
+   "layer": "near"
+  },
+  {
+   "label": 18,
+   "id": "tail-middle",
+   "joint": "tail1",
+   "layer": "near"
+  },
+  {
+   "label": 19,
+   "id": "tail-root",
+   "joint": "tail0",
+   "layer": "near"
+  },
+  {
+   "label": 20,
+   "id": "pelvis",
+   "joint": "pelvis",
+   "layer": "near"
+  },
+  {
+   "label": 21,
+   "id": "chest",
+   "joint": "chest",
+   "layer": "near"
+  },
+  {
+   "label": 22,
+   "id": "spine",
+   "joint": "spine",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.50103668261563,
+   0.45725677830940986
+  ],
+  "pelvis": [
+   0.4239234449760766,
+   0.46108452950558215
+  ],
+  "spine": [
+   0.5249601275917065,
+   0.4108452950558214
+  ],
+  "chest": [
+   0.6330940988835726,
+   0.44082934609250396
+  ],
+  "neck": [
+   0.6900318979266348,
+   0.42025518341307816
+  ],
+  "head": [
+   0.7504784688995215,
+   0.34417862838915475
+  ],
+  "jaw": [
+   0.7865231259968102,
+   0.4114035087719298
+  ],
+  "armNearShoulder": [
+   0.596969696969697,
+   0.4892344497607656
+  ],
+  "armNearElbow": [
+   0.6070175438596491,
+   0.5748006379585326
+  ],
+  "armNearHand": [
+   0.6995215311004785,
+   0.7034290271132376
+  ],
+  "armFarShoulder": [
+   0.6925837320574163,
+   0.5015151515151515
+  ],
+  "armFarElbow": [
+   0.7273524720893142,
+   0.5864433811802233
+  ],
+  "armFarHand": [
+   0.7809409888357256,
+   0.6759968102073366
+  ],
+  "legNearHip": [
+   0.43397129186602873,
+   0.5215311004784688
+  ],
+  "legNearKnee": [
+   0.3570175438596491,
+   0.6166666666666666
+  ],
+  "legNearFoot": [
+   0.37424242424242427,
+   0.6723285486443381
+  ],
+  "legFarHip": [
+   0.4613237639553429,
+   0.5197767145135566
+  ],
+  "legFarKnee": [
+   0.4473684210526316,
+   0.6440988835725678
+  ],
+  "legFarFoot": [
+   0.5026315789473684,
+   0.6923444976076555
+  ],
+  "tail0": [
+   0.39665071770334925,
+   0.408133971291866
+  ],
+  "tail1": [
+   0.17926634768740032,
+   0.5633173843700159
+  ],
+  "tail2": [
+   0.26323763955342905,
+   0.7583732057416268
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "8a1f2d6564c7d0f787d458e65bb868ba23c48630e9a3ca7aa27eafce220c8f8a",
+  "labelsSha256": "ffa1076b0f97b67b15722c5a926951c4e8bc3ebdf3c1a4b9caa1688b06911518",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Horned Lizard",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/22-horned-lizard/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ab6c714c4eb88905656071526fd5a92869a31126d07c3517caa0e99283b1c01c"
+}

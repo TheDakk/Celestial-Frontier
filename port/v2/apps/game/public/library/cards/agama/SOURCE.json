@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Agama",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep5/c196quadrupedoriginals-09-agama/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6f9bfc4e419f23b52208aa9a3e87fcd6031cb58902b60e6e00f04671308d0772"
+}

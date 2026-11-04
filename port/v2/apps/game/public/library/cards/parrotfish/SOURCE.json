@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Parrotfish",
+ "fitDir": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "470ffdfe8767db0b3680621803f45b82af88eeeb94437dd5642a54c9ab505f52"
+}

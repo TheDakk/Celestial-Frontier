@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Grass Snake",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/22-grass-snake/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a911dbcd92178cd9fd10b201aaca1c1c3f90fc07990f511e62d7d9db22a8daac"
+}

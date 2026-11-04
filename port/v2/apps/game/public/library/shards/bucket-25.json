@@ -1,0 +1,186 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-25",
+ "files": [
+  {
+   "path": "library/cards/beaked-whale/SOURCE.json",
+   "bytes": 328,
+   "sha256": "39204c1cb9e285517e5fa418e172747942f52f25c7d0fe96bd76904c7fc47a00"
+  },
+  {
+   "path": "library/cards/beaked-whale/card/card.json",
+   "bytes": 2441,
+   "sha256": "493ef56487653eb6aaa3ff950266ca7ce68326e5842da27081f8bdd6c2b2edfb"
+  },
+  {
+   "path": "library/cards/beaked-whale/card/labels-512.png",
+   "bytes": 4296,
+   "sha256": "7df361b995db0729066ba0bb95e9d4f793aac5914d0f71b84daedb3c4a85ec2b"
+  },
+  {
+   "path": "library/cards/beaked-whale/card/master-512.png",
+   "bytes": 45422,
+   "sha256": "c5217f966c85bed9fce88eee31ff877453b4c5a79f0fc543ae36944b18ac93b2"
+  },
+  {
+   "path": "library/cards/beaked-whale/record.json",
+   "bytes": 5226,
+   "sha256": "52cf9364e44c93aa73b84eb665e271cb82708560712ac865c32ff569522a2cb4"
+  },
+  {
+   "path": "library/cards/black-bear/SOURCE.json",
+   "bytes": 322,
+   "sha256": "2dd5b3645271ce892ee94b9838d8d825927c4d9f61890ad7472d6f8dc8ecaf99"
+  },
+  {
+   "path": "library/cards/black-bear/card/card.json",
+   "bytes": 5959,
+   "sha256": "84e5baf8c007bdc0d041330371ebce1ea716a5388e06ca8865205a93050d2a53"
+  },
+  {
+   "path": "library/cards/black-bear/card/labels-512.png",
+   "bytes": 6172,
+   "sha256": "95d188a6c53e048e2ee4bc855d5b7c6661b0c61253a4f6990c941c45dcabc9dc"
+  },
+  {
+   "path": "library/cards/black-bear/card/master-512.png",
+   "bytes": 117769,
+   "sha256": "6011f4d7f9225bcdbd5b7f9fe36d06b92002081c3ded091b68ec4674b7e3174d"
+  },
+  {
+   "path": "library/cards/black-bear/record.json",
+   "bytes": 7588,
+   "sha256": "8d695df62ef2833ca6a78ab7dc76f4bbb99cc9b12fc4e6219670eaa4738b1b0b"
+  },
+  {
+   "path": "library/cards/cod/SOURCE.json",
+   "bytes": 268,
+   "sha256": "a2766873e5d79f421e000259ade11fc4c899e66ddbfd3bcded992ff08074111d"
+  },
+  {
+   "path": "library/cards/cod/card/card.json",
+   "bytes": 2902,
+   "sha256": "8af8f7698ab1ad90d3a02b5f941565e4d6fca6223cd9b434c5fa64bc581081b8"
+  },
+  {
+   "path": "library/cards/cod/card/labels-512.png",
+   "bytes": 8838,
+   "sha256": "7845814c2a5f0cb0c3221ab7020107aad3308e888f586e3d5ff91ebb7c45da6c"
+  },
+  {
+   "path": "library/cards/cod/card/master-512.png",
+   "bytes": 168295,
+   "sha256": "b55986fb745d9132e0e29e65926ab1449f7c1f6717d9a24d68e08a15e3d3a5d7"
+  },
+  {
+   "path": "library/cards/cod/record.json",
+   "bytes": 5120,
+   "sha256": "3fb9106352ac81df53c18994d5da6a649f758588478d661fa271baaaae714191"
+  },
+  {
+   "path": "library/cards/finch/SOURCE.json",
+   "bytes": 293,
+   "sha256": "181bac8887b2536e09727a926a3ba67a25c4c69bd735bab4fd2aff0eb9b2e3b5"
+  },
+  {
+   "path": "library/cards/finch/card/card.json",
+   "bytes": 3777,
+   "sha256": "6d693032daa84718b8695746c3fc4fb2db12283fb8024930cfd27557a1337dc0"
+  },
+  {
+   "path": "library/cards/finch/card/labels-512.png",
+   "bytes": 4912,
+   "sha256": "9470170ac0f004b56eef4ced93f895cf7282e9c188f6ebebd2b1c6034fe69d69"
+  },
+  {
+   "path": "library/cards/finch/card/master-512.png",
+   "bytes": 90776,
+   "sha256": "fb2671a9433e3bf70bd4c62e0e0129196f2cb03cc5a792e763fb49d76fb733f6"
+  },
+  {
+   "path": "library/cards/finch/record.json",
+   "bytes": 5948,
+   "sha256": "a251e3caa62024da0e3dbc9eeda7083a6575f1c4213ec891fce6577eabb6e3ad"
+  },
+  {
+   "path": "library/cards/mountain-lizard/SOURCE.json",
+   "bytes": 325,
+   "sha256": "cd459644d3b0b803b38250063722a1f0d8e6c4e903da54ee1fbf7fc381d0eb9e"
+  },
+  {
+   "path": "library/cards/mountain-lizard/card/card.json",
+   "bytes": 5288,
+   "sha256": "63e0e49e1f2218d22925ef8c9e71f6d90a66a9cb4fa67110c59e8b13091ca497"
+  },
+  {
+   "path": "library/cards/mountain-lizard/card/labels-512.png",
+   "bytes": 4154,
+   "sha256": "bb2d2a78c4d2c4e4d9ed4e33066982b6eeeb09cd1f4a198b52b06361d912e46f"
+  },
+  {
+   "path": "library/cards/mountain-lizard/card/master-512.png",
+   "bytes": 37735,
+   "sha256": "786200794df8e36af88ef56a7b4c188bfd150fa067a4bd648faa91d99ffe28a6"
+  },
+  {
+   "path": "library/cards/mountain-lizard/record.json",
+   "bytes": 7148,
+   "sha256": "a4dd057c458b43916485201495397b0953702b691137255d877823d6642a304b"
+  },
+  {
+   "path": "library/cards/triggerfish/SOURCE.json",
+   "bytes": 294,
+   "sha256": "1aa53d180f4f7d7814e14f7775b183f7d502ebce2a83e06b2c042a24ec853b0a"
+  },
+  {
+   "path": "library/cards/triggerfish/card/card.json",
+   "bytes": 2946,
+   "sha256": "477f3bc83c603d1c105136bcc0b493eb5b1152984aa37cce1d362ee160367767"
+  },
+  {
+   "path": "library/cards/triggerfish/card/labels-512.png",
+   "bytes": 5599,
+   "sha256": "d9972ff14df655c21cd497671cd3453450f906d52fbf7a088364b67b3c04f482"
+  },
+  {
+   "path": "library/cards/triggerfish/card/master-512.png",
+   "bytes": 152909,
+   "sha256": "0f69598242a5d7de7b7683f7f4cdb9ed62a5d19bca52ccc03d67c496d8411301"
+  },
+  {
+   "path": "library/cards/triggerfish/record.json",
+   "bytes": 5157,
+   "sha256": "9a8ccf76a2258ded30676eb9331bfe82280bd751345bb20edc74b0944e99ba47"
+  },
+  {
+   "path": "library/creature-finish-source/13-saiga/labels.png",
+   "bytes": 41521,
+   "sha256": "37befab3466b05070bac808a1235945373c0fc674cf98c4199d5a976c8b2863d"
+  },
+  {
+   "path": "library/creature-finish-source/13-saiga/master.png",
+   "bytes": 1129790,
+   "sha256": "d206e4315d383d9cc2c0b83bd453918af6bbdbe95df810f0b8201a48e264120b"
+  },
+  {
+   "path": "library/creature-finish-source/c168-reference-spread-bat/labels.png",
+   "bytes": 41543,
+   "sha256": "fde98442fc445df8452a86c233a6d1477f13e4bf6ad4f008a0495e772ea39e9d"
+  },
+  {
+   "path": "library/creature-finish-source/c168-reference-spread-bat/master.png",
+   "bytes": 1230591,
+   "sha256": "44738176d771efa1013f1e297d10d804c25f4aa4d6cfc3f15ca6a84340f3d27a"
+  },
+  {
+   "path": "library/creature-finish-source/c275-w1-11-c266-osprey/labels.png",
+   "bytes": 41985,
+   "sha256": "6860b6cc1ae5ff4dbf04f8fe3162101da752d3b0543760e94457e5f7bf04efab"
+  },
+  {
+   "path": "library/creature-finish-source/c275-w1-11-c266-osprey/master.png",
+   "bytes": 1565884,
+   "sha256": "1f7e7cb24d4e18617ad672a6a755cbabf051ac9e45125d2c30d4e58a8e4261fc"
+  }
+ ]
+}

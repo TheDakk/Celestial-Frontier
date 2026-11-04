@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Wrasse",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/03-wrasse/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "1e97e92f2f24320a32eaf8a755404b65d51d5b49bd10d7cccc9c540cfb268362"
+}

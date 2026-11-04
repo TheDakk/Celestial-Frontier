@@ -1,0 +1,70 @@
+{
+  "creatureId": "03-viper",
+  "parts": [
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "8b259b56685e9005054ddadc0d59b4433c562a6f625862c3c5de146feb031da6"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "11bcc748f6ef925755eed017afd6995760c2c73945c8749a92c765af87355cd7"
+    },
+    {
+      "name": "body-segment-0.png",
+      "path": "parts/body-segment-0.png",
+      "sha256": "39a982eb1c9093905d2958da9bd9fe47d6b73fcb14fe3844197e62af92aea3c1"
+    },
+    {
+      "name": "body-segment-1.png",
+      "path": "parts/body-segment-1.png",
+      "sha256": "f702436bb4af2fcda5c652cda935ccb2324b3e623ca7f2aa51a36555e52690ef"
+    },
+    {
+      "name": "body-segment-2.png",
+      "path": "parts/body-segment-2.png",
+      "sha256": "312f799ec0255ca984285a81c9c867a8b2d46a14211d8c669663805074384636"
+    },
+    {
+      "name": "body-segment-3.png",
+      "path": "parts/body-segment-3.png",
+      "sha256": "9b42ad3f2d0cdfee916ec489d5566db82d69a64eaaddd554898b87ab93ecffd4"
+    },
+    {
+      "name": "body-segment-4.png",
+      "path": "parts/body-segment-4.png",
+      "sha256": "3b425f49e16c01d4d74bcd30a7b6f7a7fd0cb856c8541fed1f1ec08b9ae7ae62"
+    },
+    {
+      "name": "body-segment-5.png",
+      "path": "parts/body-segment-5.png",
+      "sha256": "64b3c94d1a6c8f97535f77d7c6235468d89b2c0f46fba0623b162372658e6dd9"
+    },
+    {
+      "name": "body-segment-6.png",
+      "path": "parts/body-segment-6.png",
+      "sha256": "284af7cbf7b70fde9f78e130f9a899280f7c068867e055777d7daa1a2d77f1b9"
+    },
+    {
+      "name": "body-segment-7.png",
+      "path": "parts/body-segment-7.png",
+      "sha256": "a33429da3743d1b6b3b2899e8c9959aeb9e32aa839621f44804be7bf9b7c0d53"
+    },
+    {
+      "name": "body-segment-8.png",
+      "path": "parts/body-segment-8.png",
+      "sha256": "4e221b767589fb02dd6ee55211c6736d2c2dd711eafcd3e9d20402fa6b4d7c59"
+    },
+    {
+      "name": "body-segment-9.png",
+      "path": "parts/body-segment-9.png",
+      "sha256": "bacff75b180b56d9b9a37b1df6dd644381eb0be9a8054f0c8bb3b2ca623c66bf"
+    },
+    {
+      "name": "neck-root.png",
+      "path": "parts/neck-root.png",
+      "sha256": "b263bd5f4278b4cd3b4631ea3f7367e60409708d9614871f3d48c7379be0b0aa"
+    }
+  ]
+}

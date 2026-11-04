@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sand Boa",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/05-sand-boa/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "30c496947693e8608742c0ca2f90000a3e6f45ad2dfc4aed8c3bf9d8714217e1"
+}

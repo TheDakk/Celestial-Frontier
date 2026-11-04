@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Rat Snake",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2serp-strips-v1/18-rat-snake/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ffaf28311ee92393bf460c5875c5b9cf0c9eb4cea094821bd45b7c787eff27cb"
+}

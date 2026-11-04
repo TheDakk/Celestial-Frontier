@@ -1,0 +1,181 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Gorilla",
+ "recordRecipeHash": "119187ac7d500aef50b61d9a89489fe75c4d329a347d165cdf1c4984205b1584",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-15-gorilla/packet/master.png",
+  "masterSha256": "53c6b0920b87856ad95d26aa468ef6da1016acc70749f945e3631afc5c6032b6",
+  "keyedSha256": "9f10669885e4888cd3bcde95acda589c6ea631d8c1c68d9acfb7f7704b164833",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "c2dbc17aed6eadf7d4ad79a17ded2867b7fbb4dcf5eba2f6faf4266d16d9e99d",
+  "labelSource": "binding parts (atlas frames → cut-out boxes, far then near)",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "near-arm-lower-hand",
+   "joint": "armNearHand",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "far-arm-lower-hand",
+   "joint": "armFarHand",
+   "layer": "far"
+  },
+  {
+   "label": 3,
+   "id": "near-leg-lower-foot",
+   "joint": "legNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "far-leg-lower-foot",
+   "joint": "legFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 5,
+   "id": "near-arm-upper",
+   "joint": "armNearElbow",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "far-arm-upper",
+   "joint": "armFarElbow",
+   "layer": "far"
+  },
+  {
+   "label": 7,
+   "id": "near-leg-upper",
+   "joint": "legNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 8,
+   "id": "far-leg-upper",
+   "joint": "legFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 9,
+   "id": "jaw",
+   "joint": "jaw",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 11,
+   "id": "neck",
+   "joint": "neck",
+   "layer": "near"
+  },
+  {
+   "label": 12,
+   "id": "chest",
+   "joint": "chest",
+   "layer": "near"
+  },
+  {
+   "label": 13,
+   "id": "body",
+   "joint": "root",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.5271929824561403,
+   0.4850079744816587
+  ],
+  "pelvis": [
+   0.40789473684210525,
+   0.4820574162679426
+  ],
+  "spine": [
+   0.48628389154704943,
+   0.4462519936204147
+  ],
+  "chest": [
+   0.5712121212121212,
+   0.387719298245614
+  ],
+  "neck": [
+   0.6137958532695376,
+   0.36866028708133974
+  ],
+  "head": [
+   0.6573365231259968,
+   0.35311004784689
+  ],
+  "jaw": [
+   0.6770334928229665,
+   0.388755980861244
+  ],
+  "armFarShoulder": [
+   0.65311004784689,
+   0.425598086124402
+  ],
+  "armFarElbow": [
+   0.6700159489633174,
+   0.5055821371610846
+  ],
+  "armFarHand": [
+   0.7205741626794259,
+   0.7027113237639554
+  ],
+  "armNearShoulder": [
+   0.5671451355661883,
+   0.411244019138756
+  ],
+  "armNearElbow": [
+   0.5651515151515152,
+   0.5605263157894737
+  ],
+  "armNearHand": [
+   0.5745614035087719,
+   0.7000797448165869
+  ],
+  "legFarHip": [
+   0.38293460925039874,
+   0.4937001594896332
+  ],
+  "legFarKnee": [
+   0.33891547049441784,
+   0.5749601275917066
+  ],
+  "legFarFoot": [
+   0.2949760765550239,
+   0.6909090909090909
+  ],
+  "legNearHip": [
+   0.376555023923445,
+   0.4875598086124402
+  ],
+  "legNearKnee": [
+   0.4573365231259968,
+   0.5538277511961722
+  ],
+  "legNearFoot": [
+   0.4582934609250399,
+   0.6925039872408293
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "3ee31f7764b0295abf86099bca4afffe2b0706909558d7a5977ddd90964b17eb",
+  "labelsSha256": "b0eed77d7773ce23d6ba85b9c35ab871de1211cc15a9e34f613b091a18c4f77c",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

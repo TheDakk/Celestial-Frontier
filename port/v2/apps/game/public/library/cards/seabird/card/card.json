@@ -1,0 +1,205 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Seabird",
+ "recordRecipeHash": "cf3629ab8ec6800063836468cb148aacb1363f153edf089aeb2864d4d9a2802e",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c106/20-seabird/packet/master.png",
+  "masterSha256": "5753b0e68473c1f86bdc6987fce788a89bb62c2cbe79384d4e9d3e2c94f8d9a3",
+  "keyedSha256": "f65ee06d641e9ccf1a0b335e13ac1b074bc8acebfc0a99155bb49a64820b27bb",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "15562e10ba50685bb3520ac00dd1f717eea1801f990d671f86fad045ef916ce2",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "near-foot",
+   "joint": "legNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "far-foot",
+   "joint": "legFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 3,
+   "id": "near-shin",
+   "joint": "legNearAnkle",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "far-shin",
+   "joint": "legFarAnkle",
+   "layer": "far"
+  },
+  {
+   "label": 5,
+   "id": "near-thigh",
+   "joint": "legNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "far-thigh",
+   "joint": "legFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 7,
+   "id": "beak",
+   "joint": "beak",
+   "layer": "near"
+  },
+  {
+   "label": 8,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 9,
+   "id": "neck-upper",
+   "joint": "neck1",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "neck-lower",
+   "joint": "neck0",
+   "layer": "near"
+  },
+  {
+   "label": 11,
+   "id": "far-wing-root",
+   "joint": "wingFarRoot",
+   "layer": "far"
+  },
+  {
+   "label": 12,
+   "id": "far-wing-flight",
+   "joint": "wingFarTip",
+   "layer": "far"
+  },
+  {
+   "label": 13,
+   "id": "near-wing-root",
+   "joint": "wingNearRoot",
+   "layer": "near"
+  },
+  {
+   "label": 14,
+   "id": "near-wing-flight",
+   "joint": "wingNearTip",
+   "layer": "near"
+  },
+  {
+   "label": 15,
+   "id": "tail",
+   "joint": "tailFan",
+   "layer": "near"
+  },
+  {
+   "label": 16,
+   "id": "chest",
+   "joint": "chest",
+   "layer": "near"
+  },
+  {
+   "label": 17,
+   "id": "body",
+   "joint": "root",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.5034290271132376,
+   0.4891547049441786
+  ],
+  "pelvis": [
+   0.4840510366826156,
+   0.5620414673046251
+  ],
+  "spine": [
+   0.5575757575757576,
+   0.4698564593301436
+  ],
+  "chest": [
+   0.6522328548644338,
+   0.4628389154704944
+  ],
+  "neck0": [
+   0.6553429027113238,
+   0.3940191387559809
+  ],
+  "neck1": [
+   0.6533492822966507,
+   0.33604465709728865
+  ],
+  "head": [
+   0.6780701754385965,
+   0.2885964912280702
+  ],
+  "beak": [
+   0.7531897926634769,
+   0.30135566188197765
+  ],
+  "legNearKnee": [
+   0.4761562998405104,
+   0.6283094098883573
+  ],
+  "legNearAnkle": [
+   0.46810207336523124,
+   0.673524720893142
+  ],
+  "legNearFoot": [
+   0.47926634768740034,
+   0.6888357256778309
+  ],
+  "legFarKnee": [
+   0.5637958532695375,
+   0.6023923444976076
+  ],
+  "legFarAnkle": [
+   0.5877192982456141,
+   0.6854066985645934
+  ],
+  "legFarFoot": [
+   0.6267942583732058,
+   0.708054226475279
+  ],
+  "wingNearRoot": [
+   0.5698564593301435,
+   0.4178628389154705
+  ],
+  "wingNearTip": [
+   0.3517543859649123,
+   0.48492822966507176
+  ],
+  "wingFarRoot": [
+   0.5264752791068581,
+   0.39019138755980864
+  ],
+  "wingFarTip": [
+   0.44561403508771924,
+   0.4279904306220096
+  ],
+  "tailFan": [
+   0.29617224880382775,
+   0.5550239234449761
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "a862887a8625c2cce017af7d6a53240eac27c580a7af4408d7d8f2557bbd4b48",
+  "labelsSha256": "7a881a5b45fd97757a07fa4cb2acaa7590b3b889525d41dfbae20a1e09c9cdae",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Maned Wolf",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/21-maned-wolf/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "19accb9a30e6b1045d3a30378e7d8218daeb539cc176d38a69b5f97a984f1fae"
+}

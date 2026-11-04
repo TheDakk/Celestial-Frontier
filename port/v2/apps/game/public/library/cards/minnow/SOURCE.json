@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Minnow",
+ "fitDir": "audits/FISH_PIPELINE_C84_20260927/02-minnow-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8d5e8cf5a0bb6994f06e97573324924ea65cf426737adb5228a55b19e97367f8"
+}

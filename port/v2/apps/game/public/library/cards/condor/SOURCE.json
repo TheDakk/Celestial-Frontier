@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Condor",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/08-condor/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "57d549d04d6b4dca8a8d82c030cc26030d687a123690b23b34e9c928065d5515"
+}

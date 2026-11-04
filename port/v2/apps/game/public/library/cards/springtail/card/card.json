@@ -1,0 +1,217 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Springtail",
+ "recordRecipeHash": "b306b7867dfac5689543fe1bd9ee52da6d590fb1fddc2f08eb01f63f49004cd2",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c1i/c243b03r1c1-27-springtail/packet/master.png",
+  "masterSha256": "397b127130f5a7868d1e70484b3e55c938b6af0b2a7e3e676bf29edec6cee0bf",
+  "keyedSha256": "c0e895e384866c268ac0c2171f1af76ea47e43a353eacc4d6ad672b1dbc563f6",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "06cfa7bcffbebf086479c90c6ccdb811554e8eb39672d74bb804e2826ea8f9f2",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "front-near-lower",
+   "joint": "legFrontNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "front-far-lower",
+   "joint": "legFrontFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 3,
+   "id": "mid-near-lower",
+   "joint": "legMidNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "mid-far-lower",
+   "joint": "legMidFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 5,
+   "id": "hind-near-lower",
+   "joint": "legHindNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "hind-far-lower",
+   "joint": "legHindFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 7,
+   "id": "front-near-upper",
+   "joint": "legFrontNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 8,
+   "id": "front-far-upper",
+   "joint": "legFrontFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 9,
+   "id": "mid-near-upper",
+   "joint": "legMidNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "mid-far-upper",
+   "joint": "legMidFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 11,
+   "id": "hind-near-upper",
+   "joint": "legHindNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 12,
+   "id": "hind-far-upper",
+   "joint": "legHindFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 13,
+   "id": "antenna-far",
+   "joint": "antennaFar",
+   "layer": "far"
+  },
+  {
+   "label": 14,
+   "id": "antenna-near",
+   "joint": "antennaNear",
+   "layer": "near"
+  },
+  {
+   "label": 15,
+   "id": "mandible",
+   "joint": "mandible",
+   "layer": "near"
+  },
+  {
+   "label": 16,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 17,
+   "id": "abdomen",
+   "joint": "abdomen",
+   "layer": "near"
+  },
+  {
+   "label": 18,
+   "id": "thorax",
+   "joint": "thorax",
+   "layer": "near"
+  },
+  {
+   "label": 19,
+   "id": "body",
+   "joint": "root",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.5443381180223286,
+   0.4899521531100478
+  ],
+  "thorax": [
+   0.5526315789473685,
+   0.48771929824561405
+  ],
+  "head": [
+   0.5990430622009569,
+   0.4834130781499203
+  ],
+  "mandible": [
+   0.5974481658692186,
+   0.5228070175438597
+  ],
+  "abdomen": [
+   0.38636363636363635,
+   0.4845295055821372
+  ],
+  "legFrontNearKnee": [
+   0.5482456140350878,
+   0.5378787878787878
+  ],
+  "legFrontNearFoot": [
+   0.6114035087719298,
+   0.6120414673046252
+  ],
+  "legFrontFarKnee": [
+   0.5543062200956937,
+   0.5415470494417863
+  ],
+  "legFrontFarFoot": [
+   0.5865231259968102,
+   0.5921052631578947
+  ],
+  "legMidNearKnee": [
+   0.5303030303030303,
+   0.5576555023923445
+  ],
+  "legMidNearFoot": [
+   0.5414673046251993,
+   0.6214513556618819
+  ],
+  "legMidFarKnee": [
+   0.47671451355661876,
+   0.5567783094098884
+  ],
+  "legMidFarFoot": [
+   0.4445773524720893,
+   0.6168261562998405
+  ],
+  "legHindNearKnee": [
+   0.433652312599681,
+   0.4929824561403509
+  ],
+  "legHindNearFoot": [
+   0.35685805422647526,
+   0.6080542264752791
+  ],
+  "legHindFarKnee": [
+   0.47854864433811806,
+   0.47368421052631576
+  ],
+  "legHindFarFoot": [
+   0.3514354066985646,
+   0.5625996810207337
+  ],
+  "antennaFar": [
+   0.6965709728867624,
+   0.37280701754385964
+  ],
+  "antennaNear": [
+   0.7288676236044657,
+   0.4455342902711324
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "d07df0d7f440f733d8d374cc27e1b6c5766b2b88f1316c43d6e1b33de73f2c33",
+  "labelsSha256": "d432b928f7ef18bfc7537e92f1a36f64f82d30ad57bc7fcbbc152d9dd23ea6b6",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

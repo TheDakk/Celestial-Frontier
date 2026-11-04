@@ -1,0 +1,131 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-1a",
+ "files": [
+  {
+   "path": "library/cards/badger/SOURCE.json",
+   "bytes": 303,
+   "sha256": "3508fe18c07f200e0df8727816d9033b53fb22111eaa6653516b6d2b4519f131"
+  },
+  {
+   "path": "library/cards/badger/card/card.json",
+   "bytes": 5901,
+   "sha256": "e7bcd1a8732a2b00ab74d70d36ee945be140a474f0c05dabf8cd0c56355535c1"
+  },
+  {
+   "path": "library/cards/badger/card/labels-512.png",
+   "bytes": 8213,
+   "sha256": "77f9777f16fa75f56d204660f143e24ec02238e1c026f37edc3875eaf7a31784"
+  },
+  {
+   "path": "library/cards/badger/card/master-512.png",
+   "bytes": 121349,
+   "sha256": "f388c4ea51d062fdd12fce5783258914897b2fcfb79fff95492b0df02ed05700"
+  },
+  {
+   "path": "library/cards/badger/record.json",
+   "bytes": 7564,
+   "sha256": "1b0976464c6ae63becd8919535e0b0b124de089d17ec34efbabb221a66c40059"
+  },
+  {
+   "path": "library/cards/brittle-star/SOURCE.json",
+   "bytes": 308,
+   "sha256": "36c153bedc3c00a2e8a6ab046e192ad941334b063db7d6d48c536f96487b7a72"
+  },
+  {
+   "path": "library/cards/brittle-star/card/card.json",
+   "bytes": 3759,
+   "sha256": "af459f148c532b7c0cad99a7c2a466058eee5f67a12032475f00a40aa53a3501"
+  },
+  {
+   "path": "library/cards/brittle-star/card/labels-512.png",
+   "bytes": 6661,
+   "sha256": "d97cfff414f1a33ed9bce00b6f650119d1544f5de9b9c19eca8d0e4f3a6c07a5"
+  },
+  {
+   "path": "library/cards/brittle-star/card/master-512.png",
+   "bytes": 58482,
+   "sha256": "395d51f2d280802aa1ba10511c7083c4e7d406d05f37ea8599f4362c2687fe6a"
+  },
+  {
+   "path": "library/cards/brittle-star/record.json",
+   "bytes": 6580,
+   "sha256": "77b347ffaacb9b3f5e1360e853e449407b5bf820fb289c18e97822f02787ce66"
+  },
+  {
+   "path": "library/cards/gaur/SOURCE.json",
+   "bytes": 303,
+   "sha256": "162337db71802b1f0c772bce5c33870c4647efb854feaaaa0eda7f40dc4840e7"
+  },
+  {
+   "path": "library/cards/gaur/card/card.json",
+   "bytes": 5875,
+   "sha256": "ed8c3f7b4bf2f3fe9e8d1596724439953cedb3ba289e7a271d57ca9199170e4e"
+  },
+  {
+   "path": "library/cards/gaur/card/labels-512.png",
+   "bytes": 9188,
+   "sha256": "747be96ec82da859fb16faf35d82d0b47185e09f470000343eab34baec22a3aa"
+  },
+  {
+   "path": "library/cards/gaur/card/master-512.png",
+   "bytes": 171845,
+   "sha256": "956a1a67cbfaa4a6a14d7a5e4b302eaa210f592436a6df0f5a8512efa1f455d2"
+  },
+  {
+   "path": "library/cards/gaur/record.json",
+   "bytes": 7445,
+   "sha256": "41f4c2c57c6cf25e7abe9aff155b0faef437e5089fcc45786fcdd33fb17bb934"
+  },
+  {
+   "path": "library/creature-finish-source/01-grouper-fixed-01/labels.png",
+   "bytes": 43686,
+   "sha256": "3194cf79bb25b45a816513ad95005298494c2abf570a24c0f2f07cd9e6c295cc"
+  },
+  {
+   "path": "library/creature-finish-source/01-grouper-fixed-01/master.png",
+   "bytes": 1606332,
+   "sha256": "f451a42377174338d5bb6a8246e9338c4e882a243fd98f705ddc8b824a00568c"
+  },
+  {
+   "path": "library/creature-finish-source/10-crow/labels.png",
+   "bytes": 38938,
+   "sha256": "14869d78ea7c18eb30d7a5ac6121a9e1864ac1baf16e7586f71b1afa5b1e6b68"
+  },
+  {
+   "path": "library/creature-finish-source/10-crow/master.png",
+   "bytes": 1117204,
+   "sha256": "4c92bd3b678988c0c0678dd7d6b60df544f99fd7f060b8c1d181dac0afdb5387"
+  },
+  {
+   "path": "library/creature-finish-source/c243b01r1c1-23-crocodile/labels.png",
+   "bytes": 39525,
+   "sha256": "beeb54af12187c20a1b85c280b28279741ee950f9b9ebf5d08ff656455c205fd"
+  },
+  {
+   "path": "library/creature-finish-source/c243b01r1c1-23-crocodile/master.png",
+   "bytes": 1390682,
+   "sha256": "44949448367ba0ae3373dd44889c93e2f51dfc0aba0e86b207356ba7522fa74b"
+  },
+  {
+   "path": "library/creature-finish-source/c243b04r2c1-17-hoatzin/labels.png",
+   "bytes": 39769,
+   "sha256": "ac2430658f78ad8f0a09e42ec787b80a86799e9f854c260570db889a9a8fd419"
+  },
+  {
+   "path": "library/creature-finish-source/c243b04r2c1-17-hoatzin/master.png",
+   "bytes": 1430818,
+   "sha256": "4817f8ad14c72ac7934f0fee7b4da9210d0899d9df2083252c13e22cdc70926d"
+  },
+  {
+   "path": "library/creature-finish-source/rat/labels.png",
+   "bytes": 12796,
+   "sha256": "9205f57215cb3631e592b8bcda5ffa335365cda028aa1c117d11e454d984212e"
+  },
+  {
+   "path": "library/creature-finish-source/rat/master.png",
+   "bytes": 1283423,
+   "sha256": "41f8ed50d1e195f7cbd2096ac228dc48df5f9da6b1a95537d67ab3427e3c4701"
+  }
+ ]
+}

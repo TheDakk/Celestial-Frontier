@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Platypus",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/g2c118-12-platypus/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a25768a7130f4c9c78bf8a026debf0c65bf33a7f7de5f0e6e118dcc34efc05c0"
+}

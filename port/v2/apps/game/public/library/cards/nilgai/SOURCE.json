@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Nilgai",
+ "fitDir": "audits/C215_PROGRAM_20261009/phase5/successors02/g2c95-17-nilgai/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "21221d1e4c786532b374aba9518f0331cbb7791caa6ddb108c5464969a5f01d1"
+}

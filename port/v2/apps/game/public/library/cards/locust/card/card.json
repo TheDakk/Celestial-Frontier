@@ -1,0 +1,237 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Locust",
+ "recordRecipeHash": "687899e8e6210d169af44f38a06b4db79a1c181a1f223dfdf95372821ba89421",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03before/c198creaturesupplyb-22-locust/packet/master.png",
+  "masterSha256": "946898b4e9e1d3b4a3e7e5fb0ca0a5c093f64a52585140b2601ef96398a0812d",
+  "keyedSha256": "5e4b0ca99653269601e74b2d290be6affe56be1f228d9a3d3b0d504aad53b7cc",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "d1a10a09178c333cdff70080b07490dbbcc879d4aa9dce4a4e7c8907263cd528",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "hind-near-lower",
+   "joint": "legHindNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "mid-near-lower",
+   "joint": "legMidNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 3,
+   "id": "front-near-lower",
+   "joint": "legFrontNearFoot",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "hind-near-upper",
+   "joint": "legHindNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "mid-near-upper",
+   "joint": "legMidNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "front-near-upper",
+   "joint": "legFrontNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 7,
+   "id": "hind-far-lower",
+   "joint": "legHindFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 8,
+   "id": "mid-far-lower",
+   "joint": "legMidFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 9,
+   "id": "front-far-lower",
+   "joint": "legFrontFarFoot",
+   "layer": "far"
+  },
+  {
+   "label": 10,
+   "id": "front-far-upper",
+   "joint": "legFrontFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 11,
+   "id": "mid-far-upper",
+   "joint": "legMidFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 12,
+   "id": "hind-far-upper",
+   "joint": "legHindFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 13,
+   "id": "antenna-far",
+   "joint": "antennaFar",
+   "layer": "far"
+  },
+  {
+   "label": 14,
+   "id": "antenna-near",
+   "joint": "antennaNear",
+   "layer": "near"
+  },
+  {
+   "label": 15,
+   "id": "mandible",
+   "joint": "mandible",
+   "layer": "near"
+  },
+  {
+   "label": 16,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 17,
+   "id": "thorax",
+   "joint": "thorax",
+   "layer": "near"
+  },
+  {
+   "label": 18,
+   "id": "membrane-near",
+   "joint": "wingNear",
+   "layer": "near"
+  },
+  {
+   "label": 19,
+   "id": "membrane-far",
+   "joint": "wingFar",
+   "layer": "far"
+  },
+  {
+   "label": 20,
+   "id": "abdomen",
+   "joint": "abdomen",
+   "layer": "near"
+  },
+  {
+   "label": 21,
+   "id": "body",
+   "joint": "root",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.5628389154704944,
+   0.4971291866028708
+  ],
+  "thorax": [
+   0.7057416267942583,
+   0.41259968102073363
+  ],
+  "head": [
+   0.7811004784688995,
+   0.44561403508771924
+  ],
+  "mandible": [
+   0.8169856459330144,
+   0.6000797448165869
+  ],
+  "abdomen": [
+   0.41108452950558216,
+   0.5066985645933014
+  ],
+  "legFrontFarKnee": [
+   0.7232854864433812,
+   0.5494417862838915
+  ],
+  "legFrontFarFoot": [
+   0.7755183413078149,
+   0.655103668261563
+  ],
+  "legFrontNearKnee": [
+   0.6152312599681021,
+   0.4788676236044657
+  ],
+  "legFrontNearFoot": [
+   0.6375598086124402,
+   0.5944976076555024
+  ],
+  "legMidFarKnee": [
+   0.5863636363636363,
+   0.5587719298245615
+  ],
+  "legMidFarFoot": [
+   0.5811802232854864,
+   0.6688995215311004
+  ],
+  "legMidNearKnee": [
+   0.5174641148325358,
+   0.4841307814992026
+  ],
+  "legMidNearFoot": [
+   0.45191387559808616,
+   0.6605263157894736
+  ],
+  "legHindFarKnee": [
+   0.4342105263157895,
+   0.5681818181818182
+  ],
+  "legHindFarFoot": [
+   0.3879585326953748,
+   0.585725677830941
+  ],
+  "legHindNearKnee": [
+   0.417304625199362,
+   0.48484848484848486
+  ],
+  "legHindNearFoot": [
+   0.23086124401913877,
+   0.6335725677830941
+  ],
+  "antennaFar": [
+   0.8233652312599681,
+   0.34728867623604465
+  ],
+  "antennaNear": [
+   0.8488835725677831,
+   0.3456937799043062
+  ],
+  "wingFar": [
+   0.22783094098883572,
+   0.47368421052631576
+  ],
+  "wingNear": [
+   0.2475279106858054,
+   0.5381180223285487
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "474ac157e015be16859ae1bca734438550ecefa94d68e3e8296af449e8772563",
+  "labelsSha256": "27d5d591cb74a6eb83706e1334be35fe614ba72f88d51d2cd531b1f57f32b202",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

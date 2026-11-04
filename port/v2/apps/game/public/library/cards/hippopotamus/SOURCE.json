@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Hippopotamus",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c203creaturesupply-06-hippopotamus/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "9fdce9d972005500da9f20b4f69e68cde1664319544abde3897e8349503cbc51"
+}

@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Screamer\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1646153115\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"20\"]]]]",
+    "seed": 1646153115,
+    "ownerId": "authored:archetype-sprint/c206birdsourcerepaints-19-screamer",
+    "earthName": "Screamer"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1646153115,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 10,
+    "body": 6,
+    "loco": 8,
+    "trait": 20,
+    "size": 3,
+    "diet": 3,
+    "head": 1,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 14,
+    "detail": 8,
+    "accent": 15,
+    "temper": 1,
+    "sense": 6,
+    "repro": 5,
+    "life": 5,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Screamer"
+  },
+  "geometry": {
+    "cutoutAssetHash": "9b9da4dd7e2e3a241c4c9f225b00d0358606d387a317066f8f743391bdc52255",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7405574672067373,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5452153110047847,
+      0.5179425837320574
+    ],
+    "pelvis": [
+      0.5220893141945774,
+      0.5610047846889952
+    ],
+    "spine": [
+      0.5944976076555024,
+      0.5076555023923445
+    ],
+    "chest": [
+      0.6779904306220096,
+      0.4508771929824561
+    ],
+    "neck0": [
+      0.6937001594896332,
+      0.39992025518341306
+    ],
+    "neck1": [
+      0.6961722488038278,
+      0.3662679425837321
+    ],
+    "head": [
+      0.6949760765550239,
+      0.32280701754385965
+    ],
+    "beak": [
+      0.7417862838915471,
+      0.2912280701754386
+    ],
+    "legNearKnee": [
+      0.4697767145135566,
+      0.583652312599681
+    ],
+    "legNearAnkle": [
+      0.42025518341307816,
+      0.6766347687400319
+    ],
+    "legNearFoot": [
+      0.4218500797448166,
+      0.7084529505582137
+    ],
+    "legFarKnee": [
+      0.5534290271132376,
+      0.6266347687400319
+    ],
+    "legFarAnkle": [
+      0.5901913875598086,
+      0.7129984051036683
+    ],
+    "legFarFoot": [
+      0.6097288676236045,
+      0.724561403508772
+    ],
+    "wingNearRoot": [
+      0.6219298245614034,
+      0.4409090909090909
+    ],
+    "wingNearTip": [
+      0.38620414673046255,
+      0.47089314194577353
+    ],
+    "wingFarRoot": [
+      0.6175438596491228,
+      0.4078149920255183
+    ],
+    "wingFarTip": [
+      0.483652312599681,
+      0.39760765550239235
+    ],
+    "tailFan": [
+      0.3181818181818182,
+      0.5399521531100478
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep2/c206birdsourcerepaints-19-screamer/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile wading-bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 01-robin. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "71cc8fb7fc7bac9b2dfc26c9f0a6b28f8642a8c7eba732fc3194fe6aa24713e4",
+    "subjectSourceSha256": "1615b6680a05328263c29ad37147058f0cac8639ba953c70ee40f9f028108186",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.048879084276625046,
+      "spine": 0.08993946232600665,
+      "chest": 0.10096944045780153,
+      "neck0": 0.05332358850405499,
+      "neck1": 0.03374298992211572,
+      "head": 0.04347738300967779,
+      "beak": 0.056466144084626455,
+      "legFarKnee": 0.07272875918344388,
+      "legFarAnkle": 0.09386239306321797,
+      "legFarFoot": 0.022702776468080957,
+      "legNearKnee": 0.0570045489926201,
+      "legNearAnkle": 0.10534761123266127,
+      "legNearFoot": 0.031858129080720735,
+      "wingFarRoot": 0.07421685181706329,
+      "wingFarTip": 0.13428006587051275,
+      "wingNearRoot": 0.05693992106446494,
+      "wingNearTip": 0.23762499554008817,
+      "tailFan": 0.20499141500704923
+    },
+    "measures": {
+      "body": 0.1908749448157142,
+      "bone-min": 0.022702776468080957,
+      "bone-max": 0.23762499554008817,
+      "leg/torso:legFar": 0.9917170055897183,
+      "leg/torso:legNear": 1.0174739774961459,
+      "wing/torso": 1.092322084959215
+    }
+  },
+  "recipeHash": "56d8e16dd6656141b9b2efad202a7f0734cc5d79a4bc4da250e070ecef65baa9"
+}

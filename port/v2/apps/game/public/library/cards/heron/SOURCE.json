@@ -1,0 +1,8 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Heron",
+ "fitDir": "audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01/",
+ "markingsDir": "audits/ART_BATTLE_FOCUS_20260925/16-heron/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4aa67b5363e72612b2df7b85acd915b058c454d594b3fb812880e8086a5fd307"
+}

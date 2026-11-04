@@ -1,0 +1,262 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Fur Seal\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"983015948\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"1\"]]]]",
+    "seed": 983015948,
+    "ownerId": "authored:archetype-sprint/c266-intake-fur-seal",
+    "earthName": "Fur Seal"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 983015948,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 1,
+    "body": 7,
+    "loco": 10,
+    "trait": 1,
+    "size": 5,
+    "diet": 5,
+    "head": 9,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 0,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 11,
+    "habitat": 0,
+    "detail": 9,
+    "accent": 15,
+    "temper": 5,
+    "sense": 9,
+    "repro": 0,
+    "life": 3,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fur Seal"
+  },
+  "geometry": {
+    "cutoutAssetHash": "b1c578f74b2fc205e02ec5aff739141e29d33963b4dfabeb533a32bff0c54f60",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.70414673046252,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.4784688995215311,
+      0.518341307814992
+    ],
+    "spine": [
+      0.4784688995215311,
+      0.4784688995215311
+    ],
+    "pelvis": [
+      0.3349282296650718,
+      0.5582137161084529
+    ],
+    "chest": [
+      0.6299840510366826,
+      0.5103668261562998
+    ],
+    "neck": [
+      0.6379585326953748,
+      0.3827751196172249
+    ],
+    "head": [
+      0.7177033492822966,
+      0.3189792663476874
+    ],
+    "jaw": [
+      0.7575757575757576,
+      0.34688995215311
+    ],
+    "earNearRoot": [
+      0.6794258373205742,
+      0.32854864433811803
+    ],
+    "earNearTip": [
+      0.6666666666666666,
+      0.3269537480063796
+    ],
+    "earFarRoot": [
+      0.6953748006379585,
+      0.31738437001594894
+    ],
+    "earFarTip": [
+      0.6858054226475279,
+      0.31259968102073366
+    ],
+    "hindNearRoot": [
+      0.28708133971291866,
+      0.5980861244019139
+    ],
+    "hindNearKnee": [
+      0.2631578947368421,
+      0.6419457735247209
+    ],
+    "hindNearAnkle": [
+      0.2647527910685805,
+      0.6658692185007975
+    ],
+    "hindNearPaw": [
+      0.21690590111642744,
+      0.6698564593301436
+    ],
+    "hindFarRoot": [
+      0.3189792663476874,
+      0.6060606060606061
+    ],
+    "hindFarKnee": [
+      0.3269537480063796,
+      0.6419457735247209
+    ],
+    "hindFarAnkle": [
+      0.3668261562998405,
+      0.6475279106858054
+    ],
+    "hindFarPaw": [
+      0.40271132376395535,
+      0.6555023923444976
+    ],
+    "foreNearRoot": [
+      0.6100478468899522,
+      0.5821371610845295
+    ],
+    "foreNearKnee": [
+      0.6060606060606061,
+      0.6507177033492823
+    ],
+    "foreNearAnkle": [
+      0.6140350877192983,
+      0.6818181818181818
+    ],
+    "foreNearPaw": [
+      0.5502392344497608,
+      0.6905901116427432
+    ],
+    "foreFarRoot": [
+      0.6738437001594896,
+      0.5821371610845295
+    ],
+    "foreFarKnee": [
+      0.6762360446570973,
+      0.6283891547049442
+    ],
+    "foreFarAnkle": [
+      0.6921850079744817,
+      0.6499202551834131
+    ],
+    "foreFarPaw": [
+      0.7400318979266348,
+      0.6539074960127592
+    ],
+    "tail0": [
+      0.26953748006379585,
+      0.6044657097288676
+    ],
+    "tail1": [
+      0.2631578947368421,
+      0.6092503987240829
+    ],
+    "tail2": [
+      0.25757575757575757,
+      0.6140350877192983
+    ],
+    "tail3": [
+      0.2527910685805423,
+      0.6188197767145136
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "Pinned Earth fauna profile pinniped capability (water+ground); haul-out pose with four flippers on the ground line."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Four flippers, near ear flap, head and jaw are hand-authored on the exact original.",
+    "limitations": "INTERPRETATIONS: the far ear (earFarRoot/Tip) is occluded behind the head and owns no paint; the tail (tail0-3) is not visible between the hind flippers and owns no paint (tree-frog/bullfrog precedent: a joint may own no part). Interior root/spine/pelvis/chest are control frames. Hind roots sit inside the rump; fore roots inside the shoulder; each upper flipper column down to below the belly edge is one root part so no body-owned paint abuts a rotating seam (C266 box-turtle fold lesson).",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "c16c5d31b4ecca7534573e5cada1847cae3a6427d2e9728cdf778c1a808babbe",
+    "subjectSourceSha256": "537d9ce00f24b948ef1cfee36d4abbefefbeb18fc2be80acd21d2e68ee859d53",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.1489756115810957,
+      "spine": 0.16420462744795852,
+      "chest": 0.15483642614790752,
+      "neck": 0.12784066620320092,
+      "head": 0.10212319357947121,
+      "jaw": 0.04867047693673725,
+      "hindFarRoot": 0.05043505040140959,
+      "hindFarKnee": 0.03676054408808969,
+      "hindFarAnkle": 0.04026126175873788,
+      "hindFarPaw": 0.03676054408808969,
+      "foreFarRoot": 0.08411093743911077,
+      "foreFarKnee": 0.046313823271871134,
+      "foreFarAnkle": 0.02679473304052867,
+      "foreFarPaw": 0.048012737554993225,
+      "hindNearRoot": 0.062282692790324244,
+      "hindNearKnee": 0.04995998439450429,
+      "hindNearAnkle": 0.023976549247803697,
+      "hindNearPaw": 0.04801273755499317,
+      "foreNearRoot": 0.07448780579054791,
+      "foreNearKnee": 0.06869635264523687,
+      "foreNearAnkle": 0.03210657438468484,
+      "foreNearPaw": 0.06439609962750377,
+      "tail0": 0.0800949252280046,
+      "tail1": 0.007974481658692212,
+      "tail2": 0.0073521088176179425,
+      "tail3": 0.006766572068770786,
+      "earFarRoot": 0.022385436758561698,
+      "earFarTip": 0.010698889844496632,
+      "earNearRoot": 0.0394555562260063,
+      "earNearTip": 0.012858465308291177
+    },
+    "measures": {
+      "torso": 0.29891012462506084,
+      "head": 0.10212319357947121,
+      "head/torso": 0.34165183834963725,
+      "bone-min": 0.006766572068770786,
+      "bone-max": 0.16420462744795852,
+      "leg/torso:hindFar": 0.38065739686014527,
+      "leg/torso:foreFar": 0.40520973994882925,
+      "leg/torso:hindNear": 0.4079797275193295,
+      "leg/torso:foreNear": 0.5526712314099215
+    }
+  },
+  "recipeHash": "317e392e4cc4c10a073584216471eff76d6e3b748b2b374b4fd26a0419c3c847"
+}

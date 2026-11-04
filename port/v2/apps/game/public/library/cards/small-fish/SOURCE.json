@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Small Fish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/03-small-fish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ca507f94debe402fb97c9d4086df82d9c0567e4fc642cb2345f453406e3b24fc"
+}

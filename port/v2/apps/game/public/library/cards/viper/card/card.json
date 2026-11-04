@@ -1,0 +1,157 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Viper",
+ "recordRecipeHash": "3da3db1846e5cdd3e8681f5b482909300741379be5f433cb640fd62becd75f15",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/03-viper/packet/master.png",
+  "masterSha256": "c14f0c29d61c077f933eaa60e64860f4441240c4896c41cab3222b042ab791cb",
+  "keyedSha256": "832629a4a413c33a0270fa10aef8584521eebbe085afae11c08d17dadea5c47a",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "a2725ae03cc4fc1522aef0e35b78cfba0bb96434118d04812cf393a875a894ba",
+  "labelSource": "binding parts (atlas frames → cut-out boxes, far then near)",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "jaw",
+   "joint": "jaw",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 3,
+   "id": "body-segment-0",
+   "joint": "seg0",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "body-segment-1",
+   "joint": "seg1",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "body-segment-2",
+   "joint": "seg2",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "body-segment-3",
+   "joint": "seg3",
+   "layer": "near"
+  },
+  {
+   "label": 7,
+   "id": "body-segment-4",
+   "joint": "seg4",
+   "layer": "near"
+  },
+  {
+   "label": 8,
+   "id": "body-segment-5",
+   "joint": "seg5",
+   "layer": "near"
+  },
+  {
+   "label": 9,
+   "id": "body-segment-6",
+   "joint": "seg6",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "body-segment-7",
+   "joint": "seg7",
+   "layer": "near"
+  },
+  {
+   "label": 11,
+   "id": "body-segment-8",
+   "joint": "seg8",
+   "layer": "near"
+  },
+  {
+   "label": 12,
+   "id": "body-segment-9",
+   "joint": "seg9",
+   "layer": "near"
+  },
+  {
+   "label": 13,
+   "id": "neck-root",
+   "joint": "root",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.8189792663476874,
+   0.49098883572567786
+  ],
+  "head": [
+   0.869377990430622,
+   0.4838118022328549
+  ],
+  "jaw": [
+   0.8938596491228071,
+   0.5068580542264753
+  ],
+  "seg0": [
+   0.7747208931419458,
+   0.507177033492823
+  ],
+  "seg1": [
+   0.7188995215311005,
+   0.5028708133971292
+  ],
+  "seg2": [
+   0.6425837320574163,
+   0.5425039872408293
+  ],
+  "seg3": [
+   0.5669856459330144,
+   0.5485645933014354
+  ],
+  "seg4": [
+   0.4934609250398724,
+   0.5081339712918661
+  ],
+  "seg5": [
+   0.4178628389154705,
+   0.4946570972886762
+  ],
+  "seg6": [
+   0.3429824561403509,
+   0.5148325358851675
+  ],
+  "seg7": [
+   0.2687400318979266,
+   0.5358851674641149
+  ],
+  "seg8": [
+   0.18636363636363634,
+   0.523524720893142
+  ],
+  "seg9": [
+   0.11140350877192981,
+   0.5239234449760766
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "13e5fee891a43a9334b971c41bc8a67f94629e70d9bc4421f7c325ca84502170",
+  "labelsSha256": "95e0cdfbae8700a79c13e03c97526356c79fba67a26948d36293b7d78cbb348d",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

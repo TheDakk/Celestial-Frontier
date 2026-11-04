@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Musk Ox",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c248/07-musk-ox/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "cd09d859f3e0bd153e7ee6fee3b59dc2fa4eed3ae45d4ea71741e45c75c091c5"
+}

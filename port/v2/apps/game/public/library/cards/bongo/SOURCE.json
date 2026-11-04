@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Bongo",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/15-bongo/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4cfa10557fc91b1af6b14928dadee5c16e41e62a664347a7b48a39caf6affde0"
+}

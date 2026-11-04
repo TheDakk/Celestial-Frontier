@@ -1,0 +1,173 @@
+{
+  "images": [
+    {
+      "phase": "launch",
+      "image": "wild-launch.png",
+      "imageSha256": "5a46a29eb41a701b428531720251c2fa688777618e824e4297c453edf537a642",
+      "canvasSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "originAnchor": [
+        0.135,
+        0.6
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "keyedImage": "keyed/wild-launch.png",
+      "keyedSha256": "8ec8ab2d2e6a578a751e9a30f2c913cc102e073767d5b94adf7edc51a7242275",
+      "alphaBoundsPixels": {
+        "x": 31,
+        "y": 299,
+        "width": 690,
+        "height": 654
+      },
+      "keyer": {
+        "erodedPixels": 17670,
+        "despilledPixels": 824,
+        "unresolvedEdgePixels": 89
+      },
+      "registeredImage": "registered/wild-launch.png",
+      "registeredSha256": "164b45aad0448d2d642698136570b06b05a75f8ddf9f9a08421cf2d8edd3ed1b",
+      "registration": {
+        "uniformScale": 0.3269537480063796,
+        "left": 149,
+        "top": 317,
+        "sourceAnchorNormalized": [
+          0.135,
+          0.6
+        ],
+        "targetAnchorNormalized": [
+          0.2,
+          0.55
+        ],
+        "mappedAnchorNormalized": [
+          0.19956054687500002,
+          0.5498046875
+        ],
+        "anchorResidualPixels": [
+          -0.44999999999998863,
+          -0.20000000000004547
+        ],
+        "method": "visual anchor measurement; uniform downscale and translation of keyed copy; no paint changes, rotation, warping or cropping"
+      },
+      "qualityAccepted": false
+    },
+    {
+      "phase": "travel",
+      "image": "wild-travel.png",
+      "imageSha256": "bd62c402b5bdc4929a29943952b29e5736e27f7f3ec325214bc0f5a68fb29679",
+      "canvasSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "originAnchor": [
+        0.12,
+        0.55
+      ],
+      "contactAnchor": [
+        0.95,
+        0.55
+      ],
+      "keyedImage": "keyed/wild-travel.png",
+      "keyedSha256": "54d987a0413f451093285a9461ee573dcf6fb99b33940c0d003ae87501b2fa3e",
+      "alphaBoundsPixels": {
+        "x": 37,
+        "y": 326,
+        "width": 1162,
+        "height": 612
+      },
+      "keyer": {
+        "erodedPixels": 32770,
+        "despilledPixels": 2277,
+        "unresolvedEdgePixels": 597
+      },
+      "registeredImage": "registered/wild-travel.png",
+      "registeredSha256": "78e11c152e4d09ccc20c7c4ccd858cc46d4afe211bf4956674ee2c9b924a1705",
+      "registration": {
+        "uniformScale": 0.5901116427432217,
+        "left": 116,
+        "top": 156,
+        "sourceAnchorNormalized": [
+          0.12,
+          0.55
+        ],
+        "targetAnchorNormalized": [
+          0.2,
+          0.55
+        ],
+        "mappedAnchorNormalized": [
+          0.2,
+          0.5498046875
+        ],
+        "anchorResidualPixels": [
+          0,
+          -0.20000000000004547
+        ],
+        "method": "visual anchor measurement; uniform downscale and translation of keyed copy; no paint changes, rotation, warping or cropping"
+      },
+      "qualityAccepted": false
+    },
+    {
+      "phase": "impact",
+      "image": "wild-impact.png",
+      "imageSha256": "978296588ae7ad5694380c92ab7499f34a4a9ec27c654b064b82b7c0a924fc79",
+      "canvasSize": {
+        "width": 1254,
+        "height": 1254
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.87,
+        0.56
+      ],
+      "keyedImage": "keyed/wild-impact.png",
+      "keyedSha256": "68d14a39890d44b5009f110a361dc7940a41fe5d80e513e6076fd6c56242d9f0",
+      "alphaBoundsPixels": {
+        "x": 470,
+        "y": 269,
+        "width": 752,
+        "height": 718
+      },
+      "keyer": {
+        "erodedPixels": 20665,
+        "despilledPixels": 1364,
+        "unresolvedEdgePixels": 529
+      },
+      "registeredImage": "registered/wild-impact.png",
+      "registeredSha256": "54fdf384a6ca0f475f20cc6e3ad296b3c672d193039c263c831cdbc139ddaa37",
+      "registration": {
+        "uniformScale": 0.4082934609250399,
+        "left": 374,
+        "top": 276,
+        "sourceAnchorNormalized": [
+          0.87,
+          0.56
+        ],
+        "targetAnchorNormalized": [
+          0.8,
+          0.55
+        ],
+        "mappedAnchorNormalized": [
+          0.800234375,
+          0.54953125
+        ],
+        "anchorResidualPixels": [
+          0.2400000000000091,
+          -0.4800000000000182
+        ],
+        "method": "visual anchor measurement; uniform downscale and translation of keyed copy; no paint changes, rotation, warping or cropping"
+      },
+      "qualityAccepted": false
+    }
+  ],
+  "generationCalls": 3,
+  "rerolls": 0,
+  "originalsUnchanged": true,
+  "qualityAccepted": false
+}

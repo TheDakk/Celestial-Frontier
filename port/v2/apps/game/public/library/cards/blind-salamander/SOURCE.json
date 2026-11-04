@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Blind Salamander",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-02/c243b01r2c1-36-blind-salamander/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ba2424982f6742c387a9d5f43291f7295e9e4fbdfa1d9d3c2db7ec5c2b6542ed"
+}

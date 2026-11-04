@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sand Cat",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/22-sand-cat/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "21e1f6bee9b4f8ccd34687d5ac24f2fac58b029f4dee464a29c536a7ee6ac107"
+}

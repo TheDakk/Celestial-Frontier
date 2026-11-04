@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Lemur",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-01/c243b06r2c1-12-lemur/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "2519ba63f3d2462612cd85520c8bb7ed012f5bf32bbadd912e77833a22936d9e"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Grasshopper",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/rebound/c266-11-grasshopper/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "573ad2b376e97dafb8bd4ba35ea7f0ce5fce2d948ad95d6a0ec74757746b2f8e"
+}

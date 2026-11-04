@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tegu",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/11-tegu/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "a6b3b34d72b14eccc308cfc114164b1043a352adc2a93310795978013625dfa3"
+}

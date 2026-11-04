@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Howler Monkey",
+ "fitDir": "audits/C215_PROGRAM_20261009/phase5/successors02/c198creaturesupplyb-07-howler-monkey/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d26919f941ddf48e495653a3a27de25cda60c1c86a4a7955fdf729f84bdd4de5"
+}

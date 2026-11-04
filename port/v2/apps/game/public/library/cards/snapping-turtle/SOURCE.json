@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Snapping Turtle",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-finish-01/rebound/c266-05-snapping-turtle/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f13c0fabaf89ba28d70224c1f55e143c1e23b6cf8d3699a9e26426c939d141b6"
+}

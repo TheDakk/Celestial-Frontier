@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Peccary",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/g2c76-23-peccary/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7c7e806206816206f4115d6840f410992cb49ab1e5f138f1cb781fc417a813fa"
+}

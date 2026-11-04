@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Partridge\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"3702044895\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"22\"]]]]",
+    "seed": 3702044895,
+    "ownerId": "authored:archetype-sprint/04-partridge",
+    "earthName": "Partridge"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3702044895,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 17,
+    "body": 3,
+    "loco": 16,
+    "trait": 22,
+    "size": 5,
+    "diet": 0,
+    "head": 9,
+    "limbs": 1,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 0,
+    "behavior": 2,
+    "habitat": 13,
+    "detail": 2,
+    "accent": 7,
+    "temper": 0,
+    "sense": 1,
+    "repro": 2,
+    "life": 3,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Partridge"
+  },
+  "geometry": {
+    "cutoutAssetHash": "a1dc9499ecf8ccb2af058d7c8a6ca01f433e1834e1d46b666a193b9f44834573",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7589589661601054,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.49306220095693776,
+      0.4586124401913876
+    ],
+    "pelvis": [
+      0.48556618819776715,
+      0.5508771929824561
+    ],
+    "spine": [
+      0.5540669856459329,
+      0.45629984051036687
+    ],
+    "chest": [
+      0.6294258373205741,
+      0.4281499202551834
+    ],
+    "neck0": [
+      0.6481658692185007,
+      0.3796650717703349
+    ],
+    "neck1": [
+      0.6518341307814992,
+      0.31323763955342904
+    ],
+    "head": [
+      0.6743221690590112,
+      0.2576555023923445
+    ],
+    "beak": [
+      0.7318979266347687,
+      0.2815789473684211
+    ],
+    "legNearKnee": [
+      0.4354066985645933,
+      0.6203349282296651
+    ],
+    "legNearAnkle": [
+      0.423444976076555,
+      0.7054226475279107
+    ],
+    "legNearFoot": [
+      0.4471291866028709,
+      0.7303827751196172
+    ],
+    "legFarKnee": [
+      0.5478468899521531,
+      0.6665071770334928
+    ],
+    "legFarAnkle": [
+      0.5850877192982457,
+      0.7208931419457735
+    ],
+    "legFarFoot": [
+      0.6094098883572568,
+      0.7141148325358851
+    ],
+    "wingNearRoot": [
+      0.5776714513556619,
+      0.41834130781499207
+    ],
+    "wingNearTip": [
+      0.3231259968102073,
+      0.5086124401913875
+    ],
+    "wingFarRoot": [
+      0.5488038277511962,
+      0.3555821371610845
+    ],
+    "wingFarTip": [
+      0.45311004784688996,
+      0.3774322169059011
+    ],
+    "tailFan": [
+      0.30422647527910684,
+      0.5610047846889952
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/04-partridge/fallback-2/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile ground-foraging-bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 02-pigeon. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "76fb2562d7f1368d1e678fb374b83aaa4655b81e148b71b33a64deab9d9203e1",
+    "subjectSourceSha256": "7456b86be5cc057e66b5a15c51d28d9f985e4713c355c6b4e08de65183e9195d",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.09256875722878984,
+      "spine": 0.11677857188570356,
+      "chest": 0.08044485400629278,
+      "neck0": 0.05198047064171331,
+      "neck1": 0.06652863965110213,
+      "head": 0.059959034656709216,
+      "beak": 0.06234820831383819,
+      "legFarKnee": 0.13133612992113705,
+      "legFarAnkle": 0.0659144335470207,
+      "legFarFoot": 0.025249027430602193,
+      "legNearKnee": 0.08567585065776619,
+      "legNearAnkle": 0.08592440154145903,
+      "legNearFoot": 0.03440857157234401,
+      "wingFarRoot": 0.10847115547553209,
+      "wingFarTip": 0.09815663756073069,
+      "wingNearRoot": 0.052675661786132116,
+      "wingNearTip": 0.27007825860344403,
+      "tailFan": 0.18162229927846552
+    },
+    "measures": {
+      "body": 0.18909675332170964,
+      "bone-min": 0.025249027430602193,
+      "bone-max": 0.27007825860344403,
+      "leg/torso:legFar": 1.1766441622623853,
+      "leg/torso:legNear": 1.0894360699101329,
+      "wing/torso": 1.092709363892291
+    }
+  },
+  "recipeHash": "c96d45c8543e4409250c5a01dd92d9abd14c2f694444890966033ba38800a859"
+}

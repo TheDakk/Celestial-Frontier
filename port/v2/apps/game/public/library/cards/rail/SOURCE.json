@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Rail",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/16-rail/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7427132fc896bf3c017a79de67afc5da2237b544683c97a27e8ce0040d6b9163"
+}

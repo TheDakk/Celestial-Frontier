@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Crane",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/c198creaturesupplyc-01-crane/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "6dc27d8e4ae1e5f731ba9fb2b57aa726564e061053cf807dd67ddfb55c9ea39a"
+}

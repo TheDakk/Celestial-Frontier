@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Jaguar",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c233/15-jaguar/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d5d5cb2a4921602e1068e00484fa500c976285c3c58791915b60fe91bfafa060"
+}

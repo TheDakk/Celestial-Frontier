@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Leopard",
+ "fitDir": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ad3ff82b23f5fb5e67b24673134631236c29c9f5da725af6a2c87378a9c9e70e"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "African Wild Dog",
+ "fitDir": "audits/ISLANDS_C239_20261003/11-african-wild-dog/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "155114b8461d27b9313b36a76a320d31ed8278b4953f25304fbe08999adb72c9"
+}

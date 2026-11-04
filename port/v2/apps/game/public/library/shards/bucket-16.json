@@ -1,0 +1,146 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-16",
+ "files": [
+  {
+   "path": "library/cards/forest-elephant/SOURCE.json",
+   "bytes": 341,
+   "sha256": "e5f2a2792a82250ae7f0f374464193efd02ca2791877aa7c50716f01feb133a3"
+  },
+  {
+   "path": "library/cards/forest-elephant/card/card.json",
+   "bytes": 5921,
+   "sha256": "254858a3b9a7dcdf67df02c277adcc14abe31c32e1de93fe40dfe9803d831da1"
+  },
+  {
+   "path": "library/cards/forest-elephant/card/labels-512.png",
+   "bytes": 6973,
+   "sha256": "1095230c0b9773ffdc5a59bfb5484cc03961d438f12e54e1e69dd3db10b1a5bf"
+  },
+  {
+   "path": "library/cards/forest-elephant/card/master-512.png",
+   "bytes": 94550,
+   "sha256": "acc6d78d1e242ea6f486c2438b6d869ab56534b5ebef8f899d0cb5897603544f"
+  },
+  {
+   "path": "library/cards/forest-elephant/record.json",
+   "bytes": 7608,
+   "sha256": "eff221628b30d9c33ebf71d677fead2da910ce43e4b523f89886021a4127708a"
+  },
+  {
+   "path": "library/cards/icefish/SOURCE.json",
+   "bytes": 285,
+   "sha256": "2fbca69dbb4f11fb31b8a1146884f579809876d70a8cead0946b949b5a94ba10"
+  },
+  {
+   "path": "library/cards/icefish/card/card.json",
+   "bytes": 2930,
+   "sha256": "0ceb2808072188352fd1b0503befbe2f4be7e3a69018d98ddd0ae900e627a830"
+  },
+  {
+   "path": "library/cards/icefish/card/labels-512.png",
+   "bytes": 5477,
+   "sha256": "5aaa4877ef5986aa959da9e7d7f9ba8b89ea6f891f25bab0c92f7b50faa40af8"
+  },
+  {
+   "path": "library/cards/icefish/card/master-512.png",
+   "bytes": 86304,
+   "sha256": "d811b388cfd4dc632386733a2114c702792bcd6faebadbd98a3dbf189ccba9bf"
+  },
+  {
+   "path": "library/cards/icefish/record.json",
+   "bytes": 5130,
+   "sha256": "67feea68bac1729f51637829cb5d2a4b6391243c044d542657c6751577ccd8a0"
+  },
+  {
+   "path": "library/cards/tern/SOURCE.json",
+   "bytes": 310,
+   "sha256": "cc6cf8eef18f76d8a453632070d53aa2d62619f4b5cc823de75b35bccf2bc97a"
+  },
+  {
+   "path": "library/cards/tern/card/card.json",
+   "bytes": 3753,
+   "sha256": "eac62721e28d6eb6d17ae9f3633aeed6e48f10fea8e01b1dec6879afef7ba06e"
+  },
+  {
+   "path": "library/cards/tern/card/labels-512.png",
+   "bytes": 4740,
+   "sha256": "4664d0928c2d30a0f845566372aa3b509351efb2de7f71610ea28d66a2bcaf09"
+  },
+  {
+   "path": "library/cards/tern/card/master-512.png",
+   "bytes": 31475,
+   "sha256": "b6aad4418541dd2d33b536b7603f142e6bf05418553358cf884fe0aba6da247f"
+  },
+  {
+   "path": "library/cards/tern/record.json",
+   "bytes": 5971,
+   "sha256": "f936ec13e330b3183f9fd500f2f9cd8f309e311aeaaf50c5b0e8c41595b65578"
+  },
+  {
+   "path": "library/cards/tortoise/SOURCE.json",
+   "bytes": 320,
+   "sha256": "15dbb873b1d9941da619c2f04f448d27507b595beb4c25033ac1f3c9e8cf3e1c"
+  },
+  {
+   "path": "library/cards/tortoise/card/card.json",
+   "bytes": 5038,
+   "sha256": "bfb31f854be22db4c3ea6dcfeed91e412c283cc11499c284c7c025d364f1dc9e"
+  },
+  {
+   "path": "library/cards/tortoise/card/labels-512.png",
+   "bytes": 5188,
+   "sha256": "808168d30b26c97266c56a7fc6aa1316704f112c39975a017b6769b2945c27fc"
+  },
+  {
+   "path": "library/cards/tortoise/card/master-512.png",
+   "bytes": 88182,
+   "sha256": "19bfe1100a3f8f4896801acc8090df0f246126e72ff3e972db7d0a0db145db11"
+  },
+  {
+   "path": "library/cards/tortoise/record.json",
+   "bytes": 8342,
+   "sha256": "cb0d4d8424edef9c6511d612fc57ab931fccd94df0fbba5bf60be9afb38b16f4"
+  },
+  {
+   "path": "library/creature-finish-source/02-jackal/labels.png",
+   "bytes": 58661,
+   "sha256": "99616f7b0f85a13ac0f5b44ce967608f2a1c782b684ce232aaf150ec919aa9f7"
+  },
+  {
+   "path": "library/creature-finish-source/02-jackal/master.png",
+   "bytes": 1244414,
+   "sha256": "e04d2486c98a641c334edd7ca3b1501011cf465310d3aaa18da5d32e929fe187"
+  },
+  {
+   "path": "library/creature-finish-source/c186-islands-10-antelope-tail/labels.png",
+   "bytes": 47877,
+   "sha256": "0afeb854b2fd827c7d0342ea4a44ab792a3657891186e7d11d5e992eaee2c7c2"
+  },
+  {
+   "path": "library/creature-finish-source/c186-islands-10-antelope-tail/master.png",
+   "bytes": 1444705,
+   "sha256": "ec086768b2fa20ef358e1189ddcf49b33ae653f84fd5816af971f4ef9b6ae913"
+  },
+  {
+   "path": "library/creature-finish-source/c213-c202creaturesupply-16-spotted-hyena/labels.png",
+   "bytes": 46280,
+   "sha256": "acca57d7581004c2a0c75a7aee56848a5435e7bd32cd80867138b3e930373d33"
+  },
+  {
+   "path": "library/creature-finish-source/c213-c202creaturesupply-16-spotted-hyena/master.png",
+   "bytes": 1422526,
+   "sha256": "bce5a8e2772d2d90f9d427097b9d9f5c2bb0e9df13b9cb8edd030c63a2cbf6a5"
+  },
+  {
+   "path": "library/creature-finish-source/c243b03r1c1-23-carrion-beetle/labels.png",
+   "bytes": 42088,
+   "sha256": "b9df6f7c70490615797fa3c2ece455b3ac7629533adf5992414ba038bfe6c5b1"
+  },
+  {
+   "path": "library/creature-finish-source/c243b03r1c1-23-carrion-beetle/master.png",
+   "bytes": 1489809,
+   "sha256": "9258118b365c8e0a7a271125b6af21d4ccb888a919d95513c57314eb0125f929"
+  }
+ ]
+}

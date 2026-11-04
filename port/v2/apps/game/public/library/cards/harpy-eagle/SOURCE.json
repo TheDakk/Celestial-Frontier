@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Harpy Eagle",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/13-harpy-eagle/fallback-2/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7df89544e0a614510e7d87c1c51940e570a91cf8262b70e06dc1f39b838b00ef"
+}

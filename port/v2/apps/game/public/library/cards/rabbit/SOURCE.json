@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Rabbit",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/g2c90-17-rabbit/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ef7672fbc7df1cf6a0fd0e4eaf039b6ec226625a2a2047540a5a1db3c05753c2"
+}

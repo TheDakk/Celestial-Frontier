@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Black Fly",
+ "fitDir": "audits/C279_CODEX_20261018/coordinator/finishes/black-fly/rebound/c275-w1-22-c266-black-fly/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "32d19ad8a5844da0da5437e09e86429b43096c4201843cc4bf7a2fd7a38e25af"
+}

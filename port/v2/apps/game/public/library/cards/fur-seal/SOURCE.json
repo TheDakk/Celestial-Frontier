@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Fur Seal",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/fur-seal-finish-01/rebound/c266-08-fur-seal/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "317e392e4cc4c10a073584216471eff76d6e3b748b2b374b4fd26a0419c3c847"
+}

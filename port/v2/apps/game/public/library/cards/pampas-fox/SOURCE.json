@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Pampas Fox",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/19-pampas-fox/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "ff273c4cb1f77df7b73c42801195c7c26cd058b9de8634b11ec1a42a5f51428e"
+}

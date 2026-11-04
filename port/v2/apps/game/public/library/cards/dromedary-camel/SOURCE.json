@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Dromedary Camel",
+ "fitDir": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-finish-01/rebound/c266-11-dromedary-camel/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "8dd1b29f45b39906978302a23fed8238b19f7631143fc89724bd4b8b8b63aade"
+}

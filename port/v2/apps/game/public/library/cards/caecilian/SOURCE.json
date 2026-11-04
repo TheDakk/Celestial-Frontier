@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Caecilian",
+ "fitDir": "audits/C279_CODEX_20261018/coordinator/finishes/caecilian/rebound/c275-w1-03-c266-caecilian/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "69aedcef1aa976b39dae522f8094373b28f7282fcf1bf602fb076c8bea6d4363"
+}

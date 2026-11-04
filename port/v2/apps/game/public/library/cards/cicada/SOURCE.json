@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Cicada",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep7/g2throughputc56-26-cicada/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "777eeb665901aaa4f9ad384f6c2fc75aa84b995506f3dae93c50f411ec80519d"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Beetle",
+ "fitDir": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "df60796170ec29f898e6b51c71b23acae5dce3bf89a3bb2d93e661dc087a21d8"
+}

@@ -1,0 +1,337 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Wild Ass",
+ "recordRecipeHash": "0db916226143b9ce12adf70b1a3eb16b585ce06675d29b91e5ff191a45bd1099",
+ "source": {
+  "master": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/01-wild-ass/master.png",
+  "masterSha256": "d03e96b63e1a5ad90a4032be5f0b09fd00c4c924b8a844493397348c0efd7916",
+  "keyedSha256": "72dc2c1d2eceaab5e136ad7071b3c0ab3feb4c6e51b37c7dbb3749d397ed7021",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "b205378567ebda751c55e5f17fd644367145177bb8af918067f95ae29fce102a",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "hind-near-paw",
+   "joint": "hindNearPaw",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "hind-near-ankle",
+   "joint": "hindNearAnkle",
+   "layer": "near"
+  },
+  {
+   "label": 3,
+   "id": "hind-near-knee",
+   "joint": "hindNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "hind-near-root",
+   "joint": "hindNearRoot",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "hind-far-paw",
+   "joint": "hindFarPaw",
+   "layer": "far"
+  },
+  {
+   "label": 6,
+   "id": "hind-far-ankle",
+   "joint": "hindFarAnkle",
+   "layer": "far"
+  },
+  {
+   "label": 7,
+   "id": "hind-far-knee",
+   "joint": "hindFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 8,
+   "id": "hind-far-root",
+   "joint": "hindFarRoot",
+   "layer": "far"
+  },
+  {
+   "label": 9,
+   "id": "fore-near-paw",
+   "joint": "foreNearPaw",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "fore-near-ankle",
+   "joint": "foreNearAnkle",
+   "layer": "near"
+  },
+  {
+   "label": 11,
+   "id": "fore-near-knee",
+   "joint": "foreNearKnee",
+   "layer": "near"
+  },
+  {
+   "label": 12,
+   "id": "fore-near-root",
+   "joint": "foreNearRoot",
+   "layer": "near"
+  },
+  {
+   "label": 13,
+   "id": "fore-far-paw",
+   "joint": "foreFarPaw",
+   "layer": "far"
+  },
+  {
+   "label": 14,
+   "id": "fore-far-ankle",
+   "joint": "foreFarAnkle",
+   "layer": "far"
+  },
+  {
+   "label": 15,
+   "id": "fore-far-knee",
+   "joint": "foreFarKnee",
+   "layer": "far"
+  },
+  {
+   "label": 16,
+   "id": "fore-far-root",
+   "joint": "foreFarRoot",
+   "layer": "far"
+  },
+  {
+   "label": 17,
+   "id": "ear-near-tip",
+   "joint": "earNearTip",
+   "layer": "near"
+  },
+  {
+   "label": 18,
+   "id": "ear-near-root",
+   "joint": "earNearRoot",
+   "layer": "near"
+  },
+  {
+   "label": 19,
+   "id": "ear-far-tip",
+   "joint": "earFarTip",
+   "layer": "far"
+  },
+  {
+   "label": 20,
+   "id": "ear-far-root",
+   "joint": "earFarRoot",
+   "layer": "far"
+  },
+  {
+   "label": 21,
+   "id": "jaw",
+   "joint": "jaw",
+   "layer": "near"
+  },
+  {
+   "label": 22,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 23,
+   "id": "neck",
+   "joint": "neck",
+   "layer": "near"
+  },
+  {
+   "label": 24,
+   "id": "tail3",
+   "joint": "tail3",
+   "layer": "near"
+  },
+  {
+   "label": 25,
+   "id": "tail2",
+   "joint": "tail2",
+   "layer": "near"
+  },
+  {
+   "label": 26,
+   "id": "tail1",
+   "joint": "tail1",
+   "layer": "near"
+  },
+  {
+   "label": 27,
+   "id": "tail0",
+   "joint": "tail0",
+   "layer": "near"
+  },
+  {
+   "label": 28,
+   "id": "chest",
+   "joint": "chest",
+   "layer": "near"
+  },
+  {
+   "label": 29,
+   "id": "pelvis",
+   "joint": "pelvis",
+   "layer": "near"
+  },
+  {
+   "label": 30,
+   "id": "root",
+   "joint": "root",
+   "layer": "near"
+  },
+  {
+   "label": 31,
+   "id": "spine",
+   "joint": "spine",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.5063795853269537,
+   0.43835725677830945
+  ],
+  "pelvis": [
+   0.39657097288676235,
+   0.42352472089314197
+  ],
+  "spine": [
+   0.5120414673046252,
+   0.4361244019138756
+  ],
+  "chest": [
+   0.6134768740031897,
+   0.4281499202551834
+  ],
+  "neck": [
+   0.687799043062201,
+   0.3620414673046252
+  ],
+  "head": [
+   0.7161881977671452,
+   0.36993620414673045
+  ],
+  "jaw": [
+   0.7312599681020734,
+   0.43987240829346097
+  ],
+  "hindNearRoot": [
+   0.3781499202551834,
+   0.43995215311004787
+  ],
+  "hindNearKnee": [
+   0.3292663476874003,
+   0.5511164274322169
+  ],
+  "hindNearAnkle": [
+   0.28708133971291866,
+   0.6401116427432217
+  ],
+  "hindNearPaw": [
+   0.28891547049441785,
+   0.6791068580542265
+  ],
+  "hindFarRoot": [
+   0.40789473684210525,
+   0.4578947368421053
+  ],
+  "hindFarKnee": [
+   0.3915470494417863,
+   0.5622807017543859
+  ],
+  "hindFarAnkle": [
+   0.4011164274322169,
+   0.6358054226475279
+  ],
+  "hindFarPaw": [
+   0.42216905901116425,
+   0.6741626794258373
+  ],
+  "foreNearRoot": [
+   0.5841307814992025,
+   0.45438596491228067
+  ],
+  "foreNearKnee": [
+   0.55103668261563,
+   0.5536682615629984
+  ],
+  "foreNearAnkle": [
+   0.5218500797448166,
+   0.6440191387559808
+  ],
+  "foreNearPaw": [
+   0.5197767145135566,
+   0.683732057416268
+  ],
+  "foreFarRoot": [
+   0.5972886762360446,
+   0.511164274322169
+  ],
+  "foreFarKnee": [
+   0.6267942583732058,
+   0.6012759170653907
+  ],
+  "foreFarAnkle": [
+   0.6578947368421053,
+   0.6690590111642744
+  ],
+  "foreFarPaw": [
+   0.6778309409888357,
+   0.6921850079744817
+  ],
+  "tail0": [
+   0.33580542264752794,
+   0.4148325358851675
+  ],
+  "tail1": [
+   0.29545454545454547,
+   0.49003189792663476
+  ],
+  "tail2": [
+   0.28819776714513556,
+   0.5197767145135566
+  ],
+  "tail3": [
+   0.2661084529505582,
+   0.5461722488038278
+  ],
+  "earNearRoot": [
+   0.6957735247208932,
+   0.31722488038277513
+  ],
+  "earNearTip": [
+   0.6987240829346093,
+   0.27942583732057413
+  ],
+  "earFarRoot": [
+   0.7202551834130781,
+   0.315311004784689
+  ],
+  "earFarTip": [
+   0.7364433811802232,
+   0.28827751196172247
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "06060fd12278f97e40f1c34c3669a4b5b17e6881b00b02dbdf193b5c362ff474",
+  "labelsSha256": "517ac8bd00a1329e98f370395e4bdd1c1376aec276dfafdcd62d48315a723bcd",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

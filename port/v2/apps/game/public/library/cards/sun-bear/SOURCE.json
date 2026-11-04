@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Sun Bear",
+ "fitDir": "audits/QUAD_ISLANDS_20260927/g2c114-14-sun-bear/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "244db86e9cb24e0051ecc95fb48c8f42a57f80c79dc9e5bdc67799f5c2b033d4"
+}

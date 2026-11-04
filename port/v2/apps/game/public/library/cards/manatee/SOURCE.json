@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Manatee",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound01/c243b02r2c2-18-manatee/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "35b43f7b40e3035523ab8baa493011a852764f2559c7de21d4570c9870dccad3"
+}

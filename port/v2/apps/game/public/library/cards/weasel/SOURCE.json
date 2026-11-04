@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Weasel",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/12-weasel/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "eac2dbc1d9e303b50f6d45a9f9c6e07ebc98fbb6c91ade1c07ec101bb559cc13"
+}

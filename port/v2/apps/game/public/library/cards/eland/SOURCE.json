@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Eland",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c223r/04-eland/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "5c8533f328c32955919cbe00f8421f2d45b908d2268ad5798a39519de440cd68"
+}

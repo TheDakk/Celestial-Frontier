@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Bull",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c248/09-bull/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c4db49287445a9f0175ebf2d94eb4a910772c3650ddfc4559ee61594eea893ed"
+}

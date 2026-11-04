@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Komodo Dragon",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/18-komodo-dragon/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "db2ab1ac8e2161fe18251d37439b88bb7a1e91e6658f2a2b1950b667d0e0216a"
+}

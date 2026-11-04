@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Mudminnow",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/09-mudminnow/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b49dd8c03be45e2cdbdfb7263bc3e53bab5ec5c0ca7ee13f6aad7a98c772817e"
+}

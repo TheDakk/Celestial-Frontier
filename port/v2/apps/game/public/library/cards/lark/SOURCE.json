@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Lark",
+ "fitDir": "audits/C163_REFERENCE_REPAIR_20261002/16-lark/fit02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "fa3515c726d7caba5e32b0d9c2918e965c40e190c425f6b618fad4ac3824ae5e"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Arctic Cod",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/13-arctic-cod/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "64fc9b2083dfbea2c904d2bf0f4600483816edd9d02dd3d945b829cc27158458"
+}

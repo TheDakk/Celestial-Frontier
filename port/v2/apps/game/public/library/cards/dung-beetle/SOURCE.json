@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Dung Beetle",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2insect-pool/c56-25-dung-beetle/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "c2fe105c018e241b6f0d380eb736218a5f4c3a59ce54ae1c6c8362890971f6e5"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Alpaca",
+ "fitDir": "audits/ISLANDS_SWEEP3_20261009/c203creaturesupply-12-alpaca/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "f69f6f6706ade0d2787fe4c4f2715884215f06ea2661506162eb32672fb739b6"
+}

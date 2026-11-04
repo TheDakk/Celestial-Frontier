@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Gar",
+ "fitDir": "audits/FISH_BATCH_C100_20260927/parity-gar/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "21929286d41c0c879215ba22548c901251fb7c3faa7ebf553ba5fbc6fe944ec4"
+}

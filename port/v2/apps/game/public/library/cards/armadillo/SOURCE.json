@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Armadillo",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep4/g2c107-22-armadillo/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "20b2955ded03e974f1ec9b6ae415cd2f52371d529cfa4be7decd140f81447f6b"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Giraffe",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c196p/14-giraffe/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "76d797cb763a4af6ed8c5c8fff3e5dc1611eab1e1c2d066b5448985add61d1c3"
+}

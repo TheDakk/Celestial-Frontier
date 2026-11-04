@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Triggerfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c258/19-triggerfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7237121ab4eacc506187b550da6201fca19d570dedac64010423e04d563d99e2"
+}

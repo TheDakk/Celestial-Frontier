@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Okapi",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/rebound-02/c203creaturesupplyb-01-okapi/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7180a9c632f8fc6668a1d5d29f09f4a14f94e28ab2577634da5f8dd79b037d77"
+}

@@ -1,0 +1,121 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Beaked Whale",
+ "recordRecipeHash": "6d7e6c8243dcd7b7a5e1204f25103d2df47c0f1a93bacede03b53d8ba46d36dd",
+ "source": {
+  "master": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c2g02to04/c243b02r1c2-02-beaked-whale/packet/master.png",
+  "masterSha256": "cb89162007dd62b555df35999b3f107d8495fbf3ee312e88d3c94f9627f66c0d",
+  "keyedSha256": "8ec67776c30fb44abf1f46de899be3d2e333352780dfc5dcecc67a578eca24fb",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "b66e7b983b6710407b0b7d2d3d9d6fead007ac7bf1dd20495d60b52f02401b18",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "near-pectoral",
+   "joint": "pectoralNear",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "far-pectoral",
+   "joint": "pectoralFar",
+   "layer": "far"
+  },
+  {
+   "label": 3,
+   "id": "dorsal",
+   "joint": "dorsal",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "jaw",
+   "joint": "jaw",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "head",
+   "joint": "head",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "caudal",
+   "joint": "caudal",
+   "layer": "near"
+  },
+  {
+   "label": 7,
+   "id": "axial-body",
+   "joint": "root",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.6340510366826156,
+   0.47320574162679424
+  ],
+  "head": [
+   0.7401913875598086,
+   0.47416267942583734
+  ],
+  "jaw": [
+   0.7783891547049442,
+   0.48732057416267943
+  ],
+  "spine0": [
+   0.6172248803827751,
+   0.47360446570972886
+  ],
+  "spine1": [
+   0.5734449760765551,
+   0.4763157894736842
+  ],
+  "spine2": [
+   0.4894736842105263,
+   0.4773524720893142
+  ],
+  "spine3": [
+   0.41012759170653906,
+   0.47743221690590115
+  ],
+  "spine4": [
+   0.3467304625199362,
+   0.4787081339712918
+  ],
+  "spine5": [
+   0.2838915470494418,
+   0.4881180223285487
+  ],
+  "caudal": [
+   0.2374800637958533,
+   0.49569377990430624
+  ],
+  "dorsal": [
+   0.5511164274322169,
+   0.41874003189792663
+  ],
+  "pectoralNear": [
+   0.6602870813397129,
+   0.49992025518341304
+  ],
+  "pectoralFar": [
+   0.6560606060606061,
+   0.5240031897926635
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "c5217f966c85bed9fce88eee31ff877453b4c5a79f0fc543ae36944b18ac93b2",
+  "labelsSha256": "7df361b995db0729066ba0bb95e9d4f793aac5914d0f71b84daedb3c4a85ec2b",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

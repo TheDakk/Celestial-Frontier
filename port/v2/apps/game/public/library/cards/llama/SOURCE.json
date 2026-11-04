@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Llama",
+ "fitDir": "audits/ISLANDS_SWEEP3_20261009/c196creaturesupply-06-llama/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "b9a005801c0e4391d733135e3e5505702c24fc5de78456e396ea7010ffe53869"
+}

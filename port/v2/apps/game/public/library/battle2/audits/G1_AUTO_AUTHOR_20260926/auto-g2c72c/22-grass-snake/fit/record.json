@@ -1,0 +1,167 @@
+{
+  "kind": "serpent",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Grass Snake\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1134753514\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"4\"]]]]",
+    "seed": 1134753514,
+    "ownerId": "authored:archetype-sprint/22-grass-snake",
+    "earthName": "Grass Snake"
+  },
+  "template": {
+    "id": "serpent",
+    "version": 1
+  },
+  "clipSetId": "serpent-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1134753514,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 13,
+    "body": 3,
+    "loco": 1,
+    "trait": 4,
+    "size": 4,
+    "diet": 3,
+    "head": 7,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 4,
+    "pattern": 2,
+    "eyes": 1,
+    "behavior": 0,
+    "habitat": 2,
+    "detail": 0,
+    "accent": 15,
+    "temper": 6,
+    "sense": 4,
+    "repro": 7,
+    "life": 5,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Grass Snake"
+  },
+  "geometry": {
+    "cutoutAssetHash": "7a1c0925239b4357a0fb40d773f9f3985a5e4077f9eaf50637f06d69849fa5b3",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.554,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.8212121212121212,
+      0.4233652312599681
+    ],
+    "head": [
+      0.8655502392344498,
+      0.4108452950558214
+    ],
+    "jaw": [
+      0.8753588516746412,
+      0.4308612440191387
+    ],
+    "seg0": [
+      0.7842902711323764,
+      0.44649122807017544
+    ],
+    "seg1": [
+      0.7363636363636363,
+      0.5044657097288676
+    ],
+    "seg2": [
+      0.6625199362041467,
+      0.5212918660287081
+    ],
+    "seg3": [
+      0.5763955342902711,
+      0.49776714513556625
+    ],
+    "seg4": [
+      0.4964114832535885,
+      0.4524720893141946
+    ],
+    "seg5": [
+      0.41515151515151516,
+      0.46945773524720896
+    ],
+    "seg6": [
+      0.3327751196172249,
+      0.5114035087719297
+    ],
+    "seg7": [
+      0.24043062200956938,
+      0.5065390749601276
+    ],
+    "seg8": [
+      0.14696969696969697,
+      0.4778309409888358
+    ],
+    "seg9": [
+      0.09154704944178628,
+      0.4943381180223285
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/22-grass-snake/packet/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "G1 automatic: Earth fauna profile snake media ground+water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Automatic serpent strip transfer from racer: vertical segment cuts, head/jaw polygons and centreline landmarks placed by fraction of the measured body length and by local-thickness offset from the measured centreline. No hidden, absent or folded contract groups (a continuous x-monotone limbless body is measured).",
+    "visualAcceptance": "pending (automatic; no visual review)",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "03346cf7655e153787bda7a219cdfc69f6f15acc5dea12bd34715dcce5a11272",
+    "subjectSourceSha256": "e793930986cef638b876b290d9573aafa2ad559de59ef2a7f55aac4957bdbe35",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.04607187333197827,
+      "jaw": 0.022290067090612372,
+      "seg0": 0.04356644054518191,
+      "seg1": 0.0752196971799956,
+      "seg2": 0.07573646142427877,
+      "seg3": 0.08927947747451821,
+      "seg4": 0.0919189344047233,
+      "seg5": 0.0830162308450083,
+      "seg6": 0.09244089169739225,
+      "seg7": 0.09247253081169399,
+      "seg8": 0.09777065748690805,
+      "seg9": 0.05782868451398575
+    },
+    "measures": {
+      "body": 0.6943936175371657,
+      "bone-min": 0.022290067090612372,
+      "bone-max": 0.09777065748690805,
+      "head/body": 0.06634835368358262
+    }
+  },
+  "recipeHash": "a911dbcd92178cd9fd10b201aaca1c1c3f90fc07990f511e62d7d9db22a8daac"
+}

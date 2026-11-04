@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Ptarmigan",
+ "fitDir": "audits/BIRD_ISLANDS_C121_20261001/06-ptarmigan/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7cf2a83283433a530ab0f4018509c127428fc309f4c95372fbf3309a5b05644e"
+}

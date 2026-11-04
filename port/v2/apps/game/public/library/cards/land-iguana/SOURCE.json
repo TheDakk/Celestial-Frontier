@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Land Iguana",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136s/16-land-iguana/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "88ecc14ec7b1351a20ca7fe20314d469e3d81861b0745bbbbc5771880f3bc0b2"
+}

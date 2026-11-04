@@ -1,0 +1,8 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Salmon",
+ "fitDir": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/",
+ "markingsDir": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7edbcdb118b4a47b18dfd328fe43c56bfff5113cc848814b433742819459108d"
+}

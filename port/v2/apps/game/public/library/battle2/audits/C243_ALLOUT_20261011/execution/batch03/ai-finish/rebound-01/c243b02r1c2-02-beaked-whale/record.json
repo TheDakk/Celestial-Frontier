@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Beaked Whale\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1911438117\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"17\"]]]]",
+    "seed": 1911438117,
+    "ownerId": "authored:archetype-sprint/c243b02r1c2-02-beaked-whale",
+    "earthName": "Beaked Whale"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1911438117,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 0,
+    "body": 12,
+    "loco": 12,
+    "trait": 17,
+    "size": 0,
+    "diet": 4,
+    "head": 5,
+    "limbs": 0,
+    "skin": 7,
+    "tail": 5,
+    "pattern": 7,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 8,
+    "detail": 1,
+    "accent": 8,
+    "temper": 5,
+    "sense": 8,
+    "repro": 6,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Beaked Whale"
+  },
+  "geometry": {
+    "cutoutAssetHash": "cb89162007dd62b555df35999b3f107d8495fbf3ee312e88d3c94f9627f66c0d",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6984623587921363,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6340510366826156,
+      0.47320574162679424
+    ],
+    "head": [
+      0.7401913875598086,
+      0.47416267942583734
+    ],
+    "jaw": [
+      0.7783891547049442,
+      0.48732057416267943
+    ],
+    "spine0": [
+      0.6172248803827751,
+      0.47360446570972886
+    ],
+    "spine1": [
+      0.5734449760765551,
+      0.4763157894736842
+    ],
+    "spine2": [
+      0.4894736842105263,
+      0.4773524720893142
+    ],
+    "spine3": [
+      0.41012759170653906,
+      0.47743221690590115
+    ],
+    "spine4": [
+      0.3467304625199362,
+      0.4787081339712918
+    ],
+    "spine5": [
+      0.2838915470494418,
+      0.4881180223285487
+    ],
+    "caudal": [
+      0.2374800637958533,
+      0.49569377990430624
+    ],
+    "dorsal": [
+      0.5511164274322169,
+      0.41874003189792663
+    ],
+    "pectoralNear": [
+      0.6602870813397129,
+      0.49992025518341304
+    ],
+    "pectoralFar": [
+      0.6560606060606061,
+      0.5240031897926635
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r1c2g02to04/c243b02r1c2-02-beaked-whale/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile toothed-cetacean media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from herring. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "e2b3bc8b8506913f2b133be2f31bee4387e0078c07eb32dc09ae548f66a2f4a4",
+    "subjectSourceSha256": "9d51d213be71cb7f227aa7ac5e90a8cf7d4e1d92d1141af9b37fbfaccae32169",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.10614466455872795,
+      "jaw": 0.04040049020469695,
+      "spine0": 0.016830879855817844,
+      "spine1": 0.04386378115957141,
+      "spine2": 0.08397769089761485,
+      "spine3": 0.07934613257674926,
+      "spine4": 0.0634099673037336,
+      "spine5": 0.06353955694214417,
+      "caudal": 0.04702571509977042,
+      "dorsal": 0.06175380105697933,
+      "pectoralFar": 0.05536065285352718,
+      "pectoralNear": 0.037443227342417645
+    },
+    "measures": {
+      "body": 0.3336491487128939,
+      "bone-min": 0.016830879855817844,
+      "bone-max": 0.10614466455872795,
+      "caudal/body": 0.1409436088213616,
+      "head/body": 0.31813258019149254
+    }
+  },
+  "recipeHash": "6d7e6c8243dcd7b7a5e1204f25103d2df47c0f1a93bacede03b53d8ba46d36dd"
+}

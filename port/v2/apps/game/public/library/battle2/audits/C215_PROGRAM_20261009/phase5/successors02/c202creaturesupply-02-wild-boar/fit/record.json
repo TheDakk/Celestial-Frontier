@@ -1,0 +1,260 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wild Boar\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"903932006\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"18\"]]]]",
+    "seed": 903932006,
+    "ownerId": "authored:archetype-sprint/c202creaturesupply-02-wild-boar",
+    "earthName": "Wild Boar"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "representation": {
+      "schema": "cf.source-representation/v1",
+      "reviewSha256": "69d3bc1e58830e0480241527511853eeab31783a646ce1cf0a9815e6a88cca99",
+      "compactTail": {
+        "terminal": "tail1"
+      }
+    }
+  },
+  "genome": {
+    "seed": 903932006,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 16,
+    "body": 11,
+    "loco": 13,
+    "trait": 18,
+    "size": 0,
+    "diet": 3,
+    "head": 9,
+    "limbs": 1,
+    "skin": 0,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 10,
+    "habitat": 15,
+    "detail": 9,
+    "accent": 13,
+    "temper": 0,
+    "sense": 3,
+    "repro": 2,
+    "life": 3,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Wild Boar"
+  },
+  "geometry": {
+    "cutoutAssetHash": "e1781fd17de645c4d6ab0b3aa5c037ebd2807a3e8ee28d66f11dfdfa258c4458",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7301244195279573,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.4796650717703349,
+      0.45326953748006377
+    ],
+    "pelvis": [
+      0.3225677830940989,
+      0.4232057416267943
+    ],
+    "spine": [
+      0.4546251993620415,
+      0.4487240829346093
+    ],
+    "chest": [
+      0.64585326953748,
+      0.4822169059011165
+    ],
+    "neck": [
+      0.689792663476874,
+      0.43110047846889954
+    ],
+    "head": [
+      0.7549441786283891,
+      0.433652312599681
+    ],
+    "jaw": [
+      0.8197767145135566,
+      0.49856459330143543
+    ],
+    "hindNearRoot": [
+      0.31451355661881975,
+      0.4473684210526316
+    ],
+    "hindNearKnee": [
+      0.2733652312599681,
+      0.5527910685805423
+    ],
+    "hindNearAnkle": [
+      0.21770334928229665,
+      0.669457735247209
+    ],
+    "hindNearPaw": [
+      0.22886762360446572,
+      0.7141148325358851
+    ],
+    "hindFarRoot": [
+      0.35733652312599684,
+      0.5139553429027113
+    ],
+    "hindFarKnee": [
+      0.33891547049441784,
+      0.6012759170653907
+    ],
+    "hindFarAnkle": [
+      0.3657894736842105,
+      0.691945773524721
+    ],
+    "hindFarPaw": [
+      0.3900318979266348,
+      0.7118819776714513
+    ],
+    "foreNearRoot": [
+      0.6133173843700159,
+      0.5094098883572568
+    ],
+    "foreNearKnee": [
+      0.5287081339712919,
+      0.5712918660287081
+    ],
+    "foreNearAnkle": [
+      0.5215311004784688,
+      0.6932216905901116
+    ],
+    "foreNearPaw": [
+      0.5429824561403509,
+      0.7230462519936205
+    ],
+    "foreFarRoot": [
+      0.6824561403508772,
+      0.5196172248803828
+    ],
+    "foreFarKnee": [
+      0.6124401913875598,
+      0.5707336523125998
+    ],
+    "foreFarAnkle": [
+      0.6451355661881978,
+      0.6842105263157895
+    ],
+    "foreFarPaw": [
+      0.6769537480063795,
+      0.708054226475279
+    ],
+    "earNearRoot": [
+      0.720414673046252,
+      0.3569377990430622
+    ],
+    "earNearTip": [
+      0.7376395534290271,
+      0.3033492822966507
+    ],
+    "earFarRoot": [
+      0.74792663476874,
+      0.3440988835725678
+    ],
+    "earFarTip": [
+      0.7553429027113238,
+      0.30709728867623604
+    ],
+    "tail0": [
+      0.24082934609250398,
+      0.4609250398724083
+    ],
+    "tail1": [
+      0.17065390749601275,
+      0.5470494417862839
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep3/c202creaturesupply-02-wild-boar/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile suid media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from wild-horse. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "5515322d182ac876e9b96f1f6aa6adcd432d39c95f278235d05dac94c1dbbe5f",
+    "subjectSourceSha256": "7be84df9e682b6c3f3976e61f684c2398261d470d123e18ccf7821603737e84b",
+    "presenceSha256": "c0d6eaa6d2fa765cd0f223247a932c709f1e3a78bf678e60bd67f13c366a705e",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.15994808511054984,
+      "spine": 0.13450036035069501,
+      "chest": 0.19413898117917544,
+      "neck": 0.06740593069748649,
+      "head": 0.06520147071937207,
+      "jaw": 0.09174345696127263,
+      "hindFarRoot": 0.09718207352770167,
+      "hindFarKnee": 0.08924246664091827,
+      "hindFarAnkle": 0.09456867831264501,
+      "hindFarPaw": 0.03138705734741296,
+      "foreFarRoot": 0.052331195395606135,
+      "foreFarKnee": 0.08668980483694133,
+      "foreFarAnkle": 0.11809313471531692,
+      "foreFarPaw": 0.03976076874898816,
+      "hindNearRoot": 0.025469700452711797,
+      "hindNearKnee": 0.11316854373734783,
+      "hindNearAnkle": 0.1292646750524185,
+      "hindNearPaw": 0.04603148226367398,
+      "foreNearRoot": 0.042403326738480816,
+      "foreNearKnee": 0.10482415949371585,
+      "foreNearAnkle": 0.12214086919345118,
+      "foreNearPaw": 0.03673778875550664,
+      "tail0": 0.09002176150023548,
+      "tail1": 0.11109457586773844,
+      "earFarRoot": 0.08982796097171694,
+      "earFarTip": 0.037737501971758014,
+      "earNearRoot": 0.08412730440217071,
+      "earNearTip": 0.05628877002814451
+    },
+    "measures": {
+      "torso": 0.3286271797249044,
+      "head": 0.06520147071937207,
+      "head/torso": 0.1984055937611508,
+      "bone-min": 0.025469700452711797,
+      "bone-max": 0.19413898117917544,
+      "leg/torso:hindFar": 0.6548399389275099,
+      "leg/torso:foreFar": 0.7441371967649032,
+      "leg/torso:hindNear": 0.8777871060297436,
+      "leg/torso:foreNear": 0.802437636666026
+    }
+  },
+  "recipeHash": "2bdebe5e53e5d6c68b136dfee426f8eb8bf24950eb67357b340cc48bc27d0fde"
+}

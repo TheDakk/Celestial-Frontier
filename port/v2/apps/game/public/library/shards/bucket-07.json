@@ -1,0 +1,126 @@
+{
+ "schema": "cf-art-library-shard/v1",
+ "group": "bucket-07",
+ "files": [
+  {
+   "path": "library/cards/ostrich/SOURCE.json",
+   "bytes": 312,
+   "sha256": "894d8165b99fb19de5433da16a96e6b9d47e61c09ae11f87ccfe2fc9353d4a4e"
+  },
+  {
+   "path": "library/cards/ostrich/card/card.json",
+   "bytes": 3756,
+   "sha256": "225ebc92be32420df5b4d0abe5cef169a9d9ccb2c5a3d6ab0209d1a140d6c341"
+  },
+  {
+   "path": "library/cards/ostrich/card/labels-512.png",
+   "bytes": 5475,
+   "sha256": "960de99bc6628b19f3d11112126fc57f231ca48c297068e8f5f773ada7f5564c"
+  },
+  {
+   "path": "library/cards/ostrich/card/master-512.png",
+   "bytes": 57404,
+   "sha256": "da44cc1e4ad7e6b30ae34592dbc2f6a525278792cb6c4859d2f2d17b77faa76e"
+  },
+  {
+   "path": "library/cards/ostrich/record.json",
+   "bytes": 6319,
+   "sha256": "ab4ab9ab115336c5736b7f625ec34bf17962edf65fccfecbd180ee0b85befc47"
+  },
+  {
+   "path": "library/cards/rhinoceros/SOURCE.json",
+   "bytes": 299,
+   "sha256": "a7995c8893a5b9a36baa64e409932d2994d633990214bb3b52a33c81299466d6"
+  },
+  {
+   "path": "library/cards/rhinoceros/card/card.json",
+   "bytes": 5939,
+   "sha256": "5a3e5fce839503c82dcc170b7aace734aab7c7155173d09561f1c3c18ef05f12"
+  },
+  {
+   "path": "library/cards/rhinoceros/card/labels-512.png",
+   "bytes": 5621,
+   "sha256": "3f8c9c97c5c2f038e041274e69db924ad19c86dafe211fc3513957270e39ee31"
+  },
+  {
+   "path": "library/cards/rhinoceros/card/master-512.png",
+   "bytes": 104172,
+   "sha256": "ab2b9fe525a47040ffccc23346544f897e75c63892d965f6febff5afdd154a70"
+  },
+  {
+   "path": "library/cards/rhinoceros/record.json",
+   "bytes": 7568,
+   "sha256": "9723f91272d8da7413ccc41dcaca634f9c07933f1261a2df96ace2d0ae3e07cf"
+  },
+  {
+   "path": "library/cards/screamer/SOURCE.json",
+   "bytes": 311,
+   "sha256": "94865abe58e43ff9ab36caff8359b385c7583c9b0c964e12a89320d9351333e0"
+  },
+  {
+   "path": "library/cards/screamer/card/card.json",
+   "bytes": 3797,
+   "sha256": "57be107aa77e33123307375ff2c788c5f140bc37382ba06af52c5373152f6b97"
+  },
+  {
+   "path": "library/cards/screamer/card/labels-512.png",
+   "bytes": 4815,
+   "sha256": "80d56d848b68f3ab88e276a0e8b7d84a74b41bf0d2d7f4497ec50a60f74b0e7b"
+  },
+  {
+   "path": "library/cards/screamer/card/master-512.png",
+   "bytes": 75950,
+   "sha256": "23ceb3f3c9656608d953aaa6b939ce1fbbdef7858945d8188576899b2351feeb"
+  },
+  {
+   "path": "library/cards/screamer/record.json",
+   "bytes": 6006,
+   "sha256": "82ab03ed199bed9ed5717bfedeb65545f639a1ebf3b00a8422641620082118c1"
+  },
+  {
+   "path": "library/cards/sea-otter/SOURCE.json",
+   "bytes": 301,
+   "sha256": "27b8ee042e322fa29ccaee9e09fbee0c6030a1c153dd2e803b1495748be6294d"
+  },
+  {
+   "path": "library/cards/sea-otter/card/card.json",
+   "bytes": 5886,
+   "sha256": "d7243a4e7a3019c9b65850e0b06fe4f92fb5454f70acda0e4c6b4096ccef885a"
+  },
+  {
+   "path": "library/cards/sea-otter/card/labels-512.png",
+   "bytes": 7747,
+   "sha256": "5dc7de400c69ff3a722d4ecf0e73c155c32e8611ec7ac9db302026dd4c413978"
+  },
+  {
+   "path": "library/cards/sea-otter/card/master-512.png",
+   "bytes": 105763,
+   "sha256": "d6fc73bbe54ce24c21263c3fe8cfc7abd4dcc10dd046395ab5bf149d08088e58"
+  },
+  {
+   "path": "library/cards/sea-otter/record.json",
+   "bytes": 7563,
+   "sha256": "e38a9909689ebcec3b0d1fe2816fdaee8932e1da59f24365017b89351353942c"
+  },
+  {
+   "path": "library/creature-finish-source/c213-g2c98-21-pig/labels.png",
+   "bytes": 44063,
+   "sha256": "7d38037f1f484b3a9fce7db66147a6133dbbf00082a4f7f888e7ccb7a1b29f1a"
+  },
+  {
+   "path": "library/creature-finish-source/c213-g2c98-21-pig/master.png",
+   "bytes": 1392587,
+   "sha256": "8b00496988f2f8a45a67343471c4e2e139457b1a8ae84f367eae335a8a0bd4e1"
+  },
+  {
+   "path": "library/creature-finish-source/c59-07-starling/labels.png",
+   "bytes": 49682,
+   "sha256": "fc4397c5a3412a1293dca536607e8bbec720d11b59c008886f16fd596e263951"
+  },
+  {
+   "path": "library/creature-finish-source/c59-07-starling/master.png",
+   "bytes": 1154810,
+   "sha256": "2c2b4f7aa32f3708c5ad80a3984bb025314926092917e6e24e245bfb6eb1bbcb"
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Tern",
+ "fitDir": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/rebound02/c243b04r2c2-12-tern/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7cc6d8a19551704f3750764e43c2a81ed3eff9536971fd46e59f2cded8bf4faa"
+}

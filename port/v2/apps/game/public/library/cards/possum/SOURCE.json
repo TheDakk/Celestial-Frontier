@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Possum",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c101/22-possum/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "2e5bc0f2678a8f1de80abe84dc743fca41aa4ecccfa7c7e80b8de80ca013f106"
+}

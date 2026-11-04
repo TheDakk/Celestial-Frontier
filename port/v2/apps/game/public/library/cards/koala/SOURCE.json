@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Koala",
+ "fitDir": "audits/QUAD_ISLANDS_20260927/g2c118-11-koala/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "1c26f98b7caf8799c13868eddda59a0f4a07c21b42eff3c5ee2f4455c2499dec"
+}

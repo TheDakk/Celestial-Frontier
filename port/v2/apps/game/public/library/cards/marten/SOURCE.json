@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Marten",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/07-marten/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d2a2ac38469032a0001b14c66ab1da4ef3e828115ce70e588254ae54bf8aa95f"
+}

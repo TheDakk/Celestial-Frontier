@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Icefish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/08-icefish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "14100ea8be6741365cc29a6f37d598be5c7ab10e516c218259fc3605d9e6f334"
+}

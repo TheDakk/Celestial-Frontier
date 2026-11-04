@@ -1,0 +1,244 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Frilled Lizard\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1273174726\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"11\"]]]]",
+    "seed": 1273174726,
+    "ownerId": "authored:archetype-sprint/c266-intake-frilled-lizard",
+    "earthName": "Frilled Lizard"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "external-ears"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1273174726,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 15,
+    "body": 10,
+    "loco": 11,
+    "trait": 11,
+    "size": 0,
+    "diet": 2,
+    "head": 9,
+    "limbs": 0,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 6,
+    "habitat": 8,
+    "detail": 5,
+    "accent": 11,
+    "temper": 1,
+    "sense": 8,
+    "repro": 3,
+    "life": 2,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Frilled Lizard"
+  },
+  "geometry": {
+    "cutoutAssetHash": "b8c4f038ceb023dbbe5f67c9a941c182b85ad43dc45d077c2ec6daa02cf4abfb",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6555023923444976,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5582137161084529,
+      0.5582137161084529
+    ],
+    "spine": [
+      0.5582137161084529,
+      0.5462519936204147
+    ],
+    "pelvis": [
+      0.5103668261562998,
+      0.5582137161084529
+    ],
+    "chest": [
+      0.6299840510366826,
+      0.5582137161084529
+    ],
+    "neck": [
+      0.6618819776714514,
+      0.4944178628389155
+    ],
+    "head": [
+      0.7017543859649122,
+      0.40271132376395535
+    ],
+    "jaw": [
+      0.7376395534290271,
+      0.45055821371610844
+    ],
+    "hindNearRoot": [
+      0.5143540669856459,
+      0.5502392344497608
+    ],
+    "hindNearKnee": [
+      0.4704944178628389,
+      0.5821371610845295
+    ],
+    "hindNearAnkle": [
+      0.4529505582137161,
+      0.6299840510366826
+    ],
+    "hindNearPaw": [
+      0.44657097288676234,
+      0.6419457735247209
+    ],
+    "hindFarRoot": [
+      0.5677830940988836,
+      0.5677830940988836
+    ],
+    "hindFarKnee": [
+      0.5502392344497608,
+      0.6124401913875598
+    ],
+    "hindFarAnkle": [
+      0.5582137161084529,
+      0.6259968102073366
+    ],
+    "hindFarPaw": [
+      0.5781499202551834,
+      0.6283891547049442
+    ],
+    "foreNearRoot": [
+      0.6379585326953748,
+      0.5741626794258373
+    ],
+    "foreNearKnee": [
+      0.6299840510366826,
+      0.6060606060606061
+    ],
+    "foreNearAnkle": [
+      0.6419457735247209,
+      0.6379585326953748
+    ],
+    "foreNearPaw": [
+      0.6523125996810207,
+      0.6443381180223285
+    ],
+    "foreFarRoot": [
+      0.6762360446570973,
+      0.5701754385964912
+    ],
+    "foreFarKnee": [
+      0.6762360446570973,
+      0.5980861244019139
+    ],
+    "foreFarAnkle": [
+      0.7017543859649122,
+      0.6220095693779905
+    ],
+    "foreFarPaw": [
+      0.7216905901116427,
+      0.6259968102073366
+    ],
+    "tail0": [
+      0.430622009569378,
+      0.562200956937799
+    ],
+    "tail1": [
+      0.3189792663476874,
+      0.5741626794258373
+    ],
+    "tail2": [
+      0.215311004784689,
+      0.5677830940988836
+    ],
+    "tail3": [
+      0.14992025518341306,
+      0.5199362041467305
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/C270_CODEX_20261017/w1-source/frilled-lizard-a03/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Pinned Earth fauna profile lizard capability (ground)."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "External pinnae absent (lizard group fact). Four limbs, frill (neck-owned), head, open lower jaw and the curled tail hand-authored on the exact original. C270 hand-observed a03 jaw follows the painted open-mouth/lower-lip contour; the narrow surrounding head/throat cuff owns the jaw-facing attachment to the frill.",
+    "limitations": "The frill is one neck-owned sheet: it rotates with the neck, it is not separately animated. The open mouth interior is owned by the jaw. Interior root/spine/pelvis/chest are control frames. a01 static RED (idle: exceeds scale compression bound) because the hind-near and fore-far chains were drawn almost straight (path/chord 1.005 and 1.019); a02 places those knees on the visible bend (ratio ≈1.05/1.07), extends the tail-base cap to the rump and the tail-tip cap to the curl end. a03 changes only jaw/head priority polygons. The fixed neck-owned frill is unchanged. This removes the excluded non-nearest jaw/frill cut by routing its anatomical cuff through the existing head owner; no hidden pigment, paint addition, deletion or threshold change.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "e0657e810638c93cc4599c35ff48214b0e572140dc374082ae29ff4a1d3a430f",
+    "subjectSourceSha256": "00dca4d080078fa1508a157abbc955c31794149eba399a23891ff5acd946254b",
+    "presenceSha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.04784688995215314,
+      "spine": 0.04931944528250793,
+      "chest": 0.07276031734806486,
+      "neck": 0.07132593229664401,
+      "head": 0.09999949125984409,
+      "jaw": 0.059808612440191374,
+      "hindFarRoot": 0.058208253878451945,
+      "hindFarKnee": 0.04797961389630402,
+      "hindFarAnkle": 0.015728136302484912,
+      "hindFarPaw": 0.020079231757598365,
+      "foreFarRoot": 0.047773734611643234,
+      "foreFarKnee": 0.027910685805422664,
+      "foreFarAnkle": 0.034978807335663935,
+      "foreFarPaw": 0.02033101879422962,
+      "hindNearRoot": 0.008915741537080506,
+      "hindNearKnee": 0.05423233855157671,
+      "hindNearAnkle": 0.050961867013302915,
+      "hindNearPaw": 0.013556618819776727,
+      "foreNearRoot": 0.017831483074161013,
+      "foreNearKnee": 0.03287963018833862,
+      "foreNearAnkle": 0.03406700057941601,
+      "foreNearPaw": 0.012172517960505327,
+      "tail0": 0.07984443538477182,
+      "tail1": 0.11228172121474263,
+      "tail2": 0.10386437100583693,
+      "tail3": 0.08102638466271479
+    },
+    "measures": {
+      "torso": 0.11961722488038284,
+      "head": 0.09999949125984409,
+      "head/torso": 0.8359957469322961,
+      "bone-min": 0.008915741537080506,
+      "bone-max": 0.11228172121474263,
+      "leg/torso:hindFar": 0.7004591691553974,
+      "leg/torso:foreFar": 0.6957234797792432,
+      "leg/torso:hindNear": 0.9927568918557266,
+      "leg/torso:foreNear": 0.6614360833682528
+    }
+  },
+  "recipeHash": "5861cde8bcc9a8a6d7705e241081bbca792c380abdfcae3a7fe4bc4b05115366"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Clownfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/05-clownfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "1253747fc4e888438a34b856627a01c34c369b92e9873231285241693514c8d3"
+}

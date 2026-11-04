@@ -1,0 +1,70 @@
+{
+  "creatureId": "22-grass-snake",
+  "parts": [
+    {
+      "name": "root-patch.png",
+      "path": "parts/root-patch.png",
+      "sha256": "b7b8b2dd39ed10d0dee8f196c5f33d2b5ddcb823e3103a928145f3257975a61b"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "a953b517216d398c2873b76a0f761ce472a373756693bdedb950f3692d5b0c9e"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "d717bc7818f12726f41dc92f53800f888b9d8cf1fb0c0431100dc544669a65d1"
+    },
+    {
+      "name": "segment-0.png",
+      "path": "parts/segment-0.png",
+      "sha256": "470fe11ecb4be2b2df20d148982bd5ffde6e8e41c9251ab986ce0d21b62068d5"
+    },
+    {
+      "name": "segment-1.png",
+      "path": "parts/segment-1.png",
+      "sha256": "d4e3d60df08614f1be7a418909754fd3db81130212e1fe9de754f979c4f15b66"
+    },
+    {
+      "name": "segment-2.png",
+      "path": "parts/segment-2.png",
+      "sha256": "27b72853f0f13688f5396cc7830548008358c7693e11735ef2a982d7bc51d83f"
+    },
+    {
+      "name": "segment-3.png",
+      "path": "parts/segment-3.png",
+      "sha256": "e58d736a2a9feac2b99d6cd860a71aa9c08876873ffba23a996eb0f1c0dd41cc"
+    },
+    {
+      "name": "segment-4.png",
+      "path": "parts/segment-4.png",
+      "sha256": "f8baa6a03fcb518cec3415e14f542c3711bf4a0243c6ede0691d363f707e3c61"
+    },
+    {
+      "name": "segment-5.png",
+      "path": "parts/segment-5.png",
+      "sha256": "ff99f338af5630cb02f0271670cb3a19d69856c710e6ee19842e0d5d04e5a5bf"
+    },
+    {
+      "name": "segment-6.png",
+      "path": "parts/segment-6.png",
+      "sha256": "94739bd7240f335a553c5ae07df525991589bc95202814e756ec440d8889c052"
+    },
+    {
+      "name": "segment-7.png",
+      "path": "parts/segment-7.png",
+      "sha256": "62a8c48d39f9e9f745f19c8a6b10bfc731b98de1bf2620c35421166319d5ca32"
+    },
+    {
+      "name": "segment-8.png",
+      "path": "parts/segment-8.png",
+      "sha256": "9a1d1fa8f9312e4846ded804a25e3e3d1bbed0a165aa20861de126be511d2823"
+    },
+    {
+      "name": "segment-9.png",
+      "path": "parts/segment-9.png",
+      "sha256": "bb75943e0111206d285bfd5150475774b613a5b0b86e54edc7731115e7062789"
+    }
+  ]
+}

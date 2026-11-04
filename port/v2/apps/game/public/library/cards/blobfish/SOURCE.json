@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Blobfish",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/19-blobfish/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "01806ab17ab9231f24bece785dd756ba156d65afc0822d4a6cd2b743dacf6d5f"
+}

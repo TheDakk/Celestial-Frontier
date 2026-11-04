@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Dove",
+ "fitDir": "audits/BIRD_NATIVE_INPUT_C79_20260927/inputs/c56-15-dove/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7e6143c687e1d0f4abe5af98959180a0fdf5c30ac09011b77dbe79ff3ce3e37d"
+}

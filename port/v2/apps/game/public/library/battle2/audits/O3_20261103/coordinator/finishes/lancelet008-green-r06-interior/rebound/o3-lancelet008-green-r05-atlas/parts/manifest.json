@@ -1,0 +1,50 @@
+{
+  "creatureId": "o3-lancelet-green-source-observed-r04",
+  "parts": [
+    {
+      "name": "spine1.png",
+      "path": "parts/spine1.png",
+      "sha256": "821d73320d230fead08f2cf60259c0267b8ebc64a525c94984266cb6b227550a"
+    },
+    {
+      "name": "oral-hood-cirri.png",
+      "path": "parts/oral-hood-cirri.png",
+      "sha256": "1600230af92a05fcfe7d72dd5b6aa02efc14195449fa71dc65711f9c419cf8dd"
+    },
+    {
+      "name": "caudal-whole-tip.png",
+      "path": "parts/caudal-whole-tip.png",
+      "sha256": "305d97bcd009adaea75e714101548b8769d32616a40f6b869ecb0a6756808f7d"
+    },
+    {
+      "name": "spine5.png",
+      "path": "parts/spine5.png",
+      "sha256": "49c739a184f8fe0e66b53a8bebad8c807492755b095281047cc0dcace9418e61"
+    },
+    {
+      "name": "spine4.png",
+      "path": "parts/spine4.png",
+      "sha256": "f1affdc691bd994e40961f8154db1df6ae0184fd222bf8af036602f9e90c894b"
+    },
+    {
+      "name": "spine3.png",
+      "path": "parts/spine3.png",
+      "sha256": "3950dbdcd8c659bcbb73370085dd1fe5f7828e1f7c7328660b194daf3b49f335"
+    },
+    {
+      "name": "spine2.png",
+      "path": "parts/spine2.png",
+      "sha256": "fe9cdbd5516cd142b401436b7ce6b76d05bade76b21080483adb70a7b691787c"
+    },
+    {
+      "name": "spine0.png",
+      "path": "parts/spine0.png",
+      "sha256": "5b7e91e4718546e33cb781e16097b33ee0baa8496cd4573d4123fa8d64e6ca18"
+    },
+    {
+      "name": "anterior-body.png",
+      "path": "parts/anterior-body.png",
+      "sha256": "7ab2ef10dfe87681e44b993fdc966666d230a0e8074a5eb603f92f0a394d48bd"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Penguin\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2103110547\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"4\"]]]]",
+    "seed": 2103110547,
+    "ownerId": "authored:archetype-sprint/c206birdsourcerepaints-17-penguin",
+    "earthName": "Penguin"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 2103110547,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 17,
+    "body": 8,
+    "loco": 6,
+    "trait": 4,
+    "size": 0,
+    "diet": 4,
+    "head": 4,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 7,
+    "eyes": 4,
+    "behavior": 5,
+    "habitat": 9,
+    "detail": 6,
+    "accent": 15,
+    "temper": 0,
+    "sense": 5,
+    "repro": 0,
+    "life": 1,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Penguin"
+  },
+  "geometry": {
+    "cutoutAssetHash": "20d61d7b9c235f061c1129eaafcb0eca23e832ec47954ab050c4f3b2247f3ee0",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7463791039090588,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5534290271132376,
+      0.5223285486443381
+    ],
+    "pelvis": [
+      0.5003987240829346,
+      0.6679425837320574
+    ],
+    "spine": [
+      0.5432216905901117,
+      0.5015948963317385
+    ],
+    "chest": [
+      0.5685805422647527,
+      0.42049441786283887
+    ],
+    "neck0": [
+      0.5817384370015949,
+      0.29784688995215314
+    ],
+    "neck1": [
+      0.6068580542264753,
+      0.27169059011164276
+    ],
+    "head": [
+      0.6299043062200956,
+      0.2656299840510367
+    ],
+    "beak": [
+      0.6425039872408294,
+      0.26275917065390747
+    ],
+    "legNearKnee": [
+      0.4481658692185008,
+      0.6885167464114832
+    ],
+    "legNearAnkle": [
+      0.44585326953748006,
+      0.7329346092503988
+    ],
+    "legNearFoot": [
+      0.4790271132376396,
+      0.7412280701754386
+    ],
+    "legFarKnee": [
+      0.5103668261562998,
+      0.6984051036682615
+    ],
+    "legFarAnkle": [
+      0.5208931419457735,
+      0.726634768740032
+    ],
+    "legFarFoot": [
+      0.5473684210526316,
+      0.722408293460925
+    ],
+    "wingNearRoot": [
+      0.5561403508771929,
+      0.3192185007974482
+    ],
+    "wingNearTip": [
+      0.3776714513556619,
+      0.6786283891547049
+    ],
+    "wingFarRoot": [
+      0.5708133971291866,
+      0.25247208931419457
+    ],
+    "wingFarTip": [
+      0.48564593301435405,
+      0.2623604465709729
+    ],
+    "tailFan": [
+      0.4307017543859649,
+      0.4433811802232855
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-sweep6/c206birdsourcerepaints-17-penguin/packet/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "G1 automatic: Earth fauna profile penguin media ground+water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from grouse. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "c706bc0a294917d3e9082904be2c132bedc7e634b78a431be5728a33fc70a746",
+    "subjectSourceSha256": "003c9bddd60d62fa81b95970b4608f9fd1cdf77716abf411a7a0bea993510eed",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.1549698688584762,
+      "spine": 0.17177124195833549,
+      "chest": 0.08497269541529735,
+      "neck0": 0.12335131250419776,
+      "neck1": 0.03626495816723346,
+      "head": 0.023829827460040556,
+      "beak": 0.012922597702682472,
+      "legFarKnee": 0.03205196062347291,
+      "legFarAnkle": 0.030128347352021526,
+      "legFarFoot": 0.0268105109438619,
+      "legNearKnee": 0.05613882165888845,
+      "legNearAnkle": 0.04447802442174534,
+      "legNearFoot": 0.03419481539587216,
+      "wingFarRoot": 0.1680371641386339,
+      "wingFarTip": 0.08573958568239622,
+      "wingNearRoot": 0.1020370998176399,
+      "wingNearTip": 0.40128121803219513,
+      "tailFan": 0.23512867015906375
+    },
+    "measures": {
+      "body": 0.25666973939796406,
+      "bone-min": 0.012922597702682472,
+      "bone-max": 0.40128121803219513,
+      "leg/torso:legFar": 0.34671332556806356,
+      "leg/torso:legNear": 0.5252339515858615,
+      "wing/torso": 0.9887287469737583
+    }
+  },
+  "recipeHash": "2712ded20b817acb4dc0f29af9b91c200279cec89f423bf365333716e862f441"
+}

@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Bustard",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/09-bustard/fallback-1/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "4f947220d232b17e1228e25a929dcebf8cc87ab6ca3a4709f20cc8d051e064ed"
+}

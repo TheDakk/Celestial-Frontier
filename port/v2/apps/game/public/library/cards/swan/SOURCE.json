@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Swan",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/09-swan/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "98a6b693e527746b9521df2b8b684b752163652a753663d726dd1f8202834c95"
+}

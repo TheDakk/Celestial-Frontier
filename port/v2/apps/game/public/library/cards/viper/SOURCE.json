@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Viper",
+ "fitDir": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/03-viper/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "3da3db1846e5cdd3e8681f5b482909300741379be5f433cb640fd62becd75f15"
+}

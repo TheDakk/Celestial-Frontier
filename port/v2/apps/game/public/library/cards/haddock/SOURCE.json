@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Haddock",
+ "fitDir": "audits/FISH_PIPELINE_C84_20260927/02-haddock-fixed-01/fit/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d94d84cdd96ba5c78b0a54c2c517b13881d46e2010b06cd698a0d4d2ab20f890"
+}
