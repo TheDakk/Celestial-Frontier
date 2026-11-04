@@ -1,0 +1,1561 @@
+{
+  "scope": "Own redundant named-pose stills and superseded/refused films only. Final seven foreleg films, final fish and fox films plus three reviewed stills per run remain. Reports retain original full capture inventories; pruned files are listed here.",
+  "files": [
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn2-dodge-reaction-50.png",
+      "bytes": 1555591,
+      "sha256": "99f2778909f9f7a5552adc170a35239644e36433910343e23939b494f5edf4dd"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn0-hit-return-end.png",
+      "bytes": 1538494,
+      "sha256": "d7795c2fa7c15dca65178484066a1ed1569bf5a5d745ab9e63b658c3604fd0d5"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn3-hit-approach-50.png",
+      "bytes": 1540035,
+      "sha256": "980430ba7aa30d929b925510139c9dc8eb7d231b7afc6006c6349ce6537314b7"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn1-hit-approach-50.png",
+      "bytes": 1538570,
+      "sha256": "6d7c0e94395a45f6daa8653cb1d119404a768f0b1439bd7ea2cc96eb70d0c695"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn3-hit-return-end.png",
+      "bytes": 1534878,
+      "sha256": "f8b14449d3959cd10f0f0a010f2062f0615f45d7d7fcca0cce5fe898d4ed12be"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn0-hit-reaction-50.png",
+      "bytes": 1538715,
+      "sha256": "205f8f20ccd2e2044bf044ce633c8be7a28e1ee1c3c810d760b2b793d4fdfbf8"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn2-dodge-return-end.png",
+      "bytes": 1538538,
+      "sha256": "271da9d9de886230ae6e0f68191a632a225bcd9ecc04408127a7c6cbc1b91d48"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn1-hit-impact.png",
+      "bytes": 971383,
+      "sha256": "e349aeb8cfc9a2cc5851739b492f4c0c25550e58b8fab339e73d8197b85b10c3"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn0-hit-impact.png",
+      "bytes": 971003,
+      "sha256": "319e5e34978d199a7dd442a37a8c79cf164c91989292026c1187f64040bd56c6"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn1-hit-return-end.png",
+      "bytes": 1538398,
+      "sha256": "d7f65e78d0c2174d1f77ef2411b8f9969e09150053f8c291c67e58d33d158b7b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn2-dodge-impact.png",
+      "bytes": 1544667,
+      "sha256": "ae6a468892996c9d7b048ce5da9573f8c6c7e74a5606d04ba2780ca08eee716a"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn2-dodge-approach-50.png",
+      "bytes": 1538438,
+      "sha256": "f3c8dc338b9cf9008934d7550e0f6cf46f386d9bc3f0feea9d7866aaef7893f4"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn3-hit-impact.png",
+      "bytes": 982481,
+      "sha256": "1ffbc7cd6af4f4ed629666de2e66e3d7d6a3c85b981f1cfea318aff5b25dec8f"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn3-hit-idle-90.png",
+      "bytes": 1533461,
+      "sha256": "44608371857851bc219157738cd0f65d9624a5de510ba76ebbdbab6c9f11a5ab"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/turn3-hit-idle-50.png",
+      "bytes": 1549814,
+      "sha256": "63c9beab8ab584eaee05abeff0da0dab032a5aeb45fec016d9fa94e6a4715b20"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-native/battle-full.webm",
+      "bytes": 10852416,
+      "sha256": "2aecebfec34d7755c6de99b38964438100c316662986fe0c3dea36d3f059445c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn2-dodge-reaction-50.png",
+      "bytes": 1551649,
+      "sha256": "8028aced4e79c33515b0672c6aa4065386b5e9390059f185e9510a0189e54cfc"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn0-hit-return-end.png",
+      "bytes": 1544993,
+      "sha256": "89e82a9d057afb2c049c84778d42b39caa4a3044a99d88ac459c522853eb65e4"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn3-hit-approach-50.png",
+      "bytes": 1547155,
+      "sha256": "d42cfaa063e41874d8221422a24550220958773a0c82e06aa7ba7ac30f01e8e6"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn1-hit-approach-50.png",
+      "bytes": 1545472,
+      "sha256": "c28f23698b3d88ce90fba0972b8d695fbde772ea17086c63b1e3faeff742ea40"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn3-hit-return-end.png",
+      "bytes": 1540186,
+      "sha256": "6b9eee32671cfbccb55719541192f3fe6eb42192dfc973691f363ae76001edad"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn0-hit-reaction-50.png",
+      "bytes": 1545715,
+      "sha256": "dfee39f87d5739b971f6977134b6e646edc45538eede0e43148a46365404ead9"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn2-dodge-return-end.png",
+      "bytes": 1545507,
+      "sha256": "5380851d000c1b0262b25c33860f3a29e9544ffedc691b9044e31ee01b8a3a60"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn1-hit-impact.png",
+      "bytes": 979414,
+      "sha256": "d44563c4e372e8e9368d1170a8bca4fe543e5e48cdfd3c788f650071cbfca28c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn0-hit-impact.png",
+      "bytes": 979291,
+      "sha256": "9808d818a0eda87e07c47e009dbfcfcf1be83a0aae1fb5c1a0439b6b04787f50"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn1-hit-return-end.png",
+      "bytes": 1545018,
+      "sha256": "9edc2caa12507abf3352bb1ad2aad00f23746be133c246b6e5ff86f304db770d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn2-dodge-impact.png",
+      "bytes": 1552447,
+      "sha256": "5f418b21ad90103d8d3b9a11f95839e40a8fa903d2e193dce70c48b56e4d893b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn2-dodge-approach-50.png",
+      "bytes": 1545362,
+      "sha256": "b295d4c0466a6696a361bb770bfadb6d98a081f8de725a53f6ba89b02b9c5c2a"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn3-hit-impact.png",
+      "bytes": 987969,
+      "sha256": "689d7de5cd4ab86d68657513f0b89abae8639b3e38a0f5ad118dd8abb9685bf1"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn3-hit-idle-90.png",
+      "bytes": 1538920,
+      "sha256": "723981459b0c868f810beaa574d478dc1c86139b3b628ce1d440d35b9a99256d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/turn3-hit-idle-50.png",
+      "bytes": 1554128,
+      "sha256": "9ff2028a31f282f4ad119aefcfe457a70258a2e18708de412244742ba6c4c4a7"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/battle-full.webm",
+      "bytes": 9929497,
+      "sha256": "f5cfc735b7b467369bfe27637c781f36827c100bee535aba0a172782e7af36c2"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn2-dodge-reaction-50.png",
+      "bytes": 1562717,
+      "sha256": "7a8ca5685f502716456832f71b545a7c45dbd2b273dfa32a0ded6aef7924ca17"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn0-hit-return-end.png",
+      "bytes": 1552445,
+      "sha256": "f0397e1b1a123a9bb26934d066a8508b9a9da382cca748cf5270fbfe354f684e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn3-hit-approach-50.png",
+      "bytes": 1553965,
+      "sha256": "7158aba21dcd1a8ab62fd20c286543f9c32a82cfbcd576aadb9717d37d6fbd0e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn1-hit-approach-50.png",
+      "bytes": 1552575,
+      "sha256": "652ec1b84b6118f7fc1ef271c8aaa46373611d232cf4bafdfa4c0ba7b56bf5f2"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn3-hit-return-end.png",
+      "bytes": 1544819,
+      "sha256": "2245de8d47178f2bad75934d774a9846e47238a02efebce96ccfc6a00c2c029d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn0-hit-reaction-50.png",
+      "bytes": 1553470,
+      "sha256": "126a04553383293ffc74192cefff257617ce337ce8b1a59fa236a143f5518e1d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn2-dodge-return-end.png",
+      "bytes": 1552878,
+      "sha256": "dae763499e982a1aad9fa318163e70666e5d0413a4c1be61b9090d0a131d6854"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn1-hit-impact.png",
+      "bytes": 1557599,
+      "sha256": "f0dc6a2805d3c06dcc31e1dd11146a1d446db63ecab16ee855f86e2475fd2dfe"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn0-hit-impact.png",
+      "bytes": 994016,
+      "sha256": "f44769e98caffb9614219449f57a593334cf5d5b725076b3043227fb5f614ddf"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn1-hit-return-end.png",
+      "bytes": 1552342,
+      "sha256": "576db7aa2a909f5f01e0630625f4efcb96acec2edc5e6c1320378c4ea4e7141e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn2-dodge-impact.png",
+      "bytes": 1561328,
+      "sha256": "04a81e93af94a2394ab0022b5f8dde2b61b1fc954243e431ef6ccd85a7c27169"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn2-dodge-approach-50.png",
+      "bytes": 1552798,
+      "sha256": "717ae40866c2e80dfed97a7fe501595873b7e3d723b747d42859d0540d5e9ace"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn3-hit-impact.png",
+      "bytes": 1554101,
+      "sha256": "01f640bd3fa61cc6a7f6576056801841fd2c435ec69a90b07a1eaf5c3205035b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn3-hit-idle-90.png",
+      "bytes": 1543599,
+      "sha256": "c23db1b8634acda9b2803ea27811cd87e1b45b3eab10bfe681f42853c00d8e76"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/turn3-hit-idle-50.png",
+      "bytes": 1562345,
+      "sha256": "b685fc495e2379d01bf1d8ae35b69ed9d9330305520e167c833d7d279ce1047b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-native/battle-full.webm",
+      "bytes": 10431127,
+      "sha256": "f33334a9bbce4f039ff29882698e606c5493357f586bcc2b3baa3f820563bba0"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn2-dodge-reaction-50.png",
+      "bytes": 1552762,
+      "sha256": "b94e2b8856a52509662ed917f9fc44b818edebf7ba8165bfe9b6c4c05822cfcf"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn0-hit-return-end.png",
+      "bytes": 1538997,
+      "sha256": "7396e73ef4eb8e7b5185c034fae93ec81d43c10bca6a5266db7f1f5fe667f406"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn3-hit-approach-50.png",
+      "bytes": 1539526,
+      "sha256": "097bbeea70604c29cad2d31bc8e577b33fc06a3fe929a39bedd3115f531e45de"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn1-hit-approach-50.png",
+      "bytes": 1539758,
+      "sha256": "d7927c77b564729bfaf34837b9e68e00f36ae62c8a473d4cf16608705e31ab81"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn3-hit-return-end.png",
+      "bytes": 1534279,
+      "sha256": "d9658b3e76181d7c6321a66481fa176c3b5e69835b3de65555cd025e8a99625e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn0-hit-reaction-50.png",
+      "bytes": 1538977,
+      "sha256": "3b653e3a56e87d0d421a4d87377fe2f53be68c2644843c8c2d14149c8a4797f8"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn2-dodge-return-end.png",
+      "bytes": 1538904,
+      "sha256": "0b7a4dfe2ff33e25ee5ade25a374a15614744e28c3bc02bfad1b9dc156a6485f"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn1-hit-impact.png",
+      "bytes": 1543968,
+      "sha256": "266eec06befa5365c0d1bd3818bfcd5d1f3890004fc96a525dea8758e2bfed23"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn0-hit-impact.png",
+      "bytes": 982721,
+      "sha256": "90d1d1375c340fcef69196761d519db6e26790300bea0e657f9b0561a79063c6"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn1-hit-return-end.png",
+      "bytes": 1539124,
+      "sha256": "1dcbfa6cc7f80e121c243a0375fd468f27406b0c0e59eb3bd678b6d23bd260af"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn2-dodge-impact.png",
+      "bytes": 1549448,
+      "sha256": "fb95ad7a4c49bc02ae0db0272caededd8cfa5ba38f5326b4b01def10131ee5da"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn2-dodge-approach-50.png",
+      "bytes": 1539470,
+      "sha256": "e3fa848c61e838ad33e4a922702ddca4a2d5b2d1c8b398c64a46c1bce4b8a0b2"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn3-hit-impact.png",
+      "bytes": 1540300,
+      "sha256": "2860bd44a63d6d43ebc6f9aa4790557a6b61c634c3d07f5819ccff1c5a022266"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn3-hit-idle-90.png",
+      "bytes": 1533328,
+      "sha256": "d9f59b344bb0898ececdfeb03d4557d132194bda84714d0a79603bf165c623d2"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/turn3-hit-idle-50.png",
+      "bytes": 1550987,
+      "sha256": "52b2eeeda1add72592e35507c6a9a96253888444ba339116878b733dc9aa5cf6"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-native/battle-full.webm",
+      "bytes": 10759744,
+      "sha256": "ccd7a2b1230e6c1be9f26ec986e65d9a84397527f7cb3926809d7a8b28f4c731"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn2-dodge-reaction-50.png",
+      "bytes": 1542178,
+      "sha256": "57acadafdbb60b89798caa27cd50c7d7d47f14948f61ad1d000a088267ca7b3f"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn0-hit-return-end.png",
+      "bytes": 1531621,
+      "sha256": "c2116d50fb22069c6c65f54235c0857ee56015cf087332812920b80ea880f5e7"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn3-hit-approach-50.png",
+      "bytes": 1531658,
+      "sha256": "20daf3f738d78105e22a7a90a5555e07900bf1d0cd1089828025c81cf30ae4d1"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn1-hit-approach-50.png",
+      "bytes": 1531199,
+      "sha256": "87f0c8344452b6a81a7320799c70325bea40576fc6d5c22dbcdbbd29f432e08c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn3-hit-return-end.png",
+      "bytes": 1526316,
+      "sha256": "9768633d2db7afa8fae6e72287f2dd30452a9c3c9d3f98945dc6885f6a3a174c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn0-hit-reaction-50.png",
+      "bytes": 1531375,
+      "sha256": "7d8cd00d76d0398f10707c35e574b564bcf03616760d61df16de02cf08164a5a"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn2-dodge-return-end.png",
+      "bytes": 1531628,
+      "sha256": "d0c39423d24e3ad5cbc463758f6c5de1c92198bc10973dee31aaeff5abfdd3fd"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn1-hit-impact.png",
+      "bytes": 1536114,
+      "sha256": "28cf546960969666aa2ca7fabd406c3448ee19c8bf490b640e9ccda2bde5b0cf"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn0-hit-impact.png",
+      "bytes": 976392,
+      "sha256": "cc85073dbd1092fccd72662675f5c87cc472f329bb5f04398f2a01e5392dd63d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn1-hit-return-end.png",
+      "bytes": 1531884,
+      "sha256": "64e9e88518f03b59e35193dcfb87314aef32fbf497d011eaf484ae32f971f8b5"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn2-dodge-impact.png",
+      "bytes": 1542247,
+      "sha256": "5f90ddac11c89461d711a44287e86d39328d08c9541310c219cb4254d4d58276"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn2-dodge-approach-50.png",
+      "bytes": 1531284,
+      "sha256": "b0b5b529fb1d98470f3857a9179d8abc2e594b5b2190673dc48cc2d1e95890ff"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn3-hit-impact.png",
+      "bytes": 1533799,
+      "sha256": "19ec15537e1e78b4b70c500da564142e0016df4bf4a3b6f11c18cc3b3faffb98"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn3-hit-idle-90.png",
+      "bytes": 1526159,
+      "sha256": "7594ef23f3e316b56362cb94c2dcf0374776a1d3caae9174b8c66857b24995fc"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/turn3-hit-idle-50.png",
+      "bytes": 1536953,
+      "sha256": "f33abc438e84cd53cd24b4f207d19ffe21d81ca9fefd622e08be1d64d9ddca39"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-head-native/battle-full.webm",
+      "bytes": 10893855,
+      "sha256": "51cffbb9a08809e418adccb7f3e710852177fe50ee9462e93954e5bb23f4c4e3"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn2-dodge-reaction-50.png",
+      "bytes": 1555586,
+      "sha256": "004e2001bd4cf756348a962242a7c8c6ea1b969861590218fe154d2013801228"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn0-hit-return-end.png",
+      "bytes": 1538448,
+      "sha256": "96454247c61b0f1e159c3e9c8df2284a0d6dacc6beca6f816fc1c9ad068b1374"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn3-hit-approach-50.png",
+      "bytes": 1539989,
+      "sha256": "5cdb3987f0c2bacb2276f22288f7fbe7d5c62762f301ed4316ffc924db9cf08b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn1-hit-approach-50.png",
+      "bytes": 1538361,
+      "sha256": "63adee1045b651c1bb3d280c9b07b9f65f91e1d08a13431291c1bd2598ef760e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn3-hit-return-end.png",
+      "bytes": 1534835,
+      "sha256": "7ae7c55ffa2c3a93b31e7e6d2dc0e3d97313f4a539898d82d6f3419d72c0a442"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn0-hit-reaction-50.png",
+      "bytes": 1538698,
+      "sha256": "f2f7630ef53cc0271a3bf880a788e7715dc7df178a94a704d955430953e34dca"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn2-dodge-return-end.png",
+      "bytes": 1538524,
+      "sha256": "ffc296f61bbf63d7e0fe9573a6bc3c9517179baadfc43242d8240fe1f09c30b2"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn1-hit-impact.png",
+      "bytes": 971557,
+      "sha256": "53d79c5641b38d4c16d04df21d395c3773fc977b8ce787bddbcceff601b4ed0f"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn0-hit-impact.png",
+      "bytes": 971368,
+      "sha256": "d84e43b177dad666fb423e7ed61aac4f7bb8a00820612d5ebaf5fc2b09bb22b8"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn1-hit-return-end.png",
+      "bytes": 1538494,
+      "sha256": "81cfc147c0b0b7473491d375afb741c718b9e3898fe3e00f098e51e7d40888bd"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn2-dodge-impact.png",
+      "bytes": 1545025,
+      "sha256": "6d531a8d54fe05155f3f7231f5fe1d6fe0d6ec7083c180f3e1cd93382522c491"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn2-dodge-approach-50.png",
+      "bytes": 1538292,
+      "sha256": "8704d49f63aff141e09122b11f8e80fb8bbb26406b24c6ed339e298f24728ef4"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn3-hit-impact.png",
+      "bytes": 982878,
+      "sha256": "6dba2e9a669754a815801d3906ab1763ff1fee8504c9be3d2fc23aab6426480d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn3-hit-idle-90.png",
+      "bytes": 1533479,
+      "sha256": "daba6b1e3472850ffd684d6a8490ed3cfb4f568cdbc097c70d5f91fcce08cff9"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/turn3-hit-idle-50.png",
+      "bytes": 1549631,
+      "sha256": "1c86421ccf77c259c59d041e48e47c6842b7994087d4a4df09163cbd73ff94d0"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/mink-chain-native/battle-full.webm",
+      "bytes": 10970436,
+      "sha256": "d2a7dbb5821952c55ac89d873a8f90569ad11ce048c9381ba70fe5c416cd76b2"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn2-dodge-reaction-50.png",
+      "bytes": 1559902,
+      "sha256": "70242886a57977a4c8c93858221f39d14fd84dabe6418ea7faa29434374cd516"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn0-hit-return-end.png",
+      "bytes": 1545929,
+      "sha256": "fc4cbce1f5d9eb5f0a4eb7bb823784f62c52d5d8aff39204a05a2ee7378c2ab6"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn3-hit-approach-50.png",
+      "bytes": 1546971,
+      "sha256": "bc425cb82d5c3e8bcec9fb2ac724865f3206ffdfb98f1779d6d86ee444309e20"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn1-hit-approach-50.png",
+      "bytes": 1545941,
+      "sha256": "88e81f66aeb18afa29b7aaa52bf2e2151e589f97a09d8fdd7f785e38c9c6eb66"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn3-hit-return-end.png",
+      "bytes": 1538878,
+      "sha256": "962639d35af9f4faeb5c766886f740bc97abc1897e4046f180309ddeabf87de8"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn0-hit-reaction-50.png",
+      "bytes": 1546196,
+      "sha256": "ad401924e1f15c64afb0cf4f4f3eba4f8033bf4db4697d70cc49478341795459"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn2-dodge-return-end.png",
+      "bytes": 1545832,
+      "sha256": "b4758418d81ac988429bbc64a33e5456df6708328ec073049412f32ae36da6a7"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn1-hit-impact.png",
+      "bytes": 1550703,
+      "sha256": "c78538cb3d92d0aafae29524618fe1df626881dfc844c94b6ad907be07b697f1"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn0-hit-impact.png",
+      "bytes": 991158,
+      "sha256": "eecc19c44e10145d492f8816adf9a8ec5774de082b585b5663d79f5201ee0ef5"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn1-hit-return-end.png",
+      "bytes": 1546006,
+      "sha256": "ee57fb028cfe6362612a53e3cc9fde88eed1b944cacd360cdddd92b4fd1c04b7"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn2-dodge-impact.png",
+      "bytes": 1556808,
+      "sha256": "63a71b9fadc77800ae37214abc233413c1b11b7d60fdac6a14baa7df63f33e1e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn2-dodge-approach-50.png",
+      "bytes": 1545712,
+      "sha256": "d3c3201a76656c050c64b4b85eadad846c33187d22a88f10a438e4d07194ee86"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn3-hit-impact.png",
+      "bytes": 1547836,
+      "sha256": "9244d7e7f56bc4bc96b40a98fdd1c536c791fa50a966a9b55447eee61d56dcbe"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn3-hit-idle-90.png",
+      "bytes": 1537590,
+      "sha256": "a981123870554b212f1a3ce9030a69835110a26176671057990eaf955db545a7"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native/turn3-hit-idle-50.png",
+      "bytes": 1558006,
+      "sha256": "ca2fddf64301434d94f87a4a23b44fa155c53ac5e224ca74bccdc3db4aef7a17"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn2-dodge-reaction-50.png",
+      "bytes": 1555593,
+      "sha256": "0ee91c9370472791744712ce0a15f25030dd79c0e0379c065d0fd6300066b28b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn0-hit-return-end.png",
+      "bytes": 1538491,
+      "sha256": "a07292640049847d2a2f323adcbd431db93bd7c87e238ee80b050dae98bcfe47"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn3-hit-approach-50.png",
+      "bytes": 1539906,
+      "sha256": "750123c185f3a5cc4f6a5949a172a76c41a70eb6402e93ccb46a29109978407d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn1-hit-approach-50.png",
+      "bytes": 1538539,
+      "sha256": "b5e8eb49374c2b689e26f84e14b9bfbcbe2b1f10af752e15fe119ddceab7ad51"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn3-hit-return-end.png",
+      "bytes": 1534833,
+      "sha256": "4af172ca5ac297f8a11d460cef95bb50f2be1d760b0e9de82023783cbd96ed04"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn0-hit-reaction-50.png",
+      "bytes": 1538758,
+      "sha256": "7d6e923fb31bf5809f5aebcac922cb39d1624e0e4734c1bb74a5cb43d143314a"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn2-dodge-return-end.png",
+      "bytes": 1538536,
+      "sha256": "1bb8a857ee5f7662d474c743df4ac3764a7d3edf10fa1d70d64c9700a9ac83f5"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn1-hit-impact.png",
+      "bytes": 971346,
+      "sha256": "5096a69daf3960846ea0c59e4d4b9aeb235f98c1040e431df9a88280e860da4a"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn0-hit-impact.png",
+      "bytes": 971073,
+      "sha256": "ff4ada4c2319858e9caf1cddffa26f1cc6ca8961c4eb343694664959eb89396e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn1-hit-return-end.png",
+      "bytes": 1538402,
+      "sha256": "861df4968710cff21c18d527b1e1718cdf4286b28d0b1cfbc5b14dc328a207a4"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn2-dodge-impact.png",
+      "bytes": 1544662,
+      "sha256": "345712766a3f27e9065cd869b9dc9330de6dc0a855232754b26cb25ad7766a71"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn2-dodge-approach-50.png",
+      "bytes": 1538451,
+      "sha256": "5750122a4d365bd431cd36f6e96bf8151dcbb2e1b3684b081c57f9313d01eed9"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn3-hit-impact.png",
+      "bytes": 982594,
+      "sha256": "03dfb282a468b59f968f363256ffd24a3b184b3aa4b042d699830c4081a7db5a"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn3-hit-idle-90.png",
+      "bytes": 1533425,
+      "sha256": "20bdc945aaa2616d9951980e65ac34071e413798621df7084f47a3344d5fedf6"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native/turn3-hit-idle-50.png",
+      "bytes": 1549637,
+      "sha256": "4f80491d01537b34d782fd8ee08f958b08361058bfa37a5bcdeac4ebcee5ef4f"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn2-dodge-reaction-50.png",
+      "bytes": 1560303,
+      "sha256": "8b58ba87d5282c64e74507238a7a3123a9223c34079d15a53097f9f0f26de259"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn0-hit-return-end.png",
+      "bytes": 1544894,
+      "sha256": "9db8440f96585a4e806241431580de2be9b3bfcea429ae54a7058a621824ca12"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn3-hit-approach-50.png",
+      "bytes": 1545616,
+      "sha256": "5d28c5649d04a0e4e680de3d60e06342ece65b054b38eb0a07c8d0bbddbe2930"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn1-hit-approach-50.png",
+      "bytes": 1545599,
+      "sha256": "cfc7e5fa4e646163e339d68e636b01423da402b7f0728eb85f6a352e3bacac4e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn3-hit-return-end.png",
+      "bytes": 1540452,
+      "sha256": "2d7b78d30ac3d740e003f4004806d237f1f83a3ff8ab86aa02ce05671bb81822"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn0-hit-reaction-50.png",
+      "bytes": 1545350,
+      "sha256": "c9d62fd61ed4c5bbf69a5c5c83bff1f4d002c7f505acc536db6f221987c53187"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn2-dodge-return-end.png",
+      "bytes": 1544760,
+      "sha256": "fd13bb4064dd7f0d65762162465413d1f8ce63a3a5f4bdf5fde6c0f7903c8a9d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn1-hit-impact.png",
+      "bytes": 979412,
+      "sha256": "914a92f7c7d007c7e47194bbcdccaada70f53453d627c2b2827ab7a117e74c13"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn0-hit-impact.png",
+      "bytes": 980127,
+      "sha256": "91a71a9572a6969afda5f035345bcb43c5fdac567a1fd7fafe65e2117eddf9a2"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn1-hit-return-end.png",
+      "bytes": 1544918,
+      "sha256": "157e8563a3431683086ac185cdea186c9000902ca79a3e4040d50b900eceb686"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn2-dodge-impact.png",
+      "bytes": 1555475,
+      "sha256": "4ef51b78bd456418e0a181ce0a5d4572a5961f8f23588fa496d1f11173cbe2ea"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn2-dodge-approach-50.png",
+      "bytes": 1545742,
+      "sha256": "294b551610a65e3c87a7937d6aa73d64fb5e7afc97f7e2d15988865840a55b01"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn3-hit-impact.png",
+      "bytes": 990104,
+      "sha256": "ead54fe7f98c6a413116e6c4a44ce1490f33b4eddd7b8f1f53c068dc01fd2db3"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn3-hit-idle-90.png",
+      "bytes": 1538959,
+      "sha256": "aee7ed56f96ab3b7ca964a12e0bd4089ceec004204d1fdb55d16ade9f48614f7"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native/turn3-hit-idle-50.png",
+      "bytes": 1560081,
+      "sha256": "5021395d892860dbf3ca9e6c7946e1607fcbfe642f298b1596986fbdeb5887a0"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn2-dodge-reaction-50.png",
+      "bytes": 1559926,
+      "sha256": "807410235d2029bd54bd57b8e58abb6d1456b2c8ada29024b905ae7a96aa8f5d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn0-hit-return-end.png",
+      "bytes": 1545883,
+      "sha256": "49c536f935d4f4fb99b4043ad52a0ff157a79e1eddb59d2535e1f921560fc5cf"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn3-hit-approach-50.png",
+      "bytes": 1547042,
+      "sha256": "bc2a4368df896f43c4830a09bd9dd94fd647a1659046de7a83b85928e580ff46"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn1-hit-approach-50.png",
+      "bytes": 1545985,
+      "sha256": "4648eae3a315b996ad60e25f7de34b85ff7db88a1c58f36d50c345b2dc88ec2c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn3-hit-return-end.png",
+      "bytes": 1538637,
+      "sha256": "e048dbba2d4deb3b81eb846a6c31cca206915d33dc7832e73fd90cfb179d6c46"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn0-hit-reaction-50.png",
+      "bytes": 1546183,
+      "sha256": "55fece3835e60fac5ede9876cb4f47011d23a783ba5909ba2490e2a6fb7b12d8"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn2-dodge-return-end.png",
+      "bytes": 1545858,
+      "sha256": "7c1769c96f512af6281aa99aa86569f5d3a45b5ee824622b8af1137e47fd896c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn1-hit-impact.png",
+      "bytes": 1550973,
+      "sha256": "6e9855a4682606b410152d1ada04ff68e5c3fd8fda86c243e0cbb68fd397b1e5"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn0-hit-impact.png",
+      "bytes": 991056,
+      "sha256": "97d495091addac88b035c469988d60c298e408d10838081a70abdeeef30d5f40"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn1-hit-return-end.png",
+      "bytes": 1545956,
+      "sha256": "7f169dd840190acdb3137d5e5d626b0cfaa2cc3f12d74536be0fc192c5f5eeb6"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn2-dodge-impact.png",
+      "bytes": 1557055,
+      "sha256": "e2456d7905c87cc4e61fd9dbd713c7bff4fade231b7daae63bebd4f214254d16"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn2-dodge-approach-50.png",
+      "bytes": 1545850,
+      "sha256": "18968f647bd2a52f8ac270d48ed83264160a2e17da3df5a727b0c17b0f12d41e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn3-hit-impact.png",
+      "bytes": 1548083,
+      "sha256": "814aff6241a7c4aa6b8f9b8514ba9360d0ee43f650382c963f7e338a9df11023"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn3-hit-idle-90.png",
+      "bytes": 1537238,
+      "sha256": "a6c87e643f1004735fa304206dc676e541d08e81796aa83b01e45349d7423f65"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/turn3-hit-idle-50.png",
+      "bytes": 1557570,
+      "sha256": "222b74fab19cd5371dd1e7f7cbeca29c44573b4e30e3c556601eccc17bfd65f8"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-05-tiger-native/battle-full.webm",
+      "bytes": 10789493,
+      "sha256": "627503036c4ae6a28b3af9a8fc5e1c81081e7f1ccfd8f161ffa9a0bbc1eee8c5"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn2-dodge-reaction-50.png",
+      "bytes": 1541763,
+      "sha256": "fd285353dae4e5c55a23e3b91696c353aae386292e5bda08283a199d9b9deba1"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn0-hit-return-end.png",
+      "bytes": 1531169,
+      "sha256": "fd4eb5074b21e1065b940b7d811b04bb81fb52fb6d0a0f9a158de151dcfa2ce7"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn3-hit-approach-50.png",
+      "bytes": 1531292,
+      "sha256": "50a5a0fd11e0085d26013dda78bb42d714cd5f63b919101b4891104f458d2091"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn1-hit-approach-50.png",
+      "bytes": 1530702,
+      "sha256": "449d6391ac6a6fa81f7fe5c136ec203e9f8474d970081f4dec26e6c73fcb7f72"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn3-hit-return-end.png",
+      "bytes": 1525159,
+      "sha256": "9f74a311d3ff91e44b3ca9c89672ce0a00f61f4706fdc1390031b566df230d27"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn0-hit-reaction-50.png",
+      "bytes": 1531054,
+      "sha256": "74da3ed09c9aa17d1c396d7ebb646198a23cb173084bca2d15878490172fdb43"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn2-dodge-return-end.png",
+      "bytes": 1531106,
+      "sha256": "30f8c65c0b78af1ab2b615a87d1bcd61a1be456b4ce8f747367af46e3ab00978"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn1-hit-impact.png",
+      "bytes": 1535945,
+      "sha256": "09b454806f968828ab0daa3d5cff212e1a50fc70dc2b839ff9276c87a3928392"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn0-hit-impact.png",
+      "bytes": 976545,
+      "sha256": "0af6c62445afd4c6c753d0194c0e2d6d0501d266874f70145159a91516f9cd0e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn1-hit-return-end.png",
+      "bytes": 1531407,
+      "sha256": "cc9a3e90c88ae0f37f322b85a55abde6a23e0a9266b0768c1c31d444a97ca5fc"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn2-dodge-impact.png",
+      "bytes": 1541995,
+      "sha256": "9b7578252fc87b1a55ee43a5c481eda3ece09340722e8afea66fc9d4cd18e241"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn2-dodge-approach-50.png",
+      "bytes": 1530757,
+      "sha256": "447bc5222b8b79636304423359729fd87e7c57851f85b8248d1631200a102924"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn3-hit-impact.png",
+      "bytes": 1533637,
+      "sha256": "d5218f075b13aabafb9b6f3c500985de15ed063ff8b694a0803a2348c3906441"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn3-hit-idle-90.png",
+      "bytes": 1524839,
+      "sha256": "c0a0a97296c31a27fb57c09190d2e8422d9b9606711286148c229bf103d6f516"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/arctic-islands-native/turn3-hit-idle-50.png",
+      "bytes": 1535654,
+      "sha256": "496e85f1928a5d60c92a7430e5fedd0f64fc38ca7ee6dcf43adea24dea3b111d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn2-dodge-reaction-50.png",
+      "bytes": 1558610,
+      "sha256": "6de242bcaff7935f0711930f6694b598879e37f7aaddfa1998976acc64677003"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn0-hit-return-end.png",
+      "bytes": 1544342,
+      "sha256": "42110308528cf1c9fe799ba039bfa4d98fe841214f367ba3b5901409814d2e91"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn3-hit-approach-50.png",
+      "bytes": 1546059,
+      "sha256": "a60a770c924b9026ee872bdca9c1edcccfae5f5bf8a77ff3afbab1fe77e70664"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn1-hit-approach-50.png",
+      "bytes": 1545183,
+      "sha256": "effe1662863b608f558af94eacdfff040088ca73bea5add6413e9925b6e9fb93"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn3-hit-return-end.png",
+      "bytes": 1540733,
+      "sha256": "d63e571ad00e06dd93bbb8e1f988cb7610caf158a17e608c3537d8a640b4a7d5"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn0-hit-reaction-50.png",
+      "bytes": 1544893,
+      "sha256": "1b7d0b811c0f0e50250fdbed1a696239ae0fc6c729e64de7edc08654b858251f"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn2-dodge-return-end.png",
+      "bytes": 1544537,
+      "sha256": "7d4c931d3985632f8514d7929a829289f9df6d0f9f75e43618cb9df8cd20608c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn1-hit-impact.png",
+      "bytes": 1549012,
+      "sha256": "7baea6c041b74d00ca901cd612ac88b5b63c6c2eaee49ab789d7f9cc8dbd0ce2"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn0-hit-impact.png",
+      "bytes": 987689,
+      "sha256": "3da5baedcb1b41c794072409a89b91c9757180383bc1f6e9a6b8dc58efcf2cbe"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn1-hit-return-end.png",
+      "bytes": 1544491,
+      "sha256": "6e42fbf9f736640d24617daff6d475f1f276fe18ba8a5b9bfc63ebeb8d8c3fa7"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn2-dodge-impact.png",
+      "bytes": 1553419,
+      "sha256": "0df605d1ee7792408b7b3735269203d7991f7b1cddf5c10b3d43e2ea88008439"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn2-dodge-approach-50.png",
+      "bytes": 1545315,
+      "sha256": "281be996e574a3f25d69687822d322101d9362265f3f99d24225d1daa20b82db"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn3-hit-impact.png",
+      "bytes": 1545767,
+      "sha256": "c6070bd31e919011b5589e607f488b8b59e1bfe447d8fb9ea423f945a079ab6d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn3-hit-idle-90.png",
+      "bytes": 1539331,
+      "sha256": "48a29590d0b5fa44750f30fe4c0d7085b10757b153da1542e278616cff14fe17"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/turn3-hit-idle-50.png",
+      "bytes": 1559777,
+      "sha256": "1f3843e478b2e12c04823b3ef3d387656578ca020135e6e41a6c569020fa6c21"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-native/battle-full.webm",
+      "bytes": 10493519,
+      "sha256": "57fca6661e71f991767d6176c2c33be1b6cb90374fca64272e2a474b9240f305"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn2-dodge-reaction-50.png",
+      "bytes": 1205518,
+      "sha256": "dadadad1aad694d6b1740b96b35de359970ac63d20abb7ed7caa70e3c7871cca"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn0-hit-return-end.png",
+      "bytes": 1188624,
+      "sha256": "bc51e4e5c3acc2a092a0a1dca70484036fe217b30858ba13dc026611e5fd85c3"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn3-hit-approach-50.png",
+      "bytes": 1187821,
+      "sha256": "3623d6925ff1cbf7f326b6353279c9356ed870bf5c78eb28b8fe00fb77c0c2d6"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn1-hit-approach-50.png",
+      "bytes": 1190105,
+      "sha256": "0d748ba98ca09f5ba262b6c6d2902760a927cec118153094952f7a8733421bbd"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn3-hit-return-end.png",
+      "bytes": 1192058,
+      "sha256": "a392cbc12d28a8a5b8fe2be27e59ac2ed7c30a1805cdbbf4370b1ae2fb93f275"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn0-hit-reaction-50.png",
+      "bytes": 1203413,
+      "sha256": "0bb2f519513c1fe9156f8064b49080f648d5d3fa530c57ff5d80fd13db943477"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn2-dodge-return-end.png",
+      "bytes": 1188624,
+      "sha256": "bc51e4e5c3acc2a092a0a1dca70484036fe217b30858ba13dc026611e5fd85c3"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn1-hit-impact.png",
+      "bytes": 1189901,
+      "sha256": "fcb6e695cdfdfdf8aada8231b4069236ce2be36664cb191170c7f22a9e3dc6ba"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn0-hit-impact.png",
+      "bytes": 675170,
+      "sha256": "965ff4333d88ae25ddb6bc90d4754ba70dbfd00cad78cfb990f70b0b2fdaba85"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn1-hit-return-end.png",
+      "bytes": 1188561,
+      "sha256": "2f35968a9f2162a6aea2af5d8bd22b2347f7a2d891b979ffa6c3dca0b36177ef"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn2-dodge-impact.png",
+      "bytes": 1199728,
+      "sha256": "36b81822abd575cde79b8b653a45c28a7b1dbc68d047af77b72dcd72d27e2672"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn2-dodge-approach-50.png",
+      "bytes": 1187821,
+      "sha256": "3623d6925ff1cbf7f326b6353279c9356ed870bf5c78eb28b8fe00fb77c0c2d6"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn3-hit-impact.png",
+      "bytes": 1189474,
+      "sha256": "8820b10114ef6fa61e27cadbda377b167a60d940ad4347cbdb29f83058e86249"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn3-hit-idle-90.png",
+      "bytes": 1192174,
+      "sha256": "f567bad92457c7c30085122a5d3f2b192922f0d1db93908d2b15e5655d18d466"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-two-native/turn3-hit-idle-50.png",
+      "bytes": 1192154,
+      "sha256": "985ca3045dfbf1c2b7d1f0baafd03f85cc2acc751602d6a3232a001572b1f29d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn2-dodge-reaction-50.png",
+      "bytes": 1205496,
+      "sha256": "4f3c066cd42582351b5f5e9fd80b4219287511065bf7d2d430b121d3e252e856"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn0-hit-return-end.png",
+      "bytes": 1188594,
+      "sha256": "79cc99169e6d9f34ea04d284b8711c880e866ee96a8afa84d7deabcb3bacba1f"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn3-hit-approach-50.png",
+      "bytes": 1187843,
+      "sha256": "881dcae87df4b21f10565e90f9b071e601b86f3ecd5015ac1d130706a1daab20"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn1-hit-approach-50.png",
+      "bytes": 1190140,
+      "sha256": "09e372407c73e6f3058766f9191251fe84847330d022d925fdec32903c26087e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn3-hit-return-end.png",
+      "bytes": 1192044,
+      "sha256": "d192e1c97ce1c141013e88a5f83743ad9d8e76a355c27e44ff650aca97491f32"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn0-hit-reaction-50.png",
+      "bytes": 1203152,
+      "sha256": "91db46a211b18770028d7042e969d466ffdc5cd14cd5fd3e346ff24b9c290206"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn2-dodge-return-end.png",
+      "bytes": 1188594,
+      "sha256": "79cc99169e6d9f34ea04d284b8711c880e866ee96a8afa84d7deabcb3bacba1f"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn1-hit-impact.png",
+      "bytes": 1190174,
+      "sha256": "4753a65aac7de7989920eb749d2c977f35bd1ad512a4272af79acffc3a9533a4"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn0-hit-impact.png",
+      "bytes": 675256,
+      "sha256": "83a1f2da7089940fee06727292b06072eb3659800fd19f6d32593bd5df1fd62b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn1-hit-return-end.png",
+      "bytes": 1188529,
+      "sha256": "8d2cabb76da9a00c4b479ea9e4014c86becc6c90b785548bc570b5e2d8a4535d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn2-dodge-impact.png",
+      "bytes": 1199978,
+      "sha256": "7fdbcab1bb579249fba4ed4652268268169333c96a58cdf950f79502650e55ca"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn2-dodge-approach-50.png",
+      "bytes": 1187843,
+      "sha256": "881dcae87df4b21f10565e90f9b071e601b86f3ecd5015ac1d130706a1daab20"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn3-hit-impact.png",
+      "bytes": 1189796,
+      "sha256": "05ad68b9b0a43fbc3aa8bdd3a280c56bf58b289e4dced19592355084e72a2f18"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn3-hit-idle-90.png",
+      "bytes": 1192206,
+      "sha256": "4f0abbb9077c102d38070d1857ecb684445f2e04b61c30bd4b9ef351c9ee2a24"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/turn3-hit-idle-50.png",
+      "bytes": 1192091,
+      "sha256": "8be5edaf067c4cf75a1bcec573eb79830b70aaf467d60bcf6001c28ab9efcd24"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/fish-gill-native/battle-full.webm",
+      "bytes": 7173564,
+      "sha256": "c0e32ed2efaa212807239261971a39b0076d3d847a06d531168e85701bd6795d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn2-dodge-reaction-50.png",
+      "bytes": 1562729,
+      "sha256": "0ef6804510214409fd13b1684ffd6c32c2c5ba0ac21572b745803b3cbaf3de98"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn0-hit-return-end.png",
+      "bytes": 1552502,
+      "sha256": "93d0f81a0d06e09adc86c829470e7af22513a333ad7aa956a9b0c85a593bf99b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn3-hit-approach-50.png",
+      "bytes": 1553956,
+      "sha256": "ccb1efb2fb4551647809a2f17001baee8bd030e6d64a322779be48f4ea2969ae"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn1-hit-approach-50.png",
+      "bytes": 1552583,
+      "sha256": "ab1766f2ef7105256f0b5ab63842de369c1a61637efa6d8320589e8f32c9cd26"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn3-hit-return-end.png",
+      "bytes": 1544712,
+      "sha256": "da4eff9b0c1913e5c9440bee922a7b8aa0ee17d645d87b12ed18d3c1c5b849cc"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn0-hit-reaction-50.png",
+      "bytes": 1553508,
+      "sha256": "82427bda941c5c2a86d35eb04f729e4491459c6216252ccc3bc60d246bab7a4b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn2-dodge-return-end.png",
+      "bytes": 1552781,
+      "sha256": "04677e59a60098f5de1994e9dd8dfd0b05d9c64c0c2f7d685d8149940c2ff54f"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn1-hit-impact.png",
+      "bytes": 1557520,
+      "sha256": "77fc4baab9a29d66013476d0425c873dd90026ed365b881f177fc5bfb1b8bf3e"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn0-hit-impact.png",
+      "bytes": 994113,
+      "sha256": "3268269bc86d757416d0c129adee0a1a5542e0d584698a7ad14ccfbfd4306d13"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn1-hit-return-end.png",
+      "bytes": 1552414,
+      "sha256": "8cdc1c1a1b5ef3922cb071e2c983d64f0169f31c2ed6bec0f82b952935007339"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn2-dodge-impact.png",
+      "bytes": 1561214,
+      "sha256": "0e03bc9a40ccbec21fbf1a3dcd8c483648fbe0d7865939952f746094f8db1573"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn2-dodge-approach-50.png",
+      "bytes": 1552859,
+      "sha256": "fd95ea8bfe01e31a5b51238de4c6d91e7fe914fb315b0d6d74a612bb40e8f515"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn3-hit-impact.png",
+      "bytes": 1553996,
+      "sha256": "d2ea98015ae3242832358a7fc987536afdb9d547ae098b1d5d663cb9cf9007ae"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn3-hit-idle-90.png",
+      "bytes": 1543553,
+      "sha256": "9d261875b8065b51631223ccef3bbf63f0dfc0e2a9d7f82eadef6dd000acd993"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native/turn3-hit-idle-50.png",
+      "bytes": 1562303,
+      "sha256": "5e901ec8b4b3014c4ec4325d74e15229e68567eed7f770423205d96843957096"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn2-dodge-reaction-50.png",
+      "bytes": 1552762,
+      "sha256": "d478e49c4bec5c9927566ea9857e6e2531a689e405e1bcd0a90692d9e443e3c7"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn0-hit-return-end.png",
+      "bytes": 1539048,
+      "sha256": "d691b967fc2d1828a83a446550393b20a5b21966b886c1d35186d8dba62501e9"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn3-hit-approach-50.png",
+      "bytes": 1539447,
+      "sha256": "f589ebdc3f7e51344a02cd7b5a79622b16a901a52244865d66328fae38d3b485"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn1-hit-approach-50.png",
+      "bytes": 1539737,
+      "sha256": "d1da333503db3ac7e4a30131c7aeae22091d14b70e082f4fc0a0b27279ebd1aa"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn3-hit-return-end.png",
+      "bytes": 1534517,
+      "sha256": "f9b9b9ffe0f7127210598e286da4b0707ebe9eecce6d4ce0a32668f668b9a1b2"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn0-hit-reaction-50.png",
+      "bytes": 1538964,
+      "sha256": "0aae2a37e7df71bfb1d87ab90cf960b8dab189e619d98364461fd1d3f09e2c0d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn2-dodge-return-end.png",
+      "bytes": 1538941,
+      "sha256": "fdffc9961d901e316f9dc4991cd0d71f2ecd1e72759177b77fc9a3fe23eb8425"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn1-hit-impact.png",
+      "bytes": 1543699,
+      "sha256": "be5652b2f2048360f2ed7667eb8bf14cbf179ef85b7f8533c924ce56f336f5e3"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn0-hit-impact.png",
+      "bytes": 982811,
+      "sha256": "932bfa098150d62f31500dac3a1d2546743d6d610ac2af8af65dfd29ff13e666"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn1-hit-return-end.png",
+      "bytes": 1539198,
+      "sha256": "053d0895a4ce9624a337d08571b2072caf1b9963966029b28d30b08b8f7feedc"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn2-dodge-impact.png",
+      "bytes": 1549337,
+      "sha256": "5cf1478ff9dabae137b946841db4fa1973679e9cbb098bed4449ed6c7560cebe"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn2-dodge-approach-50.png",
+      "bytes": 1539323,
+      "sha256": "4bf0b2a449fd5df36b0ead1ba849929d1542da10200fd8d9dd71b4dea978c28f"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn3-hit-impact.png",
+      "bytes": 1540398,
+      "sha256": "6ecd426f0901cd0eb6f645f031a0feb80fb1d0c25cec846f2067063caeb5d2eb"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn3-hit-idle-90.png",
+      "bytes": 1533403,
+      "sha256": "1dfc2fa8da6fc55cd8d234942c97e0747ea1a67297c875d090effe600227fad1"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native/turn3-hit-idle-50.png",
+      "bytes": 1550889,
+      "sha256": "682adff5901f7d8a6d4b7a149dc691a0825f769032e53251ef985412536c726c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn2-dodge-reaction-50.png",
+      "bytes": 1560306,
+      "sha256": "09fe8a2b2f88919817adfcdaa95c58092eb9931126b995761163d2e0f54028ed"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn0-hit-return-end.png",
+      "bytes": 1550849,
+      "sha256": "d4f0e2659f43da6d02dcae68a520e9e2bbfa4a6b3562a32280317ad3bae72c31"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn3-hit-approach-50.png",
+      "bytes": 1551366,
+      "sha256": "16c35f67a01d3baf96f3e252abe3646a20ab4f04751a7edb916f57b4dbc2d88c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn1-hit-approach-50.png",
+      "bytes": 1550677,
+      "sha256": "136717d9c4202b255039d0f3a0ebf2a1b618a9c4d14e3368c99f779a54ac9f2c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn3-hit-return-end.png",
+      "bytes": 1545993,
+      "sha256": "d8249480e0f316b2748bf6ce6e3a56452652537fd84b0777c352910ccfe1258c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn0-hit-reaction-50.png",
+      "bytes": 1551025,
+      "sha256": "d7c1be43bb344a654320c3999599df75de3e6956fb08e3721cfed5b2789ef990"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn2-dodge-return-end.png",
+      "bytes": 1550757,
+      "sha256": "c21f05898123c6fcd090677ee08997d4f8fc8d088e28512c814897bd72c16458"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn1-hit-impact.png",
+      "bytes": 981867,
+      "sha256": "446070cf542911769711fd7c4eafc05c8f9439954c7eefc1bab0c2ef417047a2"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn0-hit-impact.png",
+      "bytes": 981742,
+      "sha256": "056e95bc9ded037f4bba17daadcf2f2a6698f73802b6b67628c31f51fac81678"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn1-hit-return-end.png",
+      "bytes": 1551104,
+      "sha256": "6b6f66ddd6771c760b249c6e1662e88e4d49c777453248943acf713350e9143c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn2-dodge-impact.png",
+      "bytes": 1558787,
+      "sha256": "9e8f2daba0d9560a3155cac603a623d3699d7193f23975b1b6f4e00693332eb3"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn2-dodge-approach-50.png",
+      "bytes": 1550629,
+      "sha256": "455f53206b306cb2c6ca39a4e12f200fee64dec25b184393d2a971ca40eced48"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn3-hit-impact.png",
+      "bytes": 991183,
+      "sha256": "c748bd7ac9c85a8584a6734244bab086cdae5fabae193a3e5578d592f18bcc04"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn3-hit-idle-90.png",
+      "bytes": 1544843,
+      "sha256": "392ad58dc01b2908db27e7af5f82f2755d39379bd6e831a9c466773ab0d67da6"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/turn3-hit-idle-50.png",
+      "bytes": 1564503,
+      "sha256": "307de05423cefc5d05c6e1b02f6ec336c8af52a7e1e9619709d7b64f05f41d9a"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-native/battle-full.webm",
+      "bytes": 10458326,
+      "sha256": "aec7d9e7658e36d44abe4d5d72677cff47103b18382805056af428467b655a66"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn2-dodge-reaction-50.png",
+      "bytes": 1558581,
+      "sha256": "adeb622b1476f87ebea7980d5446848b2597f64e4ccf47e4a24206a813b1b526"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn0-hit-return-end.png",
+      "bytes": 1544458,
+      "sha256": "c9f4915c510b40b8687ce42bccecd4d3e67ffefa8dc8229df1a13b26f22385ee"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn3-hit-approach-50.png",
+      "bytes": 1546037,
+      "sha256": "70b88c65b224e7d5fb95bdddda61fad0fadb2fa6153354d4eaa0de19574bf29d"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn1-hit-approach-50.png",
+      "bytes": 1545203,
+      "sha256": "d4f3bd7f12870d1842bc08f314dbc0f37a4e03aabfb3eeaa0133098ea960cb48"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn3-hit-return-end.png",
+      "bytes": 1540743,
+      "sha256": "043bb27c32689ecba5f59f1f099f1691d95ab6c04ee5a7f814d110860042f1c4"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn0-hit-reaction-50.png",
+      "bytes": 1544986,
+      "sha256": "19a9581c0e432dceada67e864647bccf1f6a980837eb82a79ec0377da8db2a83"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn2-dodge-return-end.png",
+      "bytes": 1544491,
+      "sha256": "9e878d2eea636737b818d341b84ca9668ecdea9eec3ac2edf785c722345c8df0"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn1-hit-impact.png",
+      "bytes": 1549174,
+      "sha256": "e1a2de9df9d55d5d0d8ecaa0da6bb336f195fb3795aa4824bed2b63656347485"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn0-hit-impact.png",
+      "bytes": 987852,
+      "sha256": "1bbf3a4a238763ed021a15e458050a7b2a0f2d9635475e5c512f0f1fd3d31390"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn1-hit-return-end.png",
+      "bytes": 1544649,
+      "sha256": "462d3b0c3fdb7f52b9e7c12883a537a0dea2672a25751dd48b8ffe1ae0ceb1be"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn2-dodge-impact.png",
+      "bytes": 1553643,
+      "sha256": "baeeeb563862ad5213ae71f551af0bc42df8fe2482306327f0635b5ba1fd730c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn2-dodge-approach-50.png",
+      "bytes": 1545410,
+      "sha256": "fd069f1fe43a96ddc9747f187ca2d1b02b885e66570cbf50764e5897d00e4e9b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn3-hit-impact.png",
+      "bytes": 1545946,
+      "sha256": "f5e58972272f1c6d9c63a4147d5dc93157d49f4b6f1a8de692b6902fb74afda0"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn3-hit-idle-90.png",
+      "bytes": 1539432,
+      "sha256": "3aabb87f21e28e37b5ce85e189031c3c85446b7bf2bc0d5e7bf4e7c533a26203"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native/turn3-hit-idle-50.png",
+      "bytes": 1559998,
+      "sha256": "4f0637cfc7da26e9ed2a2ccfb6cf3a7ba58c00db8558fa1604a395c1d020dcb0"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn2-dodge-reaction-50.png",
+      "bytes": 1560297,
+      "sha256": "4f71c429807e0712fd2ae6637faed16dcc5d4097327ed1bda396273750c0b9e3"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn0-hit-return-end.png",
+      "bytes": 1544895,
+      "sha256": "f7ab75f50bf8884192b82f35cbe0e1b3ba53b71de04a45c190a6ee66bfdfb888"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn3-hit-approach-50.png",
+      "bytes": 1545648,
+      "sha256": "70ea3d836798645e8938f9141110e9a20c1f0da99079ee942201a625aaa275ff"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn1-hit-approach-50.png",
+      "bytes": 1545564,
+      "sha256": "27efb36407412adf8e54b922ff74b7ff8a719bd4134c730d27aab574f0864e47"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn3-hit-return-end.png",
+      "bytes": 1540538,
+      "sha256": "7907ac7a22fa65667a038e1a1e8cbc0476906725c449129015769e55f6cb5554"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn0-hit-reaction-50.png",
+      "bytes": 1545383,
+      "sha256": "221cb5dd3bfb4426be0dffa7c80f6bf6bc3743e530734ba7970055f4f75c6173"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn2-dodge-return-end.png",
+      "bytes": 1544752,
+      "sha256": "ce3cae56f4d7c2fa9a289a8d8743820e6da984665de1e0d38c3c6b10cc6a7d04"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn1-hit-impact.png",
+      "bytes": 979388,
+      "sha256": "d91dea69ba2b0ca90c1b74a3f7475ad91e8e173ebb192498d553cc173be39372"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn0-hit-impact.png",
+      "bytes": 980167,
+      "sha256": "4d81c96800240924ed7672cde2d7d48ad375971010b05ae31675f9fe95f389f0"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn1-hit-return-end.png",
+      "bytes": 1544886,
+      "sha256": "7ac4d22bfeea1825693bb1bf54c848d92c2d26724dbc987110426e525aa976b4"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn2-dodge-impact.png",
+      "bytes": 1555581,
+      "sha256": "e8b93a7b4e5629f16ae33205fa83ad34082c844c9a9c563f57ac2b464f1b4606"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn2-dodge-approach-50.png",
+      "bytes": 1545726,
+      "sha256": "28541ae93a0ac5d805a88a9adf087f5148e0c8edb1721b68b0b8a85ef52c7175"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn3-hit-impact.png",
+      "bytes": 990158,
+      "sha256": "2a5fa03079bb7a3cda2afc0158003c210508eb7ccccd37c4e9fdd6ddd6e3f89a"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn3-hit-idle-90.png",
+      "bytes": 1538910,
+      "sha256": "7dc75045f86cd2bae52de4896b02042fdeb0b31aa40d51c68ae94968624d7255"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/turn3-hit-idle-50.png",
+      "bytes": 1560191,
+      "sha256": "127016fd701a2dea37810fbd30c82d938037cd2858652bebc0d7a905adb604b0"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c54-06-leopard-native/battle-full.webm",
+      "bytes": 10517074,
+      "sha256": "e55291d644e20cd80a137fee5b44867d1d2d112ef466a06d38f984fa5dc791d1"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn2-dodge-reaction-50.png",
+      "bytes": 1560355,
+      "sha256": "77bb92ff556a1e40a06edc71d40e605f44911ec3620c886a7deb70f0ce888180"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn0-hit-return-end.png",
+      "bytes": 1550896,
+      "sha256": "989a8fe0c0d76c642498484012ee54f14ea4c18acf6c83a5616cf66e172beb07"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn3-hit-approach-50.png",
+      "bytes": 1551306,
+      "sha256": "0498fcee79b9345f210cfba01e1dfd2767f195bd54b0c6243eb1ed37c35a96e4"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn1-hit-approach-50.png",
+      "bytes": 1550630,
+      "sha256": "419ae505c06436202114e8caeb1a1962cee0032e994ad51380b9a2c8546b0a01"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn3-hit-return-end.png",
+      "bytes": 1546165,
+      "sha256": "ad076d90b13d319c3b7d43ec8b3f25de0454b3a89612c908c83d6ea4dc416749"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn0-hit-reaction-50.png",
+      "bytes": 1550978,
+      "sha256": "4ef2fc176c240bb3789c83786702825a02e9869826c374799bc0418a9be79937"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn2-dodge-return-end.png",
+      "bytes": 1550868,
+      "sha256": "b076bb0eed806e37a293000248e3847d2b770837540738d1316bdd531b9050ba"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn1-hit-impact.png",
+      "bytes": 981875,
+      "sha256": "095a4b8daa7deafdcdb2ccc4d46fe9e65774e8bebab04f52463a84cac8ba3dec"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn0-hit-impact.png",
+      "bytes": 981748,
+      "sha256": "ef488ba4b3f92c6affa011dc3d22e08b4ec6825c9d5487c5758600a9b14d6036"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn1-hit-return-end.png",
+      "bytes": 1551095,
+      "sha256": "24b49bf3d96af60b0c9a86ed8f0c6893b97a211ecc950b37a58657c70d1f666b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn2-dodge-impact.png",
+      "bytes": 1558723,
+      "sha256": "5398611307df4b000c039de5afaa233e08883f67510ac364eff63b6b651e61a3"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn2-dodge-approach-50.png",
+      "bytes": 1550724,
+      "sha256": "0c83a3a6ec40e4874aa229d9ba4a3e2ed4fcdb1c077dd23022e7eb3ff1b5d64b"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn3-hit-impact.png",
+      "bytes": 991086,
+      "sha256": "1cf9edf06bb235045763d904b778751fbfb95b9dd842723ce345389ca8eaccd5"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn3-hit-idle-90.png",
+      "bytes": 1545142,
+      "sha256": "d006b839a642dff2a5aaf494ddd2f7a32508e22b9d08b7e4b3cf53d614a9967c"
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native/turn3-hit-idle-50.png",
+      "bytes": 1564551,
+      "sha256": "9197ab43a5da67aa41b55eea5b6c298944308c90708aca56f7f3ae41ef323cd1"
+    }
+  ],
+  "bytes": 546101803
+}

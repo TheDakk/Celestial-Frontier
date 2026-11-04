@@ -1,0 +1,55 @@
+{
+  "schema": "cf.fish-seams-batch/v1",
+  "pilot": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/FISH_BATCH_C100_20260927/pilot.json",
+  "author": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c98",
+  "rows": [
+    {
+      "id": "01-cold-water-fish",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Cold-Water Fish",
+      "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/01-cold-water-fish/fit",
+      "sourceMasterSha256": "f390eeec34399bd928515352b1aad708a693518643bbccc20178ffeded074997",
+      "sourceStaticSha256": "9bc83b94941276909731e2c6a93ae2c7be98285fb8f7687645c2a4b9b1c72cc7",
+      "candidate": "audits/FISH_BATCH_C100_20260927/proof-01/01-cold-water-fish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/01-cold-water-fish/native"
+    },
+    {
+      "id": "04-sunfish",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Sunfish",
+      "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/04-sunfish/fit",
+      "sourceMasterSha256": "b4386003e8d6c39d6a3c2eab4e607474d864adff45a916631e098b0f70580830",
+      "sourceStaticSha256": "ce32c2b1f85cba8df54dfa69782017d7ca32687802a120b9f2a8fcc67458ed7a",
+      "candidate": "audits/FISH_BATCH_C100_20260927/proof-01/04-sunfish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/04-sunfish/native"
+    },
+    {
+      "id": "10-snailfish",
+      "status": "NATIVE_PASS_NOT_VISUALLY_ADMITTED",
+      "name": "Snailfish",
+      "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/10-snailfish/fit",
+      "sourceMasterSha256": "d389cd2c1af54df2c649ec1cd867398062829ff0a8e3a8869f9e803a9c65967b",
+      "sourceStaticSha256": "1daa19e49efd32d8caf1f3174b1ac83b0750ca25e62989c3e9ccf175b1d59c06",
+      "candidate": "audits/FISH_BATCH_C100_20260927/proof-01/10-snailfish/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0,
+      "native": "DIAGNOSTIC_PASS",
+      "nativeExitCode": 0,
+      "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/10-snailfish/native"
+    },
+    {
+      "id": "13-harpy-eagle",
+      "status": "SKIPPED_NONFISH",
+      "name": "Harpy Eagle"
+    }
+  ],
+  "scope": "Opt-in diagnostic candidates, no visual or library admission"
+}

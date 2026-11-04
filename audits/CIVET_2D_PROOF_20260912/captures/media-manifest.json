@@ -1,0 +1,155 @@
+[
+  {
+    "id": "civet",
+    "file": "civet-10s.mp4",
+    "bytes": 9326138,
+    "sha256": "70cb8ad9dfb93a0a69a4eb3fe6e0323c4ba13f41fffc6e4c6066ed400bea696f",
+    "sourceWebm": "/private/tmp/cf-quadruped-proof-20260912-05/civet-10s.webm",
+    "sourceSha256": "9882c3cc324ad4c68b73d2e18ff774401ec6d9efddaf72539a9baf1cd78ff065",
+    "ffmpegCommand": [
+      "ffmpeg",
+      "-v",
+      "error",
+      "-n",
+      "-i",
+      "/private/tmp/cf-quadruped-proof-20260912-05/civet-10s.webm",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "fast",
+      "-crf",
+      "19",
+      "-pix_fmt",
+      "yuv420p",
+      "-c:a",
+      "aac",
+      "-b:a",
+      "128k",
+      "-movflags",
+      "+faststart",
+      "audits/CIVET_2D_PROOF_20260912/captures/civet-10s.mp4"
+    ],
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1536,
+          "height": 740
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "10.223000",
+        "size": "9326138"
+      }
+    }
+  },
+  {
+    "id": "fox",
+    "file": "fox-10s.mp4",
+    "bytes": 9201630,
+    "sha256": "3a4ea1a35a5068eae9d6beba021b869c52068675fdda18f50e6a90dfdeb0fbe8",
+    "sourceWebm": "/private/tmp/cf-quadruped-proof-20260912-05/fox-10s.webm",
+    "sourceSha256": "a4480f29d5d98de90e3cb8d92d65231b7faa6fa9aa012603b8b8201c932f586c",
+    "ffmpegCommand": [
+      "ffmpeg",
+      "-v",
+      "error",
+      "-n",
+      "-i",
+      "/private/tmp/cf-quadruped-proof-20260912-05/fox-10s.webm",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "fast",
+      "-crf",
+      "19",
+      "-pix_fmt",
+      "yuv420p",
+      "-c:a",
+      "aac",
+      "-b:a",
+      "128k",
+      "-movflags",
+      "+faststart",
+      "audits/CIVET_2D_PROOF_20260912/captures/fox-10s.mp4"
+    ],
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1536,
+          "height": 740
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "10.241000",
+        "size": "9201630"
+      }
+    }
+  },
+  {
+    "id": "procedural",
+    "file": "procedural-10s.mp4",
+    "bytes": 6948630,
+    "sha256": "e0b038c6f20f71fd3e28f7fb6013c570fc19273a2007b23383e2bd4c5ecfd258",
+    "sourceWebm": "/private/tmp/cf-quadruped-proof-20260912-05/procedural-10s.webm",
+    "sourceSha256": "60f8a550426076d5f64a6a0e7f8534e6e978ae9a854c90b10926ae85228f52af",
+    "ffmpegCommand": [
+      "ffmpeg",
+      "-v",
+      "error",
+      "-n",
+      "-i",
+      "/private/tmp/cf-quadruped-proof-20260912-05/procedural-10s.webm",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "fast",
+      "-crf",
+      "19",
+      "-pix_fmt",
+      "yuv420p",
+      "-c:a",
+      "aac",
+      "-b:a",
+      "128k",
+      "-movflags",
+      "+faststart",
+      "audits/CIVET_2D_PROOF_20260912/captures/procedural-10s.mp4"
+    ],
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1536,
+          "height": 740
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "10.180000",
+        "size": "6948630"
+      }
+    }
+  }
+]

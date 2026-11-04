@@ -1,0 +1,10 @@
+file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/BODY_SEAMS_C68_20260927/axial-remainder.mjs:3
+ const need=(ok,msg)=>{if(!ok)throw Error('Axial remainder: '+msg);};
+                                    ^
+
+Error: Axial remainder: root remainder identity
+    at need (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/BODY_SEAMS_C68_20260927/axial-remainder.mjs:3:37)
+    at placeAxialRemainder (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/BODY_SEAMS_C68_20260927/axial-remainder.mjs:7:2)
+    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/FISH_FOLD_C80_20260927/compile.mjs:27:36
+
+Node.js v26.10.0

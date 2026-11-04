@@ -1,0 +1,249 @@
+{
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/01-cold-water-fish/fit",
+  "sourceRecordSha256": "85975b75125f891c4d41404c35b3bc9978025149ff5bf128058c5bde86052bf4",
+  "sourceLabelsSha256": "8997fb9148f782cd916c7f0ba9b6a2d6c5032a9e1f69e8146528ff18944b63fd",
+  "newLabelsSha256": "b20ac79486e6232622e66508c055337b4d15d14677bdba73882768ca154cdab9",
+  "newDecodedLabelsSha256": "97e334d2499c0ccd3ce41fabcc1cbe112e8bd0d776f0a06c4a2e95e5477726f6",
+  "sourceMasterSha256": "f390eeec34399bd928515352b1aad708a693518643bbccc20178ffeded074997",
+  "helperSha256": "a73140ee3f90e5a26b4f23acb6dcd7b0b973020105b2b5fc83340113609315ad",
+  "firstAxisHelperSha256": "fabef6f0d2d583abdbddd3d29792369aa61ffc0c739196992d0a8b8094e52d11",
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "spine5",
+    "tailOwner": 6,
+    "stalkOwner": 7,
+    "sharedEdges": 69
+  },
+  "tailIdentityHelperSha256": "27b63227ed5f3fdb8079f74b54ccefc0335432f8b1c12bf483a07eec3ef0b529",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "mode": "tail-axial",
+    "moved": 8825,
+    "phases": [
+      {
+        "phase": "tail",
+        "schema": "cf.remainder-gap-labels/v1",
+        "tail": 6,
+        "stalk": 7,
+        "remainder": 13,
+        "maxDistance": 86,
+        "components": [
+          73,
+          40,
+          3,
+          2,
+          2,
+          1,
+          1
+        ],
+        "changedPixels": 156,
+        "requestedRetained": 156,
+        "otherOwnersChanged": 0,
+        "unowned": 0,
+        "sourceRgbaChanges": 0,
+        "contourProjection": false
+      },
+      {
+        "phase": "axial",
+        "moved": 8669,
+        "protectedOwners": 1556599,
+        "counts": {
+          "7": 2753,
+          "8": 1185,
+          "9": 1050,
+          "10": 268,
+          "11": 1616,
+          "12": 1797
+        },
+        "anchor": [
+          892,
+          626
+        ],
+        "rootAnchorRadiusPx": 8,
+        "originalRgbaChanged": false,
+        "nonRemainderChanges": 0,
+        "axis": [
+          [
+            0.7118819776714513,
+            0.4993620414673047
+          ],
+          [
+            0.6882775119617225,
+            0.49059011164274324
+          ],
+          [
+            0.6249601275917066,
+            0.49377990430622015
+          ],
+          [
+            0.5422647527910686,
+            0.47974481658692186
+          ],
+          [
+            0.41874003189792663,
+            0.4641945773524721
+          ],
+          [
+            0.3003987240829346,
+            0.47990430622009567
+          ],
+          [
+            0.22185007974481658,
+            0.4933014354066986
+          ]
+        ],
+        "scope": "Diagnostic placement, not anatomy or visual admission"
+      }
+    ],
+    "originalPartsDifferentChannels": 0,
+    "keyedRgbaSha256": "58ef0c77e18c87b59ca1725c997f55186f72468e7dc9dfedc6ab7a969015bc09",
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false
+  },
+  "intake": {
+    "id": "01-cold-water-fish",
+    "parts": 13,
+    "atlasSize": {
+      "width": 2003,
+      "height": 498
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "71d3eac73d18359dfe3bd3dc2c7e4835952fdf44642179b5c38b8fd5d2abb67d",
+    "sourceVertices": 1102,
+    "vertices": 1165,
+    "sharedSupports": 416,
+    "pins": 161,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 11,
+    "excludedOverlaps": 9,
+    "observedExcludedBoundaries": 9,
+    "weldedExcludedBoundaries": 7,
+    "independentExcludedBoundaries": 2,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "dorsal",
+        "spine2"
+      ],
+      [
+        "dorsal",
+        "spine3"
+      ],
+      [
+        "far-pectoral",
+        "spine0"
+      ],
+      [
+        "far-pectoral",
+        "spine1"
+      ],
+      [
+        "near-pectoral",
+        "spine0"
+      ],
+      [
+        "near-pectoral",
+        "spine1"
+      ],
+      [
+        "near-pectoral",
+        "spine2"
+      ]
+    ],
+    "sourceCoordinateChanges": 0,
+    "fixedCandidateRecipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar",
+    "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+    "virtualOwnerSha256": "565282bd692f541478bbeefb0e6656eda820de54e90a4ff78fe0f4e2c3daabfe"
+  },
+  "joins": [
+    {
+      "name": "body--far-pectoral",
+      "sourceEdges": 13
+    },
+    {
+      "name": "body--head",
+      "sourceEdges": 363
+    },
+    {
+      "name": "body--spine0",
+      "sourceEdges": 218
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 160
+    },
+    {
+      "name": "spine0--spine1",
+      "sourceEdges": 316
+    },
+    {
+      "name": "spine1--dorsal",
+      "sourceEdges": 23
+    },
+    {
+      "name": "spine1--spine2",
+      "sourceEdges": 324
+    },
+    {
+      "name": "spine2--spine3",
+      "sourceEdges": 258
+    },
+    {
+      "name": "spine3--spine4",
+      "sourceEdges": 357
+    },
+    {
+      "name": "spine4--spine5",
+      "sourceEdges": 188
+    },
+    {
+      "name": "spine5--caudal",
+      "sourceEdges": 214
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body|caudal",
+      "sourceEdges": 56
+    },
+    {
+      "name": "dorsal|spine2",
+      "sourceEdges": 189
+    },
+    {
+      "name": "dorsal|spine3",
+      "sourceEdges": 33
+    },
+    {
+      "name": "far-pectoral|head",
+      "sourceEdges": 15
+    },
+    {
+      "name": "far-pectoral|spine0",
+      "sourceEdges": 126
+    },
+    {
+      "name": "far-pectoral|spine1",
+      "sourceEdges": 95
+    },
+    {
+      "name": "near-pectoral|spine0",
+      "sourceEdges": 232
+    },
+    {
+      "name": "near-pectoral|spine1",
+      "sourceEdges": 57
+    },
+    {
+      "name": "near-pectoral|spine2",
+      "sourceEdges": 2
+    }
+  ]
+}

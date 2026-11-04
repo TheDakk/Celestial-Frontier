@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "positive": "Exact pinned Gar source admitted; portability changes only fixture paths",
+  "negativeControls": [
+    {
+      "name": "wrong subject",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "wrong family",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "refused author",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "unresolved inventory",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "unresolved provenance",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "red static",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "red action behind green summary",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "red presentation",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "missing pattern",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "stale pattern",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "wrong master",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "wrong subject bytes",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "wrong root",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "stale measured hash",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "missing binding pin",
+      "status": "REFUSED_EXPECTED"
+    },
+    {
+      "name": "binding substituted",
+      "status": "REFUSED_EXPECTED"
+    }
+  ]
+}

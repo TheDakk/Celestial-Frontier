@@ -1,0 +1,74 @@
+{
+  "sourceFit": "audits/FISH_FOLD_C80_20260927/inputs/carp",
+  "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+  "virtualOwnerSha256": "565282bd692f541478bbeefb0e6656eda820de54e90a4ff78fe0f4e2c3daabfe",
+  "change": "Far-pectoral flexible collar five topology rings; all other collars three, root fixed and all motion/runtime limits unchanged",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "pectoralNear",
+      "pectoralFar",
+      "jaw",
+      "head",
+      "dorsal",
+      "caudal",
+      "spine0",
+      "spine1",
+      "spine2",
+      "spine3",
+      "spine4",
+      "spine5"
+    ],
+    "contactEndpoints": [],
+    "paintBoundaryPairs": [
+      [
+        "near-pectoral",
+        "body-0"
+      ],
+      [
+        "near-pectoral",
+        "body-1"
+      ],
+      [
+        "near-pectoral",
+        "body-2"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "3eabdabc327eaa5fbde7f9ce250198a411c1cd4431a668e5842b49458b6288a4",
+    "sourceVertices": 2257,
+    "vertices": 2540,
+    "sharedSupports": 705,
+    "pins": 1084,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 11,
+    "excludedOverlaps": 15,
+    "observedExcludedBoundaries": 15,
+    "weldedExcludedBoundaries": 3,
+    "independentExcludedBoundaries": 12,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "near-pectoral",
+        "body-0"
+      ],
+      [
+        "near-pectoral",
+        "body-1"
+      ],
+      [
+        "near-pectoral",
+        "body-2"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "recordUnchanged": true,
+  "labelsUnchanged": true,
+  "atlasUnchanged": true
+}

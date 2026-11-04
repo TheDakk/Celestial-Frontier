@@ -1,0 +1,30 @@
+[
+  {
+    "id": "01-cold-water-fish",
+    "name": "Cold-Water Fish",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/01-cold-water-fish",
+    "master": "audits/G2_C98_20260927/01-cold-water-fish/master.png"
+  },
+  {
+    "id": "04-sunfish",
+    "name": "Sunfish",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/04-sunfish",
+    "master": "audits/G2_C98_20260927/04-sunfish/master.png"
+  },
+  {
+    "id": "10-snailfish",
+    "name": "Snailfish",
+    "family": "fish",
+    "packet": "audits/G2_C98_20260927/10-snailfish",
+    "master": "audits/G2_C98_20260927/10-snailfish/master.png"
+  },
+  {
+    "id": "13-harpy-eagle",
+    "name": "Harpy Eagle",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/13-harpy-eagle",
+    "master": "audits/G2_C98_20260927/13-harpy-eagle/master.png"
+  }
+]

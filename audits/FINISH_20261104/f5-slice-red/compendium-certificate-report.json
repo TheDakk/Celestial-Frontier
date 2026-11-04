@@ -1,0 +1,71 @@
+{
+  "schema": "cf-v2-compendium-certificate-gate/v1",
+  "runId": "20261104185422774-compendium-certificate",
+  "status": "pass",
+  "findings": [],
+  "source": {
+    "commit": "731d25db0969e49e6bd0fef717a780201e07eb3a",
+    "state": "committed",
+    "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "build": {
+    "schema": "cf-v2-scene-memory-build/v1",
+    "sha256": "96aa762605fc4446f142e9e646f729cc6bbfec429c2c04b4a2ff50e36c350378",
+    "fileCount": 5591,
+    "sourceSha256": "d3afc8b92f2ff15631158b63c659070d6178ff12f002c363cdf33d80f839edfc"
+  },
+  "epochDirectory": "audits/C594_I5_EPOCH_20261104/epoch",
+  "certificate": {
+    "ok": true,
+    "errors": [],
+    "epoch": "i5-v2-11255f54b070",
+    "source": "11255f54b070cdf347946ebed731fe3e72e29685"
+  },
+  "measurement": {
+    "schema": "cf-v2-compendium-measurement-authority/v1",
+    "sha256": "e45de44a283f6a1abc2957af1130405eadcf5595c6304a72dd25051c673b004a",
+    "inputs": {
+      "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+      "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+      "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+      "budgetSchema": "c57ed2f9b1f20e3333c9a5869c337576dcf6f634c7bd3dbc8b0564eda7710e21",
+      "outcomeContract": "1ff537505dc674d776432d93deba2b78a085ed629434eea4a0b25074c8ef7871",
+      "collector": "fa0a4c8eeaa5d5cf9d2c754a0d10c7607357b0a45ae4a91eb631fa428415b850",
+      "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+      "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+      "workspaceLock": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
+      "package": "c55abed7f6669694d53e2e756e6f743ecf9a88228eb8a1702d19e9ebc732efc0",
+      "packageLock": "744f7c5079d0892fee85d6d2af20c343955ff0d47bda9cce8368d9babd6d1402",
+      "appPackage": "282354469f5a4b5bfac27bd33b0d6d1605ff15c3309c09f0b3d25a794cbb1513",
+      "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+      "speciesArtBuildGraph": "e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66",
+      "outcomeInventory": "bd4f8a9ef37538b09582c316837dae05b1bc682cf6cb5f6df0fee4a2621929b0"
+    }
+  },
+  "producer": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "8ffb4d7dd0c279fb639a695866c6486f57d75fba61924dab922929cd636e66c3",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "5fc681a2739a764cee952c2ee04a7e5c9487c5e6f758112f27f8e5e3478588ef"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-DCRwX2sd.js",
+        "sha256": "fb89b5159f653389853a1c13c778743af9552b07966b91de4fdac0afe9cde95b"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-2Guy9p5x.js",
+        "sha256": "05c47be18b36049cf024fe65a50f82b5aa2c99f699bdfd6dc5043a7cb50a4c7c"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-2Guy9p5x.js",
+        "sha256": "05c47be18b36049cf024fe65a50f82b5aa2c99f699bdfd6dc5043a7cb50a4c7c"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "c4afb966b0e8262730701958030044005872595832f90c009e60e6ae3c71a165"
+      }
+    }
+  }
+}
