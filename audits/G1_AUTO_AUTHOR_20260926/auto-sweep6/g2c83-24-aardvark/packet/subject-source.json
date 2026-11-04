@@ -1,0 +1,64 @@
+{
+  "name": "Aardvark",
+  "family": "quadruped",
+  "species": {
+    "name": "Aardvark",
+    "aspect": 2,
+    "headFrac": 0.3,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "long tubular pig-like snout",
+      "tall rabbit-like ears",
+      "arched back and thick tapering kangaroo tail"
+    ]
+  },
+  "genome": {
+    "seed": 3583776530,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 3,
+    "body": 9,
+    "loco": 2,
+    "trait": 1,
+    "size": 0,
+    "diet": 2,
+    "head": 0,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 5,
+    "eyes": 1,
+    "behavior": 5,
+    "habitat": 11,
+    "detail": 0,
+    "accent": 15,
+    "temper": 9,
+    "sense": 4,
+    "repro": 7,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Aardvark"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Aardvark\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3583776530\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "index": 205,
+  "profile": {
+    "id": "aardvark",
+    "names": [
+      "Aardvark"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw"
+    ],
+    "notes": ""
+  }
+}

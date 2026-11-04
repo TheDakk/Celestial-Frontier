@@ -1,0 +1,89 @@
+{
+  "schema": "cf.reviewed-body-paint/v1",
+  "name": "Aardvark",
+  "masterSha256": "0e3dddd3c82c550e7c68081f3287c0d2b58bae3aab23ec581b443a9bb0ca2050",
+  "subjectSha256": "d0bc07be35d69e7846ba2992173be920368c1de2748ebc6d44dd2c0000e4141a",
+  "reviewer": "Codex",
+  "method": "Full-original visual inspection",
+  "observation": "Observed strongly arched back between rump and shoulder. Long ears, tubular head and thick tapering tail retain their existing distinct owners.",
+  "scope": "body-surface-only-no-inventory-exemption",
+  "regions": [
+    {
+      "id": "reviewed-body-torso",
+      "kind": "torso",
+      "joint": "spine",
+      "canonicalFeature": "arched back and thick tapering kangaroo tail",
+      "polygonPx": [
+        [
+          344,
+          589
+        ],
+        [
+          388,
+          517
+        ],
+        [
+          458,
+          456
+        ],
+        [
+          534,
+          410
+        ],
+        [
+          614,
+          394
+        ],
+        [
+          682,
+          410
+        ],
+        [
+          735,
+          447
+        ],
+        [
+          787,
+          498
+        ],
+        [
+          827,
+          521
+        ],
+        [
+          861,
+          543
+        ],
+        [
+          865,
+          596
+        ],
+        [
+          812,
+          644
+        ],
+        [
+          727,
+          669
+        ],
+        [
+          650,
+          675
+        ],
+        [
+          550,
+          660
+        ],
+        [
+          465,
+          653
+        ],
+        [
+          382,
+          632
+        ]
+      ]
+    }
+  ],
+  "regionsSha256": "6d5dfe6b8608d2d5b45a52df0defbb8372b2e6fe8317b0374fb6fb517b9e1d10"
+}
