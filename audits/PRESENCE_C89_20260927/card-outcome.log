@@ -1,0 +1,8 @@
+{
+  beforeTailJoints: [ 'tail0', 'tail1', 'tail2', 'tail3' ],
+  afterTailJoints: [],
+  weapons: [ 'bite', 'claw' ],
+  retainedBodyPartsExact: true,
+  exhaustiveLibraryStillHasTailClip: true,
+  scope: 'Actual BodyCard: presence repairs false geometry. Tail diagnostic clip is not a claim that the game selects a tail weapon.'
+}

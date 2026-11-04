@@ -1,0 +1,58 @@
+✔ exact reviewed Hyrax removes only the optional tail inventory (2.937708ms)
+✔ refuses different master (0.704084ms)
+✔ refuses different subject (0.580708ms)
+✔ refuses different request (0.585833ms)
+✔ refuses species mismatch (0.847125ms)
+✔ refuses missing life stage (0.826166ms)
+✔ refuses different pose (0.819917ms)
+✔ refuses unreviewed (0.880542ms)
+✖ refuses invented evidence (1.308167ms)
+✔ refuses mandatory leg absence (0.892583ms)
+✔ refuses duplicate declaration (0.821ms)
+✖ refuses reference-only absence on a tailed species (1.387292ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 10
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 134.755833
+
+✖ failing tests:
+
+test at port/v2/tools/painted-creature/reviewed-presence.test.mjs:35:3
+✖ refuses invented evidence (1.308167ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/reviewed-presence.test.mjs:35:72)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /canonical tailless evidence/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at port/v2/tools/painted-creature/reviewed-presence.test.mjs:35:3
+✖ refuses reference-only absence on a tailed species (1.387292ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/reviewed-presence.test.mjs:35:72)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /canonical tailless evidence/,
+    operator: 'throws',
+    diff: 'simple'
+  }

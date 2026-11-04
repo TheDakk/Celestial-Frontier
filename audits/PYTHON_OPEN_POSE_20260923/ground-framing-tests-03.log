@@ -1,0 +1,31 @@
+(node:86602) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all published Float32 meshes contribute extrema, including a remote seam vertex (0.855917ms)
+✔ invalid geometry cannot yield passing bounds: empty inventory (0.146667ms)
+✔ invalid geometry cannot yield passing bounds: wrong numeric type (0.039333ms)
+✔ invalid geometry cannot yield passing bounds: odd coordinate count (0.037292ms)
+✔ invalid geometry cannot yield passing bounds: NaN (0.044292ms)
+✔ invalid geometry cannot yield passing bounds: infinity (0.047167ms)
+✔ invalid geometry cannot yield passing bounds: zero height (0.037709ms)
+✔ invalid geometry cannot yield passing bounds: duplicate mesh id (0.04075ms)
+✔ the full sweep expands from actual extrema; invalid samples are not skipped (0.1345ms)
+✔ a refused or unchanged pose cannot contribute its stale mesh as a measured sample (0.110875ms)
+✔ off-centre painted bounds use their actual centre and foot, not half the cutout (0.309041ms)
+✔ water and air cap only oversized scale; ground and already-small mass scale stay unchanged (0.047ms)
+✔ full swept geometry, rather than rest height, determines the medium scale (0.085ms)
+✔ the existing source-owned habitat gate still refuses an oversized organism (25.687375ms)
+✔ holder facing, root dynamic scale and camera shake all enter the current frame receipt (0.157458ms)
+✔ ground skips medium-band height only and cannot hide an offscreen body (0.057125ms)
+✔ frame assessment has no epsilon and rejects malformed or collapsed transforms (0.28475ms)
+✔ ground framing closes the retained Python bottom breach without changing its foot or gate (0.194709ms)
+✔ ground fit accounts for upward motion, off-centre foot and both camera extrema (0.100375ms)
+✔ ground framing refuses unavailable or malformed placement and camera evidence (0.073416ms)
+✔ shared ground framing preserves equal and unequal source mass ratios across turn roles (0.125666ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.640625

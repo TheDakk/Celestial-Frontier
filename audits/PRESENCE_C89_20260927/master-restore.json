@@ -1,0 +1,9 @@
+{
+  "initialCompilerRefusal": "ENOENT: original automatic packet master and fit were ignored/not present locally; no new fit was produced",
+  "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/24-hyrax/packet/master.png",
+  "canonicalMaster": "audits/G2_C87_20260927/24-hyrax/master.png",
+  "masterSha256": "214a7761aa7d238e2b17e2f80093b2bc0eb3910661a98944ec714c6cc827274d",
+  "readOnlyOtherLaneRecord": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/24-hyrax/fit/record.json",
+  "readOnlyOtherLaneSource": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/24-hyrax/packet/master.png",
+  "byteIdentical": true
+}
