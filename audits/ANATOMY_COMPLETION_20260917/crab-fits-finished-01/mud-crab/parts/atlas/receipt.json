@@ -1,0 +1,135 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "mud-crab",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "64f14ea29abb8799c10a0e507741bb68fb9991af8e61738e170c754fda586cb5",
+    "pngSha256": "4fcb59de59925b01803bbfe8aab069be80bea140552ce85b22adc4077680e2d5"
+  },
+  "parts": [
+    {
+      "name": "carapace.png",
+      "sha256": "218e043e2f970586b78ea0fee97a22967abceba46baddb18a5de2f4c3db802d1"
+    },
+    {
+      "name": "claw-far-dactyl.png",
+      "sha256": "c9f3d896bddf0d28ed832f0fe716c45f50f30e85f93fd7c9ab48c047ae00d338"
+    },
+    {
+      "name": "claw-far-palm.png",
+      "sha256": "846156ea72ac49f25253d0d6624d0364d6efaed6ef8645e9d4aa02c1d933c7fb"
+    },
+    {
+      "name": "claw-far-upper.png",
+      "sha256": "50b57b9b6876bbf35094983dfa35bb59cacd02155d689629fdde78982b7e71b5"
+    },
+    {
+      "name": "claw-near-dactyl.png",
+      "sha256": "5ceafcd667ac7e5bc511fe2466f025212a35245493e3a16293503b993b7e8d08"
+    },
+    {
+      "name": "claw-near-palm.png",
+      "sha256": "7860a5b179be8790ca122735e993637a7719195bfd8281cdf7afaf69c7d12c81"
+    },
+    {
+      "name": "claw-near-upper.png",
+      "sha256": "947296ebce325ec44116894c55d633d5980c4e8a639bfb8e5e9b444eeefe952b"
+    },
+    {
+      "name": "eye-far.png",
+      "sha256": "9c4e302011ecece54bd0aaeec8d9873f5d9087f591c3c6cdbc0aa33fc5a3c27c"
+    },
+    {
+      "name": "eye-near.png",
+      "sha256": "35c7838967a674ff66f0ae9628561b925f9c881a54865ca8e320eb24e6f8ff05"
+    },
+    {
+      "name": "leg0far-lower.png",
+      "sha256": "4beb85aaf34b5a4d3ca79607a44350fe22164cdbbdc75416e8d3338fd04bbe30"
+    },
+    {
+      "name": "leg0far-upper.png",
+      "sha256": "2aa8468b74dc0d1caa22f43bbf1865c68a2e3c87ad988ceafdeefaece41e5ce5"
+    },
+    {
+      "name": "leg0near-lower.png",
+      "sha256": "5614fb048773f23bbf62785d2fa065a22c8517c739c05838b16457d32b4f9542"
+    },
+    {
+      "name": "leg0near-upper.png",
+      "sha256": "0c75eb744561f5e8fb2a7daacea8aea8214487d5d92bf62c084d5c1471c5d03e"
+    },
+    {
+      "name": "leg1far-lower.png",
+      "sha256": "85df838bb0872698d42a4ee6a7be52702ec2c14704c2d7d217c7d2e36af106b2"
+    },
+    {
+      "name": "leg1far-upper.png",
+      "sha256": "02d2fc1e401f076e60e6a8fba5f3aed9a14922c5a510b15f03ce4294a10050e1"
+    },
+    {
+      "name": "leg1near-lower.png",
+      "sha256": "8ccc29346b618e4b892919064dd7027ae026fff02c3131a93b0cdda69d355654"
+    },
+    {
+      "name": "leg1near-upper.png",
+      "sha256": "2f477d153123af2cd795e6b1b90ccdefad90a9a6c1dca85e5221ab9b779e2b73"
+    },
+    {
+      "name": "leg2far-lower.png",
+      "sha256": "0c72fb935811720fca560b2b702251dc26c8505b71aaa356efc21589dd4c007d"
+    },
+    {
+      "name": "leg2far-upper.png",
+      "sha256": "4af346dcae4e2883f0a34184775238e37b01814fa39243b1125c75e16cb8d8bd"
+    },
+    {
+      "name": "leg2near-lower.png",
+      "sha256": "b82ca986ba7171f1d6877d87ba4445ad6a72bcba05812a4894100fb5dbe218be"
+    },
+    {
+      "name": "leg2near-upper.png",
+      "sha256": "f8a0b15826a440a44903a6beef99a27726c1a14b886a6df3c48f4b29f43676ec"
+    },
+    {
+      "name": "leg3far-lower.png",
+      "sha256": "106cc83250ffa9197c540ac56ec05a45bd3f998850493ab0c11068f6a9485ab0"
+    },
+    {
+      "name": "leg3far-upper.png",
+      "sha256": "b96ea1932b088e83007927fcc6f248636633554ffc2827b08b0280d4a8d711f8"
+    },
+    {
+      "name": "leg3near-lower.png",
+      "sha256": "23b0d57a8fb7e99cac92d59697333a67553ad407927d2d02762c94a926ff0f59"
+    },
+    {
+      "name": "leg3near-upper.png",
+      "sha256": "61e5ffc0a1d41a1952d745840a8a5286779d9c74e4bafd8e7a79852caebdd036"
+    },
+    {
+      "name": "shadow.png",
+      "sha256": "b249a9eb1d108c1b5eb179c1f934015085ed7aa31adeeac0cbc15efe3af9f098"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

@@ -1,0 +1,100 @@
+{
+  "intake": {
+    "id": "mud-crab",
+    "parts": 26,
+    "atlasSize": {
+      "width": 831,
+      "height": 249
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-lower",
+        "vertex": 37,
+        "distancePx": 2.16480946043756,
+        "supports": [
+          325
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-lower",
+        "vertex": 51,
+        "distancePx": 2.1181123671797764,
+        "supports": [
+          783
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-lower",
+        "vertex": 39,
+        "distancePx": 1.6208639671483318,
+        "supports": [
+          405
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-lower",
+        "vertex": 61,
+        "distancePx": 1.620863967148347,
+        "supports": [
+          872
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-lower",
+        "vertex": 69,
+        "distancePx": 1.1454256850621345,
+        "supports": [
+          533
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-lower",
+        "vertex": 74,
+        "distancePx": 1.8088670487352285,
+        "supports": [
+          983
+        ]
+      },
+      {
+        "joint": "leg3FarFoot",
+        "part": "leg3far-lower",
+        "vertex": 61,
+        "distancePx": 0.7076722405181642,
+        "supports": [
+          655
+        ]
+      },
+      {
+        "joint": "leg3NearFoot",
+        "part": "leg3near-lower",
+        "vertex": 79,
+        "distancePx": 1.5939887076136903,
+        "supports": [
+          1115
+        ]
+      }
+    ],
+    "sourceBindingHash": "e4eed197ab7ddb7d65e077531bf61fb2bcacae2eb70b6d3e0898e4a5c7fddb5a",
+    "sourceVertices": 1585,
+    "vertices": 1759,
+    "sharedSupports": 210,
+    "pins": 783,
+    "independentSurfaceParts": 26,
+    "sourceJoins": 24,
+    "excludedOverlaps": 4,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "nativeAcceptance": false
+}
