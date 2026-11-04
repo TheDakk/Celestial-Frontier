@@ -1,0 +1,571 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+·xx····x···x··············xx··x····················································································
+
+ Test Files  3 failed | 16 passed (19)
+      Tests  7 failed | 108 passed (115)
+   Start at  09:36:30
+   Duration  8.31s (transform 6.67s, setup 0ms, import 12.29s, tests 26.64s, environment 1ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/contact-envelope.test.ts > keeps quadruped-repair-04/lizard-fit-03 hit expressive and inside the unchanged contact guard
+ FAIL  apps/game/src/motion/contact-envelope.test.ts > keeps quadruped-repair-04/lizard-fit-03 tame expressive and inside the unchanged contact guard
+AssertionError: expected undefined to be 'cf.motion.contact-envelope/v1' // Object.is equality
+
+- Expected:
+"cf.motion.contact-envelope/v1"
+
++ Received:
+undefined
+
+ ❯ apps/game/src/motion/contact-envelope.test.ts:17:39
+     15|  const r=read(base+fit,'record.json'),b=read(base+fit,'binding.json'),…
+     16|  const before=buildTimeline(legacy,id,card.identity.seed),after=buildT…
+     17|  expect(after.stanceEnvelope?.schema).toBe('cf.motion.contact-envelope…
+       |                                       ^
+     18|  expect(after.stanceEnvelope!.torsoGain).toBeGreaterThan(0);expect(aft…
+     19|  expect(after.phases).toEqual(before.phases);expect(after.durationMs).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  apps/game/src/motion/grounded-quadruped.test.ts > keeps Salamander approach:gallop inside contact without erasing limb/expression motion
+ FAIL  apps/game/src/motion/grounded-quadruped.test.ts > keeps Salamander cast inside contact without erasing limb/expression motion
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ apps/game/src/motion/grounded-quadruped.test.ts:13:78
+     11|  const r=read('26-salamander/fit-05','record.json'),b=read('26-salaman…
+     12|  const before=buildActionTimeline(card,action,card.identity.seed),afte…
+     13|  expect(after.notes.some(n=>n.startsWith('grounded-quadruped:torso-gai…
+       |                                                                              ^
+     14|  expect(after.phases).toEqual(before.phases);expect(after.durationMs).…
+     15|  for(const[j,keys]of Object.entries(before.tracks))if(!['root','pelvis…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  apps/game/src/motion/grounded-quadruped.test.ts > preserves passing quadruped-repair-04/lizard-fit-03 gallop/cast byte-for-byte
+AssertionError: expected { kind: 'motion-timeline', …(19) } to deeply equal { kind: 'motion-timeline', …(19) }
+
+- Expected
++ Received
+
+@@ -6,11 +6,11 @@
+      "squash": 0,
+      "stretch": 0,
+    },
+    "durationMs": 740,
+    "family": "approach",
+-   "hash": "dc1005c0",
++   "hash": "ad8a11d1",
+    "hitstopMs": 0,
+    "kind": "motion-timeline",
+    "limitsRad": {
+      "chest": {
+        "max": 0.3490658503988659,
+@@ -127,10 +127,11 @@
+    "notes": [
+      "earth species \"Wall Lizard\" mass uncalibrated (medium); gait from physical habitat/anatomy",
+      "physical realm: exact-name Earth fauna presentation profile",
+      "materials: record surface \"plain warm stone-brown painted fine reptile scales\" wins over genome skin \"furred\" (observer disagreement)",
+      "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): foreFar 0.6%",
++     "sprawler:low-trunk-v1",
+    ],
+    "phases": [
+      [
+        "stride",
+        420,
+@@ -185,29 +186,29 @@
+        },
+        {
+          "ease": "ease-in",
+          "ms": 84,
+          "t": 0.2,
+-         "value": 0.02,
++         "value": 0.0008,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 189,
+          "t": 0.45,
+-         "value": -0.08,
++         "value": -0.0032,
+        },
+        {
+          "ease": "ease-in",
+          "ms": 294,
+          "t": 0.7,
+-         "value": 0.02,
++         "value": 0.0008,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 399,
+          "t": 0.95,
+-         "value": -0.08,
++         "value": -0.0032,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 420,
+          "t": 1,
+@@ -229,47 +230,47 @@
+          },
+          {
+            "ease": "ease-in",
+            "ms": 134,
+            "t": 0.319047619047619,
+-           "value": 0.21991148575128555,
++           "value": 0.02638937829015426,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 164,
+            "t": 0.3904761904761905,
+-           "value": 0.20943951023931956,
++           "value": 0.025132741228718343,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 239,
+            "t": 0.569047619047619,
+-           "value": -0.25656340004316647,
++           "value": -0.030787608005179976,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 269,
+            "t": 0.6404761904761904,
+-           "value": -0.24434609527920614,
++           "value": -0.029321531433504737,
+          },
+          {
+            "ease": "ease-in",
+            "ms": 344,
+            "t": 0.819047619047619,
+-           "value": 0.21991148575128555,
++           "value": 0.02638937829015426,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 374,
+            "t": 0.8904761904761904,
+-           "value": 0.20943951023931956,
++           "value": 0.025132741228718343,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 449,
+            "t": 1.069047619047619,
+-           "value": -0.25656340004316647,
++           "value": -0.030787608005179976,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 470,
+            "t": 1.119047619047619,
+@@ -277,11 +278,11 @@
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 479,
+            "t": 1.1404761904761904,
+-           "value": -0.24434609527920614,
++           "value": -0.029321531433504737,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 500,
+            "t": 1,
+@@ -312,47 +313,47 @@
+          },
+          {
+            "ease": "ease-in",
+            "ms": 184,
+            "t": 0.4380952380952381,
+-           "value": 0.1310044136546944,
++           "value": 0.015720529638563324,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 244,
+            "t": 0.580952380952381,
+-           "value": 0.12566370614359174,
++           "value": 0.015079644737231005,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 289,
+            "t": 0.6880952380952381,
+-           "value": -0.15283848259714344,
++           "value": -0.01834061791165721,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 349,
+            "t": 0.830952380952381,
+-           "value": -0.1466076571675237,
++           "value": -0.017592918860102842,
+          },
+          {
+            "ease": "ease-in",
+            "ms": 394,
+            "t": 0.9380952380952381,
+-           "value": 0.1310044136546944,
++           "value": 0.015720529638563324,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 454,
+            "t": 1.0809523809523809,
+-           "value": 0.12566370614359174,
++           "value": 0.015079644737231005,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 499,
+            "t": 1.188095238095238,
+-           "value": -0.15283848259714344,
++           "value": -0.01834061791165721,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 520,
+            "t": 1.2380952380952381,
+@@ -360,11 +361,11 @@
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 559,
+            "t": 1.3309523809523809,
+-           "value": -0.1466076571675237,
++           "value": -0.017592918860102842,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 580,
+            "t": 1,
+@@ -395,47 +396,47 @@
+          },
+          {
+            "ease": "ease-in",
+            "ms": 234,
+            "t": 0.5571428571428572,
+-           "value": 0.07803716151517046,
++           "value": 0.009364459381820452,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 324,
+            "t": 0.7714285714285715,
+-           "value": 0.07539822368615504,
++           "value": 0.009047786842338602,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 339,
+            "t": 0.8071428571428572,
+-           "value": -0.0910433551010322,
++           "value": -0.010925202612123864,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 429,
+            "t": 1.0214285714285714,
+-           "value": -0.08796459430051422,
++           "value": -0.010555751316061705,
+          },
+          {
+            "ease": "ease-in",
+            "ms": 444,
+            "t": 1.0571428571428572,
+-           "value": 0.07803716151517046,
++           "value": 0.009364459381820452,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 534,
+            "t": 1.2714285714285714,
+-           "value": 0.07539822368615504,
++           "value": 0.009047786842338602,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 549,
+            "t": 1.3071428571428572,
+-           "value": -0.0910433551010322,
++           "value": -0.010925202612123864,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 570,
+            "t": 1.3571428571428572,
+@@ -443,11 +444,11 @@
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 639,
+            "t": 1.5214285714285714,
+-           "value": -0.08796459430051422,
++           "value": -0.010555751316061705,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 660,
+            "t": 1,
+@@ -478,47 +479,47 @@
+          },
+          {
+            "ease": "ease-in",
+            "ms": 284,
+            "t": 0.6761904761904762,
+-           "value": 0.04648300490251458,
++           "value": 0.005577960588301748,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 389,
+            "t": 0.9261904761904762,
+-           "value": -0.05423017238626702,
++           "value": -0.006507620686352041,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 404,
+            "t": 0.9619047619047619,
+-           "value": 0.04523893421169302,
++           "value": 0.005428672105403161,
+          },
+          {
+            "ease": "ease-in",
+            "ms": 494,
+            "t": 1.1761904761904762,
+-           "value": 0.04648300490251458,
++           "value": 0.005577960588301748,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 509,
+            "t": 1.2119047619047618,
+-           "value": -0.052778756580308527,
++           "value": -0.0063334507896370225,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 599,
+            "t": 1.4261904761904762,
+-           "value": -0.05423017238626702,
++           "value": -0.006507620686352041,
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 614,
+            "t": 1.4619047619047618,
+-           "value": 0.04523893421169302,
++           "value": 0.005428672105403161,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 620,
+            "t": 1.4761904761904763,
+@@ -526,11 +527,11 @@
+          },
+          {
+            "ease": "sine-in-out",
+            "ms": 719,
+            "t": 1.7119047619047618,
+-           "value": -0.052778756580308527,
++           "value": -0.0063334507896370225,
+          },
+          {
+            "ease": "ease-out",
+            "ms": 740,
+            "t": 1,
+@@ -560,29 +561,29 @@
+        },
+        {
+          "ease": "ease-in",
+          "ms": 84,
+          "t": 0.2,
+-         "value": 0.10471975511965978,
++         "value": 0.008377580409572781,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 189,
+          "t": 0.45,
+-         "value": -0.10471975511965978,
++         "value": -0.008377580409572781,
+        },
+        {
+          "ease": "ease-in",
+          "ms": 294,
+          "t": 0.7,
+-         "value": 0.10471975511965978,
++         "value": 0.008377580409572781,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 399,
+          "t": 0.95,
+-         "value": -0.10471975511965978,
++         "value": -0.008377580409572781,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 420,
+          "t": 1,
+@@ -908,11 +909,11 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 189,
+          "t": 0.45,
+-         "value": -0.10471975511965978,
++         "value": -0.020943951023931956,
+        },
+        {
+          "ease": "ease-in",
+          "ms": 294,
+          "t": 0.7,
+@@ -920,11 +921,11 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 399,
+          "t": 0.95,
+-         "value": -0.10471975511965978,
++         "value": -0.020943951023931956,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 420,
+          "t": 1,
+@@ -1282,29 +1283,29 @@
+        },
+        {
+          "ease": "ease-in",
+          "ms": 84,
+          "t": 0.2,
+-         "value": 0.10471975511965978,
++         "value": 0.020943951023931956,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 189,
+          "t": 0.45,
+-         "value": -0.17453292519943295,
++         "value": -0.03490658503988659,
+        },
+        {
+          "ease": "ease-in",
+          "ms": 294,
+          "t": 0.7,
+-         "value": 0.10471975511965978,
++         "value": 0.020943951023931956,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 399,
+          "t": 0.95,
+-         "value": -0.17453292519943295,
++         "value": -0.03490658503988659,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 420,
+          "t": 1,
+@@ -1396,29 +1397,29 @@
+        },
+        {
+          "ease": "ease-in",
+          "ms": 84,
+          "t": 0.2,
+-         "value": 0.17453292519943295,
++         "value": 0.013962634015954637,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 189,
+          "t": 0.45,
+-         "value": -0.20943951023931956,
++         "value": -0.016755160819145562,
+        },
+        {
+          "ease": "ease-in",
+          "ms": 294,
+          "t": 0.7,
+-         "value": 0.17453292519943295,
++         "value": 0.013962634015954637,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 399,
+          "t": 0.95,
+-         "value": -0.20943951023931956,
++         "value": -0.016755160819145562,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 420,
+          "t": 1,
+@@ -1434,29 +1435,29 @@
+        },
+        {
+          "ease": "ease-in",
+          "ms": 84,
+          "t": 0.2,
+-         "value": 0.20943951023931956,
++         "value": 0.025132741228718343,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 189,
+          "t": 0.45,
+-         "value": -0.24434609527920614,
++         "value": -0.029321531433504737,
+        },
+        {
+          "ease": "ease-in",
+          "ms": 294,
+          "t": 0.7,
+-         "value": 0.20943951023931956,
++         "value": 0.025132741228718343,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 399,
+          "t": 0.95,
+-         "value": -0.24434609527920614,
++         "value": -0.029321531433504737,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 420,
+          "t": 1,
+
+ ❯ apps/game/src/motion/grounded-quadruped.test.ts:28:95
+     26| it.each(['25-wild-horse/fit-05','18-ibex/fit-02','quadruped-repair-04/…
+     27|  const r=read(fit,'record.json'),card=compileBodyCard(r,r.genome);
+     28|  for(const id of ['approach:gallop','cast'])expect(buildTimeline(card,…
+       |                                                                                               ^
+     29| });
+     30| it('invalidates the canonical cache after geometry changes and preserv…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  apps/game/src/motion/stance-envelope.test.ts > keeps the actual painted contacts inside unchanged faint limits for 04-wall-lizard/fit-06
+ FAIL  apps/game/src/motion/stance-envelope.test.ts > keeps the actual painted contacts inside unchanged faint limits for 07-marmot/fit-01
+TypeError: Cannot read properties of undefined (reading 'torsoGain')
+ ❯ apps/game/src/motion/stance-envelope.test.ts:12:179
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+

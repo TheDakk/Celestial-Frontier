@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "stormsea-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/stormsea-v2/arena-composed-review.png"
+  ],
+  "findings": [
+    "Full-size 1672×941 composite inspected. Dark submerged cliffs, a visible water ceiling and cold directional water light distinguish this water arena; the horizontal lower fighting band remains continuous.",
+    "Targeted FAR removes the visible fish schools and isolated swimming silhouettes from the refused original. Targeted NEAR removes the tall kelp/side banks that covered the original fighting path. All original paintings are retained.",
+    "The NEAR is noticeably more cyan-green than the MID and produces a repeated, sharp horizontal ridge near the bottom. Small magenta edge flecks remain on side kelp after intake. These remain visual holds rather than accepted terrain.",
+    "This is an underwater interpretation of stormsea; it is not an above-surface rocky coast. Creature water containment, native parallax, effect readability and routing eligibility require independent review."
+  ]
+}

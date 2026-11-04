@@ -1,0 +1,155 @@
+{
+  "schema": "cf.c132-arena-batch-d29/v1",
+  "batch": "A first four plus two existing revalidations",
+  "newFamilies": [
+    "archipelago-v2",
+    "packice-v2",
+    "swamp-v2",
+    "abyssal"
+  ],
+  "existingRevalidated": [
+    "freshwater-lake-v2",
+    "coral"
+  ],
+  "mechanicalCandidateSets": 6,
+  "acceptedSets": 0,
+  "registeredSets": 0,
+  "selectedNewOriginals": 12,
+  "newDistinctGeneratedOriginalsIncludingRefusedAttempts": 16,
+  "newOriginalBytes": 28088364,
+  "nativeSelectedCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "allOriginalsPreserved": true,
+  "upscaled": false,
+  "frozenPromptBlocksVerified": true,
+  "reports": [
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/d29/delivery-review.json",
+      "sha256": "0dc4587e150008a5eaadb740ba3fc34666567afe72bbec9237dd1b9cf15d63a3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/d29/delivery-review.json",
+      "sha256": "dd3ecab09dd3425702c0950631ce4fbffa7bdc9ab7a883b7a3a3e75b12e7f806"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/swamp-v2/d29/delivery-review.json",
+      "sha256": "28ccd5ad4759ad43fbd790bd62af8d61e1ac08f2bc1a22b99e8b565e415ee0b9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/d29/delivery-review.json",
+      "sha256": "5f28e910e56b773ad7b4b888d2493602622318cea4cb20d3d84869dc9766d670"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/d29/delivery-review.json",
+      "sha256": "72dbd9c315661a1f47d895be06742fc88f6e2c8b25b51ace3b6ec46147d6a5ac"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/coral/d29/delivery-review.json",
+      "sha256": "cafd742d17ff798200064a283468612b9bfe64613dfaba79f6510d637c73f245"
+    }
+  ],
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago/arena-far.generation.json",
+      "sha256": "3036ce3e1ce89dfee42263b8f729a9576175c0e9b7c15921d3b492c83b3c0494"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago/arena-near.generation.json",
+      "sha256": "9bf300f5c8831703716b9e756f32f1319ce9395bf2fc768591c90978883f7ce4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago/arena-mid.generation.json",
+      "sha256": "9360767e9909305604bd818ea26c5baa224831af09281e3a7359cd737dbc6209"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-far.generation.json",
+      "sha256": "3036ce3e1ce89dfee42263b8f729a9576175c0e9b7c15921d3b492c83b3c0494"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-near.generation.json",
+      "sha256": "9a6ddddda507d89dc99f9da3df389424f3dd42ebf62db0a63232bb6005fe50cf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-mid.generation.json",
+      "sha256": "9360767e9909305604bd818ea26c5baa224831af09281e3a7359cd737dbc6209"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice/arena-far.generation.json",
+      "sha256": "23e390a8dadb555a84f62fc03225b1a72cad1d1731e13df1a70ce9c7b69eacab"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice/arena-near.generation.json",
+      "sha256": "a7be0065623109098635a147972c175fcdb461312d652d49b1507959ebdb6a37"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice/arena-mid.generation.json",
+      "sha256": "e66e488570c2a018e85cf71913fa276978350242e363501351fb5a4194006a94"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-far.generation.json",
+      "sha256": "23e390a8dadb555a84f62fc03225b1a72cad1d1731e13df1a70ce9c7b69eacab"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-near.generation.json",
+      "sha256": "fdaab4fb0643e3d3727f9db5ed71304a0019dfa8539ad96b82bb46a3281ea66e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/packice-v2/arena-mid.generation.json",
+      "sha256": "e66e488570c2a018e85cf71913fa276978350242e363501351fb5a4194006a94"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/swamp/arena-far.generation.json",
+      "sha256": "c2327b25d620f48c245218a86f7fcf2b30908cd100fcb1ffb992c511a86bf8c1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/swamp/arena-near.generation.json",
+      "sha256": "4ea261cc17163f76dd53c0cc77f52fd0f92045a9fc631d54eee53c43ff84f059"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/swamp/arena-mid.generation.json",
+      "sha256": "eb937480822275d1394fab87fc5e85fa929ec8d29ae5ad712c9c818da5bc0ea5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/swamp-v2/arena-far.generation.json",
+      "sha256": "e59dcaca4de9076c59702055d21502d8df34d27f87efa0a8108d43ac2b1efc1e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/swamp-v2/arena-near.generation.json",
+      "sha256": "d048711120775d4ff8319f0ec01121350b2ea4a3ef21d99a9e6821da77851160"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/swamp-v2/arena-mid.generation.json",
+      "sha256": "eb937480822275d1394fab87fc5e85fa929ec8d29ae5ad712c9c818da5bc0ea5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-far.generation.json",
+      "sha256": "9942dfb7deaf7b0e4ec3870b5ff040f63d98f58ff775584459d5718b120a694f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-near.generation.json",
+      "sha256": "186739316dd4ed64241898ca38b6dd8cf628460b44ac68ed7fce6a0bff59e8b2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/abyssal/arena-mid.generation.json",
+      "sha256": "9ee6221a02a31c713adbd0a02bc27f3fd6566d1eea261a58a85b2b268f9aa232"
+    }
+  ],
+  "helper": {
+    "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+    "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+  },
+  "focusedTests": {
+    "path": "audits/C132_ARENAS_20261001/finalize-one.test.mjs",
+    "sha256": "bf12b3fd474d3cf2e42ae2ba5cd48cd386f1bee5e49dd87c59f51ef10bbf7a72",
+    "result": "4 tests PASS; canvas, false acceptance, painted plate damage, source/prompt/receipt mutation controls"
+  },
+  "freeDiskGiB": 156.02,
+  "heldFailures": [
+    "Archipelago original NEAR1984\u00d7793; preserved",
+    "Packice original NEAR1672\u00d7940; preserved",
+    "Swamp original FAR1672\u00d7940 and NEAR1983\u00d7793; preserved"
+  ],
+  "reviewStatus": "All selected additions remain visual-review HELD. No admission or native battle qualification."
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "crystalsteppe-v2",
+  "biome": "crystalsteppe",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/crystalsteppe-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/crystalsteppe-v2/d29/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.webp",
+      "runtimeSha256": "2551cc258eaa005a5f2fb7871ad853259dae170559c97fb8b238d6769f18bbea",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.png",
+        "sha256": "a6b2fa8e3529b14edc11faff61aa0869f4047977538e026048f81d066a4b588b"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/crystalsteppe-v2/keyed/arena-mid.webp",
+      "runtimeSha256": "d15c2778790ce684e87c1a291d238d2de104bbe38a98129dd8e6381725f0f828",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/keyed/arena-mid.png",
+        "sha256": "d325237a32bd89c7bbb80ed4603246ba22ec5ae2410f0ab1a5bb547a7387c5dd"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/crystalsteppe-v2/keyed/arena-near.webp",
+      "runtimeSha256": "633b15b0428d5074ba4c2b312b535ee800b49ff222f7bd0122fac105538018dc",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/keyed/arena-near.png",
+        "sha256": "f4232612489b3bc9971573e1c0ea1108ec916edc443baa8340b53332503a2d35"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "packice-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/packice-v2/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/packice-v2/arena-far.png",
+    "audits/C132_ARENAS_20261001/packice-v2/arena-mid.png",
+    "audits/C132_ARENAS_20261001/packice-v2/arena-near.png"
+  ],
+  "findings": [
+    "All three originals and full-size composition inspected at native1672\u00d7941. Icy seascape and solid snowy fighting band are identifiable, with clear static stands.",
+    "FAR invents a visible sun disk despite the unbound-star/no-visible-star system card; this is an authoring failure requiring repair.",
+    "NEAR produces a conspicuous lighter horizontal shelf/texture change near the bottom. Repeated ice shelves and layered water boundaries remain visible. No native motion or independent acceptance is claimed."
+  ]
+}

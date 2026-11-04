@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "saltflat",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/saltflat/arena-composed-review.png"
+  ],
+  "findings": [
+    "Native full-size composite inspected at 1672×941. White salt crust and distant dry cliffs read clearly, with a level open fighting path and a quiet low NEAR edge.",
+    "The MID adds a distinct miniature mountain horizon below the FAR horizon. Its scale and sharp edge create a visible doubled landscape band.",
+    "The NEAR produces a separate lower pale strip and dark contour; pink/key-color remnants remain on the lower-right shrub and small cyan/green edge remnants appear near rocks. Detailed crust texture must be checked against moving creature readability.",
+    "No acceptance or game registration is claimed. The composition requires independent full-size, finished-rig, parallax and physical-contact review."
+  ]
+}

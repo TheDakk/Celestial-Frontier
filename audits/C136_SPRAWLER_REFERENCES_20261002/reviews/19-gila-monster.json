@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Gila Monster",
+  "family": "quadruped",
+  "masterSha256": "48095a24652bf04d0bf062053003e07cea9eb410f73d7e100c3d9d80a5de1068",
+  "subjectSha256": "50056b61f2b3da1fccb46ec02f91f8a2145396c5195a7c9b3a4620cd5584ec96",
+  "promptSha256": "66b7f717e1b11ec4353463cb7dd5421618a8771955c5c91e1d50104198e1af3e",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: dense black-and-orange beadlike skin pattern, blunt heavy head, thick short neck, fat banded tail and four clawed feet. Distinct paired orange/black pigment pattern is visible. Far proximal limbs remain body-occluded; exact toe count unconfirmed. Broad margins and continuous tail.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/19-gila-monster/visual-review.json",
+    "sha256": "6cc2cbdd21ddac3e31220724d35ee01d121e9215605a9be4b2e39b74c732f015"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

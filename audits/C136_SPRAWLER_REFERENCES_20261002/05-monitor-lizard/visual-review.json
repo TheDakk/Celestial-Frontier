@@ -1,0 +1,28 @@
+{
+  "name": "Monitor Lizard",
+  "masterSha256": "a3b0609ee1433e396e13f0e3d2ec6a559a827478f720d14c708d4620defae18d",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full original: narrow monitor head, clearly forked protruding tongue, banded long continuous tail, spotted/banded scales and four distinct clawed feet. Body is lightly raised in a reptile stride; far proximal limbs partly overlap the torso. Natural tail is visibly long, but exact longer-than-body ratio and claw counts remain for anatomical review. Broad magenta margins.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 262,
+      "y0": 536,
+      "x1": 988,
+      "y1": 714
+    },
+    "margins": {
+      "left": 262,
+      "right": 265,
+      "top": 536,
+      "bottom": 539
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

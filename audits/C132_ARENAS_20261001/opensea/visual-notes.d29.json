@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "opensea",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/opensea/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/opensea/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/opensea/arena-far.png",
+    "audits/C132_ARENAS_20261001/opensea/arena-mid.png",
+    "audits/C132_ARENAS_20261001/opensea/arena-near.png"
+  ],
+  "findings": [
+    "All selected original paintings, full native-size composition and four-row plate sheet inspected. The selected FAR contains empty blue underwater habitat with distant shelves; MID leaves a wide continuous silt runway, and NEAR leaves the stands clear.",
+    "The first FAR baked fish into the scene and is retained as arena-far-attempt-1 with REJECTED_BAKED_FAUNA. A SUBJECT-only correction produced the selected fish-free FAR. The first NEAR was ultra-wide and is retained as arena-near-attempt-1 with REJECTED_WRONG_ASPECT; a SUBJECT-only canvas correction produced the selected 1672 by 941 NEAR.",
+    "Small magenta/cyan remnants remain around outer kelp silhouettes, and the lower NEAR band changes texture and depth abruptly. Physical underwater battle behavior and player contrast are not established by this static habitat painting."
+  ]
+}

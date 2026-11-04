@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "archipelago-v2",
+  "biome": "archipelago",
+  "recipe": "audits/C132_ARENAS_20261001/archipelago-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/archipelago-v2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/archipelago-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/archipelago-v2/arena-far.png",
+      "runtimeSha256": "9e5931b1eb5e1e6ed75a9d71b82c280a84f4f9e654b5ee6e0663ab8c5882d00d"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/archipelago-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/archipelago-v2/keyed/arena-mid.png",
+      "runtimeSha256": "a93fafd8d2b5c5d396ee1cd5d8010d3e03ef27b70b559b7c9be90896b66a6da5"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/archipelago-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/archipelago-v2/keyed/arena-near.png",
+      "runtimeSha256": "ef8e80c1718b2f258d2975e817fd5463c66928c7d644a55b8bb034f445d7159d"
+    }
+  }
+}

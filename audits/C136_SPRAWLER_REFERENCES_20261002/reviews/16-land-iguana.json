@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Land Iguana",
+  "family": "quadruped",
+  "masterSha256": "b2dd574965c5dec8535760ec0bae208f4ba17952b96f09f7fb4011f8e4726607",
+  "subjectSha256": "60c02d2c74b04ce93defe3a08a1f509a9a13ce0c76aa20462c7a06b2d78098fb",
+  "promptSha256": "3d5d44051722fc0f4aafef66fa050d2a169758dcc9655707707b258521e049d6",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: heavy yellow-orange jowled head, warm mottled scaly trunk, connected spiny nape/back crest, stout clawed legs and thick tapering tail. Four separate feet are visible, although far limb roots remain hidden and forelegs are relatively straight beneath the body. Pose needs reptile-contact review. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/16-land-iguana/visual-review.json",
+    "sha256": "a88095f7caec2680f16dee6e4fd0816934182fc94d336d00b3a693f4837e6dfc"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

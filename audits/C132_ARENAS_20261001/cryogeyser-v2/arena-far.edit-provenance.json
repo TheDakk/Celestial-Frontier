@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c132-arena-targeted-edit/v1",
+  "reason": "Original invents a giant planet and moon despite an explicitly unbound template system card.",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-far.prompt.txt",
+    "sha256": "a48e4819285030f26a4c3b11bcc993dbc73d334b1f70b2891deb74dd9f60d5b8"
+  },
+  "editPrompt": {
+    "path": "audits/C132_ARENAS_20261001/cryogeyser-v2/arena-far.prompt.txt",
+    "sha256": "04366b9116dd1e2cd9973224b80480deb986b840a08a8606e15eae0bb7f456e1"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/cryogeyser/arena-far.png",
+      "sha256": "090d2c8bbeb60fb3b2023ffcc4a4172a1ceec1aac17e09dd010d516306d422d1"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the original arena master; the actual sole image input was the original painting named above."
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a1d8624a-6e58-4447-911f-c12140c7bfc9.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "The edited generator output is retained byte-for-byte; the source painting is unchanged in its own original directory.",
+  "qualityAccepted": false
+}

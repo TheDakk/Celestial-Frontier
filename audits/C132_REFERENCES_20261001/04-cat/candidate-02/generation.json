@@ -1,0 +1,14 @@
+{
+  "id": "04-cat",
+  "name": "Cat",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-852ae2b6-3d9d-41c8-bf64-75992c16334c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "67167440b376f60187ebeb6e98fee6344421ac297db66f2d34abe5811435def8",
+  "bytes": 1133748,
+  "promptSha256": "6e63e302f13d8f834e60f8d453f482d49f6a06dd88afaba23a197538dc5e9745",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

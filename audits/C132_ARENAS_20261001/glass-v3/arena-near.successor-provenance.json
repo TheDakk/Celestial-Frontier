@@ -1,0 +1,60 @@
+{
+  "schema": "cf.c132-arena-painting-successor/v1",
+  "reason": "Both Glass predecessors have a native 1983 by 793 NEAR canvas, outside D29. This single bounded attempt transfers Glass materials onto an already successful native 1672 by 941 NEAR composition.",
+  "mode": "reference-canvas-preserving-material-edit",
+  "attemptLimit": 1,
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/glass-v2/arena-near.prompt.txt",
+    "sha256": "f0d68a779328e9e0b44b4cf4242164b92f56c60ed097df07110462096207dc54"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/glass-v3/arena-near.prompt.txt",
+    "sha256": "03649efdb13a141c00a3bf6f66b827da1b73249f26258c2a6be4da6476c70b46"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-near.png",
+      "sha256": "5245ed9fde45091b79ed90f98686ae1f4f8672caf0c4acdfe12bdc6771a5a0ad"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+    "mode": "Inherited through the actual Boulder NEAR painting. The locked style reference is not an image input to this successor call.",
+    "inheritedViaReceipt": "audits/C132_ARENAS_20261001/boulder-v2/arena-near.generation.json",
+    "inheritedViaReceiptSha256": "881887fa46407f6ed9ebeb34625101abd4c8fb7932f119c3fc7c9522a1116a17"
+  },
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/glass-v2/arena-near.png",
+    "sha256": "4dd04701cbc5071640ca6633e02a88a7b23c1a5ee30c7eb156f6b42006093da7"
+  },
+  "selectedUnchangedLayers": [
+    {
+      "role": "far",
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-far.png",
+      "source": "audits/C132_ARENAS_20261001/glass-v2/arena-far.png",
+      "sha256": "b6bd686b1b198470fca53f27804640f1b928a868c3dab114805b8f71af388d07"
+    },
+    {
+      "role": "mid",
+      "path": "audits/C132_ARENAS_20261001/glass-v3/arena-mid.png",
+      "source": "audits/C132_ARENAS_20261001/glass-v2/arena-mid.png",
+      "sha256": "15de877b6c21a1da04678350c954c2fe268f4d318396a93f95b85d7ccb66d046"
+    }
+  ],
+  "qualityAccepted": false,
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-6c5d50e2-2270-4036-beb9-d49287455dd7.png",
+  "sourceOutputSha256": "1aa29aee05fb5374e9166d781537f0b8acb636a47212a47bde48024356014b00",
+  "retainedOutput": "audits/C132_ARENAS_20261001/glass-v3/arena-near.png",
+  "retainedOutputSha256": "1aa29aee05fb5374e9166d781537f0b8acb636a47212a47bde48024356014b00",
+  "actualSentPromptSha256": "03649efdb13a141c00a3bf6f66b827da1b73249f26258c2a6be4da6476c70b46",
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "Generated successor bytes are retained exactly. Both Glass predecessors and the actual Boulder image input are unchanged. No post-generation resizing, padding, cropping or upscaling. Runtime key/despill copies are separate intake derivatives.",
+  "boundedAttemptCount": 1
+}

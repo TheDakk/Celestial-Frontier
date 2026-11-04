@@ -1,0 +1,235 @@
+{
+  "schema": "cf.c132-arena-intake/v1",
+  "id": "oxide-v2",
+  "qualityAccepted": false,
+  "status": "TECHNICAL_INTAKE_PASS_VISUAL_REVIEW_PENDING",
+  "requested": {
+    "width": 2560,
+    "height": 1440
+  },
+  "delivered": {
+    "width": 1672,
+    "height": 941
+  },
+  "resolutionDeviation": "Generator delivered its native size; no upscaling or false target-size claim",
+  "originalMastersModified": false,
+  "extractedMasks": false,
+  "despillPolicy": "existing keyer followed, where needed, by one simultaneous color-only nearest-opaque-neighbor pass radius32 on a copy; alpha unchanged by correction",
+  "layers": [
+    {
+      "role": "far",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": null,
+      "repairReceipt": null,
+      "transparentPixels": 0,
+      "visiblePixels": 1573352,
+      "firstPaintedY": 0,
+      "firstPaintedYNormalized": 0,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "mid",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 6124,
+        "despilledPixels": 102,
+        "unresolvedEdgePixels": 8
+      },
+      "repairReceipt": {
+        "passes": 1,
+        "radius": 32,
+        "targets": 9,
+        "corrected": [
+          {
+            "index": 901031,
+            "sourceIndex": 899359
+          },
+          {
+            "index": 905990,
+            "sourceIndex": 905989
+          },
+          {
+            "index": 906371,
+            "sourceIndex": 904699
+          },
+          {
+            "index": 911007,
+            "sourceIndex": 911006
+          },
+          {
+            "index": 913055,
+            "sourceIndex": 913056
+          },
+          {
+            "index": 916024,
+            "sourceIndex": 916023
+          },
+          {
+            "index": 943191,
+            "sourceIndex": 941519
+          },
+          {
+            "index": 943192,
+            "sourceIndex": 941520
+          },
+          {
+            "index": 944863,
+            "sourceIndex": 944864
+          }
+        ],
+        "unresolved": [],
+        "alphaUnchanged": true
+      },
+      "transparentPixels": 957844,
+      "visiblePixels": 615508,
+      "firstPaintedY": 414,
+      "firstPaintedYNormalized": 0.4399574920297556,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "runwayMinimumAlpha": 255,
+      "runwayMaximumAlpha": 255
+    },
+    {
+      "role": "near",
+      "width": 1672,
+      "height": 941,
+      "keyReceipt": {
+        "erodedPixels": 3671,
+        "despilledPixels": 0,
+        "unresolvedEdgePixels": 0
+      },
+      "repairReceipt": null,
+      "transparentPixels": 1331050,
+      "visiblePixels": 242302,
+      "firstPaintedY": 794,
+      "firstPaintedYNormalized": 0.8437832093517534,
+      "standAlphas": [
+        0,
+        0
+      ],
+      "runwayMinimumAlpha": 0,
+      "runwayMaximumAlpha": 0
+    }
+  ],
+  "contract": {
+    "schema": "cf.arena-intake-report/v1",
+    "recipeSha256": "9a8c69cc721444ca92e08305ef5c7b5a769db47ab2ddc828577a24b52272de8e",
+    "seed": 693034999,
+    "systemCardSourceSha256": "b48bd6f670e36de940e6baea6968d200a16b027c119ff33259a33a9d7455bf4d",
+    "groundLineNormalized": 0.78,
+    "layers": [
+      {
+        "role": "far",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "0423ae162eae67a9d8364b2ccbd81b068b03440d95f5a7b9a4a92f2618aa505f",
+          "bytes": 2537144,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "0423ae162eae67a9d8364b2ccbd81b068b03440d95f5a7b9a4a92f2618aa505f",
+          "bytes": 2537144,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 0,
+        "visiblePixels": 1573352,
+        "translucentPixels": 0
+      },
+      {
+        "role": "mid",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "52f768021dfc4620104b84adf52f80f021bf845feecf93d0bd656faf3fb60c64",
+          "bytes": 1944615,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "a9ed84f5a905db3d7b04cf6d22e6b152a5c23566248b44517e1ee57c2da7bc5c",
+          "bytes": 2494741,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 957844,
+        "visiblePixels": 615508,
+        "translucentPixels": 0
+      },
+      {
+        "role": "near",
+        "groundLineNormalized": 0.78,
+        "original": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "e1b90ccfc7606bdecc0f0bb8f994eaf0f3a4d118e928e7622c09d09ecf2f5b1e",
+          "bytes": 1295625,
+          "qualityAccepted": false
+        },
+        "runtime": {
+          "width": 1672,
+          "height": 941,
+          "minimum": {
+            "width": 1024,
+            "height": 576
+          },
+          "sha256": "4b0148bd5a6f68f5a3c823a92d3774c2e8c9933b1241e19f9c2237f882e785c6",
+          "bytes": 1557281,
+          "qualityAccepted": false
+        },
+        "transparentPixels": 1331050,
+        "visiblePixels": 242302,
+        "translucentPixels": 0
+      }
+    ],
+    "qualityAccepted": false,
+    "scope": "Hashes, compiler-card provenance, seeded context, registration and alpha only. Existing human acceptance is unchanged.",
+    "pending": [
+      "composition and style review",
+      "edge/despill review",
+      "runtime replay and choreography"
+    ]
+  },
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-manifest.json",
+    "sha256": "77a1f9b2232838870cfa9375159f017d834784f14fb4e415daa213359b7397ff"
+  },
+  "pending": [
+    "full-size composition and style review",
+    "final Dakk visual pass",
+    "Claude runtime wiring and native motion/medium proof"
+  ]
+}

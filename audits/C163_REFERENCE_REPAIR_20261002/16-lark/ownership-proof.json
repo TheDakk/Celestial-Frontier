@@ -1,0 +1,291 @@
+{
+  "id": "16-lark",
+  "masterSha256": "ed62d06bbddbfbe101a6ed6a43003e90904a218c0a3b764281633f114e39b335",
+  "originalAuthoringSha256": "55d32f0cb59a9755ba92493194371dda6d7d513b3e663a8711b2df8fc95588d1",
+  "candidateAuthoringSha256": "2f557a8ebb759c5f180134c018a3ee47f45a79bbc7a30501fd60980e206b073c",
+  "sourceRgbaChanges": 0,
+  "paintPixelsRemoved": 0,
+  "paintPixelsAdded": 0,
+  "priorNonRemainderOwnersChanged": 0,
+  "movedPixels": [
+    {
+      "to": "beak",
+      "joint": "beak",
+      "pixels": 2
+    },
+    {
+      "to": "head",
+      "joint": "head",
+      "pixels": 39
+    },
+    {
+      "to": "neck-upper",
+      "joint": "neck1",
+      "pixels": 1081
+    }
+  ],
+  "deterministicReplay": true,
+  "compiledLabelsEqual": true,
+  "compiledKeyedSourceEqual": true,
+  "unchangedCap": 0.05,
+  "remainingCapOutcome": "PASS",
+  "remainingMinorIslands": [
+    {
+      "pixels": 1,
+      "to": 11,
+      "border": {
+        "11": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": 11,
+      "border": {
+        "11": 2
+      }
+    },
+    {
+      "pixels": 21,
+      "to": 11,
+      "border": {
+        "11": 11,
+        "12": 11
+      }
+    },
+    {
+      "pixels": 2,
+      "to": 12,
+      "border": {
+        "12": 3
+      }
+    },
+    {
+      "pixels": 44,
+      "to": 15,
+      "border": {
+        "15": 15
+      }
+    },
+    {
+      "pixels": 78,
+      "to": 3,
+      "border": {
+        "1": 6,
+        "3": 30
+      }
+    },
+    {
+      "pixels": 8,
+      "to": 1,
+      "border": {
+        "1": 1
+      }
+    },
+    {
+      "pixels": 19,
+      "to": 2,
+      "border": {
+        "2": 4
+      }
+    },
+    {
+      "pixels": 12,
+      "to": 2,
+      "border": {
+        "2": 4
+      }
+    },
+    {
+      "pixels": 46,
+      "to": 1,
+      "border": {
+        "1": 32
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 2,
+      "to": 2,
+      "border": {
+        "2": 3
+      }
+    }
+  ],
+  "remainingRemainderComponents": [
+    {
+      "pixels": 14653,
+      "bounds": [
+        484,
+        606,
+        789,
+        731
+      ],
+      "border": {
+        "near-wing-flight": 271,
+        "chest": 228,
+        "tail": 156,
+        "far-thigh": 107,
+        "near-wing-root": 89,
+        "near-thigh": 61
+      }
+    },
+    {
+      "pixels": 78,
+      "bounds": [
+        595,
+        777,
+        599,
+        806
+      ],
+      "border": {
+        "near-shin": 30,
+        "near-foot": 6
+      }
+    },
+    {
+      "pixels": 46,
+      "bounds": [
+        603,
+        836,
+        627,
+        845
+      ],
+      "border": {
+        "near-foot": 32
+      }
+    },
+    {
+      "pixels": 44,
+      "bounds": [
+        333,
+        723,
+        352,
+        726
+      ],
+      "border": {
+        "tail": 15
+      }
+    },
+    {
+      "pixels": 21,
+      "bounds": [
+        683,
+        539,
+        698,
+        544
+      ],
+      "border": {
+        "far-wing-root": 11,
+        "far-wing-flight": 11
+      }
+    },
+    {
+      "pixels": 19,
+      "bounds": [
+        702,
+        827,
+        711,
+        831
+      ],
+      "border": {
+        "far-foot": 4
+      }
+    },
+    {
+      "pixels": 12,
+      "bounds": [
+        822,
+        830,
+        828,
+        832
+      ],
+      "border": {
+        "far-foot": 4
+      }
+    },
+    {
+      "pixels": 8,
+      "bounds": [
+        537,
+        814,
+        542,
+        817
+      ],
+      "border": {
+        "near-foot": 1
+      }
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        680,
+        545,
+        681,
+        545
+      ],
+      "border": {
+        "far-wing-flight": 3
+      }
+    },
+    {
+      "pixels": 2,
+      "bounds": [
+        820,
+        836,
+        820,
+        837
+      ],
+      "border": {
+        "far-foot": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        702,
+        537,
+        702,
+        537
+      ],
+      "border": {
+        "far-wing-root": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        700,
+        538,
+        700,
+        538
+      ],
+      "border": {
+        "far-wing-root": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "bounds": [
+        666,
+        836,
+        666,
+        836
+      ],
+      "border": {}
+    }
+  ],
+  "controls": [
+    "original cap refusal reproduced",
+    "remove correction restores refusal",
+    "non-remainder theft refused",
+    "paint deletion refused",
+    "independent label replay equals compiled label",
+    "exact keyed RGBA equality"
+  ],
+  "qualityAccepted": false,
+  "nativeRun": false
+}

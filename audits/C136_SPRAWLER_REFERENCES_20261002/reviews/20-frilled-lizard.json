@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Frilled Lizard",
+  "family": "quadruped",
+  "masterSha256": "7383537e8a389ca9963f5131850847deedf3593d196983e89194af43bd2a2147",
+  "subjectSha256": "00dca4d080078fa1508a157abbc955c31794149eba399a23891ff5acd946254b",
+  "promptSha256": "ad269e570d89df0ffbbdf897bc95ca29dcb2cacfed03211b9d201ac076ef023c",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: large connected circular frill around neck, visible open pink mouth, long thin banded tail and four visible feet. The near-side frill reads as a textured sheet and must receive connected neck/head ownership; far limb roots remain occluded. Pink mouth/warmer frill tones require careful key-conservation review against the magenta key. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/20-frilled-lizard/visual-review.json",
+    "sha256": "8d678361a6eba43fb25daa6eba0aad55cecaf978ca30ba9cb656831c81f16b2e"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

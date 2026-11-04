@@ -1,0 +1,201 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "root",
+      "joint": "root",
+      "owner": "root"
+    },
+    {
+      "region": "leg-far-foot",
+      "joint": "legFarFoot",
+      "owner": "leg-far-foot"
+    },
+    {
+      "region": "leg-near-foot",
+      "joint": "legNearFoot",
+      "owner": "leg-near-foot"
+    },
+    {
+      "region": "leg-far-knee",
+      "joint": "legFarKnee",
+      "owner": "leg-far-knee"
+    },
+    {
+      "region": "leg-near-knee",
+      "joint": "legNearKnee",
+      "owner": "leg-near-knee"
+    },
+    {
+      "region": "ear-near",
+      "joint": "earNearTip",
+      "owner": "ear-near"
+    },
+    {
+      "region": "ear-far",
+      "joint": "earFarTip",
+      "owner": "ear-far"
+    },
+    {
+      "region": "jaw",
+      "joint": "jaw",
+      "owner": "jaw"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "wing-far-tip",
+      "joint": "wingFarTip",
+      "owner": "wing-far-tip"
+    },
+    {
+      "region": "wing-far-wrist",
+      "joint": "wingFarWrist",
+      "owner": "wing-far-wrist"
+    },
+    {
+      "region": "wing-far-elbow",
+      "joint": "wingFarElbow",
+      "owner": "wing-far-elbow"
+    },
+    {
+      "region": "wing-far-root",
+      "joint": "wingFarRoot",
+      "owner": "wing-far-root"
+    },
+    {
+      "region": "wing-near-tip",
+      "joint": "wingNearTip",
+      "owner": "wing-near-tip"
+    },
+    {
+      "region": "wing-near-wrist",
+      "joint": "wingNearWrist",
+      "owner": "wing-near-wrist"
+    },
+    {
+      "region": "wing-near-elbow",
+      "joint": "wingNearElbow",
+      "owner": "wing-near-elbow"
+    },
+    {
+      "region": "wing-near-root",
+      "joint": "wingNearRoot",
+      "owner": "wing-near-root"
+    },
+    {
+      "region": "tail",
+      "joint": "tail0",
+      "owner": "tail"
+    },
+    {
+      "region": "neck",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "chest",
+      "joint": "chest",
+      "owner": "chest"
+    },
+    {
+      "region": "pelvis",
+      "joint": "pelvis",
+      "owner": "pelvis"
+    },
+    {
+      "region": "far-patagium-upper",
+      "joint": "wingFarWrist",
+      "owner": "wing-far-wrist"
+    },
+    {
+      "region": "far-patagium-lower",
+      "joint": "wingFarElbow",
+      "owner": "wing-far-elbow"
+    },
+    {
+      "region": "near-distal-rim",
+      "joint": "wingNearTip",
+      "owner": "wing-near-tip"
+    },
+    {
+      "region": "near-proximal-web-edge",
+      "joint": "wingNearElbow",
+      "owner": "wing-near-elbow"
+    },
+    {
+      "region": "near-distal-web-edge",
+      "joint": "wingNearWrist",
+      "owner": "wing-near-wrist"
+    },
+    {
+      "region": "throat-fur",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "far-ear-rim",
+      "joint": "earFarTip",
+      "owner": "ear-far"
+    },
+    {
+      "region": "near-ear-rim",
+      "joint": "earNearTip",
+      "owner": "ear-near"
+    },
+    {
+      "region": "far-web-scallop-edge",
+      "joint": "wingFarElbow",
+      "owner": "wing-far-elbow"
+    },
+    {
+      "region": "pelvic-fur-edge",
+      "joint": "pelvis",
+      "owner": "pelvis"
+    },
+    {
+      "region": "spine",
+      "joint": "spine",
+      "owner": "spine"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    64,
+    398,
+    465,
+    2044,
+    1508,
+    5637,
+    2470,
+    729,
+    2078,
+    32638,
+    16830,
+    19820,
+    2662,
+    18426,
+    8034,
+    11730,
+    2009,
+    7388,
+    2151,
+    2853,
+    3568,
+    2032
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "f926edb7417c1e521523f8e665fddb4e917758be6497c265ffbfefc02b4c3311",
+  "intake": {
+    "erodedPixels": 4107,
+    "despilledPixels": 88,
+    "unresolvedEdgePixels": 38
+  },
+  "remainderPart": "spine"
+}

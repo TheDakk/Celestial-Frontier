@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "karst",
+  "biome": "karst",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "karst"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "karst"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "karst"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-far.generation.json",
+      "sha256": "fc1f5b99bb70aac4cf643392d9190014acdb90eac12612fe031d6a648ca0a35e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-mid.generation.json",
+      "sha256": "7ca50a7037092f3e4b4a72daf689f3effab852cb188f9fa392aa5a82e7fef057"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-near.generation.json",
+      "sha256": "042eb39dabc0f532719f41fb1f2695740d2a92ced8cef94f2c1cff70297dfd84"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-composed-review.png",
+      "sha256": "e92271b661227959207573066c5a37bbba1493a8c03c737a802d09dac51a24fa"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-plates-review.png",
+      "sha256": "1f3c2e1bbde9bc3f45dac6530d0ac8b920cae0e56c7a8e94196205992ba4fb6d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-far.png",
+      "sha256": "b716d4f597e05f395b70f2aa3e34719a3bbec75ce58580339c07bd52301c03d8"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-mid.png",
+      "sha256": "1f389338471420c2367ce02f596a1860a61b1757045f1bfd5d8c723263151a86"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-near.png",
+      "sha256": "32cdec2f47d4257765f41c523c2a98acd1d14c3f282edfdf6ca014160a1663b2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/visual-notes.d29.json",
+      "sha256": "6a12a292f81787c7dce26efefa18680776ae532ca4c594982f8782647de55461"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-manifest.json",
+      "sha256": "2389ed2065ea226a370279baf113921e9390e25d7e052b613736c9fe160552b3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-recipe.json",
+      "sha256": "cc07a807fc278ffb5263e3912a4e7a7e8318b7776359861dec068f2043ce00c4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-far.generation.json",
+      "sha256": "fc1f5b99bb70aac4cf643392d9190014acdb90eac12612fe031d6a648ca0a35e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-far.prompt.txt",
+      "sha256": "ddbe0d72a3c7b4645e79d06d031dc29f299b56cbd9cbccada3f6b580af03421b"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-mid.generation.json",
+      "sha256": "7ca50a7037092f3e4b4a72daf689f3effab852cb188f9fa392aa5a82e7fef057"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-mid.prompt.txt",
+      "sha256": "70fb09c7d4cfb15d34894fcd09854ffc2287ad5915cb02743bac12295f46830c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/keyed/arena-mid.png",
+      "sha256": "85f5db68a2ebcb46352ae492478036958b3cf4f9e3a877f47e57025f162668c3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-near.generation.json",
+      "sha256": "042eb39dabc0f532719f41fb1f2695740d2a92ced8cef94f2c1cff70297dfd84"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/arena-near.prompt.txt",
+      "sha256": "c3f1901254d93189c4bb5f578cd863c96f8ea0c70f4a587ffe60b14a73cab523"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/karst/keyed/arena-near.png",
+      "sha256": "00ab071fec577c069887b95294f131f7c077e47836cdbb40c917febc73116593"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/karst/visual-notes.d29.json",
+    "findings": [
+      "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Limestone towers, foliage and the flat central stone runway have coherent material and upper-left light; the stands remain open.",
+      "FAR is a high vista over a deep valley rather than the requested low eye level. MID foliage at both outer edges contains small missing islands and pink remnants. NEAR introduces a clearly visible horizontal texture and focus transition near the lower sixth, especially on the left.",
+      "The terrain is mechanically continuous, but perspective, fringe/island repair and combatant contrast remain visual holds. No native motion, parallax or acceptance is claimed."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "magmasea-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/magmasea-v2/arena-composed-review.png"
+  ],
+  "findings": [
+    "Native 1672×941 composite inspected full size. The sun disk is removed from FAR; the cooled dark fighting shelf remains continuous and the lower NEAR no longer covers the fighting path.",
+    "The MID repeats an orange lava horizon across the central FAR lava sea; its hard contour is visible. Green/pink key-edge remnants remain on some side rock edges.",
+    "The NEAR makes a bright warm lower seam and a distinct change of ground texture. Some orange crack-like highlights remain in the cooled floor; staging review must confirm they read as harmless surface lighting rather than hazards across the runway.",
+    "The vivid molten background and warm lighting need full-size readability and actual creature contact review. Mechanics are green, while visual acceptance, physical-medium admission, parallax and native proof remain held."
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "ammonia-v2",
+  "biome": "ammonia",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "ammonia"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "ammonia"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "ammonia"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.generation.json",
+      "sha256": "c32a257caf2d02dd743f7f08abaa616f4a5762cde486d29ed4b9943bffe4e3e8"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.generation.json",
+      "sha256": "4c00821a85a7631a0a4ae0d2bd07894980bef374ee45e87a00c3c76de611fd58"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-near.generation.json",
+      "sha256": "4b48820f330139373aa059d5dd47f83f2cbe9ed0b79f3df18d39b764393cf1b9"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-composed-review.png",
+      "sha256": "e77008ef43e4126b6a790f0d3b1d14df2e151a107ffc16ae1bd4fe1e693e3499"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/visual-notes.d29.json",
+      "sha256": "c6dd6ba6d3898e88ac9fa71a6e2645739c496212c6f8354dd3be07e64b329a7e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-manifest.json",
+      "sha256": "0b7a32c70d6f53d0205b9d8f6a42b621cc39b3e998cdb88500eb28b6ba79cd87"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-recipe.json",
+      "sha256": "723ae0bc4e7a86b90ea21f4aab79f6e19d6f4f2993f3c3fa92eda5d24554d013"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.generation.json",
+      "sha256": "c32a257caf2d02dd743f7f08abaa616f4a5762cde486d29ed4b9943bffe4e3e8"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.prompt.txt",
+      "sha256": "49c01c547247478d2b04cc017eef071338f2f7af424e9017a8791fd339e33074"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-far.png",
+      "sha256": "9a41d230571c21671dc209ec99afa28fee9763948900b475ce06e47d60a705a5"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.generation.json",
+      "sha256": "4c00821a85a7631a0a4ae0d2bd07894980bef374ee45e87a00c3c76de611fd58"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.prompt.txt",
+      "sha256": "45e7f9173be40783e5ade50dc2c64d242a2398670b54df9823658489889e35d2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-mid.png",
+      "sha256": "64dc8b32fe69337c308941f9c2466ea2996a7e019dcfc249855a1b958e518e86"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/keyed/arena-mid.png",
+      "sha256": "cd91f083105e358a6417003fb97178d1ae549393b7ff061bf54bfad41f0e9992"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-near.generation.json",
+      "sha256": "4b48820f330139373aa059d5dd47f83f2cbe9ed0b79f3df18d39b764393cf1b9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia/arena-near.prompt.txt",
+      "sha256": "cd006a24fc1ed339d9f46ac6eaad59383ce81eae3ad3c2251c7342eeeab48ed4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia/arena-near.png",
+      "sha256": "aecac2746afe7839b2c137562ba2ba7eaaa6ee9d3ce7fefaf20194505a898fed"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/arena-near.png",
+      "sha256": "aecac2746afe7839b2c137562ba2ba7eaaa6ee9d3ce7fefaf20194505a898fed"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/ammonia-v2/keyed/arena-near.png",
+      "sha256": "6e24ce174338c2077c39288b4c8efc358f2509cb53f87ea3e1261c2695c1cc79"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/ammonia-v2/visual-notes.d29.json",
+    "findings": [
+      "Native 1672×941 composite inspected full size. The edited FAR removes the celestial bodies and the solid icy spires; FAR and MID now read primarily as lavender-gray and pale-cyan cloud banks.",
+      "The MID clouds have pale cyan and pink patches along side silhouettes. The keyed edge is visibly hard against the FAR cloud depth; the NEAR creates a pronounced separate pastel band along the bottom.",
+      "Cloud plane is an authoring registration surface for AIR, not solid floor. Atmospheric softness, magenta contamination, cloud color conservation, parallax seams and moving airborne-rig placement all need review.",
+      "No visual acceptance, medium admission, runtime registration or native performance claim is made. qualityAccepted stays false."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

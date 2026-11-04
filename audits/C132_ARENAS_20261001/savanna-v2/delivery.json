@@ -1,0 +1,37 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "savanna-v2",
+  "biome": "savanna",
+  "recipe": "audits/C132_ARENAS_20261001/savanna-v2/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/savanna-v2/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.webp",
+      "runtimeSha256": "1b6392edde37a25ffd11e47b14c5ead770a8ce2d54a787fb6bd81b8e8715a058",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/arena-far.png",
+        "sha256": "b1c92a315a4377f54c6adc989cf74e456a33e2ad9d7e56314bcbdfa3cf4a1f56"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/savanna-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-mid.webp",
+      "runtimeSha256": "f1892d87c8b3cc1c9df1e9a40f483eec420a61c72cbbd5b2b43b8674899ae3da",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-mid.png",
+        "sha256": "8fdfe56558971dbdbab565c6ff5b3546653e70e989dff2101ea2619f96fb814a"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/savanna-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-near.webp",
+      "runtimeSha256": "837722d78e627e24635a4b960d022c3507b78c7eb7e0e157c698671d1d6bfcb1",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/savanna-v2/keyed/arena-near.png",
+        "sha256": "57d3737dcbce4b246d3377d8b92bf5052ca731346b882b99b983c8dda26214f6"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "fungal",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/fungal/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/fungal/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/fungal/arena-far.png",
+    "audits/C132_ARENAS_20261001/fungal/arena-mid.png",
+    "audits/C132_ARENAS_20261001/fungal/arena-near.png"
+  ],
+  "findings": [
+    "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Purple fungal forms and misty geological depth are present, and the central purple-earth fighting band remains open.",
+    "MID side foliage visibly loses interior islands after keying, with gray cutout holes and pink traces around branching fronds, especially left of center and the right outer cluster. NEAR repeats ground texture at a different scale with a conspicuous horizontal join. These remain visual holds despite the mechanical key result.",
+    "Selected FAR has no invented planet or moons, and selected NEAR has no title or pseudo-text. The prior celestial-body FAR and wrong-aspect/text NEAR are retained as rejected originals. Purple creature/effect contrast and live occlusion remain unscored."
+  ]
+}

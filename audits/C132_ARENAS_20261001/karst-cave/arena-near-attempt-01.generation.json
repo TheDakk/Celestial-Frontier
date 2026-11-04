@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-generation-original/v1",
+  "generator": "built-in image_gen",
+  "inputReference": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-7383-7361-b24c-555e34c6b8fe/exec-008be2a7-6513-4151-a572-ba210319b549.png",
+  "sourceSha256": "6d2560b430d3d90ff8e931b5c7cceb55c0ae05c45626728e61e579959b5d06a3",
+  "retainedMaster": "audits/C132_ARENAS_20261001/karst-cave/arena-near-attempt-01.png",
+  "retainedSha256": "6d2560b430d3d90ff8e931b5c7cceb55c0ae05c45626728e61e579959b5d06a3",
+  "bytes": 1265843,
+  "prompt": {
+    "path": "audits/C132_ARENAS_20261001/karst-cave/arena-near.prompt.txt",
+    "sha256": "57ccac94e73728b763883f6b0aa3bb0a7916056497fc40a9c129919ffa81f32e"
+  },
+  "status": "HELD_WRONG_ASPECT",
+  "qualityAccepted": false,
+  "originalPixelsModified": false
+}

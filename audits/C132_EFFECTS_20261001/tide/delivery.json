@@ -1,0 +1,142 @@
+{
+  "schema": "cf.c132-theme-delivery/v1",
+  "theme": "tide",
+  "status": "MECHANICAL_PASS_REVIEW_REQUIRED",
+  "integrationCandidate": true,
+  "qualityAccepted": false,
+  "nativeProof": "DEFERRED_AFTER_C12_CAPTURE_FAILURE",
+  "abilityId": "rip",
+  "abilityName": "Riptide",
+  "material": "water sheets, spray, foam crest",
+  "accent": "#5fd0c8",
+  "anchors": "tide/anchors.json",
+  "anchorsSha256": "b76d893f6aa706d1846a68918ee9a3f33b9b0940a507b46f22eeae6838ef2e20",
+  "reviewSheet": "tide/review-sheet.png",
+  "images": [
+    {
+      "phase": "launch",
+      "image": "tide/registered/launch.png",
+      "imageSha256": "84f5c13703ccb3b5929e66086a7822df4616852de13dbb13f4b79e275bc73d57",
+      "master": "tide/launch-master.png",
+      "masterSha256": "a063bad66dff1b2e67386de2e9b579d2e72428baac5f0e48500fcf0ab56ed50f",
+      "prompt": "tide/launch.prompt.txt",
+      "promptSha256": "3ec4bbea4e5827dc3c0e6dd54f7a716ed06aa14c6a754db945764ed18860e215",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 154,
+        "y": 411,
+        "width": 254,
+        "height": 231
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "tide/registered/travel.png",
+      "imageSha256": "465cbbdf0adf1244502e7086a580358ed44d991713ce4aadf31550b22a186fd6",
+      "master": "tide/travel-master.png",
+      "masterSha256": "e1fc3214df9c80b560f4ae4a256ee0489d631e4fe37193948e84fe62280c4d5b",
+      "prompt": "tide/travel.prompt.txt",
+      "promptSha256": "0eca06caa6c9ccc02f5e58939907f7c769833923817a61e514d576d025834d46",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 137,
+        "y": 432,
+        "width": 707,
+        "height": 261
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "tide/registered/impact.png",
+      "imageSha256": "cb311ab37ceab4b0197fdeaecd0843c48a31197d6ee8397c1ace3dd53acd066c",
+      "master": "tide/impact-master.png",
+      "masterSha256": "c836935b8a3e346609b8dd978cbe895320f61e64f3bd67191a6a8a692943dc5c",
+      "prompt": "tide/impact.prompt.txt",
+      "promptSha256": "2374c72ebc19395f07629dc56cf131fd8b9f456c6ea17ce34ece7468f41d852c",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "alphaBoundsPixels": {
+        "x": 588,
+        "y": 334,
+        "width": 283,
+        "height": 358
+      }
+    }
+  ],
+  "mechanicalValidation": {
+    "anchors": "audits/C132_EFFECTS_20261001/tide/anchors.json",
+    "schema": "cf.theme-delivery-report/v1",
+    "ok": true,
+    "theme": "tide",
+    "sequenceId": "tide-c132-v43",
+    "findings": [],
+    "textures": 3,
+    "particles": 200,
+    "phases": {
+      "launch": {
+        "painted": 24555,
+        "edge": 6111,
+        "fringe": 13,
+        "fringeRatio": 0.002127311405661921,
+        "accentShare": 0.05332888528809036,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 154,
+          "y": 411,
+          "width": 254,
+          "height": 231
+        }
+      },
+      "travel": {
+        "painted": 100471,
+        "edge": 14803,
+        "fringe": 33,
+        "fringeRatio": 0.002229277849084645,
+        "accentShare": 0.03817034357654164,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 137,
+          "y": 432,
+          "width": 707,
+          "height": 261
+        }
+      },
+      "impact": {
+        "painted": 42681,
+        "edge": 13000,
+        "fringe": 17,
+        "fringeRatio": 0.0013076923076923077,
+        "accentShare": 0.05141637010676157,
+        "keyInShape": 0,
+        "borderOpaque": 0,
+        "alphaBounds": {
+          "x": 588,
+          "y": 334,
+          "width": 283,
+          "height": 358
+        }
+      }
+    }
+  },
+  "officialCandidateTest": {
+    "theme": "tide",
+    "anchors": "audits/C132_EFFECTS_20261001/tide/anchors.json",
+    "exitCode": 0,
+    "log": "tests/tide.txt"
+  },
+  "manifestRow": {
+    "theme": "tide",
+    "anchors": "../C132_EFFECTS_20261001/tide/anchors.json",
+    "contract": "v4.3"
+  }
+}

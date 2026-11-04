@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "karst-cave",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/karst-cave/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/karst-cave/arena-plates-review.png"
+  ],
+  "findings": [
+    "Full native-size composition and four-row plate sheet inspected. Tall limestone cave depth and a broad flat rock runway read coherently; side formations frame rather than cross the central path.",
+    "Small magenta remnants remain in the right-side fern/rock boundary. The lower terrain edge changes texture across the composition, and large background stalactites need creature-silhouette contrast scoring in motion. These are visual holds.",
+    "No new generation or rekeying in this revalidation. Selected NEAR uses the native landscape canvas; the previous wrong-aspect attempt remains retained."
+  ]
+}

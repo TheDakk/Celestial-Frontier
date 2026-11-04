@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c132-arena-painting-successor/v1",
+  "reason": "Existing intake refuses NEAR covers fighting path at raised side bank.",
+  "mode": "targeted-edit",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/magmasea/arena-near.prompt.txt",
+    "sha256": "92dc3fe3edffdc207c55cc38d1d77767e7a501c15fb52ca885f8d6df81b1afd3"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.prompt.txt",
+    "sha256": "6600723f17d69d1f3a6d728663aab7bae087839aa59004d49ac587993499b657"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/magmasea/arena-near.png",
+      "sha256": "b44cb97de22a0a7867b0d6bf38c1449b671a95f581b98b4622ebc642032fcdbb"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the unchanged predecessor; actual sole image input is the predecessor named above."
+  },
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/magmasea/arena-near.png",
+    "sha256": "b44cb97de22a0a7867b0d6bf38c1449b671a95f581b98b4622ebc642032fcdbb"
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-2b7770f7-f5dd-454f-b204-7fd0076df180.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "Generated successor bytes are retained exactly. The predecessor is unchanged. No post-generation resizing, padding, cropping or upscaling.",
+  "qualityAccepted": false
+}

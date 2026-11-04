@@ -1,0 +1,172 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "archipelago-v2",
+  "biome": "archipelago",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "archipelago"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "archipelago"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "archipelago"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-far.generation.json",
+      "sha256": "3036ce3e1ce89dfee42263b8f729a9576175c0e9b7c15921d3b492c83b3c0494"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-mid.generation.json",
+      "sha256": "9360767e9909305604bd818ea26c5baa224831af09281e3a7359cd737dbc6209"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-near.generation.json",
+      "sha256": "9a6ddddda507d89dc99f9da3df389424f3dd42ebf62db0a63232bb6005fe50cf"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-composed-review.png",
+      "sha256": "a77cf0b38f64b9b35b8b26908406bdf3d04f6098b62b6e848332bbadbe2eca1d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-far.png",
+      "sha256": "9e5931b1eb5e1e6ed75a9d71b82c280a84f4f9e654b5ee6e0663ab8c5882d00d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-mid.png",
+      "sha256": "50aba35330d39b434e92f193cc65fd572a379828ec1c9861e60359f2b52994b1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-near.png",
+      "sha256": "c0c205cb0711c2552c6ea8c374aca3f3bc7117edc4178716a825f926c4c1c679"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/visual-notes.d29.json",
+      "sha256": "c397011bd7523451c03466dbf24593b8434180eb580e4b5b5f72d688516f0cf5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-manifest.json",
+      "sha256": "9668a72c2446f7b16de885c173c2aae1a7296f41f80e9a0e71079b338f750ff3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-recipe.json",
+      "sha256": "624fae6c5b8a5d8d71a00d4e1ab43d5705ec128a078c1f73d5ce261c55f34e61"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-far.generation.json",
+      "sha256": "3036ce3e1ce89dfee42263b8f729a9576175c0e9b7c15921d3b492c83b3c0494"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago/arena-far.prompt.txt",
+      "sha256": "c17d9cd67b1cbf5f0676e9ce6f64095b95b8e593b283bbc2689ff11785b8899f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago/arena-far.png",
+      "sha256": "9e5931b1eb5e1e6ed75a9d71b82c280a84f4f9e654b5ee6e0663ab8c5882d00d"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-mid.generation.json",
+      "sha256": "9360767e9909305604bd818ea26c5baa224831af09281e3a7359cd737dbc6209"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago/arena-mid.prompt.txt",
+      "sha256": "cc23087bb759fbe1bfab04bdd0a27ee25d06ab0df88d8a35931bfdf678ae3403"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago/arena-mid.png",
+      "sha256": "50aba35330d39b434e92f193cc65fd572a379828ec1c9861e60359f2b52994b1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/keyed/arena-mid.png",
+      "sha256": "a93fafd8d2b5c5d396ee1cd5d8010d3e03ef27b70b559b7c9be90896b66a6da5"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-near.generation.json",
+      "sha256": "9a6ddddda507d89dc99f9da3df389424f3dd42ebf62db0a63232bb6005fe50cf"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/arena-near.prompt.txt",
+      "sha256": "6631a24c2facefc0b747f5f4c7fddb08923f7e93840afcc84a6856e62f0df27a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/archipelago-v2/keyed/arena-near.png",
+      "sha256": "ef8e80c1718b2f258d2975e817fd5463c66928c7d644a55b8bb034f445d7159d"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/archipelago-v2/visual-notes.d29.json",
+    "findings": [
+      "All three originals and full-size composition inspected at native1672×941. Island shore and beach runway are identifiable; shared stand region remains open.",
+      "MID bakes in a second distant island band in front of FAR, producing doubled horizons and mismatched depth. Pink/green chroma remnants persist around palm fronds and island silhouettes.",
+      "NEAR forms a conspicuous straight horizontal texture/color boundary across the lower frame. Mechanical clearance does not resolve these visual holds."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

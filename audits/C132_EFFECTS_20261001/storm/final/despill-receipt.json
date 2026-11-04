@@ -1,0 +1,239 @@
+{
+  "schema": "cf.c132-targeted-despill/v1",
+  "passes": 1,
+  "radius": 8,
+  "alphaUnchanged": true,
+  "erosionPixels": 0,
+  "qualityAccepted": false,
+  "rows": [
+    {
+      "phase": "launch",
+      "input": "storm/registered/launch.png",
+      "inputSha256": "cf1e1ddc66b11df2391400ebca3295c5a916143ed8cee45f125a3c847682431e",
+      "output": "registered/launch.png",
+      "outputSha256": "cf1e1ddc66b11df2391400ebca3295c5a916143ed8cee45f125a3c847682431e",
+      "unchanged": true
+    },
+    {
+      "phase": "travel",
+      "input": "storm/registered/travel.png",
+      "inputSha256": "1a149c95a4b81b39013527fd52aa71e89080dc073f684298081e28684ab50ca0",
+      "output": "registered/travel.png",
+      "outputSha256": "1a149c95a4b81b39013527fd52aa71e89080dc073f684298081e28684ab50ca0",
+      "unchanged": true
+    },
+    {
+      "phase": "impact",
+      "input": "storm/registered/impact.png",
+      "inputSha256": "45b929970baf69ca5755a8af23e47efdf607498443f2f785d739e6e3b4a23934",
+      "output": "registered/impact.png",
+      "outputSha256": "3cdfa440d457cbb7b4fe4cf740c0e7cf76b8931fe1ff40d16daa8eda3afe0634",
+      "alphaUnchanged": true,
+      "changesOutsideTargets": 0,
+      "changedRgbPixels": 47,
+      "selection": "Key-tinted pixels on the delivery-contract edge, intersected with the existing conservative fringe selector; pale and umber protections retained",
+      "pass": {
+        "passes": 1,
+        "radius": 8,
+        "targets": 51,
+        "corrected": [
+          {
+            "index": 454376,
+            "sourceIndex": 455399
+          },
+          {
+            "index": 458481,
+            "sourceIndex": 460529
+          },
+          {
+            "index": 462564,
+            "sourceIndex": 462566
+          },
+          {
+            "index": 475939,
+            "sourceIndex": 475941
+          },
+          {
+            "index": 490278,
+            "sourceIndex": 489255
+          },
+          {
+            "index": 490291,
+            "sourceIndex": 489265
+          },
+          {
+            "index": 491302,
+            "sourceIndex": 492325
+          },
+          {
+            "index": 492335,
+            "sourceIndex": 492333
+          },
+          {
+            "index": 492345,
+            "sourceIndex": 491320
+          },
+          {
+            "index": 501459,
+            "sourceIndex": 500437
+          },
+          {
+            "index": 501569,
+            "sourceIndex": 503620
+          },
+          {
+            "index": 503652,
+            "sourceIndex": 500572
+          },
+          {
+            "index": 505700,
+            "sourceIndex": 500572
+          },
+          {
+            "index": 509667,
+            "sourceIndex": 507620
+          },
+          {
+            "index": 510776,
+            "sourceIndex": 511801
+          },
+          {
+            "index": 513602,
+            "sourceIndex": 514628
+          },
+          {
+            "index": 519001,
+            "sourceIndex": 521050
+          },
+          {
+            "index": 520939,
+            "sourceIndex": 522987
+          },
+          {
+            "index": 523763,
+            "sourceIndex": 525809
+          },
+          {
+            "index": 523862,
+            "sourceIndex": 520789
+          },
+          {
+            "index": 523883,
+            "sourceIndex": 525928
+          },
+          {
+            "index": 524126,
+            "sourceIndex": 524124
+          },
+          {
+            "index": 525816,
+            "sourceIndex": 526838
+          },
+          {
+            "index": 531031,
+            "sourceIndex": 532053
+          },
+          {
+            "index": 539296,
+            "sourceIndex": 540319
+          },
+          {
+            "index": 541171,
+            "sourceIndex": 532986
+          },
+          {
+            "index": 541347,
+            "sourceIndex": 541344
+          },
+          {
+            "index": 549519,
+            "sourceIndex": 551567
+          },
+          {
+            "index": 573164,
+            "sourceIndex": 570093
+          },
+          {
+            "index": 575202,
+            "sourceIndex": 573153
+          },
+          {
+            "index": 575219,
+            "sourceIndex": 576244
+          },
+          {
+            "index": 576199,
+            "sourceIndex": 574151
+          },
+          {
+            "index": 576348,
+            "sourceIndex": 574300
+          },
+          {
+            "index": 577257,
+            "sourceIndex": 580332
+          },
+          {
+            "index": 580328,
+            "sourceIndex": 580332
+          },
+          {
+            "index": 586333,
+            "sourceIndex": 585309
+          },
+          {
+            "index": 587504,
+            "sourceIndex": 589555
+          },
+          {
+            "index": 595637,
+            "sourceIndex": 597687
+          },
+          {
+            "index": 612190,
+            "sourceIndex": 609118
+          },
+          {
+            "index": 624413,
+            "sourceIndex": 623388
+          },
+          {
+            "index": 624458,
+            "sourceIndex": 623432
+          },
+          {
+            "index": 626494,
+            "sourceIndex": 625471
+          },
+          {
+            "index": 626509,
+            "sourceIndex": 626513
+          },
+          {
+            "index": 627431,
+            "sourceIndex": 627433
+          },
+          {
+            "index": 627531,
+            "sourceIndex": 628552
+          },
+          {
+            "index": 647868,
+            "sourceIndex": 646846
+          },
+          {
+            "index": 672511,
+            "sourceIndex": 670462
+          }
+        ],
+        "unresolved": [
+          498351,
+          502629,
+          503653,
+          505481
+        ],
+        "alphaUnchanged": true
+      }
+    }
+  ]
+}

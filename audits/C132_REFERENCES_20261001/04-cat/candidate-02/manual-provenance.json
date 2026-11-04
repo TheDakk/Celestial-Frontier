@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c132-manual-reference/v1",
+  "masterSha256": "67167440b376f60187ebeb6e98fee6344421ac297db66f2d34abe5811435def8",
+  "authoringSha256": "2eda4752282f8e163eeceb6929a2bdeb40a4092102649118f954878f5145371a",
+  "observationSource": "audits/C132_REFERENCES_20261001/manual-observations.mjs",
+  "observationSha256": "8caa2201e67bd3077cc90466ddbc3f44fea8e19683c12db65ec044678ea25478",
+  "origin": "Independent manual observations on this exact edited painting; no reference-coordinate transfer.",
+  "limitations": "Both triangular ears, full whiskered head, long continuous tail and four white paw endpoints are visible. Far upper limbs remain torso-occluded; roots describe a candidate partition of observed paint, not a claim about hidden anatomy. Foreleg shafts are separated below the chest. Fur fringes, whiskers, ear/head seams and the lower tail curve require unchanged intake/static/native review.",
+  "admission": "UNMEASURED; unchanged intake/static/native and positive/mutation reference controls required before pool addition."
+}

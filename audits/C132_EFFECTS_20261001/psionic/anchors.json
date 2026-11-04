@@ -1,0 +1,99 @@
+{
+  "schema": "cf.effect-sequence-anchors/v1",
+  "sequenceId": "psionic-c132-v43",
+  "theme": "psionic",
+  "abilityId": "mspike",
+  "abilityName": "Mind Spike",
+  "canvasSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "phaseOrder": [
+    "launch",
+    "travel",
+    "impact"
+  ],
+  "originAnchor": [
+    0.2,
+    0.55
+  ],
+  "contactAnchor": [
+    0.8,
+    0.55
+  ],
+  "phases": [
+    {
+      "phase": "launch",
+      "image": "registered/launch.png",
+      "keyedImage": "registered/launch.png",
+      "imageSha256": "266db4adaceafc41b4b737f05dcb9bbb74663a578e4b1ef5b807bf606000237f",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 146,
+        "y": 440,
+        "width": 257,
+        "height": 245
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "registered/travel.png",
+      "keyedImage": "registered/travel.png",
+      "imageSha256": "089cc2311ad3be605eaaa8dbe6df2318e8ddd6f7365ff6e4dc08d7049be3e8e2",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 119,
+        "y": 401,
+        "width": 680,
+        "height": 317
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "registered/impact.png",
+      "keyedImage": "registered/impact.png",
+      "imageSha256": "1d243572ac12ca9967169649cd001a78548d8280ecf119e59bd97055cb966e39",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 574,
+        "y": 406,
+        "width": 325,
+        "height": 311
+      }
+    }
+  ],
+  "qualityAccepted": false
+}

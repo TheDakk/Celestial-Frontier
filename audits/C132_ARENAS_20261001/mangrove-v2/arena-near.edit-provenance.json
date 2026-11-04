@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c132-arena-targeted-edit/v1",
+  "reason": "Existing intake refused NEAR covers fighting path: remove high side foliage at the painting source, keep terrain in the bottom edge only.",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/mangrove/arena-near.prompt.txt",
+    "sha256": "82760c7030b255d5569031d6dc6b61172fbccdb6d7d96d8e617a3c4629b7ae44"
+  },
+  "editPrompt": {
+    "path": "audits/C132_ARENAS_20261001/mangrove-v2/arena-near.prompt.txt",
+    "sha256": "61174026bd388f9ee07ab8d4acd7a91e32650d3ab9c9ebd734388bd348c098e3"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/mangrove/arena-near.png",
+      "sha256": "23632e666d36f769cd2e018eb94d880f432dcfb13b89c6b40c45757fbd279cfa"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the original arena master; the actual sole image input was the original painting named above."
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-afc66fd6-fc3c-4ba1-8fd8-0474ecd7e867.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "The edited generator output is retained byte-for-byte; the source painting is unchanged in its own original directory.",
+  "qualityAccepted": false
+}

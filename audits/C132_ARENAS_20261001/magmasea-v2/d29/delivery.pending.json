@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "magmasea-v2",
+  "biome": "magmasea",
+  "recipe": "audits/C132_ARENAS_20261001/magmasea-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/magmasea-v2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/magmasea-v2/arena-far.png",
+      "runtimeSha256": "259bb7d86ca0a3f761542c908f132eb45da5349558569915baa18749622b1129"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/magmasea-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-mid.png",
+      "runtimeSha256": "591f80012e1b2e283622b699589b3cd062498bb2f4d0907704e7b35dd7bb09b0"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/magmasea-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/magmasea-v2/keyed/arena-near.png",
+      "runtimeSha256": "2d9c0b7caab2b9db91961d8b258e2ef337e9af295556c22d23ce205311e9c4c2"
+    }
+  }
+}

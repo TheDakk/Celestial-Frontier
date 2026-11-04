@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "graben",
+  "biome": "graben",
+  "recipe": "audits/C132_ARENAS_20261001/graben/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/graben/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/graben/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/graben/arena-far.png",
+      "runtimeSha256": "ef48ccb59112d83c093941c875229acb9d2ff4ac94493a3950d5c5e404ae5274"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/graben/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/graben/keyed/arena-mid.png",
+      "runtimeSha256": "795f6281f40966c6ceb661b02c283779d2f4512756a6875ea0db2410cb4aba88"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/graben/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/graben/keyed/arena-near.png",
+      "runtimeSha256": "dc2558067785b99d71c957c116aba14c341fd7b03cfb62331b8f47806d47874b"
+    }
+  }
+}

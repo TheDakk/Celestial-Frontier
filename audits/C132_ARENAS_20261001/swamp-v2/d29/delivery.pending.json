@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "swamp-v2",
+  "biome": "swamp",
+  "recipe": "audits/C132_ARENAS_20261001/swamp-v2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/swamp-v2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/swamp-v2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/swamp-v2/arena-far.png",
+      "runtimeSha256": "3d9e1611ab46cfa4b7c08ece9ec3b46619c38100bc1bf44cfa5283e0dc3b1cff"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/swamp-v2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/swamp-v2/keyed/arena-mid.png",
+      "runtimeSha256": "0a7d6fc8b1c5b7dccca8987cb0e81059194f497f9866bc166aa83c77dc2e6301"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/swamp-v2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/swamp-v2/keyed/arena-near.png",
+      "runtimeSha256": "3f05c645175b83cbfd0c5c0510f3e14b25d6e959554a9f9bbe4e5b85abc1b823"
+    }
+  }
+}

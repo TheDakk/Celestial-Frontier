@@ -1,0 +1,7 @@
+{
+  "mutation": "remove painted-support argument from canonical bird author",
+  "exitCode": 1,
+  "failed": 7,
+  "sourceRestoredSha256": "908020d9ec2c499fef7551224b81b8032ab81f41a12760f025b7e0b0c0a406c1",
+  "limitsUnchanged": true
+}

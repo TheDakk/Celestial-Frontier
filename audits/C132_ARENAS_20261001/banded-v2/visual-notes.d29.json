@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "banded-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/banded-v2/arena-composed-review.png"
+  ],
+  "findings": [
+    "Native 1672×941 composite inspected full size. The edited FAR has no visible planets or moons and retains continuous cream-tan atmospheric cloud bands.",
+    "The MID produces conspicuous thin clipped wisps and hard step-like cloud edges on both sides. A flat brighter registration band spans the middle and the NEAR forms another bright horizontal seam at the bottom. Small pink/key-colored remnants remain along some cloud contours.",
+    "The layers are cloud AIR imagery, not solid ground; proper airborne creature anchoring and physical-medium compatibility are not proven by alpha checks.",
+    "Visual acceptance, parallax continuity, moving-rig occlusion and native performance remain held. qualityAccepted stays false."
+  ]
+}

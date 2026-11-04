@@ -1,0 +1,1001 @@
+{
+  "schema": "cf.c163-authoring-ownership-proof/v1",
+  "rows": [
+    {
+      "id": "hummingbird",
+      "masterSha256": "6753771f152fc12283425a4c350c5f2d3419da7f3266102d8e403cbffe4f8f3d",
+      "originalAuthoringSha256": "02ffb6b613b6c5de480859d0963c52fc22ea57c877fd38699fccd23b7801d72e",
+      "candidateAuthoringSha256": "353b56e749be8ad6653c5581a288e19f8f745f4f34e5bcba6b206f19d07edd44",
+      "sourceRgbaChanges": 0,
+      "paintPixelsRemoved": 0,
+      "paintPixelsAdded": 0,
+      "priorNonRemainderOwnersChanged": 0,
+      "movedPixels": [
+        {
+          "to": "beak",
+          "joint": "beak",
+          "pixels": 84
+        },
+        {
+          "to": "head",
+          "joint": "head",
+          "pixels": 2462
+        },
+        {
+          "to": "neck-upper",
+          "joint": "neck1",
+          "pixels": 1183
+        }
+      ],
+      "deterministicReplay": true,
+      "compiledLabelsEqual": true,
+      "compiledKeyedSourceEqual": true,
+      "unchangedCap": 0.05,
+      "remainingCapOutcome": "PASS",
+      "remainingMinorIslands": [
+        {
+          "pixels": 61,
+          "to": 15,
+          "border": {
+            "15": 8
+          }
+        },
+        {
+          "pixels": 69,
+          "to": 15,
+          "border": {
+            "15": 8
+          }
+        },
+        {
+          "pixels": 1,
+          "to": null,
+          "border": {}
+        },
+        {
+          "pixels": 1,
+          "to": 4,
+          "border": {
+            "2": 1,
+            "4": 2
+          }
+        },
+        {
+          "pixels": 34,
+          "to": 2,
+          "border": {
+            "2": 7
+          }
+        },
+        {
+          "pixels": 1,
+          "to": null,
+          "border": {}
+        },
+        {
+          "pixels": 24,
+          "to": 1,
+          "border": {
+            "1": 5
+          }
+        },
+        {
+          "pixels": 9,
+          "to": 1,
+          "border": {
+            "1": 2
+          }
+        }
+      ],
+      "remainingRemainderComponents": [
+        {
+          "pixels": 20682,
+          "bounds": [
+            480,
+            589,
+            755,
+            798
+          ],
+          "border": {
+            "chest": 295,
+            "near-wing-flight": 259,
+            "tail": 193,
+            "far-thigh": 148,
+            "near-thigh": 146,
+            "near-wing-root": 95,
+            "far-shin": 8
+          }
+        },
+        {
+          "pixels": 69,
+          "bounds": [
+            254,
+            809,
+            279,
+            821
+          ],
+          "border": {
+            "tail": 8
+          }
+        },
+        {
+          "pixels": 61,
+          "bounds": [
+            241,
+            805,
+            263,
+            815
+          ],
+          "border": {
+            "tail": 8
+          }
+        },
+        {
+          "pixels": 34,
+          "bounds": [
+            637,
+            855,
+            647,
+            861
+          ],
+          "border": {
+            "far-foot": 7
+          }
+        },
+        {
+          "pixels": 24,
+          "bounds": [
+            639,
+            867,
+            649,
+            873
+          ],
+          "border": {
+            "near-foot": 5
+          }
+        },
+        {
+          "pixels": 9,
+          "bounds": [
+            638,
+            876,
+            643,
+            880
+          ],
+          "border": {
+            "near-foot": 2
+          }
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            239,
+            816,
+            239,
+            816
+          ],
+          "border": {}
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            671,
+            846,
+            671,
+            846
+          ],
+          "border": {
+            "far-shin": 2,
+            "far-foot": 1
+          }
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            747,
+            864,
+            747,
+            864
+          ],
+          "border": {}
+        }
+      ],
+      "controls": [
+        "original cap refusal reproduced",
+        "remove correction restores refusal",
+        "non-remainder theft refused",
+        "paint deletion refused",
+        "independent label replay equals compiled label",
+        "exact keyed RGBA equality"
+      ],
+      "qualityAccepted": false,
+      "nativeRun": false
+    },
+    {
+      "id": "wild-pony",
+      "masterSha256": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485",
+      "originalAuthoringSha256": "bcd9522c773ca5c066f585e5529cbb56980d7aa1a29282e2157c31fabad1ea98",
+      "candidateAuthoringSha256": "6600e471495ca21c0e76b6ae3c5730c8db96bf0854acbdfcefa27d70b866d0a3",
+      "sourceRgbaChanges": 0,
+      "paintPixelsRemoved": 0,
+      "paintPixelsAdded": 0,
+      "priorNonRemainderOwnersChanged": 0,
+      "movedPixels": [
+        {
+          "to": "head",
+          "joint": "head",
+          "pixels": 1644
+        }
+      ],
+      "deterministicReplay": true,
+      "compiledLabelsEqual": true,
+      "compiledKeyedSourceEqual": true,
+      "unchangedCap": 0.05,
+      "remainingCapOutcome": "PASS",
+      "remainingMinorIslands": [
+        {
+          "pixels": 252,
+          "to": 24,
+          "border": {
+            "24": 22
+          }
+        },
+        {
+          "pixels": 45,
+          "to": 4,
+          "border": {
+            "2": 10,
+            "4": 23
+          }
+        },
+        {
+          "pixels": 9,
+          "to": 24,
+          "border": {
+            "24": 1
+          }
+        },
+        {
+          "pixels": 20,
+          "to": 24,
+          "border": {
+            "24": 11
+          }
+        },
+        {
+          "pixels": 3,
+          "to": null,
+          "border": {}
+        },
+        {
+          "pixels": 1,
+          "to": null,
+          "border": {}
+        },
+        {
+          "pixels": 7,
+          "to": 24,
+          "border": {
+            "24": 4
+          }
+        },
+        {
+          "pixels": 1,
+          "to": null,
+          "border": {}
+        },
+        {
+          "pixels": 170,
+          "to": 24,
+          "border": {
+            "23": 16,
+            "24": 41,
+            "29": 6
+          }
+        },
+        {
+          "pixels": 1,
+          "to": 22,
+          "border": {
+            "22": 1
+          }
+        },
+        {
+          "pixels": 1,
+          "to": null,
+          "border": {}
+        },
+        {
+          "pixels": 21,
+          "to": 27,
+          "border": {
+            "27": 15
+          }
+        },
+        {
+          "pixels": 459,
+          "to": 8,
+          "border": {
+            "8": 52,
+            "9": 47,
+            "17": 3
+          }
+        },
+        {
+          "pixels": 33,
+          "to": 17,
+          "border": {
+            "17": 27
+          }
+        },
+        {
+          "pixels": 16,
+          "to": 16,
+          "border": {
+            "16": 6,
+            "17": 6
+          }
+        },
+        {
+          "pixels": 3,
+          "to": 15,
+          "border": {
+            "15": 3,
+            "16": 2
+          }
+        },
+        {
+          "pixels": 2,
+          "to": 7,
+          "border": {
+            "7": 3
+          }
+        },
+        {
+          "pixels": 271,
+          "to": 7,
+          "border": {
+            "6": 22,
+            "7": 51
+          }
+        },
+        {
+          "pixels": 1,
+          "to": 15,
+          "border": {
+            "15": 2
+          }
+        },
+        {
+          "pixels": 213,
+          "to": 15,
+          "border": {
+            "14": 11,
+            "15": 67
+          }
+        },
+        {
+          "pixels": 1,
+          "to": 19,
+          "border": {
+            "19": 2
+          }
+        },
+        {
+          "pixels": 1,
+          "to": 19,
+          "border": {
+            "19": 2
+          }
+        },
+        {
+          "pixels": 2,
+          "to": 19,
+          "border": {
+            "19": 3
+          }
+        },
+        {
+          "pixels": 1,
+          "to": 19,
+          "border": {
+            "19": 2
+          }
+        },
+        {
+          "pixels": 1,
+          "to": 7,
+          "border": {
+            "7": 1
+          }
+        },
+        {
+          "pixels": 216,
+          "to": 11,
+          "border": {
+            "11": 49
+          }
+        },
+        {
+          "pixels": 17,
+          "to": 7,
+          "border": {
+            "7": 10
+          }
+        },
+        {
+          "pixels": 161,
+          "to": 15,
+          "border": {
+            "15": 45
+          }
+        },
+        {
+          "pixels": 51,
+          "to": 11,
+          "border": {
+            "11": 29
+          }
+        },
+        {
+          "pixels": 11,
+          "to": 18,
+          "border": {
+            "18": 7,
+            "19": 4
+          }
+        },
+        {
+          "pixels": 53,
+          "to": 6,
+          "border": {
+            "6": 13,
+            "7": 2
+          }
+        },
+        {
+          "pixels": 1,
+          "to": 11,
+          "border": {
+            "11": 1
+          }
+        },
+        {
+          "pixels": 1,
+          "to": 6,
+          "border": {
+            "6": 2
+          }
+        },
+        {
+          "pixels": 21,
+          "to": 6,
+          "border": {
+            "6": 16
+          }
+        },
+        {
+          "pixels": 13,
+          "to": 15,
+          "border": {
+            "15": 4
+          }
+        },
+        {
+          "pixels": 8,
+          "to": 14,
+          "border": {
+            "14": 6,
+            "15": 1
+          }
+        },
+        {
+          "pixels": 72,
+          "to": 11,
+          "border": {
+            "11": 19
+          }
+        },
+        {
+          "pixels": 33,
+          "to": 11,
+          "border": {
+            "10": 8,
+            "11": 11
+          }
+        }
+      ],
+      "remainingRemainderComponents": [
+        {
+          "pixels": 27541,
+          "bounds": [
+            518,
+            455,
+            691,
+            726
+          ],
+          "border": {
+            "pelvis": 232,
+            "neck": 189,
+            "chest": 162,
+            "fore-near-root": 75,
+            "hind-far-root": 72,
+            "root": 42
+          }
+        },
+        {
+          "pixels": 459,
+          "bounds": [
+            401,
+            711,
+            448,
+            762
+          ],
+          "border": {
+            "hind-near-knee": 52,
+            "hind-near-root": 47,
+            "hind-far-root": 3
+          }
+        },
+        {
+          "pixels": 271,
+          "bounds": [
+            377,
+            811,
+            390,
+            863
+          ],
+          "border": {
+            "hind-near-ankle": 51,
+            "hind-near-paw": 22
+          }
+        },
+        {
+          "pixels": 252,
+          "bounds": [
+            863,
+            341,
+            883,
+            360
+          ],
+          "border": {
+            "neck": 22
+          }
+        },
+        {
+          "pixels": 216,
+          "bounds": [
+            623,
+            835,
+            639,
+            882
+          ],
+          "border": {
+            "fore-near-ankle": 49
+          }
+        },
+        {
+          "pixels": 213,
+          "bounds": [
+            524,
+            818,
+            559,
+            859
+          ],
+          "border": {
+            "hind-far-ankle": 67,
+            "hind-far-paw": 11
+          }
+        },
+        {
+          "pixels": 170,
+          "bounds": [
+            851,
+            560,
+            864,
+            592
+          ],
+          "border": {
+            "neck": 41,
+            "head": 16,
+            "chest": 6
+          }
+        },
+        {
+          "pixels": 161,
+          "bounds": [
+            480,
+            845,
+            497,
+            875
+          ],
+          "border": {
+            "hind-far-ankle": 45
+          }
+        },
+        {
+          "pixels": 72,
+          "bounds": [
+            641,
+            880,
+            651,
+            892
+          ],
+          "border": {
+            "fore-near-ankle": 19
+          }
+        },
+        {
+          "pixels": 53,
+          "bounds": [
+            335,
+            865,
+            342,
+            875
+          ],
+          "border": {
+            "hind-near-paw": 13,
+            "hind-near-ankle": 2
+          }
+        },
+        {
+          "pixels": 51,
+          "bounds": [
+            684,
+            856,
+            696,
+            871
+          ],
+          "border": {
+            "fore-near-ankle": 29
+          }
+        },
+        {
+          "pixels": 45,
+          "bounds": [
+            922,
+            350,
+            935,
+            363
+          ],
+          "border": {
+            "ear-far-tip": 23,
+            "ear-near-tip": 10
+          }
+        },
+        {
+          "pixels": 33,
+          "bounds": [
+            515,
+            728,
+            525,
+            743
+          ],
+          "border": {
+            "hind-far-root": 27
+          }
+        },
+        {
+          "pixels": 33,
+          "bounds": [
+            653,
+            891,
+            661,
+            898
+          ],
+          "border": {
+            "fore-near-ankle": 11,
+            "fore-near-paw": 8
+          }
+        },
+        {
+          "pixels": 21,
+          "bounds": [
+            369,
+            671,
+            373,
+            686
+          ],
+          "border": {
+            "tail1": 15
+          }
+        },
+        {
+          "pixels": 21,
+          "bounds": [
+            346,
+            878,
+            352,
+            886
+          ],
+          "border": {
+            "hind-near-paw": 16
+          }
+        },
+        {
+          "pixels": 20,
+          "bounds": [
+            750,
+            391,
+            761,
+            396
+          ],
+          "border": {
+            "neck": 11
+          }
+        },
+        {
+          "pixels": 17,
+          "bounds": [
+            324,
+            841,
+            326,
+            850
+          ],
+          "border": {
+            "hind-near-ankle": 10
+          }
+        },
+        {
+          "pixels": 16,
+          "bounds": [
+            511,
+            752,
+            513,
+            761
+          ],
+          "border": {
+            "hind-far-root": 6,
+            "hind-far-knee": 6
+          }
+        },
+        {
+          "pixels": 13,
+          "bounds": [
+            499,
+            878,
+            503,
+            882
+          ],
+          "border": {
+            "hind-far-ankle": 4
+          }
+        },
+        {
+          "pixels": 11,
+          "bounds": [
+            870,
+            858,
+            873,
+            862
+          ],
+          "border": {
+            "fore-far-paw": 7,
+            "fore-far-ankle": 4
+          }
+        },
+        {
+          "pixels": 9,
+          "bounds": [
+            781,
+            377,
+            787,
+            379
+          ],
+          "border": {
+            "neck": 1
+          }
+        },
+        {
+          "pixels": 8,
+          "bounds": [
+            511,
+            880,
+            513,
+            884
+          ],
+          "border": {
+            "hind-far-paw": 6,
+            "hind-far-ankle": 1
+          }
+        },
+        {
+          "pixels": 7,
+          "bounds": [
+            683,
+            444,
+            685,
+            446
+          ],
+          "border": {
+            "neck": 4
+          }
+        },
+        {
+          "pixels": 3,
+          "bounds": [
+            746,
+            397,
+            748,
+            397
+          ],
+          "border": {}
+        },
+        {
+          "pixels": 3,
+          "bounds": [
+            463,
+            783,
+            463,
+            785
+          ],
+          "border": {
+            "hind-far-ankle": 3,
+            "hind-far-knee": 2
+          }
+        },
+        {
+          "pixels": 2,
+          "bounds": [
+            383,
+            808,
+            383,
+            809
+          ],
+          "border": {
+            "hind-near-ankle": 3
+          }
+        },
+        {
+          "pixels": 2,
+          "bounds": [
+            853,
+            829,
+            853,
+            830
+          ],
+          "border": {
+            "fore-far-ankle": 3
+          }
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            744,
+            398,
+            744,
+            398
+          ],
+          "border": {}
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            625,
+            484,
+            625,
+            484
+          ],
+          "border": {}
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            917,
+            582,
+            917,
+            582
+          ],
+          "border": {
+            "jaw": 1
+          }
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            865,
+            594,
+            865,
+            594
+          ],
+          "border": {}
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            523,
+            816,
+            523,
+            816
+          ],
+          "border": {
+            "hind-far-ankle": 2
+          }
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            851,
+            825,
+            851,
+            825
+          ],
+          "border": {
+            "fore-far-ankle": 2
+          }
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            852,
+            827,
+            852,
+            827
+          ],
+          "border": {
+            "fore-far-ankle": 2
+          }
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            854,
+            832,
+            854,
+            832
+          ],
+          "border": {
+            "fore-far-ankle": 2
+          }
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            322,
+            834,
+            322,
+            834
+          ],
+          "border": {
+            "hind-near-ankle": 1
+          }
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            697,
+            875,
+            697,
+            875
+          ],
+          "border": {
+            "fore-near-ankle": 1
+          }
+        },
+        {
+          "pixels": 1,
+          "bounds": [
+            345,
+            876,
+            345,
+            876
+          ],
+          "border": {
+            "hind-near-paw": 2
+          }
+        }
+      ],
+      "controls": [
+        "original cap refusal reproduced",
+        "remove correction restores refusal",
+        "non-remainder theft refused",
+        "paint deletion refused",
+        "independent label replay equals compiled label",
+        "exact keyed RGBA equality"
+      ],
+      "qualityAccepted": false,
+      "nativeRun": false
+    }
+  ],
+  "qualityAccepted": false
+}

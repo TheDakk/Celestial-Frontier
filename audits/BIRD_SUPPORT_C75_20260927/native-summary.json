@@ -1,0 +1,12 @@
+{
+  "status": "DIAGNOSTIC_PASS",
+  "source": "cabca3e397aa677bb83401a27c5a53ab6821dc91",
+  "frames": 780,
+  "cpuP95Ms": 5.5,
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "supports": "observed",
+  "visual": "Assembled head/neck/body in hit and faint; a small upright feather fragment remains over back in faint. No whole-painting or Dakk acceptance."
+}

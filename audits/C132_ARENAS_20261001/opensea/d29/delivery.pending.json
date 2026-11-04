@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "opensea",
+  "biome": "opensea",
+  "recipe": "audits/C132_ARENAS_20261001/opensea/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/opensea/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/opensea/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/opensea/arena-far.png",
+      "runtimeSha256": "d012ee6d9577804c931d1cff84bd9467944d63ca76036358bca96cb1906538b6"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/opensea/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/opensea/keyed/arena-mid.png",
+      "runtimeSha256": "fa870f9646b4f230e928c668e1c65daad5db2e4dc0fa2d54735db684b6e4d65d"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/opensea/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/opensea/keyed/arena-near.png",
+      "runtimeSha256": "813f1d875a14322328844717a493738d87cc0d6b82256a2efbbe48dee98e4c5d"
+    }
+  }
+}

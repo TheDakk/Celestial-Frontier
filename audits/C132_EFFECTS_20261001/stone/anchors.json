@@ -1,0 +1,99 @@
+{
+  "schema": "cf.effect-sequence-anchors/v1",
+  "sequenceId": "stone-c132-v43",
+  "theme": "stone",
+  "abilityId": "bould",
+  "abilityName": "Boulder Charge",
+  "canvasSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "phaseOrder": [
+    "launch",
+    "travel",
+    "impact"
+  ],
+  "originAnchor": [
+    0.2,
+    0.55
+  ],
+  "contactAnchor": [
+    0.8,
+    0.55
+  ],
+  "phases": [
+    {
+      "phase": "launch",
+      "image": "registered/launch.png",
+      "keyedImage": "registered/launch.png",
+      "imageSha256": "c2fe80c792ee44c4f89bb3945a91175ef03e31d40b660d1ef1ec927159ecf141",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 119,
+        "y": 438,
+        "width": 268,
+        "height": 198
+      }
+    },
+    {
+      "phase": "travel",
+      "image": "registered/travel.png",
+      "keyedImage": "registered/travel.png",
+      "imageSha256": "b597f9beba4e53d44451af1039e9c04b2e165e57b5eeac66e9cecd51f00161d0",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 143,
+        "y": 411,
+        "width": 695,
+        "height": 268
+      }
+    },
+    {
+      "phase": "impact",
+      "image": "registered/impact.png",
+      "keyedImage": "registered/impact.png",
+      "imageSha256": "7d752451427474c4a952cecbfe906b1767ca4f3333de0bcbd28b2a88c560dd39",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "alphaBoundsPixels": {
+        "x": 515,
+        "y": 374,
+        "width": 348,
+        "height": 305
+      }
+    }
+  ],
+  "qualityAccepted": false
+}

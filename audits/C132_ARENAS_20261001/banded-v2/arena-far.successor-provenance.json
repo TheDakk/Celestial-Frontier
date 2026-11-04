@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c132-arena-painting-successor/v1",
+  "reason": "Remove unbound giant planet and two moons from the FAR cloud-only medium.",
+  "mode": "targeted-edit",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/banded/arena-far.prompt.txt",
+    "sha256": "38f439da2b5de6546c8d74298aba69cf02c5aacb95c63c65c82053e20fc813fe"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/banded-v2/arena-far.prompt.txt",
+    "sha256": "190ec87a3cee249fc39df9f5ccf9aa9170ea6eecbf46808cd5446fea0a0f6b3f"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/C132_ARENAS_20261001/banded/arena-far.png",
+      "sha256": "73585f636175feb9cc1f9b7fc37387c38c6d0def37ffcf71eb87ac6565858019"
+    }
+  ],
+  "styleAuthority": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "mode": "Inherited locked style through the unchanged predecessor; actual sole image input is the predecessor named above."
+  },
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/banded/arena-far.png",
+    "sha256": "73585f636175feb9cc1f9b7fc37387c38c6d0def37ffcf71eb87ac6565858019"
+  },
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-25d538c6-054e-43a5-ad2d-82250954fa7b.png",
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "meaningOfUnmodified": "Generated successor bytes are retained exactly. The predecessor is unchanged. No post-generation resizing, padding, cropping or upscaling.",
+  "qualityAccepted": false
+}

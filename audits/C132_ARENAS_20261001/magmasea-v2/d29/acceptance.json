@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-template-acceptance/v1",
+  "qualityAccepted": true,
+  "acceptanceAuthority": "Dakk, 2026-10-02 — accepted all 36 C132 D29 arenas directly in the Claude session (AskUserQuestion answer \"Accept all 36\") from the composed review sheets; Codex visual holds stay noted for repaints",
+  "groundLineNormalized": 0.78,
+  "plates": [
+    {
+      "name": "arena-far",
+      "masterSha256": "259bb7d86ca0a3f761542c908f132eb45da5349558569915baa18749622b1129",
+      "qualityAccepted": true
+    },
+    {
+      "name": "arena-mid",
+      "masterSha256": "692c3a0fecf585d47282dac521091de8719d17c022933af14badb342613df6d5",
+      "qualityAccepted": true
+    },
+    {
+      "name": "arena-near",
+      "masterSha256": "87fbc7ef55d2aff2e33c4e2c53818974a00b848fbbdbc278e44322d22d798759",
+      "qualityAccepted": true
+    }
+  ],
+  "status": "ACCEPTED"
+}

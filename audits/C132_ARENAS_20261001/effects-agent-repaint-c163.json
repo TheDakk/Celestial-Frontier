@@ -1,0 +1,123 @@
+{
+  "schema": "cf.c163-arena-repaint-delivery/v1",
+  "status": "THREE_MECHANICAL_CANDIDATES_WITH_REMAINING_VISUAL_HOLDS",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeProof": false,
+  "newOriginals": 8,
+  "selectedNewOriginals": 5,
+  "heldNewOriginals": 3,
+  "reusedOriginals": 4,
+  "canvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "originalsModified": false,
+  "runtimeEncoding": "D30 q88 WebP, decoded alpha byte-identical; PNG masters/runtimes retained",
+  "totals": {
+    "pngRuntimeBytes": 19420984,
+    "webpRuntimeBytes": 1924734
+  },
+  "rows": [
+    {
+      "id": "marsh-r3",
+      "predecessor": "marsh",
+      "pngManifest": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/delivery.pending.json",
+        "sha256": "4b785076490181bad2c900bbd9bca6f35b6d9862af2671a6fe93631cf8d43161",
+        "bytes": 1032
+      },
+      "webpManifest": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/d29/delivery.webp.pending.json",
+        "sha256": "b9d978f7f7e30038c3d2a1f8aea60b3ec81e17d1dd1d1c5cda7e1b04ebf60b35",
+        "bytes": 1761
+      },
+      "provenance": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/edit-provenance.json",
+        "sha256": "45325e5f8fde28ec27a24559906557cf4c4fdaece1c0647baabe0f386b750e7b",
+        "bytes": 4297
+      },
+      "visualReview": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/visual-notes.d29.json",
+        "sha256": "cd56809e4e0cdcde7482be89d347980aa656774cc6bf69cb00fd6ed2e6a36059",
+        "bytes": 1442
+      },
+      "webpReview": {
+        "path": "audits/C132_ARENAS_20261001/marsh-r3/webp-visual-review.json",
+        "sha256": "512f4b61c13bc8b7f686e5dfd8f87c5c591ae87663de5224e7d75f8d960d8a4a",
+        "bytes": 1762
+      },
+      "pngBytes": 6553754,
+      "webpBytes": 647138,
+      "qualityAccepted": false,
+      "registered": false
+    },
+    {
+      "id": "dunesea-r2",
+      "predecessor": "dunesea",
+      "pngManifest": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/d29/delivery.pending.json",
+        "sha256": "c40681b99453aae25d668e362ec4be5275b45569afbaaee3987db73f8d299de6",
+        "bytes": 1052
+      },
+      "webpManifest": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/d29/delivery.webp.pending.json",
+        "sha256": "82f667b95cd2bd25f9e889d4fee3a3f35356ba1e3546d0b56ee7b2f33e033dac",
+        "bytes": 1789
+      },
+      "provenance": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/edit-provenance.json",
+        "sha256": "0bb0c4164a76cd7c5905dddf33d80db7f1cd9fb54c16fc81cefb8bc6e9a18d68",
+        "bytes": 4327
+      },
+      "visualReview": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/visual-notes.d29.json",
+        "sha256": "e41d76c32f0b37473238ca9bea55100799b94a9d4cf56a3688d35484347bbe2d",
+        "bytes": 1453
+      },
+      "webpReview": {
+        "path": "audits/C132_ARENAS_20261001/dunesea-r2/webp-visual-review.json",
+        "sha256": "7b2d4ca59be097538714496495d92c1112563d39c1e46768ec9ac9b26d880c38",
+        "bytes": 1772
+      },
+      "pngBytes": 5888432,
+      "webpBytes": 526914,
+      "qualityAccepted": false,
+      "registered": false
+    },
+    {
+      "id": "freshwater-lake-v3",
+      "predecessor": "freshwater-lake-v2",
+      "pngManifest": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/delivery.pending.json",
+        "sha256": "db26ada40299d62006fee66413dc2475d0630da262f6fe54575fcdba926e2b3c",
+        "bytes": 1126
+      },
+      "webpManifest": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/d29/delivery.webp.pending.json",
+        "sha256": "7c90df7b17778c929b27d8faaddfbac2811e3412b0ce0c6ae5bda4a679001e63",
+        "bytes": 1895
+      },
+      "provenance": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/edit-provenance.json",
+        "sha256": "186ef5da9f3e6a0af57e98f17bd5de9a63b311e4350974fe7589472d20a90630",
+        "bytes": 3702
+      },
+      "visualReview": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/visual-notes.d29.json",
+        "sha256": "02ea9d8c517162b264d97dc2e88250eb9d6853a25ae97f8ec43b437544a12b96",
+        "bytes": 1455
+      },
+      "webpReview": {
+        "path": "audits/C132_ARENAS_20261001/freshwater-lake-v3/webp-visual-review.json",
+        "sha256": "e48ed5e4d470173d5443be777ace5e495e6f4ccc0824c7d34cc3403e81581391",
+        "bytes": 1811
+      },
+      "pngBytes": 6978798,
+      "webpBytes": 750682,
+      "qualityAccepted": false,
+      "registered": false
+    }
+  ],
+  "next": "Independent full-size scoring of the recorded seam/fringe issues and new Dakk acceptance before any replacement registration. Existing accepted originals remain active."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "jungle-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/jungle-v2/arena-composed-review.png"
+  ],
+  "findings": [
+    "Full-size existing 1672×941 composite re-inspected under D29. The selected MID avoids the earlier chopped trunk and preserves a broad earthen fighting band.",
+    "Bright/magenta remnants remain on side foliage and leaves; the dense forest, cliffs and waterfall compete for silhouette attention behind the battle. The lower NEAR band has a distinct texture/depth transition.",
+    "D29 removes only the native-size rejection. Unchanged masters, intake and earlier refusal evidence are preserved. Parallax, occlusion, native performance and quality acceptance remain unproven."
+  ]
+}

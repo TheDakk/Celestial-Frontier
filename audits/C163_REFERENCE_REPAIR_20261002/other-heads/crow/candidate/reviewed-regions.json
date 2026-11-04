@@ -1,0 +1,66 @@
+{
+  "schema": "cf.c163-reviewed-authoring-regions/v1",
+  "id": "crow",
+  "sourceAuthoring": {
+    "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/original/authoring.json",
+    "sha256": "ac8ef654fc13162cd2b104c90e2f4389fbcebb7873868edf4633afad9e1014e2"
+  },
+  "candidateAuthoringSha256": "d3cd9d981c1ce7543c955d842ec07d67c544f5a1d50927c123922e1ca910f74f",
+  "sourceMasterSha256": "4c92bd3b678988c0c0678dd7d6b60df544f99fd7f060b8c1d181dac0afdb5387",
+  "additions": [
+    {
+      "id": "reviewed-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          660,
+          420
+        ],
+        [
+          754,
+          420
+        ],
+        [
+          754,
+          477
+        ],
+        [
+          660,
+          477
+        ]
+      ],
+      "reason": "Dorsal nape feathers connect head and neck, not torso."
+    },
+    {
+      "id": "reviewed-bill",
+      "joint": "beak",
+      "layer": "near",
+      "polygonPx": [
+        [
+          885,
+          403
+        ],
+        [
+          921,
+          403
+        ],
+        [
+          921,
+          417
+        ],
+        [
+          885,
+          417
+        ]
+      ],
+      "reason": "Upper bill rim outside old beak polygon; preserve painted source."
+    }
+  ],
+  "landmarksChanged": false,
+  "existingPolygonsChanged": false,
+  "sourcePixelsChanged": false,
+  "repairCapUnchanged": 0.05,
+  "qualityAccepted": false,
+  "remaining": "Exact ownership conservation, deterministic replay, unchanged intake/static and actual moving-paint/native review still required."
+}

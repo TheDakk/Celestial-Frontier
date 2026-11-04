@@ -1,0 +1,74 @@
+{
+  "id": "dunesea",
+  "biome": "dunesea",
+  "status": "HELD_NATIVE_RESOLUTION_AND_VISUAL_REVIEW",
+  "qualityAccepted": false,
+  "manifest": {
+    "path": "audits/C132_ARENAS_20261001/dunesea/delivery.pending.json",
+    "sha256": "126177a0864de1449c6f2fcdf038329e89b9abbcc58507e857097f5fd193bd42"
+  },
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "requiredCanvas": {
+    "width": 2560,
+    "height": 1440
+  },
+  "masterCandidate": {
+    "ok": false,
+    "failures": [
+      "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "runtimeCandidate": {
+    "ok": false,
+    "failures": [
+      "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "canvas: 1672×941 ≠ the kit's 2560×1440 (three separately painted 2560 × 1440 masters)",
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "dunesea"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "review": {
+    "method": "Full composition inspected at original pixel dimensions; not a film or player-occlusion proof",
+    "image": {
+      "path": "audits/C132_ARENAS_20261001/dunesea/arena-composed-review.png",
+      "sha256": "2532f21c4f1fdd7eab51f68e7732b8210b1b1150d5abcec1fc02495b5d95fa85"
+    },
+    "findings": [
+      "Selected FAR replaces the rejected sky with invented moons.",
+      "Layered terrain contours and mauve boundary bands remain conspicuous; shared light/ground needs visual refinement."
+    ]
+  },
+  "remaining": [
+    "Native 2560×1440 separately generated masters",
+    "Visual repair and independent full-size scoring",
+    "Dakk acceptance",
+    "Claude route/wiring review and native battle proof"
+  ]
+}

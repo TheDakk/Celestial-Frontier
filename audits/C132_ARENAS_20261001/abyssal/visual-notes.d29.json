@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "abyssal",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/abyssal/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/abyssal/arena-far.png",
+    "audits/C132_ARENAS_20261001/abyssal/arena-mid.png",
+    "audits/C132_ARENAS_20261001/abyssal/arena-near.png"
+  ],
+  "findings": [
+    "All three originals and full native1672\u00d7941 composition inspected. Dark blue abyssal rock walls and seafloor provide distinct depth; static fighting stands remain unobstructed.",
+    "MID and NEAR introduce repeated rock ridges and a visible horizontal texture edge near the lower frame. The near foreground is substantially darker than the illuminated center.",
+    "Small high-chroma remnants are visible around the side tube-like formations. Dark combatant readability, movement occlusion and native battle appearance still need independent testing; no acceptance is claimed."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "ashwaste",
+  "biome": "ashwaste",
+  "recipe": "audits/C132_ARENAS_20261001/ashwaste/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/ashwaste/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/ashwaste/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/ashwaste/arena-far.png",
+      "runtimeSha256": "22e9637990af45157cc2acd65fcf9ab514819b92d0692fa93c4787af6e4828de"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/ashwaste/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/ashwaste/keyed/arena-mid.png",
+      "runtimeSha256": "9a0ccd087db8f3b8a2b02a8aa500be25e550293cd58f42e11dbf0e2c742f8d10"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/ashwaste/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/ashwaste/keyed/arena-near.png",
+      "runtimeSha256": "f21120d29892fcef45b5ea58d9fc3defc298bfdcb29ab23e4d609f94f62a280b"
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "schema": "cf.c132-arena-batch-d29/v1",
+  "batch": "A second four",
+  "newFamilies": [
+    "milksea-v2",
+    "crystalsteppe-v2",
+    "oxide-v2",
+    "cratered-v2"
+  ],
+  "mechanicalCandidateSets": 4,
+  "acceptedSets": 0,
+  "registeredSets": 0,
+  "selectedNewOriginals": 12,
+  "newDistinctGeneratedOriginalsIncludingHeldAttempts": 18,
+  "newOriginalBytes": 35412747,
+  "nativeSelectedCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "allOriginalsPreserved": true,
+  "upscaled": false,
+  "frozenPromptBlocksVerified": true,
+  "exactSentRepairPromptsVerified": true,
+  "reports": [
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/d29/delivery-review.json",
+      "sha256": "a8dbedb1db4b84b9d30f13230dd71e5dd2c857c1e653f7d1bb0e133590a67e1d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/d29/delivery-review.json",
+      "sha256": "78f0bd75ad070446453469cd6e1fa7a0cd666ba58b5323149e3cdbfdd7c1b1be"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/d29/delivery-review.json",
+      "sha256": "28991fa5b31ff0cdd4c2ef8b016ac22c0adf8795bcff9ad080ba06548db0f6df"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/d29/delivery-review.json",
+      "sha256": "ba83726fccde504dd352c8a9f870d7cfc3054b108937ab5be6afafd126e98a2f"
+    }
+  ],
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea/arena-far.generation.json",
+      "sha256": "6aa6fac2fad72721ac5d6b74a98195efea95b9c52672de99925030874cb0b75b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea/arena-near.generation.json",
+      "sha256": "e72e1ed8cc4003dfe96367b85f431da97b83c565825782a37e960ce3f4719aa3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea/arena-mid.generation.json",
+      "sha256": "659408d554e3561a8ba12f3b18a8f562794d652546ab5f3f81d296d634f14f2f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-far.generation.json",
+      "sha256": "6bd579d92ca86d44a0cf53859a408f36a57f7ae7e7ace414d3b91ddf05c40021"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-near.generation.json",
+      "sha256": "99a17db0133c8263d3f7857f004c1fbe7cdbc907838f5113b02593ec70b8609c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/milksea-v2/arena-mid.generation.json",
+      "sha256": "659408d554e3561a8ba12f3b18a8f562794d652546ab5f3f81d296d634f14f2f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-far.generation.json",
+      "sha256": "e8f5c57324e1288f3bbebd9527ba7defb7c9587f20c3f4a1675aa8ff4ed4b3df"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-near.generation.json",
+      "sha256": "f91d1cd3e4d8c6aff5c579dd9f293f9f923bd7d912144b8ed5d9a25793a6b493"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe/arena-mid.generation.json",
+      "sha256": "1660d56f86069f9325880a628f7870a4d5fb527baea8b6c6104cf6ceb842da58"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.generation.json",
+      "sha256": "b73bc69b832ee596bff795a577857f7ad9bbb878350607d538105f0fd73f1444"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-near.generation.json",
+      "sha256": "f91d1cd3e4d8c6aff5c579dd9f293f9f923bd7d912144b8ed5d9a25793a6b493"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-mid.generation.json",
+      "sha256": "1660d56f86069f9325880a628f7870a4d5fb527baea8b6c6104cf6ceb842da58"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide/arena-far.generation.json",
+      "sha256": "45e288277c4d5f6056cd94eede0c88bc890216017834a391962b2df198bb81da"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide/arena-near.generation.json",
+      "sha256": "f36810cd8c83d57094c8af32d0d8c2639ee6474194ab2a6a4a5abc098b7b682f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide/arena-mid.generation.json",
+      "sha256": "5fe2f8476711a5fd81adb8d47f719c48a4a2afc62073658645fa4679fd047b95"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-far.generation.json",
+      "sha256": "644f30aa64e9c54822667c60970663dffc4897a3c09c2c329754fdf14032f908"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-near.generation.json",
+      "sha256": "f36810cd8c83d57094c8af32d0d8c2639ee6474194ab2a6a4a5abc098b7b682f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/oxide-v2/arena-mid.generation.json",
+      "sha256": "5fe2f8476711a5fd81adb8d47f719c48a4a2afc62073658645fa4679fd047b95"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered/arena-far.generation.json",
+      "sha256": "27766498bd19f6db1deae700eb877906b6445668b7be05315cfdf5af70cc2f1d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered/arena-near.generation.json",
+      "sha256": "197bc33aa15698005701b650382a6cce331106d722d8e31fcee8c6aed304599a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered/arena-mid.generation.json",
+      "sha256": "53a4de12730779a772b89e1405f36e08079fecd8dc0680e8e62095fe4dcb7cfb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-far.generation.json",
+      "sha256": "72d9e4ee769e5da0a2c9759af7096c1af0514159b13b8c1d7ac528a293c32191"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-near.generation.json",
+      "sha256": "5408a260aac738c4de2a61be645d812d2536c5be7341732662980e29620acb83"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/cratered-v2/arena-mid.generation.json",
+      "sha256": "53a4de12730779a772b89e1405f36e08079fecd8dc0680e8e62095fe4dcb7cfb"
+    }
+  ],
+  "helper": {
+    "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+    "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+  },
+  "freeDiskGiB": 134.66,
+  "reviewStatus": "All four remain visual-review HELD. All first attempts preserved; explicit forbidden celestial imagery and crater pseudo-lettering repaired in selected source paintings. No admission, codec-budget or native battle qualification."
+}

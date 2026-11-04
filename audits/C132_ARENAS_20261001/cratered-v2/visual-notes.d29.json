@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "cratered-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/cratered-v2/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/cratered-v2/arena-far.png",
+    "audits/C132_ARENAS_20261001/cratered-v2/arena-mid.png",
+    "audits/C132_ARENAS_20261001/cratered-v2/arena-near.png"
+  ],
+  "findings": [
+    "All originals and native1672\u00d7941 composition inspected. The repaired FAR removes unsupported celestial bodies, and replacement NEAR removes the visible pseudo-lettering from the first attempt.",
+    "MID adds another crater belt in front of FAR. NEAR creates a strong pale horizontal shelf that cuts the darker MID side rocks; thin green/mauve edge remnants remain.",
+    "Static stands are clear, but the repeated relief, seam and layer tonal mismatch need independent scoring/repair. No moving combatant or native qualification is claimed."
+  ]
+}

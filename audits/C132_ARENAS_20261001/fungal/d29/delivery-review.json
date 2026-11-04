@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "fungal",
+  "biome": "fungal",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "fungal"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "fungal"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "fungal"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-far.generation.json",
+      "sha256": "a132abceb02185b2f1105a246a3dc1d9c3b8d3dffc06dfb799cc090b8c92bf4d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-mid.generation.json",
+      "sha256": "abd07415666d60c4ab44a33f9b1c650ebb96d743f451fad64255440bb612b9ac"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-near.generation.json",
+      "sha256": "6dc6880591d23ec704c9cb119899d3b20fe3399e06ec026a9d4ec53edbaa7f6e"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-composed-review.png",
+      "sha256": "4ee954c62923c8d8473effa3e3314c191e5b84bd83daaa1eaaa10cf04acfd56c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-plates-review.png",
+      "sha256": "d392f9ccb91801965886e5efaf9e16b3e911f7d876d1d970609c618ed625b4ee"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-far.png",
+      "sha256": "dfca54e328f2926fd5bbbc8b82f4c080622eaa0201e63e3c7e1fa044cd5182cb"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-mid.png",
+      "sha256": "cb5e7f6cced769c0521bb71bea05a8f142773273324afa71a940e62dd38c70f6"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-near.png",
+      "sha256": "6093fab2adb921c13eabfb842047d38d63a8d6b438ef4c2d373e199a17f619ae"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/visual-notes.d29.json",
+      "sha256": "a4fa56fea3772b874d4b5bc549664f039d004c31d57615af8340578d2e7446e0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-manifest.json",
+      "sha256": "2c42275ce8fe8770404655cc9771958b18f88061c24f466f661561a792ba7927"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-recipe.json",
+      "sha256": "4122c6126486e8ffaed8b9dc1f2dc718c3a1ebf1c097e72c948a8cf45410b062"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-far.generation.json",
+      "sha256": "a132abceb02185b2f1105a246a3dc1d9c3b8d3dffc06dfb799cc090b8c92bf4d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-far-correction.prompt.txt",
+      "sha256": "689d05a83809f765e2dd71ae27c1a21d93cd6952a695725253e463e778ce01ba"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-mid.generation.json",
+      "sha256": "abd07415666d60c4ab44a33f9b1c650ebb96d743f451fad64255440bb612b9ac"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-mid.prompt.txt",
+      "sha256": "9eb7efaef76807fdc89ee909fc504e8c6f8c22d1bfef2f08506f46f51b1b3ab4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/keyed/arena-mid.png",
+      "sha256": "93164fc602d4e153f0250af59d9c7204812683a670d04ad5fe3fff6056e2daa1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-near.generation.json",
+      "sha256": "6dc6880591d23ec704c9cb119899d3b20fe3399e06ec026a9d4ec53edbaa7f6e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/arena-near-correction.prompt.txt",
+      "sha256": "6102060b4962d5e5f4bfb0832200c658b747cd25a962d72681eba1435827af0e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/fungal/keyed/arena-near.png",
+      "sha256": "1469179e8ad4bc26e07226ef08d4de921d369fc2b415a2cfdff1361c9f7a80ca"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/fungal/visual-notes.d29.json",
+    "findings": [
+      "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Purple fungal forms and misty geological depth are present, and the central purple-earth fighting band remains open.",
+      "MID side foliage visibly loses interior islands after keying, with gray cutout holes and pink traces around branching fronds, especially left of center and the right outer cluster. NEAR repeats ground texture at a different scale with a conspicuous horizontal join. These remain visual holds despite the mechanical key result.",
+      "Selected FAR has no invented planet or moons, and selected NEAR has no title or pseudo-text. The prior celestial-body FAR and wrong-aspect/text NEAR are retained as rejected originals. Purple creature/effect contrast and live occlusion remain unscored."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

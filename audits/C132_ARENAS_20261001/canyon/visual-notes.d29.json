@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "canyon",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/canyon/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/canyon/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/canyon/arena-far.png",
+    "audits/C132_ARENAS_20261001/canyon/arena-mid.png",
+    "audits/C132_ARENAS_20261001/canyon/arena-near.png"
+  ],
+  "findings": [
+    "All three original paintings, full native-size composition and four-row plate sheet inspected. Red sandstone, sparse cacti and a continuous flat central runway establish the intended family; native size is 1672 by 941 with no upscaling.",
+    "MID repeats distant mesa walls already present in FAR. The duplicate contour creates a conspicuous pasted or terraced band behind the stands, with an abrupt depth-scale shift across the center.",
+    "NEAR contributes a second shallow rock/soil band with a visible horizontal color/texture seam. Tiny magenta remnants remain at shrub tips. These visual holds remain even if the exact delivery contract passes."
+  ]
+}

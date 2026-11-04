@@ -1,0 +1,29 @@
+{
+  "schema": "cf.c132-arena-fresh-successor/v1",
+  "reason": "Predecessor native FAR is 1672×940 and does not match exact D29 1672×941; no resize, crop, padding or upscale.",
+  "mode": "fresh-generation-from-locked-style",
+  "basePrompt": {
+    "path": "audits/C132_ARENAS_20261001/boulder/arena-far.prompt.txt",
+    "sha256": "9eb716b25699def447704162bec67524ec2e9e79f1501106833ef0a2da95d70b"
+  },
+  "successorPrompt": {
+    "path": "audits/C132_ARENAS_20261001/boulder-v3/arena-far.prompt.txt",
+    "sha256": "4014ac287444c43e8a2eb7b4dfc7c2b284092f2430f250bf9aab4a9320298f0d"
+  },
+  "lockedNonSubjectSectionsUnchanged": true,
+  "actualToolImageInputs": [
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    }
+  ],
+  "sourceOutput": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-5578ccc0-0f65-4429-95d8-17f1f77f9a6c.png",
+  "predecessor": {
+    "path": "audits/C132_ARENAS_20261001/boulder-v2/arena-far.png",
+    "sha256": "7722d79abae72d93fdbee194e5c495da5acb50dff7a464d54eef3529d044403b"
+  },
+  "sourceOriginalRetained": true,
+  "originalPixelsModified": false,
+  "upscaled": false,
+  "qualityAccepted": false
+}

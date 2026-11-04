@@ -1,0 +1,23 @@
+{
+  "launch": {
+    "sourceAnchor": [
+      0.24,
+      0.49
+    ],
+    "canvasScale": 0.43
+  },
+  "travel": {
+    "sourceAnchor": [
+      0.16,
+      0.505
+    ],
+    "canvasScale": 0.73
+  },
+  "impact": {
+    "sourceAnchor": [
+      0.884,
+      0.516
+    ],
+    "canvasScale": 0.44
+  }
+}

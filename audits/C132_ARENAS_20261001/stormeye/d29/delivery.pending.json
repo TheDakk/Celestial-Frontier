@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "stormeye",
+  "biome": "stormeye",
+  "recipe": "audits/C132_ARENAS_20261001/stormeye/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/stormeye/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/stormeye/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/stormeye/arena-far.png",
+      "runtimeSha256": "78d588d167503fe15b06033f1906bcf8f32fd1b8511eabc33934c1e76be5ae97"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/stormeye/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/stormeye/keyed/arena-mid.png",
+      "runtimeSha256": "67507ec83fd958ecfb70443fd24d45b6c93822a3aefaf23ecb018e509804c2ec"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/stormeye/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/stormeye/keyed/arena-near.png",
+      "runtimeSha256": "06bc165010281fd8e7afdb7216b2c1896c0242d752f7625474874cf9e1099e02"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "sulfurdeck",
+  "biome": "sulfurdeck",
+  "medium": "ground",
+  "recipe": "audits/C132_ARENAS_20261001/sulfurdeck/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/sulfurdeck/d29/acceptance.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.webp",
+      "runtimeSha256": "9a4d175aaff3b1cd55f95ff5b87e0d8f12a3766b057162f9d4ee3755215de5b5",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/sulfurdeck/arena-far.png",
+        "sha256": "e6d234ccb0e9e8c3d4caec3cd0cfc88618f719afffb0d7ba6bf72076a016d5ee"
+      }
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/sulfurdeck/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-mid.webp",
+      "runtimeSha256": "cf1730b800b7a986f75339e9136f2941c07184d0ced3c81f83697e75c9845953",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-mid.png",
+        "sha256": "dcb6b948ef8c54c216b71292c85ab96d04e45c4d553334110e1abf9691e8b507"
+      }
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/sulfurdeck/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-near.webp",
+      "runtimeSha256": "f6dabc9c62731029ba96eefdc5e5a89a7903d86eb74b6af9b5d9f3bf296db03c",
+      "runtimeSource": {
+        "path": "audits/C132_ARENAS_20261001/sulfurdeck/keyed/arena-near.png",
+        "sha256": "7bbeb8deecfc2990f734411b554921053fc7e103040bac2bef7ebd01d92d9c15"
+      }
+    }
+  },
+  "runtimeEncoding": "D30 WebP runtime copies (Dakk 2026-10-02); encoder port/v2/tools/morph/arena-webp.mjs, receipt audits/ARENA_WEBP_D30_20261002/receipt.json"
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Skink",
+  "family": "quadruped",
+  "masterSha256": "33426fa518e345737cd9246e7d2e7ca325e90442c2b384a01bcbac8cb524be30",
+  "subjectSha256": "6b279794d0d006263364bc24a7445ea7c6010261142b9870d86169bd0fcb7a0f",
+  "promptSha256": "50456496bb414f8e0106ac2b94937db5cc4633c64f40a32d662a63fd0af26ca2",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: glossy longitudinal rows of smooth overlapping scales, cylindrical trunk, small limbs and continuous tapering tail. Only the two near legs and a partial far forelimb are independently readable; the far hindlimb cannot be established. HOLD for unresolved fourth limb, despite broad framing margins. No anatomical admission.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/08-skink/visual-review.json",
+    "sha256": "c3e85725684e7f8f192b64e3954503d62da3dcb1fd15405b5a3eb9ad78cb2a8c"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

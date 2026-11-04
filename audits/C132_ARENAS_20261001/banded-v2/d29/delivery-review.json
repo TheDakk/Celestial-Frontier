@@ -1,0 +1,169 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "banded-v2",
+  "biome": "banded",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "banded"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "banded"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "banded"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-far.generation.json",
+      "sha256": "796845de6c95c95ca9a5ad3c948a212bd885cbd16c8ff7f4d875e264931cd39a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-mid.generation.json",
+      "sha256": "0d59602b16629cd710c1d41bbeef0b27a95dd890af77b7ca1123412726ad93db"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-near.generation.json",
+      "sha256": "6b6fde0162489325f2f300fb4abea349874514a16a3dc192ce1716a7d0f0769c"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-composed-review.png",
+      "sha256": "35f790e931ed152b96a235ac7f75af5b3698350b4b608d07422966e0647dfbb2"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/visual-notes.d29.json",
+      "sha256": "edc3b3eedc5a1a18a4aa54783b2c934ae2b80407f773b341169d771171bf98d3"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-manifest.json",
+      "sha256": "4198763ec7bb09539e42ddd5b487067b9a128c480c34e6239c05df006c03f46e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-recipe.json",
+      "sha256": "8871dbb49c2eb50199e929413e390bf57973a58921c854063ab77bdc037f6d7e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-far.generation.json",
+      "sha256": "796845de6c95c95ca9a5ad3c948a212bd885cbd16c8ff7f4d875e264931cd39a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-far.prompt.txt",
+      "sha256": "190ec87a3cee249fc39df9f5ccf9aa9170ea6eecbf46808cd5446fea0a0f6b3f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-far.png",
+      "sha256": "b8387a84c7b831ca508606adbb9cea2e031a1dec8a46974ab4b8ff5d3748f0ba"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-mid.generation.json",
+      "sha256": "0d59602b16629cd710c1d41bbeef0b27a95dd890af77b7ca1123412726ad93db"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded/arena-mid.prompt.txt",
+      "sha256": "5cb0a25c1435195b62f6eb40aef0a269931f03fcb2f7fc32d6dd9811e4c93540"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded/arena-mid.png",
+      "sha256": "ff64aca4895c2fb4ceb50c5ad045306edba5cf43b27f235c63ca8015f12584ad"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-mid.png",
+      "sha256": "ff64aca4895c2fb4ceb50c5ad045306edba5cf43b27f235c63ca8015f12584ad"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/keyed/arena-mid.png",
+      "sha256": "13b1142ddfd87730967e0084c6920d7e4b9b6f5388f4984dee01776621c21ead"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-near.generation.json",
+      "sha256": "6b6fde0162489325f2f300fb4abea349874514a16a3dc192ce1716a7d0f0769c"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-near.prompt.txt",
+      "sha256": "5a2aed037815ffcfc772b5283b4cb0c4cf7375eb62da2387544c85192269208a"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/arena-near.png",
+      "sha256": "b0f1c74d42c52a2975dfbffac817f8c862475a8dc09b477971553fc98b28eca9"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/banded-v2/keyed/arena-near.png",
+      "sha256": "cdc5548138d14aee9cfb8c2a8571fe4d7f81b5b47c1284672ce9db8691cf145b"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/banded-v2/visual-notes.d29.json",
+    "findings": [
+      "Native 1672×941 composite inspected full size. The edited FAR has no visible planets or moons and retains continuous cream-tan atmospheric cloud bands.",
+      "The MID produces conspicuous thin clipped wisps and hard step-like cloud edges on both sides. A flat brighter registration band spans the middle and the NEAR forms another bright horizontal seam at the bottom. Small pink/key-colored remnants remain along some cloud contours.",
+      "The layers are cloud AIR imagery, not solid ground; proper airborne creature anchoring and physical-medium compatibility are not proven by alpha checks.",
+      "Visual acceptance, parallax continuity, moving-rig occlusion and native performance remain held. qualityAccepted stays false."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

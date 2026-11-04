@@ -1,0 +1,34 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Alligator Lizard",
+  "family": "quadruped",
+  "masterSha256": "bd3d7db69693b6c8cec7ad746c58e0936d345a24f71acfbdce2b55cb8c700598",
+  "subjectSha256": "c677cfb939b65289675d3005e42f196dd4145980a1ed149a269a95ece0e0d973",
+  "promptSha256": "987e055d0abf7525ff81876bd95896c0fcb305185ac60f31907d6891e5b12d28",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: squared scale rows and dark rectangular cross-bands, elongated trunk, long continuous tail and short bent legs. Three feet are clearly readable; far hindfoot/leg is not independently established. HOLD for unresolved fourth limb. Flank fold reads as a dark lateral line rather than a confidently distinct skin fold. Broad margins.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. Any ear opening, tympanum, protective ear flap, casque, horn, neck frill or external gill remains natural head/neck paint; none is a substitute pinna."
+      }
+    ]
+  },
+  "priorFullOriginalReview": {
+    "path": "audits/G2_C132_QUADRUPEDS_20261001/09-alligator-lizard/visual-review.json",
+    "sha256": "cf8a3322c8474263c517569a0f9c58a65fafdedb90f2dc11a9c38af46fc1f569"
+  },
+  "scope": "exact-master-only-no-visual-admission",
+  "policyStatus": "AUDIT_ONLY_CANDIDATE: production reviewed-presence.mjs still admits tail absence only."
+}

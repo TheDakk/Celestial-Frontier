@@ -1,0 +1,90 @@
+{
+  "schema": "cf.c163-reviewed-authoring-regions/v1",
+  "id": "16-lark",
+  "sourceAuthoring": {
+    "path": "audits/C163_REFERENCE_REPAIR_20261002/16-lark/original/authoring.json",
+    "sha256": "55d32f0cb59a9755ba92493194371dda6d7d513b3e663a8711b2df8fc95588d1"
+  },
+  "candidateAuthoringSha256": "2f557a8ebb759c5f180134c018a3ee47f45a79bbc7a30501fd60980e206b073c",
+  "sourceMasterSha256": "ed62d06bbddbfbe101a6ed6a43003e90904a218c0a3b764281633f114e39b335",
+  "additions": [
+    {
+      "id": "reviewed-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          740,
+          462
+        ],
+        [
+          791,
+          462
+        ],
+        [
+          791,
+          521
+        ],
+        [
+          740,
+          521
+        ]
+      ],
+      "reason": "Connected dorsal nape feathers between the original head/upper-neck polygons and the far wing root. The source silhouette is continuous, but this patch was body-owned."
+    },
+    {
+      "id": "reviewed-forehead",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          852,
+          450
+        ],
+        [
+          871,
+          450
+        ],
+        [
+          871,
+          465
+        ],
+        [
+          852,
+          465
+        ]
+      ],
+      "reason": "Small upper forehead/crown edge above the bill base; follows the head rather than the torso."
+    },
+    {
+      "id": "reviewed-bill-edge",
+      "joint": "beak",
+      "layer": "near",
+      "polygonPx": [
+        [
+          885,
+          499
+        ],
+        [
+          889,
+          499
+        ],
+        [
+          889,
+          502
+        ],
+        [
+          885,
+          502
+        ]
+      ],
+      "reason": "Two source pixels at the lower bill edge border the beak owner."
+    }
+  ],
+  "landmarksChanged": false,
+  "existingPolygonsChanged": false,
+  "sourcePixelsChanged": false,
+  "repairCapUnchanged": 0.05,
+  "qualityAccepted": false,
+  "remaining": "Exact ownership conservation, deterministic replay, unchanged intake/static and actual moving-paint/native review still required."
+}

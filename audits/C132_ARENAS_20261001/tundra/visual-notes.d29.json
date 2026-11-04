@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "tundra",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/tundra/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/tundra/arena-plates-review.png"
+  ],
+  "findings": [
+    "Full native-size composition and four-row plate sheet inspected. Snow, moss and distant mountain/lake palette are coherent; the center remains a broad unobstructed terrain band.",
+    "The lower NEAR terrain has a visible horizontal change in texture and scale, and fine shrubs/stone edges still need independent fringe and combatant-contrast scoring. A coherent composition is not visual acceptance.",
+    "No new generation or rekeying in this revalidation. The selected MID contains neither the previous ultra-wide framing nor pseudo-text. Historical attempts and dimension rejection stay unchanged."
+  ]
+}

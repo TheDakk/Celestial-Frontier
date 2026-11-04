@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "volcisle",
+  "biome": "volcisle",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "volcisle"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "volcisle"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "volcisle"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-far.generation.json",
+      "sha256": "8584bec68bb4c36a8b4a7d87edc67230e56ffd30223c38319c6d7e4afcabe722"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-mid.generation.json",
+      "sha256": "93f6ea3e14d0ec7b7b7728bb590e01c13015869b8d1402f8af6eab163f28bc93"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-near.generation.json",
+      "sha256": "c6800f80444830906af89762bf02415036f88208eaca4f19abe40ac31b310bff"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-composed-review.png",
+      "sha256": "24b05aa37d1054c79ceee2536474494a666e8da883e5632bca5b25f2f69e72a4"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-plates-review.png",
+      "sha256": "36b1f053efc1bdd9c946f5b481d04c7d41b8ddc3485d80622c65f01d8210cf15"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-far.png",
+      "sha256": "fcb8a8f376e4c81a84f905d3a88fd9b0406efc0e132e16bcb29347777fc2950e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-mid.png",
+      "sha256": "fe5ea72b1d1c0cf38e6b856d785e39837cd873230d529497e57f9957f052ee72"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-near.png",
+      "sha256": "f64064eb206af36d46a6d38fd838a8fdcf3f38ccae677f00819444b85396a554"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/visual-notes.d29.json",
+      "sha256": "9e21883dda8d0a1621c3b7313b621cab49408e75d87f6167281d65278b98b2c6"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-manifest.json",
+      "sha256": "9a7ebe5efd7c64778027276eeb171037480fdfb64bcc486a70a813c696b63655"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-recipe.json",
+      "sha256": "9970254290486abc6600be371efc5b43990a17c27907118f333c46e1b4a6287b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-far.generation.json",
+      "sha256": "8584bec68bb4c36a8b4a7d87edc67230e56ffd30223c38319c6d7e4afcabe722"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-far.prompt.txt",
+      "sha256": "ad70073ad97d1b258206057876b7ec5eec509673013182ea3b95bec38fe1edbd"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-mid.generation.json",
+      "sha256": "93f6ea3e14d0ec7b7b7728bb590e01c13015869b8d1402f8af6eab163f28bc93"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-mid.prompt.txt",
+      "sha256": "32a3e77b7468150841b485ddd3572a481bd775eeed6473e58377478112e082da"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/keyed/arena-mid.png",
+      "sha256": "50661c96bba037885e507818132b576a1ddcb27b82b88a373f8b53b87ba43236"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-near.generation.json",
+      "sha256": "c6800f80444830906af89762bf02415036f88208eaca4f19abe40ac31b310bff"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/arena-near.prompt.txt",
+      "sha256": "d0356117922f11c54c3f1bea780eb5914f0f3fc91f1d2d833b43d8399c6fac68"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/volcisle/keyed/arena-near.png",
+      "sha256": "2b382db41ca621c4cf612d4b8bc8655dde6499b7bd761e7f6ce8a1f72a2e7849"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/volcisle/visual-notes.d29.json",
+    "findings": [
+      "All three original paintings, full native-size composition and four-row plate sheet inspected. Dark volcanic-sand runway and teal ocean read as a distinct habitat; native size is 1672 by 941 with no upscaling.",
+      "MID repeats distant islands and cloud shapes over FAR, producing pasted mountain silhouettes near the horizon. Visible pink/green fringe survives at outer fern tips and mountain edges despite zero unresolved-edge pixels in the intake metric.",
+      "NEAR adds another wet rocky shelf with a prominent horizontal change in texture around the lower fifth; large edge rocks rise above the requested 0.92 band, although sampled combatant stands remain clear. The result needs authoring-side layer/seam and fringe repair, not acceptance."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}
