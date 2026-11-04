@@ -1,0 +1,78 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "84a62a13cf671d47df8f4030a325cd0cf7e95d26",
+  "helperSha256": "ac8afa1311104c5aeb431585641e1f325d59df43730fa5e89cf4000bd9252517",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/packet/master.png",
+      "sha256": "a817eaf554501a30feeec902444526c3de5024202d94a63cfbf8ab11148b2d35"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/packet/authoring.json",
+      "sha256": "85972fb412bd0ae337b6647990d11b6a2ce3ed296c7d3b455a2a56bddc14c38a"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/packet/subject-source.json",
+      "sha256": "f7be64ee35cc01af7966d1910dad1f1127f44a31c05ec2eeca527455ed3d5e43"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "3da8f38ad8384e4ba7de358c23444e11c8ad0c836fe31f728a397b11d75d56af",
+  "bindingHash": "6960a1a69c6319b12a2476bfaae8215eef69649b9d0d8a1524ed6490d13c0e2c",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "jaw",
+    "head",
+    "seg0",
+    "seg1",
+    "seg2",
+    "seg3",
+    "seg4",
+    "seg5",
+    "seg6",
+    "seg7",
+    "seg8",
+    "seg9"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/packet/master.png",
+      "sha256": "a817eaf554501a30feeec902444526c3de5024202d94a63cfbf8ab11148b2d35",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/packet/authoring.json",
+      "sha256": "85972fb412bd0ae337b6647990d11b6a2ce3ed296c7d3b455a2a56bddc14c38a",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/packet/subject-source.json",
+      "sha256": "f7be64ee35cc01af7966d1910dad1f1127f44a31c05ec2eeca527455ed3d5e43",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

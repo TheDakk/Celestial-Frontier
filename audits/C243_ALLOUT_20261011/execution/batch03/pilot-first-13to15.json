@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b03r1c1-13-leafcutter-ant",
+    "name": "Leafcutter Ant",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-13-leafcutter-ant",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-13-leafcutter-ant/master.png"
+  },
+  {
+    "id": "c243b03r1c1-14-mantis",
+    "name": "Mantis",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-14-mantis",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-14-mantis/master.png"
+  },
+  {
+    "id": "c243b03r1c1-15-mayfly",
+    "name": "Mayfly",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-15-mayfly",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c1-15-mayfly/master.png"
+  }
+]

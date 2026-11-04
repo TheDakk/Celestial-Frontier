@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b04r2c1-05-peacock",
+    "name": "Peacock",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-05-peacock",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-05-peacock/master.png"
+  },
+  {
+    "id": "c243b04r2c1-06-pelican",
+    "name": "Pelican",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-06-pelican",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-06-pelican/master.png"
+  },
+  {
+    "id": "c243b04r2c1-07-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-07-pheasant",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-07-pheasant/master.png"
+  },
+  {
+    "id": "c243b04r2c1-08-quetzal",
+    "name": "Quetzal",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-08-quetzal",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-08-quetzal/master.png"
+  }
+]

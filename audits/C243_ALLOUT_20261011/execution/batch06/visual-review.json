@@ -1,0 +1,63 @@
+{
+  "films": 6,
+  "reviewedStills": 30,
+  "ready": [],
+  "holds": [
+    {
+      "id": "c243b06r1c1-19-boa",
+      "name": "Boa",
+      "status": "HOLD_VISUAL",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-19-boa",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-19-boa/report.json",
+      "reviewedStills": 5,
+      "observation": "All five finished stills viewed at original1024x576. Left winning snake raises head in turn3-idle50 while most body/tail disappears below the foreground; returns at idle90. Boa also throws tail near top edge during dodge. Continuous source intact; visual HOLD for exaggerated axial pose/ground intersection, no magenta flag."
+    },
+    {
+      "id": "c243b06r1c1-22-mountain-viper",
+      "name": "Mountain Viper",
+      "status": "HOLD_VISUAL",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-22-mountain-viper",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-22-mountain-viper/report.json",
+      "reviewedStills": 5,
+      "observation": "All five finished stills viewed at original1024x576. Left winning snake raises head in turn3-idle50 while most body/tail disappears below the foreground; returns at idle90. Boa also throws tail near top edge during dodge. Continuous source intact; visual HOLD for exaggerated axial pose/ground intersection, no magenta flag."
+    },
+    {
+      "id": "c243b06r1c1-23-rattlesnake",
+      "name": "Rattlesnake",
+      "status": "HOLD_VISUAL",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-23-rattlesnake",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-23-rattlesnake/report.json",
+      "reviewedStills": 5,
+      "observation": "All five finished stills viewed at original1024x576. Left winning snake raises head in turn3-idle50 while most body/tail disappears below the foreground; returns at idle90. Boa also throws tail near top edge during dodge. Continuous source intact; visual HOLD for exaggerated axial pose/ground intersection, no magenta flag."
+    },
+    {
+      "id": "c196quadrupedoriginals-20-monkey",
+      "name": "Monkey",
+      "status": "HOLD_VISUAL",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c196quadrupedoriginals-20-monkey",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c196quadrupedoriginals-20-monkey/report.json",
+      "reviewedStills": 5,
+      "observation": "All five finished stills viewed at original1024x576. Right defeated Monkey remains upright on hands/feet with raised tail in turn3 reaction and both late-idle frames. No visible collapse; visual HOLD despite mechanics/triage PASS."
+    },
+    {
+      "id": "c243b06r1c2-11-gibbon",
+      "name": "Gibbon",
+      "status": "HOLD_VISUAL",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-02/c243b06r1c2-11-gibbon",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-02/c243b06r1c2-11-gibbon/report.json",
+      "reviewedStills": 5,
+      "observation": "All five finished stills viewed at original1024x576. Right defeated Gibbon remains upright on long arms and hind feet in both late-idle frames; slight hunch is not a visible collapse. HOLD faint readability."
+    },
+    {
+      "id": "c243b06r1c2-24-snake",
+      "name": "Snake",
+      "status": "HOLD_VISUAL",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-02/c243b06r1c2-24-snake",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-02/c243b06r1c2-24-snake/report.json",
+      "reviewedStills": 5,
+      "observation": "All five finished stills viewed at original1024x576. Left winning Snake raises head in idle50 while most trunk/tail drops below the foreground and returns at idle90. HOLD axial victory pose/ground intersection."
+    }
+  ],
+  "triage": "6films,zero>=5-pixel magenta flags. Visual holds remain independent of numerical triage.",
+  "next": "Carry motion reasons into final-round class work; no source/ruler changes or unchanged retries."
+}

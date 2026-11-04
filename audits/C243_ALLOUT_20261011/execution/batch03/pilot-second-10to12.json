@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b03r1c2-10-giant-water-bug",
+    "name": "Giant Water Bug",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-10-giant-water-bug",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-10-giant-water-bug/master.png"
+  },
+  {
+    "id": "c243b03r1c2-11-grasshopper",
+    "name": "Grasshopper",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-11-grasshopper",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-11-grasshopper/master.png"
+  },
+  {
+    "id": "c243b03r1c2-12-honeybee",
+    "name": "Honeybee",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-12-honeybee",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-12-honeybee/master.png"
+  }
+]

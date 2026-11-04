@@ -1,0 +1,382 @@
+{
+  "reviewer": "Codex",
+  "admission": "Claude only",
+  "framesReviewed": 35,
+  "extraFullSizeFilmLooks": 4,
+  "extraFullSizeSourceLooks": 2,
+  "precheckFilms": 218,
+  "allIdentityMarkersAnswered": true,
+  "ready": [
+    "Lemur",
+    "Gorilla",
+    "Spider Monkey"
+  ],
+  "newFragmentBoxes": 0,
+  "newPinkFlags": 0,
+  "magentaHold": "Gibbon7; exact hand-edge coordinates recorded",
+  "historicalFlaggedBoxReview": [
+    {
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c2-20-stonefly",
+      "old": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 293,
+            "box": [
+              387,
+              251,
+              418,
+              277
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "new": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 223,
+            "box": [
+              386,
+              251,
+              418,
+              277
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "fullSizeLook": "Original1024x576 idle50 inspected again: known thin Stonefly antenna region at [386,251,418,277], median-mask box shifts1pixel/293\u2192223pixels; no new detached body part. Existing C259 false-flag diagnosis retained."
+    },
+    {
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-20-stonefly",
+      "old": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 293,
+            "box": [
+              387,
+              251,
+              418,
+              277
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "new": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 223,
+            "box": [
+              386,
+              251,
+              418,
+              277
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "fullSizeLook": "Original1024x576 idle50 inspected again: known thin Stonefly antenna region at [386,251,418,277], median-mask box shifts1pixel/293\u2192223pixels; no new detached body part. Existing C259 false-flag diagnosis retained."
+    }
+  ],
+  "rows": [
+    {
+      "id": "c243b06r2c2-11-gibbon",
+      "packetId": "c243b06r2c2-11-gibbon",
+      "name": "Gibbon",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-01/c243b06r2c2-11-gibbon",
+      "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-11-gibbon/fit",
+      "origin": "round2-new-original",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c2-11-gibbon-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c2-11-gibbon",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c2-11-gibbon/report.json",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-11-gibbon/score.json",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-11-gibbon",
+      "exitCode": 0,
+      "status": "VISUAL_HOLD",
+      "framesReviewed": 5,
+      "detail": "original1024x576",
+      "observation": "All five finished stills viewed full size. Long arms, hook hands and tailless white-ringed face stay readable. Suspected small background notch at lower neck/far shoulder on left and horizontal wrist/hand discontinuity on defeated right require source/fragment comparison before disposition. Defeated figure remains visible in a lower standing crouch, not disappearance; no collapse claim. Blue/gold angular shards in dodge and reaction are attack FX.",
+      "comparison": "Original master and original native idle50 inspected full size. Suspected neck/arm notch coincides with source separation under chin; not asserted as a new tear. Wrist edge also occurs before AI. Primary HOLD is unchanged magenta rule7pixels at hand/finger edges, exact coordinates in gibbon-magenta-locations.json; all five frames viewed.",
+      "identity": {
+        "arms far longer than the legs, reaching the ground": "seen",
+        "long hook-shaped hands": "seen",
+        "no tail at all": "seen",
+        "An ape, not a monkey - tailless, and the arm span is the dominant proportion.": "seen"
+      },
+      "identityEvidence": "All five full-size films plus exact retained original; markers read, no admission claim",
+      "magentaTotal": 7,
+      "fragmentPrecheck": {
+        "id": "c243b06r2c2-11-gibbon",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c2-11-gibbon",
+        "key": "earth-temperate-v1|ground|ground",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 3,
+          "turn3-hit-idle-90": 4
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": []
+    },
+    {
+      "id": "c243b06r2c1-12-lemur",
+      "packetId": "c243b06r2c1-12-lemur",
+      "name": "Lemur",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-01/c243b06r2c1-12-lemur",
+      "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1c/c243b06r2c1-12-lemur/fit",
+      "origin": "round2-new-original",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c1-12-lemur-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-12-lemur",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-12-lemur/report.json",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1c/c243b06r2c1-12-lemur/score.json",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-12-lemur",
+      "exitCode": 0,
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "detail": "original1024x576",
+      "observation": "All five finished stills reviewed at full size. Four limbs remain separately readable and connected, black/white ringed tail stays continuous through reaction and both victory frames, black fox-like mask and orange-gold eyes preserved. No detached fragment, wing/body slit, obvious pink fringe or shell-like tear seen. Right defeated figure settles into a lower standing crouch; QA only, no collapse claim. Victory tail curves more tightly but remains one continuous striped tail. Dodge shards are transient FX.",
+      "identity": {
+        "black-and-white ringed tail longer than the body": "seen",
+        "fox-like muzzle with a black mask": "seen",
+        "bright orange-gold staring eyes": "seen",
+        "Generic - interpreted as the ring-tailed lemur, the representative member of the group.": "seen"
+      },
+      "identityEvidence": "All five full-size films plus exact retained original; markers read, no admission claim",
+      "magentaTotal": 0,
+      "fragmentPrecheck": {
+        "id": "c243b06r2c1-12-lemur",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-12-lemur",
+        "key": "earth-temperate-v1|ground|ground",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 1,
+          "turn3-hit-idle-90": 2
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": []
+    },
+    {
+      "id": "c243b06r2c3-15-gorilla",
+      "packetId": "c243b06r2c3-15-gorilla",
+      "name": "Gorilla",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-01/c243b06r2c3-15-gorilla",
+      "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-15-gorilla/fit",
+      "origin": "round2-new-original; D28 regression held, original green fit unfilmed",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c3-15-gorilla-original-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c3-15-gorilla",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c3-15-gorilla/report.json",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-15-gorilla/score.json",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c3-15-gorilla",
+      "exitCode": 0,
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "detail": "original1024x576",
+      "observation": "All five finished stills reviewed full size. Broad chest/pot belly, peaked skull/heavy brow and four knuckle-supported limbs remain readable and connected. No floating shoulder/head slab, open torso tear, detached finger shard or pink fringe observed. Gold translucent circles and blue angular shards are transient hit/dodge FX. Defeated right figure lowers into a standing crouch; QA only, no collapse claim. This is the original new static-green fit; the regressed D28 variant was not filmed.",
+      "identity": {
+        "peaked skull crest over a heavy brow ridge": "seen",
+        "barrel chest with a wide pot belly": "seen",
+        "knuckle-walking on folded hands": "seen",
+        "arms are markedly longer than the legs, so the shoulders sit higher than the hips": "seen"
+      },
+      "identityEvidence": "All five full-size films plus exact retained original; markers read, no admission claim",
+      "magentaTotal": 0,
+      "fragmentPrecheck": {
+        "id": "c243b06r2c3-15-gorilla",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c3-15-gorilla",
+        "key": "earth-temperate-v1|ground|ground",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 0,
+          "turn3-hit-idle-90": 0
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": []
+    },
+    {
+      "id": "c243b06r2c1-16-monkey",
+      "packetId": "c243b06r2c1-16-monkey",
+      "name": "Monkey",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-01/c243b06r2c1-16-monkey",
+      "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-16-monkey/fit",
+      "origin": "round2-new-original",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c1-16-monkey-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-16-monkey",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-16-monkey/report.json",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-16-monkey/score.json",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-16-monkey",
+      "exitCode": 0,
+      "status": "VISUAL_HOLD",
+      "framesReviewed": 5,
+      "detail": "original1024x576",
+      "observation": "All five finished stills viewed full size. Defeated right far forearm/wrist has a sharp light horizontal patch/discontinuity above dark hand in turn3 reaction and both victory frames, reading as an offset or doubled hand edge; source/original-native comparison required. Curling tail stays continuous, four limbs visible, capuchin face/round eyes and opposing digits readable. No broad chest tear or pink fringe observed. Defeated figure remains in standing crouch; no collapse claim. Attack shards are FX.",
+      "comparison": "Original master and original native idle50 inspected full size. Wrist/hand discontinuity already exists before AI, while the master hand is continuous. HOLD source-part/hand-motion seam class, not an AI-created fault. Zero fragment boxes does not clear an attached/doubled edge.",
+      "identity": {
+        "long curling tail as long as the body": "seen",
+        "grasping hands and feet with opposable thumbs": "seen",
+        "flat forward-facing face with round eyes": "seen",
+        "Generic name - interpreted as a macaque/capuchin-type monkey (tailed, not an ape).": "seen"
+      },
+      "identityEvidence": "All five full-size films plus exact retained original; markers read, no admission claim",
+      "magentaTotal": 0,
+      "fragmentPrecheck": {
+        "id": "c243b06r2c1-16-monkey",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-16-monkey",
+        "key": "earth-temperate-v1|ground|ground",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 1,
+          "turn3-hit-idle-90": 0
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": []
+    },
+    {
+      "id": "c243b06r2c2-18-spider-monkey",
+      "packetId": "c243b06r2c2-18-spider-monkey",
+      "name": "Spider Monkey",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-02/c243b06r2c2-18-spider-monkey",
+      "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2d/c243b06r2c2-18-spider-monkey/fit",
+      "origin": "round2-new-original",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c2-18-spider-monkey-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c2-18-spider-monkey",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c2-18-spider-monkey/report.json",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2d/c243b06r2c2-18-spider-monkey/score.json",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-18-spider-monkey",
+      "exitCode": 0,
+      "status": "READY_FOR_CLAUDE_REVIEW",
+      "framesReviewed": 5,
+      "detail": "original1024x576",
+      "observation": "All five finished stills viewed full size. Four long thin limbs remain connected, small head and pot belly preserved, very long curled tail remains continuous through root and tip. Hands read as narrow hooks without the obvious opposed-thumb shapes in discarded candidates1/3. No detached tail/hand/head fragment, open chest slit or visible pink fringe observed. Defeated figure is a lower standing crouch, QA only/no collapse claim. Blue/gold dodge shards are transient FX.",
+      "identity": {
+        "extremely long spindly limbs": "seen",
+        "prehensile tail longer than the whole body": "seen",
+        "small round head with a pot belly": "seen",
+        "the hands have no functional thumb - they are hooks": "seen"
+      },
+      "identityEvidence": "All five full-size films plus exact retained original; markers read, no admission claim",
+      "magentaTotal": 0,
+      "fragmentPrecheck": {
+        "id": "c243b06r2c2-18-spider-monkey",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c2-18-spider-monkey",
+        "key": "earth-temperate-v1|ground|ground",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 0,
+          "turn3-hit-idle-90": 0
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": []
+    },
+    {
+      "id": "c243b06r2c1-19-boa",
+      "packetId": "c243b06r2c1-19-boa",
+      "name": "Boa",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-02/c243b06r2c1-19-boa",
+      "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-19-boa/fit",
+      "origin": "round2-new-original",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c1-19-boa-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-19-boa",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-19-boa/report.json",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-19-boa/score.json",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-19-boa",
+      "exitCode": 0,
+      "status": "VISUAL_HOLD",
+      "framesReviewed": 5,
+      "detail": "original1024x576",
+      "observation": "All five finished stills reviewed full size. Victory midpoint turn3-idle50 swings the left winner body downward and it is abruptly cut off at a fixed horizontal staging/render boundary near y480, losing lower body/tail while arena background continues below. At idle90 left tail also reaches/cuts the left edge. This is a full-figure clipping HOLD despite native mechanics PASS; the cutoff is inside the1024x576 image, not its physical bottom edge. Earlier reaction bodies remain continuous; saddle blotches/red tail/dark eye stripe preserved. Blue/gold dodge shards are FX.",
+      "comparison": "Read-only source trace: battle2/stage.ts draws the near plate above actors; parts-rig.ts measures upward rise for framing. Near-plate over-occlusion is a plausible contributor to the internal horizontal cutoff; no renderer/motion code edited and no conclusive root-cause claim.",
+      "identity": {
+        "saddle-shaped dorsal blotches that redden toward the tail": "seen",
+        "heavy arrow-shaped head with a dark eye stripe": "seen",
+        "thick body tapering to a short tail": "seen",
+        "generic representative: a boa constrictor": "seen"
+      },
+      "identityEvidence": "All five full-size films plus exact retained original; markers read, no admission claim",
+      "magentaTotal": 0,
+      "fragmentPrecheck": {
+        "id": "c243b06r2c1-19-boa",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-19-boa",
+        "key": "earth-temperate-v1|ground|ground",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 0,
+          "turn3-hit-idle-90": 0
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": []
+    },
+    {
+      "id": "c243b06r2c1-22-mountain-viper",
+      "packetId": "c243b06r2c1-22-mountain-viper",
+      "name": "Mountain Viper",
+      "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/rebound-02/c243b06r2c1-22-mountain-viper",
+      "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/fit",
+      "origin": "round2-new-original",
+      "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c1-22-mountain-viper-script.json",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-22-mountain-viper",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-22-mountain-viper/report.json",
+      "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/score.json",
+      "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-22-mountain-viper",
+      "exitCode": 0,
+      "status": "VISUAL_HOLD",
+      "framesReviewed": 5,
+      "detail": "original1024x576",
+      "observation": "All five finished stills reviewed full size. Left winner body at victory midpoint ends abruptly along the same horizontal internal render boundary near y480; the lower body/tail is missing below it although arena remains visible. Late idle also cuts tail at left edge. HOLD shared axial victory clipping class. Triangular head/narrow neck, zigzag dorsal band and slit eye remain readable; no broad body tear or detached head. Dodge shards are FX.",
+      "comparison": "Read-only source trace: battle2/stage.ts draws the near plate above actors; parts-rig.ts measures upward rise for framing. Near-plate over-occlusion is a plausible contributor to the internal horizontal cutoff; no renderer/motion code edited and no conclusive root-cause claim.",
+      "identity": {
+        "broad triangular head much wider than the neck": "seen",
+        "thick stocky body with a zigzag dorsal band": "seen",
+        "vertical slit pupil": "seen"
+      },
+      "identityEvidence": "All five full-size films plus exact retained original; markers read, no admission claim",
+      "magentaTotal": 0,
+      "fragmentPrecheck": {
+        "id": "c243b06r2c1-22-mountain-viper",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch06/round2/ai-finish/native-01/c243b06r2c1-22-mountain-viper",
+        "key": "earth-temperate-v1|ground|ground",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 0,
+          "turn3-hit-idle-90": 0
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": []
+    }
+  ]
+}

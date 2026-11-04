@@ -1,0 +1,46 @@
+[
+  {
+    "id": "c243b04r1c1-10-snipe",
+    "packetId": "c243b04r1c1-10-snipe",
+    "name": "Snipe",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c1c/c243b04r1c1-10-snipe/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch04/native-scripts/c243b04r1c1-10-snipe-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c1-10-snipe",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c1-10-snipe/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c1c/c243b04r1c1-10-snipe/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r1c1-10-snipe"
+  },
+  {
+    "id": "c243b04r1c2-03-ostrich",
+    "packetId": "c243b04r1c2-03-ostrich",
+    "name": "Ostrich",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2a/c243b04r1c2-03-ostrich/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch04/native-scripts/c243b04r1c2-03-ostrich-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-03-ostrich",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-03-ostrich/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2a/c243b04r1c2-03-ostrich/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r1c2-03-ostrich"
+  },
+  {
+    "id": "c243b04r1c2-07-pheasant",
+    "packetId": "c243b04r1c2-07-pheasant",
+    "name": "Pheasant",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2b/c243b04r1c2-07-pheasant/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch04/native-scripts/c243b04r1c2-07-pheasant-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-07-pheasant",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-07-pheasant/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2b/c243b04r1c2-07-pheasant/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r1c2-07-pheasant"
+  },
+  {
+    "id": "c243b04r1c2-12-tern",
+    "packetId": "c243b04r1c2-12-tern",
+    "name": "Tern",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2c/c243b04r1c2-12-tern/fallback-1/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch04/native-scripts/c243b04r1c2-12-tern-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-12-tern",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c2-12-tern/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2c/c243b04r1c2-12-tern/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r1c2-12-tern"
+  }
+]

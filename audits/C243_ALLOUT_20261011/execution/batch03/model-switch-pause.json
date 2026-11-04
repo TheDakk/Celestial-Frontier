@@ -1,0 +1,31 @@
+{
+  "status": "PAUSED_BY_DAKK_FOR_MODEL_SWITCH",
+  "reservation": "C349 released by C350",
+  "finishPass": 17,
+  "rebindPass": 17,
+  "finishedNativePass": [
+    "c243b03r1c1-23-carrion-beetle",
+    "c243b03r1c1-26-moth",
+    "c243b03r1c1-27-springtail"
+  ],
+  "remainingNative": [
+    "c243b03r1c1-28-thrips",
+    "c243b03r1c2-12-honeybee",
+    "c243b03r1c2-20-stonefly",
+    "c243b03r1c2-31-eagle",
+    "c243b03r1c3-01-bumblebee",
+    "c243b03r1c3-24-ladybug",
+    "c243b02r1c1-09-flying-fish",
+    "c243b02r1c2-02-beaked-whale",
+    "c243b02r1c2-14-lamprey",
+    "c243b02r1c3-13-humpback-whale",
+    "c196creaturesupply-18-water-beetle",
+    "g2c136targetededits-21-bee",
+    "c198creaturesupplyb-22-locust",
+    "c243b03r1c3-09-fly"
+  ],
+  "bulkReviewDone": false,
+  "finishedVisualAdmissionClaimed": false,
+  "freeGiB": 82.4,
+  "next": "Film only the14 remaining subjects, then bulk-review all17 films and deliver batch3; continue batches4\u20137, round2, four new species and full final sweep."
+}

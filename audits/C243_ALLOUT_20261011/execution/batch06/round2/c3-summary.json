@@ -1,0 +1,49 @@
+{
+  "candidate": 3,
+  "scored": 22,
+  "rawPass": [
+    "Gibbon",
+    "Lemur",
+    "Gorilla",
+    "Monkey",
+    "Boa",
+    "Mountain Viper"
+  ],
+  "eligiblePass": [
+    "Gibbon",
+    "Gorilla",
+    "Monkey",
+    "Boa",
+    "Mountain Viper"
+  ],
+  "sourceHolds": {
+    "Deer Tick": "Five long near-side branches plus overlapping far stubs; exact eight walking legs cannot be independently established.",
+    "Harvestman": "Extra thin near-side leg branch below body makes exact eight walking legs unresolved.",
+    "Mite": "Only six independent walking-leg tips visible again; required eight not established.",
+    "Pseudoscorpion": "Five near-side walking branches plus obscured far stubs; four correct walking pairs not established.",
+    "Sea Spider": "Only two large raised eye bulbs on separate stalk-like bases, not four eyes on a small turret.",
+    "Camel Spider": "Two forward feelers are visible, but eight separate walking legs in addition remain unresolved because far-side limbs hide/overlap.",
+    "Lemur": "Five separate limb/foot branches visible, including extra middle hind/flank leg; four-limb anatomy not met.",
+    "Marmoset": "Horizontal walking posture persists, not canonical upright bark-clinging stance; prompt-pose conflict unresolved.",
+    "Spider Monkey": "Near hand shows straight fingers plus a separate opposed thumb-like projection; canonical thumbless hook hand is not established.",
+    "Caecilian": "Eye-like spot absent now, but tiny mouth-tip protrusion still does not independently establish the canonical sensory tentacle.",
+    "Cobra": "Overall silhouette including tail/tongue remains wider than tall, about590x510px; canonical pose aspect unresolved.",
+    "Rattlesnake": "Final source is an open horizontal S body with no clearly coiled base; canonical coiled posture not met."
+  },
+  "authorRefused": [
+    "Deer Tick",
+    "Harvestman",
+    "Mite",
+    "Pseudoscorpion",
+    "Sea Spider",
+    "Camel Spider",
+    "Baboon",
+    "Chimpanzee",
+    "Mandrill",
+    "Marmoset",
+    "Caecilian",
+    "Cobra",
+    "Rattlesnake",
+    "Snake"
+  ]
+}

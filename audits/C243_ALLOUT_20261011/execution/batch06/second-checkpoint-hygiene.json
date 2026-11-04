@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "files": 760,
+  "scrubbed": [
+    "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c196quadrupedoriginals-20-monkey/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-22-mountain-viper/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-19-boa/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes-c2/c243b06r1c2-11-gibbon/static.json",
+    "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c2e/c243b06r1c2-24-snake/fit/intake-provenance.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/c2-native/native/c243b06r1c2-11-gibbon/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/c2-native/native/c243b06r1c2-24-snake/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes-c2/c243b06r1c2-13-mandrill/static.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-23-rattlesnake/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes-c2/c243b06r1c2-11-gibbon/static.json.sources.json",
+    "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes-c2/c243b06r1c2-13-mandrill/static.json.sources.json"
+  ],
+  "protectedUnchanged": 14,
+  "generatorBytesVerified": 43,
+  "selectedGenerationMasters": 28,
+  "native": {
+    "pass": 6,
+    "total": 8
+  },
+  "finish": {
+    "pass": 4,
+    "total": 4,
+    "pending": 2
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "scope": "Aggregate unchanged baseline scores, all60 newly generated-source scores and eleven existing bounded class-repair variants; diagnostic only, no native or visual admission claim. Eagle follow-up excluded from batch4 species yield.",
+  "baselineScored": 57,
+  "baselineStaticPassSpecies": 4,
+  "afterStaticPassSpecies": 13,
+  "before": [
+    "Cockatoo",
+    "Egret",
+    "Kookaburra",
+    "Osprey"
+  ],
+  "after": [
+    "Cockatoo",
+    "Egret",
+    "Frigatebird",
+    "Hoatzin",
+    "Kakapo",
+    "Kookaburra",
+    "Osprey",
+    "Ostrich",
+    "Owl",
+    "Pheasant",
+    "Snipe",
+    "Swift",
+    "Tern"
+  ],
+  "gained": [
+    "Frigatebird",
+    "Hoatzin",
+    "Kakapo",
+    "Ostrich",
+    "Owl",
+    "Pheasant",
+    "Snipe",
+    "Swift",
+    "Tern"
+  ],
+  "lost": [],
+  "repaintCandidates": 60,
+  "intakeRefusedSpecies": 26,
+  "newSourceEligibleStaticPassSpecies": [
+    "Ostrich",
+    "Pheasant",
+    "Snipe",
+    "Swift",
+    "Tern"
+  ],
+  "repairedStaticPassSpecies": [
+    "Cockatoo",
+    "Eagle",
+    "Frigatebird",
+    "Hoatzin",
+    "Kakapo",
+    "Kookaburra",
+    "Osprey",
+    "Owl",
+    "Swift"
+  ],
+  "repairRed": [
+    "Egret"
+  ],
+  "sourceBindingMissing": [
+    "Macaw"
+  ],
+  "heldNumericPass": [
+    "Swift candidate1: wrong species silhouette"
+  ],
+  "round2Species": [
+    "Kingfisher",
+    "Kiwi",
+    "Peacock",
+    "Pelican",
+    "Quetzal",
+    "Secretary Bird",
+    "Tropicbird",
+    "Macaw",
+    "Amphipod",
+    "Brine Shrimp",
+    "Cave Shrimp",
+    "Copepod",
+    "Fairy Shrimp",
+    "Freshwater Shrimp",
+    "Giant Isopod",
+    "Isopod",
+    "Krill",
+    "Shrimp",
+    "Tadpole Shrimp",
+    "Vent Shrimp",
+    "Water Flea"
+  ],
+  "controls": "Existing rulers, ownership guard and leave-one-species-out pool unchanged; no C223 fold fix, sealed gate change or certification."
+}

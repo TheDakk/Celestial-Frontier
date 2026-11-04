@@ -1,0 +1,398 @@
+[
+  {
+    "name": "Bullfrog",
+    "family": "hopper",
+    "priorPackets": [
+      "c213originals-42-bullfrog"
+    ],
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0129 < 0.0540)",
+      "missing-anatomy: part far-front-lower (foreFarAnkle) covers 1% paint (reference 79%)"
+    ]
+  },
+  {
+    "name": "Cave Frog",
+    "family": "hopper",
+    "priorPackets": [
+      "c213originals-47-cave-frog"
+    ],
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0180 < 0.0517)",
+      "missing-anatomy (family floor): the largest rear appendage is 1.1% of the paint; every same-family reference shows at least 39.8%",
+      "unexplained-anatomy: 16.9% of the paint lies away from the body and in no part (reference 12.5%)"
+    ]
+  },
+  {
+    "name": "Frog",
+    "family": "hopper",
+    "priorPackets": [
+      "c213originals-44-frog"
+    ],
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0156 < 0.0574)",
+      "missing-anatomy (family floor): the largest rear appendage is 3.3% of the paint; every same-family reference shows at least 39.8%",
+      "missing-anatomy: part far-hind-lower (hindFarAnkle) covers 18% paint (reference 83%)",
+      "unexplained-anatomy: 16.7% of the paint lies away from the body and in no part (reference 12.5%)"
+    ]
+  },
+  {
+    "name": "Glass Frog",
+    "family": "hopper",
+    "priorPackets": [
+      "c213originals-43-glass-frog"
+    ],
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0191 < 0.0461)",
+      "missing-anatomy (family floor): the largest rear appendage is 4.5% of the paint; every same-family reference shows at least 39.8%",
+      "missing-anatomy: part far-front-lower (foreFarAnkle) covers 17% paint (reference 79%)",
+      "unexplained-anatomy: 16.9% of the paint lies away from the body and in no part (reference 12.5%)"
+    ]
+  },
+  {
+    "name": "Jerboa",
+    "family": "hopper",
+    "priorPackets": [
+      "c215program-03-jerboa-02"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Kangaroo",
+    "family": "hopper",
+    "priorPackets": [
+      "c215program-04-kangaroo"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Poison Dart Frog",
+    "family": "hopper",
+    "priorPackets": [
+      "c213originals-41-poison-dart-frog"
+    ],
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0196 < 0.0523)",
+      "missing-anatomy (family floor): the largest rear appendage is 0.8% of the paint; every same-family reference shows at least 39.8%",
+      "missing-anatomy: part far-hind-lower (hindFarAnkle) covers 5% paint (reference 83%)"
+    ]
+  },
+  {
+    "name": "Toad",
+    "family": "hopper",
+    "priorPackets": [
+      "c213originals-46-toad"
+    ],
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0097 < 0.0554)",
+      "missing-anatomy (family floor): the largest rear appendage is 3.1% of the paint; every same-family reference shows at least 39.8%",
+      "missing-anatomy: part far-front-foot (foreFarPaw) covers 1% paint (reference 38%)"
+    ]
+  },
+  {
+    "name": "Wallaby",
+    "family": "hopper",
+    "priorPackets": [
+      "c215program-05-wallaby"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Wood Frog",
+    "family": "hopper",
+    "priorPackets": [
+      "c213originals-45-wood-frog"
+    ],
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0214 < 0.0601)",
+      "missing-anatomy (family floor): the largest rear appendage is 3.7% of the paint; every same-family reference shows at least 39.8%",
+      "missing-anatomy: part far-front-lower (foreFarAnkle) covers 6% paint (reference 79%)"
+    ]
+  },
+  {
+    "name": "Snowshoe Hare",
+    "family": "hopper",
+    "priorPackets": [
+      "c198creaturesupplya-24-snowshoe-hare",
+      "g2c107-13-snowshoe-hare"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.6%)"
+    ]
+  },
+  {
+    "name": "Cold-Water Coral",
+    "family": "radial",
+    "priorPackets": [
+      "c221program-18-cold-water-coral"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Comb Jelly",
+    "family": "radial",
+    "priorPackets": [
+      "c221program-23-comb-jelly"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Coral",
+    "family": "radial",
+    "priorPackets": [
+      "c221program-19-coral"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Deep-Water Coral",
+    "family": "radial",
+    "priorPackets": [
+      "c221program-32-deep-water-coral"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Portuguese Man-of-War",
+    "family": "radial",
+    "priorPackets": [
+      "c221program-22-portuguese-man-of-war"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Sand Dollar",
+    "family": "radial",
+    "priorPackets": [
+      "c221program-14-sand-dollar"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Sea Anemone",
+    "family": "radial",
+    "priorPackets": [
+      "c221program-16-sea-anemone"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Sea Cucumber",
+    "family": "radial",
+    "priorPackets": [
+      "c221program-09-sea-cucumber"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Sea Urchin",
+    "family": "radial",
+    "priorPackets": [
+      "c221program-08-sea-urchin"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Cuttlefish",
+    "family": "cephalopod",
+    "priorPackets": [
+      "c198creaturesupplyb-04-cuttlefish",
+      "g2c163familyoriginals-18-cuttlefish"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Deep-Sea Octopus",
+    "family": "cephalopod",
+    "priorPackets": [
+      "g2c163familyoriginals-20-deep-sea-octopus"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Giant Octopus",
+    "family": "cephalopod",
+    "priorPackets": [
+      "c198creaturesupplyb-17-giant-octopus",
+      "g2c163familyoriginals-19-giant-octopus"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Giant Squid",
+    "family": "cephalopod",
+    "priorPackets": [
+      "c186creaturesupply-22-giant-squid"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Nautilus",
+    "family": "cephalopod",
+    "priorPackets": [
+      "c186creaturesupply-24-nautilus"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Octopus",
+    "family": "cephalopod",
+    "priorPackets": [
+      "c198creaturesupplyb-16-octopus",
+      "g2c163familyoriginals-16-octopus"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family cephalopod"
+    ]
+  },
+  {
+    "name": "Squid",
+    "family": "cephalopod",
+    "priorPackets": [
+      "c198creaturesupplyb-03-squid",
+      "g2c163familyoriginals-17-squid"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Vampire Squid",
+    "family": "cephalopod",
+    "priorPackets": [
+      "c186creaturesupply-23-vampire-squid"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Flatworm",
+    "family": "annelid",
+    "priorPackets": [
+      "c221program-35-flatworm"
+    ],
+    "reasons": [
+      "facing: the mirrored painting matches annelid better (0.0144 < 0.0181)",
+      "extra-anatomy (unassigned): a top appendage of 10.2% paint that no reference appendage lands on",
+      "missing-anatomy: part segment0 (segment0) covers 0% paint (reference 1%)",
+      "missing-anatomy: part segment7 (segment7) covers 8% paint (reference 5%)",
+      "missing-anatomy: part segment8 (segment8) covers 8% paint (reference 4%)",
+      "missing-anatomy: part segment9 (segment9) covers 3% paint (reference 4%)",
+      "missing-anatomy: part segment10 (segment10) covers 0% paint (reference 3%)",
+      "missing-anatomy: part segment11 (segment11) covers 0% paint (reference 1%)"
+    ]
+  },
+  {
+    "name": "Giant Tube Worm",
+    "family": "annelid",
+    "priorPackets": [
+      "c221program-28-giant-tube-worm"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 32.2% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a top appendage of 14.5% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a top appendage of 8.1% paint that no reference appendage lands on",
+      "missing-anatomy (family floor): the largest rear appendage is 0.7% of the paint; every same-family reference shows at least 1.0%",
+      "missing-anatomy: part segment0 (segment0) covers 0% paint (reference 1%)",
+      "missing-anatomy: part segment1 (segment1) covers 0% paint (reference 6%)",
+      "missing-anatomy: part segment2 (segment2) covers 0% paint (reference 7%)",
+      "missing-anatomy: part segment3 (segment3) covers 0% paint (reference 8%)",
+      "missing-anatomy: part segment4 (segment4) covers 3% paint (reference 9%)",
+      "missing-anatomy: part segment11 (segment11) covers 1% paint (reference 1%)",
+      "unexplained-anatomy: 12.6% of the paint lies away from the body and in no part (reference 5.9%)"
+    ]
+  },
+  {
+    "name": "Ice Worm",
+    "family": "annelid",
+    "priorPackets": [
+      "c221program-37-ice-worm"
+    ],
+    "reasons": [
+      "facing: the mirrored painting matches annelid better (0.0266 < 0.0359)",
+      "wrong-family: serpent matches clearly better (0.0240 < 0.0359)",
+      "extra-anatomy (unassigned): a rear appendage of 10.0% paint that no reference appendage lands on",
+      "missing-anatomy: part segment8 (segment8) covers 7% paint (reference 7%)",
+      "missing-anatomy: part segment9 (segment9) covers 6% paint (reference 5%)",
+      "missing-anatomy: part segment10 (segment10) covers 5% paint (reference 4%)",
+      "missing-anatomy: part segment11 (segment11) covers 2% paint (reference 1%)"
+    ]
+  },
+  {
+    "name": "Marine Worm",
+    "family": "annelid",
+    "priorPackets": [
+      "c221program-17-marine-worm-v2"
+    ],
+    "reasons": [
+      "facing: the mirrored painting matches annelid better (0.0310 < 0.0434)",
+      "extra-anatomy (unassigned): a front appendage of 6.0% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a rear appendage of 9.5% paint that no reference appendage lands on",
+      "missing-anatomy: part segment11 (segment11) covers 4% paint (reference 5%)"
+    ]
+  },
+  {
+    "name": "Polychaete Worm",
+    "family": "annelid",
+    "priorPackets": [
+      "c221program-27-polychaete-worm"
+    ],
+    "reasons": [
+      "facing: the mirrored painting matches annelid better (0.0451 < 0.0536)",
+      "extra-anatomy (unassigned): a front appendage of 7.2% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on",
+      "missing-anatomy: part segment0 (segment0) covers 0% paint (reference 1%)",
+      "missing-anatomy: part segment1 (segment1) covers 4% paint (reference 6%)",
+      "missing-anatomy: part segment2 (segment2) covers 6% paint (reference 7%)",
+      "missing-anatomy: part segment9 (segment9) covers 7% paint (reference 5%)",
+      "missing-anatomy: part segment10 (segment10) covers 5% paint (reference 4%)",
+      "missing-anatomy: part segment11 (segment11) covers 0% paint (reference 1%)"
+    ]
+  },
+  {
+    "name": "Scale Worm",
+    "family": "annelid",
+    "priorPackets": [
+      "c221program-30-scale-worm"
+    ],
+    "reasons": [
+      "wrong-family: sessile-filter matches clearly better (0.0216 < 0.0452)",
+      "missing-anatomy: part segment0 (segment0) covers 0% paint (reference 2%)",
+      "missing-anatomy: part segment1 (segment1) covers 4% paint (reference 7%)"
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+{"status":"running","subject":"g2c72-12-egret","rows":[{"id":"g2c72-12-egret","status":"FAIL"}]}
+{"status":"running","subject":"g2c72-12-egret","rows":[{"id":"g2c72-12-egret","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"g2c72-12-egret","rows":[{"id":"g2c72-12-egret","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"g2c72-12-egret","rows":[{"id":"g2c72-12-egret","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"g2c72-12-egret","rows":[{"id":"g2c72-12-egret","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"g2c72-12-egret","rows":[{"id":"g2c72-12-egret","status":"FAIL"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"g2c72-12-egret","rows":[{"id":"g2c72-12-egret","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/batch04/ai-finish/finish-04"}

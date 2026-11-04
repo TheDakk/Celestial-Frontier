@@ -1,0 +1,94 @@
+{
+  "rule": "Exact existing bulk-review predicate; coordinate diagnostic only, no edited image",
+  "total": 7,
+  "rows": [
+    {
+      "frame": "turn1-hit-reaction-50",
+      "pixels": [
+        {
+          "x": 358,
+          "y": 447,
+          "rgb": [
+            196,
+            39,
+            170
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "turn2-dodge-reaction-50",
+      "pixels": [
+        {
+          "x": 506,
+          "y": 443,
+          "rgb": [
+            172,
+            23,
+            157
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "turn3-hit-reaction-50",
+      "pixels": [
+        {
+          "x": 680,
+          "y": 450,
+          "rgb": [
+            195,
+            36,
+            169
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "turn3-hit-idle-50",
+      "pixels": [
+        {
+          "x": 707,
+          "y": 455,
+          "rgb": [
+            182,
+            31,
+            159
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "turn3-hit-idle-90",
+      "pixels": [
+        {
+          "x": 364,
+          "y": 442,
+          "rgb": [
+            194,
+            26,
+            178
+          ]
+        },
+        {
+          "x": 364,
+          "y": 443,
+          "rgb": [
+            214,
+            31,
+            202
+          ]
+        },
+        {
+          "x": 707,
+          "y": 455,
+          "rgb": [
+            182,
+            31,
+            159
+          ]
+        }
+      ]
+    }
+  ]
+}

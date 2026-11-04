@@ -1,0 +1,44 @@
+{
+  "candidate": 1,
+  "scored": 22,
+  "rawPass": [
+    "Lemur",
+    "Monkey",
+    "Boa",
+    "Mountain Viper"
+  ],
+  "eligiblePass": [
+    "Lemur",
+    "Monkey",
+    "Boa",
+    "Mountain Viper"
+  ],
+  "sourceHolds": {
+    "Mite": "Only six walking-leg tips independently visible; anterior mouth appendages do not establish eight legs.",
+    "Pseudoscorpion": "Eight walking legs cannot be independently traced; near/far overlap and possible extra branch.",
+    "Sea Spider": "Four eyes on one small turret cannot be independently confirmed; only two prominent eye bumps readable.",
+    "Camel Spider": "Distinct pair of long leg-like pedipalps held forward is not independently readable; jaws and walking legs are not substitutes.",
+    "Marmoset": "Canonical squirrel-sized upright bark-clinging pose not shown; source walks horizontally. Generic walking/no-prop instructions conflict with canonical marker.",
+    "Spider Monkey": "Hands show opposed thumb-like projecting digits; canonical thumbless hook hands are not independently established.",
+    "Caecilian": "Tiny front protrusion cannot be independently identified as the canonical sensory tentacle; mouth-tip projection alone is not proof.",
+    "Cobra": "Overall silhouette is wider than tall, about665x535px; canonical reared cobra requires taller than wide.",
+    "Rattlesnake": "Required coiled base not shown; source has open horizontal S body with no coil, despite legible rattle/head."
+  },
+  "authorRefused": [
+    "Deer Tick",
+    "Harvestman",
+    "Mite",
+    "Pseudoscorpion",
+    "Sea Spider",
+    "Camel Spider",
+    "Baboon",
+    "Chimpanzee",
+    "Gibbon",
+    "Mandrill",
+    "Marmoset",
+    "Caecilian",
+    "Cobra",
+    "Rattlesnake",
+    "Snake"
+  ]
+}

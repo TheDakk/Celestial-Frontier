@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b03r1c3-32-godwit",
+    "name": "Godwit",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-32-godwit",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-32-godwit/master.png"
+  },
+  {
+    "id": "c243b03r1c3-33-grebe",
+    "name": "Grebe",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-33-grebe",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-33-grebe/master.png"
+  },
+  {
+    "id": "c243b03r1c3-34-guillemot",
+    "name": "Guillemot",
+    "family": "biped-bird",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-34-guillemot",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-34-guillemot/master.png"
+  }
+]

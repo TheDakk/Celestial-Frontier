@@ -1,0 +1,80 @@
+[
+  {
+    "id": "c243b06r1c1-19-boa",
+    "packetId": "c243b06r1c1-19-boa",
+    "name": "Boa",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1e/c243b06r1c1-19-boa/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/native-scripts/c243b06r1c1-19-boa-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-19-boa",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-19-boa/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1e/c243b06r1c1-19-boa/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-19-boa",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  },
+  {
+    "id": "c243b06r1c1-22-mountain-viper",
+    "packetId": "c243b06r1c1-22-mountain-viper",
+    "name": "Mountain Viper",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-22-mountain-viper/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/native-scripts/c243b06r1c1-22-mountain-viper-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-22-mountain-viper",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-22-mountain-viper/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-22-mountain-viper/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-22-mountain-viper",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  },
+  {
+    "id": "c243b06r1c1-23-rattlesnake",
+    "packetId": "c243b06r1c1-23-rattlesnake",
+    "name": "Rattlesnake",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-23-rattlesnake/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/native-scripts/c243b06r1c1-23-rattlesnake-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-23-rattlesnake",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/native/c243b06r1c1-23-rattlesnake/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-23-rattlesnake/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-23-rattlesnake",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  },
+  {
+    "id": "g2c163familyoriginals-04-gorilla",
+    "packetId": "g2c163familyoriginals-04-gorilla",
+    "name": "Gorilla",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-04-gorilla/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/native-scripts/g2c163familyoriginals-04-gorilla-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/native/g2c163familyoriginals-04-gorilla",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/native/g2c163familyoriginals-04-gorilla/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06before/g2c163familyoriginals-04-gorilla/score.json",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06before/g2c163familyoriginals-04-gorilla/packet",
+    "exitCode": 1,
+    "status": "FAIL"
+  },
+  {
+    "id": "c196quadrupedoriginals-20-monkey",
+    "packetId": "c196quadrupedoriginals-20-monkey",
+    "name": "Monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/c196quadrupedoriginals-20-monkey/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/native-scripts/c196quadrupedoriginals-20-monkey-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/native/c196quadrupedoriginals-20-monkey",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/native/c196quadrupedoriginals-20-monkey/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06before/c196quadrupedoriginals-20-monkey/score.json",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06before/c196quadrupedoriginals-20-monkey/packet",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  },
+  {
+    "id": "g2c163familyoriginals-06-orangutan",
+    "packetId": "g2c163familyoriginals-06-orangutan",
+    "name": "Orangutan",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-06-orangutan/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/native-scripts/g2c163familyoriginals-06-orangutan-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/native/g2c163familyoriginals-06-orangutan",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/native/g2c163familyoriginals-06-orangutan/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06before/g2c163familyoriginals-06-orangutan/score.json",
+    "packet": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06before/g2c163familyoriginals-06-orangutan/packet",
+    "exitCode": 1,
+    "status": "FAIL"
+  }
+]

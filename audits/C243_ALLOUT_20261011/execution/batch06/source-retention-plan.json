@@ -1,0 +1,78 @@
+[
+  {
+    "id": "c243b06r1c1-19-boa",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1e/c243b06r1c1-19-boa/fit"
+  },
+  {
+    "id": "c243b06r1c1-22-mountain-viper",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-22-mountain-viper/fit"
+  },
+  {
+    "id": "c243b06r1c1-23-rattlesnake",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-23-rattlesnake/fit"
+  },
+  {
+    "id": "g2c163familyoriginals-04-gorilla",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-04-gorilla/fit"
+  },
+  {
+    "id": "c196quadrupedoriginals-20-monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/c196quadrupedoriginals-20-monkey/fit"
+  },
+  {
+    "id": "g2c163familyoriginals-06-orangutan",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-06-orangutan/fit"
+  },
+  {
+    "id": "c243b06r1c2-11-gibbon",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes-c2/c243b06r1c2-11-gibbon/fit"
+  },
+  {
+    "id": "c243b06r1c2-24-snake",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c2e/c243b06r1c2-24-snake/fit"
+  },
+  {
+    "id": "c243b06r1c1-19-boa",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/rebound-02/c243b06r1c1-19-boa"
+  },
+  {
+    "id": "c243b06r1c1-22-mountain-viper",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/rebound-02/c243b06r1c1-22-mountain-viper"
+  },
+  {
+    "id": "c243b06r1c1-23-rattlesnake",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/rebound-02/c243b06r1c1-23-rattlesnake"
+  },
+  {
+    "id": "c196quadrupedoriginals-20-monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/rebound-02/c196quadrupedoriginals-20-monkey"
+  },
+  {
+    "id": "c221program-02-camel-spider",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/c221program-02-camel-spider/fit"
+  },
+  {
+    "id": "g2c163familyoriginals-04-gorilla",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-04-gorilla/fit"
+  },
+  {
+    "id": "c196quadrupedoriginals-20-monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/c196quadrupedoriginals-20-monkey/fit"
+  },
+  {
+    "id": "g2c163familyoriginals-06-orangutan",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-06-orangutan/fit"
+  },
+  {
+    "id": "g2c163familyoriginals-09-spider-monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes/g2c163familyoriginals-09-spider-monkey/fit"
+  },
+  {
+    "id": "c243b06r1c2-11-gibbon",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes-c2/c243b06r1c2-11-gibbon/fit"
+  },
+  {
+    "id": "c243b06r1c2-13-mandrill",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/class-fixes-c2/c243b06r1c2-13-mandrill/fit"
+  }
+]

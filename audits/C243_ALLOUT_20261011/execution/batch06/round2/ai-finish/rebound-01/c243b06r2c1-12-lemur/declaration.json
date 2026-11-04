@@ -1,0 +1,96 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "2519ba63f3d2462612cd85520c8bb7ed012f5bf32bbadd912e77833a22936d9e",
+  "cutoutSha256": "eeb53747e55038cfe706f347228f8c00a4f0c0369a6b3d73a674cb43e42f7ca2",
+  "parts": [
+    {
+      "id": "arm-near-hand",
+      "joint": "armNearHand",
+      "layer": "near"
+    },
+    {
+      "id": "arm-far-hand",
+      "joint": "armFarHand",
+      "layer": "far"
+    },
+    {
+      "id": "leg-near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg-far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "arm-near-elbow",
+      "joint": "armNearElbow",
+      "layer": "near"
+    },
+    {
+      "id": "arm-far-elbow",
+      "joint": "armFarElbow",
+      "layer": "far"
+    },
+    {
+      "id": "leg-near-knee",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "leg-far-knee",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "tail2",
+      "joint": "tail2",
+      "layer": "near"
+    },
+    {
+      "id": "tail1",
+      "joint": "tail1",
+      "layer": "near"
+    },
+    {
+      "id": "tail0",
+      "joint": "tail0",
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "c9f775f2b3fe543a3bfff8e7aa4505cfd3943b97c83831cade0837837fac25c3",
+  "keyedRgbaSha256": "aa9bcb66976248080210101773bae7845b40e401a8451bf7416c722b53b6e825",
+  "declarationHash": "789adfbf76f218112c6ef0eb4843b3e75bf4937d65291ca7608a32f83f3c86d5"
+}

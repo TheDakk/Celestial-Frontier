@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b03r1c3-04-cricket",
+    "name": "Cricket",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-04-cricket",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-04-cricket/master.png"
+  },
+  {
+    "id": "c243b03r1c3-05-damselfly",
+    "name": "Damselfly",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-05-damselfly",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-05-damselfly/master.png"
+  },
+  {
+    "id": "c243b03r1c3-06-diving-beetle",
+    "name": "Diving Beetle",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-06-diving-beetle",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c3-06-diving-beetle/master.png"
+  }
+]

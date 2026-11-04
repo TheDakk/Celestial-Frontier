@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c213originals-28-kookaburra",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/class-fixes/c213originals-28-kookaburra/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/c213originals-28-kookaburra/report.json"
+  },
+  {
+    "id": "c243b03r1c2-31-eagle",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/class-fixes/c243b03r1c2-31-eagle/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b03r1c2-31-eagle/report.json"
+  },
+  {
+    "id": "c243b04r1c3-04-owl",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/class-fixes/c243b04r1c3-04-owl/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c3-04-owl/report.json"
+  },
+  {
+    "id": "c243b04r1c3-11-swift",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/class-fixes/c243b04r1c3-11-swift/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/c243b04r1c3-11-swift/report.json"
+  }
+]

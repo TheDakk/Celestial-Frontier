@@ -1,0 +1,366 @@
+{
+  "status": "PASS",
+  "candidates": 60,
+  "rows": [
+    {
+      "id": "c243b04r1c1-01-kingfisher",
+      "masterSha256": "9c9ab06d8e0001cb6814914a0ac52de0324f56027249e91245adc958e7f8e585",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-02-kiwi",
+      "masterSha256": "69ff1ef3a15a7ad5dd00236c2012ca1db2879af802ca69a4f8644d1665d62ae4",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-03-ostrich",
+      "masterSha256": "da7d452a1ed25c5f25c7251f9cfd65d17d78aaad7ac1c3fa0bdd87cf47f3c0c9",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-04-owl",
+      "masterSha256": "b06d0af06af7336894e4f4bb08bc732354e1b01152ef5bd4caa31ce10efadaa4",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-05-peacock",
+      "masterSha256": "c0af9eb231e38c8ce2b0655860fa5e6f0c99216c3fc8ad054913b2832fd9d705",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-06-pelican",
+      "masterSha256": "a53d9743beded739cda26c0881d2f7ca2fe5b7b601e849cd2c5e934b5b2a3a0c",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-07-pheasant",
+      "masterSha256": "8f4b5c6e37f61f10b401b3bde5e35a5a9bde007a690780ce71e81c30bf426d77",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-08-quetzal",
+      "masterSha256": "5cb5986bb1b3c401182781ba8f1e59c88c7f85600a6dad3329d01c9af5f71c9a",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-09-secretary-bird",
+      "masterSha256": "4368def4375b6683c68b2c62c7cebea56c11e4aefb31497123cf3e29ad9c9085",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-10-snipe",
+      "masterSha256": "5fcfd35c729be8eaa6c5ff7e8a8c878103a57c707121b8d2547e75f6ff1e8a65",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-11-swift",
+      "masterSha256": "ef7fe87bc4454e0e1a17ff793f16d6136df199a410172565e5aed17f22497242",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-12-tern",
+      "masterSha256": "2cfc434a6a880f91c9c62b63cf721ba05f477c3aa80bee50baa69edde5757bc9",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-13-tropicbird",
+      "masterSha256": "b2c7a7128067ccefe51e6db39fdc9db901a67c99fd8a596bfc9ec97c6ecadd42",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-22-amphipod",
+      "masterSha256": "055c6991c1f4d00fe15e6ebb5f327d33ca032c4d61ab05502b947ecc337463af",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-23-brine-shrimp",
+      "masterSha256": "4c377c9cf385a24006cca83f1949a70bb477b8cbfc3e460a9bfac1dc0ec92a7a",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-24-cave-shrimp",
+      "masterSha256": "f53a8c841b968c9620460f52afb93f2fb4ca021b90b5df527ff29797c49a9246",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-25-copepod",
+      "masterSha256": "f19aa7ea4abccc75abbce4292420eb96fa970d818af42a43022cf95c47ec248f",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-26-fairy-shrimp",
+      "masterSha256": "76988f55154e01357061cd70ba0eb22779697987e6a3e91773562222c5374fee",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-27-freshwater-shrimp",
+      "masterSha256": "b3201a3374be56f45ce1e454c4a908af41b27178740f9ed45d55602bd2677d21",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-28-giant-isopod",
+      "masterSha256": "22c775d5b6cf87d117d345e9e920945de841f361801ebd140c28d18ddda83d00",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-29-isopod",
+      "masterSha256": "202dc80e74a008ecfaf2b46c0109519186ce5265b5f94d5297972be728079265",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-30-krill",
+      "masterSha256": "5e6a1c34d1f9fb4998cf375dba263db886853a2a3584267eb0495e5f11e13a23",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-31-shrimp",
+      "masterSha256": "d37b57be3707d197fb3876042859fc47c324d8ed784db246b179b2c548ac1c93",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-32-tadpole-shrimp",
+      "masterSha256": "1ccf05c12997256d19696fa05cc3c6a696c962b34d8579b23ad510a596e5d43a",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-33-vent-shrimp",
+      "masterSha256": "818897b9bcb8a33266e27b50d5d888bbeb3b4bfc2621f851dbc4fb92293af10d",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c1-34-water-flea",
+      "masterSha256": "f5102cd2c016439a881151fee1e0d0a7c6e3eafa57aee76dc935f3c465177517",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-01-kingfisher",
+      "masterSha256": "bec9f3afd5156304ab988fe320de9deb5d16d7806cc7ee8ff2bdb8d830bf9e1b",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-02-kiwi",
+      "masterSha256": "e602b4185899704127b351e356d43e4df0f96dcaf90bb79e28e93706ac4760d1",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-03-ostrich",
+      "masterSha256": "1701c2e7d84532deb1e04a2a4b44347f54bf5fed96e7ec91253923de8a490bd9",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-04-owl",
+      "masterSha256": "cd92562b1728ebdc4e16565ec55ba03abbdf8b575bed1743e716e78a8da26168",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-05-peacock",
+      "masterSha256": "fb568b0dab74b432b6cbfe3a9ebeec01a411785a80d4343a8325336585fa7bbe",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-06-pelican",
+      "masterSha256": "18e74be67e44df9bd2fe65755f13d0d8bdcc0b7cd98a2889adab27f2abc07018",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-07-pheasant",
+      "masterSha256": "03af3d49148c49b7bb670efdfe737c78e1033a38f3ba703071cf927fd34122c6",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-08-quetzal",
+      "masterSha256": "4ec2c3066fe862401361c2da949adbb2575a3276ee744cb1985e9b5ef817fbeb",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-09-secretary-bird",
+      "masterSha256": "0d8633bff09e81c928006b449722d808588590dbf5664dde96e10cbe251f8cc6",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-11-swift",
+      "masterSha256": "58c038ec4944c264ee132cc86ba16fc6f0b2e1566e273e8d8691dde1e5fb3973",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-12-tern",
+      "masterSha256": "089e09eb782fcb402ece4d606fce85e54709465199599f998749424f1c0bb30a",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-13-tropicbird",
+      "masterSha256": "ebbd15acb4a2029042289f411c97f0bfb85305d2b025dd86d0811c281bf4f60e",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-22-amphipod",
+      "masterSha256": "28b38418a052e65b048284437e7942b20510f9c66b66e6d53faa712c20586284",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-23-brine-shrimp",
+      "masterSha256": "8543f20d4ef1fbbbceedd3c614a7b61adcc1d364da37e5e4651983e0a88eb2fc",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-24-cave-shrimp",
+      "masterSha256": "0425bfe1e86e8081b100a1a25b6fb5c7959f7a8ddd3f7734ce12b258e0510dce",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-25-copepod",
+      "masterSha256": "dd40f7ab830409e0434c4251b873afa52474f64bda1d7ee8d5541c817637f536",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-26-fairy-shrimp",
+      "masterSha256": "6384a5de10b0da49f56f7a5d0e83fb663c6f9f5f94d1992d1b0284ac3081687a",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-27-freshwater-shrimp",
+      "masterSha256": "248dfee5a13d144d1eb95af46a3f272597e9ac7009e04987abd28a0b9a463344",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-28-giant-isopod",
+      "masterSha256": "1ff5d9bcfbd8e5440ca92d6813fff8cf70cb34805bb94ec41a95d2c1b97ce798",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-29-isopod",
+      "masterSha256": "1e30c122cb8f15f7423f888ad193ed25049f5340743f3e2bd6eb1c202703942e",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-30-krill",
+      "masterSha256": "8abf06dfecfa191e8726a176297110cbc7fb82316ec69054a32ccd7cf0e64883",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-31-shrimp",
+      "masterSha256": "59207cb51d23a3afd79405dad50c069be8b1a179b1ee626ceda75459a5f0ad64",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-32-tadpole-shrimp",
+      "masterSha256": "d8f8c3cdbb2997f8e4a1b89f5e7a83705fd84f6a2afae0c0aeda95cc8b219af4",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-33-vent-shrimp",
+      "masterSha256": "5dd66608bb04f9126f642acd74186e6f72cb8fb9ffab47c2838a7678ff82f688",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c2-34-water-flea",
+      "masterSha256": "ceb7e430023f27dcbf4ada1febd7fbb606942eaf38746d7f504f8be6ba204a08",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c3-01-kingfisher",
+      "masterSha256": "f9aacf870ae530fc5e2420600a00f1aab58d967714a6851599f689a01257cae0",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c3-02-kiwi",
+      "masterSha256": "8f1772adea6c72d5dc84aa9c715af25999370291975d73856d13e0f28e27da08",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c3-04-owl",
+      "masterSha256": "76de49e6a2c8591d22c8003d270318a06fc6816e7efd301add1761c84a0335f4",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c3-05-peacock",
+      "masterSha256": "447f230143af3df6a3c80d9acc25b36e8921f50f885aaa27a1d50c5020167db9",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c3-06-pelican",
+      "masterSha256": "4b36cc1cdcc0edfbed273af31a1fc613233be611ecc23e13c48cb4afd0ce26b1",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c3-08-quetzal",
+      "masterSha256": "6c9b11315e89c999d0a7cb89d479292c4ec83b9ef03cb9dbc4354a0b1956c47d",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c3-09-secretary-bird",
+      "masterSha256": "85802811913d65245d3ebb364efce04f1de76d6046ec1d304dc01715d7b0bc1a",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c3-11-swift",
+      "masterSha256": "d3f6ac11c1f3691d13ef97eb5ebda1e20c9ebbff21231162664be9860d8b3756",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    },
+    {
+      "id": "c243b04r1c3-13-tropicbird",
+      "masterSha256": "3caf36e5f4b01e9eb4cb9f92af5a297be0637aa4ea1fa281698b91b5112a893f",
+      "generatorBytesIdentical": true,
+      "promptHashVerified": true
+    }
+  ]
+}

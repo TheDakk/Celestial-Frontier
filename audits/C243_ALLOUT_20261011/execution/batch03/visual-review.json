@@ -1,0 +1,125 @@
+{
+  "scope": "All five full-size finished frames reviewed per entry; provisional Codex review only, admission stays Claude",
+  "rows": [
+    {
+      "id": "c243b03r1c1-23-carrion-beetle",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Antenna clubs remain attached; no visible gaps or islands beyond battle FX.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c243b03r1c1-26-moth",
+      "status": "HOLD",
+      "note": "Visible magenta speckling along both antenna fringes; geometry otherwise continuous. Requires triage count and later repaint/keying repair.",
+      "framesReviewed": 5,
+      "magentaTotal": 24
+    },
+    {
+      "id": "c243b03r1c1-27-springtail",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Late-victory antenna chains remain attached; reaction tips partly covered by battle FX; no isolated tip conclusively visible outside FX.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c243b03r1c1-28-thrips",
+      "status": "HOLD",
+      "note": "Strong pink/magenta retained in narrow wing fringes in all frames; leg and antenna geometry continuous.",
+      "framesReviewed": 5,
+      "magentaTotal": 108
+    },
+    {
+      "id": "c243b03r1c2-12-honeybee",
+      "status": "HOLD",
+      "note": "Pink wing surfaces and pink head fringe survive finish; later triage determines count, hold preserved. No clearly detached geometry.",
+      "framesReviewed": 5,
+      "magentaTotal": 75
+    },
+    {
+      "id": "c243b03r1c2-20-stonefly",
+      "status": "READY_FOR_CLAUDE",
+      "note": "All five frames continuous; long antennae and rear cerci stay attached; no visible geometry islands.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c243b03r1c2-31-eagle",
+      "status": "HOLD",
+      "note": "Detached/raised feather strip spikes behind neck in turn3 reaction and idle50/90; a background gap separates strip from nape. Neck/back ribbon class.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c243b03r1c3-01-bumblebee",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Pale pink wing tint/head fringe prompted provisional caution; unchanged triage has0 key-magenta pixels, below5. No extra color ruler introduced; continuous geometry in all five frames; color QA note for Claude.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c243b03r1c3-24-ladybug",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Continuous shell/head/leg outlines across all five frames; no obvious detached antenna tip.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c243b02r1c1-09-flying-fish",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Earlier midbody wedge gap is absent from both victory frames; body and fin roots remain continuous.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c243b02r1c2-02-beaked-whale",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Earlier throat hole at flipper root is absent; throat/forebody remain continuous in late victory.",
+      "framesReviewed": 5,
+      "magentaTotal": 1
+    },
+    {
+      "id": "c243b02r1c2-14-lamprey",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Earlier lower mouth fragment and belly sliver absent; oral disc remains attached in all five frames.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c243b02r1c3-13-humpback-whale",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Earlier pale detached throat fragment is no longer floating; both flippers remain attached through victory. Far flipper remains pale and is visible below near flipper.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c196creaturesupply-18-water-beetle",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Antenna clubs stay joined to shafts in all five frames; hairy swimming legs remain attached. Pixel triage still required for fine hairs.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "g2c136targetededits-21-bee",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Five frames show attached abdomen/wing roots/antennae; pale pink wings noted for Claude, unchanged key-magenta triage below threshold.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c198creaturesupplyb-22-locust",
+      "status": "READY_FOR_CLAUDE",
+      "note": "Head/mandibles and hind-leg chains remain joined through all five frames; no visible split or island.",
+      "framesReviewed": 5,
+      "magentaTotal": 0
+    },
+    {
+      "id": "c243b03r1c3-09-fly",
+      "status": "HOLD",
+      "note": "Pink/magenta wing tips and facial fringe; triage57. Geometry continuous after D28 repair.",
+      "framesReviewed": 5,
+      "magentaTotal": 57
+    }
+  ],
+  "finishedFrameCount": 85
+}

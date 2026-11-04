@@ -1,0 +1,58 @@
+{
+  "status": "BATCH_DELIVERED_FOR_CLAUDE_REVIEW",
+  "batch": 6,
+  "round": 2,
+  "plannedSpecies": 34,
+  "supportedSpecies": 22,
+  "exactOriginals": 66,
+  "referenceCompilerSkipped": 12,
+  "sourceCheckpoint": "2f671ac7a",
+  "staticBefore": 7,
+  "staticAfter": 9,
+  "gained": [
+    "Lemur",
+    "Spider Monkey"
+  ],
+  "lost": [],
+  "priorClassAwareBefore": 8,
+  "priorClassAwareAfter": 10,
+  "priorOrangutanClassPassRetainedNotNewRecovery": true,
+  "newSourceEligiblePassSpecies": 7,
+  "nativePass": 7,
+  "aiFinishPass": 7,
+  "rebindPass": 7,
+  "finishedNativePass": 7,
+  "alphaChanges": 0,
+  "protectedRgbChanges": 0,
+  "geometryRecordsAndRecompiledPaintSkinIdentical": true,
+  "reviewStills": 35,
+  "ready": [
+    "Lemur",
+    "Gorilla",
+    "Spider Monkey"
+  ],
+  "visualHolds": [
+    "Gibbon",
+    "Monkey",
+    "Boa",
+    "Mountain Viper"
+  ],
+  "staticRepairHolds": [
+    "Mandrill",
+    "Orangutan"
+  ],
+  "repairedGorillaHeldOriginalGreenFitFilmedOnce": true,
+  "prechecks": {
+    "films": 218,
+    "identityCards": 7,
+    "newFragmentBoxes": 0,
+    "newPinkFlags": 0,
+    "historicalBoxDeltasReviewed": 2
+  },
+  "remainingSpecies": 31,
+  "remaining": "audits/C243_ALLOUT_20261011/execution/batch06/round2/remaining.json",
+  "headroomGiB": 69,
+  "rulers": "unchanged",
+  "allPairs": "HOLD",
+  "next": "Batch7 supported9;17 reference/compiler blockers skipped. Then supported no-master supply and full static measure/TERMINAL. No review wait."
+}

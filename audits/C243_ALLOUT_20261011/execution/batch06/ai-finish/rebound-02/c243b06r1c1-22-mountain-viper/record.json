@@ -1,0 +1,167 @@
+{
+  "kind": "serpent",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mountain Viper\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"112355687\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"4\"]]]]",
+    "seed": 112355687,
+    "ownerId": "authored:archetype-sprint/c243b06r1c1-22-mountain-viper",
+    "earthName": "Mountain Viper"
+  },
+  "template": {
+    "id": "serpent",
+    "version": 1
+  },
+  "clipSetId": "serpent-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 112355687,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 17,
+    "body": 3,
+    "loco": 13,
+    "trait": 4,
+    "size": 2,
+    "diet": 1,
+    "head": 9,
+    "limbs": 5,
+    "skin": 1,
+    "tail": 2,
+    "pattern": 4,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 6,
+    "detail": 6,
+    "accent": 14,
+    "temper": 7,
+    "sense": 2,
+    "repro": 0,
+    "life": 4,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Mountain Viper"
+  },
+  "geometry": {
+    "cutoutAssetHash": "c29a0cf9154c496750beff1d5a1b3f89a8688a3f4f3b0c7d6a5e7f6a146b0ddc",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.5904,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.7886762360446571,
+      0.4880382775119617
+    ],
+    "head": [
+      0.8338915470494418,
+      0.48022328548644344
+    ],
+    "jaw": [
+      0.8559011164274322,
+      0.5056618819776715
+    ],
+    "seg0": [
+      0.74896331738437,
+      0.49449760765550244
+    ],
+    "seg1": [
+      0.6988038277511961,
+      0.511164274322169
+    ],
+    "seg2": [
+      0.6303827751196173,
+      0.5441786283891547
+    ],
+    "seg3": [
+      0.5625199362041468,
+      0.5262360446570973
+    ],
+    "seg4": [
+      0.4964912280701755,
+      0.474481658692185
+    ],
+    "seg5": [
+      0.42862838915470497,
+      0.4851674641148325
+    ],
+    "seg6": [
+      0.36140350877192984,
+      0.5389952153110048
+    ],
+    "seg7": [
+      0.2948165869218501,
+      0.5342105263157895
+    ],
+    "seg8": [
+      0.22081339712918657,
+      0.5100478468899522
+    ],
+    "seg9": [
+      0.15358851674641147,
+      0.528548644338118
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-22-mountain-viper/packet/master.png",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "G1 automatic: Earth fauna profile snake media ground+water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Automatic serpent strip transfer from python: vertical segment cuts, head/jaw polygons and centreline landmarks placed by fraction of the measured body length and by local-thickness offset from the measured centreline. No hidden, absent or folded contract groups (a continuous x-monotone limbless body is measured).",
+    "visualAcceptance": "pending (automatic; no visual review)",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "e1ffdb7c09ec8c48876c9ccaf94d491e0ab6a874ffeaffdc0bf4121dc17162a3",
+    "subjectSourceSha256": "f7be64ee35cc01af7966d1910dad1f1127f44a31c05ec2eeca527455ed3d5e43",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.045885710734588386,
+      "jaw": 0.033638420528438774,
+      "seg0": 0.04023479656245112,
+      "seg1": 0.05285595688319587,
+      "seg2": 0.07596965195177327,
+      "seg3": 0.07019473781309386,
+      "seg4": 0.08389461701710231,
+      "seg5": 0.06869899084555597,
+      "seg6": 0.08611975000727447,
+      "seg7": 0.0667586055145669,
+      "seg8": 0.0778479747747156,
+      "seg9": 0.06972419987849612
+    },
+    "measures": {
+      "body": 0.5963477394388695,
+      "bone-min": 0.033638420528438774,
+      "bone-max": 0.08611975000727447,
+      "head/body": 0.0769445538231843
+    }
+  },
+  "recipeHash": "23cdeaa59ddf911646625a905b75f6aaebc3403f95c48241e74466e58b9b2d10"
+}

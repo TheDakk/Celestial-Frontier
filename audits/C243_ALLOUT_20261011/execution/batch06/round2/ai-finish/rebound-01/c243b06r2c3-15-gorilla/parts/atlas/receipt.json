@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c243b06r2c3-15-gorilla",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "6f045246cad4453b89643be60d97c2839e5414c5e21c362111ad5012f0b19e5f",
+    "pngSha256": "e3863341942251e5e017484d2cf5969d92f5368e5954df90a6eadf6a96b396a7"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "6b37a8dcc6014423f319a417ea9de8c115abd13ff8b823f647901f028abcfabc"
+    },
+    {
+      "name": "chest.png",
+      "sha256": "665753b66920b8e4ab35b15746bdc520ee012b4e27b25059c97e618727fcfffd"
+    },
+    {
+      "name": "far-arm-lower-hand.png",
+      "sha256": "7852e9f35952054a341c5c998205df42902c962fac2740088d683629fe6f4593"
+    },
+    {
+      "name": "far-arm-upper.png",
+      "sha256": "96bae6f42e22257adf5ba31d8a3cf260afc7995646b7065f6f13d957cb85e008"
+    },
+    {
+      "name": "far-leg-lower-foot.png",
+      "sha256": "0fba7454f14e43919e205c3d0a392e09def6d3840b5b4e12227fb367bc6a9521"
+    },
+    {
+      "name": "far-leg-upper.png",
+      "sha256": "1199a47ac2aad81cfe0665bf6bb47369edfc8089f3b966d9075173839c4e9654"
+    },
+    {
+      "name": "head.png",
+      "sha256": "3d6a45843bd54e628d396abc6e1bd23a303d496c3296a08c815b51f7cdb7ff47"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "00b1550dbe00c4c21b7a64a79ac9cdacb6f03b96b4f574bd73a39e1797a08fae"
+    },
+    {
+      "name": "near-arm-lower-hand.png",
+      "sha256": "6f0ff2148bd126d68458eedc34feba9417b5a1a33163aaabfbc9b598cb03ef87"
+    },
+    {
+      "name": "near-arm-upper.png",
+      "sha256": "50d23f4963e93f189ed9e570cf1937bed5d86ca22d695c4a1e176d65685e0687"
+    },
+    {
+      "name": "near-leg-lower-foot.png",
+      "sha256": "b0f0ef4b38dd905384a40e6360f963a5debe89e79ea80ed963237ccda79ed398"
+    },
+    {
+      "name": "near-leg-upper.png",
+      "sha256": "af52d6126162b22cd7f9ff033387548415f5b4509b44b6306702ec6259f781af"
+    },
+    {
+      "name": "neck.png",
+      "sha256": "50bf944403e3225bb6cbd309d774e60bfea11c578be4d8ffa5c984c3ebc4002f"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

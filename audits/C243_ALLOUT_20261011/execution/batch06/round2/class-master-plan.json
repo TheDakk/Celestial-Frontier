@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b06r2c2-11-gibbon",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c2-11-gibbon/fit"
+  },
+  {
+    "id": "c243b06r2c1-12-lemur",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c1-12-lemur/fit"
+  },
+  {
+    "id": "c243b06r2c2-13-mandrill",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c2-13-mandrill/fit"
+  },
+  {
+    "id": "c243b06r2c3-15-gorilla",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c3-15-gorilla/fit"
+  },
+  {
+    "id": "c243b06r2c1-16-monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c1-16-monkey/fit"
+  },
+  {
+    "id": "c243b06r2c3-17-orangutan",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c3-17-orangutan/fit"
+  },
+  {
+    "id": "c243b06r2c2-18-spider-monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c2-18-spider-monkey/fit"
+  }
+]

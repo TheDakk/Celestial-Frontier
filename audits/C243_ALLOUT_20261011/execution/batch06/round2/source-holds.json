@@ -1,0 +1,55 @@
+{
+  "Mite": {
+    "1": "Only six walking-leg tips independently visible; anterior mouth appendages do not establish eight legs.",
+    "2": "Only six independently readable walking-leg tips; eight-leg requirement remains unresolved.",
+    "3": "Only six independent walking-leg tips visible again; required eight not established."
+  },
+  "Pseudoscorpion": {
+    "1": "Eight walking legs cannot be independently traced; near/far overlap and possible extra branch.",
+    "2": "Five long near-side walking branches with obscured far-side stubs; four correct near/far walking pairs not independently established.",
+    "3": "Five near-side walking branches plus obscured far stubs; four correct walking pairs not established."
+  },
+  "Sea Spider": {
+    "1": "Four eyes on one small turret cannot be independently confirmed; only two prominent eye bumps readable.",
+    "2": "Three separate tall eye stalks painted, not four eyes on one small turret; canonical eye anatomy not met.",
+    "3": "Only two large raised eye bulbs on separate stalk-like bases, not four eyes on a small turret."
+  },
+  "Camel Spider": {
+    "1": "Distinct pair of long leg-like pedipalps held forward is not independently readable; jaws and walking legs are not substitutes.",
+    "2": "Eight walking legs plus two distinct forward pedipalps cannot all be independently traced; near/far limbs overlap or hide.",
+    "3": "Two forward feelers are visible, but eight separate walking legs in addition remain unresolved because far-side limbs hide/overlap."
+  },
+  "Marmoset": {
+    "1": "Canonical squirrel-sized upright bark-clinging pose not shown; source walks horizontally. Generic walking/no-prop instructions conflict with canonical marker.",
+    "2": "Canonical upright bark-clinging stance again absent; walking/no-prop template conflict remains unresolved.",
+    "3": "Horizontal walking posture persists, not canonical upright bark-clinging stance; prompt-pose conflict unresolved."
+  },
+  "Spider Monkey": {
+    "1": "Hands show opposed thumb-like projecting digits; canonical thumbless hook hands are not independently established.",
+    "3": "Near hand shows straight fingers plus a separate opposed thumb-like projection; canonical thumbless hook hand is not established."
+  },
+  "Caecilian": {
+    "1": "Tiny front protrusion cannot be independently identified as the canonical sensory tentacle; mouth-tip projection alone is not proof.",
+    "2": "Prominent round black eye-like side spot conflicts with no-visible-eye marker; front projection not independently established as sensory tentacle.",
+    "3": "Eye-like spot absent now, but tiny mouth-tip protrusion still does not independently establish the canonical sensory tentacle."
+  },
+  "Cobra": {
+    "1": "Overall silhouette is wider than tall, about665x535px; canonical reared cobra requires taller than wide.",
+    "2": "Overall silhouette about567x516px remains wider than tall; canonical reared posture aspect not met.",
+    "3": "Overall silhouette including tail/tongue remains wider than tall, about590x510px; canonical pose aspect unresolved."
+  },
+  "Rattlesnake": {
+    "1": "Required coiled base not shown; source has open horizontal S body with no coil, despite legible rattle/head.",
+    "2": "Base has deeper open S/C bends but does not independently read as a coiled base; canonical coiled posture remains ambiguous.",
+    "3": "Final source is an open horizontal S body with no clearly coiled base; canonical coiled posture not met."
+  },
+  "Deer Tick": {
+    "3": "Five long near-side branches plus overlapping far stubs; exact eight walking legs cannot be independently established."
+  },
+  "Harvestman": {
+    "3": "Extra thin near-side leg branch below body makes exact eight walking legs unresolved."
+  },
+  "Lemur": {
+    "3": "Five separate limb/foot branches visible, including extra middle hind/flank leg; four-limb anatomy not met."
+  }
+}

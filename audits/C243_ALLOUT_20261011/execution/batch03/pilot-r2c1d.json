@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b03r2c1-14-mantis",
+    "name": "Mantis",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-14-mantis",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-14-mantis/master.png"
+  },
+  {
+    "id": "c243b03r2c1-15-mayfly",
+    "name": "Mayfly",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-15-mayfly",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-15-mayfly/master.png"
+  },
+  {
+    "id": "c243b03r2c1-16-mosquito",
+    "name": "Mosquito",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-16-mosquito",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-16-mosquito/master.png"
+  },
+  {
+    "id": "c243b03r2c1-17-orchid-bee",
+    "name": "Orchid Bee",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-17-orchid-bee",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c1-17-orchid-bee/master.png"
+  }
+]

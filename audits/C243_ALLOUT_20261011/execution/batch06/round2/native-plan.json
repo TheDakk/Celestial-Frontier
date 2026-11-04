@@ -1,0 +1,93 @@
+[
+  {
+    "id": "c243b06r2c2-11-gibbon",
+    "packetId": "c243b06r2c2-11-gibbon",
+    "name": "Gibbon",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c2-11-gibbon/fit",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-11-gibbon/fit",
+    "origin": "round2-new-original",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c2-11-gibbon-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c2-11-gibbon",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c2-11-gibbon/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-11-gibbon/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-11-gibbon"
+  },
+  {
+    "id": "c243b06r2c1-12-lemur",
+    "packetId": "c243b06r2c1-12-lemur",
+    "name": "Lemur",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c1-12-lemur/fit",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1c/c243b06r2c1-12-lemur/fit",
+    "origin": "round2-new-original",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c1-12-lemur-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c1-12-lemur",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c1-12-lemur/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1c/c243b06r2c1-12-lemur/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-12-lemur"
+  },
+  {
+    "id": "c243b06r2c3-15-gorilla",
+    "packetId": "c243b06r2c3-15-gorilla",
+    "name": "Gorilla",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-15-gorilla/fit",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-15-gorilla/fit",
+    "origin": "round2-new-original; D28 regression held, original green fit unfilmed",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c3-15-gorilla-original-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c3-15-gorilla",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c3-15-gorilla/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-15-gorilla/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c3-15-gorilla"
+  },
+  {
+    "id": "c243b06r2c1-16-monkey",
+    "packetId": "c243b06r2c1-16-monkey",
+    "name": "Monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c1-16-monkey/fit",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-16-monkey/fit",
+    "origin": "round2-new-original",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c1-16-monkey-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c1-16-monkey",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c1-16-monkey/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-16-monkey/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-16-monkey"
+  },
+  {
+    "id": "c243b06r2c2-18-spider-monkey",
+    "packetId": "c243b06r2c2-18-spider-monkey",
+    "name": "Spider Monkey",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c2-18-spider-monkey/fit",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2d/c243b06r2c2-18-spider-monkey/fit",
+    "origin": "round2-new-original",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c2-18-spider-monkey-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c2-18-spider-monkey",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c2-18-spider-monkey/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2d/c243b06r2c2-18-spider-monkey/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c2-18-spider-monkey"
+  },
+  {
+    "id": "c243b06r2c1-19-boa",
+    "packetId": "c243b06r2c1-19-boa",
+    "name": "Boa",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-19-boa/fit",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-19-boa/fit",
+    "origin": "round2-new-original",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c1-19-boa-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c1-19-boa",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c1-19-boa/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-19-boa/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-19-boa"
+  },
+  {
+    "id": "c243b06r2c1-22-mountain-viper",
+    "packetId": "c243b06r2c1-22-mountain-viper",
+    "name": "Mountain Viper",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/fit",
+    "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/fit",
+    "origin": "round2-new-original",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native-scripts/c243b06r2c1-22-mountain-viper-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c1-22-mountain-viper",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/round2/native/c243b06r2c1-22-mountain-viper/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r2c1-22-mountain-viper"
+  }
+]

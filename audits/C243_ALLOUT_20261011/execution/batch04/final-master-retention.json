@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "records": 13,
+  "uniqueMasters": 13,
+  "negativeControls": [
+    "missing indexed master refused",
+    "changed indexed bytes refused"
+  ],
+  "rows": [
+    {
+      "id": "c243b04r1c1-10-snipe",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c1c/c243b04r1c1-10-snipe/packet/master.png",
+      "sha256": "5fcfd35c729be8eaa6c5ff7e8a8c878103a57c707121b8d2547e75f6ff1e8a65"
+    },
+    {
+      "id": "c243b04r1c2-03-ostrich",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2a/c243b04r1c2-03-ostrich/packet/master.png",
+      "sha256": "1701c2e7d84532deb1e04a2a4b44347f54bf5fed96e7ec91253923de8a490bd9"
+    },
+    {
+      "id": "c243b04r1c2-07-pheasant",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2b/c243b04r1c2-07-pheasant/packet/master.png",
+      "sha256": "03af3d49148c49b7bb670efdfe737c78e1033a38f3ba703071cf927fd34122c6"
+    },
+    {
+      "id": "c243b04r1c2-12-tern",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c2c/c243b04r1c2-12-tern/fallback-1/packet/master.png",
+      "sha256": "089e09eb782fcb402ece4d606fce85e54709465199599f998749424f1c0bb30a"
+    },
+    {
+      "id": "g2c83-16-cockatoo",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04before/g2c83-16-cockatoo/packet/master.png",
+      "sha256": "88404ba74cf14bdd6d1c6eba3f277f94611eaf9966cb2e589087129f7fe1e6ea"
+    },
+    {
+      "id": "g2c107-08-frigatebird",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04before/g2c107-08-frigatebird/packet/master.png",
+      "sha256": "a993465b8a535f2b12e7f9305e3f74f92cec84cc745b0169e9059d86dcdf7b8b"
+    },
+    {
+      "id": "g2c106-18-hoatzin",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04before/g2c106-18-hoatzin/packet/master.png",
+      "sha256": "9159c9493e848f0faf22dba3a9eef36003fe12a84bafd5d5a7bf4c9d78a5dd49"
+    },
+    {
+      "id": "g2c106-17-kakapo",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04before/g2c106-17-kakapo/packet/master.png",
+      "sha256": "986fa51bbadcec81a68085c5e0b5b986d7588052606f8d950e1acf9e580ffe1e"
+    },
+    {
+      "id": "c213originals-28-kookaburra",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04before/c213originals-28-kookaburra/packet/master.png",
+      "sha256": "842cf0005e4ef524453cf6de0643832e2c62a8af5b71bddcb1055004a26727b3"
+    },
+    {
+      "id": "c243b03r1c2-31-eagle",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c2i/c243b03r1c2-31-eagle/packet/master.png",
+      "sha256": "a84567a2b55a810f9e21f2034de983e064c57803f0dbce29ddc3acfbfaf9d1a3"
+    },
+    {
+      "id": "c243b04r1c3-04-owl",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c3a/c243b04r1c3-04-owl/packet/master.png",
+      "sha256": "76de49e6a2c8591d22c8003d270318a06fc6816e7efd301add1761c84a0335f4"
+    },
+    {
+      "id": "c243b04r1c3-11-swift",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r1c3b/c243b04r1c3-11-swift/packet/master.png",
+      "sha256": "d3f6ac11c1f3691d13ef97eb5ebda1e20c9ebbff21231162664be9860d8b3756"
+    },
+    {
+      "id": "g2c72-12-egret",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04before/g2c72-12-egret/packet/master.png",
+      "sha256": "e09bb365089998c4983e565fffa63ca7e4dc5f9f3a3bf298bb7563a05b63ac57"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c243b06r1c1-22-mountain-viper",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "e93e2421f3761e53797274f2018aec4b9e6e87c765ff2739075f722cf151cf9a",
+    "pngSha256": "82c968eca9f2126e28f49e258f97e2002262af183071cd501ac330d2399ae281"
+  },
+  "parts": [
+    {
+      "name": "body-segment-0.png",
+      "sha256": "1869b4bfdadcfbb691b060b97ced3dce0ce29523a256ebb00fef9719efbb735b"
+    },
+    {
+      "name": "body-segment-1.png",
+      "sha256": "455b49c69ce38533f230283bb6c7381e71c0b528b78dd1aef7c39109b44ac8bd"
+    },
+    {
+      "name": "body-segment-2.png",
+      "sha256": "55720ba3b30e59d977d3afeeab38c16c74605dca20b4f0bfe1028026159a41e2"
+    },
+    {
+      "name": "body-segment-3.png",
+      "sha256": "3e438fb28fcf84e3a92673e1327f74a51091c3348d3de67359d4bde3fd2b4d3c"
+    },
+    {
+      "name": "body-segment-4.png",
+      "sha256": "a43a7c9008aed2dd8cae295a4874c0aecdd1383e5db035a70734261334bd1c17"
+    },
+    {
+      "name": "body-segment-5.png",
+      "sha256": "5d0ec7998e148ba0bf96ff7a8e3c8822b503083d4cea7da8bb174784c9f63948"
+    },
+    {
+      "name": "body-segment-6.png",
+      "sha256": "98e4a0a47cf85f56f24ef694674cfb6f9a0c90b3072d549c120bd472917c2276"
+    },
+    {
+      "name": "body-segment-7.png",
+      "sha256": "7993187c10e63a1d060daa237a6e8cb27e435d7efc2af039b24828b92fa7d88e"
+    },
+    {
+      "name": "body-segment-8.png",
+      "sha256": "76f38eac1922496cb82c7b47d4a3bf3af680ebf750ee5ab7ede623469f6d6d8f"
+    },
+    {
+      "name": "body-segment-9.png",
+      "sha256": "f963a7290b5abead38cebf951dc3bdb8d2885acb09829a3f021402c0962b5d5f"
+    },
+    {
+      "name": "head.png",
+      "sha256": "4a3ccf5a8311ac1c3c623c592214409286664621efa42fbd969b4493a6a9e252"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "61797c3384f2548d07b266edb8533bb1ec20941a4aff0a7fc5f8bda851820835"
+    },
+    {
+      "name": "neck-root.png",
+      "sha256": "e91adff110f4f7539ab0c7ad4182c634c54e3c1f09f71b7f69fa3fa5b5a993db"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

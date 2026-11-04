@@ -1,0 +1,389 @@
+[
+  {
+    "name": "Tube Worm",
+    "family": "annelid",
+    "priorPackets": [
+      "c221program-25-tube-worm"
+    ],
+    "reasons": [
+      "wrong-family: arachnid matches clearly better (0.0436 < 0.0657)",
+      "extra-anatomy (unassigned): a top appendage of 13.0% paint that no reference appendage lands on",
+      "missing-anatomy (family floor): the largest rear appendage is 0.7% of the paint; every same-family reference shows at least 1.0%",
+      "missing-anatomy: part segment0 (segment0) covers 2% paint (reference 2%)",
+      "missing-anatomy: part segment1 (segment1) covers 8% paint (reference 7%)",
+      "missing-anatomy: part segment11 (segment11) covers 1% paint (reference 5%)"
+    ]
+  },
+  {
+    "name": "Deer Tick",
+    "family": "arachnid",
+    "priorPackets": [
+      "c221program-01-deer-tick"
+    ],
+    "reasons": [
+      "facing: the mirrored painting matches arachnid better (0.0152 < 0.0182)",
+      "extra-anatomy (unassigned): a front appendage of 17.4% paint that no reference appendage lands on"
+    ]
+  },
+  {
+    "name": "Harvestman",
+    "family": "arachnid",
+    "priorPackets": [
+      "c221program-33-harvestman"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 7.4% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a front appendage of 21.5% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 7.2% paint that no reference appendage lands on",
+      "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+      "missing-anatomy: part chelicera-near (cheliceraNear) covers 0% paint (reference 95%)",
+      "missing-anatomy: part chelicera-far (cheliceraFar) covers 0% paint (reference 94%)",
+      "missing-anatomy: part leg1-near-distal (leg1NearFoot) covers 1% paint (reference 58%)",
+      "missing-anatomy: part leg1-near-upper (leg1NearKnee) covers 0% paint (reference 99%)",
+      "missing-anatomy: part leg2-near-distal (leg2NearFoot) covers 14% paint (reference 66%)",
+      "missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 10% paint (reference 73%)",
+      "missing-anatomy: part leg3-near-upper (leg3NearKnee) covers 19% paint (reference 94%)",
+      "missing-anatomy: part leg4-near-distal (leg4NearFoot) covers 4% paint (reference 62%)",
+      "missing-anatomy: part leg1-far-distal (leg1FarFoot) covers 5% paint (reference 69%)",
+      "missing-anatomy: part leg1-far-upper (leg1FarKnee) covers 6% paint (reference 84%)",
+      "missing-anatomy: part leg2-far-distal (leg2FarFoot) covers 3% paint (reference 82%)",
+      "missing-anatomy: part leg2-far-upper (leg2FarKnee) covers 14% paint (reference 87%)",
+      "missing-anatomy: part leg3-far-distal (leg3FarFoot) covers 3% paint (reference 80%)",
+      "missing-anatomy: part leg4-far-distal (leg4FarFoot) covers 13% paint (reference 88%)",
+      "missing-anatomy: part leg4-far-upper (leg4FarKnee) covers 3% paint (reference 88%)"
+    ]
+  },
+  {
+    "name": "Mite",
+    "family": "arachnid",
+    "priorPackets": [
+      "c221program-36-mite"
+    ],
+    "reasons": [
+      "wrong-family: sessile-filter matches clearly better (0.0177 < 0.0355)",
+      "extra-anatomy (unassigned): a front appendage of 8.0% paint that no reference appendage lands on",
+      "missing-anatomy (family floor): the largest rear appendage is 1.8% of the paint; every same-family reference shows at least 5.9%"
+    ]
+  },
+  {
+    "name": "Pseudoscorpion",
+    "family": "arachnid",
+    "priorPackets": [
+      "c221program-34-pseudoscorpion"
+    ],
+    "reasons": [
+      "missing-anatomy (family floor): the largest rear appendage is 2.1% of the paint; every same-family reference shows at least 5.9%",
+      "missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 10% paint (reference 73%)",
+      "missing-anatomy: part leg1-far-upper (leg1FarKnee) covers 15% paint (reference 84%)"
+    ]
+  },
+  {
+    "name": "Scorpion",
+    "family": "arachnid",
+    "priorPackets": [
+      "c213originals-48-scorpion"
+    ],
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ]
+  },
+  {
+    "name": "Sea Spider",
+    "family": "arachnid",
+    "priorPackets": [
+      "c221program-43-sea-spider"
+    ],
+    "reasons": [
+      "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+      "missing-anatomy: part observed-right-palp-continuity (cephalothorax) covers 12% paint (reference 78%)",
+      "missing-anatomy: part chelicerafar (cheliceraFar) covers 10% paint (reference 89%)",
+      "missing-anatomy: part cheliceranear (cheliceraNear) covers 8% paint (reference 97%)",
+      "missing-anatomy: part leg1farfoot (leg1FarFoot) covers 17% paint (reference 53%)",
+      "missing-anatomy: part leg1farknee (leg1FarKnee) covers 8% paint (reference 88%)",
+      "missing-anatomy: part leg1nearfoot (leg1NearFoot) covers 7% paint (reference 46%)",
+      "missing-anatomy: part leg2farknee (leg2FarKnee) covers 15% paint (reference 95%)",
+      "missing-anatomy: part abdomen (abdomen) covers 16% paint (reference 94%)",
+      "unexplained-anatomy: 13.9% of the paint lies away from the body and in no part (reference 0.8%)"
+    ]
+  },
+  {
+    "name": "Camel Spider",
+    "family": "arachnid",
+    "priorPackets": [
+      "c221program-02-camel-spider"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Baboon",
+    "family": "primate",
+    "priorPackets": [
+      "c198creaturesupplyb-12-baboon",
+      "c210originals-02-baboon-framing02",
+      "c210originals-02-baboon",
+      "g2c163familyoriginals-11-baboon"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 7.0% of the paint lies away from the body and in no part (reference 0.5%)",
+      "missing-anatomy: part jaw (jaw) covers 20% paint (reference 62%)",
+      "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 0.5%)"
+    ]
+  },
+  {
+    "name": "Chimpanzee",
+    "family": "primate",
+    "priorPackets": [
+      "c198creaturesupplyb-06-chimpanzee",
+      "g2c163familyoriginals-05-chimpanzee"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 27.3% of the paint lies away from the body and in no part (reference 10.3%)",
+      "wrong-family: quadruped matches clearly better (0.0157 < 0.0227)",
+      "missing-anatomy: part foot-near (legNearFoot) covers 0% paint (reference 82%)",
+      "missing-anatomy: part shin-near (legNearKnee) covers 0% paint (reference 81%)",
+      "unexplained-anatomy: 26.7% of the paint lies away from the body and in no part (reference 10.3%)"
+    ]
+  },
+  {
+    "name": "Gibbon",
+    "family": "primate",
+    "priorPackets": [
+      "c213creaturesupply-19-gibbon"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 16.8% of the paint lies away from the body and in no part (reference 9.6%)"
+    ]
+  },
+  {
+    "name": "Lemur",
+    "family": "primate",
+    "priorPackets": [
+      "c198creaturesupplyb-13-lemur",
+      "g2c163familyoriginals-12-lemur"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a top appendage of 8.7% paint that no reference appendage lands on",
+      "unexplained-anatomy: 8.4% of the paint lies away from the body and in no part (reference 0.5%)"
+    ]
+  },
+  {
+    "name": "Mandrill",
+    "family": "primate",
+    "priorPackets": [
+      "c196quadrupedoriginals-21-mandrill",
+      "c198creaturesupplyb-14-mandrill"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 6.9% of the paint lies away from the body and in no part (reference 0.5%)",
+      "unexplained-anatomy: 6.1% of the paint lies away from the body and in no part (reference 0.5%)"
+    ]
+  },
+  {
+    "name": "Marmoset",
+    "family": "primate",
+    "priorPackets": [
+      "c196quadrupedoriginals-22-marmoset",
+      "c198creaturesupplyb-15-marmoset"
+    ],
+    "reasons": [
+      "wrong-family: quadruped matches clearly better (0.0069 < 0.0150)",
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4",
+      "missing-anatomy: part tail2 (tail2) covers 0% paint (reference 72%)",
+      "missing-anatomy: part tail1 (tail1) covers 14% paint (reference 84%)",
+      "missing-anatomy: part jaw (jaw) covers 16% paint (reference 62%)",
+      "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 0.5%)",
+      "unexplained-anatomy: 8.3% of the paint lies away from the body and in no part (reference 0.5%)"
+    ]
+  },
+  {
+    "name": "Gorilla",
+    "family": "primate",
+    "priorPackets": [
+      "c198creaturesupplyb-01-gorilla",
+      "g2c163familyoriginals-04-gorilla"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Monkey",
+    "family": "primate",
+    "priorPackets": [
+      "c196quadrupedoriginals-20-monkey"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Orangutan",
+    "family": "primate",
+    "priorPackets": [
+      "g2c163familyoriginals-06-orangutan"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Spider Monkey",
+    "family": "primate",
+    "priorPackets": [
+      "c198creaturesupplyb-08-spider-monkey",
+      "g2c163familyoriginals-09-spider-monkey"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Boa",
+    "family": "serpent",
+    "priorPackets": [
+      "g2throughputc54-18-boa"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Caecilian",
+    "family": "serpent",
+    "priorPackets": [
+      "c215program-02-caecilian-02"
+    ],
+    "reasons": [
+      "facing: the right (head) end is not thicker than the left (tail) end (49.4 vs 71.4)"
+    ]
+  },
+  {
+    "name": "Cobra",
+    "family": "serpent",
+    "priorPackets": [
+      "g2c90-02-cobra"
+    ],
+    "reasons": [
+      "not x-monotone: the dominant column run holds 94.4 % (coil or overlap; vertical strips cannot separate it)"
+    ]
+  },
+  {
+    "name": "Mountain Viper",
+    "family": "serpent",
+    "priorPackets": [
+      "g2c59-11-mountain-viper",
+      "g2throughputc56-22-mountain-viper"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Rattlesnake",
+    "family": "serpent",
+    "priorPackets": [
+      "g2c90-04-rattlesnake"
+    ],
+    "reasons": [
+      "tail not tapered: tip 56px vs median 89px (truncated tail?)"
+    ]
+  },
+  {
+    "name": "Snake",
+    "family": "serpent",
+    "priorPackets": [
+      "g2c118-13-snake"
+    ],
+    "reasons": [
+      "body not continuous: 1.7 % of the length has no paint"
+    ]
+  },
+  {
+    "name": "Clam",
+    "family": "bivalve",
+    "priorPackets": [
+      "c192creaturesupply-01-clam"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "name": "Giant Clam",
+    "family": "bivalve",
+    "priorPackets": [
+      "c215program-35-giant-clam"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "name": "Oyster",
+    "family": "bivalve",
+    "priorPackets": [
+      "c215program-33-oyster"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "name": "Razor Clam",
+    "family": "bivalve",
+    "priorPackets": [
+      "c215program-34-razor-clam"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "name": "Scallop",
+    "family": "bivalve",
+    "priorPackets": [
+      "c215program-36-scallop"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family bivalve"
+    ]
+  },
+  {
+    "name": "Coconut Crab",
+    "family": "brachyuran",
+    "priorPackets": [
+      "c215program-32-coconut-crab"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  },
+  {
+    "name": "Fiddler Crab",
+    "family": "brachyuran",
+    "priorPackets": [
+      "c196invertebrateoriginals-03-fiddler-crab"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  },
+  {
+    "name": "Freshwater Crab",
+    "family": "brachyuran",
+    "priorPackets": [
+      "c215program-29-freshwater-crab"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  },
+  {
+    "name": "Mud Crab",
+    "family": "brachyuran",
+    "priorPackets": [
+      "c215program-30-mud-crab"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  },
+  {
+    "name": "Vent Crab",
+    "family": "brachyuran",
+    "priorPackets": [
+      "c215program-31-vent-crab"
+    ],
+    "reasons": [
+      "no-reference: no other hand-authored subject of family brachyuran"
+    ]
+  }
+]

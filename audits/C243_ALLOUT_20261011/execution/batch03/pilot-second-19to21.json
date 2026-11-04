@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b03r1c2-19-stick-insect",
+    "name": "Stick Insect",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-19-stick-insect",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-19-stick-insect/master.png"
+  },
+  {
+    "id": "c243b03r1c2-20-stonefly",
+    "name": "Stonefly",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-20-stonefly",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-20-stonefly/master.png"
+  },
+  {
+    "id": "c243b03r1c2-21-water-strider",
+    "name": "Water Strider",
+    "family": "insect",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-21-water-strider",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r1c2-21-water-strider/master.png"
+  }
+]

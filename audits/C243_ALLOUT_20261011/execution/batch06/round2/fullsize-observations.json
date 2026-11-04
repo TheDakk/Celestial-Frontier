@@ -1,0 +1,55 @@
+[
+  {
+    "name": "Gibbon",
+    "status": "VISUAL_HOLD",
+    "framesReviewed": 5,
+    "detail": "original1024x576",
+    "observation": "All five finished stills viewed full size. Long arms, hook hands and tailless white-ringed face stay readable. Suspected small background notch at lower neck/far shoulder on left and horizontal wrist/hand discontinuity on defeated right require source/fragment comparison before disposition. Defeated figure remains visible in a lower standing crouch, not disappearance; no collapse claim. Blue/gold angular shards in dodge and reaction are attack FX.",
+    "comparison": "Original master and original native idle50 inspected full size. Suspected neck/arm notch coincides with source separation under chin; not asserted as a new tear. Wrist edge also occurs before AI. Primary HOLD is unchanged magenta rule7pixels at hand/finger edges, exact coordinates in gibbon-magenta-locations.json; all five frames viewed."
+  },
+  {
+    "name": "Lemur",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "framesReviewed": 5,
+    "detail": "original1024x576",
+    "observation": "All five finished stills reviewed at full size. Four limbs remain separately readable and connected, black/white ringed tail stays continuous through reaction and both victory frames, black fox-like mask and orange-gold eyes preserved. No detached fragment, wing/body slit, obvious pink fringe or shell-like tear seen. Right defeated figure settles into a lower standing crouch; QA only, no collapse claim. Victory tail curves more tightly but remains one continuous striped tail. Dodge shards are transient FX."
+  },
+  {
+    "name": "Gorilla",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "framesReviewed": 5,
+    "detail": "original1024x576",
+    "observation": "All five finished stills reviewed full size. Broad chest/pot belly, peaked skull/heavy brow and four knuckle-supported limbs remain readable and connected. No floating shoulder/head slab, open torso tear, detached finger shard or pink fringe observed. Gold translucent circles and blue angular shards are transient hit/dodge FX. Defeated right figure lowers into a standing crouch; QA only, no collapse claim. This is the original new static-green fit; the regressed D28 variant was not filmed."
+  },
+  {
+    "name": "Monkey",
+    "status": "VISUAL_HOLD",
+    "framesReviewed": 5,
+    "detail": "original1024x576",
+    "observation": "All five finished stills viewed full size. Defeated right far forearm/wrist has a sharp light horizontal patch/discontinuity above dark hand in turn3 reaction and both victory frames, reading as an offset or doubled hand edge; source/original-native comparison required. Curling tail stays continuous, four limbs visible, capuchin face/round eyes and opposing digits readable. No broad chest tear or pink fringe observed. Defeated figure remains in standing crouch; no collapse claim. Attack shards are FX.",
+    "comparison": "Original master and original native idle50 inspected full size. Wrist/hand discontinuity already exists before AI, while the master hand is continuous. HOLD source-part/hand-motion seam class, not an AI-created fault. Zero fragment boxes does not clear an attached/doubled edge."
+  },
+  {
+    "name": "Spider Monkey",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "framesReviewed": 5,
+    "detail": "original1024x576",
+    "observation": "All five finished stills viewed full size. Four long thin limbs remain connected, small head and pot belly preserved, very long curled tail remains continuous through root and tip. Hands read as narrow hooks without the obvious opposed-thumb shapes in discarded candidates1/3. No detached tail/hand/head fragment, open chest slit or visible pink fringe observed. Defeated figure is a lower standing crouch, QA only/no collapse claim. Blue/gold dodge shards are transient FX."
+  },
+  {
+    "name": "Boa",
+    "status": "VISUAL_HOLD",
+    "framesReviewed": 5,
+    "detail": "original1024x576",
+    "observation": "All five finished stills reviewed full size. Victory midpoint turn3-idle50 swings the left winner body downward and it is abruptly cut off at a fixed horizontal staging/render boundary near y480, losing lower body/tail while arena background continues below. At idle90 left tail also reaches/cuts the left edge. This is a full-figure clipping HOLD despite native mechanics PASS; the cutoff is inside the1024x576 image, not its physical bottom edge. Earlier reaction bodies remain continuous; saddle blotches/red tail/dark eye stripe preserved. Blue/gold dodge shards are FX.",
+    "comparison": "Read-only source trace: battle2/stage.ts draws the near plate above actors; parts-rig.ts measures upward rise for framing. Near-plate over-occlusion is a plausible contributor to the internal horizontal cutoff; no renderer/motion code edited and no conclusive root-cause claim."
+  },
+  {
+    "name": "Mountain Viper",
+    "status": "VISUAL_HOLD",
+    "framesReviewed": 5,
+    "detail": "original1024x576",
+    "observation": "All five finished stills reviewed full size. Left winner body at victory midpoint ends abruptly along the same horizontal internal render boundary near y480; the lower body/tail is missing below it although arena remains visible. Late idle also cuts tail at left edge. HOLD shared axial victory clipping class. Triangular head/narrow neck, zigzag dorsal band and slit eye remain readable; no broad body tear or detached head. Dodge shards are FX.",
+    "comparison": "Read-only source trace: battle2/stage.ts draws the near plate above actors; parts-rig.ts measures upward rise for framing. Near-plate over-occlusion is a plausible contributor to the internal horizontal cutoff; no renderer/motion code edited and no conclusive root-cause claim."
+  }
+]

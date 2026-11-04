@@ -1,0 +1,2841 @@
+[
+  {
+    "name": "Tube Worm",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "Dakk/C259 worm reference packet required"
+  },
+  {
+    "name": "Deer Tick",
+    "attempts": [
+      {
+        "name": "Deer Tick",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-02-deer-tick",
+        "masterSha256": "58ee1e4383ddaf17e76dec120691f54ec2cbd04b3bf86fd0fc2934fbff2accaa",
+        "promptSha256": "fd5a8c93e93c5c7782f40f2f61f2da2c423a5e8f4f290a61f93c44d20f1a2cc7",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 351,
+            "y0": 351,
+            "x1": 922,
+            "y1": 886
+          },
+          "margins": {
+            "left": 351,
+            "right": 331,
+            "top": 351,
+            "bottom": 367
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 12.0% paint that no reference appendage lands on",
+          "missing-anatomy (family floor): the largest rear appendage is 2.0% of the paint; every same-family reference shows at least 5.9%",
+          "missing-anatomy: part leg2-far-distal (leg2FarFoot) covers 25% paint (reference 82%)",
+          "unexplained-anatomy: 10.4% of the paint lies away from the body and in no part (reference 4.2%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1a/c243b06r2c1-02-deer-tick/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Deer Tick",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-02-deer-tick",
+        "masterSha256": "6e633f1362970e3acb3558de073f93bba608b636083bbfdee5cb3e54a63b72ed",
+        "promptSha256": "f38a3a2536c3f477d407b12e35581153b6d9265ecad2b0e4237619e5420dd753",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 316,
+            "y0": 360,
+            "x1": 971,
+            "y1": 876
+          },
+          "margins": {
+            "left": 316,
+            "right": 282,
+            "top": 360,
+            "bottom": 377
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 17.1% paint that no reference appendage lands on",
+          "missing-anatomy (family floor): the largest rear appendage is 3.2% of the paint; every same-family reference shows at least 5.9%"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2a/c243b06r2c2-02-deer-tick/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Deer Tick",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-02-deer-tick",
+        "masterSha256": "8f85b07e08ed73eb1e5c3e76d2c678d9077cb9be9a0eb1e2a876003e65455627",
+        "promptSha256": "3992a42316f8e0b95e15d5b09e16388ef3a6ca219ec1795c4c8471606d8f88f1",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 324,
+            "y0": 410,
+            "x1": 931,
+            "y1": 842
+          },
+          "margins": {
+            "left": 324,
+            "right": 322,
+            "top": 410,
+            "bottom": 411
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy (family floor): the largest rear appendage is 2.6% of the paint; every same-family reference shows at least 5.9%",
+          "missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 12% paint (reference 73%)",
+          "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 4.2%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3a/c243b06r2c3-02-deer-tick/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Five long near-side branches plus overlapping far stubs; exact eight walking legs cannot be independently established."
+      }
+    ],
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "extra-anatomy (unassigned): a front appendage of 17.1% paint that no reference appendage lands on; missing-anatomy (family floor): the largest rear appendage is 3.2% of the paint; every same-family reference shows at least 5.9%",
+    "bestRetainedSource": "c243b06r2c2-02-deer-tick"
+  },
+  {
+    "name": "Harvestman",
+    "attempts": [
+      {
+        "name": "Harvestman",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-03-harvestman",
+        "masterSha256": "ce5b8e8c8ba20480e3ba9d1f39d72ec80e017150bf900cfcb8a6804ba4d54697",
+        "promptSha256": "4ee25eba94bb1321862492ac1525e658252b4bdb7fb99a79b40040c5db740179",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 221,
+            "y0": 308,
+            "x1": 1036,
+            "y1": 928
+          },
+          "margins": {
+            "left": 221,
+            "right": 217,
+            "top": 308,
+            "bottom": 325
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "facing: the mirrored painting matches arachnid better (0.0370 < 0.0440)",
+          "extra-anatomy (unassigned): a top appendage of 11.4% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a rear appendage of 19.0% paint that no reference appendage lands on",
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+          "missing-anatomy: part observed-left-palp-continuity (cephalothorax) covers 8% paint (reference 75%)",
+          "missing-anatomy: part observed-right-palp-continuity (cephalothorax) covers 0% paint (reference 78%)",
+          "missing-anatomy: part chelicerafar (cheliceraFar) covers 7% paint (reference 89%)",
+          "missing-anatomy: part cheliceranear (cheliceraNear) covers 1% paint (reference 97%)",
+          "missing-anatomy: part leg1farfoot (leg1FarFoot) covers 6% paint (reference 53%)",
+          "missing-anatomy: part leg1nearfoot (leg1NearFoot) covers 6% paint (reference 46%)",
+          "missing-anatomy: part leg1nearknee (leg1NearKnee) covers 0% paint (reference 88%)",
+          "missing-anatomy: part leg2farfoot (leg2FarFoot) covers 5% paint (reference 61%)",
+          "missing-anatomy: part leg2farknee (leg2FarKnee) covers 12% paint (reference 95%)",
+          "missing-anatomy: part leg2nearknee (leg2NearKnee) covers 15% paint (reference 93%)",
+          "missing-anatomy: part leg3farfoot (leg3FarFoot) covers 1% paint (reference 53%)",
+          "missing-anatomy: part leg3nearfoot (leg3NearFoot) covers 2% paint (reference 56%)",
+          "missing-anatomy: part leg3nearknee (leg3NearKnee) covers 6% paint (reference 99%)",
+          "missing-anatomy: part leg4farfoot (leg4FarFoot) covers 2% paint (reference 52%)",
+          "missing-anatomy: part leg4farknee (leg4FarKnee) covers 14% paint (reference 60%)",
+          "missing-anatomy: part leg4nearknee (leg4NearKnee) covers 21% paint (reference 64%)",
+          "missing-anatomy: part abdomen (abdomen) covers 5% paint (reference 94%)",
+          "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 0.8%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1a/c243b06r2c1-03-harvestman/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Harvestman",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-03-harvestman",
+        "masterSha256": "92e9ae8213201bbd06f3ce7bf0006cc2ac6a4abd61e77bc826e5734f4c301699",
+        "promptSha256": "9d5d8b976c8303241d2feb4113ea6a8a91c21d996bed706c30843a87450f142b",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 241,
+            "y0": 362,
+            "x1": 1036,
+            "y1": 891
+          },
+          "margins": {
+            "left": 241,
+            "right": 217,
+            "top": 362,
+            "bottom": 362
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a top appendage of 7.9% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a top appendage of 7.6% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a rear appendage of 8.8% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a front appendage of 14.3% paint that no reference appendage lands on",
+          "missing-anatomy: part chelicera-near (cheliceraNear) covers 0% paint (reference 95%)",
+          "missing-anatomy: part leg1-near-distal (leg1NearFoot) covers 1% paint (reference 58%)",
+          "missing-anatomy: part leg1-near-upper (leg1NearKnee) covers 26% paint (reference 99%)",
+          "missing-anatomy: part leg2-near-distal (leg2NearFoot) covers 12% paint (reference 66%)",
+          "missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 12% paint (reference 73%)",
+          "missing-anatomy: part leg4-near-distal (leg4NearFoot) covers 9% paint (reference 62%)",
+          "missing-anatomy: part abdomen (abdomen) covers 30% paint (reference 93%)",
+          "missing-anatomy: part leg1-far-distal (leg1FarFoot) covers 5% paint (reference 69%)",
+          "missing-anatomy: part leg1-far-upper (leg1FarKnee) covers 10% paint (reference 84%)",
+          "missing-anatomy: part leg2-far-distal (leg2FarFoot) covers 10% paint (reference 82%)",
+          "missing-anatomy: part leg2-far-upper (leg2FarKnee) covers 10% paint (reference 87%)",
+          "missing-anatomy: part leg3-far-distal (leg3FarFoot) covers 1% paint (reference 80%)",
+          "missing-anatomy: part leg3-far-upper (leg3FarKnee) covers 27% paint (reference 95%)",
+          "missing-anatomy: part leg4-far-distal (leg4FarFoot) covers 1% paint (reference 88%)",
+          "missing-anatomy: part leg4-far-upper (leg4FarKnee) covers 8% paint (reference 88%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2a/c243b06r2c2-03-harvestman/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Harvestman",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-03-harvestman",
+        "masterSha256": "24d9cf68721cc12b5d7f8582e272ee9ec95e876e1639136b98422036c301357b",
+        "promptSha256": "68765cb564b32a21fd1e26095f919859a53e7d2cb2c7edacc99b75becafe475c",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 234,
+            "y0": 305,
+            "x1": 1045,
+            "y1": 946
+          },
+          "margins": {
+            "left": 234,
+            "right": 208,
+            "top": 305,
+            "bottom": 307
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a top appendage of 9.8% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a top appendage of 8.9% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a front appendage of 18.9% paint that no reference appendage lands on",
+          "missing-anatomy: part chelicera-near (cheliceraNear) covers 0% paint (reference 95%)",
+          "missing-anatomy: part chelicera-far (cheliceraFar) covers 0% paint (reference 94%)",
+          "missing-anatomy: part leg1-near-distal (leg1NearFoot) covers 7% paint (reference 58%)",
+          "missing-anatomy: part leg1-near-upper (leg1NearKnee) covers 0% paint (reference 99%)",
+          "missing-anatomy: part leg2-near-distal (leg2NearFoot) covers 5% paint (reference 66%)",
+          "missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 9% paint (reference 73%)",
+          "missing-anatomy: part leg3-near-upper (leg3NearKnee) covers 21% paint (reference 94%)",
+          "missing-anatomy: part leg4-near-distal (leg4NearFoot) covers 7% paint (reference 62%)",
+          "missing-anatomy: part leg4-near-upper (leg4NearKnee) covers 23% paint (reference 86%)",
+          "missing-anatomy: part abdomen (abdomen) covers 8% paint (reference 93%)",
+          "missing-anatomy: part leg1-far-distal (leg1FarFoot) covers 5% paint (reference 69%)",
+          "missing-anatomy: part leg1-far-upper (leg1FarKnee) covers 13% paint (reference 84%)",
+          "missing-anatomy: part leg2-far-distal (leg2FarFoot) covers 2% paint (reference 82%)",
+          "missing-anatomy: part leg2-far-upper (leg2FarKnee) covers 17% paint (reference 87%)",
+          "missing-anatomy: part leg3-far-distal (leg3FarFoot) covers 2% paint (reference 80%)",
+          "missing-anatomy: part leg3-far-upper (leg3FarKnee) covers 8% paint (reference 95%)",
+          "missing-anatomy: part leg4-far-distal (leg4FarFoot) covers 8% paint (reference 88%)",
+          "missing-anatomy: part leg4-far-upper (leg4FarKnee) covers 8% paint (reference 88%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3a/c243b06r2c3-03-harvestman/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Extra thin near-side leg branch below body makes exact eight walking legs unresolved."
+      }
+    ],
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "extra-anatomy (unassigned): a top appendage of 7.9% paint that no reference appendage lands on; extra-anatomy (unassigned): a top appendage of 7.6% paint that no reference appendage lands on; extra-anatomy (unassigned): a rear appendage of 8.8% paint that no reference appendage lands on; extra-anatomy (unassigned): a front appendage of 14.3% paint that no reference appendage lands on; missing-anatomy: part chelicera-near (cheliceraNear) covers 0% paint (reference 95%); missing-anatomy: part leg1-near-distal (leg1NearFoot) covers 1% paint (reference 58%); missing-anatomy: part leg1-near-upper (leg1NearKnee) covers 26% paint (reference 99%); missing-anatomy: part leg2-near-distal (leg2NearFoot) covers 12% paint (reference 66%); missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 12% paint (reference 73%); missing-anatomy: part leg4-near-distal (leg4NearFoot) covers 9% paint (reference 62%); missing-anatomy: part abdomen (abdomen) covers 30% paint (reference 93%); missing-anatomy: part leg1-far-distal (leg1FarFoot) covers 5% paint (reference 69%); missing-anatomy: part leg1-far-upper (leg1FarKnee) covers 10% paint (reference 84%); missing-anatomy: part leg2-far-distal (leg2FarFoot) covers 10% paint (reference 82%); missing-anatomy: part leg2-far-upper (leg2FarKnee) covers 10% paint (reference 87%); missing-anatomy: part leg3-far-distal (leg3FarFoot) covers 1% paint (reference 80%); missing-anatomy: part leg3-far-upper (leg3FarKnee) covers 27% paint (reference 95%); missing-anatomy: part leg4-far-distal (leg4FarFoot) covers 1% paint (reference 88%); missing-anatomy: part leg4-far-upper (leg4FarKnee) covers 8% paint (reference 88%)",
+    "bestRetainedSource": "c243b06r2c2-03-harvestman"
+  },
+  {
+    "name": "Mite",
+    "attempts": [
+      {
+        "name": "Mite",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-04-mite",
+        "masterSha256": "4f1c7953fcefc687c54beb6f8c3ec2eed2fa277137e6fd1abcde28b9f5d329fd",
+        "promptSha256": "4037126cb871c67da32b7aa90d9dcffbce2f1cf81f4203adbd7600b69d875952",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 359,
+            "y0": 418,
+            "x1": 921,
+            "y1": 854
+          },
+          "margins": {
+            "left": 359,
+            "right": 332,
+            "top": 418,
+            "bottom": 399
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: quadruped matches clearly better (0.0211 < 0.0369)",
+          "extra-anatomy (unassigned): a limb-down appendage of 10.2% paint that no reference appendage lands on",
+          "missing-anatomy (family floor): the largest rear appendage is 3.2% of the paint; every same-family reference shows at least 5.9%"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1a/c243b06r2c1-04-mite/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Only six walking-leg tips independently visible; anterior mouth appendages do not establish eight legs."
+      },
+      {
+        "name": "Mite",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-04-mite",
+        "masterSha256": "0002364b3094d7286486c849388c5a4fd8863a753a0eb4317c614e6abcd935e1",
+        "promptSha256": "cdbdba1209c295fb660683f1dccc6d5e668d1015ebeb3b42ba26c23840acdb4a",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 300,
+            "y0": 393,
+            "x1": 981,
+            "y1": 888
+          },
+          "margins": {
+            "left": 300,
+            "right": 272,
+            "top": 393,
+            "bottom": 365
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: quadruped matches clearly better (0.0211 < 0.0327)",
+          "extra-anatomy (unassigned): a front appendage of 9.6% paint that no reference appendage lands on",
+          "missing-anatomy (family floor): the largest rear appendage is 2.4% of the paint; every same-family reference shows at least 5.9%",
+          "missing-anatomy: part leg2-far-distal (leg2FarFoot) covers 3% paint (reference 82%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2a/c243b06r2c2-04-mite/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Only six independently readable walking-leg tips; eight-leg requirement remains unresolved."
+      },
+      {
+        "name": "Mite",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-04-mite",
+        "masterSha256": "e302ebf20e472a1d485b1b2d27d2847f728bf21eba190d66ce4c9417b4ec1ca1",
+        "promptSha256": "9b1b4df0423daf16dd68a655583098ecc76468d07e00cafccca81b795db9ce1f",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 311,
+            "y0": 359,
+            "x1": 984,
+            "y1": 883
+          },
+          "margins": {
+            "left": 311,
+            "right": 269,
+            "top": 359,
+            "bottom": 370
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: fish matches clearly better (0.0172 < 0.0318)",
+          "extra-anatomy (unassigned): a limb-down appendage of 7.4% paint that no reference appendage lands on",
+          "missing-anatomy (family floor): the largest rear appendage is 3.0% of the paint; every same-family reference shows at least 5.9%",
+          "missing-anatomy: part leg3-far-distal (leg3FarFoot) covers 28% paint (reference 80%)",
+          "unexplained-anatomy: 9.1% of the paint lies away from the body and in no part (reference 4.2%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3a/c243b06r2c3-04-mite/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Only six independent walking-leg tips visible again; required eight not established."
+      }
+    ],
+    "status": "SOURCE_IDENTITY_HOLD",
+    "reason": "Only six walking-leg tips independently visible; anterior mouth appendages do not establish eight legs.",
+    "bestRetainedSource": "c243b06r2c1-04-mite"
+  },
+  {
+    "name": "Pseudoscorpion",
+    "attempts": [
+      {
+        "name": "Pseudoscorpion",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-05-pseudoscorpion",
+        "masterSha256": "c8d87a36c00fa700a52bc0dfbf3ad6148c777b4cca9824641081ea6509b35522",
+        "promptSha256": "b1654d43040aa2daa0bb0ee6912b7a1e2f9c7d2ca93ba8b381eab0565b910eb2",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 233,
+            "y0": 412,
+            "x1": 1037,
+            "y1": 848
+          },
+          "margins": {
+            "left": 233,
+            "right": 216,
+            "top": 412,
+            "bottom": 405
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy (family floor): the largest rear appendage is 2.2% of the paint; every same-family reference shows at least 5.9%",
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+          "missing-anatomy: part chelicerafar (cheliceraFar) covers 8% paint (reference 89%)",
+          "missing-anatomy: part cheliceranear (cheliceraNear) covers 19% paint (reference 97%)",
+          "missing-anatomy: part leg1nearknee (leg1NearKnee) covers 0% paint (reference 88%)",
+          "missing-anatomy: part leg3nearfoot (leg3NearFoot) covers 0% paint (reference 56%)",
+          "missing-anatomy: part leg3nearknee (leg3NearKnee) covers 21% paint (reference 99%)",
+          "unexplained-anatomy: 17.6% of the paint lies away from the body and in no part (reference 0.8%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1a/c243b06r2c1-05-pseudoscorpion/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Eight walking legs cannot be independently traced; near/far overlap and possible extra branch."
+      },
+      {
+        "name": "Pseudoscorpion",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-05-pseudoscorpion",
+        "masterSha256": "af970c2a6c2b271bd0bbefef590cff89f5d5c30480e85a5dffff07d503ceb326",
+        "promptSha256": "4e23e2f1928a9a3e3f772f5d0da5e5ca385f4bee668c310179f2f27dc6229d7e",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 220,
+            "y0": 375,
+            "x1": 1073,
+            "y1": 846
+          },
+          "margins": {
+            "left": 220,
+            "right": 180,
+            "top": 375,
+            "bottom": 407
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy (family floor): the largest rear appendage is 1.8% of the paint; every same-family reference shows at least 5.9%",
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+          "missing-anatomy: part leg3nearfoot (leg3NearFoot) covers 0% paint (reference 56%)",
+          "missing-anatomy: part leg4nearknee (leg4NearKnee) covers 0% paint (reference 64%)",
+          "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 0.8%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2a/c243b06r2c2-05-pseudoscorpion/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Five long near-side walking branches with obscured far-side stubs; four correct near/far walking pairs not independently established."
+      },
+      {
+        "name": "Pseudoscorpion",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-05-pseudoscorpion",
+        "masterSha256": "579ccb0d8c8b648f3ec17b53520a0b799e5356fbd1bfb6ebdcb938ca1ef27ecc",
+        "promptSha256": "f4e35d26748fc46a1c5c46708d54de03b04d31bd62e8ad031c2e85681e4d6880",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 260,
+            "y0": 424,
+            "x1": 1053,
+            "y1": 864
+          },
+          "margins": {
+            "left": 260,
+            "right": 200,
+            "top": 424,
+            "bottom": 389
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 48.1% paint that no reference appendage lands on",
+          "missing-anatomy (family floor): the largest rear appendage is 2.5% of the paint; every same-family reference shows at least 5.9%",
+          "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+          "missing-anatomy: part leg1-far-upper (leg1FarKnee) covers 10% paint (reference 84%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3a/c243b06r2c3-05-pseudoscorpion/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Five near-side walking branches plus obscured far stubs; four correct walking pairs not established."
+      }
+    ],
+    "status": "SOURCE_IDENTITY_HOLD",
+    "reason": "Five near-side walking branches plus obscured far stubs; four correct walking pairs not established.",
+    "bestRetainedSource": "c243b06r2c3-05-pseudoscorpion"
+  },
+  {
+    "name": "Scorpion",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+  },
+  {
+    "name": "Sea Spider",
+    "attempts": [
+      {
+        "name": "Sea Spider",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-07-sea-spider",
+        "masterSha256": "10147e45d6c8feec81f23b20d603e4bcd2ebe0dd30b390b78373dc93bed04356",
+        "promptSha256": "cccbe1752810ac38f6e740db539eece486440ae37f89521237b9e132e76c66e4",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 194,
+            "y0": 394,
+            "x1": 1065,
+            "y1": 916
+          },
+          "margins": {
+            "left": 194,
+            "right": 188,
+            "top": 394,
+            "bottom": 337
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 15.6% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a limb-down appendage of 8.5% paint that no reference appendage lands on",
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+          "missing-anatomy: part observed-left-palp-continuity (cephalothorax) covers 21% paint (reference 75%)",
+          "missing-anatomy: part observed-right-palp-continuity (cephalothorax) covers 20% paint (reference 78%)",
+          "missing-anatomy: part chelicerafar (cheliceraFar) covers 26% paint (reference 89%)",
+          "missing-anatomy: part leg1farfoot (leg1FarFoot) covers 4% paint (reference 53%)",
+          "missing-anatomy: part leg1nearfoot (leg1NearFoot) covers 13% paint (reference 46%)",
+          "unexplained-anatomy: 11.5% of the paint lies away from the body and in no part (reference 0.8%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1b/c243b06r2c1-07-sea-spider/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Four eyes on one small turret cannot be independently confirmed; only two prominent eye bumps readable."
+      },
+      {
+        "name": "Sea Spider",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-07-sea-spider",
+        "masterSha256": "8075ad1e8ade0276022ae524e15732ed89ed04a9eb32f10a65e58160fceb6faa",
+        "promptSha256": "876b2de04f8c7f5d27f789790d70ccaacb77cc2508f4074ce01a5f1b45c85484",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 250,
+            "y0": 369,
+            "x1": 1011,
+            "y1": 919
+          },
+          "margins": {
+            "left": 250,
+            "right": 242,
+            "top": 369,
+            "bottom": 334
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 11.1% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a limb-down appendage of 9.3% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a limb-down appendage of 9.9% paint that no reference appendage lands on",
+          "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+          "missing-anatomy: part observed-left-palp-continuity (cephalothorax) covers 4% paint (reference 75%)",
+          "missing-anatomy: part chelicerafar (cheliceraFar) covers 23% paint (reference 89%)",
+          "missing-anatomy: part leg1farknee (leg1FarKnee) covers 9% paint (reference 88%)",
+          "missing-anatomy: part leg1nearknee (leg1NearKnee) covers 3% paint (reference 88%)",
+          "missing-anatomy: part leg2farfoot (leg2FarFoot) covers 19% paint (reference 61%)",
+          "missing-anatomy: part leg2nearfoot (leg2NearFoot) covers 20% paint (reference 62%)",
+          "missing-anatomy: part leg2nearknee (leg2NearKnee) covers 15% paint (reference 93%)",
+          "missing-anatomy: part leg3farfoot (leg3FarFoot) covers 19% paint (reference 53%)",
+          "missing-anatomy: part abdomen (abdomen) covers 25% paint (reference 94%)",
+          "unexplained-anatomy: 10.6% of the paint lies away from the body and in no part (reference 0.8%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2b/c243b06r2c2-07-sea-spider/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Three separate tall eye stalks painted, not four eyes on one small turret; canonical eye anatomy not met."
+      },
+      {
+        "name": "Sea Spider",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-07-sea-spider",
+        "masterSha256": "893b432392afb019a6ef5257e8582be587b1ec8a383a2ce9db7ad586375d7474",
+        "promptSha256": "8caaf6fb44f7d3e6d9cc323c85e9f3035ee6535df9a20c83cd1f3dfe6fa8a3c1",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 231,
+            "y0": 340,
+            "x1": 1021,
+            "y1": 924
+          },
+          "margins": {
+            "left": 231,
+            "right": 232,
+            "top": 340,
+            "bottom": 329
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 9.2% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a limb-down appendage of 9.0% paint that no reference appendage lands on",
+          "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+          "missing-anatomy: part chelicerafar (cheliceraFar) covers 24% paint (reference 89%)",
+          "missing-anatomy: part leg1farfoot (leg1FarFoot) covers 15% paint (reference 53%)",
+          "missing-anatomy: part leg3nearknee (leg3NearKnee) covers 31% paint (reference 99%)",
+          "missing-anatomy: part leg4farknee (leg4FarKnee) covers 18% paint (reference 60%)",
+          "missing-anatomy: part abdomen (abdomen) covers 22% paint (reference 94%)",
+          "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 0.8%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3b/c243b06r2c3-07-sea-spider/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Only two large raised eye bulbs on separate stalk-like bases, not four eyes on a small turret."
+      }
+    ],
+    "status": "SOURCE_IDENTITY_HOLD",
+    "reason": "Four eyes on one small turret cannot be independently confirmed; only two prominent eye bumps readable.",
+    "bestRetainedSource": "c243b06r2c1-07-sea-spider"
+  },
+  {
+    "name": "Camel Spider",
+    "attempts": [
+      {
+        "name": "Camel Spider",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-08-camel-spider",
+        "masterSha256": "9a57687c3fc4b5fe2e89e48efd8fffb1dd7e71df671833a88df1b2be220b373f",
+        "promptSha256": "9d9ae466096bf5ab44e48adc48c3bfecaf67075366d4da1351139ef7a37dcf71",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 211,
+            "y0": 411,
+            "x1": 1049,
+            "y1": 845
+          },
+          "margins": {
+            "left": 211,
+            "right": 204,
+            "top": 411,
+            "bottom": 408
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 49.9% paint that no reference appendage lands on",
+          "missing-anatomy: part leg3-near-distal (leg3NearFoot) covers 4% paint (reference 73%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1b/c243b06r2c1-08-camel-spider/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Distinct pair of long leg-like pedipalps held forward is not independently readable; jaws and walking legs are not substitutes."
+      },
+      {
+        "name": "Camel Spider",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-08-camel-spider",
+        "masterSha256": "db5b3a36c960ab23b36e8ba5f72ff2db6f116d1543a26fc49d1296a15ef9018c",
+        "promptSha256": "53fd59809c938303c21f162b68fdb6026f1f2d1048ace7b6a2a6bbaf4a101a14",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 154,
+            "y0": 424,
+            "x1": 1115,
+            "y1": 860
+          },
+          "margins": {
+            "left": 154,
+            "right": 138,
+            "top": 424,
+            "bottom": 393
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 53.8% paint that no reference appendage lands on",
+          "missing-anatomy (family floor): the largest rear appendage is 0.8% of the paint; every same-family reference shows at least 5.9%",
+          "missing-anatomy: part leg2-far-distal (leg2FarFoot) covers 21% paint (reference 82%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2b/c243b06r2c2-08-camel-spider/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Eight walking legs plus two distinct forward pedipalps cannot all be independently traced; near/far limbs overlap or hide."
+      },
+      {
+        "name": "Camel Spider",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-08-camel-spider",
+        "masterSha256": "b255487861b75da1a10b07093214e8d1eebb81ac8c80ed0d56fe49d7d3c017d1",
+        "promptSha256": "022f717acae406bafe9a76cc35389fcab770755dbe033b35835dd8477c7d35a8",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 160,
+            "y0": 405,
+            "x1": 1125,
+            "y1": 846
+          },
+          "margins": {
+            "left": 160,
+            "right": 128,
+            "top": 405,
+            "bottom": 407
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: insect matches clearly better (0.0172 < 0.0285)",
+          "missing-anatomy (family floor): the largest rear appendage is 1.9% of the paint; every same-family reference shows at least 5.9%"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3b/c243b06r2c3-08-camel-spider/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Two forward feelers are visible, but eight separate walking legs in addition remain unresolved because far-side limbs hide/overlap."
+      }
+    ],
+    "status": "SOURCE_IDENTITY_HOLD",
+    "reason": "Distinct pair of long leg-like pedipalps held forward is not independently readable; jaws and walking legs are not substitutes.",
+    "bestRetainedSource": "c243b06r2c1-08-camel-spider"
+  },
+  {
+    "name": "Baboon",
+    "attempts": [
+      {
+        "name": "Baboon",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-09-baboon",
+        "masterSha256": "a14eaae6b0acba8f9d15379f5e438e6b3d84070c33c2731195bc1ce886fb579d",
+        "promptSha256": "1c7856ad60ac69243dd99ecc5bff629c661fec7178dd4a607cd9af0317205e09",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 343,
+            "y0": 368,
+            "x1": 933,
+            "y1": 868
+          },
+          "margins": {
+            "left": 343,
+            "right": 320,
+            "top": 368,
+            "bottom": 385
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 0.5%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1b/c243b06r2c1-09-baboon/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Baboon",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-09-baboon",
+        "masterSha256": "16a503ec519d53ec39400a600321453abccab7f86cf7d62629317ef889984eed",
+        "promptSha256": "9766375d5cfdae09b569b6cd1b1211b0a7cc4ec50096f1c037d667c570df9f91",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 370,
+            "y0": 358,
+            "x1": 886,
+            "y1": 862
+          },
+          "margins": {
+            "left": 370,
+            "right": 367,
+            "top": 358,
+            "bottom": 391
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 0.5%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2b/c243b06r2c2-09-baboon/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Baboon",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-09-baboon",
+        "masterSha256": "39f095c27a7b73790af4f7c39fb85abc589ff0bf3471a1ad7c78ee0738528514",
+        "promptSha256": "14c011f068ab30800a84684a02252215cbd84a24ff2aaf4b36cd2219f6bf63fa",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 325,
+            "y0": 372,
+            "x1": 957,
+            "y1": 877
+          },
+          "margins": {
+            "left": 325,
+            "right": 296,
+            "top": 372,
+            "bottom": 376
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part jaw (jaw) covers 20% paint (reference 62%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3b/c243b06r2c3-09-baboon/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ],
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 0.5%)",
+    "bestRetainedSource": "c243b06r2c1-09-baboon"
+  },
+  {
+    "name": "Chimpanzee",
+    "attempts": [
+      {
+        "name": "Chimpanzee",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-10-chimpanzee",
+        "masterSha256": "9d0696ed48a22ebe3fa89646173108a7290b73f3c00c4f6847cfadd8fbb1b4be",
+        "promptSha256": "0d632ff778df308d3d3e619038b8c66f7f7c2484aac60d19b27e45374d015484",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 309,
+            "y0": 306,
+            "x1": 946,
+            "y1": 952
+          },
+          "margins": {
+            "left": 309,
+            "right": 307,
+            "top": 306,
+            "bottom": 301
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part hand-near (armNearHand) covers 17% paint (reference 73%)",
+          "unexplained-anatomy: 28.8% of the paint lies away from the body and in no part (reference 10.3%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1b/c243b06r2c1-10-chimpanzee/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Chimpanzee",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-10-chimpanzee",
+        "masterSha256": "02862ab616c9d4a38529f8800a47aa92a63d75a74460c0247a7d37ad2f529326",
+        "promptSha256": "872131ac8bd6da2f6b29ccf251e455e794bbc5a562f9eddbe512d6ef7bc81839",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 277,
+            "y0": 294,
+            "x1": 977,
+            "y1": 920
+          },
+          "margins": {
+            "left": 277,
+            "right": 276,
+            "top": 294,
+            "bottom": 333
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: quadruped matches clearly better (0.0136 < 0.0194)",
+          "missing-anatomy: part foot-near (legNearFoot) covers 18% paint (reference 82%)",
+          "unexplained-anatomy: 25.5% of the paint lies away from the body and in no part (reference 10.3%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2b/c243b06r2c2-10-chimpanzee/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Chimpanzee",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-10-chimpanzee",
+        "masterSha256": "82409061128b1ed19903fe6d3aff753140ba3e3d3cbb0bc61c365b8d3522433c",
+        "promptSha256": "67b0d72302c6f78b22489a9fd9adf39fd5c3bdd0c60b969038bfe37d8fca8c1d",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 286,
+            "y0": 300,
+            "x1": 938,
+            "y1": 930
+          },
+          "margins": {
+            "left": 286,
+            "right": 315,
+            "top": 300,
+            "bottom": 323
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: quadruped matches clearly better (0.0105 < 0.0180)",
+          "unexplained-anatomy: 24.7% of the paint lies away from the body and in no part (reference 10.3%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3b/c243b06r2c3-10-chimpanzee/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ],
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "missing-anatomy: part hand-near (armNearHand) covers 17% paint (reference 73%); unexplained-anatomy: 28.8% of the paint lies away from the body and in no part (reference 10.3%)",
+    "bestRetainedSource": "c243b06r2c1-10-chimpanzee"
+  },
+  {
+    "name": "Gibbon",
+    "attempts": [
+      {
+        "name": "Gibbon",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-11-gibbon",
+        "masterSha256": "425c00c03a1c9c876621a926c7f033867ead94dc692931979afa1e6d7b6ba11b",
+        "promptSha256": "7a03f94b6a88df9db17fba9ff6f87269f9e934fc2296c4671dc3b4e7a0e768d7",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 308,
+            "y0": 320,
+            "x1": 945,
+            "y1": 925
+          },
+          "margins": {
+            "left": 308,
+            "right": 308,
+            "top": 320,
+            "bottom": 328
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 15.3% of the paint lies away from the body and in no part (reference 9.6%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1c/c243b06r2c1-11-gibbon/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Gibbon",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-11-gibbon",
+        "masterSha256": "db379576fcd634e55cf22506b2d26b1c7f651df3c916078b9bf756f7d7400720",
+        "promptSha256": "b9b264d0c4aafa7f9ca8fcc26134a25f3ca1f673d0d58ef5be1107b8943cc649",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 334,
+            "y0": 327,
+            "x1": 919,
+            "y1": 911
+          },
+          "margins": {
+            "left": 334,
+            "right": 334,
+            "top": 327,
+            "bottom": 342
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-11-gibbon/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Gibbon",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-11-gibbon",
+        "masterSha256": "edf07d4326f55cbdd06d563ef0543597ca16cffae9896f407a70ffe738c18900",
+        "promptSha256": "d8b56cb4ed150130e110e173431e1e639d0f99d170a267921cab68471aeae7fa",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 314,
+            "y0": 321,
+            "x1": 933,
+            "y1": 923
+          },
+          "margins": {
+            "left": 314,
+            "right": 320,
+            "top": 321,
+            "bottom": 330
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3c/c243b06r2c3-11-gibbon/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ],
+    "status": "VISUAL_HOLD",
+    "reason": "All five finished stills viewed full size. Long arms, hook hands and tailless white-ringed face stay readable. Suspected small background notch at lower neck/far shoulder on left and horizontal wrist/hand discontinuity on defeated right require source/fragment comparison before disposition. Defeated figure remains visible in a lower standing crouch, not disappearance; no collapse claim. Blue/gold angular shards in dodge and reaction are attack FX.",
+    "comparison": "Original master and original native idle50 inspected full size. Suspected neck/arm notch coincides with source separation under chin; not asserted as a new tear. Wrist edge also occurs before AI. Primary HOLD is unchanged magenta rule7pixels at hand/finger edges, exact coordinates in gibbon-magenta-locations.json; all five frames viewed."
+  },
+  {
+    "name": "Lemur",
+    "attempts": [
+      {
+        "name": "Lemur",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-12-lemur",
+        "masterSha256": "eeb53747e55038cfe706f347228f8c00a4f0c0369a6b3d73a674cb43e42f7ca2",
+        "promptSha256": "0de6e9b4eca8c4d31b5744f2cc891c4854e5818baa43167666a4d3ed77b3de7e",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 389,
+            "y0": 328,
+            "x1": 864,
+            "y1": 926
+          },
+          "margins": {
+            "left": 389,
+            "right": 389,
+            "top": 328,
+            "bottom": 327
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1c/c243b06r2c1-12-lemur/score.json",
+        "selected": true,
+        "nativePending": true
+      },
+      {
+        "name": "Lemur",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-12-lemur",
+        "masterSha256": "ced02c550b7ae91c24d78a4d5e996da8b7c2b496b74100efae7f5f1ca79bf806",
+        "promptSha256": "17ad0351dadbb5458e34deab2ab871fe9f429cc715a17198caead3b484fae11d",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 363,
+            "y0": 277,
+            "x1": 880,
+            "y1": 954
+          },
+          "margins": {
+            "left": 363,
+            "right": 373,
+            "top": 277,
+            "bottom": 299
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "RED",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-12-lemur/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Lemur",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-12-lemur",
+        "masterSha256": "e756661d0a423f33dd7613718305bce76e90af9daa30bc5b260b8b65c3a2a6df",
+        "promptSha256": "abdb5daa4a7971d7bf323d703f38f8ab2383dbb311672b47f32a981cd7521242",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 309,
+            "y0": 272,
+            "x1": 901,
+            "y1": 926
+          },
+          "margins": {
+            "left": 309,
+            "right": 352,
+            "top": 272,
+            "bottom": 327
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3c/c243b06r2c3-12-lemur/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Five separate limb/foot branches visible, including extra middle hind/flank leg; four-limb anatomy not met."
+      }
+    ],
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "All five finished stills reviewed at full size. Four limbs remain separately readable and connected, black/white ringed tail stays continuous through reaction and both victory frames, black fox-like mask and orange-gold eyes preserved. No detached fragment, wing/body slit, obvious pink fringe or shell-like tear seen. Right defeated figure settles into a lower standing crouch; QA only, no collapse claim. Victory tail curves more tightly but remains one continuous striped tail. Dodge shards are transient FX.",
+    "comparison": null
+  },
+  {
+    "name": "Mandrill",
+    "attempts": [
+      {
+        "name": "Mandrill",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-13-mandrill",
+        "masterSha256": "2b646886ccc011324eee95ee9017caa8febc1fb08bfad81719ddb58292d6b33f",
+        "promptSha256": "ecc961fbd2cc8d11bf0b17e80d30e12d41aca55669d88e7613990cee097c942d",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 349,
+            "y0": 354,
+            "x1": 903,
+            "y1": 891
+          },
+          "margins": {
+            "left": 349,
+            "right": 350,
+            "top": 354,
+            "bottom": 362
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 8.3% of the paint lies away from the body and in no part (reference 0.5%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1c/c243b06r2c1-13-mandrill/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Mandrill",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-13-mandrill",
+        "masterSha256": "2d938c2bc7d4bf3f364d8b404e6d27e0ddd2dd9093ef5f979a7c466721776693",
+        "promptSha256": "95f84fb948570c2a637c8813916b5d260e2639178e9f231afacc95004a7181d0",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 326,
+            "y0": 304,
+            "x1": 908,
+            "y1": 924
+          },
+          "margins": {
+            "left": 326,
+            "right": 345,
+            "top": 304,
+            "bottom": 329
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "INTAKE_REFUSED",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-13-mandrill/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Mandrill",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-13-mandrill",
+        "masterSha256": "b4b4b390bd1c4af97b0a47f7bed658fcf0b190eff12ae598687c7074b95c0a6f",
+        "promptSha256": "dc90dbebd2d781b5834d2e0bef2f3ff909867344bfd1098c9dee0db92646f43c",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 289,
+            "y0": 305,
+            "x1": 933,
+            "y1": 934
+          },
+          "margins": {
+            "left": 289,
+            "right": 320,
+            "top": 305,
+            "bottom": 319
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 0.5%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3c/c243b06r2c3-13-mandrill/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ],
+    "status": "STATIC_RED",
+    "reason": "Mandrill primary fit refuses leg/torso:legFar proportion; admitted fallback1 changed D28 fit refuses presentation legNearFoot joint limit54.18358.",
+    "classEvidence": {
+      "id": "c243b06r2c2-13-mandrill",
+      "name": "Mandrill",
+      "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-13-mandrill/fallback-1/fit",
+      "authorScore": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-13-mandrill/fallback-1/score.json",
+      "exitCode": 0,
+      "origin": "round2-new-original",
+      "selection": "PASS source first; Orangutan candidate3 has one remaining folded triangle; Mandrill admitted valid fallback1 avoids refused primary fit",
+      "staticExitCode": 1,
+      "static": "RED",
+      "receipt": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c2-13-mandrill/receipt.json"
+    }
+  },
+  {
+    "name": "Marmoset",
+    "attempts": [
+      {
+        "name": "Marmoset",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-14-marmoset",
+        "masterSha256": "02a7ae0669e7e68de697d50632ea034bde09945922e2d9429f5a08012ac1120c",
+        "promptSha256": "23b32e2d59b098cf2e33433c3baeba83196fd14d724381faa2ac4dee51ac3202",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 315,
+            "y0": 429,
+            "x1": 880,
+            "y1": 814
+          },
+          "margins": {
+            "left": 315,
+            "right": 373,
+            "top": 429,
+            "bottom": 439
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: quadruped matches clearly better (0.0086 < 0.0167)",
+          "missing-anatomy: part tail2 (tail2) covers 0% paint (reference 72%)",
+          "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 0.5%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1c/c243b06r2c1-14-marmoset/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Canonical squirrel-sized upright bark-clinging pose not shown; source walks horizontally. Generic walking/no-prop instructions conflict with canonical marker."
+      },
+      {
+        "name": "Marmoset",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-14-marmoset",
+        "masterSha256": "6f4f8ad61c2ae502f0f24e59d3363f93a4ff0bc425afb85be010617aecb2bb11",
+        "promptSha256": "4a41eb82528ece70104504d88ccee119b6a8084fac0e41d4369b501ed870dc6b",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 263,
+            "y0": 421,
+            "x1": 916,
+            "y1": 828
+          },
+          "margins": {
+            "left": 263,
+            "right": 337,
+            "top": 421,
+            "bottom": 425
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: quadruped matches clearly better (0.0087 < 0.0169)",
+          "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4",
+          "missing-anatomy: part tail2 (tail2) covers 0% paint (reference 72%)",
+          "missing-anatomy: part jaw (jaw) covers 20% paint (reference 62%)",
+          "missing-anatomy: part far-arm-inner-lower-contour (armFarHand) covers 27% paint (reference 84%)",
+          "unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 0.5%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2c/c243b06r2c2-14-marmoset/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Canonical upright bark-clinging stance again absent; walking/no-prop template conflict remains unresolved."
+      },
+      {
+        "name": "Marmoset",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-14-marmoset",
+        "masterSha256": "24496b91ec0660cfd0af235ad184b10220edd8ac4719db0ac6dd4509c884ffc4",
+        "promptSha256": "50311d5f91054e95bd29287d1cdf39c94ef32937cdbcfbc6f5379f4af3f66c4a",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 259,
+            "y0": 419,
+            "x1": 920,
+            "y1": 823
+          },
+          "margins": {
+            "left": 259,
+            "right": 333,
+            "top": 419,
+            "bottom": 430
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: quadruped matches clearly better (0.0082 < 0.0150)",
+          "missing-anatomy: part tail2 (tail2) covers 25% paint (reference 72%)",
+          "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 0.5%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3c/c243b06r2c3-14-marmoset/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Horizontal walking posture persists, not canonical upright bark-clinging stance; prompt-pose conflict unresolved."
+      }
+    ],
+    "status": "SOURCE_IDENTITY_HOLD",
+    "reason": "Canonical squirrel-sized upright bark-clinging pose not shown; source walks horizontally. Generic walking/no-prop instructions conflict with canonical marker.",
+    "bestRetainedSource": "c243b06r2c1-14-marmoset"
+  },
+  {
+    "name": "Gorilla",
+    "attempts": [
+      {
+        "name": "Gorilla",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-15-gorilla",
+        "masterSha256": "815346760c09e06765ea04ccfab8098dcf09967434ca0dba250a075cf35916b9",
+        "promptSha256": "a77e19905fc2c6c25608059311ad0521f4e645f73d960fb8c7d7c53668f3bfad",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 344,
+            "y0": 333,
+            "x1": 904,
+            "y1": 909
+          },
+          "margins": {
+            "left": 344,
+            "right": 349,
+            "top": 333,
+            "bottom": 344
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "RED",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-15-gorilla/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Gorilla",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-15-gorilla",
+        "masterSha256": "20b76c9844db916137058a6933c7031f5d7bee48c78406c7e5fa42184a97a90b",
+        "promptSha256": "407915f2c9ad6b9809107aac7ef5a4ae8d1e68b6b4a6cc83e25b57332b436aad",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 334,
+            "y0": 326,
+            "x1": 922,
+            "y1": 904
+          },
+          "margins": {
+            "left": 334,
+            "right": 331,
+            "top": 326,
+            "bottom": 349
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "RED",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2d/c243b06r2c2-15-gorilla/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Gorilla",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-15-gorilla",
+        "masterSha256": "53c6b0920b87856ad95d26aa468ef6da1016acc70749f945e3631afc5c6032b6",
+        "promptSha256": "fdf23d79d8fec1a61ea2e8ab63f615461f69882c001666fe4823dba6f2c549aa",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 311,
+            "y0": 317,
+            "x1": 936,
+            "y1": 911
+          },
+          "margins": {
+            "left": 311,
+            "right": 317,
+            "top": 317,
+            "bottom": 342
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-15-gorilla/score.json",
+        "selected": true,
+        "nativePending": true
+      }
+    ],
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "All five finished stills reviewed full size. Broad chest/pot belly, peaked skull/heavy brow and four knuckle-supported limbs remain readable and connected. No floating shoulder/head slab, open torso tear, detached finger shard or pink fringe observed. Gold translucent circles and blue angular shards are transient hit/dodge FX. Defeated right figure lowers into a standing crouch; QA only, no collapse claim. This is the original new static-green fit; the regressed D28 variant was not filmed.",
+    "comparison": null
+  },
+  {
+    "name": "Monkey",
+    "attempts": [
+      {
+        "name": "Monkey",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-16-monkey",
+        "masterSha256": "092da79918093be6c7fd6f9c1e96d889cf07ff40d2c150f417a80784dc30fb3a",
+        "promptSha256": "5e12be7aa2f28f2d4b708ccfb9f608498b7a973d39c6bb96b031a06e1c12aed4",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 252,
+            "y0": 363,
+            "x1": 986,
+            "y1": 852
+          },
+          "margins": {
+            "left": 252,
+            "right": 267,
+            "top": 363,
+            "bottom": 401
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-16-monkey/score.json",
+        "selected": true,
+        "nativePending": true
+      },
+      {
+        "name": "Monkey",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-16-monkey",
+        "masterSha256": "a9df0f3f32f03ea0c6c26df44dbe1da237a12d79f6ed54783fd689169b713884",
+        "promptSha256": "abcbfac25ddbd91605543f66c891426918d2c142541b89956bfac6a547824677",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 278,
+            "y0": 407,
+            "x1": 959,
+            "y1": 841
+          },
+          "margins": {
+            "left": 278,
+            "right": 294,
+            "top": 407,
+            "bottom": 412
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 7.4% paint that no reference appendage lands on",
+          "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 0.5%)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2d/c243b06r2c2-16-monkey/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Monkey",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-16-monkey",
+        "masterSha256": "fcea7378d6c81bfe210f1f6cc318560da01cadea209a3167c2858e630323df16",
+        "promptSha256": "b34c2ce5b6975d0bb259231d963a85ea78581ff9fc8e8e841bb6e5eac8ed7893",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 317,
+            "y0": 389,
+            "x1": 932,
+            "y1": 862
+          },
+          "margins": {
+            "left": 317,
+            "right": 321,
+            "top": 389,
+            "bottom": 391
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-16-monkey/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ],
+    "status": "VISUAL_HOLD",
+    "reason": "All five finished stills viewed full size. Defeated right far forearm/wrist has a sharp light horizontal patch/discontinuity above dark hand in turn3 reaction and both victory frames, reading as an offset or doubled hand edge; source/original-native comparison required. Curling tail stays continuous, four limbs visible, capuchin face/round eyes and opposing digits readable. No broad chest tear or pink fringe observed. Defeated figure remains in standing crouch; no collapse claim. Attack shards are FX.",
+    "comparison": "Original master and original native idle50 inspected full size. Wrist/hand discontinuity already exists before AI, while the master hand is continuous. HOLD source-part/hand-motion seam class, not an AI-created fault. Zero fragment boxes does not clear an attached/doubled edge."
+  },
+  {
+    "name": "Orangutan",
+    "attempts": [
+      {
+        "name": "Orangutan",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-17-orangutan",
+        "masterSha256": "5395d3db20e1f8f240d5c0afa87a8bad7097f02dbb5825c9785148984a1e196e",
+        "promptSha256": "57b450e588f7df570a0c1ce1d989e1c0db1aefa386007c60d4d5b32a0cfc63f4",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 360,
+            "y0": 363,
+            "x1": 906,
+            "y1": 887
+          },
+          "margins": {
+            "left": 360,
+            "right": 347,
+            "top": 363,
+            "bottom": 366
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "RED",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-17-orangutan/score.json",
+        "selected": true,
+        "nativePending": false
+      },
+      {
+        "name": "Orangutan",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-17-orangutan",
+        "masterSha256": "31de804a9bb2650282feda89cde2287b4f41077ccc4200c3bb1e4d86eff1c717",
+        "promptSha256": "f3c8f3ddca8c7297faa7154592df2a3998f1ff647af9cd50c5c10e221f99908b",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 303,
+            "y0": 338,
+            "x1": 965,
+            "y1": 898
+          },
+          "margins": {
+            "left": 303,
+            "right": 288,
+            "top": 338,
+            "bottom": 355
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "RED",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2d/c243b06r2c2-17-orangutan/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Orangutan",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-17-orangutan",
+        "masterSha256": "ce38ff0b30a5cf5a1d528996a33efff47590d491f3ffacee00a45b3cf234b7a0",
+        "promptSha256": "4218e97d1587b3395e850f5f4267fdd1f3e40d0ffb181e28e2f222d85a92e2bd",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 283,
+            "y0": 314,
+            "x1": 945,
+            "y1": 918
+          },
+          "margins": {
+            "left": 283,
+            "right": 308,
+            "top": 314,
+            "bottom": 335
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "RED",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-17-orangutan/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ],
+    "status": "STATIC_RED",
+    "reason": "Orangutan changed D28 fit refuses approach:climb with4 folded triangles.",
+    "classEvidence": {
+      "id": "c243b06r2c3-17-orangutan",
+      "name": "Orangutan",
+      "originalFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-17-orangutan/fit",
+      "authorScore": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-17-orangutan/score.json",
+      "exitCode": 0,
+      "origin": "round2-new-original",
+      "selection": "PASS source first; Orangutan candidate3 has one remaining folded triangle; Mandrill admitted valid fallback1 avoids refused primary fit",
+      "staticExitCode": 1,
+      "static": "RED",
+      "receipt": "audits/C243_ALLOUT_20261011/execution/batch06/round2/class-fixes/c243b06r2c3-17-orangutan/receipt.json"
+    }
+  },
+  {
+    "name": "Spider Monkey",
+    "attempts": [
+      {
+        "name": "Spider Monkey",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-18-spider-monkey",
+        "masterSha256": "fe368b2e168003ce046a3e869806df5dca2f3a2be4d6fa2d7fac103098f685d5",
+        "promptSha256": "e7a14d6de996cc56b8e99e84ac4cd9b647ea5a0ce09f48443c032af1eb1b1c06",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 398,
+            "y0": 265,
+            "x1": 918,
+            "y1": 973
+          },
+          "margins": {
+            "left": 398,
+            "right": 335,
+            "top": 265,
+            "bottom": 280
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "RED",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1d/c243b06r2c1-18-spider-monkey/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Hands show opposed thumb-like projecting digits; canonical thumbless hook hands are not independently established."
+      },
+      {
+        "name": "Spider Monkey",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-18-spider-monkey",
+        "masterSha256": "a8204c6bafefdd09a2c440a531194b50477da09ab98aba21799f016591dd9cb3",
+        "promptSha256": "8ae7e3d975dd5df91fbb2487175adf812c77a99c23a4a96dc2a1c9cc0dc7ea62",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 353,
+            "y0": 262,
+            "x1": 917,
+            "y1": 935
+          },
+          "margins": {
+            "left": 353,
+            "right": 336,
+            "top": 262,
+            "bottom": 318
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2d/c243b06r2c2-18-spider-monkey/score.json",
+        "selected": true,
+        "nativePending": true
+      },
+      {
+        "name": "Spider Monkey",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-18-spider-monkey",
+        "masterSha256": "c349a4e4c581a081b9f9261fce9890e24af7c409340a6e91cfb16f74fba008e3",
+        "promptSha256": "4fd7a60818c2c43acf002f603440f7f7bd7381663576147f30a9442959241bd0",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 321,
+            "y0": 294,
+            "x1": 932,
+            "y1": 902
+          },
+          "margins": {
+            "left": 321,
+            "right": 321,
+            "top": 294,
+            "bottom": 351
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "RED",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3d/c243b06r2c3-18-spider-monkey/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Near hand shows straight fingers plus a separate opposed thumb-like projection; canonical thumbless hook hand is not established."
+      }
+    ],
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "All five finished stills viewed full size. Four long thin limbs remain connected, small head and pot belly preserved, very long curled tail remains continuous through root and tip. Hands read as narrow hooks without the obvious opposed-thumb shapes in discarded candidates1/3. No detached tail/hand/head fragment, open chest slit or visible pink fringe observed. Defeated figure is a lower standing crouch, QA only/no collapse claim. Blue/gold dodge shards are transient FX.",
+    "comparison": null
+  },
+  {
+    "name": "Boa",
+    "attempts": [
+      {
+        "name": "Boa",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-19-boa",
+        "masterSha256": "8e913bd5b33562c88e772ab0050c18da0158d6f211debe0caeba9e361da59cca",
+        "promptSha256": "30e4fdfdd45f6c3fd1d9903613cb5ec7968912a5797b02324589320659bf27fa",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 181,
+            "y0": 526,
+            "x1": 1078,
+            "y1": 711
+          },
+          "margins": {
+            "left": 181,
+            "right": 175,
+            "top": 526,
+            "bottom": 542
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-19-boa/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Boa",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-19-boa",
+        "masterSha256": "710afebccf55b15f8e2d2ed5cb9c4c87176b056ed93ec8c35f0292b08b73dcb1",
+        "promptSha256": "3fd15128d7c78171e8c670664d075e8dffcbed5897e7bf0aae39695d66074243",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 159,
+            "y0": 525,
+            "x1": 1094,
+            "y1": 728
+          },
+          "margins": {
+            "left": 159,
+            "right": 159,
+            "top": 525,
+            "bottom": 525
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2e/c243b06r2c2-19-boa/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Boa",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-19-boa",
+        "masterSha256": "113734f32f769436b4019f97d21d828b7b3d4e1ff18041cc6ce952cda9f1bec3",
+        "promptSha256": "14fcbc1fa00246bfaca78aa98833b75083c782adb0a4dc5466f41f3e18b02a6d",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 143,
+            "y0": 539,
+            "x1": 1115,
+            "y1": 724
+          },
+          "margins": {
+            "left": 143,
+            "right": 138,
+            "top": 539,
+            "bottom": 529
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3e/c243b06r2c3-19-boa/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ],
+    "status": "VISUAL_HOLD",
+    "reason": "All five finished stills reviewed full size. Victory midpoint turn3-idle50 swings the left winner body downward and it is abruptly cut off at a fixed horizontal staging/render boundary near y480, losing lower body/tail while arena background continues below. At idle90 left tail also reaches/cuts the left edge. This is a full-figure clipping HOLD despite native mechanics PASS; the cutoff is inside the1024x576 image, not its physical bottom edge. Earlier reaction bodies remain continuous; saddle blotches/red tail/dark eye stripe preserved. Blue/gold dodge shards are FX.",
+    "comparison": "Read-only source trace: battle2/stage.ts draws the near plate above actors; parts-rig.ts measures upward rise for framing. Near-plate over-occlusion is a plausible contributor to the internal horizontal cutoff; no renderer/motion code edited and no conclusive root-cause claim."
+  },
+  {
+    "name": "Caecilian",
+    "attempts": [
+      {
+        "name": "Caecilian",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-20-caecilian",
+        "masterSha256": "f32895c829e9bc8cd9f068aa24d9e276eae20313ac1a26e84669940b3a47e1aa",
+        "promptSha256": "9e82a63b78442eb11661c04c04759aee07e72b31da24e39ce7b1ce972f1cb9e6",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 162,
+            "y0": 516,
+            "x1": 1106,
+            "y1": 721
+          },
+          "margins": {
+            "left": 162,
+            "right": 147,
+            "top": 516,
+            "bottom": 532
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "facing: the right (head) end is not thicker than the left (tail) end (51.1 vs 59.4)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-20-caecilian/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Tiny front protrusion cannot be independently identified as the canonical sensory tentacle; mouth-tip projection alone is not proof."
+      },
+      {
+        "name": "Caecilian",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-20-caecilian",
+        "masterSha256": "17dfffd360637e3a2c76bcf8d19aed372721d9dec6a543ad5b00bb0b011c7ebc",
+        "promptSha256": "a3e01fe7426b060191a5cfc2c149e5f4a407ff08cdf5fead46b523241699eaf9",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 210,
+            "y0": 518,
+            "x1": 1059,
+            "y1": 709
+          },
+          "margins": {
+            "left": 210,
+            "right": 194,
+            "top": 518,
+            "bottom": 544
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong family: length/thickness 7.73 < 8",
+          "facing: the right (head) end is not thicker than the left (tail) end (42.6 vs 65)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2e/c243b06r2c2-20-caecilian/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Prominent round black eye-like side spot conflicts with no-visible-eye marker; front projection not independently established as sensory tentacle."
+      },
+      {
+        "name": "Caecilian",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-20-caecilian",
+        "masterSha256": "e6be9b69cd04639c4bcb9ebd0bb1f8e551716f21e883da863b9331ff2905dd83",
+        "promptSha256": "c2ccd3229597f7577a96d00ed4f3af0daa089792cae916ca1e3cccbdd965c71a",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 243,
+            "y0": 534,
+            "x1": 1056,
+            "y1": 715
+          },
+          "margins": {
+            "left": 243,
+            "right": 197,
+            "top": 534,
+            "bottom": 538
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "facing: the right (head) end is not thicker than the left (tail) end (34.9 vs 62)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3e/c243b06r2c3-20-caecilian/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Eye-like spot absent now, but tiny mouth-tip protrusion still does not independently establish the canonical sensory tentacle."
+      }
+    ],
+    "status": "SOURCE_IDENTITY_HOLD",
+    "reason": "Tiny front protrusion cannot be independently identified as the canonical sensory tentacle; mouth-tip projection alone is not proof.",
+    "bestRetainedSource": "c243b06r2c1-20-caecilian"
+  },
+  {
+    "name": "Cobra",
+    "attempts": [
+      {
+        "name": "Cobra",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-21-cobra",
+        "masterSha256": "98ddd61c042598aa787b70800c63926a18e4dcba07efe89f4df993369b6d194a",
+        "promptSha256": "0be9ef14c3283e8e10e4f3fd3f7bc6d84d1aa173df5fdbd5eb393155d60751d8",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 275,
+            "y0": 354,
+            "x1": 915,
+            "y1": 887
+          },
+          "margins": {
+            "left": 275,
+            "right": 338,
+            "top": 354,
+            "bottom": 366
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "not x-monotone: the dominant column run holds 82.6 % (coil or overlap; vertical strips cannot separate it)",
+          "wrong family: length/thickness 6.96 < 8"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-21-cobra/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Overall silhouette is wider than tall, about665x535px; canonical reared cobra requires taller than wide."
+      },
+      {
+        "name": "Cobra",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-21-cobra",
+        "masterSha256": "1f2165be46058b0a0e17b811d0e15396c20966e2b6099d889f93f156123bef7f",
+        "promptSha256": "5dc407c1ae39bfebfc47c95f95beac46cdcc6fc15bbe798086c1c202df776303",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 316,
+            "y0": 365,
+            "x1": 880,
+            "y1": 881
+          },
+          "margins": {
+            "left": 316,
+            "right": 373,
+            "top": 365,
+            "bottom": 372
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "not x-monotone: the dominant column run holds 79.9 % (coil or overlap; vertical strips cannot separate it)",
+          "wrong family: length/thickness 6.2 < 8"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2e/c243b06r2c2-21-cobra/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Overall silhouette about567x516px remains wider than tall; canonical reared posture aspect not met."
+      },
+      {
+        "name": "Cobra",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-21-cobra",
+        "masterSha256": "d649949d3bd8ea64d07c107b98fccf1821ef9a886efcd54ccf9c568d1116809b",
+        "promptSha256": "70c1a06534b97f84ec88d79282ec3b010d4f3c6fd8bf4287b5eb11ad3cd44c3d",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 313,
+            "y0": 374,
+            "x1": 892,
+            "y1": 879
+          },
+          "margins": {
+            "left": 313,
+            "right": 361,
+            "top": 374,
+            "bottom": 374
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "not x-monotone: the dominant column run holds 80.8 % (coil or overlap; vertical strips cannot separate it)",
+          "wrong family: length/thickness 5.99 < 8"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3e/c243b06r2c3-21-cobra/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Overall silhouette including tail/tongue remains wider than tall, about590x510px; canonical pose aspect unresolved."
+      }
+    ],
+    "status": "SOURCE_IDENTITY_HOLD",
+    "reason": "Overall silhouette is wider than tall, about665x535px; canonical reared cobra requires taller than wide.",
+    "bestRetainedSource": "c243b06r2c1-21-cobra"
+  },
+  {
+    "name": "Mountain Viper",
+    "attempts": [
+      {
+        "name": "Mountain Viper",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-22-mountain-viper",
+        "masterSha256": "a817eaf554501a30feeec902444526c3de5024202d94a63cfbf8ab11148b2d35",
+        "promptSha256": "3d87491df818a0a14c9ed4e48a66c500e0f8f4edb5c118e303d62bab230e5840",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 172,
+            "y0": 562,
+            "x1": 1061,
+            "y1": 723
+          },
+          "margins": {
+            "left": 172,
+            "right": 192,
+            "top": 562,
+            "bottom": 530
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1e/c243b06r2c1-22-mountain-viper/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Mountain Viper",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-22-mountain-viper",
+        "masterSha256": "1ca6f44709a8f6b886348448bf91aa42f5207091c8f788f86df25343c456375c",
+        "promptSha256": "c582da00370a773d609a15d8e9eb22b164d1c05369b3f0e90bbb7047203948c3",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 224,
+            "y0": 532,
+            "x1": 1028,
+            "y1": 722
+          },
+          "margins": {
+            "left": 224,
+            "right": 225,
+            "top": 532,
+            "bottom": 531
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2e/c243b06r2c2-22-mountain-viper/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Mountain Viper",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-22-mountain-viper",
+        "masterSha256": "b94109b1905dc84a4f335ed81fedb250bc7dc985b8a2fcb7eed8aac129826dd2",
+        "promptSha256": "86632ef42c49045ff18acd20431bb8ea9c8f0dcac0ae9d814a8dd4cabd67b929",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 169,
+            "y0": 526,
+            "x1": 1069,
+            "y1": 745
+          },
+          "margins": {
+            "left": 169,
+            "right": 184,
+            "top": 526,
+            "bottom": 508
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3e/c243b06r2c3-22-mountain-viper/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ],
+    "status": "VISUAL_HOLD",
+    "reason": "All five finished stills reviewed full size. Left winner body at victory midpoint ends abruptly along the same horizontal internal render boundary near y480; the lower body/tail is missing below it although arena remains visible. Late idle also cuts tail at left edge. HOLD shared axial victory clipping class. Triangular head/narrow neck, zigzag dorsal band and slit eye remain readable; no broad body tear or detached head. Dodge shards are FX.",
+    "comparison": "Read-only source trace: battle2/stage.ts draws the near plate above actors; parts-rig.ts measures upward rise for framing. Near-plate over-occlusion is a plausible contributor to the internal horizontal cutoff; no renderer/motion code edited and no conclusive root-cause claim."
+  },
+  {
+    "name": "Rattlesnake",
+    "attempts": [
+      {
+        "name": "Rattlesnake",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-23-rattlesnake",
+        "masterSha256": "963506a32883721baa0c1736a587f72b6fdfc57b45ff93a61d2b9f570a6329e2",
+        "promptSha256": "8357b24215d85829cb814d3aa5485baaf6efaba4c05226bc1b6539a1477d04c1",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 199,
+            "y0": 551,
+            "x1": 1093,
+            "y1": 735
+          },
+          "margins": {
+            "left": 199,
+            "right": 160,
+            "top": 551,
+            "bottom": 518
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "facing: the right (head) end is not thicker than the left (tail) end (26.7 vs 52.3)",
+          "tail not tapered: tip 56.9px vs median 66px (truncated tail?)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1f/c243b06r2c1-23-rattlesnake/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Required coiled base not shown; source has open horizontal S body with no coil, despite legible rattle/head."
+      },
+      {
+        "name": "Rattlesnake",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-23-rattlesnake",
+        "masterSha256": "eb541bf2ecf1f1945a628aa4e4a59f642a6222e441831368594e39d6ff522508",
+        "promptSha256": "c9afb2cfc5161a1e634e65c2bf58010b6a5971594d4fca26e73ec9b5c7263a99",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 200,
+            "y0": 519,
+            "x1": 1082,
+            "y1": 736
+          },
+          "margins": {
+            "left": 200,
+            "right": 171,
+            "top": 519,
+            "bottom": 517
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "not x-monotone: the dominant column run holds 92.4 % (coil or overlap; vertical strips cannot separate it)",
+          "body not continuous: 4.2 % of the length has no paint",
+          "facing: the right (head) end is not thicker than the left (tail) end (18.3 vs 48.4)",
+          "tail not tapered: tip 52.7px vs median 72px (truncated tail?)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2f/c243b06r2c2-23-rattlesnake/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Base has deeper open S/C bends but does not independently read as a coiled base; canonical coiled posture remains ambiguous."
+      },
+      {
+        "name": "Rattlesnake",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-23-rattlesnake",
+        "masterSha256": "3cdd89f7890760baf9b8979bd43e3722a0fb666d92e65a6fb3826c138dc627f2",
+        "promptSha256": "c30aafb526ba6aed8b6c65469905056869728bffa2b267136d379a32cf784ca8",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 187,
+            "y0": 552,
+            "x1": 1089,
+            "y1": 745
+          },
+          "margins": {
+            "left": 187,
+            "right": 164,
+            "top": 552,
+            "bottom": 508
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "facing: the right (head) end is not thicker than the left (tail) end (35.6 vs 34.3)"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3f/c243b06r2c3-23-rattlesnake/score.json",
+        "selected": false,
+        "nativePending": false,
+        "visualHold": "Final source is an open horizontal S body with no clearly coiled base; canonical coiled posture not met."
+      }
+    ],
+    "status": "SOURCE_IDENTITY_HOLD",
+    "reason": "Final source is an open horizontal S body with no clearly coiled base; canonical coiled posture not met.",
+    "bestRetainedSource": "c243b06r2c3-23-rattlesnake"
+  },
+  {
+    "name": "Snake",
+    "attempts": [
+      {
+        "name": "Snake",
+        "round": 2,
+        "candidate": 1,
+        "id": "c243b06r2c1-24-snake",
+        "masterSha256": "9c2a590bd5505f24a15d03573ce402465b2bd74ea23daf7cea464664de8d17ba",
+        "promptSha256": "5f839b0aff857206daaafe72603a50fb32852a54a6c2dd17f515fcb1c3d0f7cc",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 195,
+            "y0": 563,
+            "x1": 1055,
+            "y1": 707
+          },
+          "margins": {
+            "left": 195,
+            "right": 198,
+            "top": 563,
+            "bottom": 546
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "body not continuous: 2.5 % of the length has no paint"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c1f/c243b06r2c1-24-snake/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Snake",
+        "round": 2,
+        "candidate": 2,
+        "id": "c243b06r2c2-24-snake",
+        "masterSha256": "425c8b47ba2b5e21aff9d17a477d435fa73f27a2672c1d4ec1993f657b00a54e",
+        "promptSha256": "891bb78916704e48c03345fc0bcaedbf3825534794d8a3098dc56c2bb8c666e9",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 221,
+            "y0": 576,
+            "x1": 1023,
+            "y1": 692
+          },
+          "margins": {
+            "left": 221,
+            "right": 230,
+            "top": 576,
+            "bottom": 561
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "body not continuous: 2.6 % of the length has no paint"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c2f/c243b06r2c2-24-snake/score.json",
+        "selected": false,
+        "nativePending": false
+      },
+      {
+        "name": "Snake",
+        "round": 2,
+        "candidate": 3,
+        "id": "c243b06r2c3-24-snake",
+        "masterSha256": "e5893b9fc77aed9545818dffe8975b21accae60eb605c8e512eb3a9a898e9ba7",
+        "promptSha256": "28c15f3f4ae82f0383b1635c26fa44cc0d16e860b9669c19270555a5d64ef26a",
+        "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+        "framing": {
+          "status": "PASS_FRAMING_ONLY",
+          "bounds": {
+            "x0": 199,
+            "y0": 553,
+            "x1": 1035,
+            "y1": 691
+          },
+          "margins": {
+            "left": 199,
+            "right": 218,
+            "top": 553,
+            "bottom": 562
+          },
+          "required": {
+            "x": 101,
+            "y": 101
+          },
+          "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+        },
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "body not continuous: 2.6 % of the length has no paint"
+        ],
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r2c3f/c243b06r2c3-24-snake/score.json",
+        "selected": false,
+        "nativePending": false
+      }
+    ],
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "body not continuous: 2.5 % of the length has no paint",
+    "bestRetainedSource": "c243b06r2c1-24-snake"
+  },
+  {
+    "name": "Clam",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family bivalve"
+  },
+  {
+    "name": "Giant Clam",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family bivalve"
+  },
+  {
+    "name": "Oyster",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family bivalve"
+  },
+  {
+    "name": "Razor Clam",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family bivalve"
+  },
+  {
+    "name": "Scallop",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family bivalve"
+  },
+  {
+    "name": "Coconut Crab",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family brachyuran"
+  },
+  {
+    "name": "Fiddler Crab",
+    "attempts": [],
+    "status": "COMPILER_BLOCKED",
+    "reason": "Existing canonical compiler does not support this species; no unchanged compiler retry"
+  },
+  {
+    "name": "Freshwater Crab",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family brachyuran"
+  },
+  {
+    "name": "Mud Crab",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family brachyuran"
+  },
+  {
+    "name": "Vent Crab",
+    "attempts": [],
+    "status": "REFERENCE_BLOCKED",
+    "reason": "no-reference: no other hand-authored subject of family brachyuran"
+  }
+]

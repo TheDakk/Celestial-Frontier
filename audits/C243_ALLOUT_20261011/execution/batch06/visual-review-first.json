@@ -1,0 +1,44 @@
+{
+  "films": 4,
+  "reviewedStills": 20,
+  "ready": [],
+  "holds": [
+    {
+      "id": "c243b06r1c1-19-boa",
+      "name": "Boa",
+      "status": "HOLD_VISUAL",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-19-boa",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-19-boa/report.json",
+      "reviewedStills": 5,
+      "observation": "All five finished stills viewed at original1024x576. Left winning snake raises head in turn3-idle50 while most body/tail disappears below the foreground; returns at idle90. Boa also throws tail near top edge during dodge. Continuous source intact; visual HOLD for exaggerated axial pose/ground intersection, no magenta flag."
+    },
+    {
+      "id": "c243b06r1c1-22-mountain-viper",
+      "name": "Mountain Viper",
+      "status": "HOLD_VISUAL",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-22-mountain-viper",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-22-mountain-viper/report.json",
+      "reviewedStills": 5,
+      "observation": "All five finished stills viewed at original1024x576. Left winning snake raises head in turn3-idle50 while most body/tail disappears below the foreground; returns at idle90. Boa also throws tail near top edge during dodge. Continuous source intact; visual HOLD for exaggerated axial pose/ground intersection, no magenta flag."
+    },
+    {
+      "id": "c243b06r1c1-23-rattlesnake",
+      "name": "Rattlesnake",
+      "status": "HOLD_VISUAL",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-23-rattlesnake",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c243b06r1c1-23-rattlesnake/report.json",
+      "reviewedStills": 5,
+      "observation": "All five finished stills viewed at original1024x576. Left winning snake raises head in turn3-idle50 while most body/tail disappears below the foreground; returns at idle90. Boa also throws tail near top edge during dodge. Continuous source intact; visual HOLD for exaggerated axial pose/ground intersection, no magenta flag."
+    },
+    {
+      "id": "c196quadrupedoriginals-20-monkey",
+      "name": "Monkey",
+      "status": "HOLD_VISUAL",
+      "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c196quadrupedoriginals-20-monkey",
+      "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch06/ai-finish/native-01/c196quadrupedoriginals-20-monkey/report.json",
+      "reviewedStills": 5,
+      "observation": "All five finished stills viewed at original1024x576. Right defeated Monkey remains upright on hands/feet with raised tail in turn3 reaction and both late-idle frames. No visible collapse; visual HOLD despite mechanics/triage PASS."
+    }
+  ],
+  "next": "Carry motion reasons into later class repair/final round; no source/ruler changes and no unchanged retries."
+}

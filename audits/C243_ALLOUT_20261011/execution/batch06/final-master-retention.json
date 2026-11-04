@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "records": 6,
+  "uniqueMasters": 6,
+  "negativeControls": [
+    "missing indexed master refused",
+    "changed indexed bytes refused"
+  ],
+  "rows": [
+    {
+      "id": "c243b06r1c1-19-boa",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1e/c243b06r1c1-19-boa/packet/master.png",
+      "sha256": "49ffed780e7409e01b8099335b0c078376eabc9cc5fd070572adb6898c054e23"
+    },
+    {
+      "id": "c243b06r1c1-22-mountain-viper",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-22-mountain-viper/packet/master.png",
+      "sha256": "c29a0cf9154c496750beff1d5a1b3f89a8688a3f4f3b0c7d6a5e7f6a146b0ddc"
+    },
+    {
+      "id": "c243b06r1c1-23-rattlesnake",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c1f/c243b06r1c1-23-rattlesnake/packet/master.png",
+      "sha256": "cd3be1b41982b6b9e8ed972deae2927ddad3608d7ef0bef1bf6aee95e4029cea"
+    },
+    {
+      "id": "c196quadrupedoriginals-20-monkey",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06before/c196quadrupedoriginals-20-monkey/packet/master.png",
+      "sha256": "56c3437b8203380096564c67a8ec109b3a84cb07d4521caa3e870a2165fd6d4d"
+    },
+    {
+      "id": "c243b06r1c2-11-gibbon",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c2c/c243b06r1c2-11-gibbon/packet/master.png",
+      "sha256": "5f5fa609296e15bfc97728416455d21a4c3c3a4bf78bcec627a17cb9c9d96d07"
+    },
+    {
+      "id": "c243b06r1c2-24-snake",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b06r1c2e/c243b06r1c2-24-snake/packet/master.png",
+      "sha256": "7b27d9ac8d6480dade558ea3915a6f96102e7b0deb7a553011ddad8b2c8f920f"
+    }
+  ]
+}

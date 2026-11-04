@@ -1,0 +1,9 @@
+{
+  "scope": "Untracked derived parts/static bundles from completed Codex C213/C215/C228/C234 auto candidates; no masters, records, scores or tracked files",
+  "filesRemoved": 22975,
+  "bytesRemoved": 2408349219,
+  "freeBeforeGiB": 29.79278564453125,
+  "freeAfterGiB": 32.1197509765625,
+  "trackedFilesRemoved": 0,
+  "mastersRemoved": 0
+}

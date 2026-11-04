@@ -1,0 +1,22 @@
+[
+  {
+    "id": "g2c83-16-cockatoo",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/class-fixes/g2c83-16-cockatoo/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/g2c83-16-cockatoo/report.json"
+  },
+  {
+    "id": "g2c107-08-frigatebird",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/class-fixes/g2c107-08-frigatebird/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/g2c107-08-frigatebird/report.json"
+  },
+  {
+    "id": "g2c106-18-hoatzin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/class-fixes/g2c106-18-hoatzin/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/g2c106-18-hoatzin/report.json"
+  },
+  {
+    "id": "g2c106-17-kakapo",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch04/class-fixes/g2c106-17-kakapo/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch04/native/g2c106-17-kakapo/report.json"
+  }
+]

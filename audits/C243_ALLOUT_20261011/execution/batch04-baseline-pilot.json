@@ -1,0 +1,429 @@
+[
+  {
+    "id": "c136birdinsectreferences-02-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "packet": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02",
+    "master": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/master.png"
+  },
+  {
+    "id": "c192creaturesupply-03-shrimp",
+    "name": "Shrimp",
+    "family": "crustacean-small",
+    "packet": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp",
+    "master": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/master.png"
+  },
+  {
+    "id": "c196invertebrateoriginals-01-shrimp",
+    "name": "Shrimp",
+    "family": "crustacean-small",
+    "packet": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp",
+    "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/master.png"
+  },
+  {
+    "id": "c198creaturesupplyc-06-secretary-bird",
+    "name": "Secretary Bird",
+    "family": "biped-bird",
+    "packet": "audits/C198_CREATURE_SUPPLY_C_20261003/06-secretary-bird",
+    "master": "audits/C198_CREATURE_SUPPLY_C_20261003/06-secretary-bird/master.png"
+  },
+  {
+    "id": "c203creaturesupply-20-kookaburra",
+    "name": "Kookaburra",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra",
+    "master": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/master.png"
+  },
+  {
+    "id": "c203creaturesupplyb-09-kingfisher",
+    "name": "Kingfisher",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/09-kingfisher",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/09-kingfisher/master.png"
+  },
+  {
+    "id": "c203creaturesupplyb-10-macaw",
+    "name": "Macaw",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/10-macaw",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/10-macaw/master.png"
+  },
+  {
+    "id": "c203creaturesupplyb-12-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/12-pheasant",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/12-pheasant/master.png"
+  },
+  {
+    "id": "c203creaturesupplyb-15-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "packet": "audits/C203_CREATURE_SUPPLY_B_20261004/15-egret",
+    "master": "audits/C203_CREATURE_SUPPLY_B_20261004/15-egret/master.png"
+  },
+  {
+    "id": "c206birdsourcerepaints-01-snipe",
+    "name": "Snipe",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/master.png"
+  },
+  {
+    "id": "c206birdsourcerepaints-05-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/master.png"
+  },
+  {
+    "id": "c206birdsourcerepaints-11-peacock",
+    "name": "Peacock",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/master.png"
+  },
+  {
+    "id": "c206birdsourcerepaints-13-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/master.png"
+  },
+  {
+    "id": "c206birdsourcerepaints-18-pelican",
+    "name": "Pelican",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/master.png"
+  },
+  {
+    "id": "c206birdsourcerepaints-22-macaw",
+    "name": "Macaw",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/master.png"
+  },
+  {
+    "id": "c206birdsourcerepaints-23-tern",
+    "name": "Tern",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/master.png"
+  },
+  {
+    "id": "g2c101-14-peacock",
+    "name": "Peacock",
+    "family": "biped-bird",
+    "packet": "audits/G2_C101_20260927/14-peacock",
+    "master": "audits/G2_C101_20260927/14-peacock/master.png"
+  },
+  {
+    "id": "g2c101-15-ostrich",
+    "name": "Ostrich",
+    "family": "biped-bird",
+    "packet": "audits/G2_C101_20260927/15-ostrich",
+    "master": "audits/G2_C101_20260927/15-ostrich/master.png"
+  },
+  {
+    "id": "g2c101-17-pelican",
+    "name": "Pelican",
+    "family": "biped-bird",
+    "packet": "audits/G2_C101_20260927/17-pelican",
+    "master": "audits/G2_C101_20260927/17-pelican/master.png"
+  },
+  {
+    "id": "g2c106-16-kiwi",
+    "name": "Kiwi",
+    "family": "biped-bird",
+    "packet": "audits/G2_C106_20260927/16-kiwi",
+    "master": "audits/G2_C106_20260927/16-kiwi/master.png"
+  },
+  {
+    "id": "g2c106-17-kakapo",
+    "name": "Kakapo",
+    "family": "biped-bird",
+    "packet": "audits/G2_C106_20260927/17-kakapo",
+    "master": "audits/G2_C106_20260927/17-kakapo/master.png"
+  },
+  {
+    "id": "g2c106-18-hoatzin",
+    "name": "Hoatzin",
+    "family": "biped-bird",
+    "packet": "audits/G2_C106_20260927/18-hoatzin",
+    "master": "audits/G2_C106_20260927/18-hoatzin/master.png"
+  },
+  {
+    "id": "g2c106-19-quetzal",
+    "name": "Quetzal",
+    "family": "biped-bird",
+    "packet": "audits/G2_C106_20260927/19-quetzal",
+    "master": "audits/G2_C106_20260927/19-quetzal/master.png"
+  },
+  {
+    "id": "g2c107-08-frigatebird",
+    "name": "Frigatebird",
+    "family": "biped-bird",
+    "packet": "audits/G2_C107_20260927/08-frigatebird",
+    "master": "audits/G2_C107_20260927/08-frigatebird/master.png"
+  },
+  {
+    "id": "g2c107-09-tropicbird",
+    "name": "Tropicbird",
+    "family": "biped-bird",
+    "packet": "audits/G2_C107_20260927/09-tropicbird",
+    "master": "audits/G2_C107_20260927/09-tropicbird/master.png"
+  },
+  {
+    "id": "g2c121-02-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "packet": "audits/G2_C121_20260927/02-egret",
+    "master": "audits/G2_C121_20260927/02-egret/master.png"
+  },
+  {
+    "id": "g2c121-15-peacock",
+    "name": "Peacock",
+    "family": "biped-bird",
+    "packet": "audits/G2_C121_20260927/15-peacock",
+    "master": "audits/G2_C121_20260927/15-peacock/master.png"
+  },
+  {
+    "id": "g2c59-09-kingfisher",
+    "name": "Kingfisher",
+    "family": "biped-bird",
+    "packet": "audits/G2_C59_20260926/09-kingfisher",
+    "master": "audits/G2_C59_20260926/09-kingfisher/master.png"
+  },
+  {
+    "id": "g2c72-12-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "packet": "audits/G2_C72_20260927/12-egret",
+    "master": "audits/G2_C72_20260927/12-egret/master.png"
+  },
+  {
+    "id": "g2c76-09-swift",
+    "name": "Swift",
+    "family": "biped-bird",
+    "packet": "audits/G2_C76_20260927/09-swift",
+    "master": "audits/G2_C76_20260927/09-swift/master.png"
+  },
+  {
+    "id": "g2c76-16-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "packet": "audits/G2_C76_20260927/16-pheasant",
+    "master": "audits/G2_C76_20260927/16-pheasant/master.png"
+  },
+  {
+    "id": "g2c81-10-snipe",
+    "name": "Snipe",
+    "family": "biped-bird",
+    "packet": "audits/G2_C81_20260927/10-snipe",
+    "master": "audits/G2_C81_20260927/10-snipe/master.png"
+  },
+  {
+    "id": "g2c83-09-macaw",
+    "name": "Macaw",
+    "family": "biped-bird",
+    "packet": "audits/G2_C83_20260927/09-macaw",
+    "master": "audits/G2_C83_20260927/09-macaw/master.png"
+  },
+  {
+    "id": "g2c83-15-kookaburra",
+    "name": "Kookaburra",
+    "family": "biped-bird",
+    "packet": "audits/G2_C83_20260927/15-kookaburra",
+    "master": "audits/G2_C83_20260927/15-kookaburra/master.png"
+  },
+  {
+    "id": "g2c83-16-cockatoo",
+    "name": "Cockatoo",
+    "family": "biped-bird",
+    "packet": "audits/G2_C83_20260927/16-cockatoo",
+    "master": "audits/G2_C83_20260927/16-cockatoo/master.png"
+  },
+  {
+    "id": "g2c87-09-owl",
+    "name": "Owl",
+    "family": "biped-bird",
+    "packet": "audits/G2_C87_20260927/09-owl",
+    "master": "audits/G2_C87_20260927/09-owl/master.png"
+  },
+  {
+    "id": "g2c98-11-osprey",
+    "name": "Osprey",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/11-osprey",
+    "master": "audits/G2_C98_20260927/11-osprey/master.png"
+  },
+  {
+    "id": "g2c98-15-secretary-bird",
+    "name": "Secretary Bird",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/15-secretary-bird",
+    "master": "audits/G2_C98_20260927/15-secretary-bird/master.png"
+  },
+  {
+    "id": "g2c98-16-tern",
+    "name": "Tern",
+    "family": "biped-bird",
+    "packet": "audits/G2_C98_20260927/16-tern",
+    "master": "audits/G2_C98_20260927/16-tern/master.png"
+  },
+  {
+    "id": "g2familypilot-03-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/03-pheasant",
+    "master": "audits/G2_FAMILY_PILOT_20260926/03-pheasant/master.png"
+  },
+  {
+    "id": "g2familypilot-05-kingfisher",
+    "name": "Kingfisher",
+    "family": "biped-bird",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/05-kingfisher",
+    "master": "audits/G2_FAMILY_PILOT_20260926/05-kingfisher/master.png"
+  },
+  {
+    "id": "g2layoutc47-05-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "packet": "audits/G2_LAYOUT_C47_20260926/05-pheasant",
+    "master": "audits/G2_LAYOUT_C47_20260926/05-pheasant/master.png"
+  },
+  {
+    "id": "c213originals-23-cockatoo",
+    "name": "Cockatoo",
+    "family": "biped-bird",
+    "packet": "audits/C213_ORIGINALS_20261004/23-cockatoo",
+    "master": "audits/C213_ORIGINALS_20261004/23-cockatoo/master.png"
+  },
+  {
+    "id": "c213originals-28-kookaburra",
+    "name": "Kookaburra",
+    "family": "biped-bird",
+    "packet": "audits/C213_ORIGINALS_20261004/28-kookaburra",
+    "master": "audits/C213_ORIGINALS_20261004/28-kookaburra/master.png"
+  },
+  {
+    "id": "c213originals-29-osprey",
+    "name": "Osprey",
+    "family": "biped-bird",
+    "packet": "audits/C213_ORIGINALS_20261004/29-osprey",
+    "master": "audits/C213_ORIGINALS_20261004/29-osprey/master.png"
+  },
+  {
+    "id": "c213originals-30-owl",
+    "name": "Owl",
+    "family": "biped-bird",
+    "packet": "audits/C213_ORIGINALS_20261004/30-owl",
+    "master": "audits/C213_ORIGINALS_20261004/30-owl/master.png"
+  },
+  {
+    "id": "c213originals-31-snipe",
+    "name": "Snipe",
+    "family": "biped-bird",
+    "packet": "audits/C213_ORIGINALS_20261004/31-snipe",
+    "master": "audits/C213_ORIGINALS_20261004/31-snipe/master.png"
+  },
+  {
+    "id": "c213originals-32-tern-source02",
+    "name": "Tern",
+    "family": "biped-bird",
+    "packet": "audits/C213_ORIGINALS_20261004/32-tern-source02",
+    "master": "audits/C213_ORIGINALS_20261004/32-tern-source02/master.png"
+  },
+  {
+    "id": "c213originals-32-tern",
+    "name": "Tern",
+    "family": "biped-bird",
+    "packet": "audits/C213_ORIGINALS_20261004/32-tern",
+    "master": "audits/C213_ORIGINALS_20261004/32-tern/master.png"
+  },
+  {
+    "id": "c221program-03-brine-shrimp",
+    "name": "Brine Shrimp",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/03-brine-shrimp",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/03-brine-shrimp/master.png"
+  },
+  {
+    "id": "c221program-04-water-flea",
+    "name": "Water Flea",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/04-water-flea",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/04-water-flea/master.png"
+  },
+  {
+    "id": "c221program-05-krill",
+    "name": "Krill",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/05-krill",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/05-krill/master.png"
+  },
+  {
+    "id": "c221program-06-copepod",
+    "name": "Copepod",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/06-copepod",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/06-copepod/master.png"
+  },
+  {
+    "id": "c221program-07-amphipod",
+    "name": "Amphipod",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/07-amphipod",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/07-amphipod/master.png"
+  },
+  {
+    "id": "c221program-10-cave-shrimp-v2",
+    "name": "Cave Shrimp",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/10-cave-shrimp-v2",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/10-cave-shrimp-v2/master.png"
+  },
+  {
+    "id": "c221program-12-freshwater-shrimp",
+    "name": "Freshwater Shrimp",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/12-freshwater-shrimp",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/12-freshwater-shrimp/master.png"
+  },
+  {
+    "id": "c221program-24-giant-isopod",
+    "name": "Giant Isopod",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/24-giant-isopod",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/24-giant-isopod/master.png"
+  },
+  {
+    "id": "c221program-26-isopod",
+    "name": "Isopod",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/26-isopod",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/26-isopod/master.png"
+  },
+  {
+    "id": "c221program-29-vent-shrimp",
+    "name": "Vent Shrimp",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/29-vent-shrimp",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/29-vent-shrimp/master.png"
+  },
+  {
+    "id": "c221program-44-fairy-shrimp",
+    "name": "Fairy Shrimp",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/44-fairy-shrimp",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/44-fairy-shrimp/master.png"
+  },
+  {
+    "id": "c221program-45-tadpole-shrimp",
+    "name": "Tadpole Shrimp",
+    "family": "crustacean-small",
+    "packet": "audits/C221_PROGRAM_20261010/phase6/originals/45-tadpole-shrimp",
+    "master": "audits/C221_PROGRAM_20261010/phase6/originals/45-tadpole-shrimp/master.png"
+  }
+]

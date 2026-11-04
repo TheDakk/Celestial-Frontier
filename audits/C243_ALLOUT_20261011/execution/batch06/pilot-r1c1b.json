@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c243b06r1c1-05-pseudoscorpion",
+    "name": "Pseudoscorpion",
+    "family": "arachnid",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-05-pseudoscorpion",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-05-pseudoscorpion/master.png"
+  },
+  {
+    "id": "c243b06r1c1-06-scorpion",
+    "name": "Scorpion",
+    "family": "arachnid",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-06-scorpion",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-06-scorpion/master.png"
+  },
+  {
+    "id": "c243b06r1c1-07-sea-spider",
+    "name": "Sea Spider",
+    "family": "arachnid",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-07-sea-spider",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch06/c243b06r1c1-07-sea-spider/master.png"
+  }
+]
