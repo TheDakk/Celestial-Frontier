@@ -1,0 +1,852 @@
+[
+  {
+    "name": "Blue Whale",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "extra-anatomy (unassigned): a front appendage of 7.3% paint that no reference appendage lands on",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-03-blue-whale",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 7.3% paint that no reference appendage lands on"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1a/c243b02r2c1-03-blue-whale/score.json"
+      },
+      {
+        "id": "c243b02r2c2-03-blue-whale",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2a/c243b02r2c2-03-blue-whale/score.json"
+      },
+      {
+        "id": "c243b02r2c3-03-blue-whale",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 7.3% paint that no reference appendage lands on"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3a/c243b02r2c3-03-blue-whale/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Dragonfish",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "unexplained-anatomy: 17.8% of the paint lies away from the body and in no part (reference 4.6%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-06-dragonfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part jaw (jaw) covers 20% paint (reference 64%)",
+          "unexplained-anatomy: 13.3% of the paint lies away from the body and in no part (reference 4.6%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1a/c243b02r2c1-06-dragonfish/score.json"
+      },
+      {
+        "id": "c243b02r2c2-06-dragonfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 21.1% of the paint lies away from the body and in no part (reference 4.6%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2a/c243b02r2c2-06-dragonfish/score.json"
+      },
+      {
+        "id": "c243b02r2c3-06-dragonfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 17.8% of the paint lies away from the body and in no part (reference 4.6%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3a/c243b02r2c3-06-dragonfish/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Eagle Ray",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "missing-anatomy: part caudal (caudal) covers 21% paint (reference 66%); missing-anatomy: part rear-body (spine4) covers 10% paint (reference 48%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-07-eagle-ray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part rear-body (spine4) covers 14% paint (reference 48%)",
+          "unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 6.9%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1a/c243b02r2c1-07-eagle-ray/score.json"
+      },
+      {
+        "id": "c243b02r2c2-07-eagle-ray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part tail-peduncle (spine5) covers 0% paint (reference 26%)",
+          "missing-anatomy: part rear-body (spine4) covers 15% paint (reference 48%)",
+          "missing-anatomy: part pelvic-body (spine3) covers 11% paint (reference 65%)",
+          "unexplained-anatomy: 16.3% of the paint lies away from the body and in no part (reference 6.9%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2a/c243b02r2c2-07-eagle-ray/score.json"
+      },
+      {
+        "id": "c243b02r2c3-07-eagle-ray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part caudal (caudal) covers 21% paint (reference 66%)",
+          "missing-anatomy: part rear-body (spine4) covers 10% paint (reference 48%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3a/c243b02r2c3-07-eagle-ray/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Fangtooth",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 4.6%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-08-fangtooth",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 4.6%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1b/c243b02r2c1-08-fangtooth/score.json"
+      },
+      {
+        "id": "c243b02r2c2-08-fangtooth",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 4.6%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2b/c243b02r2c2-08-fangtooth/score.json"
+      },
+      {
+        "id": "c243b02r2c3-08-fangtooth",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 4.6%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3b/c243b02r2c3-08-fangtooth/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Gulper Eel",
+    "status": "VISUAL_HOLD",
+    "reason": "Full-size turn3-hit-idle-50: left eel rotates nearly vertical and its body/tail exits the lower frame; a small upper-mouth fragment appears above the head. Luminous tail tip also reads separated in the horizontal frames. Mechanical PASS does not clear these visual defects.",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-12-gulper-eel",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part body-segment-9 owns 0.56 % of the paint (reference 2.76 %)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1b/c243b02r2c1-12-gulper-eel/score.json"
+      },
+      {
+        "id": "c243b02r2c2-12-gulper-eel",
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2b/c243b02r2c2-12-gulper-eel/score.json"
+      },
+      {
+        "id": "c243b02r2c3-12-gulper-eel",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part body-segment-9 owns 0.62 % of the paint (reference 2.76 %)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3b/c243b02r2c3-12-gulper-eel/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Lancelet",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "missing-anatomy: part jaw (jaw) covers 19% paint (reference 61%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-15-lancelet",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "facing: the mirrored painting matches fish better (0.0347 < 0.0427)",
+          "unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 4.6%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1b/c243b02r2c1-15-lancelet/score.json"
+      },
+      {
+        "id": "c243b02r2c2-15-lancelet",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part near-pectoral (pectoralNear) covers 26% paint (reference 91%)",
+          "missing-anatomy: part far-pectoral (pectoralFar) covers 15% paint (reference 82%)",
+          "missing-anatomy: part jaw (jaw) covers 14% paint (reference 56%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2b/c243b02r2c2-15-lancelet/score.json"
+      },
+      {
+        "id": "c243b02r2c3-15-lancelet",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part jaw (jaw) covers 19% paint (reference 61%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3b/c243b02r2c3-15-lancelet/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Lionfish",
+    "status": "VISUAL_HOLD",
+    "reason": "All five full-size frames inspected: body and fin-ray attachments remain connected, but pink key-colour residue persists on fine tail and fin-ray tips. Changed D28 placement does not clear the prior fringe HOLD.",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-16-lionfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: crustacean-small matches clearly better (0.0456 < 0.0690)",
+          "unexplained-anatomy: 10.5% of the paint lies away from the body and in no part (reference 4.6%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1c/c243b02r2c1-16-lionfish/score.json"
+      },
+      {
+        "id": "c243b02r2c2-16-lionfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 6.1% paint that no reference appendage lands on"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2c/c243b02r2c2-16-lionfish/score.json"
+      },
+      {
+        "id": "c243b02r2c3-16-lionfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 6.5% paint that no reference appendage lands on"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3c/c243b02r2c3-16-lionfish/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Lungfish",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "wrong-family: quadruped matches clearly better (0.0166 < 0.0279); missing-anatomy (family floor): the largest rear appendage is 4.3% of the paint; every same-family reference shows at least 10.0%; unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 4.0%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-17-lungfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy (family floor): the largest rear appendage is 3.8% of the paint; every same-family reference shows at least 10.0%",
+          "unexplained-anatomy: 8.5% of the paint lies away from the body and in no part (reference 4.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1c/c243b02r2c1-17-lungfish/score.json"
+      },
+      {
+        "id": "c243b02r2c2-17-lungfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy (family floor): the largest rear appendage is 5.2% of the paint; every same-family reference shows at least 10.0%",
+          "unexplained-anatomy: 13.4% of the paint lies away from the body and in no part (reference 4.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2c/c243b02r2c2-17-lungfish/score.json"
+      },
+      {
+        "id": "c243b02r2c3-17-lungfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: quadruped matches clearly better (0.0166 < 0.0279)",
+          "missing-anatomy (family floor): the largest rear appendage is 4.3% of the paint; every same-family reference shows at least 10.0%",
+          "unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 4.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3c/c243b02r2c3-17-lungfish/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Manatee",
+    "status": "VISUAL_HOLD",
+    "reason": "All five full-size frames show a large back/flank tear with triangular detached paint; turn3-hit-idle-50 opens a broad background wedge between head/back and body. D28 mechanical PASS is not visual acceptance.",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-18-manatee",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 7.8% paint that no reference appendage lands on"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1c/c243b02r2c1-18-manatee/score.json"
+      },
+      {
+        "id": "c243b02r2c2-18-manatee",
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2c/c243b02r2c2-18-manatee/score.json"
+      },
+      {
+        "id": "c243b02r2c3-18-manatee",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 8.3% paint that no reference appendage lands on"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3c/c243b02r2c3-18-manatee/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Manta Ray",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "missing-anatomy (family floor): the largest rear appendage is 3.6% of the paint; every same-family reference shows at least 10.0%; missing-anatomy: part tail-peduncle (spine5) covers 9% paint (reference 26%); unexplained-anatomy: 17.5% of the paint lies away from the body and in no part (reference 6.9%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-19-manta-ray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy (family floor): the largest rear appendage is 3.6% of the paint; every same-family reference shows at least 10.0%",
+          "missing-anatomy: part jaw (jaw) covers 14% paint (reference 56%)",
+          "missing-anatomy: part caudal (caudal) covers 14% paint (reference 63%)",
+          "missing-anatomy: part spine5 (spine5) covers 13% paint (reference 51%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1c/c243b02r2c1-19-manta-ray/score.json"
+      },
+      {
+        "id": "c243b02r2c2-19-manta-ray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy (family floor): the largest rear appendage is 3.3% of the paint; every same-family reference shows at least 10.0%",
+          "missing-anatomy: part caudal (caudal) covers 8% paint (reference 30%)",
+          "missing-anatomy: part tail-peduncle (spine5) covers 2% paint (reference 18%)",
+          "missing-anatomy: part rear-body (spine4) covers 3% paint (reference 32%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2c/c243b02r2c2-19-manta-ray/score.json"
+      },
+      {
+        "id": "c243b02r2c3-19-manta-ray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy (family floor): the largest rear appendage is 3.6% of the paint; every same-family reference shows at least 10.0%",
+          "missing-anatomy: part tail-peduncle (spine5) covers 9% paint (reference 26%)",
+          "unexplained-anatomy: 17.5% of the paint lies away from the body and in no part (reference 6.9%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3c/c243b02r2c3-19-manta-ray/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Moray Eel",
+    "status": "VISUAL_HOLD",
+    "reason": "Full-size turn3-hit-idle-50: left eel rotates nearly vertical and its lower body/tail exits the frame. In other frames the body and jaw stay connected; midpoint visibility remains a visual HOLD.",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-21-moray-eel",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "facing: the right (head) end is not thicker than the left (tail) end (28.7 vs 30.1)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1d/c243b02r2c1-21-moray-eel/score.json"
+      },
+      {
+        "id": "c243b02r2c2-21-moray-eel",
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2d/c243b02r2c2-21-moray-eel/score.json"
+      },
+      {
+        "id": "c243b02r2c3-21-moray-eel",
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3d/c243b02r2c3-21-moray-eel/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Narwhal",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "missing-anatomy: part dorsal (dorsal) covers 4% paint (reference 58%); missing-anatomy: part jaw (jaw) covers 0% paint (reference 93%); unexplained-anatomy: 11.1% of the paint lies away from the body and in no part (reference 4.0%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-22-narwhal",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 9.0% of the paint lies away from the body and in no part (reference 4.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1d/c243b02r2c1-22-narwhal/score.json"
+      },
+      {
+        "id": "c243b02r2c2-22-narwhal",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part dorsal (dorsal) covers 0% paint (reference 58%)",
+          "unexplained-anatomy: 9.1% of the paint lies away from the body and in no part (reference 4.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2d/c243b02r2c2-22-narwhal/score.json"
+      },
+      {
+        "id": "c243b02r2c3-22-narwhal",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part dorsal (dorsal) covers 4% paint (reference 58%)",
+          "missing-anatomy: part jaw (jaw) covers 0% paint (reference 93%)",
+          "unexplained-anatomy: 11.1% of the paint lies away from the body and in no part (reference 4.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3d/c243b02r2c3-22-narwhal/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Oarfish",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "missing-anatomy: part dorsal (dorsal) covers 8% paint (reference 46%); unexplained-anatomy: 23.0% of the paint lies away from the body and in no part (reference 3.5%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-23-oarfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (detached): 2 separate paint island(s) of \u2265 1% (reference 0)",
+          "missing-anatomy: part dorsal (dorsal) covers 11% paint (reference 46%)",
+          "missing-anatomy: part body-1 (spine1) covers 6% paint (reference 90%)",
+          "unexplained-anatomy: 24.8% of the paint lies away from the body and in no part (reference 3.5%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1d/c243b02r2c1-23-oarfish/score.json"
+      },
+      {
+        "id": "c243b02r2c2-23-oarfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part dorsal (dorsal) covers 8% paint (reference 46%)",
+          "unexplained-anatomy: 17.2% of the paint lies away from the body and in no part (reference 3.5%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2d/c243b02r2c2-23-oarfish/score.json"
+      },
+      {
+        "id": "c243b02r2c3-23-oarfish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part dorsal (dorsal) covers 8% paint (reference 46%)",
+          "unexplained-anatomy: 23.0% of the paint lies away from the body and in no part (reference 3.5%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3d/c243b02r2c3-23-oarfish/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Pilot Whale",
+    "status": "VISUAL_HOLD",
+    "reason": "All five full-size frames show an open neck/back seam; turn3-hit-idle-50 separates the left head/chest from the body through a broad background wedge, with a long back strip extending away. Mechanical PASS does not clear the tear.",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-24-pilot-whale",
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1d/c243b02r2c1-24-pilot-whale/score.json"
+      },
+      {
+        "id": "c243b02r2c2-24-pilot-whale",
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2d/c243b02r2c2-24-pilot-whale/score.json"
+      },
+      {
+        "id": "c243b02r2c3-24-pilot-whale",
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3d/c243b02r2c3-24-pilot-whale/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Pipefish",
+    "status": "VISUAL_HOLD",
+    "reason": "All five full-size frames inspected: thin body and snout remain continuous, but dorsal, pectoral and tail fins read saturated pink. Changed D28 placement does not clear the prior key-colour fringe HOLD.",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-25-pipefish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part far-pectoral (pectoralFar) covers 24% paint (reference 69%)",
+          "unexplained-anatomy: 10.8% of the paint lies away from the body and in no part (reference 3.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1e/c243b02r2c1-25-pipefish/score.json"
+      },
+      {
+        "id": "c243b02r2c2-25-pipefish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2e/c243b02r2c2-25-pipefish/score.json"
+      },
+      {
+        "id": "c243b02r2c3-25-pipefish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: annelid matches clearly better (0.0150 < 0.0251)",
+          "unexplained-anatomy: 15.0% of the paint lies away from the body and in no part (reference 4.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3e/c243b02r2c3-25-pipefish/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Ray",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "unexplained-anatomy: 16.0% of the paint lies away from the body and in no part (reference 6.9%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-26-ray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 14.9% of the paint lies away from the body and in no part (reference 6.9%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1e/c243b02r2c1-26-ray/score.json"
+      },
+      {
+        "id": "c243b02r2c2-26-ray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 17.9% of the paint lies away from the body and in no part (reference 6.9%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2e/c243b02r2c2-26-ray/score.json"
+      },
+      {
+        "id": "c243b02r2c3-26-ray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 16.0% of the paint lies away from the body and in no part (reference 6.9%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3e/c243b02r2c3-26-ray/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Seahorse",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%); unexplained-anatomy: 25.6% of the paint lies away from the body and in no part (reference 4.0%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-27-seahorse",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+          "unexplained-anatomy: 20.3% of the paint lies away from the body and in no part (reference 4.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1e/c243b02r2c1-27-seahorse/score.json"
+      },
+      {
+        "id": "c243b02r2c2-27-seahorse",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part near-pectoral (pectoralNear) covers 22% paint (reference 100%)",
+          "missing-anatomy: part far-pectoral (pectoralFar) covers 9% paint (reference 74%)",
+          "missing-anatomy: part body-1 (spine1) covers 33% paint (reference 98%)",
+          "unexplained-anatomy: 13.5% of the paint lies away from the body and in no part (reference 4.6%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2e/c243b02r2c2-27-seahorse/score.json"
+      },
+      {
+        "id": "c243b02r2c3-27-seahorse",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+          "unexplained-anatomy: 25.6% of the paint lies away from the body and in no part (reference 4.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3e/c243b02r2c3-27-seahorse/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Stingray",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "unexplained-anatomy: 26.4% of the paint lies away from the body and in no part (reference 6.9%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-28-stingray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 19.4% of the paint lies away from the body and in no part (reference 6.9%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1e/c243b02r2c1-28-stingray/score.json"
+      },
+      {
+        "id": "c243b02r2c2-28-stingray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 28.9% of the paint lies away from the body and in no part (reference 6.9%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2e/c243b02r2c2-28-stingray/score.json"
+      },
+      {
+        "id": "c243b02r2c3-28-stingray",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "unexplained-anatomy: 26.4% of the paint lies away from the body and in no part (reference 6.9%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3e/c243b02r2c3-28-stingray/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Tripod Fish",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 26% paint (reference 82%); missing-anatomy: part far-pectoral (pectoralFar) covers 5% paint (reference 97%); missing-anatomy: part jaw (jaw) covers 5% paint (reference 93%); missing-anatomy: part head (head) covers 11% paint (reference 48%); missing-anatomy: part tail-peduncle (spine5) covers 7% paint (reference 54%); unexplained-anatomy: 20.6% of the paint lies away from the body and in no part (reference 4.0%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-29-tripod-fish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part near-pectoral (pectoralNear) covers 0% paint (reference 100%)",
+          "missing-anatomy: part head (head) covers 18% paint (reference 60%)",
+          "missing-anatomy: part root (root) covers 13% paint (reference 67%)",
+          "missing-anatomy: part tail-peduncle (spine5) covers 4% paint (reference 18%)",
+          "missing-anatomy: part rear-body (spine4) covers 8% paint (reference 32%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1f/c243b02r2c1-29-tripod-fish/score.json"
+      },
+      {
+        "id": "c243b02r2c2-29-tripod-fish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "wrong-family: biped-bird matches clearly better (0.0295 < 0.0435)",
+          "missing-anatomy: part near-pectoral (pectoralNear) covers 0% paint (reference 81%)",
+          "missing-anatomy: part far-pectoral (pectoralFar) covers 0% paint (reference 90%)",
+          "missing-anatomy: part dorsal (dorsal) covers 11% paint (reference 69%)",
+          "missing-anatomy: part rear-body (spine4) covers 16% paint (reference 48%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-29-tripod-fish/score.json"
+      },
+      {
+        "id": "c243b02r2c3-29-tripod-fish",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part near-pectoral (pectoralNear) covers 26% paint (reference 82%)",
+          "missing-anatomy: part far-pectoral (pectoralFar) covers 5% paint (reference 97%)",
+          "missing-anatomy: part jaw (jaw) covers 5% paint (reference 93%)",
+          "missing-anatomy: part head (head) covers 11% paint (reference 48%)",
+          "missing-anatomy: part tail-peduncle (spine5) covers 7% paint (reference 54%)",
+          "unexplained-anatomy: 20.6% of the paint lies away from the body and in no part (reference 4.0%)"
+        ],
+        "visualHold": "Forward feelers emerge at snout/mouth instead of canonical pectoral roots; broad pectoral fin is separate.",
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3f/c243b02r2c3-29-tripod-fish/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Whale",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on; unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 3.0%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-30-whale",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a front appendage of 6.1% paint that no reference appendage lands on"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1f/c243b02r2c1-30-whale/score.json"
+      },
+      {
+        "id": "c243b02r2c2-30-whale",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 8.1% paint that no reference appendage lands on",
+          "missing-anatomy: part jaw (jaw) covers 3% paint (reference 91%)",
+          "unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 3.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-30-whale/score.json"
+      },
+      {
+        "id": "c243b02r2c3-30-whale",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+          "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 3.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3f/c243b02r2c3-30-whale/score.json"
+      }
+    ]
+  },
+  {
+    "name": "River Dolphin",
+    "status": "VISUAL_HOLD",
+    "reason": "Full-size turn3-hit-idle-50/90: a long background seam opens along the right dolphin's upper back and thin chest/flipper strands hang below the left animal. Rounded melon identity is retained, but the repaired fit still tears.",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-32-river-dolphin",
+        "verdict": "ADMIT",
+        "static": "INTAKE_REFUSED",
+        "reasons": [],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1f/c243b02r2c1-32-river-dolphin/score.json"
+      },
+      {
+        "id": "c243b02r2c2-32-river-dolphin",
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-32-river-dolphin/score.json"
+      },
+      {
+        "id": "c243b02r2c3-32-river-dolphin",
+        "verdict": "ADMIT",
+        "static": "PASS_STATIC",
+        "reasons": [],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3f/c243b02r2c3-32-river-dolphin/score.json"
+      }
+    ]
+  },
+  {
+    "name": "Ant",
+    "status": "SOURCE_INTAKE_REFUSED",
+    "reason": "facing: the mirrored painting matches insect better (0.0323 < 0.0423); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 10% paint (reference 40%); unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 1.0%)",
+    "attempts": [
+      {
+        "id": "c243b02r2c1-34-ant",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 5% paint (reference 25%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c1f/c243b02r2c1-34-ant/score.json"
+      },
+      {
+        "id": "c243b02r2c2-34-ant",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 12% paint (reference 42%)",
+          "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 4% paint (reference 25%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2f/c243b02r2c2-34-ant/score.json"
+      },
+      {
+        "id": "c243b02r2c3-34-ant",
+        "verdict": "REFUSE",
+        "static": null,
+        "reasons": [
+          "facing: the mirrored painting matches insect better (0.0323 < 0.0423)",
+          "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 10% paint (reference 40%)",
+          "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 1.0%)"
+        ],
+        "visualHold": null,
+        "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c3f/c243b02r2c3-34-ant/score.json"
+      }
+    ]
+  }
+]

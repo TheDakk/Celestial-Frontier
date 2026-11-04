@@ -1,0 +1,19 @@
+[
+  {
+    "name": "semantic-controls",
+    "args": [
+      "node",
+      "--test",
+      "port/v2/tools/creature-animation/semantic-part-packing.test.mjs"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "root-validate",
+    "args": [
+      "node",
+      "tools/validate.js"
+    ],
+    "exitCode": 0
+  }
+]

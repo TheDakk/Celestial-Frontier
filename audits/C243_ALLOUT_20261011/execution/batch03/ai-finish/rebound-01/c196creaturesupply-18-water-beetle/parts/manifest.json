@@ -1,0 +1,110 @@
+{
+  "creatureId": "c196creaturesupply-18-water-beetle",
+  "parts": [
+    {
+      "name": "hind-near-lower.png",
+      "path": "parts/hind-near-lower.png",
+      "sha256": "326c8a416934cbf4b7221f31649694490e78f10ee97785f1eced528bc73eff5b"
+    },
+    {
+      "name": "mid-near-lower.png",
+      "path": "parts/mid-near-lower.png",
+      "sha256": "aedf15dd3970fb2b2a81eb25a14df313e16263bfb10bb500fec3dce3bbc5681b"
+    },
+    {
+      "name": "front-near-lower.png",
+      "path": "parts/front-near-lower.png",
+      "sha256": "5d4397b6306f55c5beafd9e73456945202f0d2491ac5eb11ab1ecb3613256b6f"
+    },
+    {
+      "name": "hind-near-upper.png",
+      "path": "parts/hind-near-upper.png",
+      "sha256": "da9e622bc7396db978ed292708330cf5c6cefdf6d4a465da40d52174260a2cae"
+    },
+    {
+      "name": "mid-near-upper.png",
+      "path": "parts/mid-near-upper.png",
+      "sha256": "d6be84be7334c074c5df9c08c8b3ffee6ee2eb0a6fe5b675c1a77ec0dde04639"
+    },
+    {
+      "name": "front-near-upper.png",
+      "path": "parts/front-near-upper.png",
+      "sha256": "d6b3d3182812a2108d5fdb74e11831591f1c658ca22905e7553c9f579e8ca5ba"
+    },
+    {
+      "name": "hind-far-lower.png",
+      "path": "parts/hind-far-lower.png",
+      "sha256": "b6658ed23b6d46a85deb601b0461f1220b436e35e1197f1799127e5f099a66de"
+    },
+    {
+      "name": "mid-far-lower.png",
+      "path": "parts/mid-far-lower.png",
+      "sha256": "b11a2851115daa00167623a1252e4f00c63b03f1d359948a5b1236c797023568"
+    },
+    {
+      "name": "front-far-lower.png",
+      "path": "parts/front-far-lower.png",
+      "sha256": "268dac3f2fa63a93b1d716e56a55a9408610bce7d892505cb73a9d2199bb7706"
+    },
+    {
+      "name": "front-far-upper.png",
+      "path": "parts/front-far-upper.png",
+      "sha256": "7140fb5e8f0cf070a2b995bbd2805d2e9adc6351de03bc196fa50cebdac21c9b"
+    },
+    {
+      "name": "mid-far-upper.png",
+      "path": "parts/mid-far-upper.png",
+      "sha256": "a5ba7952950a1fe79db8c4a23e9424e88c0ba2d404879777b49d6f134d449a4b"
+    },
+    {
+      "name": "hind-far-upper.png",
+      "path": "parts/hind-far-upper.png",
+      "sha256": "9018c070b3c9b02ca07dc1e8b234814b6615f78a2d91d6de7619d2cf9743a929"
+    },
+    {
+      "name": "antenna-far.png",
+      "path": "parts/antenna-far.png",
+      "sha256": "a853cdec0f04f3470d2145b4ac7fbc1624783d252d45839cbe38f77b4706c244"
+    },
+    {
+      "name": "antenna-near.png",
+      "path": "parts/antenna-near.png",
+      "sha256": "0ab5b94708d5301272cd438c28e07c195894a74e9495adcbb3c31f9eb5a10c30"
+    },
+    {
+      "name": "mandible.png",
+      "path": "parts/mandible.png",
+      "sha256": "6c9204022a5bcf1ff7759874308bbd99a79b3dccbfd33c3caefdebdda8be5aba"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "b2037334beacd2d38bef79a74fd51586adbcf1cc2ea754de6ede822d01359097"
+    },
+    {
+      "name": "thorax.png",
+      "path": "parts/thorax.png",
+      "sha256": "cc151fd81b6132ea55839ee427e0547b5802053b5b41eda4d3675160c76bda02"
+    },
+    {
+      "name": "membrane-near.png",
+      "path": "parts/membrane-near.png",
+      "sha256": "38cdaae541aea294268100f18c8ea414ed9c135112dcf4cd9277e0baacf3a104"
+    },
+    {
+      "name": "membrane-far.png",
+      "path": "parts/membrane-far.png",
+      "sha256": "452a80e102206d9900a118a2997a1638972428e9f1abf0859d3f478e12e50b76"
+    },
+    {
+      "name": "abdomen.png",
+      "path": "parts/abdomen.png",
+      "sha256": "8711deb119a587d17cb5b9f00113dd90ada22b2bbd5000d341739bd0d6bb383f"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "fd1d738c0c16240241e355e1ef1c18d99b5b4cf7c2d70d07610de2c70371520c"
+    }
+  ]
+}

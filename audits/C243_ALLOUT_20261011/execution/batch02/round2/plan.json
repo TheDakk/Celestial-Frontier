@@ -1,0 +1,127 @@
+{
+  "batch": 2,
+  "round": 2,
+  "candidatesRequired": 3,
+  "species": [
+    {
+      "index": 3,
+      "name": "Blue Whale",
+      "family": "fish"
+    },
+    {
+      "index": 4,
+      "name": "Catfish",
+      "family": "fish"
+    },
+    {
+      "index": 6,
+      "name": "Dragonfish",
+      "family": "fish"
+    },
+    {
+      "index": 7,
+      "name": "Eagle Ray",
+      "family": "fish"
+    },
+    {
+      "index": 8,
+      "name": "Fangtooth",
+      "family": "fish"
+    },
+    {
+      "index": 11,
+      "name": "Gray Whale",
+      "family": "fish"
+    },
+    {
+      "index": 12,
+      "name": "Gulper Eel",
+      "family": "fish"
+    },
+    {
+      "index": 15,
+      "name": "Lancelet",
+      "family": "fish"
+    },
+    {
+      "index": 16,
+      "name": "Lionfish",
+      "family": "fish"
+    },
+    {
+      "index": 17,
+      "name": "Lungfish",
+      "family": "fish"
+    },
+    {
+      "index": 18,
+      "name": "Manatee",
+      "family": "fish"
+    },
+    {
+      "index": 19,
+      "name": "Manta Ray",
+      "family": "fish"
+    },
+    {
+      "index": 21,
+      "name": "Moray Eel",
+      "family": "fish"
+    },
+    {
+      "index": 22,
+      "name": "Narwhal",
+      "family": "fish"
+    },
+    {
+      "index": 23,
+      "name": "Oarfish",
+      "family": "fish"
+    },
+    {
+      "index": 24,
+      "name": "Pilot Whale",
+      "family": "fish"
+    },
+    {
+      "index": 25,
+      "name": "Pipefish",
+      "family": "fish"
+    },
+    {
+      "index": 26,
+      "name": "Ray",
+      "family": "fish"
+    },
+    {
+      "index": 27,
+      "name": "Seahorse",
+      "family": "fish"
+    },
+    {
+      "index": 28,
+      "name": "Stingray",
+      "family": "fish"
+    },
+    {
+      "index": 29,
+      "name": "Tripod Fish",
+      "family": "fish"
+    },
+    {
+      "index": 30,
+      "name": "Whale",
+      "family": "fish"
+    },
+    {
+      "index": 32,
+      "name": "River Dolphin",
+      "family": "fish"
+    },
+    {
+      "index": 34,
+      "name": "Ant",
+      "family": "insect"
+    }
+  ]
+}

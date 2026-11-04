@@ -1,0 +1,138 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "6d7e6c8243dcd7b7a5e1204f25103d2df47c0f1a93bacede03b53d8ba46d36dd",
+  "atlasSha256": "82c5ba1b31c5bf40d86a866d308724f7e867a1d1af5be3a7deaab99ad20e561f",
+  "atlasSize": {
+    "width": 1164,
+    "height": 265
+  },
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 750,
+        "y": 71,
+        "width": 103,
+        "height": 79
+      },
+      "cutout": {
+        "x": 752,
+        "y": 608,
+        "width": 103,
+        "height": 79
+      }
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1079,
+        "y": 5,
+        "width": 80,
+        "height": 96
+      },
+      "cutout": {
+        "x": 767,
+        "y": 637,
+        "width": 80,
+        "height": 96
+      }
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 600,
+        "y": 5,
+        "width": 255,
+        "height": 56
+      },
+      "cutout": {
+        "x": 544,
+        "y": 482,
+        "width": 255,
+        "height": 56
+      }
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 600,
+        "y": 71,
+        "width": 140,
+        "height": 46
+      },
+      "cutout": {
+        "x": 905,
+        "y": 585,
+        "width": 140,
+        "height": 46
+      }
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 865,
+        "y": 5,
+        "width": 204,
+        "height": 127
+      },
+      "cutout": {
+        "x": 835,
+        "y": 533,
+        "width": 204,
+        "height": 127
+      }
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 600,
+        "y": 127,
+        "width": 114,
+        "height": 114
+      },
+      "cutout": {
+        "x": 218,
+        "y": 579,
+        "width": 114,
+        "height": 114
+      }
+    },
+    {
+      "id": "axial-body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 585,
+        "height": 255
+      },
+      "cutout": {
+        "x": 324,
+        "y": 513,
+        "width": 585,
+        "height": 255
+      }
+    }
+  ],
+  "bindingHash": "dc8a9cd6b9e4f1184b531a9d402bff47fb0333d41e33c1afbf614e7fbbe957a5"
+}

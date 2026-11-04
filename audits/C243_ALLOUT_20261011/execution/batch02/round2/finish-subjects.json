@@ -1,0 +1,47 @@
+[
+  {
+    "id": "c243b02r2c2-04-catfish",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c2-04-catfish/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r2c2-04-catfish/report.json"
+  },
+  {
+    "id": "c243b02r2c1-11-gray-whale",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c1-11-gray-whale/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r2c1-11-gray-whale/report.json"
+  },
+  {
+    "id": "c243b02r2c2-12-gulper-eel",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2b/c243b02r2c2-12-gulper-eel/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r2c2-12-gulper-eel/report.json"
+  },
+  {
+    "id": "c243b02r2c2-18-manatee",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c2-18-manatee/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r2c2-18-manatee/report.json"
+  },
+  {
+    "id": "c243b02r2c2-21-moray-eel",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2c2d/c243b02r2c2-21-moray-eel/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r2c2-21-moray-eel/report.json"
+  },
+  {
+    "id": "c243b02r2c1-24-pilot-whale",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c1-24-pilot-whale/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r2c1-24-pilot-whale/report.json"
+  },
+  {
+    "id": "c243b02r2c2-32-river-dolphin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c2-32-river-dolphin/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r2c2-32-river-dolphin/report.json"
+  },
+  {
+    "id": "c243b02r1c3-16-lionfish",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r1c3-16-lionfish/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r1c3-16-lionfish/report.json"
+  },
+  {
+    "id": "c243b02r1c3-25-pipefish",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r1c3-25-pipefish/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch02/round2/native/c243b02r1c3-25-pipefish/report.json"
+  }
+]

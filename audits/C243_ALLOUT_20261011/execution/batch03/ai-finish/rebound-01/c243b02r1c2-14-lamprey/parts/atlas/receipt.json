@@ -1,0 +1,59 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c243b02r1c2-14-lamprey",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "e5d29d682489b6630d20f1bd15a439270ab2d490a47bc9ab236654cd740f6feb",
+    "pngSha256": "49128f08cb0a3eab88ce57613dc1cec04e36180a368fb889c7b1c5aab18e822b"
+  },
+  "parts": [
+    {
+      "name": "axial-body.png",
+      "sha256": "d3aee1b7b1926b3a132c51a3e95a418db544a7d8f4c687f0e4f05ef67cc2cc2e"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "56180518cc5f9759606a3fd1e80b31cabc27fe2e63a47e0969b45fa8926f7db0"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "64a7b1ba3e4836dac36213b8ce57e8e5e62bef47cbb2b0112e2f04d84872d40c"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "630683244af293ec97804499ccfb03b56980cb986a3ee7456034dfc2bbf57497"
+    },
+    {
+      "name": "head.png",
+      "sha256": "8b041949bd6db1ba67aacc4a9638ce93bf258fbb76523708cd08b1965882ca27"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "a20aec9c779ec9d4c4b68be323c9415787792c82d2aec10552c8634520df51b9"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "68ab3b3189bef00aca0ba8b32170c32ba2d637523cadce60c3829e6b91d0913e"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

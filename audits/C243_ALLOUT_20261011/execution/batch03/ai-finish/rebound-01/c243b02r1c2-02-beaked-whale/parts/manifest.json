@@ -1,0 +1,40 @@
+{
+  "creatureId": "c243b02r1c2-02-beaked-whale",
+  "parts": [
+    {
+      "name": "near-pectoral.png",
+      "path": "parts/near-pectoral.png",
+      "sha256": "920bd4e7a0e40ed29b47c3e09162bcad29c8e2c48ea418996e032bab0b06a0b0"
+    },
+    {
+      "name": "far-pectoral.png",
+      "path": "parts/far-pectoral.png",
+      "sha256": "46380bdfc1118cf55d6402c0b85a27f43ceb329acfe4e6bfb71234dbad543839"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "5c0171f4d58a1c632167c968d237cf9f504f19e535a0815ab1aa2971b69f37c9"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "74509afb732628d409f20fddbbbedf57f7bfcf1a25c0b7c9c849345f2a2343d0"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "a65ada312d7c15fd1f87c09a504e63dd833dc53df57204ddf7dde05252781fde"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "5b4dc4e09852060b9575f6c7f3c6d72dae8b172498f1627bb3fe918e228f50b5"
+    },
+    {
+      "name": "axial-body.png",
+      "path": "parts/axial-body.png",
+      "sha256": "4857d3209fee1e170a0c079a17509ddd4d216ad04dee53420109a0c3e045f534"
+    }
+  ]
+}

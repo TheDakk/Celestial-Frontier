@@ -1,0 +1,251 @@
+{
+  "schema": "cf.g1-score-batch/v1",
+  "batch": "audits/C243_ALLOUT_20261011/execution/batch02",
+  "tag": "c243b02before",
+  "pilot": 54,
+  "patternSkipped": [
+    {
+      "id": "g2familypilot-16-ant",
+      "pattern": "MISSING"
+    },
+    {
+      "id": "g2layoutc47-07-ant",
+      "pattern": "MISSING"
+    }
+  ],
+  "scored": 52,
+  "admitPassStatic": [
+    "c215program-37-beluga",
+    "c221program-13-river-dolphin-v2"
+  ],
+  "refused": [
+    {
+      "id": "c186creaturesupply-21-seahorse",
+      "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+    },
+    {
+      "id": "c198creaturesupplyc-13-catfish",
+      "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 10% paint (reference 86%)"
+    },
+    {
+      "id": "c198creaturesupplyc-17-lungfish",
+      "reason": "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%"
+    },
+    {
+      "id": "c198creaturesupplyc-21-lionfish",
+      "reason": "wrong-family: crustacean-small matches clearly better (0.0556 < 0.0834)"
+    },
+    {
+      "id": "c198creaturesupplyc-23-fangtooth",
+      "reason": "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c203creaturesupply-22-catfish",
+      "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 9% paint (reference 86%)"
+    },
+    {
+      "id": "c203creaturesupplyb-22-marlin-framing02",
+      "reason": "missing-anatomy: part head (head) covers 14% paint (reference 48%)"
+    },
+    {
+      "id": "c203creaturesupplyb-24-fangtooth",
+      "reason": "extra-anatomy (unassigned): a front appendage of 7.6% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c203creaturesupplyb-22-marlin",
+      "reason": "missing-anatomy: part head (head) covers 12% paint (reference 48%)"
+    },
+    {
+      "id": "g2c101-02-lungfish",
+      "reason": "missing-anatomy (family floor): the largest rear appendage is 3.8% of the paint; every same-family reference shows at least 10.0%"
+    },
+    {
+      "id": "g2c101-04-pipefish",
+      "reason": "unexplained-anatomy: 13.6% of the paint lies away from the body and in no part (reference 4.6%)"
+    },
+    {
+      "id": "g2c101-05-flying-fish",
+      "reason": "unexplained-anatomy: 11.4% of the paint lies away from the body and in no part (reference 6.9%)"
+    },
+    {
+      "id": "g2c101-06-anglerfish",
+      "reason": "unexplained-anatomy: 19.2% of the paint lies away from the body and in no part (reference 4.6%)"
+    },
+    {
+      "id": "g2c101-08-fangtooth",
+      "reason": "extra-anatomy (unassigned): a front appendage of 8.4% paint that no reference appendage lands on"
+    },
+    {
+      "id": "g2c101-09-dragonfish",
+      "reason": "missing-anatomy: part jaw (jaw) covers 10% paint (reference 93%)"
+    },
+    {
+      "id": "g2c101-11-deep-sea-fish",
+      "reason": "missing-anatomy: part far-pectoral (pectoralFar) covers 17% paint (reference 82%)"
+    },
+    {
+      "id": "g2c106-12-flying-gurnard",
+      "reason": "missing-anatomy: part jaw (jaw) covers 3% paint (reference 56%)"
+    },
+    {
+      "id": "g2c107-04-moray-eel",
+      "reason": "wrong family: length/thickness 7.96 < 8"
+    },
+    {
+      "id": "g2c107-05-gulper-eel",
+      "reason": "missing-anatomy: part segment-7 owns 1.79 % of the paint (reference 8.64 %)"
+    },
+    {
+      "id": "g2c107-06-oarfish",
+      "reason": "unexplained-anatomy: 18.2% of the paint lies away from the body and in no part (reference 3.5%)"
+    },
+    {
+      "id": "g2c114-20-tripod-fish",
+      "reason": "wrong-family: quadruped matches clearly better (0.0260 < 0.0416)"
+    },
+    {
+      "id": "g2c83-04-marlin",
+      "reason": "missing-anatomy: part head (head) covers 12% paint (reference 48%)"
+    },
+    {
+      "id": "g2c83-08-wahoo",
+      "reason": "missing-anatomy: part dorsal (dorsal) covers 30% paint (reference 92%)"
+    },
+    {
+      "id": "g2c90-07-catfish",
+      "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 15% paint (reference 86%)"
+    },
+    {
+      "id": "g2c92-05-lionfish",
+      "reason": "unexplained-anatomy: 10.0% of the paint lies away from the body and in no part (reference 4.6%)"
+    },
+    {
+      "id": "g2c95-21-black-fly",
+      "reason": "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+    },
+    {
+      "id": "g2referencesc62-08-ant",
+      "reason": "facing: the mirrored painting matches insect better (0.0304 < 0.0383)"
+    },
+    {
+      "id": "c213originals-36-catfish-source02",
+      "reason": "missing-anatomy: part far-pectoral (pectoralFar) covers 24% paint (reference 82%)"
+    },
+    {
+      "id": "c213originals-38-lungfish-source02",
+      "reason": "missing-anatomy (family floor): the largest rear appendage is 5.1% of the paint; every same-family reference shows at least 10.0%"
+    },
+    {
+      "id": "c213originals-39-marlin-source02",
+      "reason": "missing-anatomy: part head (head) covers 10% paint (reference 48%)"
+    },
+    {
+      "id": "c213originals-36-catfish",
+      "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 28% paint (reference 86%)"
+    },
+    {
+      "id": "c213originals-38-lungfish",
+      "reason": "missing-anatomy (family floor): the largest rear appendage is 4.7% of the paint; every same-family reference shows at least 10.0%"
+    },
+    {
+      "id": "c213originals-39-marlin",
+      "reason": "missing-anatomy: part head (head) covers 13% paint (reference 48%)"
+    },
+    {
+      "id": "c215program-10-lamprey",
+      "reason": "wrong-family: annelid matches clearly better (0.0126 < 0.0191)"
+    },
+    {
+      "id": "c215program-12-ray",
+      "reason": "missing-anatomy: part tail-peduncle (spine5) covers 9% paint (reference 26%)"
+    },
+    {
+      "id": "c215program-13-stingray-02",
+      "reason": "unexplained-anatomy: 17.9% of the paint lies away from the body and in no part (reference 6.9%)"
+    },
+    {
+      "id": "c215program-14-manta-ray-02",
+      "reason": "missing-anatomy: part caudal (caudal) covers 14% paint (reference 63%)"
+    },
+    {
+      "id": "c215program-15-eagle-ray",
+      "reason": "missing-anatomy: part tail-peduncle (spine5) covers 7% paint (reference 26%)"
+    },
+    {
+      "id": "c215program-38-narwhal",
+      "reason": "extra-anatomy (unassigned): a front appendage of 7.6% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c215program-42-manatee",
+      "reason": "extra-anatomy (unassigned): a front appendage of 6.3% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c215program-44-blue-whale",
+      "reason": "extra-anatomy (unassigned): a front appendage of 6.1% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c215program-45-humpback-whale",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.9% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c215program-47-gray-whale",
+      "reason": "extra-anatomy (unassigned): a front appendage of 6.6% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c221program-20-pilot-whale-v2",
+      "reason": "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 6.9%)"
+    },
+    {
+      "id": "c221program-21-beaked-whale-v2",
+      "reason": "extra-anatomy (unassigned): a front appendage of 6.6% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c221program-31-whale-v2",
+      "reason": "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+    },
+    {
+      "id": "c221program-42-lancelet",
+      "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 28% paint (reference 91%)"
+    }
+  ],
+  "staticRed": [
+    {
+      "id": "c203creaturesupply-24-wahoo",
+      "static": "INTAKE_REFUSED"
+    },
+    {
+      "id": "c213originals-40-wahoo-source02",
+      "static": "INTAKE_REFUSED"
+    },
+    {
+      "id": "c213originals-40-wahoo",
+      "static": "INTAKE_REFUSED"
+    }
+  ],
+  "native": [],
+  "fishSeams": [
+    {
+      "id": "c215program-37-beluga",
+      "status": "STATIC_PASS_NOT_NATIVE",
+      "name": "Beluga",
+      "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02before/c215program-37-beluga/fit",
+      "sourceMasterSha256": "d489b86385257231040da602128de765ebc89427fbe4a8a1377d0b8b2a1b6f4b",
+      "sourceStaticSha256": "01bc013d281ee3e38c54c67c8288ff7ab0b65f545d5213897d36507e371e95bc",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02before-fishseams/c215program-37-beluga/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0
+    },
+    {
+      "id": "c221program-13-river-dolphin-v2",
+      "status": "STATIC_PASS_NOT_NATIVE",
+      "name": "River Dolphin",
+      "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02before/c221program-13-river-dolphin-v2/fit",
+      "sourceMasterSha256": "20a6b26272956b910a43d874f48dfe1193e2bfb097121ae8a91963ff9bb81bd8",
+      "sourceStaticSha256": "2e468b40984beab3148aa8a3b6da5feaee9becb158efb134daa15f56545a3a62",
+      "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02before-fishseams/c221program-13-river-dolphin-v2/fit",
+      "static": "PASS_STATIC",
+      "staticExitCode": 0
+    }
+  ],
+  "runnerExit": 0
+}

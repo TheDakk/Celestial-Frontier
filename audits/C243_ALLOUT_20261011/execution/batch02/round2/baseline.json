@@ -1,0 +1,194 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C243_ALLOUT_20261011/execution/batch02/round2",
+ "tag": "c243b02r2before",
+ "pilot": 38,
+ "patternSkipped": [
+  {
+   "id": "g2familypilot-16-ant",
+   "pattern": "MISSING"
+  },
+  {
+   "id": "g2layoutc47-07-ant",
+   "pattern": "MISSING"
+  }
+ ],
+ "scored": 36,
+ "admitPassStatic": [
+  "c221program-13-river-dolphin-v2",
+  "c243b02r1c3-16-lionfish",
+  "c243b02r1c3-25-pipefish"
+ ],
+ "refused": [
+  {
+   "id": "c186creaturesupply-21-seahorse",
+   "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+  },
+  {
+   "id": "c198creaturesupplyc-13-catfish",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 10% paint (reference 86%)"
+  },
+  {
+   "id": "c198creaturesupplyc-17-lungfish",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%"
+  },
+  {
+   "id": "c198creaturesupplyc-21-lionfish",
+   "reason": "wrong-family: crustacean-small matches clearly better (0.0556 < 0.0834)"
+  },
+  {
+   "id": "c198creaturesupplyc-23-fangtooth",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c203creaturesupply-22-catfish",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 9% paint (reference 86%)"
+  },
+  {
+   "id": "c203creaturesupplyb-24-fangtooth",
+   "reason": "extra-anatomy (unassigned): a front appendage of 7.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c101-02-lungfish",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 3.8% of the paint; every same-family reference shows at least 10.0%"
+  },
+  {
+   "id": "g2c101-04-pipefish",
+   "reason": "unexplained-anatomy: 13.6% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "g2c101-08-fangtooth",
+   "reason": "extra-anatomy (unassigned): a front appendage of 8.4% paint that no reference appendage lands on"
+  },
+  {
+   "id": "g2c101-09-dragonfish",
+   "reason": "missing-anatomy: part jaw (jaw) covers 10% paint (reference 93%)"
+  },
+  {
+   "id": "g2c107-04-moray-eel",
+   "reason": "wrong family: length/thickness 7.96 < 8"
+  },
+  {
+   "id": "g2c107-05-gulper-eel",
+   "reason": "missing-anatomy: part segment-7 owns 1.79 % of the paint (reference 8.64 %)"
+  },
+  {
+   "id": "g2c107-06-oarfish",
+   "reason": "unexplained-anatomy: 18.2% of the paint lies away from the body and in no part (reference 3.5%)"
+  },
+  {
+   "id": "g2c114-20-tripod-fish",
+   "reason": "wrong-family: quadruped matches clearly better (0.0260 < 0.0416)"
+  },
+  {
+   "id": "g2c90-07-catfish",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 15% paint (reference 86%)"
+  },
+  {
+   "id": "g2c92-05-lionfish",
+   "reason": "unexplained-anatomy: 10.0% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "g2referencesc62-08-ant",
+   "reason": "facing: the mirrored painting matches insect better (0.0304 < 0.0383)"
+  },
+  {
+   "id": "c213originals-36-catfish-source02",
+   "reason": "missing-anatomy: part far-pectoral (pectoralFar) covers 24% paint (reference 82%)"
+  },
+  {
+   "id": "c213originals-38-lungfish-source02",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 5.1% of the paint; every same-family reference shows at least 10.0%"
+  },
+  {
+   "id": "c213originals-36-catfish",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 28% paint (reference 86%)"
+  },
+  {
+   "id": "c213originals-38-lungfish",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 4.7% of the paint; every same-family reference shows at least 10.0%"
+  },
+  {
+   "id": "c215program-12-ray",
+   "reason": "missing-anatomy: part tail-peduncle (spine5) covers 9% paint (reference 26%)"
+  },
+  {
+   "id": "c215program-13-stingray-02",
+   "reason": "unexplained-anatomy: 17.9% of the paint lies away from the body and in no part (reference 6.9%)"
+  },
+  {
+   "id": "c215program-14-manta-ray-02",
+   "reason": "missing-anatomy: part caudal (caudal) covers 14% paint (reference 63%)"
+  },
+  {
+   "id": "c215program-15-eagle-ray",
+   "reason": "missing-anatomy: part tail-peduncle (spine5) covers 7% paint (reference 26%)"
+  },
+  {
+   "id": "c215program-38-narwhal",
+   "reason": "extra-anatomy (unassigned): a front appendage of 7.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c215program-42-manatee",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c215program-44-blue-whale",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c215program-47-gray-whale",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c221program-20-pilot-whale-v2",
+   "reason": "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 6.9%)"
+  },
+  {
+   "id": "c221program-31-whale-v2",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "c221program-42-lancelet",
+   "reason": "missing-anatomy: part near-pectoral (pectoralNear) covers 28% paint (reference 91%)"
+  }
+ ],
+ "staticRed": [],
+ "native": [],
+ "fishSeams": [
+  {
+   "id": "c221program-13-river-dolphin-v2",
+   "status": "STATIC_PASS_NOT_NATIVE",
+   "name": "River Dolphin",
+   "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2before/c221program-13-river-dolphin-v2/fit",
+   "sourceMasterSha256": "20a6b26272956b910a43d874f48dfe1193e2bfb097121ae8a91963ff9bb81bd8",
+   "sourceStaticSha256": "a70f04260011e6702611a271acf3b334e0fdc52084f56798de0639d8a6173d48",
+   "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2before-fishseams/c221program-13-river-dolphin-v2/fit",
+   "static": "PASS_STATIC",
+   "staticExitCode": 0
+  },
+  {
+   "id": "c243b02r1c3-16-lionfish",
+   "status": "STATIC_PASS_NOT_NATIVE",
+   "name": "Lionfish",
+   "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2before/c243b02r1c3-16-lionfish/fit",
+   "sourceMasterSha256": "ddc52ae4cfc9358be8f3c171b448bd7351569fe5aabd8890d7ebe244cefea187",
+   "sourceStaticSha256": "6a7bc8a091c53e4c08354bb00e3b47f09a47186369022f8f02d9b43848e791c4",
+   "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2before-fishseams/c243b02r1c3-16-lionfish/fit",
+   "static": "PASS_STATIC",
+   "staticExitCode": 0
+  },
+  {
+   "id": "c243b02r1c3-25-pipefish",
+   "status": "STATIC_PASS_NOT_NATIVE",
+   "name": "Pipefish",
+   "sourceFit": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b02r2before/c243b02r1c3-25-pipefish/fit",
+   "sourceMasterSha256": "8b88add46758eee27426ff849116d23bc411ec72cc1d18573b8b70dc853c97de",
+   "sourceStaticSha256": "b3d41edcfc7cb26c5b295b25c1151196ec0fdf8962d31b690692ff897b918e83",
+   "candidate": "audits/G1_AUTO_AUTHOR_20260926/native-c243b02r2before-fishseams/c243b02r1c3-25-pipefish/fit",
+   "static": "PASS_STATIC",
+   "staticExitCode": 0
+  }
+ ],
+ "runnerExit": 0
+}

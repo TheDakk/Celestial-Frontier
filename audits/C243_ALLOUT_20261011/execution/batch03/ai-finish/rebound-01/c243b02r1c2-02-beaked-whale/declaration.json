@@ -1,0 +1,46 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "6d7e6c8243dcd7b7a5e1204f25103d2df47c0f1a93bacede03b53d8ba46d36dd",
+  "cutoutSha256": "cb89162007dd62b555df35999b3f107d8495fbf3ee312e88d3c94f9627f66c0d",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near"
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far"
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "layer": "near"
+    },
+    {
+      "id": "axial-body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "b66e7b983b6710407b0b7d2d3d9d6fead007ac7bf1dd20495d60b52f02401b18",
+  "keyedRgbaSha256": "a856cbcca76619e0c93d3cb8aeda9de4fa59a721213c7e99a079f35071de3c25",
+  "declarationHash": "c8909bb692ece3d33dbc790b186ed5f624ab708c6717f54c2261616f51f743e8"
+}

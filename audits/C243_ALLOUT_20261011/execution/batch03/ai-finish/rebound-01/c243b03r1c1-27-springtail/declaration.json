@@ -1,0 +1,106 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "b306b7867dfac5689543fe1bd9ee52da6d590fb1fddc2f08eb01f63f49004cd2",
+  "cutoutSha256": "397b127130f5a7868d1e70484b3e55c938b6af0b2a7e3e676bf29edec6cee0bf",
+  "parts": [
+    {
+      "id": "front-near-lower",
+      "joint": "legFrontNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "front-far-lower",
+      "joint": "legFrontFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "mid-near-lower",
+      "joint": "legMidNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "mid-far-lower",
+      "joint": "legMidFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "hind-near-lower",
+      "joint": "legHindNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-lower",
+      "joint": "legHindFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "front-near-upper",
+      "joint": "legFrontNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "front-far-upper",
+      "joint": "legFrontFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "mid-near-upper",
+      "joint": "legMidNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "mid-far-upper",
+      "joint": "legMidFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "legHindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-upper",
+      "joint": "legHindFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "antenna-far",
+      "joint": "antennaFar",
+      "layer": "far"
+    },
+    {
+      "id": "antenna-near",
+      "joint": "antennaNear",
+      "layer": "near"
+    },
+    {
+      "id": "mandible",
+      "joint": "mandible",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "abdomen",
+      "joint": "abdomen",
+      "layer": "near"
+    },
+    {
+      "id": "thorax",
+      "joint": "thorax",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "06cfa7bcffbebf086479c90c6ccdb811554e8eb39672d74bb804e2826ea8f9f2",
+  "keyedRgbaSha256": "7853e56a9f1fb8d7e4a05a9f09cc41e866ba3a302883c2a5825df9f0c2b9cfe6",
+  "declarationHash": "a7d6373967119b1c03f27c12a3e084cdaf1733eb8477e67658e7c203157ada43"
+}

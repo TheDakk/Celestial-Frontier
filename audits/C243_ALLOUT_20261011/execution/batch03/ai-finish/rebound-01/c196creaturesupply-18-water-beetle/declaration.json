@@ -1,0 +1,116 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "3d6fa069112dce5f666285bdd51a39e68857013fa12b119bba575c005e8452dd",
+  "cutoutSha256": "705a1278a5ad70f3fe73b2cfbecb52685db4e970fe1689c34920d21af4d1774d",
+  "parts": [
+    {
+      "id": "hind-near-lower",
+      "joint": "legHindNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "mid-near-lower",
+      "joint": "legMidNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "front-near-lower",
+      "joint": "legFrontNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "legHindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "mid-near-upper",
+      "joint": "legMidNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "front-near-upper",
+      "joint": "legFrontNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "hind-far-lower",
+      "joint": "legHindFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "mid-far-lower",
+      "joint": "legMidFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "front-far-lower",
+      "joint": "legFrontFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "front-far-upper",
+      "joint": "legFrontFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "mid-far-upper",
+      "joint": "legMidFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "hind-far-upper",
+      "joint": "legHindFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "antenna-far",
+      "joint": "antennaFar",
+      "layer": "far"
+    },
+    {
+      "id": "antenna-near",
+      "joint": "antennaNear",
+      "layer": "near"
+    },
+    {
+      "id": "mandible",
+      "joint": "mandible",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "thorax",
+      "joint": "thorax",
+      "layer": "near"
+    },
+    {
+      "id": "membrane-near",
+      "joint": "wingNear",
+      "layer": "near"
+    },
+    {
+      "id": "membrane-far",
+      "joint": "wingFar",
+      "layer": "far"
+    },
+    {
+      "id": "abdomen",
+      "joint": "abdomen",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "9eda695cc174201cb62aabc537142621e3ce737880c31648c2833b3ecd4ada5f",
+  "keyedRgbaSha256": "271ce85f1a511a4cad6ebf226411e68c6f8a8004ade4dc7fd1f26d0f2f8a1165",
+  "declarationHash": "aee971f581f7263edbd63a56ccb8f76edab7f018276e016b608d5badf60c66b6"
+}

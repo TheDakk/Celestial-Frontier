@@ -1,0 +1,418 @@
+[
+  {
+    "name": "Catfish",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "All five full-size frames inspected: continuous head/body/fin joins and attached barbels; no visible pink fringe or detached fragment.",
+    "id": "c243b02r2c2-04-catfish",
+    "packetId": "c243b02r2c2-04-catfish",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-01/c243b02r2c2-04-catfish",
+    "origin": "round2-new-original",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-04-catfish",
+    "magentaTotal": 0,
+    "frames": [
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-04-catfish/turn1-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-04-catfish/turn2-dodge-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-04-catfish/turn3-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-04-catfish/turn3-hit-idle-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-04-catfish/turn3-hit-idle-90.png"
+    ],
+    "identity": {
+      "long drooping barbel whiskers around the mouth": "seen",
+      "broad flattened scaleless head": "seen",
+      "stiff spine at the front of the dorsal and pectoral fins": "seen"
+    },
+    "c259Recheck": {
+      "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+      "fragmentPrecheck": {
+        "id": "c243b02r2c2-04-catfish",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-04-catfish",
+        "key": "earth-temperate-v1|water|water",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 0,
+          "turn3-hit-idle-90": 0
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": [],
+      "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+    }
+  },
+  {
+    "name": "Gray Whale",
+    "status": "READY_FOR_CLAUDE_REVIEW",
+    "reason": "All five full-size frames inspected: knuckle ridge and barnacled identity retained, continuous head/body/tail joins and attached flippers; far flipper bends sharply in victory but no floating fragment seen.",
+    "id": "c243b02r2c1-11-gray-whale",
+    "packetId": "c243b02r2c1-11-gray-whale",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-01/c243b02r2c1-11-gray-whale",
+    "origin": "round2-new-original",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-11-gray-whale",
+    "magentaTotal": 0,
+    "frames": [
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-11-gray-whale/turn1-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-11-gray-whale/turn2-dodge-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-11-gray-whale/turn3-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-11-gray-whale/turn3-hit-idle-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-11-gray-whale/turn3-hit-idle-90.png"
+    ],
+    "identity": {
+      "row of knuckle bumps along the back instead of a dorsal fin": "seen",
+      "mottled grey skin crusted with barnacles and lice patches": "seen",
+      "narrow arched rostrum with a slightly bowed jawline": "seen"
+    },
+    "c259Recheck": {
+      "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+      "fragmentPrecheck": {
+        "id": "c243b02r2c1-11-gray-whale",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-11-gray-whale",
+        "key": "earth-temperate-v1|water|water",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 0,
+          "turn3-hit-idle-90": 2
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": [],
+      "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+    }
+  },
+  {
+    "name": "Gulper Eel",
+    "status": "HOLD",
+    "reason": "Full-size turn3-hit-idle-50: left eel rotates nearly vertical and its body/tail exits the lower frame; a small upper-mouth fragment appears above the head. Luminous tail tip also reads separated in the horizontal frames. Mechanical PASS does not clear these visual defects.",
+    "id": "c243b02r2c2-12-gulper-eel",
+    "packetId": "c243b02r2c2-12-gulper-eel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-01/c243b02r2c2-12-gulper-eel",
+    "origin": "round2-new-original",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-12-gulper-eel",
+    "magentaTotal": 0,
+    "frames": [
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-12-gulper-eel/turn1-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-12-gulper-eel/turn2-dodge-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-12-gulper-eel/turn3-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-12-gulper-eel/turn3-hit-idle-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-12-gulper-eel/turn3-hit-idle-90.png"
+    ],
+    "identity": {
+      "enormous loose pelican pouch mouth far bigger than the body": "seen",
+      "whip-thin tail tapering to a luminous tip": "seen",
+      "pinhead eyes right at the tip of the snout": "missing: pinhead eyes cannot be independently resolved in this full-size identity still; existing film HOLD remains."
+    },
+    "c259Recheck": {
+      "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+      "fragmentPrecheck": {
+        "id": "c243b02r2c2-12-gulper-eel",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-12-gulper-eel",
+        "key": "earth-temperate-v1|water|water",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [
+            {
+              "px": 86,
+              "box": [
+                883,
+                406,
+                900,
+                415
+              ]
+            }
+          ],
+          "turn3-hit-idle-90": [
+            {
+              "px": 92,
+              "box": [
+                119,
+                413,
+                136,
+                424
+              ]
+            },
+            {
+              "px": 86,
+              "box": [
+                883,
+                406,
+                900,
+                415
+              ]
+            }
+          ]
+        },
+        "pink": {
+          "turn3-hit-idle-50": 38,
+          "turn3-hit-idle-90": 34
+        },
+        "fragmentTotal": 3
+      },
+      "flaggedBoxReview": [],
+      "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+    }
+  },
+  {
+    "name": "Manatee",
+    "status": "HOLD",
+    "reason": "All five full-size frames show a large back/flank tear with triangular detached paint; turn3-hit-idle-50 opens a broad background wedge between head/back and body. D28 mechanical PASS is not visual acceptance.",
+    "id": "c243b02r2c2-18-manatee",
+    "packetId": "c243b02r2c2-18-manatee",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-01/c243b02r2c2-18-manatee",
+    "origin": "round2-new-original",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-18-manatee",
+    "magentaTotal": 1,
+    "frames": [
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-18-manatee/turn1-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-18-manatee/turn2-dodge-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-18-manatee/turn3-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-18-manatee/turn3-hit-idle-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-18-manatee/turn3-hit-idle-90.png"
+    ],
+    "identity": {
+      "rounded spatula paddle tail": "seen",
+      "blunt bristly downturned muzzle with a split upper lip": "seen",
+      "barrel body with front flippers and no hind limbs": "seen"
+    },
+    "c259Recheck": {
+      "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+      "fragmentPrecheck": {
+        "id": "c243b02r2c2-18-manatee",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-18-manatee",
+        "key": "earth-temperate-v1|water|water",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 0,
+          "turn3-hit-idle-90": 0
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": [],
+      "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+    }
+  },
+  {
+    "name": "Moray Eel",
+    "status": "HOLD",
+    "reason": "Full-size turn3-hit-idle-50: left eel rotates nearly vertical and its lower body/tail exits the frame. In other frames the body and jaw stay connected; midpoint visibility remains a visual HOLD.",
+    "id": "c243b02r2c2-21-moray-eel",
+    "packetId": "c243b02r2c2-21-moray-eel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-02/c243b02r2c2-21-moray-eel",
+    "origin": "round2-new-original",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-21-moray-eel",
+    "magentaTotal": 0,
+    "frames": [
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-21-moray-eel/turn1-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-21-moray-eel/turn2-dodge-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-21-moray-eel/turn3-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-21-moray-eel/turn3-hit-idle-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-21-moray-eel/turn3-hit-idle-90.png"
+    ],
+    "identity": {
+      "gaping mouth of needle teeth held permanently open": "seen",
+      "single fin ridge running the whole length of the back": "seen",
+      "no pectoral fins and no gill covers, just a round gill pore": "missing: no pectoral fins or covers seen, but single round pore is not independently clear in this still; existing film HOLD remains."
+    },
+    "c259Recheck": {
+      "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+      "fragmentPrecheck": {
+        "id": "c243b02r2c2-21-moray-eel",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-21-moray-eel",
+        "key": "earth-temperate-v1|water|water",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 0,
+          "turn3-hit-idle-90": 0
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": [],
+      "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+    }
+  },
+  {
+    "name": "Pilot Whale",
+    "status": "HOLD",
+    "reason": "All five full-size frames show an open neck/back seam; turn3-hit-idle-50 separates the left head/chest from the body through a broad background wedge, with a long back strip extending away. Mechanical PASS does not clear the tear.",
+    "id": "c243b02r2c1-24-pilot-whale",
+    "packetId": "c243b02r2c1-24-pilot-whale",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-02/c243b02r2c1-24-pilot-whale",
+    "origin": "round2-new-original",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-24-pilot-whale",
+    "magentaTotal": 0,
+    "frames": [
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-24-pilot-whale/turn1-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-24-pilot-whale/turn2-dodge-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-24-pilot-whale/turn3-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-24-pilot-whale/turn3-hit-idle-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-24-pilot-whale/turn3-hit-idle-90.png"
+    ],
+    "identity": {
+      "bulbous melon forehead overhanging the mouth": "seen",
+      "long low swept-back dorsal fin set well forward on the back": "seen",
+      "black body with a pale anchor patch on the throat": "seen"
+    },
+    "c259Recheck": {
+      "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+      "fragmentPrecheck": {
+        "id": "c243b02r2c1-24-pilot-whale",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c1-24-pilot-whale",
+        "key": "earth-temperate-v1|water|water",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 0,
+          "turn3-hit-idle-90": 0
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": [],
+      "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+    }
+  },
+  {
+    "name": "River Dolphin",
+    "status": "HOLD",
+    "reason": "Full-size turn3-hit-idle-50/90: a long background seam opens along the right dolphin's upper back and thin chest/flipper strands hang below the left animal. Rounded melon identity is retained, but the repaired fit still tears.",
+    "id": "c243b02r2c2-32-river-dolphin",
+    "packetId": "c243b02r2c2-32-river-dolphin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-02/c243b02r2c2-32-river-dolphin",
+    "origin": "round2-new-original",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-32-river-dolphin",
+    "magentaTotal": 0,
+    "frames": [
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-32-river-dolphin/turn1-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-32-river-dolphin/turn2-dodge-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-32-river-dolphin/turn3-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-32-river-dolphin/turn3-hit-idle-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-32-river-dolphin/turn3-hit-idle-90.png"
+    ],
+    "identity": {
+      "very long narrow tweezer beak crowded with teeth": "seen",
+      "low ridge or hump instead of a tall dorsal fin": "seen",
+      "bulging flexible melon and a mobile neck": "seen"
+    },
+    "c259Recheck": {
+      "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+      "fragmentPrecheck": {
+        "id": "c243b02r2c2-32-river-dolphin",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r2c2-32-river-dolphin",
+        "key": "earth-temperate-v1|water|water",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 0,
+          "turn3-hit-idle-90": 0
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": [],
+      "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+    }
+  },
+  {
+    "name": "Lionfish",
+    "status": "HOLD",
+    "reason": "All five full-size frames inspected: body and fin-ray attachments remain connected, but pink key-colour residue persists on fine tail and fin-ray tips. Changed D28 placement does not clear the prior fringe HOLD.",
+    "id": "c243b02r1c3-16-lionfish",
+    "packetId": "c243b02r1c3-16-lionfish",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-02/c243b02r1c3-16-lionfish",
+    "origin": "prior-admitted-visual-HOLD-class-followup-only",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-16-lionfish",
+    "magentaTotal": 96,
+    "frames": [
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-16-lionfish/turn1-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-16-lionfish/turn2-dodge-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-16-lionfish/turn3-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-16-lionfish/turn3-hit-idle-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-16-lionfish/turn3-hit-idle-90.png"
+    ],
+    "identity": {
+      "fan of long venomous dorsal spines": "seen",
+      "feathery separated pectoral fin rays spread like wings": "seen",
+      "red-brown and white zebra banding": "seen"
+    },
+    "c259Recheck": {
+      "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+      "fragmentPrecheck": {
+        "id": "c243b02r1c3-16-lionfish",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-16-lionfish",
+        "key": "earth-temperate-v1|water|water",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 173,
+          "turn3-hit-idle-90": 170
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": [],
+      "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+    }
+  },
+  {
+    "name": "Pipefish",
+    "status": "HOLD",
+    "reason": "All five full-size frames inspected: thin body and snout remain continuous, but dorsal, pectoral and tail fins read saturated pink. Changed D28 placement does not clear the prior key-colour fringe HOLD.",
+    "id": "c243b02r1c3-25-pipefish",
+    "packetId": "c243b02r1c3-25-pipefish",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/rebound-03/c243b02r1c3-25-pipefish",
+    "origin": "prior-admitted-visual-HOLD-class-followup-only",
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-25-pipefish",
+    "magentaTotal": 14,
+    "frames": [
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-25-pipefish/turn1-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-25-pipefish/turn2-dodge-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-25-pipefish/turn3-hit-reaction-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-25-pipefish/turn3-hit-idle-50.png",
+      "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-25-pipefish/turn3-hit-idle-90.png"
+    ],
+    "identity": {
+      "needle-thin ringed body": "seen",
+      "tiny tube snout with a pinhole mouth": "seen",
+      "seahorse head held in line with the body": "seen"
+    },
+    "c259Recheck": {
+      "evidence": "audits/C243_ALLOUT_20261011/execution/final-measure/visual-review.json",
+      "fragmentPrecheck": {
+        "id": "c243b02r1c3-25-pipefish",
+        "film": "audits/C243_ALLOUT_20261011/execution/batch02/round2/ai-finish/native-01/c243b02r1c3-25-pipefish",
+        "key": "earth-temperate-v1|water|water",
+        "status": "CHECKED",
+        "fragments": {
+          "turn3-hit-idle-50": [],
+          "turn3-hit-idle-90": []
+        },
+        "pink": {
+          "turn3-hit-idle-50": 249,
+          "turn3-hit-idle-90": 247
+        },
+        "fragmentTotal": 0
+      },
+      "flaggedBoxReview": [],
+      "note": "Retrospective tool closure recorded at C370; original frame observations and HOLD statuses retained."
+    }
+  }
+]

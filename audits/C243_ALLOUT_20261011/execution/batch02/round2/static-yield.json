@@ -1,0 +1,35 @@
+{
+  "before": 3,
+  "after": 9,
+  "beforeSpecies": [
+    "River Dolphin",
+    "Lionfish",
+    "Pipefish"
+  ],
+  "afterSpecies": [
+    "Catfish",
+    "Gray Whale",
+    "Gulper Eel",
+    "Manatee",
+    "Moray Eel",
+    "Pilot Whale",
+    "River Dolphin",
+    "Lionfish",
+    "Pipefish"
+  ],
+  "gained": [
+    "Catfish",
+    "Gray Whale",
+    "Gulper Eel",
+    "Manatee",
+    "Moray Eel",
+    "Pilot Whale"
+  ],
+  "lost": [],
+  "newRepaintStaticPassSpecies": 7,
+  "previousSourceChangedClassFits": [
+    "Lionfish",
+    "Pipefish"
+  ],
+  "note": "Static diagnostic only; native/finish/visual and Claude admission remain separate. Existing D28 source-island placement; no ruler change."
+}

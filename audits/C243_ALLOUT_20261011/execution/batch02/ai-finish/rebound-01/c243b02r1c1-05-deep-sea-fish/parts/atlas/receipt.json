@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c243b02r1c1-05-deep-sea-fish",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "f8c1795dd7c727319bb0ac0dc45848fc5c9a7dd62f2edb968d8f7a45baec15a4",
+    "pngSha256": "ddd560aad643f3e40ea3c5d7907d87332e2065faed52512ba41754df5f7784d2"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "f51b49edf6b61784ea4b407d813b91de04efe840f2fe81e78e130a225596e3bf"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "a6d440fa55ca9bc3a943463febe77be40619c1b3f040e970ee87f4e81df4308d"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "b2b4bf57d8f9ad7ff12ca768f1620dfd5b183ccd52a92b2e788d146a03c07c8f"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "fbd1c00580626707ad5a83ce769839f11264e1e2f7352845f137bf644a5384c0"
+    },
+    {
+      "name": "head.png",
+      "sha256": "8526fbe39310c98b6b5e18acdec685c52b1661223ddd7cc82bd3d6e75bbf5331"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "aad2545f184cd5537e26d5f5cefcfcb78ec1879d34cc6c636e55407f86c8e4d8"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "0700224dad0a894d7e371db604c6c92ac8a5c9dac6d7d85b2aebe817ea07e0a3"
+    },
+    {
+      "name": "spine0.png",
+      "sha256": "7d94d98c1d139c20be58b7a963ecaf98a00d2777406da304b6ae7849d857c57c"
+    },
+    {
+      "name": "spine1.png",
+      "sha256": "6fdb63d3c4ab49cf6e631f15d1b5dd359d20722b40b112ac05cc20a5018b399f"
+    },
+    {
+      "name": "spine2.png",
+      "sha256": "1dc93864dda90ae13807187bba00eda09957a4f71bbb8528a26622ed37f02c88"
+    },
+    {
+      "name": "spine3.png",
+      "sha256": "78dbd415879e1c5843479d093b3f09ddf26f6bfbb3d37b98ebd085605b8b7359"
+    },
+    {
+      "name": "spine4.png",
+      "sha256": "164a0bcbef44b1750547ff5ea49b218cd6bc007adcc40415ada4fae323d0e9b1"
+    },
+    {
+      "name": "spine5.png",
+      "sha256": "30593d2bc5e2bf2746deadef80b0b5e275ff6e0f468fe62d36d9efde2b623f9e"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

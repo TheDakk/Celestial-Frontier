@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "pilot": 12,
+  "controls": [
+    "Raw ADMIT but INTAKE_REFUSED Narwhal excluded from native pilot",
+    "Raw PASS but visual-identity-held Beaked Whale c1 excluded",
+    "Corrected Beaked Whale c2 retained",
+    "New Wahoo static pass included"
+  ]
+}

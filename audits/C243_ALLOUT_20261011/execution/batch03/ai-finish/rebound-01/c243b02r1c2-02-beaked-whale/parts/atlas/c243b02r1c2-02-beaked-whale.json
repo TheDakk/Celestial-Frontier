@@ -1,0 +1,181 @@
+{
+  "frames": {
+    "axial-body.png": {
+      "frame": {
+        "h": 255,
+        "w": 585,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 255,
+        "w": 585
+      },
+      "spriteSourceSize": {
+        "h": 255,
+        "w": 585,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "caudal.png": {
+      "frame": {
+        "h": 114,
+        "w": 114,
+        "x": 600,
+        "y": 127
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 114,
+        "w": 114
+      },
+      "spriteSourceSize": {
+        "h": 114,
+        "w": 114,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "dorsal.png": {
+      "frame": {
+        "h": 56,
+        "w": 255,
+        "x": 600,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 56,
+        "w": 255
+      },
+      "spriteSourceSize": {
+        "h": 56,
+        "w": 255,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-pectoral.png": {
+      "frame": {
+        "h": 96,
+        "w": 80,
+        "x": 1079,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 80
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 80,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 127,
+        "w": 204,
+        "x": 865,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 127,
+        "w": 204
+      },
+      "spriteSourceSize": {
+        "h": 127,
+        "w": 204,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "jaw.png": {
+      "frame": {
+        "h": 46,
+        "w": 140,
+        "x": 600,
+        "y": 71
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 46,
+        "w": 140
+      },
+      "spriteSourceSize": {
+        "h": 46,
+        "w": 140,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-pectoral.png": {
+      "frame": {
+        "h": 79,
+        "w": 103,
+        "x": 750,
+        "y": 71
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 79,
+        "w": 103
+      },
+      "spriteSourceSize": {
+        "h": 79,
+        "w": 103,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c243b02r1c2-02-beaked-whale.png",
+    "scale": "1",
+    "size": {
+      "h": 265,
+      "w": 1164
+    }
+  }
+}
