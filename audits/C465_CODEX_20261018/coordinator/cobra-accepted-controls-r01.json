@@ -1,0 +1,19 @@
+{
+  "stage": "cobra-accepted-controls-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-cobra-bidirectional-controls",
+    "--",
+    "node",
+    "audits/C465_CODEX_20261018/w2-checkpoint/run-cobra-accepted-controls-r01.mjs"
+  ],
+  "startedUnix": 1792378154.491961,
+  "beforeGiB": 59.76832962036133,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 59.768310546875,
+  "afterGiB": 59.768226623535156
+}

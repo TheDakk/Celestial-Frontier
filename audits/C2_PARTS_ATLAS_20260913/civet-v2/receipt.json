@@ -1,0 +1,305 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+  "declarationHash": "bc6c8b41ece98ad794d04daa0bb92a9f82d2172a3987e3cd0a46d95db81c2ea0",
+  "paintedPixels": 516758,
+  "parts": [
+    {
+      "id": "ear-far",
+      "joint": "earFarTip",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 933,
+        "y": 195,
+        "width": 95,
+        "height": 126
+      },
+      "pixels": 8907
+    },
+    {
+      "id": "ear-near",
+      "joint": "earNearTip",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 1094,
+        "y": 213,
+        "width": 129,
+        "height": 157
+      },
+      "pixels": 12438
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 945,
+        "y": 468,
+        "width": 163,
+        "height": 67
+      },
+      "pixels": 6678
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 925,
+        "y": 224,
+        "width": 304,
+        "height": 342
+      },
+      "pixels": 58943
+    },
+    {
+      "id": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 934,
+        "y": 976,
+        "width": 135,
+        "height": 78
+      },
+      "pixels": 7739
+    },
+    {
+      "id": "fore-near-lower",
+      "joint": "foreNearAnkle",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 877,
+        "y": 828,
+        "width": 143,
+        "height": 158
+      },
+      "pixels": 13062
+    },
+    {
+      "id": "fore-near-upper",
+      "joint": "foreNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 821,
+        "y": 608,
+        "width": 203,
+        "height": 237
+      },
+      "pixels": 35099
+    },
+    {
+      "id": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 1094,
+        "y": 897,
+        "width": 87,
+        "height": 98
+      },
+      "pixels": 6745
+    },
+    {
+      "id": "fore-far-lower",
+      "joint": "foreFarAnkle",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 1073,
+        "y": 815,
+        "width": 109,
+        "height": 83
+      },
+      "pixels": 6254
+    },
+    {
+      "id": "fore-far-upper",
+      "joint": "foreFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 1001,
+        "y": 648,
+        "width": 168,
+        "height": 173
+      },
+      "pixels": 19357
+    },
+    {
+      "id": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 442,
+        "y": 918,
+        "width": 135,
+        "height": 84
+      },
+      "pixels": 7941
+    },
+    {
+      "id": "hind-near-lower",
+      "joint": "hindNearAnkle",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 431,
+        "y": 806,
+        "width": 98,
+        "height": 128
+      },
+      "pixels": 9443
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "hindNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 435,
+        "y": 551,
+        "width": 233,
+        "height": 284
+      },
+      "pixels": 44145
+    },
+    {
+      "id": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 677,
+        "y": 863,
+        "width": 154,
+        "height": 83
+      },
+      "pixels": 7746
+    },
+    {
+      "id": "hind-far-lower",
+      "joint": "hindFarAnkle",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 635,
+        "y": 786,
+        "width": 93,
+        "height": 104
+      },
+      "pixels": 6079
+    },
+    {
+      "id": "hind-far-upper",
+      "joint": "hindFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 634,
+        "y": 593,
+        "width": 186,
+        "height": 249
+      },
+      "pixels": 27800
+    },
+    {
+      "id": "tail-tip",
+      "joint": "tail3",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 26,
+        "y": 884,
+        "width": 197,
+        "height": 161
+      },
+      "pixels": 18824
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 33,
+        "y": 766,
+        "width": 262,
+        "height": 147
+      },
+      "pixels": 27731
+    },
+    {
+      "id": "tail-root",
+      "joint": "tail1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 227,
+        "y": 577,
+        "width": 227,
+        "height": 284
+      },
+      "pixels": 34699
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 908,
+        "y": 474,
+        "width": 294,
+        "height": 216
+      },
+      "pixels": 28895
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 739,
+        "y": 306,
+        "width": 315,
+        "height": 494
+      },
+      "pixels": 55665
+    },
+    {
+      "id": "torso",
+      "joint": "spine",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 138,
+        "y": 309,
+        "width": 919,
+        "height": 566
+      },
+      "pixels": 72568
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "erodedPixels": 9851,
+    "despilledPixels": 3403,
+    "unresolvedEdgePixels": 144
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+  "masterUnchanged": true,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

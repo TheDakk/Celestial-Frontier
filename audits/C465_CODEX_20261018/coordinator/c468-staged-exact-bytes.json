@@ -1,0 +1,2307 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "83d4dc4ab3ab786b5bb1d2092571badd78eff51e182ccb1b27c08d903bea81f3",
+      "bytes": 3945
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/c467-postcommit-verification.json",
+      "sha256": "0d3a794a99b1c80b7be7c0edf45e3a8881762d6de00bb8e6526b15cb6cee6835",
+      "bytes": 345
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/commit-wave-r02.py",
+      "sha256": "fec8e7cf14077a9956f6fa5c4388718f8614c5f90bf3599595c66e464d29e706",
+      "bytes": 2716
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/checkpoint.json",
+      "sha256": "0d8cc6ab1252d8dc45d213dc959eb994455e6c214f413cdcaf8e28980d8c68f4",
+      "bytes": 968
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/subjects.json",
+      "sha256": "c2087e384b8b53a2dcf2169c4107c500575985485376dedd6f9c2c12b04d4192",
+      "bytes": 218
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/native-vole-r02.json",
+      "sha256": "e7bad3b3ea95918b672b1258fcb62fc049c7c466cf9635e2220b5d596f39fa26",
+      "bytes": 507
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/native-vole-r02.log",
+      "sha256": "82b94d2a9721319754dc06d99d49c8ab25c11f70856bae9effe8531f98b06970",
+      "bytes": 202
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-a/generation.json",
+      "sha256": "29470f7aec3a7e08645d257ac1620d691afab74e71853ed87dc4a1e36a76d27a",
+      "bytes": 1240
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-a/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-a/lease.json",
+      "sha256": "83a76db2c5530e23b08426cfbfa081be24def46ad4f4341fbd8a7485d24f847d",
+      "bytes": 290
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-a/master.png",
+      "sha256": "e7638b54d84a4de2e7475b610e82231d57f23a9df29c970ee306ff5f53f332f6",
+      "bytes": 1642841
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-b/generation.json",
+      "sha256": "a1f4b1c4bf834dcc6a78a29803957ac6bfaf027fc0ecf73da8f8fd9e259e6cd4",
+      "bytes": 1239
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-b/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-b/lease.json",
+      "sha256": "507c9d5593d80f124f17f80582340b921d1c093d917bc71600e310869177654b",
+      "bytes": 290
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-b/master.png",
+      "sha256": "6609b4d12b313f20254675aecebf2f25b59d02bbb6beab2a0196646e5d7d6ca0",
+      "bytes": 1486356
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-c/generation.json",
+      "sha256": "cf260aecf97d0f54b7dd8256dc72dd3e3dfecb787464008a038085f3d704cc01",
+      "bytes": 1241
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-c/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-c/lease.json",
+      "sha256": "c6373eeb9f3c7cbf74ed34c1eaee15ead1631da0c3f9ac205c9a511ff39788d5",
+      "bytes": 292
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-c/master.png",
+      "sha256": "4414fa281870e7fb6c44adb371a64c73c7acc9973bd1c9891fdd201d86b91460",
+      "bytes": 1447429
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-d/generation.json",
+      "sha256": "fa1628506ba2528ba345c1f4af4f47ce7b90bb9f366b8593007cc2ebe01847b1",
+      "bytes": 1240
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-d/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-d/lease.json",
+      "sha256": "4d02d3dc4439927cc0ce606a9f268bddaaf0920af3b7ac5b18af389010563139",
+      "bytes": 292
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-kangaroo-d/master.png",
+      "sha256": "559a18d19c1a6b5946719fb5c12120ac2eb6d345453dc82605ee85b5cc3fd8cb",
+      "bytes": 1566506
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/c465-vole-r02.log",
+      "sha256": "5bde9a27cc72bcfa363e64d48f9cd2f3afb6a3e92e8a7dbf5bbbcce73d6122bf",
+      "bytes": 199
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/finish-subjects.json",
+      "sha256": "c2087e384b8b53a2dcf2169c4107c500575985485376dedd6f9c2c12b04d4192",
+      "bytes": 218
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native-results.json",
+      "sha256": "d055494ed519cefc703a549de8704bf069dfc890a219517854abd1a0e3e24c93",
+      "bytes": 714
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/battle-full.webm",
+      "sha256": "abbc7f5ae90c267d7463885a08fdf34e55616fb805266223957f900df13b0503",
+      "bytes": 10495649
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/report.json",
+      "sha256": "1d71600597c9baef6a2ce3c768842acf2c248170784acd10f2a5e815e23f66b3",
+      "bytes": 400399
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn0-hit-approach-50.png",
+      "sha256": "1c1fb75eb2a1ed57000d7e5778c5f6e040b1964eb15d3e6ea7a624e4c452e445",
+      "bytes": 1535724
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn0-hit-impact.png",
+      "sha256": "dc1b56612963393f8308009e65966ed55b08e28f56dbfcff122a5fe806f852f4",
+      "bytes": 973919
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn0-hit-reaction-50.png",
+      "sha256": "c6bc64c97e70525730ed564a2befe1416cabfaf9cc6d9b2eba82502f40d97f72",
+      "bytes": 1534645
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn0-hit-return-end.png",
+      "sha256": "edd5fd4546852127c155c1ad5045645741cf3585b0a1e1aba07e7adce673e700",
+      "bytes": 1502146
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn1-hit-approach-50.png",
+      "sha256": "81dfb2257705a905a8827667078ae56116163b927f7d5820c83110a7c228e9e6",
+      "bytes": 1532154
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn1-hit-impact.png",
+      "sha256": "15794e1990f4f6bc9e0ac8c9789906af429eda9bb10061fa605d9d314fd97a75",
+      "bytes": 973957
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn1-hit-reaction-50.png",
+      "sha256": "64391217389632930eb82a3979a8efdd6522f602b128a546b6b9c21707161b60",
+      "bytes": 1535547
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn1-hit-return-end.png",
+      "sha256": "807c458e0a2ea910623620572ef432e9df12de80ed22056be3056e88355ad73e",
+      "bytes": 1502187
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn2-dodge-approach-50.png",
+      "sha256": "e30a68a98464bd8c8b2acbf8de06444bff17834d64bf01114f5144a041210588",
+      "bytes": 1531485
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn2-dodge-impact.png",
+      "sha256": "af47f8ad8fb0f2a0641fd38c90186f3a26fd9bebc7cf1e5f0c5ed8e8280a9113",
+      "bytes": 1536650
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn2-dodge-reaction-50.png",
+      "sha256": "165a6972f91d43c3d6dea7fcf2cf80c0c72cbff2b2e91031f22dfb0ef59f44c5",
+      "bytes": 1575188
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn2-dodge-return-end.png",
+      "sha256": "edd5fd4546852127c155c1ad5045645741cf3585b0a1e1aba07e7adce673e700",
+      "bytes": 1502146
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn3-hit-approach-50.png",
+      "sha256": "1c1fb75eb2a1ed57000d7e5778c5f6e040b1964eb15d3e6ea7a624e4c452e445",
+      "bytes": 1535724
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn3-hit-idle-50.png",
+      "sha256": "ea2d28946669168dbd639c558531b3f4f29993dbfcf0b7e4994b01e9c082afed",
+      "bytes": 1516996
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn3-hit-idle-90.png",
+      "sha256": "4d703a2312dbfff39afa415d2e328cfac4339b7fd784628952e9245ad953ac0b",
+      "bytes": 1515841
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn3-hit-impact.png",
+      "sha256": "befaff360f1438b1e8282873776cb646aedde2c63ae3e1c2397fc3060c466d04",
+      "bytes": 1001189
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn3-hit-reaction-50.png",
+      "sha256": "60908a9f90de304a0574b217164079504f19e316206de041e72eb89b3b1e7621",
+      "bytes": 1535107
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/turn3-hit-return-end.png",
+      "sha256": "c15ff60e21be2338c6b34b6d584cefca9105f12e54c37d97cffad0575a649cdc",
+      "bytes": 1501846
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/plan.json",
+      "sha256": "bfec64943903d5b80cfdb0c94a825addf6ce07aeb9a059b116a505a3800ac611",
+      "bytes": 662
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-scallop-r01.json",
+      "sha256": "752e55a9f9349b6ef38ac81b194bc00c841d6d226e8b836beaf0321bc9ccc742",
+      "bytes": 528
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-scallop-r01.log",
+      "sha256": "e56ef97fcc8e475b4cd5082584ad0ae23837d0e879118f6e7a422404d1c74c27",
+      "bytes": 153
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-secretary-bird-r01.json",
+      "sha256": "79b71d00df604fbcbbed77958ee5169cb7b5a7d56fa6b6ade22f240d0a41a39b",
+      "bytes": 554
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/qualify-secretary-bird-r01.log",
+      "sha256": "89b71f4752c5edbff6296df292de6e6e322a1cde8e2836b0144c987b5aa25bf5",
+      "bytes": 161
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/rebind-one.mjs",
+      "sha256": "890f8173a9349b891fc2a4c1ac1e7c8b6872b0bc8bc3d048a039f18d78ed5944",
+      "bytes": 1892
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/run-finish-chain.py",
+      "sha256": "67ec7fa1e92ac070c8721969837ff1cb7320611819854d040af8c136a90fecf2",
+      "bytes": 2406
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-r02.json",
+      "sha256": "20b20ce8c70a695202238c138f7e1b2eb5f74adc7f2fc10415862d92286a759a",
+      "bytes": 583
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-r02.log",
+      "sha256": "84afad0ec24919327e93e6addff7c07ac0b64e46c95c852253f4fbf94d9ca83f",
+      "bytes": 60
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-r02/checker.log",
+      "sha256": "b08c976f21320e216ea6d3a95dd219650c04015b72a3f6b05543bc2d62a0c266",
+      "bytes": 1685
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-r02/current-rows.json",
+      "sha256": "e905b0246757a490827670f01f3c84d671cf1758b310184cec018c2e9720f738",
+      "bytes": 370
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-r02/fragment-triage.json",
+      "sha256": "1e39856848108855908c4d6f0941442f32210bd5b2a82dbfcc8a0b71ae876dc0",
+      "bytes": 173926
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-r02/freeze.json",
+      "sha256": "41dedcee7ad6f9378f5e6b63637371eff7f75101f73a85d6a6d6ddab0506a1e3",
+      "bytes": 219083
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-r02/roots.json",
+      "sha256": "e2b5aa7b75652f6eabbb07b1a912468338f4bfb21e9c0f8fa26768c96aae3a8c",
+      "bytes": 13097
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-vole-r02/verification.json",
+      "sha256": "e4ad172bf5ee9eb646865efde469459ddc9409b36550681579b0e54a8551a974",
+      "bytes": 715
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/TRIAGE40.md",
+      "sha256": "35e0c5cacf807de2f7034cc5030614795703bf24f12fb1e911d5823263b24d7d",
+      "bytes": 9245
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/blue-whale/c2-all-parts.png",
+      "sha256": "a2f67f99d1fc7448883ebf5b8fbde0339b6c3cd6d7d8796044179378ccb71b10",
+      "bytes": 886489
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/blue-whale/c2-source-diagnostic.json",
+      "sha256": "55acbd2b8940b64298d974ab128ed88d4758de391e11a2cc438fa43b8aa39f5f",
+      "bytes": 25474
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/c2-all-parts.png",
+      "sha256": "648418b942d23e5fc49383fededc23bcc0d0f0ade7c84d448e64d78491d7652f",
+      "bytes": 580079
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/c2-source-diagnostic.json",
+      "sha256": "21e7b51df63271ee584917191ec6746c3aed5a442de80740931225d1d503f2e1",
+      "bytes": 42393
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/chiton/plan-c2-r01.json",
+      "sha256": "0b04d12aed6008163eec4da7ad3c1a42d4816b5467eeb18b67b2169ba97f01f3",
+      "bytes": 825
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/cockatoo/c2-all-parts.png",
+      "sha256": "7697fa618b42aa4abe265649c411c1dd99d7e85b6119f8edd6e800976cead830",
+      "bytes": 989731
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/cockatoo/c2-source-diagnostic.json",
+      "sha256": "573c6f2771ca8862b2132d3fa88522d3978b40b2a19e5e237631b923280e359d",
+      "bytes": 68143
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/body-4x.png",
+      "sha256": "db67a5b7509d55dd5d071b3b317282d59e617cfa5dfc88a42075718649800dd4",
+      "bytes": 4037
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/c2-all-parts.png",
+      "sha256": "ec739936ed17ea52bcf509ef80c2b604a6e4e955dd4ac4fc8239bb30b65379a1",
+      "bytes": 1084641
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/c2-source-diagnostic.json",
+      "sha256": "56db19e338977d4349266a471d5e325b389739244e7c90f0e74fa0fdfb99bba1",
+      "bytes": 47895
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/distal-leg-source-4x.png",
+      "sha256": "bea3db2fc855b77d4042d1282944bee619230c718b59580307601cd92dd4b4bb",
+      "bytes": 42111
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/deer-tick/leg1-near-0-4x.png",
+      "sha256": "a9cdbed339322e3de8dc58d25d30445a9016b0d82d702159b819a91100b1d1a7",
+      "bytes": 6639
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/diagnose-c2.mjs",
+      "sha256": "6b0b7e6d2c46c233879f61dea53d8ee4884a20af1323613ae90fe4bfb84700fa",
+      "bytes": 4014
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/diagnose-shortlist.mjs",
+      "sha256": "6c6b3562a62904fb02896e4a61a52a614aaa59a97a445a8812278e90460ab5d2",
+      "bytes": 2249
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/egret/c2-all-parts.png",
+      "sha256": "64c3d389459c508db7d7c6948411889d9ee2ea8d8e4e51e4abb6f2c8a202cd3e",
+      "bytes": 736659
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/egret/c2-source-diagnostic.json",
+      "sha256": "556f739983ba2caaabfd2c5ebbe508be69b85d692cf8764d7f087a9e4f7eae00",
+      "bytes": 38278
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/evidence-index40.json",
+      "sha256": "26954c3c4d8cbc5732153df7699f60afabf1ec6cfba7c6da784242bf2702c105",
+      "bytes": 478782
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/evidence-index40.log",
+      "sha256": "2762d8debf10e303875f569e54cc2927ed1c702ed669a14b9fbb3d4bfdfb9459",
+      "bytes": 16234
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/fangtooth/c2-all-parts.png",
+      "sha256": "0731cb845031f5b93c61a4e5411064e2b875a942f5d33a21b4c289f618df27bd",
+      "bytes": 569455
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/fangtooth/c2-source-diagnostic.json",
+      "sha256": "ee68ce35aff11317cdc2a36721424c706fc02a6d3dc7b471e1d50ab563bb3d42",
+      "bytes": 70682
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/kakapo/c2-all-parts.png",
+      "sha256": "f5f4c826048e48487a80bc6cee96c5ba5b0039ead512cf5f1012c22cf8d509be",
+      "bytes": 1058547
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/kakapo/c2-source-diagnostic.json",
+      "sha256": "b8a5ffc23b1b30afb53d5d2eb4ed40e31910093a2a4cb82f0663572241f73c1a",
+      "bytes": 10382
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/lungfish/c2-all-parts.png",
+      "sha256": "a26310db94dfe21b8cb68eebf55bdbcc450602b41e2660c3511179c4a222be51",
+      "bytes": 919038
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/lungfish/c2-source-diagnostic.json",
+      "sha256": "f87327c3c7b9c808b5c4f6d8b77b8c5b1d004b5e97977f816bdd65de4ec6d23f",
+      "bytes": 48416
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/monkey/all-parts.png",
+      "sha256": "69f3d1bc4499c500bdb586a6190d174692eeef484cbfaf1a9286bb4aa3933d59",
+      "bytes": 1239275
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/monkey/plan-r01.json",
+      "sha256": "e369bbf11555421561ee92363066d95d8862ac9c8beb1de97e255cd0605d1f58",
+      "bytes": 789
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/monkey/source-boundary-probe.json",
+      "sha256": "5f5742fd275892e506817264a17de801a7ff5bd06888609f3e697c2f081c1f73",
+      "bytes": 47949
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/native-context-dump.ts",
+      "sha256": "f8a02603d69530fb3c02f5a592dd6e73ab72de8e47e748ed68f04c194e284afa",
+      "bytes": 6583
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/next3-qualification-proposals.json",
+      "sha256": "88ada53235175cf50355986f8c2ff55fc2d063e6d4494141b3f0ab390794c1ef",
+      "bytes": 4002
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/olm/c2-all-parts.png",
+      "sha256": "de8c29d888f3e6fbe65afec4b71b3349a51ba3a1c96630c42f68201fafc62482",
+      "bytes": 1578149
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/olm/c2-source-diagnostic.json",
+      "sha256": "4610af6e8eb778d84a590e569fe1ed1b6876734a38a161f880ecddf44d42a68e",
+      "bytes": 21327
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/preserve-boundary-only.mjs",
+      "sha256": "f8fe9dc9b70b2da89386708732739737a10ec188b836cbef2cc69264959475dd",
+      "bytes": 3095
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/prior-shortlist-inputs.json",
+      "sha256": "bbf95a12a8284abae3cb747e91214b03ec27c4264f21ffd8e3c50e5f8bdf0fc1",
+      "bytes": 1770
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/ranked40.json",
+      "sha256": "47e76966eb394ed734670c0f6f30cbb1d9c7b3ce1188f045e3c7596a8708584c",
+      "bytes": 176530
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/run-c2-r01.mjs",
+      "sha256": "40cbf7eac16e3c4334634881a0f863397a5d7807eb6d288d03d4398ebc344560",
+      "bytes": 1922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/run-one-r01.mjs",
+      "sha256": "d9a1c194691da4a67b71fde9b1c21ad7215a8585b23ec91f7cc7477e5828206f",
+      "bytes": 2235
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/run-retained-context.mjs",
+      "sha256": "74472be3930d59a01eb175ee1d994c2819249c860f7cd5e2fbf520c0453b2b47",
+      "bytes": 1361
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-fragments.json",
+      "sha256": "08d0cd2e35824911dbcbbf49f11bbeadc0c611a0a001cce671edc5b6d2c140e9",
+      "bytes": 4776
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-raster.log",
+      "sha256": "025e9893b8f8ad36c5ecf59a9b1c4e6412a5c5152be1e88083ec3e6fc987fa2b",
+      "bytes": 1965
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-rest-000-owner.png",
+      "sha256": "2d4ef5f9e5173d5b5356c853f78198726b2c4998b9c67968e901a229f3973848",
+      "bytes": 13466
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-rest-000-paint.png",
+      "sha256": "98abeaf74947d303cb64de67e36e915589ae485d88df7a34762fd5eac8b86f90",
+      "bytes": 533739
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn1_reaction_50_left-000-owner.png",
+      "sha256": "70a6f217ddecd3016bfe37ab9ec64a38186cbf951acf0c44d7d4da3f23ccbe35",
+      "bytes": 14591
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn1_reaction_50_left-000-paint.png",
+      "sha256": "bb9ee5f8e23b7b99df8b337f325b2b347579330dfde6e015401fd7769684f920",
+      "bytes": 536034
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn1_reaction_50_right-000-owner.png",
+      "sha256": "747174768ba55566620b0eb761c96f319e0042503370d76b308cb89a58068fc8",
+      "bytes": 13995
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn1_reaction_50_right-000-paint.png",
+      "sha256": "cf63a7acc369d7714f5451c507856e4d90cf0d66ee8830d917c1f78b12cd35ff",
+      "bytes": 535085
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_idle_50_left-000-owner.png",
+      "sha256": "941429df50ec14d05e132552ec17b62598ee015efad05f6948ed67f4f15af067",
+      "bytes": 14611
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_idle_50_left-000-paint.png",
+      "sha256": "0dd8085c264044e9884205c0a9abada0b8ed269b1c96e79367d9e781d35bb74c",
+      "bytes": 535870
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_idle_50_right-000-owner.png",
+      "sha256": "2d4ef5f9e5173d5b5356c853f78198726b2c4998b9c67968e901a229f3973848",
+      "bytes": 13466
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_idle_50_right-000-paint.png",
+      "sha256": "98abeaf74947d303cb64de67e36e915589ae485d88df7a34762fd5eac8b86f90",
+      "bytes": 533739
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_idle_90_left-000-owner.png",
+      "sha256": "0145c9b5dacb318e59972b260ead5bd8c0f049802542a122089ad3863d63c081",
+      "bytes": 14061
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_idle_90_left-000-paint.png",
+      "sha256": "d940321efdc6438b5c329c58279418be6c026f4e292191ebfd15d49ad72180c0",
+      "bytes": 535127
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_idle_90_right-000-owner.png",
+      "sha256": "2d4ef5f9e5173d5b5356c853f78198726b2c4998b9c67968e901a229f3973848",
+      "bytes": 13466
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_idle_90_right-000-paint.png",
+      "sha256": "98abeaf74947d303cb64de67e36e915589ae485d88df7a34762fd5eac8b86f90",
+      "bytes": 533739
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_reaction_50_left-000-owner.png",
+      "sha256": "179f8161d1fea621bc84c6809cec8dc555b8329320ab66dccd5e3f1936722a06",
+      "bytes": 14236
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_reaction_50_left-000-paint.png",
+      "sha256": "164a10beec84f56b1c225e7689ec47ed0fd307cd7625aebaa6a62294bc6ff2c0",
+      "bytes": 535228
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_reaction_50_right-000-owner.png",
+      "sha256": "ba4498d4bd1dc143b349e5e84b7fd6f0f4b942e8efb480cc21aba4f893f84916",
+      "bytes": 14228
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01-turn3_reaction_50_right-000-paint.png",
+      "sha256": "6ccf5143d0cbbd4cefe8280850139abee882120eb92262c8fc949111a23af8a9",
+      "bytes": 535460
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01.json",
+      "sha256": "ba4a54fc6c46623a8336a2fb65bb39263aa7869031c67e3b99c3ea655659b99b",
+      "bytes": 414942
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/baseline-c2-r01.log",
+      "sha256": "79e9a36262ea13c476fc64850975ee03857904db11893d7148b64c1900668807",
+      "bytes": 209
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/binding.json",
+      "sha256": "f979551936ef2ac89ab60f42a53e218d2a6733363c9a938cea862a5e248380e5",
+      "bytes": 691941
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/declaration.json",
+      "sha256": "32f6d1099e77b9ff4f1f8dd5649062da2656e1c802ef4f0f1cfd909202d15416",
+      "bytes": 4329
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/intake-provenance.json",
+      "sha256": "97e08c5b8d691d9e82975ee10403c03e982fb619bf596ef80b0aa5ea309c6962",
+      "bytes": 3199
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/atlas/c266-scallop-observed01.json",
+      "sha256": "57b249078ef280680125b05af9d7bb7ae294115de37ee2dfaf8feeca14ff8cbd",
+      "bytes": 1780
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/atlas/c266-scallop-observed01.png",
+      "sha256": "bff1de3f9ec6d356954e74a8402ece5c08da615b375079d555042cacf314be24",
+      "bytes": 438628
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/atlas/receipt.json",
+      "sha256": "afba607315b647ab719adaa05a1f62d7af99098bc56cb9c35b822b17ee1eb86a",
+      "bytes": 1270
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/binding.json",
+      "sha256": "25dafd97c3211ee908f717a3da26f9b0c5beb865b8e6ce8f39ad6a114cbd593a",
+      "bytes": 1640
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/keyed.png",
+      "sha256": "fa96f2ea327311bf8b2d23c3ecb9c408a9c0983dc6001bf1858dba1af99fc252",
+      "bytes": 1543306
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/manifest.json",
+      "sha256": "83dae7a161ef966f6971bfd7dbfbac2864eab09995b13273e392e6f791356671",
+      "bytes": 703
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/ownership.png",
+      "sha256": "2b313c728b52f77d4fb7da4d080484caea8f040f31de94dbb944e4461082d1ed",
+      "bytes": 13078
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/parts/hinge.png",
+      "sha256": "1a5a8c426066888a70455a36f2ed2eba31bf4405101d69c70d825b43db85b871",
+      "bytes": 56517
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/parts/mantle.png",
+      "sha256": "d3542f05294fb2f705e4ee5587308e21d80eca046d5c8c48ea817bdebefa0bf8",
+      "bytes": 108218
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/parts/valvefar.png",
+      "sha256": "45d4ba4e7886394df069c35ec7bd1b1720e16f5ba429b460dec06e719d617b2b",
+      "bytes": 313410
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/parts/valvenear.png",
+      "sha256": "fc1342437a562995a131e5ddf2fce6418830c70938cf17145c492ed375fbda7f",
+      "bytes": 89664
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/parts/receipt.json",
+      "sha256": "8fe24758defea0377f5fc3965a71df6c1944652666237c7d342ed448a8923390",
+      "bytes": 1629
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/pre-split-binding.json",
+      "sha256": "337c52314e5913dbf0ef36cadfc767622d026dd8d52d21226d51054bf5ea95a4",
+      "bytes": 559609
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/receipt.json",
+      "sha256": "275a8e6406c9ae762383f9c7685fdcba764a62f1a8ec8963cad0bdbe2e710a47",
+      "bytes": 2047
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/fit/record.json",
+      "sha256": "2942448dda90ebe6fa8b9300731b60fa9ea6cea2d448cc4f160255be85157ec2",
+      "bytes": 4771
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/boundary-c2-r01/receipt.json",
+      "sha256": "b8e50d51098d3915c1b7f5720ec545cebcd81a01ff86c12d5475ce6fd6e16027",
+      "bytes": 1602
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/c2-all-parts.png",
+      "sha256": "24dd5d82244c2674fa3454f22e82b17d54793c03197ea2201b1494c6a3277efc",
+      "bytes": 285334
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/c2-source-diagnostic.json",
+      "sha256": "141223873e992f59cc70a3d9fc3f84cf740b86bf7d81bc5426693fccf50dfea9",
+      "bytes": 58852
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-fragments.json",
+      "sha256": "3b518e94c4a731246082159a6e6ba40ce683da4904b31ae55ddb7c2b3d8db919",
+      "bytes": 4625
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-raster.log",
+      "sha256": "82f6903848c5292051181db71713a7888eac61b21ee6b1927fd5c17d740a020f",
+      "bytes": 1898
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-rest-000-owner.png",
+      "sha256": "2d4ef5f9e5173d5b5356c853f78198726b2c4998b9c67968e901a229f3973848",
+      "bytes": 13466
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-rest-000-paint.png",
+      "sha256": "98abeaf74947d303cb64de67e36e915589ae485d88df7a34762fd5eac8b86f90",
+      "bytes": 533739
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn1_reaction_50_left-000-owner.png",
+      "sha256": "7ba228b28e3dd8844785e5fdc99f07d87a3bb20d8a9de08dd6e7bf0b3d3d76fe",
+      "bytes": 14570
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn1_reaction_50_left-000-paint.png",
+      "sha256": "0d5b89a7b050c673ea7a81b50de928b9e1e8b68bd2dfb0946bd75180c62e2e42",
+      "bytes": 554771
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn1_reaction_50_right-000-owner.png",
+      "sha256": "90c0c67ab55c475803ce5040686d649db6b0aafd1b12541daa3601205838deec",
+      "bytes": 13983
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn1_reaction_50_right-000-paint.png",
+      "sha256": "5c8e262fb5c5c95413621127d011099f42967e1c0c1838f75005b78e8a74b395",
+      "bytes": 539917
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_idle_50_left-000-owner.png",
+      "sha256": "db8ebb9753123b7aecfffada579886c37eea0e2fbf92c672188d68525428e6be",
+      "bytes": 14780
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_idle_50_left-000-paint.png",
+      "sha256": "d1905c1d747c489c752db5cec1da8f55ce13cf7b6861cf090613915eacba2c07",
+      "bytes": 557443
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_idle_50_right-000-owner.png",
+      "sha256": "2d4ef5f9e5173d5b5356c853f78198726b2c4998b9c67968e901a229f3973848",
+      "bytes": 13466
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_idle_50_right-000-paint.png",
+      "sha256": "98abeaf74947d303cb64de67e36e915589ae485d88df7a34762fd5eac8b86f90",
+      "bytes": 533739
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_idle_90_left-000-owner.png",
+      "sha256": "70f412a37ed7c82bdb80270d6336f0b95eb87e8ab6c03b50f3e88cfa47dcd715",
+      "bytes": 14137
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_idle_90_left-000-paint.png",
+      "sha256": "386d5cb33d3d5dba5b9b4e5bd5b4ac0f168949df67b8beaa55bc57e0dbc057cb",
+      "bytes": 543311
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_idle_90_right-000-owner.png",
+      "sha256": "2d4ef5f9e5173d5b5356c853f78198726b2c4998b9c67968e901a229f3973848",
+      "bytes": 13466
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_idle_90_right-000-paint.png",
+      "sha256": "98abeaf74947d303cb64de67e36e915589ae485d88df7a34762fd5eac8b86f90",
+      "bytes": 533739
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_reaction_50_left-000-owner.png",
+      "sha256": "fe6d99e8eb81ea236f322ba19c6245360f01350f06aad2736d5a21995624b8d2",
+      "bytes": 14150
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_reaction_50_left-000-paint.png",
+      "sha256": "040401807e9e9941108e2fd541bd0205d4e4eaf6571bbad4da5c520d1c8ab7f7",
+      "bytes": 544332
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_reaction_50_right-000-owner.png",
+      "sha256": "14c11716a2f8e077fc75461c74c016cc53af05725f5482553bca8600ae2f4b33",
+      "bytes": 14161
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01-turn3_reaction_50_right-000-paint.png",
+      "sha256": "e2bf0d3a97d4be7cb1d3d7df712c882e738105320abdd3da1e3bd623aef75801",
+      "bytes": 544962
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01.json",
+      "sha256": "82df75f63874c49cd1e612a62a11a7b467c135a1c90e3d75635a88f04fe8d74f",
+      "bytes": 415030
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/candidate-c2-r01.log",
+      "sha256": "79e9a36262ea13c476fc64850975ee03857904db11893d7148b64c1900668807",
+      "bytes": 209
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/compile-c2-r01.log",
+      "sha256": "9de3f0d3d979f9ac87986c915963c7bef2672f4662cdfd6e8e2b64dd26108115",
+      "bytes": 1366
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/conservation-c2-r01.json",
+      "sha256": "0a6d30bd26bba142a91e570ca5ab555d00b05a36ae90f3795fac61ef10878d25",
+      "bytes": 3288
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/native-eligibility-c2-r01.json",
+      "sha256": "f628ad2d406961fac7438fa9781bafa25bce5a42c31aacb9204b67bd954b998c",
+      "bytes": 5490
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/native-producer-plan-c2-r01.json",
+      "sha256": "e25c0fb8f3366b9b2d7a3ef9a473673f26523b5be147f7d464d8eb507645e3d8",
+      "bytes": 692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/native-script-c2-r01.json",
+      "sha256": "92464a88bd2ed00ec2263a0c8be87e09ab3e333db8204ea421278045213f86d4",
+      "bytes": 769
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/plan-c2-r01.json",
+      "sha256": "4037fc6c17c8fcfc9df9b9c42a48956334255abc580aebc29ba70fb85450ca7d",
+      "bytes": 995
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/producer-freeze-c2-r01.json",
+      "sha256": "5b99113ed19a455f3b3ec0918e8774d954bc952ad0bd3a74a0d1fc59f211d753",
+      "bytes": 6902
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/run-c2-r01.json",
+      "sha256": "31759afab5551a08a375bbd29dbe416a39a3575b45f3dd54e17f1ae5955795e3",
+      "bytes": 2879
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/static-c2-r01.json",
+      "sha256": "31885be921f8d7c4dc64b2f68f470005ced508c24e1d881e31a020fe1901c750",
+      "bytes": 6748
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/static-c2-r01.json.sources.json",
+      "sha256": "5f934f1921d61ab2cb9133fb63d8ef118540825fd6cd3bde30d642d17475ae4a",
+      "bytes": 18817
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/scallop/static-c2-r01.log",
+      "sha256": "12b64d201760b08ec4ef94c38172507f0b8621a297921a2709dffd2a9ed3ff53",
+      "bytes": 1581
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/all-parts.png",
+      "sha256": "d7dc25e1fed0a955a1fae86a0dfbfb89815893bbb98e6abbc81ac130366b8627",
+      "bytes": 929636
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-000-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-000-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-012-owner.png",
+      "sha256": "ecfc05cf93a71b2f30e09dd2dd5d837c34a35d30481c3a34c39a3bd8091e4fe0",
+      "bytes": 14072
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-012-paint.png",
+      "sha256": "33e3ed48a97d4c9a58d549daa0a561a9292af4c21753134a74d2a648138d6ca2",
+      "bytes": 251967
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-024-owner.png",
+      "sha256": "1707eeb7ca9f9b2128602047ebf80967cd557c7fcbb8ffacba9cc0b2d521ef6e",
+      "bytes": 14336
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-024-paint.png",
+      "sha256": "f92e4de458000fd34b9e2514cea14981aaad26afe9cb9e73c27c9863b5bbedc1",
+      "bytes": 248841
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-036-owner.png",
+      "sha256": "16404ffff7af5363bfa8624e9261ea1df555e0180742501d15598344b61e0968",
+      "bytes": 14423
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-036-paint.png",
+      "sha256": "2c11ae4dbfadff795b1d693140a762a011cb0e382942c256a4c60006556c163f",
+      "bytes": 242747
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-060-owner.png",
+      "sha256": "78c26574ae7fd82a96da057547e80002afc9f38a584401dd5bbb4e4a9354f199",
+      "bytes": 14330
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-060-paint.png",
+      "sha256": "1cec2a3e41ed7f2b073a0292eb3f45d96c5bba7450267745ad05f213c2deefe4",
+      "bytes": 222656
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-090-owner.png",
+      "sha256": "3f16b90a92ea3f805c296609e365fab8c30db111aac588ba4d2b0093a9f0db8c",
+      "bytes": 14091
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-090-paint.png",
+      "sha256": "9e9375497e0a9a66c3d3c1631120c632fcb1baead43b2e20f541987e4cb8e517",
+      "bytes": 201224
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-108-owner.png",
+      "sha256": "fcf5a281645c1d002a08346e01cb643aaed532529297a880ae37b70768b90870",
+      "bytes": 14285
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-108-paint.png",
+      "sha256": "0c54bfbfc74a013877069093034eb5540e318b80c1564e70b92ec22f240f5f70",
+      "bytes": 217378
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-120-owner.png",
+      "sha256": "e377cb35ce6bf98a5a9b1361cf403d0a725fa0ec27afd044906e4f3946bdb284",
+      "bytes": 14193
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-faint-120-paint.png",
+      "sha256": "eec5651e5d48dd8cf99f62115efeebcb5f15f4f115634b9c96ee586b40024dcf",
+      "bytes": 233239
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-fragments.json",
+      "sha256": "09a5d41abf808843d5706224453a9f3a27acc63d764de6e9500d06764e1ad971",
+      "bytes": 21413
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-000-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-000-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-012-owner.png",
+      "sha256": "7e9242d9a24146f72d1216ad948ffc5bb4270b0f8e400f3785a1f97ec25ba5ab",
+      "bytes": 14386
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-012-paint.png",
+      "sha256": "51f87dadb66c55c72f419268bea56f67d01e3bd1268b89355e09e4bac7d9dc33",
+      "bytes": 246944
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-024-owner.png",
+      "sha256": "5fb5d06cf2a1840a5627b662d660bf41c9c6c556113f9b92fa9503ae63083454",
+      "bytes": 14371
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-024-paint.png",
+      "sha256": "b9ccdbec4bd77c980eadf9cc3f9f06f3aa392cfccf10bed86a31317ed8e99dbd",
+      "bytes": 240852
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-036-owner.png",
+      "sha256": "0abd7d9069206a8962d7829462fb5d816acd59e997d44d6f57498afa5c31a5ce",
+      "bytes": 14626
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-036-paint.png",
+      "sha256": "c8704b5441cdbce7fe6bba9232df31bf31c735c0af404bbf73488323f1985e34",
+      "bytes": 244874
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-060-owner.png",
+      "sha256": "51cb64a7adda45ddbffb735967ee46981d7455800c7535e9258775e8931d12c5",
+      "bytes": 14280
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-060-paint.png",
+      "sha256": "257ab800754af147a9c58e0aeaa581df07a00afdd6ed8e3f0ac7ddc217c586b4",
+      "bytes": 252832
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-090-owner.png",
+      "sha256": "c660276fec2bdc04c7999cd1d27b62e8ce62c9b4655666aba0284e9a0fb56f0c",
+      "bytes": 13908
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-090-paint.png",
+      "sha256": "6ad3583fa17bef9f9b8442e7fade647daac93ea4b487d4e05bf48b33479db75d",
+      "bytes": 252755
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-108-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-108-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-120-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-hit-120-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-pose.json",
+      "sha256": "f771796a10b3ef60092b5021cc3e311623a5730c74f16716dd0e82496234a298",
+      "bytes": 1224144
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-pose.log",
+      "sha256": "6ec488d63a1767396d7ed9e7a5d21c9a66f67d75706761627f371d771f7b0511",
+      "bytes": 49
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-raster.log",
+      "sha256": "82dff7b4a375a94b1bc5fc6d405fec94e87151339c0c58ac68fa1d9f92d10538",
+      "bytes": 7468
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-rest-000-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-rest-000-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-000-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-000-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-012-owner.png",
+      "sha256": "2710ee7f39c3c57747bf1fafb6017fee9af177cc31719f65367b3effe625da63",
+      "bytes": 14038
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-012-paint.png",
+      "sha256": "475f6a0efd04a9ecf08e411b7f751ddbeaf16e71d8a7bef1c33f7346cd12cc5e",
+      "bytes": 252584
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-024-owner.png",
+      "sha256": "66f4768f5bc34d75e273be76aebd1704c4353047bf755449b4c3015547ad5838",
+      "bytes": 14058
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-024-paint.png",
+      "sha256": "d083272a13640344c1dc44099ba40c082dfe7bce08da24b05447b3a986d86814",
+      "bytes": 252449
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-036-owner.png",
+      "sha256": "ed1f6a6373455f9beb7bd1755e79b2d9669485c783df582a85ffe5f336acfe59",
+      "bytes": 14078
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-036-paint.png",
+      "sha256": "21c3fa5eb369130cdd4ebabcc7ea9f3124007ed4cfe1b8d25719a2825b6f1629",
+      "bytes": 252327
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-060-owner.png",
+      "sha256": "026c23fe206ddf66c09a47d56357a729df72b567195803526815dc190d9b6a15",
+      "bytes": 14049
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-060-paint.png",
+      "sha256": "8c7605b8a683dd15d9f6d5463ad431f7a7aab11bb14d9cfce07b229b39ade37f",
+      "bytes": 252524
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-090-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-090-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-108-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-108-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-120-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/baseline-victory-120-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-000-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-000-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-012-owner.png",
+      "sha256": "18a7dcac26a6cb0035692b20d626b047e21a1266c155b8ae53c72070c60f5836",
+      "bytes": 14077
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-012-paint.png",
+      "sha256": "58818364e22f4a329c292d15b95b857637af3d6497ebe9c232fd42b3bc9c35c2",
+      "bytes": 251964
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-024-owner.png",
+      "sha256": "c36be07f89789e3f97bf1184e4908cfb9fbadb15f9744006b1b97ad2d0e9c30c",
+      "bytes": 14337
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-024-paint.png",
+      "sha256": "9d0e2b9a5b4f1970cb86956e5488daafafd47115d99c5a8dd4077613786e36d2",
+      "bytes": 248829
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-036-owner.png",
+      "sha256": "1c79152a686631b2b73ec1828797aa9792b775c69e979a690ed28ed5de7fd233",
+      "bytes": 14425
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-036-paint.png",
+      "sha256": "587de9fe0cebc29362a2d8ac0c388fee10b22581ad217ce32b9f86d4c386096b",
+      "bytes": 242767
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-060-owner.png",
+      "sha256": "790a8c4e3ddfb9852feb7ea6a5f02e1e59f0aeb09e92be8ec333e7ff1abb5a98",
+      "bytes": 14343
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-060-paint.png",
+      "sha256": "1d0eabe4c2f95bb75cd1b91d1234c1fbc6a41fe07b1ed3c4b24d8374b72eb034",
+      "bytes": 222658
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-090-owner.png",
+      "sha256": "47cdc68573defffb7b50b6f89935b23f7b22a8533d38c96226b7dbbe45083b02",
+      "bytes": 14099
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-090-paint.png",
+      "sha256": "948edfb6dc7b2259e356c917416808570c270e50f91c081ed8291935749b78a4",
+      "bytes": 201234
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-108-owner.png",
+      "sha256": "7ba9e6c582b80d2b6d5d0a725a6fbfb03f7b69b82278eaf79174491762d53140",
+      "bytes": 14293
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-108-paint.png",
+      "sha256": "0203e90bf222cba343923034433750ad315e619eba956e1a59b0aa53a1cbd7c3",
+      "bytes": 217338
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-120-owner.png",
+      "sha256": "768b01eb4b3af912722860e2bb717a6fe03c72f7cd8681c122565b6ebbdaca0d",
+      "bytes": 14203
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-faint-120-paint.png",
+      "sha256": "4a18d278fc81fc3db82e6a92df0b9670ee62012fd077bd6107df2840b3f951bd",
+      "bytes": 233166
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-fragments.json",
+      "sha256": "94e440794bccbbf5b50d449eb7022bb05280a237c85a465125397af7662d1dc4",
+      "bytes": 21413
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-000-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-000-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-012-owner.png",
+      "sha256": "00233a4f761a11d5078783cb7797ebbf80d5d46385bd792cdd3d5d88c2c32853",
+      "bytes": 14384
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-012-paint.png",
+      "sha256": "50d9fcc42806866fba35b047cf3a012cd9ff2697b09f10814f43e5d509152d8b",
+      "bytes": 246926
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-024-owner.png",
+      "sha256": "33379e1001388153643e407b0c3d4c447cd8e185c03e49dad4c439210dafba00",
+      "bytes": 14383
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-024-paint.png",
+      "sha256": "245e4688a4adde7d39f5ac0fd02ee9f96f7123cdf09d360cd9560833e98df917",
+      "bytes": 240851
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-036-owner.png",
+      "sha256": "0ed2dfbe04df4af95e36e6481326e8549a3cb711fef2aecf8726cee5f19df57e",
+      "bytes": 14630
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-036-paint.png",
+      "sha256": "48bc129c29db848dc8381f383341c38d107bbd7e46f9fa5dae81d39c0ddb0491",
+      "bytes": 244815
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-060-owner.png",
+      "sha256": "818143a9b6306f9b2d18be23d4c29ac6072d05a1a10903c313c851246a164add",
+      "bytes": 14267
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-060-paint.png",
+      "sha256": "4ea87fb12c1f9ecdfb4af58ed3b30856f3caee05d119a6f8663799a78590a481",
+      "bytes": 252840
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-090-owner.png",
+      "sha256": "c660276fec2bdc04c7999cd1d27b62e8ce62c9b4655666aba0284e9a0fb56f0c",
+      "bytes": 13908
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-090-paint.png",
+      "sha256": "6ad3583fa17bef9f9b8442e7fade647daac93ea4b487d4e05bf48b33479db75d",
+      "bytes": 252755
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-108-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-108-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-120-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-hit-120-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-pose.json",
+      "sha256": "3f4bf763d2a99998a139aefbfb5a028b11a88ad8a59cb824c0576c4ed5a2f5eb",
+      "bytes": 1224166
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-pose.log",
+      "sha256": "6ec488d63a1767396d7ed9e7a5d21c9a66f67d75706761627f371d771f7b0511",
+      "bytes": 49
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-raster.log",
+      "sha256": "d35ead65218feabb2c59ca66c787e99b7376964e568303e7911d4261d42105db",
+      "bytes": 7467
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-rest-000-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-rest-000-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-000-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-000-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-012-owner.png",
+      "sha256": "2710ee7f39c3c57747bf1fafb6017fee9af177cc31719f65367b3effe625da63",
+      "bytes": 14038
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-012-paint.png",
+      "sha256": "475f6a0efd04a9ecf08e411b7f751ddbeaf16e71d8a7bef1c33f7346cd12cc5e",
+      "bytes": 252584
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-024-owner.png",
+      "sha256": "66f4768f5bc34d75e273be76aebd1704c4353047bf755449b4c3015547ad5838",
+      "bytes": 14058
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-024-paint.png",
+      "sha256": "d083272a13640344c1dc44099ba40c082dfe7bce08da24b05447b3a986d86814",
+      "bytes": 252449
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-036-owner.png",
+      "sha256": "ed1f6a6373455f9beb7bd1755e79b2d9669485c783df582a85ffe5f336acfe59",
+      "bytes": 14078
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-036-paint.png",
+      "sha256": "21c3fa5eb369130cdd4ebabcc7ea9f3124007ed4cfe1b8d25719a2825b6f1629",
+      "bytes": 252327
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-060-owner.png",
+      "sha256": "026c23fe206ddf66c09a47d56357a729df72b567195803526815dc190d9b6a15",
+      "bytes": 14049
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-060-paint.png",
+      "sha256": "8c7605b8a683dd15d9f6d5463ad431f7a7aab11bb14d9cfce07b229b39ade37f",
+      "bytes": 252524
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-090-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-090-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-108-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-108-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-120-owner.png",
+      "sha256": "cb852282da74a4d7c0006e40a7f4f0dff6b7334271f48a788455ae2f4b1bc5d3",
+      "bytes": 13911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/candidate-victory-120-paint.png",
+      "sha256": "a9a13001351725a21886573590f3d0902d52ccbab4668e16c9a4388c3036d2a6",
+      "bytes": 252692
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/compile-r01.log",
+      "sha256": "6e2fc18ee45ae611f133f814eeb41e05a8c9b4cbc476c68c09a5168a38c74b6a",
+      "bytes": 199
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/conservation-r01.json",
+      "sha256": "37950d87f1cbec3b02803739958a1afd6e4fe91ef24ebe0c4250a8124fe0c78b",
+      "bytes": 1187
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/plan-r01.json",
+      "sha256": "de76ca70f7dc73c0c6d88375b8a3d17c32c650f7a3164d6fd00c2f59f75c6d63",
+      "bytes": 784
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/binding.json",
+      "sha256": "d1dba8a0f02d38b56d26857c3baf5ef72f90c957ad9a9be9f09b3fa87ba14ba5",
+      "bytes": 935197
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/declaration.json",
+      "sha256": "3affc6b27e49dcfd5559871183619288ab0a902892447528089ddb938cb44050",
+      "bytes": 2009
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/labels.png",
+      "sha256": "6c6a2a77a6ed9f03000846b308d2ae417f13d831677204c4172d3379e09c33dd",
+      "bytes": 40149
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/atlas/c266-09-secretary-bird-c1.json",
+      "sha256": "41622d39b9a3aee853f6c504696e97d0331f04ebf8d34df0cfc3bae0e0a36c89",
+      "bytes": 6991
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/atlas/c266-09-secretary-bird-c1.png",
+      "sha256": "3702acb72d1f06e89890b602837d3aae127b0ad679e651ddcf3f2379201e320c",
+      "bytes": 213676
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/atlas/receipt.json",
+      "sha256": "d5541470f80bfaf14f53d6f8cf6c6982b2de505169cd6d45dcc0aa2a09e148e7",
+      "bytes": 2930
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/binding.json",
+      "sha256": "e81c451e2691cca2f5669684c679e0cc91fc99ecc737bc3c50fc2f5e91e31a47",
+      "bytes": 5795
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/keyed.png",
+      "sha256": "90866c516604598f5d501db9327a4ee5da6657ea884ed0c264eeb11612c40a5a",
+      "bytes": 1302718
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/manifest.json",
+      "sha256": "75172a530eb02518d3ec2251695a5b99e9f49fb609fe1823b3ce0271c512a012",
+      "bytes": 2851
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/ownership.png",
+      "sha256": "c41eeaa86cf9de5f07dcadbd54c40c967b9d2083d86c38d7ce87d54e2757247a",
+      "bytes": 13318
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/beak.png",
+      "sha256": "41244532f9f8be76c333001c4e725e32b8a3d13548c323dff8f40d68a621d694",
+      "bytes": 1644
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/body.png",
+      "sha256": "f493d5251752131beeaed7f9278228b8ed4ed1f60c04b1b4d146443265f8ef32",
+      "bytes": 6925
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/chest.png",
+      "sha256": "078e5f91e7b5a35f7b92c99d1eee13571cdec9f795639663ae2c60b3067ab943",
+      "bytes": 5441
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/far-foot.png",
+      "sha256": "30da4f7f947f1fc971dd72d77fda112aebef9f3df1c2f41fa9850312e07608e3",
+      "bytes": 4209
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/far-shin.png",
+      "sha256": "dc3b431337b384f55f4cc55606306a58c478b5e4ecb1e68a6751b9858eec01ed",
+      "bytes": 5433
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/far-thigh.png",
+      "sha256": "989c97aaf882251eaac799a7d380b3468118bcee0847d55cc97b2c5aabe4eca9",
+      "bytes": 15251
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/far-wing-flight.png",
+      "sha256": "e437e640be8d57f0f7b14e75e4460ce4572d3fea28110c0c4ce6ab926dca544f",
+      "bytes": 9687
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/far-wing-root.png",
+      "sha256": "5138dd055ae43695615916ec4ad71269b246bb54b0f5dd1f93ada8f046b83bda",
+      "bytes": 11834
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/head.png",
+      "sha256": "b6912e9820fda5fb8e144e14c561f8a7c7c31a5555a8b2213339b7f227e933b9",
+      "bytes": 35130
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/near-foot.png",
+      "sha256": "aef11ebc23c570f0b2613dc6efb3e5b41405c8222d0b85ab15c3d12c139ef335",
+      "bytes": 4782
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/near-shin.png",
+      "sha256": "a98a761411a83f6a3a20b5a323eea0ff9a8f92dd7aa3af108fb0a445e0ac8929",
+      "bytes": 6618
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/near-thigh.png",
+      "sha256": "88fda6e6039470b03021a97be17e8df48e240988c4490ee5641db0ced34fe51e",
+      "bytes": 12992
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/near-wing-flight.png",
+      "sha256": "b05417a0dbdef0a50138178a32e1626e1ace78d3267933aa09ae890fa12dec6c",
+      "bytes": 31695
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/near-wing-root.png",
+      "sha256": "e26d6daf831eb6fa53b35602944579b6fd752491af0071d56e5af02a7e4d8c37",
+      "bytes": 61093
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/neck-lower.png",
+      "sha256": "d9b2bb5e3e64f18c986820b04c5e9f8e1ec01d532ceddaa37c62cdda333a7a13",
+      "bytes": 11642
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/neck-upper.png",
+      "sha256": "7f0114244c44bbb162589f332644b61c45653596efdc080c3cf43518eee302cf",
+      "bytes": 7521
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/parts/tail.png",
+      "sha256": "5a46b00908022e11cef63a0abb21b322c1593ff8cefec1a68b6de91457d773be",
+      "bytes": 11405
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/parts/receipt.json",
+      "sha256": "9608ed03a2f57cd45a42796b98cd31f8f8dd3273fbacbc9897ed2806d70bfde1",
+      "bytes": 4858
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/pre-split-binding.json",
+      "sha256": "7424496a6d4cc96207a3d633ca87284bf2364d1da0ecdc418b4a8f83c2e10271",
+      "bytes": 579649
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/fit/record.json",
+      "sha256": "f4e114caf1bb5f0ceafa11a811fc47372cb20e8edb1e8a28d9c72b98190acba9",
+      "bytes": 6414
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/relabel-r01/receipt.json",
+      "sha256": "9318d82fde0660088bf773288075bee599e3e856284db6d55f89fac3a84520a5",
+      "bytes": 2069
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/run-r01.json",
+      "sha256": "9b592e6f7161714c976b368fa5ba552cf77932e0c63d923cb0adc1886cdc7407",
+      "bytes": 2919
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/source-boundary-probe.json",
+      "sha256": "33b5a0ec695076f86d10d8daf1ecfcf51c855a2eef943f8565346dbf0ffde876",
+      "bytes": 64337
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/static-r01.json",
+      "sha256": "141ee20b517d832d03878952c81301477ecf55252e6193b6fd15105f00c99dc3",
+      "bytes": 8441
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/static-r01.json.sources.json",
+      "sha256": "d1a52b1fc64a2ebb04b05f55e501adcf0417cf3d78282adc3d502efafb8b7fe1",
+      "bytes": 18817
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/secretary-bird/static-r01.log",
+      "sha256": "402255ab373ec6834c00458b9d43ddc3a6b57788c37908dfa3c352877bda2de0",
+      "bytes": 2196
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/c2-all-parts.png",
+      "sha256": "4e55f65a46fb41cb8855cd4374535f2edfdef8c22bc32da35b0d2afc0daef031",
+      "bytes": 1887828
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/c2-source-diagnostic.json",
+      "sha256": "f6258be573432d09a082795fbae0068beeecbef016a62587fa25f2717a3f62cc",
+      "bytes": 54907
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/snowshoe-hare/plan-c2-r01.json",
+      "sha256": "4a4130153a3fc03ee85007a710aad4dc4da13589250dc21a2a5b98a1414ebe28",
+      "bytes": 876
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/source-part-inventory40.json",
+      "sha256": "e97e9b4fe7f75196bdc5afdbed1233fbfc5c68bb80c869c09e208fbe53d7a343",
+      "bytes": 207633
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/triage-final-verification.json",
+      "sha256": "5bf0fd524dc46b279502ef02109a4099b9ba5dfb3e6c70e2a954ff58e97c6a1d",
+      "bytes": 4854
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/triage-inputs.py",
+      "sha256": "1a83e96fa63080f6002e34fe89f14f8e2cb096ccfc62471c2b82d1601920966b",
+      "bytes": 3939
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/triage-phase-manifest.json",
+      "sha256": "2642390aa72bf65c95914566526a918e9b80b86ca6a2dbdf598c5055b5e2f061",
+      "bytes": 71561
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/all-parts.png",
+      "sha256": "035604ce33a2b253b9dd9779adee9f2a9d4dbf406dbc2a8f75ba59a45e47769e",
+      "bytes": 811185
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/plan-r01.json",
+      "sha256": "414bcd189517d2e0ee8cb4e8164db593158ff5968ea2d1317b397ba6a3768046",
+      "bytes": 748
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/tropicbird/source-boundary-probe.json",
+      "sha256": "d4c6d62645f8a7769115b673bf54a64626c9948ab1c0f12915311d958f6f2eac",
+      "bytes": 49141
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/verify-binding-only.mjs",
+      "sha256": "0e9aa9a2749ce7b3e9dcb1201cdb48e84f2935996069d4c1a161543cdff41f2a",
+      "bytes": 3095
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/verify-candidate.mjs",
+      "sha256": "16c3b9deeac5800681dfab369b5647d4e2fd245820b1a09d79b6e68623ae70ad",
+      "bytes": 3147
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/whiptail/c2-all-parts.png",
+      "sha256": "dcfa383e02ad7b018f6a415ae22d4dfafd54731cb25ecd67beef227d16b62636",
+      "bytes": 1788604
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/whiptail/c2-source-diagnostic.json",
+      "sha256": "d166eae84214a69835cd9e0a3ff60d4542dd32a0a6c367a94f9ccfa42b26ce96",
+      "bytes": 14783
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/README.md",
+      "sha256": "7a17a233dc3a8db13fb7162b608ca9e38378049e6f83edae7930486d873ca5ce",
+      "bytes": 2113
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/join-current-c261.py",
+      "sha256": "8c1410b24eca88d52e711db2517df1a7cca05ac6cd9860d04060ac3b2bc519b6",
+      "bytes": 2363
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/body-neutral.png",
+      "sha256": "771ca49e79ad1bef1e44bf85a7968e7bbf12b1d4a16298d24251a8afc37f9699",
+      "bytes": 225124
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/checkpoint-final.json",
+      "sha256": "878b4e3857ae6076099ba248461c06803316f55a958df17cdb80ad1ab941342e",
+      "bytes": 9807
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/ear-near-root-neutral.png",
+      "sha256": "379d3e4b10675a43dc918061651fb111a22ca51f3061ebb2f5eb1d15848a70d5",
+      "bytes": 5550
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/ear-near-tip-neutral.png",
+      "sha256": "12556e530c2935591f2ec13bbb968e15cd7fcf1e4bd4d844b1a58cd1971500a1",
+      "bytes": 4412
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/evidence.json",
+      "sha256": "78c5b73c2f5daaf88a1ba8385f24dd30d7cc97cd7ff283f7cc0ca910a49ec5c2",
+      "bytes": 243169
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/fore-far-ankle-neutral.png",
+      "sha256": "3a2de44846a57a0a4d04c39cca45b1cee5327a41f0c9cdefa9d109deffe9eca7",
+      "bytes": 2321
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/fore-far-knee-neutral.png",
+      "sha256": "a34b3d60e6493b95005cc1186240d0b6fbdeeacb546667ad78b2d7d280fb226c",
+      "bytes": 3147
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/fore-far-paw-neutral.png",
+      "sha256": "8c7ac146a51531747f420952fc82c923df52e9ccff09c39a0aedbd19d149c616",
+      "bytes": 891
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/fore-far-root-neutral.png",
+      "sha256": "eaf3dcc19610228ddb64be2f8977efa9bda1f1a4cec0c6d69e5878ce3a43a7a4",
+      "bytes": 4179
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/fore-near-ankle-neutral.png",
+      "sha256": "0bbb716c783ed979e316c76d1e17db97094de4d9213ef301e86d48c4d4bd09d3",
+      "bytes": 3688
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/fore-near-knee-neutral.png",
+      "sha256": "80f8d9388b8e5aef1fc61d63d2b69bc8ecac373406d425b87242e57e6c542419",
+      "bytes": 2219
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/fore-near-paw-neutral.png",
+      "sha256": "f38a08220588ac791da7efdd109d46cf2fc4444b004fdc912a5703b6aaa41ec7",
+      "bytes": 1285
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/fore-near-root-neutral.png",
+      "sha256": "09b84d9a95e9c9cd485b5c1d8399356947711fb78f112438ab022f3850014bd8",
+      "bytes": 3071
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/freeze.json",
+      "sha256": "425b52ceb6b6538fc15e995cf04b1a0ebd4d2aa4b49c954a6482459834690fb2",
+      "bytes": 8355
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/head-neutral.png",
+      "sha256": "5c9e48d37e11e692c3cb3294cb6ed055ec1a306eac84c369c1b7b2610c46e75b",
+      "bytes": 69827
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/hind-far-ankle-neutral.png",
+      "sha256": "f88c7486fa6afd44f098cdb66ac1a717e4500e3f9369cd082ebd7ae37ee1acf7",
+      "bytes": 1592
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/hind-far-knee-neutral.png",
+      "sha256": "495266b891fe5a9d04a2004d256fa78926c852cf7f0ee04c48c35482afbcb716",
+      "bytes": 3130
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/hind-far-paw-neutral.png",
+      "sha256": "adf173f0ee5471108f28849fd4c8bdada3c6aa07578ece365ab71de75606f974",
+      "bytes": 2152
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/hind-far-root-neutral.png",
+      "sha256": "181ba73093d3332f1bf9307698d46567d879c7b96cd236ea787c42e74a01744c",
+      "bytes": 3999
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/hind-near-ankle-neutral.png",
+      "sha256": "e1b0d23ad0edf79aedcd0c97be3a12bc9521be4a8b7ff2c01c97e7dded255343",
+      "bytes": 3386
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/hind-near-knee-neutral.png",
+      "sha256": "c241bad04f3631f57fb4b306c6966604e76d91159179b43bfa3b6832dfc5062f",
+      "bytes": 3949
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/hind-near-paw-neutral.png",
+      "sha256": "26f3f106b6a295843ce05474b52c50ab05769809b9c5942b5fc0f6a2852aefe6",
+      "bytes": 3442
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/hind-near-root-neutral.png",
+      "sha256": "c23fff7ef0e71aef72dab7d8fb386c9b68176b303b48cb5f18ca4f066a816eff",
+      "bytes": 7032
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/jaw-neutral.png",
+      "sha256": "7a814b9830f94b583c1acb0ca8c43d37dd5f21fcd4b9ebc9d0594b4dd3ae5b07",
+      "bytes": 2909
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/keyed-neutral.png",
+      "sha256": "81416692da1d94562ba1202861ee906ba934b5c3231d6fdccaadaf1ea3658986",
+      "bytes": 421367
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/neck-neutral.png",
+      "sha256": "03e099b35454881cf532a4f7860070b587d277a6e0908c5d0502e23b6c3ed0a9",
+      "bytes": 32604
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/review-config.json",
+      "sha256": "44a9c4afd3dfab3e82de8db84e6dbb85d58d7f082c876a034677cada925cb41c",
+      "bytes": 3376
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/review.json",
+      "sha256": "8e029a5f534f284808153f105a8e1594cf11932dbf1dc349844f22ddc65e097b",
+      "bytes": 31702
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/review.md",
+      "sha256": "f6eb0590ebc05bd239e6f389e6a12c289df21452ba50a7b6feead124bcf580e5",
+      "bytes": 1339
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/tail-base-neutral.png",
+      "sha256": "57082182932eceb7cc5c4c6cc63f228f55f3079fd3b3b9138dab34bd1f74e214",
+      "bytes": 3290
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/tail-distal-neutral.png",
+      "sha256": "b496d7fc59cf87a4cb82c1618027251067b8c60b3cd099b8fea570f3123cef41",
+      "bytes": 1766
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/tail-middle-neutral.png",
+      "sha256": "6becf56f9b844fe4f46e699572dae399dc3e5d72cdf272b757d298b340396b88",
+      "bytes": 2513
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/tail-tip-neutral.png",
+      "sha256": "6fe418507bc8338a2fe4af5c10b1b043b2b6254d649d26c3e69f95e43151a37b",
+      "bytes": 561
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "8ab27b01d392171d4df374825027d9373e0d457c47e6fd34c75a4bfbd9d8d451",
+      "bytes": 1859805
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "d584554a3fce782f52eadf74799f449e4bd8be5ac886f69ff8339cfc807a1eb9",
+      "bytes": 1901548
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "46b153b16d9ff99e7d9e7fcc419ec6281c7c67fb3f5ae85a17a71731fc54ad53",
+      "bytes": 1823570
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "2b100934197765132949d71779453f008ecb8d238cc5962b6ca6cd3810dd6249",
+      "bytes": 1820450
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "d60b0fb493e133f0915fc9dc81ae2949f832a587319e22257d8667cb284628d8",
+      "bytes": 1860624
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/prepare-evidence.mjs",
+      "sha256": "6bd02fcc99d96cf5452e97b272d235ab7f83e65d6539f7c59ff1a3dafda993b0",
+      "bytes": 3645
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/review-config.TEMPLATE.json",
+      "sha256": "d72c0a990c8f62854eb4eddf6f76d8338b4caa745607f954af2d5aab8fc2b66f",
+      "bytes": 496
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/verify-review.mjs",
+      "sha256": "74675048f66628632044f0899135a228dc3389f6ed0b56cbaee65023eb390900",
+      "bytes": 4780
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/DECISIONS-r02.md",
+      "sha256": "930555b3cef37812e77f2570e0aa6177ca8c03b005d82bcbcae48e7173f5836c",
+      "bytes": 150845
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/DECISIONS.md",
+      "sha256": "9f64f900132abd10789f9e096b76d186669b328809ce3df05304296dcef1f722",
+      "bytes": 149818
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/current-ledger-r01.json",
+      "sha256": "ada72bd2d975940a510a50282680ca64f0e7f0de6554fc0f2a3a319cfc82c34a",
+      "bytes": 44039
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/README.md",
+      "sha256": "041cdd7124565196db650c67b8f2915824b7bb82f3b5f7c25655afe86cc199ac",
+      "bytes": 2315
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/arm-flank-hip-keyed-neutral-2x.png",
+      "sha256": "748d07ff3bd577c4ff6b7c55a6254f0efdcca0fd774ddff50090b94fc7fd4fd4",
+      "bytes": 639083
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/arm-flank-hip-keyed-neutral-native.png",
+      "sha256": "4f673b4b57b471c5faef4cc2d6dbe6cdabce7904c47c5044dd7ecf82923ef232",
+      "bytes": 551890
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/arm-flank-hip-original-2x.png",
+      "sha256": "e6a5e0fddf5c8587d8df06dabb8697dd815bd05566bc155bc11f3516ad2deca5",
+      "bytes": 908212
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/arm-flank-hip-original-native.png",
+      "sha256": "8a824d302ea467a257cc9504490705aa7d4328a9ac4c0e268115f94ace81431b",
+      "bytes": 769280
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/arm-flank-hip-raw-classifier-neutral-2x.png",
+      "sha256": "a2b8eea6d7c0fbac1b04e9cd0d508fad6c8570f0f5105614c6423de0775ccfda",
+      "bytes": 662294
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/arm-flank-hip-raw-classifier-neutral-native.png",
+      "sha256": "44dcc0f820cbb9c3854eec36a552d5abb69e4fbbffd69b86ea08ddbf978a253e",
+      "bytes": 573583
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/keyed-on-neutral.png",
+      "sha256": "77e4ece08117cc03626f31fc4eb3e411868d193467074c97298e58fb66be195d",
+      "bytes": 664416
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/keyed-preview.png",
+      "sha256": "feacba434bece37177d590b975cfb7484c90c18f6a55213088eef663af60321b",
+      "bytes": 1665850
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/numeric.json",
+      "sha256": "cbfd461a15884c19f696e026388bd4e120eabc5958ac1c4c3545685596635c22",
+      "bytes": 25675
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/observations.json",
+      "sha256": "38736355b0fe630d2ccae514d0372855439d7e590f01bd1fe8fad03c499afa15",
+      "bytes": 5131
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/proximal-hip-arm-overlap-keyed-neutral-2x.png",
+      "sha256": "8c2ccc5dc633f31b76f0af0e48565cc15cbd6429ce9578b9eeac744949882b63",
+      "bytes": 382520
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/proximal-hip-arm-overlap-keyed-neutral-native.png",
+      "sha256": "801e7f3d38d1f806a736d9e3d712df07464542f045b0b26c75a0a87ff0a89f6d",
+      "bytes": 329988
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/proximal-hip-arm-overlap-original-2x.png",
+      "sha256": "36b8b693cc46c0561fc5ac60b9c6281209c7d51e1a4bb3ad5a53d79703f80a7c",
+      "bytes": 451043
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/proximal-hip-arm-overlap-original-native.png",
+      "sha256": "4a4f52dfae5147284d794756cf45b831d65a310a5cf9159af1bc0ae9d09b762d",
+      "bytes": 388635
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/proximal-hip-arm-overlap-raw-classifier-neutral-2x.png",
+      "sha256": "fc069eb26edee8025e65078689a96c33d88a72784fe3092da8458128162016f0",
+      "bytes": 391735
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/proximal-hip-arm-overlap-raw-classifier-neutral-native.png",
+      "sha256": "9eb1cdb2a5c598a65305661c999bcee4a48f79505d9f2db293f85a96c32f4ea5",
+      "bytes": 339158
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-a/raw-classifier-on-neutral.png",
+      "sha256": "a7a5f67337248df7b7c2c99bcc51a1d5ed048ac2392978a2d731f4a8f91a80b9",
+      "bytes": 687519
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/arm-flank-hip-keyed-neutral-2x.png",
+      "sha256": "45869dab4233d96feb66249a80278cb1c2e38e50d29979126a806578bc5a90f3",
+      "bytes": 704689
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/arm-flank-hip-keyed-neutral-native.png",
+      "sha256": "73ff29db3de55ca8957e5de6dbb04e18240cd4596df5d0f3b6b296084fe0f755",
+      "bytes": 611629
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/arm-flank-hip-original-2x.png",
+      "sha256": "cb4e2e57615db9a1548fdad5f1c8a259ee3109b1e50166932fdba33f062fec3c",
+      "bytes": 951136
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/arm-flank-hip-original-native.png",
+      "sha256": "5f947c7de532499b9cf5ccd80906412b061ef2254962fabd120b04f00ec57d8e",
+      "bytes": 810871
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/arm-flank-hip-raw-classifier-neutral-2x.png",
+      "sha256": "241aca4478dbc98e334b25cd5acbc528b7d2392d4cfd0bc38726b16acae6cfa2",
+      "bytes": 722850
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/arm-flank-hip-raw-classifier-neutral-native.png",
+      "sha256": "3581f186cda2a8d06da4d05ddea427052f32d69ec9ecb936c72cdae28033b32e",
+      "bytes": 628953
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/keyed-on-neutral.png",
+      "sha256": "bd1491644d0695546b14409c870aad4696b9e6bbb1b5a2232aee0f2b68e1b48e",
+      "bytes": 762193
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/keyed-preview.png",
+      "sha256": "05232900738e07169d35bbd2028d58fa2f30360ae4cc1b8394fa86c25750e16c",
+      "bytes": 1736080
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/numeric.json",
+      "sha256": "ce9edb33da97e0892e0f416c0a600ec71b178721a701fa1904328172f536b0ef",
+      "bytes": 13659
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/observations.json",
+      "sha256": "1cb0d2e980ca995cec667ab83c65c6291e1a48beeed175653d9976378304b2e9",
+      "bytes": 5132
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/proximal-hip-arm-overlap-keyed-neutral-2x.png",
+      "sha256": "0c16492ca610afb079f8cbcbcedcf25928554c673879e106dfaf6bacaa37e50c",
+      "bytes": 430408
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/proximal-hip-arm-overlap-keyed-neutral-native.png",
+      "sha256": "e2cdecf5a1c0ce5ba694a5190e29250c93b9854fcfaed40e7f76c44c1514d3a2",
+      "bytes": 373035
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/proximal-hip-arm-overlap-original-2x.png",
+      "sha256": "ea31540cfa20e39a49dba1a00c06c11709a92d830166f672f233ada156ba70d9",
+      "bytes": 472918
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/proximal-hip-arm-overlap-original-native.png",
+      "sha256": "7752c969f85a3655e6b5439a11f4ce1ea90f96121e67788a2ff5fa4c1587a205",
+      "bytes": 410386
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/proximal-hip-arm-overlap-raw-classifier-neutral-2x.png",
+      "sha256": "c407f80fb8b16b0d009541b63a8bcae2ea0e22ac538d17ecb84730db6a8a0d0c",
+      "bytes": 436121
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/proximal-hip-arm-overlap-raw-classifier-neutral-native.png",
+      "sha256": "5ddae379c12018573fe28f78fa1a8e544b141c4be57d69d916eb2d1592705e80",
+      "bytes": 378875
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-b/raw-classifier-on-neutral.png",
+      "sha256": "7381a6c3b7bda15ae892ce2797769772472f44afc571409a7b3d539b59a14b4a",
+      "bytes": 781725
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/arm-flank-hip-keyed-neutral-2x.png",
+      "sha256": "437103c07add61fa19cde420516615d3e5a6a4f21c1141746c37b5fd2c1954b8",
+      "bytes": 730342
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/arm-flank-hip-keyed-neutral-native.png",
+      "sha256": "ee0a8c443966376da9377cabfab8a47f6be657945a3ff80d298ae2e9823714bd",
+      "bytes": 629575
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/arm-flank-hip-original-2x.png",
+      "sha256": "db034c29e59ab5aafe6aabae871b5d50922e554384a56e3f608fa4b0beda962d",
+      "bytes": 988526
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/arm-flank-hip-original-native.png",
+      "sha256": "05342316d7df0b1b4780ab9052fe4d24073657022b3684e70768c81168b0a688",
+      "bytes": 841536
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/arm-flank-hip-raw-classifier-neutral-2x.png",
+      "sha256": "b22c61ad6a6a9456af3b00b965cc452c994a7df475d084bc144702ec9a00d26e",
+      "bytes": 756642
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/arm-flank-hip-raw-classifier-neutral-native.png",
+      "sha256": "cb463616d7f40ae8ae3b7a1d0dcd6e382ceb9517ed13aed5ef371dcf66eef644",
+      "bytes": 654605
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/keyed-on-neutral.png",
+      "sha256": "9ecff7c315cd010a7556d944f9110f4484939cc42a23677dcce42ff4b513c593",
+      "bytes": 807953
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/keyed-preview.png",
+      "sha256": "032d23fc8e06f6827e644286ce23f57cb0788c679fb9ac9c5b2bd6565d630d63",
+      "bytes": 1803841
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/numeric.json",
+      "sha256": "b1f3a2ca515e515e165ad75919870ccc56ad5b167208aa01526ab929e9258ba2",
+      "bytes": 27179
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/observations.json",
+      "sha256": "65c552f3af7fdf8aad285db01344e78140803e3624690748745a9ba064697e2c",
+      "bytes": 5132
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/proximal-hip-arm-overlap-keyed-neutral-2x.png",
+      "sha256": "2b2e607530e1821e3d5364c8039cf2f00b5da4cdc9acb0a34787d837a2b072fb",
+      "bytes": 400314
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/proximal-hip-arm-overlap-keyed-neutral-native.png",
+      "sha256": "831d46daebf1e85e1fe3bd1e034c35c9d7a97d9d419b2cae9133f7eb4fdb3575",
+      "bytes": 343154
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/proximal-hip-arm-overlap-original-2x.png",
+      "sha256": "3dd761efa2e5d2b11b16d20622529e3e776c3041efe2590ebaec8ac89f45999b",
+      "bytes": 463383
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/proximal-hip-arm-overlap-original-native.png",
+      "sha256": "84cbb78916a9f9fbe1cc99ccd3c0786c483f6e1a15774b4ab9d131fb68f7c3fc",
+      "bytes": 397813
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/proximal-hip-arm-overlap-raw-classifier-neutral-2x.png",
+      "sha256": "fb84a504a849915854fd47d33a9e5a73e529ae772bd3ee823d34557eaa68d04f",
+      "bytes": 409780
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/proximal-hip-arm-overlap-raw-classifier-neutral-native.png",
+      "sha256": "5bee9479df7982529e35e54ec08942ab0a206a654ea1969b96e0a46c6901bfb1",
+      "bytes": 352635
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-c/raw-classifier-on-neutral.png",
+      "sha256": "d2f0ba26044e33541d99678078757413e3e0a80df1c67b885f5657ac2d0b5718",
+      "bytes": 836984
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/arm-flank-hip-keyed-neutral-2x.png",
+      "sha256": "66f609e1b0b0381bc9353b1c6e79af1df999ad315661add6c278178e6dfdfa42",
+      "bytes": 774585
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/arm-flank-hip-keyed-neutral-native.png",
+      "sha256": "3e2bdc4481ffa6f155c84aa2e605a4dacf920f73fadea084634aaaf2927266dd",
+      "bytes": 659436
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/arm-flank-hip-original-2x.png",
+      "sha256": "0e12ca39997fa1dadf3647e5bead24e5ce78c2894453c857a4de091dd07e4e16",
+      "bytes": 1022095
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/arm-flank-hip-original-native.png",
+      "sha256": "06f1ae15aa42df1322d9fcc6c7c604fc08ced3e890c89f77299588aca3bc9ff4",
+      "bytes": 863526
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/arm-flank-hip-raw-classifier-neutral-2x.png",
+      "sha256": "ecfcd23b9bf396eeea0cceff0b007989d29b130d7019f4d4b8d36106a5cd693a",
+      "bytes": 798195
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/arm-flank-hip-raw-classifier-neutral-native.png",
+      "sha256": "ce7a8eaecc1d0cd0fd42ea8f6d3e3da306e7a475cd71e3be2a7aa97db1a79c14",
+      "bytes": 682580
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/keyed-on-neutral.png",
+      "sha256": "ac29a3f79a9bcc238a37fd06d38b1f6820b1da1436159556914ddde83ed8ec39",
+      "bytes": 877269
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/keyed-preview.png",
+      "sha256": "74529cab590362348f4b89f4be053c67fed70b7003777e1c28b1de59ea75070f",
+      "bytes": 1880400
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/numeric.json",
+      "sha256": "b6649d699ae579d93047acb264f7da1c95f254ad643c8082e1dae50d0c10b947",
+      "bytes": 26495
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/observations.json",
+      "sha256": "7eaa5e321b9053042de5d525bac8fdced9cc12dc715fb41c3fef6c25b96dfcad",
+      "bytes": 5132
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/proximal-hip-arm-overlap-keyed-neutral-2x.png",
+      "sha256": "3c5f54f76a83ce2f8b2fa557729af3ab576e4b4dfed0ad1b52fc630990d54910",
+      "bytes": 430911
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/proximal-hip-arm-overlap-keyed-neutral-native.png",
+      "sha256": "053620782a932953c5102ebe0671a93b89c3da96407dd785826d9cee9d06f508",
+      "bytes": 362984
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/proximal-hip-arm-overlap-original-2x.png",
+      "sha256": "0eaeee01e9bd9fdfd5f93b5194bd1b3a0f37ce8ec17164375cee11d95dc2c604",
+      "bytes": 476628
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/proximal-hip-arm-overlap-original-native.png",
+      "sha256": "b2b6a3241e3ab86dfa5a43f982ee551ce7822ca7d1c70074ebf3d29ca43e6113",
+      "bytes": 403791
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/proximal-hip-arm-overlap-raw-classifier-neutral-2x.png",
+      "sha256": "fbd2887c5517653f11ae284eaec83a02e9d47a676cea32463eca0bb38e734ea8",
+      "bytes": 438576
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/proximal-hip-arm-overlap-raw-classifier-neutral-native.png",
+      "sha256": "be444382fcda54063e6ecfe49301699937920f81cef70b8e810e1ac405e443f7",
+      "bytes": 370377
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-gibbon-d/raw-classifier-on-neutral.png",
+      "sha256": "9c7b9446a4d67b704bddee47818891117f9fd25819381a3b3ddb3f1c744d93e2",
+      "bytes": 904141
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/close-gibbon.py",
+      "sha256": "fe449a0d7d5504436463f0dad0193db356e8e89f51439a467b3a943d4f5c2a59",
+      "bytes": 5483
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/groups/gibbon/review.json",
+      "sha256": "838f29b5b1be13f9f0079d4d61b95b31fc375935bee3befe2d500eb96b9853b0",
+      "bytes": 9327
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/kangaroo-boxes.json",
+      "sha256": "a7b161cff5e248faad8d3509867658c0560d1b5d11bea8c79b2bdd44073e8c57",
+      "bytes": 208
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/review-group-numeric.mjs",
+      "sha256": "f86f4591fe893004963395147ba351dabd87b59c4bf734ba5b4a35bee14a78c1",
+      "bytes": 1349
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w4-delivery/wave02-checkpoint/README.md",
+      "sha256": "861991bc1fbc986e69154f7922879976939f5ce870ad654e96cabb4bc35d4af1",
+      "bytes": 2144
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w4-delivery/wave02-checkpoint/manifest.json",
+      "sha256": "fa596483daabb78477a7678a7a8f42537e3b3426f1c9c2dc4e6378eb647f4375",
+      "bytes": 336593
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "58535209af71e3bbf88f6bb5726e7d7d505c73510d05f467d84a5302d84f1ce1",
+      "bytes": 553032
+    }
+  ],
+  "files": 460,
+  "remoteOperations": false
+}

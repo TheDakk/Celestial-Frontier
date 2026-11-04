@@ -1,0 +1,38 @@
+{
+  "schema": "cf.arap-no-progress-receipt/v1",
+  "before": {
+    "path": "audits/C2_CONTINUOUS_SKIN_20260916/cpu-kernel-03/arap-before-no-progress.mjs",
+    "sha256": "52245dd424b5d4acc86c298a7021395c8d2a4ef8677c4761f95191ba2efceb66"
+  },
+  "after": {
+    "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+    "sha256": "d4bca2a508d7fbbe3c64c19f7870522847740acdcacbb117dd5034a804f54127"
+  },
+  "evidence": {
+    "path": "audits/C2_CONTINUOUS_SKIN_20260916/cpu-kernel-03/no-progress-effect.json",
+    "sha256": "79cf56c3a3c3a010e9da5cad64dd5f00b7fa991df735cd0fd993323c95a473d2"
+  },
+  "summary": [
+    {
+      "id": "civet",
+      "changedSamples": 0,
+      "sweepsBefore": 1386,
+      "sweepsAfter": 1386,
+      "allPublishedBytesIdentical": true
+    },
+    {
+      "id": "fox",
+      "changedSamples": 20,
+      "sweepsBefore": 2548,
+      "sweepsAfter": 2407,
+      "allPublishedBytesIdentical": true
+    },
+    {
+      "id": "procedural",
+      "changedSamples": 0,
+      "sweepsBefore": 1210,
+      "sweepsAfter": 1210,
+      "allPublishedBytesIdentical": true
+    }
+  ]
+}

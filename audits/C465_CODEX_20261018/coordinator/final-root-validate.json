@@ -1,0 +1,14 @@
+{
+  "stage": "final-root-validate",
+  "command": [
+    "node",
+    "tools/validate.js"
+  ],
+  "startedUnix": 1792383739.957097,
+  "beforeGiB": 55.5038948059082,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 14.06,
+  "lowestGiB": 55.48834991455078,
+  "afterGiB": 55.48834991455078
+}

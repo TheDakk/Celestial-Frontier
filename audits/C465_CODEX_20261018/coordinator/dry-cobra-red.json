@@ -1,0 +1,25 @@
+{
+  "stage": "dry-cobra-red",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-dry-cobra-red",
+    "--",
+    "/usr/bin/env",
+    "C465_COBRA_EVIDENCE_DIR=audits/C465_CODEX_20261018/coordinator/cobra-red-fields",
+    "node",
+    "port/v2/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "port/v2/vitest.config.ts",
+    "port/v2/apps/game/src/motion/dry-serpent-victory.test.ts"
+  ],
+  "startedUnix": 1792378245.647551,
+  "beforeGiB": 59.77560806274414,
+  "status": "RED",
+  "exitCode": 1,
+  "elapsedSeconds": 4.004,
+  "lowestGiB": 59.77531814575195,
+  "afterGiB": 59.775108337402344
+}

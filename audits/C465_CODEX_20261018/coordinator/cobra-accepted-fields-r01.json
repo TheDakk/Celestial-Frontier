@@ -1,0 +1,19 @@
+{
+  "stage": "cobra-accepted-fields-r01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-cobra-accepted-fields",
+    "--",
+    "node",
+    "audits/C465_CODEX_20261018/w2-checkpoint/run-cobra-accepted-fields-r01.mjs"
+  ],
+  "startedUnix": 1792377996.8987389,
+  "beforeGiB": 59.77302932739258,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 18.053,
+  "lowestGiB": 59.773014068603516,
+  "afterGiB": 59.77500534057617
+}

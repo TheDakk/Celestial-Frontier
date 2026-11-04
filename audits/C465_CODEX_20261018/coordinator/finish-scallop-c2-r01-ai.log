@@ -1,0 +1,7 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"c465-scallop-c2-r01","rows":[{"id":"c465-scallop-c2-r01","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"c465-scallop-c2-r01","rows":[{"id":"c465-scallop-c2-r01","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"c465-scallop-c2-r01","rows":[{"id":"c465-scallop-c2-r01","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"c465-scallop-c2-r01","rows":[{"id":"c465-scallop-c2-r01","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"complete","subject":"c465-scallop-c2-r01","rows":[{"id":"c465-scallop-c2-r01","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C465_CODEX_20261018/coordinator/finishes/scallop-c2-r01/finished"}

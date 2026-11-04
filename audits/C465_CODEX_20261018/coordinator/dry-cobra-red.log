@@ -1,0 +1,21 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac
+
+ ❯ port/v2/apps/game/src/motion/dry-serpent-victory.test.ts (4 tests | 1 failed) 194ms
+   × actual Cobra dry victory preserves forward nonflattened painted head through exact idle50/90 and complete victory sweep 56ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  port/v2/apps/game/src/motion/dry-serpent-victory.test.ts > actual Cobra dry victory preserves forward nonflattened painted head through exact idle50/90 and complete victory sweep
+AssertionError: expected 0.5540646121844529 to be greater than 0.6
+ ❯ port/v2/apps/game/src/motion/dry-serpent-victory.test.ts:21:811
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  22:50:48
+   Duration  516ms (transform 161ms, setup 0ms, import 203ms, tests 194ms, environment 0ms)
+

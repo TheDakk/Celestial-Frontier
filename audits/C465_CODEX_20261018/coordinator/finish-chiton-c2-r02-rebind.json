@@ -1,0 +1,20 @@
+{
+  "stage": "finish-chiton-c2-r02-rebind",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-chiton-c2-r02-rebind",
+    "--",
+    "node",
+    "audits/C465_CODEX_20261018/coordinator/rebind-one.mjs",
+    "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02"
+  ],
+  "startedUnix": 1792383234.739603,
+  "beforeGiB": 52.65443801879883,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 4.023,
+  "lowestGiB": 52.65442657470703,
+  "afterGiB": 53.65032196044922
+}

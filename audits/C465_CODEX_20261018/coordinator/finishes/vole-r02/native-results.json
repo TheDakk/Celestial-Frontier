@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c465-vole-r02",
+    "packetId": "c465-vole-r02",
+    "name": "Vole",
+    "fit": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/rebound/c465-vole-r02",
+    "nativeDir": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native",
+    "nativeReport": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/native/report.json",
+    "script": "audits/C266_CODEX_20261017/coordinator/vole-01/script.json",
+    "masterSha256": "c4157d152211abbc335c2963329e69ef55bd87c88072022830f20dc560b74234",
+    "sourceHead": "3f0ceb34e2eb1d8da4d907e6f480cdd3480003d2",
+    "sourceHeadBinding": "G signed C467 observed-sourceproducer; no runtimechange",
+    "finishedMaster": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/c465-vole-r02-finished.png",
+    "finishReceipt": "audits/C465_CODEX_20261018/coordinator/finishes/vole-r02/finished/c465-vole-r02-receipt.json",
+    "checkpointReview": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/checkpoint-final.json",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "schema": "cf.c444-manual-new-source-observation/v1",
+  "id": "c444-11-cricket-a",
+  "species": "Cricket",
+  "masterSha256": "172b1734ee5e85a965fe88a0196869382061fb11a06b2e49db8389a1037b3d76",
+  "promptSha256": "e5d137d16da8a5966cd5c09d8d7159b03357944febea6bcc53015175023cd747",
+  "actualGeneratorSeed": null,
+  "fullSizeOriginalViewed": false,
+  "criticalNativePixelCropsViewed": [],
+  "visibleAnatomyInventory": [],
+  "mustReadObservations": [],
+  "actualTopologyDefects": [],
+  "naturalOcclusionObservations": [],
+  "keyedPreviewObservations": [],
+  "canonicalMarginReview": null,
+  "keyedFeatureRetention": {
+    "status": "PENDING_REVIEW",
+    "evidence": []
+  },
+  "currentPipelineCompatibility": {
+    "status": "PENDING_REVIEW",
+    "visibleRequiredStructures": [],
+    "unresolved": []
+  },
+  "disposition": "PENDING_MANUAL_REVIEW",
+  "sourceEligibleForAuthoring": false,
+  "admissions": 0
+}

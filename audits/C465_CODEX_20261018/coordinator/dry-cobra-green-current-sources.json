@@ -1,0 +1,24 @@
+{
+  "stage": "dry-cobra-green-current-sources",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-dry-cobra-current-sources",
+    "--",
+    "/usr/bin/env",
+    "C465_COBRA_EVIDENCE_DIR=audits/C465_CODEX_20261018/coordinator/cobra-current-green-fields",
+    "node",
+    "port/v2/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "audits/C465_CODEX_20261018/coordinator/cobra-vitest.config.mjs"
+  ],
+  "startedUnix": 1792378504.114951,
+  "beforeGiB": 59.747371673583984,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.003,
+  "lowestGiB": 59.74736022949219,
+  "afterGiB": 59.7471923828125
+}

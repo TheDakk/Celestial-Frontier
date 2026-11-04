@@ -1,0 +1,11 @@
+{
+  "status": "RELEASED",
+  "startedAt": "2026-10-18T21:17:17.628Z",
+  "startedUnix": 1792358237.628,
+  "beforeGiB": 65.12968444824219,
+  "lowestGiB": 65.11022567749023,
+  "inferenceMinimumGiB": 42,
+  "floorGiB": 30,
+  "afterGiB": 65.11022186279297,
+  "elapsedSeconds": 24.042999982833862
+}

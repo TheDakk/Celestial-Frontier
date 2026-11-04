@@ -1,0 +1,15 @@
+{
+  "status": "FROZEN_W2_CLEAN_BEFORE_AI",
+  "id": "c465-vole-r02",
+  "checkpointReview": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/checkpoint-final.json",
+  "checkpointReviewSha256": "878b4e3857ae6076099ba248461c06803316f55a958df17cdb80ad1ab941342e",
+  "nativeReview": "audits/C465_CODEX_20261018/w2-checkpoint/vole-native-review/native-r02/review.json",
+  "nativeReviewSha256": "8e029a5f534f284808153f105a8e1594cf11932dbf1dc349844f22ddc65e097b",
+  "nativePlan": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/plan.json",
+  "nativePlanSha256": "bfec64943903d5b80cfdb0c94a825addf6ce07aeb9a059b116a505a3800ac611",
+  "nativeReport": "audits/C465_CODEX_20261018/coordinator/plans/vole-r02/native/report.json",
+  "nativeReportSha256": "1d71600597c9baef6a2ce3c768842acf2c248170784acd10f2a5e815e23f66b3",
+  "triage": "audits/C465_CODEX_20261018/coordinator/triage-vole-r02",
+  "newAdmissions": 0,
+  "I5RecertificationRequired": false
+}

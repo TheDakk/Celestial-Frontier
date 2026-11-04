@@ -1,0 +1,469 @@
+{
+  "schema": "cf.c444-new-original-source-numeric/v1",
+  "status": "SOURCE_NUMERIC_ONLY_NOT_ANATOMY_ACCEPTANCE",
+  "id": "c444-11-cricket-a",
+  "species": "Cricket",
+  "familyGroup": "c444-11-cricket",
+  "keyColor": "magenta",
+  "source": {
+    "masterPath": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/master.png",
+    "masterSha256": "172b1734ee5e85a965fe88a0196869382061fb11a06b2e49db8389a1037b3d76",
+    "masterBytes": 1490009,
+    "originalDecodedRgbaSha256": "910804966801939828a0fd85f197e7e1517282cd35d45aa29fbecd56f85abb30",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "requestedDimensions": [
+      1254,
+      1254
+    ],
+    "requestedDimensionMatch": true,
+    "dimensionRule": "Requested-vs-actual is prompt QA only; canonical margin uses actual native width/height. No resize/pad/crop.",
+    "requestPath": "audits/C444_CODEX_20261018/w1-source/newreviews/request-revisions/style-input-r04/c444-11-cricket-a/request.json",
+    "requestSha256": "fe8a839a242a216f375a2fd6f50c93cb04be6e38c5e205b6f723dfa8bbc1bbac",
+    "requestAuthority": "C444_EFFECTIVE_R04_EXACT_FROZEN_REQUEST",
+    "promptPath": "audits/C444_CODEX_20261018/w1-source/newreviews/request-revisions/style-input-r04/c444-11-cricket-a/prompt.txt",
+    "promptSha256": "e5d137d16da8a5966cd5c09d8d7159b03357944febea6bcc53015175023cd747",
+    "actualGeneratorSeed": null
+  },
+  "generationReceipt": {
+    "path": "audits/C444_CODEX_20261018/coordinator/paintings/c444-11-cricket-a/generation.json",
+    "sha256": "a8c69fb513c45c44bbce0621faeeecb92027cb34872341e538ea897fd8325354",
+    "bytes": 1264,
+    "masterAndPromptParityVerified": true,
+    "outputModified": false,
+    "actualGeneratorSeed": null
+  },
+  "effectiveIndex": {
+    "path": "audits/C444_CODEX_20261018/w1-source/newreviews/effective-groups-r04.json",
+    "sha256": "6be5efcc28c04be1b33763432f505fa68195ebb2461700c309f0bdd27130c343",
+    "bytes": 281294
+  },
+  "effectiveAuthorityFreeze": {
+    "path": "audits/C444_CODEX_20261018/w1-source/newreviews/effective-authority-freeze-r04.json",
+    "sha256": "620aea2f0b2258ffac8d4540ad71dbdc7d931703255bb64d76da37e4fd9c5544"
+  },
+  "authority": {
+    "intakePath": "port/v2/tools/creature-animation/authored-intake.mjs",
+    "intakeSha256": "81d6f10dc16ac716b15acc6ca2485022e6c22503aaa1789441fc709968ffd81a",
+    "keyerPath": "tools/local-image-generation/kit-contact-math.mjs",
+    "keyerSha256": "25e61c7c671dd54723f9116d8c1d2b06f8f31805a53b06058d22fccd86d091b9",
+    "helperPath": "audits/C444_CODEX_20261018/w1-source/newreviews/review-source.mjs",
+    "helperSha256": "6b08d0b5b035a2e9b3aca178fb4e8014ae1a5cd212a7933e1a1ed5264acbb50b"
+  },
+  "canonicalKeyedAlphaMargin": {
+    "status": "MEASURED",
+    "sourceBoxExclusive": [
+      204,
+      153,
+      1018,
+      994
+    ],
+    "foregroundPixels": 107684,
+    "marginsPx": {
+      "left": 204,
+      "right": 236,
+      "top": 153,
+      "bottom": 260
+    },
+    "requiredPx": {
+      "horizontal": 100.32,
+      "vertical": 100.32
+    },
+    "rule": "8 percent clear on each side; all alpha>16 pixels; no component discarded",
+    "pass": true
+  },
+  "sourcePreErosionDiagnostic": {
+    "authority": "Read-only diagnostic of current key classifier BEFORE its existing one-pixel erosion; no alternative intake mask",
+    "margin": {
+      "status": "MEASURED",
+      "sourceBoxExclusive": [
+        202,
+        130,
+        1019,
+        999
+      ],
+      "foregroundPixels": 117919,
+      "marginsPx": {
+        "left": 202,
+        "right": 235,
+        "top": 130,
+        "bottom": 255
+      },
+      "requiredPx": {
+        "horizontal": 100.32,
+        "vertical": 100.32
+      },
+      "rule": "8 percent clear on each side; all alpha>16 pixels; no component discarded",
+      "pass": true
+    }
+  },
+  "components": {
+    "count": 177,
+    "allComponentPixels": 107684,
+    "largest20": [
+      {
+        "pixels": 107195,
+        "sourceBoxExclusive": [
+          207,
+          365,
+          1018,
+          985
+        ]
+      },
+      {
+        "pixels": 87,
+        "sourceBoxExclusive": [
+          735,
+          327,
+          779,
+          365
+        ]
+      },
+      {
+        "pixels": 33,
+        "sourceBoxExclusive": [
+          844,
+          860,
+          855,
+          875
+        ]
+      },
+      {
+        "pixels": 25,
+        "sourceBoxExclusive": [
+          826,
+          866,
+          830,
+          878
+        ]
+      },
+      {
+        "pixels": 20,
+        "sourceBoxExclusive": [
+          1005,
+          350,
+          1009,
+          366
+        ]
+      },
+      {
+        "pixels": 17,
+        "sourceBoxExclusive": [
+          856,
+          849,
+          864,
+          859
+        ]
+      },
+      {
+        "pixels": 16,
+        "sourceBoxExclusive": [
+          708,
+          307,
+          718,
+          314
+        ]
+      },
+      {
+        "pixels": 13,
+        "sourceBoxExclusive": [
+          723,
+          318,
+          731,
+          324
+        ]
+      },
+      {
+        "pixels": 12,
+        "sourceBoxExclusive": [
+          1002,
+          341,
+          1005,
+          350
+        ]
+      },
+      {
+        "pixels": 11,
+        "sourceBoxExclusive": [
+          701,
+          302,
+          708,
+          307
+        ]
+      },
+      {
+        "pixels": 6,
+        "sourceBoxExclusive": [
+          719,
+          315,
+          723,
+          318
+        ]
+      },
+      {
+        "pixels": 6,
+        "sourceBoxExclusive": [
+          994,
+          319,
+          996,
+          324
+        ]
+      },
+      {
+        "pixels": 6,
+        "sourceBoxExclusive": [
+          731,
+          324,
+          735,
+          327
+        ]
+      },
+      {
+        "pixels": 6,
+        "sourceBoxExclusive": [
+          878,
+          822,
+          880,
+          827
+        ]
+      },
+      {
+        "pixels": 4,
+        "sourceBoxExclusive": [
+          666,
+          278,
+          669,
+          280
+        ]
+      },
+      {
+        "pixels": 4,
+        "sourceBoxExclusive": [
+          669,
+          280,
+          672,
+          282
+        ]
+      },
+      {
+        "pixels": 4,
+        "sourceBoxExclusive": [
+          682,
+          289,
+          685,
+          291
+        ]
+      },
+      {
+        "pixels": 4,
+        "sourceBoxExclusive": [
+          691,
+          295,
+          694,
+          297
+        ]
+      },
+      {
+        "pixels": 4,
+        "sourceBoxExclusive": [
+          694,
+          297,
+          697,
+          299
+        ]
+      },
+      {
+        "pixels": 4,
+        "sourceBoxExclusive": [
+          698,
+          300,
+          701,
+          302
+        ]
+      }
+    ],
+    "rule": "Census only. No size cap or island rejection introduced; all components remain in margin."
+  },
+  "keyedRgbaSha256": "1c1614e7c550922ad9c299d0e4662c4d7b11af9aaf805cac99deeeeaff388df0",
+  "keyedAlphaSha256": "971ff41a863aa15224b9db4a9e6ad3c278258aa509249ad662514f79c751930a",
+  "keyerReceipt": {
+    "erodedPixels": 10235,
+    "despilledPixels": 64,
+    "unresolvedEdgePixels": 1,
+    "narrowEdgeDonors": 15
+  },
+  "keyedIntakeRefusal": null,
+  "backgroundPromptQA": {
+    "samples": [
+      {
+        "x": 0,
+        "y": 0,
+        "rgba": [
+          240,
+          14,
+          242,
+          255
+        ]
+      },
+      {
+        "x": 1253,
+        "y": 0,
+        "rgba": [
+          247,
+          17,
+          243,
+          255
+        ]
+      },
+      {
+        "x": 0,
+        "y": 1253,
+        "rgba": [
+          237,
+          33,
+          239,
+          255
+        ]
+      },
+      {
+        "x": 1253,
+        "y": 1253,
+        "rgba": [
+          243,
+          29,
+          241,
+          255
+        ]
+      },
+      {
+        "x": 627,
+        "y": 0,
+        "rgba": [
+          251,
+          5,
+          251,
+          255
+        ]
+      },
+      {
+        "x": 627,
+        "y": 1253,
+        "rgba": [
+          250,
+          12,
+          247,
+          255
+        ]
+      }
+    ],
+    "rule": "Prompt QA only. Uniformity is not tested as an admission gate; keyed-RGBA intake is used directly."
+  },
+  "fullSizeVisualReviewRequired": true,
+  "humanTopologyIdentityReviewRequired": true,
+  "allFourCandidateReviewRequired": true,
+  "sourceEligibleForAuthoring": false,
+  "nativeRun": false,
+  "admissions": 0,
+  "diagnosticImages": [
+    {
+      "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/keyed-preview.png",
+      "sha256": "f76ab561a49aadb88944a959e978025ba66700095b5f0876cba7dc4b3b800668",
+      "meaning": "Exact existing intake keyed/despilled RGBA, diagnostic preview only; untouched original remains authoritative"
+    },
+    {
+      "sourceBoxExclusive": [
+        192,
+        141,
+        1030,
+        1006
+      ],
+      "native": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/complete-subject-native.png",
+        "sha256": "5c154a607c0fca6250845dce9b51ee56d3d052342278eb22f9971b3e6268f4ab"
+      },
+      "zoom2x": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/complete-subject-2x.png",
+        "sha256": "69588b6b8e1def476d4483c930584a65b22c06b9095f1fe66305a6c125295758",
+        "transform": "Exact source pixel crop, nearest-neighbour 2x for inspection; never replaces master"
+      }
+    },
+    {
+      "sourceBoxExclusive": [
+        340,
+        70,
+        1200,
+        820
+      ],
+      "native": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/long-antenna-paths-native.png",
+        "sha256": "6a2d5312aeec15d6f90cde7ada8a41cdb18c4d8f26b5474c2fc29b1b647a1ce8"
+      },
+      "zoom2x": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/long-antenna-paths-2x.png",
+        "sha256": "cb30b715457e6ede32ff4e0db4b1eedcd289b8f3759d7394bd814e5d16834a59",
+        "transform": "Exact source pixel crop, nearest-neighbour 2x for inspection; never replaces master"
+      }
+    },
+    {
+      "sourceBoxExclusive": [
+        90,
+        510,
+        1110,
+        1060
+      ],
+      "native": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/thoracic-six-leg-paths-native.png",
+        "sha256": "6e857be8e91dd3293883155715b8a74d46a0fe4ec9dc30bfeb5612be1cf3ad36"
+      },
+      "zoom2x": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/thoracic-six-leg-paths-2x.png",
+        "sha256": "79ef474563aab51389d75b916d99e8862c4e0276394546e22e6e97c7c0377562",
+        "transform": "Exact source pixel crop, nearest-neighbour 2x for inspection; never replaces master"
+      }
+    },
+    {
+      "sourceBoxExclusive": [
+        680,
+        680,
+        1040,
+        920
+      ],
+      "native": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/head-mouth-palp-native.png",
+        "sha256": "f5e78771596471e3d3919d61fc1e5f38b864099594792b8302da6d297b2b1368"
+      },
+      "zoom2x": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/head-mouth-palp-2x.png",
+        "sha256": "059d43615cab5d5b5a9d9d5925790e6762c8330aaae2b6d5e9908e26b03a28e1",
+        "transform": "Exact source pixel crop, nearest-neighbour 2x for inspection; never replaces master"
+      }
+    },
+    {
+      "sourceBoxExclusive": [
+        300,
+        600,
+        830,
+        830
+      ],
+      "native": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/flat-wing-back-native.png",
+        "sha256": "31e68d4860898bd05ff1f81ce23f2fdb0a993fb80a8d11b385aecb693053e086"
+      },
+      "zoom2x": {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/flat-wing-back-2x.png",
+        "sha256": "c394a7fb21502c018d8747ef75c0b2fe91104e189e37188999d885b2a00900dd",
+        "transform": "Exact source pixel crop, nearest-neighbour 2x for inspection; never replaces master"
+      }
+    }
+  ],
+  "intakeCompatibility": {
+    "pixelIntakePass": true,
+    "pixelOwner": "port/v2/tools/creature-animation/authored-intake.mjs#intakeAuthoredPixels accepts native width/height",
+    "currentAuthoredCLI": "port/v2/tools/creature-animation/intake-authored.mjs explicitly requires1254square",
+    "currentAuthoredCLIDimensionMatch": true,
+    "rule": "Downstream route compatibility is recorded separately from source anatomy, prompt QA and the canonical8% margin."
+  },
+  "marginBoundaryDisagreement": false
+}

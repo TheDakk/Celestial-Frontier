@@ -1,0 +1,9 @@
+# W1 primary existing-rig repairs
+
+Read coordinator/SPEC.md first; exact run requirements. Own ONLY audits/C465_CODEX_20261018/w1-motion/. Coordinator owns commits/mailbox/GPU/native/shared runtime. No subagents, no Git mutation, no image/native/inference job. Startup receipts are coordinator/startup-*.json; do not duplicate maintenance. Verify ownroot/branch before work. Otherlane read-only.
+
+Task: cheapest-first observed source/owner repairs for Gulper Eel terminal tailgap (current C444 idle50/90), then Kangaroo chest/upperforearm/hangingfur/belly notch at retainedvictory36/hop36, and Gibbon arm-over-flank wedge/farhip at cast36/60 and idle60. Start with current exact diagnoses/evidence from C444 final disposition and W4 hold-witnesses. Read each previous failed attempt before choosing a materially changed input.
+
+For each, actual source/master/keyed and every relevant part must be visually inspected. Author narrow source-observed owners/landmarks only in a new audit copy. Preserve full source alpha, paint, and legitimate anatomy; do not invent a painted bridge across a source hole. Exact old/changed final owner deltas and full retained-RGBA reconstruction must be proven. Reproduce retained published worst poses with same runtime context using CPU-only existing tool; preserve baselineRED and both-direction controls. No weak pins/rulers/contact bypasses.
+
+If qualification needs the shared export/toolchain lock, prepare a runnable existing-tool script/inputs and ask coordinator to run it serially; do not acquire a heavy reservation yourself. Return exactfit/receipt/commands for coordinator queue only after full unchanged staticPASS; otherwise exact HOLD/evidence/default decision. Do not build a new template. Write root-cause/status/input hashes/changed region evidence and command logs in ownsubdir, plus task-report.md. Short final: DONE or HOLD per species, fitpaths, checks and concerns.

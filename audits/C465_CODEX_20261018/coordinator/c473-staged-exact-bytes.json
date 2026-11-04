@@ -1,0 +1,1462 @@
+{
+  "status": "PASS_EXACT_STAGED_BYTES",
+  "rows": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "a422ddd947e05ae8c1fbc8168f9b6e092cc4718820f159d606b57746d6395a97",
+      "bytes": 6599
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/c472-staged-exact-bytes.commit.log",
+      "sha256": "a8917d2aab3fdb46e2d0143cc2ecf32a849c8f9dad54e184d2e264eeee87b8ce",
+      "bytes": 21826
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/cleanup-untracked-scratch-first-attempt.mjs",
+      "sha256": "a508c081c70e96bc7d6b4e78c10093a9138812e44553ae7fb0b828fbae4473e4",
+      "bytes": 2949
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/cleanup-untracked-scratch.mjs",
+      "sha256": "b8d16957dc0ff743db75ceb7d14801a03d113af44a8f66d9d72d691d304661f2",
+      "bytes": 3084
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/disk-share-own.json",
+      "sha256": "8687b402ecce90fb4740531f78f806e7981b247cd211b9fb6eefc6eed5335174",
+      "bytes": 565
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/disk-share-own.log",
+      "sha256": "c8a45990444d86bf2fc771ee109b759d3bafbc0708f0888a03e1f5802be85a20",
+      "bytes": 511
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/disk-sharing/clone-journal.jsonl",
+      "sha256": "1de40b0429f08afb79780354d84cd0ece1e5b6f8be8736365c695ffb11191861",
+      "bytes": 337907
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/disk-sharing/clone-progress.json",
+      "sha256": "7bf14942f6655b155ed5d32e83be521f424ef004e854a3e1e53c08c6d87bbb2a",
+      "bytes": 182
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/disk-sharing/clone-result.json",
+      "sha256": "b747f6d2640166eb15077dd14f063f0a631694aed82b9c2b67f8a008d56338f6",
+      "bytes": 533
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/disk-sharing/duplicate-inventory.json",
+      "sha256": "437c3122d5b535318612b52e25567c847f01f55d575b46858f0667a3d2b88c23",
+      "bytes": 171639
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/disk-sharing/share-identical-files.py",
+      "sha256": "83736dee93cdf1103905253e658ef125254c0821536a7b3d68f92865fa1b233d",
+      "bytes": 5847
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/final-root-validate.json",
+      "sha256": "16a8ee951624dccf77ff64c7a0aef77b9e783b13f0931900ce5d9cc4f3b201ea",
+      "bytes": 293
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/final-root-validate.log",
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a",
+      "bytes": 1083
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-chiton-c2-r02-ai.json",
+      "sha256": "cecfafb4d3e5a545843276a851246310a8a9b12a5b61ff0c82b5a25c10e4fb98",
+      "bytes": 594
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-chiton-c2-r02-ai.log",
+      "sha256": "e654731d48c72352b2f79a6e223fd58e56b285e7fb746c36aa09ac8a335c8759",
+      "bytes": 938
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-chiton-c2-r02-native.json",
+      "sha256": "013f4563410a5faea82a63386a7cec5584d98cf5f1e771c0d80c7ba0c371b1e6",
+      "bytes": 542
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-chiton-c2-r02-native.log",
+      "sha256": "f8dc07e400b6e9d0e058044258f33c9acccfac5fdd5cd1b1bd86847496aeb7c2",
+      "bytes": 206
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-chiton-c2-r02-rebind.json",
+      "sha256": "4761939099ff8f7bf3012c2f33c0d442883ab0158a62edf7dd8cbc8ae63e0e14",
+      "bytes": 514
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finish-chiton-c2-r02-rebind.log",
+      "sha256": "64b19d7eda1044cf6dfaee70a168ba22e61935480259199a6aa3d7f95132677a",
+      "bytes": 73
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/c465-chiton-c2-r02.log",
+      "sha256": "e5dd7eccbc2fdefc662ec9a7d50a954592575a1ccc7d14761140d672f0ca73fc",
+      "bytes": 363
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/chain-verification.json",
+      "sha256": "c33eac90f077c37ddbf94208ab300af37dd572fd0d846f881ee9ec82d79c2096",
+      "bytes": 123
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finish-subjects.json",
+      "sha256": "bdd093e8554139d8fd0c29ce72d16c7ad07bd19e08cddf15eddad6c2c78bb4f6",
+      "bytes": 250
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished-plan.json",
+      "sha256": "33daf4931fca9b4d69a7af2efb71e6dda4a9f970de46f0ccc48c158cf53c08bd",
+      "bytes": 1162
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/c465-chiton-c2-r02-finished.png",
+      "sha256": "20bb0d15f3b8758cbe433c130b039f0d2ddbae51f4d1773ca61af8e4981d7d76",
+      "bytes": 1550556
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/c465-chiton-c2-r02-receipt.json",
+      "sha256": "463c6d2f71a7fd311cc6d7c5d33db55a008284c707cc2990c680629192498dca",
+      "bytes": 9408
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/prepared/c465-chiton-c2-r02-binding.json",
+      "sha256": "0b8905a6010b9c1521b722c2340c52b43191dcdb7cf1871e4a880ccdcbae0e61",
+      "bytes": 842263
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/prepared/c465-chiton-c2-r02-labels.png",
+      "sha256": "98dc8e515396fe84e48f15d6a6e7f74b5b38b138d19f3a8640f4e40b75f8fdbe",
+      "bytes": 37129
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/prepared/c465-chiton-c2-r02-masterPng.png",
+      "sha256": "32491a110599f2becb0987c5a2ee7e366ce00b40aac80506a6044a7456176d5b",
+      "bytes": 1592242
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/prepared/client.mjs",
+      "sha256": "36aed409f712f25f910112590d6a122020d8d7ceb8b04a911f820b1f51ea7183",
+      "bytes": 133185
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/prepared/inputs.json",
+      "sha256": "a5a849cc018cd90d8669eced3c7e4cc2eae053f04093f8f51ec579c23fa36041",
+      "bytes": 1856
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/progress.json",
+      "sha256": "3afb8c48cfeca968781d577eaf1b9f49040c51bed5442b7e346448209059358e",
+      "bytes": 160
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/finished/result.json",
+      "sha256": "abc116a96a195bc0a7fe010b29de75272f86d612c4e0010d1bd3142678adfd7a",
+      "bytes": 38810
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native-assessment.json",
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0",
+      "bytes": 116
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native-results.json",
+      "sha256": "6f4e8274ce4753338c99bd92c65c4571b166f600cafaacb276c9a316ac1ddb9d",
+      "bytes": 1214
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/battle-full.webm",
+      "sha256": "865cb9079ebff0006c2916e1cec8e6f999d229e36bba8122a24d0c1634409d04",
+      "bytes": 7144688
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/report.json",
+      "sha256": "abbb985e561b5a4e292f62fb5f9f445ebab6f1f367d77d6676b793118bdb79b6",
+      "bytes": 356612
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn0-hit-approach-50.png",
+      "sha256": "d01c541ffa51297b0cc79ca8e617c34df0f947fbd91ea59fb8ad852285286343",
+      "bytes": 1195318
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn0-hit-impact.png",
+      "sha256": "597901215bf0459280e0d6eefcd832b59106b3b694b3385e1cffa6e35cf23968",
+      "bytes": 685953
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn0-hit-reaction-50.png",
+      "sha256": "e6d4a32ccded25e997c34ef16c68c09e96e5093bdb8b1222059085821f7cf0d9",
+      "bytes": 1206402
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn0-hit-return-end.png",
+      "sha256": "5c95c07fdde3d72e660104c7c5b341de3d5bd8b48c705e1439bbebde424d2720",
+      "bytes": 1181943
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn1-hit-approach-50.png",
+      "sha256": "e9c20ae441cd295021bdd5dc01edb25c127278aea5027f578390c71abeaabdf8",
+      "bytes": 1197762
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn1-hit-impact.png",
+      "sha256": "3ab5bf693d779e5bb479a8cdf3e83440a9580245e1b1ad3a7b04eb4746863327",
+      "bytes": 679313
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn1-hit-reaction-50.png",
+      "sha256": "f360fabb388dc87bc61f268085030a7a1a0cf235d4494d6a7d3f08674fc8484f",
+      "bytes": 1193777
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn1-hit-return-end.png",
+      "sha256": "af8257df4ae1b041cb1ae150498a910f1d602d462282b7ae83de260f0c7d4a4d",
+      "bytes": 1182547
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn2-dodge-approach-50.png",
+      "sha256": "d01c541ffa51297b0cc79ca8e617c34df0f947fbd91ea59fb8ad852285286343",
+      "bytes": 1195318
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn2-dodge-impact.png",
+      "sha256": "c40a4ddbed025661c3af83e60fae890dc18fc6326a62707c794e32a6e6735986",
+      "bytes": 1200999
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn2-dodge-reaction-50.png",
+      "sha256": "5910620ee08a87209d9f6c3e224057109e118dac130b3843417ad4840309950c",
+      "bytes": 1204303
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn2-dodge-return-end.png",
+      "sha256": "5c95c07fdde3d72e660104c7c5b341de3d5bd8b48c705e1439bbebde424d2720",
+      "bytes": 1181943
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn3-hit-approach-50.png",
+      "sha256": "d01c541ffa51297b0cc79ca8e617c34df0f947fbd91ea59fb8ad852285286343",
+      "bytes": 1195318
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn3-hit-idle-50.png",
+      "sha256": "651669bb933f2e9ff9e950a6b1bde0083e9948567004aede3ef795083611a778",
+      "bytes": 1190169
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn3-hit-idle-90.png",
+      "sha256": "870dce1a27c23574fb7a1f537c358e0fa9affd9bea09a845427aa2e7bfa31897",
+      "bytes": 1182259
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn3-hit-impact.png",
+      "sha256": "597901215bf0459280e0d6eefcd832b59106b3b694b3385e1cffa6e35cf23968",
+      "bytes": 685953
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn3-hit-reaction-50.png",
+      "sha256": "8aa61ede87a1dd81a6ebe1e0bcc539a4d5977aa8f03a82bedef8c0b4980284aa",
+      "bytes": 1204773
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/native/turn3-hit-return-end.png",
+      "sha256": "2dffd81ef79f74994614f63e37f3a81466900d4032f3dcdca9a3f93df802e41e",
+      "bytes": 1183292
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebind-results.json",
+      "sha256": "f50d11c645f91e182101cf305372a023b28ec972c945735887b99111c221dfad",
+      "bytes": 4106
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/binding.json",
+      "sha256": "d2b088039bc75332a384b1e9228da1d682f7ce74b346a8ba9575751aa0a1b1da",
+      "bytes": 842263
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/declaration.json",
+      "sha256": "458bc6e6b4dd1b2dd486ab092c60ed23b7e8481ceac0358c8043bbac673524a2",
+      "bytes": 1023
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/finished-rebind.json",
+      "sha256": "ff03bd5436fd4347d6e317808f3fca56b5fd461aa43e0e795eca92c9bcc4026a",
+      "bytes": 3874
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/labels.png",
+      "sha256": "98dc8e515396fe84e48f15d6a6e7f74b5b38b138d19f3a8640f4e40b75f8fdbe",
+      "bytes": 37129
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/atlas/c266-01-chiton.json",
+      "sha256": "caf424b1b0384aae905422c805943016cc2f4767b89267a58f1309c4b6c99ca7",
+      "bytes": 2578
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/atlas/c266-01-chiton.png",
+      "sha256": "f536e7bb3910920f65b68a85ea6085983cbf5c3102cfc7addbc68bc25265b0f7",
+      "bytes": 652251
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/atlas/receipt.json",
+      "sha256": "b5b0906d4f3a224eb38c75b9f33b1723fabff85f817baf1dcdf1f06a915afccb",
+      "bytes": 1514
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/binding.json",
+      "sha256": "d6a7986bcff6d3c5aa416fa010c7ce839bd0eddba39d3184145749e9135cec97",
+      "bytes": 2268
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/keyed.png",
+      "sha256": "a8c0f81281ee5865d5d408b762f04a7aefceb75a4269c9c760a9a51fa7423020",
+      "bytes": 1552991
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/manifest.json",
+      "sha256": "059ace743f6c1b4fb985dd97bac92faf8d56247cf9cff83b8c95955901261315",
+      "bytes": 1020
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/ownership.png",
+      "sha256": "194d381b2635830b19bf35f9831603d3d8bea444df8cd0e07e7fe1ac807079be",
+      "bytes": 12788
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/parts/foot-back.png",
+      "sha256": "b2597f08df606250ce621cde0dc7284b47a10cb8ab156cb1665fe25a136f547b",
+      "bytes": 61503
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/parts/foot-front.png",
+      "sha256": "1e4d6898486923b459b21798a45d18fc6dd002c4ffcd6fcdaac811d1e2c4ed57",
+      "bytes": 46649
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/parts/foot-mid.png",
+      "sha256": "191dd32d0e66c6ea8d7a38219ab55b374dc6b0c78512dcc9155d21402a28a34b",
+      "bytes": 60958
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/parts/foot-tail.png",
+      "sha256": "45e1c9048f6ead9c66759a2c402490d61c0ba766cc1ae661b88bc7f22c2bf485",
+      "bytes": 69993
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/parts/head.png",
+      "sha256": "e0d4837a7f8a1d92322e0a8df7134ac6a45bea5cd95afd94c7c107280c198c0f",
+      "bytes": 20587
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/parts/shell.png",
+      "sha256": "940478ce496ceb752bc7542746421d2ac5a1bc1bdd18e5f6b325ad3914869c88",
+      "bytes": 381807
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/parts/receipt.json",
+      "sha256": "6fa4213832a719813e6f29631ba9e3805c280e3c110b9f5b3b4f37396a862da9",
+      "bytes": 2235
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/pre-split-binding.json",
+      "sha256": "72cbbf81d1b34cf847b577e5b79911e97320a98cb8a8a7556e136282fee980be",
+      "bytes": 589127
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/c465-chiton-c2-r02/record.json",
+      "sha256": "43a9d3e095c321347959cd521a5c8ef1ac2c0c3ce0a3507fb6020128d6a07091",
+      "bytes": 4999
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/finishes/chiton-c2-r02/rebound/rebind-summary.json",
+      "sha256": "f50d11c645f91e182101cf305372a023b28ec972c945735887b99111c221dfad",
+      "bytes": 4106
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-a/generation.json",
+      "sha256": "0ff01ad664d68328e3eddd613ede2f9bc3eafb19a56bbac9ec17921c3a2b0512",
+      "bytes": 1250
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-a/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-a/lease.json",
+      "sha256": "ef989ce7a84d3c82251c9ca4b1bcd72982bb148b66ba817feba768f68540a969",
+      "bytes": 291
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-a/master.png",
+      "sha256": "c48604685d0106c3d9c9d2956ff4ec92c52f48070cb9e1d310ad50c6ec242d17",
+      "bytes": 1330830
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-b/generation.json",
+      "sha256": "f95ad1347fa6273cd6b9f7693b3e89ad06f613abb94421a4abd2124268979fab",
+      "bytes": 1251
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-b/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-b/lease.json",
+      "sha256": "2d8b43b3f6faae89ac83d9d39de7cc76c4e3d172c6c36f38b1dd95a11a85d8dc",
+      "bytes": 292
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-b/master.png",
+      "sha256": "967ca933a3ef5c06124c99dcd4915026b949f739249b25ef7c59494ae0926887",
+      "bytes": 1354628
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-c/generation.json",
+      "sha256": "b4ea383e238fb96a4750e011e39dfd79270aae285e25a0c7f8b7f2cc6efaa5bd",
+      "bytes": 1251
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-c/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-c/lease.json",
+      "sha256": "9fa98acc09507d7bda828991a0f11645be9da808674a632638aad3e7e85f67c6",
+      "bytes": 293
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-c/master.png",
+      "sha256": "0c1760e09f1249ef89a80010fc853f6e5d277d667189bbd1c68d83968b11c019",
+      "bytes": 1329843
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-d/generation.json",
+      "sha256": "6ee5dfeba33927661db234211c3a4f270b866cf085c7a1327426ce5ef6d2e2d0",
+      "bytes": 1250
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-d/lease-release.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-d/lease.json",
+      "sha256": "92957ac9ecca1ec945963d5325dfa4984b27b02f5d74f1bc3d659cb30ea02c3f",
+      "bytes": 291
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/paintings/c465-rattlesnake-d/master.png",
+      "sha256": "9bd194099f4b4349d640101b909d5e78098dd87f99e904e3813b0ce08f992e62",
+      "bytes": 1353717
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/scratch-cleanup-r02.json",
+      "sha256": "e787e28c9d4e9d999f5ea495ea70512706d0066ab281bfac03ec9065cbe00f5e",
+      "bytes": 510
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/scratch-cleanup-r02.log",
+      "sha256": "3c00a8650d6537fc4ef9fa3a6cfe5f22a924dab537c46a16f4682d96ab1b06f3",
+      "bytes": 22407
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/scratch-cleanup-r03.json",
+      "sha256": "8705d7026f38e5a11d57e0d44261a35415d1c47b3f31649e8a8e59783b502fa0",
+      "bytes": 511
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/scratch-cleanup-r03.log",
+      "sha256": "4e0d748decf05b14bae238553b357bdac616837fb1d0b2c9a08581c9aa7e3935",
+      "bytes": 51
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/scratch-cleanup.json",
+      "sha256": "f2443bfaac3158f7dc7e74498313c3b7651c89b0c9b89cb74ed0478ca7e88f70",
+      "bytes": 462
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/scratch-cleanup.log",
+      "sha256": "882d385a13ae21ebef4ff4da8bd2ddd873d745a8b0c077488eabeaf9c88a5871",
+      "bytes": 76
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/scratch-end.json",
+      "sha256": "0eabc343f4dc98413127ac346b3143c2265d5cca681dcdeaa806a31000bec19b",
+      "bytes": 2758
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-finished.json",
+      "sha256": "2e2acc5711da7569625d33fea0fad07ea420f45c564afa5dfe24ec91d6411d80",
+      "bytes": 979
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-finished.log",
+      "sha256": "45a1e8332e6fc5af1ba02c7b3e378e4ebf49e4528d3a9a8010f22ff8c676f21f",
+      "bytes": 60
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-finished/checker.log",
+      "sha256": "9261d3c4ebd10ac7cb1704f0be325ecb07ebf50878590829b77e3f5607e450cd",
+      "bytes": 1619
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-finished/current-rows.json",
+      "sha256": "6c3e064c0e6c2f390295fa67af3ccdb34905473b4b0286a17d545fc48513c2b5",
+      "bytes": 2228
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-finished/fragment-triage.json",
+      "sha256": "8af5ef938ca03d3f53007ce9647df1dc7a23da098b294a02916b569804a75a04",
+      "bytes": 175419
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-finished/freeze.json",
+      "sha256": "1772da1d99eb7dec7cb90e2b4012d06d14a549e67bcea7cd0ab5b6f10c7480de",
+      "bytes": 221847
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-finished/roots.json",
+      "sha256": "badba3d90025e3f624db0b3870955c0dc0743f92c7abf294ba939fc7f63bb91f",
+      "bytes": 13423
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/coordinator/triage-chiton-finished/verification.json",
+      "sha256": "67046060ec31f93a89a11a0026f1171a9b1f01d659a5cf6b4854740877f3499c",
+      "bytes": 2723
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/ready/chiton-c2-r02/manifest.json",
+      "sha256": "e2df3cbdc5e5a91a081e709d7a50ddb99817fcbcfe5bb1055261da605eac8413",
+      "bytes": 9106
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/ready/chiton-c2-r02/packet.json",
+      "sha256": "dee3072b0501012604437b663390f13db15179bdebaaffd3695ff3998568ecd8",
+      "bytes": 5702
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/ready/chiton-c2-r02/verification.json",
+      "sha256": "1c066f117a9dd940c21953339af03c4a285ae27a704512b9e59b3fad5e1fae91",
+      "bytes": 263
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/final-independent/EXECUTION.md",
+      "sha256": "318e0ddf08d0cbecd37afa6cf22973a5f12e88853d1b15d6e45847de9eb50d2d",
+      "bytes": 1522
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/final-independent/check-execution.py",
+      "sha256": "904ff73c0b77e46aac345db5ce8679841651d6303fe22017bb691736213e66d2",
+      "bytes": 10760
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/final-independent/check-generation32.mjs",
+      "sha256": "42c1995ab6f181bdda1b292921e46710cfd124ded1b3e3c71cee2ceccf0f5d79",
+      "bytes": 7041
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/final-independent/clock-locks-r01.json",
+      "sha256": "4a4827d9b6ac6034c905b125f830b7f088c6995c6c7a2d04ff67a56a9f2f044d",
+      "bytes": 609
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/final-independent/execution-freeze-r01.json",
+      "sha256": "5a28a31313704de117a69dc89ffb90c7e8bdc462f5418baa3b8b552a247a571b",
+      "bytes": 3301
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/final-independent/execution-r01.json",
+      "sha256": "5546cd1e6606cdfdc08e1f872abeefb53f9aa49cbfab799b130977ea1abc4f43",
+      "bytes": 98894
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/final-independent/generation32-r01.json",
+      "sha256": "864cea9ef53298d1d9b9749ab14f7714a8f1415dbb7a9e661103955b978d1f21",
+      "bytes": 87804
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/OUTCOMES40-r01.json",
+      "sha256": "e7747723862792555a5f71d492b9b8c4e06f7a9b69fc190b83c41c9c7637f1c8",
+      "bytes": 186740
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/OUTCOMES40-r01.md",
+      "sha256": "826dd153342dfc65a5915b1a9af67bffff184ec2e2db9db89c2d03bbd612a556",
+      "bytes": 17325
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/late-closure-verification-r01.json",
+      "sha256": "c65a6b4c488fc340dac0b765831394809c2dfd3a421666b59e22a482b6c7ae4e",
+      "bytes": 761
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/task-report-late-r01.md",
+      "sha256": "549739d9b2479f4be5a258b1c083f7bd8de27793d95aa6c6852853d303e3ad63",
+      "bytes": 2240
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w1-motion/other-holds/verify-late-closure-r01.py",
+      "sha256": "edf3a92f1b19f18496a91be6c77013c983351d8ee449dd057641083ace88e4b4",
+      "bytes": 4094
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/checkpoint-final.json",
+      "sha256": "4522f592d351dbcfa18faa5594e4d9c0fc2f6b273a8b196a4ca481a3a2756602",
+      "bytes": 5376
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/checkpoint-finished-freeze.json",
+      "sha256": "7d1577af4889fcda9f536bc4921ab6a8efb6a042c18d7125892b1983960df888",
+      "bytes": 1453
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/checkpoint-finished.json",
+      "sha256": "b54b464c3a90213559f6d040b71a5f2d42a451b53707bd8f7dc18b79dbf896d5",
+      "bytes": 6434
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/conservation-check.json",
+      "sha256": "defd8605425f8595f48f1f01f63438821e3dbae55176eb145049a8e5491b5b27",
+      "bytes": 4463
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/evidence.json",
+      "sha256": "b8597e9de3b990a378769a83480185c11f262bbd54891bae158e1496337f05e3",
+      "bytes": 226267
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/foot-back-neutral.png",
+      "sha256": "2aef25331fb4893dcdf9a309971b2a444259d4942ea69b75bd53c5bbd782030b",
+      "bytes": 54469
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/foot-front-neutral.png",
+      "sha256": "e73089c9f087bba873d2cf67f91385e545781f65dc0a863e7042db62afb1a185",
+      "bytes": 41462
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/foot-mid-neutral.png",
+      "sha256": "3cfc8622754979046483a2aba736aef68ab0f11419fdf5e539aacec578b02bc3",
+      "bytes": 54059
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/foot-tail-neutral.png",
+      "sha256": "dbe9e3bab11fc160becc8109093ed0070db73a24944949200df791cc0e16bcef",
+      "bytes": 62184
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/freeze.json",
+      "sha256": "88b68fa7d2a05279e82fd7069bfc0a42e37318bbbe3ce285246cbb1a9caa2efc",
+      "bytes": 4289
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/head-neutral.png",
+      "sha256": "ca29e9b6788a38d900852f70fdddfff5abc89d4455bf6df2b736ec8e6d6f9f86",
+      "bytes": 18242
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/keyed-neutral.png",
+      "sha256": "4d0271e5e89c34bd755c180cc8f2ac861aaff399851e58174aa6f05eb3d9219c",
+      "bytes": 592952
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/review-config.json",
+      "sha256": "008d1811e7b6fe2a6be8685450423f59fea060c6a16cf78268335ffa3c01ff3d",
+      "bytes": 2752
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/review.json",
+      "sha256": "dba126ddd9f8217629a88557ba7de56fc48840a2c0fabd75ddc9b46d85818955",
+      "bytes": 13890
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/review.md",
+      "sha256": "646dc2c6cf62cbae4076d320f4b47746837c2a0f7557523815a4824150a8d16c",
+      "bytes": 1623
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/shell-neutral.png",
+      "sha256": "a437981f6575e14a470c8045619253ccb298e1e0afbe96b6e5fb58523ff83382",
+      "bytes": 338254
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "afecd86304ed19470da921fb0180babfad83dc1af0c33befa1d84fccfc45b949",
+      "bytes": 1409312
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "9c43a13e714f38aadd5002b61e40ccfd735778088910129f4d18531b415e45dc",
+      "bytes": 1418306
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "2bb04b1b8fde72c854b2d20d9c069a5dc4929e844c25a83c4aeeb928644f45fb",
+      "bytes": 1397641
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "bfdee16a3ab8a456505061bda6b6073650a9a081c8886b7104d4bdb1a7782410",
+      "bytes": 1387897
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "81d54a3764ab017235e2b0b18b6388c3c4c9f69415423949a26faa5778ec38cb",
+      "bytes": 1421740
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/chiton-native-review/finished-r01/verify-finished-conservation.mjs",
+      "sha256": "5d15a533cd5495f8efdac770407a145d2dfe79280bdf1819d39dbd9143d8ae14",
+      "bytes": 7035
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/build-snapshot-r02.py",
+      "sha256": "284136167d800c2d544905a95e164320033c079779130c0d18a758290eb152a5",
+      "bytes": 9680
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/hold-overlays-r02-verification.json",
+      "sha256": "e2a6164474d0b0385e66d77f30848443290a0fcae46893c3f041ffb364470d03",
+      "bytes": 561
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/hold-overlays-r02.json",
+      "sha256": "21ecd4fc6bc9e93515c5c6a942bb9bdc78a9721b35afb94c5b289c4ef416a67c",
+      "bytes": 91102
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w2-checkpoint/w4-final-draft/verify-snapshot-r02.py",
+      "sha256": "54c468f3cfb8b720db8d7dcccca407f41b2c9d417d0f90f178393783d8d0cdc9",
+      "bytes": 11772
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/DECISIONS-r03.md",
+      "sha256": "1454f0fda8edc1e56b5096c543703154f0dae049badf5be3d6cca16685582de1",
+      "bytes": 177319
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/consolidate-decisions-r03.mjs",
+      "sha256": "73e52c1954fa6570eb8da513e4e7c9297ae0cd724e504ed23dc607dfb8e93b8c",
+      "bytes": 9601
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/current-ledger-r03.json",
+      "sha256": "211d82ccd72aad5180f39c24ed2d2d18ce73d645d6248c5e07426d9d4304c647",
+      "bytes": 802909
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/current-source32.md",
+      "sha256": "8748bb4c77ec3619ee7b465f0f097822600ba62bfb0f2f10cbef1da7c9a164d8",
+      "bytes": 2313
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/decision-scope-r03.json",
+      "sha256": "e8a4dd1a904daf0ccd8532a6df373ea3a23c63396ff2c497ef809acdf5baec16",
+      "bytes": 48009
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/all6-parts-sheet.png",
+      "sha256": "0ed2c8e64a3acb6e15bfdb4b9e54a164753cb5d6a1252b9a2438d31ec08b535e",
+      "bytes": 343998
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/c261-join.json",
+      "sha256": "98153b08bc21bc3c74a29df78c86c7320f97100e049f360b6bede24725613c48",
+      "bytes": 2065
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/conservation.json",
+      "sha256": "670f705d223b0de2e265ea530a34a56576cc2e1b1a43096371ed378ebe7759de",
+      "bytes": 5305
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/evidence.json",
+      "sha256": "316e5ef2a95fd42fd25f3ff389feacb968d99cffb5fbf583a479eb135c684cec",
+      "bytes": 227239
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/finalize-review.mjs",
+      "sha256": "00cadac72899de7ca65dd440610df35c7498d587504c80ec15b9cc70d066ccb7",
+      "bytes": 8740
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/finished-keyed-neutral.png",
+      "sha256": "4d0271e5e89c34bd755c180cc8f2ac861aaff399851e58174aa6f05eb3d9219c",
+      "bytes": 592952
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/finished-plate-girdle-2x.png",
+      "sha256": "2a984d39faf23a3504c1c9bd130e0261d5c5a317bbe7a53e8550c305198ef63e",
+      "bytes": 1120836
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/foot-back-neutral.png",
+      "sha256": "2aef25331fb4893dcdf9a309971b2a444259d4942ea69b75bd53c5bbd782030b",
+      "bytes": 54469
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/foot-front-neutral.png",
+      "sha256": "e73089c9f087bba873d2cf67f91385e545781f65dc0a863e7042db62afb1a185",
+      "bytes": 41462
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/foot-mid-neutral.png",
+      "sha256": "3cfc8622754979046483a2aba736aef68ab0f11419fdf5e539aacec578b02bc3",
+      "bytes": 54059
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/foot-tail-neutral.png",
+      "sha256": "dbe9e3bab11fc160becc8109093ed0070db73a24944949200df791cc0e16bcef",
+      "bytes": 62184
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/head-neutral.png",
+      "sha256": "ca29e9b6788a38d900852f70fdddfff5abc89d4455bf6df2b736ec8e6d6f9f86",
+      "bytes": 18242
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/original-keyed-neutral.png",
+      "sha256": "49c5dd7ea79cb6d3dd3d72ed8bf64811d9cf2660bde4748524793d6e84d182dc",
+      "bytes": 584069
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/original-plate-girdle-2x.png",
+      "sha256": "9653098e45c8e659cfd785db3d6eacfbd96cb1149de0d419ef2c2e7915ed0724",
+      "bytes": 1102223
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/prepare-evidence.mjs",
+      "sha256": "32d9536b06209e01ef34f9db7300bc297ae8fa4d250759cf49e93371a5e56824",
+      "bytes": 9443
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/review.json",
+      "sha256": "39fd400ca0f3e1edf05873884c65fa8f2c4a0582a93daeb8eb845d8a4e2bd7d7",
+      "bytes": 17535
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/review.md",
+      "sha256": "7b4e9d50e0c809a395bb61de8b8c259d3404d6b49d6a5e714520b433fdd8b1d4",
+      "bytes": 1660
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/shell-neutral.png",
+      "sha256": "a437981f6575e14a470c8045619253ccb298e1e0afbe96b6e5fb58523ff83382",
+      "bytes": 338254
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/turn1-hit-reaction-50-actors-3x.png",
+      "sha256": "2df4f36871836928c43a3e2e96877348cc9d46f26e87144b4413150c562cd4f0",
+      "bytes": 355135
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/turn1-hit-reaction-50-fullframe-2x.png",
+      "sha256": "afecd86304ed19470da921fb0180babfad83dc1af0c33befa1d84fccfc45b949",
+      "bytes": 1409312
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/turn2-dodge-reaction-50-actors-3x.png",
+      "sha256": "e1caf2f081aa41ef7dadb5c6ff7318259f1311a8d7950353654d29e909212fc1",
+      "bytes": 361294
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/turn2-dodge-reaction-50-fullframe-2x.png",
+      "sha256": "9c43a13e714f38aadd5002b61e40ccfd735778088910129f4d18531b415e45dc",
+      "bytes": 1418306
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/turn3-hit-idle-50-actors-3x.png",
+      "sha256": "20465bd8e38f51acd39654c0a3d9f603c5a6f8773cd454921a724af052bef766",
+      "bytes": 347734
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/turn3-hit-idle-50-fullframe-2x.png",
+      "sha256": "2bb04b1b8fde72c854b2d20d9c069a5dc4929e844c25a83c4aeeb928644f45fb",
+      "bytes": 1397641
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/turn3-hit-idle-90-actors-3x.png",
+      "sha256": "69cb582894c170cd7a65ca0d82d33ab3ccc868f9fc41fc2ce915f875821745b3",
+      "bytes": 338514
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/turn3-hit-idle-90-fullframe-2x.png",
+      "sha256": "bfdee16a3ab8a456505061bda6b6073650a9a081c8886b7104d4bdb1a7782410",
+      "bytes": 1387897
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/turn3-hit-reaction-50-actors-3x.png",
+      "sha256": "edac238047a06c6236c6167d3868a991f93747c3a419b736734be0c1c4dbf24e",
+      "bytes": 360608
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/turn3-hit-reaction-50-fullframe-2x.png",
+      "sha256": "81d54a3764ab017235e2b0b18b6388c3c4c9f69415423949a26faa5778ec38cb",
+      "bytes": 1421740
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/finished-chiton-review/verification.json",
+      "sha256": "7d5ad502b8d1ac2cc8e801c123a3de5dce0df24b3d87e19d8dbf8fde086e8fc3",
+      "bytes": 512
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-a/observations.json",
+      "sha256": "3aea5048226e404c2a76807a878635d72bfd878d9e29e41d26687eac35d6385c",
+      "bytes": 26706
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-b/observations.json",
+      "sha256": "17d347462b93b60351148b8fc9a55c9343f7e75e10a3272168ad9e4d4b3ec0b0",
+      "bytes": 25610
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-c/observations.json",
+      "sha256": "14cab0be85d6820ee6a2bb8d19acb49716ff2681874e6ceea83d7e54f6d1fdd6",
+      "bytes": 24135
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-diving-beetle-d/observations.json",
+      "sha256": "3581513c548572ee3b67f70014b60a464ce1e4ed0bf2b39c3383b7564f2514e9",
+      "bytes": 23305
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/head-tongue-fork-keyed-neutral-2x.png",
+      "sha256": "5ddeb2dac289012f4b7324017c45708abd48b16797442ba18ef73289b3aa7da4",
+      "bytes": 47604
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/head-tongue-fork-keyed-neutral-native.png",
+      "sha256": "486f929a81979b2e94d517e802a1d4d5967d1051d269e7b6d2c9909bf5f21245",
+      "bytes": 40544
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/head-tongue-fork-original-2x.png",
+      "sha256": "0dbd08e095a75b7b7cfa61b610f513c86105279d45d398aa555874482ba8f3b2",
+      "bytes": 89847
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/head-tongue-fork-original-native.png",
+      "sha256": "f9ac4b669cea035b6d330e2b18563380938ad4c7b6a83d05f629c293ffecb688",
+      "bytes": 75094
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/head-tongue-fork-raw-classifier-neutral-2x.png",
+      "sha256": "f0ef5263e42fcf395903e8ade7fa5ad1bc09cd07f8701bd0a7bbab4f88390c60",
+      "bytes": 50055
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/head-tongue-fork-raw-classifier-neutral-native.png",
+      "sha256": "c94f4cd39ff3877e46e3aa7126938e85b0639d5cc16e6fdd1522e9a34eab6ca3",
+      "bytes": 43155
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/keyed-on-neutral.png",
+      "sha256": "996b9fd5be14a9699b615296f7f2e12322c35f9f5f73c4d152ac6a4df6ff6a9d",
+      "bytes": 277346
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/keyed-preview.png",
+      "sha256": "95ebdd1657458e84ea483b8c02253f143db956f64356cdba728e51589a67a539",
+      "bytes": 1187531
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/numeric.json",
+      "sha256": "4695211582dd93bf043092b568db1c80cfbdf6abf1b7408cfec4e14596539ed0",
+      "bytes": 16508
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/observations.json",
+      "sha256": "1da7a85b8475ed1cc766fb40e7bb9d4c2476e6bc0a33f8ea653240037c639512",
+      "bytes": 12800
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/rattle-posterior-keyed-neutral-2x.png",
+      "sha256": "f9f0304172450fd8edfb9f8fa9ade95f2e3d3475244da1a59d7709b03ade834d",
+      "bytes": 62090
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/rattle-posterior-keyed-neutral-native.png",
+      "sha256": "aa3f6a43bae721476be4453d02e04f6da841e372e7d367f30d88f3c58de804dd",
+      "bytes": 52030
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/rattle-posterior-original-2x.png",
+      "sha256": "9e659701157967c953e56792ce0a5e10ea54c888db41223af7abc267cb7059bd",
+      "bytes": 124912
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/rattle-posterior-original-native.png",
+      "sha256": "b9d9cea805f7e01a1c0f2bfacbbe5182f439d78f756e767b8431b1a3cf23db9e",
+      "bytes": 101931
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/rattle-posterior-raw-classifier-neutral-2x.png",
+      "sha256": "8d43387852a951502d05aae3c2faf3beec23f135cb51cc139475e8c206a642c0",
+      "bytes": 64628
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/rattle-posterior-raw-classifier-neutral-native.png",
+      "sha256": "7890474f6f393e9fb4fde2deca13ac6dc71f1f2c7e6b66c364faca5fbd349138",
+      "bytes": 54734
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/raw-classifier-on-neutral.png",
+      "sha256": "ee69c47ecbdb6659f9c04ad0b206a5c6a93de8b3c389f15e2a066ac604a6a0c8",
+      "bytes": 288331
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/trunk-overlap-keyed-neutral-2x.png",
+      "sha256": "6c66697c9ab8555c1356dbe871112cd6475454a3f760ee56cdc7baee5388665a",
+      "bytes": 235684
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/trunk-overlap-keyed-neutral-native.png",
+      "sha256": "8b03ade0722ed96498fd0e84ce149eccf7a5082eb2de7562ce02b068b1466c5c",
+      "bytes": 205223
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/trunk-overlap-original-2x.png",
+      "sha256": "67344bdd96a547735a3cd3457af88dac0c232d5e00949b7a16fcebd2dd658784",
+      "bytes": 346716
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/trunk-overlap-original-native.png",
+      "sha256": "48960325c21d46b11055e4087b199b0a0cc22cfe4c18222a68204f37f2e8d920",
+      "bytes": 292023
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/trunk-overlap-raw-classifier-neutral-2x.png",
+      "sha256": "3fc3c71570554307225ab70a51987df017a949ed842131324ec0ca4b88ab9c2a",
+      "bytes": 243502
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-a/trunk-overlap-raw-classifier-neutral-native.png",
+      "sha256": "0b4500a3012b8fcdda6cb2ec0dd9e2fe02fd2f8fd8c3cc0d8ec1f87fb5a833fb",
+      "bytes": 212188
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/head-tongue-fork-keyed-neutral-2x.png",
+      "sha256": "5ce671744836676380663ffe047568add2506b4b2f32e4007684c0f3bdbfe7a9",
+      "bytes": 45279
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/head-tongue-fork-keyed-neutral-native.png",
+      "sha256": "1401e8e58fee7bbcf07a5065eb498e0ac587c901a4a22308e6f3684ce48226d0",
+      "bytes": 38709
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/head-tongue-fork-original-2x.png",
+      "sha256": "335ecdde7b2bdf688b69b5bf064ee04a6556dc7ca704583f8e1d2e84d0e29805",
+      "bytes": 89922
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/head-tongue-fork-original-native.png",
+      "sha256": "d7bfb7f95ca905e1af3f6d82049e2a985f8937f3d7fb1866be30ddbc6159063b",
+      "bytes": 74394
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/head-tongue-fork-raw-classifier-neutral-2x.png",
+      "sha256": "38fc8b5a999f8be0eb97ea09d445fac9c30e9029519795aa31825fa682dc612a",
+      "bytes": 47819
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/head-tongue-fork-raw-classifier-neutral-native.png",
+      "sha256": "e359fc773620fd14b367f587bfb19a0faf280597a65d1eac9e164cef3be019b7",
+      "bytes": 41203
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/keyed-on-neutral.png",
+      "sha256": "8096479f4beeda62d50f06dbcbebc6c1a184a9d2b98c972307bda4dbca995c7d",
+      "bytes": 273398
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/keyed-preview.png",
+      "sha256": "e322360da4199ac4998f9caa0215bc841d3effea7ea09932b89002685a30ce7b",
+      "bytes": 1216328
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/numeric.json",
+      "sha256": "442847f92ac40a9c5c0f94a844878bfbb480fb7bfe6f07b0775a8c3d46a46d4e",
+      "bytes": 15880
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/observations.json",
+      "sha256": "82eabfb24384dc832eb05807f138f99feb828f0035e73dc9b1a62c3ddacbad44",
+      "bytes": 12557
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/rattle-posterior-keyed-neutral-2x.png",
+      "sha256": "bf8c6717666b387d796a0b955f1c993b5495296bab42d0c2cceee9deb7355ff7",
+      "bytes": 54763
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/rattle-posterior-keyed-neutral-native.png",
+      "sha256": "84787133498aa5c7b8d89e349dd151d5b1d812e0ef2d820de08be69cbdd2fbf5",
+      "bytes": 45466
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/rattle-posterior-original-2x.png",
+      "sha256": "207fa88bb665cc460fd2f9c17f1d70f6e69acd969ce135cd608bd0f95dd44dbb",
+      "bytes": 119098
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/rattle-posterior-original-native.png",
+      "sha256": "e0ff3f709c88e629da749eee5df3d7ad0223158da371958497756691821cd25d",
+      "bytes": 96918
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/rattle-posterior-raw-classifier-neutral-2x.png",
+      "sha256": "f8b098e460316185dd73ff976ba0374c9690591ac36b9b1821399e84277b9521",
+      "bytes": 57382
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/rattle-posterior-raw-classifier-neutral-native.png",
+      "sha256": "6f498b268963828f629a07b79494df8ea54a4164e868c3bc9cb34bba059baae5",
+      "bytes": 48058
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/raw-classifier-on-neutral.png",
+      "sha256": "2203b8effc65e8c4fd0e353ee00dca33e706eb0f2d2566bd78df22202de4aece",
+      "bytes": 283816
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/trunk-overlap-keyed-neutral-2x.png",
+      "sha256": "99662f35545e563e3e42445e05339539ce158d2716c010c97992e71c70ba6269",
+      "bytes": 235169
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/trunk-overlap-keyed-neutral-native.png",
+      "sha256": "0b8cc3b2ce503f3029b87ce21c3dfe8ddc576289e225ec93b183f03d097f7ad4",
+      "bytes": 208136
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/trunk-overlap-original-2x.png",
+      "sha256": "b30df2c4b4fbb4aca068eccb10f99c559779557976c03912fd238b2d9df0cd85",
+      "bytes": 351674
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/trunk-overlap-original-native.png",
+      "sha256": "c8cb8338a7ac448d59ce66b38597cc4c9fa3ea30863ad5c741cf5f8b776ea855",
+      "bytes": 299530
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/trunk-overlap-raw-classifier-neutral-2x.png",
+      "sha256": "86327dcd29b6b3b5ecd60a07e316256e4d0f04da7d0d152359658735e11d0b10",
+      "bytes": 243350
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-b/trunk-overlap-raw-classifier-neutral-native.png",
+      "sha256": "53910de7a851929facb395ea0c86fa6cfb4ffee3720f75b89e6e81ba1978c952",
+      "bytes": 215436
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/head-tongue-fork-keyed-neutral-2x.png",
+      "sha256": "152f7f59ed4687aec43be2d694761b23987e9af1e168e17e95591b8ebf2a52fb",
+      "bytes": 41590
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/head-tongue-fork-keyed-neutral-native.png",
+      "sha256": "d5c907a308b9bf51af3ab474b54f763f951bfd8f7abddef84a18eb3e3c8a0cf7",
+      "bytes": 35211
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/head-tongue-fork-original-2x.png",
+      "sha256": "888a40589d8781cba630ca88fae59174c50113e08d2b23eae0539410ef0e9aec",
+      "bytes": 86182
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/head-tongue-fork-original-native.png",
+      "sha256": "b4428faab7708c84ca8b86e241b6286b441c19dc203346f6b725a800b2bba3ba",
+      "bytes": 70389
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/head-tongue-fork-raw-classifier-neutral-2x.png",
+      "sha256": "a1a0aecf6d88500bdaad4f3da2496c752db15436b56d5535921505c540d645c3",
+      "bytes": 44277
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/head-tongue-fork-raw-classifier-neutral-native.png",
+      "sha256": "5e341cd7ae574f7a8408819a5fad714a41940f56b39873fb0fe59901b8e343c1",
+      "bytes": 37797
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/keyed-on-neutral.png",
+      "sha256": "44c77311aba344f6e7a0399c7f6bbef64aac43e780bb3c6b47f81a8648d2838c",
+      "bytes": 279188
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/keyed-preview.png",
+      "sha256": "dadae871df33d5bf4c03fa7258c365a26d4373b0581045f3da1626bbd8382f25",
+      "bytes": 1193716
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/numeric.json",
+      "sha256": "9da2c33eadeca3b45cabfdaa5859e5dc999d4f3c2b29a5aa1489fdd34c49c5cc",
+      "bytes": 16195
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/observations.json",
+      "sha256": "3f164524b5f04cd68f152fc88f4b43937f6e6743a551f8dd07420fa7f7c1d2fb",
+      "bytes": 12627
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/rattle-posterior-keyed-neutral-2x.png",
+      "sha256": "b2f8b1d60dce62c7d73a3009f028510a9a8b1f034e50ff21e017a152cb5002fa",
+      "bytes": 63821
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/rattle-posterior-keyed-neutral-native.png",
+      "sha256": "fe973ceb0a86903b21b022fa1691b436856596cac571d699a24471defefd2940",
+      "bytes": 54555
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/rattle-posterior-original-2x.png",
+      "sha256": "97bd74fe84507c548c8f6a4b772156e533825c2d05e9b5cc5e77a0b18b8438ed",
+      "bytes": 128338
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/rattle-posterior-original-native.png",
+      "sha256": "b4e27a49ecedacf7e7ccd11a2489990588ae0747ee097134e0e4b0e71893860f",
+      "bytes": 104420
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/rattle-posterior-raw-classifier-neutral-2x.png",
+      "sha256": "c9201bb65843033a37e00252f5554ffb3b8dd878d51ba9bf3eb918f591f0bc37",
+      "bytes": 66999
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/rattle-posterior-raw-classifier-neutral-native.png",
+      "sha256": "756f31d3eb600cfb0fc4bf1b202ed1b92a071bb42890ab55451932904ea5c583",
+      "bytes": 57413
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/raw-classifier-on-neutral.png",
+      "sha256": "622396090ac71877078a1d7f4f1559dd303d0c02c722a8cb6aff6d171c6d97aa",
+      "bytes": 289905
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/trunk-overlap-keyed-neutral-2x.png",
+      "sha256": "a354752827d151bd84a665510ed1118f1e2f2067f81f65d8e35af7ae4a57daeb",
+      "bytes": 233467
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/trunk-overlap-keyed-neutral-native.png",
+      "sha256": "16e776897b8e353a0e7fd660ccbb795b3f315d8bc200b2cc17a331fb37c0038e",
+      "bytes": 207754
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/trunk-overlap-original-2x.png",
+      "sha256": "26f58b8398a727a399df5c2e5200f938e5e6ab7bb61009cbf1678d724febcd5f",
+      "bytes": 346864
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/trunk-overlap-original-native.png",
+      "sha256": "1ba68c87427a61d13bc9eae5efc8ca7f9229ef09f7282039eb90022e5e7de3cb",
+      "bytes": 297079
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/trunk-overlap-raw-classifier-neutral-2x.png",
+      "sha256": "a7e094afca4739da1f67e6658b7f236e60b986e5ac15a38e2c55df3253809cc6",
+      "bytes": 241217
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-c/trunk-overlap-raw-classifier-neutral-native.png",
+      "sha256": "173a62c11e8b3734917e1c619ebb927b1c73f51338d811a0c3c0861ebdd8ee63",
+      "bytes": 214937
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/head-tongue-fork-keyed-neutral-2x.png",
+      "sha256": "3192dcead56b2207bc357e9814d497fc237a807dd122855b9de7dfbf51da70d5",
+      "bytes": 42945
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/head-tongue-fork-keyed-neutral-native.png",
+      "sha256": "ea7a383e62289f6d40258f5b35d288a9cc3f710625b348c0a9eb41d0b7d0990a",
+      "bytes": 36219
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/head-tongue-fork-original-2x.png",
+      "sha256": "f10313a7223b136a9daa367435ff265cf430dbf4d6d5c7fe5aabf8474076bd22",
+      "bytes": 86709
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/head-tongue-fork-original-native.png",
+      "sha256": "89504d2d350dd764ffec3d65822d70f51764b74e6ba4c8cb0fa441d6f02426a2",
+      "bytes": 71302
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/head-tongue-fork-raw-classifier-neutral-2x.png",
+      "sha256": "44fd6ce8d826b920e638cfd12eb994b4548875cdb1cdd5c5051fa1935bba0993",
+      "bytes": 45431
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/head-tongue-fork-raw-classifier-neutral-native.png",
+      "sha256": "1d36ac0b0815390745a5747adfa5e5fefb990b5464502591593cf4d46b331b9e",
+      "bytes": 38629
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/keyed-on-neutral.png",
+      "sha256": "2ae13ac0d288fcc8853f87fca95e7233f888382694bdc2324bbbbce3e69f6be7",
+      "bytes": 281866
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/keyed-preview.png",
+      "sha256": "4bc0ac3d6790c8052e12f2393d8b9868a008f5c64c7c29a632df7c1ba06959b3",
+      "bytes": 1220758
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/numeric.json",
+      "sha256": "f13ad2e541329281882ef8aa738ba3d11453570c94244179f5a4aca12495af6a",
+      "bytes": 15862
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/observations.json",
+      "sha256": "e9e19c9fea3889ec102355e624cf28992af42f40bd06c8f35f08298506687be7",
+      "bytes": 12464
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/rattle-posterior-keyed-neutral-2x.png",
+      "sha256": "c7da695e38cd4393aef0e1d593e827161c9a3a086b39be9e762c387a79bd3802",
+      "bytes": 60566
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/rattle-posterior-keyed-neutral-native.png",
+      "sha256": "2d54535f25e776f810936fc1c7a054385e80c6951ebc57195e607bb66b159a68",
+      "bytes": 50553
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/rattle-posterior-original-2x.png",
+      "sha256": "ae7de110b55378293aafd5122b098e855f70c9f3fd6b74341b1fa06957d31e1f",
+      "bytes": 126993
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/rattle-posterior-original-native.png",
+      "sha256": "f192544aebaafa99721e1da0651330b9d75180a1933fc443b87d73806d49a0a3",
+      "bytes": 102626
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/rattle-posterior-raw-classifier-neutral-2x.png",
+      "sha256": "ccd0a4f030cff1f04c89add5a5a5929e1d519d661ed26695191d13c412c2bff4",
+      "bytes": 63338
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/rattle-posterior-raw-classifier-neutral-native.png",
+      "sha256": "4f5cfa027d1e9ab3698e430ef5cad9d321e31ed3b3acd1b845755b0c773a4bcb",
+      "bytes": 53200
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/raw-classifier-on-neutral.png",
+      "sha256": "924761d84edade25b5090caadeeadfee5cc03aa461780c2d8eefb039de921157",
+      "bytes": 291930
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/trunk-overlap-keyed-neutral-2x.png",
+      "sha256": "68e5bb9bc7f86b83276447018f4618752c52681dc1e3aff71042ea0500808311",
+      "bytes": 246736
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/trunk-overlap-keyed-neutral-native.png",
+      "sha256": "19637fd026497ca74e73353928d6a615a0f3bcc7c7eabacfba64f7b149bd4a7d",
+      "bytes": 218081
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/trunk-overlap-original-2x.png",
+      "sha256": "ffa6a5bba30113bd4ed3b9f404587a5d0f71dd8d4a35dfbfdb7b44c11feccbd0",
+      "bytes": 359862
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/trunk-overlap-original-native.png",
+      "sha256": "43d9533918d0fd19fee4415731e6b392e8c5fd871280592285ce48ed2da458a7",
+      "bytes": 307306
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/trunk-overlap-raw-classifier-neutral-2x.png",
+      "sha256": "d73777bc8fcd004acfb846d3159d3ee5c1c77b69d1bc4e3522310894c7243260",
+      "bytes": 254305
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/c465-rattlesnake-d/trunk-overlap-raw-classifier-neutral-native.png",
+      "sha256": "940dd56c888967d638cc064586fc8de136b5d6c52c3958f582a6660b91c59b91",
+      "bytes": 224980
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/critical-boxes-rattlesnake.json",
+      "sha256": "63d49aaf316e88a0cad6e744017bb1ae7d6953e180e4d3063e93c92e0a838e0c",
+      "bytes": 160
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/finalize-rattlesnake-review.mjs",
+      "sha256": "074be1f34b81e91f6b49dab0d9c50b34b4351f81aa1ee9939da57bf7dc3e9987",
+      "bytes": 5353
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/groups/diving-beetle/review.json",
+      "sha256": "6b5add5c502b7137535475bb502b89243a22bf0ef25bb5d7759bf1d6e6256b3e",
+      "bytes": 8313
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/groups/diving-beetle/verification.json",
+      "sha256": "952a10503966e5579e53a088698310969de50b22b1b035828a3147007e6cdc0f",
+      "bytes": 547
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/groups/rattlesnake/review.json",
+      "sha256": "b0056c185076314672a7e54e08cf18c2179d39b6b7f57944e9c1fa67f991bce1",
+      "bytes": 8340
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/groups/rattlesnake/verification.json",
+      "sha256": "f86b2323c6deae5463002d6e1d35e46b4fc8d47ca1a3a8539def9d5f00987baa",
+      "bytes": 528
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source-review/join-source32-final.mjs",
+      "sha256": "b969bab130a9afd3b0a45c0c1b2d14a007543885aa7ea7b3d8ab552fe078459e",
+      "bytes": 12233
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source32-summary.json",
+      "sha256": "d771aa153e63b077ca19374ac927102568940649f2dae64046b3ce5b59774c55",
+      "bytes": 87600
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/source32-verification.json",
+      "sha256": "ba6e88c33ea948979afeccde76cd7abfe5a541de91af45ef1a1dda3907213ecf",
+      "bytes": 3525
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w3-source/task-report-r02.md",
+      "sha256": "2d2b5aa8d5980987d2c210de3323bc7fc5d6ab95a10103047ca23bb973b1f2cc",
+      "bytes": 3733
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w4-delivery/wave07-chiton-source32/README.md",
+      "sha256": "43403319d047c0461cc6dcdaa37c8c69facad474f12cd14420a5be0fd2aad652",
+      "bytes": 3011
+    },
+    {
+      "path": "audits/C465_CODEX_20261018/w4-delivery/wave07-chiton-source32/manifest.json",
+      "sha256": "ec93e214cd566aceb07d44ad4cc5ff85267b201d532060d22a47d40092a031a4",
+      "bytes": 945251
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "sha256": "2b41e48b1272e7ef10a8971d89a75cf479dcce93ea7b0ec21e68075ecf6bfeb6",
+      "bytes": 557467
+    }
+  ],
+  "files": 291,
+  "remoteOperations": false
+}

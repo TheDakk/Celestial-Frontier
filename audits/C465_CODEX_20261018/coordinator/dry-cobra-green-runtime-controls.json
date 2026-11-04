@@ -1,0 +1,24 @@
+{
+  "stage": "dry-cobra-green-runtime-controls",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C465-dry-cobra-runtime-controls",
+    "--",
+    "/usr/bin/env",
+    "C465_COBRA_EVIDENCE_DIR=audits/C465_CODEX_20261018/coordinator/cobra-runtime-controls-fields",
+    "node",
+    "port/v2/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "audits/C465_CODEX_20261018/coordinator/cobra-vitest.config.mjs"
+  ],
+  "startedUnix": 1792378695.932298,
+  "beforeGiB": 59.74819564819336,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 4.009,
+  "lowestGiB": 59.74491500854492,
+  "afterGiB": 59.747283935546875
+}

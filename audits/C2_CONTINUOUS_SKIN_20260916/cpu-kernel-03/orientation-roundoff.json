@@ -1,0 +1,69 @@
+{
+  "schema": "cf.arap-orientation-roundoff/v1",
+  "explanation": "Floating-point roundoff changes early termination at the unchanged area floor. Caps, constraints and published vertices are unchanged.",
+  "rows": [
+    {
+      "id": "civet",
+      "changes": [],
+      "totalBefore": 1386,
+      "totalAfter": 1386
+    },
+    {
+      "id": "fox",
+      "changes": [
+        {
+          "atMs": 3016.6666666666665,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 4.944620793989758,
+            "rmsTargetErrorPx": 0.6793591648023977,
+            "maximumProjectionPx": 3.0270948326735097,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999988,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 4.944620793989852,
+            "rmsTargetErrorPx": 0.6793591648023943,
+            "maximumProjectionPx": 3.0270948326735097,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.12000000000000219,
+            "orientationPasses": 10
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 7308.333333333333,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.960037087697856,
+            "rmsTargetErrorPx": 0.6157233722609898,
+            "maximumProjectionPx": 3.603074083642638,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.12000000000000004,
+            "orientationPasses": 21
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.960037087697899,
+            "rmsTargetErrorPx": 0.6157233722609895,
+            "maximumProjectionPx": 3.603074083642515,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999346,
+            "orientationPasses": 24
+          },
+          "publishedBytesIdentical": true
+        }
+      ],
+      "totalBefore": 2559,
+      "totalAfter": 2548
+    },
+    {
+      "id": "procedural",
+      "changes": [],
+      "totalBefore": 1210,
+      "totalAfter": 1210
+    }
+  ]
+}

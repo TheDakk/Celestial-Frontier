@@ -1,0 +1,33 @@
+Create ONE NEW ORIGINAL painting, not an edit, not a contact sheet. One whole Earth Cricket faces RIGHT.
+
+Match the exact visual language of the approved Discovery Atlas style described below (no image input is supplied),
+audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png, style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+a reference only: never crop artwork out of it. Its background, lettering and
+divided layout are not the output layout. SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact wording above is for composed scenes. This isolated cutout
+has no floor, scenery or shadow; retain the same painted hand and real anatomy.
+
+CANONICAL IDENTITY (all recorded markers must read naturally): antennae longer than the whole body; flat wings laid over a rounded back; cranked jumping hind legs.
+Earth anatomy and natural pigmentation take priority over procedural genome data.
+
+C444 CHANGED SOURCE PROPOSAL: Use a materially smaller centered specimen with complete long antenna curves turned upward and inward inside the requested frame. Both antennae should naturally read longer than the whole body, with continuous opaque paint rather than faint erased ends. Six unbranched legs with enlarged cranked jumping hind pair; naturally offset near and far feet without adding any free terminal for a hidden leg. The existing issue is actual 8% framing, not the discarded650/275 QA.
+
+INDEPENDENT VARIANT A: Fresh natural right-facing lateral-oblique specimen, with the named repair structures unobscured. Keep the whole animal SMALL at the exact canvas centre, including the longest appendages.
+Four independent fresh calls are required. This wording does not claim numeric seed control.
+
+COMPOSITION REQUEST: square1254x1254 PNG. Use a substantially smaller, centred complete animal than the previous frame-filling draws. Aim for a comfortable180px or greater empty cushion around ALL real extremities, including faint hairs, tongues, antennae and tail tips. This is a helpful requested cushion only; the canonical margin gate remains8% of the actual native width/height, never650/275. No crop, resize, padding or post-generation repair to pass.
+
+BACKGROUND REQUEST: flat uniform pure magenta (#FF00FF) with no scenery, floor, cast shadow, gradient, text or border. Flatness wording stays prompt QA; unchanged keyed-RGBA intake owns admission. No key-colour tint, glow or fringe on the animal. Natural opaque pigmentation and truthful, continuous fine appendages; no invented outlines.
+
+ANATOMY: actual species topology, believable connected paint, no extra legs or eyes, shared-stem forks, disconnected ends or wrong pose. Natural far-side occlusion is allowed; exposure is a composition request, never permission to grow hidden anatomy through the body.

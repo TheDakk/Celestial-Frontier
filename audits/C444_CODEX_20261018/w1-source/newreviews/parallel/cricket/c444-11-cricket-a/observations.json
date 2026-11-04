@@ -1,0 +1,192 @@
+{
+  "schema": "cf.c444-manual-new-source-observation/v1",
+  "id": "c444-11-cricket-a",
+  "species": "Cricket",
+  "masterSha256": "172b1734ee5e85a965fe88a0196869382061fb11a06b2e49db8389a1037b3d76",
+  "promptSha256": "e5d137d16da8a5966cd5c09d8d7159b03357944febea6bcc53015175023cd747",
+  "actualGeneratorSeed": null,
+  "fullSizeOriginalViewed": true,
+  "criticalNativePixelCropsViewed": [
+    "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/thoracic-six-leg-paths-native.png",
+    "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/head-mouth-palp-native.png",
+    "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/flat-wing-back-native.png",
+    "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/head-source-detail.png",
+    "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/head-keyed-detail.png",
+    "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/antenna-source-detail.png",
+    "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/antenna-keyed-detail.png"
+  ],
+  "visibleAnatomyInventory": [
+    "Rounded segmented abdomen with paired net-veined wings folded flat over the dorsal back.",
+    "Broad cricket head with near compound eye and two long curved antennae rooted on its front.",
+    "Six observed unbranched leg chains/terminal paths: enlarged near/far cranked jumping hind pair plus smaller middle/front pairs; some far proximal fields occlude behind the body.",
+    "Small mouth palps and posterior cerci are distinct appendages rather than extra walking legs. No extra or fused leg-chain defect is identified."
+  ],
+  "mustReadObservations": [
+    {
+      "marker": "antennae longer than the whole body",
+      "status": "PASS_ORIGINAL_RETENTION_HOLD",
+      "evidence": "Full1254 original exposes both long curved antennae extending beyond a body-length scale along their actual curved paths. Exact unchanged keying interrupts and erases distal fields; key-retention failure is recorded separately, with no invented numeric length ruler."
+    },
+    {
+      "marker": "flat wings laid over a rounded back",
+      "status": "PASS",
+      "evidence": "Full original and flat-wing-back native crop show paired veined wing covers laid flat over the rounded segmented abdomen, without a raised fan or duplicate thorax."
+    },
+    {
+      "marker": "cranked jumping hind legs",
+      "status": "PASS_WITH_NATURAL_OCCLUSION",
+      "evidence": "Full original and thoracic-six-leg-paths crop expose large bent near/far hind femora and spined cranked tibiae/tarsal paths. Natural far-side overlap is recorded and no hidden leg is invented or declared missing."
+    }
+  ],
+  "actualTopologyDefects": [],
+  "naturalOcclusionObservations": [
+    "Far-side proximal leg fields overlap behind the near body/femur; their exposed paths are not turned into invented extra/fused chains.",
+    "Near lateral view exposes one dominant eye; the hidden far eye is not treated as absent. Mouth palps and posterior cerci do not count as walking-leg terminals."
+  ],
+  "keyedPreviewObservations": [
+    "Actual full1254 keyed preview on neutral background plus paired native source/keyed antenna and mouth crops were viewed. Original continuous fine antenna arc loses its distal hook and much of its curve into sparse detached dots/segments; an original palp end is separated across the erased narrow stalk (52pixel component within844,848..865,875 even under8-neighbour connectivity).",
+    "Long proximal antenna stems, wings and major walking-leg chains remain visible. No claim of complete antenna removal, zero allowed trim, maximum island count or source rekey is introduced."
+  ],
+  "canonicalMarginReview": {
+    "actualNativeDimensions": [
+      1254,
+      1254
+    ],
+    "canonicalRule": "Unchanged8% clear on each side; all alpha>16 pixels, no component discard, resize, padding or rounding waiver.",
+    "pass": true,
+    "exactMeasured": {
+      "status": "MEASURED",
+      "sourceBoxExclusive": [
+        204,
+        153,
+        1018,
+        994
+      ],
+      "foregroundPixels": 107684,
+      "marginsPx": {
+        "left": 204,
+        "right": 236,
+        "top": 153,
+        "bottom": 260
+      },
+      "requiredPx": {
+        "horizontal": 100.32,
+        "vertical": 100.32
+      },
+      "rule": "8 percent clear on each side; all alpha>16 pixels; no component discarded",
+      "pass": true
+    },
+    "beforeErosionDiagnostic": {
+      "status": "MEASURED",
+      "sourceBoxExclusive": [
+        202,
+        130,
+        1019,
+        999
+      ],
+      "foregroundPixels": 117919,
+      "marginsPx": {
+        "left": 202,
+        "right": 235,
+        "top": 130,
+        "bottom": 255
+      },
+      "requiredPx": {
+        "horizontal": 100.32,
+        "vertical": 100.32
+      },
+      "rule": "8 percent clear on each side; all alpha>16 pixels; no component discarded",
+      "pass": true
+    },
+    "boundaryDisagreement": false,
+    "promptQAOnly": [
+      "650/275 composition wording",
+      "flat background wording",
+      "requested-vs-actual size"
+    ],
+    "requiredPx": 100.32,
+    "specificFailure": null
+  },
+  "keyedFeatureRetention": {
+    "status": "HOLD",
+    "reason": "Original continuous fine antenna arc loses its distal hook and much of its curve into sparse detached dots/segments; an original palp end is separated across the erased narrow stalk (52pixel component within844,848..865,875 even under8-neighbour connectivity).",
+    "evidence": [
+      {
+        "path": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/key-retention-witness.json",
+        "id": "c444-11-cricket-a",
+        "antennaWindowCounts": {
+          "sourceForegroundBeforeExistingErosion": 1340,
+          "actualKeyedAlphaAbove16": 240,
+          "attachedToBodyAlphaAbove16": 214,
+          "detachedKeyedAlphaAbove16": 26
+        },
+        "detachedMouthPalpComponents": [
+          {
+            "id": 60,
+            "pixels": 52,
+            "sourceBoxExclusive": [
+              844,
+              848,
+              865,
+              875
+            ]
+          },
+          {
+            "id": 57,
+            "pixels": 1,
+            "sourceBoxExclusive": [
+              882,
+              816,
+              883,
+              817
+            ]
+          },
+          {
+            "id": 58,
+            "pixels": 1,
+            "sourceBoxExclusive": [
+              881,
+              818,
+              882,
+              819
+            ]
+          },
+          {
+            "id": 59,
+            "pixels": 1,
+            "sourceBoxExclusive": [
+              880,
+              820,
+              881,
+              821
+            ]
+          }
+        ]
+      },
+      {
+        "sourceHead": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/head-source-detail.png",
+        "actualKeyedHead": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/head-keyed-detail.png",
+        "sourceAntenna": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/antenna-source-detail.png",
+        "actualKeyedAntenna": "audits/C444_CODEX_20261018/w1-source/newreviews/parallel/cricket/c444-11-cricket-a/antenna-keyed-detail.png"
+      }
+    ],
+    "measurementCaveat": "Eight-neighbour census and source classifier counts explain the actual visible broken source features; they introduce no island-count, percentage-retention or zero-trim gate, and no alternative mask. B retains attached palps and is not assigned a detached-palp defect."
+  },
+  "currentPipelineCompatibility": {
+    "status": "HOLD",
+    "visibleRequiredStructures": [
+      "cricket head",
+      "folded paired wings",
+      "rounded segmented abdomen",
+      "six observed leg paths with large cranked hind pair",
+      "long proximal antenna stems"
+    ],
+    "unresolved": [
+      "Original continuous fine antenna arc loses its distal hook and much of its curve into sparse detached dots/segments; an original palp end is separated across the erased narrow stalk (52pixel component within844,848..865,875 even under8-neighbour connectivity).",
+      "No source authoring, qualification, native or AI finish performed by reviewer."
+    ]
+  },
+  "disposition": "SOURCE_HOLD",
+  "sourceEligibleForAuthoring": false,
+  "admissions": 0
+}
