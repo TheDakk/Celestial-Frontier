@@ -1,6 +1,7 @@
 /** G2: canonical species -> controlled master prompt. No authoring, landmarks or labels. */
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
@@ -46,7 +47,7 @@ export async function compileLibraryMaster(name,outArg){
  if(species.length!==1)throw Error('Exactly one canonical Earth species required');
  if(fs.existsSync(out))throw Error('New packet directory required');
  fs.mkdirSync(out,{recursive:true});
- const scratch=fs.mkdtempSync('/private/tmp/cf-g2-compiler-');
+ const scratch=fs.mkdtempSync(path.join(os.tmpdir(),'cf-g2-compiler-'));
  try{
   execFileSync(process.execPath,[root+'/port/v2/tools/landfall-snapshot/kit-export.mjs',scratch+'/kit'],{cwd:root,stdio:'pipe'});
   const compiler=await import(pathToFileURL(scratch+'/kit/kit-compiler.mjs').href),kit=fs.readFileSync(root+'/ART_KIT.md','utf8'),compiled=compiler.compileCanonicalEarthKit(kit),template=compiled.familyReferences[0];

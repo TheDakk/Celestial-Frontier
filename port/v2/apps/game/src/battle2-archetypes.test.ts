@@ -59,7 +59,7 @@ describe('the shipped arena carries every painted archetype', () => {
     }
     expect(checked).toBe(BATTLE2_PARTS_FITS.length);
     expect(control).toBeGreaterThanOrEqual(0);
-  }, 60_000); // decodes every archetype's alpha + keyed cut-out (38 archetypes; seconds under a parallel run)
+  }, 300_000); // decodes every archetype's alpha + keyed cut-out (420 archetypes at D50 tier 3; ~50 s under a parallel run) — the budget scales, the assertion does not
   it('each shipped binding.json.gz gunzips to its fit\'s binding.json byte for byte, and battle2-assets.json pins EVERY shipped file (the PWA build\'s first-use list)', () => {
     const shipped = shippedProvenance() as { files: { path: string; derivedFrom?: { path: string; encoding?: string } }[] };
     let checked = 0;

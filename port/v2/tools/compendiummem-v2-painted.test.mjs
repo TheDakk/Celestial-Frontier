@@ -1,13 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import zlib from 'node:zlib';
 import vm from 'node:vm';
 import { webcrypto } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { materialize } from './compendiummem-v2-materialize.mjs';
 import { paintedFindings, paintedSettlementFindings, compendiumResources, keyboardEntryPlan, compactSettlementOwnership, ownerKeyDigest } from './compendiummem-v2-painted.mjs';
-const dir = fs.mkdtempSync('/private/tmp/cf-i5-painted-controls-');
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-i5-painted-controls-')) /* portable: the hosted runner is Linux */;
 process.env.CF_COMPENDIUM_V2_SOURCE = new URL('../../..', import.meta.url).pathname;
 materialize(dir);
 const collector = await import(pathToFileURL(dir+'/collector.mjs'));
