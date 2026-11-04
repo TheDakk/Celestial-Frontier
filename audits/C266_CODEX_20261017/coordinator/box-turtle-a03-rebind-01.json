@@ -1,0 +1,20 @@
+{
+  "stage": "box-turtle-a03-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-box-turtle-a03-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "box-turtle-a03"
+  ],
+  "startedUnix": 1792279620.936762,
+  "beforeGiB": 87.23187637329102,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 87.23186874389648,
+  "afterGiB": 87.22747802734375
+}

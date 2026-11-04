@@ -1,0 +1,857 @@
+[
+  {
+    "file": "ROADMAP.md",
+    "bytes": 4269,
+    "sha256": "a70516f1d99f89acbc9c712f24d1ec2b32d89180fe975d862524c709539bb6f0"
+  },
+  {
+    "file": "ROADMAP_ARCHIVE.md",
+    "bytes": 3813570,
+    "sha256": "416dee9d759f1519f12459c8d1e5003baf2dfd15eea7059ff79f345b09a2bbb3"
+  },
+  {
+    "file": "audits/C243_ALLOUT_20261011/execution/RESUME.md",
+    "bytes": 457,
+    "sha256": "1dd1508ab56fee7f7e1e0104c8d6def93f911f585f8ea0bdc4374916a9b65153"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/README.md",
+    "bytes": 1911,
+    "sha256": "f7da7951800883a9dc0abed2c48d22ce5a2b144b9bd3a1992d766d719f919176"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/batch02-runtime-guard.json",
+    "bytes": 413,
+    "sha256": "f79f707b3f7ffa72132cf296d77fbb69a933b079a20777603c0e962e0ceeb2ce"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/coordinator/batch02-validate.log",
+    "bytes": 1093,
+    "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/.gitignore",
+    "bytes": 221,
+    "sha256": "21186ac9a330c2be4718cea1fc658227adf86cc7b3e69d6e82a5bf5ce4d571b0"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/README.md",
+    "bytes": 7642,
+    "sha256": "49f1a65fa7f2d7e2bfc4454e21a619092f0f92bb2644604fe969277a731bdf2e"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/author-glass.mjs",
+    "bytes": 5465,
+    "sha256": "bdf076a38f9c4a295fffca2aecbaff18a4432b5f51959f40d3ff240c01cb6c90"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/delivery-files.json",
+    "bytes": 9073,
+    "sha256": "6681119ff3d2d3e12ba4f8aaf0c5d751a9262788872cc138b62d20a48de7c6b7"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/diagnose-frog.mjs",
+    "bytes": 2092,
+    "sha256": "cd38e53fce280722866354bd0878c278eaf4203c8831af57d3f3dd621aea5c52"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/finalize.py",
+    "bytes": 10585,
+    "sha256": "8f24c1c4bf36c76e83a8fdf9e8b06c78d06c058489c172ea1daf676888c008d3"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/frog-fold-diagnosis.json",
+    "bytes": 12738,
+    "sha256": "a18018b2fd5c55ea844a77513cacb3e0cc13903f8e0c1892f6561bdabc4147ad"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/frog-heel-source-r01-ownership.png",
+    "bytes": 21896,
+    "sha256": "a0b093be8d44e8ab107feffb3407c52d153f7359b89f4bcdf7a7941f55ab33c3"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/frog-r01-fold-diagnosis.json",
+    "bytes": 127251,
+    "sha256": "ff5a1a8291e23488d6361a899aa4e5ee9c2d6be166da1bdef6cf8b969b12c8ef"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/glass-frog-manual-r01-ownership.png",
+    "bytes": 16472,
+    "sha256": "698c9876fc731dd967ec8c21fa0d1894e8137737b9749499269597839b3f44dd"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/local-intermediates.json",
+    "bytes": 35817,
+    "sha256": "08636f0b88d0755a46acd21a8690dfba64ada12eb777848128200f24178edc3a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/locked-job.mjs",
+    "bytes": 1213,
+    "sha256": "5627a8a44262745d1fbfae6be4295a9240d707fd3a3edaa330762144931fe1b5"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/frog-heel-source-r01/authoring.json",
+    "bytes": 17405,
+    "sha256": "217e6ed00d9c9e6b0fa9aefe60bc872886614bb87917335b19ac4ceafa076f95"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/frog-heel-source-r01/master.png",
+    "bytes": 1815716,
+    "sha256": "929875918e88d5bde93b907dbd2414802e42ae18ebf34fae87390198ed580bc2"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/frog-heel-source-r01/presence.json",
+    "bytes": 157,
+    "sha256": "dde9b76f6245ce3f2a9b138d1cfdd146fd4eafee9ace3375900531b5b67d6199"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/frog-heel-source-r01/prompt.txt",
+    "bytes": 8998,
+    "sha256": "5eee896129c90336b8a5786cf2054e31eccf0abf710d57b0879cc278234a666b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/frog-heel-source-r01/source.json",
+    "bytes": 354,
+    "sha256": "6431cfdae0c801f2ae9262a7a27cac8e65903d798eb60f07380722ca757c02b6"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/frog-heel-source-r01/subject-source.json",
+    "bytes": 2195,
+    "sha256": "4b429e4cbadb22942b92499b356644f26af8142649b615f067052252de89c244"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/glass-frog-manual-r01/authoring.json",
+    "bytes": 15484,
+    "sha256": "125fae3f31b1dec708d51d7edcfb9d1039d2ccd119fa0623cc3cfdd32dbf6572"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/glass-frog-manual-r01/master.png",
+    "bytes": 1436180,
+    "sha256": "d5becf4bdfb4572ff64acea1f71c80268bb5908aa63e04f392ce9a091b918993"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/glass-frog-manual-r01/pattern-check.json",
+    "bytes": 286,
+    "sha256": "fcfd2d46c94be1e1ac7c53f831a4915cc8918a63a56be4e5b11582d4eada9292"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/glass-frog-manual-r01/presence.json",
+    "bytes": 157,
+    "sha256": "dde9b76f6245ce3f2a9b138d1cfdd146fd4eafee9ace3375900531b5b67d6199"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/glass-frog-manual-r01/prompt.txt",
+    "bytes": 10671,
+    "sha256": "259a4fd051921afd7dc509d78f8fe24f8b848d8774c7fb411ce499fe9e5523d4"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/glass-frog-manual-r01/source.json",
+    "bytes": 395,
+    "sha256": "56e1c5a0def84f5ac018a676f5e95fb4e6f7c165c5c813ffb8a6bd6aab0cd9d7"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/packets/glass-frog-manual-r01/subject-source.json",
+    "bytes": 2312,
+    "sha256": "35ad8e3a67a9cf21f237c6784de836e193dbbc3cf9feb86941354f57de898231"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/prove-small-detached.mjs",
+    "bytes": 3415,
+    "sha256": "91b04e2a1b82b298d01373ce9ae6fd2b7de66d77dbbfcd36607fcf8e15e1c1e2"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/qualification/frog-heel-source-r01/static.json",
+    "bytes": 21001,
+    "sha256": "f6f09a04e7b9cce425661d1f90ce3dc4dfe20fdded7f749175166ff5e7712e84"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/qualification/frog-heel-source-r01/static.json.sources.json",
+    "bytes": 18590,
+    "sha256": "9fefb2173ab41efa70ca46112fe26864bb88480d910d2a94765f3043a2f9dfeb"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/qualification/frog-heel-source-r01/static.log",
+    "bytes": 1990,
+    "sha256": "9021dffce3e0dceaec5de630d057efea1d33f9cbc870329c8faae9505f7fd913"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/qualification/glass-frog-manual-r01/islands.log",
+    "bytes": 837,
+    "sha256": "6431c6b5b858124daf8c0b89e3ac74cb94eb5b03026e86aa4a32bcbca656648e"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/qualification/glass-frog-manual-r01/static.json",
+    "bytes": 25783,
+    "sha256": "80fcc6829315b052f8af74321c1b272d57f07c9042b5ce53ea49b4e5394f9198"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/qualification/glass-frog-manual-r01/static.json.sources.json",
+    "bytes": 18590,
+    "sha256": "1b4a50f95ec38ed45a2751b7a992170c13e3ac9697e4a9d33b5acb2659a1e897"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/qualification/glass-frog-manual-r01/static.log",
+    "bytes": 2313,
+    "sha256": "de8da09bd5c39b09cc48b7e1e6706bfae6d9d624209ddbfe1a5aff2bad402a2b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/results.json",
+    "bytes": 23340,
+    "sha256": "5b586619c6435cdc511f19fdfca5473a07bab1cd190efef072d4847f9b000f00"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/small-detached-admission.patch",
+    "bytes": 3922,
+    "sha256": "07741c23b5ba240f77f23e74cab8aab32b8e922c04827eb259ccb49a09ce3d0b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/small-detached-controls-instrument-fail-r01.log",
+    "bytes": 1093,
+    "sha256": "273ad0ba33bb5478169bd4bdc942f26a747af4211212cd236faf23573a5eeab9"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/small-detached-controls-r02.log",
+    "bytes": 3719,
+    "sha256": "908d35706a81530005e2d377e137c410c90dcdb4ebc59f9f59b3d9bc3fea78d0"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/small-detached-controls.json",
+    "bytes": 11022,
+    "sha256": "b142cba29bc9284dfa57e937f3192febca0caed58c00a42ce03a5c38b1ac6e07"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/small-detached-controls.mjs",
+    "bytes": 11296,
+    "sha256": "07b1bb402d3d04ef7eaba8e3382048fea1ffbeba8ba831303da485142caae82f"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/small-detached-source-proof.json",
+    "bytes": 428,
+    "sha256": "abc00db87368c450bd7005a48ce6657080b35755b50c058da7a0e8ebb2f9233f"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/visual-review.json",
+    "bytes": 1554,
+    "sha256": "a68fcfd53a250418ede6786793d8bf8d027ce74e735e93a356f2ca8975cc12ef"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/worm-terminal-diagnostic.json",
+    "bytes": 31450,
+    "sha256": "096aa11a1340fbb635ac22fb82f12dcaac03fbdd0f7f661576d683f0f27ebf95"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-axial-hoppers/worm-terminal-diagnostic.mjs",
+    "bytes": 1834,
+    "sha256": "5b1917fb6fefad443672466f1bd45977cea391166915515b385a706f7f2787a4"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/.gitignore",
+    "bytes": 9,
+    "sha256": "ce439e30e2d68aab728edc2929c5655b5e369b03aa078422238635116742e265"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/README.md",
+    "bytes": 6855,
+    "sha256": "37f885ab4baa798635d1125dd367b3d3a6812f10eac3113b4238959fccfa7b8d"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/author-prototypes.mjs",
+    "bytes": 3876,
+    "sha256": "21857f7f9ee05f2dd7f37c067835a4bc30071a6ce8aea6b75848574256f86401"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/build-ledger.py",
+    "bytes": 11374,
+    "sha256": "433635953f1bb3033b0d9769f970799b616366943d078e3c35e4eef1db4e19ad"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/canonical-inventory-facts.patch",
+    "bytes": 5288,
+    "sha256": "2d287ee3f8545a0dbaa2d5414a8afb48d6684f84b2cb6adca450a6c4577cb3f3"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/deliverable-files.json",
+    "bytes": 19152,
+    "sha256": "939da48b29a73d10e0003e8c85615a508763be30e34142cc69dfd96d3f2ed1e5"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/deliverable-files.txt",
+    "bytes": 7466,
+    "sha256": "206457e3aaac98d2d5e900d571577048fb8288acc37eadfba951e2adc1738476"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/inventory-controls.mjs",
+    "bytes": 6930,
+    "sha256": "94467d03d0c3ebe20d0dfea648d05c03834ae6964f7b80dc4fb92c68e6146960"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/live-inventory-controls-02.json",
+    "bytes": 4730,
+    "sha256": "fc4e0728f5cd9fd50f0cef034906ba886932e6bcfcad13905e3c0e8530088b18"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/live-inventory-controls.json",
+    "bytes": 5503,
+    "sha256": "7bc356d1174b08df3db6562a01ebe9c9f5cf14d630ba7e38bd603dcd098221c6"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/live-source-guard.json",
+    "bytes": 2010,
+    "sha256": "6912f7c97e97f686a129c6e4c149048d98f8eb2b06e89a03b9c8b5aeee1c5b9e"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/authoring.json",
+    "bytes": 1607,
+    "sha256": "2193d66d1015d15b1931828f0fa8cd46033bab4e582344563e2aa2128ce9836c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/binding.json",
+    "bytes": 498878,
+    "sha256": "20aedab7e164b24ac51f04b39a29312152e751737f1c13056ecdb48a2cadc183"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/declaration.json",
+    "bytes": 1519,
+    "sha256": "d0fefcd7809ec39606fdc66912f321cf456e2a2416b1edba13d87dabcaf78c98"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/intake-provenance.json",
+    "bytes": 3380,
+    "sha256": "5201bde7062cd2f0528b074b95067075c8064a0f53908ff9231937cbe045a038"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/atlas/c266-01-sand-dollar-test.json",
+    "bytes": 1374,
+    "sha256": "a3bbd2cbe001676ee0ff7397ae8caabfcb2a3fa0f640f99b495dbe4d0d55938f"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/atlas/c266-01-sand-dollar-test.png",
+    "bytes": 673096,
+    "sha256": "53c6900f1a177354c542c94d8caa46a70b6b42681482fda6e48083111e5579e7"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/atlas/receipt.json",
+    "bytes": 1153,
+    "sha256": "026ea7a535007b46b98023cc36bba640a9ee7b510a9ccc86811302744f05a976"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/binding.json",
+    "bytes": 1314,
+    "sha256": "78312d092c5cb3b744f74921b3ce68dab139f3f84627e155196131dc6d17b03b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/keyed.png",
+    "bytes": 1742158,
+    "sha256": "39c63bebcb97b27af46e20a059fb243f2932bd33228783d2303b7933ae5a05ca"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/manifest.json",
+    "bytes": 558,
+    "sha256": "66f889bd68d506183de062ac7828377cfe1c9330f933dba6430f4fe598b4a625"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/ownership.png",
+    "bytes": 14698,
+    "sha256": "a837383b48b10074d997974223e4f0ec4b0494d4ce99b1b753e7693ed9927150"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/parts/centre.png",
+    "bytes": 778102,
+    "sha256": "61a660644f6f44ddc8160866e810cb7899b241cba979db6464550805ba94eefa"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/parts/rim-control.png",
+    "bytes": 615,
+    "sha256": "38a2af57738f2df6c39d7b46c350168e5711e27b6b21e88532f3a1fd55fc1ada"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/parts/root-marker.png",
+    "bytes": 605,
+    "sha256": "6df91d2e9c0394c27ecf712d8eefb59cde339942ba73dd3c333f544d45732f89"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/parts/receipt.json",
+    "bytes": 1390,
+    "sha256": "28037d689ec9ddf8c84138716543e7870d69f12a0c3fc5f2460c81c42df192fc"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/pre-split-binding.json",
+    "bytes": 469685,
+    "sha256": "558927e194daca17af012e2b1e2d771fbded198dac9b6e37c214595f55841b31"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/receipt.json",
+    "bytes": 2044,
+    "sha256": "9f57522edd50a54f7ad4c517a78a2a19000a63f4771e33c9461b209a517ae3e9"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/fit01/record.json",
+    "bytes": 3648,
+    "sha256": "05a1d9f31c5046398a7fc157e2bf7cbe46d616c44c91427c770e856f8c4c2da6"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/intake-execution.json",
+    "bytes": 546,
+    "sha256": "de3dc37b31a5a685b897aec81054d6ffb6ebbcb60545c3c12ee3ac60773317f3"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/intake.log",
+    "bytes": 378,
+    "sha256": "b3348f2879b3d17bfca5abf940af9e625437ff50f2432cb5bd0ba8bea06bc6c0"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/master.png",
+    "bytes": 1716023,
+    "sha256": "7a156eef658fdf62c93309c09cc66687693d8e04952858f9140a4e390f2f7245"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/presence.json",
+    "bytes": 89,
+    "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/prompt.txt",
+    "bytes": 10340,
+    "sha256": "4e729717fc0d98d7f3998b6f8da1e73d9ce7a6abaea233edd32349e168bfdde2"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/source-observations.json",
+    "bytes": 1069,
+    "sha256": "bc59366f1b7af1e52ed84eb7266ac83bf34a7c935e377b93a6f257f8b983156c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/static-01.json",
+    "bytes": 6546,
+    "sha256": "100cf16aa485908b59eee625ceb31603aedbea2adf74c262fd865488273ecba6"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/static-01.json.sources.json",
+    "bytes": 21429,
+    "sha256": "37141e6bea4702fca89defa03d696c828dba4fcd19cb5f9392bebe399224c0cc"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/static-execution.json",
+    "bytes": 565,
+    "sha256": "60f00413815c1d3ed89ef7dcefc47132eff61f078edef54ff5c4c572f12e13c8"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/static.log",
+    "bytes": 1454,
+    "sha256": "50f6bdc8aa8fba886df4d51b155974c83f894b2cb300921f8c7b9dabadb57a37"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/01-sand-dollar-test/subject-source.json",
+    "bytes": 2253,
+    "sha256": "d7c56c8a1a4a7354f740d8748e81c48aed21f7c38b741754aba77535a01e7969"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/authoring.json",
+    "bytes": 1617,
+    "sha256": "06dbfd2454122bef07a607f43cd6bc8833bb813d79fe20cce864190370efeaad"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/binding.json",
+    "bytes": 824845,
+    "sha256": "e88dadd5e567fb37a434a298df888ba3106e3a64e782c618feb37022c6c71424"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/declaration.json",
+    "bytes": 1513,
+    "sha256": "dc4cf6da430c10b5bb5f1bf5ab8b28201ae02eea733cb44c1d2f3c90b47e26b0"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/intake-provenance.json",
+    "bytes": 3437,
+    "sha256": "89eeacfb31a4cdeef2892f37632aa4aaf6d3b110f44c39beaf60ade72dd518e3"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/atlas/c266-02-cold-water-coral-colony.json",
+    "bytes": 1382,
+    "sha256": "825ca34db0ff1e609adc5108954d5a74c4412c50b2c013800becf37824d3860d"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/atlas/c266-02-cold-water-coral-colony.png",
+    "bytes": 389646,
+    "sha256": "14763d4dcd1a4c151c2eba456c65d9826dee88b51995d8088dc363cb3082317f"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/atlas/receipt.json",
+    "bytes": 1161,
+    "sha256": "ed406c5b968b8289823de39a09b85374b73a2ea56f257f2dbb9df9a7df91723b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/binding.json",
+    "bytes": 1316,
+    "sha256": "276e97348b69211995e946314ec39eeaa2930d02069a971bcc0ac215e9c33ed8"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/keyed.png",
+    "bytes": 1602947,
+    "sha256": "8d95badc2723d3a38d8f758014abf4e8ef88d486a4713af60c914774c546f942"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/manifest.json",
+    "bytes": 567,
+    "sha256": "321290da80b1f48ffa2b89438799c11b5baec0d2e2e7ee2d3238c1ef074fc597"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/ownership.png",
+    "bytes": 19870,
+    "sha256": "22ba1da74657498a8cc8abcce8055fb9c17f0ca3077111ec361ad91bbe56a4b1"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/parts/base-control.png",
+    "bytes": 595,
+    "sha256": "5db437a40129211c05ddcb194da2ef811678a8c6006e015dffc2099f4d65be42"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/parts/colony.png",
+    "bytes": 478527,
+    "sha256": "472516f12fe49d25a12b06370cad7479e68069f7b3bbc845add77bba87097c8f"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/parts/root-marker.png",
+    "bytes": 581,
+    "sha256": "e1309d4e49540dc20b05851a958efea4a53ae86301af92ff46e6659afd096df0"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/parts/receipt.json",
+    "bytes": 1428,
+    "sha256": "363b7703602794fe9ef5813eaec10215d81f79c951f20832a9bb3e7a72c26d8a"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/pre-split-binding.json",
+    "bytes": 800076,
+    "sha256": "aad056bf1b8d1021a7390f649988fc15aced34dd8cd78747ff03b4bd6ff6699c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/receipt.json",
+    "bytes": 2055,
+    "sha256": "e727b91ec6f7e722beeda131b725d454b566116e5a0bec7db534d785da7ac150"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/fit01/record.json",
+    "bytes": 3685,
+    "sha256": "d9d21197de365734b121f87d9c1498d8f79c33227b83559be690126a4a13fb7c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/intake-execution.json",
+    "bytes": 560,
+    "sha256": "48abb611883b58126d06af508f903474b9bc5f5a90ec283c4777c05a08401e7e"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/intake.log",
+    "bytes": 385,
+    "sha256": "36388af7e16ef05d77dfc2799811f1f9dc72278346bb1515a57de34fdca7488c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/master.png",
+    "bytes": 1500049,
+    "sha256": "10289deaec9a6b55b4a1604d991f1731c50dc978d06aec84c59e232546dca1e3"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/presence.json",
+    "bytes": 89,
+    "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/prompt.txt",
+    "bytes": 10187,
+    "sha256": "20a2dc13d23ea14d4539a6e1b4b7c857ac616ec44c4e804148d13709e7bb7f8b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/source-observations.json",
+    "bytes": 1114,
+    "sha256": "a901cfaa8ed02bd58db27482679561d378a45f037c2abf10a153d80cf453bc9d"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/static-01.json",
+    "bytes": 6618,
+    "sha256": "436509b2b9602be94aeb5ad24dc88fc4d4fc37af0c487af10a0bef9354b74cb7"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/static-01.json.sources.json",
+    "bytes": 21429,
+    "sha256": "f6ddb995070df7f9722965d2237bd5f95e67c4943906cf0ae86d85993e0945ac"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/static-execution.json",
+    "bytes": 579,
+    "sha256": "76977ac364a3bd8bc78153cdcc6ba8a9b6e9007cb1a53cb3eb5fbc6de843ebd8"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/static.log",
+    "bytes": 1456,
+    "sha256": "f8091a8b941e73b5cc6e97aeb2129d316a1e7d9145de44647fc644aca0caefbd"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/packets/02-cold-water-coral-colony/subject-source.json",
+    "bytes": 2289,
+    "sha256": "713451a7df7687a5bad3d54fce7b065082b674d0d87f4d1e3f8896f356254746"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/patched-inventory-controls-02.json",
+    "bytes": 9002,
+    "sha256": "17a65c84dd9c61d81a98b6aabc4cb702ff8c7e96f66cc121b3e8bd09f5bd4608"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/patched-inventory-controls.json",
+    "bytes": 9700,
+    "sha256": "88bb92b422019401d5cb209b4dade8236d6daeb4b4b96691db9fbc71e45b8623"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/prepare-shadow.py",
+    "bytes": 5718,
+    "sha256": "80a481000dba6d75644eeaca7cd8891152ee91509229f780a968dffd583022da"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/prototype-controls.json",
+    "bytes": 8080,
+    "sha256": "0d76e46995ff0b9113a011bbc324a8233cefad91b09008cc843b578c02ad7f12"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/prototype-controls.mjs",
+    "bytes": 5175,
+    "sha256": "86dabb32005fbeb24f4ba3cbb1c70209a65cf0f93b8c6272c196d841e9eea479"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/prototype-packets.json",
+    "bytes": 1091,
+    "sha256": "0cac4ab484ad2ebe578bb266219ae1d0745a781ccf0717eee1a5403c304bfeb1"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/radial-rigid-prototype.patch",
+    "bytes": 2496,
+    "sha256": "473ed48cb9f81507f7d0030a394f4d98b0f7e16a6ca13308537cf44dc0a4c2f9"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/regression-01-instrument-refusal.json",
+    "bytes": 614,
+    "sha256": "2e4b2d76ad9aa4d8635e9a5df45cbd7278f6487a54519775eb4132b5027da3cb"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/regression-02.json",
+    "bytes": 440,
+    "sha256": "2c4413b8ce4b297c78bc22cda9a888a404f1054e54c24ab87e9bde16122cb568"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/regression-02.log",
+    "bytes": 2635,
+    "sha256": "b69afefbbcbb863dd7b86ae76cff681a37b71742400d8b20f9888dd5e27bab9d"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/regression-03.json",
+    "bytes": 462,
+    "sha256": "b34f691535482371cf4512835a279a571737e344a6bc18ebc63fdcaede72dbd7"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/regression-03.log",
+    "bytes": 1328,
+    "sha256": "1d282c687fc2e2a9b07e63e3a9fb8ddffc11fd77e3ddd349aafe5fc008698e1b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/run-prototypes.mjs",
+    "bytes": 1742,
+    "sha256": "980f25379ea62f4b3f2ec42aa231b57acf42350c582f13d08641614e24f8e3f6"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/shadow-preparation.json",
+    "bytes": 1122,
+    "sha256": "ab9416f2afaf8cae6e334fe5ed0ef6e50f98f971e281e56bfac54aba0349a220"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/species-ledger.json",
+    "bytes": 38979,
+    "sha256": "5a0842258cc7dc1e6d9046970152b7030560d2331c6335288f5bd5647e4c7ee2"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/species-ledger.md",
+    "bytes": 2962,
+    "sha256": "1c9beaba823849dee1f8a29b587ed2e03c72f4499d71e9439b42df5076a9d11c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w1-radial-ceph/terminal.json",
+    "bytes": 646,
+    "sha256": "30a308cf83e8d02e57a080ad3dfc8a77bd24083ac909c6298345f7dbd7dbf6f1"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/README.md",
+    "bytes": 1288,
+    "sha256": "bd087feccf56c9bcc7ee9728613eea2f692f318f4bd175ce3c490ee9378518bc"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton-preflight/README.md",
+    "bytes": 857,
+    "sha256": "2aae8844421af7a76ca5f3ab2daa308208aff9365c8a261833d6fa1896bd6f2e"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/chiton-preflight/preflight.json",
+    "bytes": 57552,
+    "sha256": "23ed3a148c16c7bf7ca6978525daab5cc3ed056298f146bef179f37431c6d3b6"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/queue.json",
+    "bytes": 1544,
+    "sha256": "6a066463c46a54438e349acb2a43f730ed91ddaa2c9efb7380781833efdfd0e0"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/README.md",
+    "bytes": 5066,
+    "sha256": "fdc10267f3d867171fab4d167bc7a833761b6d3895ccfc496c5e3fd06a04b156"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/deliverable-files.json",
+    "bytes": 4398,
+    "sha256": "3a1276abae6cd222429a6886a48ed53f086015b95bd8e3847d5693423cbe750e"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/finalize-crosscheck.py",
+    "bytes": 5015,
+    "sha256": "3ad65f743fbf1ab4be4c40c870afddee988ba2a7f7a93807d3116b39a101132d"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/live-inventory-controls-independent.json",
+    "bytes": 4730,
+    "sha256": "fc4e0728f5cd9fd50f0cef034906ba886932e6bcfcad13905e3c0e8530088b18"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/live-inventory.log",
+    "bytes": 71,
+    "sha256": "aab37059988ab48fffce0885bce9601128411959a4b3a8c36efe881a1d0a7ed4"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/patched-inventory-controls-independent.json",
+    "bytes": 9002,
+    "sha256": "17a65c84dd9c61d81a98b6aabc4cb702ff8c7e96f66cc121b3e8bd09f5bd4608"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/patched-inventory.log",
+    "bytes": 74,
+    "sha256": "80db5fdd4ce58918db1aa7a433b05118d5bf5700d5eb2d674a37d22a3484688b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/prototype-controls.json",
+    "bytes": 8080,
+    "sha256": "0d76e46995ff0b9113a011bbc324a8233cefad91b09008cc843b578c02ad7f12"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/prototype-controls.log",
+    "bytes": 3720,
+    "sha256": "f8259ceab67fedaad386806ea166c61da4ab6ddde9c239f0d6d2c0ddd2cbeb80"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/rehash-proof.py",
+    "bytes": 5450,
+    "sha256": "f384e744f1708ac9639d6e025bd64847cae7ee29ef6b863ab583da9b3dbe6db8"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/rerun-inventory-controls.mjs",
+    "bytes": 6980,
+    "sha256": "135e64cb5f38809ea6119e9d9131a2d13d9b8681d27c061a64c86af12ca2e5cc"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/rerun-prototype-controls.mjs",
+    "bytes": 5226,
+    "sha256": "2613fb7e3f57e80dfc792f52f9819c1633bda07990f26e5e02aa515d539faf4f"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/rerun-small-detached-controls.mjs",
+    "bytes": 11256,
+    "sha256": "54a2fd65775f39cc18c9a1cc3ef0b71f54094b025d33590657edeec972849bdc"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/rerun-worm-terminal.mjs",
+    "bytes": 1884,
+    "sha256": "d25b4dbb057acd8aa6eee884911e0c388e2ae2d8a1ede7af5e36fc235fad0f3b"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/small-detached-controls.json",
+    "bytes": 9255,
+    "sha256": "563eeec43b8e02be906131a9ac8d599ede5787d66bfb49e064431aa45182969e"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/small-detached-rerun.log",
+    "bytes": 2292,
+    "sha256": "c2ea82b5b8ec2fe1b53ac9f0d69894fa327db82d09a8d22e575ab7719bb78edf"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/snail-corroboration.json",
+    "bytes": 3615,
+    "sha256": "de898b88a73ebbaf0bebb9a554ef40f3b9a88dc2ba1e1180557285bbb6791374"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/source-proof.json",
+    "bytes": 7665,
+    "sha256": "9507125dfb77fda3823534a94fa8366b77bc0b24c23b17b6ac22b5c9c3e75b32"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/verification.json",
+    "bytes": 43517,
+    "sha256": "8e6a15a55bce01f388141289e30a8dc22dc4b71d2fbd0183da07d9b5e29e3cb8"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/worm-terminal-diagnostic.json",
+    "bytes": 31450,
+    "sha256": "096aa11a1340fbb635ac22fb82f12dcaac03fbdd0f7f661576d683f0f27ebf95"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w2-independent-crosscheck/worm-terminal.log",
+    "bytes": 106,
+    "sha256": "a1cb78ee66133ce66f2de5763ed79af5ac7109bf5611bd7223f10dd55e86a7bf"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/README.md",
+    "bytes": 1386,
+    "sha256": "17a7d60c3cfb357bd040a5bedd1ec01f39e914077916fbe21c9a1589651ebc8c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w3-c266-finished/status.json",
+    "bytes": 1564,
+    "sha256": "723b53f224a4c6279a48aacbb40bf71d22b310c37bb70f7cd43d1cd77ea4c97e"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/README.md",
+    "bytes": 4105,
+    "sha256": "68e13c9e721218d17049eb0d2cc2ce5b4c7d6162e92c4444b77bab58ecbcefd8"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/consolidate.py",
+    "bytes": 12577,
+    "sha256": "07e0d21be4ee45eead1073ec76515c7a1a53191881511e53e2fb3aa8cfbe1fcb"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/deliverable-files.json",
+    "bytes": 1606,
+    "sha256": "f57d44f9f5cfe7507aebd47b28c13aff39054ec6168fb5a88e86a30f3d162ea4"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/delivery.json",
+    "bytes": 126322,
+    "sha256": "7466e20bfd033b256efeb84be11fedd482ced7bdbe41cb1791d1dbde94848c01"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/remaining-species.json",
+    "bytes": 321445,
+    "sha256": "524a9358418aaf11ca16551973dc4e03abcc1bc5fbbbf6a5565cc418e10c009c"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/remaining-species.md",
+    "bytes": 53041,
+    "sha256": "03173cda5f922b93b156b14ba4722017ad6de81b3b0013168ebb866766551ec7"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/stage-time-yield.json",
+    "bytes": 4568,
+    "sha256": "757864a47075b930877147ed5bbb9148f4a7068eb6602b985851b7716dbc51dc"
+  },
+  {
+    "file": "audits/C266_CODEX_20261017/w4-delivery/visual-review.json",
+    "bytes": 5561,
+    "sha256": "5652c2338acf39f6a3c388b2776d308223d0c1757fa342ce258533e51525d959"
+  },
+  {
+    "file": "audits/MAILBOX/TO_CLAUDE.md",
+    "bytes": 469585,
+    "sha256": "ff705db275b7478eae1db5134b0f5669c17e3f05c55123d9dad78d2bb5c93a4b"
+  }
+]

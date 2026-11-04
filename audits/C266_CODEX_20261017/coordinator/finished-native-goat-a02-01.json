@@ -1,0 +1,20 @@
+{
+  "stage": "finished-native-goat-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finished-native-goat-a02-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/goat-a02-finish-01/finished-plan.json"
+  ],
+  "startedUnix": 1792275861.076481,
+  "beforeGiB": 91.41219711303711,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 24.053,
+  "lowestGiB": 90.97171783447266,
+  "afterGiB": 91.34810256958008
+}

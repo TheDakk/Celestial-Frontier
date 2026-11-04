@@ -1,0 +1,10 @@
+{
+  "id": "c266-22-anole-a02",
+  "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/qual-codex-r01/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/anole-a02-01/native/report.json",
+  "name": "Anole",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/anole-a02-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-quad-secondary/anole-a02-01/visual-review.json",
+  "checkpointReviewSha256": "611ea505ae4ef421c361bf61487881bee46e2ee7d25c2922a414167120f9d77f",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

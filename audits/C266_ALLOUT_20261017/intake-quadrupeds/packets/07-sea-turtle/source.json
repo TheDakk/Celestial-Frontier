@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Sea Turtle",
+  "slug": "07-sea-turtle",
+  "id": "c266-intake-sea-turtle",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c2-34-sea-turtle",
+  "masterSha256": "4afba8310070c6ddcb317ab81ee1c8246af8a861378d96ff5b6228983fc54060",
+  "masterCopySha256": "4afba8310070c6ddcb317ab81ee1c8246af8a861378d96ff5b6228983fc54060",
+  "subjectSourceSha256": "104afa88009b04f3972a019fdb2a2d8fc4a00df3a5d151442cd7f237719a74a2",
+  "promptSha256": "430c1d1125e058ffb742461190b90d596c9943fc9a68270c26f80adf5b017a46",
+  "refusal": "wrong-family: flyer-membrane matches clearly better; missing-anatomy (sprawl); missing-anatomy (ground): 1 ground contact; hindFarPaw 0%, foreNearPaw 1%, foreNearAnkle 0%",
+  "observation": "Full-size review: flattened teardrop shell, swimming pose; four separate flippers are painted: long wing-like fore-near flipper (x≈555-790, tip y≈850), fore-far flipper (x≈820-958), and two short hind flippers (upper/far x≈252-402, lower/near x≈343-455); blunt beaked head; tail tip barely visible under the rim. The flipper paint exists; the refusals come from walking-foot references transferred onto flippers (flyer-membrane contour match).",
+  "joints": 27,
+  "parts": 26,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/07-sea-turtle.mjs"
+}

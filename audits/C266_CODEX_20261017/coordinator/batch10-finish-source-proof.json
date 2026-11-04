@@ -1,0 +1,189 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "name": "Box Turtle",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-01/native/report.json",
+      "reportSha256": "9587316406363feb23c95401908e94e6fd5f937292405a04fc425a98c0b14be7",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/02-box-turtle-a03/islands/fit/record.json",
+          "sha256": "aa357fad755f1452d5736d5b95b560c055099a29de7b9e0f0ddf7360de864302"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/02-box-turtle-a03/islands/fit/binding.json",
+          "sha256": "203e3f9b9c0c446310f2f9768ddb33bc8c7d97c25aeb0768833b0bd9cb0515aa"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/02-box-turtle-a03/islands/fit/parts/keyed.png",
+          "sha256": "5dd71effacce42494271e1acbe26efd637ef76c694517b22c78af1562b2c2705"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/02-box-turtle-a03/islands/fit/parts/atlas/c266-02-box-turtle-a03.png",
+          "sha256": "094e8265dff3d75db224e260b60614d0534620b4d04b7cc508f7fb2fed8ff321"
+        }
+      ]
+    },
+    {
+      "name": "Pond Turtle",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/pond-turtle-01/native/report.json",
+      "reportSha256": "be48f5e525cb550b70d13b655a99b6cf8c221231cdddd3a80e86ab5e2094bf1b",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/03-pond-turtle/islands/fit/record.json",
+          "sha256": "95026909bf1ff07cbb1c58adf1ec8ee005979ab7481508176c16a82ecb2344ed"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/03-pond-turtle/islands/fit/binding.json",
+          "sha256": "806c53dc46c7dec4473bf97ee450a2a8bc62a0a8b51f874140c4bd1e787476cd"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/03-pond-turtle/islands/fit/parts/keyed.png",
+          "sha256": "a55b565a941ec2e57c9702ec7418dac788b67d075159f582386f6f8a5f1fc633"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/03-pond-turtle/islands/fit/parts/atlas/c266-03-pond-turtle.png",
+          "sha256": "3d85a0c758f1c16b66fb63c8688e0d2f5019c6aecdbc14f983846cecd13bdd0b"
+        }
+      ]
+    },
+    {
+      "name": "Turtle",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/turtle-01/native/report.json",
+      "reportSha256": "f6cd30fef3bc354a188d69fe99c436441a8e4aae7f891f7ade8d2b5801f8e28d",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/04-turtle/islands/fit/record.json",
+          "sha256": "987548c45cc267c6e81c8759fcbb9f81763cc9fad56e3d2f7437217f32d3b3e8"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/04-turtle/islands/fit/binding.json",
+          "sha256": "c7a8a7e57ef5cf298e10a9625ea45e18978b84077f8a71f5711fd8e92424f5dd"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/04-turtle/islands/fit/parts/keyed.png",
+          "sha256": "8ccee0610dcd2a57ee67aac1ecba039c4a9226f85ab3bae1c682a500ecfcd7a6"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/04-turtle/islands/fit/parts/atlas/c266-04-turtle.png",
+          "sha256": "bbda9c3fbfc446d090d79d58df373eb85a8c968a78a5e8e5979f81ca71cfa63b"
+        }
+      ]
+    },
+    {
+      "name": "Snapping Turtle",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-01/native/report.json",
+      "reportSha256": "c50446ba9949ec6d98de4be44b1b0c3a28837f6180ee126656a97de22c18e450",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/05-snapping-turtle/islands/fit/record.json",
+          "sha256": "ebff06af69c312c78f1023b4e9fa5de36a59dad90b7ec5ff3e561bf72a3faedb"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/05-snapping-turtle/islands/fit/binding.json",
+          "sha256": "ff05209efd3e2d18a522203d04bab9d138fa89f22a0ddb6d4836c77e8616f948"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/05-snapping-turtle/islands/fit/parts/keyed.png",
+          "sha256": "2799e7e2d10b630428f45e686cca92973ff5a85e96dee60b42181a4896c7399f"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/05-snapping-turtle/islands/fit/parts/atlas/c266-05-snapping-turtle.png",
+          "sha256": "2cc1753a16efdf340f23f0af2439ce349459ae733e0ace2671968816e1820fb9"
+        }
+      ]
+    },
+    {
+      "name": "Softshell Turtle",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-01/native/report.json",
+      "reportSha256": "7999c6ea448c5d15d2073d25a4a353cb801a2f5731743663afae476f5363d214",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/06-softshell-turtle/islands/fit/record.json",
+          "sha256": "b65ad3b7f8ee2ca756b79b6c5d0a69603bb5582a130fec96c1e4e25f6f0b6c8a"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/06-softshell-turtle/islands/fit/binding.json",
+          "sha256": "bb50778b26782dca158026a47e20bd459d14c7c340e94c57d372df94987b0e4f"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/06-softshell-turtle/islands/fit/parts/keyed.png",
+          "sha256": "2e83251cc0848efee67797014f462cff620a4b419d46ff88768fedb178cc5e23"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/06-softshell-turtle/islands/fit/parts/atlas/c266-06-softshell-turtle.png",
+          "sha256": "61ba386be28b3d81c22cfd7df07954a4d7854639e1a567b5b276b1138361c6d3"
+        }
+      ]
+    },
+    {
+      "name": "Sea Lion",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/sea-lion-01/native/report.json",
+      "reportSha256": "f2cd53e2f82d48bea7c45ffcdf45973cfffd0804cc642ab17c7456837a03b049",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/09-sea-lion/islands/fit/record.json",
+          "sha256": "0ed246b120adde08416a93550ace887cc9eaaf9f7a4f16aa6350f38d0620e78b"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/09-sea-lion/islands/fit/binding.json",
+          "sha256": "184fe00e6585d1dd0512c0b2e46427cb2746bd2d45cd8ed784f47cf44e442abd"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/09-sea-lion/islands/fit/parts/keyed.png",
+          "sha256": "8c7ce50801c993979052325480fc46e5cd3f983e6e130f38ea438a9c31002da3"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/09-sea-lion/islands/fit/parts/atlas/c266-09-sea-lion.png",
+          "sha256": "815b241b1c9a951b1f777b4a5fdf9191bdf271ee0f0ea5e5ddb7693d96ff95b8"
+        }
+      ]
+    },
+    {
+      "name": "Dromedary Camel",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-01/native/report.json",
+      "reportSha256": "a308fa689e8f822f708b9c307f65561bac18ced8a591f58420bd58233b4c267a",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/11-dromedary-camel/islands/fit/record.json",
+          "sha256": "aa04ad515bf0ac8918faa529b1f4e2d2428021e1d930ca6568aa965a6d5949d4"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/11-dromedary-camel/islands/fit/binding.json",
+          "sha256": "528c07ee7de654fef964c3d8a5717ba466b9571c3c09b0625248262ff8dc806d"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/11-dromedary-camel/islands/fit/parts/keyed.png",
+          "sha256": "3ab1cd02d8199c1fb3820d491601816b2756f9be338364f4f0323fbf9a38a7c6"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/11-dromedary-camel/islands/fit/parts/atlas/c266-11-dromedary-camel.png",
+          "sha256": "2c99b6be12f78e3402e798b5583819176e2094ed37ed2b40152e982202483c76"
+        }
+      ]
+    },
+    {
+      "name": "Ibex",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/ibex-a02-01/native/report.json",
+      "reportSha256": "1db98d9510c9278abb2df9db341d12f7accf84efed09175577119a2de9baea90",
+      "verified": [
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/12-ibex-a02/islands/fit/record.json",
+          "sha256": "cdb420edb6ad78f37c92a718786ae42adae052dd6951d8b4955be7f44be0ec63"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/12-ibex-a02/islands/fit/binding.json",
+          "sha256": "6c11a9fe8182ad0e76608606985f47dce2ec72ec70220eff0658a6fb6368961c"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/12-ibex-a02/islands/fit/parts/keyed.png",
+          "sha256": "cb2f119430af25664e325047d8768ef037ed38b7535c39c69fb3f25a1b722e09"
+        },
+        {
+          "file": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/12-ibex-a02/islands/fit/parts/atlas/c266-12-ibex-a02.png",
+          "sha256": "fb8719d9928355aca988cad6b6e376e629b559cc7a06e700dd697a4d5002ee18"
+        }
+      ]
+    }
+  ]
+}

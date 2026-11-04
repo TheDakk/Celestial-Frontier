@@ -1,0 +1,55 @@
+[
+  {
+    "id": "c266-11-dromedary-camel",
+    "name": "Dromedary Camel",
+    "family": "quadruped",
+    "packet": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/packets/11-dromedary-camel",
+    "fit": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-finish-01/rebound/c266-11-dromedary-camel",
+    "packetId": "dromedary-camel-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-finish-01/native/report.json",
+    "masterSha256": "07afcdc3daac6c05a695a9d3613e3606250e63addbd82ad7b27caf538b9cad9f",
+    "status": "DIAGNOSTIC_PASS",
+    "staticReport": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/11-dromedary-camel/static.json",
+    "staticReportSha256": "29508b262c07746042c38992a6fc0aa0ab791348d940b602077cf380249c3ae7",
+    "recordSha256": "aa04ad515bf0ac8918faa529b1f4e2d2428021e1d930ca6568aa965a6d5949d4",
+    "bindingSha256": "528c07ee7de654fef964c3d8a5717ba466b9571c3c09b0625248262ff8dc806d",
+    "partsManifestSha256": "3561d19a42020736f0965d3ea2e7f9778e1fee18bfe88a4baf36b4c1d94dd10e",
+    "recipeHash": "8dd1b29f45b39906978302a23fed8238b19f7631143fc89724bd4b8b8b63aade",
+    "canonicalMarkers": [
+      "single hump",
+      "long curved neck rising from sloped shoulders",
+      "long legs with knobbly knee pads and splayed padded feet"
+    ],
+    "canonicalNote": "",
+    "sourceCoverage": {
+      "declarations": "Four legs, near ear, head, jaw, neck and tufted tail hand-authored on the exact original.",
+      "limitations": "INTERPRETATION: the far ear is hidden behind the near ear/poll in this lateral view and owns no paint. Interior root/spine/pelvis/chest are control frames; leg roots inside the body silhouette."
+    },
+    "sourceOwnerCheck": {
+      "packet": "11-dromedary-camel",
+      "family": "quadruped",
+      "status": "PASS",
+      "short": [],
+      "min": 865
+    },
+    "ownerCheckRerun": false,
+    "ownerCheckEvidence": "Exact input copies match existing independently controlled owner-check inputs; sourceOwnerCheck is retained existing result, not a new run.",
+    "ownerSizeCaveat": false,
+    "verifierFilmCaveats": [
+      "Canonical dromedary must retain one hump. Source far ear is occluded; no false second hump or ear invention."
+    ],
+    "classHoldInherited": false,
+    "sharedRepairDependency": null,
+    "visualVerdict": null,
+    "nativeExecutedByWorker": false,
+    "AIExecuted": false,
+    "accepted": false,
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-finish-01/finished/c266-11-dromedary-camel-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-finish-01/finished/c266-11-dromedary-camel-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/dromedary-camel-01/visual-review.json",
+    "exitCode": 0
+  }
+]

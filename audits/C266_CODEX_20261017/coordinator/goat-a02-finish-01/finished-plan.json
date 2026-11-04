@@ -1,0 +1,18 @@
+[
+  {
+    "id": "c266-13-goat-a02",
+    "name": "Goat",
+    "family": "quadruped",
+    "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02",
+    "fit": "audits/C266_CODEX_20261017/coordinator/goat-a02-finish-01/rebound/c266-13-goat-a02",
+    "packetId": "goat-a02-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/goat-a02-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/goat-a02-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/goat-a02-finish-01/native/report.json",
+    "masterSha256": "1532e8117ea868f2fe19b0b75f7c3f50fa9e6f1c07f93ebb105e9dcbedd64a34",
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/goat-a02-finish-01/finished/c266-13-goat-a02-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/goat-a02-finish-01/finished/c266-13-goat-a02-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/goat01/visual-review.json"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Hoatzin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate03/Hoatzin/fit",
+    "status": "RED",
+    "exitCode": 1
+  },
+  {
+    "name": "Kakapo",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/candidate03/Kakapo/fit",
+    "status": "RED",
+    "exitCode": 1
+  }
+]

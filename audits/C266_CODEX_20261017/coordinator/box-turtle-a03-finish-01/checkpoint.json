@@ -1,0 +1,10 @@
+{
+  "id": "c266-02-box-turtle-a03",
+  "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/02-box-turtle-a03/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-01/native/report.json",
+  "name": "Box Turtle",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/box-turtle-a03-01/visual-review.json",
+  "checkpointReviewSha256": "5d430b730ec97b655106c458482dd90817c2da69731f72788cab444a1d1680d6",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

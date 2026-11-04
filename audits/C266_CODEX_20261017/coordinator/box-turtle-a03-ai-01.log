@@ -1,0 +1,9 @@
+{"status":"running","subject":"c266-02-box-turtle-a03","rows":[{"id":"c266-02-box-turtle-a03","status":"FAIL"}]}
+{"status":"running","subject":"c266-02-box-turtle-a03","rows":[{"id":"c266-02-box-turtle-a03","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"c266-02-box-turtle-a03","rows":[{"id":"c266-02-box-turtle-a03","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"c266-02-box-turtle-a03","rows":[{"id":"c266-02-box-turtle-a03","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"c266-02-box-turtle-a03","rows":[{"id":"c266-02-box-turtle-a03","status":"FAIL"}],"last":{"phase":"loading","stage":"decode"}}
+{"status":"running","subject":"c266-02-box-turtle-a03","rows":[{"id":"c266-02-box-turtle-a03","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"c266-02-box-turtle-a03","rows":[{"id":"c266-02-box-turtle-a03","status":"FAIL"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"c266-02-box-turtle-a03","rows":[{"id":"c266-02-box-turtle-a03","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C266_CODEX_20261017/coordinator/box-turtle-a03-finish-01/finished"}

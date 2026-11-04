@@ -1,0 +1,68 @@
+{
+  "status": "THREE_C261_CLEAN_WAIT_SIGNED_PRODUCER",
+  "jobs": [
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/water-vole-finish-01",
+      "slug": "water-vole",
+      "id": "c266-16-water-vole",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/16-water-vole/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/water-vole-01/native/report.json",
+      "name": "Water Vole",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/water-vole-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quad-secondary/water-vole-01/visual-review.json",
+      "checkpointReviewSha256": "fbdb0ae637cd48cd7a5cd52b3148674967a61b4449943f28cea9282b7aec5599",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER",
+      "auxiliaryOwnerCheck": {
+        "packet": "16-water-vole",
+        "family": "quadruped",
+        "status": "PASS",
+        "short": [],
+        "min": 210
+      },
+      "eligibilityRationale": "Four feet, jaw/neck, ear, whiskers and tail root remain attached; fur pattern stays continuous in all five checkpoint views."
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/coati-a02-finish-01",
+      "slug": "coati-a02",
+      "id": "c266-19-coati-a02",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/19-coati-a02/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/coati-a02-01/native/report.json",
+      "name": "Coati",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/coati-a02-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quad-secondary/coati-a02-01/visual-review.json",
+      "checkpointReviewSha256": "3c146bc7430d9606e44f2aa386e1fe395b07305b9a2b493f37c02c2e5de60082",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER",
+      "auxiliaryOwnerCheck": {
+        "packet": "19-coati-a02",
+        "family": "quadruped",
+        "status": "PASS",
+        "short": [],
+        "min": 207
+      },
+      "eligibilityRationale": "Upright banded tail, neck/jaw and four whole feet remain continuous; no opening, detached paint or visible pink residue was found in the five required views."
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/frilled-lizard-a02-finish-01",
+      "slug": "frilled-lizard-a02",
+      "id": "c266-24-frilled-lizard-a02",
+      "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/24-frilled-lizard-a02/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/frilled-lizard-a02-01/native/report.json",
+      "name": "Frilled Lizard",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/frilled-lizard-a02-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quad-secondary/frilled-lizard-a02-01/visual-review.json",
+      "checkpointReviewSha256": "38f2e97357b4f75ee324a69499e327366524eae54fbe260e9c618c1469146eca",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER",
+      "auxiliaryOwnerCheck": {
+        "packet": "24-frilled-lizard-a02",
+        "family": "quadruped",
+        "status": "FAIL",
+        "short": [
+          "foreFarAnkle:115"
+        ],
+        "min": 115
+      },
+      "eligibilityRationale": "Rigid neck-owned frill, open gape, four complete limb/foot paths and long tail remain attached in all required views. No opening or visible residue was found. Auxiliary owner-size foreFarAnkle115<150 remains FAIL; complete native continuity supports the film decision without marking that heuristic PASS."
+    }
+  ],
+  "accepted": 0
+}

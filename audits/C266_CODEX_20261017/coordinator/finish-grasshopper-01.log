@@ -1,0 +1,8 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"c266-11-grasshopper","rows":[{"id":"c266-11-grasshopper","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"c266-11-grasshopper","rows":[{"id":"c266-11-grasshopper","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"c266-11-grasshopper","rows":[{"id":"c266-11-grasshopper","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"c266-11-grasshopper","rows":[{"id":"c266-11-grasshopper","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"c266-11-grasshopper","rows":[{"id":"c266-11-grasshopper","status":"FAIL"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"c266-11-grasshopper","rows":[{"id":"c266-11-grasshopper","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C266_CODEX_20261017/coordinator/grasshopper-finish-01/finished"}

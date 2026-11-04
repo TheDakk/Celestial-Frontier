@@ -1,0 +1,207 @@
+{
+  "kind": "insect",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Ant\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3772671348\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"7\"]]]]",
+    "seed": 3772671348,
+    "ownerId": "authored:archetype-sprint/c266-insect-ant",
+    "earthName": "Ant"
+  },
+  "template": {
+    "id": "insect",
+    "version": 1
+  },
+  "clipSetId": "insect-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "wings"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3772671348,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 10,
+    "body": 13,
+    "loco": 6,
+    "trait": 7,
+    "size": 1,
+    "diet": 0,
+    "head": 5,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 1,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 3,
+    "detail": 7,
+    "accent": 12,
+    "temper": 6,
+    "sense": 2,
+    "repro": 6,
+    "life": 4,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Ant"
+  },
+  "geometry": {
+    "cutoutAssetHash": "119ad5e0f252185aa7a8495b57c107860e212c2d0e40749f5d66f369896553b0",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6419457735247209,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.4864433811802233,
+      0.4704944178628389
+    ],
+    "thorax": [
+      0.5422647527910686,
+      0.4585326953748006
+    ],
+    "head": [
+      0.6339712918660287,
+      0.45614035087719296
+    ],
+    "mandible": [
+      0.6682615629984051,
+      0.4984051036682616
+    ],
+    "abdomen": [
+      0.34290271132376393,
+      0.4784688995215311
+    ],
+    "legHindNearKnee": [
+      0.3875598086124402,
+      0.474481658692185
+    ],
+    "legHindNearFoot": [
+      0.25598086124401914,
+      0.6244019138755981
+    ],
+    "legHindFarKnee": [
+      0.43460925039872406,
+      0.3923444976076555
+    ],
+    "legHindFarFoot": [
+      0.4625199362041467,
+      0.45773524720893144
+    ],
+    "legMidNearKnee": [
+      0.49760765550239233,
+      0.5103668261562998
+    ],
+    "legMidNearFoot": [
+      0.5167464114832536,
+      0.6363636363636364
+    ],
+    "legMidFarKnee": [
+      0.4370015948963317,
+      0.507177033492823
+    ],
+    "legMidFarFoot": [
+      0.37799043062200954,
+      0.5725677830940988
+    ],
+    "legFrontNearKnee": [
+      0.5757575757575758,
+      0.4944178628389155
+    ],
+    "legFrontNearFoot": [
+      0.6403508771929824,
+      0.6164274322169059
+    ],
+    "legFrontFarKnee": [
+      0.5901116427432217,
+      0.48325358851674644
+    ],
+    "legFrontFarFoot": [
+      0.6818181818181818,
+      0.5885167464114832
+    ],
+    "antennaFar": [
+      0.7918660287081339,
+      0.41706539074960125
+    ],
+    "antennaNear": [
+      0.7799043062200957,
+      0.5215311004784688
+    ]
+  },
+  "materials": {
+    "surface": "glossy red-brown segmented chitin, petiole node, elbowed antennae, thin spurred legs"
+  },
+  "source": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/34-ant/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Manual pixel-space observations on this exact retained original. Worker ant: wings absent (none painted; the G2 ant reference uses the same declaration). The hind far leg is raised: its femur and upper tibia are painted, its tarsus passes behind the petiole node and is hidden, so its foot landmark sits on the last visible tibia paint. The mid far femur is hidden behind the near legs; only tibia and tarsus are painted. Front near and far femora overlap.",
+    "sourceFacing": "right",
+    "limitations": [
+      "hind far tarsus hidden behind the petiole node: legHindFarFoot is the last visible tibia point, not a ground contact",
+      "mid far femur hidden: legMidFarKnee is at the visible emergence point",
+      "front far femur occluded by the front near femur: legFrontFarKnee at the visible far knee",
+      "reason text in remaining.json was recorded on the unretained c3 candidate"
+    ],
+    "visualAcceptance": "Dakk pending; static evidence only, native film and full-size film review pending",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "224c28718741f11c99fdada66682f6d4ac2c247028fbd1e2d931eec61f52825f",
+    "subjectSourceSha256": "6e7df0cbdd46b7878d5fb573edb15b0d01cb3e6da68538fc655ce0e2eb22953c",
+    "presenceSha256": "9e3487e28d511038d664b9003edc77558834255bc89334c2b9f9a19265d8bff9",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "thorax": 0.05708860073076693,
+      "head": 0.09173773826131987,
+      "mandible": 0.05442547218740529,
+      "abdomen": 0.20035637203191567,
+      "legFrontFarKnee": 0.05385580224849461,
+      "legFrontFarFoot": 0.13960810047801475,
+      "legFrontNearKnee": 0.049086805092543574,
+      "legFrontNearFoot": 0.13805299565792828,
+      "legMidFarKnee": 0.11595949310389718,
+      "legMidFarFoot": 0.08808102884519345,
+      "legMidNearKnee": 0.06841807840128114,
+      "legMidNearFoot": 0.12744209729488346,
+      "legHindFarKnee": 0.1263747788089491,
+      "legHindFarFoot": 0.07109821738655472,
+      "legHindNearKnee": 0.15552488284583846,
+      "legHindNearFoot": 0.19947205895774328,
+      "antennaFar": 0.1626579245884151,
+      "antennaNear": 0.1599137105187703
+    },
+    "measures": {
+      "body": 0.29192376173146894,
+      "bone-min": 0.049086805092543574,
+      "bone-max": 0.20035637203191567,
+      "leg/body:legFrontFar": 0.6627206417834203,
+      "leg/body:legFrontNear": 0.6410571021711332,
+      "leg/body:legMidFar": 0.6989513999781243,
+      "leg/body:legMidNear": 0.6709291992350042,
+      "leg/body:legHindFar": 0.6764539995793584,
+      "leg/body:legHindNear": 1.2160604525579242
+    }
+  },
+  "recipeHash": "baffa691361ded9ffa1d8b140735fb14f30287320991f9c9f886b10c4850be8a"
+}

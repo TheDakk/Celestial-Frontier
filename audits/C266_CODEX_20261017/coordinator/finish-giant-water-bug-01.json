@@ -1,0 +1,21 @@
+{
+  "stage": "finish-giant-water-bug-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C401-finish-giant-water-bug-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/giant-water-bug-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/giant-water-bug-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792278928.9663181,
+  "beforeGiB": 86.62875366210938,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 52.388,
+  "lowestGiB": 77.25537109375,
+  "afterGiB": 83.62372207641602
+}

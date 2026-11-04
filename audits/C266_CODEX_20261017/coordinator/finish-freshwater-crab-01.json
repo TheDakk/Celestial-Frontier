@@ -1,0 +1,21 @@
+{
+  "stage": "finish-freshwater-crab-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finish-freshwater-crab-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/freshwater-crab-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/freshwater-crab-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792275457.279743,
+  "beforeGiB": 91.67152404785156,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 56.694,
+  "lowestGiB": 82.28038024902344,
+  "afterGiB": 90.64076614379883
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "finished-native-godwit-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finished-native-godwit-01",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C266_CODEX_20261017/coordinator/godwit-finish-01/finished-plan.json"
+  ],
+  "startedUnix": 1792275414.337304,
+  "beforeGiB": 90.70853424072266,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.057,
+  "lowestGiB": 90.67972564697266,
+  "afterGiB": 91.67169189453125
+}

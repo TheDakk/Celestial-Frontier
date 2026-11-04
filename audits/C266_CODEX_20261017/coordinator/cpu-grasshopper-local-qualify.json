@@ -1,0 +1,16 @@
+{
+  "stage": "cpu-grasshopper-local-qualify",
+  "command": [
+    "node",
+    "audits/C266_ALLOUT_20261017/intake-insects-arachnids/tools/qualify.mjs",
+    "codex-r01",
+    "11-grasshopper"
+  ],
+  "startedUnix": 1792271787.6012118,
+  "beforeGiB": 95.7489013671875,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 8.036,
+  "lowestGiB": 95.7489013671875,
+  "afterGiB": 95.7489013671875
+}

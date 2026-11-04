@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "syntax": [
+    "hold-imagegen-lease.mjs",
+    "prepare-verified-prompt.py",
+    "record-generated.py",
+    "import-verified-representatives.py",
+    "import-verified-fish.py"
+  ],
+  "runtimeDiff": [],
+  "note": "in-memory Python compile; initial py_compile default macOS cache denied, resolved without outside writes"
+}

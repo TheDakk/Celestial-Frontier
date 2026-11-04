@@ -1,0 +1,38 @@
+{
+ "source": "audits/C243_ALLOUT_20261011/execution/batch03/c243b03r2c2-11-grasshopper/master.png",
+ "sha256": "2c54eaebbf64734d63a3772f6cbd13a691a0d3c6fb552346b24deb9aadf3b611",
+ "retainedOriginal": true,
+ "why": "Strict right-facing lateral adult grasshopper: six separate legs with six tarsal endpoints, both raised hind femora, short antennae, slanted face with visible mouthparts (palps + labrum), folded tegmen over a complete abdomen.",
+ "ownershipSummary": {
+  "slug": "grasshopper",
+  "paint": 114974,
+  "remainderFallbackPx": 3571,
+  "remainderFrac": 0.0311,
+  "joints": {
+   "antennaFar": 549,
+   "antennaNear": 689,
+   "mandible": 1528,
+   "legHindNearKnee": 15747,
+   "legFrontNearKnee": 1845,
+   "legFrontNearFoot": 1640,
+   "legMidNearKnee": 1667,
+   "legMidNearFoot": 1628,
+   "legMidFarKnee": 1200,
+   "legMidFarFoot": 1645,
+   "legFrontFarKnee": 651,
+   "legFrontFarFoot": 396,
+   "head": 7087,
+   "thorax": 19263,
+   "legHindFarKnee": 9206,
+   "wingNear": 18729,
+   "legHindNearFoot": 5971,
+   "legHindFarFoot": 2720,
+   "abdomen": 19242,
+   "root": 3571
+  },
+  "emptyParts": [],
+  "missingJointParts": [
+   "wingFar"
+  ]
+ }
+}

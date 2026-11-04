@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c266-32-godwit-c1",
+    "name": "Godwit",
+    "family": "biped-bird",
+    "packet": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/32-godwit-c1",
+    "fit": "audits/C266_CODEX_20261017/coordinator/godwit-finish-01/rebound/c266-32-godwit-c1",
+    "packetId": "godwit-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/godwit-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/godwit-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/godwit-finish-01/native/report.json",
+    "masterSha256": "0589b03bfa2c742b656d74bbbfa3a1694ab285ccf4eb92d9ffd864335ce7d622",
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/godwit-finish-01/finished/c266-32-godwit-c1-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/godwit-finish-01/finished/c266-32-godwit-c1-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/godwit01/visual-review.json",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

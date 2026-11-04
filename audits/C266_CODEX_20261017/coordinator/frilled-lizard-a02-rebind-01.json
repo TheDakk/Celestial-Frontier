@@ -1,0 +1,20 @@
+{
+  "stage": "frilled-lizard-a02-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C400-frilled-lizard-a02-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "frilled-lizard-a02"
+  ],
+  "startedUnix": 1792280484.001128,
+  "beforeGiB": 85.42831802368164,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 85.42831039428711,
+  "afterGiB": 85.42431259155273
+}

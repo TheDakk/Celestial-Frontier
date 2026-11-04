@@ -1,0 +1,10 @@
+{
+  "id": "c266-34-ant",
+  "fit": "audits/C266_ALLOUT_20261017/intake-insects-arachnids/packets/34-ant/qual-codex-r01/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-34-ant-01/native/report.json",
+  "name": "Ant",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/c267-34-ant-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-insects-produced/c267-34-ant-01/visual-review.json",
+  "checkpointReviewSha256": "8eb8b8259b8762be3c1c2e5d9c8209c5863e494cbd328b7e41bd4400ddfa2746",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

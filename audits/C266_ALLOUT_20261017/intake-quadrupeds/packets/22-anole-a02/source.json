@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c266-observed-source/v1",
+  "species": "Anole",
+  "slug": "22-anole-a02",
+  "id": "c266-intake-anole",
+  "sourceDir": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c2-24-anole",
+  "masterSha256": "0b6c477240376791e4734f8e1f09977373df28a4204a0d9469d1f431fdce7a53",
+  "masterCopySha256": "0b6c477240376791e4734f8e1f09977373df28a4204a0d9469d1f431fdce7a53",
+  "subjectSourceSha256": "43388f373b8f8a4edfa96aeca8e955d05ba43afea7e6abaa824d83b217c155b0",
+  "promptSha256": "40665382cc1a07c938f7e5cd4a8a9b052a86a2aca5b88d64a0a5ea447d12755b",
+  "refusal": "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy: part tail3 (tail3) covers 10% paint (reference 65%)",
+  "observation": "Full-size review: green anole walking right; extended red-orange dewlap, tail longer than head and body (tip at x≈180, y≈520), four separate slender limbs each ending in a spread adhesive-padded foot (hind near x≈500-600, hind far x≈663-750, fore near x≈800-870, fore far x≈865-968). Nothing missing; the thin curving tail and slender limbs are what the transferred reference misses.",
+  "joints": 27,
+  "parts": 27,
+  "copiedUnchanged": [
+    "master.png",
+    "subject-source.json",
+    "prompt.txt"
+  ],
+  "specFile": "specs/22-anole-a02.mjs"
+}

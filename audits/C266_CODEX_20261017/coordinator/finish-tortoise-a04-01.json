@@ -1,0 +1,21 @@
+{
+  "stage": "finish-tortoise-a04-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finish-tortoise-a04-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/tortoise-a04-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/tortoise-a04-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792275543.577033,
+  "beforeGiB": 90.59225082397461,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 52.716,
+  "lowestGiB": 82.21059036254883,
+  "afterGiB": 90.57453155517578
+}

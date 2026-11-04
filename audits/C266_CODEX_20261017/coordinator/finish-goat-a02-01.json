@@ -1,0 +1,21 @@
+{
+  "stage": "finish-goat-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finish-goat-a02-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/goat-a02-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/goat-a02-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792275798.74836,
+  "beforeGiB": 90.43527603149414,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 56.857,
+  "lowestGiB": 82.0546646118164,
+  "afterGiB": 90.41830825805664
+}

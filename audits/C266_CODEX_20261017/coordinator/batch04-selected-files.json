@@ -1,0 +1,1390 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "path": "ROADMAP.md",
+      "bytes": 4634,
+      "sha256": "aca541535a6bc0d02a551412278edc2caa8df3f872e24aeb25f6243e9433889d"
+    },
+    {
+      "path": "ROADMAP_ARCHIVE.md",
+      "bytes": 3819473,
+      "sha256": "25ea498d87b9610a20ade2075046f6bf99f83a048be61c95b5ccbb904a6b4142"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/README.md",
+      "bytes": 15043,
+      "sha256": "b090df844e242228e9a05882f7e60c572016308da7c72c701dd2f6af75f3015e"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/binding.json",
+      "bytes": 1314509,
+      "sha256": "6c424d159b36d4e80f1350a9d80e302390ccf697792e5c53277257923827dfe4"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/declaration.json",
+      "bytes": 11602,
+      "sha256": "15b64920570bc06ad8ea5c25f58f7323252c152f7c72aa28bf19886902d4392b"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/intake-provenance.json",
+      "bytes": 3449,
+      "sha256": "41b898ea49ca182df2aa66fa0391d269e99075f8b0369efe5940f04d98f4b356"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/c266-fruit-bat-aerial01.json",
+      "bytes": 7443,
+      "sha256": "16054f9042e40ee1b609b304d00678e94112fb2e773f7568d59f868a4b52bbcc"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/c266-fruit-bat-aerial01.png",
+      "bytes": 489496,
+      "sha256": "ecab538bd0ac177fc6d5fce97ce4b079b3aade2831abd443bd47117875a8f3fa"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/atlas/receipt.json",
+      "bytes": 3092,
+      "sha256": "ffd72c66fad2df35867ce1ff7a337e58e55f074e61c828d33c3c23b5e5b2ced2"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/binding.json",
+      "bytes": 6185,
+      "sha256": "72f6692d1366a60b7947599cc27091710ef474a925a8ed62e7c0ef602f3779ae"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/keyed.png",
+      "bytes": 1559056,
+      "sha256": "95ca462e4a3beb2c0bce4947af77d9ee7ca824c5b437a99ac368f10ecf035d8b"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/manifest.json",
+      "bytes": 3087,
+      "sha256": "3dee0a1dac3d3fb4a57fa1db5ec5db675ac8bb912206b64131e39b9396d540fd"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/ownership.png",
+      "bytes": 15806,
+      "sha256": "d6dd421df551a35a5ffceacef11c9f97cbe915fef4dcadcf8973f927fa702ab3"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/body.png",
+      "bytes": 113209,
+      "sha256": "ecce05f0d441993defaf2879f68914c934c97e39fcad27e23dcc8ac4de2c39e4"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/ear-far.png",
+      "bytes": 2452,
+      "sha256": "d5235ba3d00043c7d3f7c5f2473b9c0609d770b0acd538bafb7006e0003b47ac"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/ear-near.png",
+      "bytes": 6771,
+      "sha256": "1fa00cb6e039bb05df984bdb41f5764ed70f5cc97cef1f873f62077950cb440d"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/head.png",
+      "bytes": 21739,
+      "sha256": "b5399deb7c903cfdc5b09152021088bc1f0688f74b74a397e3dcb9c45459beac"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/jaw.png",
+      "bytes": 2661,
+      "sha256": "6e95a0110fe11f2ef2dc40bce846141d3eaba786bf866db29f7cb853c94a8cc7"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-far-foot.png",
+      "bytes": 5689,
+      "sha256": "0dd445f3a9683f33868baa79de86c439fffdcf998b2328536c28e284f54ad914"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-far-upper.png",
+      "bytes": 8308,
+      "sha256": "b666dcb399abf8ca2a688ecc1b4e884aef4e572e68e11cab14625b194af95551"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-near-foot.png",
+      "bytes": 3220,
+      "sha256": "65ffbbca81549b82d4bf01919ce721c5aac2cee78cbe23db6f70f840554aa3f2"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/leg-near-upper.png",
+      "bytes": 12021,
+      "sha256": "22d61540c5a571b76066f3979fbff06dd4e0cebb0a07ab80251ec866d918120b"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/tail.png",
+      "bytes": 2985,
+      "sha256": "e5de2046aca448fc3a7c2df540468a3a474946f550ccc95d3b0faa94f8fc7921"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-base.png",
+      "bytes": 7958,
+      "sha256": "2842676cca16ca86117715a1844ab633fc8d7f531225eaaccc8091c25479d2a8"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-distal.png",
+      "bytes": 38606,
+      "sha256": "eddb17fe93cf1c7af722f0337db6b1f86afd16262f5cfc37b5924c580a6d7ed6"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-elbow.png",
+      "bytes": 8939,
+      "sha256": "7223c3e731659b474d5fa1fd788531c60836b03eb70d245c790c0fa2b354fb53"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-far-wrist.png",
+      "bytes": 21161,
+      "sha256": "a8ab7f887e13c3bd5fe7b797174ccb0440306993d4ef271e806cb480a8ecad12"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-base.png",
+      "bytes": 16105,
+      "sha256": "deb26fa0ca0ae77349260232fb7a1b33872d96825265ab48eaa44916c2863a02"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-distal.png",
+      "bytes": 174979,
+      "sha256": "c8089932b4604de6403bd00cf88e32f496650986cb74029078c4eaea04fb61d4"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-elbow.png",
+      "bytes": 30605,
+      "sha256": "f1fae5e880b9029b3e5148c2f67ebc2e8c796e4aa64e7d720d703978c8cc2fe7"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/parts/wing-near-wrist.png",
+      "bytes": 103240,
+      "sha256": "9438f9f5f793208911fb77e9714b1d5568f9be358321d578926a190dd90dcf45"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/parts/receipt.json",
+      "bytes": 4966,
+      "sha256": "6502093c63675b7317614836a3501b38f0a53d5b96fb1a363971e4025316439f"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/pre-split-binding.json",
+      "bytes": 873406,
+      "sha256": "cb63af81f29cc4a18dda9744a71e14167b4130fa734c6f719265ea87999874c8"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/receipt.json",
+      "bytes": 2444,
+      "sha256": "470ca6c5b6afd05fb1d15d72e0055c9d6d3079514546ad9a1205188e13ee2bb3"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/fit/record.json",
+      "bytes": 6982,
+      "sha256": "35ac5f3c8be1f9cc831190aa75b1eb61965e99ebf5ea73350466ad691e3df159"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/intake.log",
+      "bytes": 339,
+      "sha256": "ba5f49702b8ad28eb08c789e978b02d4f76df68073bf338b6a2f644c45cd9e63"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/authoring.json",
+      "bytes": 7561,
+      "sha256": "d6b218c7958d0177ffd9513600991df102c849106f297408888bb5404c4c135b"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/master.png",
+      "bytes": 1517856,
+      "sha256": "06f0e80ad5183a5c1a076dc4afb9e3bf48a5b60ece306a621095db27b772d411"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/prompt.txt",
+      "bytes": 10946,
+      "sha256": "a2e5fc052fd88386bfb4d13697bb79d2f169a96969d20ac6ce085742f66cba52"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/packet/subject-source.json",
+      "bytes": 2254,
+      "sha256": "f342a6764c31fa352cfcc8d171066c23086226386efbe19018d970fe3349727f"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.json",
+      "bytes": 7553,
+      "sha256": "99a4dfbbe0c8b379e41a2f642d1f64a949266bacb81008937d0e9ba61b24edaf"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.json.sources.json",
+      "bytes": 18023,
+      "sha256": "5df7176ee1bb3d4b6c81a95421e7f2397ba8b8da6dcfa3de1ca5eb99fe1ffb40"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/bats/fruit-bat-aerial01/static.log",
+      "bytes": 1834,
+      "sha256": "cf2f92125ada985e47c54e752b9e89fd0333a2aa158b03c9f5248fd30755c14a"
+    },
+    {
+      "path": "audits/C266_ALLOUT_20261017/identity-static-classstops/verify/README.md",
+      "bytes": 6009,
+      "sha256": "64921f512b5807c1d730898e2c91606582e5db962d9a1287f04700780e45ec56"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/README.md",
+      "bytes": 2844,
+      "sha256": "e43cb59031e9a244a9debeec673deee3864abe070f39f77a592eaa4d7794785d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/batch04-helper-verification.json",
+      "bytes": 345,
+      "sha256": "60ad14ddae0ad464362621d7e437d5b45e3f89de9a188bdf4cb0ab2a8d6be1a1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/finish-subjects.json",
+      "bytes": 239,
+      "sha256": "cd092440b9b9e07a0ca3851977ac67ed5e91323ad650b127d5a1c99ba1dc304a"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/fruit-bat-01.log",
+      "bytes": 214,
+      "sha256": "4a271bb03e51ee7931cc48fe9fe5008d90ade3e5760f737fae81bfc3cd32ed30"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/native-assessment.json",
+      "bytes": 116,
+      "sha256": "b8dbbbdf85724869b7a166feceeea86ce56565943d639aa2e7dbfdc8f907dbc0"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/native-results.json",
+      "bytes": 925,
+      "sha256": "dcb2f6458935578f0693b5eeb2258ff63bf26f17fca4040e785feef3d59c19e1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/native/report.json",
+      "bytes": 365561,
+      "sha256": "28a508c49319b1b252cf96f69e6028f07d66a0abd37645dd310a93d8893357eb"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/native/turn1-hit-reaction-50.png",
+      "bytes": 1530412,
+      "sha256": "f1d24aee8f8d138e879708453aee9e469a520491f19c4684b9acee6396cfb46c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/native/turn2-dodge-reaction-50.png",
+      "bytes": 1543505,
+      "sha256": "cc72d1b4aa31fcd9e87889655ffd1ee0939b1d4a284dbc5c92936cf32d27dafb"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/native/turn3-hit-idle-50.png",
+      "bytes": 1528268,
+      "sha256": "e07f9cebc63fe99884fe587559124ce9a80105123f1d60e3517291f6ef378fea"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/native/turn3-hit-idle-90.png",
+      "bytes": 1527225,
+      "sha256": "7d6419a2e56ad743969bcde846c8472b05b9493e0fb42b8d718aaef59e552382"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/native/turn3-hit-reaction-50.png",
+      "bytes": 1529588,
+      "sha256": "cd844bd81a28679925d0468602e97186e8c34e8c04c8fca67cfa377cf5d11758"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/plan.json",
+      "bytes": 873,
+      "sha256": "d7fd5caf521c602853fa7871fb8b54f387ed67134d1a56ab0e9001cc38fc92e0"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/script.json",
+      "bytes": 674,
+      "sha256": "ab4029ba0527e829d66581fdcc87481e9c898f0d79c07af224b2a52b861efe56"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/fruit-bat-import.json",
+      "bytes": 18107,
+      "sha256": "5f0d431267945d95009048510eb2d7fd3bbeacc2ad4868c6a6c181e248c11ab7"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/generation-originals-proof.json",
+      "bytes": 6860,
+      "sha256": "4869f6cc3ad8bcc5fd4ee4c1b6358e3345cdaa5f507f1429dd375201bbcb6548"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/hold-imagegen-lease.mjs",
+      "bytes": 1340,
+      "sha256": "456d539ac6cb7c4ca0829e9b637f74a40ffad1c07c5cd2fe73f55067b009a7ab"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/native-fruit-bat-01.json",
+      "bytes": 511,
+      "sha256": "e5b873c7a87fdf137f38f44824d9109d6fc65e82a42463bd53db3ddc2740c737"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/native-fruit-bat-01.log",
+      "bytes": 212,
+      "sha256": "5eb334f058a26c705b62762f769f2aec705f2ecf5e48de4d567513190a00cbb5"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/caecilian-01/generation.json",
+      "bytes": 941,
+      "sha256": "88bf9963390a11f44d8eeea78ed8584b1dc7c3ba0d2e4874e05d1de7af36cd85"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/caecilian-01/lease-release.json",
+      "bytes": 42,
+      "sha256": "0892d53252e8b520ed9c3577345ab904f45a1f39468ea23dfed44d3e0cd8a5d3"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/caecilian-01/lease.json",
+      "bytes": 285,
+      "sha256": "f239a01e0efc609e4211f26864fbb6e660952c456f4c3e0068784531611bad2e"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/caecilian-01/master.png",
+      "bytes": 1346056,
+      "sha256": "f0e1e2b4e20bea2acf935dcdf1b07063d2dffe191ee6f59e38c104a4c8ebcaff"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/caecilian-01/prompt.txt",
+      "bytes": 10833,
+      "sha256": "5605947e66279d5749b2b40c216e3b9122abf0865fa0454d2593a0660ce8ae42"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/caecilian-01/request.json",
+      "bytes": 1138,
+      "sha256": "2e8f63024a082d78c3a48bf7122bfa037c954298597747f1edf801f53a640cea"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/caecilian-01/subject-source.json",
+      "bytes": 2242,
+      "sha256": "b7ea7287209fb3e8284e160ffeb4f5787a1e8f31188f6bd09bf89f3ebb6f28f7"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/caecilian-01/verified-prompt-receipt.json",
+      "bytes": 3146,
+      "sha256": "515dc44afec4145b8ef6e43611704c6a673d5752e0a3185069af5c88990ba3ce"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/frigatebird-01/generation.json",
+      "bytes": 949,
+      "sha256": "848a5eec0bf9ce9762aef73939c7c9092660652117c9cf6d31851971020dca02"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/frigatebird-01/lease-release.json",
+      "bytes": 93,
+      "sha256": "2af553b991272b412e1c20b928d0379a088b0c11a8f0cf2308172431efdac7f3"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/frigatebird-01/lease.json",
+      "bytes": 287,
+      "sha256": "89d7468870a9cda3f6bc1ac43b6a94265ab0bbad7951cbbe69f048b739f42464"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/frigatebird-01/master.png",
+      "bytes": 1456125,
+      "sha256": "cf97ecb71d845f6629a1d73642c1e8173f16d166eb7d1b14ef86c49a26677ddb"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/frigatebird-01/prompt.txt",
+      "bytes": 10763,
+      "sha256": "5263a71f2d49b44ffd5ccdca323443868f971c98dff0ee5fe46093f18cfa5130"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/frigatebird-01/request.json",
+      "bytes": 1145,
+      "sha256": "b4acc1b804d43720769701728318a89ccf694522253814917022d782bdb17694"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/frigatebird-01/subject-source.json",
+      "bytes": 2734,
+      "sha256": "f0e580a0d310b2e6fe954269a08153ebef85981370c4c687f9e72309d7230c19"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/frigatebird-01/verified-prompt-receipt.json",
+      "bytes": 3037,
+      "sha256": "4a98a6927ed1d7d3eee0f2ba54bd5e806cee7687a5657a1e080f1eb160469b72"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/index.json",
+      "bytes": 10087,
+      "sha256": "850ac95364cba33b633e5279bad3e4dace25e31ea282b31030b0244ffa331e39"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/leafcutter-ant-01/generation.json",
+      "bytes": 961,
+      "sha256": "860c20bdaaf6b1663d52d676f1bba857f5f9b586233c42f4a6515b558f0d618f"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/leafcutter-ant-01/lease-release.json",
+      "bytes": 42,
+      "sha256": "0892d53252e8b520ed9c3577345ab904f45a1f39468ea23dfed44d3e0cd8a5d3"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/leafcutter-ant-01/lease.json",
+      "bytes": 290,
+      "sha256": "fef7fc87c42eabd99509adb605f318ef0ce09ab7ef98950a5e702141072925d7"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/leafcutter-ant-01/master.png",
+      "bytes": 1447023,
+      "sha256": "c08d4d2fcae73e2d3bd9c7ae7978fe628557eb18cf0ec0515b9a72c253cb42c1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/leafcutter-ant-01/prompt.txt",
+      "bytes": 11125,
+      "sha256": "8ca74a31ba6e4c989307aa0648050ac50966d1a6eac78905cab1f99b79c93784"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/leafcutter-ant-01/request.json",
+      "bytes": 1147,
+      "sha256": "fbb41ca91d6a3efa31ddeb7312cc39df62ee82ac0b99c27d991e9c3975d4b0b7"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/leafcutter-ant-01/subject-source.json",
+      "bytes": 2812,
+      "sha256": "5977a634302972bbe715f9ad052166c037de91c56d4dfff8faf1de52b3e94a9b"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/leafcutter-ant-01/verified-prompt-receipt.json",
+      "bytes": 2233,
+      "sha256": "ae89dc461b1d659c664d7297d2e172c1b2d00bf810e6bf0aaa4f64a4c97733aa"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/macaw-01/generation.json",
+      "bytes": 925,
+      "sha256": "da8bea3aa83b7041ab1643c5701282f05cfe8a36793c566e819b7cd5da936202"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/macaw-01/lease-release.json",
+      "bytes": 51,
+      "sha256": "8bd9db7f1089a22195f889b08944c338ff2794fa144cce7d9c68aaecc9f7ad6d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/macaw-01/lease.json",
+      "bytes": 282,
+      "sha256": "3b2ee9ecfc0f345409f03bf626ad1c4c75e251d776557cb085aa7bf6c941227a"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/macaw-01/master.png",
+      "bytes": 1350073,
+      "sha256": "4a0a3458465d1f3e2864bc7673a7454ee8193dff429579b0075101fa6f2b0ee9"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/macaw-01/prompt.txt",
+      "bytes": 10936,
+      "sha256": "bd504c3fa48fb975147fe8a277fcd294fe73a7939e66a385ebcf32c9deabe64f"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/macaw-01/request.json",
+      "bytes": 1133,
+      "sha256": "dc40add722462a656ede1259df78a75f393abb23c4726031713296d952cad871"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/macaw-01/subject-source.json",
+      "bytes": 2803,
+      "sha256": "023896fcfe8cdf7ababd69ed4acb1320459a9d3978d3767d2f189b6cd36c46c5"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/macaw-01/verified-prompt-receipt.json",
+      "bytes": 2597,
+      "sha256": "5cfc80401bcfcc6e84292e7fcb98c0b2e8150da633435d7ef9397c90564dd808"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mite-01/generation.json",
+      "bytes": 921,
+      "sha256": "3480ab20cd24a9b66043566adce92e50e90064a93f42c63b20bc03485e834fe5"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mite-01/lease-release.json",
+      "bytes": 51,
+      "sha256": "8bd9db7f1089a22195f889b08944c338ff2794fa144cce7d9c68aaecc9f7ad6d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mite-01/lease.json",
+      "bytes": 282,
+      "sha256": "70ba1b8c1a046eb33dcf7f10a87aaa46f6c90da28a94ec1afc6b0c167ed17091"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mite-01/master.png",
+      "bytes": 1526190,
+      "sha256": "4501ea1247d9e39f68a8a2f80cf6853d2bba2f33c184628995c1ab8e342ba61b"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mite-01/prompt.txt",
+      "bytes": 10885,
+      "sha256": "2eaf3dfc6ae5f4a943263a4027759c35d1e4f8e60710d45da95de2fd3b4d6478"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mite-01/request.json",
+      "bytes": 1129,
+      "sha256": "f9000d9f1741049bf5369c07f8dd222a9a9ea99f6270cc85d49513a1652c15ad"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mite-01/subject-source.json",
+      "bytes": 2278,
+      "sha256": "5a3eed15535d69e80285673580d06f9cd4c62a3228ebb9b27f82d13497b528aa"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mite-01/verified-prompt-receipt.json",
+      "bytes": 2059,
+      "sha256": "804cf6c4dd84de0e09099aaa428356a866aefde74261e5884cb74915d2dac1ec"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mud-crab-01/generation.json",
+      "bytes": 937,
+      "sha256": "6118f6dfaaa7880f34e189d4ae396a18aaaff1afd29b247d79c92360f9bbd05f"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mud-crab-01/lease-release.json",
+      "bytes": 42,
+      "sha256": "0892d53252e8b520ed9c3577345ab904f45a1f39468ea23dfed44d3e0cd8a5d3"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mud-crab-01/lease.json",
+      "bytes": 290,
+      "sha256": "d8fa1ef16a28d1ef61d7fcae301649210ddfa0712ccd7f793f598ca41dafcd19"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mud-crab-01/master.png",
+      "bytes": 1596368,
+      "sha256": "661a9de9d7bda02b99eaf09a5ab305fdb800f262a70c96c7773e431734e3c53e"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mud-crab-01/prompt.txt",
+      "bytes": 10008,
+      "sha256": "e7f24adb46358b37287c3a1260d734912b37735d87c52d977c41baf92996135d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mud-crab-01/request.json",
+      "bytes": 1143,
+      "sha256": "9b4f6fd4bd599172b6f95e174fee4e28b7aa4b5eb6b4c0e78a5edb5a2ae27f21"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mud-crab-01/subject-source.json",
+      "bytes": 2179,
+      "sha256": "f2e88239b29136083dc48a71201a80a9624f4defb2f074ce8373ce67791dc66d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/mud-crab-01/verified-prompt-receipt.json",
+      "bytes": 2455,
+      "sha256": "1ae4b7031dbb6e3a1c2d669a49e9905d9be204a07f7780cc2a2425ca4f733353"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/sea-spider-01/generation.json",
+      "bytes": 945,
+      "sha256": "d623376bcf6a4e740adbddb8a1d7722f4eb60b13f074c27c843404f458f1f5a2"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/sea-spider-01/lease-release.json",
+      "bytes": 42,
+      "sha256": "0892d53252e8b520ed9c3577345ab904f45a1f39468ea23dfed44d3e0cd8a5d3"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/sea-spider-01/lease.json",
+      "bytes": 289,
+      "sha256": "a1766ee74fb4dc59eb2a667a78ae4b4fb163bd20f753dacabe4b9d98126d2b3c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/sea-spider-01/master.png",
+      "bytes": 1428397,
+      "sha256": "0b65a21f07fc87c60a4a0aad61bc62f286d44aa92c5abd87ed0a8df8dc0727f6"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/sea-spider-01/prompt.txt",
+      "bytes": 11106,
+      "sha256": "05e3fcb2a2345d68c0a75b17d2e5bfff31ba9041cecff048f1e1939f2460b518"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/sea-spider-01/request.json",
+      "bytes": 1141,
+      "sha256": "c1a9caad607d301b6d00eae960d5819e3bc5906cc0932e9172402ecf8d1432f6"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/sea-spider-01/subject-source.json",
+      "bytes": 2353,
+      "sha256": "a4ebcc379a23004578f7102a01452b613c5a2fa589f095a7f280c4c547a8c1ad"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/sea-spider-01/verified-prompt-receipt.json",
+      "bytes": 2138,
+      "sha256": "9dba4c25688870983cbaf816b79be2b2e0237044c339f77652e35ec0a4d638fc"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/generation.json",
+      "bytes": 928,
+      "sha256": "c45ad55a55361a2501222104584bca5993614344c3e849810cdcf0a2cb976907"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/lease-release.json",
+      "bytes": 114,
+      "sha256": "5894bace537db566040ddac91b7d16916df164ba49f1bf7b8b807917f03610e7"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/lease.json",
+      "bytes": 285,
+      "sha256": "99186728536cfb69f59b118f5dd349da2728549115abbab36462e3ad4fca37f1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/master.png",
+      "bytes": 1556624,
+      "sha256": "ec47bfd97a551cb1dafcbbc02ca5d8ee36fcb1167a02c916b6146f8bf3b34828"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/prompt.txt",
+      "bytes": 11562,
+      "sha256": "089fb17d384d9b5969898c48e9cabbd58d1bfc6270fdd4fde699daf750579e13"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/request.json",
+      "bytes": 1345,
+      "sha256": "72007930b9f1efbf11ae4d861bef729c176a76e8cc70c352584b8a0e16f4bf38"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/shrimp-01/subject-source.json",
+      "bytes": 2262,
+      "sha256": "7c5cde6fefcb3abd33da8db65e45d6f1710ec1f807e43e4d12c202f1056b75b1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/swift-01/generation.json",
+      "bytes": 925,
+      "sha256": "1e785f04a1e0448173ba5adea5895c0600e0ed2cfd7d4c1e39550a5d257ab01a"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/swift-01/lease-release.json",
+      "bytes": 42,
+      "sha256": "0892d53252e8b520ed9c3577345ab904f45a1f39468ea23dfed44d3e0cd8a5d3"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/swift-01/lease.json",
+      "bytes": 291,
+      "sha256": "7e18ec7b6d6b0b5073545139d3fde0641486bb41e3df492f9549c4b02f21aa1d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/swift-01/master.png",
+      "bytes": 1338135,
+      "sha256": "907cc704528e9c1afa440f9b6217ec21c2b85642d7b63d28c4227d7197fa7721"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/swift-01/prompt.txt",
+      "bytes": 11262,
+      "sha256": "d0613f80995604152cd7cc1f92981d7e4f804b1fa2aba96a421b1dd8f6f94773"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/swift-01/request.json",
+      "bytes": 1133,
+      "sha256": "17944f37167f49b9bdc4144be6dd2db1cdd33cccfff728e16d1ae8108e06617d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/swift-01/subject-source.json",
+      "bytes": 2829,
+      "sha256": "70ac10cf1294dbd068b9bfce1ca85a2c2d52e1301c66547495c789b64d0835af"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/swift-01/verified-prompt-receipt.json",
+      "bytes": 1964,
+      "sha256": "300d1797e45ce04c95880cb0f4eaa9c1bc3ce7b0461c07208c0db94cec3070fb"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/wall-lizard-01/generation.json",
+      "bytes": 949,
+      "sha256": "848552ef86a7eedfd1ba077f5429ee3097d62dbfb324802cbb669afb293796c8"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/wall-lizard-01/lease-release.json",
+      "bytes": 105,
+      "sha256": "29e8517620c85898c5cc3f22130b2dd6350c2ed96f20fcf27c970712db4f5496"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/wall-lizard-01/lease.json",
+      "bytes": 288,
+      "sha256": "c344a7522fabc5bc16b567dd5ef4685617272da49a141ca8ecae860542bb7835"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/wall-lizard-01/master.png",
+      "bytes": 1290447,
+      "sha256": "153304fbb6732c550425652eecf9538493e3297d729837966285ed978bf3f203"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/wall-lizard-01/prompt.txt",
+      "bytes": 10267,
+      "sha256": "7bc4197aaff4b402127a7a159f29fe8d85dca2ba6d53de0cde7e8c5128880232"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/wall-lizard-01/request.json",
+      "bytes": 1181,
+      "sha256": "fc3ffdcc12cf3cfb03acd4255c784de47968a7d7d1498ac95b1597c80b6f8ebd"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/wall-lizard-01/subject-source.json",
+      "bytes": 2398,
+      "sha256": "588851068ce391d81c8b185d63c8febdc5a9d28e464facfd648b26474f29d286"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/paintings/wall-lizard-01/verified-prompt-receipt.json",
+      "bytes": 1912,
+      "sha256": "6517d2ceef278b644ba93baf634247c18c5f2fb068e8bbd0dbb78053144f5771"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/prepare-verified-prompt.py",
+      "bytes": 2611,
+      "sha256": "3c37e3c3c92f7518abf4931ef45877619279e981d59d553d3e11a634cabe30e0"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/record-generated.py",
+      "bytes": 2109,
+      "sha256": "21079daea42654a170f565762b285cb9574a9dffc0d977f7d12694956972bd22"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/coordinator/validate-batch04.log",
+      "bytes": 1093,
+      "sha256": "85d4ec33285e7f64295c1ee43e5f2d00fc1af9bf31d7c02f6cea815c3136781a"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/README.md",
+      "bytes": 1365,
+      "sha256": "c072ce48e2e44f2668ed32b8a73cbd9ded3727ba301a05c0e5b3735c8fdd04bc"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/all-roots.json",
+      "bytes": 4090,
+      "sha256": "fcc021c125b482fdd045d64f4a75bd11da0f0d10141b9ec59d5b1030f0e42c38"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/crop-views.mjs",
+      "bytes": 1231,
+      "sha256": "c968b07ef93975ac0a45e296a0d34a8d0a2604240e1eba3e3b290f3305cc94bb"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/delivery-files.json",
+      "bytes": 4846,
+      "sha256": "bc848086a90fa7a69de6f60222faebc3f50536b6159882a627b1ef0062eb3af1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/encoded-media.json",
+      "bytes": 249,
+      "sha256": "2269f939759db997aca9c8da0ce304ee2a660bb9d2786cda3ece70d47af0458d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/finding-boxes.json",
+      "bytes": 1274,
+      "sha256": "19a1c677e146e6ab7714c56a3a904d615f99e4e278ee63f9147c57b5c4a99476"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/fragment-check.log",
+      "bytes": 1379,
+      "sha256": "2c279be68f088b4756637f472eb34f1df4e49b4ab66b1178b3a780525b312f20"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/fragments.json",
+      "bytes": 112844,
+      "sha256": "091dfd3f93817df50fcd7fc4e55d6120b881fd55c84d26fdc7bf90868c7d962f"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/identity-card.json",
+      "bytes": 491,
+      "sha256": "240d69f03fcbbf317c063ccf9530e0d6c335e17226c62ce0c09acd51f6379455"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/identity-card.log",
+      "bytes": 26,
+      "sha256": "774487ddc31641b2caf6451d2ead0bab4affdef0af88c16628c5e1101f09463c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/identity-card.md",
+      "bytes": 604,
+      "sha256": "1216ababc43346ffbf0fd8ddb5e1cf09f81e9a3eee4b8a398e3907bc898c72db"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/mark-findings.mjs",
+      "bytes": 1386,
+      "sha256": "038d655bd3f450094d4709c358308bc49312a9a468f60e5b560aa6efc482a305"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/pin-check.json",
+      "bytes": 31568,
+      "sha256": "6a67b499d8f35cc9cd68205f79b9ac4d9e76567ff300bfee32b4aa44c8ccd70e"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/turn1-hit-reaction-50-junctions-2x.png",
+      "bytes": 358692,
+      "sha256": "cb324728d69698e9d2f8566d038a94a4fbd72074b2ee1d8457a65428b6672d51"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/turn2-dodge-reaction-50-junctions-2x.png",
+      "bytes": 362828,
+      "sha256": "5d443d2cf3549463365c1a4d44f7172e74fb3fd9c12b622b15ce2c6d24b9767c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/turn3-hit-idle-50-diagnosis.png",
+      "bytes": 1566022,
+      "sha256": "800066ab689c70731c35073a6f86352eae9886c69b8ecb0ae596f351bb67964a"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/turn3-hit-idle-50-junctions-2x.png",
+      "bytes": 356763,
+      "sha256": "5354df4c6a55adc30e5727fb6e61c324309ea7821c399338e3b681d7a7917285"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/turn3-hit-idle-90-diagnosis.png",
+      "bytes": 1564708,
+      "sha256": "491f9b357a4dfdf7a4f33c8f4594db2238ff922edcdaa4239ac0368791ba7796"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/turn3-hit-idle-90-junctions-2x.png",
+      "bytes": 356110,
+      "sha256": "6794e0d9659a1e0340d3afd62daa5b04bbab1b680e51438e3728dc6ab97e66a5"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/turn3-hit-reaction-50-diagnosis.png",
+      "bytes": 1568826,
+      "sha256": "954cb225993c0ead4cf85b671b21bda521e64df76e9921abc70cdb501214234f"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/turn3-hit-reaction-50-junctions-2x.png",
+      "bytes": 356669,
+      "sha256": "369efbd7635e986bd6ecb908539cc8c6cb198ffae0a7b7f257c66f198dfc2a48"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/views.json",
+      "bytes": 3375,
+      "sha256": "041d750391ee6e603f0dbd82ceb463332325eda060eae297c02a076df527b4e6"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/fruit-bat01/visual-review.json",
+      "bytes": 11358,
+      "sha256": "2cdd0bd144e65e9db722013f0de803a73a848247f0dd5e099b79677eacbdd82b"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/README.md",
+      "bytes": 2398,
+      "sha256": "2bdfc2b8994dac04305e9fb9fc62b6fa063563bf5d3325fd9df99805cbb0082a"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/delivery-files.json",
+      "bytes": 9992,
+      "sha256": "008eaeaeb8b20a848d21075900e5bf7b279d833b9166383a1c972a242e12f40d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/README.md",
+      "bytes": 1669,
+      "sha256": "c9d2be183627c26096572cc90ce6b8be48bcb35305d31fcb9685639bad61671d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/crop-spec.json",
+      "bytes": 371,
+      "sha256": "04aaa2cdb1da4dfb872ea7a249745668124d17ec5d7a7b9f48bbd225a5ca4350"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/framing-diagnosis.png",
+      "bytes": 1452660,
+      "sha256": "ce68fb3d137d617055bf62f5f193c385cc03c44c16cbfebf037b23decabf6257"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/head-pouch-feet-2x.png",
+      "bytes": 532822,
+      "sha256": "85cfcf248477e07c035a629baf48a7d92c8ad937d0b280efb928c8e395d6a144"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/mark-framing.mjs",
+      "bytes": 1276,
+      "sha256": "39e4b5e888ff034f262604bf260f9dc91e1b69d956cefc34b10418267bb03394"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/measurements.json",
+      "bytes": 2248,
+      "sha256": "7891d0b6d09b67f6ecccaecc10c66f99b808234a2c8a8d1621e933cbddb222af"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/source-review-literal-prompt.json",
+      "bytes": 4222,
+      "sha256": "60211b03e8b96cdda0f3dd9b94ddde0a1d56299ee970a9e922e68fd76d616570"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/source-review.json",
+      "bytes": 5857,
+      "sha256": "0a6a1e2fae25b0e8fdfb386850d03a7e7bb248181faa722a34f3d87c40bf3dd0"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/tail-2x.png",
+      "bytes": 203967,
+      "sha256": "ef2241865bc133a13d328a4609f8b052c59b6e0250e23dcc1354199b972736d8"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/frigatebird-01/wings-2x.png",
+      "bytes": 821886,
+      "sha256": "49294d27b4e5b0b6813bb1dbd1449c4b523efe8e4aeda9fa93b1f76441676312"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/README.md",
+      "bytes": 949,
+      "sha256": "e48701ab131fd7bc277172aa6a7cffb7386232edec4822cff79ae26f99d42fc0"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/census-grip-diagnosis.png",
+      "bytes": 1410741,
+      "sha256": "1d620c2b9264bc98854e0327ba5cecf810f9cf2660464a848f17b9158d5fd3cd"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/crop-spec.json",
+      "bytes": 423,
+      "sha256": "af172a620481cbca0671b79736022cdc78de1f79fb5376b0bb32da6a04da3ffc"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/leaf-grip-head-2x.png",
+      "bytes": 194523,
+      "sha256": "a68c0f4d09ea7c7b2fd1a41c296c95b87562c0218c8ed1ba547584bc99fb5482"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/leaf-waist-spines-2x.png",
+      "bytes": 870662,
+      "sha256": "eb5204e87eee6268dc6b5cb3a6e135984fd6f7e0e91e5fda87b3fd487b324e80"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/mark-census.mjs",
+      "bytes": 2493,
+      "sha256": "2e5bdbf51decbc92001566e131b1276e4c092bc58ac4fe2a6345bcf5bd704bd2"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/measurements.json",
+      "bytes": 2338,
+      "sha256": "8a943ef9f6ec230b2249601b1bd3765d7665b6aec89a680973bfb906ec4c9016"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/source-review.json",
+      "bytes": 7777,
+      "sha256": "d664f5e27107107c48609a7a71fd7db3c38b62707164121bed0dd2786557119f"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/walking-census-2x.png",
+      "bytes": 533415,
+      "sha256": "def74993660158d01dad71409f4fff9d000fad14a43633e0c29ec4524255f836"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/leafcutter-ant-01/walking-census.json",
+      "bytes": 2299,
+      "sha256": "0ca6ba6187652cad4d28c71d5d9b381ab5d1455ad61cc3de2647d668a40daf4c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/README.md",
+      "bytes": 961,
+      "sha256": "d0fbe6c9eec6b696fc8ad7210a39b312a6595f41c928044876b27c270e454fdd"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/crop-spec.json",
+      "bytes": 414,
+      "sha256": "932ebc56298fb810fb7290c002c0521517ef2d8ed6cbb6076cf19847dc89fb5f"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/mark-census.mjs",
+      "bytes": 2423,
+      "sha256": "c09a2f5b3ce57a789b31348de42f1adadbfb213f6aabb97ef22b8f7eeb86046a"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/measurements.json",
+      "bytes": 2262,
+      "sha256": "0ebb70a3ff188025b226d63144ea95dbd0f83e22fa158df27429b0fb598d1005"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/mouth-cone-2x.png",
+      "bytes": 135585,
+      "sha256": "7262450ca401bb2098983f2d8aa021e5876c70deeee351868a9847535b72940c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/posterior-roots-2x.png",
+      "bytes": 548150,
+      "sha256": "d2b3e414c65d32244cbd840560128f94519306ed3d93f3642ba057e85aff1ccc"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/source-review.json",
+      "bytes": 7444,
+      "sha256": "5c0dbd53e45bd69421349a1ad6c2c8c349b3636613e45d711c1019571af79620"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/walking-census-2x.png",
+      "bytes": 1191978,
+      "sha256": "75fe905e7ea5bd6657eb2dd1275029ebd4acec88817de14ca01df48526898695"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/walking-census-diagnosis.png",
+      "bytes": 1481761,
+      "sha256": "488b784ca463863975b1fe2e207fdc655aeff789c1e0db06ad62e9e18de644f6"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mite-01/walking-census.json",
+      "bytes": 2537,
+      "sha256": "56583d5c90b8381d5e14434dce3da2cf1984830741de29e6907b02e2ae7d3c7a"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/README.md",
+      "bytes": 1131,
+      "sha256": "367a2fb1aaa3daf2821517d86f961fc5aac78de6e366b5f53d56014bcde4e3b3"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/claws-eyes-carapace-2x.png",
+      "bytes": 1070574,
+      "sha256": "b57bd6c8255458ed26635b10db6942f43302b8900508b39f376863bb19004519"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/crop-spec.json",
+      "bytes": 416,
+      "sha256": "a5f18028b27ecb004cb273961d2cb11b4224220b54d18f8aae9913b34fc1011f"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/left-walking-paddle-2x.png",
+      "bytes": 545307,
+      "sha256": "1afe278b15e69e88fc59ea9d8d2228944f3ec4fb99969efc4deac7a3289cd837"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/mark-census.mjs",
+      "bytes": 3028,
+      "sha256": "5ee14b43bcf37f29b765d2a93506a56d704c1fbba5c998ba0c5f7272e2cff5ef"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/measurements.json",
+      "bytes": 2309,
+      "sha256": "60844cd869640328cdd57ea9d572472a005f15706314466ddf6875c7ec813067"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/right-walking-paddle-2x.png",
+      "bytes": 541624,
+      "sha256": "183ed5b2ce700164f79aaf6aa12574f5274894b9b251ea0e0abf6639a6ea0857"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/source-review.json",
+      "bytes": 8321,
+      "sha256": "35f8c781038bdfc1e856a279df40e087df6af60d304b011bc3514e96e56e05af"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/walking-census-diagnosis.png",
+      "bytes": 1589622,
+      "sha256": "05acae4652fadba218621ed23b59febf82c81dda033cd81d51fa31b332258606"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/mud-crab-01/walking-census.json",
+      "bytes": 3107,
+      "sha256": "f96f90385e49d52f8a5f522968f973249183dd4cf45bc94abdbfd8b547e3b978"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w2-c266-checkpoints/generated-sources/results.json",
+      "bytes": 3853,
+      "sha256": "784061f40181ea5f023635e8bcad6dd94a96ef28dc1d9eb4b1f11481ec49d997"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/build-source-reviews.mjs",
+      "bytes": 15558,
+      "sha256": "e904998ed41528fff4fdb0b8483c57817fcc612b618ff7c82ed466ad2982ca45"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/caecilian-01/README.md",
+      "bytes": 2483,
+      "sha256": "4f1676d101760ff49095df71247e28e9c1c96cd2142c2fb7b8381f712d22a3b5"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/caecilian-01/body-posterior-2x.png",
+      "bytes": 336054,
+      "sha256": "3b4dc5ca3005698d8782d99b715b8ad96991e1dd5e1ac9cd0ed5fb49a7b0b68c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/caecilian-01/crop-coordinates.json",
+      "bytes": 477,
+      "sha256": "462d8682f978a9b2fb86f7aa3df02981f56b2153bfc70351b05266c824f32deb"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/caecilian-01/deliverable-files.json",
+      "bytes": 1673,
+      "sha256": "57a9b6e7a798d329765367a8bc94f4e64f606f5744f34ae21aafe99e61df885b"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/caecilian-01/deliverable-files.txt",
+      "bytes": 668,
+      "sha256": "8bbd30ded82cd3c5640b71095254f5059c954ac171f4f11de414075f05c3f706"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/caecilian-01/head-eye-tentacle-2x.png",
+      "bytes": 99786,
+      "sha256": "2299df8beb99ae590ea66c11b5bfaa608bb8eebe8e8ecee9c1d235441e1dc7e6"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/caecilian-01/source-review.json",
+      "bytes": 7009,
+      "sha256": "8353ace01249064c7199c3d1c019adcaa4dd8d57d6f5d0580b82de1119b65057"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/four-source-review-summary.json",
+      "bytes": 2019,
+      "sha256": "a4d52897a3ee91f853f0c88d72f8da637aa90ebaa15a88e54c072402afa2c606"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/macaw-01/README.md",
+      "bytes": 2524,
+      "sha256": "72acac6189315161272d96d5842b7f776a260a1fb2606464e1824690a429107d"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/macaw-01/crop-coordinates.json",
+      "bytes": 578,
+      "sha256": "735d8724fe676888ec3d87ae32a2ded2b2b970907ca28a298cbc31e32e252b97"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/macaw-01/deliverable-files.json",
+      "bytes": 1906,
+      "sha256": "2b61e3d5c4d1bd40a2b66eb287488c524f29abf0f30bcae2b011dd4f782a4ec5"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/macaw-01/deliverable-files.txt",
+      "bytes": 718,
+      "sha256": "ffbc3c616476280560e6748f10cf29be18cb12bc48ad12650bb45c1be2f6db7c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/macaw-01/feet-tailroot-2x.png",
+      "bytes": 182444,
+      "sha256": "c79037f3873f9ca313017cc31d2e96bee632d222ed9093305918d037183a71a1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/macaw-01/head-face-2x.png",
+      "bytes": 111276,
+      "sha256": "c380b5237c616cd77da63adf395b804ee978183e6d6a6629b970560400e446c5"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/macaw-01/source-review.json",
+      "bytes": 7190,
+      "sha256": "805be14c14858687aba4e0a75d4a81c9ebabb7f11a73b059a286e94a6adbedac"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/macaw-01/tail-tip-2x.png",
+      "bytes": 418098,
+      "sha256": "43cc009c2c77603b9c5411acd40d7023852d9e1019afd5e5bcab13c08460cc91"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/sea-spider-01/README.md",
+      "bytes": 2370,
+      "sha256": "72a285759d68d12c0e829c72755930c8b1a00b3323930f868e5532c1968a1f74"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/sea-spider-01/crop-coordinates.json",
+      "bytes": 590,
+      "sha256": "e0240076ddbbfc9d1fc80acab91ffa290785dfa31c34847e48c7995045fcce47"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/sea-spider-01/deliverable-files.json",
+      "bytes": 1908,
+      "sha256": "b797f810491916540b72551be2128f33f1eda0026c52778da94286442c16d880"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/sea-spider-01/deliverable-files.txt",
+      "bytes": 767,
+      "sha256": "6af08eff8f1d7caf62792b29e1aa1745c50e98155d4b89848206618d96da7713"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/sea-spider-01/ocular-turret-2x.png",
+      "bytes": 31198,
+      "sha256": "e2e42017c77f2c335f21f85909a12ab8574693598fe71dd8e996e7b4c21c01ae"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/sea-spider-01/source-review.json",
+      "bytes": 11017,
+      "sha256": "65e0a2c2fdba49c4eb09a2733065a0ba67c433c367e13a9ec9998026965da687"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/sea-spider-01/trunk-roots-2x.png",
+      "bytes": 145977,
+      "sha256": "83d6971eb067b5dba6ce3ff4a34e64affaf6596c3c997edcf8d4d0325ed7d8bd"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/sea-spider-01/upper-crossings-2x.png",
+      "bytes": 613703,
+      "sha256": "cfd210d31982f532356468d98da2f40a136f757abce8ca638bcdbcc7ae075bea"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/swift-01/README.md",
+      "bytes": 2301,
+      "sha256": "c04f21e1d707785f1befeb26811d180c1b0bcfa146fdb5427745a70acc95083a"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/swift-01/crop-coordinates.json",
+      "bytes": 466,
+      "sha256": "050acff9346084f9c53cab979a72e91530dce034de536fc2ae71300ed1c07be5"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/swift-01/deliverable-files.json",
+      "bytes": 1685,
+      "sha256": "f5aea3072b359e8405eb97969d9f4cb9218eb08d4d68b7850e8127efeabc380e"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/swift-01/deliverable-files.txt",
+      "bytes": 633,
+      "sha256": "c6568f9a4020c4125c66ffaae05f4f0fd77e9279512e49da52047023cbff8cd1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/swift-01/gape-head-2x.png",
+      "bytes": 127813,
+      "sha256": "1041618aa5cb578356ff46c2f0817d487f92bd3b743022da51352af34011302c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/swift-01/source-review.json",
+      "bytes": 6901,
+      "sha256": "626d7d0f5d3fa248988935edff225a430e81d0d59cf548278888c95a0d5908aa"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/generated-sources/swift-01/wings-tail-feet-2x.png",
+      "bytes": 575734,
+      "sha256": "9e265dd7903196b37811d0399402a1029b44de206c314154a0515f4d78f46c81"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/README.md",
+      "bytes": 3440,
+      "sha256": "8079a95182667eeadebdb9832d42d50ef58e52325439ad55291663c37195818c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/body-legs-2x.png",
+      "bytes": 411447,
+      "sha256": "7341d09321bae1b958d181d2d5396f32c75a25721785b15b3591dd149c44b8fd"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/crop-coordinates.json",
+      "bytes": 561,
+      "sha256": "2ede80541354d9766dbf2c70c08a65e10f8502c7ca94a2956e163fb578ff3862"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/deliverable-files.json",
+      "bytes": 3499,
+      "sha256": "9cad7f63cb1b2686508210dcbebf3cb4b2a926407b01a975ae47ae14fc6d9f61"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/deliverable-files.txt",
+      "bytes": 1446,
+      "sha256": "ccca02ad6ac47de4eebad947c3df930e305c3f34a6f5b8debe319f8fdebacbd4"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/export-midline.mjs",
+      "bytes": 2122,
+      "sha256": "89c0e16fba5ca62c5f0ec821a6f8c8746bf79e53701d5def22e442f226d3cd42"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/hind-vent-2x.png",
+      "bytes": 109896,
+      "sha256": "8a5fc899a10a1517c53f241a0344edc881a282ef170946344fd94a7bc5fe9a26"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/measure-new-source.mjs",
+      "bytes": 2288,
+      "sha256": "e32672aa3fd588837e8fb693b5f401eab0a81ca2c47bd1e45728846dcd1729e9"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/measure-tail-svl-trace-export.mjs",
+      "bytes": 8843,
+      "sha256": "6d33dbc14b069a60f9d9d5ea80de9b36bdc9d56fa5915401872b15bf0ca3d74e"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/measurements.json",
+      "bytes": 18822,
+      "sha256": "b146f5a81e1c69ab4d86216bf668f6d4380b21e0d9b058295ba2be11f86df5f1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/method-selftest.log",
+      "bytes": 258,
+      "sha256": "604c8ffdb51397f08fa7cc65714af9a3036a1690f103ffb1002386069f4b247b"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/observed-midline.json",
+      "bytes": 39014,
+      "sha256": "5841a560cdb61661e8bbb044cf52e05d67ece8c125dc60edce05a587b67153df"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/source-review.json",
+      "bytes": 8758,
+      "sha256": "091fa85867cbbde1650787190a961819f7c12773b17f754007242a6f09563573"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/tail-2x.png",
+      "bytes": 211657,
+      "sha256": "9cb3f50c667fe78311586791cc32427ed6ead64c0c8de8031b2883ceb972a518"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/trace-export-proof.json",
+      "bytes": 908,
+      "sha256": "29a006dd92508753efd6eb5103825c3ab8d66547bff07b3704fe7a9850e47dfa"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w3-c266-finished/wall-lizard-source-review/write-source-review.mjs",
+      "bytes": 4912,
+      "sha256": "0c054a5a92837eab866e972865c30a5f1bab4f94a76c6475007a3f87eedbfba1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/README.md",
+      "bytes": 4773,
+      "sha256": "cfb0eb6f8c150e46c960c2b41a8a0b5181f2cb70554090041da2842dc4288568"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/consolidate-batch04.py",
+      "bytes": 10210,
+      "sha256": "80def5c29511d4d6f5698b18251f166628c7973f18786aff6ba6271b9ad1187c"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/contact-sheet-10-originals.png",
+      "bytes": 674458,
+      "sha256": "dfc06e8fa33a392e25e5709bbed5422f0bc6e9e14f8597f0df02c10d7b461c69"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/contact-sheet.json",
+      "bytes": 4660,
+      "sha256": "6db2f04388ef16fec2ab8f199d6884c6d24d101ea98c13be40c613ad2669348b"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/contact-sheet.mjs",
+      "bytes": 3162,
+      "sha256": "ae521ecc01974b695e878e1b8bb8187fdeb4c002e10ee0ae09cc3b781a3fbde4"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/deliverable-files.json",
+      "bytes": 2780,
+      "sha256": "1ffe4e937ee196568b420647118a24b23bfc25b821b6e2509021cca8e71c6e29"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/deliverable-files.txt",
+      "bytes": 1008,
+      "sha256": "4b424845849421b608e358893a30a4719452577934b413bb03636b133a8589a1"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/delivery.json",
+      "bytes": 172135,
+      "sha256": "213a02408320292090f41e32f43ebfb620fe2381e69ee1bcba5d2840413cd115"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/evidence-manifest.json",
+      "bytes": 8649,
+      "sha256": "11787b936deff4d0f89abd1b4054aea969c6b2b102172375a450d238b4aab734"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/materials.json",
+      "bytes": 19730,
+      "sha256": "36a1fc6d1415331eb5a8b3df7797ea036c85d0309b3830c59afcb9bc597e8f15"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/remaining-species.json",
+      "bytes": 353887,
+      "sha256": "3c4da333de1eb7a47f3b0a1f177fab595ca19b9a8c0c3e49202c35c4abb29979"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/remaining-species.md",
+      "bytes": 17231,
+      "sha256": "56ca7c728822646ba6aed6a66f826baf36a11a3994de4682e550d58cd3021425"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/stage-time-yield.json",
+      "bytes": 4999,
+      "sha256": "cefd34fd64feed3c79f5f01e561302359ea962f57b8036487450d684701cd4a8"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/verify-materials.py",
+      "bytes": 2633,
+      "sha256": "fa123bb7b87f7f005e9582b740ae23e7b414068a19a5e83e9f1df53322420fa9"
+    },
+    {
+      "path": "audits/C266_CODEX_20261017/w4-delivery/batch04/visual-review.json",
+      "bytes": 167651,
+      "sha256": "ecf13bb90fe6abfeaeb0437ea0c507b36c130d2057c883ff3c40cf4924c7698b"
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "bytes": 472356,
+      "sha256": "f90db8b2779a3e3303671af05d6ded6d4898229b90ea4e7767b37bb3e75f5a71"
+    }
+  ]
+}

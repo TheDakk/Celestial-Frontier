@@ -1,0 +1,40 @@
+{
+ "schema": "cf.c266-observed-source/v1",
+ "species": "Ostrich",
+ "candidate": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-03-ostrich",
+ "masterFrom": "audits/C243_ALLOUT_20261011/execution/batch04/c243b04r2c1-03-ostrich/master.png",
+ "masterSha256": "1cd9c0aaac312a55b51415acd1fbc445dac5fd96fcde517a56fa2669a219b29b",
+ "masterCopySha256": "1cd9c0aaac312a55b51415acd1fbc445dac5fd96fcde517a56fa2669a219b29b",
+ "subjectSourceSha256": "c6d2003c837e368520ee2ac41f37992d27b01e44abfc19d6bdddaf521013b4fe",
+ "mustRead": [
+  "extremely long bare neck with a tiny flat head",
+  "fluffy plume wings and tail bustle",
+  "long two-toed powerful legs"
+ ],
+ "note": null,
+ "why": "Strict right-facing lateral walking ostrich: whole head/bill, long bare neck, both long legs and both two-toed feet painted separately with clear margins; white wing plumes and tail fan.",
+ "observed": {
+  "legs": 2,
+  "feet": 2,
+  "toesPerFoot": 2,
+  "wingsFolded": 2,
+  "tail": "white plume fan"
+ },
+ "presence": {
+  "schema": "cf.anatomy-presence/v2",
+  "absent": [],
+  "hidden": [],
+  "folded": []
+ },
+ "limitations": [
+  "Long-legged mapping: legKnee is the intertarsal joint; thigh owner is the bare thigh/tibiotarsus below the plumage (C215 ostrich convention).",
+  "Far wing is the black upper-back plumage band above the near wing (interpretation, robin convention)."
+ ],
+ "joints": 19,
+ "parts": 17,
+ "copiedUnchanged": [
+  "master.png",
+  "subject-source.json",
+  "prompt.txt"
+ ]
+}

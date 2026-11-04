@@ -1,0 +1,10 @@
+{"slug":"01-tortoise-a04","intake":0,"islands":0,"fit":"D28 remainder-island placement","static":"PASS_STATIC"}
+{"slug":"07-sea-turtle","intake":0,"islands":0,"fit":"D28 remainder-island placement","static":"PASS_STATIC"}
+{"slug":"08-fur-seal","intake":0,"islands":0,"fit":"D28 remainder-island placement","static":"PASS_STATIC"}
+{"slug":"13-goat-a02","intake":0,"islands":0,"fit":"D28 remainder-island placement","static":"PASS_STATIC"}
+{"slug":"14-shrew","intake":0,"islands":0,"fit":"D28 remainder-island placement","static":"PASS_STATIC"}
+{"slug":"22-anole-a02","intake":0,"islands":0,"fit":"D28 remainder-island placement","static":"PASS_STATIC"}
+{"slug":"25-olm-a02","intake":0,"islands":0,"fit":"D28 remainder-island placement","static":"PASS_STATIC"}
+{"slug":"26-chimpanzee-a02","intake":0,"islands":0,"fit":"D28 remainder-island placement","static":"PASS_STATIC"}
+(node:48145) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 exit listeners added to [process]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)

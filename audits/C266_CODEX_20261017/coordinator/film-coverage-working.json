@@ -1,0 +1,530 @@
+{
+  "status": "WORKING_NOT_TERMINAL",
+  "scope": "77 independently verified C267 film rows; Snail reference-only excluded",
+  "uniqueRows": 77,
+  "attemptedDistinct": 63,
+  "attemptRecords": 64,
+  "records": [
+    {
+      "name": "Anole",
+      "packetId": "anole-a02-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/anole-a02-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/anole-a02-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Baboon",
+      "packetId": "baboon-a02-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/baboon-a02-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/baboon-a02-01/native/report.json",
+      "nativeStatus": "FAIL"
+    },
+    {
+      "name": "Blue Whale",
+      "packetId": "blue-whale-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/blue-whale-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/blue-whale-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Box Turtle",
+      "packetId": "box-turtle-a03-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/box-turtle-a03-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Kingfisher",
+      "packetId": "c267-01-kingfisher-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-01-kingfisher-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-01-kingfisher-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Butterfly",
+      "packetId": "c267-02-butterfly-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-02-butterfly-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-02-butterfly-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Kiwi",
+      "packetId": "c267-02-kiwi-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-02-kiwi-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-02-kiwi-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Ostrich",
+      "packetId": "c267-03-ostrich-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-03-ostrich-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-03-ostrich-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Pelican",
+      "packetId": "c267-06-pelican-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-06-pelican-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-06-pelican-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Dobsonfly",
+      "packetId": "c267-07-dobsonfly-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-07-dobsonfly-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-07-dobsonfly-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Fangtooth",
+      "packetId": "c267-08-fangtooth-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-08-fangtooth-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-08-fangtooth-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Quetzal",
+      "packetId": "c267-08-quetzal-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-08-quetzal-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-08-quetzal-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Secretary Bird",
+      "packetId": "c267-09-secretary-bird-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-09-secretary-bird-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-09-secretary-bird-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Giant Water Bug",
+      "packetId": "c267-10-giant-water-bug-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-10-giant-water-bug-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-10-giant-water-bug-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Snowshoe Hare",
+      "packetId": "c267-11-snowshoe-hare-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-11-snowshoe-hare-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-11-snowshoe-hare-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Tropicbird",
+      "packetId": "c267-13-tropicbird-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-13-tropicbird-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-13-tropicbird-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Cockatoo",
+      "packetId": "c267-14-cockatoo-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-14-cockatoo-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-14-cockatoo-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Egret",
+      "packetId": "c267-15-egret-c2-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-15-egret-c2-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-15-egret-c2-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Lancelet",
+      "packetId": "c267-15-lancelet-c3-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-15-lancelet-c3-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-15-lancelet-c3-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Mosquito",
+      "packetId": "c267-16-mosquito-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-16-mosquito-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-16-mosquito-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Lungfish",
+      "packetId": "c267-17-lungfish-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-17-lungfish-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-17-lungfish-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Orchid Bee",
+      "packetId": "c267-17-orchid-bee-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-17-orchid-bee-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-17-orchid-bee-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Scorpionfly",
+      "packetId": "c267-18-scorpionfly-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-18-scorpionfly-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-18-scorpionfly-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Water Strider",
+      "packetId": "c267-21-water-strider-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-21-water-strider-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-21-water-strider-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Oarfish",
+      "packetId": "c267-23-oarfish-c2-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-23-oarfish-c2-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-23-oarfish-c2-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Seahorse",
+      "packetId": "c267-27-seahorse-c2-a2-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-27-seahorse-c2-a2-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-27-seahorse-c2-a2-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Grebe",
+      "packetId": "c267-33-grebe-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-33-grebe-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-33-grebe-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Ant",
+      "packetId": "c267-34-ant-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-34-ant-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-34-ant-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Guillemot",
+      "packetId": "c267-34-guillemot-c1-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/c267-34-guillemot-c1-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-34-guillemot-c1-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Chimpanzee",
+      "packetId": "chimpanzee-a02-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/chimpanzee-a02-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/chimpanzee-a02-01/native/report.json",
+      "nativeStatus": "FAIL"
+    },
+    {
+      "name": "Chiton",
+      "packetId": "chiton-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/chiton-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/chiton-01/native/report.json",
+      "nativeStatus": "FAIL"
+    },
+    {
+      "name": "Chiton",
+      "packetId": "chiton-02-water",
+      "plan": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/chiton-02-water/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Coati",
+      "packetId": "coati-a02-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/coati-a02-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/coati-a02-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Deer Tick",
+      "packetId": "deer-tick-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/deer-tick-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/deer-tick-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Dragonfish",
+      "packetId": "dragonfish-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/dragonfish-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/dragonfish-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Dromedary Camel",
+      "packetId": "dromedary-camel-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Eagle Ray",
+      "packetId": "eagle-ray-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/eagle-ray-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/eagle-ray-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Freshwater Crab",
+      "packetId": "freshwater-crab-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/freshwater-crab-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/freshwater-crab-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Frilled Lizard",
+      "packetId": "frilled-lizard-a02-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/frilled-lizard-a02-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/frilled-lizard-a02-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Fruit Bat",
+      "packetId": "fruit-bat-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/fruit-bat-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Fur Seal",
+      "packetId": "fur-seal-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/fur-seal-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/fur-seal-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Giant Anteater",
+      "packetId": "giant-anteater-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/giant-anteater-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/giant-anteater-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Giant Clam",
+      "packetId": "giant-clam-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/giant-clam-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/giant-clam-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Goat",
+      "packetId": "goat-a02-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/goat-a02-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/goat-a02-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Godwit",
+      "packetId": "godwit-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/godwit-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/godwit-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Grasshopper",
+      "packetId": "grasshopper-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/grasshopper-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/grasshopper-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Ibex",
+      "packetId": "ibex-a02-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/ibex-a02-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/ibex-a02-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Kakapo",
+      "packetId": "kakapo-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/kakapo-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/kakapo-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Monkey",
+      "packetId": "monkey-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/monkey-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/monkey-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Olm",
+      "packetId": "olm-a02-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/olm-a02-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/olm-a02-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Pangolin",
+      "packetId": "pangolin-a03-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/pangolin-a03-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/pangolin-a03-01/native/report.json",
+      "nativeStatus": "FAIL"
+    },
+    {
+      "name": "Pond Turtle",
+      "packetId": "pond-turtle-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/pond-turtle-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/pond-turtle-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Porcupine",
+      "packetId": "porcupine-a02-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/porcupine-a02-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/porcupine-a02-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Sea Lion",
+      "packetId": "sea-lion-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/sea-lion-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/sea-lion-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Sea Turtle",
+      "packetId": "sea-turtle-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Shrew",
+      "packetId": "shrew-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/shrew-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/shrew-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Snapping Turtle",
+      "packetId": "snapping-turtle-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/snapping-turtle-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Softshell Turtle",
+      "packetId": "softshell-turtle-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/softshell-turtle-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Tortoise",
+      "packetId": "tortoise-a04-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Turtle",
+      "packetId": "turtle-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/turtle-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/turtle-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Vole",
+      "packetId": "vole-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/vole-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/vole-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Wallaby",
+      "packetId": "wallaby-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/wallaby-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/wallaby-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Water Vole",
+      "packetId": "water-vole-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/water-vole-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/water-vole-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    },
+    {
+      "name": "Whiptail",
+      "packetId": "whiptail-01",
+      "plan": "audits/C266_CODEX_20261017/coordinator/whiptail-01/plan.json",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/whiptail-01/native/report.json",
+      "nativeStatus": "DIAGNOSTIC_PASS"
+    }
+  ],
+  "unfilmed": [
+    {
+      "name": "Hoatzin",
+      "disposition": "SHARED_CLASS_HOLD",
+      "reason": "Kakapo rump/tail-root shear stops shared bird seam propagation."
+    },
+    {
+      "name": "Kookaburra",
+      "disposition": "SHARED_CLASS_HOLD",
+      "reason": "Kakapo representative failed full-size W2; no propagation."
+    },
+    {
+      "name": "Pheasant",
+      "disposition": "SHARED_CLASS_HOLD",
+      "reason": "Kakapo representative failed full-size W2; no propagation."
+    },
+    {
+      "name": "Cassowary",
+      "disposition": "SHARED_CLASS_HOLD",
+      "reason": "Kakapo representative failed full-size W2; no propagation."
+    },
+    {
+      "name": "Squirrel",
+      "disposition": "IDENTITY_PRESENTATION_HOLD",
+      "reason": "Verified source declaration is sitting/food absent; canonical source presentation decision remains."
+    },
+    {
+      "name": "Whale",
+      "disposition": "SHARED_CLASS_HOLD",
+      "reason": "Blue Whale representative has detached flipper/throat seam."
+    },
+    {
+      "name": "Narwhal",
+      "disposition": "SHARED_CLASS_HOLD",
+      "reason": "Blue Whale representative has detached flipper/throat seam."
+    },
+    {
+      "name": "Manta Ray",
+      "disposition": "SHARED_CLASS_HOLD",
+      "reason": "Eagle Ray representative has inner-wing/head opening."
+    },
+    {
+      "name": "Ray",
+      "disposition": "SHARED_CLASS_HOLD",
+      "reason": "Eagle Ray representative has inner-wing/head opening."
+    },
+    {
+      "name": "Stingray",
+      "disposition": "SHARED_CLASS_HOLD",
+      "reason": "Eagle Ray representative has inner-wing/head opening."
+    },
+    {
+      "name": "Tripod Fish",
+      "disposition": "SOURCE_KEYING_HOLD",
+      "reason": "Canonical fin membranes are lost in keyed-source representation."
+    },
+    {
+      "name": "Peacock",
+      "disposition": "SOURCE_KEYING_HOLD",
+      "reason": "Canonical crest shafts are lost in keyed-source representation."
+    },
+    {
+      "name": "Snake",
+      "disposition": "RUNTIME_PATCH_HOLD",
+      "reason": "Pinned serpent motion decision remains unapplied."
+    },
+    {
+      "name": "Insect-Eating Bat",
+      "disposition": "SHARED_CLASS_HOLD",
+      "reason": "Fruit Bat representative has chin/muzzle discontinuity; no propagation."
+    }
+  ],
+  "accepted": 0
+}

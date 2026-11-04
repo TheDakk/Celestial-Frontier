@@ -1,0 +1,10 @@
+{
+  "id": "c266-13-goat-a02",
+  "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/qual-codex-r01/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/goat-a02-01/native/report.json",
+  "name": "Goat",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/goat-a02-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/goat01/visual-review.json",
+  "checkpointReviewSha256": "e21625fccf4a0f5be0fa972ba37477e637735f88a4527fe2a05593c0fcf95674",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

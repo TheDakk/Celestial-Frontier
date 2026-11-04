@@ -1,0 +1,10 @@
+{
+  "id": "c266-11-dromedary-camel",
+  "fit": "audits/C266_CODEX_20261017/w2-c266-checkpoints/remaining-import-plan/qualification/11-dromedary-camel/islands/fit",
+  "nativeReport": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-01/native/report.json",
+  "name": "Dromedary Camel",
+  "nativePlan": "audits/C266_CODEX_20261017/coordinator/dromedary-camel-01/plan.json",
+  "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-quadrupeds-produced/dromedary-camel-01/visual-review.json",
+  "checkpointReviewSha256": "94cfd04849e5b3f0410f07938811dac5aa251abedeca4cf2e5de2102e123cc5c",
+  "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+}

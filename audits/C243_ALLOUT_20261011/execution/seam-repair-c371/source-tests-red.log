@@ -1,0 +1,160 @@
+✖ Camel reviewed continuous boundaries share the same field; independent overlaps remain separate (123.676834ms)
+✖ Manatee reviewed continuous boundaries share the same field; independent overlaps remain separate (145.7015ms)
+✖ Pilot Whale reviewed continuous boundaries share the same field; independent overlaps remain separate (108.350958ms)
+✖ River Dolphin reviewed continuous boundaries share the same field; independent overlaps remain separate (105.742625ms)
+✖ Ladybug reviewed continuous boundaries share the same field; independent overlaps remain separate (110.633ms)
+✖ Hoatzin reviewed continuous boundaries share the same field; independent overlaps remain separate (104.212708ms)
+✖ Kakapo reviewed continuous boundaries share the same field; independent overlaps remain separate (125.798875ms)
+✖ Tern reviewed continuous boundaries share the same field; independent overlaps remain separate (82.319375ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 0
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1036.523292
+
+✖ failing tests:
+
+test at audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:3:39
+✖ Camel reviewed continuous boundaries share the same field; independent overlaps remain separate (123.676834ms)
+  AssertionError [ERR_ASSERTION]: neck|spine opens 13.81234143752574 native pixels
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:9:134)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:3:39
+✖ Manatee reviewed continuous boundaries share the same field; independent overlaps remain separate (145.7015ms)
+  AssertionError [ERR_ASSERTION]: body-0|dorsal opens 15.660459763365967 native pixels
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:9:134)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:3:39
+✖ Pilot Whale reviewed continuous boundaries share the same field; independent overlaps remain separate (108.350958ms)
+  AssertionError [ERR_ASSERTION]: body-0|dorsal opens 13.594191721113651 native pixels
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:9:134)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:3:39
+✖ River Dolphin reviewed continuous boundaries share the same field; independent overlaps remain separate (105.742625ms)
+  AssertionError [ERR_ASSERTION]: dorsal|spine2 opens 28.181654189672024 native pixels
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:9:134)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:3:39
+✖ Ladybug reviewed continuous boundaries share the same field; independent overlaps remain separate (110.633ms)
+  AssertionError [ERR_ASSERTION]: abdomen|body opens 60.367955075520136 native pixels
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:9:134)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:3:39
+✖ Hoatzin reviewed continuous boundaries share the same field; independent overlaps remain separate (104.212708ms)
+  AssertionError [ERR_ASSERTION]: beak|body opens 33.66163363595004 native pixels
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:9:134)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:3:39
+✖ Kakapo reviewed continuous boundaries share the same field; independent overlaps remain separate (125.798875ms)
+  AssertionError [ERR_ASSERTION]: beak|body opens 31.8392380669234 native pixels
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:9:134)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:3:39
+✖ Tern reviewed continuous boundaries share the same field; independent overlaps remain separate (82.319375ms)
+  AssertionError [ERR_ASSERTION]: body|far-wing-root opens 8.048043710330859 native pixels
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/seam-repair-c371/source-joins.test.mjs:9:134)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

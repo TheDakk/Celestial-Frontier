@@ -1,0 +1,30 @@
+{
+  "status": "TWO_C261_CLEAN_WAIT_SIGNED_PRODUCER",
+  "jobs": [
+    {
+      "slug": "ostrich",
+      "run": "audits/C266_CODEX_20261017/coordinator/ostrich-finish-01",
+      "id": "c266-03-ostrich-c1",
+      "fit": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/03-ostrich-c1/qual-r01/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-03-ostrich-c1-01/native/report.json",
+      "name": "Ostrich",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/c267-03-ostrich-c1-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-bird-secondary/c267-03-ostrich-c1-01/visual-review.json",
+      "checkpointReviewSha256": "ef6397fef2a5714c427e201c2c13e6178c292296e170b087bd53e65fbe188bc7",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "slug": "pelican",
+      "run": "audits/C266_CODEX_20261017/coordinator/pelican-finish-01",
+      "id": "c266-06-pelican-c1",
+      "fit": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/06-pelican-c1/qual-r01/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/c267-06-pelican-c1-01/native/report.json",
+      "name": "Pelican",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/c267-06-pelican-c1-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c267-bird-secondary/c267-06-pelican-c1-01/visual-review.json",
+      "checkpointReviewSha256": "83fc2469ad64aec42cfd0e5479bc3512c587ca8075b165dc7af65f47dfd411c5",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    }
+  ],
+  "accepted": 0
+}

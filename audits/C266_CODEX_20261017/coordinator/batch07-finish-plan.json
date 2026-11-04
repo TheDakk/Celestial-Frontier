@@ -1,0 +1,106 @@
+{
+  "status": "EIGHT_C261_CLEAN_WAIT_SIGNED_PRODUCER",
+  "jobs": [
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/freshwater-crab-finish-01",
+      "slug": "freshwater-crab-01",
+      "name": "Freshwater Crab",
+      "id": "c262-vp1-freshwater-crab",
+      "fit": "audits/C262_REFERENCES_20261016/crabs/03-freshwater-crab-vp1-qual01/raw-fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/freshwater-crab-01/native/report.json",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/freshwater-crab-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/freshwater-crab01/visual-review.json",
+      "checkpointReviewSha256": "4a770b3ec344fb6b49411e2591a6e5ed23878b20b62b2f9f674606855e7197b3",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/godwit-finish-01",
+      "slug": "godwit-01",
+      "name": "Godwit",
+      "id": "c266-32-godwit-c1",
+      "fit": "audits/C266_ALLOUT_20261017/intake-fish-birds-other/packets/32-godwit-c1/qual-r01/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/godwit-01/native/report.json",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/godwit-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/godwit01/visual-review.json",
+      "checkpointReviewSha256": "29ce5e531feb0c487b829e1fb841aa5a7bce1b195605b0907ed6e6104634227d",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-finish-01",
+      "slug": "tortoise-a04-01",
+      "name": "Tortoise",
+      "id": "c266-01-tortoise-a04",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/01-tortoise-a04/qual-codex-r01/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-01/native/report.json",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/tortoise-a04-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/tortoise01/visual-review.json",
+      "checkpointReviewSha256": "751a695caeaade2785e07c41666b180c8488006305d0aa6313da538be7c99216",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/sea-turtle-finish-01",
+      "slug": "sea-turtle-01",
+      "name": "Sea Turtle",
+      "id": "c266-07-sea-turtle",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/07-sea-turtle/qual-codex-r01/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/native/report.json",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/sea-turtle-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/sea-turtle01/visual-review.json",
+      "checkpointReviewSha256": "ef3f0e24ceaa24fcb739e84d652a6e8df4ffdfc478f8a572459711d4c6e93b91",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/fur-seal-finish-01",
+      "slug": "fur-seal-01",
+      "name": "Fur Seal",
+      "id": "c266-08-fur-seal",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal/qual-codex-r01/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/fur-seal-01/native/report.json",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/fur-seal-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/fur-seal01/visual-review.json",
+      "checkpointReviewSha256": "c373cbccf9a17a7001bb67ed29aa79a985bde981481f7f2ceb38e89fab5b7fbe",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/goat-a02-finish-01",
+      "slug": "goat-a02-01",
+      "name": "Goat",
+      "id": "c266-13-goat-a02",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/13-goat-a02/qual-codex-r01/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/goat-a02-01/native/report.json",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/goat-a02-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/goat01/visual-review.json",
+      "checkpointReviewSha256": "e21625fccf4a0f5be0fa972ba37477e637735f88a4527fe2a05593c0fcf95674",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/shrew-finish-01",
+      "slug": "shrew-01",
+      "name": "Shrew",
+      "id": "c266-14-shrew",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/14-shrew/qual-codex-r01/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/shrew-01/native/report.json",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/shrew-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-quad-secondary/shrew-01/visual-review.json",
+      "checkpointReviewSha256": "8fe0f70333899e3f8ed98a061c9dfa24405ad1639a5cba623d4244794d5eb729",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    },
+    {
+      "run": "audits/C266_CODEX_20261017/coordinator/anole-a02-finish-01",
+      "slug": "anole-a02-01",
+      "name": "Anole",
+      "id": "c266-22-anole-a02",
+      "fit": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/22-anole-a02/qual-codex-r01/islands/fit",
+      "nativeReport": "audits/C266_CODEX_20261017/coordinator/anole-a02-01/native/report.json",
+      "nativePlan": "audits/C266_CODEX_20261017/coordinator/anole-a02-01/plan.json",
+      "checkpointReview": "audits/C266_CODEX_20261017/w2-quad-secondary/anole-a02-01/visual-review.json",
+      "checkpointReviewSha256": "611ea505ae4ef421c361bf61487881bee46e2ee7d25c2922a414167120f9d77f",
+      "status": "C261_CLEAN_WAIT_SIGNED_PRODUCER"
+    }
+  ],
+  "held": [
+    "Olm visual openings",
+    "Chimpanzee native failure before film"
+  ],
+  "noAcceptance": true
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "dromedary-camel-rebind-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C399-dromedary-camel-rebind-01",
+    "--",
+    "node",
+    "audits/C266_CODEX_20261017/coordinator/rebind-c261-one.mjs",
+    "dromedary-camel"
+  ],
+  "startedUnix": 1792280089.926381,
+  "beforeGiB": 84.78768539428711,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 2.012,
+  "lowestGiB": 84.78766632080078,
+  "afterGiB": 86.78341674804688
+}

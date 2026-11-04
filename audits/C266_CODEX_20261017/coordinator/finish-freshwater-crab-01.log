@@ -1,0 +1,8 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"c262-vp1-freshwater-crab","rows":[{"id":"c262-vp1-freshwater-crab","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"c262-vp1-freshwater-crab","rows":[{"id":"c262-vp1-freshwater-crab","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"c262-vp1-freshwater-crab","rows":[{"id":"c262-vp1-freshwater-crab","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"c262-vp1-freshwater-crab","rows":[{"id":"c262-vp1-freshwater-crab","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"c262-vp1-freshwater-crab","rows":[{"id":"c262-vp1-freshwater-crab","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"c262-vp1-freshwater-crab","rows":[{"id":"c262-vp1-freshwater-crab","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"~/Projects/celestial-frontier-openai-mac/audits/C266_CODEX_20261017/coordinator/freshwater-crab-finish-01/finished"}

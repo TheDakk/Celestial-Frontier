@@ -1,0 +1,10 @@
+{
+  "firstDispatch": "native-chiton-01",
+  "status": "SETUP_FAILURE_BEFORE_BROWSER",
+  "cause": "prep assumed record.archetypeId instead of parts/manifest.json creatureId, then dispatch was mistakenly attempted without plan.json",
+  "secondPreflight": "ownerId suffix was disproven by atlas-existence guard before any dispatch",
+  "corrected": "id read from parts/manifest.json creatureId, matching native-runner side() owner; matching atlas/plan required before launch",
+  "nativeAttemptsBeforeCorrection": 0,
+  "previousREDPreserved": true,
+  "nextDispatch": "native-chiton-01-corrected-plan"
+}

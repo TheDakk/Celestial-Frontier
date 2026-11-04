@@ -1,0 +1,21 @@
+{
+  "stage": "finish-anole-a02-01",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C397-finish-anole-a02-01",
+    "--",
+    "node",
+    "audits/AI_FINISH_C121_20261001/finish-batch.mjs",
+    "audits/C266_CODEX_20261017/coordinator/anole-a02-finish-01/finished",
+    "audits/C266_CODEX_20261017/coordinator/anole-a02-finish-01/subjects.json"
+  ],
+  "startedUnix": 1792275968.994522,
+  "beforeGiB": 91.29386138916016,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 56.354,
+  "lowestGiB": 81.91604232788086,
+  "afterGiB": 90.27694702148438
+}

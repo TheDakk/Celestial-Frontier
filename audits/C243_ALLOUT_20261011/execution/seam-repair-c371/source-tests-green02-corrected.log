@@ -1,0 +1,11 @@
+✔ Manatee reviewed continuous boundaries share the same field; independent overlaps remain separate (182.301584ms)
+✔ Pilot Whale reviewed continuous boundaries share the same field; independent overlaps remain separate (127.946417ms)
+✔ River Dolphin reviewed continuous boundaries share the same field; independent overlaps remain separate (134.397708ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 579.234125

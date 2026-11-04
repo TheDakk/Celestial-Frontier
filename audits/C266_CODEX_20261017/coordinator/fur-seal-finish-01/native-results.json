@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c266-08-fur-seal",
+    "name": "Fur Seal",
+    "family": "quadruped",
+    "packet": "audits/C266_ALLOUT_20261017/intake-quadrupeds/packets/08-fur-seal",
+    "fit": "audits/C266_CODEX_20261017/coordinator/fur-seal-finish-01/rebound/c266-08-fur-seal",
+    "packetId": "fur-seal-01",
+    "script": "audits/C266_CODEX_20261017/coordinator/fur-seal-01/script.json",
+    "nativeDir": "audits/C266_CODEX_20261017/coordinator/fur-seal-finish-01/native",
+    "nativeReport": "audits/C266_CODEX_20261017/coordinator/fur-seal-finish-01/native/report.json",
+    "masterSha256": "b1c578f74b2fc205e02ec5aff739141e29d33963b4dfabeb533a32bff0c54f60",
+    "scope": "Finished texture on byte-identical geometry; independent W3 required",
+    "finishedMaster": "audits/C266_CODEX_20261017/coordinator/fur-seal-finish-01/finished/c266-08-fur-seal-finished.png",
+    "finishReceipt": "audits/C266_CODEX_20261017/coordinator/fur-seal-finish-01/finished/c266-08-fur-seal-receipt.json",
+    "checkpointReview": "audits/C266_CODEX_20261017/w2-c266-checkpoints/new-class-representatives-01/fur-seal01/visual-review.json",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]
