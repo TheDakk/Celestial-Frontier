@@ -1,0 +1,941 @@
+{
+  "scope": "Authored motion alternatives against unchanged actual contact solvers; diagnostic only, no skin or native acceptance",
+  "rows": [
+    {
+      "name": "gull",
+      "id": "dodge",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 91,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 9,
+        "ms": 33,
+        "error": "Error: Contact: dodge@33 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "gull",
+      "id": "dodge",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 89,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 8,
+        "ms": 29.333333333333332,
+        "error": "Error: Contact: dodge@29.333333333333332 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "gull",
+      "id": "dodge",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 100,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 15,
+        "ms": 55,
+        "error": "Error: Contact: dodge@55 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "gull",
+      "id": "dodge",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 97,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 13,
+        "ms": 47.666666666666664,
+        "error": "Error: Contact: dodge@47.666666666666664 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "gull",
+      "id": "dodge",
+      "variant": "grounded-duck",
+      "mode": "rest",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 121,
+      "maxHeadRotation": 0.08722336805028451,
+      "first": null
+    },
+    {
+      "name": "gull",
+      "id": "dodge",
+      "variant": "grounded-duck",
+      "mode": "observed",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 121,
+      "maxHeadRotation": 0.08722336805028451,
+      "first": null
+    },
+    {
+      "name": "gull",
+      "id": "hit",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 121,
+      "maxHeadRotation": 0.31388502509118144,
+      "first": null
+    },
+    {
+      "name": "gull",
+      "id": "hit",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 121,
+      "maxHeadRotation": 0.31388502509118144,
+      "first": null
+    },
+    {
+      "name": "gull",
+      "id": "hit",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 121,
+      "maxHeadRotation": 0.31388502509118144,
+      "first": null
+    },
+    {
+      "name": "gull",
+      "id": "hit",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 121,
+      "maxHeadRotation": 0.31388502509118144,
+      "first": null
+    },
+    {
+      "name": "gull",
+      "id": "tame",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 121,
+      "maxHeadRotation": 0.2617993877991494,
+      "first": null
+    },
+    {
+      "name": "gull",
+      "id": "tame",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 121,
+      "maxHeadRotation": 0.2617993877991494,
+      "first": null
+    },
+    {
+      "name": "gull",
+      "id": "tame",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 121,
+      "maxHeadRotation": 0.2617993877991494,
+      "first": null
+    },
+    {
+      "name": "gull",
+      "id": "tame",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 121,
+      "maxHeadRotation": 0.2617993877991494,
+      "first": null
+    },
+    {
+      "name": "goose",
+      "id": "dodge",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 89,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 6,
+        "ms": 23.6,
+        "error": "Error: Contact: dodge@23.6 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "dodge",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 89,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 6,
+        "ms": 23.6,
+        "error": "Error: Contact: dodge@23.6 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "dodge",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 104,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 16,
+        "ms": 62.93333333333333,
+        "error": "Error: Contact: dodge@62.93333333333333 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "dodge",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 104,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 16,
+        "ms": 62.93333333333333,
+        "error": "Error: Contact: dodge@62.93333333333333 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "dodge",
+      "variant": "grounded-duck",
+      "mode": "rest",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 121,
+      "maxHeadRotation": 0.087242221915661,
+      "first": null
+    },
+    {
+      "name": "goose",
+      "id": "dodge",
+      "variant": "grounded-duck",
+      "mode": "observed",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 121,
+      "maxHeadRotation": 0.087242221915661,
+      "first": null
+    },
+    {
+      "name": "goose",
+      "id": "hit",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 96,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": {
+        "i": 28,
+        "ms": 149.8,
+        "error": "Error: Contact: joint limit legNearFoot hit@149.8: 45.910526682479286"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "hit",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 100,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": {
+        "i": 32,
+        "ms": 171.2,
+        "error": "Error: Contact: hit@171.2 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "hit",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 121,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": null
+    },
+    {
+      "name": "goose",
+      "id": "hit",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 121,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": null
+    },
+    {
+      "name": "goose",
+      "id": "tame",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 23,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": {
+        "i": 23,
+        "ms": 159.46666666666667,
+        "error": "Error: Contact: joint limit legFarFoot tame@159.46666666666667: -45.05555586838005"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "tame",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 20,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": {
+        "i": 20,
+        "ms": 138.66666666666666,
+        "error": "Error: Contact: joint limit legFarFoot tame@138.66666666666666: -45.0083868860023"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "tame",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 121,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": null
+    },
+    {
+      "name": "goose",
+      "id": "tame",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 121,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": null
+    },
+    {
+      "name": "heron",
+      "id": "dodge",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 101,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 14,
+        "ms": 55.06666666666667,
+        "error": "Error: Contact: dodge@55.06666666666667 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "heron",
+      "id": "dodge",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 101,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 14,
+        "ms": 55.06666666666667,
+        "error": "Error: Contact: dodge@55.06666666666667 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "heron",
+      "id": "dodge",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 95,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 10,
+        "ms": 39.333333333333336,
+        "error": "Error: Contact: dodge@39.333333333333336 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "heron",
+      "id": "dodge",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 95,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 10,
+        "ms": 39.333333333333336,
+        "error": "Error: Contact: dodge@39.333333333333336 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "heron",
+      "id": "dodge",
+      "variant": "grounded-duck",
+      "mode": "rest",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 121,
+      "maxHeadRotation": 0.087242221915661,
+      "first": null
+    },
+    {
+      "name": "heron",
+      "id": "dodge",
+      "variant": "grounded-duck",
+      "mode": "observed",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 121,
+      "maxHeadRotation": 0.087242221915661,
+      "first": null
+    },
+    {
+      "name": "heron",
+      "id": "hit",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 121,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": null
+    },
+    {
+      "name": "heron",
+      "id": "hit",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 121,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": null
+    },
+    {
+      "name": "heron",
+      "id": "hit",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 121,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": null
+    },
+    {
+      "name": "heron",
+      "id": "hit",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 121,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": null
+    },
+    {
+      "name": "heron",
+      "id": "tame",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 121,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": null
+    },
+    {
+      "name": "heron",
+      "id": "tame",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 121,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": null
+    },
+    {
+      "name": "heron",
+      "id": "tame",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 121,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": null
+    },
+    {
+      "name": "heron",
+      "id": "tame",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 121,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": null
+    },
+    {
+      "name": "sparrow",
+      "id": "dodge",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 82,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 4,
+        "ms": 14.666666666666666,
+        "error": "Error: Contact: dodge@14.666666666666666 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "dodge",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 82,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 4,
+        "ms": 14.666666666666666,
+        "error": "Error: Contact: dodge@14.666666666666666 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "dodge",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 86,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 6,
+        "ms": 22,
+        "error": "Error: Contact: dodge@22 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "dodge",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 86,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 6,
+        "ms": 22,
+        "error": "Error: Contact: dodge@22 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "dodge",
+      "variant": "grounded-duck",
+      "mode": "rest",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 121,
+      "maxHeadRotation": 0.08722336805028451,
+      "first": null
+    },
+    {
+      "name": "sparrow",
+      "id": "dodge",
+      "variant": "grounded-duck",
+      "mode": "observed",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 121,
+      "maxHeadRotation": 0.08722336805028451,
+      "first": null
+    },
+    {
+      "name": "sparrow",
+      "id": "hit",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 79,
+      "maxHeadRotation": 0.31388502509118144,
+      "first": {
+        "i": 16,
+        "ms": 81.33333333333333,
+        "error": "Error: Contact: hit@81.33333333333333 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "hit",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 77,
+      "maxHeadRotation": 0.31388502509118144,
+      "first": {
+        "i": 15,
+        "ms": 76.25,
+        "error": "Error: Contact: hit@76.25 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "hit",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 94,
+      "maxHeadRotation": 0.31388502509118144,
+      "first": {
+        "i": 29,
+        "ms": 147.41666666666666,
+        "error": "Error: Contact: hit@147.41666666666666 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "hit",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 94,
+      "maxHeadRotation": 0.31388502509118144,
+      "first": {
+        "i": 29,
+        "ms": 147.41666666666666,
+        "error": "Error: Contact: hit@147.41666666666666 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "tame",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 121,
+      "maxHeadRotation": 0.2617993877991494,
+      "first": null
+    },
+    {
+      "name": "sparrow",
+      "id": "tame",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 121,
+      "maxHeadRotation": 0.2617993877991494,
+      "first": null
+    },
+    {
+      "name": "sparrow",
+      "id": "tame",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 121,
+      "maxHeadRotation": 0.2617993877991494,
+      "first": null
+    },
+    {
+      "name": "sparrow",
+      "id": "tame",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 121,
+      "maxHeadRotation": 0.2617993877991494,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "dodge",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "dodge",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "dodge",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "dodge",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "dodge",
+      "variant": "grounded-duck",
+      "mode": "rest",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0.087242221915661,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "dodge",
+      "variant": "grounded-duck",
+      "mode": "observed",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0.087242221915661,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "hit",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "hit",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "hit",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "hit",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0.3139255931781338,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "tame",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "tame",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "tame",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "tame",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0.2617516355908148,
+      "first": null
+    }
+  ]
+}

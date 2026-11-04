@@ -1,0 +1,658 @@
+[
+  {
+    "name": "gull",
+    "id": "dodge",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 91,
+    "first": {
+      "i": 9,
+      "ms": 33,
+      "error": "Error: Contact: dodge@33 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "gull",
+    "id": "dodge",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 89,
+    "first": {
+      "i": 8,
+      "ms": 29.333333333333332,
+      "error": "Error: Contact: dodge@29.333333333333332 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "gull",
+    "id": "dodge",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 100,
+    "first": {
+      "i": 15,
+      "ms": 55,
+      "error": "Error: Contact: dodge@55 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "gull",
+    "id": "dodge",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 97,
+    "first": {
+      "i": 13,
+      "ms": 47.666666666666664,
+      "error": "Error: Contact: dodge@47.666666666666664 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "gull",
+    "id": "dodge",
+    "variant": "grounded-duck",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "dodge",
+    "variant": "grounded-duck",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "hit",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "hit",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "hit",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "hit",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "tame",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "tame",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "tame",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "tame",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "dodge",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 89,
+    "first": {
+      "i": 6,
+      "ms": 23.6,
+      "error": "Error: Contact: dodge@23.6 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "goose",
+    "id": "dodge",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 89,
+    "first": {
+      "i": 6,
+      "ms": 23.6,
+      "error": "Error: Contact: dodge@23.6 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "goose",
+    "id": "dodge",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 104,
+    "first": {
+      "i": 16,
+      "ms": 62.93333333333333,
+      "error": "Error: Contact: dodge@62.93333333333333 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "goose",
+    "id": "dodge",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 104,
+    "first": {
+      "i": 16,
+      "ms": 62.93333333333333,
+      "error": "Error: Contact: dodge@62.93333333333333 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "goose",
+    "id": "dodge",
+    "variant": "grounded-duck",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "dodge",
+    "variant": "grounded-duck",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "hit",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 96,
+    "first": {
+      "i": 28,
+      "ms": 149.8,
+      "error": "Error: Contact: joint limit legNearFoot hit@149.8: 45.910526682479286"
+    }
+  },
+  {
+    "name": "goose",
+    "id": "hit",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 100,
+    "first": {
+      "i": 32,
+      "ms": 171.2,
+      "error": "Error: Contact: hit@171.2 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "goose",
+    "id": "hit",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "hit",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "tame",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 23,
+    "first": {
+      "i": 23,
+      "ms": 159.46666666666667,
+      "error": "Error: Contact: joint limit legFarFoot tame@159.46666666666667: -45.05555586838005"
+    }
+  },
+  {
+    "name": "goose",
+    "id": "tame",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 20,
+    "first": {
+      "i": 20,
+      "ms": 138.66666666666666,
+      "error": "Error: Contact: joint limit legFarFoot tame@138.66666666666666: -45.0083868860023"
+    }
+  },
+  {
+    "name": "goose",
+    "id": "tame",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "tame",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "dodge",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 101,
+    "first": {
+      "i": 14,
+      "ms": 55.06666666666667,
+      "error": "Error: Contact: dodge@55.06666666666667 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "heron",
+    "id": "dodge",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 101,
+    "first": {
+      "i": 14,
+      "ms": 55.06666666666667,
+      "error": "Error: Contact: dodge@55.06666666666667 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "heron",
+    "id": "dodge",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 95,
+    "first": {
+      "i": 10,
+      "ms": 39.333333333333336,
+      "error": "Error: Contact: dodge@39.333333333333336 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "heron",
+    "id": "dodge",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 95,
+    "first": {
+      "i": 10,
+      "ms": 39.333333333333336,
+      "error": "Error: Contact: dodge@39.333333333333336 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "heron",
+    "id": "dodge",
+    "variant": "grounded-duck",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "dodge",
+    "variant": "grounded-duck",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "hit",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "hit",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "hit",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "hit",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "tame",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "tame",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "tame",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "tame",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "sparrow",
+    "id": "dodge",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 82,
+    "first": {
+      "i": 4,
+      "ms": 14.666666666666666,
+      "error": "Error: Contact: dodge@14.666666666666666 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "dodge",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 82,
+    "first": {
+      "i": 4,
+      "ms": 14.666666666666666,
+      "error": "Error: Contact: dodge@14.666666666666666 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "dodge",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 86,
+    "first": {
+      "i": 6,
+      "ms": 22,
+      "error": "Error: Contact: dodge@22 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "dodge",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 86,
+    "first": {
+      "i": 6,
+      "ms": 22,
+      "error": "Error: Contact: dodge@22 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "dodge",
+    "variant": "grounded-duck",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "sparrow",
+    "id": "dodge",
+    "variant": "grounded-duck",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "sparrow",
+    "id": "hit",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 79,
+    "first": {
+      "i": 16,
+      "ms": 81.33333333333333,
+      "error": "Error: Contact: hit@81.33333333333333 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "hit",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 77,
+    "first": {
+      "i": 15,
+      "ms": 76.25,
+      "error": "Error: Contact: hit@76.25 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "hit",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 94,
+    "first": {
+      "i": 29,
+      "ms": 147.41666666666666,
+      "error": "Error: Contact: hit@147.41666666666666 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "hit",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 94,
+    "first": {
+      "i": 29,
+      "ms": 147.41666666666666,
+      "error": "Error: Contact: hit@147.41666666666666 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "tame",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "sparrow",
+    "id": "tame",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "sparrow",
+    "id": "tame",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "sparrow",
+    "id": "tame",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "dodge",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "dodge",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "dodge",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "dodge",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "dodge",
+    "variant": "grounded-duck",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "dodge",
+    "variant": "grounded-duck",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "hit",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "hit",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "hit",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "hit",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "tame",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "tame",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "tame",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "tame",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  }
+]

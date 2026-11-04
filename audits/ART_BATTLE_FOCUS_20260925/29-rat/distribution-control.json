@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "validMasks": [
+    "striped",
+    "spotted",
+    "banded",
+    "mottled",
+    "marbled",
+    "eye-spotted"
+  ],
+  "insideKeyedAlphaOutsideDeclaredFurMutantRefused": true,
+  "mutantPixel": [
+    300,
+    476
+  ],
+  "helperSha256": "87201596136b29cf765b84e5934cc6402f30072a896cd34637984a12f6aa3074"
+}

@@ -1,0 +1,81 @@
+{
+  "scope": "Once-per-second process observations of this game's other lane only; does not measure all host work or certify idle host.",
+  "rows": [
+    {
+      "at": "2026-09-25T15:34:45.295Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:46.328Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:47.330Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:48.333Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:49.334Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:50.337Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:51.337Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:52.337Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:53.339Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:54.343Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:55.343Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:56.346Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:57.343Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:58.348Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:34:59.348Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:35:00.347Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:35:01.351Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:35:02.350Z",
+      "processes": []
+    },
+    {
+      "at": "2026-09-25T15:35:02.543Z",
+      "processes": []
+    }
+  ]
+}
