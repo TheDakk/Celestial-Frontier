@@ -1,0 +1,453 @@
+{
+  "schema": "cf.c186-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/01-zebra-fallback-ears/fit01",
+  "sourceConservationSha256": "366cebbdc69c47760a14966736d7da09ce2b8ed63deabe12d4defb04152d2278",
+  "sourceMasterSha256": "ae106609f4336add0364c02e854212382a6c5a179b1a15237820ae3fd8d84e81",
+  "sourceBindingSha256": "f92d8795743b30a39c4394e87261e8adcc15c51f9dda4cb8b8340a11306812ee",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.05,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "257a786d6bcb2074edc106febabb5a2e463b136f309cd91ea20c3a79a15da374",
+  "movedPixels": 6309,
+  "remainderPixels": 37470,
+  "islands": [
+    {
+      "pixels": 1,
+      "to": "head",
+      "border": {
+        "23": 1
+      }
+    },
+    {
+      "pixels": 623,
+      "to": "neck",
+      "border": {
+        "23": 39,
+        "28": 57
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "head",
+      "border": {
+        "23": 2
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "head",
+      "border": {
+        "18": 3,
+        "23": 5
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "ear-far-tip",
+      "border": {
+        "20": 7,
+        "23": 5
+      }
+    },
+    {
+      "pixels": 71,
+      "to": "head",
+      "border": {
+        "23": 36
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "head",
+      "border": {
+        "23": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "head",
+      "border": {
+        "23": 2
+      }
+    },
+    {
+      "pixels": 38,
+      "to": "head",
+      "border": {
+        "23": 46
+      }
+    },
+    {
+      "pixels": 986,
+      "to": "jaw",
+      "border": {
+        "22": 159,
+        "28": 34
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "head",
+      "border": {
+        "23": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "head",
+      "border": {
+        "23": 3
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "head",
+      "border": {
+        "23": 19
+      }
+    },
+    {
+      "pixels": 749,
+      "to": "tail-middle",
+      "border": {
+        "24": 20,
+        "25": 60,
+        "26": 84,
+        "27": 6
+      }
+    },
+    {
+      "pixels": 217,
+      "to": "fore-near-root",
+      "border": {
+        "16": 36,
+        "28": 29
+      }
+    },
+    {
+      "pixels": 224,
+      "to": "tail-lower",
+      "border": {
+        "24": 23,
+        "25": 34,
+        "26": 5
+      }
+    },
+    {
+      "pixels": 32,
+      "to": "fore-far-root",
+      "border": {
+        "17": 23,
+        "29": 5
+      }
+    },
+    {
+      "pixels": 580,
+      "to": "hind-far-root",
+      "border": {
+        "11": 6,
+        "14": 30,
+        "15": 94
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "fore-far-root",
+      "border": {
+        "17": 3
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "fore-far-root",
+      "border": {
+        "17": 4
+      }
+    },
+    {
+      "pixels": 264,
+      "to": "fore-far-root",
+      "border": {
+        "16": 21,
+        "17": 57
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-root",
+      "border": {
+        "15": 2
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "hind-far-root",
+      "border": {
+        "15": 6
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "hind-far-root",
+      "border": {
+        "11": 3,
+        "15": 5
+      }
+    },
+    {
+      "pixels": 242,
+      "to": "hind-far-knee",
+      "border": {
+        "11": 67,
+        "15": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-root",
+      "border": {
+        "17": 2
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "hind-near-knee",
+      "border": {
+        "10": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-knee",
+      "border": {
+        "10": 1,
+        "14": 1
+      }
+    },
+    {
+      "pixels": 1051,
+      "to": "hind-far-knee",
+      "border": {
+        "3": 37,
+        "7": 64,
+        "11": 99
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "fore-near-knee",
+      "border": {
+        "12": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-knee",
+      "border": {
+        "12": 2
+      }
+    },
+    {
+      "pixels": 366,
+      "to": "fore-near-knee",
+      "border": {
+        "8": 9,
+        "12": 73
+      }
+    },
+    {
+      "pixels": 28,
+      "to": "hind-far-knee",
+      "border": {
+        "7": 4,
+        "11": 13
+      }
+    },
+    {
+      "pixels": 121,
+      "to": "hind-far-ankle",
+      "border": {
+        "7": 32
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "fore-far-ankle",
+      "border": {
+        "9": 9
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-knee",
+      "border": {
+        "10": 2
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "hind-near-knee",
+      "border": {
+        "10": 7
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "fore-far-ankle",
+      "border": {
+        "9": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-near-knee",
+      "border": {
+        "10": 2
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "hind-near-knee",
+      "border": {
+        "6": 3,
+        "10": 4
+      }
+    },
+    {
+      "pixels": 10,
+      "to": "fore-far-ankle",
+      "border": {
+        "5": 2,
+        "9": 12
+      }
+    },
+    {
+      "pixels": 458,
+      "to": "fore-near-hoof",
+      "border": {
+        "4": 50,
+        "8": 32
+      }
+    },
+    {
+      "pixels": 119,
+      "to": "hind-far-hoof",
+      "border": {
+        "3": 15,
+        "7": 13
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-hoof",
+      "border": {
+        "5": 2
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "fore-far-hoof",
+      "border": {
+        "5": 7
+      }
+    },
+    {
+      "pixels": 21,
+      "to": "fore-near-hoof",
+      "border": {
+        "4": 8,
+        "8": 5
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "fore-far-hoof",
+      "border": {
+        "5": 7
+      }
+    },
+    {
+      "pixels": 5,
+      "to": "hind-far-hoof",
+      "border": {
+        "3": 6
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "hind-far-hoof",
+      "border": {
+        "3": 5
+      }
+    }
+  ],
+  "intake": {
+    "id": "c186-islands-01-zebra-fallback-ears",
+    "parts": 31,
+    "atlasSize": {
+      "width": 1533,
+      "height": 862
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 18,
+        "distancePx": 4.999999999999974,
+        "supports": [
+          142
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 22,
+        "distancePx": 3.6221540552550446,
+        "supports": [
+          178
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 19,
+        "distancePx": 2.000000000000057,
+        "supports": [
+          127
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 29,
+        "distancePx": 5.8412327466040255,
+        "supports": [
+          72
+        ]
+      }
+    ],
+    "sourceBindingHash": "fed0847616a81d1ca7183aaff63cc7881715ec1bd928c74cbb8fbeaadae23cc7",
+    "sourceVertices": 1614,
+    "vertices": 1817,
+    "sharedSupports": 540,
+    "pins": 250,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 31,
+    "excludedOverlaps": 9,
+    "observedExcludedBoundaries": 9,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 9,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

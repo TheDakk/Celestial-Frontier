@@ -1,0 +1,61 @@
+{
+  "schema": "cf.c183-bird-contour-delta/v1",
+  "id": "24-weaverbird",
+  "originalAuthoringSha256": "b06773512d417d504ecc9632977fd83d5b17ee4d873612dc273484293e590737",
+  "candidateAuthoringSha256": "5eed48bec70ed7a1151ffc3e89d4bcb17e222887d86755f6910c696a5b205561",
+  "sourcePlanSha256": "c3886c366c9894a3e3baaade8cf674527ef34df9af91d409bfcf287c4151793b",
+  "regions": [
+    {
+      "id": "reviewed-posterior-crown",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          645,
+          365
+        ],
+        [
+          735,
+          365
+        ],
+        [
+          738,
+          432
+        ],
+        [
+          644,
+          444
+        ]
+      ],
+      "reason": "Yellow posterior skull feather edge above the nape."
+    },
+    {
+      "id": "reviewed-upper-nape",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          611,
+          431
+        ],
+        [
+          739,
+          430
+        ],
+        [
+          747,
+          485
+        ],
+        [
+          610,
+          491
+        ]
+      ],
+      "reason": "Yellow nape terminating above the wing shoulder; no far-wing reassignment."
+    }
+  ],
+  "scope": "Manual source-contour additions after all original anatomical owners and before the original remainder. Only previously remainder-owned paint may move; old landmarks, ground, presence, materials, part regions and prior anatomical ownership remain unchanged.",
+  "originalOrigin": "Automatic same-family reference transfer retained; only the additive contours are manually source-reviewed. This is not an independent family reference.",
+  "sourcePaintChanged": false,
+  "nativeAcceptance": false
+}

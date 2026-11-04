@@ -1,0 +1,16 @@
+{
+  "scope": "Original retained native turn pose/context replay against original and source-repaired record; new-native timing is a separate qualification",
+  "rows": [
+    {
+      "name": "original",
+      "ms": 1504.1000000000004,
+      "status": "REFUSE",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "name": "candidate01",
+      "ms": 1504.1000000000004,
+      "status": "PASS"
+    }
+  ]
+}

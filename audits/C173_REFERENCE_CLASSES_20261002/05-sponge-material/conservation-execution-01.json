@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c173-stage-execution/v1",
+  "stage": "conservation",
+  "command": [
+    "node",
+    "audits/C173_REFERENCE_CLASSES_20261002/verify-and-preview.mjs",
+    "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material",
+    "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/fit01",
+    "01"
+  ],
+  "helperSha256": "8cbad08688ee7310457495a2fd8b995342c4b503fc0a65ece6343bca15201a29",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge-material/conservation-01.log",
+  "logSha256": "43d9ecec87ac748209fca252ec37bfba2230f57099e42c932f43c2c8f103b991",
+  "nativeRuns": 0
+}

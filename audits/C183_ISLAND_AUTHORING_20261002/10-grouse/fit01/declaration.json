@@ -1,0 +1,96 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "46946b6dbcfd31dd2223ce5ba99b6059a1876518d457924f7dbb3151ba61e578",
+  "cutoutSha256": "4ea953aba9a42e33e6b16bd9587bd7d363a784c6c24f02ee99446086fe9c55ec",
+  "keyedRgbaSha256": "b50d86bacf113991d21e32628084beb266482f4f75250396389103fc6c70eb44",
+  "labelsFile": "labels.png",
+  "labelsSha256": "a30f7b190cdec9506d1f9925efe8f0bd52b0a77cc566f91ebd8351d8f1608c6c",
+  "parts": [
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck-upper",
+      "joint": "neck1",
+      "layer": "near"
+    },
+    {
+      "id": "neck-lower",
+      "joint": "neck0",
+      "layer": "near"
+    },
+    {
+      "id": "far-wing-root",
+      "joint": "wingFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "far-wing-flight",
+      "joint": "wingFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "near-wing-root",
+      "joint": "wingNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-flight",
+      "joint": "wingNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "near"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "cf1193043645eee004be768621d0447b66a21aa5a7df40093be4f89f0efd9340"
+}

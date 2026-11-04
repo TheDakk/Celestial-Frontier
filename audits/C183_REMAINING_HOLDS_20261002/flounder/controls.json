@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Every inherited source file except the intentionally changed binding is byte-identical",
+      "status": "PASS"
+    },
+    {
+      "name": "Part atlas placement, source ownership, and input pins unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Inherited solver ceilings and target weight unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual original negative control exposes body-0|head",
+      "status": "PASS"
+    },
+    {
+      "name": "Candidate closes exact observed boundary body-0|head",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual original negative control exposes body-2|body-5",
+      "status": "PASS"
+    },
+    {
+      "name": "Candidate closes exact observed boundary body-2|body-5",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual original negative control exposes body-3|body-5",
+      "status": "PASS"
+    },
+    {
+      "name": "Candidate closes exact observed boundary body-3|body-5",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual original negative control exposes body|body-5",
+      "status": "PASS"
+    },
+    {
+      "name": "Candidate closes exact observed boundary body|body-5",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual original negative control exposes body|caudal",
+      "status": "PASS"
+    },
+    {
+      "name": "Candidate closes exact observed boundary body|caudal",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject falsely asserting all excluded surfaces are continuous",
+      "status": "PASS"
+    },
+    {
+      "name": "Unchanged static owner passes full actions and presentation",
+      "status": "PASS"
+    }
+  ],
+  "changedPixels": false,
+  "scope": "Exact original/candidate outcomes and byte conservation, not native qualification"
+}

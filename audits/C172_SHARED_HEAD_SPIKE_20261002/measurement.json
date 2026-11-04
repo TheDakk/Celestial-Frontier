@@ -1,0 +1,369 @@
+{
+  "units": "posed source-coordinate pixels, not native/screen pixels",
+  "rows": [
+    {
+      "id": "hawk",
+      "original": {
+        "tip": {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            651,
+            496
+          ],
+          "alpha": 255,
+          "face": 19,
+          "vertices": [
+            18,
+            15,
+            13
+          ],
+          "published": [
+            0.6518947005271912,
+            0.40401000082492833
+          ]
+        },
+        "head": {
+          "part": "head",
+          "joint": "head",
+          "source": [
+            719,
+            469
+          ],
+          "alpha": 255,
+          "face": 27,
+          "vertices": [
+            24,
+            23,
+            25
+          ],
+          "published": [
+            0.699052036470837,
+            0.44801330781645243
+          ],
+          "restDistance": 73.1641988953614
+        },
+        "posedSourcePx": 80.88159394749343,
+        "restSourcePx": 73.1641988953614,
+        "ratio": 1.1054804831960146
+      },
+      "candidate": {
+        "tip": {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            651,
+            496
+          ],
+          "alpha": 255,
+          "face": 19,
+          "vertices": [
+            18,
+            15,
+            13
+          ],
+          "published": [
+            0.5456047356128693,
+            0.42518721818923955
+          ]
+        },
+        "head": {
+          "part": "head",
+          "joint": "head",
+          "source": [
+            719,
+            469
+          ],
+          "alpha": 255,
+          "face": 27,
+          "vertices": [
+            24,
+            23,
+            25
+          ],
+          "published": [
+            0.6029913746648365,
+            0.4146576969159974
+          ],
+          "restDistance": 73.1641988953614
+        },
+        "posedSourcePx": 73.16418009884161,
+        "restSourcePx": 73.1641988953614,
+        "ratio": 0.9999997430912924
+      }
+    },
+    {
+      "id": "crow",
+      "original": {
+        "tip": {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            692,
+            463
+          ],
+          "alpha": 255,
+          "face": 6,
+          "vertices": [
+            5,
+            7,
+            3
+          ],
+          "published": [
+            0.6885508179664612,
+            0.4146899372339249
+          ]
+        },
+        "head": {
+          "part": "head",
+          "joint": "head",
+          "source": [
+            735,
+            443
+          ],
+          "alpha": 255,
+          "face": 37,
+          "vertices": [
+            27,
+            29,
+            30
+          ],
+          "published": [
+            0.718967016843649,
+            0.44427594233017703
+          ],
+          "restDistance": 47.4236228055175
+        },
+        "posedSourcePx": 53.20976091766861,
+        "restSourcePx": 47.4236228055175,
+        "ratio": 1.1220096181997703
+      },
+      "candidate": {
+        "tip": {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            692,
+            463
+          ],
+          "alpha": 255,
+          "face": 6,
+          "vertices": [
+            5,
+            7,
+            3
+          ],
+          "published": [
+            0.5830494672060014,
+            0.411121416091919
+          ]
+        },
+        "head": {
+          "part": "head",
+          "joint": "head",
+          "source": [
+            735,
+            443
+          ],
+          "alpha": 255,
+          "face": 37,
+          "vertices": [
+            27,
+            29,
+            30
+          ],
+          "published": [
+            0.6201795979188038,
+            0.40394177390978886
+          ],
+          "restDistance": 47.4236228055175
+        },
+        "posedSourcePx": 47.42365170983974,
+        "restSourcePx": 47.4236228055175,
+        "ratio": 1.0000006094920744
+      }
+    },
+    {
+      "id": "snowy-owl",
+      "original": {
+        "tip": {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            670,
+            461
+          ],
+          "alpha": 255,
+          "face": 27,
+          "vertices": [
+            25,
+            19,
+            18
+          ],
+          "published": [
+            0.734927674578993,
+            0.38773221993132645
+          ]
+        },
+        "head": {
+          "part": "head",
+          "joint": "head",
+          "source": [
+            742,
+            417
+          ],
+          "alpha": 255,
+          "face": 44,
+          "vertices": [
+            32,
+            29,
+            34
+          ],
+          "published": [
+            0.7990835547447204,
+            0.4355937227606773
+          ],
+          "restDistance": 84.38009243891595
+        },
+        "posedSourcePx": 100.37250074860262,
+        "restSourcePx": 84.38009243891595,
+        "ratio": 1.189528215097226
+      },
+      "candidate": {
+        "tip": {
+          "part": "neck-upper",
+          "joint": "neck1",
+          "source": [
+            670,
+            461
+          ],
+          "alpha": 255,
+          "face": 27,
+          "vertices": [
+            25,
+            19,
+            18
+          ],
+          "published": [
+            0.578761124218765,
+            0.41858779811545427
+          ]
+        },
+        "head": {
+          "part": "head",
+          "joint": "head",
+          "source": [
+            742,
+            417
+          ],
+          "alpha": 255,
+          "face": 44,
+          "vertices": [
+            32,
+            29,
+            34
+          ],
+          "published": [
+            0.642960399389267,
+            0.3984325915575027
+          ],
+          "restDistance": 84.38009243891595
+        },
+        "posedSourcePx": 84.38012424891397,
+        "restSourcePx": 84.38009243891595,
+        "ratio": 1.000000376984631
+      }
+    },
+    {
+      "id": "capuchin",
+      "original": {
+        "tip": {
+          "part": "body",
+          "joint": "root",
+          "source": [
+            784,
+            563
+          ],
+          "alpha": 255,
+          "face": 237,
+          "vertices": [
+            168,
+            145,
+            144
+          ],
+          "published": [
+            0.6365375267831903,
+            0.52861424810008
+          ]
+        },
+        "head": {
+          "part": "head",
+          "joint": "head",
+          "source": [
+            840,
+            570
+          ],
+          "alpha": 255,
+          "face": 49,
+          "vertices": [
+            38,
+            36,
+            39
+          ],
+          "published": [
+            0.6859320713501228,
+            0.6079422637820244
+          ],
+          "restDistance": 56.435804238089844
+        },
+        "posedSourcePx": 117.18531105351528,
+        "restSourcePx": 56.435804238089844,
+        "ratio": 2.076435564896658
+      },
+      "candidate": {
+        "tip": {
+          "part": "body",
+          "joint": "root",
+          "source": [
+            784,
+            563
+          ],
+          "alpha": 255,
+          "face": 237,
+          "vertices": [
+            168,
+            145,
+            144
+          ],
+          "published": [
+            0.6365375267831903,
+            0.52861424810008
+          ]
+        },
+        "head": {
+          "part": "head",
+          "joint": "head",
+          "source": [
+            840,
+            570
+          ],
+          "alpha": 255,
+          "face": 49,
+          "vertices": [
+            38,
+            36,
+            39
+          ],
+          "published": [
+            0.6780960997468548,
+            0.5441647990753776
+          ],
+          "restDistance": 56.435804238089844
+        },
+        "posedSourcePx": 55.64333919433782,
+        "restSourcePx": 56.435804238089844,
+        "ratio": 0.9859581155181417
+      }
+    }
+  ]
+}

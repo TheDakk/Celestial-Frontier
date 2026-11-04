@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c173-material-successor/v1",
+  "predecessor": "audits/C173_REFERENCE_CLASSES_20261002/04-earthworm",
+  "predecessorAuthoringSha256": "c4eb7edc199fec264aa6e7c0e25502a3a30a816f27750034ac0b72400da92ef1",
+  "authoringSha256": "f9b3ae58f4b5d32dbd858cbc7a86c9ea35313b9481ea62d79b966fb86bdac7ad",
+  "masterSha256": "6a538f502891f12a8b0a3068b4ef4a8fb041dc14fd96f312f1ecb43fd5b03121",
+  "writerSha256": "5dea6e9385e54ea791dbc5249aa72dad23797312fb2abc430189bb43d67bcbc9",
+  "mappingOwner": "port/v2/apps/game/src/motion/secondary.ts",
+  "mappingOwnerSha256": "da51acb7b05b77a561f09d084eb02c6a3bc314f180f0e3be1ccfb4f2855b8de5",
+  "oldSurface": "skin",
+  "newSurface": "slick",
+  "reason": "The visible wet annelid cuticle uses the existing slick soft-surface Motion Kit class. The prior literal skin label is unsupported; source anatomy and pose are unchanged.",
+  "sourceBytesUnchanged": true,
+  "landmarksUnchanged": true,
+  "ownershipPolygonsUnchanged": true,
+  "presenceUnchanged": true,
+  "productionChanged": false,
+  "thresholdsChanged": false,
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

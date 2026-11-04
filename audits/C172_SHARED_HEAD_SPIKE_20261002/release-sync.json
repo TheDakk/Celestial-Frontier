@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c172-release-digest-sync/v1",
+  "source": "port/v2/apps/game/src/release-content.ts",
+  "authority": "port/v2/tools/slicesmoke.mjs",
+  "prior": "a6859ade844f31b93a2848c9d4f2a752cc0d4891946fdf9fe0e23e5785344000",
+  "current": "cc01f53976ac67b44bd14b71e2ef1bb1e053bf752d8d6151f0c2a98ed8163b82",
+  "count": 120,
+  "rule": "SHA256 of JSON.stringify of ordered canonical draft bullet strings, same rule as slicesmoke-sixth-red-contract.test.ts. No count change.",
+  "targetedGuideContractRerun": "deferred during C175 native reservation; earlier55 targeted tests and full typecheck predate this one digest literal change."
+}

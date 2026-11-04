@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "helperSha256": "2035749f7a4e10573549ae4823a4d5e87b66054de5bc2cdb8b72059dc2510b4f",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_BITTERN_REPAIR_20261002/packet02/master.png",
+      "sha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_BITTERN_REPAIR_20261002/packet02/authoring.json",
+      "sha256": "e978e47aa00b807e30bd0c5c90b6b76f11aff204b4e8dc2ba62d9ad4c6454890"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_BITTERN_REPAIR_20261002/packet02/subject-source.json",
+      "sha256": "71a90368fdada83d7f6cf96e2f65152184abbbda9ea95b95110c675d3410f7a7"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_BITTERN_REPAIR_20261002/packet02/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": true,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "e1b2d8d7d7aa1d40b5bd791afe87e3f1dd8bd4a1a0a332c9a28d2e9425c134ae",
+  "bindingHash": "79c8a533d856d455fe6e9d84ac4e3bac135ce2cf69835d7cf126b678ae864bbf",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingFarRoot",
+    "wingFarTip",
+    "wingNearRoot",
+    "wingNearTip",
+    "tailFan",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_BITTERN_REPAIR_20261002/packet02/master.png",
+      "sha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_BITTERN_REPAIR_20261002/packet02/authoring.json",
+      "sha256": "e978e47aa00b807e30bd0c5c90b6b76f11aff204b4e8dc2ba62d9ad4c6454890",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_BITTERN_REPAIR_20261002/packet02/subject-source.json",
+      "sha256": "71a90368fdada83d7f6cf96e2f65152184abbbda9ea95b95110c675d3410f7a7",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_BITTERN_REPAIR_20261002/packet02/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

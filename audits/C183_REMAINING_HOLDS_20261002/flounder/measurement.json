@@ -1,0 +1,1778 @@
+{
+  "schema": "cf.c183-source-boundary-diagnostic/v1",
+  "report": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/flounder/native/report.json",
+  "reportSha256": "fb37cd4cce3bb145638e00ce210e79c311d19d30b018fb77ae4d13231aa41df1",
+  "exactNativeRecordBindingVerified": true,
+  "heldElapsedMs": 1259.9999999999993,
+  "scope": "Browser-free software publication of the recorded target held pose under current motion source; not native qualification. Continuous-flank boundaries are observed before deciding whether to author a join.",
+  "rows": [
+    {
+      "id": "before",
+      "status": "PUBLISHED",
+      "measurement": {
+        "schema": "cf.source-join-continuity/v1",
+        "units": "native cut-out pixels",
+        "epsilonNativePx": 0.0011959075927734375,
+        "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+        "sourceEdges": 2405,
+        "samples": 2620,
+        "maxGapPx": 0.000044853435718681356,
+        "joins": [
+          {
+            "name": "body--body-0",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "spine0",
+            "sourceEdges": 80,
+            "samples": 86,
+            "maxGapPx": 0.000014950461414068926,
+            "violations": 0,
+            "worst": {
+              "source": [
+                882.8235294117648,
+                740
+              ],
+              "ancestor": [
+                816.3496451728485,
+                812.3137175528443
+              ],
+              "descendant": [
+                816.3496495695676,
+                812.3137032635071
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body--far-pectoral",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "pectoralFar",
+            "sourceEdges": 87,
+            "samples": 99,
+            "maxGapPx": 0.000044853435718681356,
+            "violations": 0,
+            "worst": {
+              "source": [
+                878,
+                663.8947368421053
+              ],
+              "ancestor": [
+                847.8199625015259,
+                742.8522498607637
+              ],
+              "descendant": [
+                847.8199270963669,
+                742.8522773981094
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body--head",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "head",
+            "sourceEdges": 191,
+            "samples": 206,
+            "maxGapPx": 0.00002918855295822401,
+            "violations": 0,
+            "worst": {
+              "source": [
+                978,
+                705.95
+              ],
+              "ancestor": [
+                916.3710021615028,
+                826.9319957971575
+              ],
+              "descendant": [
+                916.3709797382354,
+                826.9319771111011
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body--near-pectoral",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "pectoralNear",
+            "sourceEdges": 7,
+            "samples": 10,
+            "maxGapPx": 0.0000069111691508296375,
+            "violations": 0,
+            "worst": {
+              "source": [
+                868,
+                633
+              ],
+              "ancestor": [
+                853.4947053194046,
+                710.8790938854216
+              ],
+              "descendant": [
+                853.4946996370952,
+                710.8790899515153
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-0--body-1",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine0",
+            "descendantJoint": "spine1",
+            "sourceEdges": 294,
+            "samples": 316,
+            "maxGapPx": 0.00003874044248825337,
+            "violations": 0,
+            "worst": {
+              "source": [
+                818,
+                802
+              ],
+              "ancestor": [
+                743.5206402540207,
+                845.0237755537033
+              ],
+              "descendant": [
+                743.5206734736761,
+                845.0237954854965
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-1--body-2",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine1",
+            "descendantJoint": "spine2",
+            "sourceEdges": 230,
+            "samples": 246,
+            "maxGapPx": 0.00004228171837789565,
+            "violations": 0,
+            "worst": {
+              "source": [
+                732,
+                783
+              ],
+              "ancestor": [
+                681.9878311157227,
+                800.568691277504
+              ],
+              "descendant": [
+                681.9878012180329,
+                800.5687211751938
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-1--dorsal",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine1",
+            "descendantJoint": "dorsal",
+            "sourceEdges": 96,
+            "samples": 101,
+            "maxGapPx": 0.000005605816795650754,
+            "violations": 0,
+            "worst": {
+              "source": [
+                688,
+                450
+              ],
+              "ancestor": [
+                751.7563326358795,
+                473.0471531152725
+              ],
+              "descendant": [
+                751.7563326358794,
+                473.0471587210893
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-2--body-3",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine2",
+            "descendantJoint": "spine3",
+            "sourceEdges": 344,
+            "samples": 383,
+            "maxGapPx": 0.000035256780291522546,
+            "violations": 0,
+            "worst": {
+              "source": [
+                608,
+                460
+              ],
+              "ancestor": [
+                673.9840700626373,
+                456.6627893149852
+              ],
+              "descendant": [
+                673.9840999603273,
+                456.66277062892914
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-3--body-4",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine3",
+            "descendantJoint": "spine4",
+            "sourceEdges": 12,
+            "samples": 15,
+            "maxGapPx": 0.00003107683297173012,
+            "violations": 0,
+            "worst": {
+              "source": [
+                526,
+                813
+              ],
+              "ancestor": [
+                460.02982740342617,
+                751.7518636786938
+              ],
+              "descendant": [
+                460.02980037530267,
+                751.7518790165583
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-4--body-5",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine4",
+            "descendantJoint": "spine5",
+            "sourceEdges": 570,
+            "samples": 622,
+            "maxGapPx": 0.00003907360655277941,
+            "violations": 0,
+            "worst": {
+              "source": [
+                524,
+                807
+              ],
+              "ancestor": [
+                458.9317055940628,
+                744.5726097822189
+              ],
+              "descendant": [
+                458.9317082762718,
+                744.5725708007812
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-5--caudal",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine5",
+            "descendantJoint": "caudal",
+            "sourceEdges": 326,
+            "samples": 349,
+            "maxGapPx": 0.000023685253961904794,
+            "violations": 0,
+            "worst": {
+              "source": [
+                393,
+                607
+              ],
+              "ancestor": [
+                437.4088983535767,
+                496.79543101787567
+              ],
+              "descendant": [
+                437.40888261795044,
+                496.79544872045517
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "head--jaw",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "head",
+            "descendantJoint": "jaw",
+            "sourceEdges": 168,
+            "samples": 187,
+            "maxGapPx": 0.000044507071947115365,
+            "violations": 0,
+            "worst": {
+              "source": [
+                976.8947368421053,
+                644
+              ],
+              "ancestor": [
+                930.7900958061219,
+                782.3112169504166
+              ],
+              "descendant": [
+                930.7901272773743,
+                782.311248421669
+              ]
+            },
+            "status": "CONTINUOUS"
+          }
+        ],
+        "excluded": [
+          {
+            "name": "body-0|dorsal",
+            "sourceEdges": 106,
+            "samples": 114,
+            "maxGapPx": 0.000022732568474273902,
+            "violations": 0,
+            "worst": {
+              "source": [
+                774,
+                461
+              ],
+              "ancestor": [
+                833.6061916351318,
+                513.8440457582474
+              ],
+              "descendant": [
+                833.6061692118644,
+                513.8440494954586
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-0",
+              "dorsal"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body-0|far-pectoral",
+            "sourceEdges": 80,
+            "samples": 86,
+            "maxGapPx": 0.00003632295587576234,
+            "violations": 0,
+            "worst": {
+              "source": [
+                841,
+                720
+              ],
+              "ancestor": [
+                791.8987176418304,
+                776.6545346975327
+              ],
+              "descendant": [
+                791.898750834167,
+                776.6545494496822
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-0",
+              "far-pectoral"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-0|head",
+            "sourceEdges": 169,
+            "samples": 185,
+            "maxGapPx": 35.37375818984282,
+            "violations": 152,
+            "worst": {
+              "source": [
+                864,
+                476
+              ],
+              "ancestor": [
+                913.288275361061,
+                562.1699595451355
+              ],
+              "descendant": [
+                942.2273390293121,
+                582.5128541886806
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-0",
+              "head"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-0|near-pectoral",
+            "sourceEdges": 130,
+            "samples": 138,
+            "maxGapPx": 0.0000018544613344793376,
+            "violations": 0,
+            "worst": {
+              "source": [
+                864,
+                632
+              ],
+              "ancestor": [
+                850.4324069023132,
+                708.1182546615601
+              ],
+              "descendant": [
+                850.432405591011,
+                708.1182559728622
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-0",
+              "near-pectoral"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-1|near-pectoral",
+            "sourceEdges": 205,
+            "samples": 218,
+            "maxGapPx": 0.000024291872932735714,
+            "violations": 0,
+            "worst": {
+              "source": [
+                731,
+                727.25
+              ],
+              "ancestor": [
+                695.9785671830177,
+                741.9796815544366
+              ],
+              "descendant": [
+                695.9785671830177,
+                741.9796572625637
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-1",
+              "near-pectoral"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-2|body-5",
+            "sourceEdges": 54,
+            "samples": 72,
+            "maxGapPx": 36.11476553661684,
+            "violations": 72,
+            "worst": {
+              "source": [
+                611,
+                515
+              ],
+              "ancestor": [
+                658.148468852043,
+                509.8241752584775
+              ],
+              "descendant": [
+                671.1173859357833,
+                543.5300127267838
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-2",
+              "body-5"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body-2|dorsal",
+            "sourceEdges": 92,
+            "samples": 101,
+            "maxGapPx": 0.00003368676672193261,
+            "violations": 0,
+            "worst": {
+              "source": [
+                685,
+                449
+              ],
+              "ancestor": [
+                749.1896907091141,
+                471.09561878442764
+              ],
+              "descendant": [
+                749.1897243440151,
+                471.0956206530332
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-2",
+              "dorsal"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-2|near-pectoral",
+            "sourceEdges": 315,
+            "samples": 335,
+            "maxGapPx": 0.00003352508240578863,
+            "violations": 0,
+            "worst": {
+              "source": [
+                645,
+                609
+              ],
+              "ancestor": [
+                661.3615860342978,
+                600.3661886572838
+              ],
+              "descendant": [
+                661.3615556043736,
+                600.366202726785
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-2",
+              "near-pectoral"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-3|body-5",
+            "sourceEdges": 380,
+            "samples": 421,
+            "maxGapPx": 35.90200204459485,
+            "violations": 415,
+            "worst": {
+              "source": [
+                610,
+                515
+              ],
+              "ancestor": [
+                657.2323189258575,
+                509.5164033472538
+              ],
+              "descendant": [
+                670.2982303440572,
+                542.9564348906279
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-3",
+              "body-5"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body-3|dorsal",
+            "sourceEdges": 97,
+            "samples": 101,
+            "maxGapPx": 0.000041783291753899105,
+            "violations": 0,
+            "worst": {
+              "source": [
+                607,
+                460
+              ],
+              "ancestor": [
+                673.0877373218536,
+                456.3355404138565
+              ],
+              "descendant": [
+                673.0876999497414,
+                456.33555909991264
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-3",
+              "dorsal"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-4|dorsal",
+            "sourceEdges": 125,
+            "samples": 129,
+            "maxGapPx": 0.000017702579498291016,
+            "violations": 0,
+            "worst": {
+              "source": [
+                528,
+                485
+              ],
+              "ancestor": [
+                598.6561678647995,
+                455.70421332120895
+              ],
+              "descendant": [
+                598.656185567379,
+                455.704213321209
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-4",
+              "dorsal"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-5|dorsal",
+            "sourceEdges": 129,
+            "samples": 140,
+            "maxGapPx": 0.000017069473646912085,
+            "violations": 0,
+            "worst": {
+              "source": [
+                393,
+                577
+              ],
+              "ancestor": [
+                450.71606799960136,
+                474.58436545729637
+              ],
+              "descendant": [
+                450.71608006954193,
+                474.58437752723694
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-5",
+              "dorsal"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body|body-5",
+            "sourceEdges": 19,
+            "samples": 21,
+            "maxGapPx": 23.285774665362545,
+            "violations": 21,
+            "worst": {
+              "source": [
+                216,
+                502
+              ],
+              "ancestor": [
+                339.3136570851008,
+                289.11749549706775
+              ],
+              "descendant": [
+                355.0084670037031,
+                306.3192466691136
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "body-5"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|caudal",
+            "sourceEdges": 1,
+            "samples": 2,
+            "maxGapPx": 6.661751896785514,
+            "violations": 2,
+            "worst": {
+              "source": [
+                210,
+                713
+              ],
+              "ancestor": [
+                234.9574760099252,
+                472.60260528326035
+              ],
+              "descendant": [
+                229.06913323402404,
+                475.7181080818176
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "caudal"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "caudal|dorsal",
+            "sourceEdges": 13,
+            "samples": 16,
+            "maxGapPx": 0.371876512526928,
+            "violations": 5,
+            "worst": {
+              "source": [
+                390,
+                575
+              ],
+              "ancestor": [
+                449.2915905028582,
+                471.24411126673226
+              ],
+              "descendant": [
+                449.04258572459224,
+                471.5203154683113
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "caudal",
+              "dorsal"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "dorsal|head",
+            "sourceEdges": 7,
+            "samples": 9,
+            "maxGapPx": 35.65519123505409,
+            "violations": 9,
+            "worst": {
+              "source": [
+                871,
+                476
+              ],
+              "ancestor": [
+                919.7705862522126,
+                564.7133704423904
+              ],
+              "descendant": [
+                947.7434200899941,
+                586.8224913903646
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "dorsal",
+              "head"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "far-pectoral|head",
+            "sourceEdges": 20,
+            "samples": 21,
+            "maxGapPx": 0.000026389447372672925,
+            "violations": 0,
+            "worst": {
+              "source": [
+                878,
+                635
+              ],
+              "ancestor": [
+                861.3852564096451,
+                717.3396817445755
+              ],
+              "descendant": [
+                861.3852328062059,
+                717.3396935462953
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "far-pectoral",
+              "head"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "far-pectoral|near-pectoral",
+            "sourceEdges": 119,
+            "samples": 128,
+            "maxGapPx": 0.20490720601323914,
+            "violations": 98,
+            "worst": {
+              "source": [
+                848,
+                673
+              ],
+              "ancestor": [
+                817.2830644011499,
+                736.8108034193516
+              ],
+              "descendant": [
+                817.487566959858,
+                736.8236745715142
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "far-pectoral",
+              "near-pectoral"
+            ],
+            "reason": "independent sibling adjacency"
+          }
+        ],
+        "status": "PASS",
+        "scope": "Nearest anatomical attachments and proximal limb-to-axial body-skin attachments, independently enumerated from every nonzero source-alpha edge. Distinct limb-to-limb and distal limb-to-body silhouette boundaries are observation-only; they are not required welds."
+      },
+      "pose": {
+        "pose": {
+          "head": {
+            "rotation": 0.17453292519943295,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine0": {
+            "rotation": -0.05235987755982989,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine1": {
+            "rotation": -0.08726646259971647,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine2": {
+            "rotation": -0.03490658503988659,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine3": {
+            "rotation": 0.05235987755982989,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine4": {
+            "rotation": 0.10471975511965978,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine5": {
+            "rotation": 0.13962634015954636,
+            "dx": 0,
+            "dy": 0
+          },
+          "caudal": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "dorsal": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "pectoralFar": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "pectoralNear": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "root": {
+            "rotation": 0.4886921905584123,
+            "dx": -0.02,
+            "dy": 0.2
+          }
+        },
+        "displacementX": 0,
+        "facing": -1,
+        "context": {
+          "actionId": "faint",
+          "elapsedMs": 1259.9999999999993,
+          "durationMs": 600,
+          "weight": 1,
+          "planted": true,
+          "travel": "stage"
+        }
+      }
+    },
+    {
+      "id": "candidate",
+      "status": "PUBLISHED",
+      "measurement": {
+        "schema": "cf.source-join-continuity/v1",
+        "units": "native cut-out pixels",
+        "epsilonNativePx": 0.0011959075927734375,
+        "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+        "sourceEdges": 2405,
+        "samples": 2620,
+        "maxGapPx": 0.000044853435718681356,
+        "joins": [
+          {
+            "name": "body--body-0",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "spine0",
+            "sourceEdges": 80,
+            "samples": 86,
+            "maxGapPx": 0.000014950461414068926,
+            "violations": 0,
+            "worst": {
+              "source": [
+                882.8235294117648,
+                740
+              ],
+              "ancestor": [
+                816.3496451728485,
+                812.3137175528443
+              ],
+              "descendant": [
+                816.3496495695676,
+                812.3137032635071
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body--far-pectoral",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "pectoralFar",
+            "sourceEdges": 87,
+            "samples": 99,
+            "maxGapPx": 0.000044853435718681356,
+            "violations": 0,
+            "worst": {
+              "source": [
+                878,
+                663.8947368421053
+              ],
+              "ancestor": [
+                847.8199625015259,
+                742.8522498607637
+              ],
+              "descendant": [
+                847.8199270963669,
+                742.8522773981094
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body--head",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "head",
+            "sourceEdges": 191,
+            "samples": 206,
+            "maxGapPx": 0.00002918855295822401,
+            "violations": 0,
+            "worst": {
+              "source": [
+                978,
+                705.95
+              ],
+              "ancestor": [
+                916.3710021615028,
+                826.9319957971575
+              ],
+              "descendant": [
+                916.3709797382354,
+                826.9319771111011
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body--near-pectoral",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "pectoralNear",
+            "sourceEdges": 7,
+            "samples": 10,
+            "maxGapPx": 0.0000069111691508296375,
+            "violations": 0,
+            "worst": {
+              "source": [
+                868,
+                633
+              ],
+              "ancestor": [
+                853.4947053194046,
+                710.8790938854216
+              ],
+              "descendant": [
+                853.4946996370952,
+                710.8790899515153
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-0--body-1",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine0",
+            "descendantJoint": "spine1",
+            "sourceEdges": 294,
+            "samples": 316,
+            "maxGapPx": 0.00003577866379986181,
+            "violations": 0,
+            "worst": {
+              "source": [
+                818,
+                802
+              ],
+              "ancestor": [
+                743.5206402540207,
+                845.0237905025482
+              ],
+              "descendant": [
+                743.5206734736761,
+                845.0238037904103
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-1--body-2",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine1",
+            "descendantJoint": "spine2",
+            "sourceEdges": 230,
+            "samples": 246,
+            "maxGapPx": 0.00003737211227416992,
+            "violations": 0,
+            "worst": {
+              "source": [
+                734,
+                802
+              ],
+              "ancestor": [
+                678.2925887703896,
+                819.848171710968
+              ],
+              "descendant": [
+                678.2926261425018,
+                819.848171710968
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-1--dorsal",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine1",
+            "descendantJoint": "dorsal",
+            "sourceEdges": 96,
+            "samples": 101,
+            "maxGapPx": 0.000034908433635088204,
+            "violations": 0,
+            "worst": {
+              "source": [
+                688,
+                450
+              ],
+              "ancestor": [
+                751.8031225204468,
+                473.2070310115814
+              ],
+              "descendant": [
+                751.8031561553478,
+                473.20702166855335
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-2--body-3",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine2",
+            "descendantJoint": "spine3",
+            "sourceEdges": 344,
+            "samples": 383,
+            "maxGapPx": 0.00003364654541413961,
+            "violations": 0,
+            "worst": {
+              "source": [
+                610,
+                508.99999999999994
+              ],
+              "ancestor": [
+                660.9249794483185,
+                507.56986409425735
+              ],
+              "descendant": [
+                660.9250095427036,
+                507.56987914144986
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-3--body-4",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine3",
+            "descendantJoint": "spine4",
+            "sourceEdges": 12,
+            "samples": 15,
+            "maxGapPx": 0.000020728972000056637,
+            "violations": 0,
+            "worst": {
+              "source": [
+                526,
+                812.7894736842105
+              ],
+              "ancestor": [
+                460.27401354610924,
+                751.7600623726844
+              ],
+              "descendant": [
+                460.274008333683,
+                751.760042309761
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-4--body-5",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine4",
+            "descendantJoint": "spine5",
+            "sourceEdges": 570,
+            "samples": 622,
+            "maxGapPx": 0.00002114085926933656,
+            "violations": 0,
+            "worst": {
+              "source": [
+                454,
+                548
+              ],
+              "ancestor": [
+                512.1513133049011,
+                481.8886848092079
+              ],
+              "descendant": [
+                512.1513282537461,
+                481.88869975805284
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-5--caudal",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "spine5",
+            "descendantJoint": "caudal",
+            "sourceEdges": 326,
+            "samples": 349,
+            "maxGapPx": 0.00002127585269635528,
+            "violations": 0,
+            "worst": {
+              "source": [
+                393,
+                629
+              ],
+              "ancestor": [
+                426.2325773835182,
+                513.5400039553642
+              ],
+              "descendant": [
+                426.23256558179855,
+                513.5399862527847
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "head--jaw",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "head",
+            "descendantJoint": "jaw",
+            "sourceEdges": 168,
+            "samples": 187,
+            "maxGapPx": 0.00003961445847974483,
+            "violations": 0,
+            "worst": {
+              "source": [
+                977,
+                644
+              ],
+              "ancestor": [
+                930.8905854821205,
+                782.3541390180588
+              ],
+              "descendant": [
+                930.8906171500682,
+                782.3541628181935
+              ]
+            },
+            "status": "CONTINUOUS"
+          }
+        ],
+        "excluded": [
+          {
+            "name": "body-0|dorsal",
+            "sourceEdges": 106,
+            "samples": 114,
+            "maxGapPx": 0.000019931793303840095,
+            "violations": 0,
+            "worst": {
+              "source": [
+                791,
+                464
+              ],
+              "ancestor": [
+                850.2899690628052,
+                523.3689141333103
+              ],
+              "descendant": [
+                850.2899491310119,
+                523.3689141333103
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-0",
+              "dorsal"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body-0|far-pectoral",
+            "sourceEdges": 80,
+            "samples": 86,
+            "maxGapPx": 0.000040250996740538965,
+            "violations": 0,
+            "worst": {
+              "source": [
+                813,
+                696
+              ],
+              "ancestor": [
+                777.75562530756,
+                742.6529196023941
+              ],
+              "descendant": [
+                777.7556626796722,
+                742.652934551239
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-0",
+              "far-pectoral"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-0|head",
+            "sourceEdges": 169,
+            "samples": 185,
+            "maxGapPx": 0.000037988177651979576,
+            "violations": 0,
+            "worst": {
+              "source": [
+                854.6842105263158,
+                476
+              ],
+              "ancestor": [
+                913.5304545164108,
+                564.2817238569261
+              ],
+              "descendant": [
+                913.5304899215698,
+                564.281710088253
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-0",
+              "head"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-0|near-pectoral",
+            "sourceEdges": 130,
+            "samples": 138,
+            "maxGapPx": 0.0000018544613344793376,
+            "violations": 0,
+            "worst": {
+              "source": [
+                864,
+                632
+              ],
+              "ancestor": [
+                850.4324069023132,
+                708.1182546615601
+              ],
+              "descendant": [
+                850.432405591011,
+                708.1182559728622
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-0",
+              "near-pectoral"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-1|near-pectoral",
+            "sourceEdges": 205,
+            "samples": 218,
+            "maxGapPx": 0.000017176948158848106,
+            "violations": 0,
+            "worst": {
+              "source": [
+                731,
+                727.25
+              ],
+              "ancestor": [
+                695.9108134120703,
+                742.0217634871601
+              ],
+              "descendant": [
+                695.9108255580068,
+                742.0217756330967
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-1",
+              "near-pectoral"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-2|body-5",
+            "sourceEdges": 54,
+            "samples": 72,
+            "maxGapPx": 0.000022423267409976688,
+            "violations": 0,
+            "worst": {
+              "source": [
+                620,
+                692
+              ],
+              "ancestor": [
+                601.8583973050117,
+                678.4761755347251
+              ],
+              "descendant": [
+                601.8583973050117,
+                678.4761979579926
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-2",
+              "body-5"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body-2|dorsal",
+            "sourceEdges": 92,
+            "samples": 101,
+            "maxGapPx": 0.00003193074671344868,
+            "violations": 0,
+            "worst": {
+              "source": [
+                684.05,
+                449
+              ],
+              "ancestor": [
+                748.3127167224884,
+                470.9464666843414
+              ],
+              "descendant": [
+                748.3127466201782,
+                470.9464554727078
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-2",
+              "dorsal"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-2|near-pectoral",
+            "sourceEdges": 315,
+            "samples": 335,
+            "maxGapPx": 0.000035185929847178,
+            "violations": 0,
+            "worst": {
+              "source": [
+                645,
+                625.9473684210526
+              ],
+              "ancestor": [
+                653.6229643821716,
+                618.1751893758773
+              ],
+              "descendant": [
+                653.6229958534241,
+                618.1751736402512
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-2",
+              "near-pectoral"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-3|body-5",
+            "sourceEdges": 380,
+            "samples": 421,
+            "maxGapPx": 0.00001985258105909109,
+            "violations": 0,
+            "worst": {
+              "source": [
+                533,
+                482
+              ],
+              "ancestor": [
+                603.1046544760466,
+                454.1666897088289
+              ],
+              "descendant": [
+                603.104642463582,
+                454.1666739029544
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-3",
+              "body-5"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body-3|dorsal",
+            "sourceEdges": 97,
+            "samples": 101,
+            "maxGapPx": 0.000041783291753899105,
+            "violations": 0,
+            "worst": {
+              "source": [
+                607,
+                460
+              ],
+              "ancestor": [
+                673.5930082798004,
+                457.1376954317093
+              ],
+              "descendant": [
+                673.5929709076881,
+                457.13767674565315
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-3",
+              "dorsal"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-4|dorsal",
+            "sourceEdges": 125,
+            "samples": 129,
+            "maxGapPx": 0.000015408916713089182,
+            "violations": 0,
+            "worst": {
+              "source": [
+                454,
+                534
+              ],
+              "ancestor": [
+                516.168628513813,
+                469.80633696913725
+              ],
+              "descendant": [
+                516.1686322510243,
+                469.80632202029227
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-4",
+              "dorsal"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body-5|dorsal",
+            "sourceEdges": 129,
+            "samples": 140,
+            "maxGapPx": 0.00001985258105909109,
+            "violations": 0,
+            "worst": {
+              "source": [
+                533,
+                482
+              ],
+              "ancestor": [
+                603.104642463582,
+                454.1666739029544
+              ],
+              "descendant": [
+                603.1046544760466,
+                454.1666897088289
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body-5",
+              "dorsal"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "body|body-5",
+            "sourceEdges": 19,
+            "samples": 21,
+            "maxGapPx": 0.0000117286432484978,
+            "violations": 0,
+            "worst": {
+              "source": [
+                208,
+                509
+              ],
+              "ancestor": [
+                328.96378278732305,
+                291.5423580110073
+              ],
+              "descendant": [
+                328.9637932777405,
+                291.54235276579857
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "body-5"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|caudal",
+            "sourceEdges": 1,
+            "samples": 2,
+            "maxGapPx": 0.000014460108699372095,
+            "violations": 0,
+            "worst": {
+              "source": [
+                210,
+                713
+              ],
+              "ancestor": [
+                234.9574760099252,
+                472.60260528326035
+              ],
+              "descendant": [
+                234.95747950673103,
+                472.60261931419376
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "caudal"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "caudal|dorsal",
+            "sourceEdges": 13,
+            "samples": 16,
+            "maxGapPx": 0.3721320929825726,
+            "violations": 5,
+            "worst": {
+              "source": [
+                390,
+                575
+              ],
+              "ancestor": [
+                449.27800200283525,
+                471.25436617434025
+              ],
+              "descendant": [
+                449.028810364008,
+                471.5307460248471
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "caudal",
+              "dorsal"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "dorsal|head",
+            "sourceEdges": 7,
+            "samples": 9,
+            "maxGapPx": 0.000024329868372449184,
+            "violations": 0,
+            "worst": {
+              "source": [
+                867,
+                476
+              ],
+              "ancestor": [
+                926.5945333242416,
+                571.4649349451065
+              ],
+              "descendant": [
+                926.5945097208023,
+                571.4649290442467
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "dorsal",
+              "head"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "far-pectoral|head",
+            "sourceEdges": 20,
+            "samples": 21,
+            "maxGapPx": 0.000026389447372672925,
+            "violations": 0,
+            "worst": {
+              "source": [
+                878,
+                635
+              ],
+              "ancestor": [
+                861.3852564096451,
+                717.3396817445755
+              ],
+              "descendant": [
+                861.3852328062059,
+                717.3396935462953
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "far-pectoral",
+              "head"
+            ],
+            "reason": "independent sibling adjacency"
+          },
+          {
+            "name": "far-pectoral|near-pectoral",
+            "sourceEdges": 119,
+            "samples": 128,
+            "maxGapPx": 0.20740874886926522,
+            "violations": 98,
+            "worst": {
+              "source": [
+                848,
+                673
+              ],
+              "ancestor": [
+                817.2844979166985,
+                736.8126859903336
+              ],
+              "descendant": [
+                817.4913283646107,
+                736.8281635522843
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "far-pectoral",
+              "near-pectoral"
+            ],
+            "reason": "independent sibling adjacency"
+          }
+        ],
+        "status": "PASS",
+        "scope": "Nearest anatomical attachments and proximal limb-to-axial body-skin attachments, independently enumerated from every nonzero source-alpha edge. Distinct limb-to-limb and distal limb-to-body silhouette boundaries are observation-only; they are not required welds."
+      },
+      "pose": {
+        "pose": {
+          "head": {
+            "rotation": 0.17453292519943295,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine0": {
+            "rotation": -0.05235987755982989,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine1": {
+            "rotation": -0.08726646259971647,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine2": {
+            "rotation": -0.03490658503988659,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine3": {
+            "rotation": 0.05235987755982989,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine4": {
+            "rotation": 0.10471975511965978,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine5": {
+            "rotation": 0.13962634015954636,
+            "dx": 0,
+            "dy": 0
+          },
+          "caudal": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "dorsal": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "pectoralFar": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "pectoralNear": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "root": {
+            "rotation": 0.4886921905584123,
+            "dx": -0.02,
+            "dy": 0.2
+          }
+        },
+        "displacementX": 0,
+        "facing": -1,
+        "context": {
+          "actionId": "faint",
+          "elapsedMs": 1259.9999999999993,
+          "durationMs": 600,
+          "weight": 1,
+          "planted": true,
+          "travel": "stage"
+        }
+      }
+    }
+  ]
+}

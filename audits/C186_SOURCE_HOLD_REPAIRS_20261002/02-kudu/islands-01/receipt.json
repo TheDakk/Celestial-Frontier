@@ -1,0 +1,242 @@
+{
+  "schema": "cf.c186-unchanged-d28-placement/v1",
+  "sourceFit": "audits/C186_SOURCE_HOLD_REPAIRS_20261002/02-kudu/fit01",
+  "sourceConservationSha256": "a0e0efaca9cc1d31b001c1d6de868cb68cc3e1e87f49f8f9e64f812607aceca9",
+  "sourceMasterSha256": "72ef33496996ebefd5a8220ae4a3a7dcd5c7767034185ff221c8c389925bb867",
+  "sourceBindingSha256": "34fb9018fe1dfe91a5bdce327726414ca68272b51b2064c100af4452358601f0",
+  "sourceRgbaChanges": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "nonRemainderOwnersChanged": 0,
+  "maxShare": 0.05,
+  "placementHelper": "audits/G1_AUTO_AUTHOR_20260926/remainder-islands-fit.mjs",
+  "placementHelperSha256": "257a786d6bcb2074edc106febabb5a2e463b136f309cd91ea20c3a79a15da374",
+  "movedPixels": 1357,
+  "remainderPixels": 46514,
+  "islands": [
+    {
+      "pixels": 2,
+      "to": null,
+      "border": {}
+    },
+    {
+      "pixels": 47,
+      "to": "head",
+      "border": {
+        "23": 10
+      }
+    },
+    {
+      "pixels": 65,
+      "to": "head",
+      "border": {
+        "23": 47
+      }
+    },
+    {
+      "pixels": 397,
+      "to": "head",
+      "border": {
+        "23": 101
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "head",
+      "border": {
+        "23": 12
+      }
+    },
+    {
+      "pixels": 15,
+      "to": "head",
+      "border": {
+        "23": 21
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "head",
+      "border": {
+        "23": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "head",
+      "border": {
+        "23": 2
+      }
+    },
+    {
+      "pixels": 488,
+      "to": "head",
+      "border": {
+        "18": 6,
+        "23": 124
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "head",
+      "border": {
+        "23": 18
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "ear-near-tip",
+      "border": {
+        "18": 13,
+        "23": 13
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "ear-near-tip",
+      "border": {
+        "18": 2
+      }
+    },
+    {
+      "pixels": 7,
+      "to": "ear-near-tip",
+      "border": {
+        "18": 8,
+        "24": 1
+      }
+    },
+    {
+      "pixels": 10,
+      "to": "tail1",
+      "border": {
+        "30": 10,
+        "31": 10
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "tail1",
+      "border": {
+        "30": 4,
+        "31": 4
+      }
+    },
+    {
+      "pixels": 161,
+      "to": "chest",
+      "border": {
+        "24": 16,
+        "25": 29
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "neck",
+      "border": {
+        "24": 1
+      }
+    },
+    {
+      "pixels": 17,
+      "to": "neck",
+      "border": {
+        "24": 7
+      }
+    },
+    {
+      "pixels": 11,
+      "to": "chest",
+      "border": {
+        "25": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-paw",
+      "border": {
+        "11": 2
+      }
+    },
+    {
+      "pixels": 51,
+      "to": "fore-near-paw",
+      "border": {
+        "7": 19
+      }
+    },
+    {
+      "pixels": 33,
+      "to": "hind-far-paw",
+      "border": {
+        "11": 20
+      }
+    }
+  ],
+  "intake": {
+    "id": "c186-islands-02-kudu",
+    "parts": 31,
+    "atlasSize": {
+      "width": 937,
+      "height": 2047
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 42,
+        "distancePx": 6.51920240520269,
+        "supports": [
+          873
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 31,
+        "distancePx": 8.062257748298503,
+        "supports": [
+          1033
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 43,
+        "distancePx": 7.353910524340044,
+        "supports": [
+          33
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 41,
+        "distancePx": 8.448076704197213,
+        "supports": [
+          453
+        ]
+      }
+    ],
+    "sourceBindingHash": "d705867d345925290ba1d7186d4022e983d0ab572f78c064400e9bb04d41350e",
+    "sourceVertices": 1899,
+    "vertices": 2148,
+    "sharedSupports": 505,
+    "pins": 477,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 35,
+    "excludedOverlaps": 14,
+    "observedExcludedBoundaries": 14,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 14,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "qualityAccepted": false,
+  "native": false
+}

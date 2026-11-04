@@ -1,0 +1,32 @@
+# Remaining painted-source holds — C183
+
+One source-bound Flounder fit correction and one new Tiger Shark painting are delivered. No product, motion, solver limit, native run, registry, or visual admission changes occur here. All six held subjects were inspected at full image size. The five other open subjects remain held with the distinctions below.
+
+## Flounder: useful bounded join correction
+
+The latest C197 fish-seams film still shows two large wedge openings on its right fainted fish. The exact selected fit is ignored locally; the first preparation refusal is retained in `preparation.json`, followed by a read-only copy from the sibling lane. `measure-flounder.mjs` verifies its record and binding against that film's source hashes before publishing.
+
+`flounder/fit01` uses the unchanged source record, original master, keyed pixels, ownership, atlas, landmarks and the existing fish fin-collar recipe. Five explicitly named observed boundaries now share their source supports: `body-0|head`, `body-2|body-5`, `body-3|body-5`, `body|body-5`, and `body|caudal`. Full-size source inspection shows these cuts traverse one continuous flank/caudal peduncle. They are not independent crossed limbs or hidden reverse surfaces. The authoring receipt retains the exact inherited compiler and virtual fin-collar hashes. No general default is changed.
+
+The original native `turn3-hit-idle-90.png` is sampled at 11696.666666666666 ms. The browser-free replay composes that recorded target pose under current motion. `flounder/measurement.json` independently interpolates every original source-edge breakpoint. The five gaps change from 35.373758, 36.114766, 35.902002, 23.285775 and 6.661752 cut-out pixels to at most 0.000038 pixels, below the unchanged eight-Float32-ulp tolerance. The large openings are visibly closed in `flounder/candidate-held-right.png`, compared with `before-held-right.png`. These are source-sized software renders, not GPU or native qualification.
+
+The unchanged static owner passes all 13 actions (1,573 action samples), full presentation and exact visible source-pixel rest. Fifteen checks in `flounder/controls.json` cover unchanged inherited files, atlas/ownership/recipe identity, solver ceilings, the actual original five broken-edge controls, exact candidate closure, and refusal to claim all excluded surfaces continuous. Small remaining observed separations are retained: caudal/dorsal about 0.372 pixels and far/near pectoral about 0.207 pixels. The automatic near-pectoral polygon also claims visible flank outside the actual small fin; this is an ownership hold, not silently relabelled here. Native full-film and independent full-size review remain required.
+
+## Tiger Shark: new source with retained anatomy hold
+
+`tiger-shark-v3/master.png` is the exact native 1254-square built-in imagegen output; the predecessor remains unchanged. The exact sent prompt, input/output hashes and generator path are retained beside it. The upper tail lobe is now visibly longer than the lower lobe. The requested subterminal notch is not clearly articulated, so anatomy remains HELD. The edit also changed body size/framing; old masks cannot be rebound. The unchanged 8% framing ruler passes (left 134, right 161, top 451, bottom 443 pixels; required 101). Dark vertical flank bars pass an explicit full-size pattern observation. No fit or motion acceptance is claimed.
+
+## Unresolved subjects and exact ownership evidence
+
+- **Hawk:** the selected C181 `18-hawk/fit02` and C201 re-film retain a belly opening between the legs. The ownership image places body remainder next to distal foot/shin paint. In the recorded target held-pose comparison those excluded source crossings can separate by 47–53 pixels, while proximal neck/wing boundaries are under one pixel. This is evidence for auditing the leg-adjacent remainder, not proof that every large observation is the visible belly opening. Distinct distal legs must not be welded to the belly. No speculative ownership change is made.
+- **Snowy Owl:** the selected C181 fit and C201 re-film retain a fine neck/shoulder line. Source feathers are continuous in the original. The target held-pose near-wing-root/neck-lower boundary measures about 0.348 source pixels (far-wing neck boundaries about 0.031–0.056). The atlas boundary, sampling and true shoulder overlap need to be separated before any weld or recut; no repair is claimed.
+- **Capuchin:** the selected C192 contour successor and C201 re-film retain a thin neck line. The source fur is continuous. Target held-pose body/head separation is only 0.000436 pixels and body/neck 0.006685; arm-far-elbow/neck is about 0.940 and body/chest 1.127. These figures do not establish that the native visible line is a neck ownership gap. A blanket neck weld is unjustified; sampling and arm/shoulder overlap remain to trace.
+- **Snow Petrel:** current C197 source is whole at the near shoulder, while the retained reaction film shows a clear cut through the folded near wing. The automatic author explicitly transfers Duck parts: its near-wing root is around (697,541), and its root polygon stretches toward the back/neck rather than following the observed rounded shoulder near (790,565). Distal and proximal folded-wing surface ownership need independent source authoring. The source repaint alone did not cure this. No hidden far-wing geometry is invented, and no new fit is claimed.
+
+`other-holds-measurement.json` binds the three exact C201 fit/report identities. Its left/right outputs are both target held-pose comparisons; the left row is not the real film's left attacker idle. The file explicitly preserves this limitation. Native source stills are `audits/SPIKE_REFILM_20261002/{hawk,snowy-owl,capuchin}/turn3-hit-idle-90.png`; Snow Petrel source and reaction evidence are retained in the C197 source/film directories.
+
+## Reproduction
+
+From a fresh audit destination, `compile-flounder.mjs` compiles the named source joins; `measure-flounder.mjs` compares exact retained-pose publications. The unchanged static owner is `node audits/C163_REFERENCE_REPAIR_20261002/static-runner.mjs audits/C183_REMAINING_HOLDS_20261002/flounder/fit01 NEW_REPORT`. Existing evidence refuses overwrite. These are agent reproduction notes, not a command request for Dakk.
+
+All local processing is terminal. Native and performance measurement remain with the coordinating lane reservation. The current product and I5 inputs are unchanged.

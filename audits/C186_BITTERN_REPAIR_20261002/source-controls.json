@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "only-observed-far-leg-authoring-changed",
+      "status": "PASS"
+    },
+    {
+      "id": "unrelated-head-landmark",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "unrelated-wing-contour",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "ground-line-relaxation",
+      "status": "REFUSED_AS_EXPECTED"
+    },
+    {
+      "id": "unchanged-source-master",
+      "status": "PASS"
+    },
+    {
+      "id": "original-fold-retained-candidate-clears-all614",
+      "status": "PASS"
+    },
+    {
+      "id": "five-fresh-turns-counted-no-refusals",
+      "status": "PASS"
+    }
+  ],
+  "scope": "Bounded offline evidence checks; no native or quality admission"
+}

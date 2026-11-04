@@ -1,0 +1,10 @@
+{
+  "schema": "cf.c183-source-selection-refusal/v1",
+  "originalCommand": "node audits/C183_ISLAND_AUTHORING_20261002/prepare-birds.mjs",
+  "status": "REFUSED",
+  "at": "20-hornbill native record guard",
+  "reason": "C211 native source uses fallback-1 for Hornbill and fallback-2 for Parrot; ISLANDS_C211 attempted root fits. Original script refused before retaining any Hornbill bytes. Grouse snapshot is exact and reused byte-identically.",
+  "successor": "prepare-birds-v2.mjs",
+  "correction": "Resolve the actual fit from native report.sources, verify both record/binding hashes, then bind authoring via record.provenance. No guard change or unreviewed fallback selection.",
+  "nativeRetry": false
+}

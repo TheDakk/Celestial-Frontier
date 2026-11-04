@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "f4a751eeaaebb55dfc7b386e727acb5ba01ed5a6",
+  "helperSha256": "2035749f7a4e10573549ae4823a4d5e87b66054de5bc2cdb8b72059dc2510b4f",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/master.png",
+      "sha256": "d9bcdbe8ea5f22522efab3a07dc510d1c9ea48dd7c1e2d9eae0281e24af50033"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/authoring.json",
+      "sha256": "5eed48bec70ed7a1151ffc3e89d4bcb17e222887d86755f6910c696a5b205561"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/subject-source.json",
+      "sha256": "df04aff66efa4af463f4f67d83a0b355468cd1c63ad731a4e8c9448a36a25203"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": true,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "1f14d80a70ff376f0703c4a8f51ebe70d18660316a12f4352b2279b8b19718a4",
+  "bindingHash": "342af37e7f8ccf137ca441e32c8782406e874d14552c2e2622589ce9c262dc14",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingFarRoot",
+    "wingFarTip",
+    "wingNearRoot",
+    "wingNearTip",
+    "tailFan",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/master.png",
+      "sha256": "d9bcdbe8ea5f22522efab3a07dc510d1c9ea48dd7c1e2d9eae0281e24af50033",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/authoring.json",
+      "sha256": "5eed48bec70ed7a1151ffc3e89d4bcb17e222887d86755f6910c696a5b205561",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/subject-source.json",
+      "sha256": "df04aff66efa4af463f4f67d83a0b355468cd1c63ad731a4e8c9448a36a25203",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/candidate/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

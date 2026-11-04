@@ -1,0 +1,64 @@
+{
+  "name": "Earthworm",
+  "family": "annelid",
+  "species": {
+    "name": "Earthworm",
+    "aspect": 20,
+    "headFrac": 0.03,
+    "eyes": "hidden",
+    "posture": "crawling",
+    "mustRead": [
+      "ringed segmented tube body",
+      "swollen saddle band (clitellum) near the front",
+      "no limbs, eyes or head features"
+    ]
+  },
+  "genome": {
+    "seed": 2416079038,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 9,
+    "body": 7,
+    "loco": 15,
+    "trait": 9,
+    "size": 5,
+    "diet": 1,
+    "head": 5,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 2,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 11,
+    "habitat": 3,
+    "detail": 6,
+    "accent": 6,
+    "temper": 8,
+    "sense": 1,
+    "repro": 5,
+    "life": 5,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Earthworm"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Earthworm\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2416079038\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "index": 138,
+  "profile": {
+    "needsObservedFit": true,
+    "id": "annelid-land",
+    "names": [
+      "Earthworm",
+      "Ice Worm"
+    ],
+    "candidateTemplates": [
+      "annelid"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [],
+    "notes": "Segmented body compression needs observed source geometry."
+  }
+}

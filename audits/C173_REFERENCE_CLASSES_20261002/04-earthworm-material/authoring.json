@@ -1,0 +1,376 @@
+{
+  "id": "c173-reference-earthworm-material",
+  "family": "annelid",
+  "landmarksPx": {
+    "root": [
+      590,
+      696
+    ],
+    "segment0": [
+      1105,
+      622
+    ],
+    "segment1": [
+      1031,
+      588
+    ],
+    "segment2": [
+      949,
+      576
+    ],
+    "segment3": [
+      856,
+      596
+    ],
+    "segment4": [
+      768,
+      642
+    ],
+    "segment5": [
+      691,
+      678
+    ],
+    "segment6": [
+      600,
+      706
+    ],
+    "segment7": [
+      510,
+      684
+    ],
+    "segment8": [
+      423,
+      640
+    ],
+    "segment9": [
+      336,
+      616
+    ],
+    "segment10": [
+      249,
+      626
+    ],
+    "segment11": [
+      150,
+      574
+    ]
+  },
+  "groundLineY": 0.5964912280701754,
+  "materials": {
+    "surface": "slick"
+  },
+  "remainderPart": "segment6",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          586,
+          692
+        ],
+        [
+          595,
+          692
+        ],
+        [
+          595,
+          701
+        ],
+        [
+          586,
+          701
+        ]
+      ]
+    },
+    {
+      "id": "segment0",
+      "joint": "segment0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1070,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          1070,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment1",
+      "joint": "segment1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          990,
+          0
+        ],
+        [
+          1070,
+          0
+        ],
+        [
+          1070,
+          1254
+        ],
+        [
+          990,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment2",
+      "joint": "segment2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          900,
+          0
+        ],
+        [
+          990,
+          0
+        ],
+        [
+          990,
+          1254
+        ],
+        [
+          900,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment3",
+      "joint": "segment3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          810,
+          0
+        ],
+        [
+          900,
+          0
+        ],
+        [
+          900,
+          1254
+        ],
+        [
+          810,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment4",
+      "joint": "segment4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          730,
+          0
+        ],
+        [
+          810,
+          0
+        ],
+        [
+          810,
+          1254
+        ],
+        [
+          730,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment5",
+      "joint": "segment5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          650,
+          0
+        ],
+        [
+          730,
+          0
+        ],
+        [
+          730,
+          1254
+        ],
+        [
+          650,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment7",
+      "joint": "segment7",
+      "layer": "near",
+      "polygonPx": [
+        [
+          460,
+          0
+        ],
+        [
+          550,
+          0
+        ],
+        [
+          550,
+          1254
+        ],
+        [
+          460,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment8",
+      "joint": "segment8",
+      "layer": "near",
+      "polygonPx": [
+        [
+          380,
+          0
+        ],
+        [
+          460,
+          0
+        ],
+        [
+          460,
+          1254
+        ],
+        [
+          380,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment9",
+      "joint": "segment9",
+      "layer": "near",
+      "polygonPx": [
+        [
+          290,
+          0
+        ],
+        [
+          380,
+          0
+        ],
+        [
+          380,
+          1254
+        ],
+        [
+          290,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment10",
+      "joint": "segment10",
+      "layer": "near",
+      "polygonPx": [
+        [
+          200,
+          0
+        ],
+        [
+          290,
+          0
+        ],
+        [
+          290,
+          1254
+        ],
+        [
+          200,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment11",
+      "joint": "segment11",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          200,
+          0
+        ],
+        [
+          200,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "segment6",
+      "joint": "segment6",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Independent annelid reference from a complete noncrossing Earthworm original",
+    "limitations": [
+      "The 12 shared deforming segments sample the observed centreline; they are control regions, not a claim that the animal has only 12 biological annuli.",
+      "Both terminal ends and the clitellum are visible. No eyes, feet, mandibles or unpainted head structures are invented.",
+      "The curved body has no individually observed foot contacts. groundLineY is the painted lower envelope, not a claim that the whole tube lies on one plane.",
+      "Wet highlights and body thickness remain visual/style review questions; no native movement or quality acceptance."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false,
+    "materialSuccessor": "The visible wet annelid cuticle uses the existing slick soft-surface Motion Kit class. The prior literal skin label is unsupported; source anatomy and pose are unchanged."
+  }
+}
