@@ -1,0 +1,339 @@
+[
+ {
+  "id": "01-mackerel",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "02-haddock",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "03-pollock",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "04-sardine",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "05-anchovy",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "06-mullet",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "07-tarpon",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "RED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "08-snapper",
+  "family": "fish",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a front appendage of 6.6% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "09-curlew",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "INTAKE_REFUSED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "10-snipe",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part far-thigh (legFarKnee) covers 0% paint (reference 72%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "11-plover",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Observed surfaces: contact conflicts with fixed owner\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:6:36",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part far-thigh (legFarKnee) covers 22% paint (reference 88%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "12-godwit",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part far-thigh (legFarKnee) covers 20% paint (reference 72%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "13-avocet",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part near-thigh (legNearKnee) covers 0% paint (reference 67%)",
+   "missing-anatomy: part far-thigh (legFarKnee) covers 23% paint (reference 72%)",
+   "missing-anatomy: part tail (tailFan) covers 14% paint (reference 89%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "14-coot",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "15-moorhen",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part near-thigh (legNearKnee) covers 13% paint (reference 59%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "16-rail",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "17-bee",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "18-wasp",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a front appendage of 9.2% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "19-dragonfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 10.6% paint that no reference appendage lands on",
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 6% paint (reference 25%)",
+   "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%)",
+   "missing-anatomy: part elytron-near (thorax) covers 27% paint (reference 98%)",
+   "missing-anatomy: part elytron-far (thorax) covers 22% paint (reference 79%)",
+   "missing-anatomy: part membrane-near (wingNear) covers 23% paint (reference 89%)",
+   "missing-anatomy: part membrane-far (wingFar) covers 27% paint (reference 86%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "20-damselfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+   "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 8% paint (reference 29%)",
+   "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 7% paint (reference 25%)",
+   "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 6% paint (reference 31%)",
+   "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 13% paint (reference 40%)",
+   "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 0% paint (reference 32%)",
+   "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 14% paint (reference 44%)",
+   "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 19% paint (reference 56%)",
+   "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 13% paint (reference 52%)",
+   "missing-anatomy: part leg-mid-far-knee (legMidFarKnee) covers 23% paint (reference 69%)",
+   "missing-anatomy: part leg-mid-near-knee (legMidNearKnee) covers 0% paint (reference 62%)",
+   "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 9% paint (reference 67%)",
+   "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 12% paint (reference 75%)",
+   "missing-anatomy: part head (head) covers 29% paint (reference 88%)",
+   "unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 1.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "21-caddisfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part antenna-far (antennaFar) covers 1% paint (reference 32%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 8% paint (reference 35%)",
+   "missing-anatomy: part mandible (mandible) covers 13% paint (reference 63%)",
+   "missing-anatomy: part head (head) covers 21% paint (reference 72%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "22-mayfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 29%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 26%)",
+   "missing-anatomy: part mandible (mandible) covers 8% paint (reference 56%)",
+   "missing-anatomy: part wing-near (wingNear) covers 5% paint (reference 79%)",
+   "unexplained-anatomy: 18.2% of the paint lies away from the body and in no part (reference 1.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "23-stonefly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "facing: the mirrored painting matches insect better (0.0384 < 0.3082)",
+   "extra-anatomy (unassigned): a front appendage of 17.5% paint that no reference appendage lands on",
+   "missing-anatomy: part front-near-lower (legFrontNearFoot) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part front-far-lower (legFrontFarFoot) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part mid-near-lower (legMidNearFoot) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part mid-far-lower (legMidFarFoot) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part hind-near-lower (legHindNearFoot) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part front-far-upper (legFrontFarKnee) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part mid-near-upper (legMidNearKnee) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part mid-far-upper (legMidFarKnee) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part hind-near-upper (legHindNearKnee) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part hind-far-upper (legHindFarKnee) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part antenna-far (antennaFar) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part antenna-near (antennaNear) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part mandible (mandible) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part head (head) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part abdomen (abdomen) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part thorax (thorax) was transferred off the canvas (area < 1 px²)",
+   "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 0% paint (reference 44%)",
+   "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 26%)",
+   "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 0% paint (reference 34%)",
+   "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 36%)",
+   "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 0% paint (reference 58%)",
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 0% paint (reference 42%)",
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 78%)",
+   "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 0% paint (reference 56%)",
+   "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 0% paint (reference 69%)",
+   "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 0% paint (reference 73%)",
+   "missing-anatomy: part hind-near-upper (legHindNearKnee) covers 0% paint (reference 88%)",
+   "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 0% paint (reference 81%)",
+   "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 32%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 35%)",
+   "missing-anatomy: part mandible (mandible) covers 0% paint (reference 63%)",
+   "missing-anatomy: part head (head) covers 0% paint (reference 72%)",
+   "missing-anatomy: part abdomen (abdomen) covers 0% paint (reference 54%)",
+   "missing-anatomy: part thorax (thorax) covers 0% paint (reference 67%)",
+   "unexplained-anatomy: 38.2% of the paint lies away from the body and in no part (reference 0.1%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "24-giant-water-bug",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)",
+   "missing-anatomy: part mandible (mandible) covers 2% paint (reference 63%)"
+  ],
+  "semanticPresence": null
+ }
+]

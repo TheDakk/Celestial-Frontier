@@ -1,0 +1,233 @@
+[
+ {
+  "id": "01-pike",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "02-bass",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "03-char",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "04-sturgeon",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "05-paddlefish",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "06-arowana",
+  "family": "fish",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a front appendage of 7.0% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "07-arapaima",
+  "family": "fish",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 8.5% of the paint lies away from the body and in no part (reference 4.0%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "08-goldfish",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "09-swift",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "10-swallow",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part far-shin (legFarAnkle) covers 10% paint (reference 50%)",
+   "missing-anatomy: part tail (tailFan) covers 13% paint (reference 61%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "11-falcon",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 6.6% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "12-crane",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part far-shin (legFarAnkle) covers 0% paint (reference 50%)",
+   "unexplained-anatomy: 14.3% of the paint lies away from the body and in no part (reference 1.2%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "13-spoonbill",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "14-kestrel",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "15-guineafowl",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part near-foot (legNearFoot) covers 14% paint (reference 51%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "16-pheasant",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part far-shin (legFarAnkle) covers 14% paint (reference 50%)",
+   "unexplained-anatomy: 8.0% of the paint lies away from the body and in no part (reference 1.2%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "17-capybara",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "18-agouti",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "19-alpaca",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)",
+   "missing-anatomy: part tail2 (tail2) covers 9% paint (reference 69%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "20-llama",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)",
+   "missing-anatomy: part tail3 (tail3) covers 1% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "21-musk-ox",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 33%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "22-pangolin",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface",
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+   "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 1.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "23-peccary",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 14.1% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "24-okapi",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 53%)"
+  ],
+  "semanticPresence": null
+ }
+]
