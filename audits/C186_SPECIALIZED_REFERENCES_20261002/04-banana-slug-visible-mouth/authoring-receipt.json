@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c186-manual-reference/v1",
+  "writer": "audits/C186_SPECIALIZED_REFERENCES_20261002/author-slug.mjs",
+  "writerSha256": "d30913709015b769effc303b160d3bd12d2b0804d907b648872d80a2f6a5290a",
+  "masterSha256": "3a951f244d84b9f46087c9cb4071a98de5bfea68ad2c0945f8462de7fa14ba43",
+  "authoringSha256": "243141dc0f5699c7d3447e17ffafc9091597dbdd11a18ccbd50015b67dad34c4",
+  "fullSizeInspected": true,
+  "sourceLandmarksReused": false,
+  "sourceLabelsReused": false,
+  "visibleMouthPx": [
+    1010,
+    608
+  ],
+  "ocularTentacles": 2,
+  "shortSensoryTentacles": 2,
+  "limitations": [
+    "Independent source-coordinate Banana Slug authoring, a different canonical subject from Snail. No Snail fit geometry or labels were reused.",
+    "The final targeted painting removes the earlier third lower projection. Two long ocular stalks and two short lower sensory tentacles are separately visible. The dark ventral oral slit at source[1010,608] is distinct from the lower tentacles.",
+    "The current gastropod template has two ocular controls but no independent lower-sensory-tentacle controls. Both visible short tentacles remain part of the contiguous head owner; no paint is deleted or new joint invented.",
+    "The naturally shellless subject declares only shell absent; it does not omit mouth, eyes or foot. Four foot controls sample the continuous soft body/foot; they are not legs.",
+    "The source remains glossy and its eye tips read overly round. The editing model also changed body framing/proportions, so exact paint conservation refers to this retained final master, not to its input predecessor.",
+    "Right ocular tip has less than requested framing margin. No style, framing, reference-pool or native quality acceptance is claimed."
+  ],
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

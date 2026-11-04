@@ -1,0 +1,140 @@
+{
+  "schema": "cf.c186-source-causal-controls/v1",
+  "spider": {
+    "oldSource": {
+      "path": "audits/C183_ISLAND_AUTHORING_20261002/04-spider/original/master.png",
+      "sha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6"
+    },
+    "newSource": {
+      "path": "audits/C186_SPECIALIZED_REFERENCES_20261002/03-spider-palp/master.png",
+      "sha256": "e14cd994b5b6b9cf9a72702b433343d009d0be8c1bfd291696e6917dac8a74ad"
+    },
+    "oldCap": {
+      "status": "REFUSED",
+      "reason": "remainder island of 1938 px is 9.1% of the remainder (> 5%): structural, not a sliver"
+    },
+    "newCap": {
+      "status": "PASS",
+      "remainderPixels": 21882,
+      "largestMinorPixels": 489,
+      "movablePixels": 1825
+    },
+    "unchangedCap": 0.05,
+    "distinction": "A source repaint and source-specific authoring repair, not a same-image equivalence claim. Exact RGBA conservation is separately proved for each retained master."
+  },
+  "brittleStar": {
+    "oldBrittle": {
+      "authoring": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/authoring.json",
+      "sha256": "7195ecfa60bd1d8648d7c5c7acf92873d901ed0ca716f43e545ab8a09341a93c",
+      "discRadiusPx": 65.25335240430181,
+      "arms": [
+        {
+          "arm": 0,
+          "chainLengthPx": 523.6280093839612,
+          "chainToObservedDiscRadius": 8.024538051924534,
+          "withinUnchangedEight": false
+        },
+        {
+          "arm": 1,
+          "chainLengthPx": 630.0693633635158,
+          "chainToObservedDiscRadius": 9.655739362779139,
+          "withinUnchangedEight": false
+        },
+        {
+          "arm": 2,
+          "chainLengthPx": 572.1334122155891,
+          "chainToObservedDiscRadius": 8.76787768191158,
+          "withinUnchangedEight": false
+        },
+        {
+          "arm": 3,
+          "chainLengthPx": 545.7286183684901,
+          "chainToObservedDiscRadius": 8.363227301905075,
+          "withinUnchangedEight": false
+        },
+        {
+          "arm": 4,
+          "chainLengthPx": 578.1517231216867,
+          "chainToObservedDiscRadius": 8.860107593239489,
+          "withinUnchangedEight": false
+        }
+      ]
+    },
+    "newBrittle": {
+      "authoring": "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/authoring.json",
+      "sha256": "43a281a12e8f2eff8ffd2f10263d87606ae6f372bfe811409765710eeb62db70",
+      "discRadiusPx": 82.21921916437786,
+      "arms": [
+        {
+          "arm": 0,
+          "chainLengthPx": 445.62062537172824,
+          "chainToObservedDiscRadius": 5.419908263551072,
+          "withinUnchangedEight": true
+        },
+        {
+          "arm": 1,
+          "chainLengthPx": 447.6114120007657,
+          "chainToObservedDiscRadius": 5.444121417717099,
+          "withinUnchangedEight": true
+        },
+        {
+          "arm": 2,
+          "chainLengthPx": 459.65029954454144,
+          "chainToObservedDiscRadius": 5.590545668228489,
+          "withinUnchangedEight": true
+        },
+        {
+          "arm": 3,
+          "chainLengthPx": 481.4324925487487,
+          "chainToObservedDiscRadius": 5.855473907946491,
+          "withinUnchangedEight": true
+        },
+        {
+          "arm": 4,
+          "chainLengthPx": 476.1384854473382,
+          "chainToObservedDiscRadius": 5.791084983371249,
+          "withinUnchangedEight": true
+        }
+      ]
+    },
+    "unchangedBound": 8,
+    "note": "New biologically short-armed source; old disc or bound was not altered."
+  },
+  "promptRows": [
+    {
+      "id": "04-banana-slug",
+      "exactSentSha256": "acd815227b16967e4f091fa9de588b7dc001272e6a4bb482a1bf87b3bec7c4a4",
+      "masterSha256": "e6b77cb669880ebaafca7370350cc47be5a7345e4a04e1f17e424766c6b8e3f4",
+      "actualInputSha256": "34ebadd8a66f5562067da07cb3acf85082be3a04a4a6bfd2acde2ed5aee098bc",
+      "frozenBlocksUnchanged": true,
+      "frozenMutationRejected": true
+    },
+    {
+      "id": "05-prawn",
+      "exactSentSha256": "3e971dc8c45e2997bfe1055ea53615a3af053de48245ab77d8a49d51d3c25808",
+      "masterSha256": "5486ec1e8f3a017a3b17ea9abd0584acc949d224f88ea410a1bb199ec657904c",
+      "actualInputSha256": "43b9e3595cd5a1f29477f22561c5c02a81c64944f52a1ba9506ed1107fc2f214",
+      "frozenBlocksUnchanged": true,
+      "frozenMutationRejected": true
+    },
+    {
+      "id": "06-crab",
+      "exactSentSha256": "d508e91e2a04fd78f21e3cf4928b281343651ea28cd5891e125c8026f04b12eb",
+      "masterSha256": "874590859d6795c66f6f00a50ab5aabe615302d15afe8fe80319c18e57e3b399",
+      "actualInputSha256": "73e7cef15eb6d7de50c20054ee5a68b31621c0f3f3712b18e99e538f92ad80cc",
+      "frozenBlocksUnchanged": true,
+      "frozenMutationRejected": true
+    },
+    {
+      "id": "04-banana-slug-visible-mouth",
+      "exactSentSha256": "cf50513e59251e6a1aa632fce4393f1a09b230cad043a68a0613c81219e128da",
+      "masterSha256": "3a951f244d84b9f46087c9cb4071a98de5bfea68ad2c0945f8462de7fa14ba43",
+      "actualInputSha256": "19d78b8c5eb9ffeb3e90abf021b1e7c76abf31185b658900f9de0a0b8348dc04",
+      "frozenBlocksUnchanged": true,
+      "frozenMutationRejected": true
+    }
+  ],
+  "materialControls": "audits/C186_SPECIALIZED_REFERENCES_20261002/material-controls.json",
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

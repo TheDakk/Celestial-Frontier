@@ -1,0 +1,91 @@
+{
+  "name": "Bee",
+  "family": "insect",
+  "species": {
+    "name": "Bee",
+    "aspect": 2.2,
+    "headFrac": 0.24,
+    "eyes": "prominent",
+    "posture": "flying",
+    "mustRead": [
+      "furry thorax with banded amber-and-black abdomen",
+      "two pairs of clear veined wings",
+      "pollen basket on the hind leg"
+    ],
+    "note": "Read as a honeybee. Four wings, not two; the body is fuzzy, not smooth like a wasp's."
+  },
+  "genome": {
+    "seed": 1606725883,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 8,
+    "body": 5,
+    "loco": 13,
+    "trait": 9,
+    "size": 4,
+    "diet": 1,
+    "head": 5,
+    "limbs": 3,
+    "skin": 3,
+    "tail": 4,
+    "pattern": 3,
+    "eyes": 4,
+    "behavior": 11,
+    "habitat": 14,
+    "detail": 5,
+    "accent": 14,
+    "temper": 5,
+    "sense": 4,
+    "repro": 6,
+    "life": 2,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Bee"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Bee\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1606725883\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "index": 137,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

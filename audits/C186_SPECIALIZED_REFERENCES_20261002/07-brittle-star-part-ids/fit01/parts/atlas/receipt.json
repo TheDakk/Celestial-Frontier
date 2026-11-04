@@ -1,0 +1,103 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c186-specialized-brittle-star",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "9a32534f7cbcef752c8ecf01258e3645c61894882010732d65e32e81a13dfc15",
+    "pngSha256": "ed6d46a17aa7cac6203a69ec56c518b438f64b5449e81597d95b8c50f196142a"
+  },
+  "parts": [
+    {
+      "name": "arm0seg0.png",
+      "sha256": "aae3aeefdeb853e85c45e50c9500968393f686e4b058e92f9b47ca89b77038ba"
+    },
+    {
+      "name": "arm0seg1.png",
+      "sha256": "ee298cb4e7ae9cd5fefdf0dc4c8cc400825748322c6a954f761ef053854f8bc9"
+    },
+    {
+      "name": "arm0seg2.png",
+      "sha256": "4cceecd94d30198724c1d3794173bf92b7706dea05d3698e78fbfa25e4e54be8"
+    },
+    {
+      "name": "arm1seg0.png",
+      "sha256": "3f6c46a1f6865bc5692355b7c185ac4728e58abc7154762fb417588ed725ae7a"
+    },
+    {
+      "name": "arm1seg1.png",
+      "sha256": "7bdc8c2cf636b3a1e3f3e9540a39bf5d51a3bdb29a0fd8b7dd3ebd7de80febb6"
+    },
+    {
+      "name": "arm1seg2.png",
+      "sha256": "e9d821aacdf3e0c42c6be9ff34b2ab92bf8e658cceda539f6d08c3cc4afdc4f6"
+    },
+    {
+      "name": "arm2seg0.png",
+      "sha256": "3ca705a63b717ee4be6a3c80ea03ae84cd921c3c1743a8f0bcca4f4fad569314"
+    },
+    {
+      "name": "arm2seg1.png",
+      "sha256": "ee81669d11200b82fa3fcb45fe34af20aaa61621d1a0ef799fcf9b468b4c2c89"
+    },
+    {
+      "name": "arm2seg2.png",
+      "sha256": "9d34d88e2f270f6d9f05e66b6b90017891de6542040b5499f8efd0a346142343"
+    },
+    {
+      "name": "arm3seg0.png",
+      "sha256": "dd8d1e78015cc4b23f0a1f87abbeb6c9a19f22fbbebc35ab4aafdc82f35972d4"
+    },
+    {
+      "name": "arm3seg1.png",
+      "sha256": "e00fc210fc9dea2690aca328ff5c960a67a88f85315e7632874beba4bbcb9787"
+    },
+    {
+      "name": "arm3seg2.png",
+      "sha256": "db9d6bd981aef502767cea04288fc83a38ee3c66bf2387f7c5269b0d7ed885f2"
+    },
+    {
+      "name": "arm4seg0.png",
+      "sha256": "640253a7d22f666b467012efeabf465f850e51fab07a966e4d5e683b24fa2c15"
+    },
+    {
+      "name": "arm4seg1.png",
+      "sha256": "6c28d17025e11dd73ec0d1df894f83ec91c2e4c966300a0977a6a8ac1894b526"
+    },
+    {
+      "name": "arm4seg2.png",
+      "sha256": "d0d3a3b99f9a600fb154ac53f238ee27d5d327885c948ca849d460a601a45294"
+    },
+    {
+      "name": "bell.png",
+      "sha256": "72eedc65f356e2053a6058b3dfc40a34e762536b795d7de41c55efd7e9257842"
+    },
+    {
+      "name": "centre.png",
+      "sha256": "0b0458ff9558efa440b9a3660651f40b609db1e21893d712da6d50640e4f7b39"
+    },
+    {
+      "name": "root.png",
+      "sha256": "5cb5e2624e12477d3a545eccd5ffd867b14dc779110e350dedb37ac460e7e8ca"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.c192-instrument-preparation/v1",
+  "attempt": 1,
+  "status": "REFUSED_MODULE_RESOLUTION",
+  "cause": "Direct Node loading of review-rig.mjs did not resolve motion/index.ts's relative templates.js import to templates.ts. No rig was loaded and no candidate publication was executed.",
+  "correction": "Use installed Rolldown, as the unchanged static owner does, and retain imported source hashes plus the exact audit bundle. No product module or candidate source changes.",
+  "native": false
+}

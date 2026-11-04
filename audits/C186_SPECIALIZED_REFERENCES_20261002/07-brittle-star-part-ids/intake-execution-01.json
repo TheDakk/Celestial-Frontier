@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c186-audit-stage/v1",
+  "stage": "intake",
+  "id": "07-brittle-star-part-ids",
+  "command": [
+    "node",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/intake-retained.mjs",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids",
+    "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/fit01"
+  ],
+  "helperSha256": "858552c0e03f27fca8f1a33e4c6e70455684b74dfc4b11841128be04d93f6216",
+  "helperUnchanged": true,
+  "exitCode": 0,
+  "signal": null,
+  "log": "audits/C186_SPECIALIZED_REFERENCES_20261002/07-brittle-star-part-ids/intake-01.log",
+  "logSha256": "2a39fee81228d5f332b69caac9f422097311376d05544a8b84cb9de4e48aca6b",
+  "nativeRuns": 0
+}

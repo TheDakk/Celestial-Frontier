@@ -1,0 +1,89 @@
+{
+  "schema": "cf.c196-near-shin-verification/v1",
+  "status": "PASS",
+  "changedSourceRgbaChannels": 0,
+  "changedLandmarks": 0,
+  "changedPriorNonRootOwners": 0,
+  "rootToForeNearKneePixels": 128,
+  "sourcePixelBounds": [
+    852,
+    777,
+    863,
+    803
+  ],
+  "materialAndSolverAndMotionChanges": 0,
+  "oldNegativeStaticReportsPreserved": [
+    {
+      "id": "01-tortoise",
+      "redActions": 13
+    },
+    {
+      "id": "01b-tortoise-far-shin",
+      "redActions": 1
+    }
+  ],
+  "currentStatic": {
+    "actions": 19,
+    "successfulSamples": 2299,
+    "presentation": {
+      "id": "presentation",
+      "samples": 1492,
+      "attemptedSamples": 1492,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.2061482503227909,
+      "maxGapPx": 0.00008635465662807036,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    }
+  },
+  "actualRig": {
+    "samples": 26,
+    "exactFormerClawRefusalMs": 220.44444444444443,
+    "exactFormerClawRefusal": "PASS",
+    "partPositions": "byte-exact parity"
+  },
+  "mutationsRejected": [
+    "source RGBA",
+    "landmark drift",
+    "material drift",
+    "unintended owner"
+  ],
+  "sourceClosureFiles": 851,
+  "inputs": [
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/authoring.json",
+      "sha256": "2dd7eceb19646b145ae3403a7461058cef10a2bfb62575d481d63db8976dbe32"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/correction.json",
+      "sha256": "ad60ab7191dafc0106bfa7a43ae02cc9c72b2f9c2db94c7cf5d97fa8eed392dd"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/static-01.json",
+      "sha256": "77fd67e49353cc16bc3f0c5d217288a55e9a0c7eb7768762850f80fdaa2b9595"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/record.json",
+      "sha256": "5ae7be808a4d663a43f48f851f14f218fd613401a9c4c5fceaa8ee35fab582a5"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01/binding.json",
+      "sha256": "4d434d310c76478ed379c52931bf4ccff52ecefae32dfc0228eadf65e0898705"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/review-01/review.json",
+      "sha256": "278722362124b107bd3a579fb444a187ef9a99b1282c5c07e79a727a92ebc660"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01b-tortoise-far-shin/static-01.json",
+      "sha256": "0eb194ae8415ed96f8698b4928a2c446e7d192c2e1b9d71326789ef4c9411fc4"
+    },
+    {
+      "path": "audits/C196_TURTLES_HOLDS_20261003/01-tortoise/static-01.json",
+      "sha256": "8ac43204c3e17481dbab2a09257ff17bea27d8d39b3410709fd94946cffc59af"
+    }
+  ],
+  "native": false,
+  "qualityAccepted": false,
+  "limitsChanged": false
+}

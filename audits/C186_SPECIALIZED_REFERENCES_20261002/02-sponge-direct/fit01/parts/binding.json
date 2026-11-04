@@ -1,0 +1,102 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "11f3d9d703e76e09114515c9e102973abc8be19e1dd74520daad633866719b8f",
+  "atlasSha256": "04aa58bf352b1d700cb7ea295964f32af9cf596f83925a048ba59f906f8cef40",
+  "atlasSize": {
+    "width": 1489,
+    "height": 526
+  },
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 882,
+        "y": 156,
+        "width": 10,
+        "height": 11
+      },
+      "cutout": {
+        "x": 625,
+        "y": 980,
+        "width": 10,
+        "height": 11
+      }
+    },
+    {
+      "id": "aperture",
+      "joint": "aperture",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1198,
+        "y": 5,
+        "width": 286,
+        "height": 166
+      },
+      "cutout": {
+        "x": 494,
+        "y": 248,
+        "width": 286,
+        "height": 166
+      }
+    },
+    {
+      "id": "crown",
+      "joint": "crown",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 490,
+        "y": 5,
+        "width": 382,
+        "height": 244
+      },
+      "cutout": {
+        "x": 457,
+        "y": 235,
+        "width": 382,
+        "height": 244
+      }
+    },
+    {
+      "id": "base",
+      "joint": "base",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 882,
+        "y": 5,
+        "width": 306,
+        "height": 141
+      },
+      "cutout": {
+        "x": 490,
+        "y": 878,
+        "width": 306,
+        "height": 141
+      }
+    },
+    {
+      "id": "body",
+      "joint": "body",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 475,
+        "height": 516
+      },
+      "cutout": {
+        "x": 390,
+        "y": 393,
+        "width": 475,
+        "height": 516
+      }
+    }
+  ],
+  "bindingHash": "05fde26e8edafa9fdeabd018b9eba7bf365f33dbbea64ef99a44357c9b0104a1"
+}

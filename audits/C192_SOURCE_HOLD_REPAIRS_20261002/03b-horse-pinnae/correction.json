@@ -1,0 +1,35 @@
+{
+  "schema": "cf.c192-source-observed-correction/v1",
+  "id": "03b-horse-pinnae",
+  "source": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c114/13-horse/fallback-1/packet/master.png",
+  "sourceSha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41",
+  "priorAuthoring": "audits/C192_SOURCE_HOLD_REPAIRS_20261002/03-horse-front-chain/authoring.json",
+  "priorAuthoringSha256": "f575f17d63146cfd5fb669c54c5bfce1d2db8d87abb9c2b030d77388d971407b",
+  "changedJoints": [
+    "earNearRoot",
+    "earNearTip",
+    "earFarRoot",
+    "earFarTip"
+  ],
+  "changedParts": [
+    "ear-near-tip",
+    "ear-near-root",
+    "ear-far-tip",
+    "ear-far-root"
+  ],
+  "addedParts": [
+    "neck-observed-mane"
+  ],
+  "priorityChanges": [],
+  "findings": [
+    "Full-size original source shows the near ear at x944–971/y277–349. The inherited near-ear joint x906.9/y309.3 and its ownership were on mane, producing a detached mane strip in faint.",
+    "Both actual pinnae are observed separately and traced. Released mane paint belongs to the visible continuous neck/mane silhouette; no new paint or ear is invented.",
+    "This successor preserves all four independently corrected front-chain points/masks from03."
+  ],
+  "sourcePixelsChanged": 0,
+  "presenceChanged": false,
+  "limitsChanged": false,
+  "qualityAccepted": false,
+  "independentReferenceEligible": false,
+  "native": false
+}

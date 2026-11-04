@@ -1,0 +1,74 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "4f59cbd076bbdbfaed911e50304719e8da6856e9",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/master.png",
+      "sha256": "3a951f244d84b9f46087c9cb4071a98de5bfea68ad2c0945f8462de7fa14ba43"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/authoring.json",
+      "sha256": "243141dc0f5699c7d3447e17ffafc9091597dbdd11a18ccbd50015b67dad34c4"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/subject-source.json",
+      "sha256": "c0347d6f37f33ce12ae1b322602e0250c5b365f1be1501f997c5bc4ab601af57"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/presence.json",
+      "sha256": "25cc4880dd346fd18f00b7d1937a0268a7280f255a115dcda8509eb51d92df6a"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "4e2890514b9364b8469933dd5a9209c9086c816873bc870e9d03cde484043c3d",
+  "bindingHash": "3510a69c83211e6904f8471dbcc03d1566434adbd67754e2c535d4144708116d",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "eyeFar",
+    "eyeNear",
+    "mouth",
+    "head",
+    "foot0",
+    "foot1",
+    "foot2",
+    "foot3"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/master.png",
+      "sha256": "3a951f244d84b9f46087c9cb4071a98de5bfea68ad2c0945f8462de7fa14ba43",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/authoring.json",
+      "sha256": "243141dc0f5699c7d3447e17ffafc9091597dbdd11a18ccbd50015b67dad34c4",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/subject-source.json",
+      "sha256": "c0347d6f37f33ce12ae1b322602e0250c5b365f1be1501f997c5bc4ab601af57",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C186_SPECIALIZED_REFERENCES_20261002/04-banana-slug-visible-mouth/presence.json",
+      "sha256": "25cc4880dd346fd18f00b7d1937a0268a7280f255a115dcda8509eb51d92df6a",
+      "unchanged": true
+    }
+  ]
+}
