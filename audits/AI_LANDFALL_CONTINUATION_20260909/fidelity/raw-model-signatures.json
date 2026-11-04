@@ -1,0 +1,63 @@
+{
+  "scope": "Read-only graph signatures; no weights loaded or inference",
+  "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+  "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+  "bytes": 4991601,
+  "sha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+  "inputs": [
+    {
+      "name": "hidden_states",
+      "dataType": 10,
+      "dims": [
+        "batch",
+        "image_sequence",
+        128
+      ]
+    },
+    {
+      "name": "encoder_hidden_states",
+      "dataType": 10,
+      "dims": [
+        "batch",
+        "text_sequence",
+        7680
+      ]
+    },
+    {
+      "name": "timestep",
+      "dataType": 10,
+      "dims": [
+        "batch"
+      ]
+    },
+    {
+      "name": "img_ids",
+      "dataType": 7,
+      "dims": [
+        "batch",
+        "image_sequence",
+        4
+      ]
+    },
+    {
+      "name": "txt_ids",
+      "dataType": 7,
+      "dims": [
+        "batch",
+        "text_sequence",
+        4
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "noise_pred",
+      "dataType": 10,
+      "dims": [
+        1,
+        "image_sequence",
+        128
+      ]
+    }
+  ]
+}

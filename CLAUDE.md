@@ -1,5 +1,22 @@
 # CLAUDE.md — Celestial Frontier
 
+
+## Current operating model — adopted 2026-09-25
+
+`PARALLEL_GIT_PROTOCOL.md`'s September25 override is current: repo-level
+`git-ssh-sign-cf` / `cf_agents_signing.pub` uses the macOS keychain; origin is
+HTTPS via gh. Never commit unsigned; the completed one-time Codex proof is G.
+Read the other lane's absolute read-only mailbox at run start AND batch end;
+write replies/status/evidence only to this lane's mailbox. No Dakk relay or
+waiting for remote pushes: signed commits are visible in the shared Git store.
+Standing authority permits hand-reconciled --no-ff lane merges and own-branch
+pushes when the required local battery is green. PR/label/hosted/develop/main/
+release/deploy gates remain explicit. Batch questions and use the mailbox for
+cross-lane requests. The later signed D1/D5/D6 decisions are recorded in Claude's
+DECISIONS.md; no label while any required gate is red and no default battle2
+before the iPhone probe plus v2 certificate. This override supersedes older
+1Password/SSH-transport, push-wait and Dakk-as-relay wording below.
+
 **GitHub Actions budget gate:** read `GITHUB_ACTIONS_BUDGET.md` before any
 GitHub write. Its `FROZEN` mode overrides generic push/merge/dispatch/publish
 instructions in this file: work and commit locally, but do not push, label,
@@ -8,6 +25,40 @@ hosted attempt. The repository is public as of 2026-08-20, so standard hosted
 runners are free while it stays public; `FROZEN` remains an efficiency/intent
 gate, and the 3,000 cap applies fail-closed if visibility changes. Never infer a
 monthly reset or visibility change.
+
+**Sprint mode — no per-step stops (Dakk, 2026-09-23: "stop, generate something, stop… fix it completely").**
+Both agents work in LARGE batches: carry a multi-part request or program to completion in one run; decide routine calls
+(tuning, order, tooling shape, look options Dakk asked for suggestions on) by building the recommended option, stating it
+in one line and keeping it reversible; batch every question into the end-of-run report; a blocked item is written down
+and the run continues with everything else. Stop only at a real gate: push / PR / label / hosted attempt / merge /
+release / deploy (Dakk's word, `GITHUB_ACTIONS_BUDGET.md`), a sealed gate or measurement that would have to be weakened
+or re-bound, a signing refusal one retry does not clear, or the work being done. This overrides the older "ask Dakk
+before a materially larger loop" line for work inside an authorized program.
+
+**Superpowers plugin (obra/superpowers, added 2026-10-11) — a skill library used INSIDE these rules, never instead of them.**
+This file wins wherever a Superpowers skill disagrees. (1) Inside an authorized program or Codex-watch run, sprint mode holds:
+use brainstorming / writing-plans approval stops only for a NEW feature Dakk wants to shape, never between phases of a running
+program. (2) No new git worktrees from its worktree skill: Claude works in the single `anthropic/mac` worktree, never touches
+Codex's, and removes any agent worktree it created after merge (`--force --force`). (3) Subagent-driven development is allowed
+for code work, but no native/heavy agent runs while a Codex reservation is open (it ends only at its TERMINAL row). (4) Its
+frequent commits still follow the commit rules: signed only, never `--no-verify`, home-prefix → `~` scrub only at a
+batch's final commit, mode-120000 symlink check before every commit, owner only as Dakk/TheDakk, no push/PR/label/hosted run
+outside `GITHUB_ACTIONS_BUDGET.md`. (5) TDD and systematic-debugging are encouraged and must obey `PROCESS_LAWS.md`: assert the
+outcome, negative-control every new check in both directions, suspect the instrument first; never weaken a test or re-bind a
+sealed gate to go green. (6) Visual acceptance remains full-size still review, not a passing skill checklist.
+
+**Disk hygiene — clean up as we develop (Dakk, 2026-10-17).** A 41 GiB scratch clone left behind after the C272 epoch dropped free
+space to 37 GiB and stalled a whole Codex run below its 42 GiB inference start. Run `zsh tools/disk-report.sh` (read-only) at the start and
+end of every batch. Each lane deletes its OWN regenerable scratch at batch end: temp clones, scratch builds, superseded intermediates
+that a committed tool regenerates, and merged agent worktrees. Never delete an authentic master, unique generation output, pinned evidence
+or the other lane's files; ask through the mailbox instead. Target >= 60 GiB free at batch end. A run that would leave less frees its
+own scratch first or reports it.
+
+**Lane mailboxes — no relay through Dakk (2026-09-25, `audits/OPERATING_MODEL_20260925/README.md`).** Each lane writes asks for the other only
+in its own worktree (`audits/MAILBOX/TO_CODEX.md` in `anthropic/mac`, `audits/MAILBOX/TO_CLAUDE.md` in `openai/mac`) and READS the other
+lane's mailbox by absolute path at the start of every run and at every batch end. The worktrees share one object store, so each lane
+merges the other's SIGNED commits straight from `HEAD..openai/mac` / `HEAD..anthropic/mac` without waiting for a push. Dakk's open
+questions live in `anthropic/mac` `audits/MAILBOX/DECISIONS.md`, each with a recommended default.
 
 **Agent token conservation:** OpenAI/Codex and Anthropic/Claude Code both use
 concise updates, relevant-only reads, batched checks, and only bounded delegation.

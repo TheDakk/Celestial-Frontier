@@ -1,0 +1,11 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+tests/painted-earth-mount-ownership.test.ts(240,51): error TS2345: Argument of type 'Promise<{ width: number; height: number; close: Mock<Constructable | Procedure>; }>' is not assignable to parameter of type 'Promise<{ width: number; height: number; close: Mock<Procedure>; }>'.
+  Type '{ width: number; height: number; close: Mock<Constructable | Procedure>; }' is not assignable to type '{ width: number; height: number; close: Mock<Procedure>; }'.
+    Types of property 'close' are incompatible.
+      Type 'Mock<Constructable | Procedure>' is not assignable to type 'Mock<Procedure>'.
+        Type 'MockInstance<Constructable | Procedure> & (new (...args: any[]) => any) & {}' is not assignable to type 'Mock<Procedure>'.
+          Type 'MockInstance<Constructable | Procedure> & (new (...args: any[]) => any) & {}' is not assignable to type '{ (...args: any[]): any; new (...args: any[]): any; }'.
+            Type 'MockInstance<Constructable | Procedure> & (new (...args: any[]) => any) & {}' provides no match for the signature '(...args: any[]): any'.

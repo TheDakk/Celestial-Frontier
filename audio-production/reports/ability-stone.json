@@ -1,0 +1,450 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "ability.stone.cast.1",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 0.8774,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.777354
+        }
+      ],
+      "synthNote": 64,
+      "requirements": [
+        "ability.stone.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/ability-stone/ability.stone.cast.1.wav",
+      "masterSha256": "218800c3dbee50b40b6659714710386d85129f10c432040bf51ab15a9babdd2d",
+      "opus": "masters/ability-stone/ability.stone.cast.1.opus",
+      "opusSha256": "c9bd31daaed968c36d17311613708dea36902d020013c2255ccb9838fdc2c523",
+      "previewSha256": "59a559e884bd8aae8b9c184526fee60a0d0b32594c1e2b1322ca3937eb68c85f",
+      "previewBytes": 84344,
+      "previewUrl": "/__cf-audio-review/ability.stone.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.8,
+      "opusDbTP": -4.9
+    },
+    {
+      "id": "ability.stone.cast.2",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 0.4834,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/66f1cef820f66d86-stones_04.ogg",
+          "sha256": "66f1cef820f66d86414d481b37a48a7b7ea11f4a5d7358372ebcfb506af0e652",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.383396
+        }
+      ],
+      "synthNote": 65,
+      "requirements": [
+        "ability.stone.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1.8774,
+      "master": "masters/ability-stone/ability.stone.cast.2.wav",
+      "masterSha256": "1d292cf9505b11cc9f977d85f7c1306ac60bc079a09ec2876c81d541e7060c9d",
+      "opus": "masters/ability-stone/ability.stone.cast.2.opus",
+      "opusSha256": "901593c5f0a34b74fdd5ea4e84dec2c09cb2a8c3f90e341be39988c9a7a672b2",
+      "previewSha256": "7344c74da6f87b3ff366e3bec7278ed7ddccbc430dbed9192e276422e5b5f23e",
+      "previewBytes": 46520,
+      "previewUrl": "/__cf-audio-review/ability.stone.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.0,
+      "opusDbTP": -5.1
+    },
+    {
+      "id": "ability.stone.cast.3",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 1.2995,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/b86d143d7ef4974c-stones_03.ogg",
+          "sha256": "b86d143d7ef4974c2b97fda9e5d1861482646eec754e15935eeb3680ea0d71da",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.199521
+        }
+      ],
+      "synthNote": 66,
+      "requirements": [
+        "ability.stone.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 3.3608000000000002,
+      "master": "masters/ability-stone/ability.stone.cast.3.wav",
+      "masterSha256": "14e499d869ba68de48a4c77541f28a00f34c851e806096a6d551126923b402b9",
+      "opus": "masters/ability-stone/ability.stone.cast.3.opus",
+      "opusSha256": "e93adabfccd073ff0313460441355a81fa239dcce5dff57fc36157708cca0d6e",
+      "previewSha256": "0a76fcd7d2822ffc689d1df448b6332c2fa42a4a07362dd08edb7a965d9b4d01",
+      "previewBytes": 124866,
+      "previewUrl": "/__cf-audio-review/ability.stone.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.9,
+      "opusDbTP": -5.0
+    },
+    {
+      "id": "ability.stone.impact.1",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 0.8774,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.777354
+        }
+      ],
+      "synthNote": 52,
+      "requirements": [
+        "ability.stone.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 5.6603,
+      "master": "masters/ability-stone/ability.stone.impact.1.wav",
+      "masterSha256": "e654b8b78df0d2e89484397697f7abeeab03496885780b78669dec9e9f209670",
+      "opus": "masters/ability-stone/ability.stone.impact.1.opus",
+      "opusSha256": "cb38a5b8116155a99fa4b6629ea1cdb1ce984b8d079eab19dc9021b1ff88e04c",
+      "previewSha256": "6df511afb4a22fb9e4906b26efa9723d506942f2d151e5069640c9174aeb4076",
+      "previewBytes": 84344,
+      "previewUrl": "/__cf-audio-review/ability.stone.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.0,
+      "opusDbTP": -5.0
+    },
+    {
+      "id": "ability.stone.impact.2",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 0.4834,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/66f1cef820f66d86-stones_04.ogg",
+          "sha256": "66f1cef820f66d86414d481b37a48a7b7ea11f4a5d7358372ebcfb506af0e652",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.383396
+        }
+      ],
+      "synthNote": 53,
+      "requirements": [
+        "ability.stone.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 7.5377,
+      "master": "masters/ability-stone/ability.stone.impact.2.wav",
+      "masterSha256": "2afddfad4b3d22183609e08e62faa42a6e2fbd6d3624433b11f09d553b2a04e6",
+      "opus": "masters/ability-stone/ability.stone.impact.2.opus",
+      "opusSha256": "1feec57eb87f4b18bbc70fe79464a1b68c497ba18b0e238f67661b72d898d0ec",
+      "previewSha256": "8b9aabdaf7424e8ba041335423bc78e1dbd3c392524e8bc090633f94bd48bd1b",
+      "previewBytes": 46520,
+      "previewUrl": "/__cf-audio-review/ability.stone.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.9,
+      "opusDbTP": -5.0
+    },
+    {
+      "id": "ability.stone.impact.3",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 1.2995,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/b86d143d7ef4974c-stones_03.ogg",
+          "sha256": "b86d143d7ef4974c2b97fda9e5d1861482646eec754e15935eeb3680ea0d71da",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.199521
+        }
+      ],
+      "synthNote": 54,
+      "requirements": [
+        "ability.stone.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 9.0211,
+      "master": "masters/ability-stone/ability.stone.impact.3.wav",
+      "masterSha256": "708b27a18fd2d13881abd7cb2b3c722e103c78c3355df50a77934a6c770cec03",
+      "opus": "masters/ability-stone/ability.stone.impact.3.opus",
+      "opusSha256": "e4375bd61d732dd74229168af2f5b5d00a83539ac98c07987602c6c59badb142",
+      "previewSha256": "8acb755c0df47ac69f83fc35660332d4bdb37de617a8a05cb9e35772d5447bba",
+      "previewBytes": 124866,
+      "previewUrl": "/__cf-audio-review/ability.stone.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.8,
+      "opusDbTP": -4.9
+    },
+    {
+      "id": "ability.stone.sustain.1",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 0.7774,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.777354
+        }
+      ],
+      "synthNote": 52,
+      "requirements": [
+        "ability.stone.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 11.3206,
+      "master": "masters/ability-stone/ability.stone.sustain.1.wav",
+      "masterSha256": "ab925e3652b9f140659431055cc252ad074477199614a1897e7b9540780487fc",
+      "opus": "masters/ability-stone/ability.stone.sustain.1.opus",
+      "opusSha256": "d26f35532715a7679252c2562328893b66e5bde32a81d9dc801faa920b9088b7",
+      "previewSha256": "ab7d0e71c362bedff49abed64ee28aa29d3dcd3adc81ef72d4383e13d98965b9",
+      "previewBytes": 74744,
+      "previewUrl": "/__cf-audio-review/ability.stone.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.0,
+      "opusDbTP": -5.0
+    },
+    {
+      "id": "ability.stone.sustain.2",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 0.3834,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/66f1cef820f66d86-stones_04.ogg",
+          "sha256": "66f1cef820f66d86414d481b37a48a7b7ea11f4a5d7358372ebcfb506af0e652",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.383396
+        }
+      ],
+      "synthNote": 53,
+      "requirements": [
+        "ability.stone.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 13.098,
+      "master": "masters/ability-stone/ability.stone.sustain.2.wav",
+      "masterSha256": "f854250a01592be81b7c90f8ec3c79b4b3e79179825f3c9c32289ea6a74c0a56",
+      "opus": "masters/ability-stone/ability.stone.sustain.2.opus",
+      "opusSha256": "7a226ffdc8f62cdfd7e38adcc136944ddb0fb42516723f05f3bbdf8576566d1d",
+      "previewSha256": "aa1fa6d82cd5ffd1f7275598f78ce87c4d3a5869ab4a306d9190296fffc23c9b",
+      "previewBytes": 36920,
+      "previewUrl": "/__cf-audio-review/ability.stone.sustain.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.9,
+      "opusDbTP": -5.0
+    },
+    {
+      "id": "ability.stone.sustain.3",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 1.1995,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/b86d143d7ef4974c-stones_03.ogg",
+          "sha256": "b86d143d7ef4974c2b97fda9e5d1861482646eec754e15935eeb3680ea0d71da",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.199521
+        }
+      ],
+      "synthNote": 54,
+      "requirements": [
+        "ability.stone.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 14.4814,
+      "master": "masters/ability-stone/ability.stone.sustain.3.wav",
+      "masterSha256": "9d67a6e37882e1c891667f9930b36d7fd0acc774675ddd7150869a92e9ec36cc",
+      "opus": "masters/ability-stone/ability.stone.sustain.3.opus",
+      "opusSha256": "f2d08db035d6d7b62c07372e211447496e30993d794e65eea98710cabc509751",
+      "previewSha256": "9b2dcbc332979cce31d70d0aff51b2b9514fe05bf216d0e0ca6119fb6b42f2ad",
+      "previewBytes": 115266,
+      "previewUrl": "/__cf-audio-review/ability.stone.sustain.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.8,
+      "opusDbTP": -4.9
+    },
+    {
+      "id": "ability.stone.release.1",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 0.8774,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.777354
+        }
+      ],
+      "synthNote": 52,
+      "requirements": [
+        "ability.stone.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 16.6809,
+      "master": "masters/ability-stone/ability.stone.release.1.wav",
+      "masterSha256": "2a92eb36fd5aa1e506d6d615c5bf259852b1f1d4e6b792f8e1f8383153f65ee8",
+      "opus": "masters/ability-stone/ability.stone.release.1.opus",
+      "opusSha256": "17350761af9cd8b1b953701c9cb394b14cc845790d42daaf061d8c9c2e6f6769",
+      "previewSha256": "e6572c1f0f649874faa3b9c9ca75573bc3d9ab3712302a72233014483e859c3d",
+      "previewBytes": 84344,
+      "previewUrl": "/__cf-audio-review/ability.stone.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.0,
+      "opusDbTP": -5.1
+    },
+    {
+      "id": "ability.stone.release.2",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 0.4834,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/66f1cef820f66d86-stones_04.ogg",
+          "sha256": "66f1cef820f66d86414d481b37a48a7b7ea11f4a5d7358372ebcfb506af0e652",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.383396
+        }
+      ],
+      "synthNote": 53,
+      "requirements": [
+        "ability.stone.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 18.558300000000003,
+      "master": "masters/ability-stone/ability.stone.release.2.wav",
+      "masterSha256": "db6e10a10e3209b6fe7d74d04fd8aad09b4d95a30cbd11a1cccc31d89a56cd21",
+      "opus": "masters/ability-stone/ability.stone.release.2.opus",
+      "opusSha256": "0e80a022b51277c8c9c3b73ce8ffa3ddafd6a1f3c1476a94312a569c22e961e9",
+      "previewSha256": "1b568992108d0dcd03ec23b1d1fba410b3285bb013eda6ec416323636fcf81af",
+      "previewBytes": 46520,
+      "previewUrl": "/__cf-audio-review/ability.stone.release.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.9,
+      "opusDbTP": -5.0
+    },
+    {
+      "id": "ability.stone.release.3",
+      "group": "ability-stone",
+      "kind": "designed",
+      "duration": 1.2995,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/b86d143d7ef4974c-stones_03.ogg",
+          "sha256": "b86d143d7ef4974c2b97fda9e5d1861482646eec754e15935eeb3680ea0d71da",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.199521
+        }
+      ],
+      "synthNote": 54,
+      "requirements": [
+        "ability.stone.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 20.041700000000002,
+      "master": "masters/ability-stone/ability.stone.release.3.wav",
+      "masterSha256": "cf134ad3eed1e8e69ee4afc14d1e217df2d637ae3d24767443af4e92696d6eb7",
+      "opus": "masters/ability-stone/ability.stone.release.3.opus",
+      "opusSha256": "3019f6d9f351d8d27675775b035a7cf254bd6a31fbe079ae5c3218c1421187fc",
+      "previewSha256": "30d370c3bcc6115d9f4be4ce5b4add403139d1e789f95bac19e353c353096725",
+      "previewBytes": 124866,
+      "previewUrl": "/__cf-audio-review/ability.stone.release.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.8,
+      "opusDbTP": -4.9
+    }
+  ],
+  "listeningAccepted": false
+}

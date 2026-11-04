@@ -27,6 +27,7 @@
 *.gif   binary
 *.ico   binary
 *.webp  binary
+*.rgba  binary
 *.gz    binary
 *.zip   binary
 *.woff  binary
@@ -36,3 +37,28 @@
 *.mp3   binary
 *.wav   binary
 *.ogg   binary
+
+# Preserve the adopted external prompt byte-for-byte, including its original CRLF.
+audits/PAINTED_SPACE_PIPELINE_20260908/USER_PROMPT.md binary
+
+# Retain the model publisher's original CRLF as exact source evidence.
+audits/LOCAL_AV_AI_CONTINUATION_20260909/model-source/browser-quant-readme.md binary
+
+# Preserve the frozen C270 scope CSV bytes used by the signed hash manifest.
+audits/C270_CODEX_20261017/w4-scope-audit/targets.csv binary
+
+# Preserve exact frozen all170 ledger CSV hashes.
+audits/C274_ALL170_20261017/w4-ledger/snapshot-*/targets.csv binary
+audits/C274_ALL170_20261017/w1-references/species.csv binary
+audits/C274_ALL170_20261017/w4-final/targets.csv binary
+
+# Preserve the immutable C275 ledger CSV bytes selected by its signed freeze.
+audits/C275_CODEX_20261017/w1-source/final170/final-02/targets.csv binary
+
+# Preserve the exact frozen C279 ledger TSV hashes selected by C440.
+audits/C279_CODEX_20261018/w2-motion/aggregate170-draft01/dispositions.tsv binary
+audits/C279_CODEX_20261018/w2-motion/aggregate170-draft01/effective-dispositions.tsv binary
+audits/C279_CODEX_20261018/w2-motion/aggregate170-final02/dispositions.tsv binary
+
+# Preserve exact frozen C465 routing TSV bytes selected by the source authority.
+audits/C465_CODEX_20261018/w3-source/routes156.tsv binary

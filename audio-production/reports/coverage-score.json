@@ -1,0 +1,4605 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v3.music.menu",
+      "group": "coverage-score",
+      "kind": "synthetic_fictional",
+      "duration": 24.0,
+      "channels": 2,
+      "layers": [],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "score-bass",
+          "start": 0.0,
+          "duration": 2.0999999999999996,
+          "note": 36,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 59,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 0.0,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.5,
+          "duration": 0.44999999999999996,
+          "note": 64,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 0.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 3.0,
+          "duration": 2.0999999999999996,
+          "note": 31,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 47,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 50,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 54,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 3.0,
+          "duration": 0.44999999999999996,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 4.5,
+          "duration": 0.44999999999999996,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 3.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 6.0,
+          "duration": 2.0999999999999996,
+          "note": 33,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 49,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 56,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 6.0,
+          "duration": 0.44999999999999996,
+          "note": 64,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.5,
+          "duration": 0.44999999999999996,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 6.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 9.0,
+          "duration": 2.0999999999999996,
+          "note": 29,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 9.0,
+          "duration": 0.44999999999999996,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 10.5,
+          "duration": 0.44999999999999996,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 9.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 12.0,
+          "duration": 2.0999999999999996,
+          "note": 36,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 59,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 12.0,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.5,
+          "duration": 0.44999999999999996,
+          "note": 64,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 12.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 15.0,
+          "duration": 2.0999999999999996,
+          "note": 31,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 47,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 50,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 54,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 15.0,
+          "duration": 0.44999999999999996,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 16.5,
+          "duration": 0.44999999999999996,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 15.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 18.0,
+          "duration": 2.0999999999999996,
+          "note": 33,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 49,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 56,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 18.0,
+          "duration": 0.44999999999999996,
+          "note": 64,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 19.5,
+          "duration": 0.44999999999999996,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 18.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 21.0,
+          "duration": 2.0999999999999996,
+          "note": 29,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 21.0,
+          "duration": 0.44999999999999996,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 22.5,
+          "duration": 0.44999999999999996,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 21.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        }
+      ],
+      "requirements": [
+        "music.menu"
+      ],
+      "recipeVersion": 3,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "notes": "Original four-track arrangement. Bass, harmony, melody and synthesized rhythm pulse; eight synchronized bars. Listening and loop acceptance pending.",
+      "music": {
+        "beatMs": 750.0,
+        "bars": 8,
+        "beatsPerBar": 4,
+        "parts": [
+          "score-bass",
+          "score-harmony",
+          "score-melody",
+          "score-rhythm"
+        ]
+      },
+      "start": 0,
+      "master": "masters/coverage-score/v3.music.menu.wav",
+      "masterSha256": "951ebf284c97419159fd56866d6844d2f25cf5d4ac48915de9242a81f4751bf4",
+      "opus": "masters/coverage-score/v3.music.menu.opus",
+      "opusSha256": "1ebcabd19fef5aa92c0b9d857cd461262bfe9323a644755fc68f73b9eb7d30f6",
+      "previewSha256": "49de197a04b2a5ec5bdb3d3f6b82403553c44128170e8bd3568d7dd4b9453ef6",
+      "previewBytes": 4608114,
+      "previewUrl": "/__cf-audio-review/v3.music.menu.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -24.4,
+      "opusDbTP": -24.2
+    },
+    {
+      "id": "v3.music.calm",
+      "group": "coverage-score",
+      "kind": "synthetic_fictional",
+      "duration": 24.0,
+      "channels": 2,
+      "layers": [],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "score-bass",
+          "start": 0.0,
+          "duration": 2.0999999999999996,
+          "note": 33,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 0.0,
+          "duration": 0.44999999999999996,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.5,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 0.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 3.0,
+          "duration": 2.0999999999999996,
+          "note": 29,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 44,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 51,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 3.0,
+          "duration": 0.44999999999999996,
+          "note": 56,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 4.5,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 3.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 6.0,
+          "duration": 2.0999999999999996,
+          "note": 36,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 51,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 58,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 6.0,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.5,
+          "duration": 0.44999999999999996,
+          "note": 70,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 6.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 9.0,
+          "duration": 2.0999999999999996,
+          "note": 31,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 46,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 50,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 53,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 9.0,
+          "duration": 0.44999999999999996,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 10.5,
+          "duration": 0.44999999999999996,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 9.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 12.0,
+          "duration": 2.0999999999999996,
+          "note": 33,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 12.0,
+          "duration": 0.44999999999999996,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.5,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 12.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 15.0,
+          "duration": 2.0999999999999996,
+          "note": 29,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 44,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 51,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 15.0,
+          "duration": 0.44999999999999996,
+          "note": 56,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 16.5,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 15.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 18.0,
+          "duration": 2.0999999999999996,
+          "note": 36,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 51,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 58,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 18.0,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 19.5,
+          "duration": 0.44999999999999996,
+          "note": 70,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 18.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 21.0,
+          "duration": 2.0999999999999996,
+          "note": 31,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 46,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 50,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 53,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 21.0,
+          "duration": 0.44999999999999996,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 22.5,
+          "duration": 0.44999999999999996,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 21.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        }
+      ],
+      "requirements": [
+        "music.calm"
+      ],
+      "recipeVersion": 3,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "notes": "Original four-track arrangement. Bass, harmony, melody and synthesized rhythm pulse; eight synchronized bars. Listening and loop acceptance pending.",
+      "music": {
+        "beatMs": 750.0,
+        "bars": 8,
+        "beatsPerBar": 4,
+        "parts": [
+          "score-bass",
+          "score-harmony",
+          "score-melody",
+          "score-rhythm"
+        ]
+      },
+      "start": 25.0,
+      "master": "masters/coverage-score/v3.music.calm.wav",
+      "masterSha256": "476b888980c90facb1a77667041bc545fa94b0f610a4db44c905132f26c2d043",
+      "opus": "masters/coverage-score/v3.music.calm.opus",
+      "opusSha256": "fd4b2379cd976c0afbc2deefe99635b05b12e922ee1463d49f34f6b4b3f45d24",
+      "previewSha256": "820bd175a6a394219223c8135f323b8509abc7f750e6fbc2195cf95cb42bc7a7",
+      "previewBytes": 4608114,
+      "previewUrl": "/__cf-audio-review/v3.music.calm.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -24.7,
+      "opusDbTP": -24.5
+    },
+    {
+      "id": "v3.music.wonder",
+      "group": "coverage-score",
+      "kind": "synthetic_fictional",
+      "duration": 24.0,
+      "channels": 2,
+      "layers": [],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "score-bass",
+          "start": 0.0,
+          "duration": 2.0999999999999996,
+          "note": 36,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 59,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 0.0,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 0.75,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.5,
+          "duration": 0.44999999999999996,
+          "note": 71,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 2.25,
+          "duration": 0.44999999999999996,
+          "note": 74,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 0.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 3.0,
+          "duration": 2.0999999999999996,
+          "note": 38,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 50,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 54,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 57,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 61,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 3.0,
+          "duration": 0.44999999999999996,
+          "note": 69,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 3.75,
+          "duration": 0.44999999999999996,
+          "note": 73,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 4.5,
+          "duration": 0.44999999999999996,
+          "note": 76,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 5.25,
+          "duration": 0.44999999999999996,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 3.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 6.0,
+          "duration": 2.0999999999999996,
+          "note": 41,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 53,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 57,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 60,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 64,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 6.0,
+          "duration": 0.44999999999999996,
+          "note": 76,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 6.75,
+          "duration": 0.44999999999999996,
+          "note": 79,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.5,
+          "duration": 0.44999999999999996,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 8.25,
+          "duration": 0.44999999999999996,
+          "note": 72,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 6.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 9.0,
+          "duration": 2.0999999999999996,
+          "note": 43,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 59,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 62,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 66,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 9.0,
+          "duration": 0.44999999999999996,
+          "note": 81,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 9.75,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 10.5,
+          "duration": 0.44999999999999996,
+          "note": 74,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 11.25,
+          "duration": 0.44999999999999996,
+          "note": 78,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 9.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 12.0,
+          "duration": 2.0999999999999996,
+          "note": 36,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 59,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 12.0,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 12.75,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.5,
+          "duration": 0.44999999999999996,
+          "note": 71,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 14.25,
+          "duration": 0.44999999999999996,
+          "note": 74,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 12.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 15.0,
+          "duration": 2.0999999999999996,
+          "note": 38,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 50,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 54,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 57,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 61,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 15.0,
+          "duration": 0.44999999999999996,
+          "note": 69,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 15.75,
+          "duration": 0.44999999999999996,
+          "note": 73,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 16.5,
+          "duration": 0.44999999999999996,
+          "note": 76,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 17.25,
+          "duration": 0.44999999999999996,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 15.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 18.0,
+          "duration": 2.0999999999999996,
+          "note": 41,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 53,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 57,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 60,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 64,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 18.0,
+          "duration": 0.44999999999999996,
+          "note": 76,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 18.75,
+          "duration": 0.44999999999999996,
+          "note": 79,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 19.5,
+          "duration": 0.44999999999999996,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 20.25,
+          "duration": 0.44999999999999996,
+          "note": 72,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 18.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 21.0,
+          "duration": 2.0999999999999996,
+          "note": 43,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 59,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 62,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 66,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 21.0,
+          "duration": 0.44999999999999996,
+          "note": 81,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 21.75,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 22.5,
+          "duration": 0.44999999999999996,
+          "note": 74,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 23.25,
+          "duration": 0.44999999999999996,
+          "note": 78,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 21.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        }
+      ],
+      "requirements": [
+        "music.wonder"
+      ],
+      "recipeVersion": 3,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "notes": "Original four-track arrangement. Bass, harmony, melody and synthesized rhythm pulse; eight synchronized bars. Listening and loop acceptance pending.",
+      "music": {
+        "beatMs": 750.0,
+        "bars": 8,
+        "beatsPerBar": 4,
+        "parts": [
+          "score-bass",
+          "score-harmony",
+          "score-melody",
+          "score-rhythm"
+        ]
+      },
+      "start": 50.0,
+      "master": "masters/coverage-score/v3.music.wonder.wav",
+      "masterSha256": "f76fe25ab80d3739d56461cc9c5dfd86ecff23d52a08715529110c99936a09b0",
+      "opus": "masters/coverage-score/v3.music.wonder.opus",
+      "opusSha256": "043bb62669225212f07d8f80673ad6d840e444cca152d25eea5d3556f707f01b",
+      "previewSha256": "5a9fc7c3f64d47ced588b7bc31ba35329a8d38c742247fb0436d06b479b6651d",
+      "previewBytes": 4608114,
+      "previewUrl": "/__cf-audio-review/v3.music.wonder.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -24.4,
+      "opusDbTP": -24.2
+    },
+    {
+      "id": "v3.music.tension",
+      "group": "coverage-score",
+      "kind": "synthetic_fictional",
+      "duration": 24.0,
+      "channels": 2,
+      "layers": [],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "score-bass",
+          "start": 0.0,
+          "duration": 2.0999999999999996,
+          "note": 28,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 40,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 47,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 0.0,
+          "duration": 0.44999999999999996,
+          "note": 52,
+          "gain": 0.32
+        },
+        {
+          "track": "score-melody",
+          "start": 1.5,
+          "duration": 0.44999999999999996,
+          "note": 53,
+          "gain": 0.32
+        },
+        {
+          "track": "score-rhythm",
+          "start": 0.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 1.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 3.0,
+          "duration": 2.0999999999999996,
+          "note": 29,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 42,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 3.0,
+          "duration": 0.44999999999999996,
+          "note": 54,
+          "gain": 0.32
+        },
+        {
+          "track": "score-melody",
+          "start": 4.5,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.32
+        },
+        {
+          "track": "score-rhythm",
+          "start": 3.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 4.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 6.0,
+          "duration": 2.0999999999999996,
+          "note": 28,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 40,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 47,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 6.0,
+          "duration": 0.44999999999999996,
+          "note": 59,
+          "gain": 0.32
+        },
+        {
+          "track": "score-melody",
+          "start": 7.5,
+          "duration": 0.44999999999999996,
+          "note": 53,
+          "gain": 0.32
+        },
+        {
+          "track": "score-rhythm",
+          "start": 6.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 7.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 9.0,
+          "duration": 2.0999999999999996,
+          "note": 26,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 38,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 39,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 9.0,
+          "duration": 0.44999999999999996,
+          "note": 51,
+          "gain": 0.32
+        },
+        {
+          "track": "score-melody",
+          "start": 10.5,
+          "duration": 0.44999999999999996,
+          "note": 50,
+          "gain": 0.32
+        },
+        {
+          "track": "score-rhythm",
+          "start": 9.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 10.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 12.0,
+          "duration": 2.0999999999999996,
+          "note": 28,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 40,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 47,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 12.0,
+          "duration": 0.44999999999999996,
+          "note": 52,
+          "gain": 0.32
+        },
+        {
+          "track": "score-melody",
+          "start": 13.5,
+          "duration": 0.44999999999999996,
+          "note": 53,
+          "gain": 0.32
+        },
+        {
+          "track": "score-rhythm",
+          "start": 12.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 13.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 15.0,
+          "duration": 2.0999999999999996,
+          "note": 29,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 42,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 15.0,
+          "duration": 0.44999999999999996,
+          "note": 54,
+          "gain": 0.32
+        },
+        {
+          "track": "score-melody",
+          "start": 16.5,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.32
+        },
+        {
+          "track": "score-rhythm",
+          "start": 15.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 16.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 18.0,
+          "duration": 2.0999999999999996,
+          "note": 28,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 40,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 47,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 18.0,
+          "duration": 0.44999999999999996,
+          "note": 59,
+          "gain": 0.32
+        },
+        {
+          "track": "score-melody",
+          "start": 19.5,
+          "duration": 0.44999999999999996,
+          "note": 53,
+          "gain": 0.32
+        },
+        {
+          "track": "score-rhythm",
+          "start": 18.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 19.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 21.0,
+          "duration": 2.0999999999999996,
+          "note": 26,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 38,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 39,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 21.0,
+          "duration": 0.44999999999999996,
+          "note": 51,
+          "gain": 0.32
+        },
+        {
+          "track": "score-melody",
+          "start": 22.5,
+          "duration": 0.44999999999999996,
+          "note": 50,
+          "gain": 0.32
+        },
+        {
+          "track": "score-rhythm",
+          "start": 21.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 22.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        }
+      ],
+      "requirements": [
+        "music.tension"
+      ],
+      "recipeVersion": 3,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "notes": "Original four-track arrangement. Bass, harmony, melody and synthesized rhythm pulse; eight synchronized bars. Listening and loop acceptance pending.",
+      "music": {
+        "beatMs": 750.0,
+        "bars": 8,
+        "beatsPerBar": 4,
+        "parts": [
+          "score-bass",
+          "score-harmony",
+          "score-melody",
+          "score-rhythm"
+        ]
+      },
+      "start": 75.0,
+      "master": "masters/coverage-score/v3.music.tension.wav",
+      "masterSha256": "33a9e9ad00599de4c1667875a05e924504d3899ca8dd6a125d8ad92d51b68c76",
+      "opus": "masters/coverage-score/v3.music.tension.opus",
+      "opusSha256": "518be8d7abcc1eb5e536fadb92c6f5dc11ebe16c1e458df7643a1ea25affb999",
+      "previewSha256": "f7747f4b666b68d88ccfb2fe0bb3a5d8af5043f5f0bbe7729727bcedb908aa1e",
+      "previewBytes": 4608114,
+      "previewUrl": "/__cf-audio-review/v3.music.tension.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -26.3,
+      "opusDbTP": -26.1
+    },
+    {
+      "id": "v3.music.battle",
+      "group": "coverage-score",
+      "kind": "synthetic_fictional",
+      "duration": 16.0,
+      "channels": 2,
+      "layers": [],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "score-bass",
+          "start": 0.0,
+          "duration": 1.4,
+          "note": 28,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.05,
+          "duration": 1.5,
+          "note": 40,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.05,
+          "duration": 1.5,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.05,
+          "duration": 1.5,
+          "note": 47,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 0.0,
+          "duration": 0.14,
+          "note": 52,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 0.25,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 0.5,
+          "duration": 0.14,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 0.75,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.0,
+          "duration": 0.14,
+          "note": 52,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.25,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.5,
+          "duration": 0.14,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.75,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 0.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 0.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 1.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 1.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 2.0,
+          "duration": 1.4,
+          "note": 24,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 2.05,
+          "duration": 1.5,
+          "note": 36,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 2.05,
+          "duration": 1.5,
+          "note": 39,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 2.05,
+          "duration": 1.5,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 2.0,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 2.25,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 2.5,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 2.75,
+          "duration": 0.14,
+          "note": 48,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 3.0,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 3.25,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 3.5,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 3.75,
+          "duration": 0.14,
+          "note": 48,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 2.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 2.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 3.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 3.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 4.0,
+          "duration": 1.4,
+          "note": 31,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 4.05,
+          "duration": 1.5,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 4.05,
+          "duration": 1.5,
+          "note": 46,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 4.05,
+          "duration": 1.5,
+          "note": 50,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 4.0,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 4.25,
+          "duration": 0.14,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 4.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 4.75,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 5.0,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 5.25,
+          "duration": 0.14,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 5.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 5.75,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 4.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 4.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 5.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 5.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 6.0,
+          "duration": 1.4,
+          "note": 26,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.05,
+          "duration": 1.5,
+          "note": 38,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.05,
+          "duration": 1.5,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.05,
+          "duration": 1.5,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 6.0,
+          "duration": 0.14,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 6.25,
+          "duration": 0.14,
+          "note": 50,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 6.5,
+          "duration": 0.14,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 6.75,
+          "duration": 0.14,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.0,
+          "duration": 0.14,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.25,
+          "duration": 0.14,
+          "note": 50,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.5,
+          "duration": 0.14,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.75,
+          "duration": 0.14,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 6.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 6.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 7.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 7.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 8.0,
+          "duration": 1.4,
+          "note": 28,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 8.05,
+          "duration": 1.5,
+          "note": 40,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 8.05,
+          "duration": 1.5,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 8.05,
+          "duration": 1.5,
+          "note": 47,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 8.0,
+          "duration": 0.14,
+          "note": 52,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 8.25,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 8.5,
+          "duration": 0.14,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 8.75,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 9.0,
+          "duration": 0.14,
+          "note": 52,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 9.25,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 9.5,
+          "duration": 0.14,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 9.75,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 8.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 8.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 9.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 9.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 10.0,
+          "duration": 1.4,
+          "note": 24,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 10.05,
+          "duration": 1.5,
+          "note": 36,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 10.05,
+          "duration": 1.5,
+          "note": 39,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 10.05,
+          "duration": 1.5,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 10.0,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 10.25,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 10.5,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 10.75,
+          "duration": 0.14,
+          "note": 48,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 11.0,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 11.25,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 11.5,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 11.75,
+          "duration": 0.14,
+          "note": 48,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 10.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 10.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 11.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 11.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 12.0,
+          "duration": 1.4,
+          "note": 31,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.05,
+          "duration": 1.5,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.05,
+          "duration": 1.5,
+          "note": 46,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.05,
+          "duration": 1.5,
+          "note": 50,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 12.0,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 12.25,
+          "duration": 0.14,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 12.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 12.75,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.0,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.25,
+          "duration": 0.14,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.75,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 12.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 12.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 13.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 13.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 14.0,
+          "duration": 1.4,
+          "note": 26,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 14.05,
+          "duration": 1.5,
+          "note": 38,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 14.05,
+          "duration": 1.5,
+          "note": 41,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 14.05,
+          "duration": 1.5,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 14.0,
+          "duration": 0.14,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 14.25,
+          "duration": 0.14,
+          "note": 50,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 14.5,
+          "duration": 0.14,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 14.75,
+          "duration": 0.14,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 15.0,
+          "duration": 0.14,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 15.25,
+          "duration": 0.14,
+          "note": 50,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 15.5,
+          "duration": 0.14,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 15.75,
+          "duration": 0.14,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 14.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 14.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 15.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 15.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        }
+      ],
+      "requirements": [
+        "music.battle"
+      ],
+      "recipeVersion": 3,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "notes": "Original four-track arrangement. Bass, harmony, melody and synthesized rhythm pulse; eight synchronized bars. Listening and loop acceptance pending.",
+      "music": {
+        "beatMs": 500.0,
+        "bars": 8,
+        "beatsPerBar": 4,
+        "parts": [
+          "score-bass",
+          "score-harmony",
+          "score-melody",
+          "score-rhythm"
+        ]
+      },
+      "start": 100.0,
+      "master": "masters/coverage-score/v3.music.battle.wav",
+      "masterSha256": "d5aba78cf7ef8c0b474e94fe87c19f864eb9e658457b1c4bc5d32c92793f66f2",
+      "opus": "masters/coverage-score/v3.music.battle.opus",
+      "opusSha256": "8e3b31d45afb68ebf137597e645ac6bca7909bb8a0797f459585f37b738c7fda",
+      "previewSha256": "cb63550588d70888f0ffe98ba76a756ac52a380361b2cdfa42421589858f2220",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v3.music.battle.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.6,
+      "opusDbTP": -22.6
+    },
+    {
+      "id": "v3.music.major-battle",
+      "group": "coverage-score",
+      "kind": "synthetic_fictional",
+      "duration": 16.0,
+      "channels": 2,
+      "layers": [],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "score-bass",
+          "start": 0.0,
+          "duration": 1.4,
+          "note": 26,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.05,
+          "duration": 1.5,
+          "note": 38,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.05,
+          "duration": 1.5,
+          "note": 39,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.05,
+          "duration": 1.5,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.05,
+          "duration": 1.5,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 0.0,
+          "duration": 0.14,
+          "note": 50,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 0.25,
+          "duration": 0.14,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 0.5,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 0.75,
+          "duration": 0.14,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.0,
+          "duration": 0.14,
+          "note": 50,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.25,
+          "duration": 0.14,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.5,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.75,
+          "duration": 0.14,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 0.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 0.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 1.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 1.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 2.0,
+          "duration": 1.4,
+          "note": 27,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 2.05,
+          "duration": 1.5,
+          "note": 39,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 2.05,
+          "duration": 1.5,
+          "note": 40,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 2.05,
+          "duration": 1.5,
+          "note": 46,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 2.05,
+          "duration": 1.5,
+          "note": 49,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 2.0,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 2.25,
+          "duration": 0.14,
+          "note": 52,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 2.5,
+          "duration": 0.14,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 2.75,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 3.0,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 3.25,
+          "duration": 0.14,
+          "note": 52,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 3.5,
+          "duration": 0.14,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 3.75,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 2.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 2.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 3.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 3.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 4.0,
+          "duration": 1.4,
+          "note": 31,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 4.05,
+          "duration": 1.5,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 4.05,
+          "duration": 1.5,
+          "note": 44,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 4.05,
+          "duration": 1.5,
+          "note": 50,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 4.05,
+          "duration": 1.5,
+          "note": 53,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 4.0,
+          "duration": 0.14,
+          "note": 56,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 4.25,
+          "duration": 0.14,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 4.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 4.75,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 5.0,
+          "duration": 0.14,
+          "note": 56,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 5.25,
+          "duration": 0.14,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 5.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 5.75,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 4.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 4.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 5.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 5.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 6.0,
+          "duration": 1.4,
+          "note": 24,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.05,
+          "duration": 1.5,
+          "note": 36,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.05,
+          "duration": 1.5,
+          "note": 37,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.05,
+          "duration": 1.5,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.05,
+          "duration": 1.5,
+          "note": 46,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 6.0,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 6.25,
+          "duration": 0.14,
+          "note": 48,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 6.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 6.75,
+          "duration": 0.14,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.0,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.25,
+          "duration": 0.14,
+          "note": 48,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.75,
+          "duration": 0.14,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 6.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 6.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 7.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 7.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 8.0,
+          "duration": 1.4,
+          "note": 26,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 8.05,
+          "duration": 1.5,
+          "note": 38,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 8.05,
+          "duration": 1.5,
+          "note": 39,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 8.05,
+          "duration": 1.5,
+          "note": 45,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 8.05,
+          "duration": 1.5,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 8.0,
+          "duration": 0.14,
+          "note": 50,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 8.25,
+          "duration": 0.14,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 8.5,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 8.75,
+          "duration": 0.14,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 9.0,
+          "duration": 0.14,
+          "note": 50,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 9.25,
+          "duration": 0.14,
+          "note": 57,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 9.5,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 9.75,
+          "duration": 0.14,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 8.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 8.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 9.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 9.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 10.0,
+          "duration": 1.4,
+          "note": 27,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 10.05,
+          "duration": 1.5,
+          "note": 39,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 10.05,
+          "duration": 1.5,
+          "note": 40,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 10.05,
+          "duration": 1.5,
+          "note": 46,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 10.05,
+          "duration": 1.5,
+          "note": 49,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 10.0,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 10.25,
+          "duration": 0.14,
+          "note": 52,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 10.5,
+          "duration": 0.14,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 10.75,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 11.0,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 11.25,
+          "duration": 0.14,
+          "note": 52,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 11.5,
+          "duration": 0.14,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 11.75,
+          "duration": 0.14,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 10.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 10.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 11.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 11.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 12.0,
+          "duration": 1.4,
+          "note": 31,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.05,
+          "duration": 1.5,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.05,
+          "duration": 1.5,
+          "note": 44,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.05,
+          "duration": 1.5,
+          "note": 50,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.05,
+          "duration": 1.5,
+          "note": 53,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 12.0,
+          "duration": 0.14,
+          "note": 56,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 12.25,
+          "duration": 0.14,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 12.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 12.75,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.0,
+          "duration": 0.14,
+          "note": 56,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.25,
+          "duration": 0.14,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.75,
+          "duration": 0.14,
+          "note": 62,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 12.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 12.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 13.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 13.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-bass",
+          "start": 14.0,
+          "duration": 1.4,
+          "note": 24,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 14.05,
+          "duration": 1.5,
+          "note": 36,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 14.05,
+          "duration": 1.5,
+          "note": 37,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 14.05,
+          "duration": 1.5,
+          "note": 43,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 14.05,
+          "duration": 1.5,
+          "note": 46,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 14.0,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 14.25,
+          "duration": 0.14,
+          "note": 48,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 14.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 14.75,
+          "duration": 0.14,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 15.0,
+          "duration": 0.14,
+          "note": 58,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 15.25,
+          "duration": 0.14,
+          "note": 48,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 15.5,
+          "duration": 0.14,
+          "note": 55,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 15.75,
+          "duration": 0.14,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 14.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 14.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 15.0,
+          "duration": 0.09,
+          "note": 36,
+          "gain": 0.55
+        },
+        {
+          "track": "score-rhythm",
+          "start": 15.5,
+          "duration": 0.09,
+          "note": 43,
+          "gain": 0.55
+        }
+      ],
+      "requirements": [
+        "music.major-battle"
+      ],
+      "recipeVersion": 3,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "notes": "Original four-track arrangement. Bass, harmony, melody and synthesized rhythm pulse; eight synchronized bars. Listening and loop acceptance pending.",
+      "music": {
+        "beatMs": 500.0,
+        "bars": 8,
+        "beatsPerBar": 4,
+        "parts": [
+          "score-bass",
+          "score-harmony",
+          "score-melody",
+          "score-rhythm"
+        ]
+      },
+      "start": 117.0,
+      "master": "masters/coverage-score/v3.music.major-battle.wav",
+      "masterSha256": "ec47c5c7a928f6ac451ccd0dbb40748f88a6c4252b12554e58e4fea73f4b0e5b",
+      "opus": "masters/coverage-score/v3.music.major-battle.opus",
+      "opusSha256": "57e376bfba69ca69740d39a8fa2516636904dd9d105fc2239999b97bb74b53d7",
+      "previewSha256": "30c887d3f80b81c2f7a98b2c9e28229eb237196d2c037f3941c2a65085fde568",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v3.music.major-battle.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -24.0,
+      "opusDbTP": -24.0
+    },
+    {
+      "id": "v3.music.victory-discovery",
+      "group": "coverage-score",
+      "kind": "synthetic_fictional",
+      "duration": 24.0,
+      "channels": 2,
+      "layers": [],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "score-bass",
+          "start": 0.0,
+          "duration": 2.0999999999999996,
+          "note": 36,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 0.07500000000000001,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 0.0,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 0.75,
+          "duration": 0.44999999999999996,
+          "note": 64,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 1.5,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 2.25,
+          "duration": 0.44999999999999996,
+          "note": 72,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 0.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 1.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 3.0,
+          "duration": 2.0999999999999996,
+          "note": 41,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 53,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 57,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 3.075,
+          "duration": 2.25,
+          "note": 60,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 3.0,
+          "duration": 0.44999999999999996,
+          "note": 69,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 3.75,
+          "duration": 0.44999999999999996,
+          "note": 72,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 4.5,
+          "duration": 0.44999999999999996,
+          "note": 77,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 5.25,
+          "duration": 0.44999999999999996,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 3.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 4.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 6.0,
+          "duration": 2.0999999999999996,
+          "note": 43,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 59,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 6.075,
+          "duration": 2.25,
+          "note": 62,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 6.0,
+          "duration": 0.44999999999999996,
+          "note": 74,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 6.75,
+          "duration": 0.44999999999999996,
+          "note": 79,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 7.5,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 8.25,
+          "duration": 0.44999999999999996,
+          "note": 71,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 6.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 7.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 9.0,
+          "duration": 2.0999999999999996,
+          "note": 36,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 9.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 9.0,
+          "duration": 0.44999999999999996,
+          "note": 72,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 9.75,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 10.5,
+          "duration": 0.44999999999999996,
+          "note": 64,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 11.25,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 9.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 10.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 12.0,
+          "duration": 2.0999999999999996,
+          "note": 36,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 12.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 12.0,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 12.75,
+          "duration": 0.44999999999999996,
+          "note": 64,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 13.5,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 14.25,
+          "duration": 0.44999999999999996,
+          "note": 72,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 12.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 13.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 15.0,
+          "duration": 2.0999999999999996,
+          "note": 41,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 53,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 57,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 15.075,
+          "duration": 2.25,
+          "note": 60,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 15.0,
+          "duration": 0.44999999999999996,
+          "note": 69,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 15.75,
+          "duration": 0.44999999999999996,
+          "note": 72,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 16.5,
+          "duration": 0.44999999999999996,
+          "note": 77,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 17.25,
+          "duration": 0.44999999999999996,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 15.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 16.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 18.0,
+          "duration": 2.0999999999999996,
+          "note": 43,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 59,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 18.075,
+          "duration": 2.25,
+          "note": 62,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 18.0,
+          "duration": 0.44999999999999996,
+          "note": 74,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 18.75,
+          "duration": 0.44999999999999996,
+          "note": 79,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 19.5,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 20.25,
+          "duration": 0.44999999999999996,
+          "note": 71,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 18.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 19.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-bass",
+          "start": 21.0,
+          "duration": 2.0999999999999996,
+          "note": 36,
+          "gain": 0.6
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 48,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 52,
+          "gain": 0.22
+        },
+        {
+          "track": "score-harmony",
+          "start": 21.075,
+          "duration": 2.25,
+          "note": 55,
+          "gain": 0.22
+        },
+        {
+          "track": "score-melody",
+          "start": 21.0,
+          "duration": 0.44999999999999996,
+          "note": 72,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 21.75,
+          "duration": 0.44999999999999996,
+          "note": 60,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 22.5,
+          "duration": 0.44999999999999996,
+          "note": 64,
+          "gain": 0.5
+        },
+        {
+          "track": "score-melody",
+          "start": 23.25,
+          "duration": 0.44999999999999996,
+          "note": 67,
+          "gain": 0.5
+        },
+        {
+          "track": "score-rhythm",
+          "start": 21.0,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        },
+        {
+          "track": "score-rhythm",
+          "start": 22.5,
+          "duration": 0.135,
+          "note": 36,
+          "gain": 0.18
+        }
+      ],
+      "requirements": [
+        "music.victory-discovery"
+      ],
+      "recipeVersion": 3,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "notes": "Original four-track arrangement. Bass, harmony, melody and synthesized rhythm pulse; eight synchronized bars. Listening and loop acceptance pending.",
+      "music": {
+        "beatMs": 750.0,
+        "bars": 8,
+        "beatsPerBar": 4,
+        "parts": [
+          "score-bass",
+          "score-harmony",
+          "score-melody",
+          "score-rhythm"
+        ]
+      },
+      "start": 134.0,
+      "master": "masters/coverage-score/v3.music.victory-discovery.wav",
+      "masterSha256": "b8d65e85d95ee0752bb4bf30928a8679d785e2606eeacdd6803f01abfc4d8e57",
+      "opus": "masters/coverage-score/v3.music.victory-discovery.opus",
+      "opusSha256": "a3b9ca50e862e5cbf56dcb60e619c88f21a575dc78976b9985ba06d146803aa0",
+      "previewSha256": "4b21ab4db6520cc1d6bc3b56a87dd048db665a0ba227dc5083f0f04d29800c3e",
+      "previewBytes": 4608114,
+      "previewUrl": "/__cf-audio-review/v3.music.victory-discovery.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -25.1,
+      "opusDbTP": -25.0
+    }
+  ],
+  "listeningAccepted": false
+}

@@ -1,0 +1,328 @@
+{
+  "date": "2026-09-05",
+  "sourceHead": "fba61fb0d51d6d3d377fdcfdd889e016987f41ba",
+  "bundleId": "cf-batch-a-readiness-sources-20260905",
+  "sourcePreservationPrerequisite": "CLOSED via verified primary iCloud backup",
+  "bundleFiles": 37,
+  "originalPayloadFiles": 35,
+  "originalPayloadBytes": 10731051,
+  "privateMetadataBytes": 10964,
+  "bundleBytes": 10742015,
+  "archive": {
+    "name": "cf-batch-a-readiness-sources-20260905.tar",
+    "format": "ustar",
+    "compression": "none",
+    "order": "sorted file list, nonrecursive, COPYFILE_DISABLE=1",
+    "memberFiles": 37,
+    "bytes": 10769920,
+    "sha256": "3be57f38eb9c3e20c8f3c787fc31d4f20b60f59e197dadfe6d0ffcb367685d0b"
+  },
+  "checksumFile": {
+    "name": "SHA256SUMS",
+    "entries": 38,
+    "bytes": 4795,
+    "sha256": "d2b5c4f21bb2757a6ab24fa070b797cfaf508158d84732479a3af247f2950eac"
+  },
+  "destinationPackageBytes": 21516730,
+  "primary": {
+    "kind": "iCloud Drive",
+    "topFolder": "Files/Celestial Frontier Backups",
+    "copyUtc": "2026-09-05T22:41:16.776880+00:00",
+    "uploadState": {
+      "destinationKind": "icloud",
+      "checkedUtc": "2026-09-05T22:47:50.855540+00:00",
+      "fileCount": 39,
+      "uploadedNotUploadingCount": 39,
+      "allUploaded": true,
+      "method": "Native NSURL per-file resource values; brctl global status/monitor timed out without output"
+    },
+    "verification": {
+      "destinationKind": "icloud",
+      "verifiedUtc": "2026-09-05T22:51:46.640097+00:00",
+      "evictedItems": 39,
+      "redownloadedCurrentItems": 39,
+      "reallocatedItems": 39,
+      "bundleFilesPassed": 37,
+      "archiveFilesPassed": 1,
+      "shasumExitCode": 0,
+      "checksumSuccesses": 38,
+      "publicEvidenceFileHashesMatched": 37,
+      "publicContentManifestSha256": "735ada77c6439513f3026389d5d5f5d56d9d00fb13637ed524aaed9305e25916",
+      "archiveSha256": "3be57f38eb9c3e20c8f3c787fc31d4f20b60f59e197dadfe6d0ffcb367685d0b",
+      "negativeControl": {
+        "operation": "truncated scratch copy",
+        "expected": "nonzero / FAILED",
+        "exitCode": 1,
+        "result": "PASS: verifier rejected truncated bytes",
+        "scratchDeleted": true
+      },
+      "result": "PASS: forced iCloud evict/download and independent read-back hashes",
+      "brctlStatus": "global status/monitor timed out without output; native per-file metadata proved39/39 uploaded before brctl eviction and39/39 current after download",
+      "evictFinalStatusLine": "evicted content of '<selected backup package>'",
+      "uploadFinalStatusLine": "Native NSURL: 39/39 uploaded=true, uploading=false",
+      "downloadFinalStatusLine": "Native NSURL: 39/39 Current, downloading=false;39/39 files reallocated"
+    },
+    "evictionUtc": "2026-09-05T22:48:30.764498+00:00",
+    "downloadFolderCommand": {
+      "destinationKind": "icloud",
+      "command": "brctl download <selected backup package>",
+      "finishedUtc": "2026-09-05T22:49:03.977137+00:00",
+      "exit": 0,
+      "output": ""
+    },
+    "perFileDownloads": {
+      "count": 39,
+      "allAccepted": true,
+      "requestedUtc": "2026-09-05T22:50:30.090629+00:00"
+    }
+  },
+  "secondary": {
+    "kind": "OneDrive Personal",
+    "topFolder": "Celestial Frontier Backups",
+    "copyUtc": "2026-09-05T22:41:16.910931+00:00",
+    "listing": {
+      "command": "ls -1 OneDrive-Personal",
+      "timeoutSeconds": 10,
+      "seconds": 0.056,
+      "exitCode": 0,
+      "listingResponded": true,
+      "listedEntryCount": 8,
+      "stderr": ""
+    },
+    "uploadState": {
+      "destinationKind": "onedrive",
+      "checkedUtc": "2026-09-05T22:47:51.152548+00:00",
+      "fileCount": 39,
+      "uploadedNotUploadingCount": 39,
+      "allUploaded": true,
+      "method": "Native NSURL per-file resource values; brctl global status/monitor timed out without output"
+    },
+    "eviction": {
+      "destinationKind": "onedrive",
+      "startUtc": "2026-09-05T22:48:30.770819+00:00",
+      "finishedUtc": "2026-09-05T22:48:30.781813+00:00",
+      "command": "brctl evict <selected backup package>",
+      "exit": 1,
+      "output": "brctl: Unable to evict item at path '<selected backup package>': Error Domain=BRCloudDocsErrorDomain Code=6 \"Path is outside of any CloudDocs app library, will never sync\" UserInfo={NSDescription=Path is outside of any CloudDocs app library, will never sync, NSFilePath=<selected backup package>}\n"
+    },
+    "status": "COPIED / UNVERIFIED",
+    "reason": "brctl refuses non-CloudDocs path; no supported scoped CLI eviction found. Finder automation unavailable: Computer Use permission not granted. No forced secondary read-back claimed."
+  },
+  "brctlStatusAttempts": [
+    {
+      "command": "brctl status com.apple.CloudDocs",
+      "timeoutSeconds": 20,
+      "result": "timeout; no output"
+    },
+    {
+      "command": "brctl monitor -p -t5 com.apple.CloudDocs",
+      "timeoutSeconds": 15,
+      "result": "timeout; no output"
+    }
+  ],
+  "preparationNotes": [
+    "System rsync -a rounded subsecond mtimes; destination copies were restored to original nanoseconds without modifying sources.",
+    "Initial folder download returned0 but children remained cloud-only; explicit per-file download requests then materialized all39 before the successful checksum pass."
+  ],
+  "sourceHashComparison": "35 files match the preserved index and public content-manifest hash; index+restore notes match public metadata hashes; 37/37 source inputs agree with AAA_BATCH_A_PR41_SYNC_20260905.json.",
+  "checksums": [
+    {
+      "path": "batch-a-readiness-20260905/RESTORE_NOTES.md",
+      "bytes": 2681,
+      "sha256": "89ce134346044268bf4553b257907949d4eb32b6b3d5e3de5fb17be6bc9f2b5e"
+    },
+    {
+      "path": "batch-a-readiness-20260905/audio/audio-readiness.rpp",
+      "bytes": 78705,
+      "sha256": "ba97595c2840799d1d517a14968de29929f625a117751f062a77da95b195b736"
+    },
+    {
+      "path": "batch-a-readiness-20260905/audio/browser-decode-result.json",
+      "bytes": 1476,
+      "sha256": "1d5d6100b85ad72ad1e95274ff23d9f73cd406a244fc60adf6a2059b6329c880"
+    },
+    {
+      "path": "batch-a-readiness-20260905/audio/browser_decode.mjs",
+      "bytes": 3019,
+      "sha256": "3d8c5259b5f9ec4ce3e45087b26bb28388ebb754a0863159176950b71e78966c"
+    },
+    {
+      "path": "batch-a-readiness-20260905/audio/create-audio-readiness.lua",
+      "bytes": 3903,
+      "sha256": "e3437fb2b1fdfe932e19c9a335bdbf3918cd0f885beed1e68a04629391680677"
+    },
+    {
+      "path": "batch-a-readiness-20260905/audio/outputs/audio-readiness.flac",
+      "bytes": 96729,
+      "sha256": "52b1829012c6c0c9775bf9bf472a60280fa65218394a7b69fdfc924126ef1e36"
+    },
+    {
+      "path": "batch-a-readiness-20260905/audio/outputs/audio-readiness.wav",
+      "bytes": 1152690,
+      "sha256": "ab918498276dfa96faeaee3493d400e63e88ee4b4e73cbec72bc5209b18c33b9"
+    },
+    {
+      "path": "batch-a-readiness-20260905/audio/private-source-inventory.json",
+      "bytes": 5333,
+      "sha256": "3ddffec7c5dd09361fd6beec1d6f2695ffaf3829ace32f8bcc74915042598953"
+    },
+    {
+      "path": "batch-a-readiness-20260905/audio/readiness-result.json",
+      "bytes": 1164,
+      "sha256": "a5bc70d3823555fa78fa3b012d331c329d4ff05fc536764e9810b2d995d7eb07"
+    },
+    {
+      "path": "batch-a-readiness-20260905/audio/readiness.log",
+      "bytes": 1427,
+      "sha256": "68f43e2252b937cb445b44c1b6e229148582627c656aff318fa6a03388722718"
+    },
+    {
+      "path": "batch-a-readiness-20260905/audio/verify_audio.py",
+      "bytes": 1522,
+      "sha256": "0128e754855db9668baacba019600309731b7f3236b6dbe38188dcc9c79cdd97"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-outputs/creature-preview.png",
+      "bytes": 652773,
+      "sha256": "359390334d6a7f6a89b8b0e33a20c0c81d5de95a21fecff2d128d23fad10c99c"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-outputs/creature.png",
+      "bytes": 1667468,
+      "sha256": "321aeb1c7f45b7ae72de48f1f7cd3c771fd9ad34928763a6d66b5a6d7a822125"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-outputs/ecosystem-preview.png",
+      "bytes": 740510,
+      "sha256": "80a22e9a4fe28f13a6afdd94d93f290071b7aa477822f689a95a5fab9077357e"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-outputs/ecosystem.png",
+      "bytes": 1892410,
+      "sha256": "b6fc21d5a5884355dbb67f9b3525d90f255cf540a631150aebe96f00e054de39"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-outputs/preview-manifest.json",
+      "bytes": 971,
+      "sha256": "fe72658ba256a6a9a4ae61c8f2287f376d9909a37c804e70530f074d7b31c0ec"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-source/creature_scene.py",
+      "bytes": 14549,
+      "sha256": "922f29f5473c1e1da347ca3e3e6c541b75305c24455a0462d789778e43b4a3b7"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-source/ecosystem.py",
+      "bytes": 15733,
+      "sha256": "a84ac9fb57cc135cc71e10b908ce532658b7cd09985c18b8ceea0eca789d082f"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-source/lanternback-jungle-concept-v2.blend",
+      "bytes": 1385312,
+      "sha256": "4f4cd1e8b10e838222584032048c986ca3bf2056b456095c0c5ce901d567cf92"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-source/lanternback-jungle-concept.blend",
+      "bytes": 1380694,
+      "sha256": "0f76d4465186970fda03bffb86358349128de503f550cd623a136a8e7edac580"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-source/private-source-inventory.json",
+      "bytes": 1589,
+      "sha256": "82ae24be01298c14b33df97435d1e408f740ac3fe6249b17b2eb2b584e3a2bfe"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-source/refine_scene.py",
+      "bytes": 1785,
+      "sha256": "816c4de6d83ae00a9b337ed4622a787119c8c2d5834e111efe7898a800972605"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-source/render_view.py",
+      "bytes": 1093,
+      "sha256": "2ee90cd5ea5151fae3c726dad0ae1a6f058d2fb65d544aae651dab23a67125b4"
+    },
+    {
+      "path": "batch-a-readiness-20260905/lanternback-source/scene-proof.json",
+      "bytes": 461,
+      "sha256": "cd75966d795b3483659c4b693a6eca84196c20b32e55f151b4c83d0763161cfc"
+    },
+    {
+      "path": "batch-a-readiness-20260905/private-source-index.json",
+      "bytes": 8283,
+      "sha256": "62ecfa838c1c25c5476499ce2a892fcc5e45542c8457eceedaed57e8288488d9"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-original/readiness-proof.json",
+      "bytes": 1864,
+      "sha256": "a62e8786e38b7ff01ec31194445583a3da25fc5f64b81574b9e5f70f92856747"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-original/readiness-ship.blend",
+      "bytes": 105517,
+      "sha256": "0521118ce97874cbe0336d389dfef2bb771a87b5254ea798b20f7a2036519d48"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-original/readiness-ship.png0001.png",
+      "bytes": 698673,
+      "sha256": "ac23debb66a6ea0bcf77df0ace6a0a916587e602de36d9c355e2e9e2a825d8bf"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-original/readiness.py",
+      "bytes": 6125,
+      "sha256": "340ce1890c5ef88d5a64fa99d4c46010c8e28b4de2e90124180a46400f15cb98"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-original/reopen-render.log",
+      "bytes": 4813,
+      "sha256": "5ce019b23918be29edaa27f3e8b16abf419dfa76a135f3003be9c7a2a110992a"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-original/save-proof.json",
+      "bytes": 426,
+      "sha256": "c1532f8871270aabfd856d9e6bb9a9bc7646d202d42cd816483e7b4d4c8c06bf"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-original/save.log",
+      "bytes": 547,
+      "sha256": "641057a97fa39b09f2b1bd7a9913d631baf7069c277e9ea4b6779eb16fb279bc"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-terminal/create_scene.py",
+      "bytes": 6129,
+      "sha256": "5a48f07aac56d1a9e1c4fc0f76fd482680b49d78003a03ac1afdb32745b62e42"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-terminal/readiness-ship.blend",
+      "bytes": 105539,
+      "sha256": "2c82134480bf564309609e042d6258fd4e5b3b5964c1cd26291333e603de1f10"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-terminal/save-proof.json",
+      "bytes": 430,
+      "sha256": "4ae04992fdd6d657e1abd83ad608c17b8b94bc8bc11ef962ba54fc1719968cf8"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-terminal/terminal-proof.json",
+      "bytes": 995,
+      "sha256": "616293f4a3f64938c76e03d14176cb47ccb3c396c9b8e1715cce896276592f5f"
+    },
+    {
+      "path": "batch-a-readiness-20260905/ship-terminal/terminal-ship-0001.png",
+      "bytes": 698677,
+      "sha256": "012be5bb149729a9456ba915f06a659a6609b0718eda4dd85349740a4b4497f5"
+    },
+    {
+      "path": "cf-batch-a-readiness-sources-20260905.tar",
+      "bytes": 10769920,
+      "sha256": "3be57f38eb9c3e20c8f3c787fc31d4f20b60f59e197dadfe6d0ffcb367685d0b"
+    }
+  ],
+  "privateLocationIndex": "Companion private-backup-index-20260905.json beside immutable bundle; full destination paths kept outside Git; original37 inputs unchanged.",
+  "scope": "Branch-only documentation checkpoint; no hosted attempt, PR, label, merge, release, purchase, portrait/workflow/policy edit; portable replay follows separately.",
+  "logSha256": {
+    "icloud-readback-shasum.log": "ca111ced67a81406ea98bd30d116fc5f03ad6389e673e351a839d2e779f25b2a",
+    "negative-control.log": "057f281d6d750b057d4b76e45d9e12c5cbdb7554e0f4a82a24050731cd8d338f",
+    "icloud-upload-resource-values.log": "1754ead0df3dd737f2b46a4013d080b9537bf6549cc882746e081d6cf3a80160",
+    "icloud-posthash-resource-values.log": "95663c7fc887d8b7fddb1af384db62191ac097594612e82ef2c3739d3d6beed1"
+  }
+}

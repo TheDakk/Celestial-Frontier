@@ -1,0 +1,80 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "music_out_there",
+      "group": "music-candidates",
+      "kind": "licensed_stereo_mix",
+      "duration": 24,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-archives/music_out_there/6e02a32d963b8406-OutThere_0.ogg",
+          "sha256": "6e02a32d963b84061cdeec66cc852e731e367c93ef572aa169b1baadbcdc20ba",
+          "sourceId": "music_out_there",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 242.004172
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "music_out_there"
+      ],
+      "notes": "24-second opening audition only. Full original retained; no stems inferred and no state assigned before listening.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/music-candidates/music_out_there.wav",
+      "masterSha256": "69d0be341b679bfc993a07e843916759eb46131cb56d3dcd302a3254e56f943d",
+      "opus": "masters/music-candidates/music_out_there.opus",
+      "opusSha256": "dadb1aa0399ac514ec98898c5da1b26735b687ef7501e32de7415d4a4c5eb08d",
+      "previewSha256": "87516ba2578893c185d5c5c40c850d73fdb275fce76d2bb3edc72f58c74e433c",
+      "previewBytes": 4608114,
+      "previewUrl": "/__cf-audio-review/music_out_there.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.3,
+      "opusDbTP": -16.2
+    },
+    {
+      "id": "music_crystal_cave",
+      "group": "music-candidates",
+      "kind": "licensed_stereo_mix",
+      "duration": 24,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-archives/music_crystal_cave/42349d7c615fe947-song18_0.mp3",
+          "sha256": "42349d7c615fe947866100a90289d61a1e64620e11f2d041b37166eaaa4e5840",
+          "sourceId": "music_crystal_cave",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 49.5625
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "music_crystal_cave"
+      ],
+      "notes": "24-second opening audition only. Full original retained; no stems inferred and no state assigned before listening.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 25,
+      "master": "masters/music-candidates/music_crystal_cave.wav",
+      "masterSha256": "41979b07f6fab9c20d12ecc0f2087785d80fb64efd08884620a8ecc77165d4f8",
+      "opus": "masters/music-candidates/music_crystal_cave.opus",
+      "opusSha256": "0ae665faef35d7d4c297968390cde9722fa069ecf014cc29d3428108faed8dc1",
+      "previewSha256": "3e6abb874e2459bb923fa5b4a3b2fe1a452676ed1428a63724a7e1e922c608b5",
+      "previewBytes": 4608114,
+      "previewUrl": "/__cf-audio-review/music_crystal_cave.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.0,
+      "opusDbTP": -4.9
+    }
+  ],
+  "listeningAccepted": false
+}

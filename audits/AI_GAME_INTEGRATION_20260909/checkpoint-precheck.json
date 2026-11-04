@@ -1,0 +1,34 @@
+{
+  "schema": "cf.local-checkpoint-precheck.v1",
+  "recordedAt": "2026-09-09T14:54:06.019579+00:00",
+  "firstCheck": {
+    "status": "INSTRUMENT_FAIL",
+    "reason": "Asserted the entire prior ROADMAP, including permanent refreshed pins, must appear in the archive; the procedure archives only the superseded handoff",
+    "stoppedBeforeStaging": true,
+    "signingAttempted": false
+  },
+  "correctedCheck": {
+    "status": "PASS",
+    "scope": "Entire prior SESSION HANDOFF through end of file occurs byte-for-byte in ROADMAP_ARCHIVE; current permanent pins remain live"
+  },
+  "hostedActions": false,
+  "rawLogWhitespace": {
+    "status": "EXPECTED_RAW_OUTPUT",
+    "firstStagedCheckExit": 2,
+    "findings": [
+      "audits/AI_GAME_INTEGRATION_20260909/conditioning-clarification-tests.stdout.log:9: new blank line at EOF.",
+      "audits/AI_GAME_INTEGRATION_20260909/conditioning-tests-02.stdout.log:25: new blank line at EOF.",
+      "audits/AI_GAME_INTEGRATION_20260909/local-ai-runtime-tests-01.stderr.log:34: new blank line at EOF.",
+      "audits/AI_GAME_INTEGRATION_20260909/local-ai-runtime-tests-01.stdout.log:30: new blank line at EOF.",
+      "audits/AI_GAME_INTEGRATION_20260909/local-ai-runtime-tests-02.stdout.log:29: new blank line at EOF.",
+      "audits/AI_GAME_INTEGRATION_20260909/retry-guard-01/focused.log:9: new blank line at EOF.",
+      "audits/AI_GAME_INTEGRATION_20260909/typescript-clarification.stdout.log:4: new blank line at EOF.",
+      "audits/AI_GAME_INTEGRATION_20260909/typescript-final-02.stdout.log:4: new blank line at EOF.",
+      "audits/AI_GAME_INTEGRATION_20260909/typescript-retry-guard.stdout.log:4: new blank line at EOF.",
+      "audits/LOCAL_MODEL_DELIVERY_20260909/controls-01/focused.log:33: new blank line at EOF.",
+      "audits/LOCAL_MODEL_DELIVERY_20260909/controls-02/focused.log:9: new blank line at EOF."
+    ],
+    "resolution": "Keep tool-output logs byte-for-byte; exclude only audit .log evidence from source/doc whitespace policy. All remaining staged files pass the unchanged diff --check rule. No signing attempt yet.",
+    "checkedNonLogFiles": 124
+  }
+}

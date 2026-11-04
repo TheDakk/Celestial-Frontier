@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-09-09T14:23:11.613549+00:00",
+  "checks": [
+    {
+      "label": "typescript-final-01",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-final-typecheck",
+        "--",
+        "npm",
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 1
+    }
+  ],
+  "finishedAt": "2026-09-09T14:23:13.050747+00:00"
+}
