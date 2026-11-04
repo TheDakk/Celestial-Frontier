@@ -1,0 +1,422 @@
+{
+  "schema": "cf.compact-contact-cause/v1",
+  "scope": "Read-only arithmetic over the two reproduced first refusals. No additional runtime samples or changed-source execution.",
+  "input": "static-contact-diagnosis01.json",
+  "cause": "Generic signed source-step gait subtracts screen-y lift for both sides. The top-side far foot lies above its hip, so that lift extends rather than retracts its painted support and makes the requested target unreachable.",
+  "rootClockFinding": "Canonical duration engages source-steps; source displacement uses exact compiled root key times. GSAP rounded source keys leave only the intended external-residual rounding difference. No incorrect time ratio or overwritten arbitrary root offset was observed.",
+  "fallbackFinding": "Global endpoint-only eligibility is false because four other observed supports are mixed. Even without this exclusion, these leg3Far rigid painted targets exceed exact reach; fallback alone is insufficient.",
+  "mixedSupports": [
+    {
+      "id": "leg0Far",
+      "model": {
+        "rest": [
+          0.8460925039872407,
+          0.44912280701754387
+        ],
+        "surface": {
+          "partId": "leg0-far",
+          "vertexIndex": 40
+        },
+        "vertices": [
+          {
+            "rest": [
+              0.8508771929824561,
+              0.4445773524720893
+            ],
+            "barycentric": 0.3999999999999952,
+            "weights": [
+              [
+                "leg0FarFoot",
+                1
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.8588516746411483,
+              0.45215311004784686
+            ],
+            "barycentric": 2.3934071099287585e-15,
+            "weights": [
+              [
+                "leg0FarFoot",
+                0.9089295460948618
+              ],
+              [
+                "root",
+                0.0575401950545392
+              ],
+              [
+                "head",
+                0.017903108159217595
+              ],
+              [
+                "leg0FarKnee",
+                0.01525445203386677
+              ],
+              [
+                "leg1FarFoot",
+                0.00017469769073242406
+              ],
+              [
+                "leg0NearFoot",
+                0.00010723422471251769
+              ],
+              [
+                "antennaFar",
+                6.694991213649153e-05
+              ],
+              [
+                "leg1NearFoot",
+                2.38168299330788e-05
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.8429027113237639,
+              0.45215311004784686
+            ],
+            "barycentric": 0.6000000000000023,
+            "weights": [
+              [
+                "leg0FarFoot",
+                1
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "leg5Far",
+      "model": {
+        "rest": [
+          0.5996810207336523,
+          0.42025518341307816
+        ],
+        "surface": {
+          "partId": "leg5-far",
+          "vertexIndex": 10
+        },
+        "vertices": [
+          {
+            "rest": [
+              0.6088516746411483,
+              0.42145135566188197
+            ],
+            "barycentric": 0.41025641025641024,
+            "weights": [
+              [
+                "leg5FarFoot",
+                0.8350374403067324
+              ],
+              [
+                "root",
+                0.10551494382516603
+              ],
+              [
+                "leg5FarKnee",
+                0.04480976134664371
+              ],
+              [
+                "leg4FarFoot",
+                0.006739842267927897
+              ],
+              [
+                "leg6FarFoot",
+                0.006466565981056284
+              ],
+              [
+                "leg4FarKnee",
+                0.0012168297879294376
+              ],
+              [
+                "leg6FarKnee",
+                0.00011185901157621643
+              ],
+              [
+                "leg3FarFoot",
+                0.00010275747296797211
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.5933014354066986,
+              0.4370015948963317
+            ],
+            "barycentric": 0.2564102564102564,
+            "weights": [
+              [
+                "leg5FarFoot",
+                1
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.5933014354066986,
+              0.4059011164274322
+            ],
+            "barycentric": 0.33333333333333337,
+            "weights": [
+              [
+                "leg5FarFoot",
+                1
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "leg8Far",
+      "model": {
+        "rest": [
+          0.4524393734920051,
+          0.4258373205741627
+        ],
+        "surface": {
+          "partId": "leg8-far",
+          "vertexIndex": 14
+        },
+        "vertices": [
+          {
+            "rest": [
+              0.4525518341307815,
+              0.42145135566188197
+            ],
+            "barycentric": 0.717948717948718,
+            "weights": [
+              [
+                "leg8FarFoot",
+                1
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.46810207336523124,
+              0.4370015948963317
+            ],
+            "barycentric": 2.9150471210670777e-16,
+            "weights": [
+              [
+                "leg8FarFoot",
+                0.9411795228163867
+              ],
+              [
+                "root",
+                0.04092094224864787
+              ],
+              [
+                "leg8FarKnee",
+                0.014439776041072595
+              ],
+              [
+                "leg9FarFoot",
+                0.002587233869181881
+              ],
+              [
+                "leg7FarFoot",
+                0.0007448440783265531
+              ],
+              [
+                "leg9FarKnee",
+                8.794933073110363e-05
+              ],
+              [
+                "leg10FarFoot",
+                2.631700248683533e-05
+              ],
+              [
+                "leg9NearFoot",
+                1.341461316646682e-05
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.45215311004784686,
+              0.4370015948963317
+            ],
+            "barycentric": 0.28205128205128177,
+            "weights": [
+              [
+                "leg8FarFoot",
+                1
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "leg12Far",
+      "model": {
+        "rest": [
+          0.2649777123461334,
+          0.42822966507177035
+        ],
+        "surface": {
+          "partId": "leg12-far",
+          "vertexIndex": 204
+        },
+        "vertices": [
+          {
+            "rest": [
+              0.26515151515151514,
+              0.42145135566188197
+            ],
+            "barycentric": 0.5641025641025641,
+            "weights": [
+              [
+                "leg12FarFoot",
+                1
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.2807017543859649,
+              0.4370015948963317
+            ],
+            "barycentric": -5.830094242134155e-16,
+            "weights": [
+              [
+                "leg12FarFoot",
+                0.999751523209711
+              ],
+              [
+                "leg12FarKnee",
+                0.00024594540756855537
+              ],
+              [
+                "root",
+                2.5283758584199743e-06
+              ],
+              [
+                "leg13FarFoot",
+                2.7123084302960326e-09
+              ],
+              [
+                "leg11FarFoot",
+                2.8463693823032186e-10
+              ],
+              [
+                "leg12NearFoot",
+                6.7107909074674065e-12
+              ],
+              [
+                "leg13NearFoot",
+                2.5688218865272007e-12
+              ],
+              [
+                "leg10FarFoot",
+                6.371454166578148e-13
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.2647527910685805,
+              0.4370015948963317
+            ],
+            "barycentric": 0.4358974358974365,
+            "weights": [
+              [
+                "leg12FarFoot",
+                1
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "compressionBoundPx": 34.401488339896005,
+  "results": [
+    {
+      "action": "hit",
+      "ms": 22.5,
+      "group": 1,
+      "stance": false,
+      "rootBeforeContact": {
+        "rotation": 0,
+        "dx": -0.02938,
+        "dy": 0.000735
+      },
+      "rootAfterSourceTravel": {
+        "rotation": 0,
+        "dx": -0.016363471074380163,
+        "dy": 0.000735
+      },
+      "sourceTravel": {
+        "base": 0,
+        "stride": -0.027433403779821376,
+        "progress": 0.20454545454545456,
+        "authoredDx": -0.0293801652892562
+      },
+      "actualHipPx": {
+        "x": 843.9634030079311,
+        "y": 629.3160636741229
+      },
+      "fixedPaintTargetPx": {
+        "x": 842.5459446808482,
+        "y": 522.1609042487587
+      },
+      "screenUpSwingLiftPx": 8.839095751241267,
+      "rigidPaintMaximumReachPx": 106.62116734189435,
+      "actualPaintTargetDistancePx": 107.16453414998936,
+      "rigidOuterReachExcessPx": 0.5433668080950156,
+      "arithmeticOnlyComparisons": {
+        "removeVerticalSwingLiftDistancePx": 98.32628114844582,
+        "reverseVerticalSwingLiftTowardHipDistancePx": 89.48819462242727,
+        "admitted": false,
+        "scope": "Reach arithmetic only, no IK, joint-limit validation, pose solve or paint publication executed."
+      }
+    },
+    {
+      "action": "dodge",
+      "ms": 25.666666666666668,
+      "group": 1,
+      "stance": false,
+      "rootBeforeContact": {
+        "rotation": 0,
+        "dx": -0.045844,
+        "dy": 0
+      },
+      "rootAfterSourceTravel": {
+        "rotation": 0,
+        "dx": -0.025667148148148154,
+        "dy": 0
+      },
+      "sourceTravel": {
+        "base": 0,
+        "stride": -0.04115010566973206,
+        "progress": 0.2138888888888889,
+        "authoredDx": -0.04584351851851851
+      },
+      "actualHipPx": {
+        "x": 839.9626487782887,
+        "y": 629
+      },
+      "fixedPaintTargetPx": {
+        "x": 834.6733643442237,
+        "y": 521.8846760710254
+      },
+      "screenUpSwingLiftPx": 9.115323928974629,
+      "rigidPaintMaximumReachPx": 106.62116734189435,
+      "actualPaintTargetDistancePx": 107.245835118356,
+      "rigidOuterReachExcessPx": 0.6246677764616493,
+      "arithmeticOnlyComparisons": {
+        "removeVerticalSwingLiftDistancePx": 98.14263359939166,
+        "reverseVerticalSwingLiftTowardHipDistancePx": 89.04191243496255,
+        "admitted": false,
+        "scope": "Reach arithmetic only, no IK, joint-limit validation, pose solve or paint publication executed."
+      }
+    }
+  ],
+  "proposedScope": "Consider an explicit compact-model swing direction toward its source socket for limbs painted above the trunk, preserving .15 lower-length amplitude and all original bounds. This is a new source-layout/contact convention, not a measured repair. Do not alter other families or claim full-row acceptance from these two samples."
+}

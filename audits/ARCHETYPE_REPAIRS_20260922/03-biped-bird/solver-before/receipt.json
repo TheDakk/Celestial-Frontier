@@ -1,0 +1,24 @@
+{
+  "source": "port/v2/tools/creature-animation/orientation-projector.mjs",
+  "sha256": "d84dc929eef8743a842388cf1a92b9631cc39bd232fe8954a7308d169a519d21",
+  "sourceHead": "9c50c190f215fab034fe7023ac0d92e72cf01497",
+  "purpose": "Verbatim pre-optimization full orientation solver reference; constraints, ordering, queue and output parity.",
+  "dependencies": [
+    {
+      "file": "port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "4e6a6e7d2c0a4c7d24174758373c707a85527a535d3a3516078764fe35eb4db4"
+    },
+    {
+      "file": "port/v2/tools/creature-animation/pose-refusal.mjs",
+      "sha256": "f91e6977ec0e2cdb0b7e4cf90980eeebab90c59aabfb1e2e48b47cb4bf12e80c"
+    },
+    {
+      "file": "port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "sha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd"
+    },
+    {
+      "file": "port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "sha256": "aa430e622b613af414da991a1b464e434be5b26a5efe96f5d07e63756f8b72db"
+    }
+  ]
+}

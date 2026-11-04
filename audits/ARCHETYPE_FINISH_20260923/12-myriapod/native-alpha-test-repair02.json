@@ -1,0 +1,8 @@
+{
+  "scope": "Test-only change after first retained failure. PNG decoded data is Buffer; Buffer.slice shares underlying storage, unlike Uint8Array.slice. Negative control now copies via Uint8Array.from. Original-byte digest is captured before helper call.",
+  "beforeSha256": "c98f381abf64234145ed313e40ae3a2b92a58563ecca2fd4d2a07f715b51db47",
+  "afterSha256": "d25da7f827e834da79b64f0a1cbef21e2aa92e95e06ca945f3900ab1d4e502ac",
+  "sourcePngUnchanged": true,
+  "helperOrHarnessChanged": false,
+  "rerun": "Corrected real-image control only; 4 passing pure controls not repeated."
+}

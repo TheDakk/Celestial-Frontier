@@ -1,0 +1,14 @@
+✔ integrated admitted forward kernel preserves targets, pins, all output bytes and diagnostics (3.31225ms)
+✔ unavailable Wasm retains the original JS path without changing admitted outcomes (0.667708ms)
+✔ a real leaf trap after private-memory work falls back from untouched input and disables the leaf (0.450875ms)
+✔ floor underflow retains original source admission and the JS solver (0.2145ms)
+✔ floor overflow retains original source admission and identical refusal without publication (0.271125ms)
+✔ contradictory hard pins retain exact recoverable refusal and atomic output on admitted and fallback paths (0.375334ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 90.448208

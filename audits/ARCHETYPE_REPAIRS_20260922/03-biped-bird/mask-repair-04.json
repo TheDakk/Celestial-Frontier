@@ -1,0 +1,99 @@
+{
+  "basis": "fold-diagnosis-03.json: all13 folds on far-thigh. Manually observed left body-owned gap begins789,808; right124-pixel alpha1\u20133 fringe lies927,774..936,800. Narrow contour correction preserves separate near-leg fringe below846.",
+  "part": "far-thigh",
+  "priorPolygonPx": [
+    [
+      810,
+      753
+    ],
+    [
+      914,
+      739
+    ],
+    [
+      940,
+      817
+    ],
+    [
+      936,
+      897
+    ],
+    [
+      818,
+      914
+    ],
+    [
+      793,
+      852
+    ],
+    [
+      789,
+      792
+    ]
+  ],
+  "polygonPx": [
+    [
+      810,
+      753
+    ],
+    [
+      914,
+      739
+    ],
+    [
+      926,
+      774
+    ],
+    [
+      937,
+      774
+    ],
+    [
+      939,
+      801
+    ],
+    [
+      935,
+      801
+    ],
+    [
+      940,
+      817
+    ],
+    [
+      936,
+      897
+    ],
+    [
+      818,
+      914
+    ],
+    [
+      793,
+      852
+    ],
+    [
+      780,
+      846
+    ],
+    [
+      788,
+      808
+    ],
+    [
+      789,
+      792
+    ]
+  ],
+  "preserved": [
+    "tail correction03",
+    "all other polygons and priority order",
+    "all landmarks",
+    "explicit presence",
+    "fixedJoints=root",
+    "all shapeJoints/contactEndpoints",
+    "solver options and all acceptance limits"
+  ],
+  "sourcePixelsEdited": false,
+  "exactLabelDelta": "Measured separately against actual labels after writer"
+}

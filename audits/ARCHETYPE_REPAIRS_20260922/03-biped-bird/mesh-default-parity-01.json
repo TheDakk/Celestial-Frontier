@@ -1,0 +1,40 @@
+{
+  "schema": "cf.paint-skin-default-parity/v1",
+  "status": "PASS",
+  "scope": "One changed-writer default40/80 build against retained fit09 inputs; no intake/static/native/S2 run.",
+  "options": {
+    "boundaryStep": 40,
+    "interiorStep": 80,
+    "includeTopology": true
+  },
+  "exactBinding": true,
+  "exactReceipt": true,
+  "bindingHash": "4cca1230d9271e525c4e8e312dafcf37f6bc5891b716fad24158cb6e88ee7d0b",
+  "receiptSha256": "11665cd12bd4ca27ee02a120e9fa9da8bc57009ff7e8d88d5d9fd2b4ecfad47f",
+  "inputs": [
+    {
+      "file": "port/v2/tools/creature-animation/build-paint-skin.mjs",
+      "sha256": "55509deba10b18a005d4ae34e296a509036ab09fdad9ae623f3c640227429951"
+    },
+    {
+      "file": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-09/record.json",
+      "sha256": "d16153ae925cdebdada99848ab148e0698a720f440f3d4cda68a6f156690cc59"
+    },
+    {
+      "file": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-09/pre-split-binding.json",
+      "sha256": "d38f4099b9fa09201a6268dec48dbc772cd30cff121bdd8c5a12be6dc2fc0ab3"
+    },
+    {
+      "file": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-09/receipt.json",
+      "sha256": "1a515fc89e42abfe4dcdf0ca6887c339490bd3f8545aaabf30bcde91bb17eff3"
+    },
+    {
+      "file": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-09/parts/binding.json",
+      "sha256": "3c3b72798859c9fbbffd6ce95bdc15cd2853cb3d74852408da61c3eacc29792e"
+    },
+    {
+      "file": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-09/parts/manifest.json",
+      "sha256": "ef91743588247f2ab01662169cb8456896e8679fb787a200d94d2ac0baf4a709"
+    }
+  ]
+}

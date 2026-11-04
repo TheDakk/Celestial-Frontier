@@ -1,0 +1,26 @@
+{
+  "changedPositiveAlphaPixels": 5966,
+  "labelPairs": {
+    "17->14": 766,
+    "17->12": 2699,
+    "17->6": 506,
+    "17->5": 62,
+    "17->3": 803,
+    "17->4": 1130
+  },
+  "allOtherLabelsIdentical": true,
+  "inputs": [
+    {
+      "file": "fit-05/labels.png",
+      "sha256": "31233bfcc52e1a011d781aadd2ddb9a45864ef8de1c625e6ffe52868eee19bc7"
+    },
+    {
+      "file": "fit-07/labels.png",
+      "sha256": "5a7440e08a00ef832814d8cab78c5f6cbaa99432c5ea6c03e258219d1d5d47f9"
+    },
+    {
+      "file": "master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    }
+  ]
+}

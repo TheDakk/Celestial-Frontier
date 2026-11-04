@@ -1,0 +1,29 @@
+{
+  "scope": "Final compact reaction cadence source/tests after one test-only isolation repair. Root owns subsequent static/S2/native/type checks.",
+  "files": [
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "a8dc92d1ced5978a6bea52f4a8f0ef88bab441b3f28248823f26b4bcba4ddca7"
+    },
+    {
+      "file": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "sha256": "4031bd79f82af72c90de74552540e68a4ee71a14039a86483e6f8a6c79184673"
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "16d66bf1bb75954f202745f33afeed985ce290320e7fdf375a399ba823598343"
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-travel-substeps.test.ts",
+      "sha256": "391c19c84a4c5fa453299943c149066e4f6b57900a3db4eb0331c221116b7a88"
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-support-candidate.test.ts",
+      "sha256": "78868fd48c02d30b3c88b2389174d910c5f90714537883270850e763ae41f0e7"
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-swing-lift.test.ts",
+      "sha256": "c113e516fbb7bfbd9193c7bcc60b4dbd5a744d112aa09c898b6bbf95854e0f63"
+    }
+  ]
+}
