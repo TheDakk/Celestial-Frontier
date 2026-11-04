@@ -1,0 +1,136 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Rabbit",
+  "family": "quadruped",
+  "masterSha256": "8bcee4a5c170ecf6624ca15b37922652469d8e2a0860f9edf2d40ceda9aea839",
+  "subjectSha256": "4f26f9d27f66d420e4b54f2573de8aadff9b46510980b4063b1d3f9be42bba36",
+  "promptSha256": "6562607ccf47aa8a4eb6032b3f65b8e50739209c2e50e4756dcd225293c12f60",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "method": "Measured compact-tail v1",
+    "reviewer": "Codex",
+    "observation": "Automatic source measurement, not manual visual review; replayed at intake."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Measured independent rear paint branch; length/body width 0.08–0.28; upper rear attachment; one tapered closed terminal; no detached or cropped paint. All mandatory limbs remain independently checked.",
+      "landmarksPx": {
+        "tail0": [
+          391,
+          646
+        ],
+        "tail1": [
+          325,
+          678
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              331.9051486584481,
+              608.1793691080493
+            ],
+            [
+              345.8357142857143,
+              602.6071428571429
+            ],
+            [
+              390.62142857142857,
+              587.6785714285714
+            ],
+            [
+              394.62142857142857,
+              587.6785714285714
+            ],
+            [
+              394.62142857142857,
+              708.1214285714286
+            ],
+            [
+              382.67857142857144,
+              711.1071428571429
+            ],
+            [
+              381.8095238095238,
+              711.1071428571429
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              315.97857142857146,
+              638.4357142857143
+            ],
+            [
+              318.9642857142857,
+              629.4785714285714
+            ],
+            [
+              321.95,
+              623.5071428571429
+            ],
+            [
+              324.9357142857143,
+              617.5357142857143
+            ],
+            [
+              330.90714285714284,
+              608.5785714285714
+            ],
+            [
+              331.9051486584481,
+              608.1793691080493
+            ],
+            [
+              381.8095238095238,
+              711.1071428571429
+            ],
+            [
+              363.75,
+              711.1071428571429
+            ],
+            [
+              354.79285714285714,
+              708.1214285714286
+            ],
+            [
+              342.85,
+              702.15
+            ],
+            [
+              339.8642857142857,
+              699.1642857142857
+            ],
+            [
+              330.90714285714284,
+              690.2071428571429
+            ],
+            [
+              321.95,
+              681.25
+            ],
+            [
+              318.9642857142857,
+              669.3071428571428
+            ],
+            [
+              315.97857142857146,
+              654.3785714285715
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "96c847d1c780b0b90a684f3504816c5ac192adccba0cd76ec7123f7bb3cfb7d9"
+}

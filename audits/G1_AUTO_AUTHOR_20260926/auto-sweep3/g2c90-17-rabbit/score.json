@@ -1,0 +1,17 @@
+{
+ "id": "g2c90-17-rabbit",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "reviewedPresence": {
+  "absent": [],
+  "removedParts": [
+   "tail3",
+   "tail2"
+  ]
+ },
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

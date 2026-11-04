@@ -1,0 +1,101 @@
+{
+  "schema": "cf.reviewed-body-paint/v1",
+  "name": "Bactrian Camel",
+  "masterSha256": "d0f39b9dac474204c18d6ce431158be51a50e7c1bd8767d48e94480cfd1ba372",
+  "subjectSha256": "09ec9c2b574e2c52cb8ef2e379d5225936b65519ad50ebbbda285e4261a98811",
+  "reviewer": "Codex",
+  "method": "Full-original visual inspection",
+  "observation": "Two fully observed dorsal humps and their continuous base; legs, neck and tail excluded.",
+  "scope": "body-surface-only-no-inventory-exemption",
+  "regions": [
+    {
+      "id": "reviewed-body-hump",
+      "kind": "hump",
+      "joint": "spine",
+      "canonicalFeature": "two separate humps",
+      "polygonPx": [
+        [
+          323,
+          441
+        ],
+        [
+          373,
+          374
+        ],
+        [
+          413,
+          296
+        ],
+        [
+          469,
+          248
+        ],
+        [
+          522,
+          263
+        ],
+        [
+          555,
+          317
+        ],
+        [
+          575,
+          395
+        ],
+        [
+          609,
+          345
+        ],
+        [
+          651,
+          285
+        ],
+        [
+          695,
+          257
+        ],
+        [
+          743,
+          271
+        ],
+        [
+          780,
+          343
+        ],
+        [
+          802,
+          411
+        ],
+        [
+          832,
+          452
+        ],
+        [
+          799,
+          484
+        ],
+        [
+          738,
+          455
+        ],
+        [
+          648,
+          457
+        ],
+        [
+          565,
+          451
+        ],
+        [
+          481,
+          444
+        ],
+        [
+          395,
+          465
+        ]
+      ]
+    }
+  ],
+  "regionsSha256": "7500da69950e622f78035f2da44f9f265435fdc602c2a581cf05e5e44aae7023"
+}

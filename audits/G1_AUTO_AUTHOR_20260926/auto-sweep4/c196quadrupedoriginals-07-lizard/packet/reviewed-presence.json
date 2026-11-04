@@ -1,0 +1,12 @@
+{
+  "schema": "cf.canonical-external-pinnae/v1",
+  "name": "Lizard",
+  "family": "quadruped",
+  "masterSha256": "214ae70246e5460242831449a743ee38494cb3380d06a459f3ccf195f793afcd",
+  "subjectSha256": "5ff20415daa2b5197806359deebfc431d090dad38647476154cb23dc96dcf9bd",
+  "promptSha256": "491177cd09879576a0982b7b2d7b5e4f7ddf347b4e378d4f030126d2e43346b5",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "fact": "external-pinnae-absent",
+  "scope": "canonical-group-fact-no-painted-limb-or-motion-exemption"
+}

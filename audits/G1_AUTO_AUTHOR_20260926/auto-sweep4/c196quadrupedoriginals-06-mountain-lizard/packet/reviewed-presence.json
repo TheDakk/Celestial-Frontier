@@ -1,0 +1,12 @@
+{
+  "schema": "cf.canonical-external-pinnae/v1",
+  "name": "Mountain Lizard",
+  "family": "quadruped",
+  "masterSha256": "a39bd2ebd76bb4bf243e1c82e14ade06fc93745df8bc827403b8ffc2093c56c1",
+  "subjectSha256": "aba2c8bc1c658e1dda87a4267171a810fd6b59105901b3f63680b606f8707950",
+  "promptSha256": "787f7582558af5bf164afa9a2043881237e5f2b3cb448869fef6e7b4e25e99f6",
+  "profileId": "lizard",
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "fact": "external-pinnae-absent",
+  "scope": "canonical-group-fact-no-painted-limb-or-motion-exemption"
+}

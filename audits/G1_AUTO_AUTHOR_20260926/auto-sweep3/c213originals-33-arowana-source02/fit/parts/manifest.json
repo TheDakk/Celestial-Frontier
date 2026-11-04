@@ -1,0 +1,70 @@
+{
+  "creatureId": "c213originals-33-arowana-source02",
+  "parts": [
+    {
+      "name": "near-pectoral.png",
+      "path": "parts/near-pectoral.png",
+      "sha256": "e1472ff11d065b895b824dd0023144bf48f4d23458a9734272862f8bff698d8d"
+    },
+    {
+      "name": "far-pectoral.png",
+      "path": "parts/far-pectoral.png",
+      "sha256": "1e61a4fd70cdcb19986588026d29e1e11e34cea778f53ac2462f8304d9c7a87b"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "234ca578f43a1908aeb2bf6c50e492d134094c2018aa733693e9b4de548a9c45"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "464fc0afe222f52e9b80c986d891ecaf8422c7ef237554002807e4bbac1900d2"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "2065f3ec640021d8e51c6ef117427cef354f92d68c6d18f15f8dcbb0b29f7209"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "7b9bd0ccb861219d7c7396ae7a7e7804c93eaa885aedcaf5317e5e0d8d445455"
+    },
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "c10a2c765320fb5616dfe613bf22e290ebdf0c4ed0f01717b189c5a730a0244a"
+    },
+    {
+      "name": "tail-peduncle.png",
+      "path": "parts/tail-peduncle.png",
+      "sha256": "db8b05977e650533059a3cc4c0596f367fbc1941db2260430360725c0e25a780"
+    },
+    {
+      "name": "rear-body.png",
+      "path": "parts/rear-body.png",
+      "sha256": "e95c459c39ecee4222f9538052bfa090792df960b671c0e403ccbb089ce957cb"
+    },
+    {
+      "name": "pelvic-body.png",
+      "path": "parts/pelvic-body.png",
+      "sha256": "8252500ef368ad1fb8ff24c495713324f4c3c810d1e9c2676e507b1c79f95bd2"
+    },
+    {
+      "name": "mid-body.png",
+      "path": "parts/mid-body.png",
+      "sha256": "14dad439918990393026ad2b7108035ba53e7eaa096698f2d3cf8463989403e6"
+    },
+    {
+      "name": "front-body.png",
+      "path": "parts/front-body.png",
+      "sha256": "8f4fbd3438ba82da011995442935c731e4c37cb8e9792bbf981507395a2272e6"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "1e5b95622fffcb84aa4d02c4c863179684c3fee18582ebee492a128cff8d4a1b"
+    }
+  ]
+}
