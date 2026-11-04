@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c279-observed-author/v1",
+  "reviewer": "/root/c279_intake",
+  "masterSha256": "59e105ebf2cfad778ce1c7f84a329e9ee8b379918c653890a8adcfae608e7afb",
+  "promptSha256": "d0613f80995604152cd7cc1f92981d7e4f804b1fa2aba96a421b1dd8f6f94773",
+  "subjectSha256": "70ac10cf1294dbd068b9bfce1ca85a2c2d52e1301c66547495c789b64d0835af",
+  "inspection": "Native1254 original viewed; landmarks/polygon boundaries authored against actual painted anatomy. Root/spine/chest anchors locate continuous painted body, not unseen appendages.",
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "autoAuthorReused": false,
+  "notes": [
+    "Two tiny separately traceable feet; upper and lower folded sickle-wing projections both continue past the separately owned short lower tail.",
+    "Enormous actual gape and both bill halves retained. This family has a single beak articulation; no fabricated jaw joint or split-gape claim. Native review must check gape/head continuity."
+  ],
+  "nativeAcceptance": false
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "native-additional-dragonfish-observed02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-additional-dragonfish-observed02",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/additional-dragonfish-observed02/plan.json"
+  ],
+  "startedUnix": 1792338536.134036,
+  "beforeGiB": 72.53495025634766,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 18.045,
+  "lowestGiB": 72.13090515136719,
+  "afterGiB": 72.50596237182617
+}

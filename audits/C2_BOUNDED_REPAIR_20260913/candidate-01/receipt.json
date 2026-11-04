@@ -1,0 +1,61 @@
+{
+  "status": "OFFLINE_ADMITTED_NATIVE_GATES_PENDING",
+  "civet": {
+    "patches": 11,
+    "parts": 33,
+    "atlasSize": {
+      "width": 2047,
+      "height": 1006
+    }
+  },
+  "foxAtlas": {
+    "id": "fox",
+    "parts": 22,
+    "atlasSize": {
+      "width": 2038,
+      "height": 1085
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "changes": {
+    "hindNearKnee": [
+      0.328,
+      0.775
+    ],
+    "foreFarKnee": [
+      0.782,
+      0.67
+    ],
+    "foreNearKnee": [
+      0.663,
+      0.68
+    ]
+  },
+  "foxRestSlackBL": {
+    "hindFar": 0.04230644192731707,
+    "foreFar": 0.03192112381462575,
+    "hindNear": 0.04010055009996922,
+    "foreNear": 0.03231250104558243
+  },
+  "sourceImagesUnchanged": true,
+  "sources": [
+    {
+      "path": "audits/CIVET_2D_PROOF_20260912/fox.landmarks.json",
+      "sha256": "8d21a249436eefb27ccfe01ec2565c57fe35ac3ab2379abc5dc9b336ea7674a7"
+    },
+    {
+      "path": "audits/C2_PARTS_ATLAS_20260913/civet.joint-patches-v2.json",
+      "sha256": "16ce406cf4841dc19e9919e3b367ea2f0fe3f0ddc97e9ced03ecb4ddf7d061b6"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-mammal-quadruped.png",
+      "sha256": "15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/civet-turnaround-01.png",
+      "sha256": "5a7d18cbf0c0214ffd9b76f13597a9ce78997fec2c6cfbcb82f7177382abc924"
+    }
+  ],
+  "scope": "Pack 7 exact patch radii plus re-observed fox knee points; no clip edits, no compression-bound change"
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "native-additional-black-fly",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-additional-black-fly",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/additional-black-fly/plan.json"
+  ],
+  "startedUnix": 1792338475.821549,
+  "beforeGiB": 72.65038299560547,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.057,
+  "lowestGiB": 72.24957275390625,
+  "afterGiB": 72.61578750610352
+}

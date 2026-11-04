@@ -1,0 +1,20 @@
+{
+  "stage": "native-additional-thrips",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-additional-thrips",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/additional-thrips/plan.json"
+  ],
+  "startedUnix": 1792338554.220951,
+  "beforeGiB": 72.50594329833984,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.057,
+  "lowestGiB": 72.06244659423828,
+  "afterGiB": 72.447021484375
+}

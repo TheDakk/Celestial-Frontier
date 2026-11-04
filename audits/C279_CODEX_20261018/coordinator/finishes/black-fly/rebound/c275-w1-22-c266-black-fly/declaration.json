@@ -1,0 +1,111 @@
+{
+  "schema": "cf.keyed-part-intake/v1",
+  "recordRecipeHash": "32d19ad8a5844da0da5437e09e86429b43096c4201843cc4bf7a2fd7a38e25af",
+  "cutoutSha256": "61db26522bce260f51403d3335f2190c2ba03912cb9a1d8b36461bb76e78b794",
+  "parts": [
+    {
+      "id": "legfrontnear-distal",
+      "joint": "legFrontNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "legfrontnear-upper",
+      "joint": "legFrontNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "legfrontfar-distal",
+      "joint": "legFrontFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "legfrontfar-upper",
+      "joint": "legFrontFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "legmidnear-distal",
+      "joint": "legMidNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "legmidnear-upper",
+      "joint": "legMidNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "legmidfar-distal",
+      "joint": "legMidFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "legmidfar-upper",
+      "joint": "legMidFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "leghindnear-distal",
+      "joint": "legHindNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leghindnear-upper",
+      "joint": "legHindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "leghindfar-distal",
+      "joint": "legHindFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leghindfar-upper",
+      "joint": "legHindFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "mouth-tubes",
+      "joint": "mandible",
+      "layer": "near"
+    },
+    {
+      "id": "antenna-near",
+      "joint": "antennaNear",
+      "layer": "near"
+    },
+    {
+      "id": "antenna-far",
+      "joint": "antennaFar",
+      "layer": "far"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "wing-near",
+      "joint": "wingNear",
+      "layer": "near"
+    },
+    {
+      "id": "wing-far",
+      "joint": "wingFar",
+      "layer": "far"
+    },
+    {
+      "id": "abdomen",
+      "joint": "abdomen",
+      "layer": "far"
+    },
+    {
+      "id": "body",
+      "joint": "thorax",
+      "layer": "near"
+    }
+  ],
+  "labelsFile": "labels.png",
+  "labelsSha256": "93a212f8a41fdbce10adaca9699139243ce2c65d384fea5cdfa78a042855b007",
+  "keyedRgbaSha256": "e27c4013e38a33dd298c2183f3f3e1e935a9474d5a6f268855170a7d64ea436e",
+  "declarationHash": "289337ac964e678e892cb6dcfc4ec143bb3524e542647c269b71898574510c4c"
+}

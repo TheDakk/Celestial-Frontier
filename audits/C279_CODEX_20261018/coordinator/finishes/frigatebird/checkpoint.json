@@ -1,0 +1,5 @@
+{
+  "checkpointReview": "audits/C279_CODEX_20261018/w2-motion/current-films/frigatebird-owner-r02/checkpoint-final.json",
+  "checkpointReviewSha256": "f0ae0f01ef9fc21023b1513cfc12a297e95193924db0039f20cabf7878baaba3",
+  "nativePlan": "audits/C279_CODEX_20261018/coordinator/plans/frigatebird-owner-r02/plan.json"
+}

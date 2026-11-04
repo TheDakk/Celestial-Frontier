@@ -1,0 +1,20 @@
+{
+  "stage": "native-swift",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-native-swift",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/swift/plan.json"
+  ],
+  "startedUnix": 1792335628.32631,
+  "beforeGiB": 76.83477783203125,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.051,
+  "lowestGiB": 76.43053817749023,
+  "afterGiB": 76.80018615722656
+}

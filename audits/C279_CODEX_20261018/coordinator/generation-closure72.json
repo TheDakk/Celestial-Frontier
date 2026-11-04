@@ -1,0 +1,659 @@
+{
+  "status": "PASS",
+  "originals": 72,
+  "groups": 18,
+  "allUniqueOriginalBytes": true,
+  "allReleaseReceiptsPresent": true,
+  "actualNumericSeedsAvailable": false,
+  "method": "Four independent fresh tool calls per species; requested seed intents are labels, not observed numeric seeds.",
+  "rows": [
+    {
+      "id": "c279-01-cricket-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-a/master.png",
+      "sha256": "ad4f3afbf5b897e7e869ee1df8c690c6cc2f0551d196effd7ce28668b4a799eb",
+      "bytes": 1687237,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-01-cricket-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-b/master.png",
+      "sha256": "8abb82abc7f7db0480a7d73772259ec050349e17bfe7a1b1559278f9c8d0bdc0",
+      "bytes": 1520938,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-01-cricket-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-c/master.png",
+      "sha256": "cce68f831c6abb6aa2acdad0e99fddb36842d6d10e9db96666cfca4ba0da39cb",
+      "bytes": 1517039,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-01-cricket-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-d/master.png",
+      "sha256": "da814e0fb7b4304ccc66ab832f7e5a9356d70714dd909214080040173597205c",
+      "bytes": 1631352,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-01-cricket-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-02-damselfly-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-a/master.png",
+      "sha256": "c54e53b6bda4e5a9132bb1796e4781e62255c01cad29b739e8da5bd297562480",
+      "bytes": 1585537,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-02-damselfly-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-b/master.png",
+      "sha256": "41923f77476fd348853a0be027a684ac10beb645dfa37fadec2a616bfe500d7a",
+      "bytes": 1469127,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-02-damselfly-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-c/master.png",
+      "sha256": "e3dbf35b2d1644e0cc8ae77b05bac026b0586b4eb967b9197d7ff0e6f7b27643",
+      "bytes": 1436060,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-02-damselfly-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-d/master.png",
+      "sha256": "ae3c719fd9049cd5667efc1730e216647122376e4c41c569cca4364af44c6a38",
+      "bytes": 1442967,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-02-damselfly-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-03-diving-beetle-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-a/master.png",
+      "sha256": "506fe2edf374dcfe061cb8f807ef01406481b80b516aa710eabc95cac904c515",
+      "bytes": 1553897,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-03-diving-beetle-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-b/master.png",
+      "sha256": "db81753e622318a6e9f6efc8398acc41a01b861f45bcd0abac1d2ddd49ca2b59",
+      "bytes": 1719633,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-03-diving-beetle-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-c/master.png",
+      "sha256": "0db367ccff0e450cf34f06a1e8b2cb1e017c19135a6feb140a6e4d99dc88f43b",
+      "bytes": 1608378,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-03-diving-beetle-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-d/master.png",
+      "sha256": "a86b56f5ee3dea4d65ad8aea1c847c7736f4227e1a438b2c5378f19605ebdd98",
+      "bytes": 1660580,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-03-diving-beetle-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-04-mantis-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-a/master.png",
+      "sha256": "f875d92df99a84e50f930077a574f83a90ef4ddd0f41ccfa5c1c578ec0230a83",
+      "bytes": 1586343,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-04-mantis-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-b/master.png",
+      "sha256": "59f7011b099731e17d96f5b10465a933f4610067f58c0e87a65ce49c20d80c95",
+      "bytes": 1509886,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-04-mantis-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-c/master.png",
+      "sha256": "0e0595a9af8bf92bdafb66334e4186bf274d336b3172d38d3b71f87020bc6ac7",
+      "bytes": 1528654,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-04-mantis-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-d/master.png",
+      "sha256": "b9cfe6cd32b0e64e1a3fd79183a6a2c3d6602bddd40b7396aaa0d20d7f66bfd9",
+      "bytes": 1539422,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-04-mantis-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-05-mayfly-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-a/master.png",
+      "sha256": "46236ec7cfc0192047b14bcce611ba1fa9482dbe741ec2ea53ac78ae566da25a",
+      "bytes": 1559109,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-05-mayfly-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-b/master.png",
+      "sha256": "f18b0743e874d97b059077c652631beedf737dfe7bef3d40a771080226ada713",
+      "bytes": 1537209,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-05-mayfly-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-c/master.png",
+      "sha256": "b8124461b29c3f14b2e60c6fc302c3c35afc525c09dd7240d3e133119241ef6d",
+      "bytes": 1533891,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-05-mayfly-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-d/master.png",
+      "sha256": "aa91540be64a513315f548c081f4021c14d469b9c1342467269c760ed248e2ef",
+      "bytes": 1618155,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-05-mayfly-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-06-stick-insect-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-a/master.png",
+      "sha256": "3538a4452a12933cd3816b2eaf3bd9cef81fcfbf805b2fea3abea12dfe667e1e",
+      "bytes": 1373083,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-06-stick-insect-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-b/master.png",
+      "sha256": "20b06c02a46d8c4755046877b006a4a4ddb1b7fd871a2a2b861303fce1b50b98",
+      "bytes": 1405151,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-06-stick-insect-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-c/master.png",
+      "sha256": "948b9800a281c6432dcfca57c89345d913e706f98fe74d3dd8f96a742da60631",
+      "bytes": 1360821,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-06-stick-insect-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-d/master.png",
+      "sha256": "ee668d8bef7d87d664d360d76fe8930b4f98fa26f02e0d656b3320d23a99d3bf",
+      "bytes": 1409159,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-06-stick-insect-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-07-leafcutter-ant-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-a/master.png",
+      "sha256": "4c330113296e23783d2f236b4982e296aa89321590669148133be35d01ff44de",
+      "bytes": 1608449,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-07-leafcutter-ant-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-b/master.png",
+      "sha256": "d30ea0efcb6ffc5d078ceec3414d24853dbb6d41f3ba773b94ff562dcd6c69d0",
+      "bytes": 1565810,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-07-leafcutter-ant-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-c/master.png",
+      "sha256": "ab5984fc595113fd0cc47ab582aa265383dc5c2e25705df7f5a67afe418c0cfa",
+      "bytes": 1556072,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-07-leafcutter-ant-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-d/master.png",
+      "sha256": "2f47c5cc8a296f44e9c4f105dd49620a6fc624cf4c76178fafdef14e2c768837",
+      "bytes": 1565422,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-07-leafcutter-ant-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-08-cobra-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-a/master.png",
+      "sha256": "bf4d42b1bce17870039c717d1d7125e5018853be8b74f0114c6be6696e891c20",
+      "bytes": 1443413,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-08-cobra-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-b/master.png",
+      "sha256": "2780ae393d26033f5a16b2abe393f67a7af7b3490bda3719027c21e3e892b4aa",
+      "bytes": 1477059,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-08-cobra-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-c/master.png",
+      "sha256": "18de7a33fddf3b9f9f2e3e9211d7df9ce55778c6be045f399db5489cea5e737a",
+      "bytes": 1540152,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-08-cobra-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-d/master.png",
+      "sha256": "29c68184710b268dd19455afa321a3d8284bc88fbd506ded9a15077ac66352cf",
+      "bytes": 1499984,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-08-cobra-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-09-rattlesnake-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-a/master.png",
+      "sha256": "5a9e65401d498f8b3e3d6c360f142073d8ebbe52a7de05d47c3430909562fa99",
+      "bytes": 1513788,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-09-rattlesnake-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-b/master.png",
+      "sha256": "f46de70627122905f3b8b8ed4e7f989491282cfa3a48c56912c1b63548d0250a",
+      "bytes": 1533401,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-09-rattlesnake-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-c/master.png",
+      "sha256": "1183e0fa4af6c24a96d7ba8789b0fc37950a5bf0ced4b807da3c6c06dee9e6c9",
+      "bytes": 1471881,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-09-rattlesnake-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-d/master.png",
+      "sha256": "543141173cd1bb107842b7d37cdeab71bbc424bd33bf45905c614432e3806f86",
+      "bytes": 1499997,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-09-rattlesnake-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-10-sea-spider-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-a/master.png",
+      "sha256": "0fcb4b10130827e1028caf03a57e3b0d69154ef0ac0eafcc1dba4bb0f88ff882",
+      "bytes": 1489067,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-10-sea-spider-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-b/master.png",
+      "sha256": "825e46515dd139c38bea5afd996c445fbb84d65c7c73f4cdc0b0b2e63068e44b",
+      "bytes": 1431383,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-10-sea-spider-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-c/master.png",
+      "sha256": "d5399292635edb968a2bd3427be06ddb1a3de69373dd74668398501602cfd90f",
+      "bytes": 1445338,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-10-sea-spider-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-d/master.png",
+      "sha256": "eefe0d088ca000c621a89f375b4120f343fecbd0d926fd5edcc022f9a4681399",
+      "bytes": 1479983,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-10-sea-spider-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-11-wall-lizard-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-a/master.png",
+      "sha256": "a64c0fd2e7a1a0e82141c29565017b9f09bff48e165cb948faa03669fbc7382b",
+      "bytes": 1464181,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-11-wall-lizard-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-b/master.png",
+      "sha256": "33cab26f8f9a0aa9088b574522b1a6fcb24011862027b1542059258fb43fe951",
+      "bytes": 1503152,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-11-wall-lizard-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-c/master.png",
+      "sha256": "b209b26f78eaae089d3c70d45e8d621302b744ba0a32b26d0418839f9b9ab810",
+      "bytes": 1481068,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-11-wall-lizard-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-d/master.png",
+      "sha256": "94a3cfcd45d2f769483d7579c8162387adbfa1b5da12e6f4d17c2f82ffd6286e",
+      "bytes": 1433303,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-11-wall-lizard-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-12-cave-shrimp-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-a/master.png",
+      "sha256": "7df7fd39bd646236e4cdc3e011b7c5de4e2bd1a36c2acad26f5dd14c03475c95",
+      "bytes": 1442112,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-12-cave-shrimp-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-b/master.png",
+      "sha256": "8ce4c1a30e6437353d2f569f9a3c28828449bc2f4c893c166f38150f8171d922",
+      "bytes": 1397176,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-12-cave-shrimp-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-c/master.png",
+      "sha256": "c610d33790889a0767181946c5d07ba7ad6e24748cc554063f98742f774f7f1b",
+      "bytes": 1485582,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-12-cave-shrimp-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-d/master.png",
+      "sha256": "9aa7d7e791a9e78ed30655f68dd1e282b233cf4ffe1be1247d5f5badc374fb3a",
+      "bytes": 1458834,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-12-cave-shrimp-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-13-freshwater-shrimp-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-a/master.png",
+      "sha256": "390b12228d66ed089840a6917a6bb41290356e00de0f9cac6a2321e0d4946aea",
+      "bytes": 1562335,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-13-freshwater-shrimp-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-b/master.png",
+      "sha256": "8a4738aa020376aaf1279bfc7c164dd6a08df24b535528d1cf4e7abbc8e50cca",
+      "bytes": 1507016,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-13-freshwater-shrimp-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-c/master.png",
+      "sha256": "a55ba86124e69121bdb90bae696eab42b4ec731b1acbce8c1e677adc1910a5dc",
+      "bytes": 1528072,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-13-freshwater-shrimp-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-d/master.png",
+      "sha256": "3b92f3132a7cbd9d6a9c1f88a84cca382e40ca43be2ef41e85b77e59bd4b3fd9",
+      "bytes": 1474764,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-13-freshwater-shrimp-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-14-shrimp-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-a/master.png",
+      "sha256": "3d566878ccbc139c28334a152b36482f8852f63ac7572eb2773d4b43684a9b6d",
+      "bytes": 1569128,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-14-shrimp-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-b/master.png",
+      "sha256": "f51849a57d3b9c0e1d599b93265ca836c4d98dddbabc41eb8c6927d65db1c78e",
+      "bytes": 1569345,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-14-shrimp-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-c/master.png",
+      "sha256": "ace4cffb92dcfc09e895bcc7b03d6437940e5ea95ea043e9cafd327dd7462351",
+      "bytes": 1623362,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-14-shrimp-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-d/master.png",
+      "sha256": "cf0eaca2736e7b0a9a6dfd1438998acd3e4c1facff120dbf3b72254ab0bd0d5e",
+      "bytes": 1535031,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-14-shrimp-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-15-vent-shrimp-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-a/master.png",
+      "sha256": "ce2abe4d96bae9135cc39958dc5dafcb90d99f376ca1e6d9acac78a93b9563f6",
+      "bytes": 1540348,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-15-vent-shrimp-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-b/master.png",
+      "sha256": "030c8d74ffcbadc87e66a97bb2bf7a7ad7f4e72c5e8a415829bb733ac0853a0b",
+      "bytes": 1597198,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-15-vent-shrimp-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-c/master.png",
+      "sha256": "c03282726832a9544576ee7dad75f742efe157bff56b7ca03b0105f9611c3d24",
+      "bytes": 1564100,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-15-vent-shrimp-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-d/master.png",
+      "sha256": "3ea0edb3fdd51f3b07f9d9c648d1454c9059de646bcda457bd20ad817ff72759",
+      "bytes": 1570053,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-15-vent-shrimp-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-16-camel-spider-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-a/master.png",
+      "sha256": "a310170de0511696ab755004e679b7850abb790e4d5ba48b688b43e59a50aa3d",
+      "bytes": 1677602,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-16-camel-spider-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-b/master.png",
+      "sha256": "ace5d900454b4667d0de08d5d1819712d966d87a1eb2340f7a7d8b580df47ffc",
+      "bytes": 1673241,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-16-camel-spider-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-c/master.png",
+      "sha256": "6050546e649f6070618478430e644093789f72994c1541dab5e9ae8482d84cdb",
+      "bytes": 1639770,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-16-camel-spider-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-d/master.png",
+      "sha256": "cc927d1f8252a27d64d3cec4b93300f688aaf19e0eb97cebcd92f14d2a2da559",
+      "bytes": 1747397,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-16-camel-spider-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-17-mud-crab-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-a/master.png",
+      "sha256": "a703c51a02bbbcd455101b8861d4cc86f8e5c4267c8d7d02144d76cf13f1b232",
+      "bytes": 1789987,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-17-mud-crab-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-b/master.png",
+      "sha256": "50292f7a5988dc808d97b14478e2e7a8da39a390bd59bc22be9941545c42332a",
+      "bytes": 1750243,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-17-mud-crab-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-c/master.png",
+      "sha256": "779bb396c07e47858106d963e53d10168ece78241dfcbf61843065b1e393c7ee",
+      "bytes": 1780566,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-17-mud-crab-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-d/master.png",
+      "sha256": "57937872a800268ef9a4f6ce2f09596931a5aa00f431de06f7e98fae2043ed05",
+      "bytes": 1837755,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-17-mud-crab-d/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-18-warthog-a",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-a/master.png",
+      "sha256": "a659c225a51e3381b346158a1dddf1c46c8f914822c5f3277b4835fb8088dd61",
+      "bytes": 1830576,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-a/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-a/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-18-warthog-b",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-b/master.png",
+      "sha256": "91d6fa0ce49ea660e5136a67f5dbafc3bf9afe18104faff9989e1bccca2bf635",
+      "bytes": 1877139,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-b/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-b/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-18-warthog-c",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-c/master.png",
+      "sha256": "c0960e744401bd53160be314858e309a24fd222afaee7e670ce634f692a945ab",
+      "bytes": 1800296,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-c/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-c/lease-release.json",
+      "actualSeed": null
+    },
+    {
+      "id": "c279-18-warthog-d",
+      "master": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-d/master.png",
+      "sha256": "bfe405de7672ab5cd8289075b5758c9a8e4d05de40afc1f857e57f89e444c358",
+      "bytes": 1906830,
+      "generationReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-d/generation.json",
+      "releaseReceipt": "audits/C279_CODEX_20261018/coordinator/paintings/c279-18-warthog-d/lease-release.json",
+      "actualSeed": null
+    }
+  ]
+}

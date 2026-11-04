@@ -1,0 +1,379 @@
+{
+  "id": "c275-w1-03-c266-caecilian",
+  "family": "serpent",
+  "landmarksPx": {
+    "root": [
+      990,
+      614
+    ],
+    "head": [
+      1062,
+      625
+    ],
+    "jaw": [
+      1111,
+      648
+    ],
+    "seg0": [
+      949,
+      603
+    ],
+    "seg1": [
+      865,
+      592
+    ],
+    "seg2": [
+      780,
+      592
+    ],
+    "seg3": [
+      695,
+      610
+    ],
+    "seg4": [
+      610,
+      638
+    ],
+    "seg5": [
+      525,
+      660
+    ],
+    "seg6": [
+      440,
+      653
+    ],
+    "seg7": [
+      355,
+      638
+    ],
+    "seg8": [
+      270,
+      634
+    ],
+    "seg9": [
+      185,
+      667
+    ]
+  },
+  "groundLineY": 0.582,
+  "materials": {
+    "surface": "slick"
+  },
+  "habitat": {
+    "realm": "land",
+    "source": "Pinned Earth Caecilian ground capability; painted support is the actual annular trunk"
+  },
+  "remainderPart": "neck-root",
+  "parts": [
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1078,
+          649
+        ],
+        [
+          1128,
+          635
+        ],
+        [
+          1132,
+          668
+        ],
+        [
+          1108,
+          680
+        ],
+        [
+          1081,
+          669
+        ]
+      ]
+    },
+    {
+      "id": "head-with-sensory-tentacle",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1018,
+          544
+        ],
+        [
+          1129,
+          558
+        ],
+        [
+          1141,
+          693
+        ],
+        [
+          1089,
+          706
+        ],
+        [
+          1016,
+          673
+        ]
+      ]
+    },
+    {
+      "id": "body-seg0",
+      "joint": "seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          907.0,
+          0
+        ],
+        [
+          975,
+          0
+        ],
+        [
+          975,
+          1254
+        ],
+        [
+          907.0,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-seg1",
+      "joint": "seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          822.5,
+          0
+        ],
+        [
+          907.0,
+          0
+        ],
+        [
+          907.0,
+          1254
+        ],
+        [
+          822.5,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-seg2",
+      "joint": "seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          737.5,
+          0
+        ],
+        [
+          822.5,
+          0
+        ],
+        [
+          822.5,
+          1254
+        ],
+        [
+          737.5,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-seg3",
+      "joint": "seg3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          652.5,
+          0
+        ],
+        [
+          737.5,
+          0
+        ],
+        [
+          737.5,
+          1254
+        ],
+        [
+          652.5,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-seg4",
+      "joint": "seg4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          567.5,
+          0
+        ],
+        [
+          652.5,
+          0
+        ],
+        [
+          652.5,
+          1254
+        ],
+        [
+          567.5,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-seg5",
+      "joint": "seg5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          482.5,
+          0
+        ],
+        [
+          567.5,
+          0
+        ],
+        [
+          567.5,
+          1254
+        ],
+        [
+          482.5,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-seg6",
+      "joint": "seg6",
+      "layer": "near",
+      "polygonPx": [
+        [
+          397.5,
+          0
+        ],
+        [
+          482.5,
+          0
+        ],
+        [
+          482.5,
+          1254
+        ],
+        [
+          397.5,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-seg7",
+      "joint": "seg7",
+      "layer": "near",
+      "polygonPx": [
+        [
+          312.5,
+          0
+        ],
+        [
+          397.5,
+          0
+        ],
+        [
+          397.5,
+          1254
+        ],
+        [
+          312.5,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-seg8",
+      "joint": "seg8",
+      "layer": "near",
+      "polygonPx": [
+        [
+          227.5,
+          0
+        ],
+        [
+          312.5,
+          0
+        ],
+        [
+          312.5,
+          1254
+        ],
+        [
+          227.5,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-seg9",
+      "joint": "seg9",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          227.5,
+          0
+        ],
+        [
+          227.5,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "neck-root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "Single observed limbless annular Caecilian source; head/sensory tentacle and blunt tail retained. No snake head-widest or thinness source rule added; unchanged static remains authoritative."
+  }
+}

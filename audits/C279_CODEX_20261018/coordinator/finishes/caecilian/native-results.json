@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c275-w1-03-c266-caecilian",
+    "packetId": "c275-w1-03-c266-caecilian",
+    "name": "Caecilian",
+    "fit": "audits/C279_CODEX_20261018/coordinator/finishes/caecilian/rebound/c275-w1-03-c266-caecilian",
+    "nativeDir": "audits/C279_CODEX_20261018/coordinator/finishes/caecilian/native",
+    "nativeReport": "audits/C279_CODEX_20261018/coordinator/finishes/caecilian/native/report.json",
+    "script": "audits/C279_CODEX_20261018/coordinator/plans/additional-caecilian-observed02/script.json",
+    "masterSha256": "64ea849b4589fc77713b2709d206aa411ea9e652d4fde86eea12bb0b00fe7564",
+    "staticReport": "audits/C279_CODEX_20261018/w3-intake/additional15/cpu02/caecilian-observed02/static.json",
+    "observedPacket": "audits/C279_CODEX_20261018/w3-intake/additional15/observed02/c275-w1-03-c266-caecilian",
+    "keyColor": "magenta",
+    "nativeAcceptance": false,
+    "finishedMaster": "audits/C279_CODEX_20261018/coordinator/finishes/caecilian/finished/c275-w1-03-c266-caecilian-finished.png",
+    "finishReceipt": "audits/C279_CODEX_20261018/coordinator/finishes/caecilian/finished/c275-w1-03-c266-caecilian-receipt.json",
+    "checkpointReview": "audits/C279_CODEX_20261018/w2-motion/current-films/additional-caecilian-observed02/checkpoint-final.json",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS"
+  }
+]

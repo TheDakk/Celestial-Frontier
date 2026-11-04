@@ -1,0 +1,111 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c275-w1-22-c266-black-fly",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "0ca150f62e8f8b60f4492091dfc8e7926d58923259ef0344553d3cd04886a4f1",
+    "pngSha256": "dcb69f152c68600927a91ea0a0de557bc61fa13044d4875a82602191c166efd7"
+  },
+  "parts": [
+    {
+      "name": "abdomen.png",
+      "sha256": "c143090efdcd668b14f07850bb0afed1cd0ef561faba9f6bdfb6f2411784c472"
+    },
+    {
+      "name": "antenna-far.png",
+      "sha256": "1c11948d792cdf248b8f18e991d1698eba85ec9c6a9789372e93c5e73350b60d"
+    },
+    {
+      "name": "antenna-near.png",
+      "sha256": "5b1757b168333602c12388a7782af638d66bc9d240d425e1b2f75bd53c19b61f"
+    },
+    {
+      "name": "body.png",
+      "sha256": "154cffc07015d68b4961672636d496467cbcf192f723efbecd25576ebe732b7e"
+    },
+    {
+      "name": "head.png",
+      "sha256": "4367ef6f9d7bc2e672813c3a13c14b1dc1b97f3aff49f6fb9d98635d094fcdea"
+    },
+    {
+      "name": "legfrontfar-distal.png",
+      "sha256": "d5d971e3202abbb73c8d51d37ab9dcf53b950c8344ce3fcde1b977c4cb5c4db1"
+    },
+    {
+      "name": "legfrontfar-upper.png",
+      "sha256": "ea2484ddf9edbd33dfe12a5ab792232fa9feb16303c6ff150c3ed0c113550684"
+    },
+    {
+      "name": "legfrontnear-distal.png",
+      "sha256": "2ffcb806a3bee46d92d1ee5b44b8fed50a4c37dd788ef9a1ab49169d2daaf53a"
+    },
+    {
+      "name": "legfrontnear-upper.png",
+      "sha256": "25a6d45f06dea8e4d9097561355eb58c1a41fbb0a2f4d8940b0579ffb2e9d8f1"
+    },
+    {
+      "name": "leghindfar-distal.png",
+      "sha256": "faeac033fd108f746ac28c6ab3b0123ed07860c9b682540b36a68e9ed791cd80"
+    },
+    {
+      "name": "leghindfar-upper.png",
+      "sha256": "c0d6def2c3e39d4186d8f98bb9744e4e8aa0cadcfc0c4536996f95f018827c46"
+    },
+    {
+      "name": "leghindnear-distal.png",
+      "sha256": "c414556a7b8ce00ed6627c99d51a17249a1ffc3426d52c99fbcb7afe21fde35e"
+    },
+    {
+      "name": "leghindnear-upper.png",
+      "sha256": "069decddd83e0e5bb7955ba28780f3cc68f1a4c73c54c8cf9ffd87d581b825cf"
+    },
+    {
+      "name": "legmidfar-distal.png",
+      "sha256": "c48671e82b44f37986973df54b6edda7c4d9486c94a002bc66c4507925d38d79"
+    },
+    {
+      "name": "legmidfar-upper.png",
+      "sha256": "0480af5632beae16823dfd08294babfe6b77c6eb442b5970aff0e7df3eae21a2"
+    },
+    {
+      "name": "legmidnear-distal.png",
+      "sha256": "4e2cd9d98e6f5d4cd417be2b8c542417037eb82a72bae9f379e498efcf0eb57f"
+    },
+    {
+      "name": "legmidnear-upper.png",
+      "sha256": "00f17f2e3a01cb6f2dbd59065127f2b496fb539aa6fbe4449ff4d522fcac2266"
+    },
+    {
+      "name": "mouth-tubes.png",
+      "sha256": "7a57ac44e5bf7be77052fbe49a4f99d5aa026d0a3a54c00e1a30d127440ebfa9"
+    },
+    {
+      "name": "wing-far.png",
+      "sha256": "3d8bf3dee38e52ac8b5c051a7ee7cfbef04ca40dc202409a39bff3f10b0a9311"
+    },
+    {
+      "name": "wing-near.png",
+      "sha256": "44e7bc8c9db2660438d87b5c7a97f0463f1163fa9aac2ac2be2a6767da840fdb"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

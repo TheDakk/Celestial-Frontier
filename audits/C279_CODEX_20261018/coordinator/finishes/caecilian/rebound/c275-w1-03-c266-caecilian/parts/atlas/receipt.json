@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c275-w1-03-c266-caecilian",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "28cc04baf8a321ba8cea14b97c7dd573c8c0fecaedcf9eb440556a77800508ac",
+    "pngSha256": "66ca29d376b9fdccee820cf31601a9badd089ce055eedd87c4fbc66249e33eb0"
+  },
+  "parts": [
+    {
+      "name": "body-seg0.png",
+      "sha256": "56ef1b810a9a7bdf8e7667ffb0bcb8f1fa88b41e52d6c8ab73ea7a641fb27ad6"
+    },
+    {
+      "name": "body-seg1.png",
+      "sha256": "6d1cc6f0f6f4729258e80fd8b6dbfacff0778b6c340dfff7e842a08495e2910d"
+    },
+    {
+      "name": "body-seg2.png",
+      "sha256": "ede410c6dce8a7369ffd5a2fecbbb0fee9c9e325d64bbdb381d8e0d594164d0c"
+    },
+    {
+      "name": "body-seg3.png",
+      "sha256": "4ba679fe95ee2ff3a5bf353d6603d42b80d3975fa292ffa08c452b9536cfcef9"
+    },
+    {
+      "name": "body-seg4.png",
+      "sha256": "6c554a40b44d16e2f6fc157cd1925b24d66c554da5cec24d2d343304233c5631"
+    },
+    {
+      "name": "body-seg5.png",
+      "sha256": "73c1506be75b65a8829289696c3bec82243af42af6c8c808e0ee77db81be4650"
+    },
+    {
+      "name": "body-seg6.png",
+      "sha256": "252faa2ef325aa1ae23e1db1887f8eac6d5e6c91529e5fe779b3d098ec715c29"
+    },
+    {
+      "name": "body-seg7.png",
+      "sha256": "e82a4d8a2c4a2de9784a1239a145447f2b0e6138be2f50899a395ae60e76f432"
+    },
+    {
+      "name": "body-seg8.png",
+      "sha256": "4be757e520550edae9d5fe7630dec8c1ccc09ff7061a8aed25f1e84f20e01ece"
+    },
+    {
+      "name": "body-seg9.png",
+      "sha256": "694167c2ce58a6edc0b5f6aef443e680a6a74eb78408d7f80f7a7dadbcdbce96"
+    },
+    {
+      "name": "head-with-sensory-tentacle.png",
+      "sha256": "41a8b7695a979afa3e875ea682dd1213831656788aec3c0e16c14553898d0600"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "bc1074c42884c741073ade486d8be8ffa2dee94edda5c4f6e28d4544e52ff602"
+    },
+    {
+      "name": "neck-root.png",
+      "sha256": "667044183982a2736fb850fffcaf485b45a330594ded09e64aa5a2db34ba1995"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

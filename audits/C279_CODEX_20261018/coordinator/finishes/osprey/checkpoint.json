@@ -1,0 +1,5 @@
+{
+  "checkpointReview": "audits/C279_CODEX_20261018/w2-motion/current-films/osprey-owner-r03/checkpoint-final.json",
+  "checkpointReviewSha256": "ee33e277165e004afb823868ac0b0c8ee508aaa6d6faded07c98022b5b483e35",
+  "nativePlan": "audits/C279_CODEX_20261018/coordinator/plans/osprey-owner-r03/plan.json"
+}

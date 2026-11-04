@@ -1,0 +1,20 @@
+{
+  "stage": "native-best4-wall-lizard",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-best4-wall-lizard",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/best4-wall-lizard/plan.json"
+  ],
+  "startedUnix": 1792344705.440314,
+  "beforeGiB": 70.65283966064453,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 24.071,
+  "lowestGiB": 70.2475357055664,
+  "afterGiB": 70.61729431152344
+}

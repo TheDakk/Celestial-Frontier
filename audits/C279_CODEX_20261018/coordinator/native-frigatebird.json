@@ -1,0 +1,20 @@
+{
+  "stage": "native-frigatebird",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-native-frigatebird",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/frigatebird/plan.json"
+  ],
+  "startedUnix": 1792335585.218282,
+  "beforeGiB": 76.90800857543945,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 22.031,
+  "lowestGiB": 76.48286056518555,
+  "afterGiB": 76.86947250366211
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "native-additional-caecilian-observed02",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-additional-caecilian-observed02",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/additional-caecilian-observed02/plan.json"
+  ],
+  "startedUnix": 1792338518.041753,
+  "beforeGiB": 72.58474731445312,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 18.062,
+  "lowestGiB": 72.16059494018555,
+  "afterGiB": 72.53496932983398
+}

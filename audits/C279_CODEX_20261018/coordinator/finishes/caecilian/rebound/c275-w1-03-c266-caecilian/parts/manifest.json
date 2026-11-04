@@ -1,0 +1,70 @@
+{
+  "creatureId": "c275-w1-03-c266-caecilian",
+  "parts": [
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "e78eb9e6a4eaf4b0571ec8838407d126c27a0a6b57c029057a403e0eb8b544a4"
+    },
+    {
+      "name": "head-with-sensory-tentacle.png",
+      "path": "parts/head-with-sensory-tentacle.png",
+      "sha256": "a7359646cb6f92337ddf57c8a132a4c67de3af33c7c10d5915f5c8c4e8635c1f"
+    },
+    {
+      "name": "body-seg0.png",
+      "path": "parts/body-seg0.png",
+      "sha256": "6506efb279a00e76545619b2d4f7cc38b341bb6e39a1af2a0d043ed4241ab0ba"
+    },
+    {
+      "name": "body-seg1.png",
+      "path": "parts/body-seg1.png",
+      "sha256": "74546c0bc041a74f086a8134da764502cc9af5fc702a3ad0d9967a793e7b293c"
+    },
+    {
+      "name": "body-seg2.png",
+      "path": "parts/body-seg2.png",
+      "sha256": "44dca4343382e4e3bd4b3de2c8c0abe994db4143549bd095da4cba18ee8bcc66"
+    },
+    {
+      "name": "body-seg3.png",
+      "path": "parts/body-seg3.png",
+      "sha256": "7fa7ad23adb01fcbd4bf593e42167aade93ac6a77b6e47d241b21ef6340a2850"
+    },
+    {
+      "name": "body-seg4.png",
+      "path": "parts/body-seg4.png",
+      "sha256": "92cad56f07b7ba3db894acca18dd09aacb573ca21b42188579bc1cb6db0dd2fc"
+    },
+    {
+      "name": "body-seg5.png",
+      "path": "parts/body-seg5.png",
+      "sha256": "d14205dd75714185d65139db23ae8c850548901fa454ff0d59a6743d8df10fd5"
+    },
+    {
+      "name": "body-seg6.png",
+      "path": "parts/body-seg6.png",
+      "sha256": "4a72ac3f9688ad85053d5f89b78bf008fde8ba637d3e838e3c214a08b2a2d974"
+    },
+    {
+      "name": "body-seg7.png",
+      "path": "parts/body-seg7.png",
+      "sha256": "e267bfb29c1d394b9ead1f4b68a5ce29838318711e34b102b1fec6f3ac3b242a"
+    },
+    {
+      "name": "body-seg8.png",
+      "path": "parts/body-seg8.png",
+      "sha256": "dc1f6ac187277041172107dc7b879288eebf14ea3d4527da8b1c9b7aed90d789"
+    },
+    {
+      "name": "body-seg9.png",
+      "path": "parts/body-seg9.png",
+      "sha256": "2e7488f098a3d7b2d1a466db2e399da53eaadc51ea4e45aedaec0a3570e046c2"
+    },
+    {
+      "name": "neck-root.png",
+      "path": "parts/neck-root.png",
+      "sha256": "f9f618d6332924cc36d22f1ff3857e54e3faf25bc2d33fd8e1ddd53c3cc73bb9"
+    }
+  ]
+}

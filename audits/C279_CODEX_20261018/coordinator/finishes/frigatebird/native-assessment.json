@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "nativeResults": [
+    {
+      "status": "DIAGNOSTIC_PASS",
+      "exitCode": 0
+    }
+  ]
+}

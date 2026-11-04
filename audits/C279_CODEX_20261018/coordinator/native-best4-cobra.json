@@ -1,0 +1,20 @@
+{
+  "stage": "native-best4-cobra",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-best4-cobra",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/best4-cobra/plan.json"
+  ],
+  "startedUnix": 1792342631.192263,
+  "beforeGiB": 71.73801803588867,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.054,
+  "lowestGiB": 71.3269271850586,
+  "afterGiB": 71.70410919189453
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "c279-frigatebird-owner-r02",
+    "packetId": "c279-frigatebird-owner-r02",
+    "name": "Frigatebird",
+    "fit": "audits/C279_CODEX_20261018/coordinator/finishes/frigatebird/rebound/c279-frigatebird-owner-r02",
+    "nativeDir": "audits/C279_CODEX_20261018/coordinator/finishes/frigatebird/native",
+    "nativeReport": "audits/C279_CODEX_20261018/coordinator/finishes/frigatebird/native/report.json",
+    "script": "audits/C279_CODEX_20261018/coordinator/plans/frigatebird-owner-r02/script.json",
+    "masterSha256": "4e79f78c6322ade07a0881f5491930c1b002d1c4e85e50471cf2d30822b2a30e",
+    "staticReport": "audits/C279_CODEX_20261018/w3-intake/primary-repair02/frigatebird/static.json",
+    "observedPacket": "audits/C279_CODEX_20261018/w3-intake/primary-repair02/frigatebird/packet",
+    "changedInputReceipt": "audits/C279_CODEX_20261018/w3-intake/primary-repair02/frigatebird/changed-input-receipt.json",
+    "firstNativeHold": "audits/C279_CODEX_20261018/coordinator/films/frigatebird/report.json",
+    "scope": "Finished texture on byte-identical geometry; independentW3 required",
+    "nativeAcceptance": false,
+    "finishedMaster": "audits/C279_CODEX_20261018/coordinator/finishes/frigatebird/finished/c279-frigatebird-owner-r02-finished.png",
+    "finishReceipt": "audits/C279_CODEX_20261018/coordinator/finishes/frigatebird/finished/c279-frigatebird-owner-r02-receipt.json",
+    "checkpointReview": "audits/C279_CODEX_20261018/w2-motion/current-films/frigatebird-owner-r02/checkpoint-final.json"
+  }
+]

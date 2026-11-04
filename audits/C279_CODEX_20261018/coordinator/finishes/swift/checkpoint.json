@@ -1,0 +1,5 @@
+{
+  "checkpointReview": "audits/C279_CODEX_20261018/w2-motion/current-films/swift/checkpoint-final.json",
+  "checkpointReviewSha256": "f3e71100241aa52d1b0393567920aba68a9eef5dd04a1e17724e32df90c81b89",
+  "nativePlan": "audits/C279_CODEX_20261018/coordinator/plans/swift/plan.json"
+}

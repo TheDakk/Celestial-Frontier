@@ -1,0 +1,15 @@
+{
+  "schema": "cf.c279-observed-author/v1",
+  "masterSha256": "61db26522bce260f51403d3335f2190c2ba03912cb9a1d8b36461bb76e78b794",
+  "subjectSha256": "7fa1139178dc5c3de2bc095721d5ab1a0dc6bdef4b48913d603c2e41ffb2957f",
+  "promptSha256": "23652caa0926bbd6c7bfa2f40c56211ba5b768d6f8161f69305a8bda7c43d168",
+  "inspection": "Actual native1254 original viewed. Distal tarsi and exposed knees located on individual painted leg branches. Internally shared thorax roots follow existing graph; no unseen terminal is fabricated.",
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "autoAuthorReused": false,
+  "notes": [
+    "Six distinct exposed tarsi retained. One far proximal leg disappears behind torso/near limb, but its knee/distal branch and foot are independently visible.",
+    "Two true dipteran wing surfaces are separately source-owned. No extra wing or hidden leg is invented."
+  ],
+  "nativeAcceptance": false
+}

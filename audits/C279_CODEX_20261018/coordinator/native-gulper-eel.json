@@ -1,0 +1,20 @@
+{
+  "stage": "native-gulper-eel",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "C279-native-gulper-eel",
+    "--",
+    "python3",
+    "audits/C266_CODEX_20261017/coordinator/run-native-one.py",
+    "audits/C279_CODEX_20261018/coordinator/plans/gulper-eel/plan.json"
+  ],
+  "startedUnix": 1792335358.809485,
+  "beforeGiB": 76.9627456665039,
+  "status": "PASS",
+  "exitCode": 0,
+  "elapsedSeconds": 20.061,
+  "lowestGiB": 76.56334686279297,
+  "afterGiB": 76.93396759033203
+}
