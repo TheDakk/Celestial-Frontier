@@ -1,0 +1,297 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c239/11-african-wild-dog/fit",
+  "sourceMasterSha256": "35fa47ca0ca969e1b446b54493747fe7364ea34142dd021f6b6073217eac0d8e",
+  "keyedRgbaSha256": "5b5d52f4d3081b8d6da118e94cc2bb3b4b50416be282032da5c2bd803d19d734",
+  "remainder": "spine",
+  "remainderPixels": 32568,
+  "movedPixels": 4463,
+  "islands": [
+    {
+      "pixels": 1076,
+      "to": "neck",
+      "border": {
+        "neck": 152
+      }
+    },
+    {
+      "pixels": 56,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-near-tip": 17,
+        "ear-far-tip": 27
+      }
+    },
+    {
+      "pixels": 24,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-far-tip": 22
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-far-tip": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-far-tip": 2
+      }
+    },
+    {
+      "pixels": 36,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-far-tip": 20,
+        "ear-far-root": 6
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "ear-far-root",
+      "border": {
+        "ear-far-root": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "ear-far-root",
+      "border": {
+        "ear-far-root": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "ear-far-root",
+      "border": {
+        "ear-far-root": 2
+      }
+    },
+    {
+      "pixels": 1976,
+      "to": "neck",
+      "border": {
+        "jaw": 21,
+        "head": 44,
+        "neck": 125,
+        "chest": 22
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "tail1",
+      "border": {
+        "tail1": 5
+      }
+    },
+    {
+      "pixels": 14,
+      "to": "tail1",
+      "border": {
+        "tail1": 7
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail1",
+      "border": {
+        "tail1": 2
+      }
+    },
+    {
+      "pixels": 320,
+      "to": "hind-far-root",
+      "border": {
+        "hind-far-knee": 16,
+        "hind-far-root": 80
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "tail1",
+      "border": {
+        "hind-near-root": 3,
+        "tail1": 8
+      }
+    },
+    {
+      "pixels": 511,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-knee": 49,
+        "hind-near-root": 78,
+        "hind-far-root": 3
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "tail2",
+      "border": {
+        "tail2": 5
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-knee",
+      "border": {
+        "hind-far-knee": 2
+      }
+    },
+    {
+      "pixels": 33,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 21,
+        "fore-near-knee": 7
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 3
+      }
+    },
+    {
+      "pixels": 26,
+      "to": "fore-near-ankle",
+      "border": {
+        "fore-near-ankle": 12
+      }
+    },
+    {
+      "pixels": 73,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 23,
+        "hind-far-ankle": 8
+      }
+    },
+    {
+      "pixels": 18,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 7,
+        "hind-far-ankle": 7
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-paw",
+      "border": {
+        "fore-far-paw": 2
+      }
+    },
+    {
+      "pixels": 40,
+      "to": "hind-near-paw",
+      "border": {
+        "hind-near-paw": 23
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 2
+      }
+    },
+    {
+      "pixels": 69,
+      "to": "fore-far-paw",
+      "border": {
+        "fore-far-paw": 23
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 6
+      }
+    },
+    {
+      "pixels": 158,
+      "to": "fore-near-paw",
+      "border": {
+        "fore-near-paw": 33,
+        "fore-near-ankle": 9
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 50% refuses",
+  "intake": {
+    "id": "11-african-wild-dog",
+    "parts": 31,
+    "atlasSize": {
+      "width": 517,
+      "height": 1406
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 37,
+        "distancePx": 5.872818744010467,
+        "supports": [
+          568
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 52,
+        "distancePx": 8.631338250816118,
+        "supports": [
+          717
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 25,
+        "distancePx": 2.193171219946084,
+        "supports": [
+          140
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 54,
+        "distancePx": 2.0880613017821616,
+        "supports": [
+          447
+        ]
+      }
+    ],
+    "sourceBindingHash": "35cd643483ffb639c547a2dcbb013da1b11a1557f10d6a27bb4833183cb49ac1",
+    "sourceVertices": 1340,
+    "vertices": 1510,
+    "sharedSupports": 471,
+    "pins": 126,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 34,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 10,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

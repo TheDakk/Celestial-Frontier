@@ -1,0 +1,96 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c151/13-saiga/fit",
+  "sourceMasterSha256": "d206e4315d383d9cc2c0b83bd453918af6bbdbe95df810f0b8201a48e264120b",
+  "keyedRgbaSha256": "04c3eb8074a16512b17bc29c3fe123463f8083395f66ccae6da1c0f633a327b3",
+  "remainder": "spine",
+  "remainderPixels": 18200,
+  "movedPixels": 349,
+  "islands": [
+    {
+      "pixels": 336,
+      "to": "ear-near-tip",
+      "border": {
+        "ear-near-tip": 38,
+        "ear-near-root": 1
+      }
+    },
+    {
+      "pixels": 13,
+      "to": "hind-far-paw",
+      "border": {
+        "hind-far-paw": 11
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "13-saiga",
+    "parts": 31,
+    "atlasSize": {
+      "width": 427,
+      "height": 1123
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 13,
+        "distancePx": 3.047950130825612,
+        "supports": [
+          442
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 16,
+        "distancePx": 8.075270893288918,
+        "supports": [
+          528
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 20,
+        "distancePx": 4.071854614300508,
+        "supports": [
+          18
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 19,
+        "distancePx": 7.0007142492747745,
+        "supports": [
+          243
+        ]
+      }
+    ],
+    "sourceBindingHash": "62eecec952968ca367301a0afbff305aed889862f4856532c25371b733568cda",
+    "sourceVertices": 797,
+    "vertices": 905,
+    "sharedSupports": 301,
+    "pins": 85,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 38,
+    "excludedOverlaps": 12,
+    "observedExcludedBoundaries": 12,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 12,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}
