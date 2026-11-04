@@ -1,0 +1,118 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "04-boxfish",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "27162f2b3e6c38720acdffe842c41f4d6161c4376909d45ee44062f5714a2100",
+ "subjectSourceSha256": "3ed3ff107d0991305c449fb6ce4a0260b303b61067c43b166d5d8a6071021691",
+ "identity": {
+  "name": "Boxfish",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Boxfish\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1096478061\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "seed": 1096478061,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "bass",
+  "authoringSha256": "dd60d0253965cb37a46ac5434693058f8bac78d815fba2505ea0ffe7c7f0721f",
+  "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.042,
+     "class": "rear",
+     "attach": {
+      "x": 192.4,
+      "y": 158.9,
+      "relX": 0.09,
+      "relY": 0.09
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0065,
+     "class": "front",
+     "attach": {
+      "x": 275,
+      "y": 149,
+      "relX": 0.59,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.2425,
+     "class": "rear",
+     "attach": {
+      "x": 176.5,
+      "y": 210.5,
+      "relX": 0,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0234,
+     "class": "limb-down",
+     "attach": {
+      "x": 343,
+      "y": 198.5,
+      "relX": 1.01,
+      "relY": 0.47
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 2,
+    "front": 1,
+    "limb-down": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "bass",
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "rear": 2,
+    "front": 1,
+    "limb-down": 1
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

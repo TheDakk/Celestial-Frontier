@@ -1,0 +1,123 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "16-eider-duck",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "5076153c46529cb07edcd5b2c3be17ac0db81e53e14227436b1918a98c0a0503",
+ "subjectSourceSha256": "1d145bd6df7633690a0853996ec2292bee4aa152918f5e63e7caf94fb257b439",
+ "identity": {
+  "name": "Eider Duck",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Eider Duck\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1450232736\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "seed": 1450232736,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "03-duck-v2",
+  "authoringSha256": "53c2d3034b1fa503733ae87189e647efdb0121d99ee0685b0e26c2db76241976",
+  "masterSha256": "b1311edf9b88da5e6854e2c7fac562eaaa89ce2e674a47616fc8adc2d089af97"
+ },
+ "habitat": {
+  "profileId": "swimming-bird",
+  "media": [
+   "air",
+   "water",
+   "ground"
+  ],
+  "profileSha256": "2cc9d25e4388d5e74ca457e9ba1ab01e14bd812a845fb73e050eee00145bda31",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group swimming-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1563,
+     "class": "top",
+     "attach": {
+      "x": 258,
+      "y": 169,
+      "relX": 0.83,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0215,
+     "class": "front",
+     "attach": {
+      "x": 282,
+      "y": 196,
+      "relX": 1.01,
+      "relY": 0.32
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.067,
+     "class": "rear",
+     "attach": {
+      "x": 142,
+      "y": 218.5,
+      "relX": -0.01,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0708,
+     "class": "limb-down",
+     "attach": {
+      "x": 201,
+      "y": 252,
+      "relX": 0.42,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "03-duck-v2",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "groundContacts": 3,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "id": "03-viper",
+ "family": "serpent",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

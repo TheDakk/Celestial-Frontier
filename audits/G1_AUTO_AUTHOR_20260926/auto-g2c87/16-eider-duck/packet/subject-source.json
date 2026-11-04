@@ -1,0 +1,79 @@
+{
+  "name": "Eider Duck",
+  "family": "biped-bird",
+  "species": {
+    "name": "Eider Duck",
+    "aspect": 2.2,
+    "headFrac": 0.28,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "long wedge-shaped bill running in a straight line into the forehead",
+      "bulky heavy-bodied duck sitting low in the water",
+      "black-and-white blocks with a pale green nape"
+    ],
+    "note": "The unbroken sloping wedge from bill tip to crown is the key read; a normal duck's stepped forehead is wrong."
+  },
+  "genome": {
+    "seed": 1450232736,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 17,
+    "body": 2,
+    "loco": 14,
+    "trait": 1,
+    "size": 4,
+    "diet": 0,
+    "head": 6,
+    "limbs": 3,
+    "skin": 0,
+    "tail": 5,
+    "pattern": 7,
+    "eyes": 1,
+    "behavior": 3,
+    "habitat": 17,
+    "detail": 5,
+    "accent": 14,
+    "temper": 4,
+    "sense": 5,
+    "repro": 7,
+    "life": 5,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Eider Duck"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Eider Duck\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1450232736\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "index": 311,
+  "profile": {
+    "id": "swimming-bird",
+    "names": [
+      "Goose",
+      "Duck",
+      "Swan",
+      "Eider Duck",
+      "Auk",
+      "Puffin",
+      "Guillemot",
+      "Loon",
+      "Grebe",
+      "Cormorant",
+      "Coot",
+      "Moorhen"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": ""
+  }
+}

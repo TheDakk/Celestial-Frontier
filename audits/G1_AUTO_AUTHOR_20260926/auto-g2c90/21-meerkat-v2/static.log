@@ -1,0 +1,20 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.21511802063152496,"gap":0.00008648533314435456,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.04183860767212327,"gap":0.00008648533314435456,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.11250471086597497,"gap":0.000082800753135976,"exactRest":true,"firstRefusal":null}
+{"id":"approach:trot","status":"PASS","samples":121,"drift":0.20867591589767284,"gap":0.00008648533314435456,"exactRest":true,"firstRefusal":null}
+{"id":"approach:gallop","status":"RED","samples":24,"drift":0.12374625091682065,"gap":0.00008648533314435456,"exactRest":true,"firstRefusal":{"ms":186.4,"sampleNumber":25,"error":"Error: Contact: approach:gallop@186.4 exceeds scale compression bound"}}
+{"id":"approach:hop","status":"PASS","samples":121,"drift":0,"gap":0.00007870271411135737,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.2173864499868691,"gap":0.00008662565842566977,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.2173864499868691,"gap":0.00008662565842566977,"exactRest":true,"firstRefusal":null}
+{"id":"melee:gore","status":"PASS","samples":121,"drift":0.2173864499868691,"gap":0.00008182178628339301,"exactRest":true,"firstRefusal":null}
+{"id":"melee:tail","status":"PASS","samples":121,"drift":0.18017772740650312,"gap":0.00008298171544603484,"exactRest":true,"firstRefusal":null}
+{"id":"melee:headbutt","status":"PASS","samples":121,"drift":0.2173864499868691,"gap":0.00008182178628339301,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.24387974966965165,"gap":0.00008182178628339301,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0.17377482576927455,"gap":0.00008182178628339301,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00008648533314435456,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.2333976882245383,"gap":0.00008648533314435456,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.21178552089817693,"gap":0.00008648533314435456,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.03740397047272773,"gap":0.0000774741163619171,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.1606880106618707,"gap":0.0000774741163619171,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.00008182178628339301,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":19,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

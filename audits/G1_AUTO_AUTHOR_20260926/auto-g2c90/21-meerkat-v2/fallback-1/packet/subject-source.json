@@ -1,0 +1,103 @@
+{
+  "name": "Meerkat",
+  "family": "quadruped",
+  "species": {
+    "name": "Meerkat",
+    "aspect": 0.5,
+    "headFrac": 0.24,
+    "eyes": "normal",
+    "posture": "upright",
+    "mustRead": [
+      "standing bolt upright, propped on the hind legs and tail",
+      "dark rings around the eyes",
+      "thin tapering tail with a black tip"
+    ],
+    "note": "much taller than wide when sentinel-standing; the ears are small and set low on the sides of the head"
+  },
+  "genome": {
+    "seed": 4185119372,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 17,
+    "body": 14,
+    "loco": 9,
+    "trait": 0,
+    "size": 1,
+    "diet": 3,
+    "head": 9,
+    "limbs": 4,
+    "skin": 0,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 5,
+    "detail": 9,
+    "accent": 16,
+    "temper": 0,
+    "sense": 1,
+    "repro": 1,
+    "life": 2,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Meerkat"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Meerkat\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4185119372\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "index": 73,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

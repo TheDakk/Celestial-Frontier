@@ -1,0 +1,70 @@
+{
+  "name": "Anaconda",
+  "family": "serpent",
+  "species": {
+    "name": "Anaconda",
+    "aspect": 6,
+    "headFrac": 0.05,
+    "eyes": "small",
+    "posture": "coiled",
+    "mustRead": [
+      "massively thick muscular body",
+      "eyes and nostrils set high on top of the head",
+      "dark oval blotches over olive-green skin"
+    ],
+    "note": "the heaviest snake - the body must read as thick as a thigh, not as a rope"
+  },
+  "genome": {
+    "seed": 3431392553,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 8,
+    "body": 15,
+    "loco": 16,
+    "trait": 7,
+    "size": 4,
+    "diet": 5,
+    "head": 9,
+    "limbs": 3,
+    "skin": 0,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 9,
+    "habitat": 11,
+    "detail": 8,
+    "accent": 3,
+    "temper": 0,
+    "sense": 2,
+    "repro": 2,
+    "life": 1,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Anaconda"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Anaconda\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"3431392553\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "index": 32,
+  "profile": {
+    "id": "constricting-snake",
+    "names": [
+      "Anaconda",
+      "Boa",
+      "Python",
+      "Sand Boa"
+    ],
+    "candidateTemplates": [
+      "serpent"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "strike",
+      "constrict"
+    ],
+    "notes": ""
+  }
+}
