@@ -1,0 +1,14 @@
+{
+  "runId": "20260923-fruit-bat-paint-03",
+  "tool": "image_gen built-in",
+  "toolOutput": "/Users/dakk/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-070c1eba-68b3-488e-bce1-95b4a9467364.png",
+  "masterSha256": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7",
+  "promptSha256": "a25ee3f9914a4a3ed434d3f68d1cf45a2b1cdbd841235238a07d8b1cc8b98d13",
+  "geometry": [
+    1254,
+    1254,
+    4
+  ],
+  "pixelsEdited": false,
+  "parentReview": "Two rearward membrane wings with shallow down-left forearms, two ears and two feet visibly retained; tips appear complete. Margins are narrow and require measured disclosure. Manual fit pending."
+}

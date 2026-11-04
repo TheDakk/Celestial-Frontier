@@ -1,0 +1,1140 @@
+{
+  "schema": "cf.final-sprint-index-draft/v1",
+  "status": "DRAFT_CENTIPEDE_PENDING",
+  "pathBase": "repository root",
+  "scope": "Read-only extraction of retained evidence, plus artifact-path existence checks. No hash battery, source replay, static/native run or signature re-verification performed for this index. Historical measurements remain bound to their recorded source.",
+  "selectionCount": 13,
+  "acceptedTechnicalSelections": 12,
+  "pendingItems": [
+    12
+  ],
+  "sourceLedgers": [
+    "audits/ARCHETYPE_FINISH_20260923/LEDGER.md",
+    "audits/ARCHETYPE_REPAIRS_20260922/LEDGER.md",
+    "audits/ARCHETYPE_SPRINT_20260922/LEDGER.md"
+  ],
+  "rowConvention": "Action rows and the separate presentation row are counted independently from actual static report fields; older summaries sometimes combine them.",
+  "items": [
+    {
+      "item": 1,
+      "name": "I5 Compendium",
+      "selectionStatus": "RETAINED_SOURCE_SPECIFIC_PASS",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/01-i5",
+      "readme": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/README.md",
+      "signedResultCommit": "4cf88823fc74152528a63b57a732cb4c1ef7e5dc",
+      "certificate": {
+        "summary": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/certificate/summary.json",
+        "execution": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/certificate/execution.json",
+        "compressedRawReport": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/certificate/report.json.gz",
+        "runId": "20260922-i5-focus-89b5da95c185",
+        "status": "pass",
+        "source": {
+          "begin": {
+            "commit": "89b5da95c185a1e8f08080ed3f42bab8a0494ec7",
+            "branch": "openai/mac",
+            "state": "committed",
+            "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+          },
+          "end": {
+            "commit": "89b5da95c185a1e8f08080ed3f42bab8a0494ec7",
+            "branch": "openai/mac",
+            "state": "committed",
+            "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+          }
+        },
+        "exactEdge": {
+          "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+          "product": "Edg/153.0.4234.48",
+          "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "js_version": "15.3.12.7",
+          "protocol_version": "1.3"
+        },
+        "producerAuthority": "bd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b",
+        "measurementAuthority": "6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2",
+        "expectedOutcomes": 78,
+        "passingOutcomes": 78,
+        "findings": [],
+        "durationMs": 56765,
+        "namedVerificationExitCode": 0,
+        "scope": "Only the recorded clean committed source89b5da95c185a1e8f08080ed3f42bab8a0494ec7. No later-source or PR43 certification."
+      },
+      "reviewImages": [
+        "audits/ARCHETYPE_REPAIRS_20260922/01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-phone-list.png",
+        "audits/ARCHETYPE_REPAIRS_20260922/01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-phone-focus-pinned.png",
+        "audits/ARCHETYPE_REPAIRS_20260922/01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-phone-detail.png",
+        "audits/ARCHETYPE_REPAIRS_20260922/01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-desktop-list.png",
+        "audits/ARCHETYPE_REPAIRS_20260922/01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-desktop-focus-pinned.png",
+        "audits/ARCHETYPE_REPAIRS_20260922/01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-desktop-detail.png"
+      ],
+      "master": null,
+      "static": null,
+      "native": null,
+      "preparationEvidence": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/develop-profile-complete.log"
+    },
+    {
+      "item": 2,
+      "name": "Salmon",
+      "selectionStatus": "RETAINED_LOCAL_TECHNICAL_PASS",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/02-fish",
+      "readme": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/README.md",
+      "signedResultCommit": "9c50c190f215fab034fe7023ac0d92e72cf01497",
+      "signatureEvidence": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/README.md",
+      "result": null,
+      "fit": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01",
+      "master": "audits/ARCHETYPE_SPRINT_20260922/02-fish/master.png",
+      "reviewSheet": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/review-sheet.png",
+      "static": {
+        "report": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/static.json",
+        "sourceReceipt": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/static.json.sources.json",
+        "status": "PASS_STATIC",
+        "sourceHead": "4cf88823fc74152528a63b57a732cb4c1ef7e5dc",
+        "actionRows": 13,
+        "actionIds": [
+          "idle",
+          "alert",
+          "approach:swim",
+          "melee:bite",
+          "cast",
+          "hit",
+          "dodge",
+          "faint",
+          "victory",
+          "tame",
+          "feed",
+          "melee:body",
+          "melee:tail"
+        ],
+        "samplesPerAction": [
+          121
+        ],
+        "presentationRows": 1,
+        "presentationSamples": 927,
+        "totalRowsIncludingPresentation": 14,
+        "exactPoseRest": true,
+        "sourcePixelRest": {
+          "status": "PASS",
+          "changedVisibleRgbaChannels": 0,
+          "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+        }
+      },
+      "native": {
+        "report": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/native-02/report.json",
+        "film": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/native-02/battle-10s.webm",
+        "runId": "20260922-salmon-native-02",
+        "orchestrationRunId": "20260922-salmon-native-02",
+        "status": "DIAGNOSTIC_PASS",
+        "recordedSourceHead": "4cf88823fc74152528a63b57a732cb4c1ef7e5dc",
+        "denseRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveFrames": 602,
+        "liveDurationMs": 10016.3,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.098203"
+          }
+        },
+        "cpu": {
+          "perRigP95Ms": {
+            "left": 1.5,
+            "right": 1.100000023841858
+          },
+          "wholeStageP95Ms": 2.600000023841858,
+          "perRigLimitMs": 3.5,
+          "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
+        }
+      },
+      "recordRecipeHash": "7edbcdb118b4a47b18dfd328fe43c56bfff5113cc848814b433742819459108d",
+      "bindingAuthorityHash": "cf2656713b32423021410e0e3a9f2d071cf14cb0f241db0e157923241d67d00a",
+      "masterSha256FromRecord": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4",
+      "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance."
+    },
+    {
+      "item": 3,
+      "name": "Eagle",
+      "selectionStatus": "RETAINED_LOCAL_TECHNICAL_PASS",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird",
+      "readme": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/README.md",
+      "signedResultCommit": "3ee02d5db99fa03470c078489b0484bf039856e6",
+      "signatureEvidence": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/README.md",
+      "result": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/result.json",
+      "fit": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12",
+      "master": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-12/master.png",
+      "reviewSheet": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/review-sheet-07.png",
+      "static": {
+        "report": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/static-13.json",
+        "sourceReceipt": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/static-13.json.sources.json",
+        "status": "PASS_STATIC",
+        "sourceHead": "9c50c190f215fab034fe7023ac0d92e72cf01497",
+        "actionRows": 14,
+        "actionIds": [
+          "idle",
+          "alert",
+          "approach:walk",
+          "approach:flight",
+          "melee:peck",
+          "melee:claw",
+          "cast",
+          "hit",
+          "dodge",
+          "faint",
+          "victory",
+          "tame",
+          "feed",
+          "melee:kick"
+        ],
+        "samplesPerAction": [
+          121
+        ],
+        "presentationRows": 1,
+        "presentationSamples": 1043,
+        "totalRowsIncludingPresentation": 15,
+        "exactPoseRest": true,
+        "sourcePixelRest": {
+          "status": "PASS",
+          "changedVisibleRgbaChannels": 0,
+          "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+        }
+      },
+      "native": {
+        "report": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-07/report.json",
+        "film": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-07/battle-10s.webm",
+        "runId": "20260922-eagle-native-07",
+        "orchestrationRunId": "20260922-eagle-native-07",
+        "status": "DIAGNOSTIC_PASS",
+        "recordedSourceHead": "9c50c190f215fab034fe7023ac0d92e72cf01497",
+        "denseRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveFrames": 602,
+        "liveDurationMs": 10016.2,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "605"
+            }
+          ],
+          "format": {
+            "duration": "10.085198"
+          }
+        },
+        "cpu": {
+          "perRigP95Ms": {
+            "left": 0.7000000476837158,
+            "right": 0.8000000715255737
+          },
+          "wholeStageP95Ms": 1.5,
+          "perRigLimitMs": 3.5,
+          "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
+        }
+      },
+      "recordRecipeHash": "6139b6cd20df799eeda287ad20365cc464803648b451e8dcb7c524f6787e9167",
+      "bindingAuthorityHash": "0691024ed3e9d024ea2011ef8dd68d73d4e2846b0e546482dd7da10a17bb0d7e",
+      "masterSha256FromRecord": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a",
+      "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance."
+    },
+    {
+      "item": 4,
+      "name": "Beetle",
+      "selectionStatus": "RETAINED_LOCAL_TECHNICAL_PASS",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/04-insect",
+      "readme": "audits/ARCHETYPE_FINISH_20260923/04-insect/README.md",
+      "signedResultCommit": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c",
+      "signatureEvidence": "audits/ARCHETYPE_FINISH_20260923/06-hopper/predecessor-signing.json",
+      "result": null,
+      "fit": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04",
+      "master": "audits/ARCHETYPE_FINISH_20260923/04-insect/master.png",
+      "reviewSheet": "audits/ARCHETYPE_FINISH_20260923/04-insect/review-sheet-native-01.png",
+      "static": {
+        "report": "audits/ARCHETYPE_FINISH_20260923/04-insect/static-03.json",
+        "sourceReceipt": "audits/ARCHETYPE_FINISH_20260923/04-insect/static-03.json.sources.json",
+        "status": "PASS_STATIC",
+        "sourceHead": "6768b9879a8a11086bfa8669792acf555fc10140",
+        "actionRows": 13,
+        "actionIds": [
+          "idle",
+          "alert",
+          "approach:crawl",
+          "approach:flight",
+          "melee:mandible",
+          "cast",
+          "hit",
+          "dodge",
+          "faint",
+          "victory",
+          "tame",
+          "feed",
+          "melee:body"
+        ],
+        "samplesPerAction": [
+          121
+        ],
+        "presentationRows": 1,
+        "presentationSamples": 869,
+        "totalRowsIncludingPresentation": 14,
+        "exactPoseRest": true,
+        "sourcePixelRest": {
+          "status": "PASS",
+          "changedVisibleRgbaChannels": 0,
+          "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+        }
+      },
+      "native": {
+        "report": "audits/ARCHETYPE_FINISH_20260923/04-insect/native-01/report.json",
+        "film": "audits/ARCHETYPE_FINISH_20260923/04-insect/native-01/battle-10s.webm",
+        "runId": "20260923-beetle-native-01",
+        "orchestrationRunId": "20260923-beetle-native-01",
+        "status": "DIAGNOSTIC_PASS",
+        "recordedSourceHead": "6768b9879a8a11086bfa8669792acf555fc10140",
+        "denseRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveFrames": 602,
+        "liveDurationMs": 10016.2,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.099031"
+          }
+        },
+        "cpu": {
+          "perRigP95Ms": {
+            "left": 0.7000000476837158,
+            "right": 0.8999999761581421
+          },
+          "wholeStageP95Ms": 1.7999999523162842,
+          "perRigLimitMs": 3.5,
+          "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
+        }
+      },
+      "recordRecipeHash": "df60796170ec29f898e6b51c71b23acae5dce3bf89a3bb2d93e661dc087a21d8",
+      "bindingAuthorityHash": "b6baec47da9321614e2b1a382287f0f05ee1086756dad02ac485fe68826cabde",
+      "masterSha256FromRecord": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb",
+      "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
+      "historicalSigningWaitResolution": "Immutable item README/result may still say signing pending; the successor receipt above records the successful signed commit."
+    },
+    {
+      "item": 5,
+      "name": "Python",
+      "selectionStatus": "RETAINED_LOCAL_TECHNICAL_PASS",
+      "packet": "audits/ARCHETYPE_SPRINT_20260922/05-serpent",
+      "readme": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/README.md",
+      "signedResultCommit": "879844704150ae0e3fd505cd2b276156106daf27",
+      "signatureEvidence": "audits/ARCHETYPE_REPAIRS_20260922/05-serpent/README.md",
+      "result": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/result.json",
+      "fit": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01",
+      "master": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/master.png",
+      "reviewSheet": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/review-sheet-unobscured.png",
+      "static": {
+        "report": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/static.json",
+        "sourceReceipt": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/static.json.sources.json",
+        "status": "PASS_STATIC",
+        "sourceHead": "0c8b6e56f705af15564571b311d77ea09a5f0c48",
+        "actionRows": 12,
+        "actionIds": [
+          "idle",
+          "alert",
+          "approach:slither",
+          "melee:strike",
+          "melee:constrict",
+          "cast",
+          "hit",
+          "dodge",
+          "faint",
+          "victory",
+          "tame",
+          "feed"
+        ],
+        "samplesPerAction": [
+          121
+        ],
+        "presentationRows": 1,
+        "presentationSamples": 968,
+        "totalRowsIncludingPresentation": 13,
+        "exactPoseRest": true,
+        "sourcePixelRest": {
+          "status": "PASS",
+          "changedVisibleRgbaChannels": 0,
+          "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+        }
+      },
+      "native": {
+        "report": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01/report.json",
+        "film": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01/battle-10s.webm",
+        "runId": null,
+        "orchestrationRunId": "archetype-sprint-05-serpent-01",
+        "status": "DIAGNOSTIC_PASS",
+        "recordedSourceHead": "5154c64f6f5fe0b9a75bc3f7a51e7da56b6b2e7f",
+        "denseRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveFrames": 602,
+        "liveDurationMs": 10016.2,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "608"
+            }
+          ],
+          "format": {
+            "duration": "10.131985"
+          }
+        },
+        "cpu": {
+          "perRigP95Ms": null,
+          "wholeStageP95Ms": 2.899999976158142,
+          "perRigLimitMs": null,
+          "scope": "Historical whole two-rig battle2 stage; no per-rig metric was emitted. Do not relabel as per-rig certification."
+        }
+      },
+      "recordRecipeHash": "66cd13861cdd82f14a1e445ad855a152b59e293f21d2d4630f563ac9e93f8a19",
+      "bindingAuthorityHash": "0dc1dfb4cab8ad5fd642d34b2952d508341a4959535ec8c44f668df3f8c355dd",
+      "masterSha256FromRecord": "1c44d54e241b2444ce37950f0b3ce7ebfe9d9f4cd550a77cdaf0c20924849e43",
+      "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
+      "retentionNote": "Original signed PASS retained without rerun; 12 actions plus one presentation row, not13 action rows. No distinct native runId emitted."
+    },
+    {
+      "item": 6,
+      "name": "Tree Frog",
+      "selectionStatus": "RETAINED_LOCAL_TECHNICAL_PASS",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/06-hopper",
+      "readme": "audits/ARCHETYPE_FINISH_20260923/06-hopper/README.md",
+      "signedResultCommit": "2398916ea8941af484dbbfb25591dd56e2b0bcb5",
+      "signatureEvidence": "audits/ARCHETYPE_FINISH_20260923/07-primate/predecessor-signing.json",
+      "result": "audits/ARCHETYPE_FINISH_20260923/06-hopper/result.json",
+      "fit": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05",
+      "master": "audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-08/master.png",
+      "reviewSheet": "audits/ARCHETYPE_FINISH_20260923/06-hopper/review-sheet-native-02.png",
+      "static": {
+        "report": "audits/ARCHETYPE_FINISH_20260923/06-hopper/static-05.json",
+        "sourceReceipt": "audits/ARCHETYPE_FINISH_20260923/06-hopper/static-05.json.sources.json",
+        "status": "PASS_STATIC",
+        "sourceHead": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c",
+        "actionRows": 12,
+        "actionIds": [
+          "idle",
+          "alert",
+          "approach:hop",
+          "melee:kick",
+          "melee:bite",
+          "cast",
+          "hit",
+          "dodge",
+          "faint",
+          "victory",
+          "tame",
+          "feed"
+        ],
+        "samplesPerAction": [
+          121
+        ],
+        "presentationRows": 1,
+        "presentationSamples": 850,
+        "totalRowsIncludingPresentation": 13,
+        "exactPoseRest": true,
+        "sourcePixelRest": {
+          "status": "PASS",
+          "changedVisibleRgbaChannels": 0,
+          "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+        }
+      },
+      "native": {
+        "report": "audits/ARCHETYPE_FINISH_20260923/06-hopper/native-02/report.json",
+        "film": "audits/ARCHETYPE_FINISH_20260923/06-hopper/native-02/battle-10s.webm",
+        "runId": "20260923-tree-frog-native-02",
+        "orchestrationRunId": "20260923-tree-frog-native-02",
+        "status": "DIAGNOSTIC_PASS",
+        "recordedSourceHead": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c",
+        "denseRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveFrames": 602,
+        "liveDurationMs": 10016.2,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "605"
+            }
+          ],
+          "format": {
+            "duration": "10.083139"
+          }
+        },
+        "cpu": {
+          "perRigP95Ms": {
+            "left": 0.6000000238418579,
+            "right": 0.8999999761581421
+          },
+          "wholeStageP95Ms": 1.5,
+          "perRigLimitMs": 3.5,
+          "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
+        }
+      },
+      "recordRecipeHash": "8b43869c0bcd6e2a2fe48d810a7d6c7f846d4de4df6bcca20d1addbee7351d1a",
+      "bindingAuthorityHash": "a3eb06c4197b276521e908921c9a1c7935ac109b8f903c68abdf7ae63a1fa869",
+      "masterSha256FromRecord": "aa1ad50d8ac1e354d0f0ba5beeb211a22519461ac36802ca621022f2418c65eb",
+      "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
+      "historicalSigningWaitResolution": "Immutable item README/result may still say signing pending; the successor receipt above records the successful signed commit."
+    },
+    {
+      "item": 7,
+      "name": "Chimpanzee",
+      "selectionStatus": "RETAINED_LOCAL_TECHNICAL_PASS",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/07-primate",
+      "readme": "audits/ARCHETYPE_FINISH_20260923/07-primate/README.md",
+      "signedResultCommit": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+      "signatureEvidence": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/predecessor-signing-success.json",
+      "result": "audits/ARCHETYPE_FINISH_20260923/07-primate/result.json",
+      "fit": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02",
+      "master": "audits/ARCHETYPE_FINISH_20260923/07-primate/candidate-02/master.png",
+      "reviewSheet": "audits/ARCHETYPE_FINISH_20260923/07-primate/review-sheet-native-01.png",
+      "static": {
+        "report": "audits/ARCHETYPE_FINISH_20260923/07-primate/static-02.json",
+        "sourceReceipt": "audits/ARCHETYPE_FINISH_20260923/07-primate/static-02.json.sources.json",
+        "status": "PASS_STATIC",
+        "sourceHead": "2398916ea8941af484dbbfb25591dd56e2b0bcb5",
+        "actionRows": 13,
+        "actionIds": [
+          "idle",
+          "alert",
+          "approach:walk",
+          "approach:climb",
+          "melee:punch",
+          "melee:bite",
+          "cast",
+          "hit",
+          "dodge",
+          "faint",
+          "victory",
+          "tame",
+          "feed"
+        ],
+        "samplesPerAction": [
+          121
+        ],
+        "presentationRows": 1,
+        "presentationSamples": 886,
+        "totalRowsIncludingPresentation": 14,
+        "exactPoseRest": true,
+        "sourcePixelRest": {
+          "status": "PASS",
+          "changedVisibleRgbaChannels": 0,
+          "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+        }
+      },
+      "native": {
+        "report": "audits/ARCHETYPE_FINISH_20260923/07-primate/native-01/report.json",
+        "film": "audits/ARCHETYPE_FINISH_20260923/07-primate/native-01/battle-10s.webm",
+        "runId": "20260923-chimpanzee-native-01",
+        "orchestrationRunId": "20260923-chimpanzee-native-01",
+        "status": "DIAGNOSTIC_PASS",
+        "recordedSourceHead": "2398916ea8941af484dbbfb25591dd56e2b0bcb5",
+        "denseRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveFrames": 602,
+        "liveDurationMs": 10016.3,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.098846"
+          }
+        },
+        "cpu": {
+          "perRigP95Ms": {
+            "left": 0.7000000476837158,
+            "right": 0.8999999761581421
+          },
+          "wholeStageP95Ms": 1.600000023841858,
+          "perRigLimitMs": 3.5,
+          "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
+        }
+      },
+      "recordRecipeHash": "9b9ee55debbae28a7a1346158954c2915449c28f6b4c5e135cbdc7a8128d6a69",
+      "bindingAuthorityHash": "e5e587bdcebdc859f38d30a40fbc9484a5214005525a13cebedf3ab0844e0e06",
+      "masterSha256FromRecord": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408",
+      "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
+      "historicalSigningWaitResolution": "Immutable item README/result may still say signing pending; the successor receipt above records the successful signed commit."
+    },
+    {
+      "item": 8,
+      "name": "Starfish",
+      "selectionStatus": "RETAINED_LOCAL_TECHNICAL_PASS",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/08-radial",
+      "readme": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/README.md",
+      "signedResultCommit": "f1f1cd80c01e3c859f88943e231f8d3c2ff8b5f2",
+      "signatureEvidence": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/README.md",
+      "result": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/result.json",
+      "fit": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02",
+      "master": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/master.png",
+      "reviewSheet": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/review-sheet-03.png",
+      "static": {
+        "report": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/static-02.json",
+        "sourceReceipt": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/static-02.json.sources.json",
+        "status": "PASS_STATIC",
+        "sourceHead": "4f82025c490d39b80b78bfab81ac53232a780a74",
+        "actionRows": 13,
+        "actionIds": [
+          "idle",
+          "alert",
+          "approach:drift",
+          "approach:pulse",
+          "melee:sting-arms",
+          "cast",
+          "hit",
+          "dodge",
+          "faint",
+          "victory",
+          "tame",
+          "feed",
+          "melee:body"
+        ],
+        "samplesPerAction": [
+          121
+        ],
+        "presentationRows": 1,
+        "presentationSamples": 1052,
+        "totalRowsIncludingPresentation": 14,
+        "exactPoseRest": true,
+        "sourcePixelRest": {
+          "status": "PASS",
+          "changedVisibleRgbaChannels": 0,
+          "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+        }
+      },
+      "native": {
+        "report": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/report.json",
+        "film": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/battle-10s.webm",
+        "runId": "20260922-starfish-native-03",
+        "orchestrationRunId": "20260922-starfish-native-03",
+        "status": "DIAGNOSTIC_PASS",
+        "recordedSourceHead": "4f82025c490d39b80b78bfab81ac53232a780a74",
+        "denseRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveFrames": 602,
+        "liveDurationMs": 10016.199999999999,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.099543"
+          }
+        },
+        "cpu": {
+          "perRigP95Ms": {
+            "left": 1.899999976158142,
+            "right": 1.600000023841858
+          },
+          "wholeStageP95Ms": 3.399999976158142,
+          "perRigLimitMs": 3.5,
+          "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
+        }
+      },
+      "recordRecipeHash": "2083de71c8d079fa6e07ad31ef36c32484ed705e3940c623f91a50ca860b1ba1",
+      "bindingAuthorityHash": "0b2317154b00f12c80f0734af843e08a6b28129ae3185697328fc39d1b9557df",
+      "masterSha256FromRecord": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
+      "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance."
+    },
+    {
+      "item": 9,
+      "name": "Tarantula",
+      "selectionStatus": "RETAINED_LOCAL_TECHNICAL_PASS",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/09-arachnid",
+      "readme": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/README.md",
+      "signedResultCommit": "aaef06aff92852cd4caf711769ea80339a423605",
+      "signatureEvidence": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/predecessor-signing-success.json",
+      "result": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/result.json",
+      "fit": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03",
+      "master": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-08/master.png",
+      "reviewSheet": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/review-sheet-native-01.png",
+      "static": {
+        "report": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/static-04.json",
+        "sourceReceipt": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/static-04.json.sources.json",
+        "status": "PASS_STATIC",
+        "sourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+        "actionRows": 13,
+        "actionIds": [
+          "idle",
+          "alert",
+          "approach:scuttle",
+          "melee:sting",
+          "melee:bite",
+          "cast",
+          "hit",
+          "dodge",
+          "faint",
+          "victory",
+          "tame",
+          "feed",
+          "melee:body"
+        ],
+        "samplesPerAction": [
+          121
+        ],
+        "presentationRows": 1,
+        "presentationSamples": 896,
+        "totalRowsIncludingPresentation": 14,
+        "exactPoseRest": true,
+        "sourcePixelRest": {
+          "status": "PASS",
+          "changedVisibleRgbaChannels": 0,
+          "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+        }
+      },
+      "native": {
+        "report": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/native-01/report.json",
+        "film": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/native-01/battle-10s.webm",
+        "runId": "20260923-tarantula-native-01",
+        "orchestrationRunId": "20260923-tarantula-native-01",
+        "status": "DIAGNOSTIC_PASS",
+        "recordedSourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+        "denseRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveFrames": 602,
+        "liveDurationMs": 10016.3,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.101386"
+          }
+        },
+        "cpu": {
+          "perRigP95Ms": {
+            "left": 0.7999999523162842,
+            "right": 1
+          },
+          "wholeStageP95Ms": 1.7000000476837158,
+          "perRigLimitMs": 3.5,
+          "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
+        }
+      },
+      "recordRecipeHash": "40db5c00b42d4080569036445dbd2ba629dd725f26a41e18cdbacae5f705b98b",
+      "bindingAuthorityHash": "773e17afc1c0be65f2469deb3b33c244a414ca9606d66dd465c0bee5b2e79460",
+      "masterSha256FromRecord": "55d8a5d00e4eabd761fc64cc42d82da1d3837b0448651d8c78820b9cfe9fb19b",
+      "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
+      "historicalSigningWaitResolution": "Immutable item README/result may still say signing pending; the successor receipt above records the successful signed commit."
+    },
+    {
+      "item": 10,
+      "name": "Octopus",
+      "selectionStatus": "RETAINED_LOCAL_TECHNICAL_PASS",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod",
+      "readme": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/README.md",
+      "signedResultCommit": "7525aa0bdc56c5eb8ee4c8576bf3c610918aed8c",
+      "signatureEvidence": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/README.md",
+      "result": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/result.json",
+      "fit": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02",
+      "master": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/master.png",
+      "reviewSheet": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/review-sheet-03.png",
+      "static": {
+        "report": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-03.json",
+        "sourceReceipt": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-03.json.sources.json",
+        "status": "PASS_STATIC",
+        "sourceHead": "7a6f45980eeb5c1c400a55be188cd16a0f3faf63",
+        "actionRows": 13,
+        "actionIds": [
+          "idle",
+          "alert",
+          "approach:jet",
+          "approach:crawl",
+          "melee:lash",
+          "melee:bite",
+          "cast",
+          "hit",
+          "dodge",
+          "faint",
+          "victory",
+          "tame",
+          "feed"
+        ],
+        "samplesPerAction": [
+          121
+        ],
+        "presentationRows": 1,
+        "presentationSamples": 1110,
+        "totalRowsIncludingPresentation": 14,
+        "exactPoseRest": true,
+        "sourcePixelRest": {
+          "status": "PASS",
+          "changedVisibleRgbaChannels": 0,
+          "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+        }
+      },
+      "native": {
+        "report": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/report.json",
+        "film": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/battle-10s.webm",
+        "runId": "20260922-octopus-native-03",
+        "orchestrationRunId": "20260922-octopus-native-03",
+        "status": "DIAGNOSTIC_PASS",
+        "recordedSourceHead": "7a6f45980eeb5c1c400a55be188cd16a0f3faf63",
+        "denseRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveFrames": 602,
+        "liveDurationMs": 10016.3,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "605"
+            }
+          ],
+          "format": {
+            "duration": "10.083894"
+          }
+        },
+        "cpu": {
+          "perRigP95Ms": {
+            "left": 1,
+            "right": 1.3000000715255737
+          },
+          "wholeStageP95Ms": 2.399999976158142,
+          "perRigLimitMs": 3.5,
+          "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
+        }
+      },
+      "recordRecipeHash": "bdcf8dae4435cc5150843da6a1ec475ebb2b4edf85e3b7a0d68cf4334e0059cb",
+      "bindingAuthorityHash": "f5665b16ad400e1390ba1a0225c5eddedd91575cad942e1c7aaa0159c6d8fa58",
+      "masterSha256FromRecord": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e",
+      "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance."
+    },
+    {
+      "item": 11,
+      "name": "Fruit Bat",
+      "selectionStatus": "RETAINED_LOCAL_TECHNICAL_PASS",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane",
+      "readme": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/README.md",
+      "signedResultCommit": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+      "signatureEvidence": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/predecessor-signing-success.json",
+      "result": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/result.json",
+      "fit": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02",
+      "master": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/candidate-02/master.png",
+      "reviewSheet": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/review-sheet-native-01.png",
+      "static": {
+        "report": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/static-02.json",
+        "sourceReceipt": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/static-02.json.sources.json",
+        "status": "PASS_STATIC",
+        "sourceHead": "aaef06aff92852cd4caf711769ea80339a423605",
+        "actionRows": 13,
+        "actionIds": [
+          "idle",
+          "alert",
+          "approach:flight",
+          "approach:crawl",
+          "melee:bite",
+          "melee:claw",
+          "cast",
+          "hit",
+          "dodge",
+          "faint",
+          "victory",
+          "tame",
+          "feed"
+        ],
+        "samplesPerAction": [
+          121
+        ],
+        "presentationRows": 1,
+        "presentationSamples": 1057,
+        "totalRowsIncludingPresentation": 14,
+        "exactPoseRest": true,
+        "sourcePixelRest": {
+          "status": "PASS",
+          "changedVisibleRgbaChannels": 0,
+          "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+        }
+      },
+      "native": {
+        "report": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/native-01/report.json",
+        "film": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/native-01/battle-10s.webm",
+        "runId": "20260923-fruit-bat-native-01",
+        "orchestrationRunId": "20260923-fruit-bat-native-01",
+        "status": "DIAGNOSTIC_PASS",
+        "recordedSourceHead": "aaef06aff92852cd4caf711769ea80339a423605",
+        "denseRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveRefusals": {
+          "left": 0,
+          "right": 0
+        },
+        "liveFrames": 602,
+        "liveDurationMs": 10016.2,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.110853"
+          }
+        },
+        "cpu": {
+          "perRigP95Ms": {
+            "left": 0.6000000238418579,
+            "right": 0.6000000238418579
+          },
+          "wholeStageP95Ms": 1.2999999523162842,
+          "perRigLimitMs": 3.5,
+          "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
+        }
+      },
+      "recordRecipeHash": "bd4cb0a581b7fae2d754c16a1478dc917817411e0fea37418999355d7d1c0d9a",
+      "bindingAuthorityHash": "9821496a0553e29a45c49edeb51d3c26f74a0a1361f158d7461907e3da472ddf",
+      "masterSha256FromRecord": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7",
+      "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
+      "historicalSigningWaitResolution": "Immutable item README/result may still say signing pending; the successor receipt above records the successful signed commit."
+    },
+    {
+      "item": 12,
+      "name": "Centipede",
+      "selectionStatus": "PENDING",
+      "packet": "audits/ARCHETYPE_FINISH_20260923/12-myriapod",
+      "readme": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/README.md",
+      "signedResultCommit": null,
+      "fit": null,
+      "master": null,
+      "reviewSheet": null,
+      "static": null,
+      "native": null,
+      "note": "Current item active. This draft does not choose an unqualified painting/fit or promote earlier capacity refusals to acceptance. Parent must update only after measured acceptance and signing."
+    },
+    {
+      "item": 13,
+      "name": "Salmon marking masks",
+      "selectionStatus": "RETAINED_MASK_PASS",
+      "packet": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings",
+      "readme": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/README.md",
+      "signedResultCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+      "authorityClosureCommit": "5470360bfb959787c7894a133589910a428cc7df",
+      "authorityClosurePacket": "audits/ARCHETYPE_REPAIRS_20260922/13-fish-markings",
+      "authorityClosure": "audits/ARCHETYPE_REPAIRS_20260922/13-fish-markings/authority-check.json",
+      "runId": "archetype-sprint-13-fish-markings-01",
+      "manifest": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings.json",
+      "conservation": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/conservation.json",
+      "status": "PASS",
+      "master": "audits/ARCHETYPE_SPRINT_20260922/02-fish/master.png",
+      "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4",
+      "keyedSha256": "8010343d7137839570b2852ce5480e1f0104a645de52392a9132a47ce6b01574",
+      "recordRecipeHash": "7edbcdb118b4a47b18dfd328fe43c56bfff5113cc848814b433742819459108d",
+      "pixelSpace": [
+        1254,
+        1254
+      ],
+      "plain": null,
+      "iridescent": {
+        "mode": "emissive",
+        "mask": null
+      },
+      "masks": [
+        {
+          "pattern": "striped",
+          "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/striped.png",
+          "sha256": "e36778f8072f7e8ab69247d1fcb5762b4b6024ea5a9e7354380c283ba5e8610e",
+          "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/striped.txt",
+          "promptSha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
+          "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/striped.png",
+          "outsideAlphaPixels": 0,
+          "alphaExceedsKeyedPixels": 0,
+          "nonzeroAlphaPixels": 51902
+        },
+        {
+          "pattern": "spotted",
+          "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/spotted.png",
+          "sha256": "907034cc101216b3b02c0aac317cbfa9e5aba556f99c47d5b2c896fcfd871ccc",
+          "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/spotted.txt",
+          "promptSha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
+          "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/spotted.png",
+          "outsideAlphaPixels": 0,
+          "alphaExceedsKeyedPixels": 0,
+          "nonzeroAlphaPixels": 12077
+        },
+        {
+          "pattern": "banded",
+          "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/banded.png",
+          "sha256": "5bc2e8296c60c0954eff873cdbb78fc671d1008f13b7ccdcca6656958e788600",
+          "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/banded.txt",
+          "promptSha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
+          "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/banded.png",
+          "outsideAlphaPixels": 0,
+          "alphaExceedsKeyedPixels": 0,
+          "nonzeroAlphaPixels": 96742
+        },
+        {
+          "pattern": "mottled",
+          "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/mottled.png",
+          "sha256": "64f04894485f6030998777ad20a74bd297049f32e1f14542a08e3ae4fc180f7d",
+          "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/mottled.txt",
+          "promptSha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
+          "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/mottled.png",
+          "outsideAlphaPixels": 0,
+          "alphaExceedsKeyedPixels": 0,
+          "nonzeroAlphaPixels": 39101
+        },
+        {
+          "pattern": "marbled",
+          "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/marbled.png",
+          "sha256": "e318bab2e04b050dfaab0f0e5660927c226e48b96e3c020acd5d3928aed656df",
+          "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/marbled.txt",
+          "promptSha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
+          "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/marbled.png",
+          "outsideAlphaPixels": 0,
+          "alphaExceedsKeyedPixels": 0,
+          "nonzeroAlphaPixels": 14317
+        },
+        {
+          "pattern": "eye-spotted",
+          "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/eye-spotted.png",
+          "sha256": "0668dd14e0c76b1cb80186120f78ecea2a0659d280d951cb3f5a0f6d23c7d66a",
+          "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/eye-spotted.txt",
+          "promptSha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
+          "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/eye-spotted.png",
+          "outsideAlphaPixels": 0,
+          "alphaExceedsKeyedPixels": 0,
+          "nonzeroAlphaPixels": 42489
+        }
+      ],
+      "reviewSheet": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/six-mask-sheet.png",
+      "controls": {
+        "validAccepted": true,
+        "outsidePixelMutantRefused": true,
+        "outsidePixel": [
+          0,
+          0
+        ],
+        "mutantAssessment": {
+          "outsideAlphaPixels": 1,
+          "alphaExceedsKeyedPixels": 1,
+          "nonWhiteRgbPixels": 0,
+          "nonzeroAlphaPixels": 51903
+        }
+      },
+      "static": null,
+      "native": null,
+      "cpu": null,
+      "artAcceptance": "Dakk review pending; historical tiny alpha residues remain disclosed."
+    }
+  ],
+  "handoff": "Codex completes and signs Centipede, then updates final ledger and performs only the authorized Git handoff. Claude consumes signed packets under Dakk direction; Dakk reviews art. No PR43 certification claim."
+}

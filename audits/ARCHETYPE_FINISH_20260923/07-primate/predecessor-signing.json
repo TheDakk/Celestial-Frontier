@@ -1,0 +1,12 @@
+{
+  "schema": "cf.sprint-predecessor-signing/v1",
+  "commit": "2398916ea8941af484dbbfb25591dd56e2b0bcb5",
+  "signatureStatus": "G",
+  "signingToolReceipt": "b5c76c",
+  "verificationToolReceipt": "77f0ec",
+  "resolvesHistoricalAttempts": [
+    "455730",
+    "8a4ef7"
+  ],
+  "note": "Tree Frog completed and signed. Historical Frog waiting receipt stays unchanged."
+}
