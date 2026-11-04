@@ -1,0 +1,112 @@
+[
+  {
+    "id": "c198creaturesupplyb-07-howler-monkey",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Supported arms remove the mid-victory triangular connector; head remains upright. Approach, mid50 and held90 whole, no inverted head or raised-arm web. Small head/tail celebration intentionally replaces arm lift.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c198creaturesupplyb-11-langur",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Supported arms remove the mid-victory triangular connector; head remains upright. Approach, mid50 and held90 whole, no inverted head or raised-arm web. Small head/tail celebration intentionally replaces arm lift.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c202creaturesupply-02-wild-boar",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Snout stays clear of ground; supported forelegs do not fold. Ear boundary join removes detached tip. Whole approach/mid50/late90.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c203creaturesupply-07-wild-pig",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Snout clear of ground, supported legs connected, no faint fold; intact modest victory and approach.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c203creaturesupply-10-cow",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Crossed/collapsed forelegs and detached crown/ear tip removed. Supported faint retains full flank/shoulder outline; approach/victory whole.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "g2c95-17-nilgai",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Supported faint removes backward-folded foreleg; shoulder outline continuous. Approach and restrained victory whole.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c203creaturesupply-13-gerenuk",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Faint foreleg ribbon loop removed; four thin legs remain straight/connected in approach and held faint. Smaller victory lift remains connected.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c213originals-09-kinkajou",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Tail gap closes through mid-victory. Crown/face no longer shows the former obvious straight see-through split after ear boundary joins; faint tonal hairline can receive Claude comparison. Whole outline in all three reviewed stills.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c202creaturesupply-12-wolverine",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Claws remain attached during modest victory lift; supported faint and approach whole.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "c213originals-14-red-fox",
+    "status": "REVIEW_CANDIDATE",
+    "observation": "Corrected foreleg passes approach; ear joins remove separated far tip during victory. Supported faint legs whole. Native failure and visible tip defect resolved in reviewed stills.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  },
+  {
+    "id": "g2c136targetededits-21-bee",
+    "status": "HOLD_VISUAL",
+    "observation": "Abdomen/wing stalk gone in both victory and faint. Tiny antenna endpoint islands remain above the fainting head, absent at approach; keep separate visual hold.",
+    "frames": [
+      "turn0-hit-approach-50.png",
+      "turn3-hit-idle-50.png",
+      "turn3-hit-idle-90.png"
+    ]
+  }
+]

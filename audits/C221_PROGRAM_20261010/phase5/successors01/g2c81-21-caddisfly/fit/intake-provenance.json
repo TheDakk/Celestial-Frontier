@@ -1,0 +1,93 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "d7329f2a53b83dc527efbf00dd1eb8b18595cd4b",
+  "helperSha256": "ac8afa1311104c5aeb431585641e1f325d59df43730fa5e89cf4000bd9252517",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c221p4/g2c81-21-caddisfly/packet/master.png",
+      "sha256": "be301b56fb826b1f84690a389f4d62b58f79d8713e6cba23b50ade600fe356fb"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c221p4/g2c81-21-caddisfly/packet/authoring.json",
+      "sha256": "518621a77efe6c5df64f42b0ec2b7699eae3a12f9f703a98f7b58b1d346518b2"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c221p4/g2c81-21-caddisfly/packet/subject-source.json",
+      "sha256": "82a42c535342f3952ad0e24e9c335a25d3e40acd439d29b5fae60478470ab46c"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c221p4/g2c81-21-caddisfly/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "c2b7486735900d052499780460929e4afa9c9109e061ec7aa481eb81e85fe569",
+  "bindingHash": "c3894bb3fc09829f6450c731c4165c8c9a3da35275b70d71fbc49042282bf866",
+  "contactEndpoints": [
+    "legFrontFarFoot",
+    "legFrontNearFoot",
+    "legMidFarFoot",
+    "legMidNearFoot",
+    "legHindFarFoot",
+    "legHindNearFoot"
+  ],
+  "shapeJoints": [
+    "legHindNearFoot",
+    "legHindFarFoot",
+    "legMidNearFoot",
+    "legMidFarFoot",
+    "legFrontNearFoot",
+    "legFrontFarFoot",
+    "legHindNearKnee",
+    "legHindFarKnee",
+    "legMidNearKnee",
+    "legMidFarKnee",
+    "legFrontNearKnee",
+    "legFrontFarKnee",
+    "antennaFar",
+    "antennaNear",
+    "mandible",
+    "head",
+    "wingFar",
+    "wingNear",
+    "thorax",
+    "abdomen"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c221p4/g2c81-21-caddisfly/packet/master.png",
+      "sha256": "be301b56fb826b1f84690a389f4d62b58f79d8713e6cba23b50ade600fe356fb",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c221p4/g2c81-21-caddisfly/packet/authoring.json",
+      "sha256": "518621a77efe6c5df64f42b0ec2b7699eae3a12f9f703a98f7b58b1d346518b2",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c221p4/g2c81-21-caddisfly/packet/subject-source.json",
+      "sha256": "82a42c535342f3952ad0e24e9c335a25d3e40acd439d29b5fae60478470ab46c",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c221p4/g2c81-21-caddisfly/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

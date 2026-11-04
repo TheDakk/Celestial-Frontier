@@ -1,0 +1,75 @@
+{
+  "sourceFit": "audits/C228_PROGRAM_20261011/phase1/islands/c215program-43-dugong/fit",
+  "sourceBindingSha256": "ddf500fc1e9dfa88e03fbe38ff1c1edda3d5ccff860e887dbb7d7f580f4e1716",
+  "candidateBindingSha256": "3b072f89b066b55d585606bc4112b0b5fe6cd28c3336dbefde38b6d00822a1e4",
+  "paintBoundaryPairs": [
+    [
+      "body-0",
+      "dorsal"
+    ],
+    [
+      "body-0",
+      "far-pectoral"
+    ],
+    [
+      "body-0",
+      "head"
+    ],
+    [
+      "body-0",
+      "near-pectoral"
+    ],
+    [
+      "body-1",
+      "near-pectoral"
+    ],
+    [
+      "body-2",
+      "dorsal"
+    ],
+    [
+      "body-2",
+      "near-pectoral"
+    ],
+    [
+      "body-3",
+      "dorsal"
+    ],
+    [
+      "body-4",
+      "dorsal"
+    ],
+    [
+      "body-5",
+      "dorsal"
+    ],
+    [
+      "body",
+      "dorsal"
+    ],
+    [
+      "caudal",
+      "dorsal"
+    ],
+    [
+      "dorsal",
+      "head"
+    ],
+    [
+      "far-pectoral",
+      "head"
+    ],
+    [
+      "far-pectoral",
+      "near-pectoral"
+    ],
+    [
+      "head",
+      "near-pectoral"
+    ]
+  ],
+  "sourceMasterSha256": "92d001c112508913a7c7bc4b14c7f4449124d7838f76c47e173dd49d165ec5d2",
+  "sourceAtlasSha256": "9a54e0a25becb58dba9fd419baa0b4b6316c154cbb35a38ac9cb08dc15456147",
+  "solverLimitsChanged": false,
+  "landmarksChanged": false
+}

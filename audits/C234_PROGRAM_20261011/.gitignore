@@ -1,0 +1,7 @@
+phase*/native/**/*.webm
+phase*/native/**/*.png
+!phase*/native/**/turn3-hit-idle-50.png
+!phase*/native/**/turn3-hit-idle-90.png
+phase*/finish-*/prepared/
+phase*/retained-finish/prepared/
+phase*/**/*.draft.*
