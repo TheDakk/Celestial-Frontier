@@ -1,0 +1,90 @@
+[
+  {
+    "id": "c243b01r1c3-01-sloth-bear",
+    "packetId": "c243b01r1c3-01-sloth-bear",
+    "name": "Sloth Bear",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c3s01/c243b01r1c3-01-sloth-bear/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch01/native-scripts/c243b01r1c3-01-sloth-bear-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c3-01-sloth-bear",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c3-01-sloth-bear/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c3s01/c243b01r1c3-01-sloth-bear/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r1c3-01-sloth-bear"
+  },
+  {
+    "id": "c243b01r1c1-06-guinea-pig",
+    "packetId": "c243b01r1c1-06-guinea-pig",
+    "name": "Guinea Pig",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch01/native-scripts/c243b01r1c1-06-guinea-pig-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-06-guinea-pig",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-06-guinea-pig/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r1c1-06-guinea-pig"
+  },
+  {
+    "id": "c243b01r1c1-13-yak",
+    "packetId": "c243b01r1c1-13-yak",
+    "name": "Yak",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g11to13/c243b01r1c1-13-yak/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch01/native-scripts/c243b01r1c1-13-yak-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-13-yak",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-13-yak/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g11to13/c243b01r1c1-13-yak/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r1c1-13-yak"
+  },
+  {
+    "id": "c243b01r1c1-18-african-elephant",
+    "packetId": "c243b01r1c1-18-african-elephant",
+    "name": "African Elephant",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch01/native-scripts/c243b01r1c1-18-african-elephant-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-18-african-elephant",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-18-african-elephant/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r1c1-18-african-elephant"
+  },
+  {
+    "id": "c243b01r1c1-23-crocodile",
+    "packetId": "c243b01r1c1-23-crocodile",
+    "name": "Crocodile",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch01/native-scripts/c243b01r1c1-23-crocodile-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-23-crocodile",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-23-crocodile/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r1c1-23-crocodile"
+  },
+  {
+    "id": "c243b01r1c1-37-axolotl",
+    "packetId": "c243b01r1c1-37-axolotl",
+    "name": "Axolotl",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g35to37/c243b01r1c1-37-axolotl/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch01/native-scripts/c243b01r1c1-37-axolotl-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-37-axolotl",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c1-37-axolotl/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g35to37/c243b01r1c1-37-axolotl/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r1c1-37-axolotl"
+  },
+  {
+    "id": "c243b01r1c2-08-marsh-rodent",
+    "packetId": "c243b01r1c2-08-marsh-rodent",
+    "name": "Marsh Rodent",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c2g05to08/c243b01r1c2-08-marsh-rodent/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch01/native-scripts/c243b01r1c2-08-marsh-rodent-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c2-08-marsh-rodent",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c2-08-marsh-rodent/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c2g05to08/c243b01r1c2-08-marsh-rodent/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r1c2-08-marsh-rodent"
+  },
+  {
+    "id": "c243b01r1c2-15-camel",
+    "packetId": "c243b01r1c2-15-camel",
+    "name": "Camel",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c2g12to15/c243b01r1c2-15-camel/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch01/native-scripts/c243b01r1c2-15-camel-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c2-15-camel",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/native/c243b01r1c2-15-camel/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c2g12to15/c243b01r1c2-15-camel/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r1c2-15-camel"
+  }
+]

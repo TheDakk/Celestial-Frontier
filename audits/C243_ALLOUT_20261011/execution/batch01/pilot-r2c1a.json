@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b01r2c1-02-coati",
+    "name": "Coati",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-02-coati",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-02-coati/master.png"
+  },
+  {
+    "id": "c243b01r2c1-03-porcupine",
+    "name": "Porcupine",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-03-porcupine",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-03-porcupine/master.png"
+  },
+  {
+    "id": "c243b01r2c1-04-squirrel",
+    "name": "Squirrel",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-04-squirrel",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-04-squirrel/master.png"
+  },
+  {
+    "id": "c243b01r2c1-05-mole",
+    "name": "Mole",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-05-mole",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-05-mole/master.png"
+  }
+]

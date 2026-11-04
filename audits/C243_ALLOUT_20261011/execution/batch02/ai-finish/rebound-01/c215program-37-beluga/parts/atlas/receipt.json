@@ -1,0 +1,59 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c215program-37-beluga",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "7a16a6259ae0d01ce1e76ce6eeab2976a72abf53477bb15644d3cb43c295181e",
+    "pngSha256": "eeee7d8fd75d0404f8fdc6eb4b8dd37e9010ec3f5fe535774efadff192c0c334"
+  },
+  "parts": [
+    {
+      "name": "axial-body.png",
+      "sha256": "4f6cdeba18307e2d6dcd2d5a5a7f7ee8f4561a515172690dd2e6989a92c2a747"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "e0b33310f5a2e8202bce95ad0395e20b760fe2a44d84b976496f7e5f7ab8c894"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "c1f31d50802be6b0286b130bf7b0f98156e488ff54e482ec843ca8e1b552eb2e"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "845e49fd4a039e903208ca61c1e895aeb628bc76db566ee25ec2bfed202f2f38"
+    },
+    {
+      "name": "head.png",
+      "sha256": "0feb6b3437df7099a1e3148103552924d82875a65287b2616a1af8ce6dba4efe"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "11fa79aafa46eeb1222ffdc9247bfbca7de75faa91cadda251db3a0a6d60c754"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "90e58a2f8cd4c0a441f4b3fb958e8d083d96934c3ba303c97ad6694cc82feab5"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

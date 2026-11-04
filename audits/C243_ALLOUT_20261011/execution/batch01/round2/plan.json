@@ -1,0 +1,166 @@
+{
+  "batch": 1,
+  "round": 2,
+  "candidatesRequired": 3,
+  "species": [
+    {
+      "index": 2,
+      "name": "Coati",
+      "family": "quadruped"
+    },
+    {
+      "index": 3,
+      "name": "Porcupine",
+      "family": "quadruped"
+    },
+    {
+      "index": 4,
+      "name": "Squirrel",
+      "family": "quadruped"
+    },
+    {
+      "index": 5,
+      "name": "Mole",
+      "family": "quadruped"
+    },
+    {
+      "index": 7,
+      "name": "Water Vole",
+      "family": "quadruped"
+    },
+    {
+      "index": 9,
+      "name": "Giant Anteater",
+      "family": "quadruped"
+    },
+    {
+      "index": 10,
+      "name": "Pangolin",
+      "family": "quadruped"
+    },
+    {
+      "index": 11,
+      "name": "Echidna",
+      "family": "quadruped"
+    },
+    {
+      "index": 12,
+      "name": "Ibex",
+      "family": "quadruped"
+    },
+    {
+      "index": 13,
+      "name": "Yak",
+      "family": "quadruped"
+    },
+    {
+      "index": 14,
+      "name": "Wild Horse",
+      "family": "quadruped"
+    },
+    {
+      "index": 15,
+      "name": "Camel",
+      "family": "quadruped"
+    },
+    {
+      "index": 16,
+      "name": "Dromedary Camel",
+      "family": "quadruped"
+    },
+    {
+      "index": 17,
+      "name": "Warthog",
+      "family": "quadruped"
+    },
+    {
+      "index": 19,
+      "name": "Walrus",
+      "family": "quadruped"
+    },
+    {
+      "index": 20,
+      "name": "Seal",
+      "family": "quadruped"
+    },
+    {
+      "index": 21,
+      "name": "Fur Seal",
+      "family": "quadruped"
+    },
+    {
+      "index": 22,
+      "name": "Sea Lion",
+      "family": "quadruped"
+    },
+    {
+      "index": 24,
+      "name": "Anole",
+      "family": "quadruped"
+    },
+    {
+      "index": 25,
+      "name": "Skink",
+      "family": "quadruped"
+    },
+    {
+      "index": 26,
+      "name": "Whiptail",
+      "family": "quadruped"
+    },
+    {
+      "index": 27,
+      "name": "Frilled Lizard",
+      "family": "quadruped"
+    },
+    {
+      "index": 28,
+      "name": "Tortoise",
+      "family": "quadruped"
+    },
+    {
+      "index": 29,
+      "name": "Box Turtle",
+      "family": "quadruped"
+    },
+    {
+      "index": 30,
+      "name": "Pond Turtle",
+      "family": "quadruped"
+    },
+    {
+      "index": 31,
+      "name": "Snapping Turtle",
+      "family": "quadruped"
+    },
+    {
+      "index": 32,
+      "name": "Softshell Turtle",
+      "family": "quadruped"
+    },
+    {
+      "index": 33,
+      "name": "Turtle",
+      "family": "quadruped"
+    },
+    {
+      "index": 34,
+      "name": "Sea Turtle",
+      "family": "quadruped"
+    },
+    {
+      "index": 35,
+      "name": "Olm",
+      "family": "quadruped"
+    },
+    {
+      "index": 36,
+      "name": "Blind Salamander",
+      "family": "quadruped"
+    }
+  ],
+  "status": "ACTIVE",
+  "requiredCandidatesPerSpecies": 3,
+  "addendum": "Unrelated realms addendum ignored, per Dakk.",
+  "sourceHead": "b4357a03600544392c79c4dc1aac61c35523e121"
+}

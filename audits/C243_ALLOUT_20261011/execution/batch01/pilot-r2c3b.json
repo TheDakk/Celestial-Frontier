@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c243b01r2c3-07-water-vole",
+    "name": "Water Vole",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-07-water-vole",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-07-water-vole/master.png"
+  },
+  {
+    "id": "c243b01r2c3-09-giant-anteater",
+    "name": "Giant Anteater",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-09-giant-anteater",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-09-giant-anteater/master.png"
+  },
+  {
+    "id": "c243b01r2c3-10-pangolin",
+    "name": "Pangolin",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-10-pangolin",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-10-pangolin/master.png"
+  },
+  {
+    "id": "c243b01r2c3-11-echidna",
+    "name": "Echidna",
+    "family": "quadruped",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-11-echidna",
+    "master": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c3-11-echidna/master.png"
+  }
+]

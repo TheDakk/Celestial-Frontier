@@ -1,0 +1,101 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "2c6e6ce24492511ba3778cee48ed2d161e0ee945",
+  "helperSha256": "ac8afa1311104c5aeb431585641e1f325d59df43730fa5e89cf4000bd9252517",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/packet/master.png",
+      "sha256": "b2ae4588d58cf4386dce819f734b7734ec0259db60196ccdf354220c0cb245a6"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/packet/authoring.json",
+      "sha256": "ba2156f32292414a2fc5737a91970aae224773cf13b607ed884b69482dcc90eb"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/packet/subject-source.json",
+      "sha256": "ffe7f3b11b6c82a9fb6b08e1b8c68f51397860b1be479b11466cebeb8fc4dd19"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "dd1d44257f29e63b667f70b38e10f776726fc8b53b14dcec2f0e78bb9a21e492",
+  "bindingHash": "484b2ad92f8374be93d895ef52686cdb8c8c7de0a5e70743fe8fd9c387f4c9d6",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "hindNearAnkle",
+    "hindNearPaw",
+    "hindFarAnkle",
+    "hindFarPaw",
+    "foreNearAnkle",
+    "foreNearPaw",
+    "foreFarAnkle",
+    "foreFarPaw",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarKnee",
+    "foreFarRoot",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "pelvis",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/packet/master.png",
+      "sha256": "b2ae4588d58cf4386dce819f734b7734ec0259db60196ccdf354220c0cb245a6",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/packet/authoring.json",
+      "sha256": "ba2156f32292414a2fc5737a91970aae224773cf13b607ed884b69482dcc90eb",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/packet/subject-source.json",
+      "sha256": "ffe7f3b11b6c82a9fb6b08e1b8c68f51397860b1be479b11466cebeb8fc4dd19",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g17to19/c243b01r1c1-18-african-elephant/fallback-1/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

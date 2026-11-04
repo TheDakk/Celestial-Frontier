@@ -1,0 +1,115 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "2c6e6ce24492511ba3778cee48ed2d161e0ee945",
+  "helperSha256": "ac8afa1311104c5aeb431585641e1f325d59df43730fa5e89cf4000bd9252517",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/master.png",
+      "sha256": "44949448367ba0ae3373dd44889c93e2f51dfc0aba0e86b207356ba7522fa74b"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/authoring.json",
+      "sha256": "8045fcf8a9152abf7bd735eeb340f3e95b7b4d7493659db0db1388db0ea6a0af"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/subject-source.json",
+      "sha256": "63843429a938b2d8e5c207c09a0347d7ee615036be26b0d48e952697b7e693c3"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/reviewed-presence.json",
+      "sha256": "f1e0bedcdc5ee80e628f6372d6d03371a68795977dc5b8a210df17578a8a07aa"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/prompt.txt",
+      "sha256": "f83fbf9200d92cf9d14cfb983a39244aae9e95e83901bad30c9739b925dd0e5e"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1",
+  "recordRecipeHash": "f19228fd6bb09cb316658097c91d5eebfc0c5aa9995781e0d90ff73e5a355c5a",
+  "bindingHash": "377eeb6a7bf5b8c76685adc415bda5c34d5389d51053dca98afd82efe0f82709",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearPaw",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindNearRoot",
+    "hindFarPaw",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreNearPaw",
+    "foreNearAnkle",
+    "foreNearKnee",
+    "foreNearRoot",
+    "foreFarPaw",
+    "foreFarAnkle",
+    "foreFarKnee",
+    "foreFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0",
+    "pelvis",
+    "chest",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/master.png",
+      "sha256": "44949448367ba0ae3373dd44889c93e2f51dfc0aba0e86b207356ba7522fa74b",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/authoring.json",
+      "sha256": "8045fcf8a9152abf7bd735eeb340f3e95b7b4d7493659db0db1388db0ea6a0af",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/subject-source.json",
+      "sha256": "63843429a938b2d8e5c207c09a0347d7ee615036be26b0d48e952697b7e693c3",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/reviewed-presence.json",
+      "sha256": "f1e0bedcdc5ee80e628f6372d6d03371a68795977dc5b8a210df17578a8a07aa",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g23to25/c243b01r1c1-23-crocodile/packet/prompt.txt",
+      "sha256": "f83fbf9200d92cf9d14cfb983a39244aae9e95e83901bad30c9739b925dd0e5e",
+      "unchanged": true
+    }
+  ]
+}

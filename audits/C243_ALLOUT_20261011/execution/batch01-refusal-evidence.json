@@ -1,0 +1,535 @@
+[
+  {
+    "name": "Sloth Bear",
+    "family": "quadruped",
+    "priorPackets": [
+      "c198creaturesupplya-03-sloth-bear",
+      "g2c90-23-sloth-bear",
+      "c213originals-17-sloth-bear"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)",
+      "missing-anatomy: part tail3 (tail3) covers 15% paint (reference 45%)",
+      "missing-anatomy: part tail2 (tail2) covers 20% paint (reference 63%)",
+      "missing-anatomy: part tail3 (tail3) covers 14% paint (reference 45%)"
+    ]
+  },
+  {
+    "name": "Coati",
+    "family": "quadruped",
+    "priorPackets": [
+      "c202creaturesupply-04-coati",
+      "g2c87-17-coati",
+      "c213originals-03-coati"
+    ],
+    "reasons": [
+      "facing: the mirrored painting matches quadruped better (0.0140 < 0.0287)",
+      "wrong-family: primate matches clearly better (0.0169 < 0.0287)",
+      "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+      "facing: the mirrored painting matches quadruped better (0.0204 < 0.0353)",
+      "wrong-family: primate matches clearly better (0.0226 < 0.0353)",
+      "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on",
+      "facing: the mirrored painting matches quadruped better (0.0154 < 0.0366)",
+      "wrong-family: primate matches clearly better (0.0225 < 0.0366)",
+      "extra-anatomy (unassigned): a top appendage of 22.3% paint that no reference appendage lands on",
+      "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)",
+      "missing-anatomy: part tail2 (tail2) covers 12% paint (reference 63%)",
+      "unexplained-anatomy: 13.9% of the paint lies away from the body and in no part (reference 5.7%)"
+    ]
+  },
+  {
+    "name": "Porcupine",
+    "family": "quadruped",
+    "priorPackets": [
+      "c196creaturesupply-12-porcupine",
+      "c202creaturesupply-05-porcupine",
+      "g2c106-23-porcupine"
+    ],
+    "reasons": [
+      "facing: the mirrored painting matches quadruped better (0.0292 < 0.0351)",
+      "missing-anatomy: part tail-tip (tail3) covers 11% paint (reference 39%)",
+      "facing: the mirrored painting matches quadruped better (0.0324 < 0.0407)",
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 26% paint (reference 84%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%)",
+      "missing-anatomy: part ear-far-root (earFarRoot) covers 20% paint (reference 67%)",
+      "missing-anatomy: part tail-tip (tail3) covers 6% paint (reference 39%)",
+      "missing-anatomy: part tail-distal (tail2) covers 13% paint (reference 54%)",
+      "missing-anatomy: part tail-root (tail0) covers 16% paint (reference 88%)",
+      "missing-anatomy: part tail-root (tail0) covers 28% paint (reference 88%)"
+    ]
+  },
+  {
+    "name": "Squirrel",
+    "family": "quadruped",
+    "priorPackets": [
+      "c198creaturesupplya-10-squirrel",
+      "g2c90-15-squirrel",
+      "c213originals-18-squirrel-source02",
+      "c213originals-18-squirrel"
+    ],
+    "reasons": [
+      "wrong-family: biped-bird matches clearly better (0.0201 < 0.0296)",
+      "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+      "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 79%)",
+      "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 30% paint (reference 100%)",
+      "missing-anatomy: part tail-tip (tail3) covers 12% paint (reference 39%)",
+      "facing: the mirrored painting matches quadruped better (0.0167 < 0.0261)",
+      "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 61%)",
+      "unexplained-anatomy: 15.1% of the paint lies away from the body and in no part (reference 5.6%)",
+      "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 31%)",
+      "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 5.1%)",
+      "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 72%)",
+      "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 31% paint (reference 95%)",
+      "missing-anatomy: part tail-tip (tail3) covers 11% paint (reference 39%)",
+      "unexplained-anatomy: 19.2% of the paint lies away from the body and in no part (reference 13.9%)"
+    ]
+  },
+  {
+    "name": "Mole",
+    "family": "quadruped",
+    "priorPackets": [
+      "c198creaturesupplya-13-mole",
+      "g2c101-23-mole",
+      "c213originals-10-mole-source02",
+      "c213originals-10-mole"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 45%)",
+      "unexplained-anatomy: 9.9% of the paint lies away from the body and in no part (reference 5.7%)",
+      "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 0% paint (reference 90%)",
+      "unexplained-anatomy: 11.1% of the paint lies away from the body and in no part (reference 5.7%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 24%)",
+      "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 5.1%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 24%)",
+      "unexplained-anatomy: 14.1% of the paint lies away from the body and in no part (reference 5.1%)"
+    ]
+  },
+  {
+    "name": "Guinea Pig",
+    "family": "quadruped",
+    "priorPackets": [
+      "c198creaturesupplya-19-guinea-pig",
+      "g2c107-21-guinea-pig",
+      "c213originals-04-guinea-pig"
+    ],
+    "reasons": [
+      "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 30% paint (reference 88%)",
+      "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 29% paint (reference 88%)",
+      "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 45%)",
+      "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 27% paint (reference 88%)"
+    ]
+  },
+  {
+    "name": "Water Vole",
+    "family": "quadruped",
+    "priorPackets": [
+      "c196creaturesupply-03-water-vole",
+      "c203creaturesupply-08-water-vole",
+      "g2c118-05-water-vole"
+    ],
+    "reasons": [
+      "missing-anatomy: part fore-near-paw (foreNearPaw) covers 13% paint (reference 48%)",
+      "unexplained-anatomy: 11.4% of the paint lies away from the body and in no part (reference 5.1%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 24%)",
+      "unexplained-anatomy: 10.4% of the paint lies away from the body and in no part (reference 5.1%)",
+      "missing-anatomy: part hind-near-paw (hindNearPaw) covers 15% paint (reference 43%)",
+      "missing-anatomy: part fore-near-paw (foreNearPaw) covers 15% paint (reference 48%)",
+      "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 5.1%)"
+    ]
+  },
+  {
+    "name": "Marsh Rodent",
+    "family": "quadruped",
+    "priorPackets": [
+      "c196creaturesupply-04-marsh-rodent",
+      "c203creaturesupply-09-marsh-rodent",
+      "g2c118-06-marsh-rodent"
+    ],
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+      "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 1.9%)",
+      "unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 1.9%)",
+      "unexplained-anatomy: 7.2% of the paint lies away from the body and in no part (reference 1.7%)"
+    ]
+  },
+  {
+    "name": "Giant Anteater",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2c107-10-giant-anteater"
+    ],
+    "reasons": [
+      "missing-anatomy: part hind-near-paw (hindNearPaw) covers 24% paint (reference 69%)"
+    ]
+  },
+  {
+    "name": "Pangolin",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2c76-22-pangolin"
+    ],
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+    ]
+  },
+  {
+    "name": "Echidna",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2c118-10-echidna"
+    ],
+    "reasons": [
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 7% paint (reference 38%)",
+      "missing-anatomy: part tail2 (tail2) covers 15% paint (reference 63%)"
+    ]
+  },
+  {
+    "name": "Ibex",
+    "family": "quadruped",
+    "priorPackets": [
+      "c196creaturesupply-08-ibex",
+      "c202creaturesupply-13-ibex",
+      "g2c107-15-ibex",
+      "c213originals-07-ibex"
+    ],
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 35%)",
+      "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 0.0%)",
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 18% paint (reference 62%)",
+      "unexplained-anatomy: 8.0% of the paint lies away from the body and in no part (reference 0.0%)",
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 11% paint (reference 62%)",
+      "unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 0.0%)",
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 7% paint (reference 62%)",
+      "unexplained-anatomy: 8.3% of the paint lies away from the body and in no part (reference 0.0%)"
+    ]
+  },
+  {
+    "name": "Yak",
+    "family": "quadruped",
+    "priorPackets": [
+      "c192creaturesupply-22-yak",
+      "c213creaturesupply-13-yak",
+      "g2c110-19-yak",
+      "g2c136repairs-14-yak"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 7.9% paint that no reference appendage lands on",
+      "extra-anatomy (unassigned): a limb-down appendage of 7.3% paint that no reference appendage lands on",
+      "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)",
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 57%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)",
+      "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 22% paint (reference 70%)",
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 17% paint (reference 57%)",
+      "missing-anatomy: part head (head) covers 19% paint (reference 61%)"
+    ]
+  },
+  {
+    "name": "Wild Horse",
+    "family": "quadruped",
+    "priorPackets": [
+      "c202creaturesupply-20-wild-horse",
+      "g2quadrupedpilot-16-wild-horse"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 10.7% paint that no reference appendage lands on",
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 19% paint (reference 57%)"
+    ]
+  },
+  {
+    "name": "Camel",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2quadrupedpilot-17-camel"
+    ],
+    "reasons": []
+  },
+  {
+    "name": "Dromedary Camel",
+    "family": "quadruped",
+    "priorPackets": [
+      "c213creaturesupply-17-dromedary-camel",
+      "g2c110-23-dromedary-camel"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)",
+      "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+    ]
+  },
+  {
+    "name": "Warthog",
+    "family": "quadruped",
+    "priorPackets": [
+      "c192creaturesupply-20-warthog",
+      "c202creaturesupply-07-warthog",
+      "g2c98-22-warthog"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail0 (tail0) covers 0% paint (reference 87%)",
+      "missing-anatomy: part tail2 (tail2) covers 5% paint (reference 63%)",
+      "missing-anatomy: part tail1 (tail1) covers 18% paint (reference 81%)",
+      "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)"
+    ]
+  },
+  {
+    "name": "African Elephant",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2c114-04-african-elephant"
+    ],
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 9% paint (reference 46%)"
+    ]
+  },
+  {
+    "name": "Walrus",
+    "family": "quadruped",
+    "priorPackets": [
+      "c215program-06-walrus"
+    ],
+    "reasons": [
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+      "missing-anatomy: part hind-near-paw (hindNearPaw) covers 9% paint (reference 59%)",
+      "missing-anatomy: part fore-near-paw (foreNearPaw) covers 4% paint (reference 60%)"
+    ]
+  },
+  {
+    "name": "Seal",
+    "family": "quadruped",
+    "priorPackets": [
+      "c215program-07-seal"
+    ],
+    "reasons": [
+      "wrong-family: fish matches clearly better (0.0130 < 0.0214)",
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+      "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 29%)",
+      "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 21% paint (reference 70%)",
+      "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 24%)",
+      "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 13% paint (reference 56%)"
+    ]
+  },
+  {
+    "name": "Fur Seal",
+    "family": "quadruped",
+    "priorPackets": [
+      "c215program-08-fur-seal"
+    ],
+    "reasons": [
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+      "missing-anatomy: part hind-near-hoof (hindNearPaw) covers 0% paint (reference 71%)",
+      "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 0% paint (reference 88%)",
+      "missing-anatomy: part hind-near-knee (hindNearKnee) covers 0% paint (reference 76%)"
+    ]
+  },
+  {
+    "name": "Sea Lion",
+    "family": "quadruped",
+    "priorPackets": [
+      "c215program-09-sea-lion"
+    ],
+    "reasons": [
+      "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 51%)"
+    ]
+  },
+  {
+    "name": "Crocodile",
+    "family": "quadruped",
+    "priorPackets": [
+      "c196framingsuccessors-02-crocodile-framing-v2",
+      "c196quadrupedoriginals-02-crocodile",
+      "g2c132quadrupeds-02-crocodile"
+    ],
+    "reasons": [
+      "unexplained-anatomy: 14.9% of the paint lies away from the body and in no part (reference 9.7%)",
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+      "unexplained-anatomy: 14.6% of the paint lies away from the body and in no part (reference 9.7%)"
+    ]
+  },
+  {
+    "name": "Anole",
+    "family": "quadruped",
+    "priorPackets": [
+      "c196framingsuccessors-04-anole-framing-v2",
+      "c196quadrupedoriginals-04-anole",
+      "g2c132quadrupeds-06-anole"
+    ],
+    "reasons": [
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "missing-anatomy: part hind-far-root (hindFarRoot) covers 25% paint (reference 100%)",
+      "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)",
+      "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 2.2%)",
+      "missing-anatomy: part hind-far-root (hindFarRoot) covers 0% paint (reference 100%)",
+      "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 10%)",
+      "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 2.2%)"
+    ]
+  },
+  {
+    "name": "Skink",
+    "family": "quadruped",
+    "priorPackets": [
+      "c196framingsuccessors-05-skink-framing-v2",
+      "c196quadrupedoriginals-05-skink",
+      "g2c132quadrupeds-08-skink"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)",
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "missing-anatomy: part hind-near-paw (hindNearPaw) covers 13% paint (reference 40%)",
+      "missing-anatomy: part fore-near-paw (foreNearPaw) covers 0% paint (reference 48%)",
+      "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 20% paint (reference 87%)"
+    ]
+  },
+  {
+    "name": "Whiptail",
+    "family": "quadruped",
+    "priorPackets": [
+      "c196framingsuccessors-08-whiptail-framing-v2",
+      "c196quadrupedoriginals-08-whiptail",
+      "g2c132quadrupeds-13-whiptail"
+    ],
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on",
+      "missing-anatomy: part hind-far-knee (hindFarKnee) covers 27% paint (reference 83%)",
+      "missing-anatomy: part tail3 (tail3) covers 4% paint (reference 20%)",
+      "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on",
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "missing-anatomy: part hind-far-knee (hindFarKnee) covers 25% paint (reference 83%)",
+      "missing-anatomy: part fore-near-paw (foreNearPaw) covers 14% paint (reference 48%)",
+      "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 20%)",
+      "missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 75%)",
+      "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%)",
+      "unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 2.2%)"
+    ]
+  },
+  {
+    "name": "Frilled Lizard",
+    "family": "quadruped",
+    "priorPackets": [
+      "c196quadrupedoriginals-11-frilled-lizard",
+      "g2c132quadrupeds-20-frilled-lizard"
+    ],
+    "reasons": [
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "missing-anatomy: part tail3 (tail3) covers 5% paint (reference 10%)",
+      "missing-anatomy: part tail2 (tail2) covers 6% paint (reference 14%)",
+      "unexplained-anatomy: 10.6% of the paint lies away from the body and in no part (reference 2.2%)",
+      "unexplained-anatomy: 16.1% of the paint lies away from the body and in no part (reference 8.3%)"
+    ]
+  },
+  {
+    "name": "Tortoise",
+    "family": "quadruped",
+    "priorPackets": [
+      "c186creaturesupply-07-tortoise"
+    ],
+    "reasons": [
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)"
+    ]
+  },
+  {
+    "name": "Box Turtle",
+    "family": "quadruped",
+    "priorPackets": [
+      "c186creaturesupply-08-box-turtle"
+    ],
+    "reasons": [
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required"
+    ]
+  },
+  {
+    "name": "Pond Turtle",
+    "family": "quadruped",
+    "priorPackets": [
+      "c186creaturesupply-09-pond-turtle"
+    ],
+    "reasons": [
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 31%)",
+      "unexplained-anatomy: 14.0% of the paint lies away from the body and in no part (reference 5.1%)"
+    ]
+  },
+  {
+    "name": "Snapping Turtle",
+    "family": "quadruped",
+    "priorPackets": [
+      "c186creaturesupply-10-snapping-turtle"
+    ],
+    "reasons": [
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "missing-anatomy: part tail2 (tail2) covers 16% paint (reference 63%)"
+    ]
+  },
+  {
+    "name": "Softshell Turtle",
+    "family": "quadruped",
+    "priorPackets": [
+      "c186creaturesupply-11-softshell-turtle"
+    ],
+    "reasons": [
+      "missing-anatomy: part tail-middle (tail1) covers 32% paint (reference 98%)",
+      "missing-anatomy: part tail-base (tail0) covers 25% paint (reference 100%)",
+      "missing-anatomy: part near-front-shin-fringe (foreNearKnee) covers 22% paint (reference 67%)"
+    ]
+  },
+  {
+    "name": "Turtle",
+    "family": "quadruped",
+    "priorPackets": [
+      "c186creaturesupply-12-turtle"
+    ],
+    "reasons": [
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required"
+    ]
+  },
+  {
+    "name": "Sea Turtle",
+    "family": "quadruped",
+    "priorPackets": [
+      "c215program-01-sea-turtle-02"
+    ],
+    "reasons": [
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+      "missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 79%)",
+      "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 0% paint (reference 100%)",
+      "missing-anatomy: part fore-near-paw (foreNearPaw) covers 8% paint (reference 77%)"
+    ]
+  },
+  {
+    "name": "Olm",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2c136repairs-03-olm"
+    ],
+    "reasons": [
+      "missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required",
+      "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+      "missing-anatomy: part jaw (jaw) covers 21% paint (reference 59%)"
+    ]
+  },
+  {
+    "name": "Blind Salamander",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2c136repairs-04-blind-salamander"
+    ],
+    "reasons": [
+      "missing-anatomy: part hind-near-paw (hindNearPaw) covers 16% paint (reference 53%)",
+      "missing-anatomy: part hind-far-paw (hindFarPaw) covers 5% paint (reference 53%)",
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 44%)",
+      "missing-anatomy: part fore-far-knee (foreFarKnee) covers 18% paint (reference 59%)",
+      "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+    ]
+  },
+  {
+    "name": "Axolotl",
+    "family": "quadruped",
+    "priorPackets": [
+      "g2c136repairs-05-axolotl"
+    ],
+    "reasons": [
+      "missing-anatomy: part hind-near-paw (hindNearPaw) covers 18% paint (reference 53%)"
+    ]
+  }
+]

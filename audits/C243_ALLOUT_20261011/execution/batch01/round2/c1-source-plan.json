@@ -1,0 +1,194 @@
+[
+  {
+    "index": 2,
+    "name": "Coati",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-02-coati",
+    "patternObservationsRequired": [
+      "faintly banded tail held straight up like a flagpole"
+    ]
+  },
+  {
+    "index": 3,
+    "name": "Porcupine",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-03-porcupine",
+    "patternObservationsRequired": [
+      "long banded quills laid back over the rump"
+    ]
+  },
+  {
+    "index": 4,
+    "name": "Squirrel",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-04-squirrel",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 5,
+    "name": "Mole",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-05-mole",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 7,
+    "name": "Water Vole",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-07-water-vole",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 9,
+    "name": "Giant Anteater",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-09-giant-anteater",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 10,
+    "name": "Pangolin",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-10-pangolin",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 11,
+    "name": "Echidna",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-11-echidna",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 12,
+    "name": "Ibex",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-12-ibex",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 13,
+    "name": "Yak",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-13-yak",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 14,
+    "name": "Wild Horse",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-14-wild-horse",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 15,
+    "name": "Camel",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-15-camel",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 16,
+    "name": "Dromedary Camel",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-16-dromedary-camel",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 17,
+    "name": "Warthog",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-17-warthog",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 19,
+    "name": "Walrus",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-19-walrus",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 20,
+    "name": "Seal",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-20-seal",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 21,
+    "name": "Fur Seal",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-21-fur-seal",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 22,
+    "name": "Sea Lion",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-22-sea-lion",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 24,
+    "name": "Anole",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-24-anole",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 25,
+    "name": "Skink",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-25-skink",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 26,
+    "name": "Whiptail",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-26-whiptail",
+    "patternObservationsRequired": [
+      "pale stripes running the length of the back"
+    ]
+  },
+  {
+    "index": 27,
+    "name": "Frilled Lizard",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-27-frilled-lizard",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 28,
+    "name": "Tortoise",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-28-tortoise",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 29,
+    "name": "Box Turtle",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-29-box-turtle",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 30,
+    "name": "Pond Turtle",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-30-pond-turtle",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 31,
+    "name": "Snapping Turtle",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-31-snapping-turtle",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 32,
+    "name": "Softshell Turtle",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-32-softshell-turtle",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 33,
+    "name": "Turtle",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-33-turtle",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 34,
+    "name": "Sea Turtle",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-34-sea-turtle",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 35,
+    "name": "Olm",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-35-olm",
+    "patternObservationsRequired": []
+  },
+  {
+    "index": 36,
+    "name": "Blind Salamander",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-36-blind-salamander",
+    "patternObservationsRequired": []
+  }
+]

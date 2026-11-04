@@ -1,0 +1,42 @@
+[
+  {
+    "id": "c243b01r2c3-05-mole",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c3-05-mole",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-05-mole/report.json"
+  },
+  {
+    "id": "c243b01r2c1-13-yak",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c1-13-yak",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-13-yak/report.json"
+  },
+  {
+    "id": "c243b01r2c1-14-wild-horse",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c1-14-wild-horse",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-14-wild-horse/report.json"
+  },
+  {
+    "id": "c243b01r2c3-15-camel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-01/c243b01r2c3-15-camel",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-15-camel/report.json"
+  },
+  {
+    "id": "c243b01r2c2-17-warthog",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-02/c243b01r2c2-17-warthog",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c2-17-warthog/report.json"
+  },
+  {
+    "id": "c243b01r2c3-19-walrus",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-02/c243b01r2c3-19-walrus",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-19-walrus/report.json"
+  },
+  {
+    "id": "c243b01r2c3-25-skink",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-02/c243b01r2c3-25-skink",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c3-25-skink/report.json"
+  },
+  {
+    "id": "c243b01r2c1-36-blind-salamander",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/rebound-02/c243b01r2c1-36-blind-salamander",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/ai-finish/native-01/c243b01r2c1-36-blind-salamander/report.json"
+  }
+]

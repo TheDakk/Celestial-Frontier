@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c243b01r2c2-17-warthog",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c2-17-warthog/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native/c243b01r2c2-17-warthog/report.json"
+  },
+  {
+    "id": "c243b01r2c3-19-walrus",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-19-walrus/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native/c243b01r2c3-19-walrus/report.json"
+  },
+  {
+    "id": "c243b01r2c3-25-skink",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-25-skink/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native/c243b01r2c3-25-skink/report.json"
+  },
+  {
+    "id": "c243b01r2c1-36-blind-salamander",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c1-36-blind-salamander/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch01/round2/native/c243b01r2c1-36-blind-salamander/report.json"
+  }
+]

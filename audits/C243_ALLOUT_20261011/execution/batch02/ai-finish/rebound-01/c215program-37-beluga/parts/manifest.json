@@ -1,0 +1,40 @@
+{
+  "creatureId": "c215program-37-beluga",
+  "parts": [
+    {
+      "name": "near-pectoral.png",
+      "path": "parts/near-pectoral.png",
+      "sha256": "c21fe917db14c2d600d4fc29a094fa266fe6abbd0adb82a0cb5abb2a5b9f087b"
+    },
+    {
+      "name": "far-pectoral.png",
+      "path": "parts/far-pectoral.png",
+      "sha256": "4c1abb7658f2fc09b054a3601633df60edbb671525c526a43c4279f3bfe2ea5a"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "75bffb4770966739b2d3685c6574d9857911c6db4a71f90d26d2e3831a4e6c3b"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "ed302134fc58f0348b76976d764ab52ac2d2c5957b1b04b121e5224a421af6dd"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "17e918eaf1626d9c9d478c641fc026c33038b14a2f31f1a9abd6e5a57f091ef1"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "2272c3d7bb33609dced388c4450eeb584071f3019a9d35645e08cf75f1b4eccd"
+    },
+    {
+      "name": "axial-body.png",
+      "path": "parts/axial-body.png",
+      "sha256": "0bb536ec939b9002f69e8d4b20a9d873034a97ee9d7a167c0b0febb67f7dce07"
+    }
+  ]
+}

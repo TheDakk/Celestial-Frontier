@@ -1,0 +1,16 @@
+{
+  "candidates": 31,
+  "admit": 5,
+  "staticPass": [
+    "Warthog",
+    "Blind Salamander"
+  ],
+  "identityHold": [
+    "Camel"
+  ],
+  "eligibleStaticSpecies": [
+    "Blind Salamander",
+    "Warthog",
+    "Yak"
+  ]
+}

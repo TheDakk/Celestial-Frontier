@@ -1,0 +1,28 @@
+{
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "sourceGroup": "r2c1a",
+  "observations": [
+    {
+      "name": "Coati",
+      "source": "Right-facing elongated muzzle, four feet and upright banded tail are visibly present.",
+      "authorRefusal": "Mirrored silhouette scores better; primate family preferred; far ear root0%.",
+      "next": "Reference/owner review after required source candidates; no false facing or invented anatomy claim."
+    },
+    {
+      "name": "Squirrel",
+      "source": "Head visibly right, four feet, bushy tail arched over back.",
+      "authorRefusal": "Mirrored silhouette scores better; root covers0%paint."
+    },
+    {
+      "name": "Mole",
+      "source": "Naturally earless specimen with four visible shovel/hind feet.",
+      "authorRefusal": "Missing ear-far-tip,13.5%unexplained paint.",
+      "next": "Trace canonical absent-ear facts during class phase, retain controls."
+    }
+  ],
+  "policyTrace": {
+    "file": "port/v2/tools/painted-creature/reviewed-presence.mjs",
+    "finding": "canonicalSprawlerReview currently admits pinna absence for reptile/salamander/turtle/platypus profiles and Seal/Walrus only; Mole and Echidna are excluded, so true earless new originals retain ear-part refusals.",
+    "classWork": "After the required three candidates, evaluate a narrowly independently verified Mole/Echidna pinna-absence fact extension with negative controls. New automatic authoring only; no sealed-fit patch, no limb/motion exemption, no threshold change."
+  }
+}

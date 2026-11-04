@@ -1,0 +1,16 @@
+{
+  "pilot": 74,
+  "scored": 72,
+  "patternSkipped": [
+    {
+      "id": "g2quadrupedpilot-16-wild-horse",
+      "pattern": "MISSING"
+    },
+    {
+      "id": "g2quadrupedpilot-17-camel",
+      "pattern": "MISSING"
+    }
+  ],
+  "staticPass": 0,
+  "summary": "audits/G1_AUTO_AUTHOR_20260926/native-c243b01before/summary.json"
+}

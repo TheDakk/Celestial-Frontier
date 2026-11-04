@@ -1,0 +1,197 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "root",
+      "joint": "root",
+      "owner": "root"
+    },
+    {
+      "region": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "owner": "hind-near-paw"
+    },
+    {
+      "region": "hind-near-ankle",
+      "joint": "hindNearAnkle",
+      "owner": "hind-near-ankle"
+    },
+    {
+      "region": "hind-near-knee",
+      "joint": "hindNearKnee",
+      "owner": "hind-near-knee"
+    },
+    {
+      "region": "hind-near-root",
+      "joint": "hindNearRoot",
+      "owner": "hind-near-root"
+    },
+    {
+      "region": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "owner": "hind-far-paw"
+    },
+    {
+      "region": "hind-far-ankle",
+      "joint": "hindFarAnkle",
+      "owner": "hind-far-ankle"
+    },
+    {
+      "region": "hind-far-knee",
+      "joint": "hindFarKnee",
+      "owner": "hind-far-knee"
+    },
+    {
+      "region": "hind-far-root",
+      "joint": "hindFarRoot",
+      "owner": "hind-far-root"
+    },
+    {
+      "region": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "owner": "fore-near-paw"
+    },
+    {
+      "region": "fore-near-ankle",
+      "joint": "foreNearAnkle",
+      "owner": "fore-near-ankle"
+    },
+    {
+      "region": "fore-near-knee",
+      "joint": "foreNearKnee",
+      "owner": "fore-near-knee"
+    },
+    {
+      "region": "fore-near-root",
+      "joint": "foreNearRoot",
+      "owner": "fore-near-root"
+    },
+    {
+      "region": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "owner": "fore-far-paw"
+    },
+    {
+      "region": "fore-far-ankle",
+      "joint": "foreFarAnkle",
+      "owner": "fore-far-ankle"
+    },
+    {
+      "region": "fore-far-knee",
+      "joint": "foreFarKnee",
+      "owner": "fore-far-knee"
+    },
+    {
+      "region": "fore-far-root",
+      "joint": "foreFarRoot",
+      "owner": "fore-far-root"
+    },
+    {
+      "region": "jaw",
+      "joint": "jaw",
+      "owner": "jaw"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "neck",
+      "joint": "neck",
+      "owner": "neck"
+    },
+    {
+      "region": "tail-tip",
+      "joint": "tail3",
+      "owner": "tail-tip"
+    },
+    {
+      "region": "tail-distal",
+      "joint": "tail2",
+      "owner": "tail-distal"
+    },
+    {
+      "region": "tail-middle",
+      "joint": "tail1",
+      "owner": "tail-middle"
+    },
+    {
+      "region": "tail-root",
+      "joint": "tail0",
+      "owner": "tail-root"
+    },
+    {
+      "region": "pelvis",
+      "joint": "pelvis",
+      "owner": "pelvis"
+    },
+    {
+      "region": "chest",
+      "joint": "chest",
+      "owner": "chest"
+    },
+    {
+      "region": "tail-tip-lower-rim",
+      "joint": "tail3",
+      "owner": "tail-tip"
+    },
+    {
+      "region": "tail-distal-lower-rim",
+      "joint": "tail2",
+      "owner": "tail-distal"
+    },
+    {
+      "region": "tail-middle-lower-rim",
+      "joint": "tail1",
+      "owner": "tail-middle"
+    },
+    {
+      "region": "spine",
+      "joint": "spine",
+      "owner": "spine"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    68,
+    943,
+    1103,
+    4022,
+    5468,
+    506,
+    771,
+    625,
+    941,
+    1331,
+    996,
+    2387,
+    2558,
+    693,
+    177,
+    512,
+    533,
+    2482,
+    5583,
+    9758,
+    2354,
+    6403,
+    9404,
+    6408,
+    4487,
+    3657,
+    21060
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "rgbaConservationBasis": "exact established keyed output",
+  "keyedRgbaSha256": "0450e72476b75cf3cdd09bc2ab5376d712290bf987f68c6161f82d7996d79a82",
+  "intake": {
+    "erodedPixels": 3960,
+    "despilledPixels": 132,
+    "unresolvedEdgePixels": 0,
+    "narrowEdgeDonors": 1
+  },
+  "remainderPart": "spine"
+}

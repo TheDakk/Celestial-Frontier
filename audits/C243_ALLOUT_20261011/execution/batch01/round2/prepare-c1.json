@@ -1,0 +1,219 @@
+[
+  {
+    "index": 2,
+    "name": "Coati",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-02-coati\",\"name\":\"Coati\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-02-coati\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-02-coati/master.png\"}\n"
+  },
+  {
+    "index": 3,
+    "name": "Porcupine",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-03-porcupine\",\"name\":\"Porcupine\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-03-porcupine\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-03-porcupine/master.png\"}\n"
+  },
+  {
+    "index": 4,
+    "name": "Squirrel",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-04-squirrel\",\"name\":\"Squirrel\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-04-squirrel\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-04-squirrel/master.png\"}\n"
+  },
+  {
+    "index": 5,
+    "name": "Mole",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-05-mole\",\"name\":\"Mole\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-05-mole\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-05-mole/master.png\"}\n"
+  },
+  {
+    "index": 7,
+    "name": "Water Vole",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-07-water-vole\",\"name\":\"Water Vole\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-07-water-vole\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-07-water-vole/master.png\"}\n"
+  },
+  {
+    "index": 9,
+    "name": "Giant Anteater",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-09-giant-anteater\",\"name\":\"Giant Anteater\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-09-giant-anteater\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-09-giant-anteater/master.png\"}\n"
+  },
+  {
+    "index": 10,
+    "name": "Pangolin",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-10-pangolin\",\"name\":\"Pangolin\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-10-pangolin\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-10-pangolin/master.png\"}\n"
+  },
+  {
+    "index": 11,
+    "name": "Echidna",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-11-echidna\",\"name\":\"Echidna\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-11-echidna\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-11-echidna/master.png\"}\n"
+  },
+  {
+    "index": 12,
+    "name": "Ibex",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-12-ibex\",\"name\":\"Ibex\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-12-ibex\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-12-ibex/master.png\"}\n"
+  },
+  {
+    "index": 13,
+    "name": "Yak",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-13-yak\",\"name\":\"Yak\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-13-yak\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-13-yak/master.png\"}\n"
+  },
+  {
+    "index": 14,
+    "name": "Wild Horse",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-14-wild-horse\",\"name\":\"Wild Horse\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-14-wild-horse\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-14-wild-horse/master.png\"}\n"
+  },
+  {
+    "index": 15,
+    "name": "Camel",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-15-camel\",\"name\":\"Camel\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-15-camel\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-15-camel/master.png\"}\n"
+  },
+  {
+    "index": 16,
+    "name": "Dromedary Camel",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-16-dromedary-camel\",\"name\":\"Dromedary Camel\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-16-dromedary-camel\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-16-dromedary-camel/master.png\"}\n"
+  },
+  {
+    "index": 17,
+    "name": "Warthog",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-17-warthog\",\"name\":\"Warthog\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-17-warthog\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-17-warthog/master.png\"}\n"
+  },
+  {
+    "index": 19,
+    "name": "Walrus",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-19-walrus\",\"name\":\"Walrus\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-19-walrus\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-19-walrus/master.png\"}\n"
+  },
+  {
+    "index": 20,
+    "name": "Seal",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-20-seal\",\"name\":\"Seal\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-20-seal\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-20-seal/master.png\"}\n"
+  },
+  {
+    "index": 21,
+    "name": "Fur Seal",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-21-fur-seal\",\"name\":\"Fur Seal\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-21-fur-seal\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-21-fur-seal/master.png\"}\n"
+  },
+  {
+    "index": 22,
+    "name": "Sea Lion",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-22-sea-lion\",\"name\":\"Sea Lion\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-22-sea-lion\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-22-sea-lion/master.png\"}\n"
+  },
+  {
+    "index": 24,
+    "name": "Anole",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-24-anole\",\"name\":\"Anole\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-24-anole\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-24-anole/master.png\"}\n"
+  },
+  {
+    "index": 25,
+    "name": "Skink",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-25-skink\",\"name\":\"Skink\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-25-skink\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-25-skink/master.png\"}\n"
+  },
+  {
+    "index": 26,
+    "name": "Whiptail",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-26-whiptail\",\"name\":\"Whiptail\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-26-whiptail\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-26-whiptail/master.png\"}\n"
+  },
+  {
+    "index": 27,
+    "name": "Frilled Lizard",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-27-frilled-lizard\",\"name\":\"Frilled Lizard\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-27-frilled-lizard\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-27-frilled-lizard/master.png\"}\n"
+  },
+  {
+    "index": 28,
+    "name": "Tortoise",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-28-tortoise\",\"name\":\"Tortoise\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-28-tortoise\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-28-tortoise/master.png\"}\n"
+  },
+  {
+    "index": 29,
+    "name": "Box Turtle",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-29-box-turtle\",\"name\":\"Box Turtle\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-29-box-turtle\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-29-box-turtle/master.png\"}\n"
+  },
+  {
+    "index": 30,
+    "name": "Pond Turtle",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-30-pond-turtle\",\"name\":\"Pond Turtle\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-30-pond-turtle\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-30-pond-turtle/master.png\"}\n"
+  },
+  {
+    "index": 31,
+    "name": "Snapping Turtle",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-31-snapping-turtle\",\"name\":\"Snapping Turtle\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-31-snapping-turtle\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-31-snapping-turtle/master.png\"}\n"
+  },
+  {
+    "index": 32,
+    "name": "Softshell Turtle",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-32-softshell-turtle\",\"name\":\"Softshell Turtle\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-32-softshell-turtle\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-32-softshell-turtle/master.png\"}\n"
+  },
+  {
+    "index": 33,
+    "name": "Turtle",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-33-turtle\",\"name\":\"Turtle\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-33-turtle\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-33-turtle/master.png\"}\n"
+  },
+  {
+    "index": 34,
+    "name": "Sea Turtle",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-34-sea-turtle\",\"name\":\"Sea Turtle\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-34-sea-turtle\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-34-sea-turtle/master.png\"}\n"
+  },
+  {
+    "index": 35,
+    "name": "Olm",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-35-olm\",\"name\":\"Olm\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-35-olm\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-35-olm/master.png\"}\n"
+  },
+  {
+    "index": 36,
+    "name": "Blind Salamander",
+    "family": "quadruped",
+    "exitCode": 0,
+    "output": "{\"id\":\"c243b01r2c1-36-blind-salamander\",\"name\":\"Blind Salamander\",\"family\":\"quadruped\",\"packet\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-36-blind-salamander\",\"master\":\"audits/C243_ALLOUT_20261011/execution/batch01/c243b01r2c1-36-blind-salamander/master.png\"}\n"
+  }
+]

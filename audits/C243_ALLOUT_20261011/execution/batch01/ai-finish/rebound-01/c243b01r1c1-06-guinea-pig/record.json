@@ -1,0 +1,260 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Guinea Pig\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1524088591\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"6\"]]]]",
+    "seed": 1524088591,
+    "ownerId": "authored:archetype-sprint/c243b01r1c1-06-guinea-pig",
+    "earthName": "Guinea Pig"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "clipSetId": "quadruped-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "representation": {
+      "schema": "cf.source-representation/v1",
+      "reviewSha256": "b3dc1c64c2077df6bbcb0582a04bf052869625365a3f328828fd55dfdde7fbbd",
+      "compactTail": {
+        "terminal": "tail1"
+      }
+    }
+  },
+  "genome": {
+    "seed": 1524088591,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 3,
+    "body": 4,
+    "loco": 16,
+    "trait": 6,
+    "size": 4,
+    "diet": 3,
+    "head": 0,
+    "limbs": 5,
+    "skin": 8,
+    "tail": 2,
+    "pattern": 0,
+    "eyes": 1,
+    "behavior": 6,
+    "habitat": 6,
+    "detail": 7,
+    "accent": 10,
+    "temper": 4,
+    "sense": 8,
+    "repro": 7,
+    "life": 4,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Guinea Pig"
+  },
+  "geometry": {
+    "cutoutAssetHash": "7131b058c5cd4b9502a7fd7e6a8bcb2c1e4ed47236633c56155a079bf14ab6e1",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.6272692568160133,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.44960127591706534,
+      0.5283891547049442
+    ],
+    "pelvis": [
+      0.3334130781499203,
+      0.49760765550239233
+    ],
+    "spine": [
+      0.45374800637958534,
+      0.517304625199362
+    ],
+    "chest": [
+      0.5480861244019138,
+      0.5110845295055821
+    ],
+    "neck": [
+      0.6426634768740032,
+      0.4491228070175439
+    ],
+    "head": [
+      0.6952950558213716,
+      0.4330940988835726
+    ],
+    "jaw": [
+      0.7319776714513556,
+      0.4605263157894737
+    ],
+    "hindNearRoot": [
+      0.3276714513556619,
+      0.5177033492822967
+    ],
+    "hindNearKnee": [
+      0.316347687400319,
+      0.5536682615629984
+    ],
+    "hindNearAnkle": [
+      0.3038277511961722,
+      0.5996810207336523
+    ],
+    "hindNearPaw": [
+      0.3202551834130782,
+      0.6147527910685805
+    ],
+    "hindFarRoot": [
+      0.37216905901116426,
+      0.5543062200956937
+    ],
+    "hindFarKnee": [
+      0.37719298245614036,
+      0.5803030303030303
+    ],
+    "hindFarAnkle": [
+      0.38197767145135564,
+      0.6004784688995215
+    ],
+    "hindFarPaw": [
+      0.39896331738437,
+      0.6081339712918661
+    ],
+    "foreNearRoot": [
+      0.5366826156299841,
+      0.5246411483253588
+    ],
+    "foreNearKnee": [
+      0.5303030303030303,
+      0.5696172248803827
+    ],
+    "foreNearAnkle": [
+      0.5357256778309409,
+      0.6066985645933014
+    ],
+    "foreNearPaw": [
+      0.5545454545454546,
+      0.6200956937799044
+    ],
+    "foreFarRoot": [
+      0.6172248803827751,
+      0.5245614035087719
+    ],
+    "foreFarKnee": [
+      0.5893141945773525,
+      0.5586124401913876
+    ],
+    "foreFarAnkle": [
+      0.5964912280701754,
+      0.5965709728867624
+    ],
+    "foreFarPaw": [
+      0.6177033492822966,
+      0.6137161084529505
+    ],
+    "earNearRoot": [
+      0.6420255183413078,
+      0.3780701754385965
+    ],
+    "earNearTip": [
+      0.6287878787878788,
+      0.35127591706539074
+    ],
+    "earFarRoot": [
+      0.6559011164274322,
+      0.36690590111642746
+    ],
+    "earFarTip": [
+      0.6527113237639554,
+      0.35287081339712917
+    ],
+    "tail0": [
+      0.27352472089314195,
+      0.5007974481658692
+    ],
+    "tail1": [
+      0.2751196172248804,
+      0.5574162679425837
+    ]
+  },
+  "materials": {
+    "surface": "fur"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c1g05to07/c243b01r1c1-06-guinea-pig/packet/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile small-clawed-mammal media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from brown-bear. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "7a6a2ad94651ac7e772f57759f9a2726ad507d18bcba6354d0e8ce4f14cbd47c",
+    "subjectSourceSha256": "8b93646e5d8e3e201f0435324e357e6e5770c50623c4f96e8641c82de83136a7",
+    "presenceSha256": "b62f4b2784c07b2c31c2c56d4522de61f62ec421073faa89d001c0c419d7aa2e",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.12019649742623084,
+      "spine": 0.12193631767148781,
+      "chest": 0.09454295374291286,
+      "neck": 0.11306692997651648,
+      "head": 0.055018202323750265,
+      "jaw": 0.04580546707358796,
+      "hindFarRoot": 0.06867862316221754,
+      "hindFarKnee": 0.026477801036665784,
+      "hindFarAnkle": 0.020735032465412737,
+      "hindFarPaw": 0.018631126767882873,
+      "foreFarRoot": 0.07044000079130418,
+      "foreFarKnee": 0.04402816690812666,
+      "foreFarAnkle": 0.03863107575699833,
+      "foreFarPaw": 0.027274709162531743,
+      "hindNearRoot": 0.02089983700271922,
+      "hindNearKnee": 0.03770547102841834,
+      "hindNearAnkle": 0.04768566670449826,
+      "hindNearPaw": 0.02229391823502236,
+      "foreNearRoot": 0.017715019789325704,
+      "foreNearKnee": 0.04542627622012676,
+      "foreNearAnkle": 0.037475736965626685,
+      "foreNearPaw": 0.023101235162360435,
+      "tail0": 0.05997324496933182,
+      "tail1": 0.056641278650972064,
+      "earFarRoot": 0.07702441161499442,
+      "earFarTip": 0.01439300053930272,
+      "earNearRoot": 0.07658508846125668,
+      "earNearTip": 0.02988590608826535
+    },
+    "measures": {
+      "torso": 0.2150956599283408,
+      "head": 0.055018202323750265,
+      "head/torso": 0.2557848091499364,
+      "bone-min": 0.01439300053930272,
+      "bone-max": 0.12193631767148781,
+      "leg/torso:hindFar": 0.30611477838231294,
+      "leg/torso:foreFar": 0.5110933054822272,
+      "leg/torso:hindNear": 0.5006379766277678,
+      "leg/torso:foreNear": 0.4928190944597808
+    }
+  },
+  "recipeHash": "81bc50b2d142a81bef64ed044152adb527ab3a47a2b5cf297435f8ef3d8bda60"
+}
