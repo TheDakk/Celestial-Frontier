@@ -1,0 +1,41 @@
+{
+  "schema": "cf.c198-selected-scoring-source-review/v1",
+  "rows": [
+    {
+      "subject": "Fishing Cat",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/10-fishing-cat/master.png",
+      "sourceSha256": "5292968cfe7a53d7d2daf4e0db70ab9e347a82caba8b7688449f8b1e1479b9c9",
+      "status": "STATIC_GEOMETRY_HOLD",
+      "fullSizeInspected": true,
+      "findings": [
+        "Four feet and a short tail are visible. The forward/far proximal shoulder is obscured by chest paint; visible emergence can be authored but internal attachment is not observed.",
+        "Existing transferred near-front paw/control placement is not an independently accepted anatomical reference. The retained idle@1341.1793329101056 ms and alert@122 ms scale-compression refusals remain.",
+        "No uniquely justified source-only replacement for the failed contact geometry was established in this bounded pass. No coordinates were numerically tuned or limits weakened."
+      ]
+    },
+    {
+      "subject": "Water Beetle",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/18-water-beetle/master.png",
+      "sourceSha256": "705a1278a5ad70f3fe73b2cfbecb52685db4e970fe1689c34920d21af4d1774d",
+      "status": "SOURCE_ANATOMY_HOLD",
+      "fullSizeInspected": true,
+      "findings": [
+        "Two rear paddling endpoints and three further leg endpoints are clearly visible: five complete distal paths, not six independently traceable chains.",
+        "The historical transferred six-leg fit has cast/hit/tame contact-compression refusals. Assigning another contact to an already used appendage would invent anatomy; a six-leg source is required."
+      ]
+    },
+    {
+      "subject": "Carrion Beetle",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/22-carrion-beetle/master.png",
+      "sourceSha256": "72dd929bf46f911018c632b3bfa971f483d733a142b11de575a0ed020f17f9e4",
+      "status": "SOURCE_ANATOMY_HOLD",
+      "fullSizeInspected": true,
+      "findings": [
+        "Only four complete distal walking paths are clear in this side view. Two others are unresolved beneath the carapace.",
+        "The old intake exact-landmark inventory refusal remains. Mandatory contacts and absent/hidden declarations were not fabricated to make it compile."
+      ]
+    }
+  ],
+  "qualityAccepted": false,
+  "native": false
+}

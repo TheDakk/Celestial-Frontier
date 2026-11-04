@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pronghorn",
+  "masterSha256": "d54130a66add54a0f70b8b9d3be78bf2c5d60398dff93fcb4aa2dcb1ffbed70d",
+  "required": [
+    "white throat bands and white rump patch"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "white throat bands and white rump patch",
+      "status": "PRESENT",
+      "observed": "Four distinct cloven hoof endpoints, white rump/belly/throat markings, short pale tail and two pronged horns are visible. Near ear is clear; far ear is largely hidden by horns/head. Far foreleg proximal attachment overlaps chest. No complete far-ear/root ownership claim."
+    }
+  ]
+}

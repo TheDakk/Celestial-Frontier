@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Goat",
+  "masterSha256": "5bf34cad2bc6b98a8a7c3c834623bb45c2553f7c96d1004f32162c70af2b9caa",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

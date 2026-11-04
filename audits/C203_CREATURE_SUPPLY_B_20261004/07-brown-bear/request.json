@@ -1,0 +1,49 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Brown Bear",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "e93f440ea9413508ec52764a058ecdf58de0a9245099e4658aa0de431c352658",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "bear",
+  "authoringCreated": false,
+  "sourceHead": "22a1c36ede73fd7635373912a258533da0250e05",
+  "basePromptSha256": "96578fbee0fa6da1ee69317f490d78cd94e0cb5f3b4db014d2b7e6be27a9f3b5",
+  "batchCompilerSha256": "a51df0731fa7c90413b71639508b9d1b27e31a1d53bbc66f55761ea4a3fc3ccc",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "correction": "Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve brown bear anatomy, short natural tail, rounded ears and four plantigrade paws; do not invent extra claws or extend the tail.",
+    "priorSources": [
+      {
+        "pilot": "audits/C198_CREATURE_SUPPLY_A_20261003/pilot.json",
+        "id": "04-brown-bear",
+        "master": "audits/C198_CREATURE_SUPPLY_A_20261003/04-brown-bear/master.png",
+        "packet": "audits/C198_CREATURE_SUPPLY_A_20261003/04-brown-bear"
+      },
+      {
+        "pilot": "audits/G2_QUADRUPED_PILOT_20260926/pilot.json",
+        "id": "12-brown-bear",
+        "master": null,
+        "packet": "audits/G2_QUADRUPED_PILOT_20260926/12-brown-bear"
+      }
+    ]
+  },
+  "priorPilotPaths": [
+    "audits/C198_CREATURE_SUPPLY_A_20261003/pilot.json",
+    "audits/G2_QUADRUPED_PILOT_20260926/pilot.json"
+  ],
+  "auditCompilerExtension": false,
+  "sourceCorrection": "TARGETED SOURCE CORRECTION: Exactly four real limbs in a quiet planted staggered stance, with clear gaps along visible limb shafts from actual body emergence to each complete foot. Keep natural joint bends, including visible carpus and hock bends; never force forelimb chains into a single rigid line. Four distal foot endpoints on one projected ground band. Preserve actual tail length and two ears only where naturally exposed; a shallow head turn may reveal the far ear. Do not invent concealed proximal roots. Whole complete subject occupies only the central half of the canvas. Preserve brown bear anatomy, short natural tail, rounded ears and four plantigrade paws; do not invent extra claws or extend the tail.",
+  "compositionCheck": "COMPOSITION PRIORITY: small complete natural animal centered on native 1254 x 1254 pure magenta canvas. Entire silhouette including every tip occupies only the central HALF of the canvas, about 300 pixels empty on all sides. Preserve actual proportions; no crop, floor, shadow, prop or text.",
+  "admission": "SOURCE_CANDIDATE_ONLY; no presence, reference-pool, fit or native admission"
+}

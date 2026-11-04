@@ -1,0 +1,96 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Pronghorn",
+  "family": "quadruped",
+  "masterSha256": "d54130a66add54a0f70b8b9d3be78bf2c5d60398dff93fcb4aa2dcb1ffbed70d",
+  "subjectSha256": "787d056dec38bf2e8fc8c2f7a09a5559e375dd8bf16a75dc062653d970bfff66",
+  "promptSha256": "e226109fd75f4161480e0e77f58799939064202312140532600c16545c12e023",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Independently inspected full 1254-square original; retain all other anatomy and existing limits."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Full original reviewed: continuous natural tail visible from rump attachment to terminal fur tip; no crop or hidden terminal. Polygon boundaries are source observations, not transferred long-tail subdivisions.",
+      "landmarksPx": {
+        "tail0": [
+          337,
+          510
+        ],
+        "tail1": [
+          321,
+          615
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              356,
+              492
+            ],
+            [
+              326,
+              498
+            ],
+            [
+              311,
+              526
+            ],
+            [
+              305,
+              555
+            ],
+            [
+              337,
+              564
+            ],
+            [
+              349,
+              529
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              305,
+              555
+            ],
+            [
+              300,
+              587
+            ],
+            [
+              309,
+              616
+            ],
+            [
+              321,
+              634
+            ],
+            [
+              334,
+              612
+            ],
+            [
+              337,
+              564
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "13149fe3f4594a1b5e606f05b80cb3ba1e42ed92c9c4767836c8bdb545e817c3"
+}

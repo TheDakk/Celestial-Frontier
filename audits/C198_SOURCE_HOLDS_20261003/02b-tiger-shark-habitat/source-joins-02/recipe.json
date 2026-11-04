@@ -1,0 +1,64 @@
+{
+  "schema": "cf.c198-observed-source-joins/v1",
+  "sourceFit": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit",
+  "sourceRecordSha256": "7721bebb88209172056ddfe9e59d48c2f8d1c7fc467bbe7427ec4b592300e7ac",
+  "sourcePreSplitSha256": "152194b6cd452d49683f866ec94244cbd7812d79460e3ddb9f1fafca3dfb5982",
+  "sourceBindingSha256": "a6650e30962bccf19776cda2805d4e9da00802d834810e27b96d476dbb14b0c8",
+  "candidateBindingSha256": "4dc5130d7d572367dd86a88d7e1d8fa4a065bf87da6f48de04f7e04ee491224a",
+  "sourceAtlasSha256": "a147616a35823a4ffec516127e39f3dc2b2de7c220ebab4cf6d8482b8894736e",
+  "sourceMasterSha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039",
+  "reason": "Use the existing exact C88 fish source recipe for observed body/pectoral/dorsal boundaries and its hash-guarded far-pectoral collar. No new geometry limit or collar change.",
+  "paintBoundaryPairs": null,
+  "existingFishRecipe": "audits/FISH_PIPELINE_C88_20260927/fish-split.mjs",
+  "existingFishRecipeSha256": "4ce0b5ad3ed9b51916e01ca8061fd225064b6726c14f26bbc06fbbbbac2eebc4",
+  "sourcePixelsChanged": 0,
+  "ownershipChanged": false,
+  "recordChanged": false,
+  "motionChanged": false,
+  "solverLimitsChanged": false,
+  "compilerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "b70df14632409df3645a9271c1e7bb242cb0bd46572c541296bd4fd63168081b",
+    "sourceVertices": 850,
+    "vertices": 904,
+    "sharedSupports": 301,
+    "pins": 305,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 7,
+    "observedExcludedBoundaries": 7,
+    "weldedExcludedBoundaries": 5,
+    "independentExcludedBoundaries": 2,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "dorsal"
+      ],
+      [
+        "dorsal",
+        "spine0"
+      ],
+      [
+        "dorsal",
+        "spine2"
+      ],
+      [
+        "near-pectoral",
+        "spine0"
+      ],
+      [
+        "near-pectoral",
+        "spine1"
+      ]
+    ],
+    "sourceCoordinateChanges": 0,
+    "fixedCandidateRecipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar",
+    "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+    "virtualOwnerSha256": "565282bd692f541478bbeefb0e6656eda820de54e90a4ff78fe0f4e2c3daabfe"
+  },
+  "qualityAccepted": false,
+  "native": false
+}

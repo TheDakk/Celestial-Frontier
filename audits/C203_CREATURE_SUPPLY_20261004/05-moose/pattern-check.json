@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Moose",
+  "masterSha256": "91c68ad20ed635cf49b24a4724dd4ca6c4446d348b4a95b80b253054f7eb589c",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

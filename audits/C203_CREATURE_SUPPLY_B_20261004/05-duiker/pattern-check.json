@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Duiker",
+  "masterSha256": "e5fe8739c99722d043e3bb1feb04dc3ce6b26d808e0c1e179bf3dbe2fbd70d95",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

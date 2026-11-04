@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Agouti",
+  "masterSha256": "3999f1e00d99a3a670a72e1fa57129049cb5d154e8d5c41809490ec15c7117ac",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

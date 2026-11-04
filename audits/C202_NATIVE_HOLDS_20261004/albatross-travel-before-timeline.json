@@ -1,0 +1,782 @@
+{
+  "kind": "motion-timeline",
+  "actionId": "faint",
+  "family": "faint",
+  "loop": false,
+  "seed": 1,
+  "recipeHash": "254a259defe1247c31273843df6f501ecea8aacc5b7a46da56830979544e949d",
+  "massClass": "medium",
+  "limitsRad": {
+    "root": {
+      "min": -0.4363323129985824,
+      "max": 0.4363323129985824
+    },
+    "pelvis": {
+      "min": -0.3490658503988659,
+      "max": 0.3490658503988659
+    },
+    "spine": {
+      "min": -0.4363323129985824,
+      "max": 0.4363323129985824
+    },
+    "chest": {
+      "min": -0.3490658503988659,
+      "max": 0.3490658503988659
+    },
+    "neck0": {
+      "min": -0.7853981633974483,
+      "max": 0.7853981633974483
+    },
+    "neck1": {
+      "min": -0.7853981633974483,
+      "max": 0.7853981633974483
+    },
+    "head": {
+      "min": -0.6981317007977318,
+      "max": 0.6981317007977318
+    },
+    "beak": {
+      "min": -0.5235987755982988,
+      "max": 0.08726646259971647
+    },
+    "legFarKnee": {
+      "min": -1.2217304763960306,
+      "max": 1.2217304763960306
+    },
+    "legFarAnkle": {
+      "min": -1.4835298641951802,
+      "max": 1.4835298641951802
+    },
+    "legFarFoot": {
+      "min": -0.7853981633974483,
+      "max": 0.7853981633974483
+    },
+    "legNearKnee": {
+      "min": -1.2217304763960306,
+      "max": 1.2217304763960306
+    },
+    "legNearAnkle": {
+      "min": -1.4835298641951802,
+      "max": 1.4835298641951802
+    },
+    "legNearFoot": {
+      "min": -0.7853981633974483,
+      "max": 0.7853981633974483
+    },
+    "wingFarRoot": {
+      "min": -1.0471975511965976,
+      "max": 1.6580627893946132
+    },
+    "wingFarTip": {
+      "min": -1.2217304763960306,
+      "max": 1.2217304763960306
+    },
+    "wingNearRoot": {
+      "min": -1.0471975511965976,
+      "max": 1.6580627893946132
+    },
+    "wingNearTip": {
+      "min": -1.2217304763960306,
+      "max": 1.2217304763960306
+    },
+    "tailFan": {
+      "min": -0.6981317007977318,
+      "max": 0.6981317007977318
+    }
+  },
+  "bodyMs": 520,
+  "durationMs": 712,
+  "phases": [
+    [
+      "fall",
+      520
+    ]
+  ],
+  "tracks": {
+    "root": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0.16836973127832797,
+        "ease": "ease-out"
+      }
+    ],
+    "pelvis": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0,
+        "ease": "ease-out"
+      }
+    ],
+    "spine": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0.09621127501618743,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0.12026409377023427,
+        "ease": "ease-out"
+      }
+    ],
+    "chest": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0,
+        "ease": "ease-out"
+      }
+    ],
+    "neck0": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0.10471975511965978,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0,
+        "ease": "ease-out"
+      }
+    ],
+    "neck1": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0.10471975511965978,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0,
+        "ease": "ease-out"
+      }
+    ],
+    "head": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0.10471975511965978,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0,
+        "ease": "ease-out"
+      }
+    ],
+    "beak": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0,
+        "ease": "ease-out"
+      }
+    ],
+    "legFarKnee": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0.6981317007977318,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0.5235987755982988,
+        "ease": "ease-out"
+      }
+    ],
+    "legFarAnkle": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": -1.4311699866353502,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": -0.9424777960769379,
+        "ease": "ease-out"
+      }
+    ],
+    "legFarFoot": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0.2792526803190927,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0.20943951023931956,
+        "ease": "ease-out"
+      }
+    ],
+    "legNearKnee": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0.6981317007977318,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0.5235987755982988,
+        "ease": "ease-out"
+      }
+    ],
+    "legNearAnkle": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": -1.4311699866353502,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": -0.9424777960769379,
+        "ease": "ease-out"
+      }
+    ],
+    "legNearFoot": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0.2792526803190927,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0.20943951023931956,
+        "ease": "ease-out"
+      }
+    ],
+    "wingFarRoot": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": -0.5235987755982988,
+        "ease": "ease-out"
+      }
+    ],
+    "wingFarTip": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": -0.6108652381980153,
+        "ease": "ease-out"
+      }
+    ],
+    "wingNearRoot": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": -0.5235987755982988,
+        "ease": "ease-out"
+      }
+    ],
+    "wingNearTip": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": -0.6108652381980153,
+        "ease": "ease-out"
+      }
+    ],
+    "tailFan": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0.3490658503988659,
+        "ease": "ease-out"
+      }
+    ]
+  },
+  "root": {
+    "dx": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": -0.01378125,
+        "ease": "ease-out"
+      }
+    ],
+    "dy": [
+      {
+        "ms": 0,
+        "t": 0,
+        "value": 0,
+        "ease": "ease-out"
+      },
+      {
+        "ms": 234,
+        "t": 0.45,
+        "value": 0.055125,
+        "ease": "ease-in"
+      },
+      {
+        "ms": 520,
+        "t": 1,
+        "value": 0.1378125,
+        "ease": "ease-out"
+      }
+    ]
+  },
+  "secondary": [
+    {
+      "partId": "wingFar",
+      "joint": "wingFarRoot",
+      "driver": "chest",
+      "order": 0,
+      "lagMs": 60,
+      "overshoot": 0.25,
+      "damping": 0.5,
+      "squash": 0,
+      "stretch": 0,
+      "rigid": false,
+      "quiverMs": 0,
+      "wobbleMs": 0,
+      "pulseMs": 0,
+      "kind": "wing",
+      "flutterMs": 60,
+      "keys": [
+        {
+          "ms": 0,
+          "t": 0,
+          "value": 0,
+          "ease": "ease-out"
+        },
+        {
+          "ms": 294,
+          "t": 0.5653846153846154,
+          "value": 0,
+          "ease": "ease-in"
+        },
+        {
+          "ms": 580,
+          "t": 1.1153846153846154,
+          "value": -0.6544984694978735,
+          "ease": "ease-out"
+        },
+        {
+          "ms": 616,
+          "t": 1.1846153846153846,
+          "value": -0.5235987755982988,
+          "ease": "sine-in-out"
+        },
+        {
+          "ms": 616,
+          "t": 1,
+          "value": 0,
+          "ease": "ease-out"
+        }
+      ]
+    },
+    {
+      "partId": "wingFar",
+      "joint": "wingFarTip",
+      "driver": "chest",
+      "order": 1,
+      "lagMs": 120,
+      "overshoot": 0.2125,
+      "damping": 0.5,
+      "squash": 0,
+      "stretch": 0,
+      "rigid": false,
+      "quiverMs": 0,
+      "wobbleMs": 0,
+      "pulseMs": 0,
+      "kind": "wing",
+      "flutterMs": 60,
+      "keys": [
+        {
+          "ms": 0,
+          "t": 0,
+          "value": 0,
+          "ease": "ease-out"
+        },
+        {
+          "ms": 354,
+          "t": 0.6807692307692308,
+          "value": 0,
+          "ease": "ease-in"
+        },
+        {
+          "ms": 640,
+          "t": 1.2307692307692308,
+          "value": -0.7406741013150935,
+          "ease": "ease-out"
+        },
+        {
+          "ms": 712,
+          "t": 1.3692307692307693,
+          "value": -0.6108652381980153,
+          "ease": "sine-in-out"
+        },
+        {
+          "ms": 712,
+          "t": 1,
+          "value": 0,
+          "ease": "ease-out"
+        }
+      ]
+    },
+    {
+      "partId": "wingNear",
+      "joint": "wingNearRoot",
+      "driver": "chest",
+      "order": 0,
+      "lagMs": 60,
+      "overshoot": 0.25,
+      "damping": 0.5,
+      "squash": 0,
+      "stretch": 0,
+      "rigid": false,
+      "quiverMs": 0,
+      "wobbleMs": 0,
+      "pulseMs": 0,
+      "kind": "wing",
+      "flutterMs": 60,
+      "keys": [
+        {
+          "ms": 0,
+          "t": 0,
+          "value": 0,
+          "ease": "ease-out"
+        },
+        {
+          "ms": 294,
+          "t": 0.5653846153846154,
+          "value": 0,
+          "ease": "ease-in"
+        },
+        {
+          "ms": 580,
+          "t": 1.1153846153846154,
+          "value": -0.6544984694978735,
+          "ease": "ease-out"
+        },
+        {
+          "ms": 616,
+          "t": 1.1846153846153846,
+          "value": -0.5235987755982988,
+          "ease": "sine-in-out"
+        },
+        {
+          "ms": 616,
+          "t": 1,
+          "value": 0,
+          "ease": "ease-out"
+        }
+      ]
+    },
+    {
+      "partId": "wingNear",
+      "joint": "wingNearTip",
+      "driver": "chest",
+      "order": 1,
+      "lagMs": 120,
+      "overshoot": 0.2125,
+      "damping": 0.5,
+      "squash": 0,
+      "stretch": 0,
+      "rigid": false,
+      "quiverMs": 0,
+      "wobbleMs": 0,
+      "pulseMs": 0,
+      "kind": "wing",
+      "flutterMs": 60,
+      "keys": [
+        {
+          "ms": 0,
+          "t": 0,
+          "value": 0,
+          "ease": "ease-out"
+        },
+        {
+          "ms": 354,
+          "t": 0.6807692307692308,
+          "value": 0,
+          "ease": "ease-in"
+        },
+        {
+          "ms": 640,
+          "t": 1.2307692307692308,
+          "value": -0.7406741013150935,
+          "ease": "ease-out"
+        },
+        {
+          "ms": 712,
+          "t": 1.3692307692307693,
+          "value": -0.6108652381980153,
+          "ease": "sine-in-out"
+        },
+        {
+          "ms": 712,
+          "t": 1,
+          "value": 0,
+          "ease": "ease-out"
+        }
+      ]
+    },
+    {
+      "partId": "tailFan",
+      "joint": "tailFan",
+      "driver": "pelvis",
+      "order": 0,
+      "lagMs": 60,
+      "overshoot": 0.25,
+      "damping": 0.5,
+      "squash": 0,
+      "stretch": 0,
+      "rigid": false,
+      "quiverMs": 0,
+      "wobbleMs": 0,
+      "pulseMs": 0,
+      "kind": "tailfan",
+      "flutterMs": 60,
+      "keys": [
+        {
+          "ms": 0,
+          "t": 0,
+          "value": 0,
+          "ease": "ease-out"
+        },
+        {
+          "ms": 294,
+          "t": 0.5653846153846154,
+          "value": 0,
+          "ease": "ease-in"
+        },
+        {
+          "ms": 580,
+          "t": 1.1153846153846154,
+          "value": 0.4363323129985824,
+          "ease": "ease-out"
+        },
+        {
+          "ms": 616,
+          "t": 1.1846153846153846,
+          "value": 0.3490658503988659,
+          "ease": "sine-in-out"
+        },
+        {
+          "ms": 616,
+          "t": 1,
+          "value": 0,
+          "ease": "ease-out"
+        }
+      ]
+    }
+  ],
+  "deform": {
+    "squash": 0,
+    "stretch": 0
+  },
+  "hitstopMs": 0,
+  "luminousPulseMs": 0,
+  "clamped": [],
+  "notes": [
+    "earth species \"Albatross\" mass uncalibrated (medium); gait from physical habitat/anatomy",
+    "physical realm: G1 automatic: Earth fauna profile bird media air+ground (capability, not painted pose; adult flight is a separate declaration)",
+    "materials: record surface \"feathers\" wins over genome skin \"chitinous\" (observer disagreement)",
+    "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): legNear 0.0%",
+    "axial-faint:coherent-upper-body-v1",
+    "grounded-bird:painted-faint-gain=0.6890625"
+  ],
+  "hash": "5c78d2ef"
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "cf.c198-full-size-review/v1",
+  "status": "SOURCE_OWNERSHIP_HOLD",
+  "inspectedImages": [
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/master.png",
+      "sha256": "7241f0b9a4b213824c86dcf875de3c66b8195f897a86fae8671989a58aec4d35"
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/01-prawn-contours/motion-cast-50-right.png",
+      "sha256": "be36bc403090a5dae6dbd69f931c05556ebf2e7c68b77a3468c6b4c9829ce602"
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/master.png",
+      "sha256": "37a2aaa2350aba2abeaf2e4d16a111bf60c150a4d62c9a06f5ed3a7a191a66b7"
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/04-shrimp-distal-only/motion-approach-swim-50-right.png",
+      "sha256": "4bbef34428763eadf16b5a1c6187ce03420efc3e9ccfedeb7a2d38d8e8754bd8"
+    },
+    {
+      "path": "audits/C196_SPECIALIZED_REFERENCES_20261003/02-shrimp-contours/motion-approach-swim-50-right.png",
+      "sha256": "08822136efe0636d4aaf6e63ad8e6e9e3ba44f250da0a72c43d1d5c76b202c60"
+    }
+  ],
+  "findings": [
+    "Prawn current C196 distal-contour fit improves the earlier detached tip flecks. Pink fringe remains in exact source paint around abdomen/swimmerets; this lane does not alter its attack-bound source fit.",
+    "Shrimp current distal-only fit improves endpoint flecks but retains an opening at the rear underside/leg emergence. The earlier broader proximal masks worsened a notch.",
+    "No uniquely supported additional source join was established in this bounded review. A speculative repeat of the known-worse proximal recut was not made. Exact prior failure controls and current fit remain available for source authoring review."
+  ],
+  "scope": "Native 1254-square source images and full-size software raster of actual loaded-rig-verified publications. No native/GPU/full-stage acceptance. Red horizontal line is the source authoring guide, not a measured battle floor.",
+  "qualityAccepted": false,
+  "native": false
+}

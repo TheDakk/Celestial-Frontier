@@ -1,0 +1,96 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Duiker",
+  "family": "quadruped",
+  "masterSha256": "e5fe8739c99722d043e3bb1feb04dc3ce6b26d808e0c1e179bf3dbe2fbd70d95",
+  "subjectSha256": "dfdc8087589303c03936ff93786fb327a6a3f1ee961bedb713e53b1fe68e6a28",
+  "promptSha256": "c9aa20366d32714d4fbda76fc262226b2460f203f6d504102c9e4787164eb93b",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Independently inspected full 1254-square original; retain all other anatomy and existing limits."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Full original reviewed: continuous natural tail visible from rump attachment to terminal fur tip; no crop or hidden terminal. Polygon boundaries are source observations, not transferred long-tail subdivisions.",
+      "landmarksPx": {
+        "tail0": [
+          342,
+          515
+        ],
+        "tail1": [
+          333,
+          617
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              354,
+              494
+            ],
+            [
+              330,
+              501
+            ],
+            [
+              312,
+              539
+            ],
+            [
+              313,
+              565
+            ],
+            [
+              343,
+              570
+            ],
+            [
+              358,
+              524
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              313,
+              565
+            ],
+            [
+              317,
+              598
+            ],
+            [
+              326,
+              634
+            ],
+            [
+              342,
+              624
+            ],
+            [
+              355,
+              602
+            ],
+            [
+              343,
+              570
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "f4d1c2efbe072877db3912c9b264184c8794710fbd308079ac156c39ca50ea89"
+}

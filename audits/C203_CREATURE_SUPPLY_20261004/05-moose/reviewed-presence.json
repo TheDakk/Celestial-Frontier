@@ -1,0 +1,179 @@
+{
+  "schema": "cf.reviewed-source-representation/v1",
+  "name": "Moose",
+  "family": "quadruped",
+  "masterSha256": "91c68ad20ed635cf49b24a4724dd4ca6c4446d348b4a95b80b253054f7eb589c",
+  "subjectSha256": "ec5c33742830c8c74e417576b00af876174eef351bdc6b315190e6ed3f520cc0",
+  "promptSha256": "2dfd713aa15dcfc5e01589af103b7fbc824d6ecb0875e936ea0f595ea46acb05",
+  "scope": "exact-master-only-no-visual-admission",
+  "review": {
+    "reviewer": "Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Independently inspected full 1254-square original; retain all other anatomy and existing limits. C215: independently observed complete compact tail, without detector-bound changes."
+  },
+  "evidence": {
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "occludedEars": [
+      {
+        "side": "near",
+        "decision": "present-occluded",
+        "occluder": "antler",
+        "ownerJoint": "head",
+        "observation": "The visible near ear blade at x803–851 remains painted. Its attachment is under the antler crown. Keep the complete visible blade on the head with the antler, without an invented moving tip at the transferred x751 location.",
+        "occluderPolygonPx": [
+          [
+            803,
+            386
+          ],
+          [
+            834,
+            405
+          ],
+          [
+            870,
+            421
+          ],
+          [
+            904,
+            446
+          ],
+          [
+            894,
+            473
+          ],
+          [
+            852,
+            480
+          ],
+          [
+            831,
+            457
+          ]
+        ],
+        "visibleRegions": [
+          [
+            [
+              802,
+              405
+            ],
+            [
+              817,
+              406
+            ],
+            [
+              837,
+              425
+            ],
+            [
+              851,
+              450
+            ],
+            [
+              850,
+              470
+            ],
+            [
+              837,
+              474
+            ],
+            [
+              820,
+              463
+            ],
+            [
+              807,
+              444
+            ],
+            [
+              801,
+              423
+            ]
+          ]
+        ]
+      }
+    ],
+    "compactTail": {
+      "terminal": "tail1",
+      "visibility": "entire-root-to-tip",
+      "observation": "Full1254 original inspected: complete short tail projecting from the rear rump with a pale natural tapered tip. Automatic coarse branch bands contain only two points each and fail its unchanged taper control; retain this source-specific full-original observation separately.",
+      "landmarksPx": {
+        "tail0": [
+          328,
+          539
+        ],
+        "tail1": [
+          303,
+          577
+        ]
+      },
+      "regions": [
+        {
+          "joint": "tail0",
+          "polygonPx": [
+            [
+              339,
+              518
+            ],
+            [
+              349,
+              541
+            ],
+            [
+              328,
+              562
+            ],
+            [
+              309,
+              572
+            ],
+            [
+              295,
+              555
+            ],
+            [
+              304,
+              535
+            ]
+          ]
+        },
+        {
+          "joint": "tail1",
+          "polygonPx": [
+            [
+              309,
+              547
+            ],
+            [
+              329,
+              561
+            ],
+            [
+              313,
+              584
+            ],
+            [
+              301,
+              600
+            ],
+            [
+              290,
+              587
+            ],
+            [
+              289,
+              566
+            ],
+            [
+              298,
+              552
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "declarationSha256": "ef9e2c9cd068c052e681b67e00c8d06871d4f32a43db9091da2ca7fade7bdf6c"
+}

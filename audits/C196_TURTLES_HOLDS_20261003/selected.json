@@ -1,0 +1,77 @@
+{
+  "schema": "cf.c196-source-held-selection/v1",
+  "selected": [
+    {
+      "id": "01c-tortoise-near-shin",
+      "fit": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/fit01",
+      "recordFileSha256": "5ae7be808a4d663a43f48f851f14f218fd613401a9c4c5fceaa8ee35fab582a5",
+      "bindingFileSha256": "4d434d310c76478ed379c52931bf4ccff52ecefae32dfc0228eadf65e0898705",
+      "source": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/master.png",
+      "sourceSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+      "static": "audits/C196_TURTLES_HOLDS_20261003/01c-tortoise-near-shin/static-01.json",
+      "staticStatus": "PASS_STATIC",
+      "qualityAccepted": false,
+      "native": "UNMEASURED",
+      "visualStatus": "HELD"
+    },
+    {
+      "id": "02-serval-ear-base",
+      "fit": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/fit",
+      "recordFileSha256": "6d2b46804b9fdfb119251cfdbcf01bdcad8e708acad5c43f3e1a19e24047a792",
+      "bindingFileSha256": "b9014439ddee588e4e4215e2200e3e52d29a110aff8b3b98e4a87e446f4960a2",
+      "source": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/master.png",
+      "sourceSha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735",
+      "static": "audits/C196_TURTLES_HOLDS_20261003/02-serval-ear-base/axial-joins-02/static.json",
+      "staticStatus": "PASS_STATIC",
+      "qualityAccepted": false,
+      "native": "UNMEASURED",
+      "visualStatus": "HELD"
+    }
+  ],
+  "partial": [
+    {
+      "id": "03-box-turtle-partial",
+      "path": "audits/C196_TURTLES_HOLDS_20261003/03-box-turtle-partial",
+      "status": "PARTIAL_SOURCE_PARTITION_NOT_A_FIT",
+      "visiblePixels": 222768,
+      "unassignedPixels": 5741,
+      "hiddenFourthLimbInvented": false,
+      "qualityAccepted": false
+    },
+    {
+      "id": "04-pond-turtle-partial",
+      "path": "audits/C196_TURTLES_HOLDS_20261003/04-pond-turtle-partial",
+      "status": "PARTIAL_SOURCE_PARTITION_NOT_A_FIT",
+      "visiblePixels": 187942,
+      "unassignedPixels": 4650,
+      "hiddenFourthLimbInvented": false,
+      "qualityAccepted": false
+    },
+    {
+      "id": "05-snapping-turtle-partial",
+      "path": "audits/C196_TURTLES_HOLDS_20261003/05-snapping-turtle-partial",
+      "status": "PARTIAL_SOURCE_PARTITION_NOT_A_FIT",
+      "visiblePixels": 229273,
+      "unassignedPixels": 8602,
+      "hiddenFourthLimbInvented": false,
+      "qualityAccepted": false
+    },
+    {
+      "id": "06-turtle-partial",
+      "path": "audits/C196_TURTLES_HOLDS_20261003/06-turtle-partial",
+      "status": "PARTIAL_SOURCE_PARTITION_NOT_A_FIT",
+      "visiblePixels": 224182,
+      "unassignedPixels": 9277,
+      "hiddenFourthLimbInvented": false,
+      "qualityAccepted": false
+    }
+  ],
+  "softshell": {
+    "source": "audits/C186_CREATURE_SUPPLY_20261002/11-softshell-turtle/master.png",
+    "status": "HELD_NO_NEW_AUTHORING",
+    "reason": "Leathery shell requires a distinct material decision; retain framing and biological/style holds. No blanket freshwater-turtle plated assignment."
+  },
+  "unchangedProduct": true,
+  "qualityAccepted": false,
+  "native": false
+}

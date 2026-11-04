@@ -1,0 +1,2856 @@
+{
+  "schema": "cf.c198-audit-delivery/v1",
+  "status": "FROZEN_TERMINAL",
+  "root": "audits/C198_SOURCE_HOLDS_20261003",
+  "files": [
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/authoring.json",
+      "bytes": 15563,
+      "sha256": "83120ccdf1c2f772723b3c95dfff22453bb207278873395c36863175d1de513d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/conservation.json",
+      "bytes": 14674,
+      "sha256": "4ffbe3fb82b544c3eeecb9f32dc6461d136c8173aa1cf6f450a08b187a2b6464"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/correction.json",
+      "bytes": 728,
+      "sha256": "a3c79df8f6d6c66943d5bc47a45b6093142465351b3ea076c71c1ec427b257f9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/binding.json",
+      "bytes": 1508533,
+      "sha256": "9128208398ec8ad642a153d9f74e399584ba5707f9af812509e3df969164a2ce"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/declaration.json",
+      "bytes": 1985,
+      "sha256": "f2a323eb1c54bc823b0abbdd84bbd1e56aa68329040460af8b5a1530c51dd785"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/intake-provenance.json",
+      "bytes": 3161,
+      "sha256": "09871c17bccdc25b92bf7f0db17eb3309a51b9a1e6f9da933821b682a29c0355"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/label-authoring-receipt.json",
+      "bytes": 2566,
+      "sha256": "a7e6a07c1c42a7251fd4e9678767a3ef3c8a92e965593b397dbb92763abd066c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/labels.png",
+      "bytes": 44550,
+      "sha256": "7a5bce3ce604d204af71c97dae1cd42530e043e4c45945c67ebeb474b4f1f47c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/atlas/c198-capuchin-source-fringes.json",
+      "bytes": 7030,
+      "sha256": "da9e7cde9aff99305a3503e486a60a7793338d88d45a7210c8a6070bb90648ed"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/atlas/c198-capuchin-source-fringes.png",
+      "bytes": 461399,
+      "sha256": "d051160cb792bcfcc9caaaa91f39247b1d86e1d17d7246e7c5d94b25945ec54c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/atlas/receipt.json",
+      "bytes": 2924,
+      "sha256": "60b440ffc2782e9fab6f7a9c92f98c3e9cc37c75c60c168d1b459d62da639346"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/binding.json",
+      "bytes": 5805,
+      "sha256": "6ba0d3dedd1e22cae791eab6f058a9c2ca4a33684e805def31a0a3844f5b1ffb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/keyed.png",
+      "bytes": 1605216,
+      "sha256": "c1d61389b86cab59695794c77ad0142e3ad2579ff20aafb2ce2a9955858c4863"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/manifest.json",
+      "bytes": 2836,
+      "sha256": "47dd666140e9f5b35bb301320354ae4a453837c3160ddfedf4fbfe75d18526af"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/ownership.png",
+      "bytes": 19353,
+      "sha256": "554cbd17b18fec99f25cfbf174e01ac37534c67e10919a6cdf9cdceda60c5676"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/arm-far-elbow.png",
+      "bytes": 25259,
+      "sha256": "6acf12c56c1a5d593a8501747069af0752312b0fb295c9cbe109d7a75e310a1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/arm-far-hand.png",
+      "bytes": 30492,
+      "sha256": "9b4b680b761e641afbb451d35298297c561cff13a50f77305b4f93d7c84b0cd8"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/arm-near-elbow.png",
+      "bytes": 42195,
+      "sha256": "3ebe41417e0e8076b6fb03b2f0863cdb1127287331de3e5541c958ffb4579c06"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/arm-near-hand.png",
+      "bytes": 33089,
+      "sha256": "6e040eb42dd8a0f4339caa7c6c05d2496b76e08d2934979d9bb0822fe7186a65"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/body.png",
+      "bytes": 76574,
+      "sha256": "bc26c87d9e9abf005283609a8cac0de3dd88a434be61b97bc8b097d6ef846895"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/chest.png",
+      "bytes": 18975,
+      "sha256": "f5e6c6296027c6ed7d981af8c9c4aeeced03da2e524bc33a9eb63a5c06f1602d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/head.png",
+      "bytes": 43575,
+      "sha256": "361e95de0a1572364e5f1e27dd4b177289f03de207eb6744966decd54296cd6b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/jaw.png",
+      "bytes": 5775,
+      "sha256": "68b47482abfd642896b4ac56b269bd215931f5996566703295e59b1d38460fa1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/leg-far-foot.png",
+      "bytes": 35984,
+      "sha256": "6d77dbde1cdec0cc440855c91a15079f430ef5779316b319c1169eb576df3ed3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/leg-far-knee.png",
+      "bytes": 16793,
+      "sha256": "02acf74035f558b1220dcabcfc42ba95e2c384258c08348a16a2974223a7e9bb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/leg-near-foot.png",
+      "bytes": 40911,
+      "sha256": "c92df263b6f90e9712cd4ceb38de9374a9413ca0f2b12110200e5a07daa6bb81"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/leg-near-knee.png",
+      "bytes": 42967,
+      "sha256": "d942de490414b122f67d88054e34fae28d1b14086ce364902b4e37250b2f44ff"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/neck.png",
+      "bytes": 15041,
+      "sha256": "f045e0bf3e93faf282e449b7fbb7a59e74de9484375d0ee684c1ddc2267a628c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/pelvis.png",
+      "bytes": 6616,
+      "sha256": "f0a82428fee13c024edf35f100718eb0e63451e7e3a6e016817174322a459417"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/tail0.png",
+      "bytes": 7017,
+      "sha256": "b90c3638b4035ab574f1b02f331fb2fabed6368ec07e3a648a88c298cae2f6a2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/tail1.png",
+      "bytes": 61926,
+      "sha256": "f14279936e7f578c6cac0cf0b6ace2746d837f5ca49ce3d6bf9a7757253c055b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/parts/tail2.png",
+      "bytes": 48188,
+      "sha256": "fa00438e60b022aaf9a2b1d5578f543f1fcb20c608ad7e6d78e81b7145c6f786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/parts/receipt.json",
+      "bytes": 4825,
+      "sha256": "03112f7e4ae8d48237f7176c90aa6b7102058786014c2f542b237b8d74c1831a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/pre-split-binding.json",
+      "bytes": 1041500,
+      "sha256": "95316f7c7bb98f77a0446f49a0e5cdde689ad05c0124af855010e292b5ad11b9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/receipt.json",
+      "bytes": 2449,
+      "sha256": "a73fbfc422e5ecfe42e6f8c99b55e1b2fb085442740b7345e301d002d03f6d8f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/fit01/record.json",
+      "bytes": 7843,
+      "sha256": "e4b290a32bc4b7a11477385e74116ffa5edec99613bd4911bf5707793d1086c8"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/intake-execution.json",
+      "bytes": 466,
+      "sha256": "1d41de79803039ce1b6767227b9e4a8d3b4fb6c76f440e09233e299de761c9dc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/intake.log",
+      "bytes": 313,
+      "sha256": "3f71598e9f05ce821c9b0a218ddfc331270f8ae45aa3f5f0a550ab4e182725e1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/binding.json",
+      "bytes": 1415585,
+      "sha256": "b4cca64fad85e80f759a1e4de70f5089bb0dd5723a01fc624ca88515ed5037f4"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/declaration.json",
+      "bytes": 1985,
+      "sha256": "77e70d212032ed1b6e31b6eacd686637376f63d9146253363cdc7c7b49a71e50"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/labels.png",
+      "bytes": 44402,
+      "sha256": "f6d580d31f125fe20ebb846e13cbc6fc1a6f8adaf723d5cc194117ad468af6ed"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/atlas/c192-islands-01-capuchin-fringes.json",
+      "bytes": 7020,
+      "sha256": "30ac8f9fbf8e1b70a0dc80fdd719034b44b90969474f33e378c88b6c4ea1246e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/atlas/c192-islands-01-capuchin-fringes.png",
+      "bytes": 455969,
+      "sha256": "91be058206214eab8c62c28ff7e5c4f19acd269c06e968a5442c549c997845de"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/atlas/receipt.json",
+      "bytes": 2928,
+      "sha256": "15684601808df9b2eafa7bddd5a75ec12f64b6aae49347e6b6dca08a2e5945a7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/binding.json",
+      "bytes": 5791,
+      "sha256": "7187cf9f241450880ae7c57985f60c3e88fe615fd7ea39e4ede2050f5dd233aa"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/keyed.png",
+      "bytes": 1605216,
+      "sha256": "c1d61389b86cab59695794c77ad0142e3ad2579ff20aafb2ce2a9955858c4863"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/manifest.json",
+      "bytes": 2840,
+      "sha256": "d6eb3d0709393ba020810fa851e2fc163dfe71adf5a8c242c2e8b25605fc64e5"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/ownership.png",
+      "bytes": 19162,
+      "sha256": "09e0ca88aafdb37b4a4b014c9e5ba2843b86c2a39d3f18d33b4d53cee02f5fd2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/arm-far-elbow.png",
+      "bytes": 26133,
+      "sha256": "774febeab65ff7653df52c8470a389aeb4c928bbf5c2a8f326e90e9aa84152c7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/arm-far-hand.png",
+      "bytes": 30591,
+      "sha256": "770a731456826533514e1b341960d55d4cb24ecb673c730e3183d3e82d1a9b05"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/arm-near-elbow.png",
+      "bytes": 42502,
+      "sha256": "e8112f79aa3220b3d5298658d921f0d2cff5cd4c2e85a6bd902ad020008dd7d2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/arm-near-hand.png",
+      "bytes": 33093,
+      "sha256": "8eb0f1f8c6c128f8cc94463cdf00b06f887d59802f66636cc7076bf7ef08a5a6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/body.png",
+      "bytes": 65950,
+      "sha256": "2dba6a8ebeb91abf2512955a34b33681d2227af27ad6b14bf50c6c3bbab35776"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/chest.png",
+      "bytes": 18975,
+      "sha256": "f5e6c6296027c6ed7d981af8c9c4aeeced03da2e524bc33a9eb63a5c06f1602d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/head.png",
+      "bytes": 43588,
+      "sha256": "9b436fd18c7a195051272f649ba9530204d2dee1eaaa550953de1fe41d25a98d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/jaw.png",
+      "bytes": 5775,
+      "sha256": "68b47482abfd642896b4ac56b269bd215931f5996566703295e59b1d38460fa1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/leg-far-foot.png",
+      "bytes": 36853,
+      "sha256": "e9ba1ef9d4bd84c5a1901917f87956f4f336784e8679d81f196cc97c2683850b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/leg-far-knee.png",
+      "bytes": 18538,
+      "sha256": "c70d5202f4762dc0975cf5677b3cbac57492ab6bec2ce633c89f60a36c1794e3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/leg-near-foot.png",
+      "bytes": 40929,
+      "sha256": "7399cbb7b79d4e811de810df8c45027f2dec1eb620f7344a4b5b9d0aee79a5e9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/leg-near-knee.png",
+      "bytes": 43148,
+      "sha256": "eb58e03f45a756f9882ec983691d7754cea08420e687408504dd10023ca1d022"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/neck.png",
+      "bytes": 15055,
+      "sha256": "452a2fbf87814994ea1d7d9bb1cba1c2277345289b39538cda15bf5fe6c060fe"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/pelvis.png",
+      "bytes": 6616,
+      "sha256": "f0a82428fee13c024edf35f100718eb0e63451e7e3a6e016817174322a459417"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/tail0.png",
+      "bytes": 7017,
+      "sha256": "b90c3638b4035ab574f1b02f331fb2fabed6368ec07e3a648a88c298cae2f6a2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/tail1.png",
+      "bytes": 62330,
+      "sha256": "0df07ca2f8188dd384faf44a20bd9546e25a73445f73c4275a5b51a16774d999"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/parts/tail2.png",
+      "bytes": 48218,
+      "sha256": "fd43ab347eb1f93568ec77052ff67a53d45ed1b14ca35026c9f4eee73eb0ac35"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/parts/receipt.json",
+      "bytes": 4826,
+      "sha256": "92e03ce7d60ac1d40c06fe9e250828b2d82b9dcbe088e0e474c80be32bf94e8d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/pre-split-binding.json",
+      "bytes": 981360,
+      "sha256": "4cc094d2c8c529f5fd552d2c253b3b2aa768b2d66b513b42eb45b69383cf59e2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/fit/record.json",
+      "bytes": 7843,
+      "sha256": "e4b290a32bc4b7a11477385e74116ffa5edec99613bd4911bf5707793d1086c8"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/receipt.json",
+      "bytes": 6647,
+      "sha256": "394d796065cb359eb3cec7f45544701a4ab70a1ea9ac1a8655c06d7bca03c105"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/static-execution.json",
+      "bytes": 327,
+      "sha256": "9cbf134a6fb99fae21334c0e580049ea01a0605914089bfc23cf9fd161bdda97"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/static.json",
+      "bytes": 7928,
+      "sha256": "3a0d1393484e5b0c395c9d676ceb593eedd8e4082fd206e9b1d39fb8c91e973e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "09b2a4f6f1f92e4321e0287d6eb9c5b5db8693b2977e034f2a1722a63239913b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/islands-01/static.log",
+      "bytes": 2049,
+      "sha256": "32abfd4e1686a0c7876196478b2970021972b9acae97b8ac52eff4ecce177283"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/master.png",
+      "bytes": 1275823,
+      "sha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/approach-walk-0.png",
+      "bytes": 440248,
+      "sha256": "830d0a3a552a232cf5c05b226854c1f386ed62d6abcd7997819bd2d3751470f0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/approach-walk-0p2.png",
+      "bytes": 433325,
+      "sha256": "58714da5758dd36b3a2d3b137c2de4a9039a616da3e2fca69e796787215d58c1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/approach-walk-0p9.png",
+      "bytes": 440096,
+      "sha256": "f2195058ae5746aeafb8b5e5847cb6ff891eab4e23f37e859396a44885cc2f2d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/approach-walk-1.png",
+      "bytes": 440248,
+      "sha256": "830d0a3a552a232cf5c05b226854c1f386ed62d6abcd7997819bd2d3751470f0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/faint-0.png",
+      "bytes": 440248,
+      "sha256": "830d0a3a552a232cf5c05b226854c1f386ed62d6abcd7997819bd2d3751470f0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/faint-0p2.png",
+      "bytes": 437141,
+      "sha256": "fa9ad9e4f4acfd2012d21505788b30cd86bbd81342de9c1e9b9ac7d8a08d62b9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/faint-0p9.png",
+      "bytes": 434406,
+      "sha256": "4e0ad3f431d351e084f997dc0ea665c724e185be671ffac956b4473e579485d2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/faint-1.png",
+      "bytes": 433716,
+      "sha256": "cb470226ef34209e4945ceb8c988fbd230822708d46845973ec409f016fb9f81"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/hit-0.png",
+      "bytes": 440248,
+      "sha256": "830d0a3a552a232cf5c05b226854c1f386ed62d6abcd7997819bd2d3751470f0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/hit-0p2.png",
+      "bytes": 446535,
+      "sha256": "1b642a9b63e9a73545f63ab6a8bfef9efae84209f60bfd87f5f17e03581229f1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/hit-0p9.png",
+      "bytes": 440248,
+      "sha256": "830d0a3a552a232cf5c05b226854c1f386ed62d6abcd7997819bd2d3751470f0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/hit-1.png",
+      "bytes": 440248,
+      "sha256": "830d0a3a552a232cf5c05b226854c1f386ed62d6abcd7997819bd2d3751470f0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/idle-0.png",
+      "bytes": 440794,
+      "sha256": "eff93546a74b7fa7e1d9951d30822751ae424e424638377b9237b8cabaede929"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/idle-0p2.png",
+      "bytes": 443480,
+      "sha256": "94ad9bf2658d7911c74b6815901f82da7886bae2d292e4739ee9156a55a5fa1c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/idle-0p9.png",
+      "bytes": 443390,
+      "sha256": "890a3e70c2a055ed37569433007877a2efe59c27d1bddfbd1de659b620a2aef7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/idle-1.png",
+      "bytes": 440794,
+      "sha256": "eff93546a74b7fa7e1d9951d30822751ae424e424638377b9237b8cabaede929"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/review-01/review.json",
+      "bytes": 5589,
+      "sha256": "bc72f4bbd273219403f0308a74594222e92af75009f690eb3395998c4c808eef"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/static-01.json",
+      "bytes": 7880,
+      "sha256": "b90321280484a1b9a836962a8c14077e6d382ae9e0cafe5c123a83ba6968ab08"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "cdb3cafe60d274eab14adaf41f3f45edec6093b46ffbfce12dc0bbf4254d5a75"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/static-execution.json",
+      "bytes": 485,
+      "sha256": "ef737cf189dab64a284d50300887991246988493f4a137c19ea1b2b974e93ea1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/static.log",
+      "bytes": 2050,
+      "sha256": "504f53bc4a66c91c0d7d8ef3d33a1c1476e7fd65110fb967c95e2df884dd901c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/subject-source.json",
+      "bytes": 2319,
+      "sha256": "5c082e12641700a1445d06649fb5e651f79f39358596c7ce9d0256d4903ff570"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/01-capuchin-fringes/visual-review.final.json",
+      "bytes": 1432,
+      "sha256": "57483cc9157c960f825a621c6d9d41144d409e500de801560dd6097db0ec6afe"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/authoring.json",
+      "bytes": 9555,
+      "sha256": "9c3616bf243ccea58a21e903f7e7263c7210793290047ced6c613e4997f1cb91"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/correction.json",
+      "bytes": 838,
+      "sha256": "7f1e2124da51da1f3f4f912f9a99286a180e197da3856d67bd1ffb07dc1c16c4"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/binding.json",
+      "bytes": 1158123,
+      "sha256": "fe452957ccafebf43cc7e76cd0461a9a88486d17926cbb24d224c3c907b8570d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/declaration.json",
+      "bytes": 1604,
+      "sha256": "ffa5f02750950bedf6a12a32283e5ef94fde167d610beef109d0117eef227fb8"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/intake-provenance.json",
+      "bytes": 3029,
+      "sha256": "a28533740ca476458833a07461e88f46c87e12ec0c08304f499a4c6ff9e84835"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/label-authoring-receipt.json",
+      "bytes": 2032,
+      "sha256": "088e8be68ded839a12a0f687c487b0959c708d3388926892138cd1dcc1520aa8"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/labels.png",
+      "bytes": 40151,
+      "sha256": "50bc0001d2ccf8f8fa5fcc25ae90290efa5acbf0eb57b6d918dcb28ee5601e5e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/atlas/c198-tiger-shark-v4-source.json",
+      "bytes": 5387,
+      "sha256": "edb71543c7e1ca8ed67e27fc0f37662a1bf9c9afaf0513c6b39337587e1eae84"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/atlas/c198-tiger-shark-v4-source.png",
+      "bytes": 328905,
+      "sha256": "2889877925b2e8e1fb841e7a9435b416c7290d1c0c9edc01840652e4e15d1848"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/atlas/receipt.json",
+      "bytes": 2391,
+      "sha256": "37539ce02fda1468a7aabecf9cb377af99ebfdaf5f414e2dd6dc024597c6bc1d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/binding.json",
+      "bytes": 4485,
+      "sha256": "f06115ca62407221960b4ea10ea6078887b7c47abc61bd7fb69092c7de9a3311"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/keyed.png",
+      "bytes": 1405742,
+      "sha256": "1ce99c72394e9b398c3aa447b276a32aa141609b75012fbce087dfeb3474727d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/manifest.json",
+      "bytes": 2132,
+      "sha256": "faf9aec6a6af4182d132ef84e11580c5627b870cd6edc9a4393edded2054ffe0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/ownership.png",
+      "bytes": 14298,
+      "sha256": "7433cd9e4274b3a363efb350c315d4e43e508a97b5d17bf9b04ebef5185a44eb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/body.png",
+      "bytes": 48389,
+      "sha256": "7dd031eabaa36d1acfb2141d607e619a78378bf713af0010c748025b52eabca4"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/caudal.png",
+      "bytes": 46182,
+      "sha256": "c39c22f9c4bfa67bbf0c6147521996239dbaba13b317f63dd5b3b0ad7d2be61d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/dorsal.png",
+      "bytes": 27269,
+      "sha256": "4dead126d86859a4672bfecc3cd9a65eb846e2d84ffbf5df3b84b91704c7d14b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/far-pectoral.png",
+      "bytes": 5926,
+      "sha256": "106af05ec3d1b76d008306aaddc4bb87784beaff86b8f2142050acc1ca563525"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/head.png",
+      "bytes": 49364,
+      "sha256": "79117532502cb478057a50cf0df30f05fadc2e6f253893a5151ec39a8cd98b3e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/jaw.png",
+      "bytes": 7328,
+      "sha256": "0623457fd31430375a8f877679b35dfb3add1e95fa0e76c8c4ca80a1bc2b102f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/near-pectoral.png",
+      "bytes": 25021,
+      "sha256": "572ff8a80c0b69a4f90ae91c67d44f0e5f3a78bbfb64ff89dbec54bf00c59446"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/spine0.png",
+      "bytes": 39756,
+      "sha256": "3bf56d80947d60ad4a4c231dbdea94e5fbc6a92110bceddf6fc4c32e1989a601"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/spine1.png",
+      "bytes": 52850,
+      "sha256": "0e396b317ffd7767bd08367204a08cd457e5dd9f9776765f15be5c43f206e461"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/spine2.png",
+      "bytes": 46375,
+      "sha256": "3b9aa746047c8381c1d73e7f8cf4dbfce9ad14e6eed52b8c652592345937bc08"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/spine3.png",
+      "bytes": 43873,
+      "sha256": "593d1c86c2bf26405f2bd03c655cd24697bd9421c4d4cfeebef2d46f94063363"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/spine4.png",
+      "bytes": 27670,
+      "sha256": "acd87f84f879ae8f815f6b6b606828b3e2697d7886737f586c284f8ce8b47843"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/parts/spine5.png",
+      "bytes": 7025,
+      "sha256": "3794630ce221e461546e07c6b0a423bbdf847335b4e51b7faf86e969bd9448af"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/parts/receipt.json",
+      "bytes": 3849,
+      "sha256": "f3fc720f23ab28585c000cbc1db40db74e6a9385fcdc435a6afc7e071f0d6cb4"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/pre-split-binding.json",
+      "bytes": 754069,
+      "sha256": "0fa0ff936c489eec8c6e645d5a3656983ce031fd20c440feaa6426cf459758e1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/receipt.json",
+      "bytes": 2060,
+      "sha256": "2ae467b55f2eca40a8aef9186ec41822f58c96293ede40a18859abf8000edaea"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/fit01/record.json",
+      "bytes": 5172,
+      "sha256": "0164c122abfe2c129b05d7363551e7190ccb2c6f815e93cce4412e1e96c3759c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/intake-execution.json",
+      "bytes": 462,
+      "sha256": "8be378a90b4c1b871d4014289ec820568a2b84bc2ccab37e9f06e0c3f721cf65"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/intake.log",
+      "bytes": 311,
+      "sha256": "062e0f4eb003668373bb09fa3a83f91387fa353270d117a72416471fdf3264f8"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/master.png",
+      "bytes": 1144815,
+      "sha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/static-01.json",
+      "bytes": 3159,
+      "sha256": "7e679226e4ab5e493e698a5e6d5824a35de6b9998b0f12c72ffbedcf64298d53"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "c02a32b301a4b1d63e8cf41d9516fa4bbddb776b2070484b51b0d1fc9ec4e8b5"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/static-execution.json",
+      "bytes": 491,
+      "sha256": "9a43691f5346fcf3b361cdb372aa4134b59afcd408f4b4f72636c917c8dfc1f3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/static.log",
+      "bytes": 1136,
+      "sha256": "f4d85f0ac60e6956707cab6345b815f94a11c2926e74c98bed298ff7f2c4ccef"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02-tiger-shark-v4/subject-source.json",
+      "bytes": 2149,
+      "sha256": "e3db084f45d3e7175088d1849e94370e003fa3cfd2587ae8e1bb9b50ebd35dbd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/authoring.json",
+      "bytes": 9558,
+      "sha256": "8dbde9742b442366beb66539fce643d373f102a18e968ba1c1b7b04a76bebddd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/conservation.json",
+      "bytes": 7073,
+      "sha256": "058e5758e1a5c7d2b77fafb5077dacb1edf29883dfd915a0e88449632d2ca44f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/correction.json",
+      "bytes": 1264,
+      "sha256": "d48752dd77621cba781ff4a0d294984da79c980d2d44b2538c156e9644da44f0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/binding.json",
+      "bytes": 1158123,
+      "sha256": "25780b770d68a8854cf5cf47f6b57fd5ec408f099a026927f10f67ed437cfdfd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/declaration.json",
+      "bytes": 1604,
+      "sha256": "de618e1a55b95197a187fb275522bb088f2681488abf5d3f88338609fe0c7388"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/intake-provenance.json",
+      "bytes": 3077,
+      "sha256": "01b70ce2c5a57cc03c6c1ef39522c0419c3c79e9fa899906464f9f83f4ae1fb7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/label-authoring-receipt.json",
+      "bytes": 2032,
+      "sha256": "088e8be68ded839a12a0f687c487b0959c708d3388926892138cd1dcc1520aa8"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/labels.png",
+      "bytes": 40151,
+      "sha256": "50bc0001d2ccf8f8fa5fcc25ae90290efa5acbf0eb57b6d918dcb28ee5601e5e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/atlas/c198-tiger-shark-v4-aquatic.json",
+      "bytes": 5388,
+      "sha256": "c4963aecdc4a7a993fea451d2d3e05a0f21469fc322e6e1646789a5c8dccbaf2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/atlas/c198-tiger-shark-v4-aquatic.png",
+      "bytes": 328905,
+      "sha256": "2889877925b2e8e1fb841e7a9435b416c7290d1c0c9edc01840652e4e15d1848"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/atlas/receipt.json",
+      "bytes": 2392,
+      "sha256": "237cd5c66c9414e1204e4b4d952ff0a0ecbde4ecb4dc7122b3b9fecbe435a61d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/binding.json",
+      "bytes": 4485,
+      "sha256": "be962afbe166fa2dab4954cb0b6d76c84db48203ec2cf0b5d0b9677955c58417"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/keyed.png",
+      "bytes": 1405742,
+      "sha256": "1ce99c72394e9b398c3aa447b276a32aa141609b75012fbce087dfeb3474727d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/manifest.json",
+      "bytes": 2133,
+      "sha256": "012536cf63a28273c6125acf5db338a133c78d6015e340afc35fdc7dffc600dc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/ownership.png",
+      "bytes": 14298,
+      "sha256": "7433cd9e4274b3a363efb350c315d4e43e508a97b5d17bf9b04ebef5185a44eb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/body.png",
+      "bytes": 48389,
+      "sha256": "7dd031eabaa36d1acfb2141d607e619a78378bf713af0010c748025b52eabca4"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/caudal.png",
+      "bytes": 46182,
+      "sha256": "c39c22f9c4bfa67bbf0c6147521996239dbaba13b317f63dd5b3b0ad7d2be61d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/dorsal.png",
+      "bytes": 27269,
+      "sha256": "4dead126d86859a4672bfecc3cd9a65eb846e2d84ffbf5df3b84b91704c7d14b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/far-pectoral.png",
+      "bytes": 5926,
+      "sha256": "106af05ec3d1b76d008306aaddc4bb87784beaff86b8f2142050acc1ca563525"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/head.png",
+      "bytes": 49364,
+      "sha256": "79117532502cb478057a50cf0df30f05fadc2e6f253893a5151ec39a8cd98b3e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/jaw.png",
+      "bytes": 7328,
+      "sha256": "0623457fd31430375a8f877679b35dfb3add1e95fa0e76c8c4ca80a1bc2b102f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/near-pectoral.png",
+      "bytes": 25021,
+      "sha256": "572ff8a80c0b69a4f90ae91c67d44f0e5f3a78bbfb64ff89dbec54bf00c59446"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/spine0.png",
+      "bytes": 39756,
+      "sha256": "3bf56d80947d60ad4a4c231dbdea94e5fbc6a92110bceddf6fc4c32e1989a601"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/spine1.png",
+      "bytes": 52850,
+      "sha256": "0e396b317ffd7767bd08367204a08cd457e5dd9f9776765f15be5c43f206e461"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/spine2.png",
+      "bytes": 46375,
+      "sha256": "3b9aa746047c8381c1d73e7f8cf4dbfce9ad14e6eed52b8c652592345937bc08"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/spine3.png",
+      "bytes": 43873,
+      "sha256": "593d1c86c2bf26405f2bd03c655cd24697bd9421c4d4cfeebef2d46f94063363"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/spine4.png",
+      "bytes": 27670,
+      "sha256": "acd87f84f879ae8f815f6b6b606828b3e2697d7886737f586c284f8ce8b47843"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/parts/spine5.png",
+      "bytes": 7025,
+      "sha256": "3794630ce221e461546e07c6b0a423bbdf847335b4e51b7faf86e969bd9448af"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/parts/receipt.json",
+      "bytes": 3849,
+      "sha256": "7752a6a12087f2f75cb691c1bd6dfea1c7091b80b3cc2b77249c3273a916e937"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/pre-split-binding.json",
+      "bytes": 754069,
+      "sha256": "e8e1cb3cf8b45d97fb1cd4688faac12b5f2575292863caf816ee1c6f5620bf9f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/receipt.json",
+      "bytes": 2061,
+      "sha256": "d25e3972f69145a14254fce7e2286d590980d6b79f0bcbb9378fd05db6ed977d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/fit01/record.json",
+      "bytes": 5181,
+      "sha256": "7721bebb88209172056ddfe9e59d48c2f8d1c7fc467bbe7427ec4b592300e7ac"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/intake-execution.json",
+      "bytes": 474,
+      "sha256": "557487a85ceec9533c0b33dd5e00a51bbf228ca77bfd4d76d70c0f6c203a0f5e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/intake.log",
+      "bytes": 317,
+      "sha256": "673bb48d7d3a60462e666f7be3ecc90bd6669cd9e38695423041177cc640ac76"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/adjacencies.json",
+      "bytes": 6102,
+      "sha256": "a0b8563e3e3bc6c6848303a04655b3768626b74a1c68a5ec2038f797d48dd212"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/binding.json",
+      "bytes": 1059397,
+      "sha256": "a6650e30962bccf19776cda2805d4e9da00802d834810e27b96d476dbb14b0c8"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/declaration.json",
+      "bytes": 1604,
+      "sha256": "4c5351d695ce380416b3dd94ff2406f2104dc0d54531798e8cd5a06041c41c0b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/labels.png",
+      "bytes": 39897,
+      "sha256": "1547687411720d487da8f3ae2b6726c4d351a117f300488bf13ff73eca59bd37"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/atlas/c192-islands-02b-tiger-shark-habitat.json",
+      "bytes": 5387,
+      "sha256": "9bada528879e76ae06bd54d3775cd143db522e7c9c84825af5dc6c9602d048fe"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/atlas/c192-islands-02b-tiger-shark-habitat.png",
+      "bytes": 322191,
+      "sha256": "a147616a35823a4ffec516127e39f3dc2b2de7c220ebab4cf6d8482b8894736e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/atlas/receipt.json",
+      "bytes": 2401,
+      "sha256": "d1df726ff245d8d378e1970a3d7866813496e82a5177af782637eb056adb8f77"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/binding.json",
+      "bytes": 4475,
+      "sha256": "0daa4b9759241cbdd7a5f9c4071269697285b3fee686865a1ee2b90dce3ce2bc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/keyed.png",
+      "bytes": 1405742,
+      "sha256": "1ce99c72394e9b398c3aa447b276a32aa141609b75012fbce087dfeb3474727d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/manifest.json",
+      "bytes": 2142,
+      "sha256": "c6081ae96b169657a01763a873fc022564b3e0b347ee71a5a015a1aedaf78bd9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/ownership.png",
+      "bytes": 14094,
+      "sha256": "8200834d93bb24c9019990c5ad5dce877a3401b084f0da3db15390cbf725afdb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/body.png",
+      "bytes": 38149,
+      "sha256": "3299d4f46d787fa8b32f9ecea39576a9b68386339e09b182333f76a0a6522726"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/caudal.png",
+      "bytes": 50240,
+      "sha256": "71eabbe1ecdc9fd29cc8fe95fc2cf6174c61125c4e80aed70c65e0c0bdad9289"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/dorsal.png",
+      "bytes": 27302,
+      "sha256": "9bb11194e4f23620e609a65a80ab342bf0d0eaab38c90a9eb38ca1c7ffe21030"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/far-pectoral.png",
+      "bytes": 5938,
+      "sha256": "f586bf1f75997524d73ca12d1fbcd06560b72d87f7fb012ca803e467f39226f7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/head.png",
+      "bytes": 49658,
+      "sha256": "2307a97553d264e188494d7c61c7357c03548e23e06cfb86bd5e56404d8c0f8a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/jaw.png",
+      "bytes": 7328,
+      "sha256": "0623457fd31430375a8f877679b35dfb3add1e95fa0e76c8c4ca80a1bc2b102f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/near-pectoral.png",
+      "bytes": 25517,
+      "sha256": "9f050d2a99d23cd15071f6ee7548435ce7051021ee89102fd1418ae6f370c58a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/spine0.png",
+      "bytes": 39756,
+      "sha256": "3bf56d80947d60ad4a4c231dbdea94e5fbc6a92110bceddf6fc4c32e1989a601"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/spine1.png",
+      "bytes": 52909,
+      "sha256": "fde96dfdf77b15f1af97f14989fdaa9f25f057192f5753a741f25cf61ff1a08f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/spine2.png",
+      "bytes": 46396,
+      "sha256": "470121b59d5fe178282fa7fab10c6d96d61647190cc2dcd2e1c505a6c9ce65be"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/spine3.png",
+      "bytes": 44517,
+      "sha256": "0c5219b17df9f9b2a79758b6fb8a88197cfffe85a772577442284ce2bfa4f6bc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/spine4.png",
+      "bytes": 28041,
+      "sha256": "1b24f69e2db7ae6a371dde2339b11e2a698db759e30eeed76e89577323547ded"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/parts/spine5.png",
+      "bytes": 7025,
+      "sha256": "3794630ce221e461546e07c6b0a423bbdf847335b4e51b7faf86e969bd9448af"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/parts/receipt.json",
+      "bytes": 3849,
+      "sha256": "d1cbe475fd1644505e3f71628fbfeee6bf5fcc52b93e84e3a00608b4be2a44e2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/pre-split-binding.json",
+      "bytes": 696290,
+      "sha256": "152194b6cd452d49683f866ec94244cbd7812d79460e3ddb9f1fafca3dfb5982"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/fit/record.json",
+      "bytes": 5181,
+      "sha256": "7721bebb88209172056ddfe9e59d48c2f8d1c7fc467bbe7427ec4b592300e7ac"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/receipt.json",
+      "bytes": 5500,
+      "sha256": "cbf8cc2360af8bd85b02de24e8d69e33162a7ea28bae7a1ba8b2218e6706cc46"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/static-execution.json",
+      "bytes": 335,
+      "sha256": "f119beddb17427edc78ad35f10f4d0441bcc61b71052cf367283c02ccb561d98"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/static.json",
+      "bytes": 7432,
+      "sha256": "d19b37d44be9acd085ba905883b3dc0ee959371b725646e4c9e196c0e7f4aefe"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "cf978b03a6fcf6bfdeef3203df386db1d0c712304c6993083a218c80bccc6dd7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/islands-01/static.log",
+      "bytes": 1831,
+      "sha256": "dae1979a31abafddfd7cb04e1e3465a6a0ac73c793ca5b00121a8ac8ec4ef25b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/master.png",
+      "bytes": 1144815,
+      "sha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/approach-swim-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/approach-swim-0p2.png",
+      "bytes": 319026,
+      "sha256": "0b4cadc69ebbc59859b5fc392778054236b34c4e5438e28d85997b0b0ee0ba5c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/approach-swim-0p9.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/approach-swim-1.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/faint-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/faint-0p2.png",
+      "bytes": 320732,
+      "sha256": "5dcf9a8db1c26e9658fb8c17026f424008546df167533af9dbb9ed20866b9ead"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/faint-0p9.png",
+      "bytes": 346852,
+      "sha256": "cc571eb15f0190a8cecc0c901ccec7706fa1e7b01ef711760fe0b8ded0e84308"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/faint-1.png",
+      "bytes": 345802,
+      "sha256": "fa495a8783420ae31d35460db659762f94e47d734bfa26ca3f5b614cf3c73b10"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/hit-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/hit-0p2.png",
+      "bytes": 328855,
+      "sha256": "dcceeab7876eb2c7350aa7e89ff9b1a1c06e60b9bc6f2f14d009d06f5dcd51b0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/hit-0p9.png",
+      "bytes": 315527,
+      "sha256": "485191e9b12e288ff5c80296b06d94f9370ca5b57bbb193b1518ade80c17fc39"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/hit-1.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/idle-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/idle-0p2.png",
+      "bytes": 319765,
+      "sha256": "e08fbd6875e900e4d8aeb080e27d6dbeda821e4ed7ea9e4124deb089183f6a33"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/idle-0p9.png",
+      "bytes": 319216,
+      "sha256": "f8838505159ac1fdd2dcb12f71fb8de6e252397aeaefa4a37f72d32b50de5be0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/idle-1.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-01/review.json",
+      "bytes": 5554,
+      "sha256": "9d42371d502937bb1ae92d30818534efd5aa67c8868c68a331174d5959f26dd9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/approach-swim-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/approach-swim-0p2.png",
+      "bytes": 318484,
+      "sha256": "4fbfb1b9a83477c1721528140d7f0386ab47cefa3f6f64964f8b672587a25818"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/approach-swim-0p9.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/approach-swim-1.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/faint-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/faint-0p2.png",
+      "bytes": 320394,
+      "sha256": "380129c6cd8ee8b0d7065c8f282f93b7c10c80b5087b37075864900163c6d671"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/faint-0p9.png",
+      "bytes": 345671,
+      "sha256": "ff62fd6652465c1fba16068d22224319e99dd3e57680cc28864cd4e9e2d5a1cc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/faint-1.png",
+      "bytes": 346037,
+      "sha256": "af9998e7b6d42e6f389dae4828c93ea6e7df9c7493e787731f516bec723e5c87"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/hit-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/hit-0p2.png",
+      "bytes": 317312,
+      "sha256": "1610637ca2983b63b183987fa6c015129240219080ec0731af37bbf5dc7a317c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/hit-0p9.png",
+      "bytes": 315441,
+      "sha256": "6d4d666d943cfcdd54eaadb0c656f93ccb30b9bd03c49757fe41041b17d208db"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/hit-1.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/idle-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/idle-0p2.png",
+      "bytes": 319565,
+      "sha256": "b4e9859c69169c1f9a0967ad8264452ecd3b3caa25d7679158b02c8502b1207f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/idle-0p9.png",
+      "bytes": 317199,
+      "sha256": "ec399c3b4801caa978c0d6a7cd4ff919642aa3c748f67cfe29ee893edb562541"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/idle-1.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-islands-01/review.json",
+      "bytes": 5590,
+      "sha256": "b39892d103bde81ee9ed490ddae0edffa1a0da0c4eb4e4bfcebdef271aa68eef"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/approach-swim-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/approach-swim-0p2.png",
+      "bytes": 318205,
+      "sha256": "9b9faa6a3bf4236cba9bdf53dabf4fe5dcb7e96199c6928824b226c8089f5a1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/approach-swim-0p9.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/approach-swim-1.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/faint-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/faint-0p2.png",
+      "bytes": 320775,
+      "sha256": "af1c702cee5da67814f2a21b634e00f348f40a1cde3059d22137d6d02ed3583f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/faint-0p9.png",
+      "bytes": 353516,
+      "sha256": "5b2a183db9730eb822e71c46712dfcd48e689d075cdcb0f4457e803b879d1fb0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/faint-1.png",
+      "bytes": 346598,
+      "sha256": "a4e64839cefeff28aa8107d08a4af4566befbe1808350a387e68b9a5de33eb81"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/hit-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/hit-0p2.png",
+      "bytes": 323210,
+      "sha256": "d9cc6644afa3ab0974cea02f01ddbf842030e8415c6ed9df86b7c08f3883a292"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/hit-0p9.png",
+      "bytes": 315441,
+      "sha256": "6d4d666d943cfcdd54eaadb0c656f93ccb30b9bd03c49757fe41041b17d208db"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/hit-1.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/idle-0.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/idle-0p2.png",
+      "bytes": 320421,
+      "sha256": "47c6d045ee68971f96b06f977974b7ad1b74d29b3b5542943135a93f56b158a5"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/idle-0p9.png",
+      "bytes": 316930,
+      "sha256": "d9ed3fdfad67ce6ce52e3545b103f8cd6d77553ad63a26c909251ee3c308c1dd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/idle-1.png",
+      "bytes": 315360,
+      "sha256": "88f45613b28610c950b9bfb5faabb091b535f26f545526762de8ce7ff8a17786"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/review-joins-02/review.json",
+      "bytes": 5605,
+      "sha256": "04d57f5634e87a6877dea98182f528f7421ee4282ab075b6aab2039dac6b288c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/binding.json",
+      "bytes": 1058247,
+      "sha256": "4dc5130d7d572367dd86a88d7e1d8fa4a065bf87da6f48de04f7e04ee491224a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/declaration.json",
+      "bytes": 1604,
+      "sha256": "4c5351d695ce380416b3dd94ff2406f2104dc0d54531798e8cd5a06041c41c0b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/labels.png",
+      "bytes": 39897,
+      "sha256": "1547687411720d487da8f3ae2b6726c4d351a117f300488bf13ff73eca59bd37"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/atlas/c192-islands-02b-tiger-shark-habitat.json",
+      "bytes": 5387,
+      "sha256": "9bada528879e76ae06bd54d3775cd143db522e7c9c84825af5dc6c9602d048fe"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/atlas/c192-islands-02b-tiger-shark-habitat.png",
+      "bytes": 322191,
+      "sha256": "a147616a35823a4ffec516127e39f3dc2b2de7c220ebab4cf6d8482b8894736e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/atlas/receipt.json",
+      "bytes": 2401,
+      "sha256": "d1df726ff245d8d378e1970a3d7866813496e82a5177af782637eb056adb8f77"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/binding.json",
+      "bytes": 4475,
+      "sha256": "0daa4b9759241cbdd7a5f9c4071269697285b3fee686865a1ee2b90dce3ce2bc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/keyed.png",
+      "bytes": 1405742,
+      "sha256": "1ce99c72394e9b398c3aa447b276a32aa141609b75012fbce087dfeb3474727d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/manifest.json",
+      "bytes": 2142,
+      "sha256": "c6081ae96b169657a01763a873fc022564b3e0b347ee71a5a015a1aedaf78bd9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/ownership.png",
+      "bytes": 14094,
+      "sha256": "8200834d93bb24c9019990c5ad5dce877a3401b084f0da3db15390cbf725afdb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/body.png",
+      "bytes": 38149,
+      "sha256": "3299d4f46d787fa8b32f9ecea39576a9b68386339e09b182333f76a0a6522726"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/caudal.png",
+      "bytes": 50240,
+      "sha256": "71eabbe1ecdc9fd29cc8fe95fc2cf6174c61125c4e80aed70c65e0c0bdad9289"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/dorsal.png",
+      "bytes": 27302,
+      "sha256": "9bb11194e4f23620e609a65a80ab342bf0d0eaab38c90a9eb38ca1c7ffe21030"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/far-pectoral.png",
+      "bytes": 5938,
+      "sha256": "f586bf1f75997524d73ca12d1fbcd06560b72d87f7fb012ca803e467f39226f7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/head.png",
+      "bytes": 49658,
+      "sha256": "2307a97553d264e188494d7c61c7357c03548e23e06cfb86bd5e56404d8c0f8a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/jaw.png",
+      "bytes": 7328,
+      "sha256": "0623457fd31430375a8f877679b35dfb3add1e95fa0e76c8c4ca80a1bc2b102f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/near-pectoral.png",
+      "bytes": 25517,
+      "sha256": "9f050d2a99d23cd15071f6ee7548435ce7051021ee89102fd1418ae6f370c58a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/spine0.png",
+      "bytes": 39756,
+      "sha256": "3bf56d80947d60ad4a4c231dbdea94e5fbc6a92110bceddf6fc4c32e1989a601"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/spine1.png",
+      "bytes": 52909,
+      "sha256": "fde96dfdf77b15f1af97f14989fdaa9f25f057192f5753a741f25cf61ff1a08f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/spine2.png",
+      "bytes": 46396,
+      "sha256": "470121b59d5fe178282fa7fab10c6d96d61647190cc2dcd2e1c505a6c9ce65be"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/spine3.png",
+      "bytes": 44517,
+      "sha256": "0c5219b17df9f9b2a79758b6fb8a88197cfffe85a772577442284ce2bfa4f6bc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/spine4.png",
+      "bytes": 28041,
+      "sha256": "1b24f69e2db7ae6a371dde2339b11e2a698db759e30eeed76e89577323547ded"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/parts/spine5.png",
+      "bytes": 7025,
+      "sha256": "3794630ce221e461546e07c6b0a423bbdf847335b4e51b7faf86e969bd9448af"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/parts/receipt.json",
+      "bytes": 3849,
+      "sha256": "d1cbe475fd1644505e3f71628fbfeee6bf5fcc52b93e84e3a00608b4be2a44e2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/pre-split-binding.json",
+      "bytes": 696290,
+      "sha256": "152194b6cd452d49683f866ec94244cbd7812d79460e3ddb9f1fafca3dfb5982"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/fit/record.json",
+      "bytes": 5181,
+      "sha256": "7721bebb88209172056ddfe9e59d48c2f8d1c7fc467bbe7427ec4b592300e7ac"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/recipe.json",
+      "bytes": 2536,
+      "sha256": "b8ae21634d756ccd5dab5d7b8267c9c2aa07c62db6ec5f4a92b2f3bbcdbb84d9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/static-execution.json",
+      "bytes": 325,
+      "sha256": "9503edd2f82f4271a21b8a01cb3e58f8a1454c7a9e7076343ff3554f06f1e353"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/static.json",
+      "bytes": 7456,
+      "sha256": "c0f5fb890b0ea7867bfd657eed5d6d1e633d9c04a122a415087de85ff45f2392"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "e0c251fd2bd30440d124520ab5198ce7f2e84d0a32ba96ed57509696f3cb4d6e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/source-joins-02/static.log",
+      "bytes": 1830,
+      "sha256": "2edffb641f202a9f6f07df04701235aed64a23380a70f711c5295200c626d209"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/static-01.json",
+      "bytes": 7379,
+      "sha256": "0f24261a175d5a6ef77e76c8ac04f4d4fdd4e265586ec46f95e93c6a6cec200b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "d9fc519cddf0bc7c0a363472a4e45779f301e268c402f5ed1d0500d7094fe227"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/static-execution.json",
+      "bytes": 500,
+      "sha256": "2fa97f13e9b953ac47104c68837ea251be50d9bd6acf79448cf47e062ff60819"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/static.log",
+      "bytes": 1832,
+      "sha256": "0366ed18ba1b3344c2fd854a8a00ce4ce5f21c8e692137871c04c6a7ef9a9ef3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/subject-source.json",
+      "bytes": 2149,
+      "sha256": "e3db084f45d3e7175088d1849e94370e003fa3cfd2587ae8e1bb9b50ebd35dbd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat/visual-review.final.json",
+      "bytes": 2325,
+      "sha256": "9b7fa78240129e37b52e5513cc05fd422d991e26234e43d508e8bb754c50a90a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/authoring.json",
+      "bytes": 13811,
+      "sha256": "4b43d127d0b43de8ee27ead4371de347b6c5fa0f85d707c5a8796528dc1d84ae"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/conservation.json",
+      "bytes": 7396,
+      "sha256": "38b4e73504892dbc34afd4d9e657d1df95b9cb02bcad057bba73ea5e5cfb7848"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/correction.json",
+      "bytes": 590,
+      "sha256": "bfd5ce57449e39fb993ccc8fd22cc8c251345604c26fe706f9c51d6a0c46c4c6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/binding.json",
+      "bytes": 1418715,
+      "sha256": "347e402386cb7c4591cfad4a8ba3e2ee09854b1242824d9d00799e0b284f70dd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/declaration.json",
+      "bytes": 18494,
+      "sha256": "05b57830a3c819e8b43022fbbb713ed2769b7389528aa7eff75bdc011f70b22a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/intake-provenance.json",
+      "bytes": 3149,
+      "sha256": "b306898a9a606fb469406338a24965489daa3cd81a6672822d44cda4284875be"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/atlas/c198-snow-petrel-observed-wings.json",
+      "bytes": 7419,
+      "sha256": "ac2750f72285f645942e1245ff8e3a3cb64da1733ffdf2aac4feddbe82c09971"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/atlas/c198-snow-petrel-observed-wings.png",
+      "bytes": 446672,
+      "sha256": "de8a9f3637ef48a63252ea1cb2154821dd2810e64728f5ebe9f454f052191295"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/atlas/receipt.json",
+      "bytes": 3057,
+      "sha256": "9065882af69bfe4614ee79254840e1dfd1ad718b0fc425ef044da32c0faa92ec"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/binding.json",
+      "bytes": 6129,
+      "sha256": "aff6308e87dfc4d746855c7cfb1415f8c91eea10e2b50d733d097f9f0b5bd544"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/keyed.png",
+      "bytes": 1480518,
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/manifest.json",
+      "bytes": 3009,
+      "sha256": "03f13b8543aa301e871c0ceee96d7ae9a2f2cc6a834a6b90fd27160e1eda7477"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/ownership.png",
+      "bytes": 18114,
+      "sha256": "6fe90e4faaba1039211bdab22bd3f73c79746cbc159547ad8132e3cb2905f805"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/beak.png",
+      "bytes": 6688,
+      "sha256": "c9201a0a67bdffc6b6416c2528db4142cd2b3da25c2e0f8ead9570846dc90530"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/body.png",
+      "bytes": 129829,
+      "sha256": "558507e8f2542607166aca9e40e6bfd8ac9be16791cc73d5e38d99c42539d437"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/chest.png",
+      "bytes": 30831,
+      "sha256": "6ebb690f44d566f426ea25e43164c2f21a03719f100420473b82c2b58e6424ea"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/far-foot.png",
+      "bytes": 6853,
+      "sha256": "6b28b745215e74f883bfca6211882339cffa909a4a2bcbc9a005357341fec3fa"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/far-shin.png",
+      "bytes": 3391,
+      "sha256": "fd95317d671abcc215e45715598d92c2cd8b98f19a3c75748b1a9327d3725afa"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/far-thigh.png",
+      "bytes": 6380,
+      "sha256": "b0d37275031d9049f51ac72342a34d23912eae77d1ee1c335553e7586e90d980"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/far-wing-root.png",
+      "bytes": 6177,
+      "sha256": "e170ae27186811c3b5b37a047142e9212db4089f37f2f9713ad3012f09f6efcb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/far-wing-tip.png",
+      "bytes": 35278,
+      "sha256": "e257d46ebb03ee9a0753a71add452ea66bbf5123cba7a214e76f8886005e90d2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/head.png",
+      "bytes": 24744,
+      "sha256": "eb4563a7994c42b0b245d7b615edd16e629e34e9af45cde3479631d6c2aa9337"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/lower-neck.png",
+      "bytes": 15675,
+      "sha256": "00d5fcdcfb9cd8db72aae3304a43241eb1c7fcc88bd95f9987dc809f2029e15b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/near-foot.png",
+      "bytes": 7224,
+      "sha256": "12a9b33985e613b8a2c4abd2547f79b624b2d2e81d118f93a3600dfe1e24d391"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/near-shin.png",
+      "bytes": 3437,
+      "sha256": "7f6309eaaba5bb589a5970b1b6d12217d7785948f77f0a664b2f21da173c4f0e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/near-thigh.png",
+      "bytes": 10165,
+      "sha256": "71bdc74f4979419007732dd858fdc35b505237d1fb379a92fac9bf85d7995db0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/near-wing-flight.png",
+      "bytes": 92824,
+      "sha256": "f3d83dc5ae9811609ebc125676d7e3ae7d5e698a77b17d0d8b34fb178bae34b4"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/near-wing-root.png",
+      "bytes": 51264,
+      "sha256": "cc625bd5b857ab882e725faa3d7e7b0c5030dd7a76aea98131c8b5ce713cb81d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/pelvis.png",
+      "bytes": 15747,
+      "sha256": "8041b14c74a734f4b5d5bf6d0a1ccd54fc26a87ec5cb07746cdd0fb30a9d9eaf"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/tail.png",
+      "bytes": 43596,
+      "sha256": "7a243c5731967ef280bb94e4e073d60bcd4f0bffc7920106b2e517adffdef6a5"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/parts/upper-neck.png",
+      "bytes": 11001,
+      "sha256": "da59de824a0c3804ed7085ec6ea059ed14b9f740f1fc61eacdc700443e70a6b1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/parts/receipt.json",
+      "bytes": 4885,
+      "sha256": "fbef0e1ca6c89fccf8110e0e3ab652dfa191cdc07082860754d049f787a334a0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/pre-split-binding.json",
+      "bytes": 1099057,
+      "sha256": "70d9b0fd13e4b5e1288e6c98577ff52ce507d92dccec4d1afb0a7f63282d8dfc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/receipt.json",
+      "bytes": 2485,
+      "sha256": "3a6891bd877ccaf7e1d72d561c05a152304e2d32af3b328b91977d311d64b2b7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/fit01/record.json",
+      "bytes": 5928,
+      "sha256": "403e38de0492bdbb373c7e6bd73bfcf4d74f0ef7e8c75dde27fe3e53dff926ef"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/intake-execution.json",
+      "bytes": 466,
+      "sha256": "7475322badd35c317d6d5c7bf8cfcf149aa891e68f82b81683faf3e9a58e41c5"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/intake.log",
+      "bytes": 313,
+      "sha256": "fb0854114878558d2992f3408568a3c6be903bfea415e6e946e96da1460c3c52"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/adjacencies.json",
+      "bytes": 9166,
+      "sha256": "ea07a1a2343cef612a2b3d32895277d460b37e70be0b6be8bbdf027caf523d80"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/binding.json",
+      "bytes": 1290133,
+      "sha256": "4a5a409b64638eb1eefe85e51a97b0f9858ad07ad1782c7dde180bb7178c462c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/declaration.json",
+      "bytes": 2088,
+      "sha256": "852e57cf460883c7229ab2618693590c1fcc037e16eb1dee69b04cf3751a31d6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/labels.png",
+      "bytes": 42331,
+      "sha256": "268da18ca38e70ec5380c006639fc7ecc986ec11f99b035583bf317cf92e2cd2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/atlas/c192-islands-03-snow-petrel-open.json",
+      "bytes": 7420,
+      "sha256": "d7087cd46738ee0c3d2037bbafe6ca361003bf5016609c1757f6c88ce2a1e3c1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/atlas/c192-islands-03-snow-petrel-open.png",
+      "bytes": 441527,
+      "sha256": "9aa7eebf7b2cf2c249e4771318d087fba86e42f4ef7eb0952eb31122d559ca8d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/atlas/receipt.json",
+      "bytes": 3058,
+      "sha256": "c0d382b2126352afcb923171a9fb5604f9bb3d37500d092787894434118b8119"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/binding.json",
+      "bytes": 6129,
+      "sha256": "e901ca86c668b256bfd872ff249cefbeded11363748b2da740b85ef159e7286e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/keyed.png",
+      "bytes": 1480518,
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/manifest.json",
+      "bytes": 3010,
+      "sha256": "c2e9a7df8e261936d5d731dec7b9e41e1afb5e378054145594318ea954dc9d1f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/ownership.png",
+      "bytes": 17527,
+      "sha256": "279123f9b3bbda2c7ccc1d55b2b272b2ed182d3c4a6a2b958a0b846af1255435"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/beak.png",
+      "bytes": 6733,
+      "sha256": "2d42bd3bcc2a83fefdba1bc1984a0613b22f331705470177ad8244a8ea16e4be"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/body.png",
+      "bytes": 108991,
+      "sha256": "6e7eda33c05b783ce4699a7dc3b60a042d2772884407ea0b04c595af07f57905"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/chest.png",
+      "bytes": 30831,
+      "sha256": "6ebb690f44d566f426ea25e43164c2f21a03719f100420473b82c2b58e6424ea"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/far-foot.png",
+      "bytes": 7172,
+      "sha256": "13b49ae670a259fa4fbcf547d2e5bbdd2033d2e81f6615639f04e1bb48dc75f3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/far-shin.png",
+      "bytes": 3448,
+      "sha256": "16a7f7a1956cb8966d612fef7ba89b5bfed82569e26af224d3ca8690507e31d1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/far-thigh.png",
+      "bytes": 6381,
+      "sha256": "ecd3af698876af39e1617bd6923c2c18d9e685a09a916c01eebc0ba073494a4f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/far-wing-root.png",
+      "bytes": 6181,
+      "sha256": "debf7908d3036adb11f1db25b63c872eb1524b5979455bbf0af83caf7405bbba"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/far-wing-tip.png",
+      "bytes": 36473,
+      "sha256": "ef13d7ecc54e95d9875eb30f3ff67040f335b82eadc31ca7f63423ac5740740c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/head.png",
+      "bytes": 29679,
+      "sha256": "109a5727d2700a20110e00be73adaa72323bf2b13b331f3cbb326415a8783cbd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/lower-neck.png",
+      "bytes": 15675,
+      "sha256": "00d5fcdcfb9cd8db72aae3304a43241eb1c7fcc88bd95f9987dc809f2029e15b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/near-foot.png",
+      "bytes": 7914,
+      "sha256": "4777a153f3abcc67124b888479db53a40dfb251d304ba803a52aa12b4cb6b4dd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/near-shin.png",
+      "bytes": 3437,
+      "sha256": "7f6309eaaba5bb589a5970b1b6d12217d7785948f77f0a664b2f21da173c4f0e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/near-thigh.png",
+      "bytes": 10165,
+      "sha256": "71bdc74f4979419007732dd858fdc35b505237d1fb379a92fac9bf85d7995db0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/near-wing-flight.png",
+      "bytes": 98300,
+      "sha256": "0c3c78b3948046da02fe4e30f7242d7fad73a7768dd7c259a8682b9b7d4b290b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/near-wing-root.png",
+      "bytes": 53159,
+      "sha256": "8a9fc1e193c90af2a655b05c620a18b02538e4d75814614c86c35d18d554c60b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/pelvis.png",
+      "bytes": 15774,
+      "sha256": "a4cff282fbe2511a6b407792f5d47c6acfd1c3eb61fa34324cd370755713520f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/tail.png",
+      "bytes": 44209,
+      "sha256": "871610767fd73935b8fd70d355814130157df38e9e9100d49f7ae4ee427569cb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/parts/upper-neck.png",
+      "bytes": 11001,
+      "sha256": "da59de824a0c3804ed7085ec6ea059ed14b9f740f1fc61eacdc700443e70a6b1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/parts/receipt.json",
+      "bytes": 5065,
+      "sha256": "b4e76b20718e691b07b6d188c206370eb857ecd6f306f493aaa3846aa1a7ca1b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/pre-split-binding.json",
+      "bytes": 1014258,
+      "sha256": "d1758f04a6ed2fd4d6ac502d9fe8ae32109a07503b87b173a88514caa154849a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/fit/record.json",
+      "bytes": 5928,
+      "sha256": "403e38de0492bdbb373c7e6bd73bfcf4d74f0ef7e8c75dde27fe3e53dff926ef"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/receipt.json",
+      "bytes": 6143,
+      "sha256": "91d107a47c863f9badd45f0ba60edeeef5c498ffaaf8bc33ef537f6f21d05b4b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/static-execution.json",
+      "bytes": 327,
+      "sha256": "df3b2c2e1851f5d8b3074e33dff83b14c6d9afa633c38e164e90f7905e45632d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/static.json",
+      "bytes": 8343,
+      "sha256": "187f17237f425dfc88e9a31655aaae61b64d8927c593b958192f103c1732b745"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "e0b86b1e97fa9cecc116bffee4eb70fed463ab76f1510f1148a1a32d82723bbd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/islands-01/static.log",
+      "bytes": 2177,
+      "sha256": "31ce1b143de1e69060fd7b4937e6b7c14f84bd7f729299252b763f3c6d2897f0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/master.png",
+      "bytes": 1210796,
+      "sha256": "f14860a97d5b625dbe3fd97ed6ba0dca1354c5840fd6de952bd66e69f080e924"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/approach-walk-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/approach-walk-0p2.png",
+      "bytes": 415692,
+      "sha256": "1ff5cdab2e3ec434b7802428886c67d7cbe83de1580c9bc7b3320f97548a4450"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/approach-walk-0p9.png",
+      "bytes": 416283,
+      "sha256": "645eea3cd34bb6dacfbe543086e75dd1437562efb6f05a07915f55870298e61c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/approach-walk-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/faint-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/faint-0p2.png",
+      "bytes": 408538,
+      "sha256": "5d26516e51b3f1b9bbdb623d35cb34eee844e2ffd228fdbda340a73979cf3c4f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/faint-0p9.png",
+      "bytes": 349665,
+      "sha256": "f70f1fe4906b68c2512030a845eb7cdd642a689c7a290b9155465cf08e7d88b9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/faint-1.png",
+      "bytes": 387224,
+      "sha256": "fc3ca5ffe9e4722e2e1353522bb515aee8516a140ccbc4ed2b5bc24eb2d6021b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/hit-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/hit-0p2.png",
+      "bytes": 380686,
+      "sha256": "1cd2aa661c0f828a8519a0086582cc954b6ec5b3112f06f64893af33209104d3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/hit-0p9.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/hit-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/idle-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/idle-0p2.png",
+      "bytes": 414822,
+      "sha256": "80d7bd72d23546edf2d84d1b2bee159ea01c76d868f6de77f78a7a4dbf4c4aee"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/idle-0p9.png",
+      "bytes": 418415,
+      "sha256": "6e1e3054344fa91eaa92c7140dcbb2d73530df3057d778e9bfcd6420dc92895d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/idle-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-01/review.json",
+      "bytes": 5596,
+      "sha256": "5d37b4f884eea4ea11468c173bc67ca132036341aeeb082478a503fd8c48fdab"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/approach-walk-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/approach-walk-0p2.png",
+      "bytes": 415092,
+      "sha256": "b37db5f3f56a0df9bc3365c14f8a1caf999f7a65e8e488025a53936972cf47bd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/approach-walk-0p9.png",
+      "bytes": 416281,
+      "sha256": "a024a943d0382d337a680344f5afb20294b6ab95828d937859bb6d9abf5c6c59"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/approach-walk-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/faint-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/faint-0p2.png",
+      "bytes": 407302,
+      "sha256": "7c65ddec8f85a663bee2fc0ea2cc0763ba84d6514a710a44594164982ff2023f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/faint-0p9.png",
+      "bytes": 341664,
+      "sha256": "6015efac2f03b1914d6564ccea9c756ecaf9567683ed7a3b22d78a2c28695d63"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/faint-1.png",
+      "bytes": 388477,
+      "sha256": "560601ba2753cf1aa61496ef8e2879fb97cd1392c798920ddee0cc25b84f38d3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/hit-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/hit-0p2.png",
+      "bytes": 381707,
+      "sha256": "035a64763a7078d764e6794fa428338e6c206bfdb04dcb5f014a13aaf72dad36"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/hit-0p9.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/hit-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/idle-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/idle-0p2.png",
+      "bytes": 414931,
+      "sha256": "a20150e1f352e7a1a7eebdb7f80ab49600da3fbf8d3b3c6b14b0a60ecf08ccb2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/idle-0p9.png",
+      "bytes": 418568,
+      "sha256": "0cd9c8cac9664b2b877f5e00ec548e0c19ce84e550552f7fce6f827e8214e76d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/idle-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-islands-01/review.json",
+      "bytes": 5624,
+      "sha256": "8e5208628379bd12adcfc843afe0c7e0c2dfc549b3c82f3741e2f69838dae885"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/approach-walk-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/approach-walk-0p2.png",
+      "bytes": 415443,
+      "sha256": "896ba1f1bd4bc1a3fba801d2c4d02c5955d254d77dc46c10d5881b8fe10b5cb7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/approach-walk-0p9.png",
+      "bytes": 416282,
+      "sha256": "4da7e60d84e1ce19c9f53840643294c7c4bed8174dd1c721fcad1b5414586157"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/approach-walk-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/faint-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/faint-0p2.png",
+      "bytes": 406797,
+      "sha256": "444c8816f25f9f70473de0bd8a45b4fe7466cfcca93fa632d00c60034903170d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/faint-0p9.png",
+      "bytes": 334082,
+      "sha256": "73bed5e153f37f3b0cfc09203cc29b5c866e1d64cc1ec94b749ed06410262f7b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/faint-1.png",
+      "bytes": 379487,
+      "sha256": "6e2e39b127ef17d64c755400a326a33b481a5c91418e806484863a3a4b479925"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/hit-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/hit-0p2.png",
+      "bytes": 385849,
+      "sha256": "bf96dc182f6a9eed9cc96fcd961b3c243e07290fed653f712c1f662f4b639f8b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/hit-0p9.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/hit-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/idle-0.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/idle-0p2.png",
+      "bytes": 413751,
+      "sha256": "0cecdcdc469fa7baa4c1b6da49a0beaaebf03b4605f428dd8241a2b828e40cbf"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/idle-0p9.png",
+      "bytes": 418231,
+      "sha256": "cd9e346f6a0b2c4db844aa106112b5ba5ef7f35d3cab6d6a82007a2442841827"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/idle-1.png",
+      "bytes": 416968,
+      "sha256": "e57486df45908ebed4028023d06ca618b7089bcc2d6799b7d28bac617e890f1e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/review-joins-02/review.json",
+      "bytes": 5639,
+      "sha256": "06663fa8cc45030f7dc9f187319a41bae91454b15f0c9f3f23cf64832e5a176e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/binding.json",
+      "bytes": 1441258,
+      "sha256": "00bd9ec2762cc0e3b0fe251e4c05ce0da4da01903f463963b5b73cf03d2b4509"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/declaration.json",
+      "bytes": 2088,
+      "sha256": "852e57cf460883c7229ab2618693590c1fcc037e16eb1dee69b04cf3751a31d6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/labels.png",
+      "bytes": 42331,
+      "sha256": "268da18ca38e70ec5380c006639fc7ecc986ec11f99b035583bf317cf92e2cd2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/atlas/c192-islands-03-snow-petrel-open.json",
+      "bytes": 7420,
+      "sha256": "d7087cd46738ee0c3d2037bbafe6ca361003bf5016609c1757f6c88ce2a1e3c1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/atlas/c192-islands-03-snow-petrel-open.png",
+      "bytes": 441527,
+      "sha256": "9aa7eebf7b2cf2c249e4771318d087fba86e42f4ef7eb0952eb31122d559ca8d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/atlas/receipt.json",
+      "bytes": 3058,
+      "sha256": "c0d382b2126352afcb923171a9fb5604f9bb3d37500d092787894434118b8119"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/binding.json",
+      "bytes": 6129,
+      "sha256": "e901ca86c668b256bfd872ff249cefbeded11363748b2da740b85ef159e7286e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/keyed.png",
+      "bytes": 1480518,
+      "sha256": "afd8b8971765ae8eb43d478f9862390e3ae3c029184ae92547e535d85a4a9fa6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/manifest.json",
+      "bytes": 3010,
+      "sha256": "c2e9a7df8e261936d5d731dec7b9e41e1afb5e378054145594318ea954dc9d1f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/ownership.png",
+      "bytes": 17527,
+      "sha256": "279123f9b3bbda2c7ccc1d55b2b272b2ed182d3c4a6a2b958a0b846af1255435"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/beak.png",
+      "bytes": 6733,
+      "sha256": "2d42bd3bcc2a83fefdba1bc1984a0613b22f331705470177ad8244a8ea16e4be"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/body.png",
+      "bytes": 108991,
+      "sha256": "6e7eda33c05b783ce4699a7dc3b60a042d2772884407ea0b04c595af07f57905"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/chest.png",
+      "bytes": 30831,
+      "sha256": "6ebb690f44d566f426ea25e43164c2f21a03719f100420473b82c2b58e6424ea"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/far-foot.png",
+      "bytes": 7172,
+      "sha256": "13b49ae670a259fa4fbcf547d2e5bbdd2033d2e81f6615639f04e1bb48dc75f3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/far-shin.png",
+      "bytes": 3448,
+      "sha256": "16a7f7a1956cb8966d612fef7ba89b5bfed82569e26af224d3ca8690507e31d1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/far-thigh.png",
+      "bytes": 6381,
+      "sha256": "ecd3af698876af39e1617bd6923c2c18d9e685a09a916c01eebc0ba073494a4f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/far-wing-root.png",
+      "bytes": 6181,
+      "sha256": "debf7908d3036adb11f1db25b63c872eb1524b5979455bbf0af83caf7405bbba"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/far-wing-tip.png",
+      "bytes": 36473,
+      "sha256": "ef13d7ecc54e95d9875eb30f3ff67040f335b82eadc31ca7f63423ac5740740c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/head.png",
+      "bytes": 29679,
+      "sha256": "109a5727d2700a20110e00be73adaa72323bf2b13b331f3cbb326415a8783cbd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/lower-neck.png",
+      "bytes": 15675,
+      "sha256": "00d5fcdcfb9cd8db72aae3304a43241eb1c7fcc88bd95f9987dc809f2029e15b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/near-foot.png",
+      "bytes": 7914,
+      "sha256": "4777a153f3abcc67124b888479db53a40dfb251d304ba803a52aa12b4cb6b4dd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/near-shin.png",
+      "bytes": 3437,
+      "sha256": "7f6309eaaba5bb589a5970b1b6d12217d7785948f77f0a664b2f21da173c4f0e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/near-thigh.png",
+      "bytes": 10165,
+      "sha256": "71bdc74f4979419007732dd858fdc35b505237d1fb379a92fac9bf85d7995db0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/near-wing-flight.png",
+      "bytes": 98300,
+      "sha256": "0c3c78b3948046da02fe4e30f7242d7fad73a7768dd7c259a8682b9b7d4b290b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/near-wing-root.png",
+      "bytes": 53159,
+      "sha256": "8a9fc1e193c90af2a655b05c620a18b02538e4d75814614c86c35d18d554c60b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/pelvis.png",
+      "bytes": 15774,
+      "sha256": "a4cff282fbe2511a6b407792f5d47c6acfd1c3eb61fa34324cd370755713520f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/tail.png",
+      "bytes": 44209,
+      "sha256": "871610767fd73935b8fd70d355814130157df38e9e9100d49f7ae4ee427569cb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/parts/upper-neck.png",
+      "bytes": 11001,
+      "sha256": "da59de824a0c3804ed7085ec6ea059ed14b9f740f1fc61eacdc700443e70a6b1"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/parts/receipt.json",
+      "bytes": 5065,
+      "sha256": "b4e76b20718e691b07b6d188c206370eb857ecd6f306f493aaa3846aa1a7ca1b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/pre-split-binding.json",
+      "bytes": 1014258,
+      "sha256": "d1758f04a6ed2fd4d6ac502d9fe8ae32109a07503b87b173a88514caa154849a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/fit/record.json",
+      "bytes": 5928,
+      "sha256": "403e38de0492bdbb373c7e6bd73bfcf4d74f0ef7e8c75dde27fe3e53dff926ef"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/recipe.json",
+      "bytes": 3079,
+      "sha256": "b9e8ea16ea5cf21d1e9405c1c7d789d817414e94d1d66225d6c99f290cdb78cd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/static-execution.json",
+      "bytes": 317,
+      "sha256": "c00fa51f109c82173d4c4eea9149fdf7e6009808bf7c7471b1f7f8a9e4a6da26"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/static.json",
+      "bytes": 8368,
+      "sha256": "43406e3b769752b483f231ed4b21b23cf69cc7245c74b44b41779059ce038fa3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/static.json.sources.json",
+      "bytes": 16218,
+      "sha256": "3608dcbc583277316ec9bb5a4819340ae079c7147db8a30bd5ddc54cea76aa9c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/source-joins-02/static.log",
+      "bytes": 2177,
+      "sha256": "31ce1b143de1e69060fd7b4937e6b7c14f84bd7f729299252b763f3c6d2897f0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/static-01.json",
+      "bytes": 8297,
+      "sha256": "f06db6ea9f7c9cda2e72210d3e0815d4830e1e75b4d77cd1ad66ea79d5223fd4"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "74038927215b17dfc28670f444ae9ba8f521af4bfcc6a0a443de3d4faede5a63"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/static-execution.json",
+      "bytes": 485,
+      "sha256": "451a905fd6bae354de488fd6fcbc9072df2765b8e1b1efde63dd24dfb919e22c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/static.log",
+      "bytes": 2177,
+      "sha256": "48b26bccbbe3ab3895e02d1af2e6fda5f457209842cb65c87dac0d9b680e4352"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/subject-source.json",
+      "bytes": 2718,
+      "sha256": "f6fc65f07566d525816c6ca8edeee0be100b0ded5ef449e27aff663d063bba2a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/03-snow-petrel-open/visual-review.final.json",
+      "bytes": 2322,
+      "sha256": "372106369667bd127a13e2094ea9df08d6a6014fc7dc71c575181bef184c1dd2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/04-rhea-source-hold/source-review.json",
+      "bytes": 908,
+      "sha256": "b1d5c95c04e42462be1d6be31faae82e54038e10d29c7e15f8060136330c4477"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/absence-controls.json",
+      "bytes": 780,
+      "sha256": "1ed01bbed68e5cd0953ebb5e5592913276c8c0f2419355b7be9a097241055139"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/authoring.json",
+      "bytes": 13639,
+      "sha256": "7381a890b51c97da1c9779731e712ef3a045ae6ba047d109a09849e72b5f57b6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/conservation.json",
+      "bytes": 7957,
+      "sha256": "8e6bd43efba4889abede390612ec3cb3616c1e038efcce8819df44bc249544fc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/correction.json",
+      "bytes": 1349,
+      "sha256": "237b7dfeb006974f700874a85691703a9988116f8d7913058f27ebf872e3acc0"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/binding.json",
+      "bytes": 2601759,
+      "sha256": "602e6d79c5832259f77e6a60a89dc600b5be435b1ac0bfd5ef8d0b21301d8be9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/declaration.json",
+      "bytes": 15444,
+      "sha256": "ab610c851a24f2bf4ae8d847b8868e1cb0e49293d4bd18b0f7c2c2ed0025b5d2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/intake-provenance.json",
+      "bytes": 3410,
+      "sha256": "76d4e2a4eaac23f5f485355ceddc78ef3398071be4ab3f9792a7ca3e26b323cb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/atlas/c198-capybara-observed-no-external-tail.json",
+      "bytes": 11112,
+      "sha256": "6a8c20c6e175d369cf54c15c494a1d351e8bcd9d227ab7ca24a52f65ca828475"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/atlas/c198-capybara-observed-no-external-tail.png",
+      "bytes": 870231,
+      "sha256": "2b7b91f34a97fcf2dc26ec4314cabb0c2e692b917e245eed5725c4afd883eb1c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/atlas/receipt.json",
+      "bytes": 4267,
+      "sha256": "d35652b3e0e48977357707bdff5fe27fdbcdc573fe314a329356c788ea3c565e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/binding.json",
+      "bytes": 9105,
+      "sha256": "c8236370b433c122979e89ca394f9a6e2f68082db39f12b10cb8214173ecbf1d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/keyed.png",
+      "bytes": 1913552,
+      "sha256": "deaed3a80af4593910cdfc5e09f86e79e340c7b0d7739697480737b92347b8a9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/manifest.json",
+      "bytes": 4611,
+      "sha256": "9abfedcabcb5e22d1a2aa0bc8edd89066c211e98d2508df0452bb3b52441bf26"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/ownership.png",
+      "bytes": 23140,
+      "sha256": "f42dbebc42225dc7daaaaca899e67f876ed87b0e991a01b2d8ea58525536b602"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/chest.png",
+      "bytes": 40757,
+      "sha256": "9c9a5b4b8bec9f199903e16ade9cb97af3137374b1a5597191353870dee012ea"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/ear-far-root.png",
+      "bytes": 2049,
+      "sha256": "bf6ea94a8b9353827a1839ec2f4818f5fc4b78c9c46f950b8246ae4be9b67b85"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/ear-far-tip.png",
+      "bytes": 1622,
+      "sha256": "afb7ff6069d00bebdf166f11a2fcb68ec9248e643b93ea0ec97295d7e2e669c7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/ear-near-root.png",
+      "bytes": 2987,
+      "sha256": "a0f8cf4c323bc80066226bb46498c5bc335d54dd5390042883c30e8f6eb2d72c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/ear-near-tip.png",
+      "bytes": 708,
+      "sha256": "bc8c4f91d9cd86416283013fa78c046b42e78fd8bd2d3294409c5a8353e79db6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/fore-far-ankle.png",
+      "bytes": 11385,
+      "sha256": "8ba906056714f7d864435cdd0069508afca015393ff27cab78f79d1aba4df16d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/fore-far-knee.png",
+      "bytes": 41363,
+      "sha256": "77dd8b81d2d10627d05b8a038c6cda9791af229c8d9f3e33a0560574b3db7129"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/fore-far-paw.png",
+      "bytes": 8714,
+      "sha256": "848fa22253ef5ad5efc52ef9fb94d526221fba81b02deee76a7323eeba84d9bd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/fore-far-root.png",
+      "bytes": 33938,
+      "sha256": "41b8a6963ee27e715cc63b98587fa73ec7d2e2ffdd5ecd475b6247fa657d0d42"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/fore-near-ankle.png",
+      "bytes": 9351,
+      "sha256": "dd27225571eaab2ee50bcc1cfe0c78278a234d5df7d6d65d94c982800d464130"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/fore-near-knee.png",
+      "bytes": 35589,
+      "sha256": "9377ee0886f3e344adf43d40114051cf32a8372c1dc7376ac3dd48466b4dca60"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/fore-near-paw.png",
+      "bytes": 12825,
+      "sha256": "07c9358d2a4566ff79d07a78c9d968ed845d5c82e875968c231e25fbbf65ce89"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/fore-near-root.png",
+      "bytes": 87819,
+      "sha256": "5b2e6d9e6174dbdec7cec28fde1a538b8a9be93d771edebca023dbd174e190a2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/head.png",
+      "bytes": 42123,
+      "sha256": "8ff2f2ba45dce5e4693edd6e26d8d307ee56525714c88b4d35acaad8f83de8b9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/hind-far-ankle.png",
+      "bytes": 10929,
+      "sha256": "3745b0f6af7c8a4c3e40092195cf45a858b85ff43f540c194c923b6a14f70edb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/hind-far-knee.png",
+      "bytes": 28532,
+      "sha256": "a92f3779955ea24ea6034b164cee39f914f0cedc6369b4e583958b9f09d39fd6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/hind-far-paw.png",
+      "bytes": 12901,
+      "sha256": "03ce9f969e3d41b31f1de6246491d1e77a36e3f104e377552d064d5973f586ab"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/hind-far-root.png",
+      "bytes": 57891,
+      "sha256": "f871bc29dbe10448206ce57041d0271b5e02bcd400793cb6c2e2ff9243f3f2f7"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/hind-near-ankle.png",
+      "bytes": 9367,
+      "sha256": "93b2df412c8702f252c38c25bf786adef10e85bd935494cf0332a0bb7663dbcd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/hind-near-knee.png",
+      "bytes": 34140,
+      "sha256": "66e6534100c868abcec1628f58156f34a1631481d4c4d951e98dc6b8a72239db"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/hind-near-paw.png",
+      "bytes": 11422,
+      "sha256": "b12ab2bf8921972ab7600fe0222c6fb7a289339dd7b6ec2413de6062545fd0eb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/hind-near-root.png",
+      "bytes": 120915,
+      "sha256": "c5bdc6043d13606b965104eac06a5224f2b541035a7f1d31a6b77ad321c6792a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/jaw.png",
+      "bytes": 23903,
+      "sha256": "08992e39a9199b111673135417120a47c97ca11225d12236bea90aebe56b483f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/neck.png",
+      "bytes": 45777,
+      "sha256": "b75ea874fbc9a97f36dc8c71d3ab49b75eb74ce5cfe8f34d80b2dbf8b1a9646c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/pelvis.png",
+      "bytes": 97819,
+      "sha256": "de7019eb4b7dc2ec02a8c5b0ada5cc1beaeb9b25c82169bc01423ed9e5b3f2a6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/root.png",
+      "bytes": 424,
+      "sha256": "bf9ff71bcc449daba418fbe83ad66f6779c8f1467e4f669c4317373bb1c273cc"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/parts/spine.png",
+      "bytes": 202611,
+      "sha256": "21c6886e36abda92df7562fc1149d050ec1df779f078454ca26ae3e9741b173c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/parts/receipt.json",
+      "bytes": 7080,
+      "sha256": "93776c53336cca403b4bed3fdcc7a6a33911d3081fe13bb415271d5645ace988"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/pre-split-binding.json",
+      "bytes": 1495451,
+      "sha256": "f8fe8ba6cad7487b4e5394dd472123c9c76a263e99dd811584682a5f8946f9f8"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/receipt.json",
+      "bytes": 2858,
+      "sha256": "a0ab95f93e921fa76bc4a4341504ec5e3d87f958bc99b234ae3ef6f2842b25b4"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/fit01/record.json",
+      "bytes": 7416,
+      "sha256": "16edd89409f363763ee9c4cc94be6c38afc377122a213cdf59f92d6b8dfbd5eb"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/intake-execution.json",
+      "bytes": 476,
+      "sha256": "9bbcd5540ce36c67a8c1585c9102c71f9e156e96ea62f853bb52ea0242844904"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/intake.log",
+      "bytes": 318,
+      "sha256": "9f06f4eac853286bf2b67c8f95e70489fdca5d124ba54f56bed0139deed46aff"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/master.png",
+      "bytes": 1541206,
+      "sha256": "9f3c91c9f0b2024680455092d8a844c042cd667344ecda4cfd3a5146f88958aa"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/original-authoring.json",
+      "bytes": 15026,
+      "sha256": "1346cc680ed125628d35eb36819e18dc4c99f5984bd080ef65087932d8736d5b"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/original-presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/original-static.json",
+      "bytes": 15182,
+      "sha256": "b1ba95a176c35d22360bada899646de6ba42485701b64394d0c0f6767b64ce61"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/presence.json",
+      "bytes": 103,
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/approach-walk-0.png",
+      "bytes": 828337,
+      "sha256": "44336519d99a0fe115c27e3c654b6daba1bd600496a4b2788a47a5e617016c00"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/approach-walk-0p2.png",
+      "bytes": 846447,
+      "sha256": "ae9a2a9bd0f4b4dbe20327c986c5f87b44ae6d40aa6ea76380edd417b38e9570"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/approach-walk-0p9.png",
+      "bytes": 828337,
+      "sha256": "44336519d99a0fe115c27e3c654b6daba1bd600496a4b2788a47a5e617016c00"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/approach-walk-1.png",
+      "bytes": 828337,
+      "sha256": "44336519d99a0fe115c27e3c654b6daba1bd600496a4b2788a47a5e617016c00"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/faint-0.png",
+      "bytes": 828337,
+      "sha256": "44336519d99a0fe115c27e3c654b6daba1bd600496a4b2788a47a5e617016c00"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/faint-0p2.png",
+      "bytes": 799007,
+      "sha256": "5794c749aa5c5e1588a1f01bf595914cae202cfd065abfd0e920a68e3cc54c18"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/faint-0p9.png",
+      "bytes": 748798,
+      "sha256": "baba66725be350bb3a8f1c8bf607c54acf2777473a50362c8c85839c0320bef2"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/faint-1.png",
+      "bytes": 749233,
+      "sha256": "507999919c711bac52a6820b0c10c637633c800a6613a24a468902209aaa7d46"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/idle-0.png",
+      "bytes": 828337,
+      "sha256": "44336519d99a0fe115c27e3c654b6daba1bd600496a4b2788a47a5e617016c00"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/idle-0p2.png",
+      "bytes": 828403,
+      "sha256": "098db4bb601db254f5a4b2fba652a8e4838f50127d46705197c3e853a0d0268f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/idle-0p9.png",
+      "bytes": 829649,
+      "sha256": "03d744c94e7871e8dbc5c1b5a3839e9337e59b9a36d523289345d0013b298c34"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/idle-1.png",
+      "bytes": 828337,
+      "sha256": "44336519d99a0fe115c27e3c654b6daba1bd600496a4b2788a47a5e617016c00"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/melee-tail-0.png",
+      "bytes": 828337,
+      "sha256": "44336519d99a0fe115c27e3c654b6daba1bd600496a4b2788a47a5e617016c00"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/melee-tail-0p2.png",
+      "bytes": 817383,
+      "sha256": "26417d0c3508994b301694995e3ceff27c519ac36ef649fbec1f93bc94437642"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/melee-tail-0p9.png",
+      "bytes": 828337,
+      "sha256": "44336519d99a0fe115c27e3c654b6daba1bd600496a4b2788a47a5e617016c00"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/melee-tail-1.png",
+      "bytes": 828337,
+      "sha256": "44336519d99a0fe115c27e3c654b6daba1bd600496a4b2788a47a5e617016c00"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/review-01/review.json",
+      "bytes": 5749,
+      "sha256": "47adfb2fab439af2c8ddf9484c6ec2a18856955a6d351a2bd3fc6708ab80d37f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/static-01.json",
+      "bytes": 14784,
+      "sha256": "ab92fdf18443e20420e139ccb77a6a0ec63b41e509f546360afc09b572aa406e"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/static-01.json.sources.json",
+      "bytes": 16218,
+      "sha256": "572a2ddaaafe14f2d4a730f170d0adf48aa879faabff9be2087a8bb0685b4507"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/static-execution.json",
+      "bytes": 498,
+      "sha256": "036aecd970d305aacc53685a491fc4fe495e1dd1d93137a2b8d518804b7b291a"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/static.log",
+      "bytes": 3027,
+      "sha256": "d0d4c2cf68a5cef0824aab5d94dc429340f2d65681ae43c3cfb2765c53b3dd92"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/subject-source.json",
+      "bytes": 2275,
+      "sha256": "c30263aebfda3d5d59daca6bacbeb5daea4ececfd0660215b4658203fd2c9c06"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/05-capybara-tail-absence/visual-review.final.json",
+      "bytes": 1446,
+      "sha256": "fc6885502e3f2e5704d670c9ffbeacea24238fa58e73823958dfdd8c5fe069a9"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/README.md",
+      "bytes": 3741,
+      "sha256": "763c777b4535e25213ad488e2c15eac94beea3b90b1827797525ddadd93c75d3"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/author-petrel.mjs",
+      "bytes": 4877,
+      "sha256": "bc586b87b7e1fc883a520872f0117a5818759aa45bb7ba5348c11e7db0c0e7d5"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/author-tiger-shark.mjs",
+      "bytes": 4212,
+      "sha256": "707499d35bc6e9153801630f29cb741925b07921ca92116d59e30b57648e0167"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/batch-end-mailbox.json",
+      "bytes": 370,
+      "sha256": "b3ccc41b793c64ca75db51d23a3965ac992353df3f458d573ca3efe080e33d80"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/bundle-review-birds.mjs",
+      "bytes": 1235,
+      "sha256": "ca1c94a9c361acc0bf95372ccd567e7f0194d535bc8318b0e496ad938a81444d"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/bundle-review.mjs",
+      "bytes": 1217,
+      "sha256": "604cd64d20c5497f40e4b1174acd8ca265867a9ab7b89d95a87ce8c2572773b4"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/compile-source-joins.mjs",
+      "bytes": 4377,
+      "sha256": "a6d9f7bcfee3f94a5725f06ebcf29910339bdb1298af42aaf2ca024ec110df0f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/conserve-independent.mjs",
+      "bytes": 5881,
+      "sha256": "2a2c6e621d403bd9e8aff141a9d527e1a47ccaf21f27d455f6a24b319e0fe176"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/conserve.mjs",
+      "bytes": 6323,
+      "sha256": "bef31b53b865fb1e395eaf983b8fe7830a55391e0af970d7815b8951d5bf9bbf"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/crustacean-review.final.json",
+      "bytes": 2052,
+      "sha256": "e3021b116264cedd876aa633328de5fedb08ddd0dd61032079b3d45a6691cad6"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/execution-summary.json",
+      "bytes": 9478,
+      "sha256": "d4e77b68a6a50e1bd46f3d2e365a214511430b52fd74145eb9c4ee013b565265"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/final-checks.json",
+      "bytes": 261,
+      "sha256": "f14d5748f1823efe5a6f49dfad4b358b3003a09c0c3e23d24671334ead6dc89f"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/place-eligible.mjs",
+      "bytes": 6237,
+      "sha256": "8b61ae744c7edbaeee4d1dd1093e45a6d015ebcaea6c480d5afd52c03fb1152c"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/probe-adjacencies.mjs",
+      "bytes": 1463,
+      "sha256": "169b6cdcee0409eb4d850fb59c3441533bfbb24dad4cf01953a4be5650edff56"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/queue-status.final.json",
+      "bytes": 5616,
+      "sha256": "b24a31a647159925924cd115014aa3cec50f9db6ba42aba0526b2b0a8d77bb31"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/queue-status.pending.json",
+      "bytes": 3581,
+      "sha256": "9766c97e8cfba3193788adc985dd339fe353061041d051f7d50506a6861dc899"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/retained-scoring/g2c239-10-fishing-cat-static.json",
+      "bytes": 23882,
+      "sha256": "67787b7ceaa74f5bdb1fc2b842c0d70bfe73ea56d119625a2f2c02a16cc902bd"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/retained-scoring/g2c239.summary.json",
+      "bytes": 3215,
+      "sha256": "2e4ad7c041188f454eaa661046f1d2fa5c350febef9b1383f087cad3e3b9d640"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/retained-scoring/g2c248-01-capybara-static.json",
+      "bytes": 15182,
+      "sha256": "b1ba95a176c35d22360bada899646de6ba42485701b64394d0c0f6767b64ce61"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/retained-scoring/g2c248-18-water-beetle-static.json",
+      "bytes": 22758,
+      "sha256": "42764da8354cd608e0890617cf6d31b6146a1fd840aae0b2ddb4b4e57f68ecb4"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/retained-scoring/g2c248-22-carrion-beetle-intake.log",
+      "bytes": 1026,
+      "sha256": "874fb0b747e563f5d34869d2e3ecb369b09d27710117fd941867851b10f34570"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/retained-scoring/g2c248.summary.json",
+      "bytes": 3223,
+      "sha256": "ea8b5b94d5d4cf4586dbb5430054806b2aeffc3d4beed6bd2b2615500f589818"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/review-bundle-receipt.json",
+      "bytes": 178694,
+      "sha256": "10febd83ec341a69671a405279fd2ae5da3a2f2ddb6da5705e806e7f3b2d3703"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/review-rig-birds.mjs",
+      "bytes": 4341,
+      "sha256": "9d72734b2e5e8cc191b443f5198c934f1974a390ff2b17bb52323581249dc410"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/review-rig.bundle.mjs",
+      "bytes": 1355203,
+      "sha256": "537de9ee8e1cf947606a14a1983b207f32ddc281333d38ae2467067226ae2532"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/review-rig.mjs",
+      "bytes": 4428,
+      "sha256": "b922213a1004afab9ba792be84404a0a654922cf110252b7d439f2c96a818b04"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/run-candidates.mjs",
+      "bytes": 1283,
+      "sha256": "86ca53b759210d1375bc50a4b66267b87b896f68df143ea4cd952b9dd6f335c5"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/scoring-refusals.json",
+      "bytes": 26356,
+      "sha256": "3db874da9585265d4bcaa9fffc9776e7bb1626ff9c73e4e06e02a94318a6e471"
+    },
+    {
+      "path": "audits/C198_SOURCE_HOLDS_20261003/selected-scoring-source-review.json",
+      "bytes": 2316,
+      "sha256": "37fbcad9e8fb3a69f6c2e124cc96c97c820ce4a5c5a3ffcb867fa3268ed4bfe3"
+    }
+  ],
+  "fileCount": 568,
+  "totalBytes": 113013161,
+  "queue": "audits/C198_SOURCE_HOLDS_20261003/queue-status.final.json",
+  "executionSummary": "audits/C198_SOURCE_HOLDS_20261003/execution-summary.json",
+  "qualityAccepted": false,
+  "native": false,
+  "productionEdited": false,
+  "referencePoolEdited": false,
+  "limitations": "Source and static/visual holds are explicit. No CPU/native/full-stage/AI-finish qualification. No pending local execution."
+}

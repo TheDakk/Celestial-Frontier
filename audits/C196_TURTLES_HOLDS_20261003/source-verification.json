@@ -1,0 +1,575 @@
+{
+  "schema": "cf.c196-source-verification/v1",
+  "status": "PASS",
+  "scope": "Exact source/label/material declaration checks, not anatomical/visual/native admission.",
+  "rows": [
+    {
+      "id": "01-tortoise",
+      "status": "PASS_CONSERVATION_ONLY",
+      "sourceSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+      "authoringSha256": "ed853afe60fb74cb0beb9db43e66e3d90059295e98de6e0247f897872aa237f7",
+      "recordSha256": "2b742c2a8b206d30b6058283416bec0b51c060d80e999bbab10e9817fba68602",
+      "bindingSha256": "deeb4e6ebdc93936217016f4233a6ffbfc01afc82f9f157e8bf4f7a0be21a309",
+      "keyedRgbaSha256": "dcc239e3786fe8ec9f4a23e1a1fe0956b975491a330c3e5d521f84c1321c0e8e",
+      "sourceRgbaChanged": 0,
+      "independentOwnershipReplay": true,
+      "ownerCounts": [
+        {
+          "id": "near-hind-paw",
+          "joint": "hindNearPaw",
+          "pixels": 6230
+        },
+        {
+          "id": "near-hind-ankle",
+          "joint": "hindNearAnkle",
+          "pixels": 3995
+        },
+        {
+          "id": "near-hind-shin",
+          "joint": "hindNearKnee",
+          "pixels": 6799
+        },
+        {
+          "id": "near-hind-emergence",
+          "joint": "hindNearRoot",
+          "pixels": 11370
+        },
+        {
+          "id": "near-front-paw",
+          "joint": "foreNearPaw",
+          "pixels": 6733
+        },
+        {
+          "id": "near-front-ankle",
+          "joint": "foreNearAnkle",
+          "pixels": 4385
+        },
+        {
+          "id": "near-front-shin",
+          "joint": "foreNearKnee",
+          "pixels": 11096
+        },
+        {
+          "id": "near-front-emergence",
+          "joint": "foreNearRoot",
+          "pixels": 9335
+        },
+        {
+          "id": "far-hind-paw",
+          "joint": "hindFarPaw",
+          "pixels": 4545
+        },
+        {
+          "id": "far-hind-ankle",
+          "joint": "hindFarAnkle",
+          "pixels": 1573
+        },
+        {
+          "id": "far-hind-shin",
+          "joint": "hindFarKnee",
+          "pixels": 4088
+        },
+        {
+          "id": "far-hind-emergence",
+          "joint": "hindFarRoot",
+          "pixels": 1308
+        },
+        {
+          "id": "far-front-paw",
+          "joint": "foreFarPaw",
+          "pixels": 5131
+        },
+        {
+          "id": "far-front-ankle",
+          "joint": "foreFarAnkle",
+          "pixels": 1612
+        },
+        {
+          "id": "far-front-shin",
+          "joint": "foreFarKnee",
+          "pixels": 5705
+        },
+        {
+          "id": "far-front-emergence",
+          "joint": "foreFarRoot",
+          "pixels": 2513
+        },
+        {
+          "id": "beak",
+          "joint": "jaw",
+          "pixels": 2545
+        },
+        {
+          "id": "head",
+          "joint": "head",
+          "pixels": 10199
+        },
+        {
+          "id": "neck",
+          "joint": "neck",
+          "pixels": 16918
+        },
+        {
+          "id": "tail-tip",
+          "joint": "tail3",
+          "pixels": 262
+        },
+        {
+          "id": "tail-distal",
+          "joint": "tail2",
+          "pixels": 470
+        },
+        {
+          "id": "tail-middle",
+          "joint": "tail1",
+          "pixels": 818
+        },
+        {
+          "id": "tail-base",
+          "joint": "tail0",
+          "pixels": 715
+        },
+        {
+          "id": "plate-remainder",
+          "joint": "root",
+          "pixels": 193041
+        }
+      ],
+      "unchangedOtherLandmarksAndRegions": false,
+      "partition": {
+        "externalEarsAbsent": true,
+        "allFourMandatoryLegsRetained": true,
+        "unknownMandatoryAbsenceRefused": true,
+        "observedExposedJointOverrides": [
+          "neck",
+          "head",
+          "hindNearRoot",
+          "hindNearKnee",
+          "hindNearAnkle",
+          "hindNearPaw",
+          "hindFarRoot",
+          "hindFarKnee",
+          "hindFarAnkle",
+          "hindFarPaw",
+          "foreNearRoot",
+          "foreNearKnee",
+          "foreNearAnkle",
+          "foreNearPaw",
+          "foreFarRoot",
+          "foreFarKnee",
+          "foreFarAnkle",
+          "foreFarPaw",
+          "tail0",
+          "tail1",
+          "tail2",
+          "tail3"
+        ],
+        "shellRigidityQualified": false,
+        "remainingRootOwnedSkinFringesHeld": true
+      },
+      "staticStatus": "RED",
+      "controls": [
+        "source RGBA mutation refused",
+        "source alpha deletion refused",
+        "source alpha addition refused",
+        "owner-color mutation refused"
+      ],
+      "qualityAccepted": false,
+      "native": false
+    },
+    {
+      "id": "01b-tortoise-far-shin",
+      "status": "PASS_CONSERVATION_ONLY",
+      "sourceSha256": "cd30924c792edc6c89a60d1c60f67561ebbe7a0b3a53eabca4985cf06e618334",
+      "authoringSha256": "f91107506a162acf0e29664a748253d239add4df3e87bb8422d2a494ca61a142",
+      "recordSha256": "c9ad5f346f84313e85017e2c449d298c66b2a8a76ad5be4e804a44963da7496b",
+      "bindingSha256": "03fc01e2bba9e1ca76ecbcbc17afba32f99477b27b814113d1bfd5c40898eb7e",
+      "keyedRgbaSha256": "dcc239e3786fe8ec9f4a23e1a1fe0956b975491a330c3e5d521f84c1321c0e8e",
+      "sourceRgbaChanged": 0,
+      "independentOwnershipReplay": true,
+      "ownerCounts": [
+        {
+          "id": "near-hind-paw",
+          "joint": "hindNearPaw",
+          "pixels": 6230
+        },
+        {
+          "id": "near-hind-ankle",
+          "joint": "hindNearAnkle",
+          "pixels": 3995
+        },
+        {
+          "id": "near-hind-shin",
+          "joint": "hindNearKnee",
+          "pixels": 6799
+        },
+        {
+          "id": "near-hind-emergence",
+          "joint": "hindNearRoot",
+          "pixels": 11370
+        },
+        {
+          "id": "near-front-paw",
+          "joint": "foreNearPaw",
+          "pixels": 6733
+        },
+        {
+          "id": "near-front-ankle",
+          "joint": "foreNearAnkle",
+          "pixels": 4385
+        },
+        {
+          "id": "near-front-shin",
+          "joint": "foreNearKnee",
+          "pixels": 11096
+        },
+        {
+          "id": "near-front-emergence",
+          "joint": "foreNearRoot",
+          "pixels": 9335
+        },
+        {
+          "id": "far-hind-paw",
+          "joint": "hindFarPaw",
+          "pixels": 4545
+        },
+        {
+          "id": "far-hind-ankle",
+          "joint": "hindFarAnkle",
+          "pixels": 1573
+        },
+        {
+          "id": "far-hind-shin",
+          "joint": "hindFarKnee",
+          "pixels": 4088
+        },
+        {
+          "id": "far-hind-emergence",
+          "joint": "hindFarRoot",
+          "pixels": 1308
+        },
+        {
+          "id": "far-front-paw",
+          "joint": "foreFarPaw",
+          "pixels": 5131
+        },
+        {
+          "id": "far-front-ankle",
+          "joint": "foreFarAnkle",
+          "pixels": 1612
+        },
+        {
+          "id": "far-front-shin",
+          "joint": "foreFarKnee",
+          "pixels": 6129
+        },
+        {
+          "id": "far-front-emergence",
+          "joint": "foreFarRoot",
+          "pixels": 2469
+        },
+        {
+          "id": "beak",
+          "joint": "jaw",
+          "pixels": 2545
+        },
+        {
+          "id": "head",
+          "joint": "head",
+          "pixels": 10199
+        },
+        {
+          "id": "neck",
+          "joint": "neck",
+          "pixels": 16918
+        },
+        {
+          "id": "tail-tip",
+          "joint": "tail3",
+          "pixels": 262
+        },
+        {
+          "id": "tail-distal",
+          "joint": "tail2",
+          "pixels": 470
+        },
+        {
+          "id": "tail-middle",
+          "joint": "tail1",
+          "pixels": 818
+        },
+        {
+          "id": "tail-base",
+          "joint": "tail0",
+          "pixels": 715
+        },
+        {
+          "id": "plate-remainder",
+          "joint": "root",
+          "pixels": 192661
+        }
+      ],
+      "unchangedOtherLandmarksAndRegions": true,
+      "partition": {
+        "externalEarsAbsent": true,
+        "allFourMandatoryLegsRetained": true,
+        "unknownMandatoryAbsenceRefused": true,
+        "observedExposedJointOverrides": [
+          "neck",
+          "head",
+          "hindNearRoot",
+          "hindNearKnee",
+          "hindNearAnkle",
+          "hindNearPaw",
+          "hindFarRoot",
+          "hindFarKnee",
+          "hindFarAnkle",
+          "hindFarPaw",
+          "foreNearRoot",
+          "foreNearKnee",
+          "foreNearAnkle",
+          "foreNearPaw",
+          "foreFarRoot",
+          "foreFarKnee",
+          "foreFarAnkle",
+          "foreFarPaw",
+          "tail0",
+          "tail1",
+          "tail2",
+          "tail3"
+        ],
+        "shellRigidityQualified": false,
+        "remainingRootOwnedSkinFringesHeld": true
+      },
+      "staticStatus": "RED",
+      "controls": [
+        "source RGBA mutation refused",
+        "source alpha deletion refused",
+        "source alpha addition refused",
+        "owner-color mutation refused"
+      ],
+      "qualityAccepted": false,
+      "native": false
+    },
+    {
+      "id": "02-serval-ear-base",
+      "status": "PASS_CONSERVATION_ONLY",
+      "sourceSha256": "4f0a211523567bc60438b5fa24d1ed2bb2df4484c4bff52bc616723dabf39735",
+      "authoringSha256": "ee06e594e3c5f3c0eb0d5c4c4e9f2446b004a613561db65a1310da6ac5efec0b",
+      "recordSha256": "6d2b46804b9fdfb119251cfdbcf01bdcad8e708acad5c43f3e1a19e24047a792",
+      "bindingSha256": "7c16050ec459d8f4a54382d47f1321d524b7d61929ac9aff557a70305c8d9806",
+      "keyedRgbaSha256": "7006c91346efca7a81fbedda345814372cfe9b343d4dd37b7fff318a3302ed5c",
+      "sourceRgbaChanged": 0,
+      "independentOwnershipReplay": true,
+      "ownerCounts": [
+        {
+          "id": "tail3",
+          "joint": "tail3",
+          "pixels": 842
+        },
+        {
+          "id": "tail2",
+          "joint": "tail2",
+          "pixels": 1061
+        },
+        {
+          "id": "tail1",
+          "joint": "tail1",
+          "pixels": 1381
+        },
+        {
+          "id": "tail0",
+          "joint": "tail0",
+          "pixels": 1460
+        },
+        {
+          "id": "root",
+          "joint": "root",
+          "pixels": 128
+        },
+        {
+          "id": "ear-near-tip",
+          "joint": "earNearTip",
+          "pixels": 4829
+        },
+        {
+          "id": "ear-near-root",
+          "joint": "earNearRoot",
+          "pixels": 6140
+        },
+        {
+          "id": "ear-far-tip",
+          "joint": "earFarTip",
+          "pixels": 1564
+        },
+        {
+          "id": "ear-far-root",
+          "joint": "earFarRoot",
+          "pixels": 2035
+        },
+        {
+          "id": "hind-near-paw",
+          "joint": "hindNearPaw",
+          "pixels": 2302
+        },
+        {
+          "id": "hind-near-ankle",
+          "joint": "hindNearAnkle",
+          "pixels": 2349
+        },
+        {
+          "id": "hind-near-knee",
+          "joint": "hindNearKnee",
+          "pixels": 21363
+        },
+        {
+          "id": "hind-near-root",
+          "joint": "hindNearRoot",
+          "pixels": 27457
+        },
+        {
+          "id": "hind-far-paw",
+          "joint": "hindFarPaw",
+          "pixels": 2054
+        },
+        {
+          "id": "hind-far-ankle",
+          "joint": "hindFarAnkle",
+          "pixels": 5440
+        },
+        {
+          "id": "hind-far-knee",
+          "joint": "hindFarKnee",
+          "pixels": 9968
+        },
+        {
+          "id": "hind-far-root",
+          "joint": "hindFarRoot",
+          "pixels": 3662
+        },
+        {
+          "id": "fore-near-paw",
+          "joint": "foreNearPaw",
+          "pixels": 2306
+        },
+        {
+          "id": "fore-near-ankle",
+          "joint": "foreNearAnkle",
+          "pixels": 3873
+        },
+        {
+          "id": "fore-near-knee",
+          "joint": "foreNearKnee",
+          "pixels": 10845
+        },
+        {
+          "id": "fore-near-root",
+          "joint": "foreNearRoot",
+          "pixels": 14185
+        },
+        {
+          "id": "fore-far-paw",
+          "joint": "foreFarPaw",
+          "pixels": 1888
+        },
+        {
+          "id": "fore-far-ankle",
+          "joint": "foreFarAnkle",
+          "pixels": 2556
+        },
+        {
+          "id": "fore-far-knee",
+          "joint": "foreFarKnee",
+          "pixels": 8514
+        },
+        {
+          "id": "fore-far-root",
+          "joint": "foreFarRoot",
+          "pixels": 4614
+        },
+        {
+          "id": "jaw",
+          "joint": "jaw",
+          "pixels": 2548
+        },
+        {
+          "id": "head",
+          "joint": "head",
+          "pixels": 6221
+        },
+        {
+          "id": "neck",
+          "joint": "neck",
+          "pixels": 11832
+        },
+        {
+          "id": "chest",
+          "joint": "chest",
+          "pixels": 5680
+        },
+        {
+          "id": "pelvis",
+          "joint": "pelvis",
+          "pixels": 3018
+        },
+        {
+          "id": "spine",
+          "joint": "spine",
+          "pixels": 29833
+        }
+      ],
+      "unchangedOtherLandmarksAndRegions": true,
+      "partition": null,
+      "staticStatus": "PASS_STATIC",
+      "controls": [
+        "source RGBA mutation refused",
+        "source alpha deletion refused",
+        "source alpha addition refused",
+        "owner-color mutation refused"
+      ],
+      "qualityAccepted": false,
+      "native": false
+    }
+  ],
+  "partial": [
+    {
+      "id": "03-box-turtle-partial",
+      "status": "PASS_PARTIAL_REPLAY_NOT_A_FIT",
+      "unassignedSourcePixels": 5741,
+      "sourcePixels": 222768,
+      "masterSha256": "0c8d8133447e6a5338316c3035d16c030044515ecd43569a0f2a912603bd69a3",
+      "noInventedFourthLimb": true,
+      "qualityAccepted": false
+    },
+    {
+      "id": "04-pond-turtle-partial",
+      "status": "PASS_PARTIAL_REPLAY_NOT_A_FIT",
+      "unassignedSourcePixels": 4650,
+      "sourcePixels": 187942,
+      "masterSha256": "0c816666bd32ec2ea57cf50e67593a3c2afefb394bebec8d171bccc4e44bc984",
+      "noInventedFourthLimb": true,
+      "qualityAccepted": false
+    },
+    {
+      "id": "05-snapping-turtle-partial",
+      "status": "PASS_PARTIAL_REPLAY_NOT_A_FIT",
+      "unassignedSourcePixels": 8602,
+      "sourcePixels": 229273,
+      "masterSha256": "557e01af53f96525dcf2493fa8854642fa19600248aecef9748dc935d6fa1bff",
+      "noInventedFourthLimb": true,
+      "qualityAccepted": false
+    },
+    {
+      "id": "06-turtle-partial",
+      "status": "PASS_PARTIAL_REPLAY_NOT_A_FIT",
+      "unassignedSourcePixels": 9277,
+      "sourcePixels": 224182,
+      "masterSha256": "dbb757c1cc58cef7cc1ff630949bb047a71e2dc591596e0c04d684500e159150",
+      "noInventedFourthLimb": true,
+      "qualityAccepted": false
+    }
+  ],
+  "bundleSourceFiles": 851,
+  "qualityAccepted": false,
+  "native": false
+}

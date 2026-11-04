@@ -1,0 +1,28 @@
+{
+  "name": "Goat",
+  "masterSha256": "5bf34cad2bc6b98a8a7c3c834623bb45c2553f7c96d1004f32162c70af2b9caa",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Brown-white coat, beard, paired swept horns, two ears, short raised tail and four hooves. Fine beard and tail fringes need island/ownership review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 303,
+      "y0": 268,
+      "x1": 966,
+      "y1": 957
+    },
+    "margins": {
+      "left": 303,
+      "right": 287,
+      "top": 268,
+      "bottom": 296
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,401 @@
+{
+  "schema": "cf.c198-independent-source-conservation/v1",
+  "packet": "audits/C198_SOURCE_HOLDS_20261003/02b-tiger-shark-habitat",
+  "masterSha256": "e20466d22482d56d3b59b719bdb9f7e501d545ac2ea11be536c1bea0de9f2039",
+  "authoringSha256": "8dbde9742b442366beb66539fce643d373f102a18e968ba1c1b7b04a76bebddd",
+  "bindingSha256": "25780b770d68a8854cf5cf47f6b57fd5ec408f099a026927f10f67ed437cfdfd",
+  "keyedRgbaSha256": "b68b3b1e73d90d6dcb725aaf940c9baa980dcb5077ea6c33ab41c8f0cdecccb8",
+  "sourceRgbaChanged": 0,
+  "paintAdded": 0,
+  "paintDeleted": 0,
+  "independentOwnershipReplay": "PASS",
+  "candidateCap": {
+    "status": "PASS",
+    "wouldMovePixels": 1857,
+    "remainderPixels": 13074,
+    "islands": [
+      {
+        "pixels": 1269,
+        "to": "caudal",
+        "border": {
+          "5": 325,
+          "7": 9
+        }
+      },
+      {
+        "pixels": 5,
+        "to": "caudal",
+        "border": {
+          "5": 7
+        }
+      },
+      {
+        "pixels": 7,
+        "to": "caudal",
+        "border": {
+          "5": 10
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "dorsal",
+        "border": {
+          "4": 2
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "dorsal",
+        "border": {
+          "4": 4
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "caudal",
+        "border": {
+          "5": 3
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "caudal",
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "caudal",
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "caudal",
+        "border": {
+          "5": 2
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "dorsal",
+        "border": {
+          "4": 9
+        }
+      },
+      {
+        "pixels": 20,
+        "to": "spine4",
+        "border": {
+          "8": 26
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "spine4",
+        "border": {
+          "8": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "spine4",
+        "border": {
+          "8": 2
+        }
+      },
+      {
+        "pixels": 47,
+        "to": "spine4",
+        "border": {
+          "7": 7,
+          "8": 24
+        }
+      },
+      {
+        "pixels": 98,
+        "to": "head",
+        "border": {
+          "3": 36,
+          "6": 42
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "spine4",
+        "border": {
+          "8": 2
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "spine4",
+        "border": {
+          "8": 2
+        }
+      },
+      {
+        "pixels": 11,
+        "to": "spine4",
+        "border": {
+          "8": 6,
+          "9": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "spine4",
+        "border": {
+          "8": 2
+        }
+      },
+      {
+        "pixels": 13,
+        "to": "spine4",
+        "border": {
+          "8": 20
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "spine4",
+        "border": {
+          "8": 1
+        }
+      },
+      {
+        "pixels": 35,
+        "to": "spine3",
+        "border": {
+          "9": 8
+        }
+      },
+      {
+        "pixels": 114,
+        "to": "spine3",
+        "border": {
+          "9": 31,
+          "10": 7
+        }
+      },
+      {
+        "pixels": 29,
+        "to": "spine3",
+        "border": {
+          "9": 23
+        }
+      },
+      {
+        "pixels": 5,
+        "to": "spine3",
+        "border": {
+          "9": 6
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "spine2",
+        "border": {
+          "10": 4,
+          "11": 1
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "spine1",
+        "border": {
+          "11": 4
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "spine1",
+        "border": {
+          "11": 7
+        }
+      },
+      {
+        "pixels": 6,
+        "to": "spine1",
+        "border": {
+          "11": 7
+        }
+      },
+      {
+        "pixels": 132,
+        "to": "pectoralNear",
+        "border": {
+          "1": 46,
+          "11": 32
+        }
+      },
+      {
+        "pixels": 5,
+        "to": "spine1",
+        "border": {
+          "11": 6
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "pectoralNear",
+        "border": {
+          "1": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "pectoralNear",
+        "border": {
+          "1": 2
+        }
+      },
+      {
+        "pixels": 3,
+        "to": "pectoralNear",
+        "border": {
+          "1": 6
+        }
+      },
+      {
+        "pixels": 1,
+        "to": "pectoralNear",
+        "border": {
+          "1": 2
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "pectoralFar",
+        "border": {
+          "2": 7
+        }
+      },
+      {
+        "pixels": 4,
+        "to": "pectoralNear",
+        "border": {
+          "1": 7
+        }
+      },
+      {
+        "pixels": 2,
+        "to": "pectoralNear",
+        "border": {
+          "1": 4
+        }
+      },
+      {
+        "pixels": 10,
+        "to": "pectoralNear",
+        "border": {
+          "1": 11
+        }
+      }
+    ],
+    "applied": false
+  },
+  "candidateRemainderComponents": [
+    {
+      "pixels": 11217,
+      "minX": 733,
+      "minY": 511,
+      "maxX": 1090,
+      "maxY": 733
+    },
+    {
+      "pixels": 1269,
+      "minX": 141,
+      "minY": 450,
+      "maxX": 324,
+      "maxY": 599
+    },
+    {
+      "pixels": 132,
+      "minX": 728,
+      "minY": 734,
+      "maxX": 755,
+      "maxY": 759
+    },
+    {
+      "pixels": 114,
+      "minX": 548,
+      "minY": 704,
+      "maxX": 574,
+      "maxY": 712
+    },
+    {
+      "pixels": 98,
+      "minX": 987,
+      "minY": 670,
+      "maxX": 1020,
+      "maxY": 674
+    },
+    {
+      "pixels": 47,
+      "minX": 380,
+      "minY": 654,
+      "maxX": 388,
+      "maxY": 666
+    },
+    {
+      "pixels": 35,
+      "minX": 459,
+      "minY": 688,
+      "maxX": 468,
+      "maxY": 693
+    },
+    {
+      "pixels": 29,
+      "minX": 481,
+      "minY": 711,
+      "maxX": 485,
+      "maxY": 724
+    },
+    {
+      "pixels": 20,
+      "minX": 442,
+      "minY": 570,
+      "maxX": 455,
+      "maxY": 581
+    },
+    {
+      "pixels": 13,
+      "minX": 393,
+      "minY": 680,
+      "maxX": 405,
+      "maxY": 686
+    },
+    {
+      "pixels": 11,
+      "minX": 467,
+      "minY": 678,
+      "maxX": 471,
+      "maxY": 681
+    },
+    {
+      "pixels": 10,
+      "minX": 698,
+      "minY": 804,
+      "maxX": 703,
+      "maxY": 810
+    }
+  ],
+  "unchangedD28Cap": 0.5,
+  "controls": [
+    "source-byte identity",
+    "exact established keyed RGBA",
+    "independent normalized-polygon ownership replay",
+    "no source alpha addition/deletion",
+    "paint deletion rejected",
+    "paint addition rejected",
+    "RGBA mutation rejected",
+    "ownership mutation rejected",
+    "legacy structural-island negative control refused with explicit 0.05; authorized default remains 0.5"
+  ],
+  "sourceControlFrameLimit": null,
+  "qualityAccepted": false,
+  "native": false
+}

@@ -1,0 +1,14 @@
+{
+  "id": "05-moose",
+  "name": "Moose",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-a4fd01be-c5cb-4493-a5f9-7d0798db5509.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "91c68ad20ed635cf49b24a4724dd4ca6c4446d348b4a95b80b253054f7eb589c",
+  "bytes": 1374813,
+  "promptSha256": "2dfd713aa15dcfc5e01589af103b7fbc824d6ecb0875e936ea0f595ea46acb05",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

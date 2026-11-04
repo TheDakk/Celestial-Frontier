@@ -1,0 +1,28 @@
+{
+  "name": "Brown Bear",
+  "masterSha256": "b4b4a70dba8d7fff52b00de9edc38acb5787416b6c16197aa754d324d082de95",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Four distinct planted paw endpoints with visible pale claws, two rounded ears, short attached tail and pronounced shoulder hump are visible. Upper far-leg roots remain behind the body; long shaggy fur obscures individual joints. Both brown-bear catalogue identities need final differentiation review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 225,
+      "y0": 328,
+      "x1": 1068,
+      "y1": 882
+    },
+    "margins": {
+      "left": 225,
+      "right": 185,
+      "top": 328,
+      "bottom": 371
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

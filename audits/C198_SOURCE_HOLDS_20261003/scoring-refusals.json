@@ -1,0 +1,426 @@
+{
+  "schema": "cf.c198-exact-scoring-holds/v1",
+  "rows": [
+    {
+      "tag": "g2c239",
+      "id": "01-clam",
+      "reason": "no-reference: no other hand-authored subject of family bivalve",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/master.png",
+      "sourceSha256": "be35c16758d75f1ccc3410d816678d80b986f4c485c6f2af5ac53a1a2bb0aeaa",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "02-prawn",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-small",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/02-prawn/master.png",
+      "sourceSha256": "2b3f9b74992ef4befb6c66fd9e902839faaac1d161b17d869751e92e8b091672",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "03-shrimp",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-small",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/master.png",
+      "sourceSha256": "c2c1275202841abd425cc9114a7665c62997a5c8bae5dce9d91b1eca560a031f",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "04-snail",
+      "reason": "no-reference: no other hand-authored subject of family gastropod",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/04-snail/master.png",
+      "sourceSha256": "9675e29fd6daaa32eb8592e22f0ce999c51951124f32c77084d0b2735a226d18",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "05-impala",
+      "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 12% paint (reference 71%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/05-impala/master.png",
+      "sourceSha256": "cbab1175a80359433ec8b2630210f8f3aa882453bd8c4bb38dee90d42d0f1f1e",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "06-dog",
+      "reason": "extra-anatomy (unassigned): a top appendage of 16.1% paint that no reference appendage lands on",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/06-dog/master.png",
+      "sourceSha256": "d2c99c68ccc9f2198187deeacb022a8a6c843a5f23435801efb3d291e1262857",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "07-wolverine",
+      "reason": "unexplained-anatomy: 11.0% of the paint lies away from the body and in no part (reference 5.7%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/07-wolverine/master.png",
+      "sourceSha256": "128e59eff1ef8e0c064aacdf659412c939cdb7d2d327ecd4d2b3af4ce8ca5f73",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "08-badger",
+      "reason": "unexplained-anatomy: 10.5% of the paint lies away from the body and in no part (reference 5.7%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/08-badger/master.png",
+      "sourceSha256": "a2b7a71905d5cc7f6dfd73ac4f285d466a44e3e47f4f030b46d48daea43b1a4a",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "09-beaver",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/09-beaver/master.png",
+      "sourceSha256": "479f048c931f46ef1fbde983b53aae7554650035814007ad92a79228b1c9a9f3",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "13-aardvark",
+      "reason": "missing-anatomy: part jaw (jaw) covers 10% paint (reference 31%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/13-aardvark/master.png",
+      "sourceSha256": "c1ce128614ecea72959cbc9afd3b5397d8d2c93973354ccc945432aaa63a30a3",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "14-okapi",
+      "reason": "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/14-okapi/master.png",
+      "sourceSha256": "1da73429a2fdc7c2a626a02d4e35fc9aa8ae661b41a2b52707548529fa9cbd33",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "15-pronghorn",
+      "reason": "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/15-pronghorn/master.png",
+      "sourceSha256": "3e3018a53e15887dfbe6d02b392fe89fe24a17339e54a7a82f5bf588a89fcd46",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "16-springbok",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/16-springbok/master.png",
+      "sourceSha256": "38dcb86243a0deeab8a91c5dee80087034faaea35b9ecff63ed8c9c34328bbb3",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "17-duiker",
+      "reason": "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 39%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/17-duiker/master.png",
+      "sourceSha256": "cecce9f5d0d1882e00a4da072a232d21990938e3f13fe83ed080fc5748e2b01b",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "18-serow",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.0% paint that no reference appendage lands on",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/18-serow/master.png",
+      "sourceSha256": "91d5b1533a4d4de053f6f81730dcc4b41522382a6b16d780f66983427a87ecab",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "19-bison",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 33%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/19-bison/master.png",
+      "sourceSha256": "b774569d4c2e302f0dc8532e29afcb3379f9a6ca62b061c10071651e0f4cc45d",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "20-warthog",
+      "reason": "missing-anatomy: part tail0 (tail0) covers 0% paint (reference 87%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/master.png",
+      "sourceSha256": "93ee8025d14f671dabf179f40898decd695f16387777367c8724674ebe66aacd",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "21-caribou",
+      "reason": "missing-anatomy: part ear-far-root (earFarRoot) covers 13% paint (reference 68%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/21-caribou/master.png",
+      "sourceSha256": "0734724070440ff3873b12b46ba3fabd12f60cabeb143c2d75d925f91da63ac8",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "22-yak",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.9% paint that no reference appendage lands on",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/master.png",
+      "sourceSha256": "31368a7d864635fa150fcf17d3ac36d46aac7c83cc9921d2197d94440c266840",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "23-bactrian-camel",
+      "reason": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/23-bactrian-camel/master.png",
+      "sourceSha256": "c5ce49555bd9eef8b5a4266450231691eda3fb003f8b4feb3a900934f00632d3",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "24-buffalo",
+      "reason": "unexplained-anatomy: 7.6% of the paint lies away from the body and in no part (reference 1.7%)",
+      "source": "audits/C192_CREATURE_SUPPLY_20261002/24-buffalo/master.png",
+      "sourceSha256": "621ad155c78f33340abf4d87b550801f21a736e14bebc25a95f0d903196bfed8",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c239",
+      "id": "12-spotted-hyena",
+      "pattern": "REFUSE",
+      "terminalStatus": "PATTERN_REFUSAL_RETAINED"
+    },
+    {
+      "tag": "g2c239",
+      "id": "10-fishing-cat",
+      "static": "RED",
+      "retainedEvidence": "audits/C198_SOURCE_HOLDS_20261003/retained-scoring/g2c239-10-fishing-cat-static.json",
+      "sha256": "67787b7ceaa74f5bdb1fc2b842c0d70bfe73ea56d119625a2f2c02a16cc902bd",
+      "terminalStatus": "EXACT_REFUSAL_RETAINED"
+    },
+    {
+      "tag": "g2c248",
+      "id": "03-water-vole",
+      "reason": "missing-anatomy: part fore-near-paw (foreNearPaw) covers 13% paint (reference 48%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/03-water-vole/master.png",
+      "sourceSha256": "70181f3643a1746802cb3b695ae557411f22a7e6f5637621caf2082a588247e8",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "04-marsh-rodent",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/04-marsh-rodent/master.png",
+      "sourceSha256": "edb15a41fa3984bdbf2cb015e69e995de942c90557eb157c8e003186b8150518",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "05-elk",
+      "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 20% paint (reference 62%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/05-elk/master.png",
+      "sourceSha256": "53ab3e9c270b19ccbdfed06e6e85fe4b23830fe6927d78375079dc873366984a",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "06-llama",
+      "reason": "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/06-llama/master.png",
+      "sourceSha256": "3081c0fb6da2026f8f9982975f059bea50282c08f389cc5986797dd644130992",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "08-ibex",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 35%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/08-ibex/master.png",
+      "sourceSha256": "5f57a75bb93cddf170a779663db9912413b41a50a43eeb63b97ba917e2ef2e9e",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "11-mountain-tapir",
+      "reason": "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 5.7%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/11-mountain-tapir/master.png",
+      "sourceSha256": "c9e5333ec8eeae2bf47171cc5222f2911cc9075db708f65412117175f4fe42fa",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "12-porcupine",
+      "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 33%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/12-porcupine/master.png",
+      "sourceSha256": "62dd4eb53306d4b75f5abaa0f280cda03b80f78843a678ef62f75e465b24a006",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "13-bee",
+      "reason": "missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/13-bee/master.png",
+      "sourceSha256": "90d94766ef43d77f393c5dd057432f3df990c010d518f130f49a8899bc06e413",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "14-honeybee",
+      "reason": "missing-anatomy: part mandible (mandible) covers 8% paint (reference 32%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/14-honeybee/master.png",
+      "sourceSha256": "116fcac6e33cf5384113705dfdfbc4172c9acd1efd6cb90340d5baac7f5a089d",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "15-bumblebee",
+      "reason": "missing-anatomy: part head (head) covers 31% paint (reference 98%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/15-bumblebee/master.png",
+      "sourceSha256": "3eb05d80e7934cf611378e2bd8a4c7587d54133f2dd84fe359a9b437328cf7bf",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "16-dragonfly",
+      "reason": "extra-anatomy (unassigned): a top appendage of 6.6% paint that no reference appendage lands on",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/16-dragonfly/master.png",
+      "sourceSha256": "0350fe20c53d3e4110c83d4b01599cb1da51352b10c6c015bd34775113e90b1d",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "17-damselfly",
+      "reason": "extra-anatomy (unassigned): a rear appendage of 17.0% paint that no reference appendage lands on",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/17-damselfly/master.png",
+      "sourceSha256": "1e51ec300a93eee25a1cf007bec7bfd29595a8ecf725c292893d7aca754a88de",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "19-diving-beetle",
+      "reason": "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 32% paint (reference 99%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/19-diving-beetle/master.png",
+      "sourceSha256": "bfbefdef9a56c5324d23d68d8cd4bea55aad4132b48d976d11e952e393196297",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "20-stick-insect",
+      "reason": "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 7% paint (reference 26%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/20-stick-insect/master.png",
+      "sourceSha256": "1d0623adc94ff89efe2c2b596bb9a4fb1019cd0e6249bdaab110a6d45ce4615e",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "21-scorpionfly",
+      "reason": "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 12% paint (reference 47%)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/21-scorpionfly/master.png",
+      "sourceSha256": "356644d26574db6e48174c7ac717430b46d1c5c10d379fbc7468cbe09d1f0956",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "23-orchid-bee",
+      "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/23-orchid-bee/master.png",
+      "sourceSha256": "facb72833d8fc4fd4b7bb4f86b702c85d92baf3fe272c5bf01307149aca01708",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "24-leech",
+      "reason": "facing: the mirrored painting matches annelid better (0.0418 < 0.0502)",
+      "source": "audits/C196_CREATURE_SUPPLY_20261003/24-leech/master.png",
+      "sourceSha256": "5890c3418b39794dab2437345f73ca059f7271060a0afe91f0145870c0507061",
+      "terminalStatus": "HISTORICAL_TRANSFER_HOLD_RETAINED",
+      "sourceAnatomyMissingProved": false,
+      "note": "This exact scoring refusal is preserved. It does not prove source anatomy is absent; independent observed authoring or a valid new reference is still required. No gate or inventory was relaxed."
+    },
+    {
+      "tag": "g2c248",
+      "id": "01-capybara",
+      "static": "RED",
+      "retainedEvidence": "audits/C198_SOURCE_HOLDS_20261003/retained-scoring/g2c248-01-capybara-static.json",
+      "sha256": "b1ba95a176c35d22360bada899646de6ba42485701b64394d0c0f6767b64ce61",
+      "terminalStatus": "NEW_ABSENCE_CORRECTION_STILL_RED"
+    },
+    {
+      "tag": "g2c248",
+      "id": "18-water-beetle",
+      "static": "RED",
+      "retainedEvidence": "audits/C198_SOURCE_HOLDS_20261003/retained-scoring/g2c248-18-water-beetle-static.json",
+      "sha256": "42764da8354cd608e0890617cf6d31b6146a1fd840aae0b2ddb4b4e57f68ecb4",
+      "terminalStatus": "EXACT_REFUSAL_RETAINED"
+    },
+    {
+      "tag": "g2c248",
+      "id": "22-carrion-beetle",
+      "static": "INTAKE_REFUSED",
+      "retainedEvidence": "audits/C198_SOURCE_HOLDS_20261003/retained-scoring/g2c248-22-carrion-beetle-intake.log",
+      "sha256": "874fb0b747e563f5d34869d2e3ecb369b09d27710117fd941867851b10f34570",
+      "terminalStatus": "EXACT_REFUSAL_RETAINED"
+    }
+  ],
+  "scope": "Current batch assesses the named source holds and preserves every C239/C248 refusal. This is not a new transfer scoring run or a claim that all historical refusal causes remain current.",
+  "qualityAccepted": false,
+  "native": false
+}
