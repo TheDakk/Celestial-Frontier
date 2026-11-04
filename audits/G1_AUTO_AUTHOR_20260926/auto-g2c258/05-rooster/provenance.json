@@ -1,0 +1,159 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "05-rooster",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "577f8cb725826e3af4458667b6f6cc7706379603d17f4605a252a9b76f295416",
+ "subjectSourceSha256": "74a3b7bb8f5411011c63e0156e90afb0d56a3187af7df78033d517a0fbe14574",
+ "identity": {
+  "name": "Rooster",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Rooster\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2895145487\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"23\"]]]]",
+  "seed": 2895145487,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "eagle",
+  "authoringSha256": "49b078decfea139afaa0ff03b1701b4ff60b7f200457d3173ea7da9c44e741cf",
+  "masterSha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+ },
+ "habitat": {
+  "profileId": "ground-foraging-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "2458c82bbd8f37b007dbba5ae84cc60975cf0f4ecad7d901ee633e684483d7c2",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group ground-foraging-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0887,
+     "class": "top",
+     "attach": {
+      "x": 284.6,
+      "y": 140.4,
+      "relX": 0.91,
+      "relY": 0.07
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0412,
+     "class": "rear",
+     "attach": {
+      "x": 149.5,
+      "y": 130,
+      "relX": 0.17,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0252,
+     "class": "other",
+     "attach": {
+      "x": 117,
+      "y": 161.7,
+      "relX": -0.01,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0062,
+     "class": "front",
+     "attach": {
+      "x": 303,
+      "y": 187.5,
+      "relX": 1.01,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0125,
+     "class": "limb-down",
+     "attach": {
+      "x": 117.6,
+      "y": 197.9,
+      "relX": 0,
+      "relY": 0.48
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0359,
+     "class": "limb-down",
+     "attach": {
+      "x": 219,
+      "y": 270,
+      "relX": 0.55,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0305,
+     "class": "limb-down",
+     "attach": {
+      "x": 248,
+      "y": 270,
+      "relX": 0.71,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "other": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "eagle",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "rear": 1,
+    "other": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "legNear+legFar"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}
