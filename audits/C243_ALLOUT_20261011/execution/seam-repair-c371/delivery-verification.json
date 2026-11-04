@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "finalFilms": 8,
+  "finalStills": 40,
+  "ready": 6,
+  "held": 2,
+  "canonicalMarkersAnswered": 24,
+  "reviewScale": 2,
+  "exactReviewHashes": 40,
+  "newHelperSyntax": "PASS",
+  "sharedLockPresent": false,
+  "rootValidate": "root-validate.log:PASS1010 renders/50unchanged probes",
+  "noRuntimeChanges": true
+}

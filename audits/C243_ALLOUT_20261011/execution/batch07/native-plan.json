@@ -1,0 +1,24 @@
+[
+  {
+    "id": "c243b07r1c1-01-abalone",
+    "packetId": "c243b07r1c1-01-abalone",
+    "name": "Abalone",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-01-abalone/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/c243b07r1c1-01-abalone-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/native/c243b07r1c1-01-abalone",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/native/c243b07r1c1-01-abalone/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-01-abalone/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r1c1-01-abalone"
+  },
+  {
+    "id": "c243b07r1c1-05-limpet",
+    "packetId": "c243b07r1c1-05-limpet",
+    "name": "Limpet",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-05-limpet/fit",
+    "script": "audits/C243_ALLOUT_20261011/execution/batch07/native-scripts/c243b07r1c1-05-limpet-script.json",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/batch07/native/c243b07r1c1-05-limpet",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/native/c243b07r1c1-05-limpet/report.json",
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-05-limpet/score.json",
+    "packet": "audits/C243_ALLOUT_20261011/execution/batch07/c243b07r1c1-05-limpet"
+  }
+]

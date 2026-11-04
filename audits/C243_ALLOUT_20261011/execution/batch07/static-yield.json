@@ -1,0 +1,31 @@
+{
+  "scope": "Static diagnostic aggregate; admission stays Claude. Unchanged baseline plus new eligible selected sources and bounded class variants. Camel follow-up separate.",
+  "baselinePackets": 63,
+  "baselinePassPackets": 6,
+  "beforeSpecies": 4,
+  "afterSpecies": 11,
+  "gained": [
+    "Abalone",
+    "Bison",
+    "Dog",
+    "Forest Elephant",
+    "Goat",
+    "Limpet",
+    "Takin"
+  ],
+  "lost": [],
+  "passingSpecies": [
+    "Abalone",
+    "Bison",
+    "Buffalo",
+    "Dog",
+    "Forest Elephant",
+    "Goat",
+    "Kinkajou",
+    "Limpet",
+    "Okapi",
+    "Takin",
+    "Water Buffalo"
+  ],
+  "camelFollowup": "PASS_STATIC"
+}

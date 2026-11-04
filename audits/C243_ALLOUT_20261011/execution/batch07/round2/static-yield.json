@@ -1,0 +1,43 @@
+{
+  "scope": "60 baseline pilot entries (57 scored,three pattern skips) plus27 new sources; diagnostic only, admission stays Claude. Prior bounded Forest Elephant/Goat/Takin class passes retained separately.",
+  "staticBefore": 0,
+  "staticAfter": 5,
+  "before": [],
+  "after": [
+    "Conch",
+    "Forest Elephant",
+    "Giant Salamander",
+    "Takin",
+    "Wall Lizard"
+  ],
+  "gained": [
+    "Conch",
+    "Forest Elephant",
+    "Giant Salamander",
+    "Takin",
+    "Wall Lizard"
+  ],
+  "lost": [],
+  "eligibleNewPass": [
+    "Conch",
+    "Forest Elephant",
+    "Giant Salamander",
+    "Takin"
+  ],
+  "sourceHolds": [
+    "Giant Salamander C1 reversed toe counts",
+    "Goat C2 thin pink straight lines"
+  ],
+  "repairedPass": [
+    "Conch",
+    "Forest Elephant",
+    "Giant Salamander",
+    "Takin"
+  ],
+  "repairedRed": [
+    "Wall Lizard"
+  ],
+  "nativeQueue": 5,
+  "skipped": 17,
+  "lateIdentityHold": "Wall Lizard canonical tail marker missing; native chain completed per every-native-PASS rule, never READY"
+}

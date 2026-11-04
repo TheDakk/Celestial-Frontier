@@ -1,0 +1,1874 @@
+{
+  "status": "RESOURCE_BLOCKED_NOT_COMPLETE",
+  "certified": 385,
+  "acceptedPendingCertification": 13,
+  "uncoveredIncludingPendingExclusion": 233,
+  "reservation": "C344 released by C348",
+  "freeGiB": 34.26,
+  "species": [
+    {
+      "name": "Dog",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Kinkajou",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Coati",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: facing: the mirrored painting matches quadruped better (0.0206 < 0.0441); wrong-family: primate matches clearly better (0.0270 < 0.0441); extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on; round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Porcupine",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%); missing-anatomy: part tail-tip (tail3) covers 10% paint (reference 39%); missing-anatomy: part tail-root (tail0) covers 26% paint (reference 88%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Squirrel",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: facing: the mirrored painting matches quadruped better (0.0201 < 0.0244); extra-anatomy (unassigned): a top appendage of 40.7% paint that no reference appendage lands on; missing-anatomy: part root (root) was transferred off the canvas (area < 1 px\u00b2); missing-anatomy: part root (root) covers 0% paint (reference 100%); missing-anatomy: part tail3 (tail3) covers 14% paint (reference 45%); unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 5.7%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Vole",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Mole",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 24%); unexplained-anatomy: 13.1% of the paint lies away from the body and in no part (reference 5.1%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Shrew",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Water Vole",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part fore-near-paw (foreNearPaw) covers 11% paint (reference 48%); missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 24%); unexplained-anatomy: 10.9% of the paint lies away from the body and in no part (reference 5.1%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Giant Anteater",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%); missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 69%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Pangolin",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%); unexplained-anatomy: 10.3% of the paint lies away from the body and in no part (reference 1.9%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Echidna",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%); missing-anatomy: part ear-far-root (earFarRoot) covers 0% paint (reference 67%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Snowshoe Hare",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing admitted visual/static hold; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Jerboa",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Kangaroo",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Wallaby",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Gorilla",
+      "family": "primate",
+      "batch": 6,
+      "reason": "Existing admitted visual/static hold; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Chimpanzee",
+      "family": "primate",
+      "batch": 6,
+      "reason": "Existing intake refusal: missing-anatomy, unexplained-anatomy, wrong-family; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Orangutan",
+      "family": "primate",
+      "batch": 6,
+      "reason": "Existing admitted visual/static hold; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Spider Monkey",
+      "family": "primate",
+      "batch": 6,
+      "reason": "Existing admitted visual/static hold; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Baboon",
+      "family": "primate",
+      "batch": 6,
+      "reason": "Existing intake refusal: missing-anatomy, unexplained-anatomy; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Monkey",
+      "family": "primate",
+      "batch": 6,
+      "reason": "Existing admitted visual/static hold; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Lemur",
+      "family": "primate",
+      "batch": 6,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), unexplained-anatomy; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Gibbon",
+      "family": "primate",
+      "batch": 6,
+      "reason": "Existing intake refusal: unexplained-anatomy; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Mandrill",
+      "family": "primate",
+      "batch": 6,
+      "reason": "Existing intake refusal: unexplained-anatomy; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Marmoset",
+      "family": "primate",
+      "batch": 6,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (ground), unexplained-anatomy, wrong-family; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Water Buffalo",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Takin",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Ibex",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part ear-near-tip (earNearTip) covers 8% paint (reference 62%); unexplained-anatomy: 6.4% of the paint lies away from the body and in no part (reference 0.0%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Buffalo",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Bison",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Yak",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "C250: fine-fur magenta, 9 pixels; later class repair/round2 pending",
+      "round1Candidates": 1,
+      "round2Complete": false
+    },
+    {
+      "name": "Goat",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Wild Horse",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part tail3 (tail3) covers 13% paint (reference 39%); missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 17% paint (reference 70%); missing-anatomy: part fore-far-paw (foreFarPaw) covers 20% paint (reference 57%); missing-anatomy: part ear-far-tip (earFarTip) covers 5% paint (reference 23%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Camel",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "C250: jaw fragment and loose head fringe during late victory; later class repair/round2 pending",
+      "round1Candidates": 2,
+      "round2Complete": false
+    },
+    {
+      "name": "Dromedary Camel",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Okapi",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Warthog",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part tail0 (tail0) covers 8% paint (reference 87%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Forest Elephant",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Fruit Bat",
+      "family": "flyer-membrane",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Insect-Eating Bat",
+      "family": "flyer-membrane",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Vampire Bat",
+      "family": "flyer-membrane",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Walrus",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 51%); missing-anatomy: part jaw (jaw) covers 18% paint (reference 53%); unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 3.4%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Seal",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 9% paint (reference 71%); missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 43%); missing-anatomy: part hind-far-paw (hindFarPaw) covers 10% paint (reference 38%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Fur Seal",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 44%); unexplained-anatomy: 13.6% of the paint lies away from the body and in no part (reference 8.6%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Sea Lion",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%); missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 61%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Narwhal",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part dorsal (dorsal) covers 4% paint (reference 58%); unexplained-anatomy: 8.4% of the paint lies away from the body and in no part (reference 4.0%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "River Dolphin",
+      "family": "fish",
+      "batch": 2,
+      "reason": "C251: magenta, 14 pixels; melon hold remains; later class repair/round2 pending",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Pilot Whale",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: unexplained-anatomy: 9.5% of the paint lies away from the body and in no part (reference 3.0%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Beaked Whale",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 2,
+      "round2Complete": false
+    },
+    {
+      "name": "Blue Whale",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: extra-anatomy (unassigned): a front appendage of 6.3% paint that no reference appendage lands on; round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Humpback Whale",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Gray Whale",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: extra-anatomy (unassigned): a front appendage of 7.4% paint that no reference appendage lands on; round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Whale",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on; missing-anatomy: part tail-peduncle (spine5) covers 8% paint (reference 18%); unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 3.0%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Manatee",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: extra-anatomy (unassigned): a front appendage of 8.8% paint that no reference appendage lands on; round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Eagle",
+      "family": "biped-bird",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 2,
+      "round2Complete": false
+    },
+    {
+      "name": "Owl",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Osprey",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing admitted visual/static hold; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Ostrich",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Cassowary",
+      "family": "biped-bird",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on; round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Kiwi",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: facing, unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Kakapo",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing admitted visual/static hold; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Guillemot",
+      "family": "biped-bird",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part near-shin (legNearAnkle) covers 16% paint (reference 84%); unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 2.4%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Grebe",
+      "family": "biped-bird",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part near-shin (legNearAnkle) covers 27% paint (reference 84%); unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 2.4%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Egret",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing admitted visual/static hold; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Snipe",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Godwit",
+      "family": "biped-bird",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part near-thigh (legNearKnee) covers 0% paint (reference 67%); missing-anatomy: part far-thigh (legFarKnee) covers 18% paint (reference 72%); missing-anatomy: part tail (tailFan) covers 23% paint (reference 89%); unexplained-anatomy: 6.4% of the paint lies away from the body and in no part (reference 2.4%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Peacock",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy, unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Secretary Bird",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Macaw",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing admitted visual/static hold; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Kingfisher",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Tern",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Swift",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned); batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Pelican",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (ground), unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Frigatebird",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing admitted visual/static hold; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Tropicbird",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy, unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Cockatoo",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing admitted visual/static hold; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Kookaburra",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing admitted visual/static hold; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Hoatzin",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing admitted visual/static hold; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Quetzal",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Boa",
+      "family": "serpent",
+      "batch": 6,
+      "reason": "Existing intake refusal: ; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Cobra",
+      "family": "serpent",
+      "batch": 6,
+      "reason": "Existing intake refusal: not x-monotone; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Rattlesnake",
+      "family": "serpent",
+      "batch": 6,
+      "reason": "Existing intake refusal: tail not tapered; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Mountain Viper",
+      "family": "serpent",
+      "batch": 6,
+      "reason": "Existing intake refusal: ; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Snake",
+      "family": "serpent",
+      "batch": 6,
+      "reason": "Existing intake refusal: body not continuous; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Anole",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Skink",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 2.2%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Wall Lizard",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Whiptail",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy: part hind-far-knee (hindFarKnee) covers 23% paint (reference 94%); missing-anatomy: part hind-far-root (hindFarRoot) covers 5% paint (reference 100%); missing-anatomy: part tail3 (tail3) covers 7% paint (reference 10%); unexplained-anatomy: 7.1% of the paint lies away from the body and in no part (reference 2.2%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Frilled Lizard",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 18% paint (reference 56%); missing-anatomy: part fore-far-knee (foreFarKnee) covers 16% paint (reference 76%); unexplained-anatomy: 19.6% of the paint lies away from the body and in no part (reference 8.3%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Tortoise",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Box Turtle",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Pond Turtle",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part near-front-shin-fringe (foreNearKnee) covers 14% paint (reference 67%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Snapping Turtle",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; unexplained-anatomy: 12.5% of the paint lies away from the body and in no part (reference 8.3%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Softshell Turtle",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part near-front-shin-fringe (foreNearKnee) covers 4% paint (reference 67%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Turtle",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part near-front-shin-fringe (foreNearKnee) covers 8% paint (reference 67%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Sea Turtle",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part hind-far-paw (hindFarPaw) covers 0% paint (reference 24%); missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 14% paint (reference 56%); missing-anatomy: part fore-near-paw (foreNearPaw) covers 4% paint (reference 32%); missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 0% paint (reference 71%); missing-anatomy: part fore-near-knee (foreNearKnee) covers 23% paint (reference 66%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Tree Frog",
+      "family": "hopper",
+      "batch": null,
+      "reason": "No delivered master; final new-source stage not started (resource stop)",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Poison Dart Frog",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (family floor), wrong-family; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Bullfrog",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing intake refusal: missing-anatomy, wrong-family; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Glass Frog",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (family floor), unexplained-anatomy, wrong-family; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Frog",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (family floor), unexplained-anatomy, wrong-family; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Wood Frog",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (family floor), wrong-family; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Toad",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (family floor), wrong-family; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Cave Frog",
+      "family": "hopper",
+      "batch": 5,
+      "reason": "Existing intake refusal: missing-anatomy (family floor), unexplained-anatomy, wrong-family; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Giant Salamander",
+      "family": "quadruped",
+      "batch": 7,
+      "reason": "Existing admitted visual/static hold; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Olm",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (sprawl): four distinct painted fore/hind near/far limb witnesses required; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part hind-near-paw (hindNearPaw) covers 15% paint (reference 53%); missing-anatomy: part hind-far-paw (hindFarPaw) covers 3% paint (reference 53%); missing-anatomy: part fore-near-paw (foreNearPaw) covers 18% paint (reference 57%); missing-anatomy: part fore-near-knee (foreNearKnee) covers 27% paint (reference 90%); missing-anatomy: part fore-far-knee (foreFarKnee) covers 16% paint (reference 59%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Blind Salamander",
+      "family": "quadruped",
+      "batch": 1,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 68%); missing-anatomy: part hind-near-knee (hindNearKnee) covers 22% paint (reference 70%); missing-anatomy: part fore-near-paw (foreNearPaw) covers 17% paint (reference 66%); missing-anatomy: part hind-far-paw (hindFarPaw) covers 21% paint (reference 63%); missing-anatomy: part hind-far-knee (hindFarKnee) covers 28% paint (reference 80%); missing-anatomy: part fore-far-paw (foreFarPaw) covers 22% paint (reference 71%); missing-anatomy: part fore-far-knee (foreFarKnee) covers 26% paint (reference 78%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Caecilian",
+      "family": "serpent",
+      "batch": 6,
+      "reason": "Existing intake refusal: facing; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Catfish",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part near-pectoral (pectoralNear) covers 20% paint (reference 86%); missing-anatomy: part far-pectoral (pectoralFar) covers 20% paint (reference 77%); missing-anatomy: part jaw (jaw) covers 5% paint (reference 16%); missing-anatomy: part root (root) covers 0% paint (reference 100%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Lungfish",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (family floor): the largest rear appendage is 6.1% of the paint; every same-family reference shows at least 10.0%; round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Lionfish",
+      "family": "fish",
+      "batch": 2,
+      "reason": "C251: magenta, 70 pixels; later class repair/round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Flying Fish",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 1,
+      "round2Complete": false
+    },
+    {
+      "name": "Fangtooth",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: unexplained-anatomy: 12.5% of the paint lies away from the body and in no part (reference 4.6%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Dragonfish",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 4.6%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Oarfish",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part far-pectoral (pectoralFar) covers 1% paint (reference 69%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Tripod Fish",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: wrong-family: arachnid matches clearly better (0.0291 < 0.0485); extra-anatomy (unassigned): a front appendage of 17.1% paint that no reference appendage lands on; missing-anatomy: part jaw (jaw) covers 3% paint (reference 64%); missing-anatomy: part head (head) covers 22% paint (reference 84%); missing-anatomy: part caudal (caudal) covers 15% paint (reference 73%); missing-anatomy: part body-3 (spine3) covers 4% paint (reference 82%); missing-anatomy: part body-4 (spine4) covers 15% paint (reference 96%); missing-anatomy: part body-5 (spine5) covers 8% paint (reference 43%); unexplained-anatomy: 18.9% of the paint lies away from the body and in no part (reference 4.6%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Moray Eel",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: wrong family: length/thickness 7.53 < 8; round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Gulper Eel",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part segment-9 owns 1.40 % of the paint (reference 5.96 %); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Lamprey",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 2,
+      "round2Complete": false
+    },
+    {
+      "name": "Lancelet",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part jaw (jaw) covers 12% paint (reference 56%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Seahorse",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (family floor): the largest rear appendage is 1.4% of the paint; every same-family reference shows at least 10.0%; missing-anatomy: part root (root) covers 0% paint (reference 100%); unexplained-anatomy: 19.8% of the paint lies away from the body and in no part (reference 4.0%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Pipefish",
+      "family": "fish",
+      "batch": 2,
+      "reason": "C251: magenta, 10 pixels; later class repair/round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Ray",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: unexplained-anatomy: 13.4% of the paint lies away from the body and in no part (reference 6.9%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Manta Ray",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (family floor): the largest rear appendage is 4.9% of the paint; every same-family reference shows at least 10.0%; missing-anatomy: part caudal (caudal) covers 4% paint (reference 63%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Eagle Ray",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part rear-body (spine4) covers 13% paint (reference 48%); missing-anatomy: part pelvic-body (spine3) covers 21% paint (reference 65%); unexplained-anatomy: 16.8% of the paint lies away from the body and in no part (reference 6.9%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Stingray",
+      "family": "fish",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: unexplained-anatomy: 18.0% of the paint lies away from the body and in no part (reference 6.9%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Squid",
+      "family": "cephalopod",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Octopus",
+      "family": "cephalopod",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Cuttlefish",
+      "family": "cephalopod",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Giant Octopus",
+      "family": "cephalopod",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Giant Squid",
+      "family": "cephalopod",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Vampire Squid",
+      "family": "cephalopod",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Deep-Sea Octopus",
+      "family": "cephalopod",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Nautilus",
+      "family": "cephalopod",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Jellyfish",
+      "family": "radial",
+      "batch": null,
+      "reason": "No delivered master; final new-source stage not started (resource stop)",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Portuguese Man-of-War",
+      "family": "radial",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Sea Anemone",
+      "family": "radial",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Coral",
+      "family": "radial",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Cold-Water Coral",
+      "family": "radial",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Deep-Water Coral",
+      "family": "radial",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Comb Jelly",
+      "family": "radial",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Starfish",
+      "family": "radial",
+      "batch": null,
+      "reason": "No delivered master; final new-source stage not started (resource stop)",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Sea Urchin",
+      "family": "radial",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Sea Cucumber",
+      "family": "radial",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Sand Dollar",
+      "family": "radial",
+      "batch": 5,
+      "reason": "Existing intake refusal: no-reference; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Sea Squirt",
+      "family": "sessile-filter",
+      "batch": 7,
+      "reason": "Existing intake refusal: missing-anatomy (family floor), unexplained-anatomy; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Salp",
+      "family": "colonial-filter",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Pyrosome",
+      "family": "colonial-filter",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Oyster",
+      "family": "bivalve",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Clam",
+      "family": "bivalve",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Razor Clam",
+      "family": "bivalve",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Giant Clam",
+      "family": "bivalve",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Scallop",
+      "family": "bivalve",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Land Snail",
+      "family": "gastropod",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Limpet",
+      "family": "gastropod",
+      "batch": 7,
+      "reason": "Existing intake refusal: wrong-family; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Chiton",
+      "family": "gastropod",
+      "batch": 7,
+      "reason": "Existing intake refusal: wrong-family; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Conch",
+      "family": "gastropod",
+      "batch": 7,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned); batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Abalone",
+      "family": "gastropod",
+      "batch": 7,
+      "reason": "Existing intake refusal: missing-anatomy; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Ice Worm",
+      "family": "annelid",
+      "batch": 5,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), facing, missing-anatomy, wrong-family; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Marine Worm",
+      "family": "annelid",
+      "batch": 5,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), facing, missing-anatomy; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Tube Worm",
+      "family": "annelid",
+      "batch": 6,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), missing-anatomy, missing-anatomy (family floor), wrong-family; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Polychaete Worm",
+      "family": "annelid",
+      "batch": 5,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), facing, missing-anatomy; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Giant Tube Worm",
+      "family": "annelid",
+      "batch": 5,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), missing-anatomy, missing-anatomy (family floor), unexplained-anatomy; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Scale Worm",
+      "family": "annelid",
+      "batch": 5,
+      "reason": "Existing intake refusal: missing-anatomy, wrong-family; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Flatworm",
+      "family": "annelid",
+      "batch": 5,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), facing, missing-anatomy; batch5 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Freshwater Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Mud Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Vent Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Fiddler Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Crayfish",
+      "family": "crustacean-clawed",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Hermit Crab",
+      "family": "crustacean-clawed",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Lobster",
+      "family": "crustacean-clawed",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Cave Shrimp",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Freshwater Shrimp",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Shrimp",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), missing-anatomy, unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Vent Shrimp",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Brine Shrimp",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), missing-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Water Flea",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (family floor), unexplained-anatomy, wrong-family; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Krill",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), missing-anatomy, unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Copepod",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), missing-anatomy, wrong-family; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Amphipod",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy, wrong-family; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Giant Isopod",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (family floor), unexplained-anatomy, wrong-family; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Isopod",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), missing-anatomy, unexplained-anatomy, wrong-family; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Fairy Shrimp",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy (family floor), unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Tadpole Shrimp",
+      "family": "crustacean-small",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (family floor), unexplained-anatomy, wrong-family; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Barnacle",
+      "family": "barnacle",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Horseshoe Crab",
+      "family": "xiphosuran",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Tarantula",
+      "family": "arachnid",
+      "batch": null,
+      "reason": "No delivered master; final new-source stage not started (resource stop)",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Scorpion",
+      "family": "arachnid",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Deer Tick",
+      "family": "arachnid",
+      "batch": 6,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), facing; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Camel Spider",
+      "family": "arachnid",
+      "batch": 6,
+      "reason": "Existing admitted visual/static hold; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Harvestman",
+      "family": "arachnid",
+      "batch": 6,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), missing-anatomy, missing-anatomy (ground); batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Pseudoscorpion",
+      "family": "arachnid",
+      "batch": 6,
+      "reason": "Existing intake refusal: missing-anatomy, missing-anatomy (family floor); batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Mite",
+      "family": "arachnid",
+      "batch": 6,
+      "reason": "Existing intake refusal: extra-anatomy (unassigned), missing-anatomy (family floor), wrong-family; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Sea Spider",
+      "family": "arachnid",
+      "batch": 6,
+      "reason": "Existing intake refusal: missing-anatomy, unexplained-anatomy; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Centipede",
+      "family": "myriapod",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Giant Centipede",
+      "family": "myriapod",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Millipede",
+      "family": "myriapod",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Leafcutter Ant",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part hind-far-upper (legHindFarKnee) covers 16% paint (reference 62%); unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 1.0%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Mantis",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part mid-near-lower (legMidNearFoot) covers 13% paint (reference 39%); missing-anatomy: part mid-far-lower (legMidFarFoot) covers 17% paint (reference 51%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 8% paint (reference 47%); missing-anatomy: part mid-near-upper (legMidNearKnee) covers 0% paint (reference 68%); missing-anatomy: part mid-far-upper (legMidFarKnee) covers 8% paint (reference 96%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 60%); missing-anatomy: part mandible (mandible) covers 14% paint (reference 60%); unexplained-anatomy: 21.0% of the paint lies away from the body and in no part (reference 0.3%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Locust",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Grasshopper",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 37%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 25% paint (reference 77%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Cricket",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part front-near-lower (legFrontNearFoot) covers 0% paint (reference 40%); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%); missing-anatomy: part antenna-far (antennaFar) covers 2% paint (reference 25%); missing-anatomy: part antenna-near (antennaNear) covers 2% paint (reference 31%); missing-anatomy: part mandible (mandible) covers 0% paint (reference 32%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Ant",
+      "family": "insect",
+      "batch": 2,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy (family floor): the largest rear appendage is 2.5% of the paint; every same-family reference shows at least 3.8%; missing-anatomy: part hind-near-lower (legHindNearFoot) covers 14% paint (reference 42%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 14% paint (reference 40%); missing-anatomy: part hind-far-lower (legHindFarFoot) covers 8% paint (reference 25%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Honeybee",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 2,
+      "round2Complete": false
+    },
+    {
+      "name": "Bumblebee",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Ladybug",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Bee",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Orchid Bee",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 40%); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 14% paint (reference 88%); missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%); missing-anatomy: part mandible (mandible) covers 10% paint (reference 32%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Water Beetle",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Stonefly",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 2,
+      "round2Complete": false
+    },
+    {
+      "name": "Dragonfly",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: extra-anatomy (unassigned): a top appendage of 16.7% paint that no reference appendage lands on; missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2; missing-anatomy: part front-near-lower (legFrontNearFoot) covers 7% paint (reference 40%); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 8% paint (reference 88%); missing-anatomy: part hind-far-lower (legHindFarFoot) covers 7% paint (reference 25%); missing-anatomy: part mandible (mandible) covers 7% paint (reference 32%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Damselfly",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 29%); missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%); missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 0% paint (reference 29%); missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 4% paint (reference 25%); missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 6% paint (reference 31%); missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 8% paint (reference 32%); missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 13% paint (reference 56%); missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 11% paint (reference 52%); missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 16% paint (reference 67%); missing-anatomy: part head (head) covers 0% paint (reference 88%); unexplained-anatomy: 11.3% of the paint lies away from the body and in no part (reference 1.6%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Diving Beetle",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part front-far-lower (legFrontFarFoot) covers 13% paint (reference 37%); missing-anatomy: part mandible (mandible) covers 6% paint (reference 32%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Cave Cricket",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part mid-near-lower (legMidNearFoot) covers 7% paint (reference 39%); missing-anatomy: part mid-far-lower (legMidFarFoot) covers 16% paint (reference 51%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 2% paint (reference 47%); missing-anatomy: part antenna-far (antennaFar) covers 3% paint (reference 19%); missing-anatomy: part antenna-near (antennaNear) covers 4% paint (reference 18%); missing-anatomy: part mandible (mandible) covers 4% paint (reference 60%); missing-anatomy: part head (head) covers 10% paint (reference 86%); unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 0.3%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Carrion Beetle",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 1,
+      "round2Complete": false
+    },
+    {
+      "name": "Stick Insect",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part hind-near-lower (legHindNearFoot) covers 13% paint (reference 42%); missing-anatomy: part mid-near-lower (legMidNearFoot) covers 9% paint (reference 36%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 10% paint (reference 40%); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 5% paint (reference 88%); missing-anatomy: part hind-far-lower (legHindFarFoot) covers 1% paint (reference 25%); missing-anatomy: part mid-far-lower (legMidFarFoot) covers 2% paint (reference 31%); missing-anatomy: part front-far-lower (legFrontFarFoot) covers 0% paint (reference 37%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 12% paint (reference 77%); missing-anatomy: part hind-far-upper (legHindFarKnee) covers 10% paint (reference 62%); missing-anatomy: part mandible (mandible) covers 0% paint (reference 32%); missing-anatomy: part head (head) covers 23% paint (reference 98%); unexplained-anatomy: 14.4% of the paint lies away from the body and in no part (reference 1.0%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Dobsonfly",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part hind-far-lower (legHindFarFoot) covers 5% paint (reference 49%); missing-anatomy: part mid-near-lower (legMidNearFoot) covers 11% paint (reference 39%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 47%); missing-anatomy: part front-far-lower (legFrontFarFoot) covers 5% paint (reference 46%); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 21% paint (reference 82%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 60%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Butterfly",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: facing: the mirrored painting matches insect better (0.0284 < 0.0405); missing-anatomy: part mid-far-lower (legMidFarFoot) covers 10% paint (reference 31%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 17% paint (reference 77%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Mosquito",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part mid-near-lower (legMidNearFoot) covers 10% paint (reference 36%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 11% paint (reference 40%); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 20% paint (reference 88%); missing-anatomy: part hind-far-lower (legHindFarFoot) covers 3% paint (reference 25%); missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 31%); missing-anatomy: part front-far-lower (legFrontFarFoot) covers 3% paint (reference 37%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 4% paint (reference 77%); missing-anatomy: part hind-far-upper (legHindFarKnee) covers 15% paint (reference 62%); missing-anatomy: part antenna-near (antennaNear) covers 2% paint (reference 31%); missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%); missing-anatomy: part membrane-near (wingNear) covers 2% paint (reference 89%); unexplained-anatomy: 9.1% of the paint lies away from the body and in no part (reference 1.0%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Moth",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 1,
+      "round2Complete": false
+    },
+    {
+      "name": "Fly",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Mayfly",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: facing: the mirrored painting matches insect better (0.0358 < 0.0430); missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 26%); missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%); missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 8% paint (reference 29%); missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 8% paint (reference 25%); missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 3% paint (reference 31%); missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 9% paint (reference 40%); missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 3% paint (reference 32%); missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 6% paint (reference 44%); unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 1.6%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Scorpionfly",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: extra-anatomy (unassigned): a top appendage of 10.2% paint that no reference appendage lands on; extra-anatomy (unassigned): a rear appendage of 7.2% paint that no reference appendage lands on; missing-anatomy: part hind-far-lower (legHindFarFoot) covers 16% paint (reference 49%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 10% paint (reference 47%); missing-anatomy: part antenna-near (antennaNear) covers 5% paint (reference 18%); unexplained-anatomy: 9.4% of the paint lies away from the body and in no part (reference 0.3%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Thrips",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 1,
+      "round2Complete": false
+    },
+    {
+      "name": "Water Strider",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on; extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on; missing-anatomy: part hind-near-lower (legHindNearFoot) covers 12% paint (reference 42%); missing-anatomy: part mid-near-lower (legMidNearFoot) covers 1% paint (reference 36%); missing-anatomy: part front-near-lower (legFrontNearFoot) covers 5% paint (reference 40%); missing-anatomy: part hind-near-upper (legHindNearKnee) covers 1% paint (reference 100%); missing-anatomy: part mid-near-upper (legMidNearKnee) covers 20% paint (reference 99%); missing-anatomy: part front-near-upper (legFrontNearKnee) covers 11% paint (reference 88%); missing-anatomy: part front-far-lower (legFrontFarFoot) covers 3% paint (reference 37%); missing-anatomy: part front-far-upper (legFrontFarKnee) covers 1% paint (reference 77%); missing-anatomy: part mid-far-upper (legMidFarKnee) covers 0% paint (reference 81%); missing-anatomy: part hind-far-upper (legHindFarKnee) covers 8% paint (reference 62%); missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 25%); missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%); missing-anatomy: part head (head) covers 15% paint (reference 98%); missing-anatomy: part membrane-near (wingNear) covers 20% paint (reference 89%); missing-anatomy: part thorax (thorax) covers 8% paint (reference 99%); missing-anatomy: part abdomen (abdomen) covers 7% paint (reference 96%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Giant Water Bug",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Round1 not delivered; latest REFUSE/None: missing-anatomy: part antenna-far (antennaFar) covers 4% paint (reference 25%); missing-anatomy: part antenna-near (antennaNear) covers 6% paint (reference 31%); round2 pending",
+      "round1Candidates": 3,
+      "round2Complete": false
+    },
+    {
+      "name": "Fly Larvae",
+      "family": "larva",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Springtail",
+      "family": "insect",
+      "batch": 3,
+      "reason": "Batch3 original native PASS; AI finish resource-blocked, no finished artifact/rebind/finished film or admission",
+      "round1Candidates": 1,
+      "round2Complete": false
+    },
+    {
+      "name": "Tardigrade",
+      "family": "lobopod",
+      "batch": 7,
+      "reason": "Existing intake refusal: no-reference; batch7 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Pheasant",
+      "family": "biped-bird",
+      "batch": 4,
+      "reason": "Existing intake refusal: missing-anatomy, unexplained-anatomy; batch4 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    },
+    {
+      "name": "Coconut Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "reason": "Existing intake refusal: no-reference; batch6 not started because AI resource stop blocks the continuous finish pipeline",
+      "round1Candidates": 0,
+      "round2Complete": false
+    }
+  ]
+}

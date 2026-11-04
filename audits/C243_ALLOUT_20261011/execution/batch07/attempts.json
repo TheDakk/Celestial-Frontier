@@ -1,0 +1,1811 @@
+[
+  {
+    "name": "Abalone",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-01-abalone",
+    "masterSha256": "164c80945b16468f4106ab982b19d58fdd94948afa38c5170cdca155126f2bf4",
+    "promptSha256": "c59f06e0d8c70a4b575f30e5776bae16312f0949d53b1723cbd5f81982f0d83a",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 228,
+        "y0": 417,
+        "x1": 1096,
+        "y1": 828
+      },
+      "margins": {
+        "left": 228,
+        "right": 157,
+        "top": 417,
+        "bottom": 425
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-01-abalone/score.json",
+    "selected": true,
+    "nativePending": true
+  },
+  {
+    "name": "Conch",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-03-conch",
+    "masterSha256": "c9d166fbf52612a0137d252e994941f56afe9d2b3d745f105743a9562e9f8024",
+    "promptSha256": "3d5d68fb344618a79aa8b9755e60706d4f1e88e87268933d774598dd6ee259a9",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 274,
+        "y0": 418,
+        "x1": 945,
+        "y1": 819
+      },
+      "margins": {
+        "left": 274,
+        "right": 308,
+        "top": 418,
+        "bottom": 434
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "extra-anatomy (unassigned): a rear appendage of 7.1% paint that no reference appendage lands on"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-03-conch/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Land Snail",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-04-land-snail",
+    "masterSha256": "e71421cd62e55c9422e146d11c374c41d2addf1eeee32f98dc3dd659dc2df7bf",
+    "promptSha256": "adf15a4881cd546717c64779367d933450b65d3848635e8353e84531c1667514",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 320,
+        "y0": 471,
+        "x1": 979,
+        "y1": 799
+      },
+      "margins": {
+        "left": 320,
+        "right": 274,
+        "top": 471,
+        "bottom": 454
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family gastropod"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-04-land-snail/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Limpet",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-05-limpet",
+    "masterSha256": "e243fa4b6b665b709107ec33010c2d2fa0e51dff5d34e8df74e41cac79756de3",
+    "promptSha256": "dc2485d4d04ce30bc2c5a51b3a9bde5ff78f9c9c6cf81f743a05ecd809941c34",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 340,
+        "y0": 475,
+        "x1": 914,
+        "y1": 810
+      },
+      "margins": {
+        "left": 340,
+        "right": 339,
+        "top": 475,
+        "bottom": 443
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-05-limpet/score.json",
+    "selected": true,
+    "nativePending": true
+  },
+  {
+    "name": "Crayfish",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-06-crayfish",
+    "masterSha256": "0c022a34bf2177dfa3b701893d8850a4bc34907fb359bb67a8b0dfd33eda065e",
+    "promptSha256": "bcd95ee47a55739092d9dda158a27ed3e588e992d393ba33b865d0fe02a5fbdf",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 219,
+        "y0": 360,
+        "x1": 1078,
+        "y1": 840
+      },
+      "margins": {
+        "left": 219,
+        "right": 175,
+        "top": 360,
+        "bottom": 413
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family crustacean-clawed"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-06-crayfish/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Chiton",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-02-chiton",
+    "masterSha256": "217370fa47e9b6828e85585543a0d0373b581ec8d22aef7d97ee6b4e3659e7c9",
+    "promptSha256": "a46513e49688db1373f03f2963008d13b177d655ab8c18520d3a6b739e2751a0",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 274,
+        "y0": 478,
+        "x1": 995,
+        "y1": 777
+      },
+      "margins": {
+        "left": 274,
+        "right": 258,
+        "top": 478,
+        "bottom": 476
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: sessile-filter matches clearly better (0.0094 < 0.0314)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1chiton/c243b07r1c1-02-chiton/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Hermit Crab",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-07-hermit-crab",
+    "masterSha256": "fafc6eca527144bbf43126e6d24c470614586c1ea60901cf9e56c8c8a33894ba",
+    "promptSha256": "c6956a3e027c9d47c6deaecb8bed0a6ae7492aebb667e8d3b122755dba5b7bc0",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 300,
+        "y0": 417,
+        "x1": 1021,
+        "y1": 835
+      },
+      "margins": {
+        "left": 300,
+        "right": 232,
+        "top": 417,
+        "bottom": 418
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family crustacean-clawed"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1b/c243b07r1c1-07-hermit-crab/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Lobster",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-08-lobster",
+    "masterSha256": "fcc4587747548b2bd30c54ec6dbb5835e5059fc76490f56ae84becea3f7f96b0",
+    "promptSha256": "76809258acf78aef594fbe75eb37ad8143519e6feb7d53d5b1d17e3effea6d82",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 176,
+        "y0": 360,
+        "x1": 1125,
+        "y1": 848
+      },
+      "margins": {
+        "left": 176,
+        "right": 128,
+        "top": 360,
+        "bottom": 405
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family crustacean-clawed"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1b/c243b07r1c1-08-lobster/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Fruit Bat",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-09-fruit-bat",
+    "masterSha256": "5b33c97524e43aeb67d20bada8787b0c730d57fffde9bcb1e05ea4717a4c8b28",
+    "promptSha256": "e773a37ab70a247ea2eb2d3ed6f9c641b789716cfeeb1dafaf36ee77c9245c52",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 293,
+        "y0": 297,
+        "x1": 977,
+        "y1": 832
+      },
+      "margins": {
+        "left": 293,
+        "right": 276,
+        "top": 297,
+        "bottom": 421
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family flyer-membrane"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1b/c243b07r1c1-09-fruit-bat/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Insect-Eating Bat",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-10-insect-eating-bat",
+    "masterSha256": "626b5fbb4c5bd13be16fa9b19e3a57910d4f5fc499037787a3cad24eedf3132c",
+    "promptSha256": "29e0c687e5658cf1a55b1dd28498cd2a08f23efb37a1a7a8a94a34e210232afe",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 311,
+        "y0": 317,
+        "x1": 952,
+        "y1": 846
+      },
+      "margins": {
+        "left": 311,
+        "right": 301,
+        "top": 317,
+        "bottom": 407
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1b/c243b07r1c1-10-insect-eating-bat/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Vampire Bat",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-11-vampire-bat",
+    "masterSha256": "3f3910d836c08027ad69aaf50faa93bf8cb73b5aec7afa51f0f7691347dce21d",
+    "promptSha256": "304324ce8c4b69420fb4cf2d6504375894f13b8f8f19551bbf903e45d99acde8",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 317,
+        "y0": 316,
+        "x1": 937,
+        "y1": 936
+      },
+      "margins": {
+        "left": 317,
+        "right": 316,
+        "top": 316,
+        "bottom": 317
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1b/c243b07r1c1-11-vampire-bat/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Centipede",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-12-centipede",
+    "masterSha256": "feba66e433dee85350528d3d8e5dc667e58604fcac6efd8e1fb6613240e4b7f5",
+    "promptSha256": "0c8b8d2fda58f22bac6272f60cf85754928d6e490e09f20ae86e568fde86c9f1",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 255,
+        "y0": 498,
+        "x1": 1025,
+        "y1": 765
+      },
+      "margins": {
+        "left": 255,
+        "right": 228,
+        "top": 498,
+        "bottom": 488
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family myriapod"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1b/c243b07r1c1-12-centipede/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Giant Centipede",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-13-giant-centipede",
+    "masterSha256": "8f25f55b58afb8ad2fa546ab84a7db3fb8c5ff84032f377560193364423a68eb",
+    "promptSha256": "6a39770b7b10dbac83f2232d9930a50717024073614bc4f73a6e187451946d6d",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 179,
+        "y0": 495,
+        "x1": 1104,
+        "y1": 763
+      },
+      "margins": {
+        "left": 179,
+        "right": 149,
+        "top": 495,
+        "bottom": 490
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1b/c243b07r1c1-13-giant-centipede/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Millipede",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-14-millipede",
+    "masterSha256": "6f50d96157be188cbeb3a07c2f1e16e5ce3abade1a2a60ac848398f667eb1e27",
+    "promptSha256": "8a9ab04bd4f21fb7fbcf006ee39317cbcb690d900d21580bb0310536bed6386b",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 257,
+        "y0": 555,
+        "x1": 1007,
+        "y1": 699
+      },
+      "margins": {
+        "left": 257,
+        "right": 246,
+        "top": 555,
+        "bottom": 554
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no same-family reference supplies the declared target landmark inventory"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1b/c243b07r1c1-14-millipede/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Pyrosome",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-15-pyrosome",
+    "masterSha256": "69540fa4a6ec85e4678b5cd3ce5e88e40822a075abc2d1c4cdca63ded4d3ff77",
+    "promptSha256": "ad3197445b74ba4db4a12938cb487b4558d58103a1fd77d53563f609edb31cb1",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 291,
+        "y0": 439,
+        "x1": 966,
+        "y1": 811
+      },
+      "margins": {
+        "left": 291,
+        "right": 287,
+        "top": 439,
+        "bottom": 442
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family colonial-filter"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1b/c243b07r1c1-15-pyrosome/score.json",
+    "selected": false,
+    "nativePending": false,
+    "visualHold": "Small detached blue bead-like islands outside colony rim and upper silhouette; source is not one clean connected colony."
+  },
+  {
+    "name": "Salp",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-16-salp",
+    "masterSha256": "149f01574984f3724bf0deb32116e62cf46ca97b9f553bfe735599fdc7ecf7a1",
+    "promptSha256": "b243ed5c8c1f50c6f59478191ec14537e47a542d020a50cd055fa0d47548e94f",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 342,
+        "y0": 474,
+        "x1": 907,
+        "y1": 775
+      },
+      "margins": {
+        "left": 342,
+        "right": 346,
+        "top": 474,
+        "bottom": 478
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family colonial-filter"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1c/c243b07r1c1-16-salp/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Barnacle",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-17-barnacle",
+    "masterSha256": "24e1079847fd167a4784bd79cc331b2609109dc233240ced7f4d2b342fbd14a0",
+    "promptSha256": "7ce56bc2eadaa728a0edf72e902530cb778bb3c602708d55b5ff5699af9eeb78",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 365,
+        "y0": 324,
+        "x1": 945,
+        "y1": 887
+      },
+      "margins": {
+        "left": 365,
+        "right": 308,
+        "top": 324,
+        "bottom": 366
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family barnacle"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1c/c243b07r1c1-17-barnacle/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Fly Larvae",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-18-fly-larvae",
+    "masterSha256": "fe7abee52f61f8e47714a3fcf446558153a4e66a07289219d15250e69a8eb365",
+    "promptSha256": "6528a9c39934d2a28eb01f563029523d00ecc6c34c63aa79d69ab4b51e15ac95",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 309,
+        "y0": 498,
+        "x1": 944,
+        "y1": 771
+      },
+      "margins": {
+        "left": 309,
+        "right": 309,
+        "top": 498,
+        "bottom": 482
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family larva"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1c/c243b07r1c1-18-fly-larvae/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Tardigrade",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-19-tardigrade",
+    "masterSha256": "2b7d2300aa69c65d8c7a50825f11fc558af7933a1f4b9bd6a434f55cae0dab21",
+    "promptSha256": "cd7281bc16d4946b282d567d8657d35ef09c75bcf6226e475ece509325e7d34c",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 323,
+        "y0": 447,
+        "x1": 924,
+        "y1": 769
+      },
+      "margins": {
+        "left": 323,
+        "right": 329,
+        "top": 447,
+        "bottom": 484
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family lobopod"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1c/c243b07r1c1-19-tardigrade/score.json",
+    "selected": false,
+    "nativePending": false,
+    "visualHold": "Only five separated lobopod paths visible; canonical four pairs/eight limbs cannot be verified."
+  },
+  {
+    "name": "Horseshoe Crab",
+    "round": 1,
+    "candidate": 1,
+    "id": "c243b07r1c1-21-horseshoe-crab",
+    "masterSha256": "fda8cc9691f82bdb122ad4b64bba020d419d24b2f2dd973031ced48a3773f943",
+    "promptSha256": "e60fe2bfe2627b17e94fe0c6c20343d60a372a6ae995647396d2ad3728b03160",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 213,
+        "y0": 473,
+        "x1": 994,
+        "y1": 805
+      },
+      "margins": {
+        "left": 213,
+        "right": 259,
+        "top": 473,
+        "bottom": 448
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "no-reference: no other hand-authored subject of family xiphosuran"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1c/c243b07r1c1-21-horseshoe-crab/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Chiton",
+    "round": 1,
+    "candidate": 2,
+    "id": "c243b07r1c2-02-chiton",
+    "masterSha256": "54d83d43e67ecaa8723d1465071e04b7c6964bb2b7b4ec6feac3d9edc8d7e2dc",
+    "promptSha256": "0cae59835165be04f06c25ffa3ced66085cdee217e460769d8a0a1f6f01f69f0",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 277,
+        "y0": 475,
+        "x1": 977,
+        "y1": 780
+      },
+      "margins": {
+        "left": 277,
+        "right": 276,
+        "top": 475,
+        "bottom": 473
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: sessile-filter matches clearly better (0.0097 < 0.0295)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c2a/c243b07r1c2-02-chiton/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Conch",
+    "round": 1,
+    "candidate": 2,
+    "id": "c243b07r1c2-03-conch",
+    "masterSha256": "bad4b4cbda40a443e1d7f52ed5d0fb3b206f21951c21eea89c2415a7ac5c929d",
+    "promptSha256": "d10408476c2e464982f96fdb2d8fc2bf60e6eea7e4fa678a2ab8aa20bf81dfea",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 301,
+        "y0": 387,
+        "x1": 951,
+        "y1": 862
+      },
+      "margins": {
+        "left": 301,
+        "right": 302,
+        "top": 387,
+        "bottom": 391
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: fish matches clearly better (0.0167 < 0.0270)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c2a/c243b07r1c2-03-conch/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Chiton",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-02-chiton",
+    "masterSha256": "32491a110599f2becb0987c5a2ee7e366ce00b40aac80506a6044a7456176d5b",
+    "promptSha256": "b175a2e3dfeae8776be596540b2f05de5998f2d408a1a6d17c1ff9a58082136d",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 240,
+        "y0": 456,
+        "x1": 1013,
+        "y1": 793
+      },
+      "margins": {
+        "left": 240,
+        "right": 240,
+        "top": 456,
+        "bottom": 460
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: sessile-filter matches clearly better (0.0101 < 0.0314)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1a/c243b07r2c1-02-chiton/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Conch",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-03-conch",
+    "masterSha256": "3ff3df98b336d133002dbaae37789a56ebd6db9c0242f87b53e4eb008ad2e7c4",
+    "promptSha256": "4318fcdc150a61e5db2bfda6dabb797d2fdfd146937dcd79af2bcd8c6434a541",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 300,
+        "y0": 391,
+        "x1": 986,
+        "y1": 851
+      },
+      "margins": {
+        "left": 300,
+        "right": 267,
+        "top": 391,
+        "bottom": 402
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: fish matches clearly better (0.0161 < 0.0281)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1a/c243b07r2c1-03-conch/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Forest Elephant",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-25-forest-elephant",
+    "masterSha256": "f97ee229e8f0514f489d5008dce88d9724ca16e4789908798779d6c72affcfab",
+    "promptSha256": "be673307f34a6c6ae5a766f98c063a516babae6ee20cf0a8ba0081eb4670edbc",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 311,
+        "y0": 387,
+        "x1": 933,
+        "y1": 855
+      },
+      "margins": {
+        "left": 311,
+        "right": 320,
+        "top": 387,
+        "bottom": 398
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "RED",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1a/c243b07r2c1-25-forest-elephant/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Giant Salamander",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-26-giant-salamander",
+    "masterSha256": "2b58a71dd397a478eedfa61ed5a2299c0aa320bf99bd13702f728d4d22ffe582",
+    "promptSha256": "27074b3719e609883cd144520fc838ca620c04cba4952f56df28dcea4331b1b0",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 174,
+        "y0": 481,
+        "x1": 1095,
+        "y1": 773
+      },
+      "margins": {
+        "left": 174,
+        "right": 158,
+        "top": 481,
+        "bottom": 480
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1b/c243b07r2c1-26-giant-salamander/score.json",
+    "selected": false,
+    "nativePending": false,
+    "visualHold": "Four short sprawling limbs, broad flattened head with tiny eyes, long laterally flattened tail and mottled skin folds. Near front foot appears five-toed and near rear four-toed, opposite expected four front/five rear; explicit count HOLD, not admission."
+  },
+  {
+    "name": "Goat",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-27-goat",
+    "masterSha256": "7c36fce149f3af1e4e3cb847fc33f29367021b510f39d15881cd1034eb384b48",
+    "promptSha256": "95b2cced6a09675f7f140f167bfec2e7c6a01c3ac0c7d65d6e57a407f8a48ad4",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 342,
+        "y0": 330,
+        "x1": 910,
+        "y1": 889
+      },
+      "margins": {
+        "left": 342,
+        "right": 343,
+        "top": 330,
+        "bottom": 364
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 6.0% paint that no reference appendage lands on",
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 19%)",
+      "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 5%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1b/c243b07r2c1-27-goat/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Shrew",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-30-shrew",
+    "masterSha256": "c414f18ce04df4813aa3ee630b5e3ed82752a217226f9e86a43f1161a6ffdb96",
+    "promptSha256": "349933930c8c4582356808c2dfe6a931c04d5da2d0e8dccecf0898b0272b692f",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 239,
+        "y0": 468,
+        "x1": 1007,
+        "y1": 788
+      },
+      "margins": {
+        "left": 239,
+        "right": 246,
+        "top": 468,
+        "bottom": 465
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 52%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1b/c243b07r2c1-30-shrew/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Takin",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-31-takin",
+    "masterSha256": "d3d41425c2589bcb2398d9957a72c42af903d804361ff9b61a62c5f995c941e1",
+    "promptSha256": "becd6f9b23fa1049584cac7d1b916fa18426f01e12e6ba4cc8e3a83c2bad73d6",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 294,
+        "y0": 361,
+        "x1": 975,
+        "y1": 861
+      },
+      "margins": {
+        "left": 294,
+        "right": 278,
+        "top": 361,
+        "bottom": 392
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "RED",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1c/c243b07r2c1-31-takin/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Vole",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-32-vole",
+    "masterSha256": "9cf16ff5ef891ceaef10e36948ab7c784cbcc46c62ccf5ab1485f10970d09323",
+    "promptSha256": "345dad7e8b564277be1805032114ec9a23fc9d2494dd3609897de20513acee32",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 341,
+        "y0": 479,
+        "x1": 898,
+        "y1": 790
+      },
+      "margins": {
+        "left": 341,
+        "right": 355,
+        "top": 479,
+        "bottom": 463
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%)",
+      "missing-anatomy: part fore-far-paw (foreFarPaw) covers 0% paint (reference 72%)",
+      "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 0% paint (reference 95%)",
+      "missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 94%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1c/c243b07r2c1-32-vole/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Wall Lizard",
+    "round": 2,
+    "candidate": 1,
+    "id": "c243b07r2c1-33-wall-lizard",
+    "masterSha256": "e52a313bffea1ff22d32dc91ed48c1c7ea690cbed1c0055186f8f7d7664e1bf4",
+    "promptSha256": "206fdf058202d37ee1c56d20175b0640fe8a488cc9937a73a5c6cbe12c2f7cc2",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 194,
+        "y0": 513,
+        "x1": 1054,
+        "y1": 744
+      },
+      "margins": {
+        "left": 194,
+        "right": 199,
+        "top": 513,
+        "bottom": 509
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 8.4% paint that no reference appendage lands on"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c1c/c243b07r2c1-33-wall-lizard/score.json",
+    "selected": false,
+    "nativePending": false,
+    "visualHold": "Tail visibly about1.1–1.4 body lengths across these sources, not canonical roughly twice body length. Full-size source and film identity HOLD; raw static remains diagnostic."
+  },
+  {
+    "name": "Chiton",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-02-chiton",
+    "masterSha256": "dda0a87c27b2ff779b072ae4c7aabc289ebd11b816397571a991a115d6d745f6",
+    "promptSha256": "07f9fc1b547b579f50c8d23062be6a74795802b738d9894e9197327c95e60b0d",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 270,
+        "y0": 450,
+        "x1": 983,
+        "y1": 802
+      },
+      "margins": {
+        "left": 270,
+        "right": 270,
+        "top": 450,
+        "bottom": 451
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: sessile-filter matches clearly better (0.0104 < 0.0301)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-02-chiton/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Conch",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-03-conch",
+    "masterSha256": "b2a39e51713517fd5334c17f583980257969e982feb8d9f04f6198fbb485e0b3",
+    "promptSha256": "4189ebeee0c6b08e3244e754af76a8ffefc0e48a309ccc72cfd11e0eed605c54",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 232,
+        "y0": 343,
+        "x1": 1018,
+        "y1": 863
+      },
+      "margins": {
+        "left": 232,
+        "right": 235,
+        "top": 343,
+        "bottom": 390
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy (family floor): the largest rear appendage is 2.1% of the paint; every same-family reference shows at least 3.6%"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-03-conch/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Forest Elephant",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-25-forest-elephant",
+    "masterSha256": "cf7a829573a672e2f10eb7258abc248197b242e7ccabdbca775369774e0f65f9",
+    "promptSha256": "3379bfffd862cb494fa6b4cbeaf98d59711eadbd7acd8f6363f0420ec47ac7c4",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 307,
+        "y0": 391,
+        "x1": 947,
+        "y1": 860
+      },
+      "margins": {
+        "left": 307,
+        "right": 306,
+        "top": 391,
+        "bottom": 393
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-25-forest-elephant/score.json",
+    "selected": true,
+    "nativePending": true
+  },
+  {
+    "name": "Giant Salamander",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-26-giant-salamander",
+    "masterSha256": "882d8c4b428d6873665f3e4f5c0f129cbd82858740f8b42f893ed46f47a54988",
+    "promptSha256": "7c75e2802cf0a512baa105cf6410ef0003d403eed3ee0068ea8532156d4bd674",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 177,
+        "y0": 494,
+        "x1": 1077,
+        "y1": 754
+      },
+      "margins": {
+        "left": 177,
+        "right": 176,
+        "top": 494,
+        "bottom": 499
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-26-giant-salamander/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Goat",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-27-goat",
+    "masterSha256": "4770e3ae6c086e9337076c61b67b17e979405d454ed12389fb54cead3eeb0112",
+    "promptSha256": "c847b1982603673f932ca6b96e003c8c91437658f91227a90b93f70643eb860d",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 340,
+        "y0": 319,
+        "x1": 938,
+        "y1": 881
+      },
+      "margins": {
+        "left": 340,
+        "right": 315,
+        "top": 319,
+        "bottom": 372
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 1% paint (reference 19%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-27-goat/score.json",
+    "selected": false,
+    "nativePending": false,
+    "visualHold": "Four cloven hooves, two swept horns, beard, short upright tail and long brown/white coat. Several thin vertical pink lines cross torso/upper legs at approximately x430/550/690, not normal coat pigment: source visual HOLD."
+  },
+  {
+    "name": "Shrew",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-30-shrew",
+    "masterSha256": "a838e44b0ecba56706bddb9040b2c11594a4a6013fcd676de22398b1005dd8bc",
+    "promptSha256": "f546f423ec469c6ba59273a03901100853172da0bc3119d8c2545a425fc304b3",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 269,
+        "y0": 512,
+        "x1": 935,
+        "y1": 761
+      },
+      "margins": {
+        "left": 269,
+        "right": 318,
+        "top": 512,
+        "bottom": 492
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 13% paint (reference 50%)",
+      "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 21% paint (reference 66%)",
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 52%)",
+      "unexplained-anatomy: 6.6% of the paint lies away from the body and in no part (reference 1.7%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-30-shrew/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Takin",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-31-takin",
+    "masterSha256": "c48541ab65c1fa971a330c28160e5176d85ee1f7980cc818ff89e1c7cbb7a3de",
+    "promptSha256": "6f23636b25cfc7027793a56381f4427236b4aa716bc283cb77769565938356af",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 323,
+        "y0": 390,
+        "x1": 963,
+        "y1": 869
+      },
+      "margins": {
+        "left": 323,
+        "right": 290,
+        "top": 390,
+        "bottom": 384
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part ear-near-tip (earNearTip) covers 25% paint (reference 84%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-31-takin/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Vole",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-32-vole",
+    "masterSha256": "87ddfad03e267602f299bfb4c57a215aafa34f7787e876159490ba981300b5bf",
+    "promptSha256": "468eb4338019c39593d2613decdeea441d7a4754fb37da75edbae466164f1639",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 279,
+        "y0": 429,
+        "x1": 969,
+        "y1": 811
+      },
+      "margins": {
+        "left": 279,
+        "right": 284,
+        "top": 429,
+        "bottom": 442
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part fore-near-paw (foreNearPaw) covers 14% paint (reference 48%)",
+      "unexplained-anatomy: 12.8% of the paint lies away from the body and in no part (reference 5.1%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-32-vole/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Wall Lizard",
+    "round": 2,
+    "candidate": 2,
+    "id": "c243b07r2c2-33-wall-lizard",
+    "masterSha256": "8d40429d416cb84461e02ed4a87a74ce7b957c1ede3d0c80fd85b00462aeba98",
+    "promptSha256": "2dd0573cdba8602fd57be0ebb47dd530ead42acc2c0d563e9895b64eb93fd276",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 228,
+        "y0": 533,
+        "x1": 1029,
+        "y1": 721
+      },
+      "margins": {
+        "left": 228,
+        "right": 224,
+        "top": 533,
+        "bottom": 532
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-33-wall-lizard/score.json",
+    "selected": false,
+    "nativePending": false,
+    "visualHold": "Tail visibly about1.1–1.4 body lengths across these sources, not canonical roughly twice body length. Full-size source and film identity HOLD; raw static remains diagnostic."
+  },
+  {
+    "name": "Chiton",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-02-chiton",
+    "masterSha256": "fbfe437b5a09e9d1c3c2518997656eaff1fa4ad6bedad0695356d9dc0e0bcea6",
+    "promptSha256": "26c2c43dd3d77ff75fa31186fbc95e956d8e447dd6e0a477567849f994b64b91",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 236,
+        "y0": 469,
+        "x1": 1016,
+        "y1": 786
+      },
+      "margins": {
+        "left": 236,
+        "right": 237,
+        "top": 469,
+        "bottom": 467
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "wrong-family: sessile-filter matches clearly better (0.0092 < 0.0311)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-02-chiton/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Conch",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-03-conch",
+    "masterSha256": "b313071c72c98a6239254f8280d9f16a27f3cecaec797a7f1c507149d5028938",
+    "promptSha256": "f2d9133f7c3b196facaffc733e4599224c87357ade63966f1b5dc2b5c8b7dc77",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 269,
+        "y0": 350,
+        "x1": 983,
+        "y1": 877
+      },
+      "margins": {
+        "left": 269,
+        "right": 270,
+        "top": 350,
+        "bottom": 376
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-03-conch/score.json",
+    "selected": true,
+    "nativePending": true
+  },
+  {
+    "name": "Forest Elephant",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-25-forest-elephant",
+    "masterSha256": "b2a2b086028daf769fa0146bcfe30f3dca3c28bad65c481b15ae16f756a1936e",
+    "promptSha256": "1943bf7a39b972b1c6c0ea6a1decf3d8fea28a120e29ba6e54f6684d8833eb3f",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 341,
+        "y0": 403,
+        "x1": 920,
+        "y1": 831
+      },
+      "margins": {
+        "left": 341,
+        "right": 333,
+        "top": 403,
+        "bottom": 422
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-25-forest-elephant/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Giant Salamander",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-26-giant-salamander",
+    "masterSha256": "d57d055a641549f6f08a88aeee77d572361259bfc3f83368075f02fadaee66a0",
+    "promptSha256": "528a69e76d0ce171b3fc469334b7a545afa3f0dddbf0c0c277942655736747f2",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 174,
+        "y0": 499,
+        "x1": 1079,
+        "y1": 754
+      },
+      "margins": {
+        "left": 174,
+        "right": 174,
+        "top": 499,
+        "bottom": 499
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-26-giant-salamander/score.json",
+    "selected": true,
+    "nativePending": true
+  },
+  {
+    "name": "Goat",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-27-goat",
+    "masterSha256": "1532e8117ea868f2fe19b0b75f7c3f50fa9e6f1c07f93ebb105e9dcbedd64a34",
+    "promptSha256": "57877f3bcf1f965c45aa6b730ff866db9d0222a69e76c012cfd09df1be0d7a31",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 315,
+        "y0": 319,
+        "x1": 960,
+        "y1": 919
+      },
+      "margins": {
+        "left": 315,
+        "right": 293,
+        "top": 319,
+        "bottom": 334
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 5%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-27-goat/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Shrew",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-30-shrew",
+    "masterSha256": "8b4aaeb0dbc9f6b4636e2f4f7638b9d0017bbffced74a44ae064645e5b50ac56",
+    "promptSha256": "a6166687aa652229112a9f134b40b782c75b082b5989f77b2fe9df0fe2383ce0",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 310,
+        "y0": 508,
+        "x1": 944,
+        "y1": 743
+      },
+      "margins": {
+        "left": 310,
+        "right": 309,
+        "top": 508,
+        "bottom": 510
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 16% paint (reference 50%)",
+      "missing-anatomy: part hind-far-ankle (hindFarAnkle) covers 17% paint (reference 66%)",
+      "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 25% paint (reference 76%)",
+      "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 1.7%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-30-shrew/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Takin",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-31-takin",
+    "masterSha256": "6660584d2d6fb266787451b78f75b4118b70f67555f111b17ad1bc57b1d7de21",
+    "promptSha256": "8ac4e73f053904548db5d74b4cea3d130214322914cb4a3514b80b11d796b5b2",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 320,
+        "y0": 372,
+        "x1": 968,
+        "y1": 870
+      },
+      "margins": {
+        "left": 320,
+        "right": 285,
+        "top": 372,
+        "bottom": 383
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": [],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-31-takin/score.json",
+    "selected": true,
+    "nativePending": true
+  },
+  {
+    "name": "Vole",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-32-vole",
+    "masterSha256": "c4157d152211abbc335c2963329e69ef55bd87c88072022830f20dc560b74234",
+    "promptSha256": "0bc36be55b1b29d42f8d091a5e070841fb49e92a07bbfea44bc6446264910647",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 299,
+        "y0": 459,
+        "x1": 937,
+        "y1": 798
+      },
+      "margins": {
+        "left": 299,
+        "right": 316,
+        "top": 459,
+        "bottom": 455
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 46%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-32-vole/score.json",
+    "selected": false,
+    "nativePending": false
+  },
+  {
+    "name": "Wall Lizard",
+    "round": 2,
+    "candidate": 3,
+    "id": "c243b07r2c3-33-wall-lizard",
+    "masterSha256": "a5a6d8a997ad440a5d42b21472543acc74f14e2e2aea5f490edb16b31af5d448",
+    "promptSha256": "e88e802b87db763a0471948e8d07c817865d52d3a301a9d25cb0c106968f24f6",
+    "sourceEligibility": "ELIGIBLE_FOR_INTAKE",
+    "framing": {
+      "status": "PASS_FRAMING_ONLY",
+      "bounds": {
+        "x0": 168,
+        "y0": 526,
+        "x1": 1074,
+        "y1": 740
+      },
+      "margins": {
+        "left": 168,
+        "right": 179,
+        "top": 526,
+        "bottom": 513
+      },
+      "required": {
+        "x": 101,
+        "y": 101
+      },
+      "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+    },
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 7.2% paint that no reference appendage lands on",
+      "missing-anatomy: part tail3 (tail3) covers 16% paint (reference 65%)"
+    ],
+    "score": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c3all/c243b07r2c3-33-wall-lizard/score.json",
+    "selected": false,
+    "nativePending": false,
+    "visualHold": "Tail visibly about1.1–1.4 body lengths across these sources, not canonical roughly twice body length. Full-size source and film identity HOLD; raw static remains diagnostic."
+  }
+]

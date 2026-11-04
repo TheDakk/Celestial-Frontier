@@ -1,0 +1,53 @@
+{
+  "status": "BATCH_DELIVERED_FOR_CLAUDE_REVIEW",
+  "batch": 7,
+  "round": 2,
+  "plannedSpecies": 26,
+  "supportedSpecies": 9,
+  "exactOriginals": 27,
+  "referenceCompilerSkipped": 17,
+  "sourceCheckpoint": "b8939e638",
+  "staticBefore": 0,
+  "staticAfter": 5,
+  "gained": [
+    "Conch",
+    "Forest Elephant",
+    "Giant Salamander",
+    "Takin",
+    "Wall Lizard"
+  ],
+  "lost": [],
+  "sourceIdentityOverridesRawStatic": [
+    "Giant Salamander C1 toe-count hold",
+    "Wall Lizard all candidates short tail"
+  ],
+  "nativePass": 5,
+  "aiFinishPass": 5,
+  "rebindPass": 5,
+  "finishedNativePass": 5,
+  "alphaChanges": 0,
+  "protectedRgbChanges": 0,
+  "geometryRecordsAndRecompiledPaintSkinIdentical": true,
+  "reviewStills": 25,
+  "ready": [
+    "Conch",
+    "Forest Elephant",
+    "Giant Salamander",
+    "Takin"
+  ],
+  "sourceIdentityHolds": [
+    "Wall Lizard"
+  ],
+  "prechecks": {
+    "films": 228,
+    "identityCards": 5,
+    "newFragmentBoxes": 0,
+    "newPinkFlags": 0,
+    "magentaTotal": 0,
+    "historicalDeltasReviewedFullSize": 4
+  },
+  "remainingSpecies": 22,
+  "next": "Supported no-master Tarantula; other3 no-reference SKIP. Then full static measure on actual486-entry sweep5 plus all new candidates and final TERMINAL. No review wait.",
+  "allPairs": "HOLD",
+  "rulers": "unchanged"
+}

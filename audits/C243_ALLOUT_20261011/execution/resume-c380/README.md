@@ -1,0 +1,13 @@
+# C380 — resumed C262 after verified disk recovery
+
+Dakk explicitly requested resume after disk recovery. Fresh reservation C380; previous disk-floor RED remains immutable in parallel-c262. Signed peer coordination merged locally; C263 CPU-only ACTIVE is explicitly nonblocking. Original River Dolphin W2 CLEAN frame/crop hashes and native-qualified fit source hashes were reverified. Uninterrupted startup receipt reused; tools unchanged.
+
+**River Dolphin READY_FOR_CLAUDE.** Same exact generator master and source repair. Fresh AI finish PASS65.626s (lowest78.466GiB), rebind PASS2.004s with geometry/paint skin unchanged, finished-native PASS22.048s. Finisher changed75,951interiorRGBpixels;alpha/protected boundaries unchanged and conservationPASS. W3 independently inspected all5original frames and2xjaw/junction views: coherent melon/rostrum/jaw motion, no prior upright toothed shard,3/3identity markers seen. All251C243films checked;new film0fragments/0pink. Historical boxes/dispositions preserved; Deep-SeaFish pink counters changed slightly and original frames were inspected without promoting a prior hold.
+
+Current exact mapping: coordinator/delivery-plan.json. Independent W3 visual-review.json includes per-frame findings, boxes and SHA hashes. W4 owns delivery.json, visual-review.json,remaining-species.json/md and stage-time-yield.json. Postreview coordination verified10original/crop SHA hashes, indexed originalmaster, finish/rebind/native outcomes and3identity answers. RootvalidatePASS:1010renders,zero boot errors,original50probe fingerprintmatch.
+
+Automatic approval review initially refused the next stage because it believed inference was still running. No rebind/native job started from that refused call. The coordinator then independently verified terminal PASS,resultartifact SHA,absent locks/no inference process and obtained approval for direct rebind,then native. This queue gap is recorded; no rule or numeric ruler was bypassed and no product stage was retried.
+
+Hoatzin/Kakapo remainHOLD;the held representative did not propagate. No unqualified reference packet consumed. Latest peer C263 is stillACTIVE,so64reference-blocked species remain skipped. Coverage385certified+51pending;195unaccepted includes this1READY awaiting Claude,not newpeeracceptance or certification. Realized newpeeraccepts0;stage/review timings remain distinct from priorfailedattempt.
+
+No game/runtime/Guide/release version change. No push/PR/label/hosted/develop/main/release/deploy/C223/certification;All-pairsHOLD. Raw extra native stills/film and prepared transport buffers remain locally retained and hashed;only required5reviewframes/report,finishedmaster/receipt and exactfit are Git evidence. FinalTERMINAL and paired nextsteps are inTO_CLAUDE.md.

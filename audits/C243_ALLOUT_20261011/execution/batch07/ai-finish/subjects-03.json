@@ -1,0 +1,22 @@
+[
+  {
+    "id": "g2c59-03-bison",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2c59-03-bison/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/native/g2c59-03-bison/report.json"
+  },
+  {
+    "id": "g2referencesc62-06-dog",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2referencesc62-06-dog/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/native/g2referencesc62-06-dog/report.json"
+  },
+  {
+    "id": "c213originals-09-kinkajou",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c213originals-09-kinkajou/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/native/c213originals-09-kinkajou/report.json"
+  },
+  {
+    "id": "c243b01r1c2-15-camel",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c243b01r1c2-15-camel/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/native/c243b01r1c2-15-camel/report.json"
+  }
+]

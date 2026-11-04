@@ -1,0 +1,139 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "c243b07r2c3-26-giant-salamander",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "94a538c0ecc7671484c64882931541f34720ddb3d2eb17bfbd721f1210bf5062",
+    "pngSha256": "6744e2a5eed8003bf8a318929d8c1ceefeda16387081006742eb69f68838cad4"
+  },
+  "parts": [
+    {
+      "name": "chest.png",
+      "sha256": "da69cb33f052a2be97cea3f9463de393c389b04152f96dc3c8c573e2c019d0ca"
+    },
+    {
+      "name": "fore-far-ankle.png",
+      "sha256": "156c4daca6b7430d40a772d7bf7f88a006ea3db97ac211d185413fe335454996"
+    },
+    {
+      "name": "fore-far-knee.png",
+      "sha256": "8f7f45e4cd97b3ffae5745807d6e4d68217b34fec3d6622ec3294cfe1c8d5d70"
+    },
+    {
+      "name": "fore-far-paw.png",
+      "sha256": "f7222195af2db8e611482eacdd1adaef19e9b11b0ffe88bb4b566894edbfc91a"
+    },
+    {
+      "name": "fore-far-root.png",
+      "sha256": "682fefda9d067a897be06585f010f8497495d7ef1e7939484e4f0b639d598ef6"
+    },
+    {
+      "name": "fore-near-ankle.png",
+      "sha256": "f2037a498fe52a913fd785eb7151f694725c159baa75666bedd03197a6c396aa"
+    },
+    {
+      "name": "fore-near-knee.png",
+      "sha256": "61d250f8be132dbf5ea8851de52091faf202d65a029f3a36feb1fe9cd00d50a0"
+    },
+    {
+      "name": "fore-near-paw.png",
+      "sha256": "76a1ecf60ef7d7496676c0007dc60529f27e4752c4e49d2bf6ed28cad67fa3a7"
+    },
+    {
+      "name": "fore-near-root.png",
+      "sha256": "7eb21464adb501ee6c8acaaa76de51a383e9b0eae15ef6cec6cfa26657f562e6"
+    },
+    {
+      "name": "head.png",
+      "sha256": "96f7068ca1290b2ce06e2b1100f67613e69bc782dc1c9180f0c2710e57f69a94"
+    },
+    {
+      "name": "hind-far-ankle.png",
+      "sha256": "5cc99644bda6ab53bc99d8702d240d20688f5c444bef51a0835c0edbc607369c"
+    },
+    {
+      "name": "hind-far-knee.png",
+      "sha256": "e19d77a2cdc064ae5a0ad773185298a44828c70b5a2c8ea4e05e7f5ea8476b9d"
+    },
+    {
+      "name": "hind-far-paw.png",
+      "sha256": "2f9e95aea9c15563a6d2e6b8644200a5a7c906b7a9a562d09ddf7bce3056572b"
+    },
+    {
+      "name": "hind-far-root.png",
+      "sha256": "b311f6e473320d4783c5b20b8865a347aab3f40f63032c693b86a93ae442c6d7"
+    },
+    {
+      "name": "hind-near-ankle.png",
+      "sha256": "040fdf03617e17319aa9fdf74f45fa0fa016a0e745256c76a0bac21c5e42f5ed"
+    },
+    {
+      "name": "hind-near-knee.png",
+      "sha256": "12fcfa6e4cc4490d74b3d88183ae58fae13f0de948c6cf53f570e128d57ae21b"
+    },
+    {
+      "name": "hind-near-paw.png",
+      "sha256": "c648ba2f0b96d80732cf1672992c60d7996ccf5eae99f5e7a169a1da74650ce1"
+    },
+    {
+      "name": "hind-near-root.png",
+      "sha256": "af02bd8b3387fe9c168b0d72e2c7836b420f10cc911eafc0620e2d98ff799aa6"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "6e5d87aa7abe6d2f999edf9e53aedd69a23217955da57773e3fb5486ec2a6283"
+    },
+    {
+      "name": "neck.png",
+      "sha256": "d5563eab8901a7d065fa6ffbe06943d2222d9176ddb8745a643178d9e50b2693"
+    },
+    {
+      "name": "pelvis.png",
+      "sha256": "3ed1539538e213d9f869fc1aa849dee4b15cf783475747177283daa860f3869a"
+    },
+    {
+      "name": "root.png",
+      "sha256": "4b219501338eca4c393b2b12367555ee43859667d90bfe89eefdc16bcc898cdb"
+    },
+    {
+      "name": "spine.png",
+      "sha256": "a7a309d32cfcd01f36e0d0c8d58682ae342fe6d8708be0d2aedf16da5958670c"
+    },
+    {
+      "name": "tail-distal.png",
+      "sha256": "66ced17ac9e50d684e8bed618bfab71b79e9d0c54fc39c2dca8e9379851bd2e7"
+    },
+    {
+      "name": "tail-middle.png",
+      "sha256": "81a7682f28a53badfbf06010dcd33586f07a4e3dc0712e8149f89c561a9cfd07"
+    },
+    {
+      "name": "tail-root.png",
+      "sha256": "4795a55c073663b54cf1c21d05d0fe1ea9deef69b40b822fa34d2af630a2fdfc"
+    },
+    {
+      "name": "tail-tip.png",
+      "sha256": "d6ffc0c9c51677f81e74064e76e004548b70c4dfe4b71001cb8e452bd57b5450"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

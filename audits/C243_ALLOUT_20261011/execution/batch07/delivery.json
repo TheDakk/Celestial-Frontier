@@ -1,0 +1,68 @@
+{
+  "status": "FIRST_ROUND_DELIVERED_NOT_PROGRAM_TERMINAL",
+  "reservation": "C351 ACTIVE",
+  "batch": 7,
+  "species": 34,
+  "repaints": 22,
+  "selectedOriginals": 20,
+  "staticBeforeSpecies": 4,
+  "staticAfterSpecies": 11,
+  "gained": [
+    "Abalone",
+    "Bison",
+    "Dog",
+    "Forest Elephant",
+    "Goat",
+    "Limpet",
+    "Takin"
+  ],
+  "lost": [],
+  "camelFollowupSeparate": true,
+  "nativePass": 12,
+  "nativeTotal": 12,
+  "aiFinishPass": 12,
+  "rebindPass": 12,
+  "finishedNativePass": 12,
+  "framesReviewed": 60,
+  "ready": [
+    "Abalone",
+    "Limpet",
+    "Buffalo",
+    "Water Buffalo",
+    "Okapi",
+    "Bison",
+    "Dog",
+    "Kinkajou"
+  ],
+  "holds": {
+    "Goat": "Small pale grey rectangular/triangular discontinuity in left upper flank at turn3-idle50/90; source/ownership seam needs repair.",
+    "Takin": "Visible pink/magenta short fringe remnants below beard/chin on both creatures persist across reaction and late frames.",
+    "Forest Elephant": "Pink/magenta fringe remains along tusk tips/edges in reaction and late frames; triage flags11pixels.",
+    "Camel": "Two prominent humps in this master/film, while canonical Camel note specifies representative dromedary. C356 seam repair closes the jaw, but does not correct this species-identity count. Do not admit this source."
+  },
+  "dispositionCountsWithin34": {
+    "COMPILER_BLOCKED": 1,
+    "HOLD": 3,
+    "INTAKE_REFUSED": 21,
+    "READY_FOR_CLAUDE_REVIEW": 8,
+    "STATIC_RED": 1
+  },
+  "triageMagentaFlags": [
+    "Forest Elephant:11"
+  ],
+  "qualityNotes": "Planted/standing defeated quadrupeds retained as QA observations, not claims of collapse. Admission remains Claude. Takin visible beard tint held below numerical threshold.",
+  "constraintsChanged": false,
+  "sourceCheckpoints": [
+    "643438c69",
+    "4e6a12f8f"
+  ],
+  "freeGiB": 72.1,
+  "next": "Final round: three more candidates for every still-unaccepted species, class work and no-master four, then full static sweep and TERMINAL. No review wait.",
+  "sourceIdentityCorrection": {
+    "mailbox": "C357",
+    "scope": "Camel follow-up outside the34batchspecies",
+    "readyAfterCorrection": 8,
+    "holdAfterCorrection": 4,
+    "canonicalNote": "Generic name read as a representative dromedary. Taller than most people draw: the leg mass is roughly half the total height."
+  }
+}

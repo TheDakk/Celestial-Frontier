@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c202creaturesupply-21-goat",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c202creaturesupply-21-goat/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/native/c202creaturesupply-21-goat/report.json"
+  },
+  {
+    "id": "c203creaturesupplyb-01-okapi",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/c203creaturesupplyb-01-okapi/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/native/c203creaturesupplyb-01-okapi/report.json"
+  },
+  {
+    "id": "g2c110-20-takin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2c110-20-takin/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/native/g2c110-20-takin/report.json"
+  },
+  {
+    "id": "g2c114-01-forest-elephant",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/class-fixes/g2c114-01-forest-elephant/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/native/g2c114-01-forest-elephant/report.json"
+  }
+]

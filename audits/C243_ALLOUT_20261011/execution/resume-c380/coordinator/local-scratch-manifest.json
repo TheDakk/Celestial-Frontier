@@ -1,0 +1,161 @@
+{
+  "status": "RETAINED_LOCAL",
+  "note": "Review5PNGs/report and finished source/fit retained inGit; raw film/extra stills/prepared buffers remain local,notdeleted.",
+  "files": [
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01/prepared/c243b02r2c2-32-river-dolphin-labels.png",
+      "bytes": 38643,
+      "sha256": "0f19bca22ed20cded4e879700227ff077d082261b3e033bfbdb61f6d05475eaf"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01/prepared/c243b02r2c2-32-river-dolphin-masterPng.png",
+      "bytes": 1323039,
+      "sha256": "f718a0ad8e6f8765959f8d105988887be37636ca8a3903dc64900466cbe1345a"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01/prepared/client.mjs",
+      "bytes": 133185,
+      "sha256": "36aed409f712f25f910112590d6a122020d8d7ceb8b04a911f820b1f51ea7183"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01/prepared/c243b02r2c2-32-river-dolphin-master.rgba",
+      "bytes": 6290064,
+      "sha256": "5e2a9401395492fcfc594a8958176bf51db9784acaeacd191c97fa33aa4421b9"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01/prepared/inputs.json",
+      "bytes": 1913,
+      "sha256": "0db6aeb3dbeb171b028fc9ea8f38d8382689ac0e4b7fa11a7542fc517105ca1b"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01/prepared/c243b02r2c2-32-river-dolphin-labels.rgba",
+      "bytes": 6290064,
+      "sha256": "05dd4efafab1e2ef70f93ea02452f7e94808df2e7cde17a21934ed120600d73c"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01/prepared/c243b02r2c2-32-river-dolphin-binding.json",
+      "bytes": 1039821,
+      "sha256": "1ac0535b25f6cece9735f561adb3eb7b4ead4daf8a418f15127f92c2ef32fa07"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/plan.json",
+      "bytes": 998,
+      "sha256": "f11ff2c77904a7513c6a664c80008ec9e722cb7f779c62ae6d38b76bb9b99b06"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/finish-subjects.json",
+      "bytes": 312,
+      "sha256": "766c1a2d3fc70b4b8de7a98f52d1451b2fdd64561b7d9e8282a3f7a08cb20725"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin.log",
+      "bytes": 206,
+      "sha256": "1cf3285114622c6dbfe7704cd58419d4ade495e5f110924f7b8393ba5e4ebdf8"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/native-results.json",
+      "bytes": 1050,
+      "sha256": "9594cb077982fda03d083470bc3e38d93be67f4ae97dbcc92c28dfce40f1d5c2"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn2-dodge-reaction-50.png",
+      "bytes": 1195298,
+      "sha256": "fe97dbc6a80c81136e956fcd84413ef55300adb55475c44b3adfeed2a9639d0e"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/report.json",
+      "bytes": 350997,
+      "sha256": "03d14a24f08d78bc1dea5af9fed438aa76643ad98d1ded57c43ba730b88077f8"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn0-hit-return-end.png",
+      "bytes": 1142267,
+      "sha256": "755a5a5842cf60b58903f4858ad56d2c32a5b085810442f4dabdefc3c6284e81"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn3-hit-approach-50.png",
+      "bytes": 1142275,
+      "sha256": "526be723b81fb45db6682df0a0448f6d70f9bf252aac447be41efb254440e0c0"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn0-hit-approach-50.png",
+      "bytes": 1142275,
+      "sha256": "526be723b81fb45db6682df0a0448f6d70f9bf252aac447be41efb254440e0c0"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn1-hit-approach-50.png",
+      "bytes": 1144583,
+      "sha256": "1c7fcb584d401a6252c1fafeb17d9b4a19c080fbf650524ead86fe2d8fbe8f61"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/battle-full.webm",
+      "bytes": 7737971,
+      "sha256": "cd42391569e68cd99e2b46344280579cbefd5649933ce52bf8d6b56bfa3be7ad"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn3-hit-return-end.png",
+      "bytes": 1146938,
+      "sha256": "dc7d193dfb311fd3b4ee1f86d33f9a07a1f04011dbd7eb3e6e2b1ff0bd8a8c21"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn1-hit-reaction-50.png",
+      "bytes": 1150436,
+      "sha256": "cff8ced280c504775ffd678428af6f8e1565c4c39d7265e8129c408288e0d0b7"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn0-hit-reaction-50.png",
+      "bytes": 1190745,
+      "sha256": "5de7179a874d60cd50affa1271c0a1d0e671845fbf091ef2bc24d891c1a5e71e"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn2-dodge-return-end.png",
+      "bytes": 1142267,
+      "sha256": "755a5a5842cf60b58903f4858ad56d2c32a5b085810442f4dabdefc3c6284e81"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn3-hit-reaction-50.png",
+      "bytes": 1180794,
+      "sha256": "6ea3ce280f4423ba7cc760c908861e8c95d94e2903460d1c3d8fe49451d91674"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn1-hit-impact.png",
+      "bytes": 1145373,
+      "sha256": "697ab9a063e6037292c8b9b25f14f54284919f094ab3c2ae8003debde715e9ef"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn0-hit-impact.png",
+      "bytes": 671067,
+      "sha256": "ad46a2fc1b8ab7c8154503cbe4b4a36a734e196155a69ee1c9d889fd759bc216"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn1-hit-return-end.png",
+      "bytes": 1142254,
+      "sha256": "8de8bce2aec123ac247616bdcb77db1868a366f51bf146c3dee2135ad4757a76"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn2-dodge-impact.png",
+      "bytes": 1182825,
+      "sha256": "f1d1930bc5522e605f222b60486c26317dd0ccca9f68965b9bbcf7d39bfd799d"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn2-dodge-approach-50.png",
+      "bytes": 1142275,
+      "sha256": "526be723b81fb45db6682df0a0448f6d70f9bf252aac447be41efb254440e0c0"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn3-hit-impact.png",
+      "bytes": 1144493,
+      "sha256": "97d20c731cff46b066bd00dd2375f95d1886b1c44ed43d401b74c1def5644d2b"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn3-hit-idle-90.png",
+      "bytes": 1146653,
+      "sha256": "4584a817392ef61ff727e108991f04ecf604e208077f36b8e64d693bd744b5b6"
+    },
+    {
+      "path": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/turn3-hit-idle-50.png",
+      "bytes": 1146930,
+      "sha256": "ef03cfa5b47f9952a4fd4b1c158adddf4c30064332038f262a86eab9cda5b07e"
+    }
+  ]
+}

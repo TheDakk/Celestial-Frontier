@@ -1,0 +1,56 @@
+✖ final-round first prompt carries earlier refusals and actual source/reviewer holds (7.631917ms)
+✔ first-round first prompt excludes future attempts and retry-only guidance (3.019041ms)
+✖ later first-round prompt includes earlier same-round evidence only (3.3215ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 108.391209
+
+✖ failing tests:
+
+test at audits/C243_ALLOUT_20261011/execution/prepare-candidate.test.mjs:44:1
+✖ final-round first prompt carries earlier refusals and actual source/reviewer holds (7.631917ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+    assert.ok(request.repaint.priorRefusals.includes('missing-anatomy: part leg4 (leg4Foot) absent'))
+
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/prepare-candidate.test.mjs:46:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at audits/C243_ALLOUT_20261011/execution/prepare-candidate.test.mjs:61:1
+✖ later first-round prompt includes earlier same-round evidence only (3.3215ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Only six walking legs painted/. Input:
+
+  'FRAMING PRIORITY: One small whole creature in the central 60 percent of a square 1254 by 1254 canvas. Every extremity at least 200 pixels from all edges. Flat pure magenta background, no ground or shadow. Do not enlarge to fill the frame.\n' +
+    '\n' +
+    'REPAINT ATTENTION: Previous paintings failed to expose or preserve these reference regions: leg4. Make the corresponding REAL anatomical structures readable at their true attachments where they exist. These are diagnostic labels, not permission to add anatomy. Species truth has priority: eight short legs.  Preserve naturally short or absent tails and absent external ears. Never invent a missing part to imitate another species. Keep the true tail, feet, limb roots, ear contours and naturally visible far-side parts separately readable wherever biologically possible. No detached strands or islands. Use a fresh composition with more separation between naturally visible near and far appendages; retain natural proportions and all identifying pigments.\n' +
+    '\n' +
+    'Canonical anatomy and kit authority.\n' +
+    '\n' +
+    'TARGETED REPAINT: Expose the eight real walking legs\n' +
+    '\n' +
+    '\n' +
+    'FINAL COMPOSITION CHECK: Paint the animal SMALL, like a miniature specimen in a large empty square. The complete animal including every appendage must fit inside a central box no wider than 650 pixels and no taller than 650 pixels on the native 1254 by 1254 canvas. Leave at least 275 pixels of flat magenta on EVERY side. No close-up. Do not fill the canvas. This is part of the newly generated painting, not a request to resize or pad a finished image.\n'
+
+      at TestContext.<anonymous> (file://~/Projects/celestial-frontier-openai-mac/audits/C243_ALLOUT_20261011/execution/prepare-candidate.test.mjs:64:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'FRAMING PRIORITY: One small whole creature in the central 60 percent of a square 1254 by 1254 canvas. Every extremity at least 200 pixels from all edges. Flat pure magenta background, no ground or shadow. Do not enlarge to fill the frame.\n\nREPAINT ATTENTION: Previous paintings failed to expose or preserve these reference regions: leg4. Make the corresponding REAL anatomical structures readable at their true attachments where they exist. These are diagnostic labels, not permission to add anatomy. Species truth has priority: eight short legs.  Preserve naturally short or absent tails and absent external ears. Never invent a missing part to imitate another species. Keep the true tail, feet, limb roots, ear contours and naturally visible far-side parts separately readable wherever biologically possible. No detached strands or islands. Use a fresh composition with more separation between naturally visible near and far appendages; retain natural proportions and all identifying pigments.\n\nCanonical anatomy and kit authority.\n\nTARGETED REPAINT: Expose the eight real walking legs\n\n\nFINAL COMPOSITION CHECK: Paint the animal SMALL, like a miniature specimen in a large empty square. The complete animal including every appendage must fit inside a central box no wider than 650 pixels and no taller than 650 pixels on the native 1254 by 1254 canvas. Leave at least 275 pixels of flat magenta on EVERY side. No close-up. Do not fill the canvas. This is part of the newly generated painting, not a request to resize or pad a finished image.\n',
+    expected: /Only six walking legs painted/,
+    operator: 'match',
+    diff: 'simple'
+  }

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "c243b07r2c3-03-conch",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/round2/class-fixes/c243b07r2c3-03-conch/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/round2/native/c243b07r2c3-03-conch/report.json"
+  },
+  {
+    "id": "c243b07r2c2-25-forest-elephant",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/round2/class-fixes/c243b07r2c2-25-forest-elephant/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/round2/native/c243b07r2c2-25-forest-elephant/report.json"
+  },
+  {
+    "id": "c243b07r2c3-26-giant-salamander",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/round2/class-fixes/c243b07r2c3-26-giant-salamander/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/round2/native/c243b07r2c3-26-giant-salamander/report.json"
+  },
+  {
+    "id": "c243b07r2c3-31-takin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/batch07/round2/class-fixes/c243b07r2c3-31-takin/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/round2/native/c243b07r2c3-31-takin/report.json"
+  },
+  {
+    "id": "c243b07r2c2-33-wall-lizard",
+    "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r2c2all/c243b07r2c2-33-wall-lizard/fit",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/batch07/round2/native/c243b07r2c2-33-wall-lizard/report.json"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Hoatzin",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Hoatzin/fit",
+    "sourceMasterSha256": "4817f8ad14c72ac7934f0fee7b4da9210d0899d9df2083252c13e22cdc70926d",
+    "preSplitBindingSha256": "b3f3fec61935cf3f687f02e8ced77cace55eba538eb72d49afa1c5622b17d0f1",
+    "pairs": [
+      {
+        "parts": [
+          "near-wing-flight",
+          "tail"
+        ],
+        "evidence": "After D28 ownership correction,2x native still opens the wing-to-tail source edge. The original master shows the folded primary feather stack and tail meeting here with no background gap. Preserve this exact painted edge while leaving distinct near/far wing overlaps independent."
+      }
+    ]
+  },
+  {
+    "name": "Kakapo",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Kakapo/fit",
+    "sourceMasterSha256": "6b64d6e4aac680984d84b5570eea518fcb71e16416c2937963499df8ee720a3d",
+    "preSplitBindingSha256": "b48f8e48c19c609c642d3a3247ba48cc73e8d9dc29f021e09b4bf1463aead5d2",
+    "pairs": [
+      {
+        "parts": [
+          "near-wing-flight",
+          "tail"
+        ],
+        "evidence": "After D28 ownership correction,2x native still opens the wing-to-tail source edge. The original master shows the folded primary feather stack and tail meeting here with no background gap. Preserve this exact painted edge while leaving distinct near/far wing overlaps independent."
+      }
+    ]
+  }
+]

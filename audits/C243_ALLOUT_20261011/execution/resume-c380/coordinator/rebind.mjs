@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {rebindFinished} from '../../../../AI_FINISH_C121_20261001/rebind-batch.mjs';
+const b='audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator';
+const read=p=>JSON.parse(fs.readFileSync(p));
+assert.equal(read(b+'/finished01/result.json').status,'PASS');
+const subjects=read(b+'/finish-subjects.json');
+const rows=await rebindFinished(subjects,b+'/finished01',b+'/rebound01');
+fs.writeFileSync(b+'/rebind-results.json',JSON.stringify(rows,null,2)+'\n',{flag:'wx'});
+assert(rows.length===subjects.length&&rows.every(r=>r.status==='PASS'));
+const originals=read('audits/C243_ALLOUT_20261011/execution/parallel-c262/coordinator/native-dolphin01/plan.json');
+const plan=rows.map(r=>({...originals.find(x=>x.id===r.id),fit:b+'/rebound01/'+r.id,nativeDir:b+'/finished-native01/'+r.id,nativeReport:b+'/finished-native01/'+r.id+'/report.json'}));
+fs.mkdirSync(b+'/finished-native01');
+fs.writeFileSync(b+'/finished-native01/plan.json',JSON.stringify(plan,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify(rows.map(r=>({id:r.id,status:r.status}))));

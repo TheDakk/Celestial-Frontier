@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "redTest": "2 expected failures: previous-round refusal omitted; source visualHold omitted",
+  "greenTest": "3/3 prompt-output controls pass: history included, first-round-first unchanged, future/other-species excluded",
+  "runtimeChanged": false,
+  "nativePass": 4,
+  "nativeTotal": 6,
+  "nativeFailures": {
+    "Gorilla": "approach:walk contact scale-compression bound",
+    "Orangutan": "unresolved ARAP folded triangles 11/12; C223 not authorized"
+  },
+  "next": "Finish four native passes after clean signed checkpoint; continue15 prepared second repaints."
+}

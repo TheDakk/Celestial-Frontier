@@ -1,0 +1,18 @@
+[
+  {
+    "id": "c243b02r2c2-32-river-dolphin",
+    "name": "River Dolphin",
+    "qualifiedSourceFit": "audits/C243_ALLOUT_20261011/execution/parallel-c262/w1-jaw/candidate01/fit",
+    "sourceStaticReport": "audits/C243_ALLOUT_20261011/execution/parallel-c262/w1-jaw/static.json",
+    "sourceNativeReport": "audits/C243_ALLOUT_20261011/execution/parallel-c262/coordinator/native-dolphin01/c243b02r2c2-32-river-dolphin/report.json",
+    "checkpointReview": "audits/C243_ALLOUT_20261011/execution/parallel-c262/w2-checkpoint/visual-review.json",
+    "finishedMaster": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01/c243b02r2c2-32-river-dolphin-finished.png",
+    "finishReceipt": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01/c243b02r2c2-32-river-dolphin-receipt.json",
+    "finishResult": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished01/result.json",
+    "fit": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/rebound01/c243b02r2c2-32-river-dolphin",
+    "nativeDir": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin",
+    "nativeReport": "audits/C243_ALLOUT_20261011/execution/resume-c380/coordinator/finished-native01/c243b02r2c2-32-river-dolphin/report.json",
+    "visualReview": "audits/C243_ALLOUT_20261011/execution/resume-c380/w3-finished/visual-review.json",
+    "status": "READY_FOR_CLAUDE"
+  }
+]

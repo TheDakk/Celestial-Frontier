@@ -1,0 +1,520 @@
+[
+  {
+    "name": "Manatee",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c2-18-manatee/fit",
+    "sourceMasterSha256": "90f1de8892383df758b8e123fda5dc7a51f08beefbe8d1b9788d4c6e06dbb04a",
+    "preSplitBindingSha256": "21f0ebe3deb4778fea19b0f2e870ed3814928f09d04b4b110e3b7c06498f0302",
+    "pairs": [
+      {
+        "parts": [
+          "body-0",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          803,
+          481,
+          881,
+          492
+        ]
+      },
+      {
+        "parts": [
+          "body-0",
+          "head"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          861,
+          557,
+          899,
+          651
+        ]
+      },
+      {
+        "parts": [
+          "body-1",
+          "body-5"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          686,
+          606,
+          688,
+          710
+        ]
+      },
+      {
+        "parts": [
+          "body-2",
+          "body-5"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          603,
+          467,
+          688,
+          712
+        ]
+      },
+      {
+        "parts": [
+          "body-2",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          612,
+          466,
+          706,
+          485
+        ]
+      },
+      {
+        "parts": [
+          "body-3",
+          "body-5"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          549,
+          485,
+          623,
+          712
+        ]
+      },
+      {
+        "parts": [
+          "body-3",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          549,
+          485,
+          614,
+          500
+        ]
+      },
+      {
+        "parts": [
+          "body-4",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          476,
+          502,
+          540,
+          530
+        ]
+      },
+      {
+        "parts": [
+          "body-5",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          424,
+          477,
+          616,
+          560
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          881,
+          492,
+          920,
+          500
+        ]
+      },
+      {
+        "parts": [
+          "dorsal",
+          "head"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          920,
+          500,
+          952,
+          506
+        ]
+      },
+      {
+        "parts": [
+          "body-0",
+          "far-pectoral"
+        ],
+        "sourceBbox": [
+          809,
+          597,
+          878,
+          686
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "body-0",
+          "near-pectoral"
+        ],
+        "sourceBbox": [
+          798,
+          555,
+          864,
+          617
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "body-1",
+          "near-pectoral"
+        ],
+        "sourceBbox": [
+          688,
+          519,
+          806,
+          617
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "body-2",
+          "near-pectoral"
+        ],
+        "sourceBbox": [
+          630,
+          516,
+          690,
+          591
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "far-pectoral",
+          "head"
+        ],
+        "sourceBbox": [
+          865,
+          597,
+          872,
+          614
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      }
+    ]
+  },
+  {
+    "name": "Pilot Whale",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c1-24-pilot-whale/fit",
+    "sourceMasterSha256": "878824e4d002298964be5c6301b54b62face861ba614413579c2384b528cc678",
+    "preSplitBindingSha256": "6b64f61ab92466afb2d01d894c22316fa7800abd3ebec7dc58c2b5c3e5be2306",
+    "pairs": [
+      {
+        "parts": [
+          "body-0",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          784,
+          514,
+          898,
+          519
+        ]
+      },
+      {
+        "parts": [
+          "body-0",
+          "head"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          879,
+          514,
+          898,
+          667
+        ]
+      },
+      {
+        "parts": [
+          "body-2",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          659,
+          487,
+          769,
+          528
+        ]
+      },
+      {
+        "parts": [
+          "body-3",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          610,
+          493,
+          671,
+          554
+        ]
+      },
+      {
+        "parts": [
+          "body-4",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          508,
+          554,
+          610,
+          586
+        ]
+      },
+      {
+        "parts": [
+          "body-5",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          459,
+          586,
+          507.9999999999999,
+          603
+        ]
+      },
+      {
+        "parts": [
+          "dorsal",
+          "head"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          898,
+          508,
+          947,
+          514
+        ]
+      },
+      {
+        "parts": [
+          "body-0",
+          "far-pectoral"
+        ],
+        "sourceBbox": [
+          841,
+          641,
+          881,
+          682
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "body-0",
+          "near-pectoral"
+        ],
+        "sourceBbox": [
+          775,
+          567,
+          883,
+          653
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "body-1",
+          "near-pectoral"
+        ],
+        "sourceBbox": [
+          699,
+          556,
+          781,
+          642
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "body-2",
+          "near-pectoral"
+        ],
+        "sourceBbox": [
+          698,
+          558,
+          699,
+          582
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "far-pectoral",
+          "head"
+        ],
+        "sourceBbox": [
+          881,
+          626,
+          887,
+          641
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "head",
+          "near-pectoral"
+        ],
+        "sourceBbox": [
+          883,
+          624,
+          883,
+          626
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      }
+    ]
+  },
+  {
+    "name": "River Dolphin",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c2-32-river-dolphin/fit",
+    "sourceMasterSha256": "f718a0ad8e6f8765959f8d105988887be37636ca8a3903dc64900466cbe1345a",
+    "preSplitBindingSha256": "37651f79d083b5898888507890f33fba98723eed835457b7a233e64fb660fb7d",
+    "pairs": [
+      {
+        "parts": [
+          "dorsal",
+          "spine2"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          550,
+          519,
+          726,
+          537
+        ]
+      },
+      {
+        "parts": [
+          "dorsal",
+          "spine3"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          479,
+          504,
+          550,
+          532
+        ]
+      },
+      {
+        "parts": [
+          "dorsal",
+          "spine4"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          498,
+          508,
+          528,
+          520
+        ]
+      },
+      {
+        "parts": [
+          "head",
+          "spine0"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          802,
+          580,
+          875,
+          652
+        ]
+      },
+      {
+        "parts": [
+          "far-pectoral",
+          "head"
+        ],
+        "sourceBbox": [
+          808,
+          652,
+          809,
+          654
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "far-pectoral",
+          "spine0"
+        ],
+        "sourceBbox": [
+          746,
+          652,
+          808,
+          699
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "far-pectoral",
+          "spine1"
+        ],
+        "sourceBbox": [
+          732,
+          661,
+          796,
+          752
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "near-pectoral",
+          "spine0"
+        ],
+        "sourceBbox": [
+          729,
+          648,
+          783,
+          706
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      },
+      {
+        "parts": [
+          "near-pectoral",
+          "spine1"
+        ],
+        "sourceBbox": [
+          703,
+          688,
+          732,
+          735
+        ],
+        "evidence": "2x original pectoral-part inspection shows this boundary traverses uninterrupted flank skin, not an independently projected distal flipper. Close source continuity without joining the two pectoral surfaces."
+      }
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "homePathsScrubbed": [
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c192creaturesupply-24-buffalo/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c202creaturesupply-21-goat/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c203creaturesupply-01-water-buffalo/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c203creaturesupplyb-01-okapi/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c213originals-09-kinkajou/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c243b01r1c2-15-camel/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c243b07r1c1-01-abalone/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/c243b07r1c1-05-limpet/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2c110-20-takin/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2c114-01-forest-elephant/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2c59-03-bison/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/ai-finish/native-01/g2referencesc62-06-dog/report.json",
+    "audits/C243_ALLOUT_20261011/execution/batch07/c243-b07-finish-01.log",
+    "audits/C243_ALLOUT_20261011/execution/batch07/c243-b07-finish-02.log",
+    "audits/C243_ALLOUT_20261011/execution/batch07/c243-b07-finish-03.log"
+  ],
+  "absoluteSymlinks": 0,
+  "protectedRecordsAndBindingsNotEditedByHygiene": true,
+  "selectedOriginalMasters": 20,
+  "generatorChecks": 22,
+  "finishedFramesRetained": 60,
+  "runtimeChanges": false
+}

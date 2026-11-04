@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Buffalo",
+    "id": "c192creaturesupply-24-buffalo",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c192creaturesupply-24-buffalo/fit",
+    "priorStatic": "PASS_STATIC"
+  },
+  {
+    "name": "Water Buffalo",
+    "id": "c203creaturesupply-01-water-buffalo",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c203creaturesupply-01-water-buffalo/fit",
+    "priorStatic": "PASS_STATIC"
+  },
+  {
+    "name": "Goat",
+    "id": "c202creaturesupply-21-goat",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c202creaturesupply-21-goat/fit",
+    "priorStatic": "RED"
+  },
+  {
+    "name": "Okapi",
+    "id": "c203creaturesupplyb-01-okapi",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c203creaturesupplyb-01-okapi/fit",
+    "priorStatic": "PASS_STATIC"
+  },
+  {
+    "name": "Takin",
+    "id": "g2c110-20-takin",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2c110-20-takin/fit",
+    "priorStatic": "RED"
+  },
+  {
+    "name": "Forest Elephant",
+    "id": "g2c114-01-forest-elephant",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2c114-01-forest-elephant/fit",
+    "priorStatic": "RED"
+  },
+  {
+    "name": "Bison",
+    "id": "g2c59-03-bison",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2c59-03-bison/fit",
+    "priorStatic": "RED"
+  },
+  {
+    "name": "Shrew",
+    "id": "g2c98-19-shrew",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2c98-19-shrew/fit",
+    "priorStatic": "RED"
+  },
+  {
+    "name": "Dog",
+    "id": "g2referencesc62-06-dog",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2referencesc62-06-dog/fit",
+    "priorStatic": "RED"
+  },
+  {
+    "name": "Kinkajou",
+    "id": "c213originals-09-kinkajou",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c213originals-09-kinkajou/fit",
+    "priorStatic": "PASS_STATIC"
+  },
+  {
+    "name": "Camel",
+    "id": "c243b01r1c2-15-camel",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/batch01/ai-finish/rebound-01/c243b01r1c2-15-camel",
+    "priorStatic": "PASS_STATIC"
+  }
+]

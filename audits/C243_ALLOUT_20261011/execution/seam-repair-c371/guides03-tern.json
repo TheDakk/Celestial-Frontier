@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Tern",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Tern/fit",
+    "sourceMasterSha256": "9a37ad985a2ddc27adefb0fd9b8237463214fb174ef824d610b9d5ebe0f50a6e",
+    "preSplitBindingSha256": "735eed1b6b70c2d83cc50f28e47cd5bb9bbe1d557ab74125e803b2e86771f906",
+    "pairs": [
+      {
+        "parts": [
+          "body",
+          "neck-lower"
+        ],
+        "evidence": "The D28 film retains a tiny attached shoulder notch at the continuous white throat/torso edge,not the independent distal wing. Preserve only this source neck-to-body boundary."
+      },
+      {
+        "parts": [
+          "near-wing-root",
+          "neck-lower"
+        ],
+        "evidence": "Four source-alpha shoulder edge pixels meet the throat beside the notch. This proximal attachment belongs to continuous neck/shoulder skin; leave all distal flight and tail overlaps separate."
+      }
+    ]
+  }
+]

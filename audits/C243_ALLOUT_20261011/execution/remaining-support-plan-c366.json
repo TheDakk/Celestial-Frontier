@@ -1,0 +1,400 @@
+{
+  "status": "SKIP_UNTIL_QUALIFIED_REFERENCE_PACKET_OR_COMPILER_SUPPORT",
+  "requestedIn": "C366",
+  "supported": {
+    "6": [
+      {
+        "index": 2,
+        "name": "Deer Tick",
+        "family": "arachnid"
+      },
+      {
+        "index": 3,
+        "name": "Harvestman",
+        "family": "arachnid"
+      },
+      {
+        "index": 4,
+        "name": "Mite",
+        "family": "arachnid"
+      },
+      {
+        "index": 5,
+        "name": "Pseudoscorpion",
+        "family": "arachnid"
+      },
+      {
+        "index": 7,
+        "name": "Sea Spider",
+        "family": "arachnid"
+      },
+      {
+        "index": 8,
+        "name": "Camel Spider",
+        "family": "arachnid"
+      },
+      {
+        "index": 9,
+        "name": "Baboon",
+        "family": "primate"
+      },
+      {
+        "index": 10,
+        "name": "Chimpanzee",
+        "family": "primate"
+      },
+      {
+        "index": 11,
+        "name": "Gibbon",
+        "family": "primate"
+      },
+      {
+        "index": 12,
+        "name": "Lemur",
+        "family": "primate"
+      },
+      {
+        "index": 13,
+        "name": "Mandrill",
+        "family": "primate"
+      },
+      {
+        "index": 14,
+        "name": "Marmoset",
+        "family": "primate"
+      },
+      {
+        "index": 15,
+        "name": "Gorilla",
+        "family": "primate"
+      },
+      {
+        "index": 16,
+        "name": "Monkey",
+        "family": "primate"
+      },
+      {
+        "index": 17,
+        "name": "Orangutan",
+        "family": "primate"
+      },
+      {
+        "index": 18,
+        "name": "Spider Monkey",
+        "family": "primate"
+      },
+      {
+        "index": 19,
+        "name": "Boa",
+        "family": "serpent"
+      },
+      {
+        "index": 20,
+        "name": "Caecilian",
+        "family": "serpent"
+      },
+      {
+        "index": 21,
+        "name": "Cobra",
+        "family": "serpent"
+      },
+      {
+        "index": 22,
+        "name": "Mountain Viper",
+        "family": "serpent"
+      },
+      {
+        "index": 23,
+        "name": "Rattlesnake",
+        "family": "serpent"
+      },
+      {
+        "index": 24,
+        "name": "Snake",
+        "family": "serpent"
+      }
+    ],
+    "7": [
+      {
+        "index": 2,
+        "name": "Chiton",
+        "family": "gastropod"
+      },
+      {
+        "index": 3,
+        "name": "Conch",
+        "family": "gastropod"
+      },
+      {
+        "index": 25,
+        "name": "Forest Elephant",
+        "family": "quadruped"
+      },
+      {
+        "index": 26,
+        "name": "Giant Salamander",
+        "family": "quadruped"
+      },
+      {
+        "index": 27,
+        "name": "Goat",
+        "family": "quadruped"
+      },
+      {
+        "index": 30,
+        "name": "Shrew",
+        "family": "quadruped"
+      },
+      {
+        "index": 31,
+        "name": "Takin",
+        "family": "quadruped"
+      },
+      {
+        "index": 32,
+        "name": "Vole",
+        "family": "quadruped"
+      },
+      {
+        "index": 33,
+        "name": "Wall Lizard",
+        "family": "quadruped"
+      }
+    ]
+  },
+  "blocked": [
+    {
+      "index": 1,
+      "name": "Tube Worm",
+      "family": "annelid",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "Dakk/C259 worm reference packet required"
+    },
+    {
+      "index": 6,
+      "name": "Scorpion",
+      "family": "arachnid",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "index": 25,
+      "name": "Clam",
+      "family": "bivalve",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "index": 26,
+      "name": "Giant Clam",
+      "family": "bivalve",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "index": 27,
+      "name": "Oyster",
+      "family": "bivalve",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "index": 28,
+      "name": "Razor Clam",
+      "family": "bivalve",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "index": 29,
+      "name": "Scallop",
+      "family": "bivalve",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family bivalve"
+    },
+    {
+      "index": 30,
+      "name": "Coconut Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "index": 31,
+      "name": "Fiddler Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "status": "COMPILER_BLOCKED",
+      "reason": "Existing canonical compiler does not support this species; no unchanged compiler retry"
+    },
+    {
+      "index": 32,
+      "name": "Freshwater Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "index": 33,
+      "name": "Mud Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "index": 34,
+      "name": "Vent Crab",
+      "family": "brachyuran",
+      "batch": 6,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family brachyuran"
+    },
+    {
+      "index": 4,
+      "name": "Land Snail",
+      "family": "gastropod",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family gastropod"
+    },
+    {
+      "index": 6,
+      "name": "Crayfish",
+      "family": "crustacean-clawed",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed"
+    },
+    {
+      "index": 7,
+      "name": "Hermit Crab",
+      "family": "crustacean-clawed",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed"
+    },
+    {
+      "index": 8,
+      "name": "Lobster",
+      "family": "crustacean-clawed",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family crustacean-clawed"
+    },
+    {
+      "index": 9,
+      "name": "Fruit Bat",
+      "family": "flyer-membrane",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family flyer-membrane"
+    },
+    {
+      "index": 10,
+      "name": "Insect-Eating Bat",
+      "family": "flyer-membrane",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "index": 11,
+      "name": "Vampire Bat",
+      "family": "flyer-membrane",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "index": 12,
+      "name": "Centipede",
+      "family": "myriapod",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family myriapod"
+    },
+    {
+      "index": 13,
+      "name": "Giant Centipede",
+      "family": "myriapod",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "index": 14,
+      "name": "Millipede",
+      "family": "myriapod",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no same-family reference supplies the declared target landmark inventory"
+    },
+    {
+      "index": 15,
+      "name": "Pyrosome",
+      "family": "colonial-filter",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family colonial-filter"
+    },
+    {
+      "index": 16,
+      "name": "Salp",
+      "family": "colonial-filter",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family colonial-filter"
+    },
+    {
+      "index": 17,
+      "name": "Barnacle",
+      "family": "barnacle",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family barnacle"
+    },
+    {
+      "index": 18,
+      "name": "Fly Larvae",
+      "family": "larva",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family larva"
+    },
+    {
+      "index": 19,
+      "name": "Tardigrade",
+      "family": "lobopod",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family lobopod"
+    },
+    {
+      "index": 20,
+      "name": "Sea Squirt",
+      "family": "sessile-filter",
+      "batch": 7,
+      "status": "COMPILER_BLOCKED",
+      "reason": "Existing canonical compiler does not support this species; no unchanged compiler retry"
+    },
+    {
+      "index": 21,
+      "name": "Horseshoe Crab",
+      "family": "xiphosuran",
+      "batch": 7,
+      "status": "REFERENCE_BLOCKED",
+      "reason": "no-reference: no other hand-authored subject of family xiphosuran"
+    }
+  ],
+  "rule": "Dakk latest no-reference skip applies to measured family/inventory refusals, not only four example family names; no additional repaint without qualified packet. Unchanged pool/rulers."
+}

@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "subjects": [
+    {
+      "id": "c243b02r2c2-32-river-dolphin",
+      "status": "PASS",
+      "alphaChanges": 0,
+      "protectedChanges": 0,
+      "alphaChanged": 0,
+      "outsideChanged": 0
+    },
+    {
+      "id": "c243b02r2c1-24-pilot-whale",
+      "status": "PASS",
+      "alphaChanges": 0,
+      "protectedChanges": 0,
+      "alphaChanged": 0,
+      "outsideChanged": 0
+    },
+    {
+      "id": "c243b02r2c2-18-manatee",
+      "status": "PASS",
+      "alphaChanges": 0,
+      "protectedChanges": 0,
+      "alphaChanged": 0,
+      "outsideChanged": 0
+    },
+    {
+      "id": "c243b01r2c3-15-camel",
+      "status": "PASS",
+      "alphaChanges": 0,
+      "protectedChanges": 0,
+      "alphaChanged": 0,
+      "outsideChanged": 0
+    },
+    {
+      "id": "c243b04r2c1-18-kakapo",
+      "status": "PASS",
+      "alphaChanges": 0,
+      "protectedChanges": 0,
+      "alphaChanged": 0,
+      "outsideChanged": 0
+    },
+    {
+      "id": "c243b04r2c2-12-tern",
+      "status": "PASS",
+      "alphaChanges": 0,
+      "protectedChanges": 0,
+      "alphaChanged": 0,
+      "outsideChanged": 0
+    },
+    {
+      "id": "c243b03r1c3-24-ladybug",
+      "status": "PASS",
+      "alphaChanges": 0,
+      "protectedChanges": 0,
+      "alphaChanged": 0,
+      "outsideChanged": 0
+    },
+    {
+      "id": "c243b04r2c1-17-hoatzin",
+      "status": "PASS",
+      "alphaChanges": 0,
+      "protectedChanges": 0,
+      "alphaChanged": 0,
+      "outsideChanged": 0
+    }
+  ],
+  "geometryByteIdentical": true,
+  "recompiledPaintSkinIdentical": true,
+  "recordUnchanged": true
+}

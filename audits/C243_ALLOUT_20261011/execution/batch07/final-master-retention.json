@@ -1,0 +1,131 @@
+{
+  "status": "PASS",
+  "records": 24,
+  "uniqueMasters": 12,
+  "negativeControls": [
+    "missing indexed master refused",
+    "changed indexed bytes refused"
+  ],
+  "rows": [
+    {
+      "id": "c243b07r1c1-01-abalone",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-01-abalone/packet/master.png",
+      "sha256": "164c80945b16468f4106ab982b19d58fdd94948afa38c5170cdca155126f2bf4"
+    },
+    {
+      "id": "c243b07r1c1-05-limpet",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-05-limpet/packet/master.png",
+      "sha256": "e243fa4b6b665b709107ec33010c2d2fa0e51dff5d34e8df74e41cac79756de3"
+    },
+    {
+      "id": "c192creaturesupply-24-buffalo",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c192creaturesupply-24-buffalo/packet/master.png",
+      "sha256": "621ad155c78f33340abf4d87b550801f21a736e14bebc25a95f0d903196bfed8"
+    },
+    {
+      "id": "c203creaturesupply-01-water-buffalo",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c203creaturesupply-01-water-buffalo/packet/master.png",
+      "sha256": "7700e76ce80161e6e12b1ab9b00c5b9ac6a6fe04d932d8440df5860c503ab3a9"
+    },
+    {
+      "id": "c202creaturesupply-21-goat",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c202creaturesupply-21-goat/packet/master.png",
+      "sha256": "5bf34cad2bc6b98a8a7c3c834623bb45c2553f7c96d1004f32162c70af2b9caa"
+    },
+    {
+      "id": "c203creaturesupplyb-01-okapi",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c203creaturesupplyb-01-okapi/packet/master.png",
+      "sha256": "c643d4ff0239e0bbf2150defa24894fd13f9d82570207c44bf7b3a9333da134d"
+    },
+    {
+      "id": "g2c110-20-takin",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2c110-20-takin/packet/master.png",
+      "sha256": "7cb4740345f2638f6b02932c31d2db58bb6223b8752707a58754a1810b2904af"
+    },
+    {
+      "id": "g2c114-01-forest-elephant",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2c114-01-forest-elephant/packet/master.png",
+      "sha256": "1d68aa6a1fb850531e227cd356a8cd14da33c0bf815c4cd5a6eedd3b8277d754"
+    },
+    {
+      "id": "g2c59-03-bison",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2c59-03-bison/packet/master.png",
+      "sha256": "afb8e5a6afad83c96d6c9226239e9ff3c9ef1692d76ddbeba0939475fa8c31d5"
+    },
+    {
+      "id": "g2referencesc62-06-dog",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2referencesc62-06-dog/packet/master.png",
+      "sha256": "d7dd14c398a7e35a786fab91f7c593d8efdd7b0442f3198c26b4757f0addfa25"
+    },
+    {
+      "id": "c213originals-09-kinkajou",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c213originals-09-kinkajou/packet/master.png",
+      "sha256": "81db16a82a459aa8c3f24ca0aa93853cb56e076bef615a0fb0cf544ab7634017"
+    },
+    {
+      "id": "c243b01r1c2-15-camel",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c2g12to15/c243b01r1c2-15-camel/packet/master.png",
+      "sha256": "13d5a2eabd7f2eca8fbe2ef6f66ccb9722ee2fccbabc0fa3a529b927f5c48193"
+    },
+    {
+      "id": "c243b07r1c1-01-abalone",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-01-abalone/packet/master.png",
+      "sha256": "164c80945b16468f4106ab982b19d58fdd94948afa38c5170cdca155126f2bf4"
+    },
+    {
+      "id": "c243b07r1c1-05-limpet",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07r1c1a/c243b07r1c1-05-limpet/packet/master.png",
+      "sha256": "e243fa4b6b665b709107ec33010c2d2fa0e51dff5d34e8df74e41cac79756de3"
+    },
+    {
+      "id": "c192creaturesupply-24-buffalo",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c192creaturesupply-24-buffalo/packet/master.png",
+      "sha256": "621ad155c78f33340abf4d87b550801f21a736e14bebc25a95f0d903196bfed8"
+    },
+    {
+      "id": "c203creaturesupply-01-water-buffalo",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c203creaturesupply-01-water-buffalo/packet/master.png",
+      "sha256": "7700e76ce80161e6e12b1ab9b00c5b9ac6a6fe04d932d8440df5860c503ab3a9"
+    },
+    {
+      "id": "c202creaturesupply-21-goat",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c202creaturesupply-21-goat/packet/master.png",
+      "sha256": "5bf34cad2bc6b98a8a7c3c834623bb45c2553f7c96d1004f32162c70af2b9caa"
+    },
+    {
+      "id": "c203creaturesupplyb-01-okapi",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c203creaturesupplyb-01-okapi/packet/master.png",
+      "sha256": "c643d4ff0239e0bbf2150defa24894fd13f9d82570207c44bf7b3a9333da134d"
+    },
+    {
+      "id": "g2c110-20-takin",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2c110-20-takin/packet/master.png",
+      "sha256": "7cb4740345f2638f6b02932c31d2db58bb6223b8752707a58754a1810b2904af"
+    },
+    {
+      "id": "g2c114-01-forest-elephant",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2c114-01-forest-elephant/packet/master.png",
+      "sha256": "1d68aa6a1fb850531e227cd356a8cd14da33c0bf815c4cd5a6eedd3b8277d754"
+    },
+    {
+      "id": "g2c59-03-bison",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2c59-03-bison/packet/master.png",
+      "sha256": "afb8e5a6afad83c96d6c9226239e9ff3c9ef1692d76ddbeba0939475fa8c31d5"
+    },
+    {
+      "id": "g2referencesc62-06-dog",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/g2referencesc62-06-dog/packet/master.png",
+      "sha256": "d7dd14c398a7e35a786fab91f7c593d8efdd7b0442f3198c26b4757f0addfa25"
+    },
+    {
+      "id": "c213originals-09-kinkajou",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b07before/c213originals-09-kinkajou/packet/master.png",
+      "sha256": "81db16a82a459aa8c3f24ca0aa93853cb56e076bef615a0fb0cf544ab7634017"
+    },
+    {
+      "id": "c243b01r1c2-15-camel",
+      "source": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b01r1c2g12to15/c243b01r1c2-15-camel/packet/master.png",
+      "sha256": "13d5a2eabd7f2eca8fbe2ef6f66ccb9722ee2fccbabc0fa3a529b927f5c48193"
+    }
+  ]
+}

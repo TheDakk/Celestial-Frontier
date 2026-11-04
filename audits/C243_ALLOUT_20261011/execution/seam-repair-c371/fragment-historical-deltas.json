@@ -1,0 +1,386 @@
+[
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c1-26-moth",
+    "before": {
+      "id": "c243b03r1c1-26-moth",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c1-26-moth",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 633,
+            "box": [
+              438,
+              264,
+              462,
+              340
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 106,
+        "turn3-hit-idle-90": 104
+      },
+      "fragmentTotal": 1
+    },
+    "after": {
+      "id": "c243b03r1c1-26-moth",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c1-26-moth",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 633,
+            "box": [
+              438,
+              264,
+              462,
+              340
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 105,
+        "turn3-hit-idle-90": 104
+      },
+      "fragmentTotal": 1
+    }
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-26-moth",
+    "before": {
+      "id": "c243b03r1c1-26-moth",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-26-moth",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 633,
+            "box": [
+              438,
+              264,
+              462,
+              340
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 109,
+        "turn3-hit-idle-90": 108
+      },
+      "fragmentTotal": 1
+    },
+    "after": {
+      "id": "c243b03r1c1-26-moth",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c1-26-moth",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 633,
+            "box": [
+              438,
+              264,
+              462,
+              340
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 108,
+        "turn3-hit-idle-90": 108
+      },
+      "fragmentTotal": 1
+    }
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c2-20-stonefly",
+    "before": {
+      "id": "c243b03r1c2-20-stonefly",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c2-20-stonefly",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 213,
+            "box": [
+              386,
+              251,
+              418,
+              277
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 0,
+        "turn3-hit-idle-90": 0
+      },
+      "fragmentTotal": 1
+    },
+    "after": {
+      "id": "c243b03r1c2-20-stonefly",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c2-20-stonefly",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 250,
+            "box": [
+              386,
+              251,
+              418,
+              277
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 0,
+        "turn3-hit-idle-90": 0
+      },
+      "fragmentTotal": 1
+    }
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-20-stonefly",
+    "before": {
+      "id": "c243b03r1c2-20-stonefly",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-20-stonefly",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 213,
+            "box": [
+              386,
+              251,
+              418,
+              277
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 0,
+        "turn3-hit-idle-90": 0
+      },
+      "fragmentTotal": 1
+    },
+    "after": {
+      "id": "c243b03r1c2-20-stonefly",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c2-20-stonefly",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 250,
+            "box": [
+              386,
+              251,
+              418,
+              277
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 0,
+        "turn3-hit-idle-90": 0
+      },
+      "fragmentTotal": 1
+    }
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-05-deep-sea-fish",
+    "before": {
+      "id": "c243b02r1c1-05-deep-sea-fish",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-05-deep-sea-fish",
+      "key": "earth-temperate-v1|water|water",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 189,
+        "turn3-hit-idle-90": 188
+      },
+      "fragmentTotal": 0
+    },
+    "after": {
+      "id": "c243b02r1c1-05-deep-sea-fish",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch02/ai-finish/native-01/c243b02r1c1-05-deep-sea-fish",
+      "key": "earth-temperate-v1|water|water",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 190,
+        "turn3-hit-idle-90": 189
+      },
+      "fragmentTotal": 0
+    }
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b02r1c1-09-flying-fish",
+    "before": {
+      "id": "c243b02r1c1-09-flying-fish",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b02r1c1-09-flying-fish",
+      "key": "earth-temperate-v1|water|water",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 32,
+        "turn3-hit-idle-90": 26
+      },
+      "fragmentTotal": 0
+    },
+    "after": {
+      "id": "c243b02r1c1-09-flying-fish",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b02r1c1-09-flying-fish",
+      "key": "earth-temperate-v1|water|water",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 32,
+        "turn3-hit-idle-90": 25
+      },
+      "fragmentTotal": 0
+    }
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c3-24-ladybug",
+    "before": {
+      "id": "c243b03r1c3-24-ladybug",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c3-24-ladybug",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 212,
+            "box": [
+              559,
+              335,
+              596,
+              352
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": [
+          {
+            "px": 212,
+            "box": [
+              559,
+              335,
+              596,
+              352
+            ]
+          }
+        ]
+      },
+      "pink": {
+        "turn3-hit-idle-50": 48,
+        "turn3-hit-idle-90": 46
+      },
+      "fragmentTotal": 2
+    },
+    "after": {
+      "id": "c243b03r1c3-24-ladybug",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/ai-finish/native-01/c243b03r1c3-24-ladybug",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 48,
+        "turn3-hit-idle-90": 46
+      },
+      "fragmentTotal": 0
+    }
+  },
+  {
+    "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c3-24-ladybug",
+    "before": {
+      "id": "c243b03r1c3-24-ladybug",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c3-24-ladybug",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [
+          {
+            "px": 212,
+            "box": [
+              559,
+              335,
+              596,
+              352
+            ]
+          }
+        ],
+        "turn3-hit-idle-90": [
+          {
+            "px": 212,
+            "box": [
+              559,
+              335,
+              596,
+              352
+            ]
+          }
+        ]
+      },
+      "pink": {
+        "turn3-hit-idle-50": 6,
+        "turn3-hit-idle-90": 6
+      },
+      "fragmentTotal": 2
+    },
+    "after": {
+      "id": "c243b03r1c3-24-ladybug",
+      "film": "audits/C243_ALLOUT_20261011/execution/batch03/native/c243b03r1c3-24-ladybug",
+      "key": "earth-temperate-v1|ground|ground",
+      "status": "CHECKED",
+      "fragments": {
+        "turn3-hit-idle-50": [],
+        "turn3-hit-idle-90": []
+      },
+      "pink": {
+        "turn3-hit-idle-50": 6,
+        "turn3-hit-idle-90": 6
+      },
+      "fragmentTotal": 0
+    }
+  }
+]

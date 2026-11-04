@@ -1,0 +1,11 @@
+✔ final-round first prompt carries earlier refusals and actual source/reviewer holds (3.696333ms)
+✔ first-round first prompt excludes future attempts and retry-only guidance (2.368583ms)
+✔ later first-round prompt includes earlier same-round evidence only (2.21425ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 99.356334

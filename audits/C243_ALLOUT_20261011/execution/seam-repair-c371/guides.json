@@ -1,0 +1,755 @@
+[
+  {
+    "name": "Camel",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/batch01/round2/class-fixes/c243b01r2c3-15-camel/fit",
+    "sourceMasterSha256": "367146f9fa4a1543b476d73bde1f07a01d694824ca7ce87c4a3af8f1f42ae342",
+    "preSplitBindingSha256": "a8733812c8452ab30a2c0cd646559f81d2af9265cf8ba0b350b5bb5c564cb3e3",
+    "pairs": [
+      {
+        "parts": [
+          "neck",
+          "spine"
+        ],
+        "evidence": "Continuous hump/trunk paint has no anatomical opening; serial axial masks cross at the rear hump and belly.",
+        "sourceBbox": [
+          503,
+          418,
+          525,
+          455
+        ]
+      },
+      {
+        "parts": [
+          "root",
+          "spine"
+        ],
+        "evidence": "Continuous hump/trunk paint has no anatomical opening; serial axial masks cross at the rear hump and belly.",
+        "sourceBbox": [
+          516,
+          555,
+          535,
+          570
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Manatee",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c2-18-manatee/fit",
+    "sourceMasterSha256": "90f1de8892383df758b8e123fda5dc7a51f08beefbe8d1b9788d4c6e06dbb04a",
+    "preSplitBindingSha256": "21f0ebe3deb4778fea19b0f2e870ed3814928f09d04b4b110e3b7c06498f0302",
+    "pairs": [
+      {
+        "parts": [
+          "body-0",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          803,
+          481,
+          881,
+          492
+        ]
+      },
+      {
+        "parts": [
+          "body-0",
+          "head"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          861,
+          557,
+          899,
+          651
+        ]
+      },
+      {
+        "parts": [
+          "body-1",
+          "body-5"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          686,
+          606,
+          688,
+          710
+        ]
+      },
+      {
+        "parts": [
+          "body-2",
+          "body-5"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          603,
+          467,
+          688,
+          712
+        ]
+      },
+      {
+        "parts": [
+          "body-2",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          612,
+          466,
+          706,
+          485
+        ]
+      },
+      {
+        "parts": [
+          "body-3",
+          "body-5"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          549,
+          485,
+          623,
+          712
+        ]
+      },
+      {
+        "parts": [
+          "body-3",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          549,
+          485,
+          614,
+          500
+        ]
+      },
+      {
+        "parts": [
+          "body-4",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          476,
+          502,
+          540,
+          530
+        ]
+      },
+      {
+        "parts": [
+          "body-5",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          424,
+          477,
+          616,
+          560
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          881,
+          492,
+          920,
+          500
+        ]
+      },
+      {
+        "parts": [
+          "dorsal",
+          "head"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          920,
+          500,
+          952,
+          506
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Pilot Whale",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c1-24-pilot-whale/fit",
+    "sourceMasterSha256": "878824e4d002298964be5c6301b54b62face861ba614413579c2384b528cc678",
+    "preSplitBindingSha256": "6b64f61ab92466afb2d01d894c22316fa7800abd3ebec7dc58c2b5c3e5be2306",
+    "pairs": [
+      {
+        "parts": [
+          "body-0",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          784,
+          514,
+          898,
+          519
+        ]
+      },
+      {
+        "parts": [
+          "body-0",
+          "head"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          879,
+          514,
+          898,
+          667
+        ]
+      },
+      {
+        "parts": [
+          "body-2",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          659,
+          487,
+          769,
+          528
+        ]
+      },
+      {
+        "parts": [
+          "body-3",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          610,
+          493,
+          671,
+          554
+        ]
+      },
+      {
+        "parts": [
+          "body-4",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          508,
+          554,
+          610,
+          586
+        ]
+      },
+      {
+        "parts": [
+          "body-5",
+          "dorsal"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          459,
+          586,
+          507.9999999999999,
+          603
+        ]
+      },
+      {
+        "parts": [
+          "dorsal",
+          "head"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          898,
+          508,
+          947,
+          514
+        ]
+      }
+    ]
+  },
+  {
+    "name": "River Dolphin",
+    "sourceFit": "audits/C243_ALLOUT_20261011/execution/batch02/round2/class-fixes/c243b02r2c2-32-river-dolphin/fit",
+    "sourceMasterSha256": "f718a0ad8e6f8765959f8d105988887be37636ca8a3903dc64900466cbe1345a",
+    "preSplitBindingSha256": "37651f79d083b5898888507890f33fba98723eed835457b7a233e64fb660fb7d",
+    "pairs": [
+      {
+        "parts": [
+          "dorsal",
+          "spine2"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          550,
+          519,
+          726,
+          537
+        ]
+      },
+      {
+        "parts": [
+          "dorsal",
+          "spine3"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          479,
+          504,
+          550,
+          532
+        ]
+      },
+      {
+        "parts": [
+          "dorsal",
+          "spine4"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          498,
+          508,
+          528,
+          520
+        ]
+      },
+      {
+        "parts": [
+          "head",
+          "spine0"
+        ],
+        "evidence": "Unbroken axial skin across serial body masks and dorsal back paint; exclude independently projected pectoral overlaps.",
+        "sourceBbox": [
+          802,
+          580,
+          875,
+          652
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ladybug",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b03r1c3g/c243b03r1c3-24-ladybug/fit",
+    "sourceMasterSha256": "c46506bcc25253cd607360162ba872a44207967cb2d26c608948f675c2c52b19",
+    "preSplitBindingSha256": "11fb53df5f170af7e320754d79f515814c28a344a854e77b20898d366b90198d",
+    "pairs": [
+      {
+        "parts": [
+          "abdomen",
+          "body"
+        ],
+        "evidence": "These source masks cut across the same closed elytron shell; it is not a separately visible flight membrane.",
+        "sourceBbox": [
+          400,
+          555,
+          691,
+          690
+        ]
+      },
+      {
+        "parts": [
+          "abdomen",
+          "membrane-near"
+        ],
+        "evidence": "These source masks cut across the same closed elytron shell; it is not a separately visible flight membrane.",
+        "sourceBbox": [
+          401,
+          558,
+          609,
+          679
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "membrane-far"
+        ],
+        "evidence": "These source masks cut across the same closed elytron shell; it is not a separately visible flight membrane.",
+        "sourceBbox": [
+          383,
+          488,
+          568,
+          575
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "membrane-near"
+        ],
+        "evidence": "These source masks cut across the same closed elytron shell; it is not a separately visible flight membrane.",
+        "sourceBbox": [
+          359,
+          551,
+          637,
+          680
+        ]
+      },
+      {
+        "parts": [
+          "membrane-far",
+          "membrane-near"
+        ],
+        "evidence": "These source masks cut across the same closed elytron shell; it is not a separately visible flight membrane.",
+        "sourceBbox": [
+          383,
+          541,
+          597,
+          575
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Hoatzin",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1d/c243b04r2c1-17-hoatzin/fit",
+    "sourceMasterSha256": "4817f8ad14c72ac7934f0fee7b4da9210d0899d9df2083252c13e22cdc70926d",
+    "preSplitBindingSha256": "d504ac658705309c34b6d2f552b85740dacaaafd676e9cd0a4c40993d6d461ea",
+    "pairs": [
+      {
+        "parts": [
+          "beak",
+          "body"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          881,
+          491,
+          934,
+          498
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-root"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          691,
+          522,
+          822,
+          530
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "head"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          814,
+          386,
+          827,
+          441
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-flight"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          263,
+          655,
+          705,
+          740
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-root"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          705,
+          652,
+          780,
+          706
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "neck-lower"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          822,
+          515,
+          825,
+          525
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "neck-upper"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          815,
+          446,
+          881,
+          515
+        ]
+      },
+      {
+        "parts": [
+          "near-wing-root",
+          "neck-lower"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          815,
+          548,
+          817,
+          588
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Kakapo",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c1e/c243b04r2c1-18-kakapo/fallback-1/fit",
+    "sourceMasterSha256": "6b64d6e4aac680984d84b5570eea518fcb71e16416c2937963499df8ee720a3d",
+    "preSplitBindingSha256": "d4818761293e1aaed241ca7414bd9b5044ac5147c0a01352afd2985bf75dffd5",
+    "pairs": [
+      {
+        "parts": [
+          "beak",
+          "body"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          919,
+          412,
+          922,
+          412
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-flight"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          588,
+          431,
+          592,
+          432
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "far-wing-root"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          592,
+          431,
+          733,
+          455
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "head"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          697,
+          403,
+          950,
+          487
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-flight"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          378,
+          618,
+          677,
+          661
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-root"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          677,
+          582,
+          772,
+          618
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "neck-lower"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          935,
+          523,
+          954,
+          548
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "neck-upper"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          733,
+          448,
+          952,
+          488
+        ]
+      },
+      {
+        "parts": [
+          "near-wing-root",
+          "neck-lower"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          772,
+          483,
+          820,
+          544
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Tern",
+    "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-c243b04r2c2c/c243b04r2c2-12-tern/fit",
+    "sourceMasterSha256": "9a37ad985a2ddc27adefb0fd9b8237463214fb174ef824d610b9d5ebe0f50a6e",
+    "preSplitBindingSha256": "d05533fd092b0c68dcd2cc95ede1e78cf240bf63470c8a363a5d631bf664c05f",
+    "pairs": [
+      {
+        "parts": [
+          "body",
+          "far-wing-root"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          737,
+          548,
+          776,
+          557
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "head"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          876,
+          542,
+          882,
+          543
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-flight"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          316,
+          614,
+          716,
+          671
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "near-wing-root"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          716,
+          557,
+          779.9999999999999,
+          650
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "neck-lower"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          775,
+          539,
+          802,
+          608
+        ]
+      },
+      {
+        "parts": [
+          "body",
+          "neck-upper"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          769,
+          534,
+          876,
+          549
+        ]
+      },
+      {
+        "parts": [
+          "near-wing-root",
+          "neck-lower"
+        ],
+        "evidence": "The folded wing and neck meet continuous torso paint; independent near/far wing and distal tail overlaps stay separate.",
+        "sourceBbox": [
+          779,
+          576,
+          780,
+          579
+        ]
+      }
+    ]
+  }
+]

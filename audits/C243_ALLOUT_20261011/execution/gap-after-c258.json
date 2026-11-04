@@ -1,0 +1,4477 @@
+{
+ "schema": "cf.c243-gap/v1",
+ "roster": 631,
+ "doneIncludingPending": 417,
+ "gap": 214,
+ "families": {
+  "quadruped": {
+   "species": 38,
+   "admittedNotAccepted": 7,
+   "intakeRefused": 31,
+   "noMaster": 0
+  },
+  "biped-bird": {
+   "species": 25,
+   "admittedNotAccepted": 8,
+   "intakeRefused": 17,
+   "noMaster": 0
+  },
+  "insect": {
+   "species": 24,
+   "admittedNotAccepted": 4,
+   "intakeRefused": 20,
+   "noMaster": 0
+  },
+  "fish": {
+   "species": 23,
+   "admittedNotAccepted": 1,
+   "intakeRefused": 22,
+   "noMaster": 0
+  },
+  "crustacean-small": {
+   "species": 13,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 13,
+   "noMaster": 0
+  },
+  "hopper": {
+   "species": 12,
+   "admittedNotAccepted": 1,
+   "intakeRefused": 10,
+   "noMaster": 1
+  },
+  "radial": {
+   "species": 11,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 9,
+   "noMaster": 2
+  },
+  "primate": {
+   "species": 10,
+   "admittedNotAccepted": 4,
+   "intakeRefused": 6,
+   "noMaster": 0
+  },
+  "cephalopod": {
+   "species": 8,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 8,
+   "noMaster": 0
+  },
+  "arachnid": {
+   "species": 8,
+   "admittedNotAccepted": 1,
+   "intakeRefused": 6,
+   "noMaster": 1
+  },
+  "annelid": {
+   "species": 7,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 7,
+   "noMaster": 0
+  },
+  "serpent": {
+   "species": 6,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 6,
+   "noMaster": 0
+  },
+  "bivalve": {
+   "species": 5,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 5,
+   "noMaster": 0
+  },
+  "brachyuran": {
+   "species": 5,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 5,
+   "noMaster": 0
+  },
+  "flyer-membrane": {
+   "species": 3,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 3,
+   "noMaster": 0
+  },
+  "gastropod": {
+   "species": 3,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 3,
+   "noMaster": 0
+  },
+  "crustacean-clawed": {
+   "species": 3,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 3,
+   "noMaster": 0
+  },
+  "myriapod": {
+   "species": 3,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 3,
+   "noMaster": 0
+  },
+  "colonial-filter": {
+   "species": 2,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 2,
+   "noMaster": 0
+  },
+  "sessile-filter": {
+   "species": 1,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 1,
+   "noMaster": 0
+  },
+  "barnacle": {
+   "species": 1,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 1,
+   "noMaster": 0
+  },
+  "xiphosuran": {
+   "species": 1,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 1,
+   "noMaster": 0
+  },
+  "larva": {
+   "species": 1,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 1,
+   "noMaster": 0
+  },
+  "lobopod": {
+   "species": 1,
+   "admittedNotAccepted": 0,
+   "intakeRefused": 1,
+   "noMaster": 0
+  }
+ },
+ "species": [
+  {
+   "name": "Coati",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c202creaturesupply-04-coati",
+     "master": "audits/C202_CREATURE_SUPPLY_20261004/04-coati/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "wrong-family",
+      "extra-anatomy (unassigned)"
+     ]
+    },
+    {
+     "id": "g2c87-17-coati",
+     "master": "audits/G2_C87_20260927/17-coati/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "wrong-family",
+      "extra-anatomy (unassigned)"
+     ]
+    },
+    {
+     "id": "c213originals-03-coati",
+     "master": "audits/C213_ORIGINALS_20261004/03-coati/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "wrong-family",
+      "extra-anatomy (unassigned)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Porcupine",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196creaturesupply-12-porcupine",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/12-porcupine/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c202creaturesupply-05-porcupine",
+     "master": "audits/C202_CREATURE_SUPPLY_20261004/05-porcupine/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c106-23-porcupine",
+     "master": "audits/G2_C106_20260927/23-porcupine/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Squirrel",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplya-10-squirrel",
+     "master": "audits/C198_CREATURE_SUPPLY_A_20261003/10-squirrel/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c90-15-squirrel",
+     "master": "audits/G2_C90_20260927/15-squirrel/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-18-squirrel-source02",
+     "master": "audits/C213_ORIGINALS_20261004/18-squirrel-source02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-18-squirrel",
+     "master": "audits/C213_ORIGINALS_20261004/18-squirrel/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Vole",
+   "family": "quadruped",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c198creaturesupplya-12-vole",
+     "master": "audits/C198_CREATURE_SUPPLY_A_20261003/12-vole/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c92-16-vole",
+     "master": "audits/G2_C92_20260927/16-vole/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "c213originals-19-vole",
+     "master": "audits/C213_ORIGINALS_20261004/19-vole/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mole",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplya-13-mole",
+     "master": "audits/C198_CREATURE_SUPPLY_A_20261003/13-mole/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c101-23-mole",
+     "master": "audits/G2_C101_20260927/23-mole/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-10-mole-source02",
+     "master": "audits/C213_ORIGINALS_20261004/10-mole-source02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-10-mole",
+     "master": "audits/C213_ORIGINALS_20261004/10-mole/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Shrew",
+   "family": "quadruped",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c198creaturesupplya-14-shrew",
+     "master": "audits/C198_CREATURE_SUPPLY_A_20261003/14-shrew/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c98-19-shrew",
+     "master": "audits/G2_C98_20260927/19-shrew/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "c213originals-16-shrew",
+     "master": "audits/C213_ORIGINALS_20261004/16-shrew/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Water Vole",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196creaturesupply-03-water-vole",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/03-water-vole/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c203creaturesupply-08-water-vole",
+     "master": "audits/C203_CREATURE_SUPPLY_20261004/08-water-vole/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c118-05-water-vole",
+     "master": "audits/G2_C118_20260927/05-water-vole/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Giant Anteater",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c107-10-giant-anteater",
+     "master": "audits/G2_C107_20260927/10-giant-anteater/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pangolin",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c76-22-pangolin",
+     "master": "audits/G2_C76_20260927/22-pangolin/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Echidna",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c118-10-echidna",
+     "master": "audits/G2_C118_20260927/10-echidna/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Snowshoe Hare",
+   "family": "hopper",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c198creaturesupplya-24-snowshoe-hare",
+     "master": "audits/C198_CREATURE_SUPPLY_A_20261003/24-snowshoe-hare/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "g2c107-13-snowshoe-hare",
+     "master": "audits/G2_C107_20260927/13-snowshoe-hare/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Jerboa",
+   "family": "hopper",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-03-jerboa-02",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/03-jerboa-02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Kangaroo",
+   "family": "hopper",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-04-kangaroo",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/04-kangaroo/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Wallaby",
+   "family": "hopper",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-05-wallaby",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/05-wallaby/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Gorilla",
+   "family": "primate",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-01-gorilla",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/01-gorilla/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "g2c163familyoriginals-04-gorilla",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/04-gorilla/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Chimpanzee",
+   "family": "primate",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-06-chimpanzee",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/06-chimpanzee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c163familyoriginals-05-chimpanzee",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/05-chimpanzee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Orangutan",
+   "family": "primate",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c163familyoriginals-06-orangutan",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/06-orangutan/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Spider Monkey",
+   "family": "primate",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-08-spider-monkey",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/08-spider-monkey/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "g2c163familyoriginals-09-spider-monkey",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/09-spider-monkey/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Baboon",
+   "family": "primate",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-12-baboon",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/12-baboon/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c210originals-02-baboon-framing02",
+     "master": "audits/C210_ORIGINALS_20261004/02-baboon-framing02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c210originals-02-baboon",
+     "master": "audits/C210_ORIGINALS_20261004/02-baboon/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2c163familyoriginals-11-baboon",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/11-baboon/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Monkey",
+   "family": "primate",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c196quadrupedoriginals-20-monkey",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/20-monkey/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Lemur",
+   "family": "primate",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-13-lemur",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/13-lemur/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)"
+     ]
+    },
+    {
+     "id": "g2c163familyoriginals-12-lemur",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/12-lemur/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Gibbon",
+   "family": "primate",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213creaturesupply-19-gibbon",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/19-gibbon/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mandrill",
+   "family": "primate",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196quadrupedoriginals-21-mandrill",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/21-mandrill/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c198creaturesupplyb-14-mandrill",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/14-mandrill/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Marmoset",
+   "family": "primate",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196quadrupedoriginals-22-marmoset",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/22-marmoset/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (ground)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c198creaturesupplyb-15-marmoset",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/15-marmoset/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (ground)",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Takin",
+   "family": "quadruped",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c213creaturesupply-14-takin",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/14-takin/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c110-20-takin",
+     "master": "audits/G2_C110_20260927/20-takin/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Ibex",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196creaturesupply-08-ibex",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/08-ibex/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c202creaturesupply-13-ibex",
+     "master": "audits/C202_CREATURE_SUPPLY_20261004/13-ibex/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c107-15-ibex",
+     "master": "audits/G2_C107_20260927/15-ibex/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-07-ibex",
+     "master": "audits/C213_ORIGINALS_20261004/07-ibex/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Yak",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c192creaturesupply-22-yak",
+     "master": "audits/C192_CREATURE_SUPPLY_20261002/22-yak/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)"
+     ]
+    },
+    {
+     "id": "c213creaturesupply-13-yak",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/13-yak/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)"
+     ]
+    },
+    {
+     "id": "g2c110-19-yak",
+     "master": "audits/G2_C110_20260927/19-yak/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c136repairs-14-yak",
+     "master": "audits/G2_C136_REPAIRS_20261002/14-yak/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Goat",
+   "family": "quadruped",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c202creaturesupply-21-goat",
+     "master": "audits/C202_CREATURE_SUPPLY_20261004/21-goat/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "g2quadrupedpilot-20-goat",
+     "master": "audits/G2_QUADRUPED_PILOT_20260926/20-goat/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Wild Horse",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c202creaturesupply-20-wild-horse",
+     "master": "audits/C202_CREATURE_SUPPLY_20261004/20-wild-horse/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2quadrupedpilot-16-wild-horse",
+     "master": "audits/G2_QUADRUPED_PILOT_20260926/16-wild-horse/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Camel",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2quadrupedpilot-17-camel",
+     "master": "audits/G2_QUADRUPED_PILOT_20260926/17-camel/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Dromedary Camel",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213creaturesupply-17-dromedary-camel",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/17-dromedary-camel/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c110-23-dromedary-camel",
+     "master": "audits/G2_C110_20260927/23-dromedary-camel/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Warthog",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c192creaturesupply-20-warthog",
+     "master": "audits/C192_CREATURE_SUPPLY_20261002/20-warthog/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c202creaturesupply-07-warthog",
+     "master": "audits/C202_CREATURE_SUPPLY_20261004/07-warthog/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c98-22-warthog",
+     "master": "audits/G2_C98_20260927/22-warthog/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Forest Elephant",
+   "family": "quadruped",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c114-01-forest-elephant",
+     "master": "audits/G2_C114_20260927/01-forest-elephant/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Fruit Bat",
+   "family": "flyer-membrane",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c163familyoriginals-21-fruit-bat",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/21-fruit-bat/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Insect-Eating Bat",
+   "family": "flyer-membrane",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c163familyoriginals-23-insect-eating-bat",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/23-insect-eating-bat/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Vampire Bat",
+   "family": "flyer-membrane",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c163familyoriginals-24-vampire-bat",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/24-vampire-bat/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Walrus",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-06-walrus",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/06-walrus/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (ground)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Seal",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-07-seal",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/07-seal/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (ground)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Fur Seal",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-08-fur-seal",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/08-fur-seal/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (ground)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sea Lion",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-09-sea-lion",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/09-sea-lion/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Narwhal",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-38-narwhal",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/38-narwhal/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "River Dolphin",
+   "family": "fish",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c221program-13-river-dolphin-v2",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/13-river-dolphin-v2/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Pilot Whale",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-20-pilot-whale-v2",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/20-pilot-whale-v2/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Blue Whale",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-44-blue-whale",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/44-blue-whale/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Gray Whale",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-47-gray-whale",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/47-gray-whale/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Whale",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-31-whale-v2",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/31-whale-v2/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Manatee",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-42-manatee",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/42-manatee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Eagle",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2stridepilot-02-eagle",
+     "master": "audits/G2_STRIDE_PILOT_20260926/02-eagle/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Owl",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c87-09-owl",
+     "master": "audits/G2_C87_20260927/09-owl/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-30-owl",
+     "master": "audits/C213_ORIGINALS_20261004/30-owl/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Osprey",
+   "family": "biped-bird",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c98-11-osprey",
+     "master": "audits/G2_C98_20260927/11-osprey/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "c213originals-29-osprey",
+     "master": "audits/C213_ORIGINALS_20261004/29-osprey/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Ostrich",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c101-15-ostrich",
+     "master": "audits/G2_C101_20260927/15-ostrich/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cassowary",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c106-15-cassowary",
+     "master": "audits/G2_C106_20260927/15-cassowary/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Kiwi",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c106-16-kiwi",
+     "master": "audits/G2_C106_20260927/16-kiwi/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Kakapo",
+   "family": "biped-bird",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c106-17-kakapo",
+     "master": "audits/G2_C106_20260927/17-kakapo/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Guillemot",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c206birdsourcerepaints-14-guillemot",
+     "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c87-15-guillemot",
+     "master": "audits/G2_C87_20260927/15-guillemot/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Grebe",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c206birdsourcerepaints-16-grebe",
+     "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c92-12-grebe",
+     "master": "audits/G2_C92_20260927/12-grebe/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Egret",
+   "family": "biped-bird",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c136birdinsectreferences-02-egret",
+     "master": "audits/C136_BIRD_INSECT_REFERENCES_20261002/02-egret/candidate-02/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "c203creaturesupplyb-15-egret",
+     "master": "audits/C203_CREATURE_SUPPLY_B_20261004/15-egret/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c206birdsourcerepaints-05-egret",
+     "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c121-02-egret",
+     "master": "audits/G2_C121_20260927/02-egret/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c72-12-egret",
+     "master": "audits/G2_C72_20260927/12-egret/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Godwit",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c206birdsourcerepaints-02-godwit",
+     "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c81-12-godwit",
+     "master": "audits/G2_C81_20260927/12-godwit/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-26-godwit",
+     "master": "audits/C213_ORIGINALS_20261004/26-godwit/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Peacock",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c206birdsourcerepaints-11-peacock",
+     "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c101-14-peacock",
+     "master": "audits/G2_C101_20260927/14-peacock/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c121-15-peacock",
+     "master": "audits/G2_C121_20260927/15-peacock/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Secretary Bird",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyc-06-secretary-bird",
+     "master": "audits/C198_CREATURE_SUPPLY_C_20261003/06-secretary-bird/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c98-15-secretary-bird",
+     "master": "audits/G2_C98_20260927/15-secretary-bird/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Macaw",
+   "family": "biped-bird",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c203creaturesupplyb-10-macaw",
+     "master": "audits/C203_CREATURE_SUPPLY_B_20261004/10-macaw/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c206birdsourcerepaints-22-macaw",
+     "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "g2c83-09-macaw",
+     "master": "audits/G2_C83_20260927/09-macaw/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Kingfisher",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c203creaturesupplyb-09-kingfisher",
+     "master": "audits/C203_CREATURE_SUPPLY_B_20261004/09-kingfisher/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c59-09-kingfisher",
+     "master": "audits/G2_C59_20260926/09-kingfisher/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2familypilot-05-kingfisher",
+     "master": "audits/G2_FAMILY_PILOT_20260926/05-kingfisher/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Tern",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c206birdsourcerepaints-23-tern",
+     "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c98-16-tern",
+     "master": "audits/G2_C98_20260927/16-tern/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-32-tern-source02",
+     "master": "audits/C213_ORIGINALS_20261004/32-tern-source02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-32-tern",
+     "master": "audits/C213_ORIGINALS_20261004/32-tern/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Swift",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c76-09-swift",
+     "master": "audits/G2_C76_20260927/09-swift/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pelican",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c206birdsourcerepaints-18-pelican",
+     "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (ground)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c101-17-pelican",
+     "master": "audits/G2_C101_20260927/17-pelican/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Frigatebird",
+   "family": "biped-bird",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c107-08-frigatebird",
+     "master": "audits/G2_C107_20260927/08-frigatebird/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Tropicbird",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c107-09-tropicbird",
+     "master": "audits/G2_C107_20260927/09-tropicbird/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cockatoo",
+   "family": "biped-bird",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c83-16-cockatoo",
+     "master": "audits/G2_C83_20260927/16-cockatoo/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "c213originals-23-cockatoo",
+     "master": "audits/C213_ORIGINALS_20261004/23-cockatoo/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Kookaburra",
+   "family": "biped-bird",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c203creaturesupply-20-kookaburra",
+     "master": "audits/C203_CREATURE_SUPPLY_20261004/20-kookaburra/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "g2c83-15-kookaburra",
+     "master": "audits/G2_C83_20260927/15-kookaburra/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "c213originals-28-kookaburra",
+     "master": "audits/C213_ORIGINALS_20261004/28-kookaburra/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Hoatzin",
+   "family": "biped-bird",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c106-18-hoatzin",
+     "master": "audits/G2_C106_20260927/18-hoatzin/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Quetzal",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c106-19-quetzal",
+     "master": "audits/G2_C106_20260927/19-quetzal/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Boa",
+   "family": "serpent",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2throughputc54-18-boa",
+     "master": "audits/G2_THROUGHPUT_C54_20260926/18-boa/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Cobra",
+   "family": "serpent",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c90-02-cobra",
+     "master": "audits/G2_C90_20260927/02-cobra/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "not x-monotone"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Rattlesnake",
+   "family": "serpent",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c90-04-rattlesnake",
+     "master": "audits/G2_C90_20260927/04-rattlesnake/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "tail not tapered"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mountain Viper",
+   "family": "serpent",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c59-11-mountain-viper",
+     "master": "audits/G2_C59_20260926/11-mountain-viper/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2throughputc56-22-mountain-viper",
+     "master": "audits/G2_THROUGHPUT_C56_20260926/22-mountain-viper/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Snake",
+   "family": "serpent",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c118-13-snake",
+     "master": "audits/G2_C118_20260927/13-snake/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "body not continuous"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Anole",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196framingsuccessors-04-anole-framing-v2",
+     "master": "audits/C196_FRAMING_SUCCESSORS_20261002/04-anole-framing-v2/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c196quadrupedoriginals-04-anole",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/04-anole/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c132quadrupeds-06-anole",
+     "master": "audits/G2_C132_QUADRUPEDS_20261001/06-anole/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Skink",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196framingsuccessors-05-skink-framing-v2",
+     "master": "audits/C196_FRAMING_SUCCESSORS_20261002/05-skink-framing-v2/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c196quadrupedoriginals-05-skink",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/05-skink/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c132quadrupeds-08-skink",
+     "master": "audits/G2_C132_QUADRUPEDS_20261001/08-skink/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Wall Lizard",
+   "family": "quadruped",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c163familyoriginals-03-wall-lizard",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/03-wall-lizard/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Whiptail",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196framingsuccessors-08-whiptail-framing-v2",
+     "master": "audits/C196_FRAMING_SUCCESSORS_20261002/08-whiptail-framing-v2/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c196quadrupedoriginals-08-whiptail",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/08-whiptail/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy (sprawl)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c132quadrupeds-13-whiptail",
+     "master": "audits/G2_C132_QUADRUPEDS_20261001/13-whiptail/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Frilled Lizard",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196quadrupedoriginals-11-frilled-lizard",
+     "master": "audits/C196_QUADRUPED_ORIGINALS_20261002/11-frilled-lizard/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c132quadrupeds-20-frilled-lizard",
+     "master": "audits/G2_C132_QUADRUPEDS_20261001/20-frilled-lizard/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tortoise",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c186creaturesupply-07-tortoise",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/07-tortoise/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Box Turtle",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c186creaturesupply-08-box-turtle",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/08-box-turtle/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pond Turtle",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c186creaturesupply-09-pond-turtle",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/09-pond-turtle/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Snapping Turtle",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c186creaturesupply-10-snapping-turtle",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/10-snapping-turtle/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Softshell Turtle",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c186creaturesupply-11-softshell-turtle",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/11-softshell-turtle/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Turtle",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c186creaturesupply-12-turtle",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/12-turtle/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sea Turtle",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-01-sea-turtle-02",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/01-sea-turtle-02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "missing-anatomy (ground)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tree Frog",
+   "family": "hopper",
+   "admitted": false,
+   "packets": []
+  },
+  {
+   "name": "Poison Dart Frog",
+   "family": "hopper",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213originals-41-poison-dart-frog",
+     "master": "audits/C213_ORIGINALS_20261004/41-poison-dart-frog/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (family floor)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Bullfrog",
+   "family": "hopper",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213originals-42-bullfrog",
+     "master": "audits/C213_ORIGINALS_20261004/42-bullfrog/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Glass Frog",
+   "family": "hopper",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213originals-43-glass-frog",
+     "master": "audits/C213_ORIGINALS_20261004/43-glass-frog/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (family floor)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Frog",
+   "family": "hopper",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213originals-44-frog",
+     "master": "audits/C213_ORIGINALS_20261004/44-frog/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (family floor)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Wood Frog",
+   "family": "hopper",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213originals-45-wood-frog",
+     "master": "audits/C213_ORIGINALS_20261004/45-wood-frog/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (family floor)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Toad",
+   "family": "hopper",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213originals-46-toad",
+     "master": "audits/C213_ORIGINALS_20261004/46-toad/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (family floor)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cave Frog",
+   "family": "hopper",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213originals-47-cave-frog",
+     "master": "audits/C213_ORIGINALS_20261004/47-cave-frog/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (family floor)",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Giant Salamander",
+   "family": "quadruped",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c136repairs-01-giant-salamander",
+     "master": "audits/G2_C136_REPAIRS_20261002/01-giant-salamander/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "g2c136targetededits-01-giant-salamander",
+     "master": "audits/G2_C136_TARGETED_EDITS_20261002/01-giant-salamander/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Olm",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c136repairs-03-olm",
+     "master": "audits/G2_C136_REPAIRS_20261002/03-olm/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (sprawl)",
+      "missing-anatomy (ground)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Blind Salamander",
+   "family": "quadruped",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c136repairs-04-blind-salamander",
+     "master": "audits/G2_C136_REPAIRS_20261002/04-blind-salamander/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Caecilian",
+   "family": "serpent",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-02-caecilian-02",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/02-caecilian-02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Catfish",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyc-13-catfish",
+     "master": "audits/C198_CREATURE_SUPPLY_C_20261003/13-catfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c203creaturesupply-22-catfish",
+     "master": "audits/C203_CREATURE_SUPPLY_20261004/22-catfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c90-07-catfish",
+     "master": "audits/G2_C90_20260927/07-catfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-36-catfish-source02",
+     "master": "audits/C213_ORIGINALS_20261004/36-catfish-source02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-36-catfish",
+     "master": "audits/C213_ORIGINALS_20261004/36-catfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Lungfish",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyc-17-lungfish",
+     "master": "audits/C198_CREATURE_SUPPLY_C_20261003/17-lungfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (family floor)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c101-02-lungfish",
+     "master": "audits/G2_C101_20260927/02-lungfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (family floor)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c213originals-38-lungfish-source02",
+     "master": "audits/C213_ORIGINALS_20261004/38-lungfish-source02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (family floor)"
+     ]
+    },
+    {
+     "id": "c213originals-38-lungfish",
+     "master": "audits/C213_ORIGINALS_20261004/38-lungfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (family floor)",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Lionfish",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyc-21-lionfish",
+     "master": "audits/C198_CREATURE_SUPPLY_C_20261003/21-lionfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "extra-anatomy (unassigned)",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c92-05-lionfish",
+     "master": "audits/G2_C92_20260927/05-lionfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Fangtooth",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyc-23-fangtooth",
+     "master": "audits/C198_CREATURE_SUPPLY_C_20261003/23-fangtooth/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "c203creaturesupplyb-24-fangtooth",
+     "master": "audits/C203_CREATURE_SUPPLY_B_20261004/24-fangtooth/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c101-08-fangtooth",
+     "master": "audits/G2_C101_20260927/08-fangtooth/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Dragonfish",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c101-09-dragonfish",
+     "master": "audits/G2_C101_20260927/09-dragonfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Oarfish",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c107-06-oarfish",
+     "master": "audits/G2_C107_20260927/06-oarfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tripod Fish",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c114-20-tripod-fish",
+     "master": "audits/G2_C114_20260927/20-tripod-fish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Moray Eel",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c107-04-moray-eel",
+     "master": "audits/G2_C107_20260927/04-moray-eel/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong family"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Gulper Eel",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c107-05-gulper-eel",
+     "master": "audits/G2_C107_20260927/05-gulper-eel/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Lancelet",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-42-lancelet",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/42-lancelet/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Seahorse",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c186creaturesupply-21-seahorse",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/21-seahorse/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pipefish",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c101-04-pipefish",
+     "master": "audits/G2_C101_20260927/04-pipefish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Ray",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-12-ray",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/12-ray/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Manta Ray",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-14-manta-ray-02",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/14-manta-ray-02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Eagle Ray",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-15-eagle-ray",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/15-eagle-ray/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Stingray",
+   "family": "fish",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-13-stingray-02",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/13-stingray-02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Squid",
+   "family": "cephalopod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-03-squid",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/03-squid/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    },
+    {
+     "id": "g2c163familyoriginals-17-squid",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/17-squid/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Octopus",
+   "family": "cephalopod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-16-octopus",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/16-octopus/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    },
+    {
+     "id": "g2c163familyoriginals-16-octopus",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/16-octopus/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cuttlefish",
+   "family": "cephalopod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-04-cuttlefish",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/04-cuttlefish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    },
+    {
+     "id": "g2c163familyoriginals-18-cuttlefish",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/18-cuttlefish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Giant Octopus",
+   "family": "cephalopod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-17-giant-octopus",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/17-giant-octopus/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    },
+    {
+     "id": "g2c163familyoriginals-19-giant-octopus",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/19-giant-octopus/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Giant Squid",
+   "family": "cephalopod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c186creaturesupply-22-giant-squid",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/22-giant-squid/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Vampire Squid",
+   "family": "cephalopod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c186creaturesupply-23-vampire-squid",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/23-vampire-squid/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Deep-Sea Octopus",
+   "family": "cephalopod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c163familyoriginals-20-deep-sea-octopus",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/20-deep-sea-octopus/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Nautilus",
+   "family": "cephalopod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c186creaturesupply-24-nautilus",
+     "master": "audits/C186_CREATURE_SUPPLY_20261002/24-nautilus/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Jellyfish",
+   "family": "radial",
+   "admitted": false,
+   "packets": []
+  },
+  {
+   "name": "Portuguese Man-of-War",
+   "family": "radial",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-22-portuguese-man-of-war",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/22-portuguese-man-of-war/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sea Anemone",
+   "family": "radial",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-16-sea-anemone",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/16-sea-anemone/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Coral",
+   "family": "radial",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-19-coral",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/19-coral/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cold-Water Coral",
+   "family": "radial",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-18-cold-water-coral",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/18-cold-water-coral/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Deep-Water Coral",
+   "family": "radial",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-32-deep-water-coral",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/32-deep-water-coral/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Comb Jelly",
+   "family": "radial",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-23-comb-jelly",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/23-comb-jelly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Starfish",
+   "family": "radial",
+   "admitted": false,
+   "packets": []
+  },
+  {
+   "name": "Sea Urchin",
+   "family": "radial",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-08-sea-urchin",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/08-sea-urchin/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sea Cucumber",
+   "family": "radial",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-09-sea-cucumber",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/09-sea-cucumber/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sand Dollar",
+   "family": "radial",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-14-sand-dollar",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/14-sand-dollar/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sea Squirt",
+   "family": "sessile-filter",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213creaturesupply-21-sea-squirt",
+     "master": "audits/C213_CREATURE_SUPPLY_20261002/21-sea-squirt/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (family floor)",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Salp",
+   "family": "colonial-filter",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-40-salp",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/40-salp/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pyrosome",
+   "family": "colonial-filter",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-41-pyrosome",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/41-pyrosome/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Oyster",
+   "family": "bivalve",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-33-oyster",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/33-oyster/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Clam",
+   "family": "bivalve",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c192creaturesupply-01-clam",
+     "master": "audits/C192_CREATURE_SUPPLY_20261002/01-clam/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Razor Clam",
+   "family": "bivalve",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-34-razor-clam",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/34-razor-clam/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Giant Clam",
+   "family": "bivalve",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-35-giant-clam",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/35-giant-clam/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Scallop",
+   "family": "bivalve",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-36-scallop",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/36-scallop/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Land Snail",
+   "family": "gastropod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-16-land-snail",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/16-land-snail/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Chiton",
+   "family": "gastropod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-21-chiton-02",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/21-chiton-02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Conch",
+   "family": "gastropod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-23-conch",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/23-conch/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Ice Worm",
+   "family": "annelid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-37-ice-worm",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/37-ice-worm/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "wrong-family",
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Marine Worm",
+   "family": "annelid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-17-marine-worm-v2",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/17-marine-worm-v2/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tube Worm",
+   "family": "annelid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-25-tube-worm",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/25-tube-worm/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "extra-anatomy (unassigned)",
+      "missing-anatomy (family floor)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Polychaete Worm",
+   "family": "annelid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-27-polychaete-worm",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/27-polychaete-worm/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Giant Tube Worm",
+   "family": "annelid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-28-giant-tube-worm",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/28-giant-tube-worm/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy (family floor)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Scale Worm",
+   "family": "annelid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-30-scale-worm",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/30-scale-worm/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Flatworm",
+   "family": "annelid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-35-flatworm",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/35-flatworm/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Freshwater Crab",
+   "family": "brachyuran",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-29-freshwater-crab",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/29-freshwater-crab/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mud Crab",
+   "family": "brachyuran",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-30-mud-crab",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/30-mud-crab/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Vent Crab",
+   "family": "brachyuran",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-31-vent-crab",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/31-vent-crab/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Fiddler Crab",
+   "family": "brachyuran",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196invertebrateoriginals-03-fiddler-crab",
+     "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Crayfish",
+   "family": "crustacean-clawed",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-26-crayfish",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/26-crayfish/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Hermit Crab",
+   "family": "crustacean-clawed",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-28-hermit-crab",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/28-hermit-crab/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Lobster",
+   "family": "crustacean-clawed",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-27-lobster",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/27-lobster/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cave Shrimp",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-10-cave-shrimp-v2",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/10-cave-shrimp-v2/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Freshwater Shrimp",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-12-freshwater-shrimp",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/12-freshwater-shrimp/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Shrimp",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c192creaturesupply-03-shrimp",
+     "master": "audits/C192_CREATURE_SUPPLY_20261002/03-shrimp/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c196invertebrateoriginals-01-shrimp",
+     "master": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Vent Shrimp",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-29-vent-shrimp",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/29-vent-shrimp/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Brine Shrimp",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-03-brine-shrimp",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/03-brine-shrimp/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Water Flea",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-04-water-flea",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/04-water-flea/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (family floor)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Krill",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-05-krill",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/05-krill/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Copepod",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-06-copepod",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/06-copepod/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Amphipod",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-07-amphipod",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/07-amphipod/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Giant Isopod",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-24-giant-isopod",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/24-giant-isopod/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (family floor)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Isopod",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-26-isopod",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/26-isopod/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "extra-anatomy (unassigned)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Fairy Shrimp",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-44-fairy-shrimp",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/44-fairy-shrimp/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (family floor)",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tadpole Shrimp",
+   "family": "crustacean-small",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-45-tadpole-shrimp",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/45-tadpole-shrimp/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "missing-anatomy (family floor)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Barnacle",
+   "family": "barnacle",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-15-barnacle",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/15-barnacle/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Horseshoe Crab",
+   "family": "xiphosuran",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-39-horseshoe-crab",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/39-horseshoe-crab/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tarantula",
+   "family": "arachnid",
+   "admitted": false,
+   "packets": []
+  },
+  {
+   "name": "Scorpion",
+   "family": "arachnid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c213originals-48-scorpion",
+     "master": "audits/C213_ORIGINALS_20261004/48-scorpion/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Deer Tick",
+   "family": "arachnid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-01-deer-tick",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/01-deer-tick/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "extra-anatomy (unassigned)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Camel Spider",
+   "family": "arachnid",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c221program-02-camel-spider",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/02-camel-spider/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Harvestman",
+   "family": "arachnid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-33-harvestman",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/33-harvestman/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy (ground)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pseudoscorpion",
+   "family": "arachnid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-34-pseudoscorpion",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/34-pseudoscorpion/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy (family floor)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mite",
+   "family": "arachnid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-36-mite",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/36-mite/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "wrong-family",
+      "extra-anatomy (unassigned)",
+      "missing-anatomy (family floor)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sea Spider",
+   "family": "arachnid",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-43-sea-spider",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/43-sea-spider/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Centipede",
+   "family": "myriapod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-18-centipede",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/18-centipede/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    },
+    {
+     "id": "c210originals-05-centipede-framing02",
+     "master": "audits/C210_ORIGINALS_20261004/05-centipede-framing02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    },
+    {
+     "id": "c210originals-05-centipede",
+     "master": "audits/C210_ORIGINALS_20261004/05-centipede/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2c163familyoriginals-13-centipede",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/13-centipede/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Giant Centipede",
+   "family": "myriapod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-19-giant-centipede",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/19-giant-centipede/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    },
+    {
+     "id": "g2c163familyoriginals-14-giant-centipede",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/14-giant-centipede/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Millipede",
+   "family": "myriapod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-20-millipede",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/20-millipede/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    },
+    {
+     "id": "c210originals-06-millipede-framing02",
+     "master": "audits/C210_ORIGINALS_20261004/06-millipede-framing02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    },
+    {
+     "id": "c210originals-06-millipede",
+     "master": "audits/C210_ORIGINALS_20261004/06-millipede/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2c163familyoriginals-15-millipede",
+     "master": "audits/G2_C163_FAMILY_ORIGINALS_20261002/15-millipede/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Leafcutter Ant",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-21-leafcutter-ant",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/21-leafcutter-ant/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2throughputc56-28-leafcutter-ant",
+     "master": "audits/G2_THROUGHPUT_C56_20260926/28-leafcutter-ant/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mantis",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2familypilot-20-mantis",
+     "master": "audits/G2_FAMILY_PILOT_20260926/20-mantis/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2layoutc47-09-mantis",
+     "master": "audits/G2_LAYOUT_C47_20260926/09-mantis/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Grasshopper",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-23-grasshopper",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/23-grasshopper/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2familypilot-19-grasshopper",
+     "master": "audits/G2_FAMILY_PILOT_20260926/19-grasshopper/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Cricket",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c210originals-03-cricket-framing02",
+     "master": "audits/C210_ORIGINALS_20261004/03-cricket-framing02/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c210originals-03-cricket",
+     "master": "audits/C210_ORIGINALS_20261004/03-cricket/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2familypilot-18-cricket",
+     "master": "audits/G2_FAMILY_PILOT_20260926/18-cricket/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2layoutc47-08-cricket",
+     "master": "audits/G2_LAYOUT_C47_20260926/08-cricket/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2referencesc62-09-cricket",
+     "master": "audits/G2_REFERENCES_C62_20260927/09-cricket/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "wrong-family",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Ant",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2familypilot-16-ant",
+     "master": "audits/G2_FAMILY_PILOT_20260926/16-ant/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2layoutc47-07-ant",
+     "master": "audits/G2_LAYOUT_C47_20260926/07-ant/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2referencesc62-08-ant",
+     "master": "audits/G2_REFERENCES_C62_20260927/08-ant/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "wrong-family",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Honeybee",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196creaturesupply-14-honeybee",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/14-honeybee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c98-23-honeybee",
+     "master": "audits/G2_C98_20260927/23-honeybee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Ladybug",
+   "family": "insect",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c59-12-ladybug",
+     "master": "audits/G2_C59_20260926/12-ladybug/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "g2throughputc56-27-ladybug",
+     "master": "audits/G2_THROUGHPUT_C56_20260926/27-ladybug/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Bee",
+   "family": "insect",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "c196creaturesupply-13-bee",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/13-bee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c121-17-bee",
+     "master": "audits/G2_C121_20260927/17-bee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c136repairs-21-bee",
+     "master": "audits/G2_C136_REPAIRS_20261002/21-bee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c136targetededits-21-bee",
+     "master": "audits/G2_C136_TARGETED_EDITS_20261002/21-bee/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    },
+    {
+     "id": "g2c81-17-bee",
+     "master": "audits/G2_C81_20260927/17-bee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "insectreferencesc86-01-bee",
+     "master": "audits/INSECT_REFERENCES_C86_20260927/01-bee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "insectreferencesc86-04-bee-six-legs",
+     "master": "audits/INSECT_REFERENCES_C86_20260927/04-bee-six-legs/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Orchid Bee",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196creaturesupply-23-orchid-bee",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/23-orchid-bee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c92-24-orchid-bee",
+     "master": "audits/G2_C92_20260927/24-orchid-bee/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Dragonfly",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196creaturesupply-16-dragonfly",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/16-dragonfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy (ground)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c118-17-dragonfly",
+     "master": "audits/G2_C118_20260927/17-dragonfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c81-19-dragonfly",
+     "master": "audits/G2_C81_20260927/19-dragonfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "insectreferencesc86-02-dragonfly",
+     "master": "audits/INSECT_REFERENCES_C86_20260927/02-dragonfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "insectreferencesc86-05-dragonfly-six-legs",
+     "master": "audits/INSECT_REFERENCES_C86_20260927/05-dragonfly-six-legs/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Damselfly",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196creaturesupply-17-damselfly",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/17-damselfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c118-18-damselfly",
+     "master": "audits/G2_C118_20260927/18-damselfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c81-20-damselfly",
+     "master": "audits/G2_C81_20260927/20-damselfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Diving Beetle",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196creaturesupply-19-diving-beetle",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/19-diving-beetle/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c198creaturesupplyb-05-diving-beetle",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/05-diving-beetle/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c114-24-diving-beetle",
+     "master": "audits/G2_C114_20260927/24-diving-beetle/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c118-16-diving-beetle",
+     "master": "audits/G2_C118_20260927/16-diving-beetle/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cave Cricket",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2throughputc56-29-cave-cricket",
+     "master": "audits/G2_THROUGHPUT_C56_20260926/29-cave-cricket/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Stick Insect",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196creaturesupply-20-stick-insect",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/20-stick-insect/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c121-21-stick-insect",
+     "master": "audits/G2_C121_20260927/21-stick-insect/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c72-20-stick-insect",
+     "master": "audits/G2_C72_20260927/20-stick-insect/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2throughputc56-32-stick-insect",
+     "master": "audits/G2_THROUGHPUT_C56_20260926/32-stick-insect/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Dobsonfly",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c198creaturesupplyb-24-dobsonfly",
+     "master": "audits/C198_CREATURE_SUPPLY_B_20261003/24-dobsonfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c92-21-dobsonfly",
+     "master": "audits/G2_C92_20260927/21-dobsonfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Butterfly",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c95-19-butterfly",
+     "master": "audits/G2_C95_20260927/19-butterfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mosquito",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c95-20-mosquito",
+     "master": "audits/G2_C95_20260927/20-mosquito/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Moth",
+   "family": "insect",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c92-19-moth",
+     "master": "audits/G2_C92_20260927/19-moth/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Fly",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c95-22-fly",
+     "master": "audits/G2_C95_20260927/22-fly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mayfly",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c118-19-mayfly",
+     "master": "audits/G2_C118_20260927/19-mayfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "facing",
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c81-22-mayfly",
+     "master": "audits/G2_C81_20260927/22-mayfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Scorpionfly",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c196creaturesupply-21-scorpionfly",
+     "master": "audits/C196_CREATURE_SUPPLY_20261003/21-scorpionfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c92-22-scorpionfly",
+     "master": "audits/G2_C92_20260927/22-scorpionfly/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Thrips",
+   "family": "insect",
+   "admitted": true,
+   "packets": [
+    {
+     "id": "g2c92-23-thrips",
+     "master": "audits/G2_C92_20260927/23-thrips/master.png",
+     "verdict": "ADMIT",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Water Strider",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c136birdinsectreferences-24-water-strider",
+     "master": "audits/C136_BIRD_INSECT_REFERENCES_20261002/24-water-strider/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2c121-23-water-strider",
+     "master": "audits/G2_C121_20260927/23-water-strider/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c136repairs-24-water-strider",
+     "master": "audits/G2_C136_REPAIRS_20261002/24-water-strider/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (detached)",
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c72-17-water-strider",
+     "master": "audits/G2_C72_20260927/17-water-strider/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "extra-anatomy (unassigned)",
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Giant Water Bug",
+   "family": "insect",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "g2c121-19-giant-water-bug",
+     "master": "audits/G2_C121_20260927/19-giant-water-bug/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c136repairs-22-giant-water-bug",
+     "master": "audits/G2_C136_REPAIRS_20261002/22-giant-water-bug/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "g2c81-24-giant-water-bug",
+     "master": "audits/G2_C81_20260927/24-giant-water-bug/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "insectreferencesc86-03-giant-water-bug",
+     "master": "audits/INSECT_REFERENCES_C86_20260927/03-giant-water-bug/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Fly Larvae",
+   "family": "larva",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-11-fly-larvae",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/11-fly-larvae/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tardigrade",
+   "family": "lobopod",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c221program-38-tardigrade",
+     "master": "audits/C221_PROGRAM_20261010/phase6/originals/38-tardigrade/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pheasant",
+   "family": "biped-bird",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c203creaturesupplyb-12-pheasant",
+     "master": "audits/C203_CREATURE_SUPPLY_B_20261004/12-pheasant/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy"
+     ]
+    },
+    {
+     "id": "c206birdsourcerepaints-13-pheasant",
+     "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2c76-16-pheasant",
+     "master": "audits/G2_C76_20260927/16-pheasant/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "missing-anatomy",
+      "unexplained-anatomy"
+     ]
+    },
+    {
+     "id": "g2familypilot-03-pheasant",
+     "master": "audits/G2_FAMILY_PILOT_20260926/03-pheasant/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    },
+    {
+     "id": "g2layoutc47-05-pheasant",
+     "master": "audits/G2_LAYOUT_C47_20260926/05-pheasant/master.png",
+     "verdict": "UNSCORED",
+     "classes": []
+    }
+   ]
+  },
+  {
+   "name": "Coconut Crab",
+   "family": "brachyuran",
+   "admitted": false,
+   "packets": [
+    {
+     "id": "c215program-32-coconut-crab",
+     "master": "audits/C215_PROGRAM_20261009/phase6/originals/32-coconut-crab/master.png",
+     "verdict": "REFUSE",
+     "classes": [
+      "no-reference"
+     ]
+    }
+   ]
+  }
+ ]
+}

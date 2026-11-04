@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Hoatzin",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Hoatzin/fit",
+    "exitCode": 0,
+    "output": "c243b04r2c1-17-hoatzin {\"moved\":2958,\"islands\":[\"24->head\",\"120->head\",\"3->null\",\"122->head\",\"7->null\",\"26->null\",\"6->null\",\"2->head\",\"97->neck-upper\",\"56->neck-upper\",\"1->null\",\"1->null\",\"676->neck-upper\",\"4->beak\",\"2->beak\",\"97->far-wing-root\",\"1->near-wing-root\",\"1418->near-wing-flight\",\"2->near-wing-root\",\"4->near-wing-flight\",\"7->far-thigh\",\"64->far-thigh\",\"1->tail\",\"16->tail\",\"75->tail\",\"158->tail\",\"2->null\",\"12->near-foot\"]}\n"
+  },
+  {
+    "name": "Kakapo",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Kakapo/fit",
+    "exitCode": 0,
+    "output": "c243b04r2c1-18-kakapo {\"moved\":3496,\"islands\":[\"3167->far-wing-root\",\"9->head\",\"2->head\",\"61->head\",\"2->head\",\"1->neck-upper\",\"232->neck-lower\",\"2->near-wing-flight\",\"1->tail\",\"7->tail\",\"1->far-shin\",\"2->far-foot\",\"8->near-foot\",\"1->far-foot\"]}\n"
+  },
+  {
+    "name": "Tern",
+    "fit": "audits/C243_ALLOUT_20261011/execution/seam-repair-c371/bird-placement02/Tern/fit",
+    "exitCode": 0,
+    "output": "c243b04r2c2-12-tern {\"moved\":565,\"islands\":[\"220->far-wing-root\",\"25->neck-upper\",\"174->near-wing-root\",\"1->null\",\"1->null\",\"87->near-wing-flight\",\"4->near-wing-flight\",\"31->near-shin\",\"7->far-shin\",\"11->far-foot\",\"6->near-foot\"]}\n"
+  }
+]
