@@ -1,0 +1,82 @@
+{
+  "name": "Clouded Leopard",
+  "family": "quadruped",
+  "species": {
+    "name": "Clouded Leopard",
+    "aspect": 2.3,
+    "headFrac": 0.22,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "large cloud-shaped dark-edged blotches",
+      "tail as long as head and body combined",
+      "very short stout legs"
+    ],
+    "note": "the tail equals the whole head-body length; drawings usually make it far too short"
+  },
+  "genome": {
+    "seed": 725465033,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 6,
+    "body": 4,
+    "loco": 12,
+    "trait": 6,
+    "size": 2,
+    "diet": 2,
+    "head": 8,
+    "limbs": 5,
+    "skin": 8,
+    "tail": 5,
+    "pattern": 3,
+    "eyes": 0,
+    "behavior": 2,
+    "habitat": 15,
+    "detail": 7,
+    "accent": 11,
+    "temper": 7,
+    "sense": 4,
+    "repro": 6,
+    "life": 5,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Clouded Leopard"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Clouded Leopard\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"725465033\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "index": 3,
+  "profile": {
+    "id": "felid",
+    "names": [
+      "Jaguar",
+      "Leopard",
+      "Tiger",
+      "Clouded Leopard",
+      "Ocelot",
+      "Lion",
+      "Cougar",
+      "Snow Leopard",
+      "Bobcat",
+      "Lynx",
+      "Caracal",
+      "Fishing Cat",
+      "Cheetah",
+      "Serval",
+      "Sand Cat",
+      "Wildcat",
+      "Cat"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

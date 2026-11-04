@@ -1,0 +1,24 @@
+{
+ "id": "15-quail",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": [],
+ "fallbackFrom": "RED",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "RED"
+  },
+  {
+   "rank": 1,
+   "verdict": "ADMIT",
+   "static": "PASS_STATIC",
+   "reasons": []
+  }
+ ]
+}

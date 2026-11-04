@@ -1,0 +1,100 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "b5953b2f5fcb1b8678d75aee9890f052282267f37cd51a088bd48cad7c260b49",
+  "cutoutSha256": "bc9a9370f912802cc06e709719495b70b89ec8afe815dd8e84cf64ef27b16b96",
+  "labelsFile": "labels.png",
+  "labelsSha256": "f19ecdd29b358bae168dd57617a80b739ccc9a94b8cb695000d36422b46b56d5",
+  "parts": [
+    {
+      "id": "root-patch",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck-upper",
+      "joint": "neck1",
+      "layer": "near"
+    },
+    {
+      "id": "neck-lower",
+      "joint": "neck0",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-shoulder",
+      "joint": "wingNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-flight",
+      "joint": "wingNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "far-wing-shoulder",
+      "joint": "wingFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "far-wing-flight",
+      "joint": "wingFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "near"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "torso",
+      "joint": "spine",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "131e75b950f7eff5c6793070746ba5a8169b8af5615e23d9f65a9d3c3d4ce0c7"
+}

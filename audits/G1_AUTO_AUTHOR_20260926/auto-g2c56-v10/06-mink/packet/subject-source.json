@@ -1,0 +1,102 @@
+{
+  "name": "Mink",
+  "family": "quadruped",
+  "species": {
+    "name": "Mink",
+    "aspect": 3.6,
+    "headFrac": 0.21,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "glossy dark chocolate fur",
+      "elongate low body",
+      "white chin patch"
+    ]
+  },
+  "genome": {
+    "seed": 3547345762,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 8,
+    "body": 12,
+    "loco": 3,
+    "trait": 6,
+    "size": 5,
+    "diet": 1,
+    "head": 8,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 1,
+    "behavior": 2,
+    "habitat": 0,
+    "detail": 0,
+    "accent": 4,
+    "temper": 3,
+    "sense": 8,
+    "repro": 0,
+    "life": 1,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Mink"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mink\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3547345762\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "index": 115,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}
